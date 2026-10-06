@@ -49,10 +49,15 @@ class Terrain:
         return float(value) + self.offset
 
     def report(self):
+        try:
+            operation = self.transformer.get_last_used_operation()
+            transform_info = {'accuracy_m':operation.accuracy, 'description':operation.description}
+        except Exception:
+            transform_info = {'accuracy_m':self.transformer.accuracy, 'description':self.transformer.description}
         return {'source_id': self.config['source_id'], 'vertical_datum': self.config['vertical_datum'],
                 'sha256': self.checksum, 'horizontal_crs': self.dataset.crs.to_wkt(),
                 'pixel_size_native_units': list(self.dataset.res), 'sampling': 'nearest neighbour',
-                'sample_requests': self.sampled, 'missing_requests': self.missing}
+                'coordinate_transform':transform_info, 'sample_requests': self.sampled, 'missing_requests': self.missing}
 
     def close(self):
         self.dataset.close()

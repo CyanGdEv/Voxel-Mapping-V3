@@ -2,7 +2,7 @@
 
 Automatically acquire public geographic data and generate a **Minecraft Bedrock `.mcworld` at one block per metre**. Start with a park name/address or bounding box. The normal workflow needs no uploaded terrain, manually prepared GeoJSON, dataset URLs or Minecraft world template.
 
-**Scale and accuracy are different.** Export preserves metric scale and terrain relief, but available public evidence limits reconstruction detail. Current worlds are labelled draft/unverified: generic building extrusions and mapped paths are not faithful reconstructions of themed facades, interiors, roofs, or 3D coaster tracks.
+**Scale and accuracy are different.** Export preserves metric scale and terrain relief, but available public evidence limits reconstruction detail. Current worlds are labelled draft/unverified: building extrusions or DSM-derived roof profiles and mapped paths do not establish themed facades, interiors, or 3D coaster tracks.
 
 ## Run on GitHub Actions
 
@@ -22,7 +22,8 @@ The workflow is manually dispatched, but every supported data acquisition and ex
 | --- | --- |
 | Park location/boundary | Nominatim; polygon boundaries are used when available |
 | Buildings, roads, footways, parking, water, mapped attractions | OpenStreetMap/Overpass with retained raw response and source attribution |
-| England terrain | Environment Agency native 1 m elevation WCS, with coverage discovered from capabilities |
+| England terrain | Environment Agency native 1 m DTM WCS, with coverage discovered from capabilities |
+| England building surfaces | Automatic last-return 1 m DSM acquisition when compatible EA ground elevations are available |
 | Other regions / unavailable EA data | Automatic Open Topo Data Mapzen sampling; coarse mixed-source fallback is flagged |
 | Bedrock world | Automatic LevelDB world creation, block composition, read-back validation and `.mcworld` packaging |
 
@@ -30,7 +31,7 @@ Mapzen's approximately 30 m output includes areas derived from lower-resolution 
 
 OSM multipolygons preserve courtyard holes. Incomplete relations are reported. Missing widths/heights are reported as assumptions; draft buildings default to 6 m and draft line widths to 2 m. Ground features follow per-column sampled terrain. Bridges, tunnels and nonzero layers without absolute elevation evidence are omitted with errors; OSM layer numbers never become guessed heights. Their elevations are not currently acquired from another automatic source.
 
-Planning drawing acquisition, independent surveyed control-point validation, building meshes and 3D ride geometry are **not implemented**. Capability gaps are included in every report, so strict mode cannot certify a complete accurate park with the current adapters. There is no manual data preparation step hidden behind these capabilities.
+Planning drawing acquisition, independent surveyed control-point validation, classified building meshes and 3D ride geometry are **not implemented**. Capability gaps are included in every report, so strict mode cannot certify a complete accurate park with the current adapters. There is no manual data preparation step hidden behind these capabilities.
 
 ## World export
 
@@ -39,7 +40,7 @@ Planning drawing acquisition, independent surveyed control-point validation, bui
 - A constant Y offset places the lowest mapped elevation at Y=64 while preserving relative heights. Geographic elevation equals Minecraft Y minus the recorded offset.
 - Areas exceeding the supported vertical range fail instead of being resized or cropped.
 - Terrain receives four blocks of ground fill. This is not a full geological volume.
-- Generic block materials represent feature classes. Overlap is composed deterministically: structures/buildings take precedence over paths, parking, water and terrain.
+- Generic block materials represent feature classes; accepted DSM building profiles use distinct wall and roof blocks. Overlap is composed deterministically: structures/buildings take precedence over paths, parking, water and terrain.
 - Chunk writes are processed one at a time using an on-disk composition database. Every composed block and every unwritten air cell in saved sections is checked after reopening the Bedrock world before packaging. Palette index zero is explicitly reserved for air to prevent solid blocks filling otherwise empty sections.
 - The world name marks it as a draft, and attribution/georeferencing files are included in the `.mcworld`.
 - Minecraft can generate unrelated terrain beyond exported chunks; the mapped area is recorded in the configuration.
@@ -70,3 +71,17 @@ Provider documentation:
 - [OpenStreetMap attribution/licence](https://www.openstreetmap.org/copyright)
 - [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/)
 - [Amulet Core](https://github.com/Amulet-Team/Amulet-Core)
+
+## Automatic building surface profiles
+
+When EA terrain is selected, the pipeline automatically downloads the compatible last-return DSM without asking for files or URLs. Other regions currently retain the declared-height/estimated-extrusion fallback; the report records that no compatible surface provider is implemented there. Mixing the coarse Mapzen terrain with ODN surface data is prohibited.
+
+Within mapped building polygons, ground and surface samples form a 2.5D model: vertical columns from one estimated foundation plane to observed surface elevations. This retains metre-grid roof slopes, ridge height changes, stepped profiles and courtyard holes. The default foundation plane uses the 10th percentile of available ground elevations inside the footprint; it is an estimate, not a surveyed foundation. Observed roof columns receive a roof block over the generic wall material.
+
+Checks reject insufficient sample coverage (below 90%), implausible surface-minus-ground heights (outside 1.5–120 m), and strong conflicts with declared building height. Isolated returns more than 3 m above neighbouring samples are omitted. Rough surfaces can trigger rejection as possible vegetation or complex geometry. Missing/outlier columns in otherwise accepted profiles are left unmodelled and reported, rather than interpolated. Small footprints with fewer than four usable voxel columns fall back. Building sampling is capped at 200,000 bounding-grid checks per feature and shares the total scan budget.
+
+Rejected surface profiles use the existing tagged/assumed-height fallback with the rejection reason retained. Accepted profiles retain DSM/DTM source IDs, height statistics, usable fraction, omitted/outlier counts, foundation method and uncertainty warnings in `building_profiles` within the quality report. All profile records remain `accepted_unverified`: a DSM includes vegetation and equipment, and the composite's observations span different dates. These checks do not classify every return or prove that a current footprint matches an old survey.
+
+The automatically selected EA source metadata records its composite observation period (2000–2022). Newer construction may be missing; detailed decorations and overhanging/undercut geometry cannot be recovered from this surface grid. [EA DSM metadata](https://environment.data.gov.uk/dataset/9ba4d5ac-d596-445a-9056-dae3ddec0178) describes the source's last-return surfaces and observation period.
+
+The EA adapter also downloads the open OSTN15 datum grid automatically, retains its checksum, and records the selected coordinate operation and its stated accuracy. If that download fails, the available fallback operation is recorded and the quality report flags degraded horizontal conversion. Operation accuracy does not certify OSM footprint accuracy or survey alignment.

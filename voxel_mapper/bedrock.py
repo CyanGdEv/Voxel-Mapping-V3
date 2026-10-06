@@ -17,8 +17,8 @@ from amulet_nbt import ByteTag, IntTag, LongTag, StringTag
 
 VERSION = (1, 21, 130)
 MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'stone',
-             'attraction':'iron_block','building':'stone_bricks','structure':'stone'}
-PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'structure':6}
+             'attraction':'iron_block','building':'stone_bricks','roof':'stone','structure':'stone'}
+PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 
 
 def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=4):
@@ -159,7 +159,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'sha256':checksum,'quality':'draft_unverified',
-                'limitations':['Generic block materials and solid building extrusion','Ground filled only a few blocks below sampled terrain','Outside mapped chunks Minecraft may generate unrelated terrain','Not yet tested by importing into the Minecraft game']}
+                'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Ground filled only a few blocks below sampled terrain','Outside mapped chunks Minecraft may generate unrelated terrain','Not yet tested by importing into the Minecraft game']}
     except Exception:
         if wrapper:
             wrapper.close()

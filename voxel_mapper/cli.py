@@ -11,6 +11,7 @@ from shapely.ops import transform, polygonize_full, unary_union
 from .terrain import Terrain
 from shapely.validation import explain_validity
 from .acquisition import USER_AGENT
+from .buildings import reconstruct_building
 
 
 KINDS = {"building": "building", "highway": "path", "waterway": "water"}
@@ -120,7 +121,13 @@ def build(config, collection, output):
     voxel_path = output / "voxels.jsonl"
     terrain = Terrain(config["terrain"], crs, sources) if config.get("terrain") else None
     terrain_missing = 0
+    surface = None
+    building_profiles = []
     try:
+        if config.get("surface"):
+            if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
+                raise ValueError("Surface and terrain must have the same declared vertical datum")
+            surface = Terrain(config["surface"], crs, sources)
         with voxel_path.open("w") as stream:
             for feature in collection["features"]:
                 fid = feature.get("id", len(accepted))
@@ -154,39 +161,71 @@ def build(config, collection, output):
                     raise ValueError(f"Feature {fid} vertical datum must match terrain")
                 if "base_elevation_m" not in properties and not use_terrain:
                     assumptions.append("base elevation assumed 0 m; terrain unavailable")
-                height = properties.get("height_m", properties.get("height"))
+                declared = properties.get("height_m", properties.get("height"))
+                height = declared
+                height_assumption = None
                 if height is None:
                     height = config.get("fallback_heights_m", {}).get(kind, 1)
-                    assumptions.append(f"height assumed {height} m; actual vertical geometry unknown")
+                    height_assumption = f"height assumed {height} m; actual vertical geometry unknown"
                 try:
                     height = float(str(height).removesuffix(" m"))
                 except ValueError:
                     height = 1
-                    assumptions.append("unparseable height; assumed 1 m")
+                    declared = None
+                    height_assumption = "unparseable height; assumed 1 m"
                 if not math.isfinite(base) or not math.isfinite(height) or height <= 0:
                     raise ValueError(f"Invalid elevation or height on {fid}")
-                if assumptions:
-                    issues.append({"feature": fid, "severity": "warning", "reason": assumptions})
                 if geometry.is_empty:
                     continue
+                roof_rows = None
+                if kind == "building" and surface and terrain and geometry.geom_type in ("Polygon", "MultiPolygon"):
+                    roof_rows, profile = reconstruct_building(geometry, resolution, terrain, surface,
+                        declared_height=height if declared is not None else None,
+                        base_override=base if "base_elevation_m" in properties else None,
+                        max_checks=min(200_000, scan_budget-scanned))
+                    scanned += profile["checks"]
+                    building_profiles.append({"feature":fid, **profile})
+                    if roof_rows is None:
+                        assumptions.append("surface model rejected: " + profile["reason"])
+                    else:
+                        assumptions.extend(profile["warnings"])
+                        if profile["omitted_columns"]:
+                            assumptions.append(f'{profile["omitted_columns"]} building columns omitted because surface samples were missing or rejected')
+                if roof_rows is None and height_assumption:
+                    assumptions.append(height_assumption)
+                if assumptions:
+                    issues.append({"feature":fid,"severity":"warning","reason":assumptions})
                 feature_start = count
                 minx, miny, maxx, maxy = geometry.bounds
-                for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
-                    for z in range(math.floor(miny/resolution), math.ceil(maxy/resolution)):
-                        scanned += 1
-                        if scanned > scan_budget:
-                            raise ValueError("Column scan budget exceeded")
-                        if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
-                            continue
-                        cell_base = terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
-                        if cell_base is None:
-                            terrain_missing += 1
-                            continue
-                        for y in range(math.floor(cell_base/resolution), math.ceil((cell_base+height)/resolution)):
-                            count += 1
-                            if count > budget:
-                                raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
-                            stream.write(json.dumps({"x": x, "y": y, "z": z, "kind": kind, "feature": fid, "source": source_id, "elevation_source": config["terrain"]["source_id"] if use_terrain else source_id}) + "\n")
+                if roof_rows is not None:
+                    columns = ((x,z,cell_base,top) for (x,z),(cell_base,top) in roof_rows.items())
+                else:
+                    def fallback_columns():
+                        nonlocal scanned, terrain_missing
+                        for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
+                            for z in range(math.floor(miny/resolution), math.ceil(maxy/resolution)):
+                                scanned += 1
+                                if scanned > scan_budget:
+                                    raise ValueError("Column scan budget exceeded")
+                                if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
+                                    continue
+                                cell_base = terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
+                                if cell_base is None:
+                                    terrain_missing += 1
+                                    continue
+                                yield x,z,cell_base,cell_base+height
+                    columns = fallback_columns()
+                for x,z,cell_base,top in columns:
+                    upper = math.ceil(top/resolution)
+                    for y in range(math.floor(cell_base/resolution), upper):
+                        count += 1
+                        if count > budget:
+                            raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
+                        voxel_kind = "roof" if roof_rows is not None and y==upper-1 else kind
+                        stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
+                            "source":source_id,"elevation_source":config["terrain"]["source_id"] if use_terrain else source_id,
+                            "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
+                            "geometry_method":"surface_profile_2_5d" if roof_rows is not None else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
@@ -212,13 +251,17 @@ def build(config, collection, output):
         voxel_path.unlink(missing_ok=True)
         raise
     finally:
+        if surface:
+            surface.close()
         if terrain:
             terrain.close()
     if terrain_missing:
         issues.append({"severity": "error", "reason": "terrain coverage/nodata gaps", "missing_column_requests": terrain_missing})
     report = {"version": "3.1.0", "voxel_size_m": resolution, "crs": crs.to_wkt(), "axis": {"x": "east", "y": "up", "z": "north"}, "sources": list(sources.values()), "voxel_records": count, "features": len(accepted), "issues": issues,
-              "limitations": ["Footprint extrusion; no mesh or LiDAR reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
+              "limitations": ["Footprint extrusions or DSM surface profiles; no classified 3D mesh or point-cloud reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
               "sha256": file_sha256(voxel_path)}
+    report["building_profiles"] = building_profiles
+    report["surface"] = surface.report() if surface else None
     report["column_checks"] = scanned
     report["terrain"] = terrain.report() if terrain else None
     (output / "quality-report.json").write_text(json.dumps(report, indent=2))

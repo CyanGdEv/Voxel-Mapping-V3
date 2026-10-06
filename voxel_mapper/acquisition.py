@@ -1,5 +1,7 @@
 """Automatic location and public terrain acquisition; retain every request outcome."""
 import json
+import hashlib
+import warnings
 import math
 import time
 import xml.etree.ElementTree as ET
@@ -8,7 +10,8 @@ from pathlib import Path
 import numpy as np
 import rasterio
 import requests
-from pyproj import Transformer
+from pyproj import Transformer, datadir
+from pyproj.transformer import TransformerGroup
 from rasterio.transform import from_bounds
 
 USER_AGENT = 'VoxelMapper/3.1 (https://github.com/CyanGdEv/Voxel-Mapping-V3)'
@@ -31,9 +34,30 @@ def resolve_location(location, output):
     return [west, south, east, north], result
 
 
+def ensure_ea_grid(output):
+    """Automatically retain the open UK datum grid; report degraded accuracy on outage."""
+    url = 'https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif'
+    directory = output/'proj-grids'
+    directory.mkdir(exist_ok=True)
+    path = directory/'uk_os_OSTN15_NTv2_OSGBtoETRS.tif'
+    try:
+        if not path.exists():
+            response = requests.get(url,headers={'User-Agent':USER_AGENT},timeout=60)
+            response.raise_for_status()
+            if response.content[:2] not in (b'II',b'MM'):
+                raise ValueError('PROJ grid response is not a GeoTIFF')
+            path.write_bytes(response.content)
+        datadir.append_data_dir(str(directory.resolve()))
+        with path.open('rb') as stream:
+            checksum = hashlib.file_digest(stream,'sha256').hexdigest()
+        return {'status':'downloaded','url':url,'file':str(path.resolve()),'sha256':checksum}
+    except (requests.RequestException,ValueError) as error:
+        return {'status':'unavailable','url':url,'reason':str(error)}
+
+
 def download_ea(bounds, output, surface=False):
     """Discover elevation coverage ID via WCS capabilities, then download native 1 m."""
-    url = EA_WCS.replace('terrain-model-dtm', 'surface-model-dsm') if surface else EA_WCS
+    url = EA_WCS.replace('terrain-model-dtm', 'surface-model-last-return-dsm') if surface else EA_WCS
     response = requests.get(url, params={'service': 'WCS', 'version': '1.0.0', 'request': 'GetCapabilities'},
                             headers={'User-Agent': USER_AGENT}, timeout=45)
     response.raise_for_status()
@@ -43,7 +67,13 @@ def download_ea(bounds, output, surface=False):
                  if e.text and 'Elevation' in e.text and 'Hillshade' not in e.text]
     if len(coverages) != 1:
         raise ValueError('EA WCS did not advertise one elevation coverage')
-    transformer = Transformer.from_crs(4326, 27700, always_xy=True)
+    grid_metadata = ensure_ea_grid(output)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        group = TransformerGroup(4326, 27700, always_xy=True, allow_ballpark=False)
+    if not group.transformers:
+        raise ValueError("No usable transformation to EA British National Grid")
+    transformer = group.transformers[0]
     west, south, east, north = bounds
     corners = [transformer.transform(x,y) for x,y in [(west,south),(west,north),(east,south),(east,north)]]
     bbox = [math.floor(min(x for x,y in corners))-2, math.floor(min(y for x,y in corners))-2,
@@ -67,7 +97,10 @@ def download_ea(bounds, output, surface=False):
     source = {'id':'ea-dsm' if surface else 'ea-dtm', 'url':url, 'license':'OGL-UK-3.0',
               'resolution_m':1, 'vertical_datum':'ODN', 'coverage_id':coverages[0],
               'attribution':'Contains Environment Agency information © Environment Agency and/or database right',
-              'request_url':response.url}
+              'request_url':response.url, 'product':'last-return DSM' if surface else 'DTM',
+              'coordinate_transform':{'accuracy_m':transformer.accuracy, 'description':transformer.description, 'best_available':group.best_available, 'grid':grid_metadata},
+              'product_period':'Composite observations acquired 2000–2022; dates vary by location',
+              'metadata_url':'https://environment.data.gov.uk/dataset/9ba4d5ac-d596-445a-9056-dae3ddec0178' if surface else 'https://environment.data.gov.uk/dataset/13787b9a-26a4-4775-8523-806d13af58fc'}
     return {'path':str(path.resolve()), 'source_id':source['id'], 'units':'m', 'vertical_datum':'ODN'}, source
 
 
@@ -135,3 +168,14 @@ def acquire_terrain(bounds, output):
     terrain, source = download_global(bounds,output)
     attempts.append({'provider':'mapzen','status':'downloaded','warning':'coarse mixed-source terrain; not survey quality'})
     return terrain, source, attempts
+
+
+def acquire_surface(bounds, output, terrain_source):
+    """Only pair a DSM with a terrain product using the same known vertical datum."""
+    if terrain_source.get('id') != 'ea-dtm' or terrain_source.get('vertical_datum') != 'ODN':
+        return None, None, [{'provider':'ea-dsm','status':'not_supported', 'reason':'No supported surface/terrain pair with a shared known vertical datum for this location'}]
+    try:
+        surface, source = download_ea(bounds, output, surface=True)
+        return surface, source, [{'provider':'ea-dsm','status':'downloaded','product':'last-return DSM'}]
+    except (requests.RequestException, ValueError, ET.ParseError, rasterio.errors.RasterioError) as error:
+        return None, None, [{'provider':'ea-dsm','status':'unavailable','reason':str(error)}]
