@@ -25,6 +25,11 @@ class Terrain:
         if not math.isfinite(self.offset):
             self.dataset.close()
             raise ValueError('Terrain offset must be finite')
+        if self.dataset.width*self.dataset.height > 16_000_000:
+            self.dataset.close()
+            raise ValueError("Terrain raster exceeds in-memory pixel budget")
+        self.values = self.dataset.read(1, masked=True)
+        self.inverse = ~self.dataset.transform
         self.sampled = self.missing = 0
         with Path(config['path']).open('rb') as stream:
             self.checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
@@ -32,11 +37,12 @@ class Terrain:
     def sample(self, x, z):
         self.sampled += 1
         rx, ry = self.transformer.transform(x, z)
-        row, col = self.dataset.index(rx, ry)
+        col, row = self.inverse * (rx, ry)
+        row, col = math.floor(row), math.floor(col)
         if not (0 <= row < self.dataset.height and 0 <= col < self.dataset.width):
             self.missing += 1
             return None
-        value = next(self.dataset.sample([(rx, ry)], indexes=1, masked=True))[0]
+        value = self.values[row, col]
         if np.ma.is_masked(value) or not math.isfinite(float(value)):
             self.missing += 1
             return None

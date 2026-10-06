@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "voxel-mapper"
 version = "3.1.0"
 requires-python = ">=3.11"
-dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasterio>=1.4,<2"]
+dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasterio>=1.4,<1.5", "numpy>=1.26,<2", "amulet-core==1.9.49"]
 
 [project.scripts]
 voxel-mapper = "voxel_mapper.cli:main"

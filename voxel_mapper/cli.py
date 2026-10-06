@@ -10,6 +10,7 @@ from shapely.geometry import Point, shape, mapping, LineString
 from shapely.ops import transform, polygonize_full, unary_union
 from .terrain import Terrain
 from shapely.validation import explain_validity
+from .acquisition import USER_AGENT
 
 
 KINDS = {"building": "building", "highway": "path", "waterway": "water"}
@@ -17,8 +18,8 @@ KINDS = {"building": "building", "highway": "path", "waterway": "water"}
 
 def fetch_osm(bounds):
     west, south, east, north = bounds
-    query = f'[out:json][timeout:120];(way({south},{west},{north},{east});relation["type"="multipolygon"]({south},{west},{north},{east}););out geom;'
-    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=180)
+    query = f'[out:json][timeout:120];(way({south},{west},{north},{east});relation["type"="multipolygon"]({south},{west},{north},{east}););out meta geom;'
+    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=180)
     response.raise_for_status()
     data = response.json()
     if data.get("remark"):
@@ -96,6 +97,11 @@ def build(config, collection, output):
     crs = CRS.from_proj4(f'+proj=aeqd +lat_0={(south+north)/2} +lon_0={(west+east)/2} +datum=WGS84 +units=m')
     projector = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
     area = transform(projector.transform, shape({"type": "Polygon", "coordinates": [[[west,south],[east,south],[east,north],[west,north],[west,south]]]}))
+    if config.get("boundary_geojson"):
+        boundary = shape(config["boundary_geojson"])
+        if not boundary.is_valid or boundary.geom_type not in ("Polygon", "MultiPolygon"):
+            raise ValueError("Park boundary is not a valid polygon")
+        area = area.intersection(transform(projector.transform, boundary))
     if area.area > config.get("max_area_m2", 4_000_000):
         raise ValueError("Area exceeds configured build budget; split into smaller areas")
     sources = {s["id"]: s for s in config.get("sources", [])}
@@ -132,8 +138,8 @@ def build(config, collection, output):
                 if geometry.geom_type in ("LineString", "MultiLineString", "Point"):
                     width = properties.get("width_m", properties.get("width"))
                     if width is None:
-                        width = 1
-                        assumptions.append("width assumed 1 m")
+                        width = config.get("fallback_width_m", 1)
+                        assumptions.append(f"width assumed {width} m")
                     width = float(width)
                     if not math.isfinite(width) or width <= 0:
                         raise ValueError(f"Invalid width on {fid}")
@@ -150,8 +156,8 @@ def build(config, collection, output):
                     assumptions.append("base elevation assumed 0 m; terrain unavailable")
                 height = properties.get("height_m", properties.get("height"))
                 if height is None:
-                    height = 1
-                    assumptions.append("height assumed 1 m; actual vertical geometry unknown")
+                    height = config.get("fallback_heights_m", {}).get(kind, 1)
+                    assumptions.append(f"height assumed {height} m; actual vertical geometry unknown")
                 try:
                     height = float(str(height).removesuffix(" m"))
                 except ValueError:
@@ -226,30 +232,18 @@ def file_sha256(path):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", required=True)
-    parser.add_argument("--features", help="WGS84 GeoJSON with source_id, kind, height_m, base_elevation_m")
+    from .pipeline import run_auto
+    parser = argparse.ArgumentParser(description="Automatically fetch public data and build a 1 block/metre Bedrock world")
+    area = parser.add_mutually_exclusive_group(required=True)
+    area.add_argument("--location", help="Specific park name and country/address")
+    area.add_argument("--bbox", help="west,south,east,north")
     parser.add_argument("--output", default="output")
+    parser.add_argument("--strict", action="store_true", help="Fail after export if evidence quality checks fail")
     args = parser.parse_args()
-    config = json.loads(Path(args.config).read_text())
-    validate_config(config)
-    if config.get("terrain"):
-        config["terrain"]["path"] = str((Path(args.config).resolve().parent / config["terrain"]["path"]).resolve())
-    output = Path(args.output)
-    output.mkdir(parents=True, exist_ok=True)
-    skipped = []
-    if args.features:
-        collection = json.loads(Path(args.features).read_text())
-    else:
-        collection, raw, skipped = fetch_osm(config["bbox"])
-        (output / "osm-raw.json").write_text(json.dumps(raw))
-        config.setdefault("sources", []).append({"id": "osm", "url": "https://www.openstreetmap.org/copyright", "license": "ODbL-1.0"})
-    (output / "input.geojson").write_text(json.dumps(collection))
-    report = build(config, collection, output)
-    report["skipped_osm"] = skipped
-    (output / "quality-report.json").write_text(json.dumps(report, indent=2))
-    if config.get("strict", False) and (report["issues"] or skipped or not report["features"]):
-        raise SystemExit("Strict accuracy gate failed; inspect quality-report.json")
+    bounds = list(map(float, args.bbox.split(','))) if args.bbox else None
+    report = run_auto(Path(args.output), location=args.location, bounds=bounds)
+    if args.strict and report["issues"]:
+        raise SystemExit("Strict accuracy gate failed; draft world and evidence retained in output")
 
 
 if __name__ == "__main__":

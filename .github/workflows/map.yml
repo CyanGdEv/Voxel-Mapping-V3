@@ -1,39 +1,47 @@
-name: Voxel Mapper 3.1
+name: Voxel Mapper 3.1 — Bedrock World
 on:
   workflow_dispatch:
     inputs:
-      config:
-        description: Repository JSON configuration path
-        default: examples/area.json
-        required: true
-      features:
-        description: Optional repository WGS84 GeoJSON path; blank fetches OSM
+      location:
+        description: Specific theme park name and country/address (blank when bbox is supplied)
+        default: Thorpe Park, Chertsey, United Kingdom
+      bbox:
+        description: Optional west,south,east,north override; maximum area 4 km²
         default: ''
+      strict:
+        description: Fail accuracy gate after exporting the draft world
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   map:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install .
-      - name: Generate map
         env:
-          CONFIG: ${{ inputs.config }}
-          FEATURES: ${{ inputs.features }}
+          CC: gcc
+          CXX: g++
+      - name: Automatically acquire data and build Bedrock world
+        env:
+          LOCATION: ${{ inputs.location }}
+          BBOX: ${{ inputs.bbox }}
+          STRICT: ${{ inputs.strict }}
         shell: bash
         run: |
-          args=(--config "$CONFIG" --output output)
-          if [[ -n "$FEATURES" ]]; then args+=(--features "$FEATURES"); fi
-          voxel-mapper "${args[@]}"
+          args=(--output output)
+          if [[ -n "$BBOX" ]]; then args+=(--bbox="$BBOX"); else args+=(--location "$LOCATION"); fi
+          if [[ "$STRICT" == "true" ]]; then args+=(--strict); fi
+          python -m voxel_mapper.cli "${args[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: voxel-map-${{ github.run_id }}
+          name: voxel-park-bedrock-${{ github.run_id }}
           path: output/
           if-no-files-found: warn
           retention-days: 14

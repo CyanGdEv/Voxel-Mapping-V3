@@ -1,79 +1,72 @@
 # Voxel Mapper V3.1
 
-Evidence-backed real-world voxel mapping, runnable in GitHub Actions. This initial implementation uses a local metric projection and a default voxel size of one metre. It is a foundation, **not yet a complete high-detail theme park reconstruction system**.
+Automatically acquire public geographic data and generate a **Minecraft Bedrock `.mcworld` at one block per metre**. Start with a park name/address or bounding box. The normal workflow needs no uploaded terrain, manually prepared GeoJSON, dataset URLs or Minecraft world template.
 
-## Run in Actions
+**Scale and accuracy are different.** Export preserves metric scale and terrain relief, but available public evidence limits reconstruction detail. Current worlds are labelled draft/unverified: generic building extrusions and mapped paths are not faithful reconstructions of themed facades, interiors, roofs, or 3D coaster tracks.
 
-Open Actions → Voxel Mapper 3.1 → Run workflow. Supply a committed JSON configuration path and optionally a committed GeoJSON input path. Without GeoJSON, the workflow requests public OpenStreetMap geometry from Overpass. Download the resulting artifact and inspect `quality-report.json` before using the map.
+## Run on GitHub Actions
 
-`examples/area.json` is a small demonstration bounding box, not a surveyed theme park boundary. Strict mode deliberately fails when features contain assumptions, invalid geometries, skipped relations, or no usable features. Artifacts are retained on strict failure so evidence can be reviewed. Disable strict only to generate an explicitly approximate draft.
+Open **Actions → Voxel Mapper 3.1 — Bedrock World → Run workflow**:
+
+- `location`: a specific park name and country/address, such as `Thorpe Park, Chertsey, United Kingdom`.
+- `bbox`: optional `west,south,east,north`; overrides the location name. Maximum bounding area is 4 km² per run.
+- `strict`: fail the accuracy gate after generating and retaining the draft world if evidence warnings remain.
+
+Download the workflow artifact. Open `park.mcworld` in Minecraft Bedrock to import it. Inspect `quality-report.json` for omitted features, assumed dimensions, terrain coverage and reconstruction limits. `acquisition.json` records provider outcomes. Ambiguous names fail rather than selecting a park silently.
+
+The workflow is manually dispatched, but every supported data acquisition and export step inside it is automatic. Larger regions currently need separate bounding-box runs; seamless tile stitching is future work. This pipeline targets Bedrock 1.21.130 data through pinned Amulet Core; an actual in-game import still needs validation.
+
+## Automatic sources
+
+| Data | Acquisition and evidence handling |
+| --- | --- |
+| Park location/boundary | Nominatim; polygon boundaries are used when available |
+| Buildings, roads, footways, parking, water, mapped attractions | OpenStreetMap/Overpass with retained raw response and source attribution |
+| England terrain | Environment Agency native 1 m elevation WCS, with coverage discovered from capabilities |
+| Other regions / unavailable EA data | Automatic Open Topo Data Mapzen sampling; coarse mixed-source fallback is flagged |
+| Bedrock world | Automatic LevelDB world creation, block composition, read-back validation and `.mcworld` packaging |
+
+Mapzen's approximately 30 m output includes areas derived from lower-resolution data. It does not supply one-metre surveyed accuracy. Provider outages cause failure, or a documented supported fallback; no fabricated terrain is substituted. All extracted raster/input evidence is retained alongside reports. Data provider API limits are respected for the elevation service (100 samples/request and at least one second between requests).
+
+OSM multipolygons preserve courtyard holes. Incomplete relations are reported. Missing widths/heights are reported as assumptions; draft buildings default to 6 m and draft line widths to 2 m. Ground features follow per-column sampled terrain. Bridges, tunnels and nonzero layers without absolute elevation evidence are omitted with errors; OSM layer numbers never become guessed heights. Their elevations are not currently acquired from another automatic source.
+
+Planning drawing acquisition, independent surveyed control-point validation, building meshes and 3D ride geometry are **not implemented**. Capability gaps are included in every report, so strict mode cannot certify a complete accurate park with the current adapters. There is no manual data preparation step hidden behind these capabilities.
+
+## World export
+
+- One voxel maps to one Bedrock block; exports reject other voxel sizes.
+- East is Minecraft positive X; north is negative Z. Local projection details are recorded.
+- A constant Y offset places the lowest mapped elevation at Y=64 while preserving relative heights. Geographic elevation equals Minecraft Y minus the recorded offset.
+- Areas exceeding the supported vertical range fail instead of being resized or cropped.
+- Terrain receives four blocks of ground fill. This is not a full geological volume.
+- Generic block materials represent feature classes. Overlap is composed deterministically: structures/buildings take precedence over paths, parking, water and terrain.
+- Chunk writes are processed one at a time using an on-disk composition database. Every composed block is checked after reopening the Bedrock world before packaging.
+- The world name marks it as a draft, and attribution/georeferencing files are included in the `.mcworld`.
+- Minecraft can generate unrelated terrain beyond exported chunks; the mapped area is recorded in the configuration.
+
+The voxel budget, scan budget, native raster budget and world block budget bound resource use. The world is structurally verified using Amulet, which is not equivalent to testing import and play inside Minecraft.
 
 ## Local execution
 
+Python 3.12 is used in Actions. Native dependencies may require a C/C++ compiler.
+
 ```sh
-python -m pip install .
-voxel-mapper --config examples/area.json --output output
+CC=gcc CXX=g++ python -m pip install .
+python -m voxel_mapper.cli --location 'Thorpe Park, Chertsey, United Kingdom' --output output
+python -m voxel_mapper.cli --bbox=-0.5124,51.4027,-0.5116,51.4033 --output small-area
 python -m unittest discover -s tests -v
 ```
 
-For curated data, add `--features path/to/features.geojson`. GeoJSON coordinates must be WGS84 longitude, latitude. Register every feature's `source_id` in the configuration's `sources` array with an `id`, `url`, and `license`. Optional source metadata such as survey date, positional accuracy, and vertical datum is preserved in the report. These declarations are attribution records, not independent verification of the source's truth or licence permissions.
+Use an empty output directory per run to prevent stale exports being mistaken for successful new output. `--strict` retains the generated draft and fails if warnings/errors remain.
 
-Feature properties:
+## Evidence and formats
 
-| Property | Purpose |
-| --- | --- |
-| `source_id` | Required registered evidence source |
-| `kind` | Building, path, parking, water, attraction, or structure |
-| `height_m` | Extrusion height in metres |
-| `base_elevation_m` | Base altitude in a common user-selected vertical datum |
-| `width_m` | Width for line geometry |
+`voxels.jsonl` retains feature/source identifiers before composition. `input.geojson` is WGS84; `features-local.geojson` uses the local projected CRS recorded in the report and is not RFC 7946 WGS84 GeoJSON. `resolved-config.json` records the automatically selected sources, location and bounds. GeoTIFF checksum, pixel spacing, horizontal CRS and declared vertical datum are reported. EA data uses ODN; fallback Mapzen heights are not asserted to share a verified survey datum. No automatic vertical datum transformation is applied.
 
-Missing height, elevation, and line width produce warnings. OSM height tags are accepted when numeric. A building footprint alone cannot establish roof shape, windows, interiors, or themed facades. Bridges require explicit base elevations and heights; generic OSM geometry alone cannot establish deck clearance. Planning proposals must not be treated as evidence of as-built conditions.
+Provider documentation:
 
-## Outputs and limits
-
-- `voxels.jsonl`: streamed feature-attributed voxel records; x east, y up, z north. Coordinates describe voxel grid indices; multiply by `voxel_size_m` for metres. Overlapping features remain separate records for downstream composition.
-- `features-local.geojson`: clipped geometry in the local projected CRS, which is recorded in the report. This is not RFC 7946 WGS84 GeoJSON.
-- `quality-report.json`: assumptions, invalid features, skipped OSM relations, source records, CRS, counts, and voxel file checksum.
-- `input.geojson` and `osm-raw.json` when applicable: retained input evidence.
-
-The implementation extrudes footprints and buffered lines. It does not yet create a Minecraft world, reconstruct meshes or coaster track, ingest LiDAR, discover planning applications, or independently compare multiple datasets. Local GeoTIFF terrain input and basic OSM multipolygon assembly are supported. It does not guarantee all real-world features are present. Strict success establishes the implemented checks passed; it does not certify survey accuracy or completeness. Projection distortion and voxel quantisation limit accuracy, and feature edges are sampled at voxel centres.
-
-Area and voxel budgets limit Actions resource consumption. Large locations should be divided into smaller areas. Input antimeridian areas must be split. Network outages fail the run rather than silently substituting fabricated geometry.
-
-## Required next stages for accurate theme parks
-
-1. Regional terrain adapters with explicit horizontal/vertical CRS, nodata and coverage checks; LiDAR ground classification where available.
-2. Advanced multipolygon semantics, bridge deck and tunnel modelling, layered paths, parking markings and measured building roofs.
-3. CityGML, mesh and point-cloud ingestion with licensing and acquisition metadata.
-4. Planning drawing discovery, scale extraction and georeferencing against surveyed control points; distinguish proposed, approved and as-built data.
-5. Theme park attraction geometry and custom structures from measured evidence; uncertainty masks for unavailable features.
-6. Independent validation against control points, coverage and positional error thresholds, and dated source conflict resolution.
-7. Tiled Minecraft export and end-to-end comparison against an independently surveyed pilot park.
-
-Public availability varies by jurisdiction. A system can support arbitrary locations while honestly reporting unavailable evidence; it cannot guarantee equally detailed reconstruction everywhere.
-
-## Terrain input (V3.1 next stage)
-
-Commit a georeferenced single-band elevation GeoTIFF and reference it in the configuration. The path is relative to the configuration file. Register its source alongside other data sources:
-
-```json
-{
-  "terrain": {
-    "path": "terrain.tif",
-    "source_id": "local-dem",
-    "units": "m",
-    "vertical_datum": "ODN",
-    "offset_m": 0,
-    "emit_surface": true
-  }
-}
-```
-
-Use the raster's actual datum name; this example does not convert heights to ODN. Elevation values must be metres. Horizontal coordinates are transformed into the raster CRS; samples use nearest-neighbour pixel values. No automatic vertical datum conversion occurs. `offset_m` applies a declared constant correction only, not a general datum transformation. Reports retain native pixel size, CRS, input checksum and missing sample counts. Finer voxels do not create finer measured terrain detail.
-
-Ground features without an explicit base elevation follow sampled terrain by column. This is suitable for ground surface drafts; buildings still require surveyed foundation elevations for faithful flat foundations on slopes. The emitted terrain is a one-voxel surface, not a filled ground volume. Nodata and uncovered columns are omitted and reported as errors, rather than filled with zero elevations. Source resolution, ground-versus-surface classification and acquisition dates must be assessed by the operator.
-
-Bridges, tunnels and nonzero OSM layers require explicit `base_elevation_m`; they are skipped with an error if it is absent. The implementation never converts an OSM layer number into metres. When terrain is present, explicitly elevated features must declare a matching `vertical_datum`. Their height controls a simple extrusion, not a reconstructed bridge structure.
-
-OSM multipolygon relations now assemble split outer and inner rings, retain courtyard holes, and suppress duplicate member ways after successful assembly. Incomplete rings and unsupported members are reported. `max_column_checks` (default 10 million) bounds geometry/terrain scans even when nodata produces no voxels.
+- [Environment Agency DTM WCS](https://environment.data.gov.uk/spatialdata/lidar-composite-digital-terrain-model-dtm-1m/wcs)
+- [Open Topo Data Mapzen data](https://www.opentopodata.org/datasets/mapzen/) and [API limits](https://www.opentopodata.org/)
+- [OpenStreetMap attribution/licence](https://www.openstreetmap.org/copyright)
+- [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/)
+- [Amulet Core](https://github.com/Amulet-Team/Amulet-Core)
