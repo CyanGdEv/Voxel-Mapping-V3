@@ -12,6 +12,7 @@ from .terrain import Terrain
 from shapely.validation import explain_validity
 from .acquisition import USER_AGENT
 from .buildings import reconstruct_building
+from .transport import TRANSPORT_KINDS, transport_kind, transport_profile
 
 
 KINDS = {"building": "building", "highway": "path", "waterway": "water"}
@@ -35,6 +36,12 @@ def parse_osm(data):
     for element in elements:
         tags = element.get("tags", {})
         kind = next((v for k, v in KINDS.items() if k in tags), None)
+        transport = transport_kind(tags)
+        if transport == 'inactive_transport':
+            skipped.append({'id': element['id'], 'reason': 'inactive/proposed/construction highway omitted'})
+            continue
+        if transport and kind != 'building':
+            kind = transport
         if tags.get("amenity") == "parking":
             kind = "parking"
         if tags.get("natural") == "water":
@@ -75,7 +82,7 @@ def parse_osm(data):
                 if len(coords) < 2:
                     raise ValueError("missing geometry")
                 closed = len(coords) >= 4 and coords[0] == coords[-1]
-                geometry = {"type": "Polygon", "coordinates": [coords]} if closed and (kind not in ("path", "attraction") or tags.get("area") == "yes") else {"type": "LineString", "coordinates": coords}
+                geometry = {"type": "Polygon", "coordinates": [coords]} if closed and (kind not in TRANSPORT_KINDS | {"attraction"} or tags.get("area") == "yes" or tags.get('area:highway')) else {"type": "LineString", "coordinates": coords}
             features.append({"type": "Feature", "id": f'osm/{element["type"]}/{element["id"]}', "geometry": geometry,
                              "properties": {**tags, "kind": kind, "source_id": "osm"}})
         except (ValueError, KeyError) as error:
@@ -123,6 +130,7 @@ def build(config, collection, output):
     terrain_missing = 0
     surface = None
     building_profiles = []
+    transport_profiles = []
     try:
         if config.get("surface"):
             if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
@@ -142,8 +150,14 @@ def build(config, collection, output):
                 geometry = transform(projector.transform, geometry).intersection(area)
                 kind = properties.get("kind", "structure")
                 assumptions = []
+                transport = None
+                is_line = geometry.geom_type in ("LineString", "MultiLineString", "Point")
+                if kind in TRANSPORT_KINDS and (properties.get('highway') or properties.get('area:highway')):
+                    transport = transport_profile(properties, kind, is_line)
+                    assumptions.extend(transport['warnings'])
+                    transport_profiles.append({'feature': fid, 'source_id': source_id, **transport})
                 if geometry.geom_type in ("LineString", "MultiLineString", "Point"):
-                    width = properties.get("width_m", properties.get("width"))
+                    width = transport['width_m'] if transport else properties.get("width_m", properties.get("width"))
                     if width is None:
                         width = config.get("fallback_width_m", 1)
                         assumptions.append(f"width assumed {width} m")
@@ -192,7 +206,8 @@ def build(config, collection, output):
                         if profile["omitted_columns"]:
                             assumptions.append(f'{profile["omitted_columns"]} building columns omitted because surface samples were missing or rejected')
                 if roof_rows is None and height_assumption:
-                    assumptions.append(height_assumption)
+                    if kind not in TRANSPORT_KINDS:
+                        assumptions.append(height_assumption)
                 if assumptions:
                     issues.append({"feature":fid,"severity":"warning","reason":assumptions})
                 feature_start = count
@@ -216,7 +231,9 @@ def build(config, collection, output):
                                 yield x,z,cell_base,cell_base+height
                     columns = fallback_columns()
                 for x,z,cell_base,top in columns:
-                    upper = math.ceil(top/resolution)
+                    # Ground paving replaces the sampled terrain block, rather than
+                    # extruding two blocks when the raster elevation is fractional.
+                    upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS else math.ceil(top/resolution)
                     for y in range(math.floor(cell_base/resolution), upper):
                         count += 1
                         if count > budget:
@@ -225,7 +242,8 @@ def build(config, collection, output):
                         stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
                             "source":source_id,"elevation_source":config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
-                            "geometry_method":"surface_profile_2_5d" if roof_rows is not None else "extrusion"}) + "\n")
+                            **({'material': transport['material']} if transport else {}),
+                            "geometry_method":"surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
@@ -261,6 +279,7 @@ def build(config, collection, output):
               "limitations": ["Footprint extrusions or DSM surface profiles; no classified 3D mesh or point-cloud reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
               "sha256": file_sha256(voxel_path)}
     report["building_profiles"] = building_profiles
+    report['transport_profiles'] = transport_profiles
     report["surface"] = surface.report() if surface else None
     report["column_checks"] = scanned
     report["terrain"] = terrain.report() if terrain else None

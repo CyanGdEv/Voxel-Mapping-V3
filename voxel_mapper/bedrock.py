@@ -14,11 +14,23 @@ from amulet.api.block import Block
 from amulet.api.chunk import Chunk
 from amulet.level.formats.leveldb_world import LevelDBFormat
 from amulet_nbt import ByteTag, IntTag, LongTag, StringTag
+from .transport import SURFACE_MATERIALS
 
 VERSION = (1, 21, 130)
 MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'stone',
+             'road':'black_concrete','sidewalk':'stone','queue':'stone','cycleway':'stone','steps':'stone',
              'attraction':'iron_block','building':'stone_bricks','roof':'stone','structure':'stone'}
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
+PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values())
+
+
+def material_block(material):
+    if material in ('black_concrete', 'light_gray_concrete'):
+        return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
+    if material == 'oak_planks':
+        return Block('universal_minecraft', 'planks', {'material': StringTag('oak')})
+    return Block('universal_minecraft', material)
 
 
 def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=4):
@@ -62,7 +74,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     record = json.loads(line)
                     x,z,y = int(record['x']),-int(record['z']),int(record['y'])+y_offset
                     kind = record['kind']
-                    material = MATERIALS.get(kind,'stone')
+                    material = record.get('material', MATERIALS.get(kind,'stone'))
+                    if material not in ALLOWED_MATERIALS:
+                        raise ValueError(f'Unsupported block material: {material}')
                     pending.append((x//16,z//16,x%16,y,z%16,material,PRIORITY.get(kind,6)))
                     if kind == 'terrain':
                         for depth in range(1,ground_depth+1):
@@ -103,7 +117,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 palette = {"air": air_id}
                 for x,y,z,material in connection.execute('SELECT x,y,z,material FROM blocks WHERE cx=? AND cz=?',(cx,cz)):
                     if material not in palette:
-                        block = Block('universal_minecraft',material)
+                        block = material_block(material)
                         palette[material] = chunk.block_palette.get_add_block(block)
                     chunk.blocks[x,y,z] = palette[material]
                 chunk.changed = True
@@ -125,7 +139,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     for x,y,z,material in connection.execute('SELECT x,y,z,material FROM blocks WHERE cx=? AND cz=?',(cx,cz)):
                         expected_sections.setdefault(y//16, np.zeros((16,16,16), dtype=bool))[x,y%16,z] = True
                         actual = chunk.block_palette[int(chunk.blocks[x,y,z])]
-                        if actual.base_name != material:
+                        expected = material_block(material)
+                        if actual.namespaced_name != expected.namespaced_name or any(actual.properties.get(k) != v for k,v in expected.properties.items()):
                             raise ValueError(f'Bedrock block round-trip failed at {cx*16+x},{y},{cz*16+z}: {actual} != {material}')
                     is_solid = np.array([block.base_name != "air" for block in chunk.block_palette], dtype=bool)
                     for section in set(chunk.blocks.sub_chunks) | set(expected_sections):

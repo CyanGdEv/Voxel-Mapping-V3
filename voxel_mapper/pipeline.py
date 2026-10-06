@@ -64,6 +64,7 @@ def run_auto(output, location=None, bounds=None):
             report['issues'].append({'severity':'warning','reason':'Best horizontal datum transformation unavailable', 'accuracy_m':coordinate_transform.get('accuracy_m')})
         # These absent adapters must never be mistaken for universal automatic completeness.
         report['capabilities'] = {'osm':'automatic', 'terrain':'automatic', 'surface':'automatic' if config_surface else 'unavailable',
+                                  'transport_surfaces':'automatic_tagged_widths_and_materials',
                                   'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable', 'planning_drawings':'not_implemented',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
                                   'coaster_3d_geometry':'not_implemented', 'bedrock_world':'automatic'}
