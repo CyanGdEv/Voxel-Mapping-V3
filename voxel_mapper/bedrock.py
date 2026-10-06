@@ -9,6 +9,7 @@ import zipfile
 from pathlib import Path
 
 import amulet
+import numpy as np
 from amulet.api.block import Block
 from amulet.api.chunk import Chunk
 from amulet.level.formats.leveldb_world import LevelDBFormat
@@ -95,7 +96,11 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             coords = connection.execute('SELECT DISTINCT cx,cz FROM blocks ORDER BY cx,cz').fetchall()
             for cx,cz in coords:
                 chunk = Chunk(cx,cz)
-                palette = {}
+                # New chunk arrays initialise to palette index zero. It must be air.
+                air_id = chunk.block_palette.get_add_block(Block("universal_minecraft", "air"))
+                if air_id != 0:
+                    raise ValueError("New chunk palette must reserve index zero for air")
+                palette = {"air": air_id}
                 for x,y,z,material in connection.execute('SELECT x,y,z,material FROM blocks WHERE cx=? AND cz=?',(cx,cz)):
                     if material not in palette:
                         block = Block('universal_minecraft',material)
@@ -116,10 +121,22 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     raise ValueError('Bedrock round-trip chunk coverage failed')
                 for cx,cz in coords:
                     chunk = level.get_chunk(cx,cz,'minecraft:overworld')
+                    expected_sections = {}
                     for x,y,z,material in connection.execute('SELECT x,y,z,material FROM blocks WHERE cx=? AND cz=?',(cx,cz)):
+                        expected_sections.setdefault(y//16, np.zeros((16,16,16), dtype=bool))[x,y%16,z] = True
                         actual = chunk.block_palette[int(chunk.blocks[x,y,z])]
                         if actual.base_name != material:
                             raise ValueError(f'Bedrock block round-trip failed at {cx*16+x},{y},{cz*16+z}: {actual} != {material}')
+                    is_solid = np.array([block.base_name != "air" for block in chunk.block_palette], dtype=bool)
+                    for section in set(chunk.blocks.sub_chunks) | set(expected_sections):
+                        expected_mask = expected_sections.get(section)
+                        if expected_mask is None:
+                            expected_mask = np.zeros((16,16,16), dtype=bool)
+                        actual_mask = is_solid[chunk.blocks.get_sub_chunk(section)]
+                        if not np.array_equal(actual_mask, expected_mask):
+                            unexpected = int(np.count_nonzero(actual_mask & ~expected_mask))
+                            missing = int(np.count_nonzero(expected_mask & ~actual_mask))
+                            raise ValueError(f"Bedrock air/solid occupancy failed in chunk {cx},{cz}, section {section}: {unexpected} unexpected and {missing} missing blocks")
                     level.unload()
             finally:
                 level.close()
@@ -140,7 +157,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'blocks_per_metre':1,'horizontal_transform':{'minecraft_x':'east','minecraft_z':'negative north'},
                 'vertical_offset_blocks':y_offset,'geographic_elevation_m':'Minecraft Y minus vertical_offset_blocks',
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,
-                'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks verified',
+                'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'sha256':checksum,'quality':'draft_unverified',
                 'limitations':['Generic block materials and solid building extrusion','Ground filled only a few blocks below sampled terrain','Outside mapped chunks Minecraft may generate unrelated terrain','Not yet tested by importing into the Minecraft game']}
     except Exception:

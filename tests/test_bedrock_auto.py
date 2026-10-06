@@ -39,8 +39,30 @@ class BedrockTests(unittest.TestCase):
                 self.assertEqual(block(0,64,0),'stone_bricks')
                 self.assertEqual(block(0,65,0),'stone_bricks')
                 self.assertEqual(block(0,63,0),'dirt')
+                self.assertEqual(block(0,66,0),'air')
+                self.assertEqual(block(1,64,0),'air')
+                self.assertEqual(block(-2,64,1),'air')
+                self.assertEqual(block(100,65,0),'air')
+                self.assertIn('unwritten air', metadata['round_trip_validation'])
             finally:
                 world.close()
+
+    def test_unexpected_solid_blocks_fail_validation(self):
+        from amulet.api.block import Block
+        from amulet.level.formats.leveldb_world import LevelDBFormat
+        original = LevelDBFormat.commit_chunk
+        def corrupt(wrapper, chunk, dimension):
+            material = chunk.block_palette.get_add_block(Block('universal_minecraft', 'stone'))
+            chunk.blocks[15,100,15] = material
+            return original(wrapper,chunk,dimension)
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);path=root/'voxels.jsonl'
+            path.write_text(json.dumps(dict(x=0,y=0,z=0,kind='terrain')))
+            with patch.object(LevelDBFormat,'commit_chunk',corrupt):
+                with self.assertRaisesRegex(ValueError,'occupancy failed'):
+                    export_world(path,root,{'voxel_size_m':1})
+            self.assertFalse((root/'park.mcworld').exists())
+            self.assertFalse((root/'bedrock-world').exists())
 
     def test_vertical_overflow_is_rejected_without_rescale(self):
         with tempfile.TemporaryDirectory() as d:

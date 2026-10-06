@@ -40,7 +40,7 @@ Planning drawing acquisition, independent surveyed control-point validation, bui
 - Areas exceeding the supported vertical range fail instead of being resized or cropped.
 - Terrain receives four blocks of ground fill. This is not a full geological volume.
 - Generic block materials represent feature classes. Overlap is composed deterministically: structures/buildings take precedence over paths, parking, water and terrain.
-- Chunk writes are processed one at a time using an on-disk composition database. Every composed block is checked after reopening the Bedrock world before packaging.
+- Chunk writes are processed one at a time using an on-disk composition database. Every composed block and every unwritten air cell in saved sections is checked after reopening the Bedrock world before packaging. Palette index zero is explicitly reserved for air to prevent solid blocks filling otherwise empty sections.
 - The world name marks it as a draft, and attribution/georeferencing files are included in the `.mcworld`.
 - Minecraft can generate unrelated terrain beyond exported chunks; the mapped area is recorded in the configuration.
 
