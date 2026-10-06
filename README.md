@@ -37,14 +37,14 @@ Missing height, elevation, and line width produce warnings. OSM height tags are 
 - `quality-report.json`: assumptions, invalid features, skipped OSM relations, source records, CRS, counts, and voxel file checksum.
 - `input.geojson` and `osm-raw.json` when applicable: retained input evidence.
 
-The implementation extrudes footprints and buffered lines. It does not yet create a Minecraft world, reconstruct meshes or coaster track, ingest raster terrain/LiDAR, discover planning applications, or independently compare multiple datasets. It does not guarantee all real-world features are present. Strict success establishes the implemented checks passed; it does not certify survey accuracy or completeness. Projection distortion and voxel quantisation limit accuracy, and feature edges are sampled at voxel centres.
+The implementation extrudes footprints and buffered lines. It does not yet create a Minecraft world, reconstruct meshes or coaster track, ingest LiDAR, discover planning applications, or independently compare multiple datasets. Local GeoTIFF terrain input and basic OSM multipolygon assembly are supported. It does not guarantee all real-world features are present. Strict success establishes the implemented checks passed; it does not certify survey accuracy or completeness. Projection distortion and voxel quantisation limit accuracy, and feature edges are sampled at voxel centres.
 
 Area and voxel budgets limit Actions resource consumption. Large locations should be divided into smaller areas. Input antimeridian areas must be split. Network outages fail the run rather than silently substituting fabricated geometry.
 
 ## Required next stages for accurate theme parks
 
 1. Regional terrain adapters with explicit horizontal/vertical CRS, nodata and coverage checks; LiDAR ground classification where available.
-2. Full multipolygon assembly, bridge deck and tunnel modelling, layered paths, parking markings and measured building roofs.
+2. Advanced multipolygon semantics, bridge deck and tunnel modelling, layered paths, parking markings and measured building roofs.
 3. CityGML, mesh and point-cloud ingestion with licensing and acquisition metadata.
 4. Planning drawing discovery, scale extraction and georeferencing against surveyed control points; distinguish proposed, approved and as-built data.
 5. Theme park attraction geometry and custom structures from measured evidence; uncertainty masks for unavailable features.
@@ -52,3 +52,28 @@ Area and voxel budgets limit Actions resource consumption. Large locations shoul
 7. Tiled Minecraft export and end-to-end comparison against an independently surveyed pilot park.
 
 Public availability varies by jurisdiction. A system can support arbitrary locations while honestly reporting unavailable evidence; it cannot guarantee equally detailed reconstruction everywhere.
+
+## Terrain input (V3.1 next stage)
+
+Commit a georeferenced single-band elevation GeoTIFF and reference it in the configuration. The path is relative to the configuration file. Register its source alongside other data sources:
+
+```json
+{
+  "terrain": {
+    "path": "terrain.tif",
+    "source_id": "local-dem",
+    "units": "m",
+    "vertical_datum": "ODN",
+    "offset_m": 0,
+    "emit_surface": true
+  }
+}
+```
+
+Use the raster's actual datum name; this example does not convert heights to ODN. Elevation values must be metres. Horizontal coordinates are transformed into the raster CRS; samples use nearest-neighbour pixel values. No automatic vertical datum conversion occurs. `offset_m` applies a declared constant correction only, not a general datum transformation. Reports retain native pixel size, CRS, input checksum and missing sample counts. Finer voxels do not create finer measured terrain detail.
+
+Ground features without an explicit base elevation follow sampled terrain by column. This is suitable for ground surface drafts; buildings still require surveyed foundation elevations for faithful flat foundations on slopes. The emitted terrain is a one-voxel surface, not a filled ground volume. Nodata and uncovered columns are omitted and reported as errors, rather than filled with zero elevations. Source resolution, ground-versus-surface classification and acquisition dates must be assessed by the operator.
+
+Bridges, tunnels and nonzero OSM layers require explicit `base_elevation_m`; they are skipped with an error if it is absent. The implementation never converts an OSM layer number into metres. When terrain is present, explicitly elevated features must declare a matching `vertical_datum`. Their height controls a simple extrusion, not a reconstructed bridge structure.
+
+OSM multipolygon relations now assemble split outer and inner rings, retain courtyard holes, and suppress duplicate member ways after successful assembly. Incomplete rings and unsupported members are reported. `max_column_checks` (default 10 million) bounds geometry/terrain scans even when nodata produces no voxels.
