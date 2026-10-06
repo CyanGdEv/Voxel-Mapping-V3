@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voxel-mapper"
+version = "3.1.0"
+requires-python = ">=3.11"
+dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3"]
+
+[project.scripts]
+voxel-mapper = "voxel_mapper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["voxel_mapper*"]
