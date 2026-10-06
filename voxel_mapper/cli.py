@@ -163,6 +163,7 @@ def build(config, collection, output):
                     issues.append({"feature": fid, "severity": "warning", "reason": assumptions})
                 if geometry.is_empty:
                     continue
+                feature_start = count
                 minx, miny, maxx, maxy = geometry.bounds
                 for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
                     for z in range(math.floor(miny/resolution), math.ceil(maxy/resolution)):
@@ -179,7 +180,9 @@ def build(config, collection, output):
                             count += 1
                             if count > budget:
                                 raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
-                            stream.write(json.dumps({"x": x, "y": y, "z": z, "kind": kind, "feature": fid, "source": source_id}) + "\n")
+                            stream.write(json.dumps({"x": x, "y": y, "z": z, "kind": kind, "feature": fid, "source": source_id, "elevation_source": config["terrain"]["source_id"] if use_terrain else source_id}) + "\n")
+                if count == feature_start:
+                    issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
             if terrain and config["terrain"].get("emit_surface", True):
                 minx, minz, maxx, maxz = area.bounds
