@@ -1,0 +1,51 @@
+name: Alton Towers generation test
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/alton-generation-test.yml
+permissions:
+  contents: read
+jobs:
+  alton-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install drawing inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-eng
+      - name: Install generator and planning renderer
+        run: python -m pip install '.[planning]'
+        env:
+          CC: gcc
+          CXX: g++
+      - name: Generate bounded Alton test world
+        run: python -m voxel_mapper.cli --bbox=-1.886,52.986,-1.881,52.990 --output alton-test
+      - name: Summarise actual planning geometry usage
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = Path('alton-test/quality-report.json')
+          if report.exists():
+              data = json.loads(report.read_text())
+              decisions = data.get('planning_geometry_decisions', [])
+              accepted = sum(d.get('status') == 'accepted_verified_adapter_record' for d in decisions)
+              with open('alton-test/planning-test-summary.json', 'w') as stream:
+                  json.dump({'accepted_planning_records': accepted,
+                             'test_scope': 'Bounded Alton area; not a full resort world'}, stream, indent=2)
+              print('Accepted physical planning records:', accepted)
+          else:
+              print('Generation did not reach quality-report output; inspect acquisition.json and job logs.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alton-generation-test-${{ github.run_id }}
+          path: alton-test/
+          if-no-files-found: warn
+          retention-days: 14
