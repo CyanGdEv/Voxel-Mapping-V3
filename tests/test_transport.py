@@ -13,6 +13,19 @@ import test_terrain_osm as fixtures
 
 
 class TransportTests(unittest.TestCase):
+    def test_pedestrian_plaza_requires_closed_area_and_retains_material(self):
+        element={'type':'way','id':1,'tags':{'highway':'pedestrian','area':'yes','surface':'paving_stones'},
+                 'geometry':[{'lon':x,'lat':y} for x,y in [(0,0),(1,0),(1,1),(0,0)]]}
+        collection,skipped=parse_osm({'elements':[element]})
+        self.assertEqual(skipped,[])
+        self.assertEqual(collection['features'][0]['properties']['kind'],'plaza')
+        self.assertEqual(collection['features'][0]['geometry']['type'],'Polygon')
+        self.assertEqual(collection['features'][0]['properties']['surface'],'paving_stones')
+        element['geometry']=element['geometry'][:-1]
+        collection,skipped=parse_osm({'elements':[element]})
+        self.assertEqual(collection['features'],[])
+        self.assertIn('not closed',skipped[0]['reason'])
+
     def test_material_normalization_and_ambiguous_surfaces(self):
         self.assertEqual(transport_profile({'surface':' Brick '}, 'path', False)['material'], 'bricks')
         self.assertEqual(transport_profile({'surface':'metal'}, 'path', False)['material'], 'iron_block')
@@ -47,7 +60,7 @@ class TransportTests(unittest.TestCase):
                 {'highway':'construction'}]
         elements = [{'type':'way','id':i,'tags':tag,'geometry':[{'lon':x,'lat':y} for x,y in [(0,0),(1,0),(1,1),(0,0)]]} for i,tag in enumerate(tags)]
         collection, skipped = parse_osm({'elements':elements})
-        self.assertEqual([f['properties']['kind'] for f in collection['features']], ['road','path','sidewalk','queue','cycleway','steps','path'])
+        self.assertEqual([f['properties']['kind'] for f in collection['features']], ['road','path','sidewalk','queue','cycleway','steps','plaza'])
         self.assertEqual(collection['features'][0]['geometry']['type'], 'LineString')
         self.assertEqual(collection['features'][-1]['geometry']['type'], 'Polygon')
         self.assertEqual(len(skipped), 1)

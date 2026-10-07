@@ -88,6 +88,8 @@ def parse_osm(data):
                 if len(coords) < 2:
                     raise ValueError("missing geometry")
                 closed = len(coords) >= 4 and coords[0] == coords[-1]
+                if kind == 'plaza' and not closed:
+                    raise ValueError('Pedestrian area boundary is not closed; no plaza width inferred')
                 geometry = {"type": "Polygon", "coordinates": [coords]} if closed and (kind not in TRANSPORT_KINDS | {"attraction"} or tags.get("area") == "yes" or tags.get('area:highway')) else {"type": "LineString", "coordinates": coords}
             features.append({"type": "Feature", "id": f'osm/{element["type"]}/{element["id"]}', "geometry": geometry,
                              "properties": {**tags, "kind": kind, "source_id": "osm"}})
@@ -280,7 +282,9 @@ def build(config, collection, output):
                     assumptions.append(message.split('Lakebed depth unavailable')[0].rstrip('; .') if bathymetry else message)
                     water_profile = {'feature':fid,'surface_elevation_m':lake_level,
                         'bed_source':config['bathymetry']['source_id'] if bathymetry else None,
-                        'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0}
+                        'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0,
+                        'unknown_depth_columns':0,'measured_depth_range_m':None,
+                        'depth_status':'unknown','surface_elevation_is_depth':False}
                     water_profiles.append(water_profile)
                     if bathymetry:
                         assumptions.append('Lakebed uses declared measured bed raster; substrate material is unknown and represented by stone')
@@ -339,8 +343,13 @@ def build(config, collection, output):
                             water_profile['invalid_bed_columns'] += 1
                         else:
                             water_profile['measured_bed_columns'] += 1
+                            depth=lake_level-bed
+                            previous_range=water_profile['measured_depth_range_m']
+                            water_profile['measured_depth_range_m']=[min(previous_range[0],depth),max(previous_range[1],depth)] if previous_range else [depth,depth]
                             bed_y = math.floor(bed/resolution)
                             bottom = bed_y
+                    if lake_level is not None and bed_y is None:
+                        water_profile['unknown_depth_columns'] += 1
                     for y in range(bottom, upper):
                         count += 1
                         if count > budget:
@@ -357,6 +366,8 @@ def build(config, collection, output):
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
+                if water_profile:
+                    water_profile['depth_status']='partial_measured_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_raster_coverage' if water_profile['measured_bed_columns'] else 'unknown'
                 if water_profile and (water_profile['missing_bed_columns'] or water_profile['invalid_bed_columns']):
                     issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns retain surface only; no depths interpolated',**water_profile})
             if terrain and config["terrain"].get("emit_surface", True):

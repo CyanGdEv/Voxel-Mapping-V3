@@ -27,6 +27,8 @@ def transport_kind(tags):
         return None
     if highway in {'construction', 'proposed', 'abandoned', 'razed'}:
         return 'inactive_transport'
+    if highway == 'pedestrian' and (tags.get('area') == 'yes' or tags.get('area:highway') == 'pedestrian'):
+        return 'plaza'
     if tags.get('footway') == 'sidewalk':
         return 'sidewalk'
     if tags.get('footway') == 'queue' or tags.get('queue') == 'yes':

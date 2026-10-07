@@ -11,6 +11,7 @@ from .bedrock import export_world
 from .planning import discover_planning, match_planning, SOURCE as PLANNING_SOURCE
 from .council import acquire_council, SOURCE as COUNCIL_SOURCE
 from .overture import acquire_buildings, supplement_buildings, SOURCE as OVERTURE_SOURCE
+from .bathymetry import acquire_bathymetry
 
 
 def run_auto(output, location=None, bounds=None):
@@ -56,6 +57,11 @@ def run_auto(output, location=None, bounds=None):
         acquisition['providers'].extend(attempts)
         config['sources'] = [terrain_source, {'id':'osm','url':'https://www.openstreetmap.org/copyright',
                              'license':'ODbL-1.0','attribution':'© OpenStreetMap contributors'}]
+        bed_config, bed_source, bed_discovery = acquire_bathymetry(bounds,output,terrain_source)
+        acquisition['providers'].append(bed_discovery)
+        if bed_config:
+            config['bathymetry']=bed_config
+            config['sources'].append(bed_source)
         config_surface, surface_source, surface_attempts = acquire_surface(bounds, output, terrain_source)
         acquisition['providers'].extend(surface_attempts)
         if config_surface:
@@ -110,6 +116,10 @@ def run_auto(output, location=None, bounds=None):
         report['planning_discovery'] = planning_summary
         report['planning_matches'] = planning_matches
         report['council_drawings'] = council
+        report['bathymetry_discovery'] = bed_discovery
+        if not bed_config:
+            report['issues'].append({'severity':'warning','reason':'No automatically acquired measured lakebeds; underwater depth remains unknown',
+                                     'provider_status':bed_discovery['status']})
         report['issues'].append({'severity':'warning', 'reason':'Planning evidence/drawing inspection is unverified context; no verified as-built geometry replacement',
                                  'provider_status':planning['status'], 'documents':planning['documents']['status']})
         report['skipped_osm'] = skipped
@@ -131,7 +141,7 @@ def run_auto(output, location=None, bounds=None):
                                   'planning_drawings':'automatic_consultation_inspection' if council['documents'] else council['status'],
                                   'planning_drawing_geometry':'verified_adapter_polygons' if any(
                                       d['status']=='accepted_verified_adapter_record' for d in report['planning_geometry_decisions']) else 'no_usable_geometry_provider',
-                                  'lakebed_geometry':'measured_raster_supported_no_automatic_provider',
+                                  'lakebed_geometry':'automatic_measured_raster_partial_coverage' if bed_config else 'automatic_discovery_no_usable_measured_samples',
                                   'geopdf_registration':'automatic_wgs84_control_validation',
                                   'drawing_vector_candidates':'reuse_gated_straight_paths_only',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
