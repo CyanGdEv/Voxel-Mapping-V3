@@ -5,6 +5,23 @@ import numpy as np
 from shapely.geometry import Point
 
 
+def reconstruct_with_fallback(geometry,resolution,ground,surface,fallback=None,**options):
+    """Choose a whole validated profile; do not interpolate across surveys."""
+    rows,report=reconstruct_building(geometry,resolution,ground,surface,**options)
+    chosen=surface
+    if rows is None and fallback:
+        first=dict(report)
+        available=options.get('max_checks',200_000)-report['checks']
+        if available>0:
+            rows,report=reconstruct_building(geometry,resolution,ground,fallback,**{**options,'max_checks':available})
+            report['preferred_surface_attempt']=first
+            report['checks']+=first['checks']
+            if rows is not None:
+                chosen=fallback
+                report['warnings'].append('Older fallback surface selected after preferred profile rejection; survey epochs may differ from terrain and footprint')
+    return rows,report,chosen
+
+
 def reconstruct_building(geometry, resolution, ground, surface, declared_height=None,
                          base_override=None, max_checks=200_000):
     minx,minz,maxx,maxz = geometry.bounds

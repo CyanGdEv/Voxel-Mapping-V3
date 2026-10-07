@@ -10,7 +10,7 @@ import amulet
 from rasterio.transform import from_origin
 from shapely.geometry import box, Polygon
 
-from voxel_mapper.buildings import reconstruct_building
+from voxel_mapper.buildings import reconstruct_building, reconstruct_with_fallback
 from voxel_mapper.acquisition import acquire_surface, ensure_ea_grid
 from voxel_mapper.bedrock import export_world
 from voxel_mapper.cli import build
@@ -25,6 +25,17 @@ class Samples:
 
 
 class BuildingTests(unittest.TestCase):
+    def test_fallback_shares_budget_and_preserves_selected_source(self):
+        ground=Samples(lambda x,z:10,'ground')
+        primary=Samples(lambda x,z:None,'newer')
+        older=Samples(lambda x,z:20,'older')
+        rows,report,selected=reconstruct_with_fallback(box(0,0,10,10),1,ground,primary,older,max_checks=200)
+        self.assertEqual(len(rows),100)
+        self.assertEqual(selected.config['source_id'],'older')
+        self.assertEqual(report['checks'],200)
+        self.assertEqual(report['preferred_surface_attempt']['status'],'rejected')
+        self.assertIsNone(reconstruct_with_fallback(box(0,0,10,10),1,ground,primary,older,max_checks=100)[0])
+
     def profile(self, surface, geometry=None, **kwargs):
         return reconstruct_building(geometry or box(0,0,10,10),1,
             Samples(lambda x,z:10,'ground'),Samples(surface,'surface'),**kwargs)
@@ -128,6 +139,16 @@ class BuildingTests(unittest.TestCase):
             self.assertEqual({v['elevation_source'] for v in elevated_rows},{'surface'})
             self.assertEqual(elevated['building_profiles'][0]['foundation_method'],'not_reconstructed')
             self.assertEqual({(v['x'],v['y'],v['z']) for v in elevated_rows},{(v['x'],v['y'],v['z']) for v in roofs})
+            with rasterio.open(root/'missing-surface.tif','w',driver='GTiff',width=12,height=12,count=1,dtype='float32',crs='EPSG:4326',transform=transform,nodata=-9999) as dst:
+                dst.write(np.full((12,12),-9999,dtype='float32'),1)
+            fallback_config={**config,'surface_fallback':config['surface'],
+                'surface':{**config['surface'],'path':str(root/'missing-surface.tif'),'source_id':'missing'},
+                'sources':config['sources']+[{'id':'missing','url':'https://example.org','license':'CC0'}]}
+            fallback=build(fallback_config,{'features':[feature]},root/'fallback')
+            fallback_rows=[json.loads(line) for line in (root/'fallback/voxels.jsonl').read_text().splitlines()]
+            self.assertEqual({v['roof_source'] for v in fallback_rows},{'surface'})
+            self.assertEqual({v['elevation_source'] for v in fallback_rows},{'surface'})
+            self.assertEqual(fallback['building_profiles'][0]['preferred_surface_attempt']['status'],'rejected')
             feature['properties']['layer']='-1'
             underground=build(config,{'features':[feature]},root/'underground')
             self.assertEqual(underground['voxel_records'],0)

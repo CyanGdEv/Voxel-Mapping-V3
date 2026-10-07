@@ -13,7 +13,7 @@ from shapely.ops import transform, polygonize_full, unary_union
 from .terrain import Terrain
 from shapely.validation import explain_validity
 from .acquisition import USER_AGENT
-from .buildings import reconstruct_building
+from .buildings import reconstruct_with_fallback
 from .bridges import reconstruct_bridge
 from .transport import TRANSPORT_KINDS, transport_kind, transport_profile
 
@@ -134,6 +134,7 @@ def build(config, collection, output):
     terrain = Terrain(config["terrain"], crs, sources) if config.get("terrain") else None
     terrain_missing = 0
     surface = None
+    surface_fallback = None
     building_profiles = []
     transport_profiles = []
     bridge_profiles = []
@@ -152,6 +153,10 @@ def build(config, collection, output):
             if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
                 raise ValueError("Surface and terrain must have the same declared vertical datum")
             surface = Terrain(config["surface"], crs, sources)
+        if config.get('surface_fallback'):
+            if surface is None or config['surface_fallback'].get('vertical_datum')!=config['terrain'].get('vertical_datum'):
+                raise ValueError('Fallback surface requires primary surface and matching terrain datum')
+            surface_fallback=Terrain(config['surface_fallback'],crs,sources)
         with voxel_path.open("w") as stream:
             for feature in [*collection["features"],*drawing_features]:
                 fid = feature.get("id", len(accepted))
@@ -185,6 +190,7 @@ def build(config, collection, output):
                     geometry = geometry.buffer(width / 2).intersection(area)
                 bridge_rows = None
                 elevated_roof = None
+                feature_surface = surface
                 base = float(properties.get("base_elevation_m", 0))
                 elevated = properties.get("bridge") not in (None, "no", False) or properties.get("tunnel") not in (None, "no", False) or str(properties.get("layer", "0")) != "0"
                 use_terrain = terrain is not None and "base_elevation_m" not in properties and not elevated
@@ -192,7 +198,7 @@ def build(config, collection, output):
                     reason = 'elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height'
                     layer = str(properties.get('layer','0'))
                     if kind == 'building' and layer.isdigit() and 1 <= int(layer) <= 10 and surface and terrain and not geometry.is_empty and geometry.geom_type in ('Polygon','MultiPolygon') and properties.get('tunnel') in (None,'no',False):
-                        elevated_roof,profile = reconstruct_building(geometry,resolution,terrain,surface,
+                        elevated_roof,profile,feature_surface = reconstruct_with_fallback(geometry,resolution,terrain,surface,surface_fallback,
                             max_checks=min(200_000,scan_budget-scanned))
                         scanned += profile['checks']
                         profile['model_scope'] = 'roof_surface_only_unknown_floor'
@@ -274,7 +280,7 @@ def build(config, collection, output):
                         assumptions.append('Lakebed uses declared measured bed raster; substrate material is unknown and represented by stone')
                 roof_rows = elevated_roof
                 if roof_rows is None and kind == "building" and surface and terrain and geometry.geom_type in ("Polygon", "MultiPolygon"):
-                    roof_rows, profile = reconstruct_building(geometry, resolution, terrain, surface,
+                    roof_rows, profile,feature_surface = reconstruct_with_fallback(geometry, resolution, terrain, surface,surface_fallback,
                         declared_height=height if declared is not None else None,
                         base_override=base if "base_elevation_m" in properties else None,
                         max_checks=min(200_000, scan_budget-scanned))
@@ -337,8 +343,8 @@ def build(config, collection, output):
                         if bed_y is not None and y == bed_y:
                             voxel_kind = 'lakebed'
                         stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
-                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else config["surface"]["source_id"] if bridge_rows is not None or elevated_roof is not None else config["terrain"]["source_id"] if use_terrain else source_id,
-                            "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
+                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
+                            "roof_source":feature_surface.config['source_id'] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
                             **({'bed_source':config['bathymetry']['source_id']} if bed_y is not None else {}),
                             "geometry_method":"measured_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
@@ -378,6 +384,8 @@ def build(config, collection, output):
             bathymetry.close()
         if surface:
             surface.close()
+        if surface_fallback:
+            surface_fallback.close()
         if terrain:
             terrain.close()
     if terrain_missing:
@@ -389,6 +397,7 @@ def build(config, collection, output):
     report["bridge_profiles"] = bridge_profiles
     report['transport_profiles'] = transport_profiles
     report["surface"] = surface.report() if surface else None
+    report['surface_fallback']=surface_fallback.report() if surface_fallback else None
     report['water_profiles'] = water_profiles
     report['planning_geometry_decisions'] = drawing_decisions
     for decision in drawing_decisions:

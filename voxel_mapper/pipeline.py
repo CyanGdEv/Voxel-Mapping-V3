@@ -61,6 +61,9 @@ def run_auto(output, location=None, bounds=None):
         if config_surface:
             config['surface'] = config_surface
             config['sources'].append(surface_source)
+            if surface_source.get('fallback_surface'):
+                config['surface_fallback']=surface_source['fallback_surface']['config']
+                config['sources'].append(surface_source['fallback_surface']['source'])
         manifest.write_text(json.dumps(acquisition,indent=2))
         collection, raw, skipped = fetch_osm(bounds)
         acquisition['providers'].append({'provider':'osm','status':'downloaded','feature_count':len(collection['features'])})

@@ -46,7 +46,8 @@ class SurveyTests(unittest.TestCase):
             for bad in (archive('dsm',survey='P_2'),archive('dsm',nodata=True)):
                 with self.assertRaises(ValueError):crop_pair({**archives,'dsm':bad},bbox,output,'2023','TQ0065')
             source={'id':'ea-dtm','vertical_datum':'ODN','survey':report,'paired_surface':{'config':{'path':'paired.tif'},'source':{'id':'ea-dsm'}}}
-            with patch('voxel_mapper.survey.download_latest_pair',return_value=({'path':'terrain.tif'},source)),patch('voxel_mapper.acquisition.download_ea') as composite:
+            with patch('voxel_mapper.survey.download_latest_pair',return_value=({'path':'terrain.tif'},source)),patch('voxel_mapper.acquisition.download_ea',return_value=({'path':'older.tif'},{'id':'ea-dsm'})) as composite:
                 terrain,got,attempts=acquire_terrain([0,51,.001,51.001],output)
                 surface,_,_=acquire_surface([0,51,.001,51.001],output,got)
-                self.assertEqual(surface['path'],'paired.tif');composite.assert_not_called()
+                self.assertEqual(surface['path'],'paired.tif');composite.assert_called_once()
+                self.assertEqual(got['paired_surface']['source']['fallback_surface']['config']['source_id'],'ea-dsm-composite')

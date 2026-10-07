@@ -184,7 +184,15 @@ def acquire_surface(bounds, output, terrain_source):
         return None, None, [{'provider':'ea-dsm','status':'not_supported', 'reason':'No supported surface/terrain pair with a shared known vertical datum for this location'}]
     if terrain_source.get('paired_surface'):
         pair=terrain_source['paired_surface']
-        return pair['config'],pair['source'],[{'provider':'ea-national-dsm','status':'downloaded','survey':terrain_source['survey']}]
+        attempts=[{'provider':'ea-national-dsm','status':'downloaded','survey':terrain_source['survey']}]
+        try:
+            config,source=download_ea(bounds,output,surface=True)
+            config['source_id']=source['id']='ea-dsm-composite'
+            pair['source']['fallback_surface']={'config':config,'source':source}
+            attempts.append({'provider':'ea-dsm-composite','status':'downloaded_for_per_building_fallback'})
+        except (requests.RequestException, ValueError, ET.ParseError, rasterio.errors.RasterioError) as error:
+            attempts.append({'provider':'ea-dsm-composite','status':'unavailable','reason':str(error)})
+        return pair['config'],pair['source'],attempts
     try:
         surface, source = download_ea(bounds, output, surface=True)
         return surface, source, [{'provider':'ea-dsm','status':'downloaded','product':'last-return DSM'}]
