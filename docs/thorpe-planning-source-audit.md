@@ -32,3 +32,29 @@ Next acquisition work must expand beyond these sheets to a full Dome survey or
 historical drawing with sufficient alignment evidence. A generic roof-plan title
 must not be counted as recovered Dome geometry. Neither spot surface heights nor
 lake descriptive statistics supply spatial lakebed measurements.
+
+## Historical Dome follow-up
+
+The twelve-page address search found Dome proposal mentions in RU.13/0215 and
+RU.12/0190, referring to RU.83/0514. The original permission returned no eligible
+drawings through the public document adapter. The two 2012 plan downloads timed
+out. Both 2013 plans downloaded successfully; their portal titles were opaque
+`TowID` identifiers, so titles alone did not reveal their contents.
+
+- `29BB4F9BD81011E2A0AD005056B45E6D`: one native-text/vector page, titled
+  **1986 Boundary from RMC**. Visual inspection shows a wider park context and
+  red boundary. Automated inspection rejects its decompressed page content
+  because it exceeds the existing ten-megabyte page budget.
+- `29BB4F9CD81011E2A0AD005056B45E6D`: one native-text/vector page, titled
+  **The Dome: Access & Parking**, with a complete Dome plan outline, access
+  bridge and parking layout. The key explicitly describes an application for
+  extended opening hours. Its blue application extent and parking annotations
+  are not verified physical building/plaza polygons. No supported embedded
+  geographic registration, explicit EPSG or height datum was found. No 3D
+  Dome structure, as-built status or geometry reuse permission was established.
+
+Automatic inspection now gives opaque plans from named-building applications
+priority and alternates those applications before consuming a second plan from
+one application. The six-PDF inspection budget and consultation-only source
+handling remain in force. This follow-up found a relevant complete plan outline;
+it did not extract accepted physical polygons or change the world.

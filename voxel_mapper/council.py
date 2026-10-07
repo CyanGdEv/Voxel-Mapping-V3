@@ -316,7 +316,9 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
             except (requests.RequestException,ValueError,TypeError,AttributeError) as error:
                 result['failures'].append({'stage':'document_list','application':reference,'reason':str(error)})
         # Stable prioritisation; raw dates can have ambiguous portal formatting.
-        candidates = inspection_order(result['documents'])
+        named_applications={c['reference'] for c in contexts if c.get('target_name_matches')}
+        named_applications.update(r for c in contexts if c.get('target_name_matches') for r in c['related_references'])
+        candidates = inspection_order(result['documents'],priority_applications=named_applications)
         for document in candidates[:max_pdf_inspections]:
             try:
                 document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'],reference_features=reference_features)

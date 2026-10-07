@@ -3,6 +3,17 @@ from voxel_mapper.drawing_evidence import evidence_candidates, inspection_order
 
 
 class DrawingEvidenceTests(unittest.TestCase):
+    def test_opaque_historical_plan_requires_matched_application_priority(self):
+        documents=[{'id':'1','title':'Site Plan','application_reference':'RU.26/0001'},
+                   {'id':'2','title':'TowID - 1350995','application_reference':'RU.12/0190'}]
+        self.assertEqual(inspection_order(documents)[0]['id'],'1')
+        self.assertEqual(inspection_order(documents,priority_applications={'RU.12/0190'})[0]['id'],'2')
+        self.assertEqual(inspection_order(documents,priority_applications={'RU.13/0001'})[0]['id'],'1')
+        documents.extend([{'id':'3','title':'TowID - 1350996','application_reference':'RU.12/0190'},
+                          {'id':'4','title':'TowID - 1496458','application_reference':'RU.13/0215'}])
+        self.assertEqual([d['id'] for d in inspection_order(documents,{'RU.12/0190','RU.13/0215'})],
+                         ['2','4','3','1'])
+
     def test_labelled_levels_keep_units_datum_and_proposal_uncertainty(self):
         result=evidence_candidates('PROPOSED FFL: 15.250 m AOD\nExisting water level = 12.7m ODN\nLayer 2\nScale 1:2500\nFFL 1:2500\nFFL 12 ft\nFFL 3e2\nGround level 14.3')
         levels=result['levels']

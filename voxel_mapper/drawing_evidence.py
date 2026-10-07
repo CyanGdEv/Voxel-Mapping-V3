@@ -59,7 +59,7 @@ def document_category(title):
     return 'plans'
 
 
-def inspection_order(documents):
+def inspection_order(documents, priority_applications=()):
     groups={key:[] for key in ('plans','elevations','materials','surveys','water_and_levels')}
     def rank(document):
         title = document['title']
@@ -67,9 +67,27 @@ def inspection_order(documents):
         # physical geometry. Prefer explicit levels/layouts/site surveys.
         context = bool(re.search(r'location\s+plan|block\s+plan|application\s*form|\bcomments\b', title, re.I))
         physical = bool(re.search(r'ground\s+floor|platform\s+level|cut\s*fill|land\s+survey|site\s+plan|landscape|paving|material', title, re.I))
-        return context, not physical, document['application_reference'], document['id']
+        # Older portal drawings often have only a TowID title. A matched
+        # building proposal provides a reason to inspect, not geometry proof.
+        opaque_target = (document['application_reference'] in priority_applications and
+                         bool(re.fullmatch(r'TowID\s*-\s*\d+',title,re.I)))
+        return context, not opaque_target, not physical, document['application_reference'], document['id']
     for document in sorted(documents,key=rank):
         groups[document_category(document['title'])].append(document)
+    for key,group in groups.items():
+        targeted={}
+        remaining=[]
+        for document in group:
+            if (document['application_reference'] in priority_applications and
+                    re.fullmatch(r'TowID\s*-\s*\d+',document['title'],re.I)):
+                targeted.setdefault(document['application_reference'],[]).append(document)
+            else:
+                remaining.append(document)
+        # Give each relevant historical application one chance before taking
+        # a second opaque drawing from the same application.
+        interleaved=[documents[i] for i in range(max(map(len,targeted.values()),default=0))
+                     for documents in targeted.values() if i<len(documents)]
+        groups[key]=interleaved+remaining
     ordered=[]
     for i in range(max((len(g) for g in groups.values()),default=0)):
         ordered.extend(g[i] for g in groups.values() if i<len(g))
