@@ -87,7 +87,20 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
         relevant = merge_discovered(relevant, discovery)
         result['discovered_document_count'] = len(relevant)
         result['uncached_discovered_documents'] = sum('file' not in e for e in relevant) if cache else 0
-        eligible = [e for e in relevant if not cache or 'file' in e]
+        # A recovered cache supplements live acquisition; it must not permanently
+        # exclude section/elevation attachments missing from the old prefetch.
+        def acquisition_priority(item):
+            index, entry = item
+            if cache and entry.get('file'):
+                return (0, 0, 0, 0, index)
+            role_priority = {'elevations': 0, 'floor-plan': 1}.get(entry.get('role'), 2)
+            proposed = entry.get('state') == 'proposed' or bool(re.search(r'\bprop(?:osed)?\b', entry['title'], re.I))
+            revised = bool(re.search(r'\b\d{3}[-/]\d{2}[-/]\d+[A-Z]\b', entry['title'], re.I))
+            return (1, role_priority, 0 if proposed else 1, 0 if revised else 1, index)
+        eligible = [entry for _, entry in sorted(enumerate(relevant), key=acquisition_priority)]
+        network_failures = 0
+        result['missing_download_attempts'] = 0
+        result['documents_deferred_council_outage'] = 0
         entries = eligible[:max_documents]
         result['documents_omitted_by_budget'] = len(eligible)-len(entries)
         for entry in entries:
@@ -96,11 +109,13 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 result['failures'].append({'reason': '15-minute planning acquisition budget reached'})
                 break
             row = dict(entry)
+            downloading = False
+            download_pending = False
             try:
                 url = urlparse(entry['url'])
                 if url.scheme != 'https' or url.hostname != HOST:
                     raise ValueError('Expected an official HTTPS drawing URL')
-                if cache:
+                if cache and entry.get('file'):
                     path = (cache/entry['file']).resolve()
                     if not path.is_relative_to(cache):
                         raise ValueError('Cache path escapes corpus directory')
@@ -108,7 +123,18 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                         raise ValueError('Document exceeds 10 MB inspection budget')
                     payload = path.read_bytes()
                 else:
+                    if network_failures >= 3:
+                        row.update(status='deferred_council_outage',
+                                   reason='Three consecutive official drawing download failures')
+                        result['documents_deferred_council_outage'] += 1
+                        result['documents'].append(row)
+                        continue
+                    downloading = True
+                    download_pending = True
+                    result['missing_download_attempts'] += 1
                     payload = download_pdf(session, entry['url'])
+                    download_pending = False
+                    network_failures = 0
                 checksum = hashlib.sha256(payload).hexdigest()
                 if entry.get('sha256') and checksum != entry['sha256']:
                     raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
@@ -117,6 +143,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 document_path.parent.mkdir(parents=True, exist_ok=True)
                 document_path.write_bytes(payload)
                 row['local_pdf'] = str(document_path.resolve())
+                row['acquisition_method'] = 'official_download' if downloading else 'hash_checked_cache'
                 row['hash_provenance'] = 'matches_recovered_document' if entry.get('sha256') else 'observed_current_download_only'
                 row['inspection'] = inspect_pdf(payload, max_pages=max_pages, bounds=bounds,
                                                 document_title=entry['title'], max_ocr_pages=0)
@@ -143,12 +170,14 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                             page['native_axis_alignment'] = inspect_axis_alignment(reader.pages[page['page']-1], bounds)
                 row['status'] = 'inspected'
             except (OSError, ValueError, PdfReadError, requests.RequestException) as error:
+                if download_pending:
+                    network_failures += 1
                 row['status'] = 'unavailable'
                 row['reason'] = str(error)
                 result['failures'].append({'url': entry['url'], 'reason': str(error)})
             result['documents'].append(row)
     result['status'] = 'partial' if (result['failures'] or result['documents_omitted_by_budget'] or
-                                   result['uncached_discovered_documents'] or discovery['status'] == 'partial') else 'checked'
+                                   result['documents_deferred_council_outage'] or discovery['status'] == 'partial') else 'checked'
     (Path(output)/'alton-planning-inspection.json').write_text(json.dumps(result, indent=2))
     return result
 

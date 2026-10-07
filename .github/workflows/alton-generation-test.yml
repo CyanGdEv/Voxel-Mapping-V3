@@ -1,5 +1,5 @@
 name: Alton Towers Wicker Man planning test
-# Inspect bounded drawing sets and scan reports for path and material specifications.
+# Recover missing official sections alongside cached drawing evidence.
 on:
   workflow_dispatch:
   pull_request:

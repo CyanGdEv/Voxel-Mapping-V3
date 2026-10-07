@@ -223,15 +223,13 @@ def main():
         quality = build(config, collection, output)
         quality['world'] = export_world(output/'voxels.jsonl', output, quality, name='Wicker Man — BASELINE ONLY')
         (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
-        # Read only already inspected/hash-linked records from the acquisition.
-        inspection = json.loads((source/'alton-planning-inspection.json').read_text())
         if args.planning_cache:
-            cache = Path(args.planning_cache).resolve()
-            for document in inspection['documents']:
-                if document.get('file'):
-                    path = (cache/document['file']).resolve()
-                    if path.is_relative_to(cache):
-                        document['local_pdf'] = str(path)
+            from .alton import acquire_alton
+            inspection = acquire_alton(output, bounds=BBOX, cache=args.planning_cache,
+                                       application_references=APPLICATIONS)
+            quality['council_drawings'] = inspection
+        else:
+            inspection = json.loads((source/'alton-planning-inspection.json').read_text())
     else:
         quality = run_auto(output, location='Alton Towers — Wicker Man BASELINE ONLY', bounds=BBOX,
                            planning_cache=args.planning_cache, planning_applications=APPLICATIONS)
@@ -240,7 +238,9 @@ def main():
     for document in inspection['documents']:
         document['role'] = document_role(document['title'])[0]
     evidence = inspect_drawings(inspection['documents'], output)
-    discovery_path = (Path(args.source_output) if args.source_output else output)/'alton-planning-discovery.json'
+    discovery_path = output/'alton-planning-discovery.json'
+    if not discovery_path.exists() and args.source_output:
+        discovery_path = Path(args.source_output)/'alton-planning-discovery.json'
     if discovery_path.exists():
         discovery = json.loads(discovery_path.read_text())
         wanted = [d for d in discovery['documents'] if d['applicationReference'] in APPLICATIONS]

@@ -55,7 +55,13 @@ The current Alton adapter supplies zero physical planning records: the world is
 therefore explicitly a **baseline**, and the test exits 2 for missing planning
 geometry rather than passing because terrain export succeeded.
 
-`--planning-cache` reuses hash-checked recovered official PDFs. For a local rerun,
+`--planning-cache` reuses hash-checked recovered official PDFs and automatically
+fetches missing official attachments. Cached sheets are inspected first; missing
+sections/elevations and floor plans precede other missing documents, with proposed
+revisions prioritized. After three consecutive download failures, remaining live
+attachments are explicitly deferred while cached evidence stays usable. Downloaded
+PDFs are retained with their observed checksum; missing geometry is never promoted
+by this recovery step. For a local rerun,
 `--source-output` reuses an existing Alton acquisition's input, source metadata
 and rasters; it creates a fresh baseline and does not import old planning records.
 The source acquisition may have failed at a larger-area export while still

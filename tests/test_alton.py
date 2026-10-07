@@ -42,6 +42,54 @@ class AltonTests(unittest.TestCase):
                 download_pdf(session, 'https://other.example/plan.pdf')
             session.get.assert_not_called()
 
+    def test_cache_downloads_missing_sections_before_other_uncached_documents(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payload = b'%PDF-test-payload'
+            cached = {'url': 'https://publicaccess.staffsmoorlands.gov.uk/cached',
+                      'title': 'Cached report', 'role': 'context-report', 'priority': 90,
+                      'file': 'cached.pdf', 'sha256': hashlib.sha256(payload).hexdigest()}
+            (root/'cached.pdf').write_bytes(payload)
+            section = dict(url='https://publicaccess.staffsmoorlands.gov.uk/section',
+                           title='373-95-11A Sections AA BB Prop', role='elevations', priority=40)
+            site = dict(url='https://publicaccess.staffsmoorlands.gov.uk/site',
+                        title='Site Plan', role='site-plan', priority=10)
+            discovery = {'status': 'checked', 'documents': [site, section], 'failures': []}
+            with patch('voxel_mapper.alton_discovery.discover_attachments', return_value=discovery), \
+                 patch('voxel_mapper.alton_discovery.merge_discovered', return_value=[cached, site, section]), \
+                 patch('voxel_mapper.alton.download_pdf', return_value=payload) as download, \
+                 patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+                result = acquire_alton(root, cache=root, max_documents=3)
+            self.assertEqual([call.args[1] for call in download.call_args_list], [section['url'], site['url']])
+            self.assertEqual(result['status'], 'checked')
+            self.assertEqual(result['missing_download_attempts'], 2)
+            self.assertEqual(result['documents'][0]['acquisition_method'], 'hash_checked_cache')
+            self.assertEqual(result['documents'][1]['acquisition_method'], 'official_download')
+            self.assertEqual(result['geometry_records'], [])
+
+    def test_outage_defers_missing_downloads_but_preserves_cached_inspection(self):
+        import requests
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payload = b'%PDF-test-payload'
+            (root/'cached.pdf').write_bytes(payload)
+            entries = [dict(url='https://publicaccess.staffsmoorlands.gov.uk/'+str(i),
+                            title=str(i), role='elevations', priority=40) for i in range(5)]
+            entries.append(dict(url='https://publicaccess.staffsmoorlands.gov.uk/cached',
+                                title='Cached', role='context-report', priority=90,
+                                file='cached.pdf', sha256=hashlib.sha256(payload).hexdigest()))
+            discovery = {'status': 'checked', 'documents': entries, 'failures': []}
+            with patch('voxel_mapper.alton_discovery.discover_attachments', return_value=discovery), \
+                 patch('voxel_mapper.alton_discovery.merge_discovered', return_value=entries), \
+                 patch('voxel_mapper.alton.download_pdf', side_effect=requests.ReadTimeout('outage')) as download, \
+                 patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+                result = acquire_alton(root, cache=root, max_documents=6)
+            self.assertEqual(download.call_count, 3)
+            self.assertEqual(result['documents_deferred_council_outage'], 2)
+            self.assertEqual(result['documents'][0]['status'], 'inspected')
+            self.assertEqual(result['status'], 'partial')
+            self.assertEqual(len(result['documents']), 6)
+
     def test_cache_hash_mismatch_is_not_inspected_or_promoted(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
