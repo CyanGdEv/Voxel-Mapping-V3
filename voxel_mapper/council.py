@@ -83,7 +83,7 @@ def parse_results(html, base_url=SEARCH):
     return references, next_links[0] if next_links else None
 
 
-def application_context(html, max_rows=500):
+def application_context(html, max_rows=500, target_names=()):
     """Read named result cells, preserving proposal references as candidates.
 
     A referenced permission is worth inspecting, but does not establish that
@@ -108,6 +108,8 @@ def application_context(html, max_rows=500):
             raise ValueError('Council proposal text budget exceeded')
         related = sorted({r.upper() for r in REFERENCE.findall(text)} - {reference})
         contexts.append({'reference': reference, 'related_references': related,
+                         'target_name_matches': [name for name in target_names
+                             if re.search(r'(?<!\w)'+re.escape(name)+r'(?!\w)',text,re.I)],
                          'materials_candidate': bool(re.search(r'\bmaterial|\bpaving|\bfinish', text, re.I)),
                          'relationship': 'proposal_mentions_unverified'})
     return contexts
@@ -116,10 +118,26 @@ def application_context(html, max_rows=500):
 def application_order(references, contexts):
     """Inspect mentioned parent permissions before unrelated recent filings."""
     related = {r for c in contexts for r in c['related_references']}
+    targeted = {c['reference'] for c in contexts if c.get('target_name_matches')}
+    target_parents = {r for c in contexts if c.get('target_name_matches') for r in c['related_references']}
+    priority = targeted | target_parents
     materials = {c['reference'] for c in contexts if c['materials_candidate']}
     all_refs = set(references) | related
-    return (recent_references(related) + recent_references(materials - related) +
-            recent_references(all_refs - related - materials))
+    return (recent_references(target_parents) + recent_references(targeted - target_parents) + recent_references(related - priority) +
+            recent_references(materials - related - priority) +
+            recent_references(all_refs - related - materials - priority))
+
+
+def building_search_names(features):
+    """Exact scoped building names; no guessed application identifiers."""
+    names=set()
+    for feature in features or []:
+        properties=feature.get('properties',{})
+        name=properties.get('name')
+        if properties.get('kind')=='building' and properties.get('source_id')=='osm' and isinstance(name,str):
+            name=re.sub(r'^the\s+','',name.strip(),flags=re.I)
+            if 3<=len(name)<=100:names.add(name)
+    return sorted(names)[:64]
 
 
 def parse_document_list(html, reference):
@@ -228,7 +246,7 @@ def read_pdf(session, url, max_bytes=10_000_000):
 
 
 def acquire_council(authorities, planning_records, site_name, output, max_applications=10,
-                    max_search_pages=3, max_documents=500, max_pdf_inspections=6, bounds=None, reference_features=None):
+                    max_search_pages=12, max_documents=500, max_pdf_inspections=6, bounds=None, reference_features=None):
     result = {'provider':SOURCE['id'], 'status':'not_supported', 'application_search':'not_attempted',
               'applications':[], 'documents':[], 'failures':[], 'terms_url':TERMS,
               'reuse_status':'consultation_only', 'geometry_replacements':0,
@@ -239,6 +257,8 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
     result['status'] = 'checked'
     references = []
     contexts = []
+    target_names = building_search_names(reference_features)
+    result['building_search_names'] = target_names
     for record in planning_records:
         for match in REFERENCE.findall(str(record.get('reference',''))):
             if match.upper() not in references:
@@ -250,10 +270,13 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
                 initial = session.get(SEARCH,timeout=(10,30)); initial.raise_for_status()
                 response = session.post(SEARCH,data=search_form(initial.text,site_name),
                     headers={'Referer':SEARCH},timeout=(10,30))
+                visited=set()
+                result['search_pages_inspected']=0
                 for page in range(max_search_pages):
                     response.raise_for_status()
                     found, next_url = parse_results(response.text,base_url=response.url)
-                    contexts.extend(application_context(response.text))
+                    result['search_pages_inspected']+=1
+                    contexts.extend(application_context(response.text,target_names=target_names))
                     references.extend(ref for ref in found if ref not in references)
                     if not next_url:
                         result['application_search']='completed_address_candidates'
@@ -263,6 +286,9 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
                         break
                     if urlparse(next_url).hostname != 'planning.runnymede.gov.uk':
                         raise ValueError('Unexpected council pagination host')
+                    if next_url in visited:
+                        raise ValueError('Repeated council pagination URL')
+                    visited.add(next_url)
                     response = session.get(next_url,headers={'Referer':response.url},timeout=(10,30))
             except (requests.RequestException,ValueError) as error:
                 result['application_search']='blocked_or_unavailable'
@@ -271,7 +297,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
             result['application_search']='site_name_unavailable'
         references = application_order(references, contexts)
         result['application_context'] = contexts
-        result['application_priority']='proposal_referenced_permissions_then_materials_then_recent_candidates'
+        result['application_priority']='named_buildings_and_related_permissions_then_other_parents_materials_recent'
         result['application_candidates'] = references
         result['uninspected_application_references'] = references[max_applications:]
         result['applications_truncated']=len(references)>max_applications

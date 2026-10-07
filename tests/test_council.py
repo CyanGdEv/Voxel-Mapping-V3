@@ -109,6 +109,17 @@ class CouncilTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'row budget'):
             application_context(html, max_rows=0)
 
+    def test_historical_named_building_application_precedes_recent_candidates(self):
+        html='''<tr><td><a href="x">RU.89/0123</a></td>
+        <td title="Development Description">Alterations to the Dome under RU.88/0456</td></tr>
+        <tr><td><a href="y">RU.26/0001</a></td>
+        <td title="Development Description">Dormer alterations</td></tr>'''
+        contexts=application_context(html,target_names=['Dome'])
+        self.assertEqual(contexts[0]['target_name_matches'],['Dome'])
+        self.assertEqual(contexts[1]['target_name_matches'],[])
+        self.assertEqual(application_order(['RU.26/0001','RU.89/0123'],contexts),
+                         ['RU.88/0456','RU.89/0123','RU.26/0001'])
+
     def test_pdf_scale_revision_are_candidates_and_not_alignment(self):
         result=inspect_pdf(pdf_fixture())
         self.assertEqual(result['pages'][0]['scale_denominator_candidates'],[2500])
