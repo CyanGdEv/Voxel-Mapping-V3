@@ -117,7 +117,7 @@ def original_region_label(source, page_number, page_size_points, image_size, wor
 
 
 def inspect_border_grid(image, root, environment, source=None, page_number=1, page_size_points=None,
-                        reference_notes=None, bounds=None):
+                        reference_notes=None, bounds=None, reference_features=None):
     labels, failures = [], []
     with Image.open(image) as page:
         width, height = page.size
@@ -175,14 +175,14 @@ def inspect_border_grid(image, root, environment, source=None, page_number=1, pa
     report['original_region_retries']=retries
     report['recovered_coordinate_labels']=recovered
     report['grid_mark_registration']=inspect_grid_marks(image,labels)
-    report['grid_location_check']=inspect_grid_location(labels,reference_notes or {},bounds)
+    report['grid_location_check']=inspect_grid_location(labels,reference_notes or {},bounds,reference_features)
     report['edge_failures'] = failures
     if failures:
         report['status'] = 'incomplete_edge_inspection'
     return report
 
 
-def inspect_scanned_page(payload, page_number, bounds=None):
+def inspect_scanned_page(payload, page_number, bounds=None, reference_features=None):
     result = {'status': 'unavailable', 'world_geometry_additions': 0}
     if not shutil.which('pdftoppm') or not shutil.which('tesseract'):
         return {**result, 'reason': 'Poppler and Tesseract executables required'}
@@ -217,6 +217,6 @@ def inspect_scanned_page(payload, page_number, bounds=None):
             candidates=labels_from_tsv(output.read_text())
             return {**candidates, 'rendered_size_pixels': [width, height],
                     'border_grid_inspection':inspect_border_grid(image,root,environment,source,page_number,size,
-                                                                candidates['survey_reference_notes'],bounds)}
+                                                                candidates['survey_reference_notes'],bounds,reference_features)}
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         return {**result, 'reason': str(error)}

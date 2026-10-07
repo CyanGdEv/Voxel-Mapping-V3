@@ -96,7 +96,8 @@ def run_auto(output, location=None, bounds=None):
                      if e.get('tags',{}).get('leisure') == 'theme_park' and e.get('tags',{}).get('name')}
             if len(names) == 1:
                 site_name = names.pop()
-        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds)
+        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds,
+                                  reference_features=collection['features'])
         # Drawing adapters may supply registered, semantic, permission-checked
         # components. Raw PDF paths and application-site boundaries are excluded.
         collection['planning_geometry_records'] = council.get('geometry_records', [])

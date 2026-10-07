@@ -3,10 +3,56 @@ import math
 
 from pyproj import CRS, Transformer
 from pyproj.exceptions import ProjError
-from shapely.geometry import box
+from shapely.geometry import box, shape
+from shapely.ops import transform as transform_geometry
 
 
-def inspect_grid_location(labels, reference_notes, bounds=None):
+def inspect_reference_coverage(labels, reference_features, metric_crs):
+    """Audit independent footprints against label extent, not survey accuracy."""
+    report = {'status': 'reference_coverage_only', 'features': [],
+              'world_geometry_additions': 0, 'registration_verified': False,
+              'limitations': ['Label extent is not necessarily the fitted control hull',
+                             'Footprint containment does not verify raster feature correspondence',
+                             'Reference footprints may have unknown position uncertainty']}
+    if len(reference_features) > 5000 or len(labels) > 64:
+        return {**report, 'status': 'reference_budget_exceeded'}
+    axes = {a: [v['value'] for v in labels if v['axis']==a] for a in ('E','N')}
+    if any(len(set(v)) < 2 or not all(math.isfinite(x) for x in v) for v in axes.values()):
+        return {**report, 'status': 'insufficient_grid_extent'}
+    extent = box(min(axes['E']), min(axes['N']), max(axes['E']), max(axes['N']))
+    transformer = Transformer.from_crs(4326, metric_crs, always_xy=True)
+    vertices = 0
+    for feature in reference_features:
+        properties = feature.get('properties', {})
+        if properties.get('kind') != 'building' or properties.get('source_id') != 'osm':
+            continue
+        entry = {'feature_id': feature.get('id'), 'source_id': 'osm'}
+        try:
+            geom = shape(feature['geometry'])
+            if geom.geom_type not in ('Polygon','MultiPolygon') or geom.is_empty or not geom.is_valid:
+                raise ValueError('Valid building polygon required')
+            polygons = [geom] if geom.geom_type=='Polygon' else list(geom.geoms)
+            vertices += sum(len(p.exterior.coords)+sum(len(r.coords) for r in p.interiors) for p in polygons)
+            if vertices > 100_000:
+                return {**report, 'status': 'reference_vertex_budget_exceeded'}
+            if not all(math.isfinite(v) for v in geom.bounds) or not (
+                    -180<=geom.bounds[0]<=geom.bounds[2]<=180 and -90<=geom.bounds[1]<=geom.bounds[3]<=90):
+                raise ValueError('WGS84 footprint required')
+            projected = transform_geometry(lambda x,y: transformer.transform(x,y,errcheck=True), geom)
+            entry['status'] = ('inside_grid_label_extent' if extent.covers(projected) else
+                               'crosses_grid_label_extent' if extent.intersects(projected) else
+                               'outside_grid_label_extent')
+        except (ValueError, TypeError, KeyError, ProjError) as error:
+            entry.update(status='rejected_reference',reason=str(error))
+        report['features'].append(entry)
+    report['checked_building_count'] = len(report['features'])
+    report['contained_building_count'] = sum(f['status']=='inside_grid_label_extent' for f in report['features'])
+    report['reference_availability'] = ('insufficient_contained_buildings' if report['contained_building_count']<3
+                                        else 'contained_buildings_require_correspondence_checks')
+    return report
+
+
+def inspect_grid_location(labels, reference_notes, bounds=None, reference_features=None):
     report = {'status': 'not_checked', 'registration_verified': False,
               'world_geometry_additions': 0, 'controls_exported': False,
               'limitations': ['Grid extent overlap is not independent alignment or survey accuracy',
@@ -57,9 +103,12 @@ def inspect_grid_location(labels, reference_notes, bounds=None):
         drawing = box(min(values['E']), min(values['N']), max(values['E']), max(values['N']))
         requested = box(*metric_bounds)
         overlap = drawing.intersection(requested).area
-        return {**report, 'status': 'candidate_grid_intersects_requested_area' if overlap > 0 else 'grid_outside_requested_area',
+        result = {**report, 'status': 'candidate_grid_intersects_requested_area' if overlap > 0 else 'grid_outside_requested_area',
                 'metric_crs_candidate': crs.to_string(), 'crs_candidate_origin': origin,
                 'grid_extent_overlap_fraction': overlap/drawing.area,
                 'distinct_eastings': len(set(values['E'])), 'distinct_northings': len(set(values['N']))}
+        if reference_features is not None:
+            result['reference_footprint_coverage'] = inspect_reference_coverage(labels,reference_features,crs)
+        return result
     except (ValueError, TypeError, KeyError, ProjError) as error:
         return {**report, 'status': 'rejected_location_check', 'reason': str(error)}

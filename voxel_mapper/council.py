@@ -150,7 +150,7 @@ def parse_document_list(html, reference):
     return documents
 
 
-def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr_pages=2):
+def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr_pages=2, reference_features=None):
     if not payload.startswith(b'%PDF-'):
         raise ValueError('Document is not a PDF')
     reader = PdfReader(io.BytesIO(payload), strict=False)
@@ -183,7 +183,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                 ocr['status'] = 'page_budget_omitted'
             else:
                 ocr_pages += 1
-                ocr = inspect_scanned_page(payload, index+1, bounds)
+                ocr = inspect_scanned_page(payload, index+1, bounds, reference_features)
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
@@ -228,7 +228,7 @@ def read_pdf(session, url, max_bytes=10_000_000):
 
 
 def acquire_council(authorities, planning_records, site_name, output, max_applications=10,
-                    max_search_pages=3, max_documents=500, max_pdf_inspections=6, bounds=None):
+                    max_search_pages=3, max_documents=500, max_pdf_inspections=6, bounds=None, reference_features=None):
     result = {'provider':SOURCE['id'], 'status':'not_supported', 'application_search':'not_attempted',
               'applications':[], 'documents':[], 'failures':[], 'terms_url':TERMS,
               'reuse_status':'consultation_only', 'geometry_replacements':0,
@@ -293,7 +293,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
         candidates = inspection_order(result['documents'])
         for document in candidates[:max_pdf_inspections]:
             try:
-                document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'])
+                document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'],reference_features=reference_features)
                 registrations=[p['registration']['status'] for p in document['inspection']['pages']]
                 fitted_grids=[grid for p in document['inspection']['pages']
                               if (grid:=p.get('scanned_page_inspection',{}).get('border_grid_inspection',{}))
