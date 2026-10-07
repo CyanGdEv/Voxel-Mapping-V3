@@ -15,7 +15,7 @@ from .bathymetry import acquire_bathymetry
 from .point_cloud import acquire_point_cloud
 
 
-def run_auto(output, location=None, bounds=None, planning_cache=None):
+def run_auto(output, location=None, bounds=None, planning_cache=None, planning_applications=None):
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     # Avoid stale successful exports being mistaken for a failed current run.
@@ -43,7 +43,7 @@ def run_auto(output, location=None, bounds=None, planning_cache=None):
                 config['clip_to_boundary'] = False
                 acquisition['context_margin_m'] = 200
         else:
-            config['location'] = 'Specified geographic area'
+            config['location'] = location or 'Specified geographic area'
         config['bbox'] = bounds
         validate_config(config)
         # Check geographic area before any terrain or OSM download.
@@ -96,9 +96,9 @@ def run_auto(output, location=None, bounds=None, planning_cache=None):
                      if e.get('tags',{}).get('leisure') == 'theme_park' and e.get('tags',{}).get('name')}
             if len(names) == 1:
                 site_name = names.pop()
-        if site_name and 'alton towers' in site_name.lower():
+        if (site_name and 'alton towers' in site_name.lower()) or planning_applications:
             from .alton import acquire_alton
-            council = acquire_alton(output, bounds, planning_cache)
+            council = acquire_alton(output, bounds, planning_cache, application_references=planning_applications)
         else:
             council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds,
                                       reference_features=collection['features'])

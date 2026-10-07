@@ -22,8 +22,10 @@ def document_role(title):
         return 'landscape-plan', 20
     if re.search(r'site plan|\bga\b|general arrangement|ride layout|track layout|path proposal', lower):
         return 'site-plan', 10
-    if re.search(r'floor plan', lower):
+    if re.search(r'floor plan|\bgf plan\b|basement plan|roof plan|ancillary building plan|maintenance building', lower):
         return 'floor-plan', 30
+    if re.search(r'block plan', lower):
+        return 'site-plan', 10
     if re.search(r'elevation|section', lower):
         return 'elevations', 40
     return 'unknown', 80
@@ -64,8 +66,14 @@ def parse_attachments(html, application, max_documents=2000):
     return sorted(documents.values(), key=lambda d: (d['priority'], d['title'], d['url']))
 
 
-def discover_attachments(session, output, cache=None, deadline=None):
+def discover_attachments(session, output, cache=None, deadline=None, application_references=None):
     seeds = json.loads((Path(__file__).parent/'data/alton-applications.json').read_text())
+    if application_references:
+        wanted = set(application_references)
+        known = {a['reference'] for a in seeds['applications']}
+        if wanted-known:
+            raise ValueError('Application references absent from the Alton park catalogue: '+', '.join(sorted(wanted-known)))
+        seeds['applications'] = [a for a in seeds['applications'] if a['reference'] in wanted]
     result = {'status': 'checked', 'applications': [], 'documents': [], 'failures': [],
               'historical_seed_date': seeds['acquired_at'], 'complete_council_discovery': False}
     cache = Path(cache).resolve() if cache else None
@@ -123,8 +131,9 @@ def merge_discovered(recovered, discovery):
     by_url = {e['url']: dict(e) for e in recovered}
     for document in discovery['documents']:
         if document['url'] in by_url:
-            by_url[document['url']]['priority'] = document['priority']
-            by_url[document['url']]['discovery_source'] = document['discovery_source']
+            for key in ('role', 'state', 'priority', 'discovery_source'):
+                if key in document:
+                    by_url[document['url']][key] = document[key]
         else:
             by_url[document['url']] = dict(document)
     # Survey and actual geometry sheets precede reports, across applications.

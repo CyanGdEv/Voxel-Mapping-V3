@@ -53,7 +53,7 @@ def download_pdf(session, url, max_bytes=10_000_000):
         response.close()
 
 
-def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=2):
+def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=2, application_references=None):
     # Import lazily: council owns the common bounded PDF inspection routine.
     from .council import inspect_pdf
     from .alton_registration import inspect_axis_alignment
@@ -70,6 +70,9 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                              'Report vectors and PDF labels are not physical footprints']}
     cache = Path(cache).resolve() if cache else None
     relevant = [e for e in catalogue['entries'] if is_park_application(e)]
+    if application_references:
+        relevant = [e for e in relevant if e['applicationReference'] in set(application_references)]
+        result['requested_application_references'] = sorted(set(application_references))
     result['applications'] = sorted({e['applicationReference'] for e in relevant})
     result['excluded_other_site_documents'] = [
         {'applicationReference': e['applicationReference'], 'url': e['url'],
@@ -78,7 +81,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
     deadline = time.monotonic()+900
     with requests.Session() as session:
         session.headers.update({'User-Agent': USER_AGENT})
-        discovery = discover_attachments(session, output, cache, deadline)
+        discovery = discover_attachments(session, output, cache, deadline, application_references)
         result['attachment_discovery'] = {k: v for k, v in discovery.items() if k != 'documents'}
         result['application_search'] = 'historical_seed_full_attachment_pages'
         relevant = merge_discovered(relevant, discovery)
@@ -110,6 +113,10 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 if entry.get('sha256') and checksum != entry['sha256']:
                     raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
                 row['sha256'] = checksum
+                document_path = Path(output)/'planning-documents'/f'{checksum}.pdf'
+                document_path.parent.mkdir(parents=True, exist_ok=True)
+                document_path.write_bytes(payload)
+                row['local_pdf'] = str(document_path.resolve())
                 row['hash_provenance'] = 'matches_recovered_document' if entry.get('sha256') else 'observed_current_download_only'
                 row['inspection'] = inspect_pdf(payload, max_pages=max_pages, bounds=bounds,
                                                 document_title=entry['title'], max_ocr_pages=0)

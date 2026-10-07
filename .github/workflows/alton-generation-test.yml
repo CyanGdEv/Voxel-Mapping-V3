@@ -1,4 +1,4 @@
-name: Alton Towers generation test
+name: Alton Towers Wicker Man planning test
 # OSM acquisition retries transient service errors; partial responses still fail.
 on:
   workflow_dispatch:
@@ -23,8 +23,8 @@ jobs:
         env:
           CC: gcc
           CXX: g++
-      - name: Generate bounded Alton test world
-        run: python -m voxel_mapper.cli --bbox=-1.886,52.986,-1.881,52.990 --output alton-test
+      - name: Generate Wicker Man area and check SW8 planning geometry
+        run: python -m voxel_mapper.wickerman --output alton-test
       - name: Summarise actual planning geometry usage
         if: always()
         run: |
@@ -34,12 +34,17 @@ jobs:
           report = Path('alton-test/quality-report.json')
           if report.exists():
               data = json.loads(report.read_text())
-              decisions = data.get('planning_geometry_decisions', [])
-              accepted = sum(d.get('status') == 'accepted_verified_adapter_record' for d in decisions)
-              with open('alton-test/planning-test-summary.json', 'w') as stream:
-                  json.dump({'accepted_planning_records': accepted,
-                             'test_scope': 'Bounded Alton area; not a full resort world'}, stream, indent=2)
-              print('Accepted physical planning records:', accepted)
+              acceptance = Path('alton-test/wicker-man-acceptance.json')
+              if acceptance.exists():
+                  result = json.loads(acceptance.read_text())
+                  print(json.dumps(result, indent=2))
+                  with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+                      summary.write('Wicker Man planning test: '+result['status']+'\n\n')
+                      summary.write('| Detail | Drawing annotations | Rendered components | Status |\n| --- | ---: | ---: | --- |\n')
+                      for check in result['checks']:
+                          summary.write('| {category} | {drawing_annotation_candidates} | {rendered_verified_components} | {status} |\n'.format(**check))
+              else:
+                  print('No Wicker Man acceptance report: generation/inspection failed before the planning gate.')
           else:
               print('Generation did not reach quality-report output; inspect acquisition.json and job logs.')
           PY

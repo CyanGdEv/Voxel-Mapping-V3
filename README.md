@@ -1,3 +1,26 @@
+
+## Wicker Man planning generation test
+
+Run `python -m voxel_mapper.wickerman --output wicker-man-test` after installing
+`.[planning]`. This automatically acquires a bounded Wicker Man area at Alton
+Towers and selects SW8 applications **SMD/2016/0315** and **SMD/2017/0111**.
+The Alton Actions test uses this command and retains its artifacts even on failure.
+
+The acceptance report checks ride layout, elevations, sound tunnels/screens,
+widths, materials, paths/plazas/boardwalks, walls, fences, buildings and theming.
+PDF annotations retain their drawing positions; complete bounded vector evidence
+retains curves, clipping/group records and styles in compressed drawing-space
+files. These candidates do not imply georeferenced or as-built components.
+The current Alton adapter supplies zero physical planning records: the world is
+therefore explicitly a **baseline**, and the test exits 2 for missing planning
+geometry rather than passing because terrain export succeeded.
+
+`--planning-cache` reuses hash-checked recovered official PDFs. For a local rerun,
+`--source-output` reuses an existing Alton acquisition's input, source metadata
+and rasters; it creates a fresh baseline and does not import old planning records.
+The source acquisition may have failed at a larger-area export while still
+containing usable acquired rasters. Neither option invents coordinates or heights.
+
 # Voxel Mapper V3.1
 
 Raster grid inspection now tests actual thin orthogonal crosshairs near coordinate-label intersections, within a twelve-pixel correspondence window. Both continuous, nearly symmetric strokes must be present; incomplete strokes, thick shapes and ambiguous nearby symbols are withheld. At least four noncollinear complete marks must support a stable affine drawing-coordinate fit and held-out-mark checks. The Thorpe scan supplies six complete symbols with a maximum held-out residual of about 0.029 drawing coordinate units. This is internal consistency, not surveyed geographic accuracy: OCR/mark identity, CRS, coordinate units and constant offsets remain unverified. Consultation inspection exports only counts/status/residuals; controls and transforms require explicit reuse permission and never insert world geometry by themselves.
