@@ -2,7 +2,7 @@
 import re
 
 LEVEL = re.compile(r'\b(?P<label>FFL|finished floor level|lake\s*bed level|bed level|water level|ground level|ridge level|eaves level)\s*[:=]?\s*(?P<value>[+-]?\d{1,3}(?:\.\d{1,3})?)(?![\d.:eE])(?!\s*(?:ft|feet|inches|in)\b)\s*(?P<unit>m\b)?\s*(?P<datum>AOD|ODN|mOD)?',re.I)
-MATERIALS = {'resin bound gravel':'resin_bound_gravel','block paving':'paving_stones',
+MATERIALS = {'resin bound gravel':'resin_bound_gravel','block paving':'paving_stones','tarmac':'asphalt',
              'paving stones':'paving_stones','asphalt':'asphalt','concrete':'concrete',
              'brick':'brick','timber':'wood','wood':'wood','steel':'steel','gravel':'gravel'}
 COLOURS = re.compile(r'\b(white|orange|magenta|light blue|yellow|lime|pink|light gr[ae]y|gr[ae]y|cyan|purple|blue|brown|green|red|black)\b',re.I)

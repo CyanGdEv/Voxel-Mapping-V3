@@ -28,6 +28,9 @@ def inspect_registration(page, bounds=None, tolerance_m=.5, max_viewports=16):
             measure = viewport.get('/Measure')
             if hasattr(measure,'get_object'):
                 measure = measure.get_object()
+            if measure and measure.get('/Subtype') == '/RL':
+                entry['measure_type'] = 'rectilinear_scale_only'
+                raise ValueError('Rectilinear measurement scale does not declare geographic registration')
             if not measure or measure.get('/Subtype') != '/GEO':
                 raise ValueError('Unsupported or missing GEO measure')
             if int(page.get('/Rotate',0))%360 or float(page.get('/UserUnit',1)) != 1:

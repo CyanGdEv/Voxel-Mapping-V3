@@ -18,6 +18,7 @@ from .drawing_evidence import evidence_candidates, document_category, inspection
 from .drawing_associations import extract_associations
 from .drawing_controls import inspect_coordinate_labels
 from .drawing_polygons import polygon_candidates
+from .drawing_ocr import inspect_scanned_page
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -148,17 +149,20 @@ def parse_document_list(html, reference):
     return documents
 
 
-def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
+def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr_pages=2):
     if not payload.startswith(b'%PDF-'):
         raise ValueError('Document is not a PDF')
     reader = PdfReader(io.BytesIO(payload), strict=False)
     if reader.is_encrypted:
         raise ValueError('Encrypted PDF cannot be inspected automatically')
-    pages, total_text = [], 0
+    if not 0 <= max_ocr_pages <= 2:
+        raise ValueError('OCR page budget must be between zero and two')
+    pages, total_text, ocr_pages = [], 0, 0
     for index, page in enumerate(reader.pages[:max_pages]):
         # Guard oversized decompressed content before invoking text extraction.
         contents = page.get_contents()
-        if contents and len(contents.get_data()) > 10_000_000:
+        content_size = len(contents.get_data()) if contents is not None else 0
+        if content_size > 10_000_000:
             raise ValueError('PDF page content exceeds inspection budget')
         text = page.extract_text() or ''
         total_text += len(text)
@@ -170,6 +174,15 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
         registration = inspect_registration(page,bounds)
         vectors = extract_vectors(page,registration,reuse_allowed=False)
         polygons = polygon_candidates(vectors)
+        ocr = {'status':'not_needed_native_text', 'world_geometry_additions':0}
+        if len(text.strip()) < 20:
+            if not content_size:
+                ocr['status'] = 'empty_page'
+            elif ocr_pages >= max_ocr_pages:
+                ocr['status'] = 'page_budget_omitted'
+            else:
+                ocr_pages += 1
+                ocr = inspect_scanned_page(payload, index+1)
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
@@ -182,13 +195,14 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),
                       'semantic_evidence':evidence_candidates(text,material_context=bool(document_title and document_category(document_title)=='materials')),
+                      'scanned_page_inspection':ocr,
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
             'bytes':len(payload), 'page_count':len(reader.pages), 'pages_inspected':len(pages), 'pages':pages,
             'truncated':len(reader.pages)>max_pages, 'alignment_status':'unverified',
             'limitations':['Scale/revision labels are candidates, not verified dimensions or coordinates',
                            'Embedded control consistency is not independent surveyed registration',
-                           'No OCR, drawing vectorisation or construction verification',
+                           'Bounded OCR labels are unplaced candidates, not registration or physical geometry',
                            'Original PDF is not retained or redistributed in output']}
 
 
