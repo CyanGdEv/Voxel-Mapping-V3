@@ -13,6 +13,7 @@ from pypdf.errors import PdfReadError
 from .acquisition import USER_AGENT
 from .geopdf import inspect_registration
 from .drawing_vectors import extract_vectors
+from .drawing_evidence import evidence_candidates, document_category, inspection_order
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -74,10 +75,11 @@ def parse_document_list(html, reference):
             continue
         seen.add(identity)
         title, kind = str(row.get('Doc_Ref2','')), str(row.get('Doc_Type',''))
-        if 'plan' not in kind.lower() and not re.search(r'\b(?:plan|elevation|drawing|section|survey)\b',title,re.I):
+        if 'plan' not in kind.lower() and not re.search(r'\b(?:plan|elevation|drawing|section|survey|materials?|finishes|surface|paving|bathymetry|topographic|flood|drainage)\b',title,re.I):
             continue
         documents.append({'id':identity, 'application_reference':reference, 'title':title,
                           'type':kind, 'received_date_raw':row.get('Date_Received'),
+                          'evidence_category':document_category(title),
                           'url':DOCS+'/Document/ViewDocument?'+urlencode({'id':identity}),
                           'reuse_status':'consultation_only', 'geometry_action':'unchanged',
                           'construction_status':'not_verified', 'alignment_status':'not_inspected'})
@@ -110,6 +112,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None):
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
                       'vector_extraction':extract_vectors(page,registration,reuse_allowed=False),
+                      'semantic_evidence':evidence_candidates(text),
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
             'bytes':len(payload), 'page_count':len(reader.pages), 'pages_inspected':len(pages), 'pages':pages,
@@ -194,7 +197,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
             except (requests.RequestException,ValueError,TypeError,AttributeError) as error:
                 result['failures'].append({'stage':'document_list','application':reference,'reason':str(error)})
         # Stable prioritisation; raw dates can have ambiguous portal formatting.
-        candidates = sorted(result['documents'],key=lambda d:(not bool(re.search(r'site|location|elevation',d['title'],re.I)),d['application_reference'],d['id']))
+        candidates = inspection_order(result['documents'])
         for document in candidates[:max_pdf_inspections]:
             try:
                 document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds)

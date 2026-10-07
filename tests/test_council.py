@@ -65,6 +65,11 @@ class CouncilTests(unittest.TestCase):
         self.assertEqual(docs[0]['reuse_status'],'consultation_only')
         with self.assertRaises(ValueError):parse_document_list(document_html(),'RU.24/1234')
         with self.assertRaises(ValueError):parse_document_list('Access denied','RU.22/0374')
+        model={'PageHeader':'Documents for reference RU.22/0374','Rows':[
+            {'Guid':str(i)*32,'Doc_Type':'Supporting Documentation','Doc_Ref2':title}
+            for i,title in enumerate(['Materials Schedule','Flood Risk Assessment','Topographic Survey','Unrelated Letter'],1)]}
+        extra=parse_document_list('<script>var model = '+json.dumps(model)+'</script>','RU.22/0374')
+        self.assertEqual([d['evidence_category'] for d in extra],['materials','water_and_levels','surveys'])
 
     def test_pdf_scale_revision_are_candidates_and_not_alignment(self):
         result=inspect_pdf(pdf_fixture())
@@ -72,6 +77,7 @@ class CouncilTests(unittest.TestCase):
         self.assertEqual(result['pages'][0]['revision_label_candidates'],['P3'])
         self.assertFalse(result['pages'][0]['has_viewport_metadata'])
         self.assertEqual(result['alignment_status'],'unverified')
+        self.assertEqual(result['pages'][0]['semantic_evidence']['status'],'text_candidates_only')
         with self.assertRaises(ValueError):inspect_pdf(b'<html>Access denied</html>')
         writer=PdfWriter();writer.add_blank_page(100,100);writer.encrypt('password');out=io.BytesIO();writer.write(out)
         with self.assertRaisesRegex(ValueError,'Encrypted'):inspect_pdf(out.getvalue())
