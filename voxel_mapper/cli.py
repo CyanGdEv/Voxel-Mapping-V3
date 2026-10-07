@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import math
+from .water import surface_level
 from pathlib import Path
 
 import requests
@@ -106,7 +107,7 @@ def build(config, collection, output):
     crs = CRS.from_proj4(f'+proj=aeqd +lat_0={(south+north)/2} +lon_0={(west+east)/2} +datum=WGS84 +units=m')
     projector = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
     area = transform(projector.transform, shape({"type": "Polygon", "coordinates": [[[west,south],[east,south],[east,north],[west,north],[west,south]]]}))
-    if config.get("boundary_geojson"):
+    if config.get("boundary_geojson") and config.get('clip_to_boundary', True):
         boundary = shape(config["boundary_geojson"])
         if not boundary.is_valid or boundary.geom_type not in ("Polygon", "MultiPolygon"):
             raise ValueError("Park boundary is not a valid polygon")
@@ -133,6 +134,7 @@ def build(config, collection, output):
     building_profiles = []
     transport_profiles = []
     bridge_profiles = []
+    water_footprints = []
     try:
         if config.get("surface"):
             if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
@@ -218,6 +220,21 @@ def build(config, collection, output):
                     raise ValueError(f"Invalid elevation or height on {fid}")
                 if geometry.is_empty:
                     continue
+                lake_level = None
+                if kind == 'water' and metric_geometry.geom_type in ('Polygon','MultiPolygon'):
+                    water_footprints.append(geometry)
+                    if 'base_elevation_m' in properties:
+                        lake_level = base
+                        message = 'Explicit water surface elevation; lakebed depth unavailable'
+                    else:
+                        lake_level, message = surface_level(geometry, terrain)
+                        scanned += 81
+                        if scanned > scan_budget:
+                            raise ValueError('Column scan budget exceeded')
+                    if lake_level is None:
+                        issues.append({'feature':fid,'severity':'error','reason':message})
+                        continue
+                    assumptions.append(message)
                 roof_rows = None
                 if kind == "building" and surface and terrain and geometry.geom_type in ("Polygon", "MultiPolygon"):
                     roof_rows, profile = reconstruct_building(geometry, resolution, terrain, surface,
@@ -253,7 +270,7 @@ def build(config, collection, output):
                                     raise ValueError("Column scan budget exceeded")
                                 if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
                                     continue
-                                cell_base = terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
+                                cell_base = lake_level if lake_level is not None else terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
                                 if cell_base is None:
                                     terrain_missing += 1
                                     continue
@@ -262,7 +279,7 @@ def build(config, collection, output):
                 for x,z,cell_base,top in columns:
                     # Ground paving replaces the sampled terrain block, rather than
                     # extruding two blocks when the raster elevation is fractional.
-                    upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS else math.ceil(top/resolution)
+                    upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS or lake_level is not None else math.ceil(top/resolution)
                     for y in range(math.floor(cell_base/resolution), upper):
                         count += 1
                         if count > budget:
@@ -272,11 +289,12 @@ def build(config, collection, output):
                             "source":source_id,"elevation_source":config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {}),
-                            "geometry_method":"bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
+                            "geometry_method":"level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
             if terrain and config["terrain"].get("emit_surface", True):
+                water_mask = unary_union(water_footprints)
                 minx, minz, maxx, maxz = area.bounds
                 for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
                     for z in range(math.floor(minz/resolution), math.ceil(maxz/resolution)):
@@ -285,6 +303,10 @@ def build(config, collection, output):
                             raise ValueError("Column scan budget exceeded")
                         px, pz = (x+.5)*resolution, (z+.5)*resolution
                         if not area.covers(Point(px, pz)):
+                            continue
+                        # Airborne DTM over water does not measure the submerged bed.
+                        # Do not export it as grass or a fictitious lake floor.
+                        if not water_mask.is_empty and water_mask.covers(Point(px,pz)):
                             continue
                         elevation = terrain.sample(px, pz)
                         if elevation is None:

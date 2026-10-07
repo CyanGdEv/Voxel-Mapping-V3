@@ -10,6 +10,9 @@ SURFACE_MATERIALS = {
     'wood': 'oak_planks', 'gravel': 'gravel', 'fine_gravel': 'gravel',
     'compacted': 'coarse_dirt', 'dirt': 'dirt', 'earth': 'dirt',
     'ground': 'coarse_dirt', 'grass': 'grass_block', 'sand': 'sand',
+    'brick': 'bricks', 'metal': 'iron_block', 'steel': 'iron_block',
+    'stone': 'stone', 'pebblestone': 'cobblestone',
+    'unpaved': 'coarse_dirt', 'paved': 'stone',
 }
 DEFAULT_WIDTHS = {'road': 6, 'path': 2, 'sidewalk': 2, 'queue': 1,
                   'cycleway': 2, 'steps': 2}
@@ -77,10 +80,14 @@ def transport_profile(properties, kind, is_line):
         if width < 1:
             warnings.append('width below 1 m may disappear or widen on the metre voxel grid')
     surface = properties.get('surface')
+    if isinstance(surface, str):
+        surface = surface.strip().lower()
     material = SURFACE_MATERIALS.get(surface)
     if material is None:
         material = 'black_concrete' if kind == 'road' else 'stone'
         warnings.append(f'surface {surface!r} unsupported; generic material assumed' if surface else 'surface missing; generic material assumed')
+    if surface in {'paved', 'unpaved'}:
+        warnings.append('surface describes a paving class; actual constituent material is unknown')
     if kind == 'steps':
         warnings.append('steps follow terrain at metre resolution; individual treads are not measured')
     return {'kind': kind, 'width_m': width, 'width_source': width_source,

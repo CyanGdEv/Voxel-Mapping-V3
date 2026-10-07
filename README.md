@@ -6,6 +6,12 @@ Automatically acquire public geographic data and generate a **Minecraft Bedrock 
 
 ## Run on GitHub Actions
 
+Automatic polygon locations now acquire a 200 m context margin and build the resulting bounding box, including mapped lakes outside the leisure boundary. Explicit bounding boxes remain unchanged; all area and voxel budgets still apply. Lakes crossing the context bounds remain clipped, so this does not guarantee complete surrounding lake coverage.
+
+Polygon water is represented by a single horizontal surface using an explicit datum-compatible elevation, or a median of at most 81 interior terrain samples when their central elevation range is within 1 m. Raster estimates are unverified, and inconsistent or insufficient samples cause omission with a reported error. Airborne terrain over water is not bathymetry: grass terrain is suppressed inside mapped lake polygons, and no measured lakebed or depth is claimed. River centerlines still use the existing extrusion model.
+
+Path materials use mapped `surface` tags, including asphalt, concrete, paving stones, brick, cobblestone, wood, metal, stone and unpaved surfaces. Minecraft blocks approximate the real material. Missing or mixed material tags retain an explicit fallback warning; `paved`/`unpaved` identifies a class rather than a known constituent material. Planning drawings do not yet supply material specifications or constructed polygons automatically.
+
 Open **Actions → Voxel Mapper 3.1 — Bedrock World → Run workflow**:
 
 - `location`: a specific park name and country/address, such as `Thorpe Park, Chertsey, United Kingdom`.

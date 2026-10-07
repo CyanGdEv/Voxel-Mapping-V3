@@ -13,6 +13,12 @@ import test_terrain_osm as fixtures
 
 
 class TransportTests(unittest.TestCase):
+    def test_material_normalization_and_ambiguous_surfaces(self):
+        self.assertEqual(transport_profile({'surface':' Brick '}, 'path', False)['material'], 'bricks')
+        self.assertEqual(transport_profile({'surface':'metal'}, 'path', False)['material'], 'iron_block')
+        ambiguous = transport_profile({'surface':'asphalt;paving_stones'}, 'path', False)
+        self.assertEqual(ambiguous['material_method'], 'assumed')
+        self.assertTrue(transport_profile({'surface':'paved'}, 'path', False)['warnings'])
     def test_units_and_ambiguous_widths(self):
         for value, expected in [('3 m', 3), ('10 ft', 3.048), ('6\' 6"', 1.9812), (2.5, 2.5)]:
             self.assertAlmostEqual(width_metres(value), expected)

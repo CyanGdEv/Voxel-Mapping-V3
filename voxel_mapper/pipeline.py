@@ -29,6 +29,17 @@ def run_auto(output, location=None, bounds=None):
             config['location'] = result['display_name']
             if result.get('geojson',{}).get('type') in ('Polygon','MultiPolygon'):
                 config['boundary_geojson'] = result['geojson']
+                # The administrative/leisure outline excludes adjacent lakes.
+                # Acquire a bounded context region rather than clipping to that outline.
+                geod = Geod(ellps='WGS84')
+                west,south,east,north = bounds
+                west = geod.fwd(west,(south+north)/2,270,200)[0]
+                east = geod.fwd(east,(south+north)/2,90,200)[0]
+                south = geod.fwd((west+east)/2,south,180,200)[1]
+                north = geod.fwd((west+east)/2,north,0,200)[1]
+                bounds = [west,south,east,north]
+                config['clip_to_boundary'] = False
+                acquisition['context_margin_m'] = 200
         else:
             config['location'] = 'Specified geographic area'
         config['bbox'] = bounds
