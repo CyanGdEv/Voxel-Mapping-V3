@@ -40,6 +40,8 @@ jobs:
                   print(json.dumps(result, indent=2))
                   with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
                       summary.write('Wicker Man planning test: '+result['status']+'\n\n')
+                      registration = result.get('registration', {})
+                      summary.write('Drawing alignment: '+registration.get('status', 'not_run')+'; verified: '+str(registration.get('registration_verified', False))+'\n\n')
                       summary.write('| Detail | Drawing annotations | Rendered components | Status |\n| --- | ---: | ---: | --- |\n')
                       for check in result['checks']:
                           summary.write('| {category} | {drawing_annotation_candidates} | {rendered_verified_components} | {status} |\n'.format(**check))

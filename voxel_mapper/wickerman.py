@@ -54,6 +54,38 @@ def _json_geometry(value):
     return _json_geometry(list(value))  # Point/Rect/Quad: drawing-space values only.
 
 
+def report_page_indices(pdf, max_pages=2, scan_pages=64, max_matches=12):
+    """Bounded native-text search beyond cover sheets; no unbounded OCR."""
+    chosen = set(range(min(len(pdf), max_pages)))
+    examined = min(len(pdf), scan_pages)
+    matches = []
+    for index in range(examined):
+        text = pdf[index].get_text('text')
+        if len(text) > 500_000:
+            continue
+        if re.search(r'\bAOD\b|sound\s+tunnels?|ride\s+structure|ride\s+track|dark\s+stained', text, re.I):
+            matches.append(index)
+    chosen.update(matches[:max_matches])
+    return sorted(chosen), {'native_text_pages_scanned': examined,
+                            'native_text_pages_unscanned': len(pdf)-examined,
+                            'relevant_pages_omitted_by_budget': max(0, len(matches)-max_matches)}
+
+
+def ride_specifications(text):
+    normalized = ' '.join(text.split())
+    result = []
+    if re.search(r'ride structure, sound tunnels and screens would be dark stained timber', normalized, re.I):
+        result.append({'components': ['ride_structure', 'sound_tunnels', 'sound_screens'],
+                       'material': 'dark_stained_timber', 'status': 'proposed_document_specification',
+                       'as_built_verified': False})
+    match = re.search(r'proposed ride track has a spot height of (\d+(?:\.\d+)?)\s*m\s*AOD', normalized, re.I)
+    if match:
+        result.append({'component': 'ride_track_maximum', 'printed_level_m': float(match[1]),
+                       'datum_label': 'AOD', 'datum_realization': None,
+                       'status': 'proposed_document_specification', 'as_built_verified': False})
+    return result
+
+
 def inspect_drawings(documents, output, max_pages=2, max_paths=150_000):
     import fitz
     output = Path(output)
@@ -70,15 +102,19 @@ def inspect_drawings(documents, output, max_pages=2, max_paths=150_000):
             if path.stat().st_size > 10_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != document['sha256']:
                 raise ValueError('Drawing size/hash check failed')
             with fitz.open(path) as pdf:
-                row['omitted_pages'] = max(0, len(pdf)-max_pages)
-                for index in range(min(len(pdf), max_pages)):
+                indices = list(range(min(len(pdf), max_pages)))
+                if document['role'] == 'context-report':
+                    indices, row['report_page_search'] = report_page_indices(pdf, max_pages)
+                row['omitted_pages'] = len(pdf)-len(indices)
+                for index in indices:
                     page = pdf[index]
                     lines = [{'text': ''.join(s['text'] for s in line['spans']), 'bbox': list(line['bbox'])}
                              for block in page.get_text('dict')['blocks'] if 'lines' in block
                              for line in block['lines']]
                     categories, levels = annotation_evidence(lines)
                     detail = {'page': index+1, 'rotation': page.rotation, 'annotations': lines,
-                              'categories': categories, 'ride_level_candidates': levels}
+                              'categories': categories, 'ride_level_candidates': levels,
+                              'ride_specifications': ride_specifications(page.get_text('text'))}
                     # Preserve curves, clipping/group records and style, rather
                     # than replacing this detailed plan with a bounding box.
                     if document['role'] in ('site-plan', 'landscape-plan', 'floor-plan', 'elevations'):
@@ -188,6 +224,10 @@ def main():
             'discovery_complete': discovery['status'] == 'checked'}
         (output/'wicker-man-planning-evidence.json').write_text(json.dumps(evidence, indent=2))
     result = acceptance_report(evidence, quality, output/'voxels.jsonl')
+    from .wicker_registration import inspect_alignment
+    raw_path = (Path(args.source_output) if args.source_output else output)/'osm-raw.json'
+    if raw_path.exists():
+        result['registration'] = inspect_alignment(evidence, json.loads(raw_path.read_text()), output, BBOX)
     (output/'wicker-man-acceptance.json').write_text(json.dumps(result, indent=2))
     (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
     print(json.dumps(result, indent=2))

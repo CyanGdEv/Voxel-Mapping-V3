@@ -8,6 +8,20 @@ The Alton Actions test uses this command and retains its artifacts even on failu
 
 The acceptance report checks ride layout, elevations, sound tunnels/screens,
 widths, materials, paths/plazas/boardwalks, walls, fences, buildings and theming.
+The Wicker Man inspector also scans up to 64 native-text report pages, retaining
+up to 12 relevant later pages. This recovers the LVIA page 23 specification for
+dark-stained timber ride structures/tunnels/screens and a maximum track level
+of 201 m AOD. AOD is retained as printed; its realization is not assumed.
+
+The automatic registration check fits similarity candidates from the named shop
+footprint, checks the printed scale bar, and resolves orientation against mapped
+track and distinct high/low labels. Repeated legend labels are excluded only
+when one occurrence is near the track and alternatives are distant. Real SW8
+evidence gives 14 near-track labels and one excluded legend label. Outputs remain
+an alignment hypothesis: a shop is one object, and OSM may share the drawing
+source. No independent survey controls, verified vertical datum, physical
+geometry additions or as-built authority are inferred.
+
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space
 files. These candidates do not imply georeferenced or as-built components.

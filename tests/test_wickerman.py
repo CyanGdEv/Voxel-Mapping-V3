@@ -3,11 +3,32 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from voxel_mapper.wickerman import annotation_evidence, acceptance_report, REQUIREMENTS
+from voxel_mapper.wickerman import annotation_evidence, acceptance_report, REQUIREMENTS, report_page_indices, ride_specifications
 from voxel_mapper.alton_discovery import merge_discovered, document_role
 
 
 class WickerManTests(unittest.TestCase):
+    def test_late_report_page_supplies_ride_specifications_without_as_built_claim(self):
+        text = ('proposed ride track has a spot height of 201m AOD. '
+                'The ride structure, sound tunnels and screens would be dark\nstained timber.')
+        class Page:
+            def __init__(self, text):
+                self.text = text
+            def get_text(self, mode):
+                return self.text
+        pages = [Page('cover') for _ in range(23)]
+        pages[22] = Page(text)
+        indices, budget = report_page_indices(pages)
+        self.assertIn(22, indices)
+        specifications = ride_specifications(text)
+        self.assertEqual(specifications[0]['material'], 'dark_stained_timber')
+        self.assertEqual(specifications[1]['printed_level_m'], 201)
+        self.assertIsNone(specifications[1]['datum_realization'])
+        self.assertFalse(specifications[0]['as_built_verified'])
+        indices, budget = report_page_indices(pages, scan_pages=10)
+        self.assertNotIn(22, indices)
+        self.assertEqual(budget['native_text_pages_unscanned'], 13)
+
     def test_track_levels_are_retained_without_datum_or_georegistration_claim(self):
         line = {'text': 'HP1 - 201.0', 'bbox': [1, 2, 3, 4]}
         categories, levels = annotation_evidence([line, {'text': 'Sound Tunnel', 'bbox': [5, 6, 7, 8]}])
