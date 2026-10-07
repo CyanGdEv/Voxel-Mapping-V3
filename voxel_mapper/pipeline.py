@@ -15,7 +15,7 @@ from .bathymetry import acquire_bathymetry
 from .point_cloud import acquire_point_cloud
 
 
-def run_auto(output, location=None, bounds=None):
+def run_auto(output, location=None, bounds=None, planning_cache=None):
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     # Avoid stale successful exports being mistaken for a failed current run.
@@ -96,13 +96,17 @@ def run_auto(output, location=None, bounds=None):
                      if e.get('tags',{}).get('leisure') == 'theme_park' and e.get('tags',{}).get('name')}
             if len(names) == 1:
                 site_name = names.pop()
-        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds,
-                                  reference_features=collection['features'])
+        if site_name and 'alton towers' in site_name.lower():
+            from .alton import acquire_alton
+            council = acquire_alton(output, bounds, planning_cache)
+        else:
+            council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds,
+                                      reference_features=collection['features'])
         # Drawing adapters may supply registered, semantic, permission-checked
         # components. Raw PDF paths and application-site boundaries are excluded.
         collection['planning_geometry_records'] = council.get('geometry_records', [])
         if council['status'] != 'not_supported':
-            config['sources'].append(COUNCIL_SOURCE)
+            config['sources'].append(council.get('source', COUNCIL_SOURCE))
         acquisition['providers'].append({'provider':council['provider'], 'status':council['status'],
             'application_search':council['application_search'], 'drawing_count':len(council['documents']),
             'failures':council['failures']})

@@ -13,3 +13,6 @@ voxel-mapper = "voxel_mapper.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["voxel_mapper*"]
+
+[tool.setuptools.package-data]
+voxel_mapper = ["data/*.json"]

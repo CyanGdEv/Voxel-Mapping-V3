@@ -458,10 +458,11 @@ def main():
     area.add_argument("--location", help="Specific park name and country/address")
     area.add_argument("--bbox", help="west,south,east,north")
     parser.add_argument("--output", default="output")
+    parser.add_argument("--planning-cache", help="Recovered official Alton planning corpus directory")
     parser.add_argument("--strict", action="store_true", help="Fail after export if evidence quality checks fail")
     args = parser.parse_args()
     bounds = list(map(float, args.bbox.split(','))) if args.bbox else None
-    report = run_auto(Path(args.output), location=args.location, bounds=bounds)
+    report = run_auto(Path(args.output), location=args.location, bounds=bounds, planning_cache=args.planning_cache)
     if args.strict and report["issues"]:
         raise SystemExit("Strict accuracy gate failed; draft world and evidence retained in output")
 

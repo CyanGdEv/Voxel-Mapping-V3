@@ -4,7 +4,7 @@ on:
     inputs:
       location:
         description: Specific theme park name and country/address (blank when bbox is supplied)
-        default: Thorpe Park, Chertsey, United Kingdom
+        default: Alton Towers, Staffordshire, United Kingdom
       bbox:
         description: Optional west,south,east,north override; maximum area 4 km²
         default: ''
