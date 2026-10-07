@@ -54,7 +54,13 @@ intersects explicit clip geometry, and associates polygons with a unique adjacen
 filled legend swatch. Optional layers, unsupported groups/curves and ambiguous
 swatches are withheld. Text knockout masks and duplicate polygons are excluded.
 The recovered SW8 plan yields 17 existing-paving polygons, including one labelled
-plaza; the separate new-paving hatch remains unresolved. The surface GeoJSON uses
+plaza. The proposed-paving extractor also reads original PDF tiling-pattern paint
+operations and fingerprints their image bytes, palette and tile definition against
+the unique `New Paving with levels` legend swatch. This recovers 18 proposed paving
+footprints, including the approximately 279 m² labelled entrance plaza. It preserves
+even-odd holes and graphics clips, and flattens cubic footprint curves to a bounded
+0.2 PDF-point tolerance. Matching `/Im0` operators alone never identifies a pattern.
+Unsupported/invalid paths remain withheld. The surface GeoJSON uses
 the provisional alignment and is candidate evidence, not accepted world geometry.
 Legend colours do not establish paving materials or Minecraft palette colours.
 
@@ -80,8 +86,12 @@ from BNG into the export CRS without mixing metre stations between projections.
 Periodic cubic spans preserve every printed control, join smoothly with zero
 slope at high/low marks, and cannot overshoot. Intermediate heights and
 widths/support spacing remain estimates; ground is never substituted for rails.
+Proposed paving is now emitted with an approximate stone-brick palette and takes
+precedence over overlapping old preview paving. This does not establish as-built
+layout, exact paving materials or planned pavement heights; ground samples still
+place the preview pavement surfaces.
 Air clearance is composed explicitly, and each reconstruction block is
-checked after reopening the world. The player spawns beside the preview track.
+checked after reopening the world. The player spawns on the recovered proposed entrance plaza when available.
 Some interpolated sections intersect terrain; tunnel shells, effigy, fences and
 detailed building interiors remain absent. This prototype is not an as-built model and
 does not pass the verified planning gate; exit code 2 remains expected.
@@ -98,7 +108,7 @@ Construction observations document the right-turn station exit and a gradient
 change about one third of the way up; the exact break position, rise allocation
 (60% in the lower incline), rail offsets and roof forms are still estimates.
 Every assumption is retained in `estimated_reconstruction.station_lift`; none
-can pass verified planning acceptance. Spawn is now on the station platform.
+can pass verified planning acceptance. Station platform coordinates are retained for visiting; spawn uses the proposed entrance plaza when recovered.
 References: [July 2017 construction observations](https://www.towerstimes.co.uk/news/2017/07/06/mi7-returns-mid-season-update-featuring-sw8/)
 and [March 2018 opening observations](https://www.towerstimes.co.uk/news/2018/03/09/wicker-man-meet-the-maker-at-alton-towers-resort/).
 

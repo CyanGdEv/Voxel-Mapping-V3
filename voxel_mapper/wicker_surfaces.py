@@ -154,6 +154,17 @@ def inspect_surfaces(evidence, alignment, output):
         with gzip.open(output/page['vector_file'], 'rt') as stream:
             candidates, detail = extract_surfaces(json.load(stream), page['annotations'],
                                                   alignment['printed_scale_m_per_pdf_point'])
+        # PyMuPDF's drawing list exposes pattern clipping but omits the tile
+        # paint itself. Read the original PDF paint/resource identity instead.
+        try:
+            from .wicker_patterns import extract_pattern_surfaces
+            pattern_candidates,pattern_detail = extract_pattern_surfaces(
+                Path(document['local_pdf']),page['annotations'],
+                alignment['printed_scale_m_per_pdf_point'],document['sha256'])
+            candidates += pattern_candidates
+            detail['new_paving_pattern'] = pattern_detail
+        except (KeyError,ValueError,OSError,StopIteration) as error:
+            detail['new_paving_pattern'] = {'status':'withheld','reason':str(error)}
         inverse = Transformer.from_crs(27700, 4326, always_xy=True)
         def project(x, y, z=None):
             xy = apply_candidate(list(zip(x, y)), alignment['candidate'])

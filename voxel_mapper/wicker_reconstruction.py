@@ -88,7 +88,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
         key = (math.floor(x),math.floor(y),math.floor(z))
         # Physical reconstruction always wins over its own excavation cells.
         if key in rows and rows[key]['material'] != 'air':
-            return
+            if not (component.startswith('proposed_') and rows[key]['feature'] == 'reconstruction/paving_preview'):
+                return
         rows[key] = {'x':key[0],'y':key[1],'z':key[2],'material':material,'kind':'structure',
                      'feature':'reconstruction/'+component,'source':'wicker-estimated-reconstruction',
                      'material_origin':'estimated_reconstruction_void' if void else 'estimated_reconstruction_shell'}
@@ -97,6 +98,7 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
     below_ground = 0
     rail_below_ground = 0
     minimum_clearance = math.inf
+    plaza_target = None
     try:
         for station,height in zip(stations,heights):
             point = line.interpolate(float(station))
@@ -158,13 +160,17 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
         paving = json.loads((output/'wicker-man-surface-candidates.geojson').read_text())
         for feature in paving['features']:
             polygon = transform(project.transform,shape(feature['geometry']))
+            proposed = feature['properties'].get('state') == 'new'
+            component = 'proposed_plaza_paving' if proposed and 'Plaza' in feature['properties'].get('contained_labels',[]) else ('proposed_paving' if proposed else 'paving_preview')
+            if component == 'proposed_plaza_paving':
+                plaza_target = polygon.representative_point()
             x0,z0,x1,z1 = polygon.bounds
             for x in range(math.floor(x0),math.ceil(x1)):
                 for z in range(math.floor(z0),math.ceil(z1)):
                     if not polygon.covers(Point(x+.5,z+.5)): continue
                     ground = terrain.sample(x+.5,z+.5)
                     if ground is not None:
-                        add(x,ground,z,'stone','paving_preview')
+                        add(x,ground,z,'stone_bricks' if proposed else 'stone',component)
     finally:
         terrain.close()
         surface.close()
@@ -182,6 +188,7 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
               'minimum_rail_ground_clearance_m':minimum_clearance,
               'profile_method':'Periodic cubic course/station-exit spans; explicit level station and two-incline lift with short slope blends',
               'station_lift':serializable_context(context),
+              'proposed_paving_footprints':sum(f['properties'].get('state') == 'new' for f in paving['features']),
               'profile_controls':[{'point_label':b['point_label'],'station_local_m':b['nearest_candidate']['station_m'],
                                    'level_m':b['printed_level_m'],'anchor_kind':b.get('anchor_kind'),
                                    'status':b['status']} for b in bindings if b['status'] in
@@ -190,7 +197,7 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                              'Drawing crosshairs replace text centres; four crossing branches were reviewed against drawing 373/95/7 B and remain provisional',
                              'Cubic height spans preserve printed extrema; intermediate track shape remains estimated',
                              'Track width, tie geometry, 4 m bent spacing and clearance are estimates',
-                             'Paving uses provisional alignment and a generic stone material',
+                             'Existing and proposed paving use provisional alignment and generic stone palettes; proposed paving pattern is matched to the printed legend',
                              'Timber bents are a simplified preview, not the actual structural design',
                              'Station, maintenance and pre-lift buildings now have estimated hollow shells; detailed interiors/roof forms remain unknown',
                              'Sound tunnels, effigy and fences are not reconstructed'],
@@ -206,6 +213,12 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
         raise ValueError('No safe station platform spawn available')
     sx,sz = min(platform,key=lambda p:Point(p[0]+.5,p[1]+.5).distance(station_polygon.centroid))
     report['visit_local_xyz_m'] = [sx,math.floor(context['station']['floor_level_m'])+2,sz]
+    report['station_platform_local_xyz_m'] = report['visit_local_xyz_m'][:]
+    plaza_blocks = [row for row in rows.values() if row['feature'] == 'reconstruction/proposed_plaza_paving']
+    if plaza_target is not None and plaza_blocks:
+        visit = min(plaza_blocks,key=lambda row:Point(row['x']+.5,row['z']+.5).distance(plaza_target))
+        report['plaza_local_visit_xyz_m'] = [visit['x'],visit['y']+2,visit['z']]
+        report['visit_local_xyz_m'] = report['plaza_local_visit_xyz_m'][:]
     (output/'wicker-man-reconstruction.json').write_text(json.dumps(report,indent=2))
     quality['estimated_reconstruction'] = report
     quality['voxel_records'] += len(rows)

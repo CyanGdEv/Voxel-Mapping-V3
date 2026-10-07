@@ -121,7 +121,7 @@ def inspect_drawings(documents, output, max_pages=2, max_paths=150_000, max_draw
     for document in documents:
         if document.get('applicationReference') not in APPLICATIONS:
             continue
-        row = {key: document[key] for key in ('applicationReference', 'title', 'url', 'sha256', 'role') if key in document}
+        row = {key: document[key] for key in ('applicationReference', 'title', 'url', 'sha256', 'role', 'local_pdf') if key in document}
         row['pages'] = []
         try:
             path = Path(document['local_pdf'])
