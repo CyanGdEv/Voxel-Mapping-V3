@@ -16,6 +16,7 @@ from .geopdf import inspect_registration
 from .drawing_vectors import extract_vectors
 from .drawing_evidence import evidence_candidates, document_category, inspection_order
 from .drawing_associations import extract_associations
+from .drawing_controls import inspect_coordinate_labels
 from .drawing_polygons import polygon_candidates
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
@@ -135,6 +136,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
+                      'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
                       'vector_extraction':vectors,
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),
