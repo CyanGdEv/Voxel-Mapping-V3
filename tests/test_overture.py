@@ -136,3 +136,20 @@ class OvertureTests(unittest.TestCase):
                 self.assertEqual(packaged['supplemental_buildings']['matching']['added_physical_features'],1)
                 self.assertIn('Overture Maps Foundation',archive.read('ATTRIBUTION.txt').decode())
             self.assertEqual(report['world']['blocks_per_metre'],1)
+
+    def test_partition_rows_and_versioned_provider_without_upstream_record_id(self):
+        from shapely import to_wkb
+        from voxel_mapper.overture_worker import record_to_feature
+        candidate=self.building(sources=[{'property':'','dataset':'Microsoft ML Buildings',
+            'record_id':None,'confidence':None,'provider':'microsoft','resource':'ml_buildings','version':'2026-08-11'}])
+        row=copy.deepcopy(candidate['properties'])
+        del row['theme']; del row['type']
+        row['id']='gers-1'; row['geometry']=to_wkb(box(.0007,.0007,.0008,.0008))
+        feature=record_to_feature(row)
+        enriched,report=supplement_buildings({'features':[]},{'features':[feature]},self.bounds,'2026-09-23.1')
+        self.assertEqual(report['added_physical_features'],1)
+        self.assertEqual(report['decisions'][0]['upstream_identity_status'],'provider_resource_version_only')
+        self.assertEqual(enriched['features'][0]['properties']['overture_sources'][0]['record_id'],None)
+        self.assertNotIn('type',row)
+        with self.assertRaisesRegex(ValueError,'partition'):
+            record_to_feature({**row,'type':'building_part'})

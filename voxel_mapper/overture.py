@@ -131,7 +131,7 @@ def supplement_buildings(collection, supplemental, bounds, release=None, max_che
                 raise ValueError('Underground/elevated building requires absolute elevation evidence')
             upstream = properties.get('sources') or []
             geometry_sources = [s for s in upstream if s.get('property') in (None,'','/geometry')]
-            if not geometry_sources or any(not s.get('dataset') or not s.get('record_id') for s in geometry_sources):
+            if not geometry_sources or any(not s.get('dataset') or not (s.get('record_id') or all(s.get(k) for k in ('provider','resource','version'))) for s in geometry_sources):
                 raise ValueError('Traceable upstream geometry sources required')
             if any('openstreetmap' in str(s['dataset']).lower() for s in geometry_sources):
                 raise ValueError('OSM-derived geometry withheld; existing OSM is authoritative')
@@ -177,7 +177,8 @@ def supplement_buildings(collection, supplemental, bounds, release=None, max_che
                                         'geometry':copy.deepcopy(feature['geometry']),'properties':additions})
             accepted_metric.append(metric)
             report['added_physical_features'] += 1
-            decision.update(status='added_unverified',geometry_sources=copy.deepcopy(geometry_sources))
+            decision.update(status='added_unverified',geometry_sources=copy.deepcopy(geometry_sources),
+                            upstream_identity_status='record_ids_available' if all(s.get('record_id') for s in geometry_sources) else 'provider_resource_version_only')
         except (ValueError,TypeError,KeyError,AttributeError) as error:
             decision['reason']=str(error)
     return enriched,report

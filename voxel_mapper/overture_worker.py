@@ -3,9 +3,21 @@ import json
 import sys
 
 
+def record_to_feature(row):
+    """The selected building partition supplies fields omitted from Parquet rows."""
+    import shapely
+    row = dict(row)
+    geometry = json.loads(shapely.to_geojson(shapely.from_wkb(row.pop('geometry'))))
+    row.pop('bbox',None)
+    for key,value in [('theme','buildings'),('type','building')]:
+        if row.get(key,value) != value:
+            raise ValueError('Conflicting building partition metadata')
+        row[key] = value
+    return {'type':'Feature','id':row.get('id'),'geometry':geometry,'properties':row}
+
+
 def main():
     import resource
-    import shapely
     from overturemaps import record_batch_reader
 
     release, bounds_json, destination, count_limit, byte_limit = sys.argv[1:]
@@ -21,9 +33,7 @@ def main():
                     count += 1
                     if count > int(count_limit):
                         raise ValueError('Overture feature budget exceeded')
-                    geometry = json.loads(shapely.to_geojson(shapely.from_wkb(row.pop('geometry'))))
-                    row.pop('bbox',None)
-                    feature = {'type':'Feature','id':row.get('id'),'geometry':geometry,'properties':row}
+                    feature = record_to_feature(row)
                     stream.write(json.dumps(feature,default=lambda x:x.isoformat(),allow_nan=False)+'\n')
 
 
