@@ -16,6 +16,7 @@ from pypdf import PdfReader
 from .drawing_evidence import evidence_candidates
 from .raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes, LABEL
 from .raster_marks import inspect_grid_marks
+from .survey_reference import inspect_reference_notes
 
 
 def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
@@ -42,11 +43,14 @@ def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
         line['words'].append(row['text'].strip())
     accepted = [line for line in lines.values() if not line['rejected']]
     text = '\n'.join(' '.join(line['words']) for line in accepted)
+    reference_text = '\n'.join('' if line['rejected'] else ' '.join(line['words'])
+                               for line in lines.values())
     evidence = evidence_candidates(text, material_context=True)
     for candidate in evidence['levels'] + evidence['materials']:
         candidate['text_origin'] = 'ocr_unverified'
         candidate['ocr_line_min_confidence'] = accepted[candidate['line_number']-1]['confidence']
     return {'status': 'ocr_candidates_only', 'semantic_evidence': evidence,
+            'survey_reference_notes': inspect_reference_notes(reference_text),
             'word_count': words, 'low_confidence_word_count': rejected,
             'accepted_line_count': len(accepted),
             'printed_scale_candidates': sorted({int(v) for v in re.findall(r'\b1\s*:\s*(\d{2,6})\b', text)}),

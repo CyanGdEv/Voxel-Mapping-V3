@@ -13,6 +13,7 @@ from pypdf.errors import PdfReadError
 
 from .acquisition import USER_AGENT
 from .geopdf import inspect_registration
+from .survey_reference import inspect_reference_notes
 from .drawing_vectors import extract_vectors
 from .drawing_evidence import evidence_candidates, document_category, inspection_order
 from .drawing_associations import extract_associations
@@ -188,6 +189,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
+                      'survey_reference_notes':inspect_reference_notes(text),
                       'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
                       'survey_mark_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_marks=True),
                       'grid_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_grid=True),
