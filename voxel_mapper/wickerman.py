@@ -259,6 +259,8 @@ def main():
         result['registration'] = inspect_alignment(evidence, raw_osm, output, BBOX)
         from .wicker_track import inspect_track
         result['track_association'] = inspect_track(evidence, raw_osm, result['registration'], output)
+        from .wicker_surfaces import inspect_surfaces
+        result['surfaces'] = inspect_surfaces(evidence, result['registration'], output)
     (output/'wicker-man-acceptance.json').write_text(json.dumps(result, indent=2))
     (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
     print(json.dumps(result, indent=2))

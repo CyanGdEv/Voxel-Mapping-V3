@@ -48,6 +48,15 @@ pavement-block proposal, one-metre Deer Park Wall setback and 1:3 grading are
 retained as proposed specifications; no stone type, colour or as-built polygon
 is inferred from that wording. Every document reports omitted page count.
 
+Paving extraction now resolves straight filled PDF subpaths and even-odd holes,
+intersects explicit clip geometry, and associates polygons with a unique adjacent
+filled legend swatch. Optional layers, unsupported groups/curves and ambiguous
+swatches are withheld. Text knockout masks and duplicate polygons are excluded.
+The recovered SW8 plan yields 17 existing-paving polygons, including one labelled
+plaza; the separate new-paving hatch remains unresolved. The surface GeoJSON uses
+the provisional alignment and is candidate evidence, not accepted world geometry.
+Legend colours do not establish paving materials or Minecraft palette colours.
+
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space
 files. These candidates do not imply georeferenced or as-built components.
