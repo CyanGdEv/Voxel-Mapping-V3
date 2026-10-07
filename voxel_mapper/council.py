@@ -205,7 +205,8 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                 ocr_pages += 1
                 ocr = inspect_scanned_page(payload, index+1, bounds, reference_features)
         native_grid=inspect_native_suffix_grid(page) if text.strip() else {'status':'no_native_text'}
-        dotted_grid=(inspect_dotted_grid(page) if native_grid['status']=='consistent_label_layout_unverified'
+        # Runnymede location permits a BNG hypothesis for diagnostics only.
+        dotted_grid=(inspect_dotted_grid(page,reference_features,27700) if native_grid['status']=='consistent_label_layout_unverified'
                      else {'status':'no_consistent_native_grid_labels','world_geometry_additions':0})
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,

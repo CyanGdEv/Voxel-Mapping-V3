@@ -3,9 +3,10 @@ import math
 import statistics
 import re
 import numpy as np
+from .drawing_landmarks import inspect_named_landmarks, normalise_name
 
 
-def inspect_labelled_intersections(lines, labels):
+def inspect_labelled_intersections(lines, labels, *, named_labels=(), reference_features=None, metric_crs_hypothesis=None):
     report={'status':'insufficient_labelled_intersections','registration_verified':False,
             'world_geometry_additions':0,'controls_exported':False,
             'limitations':['Unique one-point label-to-line proximity is an attachment hypothesis',
@@ -53,6 +54,8 @@ def inspect_labelled_intersections(lines, labels):
         residuals.append(float(np.linalg.norm(design[i]@fit-coordinates[i])))
     report['max_withheld_error_coordinate_units']=max(residuals)
     report['status']='consistent_labelled_intersections_unverified' if max(residuals)<=.5 else 'inconsistent_labelled_intersections'
+    if report['status']=='consistent_labelled_intersections_unverified' and reference_features is not None and metric_crs_hypothesis is not None:
+        report['named_landmark_inspection']=inspect_named_landmarks(controls,named_labels,reference_features,metric_crs_hypothesis)
     return report
 
 
@@ -99,7 +102,7 @@ def reconstruct_dotted_lines(segments, *, max_segments=250_000):
     return candidates
 
 
-def inspect_dotted_grid(page):
+def inspect_dotted_grid(page, reference_features=None, metric_crs_hypothesis=None):
     report={'status':'unavailable','world_geometry_additions':0,'registration_verified':False,
             'controls_exported':False,'limitations':[
                 'Periodic collinear strokes are line hypotheses, not labelled grid controls',
@@ -146,18 +149,24 @@ def inspect_dotted_grid(page):
                 path=[]
         if stack:raise ValueError('Unbalanced dotted graphics save')
         candidates=reconstruct_dotted_lines(segments)
-        labels=[];callbacks=characters=0
+        labels=[];named_labels=[];callbacks=characters=0
+        names={normalise_name(f['properties']['name']) for f in reference_features or []
+               if isinstance(f.get('properties',{}).get('name'),str) and f.get('properties',{}).get('source_id')=='osm'}
         def visit(text,cm,tm,font,size):
             nonlocal callbacks,characters
             callbacks+=1;characters+=len(text)
             if callbacks>200_000 or characters>500_000:raise ValueError('Dotted label text budget exceeded')
             match=re.fullmatch(r'(\d{6})([EN])',text.strip(),re.I)
+            if normalise_name(text) in names:
+                named_labels.append({'text':text.strip(),'origin':[tm[4]*cm[0]+tm[5]*cm[2]+cm[4],tm[4]*cm[1]+tm[5]*cm[3]+cm[5]]})
+                if len(named_labels)>64:raise ValueError('Named landmark label budget exceeded')
             if match:
                 labels.append({'axis':match[2].upper(),'value':int(match[1]),
                                'origin':[tm[4]*cm[0]+tm[5]*cm[2]+cm[4],tm[4]*cm[1]+tm[5]*cm[3]+cm[5]]})
                 if len(labels)>64:raise ValueError('Dotted label budget exceeded')
         page.extract_text(visitor_text=visit)
-        attachment=inspect_labelled_intersections(candidates,labels)
+        attachment=inspect_labelled_intersections(candidates,labels,named_labels=named_labels,
+                                                 reference_features=reference_features,metric_crs_hypothesis=metric_crs_hypothesis)
         return {**report,'status':'dotted_line_hypotheses' if candidates else 'no_supported_dotted_lines',
                 'labelled_intersection_inspection':attachment,
                 'candidate_count':len(candidates),

@@ -107,3 +107,15 @@ intersections inside both runs' extents; no ambiguous labels were accepted, and
 consistency, not independent surveyed accuracy or a verified CRS. Conflicting
 labels, ambiguous proximity, reversed/degenerate axes, excessive extent and
 inconsistent fits are withheld. Only counts and diagnostics are exported.
+
+## Named-label comparison with OSM
+
+Automatic native named-label comparison under an explicitly reported BNG
+hypothesis found labels inside three distinct OSM building footprints, including
+the Dome. A fourth building's label was outside its footprint by about 0.82
+hypothesised coordinate units. An additional Dome label outside the fitted control
+hull was withheld. Duplicate labels do not supply independent checkpoints.
+The OSM footprints were not used to fit the drawing grid. This is named-label
+containment, not surveyed-corner verification: reference uncertainty and source
+independence are unknown, and the CRS is unconfirmed. No registration flag is
+promoted, no accepted planning polygons are created and the world is unchanged.
