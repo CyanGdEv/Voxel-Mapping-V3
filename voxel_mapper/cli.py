@@ -16,6 +16,7 @@ from .acquisition import USER_AGENT
 from .buildings import reconstruct_with_fallback
 from .bridges import reconstruct_bridge
 from .transport import TRANSPORT_KINDS, transport_kind, transport_profile
+from .point_cloud import building_returns
 
 
 KINDS = {"building": "building", "highway": "path", "waterway": "water"}
@@ -138,6 +139,7 @@ def build(config, collection, output):
     voxel_path = output / "voxels.jsonl"
     terrain = Terrain(config["terrain"], crs, sources) if config.get("terrain") else None
     terrain_missing = 0
+    point_cloud_geometry={'status':'not_configured'}
     surface = None
     surface_fallback = None
     building_profiles = []
@@ -396,6 +398,18 @@ def build(config, collection, output):
                         if count > budget:
                             raise ValueError("Voxel budget exceeded during terrain generation")
                         stream.write(json.dumps({"x": x, "y": math.floor(elevation/resolution), "z": z, "kind": "terrain", "source": config["terrain"]["source_id"]}) + "\n")
+            if config.get('point_cloud_evidence',{}).get('geometry_use')=='classified_building_returns':
+                cloud=config['point_cloud_evidence']
+                if cloud.get('source_id') not in sources or cloud.get('units')!='m' or not terrain or cloud.get('vertical_datum')!=config['terrain'].get('vertical_datum'):
+                    raise ValueError('Point-cloud geometry requires registered source, metre units and matching terrain datum')
+                rows,point_cloud_geometry=building_returns(cloud,accepted,crs,terrain,resolution,
+                    max_voxels=min(500_000,budget-count))
+                for record in rows:
+                    count+=1
+                    if count>budget:raise ValueError('Voxel budget exceeded during point-cloud geometry')
+                    stream.write(json.dumps(record)+'\n')
+                issues.append({'severity':'warning','reason':'Classified building point surfaces are partial observations, not complete meshes or measured materials',
+                               'occupied_voxels':point_cloud_geometry.get('occupied_voxels',0)})
     except Exception:
         voxel_path.unlink(missing_ok=True)
         raise
@@ -419,6 +433,7 @@ def build(config, collection, output):
     report["surface"] = surface.report() if surface else None
     report['surface_fallback']=surface_fallback.report() if surface_fallback else None
     report['water_profiles'] = water_profiles
+    report['point_cloud_geometry'] = point_cloud_geometry
     report['planning_geometry_decisions'] = drawing_decisions
     for decision in drawing_decisions:
         if decision['status']=='withheld':

@@ -12,6 +12,7 @@ from .planning import discover_planning, match_planning, SOURCE as PLANNING_SOUR
 from .council import acquire_council, SOURCE as COUNCIL_SOURCE
 from .overture import acquire_buildings, supplement_buildings, SOURCE as OVERTURE_SOURCE
 from .bathymetry import acquire_bathymetry
+from .point_cloud import acquire_point_cloud
 
 
 def run_auto(output, location=None, bounds=None):
@@ -57,6 +58,11 @@ def run_auto(output, location=None, bounds=None):
         acquisition['providers'].extend(attempts)
         config['sources'] = [terrain_source, {'id':'osm','url':'https://www.openstreetmap.org/copyright',
                              'license':'ODbL-1.0','attribution':'© OpenStreetMap contributors'}]
+        cloud_config,cloud_source,cloud_discovery=acquire_point_cloud(bounds,output,terrain_source)
+        acquisition['providers'].append(cloud_discovery)
+        if cloud_config:
+            config['point_cloud_evidence']=cloud_config
+            config['sources'].append(cloud_source)
         bed_config, bed_source, bed_discovery = acquire_bathymetry(bounds,output,terrain_source)
         acquisition['providers'].append(bed_discovery)
         if bed_config:
@@ -117,6 +123,7 @@ def run_auto(output, location=None, bounds=None):
         report['planning_matches'] = planning_matches
         report['council_drawings'] = council
         report['bathymetry_discovery'] = bed_discovery
+        report['point_cloud_discovery'] = cloud_discovery
         if not bed_config:
             report['issues'].append({'severity':'warning','reason':'No automatically acquired measured lakebeds; underwater depth remains unknown',
                                      'provider_status':bed_discovery['status']})
@@ -132,6 +139,8 @@ def run_auto(output, location=None, bounds=None):
             report['issues'].append({'severity':'warning','reason':'Best horizontal datum transformation unavailable', 'accuracy_m':coordinate_transform.get('accuracy_m')})
         # These absent adapters must never be mistaken for universal automatic completeness.
         report['capabilities'] = {'osm':'automatic', 'terrain':'automatic', 'surface':'automatic' if config_surface else 'unavailable',
+                                  'point_cloud_evidence':cloud_discovery['status'],
+                                  'point_cloud_building_geometry':report['point_cloud_geometry']['status'],
                                   'transport_surfaces':'automatic_tagged_widths_and_materials',
                                   'bridge_decks':'automatic_unverified_surface_candidates' if config_surface else 'unavailable',
                                   'supplemental_buildings':overture['status'],
