@@ -21,6 +21,7 @@ from .drawing_controls import inspect_coordinate_labels
 from .drawing_polygons import polygon_candidates
 from .drawing_ocr import inspect_scanned_page
 from .raster_grid import inspect_native_suffix_grid
+from .dotted_grid import inspect_dotted_grid
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -203,6 +204,9 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
             else:
                 ocr_pages += 1
                 ocr = inspect_scanned_page(payload, index+1, bounds, reference_features)
+        native_grid=inspect_native_suffix_grid(page) if text.strip() else {'status':'no_native_text'}
+        dotted_grid=(inspect_dotted_grid(page) if native_grid['status']=='consistent_label_layout_unverified'
+                     else {'status':'no_consistent_native_grid_labels','world_geometry_additions':0})
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
@@ -212,7 +216,8 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                       'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
                       'survey_mark_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_marks=True),
                       'grid_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_grid=True),
-                      'native_suffix_grid_inspection':inspect_native_suffix_grid(page) if text.strip() else {'status':'no_native_text'},
+                      'native_suffix_grid_inspection':native_grid,
+                      'dotted_grid_inspection':dotted_grid,
                       'vector_extraction':vectors,
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),

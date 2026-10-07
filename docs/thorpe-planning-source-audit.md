@@ -84,3 +84,15 @@ the existing straight-path limits alone would not support its curves, clipping o
 grid representation. The source remains geographically unregistered and supplies
 no accepted physical planning geometry. No independent-feature alignment check
 has passed.
+
+## Dotted-line reconstruction
+
+A dedicated bounded inspection now reconstructs regular collinear short-stroke
+runs. It ignores out-of-crop strokes, curves and fills, limits operators, stack,
+segments and candidate counts, and splits on missing/irregular/overlapping dashes
+instead of bridging them. This operates separately from physical polygon parsing.
+The live Dome sheet produced 19 line hypotheses: nine vertical and ten horizontal.
+Its clipping remains unverified. No label attachment, grid intersections, CRS,
+independent accuracy or physical geometry was established by this step; only
+inspection counts are exported. Automatic PDF inspection runs this check when
+native suffix-grid labels have internally consistent spacing.
