@@ -57,7 +57,7 @@ The workflow is manually dispatched, but every supported data acquisition and ex
 | Data | Acquisition and evidence handling |
 | --- | --- |
 | Park location/boundary | Nominatim; polygon boundaries are used when available |
-| Buildings, roads, footways, parking, water, mapped attractions | OpenStreetMap/Overpass with retained raw response and source attribution |
+| Buildings, roads, footways, parking, water | OpenStreetMap/Overpass with retained raw response and source attribution |
 | England terrain | Environment Agency native 1 m DTM WCS, with coverage discovered from capabilities |
 | England building surfaces | Automatic last-return 1 m DSM acquisition when compatible EA ground elevations are available |
 | Other regions / unavailable EA data | Automatic Open Topo Data Mapzen sampling; coarse mixed-source fallback is flagged |
@@ -78,7 +78,7 @@ Verified planning-drawing geometry extraction, independent surveyed control-poin
 - East is Minecraft positive X; north is negative Z. Local projection details are recorded.
 - A constant Y offset places the lowest mapped elevation at Y=64 while preserving relative heights. Geographic elevation equals Minecraft Y minus the recorded offset.
 - Areas exceeding the supported vertical range fail instead of being resized or cropped.
-- Terrain receives four blocks of ground fill. This is not a full geological volume.
+- Measured dry-land terrain columns extend to one shared artificial foundation, 16 blocks below the lowest dry-land sample by default. This closes hanging hillside shells without changing surface elevations. Water and elevated roofs never create foundation columns; the foundation is a rendering support, not measured geology or bathymetry. The composed-block budget still applies.
 - Generic block materials represent feature classes; accepted DSM building profiles use distinct wall and roof blocks. Overlap is composed deterministically: structures/buildings take precedence over paths, parking, water and terrain.
 - Chunk writes are processed one at a time using an on-disk composition database. Every composed block and every unwritten air cell in saved sections is checked after reopening the Bedrock world before packaging. Palette index zero is explicitly reserved for air to prevent solid blocks filling otherwise empty sections.
 - The world name marks it as a draft, and attribution/georeferencing files are included in the `.mcworld`.
@@ -199,3 +199,5 @@ Every station (at most 1 m spacing) needs three transverse samples with at most 
 Accepted results remain `accepted_unverified`. They emit a single transport-material block at the sampled deck elevation, preserving the terrain below and the intervening air; thickness is an explicit one-block assumption. Supports, railings, underside geometry and bridge object classification are not invented. Falling sand/gravel surfaces use a documented stable-stone approximation where structural support is unknown. Profiles retain source IDs, height/clearance and connection metrics, budgets and rejection reasons in `bridge_profiles`; every accepted candidate adds strict-mode warnings. The EA [last-return DSM description](https://environment.data.gov.uk/dataset/9ba4d5ac-d596-445a-9056-dae3ddec0178) includes vegetation and vehicles as well as buildings and terrain, so smoothness and clearance alone do not certify a measured bridge deck.
 
 Validation against the saved automatically acquired Thorpe Park evidence: four transport spans fail surface slope/transverse consistency, one crosses the park build boundary, and one is stacked. Two additional bridge-tagged log-flume segments are ride geometry, not transport decks. No new Thorpe Park bridge blocks are justified by this evidence. Tests independently cover a supported synthetic span, numeric clearance, missing/coarse/nonfinite data, disconnected approaches, canopy/rail/spike rejection, datum/budget limits, clipped and stacked spans, and an actual Bedrock deck with air below after export/read-back.
+
+Attraction-only extents and coaster centerlines are reported and omitted from physical reconstruction rather than extruded as generic iron outlines. Attraction tags preserve independently mapped building, transport, parking or water types. Cached attraction-only features are also withheld by the build engine. Detailed ride components require verified physical geometry/elevations.

@@ -49,8 +49,11 @@ def parse_osm(data):
             kind = "parking"
         if tags.get("natural") == "water":
             kind = "water"
-        if tags.get("attraction") or tags.get("roller_coaster"):
-            kind = "attraction"
+        # Attraction outlines describe the extent of a ride, not its supports,
+        # track, building or paving. Preserve independently mapped physical types.
+        if not kind and (tags.get("attraction") or tags.get("roller_coaster")):
+            skipped.append({'id': element['id'], 'reason': 'attraction extent/track has no verified physical reconstruction; generic extrusion omitted'})
+            continue
         if not kind:
             continue
         if element["type"] == "way" and element["id"] in represented_members:
@@ -171,6 +174,9 @@ def build(config, collection, output):
                 metric_geometry = transform(projector.transform, geometry)
                 geometry = metric_geometry.intersection(area)
                 kind = properties.get("kind", "structure")
+                if kind == 'attraction' and not properties.get('planning_geometry_evidence'):
+                    issues.append({'feature': fid, 'severity': 'warning', 'reason': 'attraction extent/track has no verified physical reconstruction; generic extrusion omitted'})
+                    continue
                 assumptions = []
                 assumptions.extend(properties.get('material_warnings',[]))
                 transport = None

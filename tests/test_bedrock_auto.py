@@ -14,6 +14,25 @@ import test_terrain_osm as fixtures
 
 
 class BedrockTests(unittest.TestCase):
+    def test_shared_foundation_closes_slopes_without_filling_water_or_roofs(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);path=root/'voxels.jsonl'
+            records=[dict(x=0,y=10,z=0,kind='terrain'),dict(x=1,y=20,z=0,kind='terrain'),
+                     dict(x=2,y=15,z=0,kind='water'),dict(x=3,y=25,z=0,kind='roof')]
+            path.write_text('\n'.join(json.dumps(r) for r in records))
+            metadata=export_world(path,root,{'voxel_size_m':1},ground_depth=4)
+            world=amulet.load_level(str(root/'bedrock-world'))
+            try:
+                offset=metadata['vertical_offset_blocks']
+                for x in (0,1):
+                    self.assertEqual(world.get_block(x,6+offset,0,'minecraft:overworld').base_name,'stone')
+                    self.assertEqual(world.get_block(x,5+offset,0,'minecraft:overworld').base_name,'air')
+                self.assertEqual(world.get_block(1,10+offset,0,'minecraft:overworld').base_name,'stone')
+                for x,y in ((2,14),(3,24)):
+                    self.assertEqual(world.get_block(x,y+offset,0,'minecraft:overworld').base_name,'air')
+            finally:
+                world.close()
+
     def test_world_scale_orientation_composition_and_package(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

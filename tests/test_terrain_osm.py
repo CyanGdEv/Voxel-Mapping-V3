@@ -75,6 +75,26 @@ class TerrainTests(unittest.TestCase):
 
 
 class MultipolygonTests(unittest.TestCase):
+    def test_attraction_extent_does_not_override_physical_building_or_path(self):
+        points=[{'lon':x,'lat':y} for x,y in [(0,0),(1,0),(1,1),(0,0)]]
+        elements=[{'type':'way','id':i,'tags':tags,'geometry':points} for i,tags in enumerate([
+            {'attraction':'roller_coaster'}, {'attraction':'dome','building':'yes'},
+            {'attraction':'queue','highway':'footway'}])]
+        collection,skipped=parse_osm({'elements':elements})
+        self.assertEqual([f['properties']['kind'] for f in collection['features']],['building','path'])
+        self.assertEqual(collection['features'][0]['geometry']['type'],'Polygon')
+        self.assertEqual(len(skipped),1)
+
+    def test_cached_attraction_outline_is_not_extruded(self):
+        with tempfile.TemporaryDirectory() as d:
+            config,features=TerrainTests().fixture(Path(d))
+            features['features'][0]['properties']['kind']='attraction'
+            report=build(config,features,Path(d)/'out')
+            self.assertEqual(report['features'],0)
+            records=[json.loads(s) for s in (Path(d)/'out/voxels.jsonl').read_text().splitlines()]
+            self.assertEqual({r['kind'] for r in records},{'terrain'})
+            self.assertTrue(any('attraction extent' in i['reason'] for i in report['issues']))
+
     def test_split_rings_and_courtyard(self):
         def member(ref, role, coords):
             return {'type':'way','ref':ref,'role':role,'geometry':[{'lon':x,'lat':y} for x,y in coords]}

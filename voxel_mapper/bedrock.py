@@ -35,7 +35,7 @@ def material_block(material):
     return Block('universal_minecraft', material)
 
 
-def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=4):
+def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16):
     if report['voxel_size_m'] != 1:
         raise ValueError('Bedrock 1:1 world export requires voxel_size_m = 1')
     output = Path(output)
@@ -47,11 +47,14 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         raise ValueError('ground_depth must be between 1 and 32 blocks')
     lowest, highest, spawn_distance, spawn_x, spawn_z = math.inf, -math.inf, math.inf, 0, 0
     count = 0
+    lowest_ground = math.inf
     with Path(voxel_path).open() as stream:
         for line in stream:
             record = json.loads(line)
             y = record['y']
             lowest, highest = min(lowest,y), max(highest,y)
+            if record['kind'] == 'terrain':
+                lowest_ground = min(lowest_ground, y)
             count += 1
             distance = record['x']**2 + record['z']**2
             if distance < spawn_distance:
@@ -59,6 +62,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
     if not count:
         raise ValueError('No voxel data exists to export')
     y_offset = 64-int(lowest)
+    # One shared artificial foundation closes hillside undersides. Only measured
+    # dry-land terrain columns qualify: never infer a lake bed or bridge support.
+    foundation_y = max(-64, math.floor(lowest_ground)+y_offset-ground_depth) if math.isfinite(lowest_ground) else None
     if highest+y_offset > 317:
         raise ValueError('Park exceeds Bedrock vertical range; cannot retain 1:1 scale without cropping')
     wrapper = None
@@ -81,9 +87,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                         raise ValueError(f'Unsupported block material: {material}')
                     pending.append((x//16,z//16,x%16,y,z%16,material,PRIORITY.get(kind,6)))
                     if kind == 'terrain':
-                        for depth in range(1,ground_depth+1):
+                        for depth in range(1,y-foundation_y+1):
                             pending.append((x//16,z//16,x%16,y-depth,z%16,'dirt' if depth<=2 else 'stone',-1))
-                    attempted += 1+(ground_depth if kind=='terrain' else 0)
+                    attempted += 1+(y-foundation_y if kind=='terrain' else 0)
                     if attempted > max_blocks:
                         raise ValueError('World block budget exceeded; split the park area')
                     if len(pending)>=10_000:
@@ -175,8 +181,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'vertical_offset_blocks':y_offset,'geographic_elevation_m':'Minecraft Y minus vertical_offset_blocks',
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
+                'foundation':{'minecraft_y':foundation_y,'method':'shared artificial dry-land foundation; not measured subsurface geology or bathymetry'},
                 'sha256':checksum,'quality':'draft_unverified',
-                'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Ground filled only a few blocks below sampled terrain','Outside mapped chunks Minecraft may generate unrelated terrain','Not yet tested by importing into the Minecraft game']}
+                'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Artificial dry-land foundation; unmapped lake depths remain unknown','Outside mapped chunks Minecraft may generate unrelated terrain','This export has no automated in-game visual fidelity validation']}
     except Exception:
         if wrapper:
             wrapper.close()
