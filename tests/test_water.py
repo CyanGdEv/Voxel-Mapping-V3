@@ -33,7 +33,8 @@ class WaterTests(unittest.TestCase):
             self.assertEqual({r['y'] for r in waters},{22,23,24,25})
             self.assertEqual({r['elevation_source'] for r in beds},{'survey-bed'})
             self.assertEqual(report['water_profiles'][0]['measured_bed_columns'],len(beds))
-            self.assertEqual(report['water_profiles'][0]['measured_depth_range_m'],[3.5,3.5])
+            self.assertEqual(report['water_profiles'][0]['derived_depth_range_m'],[3.5,3.5])
+            self.assertEqual(report['water_profiles'][0]['water_surface_method'],'terrain_estimate')
             self.assertEqual(report['water_profiles'][0]['unknown_depth_columns'],0)
             metadata=export_world(root/'out/voxels.jsonl',root/'out',report)
             world=amulet.load_level(str(root/'out/bedrock-world'))
@@ -104,7 +105,7 @@ class WaterTests(unittest.TestCase):
             profile=report['water_profiles'][0]
             self.assertEqual(profile['depth_status'],'unknown')
             self.assertEqual(profile['unknown_depth_columns'],len(water))
-            self.assertIsNone(profile['measured_depth_range_m'])
+            self.assertIsNone(profile['derived_depth_range_m'])
             columns={(r['x'],r['z']) for r in water}
             self.assertFalse(any((r['x'],r['z']) in columns for r in rows if r['kind']=='terrain'))
             self.assertIn('Lakebed depth unavailable',str(report['issues']))

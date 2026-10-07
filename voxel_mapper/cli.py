@@ -283,7 +283,9 @@ def build(config, collection, output):
                     water_profile = {'feature':fid,'surface_elevation_m':lake_level,
                         'bed_source':config['bathymetry']['source_id'] if bathymetry else None,
                         'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0,
-                        'unknown_depth_columns':0,'measured_depth_range_m':None,
+                        'unknown_depth_columns':0,'derived_depth_range_m':None,
+                        'water_surface_method':'declared_elevation' if 'base_elevation_m' in properties else 'terrain_estimate',
+                        'depth_method':'measured_bed_relative_to_unverified_water_surface' if bathymetry else 'unknown',
                         'depth_status':'unknown','surface_elevation_is_depth':False}
                     water_profiles.append(water_profile)
                     if bathymetry:
@@ -344,8 +346,8 @@ def build(config, collection, output):
                         else:
                             water_profile['measured_bed_columns'] += 1
                             depth=lake_level-bed
-                            previous_range=water_profile['measured_depth_range_m']
-                            water_profile['measured_depth_range_m']=[min(previous_range[0],depth),max(previous_range[1],depth)] if previous_range else [depth,depth]
+                            previous_range=water_profile['derived_depth_range_m']
+                            water_profile['derived_depth_range_m']=[min(previous_range[0],depth),max(previous_range[1],depth)] if previous_range else [depth,depth]
                             bed_y = math.floor(bed/resolution)
                             bottom = bed_y
                     if lake_level is not None and bed_y is None:
@@ -367,7 +369,7 @@ def build(config, collection, output):
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
                 if water_profile:
-                    water_profile['depth_status']='partial_measured_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_raster_coverage' if water_profile['measured_bed_columns'] else 'unknown'
+                    water_profile['depth_status']='partial_measured_bed_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_bed_coverage' if water_profile['measured_bed_columns'] else 'unknown'
                 if water_profile and (water_profile['missing_bed_columns'] or water_profile['invalid_bed_columns']):
                     issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns retain surface only; no depths interpolated',**water_profile})
             if terrain and config["terrain"].get("emit_surface", True):
