@@ -3,6 +3,7 @@ import hashlib
 import json
 import math
 from .water import surface_level
+from .planning_geometry import physical_features
 from pathlib import Path
 
 import requests
@@ -118,6 +119,8 @@ def build(config, collection, output):
     for source in sources.values():
         if not source.get("url") or not source.get("license"):
             raise ValueError("Every source needs url and license")
+    drawing_features, drawing_decisions = physical_features(collection.get('planning_geometry_records',[]),
+        sources,config['bbox'],config.get('terrain',{}).get('vertical_datum'))
     output.mkdir(parents=True, exist_ok=True)
     issues, accepted, count = [], [], 0
     scanned = 0
@@ -135,13 +138,22 @@ def build(config, collection, output):
     transport_profiles = []
     bridge_profiles = []
     water_footprints = []
+    water_profiles = []
+    bathymetry = None
     try:
+        if config.get('bathymetry'):
+            specification = config['bathymetry']
+            if specification.get('elevation_type') != 'bed_elevation':
+                raise ValueError('Bathymetry must declare absolute bed_elevation, not depth or airborne terrain')
+            if terrain is None or specification.get('vertical_datum') != config['terrain'].get('vertical_datum'):
+                raise ValueError('Bathymetry and terrain must share the same declared vertical datum')
+            bathymetry = Terrain(specification, crs, sources)
         if config.get("surface"):
             if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
                 raise ValueError("Surface and terrain must have the same declared vertical datum")
             surface = Terrain(config["surface"], crs, sources)
         with voxel_path.open("w") as stream:
-            for feature in collection["features"]:
+            for feature in [*collection["features"],*drawing_features]:
                 fid = feature.get("id", len(accepted))
                 properties = feature.get("properties", {})
                 source_id = properties.get("source_id")
@@ -155,9 +167,10 @@ def build(config, collection, output):
                 geometry = metric_geometry.intersection(area)
                 kind = properties.get("kind", "structure")
                 assumptions = []
+                assumptions.extend(properties.get('material_warnings',[]))
                 transport = None
                 is_line = geometry.geom_type in ("LineString", "MultiLineString", "Point")
-                if kind in TRANSPORT_KINDS and (properties.get('highway') or properties.get('area:highway')):
+                if kind in TRANSPORT_KINDS and (properties.get('highway') or properties.get('area:highway') or kind=='plaza' or properties.get('planning_geometry_evidence')):
                     transport = transport_profile(properties, kind, is_line)
                     assumptions.extend(transport['warnings'])
                     transport_profiles.append({'feature': fid, 'source_id': source_id, **transport})
@@ -238,6 +251,7 @@ def build(config, collection, output):
                 if geometry.is_empty:
                     continue
                 lake_level = None
+                water_profile = None
                 if kind == 'water' and metric_geometry.geom_type in ('Polygon','MultiPolygon'):
                     water_footprints.append(geometry)
                     if 'base_elevation_m' in properties:
@@ -251,7 +265,13 @@ def build(config, collection, output):
                     if lake_level is None:
                         issues.append({'feature':fid,'severity':'error','reason':message})
                         continue
-                    assumptions.append(message)
+                    assumptions.append(message.split('Lakebed depth unavailable')[0].rstrip('; .') if bathymetry else message)
+                    water_profile = {'feature':fid,'surface_elevation_m':lake_level,
+                        'bed_source':config['bathymetry']['source_id'] if bathymetry else None,
+                        'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0}
+                    water_profiles.append(water_profile)
+                    if bathymetry:
+                        assumptions.append('Lakebed uses declared measured bed raster; substrate material is unknown and represented by stone')
                 roof_rows = elevated_roof
                 if roof_rows is None and kind == "building" and surface and terrain and geometry.geom_type in ("Polygon", "MultiPolygon"):
                     roof_rows, profile = reconstruct_building(geometry, resolution, terrain, surface,
@@ -266,7 +286,7 @@ def build(config, collection, output):
                         assumptions.extend(profile["warnings"])
                         if profile["omitted_columns"]:
                             assumptions.append(f'{profile["omitted_columns"]} building columns omitted because surface samples were missing or rejected')
-                if roof_rows is None and height_assumption:
+                if roof_rows is None and height_assumption and lake_level is None:
                     if kind not in TRANSPORT_KINDS:
                         assumptions.append(height_assumption)
                 if assumptions:
@@ -297,19 +317,36 @@ def build(config, collection, output):
                     # Ground paving replaces the sampled terrain block, rather than
                     # extruding two blocks when the raster elevation is fractional.
                     upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS or lake_level is not None else math.ceil(top/resolution)
-                    for y in range(math.floor(cell_base/resolution), upper):
+                    bottom = math.floor(cell_base/resolution)
+                    bed_y = None
+                    if lake_level is not None and bathymetry:
+                        bed = bathymetry.sample((x+.5)*resolution,(z+.5)*resolution)
+                        if bed is None or not math.isfinite(bed):
+                            water_profile['missing_bed_columns'] += 1
+                        elif not 0 < lake_level-bed <= 100 or math.floor(bed/resolution) >= math.floor(lake_level/resolution):
+                            water_profile['invalid_bed_columns'] += 1
+                        else:
+                            water_profile['measured_bed_columns'] += 1
+                            bed_y = math.floor(bed/resolution)
+                            bottom = bed_y
+                    for y in range(bottom, upper):
                         count += 1
                         if count > budget:
                             raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
                         voxel_kind = "roof" if roof_rows is not None and y==upper-1 else kind
+                        if bed_y is not None and y == bed_y:
+                            voxel_kind = 'lakebed'
                         stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
-                            "source":source_id,"elevation_source":config["surface"]["source_id"] if bridge_rows is not None or elevated_roof is not None else config["terrain"]["source_id"] if use_terrain else source_id,
+                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else config["surface"]["source_id"] if bridge_rows is not None or elevated_roof is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
-                            **({'material': transport['material']} if transport else {}),
-                            "geometry_method":"elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
+                            **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
+                            **({'bed_source':config['bathymetry']['source_id']} if bed_y is not None else {}),
+                            "geometry_method":"measured_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
+                if water_profile and (water_profile['missing_bed_columns'] or water_profile['invalid_bed_columns']):
+                    issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns retain surface only; no depths interpolated',**water_profile})
             if terrain and config["terrain"].get("emit_surface", True):
                 water_mask = unary_union(water_footprints)
                 minx, minz, maxx, maxz = area.bounds
@@ -337,6 +374,8 @@ def build(config, collection, output):
         voxel_path.unlink(missing_ok=True)
         raise
     finally:
+        if bathymetry:
+            bathymetry.close()
         if surface:
             surface.close()
         if terrain:
@@ -350,6 +389,12 @@ def build(config, collection, output):
     report["bridge_profiles"] = bridge_profiles
     report['transport_profiles'] = transport_profiles
     report["surface"] = surface.report() if surface else None
+    report['water_profiles'] = water_profiles
+    report['planning_geometry_decisions'] = drawing_decisions
+    for decision in drawing_decisions:
+        if decision['status']=='withheld':
+            report['issues'].append({'severity':'warning','feature':'planning/'+str(decision['id']),'reason':decision['reason']})
+    report['bathymetry'] = bathymetry.report() if bathymetry else None
     report["column_checks"] = scanned
     report["terrain"] = terrain.report() if terrain else None
     (output / "quality-report.json").write_text(json.dumps(report, indent=2))

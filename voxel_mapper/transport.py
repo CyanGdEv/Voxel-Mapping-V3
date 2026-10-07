@@ -2,7 +2,7 @@
 import math
 import re
 
-TRANSPORT_KINDS = {'road', 'path', 'sidewalk', 'queue', 'cycleway', 'steps'}
+TRANSPORT_KINDS = {'road', 'path', 'sidewalk', 'queue', 'cycleway', 'steps', 'plaza'}
 SURFACE_MATERIALS = {
     'asphalt': 'black_concrete', 'concrete': 'light_gray_concrete',
     'concrete:plates': 'light_gray_concrete', 'concrete:lanes': 'light_gray_concrete',
@@ -15,7 +15,10 @@ SURFACE_MATERIALS = {
     'unpaved': 'coarse_dirt', 'paved': 'stone',
 }
 DEFAULT_WIDTHS = {'road': 6, 'path': 2, 'sidewalk': 2, 'queue': 1,
-                  'cycleway': 2, 'steps': 2}
+                  'cycleway': 2, 'steps': 2, 'plaza': 2}
+CONCRETE_COLOURS = {'white','orange','magenta','light_blue','yellow','lime','pink','gray',
+                    'light_gray','cyan','purple','blue','brown','green','red','black'}
+CONCRETE_MATERIALS = {colour+'_concrete' for colour in CONCRETE_COLOURS}
 
 
 def transport_kind(tags):
@@ -88,9 +91,17 @@ def transport_profile(properties, kind, is_line):
         warnings.append(f'surface {surface!r} unsupported; generic material assumed' if surface else 'surface missing; generic material assumed')
     if surface in {'paved', 'unpaved'}:
         warnings.append('surface describes a paving class; actual constituent material is unknown')
+    colour = properties.get('surface:colour',properties.get('surface:color'))
+    if colour is not None:
+        normalized = str(colour).strip().lower().replace('grey','gray').replace(' ','_')
+        if surface in {'concrete','concrete:plates','concrete:lanes'} and normalized in CONCRETE_COLOURS:
+            material = normalized+'_concrete'
+        else:
+            warnings.append('surface colour cannot be represented by the supported material palette; base material retained')
     if kind == 'steps':
         warnings.append('steps follow terrain at metre resolution; individual treads are not measured')
     return {'kind': kind, 'width_m': width, 'width_source': width_source,
             'surface_tag': surface, 'material': material,
+            'surface_colour': colour,
             'material_method': 'tagged_surface_approximation' if surface in SURFACE_MATERIALS else 'assumed',
             'warnings': warnings}

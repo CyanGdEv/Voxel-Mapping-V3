@@ -7,7 +7,7 @@ import amulet
 import rasterio
 
 from voxel_mapper.cli import build, parse_osm
-from voxel_mapper.transport import width_metres, transport_profile, SURFACE_MATERIALS
+from voxel_mapper.transport import width_metres, transport_profile, SURFACE_MATERIALS, CONCRETE_MATERIALS
 from voxel_mapper.bedrock import export_world, material_block
 import test_terrain_osm as fixtures
 
@@ -19,6 +19,10 @@ class TransportTests(unittest.TestCase):
         ambiguous = transport_profile({'surface':'asphalt;paving_stones'}, 'path', False)
         self.assertEqual(ambiguous['material_method'], 'assumed')
         self.assertTrue(transport_profile({'surface':'paved'}, 'path', False)['warnings'])
+        self.assertEqual(transport_profile({'surface':'concrete','surface:colour':'light grey'}, 'path',False)['material'],'light_gray_concrete')
+        unsupported=transport_profile({'surface':'concrete','surface:colour':'#123456'},'path',False)
+        self.assertEqual(unsupported['material'],'light_gray_concrete')
+        self.assertTrue(unsupported['warnings'])
     def test_units_and_ambiguous_widths(self):
         for value, expected in [('3 m', 3), ('10 ft', 3.048), ('6\' 6"', 1.9812), (2.5, 2.5)]:
             self.assertAlmostEqual(width_metres(value), expected)
@@ -89,7 +93,7 @@ class TransportTests(unittest.TestCase):
     def test_all_surface_materials_round_trip_and_unknown_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d); path = root/'voxels.jsonl'
-            materials = sorted(set(SURFACE_MATERIALS.values()))
+            materials = sorted(set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS)
             path.write_text('\n'.join(json.dumps(dict(x=i,y=0,z=0,kind='path',material=m)) for i,m in enumerate(materials)))
             export_world(path, root/'valid', {'voxel_size_m':1})
             world = amulet.load_level(str(root/'valid/bedrock-world'))

@@ -14,19 +14,21 @@ from amulet.api.block import Block
 from amulet.api.chunk import Chunk
 from amulet.level.formats.leveldb_world import LevelDBFormat
 from amulet_nbt import ByteTag, IntTag, LongTag, StringTag
-from .transport import SURFACE_MATERIALS
+from .transport import SURFACE_MATERIALS, CONCRETE_MATERIALS
 
 VERSION = (1, 21, 130)
 MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'stone',
+             'lakebed':'stone', 'plaza':'stone',
              'road':'black_concrete','sidewalk':'stone','queue':'stone','cycleway':'stone','steps':'stone',
              'attraction':'iron_block','building':'stone_bricks','roof':'stone','structure':'stone'}
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
-ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values())
+PRIORITY.update(lakebed=1,plaza=3)
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS
 
 
 def material_block(material):
-    if material in ('black_concrete', 'light_gray_concrete'):
+    if material in CONCRETE_MATERIALS:
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
     if material == 'oak_planks':
         return Block('universal_minecraft', 'planks', {'material': StringTag('oak')})

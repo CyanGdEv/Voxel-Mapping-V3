@@ -82,6 +82,9 @@ def run_auto(output, location=None, bounds=None):
             if len(names) == 1:
                 site_name = names.pop()
         council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds)
+        # Drawing adapters may supply registered, semantic, permission-checked
+        # components. Raw PDF paths and application-site boundaries are excluded.
+        collection['planning_geometry_records'] = council.get('geometry_records', [])
         if council['status'] != 'not_supported':
             config['sources'].append(COUNCIL_SOURCE)
         acquisition['providers'].append({'provider':council['provider'], 'status':council['status'],
@@ -123,7 +126,9 @@ def run_auto(output, location=None, bounds=None):
                                   'planning_feature_matching':'automatic_spatial_candidates_only',
                                   'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable',
                                   'planning_drawings':'automatic_consultation_inspection' if council['documents'] else council['status'],
-                                  'planning_drawing_geometry':'not_implemented',
+                                  'planning_drawing_geometry':'verified_adapter_polygons' if any(
+                                      d['status']=='accepted_verified_adapter_record' for d in report['planning_geometry_decisions']) else 'no_usable_geometry_provider',
+                                  'lakebed_geometry':'measured_raster_supported_no_automatic_provider',
                                   'geopdf_registration':'automatic_wgs84_control_validation',
                                   'drawing_vector_candidates':'reuse_gated_straight_paths_only',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
