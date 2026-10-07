@@ -58,3 +58,11 @@ priority and alternates those applications before consuming a second plan from
 one application. The six-PDF inspection budget and consultation-only source
 handling remain in force. This follow-up found a relevant complete plan outline;
 it did not extract accepted physical polygons or change the world.
+
+Native suffix-grid inspection subsequently recovered 19 easting labels (10
+distinct values) and 38 northing labels (nine distinct values) from the Dome
+access/parking sheet. Held-out label-spacing residuals were below 0.04 drawing
+coordinate units. These are native text-origin consistency checks, not grid-line
+intersections, geographic registration or independent metre accuracy. No controls
+or transforms are exported. Empty native-text callbacks are ignored for the
+text-fragment budget; all callbacks separately remain bounded to 200,000.

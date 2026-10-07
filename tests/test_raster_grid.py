@@ -1,5 +1,5 @@
 import unittest
-from voxel_mapper.raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes
+from voxel_mapper.raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes, inspect_native_suffix_grid
 
 
 def tsv(text, confidence=95, left=10, top=100, width=60, height=15):
@@ -8,6 +8,28 @@ def tsv(text, confidence=95, left=10, top=100, width=60, height=15):
 
 
 class RasterGridTests(unittest.TestCase):
+    def test_native_suffix_labels_respect_pdf_axis_and_keep_controls_private(self):
+        class Page:
+            def extract_text(self,visitor_text):
+                for axis in ('E','N'):
+                    for i in range(3):
+                        value=(503500 if axis=='E' else 168350)+50*i
+                        visitor_text(str(value)+axis,[1,0,0,1,0,0],[1,0,0,1,100+100*i,200+100*i],None,10)
+        result=inspect_native_suffix_grid(Page())
+        self.assertEqual(result['status'],'consistent_label_layout_unverified')
+        self.assertEqual(result['axis_checks']['E']['distinct_coordinate_count'],3)
+        self.assertNotIn('controls',result)
+        self.assertEqual(result['world_geometry_additions'],0)
+        self.assertEqual(inspect_native_suffix_grid(Page(),max_fragments=1)['status'],'rejected_native_grid_inspection')
+
+    def test_native_split_or_embedded_suffix_labels_are_not_guessed(self):
+        class Page:
+            def extract_text(self,visitor_text):
+                for text in ['503500','E','scale 503550E','503600E 503600E']:
+                    visitor_text(text,[1,0,0,1,0,0],[1,0,0,1,100,100],None,10)
+        result=inspect_native_suffix_grid(Page())
+        self.assertEqual(result['axis_checks']['E']['label_count'],0)
+
     def test_provisional_word_box_does_not_accept_misread_axis(self):
         proposals=provisional_word_boxes(tsv('5035505',0),'top',(20,30,1020,210),90)
         self.assertEqual(proposals[0]['page_pixel_box'],(905,40,920,100))

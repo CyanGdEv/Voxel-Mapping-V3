@@ -20,6 +20,7 @@ from .drawing_associations import extract_associations
 from .drawing_controls import inspect_coordinate_labels
 from .drawing_polygons import polygon_candidates
 from .drawing_ocr import inspect_scanned_page
+from .raster_grid import inspect_native_suffix_grid
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -211,6 +212,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                       'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
                       'survey_mark_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_marks=True),
                       'grid_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_grid=True),
+                      'native_suffix_grid_inspection':inspect_native_suffix_grid(page) if text.strip() else {'status':'no_native_text'},
                       'vector_extraction':vectors,
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),

@@ -9,6 +9,44 @@ import numpy as np
 LABEL = re.compile(r'^(\d{6})([EN])$', re.I)
 
 
+def inspect_native_suffix_grid(page, *, max_fragments=20_000, max_text=500_000):
+    """Inspect native label origins without exporting controls or a transform."""
+    labels=[]
+    fragments=characters=callbacks=0
+    def visit(text,cm,tm,font,size):
+        nonlocal fragments,characters,callbacks
+        callbacks+=1
+        if callbacks>200_000:
+            raise ValueError('Native grid callback budget exceeded')
+        if not text.strip():return
+        fragments+=1;characters+=len(text)
+        if fragments>max_fragments or characters>max_text:
+            raise ValueError('Native grid text budget exceeded')
+        match=LABEL.fullmatch(text.strip())
+        if not match:return
+        x=tm[4]*cm[0]+tm[5]*cm[2]+cm[4]
+        y=tm[4]*cm[1]+tm[5]*cm[3]+cm[5]
+        if not all(math.isfinite(v) for v in (x,y)):
+            raise ValueError('Nonfinite native grid label origin')
+        axis=match[2].upper()
+        # Native PDF y increases upward; the common layout inspector expects
+        # a downward image y axis. Origins still are not grid intersections.
+        labels.append({'axis':axis,'value':int(match[1]),'pixel_position':x if axis=='E' else -y})
+        if len(labels)>64:raise ValueError('Native grid label budget exceeded')
+    try:
+        page.extract_text(visitor_text=visit)
+        result=inspect_label_layout(labels)
+        result['inspection_method']='native_suffix_label_origins'
+        result['coordinate_units']='drawing_units_unverified'
+        result['limitations']=['Native text origins are not grid intersections or surveyed checkpoints',
+                              'Residuals do not establish CRS, metre accuracy or independent alignment',
+                              'Only whole-fragment six-digit E/N suffix labels are inspected',
+                              'No controls, transforms, physical polygons or world additions exported']
+        return result
+    except (ValueError,TypeError,KeyError,IndexError) as error:
+        return {'status':'rejected_native_grid_inspection','reason':str(error),'world_geometry_additions':0}
+
+
 def provisional_word_boxes(tsv, edge, crop_box, rotation):
     """Find coordinate-shaped words for rereading, never accepted controls."""
     if len(tsv.encode()) > 8_000_000 or edge not in ('top','bottom','left','right') or rotation not in (0,90):
