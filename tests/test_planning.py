@@ -119,5 +119,5 @@ class PlanningTests(unittest.TestCase):
             with zipfile.ZipFile(root/'out/park.mcworld') as archive:
                 packaged=json.loads(archive.read('voxel-quality-report.json'))
                 self.assertEqual(packaged['planning_discovery']['record_count'],1)
-                self.assertEqual(packaged['capabilities']['planning_drawings'],'not_implemented')
+                self.assertEqual(packaged['capabilities']['planning_drawing_geometry'],'not_implemented')
                 self.assertIn('planning-data-england',archive.read('ATTRIBUTION.txt').decode())

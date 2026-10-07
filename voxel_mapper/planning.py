@@ -27,7 +27,7 @@ def discover_planning(bounds, output, max_pages=5, page_size=100):
     result = {'provider': SOURCE['id'], 'checked_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'datasets': [], 'records': [], 'documents': {'status': 'unavailable'},
               'limitations': ['National coverage is incomplete; empty results do not prove absence',
-                              'Council portal crawling and drawing interpretation are not implemented',
+                              'Council adapters have separate coverage; national records do not establish drawing availability',
                               'Planning approval/site boundaries do not prove construction or physical geometry']}
     # Provider discovery window, not a claim that all these coordinates are England.
     if east < -7 or west > 2.3 or north < 49.8 or south > 56:

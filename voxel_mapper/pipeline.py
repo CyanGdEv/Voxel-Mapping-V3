@@ -9,6 +9,7 @@ from .acquisition import resolve_location, acquire_terrain, acquire_surface
 from .cli import build, fetch_osm, validate_config
 from .bedrock import export_world
 from .planning import discover_planning, match_planning, SOURCE as PLANNING_SOURCE
+from .council import acquire_council, SOURCE as COUNCIL_SOURCE
 
 
 def run_auto(output, location=None, bounds=None):
@@ -55,6 +56,18 @@ def run_auto(output, location=None, bounds=None):
         planning = discover_planning(bounds, output)
         collection, planning_matches = match_planning(collection, planning, bounds)
         (output/'planning-matches.json').write_text(json.dumps(planning_matches, indent=2))
+        site_name = config['location'].split(',')[0].strip() if location else None
+        if not site_name:
+            names = {e.get('tags',{}).get('name') for e in raw.get('elements',[])
+                     if e.get('tags',{}).get('leisure') == 'theme_park' and e.get('tags',{}).get('name')}
+            if len(names) == 1:
+                site_name = names.pop()
+        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output)
+        if council['status'] != 'not_supported':
+            config['sources'].append(COUNCIL_SOURCE)
+        acquisition['providers'].append({'provider':council['provider'], 'status':council['status'],
+            'application_search':council['application_search'], 'drawing_count':len(council['documents']),
+            'failures':council['failures']})
         planning_summary = {k:v for k,v in planning.items() if k != 'records'}
         planning_summary['record_count'] = len(planning['records'])
         acquisition['providers'].append(planning_summary)
@@ -66,7 +79,8 @@ def run_auto(output, location=None, bounds=None):
         report = build(config,collection,output)
         report['planning_discovery'] = planning_summary
         report['planning_matches'] = planning_matches
-        report['issues'].append({'severity':'warning', 'reason':'Planning evidence is context only; council drawings and verified as-built geometry are not acquired',
+        report['council_drawings'] = council
+        report['issues'].append({'severity':'warning', 'reason':'Planning evidence/drawing inspection is unverified context; no verified as-built geometry replacement',
                                  'provider_status':planning['status'], 'documents':planning['documents']['status']})
         report['skipped_osm'] = skipped
         if skipped:
@@ -81,10 +95,12 @@ def run_auto(output, location=None, bounds=None):
                                   'transport_surfaces':'automatic_tagged_widths_and_materials',
                                   'planning_records':'automatic_england_context' if planning['status'] == 'checked' else planning['status'],
                                   'planning_feature_matching':'automatic_spatial_candidates_only',
-                                  'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable', 'planning_drawings':'not_implemented',
+                                  'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable',
+                                  'planning_drawings':'automatic_consultation_inspection' if council['documents'] else council['status'],
+                                  'planning_drawing_geometry':'not_implemented',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
                                   'coaster_3d_geometry':'not_implemented', 'bedrock_world':'automatic'}
-        report['issues'].append({'severity':'warning','reason':'Planning drawings, independent surveyed control points, building meshes and 3D attraction geometry are not acquired by this pipeline'})
+        report['issues'].append({'severity':'warning','reason':'Verified drawing geometry, independent surveyed control points, building meshes and 3D attraction geometry are not acquired by this pipeline'})
         if not config_surface:
             report['issues'].append({'severity':'warning','reason':'Surface-height acquisition unavailable; building heights/roofs use explicit tags or documented assumptions'})
         report['quality_status'] = 'draft_unverified'
