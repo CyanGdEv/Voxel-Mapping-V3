@@ -183,7 +183,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None, max_ocr
                 ocr['status'] = 'page_budget_omitted'
             else:
                 ocr_pages += 1
-                ocr = inspect_scanned_page(payload, index+1)
+                ocr = inspect_scanned_page(payload, index+1, bounds)
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
@@ -295,11 +295,15 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
             try:
                 document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'])
                 registrations=[p['registration']['status'] for p in document['inspection']['pages']]
-                drawing_grid_fit=any(p.get('scanned_page_inspection',{}).get('border_grid_inspection',{})
-                                     .get('grid_mark_registration',{}).get('status')=='internally_consistent_grid_marks_unverified'
-                                     for p in document['inspection']['pages'])
+                fitted_grids=[grid for p in document['inspection']['pages']
+                              if (grid:=p.get('scanned_page_inspection',{}).get('border_grid_inspection',{}))
+                              .get('grid_mark_registration',{}).get('status')=='internally_consistent_grid_marks_unverified']
+                offsite={'grid_outside_requested_area','requested_area_outside_crs_domain'}
+                drawing_grid_fit=any(grid.get('grid_location_check',{}).get('status') not in offsite
+                                     for grid in fitted_grids)
                 document['alignment_status']=('candidate_alignment' if 'candidate_alignment' in registrations else
-                    'candidate_drawing_grid_fit_unverified' if drawing_grid_fit else 'unavailable_or_rejected')
+                    'candidate_drawing_grid_fit_unverified' if drawing_grid_fit else
+                    'drawing_grid_outside_requested_area' if fitted_grids else 'unavailable_or_rejected')
             except (requests.RequestException,ValueError,PdfReadError,TypeError,KeyError) as error:
                 document['inspection']={'status':'unavailable_or_rejected','reason':str(error)}
         result['inspection_budget_omitted']=max(0,len(candidates)-max_pdf_inspections)

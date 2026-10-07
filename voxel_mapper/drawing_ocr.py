@@ -17,6 +17,7 @@ from .drawing_evidence import evidence_candidates
 from .raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes, LABEL
 from .raster_marks import inspect_grid_marks
 from .survey_reference import inspect_reference_notes
+from .raster_location import inspect_grid_location
 
 
 def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
@@ -115,7 +116,8 @@ def original_region_label(source, page_number, page_size_points, image_size, wor
     return candidates[0] if len(candidates)==1 else None
 
 
-def inspect_border_grid(image, root, environment, source=None, page_number=1, page_size_points=None):
+def inspect_border_grid(image, root, environment, source=None, page_number=1, page_size_points=None,
+                        reference_notes=None, bounds=None):
     labels, failures = [], []
     with Image.open(image) as page:
         width, height = page.size
@@ -173,13 +175,14 @@ def inspect_border_grid(image, root, environment, source=None, page_number=1, pa
     report['original_region_retries']=retries
     report['recovered_coordinate_labels']=recovered
     report['grid_mark_registration']=inspect_grid_marks(image,labels)
+    report['grid_location_check']=inspect_grid_location(labels,reference_notes or {},bounds)
     report['edge_failures'] = failures
     if failures:
         report['status'] = 'incomplete_edge_inspection'
     return report
 
 
-def inspect_scanned_page(payload, page_number):
+def inspect_scanned_page(payload, page_number, bounds=None):
     result = {'status': 'unavailable', 'world_geometry_additions': 0}
     if not shutil.which('pdftoppm') or not shutil.which('tesseract'):
         return {**result, 'reason': 'Poppler and Tesseract executables required'}
@@ -211,7 +214,9 @@ def inspect_scanned_page(payload, page_number):
                 raise ValueError('OCR text byte budget exceeded')
             page=PdfReader(io.BytesIO(payload)).pages[page_number-1]
             size = (float(page.mediabox.width),float(page.mediabox.height)) if not int(page.get('/Rotate',0))%360 and float(page.get('/UserUnit',1))==1 else None
-            return {**labels_from_tsv(output.read_text()), 'rendered_size_pixels': [width, height],
-                    'border_grid_inspection':inspect_border_grid(image,root,environment,source,page_number,size)}
+            candidates=labels_from_tsv(output.read_text())
+            return {**candidates, 'rendered_size_pixels': [width, height],
+                    'border_grid_inspection':inspect_border_grid(image,root,environment,source,page_number,size,
+                                                                candidates['survey_reference_notes'],bounds)}
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         return {**result, 'reason': str(error)}
