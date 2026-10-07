@@ -95,11 +95,11 @@ class AutomaticTests(unittest.TestCase):
                 resolve_location('Park',Path(d))
 
     def test_automatic_fallback_retains_unavailability(self):
-        with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.acquisition.download_ea',side_effect=ValueError('nodata')), patch('voxel_mapper.acquisition.download_global',return_value=({'path':'auto.tif'},{'id':'mapzen'})):
+        with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.survey.download_latest_pair',side_effect=ValueError('no dated coverage')), patch('voxel_mapper.acquisition.download_ea',side_effect=ValueError('nodata')), patch('voxel_mapper.acquisition.download_global',return_value=({'path':'auto.tif'},{'id':'mapzen'})):
             terrain,source,attempts=acquire_terrain([0,51,.001,51.001],Path(d))
             self.assertEqual(source['id'],'mapzen')
             self.assertEqual(attempts[0]['status'],'unavailable')
-            self.assertIn('nodata',attempts[0]['reason'])
+            self.assertIn('nodata',attempts[1]['reason'])
 
     def test_location_to_real_world_without_user_data_files(self):
         with tempfile.TemporaryDirectory() as d:

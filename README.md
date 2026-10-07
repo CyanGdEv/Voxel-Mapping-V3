@@ -1,5 +1,7 @@
 # Voxel Mapper V3.1
 
+England acquisition now first discovers an advertised matched one-metre National LIDAR DTM/last-return DSM pair newer than the 2022 composite. A bounded single-tile pair is accepted only when archive filenames identify the same survey and dates, both grids match in EPSG:27700, and terrain has at least 99% finite coverage of the requested crop. Surface nodata is preserved and existing building/bridge coverage checks still apply. Native metre crops retain survey dates, coverage fractions and archive hashes; OSTN15 must be available for the best metre-scale transformation. Incomplete catalogues, ambiguous tile pairs, mismatched surveys, unsupported rasters, download limits and insufficient terrain coverage retain the existing composite/global fallback with recorded reasons. A newer survey does not establish present-day or independently surveyed accuracy, and airborne water samples are still not bathymetry.
+
 Automatically acquire public geographic data and generate a **Minecraft Bedrock `.mcworld` at one block per metre**. Start with a park name/address or bounding box. The normal workflow needs no uploaded terrain, manually prepared GeoJSON, dataset URLs or Minecraft world template.
 
 **Scale and accuracy are different.** Export preserves metric scale and terrain relief, but available public evidence limits reconstruction detail. Current worlds are labelled draft/unverified: building extrusions or DSM-derived roof profiles and mapped paths do not establish themed facades, interiors, or 3D coaster tracks.

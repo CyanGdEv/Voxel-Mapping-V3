@@ -12,6 +12,7 @@ import rasterio
 import requests
 from pyproj import Transformer, datadir
 from pyproj.transformer import TransformerGroup
+from pyproj.exceptions import ProjError
 from rasterio.transform import from_bounds
 
 USER_AGENT = 'VoxelMapper/3.1 (https://github.com/CyanGdEv/Voxel-Mapping-V3)'
@@ -160,6 +161,13 @@ def acquire_terrain(bounds, output):
     west,south,east,north = bounds
     if -7.2 <= west < east <= 2.2 and 49.8 <= south < north <= 55.9:
         try:
+            from .survey import download_latest_pair
+            terrain,source=download_latest_pair(bounds,output)
+            attempts.append({'provider':'ea-national-pair','status':'downloaded','survey':source['survey']})
+            return terrain,source,attempts
+        except (requests.RequestException,ValueError,TypeError,KeyError,ProjError,rasterio.errors.RasterioError) as error:
+            attempts.append({'provider':'ea-national-pair','status':'unavailable','reason':str(error)})
+        try:
             terrain, source = download_ea(bounds,output)
             attempts.append({'provider':'ea-dtm','status':'downloaded'})
             return terrain, source, attempts
@@ -174,6 +182,9 @@ def acquire_surface(bounds, output, terrain_source):
     """Only pair a DSM with a terrain product using the same known vertical datum."""
     if terrain_source.get('id') != 'ea-dtm' or terrain_source.get('vertical_datum') != 'ODN':
         return None, None, [{'provider':'ea-dsm','status':'not_supported', 'reason':'No supported surface/terrain pair with a shared known vertical datum for this location'}]
+    if terrain_source.get('paired_surface'):
+        pair=terrain_source['paired_surface']
+        return pair['config'],pair['source'],[{'provider':'ea-national-dsm','status':'downloaded','survey':terrain_source['survey']}]
     try:
         surface, source = download_ea(bounds, output, surface=True)
         return surface, source, [{'provider':'ea-dsm','status':'downloaded','product':'last-return DSM'}]
