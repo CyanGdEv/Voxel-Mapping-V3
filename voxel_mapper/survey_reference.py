@@ -20,6 +20,8 @@ def inspect_reference_notes(text):
                     for p in passages)
     explicit_odn = any(re.search(r'\b(?:LEVELS|HEIGHTS) (?:ARE )?(?:IN METRES )?(?:RELATED|REFERENCED) TO ORDNANCE DATUM NEWLYN\b', p)
                        for p in passages)
+    external = sorted({(m[1], m[2]) for p in passages for m in re.finditer(
+        r'\bSURVEYS? DRAWING\s*:?\s*(\d{3,8})\s+(MASTER LAND SURVEY)\b', p)})
     return {'status': 'reference_notes_candidates_only',
             'explicit_epsg_candidates': epsgs,
             'national_grid_claim': national,
@@ -28,6 +30,8 @@ def inspect_reference_notes(text):
             'height_units_candidate': 'metres' if metres else None,
             'os_benchmark_reference_claim': benchmark,
             'height_datum_candidate': 'ODN' if explicit_odn else None,
+            'external_drawing_references': [{'drawing_number': number, 'title': title,
+                                             'status': 'referenced_not_acquired'} for number, title in external],
             'registration_verified': False, 'vertical_datum_verified': False,
             'world_geometry_additions': 0,
             'limitations': ['National Grid wording alone does not establish EPSG:27700',

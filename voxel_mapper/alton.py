@@ -57,6 +57,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
     # Import lazily: council owns the common bounded PDF inspection routine.
     from .council import inspect_pdf
     from .alton_registration import inspect_axis_alignment
+    from .alton_discovery import discover_attachments, merge_discovered
     catalogue = json.loads((Path(__file__).parent/'data/alton-planning-catalogue.json').read_text())
     result = {'provider': SOURCE['id'], 'source': SOURCE, 'status': 'checked',
               'application_search': 'recovered_historical_catalogue',
@@ -74,14 +75,21 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
         {'applicationReference': e['applicationReference'], 'url': e['url'],
          'reason': 'Recovered application context does not identify the Alton Towers park site'}
         for e in catalogue['entries'] if not is_park_application(e)]
-    entries = relevant[:max_documents]
     deadline = time.monotonic()+900
-    result['documents_omitted_by_budget'] = len(relevant)-len(entries)
     with requests.Session() as session:
         session.headers.update({'User-Agent': USER_AGENT})
+        discovery = discover_attachments(session, output, cache, deadline)
+        result['attachment_discovery'] = {k: v for k, v in discovery.items() if k != 'documents'}
+        result['application_search'] = 'historical_seed_full_attachment_pages'
+        relevant = merge_discovered(relevant, discovery)
+        result['discovered_document_count'] = len(relevant)
+        result['uncached_discovered_documents'] = sum('file' not in e for e in relevant) if cache else 0
+        eligible = [e for e in relevant if not cache or 'file' in e]
+        entries = eligible[:max_documents]
+        result['documents_omitted_by_budget'] = len(eligible)-len(entries)
         for entry in entries:
             if time.monotonic() > deadline:
-                result['documents_omitted_by_budget'] = len(relevant)-len(result['documents'])
+                result['documents_omitted_by_budget'] = len(eligible)-len(result['documents'])
                 result['failures'].append({'reason': '15-minute planning acquisition budget reached'})
                 break
             row = dict(entry)
@@ -98,10 +106,21 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                     payload = path.read_bytes()
                 else:
                     payload = download_pdf(session, entry['url'])
-                if hashlib.sha256(payload).hexdigest() != entry['sha256']:
+                checksum = hashlib.sha256(payload).hexdigest()
+                if entry.get('sha256') and checksum != entry['sha256']:
                     raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
+                row['sha256'] = checksum
+                row['hash_provenance'] = 'matches_recovered_document' if entry.get('sha256') else 'observed_current_download_only'
                 row['inspection'] = inspect_pdf(payload, max_pages=max_pages, bounds=bounds,
                                                 document_title=entry['title'], max_ocr_pages=0)
+                for page in row['inspection']['pages']:
+                    for reference in page['survey_reference_notes'].get('external_drawing_references', []):
+                        # A matching attachment title is only a discovery candidate.
+                        matches = [d['url'] for d in discovery['documents'] if
+                                   re.search(r'\b'+re.escape(reference['drawing_number'])+r'\b', d['title']) and
+                                   'survey' in d['title'].lower()]
+                        reference['attachment_title_candidates'] = matches
+                        reference['status'] = 'attachment_candidates_not_verified' if matches else 'not_listed_in_discovered_attachment_titles'
                 if entry['role'] in ('site-plan', 'landscape-plan', 'floor-plan'):
                     try:
                         from .plan_boundaries import inspect_plan_boundaries
@@ -121,7 +140,8 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 row['reason'] = str(error)
                 result['failures'].append({'url': entry['url'], 'reason': str(error)})
             result['documents'].append(row)
-    result['status'] = 'partial' if result['failures'] or result['documents_omitted_by_budget'] else 'checked'
+    result['status'] = 'partial' if (result['failures'] or result['documents_omitted_by_budget'] or
+                                   result['uncached_discovered_documents'] or discovery['status'] == 'partial') else 'checked'
     (Path(output)/'alton-planning-inspection.json').write_text(json.dumps(result, indent=2))
     return result
 

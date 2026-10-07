@@ -46,7 +46,10 @@ class AltonTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             catalogue = json.loads((Path(__file__).parents[1]/'voxel_mapper/data/alton-planning-catalogue.json').read_text())
-            path = root/catalogue['entries'][0]['file']
+            from voxel_mapper.alton import is_park_application
+            from voxel_mapper.alton_discovery import merge_discovered
+            entries = merge_discovered([e for e in catalogue['entries'] if is_park_application(e)], {'documents': []})
+            path = root/entries[0]['file']
             path.parent.mkdir(parents=True)
             path.write_bytes(b'%PDF-corrupted')
             with patch('voxel_mapper.council.inspect_pdf') as inspect:
