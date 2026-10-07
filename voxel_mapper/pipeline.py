@@ -99,6 +99,7 @@ def run_auto(output, location=None, bounds=None):
                                   'planning_drawings':'automatic_consultation_inspection' if council['documents'] else council['status'],
                                   'planning_drawing_geometry':'not_implemented',
                                   'geopdf_registration':'automatic_wgs84_control_validation',
+                                  'drawing_vector_candidates':'reuse_gated_straight_paths_only',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
                                   'coaster_3d_geometry':'not_implemented', 'bedrock_world':'automatic'}
         report['issues'].append({'severity':'warning','reason':'Verified drawing geometry, independent surveyed control points, building meshes and 3D attraction geometry are not acquired by this pipeline'})

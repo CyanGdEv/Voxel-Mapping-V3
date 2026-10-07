@@ -12,6 +12,7 @@ from pypdf.errors import PdfReadError
 
 from .acquisition import USER_AGENT
 from .geopdf import inspect_registration
+from .drawing_vectors import extract_vectors
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -102,11 +103,13 @@ def inspect_pdf(payload, max_pages=12, bounds=None):
         scales = sorted(set(int(s) for s in re.findall(r'\b1\s*:\s*(\d{2,6})\b',text)))
         revisions = sorted(set(re.findall(r'\b(?i:REV(?:ISION)?)\s*[:.]?\s+([A-Z]{1,3}\d{0,3}|\d{1,3})\b',text)))[:20]
         revision_dates = re.findall(r'\b(P\d{1,3}|[A-Z])\s+(\d{1,2}[./-]\d{1,2}[./-]\d{2,4})\b',text)[:30]
+        registration = inspect_registration(page,bounds)
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
-                      'registration':inspect_registration(page,bounds),
+                      'registration':registration,
+                      'vector_extraction':extract_vectors(page,registration,reuse_allowed=False),
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
             'bytes':len(payload), 'page_count':len(reader.pages), 'pages_inspected':len(pages), 'pages':pages,

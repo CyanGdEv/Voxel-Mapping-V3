@@ -127,3 +127,14 @@ Each viewport needs four to 64 unique controls, a valid page rectangle, a stable
 Successful registrations remain `internally_consistent_unverified`: embedded control agreement is not independent surveyed accuracy. Reports retain the transform, CRS, errors, controls' convex hull and any declared boundary restriction. The coordinate helper rejects points outside that domain to prevent extrapolation. Plain PDFs report `metadata_missing`, and rejected metadata retains a reason. These checks establish an auditable candidate coordinate mapping, **not drawing vectorisation, physical geometry, construction status or reuse permission**. No original PDF is added to the world.
 
 References: [GDAL GeoPDF documentation](https://gdal.org/en/stable/drivers/raster/pdf.html), [ISO 32000-2 geospatial specification corrections](https://pdf-issues.pdfa.org/32000-2-2020/clause12.html).
+
+
+## Reuse-gated vector boundary candidates
+
+`drawing_vectors.extract_vectors` can extract straight, painted PDF subpaths for sources with established geometry reuse permission and validated GeoPDF registration. It applies nested content matrices and graphics-state restoration, handles line/rectangle/close operators, and retains fill boundaries separately without interpreting them as building footprints or resolving holes. Each viewport is a separate layer with its local metre CRS. Paths crossing the registered domain or page crop box are omitted rather than extrapolated.
+
+The default reuse gate blocks extraction. Runnymede consultation inspection explicitly keeps this gate closed and reports `blocked_reuse`, with no derived coordinates retained. No automated permitted drawing provider is connected yet. This is an extractor capability tested with synthetic PDFs, not an additional source of park detail in the current workflow.
+
+Curves, clipping, form/image XObjects, marked/optional content, external graphics states and unknown operators reject the entire page with a reason; partial geometry is discarded. Extraction is capped at 10 MB content, 100,000 operations, 2,000 painted subpaths, 20,000 constructed points and 64 graphics-state saves. Candidates remain unclassified and construction-unverified, and are never inserted into a Minecraft world. Semantic interpretation, independent alignment and a permitted source adapter remain required.
+
+Reference: [ISO PDF graphics/path specification](https://udp.adobe.io/document-services/docs/assets/35e4369068f86065372c18787171a17e/PDF_ISO_32000-1.pdf).

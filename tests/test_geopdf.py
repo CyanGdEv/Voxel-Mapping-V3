@@ -49,6 +49,8 @@ class GeoPdfTests(unittest.TestCase):
         report=inspect_pdf(out.getvalue(),bounds=self.bounds)
         self.assertEqual(report['pages'][0]['registration']['status'],'candidate_alignment')
         self.assertEqual(report['pages'][0]['registration']['independent_accuracy'],'not_verified')
+        self.assertEqual(report['pages'][0]['vector_extraction']['status'],'blocked_reuse')
+        self.assertEqual(report['pages'][0]['vector_extraction']['layers'],[])
 
     def test_corrupt_control_rejected_by_withheld_validation(self):
         _,page,measure=self.fixture()
