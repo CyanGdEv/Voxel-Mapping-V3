@@ -363,6 +363,7 @@ def build(config, collection, output):
                             "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":feature_surface.config['source_id'] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
+                            **({'material_origin':'accepted_planning_paving'} if properties.get('planning_geometry_evidence') and transport and transport['material_method']=='tagged_surface_approximation' and properties.get('surface') not in ('paved','unpaved') else {}),
                             **({'bed_source':config['bathymetry']['source_id']} if bed_y is not None else {}),
                             "geometry_method":"measured_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:

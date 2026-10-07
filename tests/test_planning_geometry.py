@@ -12,6 +12,44 @@ import test_terrain_osm as fixtures
 
 
 class PlanningGeometryTests(unittest.TestCase):
+    def test_planning_material_overlays_osm_paving_preserving_holes_and_buildings(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,collection=fixtures.TerrainTests().fixture(root)
+            config['terrain']['emit_surface']=False
+            collection['features'][0]['properties'].update(highway='footway',surface='asphalt')
+            geometry=copy.deepcopy(collection['features'][0]['geometry'])
+            geometry['coordinates'].append([[.00047,.00047],[.00053,.00047],[.00053,.00053],[.00047,.00053],[.00047,.00047]])
+            collection['planning_geometry_records']=[self.record(geometry)]
+            report=build(config,collection,root/'build')
+            rows=[json.loads(line) for line in (root/'build/voxels.jsonl').read_text().splitlines()]
+            paving=[r for r in rows if r['kind']=='plaza']
+            self.assertTrue(all(r.get('material_origin')=='accepted_planning_paving' for r in paving))
+            protected=paving[-1]
+            rows.append(dict(x=protected['x'],y=protected['y'],z=protected['z'],kind='building'))
+            for reverse in (False,True):
+                out=root/str(reverse);out.mkdir()
+                path=out/'voxels.jsonl'
+                path.write_text('\n'.join(json.dumps(r) for r in (list(reversed(rows)) if reverse else rows)))
+                metadata=export_world(path,out,report)
+                world=amulet.load_level(str(out/'bedrock-world'))
+                try:
+                    r=paving[0];offset=metadata['vertical_offset_blocks']
+                    self.assertEqual(world.get_block(r['x'],25+offset,-r['z'],'minecraft:overworld').properties['color'],StringTag('green'))
+                    self.assertEqual(world.get_block(0,25+offset,0,'minecraft:overworld').properties['color'],StringTag('black'))
+                    self.assertEqual(world.get_block(protected['x'],25+offset,-protected['z'],'minecraft:overworld').base_name,'stone_bricks')
+                finally:
+                    world.close()
+
+    def test_unspecified_planning_material_has_no_override_priority(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,collection=fixtures.TerrainTests().fixture(root)
+            record=self.record(collection['features'][0]['geometry'])
+            record.pop('surface');record.pop('surface_colour')
+            collection['planning_geometry_records']=[record]
+            build(config,collection,root/'out')
+            rows=[json.loads(line) for line in (root/'out/voxels.jsonl').read_text().splitlines()]
+            self.assertFalse(any(r.get('material_origin')=='accepted_planning_paving' for r in rows))
+
     def record(self,geometry):
         return {'id':'component-1','source_id':'dem','document_id':'drawing-1/revision-C',
                 'verification_reference':'survey-2026/component-1','reuse_allowed':True,
