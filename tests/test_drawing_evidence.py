@@ -20,6 +20,8 @@ class DrawingEvidenceTests(unittest.TestCase):
         self.assertEqual({m['material_candidate'] for m in materials},{'concrete','brick','wood','resin_bound_gravel','gravel'})
         self.assertEqual(next(m for m in materials if m['material_candidate']=='concrete')['colour_candidates'],['red'])
         self.assertFalse(any('raw_text' in m for m in materials))
+        schedule=evidence_candidates('Red concrete\nSteel',material_context=True)
+        self.assertEqual({m['material_candidate'] for m in schedule['materials']},{'concrete','steel'})
         bounded=evidence_candidates('Water level 12.7 m\nFFL 14.5 m',max_candidates=1)
         self.assertTrue(bounded['truncated']);self.assertEqual(len(bounded['levels']),1)
         with self.assertRaisesRegex(ValueError,'budget'):

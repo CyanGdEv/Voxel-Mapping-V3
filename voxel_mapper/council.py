@@ -86,7 +86,7 @@ def parse_document_list(html, reference):
     return documents
 
 
-def inspect_pdf(payload, max_pages=12, bounds=None):
+def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
     if not payload.startswith(b'%PDF-'):
         raise ValueError('Document is not a PDF')
     reader = PdfReader(io.BytesIO(payload), strict=False)
@@ -112,7 +112,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None):
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
                       'vector_extraction':extract_vectors(page,registration,reuse_allowed=False),
-                      'semantic_evidence':evidence_candidates(text),
+                      'semantic_evidence':evidence_candidates(text,material_context=bool(document_title and document_category(document_title)=='materials')),
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
             'bytes':len(payload), 'page_count':len(reader.pages), 'pages_inspected':len(pages), 'pages':pages,
@@ -200,7 +200,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
         candidates = inspection_order(result['documents'])
         for document in candidates[:max_pdf_inspections]:
             try:
-                document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds)
+                document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'])
                 registrations=[p['registration']['status'] for p in document['inspection']['pages']]
                 document['alignment_status']='candidate_alignment' if 'candidate_alignment' in registrations else 'unavailable_or_rejected'
             except (requests.RequestException,ValueError,PdfReadError,TypeError,KeyError) as error:

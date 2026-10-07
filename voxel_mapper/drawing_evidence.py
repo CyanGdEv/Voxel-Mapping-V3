@@ -8,7 +8,7 @@ MATERIALS = {'resin bound gravel':'resin_bound_gravel','block paving':'paving_st
 COLOURS = re.compile(r'\b(white|orange|magenta|light blue|yellow|lime|pink|light gr[ae]y|gr[ae]y|cyan|purple|blue|brown|green|red|black)\b',re.I)
 
 
-def evidence_candidates(text, max_candidates=100):
+def evidence_candidates(text, max_candidates=100, *, material_context=False):
     if len(text)>500_000 or max_candidates<1:
         raise ValueError('Drawing text/candidate budget exceeded')
     levels,materials=[],[]
@@ -24,7 +24,7 @@ def evidence_candidates(text, max_candidates=100):
             candidates.append(('level',{'label':match['label'].lower(),'value_candidate':float(match['value']),
                                       'unit_label_candidate':match['unit'],
                                       'datum_label_candidate':match['datum'].upper() if match['datum'] else None}))
-        if re.search(r'\b(surface|paving|path|walkway|plaza|finish|material|boardwalk|deck)\b',line,re.I):
+        if material_context or re.search(r'\b(surface|paving|path|walkway|plaza|finish|material|boardwalk|deck)\b',line,re.I):
             for phrase,material in MATERIALS.items():
                 if re.search(r'\b'+re.escape(phrase)+r'\b',line,re.I):
                     # Do not collapse a mixed specification into one block choice.
