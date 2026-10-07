@@ -354,3 +354,21 @@ Accepted results remain `accepted_unverified`. They emit a single transport-mate
 Validation against the saved automatically acquired Thorpe Park evidence: four transport spans fail surface slope/transverse consistency, one crosses the park build boundary, and one is stacked. Two additional bridge-tagged log-flume segments are ride geometry, not transport decks. No new Thorpe Park bridge blocks are justified by this evidence. Tests independently cover a supported synthetic span, numeric clearance, missing/coarse/nonfinite data, disconnected approaches, canopy/rail/spike rejection, datum/budget limits, clipped and stacked spans, and an actual Bedrock deck with air below after export/read-back.
 
 Attraction-only extents and coaster centerlines are reported and omitted from physical reconstruction rather than extruded as generic iron outlines. Attraction tags preserve independently mapped building, transport, parking or water types. Cached attraction-only features are also withheld by the build engine. Detailed ride components require verified physical geometry/elevations.
+
+The estimated Wicker Man preview also recovers acoustic and landscape detail
+from drawing 373/95/7 B: four legend-matched 1.4 m sound-screen strips,
+one provisional sound-tunnel footprint, 97 circular proposed tree symbols
+and 12 pattern-matched ground-cover areas. Curved symbols retain their geometry;
+legend artwork is excluded. Planting skips reconstruction paving and track or
+building clearance. Oak/spruce logs and persistent leaves use generic preview
+shapes, with approximate half-evergreen styling, not individually bound species
+or surveyed mature heights. The sound tunnel uses an estimated four metres of
+clearance above the preview rail; missing section height remains unknown.
+Screens rasterise to two blocks high and at least one block thick.
+Station-complex roofs now use provisional gables: a 30-degree pitch estimate,
+median DSM ridge guide and minimum four-metre eaves, with generic timber palette.
+Exact roof profiles, uniquely bound fence/wall routes, 1:3 earthwork extents and
+finished effigy geometry remain unresolved. `wicker-man-details.json` and
+`wicker-man-detail-candidates.geojson` retain candidates and withheld categories.
+The council section/elevation endpoints remain unavailable; no missing drawing
+is silently replaced with a claimed measured detail.

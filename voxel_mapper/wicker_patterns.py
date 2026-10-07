@@ -106,7 +106,7 @@ def painted_patterns(operations, identities, page_height, max_operations=500000)
     return output
 
 
-def extract_pattern_surfaces(path, annotations, scale, expected_sha):
+def extract_pattern_surfaces(path, annotations, scale, expected_sha, label_text="New Paving with levels"):
     data=path.read_bytes()
     if len(data)>10_000_000 or hashlib.sha256(data).hexdigest()!=expected_sha:
         raise ValueError('Pattern source PDF size/hash mismatch')
@@ -114,7 +114,7 @@ def extract_pattern_surfaces(path, annotations, scale, expected_sha):
     if page.get('/Rotate',0)!=0:raise ValueError('Pattern source must be unrotated')
     identities={str(name):pattern_identity(obj) for name,obj in page['/Resources'].get('/Pattern',{}).items()}
     paths=painted_patterns(ContentStream(page.get_contents(),reader).operations,identities,float(page.mediabox.top))
-    label=next(a for a in annotations if a['text']=='New Paving with levels')
+    label=next(a for a in annotations if a['text']==label_text)
     x0,y0,x1,y1=label['bbox']
     swatches=[]
     for p in paths:
@@ -133,7 +133,8 @@ def extract_pattern_surfaces(path, annotations, scale, expected_sha):
         candidates.append({**p,'state':'new','legend_text':label['text'],
                            'legend_operation_index':swatch['pdf_operation_index'],
                            'area_m2_printed_scale':polygon.area*scale**2,'contained_labels':labels,
-                           'material':None,'material_status':'Pattern identifies proposed paving, not an as-built material',
+                           'material':None,'material_status':('Pattern identifies proposed paving, not an as-built material' if label_text == 'New Paving with levels'
+                                              else 'Pattern identifies proposed landscape area; species/material not individually bound'),
                            'curve_flattening_tolerance_pdf_points':.2})
     return candidates,{'status':'matched_tiling_pattern_and_image_resources',
                        'polygon_candidates':len(candidates),'pattern_sha256':swatch['pattern_sha256']}

@@ -10,6 +10,7 @@ from shapely.ops import transform
 
 from .terrain import Terrain
 from .wicker_track import ordered_route
+from .wicker_details import pitched_roof
 from .wicker_station import station_context, phase_controls, lift_profile, serializable_context
 
 
@@ -142,21 +143,23 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                 raise ValueError('Insufficient observed surface coverage over station complex')
             floor = math.floor(part['floor_level_m'])
             roof = max(floor+4,math.floor(float(np.median(roof_samples))))
-            clear_top = max(roof,math.ceil(max(roof_samples)))+1
+            clear_top = max(roof+5,math.ceil(max(roof_samples)))+1
             if clear_top-floor > 32:
                 raise ValueError('Station surface outlier exceeds bounded shell height')
-            part.update(roof_level_m=roof,roof_method='Flat median DSM surface estimate; minimum 4 m above floor',
+            part.update(roof_level_m=roof,roof_method='Generic gable roof: 30 degree pitch estimate; median DSM ridge guide; minimum 4 m eaves',
+                        pitch_degrees_estimated=30,
                         surface_sample_count=len(roof_samples))
             for x,z in cells:
                 point = Point(x+.5,z+.5); on_track = corridor.covers(point)
+                roof_y = pitched_roof(polygon,point,roof,floor)
                 for y in range(floor+1,clear_top+1):
                     add(x,y,z,'air','station_complex_clearance',True)
                 if not on_track:
                     add(x,floor,z,'dark_oak_planks',part['role']+'_platform')
                     if polygon.boundary.distance(point) < 1:
-                        for y in range(floor+1,roof):
+                        for y in range(floor+1,roof_y):
                             add(x,y,z,'dark_oak_planks',part['role']+'_walls')
-                add(x,roof,z,'dark_oak_planks',part['role']+'_roof')
+                add(x,roof_y,z,'oak_planks',part['role']+'_roof')
         paving = json.loads((output/'wicker-man-surface-candidates.geojson').read_text())
         for feature in paving['features']:
             polygon = transform(project.transform,shape(feature['geometry']))
@@ -171,6 +174,14 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                     ground = terrain.sample(x+.5,z+.5)
                     if ground is not None:
                         add(x,ground,z,'stone_bricks' if proposed else 'stone',component)
+        from .wicker_details import inspect_details, emit_details
+        detail_features, detail_evidence = inspect_details(output)
+        def rail_height(station):
+            if context['lift_start_m'] <= station <= context['lift_crest_station_m']:
+                return float(lift_profile([station],context['lift_start_m'],context['lift_crest_station_m'],
+                                           context['lift_foot_level_m'],context['lift_crest_level_m'])[0])
+            return float(preview_profile(route,bindings,[station])[0])
+        detail_emission = emit_details(detail_features,project.transform,terrain,line,rail_height,add,rows)
     finally:
         terrain.close()
         surface.close()
@@ -188,6 +199,7 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
               'minimum_rail_ground_clearance_m':minimum_clearance,
               'profile_method':'Periodic cubic course/station-exit spans; explicit level station and two-incline lift with short slope blends',
               'station_lift':serializable_context(context),
+              'planning_details':{'evidence':detail_evidence,'emission':detail_emission},
               'proposed_paving_footprints':sum(f['properties'].get('state') == 'new' for f in paving['features']),
               'profile_controls':[{'point_label':b['point_label'],'station_local_m':b['nearest_candidate']['station_m'],
                                    'level_m':b['printed_level_m'],'anchor_kind':b.get('anchor_kind'),
@@ -200,7 +212,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                              'Existing and proposed paving use provisional alignment and generic stone palettes; proposed paving pattern is matched to the printed legend',
                              'Timber bents are a simplified preview, not the actual structural design',
                              'Station, maintenance and pre-lift buildings now have estimated hollow shells; detailed interiors/roof forms remain unknown',
-                             'Sound tunnels, effigy and fences are not reconstructed'],
+                             'Sound tunnel shell clearance and vegetation height/species are provisional; exact sections remain unavailable',
+                             'Effigy, unbound fence/wall routes and ground-grading geometry remain incomplete'],
               'visit_local_xyz_m':[round(line.coords[0][0]),round(float(heights[0])+3),round(line.coords[0][1])]}
     # Stand on the station platform, away from the track opening.
     station_polygon = context['station']['polygon']

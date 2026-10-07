@@ -24,7 +24,7 @@ MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'s
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
 PRIORITY.update(lakebed=1,plaza=3)
-ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'dark_oak_planks','air'}
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
 
 
 def material_block(material):
@@ -32,6 +32,10 @@ def material_block(material):
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
     if material in ('oak_planks', 'dark_oak_planks'):
         return Block('universal_minecraft', 'planks', {'material': StringTag('dark_oak' if material == 'dark_oak_planks' else 'oak')})
+    if material in ('oak_log','spruce_log'):
+        return Block('universal_minecraft','log',{'material':StringTag(material.removesuffix('_log')),'axis':StringTag('y'),'stripped':StringTag('false')})
+    if material in ('oak_leaves','spruce_leaves'):
+        return Block('universal_minecraft','leaves',{'material':StringTag(material.removesuffix('_leaves')),'persistent':StringTag('true'),'distance':StringTag('7'),'check_decay':StringTag('false')})
     return Block('universal_minecraft', material)
 
 
