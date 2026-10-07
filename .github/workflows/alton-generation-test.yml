@@ -43,6 +43,8 @@ jobs:
                       registration = result.get('registration', {})
                       summary.write('Drawing alignment: '+registration.get('status', 'not_run')+'; verified: '+str(registration.get('registration_verified', False))+'\n\n')
                       track = result.get('track_association', {})
+                      survey = result.get('survey_evidence', {})
+                      summary.write('Dated ground/surface evidence: '+survey.get('status', 'not_run')+'; samples: '+str(survey.get('sample_count', 0))+'; verified track heights: '+str(survey.get('track_height_profile_verified', False))+'\n\n')
                       summary.write('Track profile: '+track.get('profile_status', track.get('status', 'not_run'))+'; ambiguous labels: '+str(track.get('ambiguous_bindings', 'unknown'))+'\n\n')
                       surfaces = result.get('surfaces', {})
                       summary.write('Paving polygon candidates: '+str(surfaces.get('polygon_candidates', 0))+'; verified world additions: '+str(surfaces.get('world_geometry_additions', 0))+'\n\n')

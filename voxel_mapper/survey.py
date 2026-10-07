@@ -6,10 +6,12 @@ import json
 import math
 import re
 import zipfile
+from pathlib import Path
 
 import numpy as np
 import rasterio
 import requests
+from pyproj import datadir
 from pyproj.transformer import TransformerGroup
 from rasterio.io import MemoryFile
 from rasterio.windows import from_bounds, Window
@@ -21,6 +23,18 @@ BASE='https://environment.data.gov.uk/tiles/collections/survey'
 METADATA='https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9'
 
 
+def activate_retained_grid(source):
+    """Restore a hash-checked acquired datum grid when reopening saved inputs."""
+    grid = source.get('coordinate_transform', {}).get('grid', {})
+    if grid.get('status') != 'downloaded' or not grid.get('file') or not grid.get('sha256'):
+        raise ValueError('Retained datum grid metadata required for dated survey reuse')
+    path = Path(grid['file'])
+    with path.open('rb') as stream:
+        if hashlib.file_digest(stream,'sha256').hexdigest() != grid['sha256']:
+            raise ValueError('Retained datum grid checksum mismatch')
+    datadir.append_data_dir(str(path.parent.resolve()))
+
+
 def select_pair(data):
     if data.get('count')!=len(data.get('results',[])) or data.get('count',0)>2000:
         raise ValueError('Incomplete or oversized survey catalogue response')
@@ -30,7 +44,7 @@ def select_pair(data):
         if product not in ('national_lidar_programme_dtm','national_lidar_programme_dsm') or entry['resolution']['id']!='1':
             continue
         year,tile=entry['year']['id'],entry['tile']['id']
-        if not re.fullmatch(r'20\d{2}',year) or int(year)<=2022 or not re.fullmatch(r'[A-Z]{2}\d{4}',tile):
+        if not re.fullmatch(r'20\d{2}',year) or not re.fullmatch(r'[A-Z]{2}\d{4}',tile):
             continue
         url=f'{BASE}/{product}/{year}/1/{tile}'
         if entry['uri']!=url:
@@ -38,7 +52,7 @@ def select_pair(data):
         candidates.setdefault((year,tile),{})[product.rsplit('_',1)[-1]]=url
     pairs=[(key,value) for key,value in candidates.items() if set(value)=={'dtm','dsm'}]
     if not pairs:
-        raise ValueError('No newer matched one-metre National LIDAR pair advertised')
+        raise ValueError('No matched dated one-metre National LIDAR pair advertised')
     latest=max(key[0] for key,_ in pairs)
     pairs=[p for p in pairs if p[0][0]==latest]
     if len(pairs)!=1:

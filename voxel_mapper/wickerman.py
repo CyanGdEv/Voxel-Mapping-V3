@@ -217,6 +217,10 @@ def main():
         source = Path(args.source_output).resolve()
         config = json.loads((source/'resolved-config.json').read_text())
         config.update(bbox=BBOX, location='Alton Towers — Wicker Man baseline test', clip_to_boundary=False)
+        terrain_source = next((s for s in config.get('sources', []) if s['id'] == config.get('terrain', {}).get('source_id')), {})
+        if terrain_source.get('survey'):
+            from .survey import activate_retained_grid
+            activate_retained_grid(terrain_source)
         collection = json.loads((source/'input.geojson').read_text())
         collection['planning_geometry_records'] = []
         (output/'resolved-config.json').write_text(json.dumps(config, indent=2))
@@ -261,6 +265,8 @@ def main():
         result['track_association'] = inspect_track(evidence, raw_osm, result['registration'], output)
         from .wicker_surfaces import inspect_surfaces
         result['surfaces'] = inspect_surfaces(evidence, result['registration'], output)
+        from .wicker_survey import inspect_survey
+        result['survey_evidence'] = inspect_survey(json.loads((output/'resolved-config.json').read_text()), raw_osm, output)
     (output/'wicker-man-acceptance.json').write_text(json.dumps(result, indent=2))
     (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
     print(json.dumps(result, indent=2))

@@ -151,7 +151,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             try:
                 actual_coords = set(level.all_chunk_coords('minecraft:overworld'))
                 if actual_coords != set(coords):
-                    raise ValueError('Bedrock round-trip chunk coverage failed')
+                    missing = sorted(set(coords)-actual_coords)
+                    extra = sorted(actual_coords-set(coords))
+                    raise ValueError(f'Bedrock round-trip chunk coverage failed: {len(missing)} missing {missing[:5]}, {len(extra)} extra {extra[:5]}')
                 for cx,cz in coords:
                     chunk = level.get_chunk(cx,cz,'minecraft:overworld')
                     expected_sections = {}

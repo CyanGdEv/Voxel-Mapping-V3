@@ -10,7 +10,7 @@ import rasterio
 from rasterio.io import MemoryFile
 from rasterio.transform import from_origin
 
-from voxel_mapper.survey import BASE,select_pair,crop_pair
+from voxel_mapper.survey import BASE,select_pair,crop_pair,activate_retained_grid
 from voxel_mapper.acquisition import acquire_terrain,acquire_surface
 
 
@@ -27,6 +27,39 @@ def archive(kind,survey='P_1',nodata=False):
 
 
 class SurveyTests(unittest.TestCase):
+    def test_reused_grid_is_hash_checked_before_activation(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'grid.tif'; path.write_bytes(b'original grid')
+            source = {'coordinate_transform':{'grid':{'status':'downloaded','file':str(path),
+                       'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}}}
+            with patch('voxel_mapper.survey.datadir.append_data_dir') as append:
+                activate_retained_grid(source)
+                append.assert_called_once_with(str(path.parent.resolve()))
+                path.write_bytes(b'changed grid')
+                with self.assertRaises(ValueError): activate_retained_grid(source)
+                self.assertEqual(append.call_count,1)
+            with self.assertRaises(ValueError): activate_retained_grid({})
+
+    def test_2022_pair_enables_dated_cloud_and_newest_complete_pair_wins(self):
+        rows = [dict(product={'id':'national_lidar_programme_'+k}, year={'id':year},
+                     resolution={'id':'1'}, tile={'id':'SK0540'},
+                     uri=f'{BASE}/national_lidar_programme_{k}/{year}/1/SK0540')
+                for year in ('2021','2022') for k in ('dtm','dsm')]
+        # A newer terrain-only product cannot be paired with an older surface.
+        rows.append(dict(product={'id':'national_lidar_programme_dtm'},year={'id':'2023'},
+                         resolution={'id':'1'},tile={'id':'SK0540'},
+                         uri=f'{BASE}/national_lidar_programme_dtm/2023/1/SK0540'))
+        self.assertEqual(select_pair({'count':len(rows),'results':rows})[0], ('2022','SK0540'))
+        from voxel_mapper.point_cloud import select_cloud
+        cloud = dict(product={'id':'national_lidar_programme_point_cloud'},year={'id':'2022'},
+                     resolution={'id':'1'},tile={'id':'SK0540'},
+                     uri=f'{BASE}/national_lidar_programme_point_cloud/2022/1/SK0540')
+        selection = select_cloud({'count':1,'results':[cloud]},
+                                 {'url':f'{BASE}/national_lidar_programme_dtm/2022/1/SK0540',
+                                  'survey':{'survey_id':'P_10682','survey_start':'20220105','survey_end':'20220105'}})
+        self.assertEqual(selection['filename'],'SK0540_P_10682_20220105_20220105.laz')
+
     def test_catalogue_requires_matching_dated_advertised_pair(self):
         rows=[dict(product={'id':'national_lidar_programme_'+k},year={'id':'2023'},resolution={'id':'1'},tile={'id':'TQ0065'},uri=f'{BASE}/national_lidar_programme_{k}/2023/1/TQ0065') for k in ('dtm','dsm')]
         self.assertEqual(select_pair({'count':2,'results':rows})[0],('2023','TQ0065'))

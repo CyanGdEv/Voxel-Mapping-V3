@@ -57,6 +57,16 @@ plaza; the separate new-paving hatch remains unresolved. The surface GeoJSON use
 the provisional alignment and is candidate evidence, not accepted world geometry.
 Legend colours do not establish paving materials or Minecraft palette colours.
 
+The dated-survey acquisition no longer excludes 2022 and earlier survey pairs.
+For the Wicker Man test, the 5 January 2022 SK0540 survey (P_10682) was acquired
+as matched one-metre DTM/DSM and cropped raw point-cloud evidence. The crop has
+100% finite terrain coverage and 97.16% surface coverage; 176,384 raw returns
+were retained. A survey-evidence stage samples ground and observed surface along
+the mapped route at two-metre intervals, retaining missing values and source
+identity. Its 391 positions span ground levels 177.68–192.24 m ODN. DSM values
+are never rail elevations: trees, roofs and supports can occupy those positions.
+No track-height verification or planning geometry is inferred from this stage.
+
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space
 files. These candidates do not imply georeferenced or as-built components.
@@ -98,7 +108,7 @@ Automatic EA multibeam bathymetry discovery is now connected to generation when 
 
 Water profiles separately report surface elevation/method, derived depth range, unknown-depth column count and measured-bed coverage status. Depths derived from measured beds still use unverified declared or terrain-estimated water levels; they are not surveyed depths. Surface elevation must never be interpreted as depth. Explicit mapped pedestrian areas (`area:highway=pedestrian` or `highway=pedestrian` with `area=yes`) are classified as plaza polygons and retain tagged material palettes. Open plaza boundaries are withheld, not buffered into guessed paving. Missing paving materials and the lack of usable automatic planning geometry remain unresolved.
 
-England acquisition now first discovers an advertised matched one-metre National LIDAR DTM/last-return DSM pair newer than the 2022 composite. A bounded single-tile pair is accepted only when archive filenames identify the same survey and dates, both grids match in EPSG:27700, and terrain has at least 99% finite coverage of the requested crop. Surface nodata is preserved and existing building/bridge coverage checks still apply. Native metre crops retain survey dates, coverage fractions and archive hashes; OSTN15 must be available for the best metre-scale transformation. Incomplete catalogues, ambiguous tile pairs, mismatched surveys, unsupported rasters, download limits and insufficient terrain coverage retain the existing composite/global fallback with recorded reasons. A newer survey does not establish present-day or independently surveyed accuracy, and airborne water samples are still not bathymetry.
+England acquisition now first discovers the newest advertised matched one-metre National LIDAR DTM/last-return DSM pair, including 2022 and earlier dated surveys. A bounded single-tile pair is accepted only when archive filenames identify the same survey and dates, both grids match in EPSG:27700, and terrain has at least 99% finite coverage of the requested crop. Surface nodata is preserved and existing building/bridge coverage checks still apply. Native metre crops retain survey dates, coverage fractions and archive hashes; OSTN15 must be available for the best metre-scale transformation. Incomplete catalogues, ambiguous tile pairs, mismatched surveys, unsupported rasters, download limits and insufficient terrain coverage retain the existing composite/global fallback with recorded reasons. A newer survey does not establish present-day or independently surveyed accuracy, and airborne water samples are still not bathymetry.
 
 When a dated pair is selected, the composite DSM is also acquired as an optional per-building fallback. The preferred profile must fail before the whole older profile is tested with the same coverage/plausibility gates and the remaining shared sampling budget. Surfaces are not blended or interpolated; chosen roof/elevation source IDs and the failed preferred attempt are retained. Elevated buildings still produce roof-only geometry. Fallback survey epochs may differ from current terrain/OSM and remain explicitly unverified. Bridge candidates continue using the preferred pair.
 
