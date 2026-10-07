@@ -1,9 +1,30 @@
 import unittest
 
-from voxel_mapper.wicker_track import ordered_route, bind_annotation, filled_ring_candidate
+from voxel_mapper.wicker_track import (ordered_route, bind_annotation, filled_ring_candidate,
+                                       height_marker, reviewed_binding, REVIEW_DOCUMENT)
 
 
 class WickerTrackTests(unittest.TestCase):
+    def test_height_label_uses_crosshair_and_rejects_plain_support_circle(self):
+        circle = {'seqno':123,'rect':[94.6,94.6,105.4,105.4],
+                  'items':[['c',[0,0],[0,0],[0,0],[0,0]]]*4}
+        horizontal = {'items':[['l',[91.4,100],[108.6,100]]]}
+        vertical = {'items':[['l',[100,91.4],[100,108.6]]]}
+        bbox = [108.5,82,180,98]
+        self.assertIsNone(height_marker([circle],bbox))
+        self.assertEqual(height_marker([horizontal,circle,vertical],bbox),
+                         {'point_pdf':[100,100],'pdf_vector_sequence':123})
+        self.assertIsNone(height_marker([horizontal,circle,vertical]*2,bbox))
+
+    def test_crossing_review_is_document_scoped_and_retains_alternative(self):
+        binding = {'status':'ambiguous_route_section','candidates':[
+            {'station_m':775,'distance_m':.5},{'station_m':438,'distance_m':.8}]}
+        self.assertIs(reviewed_binding(binding,'HP7','other-document'),binding)
+        reviewed = reviewed_binding(binding,'HP7',REVIEW_DOCUMENT)
+        self.assertEqual(reviewed['nearest_candidate']['station_m'],438)
+        self.assertFalse(reviewed['as_built_verified'])
+        self.assertEqual(len(reviewed['candidates']),2)
+
     def way(self, identifier, nodes, coords):
         return {'id': identifier, 'nodes': nodes, 'geometry': [{'lon': x, 'lat': y} for x,y in coords]}
 

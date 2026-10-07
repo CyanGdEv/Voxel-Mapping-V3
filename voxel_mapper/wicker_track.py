@@ -10,6 +10,58 @@ from shapely.geometry import Polygon, Point, mapping
 from .wicker_registration import apply_candidate
 
 
+# Reviewed against drawing 373/95/7 B: crossing marks need branch selection.
+# These windows are drawing-specific hypotheses, never surveyed controls.
+REVIEW_DOCUMENT = '1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d'
+REVIEW_BRANCHES = {'LP5': (190, 215), 'HP5': (250, 270),
+                   'HP2': (0, 20), 'HP7': (430, 450)}
+
+
+def height_marker(vectors, bbox):
+    """Find the drawing's circle with orthogonal crosshairs beside a label."""
+    x0, y0, x1, y1 = bbox
+    matches = []
+    for index, drawing in enumerate(vectors):
+        rect = drawing.get('rect')
+        items = drawing.get('items', [])
+        if not rect or len(items) != 4 or any(item[0] != 'c' for item in items):
+            continue
+        width, height = rect[2]-rect[0], rect[3]-rect[1]
+        if not 5 <= width <= 16 or abs(width-height) > .1:
+            continue
+        cx, cy = (rect[0]+rect[2])/2, (rect[1]+rect[3])/2
+        if not 0 <= x0-cx <= 20 or not y1-2 <= cy <= y1+10:
+            continue
+        crosses = []
+        for nearby in vectors[max(0,index-2):index+3]:
+            ni = nearby.get('items', [])
+            if len(ni) != 1 or ni[0][0] != 'l':
+                continue
+            a,b = ni[0][1:]
+            if (abs(a[1]-b[1]) < .1 and abs(a[1]-cy) < .3
+                    and min(a[0],b[0]) < rect[0] and max(a[0],b[0]) > rect[2]):
+                crosses.append('horizontal')
+            if (abs(a[0]-b[0]) < .1 and abs(a[0]-cx) < .3
+                    and min(a[1],b[1]) < rect[1] and max(a[1],b[1]) > rect[3]):
+                crosses.append('vertical')
+        if set(crosses) == {'horizontal','vertical'}:
+            matches.append({'point_pdf': [cx,cy], 'pdf_vector_sequence':drawing['seqno']})
+    return matches[0] if len(matches) == 1 else None
+
+
+def reviewed_binding(binding, label, document_id):
+    if document_id != REVIEW_DOCUMENT or label not in REVIEW_BRANCHES:
+        return binding
+    start,end = REVIEW_BRANCHES[label]
+    choices = [c for c in binding.get('candidates', []) if start <= c['station_m'] <= end]
+    if not choices:
+        return binding
+    return {**binding, 'status':'reviewed_plan_marker_binding',
+            'nearest_candidate':min(choices,key=lambda c:c['distance_m']),
+            'review_note':'Drawing crosshair reviewed at a track crossing; branch remains provisional',
+            'review_station_window_m':[start,end], 'as_built_verified':False}
+
+
 def ordered_route(ways, project):
     if not ways or len(ways) > 100:
         raise ValueError('Expected a bounded set of mapped track ways')
@@ -69,6 +121,7 @@ def bind_annotation(point, route, radius_m=5, ambiguity_margin_m=1, separate_sta
         distance = math.dist(point, nearest)
         if distance <= radius_m:
             matches.append({'segment_index': index, 'distance_m': distance,
+                            'segment_fraction': fraction,
                             'station_m': segment['station_start_m']+fraction*(segment['station_end_m']-segment['station_start_m']),
                             'nearest_xy': nearest, 'way_id': segment['way_id']})
     matches.sort(key=lambda match: match['distance_m'])
@@ -112,7 +165,7 @@ def inspect_track(evidence, raw_osm, alignment, output):
     output = Path(output)
     report = {'status': 'unavailable', 'world_geometry_additions': 0,
               'height_profile_verified': False, 'registration_verified': False,
-              'limitations': ['Printed annotation centres are not surveyed height-point marks',
+              'limitations': ['Drawing crosshairs and reviewed crossing branches remain unverified geographic height controls',
                              'OSM covered segments do not establish sound tunnel bounds or height',
                              'Ambiguous route matches cannot be assigned by nearest distance alone']}
     features = []
@@ -125,24 +178,33 @@ def inspect_track(evidence, raw_osm, alignment, output):
         ways = [way for way in raw_osm['elements'] if way.get('tags', {}).get('name') == 'Wicker Man'
                 and way['tags'].get('roller_coaster') == 'track']
         route = ordered_route(ways, project.transform)
+        with gzip.open(output/page['vector_file'], 'rt') as stream:
+            vectors = json.load(stream)
         bindings = []
         for index in alignment['candidate']['matched_annotation_indices']:
             annotation = page['ride_level_candidates'][index]
             x0, y0, x1, y1 = annotation['bbox']
-            point = apply_candidate([[(x0+x1)/2, (y0+y1)/2]], alignment['candidate'])[0]
+            marker = height_marker(vectors, annotation['bbox'])
+            anchor = marker['point_pdf'] if marker else [(x0+x1)/2, (y0+y1)/2]
+            point = apply_candidate([anchor], alignment['candidate'])[0]
             binding = bind_annotation(point, route)
+            if marker:
+                binding = reviewed_binding(binding, annotation['point_label'], alignment['document_id'])
             bindings.append({**binding, 'point_label': annotation['point_label'],
                              'printed_level_m': annotation['printed_level'], 'datum_label': 'not_established_by_site_plan',
-                             'document_id': alignment['document_id'], 'source_bbox': annotation['bbox']})
+                             'document_id': alignment['document_id'], 'source_bbox': annotation['bbox'],
+                             'anchor_kind':'drawing_crosshair' if marker else 'annotation_centre',
+                             'source_anchor_pdf':anchor,
+                             'marker_vector_sequence':marker['pdf_vector_sequence'] if marker else None})
         ambiguous = sum(binding['status'] == 'ambiguous_route_section' for binding in bindings)
         report.update(status='route_association_candidates', ordered_way_ids=route['ordered_way_ids'],
                       route_length_m=route['route_length_m'], bindings=bindings,
                       provisional_bindings=sum(b['status'] == 'provisional_annotation_binding' for b in bindings),
+                      reviewed_bindings=sum(b['status'] == 'reviewed_plan_marker_binding' for b in bindings),
+                      drawing_marker_bindings=sum(b['anchor_kind'] == 'drawing_crosshair' for b in bindings),
                       ambiguous_bindings=ambiguous, profile_status='withheld_ambiguous_controls' if ambiguous else 'withheld_unverified_controls_and_datum')
         features.append({'type': 'Feature', 'geometry': {'type': 'LineString', 'coordinates': route['coordinates_wgs84']},
                          'properties': {'kind': 'mapped_ordered_track_route', 'planning_geometry_verified': False}})
-        with gzip.open(output/page['vector_file'], 'rt') as stream:
-            vectors = json.load(stream)
         labels = [a for a in page['annotations'] if a['text'] == 'Sound Tunnel']
         tunnels = {}
         for label in labels:

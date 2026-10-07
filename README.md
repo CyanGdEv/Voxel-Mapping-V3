@@ -8,9 +8,10 @@ The Alton Actions test uses this command and retains its artifacts even on failu
 
 The route association stage joins track ways by endpoint node identity, retaining
 covered-way metadata and preserving crossings as distinct route positions.
-On the recovered SW8 data, the closed six-way route is 779.21 m long; ten
-height annotations have one provisional section match and four are ambiguous
-(LP1, LP2, LP4 and LP7). Ambiguous matches withhold the height profile.
+On the recovered SW8 data, the closed six-way route is 779.21 m long. Fourteen
+height labels now bind to their adjacent drawing crosshairs; ten have a single
+provisional section match, while four crossing branches are explicitly reviewed
+for this drawing (HP2, LP5, HP5, HP7). This remains a provisional height profile.
 A painted tunnel outline is recovered using PDF implicit fill closure while
 text masks and open strokes are rejected. Its printed-scale dimensions are
 approximately 3.06 m by 19.60 m; height remains unknown.
@@ -70,9 +71,16 @@ No track-height verification or planning geometry is inferred from this stage.
 For a visible prototype from retained acquisition inputs, run
 `python -m voxel_mapper.wickerman --source-output SOURCE --output NEW_OUTPUT --estimated-reconstruction`.
 This opt-in stage emits rails, timber ties, simplified bents and provisional
-paving. It assumes printed plan levels are ODN, excludes ambiguous bindings,
-linearly interpolates the remaining controls and uses estimated widths/support
-spacing. Air clearance is composed explicitly, and each reconstruction block is
+paving. It assumes printed plan levels are ODN. Height anchors now use the
+actual circle/crosshair symbols beside the labels, rather than text centres.
+All fourteen printed levels are retained: four crossing branches have
+drawing-specific reviewed station windows, with alternative matches preserved
+and no as-built verification claimed. Segment fractions transfer the controls
+from BNG into the export CRS without mixing metre stations between projections.
+Periodic cubic spans preserve every printed control, join smoothly with zero
+slope at high/low marks, and cannot overshoot. Intermediate heights and
+widths/support spacing remain estimates; ground is never substituted for rails.
+Air clearance is composed explicitly, and each reconstruction block is
 checked after reopening the world. The player spawns beside the preview track.
 Some interpolated sections intersect terrain; tunnel shells, effigy, fences and
 detailed buildings remain absent. This prototype is not an as-built model and

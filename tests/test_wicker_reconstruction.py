@@ -5,11 +5,32 @@ from pathlib import Path
 
 import numpy as np
 import amulet
-from voxel_mapper.wicker_reconstruction import preview_profile, verify_preview
+from voxel_mapper.wicker_reconstruction import preview_profile, verify_preview, local_height_bindings
 from voxel_mapper.bedrock import export_world
 
 
 class ReconstructionTests(unittest.TestCase):
+    def test_profile_preserves_reviewed_extrema_without_overshoot_or_seam(self):
+        bindings = [{'status':'reviewed_plan_marker_binding','nearest_candidate':{'station_m':s},'printed_level_m':h}
+                    for s,h in [(2,180),(12,201),(22,185)]]
+        route={'route_length_m':30}
+        np.testing.assert_allclose(preview_profile(route,bindings,[2,12,22]),[180,201,185])
+        values=preview_profile(route,bindings,np.arange(0,30,.01))
+        self.assertGreaterEqual(values.min(),180)
+        self.assertLessEqual(values.max(),201)
+        for s in [0,2,12,22,30]:
+            left,centre,right=preview_profile(route,bindings,[s-.0001,s,s+.0001])
+            self.assertLess(abs(left-right),.001)
+            if s in [2,12,22]:
+                self.assertLess(abs(right-centre)/.0001,.001)
+        with self.assertRaises(ValueError):preview_profile(route,bindings,[float('nan')])
+
+    def test_height_station_uses_corresponding_local_segment_fraction(self):
+        association={'bindings':[{'nearest_candidate':{'segment_index':1,'segment_fraction':.25,'station_m':999}}]}
+        route={'segments':[{}, {'station_start_m':12,'station_end_m':20}]}
+        self.assertEqual(local_height_bindings(association,route)[0]['nearest_candidate']['station_m'],14)
+        self.assertEqual(association['bindings'][0]['nearest_candidate']['station_m'],999)
+
     def test_ambiguous_heights_excluded_and_preview_closes_periodically(self):
         bindings = [{'status':'provisional_annotation_binding','nearest_candidate':{'station_m':s},'printed_level_m':h}
                     for s,h in [(0,10),(10,20),(20,10)]]

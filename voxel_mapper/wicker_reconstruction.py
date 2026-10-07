@@ -14,12 +14,48 @@ from .wicker_track import ordered_route
 
 def preview_profile(route, bindings, stations):
     controls = sorted((b['nearest_candidate']['station_m'], b['printed_level_m'])
-                      for b in bindings if b['status'] == 'provisional_annotation_binding')
+                      for b in bindings if b['status'] in
+                      ('provisional_annotation_binding', 'reviewed_plan_marker_binding'))
+    length = route['route_length_m']
+    if not math.isfinite(length) or length <= 0:
+        raise ValueError('Finite positive closed route length required')
     if len(controls) < 3 or any(not math.isfinite(s+h) for s,h in controls):
         raise ValueError('At least three finite provisional height controls required')
     if any(b[0]-a[0] < .1 for a,b in zip(controls,controls[1:])):
         raise ValueError('Conflicting coincident height controls')
-    return np.interp(stations,[p[0] for p in controls],[p[1] for p in controls],period=route['route_length_m'])
+    if controls[0][0] < 0 or controls[-1][0] >= length or length-controls[-1][0]+controls[0][0] < .1:
+        raise ValueError('Height controls must be distinct around the closed route')
+    query = np.asarray(stations,dtype=float)
+    if not np.all(np.isfinite(query)):
+        raise ValueError('Finite profile stations required')
+    x = np.array([s for s,h in controls]); y = np.array([h for s,h in controls])
+    x = np.r_[x[-1]-length,x,x[0]+length]; y = np.r_[y[-1],y,y[0]]
+    query = query % length
+    index = np.clip(np.searchsorted(x,query,side='right')-1,0,len(x)-2)
+    t = (query-x[index])/(x[index+1]-x[index])
+    # Labelled HP/LP controls are extrema. Zero-slope cubic spans preserve
+    # their exact levels and cannot overshoot between sparse controls.
+    return y[index]+(y[index+1]-y[index])*(t*t*(3-2*t))
+
+
+def local_height_bindings(association, route):
+    """Transfer segment fractions, not BNG metre stations, into local CRS."""
+    result = []
+    for binding in association['bindings']:
+        candidate = binding.get('nearest_candidate')
+        if candidate is None:
+            continue
+        index = candidate['segment_index']
+        segment = route['segments'][index]
+        # The association retains the fraction in its reference projection.
+        fraction = candidate.get('segment_fraction')
+        if fraction is None:
+            raise ValueError('Height binding requires a reference segment fraction')
+        if not 0 <= fraction <= 1:
+            raise ValueError('Height binding fraction must lie on its segment')
+        station = segment['station_start_m']+fraction*(segment['station_end_m']-segment['station_start_m'])
+        result.append({**binding,'nearest_candidate':{**candidate,'station_m':station}})
+    return result
 
 
 def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
@@ -34,7 +70,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
     route = ordered_route(ways,project.transform)
     line = LineString([route['segments'][0]['start']]+[s['end'] for s in route['segments']])
     stations = np.arange(0,line.length,.5)
-    heights = preview_profile(route,association['bindings'],stations)
+    bindings = local_height_bindings(association,route)
+    heights = preview_profile(route,bindings,stations)
     sources = {s['id']:s for s in config['sources']}
     terrain = Terrain(config['terrain'],local,sources)
     rows = {}
@@ -50,6 +87,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
         if len(rows) > max_voxels:
             raise ValueError('Reconstruction voxel budget exceeded')
     below_ground = 0
+    rail_below_ground = 0
+    minimum_clearance = math.inf
     try:
         for station,height in zip(stations,heights):
             point = line.interpolate(float(station))
@@ -60,6 +99,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
             ground = terrain.sample(point.x,point.y)
             if ground is None: raise ValueError('Ground observation missing under preview track')
             below_ground += height < ground+1
+            rail_below_ground += height < ground
+            minimum_clearance = min(minimum_clearance,float(height-ground))
             # Rails sit on timber ties; their width and profile interpolation are estimates.
             for side in (-1.2,1.2):
                 add(point.x+side*nx,height,point.y+side*nz,'iron_block','track_rails')
@@ -99,8 +140,16 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
     report = {'status':'emitted_estimated_preview','verified':False,'route_length_m':line.length,
               'emitted_voxel_records':len(rows),'component_records':counts,
               'below_ground_profile_samples':int(below_ground),
+              'rail_below_observed_ground_samples':int(rail_below_ground),
+              'minimum_rail_ground_clearance_m':minimum_clearance,
+              'profile_method':'Periodic cubic spans with zero slope at printed high/low controls; no overshoot',
+              'profile_controls':[{'point_label':b['point_label'],'station_local_m':b['nearest_candidate']['station_m'],
+                                   'level_m':b['printed_level_m'],'anchor_kind':b.get('anchor_kind'),
+                                   'status':b['status']} for b in bindings if b['status'] in
+                                  ('provisional_annotation_binding','reviewed_plan_marker_binding')],
               'assumptions':['Printed plan levels treated as ODN for preview only',
-                             'Ambiguous height associations excluded; remaining controls linearly interpolated around the closed route',
+                             'Drawing crosshairs replace text centres; four crossing branches were reviewed against drawing 373/95/7 B and remain provisional',
+                             'Cubic height spans preserve printed extrema; intermediate track shape remains estimated',
                              'Track width, tie geometry, 4 m bent spacing and clearance are estimates',
                              'Paving uses provisional alignment and a generic stone material',
                              'Timber bents are a simplified preview, not the actual structural design',
