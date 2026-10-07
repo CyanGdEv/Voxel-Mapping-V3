@@ -81,6 +81,45 @@ def parse_results(html, base_url=SEARCH):
     return references, next_links[0] if next_links else None
 
 
+def application_context(html, max_rows=500):
+    """Read named result cells, preserving proposal references as candidates.
+
+    A referenced permission is worth inspecting, but does not establish that
+    either application describes the current built site.
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+    rows = soup.select('tr')
+    if len(rows) > max_rows:
+        raise ValueError('Council result row budget exceeded')
+    contexts = []
+    for row in rows:
+        description = row.select_one('[title="Development Description"]')
+        if description is None:
+            continue
+        identities = {a.get_text(' ', strip=True).upper() for a in row.select('a[href]')
+                      if REFERENCE.fullmatch(a.get_text(' ', strip=True))}
+        if len(identities) != 1:
+            continue
+        reference = identities.pop()
+        text = description.get_text(' ', strip=True)
+        if len(text) > 10_000:
+            raise ValueError('Council proposal text budget exceeded')
+        related = sorted({r.upper() for r in REFERENCE.findall(text)} - {reference})
+        contexts.append({'reference': reference, 'related_references': related,
+                         'materials_candidate': bool(re.search(r'\bmaterial|\bpaving|\bfinish', text, re.I)),
+                         'relationship': 'proposal_mentions_unverified'})
+    return contexts
+
+
+def application_order(references, contexts):
+    """Inspect mentioned parent permissions before unrelated recent filings."""
+    related = {r for c in contexts for r in c['related_references']}
+    materials = {c['reference'] for c in contexts if c['materials_candidate']}
+    all_refs = set(references) | related
+    return (recent_references(related) + recent_references(materials - related) +
+            recent_references(all_refs - related - materials))
+
+
 def parse_document_list(html, reference):
     marker = re.search(r'\bvar\s+model\s*=\s*', html)
     if not marker:
@@ -183,6 +222,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
         return result
     result['status'] = 'checked'
     references = []
+    contexts = []
     for record in planning_records:
         for match in REFERENCE.findall(str(record.get('reference',''))):
             if match.upper() not in references:
@@ -197,6 +237,7 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
                 for page in range(max_search_pages):
                     response.raise_for_status()
                     found, next_url = parse_results(response.text,base_url=response.url)
+                    contexts.extend(application_context(response.text))
                     references.extend(ref for ref in found if ref not in references)
                     if not next_url:
                         result['application_search']='completed_address_candidates'
@@ -212,8 +253,11 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
                 result['failures'].append({'stage':'application_search','reason':str(error)})
         else:
             result['application_search']='site_name_unavailable'
-        references = recent_references(references)
-        result['application_priority']='recent_reference_year_first_not_construction_status'
+        references = application_order(references, contexts)
+        result['application_context'] = contexts
+        result['application_priority']='proposal_referenced_permissions_then_materials_then_recent_candidates'
+        result['application_candidates'] = references
+        result['uninspected_application_references'] = references[max_applications:]
         result['applications_truncated']=len(references)>max_applications
         for reference in references[:max_applications]:
             result['applications'].append(reference)

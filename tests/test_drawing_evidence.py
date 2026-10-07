@@ -31,6 +31,7 @@ class DrawingEvidenceTests(unittest.TestCase):
         documents=[{'id':str(i),'title':title,'application_reference':'RU.22/0374'} for i,title in enumerate(
             ['Location Plan','Site Plan','Location Plan B','Materials Schedule','Flood Risk Assessment','Section','Topographic Survey'])]
         titles=[d['title'] for d in inspection_order(documents)[:5]]
+        self.assertEqual(titles[0], 'Site Plan')
         self.assertIn('Materials Schedule',titles)
         self.assertIn('Flood Risk Assessment',titles)
         self.assertIn('Section',titles)

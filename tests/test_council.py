@@ -11,7 +11,7 @@ from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
 
 from voxel_mapper.council import (SEARCH,DOCS,search_form,parse_results,parse_document_list,recent_references,
-                                  inspect_pdf,read_pdf,acquire_council)
+                                  application_context,application_order,inspect_pdf,read_pdf,acquire_council)
 from voxel_mapper.pipeline import run_auto
 import test_terrain_osm as fixtures
 
@@ -77,6 +77,37 @@ class CouncilTests(unittest.TestCase):
             for i,title in enumerate(['Materials Schedule','Flood Risk Assessment','Topographic Survey','Unrelated Letter'],1)]}
         extra=parse_document_list('<script>var model = '+json.dumps(model)+'</script>','RU.22/0374')
         self.assertEqual([d['evidence_category'] for d in extra],['materials','water_and_levels','surveys'])
+
+    def test_parent_permissions_and_materials_survive_recent_application_limit(self):
+        html = '''<table><tr><td><a href="details">RU.26/0073</a></td>
+          <td title="Site Address">Park</td><td title="Development Description">
+          Discharge Condition 6 (materials) of planning permission RU.24/1476</td></tr>
+          <tr><td><a href="details">RU.26/0086</a></td>
+          <td title="Development Description">Habitat plan of RU.26/0369 varying RU.24/1476</td></tr>
+          <tr><td><a href="unrelated">Other record</a></td><td>Unlabelled RU.22/0374</td></tr></table>'''
+        context = application_context(html)
+        self.assertEqual(len(context), 2)
+        self.assertEqual(application_order(['RU.26/0086', 'RU.26/0073'], context),
+                         ['RU.26/0369', 'RU.24/1476', 'RU.26/0073', 'RU.26/0086'])
+        with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.council.requests.Session') as factory:
+            session = factory.return_value.__enter__.return_value
+            session.get.side_effect = [reply('<input name="txtSiteAddress">'),
+                                      reply(document_html('RU.26/0369'), DOCS),
+                                      reply(document_html('RU.24/1476'), DOCS)]
+            session.post.return_value = reply(html)
+            result = acquire_council([{'reference':'E60000275'}], [], 'Park', Path(d),
+                                    max_applications=2, max_pdf_inspections=0)
+            self.assertEqual(result['applications'], ['RU.26/0369', 'RU.24/1476'])
+            self.assertEqual(result['uninspected_application_references'], ['RU.26/0073', 'RU.26/0086'])
+            self.assertTrue(result['applications_truncated'])
+            self.assertEqual(result['geometry_replacements'], 0)
+
+    def test_context_rejects_ambiguous_rows_and_bounds_parser_work(self):
+        html = '''<tr><td><a href="one">RU.26/0073</a><a href="two">RU.26/0086</a></td>
+          <td title="Development Description">Permission RU.24/1476</td></tr>'''
+        self.assertEqual(application_context(html), [])
+        with self.assertRaisesRegex(ValueError, 'row budget'):
+            application_context(html, max_rows=0)
 
     def test_pdf_scale_revision_are_candidates_and_not_alignment(self):
         result=inspect_pdf(pdf_fixture())

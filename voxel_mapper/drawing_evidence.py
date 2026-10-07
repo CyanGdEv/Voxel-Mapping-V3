@@ -61,7 +61,14 @@ def document_category(title):
 
 def inspection_order(documents):
     groups={key:[] for key in ('plans','elevations','materials','surveys','water_and_levels')}
-    for document in sorted(documents,key=lambda d:(not bool(re.search(r'site|location',d['title'],re.I)),d['application_reference'],d['id'])):
+    def rank(document):
+        title = document['title']
+        # A locator/block/application sheet is usually context, not detailed
+        # physical geometry. Prefer explicit levels/layouts/site surveys.
+        context = bool(re.search(r'location\s+plan|block\s+plan|application\s*form|\bcomments\b', title, re.I))
+        physical = bool(re.search(r'ground\s+floor|platform\s+level|cut\s*fill|land\s+survey|site\s+plan|landscape|paving|material', title, re.I))
+        return context, not physical, document['application_reference'], document['id']
+    for document in sorted(documents,key=rank):
         groups[document_category(document['title'])].append(document)
     ordered=[]
     for i in range(max((len(g) for g in groups.values()),default=0)):
