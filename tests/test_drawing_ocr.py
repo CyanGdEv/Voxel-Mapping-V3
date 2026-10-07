@@ -37,6 +37,13 @@ class OcrTests(unittest.TestCase):
         self.assertEqual(result['low_confidence_word_count'], 1)
         self.assertEqual(result['accepted_line_count'], 1)
 
+    def test_literal_quote_does_not_swallow_following_tsv_rows(self):
+        result = labels_from_tsv(tsv([[('"', 95)], [('concrete', 95)], [('FFL', 95), ('14.5', 95), ('m', 95)]]))
+        self.assertEqual(result['word_count'], 5)
+        self.assertEqual(result['accepted_line_count'], 3)
+        self.assertEqual(len(result['semantic_evidence']['materials']), 1)
+        self.assertEqual(result['semantic_evidence']['levels'][0]['value_candidate'], 14.5)
+
     def test_limits_invalid_confidence_and_missing_tools(self):
         with self.assertRaisesRegex(ValueError, 'word budget'):
             labels_from_tsv(tsv([[('concrete', 95)]]), max_words=0)

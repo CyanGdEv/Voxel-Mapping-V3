@@ -9,8 +9,10 @@ import shutil
 import struct
 import subprocess
 import tempfile
+from PIL import Image
 
 from .drawing_evidence import evidence_candidates
+from .raster_grid import edge_labels, inspect_label_layout
 
 
 def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
@@ -18,7 +20,7 @@ def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
         raise ValueError('OCR text byte budget exceeded')
     lines = {}
     words = rejected = 0
-    for row in csv.DictReader(io.StringIO(tsv), delimiter='\t'):
+    for row in csv.DictReader(io.StringIO(tsv), delimiter='\t', quoting=csv.QUOTE_NONE):
         if row.get('level') != '5' or not row.get('text', '').strip():
             continue
         words += 1
@@ -52,6 +54,37 @@ def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
                            'Labels remain unplaced; no material or elevation assigned to world features']}
 
 
+def inspect_border_grid(image, root, environment):
+    labels, failures = [], []
+    with Image.open(image) as page:
+        width, height = page.size
+        horizontal_band = min(180, min(width,height)//8)
+        vertical_band = min(100, min(width,height)//8)
+        crops = [('top',(0,0,width,horizontal_band),90), ('bottom',(0,height-horizontal_band,width,height),90),
+                 ('left',(0,0,vertical_band,height),0), ('right',(width-vertical_band,0,width,height),0)]
+        for edge, box, rotation in crops:
+            try:
+                crop = page.crop(box)
+                if crop.width*crop.height*9 > 8_000_000:
+                    raise ValueError('Edge crop pixel budget exceeded')
+                crop = crop.resize((crop.width*3,crop.height*3)).rotate(rotation,expand=True)
+                target = root/(edge+'.png'); crop.save(target)
+                subprocess.run(['tesseract',str(target),str(root/edge),'-l','eng','--psm','11','tsv'],
+                               check=True,timeout=10,env=environment,
+                               stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                output = root/(edge+'.tsv')
+                if output.stat().st_size > 8_000_000:
+                    raise ValueError('Edge TSV byte budget exceeded')
+                labels.extend(edge_labels(output.read_text(),edge,box,rotation))
+            except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
+                failures.append({'edge':edge,'reason':str(error)})
+    report = inspect_label_layout(labels)
+    report['edge_failures'] = failures
+    if failures:
+        report['status'] = 'incomplete_edge_inspection'
+    return report
+
+
 def inspect_scanned_page(payload, page_number):
     result = {'status': 'unavailable', 'world_geometry_additions': 0}
     if not shutil.which('pdftoppm') or not shutil.which('tesseract'):
@@ -82,6 +115,7 @@ def inspect_scanned_page(payload, page_number):
             output = root/'labels.tsv'
             if output.stat().st_size > 8_000_000:
                 raise ValueError('OCR text byte budget exceeded')
-            return {**labels_from_tsv(output.read_text()), 'rendered_size_pixels': [width, height]}
+            return {**labels_from_tsv(output.read_text()), 'rendered_size_pixels': [width, height],
+                    'border_grid_inspection':inspect_border_grid(image,root,environment)}
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         return {**result, 'reason': str(error)}
