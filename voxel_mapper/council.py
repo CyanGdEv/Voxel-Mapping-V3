@@ -137,6 +137,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
                       'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
+                      'survey_mark_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_marks=True),
                       'vector_extraction':vectors,
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),

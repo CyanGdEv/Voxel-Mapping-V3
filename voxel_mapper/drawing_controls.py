@@ -11,6 +11,7 @@ from pyproj.exceptions import ProjError
 from pypdf.generic import ArrayObject, DictionaryObject, FloatObject, NameObject, NumberObject
 
 from .geopdf import inspect_registration
+from .drawing_marks import extract_marks, mark_for_label
 
 NUMBER = r'([+-]?\d{1,9}(?:\.\d{1,4})?)(?![\d.,eE])'
 PAIR = re.compile(r'^\s*(?:E|Easting)\s*[:=]\s*'+NUMBER+r'\s*(?:m\b)?\s*[,;]\s*(?:N|Northing)\s*[:=]\s*'+NUMBER+r'\s*(?:m\b)?\s*$',re.I)
@@ -18,13 +19,14 @@ EPSG = re.compile(r'\bEPSG\s*[:=]?\s*(\d{4,6})\b',re.I)
 
 
 def inspect_coordinate_labels(page, bounds=None, *, reuse_allowed=False,
-                              max_fragments=2000, max_text=500_000):
+                              max_fragments=2000, max_text=500_000, require_marks=False):
     result={'status':'blocked_reuse','viewports':[],'independent_accuracy':'not_verified'}
     if reuse_allowed is not True:
         return result
     pairs=[]
     codes=set()
     fragments=characters=0
+    marks=None
 
     def visit(text, cm, tm, font, size):
         nonlocal fragments,characters
@@ -38,6 +40,11 @@ def inspect_coordinate_labels(page, bounds=None, *, reuse_allowed=False,
             return
         x=tm[4]*cm[0]+tm[5]*cm[2]+cm[4]
         y=tm[4]*cm[1]+tm[5]*cm[3]+cm[5]
+        if require_marks:
+            anchor=mark_for_label(marks,(x,y))
+            if anchor is None:
+                raise ValueError('Coordinate label requires one explicit leader-connected crosshair')
+            x,y=anchor
         pairs.append((x,y,float(match[1]),float(match[2])))
         if len(pairs)>64:
             raise ValueError('Coordinate control budget exceeded')
@@ -45,6 +52,10 @@ def inspect_coordinate_labels(page, bounds=None, *, reuse_allowed=False,
     try:
         if page.get('/VP') or page.get('/LGIDict'):
             return {**result,'status':'embedded_registration_present'}
+        if require_marks:
+            marks=extract_marks(page,reuse_allowed=True)
+            if marks['status']!='crosshair_candidates':
+                raise ValueError('Supported straight crosshair geometry required')
         page.extract_text(visitor_text=visit)
         if len(codes)!=1:
             raise ValueError('One explicit unambiguous EPSG declaration required')
@@ -82,16 +93,21 @@ def inspect_coordinate_labels(page, bounds=None, *, reuse_allowed=False,
         candidate=copy.copy(page)
         candidate[NameObject('/VP')]=ArrayObject([DictionaryObject({NameObject('/BBox'):array([left,bottom,right,top]),NameObject('/Measure'):measure})])
         result=inspect_registration(candidate,bounds)
-        result['registration_method']='explicit_coordinate_label_origins'
+        result['registration_method']='leader_connected_crosshair_candidates' if require_marks else 'explicit_coordinate_label_origins'
         result['declared_source_crs']=source.to_string()
         result['coordinate_transform_accuracy_m']=accuracy
         result['conversion_only_same_datum']=conversion_only
         for viewport in result['viewports']:
-            viewport['control_provenance']='native_text_origin_not_verified_survey_mark'
+            viewport['control_provenance']='leader_connected_crosshair_not_verified_survey_mark' if require_marks else 'native_text_origin_not_verified_survey_mark'
         result['limitations']=['Text origins are not verified survey marks or grid intersections',
                               'Consistent fit does not prove absolute position; constant label offsets can survive validation',
                               'Only single-line explicitly paired E/N labels and one declared projected metre EPSG are supported',
                               'No OCR, scale-only placement, world insertion or independent accuracy verification']
+        if require_marks:
+            result['limitations']=['Centred orthogonal strokes and explicit leader attachment are candidate survey symbols',
+                                  'Leader attachment uses a one-point PDF tolerance; no nearest-mark or text-origin fallback',
+                                  'Drawing coordinates and construction status still need independent verification',
+                                  'No general grid detection, OCR or world insertion']
         return result
     except (ValueError,TypeError,KeyError,IndexError,ProjError) as error:
         return {**result,'status':'rejected','reason':str(error)}
