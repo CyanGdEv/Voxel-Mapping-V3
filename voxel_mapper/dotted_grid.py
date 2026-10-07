@@ -1,6 +1,59 @@
 """Bounded dotted straight-line hypotheses; no registration or world geometry."""
 import math
 import statistics
+import re
+import numpy as np
+
+
+def inspect_labelled_intersections(lines, labels):
+    report={'status':'insufficient_labelled_intersections','registration_verified':False,
+            'world_geometry_additions':0,'controls_exported':False,
+            'limitations':['Unique one-point label-to-line proximity is an attachment hypothesis',
+                           'Intersections are limited to reconstructed run extents; missing runs are not bridged',
+                           'Internal residuals do not verify CRS, clipped visibility or independent alignment']}
+    if len(lines)>64 or len(labels)>64:raise ValueError('Dotted attachment budget exceeded')
+    assigned={};ambiguous=unattached=0
+    for label in labels:
+        axis=label['axis'];x,y=label['origin'];value=label['value']
+        if axis not in ('E','N') or not all(math.isfinite(v) for v in (x,y,value)):
+            raise ValueError('Finite labelled axes required')
+        candidates=[line for line in lines if line['axis']==('vertical' if axis=='E' else 'horizontal')
+                    and abs(line['position']-(x if axis=='E' else y))<=1
+                    and line['extent'][0]-1<=(y if axis=='E' else x)<=line['extent'][1]+1]
+        positions={line['position'] for line in candidates}
+        if len(positions)!=1:
+            ambiguous+=len(positions)>1;unattached+=not positions;continue
+        position=positions.pop();key=(axis,position)
+        if key in assigned and assigned[key]!=value:
+            return {**report,'status':'conflicting_coordinate_labels'}
+        assigned[key]=value
+    report.update(attached_coordinate_count=len(assigned),ambiguous_label_count=ambiguous,
+                  unattached_label_count=unattached)
+    controls=set()
+    for vertical in [l for l in lines if l['axis']=='vertical' and ('E',l['position']) in assigned]:
+        for horizontal in [l for l in lines if l['axis']=='horizontal' and ('N',l['position']) in assigned]:
+            x,y=vertical['position'],horizontal['position']
+            if vertical['extent'][0]<=y<=vertical['extent'][1] and horizontal['extent'][0]<=x<=horizontal['extent'][1]:
+                controls.add((x,y,assigned[('E',x)],assigned[('N',y)]))
+    report['intersection_count']=len(controls)
+    if len(controls)>64:return {**report,'status':'intersection_budget_exceeded'}
+    if len(controls)<4:return report
+    controls=np.array(sorted(controls));pixels=controls[:,:2];coordinates=controls[:,2:]
+    design=np.column_stack((pixels-pixels.mean(axis=0),np.ones(len(pixels))))
+    if np.linalg.matrix_rank(design)!=3 or np.linalg.cond(design)>10_000:
+        return {**report,'status':'degenerate_intersections'}
+    fit=np.linalg.lstsq(design,coordinates,rcond=None)[0]
+    if fit[0,0]<=0 or fit[1,1]<=0 or abs(np.linalg.det(fit[:2]))<1e-9 or np.any(np.ptp(coordinates,axis=0)>20_000):
+        return {**report,'status':'rejected_coordinate_orientation_or_extent'}
+    residuals=[]
+    for i in range(len(design)):
+        training=np.delete(design,i,axis=0)
+        if np.linalg.matrix_rank(training)!=3:return {**report,'status':'insufficient_withheld_intersections'}
+        fit=np.linalg.lstsq(training,np.delete(coordinates,i,axis=0),rcond=None)[0]
+        residuals.append(float(np.linalg.norm(design[i]@fit-coordinates[i])))
+    report['max_withheld_error_coordinate_units']=max(residuals)
+    report['status']='consistent_labelled_intersections_unverified' if max(residuals)<=.5 else 'inconsistent_labelled_intersections'
+    return report
 
 
 def reconstruct_dotted_lines(segments, *, max_segments=250_000):
@@ -93,7 +146,20 @@ def inspect_dotted_grid(page):
                 path=[]
         if stack:raise ValueError('Unbalanced dotted graphics save')
         candidates=reconstruct_dotted_lines(segments)
+        labels=[];callbacks=characters=0
+        def visit(text,cm,tm,font,size):
+            nonlocal callbacks,characters
+            callbacks+=1;characters+=len(text)
+            if callbacks>200_000 or characters>500_000:raise ValueError('Dotted label text budget exceeded')
+            match=re.fullmatch(r'(\d{6})([EN])',text.strip(),re.I)
+            if match:
+                labels.append({'axis':match[2].upper(),'value':int(match[1]),
+                               'origin':[tm[4]*cm[0]+tm[5]*cm[2]+cm[4],tm[4]*cm[1]+tm[5]*cm[3]+cm[5]]})
+                if len(labels)>64:raise ValueError('Dotted label budget exceeded')
+        page.extract_text(visitor_text=visit)
+        attachment=inspect_labelled_intersections(candidates,labels)
         return {**report,'status':'dotted_line_hypotheses' if candidates else 'no_supported_dotted_lines',
+                'labelled_intersection_inspection':attachment,
                 'candidate_count':len(candidates),
                 'vertical_candidate_count':sum(c['axis']=='vertical' for c in candidates),
                 'horizontal_candidate_count':sum(c['axis']=='horizontal' for c in candidates),

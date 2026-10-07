@@ -96,3 +96,14 @@ Its clipping remains unverified. No label attachment, grid intersections, CRS,
 independent accuracy or physical geometry was established by this step; only
 inspection counts are exported. Automatic PDF inspection runs this check when
 native suffix-grid labels have internally consistent spacing.
+
+## Dotted-line label and intersection inspection
+
+The Dome sheet associated ten distinct coordinate declarations to reconstructed
+runs under a unique one-PDF-point proximity rule. The associations supplied 24
+intersections inside both runs' extents; no ambiguous labels were accepted, and
+29 label instances remained unattached. Maximum held-out residual was about
+0.0354 drawing coordinate units. This is an attachment hypothesis and internal
+consistency, not independent surveyed accuracy or a verified CRS. Conflicting
+labels, ambiguous proximity, reversed/degenerate axes, excessive extent and
+inconsistent fits are withheld. Only counts and diagnostics are exported.
