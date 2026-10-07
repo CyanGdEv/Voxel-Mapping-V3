@@ -15,6 +15,7 @@ from .acquisition import USER_AGENT
 from .geopdf import inspect_registration
 from .drawing_vectors import extract_vectors
 from .drawing_evidence import evidence_candidates, document_category, inspection_order
+from .drawing_associations import extract_associations
 from .drawing_polygons import polygon_candidates
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
@@ -128,13 +129,15 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
         revision_dates = re.findall(r'\b(P\d{1,3}|[A-Z])\s+(\d{1,2}[./-]\d{1,2}[./-]\d{2,4})\b',text)[:30]
         registration = inspect_registration(page,bounds)
         vectors = extract_vectors(page,registration,reuse_allowed=False)
+        polygons = polygon_candidates(vectors)
         pages.append({'page':index+1, 'size_points':[float(page.mediabox.width),float(page.mediabox.height)],
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
                       'registration':registration,
                       'vector_extraction':vectors,
-                      'polygon_extraction':polygon_candidates(vectors),
+                      'polygon_extraction':polygons,
+                      'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),
                       'semantic_evidence':evidence_candidates(text,material_context=bool(document_title and document_category(document_title)=='materials')),
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
