@@ -145,6 +145,19 @@ class CouncilTests(unittest.TestCase):
             result=acquire_council([{'reference':'other'}],[],'Park',Path(d))
             self.assertEqual(result['status'],'not_supported');factory.assert_not_called()
 
+    def test_native_grid_fit_is_distinguished_from_geographic_alignment(self):
+        inspection={'pages':[{'registration':{'status':'metadata_missing'},
+                    'scanned_page_inspection':{'border_grid_inspection':{'grid_mark_registration':
+                    {'status':'internally_consistent_grid_marks_unverified'}}}}]}
+        with (tempfile.TemporaryDirectory() as d, patch('voxel_mapper.council.requests.Session') as factory,
+                patch('voxel_mapper.council.read_pdf',return_value=b'%PDF-'),
+                patch('voxel_mapper.council.inspect_pdf',return_value=inspection)):
+            session=factory.return_value.__enter__.return_value
+            session.get.return_value=reply(document_html(),DOCS)
+            result=acquire_council([{'reference':'E60000275'}],[{'reference':'RU.22/0374'}],None,Path(d),max_pdf_inspections=1)
+        self.assertEqual(result['documents'][0]['alignment_status'],'candidate_drawing_grid_fit_unverified')
+        self.assertEqual(result['geometry_replacements'],0)
+
     def test_document_and_inspection_budgets_are_reported(self):
         with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.council.requests.Session') as factory:
             session=factory.return_value.__enter__.return_value

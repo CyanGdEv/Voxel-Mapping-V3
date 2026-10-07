@@ -293,7 +293,11 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
             try:
                 document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds,document_title=document['title'])
                 registrations=[p['registration']['status'] for p in document['inspection']['pages']]
-                document['alignment_status']='candidate_alignment' if 'candidate_alignment' in registrations else 'unavailable_or_rejected'
+                drawing_grid_fit=any(p.get('scanned_page_inspection',{}).get('border_grid_inspection',{})
+                                     .get('grid_mark_registration',{}).get('status')=='internally_consistent_grid_marks_unverified'
+                                     for p in document['inspection']['pages'])
+                document['alignment_status']=('candidate_alignment' if 'candidate_alignment' in registrations else
+                    'candidate_drawing_grid_fit_unverified' if drawing_grid_fit else 'unavailable_or_rejected')
             except (requests.RequestException,ValueError,PdfReadError,TypeError,KeyError) as error:
                 document['inspection']={'status':'unavailable_or_rejected','reason':str(error)}
         result['inspection_budget_omitted']=max(0,len(candidates)-max_pdf_inspections)

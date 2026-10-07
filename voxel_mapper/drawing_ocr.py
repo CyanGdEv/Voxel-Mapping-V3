@@ -15,6 +15,7 @@ from pypdf import PdfReader
 
 from .drawing_evidence import evidence_candidates
 from .raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes, LABEL
+from .raster_marks import inspect_grid_marks
 
 
 def labels_from_tsv(tsv, *, min_confidence=70, max_words=20_000):
@@ -167,6 +168,7 @@ def inspect_border_grid(image, root, environment, source=None, page_number=1, pa
     report = inspect_label_layout(labels)
     report['original_region_retries']=retries
     report['recovered_coordinate_labels']=recovered
+    report['grid_mark_registration']=inspect_grid_marks(image,labels)
     report['edge_failures'] = failures
     if failures:
         report['status'] = 'incomplete_edge_inspection'
