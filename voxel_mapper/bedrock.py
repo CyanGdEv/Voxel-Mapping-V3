@@ -39,7 +39,7 @@ def material_block(material):
     return Block('universal_minecraft', material)
 
 
-def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16):
+def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16, foundation_mode='shared'):
     if report['voxel_size_m'] != 1:
         raise ValueError('Bedrock 1:1 world export requires voxel_size_m = 1')
     output = Path(output)
@@ -49,6 +49,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         raise ValueError('Refusing to overwrite an existing exported world')
     if not 1 <= ground_depth <= 32:
         raise ValueError('ground_depth must be between 1 and 32 blocks')
+    if foundation_mode not in ('shared','chunk'):
+        raise ValueError('Foundation mode must be shared or chunk')
+    chunk_ground = {}
     lowest, highest, spawn_distance, spawn_x, spawn_z = math.inf, -math.inf, math.inf, 0, 0
     count = 0
     lowest_ground = math.inf
@@ -59,6 +62,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             lowest, highest = min(lowest,y), max(highest,y)
             if record['kind'] == 'terrain':
                 lowest_ground = min(lowest_ground, y)
+                key = (int(record['x'])//16,(-int(record['z']))//16)
+                chunk_ground[key] = min(chunk_ground.get(key,math.inf),y)
             count += 1
             distance = record['x']**2 + record['z']**2
             if distance < spawn_distance:
@@ -101,9 +106,10 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                         priority += {'mapped_transport_surface':1,'accepted_planning_paving':2}.get(record.get('material_origin'),0)
                     pending.append((x//16,z//16,x%16,y,z%16,material,priority))
                     if kind == 'terrain':
-                        for depth in range(1,y-foundation_y+1):
+                        bottom = foundation_y if foundation_mode == 'shared' else max(-64,math.floor(chunk_ground[(x//16,z//16)])+y_offset-ground_depth)
+                        for depth in range(1,y-bottom+1):
                             pending.append((x//16,z//16,x%16,y-depth,z%16,'dirt' if depth<=2 else 'stone',-1))
-                    attempted += 1+(y-foundation_y if kind=='terrain' else 0)
+                    attempted += 1+(y-bottom if kind=='terrain' else 0)
                     if attempted > max_blocks:
                         raise ValueError('World block budget exceeded; split the park area')
                     if len(pending)>=10_000:
@@ -208,7 +214,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'vertical_offset_blocks':y_offset,'geographic_elevation_m':'Minecraft Y minus vertical_offset_blocks',
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,'explicit_air_cells':air_cells,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
-                'foundation':{'minecraft_y':foundation_y,'method':'shared artificial dry-land foundation; not measured subsurface geology or bathymetry'},
+                'foundation':{'minecraft_y':foundation_y,'mode':foundation_mode,
+                              'method':('shared artificial dry-land foundation' if foundation_mode=='shared' else 'per-chunk minimum dry-land elevation minus fill depth')+'; not measured subsurface geology or bathymetry'},
                 'paving_composition':'mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact',
                 'sha256':checksum,'quality':'draft_unverified',
                 'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Artificial dry-land foundation; unmapped lake depths remain unknown','Outside mapped chunks Minecraft may generate unrelated terrain','This export has no automated in-game visual fidelity validation']}

@@ -372,3 +372,23 @@ finished effigy geometry remain unresolved. `wicker-man-details.json` and
 `wicker-man-detail-candidates.geojson` retain candidates and withheld categories.
 The council section/elevation endpoints remain unavailable; no missing drawing
 is silently replaced with a claimed measured detail.
+
+### Full Alton Towers draft from retained inputs
+
+```sh
+python -m voxel_mapper.alton_world --source-output FULL_PARK_ACQUISITION --wicker-output WICKER_DETAILS_OUTPUT --output NEW_FULL_PARK_OUTPUT
+```
+
+This builds inside the retained mapped park boundary, reuses mapped physical
+features and the full-park EA composite DTM/DSM, and overlays finite cells of the
+matched 2022 Wicker Man rasters. Raster CRS, cell resolution and alignment are
+checked; missing patch observations preserve the underlying composite and mixed
+dates remain explicit in lineage. Wicker Man preview geometry is regenerated
+in the park coordinate frame rather than copying incompatible local coordinates.
+The Bedrock export uses each chunk's minimum dry-land elevation minus 16 blocks
+as its artificial foundation, limiting fill on a large hillside park. These
+foundations are not surveyed geology or bathymetry. All blocks/air and the
+entrance-plaza connection are checked after reopening the world. This is a full
+park-area draft, not a complete reconstruction of every ride: unmodelled
+attraction outlines are still withheld from physical track generation. Existing
+outputs are never overwritten.

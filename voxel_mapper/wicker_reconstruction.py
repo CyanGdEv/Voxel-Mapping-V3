@@ -1,5 +1,6 @@
 """Opt-in visible reconstruction preview; no verified planning claims."""
 import json
+import hashlib
 import math
 from pathlib import Path
 
@@ -235,6 +236,8 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
     (output/'wicker-man-reconstruction.json').write_text(json.dumps(report,indent=2))
     quality['estimated_reconstruction'] = report
     quality['voxel_records'] += len(rows)
+    with (output/'voxels.jsonl').open('rb') as stream:
+        quality['sha256'] = hashlib.file_digest(stream,'sha256').hexdigest()
     quality['spawn_local_xyz_m'] = report['visit_local_xyz_m']
     return report
 
