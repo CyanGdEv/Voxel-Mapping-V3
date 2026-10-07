@@ -89,6 +89,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     # at the same block, regardless of input ordering. Keep its
                     # physical layer below buildings, structures and roofs.
                     priority=PRIORITY.get(kind,6)*10
+                    if record.get('material_origin') in ('estimated_reconstruction_void','estimated_reconstruction_shell'):
+                        priority = 89 if material == 'air' else 90
                     if record.get('material_origin') in ('accepted_planning_void','accepted_planning_shell'):
                         priority = 95 if material == 'air' else 96
                     if kind in TRANSPORT_KINDS:
@@ -112,6 +114,14 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 raise ValueError('No occupied blocks exist after composition')
             top = connection.execute("SELECT MAX(y) FROM blocks WHERE cx=? AND cz=? AND x=? AND z=? AND material != 'air'",
                                      (spawn_x//16,spawn_z//16,spawn_x%16,spawn_z%16)).fetchone()[0]
+            if report.get('spawn_local_xyz_m') is not None:
+                visit = report['spawn_local_xyz_m']
+                if len(visit) != 3 or not all(isinstance(v,(int,float)) and math.isfinite(v) for v in visit):
+                    raise ValueError('Finite local x/y/z spawn coordinates required')
+                spawn_x,spawn_z = math.floor(visit[0]),-math.floor(visit[2])
+                top = math.floor(visit[1])+y_offset-2
+                if not -60 <= top+2 <= 316:
+                    raise ValueError('Requested spawn is outside supported world height')
             wrapper = LevelDBFormat(str(world_path))
             wrapper.create_and_open('bedrock',VERSION)
             root = wrapper.root_tag.compound

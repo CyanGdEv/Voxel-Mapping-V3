@@ -208,7 +208,10 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--planning-cache')
     parser.add_argument('--source-output', help='Reuse an existing Alton acquisition directory for a local test')
+    parser.add_argument('--estimated-reconstruction', action='store_true', help='Emit visible estimated track/support/paving preview from retained evidence')
     args = parser.parse_args()
+    if args.estimated_reconstruction and not args.source_output:
+        parser.error('--estimated-reconstruction currently requires --source-output')
     output = Path(args.output).resolve()
     if args.source_output:
         if output.exists() and any(output.iterdir()):
@@ -225,7 +228,8 @@ def main():
         collection['planning_geometry_records'] = []
         (output/'resolved-config.json').write_text(json.dumps(config, indent=2))
         quality = build(config, collection, output)
-        quality['world'] = export_world(output/'voxels.jsonl', output, quality, name='Wicker Man — BASELINE ONLY')
+        if not args.estimated_reconstruction:
+            quality['world'] = export_world(output/'voxels.jsonl', output, quality, name='Wicker Man — BASELINE ONLY')
         (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
         if args.planning_cache:
             from .alton import acquire_alton
@@ -267,6 +271,12 @@ def main():
         result['surfaces'] = inspect_surfaces(evidence, result['registration'], output)
         from .wicker_survey import inspect_survey
         result['survey_evidence'] = inspect_survey(json.loads((output/'resolved-config.json').read_text()), raw_osm, output)
+        if args.estimated_reconstruction:
+            from .wicker_reconstruction import emit_preview, verify_preview
+            result['estimated_reconstruction'] = emit_preview(config,quality,raw_osm,output)
+            quality['world'] = export_world(output/'voxels.jsonl',output,quality,name='Wicker Man — ESTIMATED RECONSTRUCTION')
+            verify_preview(output,quality['world'],result['estimated_reconstruction'])
+            result['baseline_world_exported'] = True
     (output/'wicker-man-acceptance.json').write_text(json.dumps(result, indent=2))
     (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
     print(json.dumps(result, indent=2))

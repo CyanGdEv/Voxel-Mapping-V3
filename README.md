@@ -67,6 +67,17 @@ identity. Its 391 positions span ground levels 177.68–192.24 m ODN. DSM values
 are never rail elevations: trees, roofs and supports can occupy those positions.
 No track-height verification or planning geometry is inferred from this stage.
 
+For a visible prototype from retained acquisition inputs, run
+`python -m voxel_mapper.wickerman --source-output SOURCE --output NEW_OUTPUT --estimated-reconstruction`.
+This opt-in stage emits rails, timber ties, simplified bents and provisional
+paving. It assumes printed plan levels are ODN, excludes ambiguous bindings,
+linearly interpolates the remaining controls and uses estimated widths/support
+spacing. Air clearance is composed explicitly, and each reconstruction block is
+checked after reopening the world. The player spawns beside the preview track.
+Some interpolated sections intersect terrain; tunnel shells, effigy, fences and
+detailed buildings remain absent. This prototype is not an as-built model and
+does not pass the verified planning gate; exit code 2 remains expected.
+
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space
 files. These candidates do not imply georeferenced or as-built components.
