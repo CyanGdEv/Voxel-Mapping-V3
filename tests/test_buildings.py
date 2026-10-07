@@ -119,6 +119,18 @@ class BuildingTests(unittest.TestCase):
                     self.assertEqual(world.get_block(x,y+1,z,'minecraft:overworld').base_name,'air')
             finally:
                 world.close()
+            feature['properties']['layer']='2'
+            elevated=build(config,{'features':[feature]},root/'elevated')
+            elevated_rows=[json.loads(line) for line in (root/'elevated/voxels.jsonl').read_text().splitlines()]
+            self.assertTrue(elevated_rows)
+            self.assertEqual({v['kind'] for v in elevated_rows},{'roof'})
+            self.assertEqual(len(elevated_rows),len({(v['x'],v['z']) for v in elevated_rows}))
+            self.assertEqual({v['elevation_source'] for v in elevated_rows},{'surface'})
+            self.assertEqual(elevated['building_profiles'][0]['foundation_method'],'not_reconstructed')
+            self.assertEqual({(v['x'],v['y'],v['z']) for v in elevated_rows},{(v['x'],v['y'],v['z']) for v in roofs})
+            feature['properties']['layer']='-1'
+            underground=build(config,{'features':[feature]},root/'underground')
+            self.assertEqual(underground['voxel_records'],0)
             config['surface']['vertical_datum']='different'
             with self.assertRaisesRegex(ValueError,'vertical datum'):
                 build(config,{'features':[feature]},root/'bad')

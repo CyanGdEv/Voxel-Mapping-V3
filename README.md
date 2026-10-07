@@ -6,6 +6,8 @@ Automatically acquire public geographic data and generate a **Minecraft Bedrock 
 
 ## Run on GitHub Actions
 
+Elevated OSM building footprints with positive layer tags can retain a DSM-derived roof surface when the existing coverage/plausibility checks pass. Only a one-block roof surface is emitted: the unknown elevated floor, walls and supports are left unmodelled. Negative layers and tunnels remain omitted without explicit elevation. This is a partial unverified roof model, not complete complex-building reconstruction.
+
 Automatic polygon locations now acquire a 200 m context margin and build the resulting bounding box, including mapped lakes outside the leisure boundary. Explicit bounding boxes remain unchanged; all area and voxel budgets still apply. Lakes crossing the context bounds remain clipped, so this does not guarantee complete surrounding lake coverage.
 
 Polygon water is represented by a single horizontal surface using an explicit datum-compatible elevation, or a median of at most 81 interior terrain samples when their central elevation range is within 1 m. Raster estimates are unverified, and inconsistent or insufficient samples cause omission with a reported error. Airborne terrain over water is not bathymetry: grass terrain is suppressed inside mapped lake polygons, and no measured lakebed or depth is claimed. River centerlines still use the existing extrusion model.
