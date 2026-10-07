@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from voxel_mapper.wickerman import annotation_evidence, acceptance_report, REQUIREMENTS, report_page_indices, ride_specifications
+from voxel_mapper.wickerman import annotation_evidence, acceptance_report, REQUIREMENTS, report_page_indices, ride_specifications, path_specifications, inspect_drawings
 from voxel_mapper.alton_discovery import merge_discovered, document_role
 
 
@@ -16,7 +16,7 @@ class WickerManTests(unittest.TestCase):
                 self.text = text
             def get_text(self, mode):
                 return self.text
-        pages = [Page('cover') for _ in range(23)]
+        pages = [Page('Path wall materials') for _ in range(23)]
         pages[22] = Page(text)
         indices, budget = report_page_indices(pages)
         self.assertIn(22, indices)
@@ -28,6 +28,57 @@ class WickerManTests(unittest.TestCase):
         indices, budget = report_page_indices(pages, scan_pages=10)
         self.assertNotIn(22, indices)
         self.assertEqual(budget['native_text_pages_unscanned'], 13)
+
+    def test_path_application_is_report_and_late_material_pages_are_selected(self):
+        title = '03224 S73 application SW8 path proposals 22-02-17'
+        self.assertEqual(document_role(title)[0], 'context-report')
+        class Page:
+            def __init__(self, text): self.text = text
+            def get_text(self, mode): return self.text
+        pages = [Page('cover'), Page('intro'), Page('Path materials'),
+                 Page('List of Drawings')]
+        indices, _ = report_page_indices(pages)
+        self.assertEqual(indices, [0, 1, 2, 3])
+
+    def test_scoped_pavement_and_grading_requirements_do_not_invent_palette(self):
+        text = ('The path is proposed to be made of pavement blocks to the north of the '
+                'DPW (a minimum of 1m away from the DPW). The ground surrounding the '
+                'DPW is proposed to be graded down to 1:3 to reveal the wall.')
+        specs = path_specifications(text)
+        self.assertEqual(specs[0]['minimum_wall_setback_m'], 1)
+        self.assertIsNone(specs[0]['block_type'])
+        self.assertFalse(specs[0]['geometry_verified'])
+        self.assertEqual(specs[1]['slope_horizontal'], 3)
+        self.assertEqual(path_specifications('Existing pavement blocks elsewhere'), [])
+
+    def test_late_drawing_pages_are_preserved_with_explicit_budget(self):
+        try:
+            import fitz
+        except ImportError:
+            self.skipTest('Optional planning PDF dependency unavailable')
+        import hashlib
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            pdf = fitz.open()
+            for index in range(4):
+                page = pdf.new_page()
+                page.insert_text((30, 30), 'Sound Tunnel' if index == 3 else 'cover')
+                page.draw_rect(fitz.Rect(40, 40, 100, 100))
+            path = root/'drawing.pdf'
+            pdf.save(path)
+            pdf.close()
+            doc = {'applicationReference': 'SMD/2016/0315', 'title': 'Sections',
+                   'url': 'https://example.test/source', 'role': 'elevations',
+                   'local_pdf': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+            result = inspect_drawings([doc], root)
+            row = result['documents'][0]
+            self.assertEqual(len(row['pages']), 4)
+            self.assertTrue(row['inspection_complete'])
+            self.assertEqual(len(row['pages'][3]['categories']['sound_tunnels']), 1)
+            self.assertTrue((root/row['pages'][3]['vector_file']).exists())
+            row = inspect_drawings([doc], root, max_drawing_pages=3)['documents'][0]
+            self.assertFalse(row['inspection_complete'])
+            self.assertEqual(row['omitted_pages'], 1)
 
     def test_track_levels_are_retained_without_datum_or_georegistration_claim(self):
         line = {'text': 'HP1 - 201.0', 'bbox': [1, 2, 3, 4]}

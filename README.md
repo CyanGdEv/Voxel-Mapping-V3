@@ -40,6 +40,14 @@ an alignment hypothesis: a shop is one object, and OSM may share the drawing
 source. No independent survey controls, verified vertical datum, physical
 geometry additions or as-built authority are inferred.
 
+Drawing inspection retains up to 16 pages per drawing set instead of silently
+stopping after page two. Report scanning also selects paths, walls, fences,
+materials and drawing schedules, with ride-height specifications prioritized.
+The SW8 Section 73 path application is classified as a report. Its scoped
+pavement-block proposal, one-metre Deer Park Wall setback and 1:3 grading are
+retained as proposed specifications; no stone type, colour or as-built polygon
+is inferred from that wording. Every document reports omitted page count.
+
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space
 files. These candidates do not imply georeferenced or as-built components.

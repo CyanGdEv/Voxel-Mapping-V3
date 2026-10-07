@@ -14,7 +14,7 @@ HOST = 'publicaccess.staffsmoorlands.gov.uk'
 
 def document_role(title):
     lower = title.lower()
-    if re.search(r'arboricultur|ecolog|bat\b|bird\b|photo|assessment|statement|report', lower):
+    if re.search(r'arboricultur|ecolog|bat\b|bird\b|photo|assessment|statement|report|application.*(?:s\.?73|path proposals)|s\.?73.*application', lower):
         return 'context-report', 90
     if re.search(r'topograph|topolog|master land survey|\bsurvey\b', lower):
         return 'topographical-survey', 0

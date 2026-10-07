@@ -19,7 +19,7 @@ REQUIREMENTS = {
     'sound_tunnels': r'\bsound\s+tunnel\b',
     'sound_screens': r'\bsound\s+screens?\b',
     'widths': r'\bwidth\b|\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?\s*m\b',
-    'materials': r'\btarmac\b|\basphalt\b|\bconcrete\b|\btimber\b|\bbrick\b|\bstone\b|\bgravel\b',
+    'materials': r'\btarmac\b|\basphalt\b|\bconcrete\b|\btimber\b|\bbrick\b|\bstone\b|\bgravel\b|pavement\s+blocks',
     'paths_plazas': r'\bplaza\b|\bpaving\b|\bboardwalk\b|\bpath\b|\bqueue\b|\bqueueline\b',
     'walls': r'\bwall\b|\brtw\b',
     'fences': r'\bfenc(?:e|es|ing)\b|\brailings\b',
@@ -58,14 +58,18 @@ def report_page_indices(pdf, max_pages=2, scan_pages=64, max_matches=12):
     """Bounded native-text search beyond cover sheets; no unbounded OCR."""
     chosen = set(range(min(len(pdf), max_pages)))
     examined = min(len(pdf), scan_pages)
-    matches = []
+    matches, ride_matches = [], []
     for index in range(examined):
         text = pdf[index].get_text('text')
         if len(text) > 500_000:
             continue
         if re.search(r'\bAOD\b|sound\s+tunnels?|ride\s+structure|ride\s+track|dark\s+stained', text, re.I):
+            ride_matches.append(index)
+        if re.search(r'\bAOD\b|sound\s+tunnels?|ride\s+structure|ride\s+track|dark\s+stained|\bpath\b|\bpaving\b|pavement\s+blocks|\bmaterials?\b|\bfenc\w*|\bwall\b|list\s+of\s+drawings', text, re.I):
             matches.append(index)
-    chosen.update(matches[:max_matches])
+    # Preserve ride/height specifications before broader landscaping matches.
+    priority = list(dict.fromkeys(ride_matches+matches))
+    chosen.update(priority[:max_matches])
     return sorted(chosen), {'native_text_pages_scanned': examined,
                             'native_text_pages_unscanned': len(pdf)-examined,
                             'relevant_pages_omitted_by_budget': max(0, len(matches)-max_matches)}
@@ -86,7 +90,29 @@ def ride_specifications(text):
     return result
 
 
-def inspect_drawings(documents, output, max_pages=2, max_paths=150_000):
+def path_specifications(text):
+    """Preserve scoped proposal requirements, never assign them to every path."""
+    normalized = ' '.join(text.split())
+    result = []
+    proposal = re.search(
+        r'The path is proposed to be made of pavement blocks to the north of the '
+        r'DPW \(a minimum of (\d+(?:\.\d+)?)m away from the DPW\)', normalized, re.I)
+    if proposal:
+        result.append({'component': 'woodland_path_north_of_deer_park_wall',
+                       'material': 'pavement_blocks', 'block_type': None,
+                       'minimum_wall_setback_m': float(proposal[1]),
+                       'status': 'proposed_document_specification',
+                       'as_built_verified': False, 'geometry_verified': False})
+    grading = re.search(r'ground surrounding the DPW is proposed to be graded down to 1:(\d+(?:\.\d+)?)', normalized, re.I)
+    if grading:
+        result.append({'component': 'ground_surrounding_deer_park_wall',
+                       'slope_vertical': 1, 'slope_horizontal': float(grading[1]),
+                       'status': 'proposed_document_specification',
+                       'as_built_verified': False, 'geometry_verified': False})
+    return result
+
+
+def inspect_drawings(documents, output, max_pages=2, max_paths=150_000, max_drawing_pages=16):
     import fitz
     output = Path(output)
     evidence = {'applications': list(APPLICATIONS), 'documents': [], 'failures': [],
@@ -102,10 +128,11 @@ def inspect_drawings(documents, output, max_pages=2, max_paths=150_000):
             if path.stat().st_size > 10_000_000 or hashlib.sha256(path.read_bytes()).hexdigest() != document['sha256']:
                 raise ValueError('Drawing size/hash check failed')
             with fitz.open(path) as pdf:
-                indices = list(range(min(len(pdf), max_pages)))
+                indices = list(range(min(len(pdf), max_drawing_pages)))
                 if document['role'] == 'context-report':
                     indices, row['report_page_search'] = report_page_indices(pdf, max_pages)
                 row['omitted_pages'] = len(pdf)-len(indices)
+                row['inspection_complete'] = len(indices) == len(pdf)
                 for index in indices:
                     page = pdf[index]
                     lines = [{'text': ''.join(s['text'] for s in line['spans']), 'bbox': list(line['bbox'])}
@@ -114,7 +141,8 @@ def inspect_drawings(documents, output, max_pages=2, max_paths=150_000):
                     categories, levels = annotation_evidence(lines)
                     detail = {'page': index+1, 'rotation': page.rotation, 'annotations': lines,
                               'categories': categories, 'ride_level_candidates': levels,
-                              'ride_specifications': ride_specifications(page.get_text('text'))}
+                              'ride_specifications': ride_specifications(page.get_text('text')),
+                              'path_specifications': path_specifications(page.get_text('text'))}
                     # Preserve curves, clipping/group records and style, rather
                     # than replacing this detailed plan with a bounding box.
                     if document['role'] in ('site-plan', 'landscape-plan', 'floor-plan', 'elevations'):
