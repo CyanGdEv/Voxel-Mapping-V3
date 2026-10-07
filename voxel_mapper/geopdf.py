@@ -37,6 +37,8 @@ def inspect_registration(page, bounds=None, tolerance_m=.5, max_viewports=16):
                 gcs = gcs.get_object()
             if not gcs:
                 raise ValueError('Declared coordinate system required')
+            if gcs.get('/Type') not in (None,'/GEOGCS'):
+                raise ValueError('Only geographic coordinate-system dictionaries are supported')
             epsg, source_wkt = gcs.get('/EPSG'), gcs.get('/WKT')
             if epsg is None and not source_wkt:
                 raise ValueError('Declared EPSG or WKT required')

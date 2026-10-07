@@ -126,4 +126,4 @@ Each viewport needs four to 64 unique controls, a valid page rectangle, a stable
 
 Successful registrations remain `internally_consistent_unverified`: embedded control agreement is not independent surveyed accuracy. Reports retain the transform, CRS, errors, controls' convex hull and any declared boundary restriction. The coordinate helper rejects points outside that domain to prevent extrapolation. Plain PDFs report `metadata_missing`, and rejected metadata retains a reason. These checks establish an auditable candidate coordinate mapping, **not drawing vectorisation, physical geometry, construction status or reuse permission**. No original PDF is added to the world.
 
-References: [GDAL GeoPDF documentation](https://gdal.org/en/stable/drivers/raster/pdf.html), [Adobe ISO 32000-2 specification](https://developer.adobe.com/document-services/docs/assets/5b15559b96303194340b99820d3a70fa/PDF_ISO_32000-2.pdf).
+References: [GDAL GeoPDF documentation](https://gdal.org/en/stable/drivers/raster/pdf.html), [ISO 32000-2 geospatial specification corrections](https://pdf-issues.pdfa.org/32000-2-2020/clause12.html).

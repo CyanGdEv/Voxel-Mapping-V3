@@ -69,6 +69,13 @@ class GeoPdfTests(unittest.TestCase):
             _,page,measure=self.fixture()
             measure[NameObject('/GCS')]=DictionaryObject({} if epsg is None else {NameObject('/EPSG'):NumberObject(epsg)})
             self.assertEqual(inspect_registration(page,self.bounds)['status'],'rejected')
+        _,page,measure=self.fixture()
+        measure['/GCS'][NameObject('/Type')]=NameObject('/PROJCS')
+        self.assertEqual(inspect_registration(page,self.bounds)['status'],'rejected')
+        _,page,measure=self.fixture()
+        from pypdf.generic import TextStringObject
+        measure['/GCS'][NameObject('/WKT')]=TextStringObject(CRS.from_epsg(27700).to_wkt())
+        self.assertIn('Conflicting',inspect_registration(page,self.bounds)['viewports'][0]['reason'])
 
     def test_wrong_area_rotation_and_viewport_outside_page_rejected(self):
         _,page,_=self.fixture()
