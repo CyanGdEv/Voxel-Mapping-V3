@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import math
+import time
 from .water import surface_level
 from .planning_geometry import physical_features
 from pathlib import Path
@@ -25,11 +26,21 @@ KINDS = {"building": "building", "highway": "path", "waterway": "water"}
 def fetch_osm(bounds):
     west, south, east, north = bounds
     query = f'[out:json][timeout:120];(way({south},{west},{north},{east});relation["type"="multipolygon"]({south},{west},{north},{east}););out meta geom;'
-    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=180)
-    response.raise_for_status()
-    data = response.json()
-    if data.get("remark"):
-        raise ValueError("Overpass returned incomplete data: " + data["remark"])
+    for attempt in range(3):
+        try:
+            response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=180)
+            response.raise_for_status()
+            data = response.json()
+            if data.get("remark"):
+                raise ValueError("Overpass returned incomplete data: " + data["remark"])
+            break
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt == 2:
+                raise
+        except requests.HTTPError:
+            if response.status_code not in (429, 500, 502, 503, 504) or attempt == 2:
+                raise
+        time.sleep(attempt+1)
     collection, skipped = parse_osm(data)
     return collection, data, skipped
 

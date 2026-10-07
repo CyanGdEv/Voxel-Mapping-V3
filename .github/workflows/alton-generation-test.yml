@@ -1,4 +1,5 @@
 name: Alton Towers generation test
+# OSM acquisition retries transient service errors; partial responses still fail.
 on:
   workflow_dispatch:
   pull_request:
