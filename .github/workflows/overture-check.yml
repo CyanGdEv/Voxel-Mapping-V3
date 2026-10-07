@@ -1,0 +1,32 @@
+name: Overture public source check
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - voxel_mapper/overture.py
+      - voxel_mapper/overture_worker.py
+      - scripts/check_overture.py
+      - .github/workflows/overture-check.yml
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install .
+        env:
+          CC: gcc
+          CXX: g++
+      - name: Query current official release for Thorpe Park area
+        run: python scripts/check_overture.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: overture-source-check-${{ github.run_id }}
+          path: source-check/
+          retention-days: 14

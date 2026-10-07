@@ -26,6 +26,7 @@ The workflow is manually dispatched, but every supported data acquisition and ex
 | England building surfaces | Automatic last-return 1 m DSM acquisition when compatible EA ground elevations are available |
 | Other regions / unavailable EA data | Automatic Open Topo Data Mapzen sampling; coarse mixed-source fallback is flagged |
 | England planning evidence | Automatic spatial queries for planning authorities, applications and listed-building records; coverage and document-catalogue availability reported |
+| Supplemental buildings | Automatic Overture release discovery and bounded footprint download; disjoint non-OSM source footprints supplement existing mapped features |
 | Runnymede drawings | Automatic application-address search and document lists from discovered references; bounded temporary PDF inspection, with blocked searches and reuse restrictions reported |
 | Bedrock world | Automatic LevelDB world creation, block composition, read-back validation and `.mcworld` packaging |
 
@@ -138,3 +139,14 @@ The default reuse gate blocks extraction. Runnymede consultation inspection expl
 Curves, clipping, form/image XObjects, marked/optional content, external graphics states and unknown operators reject the entire page with a reason; partial geometry is discarded. Extraction is capped at 10 MB content, 100,000 operations, 2,000 painted subpaths, 20,000 constructed points and 64 graphics-state saves. Candidates remain unclassified and construction-unverified, and are never inserted into a Minecraft world. Semantic interpretation, independent alignment and a permitted source adapter remain required.
 
 Reference: [ISO PDF graphics/path specification](https://udp.adobe.io/document-services/docs/assets/35e4369068f86065372c18787171a17e/PDF_ISO_32000-1.pdf).
+
+
+## Automatic supplemental building footprints
+
+Every location/bbox run queries the official Overture STAC catalog, pins its current release, and downloads bounded building records through `overturemaps` 1.0.2. An isolated Linux reader has a 180-second deadline, a 64 MB output ceiling and a 20,000-feature ceiling. The same 4 km² area budget applies. Interrupted, malformed or failed downloads are discarded completely, with explicit provider errors; an empty result is `empty_coverage_unknown`, not verified absence. Catalog/data hashes, UTC query time, release, source metadata and per-feature decisions remain in the Actions artifact and world quality report.
+
+The building theme is ODbL. The world credits Overture and upstream contributors and links the [building attribution list](https://docs.overturemaps.org/attribution/#buildings). Full upstream source records are retained on each accepted feature. See the [official building guide](https://docs.overturemaps.org/guides/buildings/) and [official Python client](https://docs.overturemaps.org/getting-data/overturemaps-py/).
+
+OSM-derived geometry is withheld, including buildings absent from the current OSM response: an older Overture release cannot silently reintroduce deleted OSM buildings. Additional geometry needs a traceable non-OSM source, a valid ground-level 2D polygon, 2–100,000 m² area, and at least 0.9 confidence when its source supplies confidence. Underground/elevated records and unsupported heights are rejected. Candidates within 2 m of any mapped feature or an accepted supplemental building are withheld; footprints are never cut into fragments to make them fit. Existing geometry and attributes remain unchanged, and a shared 100,000-check budget bounds conflict resolution.
+
+Accepted supplemental footprints enter normal building generation, including the existing DSM roof checks when compatible data is available. Supplied height is in metres; otherwise the same documented fallback applies. Footprints can be imagery-derived roofprints and do not establish recent construction status or surveyed accuracy. Building parts, independent validation and detailed facades remain unsupported; additions remain draft/unverified and cause strict mode to fail. An additional Actions workflow performs a live Thorpe Park-area download check and retains its evidence; offline tests independently verify conflict handling and actual supplemental blocks in a packaged 1:1 Bedrock world.

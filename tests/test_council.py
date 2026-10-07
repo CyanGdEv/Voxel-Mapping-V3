@@ -37,6 +37,12 @@ def reply(text='',url=SEARCH):
 
 
 class CouncilTests(unittest.TestCase):
+    def setUp(self):
+        provider = patch('voxel_mapper.pipeline.acquire_buildings',return_value=(
+            {'type':'FeatureCollection','features':[]},
+            {'provider':'overture-buildings','status':'unavailable','failures':['Offline fixture']}))
+        provider.start(); self.addCleanup(provider.stop)
+
     def test_form_preserves_state_and_selected_controls(self):
         data=search_form('<input name="__VIEWSTATE" value="state"><input name="txtSiteAddress"><input type="radio" name="date" value="all" checked><input type="radio" name="date" value="month"><select name="type"><option value="a">A</option><option selected value="b">B</option></select>','Park')
         self.assertEqual(data['__VIEWSTATE'],'state')

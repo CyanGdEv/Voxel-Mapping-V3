@@ -20,6 +20,12 @@ def response(data):
 
 
 class PlanningTests(unittest.TestCase):
+    def setUp(self):
+        provider = patch('voxel_mapper.pipeline.acquire_buildings',return_value=(
+            {'type':'FeatureCollection','features':[]},
+            {'provider':'overture-buildings','status':'unavailable','failures':['Offline fixture']}))
+        provider.start(); self.addCleanup(provider.stop)
+
     bounds = [-.52, 51.39, -.50, 51.41]
 
     def test_discovery_retains_pages_hashes_and_empty_catalogue(self):

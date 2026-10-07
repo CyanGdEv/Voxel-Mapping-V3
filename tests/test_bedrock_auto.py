@@ -82,6 +82,12 @@ class BedrockTests(unittest.TestCase):
 
 
 class AutomaticTests(unittest.TestCase):
+    def setUp(self):
+        provider = patch('voxel_mapper.pipeline.acquire_buildings',return_value=(
+            {'type':'FeatureCollection','features':[]},
+            {'provider':'overture-buildings','status':'unavailable','failures':['Offline fixture']}))
+        provider.start(); self.addCleanup(provider.stop)
+
     def test_ambiguous_geocoding_is_not_silently_selected(self):
         response=Mock();response.json.return_value=[{'type':'theme_park'},{'type':'theme_park'}]
         with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.acquisition.requests.get',return_value=response):

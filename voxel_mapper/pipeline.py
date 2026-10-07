@@ -10,6 +10,7 @@ from .cli import build, fetch_osm, validate_config
 from .bedrock import export_world
 from .planning import discover_planning, match_planning, SOURCE as PLANNING_SOURCE
 from .council import acquire_council, SOURCE as COUNCIL_SOURCE
+from .overture import acquire_buildings, supplement_buildings, SOURCE as OVERTURE_SOURCE
 
 
 def run_auto(output, location=None, bounds=None):
@@ -53,6 +54,13 @@ def run_auto(output, location=None, bounds=None):
         collection, raw, skipped = fetch_osm(bounds)
         acquisition['providers'].append({'provider':'osm','status':'downloaded','feature_count':len(collection['features'])})
         (output/'osm-raw.json').write_text(json.dumps(raw))
+        additional, overture = acquire_buildings(bounds,output)
+        acquisition['providers'].append(overture)
+        collection, overture_matches = supplement_buildings(collection,additional,bounds,overture.get('release'))
+        (output/'overture-matches.json').write_text(json.dumps(overture_matches,indent=2))
+        if overture['status'] in ('downloaded','empty_coverage_unknown'):
+            config['sources'].append(OVERTURE_SOURCE)
+        manifest.write_text(json.dumps(acquisition,indent=2))
         planning = discover_planning(bounds, output)
         collection, planning_matches = match_planning(collection, planning, bounds)
         (output/'planning-matches.json').write_text(json.dumps(planning_matches, indent=2))
@@ -77,6 +85,11 @@ def run_auto(output, location=None, bounds=None):
         (output/'input.geojson').write_text(json.dumps(collection))
         (output/'resolved-config.json').write_text(json.dumps(config,indent=2))
         report = build(config,collection,output)
+        report['supplemental_buildings'] = {'discovery':overture,'matching':overture_matches}
+        if overture['status'] != 'downloaded' or overture_matches['added_physical_features']:
+            report['issues'].append({'severity':'warning',
+                'reason':'Supplemental building evidence is unavailable, empty, or includes unverified footprint/roofprint additions',
+                'status':overture['status'],'added_features':overture_matches['added_physical_features']})
         report['planning_discovery'] = planning_summary
         report['planning_matches'] = planning_matches
         report['council_drawings'] = council
@@ -93,6 +106,7 @@ def run_auto(output, location=None, bounds=None):
         # These absent adapters must never be mistaken for universal automatic completeness.
         report['capabilities'] = {'osm':'automatic', 'terrain':'automatic', 'surface':'automatic' if config_surface else 'unavailable',
                                   'transport_surfaces':'automatic_tagged_widths_and_materials',
+                                  'supplemental_buildings':overture['status'],
                                   'planning_records':'automatic_england_context' if planning['status'] == 'checked' else planning['status'],
                                   'planning_feature_matching':'automatic_spatial_candidates_only',
                                   'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable',
