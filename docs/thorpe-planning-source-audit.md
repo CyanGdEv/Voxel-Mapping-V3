@@ -66,3 +66,21 @@ coordinate units. These are native text-origin consistency checks, not grid-line
 intersections, geographic registration or independent metre accuracy. No controls
 or transforms are exported. Empty native-text callbacks are ignored for the
 text-fragment budget; all callbacks separately remain bounded to 200,000.
+
+## Grid-intersection feasibility check
+
+The native Dome access/parking page has 8,074,310 decompressed content bytes,
+101,809 stroke operators and 4,022 cubic-curve operators, plus clipping. A bounded
+diagnostic of transformed, single straight stroked paths found 15 axis-aligned
+segments longer than 100 PDF points, all horizontal; it found no comparable
+vertical segments. The displayed dotted grid therefore cannot be treated as a
+set of full-length continuous straight lines by the existing intersection parser.
+This diagnostic is not a complete rendering analysis and does not certify which
+short strokes belong to the coordinate grid.
+
+Recovering intersections from this sheet requires bounded reconstruction of
+fragmented/dotted lines, with label attachment and ambiguity checks. Increasing
+the existing straight-path limits alone would not support its curves, clipping or
+grid representation. The source remains geographically unregistered and supplies
+no accepted physical planning geometry. No independent-feature alignment check
+has passed.
