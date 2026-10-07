@@ -12,6 +12,7 @@ from .terrain import Terrain
 from shapely.validation import explain_validity
 from .acquisition import USER_AGENT
 from .buildings import reconstruct_building
+from .bridges import reconstruct_bridge
 from .transport import TRANSPORT_KINDS, transport_kind, transport_profile
 
 
@@ -131,6 +132,7 @@ def build(config, collection, output):
     surface = None
     building_profiles = []
     transport_profiles = []
+    bridge_profiles = []
     try:
         if config.get("surface"):
             if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
@@ -147,7 +149,8 @@ def build(config, collection, output):
                 if geometry.is_empty or not geometry.is_valid:
                     issues.append({"feature": fid, "severity": "error", "reason": explain_validity(geometry)})
                     continue
-                geometry = transform(projector.transform, geometry).intersection(area)
+                metric_geometry = transform(projector.transform, geometry)
+                geometry = metric_geometry.intersection(area)
                 kind = properties.get("kind", "structure")
                 assumptions = []
                 transport = None
@@ -165,15 +168,39 @@ def build(config, collection, output):
                     if not math.isfinite(width) or width <= 0:
                         raise ValueError(f"Invalid width on {fid}")
                     geometry = geometry.buffer(width / 2).intersection(area)
+                bridge_rows = None
                 base = float(properties.get("base_elevation_m", 0))
                 elevated = properties.get("bridge") not in (None, "no", False) or properties.get("tunnel") not in (None, "no", False) or str(properties.get("layer", "0")) != "0"
                 use_terrain = terrain is not None and "base_elevation_m" not in properties and not elevated
                 if elevated and "base_elevation_m" not in properties:
-                    issues.append({"feature": fid, "severity": "error", "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height"})
-                    continue
+                    reason = 'elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height'
+                    if properties.get('bridge') in ('yes','boardwalk',True) and kind in TRANSPORT_KINDS:
+                        if properties.get('tunnel') not in (None,'no',False) or str(properties.get('layer','0')) not in ('0','1') or kind=='steps':
+                            profile={'status':'rejected','checks':0,'reason':'Tunnel, stacked/negative layer or steps are not supported bridge candidates'}
+                        elif not (surface and terrain and transport and is_line) or metric_geometry.geom_type!='LineString':
+                            profile={'status':'rejected','checks':0,'reason':'Bridge requires one centerline, transport width and compatible terrain/surface data'}
+                        elif not area.covers(metric_geometry.buffer(transport['width_m']/2)):
+                            profile={'status':'rejected','checks':0,'reason':'Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported'}
+                        else:
+                            bridge_rows,profile=reconstruct_bridge(metric_geometry,geometry,resolution,terrain,surface,
+                                max_checks=min(100_000,scan_budget-scanned),width_m=transport['width_m'])
+                        scanned += profile['checks']
+                        bridge_profiles.append({'feature':fid,**profile})
+                        if bridge_rows is not None:
+                            assumptions.extend(profile['warnings'])
+                            if transport['material'] in ('gravel','sand'):
+                                transport['material']='stone'
+                                transport_profiles[-1]['material']='stone'
+                                transport_profiles[-1]['material_method']='bridge_stability_fallback_assumed'
+                                assumptions.append('Gravity-sensitive bridge surface represented by stable stone; structural support/material is unmeasured')
+                        else:
+                            reason += '; automatic bridge candidate rejected: '+profile['reason']
+                    if bridge_rows is None:
+                        issues.append({"feature": fid, "severity": "error", "reason": reason})
+                        continue
                 if "base_elevation_m" in properties and terrain and properties.get("vertical_datum") != config["terrain"]["vertical_datum"]:
                     raise ValueError(f"Feature {fid} vertical datum must match terrain")
-                if "base_elevation_m" not in properties and not use_terrain:
+                if "base_elevation_m" not in properties and not use_terrain and bridge_rows is None:
                     assumptions.append("base elevation assumed 0 m; terrain unavailable")
                 declared = properties.get("height_m", properties.get("height"))
                 height = declared
@@ -212,7 +239,9 @@ def build(config, collection, output):
                     issues.append({"feature":fid,"severity":"warning","reason":assumptions})
                 feature_start = count
                 minx, miny, maxx, maxy = geometry.bounds
-                if roof_rows is not None:
+                if bridge_rows is not None:
+                    columns = ((x,z,cell_base,top) for (x,z),(cell_base,top) in bridge_rows.items())
+                elif roof_rows is not None:
                     columns = ((x,z,cell_base,top) for (x,z),(cell_base,top) in roof_rows.items())
                 else:
                     def fallback_columns():
@@ -240,10 +269,10 @@ def build(config, collection, output):
                             raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
                         voxel_kind = "roof" if roof_rows is not None and y==upper-1 else kind
                         stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
-                            "source":source_id,"elevation_source":config["terrain"]["source_id"] if use_terrain else source_id,
+                            "source":source_id,"elevation_source":config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":config["surface"]["source_id"] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {}),
-                            "geometry_method":"surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
+                            "geometry_method":"bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
@@ -279,6 +308,7 @@ def build(config, collection, output):
               "limitations": ["Footprint extrusions or DSM surface profiles; no classified 3D mesh or point-cloud reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
               "sha256": file_sha256(voxel_path)}
     report["building_profiles"] = building_profiles
+    report["bridge_profiles"] = bridge_profiles
     report['transport_profiles'] = transport_profiles
     report["surface"] = surface.report() if surface else None
     report["column_checks"] = scanned

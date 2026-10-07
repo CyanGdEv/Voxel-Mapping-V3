@@ -106,6 +106,7 @@ def run_auto(output, location=None, bounds=None):
         # These absent adapters must never be mistaken for universal automatic completeness.
         report['capabilities'] = {'osm':'automatic', 'terrain':'automatic', 'surface':'automatic' if config_surface else 'unavailable',
                                   'transport_surfaces':'automatic_tagged_widths_and_materials',
+                                  'bridge_decks':'automatic_unverified_surface_candidates' if config_surface else 'unavailable',
                                   'supplemental_buildings':overture['status'],
                                   'planning_records':'automatic_england_context' if planning['status'] == 'checked' else planning['status'],
                                   'planning_feature_matching':'automatic_spatial_candidates_only',
