@@ -89,8 +89,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     # at the same block, regardless of input ordering. Keep its
                     # physical layer below buildings, structures and roofs.
                     priority=PRIORITY.get(kind,6)*10
-                    if kind in TRANSPORT_KINDS and record.get('material_origin')=='accepted_planning_paving':
-                        priority+=1
+                    if kind in TRANSPORT_KINDS:
+                        priority += {'mapped_transport_surface':1,'accepted_planning_paving':2}.get(record.get('material_origin'),0)
                     pending.append((x//16,z//16,x%16,y,z%16,material,priority))
                     if kind == 'terrain':
                         for depth in range(1,y-foundation_y+1):
@@ -188,7 +188,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'foundation':{'minecraft_y':foundation_y,'method':'shared artificial dry-land foundation; not measured subsurface geology or bathymetry'},
-                'paving_composition':'accepted planning material takes precedence within the paving layer; higher structures remain intact',
+                'paving_composition':'mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact',
                 'sha256':checksum,'quality':'draft_unverified',
                 'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Artificial dry-land foundation; unmapped lake depths remain unknown','Outside mapped chunks Minecraft may generate unrelated terrain','This export has no automated in-game visual fidelity validation']}
     except Exception:

@@ -12,6 +12,27 @@ import test_terrain_osm as fixtures
 
 
 class PlanningGeometryTests(unittest.TestCase):
+    def test_tagged_transport_material_beats_assumed_paving_in_both_orders(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,collection=fixtures.TerrainTests().fixture(root)
+            config['terrain']['emit_surface']=False
+            feature=collection['features'][0]
+            feature['properties'].update(highway='footway',surface='asphalt')
+            generic=copy.deepcopy(feature);generic['id']='generic-path';generic['properties'].pop('surface')
+            collection['features']=[generic,feature]
+            report=build(config,collection,root/'build')
+            rows=[json.loads(line) for line in (root/'build/voxels.jsonl').read_text().splitlines()]
+            mapped=next(row for row in rows if row.get('material_origin')=='mapped_transport_surface')
+            for reverse in (False,True):
+                out=root/str(reverse);out.mkdir();path=out/'voxels.jsonl'
+                path.write_text('\n'.join(json.dumps(row) for row in (list(reversed(rows)) if reverse else rows)))
+                metadata=export_world(path,out,report)
+                world=amulet.load_level(str(out/'bedrock-world'))
+                try:
+                    block=world.get_block(mapped['x'],mapped['y']+metadata['vertical_offset_blocks'],-mapped['z'],'minecraft:overworld')
+                    self.assertEqual(block.properties['color'],StringTag('black'))
+                finally:world.close()
+
     def test_planning_material_overlays_osm_paving_preserving_holes_and_buildings(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);config,collection=fixtures.TerrainTests().fixture(root)
