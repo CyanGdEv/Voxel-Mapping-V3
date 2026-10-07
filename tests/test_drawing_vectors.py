@@ -5,6 +5,8 @@ from pypdf.generic import DecodedStreamObject, NameObject
 import test_geopdf as fixtures
 from voxel_mapper.geopdf import inspect_registration
 from voxel_mapper.drawing_vectors import extract_vectors
+from voxel_mapper.drawing_polygons import polygon_candidates
+from shapely.geometry import shape
 
 
 class DrawingVectorTests(unittest.TestCase):
@@ -39,6 +41,12 @@ class DrawingVectorTests(unittest.TestCase):
         self.assertTrue(all(p['closed'] for p in paths))
         self.assertTrue(all(p['geometry']['type']=='LineString' for p in paths))
         self.assertTrue(all(p['paint_operator']=='f*' for p in paths))
+        polygons=polygon_candidates(result)['layers'][0]['polygons']
+        self.assertEqual(len(polygons),1)
+        self.assertEqual(len(shape(polygons[0]['geometry']).interiors),1)
+        page,registration=self.fixture(b'100 200 400 400 re 50 300 100 100 re f*')
+        incomplete=extract_vectors(page,registration,reuse_allowed=True)
+        self.assertEqual(polygon_candidates(incomplete)['layers'][0]['polygons'],[])
 
     def test_crossing_control_domain_omitted_without_extrapolation(self):
         page,registration = self.fixture(b'50 400 m 550 400 l S 100 200 m 200 300 l S')

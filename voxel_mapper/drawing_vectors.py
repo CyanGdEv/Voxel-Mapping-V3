@@ -34,6 +34,7 @@ def extract_vectors(page, registration, *, reuse_allowed=False, max_operations=1
         matrix = np.eye(3)
         stack, subpaths, current, painted = [], [], None, []
         point_count = 0
+        paint_group = 0
 
         def point(x,y):
             nonlocal point_count
@@ -89,10 +90,11 @@ def extract_vectors(page, registration, *, reuse_allowed=False, max_operations=1
                         boundary = list(path)
                         if op not in {b'S',b's'} and boundary[-1] != boundary[0]:
                             boundary.append(boundary[0])
-                        painted.append((boundary,op.decode('ascii')))
+                        painted.append((boundary,op.decode('ascii'),paint_group))
                         if len(painted)>max_paths:
                             raise ValueError('Path budget exceeded')
                 subpaths, current = [], None
+                paint_group += 1
             elif op == b'Tr' and int(operands[0]) >= 4:
                 raise ValueError('Text clipping is unsupported')
             elif op not in harmless:
@@ -106,17 +108,21 @@ def extract_vectors(page, registration, *, reuse_allowed=False, max_operations=1
                               for u,v in viewport['control_hull']])
             domain = domain.intersection(box(*map(float,page.cropbox)))
             paths, omitted = [], 0
-            for index,(boundary,operator) in enumerate(painted):
+            incomplete_groups = set()
+            for index,(boundary,operator,group) in enumerate(painted):
                 line = LineString(boundary)
                 if line.length == 0 or not domain.covers(line):
                     omitted += 1
+                    incomplete_groups.add(group)
                     continue
                 coordinates = [list(page_point_to_metric(viewport,*p)) for p in boundary]
                 paths.append({'path_index':index,'paint_operator':operator,
+                              'paint_group':group,
                               'closed':boundary[0]==boundary[-1],
                               'geometry':{'type':'LineString','coordinates':coordinates}})
             layers.append({'viewport':viewport['viewport'], 'metric_crs':viewport['metric_crs'],
                            'status':'unclassified_boundary_candidates', 'paths':paths,
+                           'incomplete_paint_groups':sorted(incomplete_groups),
                            'omitted_outside_domain_or_degenerate':omitted})
         return {**report,'status':'unverified_candidates' if painted else 'no_vector_paths',
                 'layers':layers, 'painted_subpaths':len(painted),
