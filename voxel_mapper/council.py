@@ -11,6 +11,7 @@ from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
 from .acquisition import USER_AGENT
+from .geopdf import inspect_registration
 
 SEARCH = 'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/GeneralSearch.aspx'
 DOCS = 'https://docs.runnymede.gov.uk/PublicAccess_Live'
@@ -82,7 +83,7 @@ def parse_document_list(html, reference):
     return documents
 
 
-def inspect_pdf(payload, max_pages=12):
+def inspect_pdf(payload, max_pages=12, bounds=None):
     if not payload.startswith(b'%PDF-'):
         raise ValueError('Document is not a PDF')
     reader = PdfReader(io.BytesIO(payload), strict=False)
@@ -105,12 +106,14 @@ def inspect_pdf(payload, max_pages=12):
                       'scale_denominator_candidates':scales, 'revision_label_candidates':revisions,
                       'revision_date_candidates':[{'revision':revision,'date_raw':date} for revision,date in revision_dates],
                       'has_viewport_metadata':bool(page.get('/VP')), 'has_lgi_metadata':bool(page.get('/LGIDict')),
+                      'registration':inspect_registration(page,bounds),
                       'has_text':bool(text.strip())})
     return {'status':'inspected_consultation_only', 'sha256':hashlib.sha256(payload).hexdigest(),
             'bytes':len(payload), 'page_count':len(reader.pages), 'pages_inspected':len(pages), 'pages':pages,
             'truncated':len(reader.pages)>max_pages, 'alignment_status':'unverified',
             'limitations':['Scale/revision labels are candidates, not verified dimensions or coordinates',
-                           'No OCR, drawing vectorisation, surveyed registration or construction verification',
+                           'Embedded control consistency is not independent surveyed registration',
+                           'No OCR, drawing vectorisation or construction verification',
                            'Original PDF is not retained or redistributed in output']}
 
 
@@ -134,7 +137,7 @@ def read_pdf(session, url, max_bytes=10_000_000):
 
 
 def acquire_council(authorities, planning_records, site_name, output, max_applications=10,
-                    max_search_pages=3, max_documents=500, max_pdf_inspections=6):
+                    max_search_pages=3, max_documents=500, max_pdf_inspections=6, bounds=None):
     result = {'provider':SOURCE['id'], 'status':'not_supported', 'application_search':'not_attempted',
               'applications':[], 'documents':[], 'failures':[], 'terms_url':TERMS,
               'reuse_status':'consultation_only', 'geometry_replacements':0,
@@ -191,8 +194,9 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
         candidates = sorted(result['documents'],key=lambda d:(not bool(re.search(r'site|location|elevation',d['title'],re.I)),d['application_reference'],d['id']))
         for document in candidates[:max_pdf_inspections]:
             try:
-                document['inspection']=inspect_pdf(read_pdf(session,document['url']))
-                document['alignment_status']='unverified'
+                document['inspection']=inspect_pdf(read_pdf(session,document['url']),bounds=bounds)
+                registrations=[p['registration']['status'] for p in document['inspection']['pages']]
+                document['alignment_status']='candidate_alignment' if 'candidate_alignment' in registrations else 'unavailable_or_rejected'
             except (requests.RequestException,ValueError,PdfReadError,TypeError,KeyError) as error:
                 document['inspection']={'status':'unavailable_or_rejected','reason':str(error)}
         result['inspection_budget_omitted']=max(0,len(candidates)-max_pdf_inspections)

@@ -62,7 +62,7 @@ def run_auto(output, location=None, bounds=None):
                      if e.get('tags',{}).get('leisure') == 'theme_park' and e.get('tags',{}).get('name')}
             if len(names) == 1:
                 site_name = names.pop()
-        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output)
+        council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds)
         if council['status'] != 'not_supported':
             config['sources'].append(COUNCIL_SOURCE)
         acquisition['providers'].append({'provider':council['provider'], 'status':council['status'],
@@ -98,6 +98,7 @@ def run_auto(output, location=None, bounds=None):
                                   'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable',
                                   'planning_drawings':'automatic_consultation_inspection' if council['documents'] else council['status'],
                                   'planning_drawing_geometry':'not_implemented',
+                                  'geopdf_registration':'automatic_wgs84_control_validation',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
                                   'coaster_3d_geometry':'not_implemented', 'bedrock_world':'automatic'}
         report['issues'].append({'severity':'warning','reason':'Verified drawing geometry, independent surveyed control points, building meshes and 3D attraction geometry are not acquired by this pipeline'})
