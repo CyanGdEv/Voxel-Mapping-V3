@@ -8,7 +8,7 @@ from shapely.geometry import shape, box
 from .transport import SURFACE_MATERIALS, transport_profile
 
 KINDS = {'plaza':'plaza','path':'path','ride_structure':'structure',
-         'building_component':'structure','building':'structure'}
+         'building_component':'structure','building':'structure','sound_tunnel':'structure'}
 
 
 def physical_features(records, sources, bounds, vertical_datum, max_records=1000):
@@ -58,6 +58,11 @@ def physical_features(records, sources, bounds, vertical_datum, max_records=1000
                 palette = transport_profile(props,'plaza',False)
                 props['minecraft_material'] = palette['material']
                 props['material_warnings'] = palette['warnings']
+            if record.get('structural_material') is not None:
+                if kind != 'structure' or record['structural_material'] != 'dark_stained_timber':
+                    raise ValueError('Unsupported explicit structural material')
+                props['minecraft_material'] = 'dark_oak_planks'
+                props['material_warnings'] = ['Dark-stained timber represented by the approximate dark oak Minecraft palette']
             if elevation is not None:
                 if not vertical_datum or elevation.get('vertical_datum') != vertical_datum:
                     raise ValueError('Drawing elevation datum does not match terrain')
@@ -68,6 +73,18 @@ def physical_features(records, sources, bounds, vertical_datum, max_records=1000
                 props.update(base_elevation_m=base,height_m=top-base,vertical_datum=vertical_datum)
             elif kind == 'structure':
                 raise ValueError('Structure requires explicit base/top elevation; layer is not height')
+            if record['feature_type'] == 'sound_tunnel':
+                from .tunnels import validate_section
+                validate_section(record.get('section'), top-base)
+                centerline = shape(record['centerline'])
+                if (geometry.geom_type != 'Polygon' or len(geometry.interiors) or
+                        centerline.geom_type != 'LineString' or centerline.has_z or not centerline.is_valid or not centerline.is_simple or
+                        centerline.length <= 0 or not geometry.covers(centerline)):
+                    raise ValueError('Tunnel requires a single footprint and a covered explicit 2D centerline')
+                from shapely.geometry import Point
+                if any(geometry.boundary.distance(Point(point)) > 1e-8 for point in (centerline.coords[0], centerline.coords[-1])):
+                    raise ValueError('Tunnel centerline endpoints must define footprint boundary portals')
+                props.update(tunnel_section=deepcopy(record['section']), tunnel_centerline=deepcopy(record['centerline']))
             features.append({'type':'Feature','id':'planning/'+identifier,
                              'geometry':deepcopy(record['geometry']),'properties':props})
             decisions.append({'id':identifier,'status':'accepted_verified_adapter_record'})

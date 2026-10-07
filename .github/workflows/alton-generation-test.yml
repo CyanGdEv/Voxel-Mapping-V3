@@ -42,6 +42,8 @@ jobs:
                       summary.write('Wicker Man planning test: '+result['status']+'\n\n')
                       registration = result.get('registration', {})
                       summary.write('Drawing alignment: '+registration.get('status', 'not_run')+'; verified: '+str(registration.get('registration_verified', False))+'\n\n')
+                      track = result.get('track_association', {})
+                      summary.write('Track profile: '+track.get('profile_status', track.get('status', 'not_run'))+'; ambiguous labels: '+str(track.get('ambiguous_bindings', 'unknown'))+'\n\n')
                       summary.write('| Detail | Drawing annotations | Rendered components | Status |\n| --- | ---: | ---: | --- |\n')
                       for check in result['checks']:
                           summary.write('| {category} | {drawing_annotation_candidates} | {rendered_verified_components} | {status} |\n'.format(**check))

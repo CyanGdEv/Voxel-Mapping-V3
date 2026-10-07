@@ -24,14 +24,14 @@ MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'s
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
 PRIORITY.update(lakebed=1,plaza=3)
-ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'dark_oak_planks','air'}
 
 
 def material_block(material):
     if material in CONCRETE_MATERIALS:
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
-    if material == 'oak_planks':
-        return Block('universal_minecraft', 'planks', {'material': StringTag('oak')})
+    if material in ('oak_planks', 'dark_oak_planks'):
+        return Block('universal_minecraft', 'planks', {'material': StringTag('dark_oak' if material == 'dark_oak_planks' else 'oak')})
     return Block('universal_minecraft', material)
 
 
@@ -89,6 +89,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     # at the same block, regardless of input ordering. Keep its
                     # physical layer below buildings, structures and roofs.
                     priority=PRIORITY.get(kind,6)*10
+                    if record.get('material_origin') in ('accepted_planning_void','accepted_planning_shell'):
+                        priority = 95 if material == 'air' else 96
                     if kind in TRANSPORT_KINDS:
                         priority += {'mapped_transport_surface':1,'accepted_planning_paving':2}.get(record.get('material_origin'),0)
                     pending.append((x//16,z//16,x%16,y,z%16,material,priority))
@@ -104,8 +106,11 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             if pending:
                 connection.executemany(sql,pending)
             connection.commit()
-            stored = connection.execute('SELECT COUNT(*) FROM blocks').fetchone()[0]
-            top = connection.execute('SELECT MAX(y) FROM blocks WHERE cx=? AND cz=? AND x=? AND z=?',
+            stored = connection.execute("SELECT COUNT(*) FROM blocks WHERE material != 'air'").fetchone()[0]
+            air_cells = connection.execute("SELECT COUNT(*) FROM blocks WHERE material = 'air'").fetchone()[0]
+            if stored == 0:
+                raise ValueError('No occupied blocks exist after composition')
+            top = connection.execute("SELECT MAX(y) FROM blocks WHERE cx=? AND cz=? AND x=? AND z=? AND material != 'air'",
                                      (spawn_x//16,spawn_z//16,spawn_x%16,spawn_z%16)).fetchone()[0]
             wrapper = LevelDBFormat(str(world_path))
             wrapper.create_and_open('bedrock',VERSION)
@@ -151,7 +156,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     chunk = level.get_chunk(cx,cz,'minecraft:overworld')
                     expected_sections = {}
                     for x,y,z,material in connection.execute('SELECT x,y,z,material FROM blocks WHERE cx=? AND cz=?',(cx,cz)):
-                        expected_sections.setdefault(y//16, np.zeros((16,16,16), dtype=bool))[x,y%16,z] = True
+                        expected_sections.setdefault(y//16, np.zeros((16,16,16), dtype=bool))[x,y%16,z] = material != 'air'
                         actual = chunk.block_palette[int(chunk.blocks[x,y,z])]
                         expected = material_block(material)
                         if actual.namespaced_name != expected.namespaced_name or any(actual.properties.get(k) != v for k,v in expected.properties.items()):
@@ -185,7 +190,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         return {'format':'Bedrock .mcworld','file':package.name,'target_version':list(VERSION),
                 'blocks_per_metre':1,'horizontal_transform':{'minecraft_x':'east','minecraft_z':'negative north'},
                 'vertical_offset_blocks':y_offset,'geographic_elevation_m':'Minecraft Y minus vertical_offset_blocks',
-                'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,
+                'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,'explicit_air_cells':air_cells,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'foundation':{'minecraft_y':foundation_y,'method':'shared artificial dry-land foundation; not measured subsurface geology or bathymetry'},
                 'paving_composition':'mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact',

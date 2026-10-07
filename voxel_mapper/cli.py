@@ -188,6 +188,11 @@ def build(config, collection, output):
                     continue
                 metric_geometry = transform(projector.transform, geometry)
                 geometry = metric_geometry.intersection(area)
+                tunnel_centerline = None
+                if properties.get('planning_semantic_kind') == 'sound_tunnel' and properties.get('planning_geometry_evidence'):
+                    tunnel_centerline = transform(projector.transform, shape(properties['tunnel_centerline']))
+                    if geometry.buffer(-max(resolution,properties['tunnel_section']['wall_thickness_m'])).is_empty:
+                        raise ValueError('Tunnel footprint has no interior after wall thickness and voxel quantisation')
                 kind = properties.get("kind", "structure")
                 if kind == 'attraction' and not properties.get('planning_geometry_evidence'):
                     issues.append({'feature': fid, 'severity': 'warning', 'reason': 'attraction extent/track has no verified physical reconstruction; generic extrusion omitted'})
@@ -366,6 +371,10 @@ def build(config, collection, output):
                     if lake_level is not None and bed_y is None:
                         water_profile['unknown_depth_columns'] += 1
                     for y in range(bottom, upper):
+                        tunnel_void = False
+                        if tunnel_centerline is not None:
+                            from .tunnels import occupied
+                            tunnel_void = not occupied(geometry,tunnel_centerline,properties['tunnel_section'],x,z,y,cell_base,top,resolution)
                         count += 1
                         if count > budget:
                             raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
@@ -376,6 +385,7 @@ def build(config, collection, output):
                             "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":feature_surface.config['source_id'] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
+                            **({'material':'air','material_origin':'accepted_planning_void'} if tunnel_void else {'material_origin':'accepted_planning_shell'} if tunnel_centerline is not None else {}),
                             **({'material_origin':'accepted_planning_paving' if properties.get('planning_geometry_evidence') else 'mapped_transport_surface'} if transport and transport['material_method']=='tagged_surface_approximation' and properties.get('surface') not in ('paved','unpaved') else {}),
                             **({'bed_source':config['bathymetry']['source_id']} if bed_y is not None else {}),
                             "geometry_method":"measured_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")

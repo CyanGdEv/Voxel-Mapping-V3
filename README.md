@@ -6,6 +6,24 @@ Run `python -m voxel_mapper.wickerman --output wicker-man-test` after installing
 Towers and selects SW8 applications **SMD/2016/0315** and **SMD/2017/0111**.
 The Alton Actions test uses this command and retains its artifacts even on failure.
 
+The route association stage joins track ways by endpoint node identity, retaining
+covered-way metadata and preserving crossings as distinct route positions.
+On the recovered SW8 data, the closed six-way route is 779.21 m long; ten
+height annotations have one provisional section match and four are ambiguous
+(LP1, LP2, LP4 and LP7). Ambiguous matches withhold the height profile.
+A painted tunnel outline is recovered using PDF implicit fill closure while
+text masks and open strokes are rejected. Its printed-scale dimensions are
+approximately 3.06 m by 19.60 m; height remains unknown.
+
+Verified `sound_tunnel` adapter records can now supply a polygon, explicit
+portal-to-portal centerline, absolute base/top elevation and a supported
+`flat_rectangular` section with floor/roof/wall thickness and clear height.
+The renderer emits a hollow shell and explicit interior air so overlapping
+generic terrain/buildings do not fill the tunnel. Missing dimensions or
+unsupported arches are withheld. An explicit `dark_stained_timber` structural
+material uses an approximate dark oak plank palette. This renderer is tested
+in a fixture world; the actual SW8 candidate remains unverified and unrendered.
+
 The acceptance report checks ride layout, elevations, sound tunnels/screens,
 widths, materials, paths/plazas/boardwalks, walls, fences, buildings and theming.
 The Wicker Man inspector also scans up to 64 native-text report pages, retaining

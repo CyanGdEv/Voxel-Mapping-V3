@@ -227,7 +227,10 @@ def main():
     from .wicker_registration import inspect_alignment
     raw_path = (Path(args.source_output) if args.source_output else output)/'osm-raw.json'
     if raw_path.exists():
-        result['registration'] = inspect_alignment(evidence, json.loads(raw_path.read_text()), output, BBOX)
+        raw_osm = json.loads(raw_path.read_text())
+        result['registration'] = inspect_alignment(evidence, raw_osm, output, BBOX)
+        from .wicker_track import inspect_track
+        result['track_association'] = inspect_track(evidence, raw_osm, result['registration'], output)
     (output/'wicker-man-acceptance.json').write_text(json.dumps(result, indent=2))
     (output/'quality-report.json').write_text(json.dumps(quality, indent=2))
     print(json.dumps(result, indent=2))
