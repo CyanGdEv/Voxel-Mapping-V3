@@ -83,8 +83,24 @@ widths/support spacing remain estimates; ground is never substituted for rails.
 Air clearance is composed explicitly, and each reconstruction block is
 checked after reopening the world. The player spawns beside the preview track.
 Some interpolated sections intersect terrain; tunnel shells, effigy, fences and
-detailed buildings remain absent. This prototype is not an as-built model and
+detailed building interiors remain absent. This prototype is not an as-built model and
 does not pass the verified planning gate; exit code 2 remains expected.
+
+The station-to-lift gap has dedicated preview phases rather than one rising
+interpolation span. The mapped station relation's three closed footprints produce
+hollow timber shells with platforms, track passages and approximate flat roofs
+from median dated DSM observations. Named station/maintenance FFL labels (183.25 m)
+remain floor evidence: station rails are separately assumed 1 m below the floor,
+and the lift foot 2 m below those rails. A level maintenance/station section is
+followed by a descending exit before the mapped lift diagonal. The lift has two
+inclines, smooth short gradient transitions, a centre chain marker and side walkway.
+Construction observations document the right-turn station exit and a gradient
+change about one third of the way up; the exact break position, rise allocation
+(60% in the lower incline), rail offsets and roof forms are still estimates.
+Every assumption is retained in `estimated_reconstruction.station_lift`; none
+can pass verified planning acceptance. Spawn is now on the station platform.
+References: [July 2017 construction observations](https://www.towerstimes.co.uk/news/2017/07/06/mi7-returns-mid-season-update-featuring-sw8/)
+and [March 2018 opening observations](https://www.towerstimes.co.uk/news/2018/03/09/wicker-man-meet-the-maker-at-alton-towers-resort/).
 
 PDF annotations retain their drawing positions; complete bounded vector evidence
 retains curves, clipping/group records and styles in compressed drawing-space

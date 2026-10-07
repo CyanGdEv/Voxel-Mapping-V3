@@ -10,12 +10,13 @@ from shapely.ops import transform
 
 from .terrain import Terrain
 from .wicker_track import ordered_route
+from .wicker_station import station_context, phase_controls, lift_profile, serializable_context
 
 
 def preview_profile(route, bindings, stations):
     controls = sorted((b['nearest_candidate']['station_m'], b['printed_level_m'])
                       for b in bindings if b['status'] in
-                      ('provisional_annotation_binding', 'reviewed_plan_marker_binding'))
+                      ('provisional_annotation_binding', 'reviewed_plan_marker_binding', 'estimated_phase_control'))
     length = route['route_length_m']
     if not math.isfinite(length) or length <= 0:
         raise ValueError('Finite positive closed route length required')
@@ -71,9 +72,16 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
     line = LineString([route['segments'][0]['start']]+[s['end'] for s in route['segments']])
     stations = np.arange(0,line.length,.5)
     bindings = local_height_bindings(association,route)
+    evidence = json.loads((output/'wicker-man-planning-evidence.json').read_text())
+    context = station_context(raw_osm,route,project.transform,evidence,bindings)
+    bindings += phase_controls(context)
     heights = preview_profile(route,bindings,stations)
+    lift_mask = (stations >= context['lift_start_m']) & (stations <= context['lift_crest_station_m'])
+    heights[lift_mask] = lift_profile(stations[lift_mask],context['lift_start_m'],context['lift_crest_station_m'],
+                                      context['lift_foot_level_m'],context['lift_crest_level_m'])
     sources = {s['id']:s for s in config['sources']}
     terrain = Terrain(config['terrain'],local,sources)
+    surface = Terrain(config['surface'],local,sources)
     rows = {}
     counts = {}
     def add(x,y,z,material,component,void=False):
@@ -118,6 +126,35 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                 # Crossbeam immediately below each tie deck.
                 for side in np.arange(-1.5,1.51,.5):
                     add(point.x+side*nx,height-2,point.y+side*nz,'dark_oak_planks','timber_bents')
+            if context['lift_start_m'] <= station <= context['lift_crest_station_m']:
+                # An explicit chain line identifies the lift instead of a generic hill.
+                add(point.x,height,point.y,'black_concrete','lift_chain')
+                add(point.x+2*nx,height-1,point.y+2*nz,'dark_oak_planks','lift_walkway')
+        corridor = line.buffer(2)
+        for part in context['parts']:
+            polygon = part['polygon']; x0,z0,x1,z1 = polygon.bounds
+            cells = [(x,z) for x in range(math.floor(x0),math.ceil(x1))
+                     for z in range(math.floor(z0),math.ceil(z1)) if polygon.covers(Point(x+.5,z+.5))]
+            roof_samples = [value for x,z in cells if (value := surface.sample(x+.5,z+.5)) is not None]
+            if len(roof_samples) < len(cells)/2:
+                raise ValueError('Insufficient observed surface coverage over station complex')
+            floor = math.floor(part['floor_level_m'])
+            roof = max(floor+4,math.floor(float(np.median(roof_samples))))
+            clear_top = max(roof,math.ceil(max(roof_samples)))+1
+            if clear_top-floor > 32:
+                raise ValueError('Station surface outlier exceeds bounded shell height')
+            part.update(roof_level_m=roof,roof_method='Flat median DSM surface estimate; minimum 4 m above floor',
+                        surface_sample_count=len(roof_samples))
+            for x,z in cells:
+                point = Point(x+.5,z+.5); on_track = corridor.covers(point)
+                for y in range(floor+1,clear_top+1):
+                    add(x,y,z,'air','station_complex_clearance',True)
+                if not on_track:
+                    add(x,floor,z,'dark_oak_planks',part['role']+'_platform')
+                    if polygon.boundary.distance(point) < 1:
+                        for y in range(floor+1,roof):
+                            add(x,y,z,'dark_oak_planks',part['role']+'_walls')
+                add(x,roof,z,'dark_oak_planks',part['role']+'_roof')
         paving = json.loads((output/'wicker-man-surface-candidates.geojson').read_text())
         for feature in paving['features']:
             polygon = transform(project.transform,shape(feature['geometry']))
@@ -130,6 +167,7 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
                         add(x,ground,z,'stone','paving_preview')
     finally:
         terrain.close()
+        surface.close()
     for row in rows.values():
         counts[row['feature']] = counts.get(row['feature'],0)+1
     with (output/'voxels.jsonl').open('a') as stream:
@@ -142,19 +180,32 @@ def emit_preview(config, quality, raw_osm, output, max_voxels=200000):
               'below_ground_profile_samples':int(below_ground),
               'rail_below_observed_ground_samples':int(rail_below_ground),
               'minimum_rail_ground_clearance_m':minimum_clearance,
-              'profile_method':'Periodic cubic spans with zero slope at printed high/low controls; no overshoot',
+              'profile_method':'Periodic cubic course/station-exit spans; explicit level station and two-incline lift with short slope blends',
+              'station_lift':serializable_context(context),
               'profile_controls':[{'point_label':b['point_label'],'station_local_m':b['nearest_candidate']['station_m'],
                                    'level_m':b['printed_level_m'],'anchor_kind':b.get('anchor_kind'),
                                    'status':b['status']} for b in bindings if b['status'] in
-                                  ('provisional_annotation_binding','reviewed_plan_marker_binding')],
+                                  ('provisional_annotation_binding','reviewed_plan_marker_binding','estimated_phase_control')],
               'assumptions':['Printed plan levels treated as ODN for preview only',
                              'Drawing crosshairs replace text centres; four crossing branches were reviewed against drawing 373/95/7 B and remain provisional',
                              'Cubic height spans preserve printed extrema; intermediate track shape remains estimated',
                              'Track width, tie geometry, 4 m bent spacing and clearance are estimates',
                              'Paving uses provisional alignment and a generic stone material',
                              'Timber bents are a simplified preview, not the actual structural design',
-                             'Sound tunnels, effigy, fences and detailed buildings are not reconstructed'],
+                             'Station, maintenance and pre-lift buildings now have estimated hollow shells; detailed interiors/roof forms remain unknown',
+                             'Sound tunnels, effigy and fences are not reconstructed'],
               'visit_local_xyz_m':[round(line.coords[0][0]),round(float(heights[0])+3),round(line.coords[0][1])]}
+    # Stand on the station platform, away from the track opening.
+    station_polygon = context['station']['polygon']
+    x0,z0,x1,z1 = station_polygon.bounds
+    platform = [(x,z) for x in range(math.floor(x0),math.ceil(x1))
+                for z in range(math.floor(z0),math.ceil(z1))
+                if station_polygon.buffer(-1).covers(Point(x+.5,z+.5))
+                and line.distance(Point(x+.5,z+.5)) > 2]
+    if not platform:
+        raise ValueError('No safe station platform spawn available')
+    sx,sz = min(platform,key=lambda p:Point(p[0]+.5,p[1]+.5).distance(station_polygon.centroid))
+    report['visit_local_xyz_m'] = [sx,math.floor(context['station']['floor_level_m'])+2,sz]
     (output/'wicker-man-reconstruction.json').write_text(json.dumps(report,indent=2))
     quality['estimated_reconstruction'] = report
     quality['voxel_records'] += len(rows)
