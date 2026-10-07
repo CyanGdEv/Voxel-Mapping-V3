@@ -20,8 +20,16 @@ The adapter inspects up to two pages per PDF for embedded geographic registratio
 
 The retained alignment includes PDF-to-coordinate axis coefficients, finite control extents, nominal residuals and a hypothesised WGS84 extent. It is not verified registration: label origins can differ from grid lines and EPSG:27700 is not independently established. No extrapolation or automatic promotion to world polygons is performed.
 
-## Actual corpus result
+## Site validation correction
 
-148 of 153 PDF entries were inspected; five exceeded the decompressed-page content budget. Three application entries share one surveyed sheet (SHA-256 `82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9`) and yield the same alignment hypothesis: SMD/2022/0230, SMD/2021/0636 and SMD/2021/0211. These are one distinct survey, not three independently verified alignments. Its retained E/N label fits have maximum withheld residuals below 0.006 nominal metres. That does not measure absolute geographic accuracy.
+The recovered catalogue mixes park and nearby Farley Lane applications. The adapter now retains the original application context and selects only context identifying Alton Towers on Farley Lane. It excludes 31 other-site PDF entries, leaving 122 park-site entries. This conservative site filter is not independent spatial or as-built verification.
 
-Zero planning physical features entered a new world. The older 722-feature authority export is not accepted: all features are LineStrings, some are small report-text outlines, and approval/confidence flags do not establish physical semantics or as-built state. Remaining work is to verify survey/grid attachment and CRS, recover clipped drawing geometry with holes, classify actual paths/plazas/structures, reconcile dates and as-built evidence, and confirm reuse provenance before physical world insertion.
+The previously reported native-label survey alignment belongs to Wildwood, a neighbouring property, and must not be described as Alton Towers survey registration. Its three references SMD/2022/0230, SMD/2021/0636 and SMD/2021/0211 are excluded from park acquisition. The old 148/153 inspection count was for the mixed corpus; it is not a park-only validation result.
+
+## Actual plan boundary extraction
+
+Install `pip install '.[planning]'` for the renderer-backed extractor (Actions installs it automatically). Selected actual site, landscape and floor-plan PDFs now recover exact closed straight-stroke networks in native page coordinates. PDF rotation is kept in the coordinate-space metadata rather than guessed. Curves, clipped/grouped/optional-layer paths, opacity and dashed boundaries are withheld. Polygon holes are preserved; no gap snapping or extrapolation is used. Document hashes and page numbers retain provenance.
+
+The Project Horizon existing site plan (SHA-256 `0b50fd7cf84cd7c06d4e30992cc89fe857cf746494824d237c909bc48aaef432`, SMD/2022/0556) yields 276 closed boundary candidates. Visual inspection confirms extraction includes building outlines alongside tree symbols and other closed plan linework. These are not 276 verified buildings. No recognised contained material labels were found in these candidates, so no material specification was inferred.
+
+Zero planning physical features entered a new world. Candidates remain unregistered, with unverified semantics and construction status. The older 722-feature authority export is still not accepted: some open LineStrings are report-text outlines, and approval/confidence flags do not establish physical semantics or as-built state. The next registration work must use the actual park survey (the Horizon drawing names On Centre Survey Drawing 2936 MASTER LAND SURVEY), independently checked park landmarks, or explicit geographic controls; the excluded Wildwood survey cannot register it.

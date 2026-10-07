@@ -5,6 +5,7 @@ Historical catalogue entries are not proof of current or as-built geometry.
 import hashlib
 import io
 import json
+import re
 import time
 from pathlib import Path
 from urllib.parse import urlparse
@@ -20,6 +21,13 @@ SOURCE = {'id': 'staffordshire-moorlands-planning',
           'url': 'https://' + HOST + '/portal/',
           'license': 'unconfirmed-drawing-reuse',
           'attribution': 'Staffordshire Moorlands planning records; individual drawing authors'}
+
+
+def is_park_application(entry):
+    # References to staff accommodation elsewhere are not park-site evidence.
+    address_context = entry.get('application_context', '')[:200]
+    return bool(re.search(r'\balton\s+towers\b', address_context, re.I)
+                and re.search(r'\bfarley\s+lane\b', address_context, re.I))
 
 
 def download_pdf(session, url, max_bytes=10_000_000):
@@ -60,14 +68,20 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                              'Approval is not as-built verification',
                              'Report vectors and PDF labels are not physical footprints']}
     cache = Path(cache).resolve() if cache else None
-    entries = catalogue['entries'][:max_documents]
+    relevant = [e for e in catalogue['entries'] if is_park_application(e)]
+    result['applications'] = sorted({e['applicationReference'] for e in relevant})
+    result['excluded_other_site_documents'] = [
+        {'applicationReference': e['applicationReference'], 'url': e['url'],
+         'reason': 'Recovered application context does not identify the Alton Towers park site'}
+        for e in catalogue['entries'] if not is_park_application(e)]
+    entries = relevant[:max_documents]
     deadline = time.monotonic()+900
-    result['documents_omitted_by_budget'] = len(catalogue['entries'])-len(entries)
+    result['documents_omitted_by_budget'] = len(relevant)-len(entries)
     with requests.Session() as session:
         session.headers.update({'User-Agent': USER_AGENT})
         for entry in entries:
             if time.monotonic() > deadline:
-                result['documents_omitted_by_budget'] = len(catalogue['entries'])-len(result['documents'])
+                result['documents_omitted_by_budget'] = len(relevant)-len(result['documents'])
                 result['failures'].append({'reason': '15-minute planning acquisition budget reached'})
                 break
             row = dict(entry)
@@ -88,6 +102,13 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                     raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
                 row['inspection'] = inspect_pdf(payload, max_pages=max_pages, bounds=bounds,
                                                 document_title=entry['title'], max_ocr_pages=0)
+                if entry['role'] in ('site-plan', 'landscape-plan', 'floor-plan'):
+                    try:
+                        from .plan_boundaries import inspect_plan_boundaries
+                        for page in row['inspection']['pages']:
+                            page['plan_boundaries'] = inspect_plan_boundaries(payload, page['page']-1)
+                    except (ImportError, ValueError, RuntimeError) as error:
+                        row['boundary_extraction_failure'] = str(error)
                 if bounds and entry['role'] in ('site-plan', 'landscape-plan', 'topographical-survey', 'terrain-or-drainage'):
                     reader = None
                     for page in row['inspection']['pages']:
