@@ -1,5 +1,5 @@
 import unittest
-from voxel_mapper.raster_grid import edge_labels, inspect_label_layout
+from voxel_mapper.raster_grid import edge_labels, inspect_label_layout, provisional_word_boxes
 
 
 def tsv(text, confidence=95, left=10, top=100, width=60, height=15):
@@ -8,6 +8,12 @@ def tsv(text, confidence=95, left=10, top=100, width=60, height=15):
 
 
 class RasterGridTests(unittest.TestCase):
+    def test_provisional_word_box_does_not_accept_misread_axis(self):
+        proposals=provisional_word_boxes(tsv('5035505',0),'top',(20,30,1020,210),90)
+        self.assertEqual(proposals[0]['page_pixel_box'],(905,40,920,100))
+        self.assertEqual(edge_labels(tsv('5035505',0),'top',(20,30,1020,210),90),[])
+        with self.assertRaises(ValueError):
+            provisional_word_boxes(tsv('5035505',left=10000),'top',(20,30,1020,210),90)
     def labels(self):
         return [{'axis':axis,'value':value,'pixel_position':position} for axis, values in
                 [('E',[(500000,100),(500050,1100),(500100,2100)]),

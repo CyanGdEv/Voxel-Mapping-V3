@@ -9,6 +9,31 @@ import numpy as np
 LABEL = re.compile(r'^(\d{6})([EN])$', re.I)
 
 
+def provisional_word_boxes(tsv, edge, crop_box, rotation):
+    """Find coordinate-shaped words for rereading, never accepted controls."""
+    if len(tsv.encode()) > 8_000_000 or edge not in ('top','bottom','left','right') or rotation not in (0,90):
+        raise ValueError('Invalid provisional OCR budget or orientation')
+    left,top,right,bottom = map(float,crop_box)
+    if not all(math.isfinite(v) for v in (left,top,right,bottom)) or right<=left or bottom<=top:
+        raise ValueError('Invalid provisional crop')
+    width,height = right-left,bottom-top
+    output=[]
+    for i,row in enumerate(csv.DictReader(io.StringIO(tsv),delimiter='\t',quoting=csv.QUOTE_NONE)):
+        if i>20_000:
+            raise ValueError('Provisional OCR word budget exceeded')
+        if row.get('level')!='5' or not re.fullmatch(r'\d{6}[A-Za-z0-9]?',row.get('text','').strip()):
+            continue
+        x,y,w,h = (float(row[k]) for k in ('left','top','width','height'))
+        rw,rh = (height,width) if rotation==90 else (width,height)
+        if not all(math.isfinite(v) for v in (x,y,w,h)) or min(x,y)<0 or min(w,h)<=0 or x+w>rw or y+h>rh:
+            raise ValueError('Provisional word outside crop')
+        box = (left+width-y-h,top+x,left+width-y,top+x+w) if rotation==90 else (left+x,top+y,left+x+w,top+y+h)
+        output.append({'page_pixel_box':box,'first_pass_text':row['text']})
+        if len(output)>64:
+            raise ValueError('Provisional coordinate budget exceeded')
+    return output
+
+
 def edge_labels(tsv, edge, crop_box, rotation, scale=3, min_confidence=70):
     """Invert crop/quarter-turn coordinates; never repair misread digits."""
     if edge not in ('top', 'bottom', 'left', 'right') or rotation not in (0, 90):
