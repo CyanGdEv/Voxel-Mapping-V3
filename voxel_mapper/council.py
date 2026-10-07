@@ -138,6 +138,7 @@ def inspect_pdf(payload, max_pages=12, bounds=None, document_title=None):
                       'registration':registration,
                       'coordinate_label_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False),
                       'survey_mark_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_marks=True),
+                      'grid_registration':inspect_coordinate_labels(page,bounds,reuse_allowed=False,require_grid=True),
                       'vector_extraction':vectors,
                       'polygon_extraction':polygons,
                       'semantic_associations':extract_associations(page,registration,polygons,reuse_allowed=False),
