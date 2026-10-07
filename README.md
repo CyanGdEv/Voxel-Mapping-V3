@@ -108,7 +108,7 @@ Construction observations document the right-turn station exit and a gradient
 change about one third of the way up; the exact break position, rise allocation
 (60% in the lower incline), rail offsets and roof forms are still estimates.
 Every assumption is retained in `estimated_reconstruction.station_lift`; none
-can pass verified planning acceptance. Station platform coordinates are retained for visiting; spawn uses the proposed entrance plaza when recovered.
+can pass verified planning acceptance. Station platform coordinates are retained for visiting; spawn uses the proposed entrance plaza when recovered. Export verification also requires every plaza paving block to have two air blocks overhead and a continuous paved route to existing paving at least 20 m from spawn, using four-neighbour cells and at most one-block height steps.
 References: [July 2017 construction observations](https://www.towerstimes.co.uk/news/2017/07/06/mi7-returns-mid-season-update-featuring-sw8/)
 and [March 2018 opening observations](https://www.towerstimes.co.uk/news/2018/03/09/wicker-man-meet-the-maker-at-alton-towers-resort/).
 

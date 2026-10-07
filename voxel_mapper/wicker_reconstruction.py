@@ -256,5 +256,74 @@ def verify_preview(output, world, report):
     finally:
         level.close()
     report.update(world_emission_check='passed',world_component_blocks=counts)
+    report['plaza_connection_check'] = verify_plaza_connection(output,world,report)
     (output/'wicker-man-reconstruction.json').write_text(json.dumps(report,indent=2))
     return report
+
+
+def connected_paving(cells, start):
+    """Four-neighbour paving reachable without a jump larger than one block."""
+    from collections import deque
+    if start not in cells:
+        return set()
+    seen = {start}
+    pending = deque([start])
+    while pending:
+        x,z = pending.popleft()
+        for target in ((x+1,z),(x-1,z),(x,z+1),(x,z-1)):
+            if target in cells and target not in seen and abs(cells[target]-cells[(x,z)]) <= 1:
+                seen.add(target)
+                pending.append(target)
+    return seen
+
+
+def verify_plaza_connection(output, world, report):
+    """Check exposed paving and a continuous entrance-to-existing-path route."""
+    import amulet
+    from .bedrock import material_block
+    columns = {}
+    plaza = set()
+    existing = set()
+    with (Path(output)/'voxels.jsonl').open() as stream:
+        for line in stream:
+            row = json.loads(line)
+            feature = row.get('feature','')
+            if not feature.startswith('reconstruction/') or 'paving' not in feature:
+                continue
+            key = (row['x'],row['z'])
+            if key not in columns or row['y'] > columns[key]['y']:
+                columns[key] = row
+            if feature == 'reconstruction/proposed_plaza_paving':
+                plaza.add(key)
+            if feature == 'reconstruction/paving_preview':
+                existing.add(key)
+    if not plaza:
+        return {'status':'unavailable_no_recovered_plaza'}
+    groups = {}
+    for key,row in columns.items():
+        groups.setdefault((key[0]//16,(-key[1])//16),[]).append((key,row))
+    exposed = {}
+    level = amulet.load_level(str(Path(output)/'bedrock-world'))
+    try:
+        for (cx,cz),entries in groups.items():
+            chunk = level.get_chunk(cx,cz,'minecraft:overworld')
+            for key,row in entries:
+                x,z = key[0]%16,(-key[1])%16
+                y = row['y']+world['vertical_offset_blocks']
+                blocks = [chunk.block_palette[int(chunk.blocks[x,y+d,z])] for d in (0,1,2)]
+                if (blocks[0].namespaced_name == material_block(row['material']).namespaced_name
+                        and all(b.base_name == 'air' for b in blocks[1:])):
+                    exposed[key] = row['y']
+            level.unload()
+    finally:
+        level.close()
+    spawn = report['plaza_local_visit_xyz_m']
+    start = (spawn[0],spawn[2])
+    reached = connected_paving(exposed,start)
+    # Require a substantial route outside the plaza, not an adjacent stray tile.
+    main_path = {key for key in reached & existing if math.hypot(key[0]-start[0],key[1]-start[1]) >= 20}
+    if not main_path or not plaza <= set(exposed):
+        raise ValueError('Entrance plaza must be exposed and continuously connected to existing main paving')
+    return {'status':'passed','exposed_plaza_blocks':len(plaza),
+            'reachable_paving_blocks':len(reached),'reachable_existing_path_blocks':len(main_path),
+            'method':'Reopened world paving with two air blocks overhead; four-neighbour route, maximum one-block step'}
