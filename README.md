@@ -25,13 +25,14 @@ The workflow is manually dispatched, but every supported data acquisition and ex
 | England terrain | Environment Agency native 1 m DTM WCS, with coverage discovered from capabilities |
 | England building surfaces | Automatic last-return 1 m DSM acquisition when compatible EA ground elevations are available |
 | Other regions / unavailable EA data | Automatic Open Topo Data Mapzen sampling; coarse mixed-source fallback is flagged |
+| England planning evidence | Automatic spatial queries for planning authorities, applications and listed-building records; coverage and document-catalogue availability reported |
 | Bedrock world | Automatic LevelDB world creation, block composition, read-back validation and `.mcworld` packaging |
 
 Mapzen's approximately 30 m output includes areas derived from lower-resolution data. It does not supply one-metre surveyed accuracy. Provider outages cause failure, or a documented supported fallback; no fabricated terrain is substituted. All extracted raster/input evidence is retained alongside reports. Data provider API limits are respected for the elevation service (100 samples/request and at least one second between requests).
 
 OSM multipolygons preserve courtyard holes. Incomplete relations are reported. Missing widths/heights are reported as assumptions; draft buildings default to 6 m. Ground features follow per-column sampled terrain. Bridges, tunnels and nonzero layers without absolute elevation evidence are omitted with errors; OSM layer numbers never become guessed heights. Their elevations are not currently acquired from another automatic source.
 
-Planning drawing acquisition, independent surveyed control-point validation, classified building meshes and 3D ride geometry are **not implemented**. Capability gaps are included in every report, so strict mode cannot certify a complete accurate park with the current adapters. There is no manual data preparation step hidden behind these capabilities.
+Planning drawing acquisition/interpretation, independent surveyed control-point validation, classified building meshes and 3D ride geometry are **not implemented**. Planning record discovery and spatial context matching are implemented for the England national API, with incomplete coverage explicitly reported. Capability gaps are included in every report, so strict mode cannot certify a complete accurate park with the current adapters. There is no manual data preparation step hidden behind these capabilities.
 
 ## World export
 
@@ -95,3 +96,13 @@ Line widths use `width_m`, then OSM `width`, then `est_width`. Single positive m
 Supported `surface` tags choose approximate Minecraft materials: asphalt, concrete, paving stones, cobbles, wood, gravel, compacted earth, dirt, grass and sand. Missing/unsupported surfaces use a generic class material with a warning. Paving occupies one block at the sampled ground elevation, including fractional raster elevations, rather than raising paths into two-block extrusions. Steps follow sampled terrain; individual tread dimensions are unknown. `transport_profiles` records class, width, width source, original surface, selected block material and assumptions. Each paving voxel retains its feature and elevation source IDs. Tagged widths/materials are evidence from OSM, not independently surveyed accuracy.
 
 References: [OSM width](https://wiki.openstreetmap.org/wiki/Key:width), [surface](https://wiki.openstreetmap.org/wiki/Key:surface), [area:highway](https://wiki.openstreetmap.org/wiki/Key:area:highway).
+
+## Automatic planning evidence and feature matching
+
+Inside the England provider discovery window, every run queries the [Planning Data API](https://www.planning.data.gov.uk/docs) using the selected WGS84 bounding polygon. The adapter discovers intersecting local planning authorities, planning applications and listed-building records. It checks the planning-document catalogue automatically. No dataset URL or record upload is required. This is national API discovery; council website crawling and document download/georeferencing are not implemented. Regions outside the discovery window are explicitly `not_supported`; the window itself does not establish national coverage.
+
+Raw query pages, checksums and the document catalogue are retained in `planning-evidence/`. `planning-discovery.json` records timestamps, counts, provider failures, empty results and pagination limits. Queries are bounded to five pages of 100 records per dataset; hitting the limit reports truncation. Outages are distinct from successful empty responses and do not silently claim complete coverage. Empty results do not establish that a site has no applications or buildings.
+
+`planning-matches.json` records spatial candidates in a local metric CRS. Site polygons/record points are associated with intersecting mapped features; multiple candidates are explicitly ambiguous. Authorities are separate context. Original OSM geometry, heights and source IDs remain intact; `planning_evidence` references add record IDs, dates and links to candidate features. The matcher does not assert identity from proximity or turn a development-site boundary into a building footprint. Invalid/out-of-area evidence is rejected, courtyard holes are respected and candidate comparisons share a bounded budget.
+
+Planning permission or an application date does not establish that a structure was built. All associations are context with construction status `not_verified`; the current adapter makes **zero physical additions or geometry replacements**. Confirmed as-built survey/drawing interpretation and stronger geometry conflict resolution require further adapters. Coverage status and matches appear in the packaged world quality report and Actions artifact, so the added records cannot be mistaken for increased measured world accuracy.

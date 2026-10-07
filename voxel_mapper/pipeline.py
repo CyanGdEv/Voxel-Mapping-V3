@@ -8,6 +8,7 @@ from pyproj import Geod
 from .acquisition import resolve_location, acquire_terrain, acquire_surface
 from .cli import build, fetch_osm, validate_config
 from .bedrock import export_world
+from .planning import discover_planning, match_planning, SOURCE as PLANNING_SOURCE
 
 
 def run_auto(output, location=None, bounds=None):
@@ -51,9 +52,22 @@ def run_auto(output, location=None, bounds=None):
         collection, raw, skipped = fetch_osm(bounds)
         acquisition['providers'].append({'provider':'osm','status':'downloaded','feature_count':len(collection['features'])})
         (output/'osm-raw.json').write_text(json.dumps(raw))
+        planning = discover_planning(bounds, output)
+        collection, planning_matches = match_planning(collection, planning, bounds)
+        (output/'planning-matches.json').write_text(json.dumps(planning_matches, indent=2))
+        planning_summary = {k:v for k,v in planning.items() if k != 'records'}
+        planning_summary['record_count'] = len(planning['records'])
+        acquisition['providers'].append(planning_summary)
+        if planning['status'] != 'not_supported':
+            config['sources'].append(PLANNING_SOURCE)
+        manifest.write_text(json.dumps(acquisition, indent=2))
         (output/'input.geojson').write_text(json.dumps(collection))
         (output/'resolved-config.json').write_text(json.dumps(config,indent=2))
         report = build(config,collection,output)
+        report['planning_discovery'] = planning_summary
+        report['planning_matches'] = planning_matches
+        report['issues'].append({'severity':'warning', 'reason':'Planning evidence is context only; council drawings and verified as-built geometry are not acquired',
+                                 'provider_status':planning['status'], 'documents':planning['documents']['status']})
         report['skipped_osm'] = skipped
         if skipped:
             report['issues'].append({'severity':'error','reason':'OSM features skipped','count':len(skipped)})
@@ -65,6 +79,8 @@ def run_auto(output, location=None, bounds=None):
         # These absent adapters must never be mistaken for universal automatic completeness.
         report['capabilities'] = {'osm':'automatic', 'terrain':'automatic', 'surface':'automatic' if config_surface else 'unavailable',
                                   'transport_surfaces':'automatic_tagged_widths_and_materials',
+                                  'planning_records':'automatic_england_context' if planning['status'] == 'checked' else planning['status'],
+                                  'planning_feature_matching':'automatic_spatial_candidates_only',
                                   'building_surface_profiles':'automatic_2_5d' if config_surface else 'unavailable', 'planning_drawings':'not_implemented',
                                   'independent_accuracy_validation':'not_implemented', '3d_building_meshes':'not_implemented',
                                   'coaster_3d_geometry':'not_implemented', 'bedrock_world':'automatic'}
