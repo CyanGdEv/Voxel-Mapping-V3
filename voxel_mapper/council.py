@@ -1,5 +1,6 @@
 """Runnymede public document adapter. Consultation evidence is not world geometry."""
 import hashlib
+import datetime
 import io
 import json
 import re
@@ -23,6 +24,18 @@ SOURCE = {'id':'runnymede-planning', 'url':TERMS, 'license':'copyright-consultat
           'attribution':'Runnymede public planning records; drawings remain copyright of their owners'}
 
 
+def recent_references(references, current_year=None):
+    """Prioritise recent reference years within the last century, not construction."""
+    current_year = current_year or datetime.datetime.now(datetime.timezone.utc).year
+    def rank(reference):
+        year,serial = reference[3:].split('/')
+        expanded = current_year//100*100+int(year)
+        if expanded>current_year:
+            expanded-=100
+        return expanded,int(serial)
+    return sorted(set(references),key=rank,reverse=True)
+
+
 def search_form(html, site_name):
     soup = BeautifulSoup(html, 'html.parser')
     if not soup.select_one('input[name="txtSiteAddress"]'):
@@ -41,7 +54,7 @@ def search_form(html, site_name):
     return data
 
 
-def parse_results(html):
+def parse_results(html, base_url=SEARCH):
     soup = BeautifulSoup(html, 'html.parser')
     references = []
     for anchor in soup.select('a[href]'):
@@ -53,8 +66,15 @@ def parse_results(html):
     # Do not treat an unexpected HTML page as proof of no applications.
     if not references and not re.search(r'no (?:records|results|applications)\b', soup.get_text(' ',strip=True), re.I):
         raise ValueError('Unrecognised council results page')
-    next_links = [urljoin(SEARCH,a['href']) for a in soup.select('a[href]')
-                  if a.get_text(' ',strip=True).lower() in ('next','next page','>')]
+    next_links = []
+    for anchor in soup.select('a[href]'):
+        labels = [anchor.get_text(' ',strip=True),anchor.get('title',''),anchor.get('aria-label','')]
+        labels.extend(image.get('alt','') for image in anchor.select('img'))
+        if any(label.strip().lower() in ('next','next page','go to next page','>') for label in labels):
+            target = urljoin(base_url,anchor['href'])
+            if urlparse(target).scheme not in ('http','https'):
+                raise ValueError('Unsupported council pagination link')
+            next_links.append(target)
     return references, next_links[0] if next_links else None
 
 
@@ -162,10 +182,11 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
         if site_name:
             try:
                 initial = session.get(SEARCH,timeout=(10,30)); initial.raise_for_status()
-                response = session.post(SEARCH,data=search_form(initial.text,site_name),timeout=(10,30))
+                response = session.post(SEARCH,data=search_form(initial.text,site_name),
+                    headers={'Referer':SEARCH},timeout=(10,30))
                 for page in range(max_search_pages):
                     response.raise_for_status()
-                    found, next_url = parse_results(response.text)
+                    found, next_url = parse_results(response.text,base_url=response.url)
                     references.extend(ref for ref in found if ref not in references)
                     if not next_url:
                         result['application_search']='completed_address_candidates'
@@ -175,12 +196,14 @@ def acquire_council(authorities, planning_records, site_name, output, max_applic
                         break
                     if urlparse(next_url).hostname != 'planning.runnymede.gov.uk':
                         raise ValueError('Unexpected council pagination host')
-                    response = session.get(next_url,timeout=(10,30))
+                    response = session.get(next_url,headers={'Referer':response.url},timeout=(10,30))
             except (requests.RequestException,ValueError) as error:
                 result['application_search']='blocked_or_unavailable'
                 result['failures'].append({'stage':'application_search','reason':str(error)})
         else:
             result['application_search']='site_name_unavailable'
+        references = recent_references(references)
+        result['application_priority']='recent_reference_year_first_not_construction_status'
         result['applications_truncated']=len(references)>max_applications
         for reference in references[:max_applications]:
             result['applications'].append(reference)

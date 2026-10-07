@@ -10,7 +10,7 @@ import zipfile
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
 
-from voxel_mapper.council import (SEARCH,DOCS,search_form,parse_results,parse_document_list,
+from voxel_mapper.council import (SEARCH,DOCS,search_form,parse_results,parse_document_list,recent_references,
                                   inspect_pdf,read_pdf,acquire_council)
 from voxel_mapper.pipeline import run_auto
 import test_terrain_osm as fixtures
@@ -57,6 +57,13 @@ class CouncilTests(unittest.TestCase):
         self.assertTrue(next_url.endswith('/page2'))
         with self.assertRaises(ValueError):parse_results('<h1>Access denied</h1>')
         self.assertEqual(parse_results('No applications found')[0],[])
+        refs,next_url=parse_results('<a href="details">RU.22/0374</a><a href="page2"><img alt="Next Page"></a>',
+                                   base_url='https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/Generic/StdResults.aspx')
+        self.assertEqual(next_url,'https://planning.runnymede.gov.uk/Northgate/PlanningExplorer/Generic/page2')
+        with self.assertRaisesRegex(ValueError,'pagination'):
+            parse_results('<a href="details">RU.22/0374</a><a href="javascript:next()">Next</a>')
+        self.assertEqual(recent_references(['RU.76/0581','RU.26/0086','RU.22/0374','RU.26/0369','RU.26/0086'],2026),
+                         ['RU.26/0369','RU.26/0086','RU.22/0374','RU.76/0581'])
 
     def test_document_identity_reference_and_filter(self):
         docs=parse_document_list(document_html(),'RU.22/0374')
@@ -96,6 +103,7 @@ class CouncilTests(unittest.TestCase):
             session.get.side_effect=[initial,listing,payload]
             blocked=reply();blocked.raise_for_status.side_effect=requests.HTTPError('403 Forbidden');session.post.return_value=blocked
             result=acquire_council([{'reference':'E60000275'}],[{'reference':'RU.22/0374'}],'Park',Path(d))
+            self.assertEqual(session.post.call_args.kwargs['headers'],{'Referer':SEARCH})
             self.assertEqual(result['application_search'],'blocked_or_unavailable')
             self.assertEqual(result['documents'][0]['inspection']['status'],'inspected_consultation_only')
             self.assertEqual(result['geometry_replacements'],0)
@@ -109,7 +117,7 @@ class CouncilTests(unittest.TestCase):
     def test_document_and_inspection_budgets_are_reported(self):
         with tempfile.TemporaryDirectory() as d, patch('voxel_mapper.council.requests.Session') as factory:
             session=factory.return_value.__enter__.return_value
-            session.get.return_value=reply(document_html(),DOCS)
+            session.get.return_value=reply(document_html('RU.24/1234'),DOCS)
             result=acquire_council([{'reference':'E60000275'}],[{'reference':'RU.22/0374 RU.24/1234'}],None,Path(d),max_applications=1,max_pdf_inspections=0)
             self.assertTrue(result['applications_truncated'])
             self.assertEqual(result['inspection_budget_omitted'],1)
