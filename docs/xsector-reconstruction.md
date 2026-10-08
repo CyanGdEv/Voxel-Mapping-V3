@@ -84,3 +84,14 @@ Rails, spine and ties use a pitch-aware rotated frame; the centreline and
 clearance retain their own geometry. These are explicit shape corrections, not
 photogrammetrically measured heights or angles. Rebuild from the station-only
 base so the old low track and excavation do not remain as ghost geometry.
+
+### One-block track requirement
+
+The current Oblivion export uses the user's requested one-block-wide centreline.
+No accepted application width overrides this requirement. Paired gauge rails,
+offset spine, cross ties and lift walkway are omitted, rather than widening the
+track with guessed dimensions. The chain marker occupies the same centreline
+cells; support columns terminate directly beneath it. Height and roll profiles
+are retained, but a single square voxel cannot visibly express rail banking.
+Tunnel/train clearance is an excavation envelope, not the physical track width.
+Rebuild from the station-only base to replace the earlier wide track completely.

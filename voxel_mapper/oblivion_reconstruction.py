@@ -170,32 +170,27 @@ def emit_track(route, station, ground, max_records=250000):
         for side in np.arange(-2.5,2.51,.5):
             for dy in np.arange(-1,5.01,.5):
                 add(p.x+side*nx,h+dy,p.y+side*nz,'air','train_clearance')
+    # User's one-block-wide representation takes precedence over estimated
+    # gauge. One centreline ribbon only: no paired rails, offset spine, wide
+    # cross ties or attached walkway. Roll remains profile metadata because a
+    # one-voxel square cannot visually express gauge banking.
     for s,x,h,z,nx,nz in points:
-        lateral,up=track_frame(line,s,model,length,exit_height)
-        for side in (-1.,1.):
-            add(x+side*lateral[0],h+side*lateral[1],z+side*lateral[2],'iron_block','rails')
-        add(x-up[0],h-up[1],z-up[2],'black_concrete','spine')
-        if model['lift_start_m']<=s<=model['lift_crest_m']:
-            add(x,h,z,'stone','lift_chain')
-            add(x+2*nx,h-1,z+2*nz,'stone','lift_walkway')
-    for s in np.arange(0,length,2):
-        p=line.interpolate(s); h=float(height_profile([s],model,length,exit_height)[0])
-        a=line.interpolate(max(0,s-.1));b=line.interpolate(min(length,s+.1));dx,dz=b.x-a.x,b.y-a.y
-        norm=math.hypot(dx,dz);nx,nz=-dz/norm,dx/norm
-        lateral,up=track_frame(line,s,model,length,exit_height)
-        for side in np.arange(-1,1.01,.25):
-            add(p.x+side*lateral[0]-up[0],h+side*lateral[1]-up[1],p.y+side*lateral[2]-up[2],'stone','cross_ties')
+        on_lift=model['lift_start_m']<=s<=model['lift_crest_m']
+        add(x,h,z,'stone' if on_lift else 'iron_block','lift_chain' if on_lift else 'rails')
     for s in np.arange(0,length,8):
         p=line.interpolate(s);h=float(height_profile([s],model,length,exit_height)[0]);base=ground(p.x,p.y)
         if h-base<4 or station_polygon.covers(p):continue
-        for y in range(math.floor(base),math.floor(h)-1):
+        for y in range(math.floor(base),math.floor(h)):
             add(p.x,y,p.y,'stone','support_columns')
     for r in rows.values():counts[r['feature'].rsplit('/',1)[-1]]=counts.get(r['feature'].rsplit('/',1)[-1],0)+1
     physical=[r for r in rows.values() if r['material']!='air']
     return list(rows.values()),{'phase_model':model,'components':counts,'physical_records':len(physical),
                                'sample_count':len(samples),'below_ground_samples':int(below),
                                'sampling':'Adaptive <=0.2 metre rise/travel; mapped vertices included',
-                               'appearance':'Estimated rising banked return turn, dip and brake approach; generic rail/spine/ties and simplified support columns',
+                               'appearance':'Single-block centreline with corrected return heights and simplified support columns; roll retained as metadata',
+                               'track_width_blocks':1,'track_width_m':1,
+                               'width_basis':'User instruction; no accepted application width overrides it',
+                               'omitted_width_components':['paired rails','offset spine','cross ties','lift walkway'],
                                'tunnel_section':'Estimated six metre width and six metre clearance; excavation only',
                                'height_controls_odn_m':{'exit':exit_height,'station':model['station_rail_odn_m'],
                                                         'crest':model['crest_odn_m'],'bottom':model['bottom_odn_m']}}

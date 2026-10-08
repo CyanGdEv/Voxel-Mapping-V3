@@ -2,7 +2,7 @@ import math
 import unittest
 
 import numpy as np
-from shapely.geometry import LineString
+from shapely.geometry import LineString, Point
 
 from voxel_mapper.oblivion_reconstruction import DROP_M, LIFT_RISE_M, bank_profile, emit_track, height_profile, phase_model, track_frame
 
@@ -48,6 +48,18 @@ class OblivionTests(unittest.TestCase):
         self.assertEqual(roll[0],0)
         self.assertEqual(roll[1],-80)
         np.testing.assert_allclose(roll[2:],0)
+
+    def test_one_block_track_has_no_offset_or_wide_components(self):
+        r=mapped_route()
+        station={'floor_odn_m':100,'footprint':{'type':'Polygon','coordinates':[[[40,-35],[50,-35],[50,-25],[40,-25],[40,-35]]]}}
+        rows,report=emit_track(r,station,lambda x,z:100)
+        line=LineString([r['segments'][0]['start']]+[s['end'] for s in r['segments']])
+        self.assertEqual(report['track_width_blocks'],1)
+        self.assertFalse(set(report['components']) & {'spine','cross_ties','lift_walkway'})
+        for row in rows:
+            if row['material']=='air':continue
+            distance=line.distance(Point(row['x']+.5,row['z']+.5))
+            self.assertLessEqual(distance,math.sqrt(.5)+1e-6,'Physical track expanded sideways beyond centreline cells')
 
     def test_rails_follow_orthogonal_pitch_and_roll_frame(self):
         r=mapped_route();m=phase_model(r,100)
