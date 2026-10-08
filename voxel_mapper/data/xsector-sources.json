@@ -55,6 +55,13 @@
       "status": "Acquired and visually reviewed",
       "drawing_state": "manufacturer design perspective",
       "use": "Labelled lift/phase context only; example dimensions differ from finished ride; no surveyed 3D controls"
+    },
+    {
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "paired_surface_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "status": "Acquired matched P_10682 survey, 2022-01-05; complete crop coverage",
+      "use": "Observed ODN ground and last-return surfaces; neither identifies track centres",
+      "evidence": "docs/evidence/smiler-review/smiler-audit.json"
     }
   ],
   "mapped_source": {
@@ -71,5 +78,6 @@
   "limitations": [
     "Archived proposed plan differs from the finished Smiler; no as-built registration accepted",
     "The image mirrors omit full PDF vectors and readable survey controls; use for context only"
-  ]
+  ],
+  "smiler_reconstruction_status": "Prototype withdrawn after user visual review; as-built registration pending"
 }

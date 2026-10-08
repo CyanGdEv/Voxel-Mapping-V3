@@ -1,48 +1,76 @@
-# Smiler track: first visible pass
+# Smiler reconstruction: rejected prototype and new evidence
 
-Run after the corrected one-block Oblivion park:
+The lift-only world failed visual review and is withdrawn. The old command now
+refuses generation before reading source files or creating output. The old
+`Alton_Towers_Smiler_Lift_Track_Pass.mcworld` remains a failed prototype; code
+changes do not repair a previously downloaded world. Use the preceding
+one-block Oblivion park as the reconstruction baseline.
+
+The prototype assigned inclined lift segment 55 and vertical-lift foot after
+segment 113 without accepted as-built registration. It also estimated each
+lift rise from the published overall 30 m ride height. Its approaches, crests,
+tower and excavation were guesses. Export readback tests checked storage,
+not correspondence with the real ride. Those bindings and heights are rejected.
+
+## New measured evidence
+
+A matched Environment Agency survey pair was acquired for the Smiler footprint:
+P_10682, surveyed **5 January 2022**, 1 m DTM and last-return DSM, EPSG:27700,
+ODN heights. Both crops have 100% finite coverage. The datum transformation
+uses the retained OSTN15 grid. Crops, archive hashes and observations are
+retained in [the evidence directory](evidence/smiler-review/).
+
+All 141 mapped segment-start terrain observations agree exactly with the
+preceding park's terrain. This comparison finds no difference at those sampled
+locations; it does not validate the terrain beneath every track branch.
+The old estimated vertical-lift foot was 166 m ODN; terrain at its guessed
+location is 174.303 m ODN. The draft therefore cut over eight metres below the
+observed terrain at an unregistered location. Repeating that cut is unjustified.
+Ground observations span 158.829–175.423 m ODN. DSM surfaces include roofs,
+vegetation, supports and potentially track; they are not rail height controls.
+
+The mapped route has **946.019 m plan length**, **141 segments** and **34
+unresolved crossing pairs**. Topological ordering does not establish train
+direction. The published 1,170 m track length is a 3D length and cannot be used
+to scale the plan until the map and branch assignments are validated.
+
+![Mapped Smiler route, with segment numbers and unresolved direction](evidence/smiler-review/smiler-route-audit.svg)
+
+## Reproduce the audit
 
 ```bash
 python -m voxel_mapper.smiler_reconstruction \
   --park-output /absolute/path/oblivion-one-block-track \
-  --datum-grid /absolute/path/uk_os_OSTN15_NTv2_OSGBtoETRS.tif \
-  --output /absolute/path/smiler-lifts
+  --output /absolute/path/new-smiler-audit \
+  --audit-only \
+  --survey-pair /absolute/path/national-survey-pair.json
 ```
 
-This pass emits the inclined lift, the vertical lift, their short approaches and
-crest approaches, plus simple supports and a vertical tower. It does not emit a
-closed full course or claim to reconstruct all fourteen inversions. The retained
-park, Wicker Man and corrected Oblivion are copied and preserved outside the
-Smiler overlay. Existing outputs are never overwritten. All cells of changed
-chunk sections and total chunk coverage are checked after Bedrock readback.
+The survey argument is optional. The descriptor must reference acquired crops
+and its verified datum grid. Output contains the route audit, local-coordinate
+GeoJSON, SVG review map and, when supplied, surface observations. No track,
+excavation, supports or world archive are emitted. Outputs are not overwritten.
+GeoJSON coordinates are **local metres**, explicitly described by CRS WKT in
+its metadata; they must not be interpreted as longitude/latitude.
 
-The reviewed manufacturer perspective labels Station, Brake 1, Brake 2, Lift 1
-and Lift 2:
-https://www.gerstlauer-rides.de/fileadmin/Daten/Bilder/Produkte/Achterbahnen/Infinity_Coaster/IC_Layouts/2128_AltonTowers/IC_2128_AltonTowers_02_0001.jpg
+Replacement geometry requires registered finished-ride references tied to
+fixed site controls; a loading point and confirmed travel direction; identified
+lift feet, crests, drops and brakes; and branch-specific elevations/roll through
+all fourteen inversions and mapped crossings. None is marked accepted yet.
+The existing station shell is also an estimated building envelope, not an
+accurate station reconstruction.
 
-The associated Infinity Coaster 1140 example lists 35 m height and 1,140 m
-length. The finished park's published figures are 30 m and 1,170 m, so this is
-qualitative design evidence, not a surveyed as-built model. The older proposed
-planning images do not establish every finished inversion. Global official
-figures cannot resolve branch elevations at the 34 mapped crossings.
+## Reference limits
 
-Bindings are explicit hypotheses on the retained OSM snapshot: segment 55 for
-the inclined lift, and the end of segment 113 for the vertical-lift foot. Way
-IDs and geometry ranges are guarded against changed mapping. The inclined lift
-rises thirty metres over approximately thirty horizontal metres. The vertical
-span repeats its x/z coordinates while rising thirty metres; 3D arc-length
-sampling at <=0.2 m retains every intervening level. A one-dimensional height
-function over plan distance would lose that span.
+The retained proposed plan/elevation and manufacturer perspective remain useful
+context, but have no accepted as-built registration. Manufacturer example
+height/length differ from the finished ride. Public photographer lift pages and
+the official POV were attempted again on 8 October 2026; retrieval failed and
+their unseen contents were not used to bind geometry.
 
-Both feet are estimated two metres below the ground-median station slab;
-crests are thirty metres above the feet. These are explicitly estimated ODN
-levels, not measured track heights. Composite ground can lie above the estimated
-construction level, so the overlay includes local clearance/excavation and
-records below-ground samples. Crest/approach shape, tower/support forms and
-materials remain generic. Track uses a single black-concrete centreline as a
-schematic representation, not a claim about exact manufacturer gauge.
+Environment Agency source tiles:
+- [Dated terrain](https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540)
+- [Dated last-return surface](https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540)
 
-Next: identify the loading/indoor-roll path, bind both drop/corkscrew sequences,
-then assign branch-specific heights and roll through dive loops, batwing,
-sea-serpent and cobra-roll sections. Inversion-count labels alone cannot define
-those three-dimensional shapes; a flat connected loop would be misleading.
+Contains Environment Agency information © Environment Agency and/or database
+right, OGL-UK-3.0. Mapped geometry © OpenStreetMap contributors, ODbL-1.0.

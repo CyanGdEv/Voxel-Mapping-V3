@@ -1,57 +1,67 @@
-import math
+import copy
+import tempfile
 import unittest
-import numpy as np
-from voxel_mapper.smiler_reconstruction import emit_lifts, lift_paths, sample_path
+from pathlib import Path
+from unittest.mock import patch
+from voxel_mapper.smiler_reconstruction import reconstruction_audit, audit_svg, survey_observations, main
 
 
-def reviewed_route():
-    segments=[{'way_id':0,'start':[0,0],'end':[1,0],'station_start_m':i,'station_end_m':i+1} for i in range(119)]
-    for i in range(52,60):
-        segments[i]={'way_id':1074706894,'start':[i-55,0],'end':[i-54,0],
-                     'station_start_m':i*10,'station_end_m':(i+1)*10}
-    segments[55]['end']=[30,0]
-    for i in range(56,60):segments[i]['start']=[30+i-56,0];segments[i]['end']=[31+i-56,0]
-    for i in range(113,119):
-        segments[i]={'way_id':597823137,'start':[35+i-113,20],'end':[36+i-113,20],
-                     'station_start_m':i*10,'station_end_m':(i+1)*10}
-    segments[113]['start']=[0,20]
-    return {'segments':segments}
+def fixture():
+    pts=[[0,0],[10,10],[0,10],[10,0]]
+    route={'segments':[{'start':p,'end':pts[(i+1)%4],'way_id':i+1,
+                       'station_start_m':i*10,'station_end_m':(i+1)*10} for i,p in enumerate(pts)],
+           'plan_length_m':48.28,'crossings':[{'segment_indices':[0,2],
+             'geometry':{'type':'Point','coordinates':[5,5]}}]}
+    station={'osm_way_id':100,'footprint':{'type':'Polygon','coordinates':[[[0,0],[1,0],[1,1],[0,0]]]}}
+    return route,station
 
 
-class SmilerLiftTests(unittest.TestCase):
-    def test_vertical_span_is_not_lost_in_horizontal_sampling(self):
-        points=sample_path([[2,100,3],[2,130,3]])
-        self.assertEqual({(math.floor(p[0]),math.floor(p[2])) for p in points},{(2,3)})
-        self.assertEqual({math.floor(p[1]) for p in points},set(range(100,131)))
-        self.assertLessEqual(max(math.dist(a,b) for a,b in zip(points,points[1:])),.200001)
-        with self.assertRaises(ValueError):sample_path([[0,math.nan,0],[0,10,0]])
+class SmilerAuditTests(unittest.TestCase):
+    def test_geometry_has_no_invented_height_direction_or_phase(self):
+        route,station=fixture();before=copy.deepcopy(route)
+        report,geometry=reconstruction_audit(route,station,'local-test-crs')
+        self.assertEqual(route,before)
+        self.assertEqual(report['world_records_emitted'],0)
+        self.assertEqual(report['accepted_3d_controls'],[])
+        for feature in geometry['features'][:4]:
+            self.assertIsNone(feature['properties']['track_height_odn_m'])
+            self.assertEqual(feature['properties']['travel_direction'],'unresolved')
+            self.assertEqual(feature['properties']['ride_phase'],'unresolved')
+        self.assertEqual(geometry['coordinate_frame']['crs_wkt'],'local-test-crs')
 
-    def test_both_lifts_have_common_estimated_crest_and_real_vertical_path(self):
-        paths,model=lift_paths(reviewed_route(),168)
-        self.assertEqual(model['crest_odn_m'],196)
-        self.assertEqual(model['vertical_lift_angle_deg'],90)
-        foot,crest=paths[1]['points_xyz_m'][1:3]
-        self.assertEqual(foot[0::2],crest[0::2])
-        self.assertEqual(crest[1]-foot[1],30)
+    def test_crossings_remain_unresolved(self):
+        report,geometry=reconstruction_audit(*fixture(),'local')
+        self.assertEqual(report['unresolved_crossing_count'],1)
+        self.assertIsNone(geometry['features'][-1]['properties']['vertical_separation_m'])
+        self.assertIn('rejected',audit_svg(geometry))
 
-    def test_changed_mapping_is_rejected_before_overlay(self):
-        r=reviewed_route();r['segments'][55]['way_id']=123
-        with self.assertRaises(ValueError):lift_paths(r,168)
+    def test_route_fingerprint_changes_with_geometry(self):
+        route,station=fixture()
+        original=reconstruction_audit(route,station,'local')[0]['route_sha256']
+        route['segments'][0]['start']=[-1,0];route['segments'][-1]['end']=[-1,0]
+        self.assertNotEqual(reconstruction_audit(route,station,'local')[0]['route_sha256'],original)
 
-    def test_missing_terrain_and_budget_do_not_emit_incomplete_lifts(self):
-        with self.assertRaises(ValueError):emit_lifts(reviewed_route(),168,lambda x,z:None)
-        with self.assertRaises(ValueError):emit_lifts(reviewed_route(),168,lambda x,z:165,max_records=10)
+    def test_broken_or_nonfinite_route_is_rejected(self):
+        route,station=fixture();route['segments'][0]['end']=[4,4]
+        with self.assertRaises(ValueError):reconstruction_audit(route,station,'local')
+        route,station=fixture();route['segments'][0]['start']=[float('nan'),0]
+        with self.assertRaises(ValueError):reconstruction_audit(route,station,'local')
 
-    def test_visible_lifts_have_clearance_and_explicit_partial_status(self):
-        rows,r=emit_lifts(reviewed_route(),168,lambda x,z:170)
-        self.assertEqual(r['status'],'partial_track_lifts_only')
-        self.assertGreater(r['components']['inclined_lift_and_approach'],30)
-        self.assertGreater(r['components']['vertical_lift_and_approach'],30)
-        self.assertGreater(r['below_ground_samples'],0)
-        self.assertTrue(any(row['material']=='air' and row['y']<170 for row in rows))
-        self.assertEqual(len(rows),len({(row['x'],row['y'],row['z']) for row in rows}))
-        indexed={(r['x'],r['y'],r['z']):r for r in rows}
-        self.assertEqual(indexed[37,196,20]['material'],'black_concrete','Tower brace replaced crest track')
+    def test_old_world_command_rejected_before_any_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            output=Path(temp)/'world'
+            with patch('sys.argv',['smiler','--park-output',temp,'--output',str(output)]):
+                with self.assertRaises(SystemExit) as caught:main()
+            self.assertEqual(caught.exception.code,2)
+            self.assertFalse(output.exists())
+
+    def test_survey_surfaces_never_become_track_controls(self):
+        rows=survey_observations(fixture()[0],lambda x,z:160,lambda x,z:180,lambda x,z:161)
+        self.assertEqual(rows[0]['ground_change_m'],-1)
+        self.assertEqual(rows[0]['surface_minus_ground_m'],20)
+        self.assertTrue(all(r['identified_track_height_odn_m'] is None for r in rows))
+        with self.assertRaises(ValueError):
+            survey_observations(fixture()[0],lambda x,z:None,lambda x,z:180,lambda x,z:161)
 
 
 if __name__=='__main__':unittest.main()

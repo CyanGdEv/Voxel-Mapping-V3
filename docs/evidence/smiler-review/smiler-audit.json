@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "withheld_pending_as_built_registration",
+  "prototype_status": "withdrawn_after_user_visual_review",
+  "route_sha256": "baf03729d33f82eb6d445df9c3f457920416a23bf340627752acb2d65975c75e",
+  "segment_count": 141,
+  "plan_length_m": 946.0186740082373,
+  "unresolved_crossing_count": 34,
+  "direction": "unresolved; segment indices are topological order only",
+  "rejected_bindings": [
+    {
+      "phase": "inclined_lift",
+      "segment_index": 55
+    },
+    {
+      "phase": "vertical_lift_foot",
+      "after_segment_index": 113
+    }
+  ],
+  "rejected_height_model": "station slab minus 2m, plus 30m for both crests",
+  "accepted_3d_controls": [],
+  "world_records_emitted": 0,
+  "requirements": [
+    "Register finished-ride references against mapped station and fixed site controls",
+    "Establish loading point and train travel direction",
+    "Bind lift feet, crests, drops and brakes to identified route branches",
+    "Resolve elevations and roll through all fourteen inversions and mapped crossings"
+  ],
+  "limitations": [
+    "Mapped aerial geometry may be displaced by elevated structures",
+    "Published overall height is not the rise of each lift",
+    "DSM returns are surfaces, not identified track centres",
+    "Existing station shell remains an estimated building envelope"
+  ],
+  "coordinate_frame": {
+    "units": "metres",
+    "axes": "local x east, local z north",
+    "crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "minecraft_z": "negative local z"
+  },
+  "attribution": "\u00a9 OpenStreetMap contributors; ODbL-1.0",
+  "survey": {
+    "survey": {
+      "survey_id": "P_10682",
+      "survey_start": "20220105",
+      "survey_end": "20220105",
+      "archive_files": {
+        "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+        "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+      },
+      "finite_coverage_fraction": {
+        "dsm": 1.0,
+        "dtm": 1.0
+      },
+      "terrain_coverage_threshold": 0.99,
+      "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+    },
+    "terrain_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+    "surface_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+    "archive_sha256": {
+      "dtm": "9bfda4d9f7f5df6a21e5c20f35d9d5ceb2f9a7c78c469258451fa7fa5f4e739f",
+      "dsm": "547b256d80fb00a835d244d4ae0e001f34e771819893e5aafb0c03de5d176fac"
+    },
+    "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+    "sample_count": 141,
+    "ground_odn_range_m": [
+      158.82899475097656,
+      175.42300415039062
+    ],
+    "max_abs_baseline_ground_change_m": 0.0,
+    "interpretation": "Surface observations only; no accepted track controls",
+    "crop_sha256": {
+      "dtm": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453",
+      "dsm": "b6ff70a540fd99a9518207845434ce842b8f872821cae79515b3ee23faece497"
+    }
+  }
+}
