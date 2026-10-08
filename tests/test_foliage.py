@@ -61,6 +61,17 @@ class FoliageTests(unittest.TestCase):
         self.assertGreater(len(dense),len(sparse))
         for kwargs in ({'branch_count':0},{'branch_count':3.5},{'leaf_density':1.1},{'leaf_density':float('nan')},{'leaf_palette':[]},{'leaf_palette':['stone']}):
             with self.assertRaises(ValueError):tree_cells(0,0,0,20,6,**kwargs)
+    def test_upper_crown_narrows_and_finishes_with_attached_leaf(self):
+        from voxel_mapper.foliage import crown_radius_at_height
+        for seed in range(12):
+            cells=tree_cells(0,0,0,22,6,seed=seed)
+            middle=[(x,z) for x,y,z in cells if 10<=y<=14]
+            upper=[(x,z) for x,y,z in cells if y>=20]
+            self.assertLess(max(x*x+z*z for x,z in upper),max(x*x+z*z for x,z in middle))
+            self.assertTrue(cells[0,22,0].endswith('_leaves'))
+            self.assertTrue(cells[0,21,0].endswith('_fence'))
+            self.assertTrue(all(x*x+z*z<=crown_radius_at_height(22,6,y)**2 for (x,y,z),m in cells.items() if m.endswith('_leaves')))
+        self.assertEqual(crown_radius_at_height(22,6,12),6)
     def test_modular_tree_requires_dimensions_and_source_status(self):
         sources={'survey':Source('survey','survey','fixture','test','local','ODN','accepted')}
         ctx=Context(sources,lambda x,z:100,box(-30,-30,30,30),'ODN');engine=ReconstructionEngine(default_registry())

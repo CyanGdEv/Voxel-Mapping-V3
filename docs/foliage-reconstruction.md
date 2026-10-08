@@ -37,7 +37,7 @@ python -m voxel_mapper.park_foliage \
   --planning-hints recovery/foliage-planning-hints.json \
   --vegetation-cloud recovery/park-classified-vegetation.laz \
   --vegetation-cloud-report recovery/park-vegetation-acquisition.json \
-  --output park-foliage-v14
+  --output park-foliage-v15
 ```
 
 The Alton Towers pass uses 105 mapped tree positions, about 35 hectares of
@@ -83,3 +83,12 @@ V14 increases branch-face coverage while retaining the same skeleton algorithm.
 Leafy caps also hide exposed horizontal fence tops. Bounds, structure/clearance
 clipping and classified vegetation support still apply. Leaf counts and physical
 branch contact are audited after native export.
+
+V15 keeps the lower 65% crown radius, then decreases branch reach and leaf-site
+radius along a rounded upper envelope. The central fence stops one block below
+the supplied height and ends in an attached leaf when density is nonzero.
+Upper branches reserve room for their leaf shell instead of clamping full-width
+forks onto a common flat top. This envelope limits branch-side scatter; it does
+not fill a canopy volume. Crown taper, leafy leader and broad lower radius have
+seeded regression coverage. The Tests workflow installs the planning extra so
+PDF inspection tests run rather than fail from a missing PyMuPDF dependency.
