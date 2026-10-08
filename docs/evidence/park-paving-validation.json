@@ -1,0 +1,50 @@
+{
+  "status": "provisional_park_paving_generation",
+  "overlay_records": 71578,
+  "planning_polygons_after_clipping": 89,
+  "planning_geometry_new_horizontal_cells": 1446,
+  "final_material_cells": {
+    "stone": 51283,
+    "asphalt": 16115,
+    "concrete": 399,
+    "paving_stones": 3232,
+    "compacted": 334,
+    "wood": 202,
+    "brick": 13
+  },
+  "final_origin_cells": {
+    "generic_paving_palette_assumed": 43275,
+    "osm_surface_palette": 26228,
+    "nearby_planning_material_estimate": 372,
+    "planning_floor_label": 1565,
+    "planning_paving_unspecified_material": 138
+  },
+  "protected_cells_withheld": 4274,
+  "retained_ride_mask_cells": 14391,
+  "world_verification": {
+    "touched_chunks": 1203,
+    "overlay_records": 71578,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1f68b6f105ba8a77745dc05c7e00cf317952c29bcf407ea03a16888c2648bfa8",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 11
+  },
+  "limitations": [
+    "Planning alignment is provisional and inherits Wicker Man registration",
+    "Historical/proposed surfaces are a draft, not independently verified present-day paving",
+    "Material proximity is an estimate, not proof of identical construction",
+    "Unspecified paving uses a generic stone palette; block-paving labels do not establish brick",
+    "Patterns approximate materials with vanilla blocks; exact colour and joint dimensions are not surveyed"
+  ],
+  "tests": {
+    "count": 287,
+    "result": "passed"
+  },
+  "world_sha256": "398f95a50a15a70adf1e81a1516d81ebd39b1366fa88d670bb9db8ac037d7a13",
+  "planning_sheets": {
+    "inspected": 49,
+    "provisionally_aligned": 20,
+    "recovered_labelled_polygons": 67
+  }
+}

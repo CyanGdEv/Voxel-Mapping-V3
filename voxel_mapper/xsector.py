@@ -142,7 +142,7 @@ def build_overlay(config, quality, raw, include_oblivion=False):
     return rows, report
 
 
-def apply_overlay(source, output, rows, report):
+def apply_overlay(source, output, rows, report, report_key='xsector_reconstruction', report_filename='xsector-report.json'):
     """Copy an existing world; verify every cell of touched chunks, not just solids."""
     import amulet
     from .bedrock import material_block
@@ -212,8 +212,10 @@ def apply_overlay(source, output, rows, report):
                 expected=sections.get(s)
                 if expected is None:
                     expected=np.full((16,16,16),str(material_block('air')),dtype=object)
-                if not np.array_equal(palette[chunk.blocks.get_sub_chunk(s)], expected):
-                    raise ValueError('Overlay or preserved-cell round trip failed')
+                actual=palette[chunk.blocks.get_sub_chunk(s)]
+                if not np.array_equal(actual, expected):
+                    cell=tuple(np.argwhere(actual!=expected)[0])
+                    raise ValueError(f'Overlay or preserved-cell round trip failed: chunk {coords}, section {s}, cell {cell}: {expected[cell]} -> {actual[cell]}')
         report['world_verification']={'touched_chunks':len(by_chunk), 'overlay_records':len(rows),
                                     'check':'All cells of touched chunk sections and total chunk coverage verified',
                                     'untouched_chunks':'Copied from previously verified full-park world',
@@ -224,13 +226,13 @@ def apply_overlay(source, output, rows, report):
     report['visit_coordinates'] = [{'name':s['name'], 'minecraft_xyz':[
         math.floor(Polygon(s['footprint']['coordinates'][0]).centroid.x),s['roof_odn_m']+offset+5,
         -math.floor(Polygon(s['footprint']['coordinates'][0]).centroid.y)]} for s in report['stations']]
-    (output/'xsector-report.json').write_text(json.dumps(report,indent=2))
-    (destination/'xsector-report.json').write_text(json.dumps(report,indent=2))
-    base['xsector_reconstruction']=report
+    (output/report_filename).write_text(json.dumps(report,indent=2))
+    (destination/report_filename).write_text(json.dumps(report,indent=2))
+    base[report_key]=report
     base['world']['composed_blocks'] += solid_delta
     if report.get('spawn_minecraft_xyz'):base['world']['spawn']=report['spawn_minecraft_xyz']
     base['world'].pop('explicit_air_cells',None)
-    base['world']['explicit_air_cells_note']='Original count superseded by station overlay; changed sections verified including all air'
+    base['world']['explicit_air_cells_note']='Original count superseded by overlay; changed sections verified including all air'
     base['world']['round_trip_validation']='Base world previously verified; every cell of changed chunk sections rechecked'
     (destination/'voxel-quality-report.json').write_text(json.dumps(base,indent=2))
     package = output/'park.mcworld'

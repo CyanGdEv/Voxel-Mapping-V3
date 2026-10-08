@@ -402,3 +402,8 @@ The Smiler lift prototype was withdrawn after visual review. Its generator now
 refuses world output and provides an audit-only route map and measured 2022
 surface observations. See [Smiler reconstruction](docs/smiler-reconstruction.md)
 for the evidence and unresolved as-built controls.
+
+Park-wide path/plaza recovery and material patterns are available through
+`python -m voxel_mapper.park_paving_plans` and `python -m voxel_mapper.park_paving`.
+See [park paving](docs/park-paving.md) for bounded OSM material inheritance,
+planning evidence and vanilla-block palettes.

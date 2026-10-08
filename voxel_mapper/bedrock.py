@@ -24,10 +24,16 @@ MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'s
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
 PRIORITY.update(lakebed=1,plaza=3)
-ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'red_terracotta','dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
 
 
 def material_block(material):
+    if material == 'stone_bricks':
+        return Block('universal_minecraft','stone_bricks',{'variant':StringTag('normal')})
+    if material == 'bricks':
+        return Block('universal_minecraft','brick_block')
+    if material == 'red_terracotta':
+        return Block('universal_minecraft','stained_terracotta',{'color':StringTag('red')})
     if material in CONCRETE_MATERIALS:
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
     if material in ('oak_planks', 'dark_oak_planks'):
