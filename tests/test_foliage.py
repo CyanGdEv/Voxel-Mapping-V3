@@ -2,7 +2,7 @@ import tempfile,unittest,json
 from pathlib import Path
 from shapely.geometry import Point,box,mapping
 import amulet
-from voxel_mapper.foliage import tree_cells,shrub_cells,stable_seed
+from voxel_mapper.foliage import tree_cells,tree_structure,shrub_cells,stable_seed
 from voxel_mapper.bedrock import ALLOWED_MATERIALS,material_block,export_world
 from voxel_mapper.reconstruction.model import Feature,Source
 from voxel_mapper.reconstruction.engine import Context,ReconstructionEngine
@@ -29,6 +29,26 @@ class FoliageTests(unittest.TestCase):
         a=tree_cells(0,0,0,14,4,seed=12);self.assertEqual(a,tree_cells(0,0,0,14,4,seed=12))
         self.assertNotEqual(a,tree_cells(0,0,0,14,4,seed=13))
         with self.assertRaises(ValueError):tree_cells(0,0,0,100,20)
+    def test_leaf_scatter_is_branch_attached_mixed_and_open(self):
+        cells=tree_cells(0,0,0,22,6,seed=73)
+        wood={k for k,m in cells.items() if m.endswith('_fence')}
+        leaf={k for k,m in cells.items() if m.endswith('_leaves')}
+        self.assertEqual({cells[k] for k in leaf},{'oak_leaves','birch_leaves'})
+        self.assertTrue(all(any((x+dx,y,z+dz) in wood for dx,dz in ((1,0),(-1,0),(0,1),(0,-1))) for x,y,z in leaf))
+        full=tree_cells(0,0,0,22,6,seed=73,leaf_density=1)
+        self.assertLess(len(leaf),sum(m.endswith('_leaves') for m in full.values())*.8)
+        bare=tree_cells(0,0,0,22,6,seed=73,leaf_density=0)
+        self.assertEqual(set(bare),wood)
+        self.assertEqual(wood,{k for k,m in full.items() if m.endswith('_fence')})
+        self.assertGreater(len({y for x,y,z in wood if (x,z)!=(0,0)}),7)
+        self.assertTrue(any(x>0 for x,y,z in wood) and any(x<0 for x,y,z in wood))
+        self.assertTrue(any(z>0 for x,y,z in wood) and any(z<0 for x,y,z in wood))
+    def test_branch_count_and_leaf_parameters_are_bounded(self):
+        sparse,_=tree_structure(0,0,0,20,6,seed=3,branch_count=3)
+        dense,_=tree_structure(0,0,0,20,6,seed=3,branch_count=24)
+        self.assertGreater(len(dense),len(sparse))
+        for kwargs in ({'branch_count':0},{'branch_count':3.5},{'leaf_density':1.1},{'leaf_density':float('nan')},{'leaf_palette':[]},{'leaf_palette':['stone']}):
+            with self.assertRaises(ValueError):tree_cells(0,0,0,20,6,**kwargs)
     def test_modular_tree_requires_dimensions_and_source_status(self):
         sources={'survey':Source('survey','survey','fixture','test','local','ODN','accepted')}
         ctx=Context(sources,lambda x,z:100,box(-30,-30,30,30),'ODN');engine=ReconstructionEngine(default_registry())

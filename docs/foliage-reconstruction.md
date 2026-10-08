@@ -1,12 +1,17 @@
 # Evidence-backed foliage
 
-`voxel_mapper.foliage` provides deterministic, connected tree skeletons and lobed
-crowns independently of any park. The reconstruction registry exposes `tree`
+`voxel_mapper.foliage` provides deterministic, connected tree skeletons and branch-side
+leaf scatter independently of any park. The reconstruction registry exposes `tree`
 and `shrub` families with explicit dimensions and the existing provenance and
 collision rules. Oak, birch, spruce and dark-oak fences form thin trunks and
 face-connected branch skeletons, rather than vanilla full-block log trunks.
-Crowns combine asymmetric lobes with two scales of seeded smooth 3-D noise,
-bounded by the supplied radius and height. Leaves persist without random decay.
+The skeleton is built first: branch count scales with height/radius, attachment
+levels are staggered, azimuths vary, and crooked members split into unequal
+terminal forks. Each eligible branch cell offers four horizontal neighbouring
+leaf sites. Seeded random placement leaves open gaps; every leaf touches a fence
+and stays within the supplied radius and height. Broadleaf trees mix oak and
+birch blocks (colour proxies); conifers default to spruce with oak accents.
+There is no ellipsoid, cube or canopy-volume fill. Leaves persist without random decay.
 Ferns, grass and azalea blocks provide
 understorey proxies.
 
@@ -30,7 +35,7 @@ python -m voxel_mapper.park_foliage \
   --planning-hints recovery/foliage-planning-hints.json \
   --vegetation-cloud recovery/park-classified-vegetation.laz \
   --vegetation-cloud-report recovery/park-vegetation-acquisition.json \
-  --output park-foliage-v12-final
+  --output park-foliage-v13
 ```
 
 The Alton Towers pass uses 105 mapped tree positions, about 35 hectares of
@@ -64,3 +69,10 @@ position/height methods, input hashes, withheld reasons and full changed-section
 readback. Native palette, connected skeleton, deterministic shape, modular
 evidence/collision behaviour and retained-world clearance tests are in
 `tests/test_foliage.py`.
+
+The modular tree family accepts optional evidence-backed `branch_count` (integer
+3–80), `leaf_density` (0–1), and `leaf_palette` (1–5 supported leaf materials).
+`tree_structure` returns the bare skeleton and eligible members; `tree_cells`
+adds leaves using a separate seed, so density/palette changes leave branch
+geometry unchanged. Parameter, mixed-leaf adjacency, open-density and multiple
+branch-level/direction regressions are covered in `tests/test_foliage.py`.

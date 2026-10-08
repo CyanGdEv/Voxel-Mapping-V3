@@ -9,89 +9,84 @@ def stable_seed(identity):
     return int.from_bytes(hashlib.sha256(str(identity).encode()).digest()[:8],'big')
 
 
-def value_noise(x,y,z,seed,scale=2.7):
-    """Smooth seeded 3-D noise; neighbouring leaf cells form coherent patches."""
-    coords=(x/scale,y/scale,z/scale);base=tuple(math.floor(v) for v in coords)
-    f=[v-b for v,b in zip(coords,base)];f=[v*v*(3-2*v) for v in f]
-    value=0
-    for dx in (0,1):
-        for dy in (0,1):
-            for dz in (0,1):
-                h=((base[0]+dx)*73856093)^((base[1]+dy)*19349663)^((base[2]+dz)*83492791)^seed
-                h=(h^(h>>13))*1274126177;h=(h^(h>>16))&0xffffffff
-                weight=(f[0] if dx else 1-f[0])*(f[1] if dy else 1-f[1])*(f[2] if dz else 1-f[2])
-                value+=weight*(h/0xffffffff*2-1)
-    return value
+def tree_structure(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak',branch_count=None):
+    """Build a grounded fence skeleton first; return foliage-bearing members.
 
-
-def tree_cells(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak',leaves='oak'):
-    """Connected fence skeleton with noisy lobed crowns or conifer whorls.
-
-    Dimensions are metres at the current one-metre voxel scale. These are visual
-    proxies, not botanical meshes or independently measured branch structures.
+    Branch count, attachment levels, azimuths, elbows and terminal forks are
+    procedural. Dimensions are metres; species/branch forms remain proxies.
     """
     if (not all(math.isfinite(v) for v in (x,ground,z,height,radius))
             or not 3<=height<=40 or not 1<=radius<=10):
         raise ValueError('Tree dimensions outside bounded metre range')
     if profile not in ('broadleaf','airy','conifer','pine','columnar','monkey_puzzle','weeping'):
         raise ValueError('Unknown tree silhouette')
-    if wood not in ('oak','spruce','birch','dark_oak') or leaves not in ('oak','spruce','birch','dark_oak','azalea'):
-        raise ValueError('Unsupported foliage palette')
-    x,ground,z=map(math.floor,(x,ground,z));height=math.floor(height);rng=random.Random(seed);cells={}
-    def branch(a,b):
-        for k in segment_cells(a,b):cells[k]=wood+'_fence'
-    def crown(cx,cy,cz,rx,ry,rz):
-        for xx in range(math.floor(cx-rx),math.ceil(cx+rx)+1):
-            for yy in range(max(ground+2,math.floor(cy-ry)),min(ground+height,math.ceil(cy+ry))+1):
-                for zz in range(math.floor(cz-rz),math.ceil(cz+rz)+1):
-                    d=((xx-cx)/rx)**2+((yy-cy)/ry)**2+((zz-cz)/rz)**2
-                    if (xx-x)**2+(zz-z)**2>radius**2:continue
-                    if d>1.1:continue
-                    noise=.72*value_noise(xx,yy,zz,seed)+.28*value_noise(xx,yy,zz,seed^0x9e3779b9,1.15)
-                    if d>.90+.25*noise:continue
-                    cells.setdefault((xx,yy,zz),leaves+'_leaves')
-    trunk_top=ground+height-1 if profile in ('conifer','columnar','monkey_puzzle') else ground+max(3,round(height*.65))
-    lean=(rng.choice((-1,0,1)),rng.choice((-1,0,1))) if height>10 else (0,0)
-    joint=(x+lean[0],trunk_top,z+lean[1]);branch((x,ground+1,z),joint)
-    branch((x,ground+1,z),(x,trunk_top,z))
-    if profile in ('conifer','columnar','monkey_puzzle'):
-        for dy in range(max(2,round(height*.18)),height,2):
-            r=radius*(1-dy/height)**.65
-            if profile=='columnar':r=radius*(.8 if dy<height*.7 else max(.2,1-(dy/height-.7)/.35))
-            if profile=='monkey_puzzle':
-                for i in range(5):
-                    angle=i*math.tau/5+(dy%4)*.35
-                    end=(x+math.cos(angle)*r,ground+dy+.8,z+math.sin(angle)*r)
-                    branch((x,ground+dy,z),end);crown(*end,1.1,.8,1.1)
-            else:
-                crown(x+lean[0]*dy/height,ground+dy,z+lean[1]*dy/height,max(.8,r),1.7,max(.8,r*.9))
-                if dy%4==0 and r>1.5:
-                    for i in range(4):
-                        angle=i*math.pi/2+dy*.25
-                        branch((x,ground+dy,z),(x+math.cos(angle)*r*.65,ground+dy,z+math.sin(angle)*r*.65))
-        crown(joint[0],ground+height-1,joint[2],.9,1,.9)
-    else:
-        centre_y=ground+height*(.82 if profile=='pine' else .72)
-        vertical=height*(.17 if profile=='pine' else .25)
-        crown(joint[0],centre_y,joint[2],radius*.7,vertical,radius*.7)
-        lobes=5 if profile=='airy' else 7
-        for i in range(lobes):
-            angle=i*math.tau/lobes+rng.uniform(-.25,.25);reach=radius*rng.uniform(.4,.7)
-            end=(joint[0]+math.cos(angle)*reach,centre_y+rng.uniform(-.5,.5)*vertical,joint[2]+math.sin(angle)*reach)
-            fork=(x+lean[0],ground+max(2,round(height*.45)),z+lean[1])
-            branch((x,ground+1,z),fork);branch(fork,end)
-            rr=radius*rng.uniform(.42,.6)
-            crown(*end,rr,vertical*rng.uniform(.55,.8),rr)
-        # One high lobe reaches the supplied canopy height.
-        crown(joint[0]-.5,ground+height-vertical*.55,joint[2]+.5,radius*.5,vertical*.55,radius*.5)
-        if profile=='weeping':
-            for i in range(14):
-                angle=i*math.tau/14;xx=round(x+math.cos(angle)*radius*.9);zz=round(z+math.sin(angle)*radius*.9)
-                if (xx-x)**2+(zz-z)**2>radius**2:continue
-                for yy in range(ground+max(3,round(height*.3)),round(centre_y)+1):cells.setdefault((xx,yy,zz),leaves+'_leaves')
+    if wood not in ('oak','spruce','birch','dark_oak'):raise ValueError('Unsupported trunk palette')
+    if branch_count is not None and (isinstance(branch_count,bool) or not isinstance(branch_count,int) or not 3<=branch_count<=80):
+        raise ValueError('Branch count must be an integer from 3 to 80')
+    x,ground,z=map(math.floor,(x,ground,z));height=math.floor(height)
+    rng=random.Random(seed);cells={};foliar=set()
+    def member(a,b,leaf_bearing=True):
+        for k in segment_cells(a,b):
+            cells[k]=wood+'_fence'
+            if leaf_bearing:foliar.add(k)
+    # A single connected main stem, bare below the first crown branches.
+    member((x,ground+1,z),(x,ground+height,z),False)
+    start=max(2,round(height*(.52 if profile=='pine' else .22 if profile in ('conifer','monkey_puzzle') else .30)))
+    count=branch_count if branch_count is not None else max(5,min(40,round(height*.45+radius*1.5)))
+    phase=rng.random()*math.tau
+    for i in range(count):
+        t=(i+.5)/count
+        level=min(height-1,max(start,round(start+(height-1-start)*t+rng.uniform(-.65,.65))))
+        angle=phase+i*2.399963229728653+rng.uniform(-.32,.32)
+        reach=max(0,radius-1)*rng.uniform(.62,1)
+        if profile in ('conifer','monkey_puzzle'):reach*=max(.22,(1-level/height)**.55)
+        if profile=='columnar':reach*=.55
+        def point(length,azimuth,y):
+            return (x+round(math.cos(azimuth)*length),ground+max(2,min(height,round(y))),z+round(math.sin(azimuth)*length))
+        origin=(x,ground+level,z)
+        elbow=point(reach*.48,angle+rng.uniform(-.25,.25),level+rng.uniform(-1,1))
+        tip=point(reach,angle,level+(rng.uniform(-2,0) if profile=='weeping' else rng.uniform(0,2.5)))
+        member(origin,elbow);member(elbow,tip)
+        # Unequal forks give each branch an open, irregular terminal structure.
+        for side in (-1,1):
+            fork=point(reach*rng.uniform(.7,1),angle+side*rng.uniform(.28,.75),level+rng.uniform(-1,2.5))
+            member(elbow,fork)
+        # Leaves can also cling to the upper central stem, keeping a sparse tip.
+        foliar.add(origin)
+    for y in range(max(start,height-2),height+1):foliar.add((x,ground+y,z))
     if height>=20 and radius>=5:
         for dx,dz in ((1,0),(-1,0),(0,1),(0,-1)):
-            branch((x,ground+1,z),(x+dx,ground+1,z+dz));branch((x,ground+3,z),(x+dx,ground+1,z+dz))
+            member((x,ground+1,z),(x+dx,ground+1,z+dz),False)
+            member((x,ground+3,z),(x+dx,ground+1,z+dz),False)
+    return cells,foliar
+
+
+def tree_cells(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak',leaves='oak',branch_count=None,leaf_density=None,leaf_palette=None):
+    """Scatter mixed leaves on four horizontal sides of generated branches.
+
+    There is no canopy volume fill. Every leaf touches a fence horizontally;
+    seeded Bernoulli placement leaves open gaps and preserves reproducibility.
+    """
+    if leaves not in ('oak','spruce','birch','dark_oak','azalea'):raise ValueError('Unsupported foliage palette')
+    density=leaf_density if leaf_density is not None else (.42 if profile=='airy' else .62 if profile in ('conifer','columnar') else .55)
+    if isinstance(density,bool) or not isinstance(density,(float,int)) or not math.isfinite(density) or not 0<=density<=1:
+        raise ValueError('Leaf density must be a finite probability')
+    palette=leaf_palette if leaf_palette is not None else (('spruce','oak') if leaves=='spruce' else ('oak','birch'))
+    if not isinstance(palette,(tuple,list)) or not 1<=len(palette)<=5 or any(m not in ('oak','spruce','birch','dark_oak','azalea') for m in palette):
+        raise ValueError('Invalid leaf palette')
+    cells,foliar=tree_structure(x,ground,z,height,radius,profile,seed,wood,branch_count)
+    x,ground,z=map(math.floor,(x,ground,z));height=math.floor(height)
+    rng=random.Random(seed^0x9e3779b97f4a7c15);sites=set()
+    for xx,yy,zz in sorted(foliar):
+        for dx,dz in ((-1,0),(1,0),(0,-1),(0,1)):
+            k=(xx+dx,yy,zz+dz)
+            if k in cells or (k[0]-x)**2+(k[2]-z)**2>radius**2:continue
+            sites.add(k)
+    for k in sorted(sites):
+        if rng.random()<density:
+            # Mixed blocks are colour proxies, not a botanical species claim.
+            material=palette[0] if len(palette)==1 or rng.random()<.65 else rng.choice(palette[1:])
+            cells[k]=material+'_leaves'
     return cells
 
 

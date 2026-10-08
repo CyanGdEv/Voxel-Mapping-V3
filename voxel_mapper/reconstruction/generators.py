@@ -101,7 +101,8 @@ def tree(feature,geom,ctx):
     height=number(feature,'height_m',ctx,3,40);radius=number(feature,'crown_radius_m',ctx,1,10)
     wood=feature.value('wood',ctx.sources,ctx.allow_estimates);leaves=feature.value('leaves',ctx.sources,ctx.allow_estimates)
     profile=feature.value('profile',ctx.sources,ctx.allow_estimates)
-    yield from tree_cells(geom.x,ground(ctx,math.floor(geom.x),math.floor(geom.y)),geom.y,height,radius,profile,stable_seed(feature.id),wood,leaves).items()
+    options={k:feature.value(k,ctx.sources,ctx.allow_estimates) for k in ('branch_count','leaf_density','leaf_palette') if k in feature.parameters}
+    yield from tree_cells(geom.x,ground(ctx,math.floor(geom.x),math.floor(geom.y)),geom.y,height,radius,profile,stable_seed(feature.id),wood,leaves,**options).items()
 
 
 def shrub(feature,geom,ctx):
