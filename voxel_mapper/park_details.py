@@ -95,6 +95,14 @@ def raster_cells(polygon):
     return cells
 
 
+def wall_material(labels,geometry):
+    """A separate CAD material word must lie inside the reviewed wall strip."""
+    materials={'stone':'stone_bricks','brick':'bricks','concrete':'light_gray_concrete','timber':'oak_planks'}
+    bound={materials[a['text'].strip().lower()] for a in labels
+           if a['text'].strip().lower() in materials and geometry.covers(Point((a['bbox'][0]+a['bbox'][2])/2,(a['bbox'][1]+a['bbox'][3])/2))}
+    return next(iter(bound)) if len(bound)==1 else None
+
+
 def load_reviewed_details(cache,crs):
     payload=json.loads((Path(__file__).parent/'data/alton-path-details.json').read_text());project=Transformer.from_crs(27700,crs,always_xy=True);features=[]
     for entry in payload['features']:
@@ -111,6 +119,9 @@ def load_reviewed_details(cache,crs):
         if semantic['kind']=='building':
             refined=building_material(entry.get('material_labels',[]),geometry)
             if refined:semantic.update(material=refined,material_status='contained_native_building_material_label')
+        elif semantic['kind'] in ('wall','retaining_wall'):
+            refined=wall_material(entry.get('material_labels',[]),geometry)
+            if refined:semantic.update(material=refined,material_status='contained_native_wall_material_label')
         features.append({'type':'Feature','id':entry['id'],'geometry':mapping(local),'properties':{**entry,**semantic,'as_built_verified':False}})
     return features,payload
 

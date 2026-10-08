@@ -1,6 +1,6 @@
 import unittest
 from shapely.geometry import box,mapping
-from voxel_mapper.park_details import detail_semantics,labelled_faces,raster_cells,emit_detail,building_material
+from voxel_mapper.park_details import detail_semantics,labelled_faces,raster_cells,emit_detail,building_material,wall_material
 from voxel_mapper.park_paving_plans import surface_boundaries
 
 class ConstantTerrain:
@@ -8,6 +8,12 @@ class ConstantTerrain:
     def sample(self,x,z):return self.height
 
 class DetailTests(unittest.TestCase):
+    def test_wall_material_word_cannot_leak_from_neighbouring_paving(self):
+        labels=[{'text':'stone','bbox':[1,1,2,2]}, {'text':'brick','bbox':[8,1,9,2]}]
+        self.assertEqual(wall_material(labels,box(0,0,3,3)),'stone_bricks')
+        self.assertIsNone(wall_material(labels,box(10,10,12,12)))
+        self.assertIsNone(wall_material(labels,box(0,0,10,3)))
+
     def test_split_building_material_phrase_is_spatially_bound(self):
         labels=[{'text':'steel','origin':[1,1],'bbox':[1,.8,2,1.2]},
                 {'text':' clad','origin':[2,1],'bbox':[2,.8,3,1.2]}]

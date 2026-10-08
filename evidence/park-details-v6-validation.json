@@ -1,0 +1,32 @@
+{
+  "tests": {
+    "count": 307,
+    "result": "passed",
+    "runner": "unittest"
+  },
+  "reviewed_footprints": 23,
+  "emitted_features_by_kind": {
+    "rock": 9,
+    "building": 2,
+    "retaining_wall": 2,
+    "wall": 4,
+    "planter": 1
+  },
+  "world": {
+    "touched_chunks": 18,
+    "overlay_records": 245,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "3ea188300bc6ab62608407f3937846674c88c226db248748d954cf014e9efe52",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 245
+  },
+  "previous_v5_overlay_preserved": 235,
+  "added_blocks_since_v5": 10,
+  "additional_review": {
+    "wall_candidates_visually_inspected": 23,
+    "building_profile_checks": 65,
+    "new_buildings_accepted": 0
+  },
+  "package_sha256": "06c438c11e3ca0b9358131e9c5b40ff32adf01b16275a69842861214b29652e9"
+}

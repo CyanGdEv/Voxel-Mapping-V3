@@ -83,3 +83,22 @@ unchanged. All 306 tests pass.
 The preview renders added blocks and retained ground from the exported world,
 with simplified colours and other raised structures hidden for clarity. It is
 not an in-game screenshot. Geometry and source dates remain provisional.
+
+## V6 wall continuation
+
+A further native-page review of 23 wall candidates added a stone gabion wall
+and a stone retaining-wall section. The retaining-wall phrase is split across
+three contiguous rotated CAD spans; their original text and coordinates are
+retained alongside the reviewed combined phrase. Separate wall material words
+only apply inside the reviewed footprint; conflicting or nearby paving labels
+do not select the wall material. Wall heights remain estimates.
+
+The wider building assessment checked 65 distinct in-boundary footprints: 28
+already mapped, 34 without a reliable surface profile and three previously
+reviewed profiles (including the excluded ride platform). It found no additional
+reliable buildings for this pass.
+
+V6 preserves all 235 V5 detail blocks and adds ten blocks across the two wall
+sections. The cumulative 245 blocks across 18 objects pass full touched-section
+and chunk-coverage readback across 18 chunks. All 307 tests pass.
+Validation: `evidence/park-details-v6-validation.json`.
