@@ -2,8 +2,9 @@ import math
 import unittest
 
 import numpy as np
+from shapely.geometry import LineString
 
-from voxel_mapper.oblivion_reconstruction import DROP_M, LIFT_RISE_M, emit_track, height_profile, phase_model
+from voxel_mapper.oblivion_reconstruction import DROP_M, LIFT_RISE_M, bank_profile, emit_track, height_profile, phase_model, track_frame
 
 
 def mapped_route():
@@ -12,10 +13,10 @@ def mapped_route():
     segments=[];s=0
     for i,(a,b) in enumerate(zip(xy,xy[1:])):
         n=s+math.dist(a,b)
-        way=1 if i<3 else 2 if i==3 else 3 if i<9 else 4
+        way=1 if i==0 else 5 if i<3 else 2 if i==3 else 3 if i<9 else 4
         segments.append({'start':a,'end':b,'station_start_m':s,'station_end_m':n,'way_id':way});s=n
     return {'segments':segments,'plan_length_m':s,
-            'way_tags':{'1':{},'2':{'covered':'yes'},'3':{},'4':{'tunnel':'yes'}}}
+            'way_tags':{'1':{},'5':{},'2':{'covered':'yes'},'3':{},'4':{'tunnel':'yes'}}}
 
 
 class OblivionTests(unittest.TestCase):
@@ -34,6 +35,30 @@ class OblivionTests(unittest.TestCase):
         self.assertGreaterEqual(h.min(),m['bottom_odn_m'])
         self.assertLessEqual(h.max(),m['crest_odn_m'])
         with self.assertRaises(ValueError):height_profile([math.nan],m,r['plan_length_m'],103)
+
+    def test_return_rises_then_dips_then_reaches_level_brakes(self):
+        r=mapped_route();m=phase_model(r,100)
+        q=[0,m['return_turn_peak_m'],m['return_dip_m'],m['brake_entry_m'],m['station_start_m']]
+        h=height_profile(q,m,r['plan_length_m'],103)
+        self.assertGreater(h[1],h[0]+5)
+        self.assertLess(h[2],h[1]-10)
+        self.assertGreater(h[3],h[2])
+        self.assertEqual(h[3],h[4])
+        roll=bank_profile(q,m)
+        self.assertEqual(roll[0],0)
+        self.assertEqual(roll[1],-80)
+        np.testing.assert_allclose(roll[2:],0)
+
+    def test_rails_follow_orthogonal_pitch_and_roll_frame(self):
+        r=mapped_route();m=phase_model(r,100)
+        line=LineString([r['segments'][0]['start']]+[s['end'] for s in r['segments']])
+        for station in (m['return_turn_peak_m']/2,m['return_turn_peak_m'],m['lift_start_m']+5):
+            lateral,up=track_frame(line,station,m,r['plan_length_m'],103)
+            self.assertAlmostEqual(np.linalg.norm(lateral),1)
+            self.assertAlmostEqual(np.linalg.norm(up),1)
+            self.assertAlmostEqual(float(np.dot(lateral,up)),0)
+        lateral,up=track_frame(line,m['return_turn_peak_m'],m,r['plan_length_m'],103)
+        self.assertLess(lateral[1],-.95)
 
     def test_missing_tunnel_tags_cannot_silently_emit_above_ground_drop(self):
         r=mapped_route();r['way_tags']['4']={}

@@ -38,10 +38,23 @@ def phase_model(route, station_floor):
         raise ValueError('Conflicting station/lift/drop boundaries')
     # The slab is a ground-based estimate, not a rail survey. Three metres puts
     # the rails within the first-pass hollow shell, below the existing roof.
+    return_segments=[s for s in segments if s['station_start_m']<station['station_start_m']]
+    return_way=return_segments[0]['way_id']
+    return_exit=next((s for s in return_segments if s['way_id']!=return_way),None)
+    if return_exit is None:
+        raise ValueError('Mapped return/brake boundary required')
+    turn_end=return_exit['station_start_m']
+    brake_entry=turn_end+.5*(return_exit['station_end_m']-turn_end)
+    if not 0<turn_end<brake_entry<station['station_start_m']-20:
+        raise ValueError('Distinct return turn/dip/brake phases required')
     rail = station_floor+3
     crest = rail+LIFT_RISE_M
     low = crest-DROP_M
-    return {'station_start_m':station['station_start_m'], 'station_end_m':station['station_end_m'],
+    return {'return_turn_peak_m':turn_end*.42, 'return_dip_m':turn_end,
+            'brake_entry_m':brake_entry, 'return_peak_odn_m':rail+8, 'return_dip_odn_m':rail-5,
+            'return_peak_bank_deg':-80, 'return_profile_status':'qualitative_photo_review_with_estimated_levels',
+            'return_reference_url':'https://themeparkreview.com/alton/obliv2.jpg',
+            'station_start_m':station['station_start_m'], 'station_end_m':station['station_end_m'],
             'lift_start_m':lift['station_start_m'],'lift_crest_m':lift['station_end_m'],
             'holding_approach_start_m':approach[-2]['station_start_m'],
             'drop_start_m':drop_start,'drop_bottom_m':bottom,
@@ -51,7 +64,8 @@ def phase_model(route, station_floor):
             'lift_rise_m':LIFT_RISE_M,'total_drop_m':DROP_M,
             'status':'estimated_phase_profile',
             'direction_basis':'Covered station followed by longest outgoing straight, then mapped tunnel; qualitative dispatch order',
-            'limitations':['Station rail is estimated three metres above the ground-median slab',
+            'limitations':['Return peak (+8 m above station rail), dip (-5 m) and 80 degree left bank are explicit estimates',
+                           'Station rail is estimated three metres above the ground-median slab',
                            'Longest mapped outgoing straight is a lift hypothesis, not a surveyed phase boundary',
                            'Official lift/drop dimensions are relative; route slope transitions and tunnel bottom are estimated',
                            'Drop pitch is constrained by mapped horizontal segments and is not a measured 87.5 degree reconstruction']}
@@ -60,7 +74,9 @@ def phase_model(route, station_floor):
 def height_profile(stations, model, length, exit_height):
     """Closed C1 profile; exact relative crest/drop heights, no cubic overshoot."""
     controls = [(0,exit_height),
-                (model['station_start_m']-20,model['station_rail_odn_m']),
+                (model['return_turn_peak_m'],model['return_peak_odn_m']),
+                (model['return_dip_m'],model['return_dip_odn_m']),
+                (model['brake_entry_m'],model['station_rail_odn_m']),
                 (model['lift_start_m'],model['station_rail_odn_m']),
                 (model['lift_crest_m'],model['crest_odn_m']),
                 (model['drop_start_m'],model['crest_odn_m']),
@@ -78,6 +94,29 @@ def height_profile(stations, model, length, exit_height):
     i=np.clip(np.searchsorted(x,q,side='right')-1,0,len(x)-2)
     t=(q-x[i])/(x[i+1]-x[i])
     return h[i]+(h[i+1]-h[i])*(t*t*(3-2*t))
+
+
+def bank_profile(stations, model):
+    q=np.asarray(stations,dtype=float)
+    peak=model['return_turn_peak_m']; end=model['return_dip_m']
+    # Smooth in/out roll, peaking on the elevated return curve. Unbank before
+    # the dip and rising brake approach; no roll is inferred from OSM layers.
+    t=np.where(q<=peak,q/peak,(end-q)/(end-peak))
+    t=np.clip(t,0,1)
+    return model['return_peak_bank_deg']*(t*t*(3-2*t))
+
+
+def track_frame(line, station_m, model, length, exit_height):
+    a=max(0,station_m-.15); b=min(length,station_m+.15)
+    pa,pb=line.interpolate(a),line.interpolate(b)
+    ha,hb=height_profile([a,b],model,length,exit_height)
+    forward=np.array([pb.x-pa.x,hb-ha,pb.y-pa.y],dtype=float)
+    forward/=np.linalg.norm(forward)
+    side=np.array([-forward[2],0,forward[0]])
+    side/=np.linalg.norm(side)
+    up=np.cross(side,forward)
+    roll=math.radians(float(bank_profile([station_m],model)[0]))
+    return math.cos(roll)*side+math.sin(roll)*up, -math.sin(roll)*side+math.cos(roll)*up
 
 
 def emit_track(route, station, ground, max_records=250000):
@@ -105,7 +144,7 @@ def emit_track(route, station, ground, max_records=250000):
     # ten-metre holes. Subdivide until both rail rise and horizontal travel are
     # below a quarter metre, including all mapped vertices and phase controls.
     knots=sorted(set([0.,length]+[s['station_start_m'] for s in route['segments']]+
-                      [model[k] for k in ('lift_start_m','lift_crest_m','drop_start_m','drop_bottom_m','tunnel_rise_start_m')]))
+                      [model[k] for k in ('lift_start_m','lift_crest_m','drop_start_m','drop_bottom_m','tunnel_rise_start_m','return_turn_peak_m','return_dip_m','brake_entry_m')]))
     samples=[]
     def subdivide(a,b,depth=0):
         ha,hb=height_profile([a,b],model,length,exit_height)
@@ -132,8 +171,10 @@ def emit_track(route, station, ground, max_records=250000):
             for dy in np.arange(-1,5.01,.5):
                 add(p.x+side*nx,h+dy,p.y+side*nz,'air','train_clearance')
     for s,x,h,z,nx,nz in points:
-        for side in (-1.,1.):add(x+side*nx,h,z+side*nz,'iron_block','rails')
-        add(x,h-1,z,'black_concrete','spine')
+        lateral,up=track_frame(line,s,model,length,exit_height)
+        for side in (-1.,1.):
+            add(x+side*lateral[0],h+side*lateral[1],z+side*lateral[2],'iron_block','rails')
+        add(x-up[0],h-up[1],z-up[2],'black_concrete','spine')
         if model['lift_start_m']<=s<=model['lift_crest_m']:
             add(x,h,z,'stone','lift_chain')
             add(x+2*nx,h-1,z+2*nz,'stone','lift_walkway')
@@ -141,7 +182,9 @@ def emit_track(route, station, ground, max_records=250000):
         p=line.interpolate(s); h=float(height_profile([s],model,length,exit_height)[0])
         a=line.interpolate(max(0,s-.1));b=line.interpolate(min(length,s+.1));dx,dz=b.x-a.x,b.y-a.y
         norm=math.hypot(dx,dz);nx,nz=-dz/norm,dx/norm
-        for side in np.arange(-1,1.01,.25):add(p.x+side*nx,h-1,p.y+side*nz,'stone','cross_ties')
+        lateral,up=track_frame(line,s,model,length,exit_height)
+        for side in np.arange(-1,1.01,.25):
+            add(p.x+side*lateral[0]-up[0],h+side*lateral[1]-up[1],p.y+side*lateral[2]-up[2],'stone','cross_ties')
     for s in np.arange(0,length,8):
         p=line.interpolate(s);h=float(height_profile([s],model,length,exit_height)[0]);base=ground(p.x,p.y)
         if h-base<4 or station_polygon.covers(p):continue
@@ -152,7 +195,7 @@ def emit_track(route, station, ground, max_records=250000):
     return list(rows.values()),{'phase_model':model,'components':counts,'physical_records':len(physical),
                                'sample_count':len(samples),'below_ground_samples':int(below),
                                'sampling':'Adaptive <=0.2 metre rise/travel; mapped vertices included',
-                               'appearance':'Generic unbanked rail/spine/ties and simplified support columns',
+                               'appearance':'Estimated rising banked return turn, dip and brake approach; generic rail/spine/ties and simplified support columns',
                                'tunnel_section':'Estimated six metre width and six metre clearance; excavation only',
                                'height_controls_odn_m':{'exit':exit_height,'station':model['station_rail_odn_m'],
                                                         'crest':model['crest_odn_m'],'bottom':model['bottom_odn_m']}}

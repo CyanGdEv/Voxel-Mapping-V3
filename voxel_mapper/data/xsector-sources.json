@@ -41,6 +41,13 @@
       "status": "Acquired and visually reviewed",
       "drawing_state": "proposed",
       "use": "Planning context only; no accepted as-built coordinate or height controls"
+    },
+    {
+      "url": "https://themeparkreview.com/alton/obliv2.jpg",
+      "sha256": "290eb04efd05ec46b105bb5c3f0aa0994c2fda29140bdc04f4b899da087a7a4f",
+      "status": "Acquired and visually reviewed",
+      "drawing_state": "historical as-built photograph (1998 gallery)",
+      "use": "Qualitative rising high-banked return shape only; exact height and roll controls remain estimated"
     }
   ],
   "mapped_source": {

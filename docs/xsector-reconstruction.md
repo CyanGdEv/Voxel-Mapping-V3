@@ -69,3 +69,18 @@ include trains, ride operation or a detailed architectural facade. Spawn moves
 to an aerial X-Sector viewpoint and is checked after export. Bedrock may omit
 all-air sections; verification compares all cells across the union of section
 indices rather than requiring identical storage keys.
+
+### Return-height correction
+
+The first preview mistakenly interpolated the tunnel exit directly toward the
+station, flattening the elevated return turn. A reviewed historical as-built
+photograph (`https://themeparkreview.com/alton/obliv2.jpg`) provides qualitative
+shape evidence. The return now rises to a separate peak, falls into a dip and
+climbs into level brakes before the station. Phase boundaries use the first
+return way and following mapped straight. Peak is estimated eight metres above
+station rail; dip is estimated five metres below it. Smooth roll reaches an
+estimated 80-degree left bank at the return peak and returns to zero by the dip.
+Rails, spine and ties use a pitch-aware rotated frame; the centreline and
+clearance retain their own geometry. These are explicit shape corrections, not
+photogrammetrically measured heights or angles. Rebuild from the station-only
+base so the old low track and excavation do not remain as ghost geometry.
