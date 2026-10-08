@@ -92,4 +92,21 @@ def trestle(feature,geom,ctx):
 
 def default_registry():
     return {'paving':surface,'wall':wall,'building_shell':shell,'track':sweep,'cable':sweep,
-            'beam':sweep,'trestle':trestle}
+            'beam':sweep,'trestle':trestle,'tree':tree,'shrub':shrub}
+
+
+def tree(feature,geom,ctx):
+    from ..foliage import tree_cells,stable_seed
+    if geom.geom_type!='Point':raise EvidenceMissing('Tree needs a mapped or estimated centre')
+    height=number(feature,'height_m',ctx,3,40);radius=number(feature,'crown_radius_m',ctx,1,10)
+    wood=feature.value('wood',ctx.sources,ctx.allow_estimates);leaves=feature.value('leaves',ctx.sources,ctx.allow_estimates)
+    profile=feature.value('profile',ctx.sources,ctx.allow_estimates)
+    yield from tree_cells(geom.x,ground(ctx,math.floor(geom.x),math.floor(geom.y)),geom.y,height,radius,profile,stable_seed(feature.id),wood,leaves).items()
+
+
+def shrub(feature,geom,ctx):
+    from ..foliage import shrub_cells,stable_seed
+    if geom.geom_type!='Point':raise EvidenceMissing('Shrub needs a mapped or estimated centre')
+    radius=number(feature,'radius_m',ctx,1,6);height=number(feature,'height_m',ctx,1,5)
+    flowering=feature.value('flowering',ctx.sources,ctx.allow_estimates)
+    yield from shrub_cells(geom.x,ground(ctx,math.floor(geom.x),math.floor(geom.y)),geom.y,radius,height,stable_seed(feature.id),flowering).items()

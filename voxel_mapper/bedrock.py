@@ -33,6 +33,13 @@ DETAIL_MATERIALS = {f'{wood}_{form}' for wood in ('oak','spruce','dark_oak')
                     for direction in ('north','east','south','west')} | {'iron_bars','cobblestone_wall','spruce_planks','stone_slab'}
 DETAIL_MATERIALS.update('cobblestone_wall_'+''.join(d for i,d in enumerate('nesw') if mask&(1<<i)) for mask in range(1,16))
 ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
+DETAIL_MATERIALS.add('birch_fence')
+ALLOWED_MATERIALS.add('birch_fence')
+FOLIAGE_WOODS = ('oak','spruce','birch','dark_oak')
+FOLIAGE_LEAVES = (*FOLIAGE_WOODS,'azalea','flowering_azalea')
+ALLOWED_MATERIALS.update(f'{wood}_log{suffix}' for wood in FOLIAGE_WOODS for suffix in ('','_x','_z'))
+ALLOWED_MATERIALS.update(f'{wood}_leaves' for wood in FOLIAGE_LEAVES)
+ALLOWED_MATERIALS.update(('fern','short_grass','oxeye_daisy'))
 
 
 def material_block(material):
@@ -69,10 +76,13 @@ def material_block(material):
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
     if material in ('oak_planks', 'spruce_planks', 'dark_oak_planks'):
         return Block('universal_minecraft', 'planks', {'material': StringTag(material.removesuffix('_planks'))})
-    if material in ('oak_log','spruce_log'):
-        return Block('universal_minecraft','log',{'material':StringTag(material.removesuffix('_log')),'axis':StringTag('y'),'stripped':StringTag('false')})
-    if material in ('oak_leaves','spruce_leaves'):
+    if material in {f'{wood}_log{suffix}' for wood in FOLIAGE_WOODS for suffix in ('','_x','_z')}:
+        wood,_,suffix=material.partition('_log')
+        return Block('universal_minecraft','log',{'material':StringTag(wood),'axis':StringTag(suffix.lstrip('_') or 'y'),'stripped':StringTag('false')})
+    if material in {f'{wood}_leaves' for wood in FOLIAGE_LEAVES}:
         return Block('universal_minecraft','leaves',{'material':StringTag(material.removesuffix('_leaves')),'persistent':StringTag('true'),'distance':StringTag('7'),'check_decay':StringTag('false')})
+    if material in ('fern','short_grass','oxeye_daisy'):
+        return Block('universal_minecraft','plant',{'plant_type':StringTag('grass' if material=='short_grass' else material)})
     return Block('universal_minecraft', material)
 
 
