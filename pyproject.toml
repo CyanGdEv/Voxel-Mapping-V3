@@ -10,6 +10,7 @@ dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasteri
 
 [project.scripts]
 voxel-mapper = "voxel_mapper.cli:main"
+voxel-reconstruct = "voxel_mapper.reconstruction.cli:main"
 
 [project.optional-dependencies]
 planning = ["PyMuPDF>=1.26,<2"]

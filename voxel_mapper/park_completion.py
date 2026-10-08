@@ -6,30 +6,13 @@ import amulet
 from pyproj import CRS,Transformer
 from shapely.geometry import LineString,Point,Polygon,shape
 from shapely.ops import transform
+from .reconstruction.geometry import line_cells,roof_cells,connected_segment
 from .terrain import Terrain
 from .survey import activate_retained_grid
 from .xsector import apply_overlay
 from .wicker_reconstruction import local_height_bindings,preview_profile
 from .wicker_station import station_context,phase_controls,lift_profile
 from .wicker_track import ordered_route
-
-
-def line_cells(line,spacing=.4):
-    """Metre cells sampled along a bounded mapped line, including its endpoint."""
-    if line.is_empty or not math.isfinite(line.length) or line.length>10000:raise ValueError('Invalid mapped line')
-    cells={};previous=None
-    for s in np.r_[np.arange(0,line.length,spacing),line.length]:
-        p=line.interpolate(float(s));cell=(math.floor(p.x),math.floor(p.y))
-        if previous and cell[0]!=previous[0] and cell[1]!=previous[1]:
-            cells[(previous[0],cell[1])]=float(s)
-        cells[cell]=float(s);previous=cell
-    return cells
-
-
-def roof_cells(polygon):
-    a,b,c,d=polygon.bounds
-    if (c-a)*(d-b)>30000:raise ValueError('Landmark footprint budget exceeded')
-    return [(x,z) for x in range(math.floor(a),math.ceil(c)) for z in range(math.floor(b),math.ceil(d)) if polygon.covers(Point(x+.5,z+.5))]
 
 
 def above_terrain_profile(original, ground, spacing=.4, ramp=.12):
@@ -48,17 +31,6 @@ def above_terrain_profile(original, ground, spacing=.4, ramp=.12):
     for k in range(2*n-1,-1,-1):
         i=k%n;uplift[i]=max(uplift[i],uplift[(i+1)%n]-spacing*ramp)
     return original+uplift,uplift
-
-
-def connected_segment(start,end):
-    """Six-connected voxel member, including both joints."""
-    current=tuple(map(math.floor,start));target=tuple(map(math.floor,end));cells=[current]
-    while current!=target:
-        delta=[target[i]-current[i] for i in range(3)]
-        axis=max(range(3),key=lambda i:abs(delta[i]))
-        nxt=list(current);nxt[axis]+=1 if delta[axis]>0 else -1
-        current=tuple(nxt);cells.append(current)
-    return cells
 
 
 def track_masks(line,stations,heights):

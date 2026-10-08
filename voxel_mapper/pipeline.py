@@ -116,6 +116,9 @@ def run_auto(output, location=None, bounds=None, planning_cache=None, planning_a
         if planning['status'] != 'not_supported':
             config['sources'].append(PLANNING_SOURCE)
         manifest.write_text(json.dumps(acquisition, indent=2))
+        from .reconstruction.inventory import source_inventory
+        reconstruction_inventory=source_inventory(raw,collection['planning_geometry_records'],acquisition,config['sources'])
+        (output/'reconstruction-source-inventory.json').write_text(json.dumps(reconstruction_inventory,indent=2))
         (output/'input.geojson').write_text(json.dumps(collection))
         (output/'resolved-config.json').write_text(json.dumps(config,indent=2))
         report = build(config,collection,output)
@@ -124,6 +127,7 @@ def run_auto(output, location=None, bounds=None, planning_cache=None, planning_a
             report['issues'].append({'severity':'warning',
                 'reason':'Supplemental building evidence is unavailable, empty, or includes unverified footprint/roofprint additions',
                 'status':overture['status'],'added_features':overture_matches['added_physical_features']})
+        report['modular_reconstruction_inventory']={'file':'reconstruction-source-inventory.json','candidates_by_family':reconstruction_inventory['candidates_by_family']}
         report['planning_discovery'] = planning_summary
         report['planning_matches'] = planning_matches
         report['council_drawings'] = council
