@@ -132,3 +132,21 @@ fully brick: 218/218 and 274/274 cells, with no missing or wrong-material cells.
 Whole-world brick-palette coverage rises from 13 to 2,085 cells. All 291 tests
 pass, including actual Bedrock readback of every palette block. The exported
 world verifies all cells in 1,247 touched chunks and total chunk coverage.
+
+## Expanded application corpus: V3
+
+The address-search and download supplement is documented in `alton-planning.md`.
+It expands the source set to 60 retained PDF attachments (50 distinct files) and
+96 attachment-discovery seeds. The extractor inspects 72 plan documents and
+provisionally aligns 30. After withholding scale-bar annotation faces, 114 paving
+polygons remain. They are not 114 new surfaces: many overlap existing mapped
+paving or other plan revisions.
+
+V3 adds 482 horizontal paving cells beyond V2 and removes 253 annotation-created
+cells, for a net 229-cell increase. It contains 77,623 paving records, including
+3,260 planning cells absent from retained mapped ground paving. Both labelled
+Wicker plaza footprints remain fully brick. All 297 tests pass and Bedrock
+readback verifies all touched sections in 1,264 chunks and total chunk coverage.
+Entrance/admissions, Katanga, X-Sector and Forbidden Valley sources remain
+available for registration work; acquiring them does not establish new
+world geometry. No replacement ride layout is emitted.

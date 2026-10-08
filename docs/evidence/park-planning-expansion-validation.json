@@ -1,0 +1,78 @@
+{
+  "status": "expanded_application_data_and_provisional_world",
+  "data_acquisition": {
+    "search_applications": 328,
+    "search_pages": 19,
+    "search_complete_for_query": true,
+    "application_pages_inspected": 96,
+    "application_page_failures": [
+      {
+        "reference": "SMD/1998/1150",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47396"
+      },
+      {
+        "reference": "SMD/1998/0511",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41588"
+      },
+      {
+        "reference": "SMD/1998/0198",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41046"
+      }
+    ],
+    "attachment_links_discovered": 861,
+    "new_application_seeds": 63,
+    "total_application_seeds": 96,
+    "documents_acquired": 60,
+    "failed_document_downloads": 44,
+    "new_catalogue_documents": 54,
+    "total_catalogue_documents": 207,
+    "changed_legacy_documents_withheld": [],
+    "unique_acquired_pdf_hashes": 50,
+    "geometry_emitted": false
+  },
+  "tests_passed": 297,
+  "inspected_planning_documents": 72,
+  "aligned_planning_documents": 30,
+  "paving_polygons_after_annotation_exclusions": 114,
+  "scale_bar_features_withheld": [
+    "planning-paving/94eefa9040ce/607",
+    "planning-paving/94eefa9040ce/701",
+    "planning-paving/94eefa9040ce/653",
+    "planning-paving/94eefa9040ce/663",
+    "planning-paving/82cd17cda720/39",
+    "planning-paving/82cd17cda720/827",
+    "planning-paving/82cd17cda720/882",
+    "planning-paving/82cd17cda720/893"
+  ],
+  "overlay_records": 77623,
+  "new_horizontal_planning_cells_total": 3260,
+  "added_horizontal_cells_since_v2": 482,
+  "annotation_created_horizontal_cells_removed_since_v2": 253,
+  "net_horizontal_cell_change_since_v2": 229,
+  "labelled_wicker_plaza_coverage": [
+    {
+      "feature": "planning-paving/wicker/12",
+      "footprint_cells": 218,
+      "brick_cells": 218,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    },
+    {
+      "feature": "planning-paving/wicker/17",
+      "footprint_cells": 274,
+      "brick_cells": 274,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    }
+  ],
+  "world_verification": {
+    "touched_chunks": 1264,
+    "overlay_records": 77623,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1f68b6f105ba8a77745dc05c7e00cf317952c29bcf407ea03a16888c2648bfa8",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 11
+  },
+  "package_sha256": "fb3a0d4a88fef66ad2ce8888ed833f74347f8f88aaeb3e0fe76fc2b78a0206d8"
+}

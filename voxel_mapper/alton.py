@@ -144,7 +144,8 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 document_path.write_bytes(payload)
                 row['local_pdf'] = str(document_path.resolve())
                 row['acquisition_method'] = 'official_download' if downloading else 'hash_checked_cache'
-                row['hash_provenance'] = 'matches_recovered_document' if entry.get('sha256') else 'observed_current_download_only'
+                row['hash_provenance'] = entry.get('hash_provenance',
+                    'matches_recovered_document' if entry.get('sha256') else 'observed_current_download_only')
                 row['inspection'] = inspect_pdf(payload, max_pages=max_pages, bounds=bounds,
                                                 document_title=entry['title'], max_ocr_pages=0)
                 for page in row['inspection']['pages']:

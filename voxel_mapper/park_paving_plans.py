@@ -19,10 +19,53 @@ ANCHOR='1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d'
 GENERIC_PAVING_LABELS={'paving','paved area','plaza','footpath','path','hardstanding','hard landscaping'}
 
 
+def cached_paving_faces(path,recover):
+    """Interrupted extraction caches may be rebuilt from their hashed source PDF."""
+    path=Path(path)
+    if path.exists():
+        try:
+            with gzip.open(path,'rt') as stream:return json.load(stream)
+        except (EOFError,gzip.BadGzipFile,json.JSONDecodeError):pass
+    candidates={'polygons':recover()}
+    temporary=path.with_suffix(path.suffix+'.tmp')
+    try:
+        with gzip.open(temporary,'wt') as stream:json.dump(candidates,stream)
+        temporary.replace(path)
+    finally:temporary.unlink(missing_ok=True)
+    return candidates
+
+
 def control_labels(labels):
     eligible=[a for a in labels if re.fullmatch(r'(?:[A-Z]{2,3}\d{2,3}|\d{3}\.\d{2})',a['text'].strip())]
     count=collections.Counter(a['text'].strip() for a in eligible)
     return {a['text'].strip():a['origin'] for a in eligible if count[a['text'].strip()]==1}
+
+
+def scale_bar_regions(labels):
+    """Scale-bar strokes are annotations and cannot close a paving boundary."""
+    from shapely.geometry import box
+    numeric=[]
+    for label in labels:
+        match=re.fullmatch(r'(\d+)\s*(?:m)?',label['text'].strip())
+        if match:numeric.append((float(match[1]),label))
+    regions=[]
+    for value,zero in numeric:
+        if value!=0:continue
+        x0,y0=zero['origin']
+        height=zero['bbox'][3]-zero['bbox'][1]
+        if height<=0:continue
+        row=sorted([(v,l) for v,l in numeric if abs(l['origin'][1]-y0)<10
+                    and l['origin'][0]>=x0-1
+                    and .75*height<=l['bbox'][3]-l['bbox'][1]<=1.25*height],key=lambda pair:pair[1]['origin'][0])
+        if len(row)<4 or len({v for v,_ in row})<4:continue
+        xs=np.array([l['origin'][0] for _,l in row]);values=np.array([v for v,_ in row])
+        if xs[-1]-xs[0]<100 or not np.all(np.diff(values)>0):continue
+        slope,offset=np.polyfit(values,xs,1)
+        if slope<=0 or max(abs(xs-(slope*values+offset)))>max(3,.025*(xs[-1]-xs[0])):continue
+        bounds=[l['bbox'] for _,l in row]
+        regions.append(box(min(b[0] for b in bounds)-20,min(b[1] for b in bounds)-25,
+                           max(b[2] for b in bounds)+20,max(b[3] for b in bounds)+25))
+    return regions
 
 
 def fit_similarity(a,b):
@@ -133,17 +176,17 @@ def recover_park_plans(cache,wicker,output,local_crs):
             try:
                 cache_name=hashlib.sha256(f'{digest}/{scale}/grey-solid-noded-curves-v1'.encode()).hexdigest()
                 geometry_cache=output/(cache_name+'-paving-faces.json.gz')
-                if geometry_cache.exists():
-                    with gzip.open(geometry_cache,'rt') as stream:candidates=json.load(stream)
-                else:
-                    candidates={'polygons':surface_boundaries(drawings,scale)}
-                    with gzip.open(geometry_cache,'wt') as stream:json.dump(candidates,stream)
+                candidates=cached_paving_faces(geometry_cache,lambda:surface_boundaries(drawings,scale))
             except ValueError as error:
                 record['extraction_withheld_reason']=str(error)
                 continue
         def project(x,y,z=None):
             xy=apply_candidate(list(zip(x,y)),p['alignment']['candidate']);return bng_to_local.transform(xy[:,0],xy[:,1])
         polygons=[shape(c['geometry']) for c in candidates['polygons']]
+        annotation_regions=scale_bar_regions(p['labels'])
+        annotation_faces={i for i,poly in enumerate(polygons)
+                          if any(poly.boundary.intersects(region) for region in annotation_regions)}
+        record['annotation_faces_withheld']=len(annotation_faces)
         assignments={}
         for label in p['labels']:
             material=material_label(label['text'])
@@ -151,7 +194,8 @@ def recover_park_plans(cache,wicker,output,local_crs):
             # Bare 'brick', 'stone', 'wood' can be walls/structures, never floor specs.
             if (not material and not generic) or label['text'].strip().lower() in ('brick','stone','wood','sand','gravel','ground','earth','dirt','paved','unpaved'):continue
             x0,y0,x1,y1=label['bbox'];point=Point((x0+x1)/2,(y0+y1)/2)
-            choices=[(poly.area,i) for i,poly in enumerate(polygons) if poly.contains(point) and poly.boundary.distance(point)*scale>.3]
+            choices=[(poly.area,i) for i,poly in enumerate(polygons) if i not in annotation_faces
+                     and poly.contains(point) and poly.boundary.distance(point)*scale>.3]
             if not choices:continue
             _,index=min(choices);assignments.setdefault(index,[]).append((material or 'stone',label))
         for index,labels in assignments.items():

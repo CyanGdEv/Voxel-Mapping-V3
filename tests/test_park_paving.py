@@ -5,7 +5,7 @@ from pathlib import Path
 from shapely.geometry import box,Point,mapping,Polygon,shape
 from voxel_mapper.park_paving import NearbyMaterials,emit_paving,protected_record,paving_extensions,plaza_coverage
 from voxel_mapper.paving_palette import palette_block,material_label,PALETTES
-from voxel_mapper.park_paving_plans import align_shared_labels,control_labels
+from voxel_mapper.park_paving_plans import align_shared_labels,control_labels,cached_paving_faces,scale_bar_regions
 from voxel_mapper.bedrock import ALLOWED_MATERIALS,material_block,export_world
 
 
@@ -15,6 +15,26 @@ def feature(polygon,surface='brick',status='contained_native_floor_label',fid='p
 
 
 class ParkPavingTests(unittest.TestCase):
+    def test_scale_bar_cannot_close_a_landscape_face(self):
+        labels=[{'text':str(i*100),'origin':[i*200,100],
+                 'bbox':[i*200,80,i*200+30,105]} for i in range(6)]
+        labels+=[{'text':'178.30','origin':[150,100],'bbox':[150,97,170,101]},
+                 {'text':'2','origin':[500,100],'bbox':[500,97,504,101]}]
+        regions=scale_bar_regions(labels)
+        self.assertEqual(len(regions),1)
+        self.assertTrue(box(100,0,800,120).boundary.intersects(regions[0]))
+        self.assertFalse(box(100,0,200,20).boundary.intersects(regions[0]))
+        self.assertEqual(scale_bar_regions(labels[1:]),[])
+
+    def test_interrupted_geometry_cache_is_rebuilt_then_reused(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path=Path(temporary)/'faces.json.gz';path.write_bytes(b'\x1f\x8b')
+            expected={'polygons':[{'geometry':mapping(box(0,0,1,1))}]}
+            result=cached_paving_faces(path,lambda:expected['polygons'])
+            self.assertEqual(json.loads(json.dumps(result)),json.loads(json.dumps(expected)))
+            self.assertEqual(cached_paving_faces(path,lambda:self.fail('cache was not reused')),json.loads(json.dumps(expected)))
+            self.assertFalse(path.with_suffix('.gz.tmp').exists())
+
     def test_plaza_coverage_detects_missing_and_wrong_material_cells(self):
         f=feature(box(0,0,2,2),fid='planning-paving/wicker/1')
         f['properties']['contained_labels']=['Plaza']

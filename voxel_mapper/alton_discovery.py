@@ -12,20 +12,93 @@ import requests
 HOST = 'publicaccess.staffsmoorlands.gov.uk'
 
 
+def parse_application_results(html):
+    """Read park-address matches and literal pagination fields from the portal."""
+    if len(html)>2_000_000:raise ValueError('Application search HTML exceeds 2 MB budget')
+    soup=BeautifulSoup(html,'html.parser');applications={}
+    endpoint='https://'+HOST+'/portal/servlets/ApplicationSearchServlet'
+    for anchor in soup.select('a[href]'):
+        reference=anchor.get_text(' ',strip=True)
+        if not re.fullmatch(r'SMD/\d{4}/\d{4}[A-Z]?',reference):continue
+        parsed=urlparse(urljoin(endpoint,anchor['href']))
+        if parsed.scheme not in ('http','https') or parsed.hostname!=HOST or parsed.port is not None:continue
+        if parsed.path!='/portal/servlets/ApplicationSearchServlet':continue
+        identifier=parse_qs(parsed.query).get('PKID',[''])[0]
+        if not re.fullmatch(r'[0-9]+',identifier):continue
+        row=anchor.find_parent('tr')
+        if row is None:continue
+        context=re.sub(r'\s+',' ',row.get_text(' ',strip=True))
+        # Address-only discovery; references in proposal text are not site evidence.
+        if not re.search(r'\balton\s+towers\b',context[:200],re.I):continue
+        applications[reference]={'reference':reference,'url':endpoint+'?PKID='+identifier,
+                                 'application_context':context}
+    navigation=None
+    for form in soup.select('form'):
+        if not form.select_one('input[name="forward"]'):continue
+        parsed=urlparse(urljoin(endpoint,form.get('action','')))
+        if parsed.hostname!=HOST or parsed.scheme not in ('http','https') or parsed.path!='/portal/servlets/ApplicationSearchServlet':
+            raise ValueError('External application search navigation')
+        fields={n['name']:n.get('value','') for n in form.select('input[name]')}
+        if set(fields)!={'LAST_ROW_ID','DIRECTION','RECORDS','forward'} or fields['DIRECTION']!='F':
+            raise ValueError('Unexpected application pagination fields')
+        if not fields['LAST_ROW_ID'].isdigit() or not fields['RECORDS'].isdigit() or not 1<=int(fields['RECORDS'])<=100:
+            raise ValueError('Invalid application pagination budget')
+        navigation=fields;break
+    return list(applications.values()),navigation
+
+
+def search_applications(session,output,max_pages=40,deadline=None):
+    """Bounded address search; never claim all references or all dates are covered."""
+    if not 1<=max_pages<=100:raise ValueError('Application search page budget must be 1–100')
+    endpoint='https://'+HOST+'/portal/servlets/ApplicationSearchServlet'
+    output=Path(output);(output/'files').mkdir(parents=True,exist_ok=True)
+    result={'query':'FullAddress=Alton Towers','applications':[],'pages':[],
+            'failures':[],'complete_search':False,'complete_council_discovery':False}
+    applications={};navigation={'FullAddress':'Alton Towers','buttonSearch':'Search'};seen=set()
+    for page in range(max_pages):
+        try:
+            if deadline and time.monotonic()>=deadline:raise ValueError('Application search deadline reached')
+            key=json.dumps(navigation,sort_keys=True)
+            if key in seen:raise ValueError('Repeated application pagination')
+            seen.add(key)
+            with session.post(endpoint,data=navigation,timeout=(5,15),stream=True,allow_redirects=False) as response:
+                response.raise_for_status()
+                if 300<=response.status_code<400:raise ValueError('Unexpected application search redirect')
+                payload=bytearray()
+                for chunk in response.iter_content(65536):
+                    payload.extend(chunk)
+                    if len(payload)>2_000_000:raise ValueError('Application search HTML exceeds 2 MB budget')
+            rows,navigation=parse_application_results(bytes(payload))
+            if not rows:raise ValueError('Search page contains no validated park results')
+            digest=hashlib.sha256(payload).hexdigest();(output/'files'/f'{digest}.html').write_bytes(payload)
+            for row in rows:applications[row['reference']]={**row,'search_page_sha256':digest}
+            result['pages'].append({'page':page+1,'sha256':digest,'matched_park_rows':len(rows)})
+            if navigation is None:result['complete_search']=True;break
+        except (OSError,ValueError,requests.RequestException) as error:
+            result['failures'].append({'page':page+1,'reason':str(error)});break
+    result['applications']=list(applications.values())
+    (output/'alton-application-search.json').write_text(json.dumps(result,indent=2))
+    return result
+
+
 def document_role(title):
-    lower = title.lower()
-    if re.search(r'arboricultur|ecolog|bat\b|bird\b|photo|assessment|statement|report|application.*(?:s\.?73|path proposals)|s\.?73.*application', lower):
+    lower = re.sub(r'[_\s]+', ' ', title.lower())
+    if re.search(r'arboricultur|ecolog|habitat|bat\b|bird\b|photo|assess?ment|statement|report|appraisal|tree (?:survey|schedule)|application.*(?:s\.?73|path proposals)|s\.?73.*application', lower):
         return 'context-report', 90
     if re.search(r'topograph|topolog|master land survey|\bsurvey\b', lower):
         return 'topographical-survey', 0
-    if re.search(r'landscap|planting', lower):
+    if re.search(r'landscap|lanscap|planting|paving|surfacing|surface finish|hard finish', lower):
         return 'landscape-plan', 20
-    if re.search(r'site plan|\bga\b|general arrangement|ride layout|track layout|path proposal', lower):
+    if re.search(r'site (?:block |location )?plan|\bga\b|general arrangement|\blayout\b|path proposal|(?:existing|proposed) plans?\b', lower):
         return 'site-plan', 10
     if re.search(r'floor plan|\bgf plan\b|basement plan|roof plan|ancillary building plan|maintenance building', lower):
         return 'floor-plan', 30
     if re.search(r'block plan', lower):
         return 'site-plan', 10
+    if re.fullmatch(r'(?:forms and )?plans?|maps?(?: of .*)?|drawings|documents and drawings|\d+',lower):
+        return 'unclassified-drawing',50
+    if re.search(r'(?:gardens?|bridge|dam) (?:area )?plan|(?:bridge|dam)/.*plan',lower):
+        return 'site-plan',10
     if re.search(r'elevation|section', lower):
         return 'elevations', 40
     return 'unknown', 80
@@ -138,3 +211,14 @@ def merge_discovered(recovered, discovery):
             by_url[document['url']] = dict(document)
     # Survey and actual geometry sheets precede reports, across applications.
     return sorted(by_url.values(), key=lambda e: (e.get('priority', document_role(e['title'])[1]), e['applicationReference'], e['title']))
+
+
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description='Expand official Alton Towers address-search discovery')
+    parser.add_argument('--output',required=True)
+    parser.add_argument('--max-pages',type=int,default=40)
+    args=parser.parse_args()
+    with requests.Session() as session:
+        result=search_applications(session,args.output,args.max_pages,time.monotonic()+600)
+    print(json.dumps({k:result[k] for k in ('complete_search','complete_council_discovery','failures')},indent=2))
