@@ -1,8 +1,9 @@
 """First X-Sector pass: mapped topology audit and explicitly estimated station shells.
 
-No 3D track is inferred from OSM layers or a surface raster. Apply the small
-station overlay to a copy of a previously verified park, preserving every other
-cell in touched chunks and checking the overlay after a Bedrock round trip.
+OSM layers and surface observations never supply track heights. An optional
+Oblivion preview combines mapped phase boundaries with official relative
+dimensions and explicit estimated levels. Apply overlays to a copied park,
+preserving other cells and checking them after a Bedrock round trip.
 """
 import argparse
 import hashlib
@@ -94,7 +95,7 @@ def station_shell(polygon, ground, surface, feature_id, max_records=100000):
                                  'Facade, entrance/exit, interior and platform levels remain unresolved']}
 
 
-def build_overlay(config, quality, raw):
+def build_overlay(config, quality, raw, include_oblivion=False):
     project = Transformer.from_crs(4326, CRS.from_wkt(quality['crs']), always_xy=True)
     sources = {s['id']:s for s in config['sources']}
     ground = Terrain(config['terrain'], CRS.from_wkt(quality['crs']), sources)
@@ -119,6 +120,20 @@ def build_overlay(config, quality, raw):
             shell, detail = station_shell(polygon, ground.sample, surface.sample, 'xsector/station/'+str(way['id']))
             detail.update(name=station_name, osm_way_id=way['id'], footprint=mapping(polygon))
             rows.extend(shell); report['stations'].append(detail)
+        if include_oblivion:
+            from .oblivion_reconstruction import emit_track
+            track,detail=emit_track(report['rides']['Oblivion'],
+                                    next(s for s in report['stations'] if s['name']=='Oblivion Station'),ground.sample)
+            # Track clearance must cut station portals; physical rail wins over
+            # its own void. Existing generic station walls cannot hide the ride.
+            composed={(r['x'],r['y'],r['z']):r for r in rows}
+            composed.update({(r['x'],r['y'],r['z']):r for r in track})
+            rows=list(composed.values())
+            report['oblivion_reconstruction']=detail
+            report['status']='estimated_oblivion_track_and_station_context'
+            report['track_geometry_emitted']=True
+            report['rides']['Oblivion']['track_generation']='estimated_visible_track'
+            report['spawn_minecraft_xyz']=[-855,math.ceil(detail['height_controls_odn_m']['crest'])+quality['world']['vertical_offset_blocks']+8,165]
     finally:
         report['elevation_sources']={'terrain':ground.report(),'surface':surface.report()}
         ground.close(); surface.close()
@@ -136,6 +151,8 @@ def apply_overlay(source, output, rows, report):
         raise ValueError('Refusing to overwrite world output')
     base = json.loads((source/'quality-report.json').read_text())
     offset = base['world']['vertical_offset_blocks']
+    if len({(r['x'],r['y'],r['z']) for r in rows})!=len(rows):
+        raise ValueError('Overlay cells must be composed before application')
     by_chunk = {}
     for r in rows:
         x,y,z = r['x'],r['y']+offset,-r['z']
@@ -166,6 +183,14 @@ def apply_overlay(source, output, rows, report):
                                      chunk.blocks.get_sub_chunk(s)].copy() for s in chunk.blocks.sub_chunks}
             chunk.changed=True
             level.put_chunk(chunk, 'minecraft:overworld')
+        if report.get('spawn_minecraft_xyz'):
+            from amulet_nbt import IntTag, StringTag
+            spawn=report['spawn_minecraft_xyz']
+            if len(spawn)!=3 or not all(isinstance(v,int) for v in spawn) or not -60<=spawn[1]<=316:
+                raise ValueError('Finite integer spawn within world height required')
+            root=level.level_wrapper.root_tag.compound
+            for key,value in zip(('SpawnX','SpawnY','SpawnZ'),spawn):root[key]=IntTag(value)
+            root['LevelName']=StringTag('Alton Towers — X-Sector visible Oblivion draft')
         level.save()
     finally:
         level.close()
@@ -173,12 +198,20 @@ def apply_overlay(source, output, rows, report):
     try:
         if set(level.all_chunk_coords('minecraft:overworld'))!=original_coords:
             raise ValueError('Overlay altered chunk coverage')
+        if report.get('spawn_minecraft_xyz'):
+            root=level.level_wrapper.root_tag.compound
+            actual_spawn=[int(root[k]) for k in ('SpawnX','SpawnY','SpawnZ')]
+            if actual_spawn!=report['spawn_minecraft_xyz']:
+                raise ValueError('New X-Sector spawn did not survive export')
         for coords, sections in snapshots.items():
             chunk = level.get_chunk(*coords, 'minecraft:overworld')
             palette = np.array([str(b) for b in chunk.block_palette],dtype=object)
-            if set(chunk.blocks.sub_chunks)!=set(sections):
-                raise ValueError('Overlay altered section coverage')
-            for s, expected in sections.items():
+            # Bedrock legitimately omits all-air sections. Compare the union
+            # semantically, including absent sections as air, not stored keys.
+            for s in set(chunk.blocks.sub_chunks)|set(sections):
+                expected=sections.get(s)
+                if expected is None:
+                    expected=np.full((16,16,16),str(material_block('air')),dtype=object)
                 if not np.array_equal(palette[chunk.blocks.get_sub_chunk(s)], expected):
                     raise ValueError('Overlay or preserved-cell round trip failed')
         report['world_verification']={'touched_chunks':len(by_chunk), 'overlay_records':len(rows),
@@ -195,6 +228,7 @@ def apply_overlay(source, output, rows, report):
     (destination/'xsector-report.json').write_text(json.dumps(report,indent=2))
     base['xsector_reconstruction']=report
     base['world']['composed_blocks'] += solid_delta
+    if report.get('spawn_minecraft_xyz'):base['world']['spawn']=report['spawn_minecraft_xyz']
     base['world'].pop('explicit_air_cells',None)
     base['world']['explicit_air_cells_note']='Original count superseded by station overlay; changed sections verified including all air'
     base['world']['round_trip_validation']='Base world previously verified; every cell of changed chunk sections rechecked'
@@ -213,6 +247,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--park-output',required=True);p.add_argument('--osm-raw',required=True)
     p.add_argument('--output',required=True)
+    p.add_argument('--include-oblivion',action='store_true',help='Emit explicit estimated track/supports/tunnel clearance; not verified planning geometry')
     p.add_argument('--datum-grid',required=True,help='Retained OSTN15 file; checked against original acquisition hash')
     args=p.parse_args(); source=Path(args.park_output)
     config=json.loads((source/'resolved-config.json').read_text())
@@ -223,7 +258,7 @@ def main():
     activate_retained_grid(datum_source)
     rows, report=build_overlay(config,
                                json.loads((source/'quality-report.json').read_text()),
-                               json.loads(Path(args.osm_raw).read_text()))
+                               json.loads(Path(args.osm_raw).read_text()),include_oblivion=args.include_oblivion)
     apply_overlay(source,args.output,rows,report)
     print(json.dumps({k:report[k] for k in ('stations','world_verification','visit_coordinates')},indent=2))
 

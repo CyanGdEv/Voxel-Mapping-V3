@@ -52,8 +52,9 @@ class XSectorTests(unittest.TestCase):
             quality['world']=export_world(voxels,source,quality,ground_depth=4)
             (source/'quality-report.json').write_text(json.dumps(quality))
             original=(source/'park.mcworld').read_bytes()
-            overlay=[{'x':0,'y':101,'z':0,'material':'black_concrete'}]
-            report={'stations':[]}
+            overlay=[{'x':0,'y':101,'z':0,'material':'black_concrete'},
+                     {'x':0,'y':20,'z':0,'material':'air'}]
+            report={'stations':[],'spawn_minecraft_xyz':[0,70,0]}
             apply_overlay(source,root/'updated',overlay,report)
             self.assertEqual(report['world_verification']['composed_block_delta'],1)
             self.assertEqual(original,(source/'park.mcworld').read_bytes())

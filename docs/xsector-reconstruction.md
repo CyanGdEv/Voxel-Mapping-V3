@@ -25,6 +25,7 @@ python -m voxel_mapper.xsector \
   --park-output /absolute/path/alton-full-park \
   --osm-raw /absolute/path/osm-raw.json \
   --datum-grid /absolute/path/uk_os_OSTN15_NTv2_OSGBtoETRS.tif \
+  --include-oblivion \
   --output /absolute/path/xsector-pass
 ```
 
@@ -44,7 +45,27 @@ height controls. The official dimensions provide global checks only.
 Smiler needs the actual inversion sequence, both lift profiles, bank/roll
 controls and a separate level for each branch at crossings. Oblivion needs a
 station/lift datum, holding-brake location and a drop-shaft/underground exit
-profile. A 180-foot total drop is not a 180-foot structure above terrain. These
-rides' physical track and supports remain withheld until sufficient 3D controls
-are available. The first pass intentionally exposes that missing evidence rather
+profile. A 180-foot total drop is not a 180-foot structure above terrain. Smiler's physical track and supports remain withheld until sufficient 3D controls
+are available. Oblivion's visible preview is explicitly estimated; it does not
+satisfy verified planning acceptance. The first pass intentionally exposes that missing evidence rather
 than exporting a flat approximation that loses inversions or tunnels.
+
+## Visible Oblivion preview
+
+`--include-oblivion` emits rails, spine, cross ties, lift chain/walkway and generic
+vertical supports along the mapped closed route. The covered station and tunnel
+ways identify phase boundaries; the longest outgoing straight is an explicit
+lift hypothesis. The estimated station rail is three metres above the median
+ground slab. The crest rises 65 feet (19.812 m) and the total drop is 180 feet
+(54.864 m), including the underground portion. Exact ODN levels, bank, slope
+transitions, lift boundary and support/tunnel sections remain estimates. A closed
+monotone cubic profile preserves those controls without overshoot. Adaptive
+sampling limits horizontal travel and vertical rise to 0.2 m so the steep drop
+does not disappear between horizontally spaced samples.
+
+Explicit train clearance cuts station portals and excavates an estimated six
+metre tunnel section. Physical rail wins over its own void. The preview does not
+include trains, ride operation or a detailed architectural facade. Spawn moves
+to an aerial X-Sector viewpoint and is checked after export. Bedrock may omit
+all-air sections; verification compares all cells across the union of section
+indices rather than requiring identical storage keys.
