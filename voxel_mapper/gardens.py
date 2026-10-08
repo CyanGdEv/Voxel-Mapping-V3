@@ -66,6 +66,9 @@ def reconstruct(source,output,planning_cache,grid,protection_files=(),reviewed_f
         for f in features:
             g=projected(f);before=len(cells);emitted=0;blocked=0
             if f['kind']=='path':
+                if f.get('force_stairs'):
+                    withheld['provisional_stair_trace_requires_native_path_attachment']+=1
+                    continue
                 line=g;stations=np.r_[np.arange(0,line.length,1),line.length];h=[]
                 for s in stations:
                     p=line.interpolate(float(s));values=[ground.sample(p.x+dx,p.y+dz) for dx,dz in [(0,0),(.5,0),(-.5,0),(0,.5),(0,-.5)]]

@@ -49,6 +49,7 @@ for m in ('iron_bars','green_stained_glass_pane'):
 
 
 def material_block(material):
+    if material=='grass_block':return Block('universal_minecraft','grass_block',{'snowy':StringTag('false')})
     if material=='water':
         return Block('universal_minecraft','water',{'falling':StringTag('false'),'flowing':StringTag('false'),'level':StringTag('0')})
     if material in ('iron_bars','green_stained_glass_pane'):
