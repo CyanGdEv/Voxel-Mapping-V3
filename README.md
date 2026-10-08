@@ -392,3 +392,8 @@ entrance-plaza connection are checked after reopening the world. This is a full
 park-area draft, not a complete reconstruction of every ride: unmodelled
 attraction outlines are still withheld from physical track generation. Existing
 outputs are never overwritten.
+
+X-Sector reconstruction has started with an opt-in full-park station overlay and
+Smiler/Oblivion track topology audit. Run `python -m voxel_mapper.xsector --help`;
+see [X-Sector reconstruction](docs/xsector-reconstruction.md) for evidence,
+verification and unresolved 3D ride controls.
