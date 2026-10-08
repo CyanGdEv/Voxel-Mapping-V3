@@ -3,7 +3,7 @@ import hashlib
 import json
 import math
 import time
-from .water import surface_level
+from .water import surface_level,estimated_bed_y,flowing_level
 from .planning_geometry import physical_features
 from pathlib import Path
 
@@ -284,8 +284,9 @@ def build(config, collection, output):
                     continue
                 lake_level = None
                 water_profile = None
-                if kind == 'water' and metric_geometry.geom_type in ('Polygon','MultiPolygon'):
-                    water_footprints.append(geometry)
+                flowing_water=kind=='water' and properties.get('waterway') in ('river','stream','drain','ditch')
+                preview_bed=config.get('water',{}).get('estimated_bed',True)
+                if kind == 'water' and geometry.geom_type in ('Polygon','MultiPolygon'):
                     if 'base_elevation_m' in properties:
                         lake_level = base
                         message = 'Explicit water surface elevation; lakebed depth unavailable'
@@ -294,15 +295,21 @@ def build(config, collection, output):
                         scanned += 81
                         if scanned > scan_budget:
                             raise ValueError('Column scan budget exceeded')
+                    if properties.get('waterway')=='canal' and lake_level is None:
+                        flowing_water=True
+                    if flowing_water and terrain:
+                        lake_level=terrain.sample(geometry.representative_point().x,geometry.representative_point().y)
+                        message='Stream surface follows local terrain; estimated visual bed'
                     if lake_level is None:
                         issues.append({'feature':fid,'severity':'error','reason':message})
                         continue
+                    water_footprints.append(geometry)
                     assumptions.append(message.split('Lakebed depth unavailable')[0].rstrip('; .') if bathymetry else message)
                     water_profile = {'feature':fid,'surface_elevation_m':lake_level,
                         'bed_source':config['bathymetry']['source_id'] if bathymetry else None,
-                        'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0,
+                        'estimated_bed_columns':0,'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0,
                         'unknown_depth_columns':0,'derived_depth_range_m':None,
-                        'water_surface_method':'declared_elevation' if 'base_elevation_m' in properties else 'terrain_estimate',
+                        'water_surface_method':'local_stream_terrain' if flowing_water else 'declared_elevation' if 'base_elevation_m' in properties else 'terrain_estimate',
                         'depth_method':'measured_bed_relative_to_unverified_water_surface' if bathymetry else 'unknown',
                         'depth_status':'unknown','surface_elevation_is_depth':False}
                     water_profiles.append(water_profile)
@@ -343,7 +350,7 @@ def build(config, collection, output):
                                     raise ValueError("Column scan budget exceeded")
                                 if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
                                     continue
-                                cell_base = lake_level if lake_level is not None else terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
+                                cell_base = flowing_level(metric_geometry,terrain,x,z,resolution) if flowing_water and terrain else lake_level if lake_level is not None else terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
                                 if cell_base is None:
                                     terrain_missing += 1
                                     continue
@@ -355,21 +362,27 @@ def build(config, collection, output):
                     upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS or lake_level is not None else math.ceil(top/resolution)
                     bottom = math.floor(cell_base/resolution)
                     bed_y = None
+                    measured_bed=False
                     if lake_level is not None and bathymetry:
                         bed = bathymetry.sample((x+.5)*resolution,(z+.5)*resolution)
                         if bed is None or not math.isfinite(bed):
                             water_profile['missing_bed_columns'] += 1
-                        elif not 0 < lake_level-bed <= 100 or math.floor(bed/resolution) >= math.floor(lake_level/resolution):
+                        elif not 0 < cell_base-bed <= 100 or math.floor(bed/resolution) >= math.floor(cell_base/resolution):
                             water_profile['invalid_bed_columns'] += 1
                         else:
                             water_profile['measured_bed_columns'] += 1
-                            depth=lake_level-bed
+                            measured_bed=True
+                            depth=cell_base-bed
                             previous_range=water_profile['derived_depth_range_m']
                             water_profile['derived_depth_range_m']=[min(previous_range[0],depth),max(previous_range[1],depth)] if previous_range else [depth,depth]
                             bed_y = math.floor(bed/resolution)
                             bottom = bed_y
                     if lake_level is not None and bed_y is None:
                         water_profile['unknown_depth_columns'] += 1
+                        if preview_bed:
+                            bed_y=estimated_bed_y(geometry,x,z,cell_base,resolution,config.get('water',{}).get('max_depth_m',3))
+                            bottom=bed_y
+                            water_profile['estimated_bed_columns']+=1
                     for y in range(bottom, upper):
                         tunnel_void = False
                         if tunnel_centerline is not None:
@@ -382,20 +395,22 @@ def build(config, collection, output):
                         if bed_y is not None and y == bed_y:
                             voxel_kind = 'lakebed'
                         stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
-                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
+                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' and measured_bed else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
                             "roof_source":feature_surface.config['source_id'] if roof_rows is not None else None,
                             **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
                             **({'material':'air','material_origin':'accepted_planning_void'} if tunnel_void else {'material_origin':'accepted_planning_shell'} if tunnel_centerline is not None else {}),
                             **({'material_origin':'accepted_planning_paving' if properties.get('planning_geometry_evidence') else 'mapped_transport_surface'} if transport and transport['material_method']=='tagged_surface_approximation' and properties.get('surface') not in ('paved','unpaved') else {}),
-                            **({'bed_source':config['bathymetry']['source_id']} if bed_y is not None else {}),
-                            "geometry_method":"measured_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
+                            **({'bed_source':config['bathymetry']['source_id']} if measured_bed else {'bed_source':None,'bed_status':'estimated_shore_shelf','material':'gravel' if voxel_kind=='lakebed' else 'water'} if bed_y is not None else {}),
+                            "geometry_method":"measured_bed_water_column" if measured_bed else "estimated_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
                 if count == feature_start:
                     issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
                 if water_profile:
-                    water_profile['depth_status']='partial_measured_bed_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_bed_coverage' if water_profile['measured_bed_columns'] else 'unknown'
+                    water_profile['depth_status']='partial_measured_bed_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_bed_coverage' if water_profile['measured_bed_columns'] else 'estimated_visual_bed' if water_profile['estimated_bed_columns'] else 'unknown'
+                if water_profile and water_profile['estimated_bed_columns']:
+                    water_profile['depth_method']='estimated_shore_distance_shelf_with_measured_columns_preserved'
                 if water_profile and (water_profile['missing_bed_columns'] or water_profile['invalid_bed_columns']):
-                    issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns retain surface only; no depths interpolated',**water_profile})
+                    issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns use labelled estimated visual beds when enabled; no measured depths interpolated',**water_profile})
             if terrain and config["terrain"].get("emit_surface", True):
                 water_mask = unary_union(water_footprints)
                 minx, minz, maxx, maxz = area.bounds

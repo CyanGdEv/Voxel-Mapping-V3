@@ -24,3 +24,28 @@ def surface_level(geometry, terrain):
     if values[int(.9*(len(values)-1))]-values[int(.1*(len(values)-1))] > 1:
         return None, 'Interior elevations are inconsistent with a level water surface'
     return statistics.median(values), 'Water level estimated from terrain raster; not a surveyed water level. Lakebed depth unavailable; no bathymetry reconstructed'
+
+
+def estimated_bed_y(geometry,x,z,level,resolution=1,max_depth_m=3):
+    """Shore-distance shelf, explicitly a visual bed estimate, not bathymetry."""
+    if not all(math.isfinite(v) for v in (level,resolution,max_depth_m)) or resolution<=0 or not 1<=max_depth_m<=10:
+        raise ValueError('Invalid water-bed preview dimensions')
+    distance=geometry.boundary.distance(Point((x+.5)*resolution,(z+.5)*resolution))
+    depth=min(max_depth_m,resolution+distance*.5)
+    return math.floor(level/resolution)-max(1,math.floor(depth/resolution))
+
+
+def flowing_level(geometry,terrain,x,z,resolution=1):
+    """Local terrain-supported stream level; no lake-wide flattening of rivers."""
+    values=[]
+    p=Point((x+.5)*resolution,(z+.5)*resolution)
+    if geometry.geom_type=='LineString':
+        station=geometry.project(p)
+        for offset in (-2,-1,0,1,2):
+            q=geometry.interpolate(max(0,min(geometry.length,station+offset*resolution)))
+            value=terrain.sample(q.x,q.y)
+            if value is not None and math.isfinite(value):values.append(value)
+    else:
+        value=terrain.sample(p.x,p.y)
+        if value is not None and math.isfinite(value):values.append(value)
+    return statistics.median(values) if values else None

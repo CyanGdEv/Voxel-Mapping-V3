@@ -36,6 +36,8 @@ ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
 
 
 def material_block(material):
+    if material=='water':
+        return Block('universal_minecraft','water',{'falling':StringTag('false'),'flowing':StringTag('false'),'level':StringTag('0')})
     if material == 'iron_bars':
         return Block('universal_minecraft','bars',{'material':StringTag('iron'),**{k:StringTag('false') for k in ('north','south','east','west')}})
     if material.startswith('cobblestone_wall'):
@@ -95,7 +97,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             record = json.loads(line)
             y = record['y']
             lowest, highest = min(lowest,y), max(highest,y)
-            if record['kind'] == 'terrain':
+            if record['kind'] in ('terrain','lakebed'):
                 lowest_ground = min(lowest_ground, y)
                 key = (int(record['x'])//16,(-int(record['z']))//16)
                 chunk_ground[key] = min(chunk_ground.get(key,math.inf),y)
@@ -106,8 +108,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
     if not count:
         raise ValueError('No voxel data exists to export')
     y_offset = 64-int(lowest)
-    # One shared artificial foundation closes hillside undersides. Only measured
-    # dry-land terrain columns qualify: never infer a lake bed or bridge support.
+    # Artificial foundations close terrain and explicit lakebed undersides.
+    # A preview lakebed remains an estimate; water surface cells alone never fill.
     foundation_y = max(-64, math.floor(lowest_ground)+y_offset-ground_depth) if math.isfinite(lowest_ground) else None
     if highest+y_offset > 317:
         raise ValueError('Park exceeds Bedrock vertical range; cannot retain 1:1 scale without cropping')
@@ -140,11 +142,11 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     if kind in TRANSPORT_KINDS:
                         priority += {'mapped_transport_surface':1,'accepted_planning_paving':2}.get(record.get('material_origin'),0)
                     pending.append((x//16,z//16,x%16,y,z%16,material,priority))
-                    if kind == 'terrain':
+                    if kind in ('terrain','lakebed'):
                         bottom = foundation_y if foundation_mode == 'shared' else max(-64,math.floor(chunk_ground[(x//16,z//16)])+y_offset-ground_depth)
                         for depth in range(1,y-bottom+1):
                             pending.append((x//16,z//16,x%16,y-depth,z%16,'dirt' if depth<=2 else 'stone',-1))
-                    attempted += 1+(y-bottom if kind=='terrain' else 0)
+                    attempted += 1+(y-bottom if kind in ('terrain','lakebed') else 0)
                     if attempted > max_blocks:
                         raise ValueError('World block budget exceeded; split the park area')
                     if len(pending)>=10_000:
@@ -250,7 +252,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,'explicit_air_cells':air_cells,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'foundation':{'minecraft_y':foundation_y,'mode':foundation_mode,
-                              'method':('shared artificial dry-land foundation' if foundation_mode=='shared' else 'per-chunk minimum dry-land elevation minus fill depth')+'; not measured subsurface geology or bathymetry'},
+                              'method':('shared artificial terrain/lakebed foundation' if foundation_mode=='shared' else 'per-chunk minimum terrain/lakebed elevation minus fill depth')+'; not measured subsurface geology or bathymetry'},
                 'paving_composition':'mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact',
                 'sha256':checksum,'quality':'draft_unverified',
                 'limitations':['Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh','Artificial dry-land foundation; unmapped lake depths remain unknown','Outside mapped chunks Minecraft may generate unrelated terrain','This export has no automated in-game visual fidelity validation']}

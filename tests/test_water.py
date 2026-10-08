@@ -7,7 +7,7 @@ import shutil
 import amulet
 from voxel_mapper.bedrock import export_world
 from shapely.geometry import box
-from voxel_mapper.water import surface_level
+from voxel_mapper.water import surface_level,estimated_bed_y,flowing_level
 from voxel_mapper.cli import build
 import test_terrain_osm as fixtures
 
@@ -61,8 +61,9 @@ class WaterTests(unittest.TestCase):
             self.assertGreater(profile['invalid_bed_columns'],0)
             self.assertEqual(profile['measured_bed_columns'],0)
             fallback_rows=[json.loads(line) for line in (root/'invalid-bed/voxels.jsonl').read_text().splitlines()]
-            self.assertFalse(any(r['kind']=='lakebed' for r in fallback_rows))
-            self.assertEqual({r['y'] for r in fallback_rows if r['kind']=='water'},{25})
+            self.assertTrue(any(r['kind']=='lakebed' and r.get('bed_status')=='estimated_shore_shelf' for r in fallback_rows))
+            self.assertIn(25,{r['y'] for r in fallback_rows if r['kind']=='water'})
+            self.assertGreater(profile['estimated_bed_columns'],0)
 
     def test_context_keeps_water_outside_park_outline(self):
         with tempfile.TemporaryDirectory() as d:
@@ -101,11 +102,46 @@ class WaterTests(unittest.TestCase):
             rows=[json.loads(line) for line in (root/'out/voxels.jsonl').read_text().splitlines()]
             water=[r for r in rows if r['kind']=='water']
             self.assertTrue(water)
-            self.assertEqual({r['y'] for r in water},{25})
+            self.assertIn(25,{r['y'] for r in water})
+            beds=[r for r in rows if r['kind']=='lakebed'];self.assertTrue(beds)
+            self.assertTrue(all(r.get('bed_status')=='estimated_shore_shelf' for r in beds))
             profile=report['water_profiles'][0]
-            self.assertEqual(profile['depth_status'],'unknown')
-            self.assertEqual(profile['unknown_depth_columns'],len(water))
+            self.assertEqual(profile['depth_status'],'estimated_visual_bed')
+            self.assertEqual(profile['unknown_depth_columns'],len(beds))
             self.assertIsNone(profile['derived_depth_range_m'])
             columns={(r['x'],r['z']) for r in water}
             self.assertFalse(any((r['x'],r['z']) in columns for r in rows if r['kind']=='terrain'))
             self.assertIn('Lakebed depth unavailable',str(report['issues']))
+
+
+class BedPreviewTests(unittest.TestCase):
+    def test_estimated_shelf_shallows_at_shore_and_deepens_interior(self):
+        polygon=box(0,0,20,20)
+        self.assertEqual(estimated_bed_y(polygon,0,10,100),99)
+        self.assertEqual(estimated_bed_y(polygon,10,10,100),97)
+    def test_stream_profile_follows_elevation_not_flat_lake_level(self):
+        from shapely.geometry import LineString
+        class Slope:
+            def sample(self,x,z):return 100-x*.2
+        line=LineString([(0,0),(20,0)])
+        self.assertGreater(flowing_level(line,Slope(),0,0),flowing_level(line,Slope(),19,0))
+    def test_rejected_water_level_keeps_terrain_instead_of_a_hole(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,features=fixtures.TerrainTests().fixture(root)
+            features['features'][0]['properties']['kind']='water'
+            from unittest.mock import patch
+            with patch('voxel_mapper.cli.surface_level',return_value=(None,'inconsistent water')):
+                build(config,features,root/'out')
+            rows=[json.loads(t) for t in (root/'out/voxels.jsonl').read_text().splitlines()]
+            self.assertTrue(any(r['kind']=='terrain' for r in rows));self.assertFalse(any(r['kind']=='water' for r in rows))
+
+    def test_open_stream_line_receives_bed_and_flowing_surface(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,features=fixtures.TerrainTests().fixture(root)
+            feature=features['features'][0];ring=feature['geometry']['coordinates'][0]
+            feature['geometry']={'type':'LineString','coordinates':[ring[0],ring[2]]}
+            feature['properties'].update(kind='water',waterway='stream',width_m=3)
+            report=build(config,features,root/'out')
+            rows=[json.loads(t) for t in (root/'out/voxels.jsonl').read_text().splitlines()]
+            self.assertTrue(any(r['kind']=='lakebed' for r in rows))
+            self.assertEqual(report['water_profiles'][0]['water_surface_method'],'local_stream_terrain')
