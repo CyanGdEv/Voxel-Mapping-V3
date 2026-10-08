@@ -4,6 +4,13 @@ import statistics
 from shapely.geometry import Point
 
 
+def is_flowing_water(properties, lake_level=None):
+    """OSM uses both waterway lines and natural=water river polygons."""
+    return (properties.get('waterway') in ('stream','river','drain','ditch','riverbank')
+            or properties.get('water') in ('river','stream')
+            or (properties.get('waterway') == 'canal' and lake_level is None))
+
+
 def surface_level(geometry, terrain):
     """Require a consistent set of interior raster samples, never infer depth."""
     if terrain is None:
@@ -22,6 +29,15 @@ def surface_level(geometry, terrain):
     if len(values) < 4:
         return None, 'Insufficient interior raster coverage for water surface'
     if values[int(.9*(len(values)-1))]-values[int(.1*(len(values)-1))] > 1:
+        # Small mapped ponds can include sloping banks. Accept a dominant low
+        # plateau only; a slope or several similarly sized terraces must fail.
+        plateau=[]
+        for start,value in enumerate(values):
+            group=[v for v in values[start:] if v-value <= 1]
+            if len(group)>len(plateau):plateau=group
+        if (len(values)>=12 and len(plateau)>=math.ceil(.75*len(values))
+                and values[0]>=plateau[0]-.25 and values[-1]-plateau[0]<=8):
+            return statistics.median(plateau), 'Water level estimated from dominant low terrain plateau; higher bank samples excluded; not a surveyed water level'
         return None, 'Interior elevations are inconsistent with a level water surface'
     return statistics.median(values), 'Water level estimated from terrain raster; not a surveyed water level. Lakebed depth unavailable; no bathymetry reconstructed'
 

@@ -57,3 +57,30 @@ Boating Lake section. Depths, gravel substrate and foundation fill are visual
 estimates; flowing levels are terrain-supported previews, not measured hydraulic
 profiles. These estimates do not establish actual lake depths or engineered
 channel/lock geometry.
+
+## V11: rejected river polygons and bank-contaminated ponds
+
+The V10 retained repair checked accepted features, so two polygons omitted from
+`features-local.geojson` still contained holes. OSM `natural=water, water=river`
+areas now receive the same flowing-water treatment as `waterway=river` lines.
+The pond beside that river has a dominant low plateau: a bounded fallback
+accepts at least 75% of 12 or more samples within a one-metre band, with no
+significantly lower samples and higher bank outliers capped at eight metres.
+Slopes, split terraces and lower channels remain rejected. This is an estimated
+surface elevation, not a survey or hydraulic model.
+
+The retained repair must receive the complete local source-water collection,
+including rejected features, rather than only the builder's accepted output.
+For this export, the original terrain mosaic was recovered byte-for-byte.
+Current OSM water geometry was projected into the original world coordinate
+frame and clipped to the mapped park boundary. Underground water/tunnel
+features were preserved rather than promoted to surface water.
+
+All 15 surface-water features are checked: 38,930 repair columns have water and
+solid beds/fill. An independent scan of 1,165,980 existing-world columns inside
+the mapped park boundary found 4,885 columns without any natural floor before
+repair and zero afterward. This detects full-column voids; it does not prove
+that every underground cavity, bank profile or estimated water level is correct.
+All 21,703 physical cells from the retained V9 completion overlay are unchanged,
+as are the 5,019 Wicker Man rider-clearance cells. Bed depths remain visual
+estimates. See `evidence/water-v11-validation.json`.

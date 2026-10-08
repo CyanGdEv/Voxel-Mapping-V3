@@ -7,12 +7,42 @@ import shutil
 import amulet
 from voxel_mapper.bedrock import export_world
 from shapely.geometry import box
-from voxel_mapper.water import surface_level,estimated_bed_y,flowing_level
+from voxel_mapper.water import surface_level,estimated_bed_y,flowing_level,is_flowing_water
 from voxel_mapper.cli import build
 import test_terrain_osm as fixtures
 
 
 class WaterTests(unittest.TestCase):
+    def test_river_area_tags_are_flowing_and_ponds_are_not(self):
+        self.assertTrue(is_flowing_water({'natural':'water','water':'river'}))
+        self.assertTrue(is_flowing_water({'waterway':'riverbank'}))
+        self.assertFalse(is_flowing_water({'natural':'water','water':'pond'}))
+        self.assertFalse(is_flowing_water({'waterway':'canal'},100))
+
+    def test_river_polygon_is_generated_when_flat_lake_gate_rejects_it(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);config,features=fixtures.TerrainTests().fixture(root)
+            features['features'][0]['properties'].update(kind='water',natural='water',water='river')
+            with patch('voxel_mapper.cli.surface_level',return_value=(None,'sloping river')):
+                report=build(config,features,root/'out')
+            self.assertEqual(report['water_profiles'][0]['water_surface_method'],'local_stream_terrain')
+            rows=[json.loads(t) for t in (root/'out/voxels.jsonl').read_text().splitlines()]
+            self.assertTrue(any(r['kind']=='water' for r in rows))
+            self.assertTrue(any(r['kind']=='lakebed' for r in rows))
+
+    def test_dominant_low_pond_plateau_excludes_higher_banks(self):
+        class Banks:
+            def sample(self,x,z):return 186 if x<8 else 190
+        level,message=surface_level(box(0,0,10,10),Banks())
+        self.assertEqual(level,186)
+        self.assertIn('bank samples excluded',message)
+        class TwoTerraces:
+            def sample(self,x,z):return 186 if x<5 else 190
+        self.assertIsNone(surface_level(box(0,0,10,10),TwoTerraces())[0])
+        class LowerChannel:
+            def sample(self,x,z):return 180 if x<2 else 186
+        self.assertIsNone(surface_level(box(0,0,10,10),LowerChannel())[0])
     def test_measured_bed_has_water_volume_and_round_trips(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)

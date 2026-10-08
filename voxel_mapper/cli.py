@@ -3,7 +3,7 @@ import hashlib
 import json
 import math
 import time
-from .water import surface_level,estimated_bed_y,flowing_level
+from .water import surface_level,estimated_bed_y,flowing_level,is_flowing_water
 from .planning_geometry import physical_features
 from pathlib import Path
 
@@ -284,7 +284,7 @@ def build(config, collection, output):
                     continue
                 lake_level = None
                 water_profile = None
-                flowing_water=kind=='water' and properties.get('waterway') in ('river','stream','drain','ditch')
+                flowing_water=kind=='water' and is_flowing_water(properties, 0)
                 preview_bed=config.get('water',{}).get('estimated_bed',True)
                 if kind == 'water' and geometry.geom_type in ('Polygon','MultiPolygon'):
                     if 'base_elevation_m' in properties:

@@ -6,7 +6,7 @@ from pyproj import CRS
 from shapely.geometry import shape,Point
 from .terrain import Terrain
 from .survey import activate_retained_grid
-from .water import surface_level,flowing_level,estimated_bed_y
+from .water import surface_level,flowing_level,estimated_bed_y,is_flowing_water
 from .xsector import apply_overlay
 
 
@@ -37,7 +37,7 @@ def repair(source,features_path,output,grid=None):
     try:
         for f in features:
             geom=shape(f['geometry']);p=f['properties'];level,message=surface_level(geom,terrain)
-            flowing=p.get('waterway') in ('stream','river','drain','ditch') or (p.get('waterway')=='canal' and level is None)
+            flowing=is_flowing_water(p,level)
             if level is None and not flowing:
                 reports.append({'feature':f['id'],'status':'withheld','reason':message});continue
             count=0;levels=[];a,b,c,d=geom.bounds
@@ -63,9 +63,9 @@ def repair(source,features_path,output,grid=None):
                         block=old(x,y,z)
                         if block is not None and block.base_name in natural and block.base_name!='air':put(x,y,z,'air',f['id'])
                     columns[x,z]={'top':top,'bed':bed,'floor':floor,'feature':f['id']};count+=1;levels.append(top)
-            reports.append({'feature':f['id'],'status':'repaired','columns':count,'surface_levels_m':[min(levels),max(levels)] if levels else None,'surface_method':'local_stream_terrain' if flowing else 'consistent_interior_terrain','bed_method':'estimated shore-distance shelf, maximum 2m for streams / 3m for lakes'})
+            reports.append({'feature':f['id'],'status':'repaired','columns':count,'surface_levels_m':[min(levels),max(levels)] if levels else None,'surface_method':'local_stream_terrain' if flowing else 'dominant_low_terrain_plateau' if 'plateau' in message else 'consistent_interior_terrain','bed_method':'estimated shore-distance shelf, maximum 2m for streams / 3m for lakes'})
     finally:world.close();terrain.close()
-    report={'stations':[],'world_name':config.get('location','Park').split(',')[0]+' — Water surfaces and solid beds V10','water_features':reports,'columns':len(columns),'overlay_records':len(rows),'protected_structure_cells':dict(protected),
+    report={'stations':[],'world_name':config.get('location','Park').split(',')[0]+' — River polygons and water beds V11','water_features':reports,'input_water_features':len(features),'withheld_water_features':sum(r['status']=='withheld' for r in reports),'columns':len(columns),'overlay_records':len(rows),'protected_structure_cells':dict(protected),
             'limitations':['Bed depths, substrate and artificial foundation fill are visual estimates, not surveyed bathymetry.','Lake levels use consistent interior DTM; streams use local terrain, not surveyed hydraulic profiles.']}
     apply_overlay(source,output,list(rows.values()),report,report_key='water_repair',report_filename='water-repair-report.json')
     world=amulet.load_level(str(output/'bedrock-world'));cache={};missing_water=[];missing_floor=[]

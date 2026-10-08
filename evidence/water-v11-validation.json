@@ -1,0 +1,57 @@
+{
+  "version": "V11",
+  "world_sha256": "9f393a938c49bd5b9055d0fa4104fa8f696229b28bb6a8b1a1ea62b3347e673d",
+  "water": {
+    "water_columns_checked": 38930,
+    "missing_water_cells": 0,
+    "missing_solid_bed_or_fill_cells": 0
+  },
+  "input_surface_water_features": 15,
+  "withheld_surface_features": 0,
+  "terrain_mosaic_sha256": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d",
+  "whole_park_audit": {
+    "before": {
+      "boundary_columns_checked": 1165980,
+      "columns_without_natural_floor": 4885,
+      "target_missing_floor_columns": [
+        1771,
+        3114
+      ]
+    },
+    "after": {
+      "boundary_columns_checked": 1165980,
+      "columns_without_natural_floor": 0,
+      "target_missing_floor_columns": [
+        0,
+        0
+      ]
+    },
+    "wicker": {
+      "physical_cells_checked": 9536,
+      "changed_cells": 0,
+      "rider_envelope_checked": 5019,
+      "blocked_cells": 0
+    }
+  },
+  "preservation": {
+    "physical_overlay_cells_compared": 21703,
+    "changed_cells": 0,
+    "failures": []
+  },
+  "limitations": [
+    "Terrain-supported water elevations and estimated visual beds; no measured bathymetry.",
+    "Zero empty columns does not certify underground cavities or detailed bank geometry.",
+    "Underground river footprint remains preserved as an underground feature."
+  ],
+  "tests": {
+    "full_suite": {
+      "passed": true,
+      "tests": 337
+    },
+    "water_regressions": {
+      "passed": true,
+      "tests": 11
+    },
+    "note": "The targeted pass includes the additional river-polygon integration regression added after the full suite loaded."
+  }
+}
