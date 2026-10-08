@@ -96,3 +96,19 @@ faces crossing recognised scale-bar annotation regions. A visual review found a
 3,521 m² triangle incorrectly closed by a scale bar in the Gardens block plan;
 that face is withheld rather than painted as tarmac. The source overlay and
 acquisition/extraction audit accompany the source package.
+
+## Further drawing acquisition (2026-10-08)
+
+A second targeted pass downloaded 68 additional official PDF attachments (61
+distinct byte hashes) from the already inspected application pages, with six
+failed legacy attachments retained in the failure inventory. The catalogue now
+has 275 URL entries. Additional sheets cover CBeebies Sunshine landscaping, the
+Air/Galactica station/shop surroundings, Gardens/bridge areas, the spa/high ropes
+area and ancillary site works. These are source coverage gains, not assertions
+that all proposed works exist or that every acquired drawing yields paving.
+
+`data/alton-planning-supplement-v4.json` retains hashes, canonical official URLs,
+explicit legacy HTTP transport URLs, first-three-page native text/material
+inspection and failure reasons. Material mentions remain unassigned unless a
+floor label is contained in a registered paving face. Existing catalogue bytes
+were not replaced and no conflicting original hashes were observed.

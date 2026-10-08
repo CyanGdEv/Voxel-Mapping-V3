@@ -15,6 +15,36 @@ def feature(polygon,surface='brick',status='contained_native_floor_label',fid='p
 
 
 class ParkPavingTests(unittest.TestCase):
+    def test_multi_page_landscape_inspection_preserves_page_provenance(self):
+        import hashlib
+        import pymupdf
+        from unittest.mock import patch
+        from voxel_mapper.park_paving_plans import recover_park_plans
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'files').mkdir()
+            pdf=pymupdf.open();pdf.new_page();pdf.new_page()
+            payload=pdf.tobytes();pdf.close();digest=hashlib.sha256(payload).hexdigest()
+            (root/'files'/f'{digest}.pdf').write_bytes(payload)
+            entry={'sha256':digest,'title':'Existing Landscape','role':'landscape-plan',
+                   'applicationReference':'SMD/2024/0579','application_context':'Alton Towers, Farley Lane',
+                   'url':'https://publicaccess.staffsmoorlands.gov.uk/example'}
+            registration={'document_id':digest,'status':'shop_track_alignment_hypothesis',
+                          'candidate':{'scale_m_per_pdf_point':1,'rotation':[[1,0],[0,1]],
+                                       'translation_epsg27700_m':[0,0]}}
+            (root/'wicker-man-registration.json').write_text(json.dumps(registration))
+            catalogue=json.dumps({'entries':[entry]});read=Path.read_text
+            def read_source(path,*args,**kwargs):
+                if path.name=='alton-planning-catalogue.json':return catalogue
+                return read(path,*args,**kwargs)
+            with patch('voxel_mapper.park_paving_plans.ANCHOR',digest),patch.object(Path,'read_text',read_source):
+                collection,audit=recover_park_plans(root,root,root/'output','EPSG:27700')
+            self.assertEqual(audit['inspected_documents'],1)
+            self.assertEqual(audit['inspected_pages'],2)
+            self.assertEqual([d['page'] for d in audit['documents']],[1,2])
+            self.assertTrue(all(d['document_id']==digest for d in audit['documents']))
+            self.assertEqual(audit['documents'][1]['status'],'unregistered')
+            self.assertEqual(collection['features'],[])
+
     def test_scale_bar_cannot_close_a_landscape_face(self):
         labels=[{'text':str(i*100),'origin':[i*200,100],
                  'bbox':[i*200,80,i*200+30,105]} for i in range(6)]

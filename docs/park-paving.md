@@ -8,7 +8,11 @@ matching OSM paving. It emits no replacement ride layouts.
 ## Geometry recovery
 
 Only catalogue entries identifying Alton Towers on Farley Lane are inspected.
-PDF bytes must match their recovered document hashes. Native survey identifiers
+PDF bytes must match their recovered document hashes. Up to eight pages per eligible
+PDF are inspected, including drawings titled Landscape/Paving/Surfacing. Explicitly
+superseded sheets are retained as source evidence but excluded from geometry. Each
+page has separate controls, face cache and provenance; an aligned cover does not
+automatically register other pages. Native survey identifiers
 and unique spot-level labels link sheets to the retained Wicker Man shop/track
 alignment. Similarity fits allow uniform scale, translation and rotation;
 reflection, shear and anisotropic stretching are rejected. Fits require a
@@ -20,6 +24,12 @@ between drawings; it does not establish independent survey accuracy or that
 proposed/historical paving exists today. Verified planning-geometry gates remain
 unchanged. PDF renderer coordinates are unrotated native page coordinates for
 both text and strokes, including sheets displayed with page rotation.
+
+Material-label containment uses a spatial index and exact polygon predicates; it
+preserves the smallest enclosing face and the existing edge-clearance threshold.
+Reviewed source/page/face exclusions in `data/alton-paving-face-exclusions.json`
+withhold scale bars, legend swatches, title blocks, building/roof ambiguities and
+historical ride platforms. Reasons and source hashes are retained.
 
 Paving extraction nodes visible solid black/grey linework, including curves
 flattened to a maximum 0.05 m chord tolerance at the fitted scale. It preserves
@@ -150,3 +160,17 @@ readback verifies all touched sections in 1,264 chunks and total chunk coverage.
 Entrance/admissions, Katanga, X-Sector and Forbidden Valley sources remain
 available for registration work; acquiring them does not establish new
 world geometry. No replacement ride layout is emitted.
+
+## Further expansion: V4
+
+The 2026-10-08 second acquisition pass retains 68 additional PDF attachments
+(61 distinct hashes), bringing the catalogue to 275 entries. Extraction inspected
+115 documents / 134 pages and provisionally aligned 51 documents.
+After explicit visual-review exclusions, 129 plan polygons remain.
+The V4 export has 78,972 paving records and adds 1,351
+horizontal paving cells over V3, removes 2, and changes material in 30
+previously paved cells. New cell composition is recorded in
+`evidence/park-paving-v4-validation.json`. All 298 tests pass and 1,294
+touched chunks pass full-section Bedrock readback. Ride layouts are unchanged.
+Historical and proposed source geometry remains provisional; this is not full
+present-day path coverage.

@@ -10,6 +10,7 @@ import numpy as np
 from pyproj import Transformer
 from shapely.geometry import Point,shape,mapping
 from shapely.ops import transform
+from shapely.strtree import STRtree
 from .alton import is_park_application
 from .wicker_registration import apply_candidate
 from .plan_boundaries import recover_boundaries
@@ -126,19 +127,24 @@ def recover_park_plans(cache,wicker,output,local_crs):
     import pymupdf
     cache,wicker,output=map(Path,(cache,wicker,output));output.mkdir(parents=True,exist_ok=True)
     cat=json.loads((Path(__file__).parent/'data/alton-planning-catalogue.json').read_text())
-    pages={};audit=[]
+    pages={};audit=[];seen_documents=set()
+    reviewed_exclusions=json.loads((Path(__file__).parent/'data/alton-paving-face-exclusions.json').read_text())['exclusions']
     for entry in cat['entries']:
         if not is_park_application(entry) or entry.get('role') not in ('site-plan','landscape-plan','block-plan','access-plan','location-plan'):continue
-        if not re.search(r'\b(?:plan|drawing)\b',entry['title'],re.I):continue
+        if re.search(r'\bsuperseded\b',entry['title'],re.I):continue
+        if not re.search(r'\b(?:plan|drawing|landscape|landscaping|paving|surfacing)\b',entry['title'],re.I):continue
         path=cache/'files'/(entry.get('sha256','')+'.pdf')
         if not path.exists():continue
         digest=hashlib.sha256(path.read_bytes()).hexdigest()
         if digest!=entry.get('sha256'):raise ValueError('Planning PDF hash mismatch')
-        if digest in pages:continue
+        if digest in seen_documents:continue
+        seen_documents.add(digest)
         with pymupdf.open(path) as pdf:
-            page=pdf[0]
-            labels=labels_from_page(page)
-        pages[digest]={'entry':entry,'path':str(path),'labels':labels,'controls':control_labels(labels)}
+            for page_index in range(min(len(pdf),8)):
+                labels=labels_from_page(pdf[page_index])
+                key=digest if page_index==0 else f'{digest}/page-{page_index+1}'
+                pages[key]={'entry':entry,'path':str(path),'document_id':digest,'page_index':page_index,
+                            'labels':labels,'controls':control_labels(labels)}
     # Catalogue role names vary; retain explicit plan titles, never report pages.
     if ANCHOR not in pages:raise ValueError('Retained Wicker alignment source PDF required')
     registration=json.loads((wicker/'wicker-man-registration.json').read_text())
@@ -147,7 +153,7 @@ def recover_park_plans(cache,wicker,output,local_crs):
     for _ in range(4):
         previous=[key for key,p in pages.items() if 'alignment' in p];added=0
         for key,p in pages.items():
-            if 'alignment' in p:continue
+            if 'alignment' in p or len(p['controls'])<8:continue
             candidates=[]
             for ref in previous:
                 reference=pages[ref];coords=reference['controls']
@@ -164,17 +170,18 @@ def recover_park_plans(cache,wicker,output,local_crs):
         if not added:break
     bng_to_local=Transformer.from_crs(27700,local_crs,always_xy=True)
     features=[];identities=set()
-    for digest,p in pages.items():
+    for page_key,p in pages.items():
+        digest=p['document_id'];page_number=p['page_index']+1
         e=p['entry'];record={'document_id':digest,'application':e['applicationReference'],'title':e['title'],
-                            'source_url':e['url'],'status':'unregistered','paving_features':0}
+                            'source_url':e['url'],'page':page_number,'status':'unregistered','paving_features':0}
         audit.append(record)
         if 'alignment' not in p:continue
         record['alignment']=p['alignment'];record['status']='provisional_alignment'
         with pymupdf.open(p['path']) as pdf:
-            page=pdf[0];drawings=page.get_drawings(extended=True)
+            page=pdf[p['page_index']];drawings=page.get_drawings(extended=True)
             scale=p['alignment']['candidate']['scale_m_per_pdf_point']
             try:
-                cache_name=hashlib.sha256(f'{digest}/{scale}/grey-solid-noded-curves-v1'.encode()).hexdigest()
+                cache_name=hashlib.sha256(f'{page_key}/{scale}/grey-solid-noded-curves-v1'.encode()).hexdigest()
                 geometry_cache=output/(cache_name+'-paving-faces.json.gz')
                 candidates=cached_paving_faces(geometry_cache,lambda:surface_boundaries(drawings,scale))
             except ValueError as error:
@@ -183,9 +190,14 @@ def recover_park_plans(cache,wicker,output,local_crs):
         def project(x,y,z=None):
             xy=apply_candidate(list(zip(x,y)),p['alignment']['candidate']);return bng_to_local.transform(xy[:,0],xy[:,1])
         polygons=[shape(c['geometry']) for c in candidates['polygons']]
+        polygon_index=STRtree(polygons)
         annotation_regions=scale_bar_regions(p['labels'])
         annotation_faces={i for i,poly in enumerate(polygons)
                           if any(poly.boundary.intersects(region) for region in annotation_regions)}
+        reviewed_faces={a['face_index'] for a in reviewed_exclusions
+                        if a['document_id']==digest and a['page']==page_number}
+        annotation_faces.update(reviewed_faces)
+        record['reviewed_annotation_faces_withheld']=len(reviewed_faces)
         record['annotation_faces_withheld']=len(annotation_faces)
         assignments={}
         for label in p['labels']:
@@ -194,8 +206,11 @@ def recover_park_plans(cache,wicker,output,local_crs):
             # Bare 'brick', 'stone', 'wood' can be walls/structures, never floor specs.
             if (not material and not generic) or label['text'].strip().lower() in ('brick','stone','wood','sand','gravel','ground','earth','dirt','paved','unpaved'):continue
             x0,y0,x1,y1=label['bbox'];point=Point((x0+x1)/2,(y0+y1)/2)
-            choices=[(poly.area,i) for i,poly in enumerate(polygons) if i not in annotation_faces
-                     and poly.contains(point) and poly.boundary.distance(point)*scale>.3]
+            choices=[]
+            for index in polygon_index.query(point,predicate='within'):
+                index=int(index);poly=polygons[index]
+                if index not in annotation_faces and poly.boundary.distance(point)*scale>.3:
+                    choices.append((poly.area,index))
             if not choices:continue
             _,index=min(choices);assignments.setdefault(index,[]).append((material or 'stone',label))
         for index,labels in assignments.items():
@@ -213,17 +228,20 @@ def recover_park_plans(cache,wicker,output,local_crs):
             identity=(local.normalize().wkb,next(iter(materials)))
             if identity in identities:continue
             identities.add(identity)
-            props={'kind':'plaza','surface':next(iter(materials)),'document_id':digest,'page':1,
+            props={'kind':'plaza','surface':next(iter(materials)),'document_id':digest,'page':page_number,
                    'application_reference':e['applicationReference'],'source_url':e['url'],
                    'state':e.get('state','unknown'),'material_evidence':[a['text'] for _,a in labels],
                    'material_status':'contained_native_floor_label' if explicit_materials else 'paving_label_unspecified_material','registration_verified':False,
                    'as_built_verified':False,'alignment_method':p['alignment']['status'],
                    'anchor_chain':p['alignment']['anchor_chain']}
-            features.append({'type':'Feature','id':f'planning-paving/{digest[:12]}/{index}','geometry':mapping(local),'properties':props});record['paving_features']+=1
+            features.append({'type':'Feature','id':f'planning-paving/{digest[:12]}/{index}' if page_number==1 else f'planning-paving/{digest[:12]}/page-{page_number}/{index}','geometry':mapping(local),'properties':props});record['paving_features']+=1
     collection={'type':'FeatureCollection','coordinate_frame':'local x east/z north, metres','features':features}
-    report={'status':'provisional_planning_paving','documents':audit,'aligned_documents':sum('alignment' in p for p in pages.values()),
-            'inspected_documents':len(pages),'paving_polygons':len(features),
-            'limitations':['Absolute alignment inherits the provisional Wicker Man shop/track fit',
+    report={'status':'provisional_planning_paving','documents':audit,'aligned_documents':len({p['document_id'] for p in pages.values() if 'alignment' in p}),
+            'aligned_pages':sum('alignment' in p for p in pages.values()),
+            'inspected_pages':len(pages),'inspected_documents':len(seen_documents),'paving_polygons':len(features),
+            'page_budget_per_document':8,
+            'limitations':['At most eight pages per eligible document are inspected; explicitly superseded sheets are withheld',
+                           'Absolute alignment inherits the provisional Wicker Man shop/track fit',
                            'Shared text origins check relative sheet consistency, not independent geographic survey controls',
                            'Proposed and historical geometry may differ from the present park; retained as draft evidence']}
     (output/'park-planning-paving.geojson').write_text(json.dumps(collection))
