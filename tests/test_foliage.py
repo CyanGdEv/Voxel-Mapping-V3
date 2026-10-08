@@ -30,11 +30,11 @@ class FoliageTests(unittest.TestCase):
         self.assertNotEqual(a,tree_cells(0,0,0,14,4,seed=13))
         with self.assertRaises(ValueError):tree_cells(0,0,0,100,20)
     def test_leaf_scatter_is_branch_attached_mixed_and_open(self):
-        cells=tree_cells(0,0,0,22,6,seed=73)
+        cells=tree_cells(0,0,0,22,6,seed=73,leaf_density=.55)
         wood={k for k,m in cells.items() if m.endswith('_fence')}
         leaf={k for k,m in cells.items() if m.endswith('_leaves')}
         self.assertEqual({cells[k] for k in leaf},{'oak_leaves','birch_leaves'})
-        self.assertTrue(all(any((x+dx,y,z+dz) in wood for dx,dz in ((1,0),(-1,0),(0,1),(0,-1))) for x,y,z in leaf))
+        self.assertTrue(all(any((x+dx,y+dy,z+dz) in wood for dx,dy,dz in ((1,0,0),(-1,0,0),(0,0,1),(0,0,-1),(0,1,0),(0,-1,0))) for x,y,z in leaf))
         full=tree_cells(0,0,0,22,6,seed=73,leaf_density=1)
         self.assertLess(len(leaf),sum(m.endswith('_leaves') for m in full.values())*.8)
         bare=tree_cells(0,0,0,22,6,seed=73,leaf_density=0)
@@ -43,6 +43,18 @@ class FoliageTests(unittest.TestCase):
         self.assertGreater(len({y for x,y,z in wood if (x,z)!=(0,0)}),7)
         self.assertTrue(any(x>0 for x,y,z in wood) and any(x<0 for x,y,z in wood))
         self.assertTrue(any(z>0 for x,y,z in wood) and any(z<0 for x,y,z in wood))
+    def test_dense_defaults_hide_more_branches_and_density_adds_leaves(self):
+        sparse=tree_cells(0,0,0,22,6,seed=73,leaf_density=.55)
+        dense=tree_cells(0,0,0,22,6,seed=73)
+        wood={k for k,m in dense.items() if m.endswith('_fence')}
+        leaves={k for k,m in dense.items() if m.endswith('_leaves')}
+        old_leaves={k for k,m in sparse.items() if m.endswith('_leaves')}
+        self.assertGreater(len(leaves),len(wood)*1.5)
+        self.assertGreater(len(leaves),len(old_leaves)*1.4)
+        self.assertTrue(old_leaves<=leaves)
+        self.assertTrue(all(sparse[k]==dense[k] for k in old_leaves))
+        self.assertEqual(wood,{k for k,m in sparse.items() if m.endswith('_fence')})
+        self.assertTrue(any((x,y-1,z) in wood for x,y,z in leaves))
     def test_branch_count_and_leaf_parameters_are_bounded(self):
         sparse,_=tree_structure(0,0,0,20,6,seed=3,branch_count=3)
         dense,_=tree_structure(0,0,0,20,6,seed=3,branch_count=24)

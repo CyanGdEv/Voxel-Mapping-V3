@@ -7,8 +7,10 @@ collision rules. Oak, birch, spruce and dark-oak fences form thin trunks and
 face-connected branch skeletons, rather than vanilla full-block log trunks.
 The skeleton is built first: branch count scales with height/radius, attachment
 levels are staggered, azimuths vary, and crooked members split into unequal
-terminal forks. Each eligible branch cell offers four horizontal neighbouring
-leaf sites. Seeded random placement leaves open gaps; every leaf touches a fence
+terminal forks. Each eligible branch cell offers four horizontal neighbouring leaf sites, plus
+leafy caps above and below. Broadleaf side density defaults to 95%, airy
+profiles to 88%, and conifer/columnar profiles to 98%; caps use 90% of that
+probability. Seeded random placement retains irregular gaps; every leaf touches a fence
 and stays within the supplied radius and height. Broadleaf trees mix oak and
 birch blocks (colour proxies); conifers default to spruce with oak accents.
 There is no ellipsoid, cube or canopy-volume fill. Leaves persist without random decay.
@@ -35,7 +37,7 @@ python -m voxel_mapper.park_foliage \
   --planning-hints recovery/foliage-planning-hints.json \
   --vegetation-cloud recovery/park-classified-vegetation.laz \
   --vegetation-cloud-report recovery/park-vegetation-acquisition.json \
-  --output park-foliage-v13
+  --output park-foliage-v14
 ```
 
 The Alton Towers pass uses 105 mapped tree positions, about 35 hectares of
@@ -73,6 +75,11 @@ evidence/collision behaviour and retained-world clearance tests are in
 The modular tree family accepts optional evidence-backed `branch_count` (integer
 3–80), `leaf_density` (0–1), and `leaf_palette` (1–5 supported leaf materials).
 `tree_structure` returns the bare skeleton and eligible members; `tree_cells`
-adds leaves using a separate seed, so density/palette changes leave branch
-geometry unchanged. Parameter, mixed-leaf adjacency, open-density and multiple
+adds leaves using separate per-site random decisions, so density changes add leaves
+without moving branches or recolouring existing leaves. Parameter, mixed-leaf adjacency, open-density and multiple
 branch-level/direction regressions are covered in `tests/test_foliage.py`.
+
+V14 increases branch-face coverage while retaining the same skeleton algorithm.
+Leafy caps also hide exposed horizontal fence tops. Bounds, structure/clearance
+clipping and classified vegetation support still apply. Leaf counts and physical
+branch contact are audited after native export.

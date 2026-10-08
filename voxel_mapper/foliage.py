@@ -62,13 +62,13 @@ def tree_structure(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak
 
 
 def tree_cells(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak',leaves='oak',branch_count=None,leaf_density=None,leaf_palette=None):
-    """Scatter mixed leaves on four horizontal sides of generated branches.
+    """Scatter mixed leaves around generated branches, including leafy caps.
 
-    There is no canopy volume fill. Every leaf touches a fence horizontally;
-    seeded Bernoulli placement leaves open gaps and preserves reproducibility.
+    Every leaf touches a fence. Dense side placement plus top/bottom caps hide
+    more branch faces; seeded sampling preserves irregular gaps and bounds.
     """
     if leaves not in ('oak','spruce','birch','dark_oak','azalea'):raise ValueError('Unsupported foliage palette')
-    density=leaf_density if leaf_density is not None else (.42 if profile=='airy' else .62 if profile in ('conifer','columnar') else .55)
+    density=leaf_density if leaf_density is not None else (.88 if profile=='airy' else .98 if profile in ('conifer','columnar') else .95)
     if isinstance(density,bool) or not isinstance(density,(float,int)) or not math.isfinite(density) or not 0<=density<=1:
         raise ValueError('Leaf density must be a finite probability')
     palette=leaf_palette if leaf_palette is not None else (('spruce','oak') if leaves=='spruce' else ('oak','birch'))
@@ -76,16 +76,19 @@ def tree_cells(x,ground,z,height,radius,profile='broadleaf',seed=0,wood='oak',le
         raise ValueError('Invalid leaf palette')
     cells,foliar=tree_structure(x,ground,z,height,radius,profile,seed,wood,branch_count)
     x,ground,z=map(math.floor,(x,ground,z));height=math.floor(height)
-    rng=random.Random(seed^0x9e3779b97f4a7c15);sites=set()
+    sites={}
     for xx,yy,zz in sorted(foliar):
-        for dx,dz in ((-1,0),(1,0),(0,-1),(0,1)):
-            k=(xx+dx,yy,zz+dz)
-            if k in cells or (k[0]-x)**2+(k[2]-z)**2>radius**2:continue
-            sites.add(k)
+        for dx,dy,dz in ((-1,0,0),(1,0,0),(0,0,-1),(0,0,1),(0,1,0),(0,-1,0)):
+            k=(xx+dx,yy+dy,zz+dz)
+            if k in cells or not ground+2<=k[1]<=ground+height or (k[0]-x)**2+(k[2]-z)**2>radius**2:continue
+            sites[k]=max(sites.get(k,0),.9 if dy else 1)
     for k in sorted(sites):
-        if rng.random()<density:
+        # Per-site decisions make increasing density add leaves consistently;
+        # neither the skeleton nor existing leaf colours change with density.
+        h=stable_seed((seed,*k));chance=(h&0xffffffff)/2**32;mix=(h>>32)/2**32
+        if chance<density*sites[k]:
             # Mixed blocks are colour proxies, not a botanical species claim.
-            material=palette[0] if len(palette)==1 or rng.random()<.65 else rng.choice(palette[1:])
+            material=palette[0] if len(palette)==1 or mix<.65 else palette[1+min(len(palette)-2,int((mix-.65)/.35*(len(palette)-1)))]
             cells[k]=material+'_leaves'
     return cells
 
