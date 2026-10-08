@@ -397,3 +397,8 @@ X-Sector reconstruction has started with an opt-in full-park station overlay and
 Smiler/Oblivion track topology audit. Run `python -m voxel_mapper.xsector --help`;
 see [X-Sector reconstruction](docs/xsector-reconstruction.md) for evidence,
 verification and unresolved 3D ride controls.
+
+Smiler's first visible track pass adds its inclined/vertical lifts and crest
+approaches to the existing corrected Oblivion park. See
+[Smiler reconstruction](docs/smiler-reconstruction.md); the full inversion
+course remains unfinished.

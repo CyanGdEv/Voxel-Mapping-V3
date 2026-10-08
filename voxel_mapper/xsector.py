@@ -190,7 +190,7 @@ def apply_overlay(source, output, rows, report):
                 raise ValueError('Finite integer spawn within world height required')
             root=level.level_wrapper.root_tag.compound
             for key,value in zip(('SpawnX','SpawnY','SpawnZ'),spawn):root[key]=IntTag(value)
-            root['LevelName']=StringTag('Alton Towers — X-Sector visible Oblivion draft')
+            root['LevelName']=StringTag(report.get('world_name','Alton Towers — X-Sector visible Oblivion draft'))
         level.save()
     finally:
         level.close()
