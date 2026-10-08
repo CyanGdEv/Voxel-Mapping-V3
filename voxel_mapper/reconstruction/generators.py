@@ -91,8 +91,9 @@ def trestle(feature,geom,ctx):
 
 
 def default_registry():
+    from .architecture import architectural_components
     return {'paving':surface,'wall':wall,'building_shell':shell,'track':sweep,'cable':sweep,
-            'beam':sweep,'trestle':trestle,'tree':tree,'shrub':shrub}
+            'architectural_components':architectural_components,'beam':sweep,'trestle':trestle,'tree':tree,'shrub':shrub}
 
 
 def tree(feature,geom,ctx):
