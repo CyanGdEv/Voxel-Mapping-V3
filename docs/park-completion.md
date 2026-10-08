@@ -1,6 +1,8 @@
-# Transport and landmark geometry preview (V7)
+# Transport, landmarks and Wicker trestle preview (V9)
 
-This pass builds on the verified V6 world. It targets omitted transport and
+The current V9 pass builds on the verified V6 world. Earlier V7/V8 behaviour
+below is retained as historical context; V9 supersedes Wicker clearance and
+support generation. It targets omitted transport and
 barrier routes, the Pagoda, main entrance, Towers exterior and the Wicker Man
 terrain/track conflict. It is a geometry preview, not a complete accurate park.
 
@@ -53,7 +55,7 @@ python -m voxel_mapper.park_completion \
   --park /absolute/path/alton-full-park \
   --raw-osm /absolute/path/osm-raw.json \
   --datum-grid /absolute/path/uk_os_OSTN15_NTv2_OSGBtoETRS.tif \
-  --output /absolute/path/new-v7-output
+  --output /absolute/path/new-v9-output
 ```
 
 The preview is rendered from reopened world blocks with simplified silhouettes
@@ -86,3 +88,43 @@ The full touched-section/chunk-coverage check passes across 383 chunks. All
 314 tests pass. Validation: `evidence/wicker-clearance-v8-validation.json`.
 The imported world is labelled “Wicker track clearance V8” to distinguish it
 from previous exports.
+
+
+## V9: clear riding space and connected trestles
+
+The previous terrain-only check missed timber and tunnel blocks above the track.
+V9 builds explicit raster deck and rider masks before generating trestles.
+Neighbouring samples sharing a stepped column use one consolidated deck height.
+Crossing regions receive a consistent over/under order based on the retained
+preview profile; nearby samples cannot reverse that order independently.
+Crossing correction adds a slope-limited uplift (0.6 m per metre), bounded to
+20 metres; this export's total maximum uplift from the original profile is
+10.952 metres. These corrected heights are provisional.
+
+The final mask clears all block types for three blocks above the oak centre
+deck, after tunnel skin and trestles. This local Wicker corridor can cut the
+provisional station/screen/tunnel shell; it does not hollow their entire
+footprints. Upper crossing decks are checked before any clearance is emitted.
+
+Each bent has continuous oak-fence posts, full spruce bearing beams directly
+beneath the deck, repeated transverse braced panels and, where space permits,
+longitudinal braces between successive bents. Braces rasterize as face-connected
+members including both joints. Trapdoors no longer replace load-bearing posts.
+Post bottoms follow actual retained solid ground rather than a DTM sample that
+can bridge an existing raster cut. A bent is withheld atomically when it would
+intersect a rider mask, another deck or an unrelated occupied block.
+
+Export readback checks all 1,949 intended route samples, 5,019 rider-envelope
+cells and 4,425 structural cells. There are zero missing decks, obstructed
+headroom cells or missing members. All 165 bents connect ground to deck bearing;
+120 longitudinal braced spans are emitted. The minimum deck clearance above
+the original five-metre terrain envelope remains two blocks. All 245 V6 detail
+cells and all 47,287 non-Wicker V8 overlay cells retain their materials.
+Complete touched-section readback passes across 383 chunks; all 318 tests pass.
+
+The export is named “Wicker connected trestles V9”. Evidence:
+`evidence/wicker-trestles-v9-validation.json`. The evidence package includes
+individual bent members, the full rider mask and original/corrected profiles.
+Retained planning sources do not establish exact 3D brace-angle sections;
+the panel arrangement remains an estimated voxel trestle, not an accurate
+structural reconstruction or an engineering clearance certification.

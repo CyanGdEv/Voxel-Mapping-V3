@@ -50,12 +50,117 @@ def above_terrain_profile(original, ground, spacing=.4, ramp=.12):
     return original+uplift,uplift
 
 
+def connected_segment(start,end):
+    """Six-connected voxel member, including both joints."""
+    current=tuple(map(math.floor,start));target=tuple(map(math.floor,end));cells=[current]
+    while current!=target:
+        delta=[target[i]-current[i] for i in range(3)]
+        axis=max(range(3),key=lambda i:abs(delta[i]))
+        nxt=list(current);nxt[axis]+=1 if delta[axis]>0 else -1
+        current=tuple(nxt);cells.append(current)
+    return cells
+
+
+def track_masks(line,stations,heights):
+    """Raster deck and three-block rider envelope with ramp alias consolidation."""
+    columns=collections.defaultdict(list);centres=set()
+    for index,(s,h) in enumerate(zip(stations,heights)):
+        p=line.interpolate(float(s));a=line.interpolate(max(0,s-.3));b=line.interpolate(min(line.length,s+.3))
+        dx,dz=b.x-a.x,b.y-a.y;length=math.hypot(dx,dz);nx,nz=-dz/length,dx/length
+        for side in np.arange(-1.5,1.51,.5):
+            x,z=math.floor(p.x+side*nx),math.floor(p.y+side*nz)
+            columns[x,z].append((math.floor(h)-1,index,abs(side)<.75))
+    deck={};envelope=set();sample_decks={}
+    for (x,z),entries in columns.items():
+        # Consecutive metre cells can contain both sides of a stepped ramp.
+        groups=[]
+        for entry in sorted(entries,key=lambda v:v[1]):
+            if not groups or entry[1]-groups[-1][-1][1]>25:groups.append([])
+            groups[-1].append(entry)
+        # Join the closed route seam.
+        if len(groups)>1 and groups[0][0][1]+len(stations)-groups[-1][-1][1]<=25:
+            groups[0]=groups[-1]+groups[0];groups.pop()
+        for group in groups:
+            y=max(v[0] for v in group);central=any(v[2] for v in group)
+            deck[x,y,z]='oak_planks' if central else 'spruce_planks'
+            if central:
+                centres.add((x,y,z))
+                for v in group:
+                    if v[2]:sample_decks[v[1],x,z]=y
+                envelope.update((x,y+dy,z) for dy in (1,2,3))
+    conflicts=envelope.intersection(deck)
+    if conflicts:raise ValueError(f'Overlapping rider envelopes and crossing decks: {len(conflicts)} cells')
+    return deck,envelope,centres,sample_decks
+
+
+def separate_crossings(line,stations,original,heights):
+    """Use one consistent over/under order per spatial crossing region."""
+    heights=np.array(heights,copy=True);columns=collections.defaultdict(set)
+    for i,s in enumerate(stations):
+        p=line.interpolate(float(s));a=line.interpolate(max(0,s-.3));b=line.interpolate(min(line.length,s+.3))
+        dx,dz=b.x-a.x,b.y-a.y;length=math.hypot(dx,dz)
+        for side in np.arange(-1.5,1.51,.5):columns[math.floor(p.x-side*dz/length),math.floor(p.y+side*dx/length)].add(i)
+    bins=collections.defaultdict(set)
+    for indices in columns.values():
+        for i in indices:
+            for j in indices:
+                if i>=j or min(abs(stations[i]-stations[j]),line.length-abs(stations[i]-stations[j]))<15:continue
+                bins[i//25,j//25].add((i,j))
+    pending=set(bins);constraints=[]
+    while pending:
+        seed=pending.pop();group={seed};queue=[seed]
+        while queue:
+            i,j=queue.pop()
+            neighbours={(i+di,j+dj) for di in (-1,0,1) for dj in (-1,0,1)} & pending
+            pending-=neighbours;group|=neighbours;queue.extend(neighbours)
+        pairs=set().union(*(bins[k] for k in group))
+        # Do not reverse order independently at each voxel of the same crossing.
+        difference=np.median([original[i]-original[j] for i,j in pairs])
+        constraints.extend((i,j) if difference<=0 else (j,i) for i,j in pairs)
+    initial=heights.copy()
+    for iteration in range(40):
+        required=heights.copy();count=0
+        for lower,upper in constraints:
+            if math.floor(heights[upper])-math.floor(heights[lower])<5:
+                required[upper]=max(required[upper],math.floor(heights[lower])+5);count+=1
+        if not count:
+            if max(heights-initial)>20:raise ValueError('Crossing correction exceeds bounded preview budget')
+            return heights,iteration
+        heights,_=above_terrain_profile(heights,required-3,ramp=.6)
+    raise ValueError('Crossing clearance constraints failed to converge')
+
+
+def audit_bents(bents,block_at):
+    """Every structural cell must join a grounded leg and a deck bearing."""
+    for bent in bents:
+        cells={tuple(k) for k in bent['cells']}
+        seeds={(leg[0],leg[1],leg[2]) for leg in bent['legs']}
+        reached={next(iter(seeds))};pending=list(reached)
+        while pending:
+            x,y,z=pending.pop()
+            for dx,dy,dz in ((1,0,0),(-1,0,0),(0,1,0),(0,-1,0),(0,0,1),(0,0,-1)):
+                k=x+dx,y+dy,z+dz
+                if k in cells and k not in reached:reached.add(k);pending.append(k)
+        if reached!=cells or not seeds<=reached:raise ValueError('Disconnected structural bent')
+        if any(block_at(x,y-1,z).base_name=='air' for x,y,z in seeds):raise ValueError('Ungrounded bent foundation')
+        for x,y,z in bent['deck_contacts']:
+            if (x,y-1,z) not in reached or block_at(x,y,z).base_name!='planks':raise ValueError('Bent bearing does not touch track deck')
+        if any(block_at(*k).base_name=='air' for k in cells):raise ValueError('Missing bent member')
+    return {'grounded_connected_bents':len(bents)}
+
+
+def audit_envelope(envelope,block_at):
+    blocked=[cell for cell in envelope if block_at(*cell).base_name!='air']
+    if blocked:raise ValueError(f'Rider envelope obstructed at {len(blocked)} cells; first: {blocked[:5]}')
+    return {'rider_envelope_cells_checked':len(envelope),'obstructed_rider_envelope_cells':len(blocked),'headroom_blocks':3}
+
+
 def audit_full_route(line,profile,block_at):
     """Audit intended route samples, never just successfully emitted records."""
     from .bedrock import material_block
     gaps=[];cells=set();missing=0;buried=0
     for sample in profile:
-        point=line.interpolate(sample['station_m']);x,z=math.floor(point.x),math.floor(point.y);deck=math.floor(sample['corrected_rail_m'])-1
+        point=line.interpolate(sample['station_m']);x,z=math.floor(point.x),math.floor(point.y);deck=sample.get('raster_deck_m',math.floor(sample['corrected_rail_m'])-1)
         cells.add((x,deck,z));gaps.append(deck-math.floor(sample['terrain_envelope_m']))
         missing+=block_at(x,deck,z)!=material_block('oak_planks')
         buried+=block_at(x,deck+1,z).base_name in ('grass_block','dirt','stone','granite','sand')
@@ -84,7 +189,7 @@ def generate(source,park,raw_path,output,grid):
         if not boundary.covers(Point(x+.5,z+.5)):stats['outside_boundary']+=1;return
         b=old(x,y,z)
         if b is None:stats['outside_world']+=1;return
-        if key in rows and rows[key]['material']!='air' and material=='air':return
+        if key in rows and rows[key]['material']!='air' and material=='air' and not replace:return
         if not replace and b.base_name!='air' and not (carve and b.base_name in ('grass_block','dirt','stone','granite','gravel','sand')):stats['occupied_withheld']+=1;return
         rows[key]={'x':x,'y':y,'z':z,'kind':'structure','material':material,'feature':feature,'source':'park-completion-preview','material_origin':'estimated_reconstruction_void' if material=='air' else 'estimated_reconstruction_shell'}
         if len(rows)>150000:raise ValueError('Completion overlay budget exceeded')
@@ -107,46 +212,99 @@ def generate(source,park,raw_path,output,grid):
             if any(v is None for v in values):raise ValueError('Full track terrain envelope unavailable')
             ground_envelope.append(max(values))
         heights,uplift=above_terrain_profile(original_heights,ground_envelope)
-        deck_cells={};buried=0;angle_records=[]
+        heights,crossing_iterations=separate_crossings(line,stations,original_heights,heights)
+        uplift=heights-original_heights
+        all_decks,rider_envelope,centre_decks,sample_decks=track_masks(line,stations,heights)
+        angle_records=[];support_members={};support_bents=[]
+        def structural_cell(key):
+            if key in rider_envelope or key in all_decks:return False
+            b=old(*key)
+            return b is not None and (b.base_name in ('air','grass_block','dirt','stone','granite','gravel','sand','leaves','oak_leaves','spruce_leaves','vine') or key in owned or key in wicker_architecture)
+
         for sample_index,s in enumerate(stations):
             p=line.interpolate(float(s));a=line.interpolate(max(0,s-.3));b=line.interpolate(min(line.length,s+.3));dx,dz=b.x-a.x,b.y-a.y;length=math.hypot(dx,dz)
             if not length:continue
             nx,nz=-dz/length,dx/length;h=math.floor(heights[sample_index]);g=terrain.sample(p.x,p.y)
             if g is None:continue
-            buried+=h<g
             for side in np.arange(-1.5,1.51,.5):
                 x,z=math.floor(p.x+side*nx),math.floor(p.y+side*nz);ground=terrain.sample(x+.5,z+.5)
                 if ground is None:continue
-                # Retain profile: expose the deck through DTM conflicts, rather
-                # than lifting surveyed controls. No unrelated solid shell cut.
+                # Local provisional shell removal; final rider mask is applied
+                # after deck, trestles and tunnel framing.
                 for y in range(h, max(h+4,math.ceil(ground)+1)):
                     add(x,y,z,'air','wicker/graded-clearance',replace=(x,y,z) in owned or (x,y,z) in wicker_architecture,carve=True)
                 add(x,h-1,z,'oak_planks' if abs(side)<.75 else 'spruce_planks','wicker/timber-track',replace=(x,h-1,z) in owned,carve=True)
-                if abs(side)<.75:deck_cells[(x,h-1,z)]='oak_planks'
                 if abs(side)>1:add(x,h,z,'spruce_slab','wicker/track-edge',replace=(x,h,z) in owned,carve=True)
             if context['lift_start_m']<=s<=context['lift_crest_station_m']:
                 wx,wz=math.floor(p.x+2*nx),math.floor(p.y+2*nz)
                 add(wx,h-1,wz,'spruce_slab','wicker/lift-walkway',replace=(wx,h-1,wz) in owned)
             if abs(s/4-round(s/4))<.05:
-                for side in (-1.5,1.5):
-                    x,z=p.x+side*nx,p.y+side*nz;base=terrain.sample(x,z)
-                    if base is None:continue
-                    for y in range(math.floor(base)+1,h-1):add(x,y,z,'oak_fence','wicker/posts',replace=(math.floor(x),y,math.floor(z)) in owned)
-                    if h-base>3:
-                        rise=min(6,h-base-2);run=min(3,rise);angle_records.append(math.degrees(math.atan2(rise,run)))
-                        for t in np.arange(0,1,.12):add(x+dx/length*run*t,h-2-rise*t,z+dz/length*run*t,'oak_fence','wicker/estimated-braces',replace=(math.floor(x+dx/length*run*t),math.floor(h-2-rise*t),math.floor(z+dz/length*run*t)) in owned)
-                    add(x,h-3,z,'spruce_trapdoor','wicker/bent-detail',replace=(math.floor(x),h-3,math.floor(z)) in owned)
-                for side in np.arange(-1.5,1.51,.5):add(p.x+side*nx,h-2,p.y+side*nz,'oak_fence','wicker/crossbeam',replace=(math.floor(p.x+side*nx),h-2,math.floor(p.y+side*nz)) in owned)
+                # Atomic bents: no skipped post blocks, no ornaments in the legs.
+                for width in (1.5,2.,2.5,3.):
+                    legs=[];members={};contacts=[]
+                    for side in (-width,width):
+                        x,z=math.floor(p.x+side*nx),math.floor(p.y+side*nz);base=terrain.sample(x+.5,z+.5)
+                        # Outriggers connect to the nearest actual deck underside.
+                        choices=[k for k in all_decks if abs(k[0]-x)<=2 and abs(k[2]-z)<=2 and abs(k[1]-(h-1))<=1]
+                        if base is None or not choices:break
+                        contact=min(choices,key=lambda k:(k[0]-x)**2+(k[2]-z)**2)
+                        cap=contact[1]-1;bottom=math.floor(base)+1
+                        # The sampled DTM may bridge an existing raster cut.
+                        # Extend the complete leg down to actual retained ground.
+                        minimum=bottom-16
+                        while bottom>minimum:
+                            footing=(x,bottom-1,z);foundation=old(*footing)
+                            if foundation is not None and foundation.base_name not in ('air','leaves','vine') and footing not in owned:break
+                            bottom-=1
+                        if bottom==minimum or cap<bottom:break
+                        legs.append((x,bottom,z,cap));contacts.append(contact)
+                        for y in range(bottom,cap):members[x,y,z]='oak_fence'
+                        for cell in connected_segment((x,cap,z),(contact[0],cap,contact[2])):members[cell]='spruce_planks'
+                    if len(legs)!=2:continue
+                    l,r=legs;beam=min(l[3],r[3])
+                    for cell in connected_segment((l[0],beam,l[2]),(r[0],beam,r[2])):members[cell]='spruce_planks'
+                    bottom=max(l[1],r[1]);rise=beam-bottom
+                    if rise>=3:
+                        # Repeated braced panels avoid a single steep full-height X.
+                        for lo in range(bottom,beam-1,3):
+                            hi=min(lo+3,beam-1)
+                            for start,end in [((l[0],lo,l[2]),(r[0],hi,r[2])),((r[0],lo,r[2]),(l[0],hi,l[2]))]:
+                                for cell in connected_segment(start,end):members.setdefault(cell,'oak_fence')
+                            for cell in connected_segment((l[0],hi,l[2]),(r[0],hi,r[2])):members.setdefault(cell,'oak_fence')
+                            angle_records.append(math.degrees(math.atan2(hi-lo,math.hypot(l[0]-r[0],l[2]-r[2]))))
+                    if not all(structural_cell(k) for k in members):continue
+                    support_members.update(members)
+                    support_bents.append({'station_m':float(s),'legs':legs,'deck_contacts':contacts,'cells':[list(k) for k in members]})
+                    break
+        # Join successive bents with longitudinal braces on both trestle faces.
+        longitudinal_members=0
+        for first,second in zip(support_bents,support_bents[1:]):
+            if second['station_m']-first['station_m']>8.1:continue
+            for leg_a,leg_b in zip(first['legs'],second['legs']):
+                xa,ba,za,ta=leg_a;xb,bb,zb,tb=leg_b
+                lo=max(ba,bb);hi=min(ta,tb)-1
+                if hi-lo<2:continue
+                extra=set()
+                for start,end in [((xa,hi,za),(xb,hi,zb)),((xa,max(lo,hi-3),za),(xb,hi,zb)),((xa,hi,za),(xb,max(lo,hi-3),zb))]:
+                    extra.update(connected_segment(start,end))
+                if not all(structural_cell(k) for k in extra):continue
+                for k in extra:support_members.setdefault(k,'oak_fence')
+                first['cells'].extend(list(k) for k in extra if list(k) not in first['cells'])
+                longitudinal_members+=1
         # Move the retained tunnel shell to the corrected local rail level.
         for key,a in owned.items():
             point=Point(key[0]+.5,key[2]+.5);station=line.project(point);shift=math.floor(float(np.interp(station,stations,heights)))-math.floor(height(station));target=(key[0],key[1]+shift,key[2])
             if a['feature'].endswith('/sound_tunnel_walls'):
                 add(*target,'dark_oak_trapdoor' if key[1]%3==0 else 'dark_oak_fence' if (key[0]+key[2])%5==0 else 'dark_oak_planks','wicker/sound-tunnel-frame',replace=target in owned)
             elif a['feature'].endswith('/sound_tunnel_roof'):add(*target,'dark_oak_slab','wicker/sound-tunnel-roof',replace=target in owned)
-        # Enforce deck priority after all supports, walkways and tunnel framing.
-        for key,material in deck_cells.items():add(*key,material,'wicker/timber-track',replace=key in owned or key in wicker_architecture,carve=True)
+        for key,material in support_members.items():add(*key,material,'wicker/connected-trestles',replace=True)
+        # Final deck and clearance masks outrank provisional tunnel timber.
+        for key,material in all_decks.items():add(*key,material,'wicker/timber-track',replace=True)
+        for key in rider_envelope:add(*key,'air','wicker/rider-clearance',replace=True)
         profile=[{'station_m':float(s),'original_rail_m':float(h),'corrected_rail_m':float(v),'terrain_envelope_m':float(g),'uplift_m':float(u)} for s,h,v,g,u in zip(stations,original_heights,heights,ground_envelope,uplift)]
-        items.append({'component':'wicker','route_samples':len(stations),'profile':profile,'maximum_uplift_m':float(max(uplift)),'raised_samples':int(np.count_nonzero(uplift)),'remedy':'smooth uplift above original uncut terrain; no trench used to satisfy clearance','height_status':'terrain-constrained preview; changed planning height controls are not asserted as surveyed','brace_angles_status':'estimated; retained application text has no bound support section','estimated_brace_angle_range_degrees':[min(angle_records),max(angle_records)] if angle_records else []})
+        for i,sample in enumerate(profile):
+            pt=line.interpolate(sample['station_m']);sample['raster_deck_m']=sample_decks[i,math.floor(pt.x),math.floor(pt.y)]
+        items.append({'component':'wicker','route_samples':len(stations),'profile':profile,'maximum_uplift_m':float(max(uplift)),'raised_samples':int(np.count_nonzero(uplift)),'remedy':'terrain and crossing constrained profile; final three-block rider envelope', 'crossing_constraint_iterations':crossing_iterations,'connected_bents':len(support_bents),'longitudinal_braced_spans':longitudinal_members,'height_status':'terrain-constrained preview; changed planning height controls are not asserted as surveyed','brace_angles_status':'estimated; retained application text has no bound support section','estimated_brace_angle_range_degrees':[min(angle_records),max(angle_records)] if angle_records else []})
         for e in raw['elements']:
             tags=e.get('tags',{});geom=e.get('geometry',[])
             if len(geom)<2:continue
@@ -229,15 +387,23 @@ def generate(source,park,raw_path,output,grid):
         for label,dx,dz in [('n',0,1),('e',1,0),('s',0,-1),('w',-1,0)]:
             if any(rows.get((x+dx,y+dy,z+dz),{}).get('material','').startswith('cobblestone_wall') for dy in (-1,0,1)):directions+=label
         if directions:row['material']='cobblestone_wall_'+directions
-    report={'stations':[],'world_name':'Alton Towers — Wicker track clearance V8','items':items,'records_by_component':dict(collections.Counter(a['feature'].split('/')[0] for a in rows.values())),'rejections':dict(stats),'height_sources':elevation,'raw_osm_sha256':hashlib.sha256(Path(raw_path).read_bytes()).hexdigest(),'limitations':['Transport heights/pier positions are estimates, not planning sections','Wicker brace angles remain estimated; no exact angle annotation found in retained sheets','Landmark shells use mapped outlines and raster heights; detailed facade and inner wall geometry remains unresolved','Pagoda open octagonal three-stage form follows Historic England listing 1192054; dimensions are estimated','Mapped fences/walls use one-block preview heights; materials unspecified'],'references':['https://historicengland.org.uk/listing/the-list/list-entry/1192054','https://historicengland.org.uk/listing/the-list/list-entry/1374685']}
+    report={'stations':[],'world_name':'Alton Towers — Wicker connected trestles V9','items':items,'records_by_component':dict(collections.Counter(a['feature'].split('/')[0] for a in rows.values())),'rejections':dict(stats),'height_sources':elevation,'raw_osm_sha256':hashlib.sha256(Path(raw_path).read_bytes()).hexdigest(),'limitations':['Transport heights/pier positions are estimates, not planning sections','Wicker brace angles remain estimated; no exact angle annotation found in retained sheets','Landmark shells use mapped outlines and raster heights; detailed facade and inner wall geometry remains unresolved','Pagoda open octagonal three-stage form follows Historic England listing 1192054; dimensions are estimated','Mapped fences/walls use one-block preview heights; materials unspecified'],'references':['https://historicengland.org.uk/listing/the-list/list-entry/1192054','https://historicengland.org.uk/listing/the-list/list-entry/1374685']}
     apply_overlay(source,output,list(rows.values()),report,report_key='park_completion',report_filename='park-completion-report.json')
     reopened=amulet.load_level(str(output/'bedrock-world'));verified_chunks={}
     def exported_block(x,y,z):
         key=(x//16,(-z)//16)
         if key not in verified_chunks:verified_chunks[key]=reopened.get_chunk(*key,'minecraft:overworld')
         ch=verified_chunks[key];return ch.block_palette[int(ch.blocks[x%16,y+offset,(-z)%16])]
-    try:checks=audit_full_route(line,profile,exported_block)
+    try:
+        checks=audit_full_route(line,profile,exported_block)
+        checks.update(audit_envelope(rider_envelope,exported_block))
+        checks.update(audit_bents(support_bents,exported_block))
+        failures=[key for key,mat in support_members.items() if exported_block(*key)!=material_block(mat)]
+        if failures:raise ValueError(f'Support readback failed: {failures[:5]}')
+        checks.update({'complete_bents_checked':len(support_bents),'structural_cells_checked':len(support_members),'missing_structural_cells':len(failures)})
     finally:reopened.close()
+    (output/'rider-envelope.json').write_text(json.dumps(sorted(rider_envelope)))
+    (output/'support-bents.json').write_text(json.dumps(support_bents))
     (output/'route-clearance-checks.json').write_text(json.dumps(checks,indent=2))
     (output/'completion-overlay.jsonl').write_text(''.join(json.dumps(a)+'\n' for a in rows.values()));print(json.dumps({k:report[k] for k in ('records_by_component','world_verification')},indent=2));return report
 

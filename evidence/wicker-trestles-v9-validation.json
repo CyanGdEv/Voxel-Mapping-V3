@@ -1,0 +1,59 @@
+{
+  "version": "V9",
+  "world_sha256": "764447116bbfb8314521275ade0271152fd7229c682c4e095b892311e8233167",
+  "route_and_support_checks": {
+    "route_samples_checked": 1949,
+    "unique_centre_deck_cells": 894,
+    "minimum_deck_above_original_terrain_blocks": 2,
+    "missing_deck_samples": 0,
+    "terrain_above_deck_samples": 0,
+    "rider_envelope_cells_checked": 5019,
+    "obstructed_rider_envelope_cells": 0,
+    "headroom_blocks": 3,
+    "grounded_connected_bents": 165,
+    "complete_bents_checked": 165,
+    "structural_cells_checked": 4425,
+    "missing_structural_cells": 0
+  },
+  "preservation_checks": {
+    "v6_details_checked": 245,
+    "non_wicker_v8_checked": 47287,
+    "changed_preserved_cells": 0,
+    "failures": []
+  },
+  "world_verification": {
+    "touched_chunks": 383,
+    "overlay_records": 71149,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "06c438c11e3ca0b9358131e9c5b40ff32adf01b16275a69842861214b29652e9",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 2894
+  },
+  "wicker_profile_summary": {
+    "component": "wicker",
+    "route_samples": 1949,
+    "maximum_uplift_m": 10.951999999999998,
+    "raised_samples": 1561,
+    "remedy": "terrain and crossing constrained profile; final three-block rider envelope",
+    "crossing_constraint_iterations": 2,
+    "connected_bents": 165,
+    "longitudinal_braced_spans": 120,
+    "height_status": "terrain-constrained preview; changed planning height controls are not asserted as surveyed",
+    "brace_angles_status": "estimated; retained application text has no bound support section",
+    "estimated_brace_angle_range_degrees": [
+      8.876395080973342,
+      56.309932474020215
+    ]
+  },
+  "tests": {
+    "full_suite": 318,
+    "targeted": 11,
+    "status": "passed"
+  },
+  "limitations": [
+    "One-metre voxel preview; exact structural section angles are not established by retained applications.",
+    "Crossing heights and bracing are provisional, not surveyed ride geometry.",
+    "Clearance covers three blocks above raster oak centre deck; not an engineering rolling-stock envelope."
+  ]
+}
