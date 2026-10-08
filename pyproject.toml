@@ -18,4 +18,4 @@ planning = ["PyMuPDF>=1.26,<2"]
 include = ["voxel_mapper*"]
 
 [tool.setuptools.package-data]
-voxel_mapper = ["data/*.json"]
+voxel_mapper = ["data/*.json", "data/*.geojson"]

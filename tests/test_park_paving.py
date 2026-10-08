@@ -2,8 +2,8 @@ import unittest
 import json
 import tempfile
 from pathlib import Path
-from shapely.geometry import box,Point,mapping,Polygon
-from voxel_mapper.park_paving import NearbyMaterials,emit_paving
+from shapely.geometry import box,Point,mapping,Polygon,shape
+from voxel_mapper.park_paving import NearbyMaterials,emit_paving,protected_record,paving_extensions,plaza_coverage
 from voxel_mapper.paving_palette import palette_block,material_label,PALETTES
 from voxel_mapper.park_paving_plans import align_shared_labels,control_labels
 from voxel_mapper.bedrock import ALLOWED_MATERIALS,material_block,export_world
@@ -15,6 +15,39 @@ def feature(polygon,surface='brick',status='contained_native_floor_label',fid='p
 
 
 class ParkPavingTests(unittest.TestCase):
+    def test_plaza_coverage_detects_missing_and_wrong_material_cells(self):
+        f=feature(box(0,0,2,2),fid='planning-paving/wicker/1')
+        f['properties']['contained_labels']=['Plaza']
+        rows=[{'x':0,'z':0,'surface':'brick'},{'x':0,'z':1,'surface':'stone'}]
+        self.assertEqual(plaza_coverage([f],rows),[{'feature':f['id'],'footprint_cells':4,
+                         'brick_cells':1,'missing_cells':2,'wrong_material_cells':1}])
+
+    def test_reviewed_cbeebies_corridors_keep_provenance_and_material_unknown(self):
+        from pyproj import Transformer
+        rows,audit=paving_extensions(Transformer.from_crs(4326,27700,always_xy=True).transform)
+        self.assertEqual(len(rows),4)
+        self.assertTrue(audit['withheld_sources'])
+        self.assertTrue(all(not f['properties']['registration_verified'] for f in rows))
+        self.assertTrue(all(f['properties']['material_status']=='paving_label_unspecified_material' for f in rows))
+        self.assertEqual(NearbyMaterials(rows).features,[])
+        self.assertTrue(all(100<shape(f['geometry']).area<2000 for f in rows))
+
+    def test_legacy_paving_can_be_repainted_without_unlocking_ride_or_air_cells(self):
+        r={'kind':'structure','source':'wicker-estimated-reconstruction',
+           'feature':'reconstruction/proposed_plaza_paving','material':'stone_bricks'}
+        self.assertFalse(protected_record(r))
+        self.assertTrue(protected_record({**r,'material':'air'}))
+        self.assertTrue(protected_record({**r,'feature':'reconstruction/track_ties'}))
+        self.assertTrue(protected_record({**r,'source':'other'}))
+
+    def test_user_plaza_assignment_covers_whole_footprint_and_matching_osm(self):
+        plaza=feature(box(0,0,20,20),status='user_material_assignment')
+        osm=feature(box(1,1,21,21),'stone',fid='osm/plaza')
+        rows,report=emit_paving([osm],[plaza],lambda x,z:100,box(-5,-5,25,25),Polygon())
+        self.assertTrue(all(r['surface']=='brick' for r in rows))
+        self.assertEqual(sum(r['material_origin']=='user_material_assignment' for r in rows),400)
+        self.assertTrue(any(r['material_origin']=='nearby_user_material_estimate' for r in rows))
+
     def test_nearby_transfer_is_metric_and_bounded(self):
         matcher=NearbyMaterials([feature(box(0,0,10,10))],2)
         self.assertEqual(matcher.match(Point(11.9,5))['surface'],'brick')

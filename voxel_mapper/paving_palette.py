@@ -1,17 +1,24 @@
 """Deterministic vanilla-block surface palettes at one block per metre.
 
-Brick blocks already carry a fine running-bond texture. Larger tile choices
-provide gentle colour variation, not a claim to reproduce individual bricks.
+The user's block samples set brick, asphalt and stone colours. Vanilla textures
+and deterministic weighted variation approximate paving at metre resolution.
 """
 import math
 import re
 
 PALETTES = {
- 'brick': {'blocks':['bricks','red_terracotta'],'pattern':'running_bond','colours':['#995740','#8f4635']},
- 'asphalt': {'blocks':['black_concrete','gray_concrete'],'pattern':'fine_grain','colours':['#303035','#45464a']},
+ 'brick': {'blocks':['terracotta','mud_bricks','oak_planks','granite'],'weights':[55,20,20,5],
+           'pattern':'sample_brick_mix','colours':['#a85a3e','#8d694c','#a67c4c','#a17d6d'],
+           'basis':'User block sample IMG_6639.jpeg; visual material approximation'},
+ 'asphalt': {'blocks':['gray_concrete'],'pattern':'sample_asphalt','colours':['#45464a'],
+             'basis':'User grey block sample IMG_6639.jpeg'},
  'concrete': {'blocks':['light_gray_concrete','stone'],'pattern':'slab','colours':['#aaa9a4','#90918a']},
- 'paving_stones': {'blocks':['stone_bricks','stone'],'pattern':'staggered_pavers','colours':['#92938d','#7b7c77']},
- 'stone': {'blocks':['stone','stone_bricks'],'pattern':'irregular_stone','colours':['#93938c','#777971']},
+ 'paving_stones': {'blocks':['stone_bricks','stone','cobblestone'],'weights':[45,35,20],
+                   'pattern':'sample_stone_mix','colours':['#777971','#93938c','#73766f'],
+                   'basis':'User stone block sample IMG_6639.jpeg; block-paving constituent unspecified'},
+ 'stone': {'blocks':['stone_bricks','stone','cobblestone'],'weights':[45,35,20],
+           'pattern':'sample_stone_mix','colours':['#777971','#93938c','#73766f'],
+           'basis':'User block sample IMG_6639.jpeg'},
  'sett': {'blocks':['cobblestone','stone'],'pattern':'setts','colours':['#73766f','#93938c']},
  'gravel': {'blocks':['gravel','coarse_dirt'],'pattern':'fine_grain','colours':['#99948c','#78664a']},
  'compacted': {'blocks':['coarse_dirt','gravel'],'pattern':'fine_grain','colours':['#867252','#9e9581']},
@@ -42,6 +49,11 @@ def palette_block(surface,x,z):
     if len(blocks)==1:return blocks[0]
     # Coordinate hash has no runtime/random seed and stays stable across chunks.
     grain=((x*73856093)^(z*19349663))&0xffffffff
+    if 'weights' in p:
+        index=grain%sum(p['weights']);total=0
+        for block,weight in zip(blocks,p['weights']):
+            total+=weight
+            if index<total:return block
     if p['pattern']=='running_bond':alternate=((x+(z%2)*2)//4+z*3)%17==0
     elif p['pattern']=='slab':alternate=grain%29==0
     elif p['pattern']=='staggered_pavers':alternate=((x+z%2)//2+z*7)%13==0

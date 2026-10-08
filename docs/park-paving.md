@@ -34,8 +34,10 @@ material.
 ## Material matching
 
 The default proximity is **2 m**, configurable from 0 to 10 m. Coordinates are
-park-local metres, not latitude/longitude. Only polygons with explicit floor
-material labels may donate a material.
+park-local metres, not latitude/longitude. Polygons with explicit floor material labels or a separately recorded user
+material assignment may donate a material. Generic paving hatches never establish
+brick composition. The user's Wicker Man correction assigns brick to complete new
+paving and labelled plaza footprints, preserving this provenance separately.
 
 A whole OSM polygon inherits when its area is between 0.5 and 2 times the
 planning polygon's area, at least 75% is covered by its buffered footprint,
@@ -48,11 +50,11 @@ distance. An inherited material is an estimate rather than construction proof.
 
 | Application or mapped surface | Palette | Interpretation |
 | --- | --- | --- |
-| Brick paving | Bricks, occasional red terracotta | Brick blocks provide built-in fine running-bond texture |
-| Tarmac / asphalt | Black and occasional grey concrete | Asphalt appearance approximation |
+| Brick paving | Terracotta 55%, mud bricks 20%, oak planks 20%, granite 5% | User sample IMG_6639; visual approximation |
+| Tarmac / asphalt | Grey concrete | User sample IMG_6639 |
 | Concrete | Light grey concrete and occasional stone | Slab colour variation |
-| Block paving | Stone bricks and occasional stone | Constituent unspecified; does not imply clay brick |
-| Stone paving | Stone and stone bricks | Irregular stone approximation |
+| Block paving | Stone bricks 45%, stone 35%, cobblestone 20% | User stone sample; constituent unspecified |
+| Stone paving | Stone bricks 45%, stone 35%, cobblestone 20% | User sample IMG_6639 |
 | Setts / cobblestone | Cobblestone and stone | Small stone units |
 | Gravel | Gravel and occasional coarse dirt | Grain variation |
 | Compacted ground | Coarse dirt and occasional gravel | Natural path surface |
@@ -93,7 +95,9 @@ python -m voxel_mapper.park_paving \
 The source world and new output are separate. Ground elevations come from the
 retained terrain and use the original world vertical offset. No clearance or
 excavation is generated. Existing ride physical/clearance cells and retained
-structure/roof/water cells are protected. Bridges, tunnels and nonzero-layer
+structure/roof/water cells are protected. The three known legacy Wicker ground
+paving features are repaintable despite their old `structure` classification;
+ride and air cells remain protected. Bridges, tunnels and nonzero-layer
 OSM pedestrian features are excluded from ground repainting. Unsupported
 planning alignments remain in the audit with no world geometry.
 
@@ -102,3 +106,29 @@ Bedrock readback, including unchanged cells and air, plus total chunk coverage
 and spawn metadata. Untouched chunks retain the baseline verification. Outputs
 include `park.mcworld`, per-feature material/proximity decisions, provenance,
 novel planning cell counts, the composed paving JSONL, and palette JSON/PNG.
+
+## Additional CBeebies corridors and coverage
+
+`data/alton-paving-extensions.geojson` retains four reviewed corridor boundaries
+from SMD/2013/1047, Proposed Site Plan 2813-102F (ImageName 51142). Native PDF
+vertices, source hashes, download URLs and the similarity pose remain in each
+feature or acquisition audit. The pose fits the existing mapped boat-canal
+boundary, with about 1.53 m boundary RMS. This is not an independent accuracy
+measurement: bank-edge/centreline differences, historical geometry and OSM
+accuracy limit the result. Floor composition is unspecified and uses the user
+stone palette. No ride, water or performance-green geometry is generated.
+
+SMD/2024/0579 was inspected but withheld: a building-corner fit had an 11.14 m
+withheld residual and its cross-sheet boundary was open. Do not interpret the
+historical corridors as a complete present-day CBeebies reconstruction. The
+main entrance plaza (OSM relation 7673661) was already mapped; this pass repaints
+and verifies it rather than inventing new entrance geometry. Park coverage
+remains incomplete.
+
+The V2 world has 77,394 paving records, including 3,031 planning cells absent
+from retained mapped ground paving. CBeebies accounts for 1,585 new cells; 4,290
+main entrance cells are repainted. Both labelled Wicker plaza footprints are
+fully brick: 218/218 and 274/274 cells, with no missing or wrong-material cells.
+Whole-world brick-palette coverage rises from 13 to 2,085 cells. All 291 tests
+pass, including actual Bedrock readback of every palette block. The exported
+world verifies all cells in 1,247 touched chunks and total chunk coverage.

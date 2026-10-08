@@ -24,10 +24,12 @@ MATERIALS = {'terrain':'grass_block','water':'water','parking':'stone','path':'s
 PRIORITY = {'terrain':0,'water':1,'parking':2,'path':3,'attraction':4,'building':5,'roof':7,'structure':6}
 PRIORITY.update({kind: 3 for kind in ('road','sidewalk','queue','cycleway','steps')})
 PRIORITY.update(lakebed=1,plaza=3)
-ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'red_terracotta','dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
+ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'terracotta','mud_bricks','granite','red_terracotta','dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
 
 
 def material_block(material):
+    if material == 'granite':
+        return Block('universal_minecraft','granite',{'polished':StringTag('false')})
     if material == 'stone_bricks':
         return Block('universal_minecraft','stone_bricks',{'variant':StringTag('normal')})
     if material == 'bricks':
