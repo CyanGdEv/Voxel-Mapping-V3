@@ -183,6 +183,9 @@ def apply_overlay(source, output, rows, report, report_key='xsector_reconstructi
                                      chunk.blocks.get_sub_chunk(s)].copy() for s in chunk.blocks.sub_chunks}
             chunk.changed=True
             level.put_chunk(chunk, 'minecraft:overworld')
+        if report.get('world_name'):
+            from amulet_nbt import StringTag
+            level.level_wrapper.root_tag.compound['LevelName']=StringTag(report['world_name'])
         if report.get('spawn_minecraft_xyz'):
             from amulet_nbt import IntTag, StringTag
             spawn=report['spawn_minecraft_xyz']

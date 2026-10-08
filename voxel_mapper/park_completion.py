@@ -32,16 +32,48 @@ def roof_cells(polygon):
     return [(x,z) for x in range(math.floor(a),math.ceil(c)) for z in range(math.floor(b),math.ceil(d)) if polygon.covers(Point(x+.5,z+.5))]
 
 
+def above_terrain_profile(original, ground, spacing=.4, ramp=.12):
+    """Smooth periodic uplift above the uncut terrain, with a two-block gap.
+
+    This corrects a provisional preview; it is not a surveyed ride profile.
+    A slope-limited upper envelope spreads correction into adjacent spans.
+    """
+    original=np.asarray(original,dtype=float);ground=np.asarray(ground,dtype=float)
+    if original.shape!=ground.shape or original.ndim!=1 or not len(original) or not np.all(np.isfinite(original+ground)) or spacing<=0 or ramp<=0:
+        raise ValueError('Finite paired profile and terrain samples required')
+    uplift=np.maximum(0,np.floor(ground)+3-np.floor(original))
+    n=len(uplift)
+    for k in range(2*n):
+        i=k%n;uplift[i]=max(uplift[i],uplift[(i-1)%n]-spacing*ramp)
+    for k in range(2*n-1,-1,-1):
+        i=k%n;uplift[i]=max(uplift[i],uplift[(i+1)%n]-spacing*ramp)
+    return original+uplift,uplift
+
+
+def audit_full_route(line,profile,block_at):
+    """Audit intended route samples, never just successfully emitted records."""
+    from .bedrock import material_block
+    gaps=[];cells=set();missing=0;buried=0
+    for sample in profile:
+        point=line.interpolate(sample['station_m']);x,z=math.floor(point.x),math.floor(point.y);deck=math.floor(sample['corrected_rail_m'])-1
+        cells.add((x,deck,z));gaps.append(deck-math.floor(sample['terrain_envelope_m']))
+        missing+=block_at(x,deck,z)!=material_block('oak_planks')
+        buried+=block_at(x,deck+1,z).base_name in ('grass_block','dirt','stone','granite','sand')
+    if not gaps or missing or buried or min(gaps)<2:raise ValueError(f'Full route clearance failed: missing deck={missing}, buried={buried}')
+    return {'route_samples_checked':len(profile),'unique_centre_deck_cells':len(cells),'minimum_deck_above_original_terrain_blocks':min(gaps),'missing_deck_samples':int(missing),'terrain_above_deck_samples':int(buried)}
+
+
 def generate(source,park,raw_path,output,grid):
     source,park,output=map(Path,(source,park,output));raw=json.loads(Path(raw_path).read_text());q=json.loads((source/'quality-report.json').read_text());c=json.loads((source/'resolved-config.json').read_text());crs=CRS.from_wkt(q['crs']);project=Transformer.from_crs(4326,crs,always_xy=True)
     datum=copy.deepcopy(next(s for s in c['sources'] if s['id']=='ea-dtm'));datum['coordinate_transform']['grid']['file']=str(Path(grid).resolve());activate_retained_grid(datum)
     sources={s['id']:s for s in c['sources']};terrain=Terrain(c['terrain'],crs,sources);surface=Terrain(c['surface'],crs,sources);boundary=transform(project.transform,shape(c['boundary_geojson']));offset=q['world']['vertical_offset_blocks'];level=amulet.load_level(str(source/'bedrock-world'));chunks={};coords=set(level.all_chunk_coords('minecraft:overworld'));rows={};stats=collections.Counter();items=[];owned={}
     # Only the exact retained reconstruction mask permits replacement of ride
     # structure. Paving/landscape/detail masks are never blanket-cleared.
-    components=('track_rails','track_ties','timber_bents','lift_chain','lift_walkway','sound_tunnel_walls','sound_tunnel_roof')
+    components=('track_rails','track_ties','timber_bents','lift_chain','lift_walkway','sound_tunnel_walls','sound_tunnel_roof');wicker_architecture=set()
     for text in (park/'voxels.jsonl').open():
         a=json.loads(text)
         if a.get('source')=='wicker-estimated-reconstruction' and any(a.get('feature','').endswith('/'+part) for part in components):owned[(a['x'],a['y'],a['z'])]=a
+        if a.get('source')=='wicker-estimated-reconstruction' and a.get('feature','').endswith(('_walls','_roof','_platform','/sound_screens','/sound_screen_posts')):wicker_architecture.add((a['x'],a['y'],a['z']))
     def old(x,y,z):
         mc=(x//16,(-z)//16)
         if mc not in coords or not -64<=y+offset<=319:return None
@@ -67,11 +99,19 @@ def generate(source,park,raw_path,output,grid):
         def height(s):
             if context['lift_start_m']<=s<=context['lift_crest_station_m']:return float(lift_profile([s],context['lift_start_m'],context['lift_crest_station_m'],context['lift_foot_level_m'],context['lift_crest_level_m'])[0])
             return float(preview_profile(route,bindings,[s])[0])
-        buried=0;angle_records=[]
-        for s in np.arange(0,line.length,.4):
+        stations=np.arange(0,line.length,.4);original_heights=np.array([height(s) for s in stations]);ground_envelope=[]
+        for s in stations:
+            p=line.interpolate(float(s));a=line.interpolate(max(0,s-.3));b=line.interpolate(min(line.length,s+.3));dx,dz=b.x-a.x,b.y-a.y;length=math.hypot(dx,dz)
+            if not length:raise ValueError('Undefined route tangent')
+            values=[terrain.sample(math.floor(p.x-side*dz/length)+.5,math.floor(p.y+side*dx/length)+.5) for side in np.arange(-2.5,2.51,.5)]
+            if any(v is None for v in values):raise ValueError('Full track terrain envelope unavailable')
+            ground_envelope.append(max(values))
+        heights,uplift=above_terrain_profile(original_heights,ground_envelope)
+        deck_cells={};buried=0;angle_records=[]
+        for sample_index,s in enumerate(stations):
             p=line.interpolate(float(s));a=line.interpolate(max(0,s-.3));b=line.interpolate(min(line.length,s+.3));dx,dz=b.x-a.x,b.y-a.y;length=math.hypot(dx,dz)
             if not length:continue
-            nx,nz=-dz/length,dx/length;h=math.floor(height(s));g=terrain.sample(p.x,p.y)
+            nx,nz=-dz/length,dx/length;h=math.floor(heights[sample_index]);g=terrain.sample(p.x,p.y)
             if g is None:continue
             buried+=h<g
             for side in np.arange(-1.5,1.51,.5):
@@ -80,8 +120,9 @@ def generate(source,park,raw_path,output,grid):
                 # Retain profile: expose the deck through DTM conflicts, rather
                 # than lifting surveyed controls. No unrelated solid shell cut.
                 for y in range(h, max(h+4,math.ceil(ground)+1)):
-                    add(x,y,z,'air','wicker/graded-clearance',replace=(x,y,z) in owned,carve=True)
+                    add(x,y,z,'air','wicker/graded-clearance',replace=(x,y,z) in owned or (x,y,z) in wicker_architecture,carve=True)
                 add(x,h-1,z,'oak_planks' if abs(side)<.75 else 'spruce_planks','wicker/timber-track',replace=(x,h-1,z) in owned,carve=True)
+                if abs(side)<.75:deck_cells[(x,h-1,z)]='oak_planks'
                 if abs(side)>1:add(x,h,z,'spruce_slab','wicker/track-edge',replace=(x,h,z) in owned,carve=True)
             if context['lift_start_m']<=s<=context['lift_crest_station_m']:
                 wx,wz=math.floor(p.x+2*nx),math.floor(p.y+2*nz)
@@ -96,12 +137,16 @@ def generate(source,park,raw_path,output,grid):
                         for t in np.arange(0,1,.12):add(x+dx/length*run*t,h-2-rise*t,z+dz/length*run*t,'oak_fence','wicker/estimated-braces',replace=(math.floor(x+dx/length*run*t),math.floor(h-2-rise*t),math.floor(z+dz/length*run*t)) in owned)
                     add(x,h-3,z,'spruce_trapdoor','wicker/bent-detail',replace=(math.floor(x),h-3,math.floor(z)) in owned)
                 for side in np.arange(-1.5,1.51,.5):add(p.x+side*nx,h-2,p.y+side*nz,'oak_fence','wicker/crossbeam',replace=(math.floor(p.x+side*nx),h-2,math.floor(p.y+side*nz)) in owned)
-        # Retain tunnel footprints and height, change shell textures only.
+        # Move the retained tunnel shell to the corrected local rail level.
         for key,a in owned.items():
+            point=Point(key[0]+.5,key[2]+.5);station=line.project(point);shift=math.floor(float(np.interp(station,stations,heights)))-math.floor(height(station));target=(key[0],key[1]+shift,key[2])
             if a['feature'].endswith('/sound_tunnel_walls'):
-                add(*key,'dark_oak_trapdoor' if key[1]%3==0 else 'dark_oak_fence' if (key[0]+key[2])%5==0 else 'dark_oak_planks','wicker/sound-tunnel-frame',replace=True)
-            elif a['feature'].endswith('/sound_tunnel_roof'):add(*key,'dark_oak_slab','wicker/sound-tunnel-roof',replace=True)
-        items.append({'component':'wicker','retained_buried_samples':buried,'remedy':'bounded terrain cut, profile controls preserved','brace_angles_status':'estimated; retained application text has no bound support section','estimated_brace_angle_range_degrees':[min(angle_records),max(angle_records)] if angle_records else []})
+                add(*target,'dark_oak_trapdoor' if key[1]%3==0 else 'dark_oak_fence' if (key[0]+key[2])%5==0 else 'dark_oak_planks','wicker/sound-tunnel-frame',replace=target in owned)
+            elif a['feature'].endswith('/sound_tunnel_roof'):add(*target,'dark_oak_slab','wicker/sound-tunnel-roof',replace=target in owned)
+        # Enforce deck priority after all supports, walkways and tunnel framing.
+        for key,material in deck_cells.items():add(*key,material,'wicker/timber-track',replace=key in owned or key in wicker_architecture,carve=True)
+        profile=[{'station_m':float(s),'original_rail_m':float(h),'corrected_rail_m':float(v),'terrain_envelope_m':float(g),'uplift_m':float(u)} for s,h,v,g,u in zip(stations,original_heights,heights,ground_envelope,uplift)]
+        items.append({'component':'wicker','route_samples':len(stations),'profile':profile,'maximum_uplift_m':float(max(uplift)),'raised_samples':int(np.count_nonzero(uplift)),'remedy':'smooth uplift above original uncut terrain; no trench used to satisfy clearance','height_status':'terrain-constrained preview; changed planning height controls are not asserted as surveyed','brace_angles_status':'estimated; retained application text has no bound support section','estimated_brace_angle_range_degrees':[min(angle_records),max(angle_records)] if angle_records else []})
         for e in raw['elements']:
             tags=e.get('tags',{});geom=e.get('geometry',[])
             if len(geom)<2:continue
@@ -184,8 +229,17 @@ def generate(source,park,raw_path,output,grid):
         for label,dx,dz in [('n',0,1),('e',1,0),('s',0,-1),('w',-1,0)]:
             if any(rows.get((x+dx,y+dy,z+dz),{}).get('material','').startswith('cobblestone_wall') for dy in (-1,0,1)):directions+=label
         if directions:row['material']='cobblestone_wall_'+directions
-    report={'stations':[],'world_name':'Alton Towers — Transport and timber detail V7','items':items,'records_by_component':dict(collections.Counter(a['feature'].split('/')[0] for a in rows.values())),'rejections':dict(stats),'height_sources':elevation,'raw_osm_sha256':hashlib.sha256(Path(raw_path).read_bytes()).hexdigest(),'limitations':['Transport heights/pier positions are estimates, not planning sections','Wicker brace angles remain estimated; no exact angle annotation found in retained sheets','Landmark shells use mapped outlines and raster heights; detailed facade and inner wall geometry remains unresolved','Pagoda open octagonal three-stage form follows Historic England listing 1192054; dimensions are estimated','Mapped fences/walls use one-block preview heights; materials unspecified'],'references':['https://historicengland.org.uk/listing/the-list/list-entry/1192054','https://historicengland.org.uk/listing/the-list/list-entry/1374685']}
-    apply_overlay(source,output,list(rows.values()),report,report_key='park_completion',report_filename='park-completion-report.json');(output/'completion-overlay.jsonl').write_text(''.join(json.dumps(a)+'\n' for a in rows.values()));print(json.dumps({k:report[k] for k in ('records_by_component','world_verification')},indent=2));return report
+    report={'stations':[],'world_name':'Alton Towers — Wicker track clearance V8','items':items,'records_by_component':dict(collections.Counter(a['feature'].split('/')[0] for a in rows.values())),'rejections':dict(stats),'height_sources':elevation,'raw_osm_sha256':hashlib.sha256(Path(raw_path).read_bytes()).hexdigest(),'limitations':['Transport heights/pier positions are estimates, not planning sections','Wicker brace angles remain estimated; no exact angle annotation found in retained sheets','Landmark shells use mapped outlines and raster heights; detailed facade and inner wall geometry remains unresolved','Pagoda open octagonal three-stage form follows Historic England listing 1192054; dimensions are estimated','Mapped fences/walls use one-block preview heights; materials unspecified'],'references':['https://historicengland.org.uk/listing/the-list/list-entry/1192054','https://historicengland.org.uk/listing/the-list/list-entry/1374685']}
+    apply_overlay(source,output,list(rows.values()),report,report_key='park_completion',report_filename='park-completion-report.json')
+    reopened=amulet.load_level(str(output/'bedrock-world'));verified_chunks={}
+    def exported_block(x,y,z):
+        key=(x//16,(-z)//16)
+        if key not in verified_chunks:verified_chunks[key]=reopened.get_chunk(*key,'minecraft:overworld')
+        ch=verified_chunks[key];return ch.block_palette[int(ch.blocks[x%16,y+offset,(-z)%16])]
+    try:checks=audit_full_route(line,profile,exported_block)
+    finally:reopened.close()
+    (output/'route-clearance-checks.json').write_text(json.dumps(checks,indent=2))
+    (output/'completion-overlay.jsonl').write_text(''.join(json.dumps(a)+'\n' for a in rows.values()));print(json.dumps({k:report[k] for k in ('records_by_component','world_verification')},indent=2));return report
 
 
 def main():

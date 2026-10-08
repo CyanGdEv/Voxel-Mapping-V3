@@ -59,3 +59,30 @@ python -m voxel_mapper.park_completion \
 The preview is rendered from reopened world blocks with simplified silhouettes
 for partial blocks; it is not an in-game screenshot. Absolute registration,
 historical source dates and non-surveyed dimensions remain provisional.
+
+## V8: above-terrain correction
+
+V7 cleared a narrow trench while leaving some rail heights below surrounding
+terrain. Its exported-record check also missed samples where a deck block was
+rejected or replaced. V8 supersedes that clearance policy.
+
+The generator samples the original terrain over a five-metre lateral envelope
+at every 0.4 m route station. A nonnegative periodic correction keeps the deck
+at least two whole blocks above the original terrain envelope. The correction
+ramps at no more than 0.12 m per metre into adjoining spans. Maximum uplift is
+seven metres. These are corrected preview heights; original planning controls
+that move are not presented as measured ride heights. Tunnel shells follow the
+corrected local profile, and the oak centre deck wins over generated supports,
+walkways and sound-screen blocks at the same cell.
+
+The generator reopens the exported world and checks all 1,949 intended route
+samples, rather than a subset of successfully emitted records. All 957 unique
+centre-deck cells contain oak planks; minimum clearance above the original
+terrain envelope is two blocks, with no natural terrain immediately above the
+deck. This is a terrain/deck check, not a complete rolling-stock clearance or
+architectural collision audit. All 245 V6 detail blocks remain unchanged.
+
+The full touched-section/chunk-coverage check passes across 383 chunks. All
+314 tests pass. Validation: `evidence/wicker-clearance-v8-validation.json`.
+The imported world is labelled “Wicker track clearance V8” to distinguish it
+from previous exports.
