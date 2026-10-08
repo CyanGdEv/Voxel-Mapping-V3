@@ -40,13 +40,30 @@ FOLIAGE_LEAVES = (*FOLIAGE_WOODS,'azalea','flowering_azalea')
 ALLOWED_MATERIALS.update(f'{wood}_log{suffix}' for wood in FOLIAGE_WOODS for suffix in ('','_x','_z'))
 ALLOWED_MATERIALS.update(f'{wood}_leaves' for wood in FOLIAGE_LEAVES)
 ALLOWED_MATERIALS.update(('fern','short_grass','oxeye_daisy'))
+GARDEN_STONES=('stone','stone_brick','sandstone','brick','smooth_stone')
+ALLOWED_MATERIALS.update(f'{m}_slab{suffix}' for m in GARDEN_STONES for suffix in ('','_top'))
+ALLOWED_MATERIALS.update(f'{m}_stairs_{d}' for m in GARDEN_STONES if m!='smooth_stone' for d in ('north','east','south','west'))
+ALLOWED_MATERIALS.add('green_stained_glass')
+for m in ('iron_bars','green_stained_glass_pane'):
+    ALLOWED_MATERIALS.add(m)
 
 
 def material_block(material):
     if material=='water':
         return Block('universal_minecraft','water',{'falling':StringTag('false'),'flowing':StringTag('false'),'level':StringTag('0')})
-    if material == 'iron_bars':
-        return Block('universal_minecraft','bars',{'material':StringTag('iron'),**{k:StringTag('false') for k in ('north','south','east','west')}})
+    if material in ('iron_bars','green_stained_glass_pane'):
+        name=material
+        # Bedrock derives horizontal connections from neighbours at runtime.
+        props={k:StringTag('false') for k in ('north','south','east','west')}
+        props.update({'material':StringTag('iron')} if name=='iron_bars' else {'color':StringTag('green')})
+        return Block('universal_minecraft','bars' if name=='iron_bars' else 'stained_glass_pane',props)
+    if material=='green_stained_glass':return Block('universal_minecraft','stained_glass',{'color':StringTag('green')})
+    for stone in GARDEN_STONES:
+        form=material.removeprefix(stone+'_') if material.startswith(stone+'_') else ''
+        if form in ('slab','slab_top'):
+            return Block('universal_minecraft','slab',{'material':StringTag(stone),'type':StringTag('top' if form=='slab_top' else 'bottom')})
+        if form.startswith('stairs_'):
+            return Block('universal_minecraft','stairs',{'material':StringTag(stone),'facing':StringTag(form.removeprefix('stairs_')),'half':StringTag('bottom'),'shape':StringTag('straight')})
     if material.startswith('cobblestone_wall'):
         directions=material.removeprefix('cobblestone_wall').lstrip('_')
         return Block('universal_minecraft','wall',{'material':StringTag('cobblestone'),'up':StringTag('true'),**{k:StringTag('low' if k[0] in directions else 'none') for k in ('north','south','east','west')}})
