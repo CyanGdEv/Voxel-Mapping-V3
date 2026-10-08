@@ -19,6 +19,6 @@ def source_inventory(raw,planning_records,acquisition,sources):
     return {'providers':acquisition.get('providers',[]),'sources':sources,'mapped_candidates':candidates,
             'candidates_by_family':dict(Counter(c['family'] for c in candidates)),
             'planning_adapter_records':len(planning_records),
-            'available_existing_adapters':['OSM/Overpass','registered GeoJSON','planning record validation','Overture buildings','terrain/DSM rasters','classified building LiDAR returns'],
+            'available_existing_adapters':['OSM/Overpass','registered GeoJSON','planning record validation','Overture buildings','terrain/DSM rasters','classified building LiDAR returns','reviewed orthophoto paving masks'],
             'unimplemented_adapters':['general CAD/BIM meshes','photogrammetric meshes','unclassified ride point clouds'],
             'limitations':['Availability, registration, vertical datum and material/profile evidence are checked separately.','No promise of complete geometry for every attraction; unsupported components remain listed.']}

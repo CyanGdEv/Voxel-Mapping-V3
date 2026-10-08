@@ -59,7 +59,7 @@ def planning_adapter(data,source):
 
 
 class AdapterRegistry:
-    def __init__(self):self.adapters={'geojson':geojson_adapter,'osm':osm_adapter,'planning_records':planning_adapter}
+    def __init__(self):self.adapters={'geojson':geojson_adapter,'osm':osm_adapter,'planning_records':planning_adapter,'imagery_masks':None}
     def register(self,name,adapter):
         if name in self.adapters:raise ValueError('Adapter already registered')
         self.adapters[name]=adapter
@@ -69,10 +69,13 @@ class AdapterRegistry:
             raise ValueError('Reconstruction target CRS must use projected metres')
         for feed in feeds:
             source=sources[feed['source']];adapter=self.adapters.get(feed['adapter'])
-            if adapter is None:raise EvidenceMissing('Unsupported input adapter')
+            if adapter is None and feed['adapter']!='imagery_masks':raise EvidenceMissing('Unsupported input adapter')
             path=(Path(base_directory)/feed['file']).resolve();content=path.read_bytes();digest=hashlib.sha256(content).hexdigest()
             if feed.get('sha256') and feed['sha256']!=digest:raise ValueError('Retained feed hash changed')
-            result=adapter(json.loads(content),source)
+            if feed['adapter']=='imagery_masks':
+                from .imagery import imagery_masks_adapter
+                result=imagery_masks_adapter(json.loads(content),source,base_directory)
+            else:result=adapter(json.loads(content),source)
             records,decisions=result if isinstance(result,tuple) else (result,[])
             projector=Transformer.from_crs(source.crs,target,always_xy=True)
             for feature in records:

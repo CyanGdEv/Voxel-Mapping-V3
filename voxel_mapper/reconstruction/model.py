@@ -53,7 +53,7 @@ class Feature:
         if not self.id or not self.family:raise ValueError('Feature identity and family required')
         source=sources.get(self.geometry_source)
         if source is None:raise EvidenceMissing('Unknown geometry source')
-        if source.kind in ('planning','cad','survey') and source.registration_status!='accepted':
+        if source.kind in ('planning','cad','survey','imagery') and source.registration_status!='accepted':
             raise EvidenceMissing('Geometry registration not accepted')
         geom=shape(self.geometry)
         # A purely vertical 3D line has a zero-length 2D Shapely projection.
