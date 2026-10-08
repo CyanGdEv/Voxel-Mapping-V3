@@ -27,7 +27,34 @@ PRIORITY.update(lakebed=1,plaza=3)
 ALLOWED_MATERIALS = set(MATERIALS.values()) | set(SURFACE_MATERIALS.values()) | CONCRETE_MATERIALS | {'terracotta','mud_bricks','granite','red_terracotta','dark_oak_planks','air','oak_log','spruce_log','oak_leaves','spruce_leaves'}
 
 
+DETAIL_MATERIALS = {f'{wood}_{form}' for wood in ('oak','spruce','dark_oak')
+                    for form in ('fence','fence_gate','trapdoor','slab','slab_top')} | {
+                    f'{wood}_stairs_{direction}' for wood in ('oak','spruce','dark_oak','stone')
+                    for direction in ('north','east','south','west')} | {'iron_bars','cobblestone_wall','spruce_planks','stone_slab'}
+DETAIL_MATERIALS.update('cobblestone_wall_'+''.join(d for i,d in enumerate('nesw') if mask&(1<<i)) for mask in range(1,16))
+ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
+
+
 def material_block(material):
+    if material == 'iron_bars':
+        return Block('universal_minecraft','bars',{'material':StringTag('iron'),**{k:StringTag('false') for k in ('north','south','east','west')}})
+    if material.startswith('cobblestone_wall'):
+        directions=material.removeprefix('cobblestone_wall').lstrip('_')
+        return Block('universal_minecraft','wall',{'material':StringTag('cobblestone'),'up':StringTag('true'),**{k:StringTag('low' if k[0] in directions else 'none') for k in ('north','south','east','west')}})
+    if material in DETAIL_MATERIALS:
+        wood=material.split('_')[0] if not material.startswith('dark_oak_') else 'dark_oak'
+        form=material[len(wood)+1:]
+        if form.startswith('slab'):
+            return Block('universal_minecraft','slab',{'material':StringTag(wood),'type':StringTag('top' if form=='slab_top' else 'bottom')})
+        if form.startswith('stairs_'):
+            return Block('universal_minecraft','stairs',{'material':StringTag(wood),'facing':StringTag(form.removeprefix('stairs_')),'half':StringTag('bottom'),'shape':StringTag('straight')})
+        if form=='fence':
+            return Block('universal_minecraft','fence',{'material':StringTag(wood),**{k:StringTag('false') for k in ('north','south','east','west')}})
+        if form in ('trapdoor','fence_gate'):
+            props={'material':StringTag(wood),'facing':StringTag('north'),'open':StringTag('false'),'powered':StringTag('false')}
+            props.update({'half':StringTag('bottom')} if form=='trapdoor' else {'in_wall':StringTag('false')})
+            return Block('universal_minecraft',form,props)
+
     if material == 'granite':
         return Block('universal_minecraft','granite',{'polished':StringTag('false')})
     if material == 'stone_bricks':
@@ -38,8 +65,8 @@ def material_block(material):
         return Block('universal_minecraft','stained_terracotta',{'color':StringTag('red')})
     if material in CONCRETE_MATERIALS:
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
-    if material in ('oak_planks', 'dark_oak_planks'):
-        return Block('universal_minecraft', 'planks', {'material': StringTag('dark_oak' if material == 'dark_oak_planks' else 'oak')})
+    if material in ('oak_planks', 'spruce_planks', 'dark_oak_planks'):
+        return Block('universal_minecraft', 'planks', {'material': StringTag(material.removesuffix('_planks'))})
     if material in ('oak_log','spruce_log'):
         return Block('universal_minecraft','log',{'material':StringTag(material.removesuffix('_log')),'axis':StringTag('y'),'stripped':StringTag('false')})
     if material in ('oak_leaves','spruce_leaves'):
