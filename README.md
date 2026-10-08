@@ -407,3 +407,5 @@ Park-wide path/plaza recovery and material patterns are available through
 `python -m voxel_mapper.park_paving_plans` and `python -m voxel_mapper.park_paving`.
 See [park paving](docs/park-paving.md) for bounded OSM material inheritance,
 planning evidence and vanilla-block palettes.
+
+Planning path-side details: see [docs/park-details.md](docs/park-details.md) for reviewed rock, planter, wall and building extraction and the additive V5 world pass.

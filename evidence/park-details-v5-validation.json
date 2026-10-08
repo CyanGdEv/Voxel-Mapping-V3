@@ -1,0 +1,31 @@
+{
+  "tests": {
+    "count": 306,
+    "runner": "unittest",
+    "result": "passed"
+  },
+  "candidate_inventory": {
+    "inspected_pages": 46,
+    "bounded_candidates": 320,
+    "emitted_automatically": false
+  },
+  "reviewed_footprints": 21,
+  "world": {
+    "touched_chunks": 15,
+    "overlay_records": 235,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "3ea188300bc6ab62608407f3937846674c88c226db248748d954cf014e9efe52",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 235
+  },
+  "emitted_features_by_kind": {
+    "rock": 9,
+    "building": 2,
+    "retaining_wall": 1,
+    "wall": 3,
+    "planter": 1
+  },
+  "ride_layouts_changed": false,
+  "package_sha256": "5ff7811e2a5e44ab699f936b23316c195275c809b7b4b46f488b36ad512daf30"
+}

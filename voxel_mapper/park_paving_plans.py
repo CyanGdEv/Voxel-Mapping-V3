@@ -249,12 +249,13 @@ def recover_park_plans(cache,wicker,output,local_crs):
     return collection,report
 
 
-def surface_boundaries(drawings,scale):
+def surface_boundaries(drawings,scale,min_area=2,max_area=40000):
     """Node visible solid survey strokes, including flattened boundary curves.
 
     Closed faces are only candidates; a contained floor label is still required.
     No gap snapping, convex hulls or inferred connecting edges are introduced.
     """
+    if not 0<min_area<=max_area<=40000:raise ValueError('Invalid plan face area budget')
     from shapely.geometry import LineString,Polygon
     from shapely.ops import polygonize,unary_union
     from .wicker_patterns import flatten_cubic
@@ -284,7 +285,7 @@ def surface_boundaries(drawings,scale):
             if not line.is_empty:lines.append(line)
             if len(lines)>300000:raise ValueError('Paving stroke network budget exceeded')
     faces=list(polygonize(unary_union(lines)))
-    return [{'geometry':mapping(p)} for p in faces if p.is_valid and 2<=p.area*scale**2<=40000]
+    return [{'geometry':mapping(p)} for p in faces if p.is_valid and min_area<=p.area*scale**2<=max_area]
 
 
 def main():
