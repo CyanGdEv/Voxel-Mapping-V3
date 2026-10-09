@@ -28,6 +28,8 @@ Aliases dispatch to existing primitives. They do not infer an entire ride mechan
 
 ## Scale and recovery
 
+The default job feature budget and benchmark ceiling are **2,500,000 features**. A manifest can set `max_features` explicitly. This counts unique committed feature IDs, including withheld decisions; identical IDs resumed from disk do not consume the budget twice. Reaching the budget preserves earlier committed features and rejects the next new feature. The 20-million-cell default and per-feature voxel budgets remain separate: complex geometry can reach its voxel budget before its feature budget. The benchmark still defaults to 150,000; use `--features 2500000` for a full ceiling run. The recorded measurements below are from the 150,000-feature run, not a verified 2.5-million run.
+
 Features arrive as a stream. SQLite stores normalized feature records, decisions, native-chunk cell indices and many-to-many provenance; only one bounded feature is staged in memory. Whole-feature collision decisions span tile boundaries. Per-feature and total voxel budgets prevent unbounded rasterization. Retrying an identical committed feature skips it; changing a feature, manifest, configuration or pinned job input requires a fresh job.
 
 The measured synthetic benchmark compiled **150,000 independent one-cell plaza features** in **32.84 seconds**, resumed all of them in **7.86 seconds**, and used **114.53 MiB peak process RSS**, across 625 native chunks. This proves feature-count scalability for that fixture, not 150,000 interpreted planning components or a complex native park export. From the repository root, reproduce it with `python -m scripts.benchmark_park_batch --help` and the documented options printed there.

@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from shapely.geometry import box,mapping
-from voxel_mapper.reconstruction.batch import GeometryStore
+from voxel_mapper.reconstruction.batch import GeometryStore,DEFAULT_MAX_FEATURES
 from voxel_mapper.reconstruction.engine import Context
 from voxel_mapper.reconstruction.model import Feature,Source
 from voxel_mapper.reconstruction.sources import evidence
@@ -30,6 +30,22 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(r['resumed_features'],1);self.assertEqual(r['provenance_links'],8)
         row=next(self.store.tile_rows(0,-1));self.assertEqual(row['provenance_count'],2)
         with self.assertRaises(ValueError):self.store.compile([self.feature('a',2)],self.ctx)
+    def test_feature_budget_preserves_commits_and_resume_does_not_recount(self):
+        self.assertEqual(DEFAULT_MAX_FEATURES,2_500_000)
+        a,b,c=self.feature('a'),self.feature('b',10),self.feature('c',20)
+        with self.assertRaisesRegex(ValueError,'Total feature budget'):
+            self.store.compile([a,b,c],self.ctx,max_features=2)
+        self.assertEqual(self.store.report()['features'],2)
+        self.assertEqual(self.store.compile([a,b],self.ctx,max_features=2)['resumed_features'],2)
+        self.assertEqual(self.store.compile([a,b,c],self.ctx,max_features=3)['features'],3)
+        with self.assertRaisesRegex(ValueError,'Retained feature count'):
+            self.store.compile([],self.ctx,max_features=2)
+
+    def test_invalid_feature_budgets_rejected(self):
+        for limit in (0,-1,True,2.5):
+            with self.subTest(limit=limit),self.assertRaises(ValueError):
+                self.store.compile([],self.ctx,max_features=limit)
+
     def test_changed_contract_cannot_resume(self):
         with self.assertRaises(ValueError):GeometryStore(self.root/'geometry.sqlite',{'test':'v2'})
     def test_proposal_does_not_become_current_geometry(self):

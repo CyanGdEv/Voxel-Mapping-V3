@@ -4,6 +4,7 @@
   "terrain_sha256": "REPLACE_WITH_ACTUAL_TERRAIN_SHA256_BEFORE_RECONSTRUCTION",
   "boundary": {"type":"Polygon","coordinates":[[[406717,342702],[409160,342702],[409160,344180],[406717,344180],[406717,342702]]]},
   "max_feature_voxels": 100000,
+  "max_features": 2500000,
   "max_total_voxels": 20000000,
   "sources": []
 }

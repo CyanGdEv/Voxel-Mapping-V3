@@ -49,5 +49,12 @@
     "150000 fixture uses one-cell synthetic plazas, not real drawing components",
     "No full-scale 150000-component native world export demonstrated",
     "Attachment catalogue and discovery are incomplete"
-  ]
+  ],
+  "feature_limit_update": {
+    "default_max_features": 2500000,
+    "benchmark_ceiling": 2500000,
+    "focused_tests_passed": 21,
+    "compile_resume_smoke_features": 1000,
+    "full_ceiling_benchmark_run": false
+  }
 }

@@ -2,13 +2,13 @@
 import argparse,json,resource,time
 from pathlib import Path
 from shapely.geometry import box,mapping
-from voxel_mapper.reconstruction.batch import GeometryStore
+from voxel_mapper.reconstruction.batch import GeometryStore,DEFAULT_MAX_FEATURES
 from voxel_mapper.reconstruction.engine import Context
 from voxel_mapper.reconstruction.model import Source,Feature
 from voxel_mapper.reconstruction.sources import evidence
 
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',required=True);p.add_argument('--features',type=int,default=150000);a=p.parse_args()
-if not 1<=a.features<=1000000:raise ValueError('Benchmark count must be 1–1000000')
+if not 1<=a.features<=DEFAULT_MAX_FEATURES:raise ValueError(f'Benchmark count must be 1–{DEFAULT_MAX_FEATURES}')
 root=Path(a.output);root.mkdir(parents=True,exist_ok=True)
 source=Source('synthetic','synthetic-benchmark','https://github.com/CyanGdEv/Voxel-Mapping-V3','synthetic-fixture','EPSG:27700','ODN')
 context=Context({'synthetic':source},lambda x,z:0,box(0,0,400,(a.features+399)//400),'ODN',max_total_voxels=a.features)

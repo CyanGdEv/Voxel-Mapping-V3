@@ -12,6 +12,7 @@ from .engine import ReconstructionEngine,Context
 from .model import Feature,Source
 from .park_generators import park_registry
 
+DEFAULT_MAX_FEATURES = 2_500_000
 
 def json_lines(path):
     with Path(path).open() as stream:
@@ -39,9 +40,13 @@ class GeometryStore:
         if prior and prior[0]!=identity:self.db.close();raise ValueError('Changed job contract; use a fresh geometry database')
         with self.db:self.db.execute("INSERT OR IGNORE INTO metadata VALUES('contract',?)",(identity,))
 
-    def compile(self,features,context,registry=None):
+    def compile(self,features,context,registry=None,*,max_features=DEFAULT_MAX_FEATURES):
+        if isinstance(max_features,bool) or not isinstance(max_features,int) or max_features<1:
+            raise ValueError('Feature budget must be a positive integer')
         engine=ReconstructionEngine(registry or park_registry());resumed=0
         total=self.db.execute('SELECT COUNT(*) FROM voxels').fetchone()[0]
+        feature_count=self.db.execute('SELECT COUNT(*) FROM features').fetchone()[0]
+        if feature_count>max_features:raise ValueError('Retained feature count exceeds job budget')
         for feature in features:
             digest=hashlib.sha256(json.dumps(feature.__dict__,sort_keys=True).encode()).hexdigest()
             previous=self.db.execute('SELECT digest FROM features WHERE id=?',(feature.id,)).fetchone()
@@ -49,6 +54,7 @@ class GeometryStore:
                 if previous[0]!=digest:raise ValueError('Changed feature during resume: '+feature.id+'; use a fresh job')
                 with self.db:self.db.execute('INSERT OR IGNORE INTO feature_records VALUES(?,?)',(feature.id,json.dumps(feature.__dict__,sort_keys=True)))
                 resumed+=1;continue
+            if feature_count>=max_features:raise ValueError('Total feature budget exceeded; feature not committed')
             source=context.sources.get(feature.geometry_source)
             if source and source.kind in ('planning','cad') and feature.metadata.get('drawing_state') not in ('existing','as_built'):
                 rows=[];decision={'id':feature.id,'family':feature.family,'status':'withheld','reason':'Existing/as-built drawing state required; proposals and unknown revisions are not current park geometry'}
@@ -85,6 +91,7 @@ class GeometryStore:
                 self.db.execute('INSERT INTO feature_records VALUES(?,?)',(feature.id,json.dumps(feature.__dict__,sort_keys=True)))
                 self.db.execute('INSERT INTO features VALUES(?,?,?)',(feature.id,digest,json.dumps(decision)))
                 if rows:total+=new
+                feature_count+=1
         report=self.report();report['resumed_features']=resumed;return report
 
     def report(self):
@@ -181,7 +188,7 @@ def main():
                 if manifest.get('terrain_sha256')!=terrain.checksum:raise ValueError('Manifest must pin the terrain raster SHA256')
                 ctx=Context(sources,terrain.sample,shape(manifest['boundary']),manifest.get('vertical_datum'),a.allow_estimates,
                             manifest.get('max_feature_voxels',100000),manifest.get('max_total_voxels',20000000),occupied)
-                report=store.compile(json_lines(a.features),ctx)
+                report=store.compile(json_lines(a.features),ctx,max_features=manifest.get('max_features',DEFAULT_MAX_FEATURES))
             finally:
                 terrain.close()
                 if level:level.close()
