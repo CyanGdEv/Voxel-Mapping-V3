@@ -92,6 +92,8 @@ def material_block(material):
         return Block('universal_minecraft','granite',{'polished':StringTag('false')})
     if material == 'stone_bricks':
         return Block('universal_minecraft','stone_bricks',{'variant':StringTag('normal')})
+    if material == 'sandstone':
+        return Block('universal_minecraft','sandstone',{'variant':StringTag('normal')})
     if material == 'bricks':
         return Block('universal_minecraft','brick_block')
     if material == 'red_terracotta':

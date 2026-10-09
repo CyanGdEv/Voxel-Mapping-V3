@@ -1,0 +1,35 @@
+{
+  "world": "Alton_Towers_Prospect_Tower_V18.mcworld",
+  "sha256": "8aad80e3492db00c523d9bcd9645f8cc1734662b978251f109201fc64d76d15c",
+  "bytes": 2696908,
+  "native": {
+    "touched_chunks": 2,
+    "overlay_records": 608,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "bd726ed32c376113e726531bc30794e836f1ba28ad3bd5b2a33e9a96ee4fd401",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": -143
+  },
+  "composition": {
+    "removed_placeholder_cells": 462,
+    "pruned_leaf_cells_at_new_solids": 0,
+    "overlay_records": 608,
+    "scope": "Reviewed placeholder blocks and explicit new solid cells only"
+  },
+  "placement_status": "estimated",
+  "anchor_bng_m": [
+    407744.2079,
+    343322.4628
+  ],
+  "base_odn_m": 183,
+  "model_voxel_cells": 280,
+  "path_check": "Cardinally connected level approach reaches deck; two blocks headroom verified along access route",
+  "spawn_minecraft_xyz": [
+    -190,
+    146,
+    114
+  ],
+  "spawn_air_check": true,
+  "zip_crc_check": true
+}
