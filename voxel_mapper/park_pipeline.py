@@ -43,6 +43,24 @@ def run(job_path,stage='all'):
             if job.get('footprint_extraction',{}).get('enabled',False):
                 from .drawing_footprints import run as extract_footprints
                 checkpoint('footprints',extract_footprints(corpus,root/'footprints',max_pages=job['footprint_extraction'].get('max_pages',1000)))
+            matching=job.get('footprint_matching',{})
+            if matching.get('enabled',False):
+                from .footprint_matching import run as match_footprints,VERSION as matching_version
+                candidates=root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'
+                target=matching.get('target_crs') or json.loads(path(job['manifest']).read_text())['crs']
+                with candidates.open('rb') as stream:candidate_hash=hashlib.file_digest(stream,'sha256').hexdigest()
+                with references.open('rb') as stream:reference_hash=hashlib.file_digest(stream,'sha256').hexdigest()
+                contract={'version':matching_version,'candidate_sha256':candidate_hash,'reference_sha256':reference_hash,'reference_crs':matching['reference_crs'],'target_crs':target,'native_names_enabled':True,'max_records':matching.get('max_records',2500000)}
+                if destination.exists():
+                    report_path=destination/'matching-report.json'
+                    if not report_path.exists():raise ValueError('Matching output is incomplete; remove that output directory before retrying')
+                    report=json.loads(report_path.read_text())
+                    if any(report.get(key)!=value for key,value in contract.items()):raise ValueError('Matching inputs changed; use a fresh job')
+                    for filename in ('associations.jsonl','revision-review.jsonl'):
+                        with (destination/filename).open('rb') as stream:
+                            if hashlib.file_digest(stream,'sha256').hexdigest()!=report[filename+'_sha256']:raise ValueError('Matching output checksum mismatch')
+                else:report=match_footprints(candidates,references,matching['reference_crs'],target,destination,corpus=corpus,max_records=contract['max_records'])
+                checkpoint('footprint_matching',report)
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())

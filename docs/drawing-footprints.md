@@ -65,3 +65,5 @@ Across 84 retained PDF blobs and 238 pages, the extractor produced **4,193 polyg
 A synthetic reviewed-footprint fixture follows the full route from an actual PDF/corpus candidate through independent registration, promotion, park-job compilation and tile export, producing 400 paving cells. It resumes without duplicating the feature and rejects changed review inputs. Additional tests cover topology, rotations, source corruption, proposal rejection, changed candidate content, altered alignment matrices, landmark disagreement and extrapolation outside the validated domain.
 
 No recovered Alton candidate has been approved or generated into a new park world by this stage. Curved boundaries, line-based fences/routes, stronger semantic identification and reconciliation of overlapping revisions remain further work.
+
+Footprint association and registered revision review queues: see [footprint-matching.md](footprint-matching.md). Optional reviewed sheet metadata (`sheet_key`, ISO `issue_date`, `revision`) requires a `sheet_revision_reference`; it establishes ordering evidence only.

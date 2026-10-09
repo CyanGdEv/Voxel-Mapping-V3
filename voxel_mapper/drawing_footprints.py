@@ -169,6 +169,18 @@ def reviewed_feature(candidate,review,source,alignment,target_crs):
         association={'landmark_id':landmark['id'],'source_sha256':landmark['source_sha256'],'intersection_over_union':iou,'status':'checked_reference_overlap; physical identity remains explicitly reviewed'}
     feature=Feature(review['feature_id'],review['family'],mapping(placed),source.id,review.get('parameters',{}),
                     {'drawing_state':review['drawing_state'],'geometry_crs':target_crs,'candidate_id':candidate['id'],'document_sha256':candidate['document_sha256'],'page':candidate['page'],'physical_verification_reference':review['verification_reference'],'state_verification_reference':review['state_verification_reference']})
+    if review.get('name'):
+        if not isinstance(review['name'],str):raise ValueError('Reviewed name must be text')
+        feature.metadata['name']=review['name']
+    if any(key in review for key in ('sheet_key','issue_date','revision')):
+        from datetime import date
+        if not isinstance(review.get('sheet_key'),str) or not review['sheet_key'].strip() or not isinstance(review.get('sheet_revision_reference'),str) or not review['sheet_revision_reference'].strip():raise ValueError('Sheet identity and revision evidence reference required')
+        issued=date.fromisoformat(review['issue_date'])
+        if issued.isoformat()!=review['issue_date']:raise ValueError('Canonical ISO issue date required')
+        feature.metadata.update({key:review[key] for key in ('sheet_key','issue_date','sheet_revision_reference')})
+        if 'revision' in review:
+            if not isinstance(review['revision'],str):raise ValueError('Revision label must be text')
+            feature.metadata['revision']=review['revision']
     feature.validate({source.id:source},source.vertical_datum)
     if association:feature.metadata['checked_landmark_association']=association
     return feature

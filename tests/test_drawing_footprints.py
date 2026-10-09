@@ -60,6 +60,14 @@ class FootprintTests(unittest.TestCase):
                 ctx=Context({'drawing':source},lambda x,z:0,box(0,0,500,500),'ODN')
                 report=store.compile([feature],ctx);self.assertEqual(report['decisions'],{'planned':1});self.assertEqual(report['unique_voxel_cells'],400)
             finally:store.close()
+    def test_reviewed_sheet_provenance_is_retained_for_reconciliation(self):
+        alignment=self.alignment();source=self.source(alignment);review=self.review()
+        review.update(name='Lake',sheet_key='A-01',issue_date='2025-01-01',revision='C',sheet_revision_reference='checked native title block')
+        feature=reviewed_feature(self.candidate(),review,source,alignment,'EPSG:27700')
+        self.assertEqual(feature.metadata['revision'],'C');self.assertEqual(feature.metadata['sheet_key'],'A-01')
+        del review['sheet_revision_reference']
+        with self.assertRaisesRegex(ValueError,'revision evidence'):reviewed_feature(self.candidate(),review,source,alignment,'EPSG:27700')
+
     def test_proposal_missing_identity_or_state_reviews_are_withheld(self):
         alignment=self.alignment();source=self.source(alignment)
         for key,value in [('drawing_state','proposed'),('physical_identity_verified',False),('reuse_allowed',False),('state_verification_reference','')]:
