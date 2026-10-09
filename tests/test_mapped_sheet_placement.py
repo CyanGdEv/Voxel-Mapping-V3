@@ -94,6 +94,20 @@ class MappedPlacementTests(unittest.TestCase):
                 args=(root/'geometry/geometry-candidates.jsonl',path,'EPSG:27700','EPSG:27700',root/'placement',corpus)
                 report=run(*args);self.assertEqual(report['counts']['provisional_mapped_placement'],1);self.assertEqual(report['counts']['positioned_review_records'],3)
                 self.assertEqual(run(*args),report)
+                # Interrupt after a committed fit, before completed feeds/receipt.
+                interrupted=(args[0],args[1],args[2],args[3],root/'interrupted',corpus)
+                def stop(_):raise RuntimeError('simulated interruption')
+                with self.assertRaisesRegex(RuntimeError,'simulated'):run(*interrupted,progress=stop)
+                self.assertFalse((root/'interrupted/placement-report.json').exists())
+                resumed=run(*interrupted)
+                self.assertEqual(resumed['counts']['page_cache_reused'],1)
+                self.assertEqual(resumed['output_sha256'],report['output_sha256'])
+                # A changed cached result must not be reused on incomplete resume.
+                damaged=(args[0],args[1],args[2],args[3],root/'damaged',corpus)
+                with self.assertRaises(RuntimeError):run(*damaged,progress=stop)
+                import sqlite3
+                db=sqlite3.connect(root/'damaged/page-index.sqlite');db.execute("UPDATE fits SET result=result||' '");db.commit();db.close()
+                with self.assertRaisesRegex(ValueError,'page checkpoint changed'):run(*damaged)
                 records=[json.loads(s) for s in (root/'placement/placed-review-geometry.jsonl').read_text().splitlines()]
                 self.assertTrue(all(not r['properties']['registration_verified'] for r in records))
                 pdf=corpus.root/'files'/f"{report['source_documents'][0]}.pdf";original=pdf.read_bytes();pdf.write_bytes(original+b'bad')

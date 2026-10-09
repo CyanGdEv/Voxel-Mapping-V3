@@ -12,11 +12,12 @@ import numpy as np
 from shapely.affinity import affine_transform
 from shapely.geometry import MultiPoint, mapping, shape
 from shapely.strtree import STRtree
+from shapely import points
 
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v1'
+VERSION = 'mapped-sheet-placement-v2'
 
 
 def placed(geometry, fit):
@@ -36,30 +37,36 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
         raise ValueError('Invalid mapped review thresholds')
     if len(objects)>20000 or len(refs)>5000:raise ValueError('Page/reference budget exceeded')
     if len({o['candidate_id'] for o in objects})!=len(objects) or len({r['id'] for r in refs})!=len(refs):raise ValueError('Unique object/reference IDs required')
-    for o in objects:descriptor(o['geometry'])
-    for r in refs:descriptor(r['geometry'])
-    reference_index=STRtree([r['geometry'] for r in refs]);by_id={o['candidate_id']:o for o in objects};ref_ids={r['id']:r for r in refs}
+    object_descriptors={o['candidate_id']:descriptor(o['geometry']) for o in objects}
+    reference_descriptors={r['id']:descriptor(r['geometry']) for r in refs}
+    reference_index=STRtree([r['geometry'].centroid for r in refs]);by_id={o['candidate_id']:o for o in objects};ref_ids={r['id']:r for r in refs}
+    local_centres=np.asarray([o['geometry'].centroid.coords[0] for o in objects],dtype=float).reshape((-1,2))
     # Distinctive large nonrectangular objects first; seed selection never limits
     # verification objects. Rectangles remain available as fallback seeds.
     seeds=sorted(objects,key=lambda o:(len(o['geometry'].exterior.coords)<=5 if o['geometry'].geom_type=='Polygon' else True,-o['geometry'].area,o['candidate_id']))[:64]
     edges=[]
     for o in seeds:
         if o['geometry'].geom_type!='Polygon':continue
-        a=descriptor(o['geometry']);pool=[]
+        a=object_descriptors[o['candidate_id']];pool=[]
         for r in refs:
             g=r['geometry']
             if g.geom_type!='Polygon' or len(g.interiors)!=len(o['geometry'].interiors):continue
-            error=sum(abs(x-y) for x,y in zip(a,descriptor(g)))
+            error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
             if error<=.2:pool.append((error,r['id'],r))
         # More than the original three alternatives, followed by actual shape fit.
         for rank,(_,_,r) in enumerate(sorted(pool)[:8]):edges.append((rank,-o['geometry'].area,o['candidate_id'],o,r))
     edges.sort(key=lambda e:e[:3]);attempted=0;hypotheses=[]
     def support(fit):
         hits=[]
-        for o in objects:
+        centres=local_centres@np.asarray(fit['matrix']).T+fit['translation_m']
+        eligible=reference_index.query(points(centres),predicate='dwithin',distance=tolerance_m+1e-7)
+        nearby={}
+        for oi,ri in zip(*eligible):nearby.setdefault(int(oi),[]).append(int(ri))
+        for oi,reference_indices in nearby.items():
+            o=objects[oi]
             p=placed(o['geometry'],fit)
-            for index in reference_index.query(p):
-                r=refs[int(index)];g=r['geometry']
+            for index in reference_indices:
+                r=refs[index];g=r['geometry']
                 if p.geom_type!=g.geom_type or p.geom_type!='Polygon' or len(p.interiors)!=len(g.interiors):continue
                 distance=p.centroid.distance(g.centroid)
                 if distance>tolerance_m:continue
@@ -116,15 +123,14 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
     return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'seed_objects':len(seeds),'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 
 
-def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000):
+def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None):
     if type(max_records) is not int or not 1<=max_records<=2500000:raise ValueError('Record budget must be 1..2500000')
     propose([],[],max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m)
     if sheets is not None and (not isinstance(sheets,list) or len(sheets)>10000 or any(not isinstance(s,list) or len(s)!=2 or not isinstance(s[0],str) or len(s[0])!=64 or type(s[1]) is not int or s[1]<1 for s in sheets)):raise ValueError('Bounded PDF/page sheet selection required')
     rows,refhash,_=references(reference_file,reference_crs,target_crs)
     contract={'version':VERSION,'candidate_sha256':file_hash(candidates),'reference_sha256':refhash,'reference_crs':reference_crs,'target_crs':target_crs,'sheets':sheets,'max_seed_fits':max_seed_fits,'min_iou':min_iou,'tolerance_m':tolerance_m,'max_records':max_records}
     output=Path(output);receipt=output/'placement-report.json'
-    if output.exists():
-        if not receipt.exists():raise ValueError('Incomplete placement output; use a fresh directory')
+    if receipt.exists():
         report=json.loads(receipt.read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Placement inputs changed')
         for name,digest in report['output_sha256'].items():
@@ -132,7 +138,18 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
         for sha in report['source_documents']:
             if file_hash(corpus.root/'files'/f'{sha}.pdf')!=sha:raise ValueError('Source PDF checksum mismatch')
         return report
-    output.mkdir(parents=True);db=sqlite3.connect(output/'page-index.sqlite');db.execute('PRAGMA journal_mode=WAL');db.execute('CREATE TABLE candidates(pdf TEXT,page INTEGER,id TEXT UNIQUE,payload TEXT)');db.execute('CREATE INDEX pages ON candidates(pdf,page)')
+    checkpoint=output/'checkpoint-contract.json'
+    if output.exists():
+        if not checkpoint.exists() or not (output/'page-index.sqlite').exists():raise ValueError('Incomplete placement checkpoint')
+        if json.loads(checkpoint.read_text())!=contract:raise ValueError('Placement checkpoint inputs changed')
+    else:
+        output.mkdir(parents=True);checkpoint.write_text(json.dumps(contract,sort_keys=True)+'\n')
+    db=sqlite3.connect(output/'page-index.sqlite');db.execute('PRAGMA journal_mode=WAL')
+    if db.execute('PRAGMA quick_check').fetchone()!=('ok',):db.close();raise ValueError('Placement checkpoint integrity failed')
+    db.executescript('CREATE TABLE IF NOT EXISTS candidates(pdf TEXT,page INTEGER,id TEXT UNIQUE,payload TEXT); CREATE INDEX IF NOT EXISTS pages ON candidates(pdf,page); CREATE TABLE IF NOT EXISTS fits(pdf TEXT,page INTEGER,input_sha256 TEXT,result_sha256 TEXT,result TEXT,PRIMARY KEY(pdf,page));')
+    # Rebuild/validate source records even on an interrupted resume. Completed
+    # page fits survive, but a partly indexed input is never trusted.
+    db.execute('DELETE FROM candidates')
     names=NativeNames(corpus,rows);counts=Counter();documents=set();selection=None if sheets is None else {tuple(s) for s in sheets}
     try:
         for count,c in enumerate(lines(candidates),1):
@@ -146,7 +163,18 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
             for pdf,page,total in db.execute('SELECT pdf,page,count(*) FROM candidates GROUP BY pdf,page ORDER BY pdf,page'):
                 if total>20000:raise ValueError('Placement page budget exceeded')
                 records=[json.loads(p) for p, in db.execute('SELECT payload FROM candidates WHERE pdf=? AND page=? ORDER BY id',(pdf,page))];objects=[{'candidate_id':c['id'],'geometry':shape(c['geometry'])} for c in records if c['geometry']['type'] in ('Polygon','MultiPolygon')]
-                result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m);result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs);counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts']
+                page_hash=hashlib.sha256(json.dumps(records,sort_keys=True).encode()).hexdigest()
+                cached=db.execute('SELECT input_sha256,result_sha256,result FROM fits WHERE pdf=? AND page=?',(pdf,page)).fetchone()
+                if cached:
+                    if cached[0]!=page_hash or hashlib.sha256(cached[2].encode()).hexdigest()!=cached[1]:raise ValueError('Placement page checkpoint changed')
+                    result=json.loads(cached[2])
+                    if any(result.get(k)!=v for k,v in {'document_sha256':pdf,'page':page,'reference_sha256':refhash,'target_crs':target_crs,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0}.items()):raise ValueError('Placement page checkpoint identity changed')
+                    counts['page_cache_reused']+=1
+                else:
+                    result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m);result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs)
+                    encoded=json.dumps(result);db.execute('INSERT INTO fits VALUES(?,?,?,?,?)',(pdf,page,page_hash,hashlib.sha256(encoded.encode()).hexdigest(),encoded));db.commit();counts['page_cache_computed']+=1
+                counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts']
+                if progress:progress({'page':page,'document_sha256':pdf,'completed_pages':counts['page_cache_reused']+counts['page_cache_computed'],'status':result['status'],'cached':bool(cached)})
                 proposals.write(json.dumps(result)+'\n')
                 if len(result['hypotheses'])!=1:
                     if result['hypotheses']:counts['ambiguous_sheets_not_exported']+=1

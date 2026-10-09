@@ -2,7 +2,7 @@
 
 The verified registration route still needs measured controls, independent
 checkpoints and physical-object review. It is separate from the new
-`mapped-sheet-placement-v1` route, which positions native planning geometry for
+`mapped-sheet-placement-v2` route, which positions native planning geometry for
 inspection using explicitly estimated map agreement.
 
 The previous descriptor-only search retained three aspect/fill matches and only
@@ -66,7 +66,14 @@ A park job can enable `mapped_placement` independently of descriptor matching:
 ```
 
 The stage requires retained drawing geometry or footprint extraction. Completed
-outputs and PDF hashes are rechecked on resume; incomplete output is refused.
+outputs and PDF hashes are rechecked on resume. Interrupted jobs revalidate and
+reindex original candidate records, then reuse committed per-sheet fits from a
+WAL SQLite checkpoint. The checkpoint binds job inputs, per-page candidate hashes
+and cached result hashes. Changed inputs, damaged results and failed SQLite
+integrity checks are refused. Output feeds are rebuilt and published only when
+the full run completes. A progress callback can report completed/cached sheets.
+Centroid-distance spatial queries now discard distant reference comparisons
+before transforming full outlines, and shape descriptors are computed once.
 Independent verification remains the next step for any proposed transform:
 identify control attachment points and separately sourced checkpoint evidence,
 review current physical objects and dimensions, then use the existing checked
@@ -95,3 +102,46 @@ sample: `evidence/alton-mapped-placement-sample.geojson`; comparison preview:
 `evidence/alton-mapped-placement-preview.svg`. Use the receipts' sheet selection,
 thresholds, candidate/reference hashes and projected CRS to reproduce the full
 review feed from retained component candidates and park-domain references.
+
+The earlier ten-sheet receipts use v1. V2 needs a fresh output directory when
+upgrading; run-bound placement IDs change with the version even when fitted
+geometry is identical.
+
+## Whole-corpus replay and failure triage
+
+V2 checked all 212,104 component records on 353 candidate-bearing sheets against
+246 retained park-domain comparison polygons. It tried 50,711 full-boundary
+seeds. Seven sheets have one provisional placement, three have competing
+placements and emit no positioned geometry, and 343 are withheld. The single
+placements form four exact transform groups, not seven independent checks.
+There are 3,747 positioned review records: 546 polygons and 3,201 lines. Another
+13,395 records cross or lie outside the matched envelopes and are withheld.
+
+Of the 343 unplaced sheets, 48 have fewer than three polygon objects and 295
+have no shared outline agreement under this search. These are diagnostic
+categories, not explanations of every underlying source problem. Source title
+hints flag 36 pages for floor-plan/elevation/section review; source state is not
+confirmed existing on 307 pages. Those flags overlap the search outcomes and
+do not establish present construction state.
+
+```sh
+python -m voxel_mapper.placement_diagnostics \
+  --placement-directory work/mapped-placement \
+  --queue evidence/alton-outline-alignment-queue.jsonl \
+  --output work/placement-triage
+```
+
+The triage queue retains rank, original application/attachment links, polygon
+and seed counts, hypotheses/supports/residuals and pending review flags. Its
+input receipt and full feed hashes are checked; unknown or duplicate pages are
+refused. All 353 page fits are checkpointed with a clean integrity check.
+Completed resume and final output hashes pass. The earlier ten-sheet proposal
+results remain exactly equal. All 580 tests pass, including interrupted-fit reuse
+with identical output feeds and rejection of altered cached results.
+
+See `evidence/alton-whole-placement-validation.json`,
+`evidence/alton-whole-sheet-placements.jsonl` and
+`evidence/alton-whole-placement-triage.jsonl`. Placement and physical identity
+remain unverified; this replay adds no world blocks. The next review should
+verify the strong, distinct landmark sets and inspect closed-outline recovery
+or landmark correspondences for the highest-priority unmatched plans.
