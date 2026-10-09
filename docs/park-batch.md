@@ -51,3 +51,9 @@ Boundary/corner similarity hypotheses and independently checked registration: [b
 Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).
 
 Curved polygon and open-line candidates, current-record matching and explicit line/approximation review: [drawing-geometry.md](drawing-geometry.md).
+# Multi-object sheet alignment
+
+The optional `sheet_alignment` stage groups footprint associations by PDF/page
+and proposes a shared transform only when at least three distinct objects agree.
+See [sheet alignment](sheet-alignment.md) for bounds, source pinning and review
+requirements. It creates a review queue and adds no world geometry.

@@ -88,6 +88,13 @@ def run(job_path,stage='all'):
                 else:report=register_boundaries(candidates,matching_root,path(matching['references']),matching['reference_crs'],target,destination,corpus,max_fits=contract['max_fits'],registration_reviews=reviews)
                 checkpoint('boundary_registration',report)
 
+            sheet=job.get('sheet_alignment',{})
+            if sheet.get('enabled',False):
+                from .sheet_alignment import run as align_sheet
+                if not matching.get('enabled',False):raise ValueError('Sheet alignment requires footprint_matching')
+                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+                checkpoint('sheet_alignment',align_sheet(candidates,root/'footprint-matching',path(matching['references']),matching['reference_crs'],target,root/'sheet-alignment',corpus,max_pair_fits=sheet.get('max_pair_fits',2000),max_records=sheet.get('max_records',2500000)))
+
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
