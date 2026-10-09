@@ -11,13 +11,15 @@ from .drawing_page_tools import native_inspection_page,native_lines
 from .drawing_controls import inspect_coordinate_labels
 from .geopdf import inspect_registration
 
-VERSION='anchor-audit-v2'
+VERSION='anchor-audit-v3'
 LOCATION=re.compile(r'\bEasting\s*:\s*(\d{1,9}(?:\.\d+)?)\s*Northing\s*:\s*(\d{1,9}(?:\.\d+)?)(?![\d.])',re.I)
 AXIS=re.compile(r'^\s*(\d{6})\s*([EN])\s*$',re.I)
 
 
 def page_audit(native_page,rendered_page,bounds):
     text=rendered_page.get_text()
+    from .survey_context import inspect_survey_context
+    survey_context=inspect_survey_context(text)
     if len(text)>500000:raise ValueError('Anchor native-text budget exceeded')
     locations=[{'easting':float(m[1]),'northing':float(m[2]),'crs':None,'status':'application_location_hint; no drawing-point attachment','registration_eligible':False} for m in LOCATION.finditer(text)]
     if len(locations)>64:raise ValueError('Application location hint budget exceeded')
@@ -36,7 +38,11 @@ def page_audit(native_page,rendered_page,bounds):
             labels.append({'axis':match[2].upper(),'value':int(match[1]),'position':line['local'][0 if match[2].upper()=='E' else 1],'local':line['local'],'origin':'native_text_box_center; not a measured grid intersection'})
     if len(labels)>64:raise ValueError('Axis label budget exceeded')
     axis=fit_axis_labels(labels,bounds)
-    return {'status':'anchor_candidates_only','page_frame':frame,'embedded_registration':embedded,'explicit_mark_grid':explicit,'axis_label_count':len(labels),'axis_labels':labels,'axis_alignment':axis,'application_location_hints':locations,'registration_verified':False,'world_geometry_additions':0}
+    if survey_context['restriction_flags']:
+        axis={**axis,'status':'withheld_survey_grid_restriction','restriction_flags':survey_context['restriction_flags']}
+        embedded={**embedded,'status':'withheld_survey_grid_restriction'}
+        explicit={k:{**v,'status':'withheld_survey_grid_restriction'} for k,v in explicit.items()}
+    return {'status':'anchor_candidates_only','page_frame':frame,'survey_context':survey_context,'embedded_registration':embedded,'explicit_mark_grid':explicit,'axis_label_count':len(labels),'axis_labels':labels,'axis_alignment':axis,'application_location_hints':locations,'registration_verified':False,'world_geometry_additions':0}
 
 
 def run(corpus,output,bounds,*,max_pages=10000):

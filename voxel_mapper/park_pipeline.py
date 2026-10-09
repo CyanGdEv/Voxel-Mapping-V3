@@ -54,6 +54,12 @@ def run(job_path,stage='all'):
             if geometry.get('enabled',False):
                 from .drawing_geometry import run as extract_geometry
                 checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),curve_tolerance_points=geometry.get('curve_tolerance_points',.25)))
+            components=job.get('drawing_components',{})
+            if components.get('enabled',False):
+                from .drawing_components import run as split_components
+                if not geometry.get('enabled',False):raise ValueError('Drawing components require drawing geometry')
+                checkpoint('drawing_components',split_components(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'drawing-components',max_records=components.get('max_records',2500000)))
+            polygon_candidates=root/'drawing-components/polygon-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
             matching=job.get('footprint_matching',{})
             layout=job.get('drawing_layout',{})
             if layout.get('enabled',False):
@@ -63,11 +69,11 @@ def run(job_path,stage='all'):
             if outline.get('enabled',False):
                 from .outline_batch import run as review_outlines
                 if not geometry.get('enabled',False) and not job.get('footprint_extraction',{}).get('enabled',False):raise ValueError('Outline review requires drawing geometry or footprint extraction')
-                feed=root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+                feed=root/'drawing-components/component-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
                 checkpoint('outline_review',review_outlines(corpus,feed,root/'outline-review',max_records=outline.get('max_records',2500000)))
             if matching.get('enabled',False):
                 from .footprint_matching import run as match_footprints,VERSION as matching_version
-                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'
+                candidates=polygon_candidates;references=path(matching['references']);destination=root/'footprint-matching'
                 target=matching.get('target_crs') or json.loads(path(job['manifest']).read_text())['crs']
                 with candidates.open('rb') as stream:candidate_hash=hashlib.file_digest(stream,'sha256').hexdigest()
                 with references.open('rb') as stream:reference_hash=hashlib.file_digest(stream,'sha256').hexdigest()
@@ -86,7 +92,7 @@ def run(job_path,stage='all'):
             if boundary.get('enabled',False):
                 from .boundary_registration import run as register_boundaries,VERSION as boundary_version,file_hash
                 if not matching.get('enabled',False):raise ValueError('Boundary registration requires footprint_matching')
-                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';destination=root/'boundary-registration';matching_root=root/'footprint-matching'
+                candidates=polygon_candidates;destination=root/'boundary-registration';matching_root=root/'footprint-matching'
                 reviews=json.loads(path(boundary['reviews']).read_text()) if boundary.get('reviews') else []
                 contract={'version':boundary_version,'candidate_sha256':file_hash(candidates),'association_sha256':file_hash(matching_root/'associations.jsonl'),'reference_sha256':file_hash(path(matching['references'])),'target_crs':target,'reference_crs':matching['reference_crs'],'max_fits':boundary.get('max_fits',10000),'review_sha256':hashlib.sha256(json.dumps(reviews,sort_keys=True).encode()).hexdigest()}
                 if destination.exists():
@@ -102,7 +108,7 @@ def run(job_path,stage='all'):
             if sheet.get('enabled',False):
                 from .sheet_alignment import run as align_sheet
                 if not matching.get('enabled',False):raise ValueError('Sheet alignment requires footprint_matching')
-                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+                candidates=polygon_candidates
                 checkpoint('sheet_alignment',align_sheet(candidates,root/'footprint-matching',path(matching['references']),matching['reference_crs'],target,root/'sheet-alignment',corpus,max_pair_fits=sheet.get('max_pair_fits',2000),max_records=sheet.get('max_records',2500000)))
 
         finally:corpus.close()

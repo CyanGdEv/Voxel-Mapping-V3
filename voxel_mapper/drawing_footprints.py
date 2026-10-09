@@ -126,6 +126,9 @@ def extract_page(page,sha,page_number,*,max_paths=100000,max_candidates=2000,max
 
 
 def retained_page_candidates(corpus,candidate):
+    if candidate.get('extraction_kind')=='drawing_components':
+        from .drawing_components import retained_components
+        return retained_components(corpus,candidate)
     sha,page=candidate['document_sha256'],candidate['page']
     if candidate.get('extraction_kind')=='drawing_geometry':
         from .drawing_geometry import VERSION as version
@@ -138,6 +141,7 @@ def retained_page_candidates(corpus,candidate):
 
 
 def reviewed_feature(candidate,review,source,alignment,target_crs):
+    if candidate.get('extraction_kind')=='drawing_components':raise ValueError('Component identity and semantic export require explicit parent/component review')
     from pyproj import CRS
     if review.get('candidate_id')!=candidate['id']:raise ValueError('Review must bind exact candidate identity')
     geometry=shape(candidate['geometry'])

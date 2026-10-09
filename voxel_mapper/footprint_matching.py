@@ -5,6 +5,7 @@ from datetime import date
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import re
 import sqlite3
@@ -14,7 +15,7 @@ from shapely.geometry import Point,shape
 from shapely.ops import transform
 from shapely.strtree import STRtree
 
-VERSION='footprint-matching-v2'
+VERSION='footprint-matching-v3'
 
 
 def name_key(value):
@@ -139,10 +140,11 @@ def run(candidates,reference_file,reference_crs,target_crs,output,*,corpus=None,
     if output.exists():raise ValueError('Use a fresh matching output directory')
     rows,refhash,rejected=references(reference_file,reference_crs,target_crs);output.mkdir(parents=True)
     connection=sqlite3.connect(output/'review-index.sqlite')
+    connection.execute('PRAGMA journal_mode=WAL')
     connection.executescript('CREATE TABLE records(feature_id TEXT UNIQUE,payload TEXT); CREATE VIRTUAL TABLE spatial USING rtree(id,minx,maxx,miny,maxy); CREATE TABLE candidates(id TEXT PRIMARY KEY);')
     names=NativeNames(corpus,rows) if corpus else None;counts=Counter();count=0
     try:
-        with (output/'associations.jsonl').open('w') as associations,(output/'revision-review.jsonl').open('w') as revisions:
+        with (output/'associations.jsonl.partial').open('w') as associations,(output/'revision-review.jsonl.partial').open('w') as revisions:
             for candidate in lines(candidates):
                 count+=1
                 if count>max_records:raise ValueError('Record budget exceeded')
@@ -166,13 +168,18 @@ def run(candidates,reference_file,reference_crs,target_crs,output,*,corpus=None,
                     for decision in reconcile(connection,feature,geometry):
                         revisions.write(json.dumps(decision)+'\n');counts[decision['classification']]+=1
             connection.commit()
+            for stream in (associations,revisions):stream.flush();os.fsync(stream.fileno())
+        with (output/'associations.jsonl.partial').open() as stream:
+            if sum(1 for _ in stream)!=counts['native_candidates']+counts['registered_features']:raise ValueError('Incomplete matching association feed')
+        for filename in ('associations.jsonl','revision-review.jsonl'):(output/(filename+'.partial')).replace(output/filename)
         report={'status':'review_queues_only','version':VERSION,'counts':dict(counts),'reference_polygons':len(rows),'rejected_nonpolygon_or_invalid_references':rejected,'reference_sha256':refhash,'target_crs':target_crs,'reference_crs':reference_crs,'native_names_enabled':corpus is not None,'max_records':max_records,'world_geometry_additions':0,'limitations':['Unplaced shape descriptors cannot establish location, absolute size or identity','Mapped references are comparison evidence, not independent survey verification','No automatic latest-revision, existing-state, reuse or material acceptance']}
         for key,path in [('candidate_sha256',candidates),('registered_features_sha256',registered_features)]:
             if path:
                 with Path(path).open('rb') as stream:report[key]=hashlib.file_digest(stream,'sha256').hexdigest()
         for filename in ('associations.jsonl','revision-review.jsonl'):
             with (output/filename).open('rb') as stream:report[filename+'_sha256']=hashlib.file_digest(stream,'sha256').hexdigest()
-        (output/'matching-report.json').write_text(json.dumps(report,indent=2)+'\n');return report
+        (output/'matching-report.json.partial').write_text(json.dumps(report,indent=2)+'\n')
+        (output/'matching-report.json.partial').replace(output/'matching-report.json');return report
     finally:
         if names:names.close()
         connection.close()

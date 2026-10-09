@@ -34,8 +34,10 @@ Enable the inventory before matching in a park job:
 "drawing_layout": {"enabled": true, "max_pages": 10000}
 ```
 
-Matching v2 uses only trace-bound native labels without detected fill/image
-occlusion. Older matching receipts require a fresh matching output directory.
+Matching v3 uses only trace-bound native labels without detected fill/image
+occlusion, retains its index in WAL mode, and publishes complete matching feeds
+and their receipt atomically after flushing and checking association row counts.
+Older matching receipts require a fresh matching output directory.
 Layout cache contracts include the reader version and bounded options. Path,
 label, mask and point budget failures withhold the page; a region budget
 defers extra region hypotheses while preserving label analysis.
