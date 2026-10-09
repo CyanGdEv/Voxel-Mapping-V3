@@ -23,3 +23,18 @@ This is a secondary-source caution, not proof of the exact current building cond
 Use identifiable existing courtyard corners, lake edges and paths as independent controls against current mapped geometry/orthophoto evidence. Check sheet scale, rotations, panel frames, survey datum and date before estimating a transform. Retain residuals and an explicit validated domain. Then review bounded path widths/materials, ground profiles, walls, fences and ride footprints; rail/ride mechanism heights require separate evidence. This integration does not move the world or assert that the reported Mutiny Bay discrepancy has been measured.
 
 The saved source pack contains acquired PDFs, council pages, full native-text inspection and availability records. The repository area inventory contains compact page metadata/text hashes and selected review cues; full source text is not a physical geometry record. `source_inventory()` always reports zero world geometry additions until independent registration is implemented.
+
+## Courtyard alignment review
+
+`voxel_mapper.mutiny_bay_review` now retains four reviewed inner roof/eaves corners from the checksum-pinned existing roof sheet 3023-10. At its printed 1:200 scale they enclose approximately 971.35 m². The drawing also shows an existing central canopy: the courtyard perimeter is not permission to clear every object inside it.
+
+A simplified diagnostic envelope around the four main wings measures approximately 44.40 × 44.13 m at the printed scale. It excludes complete corner/entrance/annexe detailing and is not an exact building footprint. Its best similarity fit against the single mapped Courtyard Tavern BBQ polygon differs from the printed scale by 14.02% and has 2.75 m corner RMS. This fit is rejected. These may be different physical extents; one object also cannot establish independent registration. The rotated/ambiguous candidate is retained only for diagnosis and cannot drive world replacements.
+
+A separate read-only V20 native audit checks 787 channel columns inside Battle Galleons member 453985982 over geographic Y 168–194 m. The 790.69 m² channel footprint is fully within mapped water. The scan contains water, estimated bed/fill and air, plus 16 protected iron cells, and no stone-brick cells. This rejects the initial suspicion of a stone-brick channel extrusion in that bounded scan; it does not establish ride geometry or whole-area visual accuracy.
+
+```bash
+python -m voxel_mapper.mutiny_bay_review --cache MUTINY_SOURCE_PACK \
+  --osm park-osm.json --source-output V20_OUTPUT --output REVIEW_OUTPUT
+```
+
+The source pack must retain its `files/SHA256.pdf` paths. Five focused tests cover the inventory and the rule that even a perfect one-object fit cannot approve placement. Next registration work must match individual existing wings and independent landmarks rather than resizing or translating the entire area. No park-world geometry changed in this review. See `evidence/mutiny-bay-alignment-review.json`.

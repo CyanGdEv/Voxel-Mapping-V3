@@ -1,0 +1,142 @@
+{
+  "status": "courtyard_topology_retained_alignment_withheld",
+  "profile": {
+    "document_id": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+    "page": 1,
+    "state": "existing",
+    "drawing": "3023-10",
+    "frame": "displayed_pdf_points_rotation_applied",
+    "scale_m_per_point": 0.07055555555555555,
+    "scale_status": "printed_1_200_not_independently_verified",
+    "courtyard_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            564.959716796875,
+            780.7191162109375
+          ],
+          [
+            1019.87841796875,
+            781.6779174804688
+          ],
+          [
+            1018.91796875,
+            1209.9578857421875
+          ],
+          [
+            563.399658203125,
+            1209.71728515625
+          ],
+          [
+            564.959716796875,
+            780.7191162109375
+          ]
+        ]
+      ]
+    },
+    "courtyard_nominal_area_m2": 971.350069134304,
+    "roof_envelope_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            1107.12,
+            692.4
+          ],
+          [
+            1107.12,
+            1317.84
+          ],
+          [
+            477.84,
+            1317.84
+          ],
+          [
+            477.84,
+            692.4
+          ],
+          [
+            1107.12,
+            692.4
+          ]
+        ]
+      ]
+    },
+    "roof_envelope_nominal_dimensions_m": [
+      44.39919999999999,
+      44.12826666666666
+    ],
+    "roof_envelope_status": "simplified_proxy_not_complete_roof_or_building_boundary",
+    "courtyard_status": "Inner roof perimeter retained; existing canopy and access details not removed",
+    "registration_verified": false,
+    "world_geometry_additions": 0
+  },
+  "alignment": {
+    "status": "withheld_one_object_alignment",
+    "candidate_for_diagnosis_only": {
+      "scale_m_per_pdf_point": 0.06066660672760354,
+      "rotation": [
+        [
+          -0.842553812700645,
+          0.5386121728141748
+        ],
+        [
+          -0.5386121728141748,
+          -0.842553812700645
+        ]
+      ],
+      "translation_epsg27700_m": [
+        407510.34394506563,
+        343511.02759967756
+      ],
+      "shop_corner_rms_m": 2.752764600769582
+    },
+    "printed_scale_m_per_point": 0.07055555555555555,
+    "fit_scale_difference_fraction": 0.14015832984498922,
+    "printed_scale_gate_passed": false,
+    "independent_control_objects": 1,
+    "registration_verified": false,
+    "world_geometry_additions": 0,
+    "reason": "One mapped building does not establish placement; differing envelopes may represent different physical extents"
+  },
+  "mapped_building": {
+    "id": 113576011,
+    "name": "Courtyard Tavern BBQ",
+    "area_m2": 948.2810898658494,
+    "interior_rings": 0
+  },
+  "osm_sha256": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+  "limitations": [
+    "Roof envelope and mapped BBQ polygon are not proven to cover the same complete structure",
+    "Historical inner roof perimeter does not authorize clearing the current canopy",
+    "No whole-area translation or world replacement is approved by this diagnostic"
+  ],
+  "native_channel_audit": {
+    "source_package_sha256": "16ed98200bf0c0481eee5746a03b089ba6faa46500ee94bc565c2cc94817e273",
+    "osm_relation": 17436870,
+    "osm_member": 453985982,
+    "footprint_area_m2": 790.6926568610857,
+    "mapped_water_overlap_area_m2": 790.6926568610855,
+    "columns_checked": 787,
+    "geographic_y_scan_m": [
+      168,
+      194
+    ],
+    "native_material_counts": {
+      "stone": 1656,
+      "dirt": 1574,
+      "gravel": 787,
+      "water": 2279,
+      "air": 14937,
+      "iron_block": 16
+    },
+    "stone_brick_cells": 0,
+    "status": "No stone-brick extrusion in scanned channel; existing iron cells protected",
+    "world_mutations": 0
+  },
+  "tests": {
+    "targeted_run": 5,
+    "targeted_passed": 5
+  }
+}
