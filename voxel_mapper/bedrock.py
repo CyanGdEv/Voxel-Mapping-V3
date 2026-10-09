@@ -41,6 +41,9 @@ ALLOWED_MATERIALS.update(f'{wood}_log{suffix}' for wood in FOLIAGE_WOODS for suf
 ALLOWED_MATERIALS.update(f'{wood}_leaves' for wood in FOLIAGE_LEAVES)
 ALLOWED_MATERIALS.update(('fern','short_grass','oxeye_daisy'))
 GARDEN_STONES=('stone','stone_brick','sandstone','brick','smooth_stone')
+GARDEN_WALLS=('sandstone','stone_brick','brick')
+ALLOWED_MATERIALS.update(f'{m}_wall' for m in GARDEN_WALLS)
+ALLOWED_MATERIALS.add('sandstone')
 ALLOWED_MATERIALS.update(f'{m}_slab{suffix}' for m in GARDEN_STONES for suffix in ('','_top'))
 ALLOWED_MATERIALS.update(f'{m}_stairs_{d}' for m in GARDEN_STONES if m!='smooth_stone' for d in ('north','east','south','west'))
 ALLOWED_MATERIALS.add('green_stained_glass')
@@ -49,6 +52,9 @@ for m in ('iron_bars','green_stained_glass_pane'):
 
 
 def material_block(material):
+    for stone in GARDEN_WALLS:
+        if material == stone+'_wall':
+            return Block('universal_minecraft','wall',{'material':StringTag(stone),'up':StringTag('true'),**{k:StringTag('none') for k in ('north','south','east','west')}})
     if material=='grass_block':return Block('universal_minecraft','grass_block',{'snowy':StringTag('false')})
     if material=='water':
         return Block('universal_minecraft','water',{'falling':StringTag('false'),'flowing':StringTag('false'),'level':StringTag('0')})
@@ -107,6 +113,11 @@ def material_block(material):
 def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16, foundation_mode='shared'):
     if report['voxel_size_m'] != 1:
         raise ValueError('Bedrock 1:1 world export requires voxel_size_m = 1')
+    model_scale = report.get('model_blocks_per_source_metre', 1)
+    if isinstance(model_scale, bool) or model_scale not in (1, 4):
+        raise ValueError('Model study scale must be 1 or 4')
+    if model_scale != 1 and (report.get('crs') is not None or report.get('vertical_datum') != 'STUDY_ZERO'):
+        raise ValueError('Enlarged studies cannot claim geographic coordinates or a survey datum')
     output = Path(output)
     world_path = output/'bedrock-world'
     package = output/'park.mcworld'
@@ -200,7 +211,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
             wrapper = LevelDBFormat(str(world_path))
             wrapper.create_and_open('bedrock',VERSION)
             root = wrapper.root_tag.compound
-            root['LevelName'] = StringTag(str(name)+' — draft 1:1')
+            root['LevelName'] = StringTag(str(name)+f' — draft {model_scale}:1')
             root['GameType'] = IntTag(1)
             root['Difficulty'] = IntTag(0)
             root['SpawnX'],root['SpawnY'],root['SpawnZ'] = IntTag(spawn_x),IntTag(top+2),IntTag(spawn_z)
@@ -263,8 +274,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                 level.close()
                 connection.close()
         (world_path/'voxel-quality-report.json').write_text(json.dumps(report,indent=2))
-        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':1,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2))
-        attribution = ['Voxel Mapper 3.1 — draft, unverified reconstruction. 1 block = 1 metre.']
+        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2))
+        attribution = [f'Voxel Mapper 3.1 — draft, unverified reconstruction. {model_scale} blocks per source metre.']
         attribution += [f"{source['id']}: {source.get('attribution',source.get('license',''))} {source['url']}" for source in report.get('sources',[])]
         attribution += [source['attribution_url'] for source in report.get('sources',[]) if source.get('attribution_url')]
         (world_path/'ATTRIBUTION.txt').write_text('\n'.join(attribution)+'\n')
@@ -275,8 +286,9 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         with package.open('rb') as stream:
             checksum = hashlib.file_digest(stream,'sha256').hexdigest()
         return {'format':'Bedrock .mcworld','file':package.name,'target_version':list(VERSION),
-                'blocks_per_metre':1,'horizontal_transform':{'minecraft_x':'east','minecraft_z':'negative north'},
-                'vertical_offset_blocks':y_offset,'geographic_elevation_m':'Minecraft Y minus vertical_offset_blocks',
+                'blocks_per_metre':model_scale,'horizontal_transform':{'minecraft_x':'east','minecraft_z':'negative north'},
+                'vertical_offset_blocks':y_offset,'geographic_elevation_m':('Minecraft Y minus vertical_offset_blocks' if report.get('crs') is not None else None),
+                'study_source_height_m':('(Minecraft Y minus vertical_offset_blocks) / '+str(model_scale) if report.get('vertical_datum')=='STUDY_ZERO' else None),
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,'explicit_air_cells':air_cells,
                 'ground_fill_depth_blocks':ground_depth,'round_trip_validation':'all written blocks and all unwritten air cells verified',
                 'foundation':{'minecraft_y':foundation_y,'mode':foundation_mode,

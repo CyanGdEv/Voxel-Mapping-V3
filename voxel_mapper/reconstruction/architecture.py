@@ -18,6 +18,7 @@ def architectural_components(feature, geom, ctx):
     if not isinstance(parts, list) or not 1 <= len(parts) <= 1000:
         raise ValueError('Architecture requires 1–1000 components')
     ids = set()
+    cells = {}
     for part in parts:
         if not isinstance(part, dict) or 'geometry' not in part:
             raise ValueError('Architectural component object and geometry required')
@@ -40,15 +41,34 @@ def architectural_components(feature, geom, ctx):
         if top <= bottom:
             raise ValueError('Component top must exceed bottom')
         material = nested.value('material', ctx.sources, ctx.allow_estimates)
+        rule = nested.value('raster_rule', ctx.sources, ctx.allow_estimates) if 'raster_rule' in nested.parameters else 'overlap'
+        priority = nested.value('voxel_priority', ctx.sources, ctx.allow_estimates) if 'voxel_priority' in nested.parameters else 0
+        if rule not in ('overlap', 'centroid') or isinstance(priority, bool) or not isinstance(priority, int) or not -100 <= priority <= 100:
+            raise ValueError('Invalid component raster rule or voxel priority')
+        if rule == 'centroid' and (local.geom_type != 'Polygon' or local.area > 1 or local.interiors):
+            raise ValueError('Centroid raster rule requires a small solid member')
         footprint = translate(rotate(local, angle, origin=(0, 0)), geom.x, geom.y)
         left, south, right, north = footprint.bounds
         if (right-left)*(north-south) > 30000:
             raise ValueError('Architectural footprint budget exceeded')
         # Positive overlap preserves thin columns; holes remain empty where a
         # whole voxel fits. Features smaller than a block necessarily alias.
-        for x in range(math.floor(left), math.ceil(right)):
-            for z in range(math.floor(south), math.ceil(north)):
+        xs = [math.floor(footprint.centroid.x)] if rule == 'centroid' else range(math.floor(left), math.ceil(right))
+        zs = [math.floor(footprint.centroid.y)] if rule == 'centroid' else range(math.floor(south), math.ceil(north))
+        for x in xs:
+            for z in zs:
                 if footprint.intersection(box(x, z, x+1, z+1)).area <= 1e-9:
                     continue
                 for y in range(math.floor(base+bottom), math.ceil(base+top)):
-                    yield (x, y, z), material
+                    key = x, y, z
+                    previous = cells.get(key)
+                    if previous is None or priority > previous[0]:
+                        cells[key] = priority, {material}
+                    elif priority == previous[0]:
+                        previous[1].add(material)
+                    if len(cells) > ctx.max_feature_voxels:
+                        raise EvidenceMissing('Feature budget exceeded')
+    if any(len(materials) != 1 for _, materials in cells.values()):
+        raise EvidenceMissing('Conflicting feature member material at equal priority')
+    for key, (_, materials) in cells.items():
+        yield key, next(iter(materials))
