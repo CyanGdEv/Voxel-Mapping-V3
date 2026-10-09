@@ -1,0 +1,22 @@
+{
+  "features": 2500000,
+  "decisions": {
+    "planned": 2500000
+  },
+  "families": {
+    "plaza": 2500000
+  },
+  "unique_voxel_cells": 2500000,
+  "native_chunks": 9800,
+  "provenance_links": 2500000,
+  "status": "disk_geometry_plan; native world export and verification remain separate",
+  "memory_contract": "One bounded feature staged at a time; feature records normalized once, voxel/evidence links and decisions on disk",
+  "resumed_features": 1571882,
+  "compile_seconds": 310.36271638799735,
+  "resume_seconds": 134.8377744970021,
+  "resume_features": 2500000,
+  "peak_process_rss_mib": 114.375,
+  "fixture": "Synthetic independent one-cell plazas; tests feature-count scale, not real PDF semantics or park accuracy",
+  "run_context": "Recovered after initial disk-full interruption with 1571882 committed features. compile_seconds measures recovery pass: replay retained prefix plus compilation of remaining features; not fresh full-build duration.",
+  "geometry_database_bytes": 2566078464
+}

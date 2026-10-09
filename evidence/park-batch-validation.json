@@ -55,6 +55,7 @@
     "benchmark_ceiling": 2500000,
     "focused_tests_passed": 21,
     "compile_resume_smoke_features": 1000,
-    "full_ceiling_benchmark_run": false
+    "full_ceiling_benchmark_run": true,
+    "report": "park-batch-2500000.json"
   }
 }

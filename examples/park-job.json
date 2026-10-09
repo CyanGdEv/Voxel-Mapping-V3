@@ -11,5 +11,6 @@
     "max_inspection_pages": 10000,
     "offline": true
   },
+  "drawing_analysis": {"enabled": true, "registration": true, "max_pages": 10000},
   "geometry_feeds": []
 }

@@ -15,6 +15,7 @@ voxel-reconstruct = "voxel_mapper.reconstruction.cli:main"
 voxel-planning-bulk = "voxel_mapper.planning_bulk:main"
 voxel-park-batch = "voxel_mapper.reconstruction.batch:main"
 voxel-park = "voxel_mapper.park_pipeline:main"
+voxel-drawing-batch = "voxel_mapper.drawing_batch:main"
 
 [project.optional-dependencies]
 planning = ["PyMuPDF>=1.26,<2"]

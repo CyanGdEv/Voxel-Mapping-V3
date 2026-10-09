@@ -1,0 +1,102 @@
+{
+  "drawing_analysis": {
+    "status": "drawing_triage_only",
+    "contract": "14064cbb4a1fa11ba4cfbc5a0e6f04c46a4b8ad18c6be35b79d11f1a14d9273a",
+    "validated_pdf_blobs": 84,
+    "analyzed_pages": 238,
+    "run_analyzed_pages": 14,
+    "resumed_pages": 224,
+    "categories": {
+      "site_plan": 3,
+      "ambiguous": 13,
+      "elevation_section": 32,
+      "location_plan": 8,
+      "unclassified": 54,
+      "report": 113,
+      "water_drainage": 3,
+      "landscape_paths": 12
+    },
+    "alignment_statuses": {
+      "withheld": 47,
+      "needs_controls": 191
+    },
+    "construction_state_candidates": {
+      "proposed": 41,
+      "unknown": 95,
+      "mixed": 57,
+      "existing": 45
+    },
+    "errors": [],
+    "unmatched_review_pages": [],
+    "world_geometry_additions": 0,
+    "output": "drawing-analysis.jsonl",
+    "output_sha256": "8f1ac99cee40e45bac7972fb8960b409a1755df1537a7ddf2a1c0e3ebfdd5a4b"
+  },
+  "mixed_geometry_benchmark": {
+    "features": 10000,
+    "decisions": {
+      "planned": 10000
+    },
+    "families": {
+      "path": 1000,
+      "plaza": 1000,
+      "wood_fence": 1000,
+      "metal_fence": 1000,
+      "building_shell": 1000,
+      "rocks": 1000,
+      "lake": 1000,
+      "ride_layout": 1000,
+      "ride_support_member": 1000,
+      "bridge": 1000
+    },
+    "unique_voxel_cells": 305000,
+    "native_chunks": 10000,
+    "provenance_links": 305000,
+    "status": "disk_geometry_plan; native world export and verification remain separate",
+    "memory_contract": "One bounded feature staged at a time; feature records normalized once, voxel/evidence links and decisions on disk",
+    "resumed_features": 0,
+    "compile_seconds": 13.45748285600348,
+    "resume_seconds": 0.6600882220009225,
+    "resume_features": 10000,
+    "peak_process_rss_mib": 115.00390625,
+    "fixture": "Synthetic mixed multi-cell geometry: paths, plazas, fences, shells, rocks, water, 3D ride routes/supports and bridge components"
+  },
+  "focused_tests": {
+    "passed": 34
+  },
+  "full_suite": {
+    "total": 465,
+    "passed": 461,
+    "preexisting_failures": 3,
+    "preexisting_errors": 1
+  },
+  "automatic_world_geometry_additions": 0,
+  "limits": [
+    "Heuristic page triage, not general physical-object extraction",
+    "No supported automatic registration found in recovered corpus",
+    "Native-world export at 2.5-million-feature scale remains untested",
+    "Rotated pages, OCR and automatic landmark matching remain further work"
+  ],
+  "large_feature_benchmark": {
+    "features": 2500000,
+    "decisions": {
+      "planned": 2500000
+    },
+    "families": {
+      "plaza": 2500000
+    },
+    "unique_voxel_cells": 2500000,
+    "native_chunks": 9800,
+    "provenance_links": 2500000,
+    "status": "disk_geometry_plan; native world export and verification remain separate",
+    "memory_contract": "One bounded feature staged at a time; feature records normalized once, voxel/evidence links and decisions on disk",
+    "resumed_features": 1571882,
+    "compile_seconds": 310.36271638799735,
+    "resume_seconds": 134.8377744970021,
+    "resume_features": 2500000,
+    "peak_process_rss_mib": 114.375,
+    "fixture": "Synthetic independent one-cell plazas; tests feature-count scale, not real PDF semantics or park accuracy",
+    "run_context": "Recovered after initial disk-full interruption with 1571882 committed features. compile_seconds measures recovery pass: replay retained prefix plus compilation of remaining features; not fresh full-build duration.",
+    "geometry_database_bytes": 2566078464
+  }
+}

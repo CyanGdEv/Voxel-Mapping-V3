@@ -30,6 +30,11 @@ def run(job_path,stage='all'):
             report=corpus.acquire(workers=acquisition.get('workers',4),limit=acquisition.get('max_downloads',10000),max_run_bytes=acquisition.get('max_run_bytes',2000000000),
                                   offline=acquisition.get('offline',False),cache=str(path(acquisition['cache'])) if acquisition.get('cache') else None)
             checkpoint('downloads',report);checkpoint('inspection',corpus.inspect(acquisition.get('max_inspection_pages',10000)))
+            analysis=job.get('drawing_analysis',{})
+            if analysis.get('enabled',True):
+                from .drawing_batch import analyze
+                reviews=json.loads(path(analysis['reviews']).read_text()) if analysis.get('reviews') else None
+                checkpoint('drawing_analysis',analyze(corpus,max_pages=analysis.get('max_pages',10000),registration=analysis.get('registration',True),reviews=reviews))
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
