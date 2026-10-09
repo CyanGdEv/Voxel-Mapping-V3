@@ -49,3 +49,31 @@ beds, leaves, fence trunks or logs were overwritten. The remaining chunks are
 copied from V18, including Prospect Tower. No in-game visual fidelity test is
 claimed. See `evidence/garden-bridges-v19-validation.json` for checksums and
 visit coordinates; the in-game spawn remains beside Prospect Tower.
+
+The builder now repeats a native walking audit after reopening the composed
+world and before writing the importable package. Each retained walking column
+must have a supported full block, slab or stair at its declared height and
+two air blocks overhead. The cardinal-neighbour graph must be one component;
+adjacent rises above one block fail. Final composition is checked so later
+features cannot silently obstruct an earlier bridge. A failure retains the
+diagnostic world directory but produces no `park.mcworld`.
+Results are embedded under `semantic_verification` in new build reports.
+
+Existing V19 packages can be extracted and checked without changing blocks:
+
+```sh
+python -m voxel_mapper.reconstruction.walking_audit --world EXTRACTED_V19_WORLD
+```
+
+The replay of the saved V19 package passes all four profiles (299 columns).
+See `evidence/garden-bridges-v19-walking-audit.json` for the package hash and
+per-bridge results. This is a check of the existing package, not a new world
+generation. The original 403-test validation above belongs to the original
+V19 build.
+
+Fractional input deck elevations now report the actual integer top of the
+generated full block; previously the walking profile retained the unquantized
+requested height. The existing four V19 deck inputs are integer elevations.
+Slab tops are checked explicitly. Stairs use their taller tread envelope;
+player movement, stair-facing transitions, absolute survey alignment and
+in-game visual fidelity remain unverified.

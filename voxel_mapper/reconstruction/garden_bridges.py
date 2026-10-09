@@ -16,7 +16,7 @@ def bridge_cells(line,width,top,ground,style='footbridge',approach_length=6,wate
     deck_y=math.ceil(top)-1
     for x,z in set(roof_cells(line.buffer(width/2,cap_style=2)))|set(line_cells(line)):
         put(x,deck_y,z,'gray_concrete' if style=='cast_iron_three_span' else 'stone')
-        walk[x,z]=top
+        walk[x,z]=deck_y+1
         for y in range(deck_y+1,deck_y+3):clear.add((x,y,z))
         floor=ground(x,z)
         if floor is None:raise ValueError('Bridge needs native ground at all columns')

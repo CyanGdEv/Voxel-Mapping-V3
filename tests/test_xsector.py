@@ -66,6 +66,17 @@ class XSectorTests(unittest.TestCase):
             finally:level.close()
             with self.assertRaises(ValueError):apply_overlay(source,root/'updated',overlay,report)
 
+            def fail_native_check(level, offset):
+                # The hook sees the reopened final blocks before any package exists.
+                chunk=level.get_chunk(0,0,'minecraft:overworld')
+                self.assertEqual(chunk.block_palette[int(chunk.blocks[0,101+offset,0])].base_name,'concrete')
+                self.assertFalse((root/'rejected/park.mcworld').exists())
+                raise ValueError('Blocked walking corridor')
+            with self.assertRaisesRegex(ValueError,'Blocked walking corridor'):
+                apply_overlay(source,root/'rejected',overlay,{'stations':[]},verify_world=fail_native_check)
+            self.assertFalse((root/'rejected/park.mcworld').exists())
+            self.assertEqual(original,(source/'park.mcworld').read_bytes())
+
     def test_station_voxel_budget_is_enforced(self):
         with self.assertRaises(ValueError):
             station_shell(box(0,0,6,6),lambda x,z:100,lambda x,z:106,'test',max_records=10)

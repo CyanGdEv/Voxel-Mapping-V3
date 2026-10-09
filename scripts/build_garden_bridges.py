@@ -8,6 +8,7 @@ from pyproj import CRS,Transformer
 from voxel_mapper.survey import activate_retained_grid
 from voxel_mapper.wicker_registration import apply_candidate
 from voxel_mapper.reconstruction.garden_bridges import bridge_cells
+from voxel_mapper.reconstruction.walking_audit import require_bridge_walks
 from voxel_mapper.reconstruction.geometry import roof_cells
 from voxel_mapper.paving_palette import palette_block
 from voxel_mapper.xsector import apply_overlay
@@ -86,7 +87,7 @@ def run(source,output,pdfs,osm,grid,rail_overlay):
    stats.append({'id':name,'status':'emitted','osm_way':id,'style':style,'local_axis':mapping(line),'width_m':width,'geometry_status':geometry_status,'walking_top_odn_m':top,'vertical_status':'native approach / surveyed deck estimate with one-metre clearance quantization','measured_inner_width_m':measured_width,'width_status':'scaled plan measurement' if measured_width else 'estimated','source_survey_deck_odn_m':149.5 if id==107255927 else None,'emitted_solid_cells':emitted,'relocated_reviewed_railing_cells':len(relocated),'withheld_decoration_cells':decor_withheld,'walk_columns':len(walk),'walk_heights':[[x,z,h] for (x,z),h in walk.items()],'materials_status':'ashlar/white balustrade and cast iron/stone piers supported by NHLE; deck finishes and unlabelled crossings are proxies'})
  finally:level.close()
  report={'stations':[],'world_name':'Alton Towers V19 — Garden bridges and reviewed paving','registration_verified':False,'base_sha256':hashlib.sha256((source/'park.mcworld').read_bytes()).hexdigest(),'features':stats,'sources':survey['sources'],'railing_provenance_sha256':hashlib.sha256(rail_file.read_bytes()).hexdigest(),'heritage_sources':['https://historicengland.org.uk/listing/the-list/list-entry/1037870','https://historicengland.org.uk/listing/the-list/list-entry/1037878'],'water_policy':'Never overwrite water or bed material; collided ornamental ribs withheld','limitations':review['limitations']+['White Bridge arch curvature, balustrade, approach ramps and bridge elevations are proxies; named heritage records establish topology/material, not dimensions.','Slabs and stairs already in the park are preserved during surface recolouring.','One-metre bridge rail spacing expands the visible envelope beyond fine source profiles.']}
- rows=list(cells.values());apply_overlay(source,output,rows,report,'garden_bridges','garden-bridges-report.json');(output/'garden-bridges-overlay.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows));print(json.dumps({'features':[{k:v for k,v in f.items() if k not in ('local_geometry','local_axis','walk_heights','polygon')} for f in stats],'native':report['world_verification']},indent=2))
+ rows=list(cells.values());apply_overlay(source,output,rows,report,'garden_bridges','garden-bridges-report.json',verify_world=lambda level,offset:require_bridge_walks(level,offset,stats));(output/'garden-bridges-overlay.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows));print(json.dumps({'features':[{k:v for k,v in f.items() if k not in ('local_geometry','local_axis','walk_heights','polygon')} for f in stats],'native':report['world_verification'],'walking':report['semantic_verification']},indent=2))
 
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__)

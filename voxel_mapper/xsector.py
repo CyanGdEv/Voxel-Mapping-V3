@@ -142,7 +142,7 @@ def build_overlay(config, quality, raw, include_oblivion=False):
     return rows, report
 
 
-def apply_overlay(source, output, rows, report, report_key='xsector_reconstruction', report_filename='xsector-report.json'):
+def apply_overlay(source, output, rows, report, report_key='xsector_reconstruction', report_filename='xsector-report.json', verify_world=None):
     """Copy an existing world; verify every cell of touched chunks, not just solids."""
     import amulet
     from .bedrock import material_block
@@ -219,6 +219,10 @@ def apply_overlay(source, output, rows, report, report_key='xsector_reconstructi
                 if not np.array_equal(actual, expected):
                     cell=tuple(np.argwhere(actual!=expected)[0])
                     raise ValueError(f'Overlay or preserved-cell round trip failed: chunk {coords}, section {s}, cell {cell}: {expected[cell]} -> {actual[cell]}')
+        # Optional semantic checks run on reopened native blocks before packaging.
+        # A failed check leaves diagnostic world bytes, but no importable package.
+        if verify_world is not None:
+            report['semantic_verification']=verify_world(level, offset)
         report['world_verification']={'touched_chunks':len(by_chunk), 'overlay_records':len(rows),
                                     'check':'All cells of touched chunk sections and total chunk coverage verified',
                                     'untouched_chunks':'Copied from previously verified full-park world',

@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "bridges": [
+    {
+      "id": "White Bridge",
+      "status": "passed",
+      "walk_columns": 183,
+      "connected": true,
+      "component_sizes": [
+        183
+      ],
+      "support_error_count": 0,
+      "headroom_error_count": 0,
+      "abrupt_edge_count": 0,
+      "examples": {
+        "support": [],
+        "headroom": [],
+        "abrupt_edges": []
+      },
+      "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+      "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+    },
+    {
+      "id": "Miniature Bridge",
+      "status": "passed",
+      "walk_columns": 36,
+      "connected": true,
+      "component_sizes": [
+        36
+      ],
+      "support_error_count": 0,
+      "headroom_error_count": 0,
+      "abrupt_edge_count": 0,
+      "examples": {
+        "support": [],
+        "headroom": [],
+        "abrupt_edges": []
+      },
+      "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+      "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+    },
+    {
+      "id": "Western garden crossing",
+      "status": "passed",
+      "walk_columns": 46,
+      "connected": true,
+      "component_sizes": [
+        46
+      ],
+      "support_error_count": 0,
+      "headroom_error_count": 0,
+      "abrupt_edge_count": 0,
+      "examples": {
+        "support": [],
+        "headroom": [],
+        "abrupt_edges": []
+      },
+      "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+      "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+    },
+    {
+      "id": "Cascade stream crossing",
+      "status": "passed",
+      "walk_columns": 34,
+      "connected": true,
+      "component_sizes": [
+        34
+      ],
+      "support_error_count": 0,
+      "headroom_error_count": 0,
+      "abrupt_edge_count": 0,
+      "examples": {
+        "support": [],
+        "headroom": [],
+        "abrupt_edges": []
+      },
+      "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+      "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+    }
+  ],
+  "world": "Alton_Towers_Garden_Bridges_V19.mcworld",
+  "package_sha256": "d16e1ac9065fc68da47d5babb6f05887aa0ef58a122913759663e669525b4328",
+  "scope": "Reopened existing V19 native world; no regenerated world or changed blocks",
+  "command": "python -m voxel_mapper.reconstruction.walking_audit --world EXTRACTED_V19_WORLD"
+}
