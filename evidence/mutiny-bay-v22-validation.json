@@ -1,0 +1,452 @@
+{
+  "status": "native_verified_continuous_pitched_roof_draft",
+  "report": {
+    "status": "estimated_continuous_courtyard_roof",
+    "world_name": "Alton Towers V22 \u2014 Mutiny Bay pitched roof draft",
+    "osm_relation": 5496185,
+    "footprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -469.73446580976247,
+            147.7330786404141
+          ],
+          [
+            -462.03916236234,
+            142.80236151830772
+          ],
+          [
+            -431.747987262102,
+            123.36900398511155
+          ],
+          [
+            -443.45454926421496,
+            105.21930935045894
+          ],
+          [
+            -456.8134379087996,
+            84.4879633293082
+          ],
+          [
+            -475.3199793183929,
+            96.35284785534867
+          ],
+          [
+            -494.800096297616,
+            108.8522341454238
+          ],
+          [
+            -479.7284306514526,
+            132.23191330438925
+          ],
+          [
+            -469.73446580976247,
+            147.7330786404141
+          ]
+        ],
+        [
+          [
+            -467.7947717005232,
+            137.03829827702063
+          ],
+          [
+            -473.29548331865635,
+            128.50319373682825
+          ],
+          [
+            -483.49770881947137,
+            112.67932752805594
+          ],
+          [
+            -470.58483046849625,
+            104.3983656806148
+          ],
+          [
+            -458.4575629315729,
+            96.6183005275074
+          ],
+          [
+            -450.1158168930794,
+            109.56008363551219
+          ],
+          [
+            -442.7547000847613,
+            120.97735228337169
+          ],
+          [
+            -467.7947717005232,
+            137.03829827702063
+          ]
+        ]
+      ]
+    },
+    "protected_courtyard": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -467.7947717005232,
+            137.03829827702063
+          ],
+          [
+            -473.29548331865635,
+            128.50319373682825
+          ],
+          [
+            -483.49770881947137,
+            112.67932752805594
+          ],
+          [
+            -470.58483046849625,
+            104.3983656806148
+          ],
+          [
+            -458.4575629315729,
+            96.6183005275074
+          ],
+          [
+            -450.1158168930794,
+            109.56008363551219
+          ],
+          [
+            -442.7547000847613,
+            120.97735228337169
+          ],
+          [
+            -467.7947717005232,
+            137.03829827702063
+          ]
+        ]
+      ]
+    },
+    "footprint_area_m2": 1225.6343242250823,
+    "protected_courtyard_area_m2": 862.10727881599,
+    "profile": {
+      "mapped_columns": 1225,
+      "roof_guide_samples": 904,
+      "eaves_odn_m": 182.8242636987605,
+      "pitch_rise_per_m": 0.59,
+      "median_guide_residual_m": 0.5495856022656448,
+      "roof_top_odn_range_m": [
+        182.82645418476005,
+        185.76999492609656
+      ],
+      "roof_rule": "Common eaves; bounded median-fit pitch; minimum distance to mapped outer/inner boundaries; joined quantized seams",
+      "shell_rule": "Full mapped ring; retained ground/floor; boundary brick walls; hollow wing interiors",
+      "status": "estimated_pitched_ring_not_registered_plan_geometry"
+    },
+    "protected_native_columns": [],
+    "overlay_records": 6257,
+    "elevation_sources": {
+      "terrain": {
+        "source_id": "alton-terrain-mosaic",
+        "vertical_datum": "ODN",
+        "sha256": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d",
+        "horizontal_crs": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+        "pixel_size_native_units": [
+          1.0,
+          1.0
+        ],
+        "sampling": "nearest neighbour",
+        "coordinate_transform": {
+          "accuracy_m": 1.0,
+          "description": "Inverse of unknown + Inverse of OSGB36 to WGS 84 (9) + British National Grid"
+        },
+        "sample_requests": 1225,
+        "missing_requests": 0
+      },
+      "surface": {
+        "source_id": "alton-surface-mosaic",
+        "vertical_datum": "ODN",
+        "sha256": "8be3f64aef96625bba2dddc092ad7c2eee7edb113d878ee7925d27afb9752e32",
+        "horizontal_crs": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+        "pixel_size_native_units": [
+          1.0,
+          1.0
+        ],
+        "sampling": "nearest neighbour",
+        "coordinate_transform": {
+          "accuracy_m": 1.0,
+          "description": "Inverse of unknown + Inverse of OSGB36 to WGS 84 (9) + British National Grid"
+        },
+        "sample_requests": 1225,
+        "missing_requests": 0
+      }
+    },
+    "planning_profile": {
+      "document_id": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "state": "existing",
+      "drawing": "3023-10",
+      "frame": "displayed_pdf_points_rotation_applied",
+      "scale_m_per_point": 0.07055555555555555,
+      "scale_status": "printed_1_200_not_independently_verified",
+      "courtyard_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              564.959716796875,
+              780.7191162109375
+            ],
+            [
+              1019.87841796875,
+              781.6779174804688
+            ],
+            [
+              1018.91796875,
+              1209.9578857421875
+            ],
+            [
+              563.399658203125,
+              1209.71728515625
+            ],
+            [
+              564.959716796875,
+              780.7191162109375
+            ]
+          ]
+        ]
+      },
+      "courtyard_nominal_area_m2": 971.350069134304,
+      "roof_envelope_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1107.12,
+              692.4
+            ],
+            [
+              1107.12,
+              1317.84
+            ],
+            [
+              477.84,
+              1317.84
+            ],
+            [
+              477.84,
+              692.4
+            ],
+            [
+              1107.12,
+              692.4
+            ]
+          ]
+        ]
+      },
+      "roof_envelope_nominal_dimensions_m": [
+        44.39919999999999,
+        44.12826666666666
+      ],
+      "roof_envelope_status": "simplified_proxy_not_complete_roof_or_building_boundary",
+      "courtyard_status": "Inner roof perimeter retained; existing canopy and access details not removed",
+      "registration_verified": false,
+      "world_geometry_additions": 0
+    },
+    "planning_alignment_diagnostics": {
+      "outer_envelope": {
+        "status": "withheld_one_object_alignment",
+        "candidate_for_diagnosis_only": {
+          "scale_m_per_pdf_point": 0.07289446224286443,
+          "rotation": [
+            [
+              0.5404520293519637,
+              0.8413748296504615
+            ],
+            [
+              -0.8413748296504617,
+              0.540452029351964
+            ]
+          ],
+          "translation_epsg27700_m": [
+            407382.1119389543,
+            343547.3046937239
+          ],
+          "shop_corner_rms_m": 0.33717236346034535
+        },
+        "printed_scale_m_per_point": 0.07055555555555555,
+        "fit_scale_difference_fraction": 0.03314985856028341,
+        "printed_scale_gate_passed": false,
+        "independent_control_objects": 1,
+        "registration_verified": false,
+        "world_geometry_additions": 0,
+        "reason": "One mapped building does not establish placement; differing envelopes may represent different physical extents"
+      },
+      "inner_eaves": {
+        "status": "withheld_one_object_alignment",
+        "candidate_for_diagnosis_only": {
+          "scale_m_per_pdf_point": 0.06641169124325694,
+          "rotation": [
+            [
+              0.8437382345064844,
+              -0.5367548710835145
+            ],
+            [
+              0.5367548710835144,
+              0.8437382345064846
+            ]
+          ],
+          "translation_epsg27700_m": [
+            407466.25930867606,
+            343641.04115989525
+          ],
+          "shop_corner_rms_m": 0.32976109427395695
+        },
+        "printed_scale_m_per_point": 0.07055555555555555,
+        "fit_scale_difference_fraction": 0.058731935134941016,
+        "printed_scale_gate_passed": false,
+        "independent_control_objects": 1,
+        "registration_verified": false,
+        "world_geometry_additions": 0,
+        "reason": "One mapped building does not establish placement; differing envelopes may represent different physical extents"
+      }
+    },
+    "planning_registration_verified": false,
+    "planning_geometry_emitted": false,
+    "materials": {
+      "walls": "bricks",
+      "roof": "red_terracotta",
+      "status": "Provisional proxies for dated brick walls and tiled roofs"
+    },
+    "limitations": [
+      "Placement uses existing mapped relation, not a registered planning drawing",
+      "Composite surface dates vary; roof heights are estimates, not a current architectural survey",
+      "No doors, archways, rooms, tower detailing, annex extensions or ride geometry reconstructed",
+      "Common eaves and pitch are robust estimates; individual wing roof levels, turrets and detailed hips remain unresolved"
+    ],
+    "stations": [],
+    "osm_sha256": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+    "semantic_verification": {
+      "protected_courtyard": {
+        "sha256": "dc3abf4fd846b4155b560113ac53b35f2895934d7823372c3c4b0d8d04829d2e",
+        "columns": 862,
+        "native_y_range": [
+          -64,
+          319
+        ],
+        "blocks_checked": 331008,
+        "status": "unchanged"
+      },
+      "garden_bridges": {
+        "status": "passed",
+        "bridges": [
+          {
+            "id": "White Bridge",
+            "status": "passed",
+            "walk_columns": 183,
+            "connected": true,
+            "component_sizes": [
+              183
+            ],
+            "support_error_count": 0,
+            "headroom_error_count": 0,
+            "abrupt_edge_count": 0,
+            "examples": {
+              "support": [],
+              "headroom": [],
+              "abrupt_edges": []
+            },
+            "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+            "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+          },
+          {
+            "id": "Miniature Bridge",
+            "status": "passed",
+            "walk_columns": 36,
+            "connected": true,
+            "component_sizes": [
+              36
+            ],
+            "support_error_count": 0,
+            "headroom_error_count": 0,
+            "abrupt_edge_count": 0,
+            "examples": {
+              "support": [],
+              "headroom": [],
+              "abrupt_edges": []
+            },
+            "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+            "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+          },
+          {
+            "id": "Western garden crossing",
+            "status": "passed",
+            "walk_columns": 46,
+            "connected": true,
+            "component_sizes": [
+              46
+            ],
+            "support_error_count": 0,
+            "headroom_error_count": 0,
+            "abrupt_edge_count": 0,
+            "examples": {
+              "support": [],
+              "headroom": [],
+              "abrupt_edges": []
+            },
+            "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+            "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+          },
+          {
+            "id": "Cascade stream crossing",
+            "status": "passed",
+            "walk_columns": 34,
+            "connected": true,
+            "component_sizes": [
+              34
+            ],
+            "support_error_count": 0,
+            "headroom_error_count": 0,
+            "abrupt_edge_count": 0,
+            "examples": {
+              "support": [],
+              "headroom": [],
+              "abrupt_edges": []
+            },
+            "check": "Native support height, cardinal connectivity, maximum one-block rise and two air blocks overhead",
+            "limitations": "Conservative taller stair tread envelope; player movement and stair-facing transitions not tested"
+          }
+        ]
+      },
+      "pitched_roof": {
+        "status": "passed",
+        "roof_columns": 1225,
+        "roof_blocks": 1770,
+        "face_connected_components": 1,
+        "roof_native_top_odn_range_m": [
+          183,
+          186
+        ]
+      }
+    },
+    "world_verification": {
+      "touched_chunks": 15,
+      "overlay_records": 6257,
+      "check": "All cells of touched chunk sections and total chunk coverage verified",
+      "untouched_chunks": "Copied from previously verified full-park world",
+      "base_package_sha256": "16ed98200bf0c0481eee5746a03b089ba6faa46500ee94bc565c2cc94817e273",
+      "vertical_offset_blocks": -39,
+      "composed_block_delta": -3799
+    },
+    "visit_coordinates": []
+  },
+  "package_sha256": "4e46cc24808154d1e573e30463caf45102ee4ec72e84ce1a9b3d7989caf393a1",
+  "package_crc": "passed",
+  "tests": {
+    "focused_passed": 16,
+    "full_total": 431,
+    "full_passed": 427,
+    "baseline_failures": [
+      "test_drawing_controls",
+      "test_drawing_grid",
+      "test_drawing_marks"
+    ],
+    "baseline_error": "test_drawing_checks",
+    "remote_ci": "not_asserted"
+  },
+  "in_game_visual_validation": "not_run",
+  "preview": "Actual native solid block geometry; terrain, foliage and overhead fixtures omitted"
+}

@@ -58,3 +58,15 @@ python -m voxel_mapper.mutiny_bay_courtyard \
 ```
 
 The command refuses output overwrite and packages only after native preservation and bridge checks. See `evidence/mutiny-bay-v21-validation.json`. V21 retains the V20 Forbidden Valley rockwork. It is a courtyard shell improvement; Mutiny Bay paths, fencing and detailed ride reconstruction still need further work.
+
+## V22 pitched-roof correction
+
+The V21 in-game screenshot exposed a visual failure: per-pixel DSM roof caps produced spikes, holes and retained grey extrusion strips. V22 rebuilds the courtyard from the retained V20 world rather than stacking another layer over those caps. The remaining park, including Forbidden Valley and garden bridges, is retained.
+
+`--pitched-roof` switches to `voxel_mapper.courtyard_roof.pitched_shell`. It generates a continuous roof across the full mapped wing ring, with a common estimated eaves level and a bounded pitch fitted by median absolute error to surface observations. Minimum distance to the mapped outer/inner boundaries provides a pitched ring proxy; vertical seams join quantized roof steps. Native block tops are rounded upward without adding an extra metre. Individual wing levels, precise hip/ridge positions, turrets, doors and rooms remain unresolved; the planning drawing is still unregistered and its geometry is not geographically emitted.
+
+For the retained data, 904 observations guide an estimated eaves level of 182.82 m ODN and pitch of 0.59 m rise per metre, with median residual 0.55 m. The reopened roof has 1,770 red-terracotta blocks, covers all 1,225 mapped wing columns, forms one face-connected surface, and has top heights of 183–186 m ODN. Low-return edge columns receive the estimated roof model instead of holes; the native guard still requires an existing generic building placeholder and preserves direct material/extra-block conflicts. Non-conflicting overhead bars remain untouched without blocking the wall replacement below them. Only bounded generic leftover caps are cleared.
+
+The final 6,257-record overlay changes 15 chunks and removes a net 3,799 solids relative to V20. Complete touched-section readback, full-height courtyard/canopy signatures and all four bridge walking checks pass before packaging. The signature covers the same 331,008 blocks in 862 courtyard-hole columns. Sixteen focused tests pass; the full local suite has 427 passes out of 431 with the same three drawing-coordinate failures and one error present before this work. Remote CI and in-game visual fidelity are not asserted. The saved native-block comparison omits terrain, foliage and overhead fixtures; it is a geometry preview, not an in-game screenshot.
+
+Use the V21 reproduction command above with `--pitched-roof`, a fresh output directory and the retained V20 source. See `evidence/mutiny-bay-v22-validation.json`.
