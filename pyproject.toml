@@ -23,6 +23,7 @@ voxel-outline-batch = "voxel_mapper.outline_batch:main"
 voxel-footprint-matching = "voxel_mapper.footprint_matching:main"
 voxel-boundary-registration = "voxel_mapper.boundary_registration:main"
 voxel-sheet-alignment = "voxel_mapper.sheet_alignment:main"
+voxel-mapped-placement = "voxel_mapper.mapped_sheet_placement:main"
 voxel-planning-archive = "voxel_mapper.planning_archive:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 

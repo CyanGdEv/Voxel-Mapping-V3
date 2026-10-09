@@ -60,6 +60,13 @@ def run(job_path,stage='all'):
                 if not geometry.get('enabled',False):raise ValueError('Drawing components require drawing geometry')
                 checkpoint('drawing_components',split_components(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'drawing-components',max_records=components.get('max_records',2500000)))
             polygon_candidates=root/'drawing-components/polygon-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+            placement=job.get('mapped_placement',{})
+            if placement.get('enabled',False):
+                from .mapped_sheet_placement import run as place_mapped
+                if not geometry.get('enabled',False) and not job.get('footprint_extraction',{}).get('enabled',False):raise ValueError('Mapped placement requires retained drawing geometry or footprints')
+                feed=root/'drawing-components/component-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else polygon_candidates
+                selected=json.loads(path(placement['sheets']).read_text()) if placement.get('sheets') else None
+                checkpoint('mapped_placement',place_mapped(feed,path(placement['references']),placement['reference_crs'],placement['target_crs'],root/'mapped-placement',corpus,sheets=selected,max_seed_fits=placement.get('max_seed_fits',512),min_iou=placement.get('min_iou',.7),tolerance_m=placement.get('tolerance_m',10.),max_records=placement.get('max_records',2500000)))
             matching=job.get('footprint_matching',{})
             layout=job.get('drawing_layout',{})
             if layout.get('enabled',False):

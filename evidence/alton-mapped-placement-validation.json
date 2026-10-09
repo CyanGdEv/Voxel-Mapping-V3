@@ -1,0 +1,96 @@
+{
+  "version": "mapped-sheet-placement-v1",
+  "candidate_sha256": "3f7c95f481d868bcc5a103cf464c9446caec7357e98950f065f09d425f88a7ab",
+  "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+  "reference_crs": "EPSG:4326",
+  "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+  "sheets": [
+    [
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      1
+    ],
+    [
+      "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      1
+    ],
+    [
+      "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+      1
+    ],
+    [
+      "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+      1
+    ],
+    [
+      "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+      1
+    ],
+    [
+      "e9c32f6ab41c64263334b39ee10fddd11cb7fa5bb9dbb5c7c99f2670e229dca1",
+      1
+    ],
+    [
+      "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+      1
+    ],
+    [
+      "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+      1
+    ],
+    [
+      "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+      1
+    ],
+    [
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      1
+    ]
+  ],
+  "max_seed_fits": 512,
+  "min_iou": 0.7,
+  "tolerance_m": 10.0,
+  "max_records": 2500000,
+  "counts": {
+    "candidates_checked": 23586,
+    "withheld": 6,
+    "seed_fit_attempts": 3962,
+    "provisional_mapped_placement": 4,
+    "outside_support_envelope": 4169,
+    "positioned_review_records": 3407
+  },
+  "source_documents": [
+    "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+    "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+    "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+    "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+    "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+    "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+    "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+    "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+    "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+    "e9c32f6ab41c64263334b39ee10fddd11cb7fa5bb9dbb5c7c99f2670e229dca1"
+  ],
+  "output_sha256": {
+    "sheet-placements.jsonl": "1ae9c7c50cd60a1aea3590df257ce0353f9b46334dd93ce0a04b5695bf214e57",
+    "placed-review-geometry.jsonl": "6c9f5262e3435889704b94339b744d4c0e873862fca8fa550aa3ed84fddca884"
+  },
+  "status": "provisional_map_review_only",
+  "world_geometry_additions": 0,
+  "validation": {
+    "tests_passed": 578,
+    "focused_tests": 9,
+    "resume_report_equal": true,
+    "final_feed_hashes_rechecked": true,
+    "positioned_records": 3407,
+    "geometry_types": {
+      "LineString": 2883,
+      "Polygon": 524
+    },
+    "distinct_exact_fit_groups": 2
+  },
+  "remaining_blockers": [
+    "Independent registration controls and separately sourced checkpoints are not supplied",
+    "Physical object identity, current state and dimensions/materials remain unreviewed",
+    "Six selected sheets lack a qualifying provisional map placement"
+  ]
+}
