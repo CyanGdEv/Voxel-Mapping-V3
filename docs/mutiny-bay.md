@@ -38,3 +38,23 @@ python -m voxel_mapper.mutiny_bay_review --cache MUTINY_SOURCE_PACK \
 ```
 
 The source pack must retain its `files/SHA256.pdf` paths. Five focused tests cover the inventory and the rule that even a perfect one-object fit cannot approve placement. Next registration work must match individual existing wings and independent landmarks rather than resizing or translating the entire area. No park-world geometry changed in this review. See `evidence/mutiny-bay-alignment-review.json`.
+
+## V21 courtyard wing draft
+
+The actual four-wing courtyard is OSM relation **5496185**, outer way 113576008 and inner way 106842140. The earlier BBQ-way comparison did not cover the complete courtyard. The retained relation already has a courtyard hole: no whole-area shift is appropriate. Comparing the roof sheet's simplified envelope to this relation gives a 3.31% scale difference; the inner eaves comparison gives 5.87%. Neither passes the two-percent scale gate. Source plan geometry remains unregistered and is not emitted.
+
+`voxel_mapper.mutiny_bay_courtyard` instead uses the existing mapped ring, retained hash-checked OSTN15 datum grid and nearest-pixel DTM/DSM observations. V21 replaces eligible generic solid wing columns with an explicitly estimated hollow shell: provisional brick boundary walls and stepped red-terracotta roof caps. It preserves terrain and the first surface layer. Openings, internal rooms, detailed turrets and annex extensions remain unresolved. Materials reflect dated brick/tile evidence through Minecraft proxies; roof colour is provisional.
+
+Of 1,225 mapped wing columns, 1,021 have finite surface heights 3–13 m above terrain; 204 low/high-return columns are withheld and retained unchanged. A native guard withholds entire columns containing other materials or extra blocks, or lacking the generic stone-brick placeholder. Fifteen native columns are withheld by this guard. No new building is placed over an empty or canopy-only column. Old generic caps up to eight metres above the observed roof are cleared only in eligible columns; conflicting overhead materials protect the whole column. This draft does not claim architectural accuracy or a current survey; composite observation dates vary.
+
+The 6,109-record overlay changes 15 chunks, reducing solid blocks by 3,031. Every cell of changed native sections and total chunk coverage passed readback. A separate complete-height signature verifies that all 331,008 blocks in 862 courtyard-hole columns, including the central canopy, remain identical. All four retained garden bridges pass their required native walking checks before the importable package is written. Ten focused tests pass. The complete local suite has 421 passes out of 425, with the same three drawing-coordinate failures and one error recorded before this work; remote CI and in-game visual fidelity have not been verified.
+
+```bash
+python -m voxel_mapper.mutiny_bay_courtyard \
+  --source-output V20_OUTPUT --osm park-osm.json \
+  --terrain alton-terrain-mosaic.tif --surface alton-surface-mosaic.tif \
+  --datum-grid uk_os_OSTN15_NTv2_OSGBtoETRS.tif \
+  --cache MUTINY_SOURCE_PACK --output V21_OUTPUT
+```
+
+The command refuses output overwrite and packages only after native preservation and bridge checks. See `evidence/mutiny-bay-v21-validation.json`. V21 retains the V20 Forbidden Valley rockwork. It is a courtyard shell improvement; Mutiny Bay paths, fencing and detailed ride reconstruction still need further work.
