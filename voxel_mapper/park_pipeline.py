@@ -32,9 +32,14 @@ def run(job_path,stage='all'):
             checkpoint('downloads',report);checkpoint('inspection',corpus.inspect(acquisition.get('max_inspection_pages',10000)))
             analysis=job.get('drawing_analysis',{})
             if analysis.get('enabled',True):
-                from .drawing_batch import analyze
+                from .drawing_batch import analyze,reference_landmarks
                 reviews=json.loads(path(analysis['reviews']).read_text()) if analysis.get('reviews') else None
-                checkpoint('drawing_analysis',analyze(corpus,max_pages=analysis.get('max_pages',10000),registration=analysis.get('registration',True),reviews=reviews))
+                landmarks=None
+                if analysis.get('landmarks'):
+                    data=path(analysis['landmarks']).read_bytes()
+                    target=analysis.get('target_crs') or json.loads(path(job['manifest']).read_text())['crs']
+                    landmarks=reference_landmarks(json.loads(data),analysis['landmark_crs'],target,hashlib.sha256(data).hexdigest())
+                checkpoint('drawing_analysis',analyze(corpus,max_pages=analysis.get('max_pages',10000),registration=analysis.get('registration',True),reviews=reviews,ocr=analysis.get('ocr',True),max_ocr_pages=analysis.get('max_ocr_pages',50),max_ocr_seconds=analysis.get('max_ocr_seconds',180),landmarks=landmarks))
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())

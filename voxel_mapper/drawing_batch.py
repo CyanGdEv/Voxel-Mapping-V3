@@ -2,16 +2,19 @@
 import argparse
 from collections import Counter
 import hashlib
+import math
 import json
 from pathlib import Path
 import re
+import time
 
 from .drawing_evidence import evidence_candidates
 from .geopdf import inspect_registration
 from .drawing_controls import inspect_coordinate_labels
 from .reconstruction.registration import review_registration,registration_domain
+from .drawing_page_tools import native_inspection_page,inspect_ocr_page,native_lines,match_landmarks,reference_landmarks
 
-VERSION='drawing-batch-v2'
+VERSION='drawing-batch-v4'
 RULES={
  'site_plan':r'\b(site plan|site layout|general arrangement|masterplan)\b',
  'ride_layout':r'\b(track layout|ride layout|roller coaster|coaster layout)\b',
@@ -67,10 +70,13 @@ def reviewed_alignment(spec,page):
     return {**report,'target_crs':crs.to_string(),'local_frame':spec['local_frame'],'authorization':'horizontal review only; construction state and vertical datum remain separate'}
 
 
-def analyze(corpus,*,max_pages=10000,registration=True,reviews=None):
+def analyze(corpus,*,max_pages=10000,registration=True,reviews=None,ocr=True,max_ocr_pages=50,max_ocr_seconds=180,landmarks=None):
     import pymupdf
     from pypdf import PdfReader
     if isinstance(max_pages,bool) or not isinstance(max_pages,int) or not 1<=max_pages<=100000:raise ValueError('Invalid analysis page budget')
+    if not isinstance(max_ocr_pages,int) or isinstance(max_ocr_pages,bool) or not 0<=max_ocr_pages<=1000 or not math.isfinite(max_ocr_seconds) or not 0<=max_ocr_seconds<=3600:raise ValueError('Invalid OCR run budget')
+    landmarks=landmarks or []
+    if len(landmarks)>5000:raise ValueError('Named landmark budget exceeded')
     reviews=reviews or []
     if not isinstance(reviews,list) or len(reviews)>100000:raise ValueError('Bounded review list required')
     review_map={}
@@ -80,10 +86,10 @@ def analyze(corpus,*,max_pages=10000,registration=True,reviews=None):
         key=(spec['document_sha256'],spec['page'])
         if key in review_map:raise ValueError('Duplicate page review')
         review_map[key]=spec
-    options={'version':VERSION,'registration':registration,'reviews':reviews}
+    options={'version':VERSION,'registration':registration,'reviews':reviews,'ocr':ocr,'landmarks':landmarks}
     contract=hashlib.sha256(json.dumps(options,sort_keys=True).encode()).hexdigest()
     corpus.db.execute('CREATE TABLE IF NOT EXISTS drawing_analysis(sha TEXT,page INTEGER,contract TEXT,result TEXT,PRIMARY KEY(sha,page,contract))')
-    processed=resumed=0;errors=[];matched_reviews=set();valid_blobs=set()
+    processed=resumed=0;errors=[];matched_reviews=set();valid_blobs=set();ocr_attempts=0;ocr_seconds=0
     blobs=corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded' ORDER BY sha").fetchall()
     for (sha,) in blobs:
         records=[json.loads(r) for (r,) in corpus.db.execute('SELECT documents.record FROM documents JOIN downloads USING(url) WHERE downloads.sha=? AND downloads.status=\'downloaded\' ORDER BY documents.id',(sha,))]
@@ -100,20 +106,30 @@ def analyze(corpus,*,max_pages=10000,registration=True,reviews=None):
                 for index in range(len(pdf)):
                     key=(sha,index+1)
                     if key in review_map:matched_reviews.add(key)
-                    if corpus.db.execute('SELECT 1 FROM drawing_analysis WHERE sha=? AND page=? AND contract=?',(sha,index+1,document_contract)).fetchone():resumed+=1;continue
+                    cached=corpus.db.execute('SELECT result FROM drawing_analysis WHERE sha=? AND page=? AND contract=?',(sha,index+1,document_contract)).fetchone()
+                    retry_ocr=cached and json.loads(cached[0]).get('ocr',{}).get('status') in ('deferred','unavailable') and ocr and ocr_attempts<max_ocr_pages and ocr_seconds<max_ocr_seconds
+                    if cached and not retry_ocr:resumed+=1;continue
                     if processed>=max_pages:break
                     page=pdf[index];text=page.get_text();truncated=len(text)>500000;text=text[:500000]
+                    ocr_result={'status':'disabled' if not ocr else 'native_text_sufficient'};ocr_labels=[]
+                    if ocr and len(text.strip())<80:
+                        if ocr_attempts>=max_ocr_pages or ocr_seconds>=max_ocr_seconds:ocr_result={'status':'deferred','reason':'OCR run budget exhausted; resume later'}
+                        else:
+                            start=time.monotonic();ocr_attempts+=1
+                            ocr_result,ocr_labels=inspect_ocr_page(page,timeout=min(20,max_ocr_seconds-ocr_seconds))
+                            ocr_seconds+=time.monotonic()-start
+                    classification=classify(titles,text+'\n'+'\n'.join(line['text'] for line in ocr_labels))
                     result={'document_sha256':sha,'page':index+1,'document_pages':len(pdf),'titles':titles,'application_references':sorted({r.get('applicationReference',r.get('application_reference','unknown')) for r in records}),
-                            'classification':classify(titles,text),'construction_state':construction_state(records,text),'native_text_truncated':truncated,
-                            'scale_denominator_candidates':sorted({int(v) for v in SCALE.findall(text) if 1<=int(v)<=100000}),
+                            'classification':classification,'construction_state':construction_state(records,text),'native_text_truncated':truncated,'ocr':ocr_result,
+                            'scale_denominator_candidates':sorted({int(v) for v in SCALE.findall(text) if 1<=int(v)<=100000}|set(ocr_result.get('printed_scale_candidates',[]))),
                             'evidence_candidates':evidence_candidates(text),'page_frame':{'kind':'pymupdf_points_y_down','cropbox':list(page.cropbox),'rotation':page.rotation},
                             'horizontal_alignment':{'status':'not_inspected'},'world_geometry_additions':0}
                     if registration or key in review_map:
                         try:
                             if reader is None:reader=PdfReader(path,strict=False)
-                            native=reader.pages[index]
+                            native,rotation_review=native_inspection_page(reader.pages[index])
+                            result['rotation_normalization']=rotation_review
                             result['registration_frame']={'kind':'pdf_native_points_y_up','cropbox':list(map(float,native.cropbox))}
-                            if int(native.get('/Rotate',0))%360 or float(native.get('/UserUnit',1))!=1:raise ValueError('Rotated/non-default-unit page not supported for alignment')
                             if key in review_map:result['horizontal_alignment']=reviewed_alignment(review_map[key],native)
                             elif registration:
                                 embedded=inspect_registration(native)
@@ -126,11 +142,14 @@ def analyze(corpus,*,max_pages=10000,registration=True,reviews=None):
                                 candidate=any(r['status']=='candidate_alignment' for r in attempts.values())
                                 result['horizontal_alignment']={'status':'candidate_alignment' if candidate else 'needs_controls','attempts':attempts,'independent_accuracy':'not_verified'}
                         except Exception as exc:result['horizontal_alignment']={'status':'withheld','reason':str(exc)}
-                    with corpus.db:corpus.db.execute('INSERT INTO drawing_analysis VALUES(?,?,?,?)',(sha,index+1,document_contract,json.dumps(result,sort_keys=True)))
+                    if landmarks:
+                        try:result['landmark_matching']=match_landmarks(native_lines(page)+ocr_labels,landmarks,result['scale_denominator_candidates'])
+                        except Exception as exc:result['landmark_matching']={'status':'withheld','reason':str(exc),'registration_verified':False}
+                    with corpus.db:corpus.db.execute('INSERT OR REPLACE INTO drawing_analysis VALUES(?,?,?,?)',(sha,index+1,document_contract,json.dumps(result,sort_keys=True)))
                     processed+=1
         except Exception as exc:errors.append({'document_sha256':sha,'error':str(exc)})
     # Export the current result for each page, preserving prior analysis versions in SQLite.
-    output=corpus.root/'drawing-analysis.jsonl';temporary=output.with_suffix('.partial');categories=Counter();alignments=Counter();states=Counter();count=0
+    output=corpus.root/'drawing-analysis.jsonl';temporary=output.with_suffix('.partial');categories=Counter();alignments=Counter();states=Counter();ocr_statuses=Counter();count=0;rotated=0;landmark_matches=0
     with temporary.open('w') as stream:
         for (sha,) in blobs:
             if sha not in valid_blobs:continue
@@ -138,17 +157,27 @@ def analyze(corpus,*,max_pages=10000,registration=True,reviews=None):
             document_contract=hashlib.sha256((contract+json.dumps(records,sort_keys=True)).encode()).hexdigest()
             for (raw,) in corpus.db.execute('SELECT result FROM drawing_analysis WHERE sha=? AND contract=? ORDER BY page',(sha,document_contract)):
                 result=json.loads(raw);stream.write(raw+'\n');count+=1;categories[result['classification']['primary']]+=1;alignments[result['horizontal_alignment']['status']]+=1;states[result['construction_state']['candidate']]+=1
+                ocr_statuses[result.get('ocr',{}).get('status','unknown')]+=1
+                rotated+=int(bool(result.get('rotation_normalization',{}).get('original_rotation_degrees',0)))
+                landmark_matches+=len(result.get('landmark_matching',{}).get('matches',[]))
     temporary.replace(output)
     with output.open('rb') as stream:output_hash=hashlib.file_digest(stream,'sha256').hexdigest()
     report={'status':'drawing_triage_only','contract':contract,'validated_pdf_blobs':len(valid_blobs),'analyzed_pages':count,'run_analyzed_pages':processed,'resumed_pages':resumed,'categories':dict(categories),'alignment_statuses':dict(alignments),'construction_state_candidates':dict(states),'errors':errors,'unmatched_review_pages':[{'document_sha256':k[0],'page':k[1]} for k in sorted(set(review_map)-matched_reviews)],'world_geometry_additions':0,'output':output.name,'output_sha256':output_hash}
+    report.update(ocr_statuses=dict(ocr_statuses),run_ocr_attempts=ocr_attempts,run_ocr_seconds=ocr_seconds,normalized_rotated_pages=rotated,named_landmark_matches=landmark_matches)
     (corpus.root/'drawing-analysis-report.json').write_text(json.dumps(report,indent=2)+'\n');return report
 
 
 def main():
     from .planning_bulk import Corpus
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--max-pages',type=int,default=10000);p.add_argument('--classification-only',action='store_true');p.add_argument('--reviews');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--max-pages',type=int,default=10000);p.add_argument('--classification-only',action='store_true');p.add_argument('--reviews')
+    p.add_argument('--no-ocr',action='store_true');p.add_argument('--max-ocr-pages',type=int,default=50);p.add_argument('--max-ocr-seconds',type=float,default=180)
+    p.add_argument('--landmarks');p.add_argument('--landmark-crs');p.add_argument('--target-crs');a=p.parse_args()
+    references=None
+    if a.landmarks:
+        if not a.landmark_crs or not a.target_crs:p.error('Landmarks require explicit source and target CRS')
+        data=Path(a.landmarks).read_bytes();references=reference_landmarks(json.loads(data),a.landmark_crs,a.target_crs,hashlib.sha256(data).hexdigest())
     corpus=Corpus(a.corpus)
-    try:print(json.dumps(analyze(corpus,max_pages=a.max_pages,registration=not a.classification_only,reviews=json.loads(Path(a.reviews).read_text()) if a.reviews else None),indent=2))
+    try:print(json.dumps(analyze(corpus,max_pages=a.max_pages,registration=not a.classification_only,reviews=json.loads(Path(a.reviews).read_text()) if a.reviews else None,ocr=not a.no_ocr,max_ocr_pages=a.max_ocr_pages,max_ocr_seconds=a.max_ocr_seconds,landmarks=references),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()

@@ -22,36 +22,37 @@ class DrawingBatchTests(unittest.TestCase):
         self.corpus.ingest([{'url':'https://portal.test/plan','title':'Site Plan','applicationReference':'A','state':'existing'}],['portal.test'])
         self.corpus.acquire(fetch=lambda u:self.data)
     def tearDown(self):self.corpus.close();self.temp.cleanup()
+    def analyze(self,**kwargs):return analyze(self.corpus,ocr=False,**kwargs)
     def records(self):return [json.loads(s) for s in (Path(self.temp.name)/'drawing-analysis.jsonl').read_text().splitlines()]
     def test_page_evidence_is_unplaced_and_mixed_state_is_not_accepted(self):
-        r=analyze(self.corpus,registration=False)
+        r=self.analyze(registration=False)
         self.assertEqual(r['analyzed_pages'],2);self.assertEqual(r['world_geometry_additions'],0)
         pages=self.records();self.assertEqual(pages[0]['scale_denominator_candidates'],[500])
         self.assertEqual(pages[1]['construction_state']['candidate'],'mixed')
         self.assertFalse(pages[1]['construction_state']['authoritative_current_state'])
         self.assertEqual(pages[0]['evidence_candidates']['materials'][0]['association_status'],'unplaced_unverified')
     def test_budget_and_resume(self):
-        self.assertEqual(analyze(self.corpus,max_pages=1,registration=False)['analyzed_pages'],1)
-        r=analyze(self.corpus,max_pages=1,registration=False)
+        self.assertEqual(self.analyze(max_pages=1,registration=False)['analyzed_pages'],1)
+        r=self.analyze(max_pages=1,registration=False)
         self.assertEqual(r['analyzed_pages'],2);self.assertEqual(r['resumed_pages'],1)
-        self.assertEqual(analyze(self.corpus,registration=False)['run_analyzed_pages'],0)
+        self.assertEqual(self.analyze(registration=False)['run_analyzed_pages'],0)
     def test_changed_catalogue_invalidates_page_classification(self):
-        analyze(self.corpus,registration=False)
+        self.analyze(registration=False)
         self.corpus.ingest([{'url':'https://portal.test/plan','title':'Site Plan','applicationReference':'A','state':'proposed'}],['portal.test'])
-        self.assertEqual(analyze(self.corpus,registration=False)['run_analyzed_pages'],2)
+        self.assertEqual(self.analyze(registration=False)['run_analyzed_pages'],2)
         self.assertEqual(self.records()[0]['construction_state']['candidate'],'mixed')
     def test_corrupt_blob_is_not_analyzed(self):
-        analyze(self.corpus,registration=False)
+        self.analyze(registration=False)
         (Path(self.temp.name)/'files'/f'{self.sha}.pdf').write_bytes(b'changed')
-        r=analyze(self.corpus,registration=False);self.assertEqual(r['analyzed_pages'],0);self.assertIn('checksum',r['errors'][0]['error'])
+        r=self.analyze(registration=False);self.assertEqual(r['analyzed_pages'],0);self.assertIn('checksum',r['errors'][0]['error'])
     def test_missing_coordinates_does_not_create_alignment(self):
-        analyze(self.corpus);self.assertTrue(all(p['horizontal_alignment']['status']=='needs_controls' for p in self.records()))
+        self.analyze();self.assertTrue(all(p['horizontal_alignment']['status']=='needs_controls' for p in self.records()))
     def test_embedded_registration_remains_candidate(self):
         from tests.test_geopdf import GeoPdfTests
         writer,_,_=GeoPdfTests().fixture();stream=io.BytesIO();writer.write(stream);data=stream.getvalue()
         self.corpus.ingest([{'url':'https://portal.test/geopdf','title':'Survey'}],['portal.test'])
         self.corpus.acquire(fetch=lambda u:data)
-        r=analyze(self.corpus);self.assertEqual(r['alignment_statuses']['candidate_alignment'],1)
+        r=self.analyze();self.assertEqual(r['alignment_statuses']['candidate_alignment'],1)
         candidate=next(p for p in self.records() if p['horizontal_alignment']['status']=='candidate_alignment')
         self.assertEqual(candidate['horizontal_alignment']['independent_accuracy'],'not_verified')
     def test_ambiguous_categories_and_states_are_explicit(self):
@@ -68,14 +69,14 @@ class DrawingBatchTests(unittest.TestCase):
         self.assertEqual(reviewed_alignment(spec,page)['status'],'withheld')
     def test_batch_review_is_bound_to_pdf_page_and_never_creates_geometry(self):
         spec=self.spec();spec.update(document_sha256=self.sha,page=1)
-        r=analyze(self.corpus,reviews=[spec])
+        r=self.analyze(reviews=[spec])
         self.assertEqual(r['alignment_statuses']['accepted_horizontal_fit'],1)
         review=self.records()[0]['horizontal_alignment']
         self.assertEqual(review['validated_domain']['type'],'Polygon')
         self.assertEqual(review['target_crs'],'EPSG:27700')
         self.assertEqual(r['world_geometry_additions'],0)
         spec['checkpoints'][0]['target'][0]+=10
-        r=analyze(self.corpus,reviews=[spec])
+        r=self.analyze(reviews=[spec])
         self.assertNotIn('accepted_horizontal_fit',r['alignment_statuses'])
     def test_review_requires_frame_identity_source_and_independence(self):
         page=PdfWriter().add_blank_page(600,800)
@@ -89,12 +90,12 @@ class DrawingBatchTests(unittest.TestCase):
             if change=='crop':spec['controls'][0]['local']=[-1,10]
             with self.subTest(change=change),self.assertRaises(ValueError):reviewed_alignment(spec,page)
     def test_unmatched_reviews_are_reported(self):
-        r=analyze(self.corpus,registration=False,reviews=[{'document_sha256':'c'*64,'page':1}])
+        r=self.analyze(registration=False,reviews=[{'document_sha256':'c'*64,'page':1}])
         self.assertEqual(len(r['unmatched_review_pages']),1)
 
     def test_invalid_review_identity_rejected(self):
         for spec in ({'document_sha256':'bad','page':1},{'document_sha256':'c'*64,'page':True}):
-            with self.subTest(spec=spec),self.assertRaises(ValueError):analyze(self.corpus,reviews=[spec])
+            with self.subTest(spec=spec),self.assertRaises(ValueError):self.analyze(reviews=[spec])
 
     def test_mixed_multi_cell_fixture_uses_all_ten_families(self):
         from scripts.benchmark_park_mixed import run
