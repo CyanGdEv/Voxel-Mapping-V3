@@ -43,3 +43,5 @@ The park runner generates the unplaced queue after extraction. On resume it chec
 67 focused tests pass, including unique/ambiguous real-PDF labels, source tampering, target-frame matching, revision ordering, retained proposal/existing conflicts, checksum-verified park-job resume and sheet provenance retention. Full-suite results are recorded in `evidence/footprint-matching-validation.json`.
 
 Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).
+
+Curved polygon and open-line candidates, current-record matching and explicit line/approximation review: [drawing-geometry.md](drawing-geometry.md).

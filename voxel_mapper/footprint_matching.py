@@ -51,12 +51,12 @@ class NativeNames:
     def __init__(self,corpus,rows):
         self.corpus=corpus;self.names={name_key(r['name']) for r in rows if r['name']};self.key=None;self.matches={};self.document=None;self.sha=None
     def get(self,candidate):
-        from .drawing_footprints import VERSION as extraction_version
+        from .drawing_footprints import retained_page_candidates
         from .drawing_page_tools import native_lines
         import pymupdf
-        key=(candidate['document_sha256'],candidate['page'])
+        key=(candidate['document_sha256'],candidate['page'],candidate.get('extraction_kind'),candidate.get('extraction_contract'))
         if key!=self.key:
-            sha,page=key
+            sha,page=key[:2]
             if not re.fullmatch('[0-9a-f]{64}',sha):raise ValueError('Invalid PDF identity')
             if sha!=self.sha:
                 if self.document:self.document.close()
@@ -64,9 +64,8 @@ class NativeNames:
                 with path.open('rb') as stream:
                     if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Source PDF checksum mismatch')
                 self.document=pymupdf.open(path);self.sha=sha
-            row=self.corpus.db.execute('SELECT result FROM footprint_pages WHERE sha=? AND page=? AND version=?',(sha,page,extraction_version)).fetchone()
-            if not row:raise ValueError('Current retained page extraction required')
-            candidates=json.loads(row[0])['candidates'];geometries=[shape(c['geometry']) for c in candidates];index=STRtree(geometries);self.matches={}
+            retained=retained_page_candidates(self.corpus,candidate)
+            candidates=[c for c in retained if c['geometry']['type'] in ('Polygon','MultiPolygon')];geometries=[shape(c['geometry']) for c in candidates];index=STRtree(geometries);self.matches={}
             labels=native_lines(self.document[page-1])
             if len(labels)>20000:raise ValueError('Native page label budget exceeded')
             for label in labels:
@@ -74,7 +73,7 @@ class NativeNames:
                 if key_name not in self.names:continue
                 point=Point(label['local']);hits=[int(i) for i in index.query(point) if geometries[int(i)].contains(point)]
                 if len(hits)==1:self.matches.setdefault(candidates[hits[0]]['id'],set()).add(key_name)
-            self.retained={c['id']:c for c in candidates};self.key=key
+            self.retained={c['id']:c for c in retained};self.key=key
         if self.retained.get(candidate['id'])!=candidate:raise ValueError('Candidate differs from retained page extraction')
         return self.matches.get(candidate['id'],set())
     def close(self):

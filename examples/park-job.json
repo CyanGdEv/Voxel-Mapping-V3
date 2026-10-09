@@ -22,7 +22,7 @@
     "max_ocr_seconds": 180
   },
   "footprint_extraction": {
-    "enabled": true,
+    "enabled": false,
     "max_pages": 1000
   },
   "geometry_feeds": [],
@@ -35,5 +35,10 @@
       53.004
     ],
     "max_pages": 10000
+  },
+  "drawing_geometry": {
+    "enabled": true,
+    "max_pages": 10000,
+    "curve_tolerance_points": 0.25
   }
 }

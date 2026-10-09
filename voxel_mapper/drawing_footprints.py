@@ -7,7 +7,7 @@ import math
 from pathlib import Path
 import re
 
-from shapely.geometry import Polygon,Point,box,shape,mapping
+from shapely.geometry import Polygon,LineString,Point,box,shape,mapping
 from shapely.ops import polygonize,unary_union
 from shapely.strtree import STRtree
 from .drawing_page_tools import native_inverse,native_lines
@@ -125,13 +125,32 @@ def extract_page(page,sha,page_number,*,max_paths=100000,max_candidates=2000,max
     return candidates,{'status':'partial_candidate_budget' if reasons['candidate_budget_deferred'] else 'unplaced_polygon_candidates','raw_paths':len(paths),'candidates':len(candidates),'rejections':dict(reasons),'world_geometry_additions':0}
 
 
+def retained_page_candidates(corpus,candidate):
+    sha,page=candidate['document_sha256'],candidate['page']
+    if candidate.get('extraction_kind')=='drawing_geometry':
+        from .drawing_geometry import VERSION as version
+        if candidate.get('extraction_version')!=version or not re.fullmatch('[0-9a-f]{64}',str(candidate.get('extraction_contract',''))):raise ValueError('Current geometry extraction version/contract required')
+        if not corpus.db.execute("SELECT 1 FROM sqlite_master WHERE name='geometry_pages'").fetchone():raise ValueError('Current geometry extraction required')
+        row=corpus.db.execute('SELECT result FROM geometry_pages WHERE sha=? AND page=? AND version=? AND contract=?',(sha,page,version,candidate['extraction_contract'])).fetchone()
+    else:row=corpus.db.execute('SELECT result FROM footprint_pages WHERE sha=? AND page=? AND version=?',(sha,page,VERSION)).fetchone()
+    if not row:raise ValueError('Current retained page extraction required')
+    return json.loads(row[0])['candidates']
+
+
 def reviewed_feature(candidate,review,source,alignment,target_crs):
     from pyproj import CRS
     if review.get('candidate_id')!=candidate['id']:raise ValueError('Review must bind exact candidate identity')
     geometry=shape(candidate['geometry'])
-    if geometry.geom_type not in ('Polygon','MultiPolygon') or geometry.is_empty or not geometry.is_valid or geometry.has_z:raise ValueError('Valid native 2D candidate polygon required')
+    line=geometry.geom_type=='LineString';expanded=candidate.get('extraction_kind')=='drawing_geometry'
+    if geometry.geom_type not in ('Polygon','MultiPolygon','LineString') or geometry.is_empty or not geometry.is_valid or geometry.has_z or (line and not geometry.is_simple):raise ValueError('Valid native 2D candidate geometry required')
+    if line and (not expanded or review.get('line_role') not in ('centerline','boundary') or not isinstance(review.get('line_role_verification_reference'),str) or not review['line_role_verification_reference'].strip()):raise ValueError('Explicit physical line-role review required')
+    if expanded:
+        from .drawing_geometry import VERSION as version
+        if candidate.get('extraction_version')!=version or candidate.get('paint_reference_truncated'):raise ValueError('Complete current geometry extraction required')
     digest=hashlib.sha256((candidate['document_sha256']+'/'+str(candidate['page'])+'/'+geometry.normalize().wkb_hex).encode()).hexdigest()
-    if digest!=candidate['id'] or candidate.get('coordinate_frame')!='pdf_native_points_y_up' or candidate.get('rendering_status')!='supported_straight_unclipped_polygon':raise ValueError('Candidate content/frame/rendering changed')
+    statuses={'supported_straight_unclipped_polygon'}
+    if expanded:statuses|={'supported_curved_unclipped_polygon','supported_straight_unclipped_polyline','supported_curved_unclipped_polyline'}
+    if digest!=candidate['id'] or candidate.get('coordinate_frame')!='pdf_native_points_y_up' or candidate.get('rendering_status') not in statuses or line!=candidate['rendering_status'].endswith('polyline'):raise ValueError('Candidate content/frame/rendering changed')
     if review.get('physical_identity_verified') is not True or not isinstance(review.get('verification_reference'),str) or not review['verification_reference'].strip():raise ValueError('Physical identity review required')
     if not isinstance(review.get('feature_id'),str) or not review['feature_id'].strip():raise ValueError('Feature identity required')
     if review.get('reuse_allowed') is not True:raise ValueError('Explicit geometry reuse required')
@@ -151,13 +170,27 @@ def reviewed_feature(candidate,review,source,alignment,target_crs):
     if checked['status']!='accepted_horizontal_fit' or not np.allclose(checked['matrix'],alignment['matrix'],rtol=0,atol=1e-9) or not np.allclose(checked['translation_m'],alignment['translation_m'],rtol=0,atol=1e-7):raise ValueError('Alignment does not match its independent control evidence')
     def polygon(poly):
         return Polygon(apply_registration(list(poly.exterior.coords),alignment),[apply_registration(list(r.coords),alignment) for r in poly.interiors])
-    if geometry.geom_type=='Polygon':placed=polygon(geometry)
+    if line:placed=LineString(apply_registration(list(geometry.coords),alignment))
+    elif geometry.geom_type=='Polygon':placed=polygon(geometry)
     else:
         from shapely.geometry import MultiPolygon
         placed=MultiPolygon([polygon(p) for p in geometry.geoms])
-    if review.get('family') not in FAMILIES:raise ValueError('Supported polygon family required')
+    if line:
+        if review.get('family') not in ('path','wall','fence','metal_fence','wood_fence'):raise ValueError('Supported planar line family required; rides need measured 3D routes')
+        if review['family']=='path' and review['line_role']!='centerline':raise ValueError('Path lines require reviewed centerline and separate width evidence')
+    elif review.get('family') not in FAMILIES:raise ValueError('Supported polygon family required')
+    curve_error_m=0
+    if expanded and candidate['curve_approximation']['cubic_segments']:
+        if review.get('curve_approximation_reviewed') is not True or not isinstance(review.get('approximation_verification_reference'),str) or not review['approximation_verification_reference'].strip():raise ValueError('Explicit curve approximation review required')
+        approximation=candidate['curve_approximation'];bound=approximation['chord_error_bound_pdf_points']
+        if not math.isfinite(bound) or not 0<=bound<=approximation['requested_tolerance_pdf_points'] or approximation['method']!='adaptive_de_casteljau_control_hull_to_chord':raise ValueError('Invalid curve error certificate')
+        curve_error_m=bound*alignment['scale']
+        if curve_error_m+checked['checkpoint_error']['max_m']>alignment['tolerance_m']:raise ValueError('Curve approximation exceeds registration error budget')
+        from .reconstruction.registration import registration_domain
+        if not registration_domain(alignment).buffer(1e-7).covers(placed.buffer(curve_error_m)):raise ValueError('Curve error envelope extrapolates beyond validated domain')
     association=None
     if review.get('checked_landmark'):
+        if line:raise ValueError('Polygon landmark overlap cannot verify a line role')
         landmark=review['checked_landmark']
         if landmark.get('independently_checked') is not True or not landmark.get('id') or not re.fullmatch('[0-9a-f]{64}',str(landmark.get('source_sha256',''))):raise ValueError('Checked landmark identity/provenance required')
         if landmark['source_sha256']==candidate['document_sha256']:raise ValueError('Landmark must use independent source evidence')
@@ -169,6 +202,8 @@ def reviewed_feature(candidate,review,source,alignment,target_crs):
         association={'landmark_id':landmark['id'],'source_sha256':landmark['source_sha256'],'intersection_over_union':iou,'status':'checked_reference_overlap; physical identity remains explicitly reviewed'}
     feature=Feature(review['feature_id'],review['family'],mapping(placed),source.id,review.get('parameters',{}),
                     {'drawing_state':review['drawing_state'],'geometry_crs':target_crs,'candidate_id':candidate['id'],'document_sha256':candidate['document_sha256'],'page':candidate['page'],'physical_verification_reference':review['verification_reference'],'state_verification_reference':review['state_verification_reference']})
+    if expanded:feature.metadata.update(extraction_version=candidate['extraction_version'],extraction_contract=candidate['extraction_contract'],curve_approximation_error_bound_m=curve_error_m)
+    if line:feature.metadata.update(line_role=review['line_role'],line_role_verification_reference=review['line_role_verification_reference'])
     if review.get('name'):
         if not isinstance(review['name'],str):raise ValueError('Reviewed name must be text')
         feature.metadata['name']=review['name']
@@ -246,11 +281,9 @@ def promote(candidate_file,review_file,manifest_file,output,corpus):
                     with path.open('rb') as original:
                         if hashlib.file_digest(original,'sha256').hexdigest()!=sha:raise ValueError('Source PDF checksum mismatch')
                     verified_blobs.add(sha)
-                key=(sha,page)
+                key=(sha,page,candidate.get('extraction_kind'),candidate.get('extraction_contract'))
                 if key not in retained:
-                    row=corpus.db.execute('SELECT result FROM footprint_pages WHERE sha=? AND page=? AND version=?',(sha,page,VERSION)).fetchone()
-                    if not row:raise ValueError('Current extracted page record required')
-                    retained.clear();retained[key]={r['id']:r for r in json.loads(row[0])['candidates']}
+                    retained.clear();retained[key]={r['id']:r for r in retained_page_candidates(corpus,candidate)}
                 if retained[key].get(candidate['id'])!=candidate:raise ValueError('Candidate differs from retained current extraction')
                 source=sources[review['source_id']];alignment=source.metadata['horizontal_registration_review']
                 feature=reviewed_feature(candidate,review,source,alignment,manifest['crs'])

@@ -69,3 +69,5 @@ No recovered Alton candidate has been approved or generated into a new park worl
 Footprint association and registered revision review queues: see [footprint-matching.md](footprint-matching.md). Optional reviewed sheet metadata (`sheet_key`, ISO `issue_date`, `revision`) requires a `sheet_revision_reference`; it establishes ordering evidence only.
 
 Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).
+
+Curved polygon and open-line candidates, current-record matching and explicit line/approximation review: [drawing-geometry.md](drawing-geometry.md).

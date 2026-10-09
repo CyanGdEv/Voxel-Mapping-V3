@@ -47,3 +47,5 @@ Add `"reviews": "registration-reviews.json"` when independently reviewed pairs e
 Eight new tests cover known rotation/scale recovery, symmetry, hole preservation, printed-scale rejection, exact source binding, independent-evidence rejection, domain extrapolation, and a real-PDF park job that accepts a synthetic checked review, resumes, and rejects altered reviews. This fixture establishes pipeline behavior, not real Alton survey accuracy. Source and validation summaries are retained in `evidence/boundary-registration-validation.json`.
 
 Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).
+
+Curved polygon and open-line candidates, current-record matching and explicit line/approximation review: [drawing-geometry.md](drawing-geometry.md).

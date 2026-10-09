@@ -49,3 +49,5 @@ Optional `footprint_matching` creates checksum-bound shape/name review queues af
 Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).
 
 Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).
+
+Curved polygon and open-line candidates, current-record matching and explicit line/approximation review: [drawing-geometry.md](drawing-geometry.md).

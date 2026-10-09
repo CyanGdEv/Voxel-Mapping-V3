@@ -50,10 +50,14 @@ def run(job_path,stage='all'):
             if job.get('footprint_extraction',{}).get('enabled',False):
                 from .drawing_footprints import run as extract_footprints
                 checkpoint('footprints',extract_footprints(corpus,root/'footprints',max_pages=job['footprint_extraction'].get('max_pages',1000)))
+            geometry=job.get('drawing_geometry',{})
+            if geometry.get('enabled',False):
+                from .drawing_geometry import run as extract_geometry
+                checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),curve_tolerance_points=geometry.get('curve_tolerance_points',.25)))
             matching=job.get('footprint_matching',{})
             if matching.get('enabled',False):
                 from .footprint_matching import run as match_footprints,VERSION as matching_version
-                candidates=root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'
+                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'
                 target=matching.get('target_crs') or json.loads(path(job['manifest']).read_text())['crs']
                 with candidates.open('rb') as stream:candidate_hash=hashlib.file_digest(stream,'sha256').hexdigest()
                 with references.open('rb') as stream:reference_hash=hashlib.file_digest(stream,'sha256').hexdigest()
@@ -72,7 +76,7 @@ def run(job_path,stage='all'):
             if boundary.get('enabled',False):
                 from .boundary_registration import run as register_boundaries,VERSION as boundary_version,file_hash
                 if not matching.get('enabled',False):raise ValueError('Boundary registration requires footprint_matching')
-                candidates=root/'footprints/footprint-candidates.jsonl';destination=root/'boundary-registration';matching_root=root/'footprint-matching'
+                candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';destination=root/'boundary-registration';matching_root=root/'footprint-matching'
                 reviews=json.loads(path(boundary['reviews']).read_text()) if boundary.get('reviews') else []
                 contract={'version':boundary_version,'candidate_sha256':file_hash(candidates),'association_sha256':file_hash(matching_root/'associations.jsonl'),'reference_sha256':file_hash(path(matching['references'])),'target_crs':target,'reference_crs':matching['reference_crs'],'max_fits':boundary.get('max_fits',10000),'review_sha256':hashlib.sha256(json.dumps(reviews,sort_keys=True).encode()).hexdigest()}
                 if destination.exists():
@@ -89,9 +93,10 @@ def run(job_path,stage='all'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
         pinned={'manifest':hashlib.sha256(manifest_path.read_bytes()).hexdigest()}
         for key in ('feature_records','terrain_config'):
-            if job.get(key) and (key!='terrain_config' or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews')):
+            if job.get(key) and (key!='terrain_config' or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews') or job.get('drawing_geometry',{}).get('feature_reviews')):
                 with path(job[key]).open('rb') as stream:pinned[key]=hashlib.file_digest(stream,'sha256').hexdigest()
-        footprint_reviews=job.get('footprint_extraction',{}).get('feature_reviews')
+        if job.get('footprint_extraction',{}).get('feature_reviews') and job.get('drawing_geometry',{}).get('feature_reviews'):raise ValueError('Use one combined extraction review list per job')
+        footprint_reviews=job.get('drawing_geometry',{}).get('feature_reviews') or job.get('footprint_extraction',{}).get('feature_reviews')
         if footprint_reviews:
             with path(footprint_reviews).open('rb') as stream:pinned['footprint_reviews']=hashlib.file_digest(stream,'sha256').hexdigest()
         previous=state['stages'].get('input_contract')
@@ -117,7 +122,7 @@ def run(job_path,stage='all'):
         if job.get('feature_records'):feeds.append(path(job['feature_records']))
         if footprint_reviews:
             from .drawing_footprints import promote
-            candidates=root/'footprints/footprint-candidates.jsonl';output=root/'reviewed-footprints.jsonl';receipt_path=output.with_suffix('.receipt.json')
+            candidates=root/'drawing-geometry/geometry-candidates.jsonl' if job.get('drawing_geometry',{}).get('feature_reviews') else root/'footprints/footprint-candidates.jsonl';output=root/'reviewed-footprints.jsonl';receipt_path=output.with_suffix('.receipt.json')
             with candidates.open('rb') as stream:candidate_hash=hashlib.file_digest(stream,'sha256').hexdigest()
             identity={'candidate_file_sha256':candidate_hash,'review_sha256':pinned['footprint_reviews'],'manifest_sha256':pinned['manifest']}
             if output.exists() and not receipt_path.exists():output.unlink()
