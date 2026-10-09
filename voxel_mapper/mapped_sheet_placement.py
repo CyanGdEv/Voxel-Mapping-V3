@@ -17,7 +17,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v2'
+VERSION = 'mapped-sheet-placement-v3'
 
 
 def placed(geometry, fit):
@@ -55,7 +55,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
             if error<=.2:pool.append((error,r['id'],r))
         # More than the original three alternatives, followed by actual shape fit.
         for rank,(_,_,r) in enumerate(sorted(pool)[:8]):edges.append((rank,-o['geometry'].area,o['candidate_id'],o,r))
-    edges.sort(key=lambda e:e[:3]);attempted=0;hypotheses=[]
+    edges.sort(key=lambda e:e[:3]);attempted=0;orientation_trials=0;hypotheses=[]
     def support(fit):
         hits=[]
         centres=local_centres@np.asarray(fit['matrix']).T+fit['translation_m']
@@ -87,27 +87,32 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
         if attempted>=max_seed_fits:break
         attempted+=1;boundary=fit_boundary(o['geometry'],r['geometry'])
         if 'best_fit' not in boundary:continue
-        seed=boundary['best_fit']
-        if seed['intersection_over_union']<.8:continue
-        supports=support(seed)
-        if len(supports)<3:continue
-        fit=seed
-        for _ in range(2):
-            local=np.asarray([by_id[h['candidate_id']]['geometry'].centroid.coords[0] for h in supports]);target=np.asarray([ref_ids[h['reference_id']]['geometry'].centroid.coords[0] for h in supports])
-            if np.linalg.matrix_rank(local-local.mean(axis=0))<2:break
-            m,t,s,rms=similarity(local,target);fit={'matrix':m,'translation_m':t,'scale_metres_per_pdf_point':s,'centroid_rms_m':rms};supports=support(fit)
-            if len(supports)<3:break
-        if len(supports)<3 or 'centroid_rms_m' not in fit:continue
-        # Recompute metrics for the final transform and expose map disagreement.
-        supports=support(fit)
-        local=np.asarray([by_id[h['candidate_id']]['geometry'].centroid.coords[0] for h in supports])
-        if len(supports)<3 or np.linalg.matrix_rank(local-local.mean(axis=0))<2:continue
-        fit.update(centroid_rms_m=float(np.sqrt(np.mean([h['centroid_error_m']**2 for h in supports]))),max_centroid_error_m=max(h['centroid_error_m'] for h in supports),supports=supports,seed_candidate_id=o['candidate_id'],seed_reference_id=r['id'])
-        # Domain uses whole supported outlines, and is explicitly unverified.
-        hull=MultiPoint([xy for h in supports for xy in placed(by_id[h['candidate_id']]['geometry'],fit).exterior.coords]).convex_hull
-        fit['mapped_support_envelope']=mapping(hull)
-        if any(np.allclose(fit['matrix'],h['matrix'],rtol=0,atol=fit['scale_metres_per_pdf_point']*.001) and np.allclose(fit['translation_m'],h['translation_m'],rtol=0,atol=1.) for h in hypotheses):continue
-        hypotheses.append(fit)
+        best_seed=boundary['best_fit'];seeds_for_boundary=[best_seed]
+        for alternative in boundary.get('equivalent_orientations',[]):
+            if any(np.allclose(alternative['matrix'],h['matrix'],rtol=0,atol=1e-9) and np.allclose(alternative['translation_m'],h['translation_m'],rtol=0,atol=1e-7) for h in seeds_for_boundary):continue
+            m=alternative['matrix'];seeds_for_boundary.append({**best_seed,**alternative,'scale_metres_per_pdf_point':math.hypot(m[0][0],m[1][0])})
+        for seed in seeds_for_boundary:
+            orientation_trials+=1
+            if seed['intersection_over_union']<.8:continue
+            supports=support(seed)
+            if len(supports)<3:continue
+            fit=seed
+            for _ in range(2):
+                local=np.asarray([by_id[h['candidate_id']]['geometry'].centroid.coords[0] for h in supports]);target=np.asarray([ref_ids[h['reference_id']]['geometry'].centroid.coords[0] for h in supports])
+                if np.linalg.matrix_rank(local-local.mean(axis=0))<2:break
+                m,t,s,rms=similarity(local,target);fit={'matrix':m,'translation_m':t,'scale_metres_per_pdf_point':s,'centroid_rms_m':rms};supports=support(fit)
+                if len(supports)<3:break
+            if len(supports)<3 or 'centroid_rms_m' not in fit:continue
+            # Recompute metrics for the final transform and expose map disagreement.
+            supports=support(fit)
+            local=np.asarray([by_id[h['candidate_id']]['geometry'].centroid.coords[0] for h in supports])
+            if len(supports)<3 or np.linalg.matrix_rank(local-local.mean(axis=0))<2:continue
+            fit.update(centroid_rms_m=float(np.sqrt(np.mean([h['centroid_error_m']**2 for h in supports]))),max_centroid_error_m=max(h['centroid_error_m'] for h in supports),supports=supports,seed_candidate_id=o['candidate_id'],seed_reference_id=r['id'])
+            # Domain uses whole supported outlines, and is explicitly unverified.
+            hull=MultiPoint([xy for h in supports for xy in placed(by_id[h['candidate_id']]['geometry'],fit).exterior.coords]).convex_hull
+            fit['mapped_support_envelope']=mapping(hull)
+            if any(np.allclose(fit['matrix'],h['matrix'],rtol=0,atol=fit['scale_metres_per_pdf_point']*.001) and np.allclose(fit['translation_m'],h['translation_m'],rtol=0,atol=1.) for h in hypotheses):continue
+            hypotheses.append(fit)
     hypotheses.sort(key=lambda h:(-len(h['supports']),h['centroid_rms_m'],h['seed_candidate_id'],h['seed_reference_id']))
     # Fits at the same location may differ within map uncertainty. Different
     # locations remain separate alternatives, never silently auto-selected.
@@ -120,7 +125,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
     if len(edges)>max_seed_fits:flags.append('seed_fit_budget_exhausted')
     if len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
     if len(best)>1:flags.append('multiple_mapped_placements')
-    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'seed_objects':len(seeds),'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
+    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 
 
 def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None):
@@ -173,7 +178,7 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
                 else:
                     result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m);result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs)
                     encoded=json.dumps(result);db.execute('INSERT INTO fits VALUES(?,?,?,?,?)',(pdf,page,page_hash,hashlib.sha256(encoded.encode()).hexdigest(),encoded));db.commit();counts['page_cache_computed']+=1
-                counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts']
+                counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts'];counts['orientation_trial_attempts']+=result['orientation_trial_attempts']
                 if progress:progress({'page':page,'document_sha256':pdf,'completed_pages':counts['page_cache_reused']+counts['page_cache_computed'],'status':result['status'],'cached':bool(cached)})
                 proposals.write(json.dumps(result)+'\n')
                 if len(result['hypotheses'])!=1:

@@ -2,7 +2,7 @@
 
 The verified registration route still needs measured controls, independent
 checkpoints and physical-object review. It is separate from the new
-`mapped-sheet-placement-v2` route, which positions native planning geometry for
+`mapped-sheet-placement-v3` route, which positions native planning geometry for
 inspection using explicitly estimated map agreement.
 
 The previous descriptor-only search retained three aspect/fill matches and only
@@ -74,6 +74,10 @@ integrity checks are refused. Output feeds are rebuilt and published only when
 the full run completes. A progress callback can report completed/cached sheets.
 Centroid-distance spatial queries now discard distant reference comparisons
 before transforming full outlines, and shape descriptors are computed once.
+V3 checks all retained equivalent boundary orientations against the sheet;
+orientation trial counts are separate from boundary-pair counts. This fixes
+symmetric seeds whose first equally good orientation disagrees with other
+landmarks. See `docs/linework-boundaries.md` for exact stroke-graph recovery.
 Independent verification remains the next step for any proposed transform:
 identify control attachment points and separately sourced checkpoint evidence,
 review current physical objects and dimensions, then use the existing checked

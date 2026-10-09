@@ -28,6 +28,17 @@ class MappedPlacementTests(unittest.TestCase):
         r=propose(objects,refs);self.assertEqual(r['status'],'provisional_mapped_placement')
         self.assertGreater(r['hypotheses'][0]['centroid_rms_m'],.1);self.assertFalse(r['physical_identity_verified'])
 
+    def test_equivalent_rectangle_orientation_must_be_checked_against_sheet(self):
+        gs=[box(20,20,50,40),box(110,30,150,60),box(40,120,65,155)]
+        objects=[]
+        for i,g in enumerate(gs):
+            ring=list(g.exterior.coords)[:-1];objects.append({'candidate_id':str(i),'geometry':Polygon(ring[1:]+ring[:1])})
+        refs=[{'id':str(i),'geometry':translate(g,1000,2000)} for i,g in enumerate(gs)]
+        r=propose(objects,refs)
+        self.assertEqual(r['status'],'provisional_mapped_placement');self.assertEqual(len(r['hypotheses']),1)
+        self.assertGreater(r['orientation_trial_attempts'],r['seed_fit_attempts'])
+        self.assertLess(r['hypotheses'][0]['centroid_rms_m'],1e-8)
+
     def test_two_objects_nested_duplicates_and_collinear_supports_not_enough(self):
         objects,refs=self.fixture();self.assertEqual(propose(objects[:2],refs)['status'],'withheld')
         objects=[{'candidate_id':str(i),'geometry':box(0,0,100+i,100+i)} for i in range(3)];refs=[{'id':str(i),'geometry':translate(o['geometry'],10,20)} for i,o in enumerate(objects)]

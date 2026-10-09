@@ -60,11 +60,19 @@ def run(job_path,stage='all'):
                 if not geometry.get('enabled',False):raise ValueError('Drawing components require drawing geometry')
                 checkpoint('drawing_components',split_components(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'drawing-components',max_records=components.get('max_records',2500000)))
             polygon_candidates=root/'drawing-components/polygon-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+            drawing_candidates=root/'drawing-components/component-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else polygon_candidates
+            linework=job.get('linework_boundaries',{})
+            if linework.get('enabled',False):
+                from .linework_boundaries import run as recover_boundaries
+                if not geometry.get('enabled',False):raise ValueError('Linework boundary recovery requires drawing geometry')
+                selected=json.loads(path(linework['sheets']).read_text()) if linework.get('sheets') else None
+                checkpoint('linework_boundaries',recover_boundaries(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'linework-boundaries',sheets=selected,recovery_options=linework.get('options'),max_records=linework.get('max_records',2500000)))
+                drawing_candidates=root/'linework-boundaries/boundary-candidates.jsonl';polygon_candidates=root/'linework-boundaries/polygon-candidates.jsonl'
             placement=job.get('mapped_placement',{})
             if placement.get('enabled',False):
                 from .mapped_sheet_placement import run as place_mapped
                 if not geometry.get('enabled',False) and not job.get('footprint_extraction',{}).get('enabled',False):raise ValueError('Mapped placement requires retained drawing geometry or footprints')
-                feed=root/'drawing-components/component-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else polygon_candidates
+                feed=drawing_candidates
                 selected=json.loads(path(placement['sheets']).read_text()) if placement.get('sheets') else None
                 checkpoint('mapped_placement',place_mapped(feed,path(placement['references']),placement['reference_crs'],placement['target_crs'],root/'mapped-placement',corpus,sheets=selected,max_seed_fits=placement.get('max_seed_fits',512),min_iou=placement.get('min_iou',.7),tolerance_m=placement.get('tolerance_m',10.),max_records=placement.get('max_records',2500000)))
             matching=job.get('footprint_matching',{})
@@ -76,7 +84,7 @@ def run(job_path,stage='all'):
             if outline.get('enabled',False):
                 from .outline_batch import run as review_outlines
                 if not geometry.get('enabled',False) and not job.get('footprint_extraction',{}).get('enabled',False):raise ValueError('Outline review requires drawing geometry or footprint extraction')
-                feed=root/'drawing-components/component-candidates.jsonl' if components.get('enabled',False) else root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+                feed=drawing_candidates
                 checkpoint('outline_review',review_outlines(corpus,feed,root/'outline-review',max_records=outline.get('max_records',2500000)))
             if matching.get('enabled',False):
                 from .footprint_matching import run as match_footprints,VERSION as matching_version
