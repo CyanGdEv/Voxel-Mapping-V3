@@ -1,3 +1,10 @@
+## Whole-park batch jobs
+
+The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,
+normalizes source-linked geometry feeds, and reconstructs/export chunks through a
+resumable disk-backed job. The compiler has been exercised with 150,000 synthetic
+features. PDF semantic classification and registration remain separate evidence
+stages; raw vector counts are not counts of physical park objects.
 
 ## Wicker Man planning generation test
 

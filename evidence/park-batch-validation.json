@@ -1,0 +1,53 @@
+{
+  "benchmark": {
+    "features": 150000,
+    "decisions": {
+      "planned": 150000
+    },
+    "families": {
+      "plaza": 150000
+    },
+    "unique_voxel_cells": 150000,
+    "native_chunks": 625,
+    "provenance_links": 150000,
+    "status": "disk_geometry_plan; native world export and verification remain separate",
+    "memory_contract": "One bounded feature staged at a time; feature records normalized once, voxel/evidence links and decisions on disk",
+    "resumed_features": 0,
+    "compile_seconds": 32.838847923001595,
+    "resume_seconds": 7.864237630998105,
+    "resume_features": 150000,
+    "peak_process_rss_mib": 114.53125,
+    "fixture": "Synthetic independent one-cell plazas; tests feature-count scale, not real PDF semantics or park accuracy"
+  },
+  "corpus": {
+    "links": 397,
+    "unique_urls": 397,
+    "recovered_records": 142,
+    "distinct_pdfs": 84,
+    "inspected_pages": 238,
+    "pending": 251,
+    "failed": 4,
+    "live_trial": "Four requests returned HTTP 502; zero fresh successful downloads"
+  },
+  "tests": {
+    "focused_passed": 19,
+    "full_total": 450,
+    "full_passed": 446,
+    "preexisting_failures": 3,
+    "preexisting_errors": 1,
+    "baseline_unchanged": [
+      "test_drawing_checks.ExternalCheckTests.test_displacement_uncertainty_provenance_and_coverage",
+      "test_drawing_controls.CoordinateLabelTests.test_native_coordinate_pairs_fit_without_mutation_or_accuracy_claim",
+      "test_drawing_grid.GridTests.test_actual_intersections_and_content_transform",
+      "test_drawing_marks.MarkTests.test_crosshairs_not_text_origins_drive_candidate_fit"
+    ]
+  },
+  "native_verification": "Small actual Bedrock fixture: saved section readback after cold reopen, preserved protected cells, identical export resume",
+  "limits": [
+    "No automatic general PDF-to-semantic-object classifier",
+    "No whole-park automated drawing registration",
+    "150000 fixture uses one-cell synthetic plazas, not real drawing components",
+    "No full-scale 150000-component native world export demonstrated",
+    "Attachment catalogue and discovery are incomplete"
+  ]
+}

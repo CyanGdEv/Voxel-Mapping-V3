@@ -44,7 +44,7 @@ class ReconstructionEngine:
                     if expected.base_name=='air':raise ValueError('Geometry plugins cannot carve implicitly')
                     if context.occupied:
                         occupied=context.occupied(*cell)
-                        floor_replacement=feature.family=='paving' and occupied is not None and occupied.base_name in ('grass_block','dirt','stone','granite','gravel','sand') and cell[1]==math.floor(context.ground(cell[0]+.5,cell[2]+.5))
+                        floor_replacement=feature.family in ('paving','path','plaza') and occupied is not None and occupied.base_name in ('grass_block','dirt','stone','granite','gravel','sand') and cell[1]==math.floor(context.ground(cell[0]+.5,cell[2]+.5))
                         if occupied is not None and occupied.base_name!='air' and occupied!=expected and not floor_replacement:
                             raise EvidenceMissing('Existing world collision')
                     if cell in rows and rows[cell]['material']!=material:raise EvidenceMissing('Conflicting reconstruction material')

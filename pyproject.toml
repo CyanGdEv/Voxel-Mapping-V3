@@ -12,6 +12,9 @@ dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasteri
 voxel-mapper = "voxel_mapper.cli:main"
 voxel-heritage = "voxel_mapper.reconstruction.heritage:main"
 voxel-reconstruct = "voxel_mapper.reconstruction.cli:main"
+voxel-planning-bulk = "voxel_mapper.planning_bulk:main"
+voxel-park-batch = "voxel_mapper.reconstruction.batch:main"
+voxel-park = "voxel_mapper.park_pipeline:main"
 
 [project.optional-dependencies]
 planning = ["PyMuPDF>=1.26,<2"]

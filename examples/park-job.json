@@ -1,0 +1,15 @@
+{
+  "work_directory": "park-build",
+  "manifest": "park-batch-manifest.json",
+  "terrain_config": "replace-with-your-terrain-config.json",
+  "acquisition": {
+    "catalogue": "../voxel_mapper/data/alton-planning-catalogue.json",
+    "official_hosts": ["publicaccess.staffsmoorlands.gov.uk"],
+    "workers": 4,
+    "max_downloads": 10000,
+    "max_run_bytes": 2000000000,
+    "max_inspection_pages": 10000,
+    "offline": true
+  },
+  "geometry_feeds": []
+}
