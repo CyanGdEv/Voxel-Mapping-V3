@@ -67,3 +67,5 @@ A synthetic reviewed-footprint fixture follows the full route from an actual PDF
 No recovered Alton candidate has been approved or generated into a new park world by this stage. Curved boundaries, line-based fences/routes, stronger semantic identification and reconciliation of overlapping revisions remain further work.
 
 Footprint association and registered revision review queues: see [footprint-matching.md](footprint-matching.md). Optional reviewed sheet metadata (`sheet_key`, ISO `issue_date`, `revision`) requires a `sheet_revision_reference`; it establishes ordering evidence only.
+
+Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).

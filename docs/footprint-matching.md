@@ -41,3 +41,5 @@ The park runner generates the unplaced queue after extraction. On resume it chec
 4,193 polygons were compared with 92 mapped polygon references from 144 named mapped features. The other 52 references were nonpolygon or invalid for this comparison. 970 polygons received weak shape/name shortlists. Three contained a unique interior “The Boating Lake” label, but each has a large shape discrepancy (~0.68); all are flagged for name/shape disagreement. These may be enclosing outlines or annotation shapes and are not confirmed lake footprints. No Alton registered records were supplied, so the revision queue is empty and world additions are zero.
 
 67 focused tests pass, including unique/ambiguous real-PDF labels, source tampering, target-frame matching, revision ordering, retained proposal/existing conflicts, checksum-verified park-job resume and sheet provenance retention. Full-suite results are recorded in `evidence/footprint-matching-validation.json`.
+
+Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).

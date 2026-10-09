@@ -61,6 +61,22 @@ def run(job_path,stage='all'):
                             if hashlib.file_digest(stream,'sha256').hexdigest()!=report[filename+'_sha256']:raise ValueError('Matching output checksum mismatch')
                 else:report=match_footprints(candidates,references,matching['reference_crs'],target,destination,corpus=corpus,max_records=contract['max_records'])
                 checkpoint('footprint_matching',report)
+            boundary=job.get('boundary_registration',{})
+            if boundary.get('enabled',False):
+                from .boundary_registration import run as register_boundaries,VERSION as boundary_version,file_hash
+                if not matching.get('enabled',False):raise ValueError('Boundary registration requires footprint_matching')
+                candidates=root/'footprints/footprint-candidates.jsonl';destination=root/'boundary-registration';matching_root=root/'footprint-matching'
+                reviews=json.loads(path(boundary['reviews']).read_text()) if boundary.get('reviews') else []
+                contract={'version':boundary_version,'candidate_sha256':file_hash(candidates),'association_sha256':file_hash(matching_root/'associations.jsonl'),'reference_sha256':file_hash(path(matching['references'])),'target_crs':target,'reference_crs':matching['reference_crs'],'max_fits':boundary.get('max_fits',10000),'review_sha256':hashlib.sha256(json.dumps(reviews,sort_keys=True).encode()).hexdigest()}
+                if destination.exists():
+                    report_path=destination/'boundary-report.json'
+                    if not report_path.exists():raise ValueError('Boundary output is incomplete; remove that output directory before retrying')
+                    report=json.loads(report_path.read_text())
+                    if any(report.get(key)!=value for key,value in contract.items()):raise ValueError('Boundary inputs changed; use a fresh job')
+                    if file_hash(destination/'boundary-hypotheses.jsonl')!=report['output_sha256']:raise ValueError('Boundary output checksum mismatch')
+                else:report=register_boundaries(candidates,matching_root,path(matching['references']),matching['reference_crs'],target,destination,corpus,max_fits=contract['max_fits'],registration_reviews=reviews)
+                checkpoint('boundary_registration',report)
+
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())

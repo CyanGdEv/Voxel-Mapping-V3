@@ -45,3 +45,5 @@ Job paths are relative to the job JSON. Outputs live under its `work_directory`.
 The recovered Alton catalogue had 397 URL/application links. Replay recovered 142 records referencing 84 unique PDF blobs and inspected 238 pages without inspection errors. A four-URL live trial returned HTTP 502 on every request; these failures remain retryable and no successful fresh downloads are claimed. Focused tests exercise corpus recovery, byte budgets, evidence gates, global conflicts, tile hashes, native cold-reopen verification and job-input changes. Existing drawing-control test failures are reported separately in the validation record.
 
 Optional `footprint_matching` creates checksum-bound shape/name review queues after acquisition. See [footprint-matching.md](footprint-matching.md) for job settings, registered overlap/revision comparisons and the measured Alton corpus result.
+
+Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).
