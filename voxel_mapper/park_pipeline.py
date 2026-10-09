@@ -29,7 +29,7 @@ def run(job_path,stage='all'):
                 catalogue=json.loads(path(acquisition['catalogue']).read_text());corpus.ingest(catalogue.get('entries',catalogue.get('documents',[])),acquisition['official_hosts'])
             for index,archive in enumerate(acquisition.get('retained_archives',[])):
                 from .planning_archive import import_archive
-                checkpoint('retained_archive_'+str(index),import_archive(corpus,path(archive['file']),archive['sha256'],acquisition['official_hosts'],catalogue_member=archive.get('catalogue_member','metadata/alton-planning-catalogue.json')))
+                checkpoint('retained_archive_'+str(index),import_archive(corpus,path(archive['file']),archive['sha256'],acquisition['official_hosts'],catalogue_member=archive.get('catalogue_member','metadata/alton-planning-catalogue.json'),allow_partial=archive.get('allow_partial',False)))
             report=corpus.acquire(workers=acquisition.get('workers',4),limit=acquisition.get('max_downloads',10000),max_run_bytes=acquisition.get('max_run_bytes',2000000000),
                                   offline=acquisition.get('offline',False),cache=str(path(acquisition['cache'])) if acquisition.get('cache') else None)
             checkpoint('downloads',report);checkpoint('inspection',corpus.inspect(acquisition.get('max_inspection_pages',10000)))

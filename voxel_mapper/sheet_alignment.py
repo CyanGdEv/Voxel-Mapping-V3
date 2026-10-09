@@ -15,7 +15,7 @@ from shapely.geometry import shape
 from .boundary_registration import file_hash, similarity
 from .footprint_matching import NativeNames, descriptor, lines, references
 
-VERSION = 'sheet-alignment-v1'
+VERSION = 'sheet-alignment-v2'
 
 
 def fit_sheet(objects, reference_rows, *, max_pair_fits=2000, tolerance_m=2., min_iou=.85):
@@ -33,9 +33,12 @@ def fit_sheet(objects, reference_rows, *, max_pair_fits=2000, tolerance_m=2., mi
     if len(objects) > 64:
         return {'status':'withheld', 'reason':'Sheet object budget exceeded', 'registration_verified':False, 'world_geometry_additions':0}
     refs={r['id']:r for r in reference_rows}; edges=[]; seen=set()
+    centres={r['id']:np.asarray(r['geometry'].centroid.coords[0]) for r in reference_rows}
+    local_centres=[]
     for obj in objects:
         if obj['candidate_id'] in seen:raise ValueError('Duplicate sheet candidate')
         seen.add(obj['candidate_id']);descriptor(obj['geometry'])
+        local_centres.append(obj['geometry'].centroid.coords[0])
         if len(obj['matches']) > 3:raise ValueError('At most three associations per object')
         match_ids=set()
         for match in obj['matches']:
@@ -44,21 +47,33 @@ def fit_sheet(objects, reference_rows, *, max_pair_fits=2000, tolerance_m=2., mi
             match_ids.add(rid);ref=refs[rid]
             if match['source_sha256']!=ref['source_sha256']:raise ValueError('Reference source pin mismatch')
             edges.append((obj,ref))
+    local_centres=np.asarray(local_centres,dtype=float).reshape((-1,2))
+    local_by_id={obj['candidate_id']:local_centres[i] for i,obj in enumerate(objects)}
+    object_indices={obj['candidate_id']:i for i,obj in enumerate(objects)}
+    edge_indices=np.asarray([object_indices[obj['candidate_id']] for obj,ref in edges],dtype=int)
+    edge_targets=np.asarray([centres[ref['id']] for obj,ref in edges],dtype=float).reshape((-1,2))
     hypotheses=[]; attempted=0; exhausted=False
     for (a,ra),(b,rb) in combinations(edges,2):
         if a['candidate_id']==b['candidate_id'] or ra['id']==rb['id']:continue
         if attempted >= max_pair_fits:exhausted=True;break
         attempted+=1
-        local=np.asarray([a['geometry'].centroid.coords[0], b['geometry'].centroid.coords[0]])
-        target=np.asarray([ra['geometry'].centroid.coords[0], rb['geometry'].centroid.coords[0]])
+        local=np.asarray([local_by_id[a['candidate_id']], local_by_id[b['candidate_id']]])
+        target=np.asarray([centres[ra['id']], centres[rb['id']]])
         try:matrix,translation,scale,_=similarity(local,target)
         except ValueError:continue
         if any(np.allclose(matrix,h['matrix'],rtol=0,atol=scale*1e-6) and np.allclose(translation,h['translation_m'],rtol=0,atol=1e-5) for h in hypotheses):continue
         supports=[]; ambiguous=False
-        for obj in objects:
+        placed_centres=local_centres@np.asarray(matrix).T+translation
+        delta=placed_centres[edge_indices]-edge_targets
+        eligible=np.flatnonzero(np.einsum('ij,ij->i',delta,delta)<=(tolerance_m+1e-6)**2)
+        near_objects={}
+        for index in eligible:
+            obj,ref=edges[int(index)];near_objects.setdefault(object_indices[obj['candidate_id']],[]).append(ref)
+        for index,nearby in near_objects.items():
+            obj=objects[index]
             placed=affine_transform(obj['geometry'],[matrix[0][0],matrix[0][1],matrix[1][0],matrix[1][1],*translation]);hits=[]
-            for match in obj['matches']:
-                ref=refs[match['reference_id']];geom=ref['geometry']
+            for ref in nearby:
+                geom=ref['geometry']
                 if placed.centroid.distance(geom.centroid)>tolerance_m:continue
                 if len(getattr(placed,'interiors',()))!=len(getattr(geom,'interiors',())):continue
                 iou=placed.intersection(geom).area/placed.union(geom).area

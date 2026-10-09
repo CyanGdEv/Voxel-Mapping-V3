@@ -53,6 +53,25 @@ class AnchorTests(unittest.TestCase):
                     self.assertEqual(corpus.report()['document_links'],0)
                     with self.assertRaisesRegex(ValueError,'Archive checksum'):import_archive(corpus,path,'0'*64,['portal.test'])
                 finally:corpus.close()
+    def test_partial_archive_keeps_missing_links_pending_and_checks_retained_bytes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);path,_=self.make_archive(root)
+            with zipfile.ZipFile(path) as z:
+                catalogue=json.loads(z.read('metadata/alton-planning-catalogue.json'));pdfs={n:z.read(n) for n in z.namelist() if n.endswith('.pdf')}
+            missing={'url':'https://portal.test/missing','sha256':'e'*64,'file':'files/'+ 'e'*64+'.pdf','title':'Missing attachment'}
+            catalogue['entries'].append(missing)
+            with zipfile.ZipFile(path,'w') as z:
+                z.writestr('metadata/alton-planning-catalogue.json',json.dumps(catalogue))
+                for name,data in pdfs.items():z.writestr(name,data)
+            sha=hashlib.sha256(path.read_bytes()).hexdigest();corpus=Corpus(root/'corpus')
+            try:
+                with self.assertRaisesRegex(ValueError,'absent'):import_archive(corpus,path,sha,['portal.test'])
+                self.assertEqual(corpus.report()['document_links'],0)
+                report=import_archive(corpus,path,sha,['portal.test'],allow_partial=True)
+                self.assertEqual(report['deferred_catalogue_records'],1);self.assertEqual(report['retained_catalogue_records'],1)
+                self.assertEqual(corpus.report()['download_status'],{'downloaded':1,'pending':1})
+                with self.assertRaises(ValueError):import_archive(corpus,path,sha,['wrong.test'],allow_partial=True)
+            finally:corpus.close()
     def test_application_location_is_not_a_drawing_anchor_and_corrupt_source_excluded(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);path,sha=self.make_archive(root);corpus=Corpus(root/'corpus')

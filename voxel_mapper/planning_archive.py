@@ -8,7 +8,8 @@ import uuid
 import zipfile
 
 
-def import_archive(corpus,archive,expected_sha256,hosts,*,catalogue_member='metadata/alton-planning-catalogue.json'):
+def import_archive(corpus,archive,expected_sha256,hosts,*,catalogue_member='metadata/alton-planning-catalogue.json',allow_partial=False):
+    if type(allow_partial) is not bool:raise ValueError('allow_partial must be a boolean')
     archive=Path(archive)
     if not re.fullmatch('[0-9a-f]{64}',str(expected_sha256)):raise ValueError('Pinned archive SHA256 required')
     if archive.stat().st_size>2000000000:raise ValueError('Archive compressed-byte budget exceeded')
@@ -21,10 +22,15 @@ def import_archive(corpus,archive,expected_sha256,hosts,*,catalogue_member='meta
         if catalogue.file_size>8000000:raise ValueError('Catalogue byte budget exceeded')
         entries=json.loads(source.read(catalogue))['entries']
         if not isinstance(entries,list) or len(entries)>10000:raise ValueError('Bounded archive catalogue required')
-        records=[];blobs={};total=0
+        records=[];blobs={};total=0;deferred=0
         for record in entries:
             sha=record.get('sha256');member=record.get('file')
             if not re.fullmatch('[0-9a-f]{64}',str(sha)) or member!=f'files/{sha}.pdf':raise ValueError('Pinned content-addressed PDF member required')
+            if member not in index:
+                if not allow_partial:raise ValueError('Catalogue PDF is absent from retained archive')
+                deferred+=1
+                records.append({**record,'retained_archive_sha256':expected_sha256,'retained_archive_member':member,'acquisition_provenance':'retained_archive_catalogue_only; PDF_not_retained'})
+                continue
             item=index[member]
             if item.file_size>64000000:raise ValueError('PDF byte budget exceeded')
             if sha not in blobs:total+=item.file_size;blobs[sha]=item
@@ -50,14 +56,14 @@ def import_archive(corpus,archive,expected_sha256,hosts,*,catalogue_member='meta
                 finally:temporary.unlink(missing_ok=True)
                 copied+=1
             with corpus.db:corpus.db.execute("UPDATE downloads SET status='downloaded',sha=?,size=?,error=NULL WHERE expected_sha=?",(sha,item.file_size,sha))
-    report={'status':'retained_archive_imported','archive_sha256':expected_sha256,'catalogue_records':len(records),'unique_pdf_blobs':len(blobs),'copied_blobs':copied,'resumed_blobs':resumed,'expanded_pdf_bytes':total,'live_downloads':0,'world_geometry_additions':0}
+    report={'status':'retained_archive_imported','archive_sha256':expected_sha256,'catalogue_records':len(records),'retained_catalogue_records':len(records)-deferred,'deferred_catalogue_records':deferred,'allow_partial':allow_partial,'unique_pdf_blobs':len(blobs),'copied_blobs':copied,'resumed_blobs':resumed,'expanded_pdf_bytes':total,'live_downloads':0,'world_geometry_additions':0}
     (corpus.root/f'archive-{expected_sha256}.json').write_text(json.dumps(report,indent=2)+'\n');return report
 
 
 def main():
     from .planning_bulk import Corpus
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--archive',required=True);p.add_argument('--sha256',required=True);p.add_argument('--official-host',action='append',required=True);a=p.parse_args();corpus=Corpus(a.corpus)
-    try:print(json.dumps(import_archive(corpus,a.archive,a.sha256,a.official_host),indent=2))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--archive',required=True);p.add_argument('--sha256',required=True);p.add_argument('--official-host',action='append',required=True);p.add_argument('--catalogue-member',default='metadata/alton-planning-catalogue.json');p.add_argument('--allow-partial',action='store_true');a=p.parse_args();corpus=Corpus(a.corpus)
+    try:print(json.dumps(import_archive(corpus,a.archive,a.sha256,a.official_host,catalogue_member=a.catalogue_member,allow_partial=a.allow_partial),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()
