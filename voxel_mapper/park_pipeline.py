@@ -55,6 +55,10 @@ def run(job_path,stage='all'):
                 from .drawing_geometry import run as extract_geometry
                 checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),curve_tolerance_points=geometry.get('curve_tolerance_points',.25)))
             matching=job.get('footprint_matching',{})
+            layout=job.get('drawing_layout',{})
+            if layout.get('enabled',False):
+                from .drawing_layout import run as inspect_layout
+                checkpoint('drawing_layout',inspect_layout(corpus,root/'drawing-layout',max_pages=layout.get('max_pages',10000),**layout.get('options',{})))
             if matching.get('enabled',False):
                 from .footprint_matching import run as match_footprints,VERSION as matching_version
                 candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'

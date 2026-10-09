@@ -14,7 +14,7 @@ from shapely.geometry import Point,shape
 from shapely.ops import transform
 from shapely.strtree import STRtree
 
-VERSION='footprint-matching-v1'
+VERSION='footprint-matching-v2'
 
 
 def name_key(value):
@@ -52,7 +52,7 @@ class NativeNames:
         self.corpus=corpus;self.names={name_key(r['name']) for r in rows if r['name']};self.key=None;self.matches={};self.document=None;self.sha=None
     def get(self,candidate):
         from .drawing_footprints import retained_page_candidates
-        from .drawing_page_tools import native_lines
+        from .drawing_layout import cached_page
         import pymupdf
         key=(candidate['document_sha256'],candidate['page'],candidate.get('extraction_kind'),candidate.get('extraction_contract'))
         if key!=self.key:
@@ -66,9 +66,10 @@ class NativeNames:
                 self.document=pymupdf.open(path);self.sha=sha
             retained=retained_page_candidates(self.corpus,candidate)
             candidates=[c for c in retained if c['geometry']['type'] in ('Polygon','MultiPolygon')];geometries=[shape(c['geometry']) for c in candidates];index=STRtree(geometries);self.matches={}
-            labels=native_lines(self.document[page-1])
+            labels=cached_page(self.corpus,self.document[page-1],sha,page)['labels']
             if len(labels)>20000:raise ValueError('Native page label budget exceeded')
             for label in labels:
+                if label['visibility_status']!='visible_native_text':continue
                 key_name=name_key(label['text'])
                 if key_name not in self.names:continue
                 point=Point(label['local']);hits=[int(i) for i in index.query(point) if geometries[int(i)].contains(point)]
