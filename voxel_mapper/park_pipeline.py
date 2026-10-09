@@ -40,13 +40,19 @@ def run(job_path,stage='all'):
                     target=analysis.get('target_crs') or json.loads(path(job['manifest']).read_text())['crs']
                     landmarks=reference_landmarks(json.loads(data),analysis['landmark_crs'],target,hashlib.sha256(data).hexdigest())
                 checkpoint('drawing_analysis',analyze(corpus,max_pages=analysis.get('max_pages',10000),registration=analysis.get('registration',True),reviews=reviews,ocr=analysis.get('ocr',True),max_ocr_pages=analysis.get('max_ocr_pages',50),max_ocr_seconds=analysis.get('max_ocr_seconds',180),landmarks=landmarks))
+            if job.get('footprint_extraction',{}).get('enabled',False):
+                from .drawing_footprints import run as extract_footprints
+                checkpoint('footprints',extract_footprints(corpus,root/'footprints',max_pages=job['footprint_extraction'].get('max_pages',1000)))
         finally:corpus.close()
     if stage in ('all','reconstruct'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
         pinned={'manifest':hashlib.sha256(manifest_path.read_bytes()).hexdigest()}
         for key in ('feature_records','terrain_config'):
-            if job.get(key) and (key!='terrain_config' or job.get('geometry_feeds') or job.get('feature_records')):
+            if job.get(key) and (key!='terrain_config' or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews')):
                 with path(job[key]).open('rb') as stream:pinned[key]=hashlib.file_digest(stream,'sha256').hexdigest()
+        footprint_reviews=job.get('footprint_extraction',{}).get('feature_reviews')
+        if footprint_reviews:
+            with path(footprint_reviews).open('rb') as stream:pinned['footprint_reviews']=hashlib.file_digest(stream,'sha256').hexdigest()
         previous=state['stages'].get('input_contract')
         if previous is not None and previous!=pinned:raise ValueError('Reconstruction inputs changed; use a fresh job')
         checkpoint('input_contract',pinned)
@@ -68,6 +74,23 @@ def run(job_path,stage='all'):
                 metadata.write_text(json.dumps(receipt,indent=2)+'\n')
             feeds.append(output)
         if job.get('feature_records'):feeds.append(path(job['feature_records']))
+        if footprint_reviews:
+            from .drawing_footprints import promote
+            candidates=root/'footprints/footprint-candidates.jsonl';output=root/'reviewed-footprints.jsonl';receipt_path=output.with_suffix('.receipt.json')
+            with candidates.open('rb') as stream:candidate_hash=hashlib.file_digest(stream,'sha256').hexdigest()
+            identity={'candidate_file_sha256':candidate_hash,'review_sha256':pinned['footprint_reviews'],'manifest_sha256':pinned['manifest']}
+            if output.exists() and not receipt_path.exists():output.unlink()
+            if output.exists():
+                receipt=json.loads(receipt_path.read_text())
+                with output.open('rb') as stream:output_hash=hashlib.file_digest(stream,'sha256').hexdigest()
+                if receipt['inputs']!=identity or receipt['output_sha256']!=output_hash:raise ValueError('Reviewed footprint inputs changed; use a fresh job')
+            else:
+                corpus=Corpus(root/'corpus')
+                try:checkpoint('reviewed_footprints',promote(candidates,path(footprint_reviews),manifest_path,output,corpus))
+                finally:corpus.close()
+                with output.open('rb') as stream:output_hash=hashlib.file_digest(stream,'sha256').hexdigest()
+                receipt_path.write_text(json.dumps({'inputs':identity,'output_sha256':output_hash},indent=2)+'\n')
+            feeds.append(output)
         if not feeds:
             checkpoint('reconstruction',{'status':'awaiting_normalized_geometry','reason':'Corpus pages do not automatically become semantic registered features'})
             return state

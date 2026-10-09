@@ -12,5 +12,6 @@
     "offline": true
   },
   "drawing_analysis": {"enabled": true, "registration": true, "max_pages": 10000, "ocr": true, "max_ocr_pages": 50, "max_ocr_seconds": 180},
+  "footprint_extraction": {"enabled": true, "max_pages": 1000},
   "geometry_feeds": []
 }
