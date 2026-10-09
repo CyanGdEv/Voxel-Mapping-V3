@@ -4,14 +4,36 @@
   "terrain_config": "replace-with-your-terrain-config.json",
   "acquisition": {
     "catalogue": "../voxel_mapper/data/alton-planning-catalogue.json",
-    "official_hosts": ["publicaccess.staffsmoorlands.gov.uk"],
+    "official_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk"
+    ],
     "workers": 4,
     "max_downloads": 10000,
     "max_run_bytes": 2000000000,
     "max_inspection_pages": 10000,
     "offline": true
   },
-  "drawing_analysis": {"enabled": true, "registration": true, "max_pages": 10000, "ocr": true, "max_ocr_pages": 50, "max_ocr_seconds": 180},
-  "footprint_extraction": {"enabled": true, "max_pages": 1000},
-  "geometry_feeds": []
+  "drawing_analysis": {
+    "enabled": true,
+    "registration": true,
+    "max_pages": 10000,
+    "ocr": true,
+    "max_ocr_pages": 50,
+    "max_ocr_seconds": 180
+  },
+  "footprint_extraction": {
+    "enabled": true,
+    "max_pages": 1000
+  },
+  "geometry_feeds": [],
+  "anchor_audit": {
+    "enabled": true,
+    "bounds_wgs84": [
+      -1.902,
+      52.982,
+      -1.877,
+      53.004
+    ],
+    "max_pages": 10000
+  }
 }

@@ -1,0 +1,453 @@
+{
+  "archive_recovery": {
+    "status": "retained_archive_imported",
+    "archive_sha256": "830ef2e993ceff0ab64017f6a2324dd3cfe45a933352650064be429ffc3271fd",
+    "catalogue_records": 275,
+    "unique_pdf_blobs": 237,
+    "copied_blobs": 225,
+    "resumed_blobs": 12,
+    "expanded_pdf_bytes": 264521215,
+    "live_downloads": 0,
+    "world_geometry_additions": 0
+  },
+  "archive_resume": {
+    "status": "retained_archive_imported",
+    "archive_sha256": "830ef2e993ceff0ab64017f6a2324dd3cfe45a933352650064be429ffc3271fd",
+    "catalogue_records": 275,
+    "unique_pdf_blobs": 237,
+    "copied_blobs": 0,
+    "resumed_blobs": 237,
+    "expanded_pdf_bytes": 264521215,
+    "live_downloads": 0,
+    "world_geometry_additions": 0
+  },
+  "anchor_audit": {
+    "version": "anchor-audit-v2",
+    "contract": "48bf67f4eedf79738d5765e1b39ba6bb53fd7392359707938c1799b4f47ed005",
+    "status": "unverified_anchor_audit",
+    "bounds_wgs84": [
+      -1.902,
+      52.982,
+      -1.877,
+      53.004
+    ],
+    "counts": {
+      "pages": 818,
+      "anchor_candidates_only": 818,
+      "application_location_hints": 3,
+      "pages_with_axis_labels": 1,
+      "embedded_candidates": 0,
+      "explicit_mark_grid_candidates": 0,
+      "axis_hypotheses": 1
+    },
+    "validated_pdf_blobs": 309,
+    "run_pages": 0,
+    "resumed_pages": 818,
+    "errors": [],
+    "output_sha256": "4721267494d0b75bdef5a182efd6a1b25f93ef364a8f5f3087bd17ccd5c52af9",
+    "verified_registrations": 0,
+    "world_geometry_additions": 0
+  },
+  "anchor_resume": {
+    "version": "anchor-audit-v2",
+    "contract": "48bf67f4eedf79738d5765e1b39ba6bb53fd7392359707938c1799b4f47ed005",
+    "status": "unverified_anchor_audit",
+    "bounds_wgs84": [
+      -1.902,
+      52.982,
+      -1.877,
+      53.004
+    ],
+    "counts": {
+      "pages": 818,
+      "anchor_candidates_only": 818,
+      "application_location_hints": 3,
+      "pages_with_axis_labels": 1,
+      "embedded_candidates": 0,
+      "explicit_mark_grid_candidates": 0,
+      "axis_hypotheses": 1
+    },
+    "validated_pdf_blobs": 309,
+    "run_pages": 0,
+    "resumed_pages": 818,
+    "errors": [],
+    "output_sha256": "4721267494d0b75bdef5a182efd6a1b25f93ef364a8f5f3087bd17ccd5c52af9",
+    "verified_registrations": 0,
+    "world_geometry_additions": 0
+  },
+  "axis_hypotheses": [
+    {
+      "application_contexts": [
+        "SMD/2021/0211 24/03/2021 24/03/2021 Wildwood , Farley Lane , Farley , Staffordshire , ST10 4BZ Lawful Development Certificate for Proposed Development relating to the proposed erection of single storey side and rear extensions Certificate of Lawfulness - Lawful (Approved) 19/05/2021",
+        "SMD/2021/0636 01/10/2021 01/10/2021 Wildwood , Farley Lane , Farley , Staffordshire , ST10 4BZ Eco House Replacement Dwelling Planning Permission - Approved 08/04/2022",
+        "SMD/2022/0230 03/05/2022 03/05/2022 Wildwood , Farley Lane , Farley , Staffordshire , ST10 4BZ Eco House replacement developmment. Planning Permission - Approved 12/08/2022"
+      ],
+      "application_location_hints": [],
+      "application_references": [
+        "SMD/2021/0211",
+        "SMD/2021/0636",
+        "SMD/2022/0230"
+      ],
+      "axis_alignment": {
+        "axes": {
+          "E": {
+            "coordinate_extent": [
+              406860.0,
+              406960.0
+            ],
+            "excluded_label_origins": [
+              [
+                1959.037841796875,
+                406980.0
+              ]
+            ],
+            "intercept": 406844.1346148477,
+            "label_count": 6,
+            "max_withheld_error_nominal_m": 0.005795386736281216,
+            "pdf_extent": [
+              230.077880859375,
+              1680.517822265625
+            ],
+            "slope": 0.06894459771905014
+          },
+          "N": {
+            "coordinate_extent": [
+              342800.0,
+              342880.0
+            ],
+            "excluded_label_origins": [
+              [
+                1617.3978271484375,
+                342900.0
+              ]
+            ],
+            "intercept": 342787.6877854859,
+            "label_count": 5,
+            "max_withheld_error_nominal_m": 0.004140886652749032,
+            "pdf_extent": [
+              178.597900390625,
+              1338.8779296875
+            ],
+            "slope": 0.06894744766877817
+          }
+        },
+        "coordinate_convention": "Unrotated native PDF x/y; E/N axis label origins; no extrapolation",
+        "limitations": [
+          "Label origins are not surveyed grid intersections",
+          "BNG coordinate system is a hypothesis until independently confirmed",
+          "Internal label consistency does not verify absolute position"
+        ],
+        "registration_verified": false,
+        "source_crs_hypothesis": "EPSG:27700",
+        "status": "native_label_alignment_hypothesis",
+        "wgs84_extent_hypothesis": [
+          -1.899272795843445,
+          52.98249865280596,
+          -1.897781668802422,
+          52.98321905476421
+        ],
+        "world_geometry_additions": 0
+      },
+      "axis_label_count": 19,
+      "axis_labels": [
+        {
+          "axis": "N",
+          "local": [
+            244.28463745117188,
+            178.597900390625
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 178.597900390625,
+          "value": 342800
+        },
+        {
+          "axis": "N",
+          "local": [
+            1938.4444580078125,
+            178.597900390625
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 178.597900390625,
+          "value": 342800
+        },
+        {
+          "axis": "N",
+          "local": [
+            244.28463745117188,
+            468.637939453125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 468.637939453125,
+          "value": 342820
+        },
+        {
+          "axis": "N",
+          "local": [
+            1938.4444580078125,
+            468.637939453125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 468.637939453125,
+          "value": 342820
+        },
+        {
+          "axis": "N",
+          "local": [
+            244.28463745117188,
+            758.6778564453125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 758.6778564453125,
+          "value": 342840
+        },
+        {
+          "axis": "N",
+          "local": [
+            1938.4444580078125,
+            758.6778564453125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 758.6778564453125,
+          "value": 342840
+        },
+        {
+          "axis": "N",
+          "local": [
+            244.28463745117188,
+            1048.837890625
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1048.837890625,
+          "value": 342860
+        },
+        {
+          "axis": "N",
+          "local": [
+            1938.4444580078125,
+            1048.837890625
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1048.837890625,
+          "value": 342860
+        },
+        {
+          "axis": "N",
+          "local": [
+            244.28463745117188,
+            1338.8779296875
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1338.8779296875,
+          "value": 342880
+        },
+        {
+          "axis": "N",
+          "local": [
+            1938.4444580078125,
+            1338.8779296875
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1338.8779296875,
+          "value": 342880
+        },
+        {
+          "axis": "N",
+          "local": [
+            251.6046142578125,
+            1617.3978271484375
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1617.3978271484375,
+          "value": 342900
+        },
+        {
+          "axis": "N",
+          "local": [
+            1932.6844482421875,
+            1617.3978271484375
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1617.3978271484375,
+          "value": 342900
+        },
+        {
+          "axis": "E",
+          "local": [
+            230.077880859375,
+            1597.4984130859375
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 230.077880859375,
+          "value": 406860
+        },
+        {
+          "axis": "E",
+          "local": [
+            520.2379150390625,
+            1604.6983642578125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 520.2379150390625,
+          "value": 406880
+        },
+        {
+          "axis": "E",
+          "local": [
+            810.27783203125,
+            1604.6983642578125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 810.27783203125,
+          "value": 406900
+        },
+        {
+          "axis": "E",
+          "local": [
+            1100.4378662109375,
+            1604.6983642578125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1100.4378662109375,
+          "value": 406920
+        },
+        {
+          "axis": "E",
+          "local": [
+            1390.4779052734375,
+            1604.6983642578125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1390.4779052734375,
+          "value": 406940
+        },
+        {
+          "axis": "E",
+          "local": [
+            1680.517822265625,
+            1604.6983642578125
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1680.517822265625,
+          "value": 406960
+        },
+        {
+          "axis": "E",
+          "local": [
+            1959.037841796875,
+            1597.4984130859375
+          ],
+          "origin": "native_text_box_center; not a measured grid intersection",
+          "position": 1959.037841796875,
+          "value": 406980
+        }
+      ],
+      "document_sha256": "82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9",
+      "embedded_registration": {
+        "candidate_viewports": 0,
+        "independent_accuracy": "not_verified",
+        "limitations": [
+          "Residuals test embedded controls, not independent surveyed accuracy",
+          "Multiple viewport candidates remain separate; no automatic inset selection",
+          "No geometry extraction, reuse clearance or construction verification"
+        ],
+        "status": "rejected",
+        "viewports": [
+          {
+            "measure_type": "rectilinear_scale_only",
+            "reason": "Rectilinear measurement scale does not declare geographic registration",
+            "status": "rejected",
+            "viewport": 0
+          },
+          {
+            "measure_type": "rectilinear_scale_only",
+            "reason": "Rectilinear measurement scale does not declare geographic registration",
+            "status": "rejected",
+            "viewport": 1
+          }
+        ]
+      },
+      "explicit_mark_grid": {},
+      "page": 1,
+      "page_frame": {
+        "inspection_rotation_degrees": 0,
+        "local_frame": "pdf_native_points_y_up",
+        "original_rotation_degrees": 0,
+        "source_pdf_modified": false
+      },
+      "park_membership_verified": false,
+      "registration_verified": false,
+      "status": "anchor_candidates_only",
+      "world_geometry_additions": 0
+    }
+  ],
+  "application_location_hints": [
+    {
+      "document_sha256": "67528c4a9dec231319c883a87c803a9b45003eeb073c82208af6c6cfe71ebe06",
+      "page": 2,
+      "application_references": [
+        "SMD/2017/0472",
+        "SMD/2017/0473"
+      ],
+      "application_location_hints": [
+        {
+          "crs": null,
+          "easting": 407216.0,
+          "northing": 343693.0,
+          "registration_eligible": false,
+          "status": "application_location_hint; no drawing-point attachment"
+        }
+      ],
+      "park_membership_verified": false
+    },
+    {
+      "document_sha256": "7162604b8645bb7da139a940c937a7132c958aa3e2ad6439684affb3b3a8ec9b",
+      "page": 2,
+      "application_references": [
+        "SMD/2013/0013"
+      ],
+      "application_location_hints": [
+        {
+          "crs": null,
+          "easting": 407345.0,
+          "northing": 343810.0,
+          "registration_eligible": false,
+          "status": "application_location_hint; no drawing-point attachment"
+        }
+      ],
+      "park_membership_verified": false
+    },
+    {
+      "document_sha256": "ef5418a83359e0ad6e83f88406461e6d41654bcdc2f637d3f0663bbfa18bf708",
+      "page": 2,
+      "application_references": [
+        "SMD/2013/0419",
+        "SMD/2013/0420"
+      ],
+      "application_location_hints": [
+        {
+          "crs": null,
+          "easting": 407345.0,
+          "northing": 343810.0,
+          "registration_eligible": false,
+          "status": "application_location_hint; no drawing-point attachment"
+        }
+      ],
+      "park_membership_verified": false
+    }
+  ],
+  "validation": {
+    "new_tests": 7,
+    "focused_tests": 89,
+    "focused_passed": 89,
+    "full_tests": 513,
+    "full_passed": 513,
+    "previous_coordinate_failures_resolved": 4
+  },
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Retained archives include nearby applications; park membership is unverified",
+    "Application form locations are not measured drawing corner anchors",
+    "Axis labels and hypothesised BNG coordinates lack independent registration checks",
+    "Current state, reuse, material, dimension and vertical evidence remain separate gates"
+  ]
+}

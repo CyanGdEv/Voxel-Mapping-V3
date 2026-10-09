@@ -5,6 +5,8 @@ Text origins are not surveyed marks. A consistent fit remains a hypothesis.
 import copy
 import re
 
+from .coordinate_text import coordinate_runs
+
 from pyproj import CRS
 from pyproj.transformer import TransformerGroup
 from pyproj.exceptions import ProjError
@@ -61,7 +63,8 @@ def inspect_coordinate_labels(page, bounds=None, *, reuse_allowed=False,
             marks=extract_marks(page,reuse_allowed=True)
             if marks['status']!='crosshair_candidates':
                 raise ValueError('Supported straight crosshair geometry required')
-        page.extract_text(visitor_text=visit)
+        for run in coordinate_runs(page,max_fragments=max_fragments,max_text=max_text):
+            visit(run['text'],run['cm'],run['tm'],run['font'],run['size'])
         if require_grid:
             grid=extract_grid_controls(page,reuse_allowed=True,max_fragments=max_fragments,max_text=max_text)
             if grid['status']!='grid_intersection_candidates':

@@ -14,7 +14,7 @@ from .drawing_controls import inspect_coordinate_labels
 from .reconstruction.registration import review_registration,registration_domain
 from .drawing_page_tools import native_inspection_page,inspect_ocr_page,native_lines,match_landmarks,reference_landmarks
 
-VERSION='drawing-batch-v4'
+VERSION='drawing-batch-v5'
 RULES={
  'site_plan':r'\b(site plan|site layout|general arrangement|masterplan)\b',
  'ride_layout':r'\b(track layout|ride layout|roller coaster|coaster layout)\b',

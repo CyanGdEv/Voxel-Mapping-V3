@@ -47,3 +47,5 @@ The recovered Alton catalogue had 397 URL/application links. Replay recovered 14
 Optional `footprint_matching` creates checksum-bound shape/name review queues after acquisition. See [footprint-matching.md](footprint-matching.md) for job settings, registered overlap/revision comparisons and the measured Alton corpus result.
 
 Boundary/corner similarity hypotheses and independently checked registration: [boundary-registration.md](boundary-registration.md).
+
+Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).

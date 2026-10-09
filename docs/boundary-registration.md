@@ -45,3 +45,5 @@ Add `"reviews": "registration-reviews.json"` when independently reviewed pairs e
 2,070 comparisons were attempted from the 970 shortlisted drawing polygons. 2,031 produced boundary hypotheses and 39 were withheld. Overlapping flags include 1,419 ambiguous orientations, 954 poor boundary matches, 1,688 printed-scale disagreements, 317 missing scales and 26 ambiguous scales. None had both strong boundary agreement and one usable printed scale. No independent Alton review was supplied, no registration was accepted, and world additions remain zero.
 
 Eight new tests cover known rotation/scale recovery, symmetry, hole preservation, printed-scale rejection, exact source binding, independent-evidence rejection, domain extrapolation, and a real-PDF park job that accepts a synthetic checked review, resumes, and rejects altered reviews. This fixture establishes pipeline behavior, not real Alton survey accuracy. Source and validation summaries are retained in `evidence/boundary-registration-validation.json`.
+
+Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).

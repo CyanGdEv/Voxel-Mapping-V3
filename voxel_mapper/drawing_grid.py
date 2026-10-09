@@ -2,6 +2,8 @@
 import math
 import re
 
+from .coordinate_text import coordinate_runs
+
 from shapely.geometry import LineString
 
 from .drawing_marks import extract_marks
@@ -33,7 +35,8 @@ def extract_grid_controls(page, *, reuse_allowed=False, max_fragments=2000, max_
                 if len(labels)>64:
                     raise ValueError('Grid label budget exceeded')
 
-        page.extract_text(visitor_text=visit)
+        for run in coordinate_runs(page,max_fragments=max_fragments,max_text=max_text):
+            visit(run['text'],run['cm'],run['tm'],run['font'],run['size'])
         groups={'E':[],'N':[]}
         used=set()
         for axis,value,origin in labels:

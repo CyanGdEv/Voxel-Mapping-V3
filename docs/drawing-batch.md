@@ -70,3 +70,5 @@ The job equivalent uses `drawing_analysis.landmarks`, `landmark_crs` and `target
 The recovered corpus pass used 144 named features from the retained OSM mapping. It normalized 44 rotated sheets and ran OCR on 43 low-text pages. Unclassified pages fell from 54 to 39, and 18 name matches identified Lake View, Mutiny Bay, the Boating Lake, Waste Lane and White Bridge. No page had enough unique names and scale evidence for a named fit; no verified automatic alignment or new world geometry was produced. Four pages remained withheld because their registration content exceeded the budget, and 234 still need controls.
 
 The next stage is available as [native-sheet footprint extraction and reviewed reconstruction](drawing-footprints.md). It preserves supported polygon topology, retains unplaced label hypotheses and can promote explicitly checked candidates into the park job.
+
+Retained archive recovery, native coordinate origin correction and the expanded anchor audit: [anchor-audit.md](anchor-audit.md).

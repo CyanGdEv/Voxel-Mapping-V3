@@ -19,6 +19,8 @@ voxel-drawing-batch = "voxel_mapper.drawing_batch:main"
 voxel-drawing-footprints = "voxel_mapper.drawing_footprints:main"
 voxel-footprint-matching = "voxel_mapper.footprint_matching:main"
 voxel-boundary-registration = "voxel_mapper.boundary_registration:main"
+voxel-planning-archive = "voxel_mapper.planning_archive:main"
+voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 
 [project.optional-dependencies]
 planning = ["PyMuPDF>=1.26,<2"]
