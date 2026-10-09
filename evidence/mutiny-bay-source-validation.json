@@ -1,0 +1,29 @@
+{
+  "applications": 9,
+  "document_records": 198,
+  "availability": {
+    "retained_inspected": 139,
+    "unavailable": 58,
+    "retained_supporting_file": 1
+  },
+  "retained_distinct_files": 85,
+  "retained_pages": 409,
+  "source_hash_checks": "all retained originals passed",
+  "world_geometry_additions": 0,
+  "registration_verified": false,
+  "as_built_verified": false,
+  "tests": {
+    "targeted_run": 18,
+    "targeted_passed": 18,
+    "full_run": 417,
+    "full_passed": 413,
+    "unchanged_baseline_failures": 3,
+    "unchanged_baseline_errors": 1
+  },
+  "limits": [
+    "Approval and historical existing drawings do not verify present-day construction",
+    "Courtyard restaurant proposal reportedly unbuilt; preserve existing/proposed separately",
+    "Source registration, scale and matching present-day control points require review before world correction",
+    "Legacy generic Drawings titles do not identify sheet role or state"
+  ]
+}

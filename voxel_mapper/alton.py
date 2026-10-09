@@ -179,6 +179,8 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
             result['documents'].append(row)
     result['status'] = 'partial' if (result['failures'] or result['documents_omitted_by_budget'] or
                                    result['documents_deferred_council_outage'] or discovery['status'] == 'partial') else 'checked'
+    from .mutiny_bay import source_inventory
+    result['mutiny_bay'] = source_inventory(result['documents'])
     (Path(output)/'alton-planning-inspection.json').write_text(json.dumps(result, indent=2))
     return result
 
