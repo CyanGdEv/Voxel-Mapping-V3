@@ -59,6 +59,12 @@ def run(job_path,stage='all'):
             if layout.get('enabled',False):
                 from .drawing_layout import run as inspect_layout
                 checkpoint('drawing_layout',inspect_layout(corpus,root/'drawing-layout',max_pages=layout.get('max_pages',10000),**layout.get('options',{})))
+            outline=job.get('outline_review',{})
+            if outline.get('enabled',False):
+                from .outline_batch import run as review_outlines
+                if not geometry.get('enabled',False) and not job.get('footprint_extraction',{}).get('enabled',False):raise ValueError('Outline review requires drawing geometry or footprint extraction')
+                feed=root/'drawing-geometry/geometry-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl'
+                checkpoint('outline_review',review_outlines(corpus,feed,root/'outline-review',max_records=outline.get('max_records',2500000)))
             if matching.get('enabled',False):
                 from .footprint_matching import run as match_footprints,VERSION as matching_version
                 candidates=root/'drawing-geometry/polygon-candidates.jsonl' if geometry.get('enabled',False) else root/'footprints/footprint-candidates.jsonl';references=path(matching['references']);destination=root/'footprint-matching'
