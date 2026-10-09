@@ -1,14 +1,77 @@
 {
-  "checked_on": "2026-10-08",
+  "checked_on": "2026-10-09",
   "park": "Alton Towers",
   "new_physical_geometry_acquired": false,
   "sources": [
-    {"provider":"Bluesky","url":"https://bluesky-world.com/aerial-photography/","status":"catalogue_verified; imagery_not_acquired","adapter":"imagery_masks","needed":["licensed orthophoto","capture date","accepted registration","reviewed polygons and materials"]},
-    {"provider":"OS NGD","url":"https://docs.os.uk/osngd/data-structure/transport/transport-network","status":"schema_and_supply_verified; park_coverage_not_checked","adapter":"geojson after explicit normalization","needed":["authorized export","native property normalization","internal park coverage review"]},
-    {"provider":"Historic England","reference":"CC80/00026","url":"https://historicengland.org.uk/images-books/photos/item/CC80/00026","subject":"Loggia with Prospect Tower","date":"1926-06-23/1926-06-30","status":"archive_metadata_verified; full_resolution_service_unavailable","use":"historical visual reference only; no measured geometry"},
-    {"provider":"Historic England","reference":"OP08920","url":"https://historicengland.org.uk/images-books/photos/item/OP08920","subject":"Flag Tower","date":"1853/1908","status":"archive_metadata_verified; full_resolution_service_unavailable","use":"historical visual reference only; no measured geometry"},
-    {"provider":"Historic England","reference":"OP08949","url":"https://historicengland.org.uk/images-books/photos/item/OP08949","subject":"Gardens and house","status":"archive_record_located; image_not_acquired","use":"historical visual reference only"},
-    {"provider":"On Centre Survey","reference":"2936 MASTER LAND SURVEY","status":"referenced_in_retained_planning; public_exact_name_search_no_usable_result","acquired":false,"use":"potential registration and elevation control; datum unknown"},
-    {"provider":"Mapillary","url":"https://help.mapillary.com/hc/en-us/articles/360010234680-Accessing-imagery-and-data-through-the-Mapillary-API","status":"official_api_documentation_located; no_credentials_or_park_coverage_verified","acquired":false}
+    {
+      "provider": "Bluesky",
+      "url": "https://bluesky-world.com/aerial-photography/",
+      "status": "catalogue_verified; imagery_not_acquired",
+      "adapter": "imagery_masks",
+      "needed": [
+        "licensed orthophoto",
+        "capture date",
+        "accepted registration",
+        "reviewed polygons and materials"
+      ]
+    },
+    {
+      "provider": "OS NGD",
+      "url": "https://docs.os.uk/osngd/data-structure/transport/transport-network",
+      "status": "schema_and_supply_verified; park_coverage_not_checked",
+      "adapter": "geojson after explicit normalization",
+      "needed": [
+        "authorized export",
+        "native property normalization",
+        "internal park coverage review"
+      ]
+    },
+    {
+      "provider": "Historic England",
+      "reference": "CC80/00026",
+      "url": "https://historicengland.org.uk/images-books/photos/item/CC80/00026",
+      "subject": "Loggia with Prospect Tower",
+      "date": "1926-06-23/1926-06-30",
+      "status": "archive_metadata_verified; full_resolution_service_unavailable",
+      "use": "historical visual reference only; no measured geometry"
+    },
+    {
+      "provider": "Historic England",
+      "reference": "OP08920",
+      "url": "https://historicengland.org.uk/images-books/photos/item/OP08920",
+      "subject": "Flag Tower",
+      "date": "1853/1908",
+      "status": "archive_metadata_verified; full_resolution_service_unavailable",
+      "use": "historical visual reference only; no measured geometry"
+    },
+    {
+      "provider": "Historic England",
+      "reference": "OP08949",
+      "url": "https://historicengland.org.uk/images-books/photos/item/OP08949",
+      "subject": "Gardens and house",
+      "status": "archive_record_located; image_not_acquired",
+      "use": "historical visual reference only"
+    },
+    {
+      "provider": "On Centre Survey",
+      "reference": "2936 MASTER LAND SURVEY",
+      "status": "referenced_in_retained_planning; public_exact_name_search_no_usable_result",
+      "acquired": false,
+      "use": "potential registration and elevation control; datum unknown"
+    },
+    {
+      "provider": "Mapillary",
+      "url": "https://help.mapillary.com/hc/en-us/articles/360010234680-Accessing-imagery-and-data-through-the-Mapillary-API",
+      "status": "official_api_documentation_located; no_credentials_or_park_coverage_verified",
+      "acquired": false
+    },
+    {
+      "provider": "Historic England NHLE GIS",
+      "url": "https://www.api.gov.uk/he/national-heritage-list-for-england-nhle/",
+      "status": "official API queried; 31 park listing candidates retained",
+      "adapter": "nhle (discovery only)",
+      "retained_input": "alton-heritage-source.json",
+      "use": "asset identity and location; triangular symbols and listing polygons excluded from reconstruction"
+    }
   ]
 }

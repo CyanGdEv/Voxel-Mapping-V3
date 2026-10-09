@@ -6,6 +6,7 @@ from shapely.geometry import shape,mapping
 from shapely.ops import transform
 from .model import Feature,EvidenceMissing
 from ..transport import width_metres
+from .heritage import nhle_adapter
 
 
 def evidence(value,source,status='documented'):
@@ -59,7 +60,7 @@ def planning_adapter(data,source):
 
 
 class AdapterRegistry:
-    def __init__(self):self.adapters={'geojson':geojson_adapter,'osm':osm_adapter,'planning_records':planning_adapter,'imagery_masks':None}
+    def __init__(self):self.adapters={'geojson':geojson_adapter,'osm':osm_adapter,'planning_records':planning_adapter,'imagery_masks':None,'nhle':nhle_adapter}
     def register(self,name,adapter):
         if name in self.adapters:raise ValueError('Adapter already registered')
         self.adapters[name]=adapter

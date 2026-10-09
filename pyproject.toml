@@ -10,6 +10,7 @@ dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasteri
 
 [project.scripts]
 voxel-mapper = "voxel_mapper.cli:main"
+voxel-heritage = "voxel_mapper.reconstruction.heritage:main"
 voxel-reconstruct = "voxel_mapper.reconstruction.cli:main"
 
 [project.optional-dependencies]

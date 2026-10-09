@@ -117,7 +117,22 @@ def run_auto(output, location=None, bounds=None, planning_cache=None, planning_a
             config['sources'].append(PLANNING_SOURCE)
         manifest.write_text(json.dumps(acquisition, indent=2))
         from .reconstruction.inventory import source_inventory
-        reconstruction_inventory=source_inventory(raw,collection['planning_geometry_records'],acquisition,config['sources'])
+        heritage_records=[]
+        if site_name and 'alton towers' in site_name.lower():
+            from .reconstruction.heritage import inventory as heritage_inventory
+            import hashlib
+            retained=Path(__file__).parent/'data'/'alton-heritage-source.json'
+            content=retained.read_bytes()
+            heritage_data=json.loads(content)
+            heritage_report=heritage_inventory(heritage_data)
+            heritage_report.update(input_sha256=hashlib.sha256(content).hexdigest(), retrieved_date=heritage_data['retrieved_date'])
+            heritage_records=heritage_report['candidates']
+            (output/'heritage-inventory.json').write_text(json.dumps(heritage_report,indent=2))
+            acquisition['providers'].append({'provider':'Historic England NHLE', 'status':'retained_discovery_only',
+                'retrieved_date':heritage_data['retrieved_date'], 'candidate_count':len(heritage_records),
+                'input_sha256':heritage_report['input_sha256'], 'attribution':heritage_report['attribution']})
+            manifest.write_text(json.dumps(acquisition,indent=2))
+        reconstruction_inventory=source_inventory(raw,collection['planning_geometry_records'],acquisition,config['sources'],heritage_records)
         (output/'reconstruction-source-inventory.json').write_text(json.dumps(reconstruction_inventory,indent=2))
         (output/'input.geojson').write_text(json.dumps(collection))
         (output/'resolved-config.json').write_text(json.dumps(config,indent=2))
