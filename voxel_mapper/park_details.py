@@ -138,6 +138,15 @@ def emit_detail(feature,terrain,surface=None):
             roof=math.floor(top)
             for y in range(math.floor(base)+1,roof+1):rows.append({'x':x,'y':y,'z':z,'material':'stone' if y==roof else properties['material']})
         report['height_status']='independently_sampled_surface_profile_unverified';report['roof_status']='2.5D_surface_profile_not_exact_architectural_roof'
+    elif kind in ('rock','rockery'):
+        from .reconstruction.rocks import rock_cells
+        try:
+            blocks,rock_report=rock_cells(geometry,lambda x,z:terrain.sample(x+.5,z+.5),
+                                         properties.get('rock_type','jagged'),properties.get('height_m',2))
+        except ValueError as error:
+            return [],{**report,'status':'withheld','reason':str(error)}
+        rows=[{'x':x,'y':y,'z':z,'material':m} for (x,y,z),m in blocks.items()]
+        report.update(rock_geometry=rock_report,height_status=properties.get('height_status','bounded_relief_estimate_not_printed_height'))
     else:
         report['height_status']=properties.get('height_status','low_relief_preview_not_printed_height')
         for x,z in cells:
@@ -148,11 +157,7 @@ def emit_detail(feature,terrain,surface=None):
                 adjacent=[terrain.sample(x+.5+dx,z+.5+dz) for dx,dz in ((2,0),(-2,0),(0,2),(0,-2))];valid=[a for a in adjacent if a is not None]
                 height=max(1,min(6,math.ceil(max(valid+[value])-value)))
                 report['height_status']='terrain_relief_estimate_not_printed_height'
-            if kind=='rock':
-                centre=Point(x+.5,z+.5);height=2 if geometry.boundary.distance(centre)>=.8 else 1
-                material='cobblestone' if (x*17+z*31)%5==0 else 'granite' if (x*17+z*31)%7==0 else 'stone'
-                for dy in range(1,height+1):rows.append({'x':x,'y':ground+dy,'z':z,'material':material})
-            elif kind=='planter':
+            if kind=='planter':
                 edge=geometry.boundary.distance(Point(x+.5,z+.5))<1
                 rows.append({'x':x,'y':ground+1,'z':z,'material':properties['material'] if edge else 'dirt'})
                 if not edge or len(cells)==1:rows.append({'x':x,'y':ground+2,'z':z,'material':'oak_leaves'})
@@ -202,7 +207,7 @@ def generate(source,park,cache,output,grid):
     finally:
         level.close();height_sources={'terrain':terrain.report(),'surface':surface.report()};terrain.close();surface.close()
     if not rows:raise ValueError('No reviewed path details survived world validation')
-    report={'status':'provisional_reviewed_path_details','stations':[],'world_name':'Alton Towers — Paths and Planning Details','features':decisions,'emitted_features_by_kind':dict(collections.Counter(d['kind'] for d in decisions if d['status']=='emitted')),'overlay_blocks':len(rows),'protected_mask_cells':len(protected),'ride_layouts_changed':False,'review_source':review['review_scope'],'height_sources':height_sources,'limitations':['Absolute registration is provisional and inherited from the Wicker Man alignment','Historical drawings and mixed-date height rasters do not establish present-day construction','Rocks use estimated one/two-block relief; planter height and unspecified materials are visual estimates','Retaining wall relief without a printed height uses bounded terrain estimates','Building roof surfaces are 2.5D height profiles, not architectural roof geometry','No existing solid cells or paving ground cells are replaced']}
+    report={'status':'provisional_reviewed_path_details','stations':[],'world_name':'Alton Towers — Paths and Planning Details','features':decisions,'emitted_features_by_kind':dict(collections.Counter(d['kind'] for d in decisions if d['status']=='emitted')),'overlay_blocks':len(rows),'protected_mask_cells':len(protected),'ride_layouts_changed':False,'review_source':review['review_scope'],'height_sources':height_sources,'limitations':['Absolute registration is provisional and inherited from the Wicker Man alignment','Historical drawings and mixed-date height rasters do not establish present-day construction','Rocks use bounded estimated faceted relief with full cores, slabs, stairs and wall tips; planter height and unspecified materials are visual estimates','Retaining wall relief without a printed height uses bounded terrain estimates','Building roof surfaces are 2.5D height profiles, not architectural roof geometry','No existing solid cells or paving ground cells are replaced']}
     apply_overlay(source,output,rows,report,report_key='park_details',report_filename='park-details-report.json');(output/'details-overlay.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows));(output/'park-details.geojson').write_text(json.dumps({'type':'FeatureCollection','coordinate_frame':'local x east/z north, metres','features':features}));print(json.dumps({k:report[k] for k in ('emitted_features_by_kind','overlay_blocks','world_verification')},indent=2));return report
 
 
