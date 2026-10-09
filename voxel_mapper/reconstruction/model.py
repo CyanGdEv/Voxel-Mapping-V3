@@ -55,7 +55,16 @@ class Feature:
         if source is None:raise EvidenceMissing('Unknown geometry source')
         if source.kind in ('planning','cad','survey','imagery') and source.registration_status!='accepted':
             raise EvidenceMissing('Geometry registration not accepted')
+        review=source.metadata.get('horizontal_registration_review')
+        if review is not None:
+            from .registration import require_accepted_review
+            try:require_accepted_review(review)
+            except ValueError as error:raise EvidenceMissing(str(error)) from error
         geom=shape(self.geometry)
+        if review is not None:
+            from .registration import registration_domain
+            if not registration_domain(review).buffer(1e-7).covers(geom):
+                raise EvidenceMissing('Geometry outside validated registration domain')
         # A purely vertical 3D line has a zero-length 2D Shapely projection.
         vertical=geom.geom_type=='LineString' and geom.has_z and len(set(tuple(p) for p in geom.coords))>1
         if geom.is_empty or (not geom.is_valid and not vertical):raise ValueError('Invalid geometry')
