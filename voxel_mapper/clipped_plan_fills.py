@@ -5,10 +5,11 @@ import json
 import math
 
 import pymupdf
-from shapely.geometry import box, mapping
+from shapely.geometry import box, mapping, Polygon, shape
 from .drawing_footprints import rings_from_path, fill_geometry
 
 VERSION = 'straight-clipped-plan-fills-v1'
+GAP_VERSION = 'located-fill-discontinuities-v2'
 
 
 def discontinuities(candidate, unit):
@@ -35,6 +36,8 @@ def discontinuities(candidate, unit):
         a, b = points[longest], points[longest + 1]
         rectangles.append((lengths[longest], ((b[0] - a[0]) / lengths[longest], (b[1] - a[1]) / lengths[longest])))
     _, axis = max(rectangles, key=lambda x: x[0]); normal = (-axis[1], axis[0])
+    if axis[0] < 0 or (axis[0] == 0 and axis[1] < 0):
+        axis = (-axis[0], -axis[1]); normal = (-axis[1], axis[0])
     if any(abs(axis[0] * direction[0] + axis[1] * direction[1]) < math.cos(math.radians(.5)) for _, direction in rectangles):
         return []
     intervals = []
@@ -49,7 +52,19 @@ def discontinuities(candidate, unit):
         gap = right[0] - left[1]
         if gap <= 0:
             continue
+        low, high = max(left[2], right[2]), min(left[3], right[3])
+        if high <= low:
+            continue
+        def point(t, s):
+            return [t * axis[0] + s * normal[0], t * axis[1] + s * normal[1]]
+        corridor = Polygon([point(left[1], low), point(right[0], low),
+                            point(right[0], high), point(left[1], high)])
         result.append({'fill_candidate_id': candidate['id'], 'left_polygon_part': left[4], 'right_polygon_part': right[4],
+                       'recipe_version': GAP_VERSION,
+                       'coordinate_frame': candidate.get('coordinate_frame', 'unrotated_mupdf_points_y_down'),
+                       'gap_corridor_geometry': mapping(corridor),
+                       'projected_gap_endpoints': [point(left[1], (low + high) / 2), point(right[0], (low + high) / 2)],
+                       'physical_attachment_points_verified': False,
                        'nominal_gap_width_m': gap * unit, 'axis_candidate': list(axis),
                        'projection_interval_pdf_points': [left[1], right[0]],
                        'basis': 'disjoint aligned thin fill parts; width measured by projected source extents',
@@ -59,6 +74,37 @@ def discontinuities(candidate, unit):
                        'status': 'unverified_fill_strip_discontinuity', 'opening_type': None,
                        'door_or_window_identity_verified': False, 'height_m': None,
                        'scale_verified': False, 'geometry_bridge_added': False, 'world_geometry_additions': 0})
+    return result
+
+
+def audit_discontinuities(candidates, unit):
+    """Locate gaps and retain intersecting native fills, without certifying visibility."""
+    if len(candidates) > 4000:
+        raise ValueError('Gap audit candidate budget exceeded')
+    geometries = [shape(c['geometry']) for c in candidates]
+    from shapely.strtree import STRtree
+    tree = STRtree(geometries)
+    result = []; comparisons = 0
+    for candidate in candidates:
+        for gap in discontinuities(candidate, unit):
+            corridor = shape(gap['gap_corridor_geometry']); overlaps = []
+            for index in sorted(tree.query(corridor).tolist()):
+                other = candidates[index]
+                if other['id'] == candidate['id']:
+                    continue
+                comparisons += 1
+                if comparisons > 100000:
+                    raise ValueError('Gap overlap audit budget exceeded')
+                intersection = corridor.intersection(geometries[index])
+                if intersection.area <= 0:
+                    continue
+                overlaps.append({'fill_candidate_id': other['id'], 'paint_seqno': other.get('paint_seqno'),
+                                 'fill_color': other['fill_color'],
+                                 'gap_area_fraction': intersection.area / corridor.area,
+                                 'intersection_geometry': mapping(intersection)})
+            result.append({**gap, 'intersecting_fill_candidates': overlaps,
+                           'visibility_review_status': 'intersecting_fills_require_review' if overlaps else 'no_retained_fill_overlap',
+                           'complete_page_visibility_verified': False})
     return result
 
 

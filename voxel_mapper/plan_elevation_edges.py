@@ -12,9 +12,9 @@ from .boundary_registration import file_hash
 from .drawing_views import text, SCALE
 from .glyph_visibility import screen_span
 from .plan_network import recover, containing_faces, VERSION as NETWORK_VERSION
-from .clipped_plan_fills import recover as recover_fills, discontinuities, VERSION as FILL_VERSION
+from .clipped_plan_fills import recover as recover_fills, audit_discontinuities, VERSION as FILL_VERSION, GAP_VERSION
 
-VERSION = 'plan-elevation-edge-hypotheses-v3'
+VERSION = 'plan-elevation-edge-hypotheses-v4'
 
 
 def plan_scale(page):
@@ -150,9 +150,11 @@ def run(documents_file, face_directory, *, component_label=None):
                              'candidates': [], 'world_geometry_additions': 0}
                 unit = scale['nominal_metres_per_pdf_point_candidate']
                 if unit:
+                    gap_records = audit_discontinuities(fills['candidates'], unit)
                     for fill in fills['candidates']:
                         fill['nominal_area_m2'] = fill['area_pdf_points_squared'] * unit * unit
-                        fill['strip_discontinuity_candidates'] = discontinuities(fill, unit)
+                        fill['strip_discontinuity_candidates'] = [g for g in gap_records if g['fill_candidate_id'] == fill['id']]
+                    fills['gap_recipe_version'] = GAP_VERSION
                 try:
                     network = recover(edges)
                 except ValueError as error:

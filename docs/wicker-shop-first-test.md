@@ -102,3 +102,19 @@ Multipart thin fills also produce bounded **discontinuity candidates** when thei
 `evidence/wicker-shop-clipped-fill-replay.json` retains all recovered fill/clip geometries and source rings, gap recipes, all fourteen plan/elevation region-reference pairs, matched connected runs and their source edges. The focused receipt includes the full CLI replay's SHA256 and byte length; unmatched network records remain reproducible from the pinned PDFs. Twenty-seven focused tests passed, including nested clip intersection/restoration, even-odd holes, disjoint parts, unsupported curves, rotation-independent geometry and gap measurements, background masks and nonparallel parts. The full real replay's fill intersections were independently reconstructed from retained source rings and checked against the candidate polygons.
 
 This fixes missing native plan-wall geometry. It does not establish a complete automatic shop shell or wall heights. The shop's floor/elevation dimensions and GIA discrepancy remain unresolved, as do roof topology, source state, absolute registration and vertical datum. Meshes remain withheld and world additions remain zero. Next: associate recovered wall strips and actual openings with corresponding elevation edges, resolve the dimensional disagreement, then build a consistent local wall/roof model.
+
+## Located wall-gap review
+
+The v4 edge diagnostic retains a source-coordinate corridor and projected endpoint pair for each multipart fill discontinuity. Rotation preserves the measured gap; the endpoints remain geometric projections, not accepted physical attachment points. A spatially indexed, bounded overlap audit records every retained fill intersecting the corridor, including white masks and earlier paints. Boundary-only contact does not count as covered area. The audit does not certify complete visibility: excluded symbols, strokes, images and unsupported paint scopes may still affect the drawing.
+
+The original two plan PDFs reproduce all 129 retained fill records exactly after JSON normalization. Six ground-floor gap candidates are located; one intersects another retained fill and requires visibility review. The 4.5410 m candidate has no retained-fill overlap. None is automatically classified as an opening or submitted as a registration point.
+
+Reproduce from checksum-named original PDFs:
+
+```sh
+PYTHONPATH=. python scripts/audit_wicker_fill_gaps.py \
+  --pdf-directory /path/to/pdfs \
+  --output evidence/wicker-shop-located-fill-gaps.json
+```
+
+The script verifies the compressed retained replay and original PDF hashes, reruns native fill extraction and refuses changed extraction before deriving gap coordinates. The receipt is `evidence/wicker-shop-located-fill-gaps.json`. Next, compare these source positions with elevation opening boundaries and resolve the floor/elevation scaling discrepancy. This pass generates zero world blocks.
