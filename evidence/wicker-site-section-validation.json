@@ -1,0 +1,14 @@
+{
+  "downloaded_unique_pdf_count": 20,
+  "reproduced_pages": 20,
+  "vertical_section_pages_quarantined": 12,
+  "overlapping_title_conflict_pages": 8,
+  "combined_and_separate_building_claims_distinguished": true,
+  "deterministic_review_replay": true,
+  "focused_tests_passed": 22,
+  "placement_gate_unchanged": true,
+  "output_sha256": {
+    "evidence/wicker-site-section-sources.json": "cbee9df5e18d20acafa3c6738336a99fbe65b323ac0876cde930211e81e1db62",
+    "evidence/wicker-site-section-review.json": "0ce2e686f245a033a959839a997bd3398b3589555f59543e7734deeac2573e62"
+  }
+}
