@@ -1,0 +1,14 @@
+{
+  "byte_identical_review_replay": true,
+  "native_envelopes_reproduced": true,
+  "return_partitions_disjoint_and_exhaustive": true,
+  "invalid_provenance_index_rejected": true,
+  "main_roof_floor_fit_excludes_canopy_returns": true,
+  "orientation_ambiguity_retained": true,
+  "poor_boundary_flags_retained": true,
+  "focused_roof_scale_tests_passed": 3,
+  "svg_rendered_and_visually_reviewed": true,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}
