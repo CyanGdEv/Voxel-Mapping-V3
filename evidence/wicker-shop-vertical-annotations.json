@@ -1,0 +1,112 @@
+{
+  "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "render_size_pixels": [
+    1888,
+    1334
+  ],
+  "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462",
+  "method": "manual trace on pinned full-page raster, main timber wall shoulder and underside gable apex; opening heads relative to shop floor",
+  "vertical_traces": {
+    "SE-shoulder": {
+      "view": "SE",
+      "top_pixel": [
+        450,
+        334
+      ],
+      "bottom_pixel": [
+        450,
+        407
+      ]
+    },
+    "NW-shoulder": {
+      "view": "NW",
+      "top_pixel": [
+        450,
+        822
+      ],
+      "bottom_pixel": [
+        450,
+        893
+      ]
+    },
+    "SW-shoulder": {
+      "view": "SW",
+      "top_pixel": [
+        1017,
+        333
+      ],
+      "bottom_pixel": [
+        1017,
+        407
+      ]
+    },
+    "NE-shoulder": {
+      "view": "NE",
+      "top_pixel": [
+        1282,
+        819
+      ],
+      "bottom_pixel": [
+        1282,
+        893
+      ]
+    },
+    "SW-apex": {
+      "view": "SW",
+      "top_pixel": [
+        1149,
+        253
+      ],
+      "bottom_pixel": [
+        1149,
+        407
+      ]
+    },
+    "NE-apex": {
+      "view": "NE",
+      "top_pixel": [
+        1149,
+        738
+      ],
+      "bottom_pixel": [
+        1149,
+        893
+      ]
+    },
+    "SW-opening": {
+      "view": "SW",
+      "top_pixel": [
+        1150,
+        351
+      ],
+      "bottom_pixel": [
+        1150,
+        407
+      ]
+    },
+    "NE-opening": {
+      "view": "NE",
+      "top_pixel": [
+        1150,
+        837
+      ],
+      "bottom_pixel": [
+        1150,
+        893
+      ]
+    },
+    "NW-door": {
+      "view": "NW",
+      "top_pixel": [
+        315,
+        846
+      ],
+      "bottom_pixel": [
+        315,
+        893
+      ]
+    }
+  },
+  "manual_endpoint_bound_pixels": 2,
+  "proposed_only": true
+}
