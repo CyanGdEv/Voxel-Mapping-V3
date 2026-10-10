@@ -118,3 +118,21 @@ PYTHONPATH=. python scripts/audit_wicker_fill_gaps.py \
 ```
 
 The script verifies the compressed retained replay and original PDF hashes, reruns native fill extraction and refuses changed extraction before deriving gap coordinates. The receipt is `evidence/wicker-shop-located-fill-gaps.json`. Next, compare these source positions with elevation opening boundaries and resolve the floor/elevation scaling discrepancy. This pass generates zero world blocks.
+
+## Layout-normalized opening correspondence
+
+The first-test diagnostic now reuses the earlier source-layout finding rather than treating the literal floor-sheet scale as unresolved. `scripts/review_wicker_opening_correspondence.py` verifies the original floor/roof/elevation PDFs, reproduces the pinned manual floor trace, recomputes the shared-furniture transform and its four holdouts, replays exact fill extraction, and compares source-coordinate endpoint pairs. The layout reproduction check permits only 1e-9 absolute floating arithmetic variation; source bytes, label strings, roles and review structure remain checked. Building extents never become layout controls.
+
+A fixed 0.25 m **nominal discovery window** retains all qualifying trace pairs, with reversed endpoint order supported and ambiguity explicit. Matching widths at another position does not qualify. Source coordinates are converted to native PDF axes before the directional inverse layout transform is applied. The correction changes derived dimensions without altering native source endpoints or recovering missing walls.
+
+The six gap candidates yield one spatial trace hypothesis: the southwest shop opening. Its raw nominal width is 4.5410 m; layout-normalized width is 4.9927 m. The maximum endpoint discrepancy is 0.1509 m, larger than the manual trace's 0.1260 m per-endpoint sampling bound. It remains flagged and does not establish physical correspondence. The reviewed southwest elevation head height (2.4939 m above drawn floor) is retained **conditionally** on the existing manual plan/view association, without making a new wall panel or accepting an automatically measured elevation opening. The northeast opening and northwest door remain unmatched; five unrelated source gaps remain unassigned.
+
+The normalized floor extents differ from the elevation review by -0.0859 m and +0.0206 m, consistent with the earlier layout study. This resolves the nominal dimension discrepancy for the provisional manual model; it does not prove uniform scaling of every view, current/as-built identity, roof topology, elevation opening widths or geographic registration.
+
+```sh
+python scripts/review_wicker_opening_correspondence.py \
+  --pdf-directory /path/to/checksum-named-pdfs \
+  --output evidence/wicker-shop-opening-correspondence.json
+```
+
+The real replay and repeated receipt are byte-identical. Five new tests cover spatial rather than width-only matching, native coordinate conversion, directional scaling, reversed endpoints, sampling-bound flags, ambiguous traces and invalid input rejection. Next: recover the northeast and side-door boundary pairs across separate fill paints, resolve the southwest transverse endpoint discrepancy, and measure elevation opening extents before automatic shell assembly. World additions remain zero.
