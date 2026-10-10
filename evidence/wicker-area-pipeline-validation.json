@@ -1,0 +1,550 @@
+{
+  "area": "Wicker Man / SW8 and woodland path amendments",
+  "applications": [
+    "SMD/2016/0315",
+    "SMD/2017/0111"
+  ],
+  "documents": [
+    {
+      "document_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "application_reference": "SMD/2016/0315",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 1",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+    },
+    {
+      "document_sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "application_reference": "SMD/2016/0315",
+      "title": "Existing Block Plan",
+      "drawing_state": "existing",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139"
+    },
+    {
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "application_reference": "SMD/2017/0111",
+      "title": "373-95-7B Site Plan Proposed showing Woodland path",
+      "drawing_state": "proposed",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+    },
+    {
+      "document_sha256": "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "application_reference": "SMD/2017/0111",
+      "title": "373-95-8B Site Plan Landscape",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176956"
+    },
+    {
+      "document_sha256": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "application_reference": "SMD/2016/0315",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 3",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172"
+    },
+    {
+      "document_sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "application_reference": "SMD/2017/0111",
+      "title": "Alton Towers Woodland Pathway - Statement",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959"
+    },
+    {
+      "document_sha256": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215",
+      "application_reference": "SMD/2016/0315",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 2",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171"
+    },
+    {
+      "document_sha256": "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428",
+      "application_reference": "SMD/2017/0111",
+      "title": "Arboricultural Statement",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176961"
+    },
+    {
+      "document_sha256": "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+      "application_reference": "SMD/2017/0111",
+      "title": "03224 S73 application - SW8 path proposals 22-02-17",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176958"
+    },
+    {
+      "document_sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "application_reference": "SMD/2016/0315",
+      "title": "Existing Site Plan",
+      "drawing_state": "existing",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142"
+    },
+    {
+      "document_sha256": "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+      "application_reference": "SMD/2017/0111",
+      "title": "373-95-18B SW8 Planting Schedule (path change)",
+      "drawing_state": "unknown",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176957"
+    }
+  ],
+  "distinct_pdf_blobs": 11,
+  "candidate_pages": 43,
+  "raw_geometry_records": {
+    "Polygon": 2245,
+    "LineString": 13115
+  },
+  "retained_extraction_status_counts": {
+    "unplaced_geometry_candidates": 57,
+    "partial_candidate_budget": 1
+  },
+  "unreviewed_raw_promotion_rejections": {
+    "Physical identity review required": 2245,
+    "Explicit physical line-role review required": 13115
+  },
+  "selection_sha256": "9d34408ce96420217d792fbce6bace55a1c38778255305b7ee4be24d8469dbaa",
+  "recovery": {
+    "version": "linework-boundaries-v1",
+    "source_candidate_sha256": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+    "options": {
+      "max_segments": 20000,
+      "max_intersection_pairs": 100000,
+      "max_faces": 4000,
+      "max_noded_points": 200000
+    },
+    "provenance_comparison_epsilon_pdf_points": 1e-07,
+    "sheets": [
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        4
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        5
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        6
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        7
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        8
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        9
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        10
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        11
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        12
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        13
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        14
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        15
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        16
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        17
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        18
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        19
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        20
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        21
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        22
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        23
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        24
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        25
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        26
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        27
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        28
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        29
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        30
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        31
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        32
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        34
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        35
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        36
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        37
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        38
+      ],
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        3
+      ],
+      [
+        "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+        1
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+        1
+      ]
+    ],
+    "max_records": 2500000,
+    "pages": 43,
+    "records": 16266,
+    "counts": {
+      "solid_straight_lines": 7131,
+      "segments": 17326,
+      "no_eligible_linework": 38,
+      "curved_lines_deferred": 3814,
+      "dashed_or_unknown_lines_deferred": 2170,
+      "intersection_pairs": 15861,
+      "cut_edges": 515,
+      "dangles": 16324,
+      "invalid_rings": 0,
+      "small_faces_deferred": 279,
+      "recovered_faces": 906,
+      "enclosed_faces_only": 5
+    },
+    "source_documents": [
+      "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb"
+    ],
+    "output_sha256": {
+      "boundary-candidates.jsonl": "f336e5e5cdbc9e7b72314fb2f6262b98287734775f0b133144f803aa0dd2a9e1",
+      "polygon-candidates.jsonl": "29b35a2df32b73c8e1b4b17b6c10fdf258f8929724255d6cf6285a8e3b4a32f4",
+      "page-recovery.jsonl": "bcb9bc5e1111c36b83eacd3ed01a36aff58db48af61eb887169787fcbc334930"
+    },
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Enclosed linework is not a verified physical footprint or fill",
+      "No endpoint snapping, gap filling or automatic state/material acceptance",
+      "Curved and dashed lines are withheld from recovery"
+    ]
+  },
+  "placement": {
+    "version": "mapped-sheet-placement-v3",
+    "candidate_sha256": "f336e5e5cdbc9e7b72314fb2f6262b98287734775f0b133144f803aa0dd2a9e1",
+    "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+    "reference_crs": "EPSG:4326",
+    "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "sheets": [
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        4
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        5
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        6
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        7
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        8
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        9
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        10
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        11
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        12
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        13
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        14
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        15
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        16
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        17
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        18
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        19
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        20
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        21
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        22
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        23
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        24
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        25
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        26
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        27
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        28
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        29
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        30
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        31
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        32
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        34
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        35
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        36
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        37
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        38
+      ],
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        3
+      ],
+      [
+        "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+        1
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+        1
+      ]
+    ],
+    "max_seed_fits": 512,
+    "min_iou": 0.7,
+    "tolerance_m": 10.0,
+    "max_records": 2500000,
+    "counts": {
+      "candidates_checked": 16266,
+      "page_cache_computed": 43,
+      "withheld": 43,
+      "seed_fit_attempts": 4333,
+      "orientation_trial_attempts": 13116
+    },
+    "source_documents": [
+      "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb"
+    ],
+    "output_sha256": {
+      "sheet-placements.jsonl": "52c2cdbd68df76beddb16636e8be6ef6c537163fd1dcc2b8859f9d3b2733e062",
+      "placed-review-geometry.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "status": "provisional_map_review_only",
+    "world_geometry_additions": 0
+  },
+  "sheet_status_counts": {
+    "withheld": 43
+  },
+  "identical_completed_resume": true,
+  "verified_world_geometry_additions": 0,
+  "world_export_status": "withheld; no independently verified registration or physical feature promotion",
+  "remaining_requirements": [
+    "Separate pre-construction existing plans, proposed ride and later amendments",
+    "Review physical identities, line roles and construction revisions",
+    "Three noncollinear controls and two separately sourced checkpoints with exact attachment points",
+    "Measured widths/heights/materials and valid terrain/ride elevation evidence",
+    "Compile accepted features, export bounded world and read back saved blocks"
+  ],
+  "focused_tests": {
+    "count": 24,
+    "status": "passed",
+    "command": "python -m unittest tests.test_wicker_registration tests.test_wicker_reconstruction tests.test_mapped_sheet_placement tests.test_linework_boundaries"
+  }
+}
