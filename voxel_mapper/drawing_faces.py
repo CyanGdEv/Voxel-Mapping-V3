@@ -17,7 +17,11 @@ from .raster_faces import review as raster_review, VERSION as RASTER_VERSION, BA
 
 from .raster_boundaries import VERSION as BOUNDARY_VERSION
 
-VERSION='material-anchor-faces-v3'
+from .contrast_boundaries import VERSION as CONTRAST_VERSION
+
+from .drawing_views import page_labels, page_references, attach_metrics, cross_links, VERSION as VIEW_VERSION
+
+VERSION='material-anchor-faces-v4'
 
 
 def face_matches(candidates,point):
@@ -103,7 +107,7 @@ def run(documents_file,output,*,max_pages=10000):
         pdf=(path.parent/item['file']).resolve()
         if pdf.stat().st_size>20000000 or file_hash(pdf)!=item['sha256'] or item['sha256'] in seen:raise ValueError('Distinct bounded pinned PDFs required')
         seen.add(item['sha256']);resolved.append((pdf,item))
-    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'raster_version':RASTER_VERSION,'boundary_version':BOUNDARY_VERSION,'raster_backends':RASTER_BACKENDS,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
+    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'raster_version':RASTER_VERSION,'boundary_version':BOUNDARY_VERSION,'contrast_version':CONTRAST_VERSION,'view_version':VIEW_VERSION,'raster_backends':RASTER_BACKENDS,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
     output=Path(output)
     if output.exists():
         report=json.loads((output/'face-report.json').read_text())
@@ -113,24 +117,36 @@ def run(documents_file,output,*,max_pages=10000):
         return report
     partial=output.with_name(output.name+'.partial')
     if partial.exists():raise ValueError('Incomplete face run; use a fresh directory')
-    partial.mkdir(parents=True);pages=[];counts=Counter();boundary_counts=Counter();total=0;face_count=0;glyph_checks=0;glyph_passes=0;resolved_visibility_hazards=0
-    with (partial/'face-associations.jsonl').open('w') as associations,(partial/'face-candidates.jsonl').open('w') as geometry,(partial/'page-reviews.jsonl').open('w') as reviews:
+    partial.mkdir(parents=True);pages=[];view_pages=[];counts=Counter();boundary_counts=Counter();contrast_counts=Counter();total=0;face_count=0;glyph_checks=0;glyph_passes=0;resolved_visibility_hazards=0
+    with (partial/'drawing-view-pages.jsonl').open('w') as view_reviews,(partial/'face-associations.jsonl').open('w') as associations,(partial/'face-candidates.jsonl').open('w') as geometry,(partial/'page-reviews.jsonl').open('w') as reviews:
         for pdf,item in resolved:
             with pymupdf.open(pdf) as document:
                 if len(document)>1000 or len(pages)+len(document)>max_pages:raise ValueError('Face page budget exceeded')
                 for n,page in enumerate(document,1):
                     try:records,faces,review=page_faces(page,item['sha256'],n)
                     except ValueError as error:records=[];faces=[];review={'document_sha256':item['sha256'],'page':n,'status':'withheld','reason':str(error)}
+                    try:
+                        labels=page_labels(page,review.get('raster_review',{}).get('atlas',{}).get('artwork_review_windows',[]),sheet_metadata=item)
+                        references=page_references(page,sheet_metadata=item)
+                        attach_metrics(page,records,labels)
+                    except ValueError as error:
+                        labels={'status':'withheld','reason':str(error)};references={}
+                    view_pages.append((item['sha256'],n,labels,references))
+                    view_reviews.write(json.dumps({'document_sha256':item['sha256'],'page':n,'view_labels':labels,'plan_references':references},sort_keys=True)+'\n')
                     for r in records:
                         associations.write(json.dumps(r,sort_keys=True)+'\n');counts[r['status']]+=1
                         boundary_counts[r.get('raster_boundary_review',{}).get('status','not_reviewed')]+=1
+                        contrast_counts[r.get('raster_contrast_boundary_review',{}).get('status','not_reviewed')]+=1
                         resolved_visibility_hazards+=int(r.get('original_callout_status')=='withheld_label_or_legend_visibility' and r.get('glyph_screen_status')=='raster_consistent_candidate')
                     for f in faces:geometry.write(json.dumps(f,sort_keys=True)+'\n')
                     total+=len(records);face_count+=len(faces);glyph_checks+=review.get('glyph_checks',0);glyph_passes+=review.get('glyph_screen_passes',0)
                     reviews.write(json.dumps(review,sort_keys=True)+'\n');pages.append({k:v for k,v in review.items() if k!='glyph_screens'})
-    report={'status':'unplaced_face_association_evidence','contract':contract,'pages':pages,'anchor_records':total,
-            'raster_boundary_statuses':dict(boundary_counts),'unclassified_enclosed_face_candidates':face_count,'face_statuses':dict(counts),'glyph_checks':glyph_checks,'glyph_screen_passes':glyph_passes,'resolved_callout_visibility_hazards':resolved_visibility_hazards,
-            'output_sha256':{name:file_hash(partial/name) for name in ('face-associations.jsonl','face-candidates.jsonl','page-reviews.jsonl')},
+    links=cross_links(view_pages)
+    with (partial/'view-links.jsonl').open('w') as stream:
+        for link in links:stream.write(json.dumps(link,sort_keys=True)+'\n')
+    report={'view_link_statuses':dict(Counter(link['status'] for link in links)),'status':'unplaced_face_association_evidence','contract':contract,'pages':pages,'anchor_records':total,
+            'raster_contrast_statuses':dict(contrast_counts),'raster_boundary_statuses':dict(boundary_counts),'unclassified_enclosed_face_candidates':face_count,'face_statuses':dict(counts),'glyph_checks':glyph_checks,'glyph_screen_passes':glyph_passes,'resolved_callout_visibility_hazards':resolved_visibility_hazards,
+            'output_sha256':{name:file_hash(partial/name) for name in ('face-associations.jsonl','face-candidates.jsonl','page-reviews.jsonl','drawing-view-pages.jsonl','view-links.jsonl')},
             'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0,
             'limitations':['A unique enclosed face is a candidate, not proof of physical component or opening identity.',
                            'Raster glyph checks resolve a screening hazard, not material/as-built or national-grid verification.',

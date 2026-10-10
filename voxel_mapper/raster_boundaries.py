@@ -80,12 +80,17 @@ def stroke_families(gray, threshold):
     return edit, families
 
 
-def prepare(gray, group):
+def crop_window(gray, group):
     bbox=group['bbox_page_points'];h,w=gray.shape
     x0=max(0,int(np.floor(bbox[0]*ZOOM))-16);y0=max(0,int(np.floor(bbox[1]*ZOOM))-16)
     x1=min(w,int(np.ceil(bbox[2]*ZOOM))+16);y1=min(h,int(np.ceil(bbox[3]*ZOOM))+16)
     crop=gray[y0:y1,x0:x1]
     if not crop.size or crop.size>MAX_WINDOW_PIXELS or max(crop.shape)>4096:raise ValueError('Hatch review window budget exceeded')
+    return crop,(x0,y0)
+
+
+def prepare(gray, group):
+    crop,(x0,y0)=crop_window(gray,group)
     variants=[];receipts=[]
     for threshold in LINE_THRESHOLDS:
         mask,families=stroke_families(crop,threshold)
@@ -99,7 +104,7 @@ def prepare(gray, group):
                          'variants':receipts,'source_boundary_identity_verified':False}
 
 
-def audit(prepared, point):
+def audit(prepared, point, *, edit_masks=None):
     crop,variants,receipt=prepared;x0,y0=receipt['origin_atlas_pixels']
     seed=(int(np.floor(point[0]*ZOOM))-x0,int(np.floor(point[1]*ZOOM))-y0)
     result={'version':VERSION,'accepted_feature':False,'world_geometry_additions':0,
@@ -134,7 +139,11 @@ def audit(prepared, point):
     result['extent_completeness_verified']=False
     result['extent_ambiguity']='boundary_near_periodic_strokes' if result['periodic_stroke_boundary_fraction_candidate']>.02 else 'physical_extent_unverified'
     # Flat dark areas may be shadows, coatings or ground. Keep their semantic ambiguity explicit.
-    removed=(variants[0]!=crop)|(variants[1]!=crop)
+    if edit_masks is not None:
+        if len(edit_masks)!=2 or any(mask.shape!=crop.shape or mask.dtype!=bool for mask in edit_masks):
+            raise ValueError('Source-aligned edit masks required')
+        removed=edit_masks[0]|edit_masks[1]
+    else:removed=(variants[0]!=crop)|(variants[1]!=crop)
     dark_flat=(crop<208) & ~ndimage.binary_dilation((crop<128)|removed,iterations=2)
     result['dark_fill_fraction_candidate']=float((masks[0]&dark_flat).sum()/masks[0].sum())
     if result['original_ink_boundary_support']<.98:

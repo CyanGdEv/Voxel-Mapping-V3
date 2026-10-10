@@ -1,0 +1,215 @@
+{
+  "contract": {
+    "version": "material-anchor-faces-v4",
+    "glyph_screen_version": "source-font-glyph-raster-screen-v1",
+    "raster_version": "raster-anchor-regions-v3",
+    "boundary_version": "periodic-hatch-boundaries-v1",
+    "contrast_version": "local-contrast-boundaries-v1",
+    "view_version": "native-drawing-view-links-v1",
+    "raster_backends": {
+      "numpy": "1.26.4",
+      "scipy": "1.17.0",
+      "rasterio": "1.4.4"
+    },
+    "pymupdf_version": "1.26.6",
+    "documents_sha256": "9b63b53c598f90636a3d01cd6477b24abd6d6db2071ef3e0a19b6e0b99c0e9ba",
+    "pdf_sha256": [
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+    ],
+    "max_pages": 10000
+  },
+  "anchor_records": 23,
+  "raster_contrast_statuses": {
+    "unverified_contrast_boundary_candidate": 17,
+    "withheld_contrast_mixed_material_anchors": 2,
+    "withheld_hatch_suppression_region": 4
+  },
+  "raster_boundary_statuses": {
+    "withheld_hatch_suppression_region": 18,
+    "unverified_hatch_suppressed_boundary_candidate": 5
+  },
+  "view_link_statuses": {
+    "unique_unverified_plan_elevation_reference": 7,
+    "withheld_nonunique_or_missing_view_target": 1
+  },
+  "output_sha256": {
+    "face-associations.jsonl": "c6817268c53e8fc4d6f102991d9b7cfeb4310ded9abfa1c6ba90a2086acea332",
+    "face-candidates.jsonl": "de6f3ccadaec0487e48c9456d529bfd9104c766b6f1c00c3c329fccf501815f6",
+    "page-reviews.jsonl": "7096e5a4cbf37b7c71a7cd48a377e0cfcf023def5ddf0cddc19fd46bae41a1ae",
+    "drawing-view-pages.jsonl": "2886e2c6f134df860cfc3c713314d0e3a1107127d6114fd9172ab269dfd9f66f",
+    "view-links.jsonl": "fcc67be314061919093f29cded529890d7d80399daae83170648cc3986324275"
+  },
+  "unclassified_enclosed_face_candidates": 2040,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "status": "unplaced_shop_source_geometry_review",
+  "shop_candidate_classes": {
+    "roof_surface": 3,
+    "wall_face": 5
+  },
+  "all_candidate_classes": {
+    "roof_surface": 6,
+    "wall_face": 11
+  },
+  "shop_nominal_measurements": [
+    {
+      "view": [
+        "2967",
+        26,
+        1
+      ],
+      "material_number": "1",
+      "class_candidate": "roof_surface",
+      "area_m2": 59.750104513888886,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 3.615972222222222,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 16.68638888888889
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        1
+      ],
+      "material_number": "2",
+      "class_candidate": "wall_face",
+      "area_m2": 25.889782947530865,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 1.6404166666666666,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 15.804444444444444
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        1
+      ],
+      "material_number": "3",
+      "class_candidate": "wall_face",
+      "area_m2": 5.944146315586419,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 1.0406944444444444,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 15.786805555555555
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        3
+      ],
+      "material_number": "1",
+      "class_candidate": "roof_surface",
+      "area_m2": 60.82412665895061,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 3.7041666666666666,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 16.68638888888889
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        3
+      ],
+      "material_number": "2",
+      "class_candidate": "wall_face",
+      "area_m2": 36.655517091049376,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 2.9456944444444444,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 15.804444444444444
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        3
+      ],
+      "material_number": "3",
+      "class_candidate": "wall_face",
+      "area_m2": 3.517018055555555,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 0.5820833333333333,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 13.493749999999999
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        4
+      ],
+      "material_number": "1",
+      "class_candidate": "roof_surface",
+      "area_m2": 19.913590200617282,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 3.1220833333333333,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 11.641666666666666
+    },
+    {
+      "view": [
+        "2967",
+        26,
+        4
+      ],
+      "material_number": "4",
+      "class_candidate": "wall_face",
+      "area_m2": 0.6496402777777777,
+      "depth_verified": false,
+      "height_datum_verified": false,
+      "height_m": 1.0583333333333333,
+      "limitations": [
+        "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+      ],
+      "scale_verified": false,
+      "width_m": 1.3229166666666665
+    }
+  ],
+  "focused_tests_passed": 67,
+  "source_output_hashes_verified": true,
+  "all_candidate_polygons_valid": true,
+  "shop_overlay_visually_reviewed": true,
+  "archive_sha256": "c9cfa50b595acdd3ada252f281da4fa5b71d81a3f5ae2595a594fa94862fd448",
+  "physical_face_identity_verified": false,
+  "scale_verified": false,
+  "absolute_registration_verified": false,
+  "vertical_datum_verified": false
+}

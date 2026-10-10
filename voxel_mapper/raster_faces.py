@@ -14,7 +14,7 @@ from scipy import ndimage
 from rasterio.features import shapes
 from affine import Affine
 
-VERSION = 'raster-anchor-regions-v2'
+VERSION = 'raster-anchor-regions-v3'
 ZOOM = 2
 THRESHOLDS = (176, 192, 208, 216)
 MAX_PIXELS = 20000000
@@ -192,7 +192,9 @@ def review(page, records):
     groups = artwork_groups(gray)
     receipt['artwork_review_windows'] = groups
     from .raster_boundaries import prepare, audit, VERSION as BOUNDARY_VERSION
+    from .contrast_boundaries import prepare as contrast_prepare, audit as contrast_audit, VERSION as CONTRAST_VERSION
     counts = {}; boundary_counts={}; prepared={}; boundary_receipts={}
+    contrast_counts={}; contrast_prepared={}; contrast_receipts={}
     for record in eligible:
         proposal = propose(gray, record['target_page_point'])
         x,y=record['target_page_point']
@@ -215,9 +217,32 @@ def review(page, records):
             if prepared[identity] is not None:boundary=audit(prepared[identity],record['target_page_point'])
             else:boundary={'status':'withheld_hatch_review_window','reason':boundary_receipts[identity]['reason'],
                            'accepted_feature':False,'world_geometry_additions':0}
+        contrast={'version':CONTRAST_VERSION,'status':'withheld_ambiguous_artwork_review_window',
+                  'accepted_feature':False,'world_geometry_additions':0}
+        if len(ids)==1:
+            identity=ids[0]
+            if identity not in contrast_prepared:
+                try:
+                    contrast_prepared[identity]=contrast_prepare(gray,next(g for g in groups if g['id']==identity))
+                    contrast_receipts[identity]=contrast_prepared[identity][0][2]
+                except ValueError as error:
+                    contrast_prepared[identity]=None
+                    contrast_receipts[identity]={'status':'withheld','reason':str(error),'artwork_review_window_id':identity}
+            if contrast_prepared[identity] is not None:contrast=contrast_audit(contrast_prepared[identity],record['target_page_point'])
+            else:contrast={'status':'withheld_contrast_review_window','reason':contrast_receipts[identity]['reason'],
+                           'accepted_feature':False,'world_geometry_additions':0}
+        record['raster_contrast_boundary_review']=contrast
+        contrast_counts[contrast['status']]=contrast_counts.get(contrast['status'],0)+1
         record['raster_boundary_review']=boundary
         boundary_counts[boundary['status']]=boundary_counts.get(boundary['status'],0)+1
         counts[proposal['status']] = counts.get(proposal['status'], 0)+1
+    from .contrast_boundaries import check_material_regions
+    check_material_regions(records)
+    contrast_counts={}
+    for record in eligible:
+        status=record['raster_contrast_boundary_review']['status']
+        contrast_counts[status]=contrast_counts.get(status,0)+1
     return {'status': 'unplaced_raster_review', 'atlas': receipt, 'region_statuses': counts,
+            'contrast_statuses':contrast_counts,'contrast_review_windows':list(contrast_receipts.values()),
             'boundary_statuses':boundary_counts,'boundary_review_windows':list(boundary_receipts.values()),
             'world_geometry_additions': 0}
