@@ -13,7 +13,9 @@ from .drawing_page_tools import native_inverse
 from .linework_boundaries import recover_page
 from .glyph_visibility import screen_span,VERSION as GLYPH_VERSION
 
-VERSION='material-anchor-faces-v1'
+from .raster_faces import review as raster_review, VERSION as RASTER_VERSION, BACKENDS as RASTER_BACKENDS
+
+VERSION='material-anchor-faces-v2'
 
 
 def face_matches(candidates,point):
@@ -79,10 +81,11 @@ def page_faces(page,sha,page_number):
             record['opening_count_candidate']=len(shape(matches[0]['geometry']).interiors)
             record['opening_identity_verified']=False
         elif matches:record['status']='withheld_ambiguous_enclosed_faces'
-        elif record['raster_dependencies']:record['status']='withheld_raster_face_adapter_required'
+        elif record['raster_dependencies']:record['status']='withheld_raster_face_identity'
         else:record['status']='withheld_no_supported_face'
         records.append(record);counts[record['status']]+=1
-    return records,faces,{'document_sha256':sha,'page':page_number,'callout_extraction':callout_report,
+    raster_receipt=raster_review(page,records)
+    return records,faces,{'raster_review':raster_receipt,'document_sha256':sha,'page':page_number,'callout_extraction':callout_report,
                'geometry_extraction':extraction,'linework_recovery':recovery,'face_statuses':dict(counts),
                'glyph_screen_version':GLYPH_VERSION,'glyph_screens':screens,'glyph_checks':len(screens),
                'glyph_screen_passes':sum(s['status']=='raster_consistent_candidate' for s in screens.values()),
@@ -98,7 +101,7 @@ def run(documents_file,output,*,max_pages=10000):
         pdf=(path.parent/item['file']).resolve()
         if pdf.stat().st_size>20000000 or file_hash(pdf)!=item['sha256'] or item['sha256'] in seen:raise ValueError('Distinct bounded pinned PDFs required')
         seen.add(item['sha256']);resolved.append((pdf,item))
-    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
+    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'raster_version':RASTER_VERSION,'raster_backends':RASTER_BACKENDS,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
     output=Path(output)
     if output.exists():
         report=json.loads((output/'face-report.json').read_text())
@@ -128,7 +131,7 @@ def run(documents_file,output,*,max_pages=10000):
             'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0,
             'limitations':['A unique enclosed face is a candidate, not proof of physical component or opening identity.',
                            'Raster glyph checks resolve a screening hazard, not material/as-built or national-grid verification.',
-                           'Embedded image tiles require a raster face adapter; tile rectangles are never promoted to component boundaries.',
+                           'Raster regions require physical boundary, clipping and view verification; tile rectangles are never component boundaries.',
                            'View identity, dimensions/depth, revision state, vertical datum and independent registration remain required.']}
     (partial/'face-report.json').write_text(json.dumps(report,indent=2)+'\n');partial.replace(output);return report
 

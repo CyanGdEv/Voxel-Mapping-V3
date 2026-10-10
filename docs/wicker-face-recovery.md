@@ -71,3 +71,26 @@ The retained report and associations are in `evidence/wicker-face-recovery-repor
 Focused tests cover visible glyphs, erased glyphs, dark covers, unknown fonts, raster budgets, restoration of rotation, polygon interiors, boundary-point rejection, nested-face ambiguity, unique-face withholding, original image/pixel transforms, checksum/cache corruption and exclusion of face evidence from feature feeds. Existing annotation, callout and linework tests also pass.
 
 The previous 15 wall-legend visibility holds are resolved at the screening stage. Complete real roof/wall faces are still unresolved because the artwork is rasterized. Independent registration checkpoints, a verified vertical datum, drawing-state evidence and component dimensions remain necessary for correctly placed world geometry. This change does not produce a real Wicker world preview.
+
+## Raster adapter first stage
+
+`material-anchor-faces-v2` now runs `raster-anchor-regions-v1` on glyph-screened material anchors. It reconstructs an image-only grayscale atlas at two pixels per PDF point, in unrotated page coordinates. Cardinal rotations and horizontal reflections are replayed explicitly; overlapping image occurrences retain source paint order. Each occurrence retains its original image hash, affine and xref. Native text and vector annotation leaders are excluded. Source clipping and optional-layer visibility remain unverified, so the atlas is evidence, not a certified rendering of physical components.
+
+The shop and maintenance sheets each reconstruct 85 image occurrences. Coarse ink-proximity grouping produces six shop and seven maintenance artwork review windows. These include unrelated artwork such as material swatches and logos: their rectangles are neither certified drawing views nor building faces. Each material anchor retains all containing review-window IDs, without nearest-window assignment.
+
+The region screen uses four-connected pixels at fixed gray thresholds 176, 192, 208 and 216. An anchor must remain inside a broad, bounded region at every threshold, with at least 98% intersection-over-union stability. Dark anchor hits, narrow strips, window-edge leaks, disconnected intersections and excessive boundary complexity are withheld. The common pixel region is polygonized without gap closing or inferred boundary repair; interior rings survive as unverified opening candidates. This screen does **not** remove hatch strokes or distinguish physical boundaries from shadows.
+
+| Real replay result | Count |
+| --- | ---: |
+| Material anchors reviewed | 23 |
+| Stable, unverified pixel-region candidates | 3 |
+| Unstable or unbounded regions withheld | 20 |
+| Verified physical faces / world additions | 0 / 0 |
+
+Two stable regions are on the shop sheet and one on maintenance. Stability alone does not establish complete faces. The next extraction work must distinguish hatch patterns, shadow edges and physical outlines, establish drawing-view identity, and check the proposed openings. Dimensions, drawing state, independent registration and a verified vertical datum still gate world placement.
+
+Budgets limit the atlas to 20 million pixels, 1,000 image occurrences, 100 million total source pixels and 100 MB total extracted image bytes. Individual images are bounded to 20 million pixels and 20 MB. Region windows have a maximum radius of 160 PDF points and polygons are limited to 4,096 vertices. Cropped pages, skew transforms, inline images and masks receive explicit withheld receipts. NumPy, SciPy, rasterio and MuPDF versions enter the completed-run contract. Install the `planning` extra for SciPy and MuPDF.
+
+The existing face CLI and park configuration activate this stage automatically. Each association now includes `raster_region_review`; each page receipt contains atlas provenance and artwork review windows. Candidates remain inside evidence records and never enter feature feeds. Retained replay files are `evidence/wicker-raster-face-report.json`, `wicker-raster-face-associations.jsonl`, `wicker-raster-face-page-reviews.jsonl`, `wicker-raster-enclosed-face-candidates.jsonl` and `wicker-raster-face-validation.json`.
+
+All 44 focused tests pass. Raster tests cover tile seams, original page rotation, mirrored placements, overlap paint order, annotation exclusion, pixel budgets, stable-region holes, hatch strips, background/window leaks, dark seeds, threshold instability and exclusion of artwork windows from face geometry. The real replay's output checksums and zero placement counts were independently checked.

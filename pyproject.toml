@@ -34,7 +34,7 @@ voxel-planning-archive = "voxel_mapper.planning_archive:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 
 [project.optional-dependencies]
-planning = ["PyMuPDF>=1.26,<2"]
+planning = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2"]
 
 [tool.setuptools.packages.find]
 include = ["voxel_mapper*"]

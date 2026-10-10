@@ -30,7 +30,7 @@ class FaceTests(unittest.TestCase):
 
     def evaluate(self,candidates,raster=None,visible=True):
         page=Page();callouts,receipt=page_callouts(page,'a'*64,1)
-        with patch('voxel_mapper.drawing_faces.page_callouts',return_value=(callouts,receipt)),patch('voxel_mapper.drawing_faces.extract_page',return_value=(['parent'],{})),patch('voxel_mapper.drawing_faces.recover_page',return_value=(candidates,{})),patch('voxel_mapper.drawing_faces.native_inverse',return_value=pymupdf.Matrix(1,1)),patch('voxel_mapper.drawing_faces.screen_span',return_value={'status':'raster_consistent_candidate' if visible else 'withheld'}),patch('voxel_mapper.drawing_faces.raster_references',return_value=raster or []):
+        with patch('voxel_mapper.drawing_faces.page_callouts',return_value=(callouts,receipt)),patch('voxel_mapper.drawing_faces.extract_page',return_value=(['parent'],{})),patch('voxel_mapper.drawing_faces.recover_page',return_value=(candidates,{})),patch('voxel_mapper.drawing_faces.native_inverse',return_value=pymupdf.Matrix(1,1)),patch('voxel_mapper.drawing_faces.screen_span',return_value={'status':'raster_consistent_candidate' if visible else 'withheld'}),patch('voxel_mapper.drawing_faces.raster_references',return_value=raster or []),patch('voxel_mapper.drawing_faces.raster_review',return_value={}):
             return page_faces(page,'a'*64,1)
 
     def test_unique_face_candidate_never_promoted(self):
@@ -43,7 +43,7 @@ class FaceTests(unittest.TestCase):
 
     def test_raster_dependency_and_failed_visibility_withheld(self):
         records,_,_=self.evaluate([],raster=[{'xref':1}])
-        self.assertEqual(records[0]['status'],'withheld_raster_face_adapter_required')
+        self.assertEqual(records[0]['status'],'withheld_raster_face_identity')
         self.assertNotIn('face_candidate_id',records[0])
         records,_,_=self.evaluate([face(box(0,0,100,100))],visible=False)
         self.assertEqual(records[0]['status'],'withheld_glyph_visibility')
