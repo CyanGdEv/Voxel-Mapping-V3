@@ -47,3 +47,29 @@ def compare(gaps, openings, native_matrix, layout_inverse, unit, sampling_bound,
                         'layout_correction_is_provisional': True, 'physical_opening_verified': False,
                         'world_geometry_additions': 0})
     return results
+
+
+def cap_corner_options(endcaps, opening, native_matrix, unit, sampling_bound):
+    """Retain every source cap-corner pairing; do not select a physical wall face."""
+    if len(endcaps) != 2:
+        raise ValueError('Two source endcaps required')
+    if not all(math.isfinite(x) and x > 0 for x in (unit, sampling_bound)):
+        raise ValueError('Finite positive corner comparison scale and bound required')
+    a, b, c, d, e, f = native_matrix
+    if not all(math.isfinite(x) for x in native_matrix) or a*d-b*c == 0:
+        raise ValueError('Finite invertible native coordinate matrix required')
+    caps = [np.asarray(cap['source_endpoints'], dtype=float) @ np.array([[a, b], [c, d]]) + [e, f] for cap in endcaps]
+    target = np.asarray(opening['raw_native_endpoints'], dtype=float)
+    if target.shape != (2, 2) or any(cap.shape != (2, 2) for cap in caps) or not np.isfinite(target).all() or any(not np.isfinite(cap).all() for cap in caps):
+        raise ValueError('Finite source corner pairs required')
+    result = []
+    for order in (1, -1):
+        for left in range(2):
+            for right in range(2):
+                points = np.array([caps[0][left], caps[1][right]])
+                residual = float(np.max(np.linalg.norm(points-target[::order], axis=1))) * unit
+                result.append({'cap_corner_indices': [left, right], 'reviewed_endpoint_order': order,
+                               'native_source_points': points.tolist(), 'maximum_residual_nominal_m': residual,
+                               'within_manual_endpoint_sampling_bound': residual <= sampling_bound,
+                               'physical_wall_face_identity_verified': False})
+    return result

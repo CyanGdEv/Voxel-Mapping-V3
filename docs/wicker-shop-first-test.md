@@ -136,3 +136,31 @@ python scripts/review_wicker_opening_correspondence.py \
 ```
 
 The real replay and repeated receipt are byte-identical. Five new tests cover spatial rather than width-only matching, native coordinate conversion, directional scaling, reversed endpoints, sampling-bound flags, ambiguous traces and invalid input rejection. Next: recover the northeast and side-door boundary pairs across separate fill paints, resolve the southwest transverse endpoint discrepancy, and measure elevation opening extents before automatic shell assembly. World additions remain zero.
+
+## Exact facing-endcap recovery
+
+The endcap pass recovers candidates beside the two missing shop openings. The cause was complex multipart wall polygons, not absent source geometry: the northeast wall and northwest door contain short exposed end edges, but their enclosing polygons fail the earlier simple-strip screen.
+
+`exact-fill-endcap-pairs-v1` retains short exterior edges (nominally 0.08–1 m), checks an inward source-polygon containment probe extending one cap width, and considers facing edges on distinct polygon parts with the same fill colour. Different paints may also be paired. Caps must oppose within 0.5 degrees, differ in transverse centre/width by at most one PDF point, and leave a nominal gap of 0.08–8 m. Each source edge, polygon part, parent fill identity, exact endpoints and support probe are retained. A 1e-7-point inset applies only to the containment probe to avoid boundary roundoff; source edges and corridor corners remain unchanged. Source-fill overlap exceeding 1e-9 of corridor area rejects a pair; other retained fills remain visibility-review flags. No source polygon is bridged or changed.
+
+The search inspects 115 supported endcaps and yields 24 unclassified facing pairs. Comparing their positions with the reproduced manual shop traces retains one candidate at each of the three reviewed openings. Other drafting candidates remain unassigned. These positions establish review correspondence hypotheses, not physical openings.
+
+| Reviewed opening | Layout-normalized cap-centre span | Best source-corner endpoint discrepancy | Manual normalized span |
+| --- | ---: | ---: | ---: |
+| Northeast | 4.9993 m | 0.0156 m | 4.9863 m |
+| Southwest | 4.9960 m | 0.0302 m | 5.0210 m |
+| Northwest door | 1.0110 m | 0.1345 m | 0.9008 m |
+
+All eight combinations of the two corners on each cap and both endpoint orders are retained. The lowest discrepancies are summaries for review; no physical wall face is selected. The northeast and southwest corner options fall within the manual per-endpoint sampling bound (0.1260 m), explaining much of the earlier cap-centre discrepancy. The northwest door remains outside it and its span differs by about 0.1102 m. Neither discrepancy is repaired by changing endpoints. The associated manually traced elevation head heights remain explicitly conditional; this pass does not measure independent elevation opening widths.
+
+Enable the additional channel without changing the original multipart-strip receipt:
+
+```sh
+python scripts/review_wicker_opening_correspondence.py --endcaps \
+  --pdf-directory /path/to/checksum-named-pdfs \
+  --output evidence/wicker-shop-endcap-correspondence.json
+```
+
+Replays reproduce original PDFs/fills, manual floor traces, and layout anchors before comparison. The final new receipt repeats byte-identically; the older default opening receipt remains byte-identical. Budgets cap input fills, inspected vertices, caps, comparison/overlap operations and results. Reordered fill inputs produce identical outputs. Six focused tests cover separate paints, complex multipart returns, rotations, masks/offsets/material differences, budgets/duplicate identities, and retention of all corner alternatives.
+
+Next: review the northwest door's actual reveal/outer-face endpoints and recover elevation opening extents from source geometry. Accepted wall-face identity, complete shell topology, as-built state and geographic placement remain unresolved. Zero world geometry is added.

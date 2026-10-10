@@ -12,7 +12,9 @@ from normalize_wicker_floor_scale import review as layout_review, FLOOR, ROOF
 from trace_wicker_shop_floor import trace
 from build_wicker_shop_walls import build, SOURCE as ELEVATION
 from voxel_mapper.drawing_page_tools import native_inverse
-from voxel_mapper.opening_correspondence import compare, VERSION
+from voxel_mapper.opening_correspondence import compare, cap_corner_options, VERSION
+from voxel_mapper.fill_endcaps import recover as recover_endcaps
+from voxel_mapper.clipped_plan_fills import recover as recover_fills
 
 
 def numerically_equal(a, b):
@@ -25,7 +27,7 @@ def numerically_equal(a, b):
     return a == b
 
 
-def run(pdf_directory):
+def run(pdf_directory, endcaps=False):
     root = Path(pdf_directory)
     pdf = lambda sha: root / (sha + '.pdf')
     floor = trace(pdf(FLOOR), 'evidence/wicker-shop-floor-annotations.json', 'evidence/wicker-shop-local-roof.json')
@@ -42,21 +44,34 @@ def run(pdf_directory):
     if len(floor_pages) != 1:
         raise ValueError('Unique pinned floor gap page required')
     gaps = floor_pages[0]['gaps']
+    cap_report = None
     with pymupdf.open(pdf(FLOOR)) as doc:
         matrix = list(native_inverse(doc[0]))
+        if endcaps:
+            cap_report = recover_endcaps(recover_fills(doc[0], FLOOR, 1)['candidates'], 100 * .0254 / 72)
+            gaps = cap_report['gaps']
     records = compare(gaps, floor['openings'], matrix, layout['floor_to_roof_linear_matrix'],
                       100 * .0254 / 72, floor['per_endpoint_sampling_bound_metres'])
     associations = {'opening-SW': 'SW-opening', 'opening-NE': 'NE-opening', 'door-NW': 'NW-door'}
-    for record in records:
+    for record, gap in zip(records, gaps):
+        if endcaps:
+            record['source_gap_candidate_id'] = gap['id']
         for match in record['reviewed_trace_candidates']:
             key = associations[match['reviewed_opening_id']]
             match['reviewed_elevation_height_trace'] = walls['vertical_measurements'][key]
             match['height_assignment_status'] = 'conditional_on_unverified_plan_to_elevation_association'
+            if endcaps:
+                opening = next(o for o in floor['openings'] if o['id'] == match['reviewed_opening_id'])
+                match['source_cap_corner_options'] = cap_corner_options(gap['source_endcaps'], opening, matrix,
+                    100 * .0254 / 72, floor['per_endpoint_sampling_bound_metres'])
+                normalized = next(o for o in layout['normalized_openings'] if o['id'] == opening['id'])
+                match['reviewed_width_layout_normalized_m'] = normalized['normalized_width_metres']
+                match['normalized_width_minus_reviewed_trace_m'] = record['layout_normalized_width_m'] - normalized['normalized_width_metres']
     inputs = ['evidence/wicker-shop-floor-annotations.json', 'evidence/wicker-shop-local-floor.json',
               'evidence/wicker-shop-local-roof.json', 'evidence/wicker-shop-floor-scale-review.json',
               'evidence/wicker-shop-vertical-annotations.json', 'evidence/wicker-shop-local-preview.json',
               'evidence/wicker-shop-clipped-fill-replay.json']
-    return {'version': VERSION, 'input_sha256': {p: hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in inputs},
+    result = {'version': VERSION, 'input_sha256': {p: hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in inputs},
             'source_pdf_sha256': [FLOOR, ROOF, ELEVATION], 'discovery_tolerance_nominal_m': .25,
             'manual_endpoint_sampling_bound_nominal_m': floor['per_endpoint_sampling_bound_metres'],
             'layout_heldout_max_residual_pdf_points': layout['heldout_max_residual_pdf_points'],
@@ -65,9 +80,13 @@ def run(pdf_directory):
                 {m['reviewed_opening_id'] for r in records for m in r['reviewed_trace_candidates']}),
             'layout_reproduction_numerical_tolerance': 1e-9,
             'records': records, 'accepted_openings': 0, 'accepted_registration_points': 0, 'world_geometry_additions': 0}
+    if endcaps:
+        result['endcap_recovery'] = cap_report
+    return result
 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--pdf-directory', required=True); p.add_argument('--output', required=True)
-    a = p.parse_args(); Path(a.output).write_text(json.dumps(run(a.pdf_directory), sort_keys=True, indent=2) + '\n')
+    p.add_argument('--endcaps', action='store_true')
+    a = p.parse_args(); Path(a.output).write_text(json.dumps(run(a.pdf_directory, a.endcaps), sort_keys=True, indent=2) + '\n')
