@@ -164,17 +164,25 @@ def run(job_path,stage='all'):
             manifest_path=destination/'manifest.json';manifest=json.loads(manifest_path.read_text())
             if bridge_report['feature_count']:bridge_feed=destination/'features.jsonl'
         for key in ('feature_records','terrain_config'):
-            if job.get(key) and (key!='terrain_config' or bridge_feed or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews') or job.get('drawing_geometry',{}).get('feature_reviews')):
+            if job.get(key) and (key!='terrain_config' or bridge_feed or job.get('local_buildings') or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews') or job.get('drawing_geometry',{}).get('feature_reviews')):
                 with path(job[key]).open('rb') as stream:pinned[key]=hashlib.file_digest(stream,'sha256').hexdigest()
         if job.get('footprint_extraction',{}).get('feature_reviews') and job.get('drawing_geometry',{}).get('feature_reviews'):raise ValueError('Use one combined extraction review list per job')
         footprint_reviews=job.get('drawing_geometry',{}).get('feature_reviews') or job.get('footprint_extraction',{}).get('feature_reviews')
         if footprint_reviews:
             with path(footprint_reviews).open('rb') as stream:pinned['footprint_reviews']=hashlib.file_digest(stream,'sha256').hexdigest()
+        building_feed=None
+        if job.get('local_buildings'):
+            from .reconstruction.local_buildings import prepare_feed
+            building_feed=root/'local-buildings/features.jsonl'
+            building_report=prepare_feed(job['local_buildings'],manifest,path,building_feed)
+            pinned['local_buildings']=building_report
+            checkpoint('local_buildings',building_report)
         previous=state['stages'].get('input_contract')
         if previous is not None and previous!=pinned:raise ValueError('Reconstruction inputs changed; use a fresh job')
         checkpoint('input_contract',pinned)
         sources={s['id']:Source(**s) for s in manifest['sources']};normalized=root/'normalized';normalized.mkdir(exist_ok=True)
         feeds=[bridge_feed] if bridge_feed else []
+        if building_feed:feeds.append(building_feed)
         for index,feed in enumerate(job.get('geometry_feeds',[])):
             output=normalized/f'feed_{index}.jsonl';metadata=output.with_suffix('.receipt.json')
             input_path=path(feed['file'])
