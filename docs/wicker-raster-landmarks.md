@@ -46,3 +46,10 @@ https://www.data.gov.uk/dataset/01b3ee39-da3f-47b6-83da-dc98e73a461f/lidar-compo
 The DTM removes surface objects; the DSM retains them. Composite product
 metadata does not prove a single local capture epoch. This pass acquires no
 new imagery and adds no world geometry.
+
+## Dated source recovered
+
+The subsequent direct-survey pass recovered the matched 2022-01-05 rasters.
+See [dated survey recovery](wicker-dated-survey.md). The mixed-mosaic audit above
+remains historical; its date limitation is resolved for the new direct crop,
+while attachment-point and physical-identity review remains pending.

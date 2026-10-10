@@ -1,0 +1,155 @@
+{
+  "status": "dated_survey_observations_only",
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9909726817279516
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "grid": {
+    "crs": "EPSG:27700",
+    "shape": [
+      149,
+      142
+    ],
+    "transform": [
+      1.0,
+      0.0,
+      407461.0,
+      0.0,
+      -1.0,
+      343627.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bounds": [
+      407461.0,
+      343478.0,
+      407603.0,
+      343627.0
+    ],
+    "resolution_m": [
+      1.0,
+      1.0
+    ]
+  },
+  "archive_sha256": {
+    "dtm": "ef7cc8cfb26b1ba8b0ee7bc625601aea3bf726ddd943b2c13a283ac75c336258",
+    "dsm": "5376c3059638f814ebc9679732a10bf1ad50dccead02dff67420a52ae60565ae"
+  },
+  "original_raster_sha256": {
+    "dtm": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493",
+    "dsm": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af"
+  },
+  "crop_sha256": {
+    "dtm": "bfff05d1fc7cf87a0b61a57982b7f281f925bdd743a238879865d7c214ead424",
+    "dsm": "8f3989943b30d5508db3939235714f6ccb423c2f60984a0514dbacd451a61808"
+  },
+  "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+  "osm_sha256": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+  "horizontal_transform_accuracy_m": 1.0,
+  "landmarks": [
+    {
+      "reference_id": "osm/way/70689589",
+      "name": "The Burger Kitchen",
+      "pixel_centres_in_outline": 58,
+      "valid_paired_pixels": 58,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 180.1300048828125,
+        "median": 180.35650634765625,
+        "max": 180.69900512695312
+      },
+      "observed_surface_odn_m": {
+        "min": 183.1120147705078,
+        "median": 183.46551513671875,
+        "max": 186.45401000976562
+      },
+      "surface_above_ground_m": {
+        "min": 2.53900146484375,
+        "median": 3.0705032348632812,
+        "max": 6.1240081787109375
+      },
+      "pixels_surface_at_least_3m_above_ground": 36,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "reference_id": "osm/way/107259863",
+      "name": "FastTrack",
+      "pixel_centres_in_outline": 26,
+      "valid_paired_pixels": 26,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 178.85000610351562,
+        "median": 179.03599548339844,
+        "max": 179.11000061035156
+      },
+      "observed_surface_odn_m": {
+        "min": 178.85000610351562,
+        "median": 182.25401306152344,
+        "max": 182.88900756835938
+      },
+      "surface_above_ground_m": {
+        "min": 0.0,
+        "median": 3.1795120239257812,
+        "max": 3.9130096435546875
+      },
+      "pixels_surface_at_least_3m_above_ground": 16,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "reference_id": "osm/way/834919978",
+      "name": "Wicker Man Shop",
+      "pixel_centres_in_outline": 213,
+      "valid_paired_pixels": 213,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 180.51400756835938,
+        "median": 182.2310028076172,
+        "max": 182.84800720214844
+      },
+      "observed_surface_odn_m": {
+        "min": 182.58401489257812,
+        "median": 187.8350067138672,
+        "max": 189.77601623535156
+      },
+      "surface_above_ground_m": {
+        "min": -0.003997802734375,
+        "median": 5.8910064697265625,
+        "max": 8.016006469726562
+      },
+      "pixels_surface_at_least_3m_above_ground": 195,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  ],
+  "local_pixel_epoch": "2022-01-05; direct matched survey rasters, no mosaic fallback",
+  "accepted_checkpoint_count": 0,
+  "registration_verified": false,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Survey epoch is established; present-day construction state is not",
+    "OSM outlines locate inspection windows and do not identify independent attachment points",
+    "Surface elevations are not floor or track rail heights",
+    "Original archives differ in byte hash from historical acquisition; current content hashes are separately pinned"
+  ],
+  "source_urls": {
+    "dtm": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+    "dsm": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540"
+  }
+}
