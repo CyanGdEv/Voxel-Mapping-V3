@@ -33,3 +33,29 @@ def elevated_regions(terrain,surface,transform,*,threshold_m=3.,min_area_m2=8.,m
         if len(regions)>=max_regions:raise ValueError('Surface-region budget exceeded; reduce crop')
         regions.append({'geometry':mapping(g),'area_m2':g.area,'status':'unclassified_elevated_pixel_region','physical_identity_verified':False,'checkpoint_attachment_verified':False,'registration_verified':False})
     return {'threshold_m':threshold_m,'minimum_region_area_m2':min_area_m2,'valid_paired_pixels':int(valid.sum()),'elevated_pixels':int(mask.sum()),'regions':regions,'world_geometry_additions':0,'limitations':['Elevated surfaces may be roofs, trees, supports or other objects','Pixel-region corners are not verified physical building corners','No snapping, interpolation or reference-footprint fitting']}
+
+
+def attachment_stability(terrain,surface,transform,references,*,thresholds=(1.5,2.,2.5,3.,3.5,4.)):
+    """Review candidates and threshold sensitivity; never accept attachment points."""
+    import math
+    from shapely.geometry import shape,mapping
+    if not isinstance(thresholds,(list,tuple)) or not 2<=len(thresholds)<=8 or len(set(thresholds))!=len(thresholds) or any(not isinstance(v,(float,int)) or not math.isfinite(v) or v<=0 for v in thresholds):raise ValueError('Two to eight distinct positive thresholds required')
+    if not isinstance(references,list) or not 1<=len(references)<=32 or len({r['id'] for r in references})!=len(references):raise ValueError('Bounded unique comparison references required')
+    result={r['id']:[] for r in references}
+    for threshold in sorted(thresholds):
+        regions=elevated_regions(terrain,surface,transform,threshold_m=threshold)
+        for reference in references:
+            candidates=[];g=reference['geometry']
+            if g.is_empty or not g.is_valid or g.geom_type!='Polygon':raise ValueError('Valid polygon comparison reference required')
+            for region in regions['regions']:
+                h=shape(region['geometry']);intersection=g.intersection(h).area
+                if intersection>0:candidates.append((intersection/g.union(h).area,h))
+            if not candidates:result[reference['id']].append({'threshold_m':threshold,'status':'no_overlapping_region'});continue
+            iou,h=max(candidates,key=lambda pair:pair[0])
+            result[reference['id']].append({'threshold_m':threshold,'status':'unreviewed_region_comparison','intersection_over_union':iou,'centroid_distance_m':g.centroid.distance(h.centroid),'region_area_m2':h.area,'region_geometry':mapping(h),'rectangle_corner_estimates':list(map(list,h.minimum_rotated_rectangle.exterior.coords))[:-1],'rectangle_corners_are_physical_points':False})
+    rows=[]
+    for reference in references:
+        comparisons=result[reference['id']];geometries=[shape(c['region_geometry']) for c in comparisons if 'region_geometry' in c]
+        spread=max((a.boundary.hausdorff_distance(b.boundary) for i,a in enumerate(geometries) for b in geometries[i+1:]),default=None)
+        rows.append({'reference_id':reference['id'],'name':reference.get('name',''),'comparisons':comparisons,'maximum_threshold_boundary_spread_m':spread,'native_attachment_uncertainty_m':None,'roof_to_wall_offset_m':None,'status':'withheld_attachment_identification','accepted_control_points':0,'accepted_checkpoint_points':0,'reasons':['Physical corner correspondence unreviewed','Threshold boundaries are elevated pixel regions, not verified walls','Native edge accuracy and roof-to-wall offsets not established'],'physical_identity_verified':False,'registration_verified':False})
+    return {'landmarks':rows,'pixel_half_diagonal_m':max(math.hypot(transform.a+transform.b,transform.d+transform.e),math.hypot(transform.a-transform.b,transform.d-transform.e))/2,'accepted_control_points':0,'accepted_checkpoint_points':0,'world_geometry_additions':0,'status':'attachment_review_queue_only'}

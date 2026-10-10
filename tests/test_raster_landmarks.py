@@ -28,3 +28,18 @@ class ElevatedRegionTests(unittest.TestCase):
         from voxel_mapper.raster_landmarks import elevated_regions
         ground=np.zeros((1,3));top=np.array([[4.,0.,4.]])
         with self.assertRaises(ValueError):elevated_regions(ground,top,Affine.identity(),min_area_m2=.5,max_regions=1)
+
+class AttachmentStabilityTests(unittest.TestCase):
+    def test_threshold_changes_are_reported_without_accepting_corners(self):
+        from voxel_mapper.raster_landmarks import attachment_stability
+        ground=np.zeros((4,6));top=np.ones((4,6))*2;top[:,2:4]=4
+        r=attachment_stability(ground,top,Affine.identity(),[{'id':'ref','geometry':box(0,0,6,4)}],thresholds=[1.5,3])
+        self.assertGreater(r['landmarks'][0]['maximum_threshold_boundary_spread_m'],0)
+        self.assertEqual(r['accepted_checkpoint_points'],0)
+        self.assertFalse(r['landmarks'][0]['comparisons'][0]['rectangle_corners_are_physical_points'])
+    def test_no_region_and_invalid_thresholds_are_explicit(self):
+        from voxel_mapper.raster_landmarks import attachment_stability
+        ground=np.zeros((4,4));refs=[{'id':'ref','geometry':box(0,0,4,4)}]
+        r=attachment_stability(ground,ground,Affine.identity(),refs)
+        self.assertIsNone(r['landmarks'][0]['maximum_threshold_boundary_spread_m'])
+        with self.assertRaises(ValueError):attachment_stability(ground,ground,Affine.identity(),refs,thresholds=[2,2])
