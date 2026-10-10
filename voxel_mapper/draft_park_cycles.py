@@ -39,6 +39,30 @@ def read_rows(path):
                 if line.strip():yield json.loads(line)
 
 
+def native_bearing_extensions(rows, parts, world, offset, max_depth=8):
+    """Connect drafted floor columns to the saved world, not only raster heights."""
+    additions={};columns_checked=0
+    for part in parts:
+        floor=round(part['provisional_base_m']);columns={}
+        for row in rows.values():
+            if row.get('feature','').split('/')[-1]==part['id'] and row['material']!='air':
+                key=row['x'],row['z'];columns[key]=min(columns.get(key,row['y']),row['y'])
+        for (x,z),low in columns.items():
+            if low>floor-1:continue # Roof overhangs and facade ornaments are not footings.
+            columns_checked+=1
+            for depth in range(1,max_depth+2):
+                y=low-depth
+                if y+offset < -64:raise ValueError('Foundation reaches native height limit')
+                block=world.get_block(x,y+offset,-z,'minecraft:overworld')
+                if block.base_name!='air':break
+                if depth>max_depth:raise ValueError('Native bearing gap exceeds bounded foundation depth')
+                additions[x,y,z]={'x':x,'y':y,'z':z,'material':'stone','kind':'building',
+                                  'feature':'wicker/'+part['id'],'review_only':True,
+                                  'basis':'bounded air-only extension to native bearing surface'}
+    return additions,{'bearing_columns_checked':columns_checked,'air_gap_fill_cells':len(additions),
+                      'maximum_extension_depth_blocks':max_depth,'native_nonair_blocks_replaced':0}
+
+
 def wicker_layer(directory,shop_model,crs,ground):
     """Rotate meshes in the destination CRS before sampling, preserving doors."""
     directory=Path(directory);quality=json.loads((directory/'quality-report.json').read_text())
@@ -159,6 +183,10 @@ def prepare(job_path):
     pins[str(wicker/'quality-report.json')]=file_hash(wicker/'quality-report.json')
     pins[str(wicker/'voxels.jsonl')]=file_hash(wicker/'voxels.jsonl')
     for path in wicker.glob('*-model.json'):pins[str(path)]=file_hash(path)
+    world=amulet.load_level(str(native));coords=set(world.all_chunk_coords('minecraft:overworld'))
+    try:extensions,native_contact=native_bearing_extensions(rows,wicker_report['parts'],world,offset)
+    except Exception:world.close();raise
+    rows.update(extensions);wicker_report['native_ground_contact']=native_contact
     with stage:
         # Finite replacement masks explicitly retain the existing terrain and
         # remove legacy extrusion only above it, within source building columns.
@@ -166,8 +194,7 @@ def prepare(job_path):
             for y in range(math.floor(ground(x,z))+1,head+1):
                 insert({'x':x,'y':y,'z':z,'material':'air','kind':'structure','feature':'legacy-shell-clearance'},'wicker',False,True)
         for row in rows.values():insert(row,'wicker',False,True)
-    world=amulet.load_level(str(native));coords=set(world.all_chunk_coords('minecraft:overworld'))
-    contract={'snapshot_mode':'review_draft','compiler_contract':'draft-retained-layers-v1',
+    contract={'snapshot_mode':'review_draft','compiler_contract':'draft-retained-layers-v2-native-bearing',
               'manifest':{'crs':crs,'vertical_datum':'ODN','sources':quality['sources']},
               'input_sha256':pins,'production_placement_eligible':False}
     store=GeometryStore(root/'geometry.sqlite',contract);features={};expected={};changed=0;removed=0;skipped=0

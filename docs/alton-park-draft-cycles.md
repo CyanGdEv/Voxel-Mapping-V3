@@ -92,3 +92,19 @@ Synthetic tests additionally cover a multi-megabyte worker handoff, protected
 block replacement guards, draft opt-in, focus ownership, deferred future layers,
 portable resumption and material precedence. These checks establish native
 composition correctness, not in-game visual fidelity or surveyed accuracy.
+
+The complete real run finished all 29 cycles and all 4,757 scheduled chunks,
+with 847,646 cumulative detail cells across 3,126 native geometry chunks.
+All 802 repository tests pass. The canonical final preview SHA256 is
+`c888928d055842e9cbcc82e39460eea4312110b732060725c10ad7e4cf108bdd`.
+The downloadable delivery changes the display name and spawn to Wicker paving;
+the checkpoint retains the canonical preview and its original metadata.
+
+Final native inspection found 33 air cells beneath drafted footings where raster
+and saved-world surfaces differed. A separate guarded three-chunk completion
+cycle filled only those air cells; no existing non-air block was replaced.
+Cold readback verifies 17,431 Wicker cells and solid contact for all 559 bearing
+columns. The checkpoint includes this completion cycle separately; the main
+29-cycle receipts and source geometry remain immutable. Future preparation now
+checks the native base beneath footings and bounds air extensions to eight blocks,
+withholding larger unsupported gaps. Roof overhangs do not create foundation piers.

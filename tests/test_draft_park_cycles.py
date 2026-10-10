@@ -14,6 +14,20 @@ class DraftCycleTests(unittest.TestCase):
     workers=cycle_tests.CycleTests.workers
     block=cycle_tests.CycleTests.block
 
+    def test_native_bearing_fills_air_gap_and_bounds_depth_without_roof_piers(self):
+        from voxel_mapper.draft_park_cycles import native_bearing_extensions
+        class Native:
+            def get_block(self,x,y,z,dimension):
+                return material_block('stone' if y<=0 or (x==2 and y<=2) else 'air')
+        rows={(x,y,0):{'x':x,'y':y,'z':0,'feature':'wicker/shop','material':'oak_planks'} for x,y in [(0,3),(1,7),(2,3)]}
+        parts=[{'id':'shop','provisional_base_m':4}]
+        added,audit=native_bearing_extensions(rows,parts,Native(),0)
+        self.assertEqual(set(added),{(0,1,0),(0,2,0)})
+        self.assertEqual(audit['bearing_columns_checked'],2)
+        self.assertEqual(audit['native_nonair_blocks_replaced'],0)
+        with self.assertRaisesRegex(ValueError,'bounded foundation'):
+            native_bearing_extensions(rows,parts,Native(),0,max_depth=1)
+
     def draft(self,correct_guard=True):
         self.plan.close();self.plan.path.unlink()
         db=sqlite3.connect(self.geometry)
@@ -116,7 +130,7 @@ class DraftCycleTests(unittest.TestCase):
              'wicker_directory':'wicker','shop_model':'model.json','layers':[{'id':'review','file':'layer.jsonl','defer_above_ground':True}]}
         path=self.root/'job.json';path.write_text(json.dumps(job))
         row={'x':32,'y':1,'z':0,'material':'oak_planks','feature':'proof','kind':'structure'}
-        with patch('voxel_mapper.draft_park_cycles.wicker_layer',return_value=({(32,1,0):row},{},{'production_placement_eligible':False})):
+        with patch('voxel_mapper.draft_park_cycles.wicker_layer',return_value=({(32,1,0):row},{},{'parts':[],'production_placement_eligible':False})):
             report=prepare(path)
         self.assertEqual(report['deferred_above_ground_cells'],1)
         self.assertEqual(report['plan']['total_chunks'],4)

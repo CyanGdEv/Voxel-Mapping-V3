@@ -1,23 +1,26 @@
 {
-  "status": "whole_park_draft_cycles_in_progress",
+  "status": "whole_park_draft_cycles_complete",
   "snapshot_mode": "review_draft",
   "production_placement_eligible": false,
   "total_chunks": 4757,
-  "completed_chunks_at_code_validation": 931,
   "cycle_count": 29,
   "section_count": 15,
   "geometry_cells": 847646,
   "geometry_chunks": 3126,
   "tests": {
     "full_suite": {
-      "tests": 801,
+      "tests": 802,
       "result": "passed"
     },
     "after_query_optimization": {
       "tests": 40,
       "result": "passed"
     },
-    "workflow_actionlint": "passed"
+    "workflow_actionlint": "passed",
+    "native_bearing_extension": {
+      "tests": 9,
+      "result": "passed"
+    }
   },
   "first_cycle": {
     "base_terrain_includes_ungenerated_context": true,
@@ -47,5 +50,53 @@
     "chunk_write_intent_before_native_flush": true,
     "saved_chunk_resume_test": "passed",
     "real_resume": "restored cycle 9 published world after unjournaled pre-fix save; cycle 10 completed with fixed journal"
+  },
+  "cycles": 29,
+  "chunks": 4757,
+  "native_ground_contact": {
+    "bearing_columns_checked": 559,
+    "air_gap_fill_cells": 33,
+    "maximum_extension_depth_blocks": 8,
+    "native_nonair_blocks_replaced": 0,
+    "result": {
+      "status": "native_review_batch_export_verified",
+      "plan_identity": "f8f10c6d6f36eefbfce656c8f8bdaa8c6d75c769346ee5fc1b3a17ab1815ff07",
+      "cycle": 1,
+      "section": 1,
+      "new_scheduled_chunks": 3,
+      "cumulative_scheduled_chunks": 3,
+      "cumulative_geometry_chunks": 3,
+      "cumulative_voxel_cells": 33,
+      "file": "previews/cycle_0001/park.mcworld",
+      "sha256": "6ac2756df59d5c7d817f2105d5c314efd7966724563bc17ce8461ad7e4f9a744",
+      "base_terrain_includes_ungenerated_context": true,
+      "workflow_run_id": null,
+      "download_artifact": "park-preview-cycle-0001",
+      "detail_scope": "Draft retained layers and Wicker models through this cycle; other legacy park context remains provisional.",
+      "snapshot_mode": "review_draft",
+      "production_placement_eligible": false
+    },
+    "world_chunk_coverage": 4757
+  },
+  "wicker_cold_readback_cells": 17431,
+  "bearing_columns_ground_contact": 559,
+  "spawn": [
+    -372,
+    143,
+    -137
+  ],
+  "world_sha256": "a8025899f7775a6dbc326788efe7c9ea7240474108e3cabe924146108a744d48",
+  "canonical_cycle_sha256": "6ac2756df59d5c7d817f2105d5c314efd7966724563bc17ce8461ad7e4f9a744",
+  "park_cycle_29_sha256": "c888928d055842e9cbcc82e39460eea4312110b732060725c10ad7e4cf108bdd",
+  "checkpoint_sha256": "8d6a35387e39664078b7734118468cbf1b7963d05e2dddbb430d2fcdf96fed8a",
+  "total_completed_cycles": 30,
+  "cycle_breakdown": {
+    "park": 29,
+    "native_ground_contact_correction": 1
+  },
+  "completed_chunks": 4757,
+  "saved_artifacts": {
+    "world_library_file_id": "libfile_c384fe9891d48191bf17904cbfe477af",
+    "checkpoint_library_file_id": "libfile_6f477495fff08191ac62929cd7a98458"
   }
 }
