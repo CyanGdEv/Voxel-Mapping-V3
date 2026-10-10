@@ -53,3 +53,9 @@ orientations, the poor-boundary flag, unresolved handedness/assembly identity,
 and zero accepted controls/checkpoints remain explicit. Next obtain a terrain
 crop covering the shop and independent horizontal/floor measurements; rerun
 this preflight before enabling the real placement entry in a park job.
+
+Follow-up: the [provisional terrain section](wicker-shop-terrain-section.md)
+recovers the original dated rasters and supplies complete shop coverage. It
+retains one wall/terrain conflict at candidate floor 183 and provides a separate
+review world at explicitly provisional floor 184. The missing-coverage result
+above remains a record of the earlier Smiler-tile check.
