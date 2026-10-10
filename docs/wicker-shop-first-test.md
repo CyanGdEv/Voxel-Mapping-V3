@@ -60,6 +60,18 @@ All 67 focused tests pass. They cover faint outlines, original-source preservati
 
 ## Remaining first-test gates
 
+### Automatic edge correspondence replay
+
+`python -m voxel_mapper.plan_elevation_edges --documents /path/to/wicker-shop-face-documents.json --faces /path/to/face-review --output /path/to/new-edge-review.json` now checks the catalogue/PDF and replay checksums, screens literal plan-scale claims, and compares full native straight plan segments with nominal elevation-region widths. It retains exact endpoints, path/item identities and paint sequence numbers. Layered, transparent, dashed and curved strokes are excluded. Conflicting plan scales are withheld even if one claim's glyph replay fails. All eligible length matches remain candidates; no nearest edge is selected.
+
+The retained six-PDF replay examined two plan pages and fourteen region/reference pairs. Six pairs have length hypotheses; eight have no eligible full-segment match. There are 74 distinct source-edge candidates across those matches, including 69 incidental short-edge matches for a narrow wall region. This demonstrates why width agreement alone cannot identify a physical component.
+
+The opposing long roof elevations each match four roof-plan segments within the fixed 0.25 m discovery window: 16.4997, 16.8410 (two separate strokes) and 16.8469 m. The last is the native edge previously recorded in the manual roof diagnostic; the new stage found it without loading manual annotations. The nominal elevation width is 16.6864 m, leaving a 0.1605 m residual for that edge. This does not establish its physical correspondence or an accuracy bound. Three wall-region/reference pairs also match a 15.8496 m roof-plan stroke; its physical wall role remains unknown.
+
+No full-length ground-floor segment matches the broad shop elevation regions. Fragmented collinear segments are deliberately not joined by this stage. The next geometric task is to recover source-supported connected outer chains and closed component footprints, then check corner correspondence, baseline and roof topology across views. The replay cannot yet assemble an automatic mesh: all fourteen results retain `mesh: null` and an explicit incomplete-correspondence hold. Absolute registration and datum remain separate gates.
+
+`evidence/wicker-shop-edge-replay.json` retains the complete edge receipt as a SHA256-checked gzip/base64 envelope. Twelve focused edge/view tests passed, covering ambiguous equal-length edges, fragmented lines, dashed/transparent exclusions, rotation-independent source provenance, scale visibility/conflicts and bounded/nonfinite input rejection. This stage is an explicit diagnostic CLI; it is not yet enabled in the park orchestration workflow.
+
 1. Resolve actual outer component edges and the held gable view, without treating interior hatch caps or projected silhouettes as complete faces.
 2. Select the shop's ground/roof-plan edges, associate them with each elevation, and assemble consistent walls, openings and roof planes with depth and dimensions.
 3. Establish independent absolute registration controls/checkpoints, source state and a verified vertical datum.
