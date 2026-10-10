@@ -58,7 +58,8 @@ def join_wall_columns(wall, roof, scale):
                   'columns':columns,'all_columns_connected':True}
 
 
-def plan(model_path, expected_sha256, scale=1, joined=False, closed=False):
+def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs=False):
+    if slabs and (scale!=1 or not closed):raise ValueError('Slab review requires closed 1:1 mode')
     path=Path(model_path);raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=expected_sha256:raise ValueError('Pinned study model checksum mismatch')
     model=json.loads(raw)
@@ -78,6 +79,10 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False):
             projection,projection_audit=raster_mesh(model['projection_mesh'],scale)
     # Roof wins aliasing intersections in the display study, with every conflict counted.
     cells={p:'spruce_planks' for p in wall|joins};cells.update({p:'dark_oak_planks' for p in roof|projection})
+    slab_audit=None
+    if slabs:
+        from .shop_slabs import assemble
+        cells,slab_audit=assemble(model)
     rows=[{'x':x,'y':y,'z':z,'kind':'study_surface','material':material,'feature':'shop-local-study','source':'reviewed-proposed-model'}
           for (x,y,z),material in sorted(cells.items())]
     radius=12*scale
@@ -113,6 +118,7 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False):
     report['projection_cells']=len(projection)
     report['projection_sampling']=projection_audit
     report['boundary_closure_audit']=closure_audit
+    report['slab_shape_audit']=slab_audit
     if joined:
         report['version']='shop-local-joined-study-v2'
         report['projection_review']=model.get('projection_review')
@@ -123,17 +129,23 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False):
         report['version']='shop-local-boundary-review-v3'
         report['review_mode']='closed-boundary-canopy-hypothesis'
         report['limitations'].append('Boundary and roof-riser closure is an estimated voxel display; six-neighbour air closure does not establish real construction thickness or water tightness.')
+    if slabs:
+        report['version']='shop-local-slab-review-v4';report['review_mode']='slab-1to1-canopy-hypothesis'
+        report['base_full_block_counts']={k:report[k] for k in ('wall_cells','roof_cells','wall_roof_alias_cells','projection_cells')}
+        for k in report['base_full_block_counts']:report[k]=None
+        report['limitations'].append('Half-metre samples select native top/bottom slabs at 1:1. Display shapes and two-block door clearance are quantized estimates.')
     return ground+rows,report
 
 
-def run(model_path, expected_sha256, output, scale=1, joined=False, closed=False):
+def run(model_path, expected_sha256, output, scale=1, joined=False, closed=False, slabs=False):
     from .bedrock import export_world
     output=Path(output)
     if output.exists():raise ValueError('Use a new study output directory')
-    rows,report=plan(model_path,expected_sha256,scale,joined,closed);output.mkdir(parents=True)
+    rows,report=plan(model_path,expected_sha256,scale,joined,closed,slabs);output.mkdir(parents=True)
     path=output/'voxels.jsonl';path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
     label='JOINED REVIEW' if joined else 'LOCAL STUDY'
     if closed:label='BOUNDARY V3 REVIEW'
+    if slabs:label='SLABS V4 REVIEW'
     report['world']=export_world(path,output,report,name=f'Wicker Shop {label} {scale}:1',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report
