@@ -10,8 +10,9 @@ import pymupdf
 from .boundary_registration import file_hash
 from .drawing_views import text, SCALE
 from .glyph_visibility import screen_span
+from .plan_network import recover, containing_faces, VERSION as NETWORK_VERSION
 
-VERSION = 'plan-elevation-edge-hypotheses-v1'
+VERSION = 'plan-elevation-edge-hypotheses-v2'
 
 
 def plan_scale(page):
@@ -94,7 +95,9 @@ def match_edges(edges, nominal_unit, width, *, tolerance_m=.25):
     return sorted(result, key=lambda r: r['id'])
 
 
-def run(documents_file, face_directory):
+def run(documents_file, face_directory, *, component_label=None):
+    if component_label is not None and (not isinstance(component_label, str) or not 1 <= len(component_label) <= 100):
+        raise ValueError('Bounded literal component label required')
     catalogue = Path(documents_file)
     items = json.loads(catalogue.read_text())
     if not isinstance(items, list) or not 1 <= len(items) <= 1000:
@@ -126,7 +129,7 @@ def run(documents_file, face_directory):
             if association_count > 10000:
                 raise ValueError('View association budget exceeded')
             associations.setdefault((record['document_sha256'], record['page'], tuple(view)), []).append(record)
-    pages = {}; results = []
+    pages = {}; results = []; network_pages = []
     for link in rows('view-links.jsonl'):
         if link['status'] != 'unique_unverified_plan_elevation_reference':
             continue
@@ -137,8 +140,33 @@ def run(documents_file, face_directory):
         if key not in pages:
             with pymupdf.open(by_sha[sha]) as document:
                 page = document[number - 1]
-                pages[key] = (plan_scale(page), straight_edges(page, sha, number))
-        scale, edges = pages[key]
+                scale = plan_scale(page); edges = straight_edges(page, sha, number)
+                try:
+                    network = recover(edges)
+                except ValueError as error:
+                    network = {'version': NETWORK_VERSION, 'status': 'withheld_network_budget_or_geometry',
+                               'reason': str(error), 'chains': [], 'straight_runs': [], 'faces': [], 'world_geometry_additions': 0}
+                labels = []
+                if component_label:
+                    for index, span in enumerate(page.get_texttrace()):
+                        if text(span) != component_label:
+                            continue
+                        bbox = pymupdf.Rect(span['bbox']); center = list((bbox.tl + bbox.br) * .5)
+                        screen = screen_span(page, span)
+                        labels.append({'text': text(span), 'trace_index': index, 'bbox_page_points': list(bbox),
+                                       'center_page_point': center, 'glyph_screen': screen,
+                                       'containing_unclassified_face_ids': containing_faces(network, center)
+                                       if screen['status'] == 'raster_consistent_candidate' else [],
+                                       'physical_component_identity_verified': False})
+                network_pages.append({'document_sha256': sha, 'page': number, 'plan_scale': scale,
+                                      'network': network, 'component_label_candidates': labels,
+                                      'world_geometry_additions': 0})
+                chains = [{'id': c['id'], 'length_pdf_points': c['length_pdf_points'],
+                           'geometry': c['geometry'], 'source_edge_ids': c['source_edge_ids'],
+                           'junctions': c['junctions'],
+                           'outer_component_edge_verified': False} for c in network['straight_runs']]
+                pages[key] = (scale, edges, chains)
+        scale, edges, chains = pages[key]
         target = link['target_candidates'][0]
         records = associations.get((target['document_sha256'], target['page'], tuple(target['view']['view_key_candidate'])), [])
         for record in records:
@@ -148,6 +176,7 @@ def run(documents_file, face_directory):
                 continue
             unit = scale['nominal_metres_per_pdf_point_candidate']
             candidates = match_edges(edges, unit, metric['width_m']) if unit else []
+            chain_candidates = match_edges(chains, unit, metric['width_m']) if unit else []
             results.append({'plan_document_sha256': sha, 'plan_page': number,
                             'plan_reference': link['reference'], 'target_document_sha256': target['document_sha256'],
                             'target_page': target['page'], 'view_key_candidate': target['view']['view_key_candidate'],
@@ -155,18 +184,24 @@ def run(documents_file, face_directory):
                             'region_geometry_sha256': hashlib.sha256(json.dumps(region['geometry'], sort_keys=True).encode()).hexdigest(),
                             'nominal_elevation_measurements': metric, 'plan_scale': scale,
                             'search_tolerance_m': .25, 'edge_candidates': candidates,
+                            'connected_straight_chain_candidates': chain_candidates,
+                            'connected_run_status': 'withheld_plan_scale' if not unit else 'unverified_continuous_length_hypotheses' if chain_candidates else 'withheld_no_connected_length_match',
                             'status': 'withheld_plan_scale' if not unit else 'unverified_length_hypotheses' if candidates else 'withheld_no_full_segment_length_match',
                             'mesh_status': 'withheld_incomplete_component_correspondence',
                             'mesh': None, 'accepted_feature': False, 'world_geometry_additions': 0})
             if len(results) > 10000:
                 raise ValueError('Correspondence budget exceeded')
-    return {'version': VERSION, 'input_catalogue_sha256': file_hash(catalogue),
+    return {'version': VERSION, 'network_version': NETWORK_VERSION,
+            'component_label_search': component_label, 'network_pages': network_pages,
+            'input_catalogue_sha256': file_hash(catalogue),
             'face_replay_output_sha256': report['output_sha256'], 'pymupdf_version': pymupdf.VersionBind,
             'results': results, 'plan_pages_examined': len(pages),
             'limitations': ['Length matches retain every eligible full segment, including unrelated drafting edges.',
                             'Search tolerance is a discovery window, not a physical accuracy bound.',
                             'Clipping, outer-edge identity, closed footprint, elevation baseline, roof topology, depth and registration remain unverified.',
-                            'Fragmented collinear lines are not bridged; no manual traces or nearest-edge choices are used.'],
+                            'Degree-two chains stop at branches; straight coverage may continue through a unique opposite collinear junction, with junctions retained.',
+                            'Exact connections only; gaps are not bridged and component boundary topology remains unverified.',
+                            'Label containment identifies drafting faces, not exterior footprints; no manual traces or nearest-edge choices are used.'],
             'accepted_features': 0, 'world_geometry_additions': 0}
 
 
@@ -175,8 +210,9 @@ def main():
     parser.add_argument('--documents', required=True)
     parser.add_argument('--faces', required=True)
     parser.add_argument('--output', required=True)
+    parser.add_argument('--component-label')
     args = parser.parse_args()
-    result = run(args.documents, args.faces)
+    result = run(args.documents, args.faces, component_label=args.component_label)
     output = Path(args.output)
     with output.open('x') as stream:
         stream.write(json.dumps(result, indent=2) + '\n')
