@@ -29,6 +29,31 @@ def water(feature,geometry,context):
         for y in range(bottom+1,math.ceil(top)):yield (x,y,z),'water'
 
 
+def roof_surface(feature,geometry,context):
+    """Rasterize an explicitly evidenced plane; never infer roof pitch or height."""
+    if geometry.geom_type not in ('Polygon','MultiPolygon') or geometry.has_z:
+        raise EvidenceMissing('Roof surface needs a registered 2D footprint')
+    plane=feature.value('plane',context.sources,context.allow_estimates)
+    if not isinstance(plane,dict):raise EvidenceMissing('Explicit roof plane required')
+    origin=plane.get('origin_xy');slope=plane.get('slope_xy');height=plane.get('elevation_m')
+    if not isinstance(origin,list) or not isinstance(slope,list) or len(origin)!=2 or len(slope)!=2:
+        raise EvidenceMissing('Roof plane origin and slope require two coordinates')
+    values=[*origin,*slope,height]
+    if any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in values):
+        raise EvidenceMissing('Finite numeric roof plane required')
+    if max(map(abs,slope))>3 or not -1000<=height<=10000:
+        raise EvidenceMissing('Roof plane outside bounded slope/height')
+    source=context.sources[feature.parameters['plane']['source']]
+    if not context.vertical_datum or source.vertical_datum!=context.vertical_datum:
+        raise EvidenceMissing('Roof plane vertical datum mismatch')
+    thickness=number(feature,'thickness_m',context,.05,2)
+    material=feature.value('material',context.sources,context.allow_estimates)
+    for polygon in getattr(geometry,'geoms',[geometry]):
+        for x,z in roof_cells(polygon):
+            top=math.floor(height+(x+.5-origin[0])*slope[0]+(z+.5-origin[1])*slope[1])
+            for y in range(top-math.ceil(thickness)+1,top+1):yield (x,y,z),material
+
+
 def park_registry():
     registry=default_registry()
     aliases={'path':'paving','plaza':'paving','fence':'wall','metal_fence':'wall','wood_fence':'wall',
@@ -36,5 +61,5 @@ def park_registry():
              'flat_ride':'architectural_components','water_ride_structure':'architectural_components',
              'animal_enclosure':'architectural_components','animal_crossing':'architectural_components'}
     registry.update({name:registry[primitive] for name,primitive in aliases.items()})
-    registry.update(rocks=rocks,lake=water)
+    registry.update(rocks=rocks,lake=water,roof_surface=roof_surface)
     return registry

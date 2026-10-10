@@ -130,8 +130,20 @@ def run(job_path,stage='all'):
     if stage in ('all','reconstruct','compile'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
         pinned={'manifest':hashlib.sha256(manifest_path.read_bytes()).hexdigest()}
+        bridge=job.get('registration_bridge',{});bridge_feed=None
+        if bridge.get('enabled',False):
+            from .drawing_registration_bridge import run_batch
+            destination=root/'registration-bridge'
+            bridge_report=run_batch(path(bridge['documents']),manifest_path,path(bridge['references']),destination,
+                                    max_pages=bridge.get('max_pages',10000),max_features=bridge.get('max_features',2500000))
+            checkpoint('registration_bridge',bridge_report)
+            pinned['registration_bridge']=bridge_report['contract']
+            pinned['registered_manifest']=bridge_report['output_sha256']['manifest.json']
+            pinned['registered_features']=bridge_report['output_sha256']['features.jsonl']
+            manifest_path=destination/'manifest.json';manifest=json.loads(manifest_path.read_text())
+            if bridge_report['feature_count']:bridge_feed=destination/'features.jsonl'
         for key in ('feature_records','terrain_config'):
-            if job.get(key) and (key!='terrain_config' or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews') or job.get('drawing_geometry',{}).get('feature_reviews')):
+            if job.get(key) and (key!='terrain_config' or bridge_feed or job.get('geometry_feeds') or job.get('feature_records') or job.get('footprint_extraction',{}).get('feature_reviews') or job.get('drawing_geometry',{}).get('feature_reviews')):
                 with path(job[key]).open('rb') as stream:pinned[key]=hashlib.file_digest(stream,'sha256').hexdigest()
         if job.get('footprint_extraction',{}).get('feature_reviews') and job.get('drawing_geometry',{}).get('feature_reviews'):raise ValueError('Use one combined extraction review list per job')
         footprint_reviews=job.get('drawing_geometry',{}).get('feature_reviews') or job.get('footprint_extraction',{}).get('feature_reviews')
@@ -141,7 +153,7 @@ def run(job_path,stage='all'):
         if previous is not None and previous!=pinned:raise ValueError('Reconstruction inputs changed; use a fresh job')
         checkpoint('input_contract',pinned)
         sources={s['id']:Source(**s) for s in manifest['sources']};normalized=root/'normalized';normalized.mkdir(exist_ok=True)
-        feeds=[]
+        feeds=[bridge_feed] if bridge_feed else []
         for index,feed in enumerate(job.get('geometry_feeds',[])):
             output=normalized/f'feed_{index}.jsonl';metadata=output.with_suffix('.receipt.json')
             input_path=path(feed['file'])
