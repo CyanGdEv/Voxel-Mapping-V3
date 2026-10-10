@@ -89,3 +89,5 @@ Tests cover a 2,500-chunk schedule across 15 sections, ten-worker disjoint owner
 The native integration fixture is small and synthetic. It verifies the cycle machinery; it is not an Alton Towers reconstruction or a 2.5-million-feature performance benchmark.
 
 Next work is connecting automatic registration/reconstruction output to the prepared bundle and benchmarking real park batches. Targeted feedback regeneration and permanent download hosting are not yet implemented. Full base/database handoffs to all workers and a growing cumulative world make this initial workflow storage-intensive; later optimization should shard immutable payload storage without losing the input and readback checks.
+
+Resort reconstruction now starts with [named planning-led areas](resort-area-reconstruction.md); chunk cycles are work budgets within each area.
