@@ -1,0 +1,18 @@
+{
+  "deterministic_replay": true,
+  "preserved_original_jpeg_sha256": [
+    "ad1d21a09239fded14e48b3feadb040f81e32bf17b61aa57c7da3710546566d9",
+    "fd83362c46072520a9ba8ab0c7ddab2da1ecb8c98aa3276ed2aafdf516669e7c",
+    "ae987e75f7d7b97bbc02777e19952da7d0ba9bf86a9271c52ea8f4d9664e43e9",
+    "f6c6ebaa68ad9889051cbdb21818a48846b8ca7578679947329dbda5b37beead"
+  ],
+  "round_trip_max_metres": 1.2347709524675986e-09,
+  "altered_metadata_rejected": true,
+  "svg_parses": true,
+  "image_annotation_clipping": true,
+  "placement_gate_unchanged": true,
+  "output_sha256": {
+    "evidence/wicker-shop-imagery-overlay.json": "e1d95d8b6cd017f84f5bc417433d259f9f21c8a4df7b2f606ca8dd6f8160eeb5",
+    "docs/wicker-shop-imagery-overlay.svg": "1755002339fbdc30761d5eaa2fc3f9be281d7398d53bfb5ccff220249fa1096e"
+  }
+}
