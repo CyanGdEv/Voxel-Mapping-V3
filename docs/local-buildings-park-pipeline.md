@@ -51,6 +51,10 @@ checkpoints; floor elevation and source handedness are unresolved. The template
 must not be enabled as a completed park placement. Pipeline integration is ready;
 the actual insertion still awaits those placement measurements.
 
+Before enabling that entry, run the [shop placement preflight](wicker-shop-placement-preflight.md).
+It retains both orientations, distinguishes the fitted local origin from the
+mapped centroid and checks emitted block columns against shop-area terrain.
+
 Tests compile at 0°, the retained 25.244° candidate bearing and 90°, retain
 slab/fence/trapdoor materials across chunk boundaries, reject missing registration,
 datum mismatches, unverified assembly identity and collisions, and reject changed
