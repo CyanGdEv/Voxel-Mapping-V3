@@ -1,0 +1,150 @@
+{
+  "status": "classification_evidence_only",
+  "scanned_points": 68237,
+  "invalid_xyz_points": 0,
+  "classifications": {
+    "1": 1520,
+    "2": 23034,
+    "3": 1040,
+    "4": 7356,
+    "5": 26504,
+    "6": 8776,
+    "7": 7
+  },
+  "nonwithheld_nonsynthetic_classifications": {
+    "1": 1520,
+    "2": 23034,
+    "3": 1040,
+    "4": 7356,
+    "5": 26504,
+    "6": 8776,
+    "7": 7
+  },
+  "comparison_margin_m": 3,
+  "landmarks": [
+    {
+      "reference_id": "osm/way/70689589",
+      "name": "The Burger Kitchen",
+      "inside_classifications": {
+        "1": 4,
+        "5": 171
+      },
+      "surrounding_margin_classifications": {
+        "1": 1,
+        "2": 96,
+        "3": 6,
+        "4": 41,
+        "5": 375
+      },
+      "eligible_class_6_inside": 0,
+      "eligible_class_6_in_margin": 0,
+      "physical_identity_verified": false,
+      "accepted_checkpoints": 0
+    },
+    {
+      "reference_id": "osm/way/107259863",
+      "name": "FastTrack",
+      "inside_classifications": {
+        "2": 14,
+        "5": 49
+      },
+      "surrounding_margin_classifications": {
+        "1": 1,
+        "2": 113,
+        "3": 1,
+        "4": 43,
+        "5": 191
+      },
+      "eligible_class_6_inside": 0,
+      "eligible_class_6_in_margin": 0,
+      "physical_identity_verified": false,
+      "accepted_checkpoints": 0
+    },
+    {
+      "reference_id": "osm/way/834919978",
+      "name": "Wicker Man Shop",
+      "inside_classifications": {
+        "1": 2,
+        "2": 22,
+        "5": 1,
+        "6": 442
+      },
+      "surrounding_margin_classifications": {
+        "1": 42,
+        "2": 219,
+        "3": 5,
+        "4": 109,
+        "5": 128,
+        "6": 107
+      },
+      "eligible_class_6_inside": 442,
+      "eligible_class_6_in_margin": 107,
+      "physical_identity_verified": false,
+      "accepted_checkpoints": 0
+    }
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Mapped outlines are comparison windows, not accepted footprints",
+    "Classification does not establish physical wall corners or roof-to-wall offsets",
+    "Unclassified returns are not automatically treated as buildings, trees or ride supports"
+  ],
+  "source": {
+    "scanned_points": 98342681,
+    "retained_points": 68237,
+    "classifications": {
+      "1": 1520,
+      "2": 23034,
+      "3": 1040,
+      "4": 7356,
+      "5": 26504,
+      "6": 8776,
+      "7": 7
+    },
+    "sha256": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+    "crs": "EPSG:27700",
+    "units": "m",
+    "vertical_datum": "ODN",
+    "vertical_datum_basis": "EA published dataset declaration; header horizontal CRS checked",
+    "scope": "observed returns only; no semantic geometry, interpolation, floor or lakebed inference",
+    "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+    "survey": {
+      "survey_id": "P_10682",
+      "survey_start": "20220105",
+      "survey_end": "20220105",
+      "archive_files": {
+        "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+        "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+      },
+      "finite_coverage_fraction": {
+        "dtm": 1.0,
+        "dsm": 0.9909726817279516
+      },
+      "terrain_coverage_threshold": 0.99,
+      "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+    },
+    "archive_sha256": "2bd911d556739978915046d94037c206cdb60811c2e2dfd6da48b24ce83135dc",
+    "archive_bytes": 384483857,
+    "bounds": [
+      407461.0,
+      343478.0,
+      407603.0,
+      343627.0
+    ],
+    "archive_filename": "SK0540_P_10682_20220105_20220105.laz",
+    "catalogue_sha256": "45373b09d8cbe2bd99ba924aad5cf6f7147c75066c3eefa3859ec86b08dafef6",
+    "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+    "license": "OGL-UK-3.0",
+    "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right"
+  },
+  "input_sha256": {
+    "cloud": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+    "crop_receipt": "9ead4a23e0f385443c43ac048834fa4b0009ac72d7f4911525a49bb97f113992",
+    "survey_receipt": "3519808d61b7a39052f4c61c017067f1d975e6b72f0dc892511c6f7853c650c1",
+    "osm": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+    "grid": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa"
+  },
+  "horizontal_comparison_transform_accuracy_m": 1.0
+}

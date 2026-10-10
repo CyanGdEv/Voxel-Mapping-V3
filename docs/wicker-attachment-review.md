@@ -62,3 +62,8 @@ registration route without weakening its thresholds.
 Full queue: `evidence/wicker-attachment-review.json`. It retains the failed and
 no-region outcomes as well as the best overlaps. Repeated execution produced
 byte-identical output.
+
+Follow-up: [dated point-cloud classification audit](wicker-point-cloud.md)
+recovers the same survey's raw returns. The shop has classified building support;
+the other two comparison windows do not. Physical attachment acceptance remains
+withheld.
