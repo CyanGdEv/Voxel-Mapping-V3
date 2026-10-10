@@ -1,0 +1,183 @@
+{
+  "world_sha256": "739c9aa04f214c0903336697debf4f1b71115332eab57e7874857a3f9d246a94",
+  "water_checks": {
+    "water_columns_checked": 34202,
+    "missing_water_cells": 0,
+    "missing_solid_bed_or_fill_cells": 0
+  },
+  "world_verification": {
+    "touched_chunks": 264,
+    "overlay_records": 585660,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "764447116bbfb8314521275ade0271152fd7229c682c4e095b892311e8233167",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 544343
+  },
+  "repaired_water_features": 13,
+  "features": [
+    {
+      "feature": "osm/relation/4025117",
+      "status": "repaired",
+      "columns": 20276,
+      "surface_levels_m": [
+        175,
+        175
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/relation/4025126",
+      "status": "repaired",
+      "columns": 1841,
+      "surface_levels_m": [
+        135,
+        135
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/70684256",
+      "status": "repaired",
+      "columns": 2223,
+      "surface_levels_m": [
+        183,
+        183
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/70692541",
+      "status": "repaired",
+      "columns": 1363,
+      "surface_levels_m": [
+        172,
+        172
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/70692558",
+      "status": "repaired",
+      "columns": 4783,
+      "surface_levels_m": [
+        176,
+        176
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/70692563",
+      "status": "repaired",
+      "columns": 630,
+      "surface_levels_m": [
+        131,
+        131
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/70692583",
+      "status": "repaired",
+      "columns": 103,
+      "surface_levels_m": [
+        185,
+        185
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/106842138",
+      "status": "repaired",
+      "columns": 764,
+      "surface_levels_m": [
+        183,
+        191
+      ],
+      "surface_method": "local_stream_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/107027846",
+      "status": "repaired",
+      "columns": 933,
+      "surface_levels_m": [
+        148,
+        148
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/107257799",
+      "status": "repaired",
+      "columns": 86,
+      "surface_levels_m": [
+        148,
+        166
+      ],
+      "surface_method": "local_stream_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/107258504",
+      "status": "repaired",
+      "columns": 188,
+      "surface_levels_m": [
+        176,
+        177
+      ],
+      "surface_method": "local_stream_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/107259804",
+      "status": "repaired",
+      "columns": 131,
+      "surface_levels_m": [
+        180,
+        180
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    },
+    {
+      "feature": "osm/way/1144218034",
+      "status": "repaired",
+      "columns": 883,
+      "surface_levels_m": [
+        157,
+        157
+      ],
+      "surface_method": "consistent_interior_terrain",
+      "bed_method": "estimated shore-distance shelf, maximum 2m for streams / 3m for lakes"
+    }
+  ],
+  "preservation": {
+    "v6_details_checked": 245,
+    "non_wicker_v8_checked": 47287,
+    "changed_preserved_cells": 0,
+    "failures": []
+  },
+  "wicker_preservation": {
+    "grounded_connected_bents": 165,
+    "rider_envelope_cells_checked": 5019,
+    "obstructed_rider_envelope_cells": 0,
+    "headroom_blocks": 3,
+    "track_and_support_cells_preserved": 7950,
+    "track_and_support_cells_total": 7950,
+    "water_under_support_footings": 0
+  },
+  "tests": 335,
+  "limitations": [
+    "Bed depths, substrate and artificial foundation fill are visual estimates, not surveyed bathymetry.",
+    "Lake levels use consistent interior DTM; streams use local terrain, not surveyed hydraulic profiles."
+  ]
+}

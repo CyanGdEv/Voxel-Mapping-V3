@@ -1,0 +1,213 @@
+{
+  "sheets": [
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "render_width_pixels": 1888,
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70",
+      "outlines_pixels": {
+        "shop_main_roof": [
+          [
+            460,
+            594
+          ],
+          [
+            663,
+            798
+          ],
+          [
+            396,
+            1064
+          ],
+          [
+            193,
+            861
+          ]
+        ],
+        "maintenance_main_roof": [
+          [
+            685,
+            221
+          ],
+          [
+            1201,
+            221
+          ],
+          [
+            1201,
+            512
+          ],
+          [
+            685,
+            512
+          ]
+        ],
+        "station_main_roof": [
+          [
+            827,
+            511
+          ],
+          [
+            1230,
+            511
+          ],
+          [
+            1230,
+            718
+          ],
+          [
+            827,
+            718
+          ]
+        ],
+        "communications_roof": [
+          [
+            1202,
+            217
+          ],
+          [
+            1332,
+            217
+          ],
+          [
+            1332,
+            333
+          ],
+          [
+            1202,
+            333
+          ]
+        ]
+      },
+      "manual_endpoint_bound_pixels": 2,
+      "scale_denominator": 100,
+      "line_role_basis": "visual review of roof hatching / labelled architectural floor walls; illustrative internal layout; proposed only"
+    },
+    {
+      "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "render_width_pixels": 1888,
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "619a67d8e7a4dc46338251cf22a382136fc335fa1b6d98fbc90297daed998b24",
+      "outlines_pixels": {
+        "maintenance_outer_walls": [
+          [
+            685,
+            273
+          ],
+          [
+            1139,
+            273
+          ],
+          [
+            1139,
+            522
+          ],
+          [
+            685,
+            522
+          ]
+        ],
+        "station_outer_walls": [
+          [
+            811,
+            533
+          ],
+          [
+            1170,
+            533
+          ],
+          [
+            1170,
+            710
+          ],
+          [
+            811,
+            710
+          ]
+        ],
+        "communications_outer_walls": [
+          [
+            1149,
+            269
+          ],
+          [
+            1265,
+            269
+          ],
+          [
+            1265,
+            359
+          ],
+          [
+            1149,
+            359
+          ]
+        ]
+      },
+      "manual_endpoint_bound_pixels": 2,
+      "scale_denominator": 100,
+      "line_role_basis": "visual review of roof hatching / labelled architectural floor walls; illustrative internal layout; proposed only"
+    },
+    {
+      "source_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "render_width_pixels": 1888,
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "396c73e10a62fb6172b548cf4f69408b5a8d4bdb335d1073d7005fe2e7e24210",
+      "outlines_pixels": {
+        "maintenance_outer_walls": [
+          [
+            252,
+            104
+          ],
+          [
+            752,
+            104
+          ],
+          [
+            752,
+            378
+          ],
+          [
+            252,
+            378
+          ]
+        ],
+        "communications_outer_walls": [
+          [
+            763,
+            99
+          ],
+          [
+            889,
+            99
+          ],
+          [
+            889,
+            199
+          ],
+          [
+            763,
+            199
+          ]
+        ]
+      },
+      "manual_endpoint_bound_pixels": 2,
+      "scale_denominator": 100,
+      "line_role_basis": "visual review of roof hatching / labelled architectural floor walls; illustrative internal layout; proposed only"
+    }
+  ],
+  "notes": [
+    "Station polygon on the site sheet contains an inset; the architectural station roof trace is its rectangular main envelope.",
+    "Communications roof is a separate adjoining roof; the union is an explicit comparison case, not a recovered surveyed eave.",
+    "Manual pixel bounds express tracing sensitivity only."
+  ]
+}

@@ -1,0 +1,780 @@
+{
+  "status": "provisional plan landscape section",
+  "input_sha256": {
+    "base_rows": "8729e71f992b47bbf6a7c4a66e226c79db18ebb981084ee6f83a6bb07768976a",
+    "pdf": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "osm": "48a4a4ae95768cccb6b24b019e823e09582ec8112c90341d75ed492513e5c782",
+    "datum_grid": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa"
+  },
+  "alignment": {
+    "status": "shop_track_alignment_hypothesis",
+    "registration_verified": false,
+    "as_built_verified": false,
+    "world_geometry_additions": 0,
+    "vertical_datum_verified": false,
+    "limitations": [
+      "Four shop corners belong to one mapped object, not four independent survey controls",
+      "Track checks use annotation centres, not surveyed track height-point coordinates",
+      "OSM may share the drawing source; these checks do not establish independent accuracy"
+    ],
+    "candidates": [
+      {
+        "scale_m_per_pdf_point": 0.08761468758640832,
+        "rotation": [
+          [
+            -0.9999998146286109,
+            0.0006088864785102621
+          ],
+          [
+            -0.0006088864785103176,
+            -0.999999814628611
+          ]
+        ],
+        "translation_epsg27700_m": [
+          407649.9349226478,
+          343548.0218282828
+        ],
+        "shop_corner_rms_m": 0.04191016567473821,
+        "unique_near_track_labels": 0,
+        "matched_annotation_indices": [],
+        "excluded_duplicate_indices": [],
+        "annotation_distances_m": [
+          104.72571537040017,
+          90.9536781593613,
+          48.48664953155123,
+          49.08811575385188,
+          19.9471183222182,
+          67.68045431959366,
+          53.4247011331311,
+          50.965804811922446,
+          26.968270004430757,
+          36.798143187970346,
+          28.76648424423315,
+          36.47563631627076,
+          52.61590757048316,
+          65.02138672131481,
+          86.98746035483349
+        ],
+        "scale_difference_fraction": 0.006659816415738984
+      },
+      {
+        "scale_m_per_pdf_point": 0.08453186808939413,
+        "rotation": [
+          [
+            0.0003804562946685963,
+            0.9999999276265013
+          ],
+          [
+            -0.9999999276265013,
+            0.0003804562946684853
+          ]
+        ],
+        "translation_epsg27700_m": [
+          407528.24538325693,
+          343498.6066722368
+        ],
+        "shop_corner_rms_m": 2.7645964111202113,
+        "unique_near_track_labels": 2,
+        "matched_annotation_indices": [
+          8,
+          10
+        ],
+        "excluded_duplicate_indices": [],
+        "annotation_distances_m": [
+          76.06629010488297,
+          62.79015522592474,
+          14.605840543069753,
+          20.9071661965796,
+          5.381275541797069,
+          38.40764054389503,
+          20.319333088464155,
+          21.678964750306747,
+          0.7719750922835934,
+          9.126266363813553,
+          0.766921741741584,
+          8.798467183199751,
+          20.507652466262563,
+          36.399653571898575,
+          78.80212827908615
+        ],
+        "scale_difference_fraction": 0.041611587282936235,
+        "median_annotation_track_distance_m": 0.7694484170125887
+      },
+      {
+        "scale_m_per_pdf_point": 0.08761468755811626,
+        "rotation": [
+          [
+            0.999999814627941,
+            -0.000608887578932904
+          ],
+          [
+            0.000608887578932793,
+            0.999999814627941
+          ]
+        ],
+        "translation_epsg27700_m": [
+          407474.492580374,
+          343618.47624935774
+        ],
+        "shop_corner_rms_m": 0.04191101726817672,
+        "unique_near_track_labels": 14,
+        "matched_annotation_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "excluded_duplicate_indices": [
+          14
+        ],
+        "annotation_distances_m": [
+          2.103120347692583,
+          0.2583413772542337,
+          2.6211981972216694,
+          3.462796247897335,
+          1.0992574007052693,
+          0.96842553019406,
+          0.44586556130659066,
+          3.095324200426902,
+          1.7484895757853784,
+          2.55722163916892,
+          2.0586843933094165,
+          0.16102053873555447,
+          2.478798625349967,
+          1.28632000604099,
+          49.29819297262392
+        ],
+        "scale_difference_fraction": 0.006659816736503066,
+        "median_annotation_track_distance_m": 1.9035869845473976
+      },
+      {
+        "scale_m_per_pdf_point": 0.0845318679929874,
+        "rotation": [
+          [
+            -0.00038045595971714086,
+            -0.9999999276266286
+          ],
+          [
+            0.9999999276266287,
+            -0.0003804559597168078
+          ]
+        ],
+        "translation_epsg27700_m": [
+          407596.18211963074,
+          343667.89140523336
+        ],
+        "shop_corner_rms_m": 2.7645964535490033,
+        "unique_near_track_labels": 0,
+        "matched_annotation_indices": [],
+        "excluded_duplicate_indices": [],
+        "annotation_distances_m": [
+          38.37189978439245,
+          28.769420319551344,
+          49.164337691332086,
+          62.80620047067465,
+          16.996151200547462,
+          36.04794193537311,
+          42.135728200195096,
+          31.402426067672863,
+          7.540127666362398,
+          52.68106485495247,
+          44.88482751060375,
+          23.671661240766586,
+          38.8337599250453,
+          33.17206515081255,
+          22.461249068589055
+        ],
+        "scale_difference_fraction": 0.04161158837595713
+      }
+    ],
+    "printed_scale_m_per_pdf_point": 0.08820209736232454,
+    "document_id": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "application_reference": "SMD/2017/0111",
+    "shop_osm_id": 834919978,
+    "horizontal_crs": "EPSG:27700",
+    "horizontal_transform_accuracy_m": -1.0,
+    "candidate": {
+      "scale_m_per_pdf_point": 0.08761468755811626,
+      "rotation": [
+        [
+          0.999999814627941,
+          -0.000608887578932904
+        ],
+        [
+          0.000608887578932793,
+          0.999999814627941
+        ]
+      ],
+      "translation_epsg27700_m": [
+        407474.492580374,
+        343618.47624935774
+      ],
+      "shop_corner_rms_m": 0.04191101726817672,
+      "unique_near_track_labels": 14,
+      "matched_annotation_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "excluded_duplicate_indices": [
+        14
+      ],
+      "annotation_distances_m": [
+        2.103120347692583,
+        0.2583413772542337,
+        2.6211981972216694,
+        3.462796247897335,
+        1.0992574007052693,
+        0.96842553019406,
+        0.44586556130659066,
+        3.095324200426902,
+        1.7484895757853784,
+        2.55722163916892,
+        2.0586843933094165,
+        0.16102053873555447,
+        2.478798625349967,
+        1.28632000604099,
+        49.29819297262392
+      ],
+      "scale_difference_fraction": 0.006659816736503066,
+      "median_annotation_track_distance_m": 1.9035869845473976
+    }
+  },
+  "paving_receipt": {
+    "legends": [
+      {
+        "text": "Existing Paving with levels",
+        "bbox": [
+          2135.52001953125,
+          537.1710815429688,
+          2287.199951171875,
+          552.3148803710938
+        ],
+        "state": "existing",
+        "status": "unique_filled_swatch",
+        "fill_rgb": [
+          0.9176470041275024,
+          0.8313729763031006,
+          0.749019980430603
+        ],
+        "swatch_sequence": 95581
+      },
+      {
+        "text": "New Paving with levels",
+        "bbox": [
+          2135.52001953125,
+          584.9310913085938,
+          2267.0400390625,
+          600.0748901367188
+        ],
+        "state": "new",
+        "status": "withheld_no_unique_filled_swatch"
+      }
+    ],
+    "withheld_fill_paths": 185,
+    "excluded_text_masks": 17
+  },
+  "pattern_receipt": {
+    "status": "matched_tiling_pattern_and_image_resources",
+    "polygon_candidates": 18,
+    "pattern_sha256": "2737947459c287d2749b18f224e5c27845973b22025a8f0c0bbc56af9d929c52"
+  },
+  "bed_receipt": {
+    "status": "matched_tiling_pattern_and_image_resources",
+    "polygon_candidates": 12,
+    "pattern_sha256": "6fa2681921e0b086d06f1e6d4396e46eef6cb6dff4cb4896da1eef968268881c"
+  },
+  "overlay_cells": 3924,
+  "features_by_kind": {
+    "paving": 30,
+    "planting_bed": 12,
+    "rock_edge": 3
+  },
+  "outcomes": [
+    {
+      "feature": 0,
+      "kind": "paving",
+      "emitted_cells": 41,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "bricks",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 1,
+      "kind": "paving",
+      "emitted_cells": 460,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "bricks",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 2,
+      "kind": "paving",
+      "emitted_cells": 159,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 3,
+      "kind": "paving",
+      "emitted_cells": 607,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "black_concrete",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 4,
+      "kind": "paving",
+      "emitted_cells": 56,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 5,
+      "kind": "paving",
+      "emitted_cells": 514,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "bricks",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 6,
+      "kind": "paving",
+      "emitted_cells": 230,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 8,
+      "kind": "paving",
+      "emitted_cells": 102,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 9,
+      "kind": "paving",
+      "emitted_cells": 72,
+      "protected_columns_skipped": 7,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 10,
+      "kind": "paving",
+      "emitted_cells": 21,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 11,
+      "kind": "paving",
+      "emitted_cells": 146,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "black_concrete",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 12,
+      "kind": "paving",
+      "emitted_cells": 207,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "bricks",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 13,
+      "kind": "paving",
+      "emitted_cells": 23,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 14,
+      "kind": "paving",
+      "emitted_cells": 86,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "bricks",
+      "material_status": "documented material class; Minecraft proxy"
+    },
+    {
+      "feature": 16,
+      "kind": "paving",
+      "emitted_cells": 4,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 17,
+      "kind": "paving",
+      "emitted_cells": 275,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 19,
+      "kind": "paving",
+      "emitted_cells": 6,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 20,
+      "kind": "paving",
+      "emitted_cells": 44,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 21,
+      "kind": "paving",
+      "emitted_cells": 3,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 22,
+      "kind": "paving",
+      "emitted_cells": 13,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 24,
+      "kind": "paving",
+      "emitted_cells": 20,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 25,
+      "kind": "paving",
+      "emitted_cells": 22,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 26,
+      "kind": "paving",
+      "emitted_cells": 4,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 27,
+      "kind": "paving",
+      "emitted_cells": 7,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 28,
+      "kind": "paving",
+      "emitted_cells": 235,
+      "protected_columns_skipped": 20,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 29,
+      "kind": "paving",
+      "emitted_cells": 21,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 31,
+      "kind": "paving",
+      "emitted_cells": 42,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 32,
+      "kind": "paving",
+      "emitted_cells": 163,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 33,
+      "kind": "paving",
+      "emitted_cells": 60,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 34,
+      "kind": "paving",
+      "emitted_cells": 47,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "unconfirmed material; neutral review placeholder"
+    },
+    {
+      "feature": 35,
+      "kind": "planting_bed",
+      "emitted_cells": 84,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 36,
+      "kind": "planting_bed",
+      "emitted_cells": 12,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 37,
+      "kind": "planting_bed",
+      "emitted_cells": 6,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 38,
+      "kind": "planting_bed",
+      "emitted_cells": 5,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 39,
+      "kind": "planting_bed",
+      "emitted_cells": 33,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 40,
+      "kind": "planting_bed",
+      "emitted_cells": 5,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 41,
+      "kind": "planting_bed",
+      "emitted_cells": 6,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 42,
+      "kind": "planting_bed",
+      "emitted_cells": 19,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 43,
+      "kind": "planting_bed",
+      "emitted_cells": 9,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 44,
+      "kind": "planting_bed",
+      "emitted_cells": 26,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 45,
+      "kind": "planting_bed",
+      "emitted_cells": 35,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 46,
+      "kind": "planting_bed",
+      "emitted_cells": 10,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "dirt",
+      "material_status": "legend-bound planted area; soil, foliage and heights are visual estimates"
+    },
+    {
+      "feature": 47,
+      "kind": "rock_edge",
+      "emitted_cells": 13,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "legend-bound rock outline; stone type and one-block height are estimates"
+    },
+    {
+      "feature": 48,
+      "kind": "rock_edge",
+      "emitted_cells": 5,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "legend-bound rock outline; stone type and one-block height are estimates"
+    },
+    {
+      "feature": 49,
+      "kind": "rock_edge",
+      "emitted_cells": 1,
+      "protected_columns_skipped": 0,
+      "missing_terrain_columns": 0,
+      "material": "stone",
+      "material_status": "legend-bound rock outline; stone type and one-block height are estimates"
+    }
+  ],
+  "failures": [],
+  "raised_planters": "No independently bound raised planter structures; planted beds only.",
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "production_placement_eligible": false,
+  "limitations": [
+    "2017 proposed geometry and older survey material labels are not current/as-built verification.",
+    "Unknown paving uses neutral stone as an explicitly unconfirmed review placeholder.",
+    "Path edges follow source polygons; heights follow sampled 2022 terrain, not accepted design levels.",
+    "Rock/planting block shapes, soil and foliage are estimated Minecraft proxies."
+  ],
+  "world_validation": {
+    "format": "Bedrock .mcworld",
+    "file": "park.mcworld",
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "blocks_per_metre": 1,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "vertical_offset_blocks": -111,
+    "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+    "study_source_height_m": null,
+    "spawn": [
+      407545,
+      76,
+      -343566
+    ],
+    "chunks": 100,
+    "composed_blocks": 214483,
+    "explicit_air_cells": 0,
+    "ground_fill_depth_blocks": 4,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "foundation": {
+      "minecraft_y": 60,
+      "mode": "shared",
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+    },
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "sha256": "6d8cde0041b7b070c44fe85c82d5b113219247d83b480c87e1c8cac955951b85",
+    "quality": "draft_unverified",
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ]
+  },
+  "overlay_material_counts": {
+    "bricks": 1283,
+    "stone": 1639,
+    "black_concrete": 752,
+    "dirt": 185,
+    "oak_leaves": 65
+  }
+}

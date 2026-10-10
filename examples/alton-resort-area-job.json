@@ -1,0 +1,298 @@
+{
+  "work_directory": "../resort-area-work",
+  "catalogue": "../voxel_mapper/data/alton-planning-catalogue.json",
+  "supplemental_catalogues": [
+    "../evidence/wicker-shop-drawing-sources.json",
+    "../evidence/wicker-site-section-sources.json",
+    "../evidence/wicker-architectural-extra-sources.json"
+  ],
+  "official_hosts": [
+    "publicaccess.staffsmoorlands.gov.uk"
+  ],
+  "offline": true,
+  "source_directories": [],
+  "areas": [
+    {
+      "id": "wicker-man",
+      "name": "Wicker Man and woodland paths",
+      "application_references": [
+        "SMD/2016/0315",
+        "SMD/2017/0111"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "fence",
+        "architectural_components",
+        "track",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "paving",
+        "path",
+        "fence",
+        "stairs",
+        "ride_track",
+        "tunnel",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "mutiny-bay",
+      "name": "Mutiny Bay courtyard and rides",
+      "application_references": [
+        "SMD/2017/0472",
+        "SMD/2017/0473",
+        "SMD/2007/1172",
+        "SMD/2008/0940",
+        "SMD/2008/0988",
+        "SMD/2013/0012",
+        "SMD/2013/0013",
+        "SMD/2013/0419",
+        "SMD/2013/0420"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "fence",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "paving",
+        "path",
+        "fence",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "enchanted-village",
+      "name": "Enchanted Village",
+      "application_references": [
+        "SMD/2014/0107",
+        "SMD/2016/0040"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "stargazing-pods",
+      "name": "Stargazing Pods",
+      "application_references": [
+        "SMD/2018/0141"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "alton-towers-hotel",
+      "name": "Alton Towers Hotel",
+      "application_references": [
+        "SMD/2015/0488"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "path",
+        "paving",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "forbidden-valley",
+      "name": "Forbidden Valley",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "x-sector",
+      "name": "X Sector",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "dark-forest",
+      "name": "Dark Forest",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "gardens",
+      "name": "Gardens",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "towers",
+      "name": "Towers ruins",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "cbeebies-land",
+      "name": "CBeebies Land",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "adventure-land",
+      "name": "Adventure Land",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "katanga-canyon",
+      "name": "Katanga Canyon",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "gloomy-wood",
+      "name": "Gloomy Wood",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "towers-street",
+      "name": "Towers Street",
+      "application_references": [],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "needs explicit application association",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    }
+  ]
+}

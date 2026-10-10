@@ -1,0 +1,2092 @@
+{
+  "query": "FullAddress=Alton Towers",
+  "pages": [
+    {
+      "page": 1,
+      "sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1",
+      "matched_park_rows": 14,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 2,
+      "sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5",
+      "matched_park_rows": 16,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 3,
+      "sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d",
+      "matched_park_rows": 11,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 4,
+      "sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22",
+      "matched_park_rows": 13,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 5,
+      "sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c",
+      "matched_park_rows": 12,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 6,
+      "sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90",
+      "matched_park_rows": 16,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 7,
+      "sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 8,
+      "sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 9,
+      "sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 10,
+      "sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 11,
+      "sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 12,
+      "sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 13,
+      "sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 14,
+      "sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 15,
+      "sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 16,
+      "sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 17,
+      "sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 18,
+      "sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179",
+      "matched_park_rows": 20,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    },
+    {
+      "page": 19,
+      "sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54",
+      "matched_park_rows": 6,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet"
+    }
+  ],
+  "applications": [
+    {
+      "reference": "SMD/2026/0211",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=183265",
+      "application_context": "SMD/2026/0211 28/04/2026 28/04/2026 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Proposed walk through attraction building Planning Permission - Approved 23/06/2026",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2025/0392",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=181958",
+      "application_context": "SMD/2025/0392 27/08/2025 27/08/2025 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Retrospective installation of stage and associated canopy structure. Planning Permission - Approved 05/11/2025",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0579",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=180547",
+      "application_context": "SMD/2024/0579 27/12/2024 27/12/2024 Alton Towers , Farley Lane , Farley , Staffordshire , The proposal is for the removal of an existing attraction and to replace it with a new landscaped attraction and ancillary buildings including station and themed structures within the Cbeebies land area of Alton Towers Planning Permission - Approved 10/02/2026",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0438",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=179935",
+      "application_context": "SMD/2024/0438 24/09/2024 25/09/2024 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Construction of two log cabins and associated pathways/landscaping. Planning Permission - Approved 13/02/2025",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165",
+      "application_context": "SMD/2024/0136 21/03/2024 21/03/2024 Woodcutters Bar & Grill , Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Removal of the existing 2 no. static and 1 no. portacabins and the decluttering of the site in general to provide a storage and opportunity for visitor attraction (Multi-use) building that consists of 6 no. containers (3 per side lengthways) and tensile domed roof between Planning Permission - Approved 31/05/2024",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0114",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=177945",
+      "application_context": "SMD/2024/0114 06/03/2024 11/03/2024 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Removal of the existing 2 no. static and 1 no. portacabins and the decluttering of the site in general to provide a storage and visitor attraction (Multi use) building that consists of 6 no. containers (3 per side lengthways) and tensile domed roof between. Planning Permission - Approved 31/05/2024",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0064",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=177485",
+      "application_context": "SMD/2024/0064 06/02/2024 06/02/2024 Ripsaw Cafe , Alton Towers , Farley Lane , Farley , Staffordshire , Demolition of existing Funk n Fly ride and erection of replacement ride Planning Permission - Approved 29/04/2024",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2024/0016",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=177086",
+      "application_context": "SMD/2024/0016 12/01/2024 12/01/2024 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Application for Variation of a Conditions 1, 3, 4 and 6 in relation to application SMD/2021/0330 Re:Installation of a seasonal temporary stage. Planning Permission - Approved 26/04/2024",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2023/0516",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=174904",
+      "application_context": "SMD/2023/0516 16/10/2023 16/10/2023 Fresh Fish & Chips Nemises , Alton Towers , Farley Lane , Farley , Staffordshire , Extension and internal alterations to Ripsaw cafe to create new retail unit Planning Permission - Approved 08/12/2023",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2023/0515",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=174884",
+      "application_context": "SMD/2023/0515 16/10/2023 21/11/2023 Air Shop , Alton Towers , Farley Lane , Farley , Staffordshire , The proposal is for the demolition of an existing poor-quality arcade offering and replacement with a purpose-built steel frame structure of the same function. Planning Permission - Approved 07/02/2024",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2022/0556",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=165529",
+      "application_context": "SMD/2022/0556 07/10/2022 27/10/2022 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Removal of existing structures and construction of new building to house indoor attraction, associated ground works, infrastructure and landscaping. Planning Permission - Approved 22/06/2023",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2022/0524",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=165064",
+      "application_context": "SMD/2022/0524 16/09/2022 16/09/2022 LAND AT ALTON TOWERS RESORT , Farley Lane , Farley , Staffordshire , Screening Opinion for a new attraction housed within a new building. Screening Opinion - EIA Not Required 19/01/2023",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2022/0237",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=161345",
+      "application_context": "SMD/2022/0237 28/04/2022 28/04/2022 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Listed building consent for the Removal of 3No. antenas and all ancillary development, installation of 6No. antennas and all ancillary development (inc. the upgrade of existing apparatus within the internal equipment room). Listed Building Consent - Approved 23/02/2023",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2022/0225",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=161147",
+      "application_context": "SMD/2022/0225 28/04/2022 28/04/2022 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Planning permission for the Removal of 3No. antenas and all ancillary development, installation of 6No. antennas and all ancillary development (inc. the upgrade of existing apparatus within the internal equipment room). Planning Permission - Approved 23/02/2023",
+      "search_page_sha256": "f841f599cb52ff8affab19da6fa57b16a0160e406245531d4dfb624c7131cfa1"
+    },
+    {
+      "reference": "SMD/2022/0032",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=157904",
+      "application_context": "SMD/2022/0032 21/01/2022 21/01/2022 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Certificate of Lawfullness proposed- application seeks to confirm the lawfulness of maintenance works to the 'Nemesis' ride, an existing roller coaster at Alton Towers Resort. Certificate of Lawfulness - Lawful (Approved) 22/03/2022",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0851",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=156984",
+      "application_context": "SMD/2021/0851 23/12/2021 11/01/2022 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Installation of green room cabin Planning Permission - Approved 01/04/2022",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0773",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=155244",
+      "application_context": "SMD/2021/0773 25/11/2021 25/11/2021 The Swiss Cottage , Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed building consent for Remedial Repair and Making-good Works to the Southwest (Rear) Elevation of The Swiss Cottage Listed Building Consent - Approved 20/01/2022",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0412",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=150104",
+      "application_context": "SMD/2021/0412 14/06/2021 01/07/2021 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Listed Building Consent for 18.0m Phase 8 Monopole C/W wrapround Cabinet at base and associated ancillary works. Listed Building Consent - Approved 22/09/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0390",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=149725",
+      "application_context": "SMD/2021/0390 14/06/2021 01/07/2021 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , 18.0m Phase 8 Monopole C/W wrapround Cabinet at base and associated ancillary works. Planning Permission - Approved 22/09/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0339",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=148985",
+      "application_context": "SMD/2021/0339 19/05/2021 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Listed Building consent for the Removal of 3No. antennas and all ancillary development Installation of 6No. antennas and all ancillary development (inc. the upgrade of existing apparatus within the internal equipment room) Application Withdrawn 06/12/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0338",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=148984",
+      "application_context": "SMD/2021/0338 19/05/2021 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Removal of 3No. antennas and all ancillary development Installation of 6No. antennas and all ancillary development (inc. the upgrade of existing apparatus within the internal equipment room) Application Withdrawn 06/12/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2021/0330",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=148866",
+      "application_context": "SMD/2021/0330 14/05/2021 25/05/2021 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Installation of a seasonal temporary stage Planning Permission - Approved 16/08/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2020/0715",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=143087",
+      "application_context": "SMD/2020/0715 21/12/2020 18/01/2021 Communication Station Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Listed building consent for a proposed development comprises the installation of 3 No. new 4G/5G EE antennae located on the face of the one northerly facing and one southerly facing flag tower turrets painted black / grey to match existing EE antenna thereon. On the roof of the Flag Tower behind the parapet further ancillary apparatus will be located consisting of feeder cable tray and feeder cabling, 3 No \u2018BoB\u2019s\u2019, 3 No. AHEGB\u2019s 3 No AHHB/RRH\u2019s, 3 No AZQL/RRH\u2019s and 3 No. E14R00P42\u2019s. All other electronic apparatus will be located internally on the second floor of the flag tower within the existing racks and supported from steel frame walkway. Listed Building Consent - Approved 24/03/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2020/0714",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=143086",
+      "application_context": "SMD/2020/0714 21/12/2020 18/01/2021 Communication Station Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , The proposed development comprises the installation of 3 No. new 4G/5G EE antennae located on the face of the one northerly facing and one southerly facing flag tower turrets painted black / grey to match existing EE antenna thereon. On the roof of the Flag Tower behind the parapet further ancillary apparatus will be located consisting of feeder cable tray and feeder cabling, 3 No \u2018BoB\u2019s\u2019, 3 No. AHEGB\u2019s 3 No AHHB/RRH\u2019s, 3 No AZQL/RRH\u2019s and 3 No. E14R00P42\u2019s. All other electronic apparatus will be located internally on the second floor of the flag tower within the existing racks and supported from steel frame walkway. Planning Permission - Approved 24/03/2021",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2020/0553",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=140644",
+      "application_context": "SMD/2020/0553 05/10/2020 08/10/2020 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed Building Consent for Alton Towers heritage tour and scaremaze attraction. Awaiting Decision",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2019/0695",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=131577",
+      "application_context": "SMD/2019/0695 13/11/2019 21/11/2019 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Change of use of land for seasonal car parking together with associated surfacing, drainage, levelling and landscaping works and surfaced internal access route. Planning Permission - Approved 08/04/2020",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2019/0461",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=130296",
+      "application_context": "SMD/2019/0461 29/07/2019 05/08/2019 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Variation of condition 2 of planning permission SMD/2013/1047 Planning Permission - Approved 12/09/2019",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2019/0224",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=129024",
+      "application_context": "SMD/2019/0224 08/04/2019 08/04/2019 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Application for variation of condition 7 of SMD/2010/0547 relating to the Banqueting Hall window Listed Building Consent - Approved 11/06/2019",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2019/0155",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=128657",
+      "application_context": "SMD/2019/0155 13/03/2019 03/04/2019 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Proposed portable cabin Planning Permission - Approved 24/05/2019",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2018/0793",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=127678",
+      "application_context": "SMD/2018/0793 21/12/2018 09/01/2019 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB The proposal is for the installation of 2 No. of Junior Drop Tower rides with an associated queue line. Planning Permission - Approved 11/03/2019",
+      "search_page_sha256": "36c112ae6862a24eca37108e2cd132e60a27ae0c23a44733e78c79e8ff5eb1c5"
+    },
+    {
+      "reference": "SMD/2018/0141",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=121348",
+      "application_context": "SMD/2018/0141 28/02/2018 01/03/2018 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB 102 accommodation pods, shower and toilet facility building entrance feature, hard and soft landscaping and parking and drainage works. Planning Permission - Approved 12/07/2018",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2018/0050",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=120297",
+      "application_context": "SMD/2018/0050 23/01/2018 02/02/2018 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB The installation of lighting at the perimeters of the Car Park J, Alton Towers Resort. Planning Permission - Approved 27/03/2018",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0601",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=116757",
+      "application_context": "SMD/2017/0601 04/12/2017 Alton Towers Cbeebies Land Hotel , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4RP Decorative timber shutters to the north face of Alton Towers CBeebies Land Hotel Application Invalid",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0769",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=118516",
+      "application_context": "SMD/2017/0769 21/11/2017 05/12/2017 Alton Towers Hotel , Farley Lane , Farley , Staffordshire , ST10 4RP 1700mm long x 1400 mm high and 3mm aluminium cut to shape with channel stiffening fitted to the reverse to specialist design with anti graffiti gloss laminate applied Application Invalid",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0666",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=117377",
+      "application_context": "SMD/2017/0666 04/10/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB North facade and decorative 'themed' additions to area of Alton Towers CBeebies Land Hotel. Including new signage, decorative timber shutters & GRP theming. Application Withdrawn 22/11/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=115660",
+      "application_context": "SMD/2017/0473 12/07/2017 26/07/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Internal and external works to Ingestre court Listed Building Consent - Approved 20/09/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0472",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=115659",
+      "application_context": "SMD/2017/0472 11/07/2017 26/07/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Internal and external works to existing listed building fabric, to form a new servery and re covering of existing external canopy structure Planning Permission - Approved 20/09/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0192",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=112856",
+      "application_context": "SMD/2017/0192 14/03/2017 23/03/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed Building Consent for a height reduction to the existing boundary walls to the Alton Towers Administration & Staff Entrance off Farley Lane Listed Building Consent - Approved 16/05/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0176",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=112657",
+      "application_context": "SMD/2017/0176 14/03/2017 23/03/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Proposed height reduction to the existing boundary walls to the Alton Towers administration and staff entrance off Farley Lane Planning Permission - Approved 16/05/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0111",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=111996",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2017/0077",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=111577",
+      "application_context": "SMD/2017/0077 09/02/2017 13/02/2017 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Landscaping works on 'field O' of the meadows, including draining and regrading of land and creation of bunds with structural planting/landscaping Application Withdrawn 30/03/2017",
+      "search_page_sha256": "624ad315b23471cfd4a10a331a3ebabafcdbee26f8a0588561eac611292af15d"
+    },
+    {
+      "reference": "SMD/2016/0498",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=106575",
+      "application_context": "SMD/2016/0498 08/08/2016 10/08/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Demolition of existing maintenance/storage buildings and the erection of replacement maintenance/storage buildings Planning Permission - Approved 07/10/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0410",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=105655",
+      "application_context": "SMD/2016/0410 04/07/2016 07/07/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Demolition of existing structures and installation of a new ride and construction of associated buildings, along with landscaping works Planning Permission - Approved 02/09/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0315",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=104356",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0264",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=103314",
+      "application_context": "SMD/2016/0264 21/04/2016 21/04/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Screening Opinion Request 10/05/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0248",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=102554",
+      "application_context": "SMD/2016/0248 13/04/2016 13/04/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed Building Consent for the installation of 1x0.3m dish antennas onto the existing Airwave telecommunications kit for the emergency services networks only. Listed Building Consent - Approved 08/06/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0247",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=102534",
+      "application_context": "SMD/2016/0247 13/04/2016 13/04/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Installation of 1x0.3m dish antennas onto the existing Airwave telecommunications kit for the emergency services networks only. Planning Permission - Approved 08/06/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0119",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=98474",
+      "application_context": "SMD/2016/0119 24/02/2016 21/03/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Proposed removal of 4 no existing modular units and replaced with 8 no used modular units Planning Permission - Approved 04/05/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0082",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=97054",
+      "application_context": "SMD/2016/0082 08/02/2016 O2 , Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Proposed installation of one additional dish antenna to the existing emergency services cell site on the roof top of Alton Tower Application Invalid",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2016/0040",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=95974",
+      "application_context": "SMD/2016/0040 21/01/2016 01/02/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Development of 35 double lodges with associated reception building, tipis, service buildings, hard and soft landscaping, parking and drainage works Planning Permission - Approved 27/04/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2015/0789",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=93615",
+      "application_context": "SMD/2015/0789 09/12/2015 08/02/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed Building Consent for removal of 3no. existing antennas and installation of 3no. replacement antennas. Removal of 3no. exisiting mast head amplifiers and installation of 3no. replacement MAA's. Installation of a 0.3m dish on a new pole. Ancillary works within the existing equipment cabinet Listed Building Consent - Approved 01/04/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2015/0788",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=93594",
+      "application_context": "SMD/2015/0788 09/12/2015 08/02/2016 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Removal of 3no. existing antennas and installation of 3no. replacement antennas. Removal of 3no. exisiting mast head amplifiers and installation of 3no. replacement MAA's. Installation of a 0.3m dish on a new pole. Ancillary works within the existing equipment cabinet Planning Permission - Approved 01/04/2016",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2015/0727",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=91994",
+      "application_context": "SMD/2015/0727 11/11/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB x1 additional telecommunications dish antenna to be installed on existing steelworks Application Invalid",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2015/0720",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=91774",
+      "application_context": "SMD/2015/0720 11/11/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed Building Consent for x1 additional telecommunications dish antenna to be installed on existing steelworks Application Invalid",
+      "search_page_sha256": "a00dd198be538878460eb9bff857309154627b887326f0ff999b0040b2569a22"
+    },
+    {
+      "reference": "SMD/2015/0718",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=91714",
+      "application_context": "SMD/2015/0718 10/11/2015 22/12/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Telecommunications upgrade & associated works Planning Permission - Approved 31/05/2016",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0584",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=87834",
+      "application_context": "SMD/2015/0584 11/09/2015 30/09/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Removal of temporary refuse skip and associated items. Proposed new CHP container including associated oil tanks and radiator. Planning Permission - Approved 01/12/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0538",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=86394",
+      "application_context": "SMD/2015/0538 13/08/2015 27/08/2015 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Listed Building Consent for telecoms upgrade & associated works Listed Building Consent - Approved 08/07/2016",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0537",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=86374",
+      "application_context": "SMD/2015/0537 13/08/2015 27/08/2015 Flag Tower , Alton Towers , Farley Lane , Farley , Staffordshire , Telecoms upgrade & associated works Planning Permission - Approved 08/07/2016",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0488",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=84975",
+      "application_context": "SMD/2015/0488 24/07/2015 29/07/2015 Alton Towers Hotel , Farley Lane , Farley , Staffordshire , ST10 4RP Application for minor demolition works and the development of an extension to the existing hotel including an additional 76 bedrooms, a restaurant and associated facilities, access, car parking and landscaping. Planning Permission - Approved 25/11/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=84554",
+      "application_context": "SMD/2015/0473 17/07/2015 23/07/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Minor works to the 'Air' rollercoaster, including enhancing the existing station area, installing a photo-opportunity kiosk and new themed features Planning Permission - Approved 17/09/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0280",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=79574",
+      "application_context": "SMD/2015/0280 11/05/2015 11/05/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Minor amendments on planning permission SMD/2014/0782 (Conditions 2, 3, 4, 5,6, 8, 9, 10) to the new building, pathways, junior course layout and installation of a landing area Planning Permission - Approved 11/08/2023",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0224",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=78034",
+      "application_context": "SMD/2015/0224 16/04/2015 22/04/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Two storey rear and single storey front extension to the existing 'Air Shop' and installation of a new themed entrance feature Planning Permission - Approved 17/06/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0223",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=78014",
+      "application_context": "SMD/2015/0223 16/04/2015 20/04/2015 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Certificate of lawfulness for the lawful implementation of building operations (constructions works) that commence development of Alton Towers Hotel Extension (ref. 11/00402/REM1MJ) Certificate of Lawfulness - Lawful (Approved) 15/06/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2015/0120",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=74714",
+      "application_context": "SMD/2015/0120 03/03/2015 03/03/2015 Alton Towers , Farley Lane , Farley , Staffordshire , Formal Screening Option 23/04/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2014/0841",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=71254",
+      "application_context": "SMD/2014/0841 24/12/2014 24/12/2014 Gothic Prospect Tower , Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Listed building consent to comprise repair of the masonry and cast iron structure; specialist removal of modern paint finishes and re-decoration (inside and out); overhauling and replacing timber doors and windows; renewing the lead work capping/flashing; repairing the ground floor level paved area; and the reinstatement of the decorative cast iron balcony railings to first and second floor Listed Building Consent - Approved 17/02/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2014/0782",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=69394",
+      "application_context": "SMD/2014/0782 24/11/2014 26/11/2014 Alton Towers , Farley Lane , Farley , Staffordshire , ST10 4DB Demolition of existing single storey corrugated building and installation of new high ropes course including the erection of a new single storey building and new play area Planning Permission - Approved 26/01/2015",
+      "search_page_sha256": "14fc5f29aa0828b9316ba82073d18b8ed83b1bb354872300cfb1885a54e23d0c"
+    },
+    {
+      "reference": "SMD/2014/0144",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=52134",
+      "application_context": "SMD/2014/0144 10/03/2014 13/03/2014 ALTON TOWERS , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4DB Extension to the east of the existing spa, including a reception area and spa garden with associated hard and soft landscaping works Planning Permission - Approved 08/05/2014",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2014/0107",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=51414",
+      "application_context": "SMD/2014/0107 21/02/2014 25/02/2014 ALTON TOWERS , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4DB Development of 61 double lodges and 10 tree houses with associated restaurant and service buildings, play areas, hard and soft landscaping, parking and drainage works. Planning Permission - Approved 22/05/2014",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2014/0106",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=51396",
+      "application_context": "SMD/2014/0106 21/02/2014 ALTON TOWERS , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4DB Variation of Condition 18 on 11/00402/REM1MJ Application Withdrawn 24/11/2014",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/1106",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47715",
+      "application_context": "SMD/2013/1106 08/11/2013 11/11/2013 ALTON TOWERS , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Bridge/Dam area, White Bridge area/Upper and Lower Gardens. Listed Building Consent - Approved 19/06/2014",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/1105",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47714",
+      "application_context": "SMD/2013/1105 08/11/2013 11/11/2013 ALTON TOWERS , FARLEY LANE , FARLEY , STAFFORDSHIRE , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Bridge/Dam area, White Bridge area/Upper and Lower Gardens. Planning Permission - Approved 19/06/2014",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0960",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18608",
+      "application_context": "SMD/2013/0960 17/09/2013 20/09/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Demolition of existing buildings and construction of a single store building Conservation Area Consent - Approved 15/11/2013",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0959",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18607",
+      "application_context": "SMD/2013/0959 17/09/2013 20/09/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Demolition of existing buildings and construction of a single store building Planning Permission - Approved 15/11/2013",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/1056",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18704",
+      "application_context": "SMD/2013/1056 21/08/2013 24/08/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Re-theming of Old MacDonald's Farmyard including erection of new buildings, extensions to existing buildings, demolition of Big Top and other structures, associated landscaping and pathways. Planning Permission - Approved (Prior Oct 2013) 10/10/2013",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/1047",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18695",
+      "application_context": "SMD/2013/1047 21/08/2013 24/08/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Re-theming of Old MacDonald's Farmyard including erection of new buildings, extensions to existing buildings, demolition of Big Top and other structures, associated landscaping and pathways. Planning Permission - Approved (Prior Oct 2013) 10/10/2013",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/1031",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18679",
+      "application_context": "SMD/2013/1031 13/08/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB non-material amendment (13/00136/FUL)",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0587",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18068",
+      "application_context": "SMD/2013/0587 08/08/2013 09/08/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of Type 1-R (railings) fencing at 4.12 in the Towers area. Planning Permission - Approved (Prior Oct 2013) 26/09/2013",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0521",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18002",
+      "application_context": "SMD/2013/0521 03/07/2013 Alton Towers Resort , Alton Towers Resort , Alton Towers , Stoke-On-Trent , Alton , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle and the Bridge/Dam area",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0520",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18001",
+      "application_context": "SMD/2013/0520 03/07/2013 Alton Towers Resort , Alton Towers Resort , Alton Towers , Stoke-On-Trent , Alton , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area and the Bridge/Dam area",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0253",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17734",
+      "application_context": "SMD/2013/0253 16/05/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower.",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0252",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17733",
+      "application_context": "SMD/2013/0252 16/05/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower.",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0331",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17812",
+      "application_context": "SMD/2013/0331 15/04/2013 Alton Towers , Alton Towers , Alton , Stoke-On-Trent , ST10 4DB Demolition of Exsiting Structures and Installation of a New Rollercoaster, including associated ground works, buildings and landscaping",
+      "search_page_sha256": "0c29af256f2915852ca5af9dcfe3ce440d133dbea044dfa0e252d3d0817b8b90"
+    },
+    {
+      "reference": "SMD/2013/0426",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17907",
+      "application_context": "SMD/2013/0426 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the White Bridge area and the Lower Gardens. Planning Permission - Refused (Prior Oct 2013) 05/06/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0421",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17902",
+      "application_context": "SMD/2013/0421 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the White Bridge area and the Lower Gardens. Planning Permission - Refused (Prior Oct 2013) 05/06/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0420",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17901",
+      "application_context": "SMD/2013/0420 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area and the Bridge/Dam area Planning Permission - Approved (Prior Oct 2013) 05/06/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0419",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17900",
+      "application_context": "SMD/2013/0419 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area and the Bridge/Dam area Planning Permission - Approved (Prior Oct 2013) 05/06/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0020",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17426",
+      "application_context": "SMD/2013/0020 09/02/2013 10/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Upper Gardens. Planning Permission - Refused (Prior Oct 2013) 04/04/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0015",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17421",
+      "application_context": "SMD/2013/0015 09/02/2013 10/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Upper Gardens. Planning Permission - Refused (Prior Oct 2013) 04/04/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0013",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17419",
+      "application_context": "SMD/2013/0013 09/02/2013 09/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower. Planning Permission - Approved (Prior Oct 2013) 05/04/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0012",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17418",
+      "application_context": "SMD/2013/0012 09/02/2013 09/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower. Planning Permission - Approved (Prior Oct 2013) 05/04/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2013/0144",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17561",
+      "application_context": "SMD/2013/0144 08/01/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB discharge of conditions (11/01203/FUL_MJ)",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2012/1047",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17324",
+      "application_context": "SMD/2012/1047 12/10/2012 16/10/2012 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Phased development of 150 lodges, associated reception/restaurant and servicing buildings at Alton Towers Resort, along with hard and soft landscaping, disabled car parking, and associated drainage works. Application Withdrawn 16/05/2013",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2012/0098",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16374",
+      "application_context": "SMD/2012/0098 31/03/2012 ALTON TOWERS RESORT , ALTON TOWERS RESORT , Alton , Stoke-On-Trent , ST10 4DB Demolition of Existing Structures and Installation of New Rollercoaster, including associated ground works, buildings and landscaping. 01/05/2012",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/1058",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16193",
+      "application_context": "SMD/2011/1058 20/12/2011 20/12/2011 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Demolition of Existing Structures (inc. Black Hole) to facilitate new rollercoaster Planning Permission - Approved (Prior Oct 2013) 21/03/2012",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/1051",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16183",
+      "application_context": "SMD/2011/1051 20/12/2011 20/12/2011 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Demolition of Existing Structures and Installation of New Rollercoaster, including associated ground works, buildings and landscaping Planning Permission - Approved (Prior Oct 2013) 20/03/2012",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/1143",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16291",
+      "application_context": "SMD/2011/1143 07/12/2011 08/12/2011 Oratory , Oratory , Alton Towers , Farley , Farley Lane , Staffordshire , ST10 4DB Installation of a stained glass window within the Oratory structure Planning Permission - Approved (Prior Oct 2013) 30/01/2012",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/1196",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16344",
+      "application_context": "SMD/2011/1196 02/11/2011 ALTON TOWERS LTD , ALTON TOWERS LTD , Alton Towers , Stoke-On-Trent , Alton , ST10 4DB BUILDING TO HOUSE INDOOR RIDE, RETAIL BUILDING, QUEUE LINES AND ASSOCIATED HARD AND SOFT LANDSCAPING",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/0994",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16056",
+      "application_context": "SMD/2011/0994 20/08/2011 26/08/2011 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB Building to house indoor ride, retail building, queue lines and associated hard / soft landscaping. Planning Permission - Approved (Prior Oct 2013) 20/10/2011",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2011/0292",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=15354",
+      "application_context": "SMD/2011/0292 06/05/2011 19/05/2011 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Variation of Condition 1 - of planning permission 06/01004/FUL1MJ - Extension of Time Planning Permission - Approved (Prior Oct 2013) 18/08/2011",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2010/0547",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=14482",
+      "application_context": "SMD/2010/0547 25/08/2010 26/08/2010 The Banqueting Hall , The Banqueting Hall , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4DB Removal, Restoration and Reinstatement of the Banqueting Hall Window, Glazing Panels and Stone Surround. Planning Permission - Approved (Prior Oct 2013) 20/10/2010",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2010/0649",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=14584",
+      "application_context": "SMD/2010/0649 18/08/2010 19/08/2010 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB REBUILD THE ORATORY STRUCTURE WITHIN THE BIRD CAGE GARDENS AT ALTON TOWERS RESORT (FOLLOWING STORM DAMAGE). Planning Permission - Approved (Prior Oct 2013) 14/10/2010",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2010/0648",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=14583",
+      "application_context": "SMD/2010/0648 18/08/2010 19/08/2010 Oratory , Oratory , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4DB Rebuild the Oratory structure within the bird cage gardens (following storm damage) Planning Permission - Approved (Prior Oct 2013) 14/10/2010",
+      "search_page_sha256": "4231c414798830eefb7654eb21d7f3cb543acf4c2c05f28b3f4a0df96c3d5aba"
+    },
+    {
+      "reference": "SMD/2009/1212",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=14151",
+      "application_context": "SMD/2009/1212 10/12/2009 11/12/2009 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of artwork in admissions area Planning Permission - Approved (Prior Oct 2013) 05/02/2010",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2009/0869",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=13583",
+      "application_context": "SMD/2009/0869 13/11/2009 14/11/2009 Skyride Station Towers End , Skyride Station Towers End , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4DB Rebuilding of sky ride building Planning Permission - Approved (Prior Oct 2013) 08/01/2010",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2009/0555",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=13268",
+      "application_context": "SMD/2009/0555 04/08/2009 06/08/2009 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Construction of five log cabins, associated pathways and landscaping adjacent to Old Macdonalds Farm Planning Permission - Approved (Prior Oct 2013) 14/09/2009",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12613",
+      "application_context": "SMD/2009/0125 05/01/2009 06/01/2009 Pizza Hut Katanga , Pizza Hut Katanga , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Construction of covered seating areas with linked covered walkway and external alterations to the Katanga restaurant. Planning Permission - Approved (Prior Oct 2013) 17/02/2009",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2009/0120",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12596",
+      "application_context": "SMD/2009/0120 05/01/2009 3D Cinema , 3D Cinema , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , CONDIS",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2008/1323",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12676",
+      "application_context": "SMD/2008/1323 02/12/2008 11/12/2008 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of replacement rollercoaster, erection of station buildings and associated landscaping works. Planning Permission - Approved (Prior Oct 2013) 06/11/2009",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2008/0988",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12198",
+      "application_context": "SMD/2008/0988 03/10/2008 04/10/2008 3D Cinema , 3D Cinema , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Demolition of existing 3D cinema building in association with the proposed development of a replacment indoor attraction. Planning Permission - Approved (Prior Oct 2013) 26/11/2008",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2008/0940",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12150",
+      "application_context": "SMD/2008/0940 03/10/2008 04/10/2008 3D Cinema , 3D Cinema , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Construction of replacement indoor attraction and external alterations to existing store and Mutiny Bay shop. Planning Permission - Approved (Prior Oct 2013) 26/11/2008",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2008/0270",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=11480",
+      "application_context": "SMD/2008/0270 19/02/2008 20/02/2008 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Two non-illuminated and two partly illuminated free standing entrance signs. Planning Permission - Approved (Prior Oct 2013) 16/04/2008",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/1344",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=11213",
+      "application_context": "SMD/2007/1344 12/09/2007 13/09/2007 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Upgrade of telecommunications installation from 2G to 2G/3G equipment Planning Permission - Approved (Prior Oct 2013) 07/11/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/1172",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=11041",
+      "application_context": "SMD/2007/1172 10/09/2007 11/09/2007 New Boat Ride , New Boat Ride , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Installation of new boat ride and ancillary structures at the boating lake Planning Permission - Approved (Prior Oct 2013) 06/11/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0683",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10528",
+      "application_context": "SMD/2007/0683 24/08/2007 25/08/2007 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Repair and restoration works at the house conservatory Planning Permission - Approved (Prior Oct 2013) 11/10/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0681",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10526",
+      "application_context": "SMD/2007/0681 24/08/2007 25/08/2007 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Repair and restoration works to conservatory adjacent house Planning Permission - Approved (Prior Oct 2013) 15/11/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0648",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10493",
+      "application_context": "SMD/2007/0648 21/08/2007 21/08/2007 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Variation of conditions 2 and 3 of 05/00685/FUL Planning Permission - Approved (Prior Oct 2013) 11/10/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0981",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10826",
+      "application_context": "SMD/2007/0981 14/05/2007 15/05/2007 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Repair and restoration works to the round tower Planning Permission - Approved (Prior Oct 2013) 10/07/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0268",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10112",
+      "application_context": "SMD/2007/0268 12/04/2007 13/04/2007 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Removal of three second generation (2G) antennae and installation of three third generation antennae. Planning Permission - Refused (Prior Oct 2013) 08/05/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0260",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=10104",
+      "application_context": "SMD/2007/0260 12/04/2007 13/04/2007 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Upgrade of Telecommunications Installation from 2G to 3G Planning Permission - Refused (Prior Oct 2013) 08/06/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2007/0009",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9726",
+      "application_context": "SMD/2007/0009 31/01/2007 01/02/2007 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB 60 sq m single storey games kiosk at Katanga Canyon Planning Permission - Approved (Prior Oct 2013) 23/03/2007",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2006/0979",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9419",
+      "application_context": "SMD/2006/0979 09/11/2006 09/11/2006 Hogs Head Bar , Hogs Head Bar , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Demolition of Hogs Head Bar and Grill and Laser Etch Building (Conservation Area Consent) Planning Permission - Approved (Prior Oct 2013) 20/12/2006",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2006/0964",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9404",
+      "application_context": "SMD/2006/0964 08/11/2006 09/11/2006 Hogs Head Bar , Hogs Head Bar , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Demolition of existing Hogs Head Bar and Grill and Laser Etch building and construction of a replacement restaurant building and associated landscaping Planning Permission - Approved (Prior Oct 2013) 22/12/2006",
+      "search_page_sha256": "e5034020486215b0f5c5ec88dac247a9a2f24c257354e52e20efc17873db867c"
+    },
+    {
+      "reference": "SMD/2006/1032",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9472",
+      "application_context": "SMD/2006/1032 09/10/2006 09/10/2006 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Construction of an adventure golf attraction and associated landscaping and replacement parking Planning Permission - Approved (Prior Oct 2013) 22/12/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/1153",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9593",
+      "application_context": "SMD/2006/1153 18/09/2006 18/09/2006 Hogs Head Bar , Hogs Head Bar , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Demolition of existing structure and erection of new restaurant building Application Withdrawn 03/11/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/1126",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9566",
+      "application_context": "SMD/2006/1126 15/09/2006 15/09/2006 Hogs Head Bar , Hogs Head Bar , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Construction of 234 sq.mtr. restaurant and associated landscaping. Application Withdrawn 03/11/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/1217",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9657",
+      "application_context": "SMD/2006/1217 08/09/2006 08/09/2006 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ Extension to hotel and car parking extension. Planning Permission - Approved (Prior Oct 2013) 07/12/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/1115",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9555",
+      "application_context": "SMD/2006/1115 08/09/2006 08/09/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Installation of 3 No. panel antennas, 2 No. dishes and associated internally located equipment cabinets. Planning Permission - Approved (Prior Oct 2013) 03/11/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/1113",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9553",
+      "application_context": "SMD/2006/1113 08/09/2006 08/09/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Listed Building Consent - Installation of an electronic communications base station Planning Permission - Approved (Prior Oct 2013) 03/11/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0773",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9213",
+      "application_context": "SMD/2006/0773 08/06/2006 08/06/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Alteration to a Listed Building (Installation of two dish antennas) Application Withdrawn 31/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0772",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9212",
+      "application_context": "SMD/2006/0772 08/06/2006 08/06/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Installation of two dish antennas Application Withdrawn 31/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0443",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=8883",
+      "application_context": "SMD/2006/0443 09/05/2006 09/05/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ 3x antennas and 2x dishes fixed to exterior of building Planning Permission - Refused (Prior Oct 2013) 04/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0431",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=8871",
+      "application_context": "SMD/2006/0431 09/05/2006 09/05/2006 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Alterations to a Listed Building (3x antennas, 2x dishes fixed to exterior of building, and internal equipment cabins) Planning Permission - Refused (Prior Oct 2013) 04/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0445",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=8885",
+      "application_context": "SMD/2006/0445 02/05/2006 31/05/2006 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Construction of 125 Sq.m Maintenance Building and minor alterations to existing ground levels in connection with Splash Landings Hotel Planning Permission - Approved (Prior Oct 2013) 26/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0377",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=8817",
+      "application_context": "SMD/2006/0377 28/04/2006 17/05/2006 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Temporary placement of launch platform and gantry on the modern flat roof of Alton Towers (expiring December 2008) Application Withdrawn 07/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2006/0374",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=8814",
+      "application_context": "SMD/2006/0374 28/04/2006 17/05/2006 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of zip wire, launch and landing platform (expiring December 2008) Application Withdrawn 07/07/2006",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2005/0810",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=7788",
+      "application_context": "SMD/2005/0810 07/06/2005 15/06/2005 Alton Towers , Alton Towers , Alton , Staffordshire Moorlands , ST10 4BZ Refurbishment and extension of Toyland Tours Planning Permission - Approved (Prior Oct 2013) 23/08/2005",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2005/0268",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=7156",
+      "application_context": "SMD/2005/0268 13/01/2005 13/01/2005 Old Dynamo Site , Old Dynamo Site , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Repositioning of climbing wall Planning Permission - Approved (Prior Oct 2013) 08/03/2005",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2004/1476",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=7299",
+      "application_context": "SMD/2004/1476 06/12/2004 23/12/2004 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ External alterations to Listed Building (additional 0.3m microwave dish) Planning Permission - Approved (Prior Oct 2013) 17/02/2005",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2004/1475",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=7298",
+      "application_context": "SMD/2004/1475 06/12/2004 23/12/2004 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ Addition of a 0.3m microwave dish Planning Permission - Approved (Prior Oct 2013) 17/02/2005",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2004/1215",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=6644",
+      "application_context": "SMD/2004/1215 03/09/2004 03/09/2004 Land Adjacent To , Land Adjacent To , Alton Towers Hotel , Alton , Farley Lane , Staffordshire Moorlands , ST10 4BZ Installation of 20m replica scotts pine mast, 3 atennas and a single dish antenna Planning Permission - Approved (Prior Oct 2013) 27/10/2004",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2004/0319",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=5633",
+      "application_context": "SMD/2004/0319 26/01/2004 26/01/2004 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of a 18m Cypress tree mast with 6 antennas 2 300mm dishes, radio equipment housing ancillary development Planning Permission - Approved (Prior Oct 2013) 12/03/2004",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2003/1343",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=5744",
+      "application_context": "SMD/2003/1343 28/11/2003 28/11/2003 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Erection of an aquakart landing stage adjacent to the boating lake Planning Permission - Approved (Prior Oct 2013) 23/01/2004",
+      "search_page_sha256": "3c566376903a9690202f844761d0307e1a42035608d6a57e00dad62ac5144511"
+    },
+    {
+      "reference": "SMD/2003/0917",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=4923",
+      "application_context": "SMD/2003/0917 26/11/2003 19/12/2003 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of a passenger carrying tethered balloon Application Withdrawn 27/02/2004",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2003/0815",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=4821",
+      "application_context": "SMD/2003/0815 28/10/2003 19/12/2003 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ Erection of a 17.5m scots pine telecommunications tree tower, 3 antennae, 3 transmission dishes, equipment cabinets and ancillary equipment Planning Permission - Approved (Prior Oct 2013) 10/02/2004",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2003/1211",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=5218",
+      "application_context": "SMD/2003/1211 14/07/2003 14/07/2003 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ Erection of underground sauna and conservatory extension at Alton Towers Hotel Planning Permission - Approved (Prior Oct 2013) 17/10/2003",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2003/1031",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=5037",
+      "application_context": "SMD/2003/1031 27/06/2003 27/06/2003 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Listed building application for the installation of telecommunications equipment Planning Permission - Approved (Prior Oct 2013) 19/09/2003",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2003/0279",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=4285",
+      "application_context": "SMD/2003/0279 06/06/2003 27/06/2003 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Installation of telecommunications equipment Planning Permission - Approved (Prior Oct 2013) 19/09/2003",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2003/0671",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=4677",
+      "application_context": "SMD/2003/0671 03/03/2003 03/03/2003 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ Wooden rollercoster with ancillary station, maintenance and retail buildings and landscaping Application Withdrawn 04/06/2003",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/1291",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=4161",
+      "application_context": "SMD/2002/1291 08/10/2002 08/10/2002 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire , ST10 4BZ Listed building consent for repositioning of telecommunications antennae and additional antennae Planning Permission - Approved (Prior Oct 2013) 02/12/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/0669",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3298",
+      "application_context": "SMD/2002/0669 08/10/2002 08/10/2002 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire , ST10 4BZ Installation of telecommunications apparatus Planning Permission - Approved (Prior Oct 2013) 02/12/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/0622",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3251",
+      "application_context": "SMD/2002/0622 30/09/2002 30/09/2002 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Stoke-On-Trent , Alton , Staffordshire , ST10 4BZ Extension and alteration to haunted house shop Planning Permission - Approved (Prior Oct 2013) 25/11/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/0621",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3250",
+      "application_context": "SMD/2002/0621 20/09/2002 20/09/2002 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Stoke-On-Trent , Alton , Staffordshire , ST10 4BZ Two storey extension to hotel Planning Permission - Approved (Prior Oct 2013) 14/11/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/1078",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3707",
+      "application_context": "SMD/2002/1078 20/06/2002 20/06/2002 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ External alterations to listed building Planning Permission - Approved (Prior Oct 2013) 12/12/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/1071",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3700",
+      "application_context": "SMD/2002/1071 31/05/2002 08/07/2002 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ Alterations to approved hotel building to provide additional sixteen bedrooms at ground floor level and amendment to approved hotel to accommodte proposed alterations. Planning Permission - Approved (Prior Oct 2013) 27/09/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2002/0504",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=3133",
+      "application_context": "SMD/2002/0504 13/02/2002 25/02/2002 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ Erection of car park exit barriers and attendant booth Planning Permission - Approved (Prior Oct 2013) 17/04/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2001/1082",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=2384",
+      "application_context": "SMD/2001/1082 26/10/2001 26/10/2001 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Erection of three kiosks and widening works to internal access road Planning Permission - Approved (Prior Oct 2013) 21/01/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2001/1325",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=2627",
+      "application_context": "SMD/2001/1325 04/09/2001 04/09/2001 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Erection of hotel, conference centre, leisure pool with associated car parking, landscaping and re-grading of land (Revised Submission) Planning Permission - Approved (Prior Oct 2013) 29/01/2002",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2001/1330",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=2632",
+      "application_context": "SMD/2001/1330 02/08/2001 02/08/2001 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Erection of Replacement Circus Tent Planning Permission - Approved (Prior Oct 2013) 21/09/2001",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2001/0183",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=1250",
+      "application_context": "SMD/2001/0183 24/01/2001 24/01/2001 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Relocation of metal clad steel framed industrial unit Planning Permission - Approved (Prior Oct 2013) 05/03/2001",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2000/0679",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=704",
+      "application_context": "SMD/2000/0679 11/08/2000 11/08/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Erection of SW5 transit system ride, ancillary buildings and associated landscaping Planning Permission - Approved (Prior Oct 2013) 25/10/2000",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2000/0910",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=936",
+      "application_context": "SMD/2000/0910 28/07/2000 28/07/2000 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Listed building consent for installation of telecommunications equipment Planning Permission - Approved (Prior Oct 2013) 18/09/2000",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2000/0901",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=927",
+      "application_context": "SMD/2000/0901 28/07/2000 28/07/2000 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Installation of telecommunications equipment Planning Permission - Approved (Prior Oct 2013) 18/09/2000",
+      "search_page_sha256": "d637c485eb2844cbc6522db837851e5690979c5a825a42512fc5bb2531d6f3c0"
+    },
+    {
+      "reference": "SMD/2000/0930",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=956",
+      "application_context": "SMD/2000/0930 19/06/2000 19/06/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Dutch style hay and straw barn (`Old McDonalds Farm') Planning Permission - Approved (Prior Oct 2013) 03/08/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/2000/0951",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=977",
+      "application_context": "SMD/2000/0951 25/05/2000 25/05/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Lighting and CCTV equipment for coach park Planning Permission - Approved (Prior Oct 2013) 19/07/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/2000/0265",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=289",
+      "application_context": "SMD/2000/0265 17/03/2000 17/03/2000 3D Cinema , 3D Cinema , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Replacement 3D cinema building Planning Permission - Approved (Prior Oct 2013) 08/05/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/2000/0225",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=249",
+      "application_context": "SMD/2000/0225 14/03/2000 14/03/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Listed building consent for non-illuminated signs ('Hex' attraction) Planning Permission - Approved (Prior Oct 2013) 30/05/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/2000/0123",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=146",
+      "application_context": "SMD/2000/0123 03/02/2000 03/02/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Advertisement consent for 3D projecting illuminated sign Planning Permission - Approved (Prior Oct 2013) 30/03/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/2000/0018",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41",
+      "application_context": "SMD/2000/0018 04/01/2000 17/01/2000 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Variation of condition no. 4 (SM95-00005) retention of overspill car park/coach park Planning Permission - Approved (Prior Oct 2013) 16/05/2000",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1999/0563",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46289",
+      "application_context": "SMD/1999/0563 19/10/1999 19/10/1999 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Access track (within Towers grounds) Planning Permission - Approved (Prior Oct 2013) 08/12/1999",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1999/0144",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45870",
+      "application_context": "SMD/1999/0144 30/09/1999 08/10/1999 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Replacement and relocation of retail kiosk with associated landscaping Planning Permission - Approved (Prior Oct 2013) 25/11/1999",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1999/0291",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46017",
+      "application_context": "SMD/1999/0291 13/09/1999 13/09/1999 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Acoustic bund Planning Permission - Approved (Prior Oct 2013) 22/10/1999",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1999/0009",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45735",
+      "application_context": "SMD/1999/0009 12/07/1999 13/10/1999 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Listed building consent in respect of replacement antennae equipment cabins and cabling Planning Permission - Refused (Prior Oct 2013) 19/11/1999",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0824",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46651",
+      "application_context": "SMD/1998/0824 14/12/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Construction of building to house new ride (amended plans)",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/1193",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47482",
+      "application_context": "SMD/1998/1193 07/12/1998 07/12/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB ALTON TOWERS ALTON STAFFORDSHIRE FARLEY - CONSERVATION AREA CONSENT IN RESPECT OF DEMOLITION OF TWO BUILDINGS. Application Withdrawn 22/01/1999",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0891",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46798",
+      "application_context": "SMD/1998/0891 07/12/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4BZ Listed building consent in respect of restoration works and alterations (amended plans)",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0721",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46377",
+      "application_context": "SMD/1998/0721 02/10/1998 02/10/1998 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ INSTALLATION OF TELECOMMUNICATIONS EQUIPMENT (AMENDED PLANS) Planning Permission - Approved (Prior Oct 2013) 09/12/1998",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0720",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=46376",
+      "application_context": "SMD/1998/0720 02/10/1998 02/10/1998 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4BZ LISTED BUILDING CONSENT FOR INSTALLATION OF TELECOMMUNICATIONS EQUIPMENT (AMENDED PLANS) Planning Permission - Approved (Prior Oct 2013) 09/12/1998",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/1150",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47396",
+      "application_context": "SMD/1998/1150 01/10/1998 01/10/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB HER LADYSHIPS GARDEN ALTON TOWERS ALTON FARLEY - REBUILD FOUNTAIN Planning Permission - Approved (Prior Oct 2013) 12/11/1998",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0511",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41588",
+      "application_context": "SMD/1998/0511 26/05/1998 26/05/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB INGESTRE COURTYARD ALTON TOWERS ALTON FARLEY - LISTED BUILDING CONSENT IN RESPECT OF REMOVAL OF PAINT REPOINTING AND RESTORATION OF BRICKWORK. Planning Permission - Approved (Prior Oct 2013) 30/07/1998",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1998/0198",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41046",
+      "application_context": "SMD/1998/0198 21/01/1998 21/01/1998 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB JUST IMAGINE BUILDING ALTON TOWERS ALTON FARLEY - CERTIFICATE OF LAWFUL USE (EXISTING) FOR A1 (RETAIL) AND A3 (FOOD AND DRINK) USES Planning Permission - Approved (Prior Oct 2013) 10/03/1998",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1997/0784",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=42459",
+      "application_context": "SMD/1997/0784 06/02/1997 06/02/1997 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , LISTED BUILDING CONSENT IN RESPECT OF TELECOMMUNICATIONS ANTENNAE INSTALLATION ON FLAG TOWER Planning Permission - Approved (Prior Oct 2013) 28/05/1997",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1997/0782",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=42457",
+      "application_context": "SMD/1997/0782 06/02/1997 06/02/1997 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , TELECOMMUNICATIONS ANTENNAE INSTALLATION ON FLAG TOWER Planning Permission - Approved (Prior Oct 2013) 28/05/1997",
+      "search_page_sha256": "8449d19fdcf1401da5feebcee9b06a4ece79fc9537945ca6ed310cf141a90529"
+    },
+    {
+      "reference": "SMD/1996/0039",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41964",
+      "application_context": "SMD/1996/0039 10/12/1996 10/12/1996 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB LAND OF MAKE BELEIVE ALTON TOWERS ALTON FARLEY - REFURBISHMENT ALTERATIONS AND NEW FACADE TO ``LAND OF MAKE BELEIVE`` BUILDING Planning Permission - Approved (Prior Oct 2013) 22/01/1997",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/0374",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=42593",
+      "application_context": "SMD/1996/0374 31/10/1996 31/10/1996 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire , Farley , ST10 4RP ALTON TOWERS HOTEL ALTON TOWERS ALTON FARLEY - EXTENSION TO HOTEL RESTAURANT Planning Permission - Approved (Prior Oct 2013) 05/12/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/0177",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=42252",
+      "application_context": "SMD/1996/0177 23/07/1996 23/07/1996 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STOKE ON TRENT ALTON - RE-LOCATION OF ``PIRATE SHIP`` Planning Permission - Approved (Prior Oct 2013) 22/08/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/1245",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44389",
+      "application_context": "SMD/1996/1245 25/04/1996 25/04/1996 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - ``TOPSPIN`` RIDE (TO REPLACE THUNDERLOOPER) Planning Permission - Approved (Prior Oct 2013) 20/06/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/1061",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44045",
+      "application_context": "SMD/1996/1061 28/02/1996 28/02/1996 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire , Farley , ST10 4RP ALTON TOWERS (HOTEL) ALTON ALTON - ACCESS ROAD LIGHTING (SCHEME B) Planning Permission - Approved (Prior Oct 2013) 13/05/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/1059",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44043",
+      "application_context": "SMD/1996/1059 28/02/1996 28/02/1996 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS VIS ENTRANCE ALTON ALTON FARLEY - ACCESS ROAD LIGHTING (SCHEME A) Planning Permission - Approved (Prior Oct 2013) 29/04/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1996/1212",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44355",
+      "application_context": "SMD/1996/1212 22/01/1996 22/01/1996 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire , Farley , ST10 4RP ACCESS ROAD FOR HOTEL ALTON TOWERS ALTON ALTON - ALTERATIONS TO ACCESS ROAD FOR HOTEL Planning Permission - Approved (Prior Oct 2013) 12/03/1996",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0245",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43631",
+      "application_context": "SMD/1995/0245 27/10/1995 27/10/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB LAND OF MAKE BELIEVE ALTON TOWERS ALTON FARLEY - OUTLINE PERMISSION FOR REPLACEMENT BUILDING (RETAIL AND CHILDRENS AREA) Planning Permission - Approved (Prior Oct 2013) 12/12/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0246",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43632",
+      "application_context": "SMD/1995/0246 18/10/1995 18/10/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB LAND OF MAKE BELIEVE ALTON TOWERS ALTON FARLEY - ERECTION OF REPLACEMENT BUILDING TO PROVIDE SHOP COFFEE SHOP CHILDRENS PLAY AREA AND TELEVISION STUDIO Application Withdrawn 06/12/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0498",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44105",
+      "application_context": "SMD/1995/0498 10/10/1995 10/10/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS ALTON - TANK ROOM BUILDING AND PLANT COMPOUND IN CONNECTION WITH HOTEL Planning Permission - Approved (Prior Oct 2013) 15/11/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0153",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43464",
+      "application_context": "SMD/1995/0153 12/09/1995 12/09/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB INGESTRE COURTYARD ALTON TOWERS ALTON FARLEY - LISTED BUILDING CONSENT IN RESPECT OF NEW THEMED FACADES REPLACEMENT CANOPIES NEW ARCHERY GAMES STALL AND NEW ENTRANCE ARCH AND STOCKADE Planning Permission - Approved (Prior Oct 2013) 23/10/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0139",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43450",
+      "application_context": "SMD/1995/0139 07/08/1995 07/08/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - NEW STAFF FACILITIES BUILDING Planning Permission - Approved (Prior Oct 2013) 16/10/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0055",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43296",
+      "application_context": "SMD/1995/0055 07/08/1995 07/08/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT LODGE GATE ENTRANCE ALTON TOWERS ALTON FARLEY - NEW ROAD LAYOUT AND ASSOCIATED WORKS Planning Permission - Approved (Prior Oct 2013) 18/10/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0316",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43773",
+      "application_context": "SMD/1995/0316 24/07/1995 24/07/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - EXTENSIONS AND ALTERATIONS TO `KIDDIES KINGDOM' Planning Permission - Approved (Prior Oct 2013) 21/09/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0276",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43697",
+      "application_context": "SMD/1995/0276 21/07/1995 21/07/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - RETENTION OF `THUNDERLOOPER' RIDE (RENEWAL OF TEMPORARY CONSENT REF:SM91-1089) Planning Permission - Approved (Prior Oct 2013) 27/09/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0275",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=43696",
+      "application_context": "SMD/1995/0275 21/07/1995 21/07/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS ALTON - TRANSIT SYSTEM RIDE ``SW4`` Planning Permission - Approved (Prior Oct 2013) 20/10/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0971",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45250",
+      "application_context": "SMD/1995/0971 01/02/1995 01/02/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB THE BEAST ALTON TOWERS ALTON ALTON - REMOVAL OF CONDITION 1 REF SM91-1089 (TEMPORARY CONSENT TO FULL) Planning Permission - Approved (Prior Oct 2013) 13/03/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0966",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45245",
+      "application_context": "SMD/1995/0966 16/01/1995 16/01/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - INSTALLATION OF FOUL DRAINS TO HOTEL Planning Permission - Approved (Prior Oct 2013) 07/03/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1995/0690",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44528",
+      "application_context": "SMD/1995/0690 13/01/1995 13/01/1995 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - COACH PARK EXTENSION ADDITIONAL LANDSCAPING AND NEW BROADWALK Planning Permission - Approved (Prior Oct 2013) 01/06/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1994/1138",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45471",
+      "application_context": "SMD/1994/1138 01/12/1994 01/12/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB SEALION POOL ALTON TOWERS ALTON FARLEY - INFILL/RESTORATION OF SMALL BOATING POOL Planning Permission - Approved (Prior Oct 2013) 09/01/1995",
+      "search_page_sha256": "c3296a84de15e398fcbe66544acdb6d4c7bfc10085b8eb9242871d409093baab"
+    },
+    {
+      "reference": "SMD/1994/0592",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44591",
+      "application_context": "SMD/1994/0592 15/09/1994 15/09/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB OPPOSITE GATE HOUSE MAIN ENTRANCE ALTON TOWERS FARLEY - SECURITY LODGE Planning Permission - Approved (Prior Oct 2013) 21/10/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/0543",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=44507",
+      "application_context": "SMD/1994/0543 12/09/1994 12/09/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - VIEWING PLATFORM Planning Permission - Approved (Prior Oct 2013) 20/12/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/0882",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45063",
+      "application_context": "SMD/1994/0882 30/08/1994 30/08/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB CHILDRENS FARM AREA ALTON TOWERS ALTON FARLEY - RIDES LANDSCAPING AND RELOCATION OF WINDMILL Planning Permission - Approved (Prior Oct 2013) 10/10/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/1164",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45528",
+      "application_context": "SMD/1994/1164 10/08/1994 10/08/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - GAS GOVENOR HOUSE Planning Permission - Approved (Prior Oct 2013) 15/09/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/1059",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=45361",
+      "application_context": "SMD/1994/1059 21/06/1994 21/06/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - GAS PIPELINE INSTALLATION Planning Permission - Approved (Prior Oct 2013) 02/08/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/0315",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36395",
+      "application_context": "SMD/1994/0315 10/02/1994 10/02/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - WATER SUPPLY AND CONTROL BUILDING Planning Permission - Approved (Prior Oct 2013) 07/04/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/0475",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36766",
+      "application_context": "SMD/1994/0475 28/01/1994 28/01/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON CASTLE ALTON ALTON - LISTED BUILDING CONSENT IN RESPECT OF ADDITION OF SPIRE TO NORTH EAST TOWER Planning Permission - Approved (Prior Oct 2013) 02/08/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1994/0209",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36148",
+      "application_context": "SMD/1994/0209 12/01/1994 12/01/1994 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - ADDITIONAL CAR PARKING AREA Planning Permission - Approved (Prior Oct 2013) 15/03/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0374",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36219",
+      "application_context": "SMD/1993/0374 09/12/1993 09/12/1993 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - ENGINEERING OPERATION TO CREATE LANDSCAPE MOUNDED FEATURE Planning Permission - Approved (Prior Oct 2013) 16/02/1994",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0674",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36754",
+      "application_context": "SMD/1993/0674 23/09/1993 23/09/1993 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - HOTEL RESTAURANT CONFERENCE AND LEISURE FACILITIES TOGETHER WITH ASSOCIATED CAR PARKING AND LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 19/11/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0628",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36672",
+      "application_context": "SMD/1993/0628 06/09/1993 06/09/1993 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , TWO TELECOMMUNICATIONS ARIELS AND DISHES Planning Permission - Refused (Prior Oct 2013) 21/10/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0404",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36278",
+      "application_context": "SMD/1993/0404 01/09/1993 01/09/1993 Swiss Cottage , Swiss Cottage , Alton Towers , Stoke-On-Trent , Alton , ST10 4DB LISTED BUILDING CONSENT IN RESPECT OF ALTERATIONS TO 'SWISS COTTAGE' RESTAURANT Planning Permission - Approved (Prior Oct 2013) 08/11/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0706",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36824",
+      "application_context": "SMD/1993/0706 30/07/1993 30/07/1993 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB EAST OF NEW MECHANICAL WORKSHOP ALTON TOWERS ALTON - STORAGE BUILDING Planning Permission - Approved (Prior Oct 2013) 31/08/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/1320",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38054",
+      "application_context": "SMD/1993/1320 22/04/1993 22/04/1993 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - HOTEL RESTAURANT CONFERENCE & LEISURE FACILITIES TOGETHER WITH ASSOCIATED CAR PARKING AND LANDSCAPING Application Withdrawn 24/11/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1993/0745",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=36865",
+      "application_context": "SMD/1993/0745 20/04/1993 20/04/1993 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB THE CHAPEL ALTON TOWERS ALTON FARLEY - LISTED BUILDING CONSENT IN RESPECT OF REPAIR TO CHAPEL ROOF AND INSTALLATION OF STAINED GLASS WINDOW Planning Permission - Approved (Prior Oct 2013) 27/07/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0571",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37940",
+      "application_context": "SMD/1992/0571 10/12/1992 10/12/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - OUTLINE APPLICATION FOR AN HOTEL INCLUDING DETAILS OF SITING AND ACCESS Application Withdrawn 24/11/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0531",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37861",
+      "application_context": "SMD/1992/0531 07/12/1992 07/12/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - RETAIL UNIT (THE CHOCOLATE HOUSE) Planning Permission - Approved (Prior Oct 2013) 21/01/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0528",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37858",
+      "application_context": "SMD/1992/0528 07/12/1992 07/12/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON NORTH STAFFORDSHIRE FARLEY - ADDITIONAL CAR PARKING Planning Permission - Approved (Prior Oct 2013) 22/03/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0361",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37527",
+      "application_context": "SMD/1992/0361 17/09/1992 17/09/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - NEW ANCILLARY BUILDINGS AND IMPROVEMENTS TO FARM AREA CHANGE OF USE TO OFFICES AND ADDITIONAL STAFF PARKING AND THE ERECTION OF A TWO STOREY FLAT ROOFED EXTENSION Planning Permission - Approved (Prior Oct 2013) 10/11/1992",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0435",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37681",
+      "application_context": "SMD/1992/0435 10/09/1992 10/09/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - CONSTRUCTION OF NEW COASTER RIDE WITH ASSOCIATED NEW LANDSCAPING AND LAND FORMING Planning Permission - Approved (Prior Oct 2013) 03/02/1993",
+      "search_page_sha256": "645a6fea31b45a17c88b360bc3bcb9d6551b6e099f239fa34515f284e61dd91d"
+    },
+    {
+      "reference": "SMD/1992/0632",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38079",
+      "application_context": "SMD/1992/0632 02/09/1992 02/09/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS ALTON - CONSERVATION AREA CONSENT FOR REMOVAL OF TREES Application Withdrawn 17/09/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/0436",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37682",
+      "application_context": "SMD/1992/0436 26/08/1992 26/08/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS ALTON - CONSERVATION AREA CONSENT FOR REMOVAL OF TREES Application Withdrawn 17/09/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/0388",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37594",
+      "application_context": "SMD/1992/0388 05/08/1992 05/08/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - ALTERATIONS TO MONORAIL STATION TO INCLUDE TOILETS AND SHOP Planning Permission - Approved (Prior Oct 2013) 02/09/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/0387",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37593",
+      "application_context": "SMD/1992/0387 05/08/1992 05/08/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - EXTENSION AND ALTERATIONS TO RAILWAY INCLUDING NEW STATIONS Planning Permission - Approved (Prior Oct 2013) 22/09/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/0351",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=37517",
+      "application_context": "SMD/1992/0351 05/08/1992 05/08/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - COACH PARK AND TOILET/MESS FACILITIES Planning Permission - Approved (Prior Oct 2013) 22/09/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/1204",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39003",
+      "application_context": "SMD/1992/1204 28/05/1992 28/05/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STOKE ON TRENT ALTON - PERIMETER FENCING Planning Permission - Approved (Prior Oct 2013) 21/07/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/1098",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38838",
+      "application_context": "SMD/1992/1098 09/04/1992 09/04/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - OUTLINE APPLICATION FOR USE OF LAND FOR AMUSEMENT RIDES ANCILLARY BUILDINGS AND ASSOCIATED LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 03/02/1993",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/1185",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38984",
+      "application_context": "SMD/1992/1185 21/02/1992 21/02/1992 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ MERCHANDISING AND CATERING OUTLETS (Adj the Beast) Planning Permission - Approved (Prior Oct 2013) 25/03/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/0924",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38575",
+      "application_context": "SMD/1992/0924 20/01/1992 20/01/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - NEW COASTER RIDE AND LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 03/02/1993",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/1021",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38731",
+      "application_context": "SMD/1992/1021 09/01/1992 09/01/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STOKE ON TRENT FARLEY - EXTENSION TO FORM EDUCATION CENTRE Planning Permission - Approved (Prior Oct 2013) 12/02/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1992/1019",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38729",
+      "application_context": "SMD/1992/1019 09/01/1992 09/01/1992 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - GAMES BUILDING Planning Permission - Approved (Prior Oct 2013) 12/02/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0147",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38481",
+      "application_context": "SMD/1991/0147 15/11/1991 15/11/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - CONSERVATION AREA CONSENT FOR THE REMOVAL OF TENT AND STRUCTURE Planning Permission - Approved (Prior Oct 2013) 09/01/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0146",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38480",
+      "application_context": "SMD/1991/0146 15/11/1991 15/11/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFORDSHIRE FARLEY - RELOCATION OF CIRCUS TENT CAR PARKING AND NEW LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 03/02/1992",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0428",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39266",
+      "application_context": "SMD/1991/0428 28/10/1991 28/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - CONSERVATION AREA CONSENT FOR THE DEMOLITION OF SINGLE STOREY BUILDING Planning Permission - Approved (Prior Oct 2013) 12/12/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0402",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39190",
+      "application_context": "SMD/1991/0402 28/10/1991 28/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - LISTED BUILDING CONSENT FOR DEMOLITION & ALTERATIONS TO STABLE BLOCK Planning Permission - Approved (Prior Oct 2013) 12/12/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0429",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39267",
+      "application_context": "SMD/1991/0429 16/10/1991 16/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - IMPROVEMENTS TO ENTRANCE TO RAPIDS RIDE Planning Permission - Approved (Prior Oct 2013) 15/11/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0401",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39189",
+      "application_context": "SMD/1991/0401 16/10/1991 16/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - CHANGE OF USE AND CONSTRUCTION OF SINGLE STOREY EXTENSIONS TO THE STABLE BLOCK Planning Permission - Approved (Prior Oct 2013) 21/11/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0051",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38237",
+      "application_context": "SMD/1991/0051 16/10/1991 16/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - ERECTION OF TOILET BLOCK AND NEW LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 21/11/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0050",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38236",
+      "application_context": "SMD/1991/0050 16/10/1991 16/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - CONSERVATION AREA CONSENT FOR DEMOLITION OF TWO W.C. BLOCKS AND KIOSKS Planning Permission - Approved (Prior Oct 2013) 21/11/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0311",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=38949",
+      "application_context": "SMD/1991/0311 11/10/1991 11/10/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS ALTON - RETENTION OF THUNDERLOOPER RIDE AND RELOCATION OF TWO NEW RIDES DRAGON AND BEAST Planning Permission - Approved (Prior Oct 2013) 22/11/1991",
+      "search_page_sha256": "ee188dc825204e2380acab5ec5a9900c990399ecfaed33635df0dc455033b4fd"
+    },
+    {
+      "reference": "SMD/1991/0688",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=39653",
+      "application_context": "SMD/1991/0688 24/07/1991 24/07/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - APPLICATION TO EXTEND THE TIME LIMIT WITHIN WHICH AN APPLICATION FOR APPROVAL OF RESERVED MATTERS CAN BE MADE IN PURSUANCE OF OUTLINE PERMISSION SM0373-86 Planning Permission - Approved (Prior Oct 2013) 12/09/1991",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1991/1499",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=40658",
+      "application_context": "SMD/1991/1499 22/03/1991 22/03/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT MAIN ENTRANCE VILLAGE ALTON TOWERS FARLEY - SECURITY BUILDING Planning Permission - Approved (Prior Oct 2013) 24/04/1991",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1991/1345",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=40472",
+      "application_context": "SMD/1991/1345 14/01/1991 14/01/1991 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - CONSTRUCTION OF RUNAWAY TRAIN & DARK RIDE BUILDING WITH ASSOCIATED BUILDINGS & LANDSCAPING Planning Permission - Approved (Prior Oct 2013) 11/03/1991",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1990/0866",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=31450",
+      "application_context": "SMD/1990/0866 31/07/1990 31/07/1990 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON ALTON - RENEWAL OF TEMPORARY PERMISSION FOR COACH PARKING AREA Planning Permission - Approved (Prior Oct 2013) 09/10/1990",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1990/0052",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=30631",
+      "application_context": "SMD/1990/0052 06/04/1990 06/04/1990 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - TEMPORARY SITING OF A GRAVITY RIDE (2 YEARS) Planning Permission - Approved (Prior Oct 2013) 25/06/1990",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1990/0985",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=31570",
+      "application_context": "SMD/1990/0985 12/02/1990 12/02/1990 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB FARM ALTON TOWERS ALTON FARLEY - ENCLOSURE OF EXISTING OPEN-SIDED EXHIBITION BUILDING Planning Permission - Approved (Prior Oct 2013) 02/04/1990",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1990/1288",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=32799",
+      "application_context": "SMD/1990/1288 02/01/1990 02/01/1990 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - DETAILS OF 107 CHALET UNITS LEISURE CENTRE ENTRANCE BUILDING AND PRIVATE VILLAGE STORE (APPROVAL OF RESERVED MATTERS FOLLOWING OUTLINE APPROVAL SM373-86) Application Withdrawn 25/08/1992",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1989/0466",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=32320",
+      "application_context": "SMD/1989/0466 27/11/1989 27/11/1989 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - PROPOSED TEMPORARY MOBILE GRAVITY RIDE Planning Permission - Approved (Prior Oct 2013) 14/02/1990",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1989/0444",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=32297",
+      "application_context": "SMD/1989/0444 23/08/1989 23/08/1989 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB COACH & CAR PARK AREAS ALTON TOWERS ALTON FARLEY - PROPOSED ADDITIONAL LIGHTING Planning Permission - Approved (Prior Oct 2013) 29/11/1989",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1989/1254",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=33191",
+      "application_context": "SMD/1989/1254 15/02/1989 15/02/1989 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - PROPOSED MODEL FARM FOR THE DISPLAY AND EXHIBITIONS OF TRADITIONAL FARMING METHODS AS PART OF ALTON TOWERS LEISURE PARK & CONSTRUCTION OF CANAL BOAT RIDE AND WINDMILL Planning Permission - Approved (Prior Oct 2013) 18/04/1989",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1989/1492",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=33784",
+      "application_context": "SMD/1989/1492 12/01/1989 12/01/1989 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB ADJ. TO FLAG TOWER ALTON TOWERS ALTON FARLEY - 17M RIDE KNOWN AS WILD MOUSE Planning Permission - Refused (Prior Oct 2013) 10/03/1989",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1989/1490",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=33782",
+      "application_context": "SMD/1989/1490 12/01/1989 12/01/1989 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB ADJ TO FLAG TOWER ALTON TOWERS ALTON FARLEY - 17M RIDE KNOWN AS JETSTAR III (BEAST) Planning Permission - Refused (Prior Oct 2013) 13/03/1989",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1988/0001",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28698",
+      "application_context": "SMD/1988/0001 17/07/1988 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB aerial ropeway - internal transport system Planning Permission - Approved (Prior Oct 2013) 21/10/1986",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1988/1096",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=34888",
+      "application_context": "SMD/1988/1096 14/04/1988 14/04/1988 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - APPLICATION FOR TEMPORARY PLANNING PERMISSION FOR ADDITIONAL RIDE ADJACENT TO THE FLAG TOWER Planning Permission - Refused (Prior Oct 2013) 17/06/1988",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1988/1397",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=35336",
+      "application_context": "SMD/1988/1397 26/01/1988 26/01/1988 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ INSTALLATION OF A TEMPORARY ROLLER COASTER RIDE (24 METRES HIGH) ON LAND BETWEEN THE VICTORIAN STREET AND FLAG TOWER. Planning Permission - Approved (Prior Oct 2013) 18/04/1988",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1987/1181",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=35159",
+      "application_context": "SMD/1987/1181 20/11/1987 20/11/1987 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ INSTALLATION OF A GRAVITY COASTER RIDE Application Withdrawn 26/05/1989",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1987/0524",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=30176",
+      "application_context": "SMD/1987/0524 11/05/1987 11/05/1987 Alton Towers Ltd , Alton Towers Ltd , Farley Lane , Staffordshire Moorlands , Alton , ST10 4BZ ALTON TOWERS ALTON STAFFS FARLEY - PROPOSED MAINTENANCE SHED TO MONORAIL INSTALLATION Planning Permission - Approved (Prior Oct 2013) 07/07/1987",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1987/0555",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=30207",
+      "application_context": "SMD/1987/0555 23/03/1987 23/03/1987 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB ALTON TOWERS ALTON STAFFS FARLEY - PROPOSED EXTERNAL MONORAIL TRANSPORTATION SYSTEM AND STATIONS Planning Permission - Approved (Prior Oct 2013) 03/06/1987",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1987/0133",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=29439",
+      "application_context": "SMD/1987/0133 12/02/1987 12/02/1987 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , LISTED BUILDING CONSENT FOR THE STRENGTHENING OF THE FIRST FLOOR AND CONSTRUCTION OF THREE AERIALS AT ROOF LEVEL Planning Permission - Approved (Prior Oct 2013) 16/04/1987",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1986/0703",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=29669",
+      "application_context": "SMD/1986/0703 11/11/1986 11/11/1986 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ PROPOSED LAY-BY SHED FOR CABINS ASSOCIATED WITH AERIAL ROPEWAY. Planning Permission - Approved (Prior Oct 2013) 18/12/1986",
+      "search_page_sha256": "35f8075aeda5edb6deb3837f575f2de5a785ceea5d99d6e8ec160176b0cc2f9a"
+    },
+    {
+      "reference": "SMD/1986/0870",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=29836",
+      "application_context": "SMD/1986/0870 19/08/1986 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Replacement of existing workshops and stores and new main office building Planning Permission - Approved (Prior Oct 2013) 20/10/1986",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1986/0101",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28665",
+      "application_context": "SMD/1986/0101 08/07/1986 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB proposed mono rail system linking car park areas with main entrance (re submitted application) Planning Permission - Approved (Prior Oct 2013) 20/10/1986",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1986/0097",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28661",
+      "application_context": "SMD/1986/0097 30/06/1986 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB erection of staff locker room, toilets and sub-station Planning Permission - Approved (Prior Oct 2013) 31/07/1986",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1986/0363",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28931",
+      "application_context": "SMD/1986/0363 15/05/1986 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Site for chalet village and external monorail transportation system",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0897",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=29258",
+      "application_context": "SMD/1985/0897 29/11/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Further stoning to area of interim car parking (Temporary until 1990) Planning Permission - Approved (Prior Oct 2013) 17/01/1986",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0896",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=29257",
+      "application_context": "SMD/1985/0896 29/11/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Siting of caravans, renewal of temporary permission Planning Permission - Approved (Prior Oct 2013) 07/01/1986",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0153",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27900",
+      "application_context": "SMD/1985/0153 01/10/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed childrens play area Planning Permission - Approved (Prior Oct 2013) 18/11/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0432",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28180",
+      "application_context": "SMD/1985/0432 08/08/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed construction of main entrance village Planning Permission - Approved (Prior Oct 2013) 14/10/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0301",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28048",
+      "application_context": "SMD/1985/0301 21/06/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed rapids ride flume with embankment screening and landscaping Planning Permission - Approved (Prior Oct 2013) 01/08/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0445",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28193",
+      "application_context": "SMD/1985/0445 21/03/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed retention of interim car parking areas Planning Permission - Approved (Prior Oct 2013) 17/07/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0694",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=28443",
+      "application_context": "SMD/1985/0694 31/01/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of new ride (Polyp 30) Planning Permission - Approved (Prior Oct 2013) 27/03/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1985/0057",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27259",
+      "application_context": "SMD/1985/0057 22/01/1985 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed installation of historic exhibition in part of basement Planning Permission - Approved (Prior Oct 2013) 07/06/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0432",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27209",
+      "application_context": "SMD/1984/0432 20/12/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB New coach park entrance, buildings and kiosks Planning Permission - Approved (Prior Oct 2013) 26/01/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0422",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27196",
+      "application_context": "SMD/1984/0422 20/12/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed new pedestrian main entrance Planning Permission - Approved (Prior Oct 2013) 29/01/1985",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0454",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27283",
+      "application_context": "SMD/1984/0454 11/10/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed stores, staff rest rooms etc adjacent to existing restaurant Planning Permission - Approved (Prior Oct 2013) 20/11/1984",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0453",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27282",
+      "application_context": "SMD/1984/0453 11/10/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Extension to restaurrant and provision of toilet and staff rest room facilities Planning Permission - Approved (Prior Oct 2013) 20/11/1984",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0536",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27365",
+      "application_context": "SMD/1984/0536 06/09/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Chalet village and monorail",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0666",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27495",
+      "application_context": "SMD/1984/0666 20/06/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Free flow parking and monorail park transport system Application Withdrawn 22/02/1988",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0665",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27494",
+      "application_context": "SMD/1984/0665 20/06/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed monorail system, stations and car/coach park Planning Permission - Approved (Prior Oct 2013) 14/11/1984",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0664",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=27493",
+      "application_context": "SMD/1984/0664 20/06/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Car and coach park, accesses and security fencing Planning Permission - Approved (Prior Oct 2013) 14/11/1984",
+      "search_page_sha256": "60d85993a0a96a51a23f2f875604d83733f89beadfe614dadefa1a3c23175f75"
+    },
+    {
+      "reference": "SMD/1984/0252",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26616",
+      "application_context": "SMD/1984/0252 16/01/1984 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Siting of Turbo Star Planning Permission - Approved (Prior Oct 2013) 23/02/1984",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0544",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26562",
+      "application_context": "SMD/1983/0544 22/12/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of new ride in amusement area (Turbo Star) Planning Permission - Approved (Prior Oct 2013) 23/02/1984",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0591",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26658",
+      "application_context": "SMD/1983/0591 21/12/1983 The Swiss Cottage , The Swiss Cottage , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4DB Proposed alterations Planning Permission - Approved (Prior Oct 2013) 23/02/1984",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0543",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26561",
+      "application_context": "SMD/1983/0543 21/12/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Installation of rides in the amusement area as phase 1 of octoberfest Planning Permission - Approved (Prior Oct 2013) 23/02/1984",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0800",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26874",
+      "application_context": "SMD/1983/0800 08/11/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Erection of building to house dark ride Planning Permission - Approved (Prior Oct 2013) 23/12/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0858",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26932",
+      "application_context": "SMD/1983/0858 08/07/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Details of space boat Planning Permission - Approved (Prior Oct 2013) 28/08/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0833",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26907",
+      "application_context": "SMD/1983/0833 08/07/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Temporary siting of caravans Planning Permission - Approved (Prior Oct 2013) 08/09/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0453",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26069",
+      "application_context": "SMD/1983/0453 27/01/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Re-erection of existing building with new facade Application Withdrawn 10/02/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0429",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26045",
+      "application_context": "SMD/1983/0429 19/01/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed change of use of stable building to amusement centre Planning Permission - Approved (Prior Oct 2013) 25/02/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0418",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26034",
+      "application_context": "SMD/1983/0418 19/01/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed childrens ride adjoining the Talbot Centre Planning Permission - Approved (Prior Oct 2013) 25/02/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1983/0416",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=26032",
+      "application_context": "SMD/1983/0416 19/01/1983 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed additional childrens ride on land adjoining the Springfield Centre Planning Permission - Approved (Prior Oct 2013) 25/02/1983",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0344",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25129",
+      "application_context": "SMD/1982/0344 22/06/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed change of use of stable block to form craft and pottery workshops Planning Permission - Approved (Prior Oct 2013) 27/07/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0575",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25360",
+      "application_context": "SMD/1982/0575 11/05/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposal for the extension of use of existing tip Planning Permission - Approved (Prior Oct 2013) 27/10/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0548",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25333",
+      "application_context": "SMD/1982/0548 28/04/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Established Use Certificate for tipping / waste disposal",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0420",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25205",
+      "application_context": "SMD/1982/0420 05/03/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed toilet block associated with leisure use Planning Permission - Approved (Prior Oct 2013) 05/03/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0401",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25186",
+      "application_context": "SMD/1982/0401 05/03/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Re-erection of existing building for future conversion to leisure units with victorian street facade Planning Permission - Approved (Prior Oct 2013) 05/03/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0413",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25198",
+      "application_context": "SMD/1982/0413 04/03/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Cine 360 within Ingestre Centre Planning Permission - Approved (Prior Oct 2013) 04/03/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0390",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25175",
+      "application_context": "SMD/1982/0390 03/03/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Enlarging of archway on East wall and leveling of forecourt Planning Permission - Approved (Prior Oct 2013) 09/07/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1982/0596",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25387",
+      "application_context": "SMD/1982/0596 23/02/1982 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB New entrance in existing window and construction of timber ramp and bridge Planning Permission - Approved (Prior Oct 2013) 31/08/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1981/1214",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=25368",
+      "application_context": "SMD/1981/1214 16/12/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed storage building and waste disposal site Planning Permission - Approved (Prior Oct 2013) 18/11/1982",
+      "search_page_sha256": "ef231ab51328778528507cd4f0e5424c88213a3b3ba052de4fcf5e57ef1ab646"
+    },
+    {
+      "reference": "SMD/1981/0609",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=24179",
+      "application_context": "SMD/1981/0609 17/11/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Change of use of disused swimming pools to Adventureland play area Planning Permission - Approved (Prior Oct 2013) 10/12/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0818",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=24389",
+      "application_context": "SMD/1981/0818 21/08/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed pavillion for parrots Planning Permission - Approved (Prior Oct 2013) 21/08/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0794",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=24365",
+      "application_context": "SMD/1981/0794 19/08/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Renewal of foul sewer Planning Permission - Approved (Prior Oct 2013) 08/10/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/1169",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=24741",
+      "application_context": "SMD/1981/1169 31/03/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Use of land for variouos features and rides including Dinosaur Land, Childrens Playgroound, Pirate Ship and miniature Golf Planning Permission - Approved (Prior Oct 2013) 29/05/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/1162",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=24734",
+      "application_context": "SMD/1981/1162 31/03/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Internal alterations to form internal G P O room and offices Planning Permission - Approved (Prior Oct 2013) 29/05/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0057",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23329",
+      "application_context": "SMD/1981/0057 09/03/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Extension to Springfield Restaurant Planning Permission - Approved (Prior Oct 2013) 21/05/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0245",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23519",
+      "application_context": "SMD/1981/0245 16/02/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB New public toilet block at coach park Planning Permission - Approved (Prior Oct 2013) 16/04/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0335",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23609",
+      "application_context": "SMD/1981/0335 11/02/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Erection of 5ft. high oak paling fence Planning Permission - Approved (Prior Oct 2013) 26/03/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0260",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23534",
+      "application_context": "SMD/1981/0260 29/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed extension and alterations to fun house to house electronic water show with improved front elevation Planning Permission - Approved (Prior Oct 2013) 26/03/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0259",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23533",
+      "application_context": "SMD/1981/0259 29/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Construction of kiddies alpine wheel Application Withdrawn 09/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0258",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23532",
+      "application_context": "SMD/1981/0258 29/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed erection of a dolls museum Planning Permission - Approved (Prior Oct 2013) 19/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0257",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23531",
+      "application_context": "SMD/1981/0257 29/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Extension to amusement arcade Planning Permission - Approved (Prior Oct 2013) 19/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0238",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23512",
+      "application_context": "SMD/1981/0238 29/01/1981 Alton Towers Franchises , Alton Towers Franchises , Farley Lane , Staffordshire Moorlands , Farley , Proposed extension to aquarium shop Planning Permission - Approved (Prior Oct 2013) 19/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0237",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23511",
+      "application_context": "SMD/1981/0237 29/01/1981 Burger King Cred Street , Burger King Cred Street , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Proposed extensions and revamped elevations to Talbot Restaurant Planning Permission - Approved (Prior Oct 2013) 19/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0236",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23510",
+      "application_context": "SMD/1981/0236 29/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Proposed construction of vehicle workshop and service yard Planning Permission - Approved (Prior Oct 2013) 05/05/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1981/0448",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23844",
+      "application_context": "SMD/1981/0448 26/01/1981 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Upgrading of link roads to car park Planning Permission - Approved (Prior Oct 2013) 16/03/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1980/1327",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23875",
+      "application_context": "SMD/1980/1327 17/11/1980 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Established Use Certificate for pleasure ground Planning Permission - Approved (Prior Oct 2013) 17/02/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1980/1195",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23655",
+      "application_context": "SMD/1980/1195 29/10/1980 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Construction of dark ride and haunted house Planning Permission - Approved (Prior Oct 2013) 26/01/1980",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1980/1194",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23654",
+      "application_context": "SMD/1980/1194 29/10/1980 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ Construction of log flume ride Planning Permission - Approved (Prior Oct 2013) 26/01/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1980/1193",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=23653",
+      "application_context": "SMD/1980/1193 29/10/1980 Alton Towers Hotel , Alton Towers Hotel , Farley Lane , Staffordshire Moorlands , Farley , ST10 4BZ Construction of coach park Planning Permission - Approved (Prior Oct 2013) 26/01/1981",
+      "search_page_sha256": "64369bc129954e6cdc9e6879b0d19039067027c7e872e3ab9e87df12e24ec179"
+    },
+    {
+      "reference": "SMD/1980/0828",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=22917",
+      "application_context": "SMD/1980/0828 07/05/1980 Adjacent To , Adjacent To , Bronto Bites , Farley Lane , Alton Towers , Farley , Construction of corkscrew roller coaster Planning Permission - Approved (Prior Oct 2013) 26/01/1981",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    },
+    {
+      "reference": "SMD/1980/0239",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=21995",
+      "application_context": "SMD/1980/0239 15/01/1980 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB Erection of Cine 2000 building Planning Permission - Approved (Prior Oct 2013) 21/05/1980",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    },
+    {
+      "reference": "SMD/1979/1519",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=22433",
+      "application_context": "SMD/1979/1519 13/11/1979 Bungalow At , Bungalow At , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , ST10 4DB Renewal of permission for the retention of dwelling Planning Permission - Approved (Prior Oct 2013) 14/01/1980",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    },
+    {
+      "reference": "SMD/1979/1123",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=21613",
+      "application_context": "SMD/1979/1123 10/05/1979 Flag Tower , Flag Tower , Alton Towers , Farley , Farley Lane , Staffordshire Moorlands , Construction of bungalow Planning Permission - Refused (Prior Oct 2013) 20/08/1979",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    },
+    {
+      "reference": "SMD/1998/0550",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41660",
+      "application_context": "SMD/1998/0550 Alton Towers , Alton Towers , Farley Lane , Staffordshire Moorlands , Farley , ST10 4DB INGESTRE COURTYARD ALTON TOWERS ALTON FARLEY - LISTED BUILDING CONSENT IN RESPECT OF REMOVAL AND REPLACEMENT OF INTERNAL WALL. Application Withdrawn 01/04/1998",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    },
+    {
+      "reference": "SMD/1991/1016",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=40055",
+      "application_context": "SMD/1991/1016 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB AT ALTON TOWERS ALTON FARLEY - 107 CHALET UNITS ACCESS LANDSCAPING AND SERVICES BUILDING Application Withdrawn 19/11/1991",
+      "search_page_sha256": "c849da9f5a1a9e6cbe104061ec67db36181c1e497ec13507821b2dbf322b0a54"
+    }
+  ],
+  "complete_search": true,
+  "complete_council_discovery": false,
+  "acquired_at": "2026-10-08"
+}

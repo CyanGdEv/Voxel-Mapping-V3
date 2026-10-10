@@ -1,0 +1,4251 @@
+{
+  "type": "FeatureCollection",
+  "coordinate_frame": {
+    "units": "metres",
+    "axes": "local x east, local z north",
+    "crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "minecraft_z": "negative local z"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -787.6166959913769,
+            -129.57254525901513
+          ],
+          [
+            -852.4891217101,
+            -121.29295334069629
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 0,
+        "osm_way_id": 453955410,
+        "topological_distance_start_m": 0.0,
+        "topological_distance_end_m": 65.39864877017824,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -852.4891217101,
+            -121.29295334069629
+          ],
+          [
+            -857.6332560248985,
+            -120.72448178797163
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 1,
+        "osm_way_id": 453955410,
+        "topological_distance_start_m": 65.39864877017824,
+        "topological_distance_end_m": 70.57409829219513,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -857.6332560248985,
+            -120.72448178797163
+          ],
+          [
+            -861.346942826697,
+            -120.15626064743003
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 2,
+        "osm_way_id": 453955410,
+        "topological_distance_start_m": 70.57409829219513,
+        "topological_distance_end_m": 74.33100458945768,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -861.346942826697,
+            -120.15626064743003
+          ],
+          [
+            -863.4893302004203,
+            -120.57876413796838
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 3,
+        "osm_way_id": 453955410,
+        "topological_distance_start_m": 74.33100458945768,
+        "topological_distance_end_m": 76.51465585708401,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -863.4893302004203,
+            -120.57876413796838
+          ],
+          [
+            -862.4890737006557,
+            -122.72676365858855
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 4,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 76.51465585708401,
+        "topological_distance_end_m": 78.88413153872877,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -862.4890737006557,
+            -122.72676365858855
+          ],
+          [
+            -858.204777227328,
+            -124.57487667721918
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 5,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 78.88413153872877,
+        "topological_distance_end_m": 83.55004173942916,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -858.204777227328,
+            -124.57487667721918
+          ],
+          [
+            -854.9210445830005,
+            -125.99992155878876
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 6,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 83.55004173942916,
+        "topological_distance_end_m": 87.12965805880054,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -854.9210445830005,
+            -125.99992155878876
+          ],
+          [
+            -850.3474890867478,
+            -125.14382837803853
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 7,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 87.12965805880054,
+        "topological_distance_end_m": 91.78264692741283,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.3474890867478,
+            -125.14382837803853
+          ],
+          [
+            -846.0557959945739,
+            -123.15256387167288
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 8,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 91.78264692741283,
+        "topological_distance_end_m": 96.51379519519357,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -846.0557959945739,
+            -123.15256387167288
+          ],
+          [
+            -844.91382403375,
+            -121.4389593755879
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 9,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 96.51379519519357,
+        "topological_distance_end_m": 98.57305242252356,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -844.91382403375,
+            -121.4389593755879
+          ],
+          [
+            -843.4824540191295,
+            -116.16425228440434
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 10,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 98.57305242252356,
+        "topological_distance_end_m": 104.03852175429523,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -843.4824540191295,
+            -116.16425228440434
+          ],
+          [
+            -843.9114853901491,
+            -111.74612171677826
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 11,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 104.03852175429523,
+        "topological_distance_end_m": 108.47743441731429,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -843.9114853901491,
+            -111.74612171677826
+          ],
+          [
+            -846.7716474854819,
+            -107.6169081698589
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 12,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 108.47743441731429,
+        "topological_distance_end_m": 113.50047450551197,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -846.7716474854819,
+            -107.6169081698589
+          ],
+          [
+            -851.1968605371375,
+            -105.19009300336289
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 13,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 113.50047450551197,
+        "topological_distance_end_m": 118.54744809419634,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -851.1968605371375,
+            -105.19009300336289
+          ],
+          [
+            -856.6297524268496,
+            -104.62157148896925
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 14,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 118.54744809419634,
+        "topological_distance_end_m": 124.01000527903459,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -856.6297524268496,
+            -104.62157148896925
+          ],
+          [
+            -862.3451340883892,
+            -106.46790022252777
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 15,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 124.01000527903459,
+        "topological_distance_end_m": 130.01621184636366,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -862.3451340883892,
+            -106.46790022252777
+          ],
+          [
+            -864.205687923115,
+            -108.18137180749385
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 16,
+        "osm_way_id": 597823141,
+        "topological_distance_start_m": 130.01621184636366,
+        "topological_distance_end_m": 132.54556857177806,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -864.205687923115,
+            -108.18137180749385
+          ],
+          [
+            -858.9137729051243,
+            -108.4716616516232
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 17,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 132.54556857177806,
+        "topological_distance_end_m": 137.8454395844763,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -858.9137729051243,
+            -108.4716616516232
+          ],
+          [
+            -853.1986148088272,
+            -107.89398958857413
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 18,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 137.8454395844763,
+        "topological_distance_end_m": 143.58971822309564,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -853.1986148088272,
+            -107.89398958857413
+          ],
+          [
+            -845.4818595608593,
+            -105.48044281515108
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 19,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 143.58971822309564,
+        "topological_distance_end_m": 151.67510748920648,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -845.4818595608593,
+            -105.48044281515108
+          ],
+          [
+            -839.7661849303605,
+            -101.90916061574816
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 20,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 151.67510748920648,
+        "topological_distance_end_m": 158.41476571715097,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -839.7661849303605,
+            -101.90916061574816
+          ],
+          [
+            -834.6216503289177,
+            -100.06270625510116
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 21,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 158.41476571715097,
+        "topological_distance_end_m": 163.88062612255789,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -834.6216503289177,
+            -100.06270625510116
+          ],
+          [
+            -828.4768258705205,
+            -100.20843848568963
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 22,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 163.88062612255789,
+        "topological_distance_end_m": 170.02717844947642,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -828.4768258705205,
+            -100.20843848568963
+          ],
+          [
+            -823.4737869175729,
+            -101.05506990847901
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 23,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 170.02717844947642,
+        "topological_distance_end_m": 175.10134670947394,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -823.4737869175729,
+            -101.05506990847901
+          ],
+          [
+            -813.3328885016224,
+            -99.77700282907774
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 24,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 175.10134670947394,
+        "topological_distance_end_m": 185.32246583323314,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -813.3328885016224,
+            -99.77700282907774
+          ],
+          [
+            -808.0406922765932,
+            -98.35343193715615
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 25,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 185.32246583323314,
+        "topological_distance_end_m": 190.80278470794653,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -808.0406922765932,
+            -98.35343193715615
+          ],
+          [
+            -803.6149886671227,
+            -97.93128510943615
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 26,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 190.80278470794653,
+        "topological_distance_end_m": 195.24857601917944,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -803.6149886671227,
+            -97.93128510943615
+          ],
+          [
+            -800.3244943079471,
+            -99.06695028476469
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 27,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 195.24857601917944,
+        "topological_distance_end_m": 198.72953688052507,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -800.3244943079471,
+            -99.06695028476469
+          ],
+          [
+            -795.4697863102213,
+            -103.48580966509196
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 28,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 198.72953688052507,
+        "topological_distance_end_m": 205.2941776145097,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -795.4697863102213,
+            -103.48580966509196
+          ],
+          [
+            -793.1802773891218,
+            -106.76912503650246
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 29,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 205.2941776145097,
+        "topological_distance_end_m": 209.29692803489996,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -793.1802773891218,
+            -106.76912503650246
+          ],
+          [
+            -789.1851407079037,
+            -111.04316462384118
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 30,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 209.29692803489996,
+        "topological_distance_end_m": 215.14744352464555,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -789.1851407079037,
+            -111.04316462384118
+          ],
+          [
+            -786.0355946970444,
+            -111.75591001122186
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 31,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 215.14744352464555,
+        "topological_distance_end_m": 218.37663011909186,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -786.0355946970444,
+            -111.75591001122186
+          ],
+          [
+            -782.0398009726786,
+            -112.04590383168437
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 32,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 218.37663011909186,
+        "topological_distance_end_m": 222.38293314102967,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -782.0398009726786,
+            -112.04590383168437
+          ],
+          [
+            -778.0368760024369,
+            -109.76518815786879
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 33,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 222.38293314102967,
+        "topological_distance_end_m": 226.99000078782763,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -778.0368760024369,
+            -109.76518815786879
+          ],
+          [
+            -776.8947932509343,
+            -107.19466508189163
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 34,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 226.99000078782763,
+        "topological_distance_end_m": 229.80281821798744,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -776.8947932509343,
+            -107.19466508189163
+          ],
+          [
+            -775.8936963831557,
+            -104.34590394488123
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 35,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 229.80281821798744,
+        "topological_distance_end_m": 232.82236039428122,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -775.8936963831557,
+            -104.34590394488123
+          ],
+          [
+            -776.7459448066729,
+            -100.35059805391595
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 36,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 232.82236039428122,
+        "topological_distance_end_m": 236.9075527444368,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -776.7459448066729,
+            -100.35059805391595
+          ],
+          [
+            -779.0356237950223,
+            -98.0688647401676
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 37,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 236.9075527444368,
+        "topological_distance_end_m": 240.14003426561484,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -779.0356237950223,
+            -98.0688647401676
+          ],
+          [
+            -782.0372092675743,
+            -96.07635853457508
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 38,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 240.14003426561484,
+        "topological_distance_end_m": 243.74275494981453,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -782.0372092675743,
+            -96.07635853457508
+          ],
+          [
+            -786.6104925017662,
+            -95.50805538586975
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 39,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 243.74275494981453,
+        "topological_distance_end_m": 248.35121326132924,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -786.6104925017662,
+            -95.50805538586975
+          ],
+          [
+            -791.6069316651652,
+            -95.36256533044026
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 40,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 248.35121326132924,
+        "topological_distance_end_m": 253.34977022007007,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -791.6069316651652,
+            -95.36256533044026
+          ],
+          [
+            -831.7653934624922,
+            -87.9441509315018
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 41,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 253.34977022007007,
+        "topological_distance_end_m": 294.1876806235389,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -831.7653934624922,
+            -87.9441509315018
+          ],
+          [
+            -850.622479107139,
+            -85.09193656359061
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 42,
+        "osm_way_id": 597823142,
+        "topological_distance_start_m": 294.1876806235389,
+        "topological_distance_end_m": 313.2592512408233,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.622479107139,
+            -85.09193656359061
+          ],
+          [
+            -855.3436898603927,
+            -85.65865962550173
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 43,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 313.2592512408233,
+        "topological_distance_end_m": 318.0143543948611,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -855.3436898603927,
+            -85.65865962550173
+          ],
+          [
+            -858.6886191489998,
+            -88.62940188808957
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 44,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 318.0143543948611,
+        "topological_distance_end_m": 322.48803984832193,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -858.6886191489998,
+            -88.62940188808957
+          ],
+          [
+            -858.7701769692101,
+            -94.0712744838983
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 45,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 322.48803984832193,
+        "topological_distance_end_m": 327.9305235669059,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -858.7701769692101,
+            -94.0712744838983
+          ],
+          [
+            -857.0585173581763,
+            -98.77897848413461
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 46,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 327.9305235669059,
+        "topological_distance_end_m": 332.93974062927055,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -857.0585173581763,
+            -98.77897848413461
+          ],
+          [
+            -854.1978386652972,
+            -99.91460398146567
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 47,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 332.93974062927055,
+        "topological_distance_end_m": 336.0175853060015,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -854.1978386652972,
+            -99.91460398146567
+          ],
+          [
+            -846.9113978850777,
+            -100.338777038815
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 48,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 336.0175853060015,
+        "topological_distance_end_m": 343.31636205462365,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -846.9113978850777,
+            -100.338777038815
+          ],
+          [
+            -843.3382807347648,
+            -98.20271185222279
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 49,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 343.31636205462365,
+        "topological_distance_end_m": 347.47928658567525,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -843.3382807347648,
+            -98.20271185222279
+          ],
+          [
+            -839.193812887592,
+            -93.07314921046707
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 50,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 347.47928658567525,
+        "topological_distance_end_m": 354.07390762345636,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -839.193812887592,
+            -93.07314921046707
+          ],
+          [
+            -831.1874776757606,
+            -85.80755875967606
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 51,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 354.07390762345636,
+        "topological_distance_end_m": 364.88548512735633,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -831.1874776757606,
+            -85.80755875967606
+          ],
+          [
+            -823.9007879188779,
+            -84.66256396941226
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 52,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 364.88548512735633,
+        "topological_distance_end_m": 372.2615857694837,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -823.9007879188779,
+            -84.66256396941226
+          ],
+          [
+            -813.90145835495,
+            -86.37806823146826
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 53,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 372.2615857694837,
+        "topological_distance_end_m": 382.40700575099135,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -813.90145835495,
+            -86.37806823146826
+          ],
+          [
+            -802.0420008356481,
+            -88.80609232850635
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 54,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 382.40700575099135,
+        "topological_distance_end_m": 394.51246045818533,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -802.0420008356481,
+            -88.80609232850635
+          ],
+          [
+            -772.8901826199273,
+            -94.36402940636718
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 55,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 394.51246045818533,
+        "topological_distance_end_m": 424.18937353626495,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -772.8901826199273,
+            -94.36402940636718
+          ],
+          [
+            -765.8859624046179,
+            -95.80073758654481
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 56,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 424.18937353626495,
+        "topological_distance_end_m": 431.3394246703155,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -765.8859624046179,
+            -95.80073758654481
+          ],
+          [
+            -760.600971004494,
+            -97.3595791586627
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 57,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 431.3394246703155,
+        "topological_distance_end_m": 436.84951733254417,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -760.600971004494,
+            -97.3595791586627
+          ],
+          [
+            -757.4583920446146,
+            -99.64143785747538
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 58,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 436.84951733254417,
+        "topological_distance_end_m": 440.7331601637561,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -757.4583920446146,
+            -99.64143785747538
+          ],
+          [
+            -755.4575445871419,
+            -102.3571311689218
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 59,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 440.7331601637561,
+        "topological_distance_end_m": 444.10634570711267,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -755.4575445871419,
+            -102.3571311689218
+          ],
+          [
+            -754.457576513264,
+            -106.63067148960069
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 60,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 444.10634570711267,
+        "topological_distance_end_m": 448.49531859621135,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -754.457576513264,
+            -106.63067148960069
+          ],
+          [
+            -754.5994320716585,
+            -111.9056071888885
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 61,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 448.49531859621135,
+        "topological_distance_end_m": 453.7721613673263,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -754.5994320716585,
+            -111.9056071888885
+          ],
+          [
+            -756.3529997799351,
+            -116.81304623422561
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 62,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 453.7721613673263,
+        "topological_distance_end_m": 458.98349111041586,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -756.3529997799351,
+            -116.81304623422561
+          ],
+          [
+            -758.6030204669883,
+            -118.45972579594928
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 63,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 458.98349111041586,
+        "topological_distance_end_m": 461.7717067891548,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -758.6030204669883,
+            -118.45972579594928
+          ],
+          [
+            -763.1766661048622,
+            -120.0281366352743
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 64,
+        "osm_way_id": 1074706894,
+        "topological_distance_start_m": 461.7717067891548,
+        "topological_distance_end_m": 466.60680213276027,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -763.1766661048622,
+            -120.0281366352743
+          ],
+          [
+            -769.7512787929169,
+            -119.6042039734625
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 65,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 466.60680213276027,
+        "topological_distance_end_m": 473.19506828552613,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -769.7512787929169,
+            -119.6042039734625
+          ],
+          [
+            -780.4694575265867,
+            -119.02379256621238
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 66,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 473.19506828552613,
+        "topological_distance_end_m": 483.9289507503455,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -780.4694575265867,
+            -119.02379256621238
+          ],
+          [
+            -790.3277456344822,
+            -116.75195076278195
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 67,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 483.9289507503455,
+        "topological_distance_end_m": 494.04562557946247,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -790.3277456344822,
+            -116.75195076278195
+          ],
+          [
+            -798.755364007708,
+            -113.17827957396678
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 68,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 494.04562557946247,
+        "topological_distance_end_m": 503.1996343849258,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -798.755364007708,
+            -113.17827957396678
+          ],
+          [
+            -806.3301733702616,
+            -110.18342376790116
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 69,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 503.1996343849258,
+        "topological_distance_end_m": 511.34499491581425,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -806.3301733702616,
+            -110.18342376790116
+          ],
+          [
+            -812.1858761437315,
+            -107.90107670442019
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 70,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 511.34499491581425,
+        "topological_distance_end_m": 517.6297672338385,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -812.1858761437315,
+            -107.90107670442019
+          ],
+          [
+            -816.4771079664121,
+            -107.33279275312196
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 71,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 517.6297672338385,
+        "topological_distance_end_m": 521.9584641746383,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -816.4771079664121,
+            -107.33279275312196
+          ],
+          [
+            -831.6210693637887,
+            -107.76421852398052
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 72,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 521.9584641746383,
+        "topological_distance_end_m": 537.1085696198487,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -831.6210693637887,
+            -107.76421852398052
+          ],
+          [
+            -824.0529209931858,
+            -110.32509743713206
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 73,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 537.1085696198487,
+        "topological_distance_end_m": 545.0982486226175,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -824.0529209931858,
+            -110.32509743713206
+          ],
+          [
+            -814.9065279838674,
+            -112.60801653064588
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 74,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 545.0982486226175,
+        "topological_distance_end_m": 554.5252430889593,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -814.9065279838674,
+            -112.60801653064588
+          ],
+          [
+            -805.1891967199879,
+            -114.32345492982708
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 75,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 554.5252430889593,
+        "topological_distance_end_m": 564.3928292068179,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -805.1891967199879,
+            -114.32345492982708
+          ],
+          [
+            -800.4748199889465,
+            -114.60245545157304
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 76,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 564.3928292068179,
+        "topological_distance_end_m": 569.1154544569641,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -800.4748199889465,
+            -114.60245545157304
+          ],
+          [
+            -792.9000714559861,
+            -118.03131753931581
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 77,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 569.1154544569641,
+        "topological_distance_end_m": 577.4301348810301,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -792.9000714559861,
+            -118.03131753931581
+          ],
+          [
+            -787.3264525396654,
+            -120.59181012202058
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 78,
+        "osm_way_id": 597823140,
+        "topological_distance_start_m": 577.4301348810301,
+        "topological_distance_end_m": 583.563759428592,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -787.3264525396654,
+            -120.59181012202058
+          ],
+          [
+            -799.7569268874256,
+            -118.74241499757116
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 79,
+        "osm_way_id": 1075009268,
+        "topological_distance_start_m": 583.563759428592,
+        "topological_distance_end_m": 596.1310564664066,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -799.7569268874256,
+            -118.74241499757116
+          ],
+          [
+            -810.3338325736647,
+            -116.7486280181099
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 80,
+        "osm_way_id": 1075009268,
+        "topological_distance_start_m": 596.1310564664066,
+        "topological_distance_end_m": 606.8942400296032,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -810.3338325736647,
+            -116.7486280181099
+          ],
+          [
+            -818.4797641797409,
+            -115.4563333317459
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 81,
+        "osm_way_id": 1075009268,
+        "topological_distance_start_m": 606.8942400296032,
+        "topological_distance_end_m": 615.1420413904069,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -818.4797641797409,
+            -115.4563333317459
+          ],
+          [
+            -827.619642070435,
+            -114.31965470931446
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 82,
+        "osm_way_id": 1075009268,
+        "topological_distance_start_m": 615.1420413904069,
+        "topological_distance_end_m": 624.3523294503697,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -827.619642070435,
+            -114.31965470931446
+          ],
+          [
+            -835.3425761308893,
+            -113.60609150680851
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 83,
+        "osm_way_id": 1075009268,
+        "topological_distance_start_m": 624.3523294503697,
+        "topological_distance_end_m": 632.1081584161279,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -835.3425761308893,
+            -113.60609150680851
+          ],
+          [
+            -844.0596303648866,
+            -114.02745941814088
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 84,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 632.1081584161279,
+        "topological_distance_end_m": 640.8353908202267,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -844.0596303648866,
+            -114.02745941814088
+          ],
+          [
+            -850.0567775843325,
+            -114.17107705791531
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 85,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 640.8353908202267,
+        "topological_distance_end_m": 646.8342574463622,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.0567775843325,
+            -114.17107705791531
+          ],
+          [
+            -852.6286886311809,
+            -113.02437654623492
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 86,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 646.8342574463622,
+        "topological_distance_end_m": 649.6502206024403,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -852.6286886311809,
+            -113.02437654623492
+          ],
+          [
+            -850.9153557461888,
+            -108.32840884405176
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 87,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 649.6502206024403,
+        "topological_distance_end_m": 654.6489826726676,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.9153557461888,
+            -108.32840884405176
+          ],
+          [
+            -848.624149796613,
+            -101.77406554569083
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 88,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 654.6489826726676,
+        "topological_distance_end_m": 661.5922557319776,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -848.624149796613,
+            -101.77406554569083
+          ],
+          [
+            -848.200683598547,
+            -99.62631965300469
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 89,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 661.5922557319776,
+        "topological_distance_end_m": 663.7813505313078,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -848.200683598547,
+            -99.62631965300469
+          ],
+          [
+            -852.0557367804126,
+            -101.05010077207221
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 90,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 663.7813505313078,
+        "topological_distance_end_m": 667.8909232232096,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -852.0557367804126,
+            -101.05010077207221
+          ],
+          [
+            -855.3472573757291,
+            -105.75691684546845
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 91,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 667.8909232232096,
+        "topological_distance_end_m": 673.6344609290294,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -855.3472573757291,
+            -105.75691684546845
+          ],
+          [
+            -856.2009607472751,
+            -110.31949256910382
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 92,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 673.6344609290294,
+        "topological_distance_end_m": 678.2762177818272,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -856.2009607472751,
+            -110.31949256910382
+          ],
+          [
+            -856.7725804860048,
+            -114.73744643052814
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 93,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 678.2762177818272,
+        "topological_distance_end_m": 682.730997849056,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -856.7725804860048,
+            -114.73744643052814
+          ],
+          [
+            -855.2022199486092,
+            -121.01425752560844
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 94,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 682.730997849056,
+        "topological_distance_end_m": 689.2012675297365,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -855.2022199486092,
+            -121.01425752560844
+          ],
+          [
+            -852.7720402727354,
+            -126.1449741835911
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 95,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 689.2012675297365,
+        "topological_distance_end_m": 694.8784170505375,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -852.7720402727354,
+            -126.1449741835911
+          ],
+          [
+            -850.0593669698949,
+            -128.84970398922064
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 96,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 694.8784170505375,
+        "topological_distance_end_m": 698.709103642965,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.0593669698949,
+            -128.84970398922064
+          ],
+          [
+            -846.3457991855491,
+            -130.1412755885752
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 97,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 698.709103642965,
+        "topological_distance_end_m": 702.6408644298377,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -846.3457991855491,
+            -130.1412755885752
+          ],
+          [
+            -845.0560795856776,
+            -128.42769709107066
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 98,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 702.6408644298377,
+        "topological_distance_end_m": 704.7855620573374,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -845.0560795856776,
+            -128.42769709107066
+          ],
+          [
+            -846.0561711430597,
+            -125.28925557734686
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 99,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 704.7855620573374,
+        "topological_distance_end_m": 708.0794956113442,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -846.0561711430597,
+            -125.28925557734686
+          ],
+          [
+            -850.0578592766009,
+            -120.30293717298994
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 100,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 708.0794956113442,
+        "topological_distance_end_m": 714.4729984969111,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.0578592766009,
+            -120.30293717298994
+          ],
+          [
+            -851.4878769351709,
+            -117.87664922865501
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 101,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 714.4729984969111,
+        "topological_distance_end_m": 717.289347852486,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -851.4878769351709,
+            -117.87664922865501
+          ],
+          [
+            -850.346029975892,
+            -116.87527658361121
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 102,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 717.289347852486,
+        "topological_distance_end_m": 718.808084713386,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -850.346029975892,
+            -116.87527658361121
+          ],
+          [
+            -844.9132249960393,
+            -118.02247834382908
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 103,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 718.808084713386,
+        "topological_distance_end_m": 724.3606914730764,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -844.9132249960393,
+            -118.02247834382908
+          ],
+          [
+            -838.9094310515889,
+            -118.30174237707304
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 104,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 724.3606914730764,
+        "topological_distance_end_m": 730.3709768346614,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -838.9094310515889,
+            -118.30174237707304
+          ],
+          [
+            -834.0538761140047,
+            -117.73502648870046
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 105,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 730.3709768346614,
+        "topological_distance_end_m": 735.2594920131212,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -834.0538761140047,
+            -117.73502648870046
+          ],
+          [
+            -830.9106297430905,
+            -116.02176463731558
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 106,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 735.2594920131212,
+        "topological_distance_end_m": 738.8393333391684,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -830.9106297430905,
+            -116.02176463731558
+          ],
+          [
+            -828.3378778683041,
+            -112.31638273171546
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 107,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 738.8393333391684,
+        "topological_distance_end_m": 743.3503096498539,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -828.3378778683041,
+            -112.31638273171546
+          ],
+          [
+            -825.6240774889507,
+            -108.47748036253228
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 108,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 743.3503096498539,
+        "topological_distance_end_m": 748.0515737244511,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -825.6240774889507,
+            -108.47748036253228
+          ],
+          [
+            -821.9030723848487,
+            -105.48452219213623
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 109,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 748.0515737244511,
+        "topological_distance_end_m": 752.8268933571557,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -821.9030723848487,
+            -105.48452219213623
+          ],
+          [
+            -816.3355222693132,
+            -104.04987877522547
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 110,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 752.8268933571557,
+        "topological_distance_end_m": 758.576312112359,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -816.3355222693132,
+            -104.04987877522547
+          ],
+          [
+            -810.7616941812078,
+            -105.19706594390958
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 111,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 758.576312112359,
+        "topological_distance_end_m": 764.2669709455475,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -810.7616941812078,
+            -105.19706594390958
+          ],
+          [
+            -795.7593161712941,
+            -108.05961780281889
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 112,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 764.2669709455475,
+        "topological_distance_end_m": 779.5400043409568,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -795.7593161712941,
+            -108.05961780281889
+          ],
+          [
+            -761.4633036049544,
+            -114.60877800028658
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 113,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 779.5400043409568,
+        "topological_distance_end_m": 814.4557311305086,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -761.4633036049544,
+            -114.60877800028658
+          ],
+          [
+            -757.4607675954366,
+            -114.75408066186245
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 114,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 814.4557311305086,
+        "topological_distance_end_m": 818.4609037074331,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -757.4607675954366,
+            -114.75408066186245
+          ],
+          [
+            -753.1692334738142,
+            -113.47496398181113
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 115,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 818.4609037074331,
+        "topological_distance_end_m": 822.9390064974809,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -753.1692334738142,
+            -113.47496398181113
+          ],
+          [
+            -751.3153894072134,
+            -111.48323341953432
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 116,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 822.9390064974809,
+        "topological_distance_end_m": 825.6599858167663,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -751.3153894072134,
+            -111.48323341953432
+          ],
+          [
+            -750.0254418480425,
+            -108.05582459070033
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 117,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 825.6599858167663,
+        "topological_distance_end_m": 829.3221021427969,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -750.0254418480425,
+            -108.05582459070033
+          ],
+          [
+            -749.7428736667741,
+            -104.78405921301199
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 118,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 829.3221021427969,
+        "topological_distance_end_m": 832.6060469449678,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -749.7428736667741,
+            -104.78405921301199
+          ],
+          [
+            -749.7424286760784,
+            -101.92400823779761
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 119,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 832.6060469449678,
+        "topological_distance_end_m": 835.4660979547999,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -749.7424286760784,
+            -101.92400823779761
+          ],
+          [
+            -750.7427328411642,
+            -99.78716065802627
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 120,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 835.4660979547999,
+        "topological_distance_end_m": 837.8254889783191,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -750.7427328411642,
+            -99.78716065802627
+          ],
+          [
+            -753.3143240651108,
+            -96.492692728665
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 121,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 837.8254889783191,
+        "topological_distance_end_m": 842.0047951839791,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -753.3143240651108,
+            -96.492692728665
+          ],
+          [
+            -756.1682214987228,
+            -94.80069801271989
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 122,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 842.0047951839791,
+        "topological_distance_end_m": 845.3225620052557,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -756.1682214987228,
+            -94.80069801271989
+          ],
+          [
+            -759.8820704964526,
+            -95.31202955162534
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 123,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 845.3225620052557,
+        "topological_distance_end_m": 849.0714464153994,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -759.8820704964526,
+            -95.31202955162534
+          ],
+          [
+            -763.2064727407103,
+            -96.21292104498887
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 124,
+        "osm_way_id": 597823137,
+        "topological_distance_start_m": 849.0714464153994,
+        "topological_distance_end_m": 852.5157541491016,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -763.2064727407103,
+            -96.21292104498887
+          ],
+          [
+            -766.8870958592195,
+            -98.92771591654083
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 125,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 852.5157541491016,
+        "topological_distance_end_m": 857.0892755205515,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -766.8870958592195,
+            -98.92771591654083
+          ],
+          [
+            -771.0311498736361,
+            -101.92064892052511
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 126,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 857.0892755205515,
+        "topological_distance_end_m": 862.2011080335296,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -771.0311498736361,
+            -101.92064892052511
+          ],
+          [
+            -774.7449701530489,
+            -102.20939693831798
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 127,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 862.2011080335296,
+        "topological_distance_end_m": 865.9261364207446,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -774.7449701530489,
+            -102.20939693831798
+          ],
+          [
+            -780.8899610838636,
+            -103.06530749867274
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 128,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 865.9261364207446,
+        "topological_distance_end_m": 872.1304491487685,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -780.8899610838636,
+            -103.06530749867274
+          ],
+          [
+            -791.6079865182279,
+            -101.78376930934081
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 129,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 872.1304491487685,
+        "topological_distance_end_m": 882.9248184838616,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -791.6079865182279,
+            -101.78376930934081
+          ],
+          [
+            -800.3249212648767,
+            -101.6376575896709
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 130,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 882.9248184838616,
+        "topological_distance_end_m": 891.6429776939218,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -800.3249212648767,
+            -101.6376575896709
+          ],
+          [
+            -804.8982671071299,
+            -101.42545238743551
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 131,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 891.6429776939218,
+        "topological_distance_end_m": 896.2212440951604,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -804.8982671071299,
+            -101.42545238743551
+          ],
+          [
+            -809.9014144479705,
+            -101.20204202113659
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 132,
+        "osm_way_id": 597823139,
+        "topological_distance_start_m": 896.2212440951604,
+        "topological_distance_end_m": 901.2293770312884,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -809.9014144479705,
+            -101.20204202113659
+          ],
+          [
+            -804.8982671071299,
+            -101.42545238743551
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 133,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 901.2293770312884,
+        "topological_distance_end_m": 906.2375099674165,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -804.8982671071299,
+            -101.42545238743551
+          ],
+          [
+            -798.9016684685954,
+            -104.48681621032782
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 134,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 906.2375099674165,
+        "topological_distance_end_m": 912.9703506522825,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -798.9016684685954,
+            -104.48681621032782
+          ],
+          [
+            -795.7593161712941,
+            -108.05961780281889
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 135,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 912.9703506522825,
+        "topological_distance_end_m": 917.7284268580258,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -795.7593161712941,
+            -108.05961780281889
+          ],
+          [
+            -795.7533282210311,
+            -112.46654565414775
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 136,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 917.7284268580258,
+        "topological_distance_end_m": 922.1353587774418,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -795.7533282210311,
+            -112.46654565414775
+          ],
+          [
+            -797.9036972670442,
+            -120.59007032028998
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 137,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 922.1353587774418,
+        "topological_distance_end_m": 930.5386759817053,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -797.9036972670442,
+            -120.59007032028998
+          ],
+          [
+            -798.0453409231723,
+            -124.29587165860083
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 138,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 930.5386759817053,
+        "topological_distance_end_m": 934.2471832938658,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -798.0453409231723,
+            -124.29587165860083
+          ],
+          [
+            -795.4735523310592,
+            -126.29944541807164
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 139,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 934.2471832938658,
+        "topological_distance_end_m": 937.5073066614951,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -795.4735523310592,
+            -126.29944541807164
+          ],
+          [
+            -787.6166959913769,
+            -129.57254525901513
+          ]
+        ]
+      },
+      "properties": {
+        "segment_index": 140,
+        "osm_way_id": 597823138,
+        "topological_distance_start_m": 937.5073066614951,
+        "topological_distance_end_m": 946.0186740082373,
+        "travel_direction": "unresolved",
+        "ride_phase": "unresolved",
+        "track_height_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -848.0536926324547,
+              -103.91085781632654
+            ],
+            [
+              -844.7694716309105,
+              -102.48697346388614
+            ],
+            [
+              -840.907453248994,
+              -99.62759789923258
+            ],
+            [
+              -837.4816877274191,
+              -95.21013894536084
+            ],
+            [
+              -816.9054143304788,
+              -98.49660912482442
+            ],
+            [
+              -815.0434825096617,
+              -88.51456709019931
+            ],
+            [
+              -802.7541933502628,
+              -90.7979937700365
+            ],
+            [
+              -800.1803345387882,
+              -80.21511983023107
+            ],
+            [
+              -824.8999011448515,
+              -75.78176727639996
+            ],
+            [
+              -831.1866464954829,
+              -80.98887351977908
+            ],
+            [
+              -837.6200086978853,
+              -79.63006987219275
+            ],
+            [
+              -837.9091533543506,
+              -81.76671151411587
+            ],
+            [
+              -850.4804367192507,
+              -79.34960213224004
+            ],
+            [
+              -850.7695615189836,
+              -81.34157116005078
+            ],
+            [
+              -860.3457574829813,
+              -79.49252269727485
+            ],
+            [
+              -862.0601484657257,
+              -90.10890418302921
+            ],
+            [
+              -861.913393056708,
+              -95.63984638100816
+            ],
+            [
+              -860.4902797949927,
+              -99.05658197448462
+            ],
+            [
+              -858.0596868180404,
+              -101.77239462206305
+            ],
+            [
+              -855.0579771711531,
+              -102.9080457362416
+            ],
+            [
+              -852.1972719380714,
+              -103.91012680289248
+            ],
+            [
+              -848.0536926324547,
+              -103.91085781632654
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "osm_way_id": 453955411,
+        "role": "mapped_station_footprint",
+        "loading_level_odn_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -845.4179530576065,
+          -122.19543833612568
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          0,
+          9
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -848.8952283655369,
+          -121.7516377503091
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          0,
+          100
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -855.2076554025588,
+          -120.99253173917617
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          1,
+          94
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -853.0101634972708,
+          -125.64223654369314
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          7,
+          95
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -847.30557121708,
+          -123.73243596132666
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          8,
+          100
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -843.9982602985882,
+          -118.06503755456319
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          10,
+          104
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -843.6916787091532,
+          -114.00967324674791
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          11,
+          84
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -848.7840901442652,
+          -106.51327173269085
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          13,
+          19
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -850.0400593151628,
+          -105.82449019900956
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          13,
+          88
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -854.6948905655106,
+          -104.824043877134
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          14,
+          91
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -855.7962529299612,
+          -108.15655152425576
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          18,
+          92
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -850.4645711161345,
+          -107.03887080861364
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          19,
+          88
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -797.4472356513899,
+          -101.68589284734763
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          28,
+          130
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -791.1515080526999,
+          -108.93952398635825
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          30,
+          113
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -780.2435997655714,
+          -111.02249612935901
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          33,
+          113
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -776.3031443356251,
+          -102.426428623597
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          36,
+          128
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -833.2881030487474,
+          -87.71383463332523
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          42,
+          51
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -848.3249327579041,
+          -100.2564894821379
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          48,
+          89
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -849.69153606542,
+          -100.17693400085183
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          48,
+          90
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -763.572701859776,
+          -96.48304838545266
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          57,
+          125
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -755.3975300566657,
+          -114.13912072540221
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          62,
+          115
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -796.22568199776,
+          -114.25097310557415
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          68,
+          137
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -824.4845498446235,
+          -107.56091118886434
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          72,
+          109
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -826.3747932178792,
+          -109.53943186504235
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          73,
+          108
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -796.7634413621406,
+          -116.28248554251783
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          77,
+          137
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -797.5033591202128,
+          -119.0776988431189
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          79,
+          137
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -829.601654976465,
+          -114.13652593137022
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          83,
+          107
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -795.7593161712941,
+          -108.05961780281889
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          112,
+          135
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -795.7593161712941,
+          -108.05961780281889
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          112,
+          136
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -795.7593161712941,
+          -108.05961780281889
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          113,
+          135
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -795.7593161712941,
+          -108.05961780281889
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          113,
+          136
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -804.8982671071299,
+          -101.42545238743551
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          131,
+          133
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -804.8982671071299,
+          -101.42545238743551
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          131,
+          134
+        ],
+        "vertical_separation_m": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -804.8982671071299,
+          -101.42545238743551
+        ]
+      },
+      "properties": {
+        "role": "unresolved_crossing",
+        "segment_indices": [
+          132,
+          134
+        ],
+        "vertical_separation_m": null
+      }
+    }
+  ]
+}

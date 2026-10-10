@@ -1,0 +1,45 @@
+{
+  "version": "planning-component-binding-validation-v1",
+  "scope": "Native PDF label and candidate binding adapter wired into the park pipeline and area coordinator.",
+  "fixture": "Synthetic native PDF with an explicitly metre-labelled timber fence and independent fixture controls/checkpoints. Not evidence of actual Wicker placement.",
+  "focused_tests": {
+    "count": 7,
+    "status": "passed"
+  },
+  "compiler_fixture": {
+    "accepted_component_ids": [
+      "queue/fence"
+    ],
+    "unique_voxel_cells": 42,
+    "same_input_resume": "passed",
+    "changed_binding_resume": "rejected"
+  },
+  "checks": [
+    "native PDF mention equality",
+    "same document/page identity",
+    "explicit label-to-geometry association",
+    "retained extraction and PDF checksums",
+    "existing/as-built source state",
+    "independent registration evidence",
+    "known printed metre height consistency",
+    "no stale promoted records after withholding"
+  ],
+  "world_geometry_additions": 0,
+  "real_wicker_status": "Source mentions remain unbound; no verified real queue/fence component or new world download is claimed.",
+  "remaining": [
+    "Actual Wicker label/physical-geometry association evidence",
+    "Independent source registration for target drawing pages",
+    "Existing/proposed source review",
+    "Measured 3D stair and access-interface recipes"
+  ],
+  "area_integration": {
+    "focused_tests": 15,
+    "status": "passed",
+    "family_coverage": "Uses shared generator aliases for both generated and required families; physical component IDs remain mandatory."
+  },
+  "full_suite": {
+    "count": 821,
+    "seconds": 85.227,
+    "status": "passed"
+  }
+}

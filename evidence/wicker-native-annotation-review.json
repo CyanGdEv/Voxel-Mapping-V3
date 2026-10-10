@@ -1,0 +1,5400 @@
+{
+  "status": "unplaced_annotation_review_projection",
+  "full_annotation_jsonl_sha256": "42b32e43391ac69144883950a4ed8f150355bf361824801d3bd674f9c88efe7f",
+  "omitted_fields": [
+    "glyph_origins_page_points; reproduced by replay script"
+  ],
+  "records": [
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "4ca83a6e0ca43aea0a380555234b998e048d2aebb2668b5bfb30170322e19330"
+      ],
+      "bbox_page_points": [
+        501.7266845703125,
+        2122.5439453125,
+        511.5010986328125,
+        2211.73828125
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 182.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "2159dcd27be56cd460c9807b87b962bdb4eaabdfd4db8ca3a960581668bde2ec",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "4ca83a6e0ca43aea0a380555234b998e048d2aebb2668b5bfb30170322e19330",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 96,
+      "paint_seqnos": [
+        96
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Shop Level + 182.50",
+      "trace_indices": [
+        0
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        518.607666015625,
+        2189.556396484375,
+        525.48193359375,
+        2212.09814453125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 182500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "4ca83a6e0ca43aea0a380555234b998e048d2aebb2668b5bfb30170322e19330",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 98,
+      "paint_seqnos": [
+        98
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "182500",
+      "trace_indices": [
+        1
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        501.7267761230469,
+        466.308349609375,
+        511.5011291503906,
+        555.5028076171875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 182.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "cfe041ab2bc96b118cdab901c4f67451fe5a0cdf34c78dad13ad676112c42937",
+      "later_fill_overlap_seqnos": [
+        149
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 122,
+      "paint_seqnos": [
+        122
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Shop Level + 182.50",
+      "trace_indices": [
+        2
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        518.607666015625,
+        465.760986328125,
+        525.4818115234375,
+        488.302978515625
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 182500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "672de5a62c17fc72743b0b8f8f3f3d765f8d3777251469e84fd17287bb4315e2",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 124,
+      "paint_seqnos": [
+        124
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "182500",
+      "trace_indices": [
+        3
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        495.92767333984375,
+        465.760986328125,
+        502.8018798828125,
+        488.3030090332031
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183300,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "68aae93d7fa622b98b34af71447793c155cb355fd4e0efbd68954a3f7db1a7f8",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 150,
+      "paint_seqnos": [
+        150
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "183300",
+      "trace_indices": [
+        6
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "155b71cfdc9ebccb8c06bac79d83bf1b7725b25ccc52c83fc34d839b44eeec02"
+      ],
+      "bbox_page_points": [
+        1088.645751953125,
+        2117.143798828125,
+        1098.420166015625,
+        2219.658203125
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 183.42,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "f7649437a10c6ee18c7b05cbbe8a65579160cc98dafb01069078d6ce0fd947e0",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "155b71cfdc9ebccb8c06bac79d83bf1b7725b25ccc52c83fc34d839b44eeec02",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 172,
+      "paint_seqnos": [
+        172
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Ride Exit Level +183.42",
+      "trace_indices": [
+        7
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1105.5267333984375,
+        2197.4765625,
+        1112.4010009765625,
+        2220.01806640625
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183420,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "155b71cfdc9ebccb8c06bac79d83bf1b7725b25ccc52c83fc34d839b44eeec02",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 174,
+      "paint_seqnos": [
+        174
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "183420",
+      "trace_indices": [
+        8
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "155b71cfdc9ebccb8c06bac79d83bf1b7725b25ccc52c83fc34d839b44eeec02",
+        "a513e03ec2b526c29f20b79f4651112cd83ae10ad5a95bd1deedaa38bdaeebb0"
+      ],
+      "bbox_page_points": [
+        1114.685791015625,
+        2130.583740234375,
+        1124.460205078125,
+        2219.7783203125
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 182.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "c930bb86a685a7be93ea2fa3de76dfde2f8807b6a9910ba1fe6b67d377d5019f",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 198,
+      "paint_seqnos": [
+        198
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Shop Level + 182.50",
+      "trace_indices": [
+        9
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1131.686767578125,
+        2197.476318359375,
+        1138.56103515625,
+        2220.018310546875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 182500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "a513e03ec2b526c29f20b79f4651112cd83ae10ad5a95bd1deedaa38bdaeebb0",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 200,
+      "paint_seqnos": [
+        200
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "182500",
+      "trace_indices": [
+        10
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "fba0b7a4fab26dd003d5232d8ed64d0492e1d6df257b3bfc6b6a06da8756810a"
+      ],
+      "bbox_page_points": [
+        1088.645751953125,
+        671.867919921875,
+        1098.420166015625,
+        774.3824462890625
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 183.42,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "2a7bfff30a9ecac5b3a8c3771c60c64652dc4a8be382709eb8059dc3566e3b79",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "fba0b7a4fab26dd003d5232d8ed64d0492e1d6df257b3bfc6b6a06da8756810a",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 224,
+      "paint_seqnos": [
+        224
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Ride Exit Level +183.42",
+      "trace_indices": [
+        11
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1105.5267333984375,
+        671.440673828125,
+        1112.40087890625,
+        693.9825439453125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183420,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "fba0b7a4fab26dd003d5232d8ed64d0492e1d6df257b3bfc6b6a06da8756810a",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 226,
+      "paint_seqnos": [
+        226
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "183420",
+      "trace_indices": [
+        12
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "fba0b7a4fab26dd003d5232d8ed64d0492e1d6df257b3bfc6b6a06da8756810a",
+        "a2dd8a001f9f2a36e5c56030122de1508a8a216c315844663cbd2eea7cc57514"
+      ],
+      "bbox_page_points": [
+        1114.685791015625,
+        671.9881591796875,
+        1124.460205078125,
+        761.1826171875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 182.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "995d73c9d44cc685e2a5f2f86d359ec0938eeb82d424ba8f82ef92756ca12644",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 244,
+      "paint_seqnos": [
+        244
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Shop Level + 182.50",
+      "trace_indices": [
+        13
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1131.686767578125,
+        671.440673828125,
+        1138.5609130859375,
+        693.9825439453125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 182500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 6.874189376831055,
+      "id": "a2dd8a001f9f2a36e5c56030122de1508a8a216c315844663cbd2eea7cc57514",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 246,
+      "paint_seqnos": [
+        246
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "182500",
+      "trace_indices": [
+        14
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        175.68727111816406,
+        82.14576721191406,
+        185.4616241455078,
+        230.42333984375
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "thatched"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "9961efca704fa57c323103a30d6848c8a1a3e9732e490a50ff717bf27908afb9",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 261,
+      "paint_seqnos": [
+        261
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "1. Roof - Thatched effect roof tiles.",
+      "trace_indices": [
+        15
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        268.6871337890625,
+        73.66799926757812,
+        278.46148681640625,
+        230.42333984375
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "a92bf0955a9061a59640dd3a4764ea57b21a19dc0304282adeb68ca96a43583d",
+      "later_fill_overlap_seqnos": [
+        264
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 263,
+      "paint_seqnos": [
+        263
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "2. Upper Section of walls - Aged and",
+      "trace_indices": [
+        16
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        279.48712158203125,
+        43.626251220703125,
+        289.261474609375,
+        230.42333984375
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "cladding",
+            "timber"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "d3643d6c5168c35c27f2f1a1e6598420f80f2b772057d0c69b705b31f4bca4f0",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 265,
+      "paint_seqnos": [
+        265
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "weathered effect horizontal timber cladding.",
+      "trace_indices": [
+        17
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        468.0068359375,
+        70.66921997070312,
+        477.78118896484375,
+        230.42333984375
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "sandstone"
+          ]
+        },
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 9.774344444274902,
+      "id": "f5eab1468f221d4929578b96b8eea5952ed812d7fc62cbd498c4afb0733b6018",
+      "later_fill_overlap_seqnos": [
+        272
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 271,
+      "paint_seqnos": [
+        271
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "4. Lower section of walls - Sandstone",
+      "trace_indices": [
+        20
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1653.3525390625,
+        1992.418212890625,
+        1659.26025390625,
+        2358.97998046875
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 5.907590866088867,
+      "id": "6541b4416aa16df4681abba31d906002ea8a0166cb838b2381ec63a6138a6f14",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 289,
+      "paint_seqnos": [
+        289
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "\\\\NAS-6E-EB-28\\Documents\\Drawings\\Current Drawings\\2967 ATR 2017 SW8\\01-Architectural\\01 WIP\\CAD\\2967 SW8 Planning 20160801.rvt",
+      "trace_indices": [
+        26
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1114.9862060546875,
+        253.5726318359375,
+        1137.77734375,
+        339.503173828125
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 22.79106330871582,
+      "id": "52923701b074ede7312c26f58e3b5b6eb5ddea4eabeff3a0e0b72fe011930033",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 290,
+      "paint_seqnos": [
+        290
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "PLANNING",
+      "trace_indices": [
+        27
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1557.49267578125,
+        384.4190673828125,
+        1577.0413818359375,
+        427.343017578125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 10.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 19.548669815063477,
+      "id": "ef75ffd7510f24e3189336f81787b9a22ba4ce081ae1db5af3d1aea5c52bff6e",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 324,
+      "paint_seqnos": [
+        324
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "10 m",
+      "trace_indices": [
+        35
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        562.9984130859375,
+        1847.05224609375,
+        587.166259765625,
+        2117.42041015625
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 24.167762756347656,
+      "id": "1d60cc223b5055035c0ac386af6ae818579821b815dd0927eeb2f65044ece6cd",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 332,
+      "paint_seqnos": [
+        332
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Elevation 1 to the S.East",
+      "trace_indices": [
+        41
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        562.9984741210938,
+        837.3750610351562,
+        587.1661987304688,
+        1114.221923828125
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 24.167762756347656,
+      "id": "e604672503863a2381c13d56fcf6edd384d28bf23a26826820c9e589eaf3f474",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 332,
+      "paint_seqnos": [
+        332
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Elevation 2 to the S.West",
+      "trace_indices": [
+        43
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1167.557861328125,
+        1832.7724609375,
+        1191.7255859375,
+        2117.42041015625
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 24.167762756347656,
+      "id": "a7ec104a901d646422c53db1e9ddf6344953f75a55f2ee6620c525987afdc173",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 332,
+      "paint_seqnos": [
+        332
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Elevation 3 to the N. West",
+      "trace_indices": [
+        45
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1167.557861328125,
+        836.054931640625,
+        1191.7255859375,
+        1114.221923828125
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "font_size_points": 24.167762756347656,
+      "id": "d18dbbc405c6f462800d330047fd900de906851b559afcdc47d1e0366f29e55e",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 332,
+      "paint_seqnos": [
+        332
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-26 Shop Elevations P1 FINAL.",
+        "source_state": "proposed",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      "text": "Elevation 4 to the N. East",
+      "trace_indices": [
+        47
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        379.779052734375,
+        1722.4632568359375,
+        389.12353515625,
+        1783.6988525390625
+      ],
+      "claims": [
+        {
+          "axes_verified": false,
+          "kind": "slope_ratio",
+          "rise_per_run_candidate": 0.027777777777777776
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.344505310058594,
+      "id": "17c72899e4c363a73ebf8fbb9a699e686a1027a89b3ea012116cde6532d144a6",
+      "later_fill_overlap_seqnos": [
+        595,
+        597
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 594,
+      "paint_seqnos": [
+        594,
+        596,
+        598
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "1: 36 Slope Up",
+      "trace_indices": [
+        8,
+        9,
+        10
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "524255c5447b532d3203dc79d372d37d40d550f00d8f042f011851d8617193a1"
+      ],
+      "bbox_page_points": [
+        926.6460571289062,
+        1054.30712890625,
+        936.4204711914062,
+        1151.5419921875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 181.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "37c7e3cedc8c883ee88435e37d19213c5514983aa4d6a133696d148a63e7a3a6",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "524255c5447b532d3203dc79d372d37d40d550f00d8f042f011851d8617193a1",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 630,
+      "paint_seqnos": [
+        630
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Inspection Lvl +181.50",
+      "trace_indices": [
+        14
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        944.0070190429688,
+        1053.760009765625,
+        950.8811645507812,
+        1076.302001953125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 181500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "524255c5447b532d3203dc79d372d37d40d550f00d8f042f011851d8617193a1",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 632,
+      "paint_seqnos": [
+        632
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "181500",
+      "trace_indices": [
+        15
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [],
+      "bbox_page_points": [
+        881.045166015625,
+        2183.02392578125,
+        890.819580078125,
+        2249.5380859375
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 183.745,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "785a06ebde36db4a38eb22b70d6c624a6cdd0cc243bbf758d3e9bad315c240ff",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 668,
+      "paint_seqnos": [
+        668
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Level +183.745",
+      "trace_indices": [
+        17
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        898.406982421875,
+        2274.156005859375,
+        905.28125,
+        2296.697998046875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183745,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "e385ef6b6501ad5eec49890199ed710ce838f1a186e4b305eee7b5c8532894dd",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 670,
+      "paint_seqnos": [
+        670
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "183745",
+      "trace_indices": [
+        18
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        837.3271484375,
+        2274.156005859375,
+        844.201416015625,
+        2296.697998046875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 184000,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "42ac568b13dc47604b5604b103afaee799572108420652dcb3c38ff3a73e1c6e",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 706,
+      "paint_seqnos": [
+        706
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "184000",
+      "trace_indices": [
+        20
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "588da9bcd1a1f1da933f3f19c647cc3cd533e92032494b0b6157df7fb3aacb5c",
+        "fbe061c3b114f52d0404ef6a4dfd6c69fde4124f59cc348814d0f99470eae652"
+      ],
+      "bbox_page_points": [
+        344.886962890625,
+        1062.9471435546875,
+        354.661376953125,
+        1165.4617919921875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 183.42,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "34eb53c42e82506b2398d3c10092d174df11344a308ed414f5141240119d84f8",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 740,
+      "paint_seqnos": [
+        740
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Ride Exit Level +183.42",
+      "trace_indices": [
+        21
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        361.76788330078125,
+        1143.2799072265625,
+        368.64202880859375,
+        1165.82177734375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183420,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "588da9bcd1a1f1da933f3f19c647cc3cd533e92032494b0b6157df7fb3aacb5c",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 742,
+      "paint_seqnos": [
+        742
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "183420",
+      "trace_indices": [
+        22
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        327.3280029296875,
+        1143.2799072265625,
+        334.2021484375,
+        1165.82177734375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 184000,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "fbe061c3b114f52d0404ef6a4dfd6c69fde4124f59cc348814d0f99470eae652",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 770,
+      "paint_seqnos": [
+        770
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "184000",
+      "trace_indices": [
+        24
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "ce6368ea99817b41330941e9b0a296d9d4b4a989a128b435cb70c7b662f1ecec"
+      ],
+      "bbox_page_points": [
+        1482.4852294921875,
+        1199.0267333984375,
+        1492.2596435546875,
+        1296.2615966796875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 181.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "07dfbb7bbcd4ce12e7b13248b19f6b6f31eec5662b1a6ea3df109fad1a6de3af",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "ce6368ea99817b41330941e9b0a296d9d4b4a989a128b435cb70c7b662f1ecec",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 796,
+      "paint_seqnos": [
+        796
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Inspection Lvl +181.50",
+      "trace_indices": [
+        26
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1499.84619140625,
+        1198.479736328125,
+        1506.7203369140625,
+        1221.02197265625
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 181500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "ce6368ea99817b41330941e9b0a296d9d4b4a989a128b435cb70c7b662f1ecec",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 798,
+      "paint_seqnos": [
+        798
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "181500",
+      "trace_indices": [
+        27
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "bce6eed668da25382697a2b2200de356852a2feea06042ec5619879a891f2748"
+      ],
+      "bbox_page_points": [
+        1372.3253173828125,
+        1819.1837158203125,
+        1382.0997314453125,
+        1926.3785400390625
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 185.8,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "f73fba7b45876952bec5c3abb2d7f28d03ac25487ae43948e7b8f19b5181046a",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.4000000000000057,
+        "numeric_annotation_id": "bce6eed668da25382697a2b2200de356852a2feea06042ec5619879a891f2748",
+        "status": "conflicting_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 828,
+      "paint_seqnos": [
+        828
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Ride Exit Bridge +185.80",
+      "trace_indices": [
+        28
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1389.3262939453125,
+        1818.6368408203125,
+        1396.200439453125,
+        1841.1788330078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 185400,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "bce6eed668da25382697a2b2200de356852a2feea06042ec5619879a891f2748",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 830,
+      "paint_seqnos": [
+        830
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "185400",
+      "trace_indices": [
+        29
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1428.92626953125,
+        1188.8798828125,
+        1435.8004150390625,
+        1211.421875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 184000,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "af9df7d3da5d110f69f8899e3c4abcf2abe29c47052cfcb4939dfda69ec98fa9",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 848,
+      "paint_seqnos": [
+        848
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "184000",
+      "trace_indices": [
+        31
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "89e7987a01b41715c4266d436a4b141c688bca8610f9384e4b31b1588bf5f5fb"
+      ],
+      "bbox_page_points": [
+        919.4461059570312,
+        309.46905517578125,
+        929.220458984375,
+        406.7030029296875
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 181.5,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "8ff239fa622b65e4a65c8614f865005a2c7cb796f862ae5adc0f3887845e4af7",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "89e7987a01b41715c4266d436a4b141c688bca8610f9384e4b31b1588bf5f5fb",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 880,
+      "paint_seqnos": [
+        880
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Inspection Lvl +181.50",
+      "trace_indices": [
+        33
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        936.8070068359375,
+        308.921142578125,
+        943.68115234375,
+        331.463134765625
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 181500,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "89e7987a01b41715c4266d436a4b141c688bca8610f9384e4b31b1588bf5f5fb",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 882,
+      "paint_seqnos": [
+        882
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "181500",
+      "trace_indices": [
+        34
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "adjacent_numeric_candidates": [
+        "44db7d909849b4acfd8cbcfe5981983499cd37ea82572eccbae7f5112e085153"
+      ],
+      "bbox_page_points": [
+        855.84521484375,
+        309.4691162109375,
+        865.6195068359375,
+        375.98297119140625
+      ],
+      "claims": [
+        {
+          "kind": "level",
+          "value_m_candidate": 183.745,
+          "vertical_datum_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "be509f6b8af510cead26710959c53c222b3bc72c286c48c14e861a041585b989",
+      "later_fill_overlap_seqnos": [],
+      "numeric_level_comparison": {
+        "association_verified": false,
+        "assumed_numeric_units": "mm_unverified",
+        "automatic_geometry_allowed": false,
+        "difference_m_candidate": 0.0,
+        "numeric_annotation_id": "44db7d909849b4acfd8cbcfe5981983499cd37ea82572eccbae7f5112e085153",
+        "status": "consistent_candidate_values"
+      },
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 906,
+      "paint_seqnos": [
+        906
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Level +183.745",
+      "trace_indices": [
+        36
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        873.2071533203125,
+        308.921142578125,
+        880.081298828125,
+        331.463134765625
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 183745,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 6.874189376831055,
+      "id": "44db7d909849b4acfd8cbcfe5981983499cd37ea82572eccbae7f5112e085153",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 908,
+      "paint_seqnos": [
+        908
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "183745",
+      "trace_indices": [
+        37
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        166.68728637695312,
+        86.22610473632812,
+        176.46163940429688,
+        234.50343322753906
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "thatched"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "1bd1745b2174d94d10278dbefa3724fcc176aad9295d337af79433b68591f1dd",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 927,
+      "paint_seqnos": [
+        927
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "1. Roof - Thatched effect roof tiles.",
+      "trace_indices": [
+        38
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        259.6871337890625,
+        77.74880981445312,
+        269.46148681640625,
+        234.50341796875
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "c80b53daf7ebae88a23c3f73a4add7c2cad14772711cd1501ec730d2a9e327bc",
+      "later_fill_overlap_seqnos": [
+        930
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 929,
+      "paint_seqnos": [
+        929
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "2. Upper Section of walls - Aged and",
+      "trace_indices": [
+        39
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        270.48712158203125,
+        47.706573486328125,
+        280.261474609375,
+        234.50338745117188
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "cladding",
+            "timber"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "2df9510ff5ab00e5c8dcaf1603fb6a978696eb11e75c3a05f4c244bfb4a6cda7",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 931,
+      "paint_seqnos": [
+        931
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "weathered effect horizontal timber cladding.",
+      "trace_indices": [
+        40
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        459.0068359375,
+        74.74929809570312,
+        468.78118896484375,
+        234.50341796875
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "sandstone"
+          ]
+        },
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 9.774344444274902,
+      "id": "e25ee8866056b43d81cb5435dff2c50f33e24dc13a46a7597316447716842ccd",
+      "later_fill_overlap_seqnos": [
+        938
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 937,
+      "paint_seqnos": [
+        937
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "4. Lower section of walls - Sandstone",
+      "trace_indices": [
+        43
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1653.3525390625,
+        1992.418212890625,
+        1659.26025390625,
+        2358.97998046875
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 5.907590866088867,
+      "id": "dc1f1edc98bae0d617db5cd1bd47c15b556df1d7ff0d8ed12b862f0a61305aef",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 955,
+      "paint_seqnos": [
+        955
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "\\\\NAS-6E-EB-28\\Documents\\Drawings\\Current Drawings\\2967 ATR 2017 SW8\\01-Architectural\\01 WIP\\CAD\\2967 SW8 Planning 20160801.rvt",
+      "trace_indices": [
+        49
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1114.9862060546875,
+        253.5726318359375,
+        1137.77734375,
+        339.503173828125
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 22.79106330871582,
+      "id": "05e8eb6250c2e83929da58db574b2402ddc0f73d6fd956031e72cf151a022cd7",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 956,
+      "paint_seqnos": [
+        956
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "PLANNING",
+      "trace_indices": [
+        50
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        558.765380859375,
+        1644.4921875,
+        582.933349609375,
+        2086.098388671875
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 24.167762756347656,
+      "id": "b56f24c1947a5456ec19bd171c0d12ee85b7e1900ecff15a550b5d24b4dbac08",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 957,
+      "paint_seqnos": [
+        957
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "00. GA Maintenance Building Floor Plan",
+      "trace_indices": [
+        60
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1004.6844482421875,
+        1824.3721923828125,
+        1028.852294921875,
+        2086.098388671875
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 24.167762756347656,
+      "id": "5f5701aa843fec8bc4ced62218d590f969f07e516b1468d5e4d3cfd1d4489640",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 957,
+      "paint_seqnos": [
+        957
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Elevation 9 to the North",
+      "trace_indices": [
+        62
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        426.2860412597656,
+        682.09375,
+        450.4538269042969,
+        943.460205078125
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 24.167762756347656,
+      "id": "1a7abdf2e0fadb5860645daffd7f0c999df704b531333be0e49641cb215c3d02",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 957,
+      "paint_seqnos": [
+        957
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Elevation 10 to the East",
+      "trace_indices": [
+        64
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1550.8045654296875,
+        1807.5718994140625,
+        1574.972412109375,
+        2086.098388671875
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 24.167762756347656,
+      "id": "0961f831772340d9ce83b3d07165cded2a948ca129f4e296d1927e149ff5f26f",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 957,
+      "paint_seqnos": [
+        957
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Elevation 11 to the South",
+      "trace_indices": [
+        66
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1004.68505859375,
+        767.8934326171875,
+        1028.852783203125,
+        1035.6199951171875
+      ],
+      "claims": [
+        {
+          "kind": "view_label",
+          "view_identity_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 24.167762756347656,
+      "id": "35c64cac056f544aa6f364d78eaa9e1cb872f8827acf7ebaeb8f6016391fb292",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 957,
+      "paint_seqnos": [
+        957
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "Elevation 12 to the West",
+      "trace_indices": [
+        68
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1557.49267578125,
+        384.4190673828125,
+        1577.0413818359375,
+        427.343017578125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 10.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 19.548669815063477,
+      "id": "354a216379aec8c94e8c7bfe9e2b50ea3d50e859288f40a2b4d54e688a73493c",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 1002,
+      "paint_seqnos": [
+        1002
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "10 m",
+      "trace_indices": [
+        72
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        302.53466796875,
+        1742.829833984375,
+        322.0833740234375,
+        1840.6988525390625
+      ],
+      "claims": [
+        {
+          "footprint_identity_verified": false,
+          "kind": "area",
+          "value_m2_candidate": 254.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 19.548669815063477,
+      "id": "039d0082bebf90ed5fa4a001e1a3b9a68b2f3be966667e98f7132b34e43cb6e1",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 1070,
+      "paint_seqnos": [
+        1070
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "GIA 254m2",
+      "trace_indices": [
+        86
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        193.5748291015625,
+        1317.7906494140625,
+        213.12353515625,
+        1404.9794921875
+      ],
+      "claims": [
+        {
+          "footprint_identity_verified": false,
+          "kind": "area",
+          "value_m2_candidate": 18.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        0.0,
+        -1.0
+      ],
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "font_size_points": 19.548669815063477,
+      "id": "43a209f4a8dfd2770fa6922420f010050eca58cd212798bf04cfa83ad5bc23cc",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 1099,
+      "paint_seqnos": [
+        1099
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+        "upload_date_as_listed": "02/08/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      "text": "GIA 18m2",
+      "trace_indices": [
+        92
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        494.8799743652344,
+        315.9863586425781,
+        504.0059814453125,
+        322.06634521484375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 6.07997989654541,
+      "id": "bff5b688cac8c45448f8bd98f75335580e5d078600ac690e8887dc938f64ddde",
+      "later_fill_overlap_seqnos": [
+        10537
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 3288,
+      "paint_seqnos": [
+        3288
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "198",
+      "trace_indices": [
+        0
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1588.3199462890625,
+        301.82635498046875,
+        1597.4459228515625,
+        307.9063415527344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 6.07997989654541,
+      "id": "51b1c678940ef49cd39c1622e109252d325a4cdac28d4cfb0ac18e4fddb73281",
+      "later_fill_overlap_seqnos": [
+        10541
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 3348,
+      "paint_seqnos": [
+        3348
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "199",
+      "trace_indices": [
+        2
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2189.52001953125,
+        1442.9044189453125,
+        2206.090087890625,
+        1452.8984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 9.993995666503906,
+      "id": "acdc60b774793edf0bf1a66387b9145114959bfcad93910ff6f060a707ac69b7",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10374,
+      "paint_seqnos": [
+        10374
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "638",
+      "trace_indices": [
+        26
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2277.35986328125,
+        1443.015380859375,
+        2293.68994140625,
+        1452.864501953125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 9.849150657653809,
+      "id": "1a723f59ceb51ef5089b446851b952c37beaf0385211dc0038ee46ef6861afa4",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10374,
+      "paint_seqnos": [
+        10374
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "638",
+      "trace_indices": [
+        31
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2175.599853515625,
+        1505.37060546875,
+        2230.574462890625,
+        1519.66455078125
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 14.293952941894531,
+      "id": "4777f7aeaa7ce3c6a91e925d977134f876c23db010c7be834d6b7c84c3253759",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10389,
+      "paint_seqnos": [
+        10389
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "Existing",
+      "trace_indices": [
+        42
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1987.43994140625,
+        1591.38134765625,
+        2011.7879638671875,
+        1603.38134765625
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 50.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "83ec8f3cedf8728ee35f685dcb962f8db92413ffb3e6189c60e7a693bca8effc",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10445,
+      "paint_seqnos": [
+        10445,
+        10446
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "50 m",
+      "trace_indices": [
+        74,
+        75
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        662.26416015625,
+        127.92994689941406,
+        672.27294921875
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 175.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 10.008756637573242,
+      "id": "3eb0e51612f91c047d483b8ea3acef2b9bebf39750db313da2423380b4617049",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10456,
+      "paint_seqnos": [
+        10456
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "175m",
+      "trace_indices": [
+        78
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        1300.1842041015625,
+        127.92994689941406,
+        1310.19287109375
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 175.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 10.008756637573242,
+      "id": "e2b49eb3ea3757e588c2c05745fe1530abad99827f0146c6a77892686c1f3eb3",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10458,
+      "paint_seqnos": [
+        10458
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "175m",
+      "trace_indices": [
+        81
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        591.464111328125,
+        127.92994689941406,
+        601.472900390625
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 180.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 10.008756637573242,
+      "id": "c6abe29e3620d077b148aa1622a9af743e7c3cfb3e02e4d2798f10df11211e51",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10459,
+      "paint_seqnos": [
+        10459
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "180m",
+      "trace_indices": [
+        82
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        1229.1441650390625,
+        127.92994689941406,
+        1239.15283203125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 180.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 10.008756637573242,
+      "id": "b63e8418aee4ba036f47f283dfd5ebccef6af33777d50d1e94256b73885493b5",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10460,
+      "paint_seqnos": [
+        10460
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "180m",
+      "trace_indices": [
+        83
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        780.719970703125,
+        454.0106506347656,
+        802.0919189453125,
+        466.0240783691406
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 12.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.013440132141113,
+      "id": "d7b1f6d8732b78df31a01bf2b0550e7420086a71a8e0ca02211e168c66ac15b4",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10462,
+      "paint_seqnos": [
+        10462
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "12m",
+      "trace_indices": [
+        88
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1436.8800048828125,
+        461.4042663574219,
+        1461.3720703125,
+        473.4753112792969
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 12.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.071040153503418,
+      "id": "509bb01e3966b903a5ac2626d74f85123de2988fd34ce2f6849c21b69f72b417",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10463,
+      "paint_seqnos": [
+        10463
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "12m",
+      "trace_indices": [
+        96
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1004.1599731445312,
+        1007.8862915039062,
+        1025.2918701171875,
+        1019.954833984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 194,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.068519592285156,
+      "id": "69ec665db251feee4e3a163f5418fa735f1b59742f672c9e338830fd798b4afd",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10465,
+      "paint_seqnos": [
+        10465
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "194",
+      "trace_indices": [
+        99
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1403.760009765625,
+        1100.7642822265625,
+        1428.2520751953125,
+        1112.8353271484375
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 12.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.071040153503418,
+      "id": "d9ca6d33f93581d4bdf28254548cd7f628f31b02dc2be6ccc54e757c2dde8eae",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10469,
+      "paint_seqnos": [
+        10469
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "12m",
+      "trace_indices": [
+        109
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1828.0799560546875,
+        376.741455078125,
+        1846.0919189453125,
+        388.741455078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 194,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "85893ce24cbac53040f409b081a36620dfb6fa67bee3a8fff831b5e6d0b2812b",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10473,
+      "paint_seqnos": [
+        10473
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "194",
+      "trace_indices": [
+        114
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1828.0799560546875,
+        1014.6614379882812,
+        1846.0919189453125,
+        1026.661376953125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 194,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "bb0408f938e9f2ef09276f8216ce9325789f1be87e83a458bb254320017528a8",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10477,
+      "paint_seqnos": [
+        10477
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "194",
+      "trace_indices": [
+        119
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        977.7599487304688,
+        1043.46142578125,
+        998.77197265625,
+        1055.46142578125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 192,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "271a792ef503500ef30ad0232c7191cf6e2206e192602184fe3fd6cf48b7dfc7",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10482,
+      "paint_seqnos": [
+        10482
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "192",
+      "trace_indices": [
+        122
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        780.719970703125,
+        1091.9306640625,
+        802.0919189453125,
+        1103.944091796875
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 12.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.013440132141113,
+      "id": "aa82eebd08344bd53625699c096fd5bbf2f5f4399bff3bd441f5d6ea8cf21bfe",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10485,
+      "paint_seqnos": [
+        10485
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "12m",
+      "trace_indices": [
+        128
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        921.8399658203125,
+        1209.2840576171875,
+        961.9320068359375,
+        1221.3056640625
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.021598815917969,
+      "id": "48d161c887c8321689bcc2630a9164d243ef557902672d6e580e154b15cc47f5",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10487,
+      "paint_seqnos": [
+        10487
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "Existing",
+      "trace_indices": [
+        130
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        100.07999420166016,
+        442.0214538574219,
+        121.09199523925781,
+        454.0214538574219
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 190,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "d1a575543952ddb4db94e62c1a994e51bb0ac419557ad728b6d7faa0e1d39938",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10499,
+      "paint_seqnos": [
+        10499
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "190",
+      "trace_indices": [
+        145
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1107.5999755859375,
+        294.9014587402344,
+        1128.6119384765625,
+        306.9014587402344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "4aaf84fa4a2a56d3649b00838353a6d7acd84822aac64064ff2ae6233f7b6568",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10515,
+      "paint_seqnos": [
+        10515
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "198",
+      "trace_indices": [
+        173
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1140.9599609375,
+        294.9014587402344,
+        1161.971923828125,
+        306.9014587402344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "e451254ea70434da484bcae4fb01741304b61da0089d78658908031bf28683a9",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10515,
+      "paint_seqnos": [
+        10515
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "201",
+      "trace_indices": [
+        175
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1604.159912109375,
+        1199.644287109375,
+        1628.652099609375,
+        1211.71533203125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 14.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.071040153503418,
+      "id": "cd30e975bd49faf0adc8eca84b661011370838496fed73e1b6afcb6c202c23aa",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10518,
+      "paint_seqnos": [
+        10518
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "14m",
+      "trace_indices": [
+        182
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        706.5599975585938,
+        934.741455078125,
+        727.572021484375,
+        946.741455078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "397f3bac5032e10c5f276d6c4015bab6fc18be66549d80a80bff45595d96b9ee",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10522,
+      "paint_seqnos": [
+        10522
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "198",
+      "trace_indices": [
+        191
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        739.9199829101562,
+        934.741455078125,
+        760.9320068359375,
+        946.741455078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "583941176aa9fd6732deaaab665ea47197d70ea494e98a945aae6e1af5080480",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10522,
+      "paint_seqnos": [
+        10522
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "201",
+      "trace_indices": [
+        193
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        75.5999984741211,
+        1133.88623046875,
+        96.73197937011719,
+        1145.954833984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 185,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.068519592285156,
+      "id": "a9b791d1cc270b46a3bae383f2c9e0ecc2c6fca9268e6fff599a211dae00ea10",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10526,
+      "paint_seqnos": [
+        10526
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "185",
+      "trace_indices": [
+        198
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        494.6399841308594,
+        309.7814636230469,
+        512.6519775390625,
+        321.7814636230469
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "1334c78fe2c6a613ee9549e2fe64630fcacd374de5193c4a2fb5b6952319efd3",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10539,
+      "paint_seqnos": [
+        10539
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "198",
+      "trace_indices": [
+        218
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1581.5999755859375,
+        297.54144287109375,
+        1599.6119384765625,
+        309.54144287109375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "font_size_points": 12.0,
+      "id": "2ec74a27c59d08ac877ace1bffc886f1985f8ce88e080aa86ba65604b7abfb4e",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 10543,
+      "paint_seqnos": [
+        10543
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Existing",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146"
+      },
+      "text": "199",
+      "trace_indices": [
+        223
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        494.8799743652344,
+        315.9863586425781,
+        504.0059814453125,
+        322.06634521484375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 6.07997989654541,
+      "id": "74e7b20713dbe644588ce66683cb5464d87450b0a77a64cb83adb1871dc18bc1",
+      "later_fill_overlap_seqnos": [
+        287590
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 280317,
+      "paint_seqnos": [
+        280317
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "198",
+      "trace_indices": [
+        0
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1588.3199462890625,
+        301.82635498046875,
+        1597.4459228515625,
+        307.9063415527344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 6.07997989654541,
+      "id": "1c1935db02fb645966d765f5e1c7c64ab57f4855c6ef6415938cbdee27899ff7",
+      "later_fill_overlap_seqnos": [
+        287594
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 280377,
+      "paint_seqnos": [
+        280377
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "199",
+      "trace_indices": [
+        2
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2189.52001953125,
+        1442.9044189453125,
+        2206.090087890625,
+        1452.8984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 9.993995666503906,
+      "id": "c8fe6380ab9efa5e36842690f0f6c20776792c5c965753890786defb659beaca",
+      "later_fill_overlap_seqnos": [
+        287496
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287409,
+      "paint_seqnos": [
+        287409
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "638",
+      "trace_indices": [
+        26
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2277.35986328125,
+        1443.015380859375,
+        2293.68994140625,
+        1452.864501953125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 9.849150657653809,
+      "id": "18b5e449c7c51b8e176f98334b75d89673e7fb940deaf5d0e21aa33865460dae",
+      "later_fill_overlap_seqnos": [
+        287496
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287409,
+      "paint_seqnos": [
+        287409
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "638",
+      "trace_indices": [
+        31
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2175.599853515625,
+        1505.37060546875,
+        2230.574462890625,
+        1519.66455078125
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 14.293952941894531,
+      "id": "9954168852851d82bf535d8d3be0cfc77aad39c652a4bafdd08b150a09f082dc",
+      "later_fill_overlap_seqnos": [
+        287496
+      ],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287424,
+      "paint_seqnos": [
+        287424
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "Existing",
+      "trace_indices": [
+        42
+      ],
+      "visibility_reasons": [
+        "later_fill_overlap_visibility_review_required"
+      ],
+      "visibility_screen": "withheld",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1987.43994140625,
+        1591.38134765625,
+        2011.7879638671875,
+        1603.38134765625
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 50.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "3db8124c9375ddf1205aefd79396d6e5fda34a5f8e02e855f7dfe4cbbc77a6a2",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287480,
+      "paint_seqnos": [
+        287480,
+        287481
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "50 m",
+      "trace_indices": [
+        74,
+        75
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        662.26416015625,
+        127.92994689941406,
+        672.27294921875
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 175.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 10.008756637573242,
+      "id": "5c1f67204b6807b52c55f2a19ef9a26db903a5df4f4fb361b97bd59071a1067c",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287491,
+      "paint_seqnos": [
+        287491
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "175m",
+      "trace_indices": [
+        78
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        1300.1842041015625,
+        127.92994689941406,
+        1310.19287109375
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 175.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 10.008756637573242,
+      "id": "25a87e47821cd18abcc6d3817a9fb89e2d6104321df4e229332730bae2c783ea",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287493,
+      "paint_seqnos": [
+        287493
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "175m",
+      "trace_indices": [
+        81
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        591.464111328125,
+        127.92994689941406,
+        601.472900390625
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 180.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 10.008756637573242,
+      "id": "eff512773fd24ad004db4837255caf25c4515754c97bc6e5035b9020cf6248cb",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287494,
+      "paint_seqnos": [
+        287494
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "180m",
+      "trace_indices": [
+        82
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        105.1199951171875,
+        1229.1441650390625,
+        127.92994689941406,
+        1239.15283203125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 180.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 10.008756637573242,
+      "id": "06dc28a05c5d04c94461a951490a59bcd8e6bdc2fec6eaa45628af80341da69b",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287495,
+      "paint_seqnos": [
+        287495
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "180m",
+      "trace_indices": [
+        83
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2189.52001953125,
+        1442.9044189453125,
+        2206.090087890625,
+        1452.8984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 9.993995666503906,
+      "id": "84ade0ab0b719d7a8809ae9b77ffdcd74ed49e1cc2cf508edac25cf6acf36ab3",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287504,
+      "paint_seqnos": [
+        287504
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "638",
+      "trace_indices": [
+        106
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2277.35986328125,
+        1443.015380859375,
+        2293.68994140625,
+        1452.864501953125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 638,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 9.849150657653809,
+      "id": "806e20e823f0d8c278512ad6c3a02f97c81cc83265ef69fde19aec7255c9b853",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287504,
+      "paint_seqnos": [
+        287504
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "638",
+      "trace_indices": [
+        111
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2175.599853515625,
+        1505.3526611328125,
+        2236.333740234375,
+        1519.6700439453125
+      ],
+      "claims": [
+        {
+          "drawing_state_verified": false,
+          "kind": "state_wording"
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 14.317317008972168,
+      "id": "8e73957ed6b3ed0a3efa642ed1087418e4c66ad90565cd7cff38bc75bfd8daae",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287519,
+      "paint_seqnos": [
+        287519
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "Proposed",
+      "trace_indices": [
+        122
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        100.07999420166016,
+        442.0214538574219,
+        121.09199523925781,
+        454.0214538574219
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 190,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "84f1d92f1db22ffeef42181d5d543ac57430bdc0df38485208de5f0f2c390601",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287552,
+      "paint_seqnos": [
+        287552
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "190",
+      "trace_indices": [
+        155
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1107.5999755859375,
+        294.9014587402344,
+        1128.6119384765625,
+        306.9014587402344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "a169388c6be9c4d7ed2a66ba10791a6211144f91cadcfb7921dc66bfc920f38f",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287568,
+      "paint_seqnos": [
+        287568
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "198",
+      "trace_indices": [
+        183
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1140.9599609375,
+        294.9014587402344,
+        1161.971923828125,
+        306.9014587402344
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "5cd9fc7a9c3a3009a37ac6f93cc83abc4563eef1f477de6fa87ce67b52e5a016",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287568,
+      "paint_seqnos": [
+        287568
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "201",
+      "trace_indices": [
+        185
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1604.159912109375,
+        1199.644287109375,
+        1628.652099609375,
+        1211.71533203125
+      ],
+      "claims": [
+        {
+          "kind": "explicit_dimension",
+          "printed_units": "m",
+          "value_m_candidate": 14.0
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.071040153503418,
+      "id": "e6b4f5827ea22f82f5ea5445ff5c188a4e402fae5e2265159e997474b34b1ba1",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287571,
+      "paint_seqnos": [
+        287571
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "14m",
+      "trace_indices": [
+        192
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        706.5599975585938,
+        934.741455078125,
+        727.572021484375,
+        946.741455078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "db2c22044ec00a6017c983276fcf28b4239de505d36d9ead7b2e9418059a8d0d",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287575,
+      "paint_seqnos": [
+        287575
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "198",
+      "trace_indices": [
+        201
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        739.9199829101562,
+        934.741455078125,
+        760.9320068359375,
+        946.741455078125
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "d1ad1aca302034986ebfbbf94dd51c73820491fcabaf61925e99291f3fbe6cfc",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287575,
+      "paint_seqnos": [
+        287575
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "201",
+      "trace_indices": [
+        203
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        75.5999984741211,
+        1133.88623046875,
+        96.73197937011719,
+        1145.954833984375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 185,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.068519592285156,
+      "id": "96da2bb505d0198c60cbbd8b2de5b1c608d582c75327bef2fb8ed726980b4f80",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287579,
+      "paint_seqnos": [
+        287579
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "185",
+      "trace_indices": [
+        208
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        494.6399841308594,
+        309.7814636230469,
+        512.6519775390625,
+        321.7814636230469
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 198,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "0cdcdc279de57d095771637a7cd31739f68d6710c789cd91935d2e39a89fc1e8",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287592,
+      "paint_seqnos": [
+        287592
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "198",
+      "trace_indices": [
+        228
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1581.5999755859375,
+        297.54144287109375,
+        1599.6119384765625,
+        309.54144287109375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "0f2e0fdd9aacc70ddf60e6ce5ebccae64a072e12b7b15421fbeda1dce356c431",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287596,
+      "paint_seqnos": [
+        287596
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "199",
+      "trace_indices": [
+        233
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2078.39990234375,
+        887.4614868164062,
+        2099.411865234375,
+        899.4614868164062
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "0a7a4b8e46f0e1e8b88688f27a52cd7ce72ff7fdb8e14a943f13f7ea547b4f90",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287604,
+      "paint_seqnos": [
+        287604
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "201",
+      "trace_indices": [
+        247
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1725.5999755859375,
+        928.50146484375,
+        1746.6119384765625,
+        940.50146484375
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 197,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "0a694fb99d251b98ee892d6bffd091b2865f16eb89d9bc4d0c1fa0b062072358",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287610,
+      "paint_seqnos": [
+        287610
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "197",
+      "trace_indices": [
+        253
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        1053.5999755859375,
+        930.1814575195312,
+        1074.6119384765625,
+        942.1814575195312
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 195,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "9311b5355e4a393e37d7809d7722e64b37b5102858952c545278a1e7fcb1e202",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287618,
+      "paint_seqnos": [
+        287618
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "195",
+      "trace_indices": [
+        261
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        848.1599731445312,
+        930.1814575195312,
+        866.1719970703125,
+        942.1814575195312
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 196,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "14f43051e4b28e4fb3c2659ebf15a9111463f0fa4048fd5597b5bbc73cca30b7",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287624,
+      "paint_seqnos": [
+        287624
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "196",
+      "trace_indices": [
+        266
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        933.3599853515625,
+        1014.9014282226562,
+        954.3720092773438,
+        1026.9013671875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 192,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "76f90010da44779aeff00e8954c3163516d4109535ccc68f399bd6642364f584",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287630,
+      "paint_seqnos": [
+        287630
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "192",
+      "trace_indices": [
+        273
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2078.39990234375,
+        235.14144897460938,
+        2099.411865234375,
+        247.14144897460938
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 201,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "8b20c7d023b9b5c5ca2fc9d806636fe363d163c4f3fe7a303cff371caad02db9",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287640,
+      "paint_seqnos": [
+        287640
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "201",
+      "trace_indices": [
+        285
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2259.83984375,
+        908.3414916992188,
+        2280.851806640625,
+        920.3414916992188
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "465efd70d2322a4f5c97d598bd2d3ff5e9315b434e121ab904b5d2b83e1b42e9",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287646,
+      "paint_seqnos": [
+        287646
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "199",
+      "trace_indices": [
+        291
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2259.599853515625,
+        249.30145263671875,
+        2280.61181640625,
+        261.30145263671875
+      ],
+      "claims": [
+        {
+          "kind": "untyped_numeric",
+          "printed_value": 199,
+          "units_verified": false
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "a46ea5b0be31a22341cd7e5f1474c3a43f04d46fef20aea2f41329038492b1e0",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287652,
+      "paint_seqnos": [
+        287652
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "199",
+      "trace_indices": [
+        298
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2055.35986328125,
+        717.0101318359375,
+        2086.092041015625,
+        728.7756958007812
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "timber"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 11.765604019165039,
+      "id": "c415b610c65b1cbf00fbbc1805444cbc75c6f25d2ca463c52f63f5b61841fb4b",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287658,
+      "paint_seqnos": [
+        287658
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "timber",
+      "trace_indices": [
+        311
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2174.639892578125,
+        730.4799194335938,
+        2207.0517578125,
+        742.5066528320312
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "thatch"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.026761054992676,
+      "id": "28d5501e3b2b332d6ee00e742dfd7dfd81daa6f322a13c68f62cbc98b7fbb9ac",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287659,
+      "paint_seqnos": [
+        287659
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "thatch",
+      "trace_indices": [
+        315
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2055.35986328125,
+        744.1814575195312,
+        2125.00830078125,
+        756.1814575195312
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "metal",
+            "sheeting"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "8b9fab1aed8f112ac73f49583885118988b2397cac71d0163965ddfa44a0c4d2",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287660,
+      "paint_seqnos": [
+        287660
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "metal sheeting",
+      "trace_indices": [
+        320
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    },
+    {
+      "accepted_feature": false,
+      "bbox_page_points": [
+        2210.8798828125,
+        757.8614501953125,
+        2290.8720703125,
+        769.8614501953125
+      ],
+      "claims": [
+        {
+          "component_identity_verified": false,
+          "kind": "material_note",
+          "terms": [
+            "boarding",
+            "timber"
+          ]
+        }
+      ],
+      "component_association_verified": false,
+      "direction": [
+        1.0,
+        0.0
+      ],
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "font_size_points": 12.0,
+      "id": "2a32bae6ca1d21056cce9498ffe4354fffb8acd70f113ddc161c1a8bd645061c",
+      "later_fill_overlap_seqnos": [],
+      "overlap_list_truncated": false,
+      "page": 1,
+      "paint_seqno": 287661,
+      "paint_seqnos": [
+        287661
+      ],
+      "registration_verified": false,
+      "source_context": {
+        "attachment_label": "Section Plan AA BB Proposed",
+        "upload_date_as_listed": "31/05/2016",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147"
+      },
+      "text": "timber boarding",
+      "trace_indices": [
+        327
+      ],
+      "visibility_reasons": [],
+      "visibility_screen": "no_detected_visibility_hazard",
+      "visibility_verified": false
+    }
+  ]
+}

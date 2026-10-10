@@ -1,0 +1,113 @@
+{
+  "corpus_pass": {
+    "status": "drawing_triage_only",
+    "contract": "7db1797d229718e5140d5c2302054f09c878a0ee760b7b72256add1e70a5e1ee",
+    "validated_pdf_blobs": 84,
+    "analyzed_pages": 238,
+    "run_analyzed_pages": 238,
+    "resumed_pages": 0,
+    "categories": {
+      "site_plan": 3,
+      "ambiguous": 15,
+      "elevation_section": 33,
+      "location_plan": 10,
+      "unclassified": 39,
+      "landscape_paths": 19,
+      "report": 115,
+      "water_drainage": 4
+    },
+    "alignment_statuses": {
+      "withheld": 4,
+      "needs_controls": 234
+    },
+    "construction_state_candidates": {
+      "proposed": 41,
+      "unknown": 95,
+      "mixed": 57,
+      "existing": 45
+    },
+    "errors": [],
+    "unmatched_review_pages": [],
+    "world_geometry_additions": 0,
+    "output": "drawing-analysis.jsonl",
+    "output_sha256": "acc5ffa4e73728fa82cad4b46d1cbb06d35185de5d9f68b15332c16e42c0ee9b",
+    "ocr_statuses": {
+      "native_text_sufficient": 195,
+      "ocr_candidates_only": 43
+    },
+    "run_ocr_attempts": 43,
+    "run_ocr_seconds": 75.92795966698395,
+    "normalized_rotated_pages": 44,
+    "named_landmark_matches": 18
+  },
+  "resume_pass": {
+    "status": "drawing_triage_only",
+    "contract": "7db1797d229718e5140d5c2302054f09c878a0ee760b7b72256add1e70a5e1ee",
+    "validated_pdf_blobs": 84,
+    "analyzed_pages": 238,
+    "run_analyzed_pages": 0,
+    "resumed_pages": 238,
+    "categories": {
+      "site_plan": 3,
+      "ambiguous": 15,
+      "elevation_section": 33,
+      "location_plan": 10,
+      "unclassified": 39,
+      "landscape_paths": 19,
+      "report": 115,
+      "water_drainage": 4
+    },
+    "alignment_statuses": {
+      "withheld": 4,
+      "needs_controls": 234
+    },
+    "construction_state_candidates": {
+      "proposed": 41,
+      "unknown": 95,
+      "mixed": 57,
+      "existing": 45
+    },
+    "errors": [],
+    "unmatched_review_pages": [],
+    "world_geometry_additions": 0,
+    "output": "drawing-analysis.jsonl",
+    "output_sha256": "acc5ffa4e73728fa82cad4b46d1cbb06d35185de5d9f68b15332c16e42c0ee9b",
+    "ocr_statuses": {
+      "native_text_sufficient": 195,
+      "ocr_candidates_only": 43
+    },
+    "run_ocr_attempts": 0,
+    "run_ocr_seconds": 0,
+    "normalized_rotated_pages": 44,
+    "named_landmark_matches": 18
+  },
+  "reference_feed": {
+    "named_features": 144,
+    "retained_osm_sha256": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+    "derived_named_geojson_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe"
+  },
+  "matched_names": [
+    "Lake View",
+    "Mutiny Bay",
+    "The Boating Lake",
+    "Waste Lane",
+    "White Bridge"
+  ],
+  "fit_statuses": {
+    "not_attempted": 238
+  },
+  "tests": {
+    "focused_passed": 45,
+    "full_total": 476,
+    "full_passed": 472,
+    "preexisting_failures": 3,
+    "preexisting_errors": 1
+  },
+  "limits": [
+    "No verified automatic alignment or physical geometry generated",
+    "Name/text-box and reference-centroid pairs are hypotheses, not surveyed controls",
+    "OCR confidence does not establish metric accuracy, construction state or vertical datum",
+    "Four registration pages remain over content budget",
+    "No general physical-object extractor or revision reconciliation yet"
+  ]
+}

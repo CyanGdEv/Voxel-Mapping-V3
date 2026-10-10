@@ -1,0 +1,3850 @@
+{
+  "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+  "package_sha256": "bc28220dfffa0993092afe5532dcfc71b5d7f221e941fef2da47ec96ed8e0cbf",
+  "reports": [
+    {
+      "version": "shop-local-joined-study-v2",
+      "voxel_size_m": 1,
+      "model_blocks_per_source_metre": 1,
+      "crs": null,
+      "vertical_datum": "STUDY_ZERO",
+      "geographic_placement": "withheld",
+      "park_world_blocks_added": 0,
+      "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "source_assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+      "source_unresolved": [
+        "cross-view canopy front-height discrepancy",
+        "roof/wall centring and 180-degree source correspondence",
+        "side fascia, wall thickness and construction details",
+        "cladding/bunding geometry",
+        "as-built identity and floor datum",
+        "independent geographic registration"
+      ],
+      "model_watertight": false,
+      "wall_thickness_metres": null,
+      "wall_cells": 184,
+      "roof_cells": 192,
+      "wall_roof_alias_cells": 4,
+      "surface_cells": 412,
+      "platform_cells": 576,
+      "wall_sampling": {
+        "per_triangle_surface_samples": [
+          6,
+          6,
+          6,
+          3,
+          27,
+          21,
+          3,
+          6,
+          6,
+          3,
+          23,
+          19,
+          2,
+          1,
+          5,
+          0,
+          5,
+          1,
+          0,
+          1,
+          26,
+          26
+        ],
+        "projection_sample_probes": 536,
+        "triangles_without_centroid_sample": 2
+      },
+      "roof_sampling": {
+        "per_triangle_surface_samples": [
+          45,
+          51,
+          51,
+          45
+        ],
+        "projection_sample_probes": 504,
+        "triangles_without_centroid_sample": 0
+      },
+      "spawn_local_xyz_m": [
+        0,
+        2,
+        -10
+      ],
+      "opening_centre_sample_audit": [
+        {
+          "id": "opening-NE",
+          "sample_column_local_xz": [
+            -8,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "opening-SW",
+          "sample_column_local_xz": [
+            7,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "door-NW",
+          "sample_column_local_xz": [
+            -7,
+            -6
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        }
+      ],
+      "surface_raster_rule": "dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces",
+      "display_palette_only": {
+        "walls": "spruce_planks",
+        "roof": "dark_oak_planks"
+      },
+      "sources": [
+        {
+          "id": "reviewed-proposed-model",
+          "url": "local://wicker-shop-wall-model",
+          "license": "source-linked proposed drawing study",
+          "attribution": "2967-21/26/48; local manual traces and provisional sheet-layout normalization"
+        }
+      ],
+      "limitations": [
+        "Isolated proposed-drawing study, not a placed or as-built park building.",
+        "Roof/wall centring and 180-degree correspondence remain assembly hypotheses.",
+        "Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.",
+        "One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.",
+        "This surface model is not watertight; no shell-completeness or in-game movement claim is made.",
+        "The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden.",
+        "Estimated wall-to-roof joins close sampled columns only; construction thickness and full shell completeness remain unresolved.",
+        "Canopy/front fascia use the retained NE-height hypothesis; side fascia and cross-view height discrepancy remain unresolved."
+      ],
+      "review_mode": "joined-canopy-hypothesis",
+      "estimated_join_audit": {
+        "rule": "vertical closure above existing wall tops to main-roof underside; at most one source metre",
+        "status": "estimated display join, not measured construction",
+        "added_cells": 28,
+        "columns": [
+          {
+            "local_xz": [
+              -8,
+              -6
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              -5
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              -4
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              -3
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              -2
+            ],
+            "wall_top": 5,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              -1
+            ],
+            "wall_top": 6,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              0
+            ],
+            "wall_top": 6,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              1
+            ],
+            "wall_top": 5,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              2
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              3
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              4
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -8,
+              5
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -7,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -7,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -6,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -6,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -5,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -5,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -4,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -4,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -3,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -3,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -2,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -2,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -1,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              -1,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              0,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              0,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              1,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              1,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              2,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              2,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              3,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              3,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              4,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              4,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              5,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              5,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              6,
+              -6
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              6,
+              5
+            ],
+            "wall_top": 2,
+            "roof_bottom": 4,
+            "added_levels": [
+              3
+            ]
+          },
+          {
+            "local_xz": [
+              7,
+              -6
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              -5
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              -4
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              -3
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              -2
+            ],
+            "wall_top": 5,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              -1
+            ],
+            "wall_top": 6,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              0
+            ],
+            "wall_top": 6,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              1
+            ],
+            "wall_top": 5,
+            "roof_bottom": 6,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              2
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              3
+            ],
+            "wall_top": 4,
+            "roof_bottom": 5,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              4
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              7,
+              5
+            ],
+            "wall_top": 3,
+            "roof_bottom": 4,
+            "added_levels": []
+          }
+        ],
+        "all_columns_connected": true
+      },
+      "projection_cells": 12,
+      "projection_sampling": {
+        "per_triangle_surface_samples": [
+          3,
+          3,
+          5,
+          1
+        ],
+        "projection_sample_probes": 56,
+        "triangles_without_centroid_sample": 0
+      },
+      "projection_review": {
+        "source_frames": {
+          "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462"
+          },
+          "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70"
+          }
+        },
+        "elevation_traces": {
+          "NE": {
+            "manual_points_pixels": {
+              "rear": [
+                1140,
+                818
+              ],
+              "front-top": [
+                1140,
+                831
+              ],
+              "front-bottom": [
+                1140,
+                837
+              ],
+              "floor": [
+                1374,
+                893
+              ]
+            },
+            "native_points": {
+              "rear": [
+                1032.61767578125,
+                1439.4915771484375
+              ],
+              "front-top": [
+                1049.0284423828125,
+                1439.4915771484375
+              ],
+              "front-bottom": [
+                1056.6026611328125,
+                1439.4915771484375
+              ],
+              "floor": [
+                1127.2952880859375,
+                1734.9661865234375
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.340017445385456,
+              "front-top": 2.7610810881853105,
+              "front-bottom": 2.493879692554474
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          },
+          "SE": {
+            "manual_points_pixels": {
+              "rear": [
+                642,
+                334
+              ],
+              "front-top": [
+                676,
+                352
+              ],
+              "front-bottom": [
+                676,
+                358
+              ],
+              "floor": [
+                119,
+                407
+              ]
+            },
+            "native_points": {
+              "rear": [
+                421.63116455078125,
+                810.6610107421875
+              ],
+              "front-top": [
+                444.35382080078125,
+                853.59326171875
+              ],
+              "front-bottom": [
+                451.92803955078125,
+                853.59326171875
+              ],
+              "floor": [
+                513.7841186523438,
+                150.26271057128906
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.2509503135085107,
+              "front-top": 2.449346126616001,
+              "front-bottom": 2.1821447309851645
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          }
+        },
+        "roof_plan_points_pixels": [
+          [
+            522,
+            654
+          ],
+          [
+            615,
+            749
+          ],
+          [
+            631,
+            733
+          ],
+          [
+            538,
+            638
+          ]
+        ],
+        "roof_plan_local_points": [
+          [
+            -8.4743206220282,
+            -2.5748128656523015
+          ],
+          [
+            -8.424049110322628,
+            3.346213590895754
+          ],
+          [
+            -9.431862703727043,
+            3.344322853380319
+          ],
+          [
+            -9.482134215432616,
+            -2.5767036031677364
+          ]
+        ],
+        "height_choice": "NE front and rear roof/fascia edges; preserves NE entrance-head relationship. SE differences retained, not averaged.",
+        "front_height_NE_minus_SE_metres": 0.31173496156930947,
+        "combined_two_view_sampling_bound_metres": 0.356268527507782,
+        "fascia_height_metres": 0.26720139563083656,
+        "wall_to_front_depth_metres": 1.5485417947840912,
+        "width_metres": 5.921026456548056,
+        "slope_degrees": 20.49871139766755,
+        "attachment_hypothesis": "rear plane at NE wall, front plan edge retained; rear attachment hidden under main-roof overhang",
+        "physical_identity_verified": false
+      },
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 1,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "spawn": [
+          0,
+          67,
+          10
+        ],
+        "chunks": 4,
+        "composed_blocks": 3292,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "195f55f97b70caff34ea8c00689bde7f77bdd4f0f0d677b65ce5ca80d526c496",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      }
+    },
+    {
+      "version": "shop-local-joined-study-v2",
+      "voxel_size_m": 1,
+      "model_blocks_per_source_metre": 4,
+      "crs": null,
+      "vertical_datum": "STUDY_ZERO",
+      "geographic_placement": "withheld",
+      "park_world_blocks_added": 0,
+      "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "source_assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+      "source_unresolved": [
+        "cross-view canopy front-height discrepancy",
+        "roof/wall centring and 180-degree source correspondence",
+        "side fascia, wall thickness and construction details",
+        "cladding/bunding geometry",
+        "as-built identity and floor datum",
+        "independent geographic registration"
+      ],
+      "model_watertight": false,
+      "wall_thickness_metres": null,
+      "wall_cells": 3127,
+      "roof_cells": 3536,
+      "wall_roof_alias_cells": 0,
+      "surface_cells": 7189,
+      "platform_cells": 9216,
+      "wall_sampling": {
+        "per_triangle_surface_samples": [
+          96,
+          99,
+          88,
+          81,
+          411,
+          408,
+          91,
+          91,
+          91,
+          91,
+          375,
+          366,
+          26,
+          26,
+          30,
+          30,
+          32,
+          28,
+          8,
+          7,
+          347,
+          344
+        ],
+        "projection_sample_probes": 7026,
+        "triangles_without_centroid_sample": 0
+      },
+      "roof_sampling": {
+        "per_triangle_surface_samples": [
+          896,
+          872,
+          872,
+          896
+        ],
+        "projection_sample_probes": 7072,
+        "triangles_without_centroid_sample": 0
+      },
+      "spawn_local_xyz_m": [
+        0,
+        2,
+        -40
+      ],
+      "opening_centre_sample_audit": [
+        {
+          "id": "opening-NE",
+          "sample_column_local_xz": [
+            -32,
+            1
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "opening-SW",
+          "sample_column_local_xz": [
+            31,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "door-NW",
+          "sample_column_local_xz": [
+            -27,
+            -24
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        }
+      ],
+      "surface_raster_rule": "dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces",
+      "display_palette_only": {
+        "walls": "spruce_planks",
+        "roof": "dark_oak_planks"
+      },
+      "sources": [
+        {
+          "id": "reviewed-proposed-model",
+          "url": "local://wicker-shop-wall-model",
+          "license": "source-linked proposed drawing study",
+          "attribution": "2967-21/26/48; local manual traces and provisional sheet-layout normalization"
+        }
+      ],
+      "limitations": [
+        "Isolated proposed-drawing study, not a placed or as-built park building.",
+        "Roof/wall centring and 180-degree correspondence remain assembly hypotheses.",
+        "Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.",
+        "One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.",
+        "This surface model is not watertight; no shell-completeness or in-game movement claim is made.",
+        "The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden.",
+        "Estimated wall-to-roof joins close sampled columns only; construction thickness and full shell completeness remain unresolved.",
+        "Canopy/front fascia use the retained NE-height hypothesis; side fascia and cross-view height discrepancy remain unresolved."
+      ],
+      "review_mode": "joined-canopy-hypothesis",
+      "estimated_join_audit": {
+        "rule": "vertical closure above existing wall tops to main-roof underside; at most one source metre",
+        "status": "estimated display join, not measured construction",
+        "added_cells": 365,
+        "columns": [
+          {
+            "local_xz": [
+              -32,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -23
+            ],
+            "wall_top": 13,
+            "roof_bottom": 15,
+            "added_levels": [
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -22
+            ],
+            "wall_top": 14,
+            "roof_bottom": 16,
+            "added_levels": [
+              15
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -21
+            ],
+            "wall_top": 14,
+            "roof_bottom": 17,
+            "added_levels": [
+              15,
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -20
+            ],
+            "wall_top": 15,
+            "roof_bottom": 17,
+            "added_levels": [
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -19
+            ],
+            "wall_top": 15,
+            "roof_bottom": 18,
+            "added_levels": [
+              16,
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -18
+            ],
+            "wall_top": 16,
+            "roof_bottom": 18,
+            "added_levels": [
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -17
+            ],
+            "wall_top": 17,
+            "roof_bottom": 19,
+            "added_levels": [
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -16
+            ],
+            "wall_top": 17,
+            "roof_bottom": 19,
+            "added_levels": [
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -15
+            ],
+            "wall_top": 18,
+            "roof_bottom": 20,
+            "added_levels": [
+              19
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -14
+            ],
+            "wall_top": 18,
+            "roof_bottom": 21,
+            "added_levels": [
+              19,
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -13
+            ],
+            "wall_top": 19,
+            "roof_bottom": 21,
+            "added_levels": [
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -12
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -11
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -10
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -9
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -8
+            ],
+            "wall_top": 22,
+            "roof_bottom": 24,
+            "added_levels": [
+              23
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -7
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -6
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -5
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -4
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -3
+            ],
+            "wall_top": 25,
+            "roof_bottom": 27,
+            "added_levels": [
+              26
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              -2
+            ],
+            "wall_top": 26,
+            "roof_bottom": 27,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -32,
+              -1
+            ],
+            "wall_top": 26,
+            "roof_bottom": 28,
+            "added_levels": [
+              27
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              0
+            ],
+            "wall_top": 26,
+            "roof_bottom": 28,
+            "added_levels": [
+              27
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              1
+            ],
+            "wall_top": 26,
+            "roof_bottom": 27,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              -32,
+              2
+            ],
+            "wall_top": 25,
+            "roof_bottom": 27,
+            "added_levels": [
+              26
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              3
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              4
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              5
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              6
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              7
+            ],
+            "wall_top": 22,
+            "roof_bottom": 24,
+            "added_levels": [
+              23
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              8
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              9
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              10
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              11
+            ],
+            "wall_top": 19,
+            "roof_bottom": 22,
+            "added_levels": [
+              20,
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              12
+            ],
+            "wall_top": 19,
+            "roof_bottom": 21,
+            "added_levels": [
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              13
+            ],
+            "wall_top": 18,
+            "roof_bottom": 21,
+            "added_levels": [
+              19,
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              14
+            ],
+            "wall_top": 18,
+            "roof_bottom": 20,
+            "added_levels": [
+              19
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              15
+            ],
+            "wall_top": 17,
+            "roof_bottom": 19,
+            "added_levels": [
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              16
+            ],
+            "wall_top": 16,
+            "roof_bottom": 19,
+            "added_levels": [
+              17,
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              17
+            ],
+            "wall_top": 16,
+            "roof_bottom": 18,
+            "added_levels": [
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              18
+            ],
+            "wall_top": 15,
+            "roof_bottom": 18,
+            "added_levels": [
+              16,
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              19
+            ],
+            "wall_top": 15,
+            "roof_bottom": 17,
+            "added_levels": [
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              20
+            ],
+            "wall_top": 14,
+            "roof_bottom": 17,
+            "added_levels": [
+              15,
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              21
+            ],
+            "wall_top": 13,
+            "roof_bottom": 16,
+            "added_levels": [
+              14,
+              15
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              22
+            ],
+            "wall_top": 13,
+            "roof_bottom": 15,
+            "added_levels": [
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -32,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -31,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -31,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -30,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -30,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -29,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -29,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -28,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -28,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -27,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -27,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -26,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -26,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -25,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -25,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -24,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -24,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -23,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -23,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -22,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -22,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -21,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -21,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -20,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -20,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -19,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -19,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -18,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -18,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -17,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -17,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -16,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -16,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -15,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -15,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -14,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -14,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -13,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -13,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -12,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -12,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -11,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -11,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -10,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -10,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -9,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -9,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -8,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -8,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -7,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -7,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -6,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -6,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -5,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -5,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -4,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -4,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -3,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -3,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -2,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -2,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -1,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              -1,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              0,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              0,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              1,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              1,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              2,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              2,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              3,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              3,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              4,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              4,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              5,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              5,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              6,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              6,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              7,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              7,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              8,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              8,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              9,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              9,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              10,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              10,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              11,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              11,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              12,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              12,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              13,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              13,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              14,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              14,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              15,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              15,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              16,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              16,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              17,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              17,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              18,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              18,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              19,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              19,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              20,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              20,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              21,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              21,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              22,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              22,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              23,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              23,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              24,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              24,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              25,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              25,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              26,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              26,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              27,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              27,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              28,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              28,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              29,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              29,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              30,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              30,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -24
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -23
+            ],
+            "wall_top": 13,
+            "roof_bottom": 15,
+            "added_levels": [
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -22
+            ],
+            "wall_top": 13,
+            "roof_bottom": 16,
+            "added_levels": [
+              14,
+              15
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -21
+            ],
+            "wall_top": 14,
+            "roof_bottom": 17,
+            "added_levels": [
+              15,
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -20
+            ],
+            "wall_top": 15,
+            "roof_bottom": 17,
+            "added_levels": [
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -19
+            ],
+            "wall_top": 15,
+            "roof_bottom": 18,
+            "added_levels": [
+              16,
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -18
+            ],
+            "wall_top": 16,
+            "roof_bottom": 18,
+            "added_levels": [
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -17
+            ],
+            "wall_top": 16,
+            "roof_bottom": 19,
+            "added_levels": [
+              17,
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -16
+            ],
+            "wall_top": 17,
+            "roof_bottom": 19,
+            "added_levels": [
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -15
+            ],
+            "wall_top": 18,
+            "roof_bottom": 20,
+            "added_levels": [
+              19
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -14
+            ],
+            "wall_top": 18,
+            "roof_bottom": 21,
+            "added_levels": [
+              19,
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -13
+            ],
+            "wall_top": 19,
+            "roof_bottom": 21,
+            "added_levels": [
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -12
+            ],
+            "wall_top": 19,
+            "roof_bottom": 22,
+            "added_levels": [
+              20,
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -11
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -10
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -9
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -8
+            ],
+            "wall_top": 22,
+            "roof_bottom": 24,
+            "added_levels": [
+              23
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -7
+            ],
+            "wall_top": 22,
+            "roof_bottom": 25,
+            "added_levels": [
+              23,
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -6
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -5
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -4
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -3
+            ],
+            "wall_top": 25,
+            "roof_bottom": 27,
+            "added_levels": [
+              26
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              -2
+            ],
+            "wall_top": 26,
+            "roof_bottom": 27,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              31,
+              -1
+            ],
+            "wall_top": 26,
+            "roof_bottom": 28,
+            "added_levels": [
+              27
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              0
+            ],
+            "wall_top": 26,
+            "roof_bottom": 28,
+            "added_levels": [
+              27
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              1
+            ],
+            "wall_top": 26,
+            "roof_bottom": 27,
+            "added_levels": []
+          },
+          {
+            "local_xz": [
+              31,
+              2
+            ],
+            "wall_top": 25,
+            "roof_bottom": 27,
+            "added_levels": [
+              26
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              3
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              4
+            ],
+            "wall_top": 24,
+            "roof_bottom": 26,
+            "added_levels": [
+              25
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              5
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              6
+            ],
+            "wall_top": 23,
+            "roof_bottom": 25,
+            "added_levels": [
+              24
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              7
+            ],
+            "wall_top": 22,
+            "roof_bottom": 24,
+            "added_levels": [
+              23
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              8
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              9
+            ],
+            "wall_top": 21,
+            "roof_bottom": 23,
+            "added_levels": [
+              22
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              10
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              11
+            ],
+            "wall_top": 20,
+            "roof_bottom": 22,
+            "added_levels": [
+              21
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              12
+            ],
+            "wall_top": 19,
+            "roof_bottom": 21,
+            "added_levels": [
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              13
+            ],
+            "wall_top": 18,
+            "roof_bottom": 21,
+            "added_levels": [
+              19,
+              20
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              14
+            ],
+            "wall_top": 18,
+            "roof_bottom": 20,
+            "added_levels": [
+              19
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              15
+            ],
+            "wall_top": 17,
+            "roof_bottom": 19,
+            "added_levels": [
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              16
+            ],
+            "wall_top": 16,
+            "roof_bottom": 19,
+            "added_levels": [
+              17,
+              18
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              17
+            ],
+            "wall_top": 16,
+            "roof_bottom": 18,
+            "added_levels": [
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              18
+            ],
+            "wall_top": 15,
+            "roof_bottom": 18,
+            "added_levels": [
+              16,
+              17
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              19
+            ],
+            "wall_top": 15,
+            "roof_bottom": 17,
+            "added_levels": [
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              20
+            ],
+            "wall_top": 14,
+            "roof_bottom": 17,
+            "added_levels": [
+              15,
+              16
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              21
+            ],
+            "wall_top": 13,
+            "roof_bottom": 16,
+            "added_levels": [
+              14,
+              15
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              22
+            ],
+            "wall_top": 13,
+            "roof_bottom": 15,
+            "added_levels": [
+              14
+            ]
+          },
+          {
+            "local_xz": [
+              31,
+              23
+            ],
+            "wall_top": 12,
+            "roof_bottom": 15,
+            "added_levels": [
+              13,
+              14
+            ]
+          }
+        ],
+        "all_columns_connected": true
+      },
+      "projection_cells": 161,
+      "projection_sampling": {
+        "per_triangle_surface_samples": [
+          63,
+          75,
+          12,
+          11
+        ],
+        "projection_sample_probes": 500,
+        "triangles_without_centroid_sample": 0
+      },
+      "projection_review": {
+        "source_frames": {
+          "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462"
+          },
+          "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70"
+          }
+        },
+        "elevation_traces": {
+          "NE": {
+            "manual_points_pixels": {
+              "rear": [
+                1140,
+                818
+              ],
+              "front-top": [
+                1140,
+                831
+              ],
+              "front-bottom": [
+                1140,
+                837
+              ],
+              "floor": [
+                1374,
+                893
+              ]
+            },
+            "native_points": {
+              "rear": [
+                1032.61767578125,
+                1439.4915771484375
+              ],
+              "front-top": [
+                1049.0284423828125,
+                1439.4915771484375
+              ],
+              "front-bottom": [
+                1056.6026611328125,
+                1439.4915771484375
+              ],
+              "floor": [
+                1127.2952880859375,
+                1734.9661865234375
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.340017445385456,
+              "front-top": 2.7610810881853105,
+              "front-bottom": 2.493879692554474
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          },
+          "SE": {
+            "manual_points_pixels": {
+              "rear": [
+                642,
+                334
+              ],
+              "front-top": [
+                676,
+                352
+              ],
+              "front-bottom": [
+                676,
+                358
+              ],
+              "floor": [
+                119,
+                407
+              ]
+            },
+            "native_points": {
+              "rear": [
+                421.63116455078125,
+                810.6610107421875
+              ],
+              "front-top": [
+                444.35382080078125,
+                853.59326171875
+              ],
+              "front-bottom": [
+                451.92803955078125,
+                853.59326171875
+              ],
+              "floor": [
+                513.7841186523438,
+                150.26271057128906
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.2509503135085107,
+              "front-top": 2.449346126616001,
+              "front-bottom": 2.1821447309851645
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          }
+        },
+        "roof_plan_points_pixels": [
+          [
+            522,
+            654
+          ],
+          [
+            615,
+            749
+          ],
+          [
+            631,
+            733
+          ],
+          [
+            538,
+            638
+          ]
+        ],
+        "roof_plan_local_points": [
+          [
+            -8.4743206220282,
+            -2.5748128656523015
+          ],
+          [
+            -8.424049110322628,
+            3.346213590895754
+          ],
+          [
+            -9.431862703727043,
+            3.344322853380319
+          ],
+          [
+            -9.482134215432616,
+            -2.5767036031677364
+          ]
+        ],
+        "height_choice": "NE front and rear roof/fascia edges; preserves NE entrance-head relationship. SE differences retained, not averaged.",
+        "front_height_NE_minus_SE_metres": 0.31173496156930947,
+        "combined_two_view_sampling_bound_metres": 0.356268527507782,
+        "fascia_height_metres": 0.26720139563083656,
+        "wall_to_front_depth_metres": 1.5485417947840912,
+        "width_metres": 5.921026456548056,
+        "slope_degrees": 20.49871139766755,
+        "attachment_hypothesis": "rear plane at NE wall, front plan edge retained; rear attachment hidden under main-roof overhang",
+        "physical_identity_verified": false
+      },
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 4,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 4",
+        "spawn": [
+          0,
+          67,
+          40
+        ],
+        "chunks": 42,
+        "composed_blocks": 53269,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "1100fb83a0eba8d95dc3eedafd905ff4ae0dc0de97a7eea47d2937b15acd57f8",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      }
+    }
+  ],
+  "geographic_placement": "withheld",
+  "park_world_blocks_added": 0,
+  "export_scope": "isolated proposed-source study with estimated joins and canopy hypothesis"
+}

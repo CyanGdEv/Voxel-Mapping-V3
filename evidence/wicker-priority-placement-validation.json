@@ -1,0 +1,40 @@
+{
+  "version": "mapped-sheet-placement-v4",
+  "candidate_sha256": "f336e5e5cdbc9e7b72314fb2f6262b98287734775f0b133144f803aa0dd2a9e1",
+  "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+  "reference_crs": "EPSG:4326",
+  "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+  "sheets": [
+    [
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      1
+    ]
+  ],
+  "priority_seeds": [
+    [
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      1,
+      "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52"
+    ]
+  ],
+  "max_seed_fits": 512,
+  "min_iou": 0.7,
+  "tolerance_m": 10.0,
+  "max_records": 2500000,
+  "counts": {
+    "candidates_checked": 3906,
+    "page_cache_computed": 1,
+    "withheld": 1,
+    "seed_fit_attempts": 361,
+    "orientation_trial_attempts": 1032
+  },
+  "source_documents": [
+    "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d"
+  ],
+  "output_sha256": {
+    "sheet-placements.jsonl": "64519ffe37d14201615a4b4121e6b6961ae8c3b2ac5d3b35602b8f00efad64e9",
+    "placed-review-geometry.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "status": "provisional_map_review_only",
+  "world_geometry_additions": 0
+}

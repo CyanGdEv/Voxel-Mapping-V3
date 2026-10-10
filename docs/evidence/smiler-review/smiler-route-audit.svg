@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 882 561">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#172536">
+<text x="25" y="30" font-size="21">Smiler — mapped route audit</text>
+<text x="25" y="55" font-size="13">North up · local metres · direction and every track elevation unresolved</text>
+<polygon points="153.06,286.90 176.05,276.94 203.09,256.92 227.07,226.00 371.10,249.00 384.14,179.13 470.16,195.11 488.18,121.03 315.14,90.00 271.13,126.45 226.10,116.94 224.08,131.89 136.08,114.97 134.05,128.92 67.02,115.98 55.02,190.29 56.05,229.01 66.01,252.92 83.02,271.93 104.03,279.88 124.06,286.90 153.06,286.90" fill="#eceff2" stroke="#75808d"/>
+<path d="M 576.12 466.54 L 122.02 408.58" stroke="#1767a1" stroke-width="2" fill="none"><title>Segment 0; OSM way 453955410; phase unresolved</title></path>
+<text x="579.12" y="462.54" font-size="10">0</text>
+<path d="M 122.02 408.58 L 86.01 404.60" stroke="#1767a1" stroke-width="2" fill="none"><title>Segment 1; OSM way 453955410; phase unresolved</title></path>
+<path d="M 86.01 404.60 L 60.01 400.62" stroke="#1767a1" stroke-width="2" fill="none"><title>Segment 2; OSM way 453955410; phase unresolved</title></path>
+<path d="M 60.01 400.62 L 45.01 403.58" stroke="#1767a1" stroke-width="2" fill="none"><title>Segment 3; OSM way 453955410; phase unresolved</title></path>
+<path d="M 45.01 403.58 L 52.02 418.61" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 4; OSM way 597823141; phase unresolved</title></path>
+<path d="M 52.02 418.61 L 82.01 431.55" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 5; OSM way 597823141; phase unresolved</title></path>
+<path d="M 82.01 431.55 L 104.99 441.53" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 6; OSM way 597823141; phase unresolved</title></path>
+<path d="M 104.99 441.53 L 137.01 435.53" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 7; OSM way 597823141; phase unresolved</title></path>
+<path d="M 137.01 435.53 L 167.05 421.60" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 8; OSM way 597823141; phase unresolved</title></path>
+<path d="M 167.05 421.60 L 175.04 409.60" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 9; OSM way 597823141; phase unresolved</title></path>
+<path d="M 175.04 409.60 L 185.06 372.68" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 10; OSM way 597823141; phase unresolved</title></path>
+<text x="178.04" y="405.60" font-size="10">10</text>
+<path d="M 185.06 372.68 L 182.06 341.75" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 11; OSM way 597823141; phase unresolved</title></path>
+<path d="M 182.06 341.75 L 162.04 312.85" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 12; OSM way 597823141; phase unresolved</title></path>
+<path d="M 162.04 312.85 L 131.06 295.86" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 13; OSM way 597823141; phase unresolved</title></path>
+<path d="M 131.06 295.86 L 93.03 291.88" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 14; OSM way 597823141; phase unresolved</title></path>
+<path d="M 93.03 291.88 L 53.02 304.80" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 15; OSM way 597823141; phase unresolved</title></path>
+<path d="M 53.02 304.80 L 40.00 316.80" stroke="#8b3894" stroke-width="2" fill="none"><title>Segment 16; OSM way 597823141; phase unresolved</title></path>
+<path d="M 40.00 316.80 L 77.04 318.83" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 17; OSM way 597823142; phase unresolved</title></path>
+<path d="M 77.04 318.83 L 117.05 314.79" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 18; OSM way 597823142; phase unresolved</title></path>
+<path d="M 117.05 314.79 L 171.07 297.89" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 19; OSM way 597823142; phase unresolved</title></path>
+<path d="M 171.07 297.89 L 211.08 272.89" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 20; OSM way 597823142; phase unresolved</title></path>
+<text x="174.07" y="293.89" font-size="10">20</text>
+<path d="M 211.08 272.89 L 247.09 259.97" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 21; OSM way 597823142; phase unresolved</title></path>
+<path d="M 247.09 259.97 L 290.10 260.99" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 22; OSM way 597823142; phase unresolved</title></path>
+<path d="M 290.10 260.99 L 325.12 266.91" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 23; OSM way 597823142; phase unresolved</title></path>
+<path d="M 325.12 266.91 L 396.11 257.97" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 24; OSM way 597823142; phase unresolved</title></path>
+<path d="M 396.11 257.97 L 433.15 248.00" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 25; OSM way 597823142; phase unresolved</title></path>
+<path d="M 433.15 248.00 L 464.13 245.05" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 26; OSM way 597823142; phase unresolved</title></path>
+<path d="M 464.13 245.05 L 487.17 253.00" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 27; OSM way 597823142; phase unresolved</title></path>
+<path d="M 487.17 253.00 L 521.15 283.93" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 28; OSM way 597823142; phase unresolved</title></path>
+<path d="M 521.15 283.93 L 537.18 306.91" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 29; OSM way 597823142; phase unresolved</title></path>
+<path d="M 537.18 306.91 L 565.14 336.83" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 30; OSM way 597823142; phase unresolved</title></path>
+<text x="540.18" y="302.91" font-size="10">30</text>
+<path d="M 565.14 336.83 L 587.19 341.82" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 31; OSM way 597823142; phase unresolved</title></path>
+<path d="M 587.19 341.82 L 615.16 343.85" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 32; OSM way 597823142; phase unresolved</title></path>
+<path d="M 615.16 343.85 L 643.18 327.88" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 33; OSM way 597823142; phase unresolved</title></path>
+<path d="M 643.18 327.88 L 651.18 309.89" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 34; OSM way 597823142; phase unresolved</title></path>
+<path d="M 651.18 309.89 L 658.18 289.95" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 35; OSM way 597823142; phase unresolved</title></path>
+<path d="M 658.18 289.95 L 652.22 261.98" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 36; OSM way 597823142; phase unresolved</title></path>
+<path d="M 652.22 261.98 L 636.19 246.01" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 37; OSM way 597823142; phase unresolved</title></path>
+<path d="M 636.19 246.01 L 615.18 232.06" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 38; OSM way 597823142; phase unresolved</title></path>
+<path d="M 615.18 232.06 L 583.17 228.08" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 39; OSM way 597823142; phase unresolved</title></path>
+<path d="M 583.17 228.08 L 548.19 227.07" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 40; OSM way 597823142; phase unresolved</title></path>
+<text x="586.17" y="224.08" font-size="10">40</text>
+<path d="M 548.19 227.07 L 267.08 175.14" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 41; OSM way 597823142; phase unresolved</title></path>
+<path d="M 267.08 175.14 L 135.08 155.17" stroke="#1c8260" stroke-width="2" fill="none"><title>Segment 42; OSM way 597823142; phase unresolved</title></path>
+<path d="M 135.08 155.17 L 102.03 159.14" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 43; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 102.03 159.14 L 78.62 179.93" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 44; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 78.62 179.93 L 78.05 218.03" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 45; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 78.05 218.03 L 90.03 250.98" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 46; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 90.03 250.98 L 110.05 258.93" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 47; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 110.05 258.93 L 161.06 261.90" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 48; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 161.06 261.90 L 186.07 246.95" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 49; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 186.07 246.95 L 215.08 211.04" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 50; OSM way 1074706894; phase unresolved</title></path>
+<text x="189.07" y="242.95" font-size="10">50</text>
+<path d="M 215.08 211.04 L 271.13 160.18" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 51; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 271.13 160.18 L 322.13 152.17" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 52; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 322.13 152.17 L 392.13 164.17" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 53; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 392.13 164.17 L 475.15 181.17" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 54; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 475.15 181.17 L 679.21 220.08" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 55; OSM way 1074706894; phase unresolved</title></path>
+<text x="478.15" y="177.17" font-size="10">55</text>
+<path d="M 679.21 220.08 L 728.24 230.13" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 56; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 728.24 230.13 L 765.23 241.04" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 57; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 765.23 241.04 L 787.23 257.02" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 58; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 787.23 257.02 L 801.24 276.03" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 59; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 801.24 276.03 L 808.24 305.94" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 60; OSM way 1074706894; phase unresolved</title></path>
+<text x="804.24" y="272.03" font-size="10">60</text>
+<path d="M 808.24 305.94 L 807.24 342.87" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 61; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 807.24 342.87 L 794.97 377.22" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 62; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 794.97 377.22 L 779.22 388.75" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 63; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 779.22 388.75 L 747.20 399.72" stroke="#bd5d16" stroke-width="2" fill="none"><title>Segment 64; OSM way 1074706894; phase unresolved</title></path>
+<path d="M 747.20 399.72 L 701.18 396.76" stroke="#676127" stroke-width="2" fill="none"><title>Segment 65; OSM way 597823140; phase unresolved</title></path>
+<path d="M 701.18 396.76 L 626.15 392.69" stroke="#676127" stroke-width="2" fill="none"><title>Segment 66; OSM way 597823140; phase unresolved</title></path>
+<path d="M 626.15 392.69 L 557.15 376.79" stroke="#676127" stroke-width="2" fill="none"><title>Segment 67; OSM way 597823140; phase unresolved</title></path>
+<path d="M 557.15 376.79 L 498.15 351.78" stroke="#676127" stroke-width="2" fill="none"><title>Segment 68; OSM way 597823140; phase unresolved</title></path>
+<path d="M 498.15 351.78 L 445.13 330.81" stroke="#676127" stroke-width="2" fill="none"><title>Segment 69; OSM way 597823140; phase unresolved</title></path>
+<path d="M 445.13 330.81 L 404.14 314.84" stroke="#676127" stroke-width="2" fill="none"><title>Segment 70; OSM way 597823140; phase unresolved</title></path>
+<text x="448.13" y="326.81" font-size="10">70</text>
+<path d="M 404.14 314.84 L 374.10 310.86" stroke="#676127" stroke-width="2" fill="none"><title>Segment 71; OSM way 597823140; phase unresolved</title></path>
+<path d="M 374.10 310.86 L 268.09 313.88" stroke="#676127" stroke-width="2" fill="none"><title>Segment 72; OSM way 597823140; phase unresolved</title></path>
+<path d="M 268.09 313.88 L 321.07 331.80" stroke="#676127" stroke-width="2" fill="none"><title>Segment 73; OSM way 597823140; phase unresolved</title></path>
+<path d="M 321.07 331.80 L 385.09 347.78" stroke="#676127" stroke-width="2" fill="none"><title>Segment 74; OSM way 597823140; phase unresolved</title></path>
+<path d="M 385.09 347.78 L 453.12 359.79" stroke="#676127" stroke-width="2" fill="none"><title>Segment 75; OSM way 597823140; phase unresolved</title></path>
+<path d="M 453.12 359.79 L 486.12 361.74" stroke="#676127" stroke-width="2" fill="none"><title>Segment 76; OSM way 597823140; phase unresolved</title></path>
+<path d="M 486.12 361.74 L 539.14 385.75" stroke="#676127" stroke-width="2" fill="none"><title>Segment 77; OSM way 597823140; phase unresolved</title></path>
+<path d="M 539.14 385.75 L 578.15 403.67" stroke="#676127" stroke-width="2" fill="none"><title>Segment 78; OSM way 597823140; phase unresolved</title></path>
+<path d="M 578.15 403.67 L 491.14 390.72" stroke="#a73550" stroke-width="2" fill="none"><title>Segment 79; OSM way 1075009268; phase unresolved</title></path>
+<path d="M 491.14 390.72 L 417.10 376.77" stroke="#a73550" stroke-width="2" fill="none"><title>Segment 80; OSM way 1075009268; phase unresolved</title></path>
+<text x="494.14" y="386.72" font-size="10">80</text>
+<path d="M 417.10 376.77 L 360.08 367.72" stroke="#a73550" stroke-width="2" fill="none"><title>Segment 81; OSM way 1075009268; phase unresolved</title></path>
+<path d="M 360.08 367.72 L 296.10 359.77" stroke="#a73550" stroke-width="2" fill="none"><title>Segment 82; OSM way 1075009268; phase unresolved</title></path>
+<path d="M 296.10 359.77 L 242.04 354.77" stroke="#a73550" stroke-width="2" fill="none"><title>Segment 83; OSM way 1075009268; phase unresolved</title></path>
+<path d="M 242.04 354.77 L 181.02 357.72" stroke="#447592" stroke-width="2" fill="none"><title>Segment 84; OSM way 597823137; phase unresolved</title></path>
+<path d="M 181.02 357.72 L 139.04 358.73" stroke="#447592" stroke-width="2" fill="none"><title>Segment 85; OSM way 597823137; phase unresolved</title></path>
+<path d="M 139.04 358.73 L 121.04 350.70" stroke="#447592" stroke-width="2" fill="none"><title>Segment 86; OSM way 597823137; phase unresolved</title></path>
+<path d="M 121.04 350.70 L 133.03 317.83" stroke="#447592" stroke-width="2" fill="none"><title>Segment 87; OSM way 597823137; phase unresolved</title></path>
+<path d="M 133.03 317.83 L 149.07 271.95" stroke="#447592" stroke-width="2" fill="none"><title>Segment 88; OSM way 597823137; phase unresolved</title></path>
+<path d="M 149.07 271.95 L 152.04 256.91" stroke="#447592" stroke-width="2" fill="none"><title>Segment 89; OSM way 597823137; phase unresolved</title></path>
+<path d="M 152.04 256.91 L 125.05 266.88" stroke="#447592" stroke-width="2" fill="none"><title>Segment 90; OSM way 597823137; phase unresolved</title></path>
+<text x="155.04" y="252.91" font-size="10">90</text>
+<path d="M 125.05 266.88 L 102.01 299.83" stroke="#447592" stroke-width="2" fill="none"><title>Segment 91; OSM way 597823137; phase unresolved</title></path>
+<path d="M 102.01 299.83 L 96.03 331.76" stroke="#447592" stroke-width="2" fill="none"><title>Segment 92; OSM way 597823137; phase unresolved</title></path>
+<path d="M 96.03 331.76 L 92.03 362.69" stroke="#447592" stroke-width="2" fill="none"><title>Segment 93; OSM way 597823137; phase unresolved</title></path>
+<path d="M 92.03 362.69 L 103.02 406.63" stroke="#447592" stroke-width="2" fill="none"><title>Segment 94; OSM way 597823137; phase unresolved</title></path>
+<path d="M 103.02 406.63 L 120.04 442.54" stroke="#447592" stroke-width="2" fill="none"><title>Segment 95; OSM way 597823137; phase unresolved</title></path>
+<path d="M 120.04 442.54 L 139.02 461.48" stroke="#447592" stroke-width="2" fill="none"><title>Segment 96; OSM way 597823137; phase unresolved</title></path>
+<path d="M 139.02 461.48 L 165.02 470.52" stroke="#447592" stroke-width="2" fill="none"><title>Segment 97; OSM way 597823137; phase unresolved</title></path>
+<path d="M 165.02 470.52 L 174.05 458.52" stroke="#447592" stroke-width="2" fill="none"><title>Segment 98; OSM way 597823137; phase unresolved</title></path>
+<path d="M 174.05 458.52 L 167.05 436.55" stroke="#447592" stroke-width="2" fill="none"><title>Segment 99; OSM way 597823137; phase unresolved</title></path>
+<path d="M 167.05 436.55 L 139.03 401.65" stroke="#447592" stroke-width="2" fill="none"><title>Segment 100; OSM way 597823137; phase unresolved</title></path>
+<text x="170.05" y="432.55" font-size="10">100</text>
+<path d="M 139.03 401.65 L 129.02 384.66" stroke="#447592" stroke-width="2" fill="none"><title>Segment 101; OSM way 597823137; phase unresolved</title></path>
+<path d="M 129.02 384.66 L 137.02 377.65" stroke="#447592" stroke-width="2" fill="none"><title>Segment 102; OSM way 597823137; phase unresolved</title></path>
+<path d="M 137.02 377.65 L 175.05 385.68" stroke="#447592" stroke-width="2" fill="none"><title>Segment 103; OSM way 597823137; phase unresolved</title></path>
+<path d="M 175.05 385.68 L 217.07 387.64" stroke="#447592" stroke-width="2" fill="none"><title>Segment 104; OSM way 597823137; phase unresolved</title></path>
+<path d="M 217.07 387.64 L 251.06 383.67" stroke="#447592" stroke-width="2" fill="none"><title>Segment 105; OSM way 597823137; phase unresolved</title></path>
+<path d="M 251.06 383.67 L 273.07 371.68" stroke="#447592" stroke-width="2" fill="none"><title>Segment 106; OSM way 597823137; phase unresolved</title></path>
+<path d="M 273.07 371.68 L 291.07 345.74" stroke="#447592" stroke-width="2" fill="none"><title>Segment 107; OSM way 597823137; phase unresolved</title></path>
+<path d="M 291.07 345.74 L 310.07 318.87" stroke="#447592" stroke-width="2" fill="none"><title>Segment 108; OSM way 597823137; phase unresolved</title></path>
+<path d="M 310.07 318.87 L 336.12 297.92" stroke="#447592" stroke-width="2" fill="none"><title>Segment 109; OSM way 597823137; phase unresolved</title></path>
+<path d="M 336.12 297.92 L 375.09 287.88" stroke="#447592" stroke-width="2" fill="none"><title>Segment 110; OSM way 597823137; phase unresolved</title></path>
+<text x="339.12" y="293.92" font-size="10">110</text>
+<path d="M 375.09 287.88 L 414.11 295.91" stroke="#447592" stroke-width="2" fill="none"><title>Segment 111; OSM way 597823137; phase unresolved</title></path>
+<path d="M 414.11 295.91 L 519.12 315.94" stroke="#447592" stroke-width="2" fill="none"><title>Segment 112; OSM way 597823137; phase unresolved</title></path>
+<path d="M 519.12 315.94 L 759.20 361.79" stroke="#447592" stroke-width="2" fill="none"><title>Segment 113; OSM way 597823137; phase unresolved</title></path>
+<text x="522.12" y="311.94" font-size="10">113</text>
+<path d="M 759.20 361.79 L 787.21 362.81" stroke="#447592" stroke-width="2" fill="none"><title>Segment 114; OSM way 597823137; phase unresolved</title></path>
+<path d="M 787.21 362.81 L 817.26 353.85" stroke="#447592" stroke-width="2" fill="none"><title>Segment 115; OSM way 597823137; phase unresolved</title></path>
+<path d="M 817.26 353.85 L 830.23 339.91" stroke="#447592" stroke-width="2" fill="none"><title>Segment 116; OSM way 597823137; phase unresolved</title></path>
+<path d="M 830.23 339.91 L 839.26 315.92" stroke="#447592" stroke-width="2" fill="none"><title>Segment 117; OSM way 597823137; phase unresolved</title></path>
+<path d="M 839.26 315.92 L 841.24 293.02" stroke="#447592" stroke-width="2" fill="none"><title>Segment 118; OSM way 597823137; phase unresolved</title></path>
+<path d="M 841.24 293.02 L 841.24 273.00" stroke="#447592" stroke-width="2" fill="none"><title>Segment 119; OSM way 597823137; phase unresolved</title></path>
+<path d="M 841.24 273.00 L 834.24 258.04" stroke="#447592" stroke-width="2" fill="none"><title>Segment 120; OSM way 597823137; phase unresolved</title></path>
+<text x="844.24" y="269.00" font-size="10">120</text>
+<path d="M 834.24 258.04 L 816.24 234.98" stroke="#447592" stroke-width="2" fill="none"><title>Segment 121; OSM way 597823137; phase unresolved</title></path>
+<path d="M 816.24 234.98 L 796.26 223.13" stroke="#447592" stroke-width="2" fill="none"><title>Segment 122; OSM way 597823137; phase unresolved</title></path>
+<path d="M 796.26 223.13 L 770.27 226.71" stroke="#447592" stroke-width="2" fill="none"><title>Segment 123; OSM way 597823137; phase unresolved</title></path>
+<path d="M 770.27 226.71 L 746.99 233.02" stroke="#447592" stroke-width="2" fill="none"><title>Segment 124; OSM way 597823137; phase unresolved</title></path>
+<path d="M 746.99 233.02 L 721.23 252.02" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 125; OSM way 597823139; phase unresolved</title></path>
+<path d="M 721.23 252.02 L 692.22 272.97" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 126; OSM way 597823139; phase unresolved</title></path>
+<path d="M 692.22 272.97 L 666.23 274.99" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 127; OSM way 597823139; phase unresolved</title></path>
+<path d="M 666.23 274.99 L 623.21 280.98" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 128; OSM way 597823139; phase unresolved</title></path>
+<path d="M 623.21 280.98 L 548.18 272.01" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 129; OSM way 597823139; phase unresolved</title></path>
+<path d="M 548.18 272.01 L 487.17 270.99" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 130; OSM way 597823139; phase unresolved</title></path>
+<text x="551.18" y="268.01" font-size="10">130</text>
+<path d="M 487.17 270.99 L 455.15 269.51" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 131; OSM way 597823139; phase unresolved</title></path>
+<path d="M 455.15 269.51 L 420.13 267.94" stroke="#713fac" stroke-width="2" fill="none"><title>Segment 132; OSM way 597823139; phase unresolved</title></path>
+<path d="M 420.13 267.94 L 455.15 269.51" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 133; OSM way 597823138; phase unresolved</title></path>
+<path d="M 455.15 269.51 L 497.13 290.94" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 134; OSM way 597823138; phase unresolved</title></path>
+<path d="M 497.13 290.94 L 519.12 315.94" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 135; OSM way 597823138; phase unresolved</title></path>
+<path d="M 519.12 315.94 L 519.17 346.79" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 136; OSM way 597823138; phase unresolved</title></path>
+<path d="M 519.17 346.79 L 504.11 403.66" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 137; OSM way 597823138; phase unresolved</title></path>
+<path d="M 504.11 403.66 L 503.12 429.60" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 138; OSM way 597823138; phase unresolved</title></path>
+<path d="M 503.12 429.60 L 521.12 443.62" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 139; OSM way 597823138; phase unresolved</title></path>
+<path d="M 521.12 443.62 L 576.12 466.54" stroke="#3d7850" stroke-width="2" fill="none"><title>Segment 140; OSM way 597823138; phase unresolved</title></path>
+<text x="524.12" y="439.62" font-size="10">140</text>
+<text x="25" y="506" font-size="13">Labels identify map segments only. Previous lift bindings 55 / 113 are rejected.</text>
+<text x="25" y="531" font-size="12">© OpenStreetMap contributors · ODbL-1.0 · no reconstructed track shown</text></g></svg>

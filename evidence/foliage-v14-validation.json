@@ -1,0 +1,100 @@
+{
+  "trees": 2600,
+  "shrub_clusters": 1834,
+  "groundcover_plants": 1650,
+  "appearance": {
+    "trunks_and_branches": "procedural fence skeleton with staggered levels, varied azimuths, elbows and unequal forks",
+    "crowns": "dense seeded mixed leaves on branch sides plus top/bottom caps; every leaf touches a fence",
+    "side_density": {
+      "broadleaf": 0.95,
+      "airy": 0.88,
+      "conifer_columnar": 0.98
+    },
+    "cap_probability_factor": 0.9,
+    "leaf_palette": "oak + birch for broadleaf proxies; spruce + oak for conifer proxies",
+    "bounds": "supplied height and horizontal crown radius",
+    "dimensions": "heights supported by LiDAR/DSM where available; crown radii, counts and branch forms remain estimated"
+  },
+  "tests": 348,
+  "world_sha256": "45460d8d207fe66f2bed1bd126f9afb14645ba8fcc909fce1758376944d172b2",
+  "world_verification": {
+    "touched_chunks": 2748,
+    "overlay_records": 890870,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1fbc2f6d132f0e785fc65e4680024e82d0fe2b30888d7a1106b8991cec7049a9",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 888243
+  },
+  "preservation": {
+    "leaf_cells_checked": 543418,
+    "leaf_material_counts": {
+      "oak_leaves": 351780,
+      "spruce_leaves": 2829,
+      "birch_leaves": 188809
+    },
+    "leaves_without_fence_contact": [],
+    "physical_overlay_cells_compared": 21703,
+    "physical_cells_changed": 0,
+    "protected_rider_cells": 5019,
+    "rider_obstructions": 0,
+    "water_columns_compared": 38930,
+    "water_and_bed_cells_compared": 667654,
+    "water_or_bed_cells_changed": 0,
+    "tree_roots_checked": 2600,
+    "invalid_tree_roots": [],
+    "skeleton_fence_cells_checked": 306231,
+    "missing_branch_cells": [],
+    "failures": {
+      "structure": [],
+      "clearance": [],
+      "water": []
+    }
+  },
+  "sources": {
+    "raw_osm_sha256": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+    "terrain_sha256": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d",
+    "surface_sha256": "8be3f64aef96625bba2dddc092ad7c2eee7edb113d878ee7925d27afb9752e32",
+    "planning_hints": 5500,
+    "classified_vegetation": {
+      "sha256": "8c2f130d270f514c8d9fca9f1a1a1766e54318a444dc13bc614a7dfc223e88ae",
+      "source_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+      "survey": {
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "survey_end": "20220105",
+        "archive_files": {
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dsm": 0.9716249262163758,
+          "dtm": 1.0
+        },
+        "terrain_coverage_threshold": 0.99,
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+      },
+      "vertical_datum": "ODN",
+      "classified_vegetation_points": 3758713,
+      "high_vegetation_clusters": 12162,
+      "local_bounds": [
+        -1017.9510615123887,
+        -534.7726211841264,
+        1017.9854094204954,
+        534.644695727497
+      ],
+      "classes_used": [
+        3,
+        4,
+        5
+      ],
+      "limitation": "Classifications can contain errors; clustered canopy centres are not surveyed stem locations."
+    }
+  },
+  "limitations": [
+    "DSM-minus-DTM is a canopy envelope proxy; DSM may include other objects. Mapped vegetation masks and structure exclusions reduce this ambiguity.",
+    "Canopy centres inferred within woodland, widths, branches, understorey density and unspecified species are visual estimates.",
+    "Mapped named species use Minecraft block/shape proxies; nearby planning species labels do not establish individual tree identity.",
+    "Composite survey dates vary; foliage is a summer visual reconstruction, not a complete current arboricultural survey."
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "status": "placement_preflight_only",
+  "input_sha256": {
+    "model": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+    "lidar": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f",
+    "context": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+  },
+  "terrain": {
+    "source_id": "ea-smiler-dtm",
+    "vertical_datum": "ODN",
+    "sha256": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453",
+    "horizontal_crs": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+    "pixel_size_native_units": [
+      1.0,
+      1.0
+    ],
+    "sampling": "nearest neighbour",
+    "coordinate_transform": {
+      "accuracy_m": 0.0,
+      "description": "Inverse of British National Grid + British National Grid"
+    },
+    "sample_requests": 526,
+    "missing_requests": 526
+  },
+  "hypotheses": [
+    {
+      "rotation_degrees": -154.75564001904897,
+      "context_preferred": true,
+      "rear_to_station_angle_degrees": 16.71850177157773,
+      "anchor_bng_m": [
+        407562.9700688051,
+        343583.93836621655
+      ],
+      "mapped_centroid_to_fitted_origin_m": 1.0233231259867244,
+      "anchor_snap_offset_m": [
+        0.02993119490565732,
+        0.06163378345081583
+      ],
+      "floor_self_fit_odn_m": 182.64722166686568,
+      "floor_snap_offset_m": 0.3527783331343244,
+      "proposed_floor_label_m": 182.5,
+      "floor_label_datum_verified": false,
+      "voxel_cells": 657,
+      "materials": {
+        "dark_oak_fence": 20,
+        "dark_oak_planks": 170,
+        "dark_oak_slab": 120,
+        "dark_oak_slab_top": 92,
+        "spruce_planks": 238,
+        "spruce_trapdoor_east": 3,
+        "spruce_trapdoor_north": 6,
+        "spruce_trapdoor_south": 5,
+        "spruce_trapdoor_west": 3
+      },
+      "hypothetical_native_chunks": 4,
+      "terrain_clearance": {
+        "sampled_columns": 263,
+        "missing_columns": 263,
+        "intersecting_columns": 0,
+        "terrain_range_m": null,
+        "terrain_clearance_passed": false
+      },
+      "boundary_review_flags": [
+        "independent_physical_checkpoints_missing",
+        "roof_to_wall_offset_unmeasured",
+        "ambiguous_boundary_orientation",
+        "poor_boundary_agreement"
+      ],
+      "placement_eligible": false
+    },
+    {
+      "rotation_degrees": 25.244359980951014,
+      "context_preferred": false,
+      "rear_to_station_angle_degrees": 163.28149822842227,
+      "anchor_bng_m": [
+        407562.9700688052,
+        343583.93836621643
+      ],
+      "mapped_centroid_to_fitted_origin_m": 1.023323125994345,
+      "anchor_snap_offset_m": [
+        0.029931194789242,
+        0.06163378356723115
+      ],
+      "floor_self_fit_odn_m": 182.64722166695495,
+      "floor_snap_offset_m": 0.3527783330450518,
+      "proposed_floor_label_m": 182.5,
+      "floor_label_datum_verified": false,
+      "voxel_cells": 658,
+      "materials": {
+        "dark_oak_fence": 21,
+        "dark_oak_planks": 170,
+        "dark_oak_slab": 120,
+        "dark_oak_slab_top": 92,
+        "spruce_planks": 238,
+        "spruce_trapdoor_east": 3,
+        "spruce_trapdoor_north": 5,
+        "spruce_trapdoor_south": 6,
+        "spruce_trapdoor_west": 3
+      },
+      "hypothetical_native_chunks": 4,
+      "terrain_clearance": {
+        "sampled_columns": 263,
+        "missing_columns": 263,
+        "intersecting_columns": 0,
+        "terrain_range_m": null,
+        "terrain_clearance_passed": false
+      },
+      "boundary_review_flags": [
+        "independent_physical_checkpoints_missing",
+        "roof_to_wall_offset_unmeasured",
+        "ambiguous_boundary_orientation",
+        "poor_boundary_agreement"
+      ],
+      "placement_eligible": false
+    }
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "unresolved": [
+    "Independent horizontal controls/checkpoints",
+    "Assembly identity and source handedness",
+    "Independent ODN floor datum",
+    "Shop-area terrain coverage and floor/grading review"
+  ],
+  "limitations": [
+    "Self-fitted roof heights are diagnostic candidates, not independent floor measurements.",
+    "Context ranking does not remove the opposite orientation.",
+    "Terrain checks inspect emitted block columns; entrance access, foundations and existing-world collisions need separate review."
+  ]
+}

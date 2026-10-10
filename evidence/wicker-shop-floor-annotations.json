@@ -1,0 +1,78 @@
+{
+  "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "method": "manual full-page external wall-face trace, main rectangular shop excluding internal partitions",
+  "render_size_pixels": [
+    1888,
+    1334
+  ],
+  "render_samples_sha256": "619a67d8e7a4dc46338251cf22a382136fc335fa1b6d98fbc90297daed998b24",
+  "scale_denominator": 100,
+  "manual_endpoint_bound_pixels": 2,
+  "outer_corners_pixels": [
+    [
+      474,
+      620
+    ],
+    [
+      645,
+      791
+    ],
+    [
+      416,
+      1018
+    ],
+    [
+      245,
+      848
+    ]
+  ],
+  "openings": [
+    {
+      "id": "opening-NE",
+      "edge": 0,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "endpoints_pixels": [
+        [
+          528,
+          674
+        ],
+        [
+          600,
+          746
+        ]
+      ]
+    },
+    {
+      "id": "opening-SW",
+      "edge": 2,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "endpoints_pixels": [
+        [
+          367,
+          969
+        ],
+        [
+          294,
+          897
+        ]
+      ]
+    },
+    {
+      "id": "door-NW",
+      "edge": 3,
+      "drawing_role": "small opening with drawn door swing",
+      "endpoints_pixels": [
+        [
+          450,
+          644
+        ],
+        [
+          463,
+          631
+        ]
+      ]
+    }
+  ],
+  "construction_state": "proposed",
+  "as_built_verified": false
+}

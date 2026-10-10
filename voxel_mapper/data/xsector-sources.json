@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "area": "Alton Towers X-Sector",
+  "reviewed_at": "2026-10-08",
+  "primary_sources": [
+    {
+      "url": "https://www.altontowers.com/explore/theme-park/rides-attractions/the-smiler/",
+      "constraints": {
+        "height_m": 30,
+        "track_length_m": 1170,
+        "inversions": 14
+      },
+      "use": "Global sanity checks only; not ODN elevations or local branch heights"
+    },
+    {
+      "url": "https://www.altontowers.com/explore/theme-park/rides-attractions/oblivion/",
+      "constraints": {
+        "drop_ft": 180,
+        "chain_lift_ft": 65
+      },
+      "use": "Relative dimensions only; total drop includes underground section; no surveyed track datum"
+    },
+    {
+      "application": "SMD/2011/1051",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=41683",
+      "status": "Unavailable: returned HTML 502, not a PDF on 2026-10-08",
+      "use": "Do not treat the error response as drawing evidence"
+    }
+  ],
+  "alternative_sources": [
+    {
+      "url": "https://www.towersstreet.com/wp/assets/upload/2012/07/sw7planoverview.png",
+      "sha256": "2ae5a9955710cd156d7b7da9d6e75ae43f4f50bd9be29e987dc1e79e776fb158",
+      "status": "Acquired and visually reviewed",
+      "drawing_state": "proposed",
+      "use": "Planning context only; no accepted as-built coordinate or height controls"
+    },
+    {
+      "url": "https://www.towersstreet.com/wp/assets/upload/2012/07/side-elevation.png",
+      "sha256": "71823bf23e84f05687c8e598d1d7bfe901dc1820dd787457ebcde618912458cf",
+      "status": "Acquired and visually reviewed",
+      "drawing_state": "proposed",
+      "use": "Planning context only; no accepted as-built coordinate or height controls"
+    },
+    {
+      "url": "https://themeparkreview.com/alton/obliv2.jpg",
+      "sha256": "290eb04efd05ec46b105bb5c3f0aa0994c2fda29140bdc04f4b899da087a7a4f",
+      "status": "Acquired and visually reviewed",
+      "drawing_state": "historical as-built photograph (1998 gallery)",
+      "use": "Qualitative rising high-banked return shape only; exact height and roll controls remain estimated"
+    },
+    {
+      "url": "https://www.gerstlauer-rides.de/fileadmin/Daten/Bilder/Produkte/Achterbahnen/Infinity_Coaster/IC_Layouts/2128_AltonTowers/IC_2128_AltonTowers_02_0001.jpg",
+      "sha256": "5b87d34df03df2105265c60b05aedb3b8d89c460823fbc3cd5dffb16c896cbe8",
+      "status": "Acquired and visually reviewed",
+      "drawing_state": "manufacturer design perspective",
+      "use": "Labelled lift/phase context only; example dimensions differ from finished ride; no surveyed 3D controls"
+    },
+    {
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "paired_surface_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "status": "Acquired matched P_10682 survey, 2022-01-05; complete crop coverage",
+      "use": "Observed ODN ground and last-return surfaces; neither identifies track centres",
+      "evidence": "docs/evidence/smiler-review/smiler-audit.json"
+    }
+  ],
+  "mapped_source": {
+    "provider": "OpenStreetMap",
+    "license": "ODbL-1.0",
+    "attribution": "\u00a9 OpenStreetMap contributors",
+    "attribution_url": "https://www.openstreetmap.org/copyright",
+    "station_way_ids": [
+      453955411,
+      70684291
+    ],
+    "use": "Horizontal footprints and closed route topology; layers are ordinal, not heights"
+  },
+  "limitations": [
+    "Archived proposed plan differs from the finished Smiler; no as-built registration accepted",
+    "The image mirrors omit full PDF vectors and readable survey controls; use for context only"
+  ],
+  "smiler_reconstruction_status": "Prototype withdrawn after user visual review; as-built registration pending"
+}

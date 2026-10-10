@@ -1,0 +1,110 @@
+{
+  "version": "resort-area-reconstruction-validation-v1",
+  "area": "wicker-man",
+  "scope": "Planning-led area coordinator above the existing spatial cycle writer. Real source extraction only; no real-area world rebuilt in this validation.",
+  "application_references": [
+    "SMD/2016/0315",
+    "SMD/2017/0111"
+  ],
+  "document_records": 40,
+  "acquisition": {
+    "document_links": 40,
+    "unique_urls": 40,
+    "download_status": {
+      "downloaded": 13,
+      "pending": 27
+    },
+    "distinct_pdf_blobs": 13,
+    "inspected_pages": 0,
+    "status": "partial_manifest",
+    "discovery_completeness": "Not implied by manifest completion",
+    "failed_urls": [],
+    "world_geometry_additions": 0,
+    "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+  },
+  "planning_pdf_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+    "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+    "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "992ce2f1bfcaf44ab2c2278aaae811e2685181c87d62d2693baebc804e911ef4",
+    "a05ebb93f92933aced9f06da73f8f238f35b93f2de6ba69c343a424acf52a1e1",
+    "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+    "d614831dd135720465569ffb28277a94cad3369e443c37cb08e004b8a39436ed",
+    "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c",
+    "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89"
+  ],
+  "native_extraction": {
+    "version": "drawing-geometry-v2",
+    "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 13,
+    "run_pages": 13,
+    "resumed_pages": 0,
+    "candidates": 25555,
+    "candidate_types": {
+      "polygon": 2447,
+      "line": 23108
+    },
+    "curved_candidates": 4638,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 10,
+      "partial_candidate_budget": 2,
+      "path_budget_withheld": 1
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "8f066e3e63574f309f98d86760a4409290821dac0dd1f52b04fe6484094aef1e",
+      "polygon": "5f5f37c5f2e6be78d07eb6365a55e06fb093f2d2c9d5761d91f7bc8539f06552",
+      "line": "82da909d758b3c7d3b632e1f85d5f578943c26ca9447e0df79bc35239ca1f74d"
+    },
+    "world_geometry_additions": 0
+  },
+  "resume": {
+    "run_pages": 0,
+    "resumed_pages": 13,
+    "candidate_hashes_unchanged": true
+  },
+  "area_status": "awaiting_reconstruction",
+  "world_geometry_additions": 0,
+  "other_areas": "14 pending; no advancement past unresolved Wicker reconstruction",
+  "verification": {
+    "focused_tests": {
+      "count": 7,
+      "status": "passed"
+    },
+    "native_two_area_recipe_test": "Real PDF source corpus, metre-registered features, terrain-pinned compile and native chunk export. Second area retains first area paving on cold readback. Synthetic fixture; not resort fidelity evidence.",
+    "gates": [
+      "exact application selection",
+      "catalogue/config/recipe hash pinning",
+      "reject retained review-draft replay",
+      "planning PDF binding per generated feature",
+      "area boundary coverage",
+      "no-op detection",
+      "required component identities before completion"
+    ],
+    "full_suite": {
+      "count": 809,
+      "status": "passed",
+      "elapsed_seconds": 89.317
+    }
+  },
+  "remaining": [
+    "27 selected document URLs lack retained native PDFs",
+    "candidate budgets partially withhold three sheets",
+    "semantic component identity and existing/proposed state review",
+    "physical registration and source-bound recipes for remaining Wicker components",
+    "ten areas lack explicit application associations in seed",
+    "area-controller Actions dispatch is not integrated"
+  ]
+}

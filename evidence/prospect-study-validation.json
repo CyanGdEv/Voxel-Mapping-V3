@@ -1,0 +1,104 @@
+{
+  "local_tests_passed": 395,
+  "floor_member_profiles": 63,
+  "models": [
+    {
+      "model_blocks_per_source_metre": 1,
+      "tower_cells": 280,
+      "components": 328,
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 1,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "spawn": [
+          0,
+          67,
+          12
+        ],
+        "chunks": 6,
+        "composed_blocks": 5366,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "bbccc253c5e3aa0c55ccde8f129598568476c5e29dafe9e56765c71ce3c42b01",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      },
+      "native_level_name": "Prospect Tower STUDY 1:1 \u2014 draft 1:1",
+      "geographic_placement": "withheld"
+    },
+    {
+      "model_blocks_per_source_metre": 4,
+      "tower_cells": 5293,
+      "components": 328,
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 4,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 4",
+        "spawn": [
+          0,
+          67,
+          12
+        ],
+        "chunks": 6,
+        "composed_blocks": 10056,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "2a2b0bf9d008beff0e01548cbd77853199609835a9844310493f3cc98ab6d54e",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      },
+      "native_level_name": "Prospect Tower STUDY 4:1 \u2014 draft 4:1",
+      "geographic_placement": "withheld"
+    }
+  ],
+  "park_world_blocks_added": 0,
+  "source_extraction_reproduced": true
+}

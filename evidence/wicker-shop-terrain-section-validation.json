@@ -1,0 +1,191 @@
+{
+  "status": "provisional_terrain_section_review",
+  "voxel_size_m": 1,
+  "model_blocks_per_source_metre": 1,
+  "crs": "EPSG:27700",
+  "vertical_datum": "ODN",
+  "sources": [
+    {
+      "id": "ea-dtm",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "vertical_datum": "ODN",
+      "license": "OGL-UK-3.0",
+      "survey": {
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "survey_end": "20220105",
+        "archive_files": {
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dtm": 1.0,
+          "dsm": 0.9909726817279516
+        },
+        "terrain_coverage_threshold": 0.99,
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+      },
+      "archive_sha256": "40cccc92dc8dc23fdea2d15ee90b08614cbdf65ec1182b8081e7f3216041cbe0",
+      "original_raster_sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    {
+      "id": "ea-dsm",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "vertical_datum": "ODN",
+      "license": "OGL-UK-3.0",
+      "survey": {
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "survey_end": "20220105",
+        "archive_files": {
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dtm": 1.0,
+          "dsm": 0.9909726817279516
+        },
+        "terrain_coverage_threshold": 0.99,
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+      },
+      "archive_sha256": "dd801fd32331e92150406469ce3d26cd3e0741e79d497e7067adf1fcd2607b07",
+      "original_raster_sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af"
+    }
+  ],
+  "bounds_bng_m": [
+    407461,
+    343478,
+    407603,
+    343627
+  ],
+  "terrain_columns": 21158,
+  "shop_cells": 657,
+  "shop_hypothesis": {
+    "rotation_degrees": -154.75564001904897,
+    "context_preferred": true,
+    "rear_to_station_angle_degrees": 16.71850177157773,
+    "anchor_bng_m": [
+      407562.9700688051,
+      343583.93836621655
+    ],
+    "mapped_centroid_to_fitted_origin_m": 1.0233231259867244,
+    "anchor_snap_offset_m": [
+      0.02993119490565732,
+      0.06163378345081583
+    ],
+    "floor_self_fit_odn_m": 182.64722166686568,
+    "floor_snap_offset_m": 0.3527783331343244,
+    "proposed_floor_label_m": 182.5,
+    "floor_label_datum_verified": false,
+    "voxel_cells": 657,
+    "materials": {
+      "dark_oak_fence": 20,
+      "dark_oak_planks": 170,
+      "dark_oak_slab": 120,
+      "dark_oak_slab_top": 92,
+      "spruce_planks": 238,
+      "spruce_trapdoor_east": 3,
+      "spruce_trapdoor_north": 6,
+      "spruce_trapdoor_south": 5,
+      "spruce_trapdoor_west": 3
+    },
+    "hypothetical_native_chunks": 4,
+    "terrain_clearance": {
+      "sampled_columns": 263,
+      "missing_columns": 0,
+      "intersecting_columns": 1,
+      "terrain_range_m": [
+        180.3209991455078,
+        183.36099243164062
+      ],
+      "terrain_clearance_passed": false
+    },
+    "boundary_review_flags": [
+      "independent_physical_checkpoints_missing",
+      "roof_to_wall_offset_unmeasured",
+      "ambiguous_boundary_orientation",
+      "poor_boundary_agreement"
+    ],
+    "placement_eligible": false
+  },
+  "provisional_floor_m": 184.0,
+  "floor_shift_from_self_fit_m": 1.3527783331343244,
+  "provisional_floor_clearance": {
+    "sampled_columns": 263,
+    "missing_columns": 0,
+    "intersecting_columns": 0,
+    "terrain_range_m": [
+      180.3209991455078,
+      183.36099243164062
+    ],
+    "terrain_clearance_passed": true
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "production_placement_eligible": false,
+  "spawn_local_xyz_m": [
+    407545,
+    187,
+    343566
+  ],
+  "axis": {
+    "x": "BNG east",
+    "z": "BNG north; native Z negated"
+  },
+  "limitations": [
+    "Provisional shop origin/orientation; no accepted independent registration.",
+    "Review floor explicitly chosen for clearance; not a measured ODN floor.",
+    "Terrain is the 2022-01-05 survey, not current ground.",
+    "Grass material and exported subsurface foundation fill are illustrative.",
+    "No paths, ride, station, lakes, internal floor or building foundations reconstructed.",
+    "No terrain excavation, accepted placement, or full-park insertion performed."
+  ],
+  "world": {
+    "format": "Bedrock .mcworld",
+    "file": "park.mcworld",
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "blocks_per_metre": 1,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "vertical_offset_blocks": -111,
+    "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+    "study_source_height_m": null,
+    "spawn": [
+      407545,
+      76,
+      -343566
+    ],
+    "chunks": 100,
+    "composed_blocks": 214063,
+    "explicit_air_cells": 0,
+    "ground_fill_depth_blocks": 4,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "foundation": {
+      "minecraft_y": 60,
+      "mode": "shared",
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+    },
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "sha256": "febead8b39f22ac5e121484f662bb80c92b3a4f701698d17e523e88fa400314a",
+    "quality": "draft_unverified",
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ]
+  },
+  "validation": {
+    "provisional_floor_183_rejected": true,
+    "terrain_cells_recovered": 21158,
+    "provisional_floor_184_export_passed": true,
+    "native_saved_world_check": "all written blocks and unwritten air cells verified",
+    "production_registration_gates_modified": false
+  }
+}

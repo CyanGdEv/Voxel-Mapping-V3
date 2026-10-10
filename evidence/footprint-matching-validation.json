@@ -1,0 +1,202 @@
+{
+  "corpus_matching": {
+    "status": "review_queues_only",
+    "version": "footprint-matching-v1",
+    "counts": {
+      "native_candidates": 4193,
+      "native_with_shortlist": 970,
+      "native_with_name_match": 3
+    },
+    "reference_polygons": 92,
+    "rejected_nonpolygon_or_invalid_references": 52,
+    "reference_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+    "target_crs": "EPSG:27700",
+    "reference_crs": "EPSG:4326",
+    "native_names_enabled": true,
+    "max_records": 2500000,
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Unplaced shape descriptors cannot establish location, absolute size or identity",
+      "Mapped references are comparison evidence, not independent survey verification",
+      "No automatic latest-revision, existing-state, reuse or material acceptance"
+    ],
+    "candidate_sha256": "ed90b1512fc0ccb94b9c4e8cb90d058b04c0a9582948bedb8e8a384e02b25ec2",
+    "associations.jsonl_sha256": "9ce255e76bce802d00c6d6b61462f003838ba32534c862d708d954cd2d5fa555",
+    "revision-review.jsonl_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "name_shape_disagreement_examples": [
+    {
+      "candidate_id": "7d972c8b5d1ad989ff96293b60cd5b215767a82db8b126c74c6becd28cc098e7",
+      "document_sha256": "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796358238371997,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        },
+        {
+          "reference_id": "osm/way/70689491",
+          "name": "Lake View",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.008206695946765707,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        },
+        {
+          "reference_id": "osm/way/123951486",
+          "name": "Tormented Treats",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.015278781362282667,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "54457a13217ca53bb027671c7cba2d8f086f209f8803349dbadecf428a1ee99e",
+      "document_sha256": "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796339397785301,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        },
+        {
+          "reference_id": "osm/way/70689491",
+          "name": "Lake View",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.00820511030987836,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        },
+        {
+          "reference_id": "osm/way/123951486",
+          "name": "Tormented Treats",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.01527719572539532,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "3801772956ab63a50c5d7a33878cd61aa8f142f0036b4e79651adbdedb117307",
+      "document_sha256": "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796339397785301,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        },
+        {
+          "reference_id": "osm/way/70689491",
+          "name": "Lake View",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.00820511030987836,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        },
+        {
+          "reference_id": "osm/way/123951486",
+          "name": "Tormented Treats",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.01527719572539532,
+            "exact_interior_name": false,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": []
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  ],
+  "validation": {
+    "focused_tests": 67,
+    "focused_passed": 67,
+    "full_tests": 498,
+    "full_passed": 494,
+    "baseline_failures": 3,
+    "baseline_errors": 1,
+    "baseline_issues": [
+      "test_drawing_checks.ExternalCheckTests.test_displacement_uncertainty_provenance_and_coverage",
+      "test_drawing_controls.CoordinateLabelTests.test_native_coordinate_pairs_fit_without_mutation_or_accuracy_claim",
+      "test_drawing_grid.GridTests.test_actual_intersections_and_content_transform",
+      "test_drawing_marks.MarkTests.test_crosshairs_not_text_origins_drive_candidate_fit"
+    ]
+  },
+  "world_geometry_additions": 0,
+  "limitations": [
+    "No recovered Alton polygon has independently accepted placement",
+    "Revision reconciliation validated on fixtures; no registered Alton inputs yet",
+    "Matching throughput at 2.5 million records is not benchmarked"
+  ]
+}

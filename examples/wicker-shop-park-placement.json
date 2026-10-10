@@ -1,0 +1,11 @@
+{
+  "id": "wicker-shop-detailed-1to1",
+  "geometry_source": "wicker-shop-placement",
+  "profile_source": "wicker-shop-local-profile",
+  "elevation_source": "wicker-shop-floor-datum",
+  "anchor_xy": [407562.21375207696, 343583.2490366677],
+  "base_elevation_m": null,
+  "floor_status": "estimated",
+  "assembly_identity_verified": false,
+  "notes": "Template only. Anchor is the retained mapped centroid, not accepted registration. Supply a checked local-origin similarity and explicit ODN floor before enabling this entry."
+}

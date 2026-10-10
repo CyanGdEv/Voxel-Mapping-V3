@@ -1,0 +1,457 @@
+{
+  "status": "plane_pair_correspondence_candidates_only",
+  "primary_tolerance_metres": 0.12,
+  "input_sha256": {
+    "planes": "8a03d6045703dfd0b0a2b3d3022eaf74bc858453365ffc6a03926b2c57335a48",
+    "site": "f79db22b761d23feeff4f306cfbb7c07c4861d45515e4a6fcc64da162ee97cc3"
+  },
+  "ridge_pairs": [
+    {
+      "patch_ids": [
+        "4cde32be0d04099ea590c376cf2bdcec44b15d7fa9a581bcc9a65d7cdbcfebd6",
+        "7d66e1e6f1e659f986e4ff997a4006fd41c094c70be3614b923cbaebf7950c8e"
+      ],
+      "points": 706,
+      "support_envelope": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              407598.34,
+              343585.4
+            ],
+            [
+              407597.13,
+              343585.71
+            ],
+            [
+              407582.51,
+              343591.62
+            ],
+            [
+              407580.12,
+              343592.7
+            ],
+            [
+              407579.4,
+              343593.3
+            ],
+            [
+              407578.99,
+              343593.69
+            ],
+            [
+              407579.06,
+              343594.42
+            ],
+            [
+              407582.13,
+              343602.76
+            ],
+            [
+              407583.5,
+              343605.72000000003
+            ],
+            [
+              407591.79000000004,
+              343602.68
+            ],
+            [
+              407599.38,
+              343599.71
+            ],
+            [
+              407605.31,
+              343597.36
+            ],
+            [
+              407608.85000000003,
+              343595.66000000003
+            ],
+            [
+              407608.79000000004,
+              343594.27
+            ],
+            [
+              407608.27,
+              343593.10000000003
+            ],
+            [
+              407600.35000000003,
+              343585.7
+            ],
+            [
+              407598.34,
+              343585.4
+            ]
+          ]
+        ]
+      },
+      "candidate_ridge_xyz_odn_m": [
+        [
+          407581.041030907,
+          343599.3171128487,
+          190.2257612850406
+        ],
+        [
+          407603.2222427884,
+          343590.9882917343,
+          190.2261602727599
+        ]
+      ],
+      "candidate_ridge_height_range_odn_m": [
+        190.2257612850406,
+        190.2261602727599
+      ],
+      "convex_pair_envelope_is_not_surveyed_eave": true
+    },
+    {
+      "patch_ids": [
+        "28961900f99322f683f2260d2b53b4bc824bfa160f42d4f2875845b5d44ed88c",
+        "36c3a0d9ba2710f7d5d122e767907185c3ad5b911cc1bfe49e5b81e0ded848ac"
+      ],
+      "points": 309,
+      "support_envelope": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              407598.38,
+              343576.42
+            ],
+            [
+              407592.45,
+              343578.21
+            ],
+            [
+              407580.61,
+              343582.88
+            ],
+            [
+              407584.04000000004,
+              343589.36
+            ],
+            [
+              407584.81,
+              343590.01
+            ],
+            [
+              407586.47000000003,
+              343590.14
+            ],
+            [
+              407601.93,
+              343584.98
+            ],
+            [
+              407599.92,
+              343579.29
+            ],
+            [
+              407598.9,
+              343576.93
+            ],
+            [
+              407598.38,
+              343576.42
+            ]
+          ]
+        ]
+      },
+      "candidate_ridge_xyz_odn_m": [
+        [
+          407600.8171559741,
+          343580.87673434574,
+          188.53992876071626
+        ],
+        [
+          407583.19285328913,
+          343587.4335854375,
+          188.55190774577292
+        ]
+      ],
+      "candidate_ridge_height_range_odn_m": [
+        188.53992876071626,
+        188.55190774577292
+      ],
+      "convex_pair_envelope_is_not_surveyed_eave": true
+    },
+    {
+      "patch_ids": [
+        "5aa87ae0e69db0fec1ef67c4b71e85d807b4ebc3fa894004a0ee01ee6a35c957",
+        "2f361f1af46d64f7bbc590a9eb90b2f0dfecc562c87eae4c47f9b92e3d057530"
+      ],
+      "points": 116,
+      "support_envelope": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              407582.46,
+              343574.06
+            ],
+            [
+              407581.68,
+              343574.09
+            ],
+            [
+              407580.46,
+              343574.15
+            ],
+            [
+              407575.72000000003,
+              343575.85000000003
+            ],
+            [
+              407575.33,
+              343576.74
+            ],
+            [
+              407575.4,
+              343577.48
+            ],
+            [
+              407576.04000000004,
+              343579.11
+            ],
+            [
+              407577.41000000003,
+              343581.67
+            ],
+            [
+              407578.65,
+              343583.38
+            ],
+            [
+              407579.85000000003,
+              343582.94
+            ],
+            [
+              407581.04000000004,
+              343582.43
+            ],
+            [
+              407585.34,
+              343580.55
+            ],
+            [
+              407585.76,
+              343580.32
+            ],
+            [
+              407582.46,
+              343574.06
+            ]
+          ]
+        ]
+      },
+      "candidate_ridge_xyz_odn_m": [
+        [
+          407576.73289472697,
+          343579.8453474482,
+          188.42129719409837
+        ],
+        [
+          407583.48986025015,
+          343577.2593790171,
+          188.39490905137993
+        ]
+      ],
+      "candidate_ridge_height_range_odn_m": [
+        188.39490905137993,
+        188.42129719409837
+      ],
+      "convex_pair_envelope_is_not_surveyed_eave": true
+    }
+  ],
+  "building_comparisons": [
+    {
+      "planning_label": "station",
+      "ranked_native_pair_comparisons": [
+        {
+          "pair_index": 1,
+          "frozen_outline_iou": 0.8976644697120302,
+          "boundary_hausdorff_metres": 1.3034219380794965
+        },
+        {
+          "pair_index": 0,
+          "frozen_outline_iou": 0.02477336618483866,
+          "boundary_hausdorff_metres": 14.489810552382853
+        },
+        {
+          "pair_index": 2,
+          "frozen_outline_iou": 0.0,
+          "boundary_hausdorff_metres": 16.486652884978525
+        }
+      ],
+      "physical_identity_verified": false
+    },
+    {
+      "planning_label": "maintenance",
+      "ranked_native_pair_comparisons": [
+        {
+          "pair_index": 0,
+          "frozen_outline_iou": 0.7393649738492017,
+          "boundary_hausdorff_metres": 5.715045549234581
+        },
+        {
+          "pair_index": 1,
+          "frozen_outline_iou": 0.0,
+          "boundary_hausdorff_metres": 14.881221080537136
+        },
+        {
+          "pair_index": 2,
+          "frozen_outline_iou": 0.0,
+          "boundary_hausdorff_metres": 24.869549912411365
+        }
+      ],
+      "physical_identity_verified": false
+    }
+  ],
+  "patch_stability": [
+    {
+      "primary_patch_id": "4cde32be0d04099ea590c376cf2bdcec44b15d7fa9a581bcc9a65d7cdbcfebd6",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.967741935483871,
+          "matched_patch_id": "8e5c8fce770fddd80c6da6a89a0db8c83d9bd5b2a8ce52bfb565e0f4cab7d214",
+          "support_boundary_difference_metres": 0.34125565111484807,
+          "slope_difference_degrees": 0.023247982693522573
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.9827160493827161,
+          "matched_patch_id": "d401e74ff26294041bb9ed3fb3cd136e0048611aecc73bdf921294636285e835",
+          "support_boundary_difference_metres": 0.1710732825209929,
+          "slope_difference_degrees": 0.004459734212861832
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "7d66e1e6f1e659f986e4ff997a4006fd41c094c70be3614b923cbaebf7950c8e",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.9492063492063492,
+          "matched_patch_id": "6b40fc44fb57a08ef896dd275d5929731aebc7bacf18d590f9206ee2abcd172f",
+          "support_boundary_difference_metres": 0.4143837906832909,
+          "slope_difference_degrees": 0.004836585609041322
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.9383116883116883,
+          "matched_patch_id": "b757366551fcc3865c7e32af9d5eb33876194b395cbeade4af2504cabf21d26e",
+          "support_boundary_difference_metres": 1.1632880487378023,
+          "slope_difference_degrees": 0.0489037131810619
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "28961900f99322f683f2260d2b53b4bc824bfa160f42d4f2875845b5d44ed88c",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.8956043956043956,
+          "matched_patch_id": "3e33628cb7e61975ad39927dbe4e25b406a228bb00eac02d5bc694ab942a96eb",
+          "support_boundary_difference_metres": 1.389280389306617,
+          "slope_difference_degrees": 0.10545622984018266
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.827027027027027,
+          "matched_patch_id": "1ee6fb5b8e388fc9a3bd1c463def3799f5f24f858879cc5845a0d52020cfc9c6",
+          "support_boundary_difference_metres": 1.389280389306617,
+          "slope_difference_degrees": 0.4805912968843451
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "36c3a0d9ba2710f7d5d122e767907185c3ad5b911cc1bfe49e5b81e0ded848ac",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.9714285714285714,
+          "matched_patch_id": "f2d7c7f9f2ecb218903974cfe891f7e8913b766f4648741c999fafdf282605c3",
+          "support_boundary_difference_metres": 0.0,
+          "slope_difference_degrees": 0.07967514765607575
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.8156028368794326,
+          "matched_patch_id": "188ae939755d927d6936b2f4074708a3676e330801723b2c6ff19c58b6def79f",
+          "support_boundary_difference_metres": 0.6717886572098812,
+          "slope_difference_degrees": 0.21076321501659123
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "04b070266786783bd13bd544d96afda4026b7b320cafd19ddcd2448341d5bcfd",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.967741935483871,
+          "matched_patch_id": "900f73f6fb06c32c2643d6b1e7170f1ee85ed0d00e3633eaeb055d6ff00bbd2a",
+          "support_boundary_difference_metres": 0.7366506515061125,
+          "slope_difference_degrees": 0.13760819673484104
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 1.0,
+          "matched_patch_id": "04b070266786783bd13bd544d96afda4026b7b320cafd19ddcd2448341d5bcfd",
+          "support_boundary_difference_metres": 0.0,
+          "slope_difference_degrees": 0.19261296400771588
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "5aa87ae0e69db0fec1ef67c4b71e85d807b4ebc3fa894004a0ee01ee6a35c957",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.8888888888888888,
+          "matched_patch_id": "dd0b6cb793545e2fe246c801d204cef6e783486b8077aa1b2232bf909da0920c",
+          "support_boundary_difference_metres": 0.4881403825365125,
+          "slope_difference_degrees": 0.18959648363729542
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.6521739130434783,
+          "matched_patch_id": "70a75474365843e25780029efed4393981dba1c680c022321bb325fe049777c5",
+          "support_boundary_difference_metres": 2.505034929891615,
+          "slope_difference_degrees": 0.0008789102473762966
+        }
+      ]
+    },
+    {
+      "primary_patch_id": "2f361f1af46d64f7bbc590a9eb90b2f0dfecc562c87eae4c47f9b92e3d057530",
+      "comparisons": [
+        {
+          "tolerance_metres": 0.08,
+          "membership_jaccard": 0.9655172413793104,
+          "matched_patch_id": "ace1df759b0e6baff9d5f9868a93d83e15a308fc740de887cf0b1f0b372fa26b",
+          "support_boundary_difference_metres": 0.28921130573090814,
+          "slope_difference_degrees": 0.140217099672455
+        },
+        {
+          "tolerance_metres": 0.18,
+          "membership_jaccard": 0.6923076923076923,
+          "matched_patch_id": "aeb5bc32f129daa3e942b6ece58f116db8b8b04657e5f3727addcd2588d480b0",
+          "support_boundary_difference_metres": 0.3530926846746563,
+          "slope_difference_degrees": 0.09246955108573474
+        }
+      ]
+    }
+  ],
+  "physical_edges_verified": false,
+  "native_edge_uncertainty_metres": null,
+  "limitations": [
+    "Plan outlines were not used in plane extraction; subsequent overlap ranking is still a correspondence hypothesis.",
+    "Pair envelopes bridge gaps and do not establish full eave boundaries.",
+    "Tolerance boundary spread is algorithm sensitivity, not a positional accuracy bound.",
+    "All plane and ridge observations use the same survey; independent checkpoints are still missing."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

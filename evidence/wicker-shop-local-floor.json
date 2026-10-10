@@ -1,0 +1,256 @@
+{
+  "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "annotation_sha256": "b0c0d13e2b98d66d7eea5b8ca12991b1bc476ae9730bf9caa147a52e143aa0d7",
+  "roof_review_sha256": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137",
+  "coordinate_frame": "local metres in native PDF axes, origin at first annotated corner; not a park frame",
+  "native_outer_corners": [
+    [
+      782.6686401367188,
+      598.5254516601562
+    ],
+    [
+      998.53369140625,
+      814.4491577148438
+    ],
+    [
+      1285.0914306640625,
+      525.2881469726562
+    ],
+    [
+      1070.48876953125,
+      309.3644104003906
+    ]
+  ],
+  "local_outer_corners": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      7.615239308675125,
+      7.617308519151475
+    ],
+    [
+      17.724359554714628,
+      -2.5836493598090264
+    ],
+    [
+      10.153654564751516,
+      -10.200958955552842
+    ]
+  ],
+  "wall_edge_lengths_metres": [
+    10.771037963182955,
+    14.361540787715366,
+    10.7395986667316,
+    14.392924116842034
+  ],
+  "dimensions_metres": [
+    14.377232452278701,
+    10.755318314957279
+  ],
+  "outer_area_metres_squared": 154.62950220622255,
+  "conservative_sampling_area_upper_metres_squared": 161.01240364817397,
+  "per_endpoint_sampling_bound_metres": 0.1259941790309645,
+  "openings": [
+    {
+      "id": "opening-NE",
+      "edge": 0,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "raw_native_endpoints": [
+        [
+          850.8365478515625,
+          666.7118530273438
+        ],
+        [
+          941.7271118164062,
+          757.6271362304688
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          2.4048117899909425,
+          2.4054652247088546
+        ],
+        [
+          5.611229304201884,
+          5.612753985697871
+        ]
+      ],
+      "wall_projection_residual_metres": 7.210793811243383e-07,
+      "width_metres": 4.535175241576133,
+      "sampling_interval_metres": [
+        4.283186883514204,
+        4.787163599638062
+      ],
+      "height_metres": null,
+      "as_built_verified": false
+    },
+    {
+      "id": "opening-SW",
+      "edge": 2,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "raw_native_endpoints": [
+        [
+          1223.2353515625,
+          463.4152526855469
+        ],
+        [
+          1132.3448486328125,
+          371.2373046875
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          15.54863436795571,
+          -4.772768122826758
+        ],
+        [
+          12.32937975151043,
+          -8.011840192535114
+        ]
+      ],
+      "wall_projection_residual_metres": 0.009051273784171757,
+      "width_metres": 4.566748094461639,
+      "sampling_interval_metres": [
+        4.31475973639971,
+        4.818736452523568
+      ],
+      "height_metres": null,
+      "as_built_verified": false
+    },
+    {
+      "id": "door-NW",
+      "edge": 3,
+      "drawing_role": "small opening with drawn door swing",
+      "raw_native_endpoints": [
+        [
+          812.9655151367188,
+          568.2203369140625
+        ],
+        [
+          796.5546875,
+          584.6356201171875
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          1.0664620825378979,
+          -1.071430573321729
+        ],
+        [
+          0.48879453967944286,
+          -0.4910717619129841
+        ]
+      ],
+      "wall_projection_residual_metres": 0.003307720707216963,
+      "width_metres": 0.8188504992072079,
+      "sampling_interval_metres": [
+        0.5668621411452789,
+        1.0708388572691367
+      ],
+      "height_metres": null,
+      "as_built_verified": false
+    }
+  ],
+  "wall_segments": [
+    {
+      "edge": 0,
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        2.4048117899909425,
+        2.4054652247088546
+      ]
+    },
+    {
+      "edge": 0,
+      "start": [
+        5.611229304201884,
+        5.612753985697871
+      ],
+      "end": [
+        7.615239308675125,
+        7.617308519151475
+      ]
+    },
+    {
+      "edge": 1,
+      "start": [
+        7.615239308675125,
+        7.617308519151475
+      ],
+      "end": [
+        17.724359554714628,
+        -2.5836493598090264
+      ]
+    },
+    {
+      "edge": 2,
+      "start": [
+        17.724359554714628,
+        -2.5836493598090264
+      ],
+      "end": [
+        15.54863436795571,
+        -4.772768122826758
+      ]
+    },
+    {
+      "edge": 2,
+      "start": [
+        12.32937975151043,
+        -8.011840192535114
+      ],
+      "end": [
+        10.153654564751516,
+        -10.200958955552842
+      ]
+    },
+    {
+      "edge": 3,
+      "start": [
+        10.153654564751516,
+        -10.200958955552842
+      ],
+      "end": [
+        1.0664620825378979,
+        -1.071430573321729
+      ]
+    },
+    {
+      "edge": 3,
+      "start": [
+        0.48879453967944286,
+        -0.4910717619129841
+      ],
+      "end": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "roof_fit_review": {
+    "elevation_wall_dimensions_metres": [
+      15.902803901334602,
+      11.804602335724564
+    ],
+    "floor_minus_elevation_metres": [
+      -1.5255714490559011,
+      -1.0492840207672849
+    ],
+    "dimension_conflict": true,
+    "forced_scale_applied": false
+  },
+  "internal_area_review": {
+    "native_label_metres_squared": 170,
+    "apparent_outer_area_below_label_even_with_sampling_bound": true
+  },
+  "status": "proposed_source_trace_cross_sheet_conflict",
+  "physical_accuracy_verified": false,
+  "wall_height_metres": null,
+  "world_placement_eligible": false,
+  "world_geometry_additions": 0
+}

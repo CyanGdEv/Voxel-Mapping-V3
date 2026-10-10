@@ -1,0 +1,2167 @@
+{
+  "service": "https://services-eu1.arcgis.com/ZOdPfBS3aqqDYPUQ/arcgis/rest/services/National_Heritage_List_for_England_NHLE_v02_VIEW/FeatureServer",
+  "crs": "EPSG:27700",
+  "query_bounds": [
+    406000,
+    342000,
+    409000,
+    345000
+  ],
+  "retrieved_date": "2026-10-09",
+  "layers": {
+    "0": {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "",
+      "geometryType": "esriGeometryMultipoint",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ListEntry",
+          "type": "esriFieldTypeInteger",
+          "alias": "List Entry Number",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Unique reference number from the National Heritage List for England\",\"fieldValueType\":\"uniqueIdentifier\"}"
+        },
+        {
+          "name": "Name",
+          "type": "esriFieldTypeString",
+          "alias": "List Entry Name",
+          "sqlType": "sqlTypeOther",
+          "length": 1000,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Name of building\",\"fieldValueType\":\"nameOrTitle\"}"
+        },
+        {
+          "name": "Grade",
+          "type": "esriFieldTypeString",
+          "alias": "Grade",
+          "sqlType": "sqlTypeOther",
+          "length": 100,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Grade of building; in descending order of importance: I, II*,II\",\"fieldValueType\":\"typeOrCategory\"}"
+        },
+        {
+          "name": "ListDate",
+          "type": "esriFieldTypeDate",
+          "alias": "Listing date",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Date on which the building was added to the Statutory List of Buildings\",\"fieldValueType\":\"\"}"
+        },
+        {
+          "name": "AmendDate",
+          "type": "esriFieldTypeDate",
+          "alias": "Date of most recent amendment",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Date on which the listing was last amended\",\"fieldValueType\":\"dateAndTime\"}"
+        },
+        {
+          "name": "CaptureScale",
+          "type": "esriFieldTypeString",
+          "alias": "Capture scale",
+          "sqlType": "sqlTypeOther",
+          "length": 15,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Scale at which the spatial representation of that listed building was captured\",\"fieldValueType\":\"percentageOrRatio\"}"
+        },
+        {
+          "name": "hyperlink",
+          "type": "esriFieldTypeString",
+          "alias": "NHLE link",
+          "sqlType": "sqlTypeOther",
+          "length": 255,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"URL of the record on the Historic England website\",\"fieldValueType\":\"description\"}"
+        },
+        {
+          "name": "NGR",
+          "type": "esriFieldTypeString",
+          "alias": "National Grid Reference",
+          "sqlType": "sqlTypeOther",
+          "length": 2147483647,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Ordnance Survey national grid reference of centroid\",\"fieldValueType\":\"coordinate\"}"
+        },
+        {
+          "name": "Easting",
+          "type": "esriFieldTypeDouble",
+          "alias": "Easting",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Centroid easting\",\"fieldValueType\":\"coordinate\"}"
+        },
+        {
+          "name": "Northing",
+          "type": "esriFieldTypeDouble",
+          "alias": "Northing",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Centroid northing\",\"fieldValueType\":\"coordinate\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "OBJECTID": 16312,
+            "ListEntry": 1037866,
+            "Name": "THE BIRDCAGE",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037866",
+            "NGR": "SK 07328 43150",
+            "Easting": 407328,
+            "Northing": 343150
+          },
+          "geometry": {
+            "points": [
+              [
+                407327.999999999,
+                343150
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16313,
+            "ListEntry": 1037867,
+            "Name": "THE FLAG TOWER",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037867",
+            "NGR": "SK 06984 43068",
+            "Easting": 406984,
+            "Northing": 343068
+          },
+          "geometry": {
+            "points": [
+              [
+                406984.000000002,
+                343068.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16314,
+            "ListEntry": 1037868,
+            "Name": "THE SWISS COTTAGE",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037868",
+            "NGR": "SK 07506 43182",
+            "Easting": 407506,
+            "Northing": 343182
+          },
+          "geometry": {
+            "points": [
+              [
+                407506.000000001,
+                343182.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16315,
+            "ListEntry": 1037869,
+            "Name": "RETAINING WALL, PIERS AND WELL APPROXIMATELY 20 YARDS NORTH OF SWISS COTTAGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037869",
+            "NGR": "SK 07513 43202",
+            "Easting": 407513,
+            "Northing": 343202
+          },
+          "geometry": {
+            "points": [
+              [
+                407513,
+                343202
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16316,
+            "ListEntry": 1037870,
+            "Name": "White Bridge and attached wall and gate piers",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037870",
+            "NGR": "SK 07365 43298",
+            "Easting": 407365,
+            "Northing": 343298
+          },
+          "geometry": {
+            "points": [
+              [
+                407365.000000001,
+                343298
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16317,
+            "ListEntry": 1037871,
+            "Name": "Wall and basin enclosing the Italian Garden to the north west ",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037871",
+            "NGR": "SK 07395 43327",
+            "Easting": 407395,
+            "Northing": 343327
+          },
+          "geometry": {
+            "points": [
+              [
+                407395.000000001,
+                343327
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16318,
+            "ListEntry": 1037872,
+            "Name": "RETAINING WALL OF DAM TO SOUTH EAST SIDE OF THE BOATING LAKE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037872",
+            "NGR": "SK 07407 43388",
+            "Easting": 407407,
+            "Northing": 343388
+          },
+          "geometry": {
+            "points": [
+              [
+                407407,
+                343388.000000007
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16319,
+            "ListEntry": 1037873,
+            "Name": "GATEPIERS AND GATES AT NGR SK 07424335",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037873",
+            "NGR": "SK 07420 43350",
+            "Easting": 407420,
+            "Northing": 343350
+          },
+          "geometry": {
+            "points": [
+              [
+                407420,
+                343350
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16320,
+            "ListEntry": 1037874,
+            "Name": "STONEHENGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037874",
+            "NGR": "SK 07484 43411",
+            "Easting": 407484,
+            "Northing": 343411
+          },
+          "geometry": {
+            "points": [
+              [
+                407484,
+                343411.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16321,
+            "ListEntry": 1037875,
+            "Name": "Fountain, terrace walls, steps, lions, urns and sundial approximately 27 metres south of The Orangery",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037875",
+            "NGR": "SK 07490 43365",
+            "Easting": 407490,
+            "Northing": 343365
+          },
+          "geometry": {
+            "points": [
+              [
+                407490.000000001,
+                343365.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16322,
+            "ListEntry": 1037876,
+            "Name": "Retaining wall to terrace south of The Loggia and attached steps and piers",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037876",
+            "NGR": "SK 07585 43312",
+            "Easting": 407585,
+            "Northing": 343312
+          },
+          "geometry": {
+            "points": [
+              [
+                407585.000000001,
+                343312.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16323,
+            "ListEntry": 1037877,
+            "Name": "Summerhouse, and retaining wall and urns to terrace south of the conservatory",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037877",
+            "NGR": "SK 07471 43338",
+            "Easting": 407471,
+            "Northing": 343338
+          },
+          "geometry": {
+            "points": [
+              [
+                407471,
+                343338.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16324,
+            "ListEntry": 1037878,
+            "Name": "MINIATURE BRIDGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037878",
+            "NGR": "SK 07507 43288",
+            "Easting": 407507,
+            "Northing": 343288
+          },
+          "geometry": {
+            "points": [
+              [
+                407507.000000001,
+                343288
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16330,
+            "ListEntry": 1037884,
+            "Name": "GATE PIERS, GATES AND RAILINGS FORMING PRINCIPAL ENTRANCE TO ALTON PARK",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037884",
+            "NGR": "SK 07078 43605",
+            "Easting": 407078,
+            "Northing": 343605
+          },
+          "geometry": {
+            "points": [
+              [
+                407078.000000001,
+                343605.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16351,
+            "ListEntry": 1037906,
+            "Name": "GARDEN WALL EAST OF ALTON TOWERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037906",
+            "NGR": "SK 07370 43141",
+            "Easting": 407370,
+            "Northing": 343141
+          },
+          "geometry": {
+            "points": [
+              [
+                407370.000000001,
+                343141.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169080,
+            "ListEntry": 1191842,
+            "Name": "POOL AND FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE ORANGERY",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191842",
+            "NGR": "SK 07480 43378",
+            "Easting": 407480,
+            "Northing": 343378
+          },
+          "geometry": {
+            "points": [
+              [
+                407480,
+                343378.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169115,
+            "ListEntry": 1191877,
+            "Name": "THE LOGGIA AND ATTACHED TERRACE WALL AND STEPS",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191877",
+            "NGR": "SK 07521 43326",
+            "Easting": 407521,
+            "Northing": 343326
+          },
+          "geometry": {
+            "points": [
+              [
+                407521.000000002,
+                343326.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169157,
+            "ListEntry": 1191919,
+            "Name": "LE REFUGE AND ATTACHED RETAINING WALL, ARCHWAY AND STEPS TO TERRACE IMMEDIATELY EAST OF THE LOGGIA",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191919",
+            "NGR": "SK 07643 43323",
+            "Easting": 407643,
+            "Northing": 343323
+          },
+          "geometry": {
+            "points": [
+              [
+                407643,
+                343323.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169207,
+            "ListEntry": 1191969,
+            "Name": "THE CONSERVATORY AND ATTACHED WALL, STEPS AND URNS",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191969",
+            "NGR": "SK 07519 43356",
+            "Easting": 407519,
+            "Northing": 343356
+          },
+          "geometry": {
+            "points": [
+              [
+                407519.000000001,
+                343356
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169253,
+            "ListEntry": 1192015,
+            "Name": "THE PROSPECT TOWER AND WALL AND RAILINGS TO THE SOUTH",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192015",
+            "NGR": "SK 07743 43326",
+            "Easting": 407743,
+            "Northing": 343326
+          },
+          "geometry": {
+            "points": [
+              [
+                407743.000000001,
+                343326.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169291,
+            "ListEntry": 1192054,
+            "Name": "The Pagoda Fountain and bridge pier",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192054",
+            "NGR": "SK 07670 43228",
+            "Easting": 407670,
+            "Northing": 343228
+          },
+          "geometry": {
+            "points": [
+              [
+                407670.000000001,
+                343228
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169445,
+            "ListEntry": 1192210,
+            "Name": "GATES AND GATE PIERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192210",
+            "NGR": "SK 07039 43518",
+            "Easting": 407039,
+            "Northing": 343518
+          },
+          "geometry": {
+            "points": [
+              [
+                407039.000000001,
+                343518.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263378,
+            "ListEntry": 1286814,
+            "Name": "WALLS, GATEPIERS AND STEPS DEFINING THE NORTH AND EAST SIDES OF THE TERRACED GARDENS SOUTH EAST OF THE CONSERVATORY",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286814",
+            "NGR": "SK 07611 43344",
+            "Easting": 407611,
+            "Northing": 343344
+          },
+          "geometry": {
+            "points": [
+              [
+                407611.000000002,
+                343344.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263450,
+            "ListEntry": 1286887,
+            "Name": "Retaining wall approximately 9 metres south west of the stables",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286887",
+            "NGR": "SK 07459 43531",
+            "Easting": 407459,
+            "Northing": 343531
+          },
+          "geometry": {
+            "points": [
+              [
+                407459.000000001,
+                343531.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263518,
+            "ListEntry": 1286956,
+            "Name": "FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE CHAPEL OF ALTON TOWERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286956",
+            "NGR": "SK 07256 43180",
+            "Easting": 407256,
+            "Northing": 343180
+          },
+          "geometry": {
+            "points": [
+              [
+                407256,
+                343180.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350578,
+            "ListEntry": 1374685,
+            "Name": "Alton Towers and attached garden walls and gatehouse",
+            "Grade": "II*",
+            "ListDate": -583545600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374685",
+            "NGR": "SK 07249 43235",
+            "Easting": 407249,
+            "Northing": 343235
+          },
+          "geometry": {
+            "points": [
+              [
+                407249.000000001,
+                343235.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350597,
+            "ListEntry": 1374704,
+            "Name": "Stables at Alton Towers",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374704",
+            "NGR": "SK 07457 43563",
+            "Easting": 407457,
+            "Northing": 343563
+          },
+          "geometry": {
+            "points": [
+              [
+                407457,
+                343563.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350598,
+            "ListEntry": 1374705,
+            "Name": "THE ORANGERY",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374705",
+            "NGR": "SK 07474 43390",
+            "Easting": 407474,
+            "Northing": 343390
+          },
+          "geometry": {
+            "points": [
+              [
+                407473.999999999,
+                343390.000000004
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350599,
+            "ListEntry": 1374706,
+            "Name": "THE ROMAN BATH AND TERRACE WALL TO THE SOUTH",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374706",
+            "NGR": "SK 07633 43311",
+            "Easting": 407633,
+            "Northing": 343311
+          },
+          "geometry": {
+            "points": [
+              [
+                407633,
+                343311
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350600,
+            "ListEntry": 1374707,
+            "Name": "THE CORKSCREW FOUNTAIN",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374707",
+            "NGR": "SK 07692 43352",
+            "Easting": 407692,
+            "Northing": 343352
+          },
+          "geometry": {
+            "points": [
+              [
+                407692.000000001,
+                343352.000000002
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350634,
+            "ListEntry": 1374741,
+            "Name": "MEMORIAL TO THE 15TH EARL OF SHREWSBURY",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374741",
+            "NGR": "SK 07408 43297",
+            "Easting": 407408,
+            "Northing": 343297
+          },
+          "geometry": {
+            "points": [
+              [
+                407408.000000001,
+                343297.000000002
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "3": {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "",
+      "geometryProperties": {
+        "shapeAreaFieldName": "Shape__Area",
+        "shapeLengthFieldName": "Shape__Length",
+        "units": "esriMeters"
+      },
+      "geometryType": "esriGeometryPolygon",
+      "spatialReference": {
+        "wkid": 27700,
+        "latestWkid": 27700
+      },
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ListEntry",
+          "type": "esriFieldTypeInteger",
+          "alias": "List Entry Number",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Unique reference number from the National Heritage List for England\",\"fieldValueType\":\"uniqueIdentifier\"}"
+        },
+        {
+          "name": "Name",
+          "type": "esriFieldTypeString",
+          "alias": "List Entry Name",
+          "sqlType": "sqlTypeOther",
+          "length": 1000,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Name of building\",\"fieldValueType\":\"nameOrTitle\"}"
+        },
+        {
+          "name": "Grade",
+          "type": "esriFieldTypeString",
+          "alias": "Grade",
+          "sqlType": "sqlTypeOther",
+          "length": 100,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Grade of building; in descending order of importance: I, II*,II\",\"fieldValueType\":\"typeOrCategory\"}"
+        },
+        {
+          "name": "ListDate",
+          "type": "esriFieldTypeDate",
+          "alias": "Date first listed",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Date on which the building was added to the Statutory List of Buildings\",\"fieldValueType\":\"dateAndTime\"}"
+        },
+        {
+          "name": "AmendDate",
+          "type": "esriFieldTypeDate",
+          "alias": "Date of most recent amendment",
+          "sqlType": "sqlTypeOther",
+          "length": 8,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Date on which the listing was last amended\",\"fieldValueType\":\"dateAndTime\"}"
+        },
+        {
+          "name": "CaptureScale",
+          "type": "esriFieldTypeString",
+          "alias": "Capture scale",
+          "sqlType": "sqlTypeOther",
+          "length": 15,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Scale at which the spatial representation of that listed building was captured\",\"fieldValueType\":\"percentageOrRatio\"}"
+        },
+        {
+          "name": "hyperlink",
+          "type": "esriFieldTypeString",
+          "alias": "NHLE link",
+          "sqlType": "sqlTypeOther",
+          "length": 255,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"URL of the record on the Historic England website\",\"fieldValueType\":\"description\"}"
+        },
+        {
+          "name": "area_ha",
+          "type": "esriFieldTypeDouble",
+          "alias": "Area (ha)",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Area of the polygon in hectares.\\nOnly populated where building footprint has been mapped\",\"fieldValueType\":\"measurement\"}"
+        },
+        {
+          "name": "NGR",
+          "type": "esriFieldTypeString",
+          "alias": "National Grid Reference",
+          "sqlType": "sqlTypeOther",
+          "length": 2147483647,
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Ordnance Survey national grid reference of centroid\",\"fieldValueType\":\"coordinate\"}"
+        },
+        {
+          "name": "Easting",
+          "type": "esriFieldTypeDouble",
+          "alias": "Easting",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Centroid easting\",\"fieldValueType\":\"coordinate\"}"
+        },
+        {
+          "name": "Northing",
+          "type": "esriFieldTypeDouble",
+          "alias": "Northing",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null,
+          "description": "{\"value\":\"Centroid northing\",\"fieldValueType\":\"coordinate\"}"
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "OBJECTID": 16312,
+            "ListEntry": 1037866,
+            "Name": "THE BIRDCAGE",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037866",
+            "area_ha": null,
+            "NGR": "SK 07328 43150",
+            "Easting": 407328,
+            "Northing": 343150
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407329.25,
+                  343149.278312163
+                ],
+                [
+                  407326.750000002,
+                  343149.278312163
+                ],
+                [
+                  407327.999999999,
+                  343151.443375671
+                ],
+                [
+                  407329.25,
+                  343149.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16313,
+            "ListEntry": 1037867,
+            "Name": "THE FLAG TOWER",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037867",
+            "area_ha": null,
+            "NGR": "SK 06984 43068",
+            "Easting": 406984,
+            "Northing": 343068
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  406985.250000002,
+                  343067.278312165
+                ],
+                [
+                  406982.750000001,
+                  343067.278312165
+                ],
+                [
+                  406984.000000002,
+                  343069.443375675
+                ],
+                [
+                  406985.250000002,
+                  343067.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16314,
+            "ListEntry": 1037868,
+            "Name": "THE SWISS COTTAGE",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037868",
+            "area_ha": null,
+            "NGR": "SK 07506 43182",
+            "Easting": 407506,
+            "Northing": 343182
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407507.250000001,
+                  343181.278312167
+                ],
+                [
+                  407504.75,
+                  343181.278312167
+                ],
+                [
+                  407506.000000001,
+                  343183.443375675
+                ],
+                [
+                  407507.250000001,
+                  343181.278312167
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16315,
+            "ListEntry": 1037869,
+            "Name": "RETAINING WALL, PIERS AND WELL APPROXIMATELY 20 YARDS NORTH OF SWISS COTTAGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037869",
+            "area_ha": null,
+            "NGR": "SK 07513 43202",
+            "Easting": 407513,
+            "Northing": 343202
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407514.25,
+                  343201.278312163
+                ],
+                [
+                  407511.75,
+                  343201.278312163
+                ],
+                [
+                  407513,
+                  343203.443375673
+                ],
+                [
+                  407514.25,
+                  343201.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16316,
+            "ListEntry": 1037870,
+            "Name": "White Bridge and attached wall and gate piers",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037870",
+            "area_ha": null,
+            "NGR": "SK 07365 43298",
+            "Easting": 407365,
+            "Northing": 343298
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407366.250000001,
+                  343297.278312163
+                ],
+                [
+                  407363.750000001,
+                  343297.278312163
+                ],
+                [
+                  407365.000000001,
+                  343299.443375673
+                ],
+                [
+                  407366.250000001,
+                  343297.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16317,
+            "ListEntry": 1037871,
+            "Name": "Wall and basin enclosing the Italian Garden to the north west ",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037871",
+            "area_ha": null,
+            "NGR": "SK 07395 43327",
+            "Easting": 407395,
+            "Northing": 343327
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407396.250000001,
+                  343326.278312163
+                ],
+                [
+                  407393.750000001,
+                  343326.278312163
+                ],
+                [
+                  407395.000000001,
+                  343328.443375673
+                ],
+                [
+                  407396.250000001,
+                  343326.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16318,
+            "ListEntry": 1037872,
+            "Name": "RETAINING WALL OF DAM TO SOUTH EAST SIDE OF THE BOATING LAKE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037872",
+            "area_ha": null,
+            "NGR": "SK 07407 43388",
+            "Easting": 407407,
+            "Northing": 343388
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407408.25,
+                  343387.278312167
+                ],
+                [
+                  407405.75,
+                  343387.278312167
+                ],
+                [
+                  407407,
+                  343389.443375675
+                ],
+                [
+                  407408.25,
+                  343387.278312167
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16319,
+            "ListEntry": 1037873,
+            "Name": "GATEPIERS AND GATES AT NGR SK 07424335",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037873",
+            "area_ha": null,
+            "NGR": "SK 07420 43350",
+            "Easting": 407420,
+            "Northing": 343350
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407421.250000001,
+                  343349.278312163
+                ],
+                [
+                  407418.75,
+                  343349.278312163
+                ],
+                [
+                  407420,
+                  343351.443375673
+                ],
+                [
+                  407421.250000001,
+                  343349.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16320,
+            "ListEntry": 1037874,
+            "Name": "STONEHENGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037874",
+            "area_ha": null,
+            "NGR": "SK 07484 43411",
+            "Easting": 407484,
+            "Northing": 343411
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407485.25,
+                  343410.278312163
+                ],
+                [
+                  407482.75,
+                  343410.278312163
+                ],
+                [
+                  407484,
+                  343412.443375677
+                ],
+                [
+                  407485.25,
+                  343410.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16321,
+            "ListEntry": 1037875,
+            "Name": "Fountain, terrace walls, steps, lions, urns and sundial approximately 27 metres south of The Orangery",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037875",
+            "area_ha": null,
+            "NGR": "SK 07490 43365",
+            "Easting": 407490,
+            "Northing": 343365
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407491.250000001,
+                  343364.278312165
+                ],
+                [
+                  407488.750000001,
+                  343364.278312165
+                ],
+                [
+                  407490.000000001,
+                  343366.443375675
+                ],
+                [
+                  407491.250000001,
+                  343364.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16322,
+            "ListEntry": 1037876,
+            "Name": "Retaining wall to terrace south of The Loggia and attached steps and piers",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037876",
+            "area_ha": null,
+            "NGR": "SK 07585 43312",
+            "Easting": 407585,
+            "Northing": 343312
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407586.250000002,
+                  343311.278312162
+                ],
+                [
+                  407583.750000001,
+                  343311.278312162
+                ],
+                [
+                  407585.000000001,
+                  343313.443375677
+                ],
+                [
+                  407586.250000002,
+                  343311.278312162
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16323,
+            "ListEntry": 1037877,
+            "Name": "Summerhouse, and retaining wall and urns to terrace south of the conservatory",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037877",
+            "area_ha": null,
+            "NGR": "SK 07471 43338",
+            "Easting": 407471,
+            "Northing": 343338
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407472.25,
+                  343337.278312163
+                ],
+                [
+                  407469.75,
+                  343337.278312163
+                ],
+                [
+                  407471,
+                  343339.443375677
+                ],
+                [
+                  407472.25,
+                  343337.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16324,
+            "ListEntry": 1037878,
+            "Name": "MINIATURE BRIDGE",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037878",
+            "area_ha": null,
+            "NGR": "SK 07507 43288",
+            "Easting": 407507,
+            "Northing": 343288
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407508.250000001,
+                  343287.278312163
+                ],
+                [
+                  407505.750000001,
+                  343287.278312163
+                ],
+                [
+                  407507.000000001,
+                  343289.443375673
+                ],
+                [
+                  407508.250000001,
+                  343287.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16330,
+            "ListEntry": 1037884,
+            "Name": "GATE PIERS, GATES AND RAILINGS FORMING PRINCIPAL ENTRANCE TO ALTON PARK",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037884",
+            "area_ha": null,
+            "NGR": "SK 07078 43605",
+            "Easting": 407078,
+            "Northing": 343605
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407079.250000001,
+                  343604.278312165
+                ],
+                [
+                  407076.750000001,
+                  343604.278312165
+                ],
+                [
+                  407078.000000001,
+                  343606.443375675
+                ],
+                [
+                  407079.250000001,
+                  343604.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 16351,
+            "ListEntry": 1037906,
+            "Name": "GARDEN WALL EAST OF ALTON TOWERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1037906",
+            "area_ha": null,
+            "NGR": "SK 07370 43141",
+            "Easting": 407370,
+            "Northing": 343141
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407371.250000001,
+                  343140.278312165
+                ],
+                [
+                  407368.750000001,
+                  343140.278312165
+                ],
+                [
+                  407370.000000001,
+                  343142.443375675
+                ],
+                [
+                  407371.250000001,
+                  343140.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169080,
+            "ListEntry": 1191842,
+            "Name": "POOL AND FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE ORANGERY",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191842",
+            "area_ha": null,
+            "NGR": "SK 07480 43378",
+            "Easting": 407480,
+            "Northing": 343378
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407481.250000001,
+                  343377.278312165
+                ],
+                [
+                  407478.75,
+                  343377.278312165
+                ],
+                [
+                  407480,
+                  343379.443375675
+                ],
+                [
+                  407481.250000001,
+                  343377.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169115,
+            "ListEntry": 1191877,
+            "Name": "THE LOGGIA AND ATTACHED TERRACE WALL AND STEPS",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191877",
+            "area_ha": null,
+            "NGR": "SK 07521 43326",
+            "Easting": 407521,
+            "Northing": 343326
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407522.249999999,
+                  343325.278312165
+                ],
+                [
+                  407519.750000002,
+                  343325.278312165
+                ],
+                [
+                  407521.000000002,
+                  343327.443375675
+                ],
+                [
+                  407522.249999999,
+                  343325.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169157,
+            "ListEntry": 1191919,
+            "Name": "LE REFUGE AND ATTACHED RETAINING WALL, ARCHWAY AND STEPS TO TERRACE IMMEDIATELY EAST OF THE LOGGIA",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191919",
+            "area_ha": null,
+            "NGR": "SK 07643 43323",
+            "Easting": 407643,
+            "Northing": 343323
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407644.25,
+                  343322.278312165
+                ],
+                [
+                  407641.75,
+                  343322.278312165
+                ],
+                [
+                  407643,
+                  343324.443375675
+                ],
+                [
+                  407644.25,
+                  343322.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169207,
+            "ListEntry": 1191969,
+            "Name": "THE CONSERVATORY AND ATTACHED WALL, STEPS AND URNS",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1191969",
+            "area_ha": null,
+            "NGR": "SK 07519 43356",
+            "Easting": 407519,
+            "Northing": 343356
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407520.250000001,
+                  343355.278312163
+                ],
+                [
+                  407517.750000001,
+                  343355.278312163
+                ],
+                [
+                  407519.000000001,
+                  343357.443375671
+                ],
+                [
+                  407520.250000001,
+                  343355.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169253,
+            "ListEntry": 1192015,
+            "Name": "THE PROSPECT TOWER AND WALL AND RAILINGS TO THE SOUTH",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192015",
+            "area_ha": null,
+            "NGR": "SK 07743 43326",
+            "Easting": 407743,
+            "Northing": 343326
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407744.250000001,
+                  343325.278312165
+                ],
+                [
+                  407741.750000001,
+                  343325.278312165
+                ],
+                [
+                  407743.000000001,
+                  343327.443375675
+                ],
+                [
+                  407744.250000001,
+                  343325.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169291,
+            "ListEntry": 1192054,
+            "Name": "The Pagoda Fountain and bridge pier",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192054",
+            "area_ha": null,
+            "NGR": "SK 07670 43228",
+            "Easting": 407670,
+            "Northing": 343228
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407671.250000001,
+                  343227.278312163
+                ],
+                [
+                  407668.750000001,
+                  343227.278312163
+                ],
+                [
+                  407670.000000001,
+                  343229.443375673
+                ],
+                [
+                  407671.250000001,
+                  343227.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 169445,
+            "ListEntry": 1192210,
+            "Name": "GATES AND GATE PIERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1192210",
+            "area_ha": null,
+            "NGR": "SK 07039 43518",
+            "Easting": 407039,
+            "Northing": 343518
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407040.250000001,
+                  343517.278312162
+                ],
+                [
+                  407037.750000001,
+                  343517.278312162
+                ],
+                [
+                  407039.000000001,
+                  343519.443375675
+                ],
+                [
+                  407040.250000001,
+                  343517.278312162
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263378,
+            "ListEntry": 1286814,
+            "Name": "WALLS, GATEPIERS AND STEPS DEFINING THE NORTH AND EAST SIDES OF THE TERRACED GARDENS SOUTH EAST OF THE CONSERVATORY",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286814",
+            "area_ha": null,
+            "NGR": "SK 07611 43344",
+            "Easting": 407611,
+            "Northing": 343344
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407612.250000002,
+                  343343.278312165
+                ],
+                [
+                  407609.750000002,
+                  343343.278312165
+                ],
+                [
+                  407611.000000002,
+                  343345.443375675
+                ],
+                [
+                  407612.250000002,
+                  343343.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263450,
+            "ListEntry": 1286887,
+            "Name": "Retaining wall approximately 9 metres south west of the stables",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286887",
+            "area_ha": null,
+            "NGR": "SK 07459 43531",
+            "Easting": 407459,
+            "Northing": 343531
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407460.250000001,
+                  343530.278312162
+                ],
+                [
+                  407457.750000001,
+                  343530.278312162
+                ],
+                [
+                  407459.000000001,
+                  343532.443375677
+                ],
+                [
+                  407460.250000001,
+                  343530.278312162
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 263518,
+            "ListEntry": 1286956,
+            "Name": "FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE CHAPEL OF ALTON TOWERS",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1286956",
+            "area_ha": null,
+            "NGR": "SK 07256 43180",
+            "Easting": 407256,
+            "Northing": 343180
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407257.25,
+                  343179.278312165
+                ],
+                [
+                  407254.75,
+                  343179.278312165
+                ],
+                [
+                  407256,
+                  343181.443375675
+                ],
+                [
+                  407257.25,
+                  343179.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350578,
+            "ListEntry": 1374685,
+            "Name": "Alton Towers and attached garden walls and gatehouse",
+            "Grade": "II*",
+            "ListDate": -583545600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374685",
+            "area_ha": null,
+            "NGR": "SK 07249 43235",
+            "Easting": 407249,
+            "Northing": 343235
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407250.250000001,
+                  343234.278312165
+                ],
+                [
+                  407247.750000001,
+                  343234.278312165
+                ],
+                [
+                  407249.000000001,
+                  343236.443375673
+                ],
+                [
+                  407250.250000001,
+                  343234.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350597,
+            "ListEntry": 1374704,
+            "Name": "Stables at Alton Towers",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374704",
+            "area_ha": null,
+            "NGR": "SK 07457 43563",
+            "Easting": 407457,
+            "Northing": 343563
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407458.25,
+                  343562.278312165
+                ],
+                [
+                  407455.749999999,
+                  343562.278312165
+                ],
+                [
+                  407457,
+                  343564.443375675
+                ],
+                [
+                  407458.25,
+                  343562.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350598,
+            "ListEntry": 1374705,
+            "Name": "THE ORANGERY",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374705",
+            "area_ha": null,
+            "NGR": "SK 07474 43390",
+            "Easting": 407474,
+            "Northing": 343390
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407475.25,
+                  343389.278312163
+                ],
+                [
+                  407472.750000002,
+                  343389.278312163
+                ],
+                [
+                  407473.999999999,
+                  343391.443375677
+                ],
+                [
+                  407475.25,
+                  343389.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350599,
+            "ListEntry": 1374706,
+            "Name": "THE ROMAN BATH AND TERRACE WALL TO THE SOUTH",
+            "Grade": "II",
+            "ListDate": 532569600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374706",
+            "area_ha": null,
+            "NGR": "SK 07633 43311",
+            "Easting": 407633,
+            "Northing": 343311
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407634.25,
+                  343310.278312163
+                ],
+                [
+                  407631.749999999,
+                  343310.278312163
+                ],
+                [
+                  407633,
+                  343312.443375673
+                ],
+                [
+                  407634.25,
+                  343310.278312163
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350600,
+            "ListEntry": 1374707,
+            "Name": "THE CORKSCREW FOUNTAIN",
+            "Grade": "II",
+            "ListDate": -94521600000,
+            "AmendDate": 532569600000,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374707",
+            "area_ha": null,
+            "NGR": "SK 07692 43352",
+            "Easting": 407692,
+            "Northing": 343352
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407693.250000001,
+                  343351.278312165
+                ],
+                [
+                  407690.750000001,
+                  343351.278312165
+                ],
+                [
+                  407692.000000001,
+                  343353.443375675
+                ],
+                [
+                  407693.250000001,
+                  343351.278312165
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 350634,
+            "ListEntry": 1374741,
+            "Name": "MEMORIAL TO THE 15TH EARL OF SHREWSBURY",
+            "Grade": "II*",
+            "ListDate": -94521600000,
+            "AmendDate": null,
+            "CaptureScale": "1:2500",
+            "hyperlink": "https://historicengland.org.uk/listing/the-list/list-entry/1374741",
+            "area_ha": null,
+            "NGR": "SK 07408 43297",
+            "Easting": 407408,
+            "Northing": 343297
+          },
+          "geometry": {
+            "rings": [
+              [
+                [
+                  407409.250000001,
+                  343296.278312165
+                ],
+                [
+                  407406.750000001,
+                  343296.278312165
+                ],
+                [
+                  407408.000000001,
+                  343298.443375675
+                ],
+                [
+                  407409.250000001,
+                  343296.278312165
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "query_counts": {
+    "0": 106,
+    "3": 106
+  },
+  "selection": "Listing locations intersect retained Alton Towers park boundary; discovery transform only, not survey registration"
+}

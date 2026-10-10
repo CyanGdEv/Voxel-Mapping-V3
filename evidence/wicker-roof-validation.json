@@ -1,0 +1,19 @@
+{
+  "focused_tests": {
+    "command": "python -m unittest tests.test_roof_candidates tests.test_point_cloud_audit tests.test_point_cloud",
+    "passed": 11
+  },
+  "full_tests": {
+    "command": "python -m unittest discover -s tests",
+    "passed": 602
+  },
+  "candidate_replay": "byte-identical JSON",
+  "parameter_combinations": 9,
+  "distinct_memberships": 2,
+  "smaller_component_returns": 505,
+  "larger_component_returns": 566,
+  "maximum_connectivity_boundary_spread_m": 4.5490317004448455,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

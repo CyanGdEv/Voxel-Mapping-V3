@@ -1,0 +1,82 @@
+{
+  "corpus_extraction": {
+    "status": "unplaced_candidates_only",
+    "version": "footprint-candidates-v2",
+    "pages": 238,
+    "run_pages": 238,
+    "resumed_pages": 0,
+    "polygon_candidates": 4193,
+    "candidates_with_label_hypotheses": 40,
+    "page_statuses": {
+      "unplaced_polygon_candidates": 235,
+      "path_budget_withheld": 3
+    },
+    "rejections": {
+      "unsupported_clipping_or_compositing_scope": 145221,
+      "Open stroked path; not a footprint": 139924,
+      "Invalid ring topology": 15802,
+      "Curved or unsupported paint-group geometry": 2012,
+      "unmatched_label": 553,
+      "Text glyph/annotation mask": 37,
+      "Small symbol/annotation candidate": 6146,
+      "Compound stroked outlines need topology review": 4,
+      "Sheet frame/border candidate": 3,
+      "Paint group crosses clipping boundary": 24,
+      "nonopaque_paint": 3,
+      "ambiguous_label": 6
+    },
+    "errors": [],
+    "candidate_file_sha256": "ed90b1512fc0ccb94b9c4e8cb90d058b04c0a9582948bedb8e8a384e02b25ec2",
+    "world_geometry_additions": 0
+  },
+  "resume": {
+    "status": "unplaced_candidates_only",
+    "version": "footprint-candidates-v2",
+    "pages": 238,
+    "run_pages": 0,
+    "resumed_pages": 238,
+    "polygon_candidates": 4193,
+    "candidates_with_label_hypotheses": 40,
+    "page_statuses": {
+      "unplaced_polygon_candidates": 235,
+      "path_budget_withheld": 3
+    },
+    "rejections": {
+      "unsupported_clipping_or_compositing_scope": 145221,
+      "Open stroked path; not a footprint": 139924,
+      "Invalid ring topology": 15802,
+      "Curved or unsupported paint-group geometry": 2012,
+      "unmatched_label": 553,
+      "Text glyph/annotation mask": 37,
+      "Small symbol/annotation candidate": 6146,
+      "Compound stroked outlines need topology review": 4,
+      "Sheet frame/border candidate": 3,
+      "Paint group crosses clipping boundary": 24,
+      "nonopaque_paint": 3,
+      "ambiguous_label": 6
+    },
+    "errors": [],
+    "candidate_file_sha256": "ed90b1512fc0ccb94b9c4e8cb90d058b04c0a9582948bedb8e8a384e02b25ec2",
+    "world_geometry_additions": 0
+  },
+  "tests": {
+    "focused_passed": 57,
+    "full_total": 488,
+    "full_passed": 484,
+    "preexisting_failures": 3,
+    "preexisting_errors": 1
+  },
+  "reviewed_fixture": {
+    "route": "Actual PDF -> retained corpus extraction -> checked registration -> promotion -> park job -> 400 paving cells -> tile export -> identical resume",
+    "cells": 400,
+    "real_park_geometry": false
+  },
+  "limits": [
+    "Candidate polygons are unplaced and physically unverified",
+    "40 unique interior type-label hypotheses are not approved object identities",
+    "Three pages exceed the native path budget",
+    "Curves, unsupported clipping/compositing/layers and open line geometry are withheld",
+    "No recovered Alton candidate has been promoted or generated into a new park world",
+    "Physical identity, existing/as-built status, materials and dimensions require checked evidence"
+  ]
+}

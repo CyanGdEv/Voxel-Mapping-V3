@@ -1,0 +1,94 @@
+{
+  "source_sha256": "446504b9707b33c4fb7b3c6d05978e2b78cb8a3731292c67aa303f9f03ab99a9",
+  "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89797",
+  "sheet": "AL3.06 Rev B existing west elevation",
+  "application": "SMD/2014/0841",
+  "scale_denominator": 20,
+  "relative_levels": [
+    {
+      "name": "base_reference",
+      "paper_y_pt": 1866.0008544921875,
+      "path_indices": [
+        30
+      ],
+      "height_above_reference_m": 0.0,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    },
+    {
+      "name": "first_balcony_underside",
+      "paper_y_pt": 1418.1608276367188,
+      "path_indices": [
+        957,
+        977
+      ],
+      "height_above_reference_m": 3.159760189480252,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    },
+    {
+      "name": "first_balcony_top",
+      "paper_y_pt": 1378.32080078125,
+      "path_indices": [
+        374
+      ],
+      "height_above_reference_m": 3.4408537122938365,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    },
+    {
+      "name": "second_balcony_top",
+      "paper_y_pt": 947.5208129882812,
+      "path_indices": [
+        21,
+        22,
+        375
+      ],
+      "height_above_reference_m": 6.480386959499783,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    },
+    {
+      "name": "roof_column_top",
+      "paper_y_pt": 617.2808227539062,
+      "path_indices": [
+        21,
+        22,
+        732,
+        813
+      ],
+      "height_above_reference_m": 8.810413557264539,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    },
+    {
+      "name": "roof_cap_upper_edge",
+      "paper_y_pt": 342.2408447265625,
+      "path_indices": [
+        23,
+        29,
+        1039
+      ],
+      "height_above_reference_m": 10.750973402235243,
+      "status": "printed_scale_measurement; independent dimensions unverified"
+    }
+  ],
+  "absolute_registration": "withheld",
+  "vertical_datum": "unknown",
+  "base_reference": "reviewed column base edge; not surveyed ground ODN",
+  "world_geometry_additions": 0,
+  "limitations": [
+    "No absolute elevation inferred",
+    "Printed scale is not independently checked against annotated dimensions",
+    "Existing December 2014 state; restored railings require proposed/as-built drawings",
+    "No finial height or other storey profiles inferred"
+  ],
+  "restoration_reference": {
+    "url": "https://www.ctdarchitects.co.uk/portfolio/alton-towers-gothic-prospect-tower/",
+    "checked_on": "2026-10-09",
+    "status": "architect confirms balcony railings reinstated; not a positioned as-built survey"
+  },
+  "placement_review": {
+    "status": "withheld",
+    "reasons": [
+      "no identified independent park control/checkpoint pairs",
+      "no surveyed ODN base elevation"
+    ],
+    "named_osm_match": false
+  }
+}

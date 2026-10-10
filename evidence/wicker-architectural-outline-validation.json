@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "review_sha256": "73ec52b9699e78ab7d73cad6a6cfbed70c77a339cc250527a06f759e43729fc6",
+  "checks": {
+    "byte_identical_review_replay": true,
+    "both_shop_alignments_preserve_unit_scale_and_orientation": true,
+    "two_maintenance_wall_dimensions_agree_within_0_05_metres": true,
+    "larger_site_outline_matches_architectural_roof_over_99_percent": true,
+    "all_three_extra_document_hashes_reproduced": true,
+    "proposed_level_and_bridge_conflict_text_present": true,
+    "diagram_rendered_and_visually_reviewed": true,
+    "world_gates_remain_zero": true
+  },
+  "tests": {
+    "command": "../runtime-viewport/bin/python -m unittest tests.test_architectural_outlines tests.test_roof_planes tests.test_roof_candidates tests.test_roof_plan_review tests.test_point_cloud tests.test_wicker_registration",
+    "passed": 24
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

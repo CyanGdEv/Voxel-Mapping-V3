@@ -6,10 +6,40 @@ build-backend = "setuptools.build_meta"
 name = "voxel-mapper"
 version = "3.1.0"
 requires-python = ">=3.11"
-dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3"]
+dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasterio>=1.4,<1.5", "numpy>=1.26,<2", "amulet-core==1.9.49", "beautifulsoup4>=4.12,<5", "pypdf>=6,<7", "fonttools>=4.50,<5", "overturemaps==1.0.2", "laspy>=2.7,<3", "lazrs>=0.8,<1", "Pillow>=10,<13"]
 
 [project.scripts]
 voxel-mapper = "voxel_mapper.cli:main"
+voxel-heritage = "voxel_mapper.reconstruction.heritage:main"
+voxel-reconstruct = "voxel_mapper.reconstruction.cli:main"
+voxel-planning-bulk = "voxel_mapper.planning_bulk:main"
+voxel-park-batch = "voxel_mapper.reconstruction.batch:main"
+voxel-park = "voxel_mapper.park_pipeline:main"
+voxel-park-cycles = "voxel_mapper.generation_cycles:main"
+voxel-park-draft-cycles = "voxel_mapper.draft_park_cycles:main"
+voxel-resort-areas = "voxel_mapper.area_reconstruction:main"
+voxel-drawing-faces = "voxel_mapper.drawing_faces:main"
+voxel-drawing-callouts = "voxel_mapper.drawing_callouts:main"
+voxel-drawing-annotations = "voxel_mapper.drawing_annotations:main"
+voxel-drawing-bridge = "voxel_mapper.drawing_registration_bridge:main"
+voxel-drawing-batch = "voxel_mapper.drawing_batch:main"
+voxel-drawing-footprints = "voxel_mapper.drawing_footprints:main"
+voxel-drawing-geometry = "voxel_mapper.drawing_geometry:main"
+voxel-drawing-components = "voxel_mapper.drawing_components:main"
+voxel-linework-boundaries = "voxel_mapper.linework_boundaries:main"
+voxel-outline-batch = "voxel_mapper.outline_batch:main"
+voxel-footprint-matching = "voxel_mapper.footprint_matching:main"
+voxel-boundary-registration = "voxel_mapper.boundary_registration:main"
+voxel-sheet-alignment = "voxel_mapper.sheet_alignment:main"
+voxel-mapped-placement = "voxel_mapper.mapped_sheet_placement:main"
+voxel-planning-archive = "voxel_mapper.planning_archive:main"
+voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
+
+[project.optional-dependencies]
+planning = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2"]
 
 [tool.setuptools.packages.find]
 include = ["voxel_mapper*"]
+
+[tool.setuptools.package-data]
+voxel_mapper = ["data/*.json", "data/*.geojson"]

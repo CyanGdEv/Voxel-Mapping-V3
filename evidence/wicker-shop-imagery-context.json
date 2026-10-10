@@ -1,0 +1,134 @@
+{
+  "status": "dated_georeferenced_imagery_context_only",
+  "retrieved_date": "2026-10-10",
+  "service_url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+  "service_metadata_sha256": "3c41ca79d7ddc2267fa1ac60c43263acbfed04915e3b2433e6b8e5d30378e2dc",
+  "tiles": [
+    {
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/170812/259392",
+      "level": 19,
+      "row": 170812,
+      "column": 259392,
+      "bytes": 12086,
+      "sha256": "ad1d21a09239fded14e48b3feadb040f81e32bf17b61aa57c7da3710546566d9",
+      "pixel_to_epsg3857": [
+        0.29858214164761665,
+        0,
+        0,
+        -0.29858214164761665,
+        -210354.7079048045,
+        6981146.671334151
+      ],
+      "bounds_epsg3857": [
+        -210354.7079048045,
+        6981070.234305889,
+        -210278.2708765427,
+        6981146.671334151
+      ],
+      "pixel_reference": "upper-left pixel edge; centre offset is half a pixel"
+    },
+    {
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/170812/259393",
+      "level": 19,
+      "row": 170812,
+      "column": 259393,
+      "bytes": 11661,
+      "sha256": "fd83362c46072520a9ba8ab0c7ddab2da1ecb8c98aa3276ed2aafdf516669e7c",
+      "pixel_to_epsg3857": [
+        0.29858214164761665,
+        0,
+        0,
+        -0.29858214164761665,
+        -210278.27087654173,
+        6981146.671334151
+      ],
+      "bounds_epsg3857": [
+        -210278.27087654173,
+        6981070.234305889,
+        -210201.83384827993,
+        6981146.671334151
+      ],
+      "pixel_reference": "upper-left pixel edge; centre offset is half a pixel"
+    },
+    {
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/170813/259392",
+      "level": 19,
+      "row": 170813,
+      "column": 259392,
+      "bytes": 12751,
+      "sha256": "ae987e75f7d7b97bbc02777e19952da7d0ba9bf86a9271c52ea8f4d9664e43e9",
+      "pixel_to_epsg3857": [
+        0.29858214164761665,
+        0,
+        0,
+        -0.29858214164761665,
+        -210354.7079048045,
+        6981070.23430589
+      ],
+      "bounds_epsg3857": [
+        -210354.7079048045,
+        6980993.797277628,
+        -210278.2708765427,
+        6981070.23430589
+      ],
+      "pixel_reference": "upper-left pixel edge; centre offset is half a pixel"
+    },
+    {
+      "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/19/170813/259393",
+      "level": 19,
+      "row": 170813,
+      "column": 259393,
+      "bytes": 12575,
+      "sha256": "f6c6ebaa68ad9889051cbdb21818a48846b8ca7578679947329dbda5b37beead",
+      "pixel_to_epsg3857": [
+        0.29858214164761665,
+        0,
+        0,
+        -0.29858214164761665,
+        -210278.27087654173,
+        6981070.23430589
+      ],
+      "bounds_epsg3857": [
+        -210278.27087654173,
+        6980993.797277628,
+        -210201.83384827993,
+        6981070.23430589
+      ],
+      "pixel_reference": "upper-left pixel edge; centre offset is half a pixel"
+    }
+  ],
+  "shop_location_citation_url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/9/query?f=json&geometry=%7B%22x%22%3A+-1.8888%2C+%22y%22%3A+52.98955%2C+%22spatialReference%22%3A+%7B%22wkid%22%3A+4326%7D%7D&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=false",
+  "citation_response_sha256": "255fbdd3039fe6a0784fd72df5f3bd9041c017349e41d6ba5271fbc7f8d1c0d9",
+  "shop_location_attributes": {
+    "OBJECTID": 4147947,
+    "SRC_DATE": 20230527,
+    "SRC_RES": 0.5,
+    "SRC_ACC": 8.47,
+    "SAMP_RES": 0.3,
+    "SRC_DESC": "WV02",
+    "MinMapLevel": 12,
+    "MaxMapLevel": 19,
+    "NICE_NAME": "Vivid",
+    "DrawOrder": 80,
+    "SRC_DATE2": 1685145600000,
+    "NICE_DESC": "Vantor",
+    "Shape_Length": 230500.18165644404,
+    "Shape_Area": 1554639868,
+    "BlockName": "DYNAMIC_ESRI_50_GB01_25Q4",
+    "ReleaseName": "Raster Basemaps 2026.R03"
+  },
+  "image_acquisition_date": "2023-05-27",
+  "source_resolution_metres": 0.5,
+  "reported_positional_accuracy_metres": 8.47,
+  "accuracy_meets_1m_registration_gate": false,
+  "metadata_scope": "shop query point only; surrounding tile coverage dates not independently checked",
+  "limitations": [
+    "Basemap acquisition date is separate from release date.",
+    "Tile georeferencing does not turn roof pixels into surveyed ground controls.",
+    "Shop-location citation is not proven to apply to every pixel of all four tiles.",
+    "No entrance/canopy identity or positional control is accepted from this view."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}
