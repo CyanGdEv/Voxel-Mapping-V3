@@ -7,12 +7,14 @@ from pathlib import Path
 import re
 
 import pymupdf
+import shapely
 from .boundary_registration import file_hash
 from .drawing_views import text, SCALE
 from .glyph_visibility import screen_span
 from .plan_network import recover, containing_faces, VERSION as NETWORK_VERSION
+from .clipped_plan_fills import recover as recover_fills, discontinuities, VERSION as FILL_VERSION
 
-VERSION = 'plan-elevation-edge-hypotheses-v2'
+VERSION = 'plan-elevation-edge-hypotheses-v3'
 
 
 def plan_scale(page):
@@ -142,6 +144,16 @@ def run(documents_file, face_directory, *, component_label=None):
                 page = document[number - 1]
                 scale = plan_scale(page); edges = straight_edges(page, sha, number)
                 try:
+                    fills = recover_fills(page, sha, number)
+                except ValueError as error:
+                    fills = {'version': FILL_VERSION, 'status': 'withheld_fill_recovery', 'reason': str(error),
+                             'candidates': [], 'world_geometry_additions': 0}
+                unit = scale['nominal_metres_per_pdf_point_candidate']
+                if unit:
+                    for fill in fills['candidates']:
+                        fill['nominal_area_m2'] = fill['area_pdf_points_squared'] * unit * unit
+                        fill['strip_discontinuity_candidates'] = discontinuities(fill, unit)
+                try:
                     network = recover(edges)
                 except ValueError as error:
                     network = {'version': NETWORK_VERSION, 'status': 'withheld_network_budget_or_geometry',
@@ -159,6 +171,7 @@ def run(documents_file, face_directory, *, component_label=None):
                                        if screen['status'] == 'raster_consistent_candidate' else [],
                                        'physical_component_identity_verified': False})
                 network_pages.append({'document_sha256': sha, 'page': number, 'plan_scale': scale,
+                                      'clipped_fill_recovery': fills,
                                       'network': network, 'component_label_candidates': labels,
                                       'world_geometry_additions': 0})
                 chains = [{'id': c['id'], 'length_pdf_points': c['length_pdf_points'],
@@ -191,10 +204,11 @@ def run(documents_file, face_directory, *, component_label=None):
                             'mesh': None, 'accepted_feature': False, 'world_geometry_additions': 0})
             if len(results) > 10000:
                 raise ValueError('Correspondence budget exceeded')
-    return {'version': VERSION, 'network_version': NETWORK_VERSION,
+    return {'version': VERSION, 'network_version': NETWORK_VERSION, 'fill_version': FILL_VERSION,
             'component_label_search': component_label, 'network_pages': network_pages,
             'input_catalogue_sha256': file_hash(catalogue),
             'face_replay_output_sha256': report['output_sha256'], 'pymupdf_version': pymupdf.VersionBind,
+            'shapely_version': shapely.__version__,
             'results': results, 'plan_pages_examined': len(pages),
             'limitations': ['Length matches retain every eligible full segment, including unrelated drafting edges.',
                             'Search tolerance is a discovery window, not a physical accuracy bound.',
