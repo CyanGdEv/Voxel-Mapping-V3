@@ -1,0 +1,176 @@
+{
+  "status": "proposed_projection_dimensions_consistent",
+  "traces": [
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "view": "roof-plan",
+      "manual_points_pixels": {
+        "back-left": [
+          522,
+          654
+        ],
+        "back-right": [
+          615,
+          749
+        ],
+        "front-right": [
+          631,
+          733
+        ],
+        "front-left": [
+          538,
+          638
+        ]
+      },
+      "native_points": {
+        "back-left": [
+          825.5891723632812,
+          659.1356201171875
+        ],
+        "back-right": [
+          945.5142211914062,
+          776.5678100585938
+        ],
+        "front-right": [
+          925.3163452148438,
+          796.7711791992188
+        ],
+        "front-left": [
+          805.3912963867188,
+          679.3389892578125
+        ]
+      },
+      "metric_page_points": {
+        "back-left": [
+          29.12495135837131,
+          23.25283993191189
+        ],
+        "back-right": [
+          33.35564058091905,
+          27.39558663262261
+        ],
+        "front-right": [
+          32.64310440063476,
+          28.108316599527992
+        ],
+        "front-left": [
+          28.41241517808702,
+          23.96556989881727
+        ]
+      },
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70"
+    },
+    {
+      "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "view": "NE",
+      "manual_points_pixels": {
+        "left": [
+          1074,
+          818
+        ],
+        "right": [
+          1208,
+          818
+        ]
+      },
+      "native_points": {
+        "left": [
+          1032.61767578125,
+          1356.152587890625
+        ],
+        "right": [
+          1032.61767578125,
+          1525.35595703125
+        ]
+      },
+      "metric_page_points": {
+        "left": [
+          36.428456895616314,
+          47.84204962836371
+        ],
+        "right": [
+          36.428456895616314,
+          53.81116848415798
+        ]
+      },
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462"
+    },
+    {
+      "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "view": "SE",
+      "manual_points_pixels": {
+        "wall-edge": [
+          642,
+          334
+        ],
+        "main-roof-edge": [
+          653,
+          334
+        ],
+        "front": [
+          675,
+          354
+        ]
+      },
+      "native_points": {
+        "wall-edge": [
+          421.63116455078125,
+          810.6610107421875
+        ],
+        "main-roof-edge": [
+          421.63116455078125,
+          824.5508422851562
+        ],
+        "front": [
+          446.8785400390625,
+          852.3305053710938
+        ]
+      },
+      "metric_page_points": {
+        "wall-edge": [
+          14.874210527208115,
+          28.598318990071615
+        ],
+        "main-roof-edge": [
+          14.874210527208115,
+          29.088321380615234
+        ],
+        "front": [
+          15.764881829155815,
+          30.068326161702473
+        ]
+      },
+      "render_size_pixels": [
+        1888,
+        1334
+      ],
+      "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462"
+    }
+  ],
+  "manual_endpoint_bound_pixels": 2,
+  "plan_width_metres": 5.921239863747387,
+  "plan_depth_metres": 1.0078153669889498,
+  "NE_front_width_metres": 5.969119585687382,
+  "SE_beyond_main_roof_depth_metres": 0.9800047080979285,
+  "SE_from_wall_depth_metres": 1.4700070621468928,
+  "front_width_difference_metres": 0.0478797219399949,
+  "depth_difference_metres": -0.0278106588910213,
+  "combined_two_view_sampling_bound_metres": 0.3563653483992467,
+  "depth_conflict_exceeds_combined_sampling_bound": false,
+  "projection_mesh": null,
+  "world_placement_eligible": false,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Manual point picks; physical accuracy unverified.",
+    "Like-for-like depth is beyond the main roof edge; wall-to-front depth additionally includes its overhang. Projection slope/fascia edge identity remains unresolved.",
+    "Main roof and wall model remains unchanged; no depth averaging or forced fit."
+  ]
+}
