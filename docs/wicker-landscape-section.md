@@ -19,20 +19,25 @@ foundation is protected from landscape changes.
 The section adds **3,924 overlay cells** from **30 paving areas, 12 planted
 beds and 3 rock-edge shapes**. Overlapping source areas resolve into one final
 cell/material per coordinate. Documented material classes are mapped to
-Minecraft proxies only when a material label lies inside an **existing** paving
-polygon and no competing material class is present.
+Minecraft proxies when a material label lies inside the paving polygon. The
+user-requested whole-polygon rule applies to existing and proposed paving: brick
+beats stone/concrete; tarmac also beats stone/concrete. Brick wins if both brick
+and tarmac occur. The deterministic order is brick, tarmac, gravel, concrete,
+stone. Labels outside the polygon do not affect its material.
 
 | Source association | Minecraft representation | Status |
 | --- | --- | --- |
 | Brick / brick paving inside existing paving | Brick blocks | Documented class; block appearance is a proxy |
 | Tarmac inside existing paving | Black concrete | Documented class; block appearance is a proxy |
 | Gravel inside existing paving | Gravel | Supported mapping; none emitted in this crop |
-| Unlabelled, conflicting or proposed paving | Neutral stone | Material unconfirmed; review placeholder |
+| Concrete inside paving | Light gray concrete | Documented class; color is a proxy |
+| Stone inside paving | Stone | Documented class; block appearance is a proxy |
+| No material label inside paving | Neutral stone | Material unconfirmed; review placeholder |
 | Legend-bound planted beds | Dirt with low oak-leaf accents | Soil/species/height estimates |
 | Legend-bound rock edges | One-block stone shapes | Rock type and height estimates |
 
-The old survey material labels are never inherited by proposed replacement
-paving. No raised planter walls are claimed: there is no independently bound
+This requested policy uses contained material labels for proposed paving too;
+it does not establish current/as-built material accuracy. No raised planter walls are claimed: there is no independently bound
 raised-planter outline in the inspected source. The planted areas remain beds.
 Path heights follow the dated terrain; accepted design levels, smoothing,
 entrance grading and step/ramp details still need separate review. The shop's
@@ -51,8 +56,8 @@ unwritten air cell. Registration and physical identity remain unaccepted;
 this review does not promote these candidates into an accepted park job.
 
 `evidence/wicker-landscape-section-validation.json` records the real build and
-native verification. Tests cover label containment/conflicts, refusal to inherit
-old materials into new proposals, valid native block IDs, clipping, shop-column
+native verification. Tests cover label containment, whole-polygon precedence,
+annotation-order independence, valid native block IDs, clipping, shop-column
 protection, missing terrain and above-ground rock/planting details.
 
 ## Direct import and visibility check
@@ -74,3 +79,7 @@ blocks, checks air above 3,771 uncovered path cells, and checks the packaged
 spawn over paving. The receipt is
 `evidence/wicker-landscape-v9-package-validation.json`. This verifies archive
 contents, not in-game appearance or the user's imported world.
+
+The material policy was updated after the V9 download was generated. Existing
+V9 validation receipts describe its original materials; the new policy applies
+to subsequent builds.

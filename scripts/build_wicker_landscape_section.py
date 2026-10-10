@@ -22,7 +22,11 @@ from voxel_mapper.bedrock import export_world
 
 PDF='1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d'
 GRID='5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa'
-LABEL_MATERIAL={'brick paving':'bricks','brick':'bricks','tarmac':'black_concrete','gravel':'gravel'}
+LABEL_MATERIAL={'brick paving':'bricks','brick':'bricks','tarmac':'black_concrete','tar mac':'black_concrete',
+                'gravel':'gravel','stone':'stone','stone paving':'stone',
+                'concrete':'light_gray_concrete','concrete paving':'light_gray_concrete'}
+# User's whole-polygon policy: specific finishes beat generic stone/concrete.
+PAVING_PRECEDENCE=('bricks','black_concrete','gravel','light_gray_concrete','stone')
 
 
 def paving_spawn(rows, shop_columns):
@@ -42,12 +46,15 @@ def paving_spawn(rows, shop_columns):
 
 
 def material_for_polygon(polygon,annotations,state):
-    # Old survey labels cannot specify material for proposed replacement work.
+    # Apply the requested whole-polygon rule to existing and proposed areas.
+    # Brick wins a brick/tarmac tie so annotation ordering cannot change output.
     labels=[a['text'].strip().lower() for a in annotations
             if a['text'].strip().lower() in LABEL_MATERIAL and
-            polygon.covers(Point((a['bbox'][0]+a['bbox'][2])/2,(a['bbox'][1]+a['bbox'][3])/2))] if state=='existing' else []
+            polygon.covers(Point((a['bbox'][0]+a['bbox'][2])/2,(a['bbox'][1]+a['bbox'][3])/2))]
     choices={LABEL_MATERIAL[label] for label in labels}
-    if len(choices)==1:return choices.pop(),'documented material class; Minecraft proxy',labels
+    for material in PAVING_PRECEDENCE:
+        if material in choices:
+            return material,'polygon material label; user precedence rule; Minecraft proxy',labels
     return 'stone','unconfirmed material; neutral review placeholder',labels
 
 

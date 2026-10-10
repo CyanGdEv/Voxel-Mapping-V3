@@ -10,16 +10,26 @@ class LandscapeSectionTests(unittest.TestCase):
         self.assertEqual(paving_spawn(rows,{(7,1)}),[1,12,1])
         with self.assertRaises(ValueError):paving_spawn(rows[:1],{(7,1)})
 
-    def test_material_labels_are_scoped_and_proposed_materials_are_not_inherited(self):
-        a=[{'text':'brick paving','bbox':[.1,.1,.3,.3]},{'text':'tarmac','bbox':[5,5,6,6]}]
-        self.assertEqual(material_for_polygon(box(0,0,2,2),a,'existing')[0],'bricks')
-        self.assertEqual(material_for_polygon(box(0,0,2,2),a,'new')[0],'stone')
-        a.append({'text':'gravel','bbox':[.5,.5,.8,.8]})
-        self.assertIn('unconfirmed',material_for_polygon(box(0,0,2,2),a,'existing')[1])
+    def test_whole_polygon_material_precedence_and_fallback(self):
+        polygon=box(0,0,2,2)
+        def annotations(*labels):
+            return [{'text':label,'bbox':[.1,.1,.3,.3]} for label in labels]
+        cases=[(('stone','brick'),'bricks'),(('concrete','brick'),'bricks'),
+               (('stone','tarmac'),'black_concrete'),(('concrete','tar mac'),'black_concrete'),
+               (('stone','concrete'),'light_gray_concrete'),(('stone',),'stone'),
+               (('concrete',),'light_gray_concrete'),((),'stone'),
+               (('brick','tarmac'),'bricks'),(('gravel',),'gravel')]
         from voxel_mapper.bedrock import ALLOWED_MATERIALS
-        for label in ('brick paving','brick','tarmac','gravel'):
-            material,_,_=material_for_polygon(box(0,0,2,2),[{'text':label,'bbox':[.1,.1,.3,.3]}],'existing')
-            self.assertIn(material,ALLOWED_MATERIALS)
+        for labels,expected in cases:
+            for state in ('existing','new'):
+                for order in (labels,tuple(reversed(labels))):
+                    with self.subTest(labels=order,state=state):
+                        material,_,_=material_for_polygon(polygon,annotations(*order),state)
+                        self.assertEqual(material,expected)
+                        self.assertIn(material,ALLOWED_MATERIALS)
+        outside=[{'text':'brick','bbox':[5,5,6,6]}]
+        self.assertEqual(material_for_polygon(polygon,outside,'existing')[0],'stone')
+        self.assertIn('unconfirmed',material_for_polygon(polygon,[],'new')[1])
 
     def test_clip_protection_grounding_and_missing_terrain(self):
         class Terrain:
