@@ -68,3 +68,7 @@ do not contact a mutable catalogue or silently select a newer survey.
 Receipts: `evidence/wicker-point-cloud-crop.json`,
 `evidence/wicker-point-cloud-audit.json`, and
 `evidence/wicker-point-cloud-validation.json`.
+
+Follow-up: [shop roof-envelope connectivity review](wicker-roof-candidates.md)
+isolates a repeatable 505-return component and records the lower-return expansion
+that occurs with a more permissive height step.
