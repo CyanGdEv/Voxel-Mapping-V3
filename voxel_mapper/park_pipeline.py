@@ -130,6 +130,13 @@ def run(job_path,stage='all'):
     if stage in ('all','reconstruct','compile'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
         pinned={'manifest':hashlib.sha256(manifest_path.read_bytes()).hexdigest()}
+        annotation_config=job.get('drawing_annotations',{})
+        if annotation_config.get('enabled',False):
+            from .drawing_annotations import run as inspect_annotations
+            annotation_report=inspect_annotations(path(annotation_config['documents']),root/'drawing-annotations',
+                                                  max_pages=annotation_config.get('max_pages',10000))
+            checkpoint('drawing_annotations',annotation_report)
+            pinned['drawing_annotations']={'contract':annotation_report['contract'],'annotations_sha256':annotation_report['annotations_sha256']}
         bridge=job.get('registration_bridge',{});bridge_feed=None
         if bridge.get('enabled',False):
             from .drawing_registration_bridge import run_batch
