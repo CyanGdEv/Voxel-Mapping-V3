@@ -12,6 +12,14 @@ LABELS = [{'axis': axis, 'value': value} for axis, values in
 
 
 class RasterLocationTests(unittest.TestCase):
+    def test_arbitrary_coordinates_block_even_explicit_epsg_and_overlap(self):
+        result = inspect_grid_location(LABELS, {'explicit_epsg_candidates': [27700],
+            'national_grid_claim': True, 'arbitrary_coordinate_warning': True}, BOUNDS)
+        self.assertEqual(result['status'], 'local_grid_requires_transform')
+        self.assertNotIn('metric_crs_candidate', result)
+        self.assertFalse(result['controls_exported'])
+        self.assertFalse(result['registration_verified'])
+
     def test_reference_coverage_does_not_certify_alignment(self):
         convert=Transformer.from_crs(27700,4326,always_xy=True).transform
         features=[{'id':str(i),'properties':{'kind':'building','source_id':'osm'},

@@ -58,6 +58,9 @@ def inspect_grid_location(labels, reference_notes, bounds=None, reference_featur
               'limitations': ['Grid extent overlap is not independent alignment or survey accuracy',
                              'An inferred British National Grid CRS remains a hypothesis',
                              'No raster transform, physical polygon or height datum is established']}
+    if reference_notes.get('arbitrary_coordinate_warning') is True:
+        return {**report, 'status': 'local_grid_requires_transform',
+                'reason': 'Source explicitly disclaims true OS coordinates; national-grid orientation or an EPSG label cannot override this warning'}
     if bounds is None:
         return {**report, 'reason': 'Requested geographic bounds unavailable'}
     try:

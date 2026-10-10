@@ -6,6 +6,21 @@ from tests.test_drawing_ocr import tsv
 
 
 class SurveyReferenceTests(unittest.TestCase):
+    def test_gnss_orientation_does_not_override_arbitrary_coordinates(self):
+        result = inspect_reference_notes(
+            'This survey has been orientated to the Ordnance Survey (OS) national grid via a Global Navigation\n'
+            'Satellite System (GNSS). No scale factor has been applied to the survey therefore\n'
+            'the coordinates shown are arbitrary and not true OS coordinates.')
+        self.assertTrue(result['national_grid_orientation_claim'])
+        self.assertTrue(result['national_grid_claim'])
+        self.assertTrue(result['arbitrary_coordinate_warning'])
+        self.assertTrue(result['scale_factor_not_applied_claim'])
+        self.assertEqual(result['horizontal_coordinate_status'], 'local_grid_requires_transform')
+
+    def test_no_scale_factor_alone_does_not_disclaim_coordinates(self):
+        result = inspect_reference_notes('EPSG:27700. No scale factor has been applied.')
+        self.assertFalse(result['arbitrary_coordinate_warning'])
+
     def test_wrapped_survey_notes_do_not_certify_crs_or_datum(self):
         result = inspect_reference_notes(
             'ALL LEVELS ARE IN METRES RELATED TO AN O.S.B.M.\nLOCATED ON A BRICK PIER\n'
