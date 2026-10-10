@@ -58,7 +58,7 @@ def join_wall_columns(wall, roof, scale):
                   'columns':columns,'all_columns_connected':True}
 
 
-def plan(model_path, expected_sha256, scale=1, joined=False):
+def plan(model_path, expected_sha256, scale=1, joined=False, closed=False):
     path=Path(model_path);raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=expected_sha256:raise ValueError('Pinned study model checksum mismatch')
     model=json.loads(raw)
@@ -66,9 +66,14 @@ def plan(model_path, expected_sha256, scale=1, joined=False):
         raise ValueError('Only isolated unplaced shop models supported')
     wall,wall_audit=raster_mesh(model['wall_mesh'],scale)
     roof,roof_audit=raster_mesh(model['roof_mesh'],scale)
+    closure_audit=None
+    if closed:
+        if not joined:raise ValueError('Closed review requires joined mode')
+        from .shop_shell import close_shell
+        wall,roof,closure_audit=close_shell(model,wall,roof,scale)
     joins=set();join_audit=None;projection=set();projection_audit=None
     if joined:
-        joins,join_audit=join_wall_columns(wall,roof,scale)
+        if not closed:joins,join_audit=join_wall_columns(wall,roof,scale)
         if 'projection_mesh' in model:
             projection,projection_audit=raster_mesh(model['projection_mesh'],scale)
     # Roof wins aliasing intersections in the display study, with every conflict counted.
@@ -107,22 +112,28 @@ def plan(model_path, expected_sha256, scale=1, joined=False):
     report['estimated_join_audit']=join_audit
     report['projection_cells']=len(projection)
     report['projection_sampling']=projection_audit
+    report['boundary_closure_audit']=closure_audit
     if joined:
         report['version']='shop-local-joined-study-v2'
         report['projection_review']=model.get('projection_review')
         report['limitations']=[s for s in report['limitations'] if 'fascia, canopy' not in s]
         report['limitations'].append('Estimated wall-to-roof joins close sampled columns only; construction thickness and full shell completeness remain unresolved.')
         report['limitations'].append('Canopy/front fascia use the retained NE-height hypothesis; side fascia and cross-view height discrepancy remain unresolved.')
+    if closed:
+        report['version']='shop-local-boundary-review-v3'
+        report['review_mode']='closed-boundary-canopy-hypothesis'
+        report['limitations'].append('Boundary and roof-riser closure is an estimated voxel display; six-neighbour air closure does not establish real construction thickness or water tightness.')
     return ground+rows,report
 
 
-def run(model_path, expected_sha256, output, scale=1, joined=False):
+def run(model_path, expected_sha256, output, scale=1, joined=False, closed=False):
     from .bedrock import export_world
     output=Path(output)
     if output.exists():raise ValueError('Use a new study output directory')
-    rows,report=plan(model_path,expected_sha256,scale,joined);output.mkdir(parents=True)
+    rows,report=plan(model_path,expected_sha256,scale,joined,closed);output.mkdir(parents=True)
     path=output/'voxels.jsonl';path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
     label='JOINED REVIEW' if joined else 'LOCAL STUDY'
+    if closed:label='BOUNDARY V3 REVIEW'
     report['world']=export_world(path,output,report,name=f'Wicker Shop {label} {scale}:1',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report

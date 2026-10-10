@@ -14,7 +14,8 @@ from voxel_mapper.shop_study import run
 MODEL_SHA='5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22'
 
 
-def build_studies(pdf_directory, output, preview=False, joined=False):
+def build_studies(pdf_directory, output, preview=False, joined=False, closed=False):
+    joined=joined or closed
     output=Path(output)
     if output.exists():raise ValueError('Use a new output directory')
     review=source_review(pdf_directory)
@@ -30,7 +31,7 @@ def build_studies(pdf_directory, output, preview=False, joined=False):
             raise ValueError('Retained canopy model failed reproduction')
     output.mkdir(parents=True);reports=[]
     for scale in (1,4):
-        report=run(model_path,model_sha,output/f'study-{scale}',scale,joined)
+        report=run(model_path,model_sha,output/f'study-{scale}',scale,joined,closed)
         reports.append(report)
     (output/'source-review.json').write_text(json.dumps(review,sort_keys=True,indent=2)+'\n')
     notes='''WICKER SHOP — ISOLATED PROPOSED-DRAWING REVIEW
@@ -57,11 +58,15 @@ Source and geometry details are in the included quality reports/source review.
         notes=notes.replace('Local_Study','Joined_Study').replace('canopy, fascia, interiors and bunding are omitted.',
             'interiors, side fascia and bunding are omitted.')
         notes+='\nJOINED REVIEW MODE\nExisting wall columns extend vertically to the sampled main-roof underside.\nThese added cells are estimated display joins, not measured construction.\nThe source wall/roof meshes are unchanged. Every join is listed in the reports.\nCanopy and front fascia use the provisional NE-height model; the conflicting\nSE height remains unresolved. Fine fascia detail may disappear at 1:1.\n'
+    if closed:
+        notes=notes.replace('Joined_Study','Boundary_V3_Study')
+        notes+='\nBOUNDARY V3 REVIEW\nComplete footprint boundary columns are filled to the main roof, with door\napertures kept clear. Vertical roof step risers are filled as display proxies.\nAn outside-air flood checks all interior air cells under the roof, with the\nfloor and doors temporarily sealed only for the test. Reports retain counts.\nIn Minecraft choose the world named Wicker Shop BOUNDARY V3 REVIEW.\n'
     (output/'README.txt').write_text(notes)
     if preview:
         from render_wicker_shop_study import render
-        render(output,output/'preview.png')
+        render(output,output/'preview.png',boundary=closed)
     prefix='Joined' if joined else 'Local'
+    if closed:prefix='Boundary_V3'
     package=output/f'Wicker_Shop_{prefix}_Review.zip'
     with zipfile.ZipFile(package,'w',compression=zipfile.ZIP_DEFLATED) as archive:
         for scale in (1,4):
@@ -71,7 +76,7 @@ Source and geometry details are in the included quality reports/source review.
         if preview:archive.write(output/'preview.png','preview.png')
     receipt={'model_sha256':model_sha,'package_sha256':hashlib.sha256(package.read_bytes()).hexdigest(),
              'reports':reports,'geographic_placement':'withheld','park_world_blocks_added':0,
-             'export_scope':'isolated proposed-source study with estimated joins and canopy hypothesis' if joined else 'isolated proposed-source surface study only'}
+             'export_scope':'isolated proposed-source study with estimated boundary closure and canopy hypothesis' if closed else 'isolated proposed-source study with estimated joins and canopy hypothesis' if joined else 'isolated proposed-source surface study only'}
     (output/'validation.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
@@ -80,4 +85,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pdf-directory',required=True);p.add_argument('--output',required=True)
     p.add_argument('--preview',action='store_true')
     p.add_argument('--joined',action='store_true',help='Estimated wall-to-roof joins and retained provisional canopy')
-    a=p.parse_args();print(json.dumps(build_studies(a.pdf_directory,a.output,a.preview,a.joined)))
+    p.add_argument('--closed',action='store_true',help='Complete footprint boundary and roof-step display closure; implies --joined')
+    a=p.parse_args();print(json.dumps(build_studies(a.pdf_directory,a.output,a.preview,a.joined,a.closed)))
