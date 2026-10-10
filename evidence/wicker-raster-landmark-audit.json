@@ -1,0 +1,121 @@
+{
+  "status": "independent_raster_observations_not_registration",
+  "input_sha256": {
+    "terrain": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d",
+    "surface": "8be3f64aef96625bba2dddc092ad7c2eee7edb113d878ee7925d27afb9752e32",
+    "grid": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+    "references": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+    "archive": "e9b0aaf14d46dd59355d265db20d5a97e2f905902f4f144de1f0246bc6860261"
+  },
+  "horizontal_transform_accuracy_m": 1.0,
+  "rasters_crs": "EPSG:27700",
+  "vertical_datum": "ODN",
+  "resolution_m": 1,
+  "documented_patch_survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dsm": 0.9716249262163758,
+      "dtm": 1.0
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "local_pixel_epoch": "unverified; no retained per-pixel patch provenance mask",
+  "landmarks": [
+    {
+      "reference_id": "osm/way/107259863",
+      "name": "FastTrack",
+      "outline_crs": "EPSG:27700",
+      "pixel_centres_in_outline": 26,
+      "valid_paired_pixels": 26,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 178.85000610351562,
+        "median": 179.03599548339844,
+        "max": 179.11000061035156
+      },
+      "observed_surface_odn_m": {
+        "min": 178.85000610351562,
+        "median": 182.25401306152344,
+        "max": 182.88900756835938
+      },
+      "surface_above_ground_m": {
+        "min": 0.0,
+        "median": 3.1795120239257812,
+        "max": 3.9130096435546875
+      },
+      "pixels_surface_at_least_3m_above_ground": 16,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "reference_id": "osm/way/70689589",
+      "name": "The Burger Kitchen",
+      "outline_crs": "EPSG:27700",
+      "pixel_centres_in_outline": 58,
+      "valid_paired_pixels": 58,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 180.1300048828125,
+        "median": 180.35650634765625,
+        "max": 180.69900512695312
+      },
+      "observed_surface_odn_m": {
+        "min": 183.1120147705078,
+        "median": 183.46551513671875,
+        "max": 186.45401000976562
+      },
+      "surface_above_ground_m": {
+        "min": 2.53900146484375,
+        "median": 3.0705032348632812,
+        "max": 6.1240081787109375
+      },
+      "pixels_surface_at_least_3m_above_ground": 36,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "reference_id": "osm/way/834919978",
+      "name": "Wicker Man Shop",
+      "outline_crs": "EPSG:27700",
+      "pixel_centres_in_outline": 213,
+      "valid_paired_pixels": 213,
+      "paired_coverage_fraction": 1.0,
+      "ground_odn_m": {
+        "min": 180.51400756835938,
+        "median": 182.2310028076172,
+        "max": 182.84800720214844
+      },
+      "observed_surface_odn_m": {
+        "min": 182.58401489257812,
+        "median": 187.8350067138672,
+        "max": 189.77601623535156
+      },
+      "surface_above_ground_m": {
+        "min": -0.003997802734375,
+        "median": 5.8910064697265625,
+        "max": 8.016006469726562
+      },
+      "pixels_surface_at_least_3m_above_ground": 195,
+      "checkpoint_attachment_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  ],
+  "accepted_checkpoint_count": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Comparison footprints derive from OSM and do not establish independently measured corners",
+    "DSM surfaces can be roofs, trees, supports or other elevated objects",
+    "Mixed-epoch mosaic cannot assign 2022 to each sampled pixel",
+    "Surface height is not floor height or ride rail elevation"
+  ]
+}
