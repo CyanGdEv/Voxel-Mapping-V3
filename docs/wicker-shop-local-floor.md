@@ -58,3 +58,10 @@ is placed.
 Next: investigate sheet/view scaling and revisions using original drawing
 linework and additional dated architectural attachments. Resolve the dimensional
 conflict before combining walls and roof or treating either as physical controls.
+
+## Subsequent scale review
+
+The raw conflict is retained above. [Floor scale review](wicker-shop-floor-scale.md)
+identifies approximately 90.9% page-content reduction using shared sheet furniture
+and produces a separate provisional normalized trace. Its dimensions agree with
+the elevation within 0.09 m; geographic registration is still unresolved.
