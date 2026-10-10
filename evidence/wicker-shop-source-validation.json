@@ -1,0 +1,22 @@
+{
+  "focused_tests": {
+    "command": "python -m unittest tests.test_drawing_geometry tests.test_linework_boundaries",
+    "passed": 18
+  },
+  "source_acquisition": {
+    "official_pdfs_downloaded": 6,
+    "revised_review_sheets": 3,
+    "historical_combined_sheets_excluded": 3
+  },
+  "replay": {
+    "ingestion_report": "byte-identical",
+    "plan_candidates": "byte-identical",
+    "elevation_candidates": "byte-identical"
+  },
+  "input_integrity_check": "Corrupt source rejected before output directory creation",
+  "plan_candidate_records": 5381,
+  "elevation_candidate_records": 243,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

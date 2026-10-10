@@ -80,3 +80,7 @@ python scripts/review_wicker_orientation.py \
 The replay consumes the retained catalogue response, not a mutable live query.
 Full queue: `evidence/wicker-orientation-cues.json`.
 Validation: `evidence/wicker-orientation-validation.json`.
+
+Follow-up: [recovered revised architectural sheets](wicker-shop-drawing-sources.md)
+adds the missing shop elevations and revised roof/floor drawings, with proposed
+materials, version separation and bounded native extraction.
