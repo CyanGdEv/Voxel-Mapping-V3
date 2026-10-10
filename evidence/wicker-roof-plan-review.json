@@ -1,0 +1,1998 @@
+{
+  "status": "source_linked_edge_review_only",
+  "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "page": 1,
+  "source_candidate": {
+    "id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+    "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "page": 1,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            1059.3599853515625,
+            1387.5999755859375
+          ],
+          [
+            884.6399536132812,
+            1310.320068359375
+          ],
+          [
+            943.6799926757812,
+            1177.3599853515625
+          ],
+          [
+            1118.1600341796875,
+            1254.8800048828125
+          ],
+          [
+            1059.3599853515625,
+            1387.5999755859375
+          ]
+        ]
+      ]
+    },
+    "coordinate_frame": "pdf_native_points_y_up",
+    "paint_references": [
+      {
+        "ordinal": 89263,
+        "subpath": null,
+        "stroke_style": {
+          "width_pdf_points": null,
+          "dashes_pdf": ""
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 89264,
+        "subpath": 0,
+        "stroke_style": {
+          "width_pdf_points": 0.35999998450279236,
+          "dashes_pdf": "[] 0"
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 90016,
+        "subpath": null,
+        "stroke_style": {
+          "width_pdf_points": null,
+          "dashes_pdf": ""
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 90017,
+        "subpath": 0,
+        "stroke_style": {
+          "width_pdf_points": 0.35999998450279236,
+          "dashes_pdf": "[] 0"
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      }
+    ],
+    "extraction_kind": "drawing_components",
+    "extraction_version": "drawing-components-v1",
+    "extraction_contract": "475f75117d4a2d8c70ef52785d90982debacf965fc7e83778384aeacf4f70385",
+    "rendering_status": "supported_straight_unclipped_polygon",
+    "curve_approximation": {
+      "cubic_segments": 0,
+      "chord_error_bound_pdf_points": 0,
+      "requested_tolerance_pdf_points": 0.25,
+      "method": "adaptive_de_casteljau_control_hull_to_chord",
+      "points": 5
+    },
+    "stroke_style": {
+      "width_pdf_points": null,
+      "dashes_pdf": ""
+    },
+    "semantic_status": "unclassified",
+    "line_role": null,
+    "physical_identity_verified": false,
+    "world_geometry_additions": 0,
+    "parent_references": [
+      {
+        "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+        "component_index": null,
+        "extraction_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd"
+      }
+    ],
+    "component_semantics_verified": false
+  },
+  "source_candidate_reproduced": true,
+  "native_page_scale": {
+    "status": "single_native_page_scale",
+    "page_dimensions_mm": [
+      594.0777777777777,
+      841.0222222222221
+    ],
+    "explicit_paper_scales": [
+      {
+        "text": "1/250 @ A1",
+        "text_range": [
+          19503,
+          19513
+        ],
+        "denominator": 250,
+        "paper": "A1",
+        "native_page_size_matches": true
+      },
+      {
+        "text": "1/500 @ A3",
+        "text_range": [
+          19516,
+          19526
+        ],
+        "denominator": 500,
+        "paper": "A3",
+        "native_page_size_matches": false
+      }
+    ],
+    "denominator": 250,
+    "size_tolerance_mm": 2,
+    "physical_geometry_verified": false
+  },
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9909726817279516
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "envelopes": [
+    {
+      "membership_sha256": "d0ee4ed371c5e47062d366c4298de1b68e2358676859b6a75b881fb5b6d89f17",
+      "point_count": 505,
+      "observed_envelope_reproduced": true,
+      "parameter_combinations": [
+        {
+          "radius_m": 1,
+          "height_step_m": 0.5
+        },
+        {
+          "radius_m": 1,
+          "height_step_m": 1
+        },
+        {
+          "radius_m": 1.5,
+          "height_step_m": 0.5
+        },
+        {
+          "radius_m": 1.5,
+          "height_step_m": 1
+        },
+        {
+          "radius_m": 2,
+          "height_step_m": 0.5
+        },
+        {
+          "radius_m": 2,
+          "height_step_m": 1
+        }
+      ],
+      "free_scale_diagnostic": {
+        "status": "boundary_hypothesis_only",
+        "best_fit": {
+          "method": "boundary_samples",
+          "matrix": [
+            [
+              0.08840924054093308,
+              -0.002089509728918938
+            ],
+            [
+              0.002089509728918938,
+              0.08840924054093308
+            ]
+          ],
+          "translation_m": [
+            407477.1141586316,
+            343468.45482144353
+          ],
+          "scale_metres_per_pdf_point": 0.08843392937064265,
+          "rotation_degrees": 1.353906039193422,
+          "sample_rms_m": 0.37316150741509624,
+          "intersection_over_union": 0.9324812429902812,
+          "boundary_hausdorff_m": 0.8542508868483702,
+          "boundary_error_fraction": 0.05718094541142119,
+          "corner_pairs": []
+        },
+        "equivalent_orientations": [
+          {
+            "matrix": [
+              [
+                0.08840924054093308,
+                -0.002089509728918938
+              ],
+              [
+                0.002089509728918938,
+                0.08840924054093308
+              ]
+            ],
+            "translation_m": [
+              407477.1141586316,
+              343468.45482144353
+            ],
+            "rotation_degrees": 1.353906039193422,
+            "intersection_over_union": 0.9324812429902812
+          },
+          {
+            "matrix": [
+              [
+                -0.08840709515677962,
+                0.002089738147317222
+              ],
+              [
+                -0.002089738147317222,
+                -0.08840709515677962
+              ]
+            ],
+            "translation_m": [
+              407648.8204026451,
+              343699.4138089044
+            ],
+            "rotation_degrees": -178.64591316457123,
+            "intersection_over_union": 0.9313865162062406
+          }
+        ],
+        "printed_scale_comparison": [
+          {
+            "denominator": 250,
+            "expected_metres_per_pdf_point": 0.08819444444444444,
+            "relative_scale_error": 0.002715419635633376
+          }
+        ],
+        "review_flags": [
+          "poor_boundary_agreement",
+          "ambiguous_boundary_orientation"
+        ],
+        "registration_verified": false,
+        "independent_checkpoints": [],
+        "world_geometry_additions": 0
+      },
+      "printed_scale_edge_review": {
+        "status": "fixed_scale_boundary_hypotheses_only",
+        "best_fit": {
+          "matrix": [
+            [
+              0.08816958380319283,
+              -0.0020939252221496333
+            ],
+            [
+              0.0020939252221496333,
+              0.08816958380319283
+            ]
+          ],
+          "translation_m": [
+            407477.36136937723,
+            343468.76079030056
+          ],
+          "rotation_degrees": 1.3604524947119747,
+          "scale_metres_per_pdf_point": 0.08819444444444444,
+          "sample_rms_m": 0.3652516395503932,
+          "intersection_over_union": 0.9315988529885877,
+          "boundary_hausdorff_m": 0.8269844123273073,
+          "placed_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407567.8591677963,
+                  343593.32312322594
+                ],
+                [
+                  407552.6159936628,
+                  343586.14353528817
+                ],
+                [
+                  407558.09993780596,
+                  343574.54412553384
+                ],
+                [
+                  407573.3214493232,
+                  343581.744381552
+                ],
+                [
+                  407567.8591677963,
+                  343593.32312322594
+                ]
+              ]
+            ]
+          },
+          "edge_diagnostics": [
+            {
+              "source_edge_index": 0,
+              "source_endpoints_pdf_points": [
+                [
+                  1059.3599853515625,
+                  1387.5999755859375
+                ],
+                [
+                  884.6399536132812,
+                  1310.320068359375
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407567.8591677963,
+                  343593.32312322594
+                ],
+                [
+                  407552.6159936628,
+                  343586.14353528817
+                ]
+              ],
+              "length_at_printed_scale_m": 16.849357276221905,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 0.24321329172542122,
+                "p95": 0.4077536613891127,
+                "max": 0.5247143779153775
+              },
+              "signed_distance_m": {
+                "min": -0.5247143779153775,
+                "median": 0.15158468695000146,
+                "max": 0.3805158906650349
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 1,
+              "source_endpoints_pdf_points": [
+                [
+                  884.6399536132812,
+                  1310.320068359375
+                ],
+                [
+                  943.6799926757812,
+                  1177.3599853515625
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407552.6159936628,
+                  343586.14353528817
+                ],
+                [
+                  407558.09993780596,
+                  343574.54412553384
+                ]
+              ],
+              "length_at_printed_scale_m": 12.830430624677836,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 0.16302348578394577,
+                "p95": 0.3905123500210297,
+                "max": 0.4486103174752296
+              },
+              "signed_distance_m": {
+                "min": -0.4486103174752296,
+                "median": -0.16302348578394577,
+                "max": -0.11304328328316605
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 2,
+              "source_endpoints_pdf_points": [
+                [
+                  943.6799926757812,
+                  1177.3599853515625
+                ],
+                [
+                  1118.1600341796875,
+                  1254.8800048828125
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407558.09993780596,
+                  343574.54412553384
+                ],
+                [
+                  407573.3214493232,
+                  343581.744381552
+                ]
+              ],
+              "length_at_printed_scale_m": 16.83858959641718,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 0.29171206866349275,
+                "p95": 0.4153044754447957,
+                "max": 0.8269844123103025
+              },
+              "signed_distance_m": {
+                "min": -0.8269844123103025,
+                "median": 0.27296366296928354,
+                "max": 0.42219193411498807
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 3,
+              "source_endpoints_pdf_points": [
+                [
+                  1118.1600341796875,
+                  1254.8800048828125
+                ],
+                [
+                  1059.3599853515625,
+                  1387.5999755859375
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407573.3214493232,
+                  343581.744381552
+                ],
+                [
+                  407567.8591677963,
+                  343593.32312322594
+                ]
+              ],
+              "length_at_printed_scale_m": 12.802491094770696,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 0.46066218940198084,
+                "p95": 0.5693618788363761,
+                "max": 0.8269844123103025
+              },
+              "signed_distance_m": {
+                "min": -0.8269844123103025,
+                "median": 0.43532544087618724,
+                "max": 0.5366724350074803
+              },
+              "physical_edge_correspondence_verified": false
+            }
+          ]
+        },
+        "equivalent_orientations": [
+          {
+            "matrix": [
+              [
+                0.08816958380319283,
+                -0.0020939252221496333
+              ],
+              [
+                0.0020939252221496333,
+                0.08816958380319283
+              ]
+            ],
+            "translation_m": [
+              407477.36136937723,
+              343468.76079030056
+            ],
+            "rotation_degrees": 1.3604524947119747,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 0.3652516395503932,
+            "intersection_over_union": 0.9315988529885877,
+            "boundary_hausdorff_m": 0.8269844123273073,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407567.8591677963,
+                    343593.32312322594
+                  ],
+                  [
+                    407552.6159936628,
+                    343586.14353528817
+                  ],
+                  [
+                    407558.09993780596,
+                    343574.54412553384
+                  ],
+                  [
+                    407573.3214493232,
+                    343581.744381552
+                  ],
+                  [
+                    407567.8591677963,
+                    343593.32312322594
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407567.8591677963,
+                    343593.32312322594
+                  ],
+                  [
+                    407552.6159936628,
+                    343586.14353528817
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.24321329172542122,
+                  "p95": 0.4077536613891127,
+                  "max": 0.5247143779153775
+                },
+                "signed_distance_m": {
+                  "min": -0.5247143779153775,
+                  "median": 0.15158468695000146,
+                  "max": 0.3805158906650349
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407552.6159936628,
+                    343586.14353528817
+                  ],
+                  [
+                    407558.09993780596,
+                    343574.54412553384
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.16302348578394577,
+                  "p95": 0.3905123500210297,
+                  "max": 0.4486103174752296
+                },
+                "signed_distance_m": {
+                  "min": -0.4486103174752296,
+                  "median": -0.16302348578394577,
+                  "max": -0.11304328328316605
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407558.09993780596,
+                    343574.54412553384
+                  ],
+                  [
+                    407573.3214493232,
+                    343581.744381552
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.29171206866349275,
+                  "p95": 0.4153044754447957,
+                  "max": 0.8269844123103025
+                },
+                "signed_distance_m": {
+                  "min": -0.8269844123103025,
+                  "median": 0.27296366296928354,
+                  "max": 0.42219193411498807
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407573.3214493232,
+                    343581.744381552
+                  ],
+                  [
+                    407567.8591677963,
+                    343593.32312322594
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.46066218940198084,
+                  "p95": 0.5693618788363761,
+                  "max": 0.8269844123103025
+                },
+                "signed_distance_m": {
+                  "min": -0.8269844123103025,
+                  "median": 0.43532544087618724,
+                  "max": 0.5366724350074803
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          },
+          {
+            "matrix": [
+              [
+                -0.08816957755662287,
+                0.0020941882319548796
+              ],
+              [
+                -0.0020941882319548796,
+                -0.08816957755662287
+              ]
+            ],
+            "translation_m": [
+              407648.57842465804,
+              343699.1161975026
+            ],
+            "rotation_degrees": -178.63937659201278,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 0.370329760548914,
+            "intersection_over_union": 0.9305094891959682,
+            "boundary_hausdorff_m": 0.8309007936696784,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407558.0809978087,
+                    343574.5535946229
+                  ],
+                  [
+                    407573.3241505255,
+                    343581.733228031
+                  ],
+                  [
+                    407567.8401717813,
+                    343593.33262142667
+                  ],
+                  [
+                    407552.61868174246,
+                    343586.13232000277
+                  ],
+                  [
+                    407558.0809978087,
+                    343574.5535946229
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407558.0809978087,
+                    343574.5535946229
+                  ],
+                  [
+                    407573.3241505255,
+                    343581.733228031
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.29044157455405256,
+                  "p95": 0.41145120239325456,
+                  "max": 0.8309007936722976
+                },
+                "signed_distance_m": {
+                  "min": -0.8309007936722976,
+                  "median": 0.2798266949026857,
+                  "max": 0.4178201301521857
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407573.3241505255,
+                    343581.733228031
+                  ],
+                  [
+                    407567.8401717813,
+                    343593.33262142667
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.4695060693376104,
+                  "p95": 0.5759257929658452,
+                  "max": 0.8309007936722976
+                },
+                "signed_distance_m": {
+                  "min": -0.8309007936722976,
+                  "median": 0.44539617017489574,
+                  "max": 0.5456155117806881
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407567.8401717813,
+                    343593.33262142667
+                  ],
+                  [
+                    407552.61868174246,
+                    343586.13232000277
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.24252110239305252,
+                  "p95": 0.4140311979599378,
+                  "max": 0.535971081230709
+                },
+                "signed_distance_m": {
+                  "min": -0.535971081230709,
+                  "median": 0.14761519256350852,
+                  "max": 0.3900908291166318
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407552.61868174246,
+                    343586.13232000277
+                  ],
+                  [
+                    407558.0809978087,
+                    343574.5535946229
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.17042876251507064,
+                  "p95": 0.3925037226332711,
+                  "max": 0.4499417512248971
+                },
+                "signed_distance_m": {
+                  "min": -0.4499417512248971,
+                  "median": -0.17042876251507064,
+                  "max": -0.12410184772899356
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          }
+        ],
+        "review_flags": [
+          "independent_physical_checkpoints_missing",
+          "roof_to_wall_offset_unmeasured",
+          "ambiguous_boundary_orientation",
+          "poor_boundary_agreement"
+        ],
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "accepted_controls": 0,
+        "accepted_checkpoints": 0,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Edge residuals are boundary self-fit diagnostics, not independent accuracy checks",
+          "Signed distances are not verified roof-to-wall offsets",
+          "Endpoint coordinates are hypothesis locations, not surveyed attachment points"
+        ]
+      }
+    },
+    {
+      "membership_sha256": "50ca94beb9f62614b5619068940f87a93d28e523ae7bcefada31d102f1f92914",
+      "point_count": 566,
+      "observed_envelope_reproduced": true,
+      "parameter_combinations": [
+        {
+          "radius_m": 1,
+          "height_step_m": 2
+        },
+        {
+          "radius_m": 1.5,
+          "height_step_m": 2
+        },
+        {
+          "radius_m": 2,
+          "height_step_m": 2
+        }
+      ],
+      "free_scale_diagnostic": {
+        "status": "boundary_hypothesis_only",
+        "best_fit": {
+          "method": "boundary_samples",
+          "matrix": [
+            [
+              -0.09772482003400876,
+              -0.014905529582088541
+            ],
+            [
+              0.014905529582088541,
+              -0.09772482003400876
+            ]
+          ],
+          "translation_m": [
+            407681.67600096145,
+            343693.50358734885
+          ],
+          "scale_metres_per_pdf_point": 0.09885502143443152,
+          "rotation_degrees": 171.32776925795054,
+          "sample_rms_m": 1.1286901740456519,
+          "intersection_over_union": 0.8474021314289937,
+          "boundary_hausdorff_m": 2.794783076866973,
+          "boundary_error_fraction": 0.16677022191679625,
+          "corner_pairs": []
+        },
+        "equivalent_orientations": [
+          {
+            "matrix": [
+              [
+                -0.09772482003400876,
+                -0.014905529582088541
+              ],
+              [
+                0.014905529582088541,
+                -0.09772482003400876
+              ]
+            ],
+            "translation_m": [
+              407681.67600096145,
+              343693.50358734885
+            ],
+            "rotation_degrees": 171.32776925795054,
+            "intersection_over_union": 0.8474021314289937
+          },
+          {
+            "matrix": [
+              [
+                0.09772024815172338,
+                0.014906393924181218
+              ],
+              [
+                -0.014906393924181218,
+                0.09772024815172338
+              ]
+            ],
+            "translation_m": [
+              407447.71968984505,
+              343472.69174849987
+            ],
+            "rotation_degrees": -8.673125568530937,
+            "intersection_over_union": 0.8468732370060417
+          }
+        ],
+        "printed_scale_comparison": [
+          {
+            "denominator": 250,
+            "expected_metres_per_pdf_point": 0.08819444444444444,
+            "relative_scale_error": 0.12087583358725507
+          }
+        ],
+        "review_flags": [
+          "poor_boundary_agreement",
+          "ambiguous_boundary_orientation",
+          "printed_scale_disagreement"
+        ],
+        "registration_verified": false,
+        "independent_checkpoints": [],
+        "world_geometry_additions": 0
+      },
+      "printed_scale_edge_review": {
+        "status": "fixed_scale_boundary_hypotheses_only",
+        "best_fit": {
+          "matrix": [
+            [
+              -0.08718501646240859,
+              -0.013305372422962789
+            ],
+            [
+              0.013305372422962789,
+              -0.08718501646240859
+            ]
+          ],
+          "translation_m": [
+            407669.0719147592,
+            343681.5936325417
+          ],
+          "rotation_degrees": 171.3229962862246,
+          "scale_metres_per_pdf_point": 0.08819444444444444,
+          "sample_rms_m": 1.5444845506151568,
+          "intersection_over_union": 0.7459178153869951,
+          "boundary_hausdorff_m": 2.7082732016299276,
+          "placed_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407558.2490625474,
+                  343574.7108849621
+                ],
+                [
+                  407574.5102693373,
+                  343579.1238198538
+                ],
+                [
+                  407571.13194598147,
+                  343591.5014965873
+                ],
+                [
+                  407554.8884679605,
+                  343587.06443434086
+                ],
+                [
+                  407558.2490625474,
+                  343574.7108849621
+                ]
+              ]
+            ]
+          },
+          "edge_diagnostics": [
+            {
+              "source_edge_index": 0,
+              "source_endpoints_pdf_points": [
+                [
+                  1059.3599853515625,
+                  1387.5999755859375
+                ],
+                [
+                  884.6399536132812,
+                  1310.320068359375
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407558.2490625474,
+                  343574.7108849621
+                ],
+                [
+                  407574.5102693373,
+                  343579.1238198538
+                ]
+              ],
+              "length_at_printed_scale_m": 16.849357276221905,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 1.090970239734201,
+                "p95": 1.5328148111850717,
+                "max": 1.547547743984766
+              },
+              "signed_distance_m": {
+                "min": -0.07488513341355488,
+                "median": 1.090970239734201,
+                "max": 1.547547743984766
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 1,
+              "source_endpoints_pdf_points": [
+                [
+                  884.6399536132812,
+                  1310.320068359375
+                ],
+                [
+                  943.6799926757812,
+                  1177.3599853515625
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407574.5102693373,
+                  343579.1238198538
+                ],
+                [
+                  407571.13194598147,
+                  343591.5014965873
+                ]
+              ],
+              "length_at_printed_scale_m": 12.830430624677836,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 1.1983819699485567,
+                "p95": 2.2769362309233476,
+                "max": 2.3777772818278686
+              },
+              "signed_distance_m": {
+                "min": -1.570878970239575,
+                "median": 0.7611302425805851,
+                "max": 2.3777772818278686
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 2,
+              "source_endpoints_pdf_points": [
+                [
+                  943.6799926757812,
+                  1177.3599853515625
+                ],
+                [
+                  1118.1600341796875,
+                  1254.8800048828125
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407571.13194598147,
+                  343591.5014965873
+                ],
+                [
+                  407554.8884679605,
+                  343587.06443434086
+                ]
+              ],
+              "length_at_printed_scale_m": 16.83858959641718,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 1.3488516312263945,
+                "p95": 2.0568939771335484,
+                "max": 2.130244661608438
+              },
+              "signed_distance_m": {
+                "min": -1.570878970239575,
+                "median": 1.2768492820417043,
+                "max": 2.130244661608438
+              },
+              "physical_edge_correspondence_verified": false
+            },
+            {
+              "source_edge_index": 3,
+              "source_endpoints_pdf_points": [
+                [
+                  1118.1600341796875,
+                  1254.8800048828125
+                ],
+                [
+                  1059.3599853515625,
+                  1387.5999755859375
+                ]
+              ],
+              "hypothesis_endpoints_bng_m": [
+                [
+                  407554.8884679605,
+                  343587.06443434086
+                ],
+                [
+                  407558.2490625474,
+                  343574.7108849621
+                ]
+              ],
+              "length_at_printed_scale_m": 12.802491094770696,
+              "sample_count": 33,
+              "distance_to_envelope_m": {
+                "median": 1.0379601759307178,
+                "p95": 1.8109791282020193,
+                "max": 1.8655406518796125
+              },
+              "signed_distance_m": {
+                "min": -0.07488513341355488,
+                "median": 1.0379601759307178,
+                "max": 1.8655406518796125
+              },
+              "physical_edge_correspondence_verified": false
+            }
+          ]
+        },
+        "equivalent_orientations": [
+          {
+            "matrix": [
+              [
+                -0.08718501646240859,
+                -0.013305372422962789
+              ],
+              [
+                0.013305372422962789,
+                -0.08718501646240859
+              ]
+            ],
+            "translation_m": [
+              407669.0719147592,
+              343681.5936325417
+            ],
+            "rotation_degrees": 171.3229962862246,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 1.5444845506151568,
+            "intersection_over_union": 0.7459178153869951,
+            "boundary_hausdorff_m": 2.7082732016299276,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407558.2490625474,
+                    343574.7108849621
+                  ],
+                  [
+                    407574.5102693373,
+                    343579.1238198538
+                  ],
+                  [
+                    407571.13194598147,
+                    343591.5014965873
+                  ],
+                  [
+                    407554.8884679605,
+                    343587.06443434086
+                  ],
+                  [
+                    407558.2490625474,
+                    343574.7108849621
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407558.2490625474,
+                    343574.7108849621
+                  ],
+                  [
+                    407574.5102693373,
+                    343579.1238198538
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.090970239734201,
+                  "p95": 1.5328148111850717,
+                  "max": 1.547547743984766
+                },
+                "signed_distance_m": {
+                  "min": -0.07488513341355488,
+                  "median": 1.090970239734201,
+                  "max": 1.547547743984766
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407574.5102693373,
+                    343579.1238198538
+                  ],
+                  [
+                    407571.13194598147,
+                    343591.5014965873
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.1983819699485567,
+                  "p95": 2.2769362309233476,
+                  "max": 2.3777772818278686
+                },
+                "signed_distance_m": {
+                  "min": -1.570878970239575,
+                  "median": 0.7611302425805851,
+                  "max": 2.3777772818278686
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407571.13194598147,
+                    343591.5014965873
+                  ],
+                  [
+                    407554.8884679605,
+                    343587.06443434086
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.3488516312263945,
+                  "p95": 2.0568939771335484,
+                  "max": 2.130244661608438
+                },
+                "signed_distance_m": {
+                  "min": -1.570878970239575,
+                  "median": 1.2768492820417043,
+                  "max": 2.130244661608438
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407554.8884679605,
+                    343587.06443434086
+                  ],
+                  [
+                    407558.2490625474,
+                    343574.7108849621
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.0379601759307178,
+                  "p95": 1.8109791282020193,
+                  "max": 1.8655406518796125
+                },
+                "signed_distance_m": {
+                  "min": -0.07488513341355488,
+                  "median": 1.0379601759307178,
+                  "max": 1.8655406518796125
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          },
+          {
+            "matrix": [
+              [
+                0.08718479691182607,
+                0.013306810974378592
+              ],
+              [
+                -0.013306810974378592,
+                0.08718479691182607
+              ]
+            ],
+            "translation_m": [
+              407460.3244933771,
+              343484.60782668984
+            ],
+            "rotation_degrees": -8.67794909443667,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 1.5466807863690006,
+            "intersection_over_union": 0.7457245794361201,
+            "boundary_hausdorff_m": 2.7047002570993475,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407571.1491091397,
+                    343591.4887456773
+                  ],
+                  [
+                    407554.88782953855,
+                    343587.0760790961
+                  ],
+                  [
+                    407558.2659486622,
+                    343574.698346622
+                  ],
+                  [
+                    407574.5094998925,
+                    343579.1351408503
+                  ],
+                  [
+                    407571.1491091397,
+                    343591.4887456773
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407571.1491091397,
+                    343591.4887456773
+                  ],
+                  [
+                    407554.88782953855,
+                    343587.0760790961
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.3480092378027702,
+                  "p95": 2.0662450714505893,
+                  "max": 2.140876252816402
+                },
+                "signed_distance_m": {
+                  "min": -1.5770617518509837,
+                  "median": 1.2750872338934907,
+                  "max": 2.140876252816402
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407554.88782953855,
+                    343587.0760790961
+                  ],
+                  [
+                    407558.2659486622,
+                    343574.698346622
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.0455236497362155,
+                  "p95": 1.815807879444157,
+                  "max": 1.8699622759163979
+                },
+                "signed_distance_m": {
+                  "min": -0.08944859788994394,
+                  "median": 1.0455236497362155,
+                  "max": 1.8699622759163979
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407558.2659486622,
+                    343574.698346622
+                  ],
+                  [
+                    407574.5094998925,
+                    343579.1351408503
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.0893524246111665,
+                  "p95": 1.5417483842275792,
+                  "max": 1.5578541993775314
+                },
+                "signed_distance_m": {
+                  "min": -0.08944859788994394,
+                  "median": 1.0893524246111665,
+                  "max": 1.5578541993775314
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407574.5094998925,
+                    343579.1351408503
+                  ],
+                  [
+                    407571.1491091397,
+                    343591.4887456773
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.1922310063665509,
+                  "p95": 2.2707976595537565,
+                  "max": 2.379620683444455
+                },
+                "signed_distance_m": {
+                  "min": -1.5770617518509837,
+                  "median": 0.7549742550881688,
+                  "max": 2.379620683444455
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          },
+          {
+            "matrix": [
+              [
+                -0.0880498416428391,
+                -0.005048308383523473
+              ],
+              [
+                0.005048308383523473,
+                -0.0880498416428391
+              ]
+            ],
+            "translation_m": [
+              407659.34797836456,
+              343690.97153976763
+            ],
+            "rotation_degrees": 176.71855804816872,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 1.5744419058432233,
+            "intersection_over_union": 0.7426444167832065,
+            "boundary_hausdorff_m": 2.3500010273088887,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407559.0664668219,
+                    343574.1415575489
+                  ],
+                  [
+                    407574.84067075176,
+                    343580.0640005414
+                  ],
+                  [
+                    407570.31342816347,
+                    343592.0691671192
+                  ],
+                  [
+                    407554.55914317473,
+                    343586.1243707316
+                  ],
+                  [
+                    407559.0664668219,
+                    343574.1415575489
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407559.0664668219,
+                    343574.1415575489
+                  ],
+                  [
+                    407574.84067075176,
+                    343580.0640005414
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.2027088174341816,
+                  "p95": 2.1761252369070756,
+                  "max": 2.216550155854794
+                },
+                "signed_distance_m": {
+                  "min": -0.7425414838403857,
+                  "median": 1.2027088174341816,
+                  "max": 2.216550155854794
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407574.84067075176,
+                    343580.0640005414
+                  ],
+                  [
+                    407570.31342816347,
+                    343592.0691671192
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.9219807188611815,
+                  "p95": 1.8715646839293842,
+                  "max": 1.999488855437445
+                },
+                "signed_distance_m": {
+                  "min": -1.2519270262615874,
+                  "median": 0.5077866132926919,
+                  "max": 1.999488855437445
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407570.31342816347,
+                    343592.0691671192
+                  ],
+                  [
+                    407554.55914317473,
+                    343586.1243707316
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.5184976951254074,
+                  "p95": 1.7082523981639015,
+                  "max": 1.7113855841216286
+                },
+                "signed_distance_m": {
+                  "min": -1.2519270262615874,
+                  "median": 1.5184976951254074,
+                  "max": 1.7113855841216286
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407554.55914317473,
+                    343586.1243707316
+                  ],
+                  [
+                    407559.0664668219,
+                    343574.1415575489
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.076121483176618,
+                  "p95": 1.381523501229115,
+                  "max": 1.3849592121337835
+                },
+                "signed_distance_m": {
+                  "min": -0.7425414838403857,
+                  "median": 1.076121483176618,
+                  "max": 1.3849592121337835
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          },
+          {
+            "matrix": [
+              [
+                0.08804980780393692,
+                0.005048898548591169
+              ],
+              [
+                -0.005048898548591169,
+                0.08804980780393692
+              ]
+            ],
+            "translation_m": [
+              407470.0493318838,
+              343475.2288316962
+            ],
+            "rotation_degrees": -3.2818259840278436,
+            "scale_metres_per_pdf_point": 0.08819444444444444,
+            "sample_rms_m": 1.5768160559683089,
+            "intersection_over_union": 0.7422405924129769,
+            "boundary_hausdorff_m": 2.360433445224725,
+            "placed_geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    407570.3316264919,
+                    343592.0581417628
+                  ],
+                  [
+                    407554.55738286645,
+                    343586.1358044991
+                  ],
+                  [
+                    407559.0845449885,
+                    343574.1306075771
+                  ],
+                  [
+                    407574.8388698227,
+                    343580.07529836945
+                  ],
+                  [
+                    407570.3316264919,
+                    343592.0581417628
+                  ]
+                ]
+              ]
+            },
+            "edge_diagnostics": [
+              {
+                "source_edge_index": 0,
+                "source_endpoints_pdf_points": [
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ],
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407570.3316264919,
+                    343592.0581417628
+                  ],
+                  [
+                    407554.55738286645,
+                    343586.1358044991
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.849357276221905,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.5161971874532643,
+                  "p95": 1.7183894881339614,
+                  "max": 1.7205317379721585
+                },
+                "signed_distance_m": {
+                  "min": -1.2599694417910714,
+                  "median": 1.5161971874532643,
+                  "max": 1.7205317379721585
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 1,
+                "source_endpoints_pdf_points": [
+                  [
+                    884.6399536132812,
+                    1310.320068359375
+                  ],
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407554.55738286645,
+                    343586.1358044991
+                  ],
+                  [
+                    407559.0845449885,
+                    343574.1306075771
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.830430624677836,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.0836384719086323,
+                  "p95": 1.3849630092296146,
+                  "max": 1.3894852253165255
+                },
+                "signed_distance_m": {
+                  "min": -0.7556792006587191,
+                  "median": 1.0836384719086323,
+                  "max": 1.3894852253165255
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 2,
+                "source_endpoints_pdf_points": [
+                  [
+                    943.6799926757812,
+                    1177.3599853515625
+                  ],
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407559.0845449885,
+                    343574.1306075771
+                  ],
+                  [
+                    407574.8388698227,
+                    343580.07529836945
+                  ]
+                ],
+                "length_at_printed_scale_m": 16.83858959641718,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 1.2018572799663279,
+                  "p95": 2.1845454869941467,
+                  "max": 2.220882011789363
+                },
+                "signed_distance_m": {
+                  "min": -0.7556792006587191,
+                  "median": 1.2018572799663279,
+                  "max": 2.220882011789363
+                },
+                "physical_edge_correspondence_verified": false
+              },
+              {
+                "source_edge_index": 3,
+                "source_endpoints_pdf_points": [
+                  [
+                    1118.1600341796875,
+                    1254.8800048828125
+                  ],
+                  [
+                    1059.3599853515625,
+                    1387.5999755859375
+                  ]
+                ],
+                "hypothesis_endpoints_bng_m": [
+                  [
+                    407574.8388698227,
+                    343580.07529836945
+                  ],
+                  [
+                    407570.3316264919,
+                    343592.0581417628
+                  ]
+                ],
+                "length_at_printed_scale_m": 12.802491094770696,
+                "sample_count": 33,
+                "distance_to_envelope_m": {
+                  "median": 0.9297648238097131,
+                  "p95": 1.865967608809887,
+                  "max": 2.003811965805152
+                },
+                "signed_distance_m": {
+                  "min": -1.2599694417910714,
+                  "median": 0.5011218543377335,
+                  "max": 2.003811965805152
+                },
+                "physical_edge_correspondence_verified": false
+              }
+            ]
+          }
+        ],
+        "review_flags": [
+          "independent_physical_checkpoints_missing",
+          "roof_to_wall_offset_unmeasured",
+          "ambiguous_boundary_orientation",
+          "poor_boundary_agreement"
+        ],
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "accepted_controls": 0,
+        "accepted_checkpoints": 0,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Edge residuals are boundary self-fit diagnostics, not independent accuracy checks",
+          "Signed distances are not verified roof-to-wall offsets",
+          "Endpoint coordinates are hypothesis locations, not surveyed attachment points"
+        ]
+      }
+    }
+  ],
+  "point_pairs_submitted_to_registration": 0,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "physical_identity_verified": false,
+  "registration_verified": false,
+  "input_sha256": {
+    "pdf": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "cloud": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+    "roof_report": "47486f708adecd5690afdd4878aa9366678763d507372efd357b20c85119dc7f",
+    "crop_receipt": "9ead4a23e0f385443c43ac048834fa4b0009ac72d7f4911525a49bb97f113992"
+  },
+  "remaining_requirements": [
+    "Resolve equivalent orientations using identified physical context",
+    "Establish whether the planning line is a roof/eave/wall boundary and measure any offset",
+    "Measure native edge uncertainty from appropriate survey evidence",
+    "Supply separately sourced, identified independent physical checkpoints; boundary residuals are not checks"
+  ]
+}

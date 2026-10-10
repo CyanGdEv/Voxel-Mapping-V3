@@ -59,3 +59,7 @@ The cloud, OSM and datum-grid bytes must match the retained receipts. Survey
 identity, native bounds, header CRS and point count are checked before analysis.
 The full candidate queue is `evidence/wicker-roof-candidates.json`; validation is
 `evidence/wicker-roof-validation.json`. Both parameter outcomes remain recorded.
+
+Follow-up: [source-linked roof/plan edge review](wicker-roof-plan-review.md)
+reproduces the planning candidate, scopes scale to the native A1 page, and retains
+both orientation ambiguity and per-edge self-fit residuals.
