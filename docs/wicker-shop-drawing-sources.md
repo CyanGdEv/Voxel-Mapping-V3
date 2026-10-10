@@ -60,8 +60,9 @@ block uses an indicated scale with per-view scale labels; no global paper-scale
 denominator is invented when `page_scale` cannot establish one.
 
 The extractor still rejects 14 clipping/compositing scopes on the elevation
-sheet, 66 on the floor plan, and 13 on the roof plan. The imagery and these
-rejected scopes matter: the extracted records are not complete building outlines.
+sheet, 66 on the floor plan, and 13 on the roof plan. Inspection shows the 14 rejected elevation clips are small annotation scopes,
+not full roof/wall outlines. The main elevation content is raster-backed; the
+vector records are not complete building outlines.
 No gap filling, hatch-face union interpreted as a wall, or raster-to-vector
 substitution is used to manufacture a supposedly exact overhang. Roof-to-wall
 offset and physical roof-edge uncertainty remain unset. The next implementation
@@ -86,3 +87,18 @@ Outputs are `plan-candidates.jsonl`, `elevation-candidates.jsonl` and
 The retained report is `evidence/wicker-shop-source-ingestion.json`; validation
 is `evidence/wicker-shop-source-validation.json`. Zero controls/checkpoints or
 world geometry additions are accepted.
+
+## Raster recovery
+
+`scripts/extract_wicker_elevation_rasters.py` exports the checksum-pinned
+elevation sheet’s 33 unique image assets and all 85 placements. Each placement
+records its native pixel-to-page affine transform, pixel sampling steps, image
+hash and mask reference. Repeated blank tiles remain recorded; placement counts
+are not feature counts. Two complete exports replayed byte-for-byte across 34
+files. The retained manifest is `evidence/wicker-elevation-raster-manifest.json`.
+Sampling resolution alone is not physical edge accuracy. Roof/wall silhouettes
+still require rendered-mask-aware interpretation and independent registration.
+
+```sh
+python scripts/extract_wicker_elevation_rasters.py --pdf shop-elevations.pdf --output fresh-raster-export
+```
