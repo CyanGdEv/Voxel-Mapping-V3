@@ -13,6 +13,17 @@ sheet state stays visible. This stage reports missing components and writes no
 world geometry. Reusing an old park overlay is explicitly rejected as area
 reconstruction. Extracted candidates are not automatically buildings or fences.
 
+The coordinator also writes `components/component-mentions.jsonl`. Queue,
+stair, fence and pre-show text labels are indexed in the same native PDF
+coordinate frame as the extracted geometry. Each mention retains its document
+hash, page, printed wording, label bounds and a stable identity. Nearby
+line/polygon IDs are review suggestions, never accepted geometry bindings.
+Fence descriptions and printed height values are retained; omitted units are
+explicitly unspecified. A canopy label alone does not establish a queue shelter,
+and inspection levels cannot become passenger floors. Missing stair labels do
+not prove that there are no stairs on a drawing. These mentions do not populate
+the required physical component inventory or emit any world blocks.
+
 For reconstruction, give an area a `reconstruction_job` pointing to a normal
 park-pipeline recipe, plus projected/geographic `bounds` and `bounds_crs` for its
 target extent. Run with `--stage reconstruct --max-cycles 1`. Recipe asset paths

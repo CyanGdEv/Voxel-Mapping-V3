@@ -103,10 +103,12 @@ def run(config_path, stage='extract', max_cycles=1):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000))
+        from .planning_components import run as identify
+        mentions=identify(corpus,work/'drawing-geometry',work/'components')
         available={sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")}
         entry.update(name=area['name'],applications=area['application_references'],document_records=len(docs),
                      selected_documents=[{'title':d.get('title'),'state':d.get('state','unknown'),'sha256':d.get('sha256'),'url':d['url']} for d in docs],
-                     acquisition=acquisition,extraction=extracted,available_planning_sha256=sorted(available),
+                     acquisition=acquisition,extraction=extracted,component_mentions=mentions,available_planning_sha256=sorted(available),
                      status='awaiting_reconstruction',missing_components=area['required_families'],
                      world_geometry_additions=0)
     finally:corpus.close()
