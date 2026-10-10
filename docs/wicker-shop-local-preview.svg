@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="690" viewBox="0 0 1100 690">
+<rect width="1100" height="690" fill="#f5f7fa"/>
+<style>text{font-family:Arial,sans-serif;fill:#263447}.title{font-size:26px;font-weight:700}.label{font-size:15px}</style>
+<text x="35" y="42" class="title" font-size="26" font-family="sans-serif" font-weight="bold">Wicker shop · provisional local geometry</text>
+<text x="35" y="70" class="label" font-size="15" font-family="sans-serif">Proposed drawings · no geographic placement · wall and opening heights unresolved</text>
+<polygon points="252.11,281.99 572.89,384.63 475.39,369.25 154.61,266.60" fill="#b7cba1" stroke="#48613d" stroke-width="2"/>
+<polygon points="154.61,266.60 475.39,369.25 377.89,494.32 57.11,391.68" fill="#859e6e" stroke="#48613d" stroke-width="2"/>
+<line x1="252.11" y1="281.99" x2="252.11" y2="348.83" stroke="#abb7c2" stroke-width="3" stroke-dasharray="5 6"/>
+<line x1="572.89" y1="384.63" x2="572.89" y2="451.48" stroke="#abb7c2" stroke-width="3" stroke-dasharray="5 6"/>
+<line x1="57.11" y1="391.68" x2="57.11" y2="458.52" stroke="#abb7c2" stroke-width="3" stroke-dasharray="5 6"/>
+<line x1="377.89" y1="494.32" x2="377.89" y2="561.17" stroke="#abb7c2" stroke-width="3" stroke-dasharray="5 6"/>
+<line x1="255.35" y1="356.37" x2="198.20" y2="388.25" stroke="#263447" stroke-width="3" />
+<line x1="122.01" y1="430.75" x2="74.40" y2="457.32" stroke="#263447" stroke-width="3" />
+<line x1="74.40" y1="457.32" x2="374.59" y2="553.38" stroke="#263447" stroke-width="3" />
+<line x1="374.59" y1="553.38" x2="426.63" y2="524.51" stroke="#263447" stroke-width="3" />
+<line x1="503.63" y1="481.80" x2="555.67" y2="452.94" stroke="#263447" stroke-width="3" />
+<line x1="555.67" y1="452.94" x2="286.89" y2="366.51" stroke="#263447" stroke-width="3" />
+<line x1="269.80" y1="361.02" x2="255.35" y2="356.37" stroke="#263447" stroke-width="3" />
+<line x1="198.20" y1="388.25" x2="122.01" y2="430.75" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="426.63" y1="524.51" x2="503.63" y2="481.80" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="286.89" y1="366.51" x2="269.80" y2="361.02" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="695.98" y1="440.81" x2="695.71" y2="377.23" stroke="#263447" stroke-width="3" />
+<line x1="695.36" y1="292.47" x2="695.13" y2="239.49" stroke="#263447" stroke-width="3" />
+<line x1="695.13" y1="239.49" x2="963.73" y2="239.49" stroke="#263447" stroke-width="3" />
+<line x1="963.73" y1="239.49" x2="964.14" y2="297.17" stroke="#263447" stroke-width="3" />
+<line x1="964.75" y1="382.53" x2="965.16" y2="440.22" stroke="#263447" stroke-width="3" />
+<line x1="965.16" y1="440.22" x2="724.25" y2="440.75" stroke="#263447" stroke-width="3" />
+<line x1="708.94" y1="440.78" x2="695.98" y2="440.81" stroke="#263447" stroke-width="3" />
+<line x1="695.71" y1="377.23" x2="695.36" y2="292.47" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="964.14" y1="297.17" x2="964.75" y2="382.53" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="724.25" y1="440.75" x2="708.94" y2="440.78" stroke="#087fb7" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="686.50" y1="449.05" x2="973.50" y2="449.05" stroke="#6b8b54" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="973.50" y1="449.05" x2="973.50" y2="230.95" stroke="#6b8b54" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="973.50" y1="230.95" x2="686.50" y2="230.95" stroke="#6b8b54" stroke-width="3" stroke-dasharray="5 4"/>
+<line x1="686.50" y1="230.95" x2="686.50" y2="449.05" stroke="#6b8b54" stroke-width="3" stroke-dasharray="5 4"/>
+<text x="80" y="120" class="label" font-size="15" font-family="sans-serif">Roof surface + wall bases (no wall surfaces)</text>
+<text x="730" y="120" class="label" font-size="15" font-family="sans-serif">Plan · centred assembly hypothesis</text>
+<text x="50" y="565" class="label" font-size="15" font-family="sans-serif">Roof: 16.88 × 12.83 m · ridge about 7.21 m above drawn floor</text>
+<text x="50" y="595" class="label" font-size="15" font-family="sans-serif">Normalized wall spans: about 15.82 × 11.83 m</text>
+<text x="50" y="625" class="label" font-size="15" font-family="sans-serif">Blue dashes: source openings · grey dashes: alignment guides only</text>
+<text x="50" y="655" class="label" font-size="15" font-family="sans-serif">Missing heights remain unset. This is a geometry review, not a generated Minecraft world.</text>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "json_and_svg_byte_identical_replay": true,
+  "local_rigid_transform_preserves_wall_lengths": true,
+  "centred_roof_covers_wall_outline": true,
+  "conflicting_dimensions_rejected": true,
+  "changed_roof_review_rejected": true,
+  "wall_and_opening_heights_unset": true,
+  "wall_surfaces_not_invented": true,
+  "svg_rendered_and_visually_reviewed": true,
+  "world_geometry_additions": 0
+}
