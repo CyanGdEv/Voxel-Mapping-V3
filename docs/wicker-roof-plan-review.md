@@ -70,3 +70,8 @@ python scripts/review_wicker_roof_plan.py \
 
 Full evidence: `evidence/wicker-roof-plan-review.json`.
 Validation: `evidence/wicker-roof-plan-validation.json`.
+
+Follow-up: [orientation context and independent imagery search](wicker-orientation-cues.md)
+uses native northing labels to distinguish the north-consistent hypothesis,
+without promoting the centred interior line or nonmatching lower cluster to
+independent physical checkpoints.
