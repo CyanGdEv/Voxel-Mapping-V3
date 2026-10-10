@@ -73,3 +73,28 @@ def cap_corner_options(endcaps, opening, native_matrix, unit, sampling_bound):
                                'within_manual_endpoint_sampling_bound': residual <= sampling_bound,
                                'physical_wall_face_identity_verified': False})
     return result
+
+
+def nearby_plan_segments(edges, corridor_geometry, unit, native_matrix, layout_inverse):
+    """Retain nearby short source strokes; a door-leaf or reveal role is unverified."""
+    from shapely.geometry import LineString, shape
+    if len(edges)>20000 or not math.isfinite(unit) or unit<=0:
+        raise ValueError('Bounded edges and finite positive scale required')
+    corridor=shape(corridor_geometry)
+    if corridor.is_empty or not corridor.is_valid or corridor.geom_type!='Polygon':
+        raise ValueError('Valid source gap corridor required')
+    a,b,c,d,e,f=native_matrix;layout=np.asarray(layout_inverse,dtype=float)
+    if not all(math.isfinite(v) for v in native_matrix) or layout.shape!=(2,2) or not np.isfinite(layout).all() or np.linalg.det(layout)<=0:
+        raise ValueError('Finite native and layout matrices required')
+    result=[]
+    for edge in edges:
+        points=np.asarray(edge['points'],dtype=float)
+        if points.shape!=(2,2) or not np.isfinite(points).all():raise ValueError('Finite source edge pair required')
+        line=LineString(points);width=line.length*unit;distance=line.distance(corridor)*unit
+        if not .5<=width<=1.2 or distance>.25:continue
+        native=points@np.array([[a,b],[c,d]])+[e,f];normalized=native@layout*unit
+        result.append({'source_edge':edge,'nominal_length_m':width,'nominal_distance_to_gap_corridor_m':distance,
+                       'layout_normalized_length_m':float(np.linalg.norm(normalized[1]-normalized[0])),
+                       'door_leaf_or_reveal_role_verified':False,'world_geometry_additions':0})
+        if len(result)>500:raise ValueError('Nearby stroke result budget exceeded')
+    return sorted(result,key=lambda r:r['source_edge']['id'])

@@ -164,3 +164,27 @@ python scripts/review_wicker_opening_correspondence.py --endcaps \
 Replays reproduce original PDFs/fills, manual floor traces, and layout anchors before comparison. The final new receipt repeats byte-identically; the older default opening receipt remains byte-identical. Budgets cap input fills, inspected vertices, caps, comparison/overlap operations and results. Reordered fill inputs produce identical outputs. Six focused tests cover separate paints, complex multipart returns, rotations, masks/offsets/material differences, budgets/duplicate identities, and retention of all corner alternatives.
 
 Next: review the northwest door's actual reveal/outer-face endpoints and recover elevation opening extents from source geometry. Accepted wall-face identity, complete shell topology, as-built state and geographic placement remain unresolved. Zero world geometry is added.
+
+## Raster elevation opening widths and door-stroke review
+
+The checksum-pinned elevation PDF contains tiled raster drawing artwork. Its 224 eligible native straight strokes do not contain opening-head segments near the three reviewed vertical traces. The new channel uses the original full-page render (1888 × 1334 pixels, unchanged pinned sample hash), rather than manufacturing vector jambs.
+
+`raster-jamb-head-hypotheses-v1` searches a bounded horizontal window around each pinned vertical trace. At both gray thresholds 220 and 235, a jamb column must have at least 80% dark support across the interior height, and a head row within the ±2-pixel seed band must have at least 90% support between the jambs. Both threshold variants must agree on corresponding column extents within two pixels. Every qualifying pair remains a candidate; no nearest/shortest enclosure is selected. Partial jambs, missing heads and threshold-only boundaries are withheld. Source crop hashes, exact column groups, supported head rows, render-to-native transform and the grayscale recipe are retained. Original pixels are unchanged.
+
+| Seeded view | Stable raster candidate pairs | Nominal raster interval including sampling | Plan cap-centre span |
+| --- | ---: | ---: | ---: |
+| Southwest opening | 1 | 4.677–5.167 m | 4.996 m |
+| Northeast opening | 1 | 4.677–5.212 m | 4.999 m |
+| Northwest door | 1 | 0.713–1.247 m | 1.011 m |
+
+Each plan span lies within its raster interval. The intervals combine detected stroke extents and the existing ±2-pixel per-endpoint sampling allowance. They are **source-image sampling intervals, not physical accuracy bounds**. The native/manual plan sampling bounds are not enlarged. The northwest interval also contains the earlier 0.901 m normalized manual trace, so raster width agreement does not resolve that discrepancy. Jamb physical roles, head/floor baselines and plan/elevation identity remain unverified; no complete opening surface is accepted.
+
+A separate northwest plan queue retains two eligible nearby straight strokes, with normalized lengths about 0.810 m and 0.922 m. Both lie within the fixed 0.25 m nominal corridor-discovery window and retain native path/item/paint identities. Neither is automatically called a door leaf, frame or reveal. Reveal depth and physical door-leaf width remain null; endpoint geometry is not changed to make these lengths agree with the 1.011 m filled-wall span.
+
+```sh
+python scripts/review_wicker_elevation_openings.py \
+  --pdf-directory /path/to/checksum-named-pdfs \
+  --output evidence/wicker-shop-elevation-openings.json
+```
+
+The script verifies source PDF/render/annotation hashes and recomputes the plan endcaps, manual traces and layout correction before comparison. Repeated final receipts are byte-identical. Tests cover source preservation, two-threshold/head/jamb support, missing/broken boundaries, ambiguity, invalid inputs, and nearby short-stroke filtering without physical-role assignment. Next: establish whether the northwest source strokes represent the leaf and frame/reveal, confirm corresponding wall faces and head/ground boundaries, then assemble a provisional local shell with the remaining topology holds explicit. Geographic placement, vertical datum and current/as-built state remain unresolved. World additions: zero.

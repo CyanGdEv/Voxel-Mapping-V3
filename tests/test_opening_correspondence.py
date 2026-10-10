@@ -1,9 +1,18 @@
 import math
 import unittest
-from voxel_mapper.opening_correspondence import compare
+from voxel_mapper.opening_correspondence import compare, nearby_plan_segments
+from shapely.geometry import box, mapping
 
 
 class OpeningCorrespondenceTests(unittest.TestCase):
+    def test_nearby_door_strokes_keep_all_roles_unassigned(self):
+        edges=[{'id':'near','points':[[0,0],[8,0]]},
+               {'id':'far','points':[[100,100],[108,100]]},
+               {'id':'long','points':[[0,0],[80,0]]}]
+        r=nearby_plan_segments(edges,mapping(box(0,-1,10,1)),.1,[1,0,0,1,0,0],[[1.1,0],[0,1]])
+        self.assertEqual([row['source_edge']['id'] for row in r],['near'])
+        self.assertAlmostEqual(r[0]['layout_normalized_length_m'],.88)
+        self.assertFalse(r[0]['door_leaf_or_reveal_role_verified'])
     def gap(self, points=((0, 0), (10, 0))):
         return {'coordinate_frame': 'unrotated_mupdf_points_y_down', 'fill_candidate_id': 'fill',
                 'projected_gap_endpoints': points, 'nominal_gap_width_m': 1}
