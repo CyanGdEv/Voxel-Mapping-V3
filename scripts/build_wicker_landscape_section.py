@@ -11,12 +11,12 @@ import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from pyproj import datadir
 from shapely.geometry import Point,box,mapping
-from shapely.ops import transform
+from shapely.ops import transform,unary_union
 from voxel_mapper.wickerman import inspect_drawings,BBOX
 from voxel_mapper.wicker_registration import inspect_alignment,apply_candidate
 from voxel_mapper.wicker_surfaces import extract_surfaces
 from voxel_mapper.wicker_patterns import extract_pattern_surfaces
-from voxel_mapper.wicker_details import legend_fills
+from voxel_mapper.wicker_details import legend_fills,straightened
 from voxel_mapper.terrain import Terrain
 from voxel_mapper.bedrock import export_world
 
@@ -27,6 +27,16 @@ LABEL_MATERIAL={'brick paving':'bricks','brick':'bricks','tarmac':'black_concret
                 'concrete':'light_gray_concrete','concrete paving':'light_gray_concrete'}
 # User's whole-polygon policy: specific finishes beat generic stone/concrete.
 PAVING_PRECEDENCE=('bricks','black_concrete','gravel','light_gray_concrete','stone')
+
+
+def recover_paving(vectors, annotations, scale):
+    original,receipt=extract_surfaces(vectors,annotations,scale)
+    candidates,flattened=extract_surfaces([straightened(v) for v in vectors],annotations,scale)
+    known={r['vector_sequence'] for r in original}
+    receipt['curve_recovery']={'method':'existing bounded 0.2 PDF-point cubic flattening; same legend/clip/hole checks',
+                              'original_candidates':len(original),'recovered_sequences':[r['vector_sequence'] for r in candidates if r['vector_sequence'] not in known],
+                              'withheld_fill_paths_after_flattening':flattened['withheld_fill_paths']}
+    return candidates,receipt
 
 
 def paving_spawn(rows, shop_columns):
@@ -90,7 +100,7 @@ def overlay(features,terrain,bounds,protected):
 
 def build(base,pdf,osm,grid,output):
     out=Path(output);out.mkdir(parents=True,exist_ok=True);base=Path(base)
-    if (out/'park.mcworld').exists() or (out/'Wicker_V9_Paths_Plaza.mcworld').exists():raise ValueError('Refusing to overwrite exported section')
+    if (out/'park.mcworld').exists() or (out/'Wicker_V10_Paths_Ground_Audit.mcworld').exists():raise ValueError('Refusing to overwrite exported section')
     sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
     if sha(pdf)!=PDF or sha(grid)!=GRID:raise ValueError('Pinned planning PDF and datum grid required')
     datadir.append_data_dir(str(Path(grid).resolve().parent))
@@ -102,7 +112,7 @@ def build(base,pdf,osm,grid,output):
     page=evidence['documents'][0]['pages'][0]
     with gzip.open(out/page['vector_file'],'rt') as stream:vectors=json.load(stream)
     scale=alignment['printed_scale_m_per_pdf_point'];annotations=page['annotations']
-    paving,paving_receipt=extract_surfaces(vectors,annotations,scale)
+    paving,paving_receipt=recover_paving(vectors,annotations,scale)
     patterns,pattern_receipt=extract_pattern_surfaces(Path(pdf),annotations,scale,PDF)
     paving+=patterns
     features=[];failures=[]
@@ -123,6 +133,28 @@ def build(base,pdf,osm,grid,output):
                                                 'material_status':'legend-bound rock outline; stone type and one-block height are estimates','vector_index':candidate['vector_index']})
     except (ValueError,StopIteration) as error:failures.append({'kind':'rock_edge','reason':str(error)})
     report=json.loads((base/'quality-report.json').read_text());bounds=report['bounds_bng_m']
+    boundary=box(*bounds)
+    paving_union=unary_union([f['polygon'] for f in features if f['kind']=='paving'])
+    ground_audit={'recovered_paving':[], 'grassed_areas':[], 'withheld_details':[]}
+    recovered=set(paving_receipt['curve_recovery']['recovered_sequences'])
+    for f in features:
+        if f.get('vector_sequence') in recovered:
+            ground_audit['recovered_paving'].append({'vector_sequence':f['vector_sequence'],
+                'area_in_section_m2':f['polygon'].intersection(boundary).area,'material':f['material']})
+    try:
+        for candidate in legend_fills(vectors,annotations,'New and existing grassed areas to be ',scale):
+            polygon=transform(project,candidate['polygon']).intersection(boundary)
+            if not polygon.is_empty:
+                ground_audit['grassed_areas'].append({'vector_index':candidate['vector_index'],
+                    'area_in_section_m2':polygon.area,'paving_overlap_m2':polygon.intersection(paving_union).area,
+                    'handling':'retain grass terrain; report overlap rather than erase mapped paving'})
+    except (ValueError,StopIteration) as error:
+        ground_audit['withheld_details'].append({'kind':'grassed_area','reason':str(error)})
+    understorey=legend_fills(vectors,annotations,'New mainly indigenous understorey ',scale)
+    if not understorey:
+        ground_audit['withheld_details'].append({'kind':'understorey','reason':'No clipped plan fill of at least 2 square metres matches the legend; small hatch fragments do not establish an area boundary.'})
+    ground_audit['unbound_grading_annotations']=[a['text'] for a in annotations if 'graded' in a['text'].lower() or 'lowered' in a['text'].lower()]
+    (out/'ground-detail-audit.json').write_text(json.dumps(ground_audit,indent=2)+'\n')
     original=[json.loads(line) for line in (base/'voxels.jsonl').read_text().splitlines()]
     if len(original)>200000:raise ValueError('Bounded base section required')
     protected={(r['x'],r['z']) for r in original if r['kind']=='building'}
@@ -133,7 +165,7 @@ def build(base,pdf,osm,grid,output):
     with (out/'voxels.jsonl').open('w') as stream:
         for row in original+rows:stream.write(json.dumps(row)+'\n')
     result={'status':'provisional plan landscape section','input_sha256':{'base_rows':sha(base/'voxels.jsonl'),'pdf':PDF,'osm':sha(osm),'datum_grid':GRID},
-            'alignment':alignment,'paving_receipt':paving_receipt,'pattern_receipt':pattern_receipt,'bed_receipt':bed_receipt,
+            'alignment':alignment,'paving_receipt':paving_receipt,'pattern_receipt':pattern_receipt,'bed_receipt':bed_receipt,'ground_detail_audit':ground_audit,
             'overlay_cells':len(rows),'features_by_kind':dict(Counter(r['kind'] for r in outcomes if r['emitted_cells'])),
             'outcomes':outcomes,'failures':failures,'raised_planters':'No independently bound raised planter structures; planted beds only.',
             'accepted_controls':0,'accepted_checkpoints':0,'production_placement_eligible':False,
@@ -147,12 +179,12 @@ def build(base,pdf,osm,grid,output):
     report.update(status='provisional_grounded_shop_and_landscape_review',landscape=result)
     report['limitations']+=result['limitations']
     report['spawn_local_xyz_m']=paving_spawn(rows,protected)
-    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker V9 PATHS — plaza spawn — provisional',ground_depth=4)
-    direct=out/'Wicker_V9_Paths_Plaza.mcworld'
+    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker V10 PATHS — recovered curve — provisional',ground_depth=4)
+    direct=out/'Wicker_V10_Paths_Ground_Audit.mcworld'
     (out/'park.mcworld').rename(direct)
     report['world']['file']=direct.name
     (out/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
-    (out/'README.txt').write_text('WICKER PATHS AND LANDSCAPE V9 — PROVISIONAL 1:1\nImport Wicker_V9_Paths_Plaza.mcworld and open the world named Wicker V9 PATHS. Spawn is on paving beside the shop. Grounded V7 shop and terrain retained.\n'
+    (out/'README.txt').write_text('WICKER PATHS AND LANDSCAPE V10 — PROVISIONAL 1:1\nImport Wicker_V10_Paths_Ground_Audit.mcworld and open Wicker V10 PATHS. Recovered curved paving and whole-polygon material rule. Grounded shop and plaza spawn retained.\n'
         'Paving, planted beds and rock edges follow the 2017 proposal. Documented brick/tarmac/gravel classes use Minecraft proxies.\n'
         'Neutral stone paving means material unconfirmed. Planting soil/foliage and rock heights are estimates. No raised planter structures are claimed.\n'
         'Read landscape-review.json for feature-specific material status and unresolved alignment.\n')

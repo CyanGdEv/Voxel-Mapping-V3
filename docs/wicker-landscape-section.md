@@ -1,4 +1,4 @@
-# Source-linked paths and landscape section V9
+# Source-linked paths and landscape section V10
 
 V8 adds the 2017 drawing **373/95/7B** to the grounded V7 shop/terrain review.
 The official PDF is pinned to SHA256
@@ -83,3 +83,28 @@ contents, not in-game appearance or the user's imported world.
 The material policy was updated after the V9 download was generated. Existing
 V9 validation receipts describe its original materials; the new policy applies
 to subsequent builds.
+
+## Missing polygon audit and V10
+
+The straight-fill extractor omitted two source paving polygons containing
+curves. Applying the existing bounded curve flattening before the same legend,
+clip and hole checks recovers both: sequence 37 intersects this section by
+21.63 square metres; sequence 38 lies outside it. V10 adds 22 tarmac blocks
+from sequence 37 and removes no existing landscape coordinates. The whole
+polygon material policy also changes 446 existing cells. There are now 31
+emitted paving areas, 12 planted beds and three rock-edge shapes.
+
+Nine source-bound grass polygons intersect the section. Existing terrain
+already provides grass; three polygons overlap paving by a combined 39.90
+square metres. These conflicts are recorded without erasing the paths.
+The understorey legend has only small matching hatch fragments on the plan,
+not a recoverable area boundary above the two-square-metre threshold. Printed
+1:3 grading notes are retained as unresolved annotations; this build does not
+invent their grading boundaries or design levels.
+
+Import `Wicker_V10_Paths_Ground_Audit.mcworld`, named **Wicker V10 PATHS**.
+The package checker confirms all 3,946 landscape cells, including air above
+3,793 uncovered path cells. It also confirms paving beneath the plaza spawn.
+`evidence/wicker-ground-detail-audit.json` records the source omissions and
+remaining conflicts; `evidence/wicker-landscape-v10-package-validation.json`
+records verification of the actual downloadable archive.

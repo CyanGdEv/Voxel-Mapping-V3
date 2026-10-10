@@ -1,9 +1,27 @@
 import unittest
 from shapely.geometry import box
-from scripts.build_wicker_landscape_section import material_for_polygon,overlay,paving_spawn
+from scripts.build_wicker_landscape_section import material_for_polygon,overlay,paving_spawn,recover_paving
 
 
 class LandscapeSectionTests(unittest.TestCase):
+    def test_recovered_curved_paving_preserves_clip_and_hole(self):
+        legend={'type':'f','items':[['re',[200,100,260,140],1]],'fill':[.8,.7,.6],
+                'fill_opacity':1,'even_odd':True,'level':0,'seqno':9}
+        clip={'type':'clip','items':[['re',[0,0,20,10],1]],'even_odd':True,'level':0}
+        curve={'type':'f','items':[['l',[0,0],[20,0]],
+               ['c',[20,0],[20,10],[10,20],[0,20]],['l',[0,20],[0,0]],
+               ['re',[5,5,7,7],1]],'fill':[.8,.7,.6],'fill_opacity':1,
+               'even_odd':True,'level':1,'seqno':37}
+        labels=[{'text':'Existing Paving with levels','bbox':[270,105,390,120]}]
+        candidates,receipt=recover_paving([legend,clip,curve],labels,1)
+        self.assertEqual(receipt['curve_recovery']['recovered_sequences'],[37])
+        self.assertEqual(len(candidates),1)
+        polygon=candidates[0]['polygon']
+        self.assertLessEqual(polygon.bounds[3],10)
+        from shapely.geometry import Point
+        self.assertFalse(polygon.covers(Point(6,6)))
+        self.assertTrue(polygon.covers(Point(2,2)))
+
     def test_spawn_uses_broad_paving_near_shop_and_excludes_beds(self):
         rows=[{'x':x,'z':z,'y':10,'kind':'path','material':'bricks'} for x in range(3) for z in range(3)]
         rows+=[{'x':x,'z':z,'y':10,'kind':'path','material':'dirt'} for x in range(4,7) for z in range(3)]
