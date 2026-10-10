@@ -137,6 +137,13 @@ def run(job_path,stage='all'):
                                                   max_pages=annotation_config.get('max_pages',10000))
             checkpoint('drawing_annotations',annotation_report)
             pinned['drawing_annotations']={'contract':annotation_report['contract'],'annotations_sha256':annotation_report['annotations_sha256']}
+        callout_config=job.get('drawing_callouts',{})
+        if callout_config.get('enabled',False):
+            from .drawing_callouts import run as inspect_callouts
+            callout_report=inspect_callouts(path(callout_config['documents']),root/'drawing-callouts',
+                                          max_pages=callout_config.get('max_pages',10000))
+            checkpoint('drawing_callouts',callout_report)
+            pinned['drawing_callouts']={'contract':callout_report['contract'],'callouts_sha256':callout_report['callouts_sha256']}
         bridge=job.get('registration_bridge',{});bridge_feed=None
         if bridge.get('enabled',False):
             from .drawing_registration_bridge import run_batch
