@@ -47,6 +47,9 @@ def export_world(store,source,output,ground=None):
     state.executescript('CREATE TABLE IF NOT EXISTS job(identity TEXT,ready INTEGER NOT NULL DEFAULT 0); CREATE TABLE IF NOT EXISTS chunks(cx INTEGER,cz INTEGER,expected TEXT,delta INTEGER,PRIMARY KEY(cx,cz));')
     if 'ready' not in {row[1] for row in state.execute('PRAGMA table_info(job)')}:
         state.execute('ALTER TABLE job ADD COLUMN ready INTEGER NOT NULL DEFAULT 1');state.commit()
+    if 'ready' not in {row[1] for row in state.execute('PRAGMA table_info(chunks)')}:
+        state.execute('ALTER TABLE chunks ADD COLUMN ready INTEGER NOT NULL DEFAULT 1')
+        state.execute('ALTER TABLE chunks ADD COLUMN baseline TEXT');state.commit()
     previous=state.execute('SELECT identity,ready FROM job').fetchone()
     if previous and previous[0]!=identity:state.close();raise ValueError('Different geometry/base world; use fresh export directory')
     if not fresh and not previous:state.close();raise ValueError('Output exists without a resumable export contract')
@@ -77,8 +80,17 @@ def export_world(store,source,output,ground=None):
         for cx,cz in store.db.execute('SELECT DISTINCT cx,cz FROM voxels ORDER BY cx,cz'):
             if (cx,cz) not in coords:raise ValueError('Planned geometry exceeds retained terrain chunk coverage')
             chunk=world.get_chunk(cx,cz,'minecraft:overworld')
-            retained=state.execute('SELECT expected FROM chunks WHERE cx=? AND cz=?',(cx,cz)).fetchone()
-            if retained:verify_sections(chunk,json.loads(retained[0]));world.unload();continue
+            retained=state.execute('SELECT expected,ready,baseline FROM chunks WHERE cx=? AND cz=?',(cx,cz)).fetchone()
+            if retained:
+                try:verify_sections(chunk,json.loads(retained[0]))
+                except ValueError:
+                    if retained[1] or not retained[2]:raise
+                    verify_sections(chunk,json.loads(retained[2]))
+                    with state:state.execute('DELETE FROM chunks WHERE cx=? AND cz=?',(cx,cz))
+                else:
+                    with state:state.execute('UPDATE chunks SET ready=1 WHERE cx=? AND cz=?',(cx,cz))
+                    world.unload();continue
+            baseline_hashes=section_hashes(chunk)
             delta=0
             for row in store.tile_rows(cx,cz):
                 x,y,z=row['x'],row['y']+offset,-row['z']
@@ -93,12 +105,16 @@ def export_world(store,source,output,ground=None):
                     raise ValueError('Native protected-world collision; no package: '+str([row['x'],row['y'],row['z']]))
                 delta+=int(expected.base_name!='air')-int(old.base_name!='air');chunk.blocks[x%16,y,z%16]=chunk.block_palette.get_add_block(expected)
             chunk.changed=True;world.put_chunk(chunk,'minecraft:overworld');expected_hashes=section_hashes(chunk)
+            # Record the complete before/after section fingerprints before the
+            # backend flush. A killed process can safely recognize either state.
+            with state:state.execute('INSERT INTO chunks(cx,cz,expected,delta,ready,baseline) VALUES(?,?,?,?,0,?)',
+                                     (cx,cz,json.dumps(expected_hashes),delta,json.dumps(baseline_hashes)))
             # LevelDB writes are flushed by closing the wrapper. Unloading
             # alone can expose stale section bytes in this backend.
             world.save();world.close();world=None;del chunk
             world=amulet.load_level(str(destination))
             reopened=world.get_chunk(cx,cz,'minecraft:overworld');verify_sections(reopened,expected_hashes)
-            with state:state.execute('INSERT INTO chunks VALUES(?,?,?,?)',(cx,cz,json.dumps(expected_hashes),delta))
+            with state:state.execute('UPDATE chunks SET ready=1 WHERE cx=? AND cz=?',(cx,cz))
             del reopened
             world.unload()
         if set(world.all_chunk_coords('minecraft:overworld'))!=coords:raise ValueError('Native chunk coverage changed')

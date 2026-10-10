@@ -8,7 +8,7 @@ import amulet
 from shapely.geometry import box, mapping
 from voxel_mapper.bedrock import export_world, material_block
 from voxel_mapper.generation_cycles import CyclePlan, partition_sections, file_hash
-from voxel_mapper.generation_cycle_export import ScopedGeometryStore, worker, preview, run, worker_directory
+from voxel_mapper.generation_cycle_export import ScopedGeometryStore, worker, preview, run, run_isolated, worker_directory
 from voxel_mapper.reconstruction.batch import GeometryStore
 from voxel_mapper.reconstruction.engine import Context
 from voxel_mapper.reconstruction.model import Feature, Source
@@ -75,6 +75,30 @@ class CycleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'payload differs'): preview(self.plan,self.geometry,self.base,1,self.output)
         self.assertEqual(self.plan.next_cycle(),1)
         self.assertFalse((self.output/'previews').exists())
+
+    def test_isolated_processes_publish_and_resume_verified_cycles(self):
+        first=run_isolated(self.plan,self.geometry,self.base,self.output,max_cycles=2)
+        self.assertEqual(first['completed_cycles'],[1,2])
+        self.assertEqual(self.plan.next_cycle(),3)
+        result=run_isolated(self.plan,self.geometry,self.base,self.output,max_cycles=3)
+        self.assertEqual(result['completed_cycles'],[3,4])
+        self.assertEqual(result['progress']['status'],'complete')
+        last=result['progress']['cycles'][-1]['preview']
+        self.assertEqual(self.block(self.output/last['file'],33,1,1),material_block('gray_concrete'))
+        self.assertEqual(run_isolated(self.plan,self.geometry,self.base,self.output,max_cycles=2)['completed_cycles'],[])
+
+    def test_saved_chunk_intent_resumes_after_flush_before_journal_completion(self):
+        import sqlite3
+        self.workers(1)
+        with patch('voxel_mapper.reconstruction.batch_export.verify_sections',side_effect=RuntimeError('stopped after native flush')):
+            with self.assertRaisesRegex(RuntimeError,'native flush'):
+                preview(self.plan,self.geometry,self.base,1,self.output)
+        with sqlite3.connect(self.output/'native/export-state.sqlite') as state:
+            self.assertEqual(state.execute('SELECT ready FROM chunks').fetchone()[0],0)
+        self.assertEqual(self.plan.next_cycle(),1)
+        retained=preview(self.plan,self.geometry,self.base,1,self.output)
+        self.assertEqual(self.plan.next_cycle(),2)
+        self.assertEqual(self.block(self.output/retained['file'],15,1,1),material_block('gray_concrete'))
 
     def test_export_failure_does_not_advance_and_retries_without_recompilation(self):
         self.workers(1)

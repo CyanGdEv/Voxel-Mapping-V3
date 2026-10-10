@@ -10,7 +10,7 @@
   "geometry_chunks": 3126,
   "tests": {
     "full_suite": {
-      "tests": 799,
+      "tests": 801,
       "result": "passed"
     },
     "after_query_optimization": {
@@ -41,5 +41,11 @@
     "Existing draft layers are replayed; unreviewed buildings retain their existing park models.",
     "Source placement and access dimensions remain provisional.",
     "No GitHub Actions run is claimed."
-  ]
+  ],
+  "interruption_recovery": {
+    "isolated_cli_cycles": true,
+    "chunk_write_intent_before_native_flush": true,
+    "saved_chunk_resume_test": "passed",
+    "real_resume": "restored cycle 9 published world after unjournaled pre-fix save; cycle 10 completed with fixed journal"
+  }
 }

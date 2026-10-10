@@ -199,7 +199,7 @@ def main():
         cycle = a.cycle or plan.next_cycle()
         if a.stage in ('worker','preview','run'):
             if not a.geometry or not a.output: p.error('processing requires --geometry and --output')
-            from .generation_cycle_export import worker, preview, run
+            from .generation_cycle_export import worker, preview, run, run_isolated
             if cycle is None: result = plan.report()
             elif a.stage == 'worker':
                 if a.worker is None: p.error('worker requires --worker')
@@ -207,7 +207,9 @@ def main():
             else:
                 if not a.base_world: p.error('preview/run requires --base-world')
                 if a.stage == 'preview': result = preview(plan, a.geometry, a.base_world, cycle, a.output, a.terrain_config)
-                else: result = run(plan, a.geometry, a.base_world, a.output, a.terrain_config, a.max_cycles)
+                else:
+                    runner=run_isolated if a.max_cycles>1 else run
+                    result = runner(plan, a.geometry, a.base_world, a.output, a.terrain_config, a.max_cycles)
         elif a.stage == 'next': result = {'cycle':cycle, 'workers':list(range(plan.contract['workers'])) if cycle else []}
         else: result = plan.report()
         print(json.dumps(result, indent=2))

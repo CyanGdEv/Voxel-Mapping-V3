@@ -48,7 +48,11 @@ voxel-park-cycles run --plan bundle/cycles.sqlite \
   --output output --max-cycles 1
 ```
 
-Use a larger bounded count to continue automatically. For large native jobs,
+Use a larger bounded count to continue automatically. The CLI starts a fresh
+process for each cycle when the count exceeds one, releasing native backend
+caches between previews. A process killed by memory limits does not advance
+the cycle; completed chunk checks and worker receipts are reused on resume.
+For large native jobs,
 stage mutable workers/native output on a local POSIX filesystem, then save a
 checkpoint after completed cycles. Payloads are flushed before promotion;
 canonical manifests exclude stale temporary/self-receipt files. Pending payloads

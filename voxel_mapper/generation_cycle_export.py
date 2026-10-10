@@ -195,3 +195,23 @@ def run(plan, geometry, base, output, terrain_config=None, max_cycles=1):
             for future in futures: future.result()
         previews.append(preview(plan,geometry,base,cycle,output,terrain_config))
     return {'previews':previews, 'progress':plan.report()}
+
+
+def run_isolated(plan, geometry, base, output, terrain_config=None, max_cycles=1):
+    """Release native backend caches between CLI cycles using fresh processes."""
+    import subprocess
+    import sys
+    if type(max_cycles) is not int or not 1 <= max_cycles <= 10_000:
+        raise ValueError('Bounded positive cycle count required')
+    completed=[]
+    for _ in range(max_cycles):
+        cycle=plan.next_cycle()
+        if cycle is None:break
+        command=[sys.executable,'-m','voxel_mapper.generation_cycles','run',
+                 '--plan',str(plan.path),'--geometry',str(geometry),
+                 '--base-world',str(base),'--output',str(output),'--max-cycles','1']
+        if terrain_config:command+=['--terrain-config',str(terrain_config)]
+        subprocess.run(command,check=True,stdout=subprocess.DEVNULL)
+        if plan.next_cycle()==cycle:raise ValueError('Isolated cycle did not advance its verified checkpoint')
+        completed.append(cycle)
+    return {'completed_cycles':completed,'progress':plan.report()}
