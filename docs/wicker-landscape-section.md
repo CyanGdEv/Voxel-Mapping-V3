@@ -1,4 +1,4 @@
-# Source-linked paths and landscape section V8
+# Source-linked paths and landscape section V9
 
 V8 adds the 2017 drawing **373/95/7B** to the grounded V7 shop/terrain review.
 The official PDF is pinned to SHA256
@@ -54,3 +54,23 @@ this review does not promote these candidates into an accepted park job.
 native verification. Tests cover label containment/conflicts, refusal to inherit
 old materials into new proposals, valid native block IDs, clipping, shop-column
 protection, missing terrain and above-ground rock/planting details.
+
+## Direct import and visibility check
+
+After an all-grass screenshot was reported, native checks found the V8 paving
+present at the same height as terrain, with air above the checked cells. The
+specific cause of the screenshot is unresolved; no Minecraft client session
+was available to inspect the imported world.
+
+V9 delivers `Wicker_V9_Paths_Plaza.mcworld` directly. Open the world named
+**Wicker V9 PATHS — plaza spawn — provisional — draft 1:1**. Its spawn is on
+a broad paving patch beside the shop at Minecraft **407553, 73, -343578**.
+The source geometry and material associations are retained. Unknown material
+areas remain neutral stone placeholders.
+
+`scripts/verify_wicker_landscape_package.py` extracts and cold-reopens the
+actual download, compares all 3,924 landscape cells with their expected native
+blocks, checks air above 3,771 uncovered path cells, and checks the packaged
+spawn over paving. The receipt is
+`evidence/wicker-landscape-v9-package-validation.json`. This verifies archive
+contents, not in-game appearance or the user's imported world.

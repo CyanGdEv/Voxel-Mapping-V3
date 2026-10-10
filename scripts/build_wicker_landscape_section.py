@@ -25,6 +25,22 @@ GRID='5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa'
 LABEL_MATERIAL={'brick paving':'bricks','brick':'bricks','tarmac':'black_concrete','gravel':'gravel'}
 
 
+def paving_spawn(rows, shop_columns):
+    """Put a new review visit on a broad paving patch near the shop."""
+    paving={(r['x'],r['z']):r for r in rows if r['kind']=='path' and r['material']!='dirt'}
+    if not paving or not shop_columns:
+        raise ValueError('Visible paving and shop columns required for review spawn')
+    sx=sum(x for x,z in shop_columns)/len(shop_columns)
+    sz=sum(z for x,z in shop_columns)/len(shop_columns)
+    broad=[r for (x,z),r in paving.items()
+           if all((x+dx,z+dz) in paving and abs(paving[x+dx,z+dz]['y']-r['y'])<=1
+                  for dx in (-1,0,1) for dz in (-1,0,1))]
+    if not broad:
+        raise ValueError('No broad paving patch available for review spawn')
+    row=min(broad,key=lambda r:((r['x']-sx)**2+(r['z']-sz)**2,r['x'],r['z']))
+    return [row['x'],row['y']+2,row['z']]
+
+
 def material_for_polygon(polygon,annotations,state):
     # Old survey labels cannot specify material for proposed replacement work.
     labels=[a['text'].strip().lower() for a in annotations
@@ -67,7 +83,7 @@ def overlay(features,terrain,bounds,protected):
 
 def build(base,pdf,osm,grid,output):
     out=Path(output);out.mkdir(parents=True,exist_ok=True);base=Path(base)
-    if (out/'park.mcworld').exists():raise ValueError('Refusing to overwrite exported section')
+    if (out/'park.mcworld').exists() or (out/'Wicker_V9_Paths_Plaza.mcworld').exists():raise ValueError('Refusing to overwrite exported section')
     sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
     if sha(pdf)!=PDF or sha(grid)!=GRID:raise ValueError('Pinned planning PDF and datum grid required')
     datadir.append_data_dir(str(Path(grid).resolve().parent))
@@ -123,9 +139,13 @@ def build(base,pdf,osm,grid,output):
          'properties':{k:v for k,v in f.items() if k!='polygon'}} for f in features],'crs':{'type':'name','properties':{'name':'EPSG:27700'}}},indent=2)+'\n')
     report.update(status='provisional_grounded_shop_and_landscape_review',landscape=result)
     report['limitations']+=result['limitations']
-    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker Paths and Landscape V8 — provisional',ground_depth=4)
+    report['spawn_local_xyz_m']=paving_spawn(rows,protected)
+    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker V9 PATHS — plaza spawn — provisional',ground_depth=4)
+    direct=out/'Wicker_V9_Paths_Plaza.mcworld'
+    (out/'park.mcworld').rename(direct)
+    report['world']['file']=direct.name
     (out/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
-    (out/'README.txt').write_text('WICKER PATHS AND LANDSCAPE V8 — PROVISIONAL 1:1\nImport park.mcworld. Grounded V7 shop and terrain retained.\n'
+    (out/'README.txt').write_text('WICKER PATHS AND LANDSCAPE V9 — PROVISIONAL 1:1\nImport Wicker_V9_Paths_Plaza.mcworld and open the world named Wicker V9 PATHS. Spawn is on paving beside the shop. Grounded V7 shop and terrain retained.\n'
         'Paving, planted beds and rock edges follow the 2017 proposal. Documented brick/tarmac/gravel classes use Minecraft proxies.\n'
         'Neutral stone paving means material unconfirmed. Planting soil/foliage and rock heights are estimates. No raised planter structures are claimed.\n'
         'Read landscape-review.json for feature-specific material status and unresolved alignment.\n')

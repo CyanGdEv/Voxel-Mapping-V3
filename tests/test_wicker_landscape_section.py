@@ -1,9 +1,15 @@
 import unittest
 from shapely.geometry import box
-from scripts.build_wicker_landscape_section import material_for_polygon,overlay
+from scripts.build_wicker_landscape_section import material_for_polygon,overlay,paving_spawn
 
 
 class LandscapeSectionTests(unittest.TestCase):
+    def test_spawn_uses_broad_paving_near_shop_and_excludes_beds(self):
+        rows=[{'x':x,'z':z,'y':10,'kind':'path','material':'bricks'} for x in range(3) for z in range(3)]
+        rows+=[{'x':x,'z':z,'y':10,'kind':'path','material':'dirt'} for x in range(4,7) for z in range(3)]
+        self.assertEqual(paving_spawn(rows,{(7,1)}),[1,12,1])
+        with self.assertRaises(ValueError):paving_spawn(rows[:1],{(7,1)})
+
     def test_material_labels_are_scoped_and_proposed_materials_are_not_inherited(self):
         a=[{'text':'brick paving','bbox':[.1,.1,.3,.3]},{'text':'tarmac','bbox':[5,5,6,6]}]
         self.assertEqual(material_for_polygon(box(0,0,2,2),a,'existing')[0],'bricks')
