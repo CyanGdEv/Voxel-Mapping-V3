@@ -15,6 +15,7 @@ from voxel_mapper.shop_slabs import assemble
 from voxel_mapper.shop_wall_details import decorate
 from voxel_mapper.shop_foundations import level_pad
 from voxel_mapper.shop_shell import opening_columns
+from voxel_mapper.wicker_access import build_access
 from voxel_mapper.terrain import Terrain
 from voxel_mapper.bedrock import export_world
 
@@ -88,6 +89,9 @@ def build(base,terrain_base,sources,retained,output,floor):
                            'provisional_base_m':floor,'source_outline':part['source_outline'],
                            'printed_levels':part['printed_levels'],'height_basis':part['height_basis'],
                            'dimensions':model['dimensions'],'shell':shell,'wall_detail':detail,'grounding':grounding})
+        access,access_audit=build_access(matrix,translation,audits,terrain.sample,floor,set(added)|shop,bounds)
+        for point in apertures:access.pop(point,None)
+        added.update(access)
     finally:terrain.close()
     # Joining independent source meshes may put a neighbouring wall or detail
     # in another component's aperture. Preserve all declared compound openings.
@@ -101,22 +105,22 @@ def build(base,terrain_base,sources,retained,output,floor):
             'adapter':'same rotate_model / shop_slabs.assemble / shop_wall_details.decorate / shop_foundations.level_pad pipeline',
             'source_pdfs':receipts,'outline_review_sha256':hashlib.sha256(review_path.read_bytes()).hexdigest(),
             'base_rows_sha256':hashlib.sha256((base/'voxels.jsonl').read_bytes()).hexdigest(),
-            'building_cells':len(added),'material_counts':dict(Counter(r['material'] for r in added.values())),
+            'access_review':access_audit,'building_cells':sum(r['kind']=='building' for r in added.values()),'material_counts':dict(Counter(r['material'] for r in added.values())),
             'shared_component_cells':overlaps,'landscape_cells_covered_by_buildings':len(original)-len(kept),
             'compound_aperture_cells_cleared':removed_aperture_cells,'declared_aperture_air_cells':len(apertures),
             'registration_status':'drawing correspondence hypothesis reanchored to provisional shop; not independently accepted',
             'drawing_station_iou':hypothesis['plan_correspondence_checks']['station']['roof_vs_site_inner']['iou'],
             'accepted_controls':0,'accepted_checkpoints':0,'production_placement_eligible':False,
             'limitations':['Exterior first review: rounded eave/ridge heights and aperture sizes require exact cross-sheet binding.',
-                           'The provisional floor is chosen explicitly for terrain clearance, not taken as the printed passenger/platform level.',
+                           'Pre-show floor uses printed 183.30 m (grid 183); station passenger level remains provisional.',
                            'Inspection 181.25 and undercroft 178.00 are retained as separate levels; basement, excavation, bunding and interior circulation are not yet reconstructed.',
                            'Thatch-effect oak slabs, timber fences/trapdoors and stone foundations are illustrative block proxies.',
                            'Multi-part interfaces are independently rasterized; exact doorway/circulation joins still require review.']}
     (out/'station-review.json').write_text(json.dumps(result,indent=2)+'\n')
     report['station_review']=result;report['sources']+=receipts;report['limitations']+=result['limitations']
     report['status']='provisional_shop_paths_station_preshow_review'
-    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker V11 STATION and PRESHOW — exterior review',ground_depth=4)
-    name='Wicker_V11_Station_Preshow.mcworld';(out/'park.mcworld').rename(out/name);report['world']['file']=name
+    report['world']=export_world(out/'voxels.jsonl',out,report,name='Wicker V12 QUEUE and STAIRS — access review',ground_depth=4)
+    name='Wicker_V12_Queue_Stairs.mcworld';(out/'park.mcworld').rename(out/name);report['world']['file']=name
     (out/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report
 

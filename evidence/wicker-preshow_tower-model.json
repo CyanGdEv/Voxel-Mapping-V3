@@ -60,20 +60,38 @@
       "status": "illustrative aperture pending exact floor/elevation binding"
     },
     {
-      "id": "z+/0",
+      "id": "z-/0",
       "endpoints": [
         [
           -1.5,
-          3.5221636962890623,
+          -3.5221636962890623,
           0
         ],
         [
           1.5,
-          3.5221636962890623,
+          -3.5221636962890623,
           0
         ]
       ],
       "width_metres": 3,
+      "height_metres": 2.3,
+      "status": "illustrative aperture pending exact floor/elevation binding"
+    },
+    {
+      "id": "z+/0",
+      "endpoints": [
+        [
+          -0.9,
+          3.5221636962890623,
+          0
+        ],
+        [
+          0.9,
+          3.5221636962890623,
+          0
+        ]
+      ],
+      "width_metres": 1.8,
       "height_metres": 2.3,
       "status": "illustrative aperture pending exact floor/elevation binding"
     }

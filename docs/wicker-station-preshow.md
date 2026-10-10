@@ -1,6 +1,6 @@
 # Station and pre-show 1:1 exterior review
 
-V11 adds the station, lower pre-show gable and taller pre-show pyramid roof to
+V12 adds the station, lower pre-show gable and taller pre-show pyramid roof to
 the V10 shop, paths and terrain section. It uses the same source-mesh rotation,
 half-metre slab sampling, wall closure, fence/trapdoor detailing and terrain-bearing
 foundation functions as the shop. Native world scale remains one block per metre.
@@ -24,12 +24,13 @@ same oak full-block/top-slab/bottom-slab proxies for thatch-effect tiles.
 
 ## Floors and missing construction
 
-The explicitly chosen exterior review base is **185 metres**. Foundation fill
+The pre-show uses its printed **183.30 metre** floor, snapped to grid 183.
+The station shares this review base; its passenger floor is still unbound. Foundation fill
 connects each ground-bearing column to the dated terrain; there is no inferred
 excavation. The source's pre-show floor 183.30, inspection level 181.25 and
 undercroft 178.00 remain separate claims. The inspection label is not promoted
 to a passenger floor. This export does not reconstruct the basement, internal
-layout, sandstone/earth bunding, entrance grading or exact floor registration.
+layout, sandstone/earth bunding, entrance grading or exact surveyed floor registration.
 Independent component snapping still requires circulation/interface review.
 
 Existing shop blocks are collision-protected. Landscape cells in new building
@@ -41,10 +42,10 @@ preventing adjacent walls or decorative panels from obstructing them.
 
 The native exporter verifies all written blocks and unwritten air cells. The
 download itself is separately extracted and reopened by
-`scripts/verify_wicker_station_package.py`: **2,556 building cells, 42 aperture
-air cells and 330 bearing columns** pass. Roof overhangs do not require ground
+`scripts/verify_wicker_station_package.py`: **1,940 building/access cells, 54 aperture
+air cells and 389 bearing columns** pass. Roof overhangs do not require ground
 contact. This is native block verification, not an in-game visual validation.
-The full test suite passes **788 tests**. The receipt is
+Five focused model/access tests and the full **791-test** suite pass. The receipt is
 `evidence/wicker-station-section-validation.json`; reusable model assets are
 `evidence/wicker-station-model.json`, `evidence/wicker-preshow_low-model.json`
 and `evidence/wicker-preshow_tower-model.json`.
@@ -53,10 +54,31 @@ and `evidence/wicker-preshow_tower-model.json`.
 python scripts/build_wicker_station_section.py \
   --base landscape-v10 --terrain-base grounded-v7 \
   --sources preshow-and-basement-pdfs --retained roof-and-floor-pdfs \
-  --floor 185 --output station-v11
+  --floor 183.3 --output access-v12
 python scripts/verify_wicker_station_package.py \
-  --directory station-v11 --receipt station-package-validation.json
+  --directory access-v12 --receipt station-package-validation.json
 ```
 
-Import `Wicker_V11_Station_Preshow.mcworld` and open **Wicker V11 STATION and
-PRESHOW — exterior review**. The paved spawn beside the shop is retained.
+Import `Wicker_V12_Queue_Stairs.mcworld` and open **Wicker V12 QUEUE and STAIRS — access review**. The paved spawn beside the shop is retained.
+
+## Access review and corrected source coordinates
+
+PyMuPDF roof drawing strokes use an unrotated top-down frame. Pre-show
+bounds are now converted with `y_up = 2384 - y_raw` before the rigid
+registration; the V11 placement mistakenly used raw Y as architectural Y.
+Raw and converted bounds are retained together, and a regression test checks
+the conversion. Internal doorway sides follow the corrected low/tower order.
+
+The station landing and two flights are traced from roof plan 2967-48.
+Pre-show west queue access and southeast access use the corrected entrance
+thresholds, with provisional 3 m widths and 7 m terrain connection runs.
+These are five access features, not a reconstruction of the complete queue.
+Oak slab/plank decks, side fence railings and stone bearing fill are proxies.
+The actual export contains 80 access cells, including 15 slabs and six fence
+cells. Slab flights replace overlapping landing cells to avoid overhead decks;
+ends remain open and building collisions are excluded. At this 1:1 raster,
+adjacent flight rises are 0.5 m, reaching 1 m on the rotated southeast flight.
+A bounded voxel walkability check connects all 50 non-railing deck columns
+through one surrounding-terrain component with two-block headroom and a
+maximum one-block move. Exact riser layout, handrail specification and accessible ramps remain for
+source binding and in-game review.

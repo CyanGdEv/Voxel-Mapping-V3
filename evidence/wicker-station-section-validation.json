@@ -1,12 +1,12 @@
 {
   "status": "downloadable world reopened; building cells, apertures and bearing columns verified",
-  "building_cells_checked": 2556,
-  "aperture_air_cells_checked": 42,
-  "bearing_columns_checked": 330,
-  "sha256": "5e13c2cb2d1595db43584801ca9173b8e25cc6847c093df1f32f2e3a37a98586",
+  "building_and_access_cells_checked": 1940,
+  "aperture_air_cells_checked": 54,
+  "bearing_columns_checked": 389,
+  "sha256": "0872a29e0adebe5b1436ae1ca311fa4e5fdf7515384c4e30333a6ba0418ea53f",
   "world": {
     "format": "Bedrock .mcworld",
-    "file": "Wicker_V11_Station_Preshow.mcworld",
+    "file": "Wicker_V12_Queue_Stairs.mcworld",
     "target_version": [
       1,
       21,
@@ -26,7 +26,7 @@
       -343578
     ],
     "chunks": 100,
-    "composed_blocks": 217039,
+    "composed_blocks": 216412,
     "explicit_air_cells": 0,
     "ground_fill_depth_blocks": 4,
     "round_trip_validation": "all written blocks and all unwritten air cells verified",
@@ -36,7 +36,7 @@
       "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
     },
     "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
-    "sha256": "5e13c2cb2d1595db43584801ca9173b8e25cc6847c093df1f32f2e3a37a98586",
+    "sha256": "0872a29e0adebe5b1436ae1ca311fa4e5fdf7515384c4e30333a6ba0418ea53f",
     "quality": "draft_unverified",
     "limitations": [
       "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
@@ -51,19 +51,27 @@
       {
         "id": "preshow_low",
         "anchor_bng_m": [
-          407589.4633256321,
-          343575.32445924106
+          407580.307921977,
+          343578.59639522526
         ],
         "rotation_degrees": -109.66575033887565,
-        "provisional_base_m": 185.0,
+        "provisional_base_m": 183.3,
         "source_outline": {
           "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
-          "native_pdf_bounds": [
+          "raw_pdf_bounds": [
             912.8389282226562,
             1209.0194091796875,
             1135.1978759765625,
             1450.5789794921875
           ],
+          "native_pdf_bounds": [
+            912.8389282226562,
+            933.4210205078125,
+            1135.1978759765625,
+            1174.9805908203125
+          ],
+          "raw_page_height_points": 2384,
+          "coordinate_conversion": "x unchanged; y_up = 2384 - y_raw",
           "source_boundary_drawing_indices": [
             6320,
             6321,
@@ -92,7 +100,7 @@
             "oak_planks": 66,
             "oak_slab": 32,
             "oak_slab_top": 22,
-            "spruce_planks": 76
+            "spruce_planks": 72
           },
           "roof_palette": {
             "full": "oak_planks",
@@ -102,9 +110,9 @@
           "source_half_cell_closure": {
             "status": "estimated voxel closure, not measured construction",
             "wall_boundary_columns": 74,
-            "opening_columns": 11,
+            "opening_columns": 14,
             "added_wall_cells": 154,
-            "removed_opening_cells": 44,
+            "removed_opening_cells": 56,
             "added_roof_riser_cells": 126,
             "door_air_verified": true,
             "leak_audit": {
@@ -149,10 +157,10 @@
           "post_spacing_blocks": 3,
           "material_counts": {
             "dark_oak_fence": 8,
-            "spruce_trapdoor_east": 4,
+            "spruce_trapdoor_east": 2,
             "spruce_trapdoor_north": 1,
             "spruce_trapdoor_south": 2,
-            "spruce_trapdoor_west": 1
+            "spruce_trapdoor_west": 2
           },
           "placements": [
             {
@@ -210,34 +218,6 @@
               ],
               "edge": 0,
               "material": "spruce_trapdoor_south"
-            },
-            {
-              "local_xyz": [
-                4,
-                1,
-                -3
-              ],
-              "wall_anchor_local_xyz": [
-                3,
-                1,
-                -3
-              ],
-              "edge": 1,
-              "material": "spruce_trapdoor_east"
-            },
-            {
-              "local_xyz": [
-                4,
-                1,
-                -2
-              ],
-              "wall_anchor_local_xyz": [
-                3,
-                1,
-                -2
-              ],
-              "edge": 1,
-              "material": "spruce_trapdoor_east"
             },
             {
               "local_xyz": [
@@ -378,6 +358,20 @@
               ],
               "edge": 3,
               "material": "spruce_trapdoor_west"
+            },
+            {
+              "local_xyz": [
+                -5,
+                1,
+                2
+              ],
+              "wall_anchor_local_xyz": [
+                -4,
+                1,
+                2
+              ],
+              "edge": 3,
+              "material": "spruce_trapdoor_west"
             }
           ],
           "door_policy": "only anchored to existing solid wall cells at both foot and head; no doorway facade columns decorated",
@@ -386,8 +380,8 @@
         "grounding": {
           "status": "estimated level floor and terrain-bearing foundation",
           "footprint_columns": 80,
-          "added_cells": 472,
-          "maximum_fill_depth_blocks": 6,
+          "added_cells": 216,
+          "maximum_fill_depth_blocks": 4,
           "existing_terrain_at_floor_columns": 0,
           "floor_local_y": -1,
           "continuous_terrain_contact": true,
@@ -403,7 +397,7 @@
           343583.94199150393
         ],
         "rotation_degrees": -109.66575033887565,
-        "provisional_base_m": 185.0,
+        "provisional_base_m": 183.3,
         "source_outline": {
           "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
           "role": "station_main_roof",
@@ -1317,8 +1311,8 @@
         "grounding": {
           "status": "estimated level floor and terrain-bearing foundation",
           "footprint_columns": 191,
-          "added_cells": 779,
-          "maximum_fill_depth_blocks": 6,
+          "added_cells": 397,
+          "maximum_fill_depth_blocks": 4,
           "existing_terrain_at_floor_columns": 0,
           "floor_local_y": -1,
           "continuous_terrain_contact": true,
@@ -1330,19 +1324,27 @@
       {
         "id": "preshow_tower",
         "anchor_bng_m": [
-          407582.23199868796,
-          343577.90877335035
+          407587.53924892115,
+          343576.012081116
         ],
         "rotation_degrees": -109.66575033887565,
-        "provisional_base_m": 185.0,
+        "provisional_base_m": 183.3,
         "source_outline": {
           "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
-          "native_pdf_bounds": [
+          "raw_pdf_bounds": [
             912.8389282226562,
             1000.9404296875,
             1135.1978759765625,
             1223.29931640625
           ],
+          "native_pdf_bounds": [
+            912.8389282226562,
+            1160.70068359375,
+            1135.1978759765625,
+            1383.0595703125
+          ],
+          "raw_page_height_points": 2384,
+          "coordinate_conversion": "x unchanged; y_up = 2384 - y_raw",
           "source_boundary_drawing_indices": [
             6304,
             6305,
@@ -1371,7 +1373,7 @@
             "oak_planks": 56,
             "oak_slab": 28,
             "oak_slab_top": 20,
-            "spruce_planks": 170
+            "spruce_planks": 166
           },
           "roof_palette": {
             "full": "oak_planks",
@@ -1381,9 +1383,9 @@
           "source_half_cell_closure": {
             "status": "estimated voxel closure, not measured construction",
             "wall_boundary_columns": 72,
-            "opening_columns": 11,
+            "opening_columns": 14,
             "added_wall_cells": 208,
-            "removed_opening_cells": 44,
+            "removed_opening_cells": 56,
             "added_roof_riser_cells": 144,
             "door_air_verified": true,
             "leak_audit": {
@@ -1427,11 +1429,11 @@
           "source_geometry_modified": false,
           "post_spacing_blocks": 3,
           "material_counts": {
-            "dark_oak_fence": 18,
+            "dark_oak_fence": 15,
             "spruce_trapdoor_east": 1,
             "spruce_trapdoor_north": 1,
             "spruce_trapdoor_south": 2,
-            "spruce_trapdoor_west": 2
+            "spruce_trapdoor_west": 1
           },
           "placements": [
             {
@@ -1702,62 +1704,6 @@
             },
             {
               "local_xyz": [
-                -5,
-                1,
-                0
-              ],
-              "wall_anchor_local_xyz": [
-                -4,
-                1,
-                0
-              ],
-              "edge": 3,
-              "material": "spruce_trapdoor_west"
-            },
-            {
-              "local_xyz": [
-                -5,
-                0,
-                1
-              ],
-              "wall_anchor_local_xyz": [
-                -4,
-                0,
-                1
-              ],
-              "edge": 3,
-              "material": "dark_oak_fence"
-            },
-            {
-              "local_xyz": [
-                -5,
-                1,
-                1
-              ],
-              "wall_anchor_local_xyz": [
-                -4,
-                1,
-                1
-              ],
-              "edge": 3,
-              "material": "dark_oak_fence"
-            },
-            {
-              "local_xyz": [
-                -5,
-                2,
-                1
-              ],
-              "wall_anchor_local_xyz": [
-                -4,
-                2,
-                1
-              ],
-              "edge": 3,
-              "material": "dark_oak_fence"
-            },
-            {
-              "local_xyz": [
                 -4,
                 1,
                 3
@@ -1776,9 +1722,9 @@
         },
         "grounding": {
           "status": "estimated level floor and terrain-bearing foundation",
-          "footprint_columns": 78,
-          "added_cells": 403,
-          "maximum_fill_depth_blocks": 6,
+          "footprint_columns": 77,
+          "added_cells": 298,
+          "maximum_fill_depth_blocks": 4,
           "existing_terrain_at_floor_columns": 0,
           "floor_local_y": -1,
           "continuous_terrain_contact": true,
@@ -1821,23 +1767,209 @@
     ],
     "outline_review_sha256": "73ec52b9699e78ab7d73cad6a6cfbed70c77a339cc250527a06f759e43729fc6",
     "base_rows_sha256": "da6104575f85039cc21bfceff7fa88c2432e8ad7037ae5dd02235a877a184c5d",
-    "building_cells": 2556,
-    "material_counts": {
-      "stone": 1223,
-      "spruce_planks": 789,
-      "oak_planks": 240,
-      "spruce_trapdoor_east": 5,
-      "dark_oak_fence": 52,
-      "spruce_trapdoor_south": 6,
-      "oak_slab_top": 92,
-      "oak_slab": 136,
-      "spruce_trapdoor_west": 3,
-      "spruce_trapdoor_north": 10
+    "access_review": {
+      "status": "provisional source-informed access review",
+      "features": [
+        {
+          "id": "station_landing",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407578.71192147385,
+                  343591.86738907866
+                ],
+                [
+                  407583.9606959114,
+                  343589.9915947825
+                ],
+                [
+                  407581.7762266075,
+                  343583.8790979696
+                ],
+                [
+                  407576.5274521699,
+                  343585.7548922658
+                ],
+                [
+                  407578.71192147385,
+                  343591.86738907866
+                ]
+              ]
+            ]
+          },
+          "basis": "2967-48 roof page trace; extent and levels provisional",
+          "deck_columns": 32,
+          "entrance_surface_m": 183,
+          "outer_surface_m": null,
+          "materials": "illustrative oak slab/plank/fence and stone bearing fill"
+        },
+        {
+          "id": "station_north_steps",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407579.9410648548,
+                  343591.4281207941
+                ],
+                [
+                  407582.5654520736,
+                  343590.49022364605
+                ],
+                [
+                  407582.17367225274,
+                  343589.3939606307
+                ],
+                [
+                  407579.54928503395,
+                  343590.3318577788
+                ],
+                [
+                  407579.9410648548,
+                  343591.4281207941
+                ]
+              ]
+            ]
+          },
+          "basis": "2967-48 roof page trace; extent and levels provisional",
+          "deck_columns": 3,
+          "entrance_surface_m": 183,
+          "outer_surface_m": 182,
+          "materials": "illustrative oak slab/plank/fence and stone bearing fill"
+        },
+        {
+          "id": "station_south_steps",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407578.1602474874,
+                  343586.44510708796
+                ],
+                [
+                  407580.7846347062,
+                  343585.5072099399
+                ],
+                [
+                  407580.39285488543,
+                  343584.41094692453
+                ],
+                [
+                  407577.76846766664,
+                  343585.3488440726
+                ],
+                [
+                  407578.1602474874,
+                  343586.44510708796
+                ]
+              ]
+            ]
+          },
+          "basis": "2967-48 roof page trace; extent and levels provisional",
+          "deck_columns": 3,
+          "entrance_surface_m": 183,
+          "outer_surface_m": 182,
+          "materials": "illustrative oak slab/plank/fence and stone bearing fill"
+        },
+        {
+          "id": "preshow_low_entry_steps",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407577.1770738548,
+                  343581.3082016767
+                ],
+                [
+                  407576.1674766057,
+                  343578.4831860317
+                ],
+                [
+                  407569.5757734348,
+                  343580.83891294606
+                ],
+                [
+                  407570.58537068387,
+                  343583.66392859106
+                ],
+                [
+                  407577.1770738548,
+                  343581.3082016767
+                ]
+              ]
+            ]
+          },
+          "basis": "source entrance/flight side; 3 m width and 7 m run are provisional terrain connections",
+          "deck_columns": 11,
+          "entrance_surface_m": 183,
+          "outer_surface_m": 182,
+          "materials": "illustrative oak slab/plank/fence and stone bearing fill"
+        },
+        {
+          "id": "preshow_tower_entry_steps",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  407590.35117281164,
+                  343573.41425103403
+                ],
+                [
+                  407591.36077006074,
+                  343576.23926667904
+                ],
+                [
+                  407597.95247323165,
+                  343573.8835397647
+                ],
+                [
+                  407596.94287598255,
+                  343571.05852411967
+                ],
+                [
+                  407590.35117281164,
+                  343573.41425103403
+                ]
+              ]
+            ]
+          },
+          "basis": "source entrance/flight side; 3 m width and 7 m run are provisional terrain connections",
+          "deck_columns": 18,
+          "entrance_surface_m": 183,
+          "outer_surface_m": 179,
+          "materials": "illustrative oak slab/plank/fence and stone bearing fill"
+        }
+      ],
+      "cells": 80,
+      "limitations": [
+        "Exact queue alignment, stair gradients and passenger platform level remain unbound.",
+        "Slab steps use half-block increments; terrain intersections retain the existing terrain level."
+      ]
     },
-    "shared_component_cells": 175,
-    "landscape_cells_covered_by_buildings": 4,
-    "compound_aperture_cells_cleared": 4,
-    "declared_aperture_air_cells": 42,
+    "building_cells": 1860,
+    "material_counts": {
+      "stone": 549,
+      "spruce_planks": 782,
+      "oak_planks": 283,
+      "dark_oak_fence": 56,
+      "spruce_trapdoor_south": 6,
+      "spruce_trapdoor_west": 3,
+      "oak_slab_top": 93,
+      "oak_slab": 152,
+      "spruce_trapdoor_north": 9,
+      "spruce_trapdoor_east": 1,
+      "oak_fence": 6
+    },
+    "shared_component_cells": 114,
+    "landscape_cells_covered_by_buildings": 22,
+    "compound_aperture_cells_cleared": 5,
+    "declared_aperture_air_cells": 54,
     "registration_status": "drawing correspondence hypothesis reanchored to provisional shop; not independently accepted",
     "drawing_station_iou": 0.986164110132011,
     "accepted_controls": 0,
@@ -1845,7 +1977,7 @@
     "production_placement_eligible": false,
     "limitations": [
       "Exterior first review: rounded eave/ridge heights and aperture sizes require exact cross-sheet binding.",
-      "The provisional floor is chosen explicitly for terrain clearance, not taken as the printed passenger/platform level.",
+      "Pre-show floor uses printed 183.30 m (grid 183); station passenger level remains provisional.",
       "Inspection 181.25 and undercroft 178.00 are retained as separate levels; basement, excavation, bunding and interior circulation are not yet reconstructed.",
       "Thatch-effect oak slabs, timber fences/trapdoors and stone foundations are illustrative block proxies.",
       "Multi-part interfaces are independently rasterized; exact doorway/circulation joins still require review."

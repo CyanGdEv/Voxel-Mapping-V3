@@ -53,16 +53,18 @@ def station_parts(outline_review):
             'model':rectangular_model(xmax-xmin,zmax-zmin,4.8,7.0,openings=[('z-',0,3.6,3.5),('z+',0,3.6,3.5),('x+',2,1.8,2.3)]),
             'source_outline':deepcopy(roof),'printed_levels':{'inspection':181.25,'passenger_floor':'unbound'},
             'height_basis':'Ride-building section on 2967-30; first-review estimate relative to inspection level.'}]
-    for name,b in bounds.items():
+    for name,raw in bounds.items():
+        # get_drawings() is unrotated and top-down; measured outlines are y-up.
+        b=[raw[0],2384-raw[3],raw[2],2384-raw[1]]
         cx,cz=(b[0]+b[2])*scale/2,(b[1]+b[3])*scale/2
         tower=name.endswith('tower')
         model=rectangular_model((b[2]-b[0])*scale,(b[3]-b[1])*scale,
                                 5.4 if tower else 2.6,8.0 if tower else 4.9,
                                 'pyramid' if tower else 'gable',
-                                [('x-',0,1.4,2.3),('x+',0,1.4,2.3),('z+' if tower else 'z-',0,3,2.3)])
+                                [('x-',0,1.4,2.3),('x+',0,1.4,2.3),('z-' if tower else 'z+',0,3,2.3),('z+' if tower else 'z-',0,1.8,2.3)])
         parts.append({'id':name,'source_plan_centre_m':[cx,cz],'model':model,
                       'source_outline':{'source_sha256':'6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047',
-                                        'native_pdf_bounds':b,'source_boundary_drawing_indices':[6304,6305,6306,6308] if tower else [6320,6321,6323,6324],
+                                        'raw_pdf_bounds':raw,'native_pdf_bounds':b,'raw_page_height_points':2384,'coordinate_conversion':'x unchanged; y_up = 2384 - y_raw','source_boundary_drawing_indices':[6304,6305,6306,6308] if tower else [6320,6321,6323,6324],
                                         'printed_scale_metres_per_point':scale},
                       'printed_levels':{'preshow_floor':183.30,'undercroft':178.0},
                       'height_basis':'2967-30 elevations; rounded first-review eave/ridge estimates.'})

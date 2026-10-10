@@ -17,7 +17,7 @@ def verify(directory):
     directory=Path(directory);report=json.loads((directory/'quality-report.json').read_text())
     package=directory/report['world']['file']
     rows=[json.loads(l) for l in (directory/'voxels.jsonl').read_text().splitlines()]
-    cells=[r for r in rows if r.get('feature','').startswith('station-review/')]
+    cells=[r for r in rows if r.get('feature','').startswith(('station-review/','access-review/'))]
     if not cells:raise ValueError('Station review rows required')
     offset=report['world']['vertical_offset_blocks'];apertures=set();bottoms={}
     for r in cells:bottoms[r['x'],r['z']]=min(bottoms.get((r['x'],r['z']),r['y']),r['y'])
@@ -50,7 +50,7 @@ def verify(directory):
                 support+=1
         finally:level.close()
     return {'status':'downloadable world reopened; building cells, apertures and bearing columns verified',
-            'building_cells_checked':len(cells),'aperture_air_cells_checked':len(apertures),
+            'building_and_access_cells_checked':len(cells),'aperture_air_cells_checked':len(apertures),
             'bearing_columns_checked':support,'sha256':hashlib.sha256(package.read_bytes()).hexdigest(),
             'world':report['world'],'station_review':report['station_review'],
             'limitation':'Native verification, no in-game visual validation or accepted surveyed placement.'}
