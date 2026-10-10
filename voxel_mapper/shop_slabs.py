@@ -18,6 +18,12 @@ def occupied_halves(materials):
 
 def assemble(model):
     from .shop_study import raster_mesh
+    palette=model.get('roof_palette',{'full':'dark_oak_planks','bottom':'dark_oak_slab','top':'dark_oak_slab_top'})
+    from .bedrock import ALLOWED_MATERIALS
+    if (set(palette)!={'full','bottom','top'} or any(m not in ALLOWED_MATERIALS for m in palette.values())
+            or not palette['full'].endswith('_planks') or not palette['bottom'].endswith('_slab')
+            or palette['top']!=palette['bottom']+'_top'):
+        raise ValueError('Native full/bottom/top roof palette required')
     wall,_=raster_mesh(half_mesh(model['wall_mesh']),1)
     roof,_=raster_mesh(half_mesh(model['roof_mesh']),1)
     wall,roof,closure=close_shell(model,wall,roof,2)
@@ -26,7 +32,7 @@ def assemble(model):
     for x,y,z in roof:grouped.setdefault((x//2,y//2,z//2),set()).add(y%2)
     for p,halves in grouped.items():
         # Full wall occupancy wins at wall/roof aliases, preserving the join.
-        materials[p]='dark_oak_planks' if p in materials or len(halves)==2 else 'dark_oak_slab_top' if halves=={1} else 'dark_oak_slab'
+        materials[p]=palette['full'] if p in materials or len(halves)==2 else palette['top'] if halves=={1} else palette['bottom']
     doors=opening_columns(model['opening_base_segments'],1)
     for (x,z),head in doors.items():
         for y in range(head):materials.pop((x,y,z),None)
@@ -42,7 +48,7 @@ def assemble(model):
         for x,y,z in projection:groups.setdefault((x//2,y//2,z//2),set()).add(y%2)
         for p,halves in groups.items():
             if p not in materials:
-                materials[p]='dark_oak_planks' if len(halves)==2 else 'dark_oak_slab_top' if halves=={1} else 'dark_oak_slab'
+                materials[p]=palette['full'] if len(halves)==2 else palette['top'] if halves=={1} else palette['bottom']
     # Preserve the already quantized two-block doorway clearance at 1:1.
     for (x,z),head in doors.items():
         for y in range(head):materials.pop((x,y,z),None)
@@ -50,7 +56,7 @@ def assemble(model):
         raise ValueError('Slab palette obstructs a declared doorway')
     return materials,{'sampling_metres':.5,'world_blocks_per_source_metre':1,
         'rule':'roof half-cell occupancy selects top/bottom slabs; mixed halves and wall aliases use full blocks',
-        'material_counts':dict(sorted(Counter(materials.values()).items())),
+        'material_counts':dict(sorted(Counter(materials.values()).items())),'roof_palette':palette,
         'source_half_cell_closure':closure,'native_shape_leak_audit':audit,
         'door_air_verified':True,'projection_half_cells':len(projection),
         'fence_policy':'reserve fences for source-supported posts or rails; no post dimensions recovered for this canopy',
