@@ -33,6 +33,8 @@ DETAIL_MATERIALS = {f'{wood}_{form}' for wood in ('oak','spruce','dark_oak')
                     for direction in ('north','east','south','west')} | {'iron_bars','cobblestone_wall','spruce_planks','stone_slab'}
 DETAIL_MATERIALS.update('cobblestone_wall_'+''.join(d for i,d in enumerate('nesw') if mask&(1<<i)) for mask in range(1,16))
 ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
+WALL_TRAPDOORS={f'{wood}_trapdoor_{direction}' for wood in ('oak','spruce','dark_oak') for direction in ('north','east','south','west')}
+ALLOWED_MATERIALS.update(WALL_TRAPDOORS)
 DETAIL_MATERIALS.add('birch_fence')
 ALLOWED_MATERIALS.add('birch_fence')
 FOLIAGE_WOODS = ('oak','spruce','birch','dark_oak')
@@ -52,6 +54,10 @@ for m in ('iron_bars','green_stained_glass_pane'):
 
 
 def material_block(material):
+    if material in WALL_TRAPDOORS:
+        wood,direction=material.rsplit('_trapdoor_',1)
+        return Block('universal_minecraft','trapdoor',{'material':StringTag(wood),'facing':StringTag(direction),
+            'open':StringTag('true'),'powered':StringTag('false'),'half':StringTag('bottom')})
     for stone in GARDEN_WALLS:
         if material == stone+'_wall':
             return Block('universal_minecraft','wall',{'material':StringTag(stone),'up':StringTag('true'),**{k:StringTag('none') for k in ('north','south','east','west')}})

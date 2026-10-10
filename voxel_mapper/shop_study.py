@@ -58,7 +58,8 @@ def join_wall_columns(wall, roof, scale):
                   'columns':columns,'all_columns_connected':True}
 
 
-def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs=False):
+def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs=False, wall_details=False):
+    if wall_details and not slabs:raise ValueError('Wall detail review requires 1:1 slab mode')
     if slabs and (scale!=1 or not closed):raise ValueError('Slab review requires closed 1:1 mode')
     path=Path(model_path);raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=expected_sha256:raise ValueError('Pinned study model checksum mismatch')
@@ -83,6 +84,10 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs
     if slabs:
         from .shop_slabs import assemble
         cells,slab_audit=assemble(model)
+    detail_audit=None
+    if wall_details:
+        from .shop_wall_details import decorate
+        cells,detail_audit=decorate(model,cells)
     rows=[{'x':x,'y':y,'z':z,'kind':'study_surface','material':material,'feature':'shop-local-study','source':'reviewed-proposed-model'}
           for (x,y,z),material in sorted(cells.items())]
     radius=12*scale
@@ -119,6 +124,7 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs
     report['projection_sampling']=projection_audit
     report['boundary_closure_audit']=closure_audit
     report['slab_shape_audit']=slab_audit
+    report['wall_detail_audit']=detail_audit
     if joined:
         report['version']='shop-local-joined-study-v2'
         report['projection_review']=model.get('projection_review')
@@ -134,18 +140,22 @@ def plan(model_path, expected_sha256, scale=1, joined=False, closed=False, slabs
         report['base_full_block_counts']={k:report[k] for k in ('wall_cells','roof_cells','wall_roof_alias_cells','projection_cells')}
         for k in report['base_full_block_counts']:report[k]=None
         report['limitations'].append('Half-metre samples select native top/bottom slabs at 1:1. Display shapes and two-block door clearance are quantized estimates.')
+    if wall_details:
+        report['version']='shop-local-wall-detail-v5';report['review_mode']='1to1-slabs-fences-trapdoors'
+        report['limitations'].append('Fence timber strips and trapdoor panels are user-requested decorative estimates; spacing and construction identity are not source-verified.')
     return ground+rows,report
 
 
-def run(model_path, expected_sha256, output, scale=1, joined=False, closed=False, slabs=False):
+def run(model_path, expected_sha256, output, scale=1, joined=False, closed=False, slabs=False, wall_details=False):
     from .bedrock import export_world
     output=Path(output)
     if output.exists():raise ValueError('Use a new study output directory')
-    rows,report=plan(model_path,expected_sha256,scale,joined,closed,slabs);output.mkdir(parents=True)
+    rows,report=plan(model_path,expected_sha256,scale,joined,closed,slabs,wall_details);output.mkdir(parents=True)
     path=output/'voxels.jsonl';path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
     label='JOINED REVIEW' if joined else 'LOCAL STUDY'
     if closed:label='BOUNDARY V3 REVIEW'
     if slabs:label='SLABS V4 REVIEW'
+    if wall_details:label='WALL DETAIL V5 REVIEW'
     report['world']=export_world(path,output,report,name=f'Wicker Shop {label} {scale}:1',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report

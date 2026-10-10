@@ -14,7 +14,8 @@ from voxel_mapper.shop_study import run
 MODEL_SHA='5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22'
 
 
-def build_studies(pdf_directory, output, preview=False, joined=False, closed=False, slabs=False):
+def build_studies(pdf_directory, output, preview=False, joined=False, closed=False, slabs=False, wall_details=False):
+    slabs=slabs or wall_details
     closed=closed or slabs
     joined=joined or closed
     output=Path(output)
@@ -32,7 +33,7 @@ def build_studies(pdf_directory, output, preview=False, joined=False, closed=Fal
             raise ValueError('Retained canopy model failed reproduction')
     output.mkdir(parents=True);reports=[]
     for scale in (1,):
-        report=run(model_path,model_sha,output/f'study-{scale}',scale,joined,closed,slabs)
+        report=run(model_path,model_sha,output/f'study-{scale}',scale,joined,closed,slabs,wall_details)
         reports.append(report)
     (output/'source-review.json').write_text(json.dumps(review,sort_keys=True,indent=2)+'\n')
     notes='''WICKER SHOP — ISOLATED PROPOSED-DRAWING REVIEW
@@ -66,6 +67,10 @@ Source and geometry details are in the included quality reports/source review.
     if slabs:
         notes=notes.replace('Boundary_V3_Study','Slabs_V4_Study').replace('BOUNDARY V3 REVIEW','SLABS V4 REVIEW')
         notes+='\nSLAB SHAPES\nRoof/canopy use native half-height dark-oak slabs where half-metre samples\nallow; mixed halves and wall joins keep full blocks. The final native shape\noccupancy passes an outside-air check at half-metre resolution. Materials\nremain illustrative. Fences await supported post/rail geometry.\n'
+    if wall_details:
+        notes=notes.replace('Slabs_V4_Study','Wall_Detail_V5_Study').replace('SLABS V4 REVIEW','WALL DETAIL V5 REVIEW')
+        notes=notes.replace('Fences await supported post/rail geometry.','Fences and vertical trapdoors add illustrative wall detail.')
+        notes+='\nWALL DETAILS\nDark-oak fences form vertical timber accents on the exterior wall. Opened\nspruce trapdoors form wall panels between them. These decorative estimates\nfollow your requested block palette; post spacing is not a measured detail.\nDoor facade columns remain clear. The source meshes remain unchanged.\n'
     (output/'README.txt').write_text(notes)
     if preview:
         from render_wicker_shop_study import render
@@ -73,6 +78,7 @@ Source and geometry details are in the included quality reports/source review.
     prefix='Joined' if joined else 'Local'
     if closed:prefix='Boundary_V3'
     if slabs:prefix='Slabs_V4'
+    if wall_details:prefix='Wall_Detail_V5'
     package=output/f'Wicker_Shop_{prefix}_Review.zip'
     with zipfile.ZipFile(package,'w',compression=zipfile.ZIP_DEFLATED) as archive:
         for scale in (1,):
@@ -83,6 +89,7 @@ Source and geometry details are in the included quality reports/source review.
     receipt={'model_sha256':model_sha,'package_sha256':hashlib.sha256(package.read_bytes()).hexdigest(),
              'reports':reports,'geographic_placement':'withheld','park_world_blocks_added':0,
              'export_scope':'isolated 1:1 native slab study with estimated closure and canopy hypothesis' if slabs else 'isolated proposed-source study with estimated boundary closure and canopy hypothesis' if closed else 'isolated proposed-source study with estimated joins and canopy hypothesis' if joined else 'isolated proposed-source surface study only'}
+    if wall_details:receipt['export_scope']='isolated 1:1 slabs, fences and trapdoor decorative review'
     (output/'validation.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
@@ -93,4 +100,5 @@ if __name__=='__main__':
     p.add_argument('--joined',action='store_true',help='Estimated wall-to-roof joins and retained provisional canopy')
     p.add_argument('--closed',action='store_true',help='Complete footprint boundary and roof-step display closure; implies --joined')
     p.add_argument('--slabs',action='store_true',help='1:1 native half-height roof/canopy review; implies --closed')
-    a=p.parse_args();print(json.dumps(build_studies(a.pdf_directory,a.output,a.preview,a.joined,a.closed,a.slabs)))
+    p.add_argument('--wall-details',action='store_true',help='Illustrative fence posts and vertical trapdoor wall panels; implies --slabs')
+    a=p.parse_args();print(json.dumps(build_studies(a.pdf_directory,a.output,a.preview,a.joined,a.closed,a.slabs,a.wall_details)))
