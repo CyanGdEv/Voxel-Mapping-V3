@@ -8,7 +8,7 @@ import numpy as np
 from .model import EvidenceMissing
 from .registration import apply_registration,require_accepted_review
 
-VERSION='local-building-park-v1'
+VERSION='local-building-park-v2'
 
 
 def canonical_hash(model):
@@ -55,6 +55,13 @@ def local_building(feature,geom,ctx):
     from ..shop_slabs import assemble
     from ..shop_wall_details import decorate
     rotated=rotate_model(model,angle);cells,_=assemble(rotated);cells,_=decorate(rotated,cells)
+    if 'foundation_mode' in feature.parameters:
+        if feature.value('foundation_mode',ctx.sources,ctx.allow_estimates) != 'level_pad':
+            raise EvidenceMissing('Unsupported estimated building foundation mode')
+        from ..shop_foundations import level_pad
+        try:foundations,_=level_pad(rotated,cells,anchor,base,ctx.ground)
+        except ValueError as error:raise EvidenceMissing(str(error)) from error
+        cells={**foundations,**cells}
     # Every emitted block must remain inside the independently checked domain.
     from .registration import registration_domain
     from shapely.geometry import box
@@ -95,6 +102,8 @@ def prepare_feed(entries,manifest,resolve,output):
                         'grid_quantization':{'rule':'nearest metre origin/floor; at most 0.5 m per axis',
                             'anchor_offset_xy':[round(v)-v for v in placement['anchor_xy']],
                             'floor_offset_m':round(placement['base_elevation_m'])-placement['base_elevation_m']}}})
+        if placement.get('foundation_mode') is not None:
+            records[-1]['parameters']['foundation_mode']={'value':placement['foundation_mode'],'source':placement['profile_source'],'status':'estimated'}
         contracts.append(records[-1]['metadata'])
     output=Path(output);output.parent.mkdir(parents=True,exist_ok=True)
     data=''.join(json.dumps(r,sort_keys=True)+'\n' for r in records).encode()

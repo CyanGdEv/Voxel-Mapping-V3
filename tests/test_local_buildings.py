@@ -64,6 +64,26 @@ class LocalBuildingTests(unittest.TestCase):
             (root/'model.json').write_bytes(MODEL.read_bytes()+b' ')
             with self.assertRaises(ValueError):prepare_feed([entry],manifest,lambda p:root/p,root/'bad.jsonl')
 
+    def test_opted_in_foundations_fill_to_terrain_and_reject_grading_atomically(self):
+        with tempfile.TemporaryDirectory() as d:
+            f,ctx,_,entry,manifest=self.fixture(d,25.244359980951014)
+            root=Path(d);p=json.loads((root/'placement.json').read_text())
+            p['foundation_mode']='level_pad';(root/'placement.json').write_text(json.dumps(p))
+            prepare_feed([entry],manifest,lambda p:root/p,root/'grounded.jsonl')
+            f=next(json_lines(root/'grounded.jsonl'));ctx.ground=lambda x,z:97.2
+            engine=ReconstructionEngine(park_registry());rows,_=engine.plan([f],ctx)
+            self.assertTrue(rows)
+            fill=[r for r in rows if r['y']<101]
+            self.assertTrue(fill)
+            self.assertTrue(all(98<=r['y']<=100 for r in fill))
+            self.assertTrue(any(r['material']=='stone' for r in fill))
+            self.assertTrue(any(r['material']=='spruce_planks' and r['y']==100 for r in fill))
+            ctx.ground=lambda x,z:101.0
+            self.assertFalse(engine.plan([f],ctx)[0])
+            ctx.ground=lambda x,z:97.2
+            f.parameters['foundation_mode']['value']='unreviewed_excavation'
+            self.assertFalse(engine.plan([f],ctx)[0])
+
     def test_park_job_wiring_resumes_and_rejects_changed_placement(self):
         import numpy as np,rasterio
         from rasterio.transform import from_origin

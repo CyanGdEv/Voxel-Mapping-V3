@@ -14,6 +14,7 @@ from voxel_mapper.bedrock import export_world
 from voxel_mapper.reconstruction.local_buildings import rotate_model
 from voxel_mapper.shop_slabs import assemble
 from voxel_mapper.shop_wall_details import decorate
+from voxel_mapper.shop_foundations import level_pad
 from voxel_mapper.survey import crop_pair
 from voxel_mapper.terrain import Terrain
 
@@ -70,11 +71,13 @@ def build(dtm, dsm, model_path, lidar_path, context_path, output, provisional_fl
         preflight = review(model_path, lidar_path, context_path, terrain)
         (out/'placement-preflight.json').write_text(json.dumps(preflight, indent=2)+'\n')
         hypothesis = preflight['hypotheses'][0]
-        cells = candidate_cells(json.loads(Path(model_path).read_text()), hypothesis)
+        model = json.loads(Path(model_path).read_text())
+        cells = candidate_cells(model, hypothesis)
         anchor = hypothesis['anchor_bng_m']
         clearance = terrain_clearance(cells, anchor, provisional_floor, terrain.sample)
         if not clearance['terrain_clearance_passed']:
             raise ValueError('Provisional floor intersects terrain or lacks coverage; no excavation is inferred')
+        foundations, grounding = level_pad(rotate_model(model, hypothesis['rotation_degrees']), cells, anchor, provisional_floor, terrain.sample)
         rows = out/'voxels.jsonl'
         terrain_count = 0
         with rows.open('w') as stream:
@@ -85,7 +88,7 @@ def build(dtm, dsm, model_path, lidar_path, context_path, output, provisional_fl
                         raise ValueError('Section has missing ground; cannot invent elevation')
                     stream.write(json.dumps({'x': x, 'y': math.floor(ground), 'z': z, 'kind': 'terrain', 'material': 'grass_block'})+'\n')
                     terrain_count += 1
-            for (x,y,z),material in sorted(cells.items()):
+            for (x,y,z),material in sorted({**foundations, **cells}.items()):
                 stream.write(json.dumps({'x': x+round(anchor[0]), 'y': y+round(provisional_floor), 'z': z+round(anchor[1]),
                                         'kind': 'building', 'material': material})+'\n')
         sources = [{'id': 'ea-'+k, 'url': f'https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_{k}/2022/1/SK0540',
@@ -94,6 +97,7 @@ def build(dtm, dsm, model_path, lidar_path, context_path, output, provisional_fl
         report = {'status': 'provisional_terrain_section_review', 'voxel_size_m': 1, 'model_blocks_per_source_metre': 1,
                   'crs': 'EPSG:27700', 'vertical_datum': 'ODN', 'sources': sources,
                   'bounds_bng_m': BOUNDS, 'terrain_columns': terrain_count, 'shop_cells': len(cells),
+                  'grounding': grounding,
                   'shop_hypothesis': hypothesis, 'provisional_floor_m': provisional_floor,
                   'floor_shift_from_self_fit_m': provisional_floor-hypothesis['floor_self_fit_odn_m'],
                   'provisional_floor_clearance': clearance, 'accepted_controls': 0, 'accepted_checkpoints': 0,
@@ -104,12 +108,14 @@ def build(dtm, dsm, model_path, lidar_path, context_path, output, provisional_fl
                                   'Review floor explicitly chosen for clearance; not a measured ODN floor.',
                                   'Terrain is the 2022-01-05 survey, not current ground.',
                                   'Grass material and exported subsurface foundation fill are illustrative.',
-                                  'No paths, ride, station, lakes, internal floor or building foundations reconstructed.',
+                                  'Level floor and stone foundation fill are estimates; terrain at floor level is retained.',
+                                  'No paths, ride, station or lakes reconstructed.',
                                   'No terrain excavation, accepted placement, or full-park insertion performed.']}
-        report['world'] = export_world(rows, out, report, name='Wicker Shop Terrain — PROVISIONAL floor '+str(provisional_floor), ground_depth=4)
+        report['world'] = export_world(rows, out, report, name='Wicker Shop Grounded V7 — PROVISIONAL floor '+str(provisional_floor), ground_depth=4)
         (out/'quality-report.json').write_text(json.dumps(report, indent=2)+'\n')
         (out/'README.txt').write_text('WICKER SHOP — PROVISIONAL 1:1 TERRAIN SECTION\n\nImport park.mcworld. Creative-mode spawn is beside the shop.\n'
                                     'Includes the 2022 terrain crop and context-preferred slab/fence/trapdoor shop hypothesis.\n'
+                                    'V7 adds a level timber floor and estimated stone fill down to the sampled terrain.\n'
                                     f'Review floor: {provisional_floor} m; roof self-fit: {hypothesis["floor_self_fit_odn_m"]:.3f} m.\n'
                                     'Floor/orientation are estimates for visual review. This is not accepted park placement.\n'
                                     'Read quality-report.json and placement-preflight.json for conflicts and source provenance.\n')

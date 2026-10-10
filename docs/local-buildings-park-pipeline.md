@@ -38,7 +38,17 @@ floor snap to the nearest metre, retaining offsets of at most 0.5 m per axis in
 feature metadata. Every emitted block must lie within the checked registration
 domain and park boundary, have terrain coverage and remain above the terrain.
 Existing-world collisions withhold the entire feature atomically. This adapter
-does not carve a generic building replacement or invent excavation/foundations.
+does not carve a generic building replacement or infer excavation.
+
+An explicit placement field `"foundation_mode": "level_pad"` opts into estimated
+grounding under `allow_estimates`. It adds a timber floor one block below the
+walls and stone fill down to each sampled terrain column, including exterior
+posts. Ground already at floor level is retained. It does not lower terrain,
+change the source walls, fill door openings or bypass registration/identity
+checks. Missing terrain, ground above the floor and fill deeper than 16 blocks
+withhold the whole feature. Added cells pass the same registration-domain,
+boundary and existing-world collision checks. The placement/feed hashes pin
+this choice; the v2 adapter contract prevents silently resuming a v1 feed.
 
 `assembly_identity_verified` must explicitly establish that the proposed local
 assembly corresponds to the park building. Decorative dimensions remain estimates,

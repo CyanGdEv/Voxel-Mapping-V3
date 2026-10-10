@@ -36,11 +36,19 @@ approximately +1.353 m above the roof self-fit, and one block above its snapped
 floor. It is a clearance experiment, not an independently measured floor or a
 replacement of the retained hypothesis. No floor value is automatically raised.
 
-The world includes real dated terrain heights with illustrative grass and
-subsurface fill, and the 1:1 slab/fence/trapdoor shop. Paths, station, ride,
-lakes, internal floors and building foundations are not reconstructed. Lower
-ground beside the shop can expose gaps beneath walls; resolving them requires
-floor/foundation/grading evidence rather than silently extending the building.
+The V6 world includes real dated terrain heights with illustrative grass and
+subsurface fill, and the 1:1 slab/fence/trapdoor shop. It left gaps beneath walls
+on lower ground, as reported in the in-game review.
+
+V7 fixes those gaps with a level timber floor at Y 183 and estimated stone fill
+down to the sampled terrain. Every footprint column and exterior bottom-level
+wall/post column has continuous support. Ground already at floor level is
+retained; no terrain is excavated. Source wall/roof dimensions and all openings
+remain unchanged. Paths, station, ride and lakes are still outside this test.
+These foundation dimensions/materials are illustrative, not recovered survey
+evidence. The production compiler provides the same grounding only when the
+placement explicitly opts into `foundation_mode: level_pad` and estimates are
+enabled; all registration and collision gates remain active.
 
 The next park insertion requires independent alignment/handedness and floor
 measurements, followed by a grading/foundation review. Zero independent controls
