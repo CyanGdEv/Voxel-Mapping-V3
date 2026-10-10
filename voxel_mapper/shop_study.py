@@ -1,0 +1,90 @@
+"""Isolated surface-voxel study; never accepted park reconstruction."""
+import hashlib
+import json
+import math
+from pathlib import Path
+import numpy as np
+from shapely.geometry import Point, Polygon
+
+VERSION='shop-local-surface-study-v1'
+
+
+def raster_mesh(mesh, scale):
+    if scale not in (1,4) or isinstance(scale,bool):raise ValueError('Study scale must be 1 or 4')
+    vertices=np.asarray(mesh['vertices'],dtype=float)*scale
+    triangles=mesh['triangles']
+    if vertices.ndim!=2 or vertices.shape[1]!=3 or len(vertices)>500 or len(triangles)>500 or not np.isfinite(vertices).all() or np.max(np.abs(vertices))>200:
+        raise ValueError('Bounded finite study mesh required')
+    cells=set();per_triangle=[];probes=0
+    for indices in triangles:
+        if len(indices)!=3 or any(type(i) is not int or not 0<=i<len(vertices) for i in indices):raise ValueError('Valid triangle indices required')
+        pts=vertices[indices];normal=np.cross(pts[1]-pts[0],pts[2]-pts[0])
+        if np.linalg.norm(normal)<1e-9:raise ValueError('Degenerate study triangle')
+        axis=int(np.argmax(np.abs(normal)));other=[i for i in range(3) if i!=axis]
+        polygon=Polygon(pts[:,other]);bounds=polygon.bounds;count=0
+        for a in range(math.floor(bounds[0]),math.ceil(bounds[2])):
+            for b in range(math.floor(bounds[1]),math.ceil(bounds[3])):
+                probes+=1
+                if probes>200000:raise ValueError('Study surface raster budget exceeded')
+                sample=np.zeros(3);sample[other]=[a+.5,b+.5]
+                if not polygon.covers(Point(sample[other])):continue
+                sample[axis]=pts[0,axis]-sum(normal[j]*(sample[j]-pts[0,j]) for j in other)/normal[axis]
+                cell=tuple(math.floor(v) for v in sample)
+                cells.add((cell[0],cell[2],cell[1]));count+=1
+        per_triangle.append(count)
+    return cells,{'per_triangle_surface_samples':per_triangle,'projection_sample_probes':probes,
+                  'triangles_without_centroid_sample':sum(n==0 for n in per_triangle)}
+
+
+def plan(model_path, expected_sha256, scale=1):
+    path=Path(model_path);raw=path.read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=expected_sha256:raise ValueError('Pinned study model checksum mismatch')
+    model=json.loads(raw)
+    if model['geographic_registration'] is not None or model['world_placement_eligible']:
+        raise ValueError('Only isolated unplaced shop models supported')
+    wall,wall_audit=raster_mesh(model['wall_mesh'],scale)
+    roof,roof_audit=raster_mesh(model['roof_mesh'],scale)
+    # Roof wins aliasing intersections in the display study, with every conflict counted.
+    cells={p:'spruce_planks' for p in wall};cells.update({p:'dark_oak_planks' for p in roof})
+    rows=[{'x':x,'y':y,'z':z,'kind':'study_surface','material':material,'feature':'shop-local-study','source':'reviewed-proposed-model'}
+          for (x,y,z),material in sorted(cells.items())]
+    radius=12*scale
+    ground=[{'x':x,'y':-1,'z':z,'kind':'terrain','material':'grass_block'} for x in range(-radius,radius) for z in range(-radius,radius)]
+    openings=[]
+    for opening in model['opening_base_segments']:
+        a,b=opening['endpoints'];x=math.floor((a[0]+b[0])/2*scale);z=math.floor((a[1]+b[1])/2*scale)
+        levels=list(range(math.floor(opening['height_metres']*scale)))
+        openings.append({'id':opening['id'],'sample_column_local_xz':[x,z],
+                         'sampled_levels':levels,'all_centre_samples_air':all((x,y,z) not in cells for y in levels),
+                         'full_width_clearance_verified':False,'player_movement_verified':False})
+    report={'version':VERSION,'voxel_size_m':1,'model_blocks_per_source_metre':scale,'crs':None,
+            'vertical_datum':'STUDY_ZERO','geographic_placement':'withheld','park_world_blocks_added':0,
+            'model_sha256':expected_sha256,'source_assembly_hypothesis':model['assembly_hypothesis'],
+            'source_unresolved':model['unresolved'],'model_watertight':model['wall_mesh']['watertight'],
+            'wall_thickness_metres':None,'wall_cells':len(wall),'roof_cells':len(roof),
+            'wall_roof_alias_cells':len(wall&roof),'surface_cells':len(cells),'platform_cells':len(ground),
+            'wall_sampling':wall_audit,'roof_sampling':roof_audit,'spawn_local_xyz_m':[0,2,-10*scale],
+            'opening_centre_sample_audit':openings,
+            'surface_raster_rule':'dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces',
+            'display_palette_only':{'walls':'spruce_planks','roof':'dark_oak_planks'},
+            'sources':[{'id':'reviewed-proposed-model','url':'local://wicker-shop-wall-model','license':'source-linked proposed drawing study',
+                        'attribution':'2967-21/26/48; local manual traces and provisional sheet-layout normalization'}],
+            'limitations':['Isolated proposed-drawing study, not a placed or as-built park building.',
+                'Roof/wall centring and 180-degree correspondence remain assembly hypotheses.',
+                'Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.',
+                'One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.',
+                'Palette is illustrative; fascia, canopy, cladding/bunding, interior and construction joints are omitted.',
+                'This surface model is not watertight; no shell-completeness or in-game movement claim is made.',
+                'The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden.']}
+    return ground+rows,report
+
+
+def run(model_path, expected_sha256, output, scale=1):
+    from .bedrock import export_world
+    output=Path(output)
+    if output.exists():raise ValueError('Use a new study output directory')
+    rows,report=plan(model_path,expected_sha256,scale);output.mkdir(parents=True)
+    path=output/'voxels.jsonl';path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
+    report['world']=export_world(path,output,report,name=f'Wicker Shop LOCAL STUDY {scale}:1',ground_depth=4)
+    (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
+    return report
