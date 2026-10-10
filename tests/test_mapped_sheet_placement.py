@@ -60,6 +60,17 @@ class MappedPlacementTests(unittest.TestCase):
         with self.assertRaises(ValueError):propose(objects+objects,refs)
         r=propose(objects,refs,max_seed_fits=1);self.assertEqual(r['seed_fit_attempts'],1);self.assertIn('seed_fit_budget_exhausted',r['review_flags'])
 
+    def test_explicit_priority_seed_enters_bounded_search(self):
+        objects,refs=self.fixture()
+        priority=objects[0]['candidate_id']
+        for i in range(70):objects.append({'candidate_id':'decoy'+str(i),'geometry':Polygon([(10000+i*500,10000),(10400+i*500,10000),(10400+i*500,10200),(10300+i*500,10200),(10300+i*500,10400),(10000+i*500,10400)])})
+        self.assertEqual(propose(objects,refs)['status'],'withheld')
+        r=propose(objects,refs,priority_seed_ids=[priority])
+        self.assertEqual(r['priority_seed_ids'],[priority])
+        self.assertEqual(r['status'],'provisional_mapped_placement')
+        with self.assertRaises(ValueError):propose(objects,refs,priority_seed_ids=['missing'])
+        with self.assertRaises(ValueError):propose(objects,refs,priority_seed_ids=[priority,priority])
+
     def test_all_objects_verify_after_seed_selection_budget(self):
         objects,refs=self.fixture()
         for i in range(70):objects.append({'candidate_id':'tiny'+str(i),'geometry':box(1000+i,1000,1000.1+i,1000.1)})

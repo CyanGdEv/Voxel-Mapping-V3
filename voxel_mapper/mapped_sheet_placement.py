@@ -17,7 +17,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v3'
+VERSION = 'mapped-sheet-placement-v4'
 
 
 def placed(geometry, fit):
@@ -25,7 +25,7 @@ def placed(geometry, fit):
     return affine_transform(geometry, [m[0][0], m[0][1], m[1][0], m[1][1], *t])
 
 
-def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
+def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None):
     """Map agreement is estimated placement evidence, not survey acceptance.
 
     Full boundaries seed fits; all page objects and spatial reference neighbours
@@ -37,13 +37,16 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
         raise ValueError('Invalid mapped review thresholds')
     if len(objects)>20000 or len(refs)>5000:raise ValueError('Page/reference budget exceeded')
     if len({o['candidate_id'] for o in objects})!=len(objects) or len({r['id'] for r in refs})!=len(refs):raise ValueError('Unique object/reference IDs required')
+    priority_seed_ids=[] if priority_seed_ids is None else priority_seed_ids
+    if not isinstance(priority_seed_ids,list) or len(priority_seed_ids)>16 or any(not isinstance(i,str) for i in priority_seed_ids) or len(set(priority_seed_ids))!=len(priority_seed_ids) or not set(priority_seed_ids)<=set(o['candidate_id'] for o in objects):raise ValueError('At most sixteen unique existing priority seeds required')
     object_descriptors={o['candidate_id']:descriptor(o['geometry']) for o in objects}
     reference_descriptors={r['id']:descriptor(r['geometry']) for r in refs}
     reference_index=STRtree([r['geometry'].centroid for r in refs]);by_id={o['candidate_id']:o for o in objects};ref_ids={r['id']:r for r in refs}
     local_centres=np.asarray([o['geometry'].centroid.coords[0] for o in objects],dtype=float).reshape((-1,2))
     # Distinctive large nonrectangular objects first; seed selection never limits
     # verification objects. Rectangles remain available as fallback seeds.
-    seeds=sorted(objects,key=lambda o:(len(o['geometry'].exterior.coords)<=5 if o['geometry'].geom_type=='Polygon' else True,-o['geometry'].area,o['candidate_id']))[:64]
+    ordered=sorted(objects,key=lambda o:(len(o['geometry'].exterior.coords)<=5 if o['geometry'].geom_type=='Polygon' else True,-o['geometry'].area,o['candidate_id']))
+    seeds=[by_id[i] for i in priority_seed_ids]+[o for o in ordered if o['candidate_id'] not in priority_seed_ids][:64-len(priority_seed_ids)]
     edges=[]
     for o in seeds:
         if o['geometry'].geom_type!='Polygon':continue
@@ -54,7 +57,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
             error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
             if error<=.2:pool.append((error,r['id'],r))
         # More than the original three alternatives, followed by actual shape fit.
-        for rank,(_,_,r) in enumerate(sorted(pool)[:8]):edges.append((rank,-o['geometry'].area,o['candidate_id'],o,r))
+        for rank,(_,_,r) in enumerate(sorted(pool)[:8]):edges.append((-1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],o,r))
     edges.sort(key=lambda e:e[:3]);attempted=0;orientation_trials=0;hypotheses=[]
     def support(fit):
         hits=[]
@@ -125,15 +128,20 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10.):
     if len(edges)>max_seed_fits:flags.append('seed_fit_budget_exhausted')
     if len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
     if len(best)>1:flags.append('multiple_mapped_placements')
-    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
+    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 
 
-def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None):
+def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None, priority_seeds=None):
     if type(max_records) is not int or not 1<=max_records<=2500000:raise ValueError('Record budget must be 1..2500000')
     propose([],[],max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m)
     if sheets is not None and (not isinstance(sheets,list) or len(sheets)>10000 or any(not isinstance(s,list) or len(s)!=2 or not isinstance(s[0],str) or len(s[0])!=64 or type(s[1]) is not int or s[1]<1 for s in sheets)):raise ValueError('Bounded PDF/page sheet selection required')
+    priority_seeds=[] if priority_seeds is None else priority_seeds
+    if not isinstance(priority_seeds,list) or len(priority_seeds)>10000 or any(not isinstance(r,list) or len(r)!=3 or not isinstance(r[0],str) or len(r[0])!=64 or type(r[1]) is not int or r[1]<1 or not isinstance(r[2],str) for r in priority_seeds) or len({tuple(r) for r in priority_seeds})!=len(priority_seeds):raise ValueError('Bounded unique PDF/page/candidate priority seeds required')
+    priorities={}
+    for sha,page,cid in priority_seeds:priorities.setdefault((sha,page),[]).append(cid)
+    if any(len(ids)>16 for ids in priorities.values()):raise ValueError('At most sixteen priority seeds per page')
     rows,refhash,_=references(reference_file,reference_crs,target_crs)
-    contract={'version':VERSION,'candidate_sha256':file_hash(candidates),'reference_sha256':refhash,'reference_crs':reference_crs,'target_crs':target_crs,'sheets':sheets,'max_seed_fits':max_seed_fits,'min_iou':min_iou,'tolerance_m':tolerance_m,'max_records':max_records}
+    contract={'version':VERSION,'candidate_sha256':file_hash(candidates),'reference_sha256':refhash,'reference_crs':reference_crs,'target_crs':target_crs,'sheets':sheets,'priority_seeds':priority_seeds,'max_seed_fits':max_seed_fits,'min_iou':min_iou,'tolerance_m':tolerance_m,'max_records':max_records}
     output=Path(output);receipt=output/'placement-report.json'
     if receipt.exists():
         report=json.loads(receipt.read_text())
@@ -164,6 +172,9 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
             db.execute('INSERT INTO candidates VALUES(?,?,?,?)',(c['document_sha256'],c['page'],c['id'],json.dumps(c)))
             if count%1000==0:db.commit()
         db.commit()
+        for (sha,page),ids in priorities.items():
+            available={cid for cid, in db.execute('SELECT id FROM candidates WHERE pdf=? AND page=?',(sha,page))}
+            if not set(ids)<=available:raise ValueError('Priority seed not present on selected source page')
         with (output/'sheet-placements.jsonl.partial').open('w') as proposals,(output/'placed-review-geometry.jsonl.partial').open('w') as geometry:
             for pdf,page,total in db.execute('SELECT pdf,page,count(*) FROM candidates GROUP BY pdf,page ORDER BY pdf,page'):
                 if total>20000:raise ValueError('Placement page budget exceeded')
@@ -176,7 +187,7 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
                     if any(result.get(k)!=v for k,v in {'document_sha256':pdf,'page':page,'reference_sha256':refhash,'target_crs':target_crs,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0}.items()):raise ValueError('Placement page checkpoint identity changed')
                     counts['page_cache_reused']+=1
                 else:
-                    result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m);result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs)
+                    result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m,priority_seed_ids=priorities.get((pdf,page),[]));result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs)
                     encoded=json.dumps(result);db.execute('INSERT INTO fits VALUES(?,?,?,?,?)',(pdf,page,page_hash,hashlib.sha256(encoded.encode()).hexdigest(),encoded));db.commit();counts['page_cache_computed']+=1
                 counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts'];counts['orientation_trial_attempts']+=result['orientation_trial_attempts']
                 if progress:progress({'page':page,'document_sha256':pdf,'completed_pages':counts['page_cache_reused']+counts['page_cache_computed'],'status':result['status'],'cached':bool(cached)})
@@ -201,9 +212,9 @@ def main():
     from .planning_bulk import Corpus
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('candidates','references','reference-crs','target-crs','output','corpus'):p.add_argument('--'+key,required=True)
-    p.add_argument('--sheets');p.add_argument('--max-seed-fits',type=int,default=512)
+    p.add_argument('--priority-seeds');p.add_argument('--sheets');p.add_argument('--max-seed-fits',type=int,default=512)
     a=p.parse_args();corpus=Corpus(a.corpus)
-    try:print(json.dumps(run(a.candidates,a.references,a.reference_crs,a.target_crs,a.output,corpus,sheets=json.loads(Path(a.sheets).read_text()) if a.sheets else None,max_seed_fits=a.max_seed_fits),indent=2))
+    try:print(json.dumps(run(a.candidates,a.references,a.reference_crs,a.target_crs,a.output,corpus,sheets=json.loads(Path(a.sheets).read_text()) if a.sheets else None,max_seed_fits=a.max_seed_fits,priority_seeds=json.loads(Path(a.priority_seeds).read_text()) if a.priority_seeds else None),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()

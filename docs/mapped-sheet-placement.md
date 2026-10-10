@@ -149,3 +149,28 @@ See `evidence/alton-whole-placement-validation.json`,
 remain unverified; this replay adds no world blocks. The next review should
 verify the strong, distinct landmark sets and inspect closed-outline recovery
 or landmark correspondences for the highest-priority unmatched plans.
+
+## V4 explicit priority seeds
+
+Optional `--priority-seeds selected-seeds.json` supplies rows of
+`["PDF_SHA256", page_number, "candidate_id"]`. At most sixteen distinct polygon
+IDs per page can occupy the existing 64 seed slots. Their descriptor alternatives
+are tried before ordinary seeds, inside the same boundary-fit budget. All page
+objects still participate in verification. Selected IDs must exist on their
+checksum-checked source page; selection does not establish physical identity.
+
+This fixes reviewer-selected useful outlines being excluded by size/complexity
+ordering. The Wicker shop ranked 324th and now reaches the search. The real
+one-page replay checked 3,906 records, tried 361 boundary pairs and 1,032
+orientations and still withheld placement: no three-object agreement emerged.
+Repeated completed resume was identical. The three-object, topology, overlap,
+independent registration and feature-review requirements remain unchanged.
+V4 binds priority selection in the checkpoint contract; use a fresh output
+folder when upgrading from V3. Historical V1/V2/V3 receipts remain historical.
+
+The FastTrack outline comparison has drawing area 33.27 m² and mapped area
+26.73 m² at the diagnostic shop transform, with a 1.12 m centroid difference.
+These numbers describe a provisional comparison. The cause (revision, outline
+interpretation or map detail) remains unresolved; they do not justify lowering
+70% IoU. Receipts: `evidence/wicker-priority-placement-validation.json` and
+`evidence/wicker-fasttrack-outline-comparison.json`.
