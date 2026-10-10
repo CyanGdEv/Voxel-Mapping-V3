@@ -144,6 +144,13 @@ def run(job_path,stage='all'):
                                           max_pages=callout_config.get('max_pages',10000))
             checkpoint('drawing_callouts',callout_report)
             pinned['drawing_callouts']={'contract':callout_report['contract'],'callouts_sha256':callout_report['callouts_sha256']}
+        face_config=job.get('drawing_faces',{})
+        if face_config.get('enabled',False):
+            from .drawing_faces import run as inspect_faces
+            face_report=inspect_faces(path(face_config['documents']),root/'drawing-faces',
+                                     max_pages=face_config.get('max_pages',10000))
+            checkpoint('drawing_faces',face_report)
+            pinned['drawing_faces']={'contract':face_report['contract'],'output_sha256':face_report['output_sha256']}
         bridge=job.get('registration_bridge',{});bridge_feed=None
         if bridge.get('enabled',False):
             from .drawing_registration_bridge import run_batch
