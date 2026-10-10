@@ -1,0 +1,206 @@
+name: Park generation cycles
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Run containing the prepared geometry/base-world input artifact
+        required: true
+        type: string
+      source_artifact:
+        description: Prepared bundle artifact name
+        default: park-generation-inputs
+        required: true
+        type: string
+      continuation_run_id:
+        description: Previous successful cycle run; blank starts a new park job
+        default: ''
+        type: string
+      generator_commit:
+        description: Generator commit pinned by the first cycle
+        default: ''
+        type: string
+      continue_automatically:
+        description: Dispatch the next cycle after publishing this preview
+        default: true
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: park-cycles-${{ inputs.source_run_id }}-${{ inputs.source_artifact }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      cycle: ${{ steps.plan.outputs.cycle }}
+      complete: ${{ steps.plan.outputs.complete }}
+      preview_artifact: ${{ steps.plan.outputs.preview_artifact }}
+      generator_commit: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.generator_commit || github.sha }}
+      - id: commit
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install .
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        if: inputs.continuation_run_id == ''
+        with:
+          name: ${{ inputs.source_artifact }}
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+          path: cycle-work
+      - uses: actions/download-artifact@v4
+        if: inputs.continuation_run_id != ''
+        with:
+          name: park-cycle-checkpoint
+          run-id: ${{ inputs.continuation_run_id }}
+          github-token: ${{ github.token }}
+          path: cycle-work
+      - name: Initialize spatial cycles if needed
+        run: |
+          if [ ! -f cycle-work/cycles.sqlite ]; then
+            terrain_args=()
+            if [ -f cycle-work/terrain-config.json ]; then terrain_args=(--terrain-config cycle-work/terrain-config.json); fi
+            python -m voxel_mapper.generation_cycles init --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --base-world cycle-work/base-world --sections 15 --batch-chunks 150 --workers 10 "${terrain_args[@]}"
+          fi
+      - id: plan
+        run: python scripts/park_cycle_actions.py prepare --root cycle-work
+      - uses: actions/upload-artifact@v4
+        if: steps.plan.outputs.complete != 'true'
+        with:
+          name: park-cycle-input
+          path: cycle-work/
+          include-hidden-files: true
+          retention-days: 7
+  chunks:
+    needs: prepare
+    if: needs.prepare.outputs.complete != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        worker: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.generator_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install .
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        with:
+          name: park-cycle-input
+          path: cycle-work
+      - name: Produce exclusive chunk payloads
+        env:
+          WORKER_NUMBER: ${{ matrix.worker }}
+          CYCLE_NUMBER: ${{ needs.prepare.outputs.cycle }}
+        run: |
+          worker_dir=$(printf 'worker_%02d' "$WORKER_NUMBER")
+          cycle_dir=$(printf 'cycle_%04d' "$CYCLE_NUMBER")
+          python -m voxel_mapper.generation_cycles worker --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --cycle "$CYCLE_NUMBER" --worker "$WORKER_NUMBER" --output "cycle-work/output/workers/$cycle_dir/$worker_dir"
+          echo "WORKER_DIR=cycle-work/output/workers/$cycle_dir/$worker_dir" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: park-cycle-worker-${{ matrix.worker }}
+          path: ${{ env.WORKER_DIR }}/
+          if-no-files-found: error
+          retention-days: 7
+  assemble:
+    needs: [prepare, chunks]
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.generator_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install .
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        with:
+          name: park-cycle-input
+          path: cycle-work
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: park-cycle-worker-*
+          path: worker-downloads
+      - run: python scripts/park_cycle_actions.py collect --root cycle-work --source worker-downloads
+      - name: Verify workers and write cumulative world
+        run: |
+          if [ -f cycle-work/terrain-config.json ]; then
+            python -m voxel_mapper.generation_cycles preview --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --base-world cycle-work/base-world --output cycle-work/output --terrain-config cycle-work/terrain-config.json
+          else
+            python -m voxel_mapper.generation_cycles preview --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --base-world cycle-work/base-world --output cycle-work/output
+          fi
+      - name: Select downloadable preview
+        env:
+          CYCLE_NUMBER: ${{ needs.prepare.outputs.cycle }}
+        run: |
+          cycle_dir=$(printf 'cycle_%04d' "$CYCLE_NUMBER")
+          echo "PREVIEW_DIR=cycle-work/output/previews/$cycle_dir" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report=json.loads(Path('cycle-work/output/progress.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+              out.write(f"Park generation: {report['status']}\n\nScheduled chunks completed: {report['completed_chunks']} / {report['total_chunks']}\n\nDownload this cycle's preview artifact to inspect the cumulative world. Base terrain can include future context.\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ needs.prepare.outputs.preview_artifact }}
+          path: ${{ env.PREVIEW_DIR }}/
+          if-no-files-found: error
+          retention-days: 30
+      - run: python scripts/park_cycle_actions.py checkpoint --root cycle-work --destination checkpoint
+      - uses: actions/upload-artifact@v4
+        with:
+          name: park-cycle-checkpoint
+          path: checkpoint/
+          include-hidden-files: true
+          retention-days: 30
+      - name: Continue to the next cycle
+        if: inputs.continue_automatically
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          SOURCE_ARTIFACT: ${{ inputs.source_artifact }}
+          GENERATOR_COMMIT: ${{ needs.prepare.outputs.generator_commit }}
+          GENERATION_REF: ${{ github.ref_name }}
+        run: |
+          python - <<'PY' > next-cycle.txt
+          import json
+          from pathlib import Path
+          report=json.loads(Path('cycle-work/output/progress.json').read_text())
+          print('yes' if report['next_cycle'] is not None else 'no')
+          PY
+          if [ "$(cat next-cycle.txt)" = yes ]; then
+            gh workflow run park-generation-cycles.yml --ref "$GENERATION_REF" -f source_run_id="$SOURCE_RUN_ID" -f source_artifact="$SOURCE_ARTIFACT" -f continuation_run_id="$GITHUB_RUN_ID" -f generator_commit="$GENERATOR_COMMIT" -f continue_automatically=true
+          fi

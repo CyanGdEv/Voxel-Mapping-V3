@@ -11,6 +11,11 @@ from pyproj import CRS
 from ..bedrock import material_block
 
 
+def file_hash(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
 def section_hashes(chunk):
     palette=np.array([str(b) for b in chunk.block_palette],dtype=object)
     return {str(s):hashlib.sha256(('\n'.join(palette[chunk.blocks.get_sub_chunk(s)].ravel())+'\n').encode()).hexdigest()
@@ -32,8 +37,8 @@ def export_world(store,source,output,ground=None):
     contract=json.loads(store.db.execute("SELECT value FROM metadata WHERE key='contract'").fetchone()[0])
     if CRS.from_user_input(contract['manifest']['crs'])!=CRS.from_user_input(quality['crs']):raise ValueError('Base world CRS mismatch')
     store.db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
-    plan_hash=hashlib.sha256(store.path.read_bytes()).hexdigest()
-    package=source/'park.mcworld';source_hash=hashlib.sha256(package.read_bytes()).hexdigest()
+    plan_hash=file_hash(store.path)
+    package=source/'park.mcworld';source_hash=file_hash(package)
     if contract.get('base_package_sha256') and contract['base_package_sha256']!=source_hash:raise ValueError('Base package changed since feature compilation')
     offset=quality['world']['vertical_offset_blocks']
     identity=json.dumps({'plan':plan_hash,'source_package':source_hash,'version':'native-batch-v1'},sort_keys=True)
@@ -67,6 +72,8 @@ def export_world(store,source,output,ground=None):
             state.close();raise
     world=amulet.load_level(str(destination));coords=set(world.all_chunk_coords('minecraft:overworld'))
     try:
+        if hasattr(store,'scheduled_chunks') and not store.scheduled_chunks<=coords:
+            raise ValueError('Scheduled chunks exceed retained terrain coverage')
         for cx,cz in store.db.execute('SELECT DISTINCT cx,cz FROM voxels ORDER BY cx,cz'):
             if (cx,cz) not in coords:raise ValueError('Planned geometry exceeds retained terrain chunk coverage')
             chunk=world.get_chunk(cx,cz,'minecraft:overworld')
@@ -116,6 +123,6 @@ def export_world(store,source,output,ground=None):
     with zipfile.ZipFile(temporary) as archive:
         if archive.testzip() is not None:raise ValueError('Output package CRC failed')
     temporary.replace(output/'park.mcworld')
-    quality['world']['sha256']=hashlib.sha256((output/'park.mcworld').read_bytes()).hexdigest()
+    quality['world']['sha256']=file_hash(output/'park.mcworld')
     (output/'quality-report.json').write_text(json.dumps(quality,indent=2)+'\n');(output/'park-batch-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report

@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "integration_fixture": "synthetic four native chunks, one cross-boundary feature and one later feature",
+  "cli_generated_preview_worlds": 4,
+  "scheduled_chunks": 4,
+  "final_detail_chunks": 3,
+  "final_voxel_cells": 4,
+  "all_cycle_statuses_complete": true,
+  "native_package_readback": "Covered by tests.test_generation_cycles cumulative-world and checkpoint tests",
+  "large_schedule_test": {
+    "chunks": 2500,
+    "sections": 15,
+    "workers": 10,
+    "cycle_sizes": "100\u2013200 at default target"
+  },
+  "tests": {
+    "command": "python -m unittest tests.test_generation_cycles tests.test_park_batch tests.test_alton_world -q",
+    "passed": 35
+  },
+  "workflow_validation": {
+    "yaml_parsed": true,
+    "ten_worker_matrix": true,
+    "actionlint": "passed (v1.7.7; shellcheck disabled)"
+  },
+  "github_actions_execution": "not_run",
+  "production_park_generated": false,
+  "two_point_five_million_feature_benchmark": "not_run",
+  "limitations": [
+    "Consumes accepted compiled geometry; automatic drawing registration and semantic reconstruction remain upstream.",
+    "Synthetic native fixture is not a park preview."
+  ],
+  "checks": {
+    "cumulative_native_readback": true,
+    "prior_download_unchanged": true,
+    "future_details_absent_in_first_preview": true,
+    "crossing_feature_provenance": true,
+    "missing_or_corrupt_worker_blocks_publication": true,
+    "export_failure_does_not_advance_cycle": true,
+    "portable_checkpoint_continues": true,
+    "early_empty_cycle_labelled_terrain_only": true,
+    "terrain_sampling_config_pinned": true,
+    "coordinate_crs_requires_projected_metres": true
+  }
+}

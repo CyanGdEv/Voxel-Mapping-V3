@@ -127,7 +127,7 @@ def run(job_path,stage='all'):
                 checkpoint('sheet_alignment',align_sheet(candidates,root/'footprint-matching',path(matching['references']),matching['reference_crs'],target,root/'sheet-alignment',corpus,max_pair_fits=sheet.get('max_pair_fits',2000),max_records=sheet.get('max_records',2500000)))
 
         finally:corpus.close()
-    if stage in ('all','reconstruct'):
+    if stage in ('all','reconstruct','compile'):
         manifest_path=path(job['manifest']);manifest=json.loads(manifest_path.read_text())
         pinned={'manifest':hashlib.sha256(manifest_path.read_bytes()).hexdigest()}
         for key in ('feature_records','terrain_config'):
@@ -199,6 +199,7 @@ def run(job_path,stage='all'):
         try:report=store.report()
         finally:store.close()
         checkpoint('reconstruction',report)
+        if stage == 'compile': return state
         if not report['unique_voxel_cells']:checkpoint('export',{'status':'withheld_no_accepted_geometry'});return state
         if base:
             subprocess.run([sys.executable,'-m','voxel_mapper.reconstruction.batch','native',*common,'--base-world',str(base),'--terrain-config',str(terrain),'--output',str(root/'world')],check=True)
@@ -210,7 +211,7 @@ def run(job_path,stage='all'):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--job',required=True);p.add_argument('--stage',choices=['all','acquire','reconstruct'],default='all');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--job',required=True);p.add_argument('--stage',choices=['all','acquire','compile','reconstruct'],default='all');a=p.parse_args()
     state=run(a.job,a.stage);print(json.dumps({'job_sha256':state['job_sha256'],'stages':{k:v.get('status') for k,v in state['stages'].items()}},indent=2))
 
 if __name__=='__main__':main()
