@@ -1,7 +1,8 @@
 """Bounded image-only tile atlas and conservative material-anchor region proposals.
 
 Threshold regions are review evidence, never certified physical faces. No gap
-closing, hatch removal, inferred view extent or world placement is performed.
+closing or world placement is performed by this region screen. The separate
+periodic-stroke adapter records unverified hatch suppression hypotheses.
 """
 import hashlib
 import math
@@ -13,7 +14,7 @@ from scipy import ndimage
 from rasterio.features import shapes
 from affine import Affine
 
-VERSION = 'raster-anchor-regions-v1'
+VERSION = 'raster-anchor-regions-v2'
 ZOOM = 2
 THRESHOLDS = (176, 192, 208, 216)
 MAX_PIXELS = 20000000
@@ -134,22 +135,32 @@ def propose(gray, point, *, zoom=ZOOM, radius_points=160):
     x0, x1 = max(0, x-radius), min(gray.shape[1], x+radius+1)
     y0, y1 = max(0, y-radius), min(gray.shape[0], y+radius+1)
     window = gray[y0:y1, x0:x1]
+    return region_screen(window, (x-x0, y-y0), origin=(x0,y0))
+
+
+def region_screen(window, seed, *, origin=(0,0)):
+    """Shared four-threshold screen for a bounded pixel crop and exact seed."""
+    if window.ndim != 2 or window.dtype != np.uint8 or window.size > 2000000:
+        raise ValueError('Bounded uint8 region window required')
+    x,y=seed; x0,y0=origin
+    if not 0 <= x < window.shape[1] or not 0 <= y < window.shape[0]:
+        return {'status':'withheld_anchor_outside_review_window','accepted_feature':False,'world_geometry_additions':0}
     masks = []; receipts = []
     for threshold in THRESHOLDS:
         labels, _ = ndimage.label(window >= threshold)  # Four-connected; no diagonal gap bridging.
-        identity = int(labels[y-y0, x-x0])
+        identity = int(labels[y, x])
         if not identity:
             receipts.append({'threshold': threshold, 'reason': 'anchor_on_dark_artwork'}); continue
         mask = labels == identity
         ys, xs = np.nonzero(mask)
         reason = None
         if mask[0].any() or mask[-1].any() or mask[:,0].any() or mask[:,-1].any(): reason = 'region_reaches_review_window_edge'
-        elif min(xs.max()-xs.min()+1, ys.max()-ys.min()+1) < 8*zoom: reason = 'narrow_region_or_hatch_stripe'
-        elif mask.sum() < 64*zoom*zoom: reason = 'region_too_small'
+        elif min(xs.max()-xs.min()+1, ys.max()-ys.min()+1) < 8*ZOOM: reason = 'narrow_region_or_hatch_stripe'
+        elif mask.sum() < 64*ZOOM*ZOOM: reason = 'region_too_small'
         receipts.append({'threshold': threshold, 'pixels': int(mask.sum()), 'reason': reason})
         if reason is None: masks.append(mask)
     result = {'status': 'withheld_unstable_or_unbounded_raster_region', 'threshold_receipts': receipts,
-              'review_window_page_points': [x0/zoom, y0/zoom, x1/zoom, y1/zoom],
+              'review_window_page_points': [x0/ZOOM, y0/ZOOM, (x0+window.shape[1])/ZOOM, (y0+window.shape[0])/ZOOM],
               'accepted_feature': False, 'world_geometry_additions': 0,
               'view_identity_verified': False, 'outline_identity_verified': False,
               'opening_identity_verified': False}
@@ -159,7 +170,7 @@ def propose(gray, point, *, zoom=ZOOM, radius_points=160):
     if stability < .98: return result
     # Most conservative common pixels; never union fragments or repair openings.
     polygons = [geometry for geometry, value in shapes(intersection.astype('uint8'), mask=intersection,
-                transform=Affine(1/zoom, 0, x0/zoom, 0, 1/zoom, y0/zoom)) if value == 1]
+                transform=Affine(1/ZOOM, 0, x0/ZOOM, 0, 1/ZOOM, y0/ZOOM)) if value == 1]
     if len(polygons) != 1:
         result['status'] = 'withheld_disconnected_threshold_intersection'; return result
     if sum(len(ring) for ring in polygons[0]['coordinates']) > 4096:
@@ -180,7 +191,8 @@ def review(page, records):
         return {'status': 'withheld_atlas', 'version': VERSION, 'reason': str(error)}
     groups = artwork_groups(gray)
     receipt['artwork_review_windows'] = groups
-    counts = {}
+    from .raster_boundaries import prepare, audit, VERSION as BOUNDARY_VERSION
+    counts = {}; boundary_counts={}; prepared={}; boundary_receipts={}
     for record in eligible:
         proposal = propose(gray, record['target_page_point'])
         x,y=record['target_page_point']
@@ -188,6 +200,24 @@ def review(page, records):
             if g['bbox_page_points'][0] < x < g['bbox_page_points'][2]
             and g['bbox_page_points'][1] < y < g['bbox_page_points'][3]]
         record['raster_region_review'] = proposal
+        ids=proposal['artwork_review_window_ids']
+        boundary={'version':BOUNDARY_VERSION,'status':'withheld_ambiguous_artwork_review_window',
+                  'accepted_feature':False,'world_geometry_additions':0}
+        if len(ids)==1:
+            identity=ids[0]
+            if identity not in prepared:
+                try:
+                    prepared[identity]=prepare(gray,next(g for g in groups if g['id']==identity))
+                    boundary_receipts[identity]=prepared[identity][2]
+                except ValueError as error:
+                    prepared[identity]=None
+                    boundary_receipts[identity]={'status':'withheld','reason':str(error),'artwork_review_window_id':identity}
+            if prepared[identity] is not None:boundary=audit(prepared[identity],record['target_page_point'])
+            else:boundary={'status':'withheld_hatch_review_window','reason':boundary_receipts[identity]['reason'],
+                           'accepted_feature':False,'world_geometry_additions':0}
+        record['raster_boundary_review']=boundary
+        boundary_counts[boundary['status']]=boundary_counts.get(boundary['status'],0)+1
         counts[proposal['status']] = counts.get(proposal['status'], 0)+1
     return {'status': 'unplaced_raster_review', 'atlas': receipt, 'region_statuses': counts,
+            'boundary_statuses':boundary_counts,'boundary_review_windows':list(boundary_receipts.values()),
             'world_geometry_additions': 0}

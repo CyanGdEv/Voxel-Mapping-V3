@@ -15,7 +15,9 @@ from .glyph_visibility import screen_span,VERSION as GLYPH_VERSION
 
 from .raster_faces import review as raster_review, VERSION as RASTER_VERSION, BACKENDS as RASTER_BACKENDS
 
-VERSION='material-anchor-faces-v2'
+from .raster_boundaries import VERSION as BOUNDARY_VERSION
+
+VERSION='material-anchor-faces-v3'
 
 
 def face_matches(candidates,point):
@@ -101,7 +103,7 @@ def run(documents_file,output,*,max_pages=10000):
         pdf=(path.parent/item['file']).resolve()
         if pdf.stat().st_size>20000000 or file_hash(pdf)!=item['sha256'] or item['sha256'] in seen:raise ValueError('Distinct bounded pinned PDFs required')
         seen.add(item['sha256']);resolved.append((pdf,item))
-    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'raster_version':RASTER_VERSION,'raster_backends':RASTER_BACKENDS,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
+    contract={'version':VERSION,'glyph_screen_version':GLYPH_VERSION,'raster_version':RASTER_VERSION,'boundary_version':BOUNDARY_VERSION,'raster_backends':RASTER_BACKENDS,'pymupdf_version':pymupdf.VersionBind,'documents_sha256':file_hash(path),'pdf_sha256':[i['sha256'] for _,i in resolved],'max_pages':max_pages}
     output=Path(output)
     if output.exists():
         report=json.loads((output/'face-report.json').read_text())
@@ -111,7 +113,7 @@ def run(documents_file,output,*,max_pages=10000):
         return report
     partial=output.with_name(output.name+'.partial')
     if partial.exists():raise ValueError('Incomplete face run; use a fresh directory')
-    partial.mkdir(parents=True);pages=[];counts=Counter();total=0;face_count=0;glyph_checks=0;glyph_passes=0;resolved_visibility_hazards=0
+    partial.mkdir(parents=True);pages=[];counts=Counter();boundary_counts=Counter();total=0;face_count=0;glyph_checks=0;glyph_passes=0;resolved_visibility_hazards=0
     with (partial/'face-associations.jsonl').open('w') as associations,(partial/'face-candidates.jsonl').open('w') as geometry,(partial/'page-reviews.jsonl').open('w') as reviews:
         for pdf,item in resolved:
             with pymupdf.open(pdf) as document:
@@ -121,12 +123,13 @@ def run(documents_file,output,*,max_pages=10000):
                     except ValueError as error:records=[];faces=[];review={'document_sha256':item['sha256'],'page':n,'status':'withheld','reason':str(error)}
                     for r in records:
                         associations.write(json.dumps(r,sort_keys=True)+'\n');counts[r['status']]+=1
+                        boundary_counts[r.get('raster_boundary_review',{}).get('status','not_reviewed')]+=1
                         resolved_visibility_hazards+=int(r.get('original_callout_status')=='withheld_label_or_legend_visibility' and r.get('glyph_screen_status')=='raster_consistent_candidate')
                     for f in faces:geometry.write(json.dumps(f,sort_keys=True)+'\n')
                     total+=len(records);face_count+=len(faces);glyph_checks+=review.get('glyph_checks',0);glyph_passes+=review.get('glyph_screen_passes',0)
                     reviews.write(json.dumps(review,sort_keys=True)+'\n');pages.append({k:v for k,v in review.items() if k!='glyph_screens'})
     report={'status':'unplaced_face_association_evidence','contract':contract,'pages':pages,'anchor_records':total,
-            'unclassified_enclosed_face_candidates':face_count,'face_statuses':dict(counts),'glyph_checks':glyph_checks,'glyph_screen_passes':glyph_passes,'resolved_callout_visibility_hazards':resolved_visibility_hazards,
+            'raster_boundary_statuses':dict(boundary_counts),'unclassified_enclosed_face_candidates':face_count,'face_statuses':dict(counts),'glyph_checks':glyph_checks,'glyph_screen_passes':glyph_passes,'resolved_callout_visibility_hazards':resolved_visibility_hazards,
             'output_sha256':{name:file_hash(partial/name) for name in ('face-associations.jsonl','face-candidates.jsonl','page-reviews.jsonl')},
             'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0,
             'limitations':['A unique enclosed face is a candidate, not proof of physical component or opening identity.',

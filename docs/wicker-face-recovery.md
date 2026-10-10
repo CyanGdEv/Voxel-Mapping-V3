@@ -94,3 +94,32 @@ Budgets limit the atlas to 20 million pixels, 1,000 image occurrences, 100 milli
 The existing face CLI and park configuration activate this stage automatically. Each association now includes `raster_region_review`; each page receipt contains atlas provenance and artwork review windows. Candidates remain inside evidence records and never enter feature feeds. Retained replay files are `evidence/wicker-raster-face-report.json`, `wicker-raster-face-associations.jsonl`, `wicker-raster-face-page-reviews.jsonl`, `wicker-raster-enclosed-face-candidates.jsonl` and `wicker-raster-face-validation.json`.
 
 All 44 focused tests pass. Raster tests cover tile seams, original page rotation, mirrored placements, overlap paint order, annotation exclusion, pixel budgets, stable-region holes, hatch strips, background/window leaks, dark seeds, threshold instability and exclusion of artwork windows from face geometry. The real replay's output checksums and zero placement counts were independently checked.
+
+## Periodic hatch and boundary evidence
+
+`material-anchor-faces-v3` adds `periodic-hatch-boundaries-v1`. The original four-threshold region screen remains intact. A second review examines the **entire uniquely containing artwork review window**, with a small outer margin, so long wall regions are not truncated by the original anchor-radius crop. Missing or overlapping review-window assignments are withheld; there is no nearest-view selection.
+
+The detector proposes horizontal or vertical hatch families containing at least five thin parallel strokes. Strokes must be at least 32 source-atlas pixels long, no more than four pixels thick, and spaced approximately regularly at 2–20 pixels. Two independent line thresholds, 208 and 224, produce separate suppression variants. Ambiguous neighboring branches are not merged. Detection is limited to cardinal patterns; diagonal hatches and semantic distinctions between hatches, joints, rails and fences remain unsupported.
+
+Suppression keeps each family's first and last stroke, six pixels at every stroke endpoint, and a two-pixel neighborhood of long perpendicular strokes. Only the selected interior stroke pixels are changed; no gaps are closed, missing edges extrapolated or openings filled. Each variant records original stroke boxes, spacing, edit counts and an edit-mask SHA256. The unmodified source crop is also hashed, and the page retains original image occurrence provenance.
+
+A proposed boundary must pass the original four-threshold screen under **both** suppression variants, with at least 98% mask IoU between them. At least 98% of its pixel boundary must lie within two atlas pixels of original dark ink. This is a source-support screen, not physical identity verification. Boundaries near retained periodic strokes explicitly record potential extent ambiguity. Flat dark fill over 10% of a candidate triggers a shadow/coating/ground ambiguity hold; this is a veto, not a shadow classifier. Opening counts must agree, and corresponding holes must have at least 98% IoU. Invalid polygons and displaced openings are withheld.
+
+| Pinned real replay result | Count |
+| --- | ---: |
+| Material anchors reviewed | 23 |
+| Unverified hatch-suppressed boundary candidates | 5 |
+| Suppression regions withheld | 18 |
+| Wall-callout candidates: shop / maintenance | 2 / 3 |
+| Roof-callout candidates | 0 |
+| Verified physical faces / world additions | 0 / 0 |
+
+The five candidates include the three previously stable raw-raster anchor regions and two additional anchors. They are **not five verified faces**. A visual overlay of the maintenance atlas shows the three candidates along lower-wall/plinth regions. One contains an unverified interior ring; its physical opening or occlusion identity is unresolved. All eight roof anchors remain withheld. Two roof anchors pass only one suppression variant, so they are not promoted.
+
+The whole-window stage is limited to two million pixels and 4,096 pixels per axis. Each direction has budgets of 50,000 line components, 10,000 thin strokes and 200,000 neighbor comparisons; a window can produce at most 256 family hypotheses across its directions. Preparation failures receive a retained per-window reason. Prepared windows are reused across their anchors.
+
+Associations now retain `raster_boundary_review`, including suppression-region decisions, source-ink support, dark-fill fraction, extent ambiguity and optional unverified geometry. Page receipts retain `boundary_review_windows` with both variant edit recipes. The summary includes `raster_boundary_statuses`; the completed-run contract pins the boundary adapter version. These records still never enter feature feeds, and every candidate has `accepted_feature: false` and zero world additions.
+
+The retained replay is in `evidence/wicker-hatch-boundary-report.json`, `wicker-hatch-boundary-associations.jsonl`, `wicker-hatch-boundary-page-reviews.jsonl`, `wicker-hatch-enclosed-face-candidates.jsonl` and `wicker-hatch-boundary-validation.json`. The existing face CLI and park job setting run this review automatically. All 57 focused tests pass, including periodicity, perpendicular-edge and endpoint preservation, rotated patterns, irregular/sparse strokes, shadow ambiguity, open-outline refusal, original-ink support, variant disagreement, invalid polygons and shifted openings.
+
+The next extraction task is resolving roof and upper-wall stroke grouping and actual face extents. View identity, complete component dimensions, drawing state, physical opening identity, independent registration checkpoints and a verified vertical datum remain separate placement gates.
