@@ -12,7 +12,7 @@ HOST = 'publicaccess.staffsmoorlands.gov.uk'
 ATTACHMENTS = [160141,160143,160144,160145,*range(160146,160154),163927,163928,163929,163930,163931,163932,163933,163934]
 
 
-def acquire(page_path, output):
+def acquire(page_path, output, attachments=None):
     raw = Path(page_path).read_bytes()
     if hashlib.sha256(raw).hexdigest() != PAGE_SHA:
         raise ValueError('Pinned SW8 application page required')
@@ -22,7 +22,10 @@ def acquire(page_path, output):
                for m in re.finditer(rb"AppBlobImage\('([0-9]+)'\);[^>]*>([^<]+)</a>", raw)}
     dates = {int(m[2]): m[1].decode('ascii') for m in re.finditer(
         rb"<td>(\d{2}/\d{2}/\d{4})</td>\s*<td><a href=\"javascript:AppBlobImage\('([0-9]+)'\)", raw)}
-    if not set(ATTACHMENTS) <= matches.keys():
+    requested = ATTACHMENTS if attachments is None else list(attachments)
+    if not requested or len(requested) > 32 or len(set(requested)) != len(requested):
+        raise ValueError('One to 32 distinct observed attachment IDs required')
+    if any(type(i) is not int for i in requested) or not set(requested) <= matches.keys():
         raise ValueError('Every requested attachment must be an observed link')
     out = Path(output); out.mkdir(parents=True, exist_ok=True)
     def fetch(i):
@@ -52,7 +55,7 @@ def acquire(page_path, output):
             row.update(status='failed', reason=str(exc))
         return row
     with ThreadPoolExecutor(max_workers=4) as pool:
-        rows = list(pool.map(fetch, ATTACHMENTS))
+        rows = list(pool.map(fetch, requested))
     result = {'application_reference':'SMD/2016/0315', 'application_page_sha256':PAGE_SHA,
               'retrieved_date':datetime.now(timezone.utc).date().isoformat(), 'documents':rows,
               'limits':{'concurrent_requests':4,'max_pdf_bytes':20_000_000,'max_pdf_pages':100},
@@ -65,7 +68,9 @@ def acquire(page_path, output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--application-page', required=True); parser.add_argument('--output', required=True)
-    args = parser.parse_args(); result = acquire(args.application_page, args.output)
+    parser.add_argument('--attachment-ids', nargs='+', type=int,
+                        help='Optional bounded subset of links present in the pinned application page')
+    args = parser.parse_args(); result = acquire(args.application_page, args.output, args.attachment_ids)
     for row in result['documents']:
         print(row['attachment_id'], row['attachment_label'], row['status'], row.get('reason',''))
 

@@ -1,0 +1,1312 @@
+{
+  "status": "proposed_line_role_and_cross_sheet_review_only",
+  "measurements": [
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "role": "shop_main_roof",
+      "native_pdf_corners_y_up": [
+        [
+          749.8470458984375,
+          580.8474731445312
+        ],
+        [
+          1007.3703002929688,
+          837.177978515625
+        ],
+        [
+          1343.160400390625,
+          500.0339050292969
+        ],
+        [
+          1086.8995361328125,
+          243.70339965820312
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26.45293745252821,
+              20.491008080376517
+            ],
+            [
+              35.537785593668616,
+              29.533778686523437
+            ],
+            [
+              47.38371412489149,
+              17.64008498297797
+            ],
+            [
+              38.3434003024631,
+              8.597314376831054
+            ],
+            [
+              26.45293745252821,
+              20.491008080376517
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        16.802210191194945,
+        12.802434208299761
+      ],
+      "area_metres_squared": 215.1089334996862
+    },
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "role": "maintenance_main_roof",
+      "native_pdf_corners_y_up": [
+        [
+          278.9834899902344,
+          864.9576416015625
+        ],
+        [
+          278.9834899902344,
+          1516.5169677734375
+        ],
+        [
+          646.3328247070312,
+          1516.5169677734375
+        ],
+        [
+          646.3328247070312,
+          864.9576416015625
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.84191756354438,
+              30.513783467610676
+            ],
+            [
+              9.84191756354438,
+              53.49934858534071
+            ],
+            [
+              22.801185760498047,
+              53.49934858534071
+            ],
+            [
+              22.801185760498047,
+              30.513783467610676
+            ],
+            [
+              9.84191756354438,
+              30.513783467610676
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        22.985565117730037,
+        12.959268196953667
+      ],
+      "area_metres_squared": 297.8761030192064
+    },
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "role": "station_main_roof",
+      "native_pdf_corners_y_up": [
+        [
+          645.0704345703125,
+          1044.2626953125
+        ],
+        [
+          645.0704345703125,
+          1553.1356201171875
+        ],
+        [
+          906.3807983398438,
+          1553.1356201171875
+        ],
+        [
+          906.3807983398438,
+          1044.2626953125
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              22.756651441786023,
+              36.839267306857636
+            ],
+            [
+              22.756651441786023,
+              54.79117326524522
+            ],
+            [
+              31.97510038587782,
+              54.79117326524522
+            ],
+            [
+              31.97510038587782,
+              36.839267306857636
+            ],
+            [
+              22.756651441786023,
+              36.839267306857636
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        17.951905958387584,
+        9.218448944091797
+      ],
+      "area_metres_squared": 165.48872852653327
+    },
+    {
+      "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "role": "communications_roof",
+      "native_pdf_corners_y_up": [
+        [
+          273.93402099609375,
+          1517.7796630859375
+        ],
+        [
+          273.93402099609375,
+          1681.9322509765625
+        ],
+        [
+          420.3688049316406,
+          1681.9322509765625
+        ],
+        [
+          420.3688049316406,
+          1517.7796630859375
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.663783518473307,
+              53.54389366997613
+            ],
+            [
+              9.663783518473307,
+              59.33483218722873
+            ],
+            [
+              14.829677285088433,
+              59.33483218722873
+            ],
+            [
+              14.829677285088433,
+              53.54389366997613
+            ],
+            [
+              9.663783518473307,
+              53.54389366997613
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        5.790938517252599,
+        5.165893766615126
+      ],
+      "area_metres_squared": 29.915373189126637
+    },
+    {
+      "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "role": "maintenance_outer_walls",
+      "native_pdf_corners_y_up": [
+        [
+          344.6266784667969,
+          864.9576416015625
+        ],
+        [
+          344.6266784667969,
+          1438.2288818359375
+        ],
+        [
+          658.95654296875,
+          1438.2288818359375
+        ],
+        [
+          658.95654296875,
+          864.9576416015625
+        ]
+      ],
+      "measurement_frame": "roof-sheet furniture-normalized metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.430886014936034,
+              29.325048752451398
+            ],
+            [
+              10.416217952749069,
+              51.56233804716589
+            ],
+            [
+              22.614520248386295,
+              51.563019848476756
+            ],
+            [
+              22.62918831057326,
+              29.325730553762266
+            ],
+            [
+              10.430886014936034,
+              29.325048752451398
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        22.237294132355043,
+        12.19830231469123
+      ],
+      "area_metres_squared": 271.2571870531689
+    },
+    {
+      "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "role": "station_outer_walls",
+      "native_pdf_corners_y_up": [
+        [
+          672.8425903320312,
+          1024.059326171875
+        ],
+        [
+          672.8425903320312,
+          1477.3729248046875
+        ],
+        [
+          896.2818603515625,
+          1477.3729248046875
+        ],
+        [
+          896.2818603515625,
+          1024.059326171875
+        ]
+      ],
+      "measurement_frame": "roof-sheet furniture-normalized metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              23.16399784033467,
+              35.49734218455887
+            ],
+            [
+              23.15239908639714,
+              53.08145407879007
+            ],
+            [
+              31.82348022828405,
+              53.081938732666146
+            ],
+            [
+              31.835078982221585,
+              35.497826838434946
+            ],
+            [
+              23.16399784033467,
+              35.49734218455887
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        17.58411571959011,
+        8.671081155431326
+      ],
+      "area_metres_squared": 152.47326666427858
+    },
+    {
+      "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "role": "communications_outer_walls",
+      "native_pdf_corners_y_up": [
+        [
+          339.57720947265625,
+          1450.85595703125
+        ],
+        [
+          339.57720947265625,
+          1597.33056640625
+        ],
+        [
+          453.1903991699219,
+          1597.33056640625
+        ],
+        [
+          453.1903991699219,
+          1450.85595703125
+        ]
+      ],
+      "measurement_frame": "roof-sheet furniture-normalized metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10.219938467030786,
+              52.052133497447365
+            ],
+            [
+              10.216190679721162,
+              57.73390860563264
+            ],
+            [
+              14.625215049374118,
+              57.73415503981029
+            ],
+            [
+              14.628962836683744,
+              52.05237993162501
+            ],
+            [
+              10.219938467030786,
+              52.052133497447365
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        5.681776344234569,
+        4.4090243765399455
+      ],
+      "area_metres_squared": 25.051085838459336
+    },
+    {
+      "source_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "role": "maintenance_outer_walls",
+      "native_pdf_corners_y_up": [
+        [
+          131.28636169433594,
+          318.2033996582031
+        ],
+        [
+          131.28636169433594,
+          949.559326171875
+        ],
+        [
+          477.1754150390625,
+          949.559326171875
+        ],
+        [
+          477.1754150390625,
+          318.2033996582031
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.63149109310574,
+              11.225508821275499
+            ],
+            [
+              4.63149109310574,
+              33.49834289550781
+            ],
+            [
+              16.833688252766926,
+              33.49834289550781
+            ],
+            [
+              16.833688252766926,
+              11.225508821275499
+            ],
+            [
+              4.63149109310574,
+              11.225508821275499
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        22.272834074232314,
+        12.202197159661186
+      ],
+      "area_metres_squared": 271.7775126782024
+    },
+    {
+      "source_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "role": "communications_outer_walls",
+      "native_pdf_corners_y_up": [
+        [
+          124.9745101928711,
+          963.4491577148438
+        ],
+        [
+          124.9745101928711,
+          1122.5509033203125
+        ],
+        [
+          251.21139526367188,
+          1122.5509033203125
+        ],
+        [
+          251.21139526367188,
+          963.4491577148438
+        ]
+      ],
+      "measurement_frame": "own-sheet printed-scale metres",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.40882299847073,
+              33.988345286051434
+            ],
+            [
+              4.40882299847073,
+              39.601101311577686
+            ],
+            [
+              8.862179777357312,
+              39.601101311577686
+            ],
+            [
+              8.862179777357312,
+              33.988345286051434
+            ],
+            [
+              4.40882299847073,
+              33.988345286051434
+            ]
+          ]
+        ]
+      },
+      "opposite_edge_mean_dimensions_metres": [
+        5.612756025526252,
+        4.453356778886582
+      ],
+      "area_metres_squared": 24.995605094513845
+    }
+  ],
+  "site_outer_candidate": {
+    "id": "9f75eb71c01873f01f5a4ffb62c24e1364518eab5253281ac1e996c1ff8d8652",
+    "document_sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279",
+    "page": 1,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            1423.679931640625,
+            1291.5999755859375
+          ],
+          [
+            1476.239990234375,
+            1428.1600341796875
+          ],
+          [
+            1232.8800048828125,
+            1522.0
+          ],
+          [
+            1180.3199462890625,
+            1385.43994140625
+          ],
+          [
+            1423.679931640625,
+            1291.5999755859375
+          ]
+        ]
+      ]
+    },
+    "coordinate_frame": "pdf_native_points_y_up",
+    "paint_references": [
+      {
+        "ordinal": 88958,
+        "subpath": null,
+        "stroke_style": {
+          "width_pdf_points": null,
+          "dashes_pdf": ""
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 88959,
+        "subpath": 0,
+        "stroke_style": {
+          "width_pdf_points": 0.35999998450279236,
+          "dashes_pdf": "[] 0"
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 89711,
+        "subpath": null,
+        "stroke_style": {
+          "width_pdf_points": null,
+          "dashes_pdf": ""
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      },
+      {
+        "ordinal": 89712,
+        "subpath": 0,
+        "stroke_style": {
+          "width_pdf_points": 0.35999998450279236,
+          "dashes_pdf": "[] 0"
+        },
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 5
+        }
+      }
+    ],
+    "extraction_kind": "drawing_components",
+    "extraction_version": "drawing-components-v1",
+    "extraction_contract": "475f75117d4a2d8c70ef52785d90982debacf965fc7e83778384aeacf4f70385",
+    "rendering_status": "supported_straight_unclipped_polygon",
+    "curve_approximation": {
+      "cubic_segments": 0,
+      "chord_error_bound_pdf_points": 0,
+      "requested_tolerance_pdf_points": 0.25,
+      "method": "adaptive_de_casteljau_control_hull_to_chord",
+      "points": 5
+    },
+    "stroke_style": {
+      "width_pdf_points": null,
+      "dashes_pdf": ""
+    },
+    "semantic_status": "unclassified",
+    "line_role": null,
+    "physical_identity_verified": false,
+    "world_geometry_additions": 0,
+    "parent_references": [
+      {
+        "candidate_id": "9f75eb71c01873f01f5a4ffb62c24e1364518eab5253281ac1e996c1ff8d8652",
+        "component_index": null,
+        "extraction_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd"
+      }
+    ],
+    "component_semantics_verified": false
+  },
+  "shop_only_drawing_correspondence_hypotheses": [
+    {
+      "corner_shift": 3,
+      "row_rotation": [
+        [
+          0.3587935909321337,
+          0.9334169267299717
+        ],
+        [
+          -0.9334169267299715,
+          0.3587935909321332
+        ]
+      ],
+      "translation_m": [
+        92.86925809177792,
+        71.8017251587683
+      ],
+      "shop_corner_rms_metres": 0.024471346657212744,
+      "shop_corner_max_metres": 0.03305270098641712,
+      "plan_correspondence_checks": {
+        "station": {
+          "roof_vs_site_inner": {
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 56.88907178254056,
+            "centroid_separation_metres": 56.8482684635416
+          }
+        },
+        "maintenance": {
+          "roof_vs_site_inner": {
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 62.43065413629209,
+            "centroid_separation_metres": 61.65346898908474
+          },
+          "roof_vs_site_outer_candidate": {
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 61.69215725878635,
+            "centroid_separation_metres": 61.67465705370649
+          }
+        }
+      },
+      "native_geometries": {
+        "shop_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407558.1061436414,
+                343574.55305268057
+              ],
+              [
+                407552.6481509233,
+                343586.1511767302
+              ],
+              [
+                407567.83463706035,
+                343593.3035617513
+              ],
+              [
+                407573.3076169632,
+                343581.74737443775
+              ],
+              [
+                407558.1061436414,
+                343574.55305268057
+              ]
+            ]
+          ]
+        },
+        "maintenance_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407543.0778479388,
+                343562.283890668
+              ],
+              [
+                407521.43297704315,
+                343570.0192489462
+              ],
+              [
+                407525.794174256,
+                343582.22263335675
+              ],
+              [
+                407547.43904515164,
+                343574.48727507854
+              ],
+              [
+                407543.0778479388,
+                343562.283890668
+              ]
+            ]
+          ]
+        },
+        "station_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407541.467524797,
+                343576.5740605874
+              ],
+              [
+                407524.5627115018,
+                343582.61543584417
+              ],
+              [
+                407527.66500657203,
+                343591.2961942345
+              ],
+              [
+                407544.56981986726,
+                343585.25481897773
+              ],
+              [
+                407541.467524797,
+                343576.5740605874
+              ]
+            ]
+          ]
+        },
+        "communications_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407521.33108251705,
+                343569.8664958509
+              ],
+              [
+                407515.8779158914,
+                343571.8153269529
+              ],
+              [
+                407517.6163999751,
+                343576.6799062254
+              ],
+              [
+                407523.0695666007,
+                343574.7310751234
+              ],
+              [
+                407521.33108251705,
+                343569.8664958509
+              ]
+            ]
+          ]
+        },
+        "site_maintenance_outer_candidate": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407600.1821226531,
+                343585.62170190533
+              ],
+              [
+                407604.530374593,
+                343597.772202268
+              ],
+              [
+                407582.87693209894,
+                343605.53645538713
+              ],
+              [
+                407578.52868015907,
+                343593.3859550244
+              ],
+              [
+                407600.1821226531,
+                343585.62170190533
+              ]
+            ]
+          ]
+        },
+        "maintenance_and_communications_roofs": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  407521.43297704315,
+                  343570.0192489462
+                ],
+                [
+                  407525.794174256,
+                  343582.22263335675
+                ],
+                [
+                  407547.43904515164,
+                  343574.48727507854
+                ],
+                [
+                  407543.0778479388,
+                  343562.283890668
+                ],
+                [
+                  407521.43297704315,
+                  343570.0192489462
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  407515.8779158914,
+                  343571.8153269529
+                ],
+                [
+                  407517.6163999751,
+                  343576.6799062254
+                ],
+                [
+                  407523.0695666007,
+                  343574.7310751234
+                ],
+                [
+                  407521.33108251705,
+                  343569.8664958509
+                ],
+                [
+                  407515.8779158914,
+                  343571.8153269529
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "all_native_pair_comparisons": {
+        "maintenance_main_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 64.95836863709684,
+            "centroid_separation_metres": 62.95056314852104
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 60.558393007916344,
+            "centroid_separation_metres": 58.2533893432374
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 54.31443250499517,
+            "centroid_separation_metres": 46.251787180906064
+          }
+        ],
+        "station_main_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 65.11688989815671,
+            "centroid_separation_metres": 59.59170599224185
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 57.36083847303765,
+            "centroid_separation_metres": 57.02336783699983
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 51.09601357408313,
+            "centroid_separation_metres": 46.02325270212482
+          }
+        ],
+        "communications_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 88.29667406343644,
+            "centroid_separation_metres": 76.79179211903903
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 79.52363432996576,
+            "centroid_separation_metres": 72.83970748312768
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 62.9390699094488,
+            "centroid_separation_metres": 61.01523983328157
+          }
+        ],
+        "site_maintenance_outer_candidate": [
+          {
+            "pair_index": 0,
+            "iou": 0.8298993079584259,
+            "boundary_hausdorff_metres": 5.190581078528562,
+            "centroid_separation_metres": 1.6649277774334788
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 15.646327632976883,
+            "centroid_separation_metres": 12.052623867748887
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 25.630183892510757,
+            "centroid_separation_metres": 20.47013242414508
+          }
+        ],
+        "maintenance_and_communications_roofs": [
+          {
+            "pair_index": 0,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 66.79548249280082,
+            "centroid_separation_metres": 64.19223395027906
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 65.67091976422242,
+            "centroid_separation_metres": 59.57613107344554
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 59.65570139959296,
+            "centroid_separation_metres": 47.59309517138273
+          }
+        ]
+      }
+    },
+    {
+      "corner_shift": 1,
+      "row_rotation": [
+        [
+          -0.35879486258229726,
+          -0.9334164379228334
+        ],
+        [
+          0.9334164379228332,
+          -0.35879486258229687
+        ]
+      ],
+      "translation_m": [
+        83.77721334838775,
+        154.42408809733854
+      ],
+      "shop_corner_rms_metres": 0.02709924629492566,
+      "shop_corner_max_metres": 0.03288560012508013,
+      "plan_correspondence_checks": {
+        "station": {
+          "roof_vs_site_inner": {
+            "iou": 0.986164110132011,
+            "boundary_hausdorff_metres": 0.11877770494673844,
+            "centroid_separation_metres": 0.0374414279589311
+          }
+        },
+        "maintenance": {
+          "roof_vs_site_inner": {
+            "iou": 0.8690733652995605,
+            "boundary_hausdorff_metres": 0.8532096580429789,
+            "centroid_separation_metres": 0.07754841013289678
+          },
+          "roof_vs_site_outer_candidate": {
+            "iou": 0.991607589290835,
+            "boundary_hausdorff_metres": 0.07594115748505399,
+            "centroid_separation_metres": 0.048382200890528616
+          }
+        }
+      },
+      "native_geometries": {
+        "shop_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407567.84214343945,
+                343593.3245234874
+              ],
+              [
+                407573.3001203568,
+                343581.726392002
+              ],
+              [
+                407558.1136244756,
+                343574.5740276704
+              ],
+              [
+                407552.64066031645,
+                343586.1302224401
+              ],
+              [
+                407567.84214343945,
+                343593.3245234874
+              ]
+            ]
+          ]
+        },
+        "maintenance_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407582.8704558571,
+                343605.593665026
+              ],
+              [
+                407604.51531621435,
+                343597.85827725974
+              ],
+              [
+                407600.15410237614,
+                343585.6548987907
+              ],
+              [
+                407578.50924201886,
+                343593.390286557
+              ],
+              [
+                407582.8704558571,
+                343605.593665026
+              ]
+            ]
+          ]
+        },
+        "station_main_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407584.48075953056,
+                343591.3034929128
+              ],
+              [
+                407601.3855645952,
+                343585.2620946256
+              ],
+              [
+                407598.28325769864,
+                343576.5813404617
+              ],
+              [
+                407581.378452634,
+                343582.6227387489
+              ],
+              [
+                407584.48075953056,
+                343591.3034929128
+              ]
+            ]
+          ]
+        },
+        "communications_roof": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407604.6172109486,
+                343598.0110302162
+              ],
+              [
+                407610.0703749192,
+                343596.062191685
+              ],
+              [
+                407608.3318842082,
+                343591.197614781
+              ],
+              [
+                407602.87872023764,
+                343593.14645331213
+              ],
+              [
+                407604.6172109486,
+                343598.0110302162
+              ]
+            ]
+          ]
+        },
+        "site_maintenance_outer_candidate": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                407600.1821226531,
+                343585.62170190533
+              ],
+              [
+                407604.530374593,
+                343597.772202268
+              ],
+              [
+                407582.87693209894,
+                343605.53645538713
+              ],
+              [
+                407578.52868015907,
+                343593.3859550244
+              ],
+              [
+                407600.1821226531,
+                343585.62170190533
+              ]
+            ]
+          ]
+        },
+        "maintenance_and_communications_roofs": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  407610.0703749192,
+                  343596.062191685
+                ],
+                [
+                  407608.3318842082,
+                  343591.197614781
+                ],
+                [
+                  407602.87872023764,
+                  343593.14645331213
+                ],
+                [
+                  407604.6172109486,
+                  343598.0110302162
+                ],
+                [
+                  407610.0703749192,
+                  343596.062191685
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  407604.51531621435,
+                  343597.85827725974
+                ],
+                [
+                  407600.15410237614,
+                  343585.6548987907
+                ],
+                [
+                  407578.50924201886,
+                  343593.390286557
+                ],
+                [
+                  407582.8704558571,
+                  343605.593665026
+                ],
+                [
+                  407604.51531621435,
+                  343597.85827725974
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "all_native_pair_comparisons": {
+        "maintenance_main_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.8296416576611916,
+            "boundary_hausdorff_metres": 5.232921140460534,
+            "centroid_separation_metres": 1.6958764967869768
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 15.703899105795351,
+            "centroid_separation_metres": 12.097922500932428
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 25.677870930812592,
+            "centroid_separation_metres": 20.498423955898364
+          }
+        ],
+        "station_main_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.02377565926555628,
+            "boundary_hausdorff_metres": 14.449829267269589,
+            "centroid_separation_metres": 11.249035868788129
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.8940839755769272,
+            "boundary_hausdorff_metres": 1.3347371284744483,
+            "centroid_separation_metres": 0.4641208888347796
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 16.388488893362855,
+            "centroid_separation_metres": 12.382885086973273
+          }
+        ],
+        "communications_roof": [
+          {
+            "pair_index": 0,
+            "iou": 0.06311758100155125,
+            "boundary_hausdorff_metres": 23.89490317190262,
+            "centroid_separation_metres": 13.3714864407014
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 24.521336925890274,
+            "centroid_separation_metres": 18.555867722317323
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 32.19881025942356,
+            "centroid_separation_metres": 30.76815866434378
+          }
+        ],
+        "site_maintenance_outer_candidate": [
+          {
+            "pair_index": 0,
+            "iou": 0.8298993079584259,
+            "boundary_hausdorff_metres": 5.190581078528562,
+            "centroid_separation_metres": 1.6649277774334788
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 15.646327632976883,
+            "centroid_separation_metres": 12.052623867748887
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 25.630183892510757,
+            "centroid_separation_metres": 20.47013242414508
+          }
+        ],
+        "maintenance_and_communications_roofs": [
+          {
+            "pair_index": 0,
+            "iou": 0.8751827809560951,
+            "boundary_hausdorff_metres": 3.714637483719813,
+            "centroid_separation_metres": 0.5275952294899783
+          },
+          {
+            "pair_index": 1,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 15.703899105795351,
+            "centroid_separation_metres": 12.073670539279709
+          },
+          {
+            "pair_index": 2,
+            "iou": 0.0,
+            "boundary_hausdorff_metres": 28.962232782715976,
+            "centroid_separation_metres": 21.20335557511476
+          }
+        ]
+      }
+    }
+  ],
+  "input_sha256": {
+    "evidence/wicker-architectural-outline-annotations.json": "38f7ce1279005ab896bbb280ac0fd07ab958d77acc581660ac3837bec61108fc",
+    "evidence/wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "../outputs/wicker-site-sections/3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279.pdf": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279",
+    "evidence/wicker-site-roof-comparison.json": "f79db22b761d23feeff4f306cfbb7c07c4861d45515e4a6fcc64da162ee97cc3",
+    "evidence/wicker-roof-plane-correspondence.json": "82a7601332310a302e34a3991467ffa2bd3baab2f205da1d365316d7bb2835d0",
+    "../outputs/wicker-shop-source-search/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "../outputs/wicker-shop-source-search/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "../outputs/wicker-architectural-review/457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f.pdf": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f"
+  },
+  "drawing_correspondence_is_not_geographic_registration": true,
+  "additional_roofs_used_to_refit_geographic_transform": false,
+  "limitations": [
+    "All architectural sheets are proposed, not verified as-built.",
+    "Four-corner manual traces have a two-pixel endpoint sampling bound, not physical positional uncertainty.",
+    "The shop defines drawing correspondences at fixed printed scale; both half-turn alternatives are retained.",
+    "Floor furniture normalization is provisional for additional building dimensions; their placement relative to the roof sheet is not verified.",
+    "Site inner/outer line roles are tested by comparison, not promoted to surveyed physical edges.",
+    "A communications-roof union is an explicit hypothesis; it is not one surveyed main roof.",
+    "Datum and independent geographical checkpoints remain unresolved."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}
