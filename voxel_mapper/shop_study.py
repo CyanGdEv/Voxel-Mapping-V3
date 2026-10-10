@@ -36,7 +36,29 @@ def raster_mesh(mesh, scale):
                   'triangles_without_centroid_sample':sum(n==0 for n in per_triangle)}
 
 
-def plan(model_path, expected_sha256, scale=1):
+def join_wall_columns(wall, roof, scale):
+    """Estimated vertical closure of existing wall columns, bounded to one metre.
+
+    Uses the main roof only. Never extends below an existing wall top, so doors
+    and other holes below it remain untouched. Refuses missing/remote roofs.
+    """
+    tops={};roof_bottom={}
+    for x,y,z in wall:tops[x,z]=max(tops.get((x,z),y),y)
+    for x,y,z in roof:roof_bottom[x,z]=min(roof_bottom.get((x,z),y),y)
+    added=set();columns=[]
+    for (x,z),top in sorted(tops.items()):
+        bottom=roof_bottom.get((x,z))
+        if bottom is None or bottom<top or bottom-top-1>scale:
+            raise ValueError('Wall column lacks a bounded overhead main roof')
+        missing=[(x,y,z) for y in range(top+1,bottom)]
+        added.update(missing)
+        columns.append({'local_xz':[x,z],'wall_top':top,'roof_bottom':bottom,'added_levels':[p[1] for p in missing]})
+    return added,{'rule':'vertical closure above existing wall tops to main-roof underside; at most one source metre',
+                  'status':'estimated display join, not measured construction','added_cells':len(added),
+                  'columns':columns,'all_columns_connected':True}
+
+
+def plan(model_path, expected_sha256, scale=1, joined=False):
     path=Path(model_path);raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=expected_sha256:raise ValueError('Pinned study model checksum mismatch')
     model=json.loads(raw)
@@ -44,8 +66,13 @@ def plan(model_path, expected_sha256, scale=1):
         raise ValueError('Only isolated unplaced shop models supported')
     wall,wall_audit=raster_mesh(model['wall_mesh'],scale)
     roof,roof_audit=raster_mesh(model['roof_mesh'],scale)
+    joins=set();join_audit=None;projection=set();projection_audit=None
+    if joined:
+        joins,join_audit=join_wall_columns(wall,roof,scale)
+        if 'projection_mesh' in model:
+            projection,projection_audit=raster_mesh(model['projection_mesh'],scale)
     # Roof wins aliasing intersections in the display study, with every conflict counted.
-    cells={p:'spruce_planks' for p in wall};cells.update({p:'dark_oak_planks' for p in roof})
+    cells={p:'spruce_planks' for p in wall|joins};cells.update({p:'dark_oak_planks' for p in roof|projection})
     rows=[{'x':x,'y':y,'z':z,'kind':'study_surface','material':material,'feature':'shop-local-study','source':'reviewed-proposed-model'}
           for (x,y,z),material in sorted(cells.items())]
     radius=12*scale
@@ -76,15 +103,26 @@ def plan(model_path, expected_sha256, scale=1):
                 'Palette is illustrative; fascia, canopy, cladding/bunding, interior and construction joints are omitted.',
                 'This surface model is not watertight; no shell-completeness or in-game movement claim is made.',
                 'The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden.']}
+    report['review_mode']='joined-canopy-hypothesis' if joined else 'source-surfaces'
+    report['estimated_join_audit']=join_audit
+    report['projection_cells']=len(projection)
+    report['projection_sampling']=projection_audit
+    if joined:
+        report['version']='shop-local-joined-study-v2'
+        report['projection_review']=model.get('projection_review')
+        report['limitations']=[s for s in report['limitations'] if 'fascia, canopy' not in s]
+        report['limitations'].append('Estimated wall-to-roof joins close sampled columns only; construction thickness and full shell completeness remain unresolved.')
+        report['limitations'].append('Canopy/front fascia use the retained NE-height hypothesis; side fascia and cross-view height discrepancy remain unresolved.')
     return ground+rows,report
 
 
-def run(model_path, expected_sha256, output, scale=1):
+def run(model_path, expected_sha256, output, scale=1, joined=False):
     from .bedrock import export_world
     output=Path(output)
     if output.exists():raise ValueError('Use a new study output directory')
-    rows,report=plan(model_path,expected_sha256,scale);output.mkdir(parents=True)
+    rows,report=plan(model_path,expected_sha256,scale,joined);output.mkdir(parents=True)
     path=output/'voxels.jsonl';path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
-    report['world']=export_world(path,output,report,name=f'Wicker Shop LOCAL STUDY {scale}:1',ground_depth=4)
+    label='JOINED REVIEW' if joined else 'LOCAL STUDY'
+    report['world']=export_world(path,output,report,name=f'Wicker Shop {label} {scale}:1',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report

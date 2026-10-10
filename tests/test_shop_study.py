@@ -3,13 +3,39 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from voxel_mapper.shop_study import raster_mesh,plan,run
+from voxel_mapper.shop_study import raster_mesh,plan,run,join_wall_columns
 
 MODEL=Path(__file__).resolve().parents[1]/'evidence/wicker-shop-wall-model.json'
 SHA='5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22'
 
 
 class ShopStudyTests(unittest.TestCase):
+    def test_joins_preserve_lower_holes_and_refuse_remote_or_missing_roofs(self):
+        wall={(0,0,0),(0,2,0)};roof={(0,4,0)}
+        added,audit=join_wall_columns(wall,roof,1)
+        self.assertEqual(added,{(0,3,0)})
+        self.assertNotIn((0,1,0),wall|added)
+        self.assertEqual(audit['added_cells'],1)
+        self.assertEqual(join_wall_columns(wall,{(0,2,0)},1)[0],set())
+        for invalid in (set(),{(0,5,0)},{(0,1,0)}):
+            with self.assertRaises(ValueError):join_wall_columns(wall,invalid,1)
+
+    def test_joined_review_connects_every_wall_column_preserves_doors_and_source(self):
+        model=MODEL.with_name('wicker-shop-projection-model.json')
+        sha='4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1'
+        before=model.read_bytes()
+        for scale in (1,4):
+            rows,r=plan(model,sha,scale,True)
+            cells={(p['x'],p['y'],p['z']) for p in rows if p['kind']=='study_surface'}
+            self.assertGreater(r['estimated_join_audit']['added_cells'],0)
+            self.assertGreater(r['projection_cells'],0)
+            for col in r['estimated_join_audit']['columns']:
+                x,z=col['local_xz']
+                self.assertTrue(all((x,y,z) in cells for y in range(col['wall_top'],col['roof_bottom']+1)))
+            self.assertTrue(all(o['all_centre_samples_air'] for o in r['opening_centre_sample_audit']))
+            self.assertEqual(r['park_world_blocks_added'],0)
+        self.assertEqual(model.read_bytes(),before)
+
     def test_surface_projection_is_winding_invariant_and_covers_triangle_seam(self):
         mesh={'vertices':[[0,0,2],[2,0,2],[2,2,2],[0,2,2]],'triangles':[[0,1,2],[0,2,3]]}
         cells,audit=raster_mesh(mesh,1)
