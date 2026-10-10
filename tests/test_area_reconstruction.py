@@ -66,6 +66,14 @@ class AreaCompileTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'planning provenance'):
             compiled_coverage(self.geometry,{'b'*64})
 
+    def test_generator_aliases_cover_the_required_primitive_family(self):
+        self.pin('a'*64);db=sqlite3.connect(self.geometry)
+        for identifier,raw in db.execute('SELECT id,record FROM feature_records').fetchall():
+            feature=json.loads(raw);feature['family']='path'
+            with db:db.execute('UPDATE feature_records SET record=? WHERE id=?',(json.dumps(feature),identifier))
+        db.close()
+        self.assertEqual(compiled_coverage(self.geometry,{'a'*64})[0],{'paving':2})
+
     def test_old_voxel_replay_cannot_count_as_area_reconstruction(self):
         self.pin('a'*64);db=sqlite3.connect(self.geometry)
         contract=json.loads(db.execute("SELECT value FROM metadata WHERE key='contract'").fetchone()[0]);contract['snapshot_mode']='review_draft'

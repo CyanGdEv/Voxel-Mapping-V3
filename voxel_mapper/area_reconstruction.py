@@ -8,6 +8,7 @@ import sqlite3
 from pathlib import Path
 from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .planning_bulk import Corpus
+from .reconstruction.park_generators import FAMILY_ALIASES
 
 VERSION='resort-area-reconstruction-v1'
 
@@ -49,7 +50,8 @@ def compiled_coverage(geometry, plan_hashes):
                 if sources[source].get('sha256') in plan_hashes:provenance.add(sources[source]['sha256'])
             if not provenance or not provenance<=plan_hashes:
                 raise ValueError('Compiled feature lacks this area\'s planning provenance: '+identifier)
-            coverage[feature['family']]=coverage.get(feature['family'],0)+1
+            family=FAMILY_ALIASES.get(feature['family'],feature['family'])
+            coverage[family]=coverage.get(family,0)+1
         return coverage,contract
     finally:db.close()
 
@@ -116,7 +118,7 @@ def run(config_path, stage='extract', max_cycles=1):
         save();return state
     job_path=resolve(area['reconstruction_job']);job=json.loads(job_path.read_text())
     # Resolve recipe assets against the recipe, not against the generated job.
-    path_keys={'manifest','terrain_config','base_world','feature_records','references','reviews','documents','file','model','placement','cache','sheets'}
+    path_keys={'manifest','terrain_config','base_world','feature_records','references','reviews','documents','file','model','placement','cache','sheets','bindings','mentions','candidates','corpus','feature_reviews'}
     def absolute(value,key=None):
         if isinstance(value,dict):return {k:absolute(v,k) for k,v in value.items()}
         if isinstance(value,list):return [absolute(v,key) for v in value]
@@ -125,6 +127,9 @@ def run(config_path, stage='extract', max_cycles=1):
     job=absolute(job);job['work_directory']=str(work/'reconstruction')
     job['acquisition']={'catalogue':str(work/'selected-catalogue.json'),'official_hosts':config['official_hosts'],
                         'offline':True,'cache':str(work/'corpus'),'workers':4}
+    if job.get('planning_components'):
+        job['planning_components'].update(mentions=str(work/'components/component-mentions.jsonl'),
+            candidates=str(work/'drawing-geometry/geometry-candidates.jsonl'),corpus=str(work/'corpus'))
     prior=[state['areas'][a['id']] for a in areas[:areas.index(area)] if state['areas'][a['id']]['status']=='complete']
     if prior:
         retained=prior[-1];source=root/retained['base_world']
@@ -136,7 +141,7 @@ def run(config_path, stage='extract', max_cycles=1):
     geometry=work/'reconstruction/geometry.sqlite'
     if not geometry.exists():save();return state
     coverage,compiled=compiled_coverage(geometry,available);entry['generated_families']=coverage
-    entry['missing_components']=sorted(set(area['required_families'])-set(coverage))
+    entry['missing_components']=sorted({FAMILY_ALIASES.get(f,f) for f in area['required_families']}-set(coverage))
     if not coverage:save();return state
     if not area.get('bounds') or not area.get('bounds_crs'):
         entry['status']='awaiting_area_boundary';save();return state

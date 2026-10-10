@@ -58,3 +58,43 @@ fully rebuilt area merely because source sheets were scanned or old meshes exist
 Reproduce the real offline source pass by supplying checksum-matching retained
 PDF directories in `source_directories`. Missing PDFs remain pending. A changed
 area definition, catalogue or recipe requires a fresh reconstruction run.
+
+## Verified component bindings
+
+A park-pipeline recipe may supply a `planning_components` block:
+
+```json
+{
+  "planning_components": {
+    "bindings": "component-bindings.json",
+    "mentions": "components/component-mentions.jsonl",
+    "candidates": "drawing-geometry/geometry-candidates.jsonl",
+    "corpus": "corpus"
+  }
+}
+```
+
+When called through the area coordinator, the last three paths are replaced by
+that area's current extraction and corpus. `bindings` remains a recipe asset.
+Each binding is a normal drawing feature review with `mention_id`,
+`component_role` (`queue` or `fence`), `label_geometry_verified: true` and a
+nonempty `label_geometry_verification_reference`. Candidate and mention must
+belong to the same PDF page. Native label contents are re-extracted and checked;
+nearby candidate rank never supplies verification.
+
+The existing drawing adapter then checks retained candidate bytes, PDF hashes,
+physical identity, source state, reuse and independently checked registration.
+Queue bindings use path/plaza families; fences use wall/fence families.
+Known printed metre fence heights must match the bound height parameter.
+Unspecified units and materials still need independent dimension/proxy evidence;
+the index does not supply generator parameters automatically. A planar stair
+mention cannot become a measured 3D stair recipe.
+
+The resulting `planning-components/features.jsonl` enters the normal compiler.
+Mention identity, role, printed claims and label association remain in feature
+metadata. Source dimensions, terrain and native placement checks still apply.
+Inputs and output hashes pin resumption. Area family coverage uses the same
+generator aliases as reconstruction, so a path counts as paving and a wooden
+fence counts as a wall; required physical component IDs still remain mandatory. Withheld bindings leave no stale
+features in the refreshed feed. This adapter does not provide missing real
+Wicker association or registration evidence.

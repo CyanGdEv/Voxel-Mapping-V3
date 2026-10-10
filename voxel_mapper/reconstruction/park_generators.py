@@ -54,13 +54,15 @@ def roof_surface(feature,geometry,context):
             for y in range(top-math.ceil(thickness)+1,top+1):yield (x,y,z),material
 
 
-def park_registry():
-    from .local_buildings import local_building
-    registry=default_registry()
-    aliases={'path':'paving','plaza':'paving','fence':'wall','metal_fence':'wall','wood_fence':'wall',
+FAMILY_ALIASES={'path':'paving','plaza':'paving','fence':'wall','metal_fence':'wall','wood_fence':'wall',
              'ride_layout':'track','ride_support_member':'beam','bridge':'architectural_components',
              'flat_ride':'architectural_components','water_ride_structure':'architectural_components',
              'animal_enclosure':'architectural_components','animal_crossing':'architectural_components'}
-    registry.update({name:registry[primitive] for name,primitive in aliases.items()})
+
+def park_registry():
+    from .local_buildings import local_building
+    registry=default_registry()
+
+    registry.update({name:registry[primitive] for name,primitive in FAMILY_ALIASES.items()})
     registry.update(rocks=rocks,lake=water,roof_surface=roof_surface,local_building=local_building)
     return registry
