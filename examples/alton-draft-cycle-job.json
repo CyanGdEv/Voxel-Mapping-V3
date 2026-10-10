@@ -1,0 +1,18 @@
+{
+  "snapshot_mode": "review_draft",
+  "output": "../alton-draft-cycles",
+  "base_package": "Alton_Towers_Mutiny_Bay_V22.mcworld",
+  "base_quality": "full-park-quality.json",
+  "terrain_config": "retained/resolved-config.json",
+  "terrain_raster": "retained/alton-terrain-mosaic.tif",
+  "proj_grid_directory": "retained",
+  "wicker_directory": "../wicker-access-v12",
+  "shop_model": "../Voxel-Mapping-V3/evidence/wicker-shop-projection-model.json",
+  "layers": [
+    {"id": "completion", "file": "retained/completion-overlay.jsonl"},
+    {"id": "foliage", "file": "retained/foliage-overlay.jsonl", "defer_above_ground": true},
+    {"id": "garden", "file": "retained/garden-overlay.jsonl"},
+    {"id": "path-smoothing", "file": "retained/path-smoothing-overlay.jsonl"},
+    {"id": "mutiny", "file": "retained/mutiny-bay-courtyard-overlay.json"}
+  ]
+}

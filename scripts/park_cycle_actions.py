@@ -13,7 +13,7 @@ def checkpoint(root, destination):
     root, destination = Path(root), Path(destination)
     if destination.exists(): raise ValueError('Use a fresh checkpoint directory')
     destination.mkdir(parents=True)
-    for name in ['geometry.sqlite','base-world','cycles.sqlite','terrain-config.json']:
+    for name in ['geometry.sqlite','base-world','cycles.sqlite','terrain-config.json','draft-snapshot-report.json']:
         source = root/name
         if source.is_dir(): shutil.copytree(source,destination/name)
         elif source.is_file(): shutil.copyfile(source,destination/name)
@@ -42,7 +42,8 @@ def checkpoint(root, destination):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('stage',choices=['prepare','collect','checkpoint']);p.add_argument('--root',default='cycle-work')
-    p.add_argument('--source');p.add_argument('--destination');a=p.parse_args();root=Path(a.root)
+    p.add_argument('--source');p.add_argument('--destination');p.add_argument('--allow-draft',action='store_true')
+    a=p.parse_args();root=Path(a.root)
     if a.stage == 'checkpoint':
         if not a.destination:p.error('checkpoint requires --destination')
         checkpoint(root,a.destination);return
@@ -58,6 +59,8 @@ def main():
                 if target.exists():shutil.rmtree(target)
                 target.parent.mkdir(parents=True,exist_ok=True);shutil.copytree(source,target)
         else:
+            if plan.contract.get('review_draft') and not a.allow_draft:
+                raise ValueError('Actions preparation of review geometry requires explicit --allow-draft')
             plan.validate_inputs(root/'geometry.sqlite',root/'base-world')
             if plan.contract['workers']!=10:raise ValueError('Actions workflow requires exactly ten workers')
             atomic_json(root/'output/progress.json',plan.report())

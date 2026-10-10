@@ -85,10 +85,13 @@ def export_world(store,source,output,ground=None):
                 if not -64<=y<=319:raise ValueError('Planned geometry outside native height limits')
                 old=chunk.block_palette[int(chunk.blocks[x%16,y,z%16])];expected=material_block(row['material'])
                 decision=json.loads(store.db.execute('SELECT decision FROM features WHERE id=?',(row['feature'],)).fetchone()[0])
+                draft=contract.get('snapshot_mode')=='review_draft'
+                guarded=draft and row.get('baseline_block_sha256')==hashlib.sha256(str(old).encode()).hexdigest()
+                if draft and not guarded:raise ValueError('Draft baseline block changed; replacement withheld')
                 floor=ground is not None and decision['family'] in ('paving','path','plaza') and row['y']==math.floor(ground(row['x']+.5,row['z']+.5)) and old.base_name in ('grass_block','dirt','stone','granite','gravel','sand')
-                if old.extra_blocks or (old.base_name!='air' and old!=expected and not floor):
+                if old.extra_blocks or (old.base_name!='air' and old!=expected and not floor and not guarded):
                     raise ValueError('Native protected-world collision; no package: '+str([row['x'],row['y'],row['z']]))
-                delta+=int(old.base_name=='air');chunk.blocks[x%16,y,z%16]=chunk.block_palette.get_add_block(expected)
+                delta+=int(expected.base_name!='air')-int(old.base_name!='air');chunk.blocks[x%16,y,z%16]=chunk.block_palette.get_add_block(expected)
             chunk.changed=True;world.put_chunk(chunk,'minecraft:overworld');expected_hashes=section_hashes(chunk)
             # LevelDB writes are flushed by closing the wrapper. Unloading
             # alone can expose stale section bytes in this backend.
@@ -114,6 +117,9 @@ def export_world(store,source,output,ground=None):
             'touched_chunks':count,'semantic_verification':semantic,'native_check':'Every cell of touched sections, including unchanged blocks/air; full chunk coverage',
             'native_memory_contract':'One active chunk; wrapper closed/reopened to flush writes; saved section hashes persisted for resume'}
     quality['park_batch']=report;quality['world']['composed_blocks']+=delta
+    if contract.get('snapshot_mode')=='review_draft':
+        report.update(status='native_review_batch_export_verified',production_placement_eligible=False)
+        quality['world']['quality']='draft_unverified'
     (destination/'park-batch-report.json').write_text(json.dumps(report,indent=2)+'\n')
     (destination/'voxel-quality-report.json').write_text(json.dumps(quality,indent=2)+'\n')
     temporary=output/'park.mcworld.partial'

@@ -1,5 +1,9 @@
 # Progressive park generation
 
+The [real Alton draft replay](alton-park-draft-cycles.md) now connects the Wicker
+1:1 mesh/access pipeline to 4,757 park chunks with an explicitly labelled review
+snapshot. Accepted geometry remains the default; draft inputs require opt-in.
+
 The cycle layer schedules roughly 15 spatial sections, targets 150 native chunks per cycle and publishes cumulative Bedrock preview downloads. Ten interchangeable workers own disjoint chunk payloads; one native writer assembles the world. Players can inspect a preview while later cycles continue automatically.
 
 This implementation consumes an **already compiled, accepted geometry snapshot** and a base terrain world. It does not make unregistered drawings acceptable, perform automatic roof/wall interpretation or prove 2.5 million features can be reconstructed end to end. Scraping, automatic registration and semantic reconstruction remain upstream work. The ten workers currently partition and serialize compiled placements, not independently infer geometry from PDFs.

@@ -14,7 +14,7 @@ from shapely.strtree import STRtree
 from .alton import is_park_application
 from .wicker_registration import apply_candidate
 from .plan_boundaries import recover_boundaries
-from .paving_palette import material_label
+from .paving_palette import material_label, polygon_surface
 
 ANCHOR='1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d'
 GENERIC_PAVING_LABELS={'paving','paved area','plaza','footpath','path','hardstanding','hard landscaping'}
@@ -215,8 +215,8 @@ def recover_park_plans(cache,wicker,output,local_crs):
             _,index=min(choices);assignments.setdefault(index,[]).append((material or 'stone',label))
         for index,labels in assignments.items():
             explicit_materials={material_label(a['text']) for _,a in labels}-{None}
-            if len(explicit_materials)>1:continue
-            materials=explicit_materials or {'stone'}
+            surface=polygon_surface(explicit_materials)
+            if surface is None:continue
             polygon=polygons[index]
             if any(re.fullmatch(r'(?:grass|planting|lawn|pond|lake)',a['text'].strip(),re.I)
                    and polygon.contains(Point(a['origin'])) for a in p['labels']):continue
@@ -225,14 +225,15 @@ def recover_park_plans(cache,wicker,output,local_crs):
                    and polygon.contains(Point(a['origin'])) for a in p['labels']):continue
             local=transform(project,polygon)
             if not local.is_valid or not 2<=local.area<=40000:continue
-            identity=(local.normalize().wkb,next(iter(materials)))
+            identity=(local.normalize().wkb,surface)
             if identity in identities:continue
             identities.add(identity)
-            props={'kind':'plaza','surface':next(iter(materials)),'document_id':digest,'page':page_number,
+            props={'kind':'plaza','surface':surface,'document_id':digest,'page':page_number,
                    'application_reference':e['applicationReference'],'source_url':e['url'],
                    'state':e.get('state','unknown'),'material_evidence':[a['text'] for _,a in labels],
                    'material_status':'contained_native_floor_label' if explicit_materials else 'paving_label_unspecified_material','registration_verified':False,
                    'as_built_verified':False,'alignment_method':p['alignment']['status'],
+                   'whole_polygon_material_rule':'brick, then tarmac, then defined concrete/stone; unlabelled paving defaults to stone',
                    'anchor_chain':p['alignment']['anchor_chain']}
             features.append({'type':'Feature','id':f'planning-paving/{digest[:12]}/{index}' if page_number==1 else f'planning-paving/{digest[:12]}/page-{page_number}/{index}','geometry':mapping(local),'properties':props});record['paving_features']+=1
     collection={'type':'FeatureCollection','coordinate_frame':'local x east/z north, metres','features':features}

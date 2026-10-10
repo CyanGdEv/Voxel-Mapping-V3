@@ -23,6 +23,10 @@ on:
         description: Dispatch the next cycle after publishing this preview
         default: true
         type: boolean
+      allow_draft:
+        description: Explicitly permit review geometry without claiming accepted placement
+        default: false
+        type: boolean
 permissions:
   contents: read
 concurrency:
@@ -69,14 +73,24 @@ jobs:
           github-token: ${{ github.token }}
           path: cycle-work
       - name: Initialize spatial cycles if needed
+        env:
+          ALLOW_DRAFT: ${{ inputs.allow_draft }}
         run: |
           if [ ! -f cycle-work/cycles.sqlite ]; then
             terrain_args=()
             if [ -f cycle-work/terrain-config.json ]; then terrain_args=(--terrain-config cycle-work/terrain-config.json); fi
-            python -m voxel_mapper.generation_cycles init --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --base-world cycle-work/base-world --sections 15 --batch-chunks 150 --workers 10 "${terrain_args[@]}"
+            draft_args=()
+            if [ "$ALLOW_DRAFT" = true ]; then draft_args=(--allow-draft); fi
+            if [ -f cycle-work/focus-chunks.json ]; then draft_args+=(--focus-chunks cycle-work/focus-chunks.json); fi
+            python -m voxel_mapper.generation_cycles init --plan cycle-work/cycles.sqlite --geometry cycle-work/geometry.sqlite --base-world cycle-work/base-world --sections 15 --batch-chunks 150 --workers 10 "${terrain_args[@]}" "${draft_args[@]}"
           fi
       - id: plan
-        run: python scripts/park_cycle_actions.py prepare --root cycle-work
+        env:
+          ALLOW_DRAFT: ${{ inputs.allow_draft }}
+        run: |
+          draft_args=()
+          if [ "$ALLOW_DRAFT" = true ]; then draft_args=(--allow-draft); fi
+          python scripts/park_cycle_actions.py prepare --root cycle-work "${draft_args[@]}"
       - uses: actions/upload-artifact@v4
         if: steps.plan.outputs.complete != 'true'
         with:
@@ -194,6 +208,7 @@ jobs:
           SOURCE_ARTIFACT: ${{ inputs.source_artifact }}
           GENERATOR_COMMIT: ${{ needs.prepare.outputs.generator_commit }}
           GENERATION_REF: ${{ github.ref_name }}
+          ALLOW_DRAFT: ${{ inputs.allow_draft }}
         run: |
           python - <<'PY' > next-cycle.txt
           import json
@@ -202,5 +217,5 @@ jobs:
           print('yes' if report['next_cycle'] is not None else 'no')
           PY
           if [ "$(cat next-cycle.txt)" = yes ]; then
-            gh workflow run park-generation-cycles.yml --ref "$GENERATION_REF" -f source_run_id="$SOURCE_RUN_ID" -f source_artifact="$SOURCE_ARTIFACT" -f continuation_run_id="$GITHUB_RUN_ID" -f generator_commit="$GENERATOR_COMMIT" -f continue_automatically=true
+            gh workflow run park-generation-cycles.yml --ref "$GENERATION_REF" -f source_run_id="$SOURCE_RUN_ID" -f source_artifact="$SOURCE_ARTIFACT" -f continuation_run_id="$GITHUB_RUN_ID" -f generator_commit="$GENERATOR_COMMIT" -f continue_automatically=true -f allow_draft="$ALLOW_DRAFT"
           fi

@@ -10,6 +10,8 @@ from pathlib import Path
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction.batch import GeometryStore
 
+PAYLOAD_FILES={'tiles.jsonl','feature-records.jsonl','cell-provenance.jsonl','decisions.jsonl','batch-report.json','context-chunks.json'}
+
 
 class ScopedGeometryStore(GeometryStore):
     """Connection-local views retain the immutable plan hash across all cycles."""
@@ -51,7 +53,7 @@ def verify_worker(plan, geometry, cycle, number, directory):
     expected = {'plan_identity':plan.identity, 'cycle':cycle, 'worker':number,
                 'owned_chunks':[list(c) for c in core], 'geometry_sha256':plan.contract['geometry_sha256']}
     if any(receipt.get(k) != v for k,v in expected.items()): raise ValueError('Worker receipt ownership/input mismatch')
-    required = {'tiles.jsonl','feature-records.jsonl','cell-provenance.jsonl','decisions.jsonl','batch-report.json','context-chunks.json'}
+    required = set(PAYLOAD_FILES)
     tiles = [json.loads(line) for line in (directory/'tiles.jsonl').read_text().splitlines() if line.strip()]
     store = ScopedGeometryStore(geometry, core)
     try:
@@ -89,11 +91,14 @@ def worker(plan, geometry, cycle, number, output):
     finally: store.close()
     atomic_json(temporary/'context-chunks.json', {'native_chunks':[list(c) for c in plan.context_chunks(cycle,number)],
                                                'context_only_not_write_ownership':True})
+    payloads=set(PAYLOAD_FILES)
+    payloads.update(json.loads(line)['file'] for line in (temporary/'tiles.jsonl').read_text().splitlines() if line.strip())
     receipt = {'plan_identity':plan.identity, 'geometry_sha256':plan.contract['geometry_sha256'],
                'cycle':cycle, 'worker':number, 'owned_chunks':[list(c) for c in core],
-               'files':{p.name:file_hash(p) for p in sorted(temporary.iterdir()) if p.is_file()},
+               'files':{name:file_hash(safe_file(temporary,name)) for name in sorted(payloads)},
                'status':'canonical_chunk_payloads_verified_at_assembly'}
     atomic_json(temporary/'worker-receipt.json', receipt)
+    verify_worker(plan, geometry, cycle, number, temporary)
     temporary.replace(output)
     return verify_worker(plan, geometry, cycle, number, output)
 
@@ -161,6 +166,9 @@ def preview(plan, geometry, base, cycle, output, terrain_config=None):
                    'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),
                    'download_artifact':f'park-preview-cycle-{cycle:04d}',
                    'detail_scope':'Only scheduled chunks have cycle-compiled details; unchanged base terrain may cover the whole park.'}
+        if plan.contract.get('review_draft'):
+            receipt.update(snapshot_mode='review_draft',production_placement_eligible=False,
+                           detail_scope='Draft retained layers and Wicker models through this cycle; other legacy park context remains provisional.')
         atomic_json(target/'cycle-report.json', receipt)
         plan.complete(cycle, receipt)
         atomic_json(output/'progress.json', plan.report())

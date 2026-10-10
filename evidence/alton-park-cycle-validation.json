@@ -1,0 +1,45 @@
+{
+  "status": "whole_park_draft_cycles_in_progress",
+  "snapshot_mode": "review_draft",
+  "production_placement_eligible": false,
+  "total_chunks": 4757,
+  "completed_chunks_at_code_validation": 931,
+  "cycle_count": 29,
+  "section_count": 15,
+  "geometry_cells": 847646,
+  "geometry_chunks": 3126,
+  "tests": {
+    "full_suite": {
+      "tests": 799,
+      "result": "passed"
+    },
+    "after_query_optimization": {
+      "tests": 40,
+      "result": "passed"
+    },
+    "workflow_actionlint": "passed"
+  },
+  "first_cycle": {
+    "base_terrain_includes_ungenerated_context": true,
+    "cumulative_geometry_chunks": 84,
+    "cumulative_scheduled_chunks": 100,
+    "cumulative_voxel_cells": 26057,
+    "cycle": 1,
+    "detail_scope": "Draft retained layers and Wicker models through this cycle; other legacy park context remains provisional.",
+    "download_artifact": "park-preview-cycle-0001",
+    "file": "previews/cycle_0001/park.mcworld",
+    "new_scheduled_chunks": 100,
+    "plan_identity": "77e3aea40eabed2cbff781c51c4b7cdb0709647d3565b8cb293db3869993ea04",
+    "production_placement_eligible": false,
+    "section": 1,
+    "sha256": "195fdbf23ec9da45cda5ec464c7ad60dfd4bc9a35f1533bd9bcb014b12facf5f",
+    "snapshot_mode": "review_draft",
+    "status": "native_review_batch_export_verified",
+    "workflow_run_id": null
+  },
+  "limitations": [
+    "Existing draft layers are replayed; unreviewed buildings retain their existing park models.",
+    "Source placement and access dimensions remain provisional.",
+    "No GitHub Actions run is claimed."
+  ]
+}

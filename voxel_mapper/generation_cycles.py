@@ -47,7 +47,7 @@ class CyclePlan:
         if self.contract['version'] != VERSION: self.close(); raise ValueError('Unsupported cycle contract')
 
     @classmethod
-    def create(cls, path, geometry, base, chunks, *, sections=15, batch_chunks=150, workers=10, halo_chunks=1, terrain_config=None):
+    def create(cls, path, geometry, base, chunks, *, sections=15, batch_chunks=150, workers=10, halo_chunks=1, terrain_config=None, allow_draft=False, focus_chunks=None):
         if any(type(v) is not int for v in (sections, batch_chunks, workers, halo_chunks)):
             raise ValueError('Integer scheduling settings required')
         if not 1 <= sections <= 64 or not 1 <= batch_chunks <= 200 or not 1 <= workers <= 10 or not 0 <= halo_chunks <= 4:
@@ -64,6 +64,8 @@ class CyclePlan:
         try:
             connection.execute('PRAGMA wal_checkpoint(TRUNCATE)')
             compiled = json.loads(connection.execute("SELECT value FROM metadata WHERE key='contract'").fetchone()[0])
+            draft=compiled.get('snapshot_mode')=='review_draft'
+            if draft and not allow_draft:raise ValueError('Review snapshot requires explicit allow_draft; it is not accepted geometry')
             if not connection.execute('SELECT COUNT(*) FROM voxels').fetchone()[0]:
                 raise ValueError('No accepted geometry; cycle generation withheld')
             present = set(connection.execute('SELECT DISTINCT cx,cz FROM voxels'))
@@ -88,6 +90,11 @@ class CyclePlan:
                     'terrain_config_sha256':terrain_sha,
                     'sections':sections, 'batch_chunks':batch_chunks, 'workers':workers, 'halo_chunks':halo_chunks,
                     'chunk_set_sha256':hashlib.sha256(json.dumps(sorted(owned)).encode()).hexdigest()}
+        focus=set(tuple(c) for c in (focus_chunks or []))
+        if focus and (not focus<=owned or len(focus)>200 or sections<2):
+            raise ValueError('Focus section requires at most 200 owned chunks and two or more sections')
+        if draft:contract['review_draft']=True
+        if focus:contract['focus_chunks']=sorted(focus)
         if path.exists():
             result = cls(path)
             if result.contract != contract: result.close(); raise ValueError('Changed cycle inputs; use a fresh plan')
@@ -106,7 +113,8 @@ class CyclePlan:
             with db:
                 db.execute('INSERT INTO metadata VALUES(?,?)', ('contract', json.dumps(contract, sort_keys=True)))
                 cycle = 0
-                for section, group in enumerate(partition_sections(owned, sections), 1):
+                groups=([sorted(focus)]+partition_sections(owned-focus,sections-1)) if focus else partition_sections(owned,sections)
+                for section, group in enumerate(groups, 1):
                     group = sorted(group, key=lambda p: (p[1], p[0] if p[1]%2 == 0 else -p[0]))
                     # Balance cycles around the target rather than producing a tiny tail after every section.
                     batches = max(1, round(len(group)/batch_chunks), math.ceil(len(group)/200))
@@ -174,6 +182,7 @@ def main():
     p.add_argument('--cycle', type=int); p.add_argument('--sections', type=int, default=15)
     p.add_argument('--batch-chunks', type=int, default=150); p.add_argument('--workers', type=int, default=10)
     p.add_argument('--terrain-config'); p.add_argument('--max-cycles', type=int, default=1)
+    p.add_argument('--allow-draft',action='store_true');p.add_argument('--focus-chunks')
     a = p.parse_args()
     if a.stage == 'init':
         if not a.geometry or not a.base_world: p.error('init requires --geometry and --base-world')
@@ -183,7 +192,8 @@ def main():
             world = amulet.load_level(str(Path(a.base_world)/'bedrock-world'))
             try: chunks = [list(c) for c in world.all_chunk_coords('minecraft:overworld')]
             finally: world.close()
-        plan = CyclePlan.create(a.plan, a.geometry, a.base_world, chunks, sections=a.sections, batch_chunks=a.batch_chunks, workers=a.workers, terrain_config=a.terrain_config)
+        focus=json.loads(Path(a.focus_chunks).read_text()) if a.focus_chunks else None
+        plan = CyclePlan.create(a.plan, a.geometry, a.base_world, chunks, sections=a.sections, batch_chunks=a.batch_chunks, workers=a.workers, terrain_config=a.terrain_config,allow_draft=a.allow_draft,focus_chunks=focus)
     else: plan = CyclePlan(a.plan)
     try:
         cycle = a.cycle or plan.next_cycle()

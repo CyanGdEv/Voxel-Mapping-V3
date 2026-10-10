@@ -41,6 +41,17 @@ def material_label(text):
     return ALIASES.get(text,text if text in PALETTES else None)
 
 
+def polygon_surface(materials):
+    """Resolve contained paving finishes with the user's whole-polygon rule."""
+    choices={material_label(m) for m in materials}-{None}
+    if not choices:return 'stone'
+    if 'brick' in choices:return 'brick'
+    if 'asphalt' in choices:return 'asphalt'
+    if choices <= {'concrete','stone','paving_stones'}:
+        return 'concrete' if 'concrete' in choices else 'stone'
+    return next(iter(choices)) if len(choices)==1 else None
+
+
 def palette_block(surface,x,z):
     key=material_label(surface) if isinstance(surface,str) else None
     if key is None:raise ValueError('Unsupported paving palette')

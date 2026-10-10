@@ -6,6 +6,7 @@ import hashlib
 import math
 import json
 import sqlite3
+import os
 from pathlib import Path
 
 from .engine import ReconstructionEngine,Context
@@ -106,9 +107,15 @@ class GeometryStore:
                 'memory_contract':'One bounded feature staged at a time; feature records normalized once, voxel/evidence links and decisions on disk'}
 
     def tile_rows(self,cx,cz):
-        for (text,) in self.db.execute('SELECT row FROM voxels WHERE cx=? AND cz=? ORDER BY x,y,z',(cx,cz)):
+        # A scoped cell retains every provenance link at that coordinate. Count
+        # from the indexed canonical table without rejoining the scoped view
+        # once per Python row (a substantial cost in real park payloads).
+        query='''SELECT v.row,(SELECT COUNT(*) FROM main.evidence e
+                 WHERE e.x=v.x AND e.y=v.y AND e.z=v.z)
+                 FROM voxels v WHERE v.cx=? AND v.cz=? ORDER BY v.x,v.y,v.z'''
+        for text,count in self.db.execute(query,(cx,cz)):
             row=json.loads(text)
-            row['provenance_count']=self.db.execute('SELECT COUNT(*) FROM evidence WHERE x=? AND y=? AND z=?',(row['x'],row['y'],row['z'])).fetchone()[0]
+            row['provenance_count']=count
             row['evidence_reference']={'cell':[row['x'],row['y'],row['z']],'links':'cell-provenance.jsonl','features':'feature-records.jsonl'}
             yield row
 
@@ -122,6 +129,7 @@ class GeometryStore:
                 with path.open('wb') as stream:
                     for row in self.tile_rows(cx,cz):
                         data=(json.dumps(row,sort_keys=True)+'\n').encode();stream.write(data);digest.update(data);count+=1
+                    stream.flush();os.fsync(stream.fileno())
                 index.write(json.dumps({'native_chunk':[cx,cz],'file':path.name,'records':count,'sha256':digest.hexdigest()})+'\n');tiles+=1
         self.export_provenance(output)
         report=self.report();report['exported_tiles']=tiles
@@ -138,7 +146,10 @@ class GeometryStore:
                 for record in self.db.execute(query):
                     text=record[0] if len(record)==1 else json.dumps({'cell':list(record[:3]),'feature':record[3]})
                     data=(text+'\n').encode();stream.write(data);digest.update(data);count+=1
-            temporary.replace(path);files.append({'file':name,'sha256':digest.hexdigest(),'records':count})
+                stream.flush();os.fsync(stream.fileno())
+            temporary.replace(path)
+            temporary.unlink(missing_ok=True)
+            files.append({'file':name,'sha256':digest.hexdigest(),'records':count})
         return files
 
     def close(self):self.db.close()
