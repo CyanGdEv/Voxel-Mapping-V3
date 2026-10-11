@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v2'
+VERSION='architectural-interpretation-v3'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -105,6 +105,87 @@ def wall_bands(parents,factor,*,interpretation_options=None):
         'unique_pairs':len(result),'ambiguous_pairs_withheld':len(pairs)-len(result)}
 
 
+def component_links(parents,bands,associations,labels,factor,*,max_checks=100000):
+    """Exact same-page source topology; no nearest-object or height application."""
+    if type(max_checks) is not int or not 1<=max_checks<=100000:raise ValueError('Bounded component-link checks required')
+    if type(factor) not in (int,float) or not math.isfinite(factor) or not 0<factor<=10000*.0254/72:
+        raise ValueError('Bounded source metre scale required')
+    records=parents+bands+[r['source_candidate'] for r in associations]
+    if (len(associations)>500 or len(labels)>500 or len(bands)>10000
+            or len({(r['document_sha256'],r['page'],r['coordinate_frame']) for r in records})>1
+            or any(r['coordinate_frame']!='pdf_native_points_y_up' for r in records)):
+        raise ValueError('One bounded source page required for component links')
+    components={r['id']:r for r in split_page(parents)}
+    targets=[('roof_region',r['candidate_id'],shape(r['source_candidate']['geometry']),r['source_candidate']) for r in associations]
+    targets += [('wall_band',r['id'],shape(r['geometry']),r) for r in bands]
+    index=STRtree([t[2] for t in targets]);checks=0;roof_links=[];leader_links=[];reviews=[]
+    def source_refs(record,kind):
+        if kind=='wall_band':return {r['component_id']:r['component_contract'] for r in record['source_line_references']}
+        return {r['candidate_id']:r['extraction_contract'] for r in record.get('line_parent_references',[])}
+    for association in associations:
+        roof=association['source_candidate'];polygon=shape(roof['geometry']);refs=source_refs(roof,'roof_region')
+        for i in index.query(polygon,predicate='intersects'):
+            kind,identifier,geometry,band=targets[int(i)]
+            if kind!='wall_band':continue
+            for component_id,contract in source_refs(band,kind).items():
+                checks+=1
+                if checks>max_checks:return {'status':'component_link_budget_withheld','checks':checks,
+                    'roof_wall_links':[],'leader_associations':[],'claim_link_reviews':[]}
+                component=components.get(component_id)
+                if refs.get(component_id)!=contract or not component or component['extraction_contract']!=contract:continue
+                overlap=polygon.boundary.intersection(shape(component['geometry'])).intersection(geometry.boundary)
+                if overlap.length<=1e-7:continue
+                roof_links.append({'roof_candidate_id':roof['id'],'wall_band_id':identifier,
+                    'source_component':component,'shared_boundary_geometry':mapping(overlap),
+                    'shared_boundary_length_m':overlap.length*factor,
+                    'roof_ring_role':'exterior_ring' if polygon.exterior.intersection(overlap).length==overlap.length else 'hole_or_mixed_ring',
+                    'association_status':'shared_native_boundary_component','wall_identity_verified':False,
+                    'physical_identity_verified':False,'height_application_verified':False,'world_geometry_additions':0})
+    boundary_components={identifier for kind,_,_,record in targets for identifier in source_refs(record,kind)}
+    leaders=[];endpoints=[];owners=[]
+    for component in components.values():
+        if (component['id'] in boundary_components or component['geometry']['type']!='LineString' or component.get('curve_approximation',{}).get('cubic_segments')
+                or component.get('paint_reference_truncated') or not component.get('paint_references')
+                or any(not isinstance(p['stroke_style'].get('dashes_pdf'),str) or not re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',p['stroke_style']['dashes_pdf']) for p in component['paint_references'])):continue
+        line=shape(component['geometry'])
+        if not 2<=len(line.coords)<=8 or not line.is_simple or line.is_ring:continue
+        k=len(leaders);leaders.append((component,line))
+        for end in (0,-1):endpoints.append(Point(line.coords[end]));owners.append((k,end))
+    endpoint_index=STRtree(endpoints)
+    for claim_index,label in enumerate(labels):
+        role=label['printed_claim']['role']
+        if role in ('flat_roof','roof'):continue
+        if label['glyph_screen']['status']!='raster_consistent_candidate':
+            reviews.append({'printed_claim_index':claim_index,'status':'glyph_screen_withheld'});continue
+        label_geometry=shape(label['label_geometry']);matches=[]
+        for j in endpoint_index.query(label_geometry,predicate='intersects'):
+            checks+=1
+            if checks>max_checks:return {'status':'component_link_budget_withheld','checks':checks,
+                'roof_wall_links':[],'leader_associations':[],'claim_link_reviews':[]}
+            k,end=owners[int(j)];component,line=leaders[k];other=Point(line.coords[-1 if end==0 else 0])
+            if label_geometry.covers(other):continue
+            for i in index.query(other,predicate='intersects'):
+                kind,identifier,geometry,record=targets[int(i)]
+                checks+=1
+                if checks>max_checks:return {'status':'component_link_budget_withheld','checks':checks,
+                    'roof_wall_links':[],'leader_associations':[],'claim_link_reviews':[]}
+                if (kind=='wall_band')!=(role in ('wall','retaining_wall')):continue
+                if component['id'] in source_refs(record,kind):continue
+                # A roof level must reach a drawn boundary, not empty space.
+                if kind=='roof_region' and not geometry.boundary.intersects(other):continue
+                if kind=='roof_region' and line.intersection(geometry).length>1e-7:continue
+                matches.append({'printed_claim_index':claim_index,'target_kind':kind,'candidate_id':identifier,
+                    'source_leader_component':component,'label_endpoint':mapping(endpoints[int(j)]),'target_endpoint':mapping(other),
+                    'association_status':'unique_source_endpoint_connection_candidate','leader_semantics_verified':False,
+                    'physical_identity_verified':False,'height_application_verified':False,'world_geometry_additions':0})
+        status='no_source_endpoint_connection' if not matches else 'ambiguous_source_endpoint_connections'
+        if len(matches)==1:leader_links.extend(matches);status=matches[0]['association_status']
+        reviews.append({'printed_claim_index':claim_index,'status':status,'connection_candidates':len(matches)})
+    return {'status':'source_component_links_only','checks':checks,'roof_wall_links':roof_links,
+        'leader_associations':leader_links,'claim_link_reviews':reviews,
+        'physical_identity_verified':False,'height_application_verified':False,'world_geometry_additions':0}
+
+
 def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretation_options=None):
     opts=options(interpretation_options)
     if len(polygons)>20000 or any(r['document_sha256']!=sha or r['page']!=number
@@ -144,12 +225,14 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
         'association_status':'unique_complete_roof_label_enclosure','physical_identity_verified':False,
         'registration_verified':False,'world_geometry_additions':0}
         for identifier in sorted({r['candidate_id'] for r in labels if r['candidate_id'] is not None})]
+    links=component_links(parents,bands,associations,labels,scale_review['expected_metres_per_pdf_point'])
     return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
         'source_parent_records_sha256':hashlib.sha256(json.dumps(parents,sort_keys=True).encode()).hexdigest(),
         'source_polygon_records_sha256':hashlib.sha256(json.dumps(polygons,sort_keys=True).encode()).hexdigest(),
         'status':'architectural_component_candidates_only','wall_band_candidates':bands,'network_review':network,
         'printed_claims':labels,'role_counts':dict(Counter(r['printed_claim']['role'] for r in labels)),
         'roof_region_associations':associations,
+        'component_links':links,
         'bound_roof_labels':sum(r['candidate_id'] is not None for r in labels),
         'visible_claim_counts':dict(Counter(r['printed_claim']['role'] for r in labels if r['glyph_screen']['status']=='raster_consistent_candidate')),
         'printed_scale_review':scale_review,'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0,
@@ -215,6 +298,8 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             stream.write(json.dumps(page_report,sort_keys=True)+'\n');pages+=1;documents.add(sha)
             counts[page_report['status']]+=1;counts['wall_band_candidates']+=len(page_report['wall_band_candidates'])
             counts['printed_claims']+=len(page_report['printed_claims']);counts['bound_roof_labels']+=page_report.get('bound_roof_labels',0)
+            counts['roof_wall_links']+=len(page_report.get('component_links',{}).get('roof_wall_links',[]))
+            counts['leader_association_candidates']+=len(page_report.get('component_links',{}).get('leader_associations',[]))
     if digest(feed)!=contract['source_feed_sha256'] or extraction_pin(json.loads((drawing_directory/'geometry-report.json').read_text()))!=contract['geometry_report_contract_sha256']:
         raise ValueError('Architectural source feed changed')
     temporary.replace(target)

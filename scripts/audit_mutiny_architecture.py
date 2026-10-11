@@ -22,6 +22,8 @@ for sha in ['cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2','
   report['extraction']=extraction;report['recovery']=recovery
   if hashlib.sha256(path.read_bytes()).hexdigest()!=sha:raise ValueError('Source PDF changed during audit')
   pages.append(report)
-  print(sha[:8],report['network_review'],report['role_counts'],'bound roof',report['bound_roof_labels'],flush=True)
+  links=report['component_links']
+  print(sha[:8],report['network_review'],report['role_counts'],'bound roof',report['bound_roof_labels'],
+        'roof-band links',len(links['roof_wall_links']),'leader candidates',len(links['leader_associations']),flush=True)
 args.output.parent.mkdir(parents=True,exist_ok=True)
 args.output.write_text(json.dumps({'pages':pages,'world_geometry_additions':0},separators=(',',':'))+'\n')
