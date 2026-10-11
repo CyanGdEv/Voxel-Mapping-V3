@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v3'
+VERSION='architectural-interpretation-v4'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -191,9 +191,19 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
     if len(polygons)>20000 or any(r['document_sha256']!=sha or r['page']!=number
             or r.get('coordinate_frame')!='pdf_native_points_y_up' for r in parents+polygons):
         raise ValueError('One bounded native architectural page required')
-    if (scale_review.get('document_sha256')!=sha or scale_review.get('page')!=number
-            or scale_review.get('status')!='one_visible_printed_scale'):
+    if scale_review.get('document_sha256')!=sha or scale_review.get('page')!=number:
         raise ValueError('Source-bound visible scale required')
+    from .elevation_interpretation import review_page
+    elevation=review_page(page,sha,number,polygons,scale_review)
+    if elevation is not None:
+        return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
+            'status':elevation['status'],'elevation_interpretation':elevation,
+            'wall_band_candidates':[],'printed_claims':[],'bound_roof_labels':0,
+            'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0}
+    if scale_review.get('status')!='one_visible_printed_scale':
+        return {'version':VERSION,'document_sha256':sha,'page':number,'status':'complete_extraction_and_visible_scale_required',
+            'printed_scale_review':scale_review,'wall_band_candidates':[],'printed_claims':[],
+            'physical_identity_verified':False,'world_geometry_additions':0}
     bands,network=wall_bands(parents,scale_review['expected_metres_per_pdf_point'],interpretation_options=opts)
     faces={r['id']:r for r in polygons if r['geometry']['type']=='Polygon' and r.get('extraction_kind')!='linework_envelopes'}
     if len(faces)!=sum(r['geometry']['type']=='Polygon' and r.get('extraction_kind')!='linework_envelopes' for r in polygons):
@@ -248,6 +258,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .linework_boundaries import recover_page,VERSION as recovery_version
     from .mapped_alignment_checks import printed_scale_review,VERSION as alignment_version
     from .glyph_visibility import VERSION as glyph_version,INK_VERSION as glyph_ink_version
+    from .elevation_interpretation import VERSION as elevation_version
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -259,7 +270,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
@@ -280,7 +291,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
                 parents,parent_report=extract_page(doc[number-1],sha,number,**extraction['options'])
                 parents=json.loads(json.dumps(parents))
                 if parents!=cached['candidates'] or parent_report!=cached['report']:raise ValueError('Retained native extraction differs from source')
-                if parent_report['status']!='unplaced_geometry_candidates' or scale['status']!='one_visible_printed_scale':
+                if parent_report['status']!='unplaced_geometry_candidates':
                     page_report={'version':VERSION,'document_sha256':sha,'page':number,'status':'complete_extraction_and_visible_scale_required',
                         'extraction':parent_report,'printed_scale_review':scale,'wall_band_candidates':[],'printed_claims':[],
                         'physical_identity_verified':False,'world_geometry_additions':0}
@@ -300,6 +311,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             counts['printed_claims']+=len(page_report['printed_claims']);counts['bound_roof_labels']+=page_report.get('bound_roof_labels',0)
             counts['roof_wall_links']+=len(page_report.get('component_links',{}).get('roof_wall_links',[]))
             counts['leader_association_candidates']+=len(page_report.get('component_links',{}).get('leader_associations',[]))
+            counts['elevation_material_regions']+=page_report.get('elevation_interpretation',{}).get('counts',{}).get('material_regions',0)
     if digest(feed)!=contract['source_feed_sha256'] or extraction_pin(json.loads((drawing_directory/'geometry-report.json').read_text()))!=contract['geometry_report_contract_sha256']:
         raise ValueError('Architectural source feed changed')
     temporary.replace(target)

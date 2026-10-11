@@ -40,6 +40,16 @@ Visible wall and height claims can obtain a source endpoint connection candidate
 
 `component_links` includes exact roof-band links, endpoint connection candidates and a decision for each non-roof claim. A fixed 100,000-check budget discards all partial link results on exhaustion. Native source and output checkpoint checks cover these records through the version 3 stage contract.
 
+## Elevation interpretation
+
+Version 4 recognises supported native elevation captions and sheet titles before plan-style wall-band or roof interpretation. Exact cardinal captions and range/courtyard/gable captions retain their direction, printed existing/proposed state and any view-specific scale. Letter-spaced CAD captions are recognised without rewriting their native glyphs; the original-font screen still checks the original characters and positions. Unsupported or hidden captions cannot qualify material regions. A recognised mixed plan/elevation sheet requires separate view scopes and remains withheld.
+
+On a supported elevation page, a brick, stone, timber, render, tile, slate, metal or concrete label associates only when its entire native glyph box lies inside one primitive enclosure. The complete unchanged source polygon, boundary provenance and material-label indices are retained. Multiple materials in one enclosure remain separate printed claims; this does not choose a physical palette or apply the horizontal paving precedence rule. The elevation sidecar does not turn those faces into plan footprints, roofs, walls or physical inventory entries.
+
+`elevation_interpretation` retains page scale reviews separately from printed view scales. The retained AL 08 sheet prints 1:100 in the title block and 1:50 below its elevation. That conflict remains explicit. No scale is applied to a material region until a spatially verified view scope exists; no region height, vertical datum or terrain placement is inferred. Printed existing/proposed state also remains a source claim, not current as-built verification.
+
+The existing `architectural_interpretation` option enables this path in park and area cycles. Complete native extraction and recovery are required. Unlike plan interpretation, retaining native elevation regions does not require an agreed whole-page scale, because they are not projected or measured in metres. The stage pins `elevation-interpretation-v1` alongside its other versions and rejects changed inputs, versions or sidecar outputs on resume.
+
 ## Resume and source checks
 
 The stage replays each source PDF using the pinned native extraction options and compares it with retained extraction. Complete extraction, complete boundary recovery and a source-bound visible printed scale are required. Source/feed/output hashes and interpretation/recovery/glyph versions are pinned. Extraction run/resume counters are excluded from the semantic pin so a routine extraction resume does not invalidate interpretation.
@@ -57,3 +67,11 @@ There are 18 floor-plan and six roof-sheet architectural text claims. In the ret
 The version 2 replay passes 14 floor-plan claims and all six roof-sheet claims. Two of the four `flat roof` labels obtain unique complete enclosure associations. The other two have no qualifying complete enclosure and remain unbound; no larger outline is invented to accommodate them. `evidence/mutiny-roof-label-binding-audit.json` retains both associated source polygons, their boundary provenance and all per-glyph checks, alongside the unchanged band counts. Wall descriptions and eaves/ridge values remain unbound. No world geometry is generated: exterior wall identity, physical roof edges, vertical references and geographic registration still require evidence.
 
 The version 3 replay retains those two roof associations and finds one exact shared source-edge link to a paired band on the roof sheet. Neither sheet supplies a qualifying unique source endpoint connection for the wall or level claims. Their printed heights remain unbound. `evidence/mutiny-architectural-component-links-audit.json` records the shared source component, its exact overlap and the unsuccessful label-connection checks. No park-world geometry is added.
+
+The version 4 elevation audit replays ten pinned PDFs: four existing Smytheman elevation sheets, three existing CTD sheets and three proposed CTD sheets. The four Smytheman sheets supply 54 material-region associations supported by 81 completely contained material-label occurrences. The CTD audit retains elevation captions, existing/proposed claims and printed view scales; those sheets do not contain qualifying standalone material labels. Their source drawings also contain opening reference IDs, which are not yet bound to geometry. No explicit height datum or plan correspondence is established. The audit is retained in `evidence/mutiny-elevation-material-regions-audit.json` and reproduced with:
+
+```bash
+PYTHONPATH=. python scripts/audit_mutiny_elevations.py --input-root RETAINED_INPUT_ROOT --output AUDIT.json
+```
+
+These are native elevation candidates for later profile and plan correspondence work. No new park-world geometry is generated.
