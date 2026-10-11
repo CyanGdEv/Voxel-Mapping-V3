@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-11",
+  "controller_status": "completed_with_blockers",
+  "areas_visited": 15,
+  "area_status_counts": {
+    "awaiting_applications": 3,
+    "awaiting_reconstruction": 12
+  },
+  "published_native_cycles": 0,
+  "baseline_sha256": "47566a01367e8ae41fafe7222eecdde6c8fd6873e028036059d692807e3e20ef",
+  "baseline_unchanged": true,
+  "terminal_resume_does_not_repeat_area_work": true,
+  "area_results": {
+    "adventure-land": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "No associated planning applications"
+      ],
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_applications"
+    },
+    "alton-towers-hotel": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 4,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "cbeebies-land": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 10,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "dark-forest": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 5,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "enchanted-village": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 9,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "forbidden-valley": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 22,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "gardens": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 80,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "gloomy-wood": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "No associated planning applications"
+      ],
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_applications"
+    },
+    "katanga-canyon": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 2,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "mutiny-bay": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 139,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "fence",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "stargazing-pods": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 4,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "towers": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 70,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "towers-street": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "No associated planning applications"
+      ],
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_applications"
+    },
+    "wicker-man": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 40,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "fence",
+        "architectural_components",
+        "track",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    },
+    "x-sector": {
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ],
+      "document_records": 3,
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "status": "awaiting_reconstruction"
+    }
+  },
+  "input_contract": {
+    "catalogue_sha256": "90e3d1a81201e41f65c5c354379464abf4aaf697cce175ee143b208fa40261ee",
+    "job_sha256": "1233f0f08cfa0277418287c4f7285a9095bab925b20f2ca2458d9f2d1196eac3",
+    "recipes": {},
+    "supplements": {
+      "/workspace/scratch/3f763b7f11b4/Voxel-Mapping-V3/evidence/wicker-architectural-extra-sources.json": "9036e84ed523040163296fc964a2d1d5729e4d65abe7343b884b48838616fd24",
+      "/workspace/scratch/3f763b7f11b4/Voxel-Mapping-V3/evidence/wicker-shop-drawing-sources.json": "91143d83e937eecd86edd67d747161a99ed72ffc6abb354a05e275094652c803",
+      "/workspace/scratch/3f763b7f11b4/Voxel-Mapping-V3/evidence/wicker-site-section-sources.json": "cbee9df5e18d20acafa3c6738336a99fbe65b323ac0876cde930211e81e1db62"
+    },
+    "version": "resort-area-cycles-v1"
+  },
+  "tests": {
+    "regression_tests_passed": 844,
+    "native_integration": "Three real native cycles across two areas; multi-cycle first area, missing worker rejection, interrupted publication recovery, budget pause/resume, partial area geometry retained in second world",
+    "workflow_validation": "YAML and shell steps parse; ten matrix workers configured"
+  },
+  "actions_live_execution": "Not launched: this draft workflow is not on the default branch and the park production recipes/registration are not yet connected"
+}

@@ -142,7 +142,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     if job.get('planning_components'):
         job['planning_components'].update(mentions=str(work/'components/component-mentions.jsonl'),
             candidates=str(work/'drawing-geometry/geometry-candidates.jsonl'),corpus=str(work/'corpus'))
-    prior=[state['areas'][a['id']] for a in areas[:areas.index(area)] if state['areas'][a['id']]['status']=='complete']
+    prior=[state['areas'][a['id']] for a in areas[:areas.index(area)]
+           if state['areas'][a['id']]['status'] in ('complete','partial_area_preview')]
     if prior:
         retained=prior[-1];source=root/retained['base_world']
         if file_hash(source/'park.mcworld')!=retained['world_sha256']:raise ValueError('Previous area download changed')
@@ -185,8 +186,17 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     db=sqlite3.connect(geometry);chunks=db.execute('SELECT DISTINCT cx,cz FROM voxels').fetchall();db.close()
     plan=CyclePlan.create(work/'cycles.sqlite',geometry,base,chunks,
              sections=1,batch_chunks=area.get('batch_chunks',150),workers=10,terrain_config=job['terrain_config'])
-    from .generation_cycle_export import run_isolated
-    try:result=run_isolated(plan,geometry,base,work/'output',job['terrain_config'],max_cycles)
+    entry['generation_inputs']={'geometry':str(geometry),'base_world':str(base),
+                                'terrain_config':job['terrain_config'],'output':str(work/'output')}
+    from .generation_cycle_export import run_isolated,preview
+    try:
+        if stage=='prepare':
+            entry.update(status='ready_for_cycle',chunk_cycles=plan.report());save();return state
+        if stage in ('assemble','finish'):
+            cycle=plan.next_cycle()
+            if stage=='assemble' and cycle is not None:preview(plan,geometry,base,cycle,work/'output',job['terrain_config'])
+            result={'progress':plan.report()}
+        else:result=run_isolated(plan,geometry,base,work/'output',job['terrain_config'],max_cycles)
     finally:plan.close()
     entry['chunk_cycles']=result['progress'];entry['status']='generating'
     complete=[c for c in result['progress']['cycles'] if c['status']=='complete']

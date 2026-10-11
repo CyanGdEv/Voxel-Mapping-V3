@@ -124,7 +124,7 @@ class AreaCompileTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'replay'):
             compiled_coverage(self.geometry,{'a'*64})
 
-    def test_two_planning_recipes_publish_cumulative_area_worlds(self):
+    def two_area_fixture(self):
         import amulet,numpy as np,rasterio
         from rasterio.transform import from_origin
         from shapely.geometry import mapping,box
@@ -148,10 +148,55 @@ class AreaCompileTests(unittest.TestCase):
         config={'work_directory':'areas','catalogue':'catalogue.json','official_hosts':['portal.test'],'offline':True,'source_directories':['sources'],'areas':areas,
                 'initial_base_world':str(self.base),'initial_base_sha256':hashlib.sha256((self.base/'park.mcworld').read_bytes()).hexdigest()}
         job=self.root/'area-job.json';job.write_text(json.dumps(config))
+        return job
+
+    def test_two_planning_recipes_publish_cumulative_area_worlds(self):
+        import amulet
+        from voxel_mapper.bedrock import material_block
+        from voxel_mapper.paving_palette import palette_block
+        job=self.two_area_fixture()
         first=run(job,'reconstruct',5);self.assertEqual(first['areas']['a']['status'],'complete');self.assertEqual(first['areas']['b']['status'],'pending')
         final=run(job,'reconstruct',5);self.assertEqual(final['areas']['b']['status'],'complete')
         world=amulet.load_level(str(self.root/'areas/b/completed-base/bedrock-world'))
         try:
             self.assertEqual(world.get_block(1,1+self.offset,1,'minecraft:overworld'),material_block('gray_concrete'))
+            self.assertEqual(world.get_block(33,1+self.offset,1,'minecraft:overworld'),material_block(palette_block('brick',33,-1)))
+        finally:world.close()
+
+    def test_automatic_workers_finish_area_cycles_and_retain_partial_geometry(self):
+        from voxel_mapper.area_cycles import prepare,produce,assemble
+        from voxel_mapper.bedrock import material_block
+        from voxel_mapper.paving_palette import palette_block
+        import amulet
+        job=self.two_area_fixture();config=json.loads(job.read_text())
+        config['areas'][0]['required_component_ids'].append('a-missing-fence')
+        config['areas'][0]['batch_chunks']=1
+        feature=json.loads((self.root/'a.jsonl').read_text());feature['id']='a-second-plaza'
+        feature['geometry']['coordinates']=[[[17.1,-.9],[17.9,-.9],[17.9,-.1],[17.1,-.1],[17.1,-.9]]]
+        with (self.root/'a.jsonl').open('a') as out:out.write(json.dumps(feature)+'\n')
+        job.write_text(json.dumps(config))
+        first=prepare(job);self.assertEqual(first['active_cycle']['area_id'],'a')
+        # A missing worker must neither publish nor advance the area cursor.
+        produce(job,0)
+        with self.assertRaises((ValueError,FileNotFoundError)):assemble(job)
+        self.assertEqual(json.loads((self.root/'areas/auto-cycle-state.json').read_text())['published_cycles'],0)
+        for number in range(10):produce(job,number)
+        first=assemble(job);self.assertEqual(first['cursor'],0)
+        self.assertEqual(prepare(job,1)['status'],'paused_cycle_budget')
+        second=prepare(job,3);self.assertEqual(second['active_cycle']['area_id'],'a')
+        for number in range(10):produce(job,number)
+        # Simulate interruption after the native publish, before controller save.
+        run(job,'assemble',1,'a')
+        third=prepare(job);self.assertEqual(third['published_cycles'],2)
+        self.assertEqual(third['areas']['a']['status'],'partial_area_preview')
+        self.assertEqual(third['active_cycle']['area_id'],'b')
+        for number in range(10):produce(job,number)
+        assemble(job);final=prepare(job)
+        self.assertEqual(final['status'],'completed_with_blockers')
+        self.assertEqual(final['published_cycles'],3)
+        world=amulet.load_level(str(self.root/'areas/b/completed-base/bedrock-world'))
+        try:
+            self.assertEqual(world.get_block(1,1+self.offset,1,'minecraft:overworld'),material_block('gray_concrete'))
+            self.assertEqual(world.get_block(17,1+self.offset,1,'minecraft:overworld'),material_block('gray_concrete'))
             self.assertEqual(world.get_block(33,1+self.offset,1,'minecraft:overworld'),material_block(palette_block('brick',33,-1)))
         finally:world.close()
