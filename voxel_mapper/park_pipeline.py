@@ -57,6 +57,11 @@ def run(job_path,stage='all'):
                 for key in ('curve_tolerance_points','min_line_length_points'):
                     if key in geometry:geometry_options[key]=geometry[key]
                 checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),**geometry_options))
+            architecture=job.get('architectural_interpretation',{})
+            if architecture.get('enabled',False):
+                from .architectural_interpretation import run as interpret_architecture
+                if not geometry.get('enabled',False):raise ValueError('Architectural interpretation requires drawing geometry')
+                checkpoint('architectural_interpretation',interpret_architecture(corpus,root/'drawing-geometry',root/'architectural-interpretation',interpretation_options=architecture.get('options')))
             components=job.get('drawing_components',{})
             if components.get('enabled',False):
                 from .drawing_components import run as split_components

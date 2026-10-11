@@ -122,6 +122,10 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+        architecture=config.get('architectural_interpretation',{})
+        if architecture.get('enabled',False):
+            from .architectural_interpretation import run as interpret_architecture
+            entry['architectural_interpretation']=interpret_architecture(corpus,work/'drawing-geometry',work/'architectural-interpretation',interpretation_options=architecture.get('options'))
         from .planning_components import run as identify
         mentions=identify(corpus,work/'drawing-geometry',work/'components')
         available={sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")}

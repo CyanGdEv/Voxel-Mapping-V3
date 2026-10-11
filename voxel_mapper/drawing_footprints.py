@@ -147,6 +147,7 @@ def retained_page_candidates(corpus,candidate):
 
 
 def reviewed_feature(candidate,review,source,alignment,target_crs):
+    if candidate.get('extraction_kind')=='architectural_wall_band':raise ValueError('Architectural wall bands are diagnostic candidates, not semantic features')
     if candidate.get('extraction_kind')=='linework_envelopes':raise ValueError('Envelope identity and semantics require explicit source review')
     if candidate.get('extraction_kind')=='linework_boundaries':raise ValueError('Recovered face identity and fill require explicit linework boundary review')
     if candidate.get('extraction_kind')=='drawing_components':raise ValueError('Component identity and semantic export require explicit parent/component review')
