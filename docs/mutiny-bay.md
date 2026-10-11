@@ -1,5 +1,9 @@
 # Mutiny Bay source integration
 
+The next partial source canopy review is documented in
+`docs/mutiny-canopy-source-cycle.md` (V25). It retains provisional placement
+and estimated heights/materials; it does not mark the area complete.
+
 ## Active area handoff from V24
 
 The user-directed October 11 area cycle now targets Mutiny Bay, retaining the
