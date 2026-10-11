@@ -48,6 +48,9 @@ ALLOWED_MATERIALS.update(f'{m}_wall' for m in GARDEN_WALLS)
 ALLOWED_MATERIALS.add('sandstone')
 ALLOWED_MATERIALS.update(f'{m}_slab{suffix}' for m in GARDEN_STONES for suffix in ('','_top'))
 ALLOWED_MATERIALS.update(f'{m}_stairs_{d}' for m in GARDEN_STONES if m!='smooth_stone' for d in ('north','east','south','west'))
+ALLOWED_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak',*[s for s in GARDEN_STONES if s!='smooth_stone']) for d in ('north','east','south','west'))
+DETAIL_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak') for d in ('north','east','south','west'))
+ALLOWED_MATERIALS.add('glass')
 ALLOWED_MATERIALS.add('green_stained_glass')
 for m in ('iron_bars','green_stained_glass_pane'):
     ALLOWED_MATERIALS.add(m)
@@ -76,7 +79,7 @@ def material_block(material):
         if form in ('slab','slab_top'):
             return Block('universal_minecraft','slab',{'material':StringTag(stone),'type':StringTag('top' if form=='slab_top' else 'bottom')})
         if form.startswith('stairs_'):
-            return Block('universal_minecraft','stairs',{'material':StringTag(stone),'facing':StringTag(form.removeprefix('stairs_')),'half':StringTag('bottom'),'shape':StringTag('straight')})
+            return Block('universal_minecraft','stairs',{'material':StringTag(stone),'facing':StringTag(form.removeprefix('stairs_').removesuffix('_top')),'half':StringTag('top' if form.endswith('_top') else 'bottom'),'shape':StringTag('straight')})
     if material.startswith('cobblestone_wall'):
         directions=material.removeprefix('cobblestone_wall').lstrip('_')
         return Block('universal_minecraft','wall',{'material':StringTag('cobblestone'),'up':StringTag('true'),**{k:StringTag('low' if k[0] in directions else 'none') for k in ('north','south','east','west')}})
@@ -86,7 +89,7 @@ def material_block(material):
         if form.startswith('slab'):
             return Block('universal_minecraft','slab',{'material':StringTag(wood),'type':StringTag('top' if form=='slab_top' else 'bottom')})
         if form.startswith('stairs_'):
-            return Block('universal_minecraft','stairs',{'material':StringTag(wood),'facing':StringTag(form.removeprefix('stairs_')),'half':StringTag('bottom'),'shape':StringTag('straight')})
+            return Block('universal_minecraft','stairs',{'material':StringTag(wood),'facing':StringTag(form.removeprefix('stairs_').removesuffix('_top')),'half':StringTag('top' if form.endswith('_top') else 'bottom'),'shape':StringTag('straight')})
         if form=='fence':
             return Block('universal_minecraft','fence',{'material':StringTag(wood),**{k:StringTag('false') for k in ('north','south','east','west')}})
         if form in ('trapdoor','fence_gate'):

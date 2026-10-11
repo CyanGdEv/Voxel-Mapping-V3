@@ -1,0 +1,416 @@
+{
+  "version": "mutiny-native-shape-audit-v1",
+  "source_model_sha256": "32baa7750ff4eb7ee325fd525bd6d4003eec91044dc3ed0932270bfeb0fe84d0",
+  "source_model_bytes_unchanged": true,
+  "comparison": {
+    "previous": {
+      "surface_cells": 280,
+      "roof_display_volume_m3": 192.0,
+      "wall_missing_area_m2": 12.780740307238732,
+      "wall_excess_area_m2": 5.567825134381698
+    },
+    "native": {
+      "surface_cells": 311,
+      "roof_display_volume_m3": 144.0,
+      "wall_missing_area_m2": 8.389713339516183,
+      "wall_excess_area_m2": 6.426798166659148
+    }
+  },
+  "native_shape_audit": {
+    "version": "wing-native-shape-review-v1",
+    "world_blocks_per_source_metre": 1,
+    "shape_resolution_m": 0.5,
+    "source_mesh_changed": false,
+    "material_counts": {
+      "stone_bricks": 74,
+      "stone_brick_stairs_east": 6,
+      "stone_brick_stairs_east_top": 5,
+      "stone_brick_slab": 5,
+      "stone_brick_stairs_west_top": 7,
+      "stone_brick_stairs_west": 3,
+      "stone_brick_slab_top": 2,
+      "dark_oak_stairs_north": 96,
+      "dark_oak_stairs_south": 96,
+      "glass": 17
+    },
+    "wall_cells": 102,
+    "roof_cells": 192,
+    "wall_profile_missing_area_m2": 8.389713339516183,
+    "wall_profile_excess_area_m2": 6.426798166659148,
+    "disconnected_masonry_withheld": [
+      {
+        "block_cells": [
+          [
+            18,
+            0,
+            0
+          ]
+        ],
+        "half_cells": 8,
+        "status": "disconnected_quantized_masonry_withheld"
+      }
+    ],
+    "roof_top_profile_hausdorff_m": 0.5266250914287078,
+    "roof_profile_error_bound_m": 0.7071067811865476,
+    "roof_source_profile_within_quantization_bound": true,
+    "roof_profile_proofs": [
+      {
+        "depth_column": 0,
+        "height_block": 4,
+        "native_material": "dark_oak_stairs_north",
+        "source_sample_heights_m": [
+          4.237437408571292,
+          4.765562408571292
+        ],
+        "sample_error_m": [
+          0.26256259142870775,
+          0.23443759142870757
+        ]
+      },
+      {
+        "depth_column": 1,
+        "height_block": 5,
+        "native_material": "dark_oak_stairs_north",
+        "source_sample_heights_m": [
+          5.293687408571293,
+          5.821812408571293
+        ],
+        "sample_error_m": [
+          0.2063125914287074,
+          0.17818759142870721
+        ]
+      },
+      {
+        "depth_column": 2,
+        "height_block": 6,
+        "native_material": "dark_oak_stairs_north",
+        "source_sample_heights_m": [
+          6.349937408571293,
+          6.878062408571292
+        ],
+        "sample_error_m": [
+          0.15006259142870704,
+          0.12193759142870775
+        ]
+      },
+      {
+        "depth_column": 3,
+        "height_block": 6,
+        "native_material": "dark_oak_stairs_south",
+        "source_sample_heights_m": [
+          6.62660536124619,
+          6.114484149124977
+        ],
+        "sample_error_m": [
+          0.37339463875381007,
+          0.3855158508750227
+        ]
+      },
+      {
+        "depth_column": 4,
+        "height_block": 5,
+        "native_material": "dark_oak_stairs_south",
+        "source_sample_heights_m": [
+          5.6023629370037655,
+          5.090241724882553
+        ],
+        "sample_error_m": [
+          0.39763706299623447,
+          0.4097582751174471
+        ]
+      },
+      {
+        "depth_column": 5,
+        "height_block": 4,
+        "native_material": "dark_oak_stairs_south",
+        "source_sample_heights_m": [
+          4.618979566259283,
+          4.188576461133956
+        ],
+        "sample_error_m": [
+          0.3810204337407166,
+          0.3114235388660438
+        ]
+      }
+    ],
+    "roof_adjacent_profile_contact_verified": true,
+    "roof_shell_thickness_display_m": [
+      0.5,
+      1
+    ],
+    "wall_roof_aliases": [],
+    "passage_clearance": [
+      {
+        "id": "d3.01",
+        "columns": [
+          1
+        ],
+        "height_blocks": 2,
+        "source_bounds": [
+          1.2986988127453525,
+          0.0,
+          2.2565296769428835,
+          1.8240958962256133
+        ],
+        "display_clearance_quantized": true,
+        "physical_clearance_verified": false
+      },
+      {
+        "id": "d3.02",
+        "columns": [
+          19,
+          20
+        ],
+        "height_blocks": 2,
+        "source_bounds": [
+          19.427400047313252,
+          0.0,
+          20.618848195461403,
+          1.9175428098058602
+        ],
+        "display_clearance_quantized": true,
+        "physical_clearance_verified": false
+      },
+      {
+        "id": "d3.03",
+        "columns": [
+          27,
+          28
+        ],
+        "height_blocks": 2,
+        "source_bounds": [
+          27.20685560286881,
+          0.0,
+          28.631921034967576,
+          1.8708193530157369
+        ],
+        "display_clearance_quantized": true,
+        "physical_clearance_verified": false
+      },
+      {
+        "id": "archway-3",
+        "columns": [
+          14,
+          15,
+          16,
+          17
+        ],
+        "height_blocks": 2,
+        "source_bounds": [
+          14.397557797764069,
+          0.0,
+          17.741892834154328,
+          2.7389666291720958
+        ],
+        "display_clearance_quantized": true,
+        "physical_clearance_verified": false
+      }
+    ],
+    "native_passage_air_verified": true,
+    "glass_proxy_cells": [
+      {
+        "opening_id": "w3.01",
+        "cell": [
+          3,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.01",
+        "cell": [
+          4,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.02",
+        "cell": [
+          7,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.03",
+        "cell": [
+          9,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.03",
+        "cell": [
+          10,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.04",
+        "cell": [
+          12,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.06",
+        "cell": [
+          21,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.06",
+        "cell": [
+          22,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.07",
+        "cell": [
+          29,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.07",
+        "cell": [
+          30,
+          1,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.10",
+        "cell": [
+          3,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.10",
+        "cell": [
+          4,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.11",
+        "cell": [
+          7,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.12",
+        "cell": [
+          12,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.14",
+        "cell": [
+          19,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.14",
+        "cell": [
+          20,
+          3,
+          1
+        ]
+      },
+      {
+        "opening_id": "w3.15",
+        "cell": [
+          24,
+          3,
+          1
+        ]
+      }
+    ],
+    "checks": 207,
+    "limitations": [
+      "Partial facade and two-slope roof only; rear/end walls and measured construction thickness are unresolved.",
+      "Native slabs/stairs and passage clearance quantize source silhouettes; they do not establish physical aperture accuracy.",
+      "Glass sits one display block behind the facade and is an illustrative glazing proxy, not measured setback or material.",
+      "Disconnected quantized masonry is withheld explicitly; source mesh remains unchanged."
+    ],
+    "park_world_blocks_added": 0,
+    "world_placement_eligible": false
+  },
+  "native_export": {
+    "format": "Bedrock .mcworld",
+    "file": "park.mcworld",
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "blocks_per_metre": 1,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "vertical_offset_blocks": 65,
+    "geographic_elevation_m": null,
+    "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+    "spawn": [
+      16,
+      67,
+      7
+    ],
+    "chunks": 8,
+    "composed_blocks": 5711,
+    "explicit_air_cells": 0,
+    "ground_fill_depth_blocks": 4,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "foundation": {
+      "minecraft_y": 60,
+      "mode": "shared",
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+    },
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "sha256": "e6b668056a77890ce7e3eb7255e7543a0ffac605f7674172618b7f0a5f77f654",
+    "quality": "draft_unverified",
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ]
+  },
+  "park_world_blocks_added": 0,
+  "world_placement_eligible": false,
+  "validation": {
+    "full_regression": {
+      "expected_tests": 1043,
+      "tests_run": 1043,
+      "failures": 0,
+      "errors": 0,
+      "successful": true
+    },
+    "latest_native_shape_tests": {
+      "tests_run": 8,
+      "failures": 0,
+      "errors": 0
+    },
+    "in_game_visual_check": "pending"
+  }
+}

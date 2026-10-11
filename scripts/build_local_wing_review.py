@@ -19,37 +19,45 @@ def export_obj(model, target):
     target.write_text('\n'.join(lines)+'\n')
 
 
-def isolated_world(model, output):
+def isolated_world(model, output, native_shapes=False):
     from voxel_mapper.shop_study import raster_mesh
     from voxel_mapper.bedrock import export_world
     from shapely.geometry import Polygon,Point
-    walls,wall_review=raster_mesh(model['wall_mesh'],1);roof,roof_review=raster_mesh(model['roof_mesh'],1)
-    holes=[Polygon(r['local_polygon_xz']) for r in model['openings']]
-    # Conservative aperture clearance. Do not fill a sampled arch, window or door.
-    removed={p for p in walls if any(g.covers(Point(p[0]+.5,p[1]+.5)) for g in holes)}
-    walls-=removed
-    cells={p:'stone_bricks' for p in walls};cells.update({p:'dark_oak_planks' for p in roof})
+    shape_audit=None
+    if native_shapes:
+        from voxel_mapper.wing_block_shapes import assemble
+        cells,shape_audit=assemble(model)
+        walls={p for p,m in cells.items() if m.startswith('stone_')};roof={p for p,m in cells.items() if m.startswith('dark_oak_')}
+        wall_review=roof_review=None;removed=set()
+    else:
+        walls,wall_review=raster_mesh(model['wall_mesh'],1);roof,roof_review=raster_mesh(model['roof_mesh'],1)
+        holes=[Polygon(r['local_polygon_xz']) for r in model['openings']]
+        # Conservative aperture clearance. Do not fill a sampled arch, window or door.
+        removed={p for p in walls if any(g.covers(Point(p[0]+.5,p[1]+.5)) for g in holes)}
+        walls-=removed
+        cells={p:'stone_bricks' for p in walls};cells.update({p:'dark_oak_planks' for p in roof})
     rows=[{'x':x,'y':y,'z':z,'kind':'review_surface','material':mat,'feature':model['component_id']}
           for (x,y,z),mat in sorted(cells.items())]
     length=model['width_check']['elevation_length_m'];depth=model['measurements']['depth_m']
     rows.extend({'x':x,'y':-1,'z':z,'kind':'terrain','material':'grass_block'}
                 for x in range(-6,int(length)+7) for z in range(-12,int(depth)+7))
-    report={'version':'isolated-wing-world-review-v1','voxel_size_m':1,'model_blocks_per_source_metre':1,
+    report={'version':'isolated-wing-native-shape-review-v2' if native_shapes else 'isolated-wing-world-review-v1','voxel_size_m':1,'model_blocks_per_source_metre':1,
             'crs':None,'vertical_datum':'STUDY_ZERO','spawn_local_xyz_m':[length/2,2,-7],
             'geographic_registration':None,'park_world_blocks_added':0,'world_placement_eligible':False,
             'local_review_surface_cells':len(cells),'wall_cells':len(walls),'roof_cells':len(roof),
             'aperture_alias_cells_removed':len(removed),'wall_sampling':wall_review,'roof_sampling':roof_review,
             'wall_roof_alias_cells':len(walls&roof),'unresolved':model['unresolved'],
-            'display_palette_only':{'walls':'stone_bricks','roof':'dark_oak_planks'},
+            'display_palette_only':{'walls':'stone bricks with native shapes' if native_shapes else 'stone_bricks','roof':'dark oak stairs/slabs' if native_shapes else 'dark_oak_planks'},
+            'native_shape_audit':shape_audit,
             'aperture_proposal_review':model.get('aperture_proposal_review'),
             'opening_cycle_review':model.get('opening_cycle_review'),
             'limitations':['Partial open surface study: outer facade, end walls, adjacent roofs and interiors omitted.',
                            'One-block surface thickness and materials are display proxies.',
                            'Roof assembly remains a cross-date hypothesis; no accepted park registration.',
-                           'Centroid sampling aliases small details; no complete doorway clearance claim.'],
+                           'Native shape quantization and glazing setback are display proxies; source mesh is unchanged.' if native_shapes else 'Centroid sampling aliases small details; no complete doorway clearance claim.'],
             'sources':[{'id':k,'url':'local://'+v,'attribution':'Checksum-pinned existing source drawing; reviewed trace seed'} for k,v in model['source_pdf_sha256'].items()]}
     output.mkdir();voxels=output/'voxels.jsonl';voxels.write_text(''.join(json.dumps(r)+'\n' for r in rows))
-    report['world']=export_world(voxels,output,report,name='Mutiny North Range — PARTIAL LOCAL REVIEW',ground_depth=4)
+    report['world']=export_world(voxels,output,report,name='Mutiny North Range — NATIVE SHAPES V2' if native_shapes else 'Mutiny North Range — PARTIAL LOCAL REVIEW',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report
 
@@ -57,12 +65,13 @@ def isolated_world(model, output):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--recipe',required=True,type=Path)
     p.add_argument('--sources',required=True,type=Path);p.add_argument('--output',required=True,type=Path)
-    p.add_argument('--isolated-world',action='store_true');a=p.parse_args()
+    p.add_argument('--isolated-world',action='store_true');p.add_argument('--native-shapes',action='store_true');a=p.parse_args()
+    if a.native_shapes and not a.isolated_world:p.error('--native-shapes requires --isolated-world')
     recipe=json.loads(a.recipe.read_text());paths={k:a.sources/(v['sha256']+'.pdf') for k,v in recipe['documents'].items()}
     report=run(a.recipe,paths,a.output);model=json.loads(Path(report['model_path']).read_text())
     if model['wall_mesh'] is not None:
         export_obj(model,a.output/'local-wing.obj')
-        if a.isolated_world:report['isolated_world']=isolated_world(model,a.output/'isolated-world')
+        if a.isolated_world:report['isolated_world']=isolated_world(model,a.output/'isolated-world',a.native_shapes)
     (a.output/'review-report.json').write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k!='isolated_world'}))
 
