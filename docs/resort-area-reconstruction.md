@@ -60,6 +60,23 @@ The seed job records expected component categories; populate `required_component
 with source-bound identities after inspecting the plans. It does not ship
 ready-to-build recipes for all fifteen areas.
 
+## Full park area cycle test
+
+Run `--all-areas --stage reconstruct --max-cycles 1` against a separate test
+work directory to exercise every named area. `sweep-report.json` is saved after
+each area, so missing applications, recipes, boundaries, inventories and source
+files remain visible. A blocked or failed area does not stop later areas and
+does not count as complete. `--area` and `--all-areas` are mutually exclusive.
+Existing cumulative world and native acceptance checks still apply when a
+recipe reaches generation. The cycle limit is per area, not the whole resort.
+
+The real October 11 run tested all fifteen seed areas over the pinned V25
+baseline. Five had planning associations; ten did not. None had a configured
+source-bound production recipe, boundary or component inventory. Therefore
+the test generated zero native area cycles or new worlds. The separately
+delivered Wicker and Mutiny review drafts are retained in V25, not promoted to
+accepted full-area reconstructions. See `evidence/alton-full-area-cycle-test.json`.
+
 Current integration is a local coordinator above the existing chunk runner.
 The Actions workflow still consumes a prepared geometry bundle; native general
 semantic reconstruction and area-controller dispatch are not automated by this

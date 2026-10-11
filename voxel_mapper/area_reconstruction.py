@@ -209,11 +209,59 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     save();return state
 
 
+def run_all(config_path, stage='reconstruct', max_cycles=1):
+    """Exercise every named area without counting a blocker as area completion."""
+    config_path=Path(config_path).resolve();config=json.loads(config_path.read_text())
+    areas=config['areas'];ids=[a['id'] for a in areas]
+    if not 1<=len(areas)<=64 or len(set(ids))!=len(ids) or any(not re.fullmatch('[a-z0-9][a-z0-9-]{0,63}',i) for i in ids):
+        raise ValueError('Unique bounded area identifiers required')
+    root=(config_path.parent/config['work_directory']).resolve();root.mkdir(parents=True,exist_ok=True)
+    report={'status':'running','stage':stage,'max_cycles_per_area':max_cycles,
+            'config_sha256':file_hash(config_path),'results':[],
+            'scope':'Area-by-area coordinator test; source scans and missing recipes are not world generation.'}
+    if config.get('initial_base_world'):
+        base=(config_path.parent/config['initial_base_world']).resolve()
+        report['initial_base_sha256']=file_hash(base/'park.mcworld')
+    target=root/'sweep-report.json'
+    for area in areas:
+        row={'area_id':area['id'],'name':area['name'],
+             'reconstruction_recipe_configured':bool(area.get('reconstruction_job')),
+             'boundary_configured':bool(area.get('bounds') and area.get('bounds_crs')),
+             'component_inventory_configured':bool(area.get('required_component_ids'))}
+        try:
+            state=run(config_path,stage,max_cycles,area['id']);entry=state['areas'][area['id']]
+            for key in ('status','document_records','acquisition','extraction','component_mentions',
+                        'generated_families','missing_components','missing_component_ids',
+                        'world_geometry_additions','planned_native_changes','latest_preview','world_sha256'):
+                if key in entry:row[key]=entry[key]
+            row.setdefault('world_geometry_additions',0)
+            row['blockers']=[]
+            if row['status']=='awaiting_applications':row['blockers'].append('No selected planning application documents')
+            if not row['reconstruction_recipe_configured']:row['blockers'].append('No source-bound reconstruction recipe')
+            if not row['boundary_configured']:row['blockers'].append('No accepted area boundary')
+            if not row['component_inventory_configured']:row['blockers'].append('No bound physical component inventory')
+            if row.get('acquisition',{}).get('download_status',{}).get('pending',0):row['blockers'].append('Some planning PDFs unavailable')
+            if row.get('extraction',{}).get('errors'):row['blockers'].append('Native extraction errors')
+        except Exception as exc:
+            row.update(status='test_error',error=str(exc),world_geometry_additions=0)
+        report['results'].append(row);atomic_json(target,report)
+    counts={}
+    for row in report['results']:counts[row['status']]=counts.get(row['status'],0)+1
+    report.update(status='complete' if counts.get('complete',0)==len(config['areas']) else 'completed_with_blockers',
+                  area_status_counts=counts,areas_tested=len(report['results']),
+                  areas_with_native_preview=sum(bool(r.get('latest_preview')) for r in report['results']))
+    atomic_json(target,report);return report
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--job',required=True)
     parser.add_argument('--area',help='Select a named area without completing earlier unfinished areas')
+    parser.add_argument('--all-areas',action='store_true',help='Test every area and record results, continuing past blockers')
     parser.add_argument('--stage',choices=['extract','reconstruct'],default='extract');parser.add_argument('--max-cycles',type=int,default=1)
-    args=parser.parse_args();print(json.dumps(run(args.job,args.stage,args.max_cycles,args.area),indent=2))
+    args=parser.parse_args()
+    if args.all_areas and args.area:parser.error('--area and --all-areas are mutually exclusive')
+    result=run_all(args.job,args.stage,args.max_cycles) if args.all_areas else run(args.job,args.stage,args.max_cycles,args.area)
+    print(json.dumps(result,indent=2))
 
 
 if __name__=='__main__':main()

@@ -1,7 +1,7 @@
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 import pymupdf
-from voxel_mapper.area_reconstruction import run,select_documents,compiled_coverage
+from voxel_mapper.area_reconstruction import run,run_all,select_documents,compiled_coverage
 from tests import test_generation_cycles as fixtures
 
 
@@ -51,6 +51,27 @@ class AreaSourceTests(unittest.TestCase):
     def test_unknown_area_is_rejected_without_source_work(self):
         with self.assertRaisesRegex(ValueError,'Unknown resort area'):run(self.job,area_id='missing')
         self.assertFalse((self.root/'work/area-state.json').exists())
+
+    def test_full_sweep_visits_later_areas_after_source_blocker(self):
+        self.config['areas'][0]['application_references']=[];self.job.write_text(json.dumps(self.config))
+        report=run_all(self.job)
+        self.assertEqual(report['areas_tested'],2)
+        self.assertEqual([r['status'] for r in report['results']],['awaiting_applications','awaiting_reconstruction'])
+        self.assertEqual(report['status'],'completed_with_blockers')
+        self.assertEqual(report['areas_with_native_preview'],0)
+        self.assertGreater(report['results'][1]['extraction']['candidates'],0)
+        self.assertEqual(report,json.loads((self.root/'work/sweep-report.json').read_text()))
+
+    def test_sweep_records_error_and_continues_without_claiming_world_output(self):
+        from unittest.mock import patch
+        real_run=run
+        def fail_first(*args):
+            if args[-1]=='a':raise ValueError('Deliberate area test failure')
+            return real_run(*args)
+        with patch('voxel_mapper.area_reconstruction.run',side_effect=fail_first):report=run_all(self.job)
+        self.assertEqual(report['results'][0]['status'],'test_error')
+        self.assertEqual(report['results'][1]['status'],'awaiting_reconstruction')
+        self.assertEqual(report['areas_with_native_preview'],0)
 
     def test_explicit_initial_baseline_rejects_changed_package(self):
         base=self.root/'baseline';base.mkdir();package=base/'park.mcworld';package.write_bytes(b'pinned review')
