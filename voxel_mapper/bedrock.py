@@ -50,7 +50,6 @@ ALLOWED_MATERIALS.update(f'{m}_slab{suffix}' for m in GARDEN_STONES for suffix i
 ALLOWED_MATERIALS.update(f'{m}_stairs_{d}' for m in GARDEN_STONES if m!='smooth_stone' for d in ('north','east','south','west'))
 ALLOWED_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak',*[s for s in GARDEN_STONES if s!='smooth_stone']) for d in ('north','east','south','west'))
 DETAIL_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak') for d in ('north','east','south','west'))
-ALLOWED_MATERIALS.add('glass')
 ALLOWED_MATERIALS.add('green_stained_glass')
 for m in ('iron_bars','green_stained_glass_pane'):
     ALLOWED_MATERIALS.add(m)

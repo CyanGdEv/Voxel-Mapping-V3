@@ -41,7 +41,7 @@ def isolated_world(model, output, native_shapes=False):
     length=model['width_check']['elevation_length_m'];depth=model['measurements']['depth_m']
     rows.extend({'x':x,'y':-1,'z':z,'kind':'terrain','material':'grass_block'}
                 for x in range(-6,int(length)+7) for z in range(-12,int(depth)+7))
-    report={'version':'isolated-wing-native-shape-review-v2' if native_shapes else 'isolated-wing-world-review-v1','voxel_size_m':1,'model_blocks_per_source_metre':1,
+    report={'version':'isolated-wing-native-shape-review-v3' if native_shapes else 'isolated-wing-world-review-v1','voxel_size_m':1,'model_blocks_per_source_metre':1,
             'crs':None,'vertical_datum':'STUDY_ZERO','spawn_local_xyz_m':[length/2,2,-7],
             'geographic_registration':None,'park_world_blocks_added':0,'world_placement_eligible':False,
             'local_review_surface_cells':len(cells),'wall_cells':len(walls),'roof_cells':len(roof),
@@ -54,10 +54,10 @@ def isolated_world(model, output, native_shapes=False):
             'limitations':['Partial open surface study: outer facade, end walls, adjacent roofs and interiors omitted.',
                            'One-block surface thickness and materials are display proxies.',
                            'Roof assembly remains a cross-date hypothesis; no accepted park registration.',
-                           'Native shape quantization and glazing setback are display proxies; source mesh is unchanged.' if native_shapes else 'Centroid sampling aliases small details; no complete doorway clearance claim.'],
+                           'Native shape quantization is a display proxy; glazing is disabled and source mesh is unchanged.' if native_shapes else 'Centroid sampling aliases small details; no complete doorway clearance claim.'],
             'sources':[{'id':k,'url':'local://'+v,'attribution':'Checksum-pinned existing source drawing; reviewed trace seed'} for k,v in model['source_pdf_sha256'].items()]}
     output.mkdir();voxels=output/'voxels.jsonl';voxels.write_text(''.join(json.dumps(r)+'\n' for r in rows))
-    report['world']=export_world(voxels,output,report,name='Mutiny North Range — NATIVE SHAPES V2' if native_shapes else 'Mutiny North Range — PARTIAL LOCAL REVIEW',ground_depth=4)
+    report['world']=export_world(voxels,output,report,name='Mutiny North Range — NATIVE SHAPES V3 — NO GLASS' if native_shapes else 'Mutiny North Range — PARTIAL LOCAL REVIEW',ground_depth=4)
     (output/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report
 

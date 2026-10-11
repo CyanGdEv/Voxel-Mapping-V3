@@ -51,10 +51,10 @@ def main():
     font_path='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
     title=ImageFont.truetype(font_path,36);small=ImageFont.truetype(font_path,23)
     image=Image.new('RGB',(width+100,sum(im.height for im in panels)+290),'white');d=ImageDraw.Draw(image);y=32
-    for im,label in zip(panels,['Previous export | full blocks','Native shapes V2 | slabs, stairs and illustrative glazing']):
+    for im,label in zip(panels,['Previous export | full blocks','Native shapes V3 | slabs and stairs; no glazing']):
         d.text((50,y),label,font=title,fill='#172534');y+=65;image.paste(im,(50,y));y+=im.height+35
     d.text((50,y),'Exact exported block shapes at 1 block per metre. Partial facade and roof; end/rear walls unresolved.',font=small,fill='#485565')
-    d.text((50,y+35),'Glass setback is illustrative. The source mesh is unchanged; this export still needs an in-game check.',font=small,fill='#485565')
+    d.text((50,y+35),'Source mesh unchanged. Your manual arch correction has not been recovered from the screenshot.',font=small,fill='#485565')
     Path(a.output).parent.mkdir(parents=True,exist_ok=True);image.save(a.output)
 
 if __name__=='__main__':main()

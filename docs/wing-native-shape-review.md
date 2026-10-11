@@ -1,6 +1,6 @@
 # Native shapes for isolated wing reviews
 
-The full-block Mutiny preview loses low sills and thin masonry at block-centre samples and makes the roof visually heavy. The opt-in `--native-shapes` export fits complete facade cell profiles to native bottom/top slabs and straight upright/inverted stairs. It keeps one world block per source metre and leaves the exact reviewed wall/roof mesh unchanged. Default exports retain their existing sampler.
+The full-block Mutiny preview loses low sills and thin masonry at block-centre samples and makes the roof visually heavy. The opt-in `--native-shapes` export fits complete facade cell profiles to native bottom/top slabs and straight upright/inverted stairs. Glazing is disabled following user feedback. It keeps one world block per source metre and leaves the exact reviewed wall/roof mesh unchanged. Default exports retain their existing sampler.
 
 ```bash
 python scripts/build_local_wing_review.py \
@@ -14,9 +14,9 @@ Only the bounded, unplaced, reviewed planar facade and exact two-slope roof reci
 
 Facade fitting minimizes missing plus excess profile area against each complete source cell. Door and arch centre columns retain two full air blocks; this can enlarge drawn clearance and is explicitly a display quantization. Disconnected sampled masonry below the upper facade is recorded and withheld rather than supported with invented piers. This removes the isolated block at local `(18, 0, 0)` in Mutiny while preserving its source masonry in the exact mesh.
 
-The roof fits top surfaces at two stations per depth column. Rising/falling columns use correctly oriented stairs where their rise is at least half a metre. Adjacent column profiles must touch; edge contact does not establish a watertight roof shell. Roof top Hausdorff error is checked against the half-cell diagonal, `sqrt(0.5² + 0.5²)` metres, not a half-metre distance claim. Glazing is an optional illustrative full glass block one block behind supported window columns, omitted from passages and unsupported columns. Its material, setback and construction support are not measured.
+The roof fits top surfaces at two stations per depth column. Rising/falling columns use correctly oriented stairs where their rise is at least half a metre. Adjacent column profiles must touch; edge contact does not establish a watertight roof shell. Roof top Hausdorff error is checked against the half-cell diagonal, `sqrt(0.5² + 0.5²)` metres, not a half-metre distance claim. The earlier V2 glazing proxy was rejected by the user and has been removed from the sampler. Window voids remain open.
 
-The real Mutiny result is in `evidence/mutiny-wing-native-shape-audit.json`:
+The historical V2 Mutiny result is in `evidence/mutiny-wing-native-shape-audit.json`:
 
 | Check | Previous full blocks | Native shapes V2 |
 | --- | ---: | ---: |
@@ -30,3 +30,5 @@ The area tradeoff is explicit: missing masonry decreases while excess masonry in
 For a comparison image, run `scripts/render_wing_native_shapes.py --before OLD/voxels.jsonl --after NEW/voxels.jsonl --output comparison.png`. It draws exposed faces of exact native half-cell occupancy, with illustrative colours and transparency. It is an export-shape render, not an in-game screenshot or acceptance of visual fidelity.
 
 Outer/rear/end walls, interiors, junctions, roof cross-date correspondence, physical aperture extents and park registration remain unresolved. This creates a fresh isolated review world and adds no blocks to the retained park.
+
+V3 removes all 17 glass proxy blocks (294 review cells, 5,694 composed blocks). The user manually repaired the arch in-game; a single screenshot does not specify every changed block. That correction is pending block-level reconciliation and is not claimed as reproduced by this export.

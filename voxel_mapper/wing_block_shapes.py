@@ -6,7 +6,7 @@ from shapely.geometry import LineString,Point,Polygon,box
 from shapely.ops import unary_union
 
 
-VERSION='wing-native-shape-review-v1'
+VERSION='wing-native-shape-review-v2'
 
 
 def profiles():
@@ -52,9 +52,9 @@ def occupied_halves(cells):
     return result
 
 
-def assemble(model,*,glazing=True,max_checks=100000):
+def assemble(model,*,max_checks=100000):
     from shapely.affinity import translate
-    if type(glazing) is not bool or type(max_checks) is not int or not 1<=max_checks<=100000:
+    if type(max_checks) is not int or not 1<=max_checks<=100000:
         raise ValueError('Bounded shape review required')
     if model.get('world_placement_eligible') or model.get('geographic_registration') is not None:
         raise ValueError('Only isolated unplaced wing reviews supported')
@@ -160,17 +160,6 @@ def assemble(model,*,glazing=True,max_checks=100000):
         for (z,y),m in roof_shapes.items():
             if (x,y,z) in cells:aliases.append((x,y,z));continue
             cells[x,y,z]=m;roof_cells.add((x,y,z))
-    glass=[]
-    if glazing:
-        for row,g in holes:
-            if row['kind']!='window':continue
-            x0,y0,x1,y1=g.bounds
-            for x in range(math.floor(x0),math.ceil(x1)):
-                for y in range(math.floor(y0),math.ceil(y1)):
-                    charge()
-                    supported=any((x,below,0) in wall_cells for below in range(y))
-                    if supported and g.covers(Point(x+.5,y+.5)) and (x,y,1) not in cells and cells.get((x,y,0))!='stone_bricks':
-                        cells[x,y,1]='glass';glass.append({'opening_id':row['id'],'cell':[x,y,1]})
     half=occupied_halves(cells)
     if any(p in half for x,y,z in forced_air for p in [(2*x+dx,2*y+dy,2*z+dz) for dx in (0,1) for dy in (0,1) for dz in (0,1)]):
         raise ValueError('Native shape obstructs declared passage clearance')
@@ -181,9 +170,9 @@ def assemble(model,*,glazing=True,max_checks=100000):
                   'roof_profile_error_bound_m':roof_bound,'roof_source_profile_within_quantization_bound':True,'roof_profile_proofs':roof_proofs,
                   'roof_adjacent_profile_contact_verified':True,
                   'roof_shell_thickness_display_m':[.5,1],'wall_roof_aliases':aliases,'passage_clearance':clearance,
-                  'native_passage_air_verified':True,'glass_proxy_cells':glass,'checks':checks,
+                  'native_passage_air_verified':True,'glass_proxy_cells':[],'glazing_policy':'disabled_by_user','checks':checks,
                   'limitations':['Partial facade and two-slope roof only; rear/end walls and measured construction thickness are unresolved.',
                                  'Native slabs/stairs and passage clearance quantize source silhouettes; they do not establish physical aperture accuracy.',
-                                 'Glass sits one display block behind the facade and is an illustrative glazing proxy, not measured setback or material.',
+                                 'Glazing is disabled by user instruction; window voids remain open.',
                                  'Disconnected quantized masonry is withheld explicitly; source mesh remains unchanged.'],
                   'park_world_blocks_added':0,'world_placement_eligible':False}

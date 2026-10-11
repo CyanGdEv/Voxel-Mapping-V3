@@ -67,13 +67,11 @@ class WingShapeTests(unittest.TestCase):
         narrow=build(recipe,self.f.paths)
         with self.assertRaisesRegex(ValueError,'Standing passage'):assemble(narrow)
 
-    def test_glazing_is_optional_and_kept_out_of_passages(self):
-        c,a=assemble(self.model);plain,_=assemble(self.model,glazing=False)
-        self.assertGreater(len(a['glass_proxy_cells']),0)
-        self.assertFalse(any(m=='glass' for m in plain.values()))
-        for glass in a['glass_proxy_cells']:
-            x,y,z=glass['cell'];self.assertEqual(z,1)
-            self.assertTrue(any(c.get((x,below,0),'').startswith('stone') for below in range(y)))
+    def test_glazing_is_never_generated(self):
+        c,a=assemble(self.model)
+        self.assertEqual(a['glass_proxy_cells'],[])
+        self.assertEqual(a['glazing_policy'],'disabled_by_user')
+        self.assertFalse(any('glass' in m for m in c.values()))
 
     def test_roof_profiles_and_native_states_survive_cold_export(self):
         from scripts.build_local_wing_review import isolated_world
