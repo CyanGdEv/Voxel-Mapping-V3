@@ -7,6 +7,7 @@ import pymupdf
 from voxel_mapper.drawing_geometry import extract_page
 from voxel_mapper.architectural_graph import build
 from voxel_mapper.architectural_view_layout import review
+from voxel_mapper.architectural_view_boundaries import review as review_viewports
 
 SOURCES=['f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b',
 'ee51901543aea06b1b9f961576c5066438a67aa1c33e6aa720cc162e37467bb8',
@@ -24,6 +25,7 @@ for sha in SOURCES:
         parents,extraction=extract_page(document[0],sha,1,min_line_length_points=.25,max_candidates=10000)
         if extraction['status']!='unplaced_geometry_candidates':raise ValueError('Complete native extraction required')
         graph=build(parents);layout=review(document[0],sha,1,graph)
+        viewports=review_viewports(path,sha,1,graph,layout)
         if layout['status']!='caption_layout_hypotheses_only':raise ValueError('Complete layout audit required')
         samples=layout['component_membership'][:5]+[r for r in layout['component_membership'] if r['status']=='ambiguous_or_crossing_windows'][:5]
         selected={r['component_id'] for r in samples}
@@ -32,7 +34,7 @@ for sha in SOURCES:
         pages[-1].update(layout_records_sha256=hashlib.sha256(json.dumps(layout,sort_keys=True).encode()).hexdigest(),
             source_parent_records_sha256=graph['source_parent_records_sha256'],component_membership_samples=samples,
             source_component_samples=[r for r in graph['source_components'] if r['id'] in selected],
-            view_scope_verified=False,scale_application_verified=False,world_geometry_additions=0)
+            view_scope_verified=False,scale_application_verified=False,world_geometry_additions=0,source_viewport_review=viewports)
         print(sha[:8],layout['counts'],[(v['printed_claim']['view_kind'],v['printed_claim'].get('printed_scale_denominator')) for v in layout['view_captions']],flush=True)
     if hashlib.sha256(path.read_bytes()).hexdigest()!=sha:raise ValueError('PDF changed during layout review')
 a.output.parent.mkdir(parents=True,exist_ok=True)

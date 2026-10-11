@@ -96,6 +96,10 @@ class ReferenceTests(unittest.TestCase):
                 self.assertEqual(report['counts']['printed_reference_correspondences'],1)
                 pages=[json.loads(line) for line in (root/'architecture/architectural-pages.jsonl').read_text().splitlines()]
                 plan=next(p for p in pages if p['architectural_references']['view_kind']=='plan')
+                viewports=plan['source_viewport_review']
+                self.assertEqual(viewports['status'],'no_source_viewport_declarations')
+                self.assertFalse(viewports['view_scope_verified'])
+                self.assertEqual(viewports['world_geometry_additions'],0)
                 layout=plan['view_layout_review']
                 self.assertEqual(layout['status'],'caption_layout_hypotheses_only')
                 self.assertFalse(layout['view_scope_verified'])

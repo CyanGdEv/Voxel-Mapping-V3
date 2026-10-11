@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v9'
+VERSION='architectural-interpretation-v10'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -273,6 +273,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .archway_ends import VERSION as archway_end_version
     from .architectural_graph import VERSION as graph_version,build as build_graph
     from .architectural_view_layout import VERSION as layout_version,review as review_layout
+    from .architectural_view_boundaries import VERSION as viewport_version,review as review_viewports
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -284,7 +285,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version,'viewport_version':viewport_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
@@ -322,11 +323,15 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
                         page_report['source_geometry_graph']=build_graph(parents)
                         if page_report['source_geometry_graph']['status']=='source_drawing_topology_only':
                             page_report['view_layout_review']=review_layout(doc[number-1],sha,number,page_report['source_geometry_graph'])
+                            page_report['source_viewport_review']=review_viewports(path,sha,number,page_report['source_geometry_graph'],page_report['view_layout_review'])
                         page_report.update(extraction=parent_report,recovery=recovery)
             if digest(path)!=sha:raise ValueError('Source PDF changed during architectural review')
             stream.write(json.dumps(page_report,sort_keys=True)+'\n');pages+=1;documents.add(sha)
             graph=page_report.get('source_geometry_graph',{})
             layout=page_report.get('view_layout_review',{})
+            viewports=page_report.get('source_viewport_review',{})
+            counts['source_viewport_declarations']+=viewports.get('counts',{}).get('viewport_declarations',0)
+            counts['source_named_viewport_candidates']+=viewports.get('counts',{}).get('named_caption_candidates',0)
             counts['layout_view_caption_candidates']+=layout.get('counts',{}).get('view_captions',0)
             counts['layout_assignment_budget_withheld_pages']+=layout.get('status')=='layout_assignment_budget_withheld'
             counts['source_graph_edges']+=graph.get('counts',{}).get('edges',0)
