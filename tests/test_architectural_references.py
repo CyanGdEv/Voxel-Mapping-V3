@@ -96,6 +96,11 @@ class ReferenceTests(unittest.TestCase):
                 self.assertEqual(report['counts']['printed_reference_correspondences'],1)
                 pages=[json.loads(line) for line in (root/'architecture/architectural-pages.jsonl').read_text().splitlines()]
                 plan=next(p for p in pages if p['architectural_references']['view_kind']=='plan')
+                graph=plan['source_geometry_graph']
+                self.assertEqual(graph['status'],'source_drawing_topology_only')
+                self.assertGreater(graph['counts']['edges'],0)
+                self.assertFalse(graph['view_scope_verified'])
+                self.assertEqual(graph['world_geometry_additions'],0)
                 ends=plan['architectural_references']['archway_end_connections']
                 self.assertEqual(ends['world_geometry_additions'],0)
                 self.assertEqual(ends['status'],'exact_source_end_connections_only')

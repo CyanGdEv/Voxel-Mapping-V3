@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v7'
+VERSION='architectural-interpretation-v8'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -271,6 +271,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .elevation_interpretation import VERSION as elevation_version
     from .architectural_references import VERSION as reference_version,link_pages
     from .archway_ends import VERSION as archway_end_version
+    from .architectural_graph import VERSION as graph_version,build as build_graph
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -282,7 +283,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
@@ -317,9 +318,14 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
                     else:
                         page_report=interpret_page(doc[number-1],sha,number,parents,
                             [r for r in records if r['geometry']['type']=='Polygon'],scale,interpretation_options=contract['options'])
+                        page_report['source_geometry_graph']=build_graph(parents)
                         page_report.update(extraction=parent_report,recovery=recovery)
             if digest(path)!=sha:raise ValueError('Source PDF changed during architectural review')
             stream.write(json.dumps(page_report,sort_keys=True)+'\n');pages+=1;documents.add(sha)
+            graph=page_report.get('source_geometry_graph',{})
+            counts['source_graph_edges']+=graph.get('counts',{}).get('edges',0)
+            counts['source_graph_subgraphs']+=graph.get('counts',{}).get('connected_subgraphs',0)
+            counts['source_graph_budget_withheld_pages']+=graph.get('status')=='graph_budget_withheld'
             counts[page_report['status']]+=1;counts['wall_band_candidates']+=len(page_report['wall_band_candidates'])
             counts['printed_claims']+=len(page_report['printed_claims']);counts['bound_roof_labels']+=page_report.get('bound_roof_labels',0)
             counts['roof_wall_links']+=len(page_report.get('component_links',{}).get('roof_wall_links',[]))
