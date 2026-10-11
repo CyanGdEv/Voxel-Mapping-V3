@@ -209,3 +209,37 @@ Reproduce the second with `scripts/audit_mutiny_map_alignment.py --input-root
 INPUT_ROOT --output evidence/mutiny-dense-face-alignment-audit.json
 --envelopes --landmark-context --min-line-length-points .25
 --max-candidates 10000 --max-face-provenance 2048`.
+
+### Wall-side region separation
+
+Architectural interpretation v12 includes `wall-region-adjacency-v1` in the
+optional area review. Each paired-line wall candidate is linked to complete
+source faces through the intersection of its original source line and band
+boundary. Fabricated end caps cannot provide side support. Faces overlapping
+the strip between paired lines are excluded as adjacent room/outdoor regions.
+Original-font screened room and courtyard/grass/tarmac claims require complete
+label containment in exactly one source face; competing or hidden labels
+remain explicit. Mixed claims cannot certify a side. An unlabelled region
+is never assumed to be outdoors. Exact side intersections that collapse to
+points due to derived coordinates are withheld as continuous support rather
+than snapped into lines.
+
+Whole original face geometry, holes, source side geometry/contracts and label
+proof indices are retained. Each candidate records missing support, missing
+regions, multiple regions and missing/conflicting claims. No nearest label,
+region crop, endpoint joining or exterior hull is introduced. Exhausted
+check budgets discard all partial labels and adjacency assignments. The
+stage version and source-record hashes are pinned; physical wall identity,
+building footprint and registration remain unverified.
+
+On the existing 3023-08 floor plan with expanded face provenance, the review
+retains 67 wall-band candidates and 19 room/outdoor/surface label claims:
+13 have one fully containing region, five are missing/competing and one fails
+the glyph screen. Two bands retain room-to-unlabelled-side evidence; the
+remaining 65 have unresolved region identity. No room-to-outdoor band or
+verified exterior perimeter is established. This narrows the reconstruction
+blocker to incomplete wall-side support and region identification.
+Evidence: `evidence/mutiny-wall-region-adjacency-audit.json`, including complete
+adjacent source-face and wall-band proofs.
+Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root INPUT_ROOT
+--output evidence/mutiny-wall-region-adjacency-audit.json`.
