@@ -17,7 +17,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v4'
+VERSION = 'mapped-sheet-placement-v5'
 
 
 def placed(geometry, fit):
@@ -141,7 +141,9 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
     for sha,page,cid in priority_seeds:priorities.setdefault((sha,page),[]).append(cid)
     if any(len(ids)>16 for ids in priorities.values()):raise ValueError('At most sixteen priority seeds per page')
     rows,refhash,_=references(reference_file,reference_crs,target_crs)
-    contract={'version':VERSION,'candidate_sha256':file_hash(candidates),'reference_sha256':refhash,'reference_crs':reference_crs,'target_crs':target_crs,'sheets':sheets,'priority_seeds':priority_seeds,'max_seed_fits':max_seed_fits,'min_iou':min_iou,'tolerance_m':tolerance_m,'max_records':max_records}
+    from .mapped_alignment_checks import VERSION as alignment_version
+    from .glyph_visibility import VERSION as glyph_version
+    contract={'version':VERSION,'alignment_version':alignment_version,'glyph_version':glyph_version,'candidate_sha256':file_hash(candidates),'reference_sha256':refhash,'reference_crs':reference_crs,'target_crs':target_crs,'sheets':sheets,'priority_seeds':priority_seeds,'max_seed_fits':max_seed_fits,'min_iou':min_iou,'tolerance_m':tolerance_m,'max_records':max_records}
     output=Path(output);receipt=output/'placement-report.json'
     if receipt.exists():
         report=json.loads(receipt.read_text())
@@ -188,9 +190,17 @@ def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *
                     counts['page_cache_reused']+=1
                 else:
                     result=propose(objects,rows,max_seed_fits=max_seed_fits,min_iou=min_iou,tolerance_m=tolerance_m,priority_seed_ids=priorities.get((pdf,page),[]));result.update(document_sha256=pdf,page=page,reference_sha256=refhash,target_crs=target_crs)
+                    from .mapped_alignment_checks import check, printed_scale_review
+                    scale_review=printed_scale_review(corpus.root/'files'/f'{pdf}.pdf',page)
+                    result['printed_scale_review']=scale_review
+                    result['printed_scale_denominators']=scale_review['denominators']
+                    result['alignment_checks']=check(objects,rows,result['hypotheses'],
+                        expected_scale=scale_review['expected_metres_per_pdf_point'],
+                        search_flags=result['review_flags'])
                     encoded=json.dumps(result);db.execute('INSERT INTO fits VALUES(?,?,?,?,?)',(pdf,page,page_hash,hashlib.sha256(encoded.encode()).hexdigest(),encoded));db.commit();counts['page_cache_computed']+=1
                 counts[result['status']]+=1;counts['seed_fit_attempts']+=result['seed_fit_attempts'];counts['orientation_trial_attempts']+=result['orientation_trial_attempts']
                 if progress:progress({'page':page,'document_sha256':pdf,'completed_pages':counts['page_cache_reused']+counts['page_cache_computed'],'status':result['status'],'cached':bool(cached)})
+                counts['alignment_'+result['alignment_checks']['status']]+=1
                 proposals.write(json.dumps(result)+'\n')
                 if len(result['hypotheses'])!=1:
                     if result['hypotheses']:counts['ambiguous_sheets_not_exported']+=1

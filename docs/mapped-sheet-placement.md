@@ -2,7 +2,7 @@
 
 The verified registration route still needs measured controls, independent
 checkpoints and physical-object review. It is separate from the new
-`mapped-sheet-placement-v3` route, which positions native planning geometry for
+`mapped-sheet-placement-v5` route, which positions native planning geometry for
 inspection using explicitly estimated map agreement.
 
 The previous descriptor-only search retained three aspect/fill matches and only
@@ -174,3 +174,52 @@ These numbers describe a provisional comparison. The cause (revision, outline
 interpretation or map detail) remains unresolved; they do not justify lowering
 70% IoU. Receipts: `evidence/wicker-priority-placement-validation.json` and
 `evidence/wicker-fasttrack-outline-comparison.json`.
+
+## V5 automatic alignment checks
+
+Every newly computed sheet proposal now includes `printed_scale_review` and
+`alignment_checks`. Exact native scale labels are split out of CAD text traces
+and screened against their rendered glyphs. One unambiguous denominator with
+visible supporting text is required. This avoids the coordinate-control reader's
+2,000-fragment limit on dense plans; scale extraction does not establish control
+point origins. A sheet with multiple printed scales cannot select a view's scale
+automatically. Hidden or unverifiable text cannot supply scale evidence.
+
+A map-consistent candidate needs five to 256 distinct, nonoverlapping landmarks.
+Each landmark is held out in turn: a similarity transform is fitted to the other
+centres, then checked against the complete held-out boundary. Every fit must stay
+within 1% of the printed scale, predict its held-out boundary within one metre,
+retain hole topology and achieve at least 85% outline IoU. Degenerate fits,
+reused/nested landmarks, competing hypotheses and exhausted seed budgets cannot
+qualify. These checks are stricter than the provisional search thresholds.
+
+The original broad review feed remains diagnostic, including unqualified fits.
+`alignment_checks.status: map_consistent_candidate` means agreement with the
+same map used to discover the correspondences; it is not an independent survey
+check or proof of physical identity. It does not authorize reconstruction. All
+records still have unverified registration and zero world additions. Accepted
+source-bound registration and surface-region evidence remain separate. Resume
+contracts pin the alignment and glyph-screen versions; V5 requires fresh output
+directories when upgrading from V4.
+
+The real Mutiny replay inspected the pinned existing ground-floor and roof sheets
+at verified visible 1:200 scale. It tested 226 and 105 deduplicated exact straight
+enclosures against 45 retained mapped building/plaza/water/path/parking polygons.
+Neither sheet produced a shared placement hypothesis under the bounded search.
+This does not prove no correct transform exists: sheet linework may describe
+rooms, roof detail, annotations or extents different from the map. No physical
+landmark identities were accepted and no native world was changed.
+
+`evidence/mutiny-map-alignment-audit.json` retains PDF, reference and OSTN15 grid
+hashes, extraction/recovery counts, search attempts, scale glyph screens and
+alignment outcomes. Replay with the retained input tree:
+
+```sh
+PYTHONPATH=. python scripts/audit_mutiny_map_alignment.py \
+  --input-root <retained-input-directory> \
+  --output evidence/mutiny-map-alignment-audit.json
+```
+
+The replay needs the pinned corpus PDFs, `mutiny-bay-sources/current-courtyard-osm.json`
+and the retained OSTN15 grid in `park-cycle-inputs/retained`. It refuses to use an
+unavailable preferred grid transform. This is a read-only source audit.

@@ -115,6 +115,10 @@ class MappedPlacementTests(unittest.TestCase):
                 path=root/'refs';path.write_text(json.dumps({'type':'FeatureCollection','features':[{'type':'Feature','id':r['id'],'geometry':mapping(r['geometry']),'properties':{}} for r in refs]}))
                 args=(root/'geometry/geometry-candidates.jsonl',path,'EPSG:27700','EPSG:27700',root/'placement',corpus)
                 report=run(*args);self.assertEqual(report['counts']['provisional_mapped_placement'],1);self.assertEqual(report['counts']['positioned_review_records'],3)
+                page_review=json.loads((root/'placement/sheet-placements.jsonl').read_text())
+                self.assertEqual(page_review['alignment_checks']['status'],'withheld')
+                self.assertIn('printed_scale_missing_or_ambiguous',page_review['alignment_checks']['hypotheses'][0]['reasons'])
+                self.assertEqual(report['counts']['alignment_withheld'],1)
                 self.assertEqual(run(*args),report)
                 # Interrupt after a committed fit, before completed feeds/receipt.
                 interrupted=(args[0],args[1],args[2],args[3],root/'interrupted',corpus)
