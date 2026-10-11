@@ -9,6 +9,7 @@ from voxel_mapper.linework_boundaries import recover_page
 from voxel_mapper.architectural_interpretation import wall_bands
 from voxel_mapper.mapped_alignment_checks import printed_scale_review
 from voxel_mapper.wall_region_adjacency import review
+from voxel_mapper.wall_perimeter_coverage import review as review_perimeter
 SHA='cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2'
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
 a=p.parse_args();path=a.input_root/'mutiny-bay-sources'/(SHA+'.pdf')
@@ -23,6 +24,7 @@ with pymupdf.open(path) as doc:
     faces=[r for r in records if r['geometry']['type']=='Polygon']
     bands,network=wall_bands(parents,scale['expected_metres_per_pdf_point'])
     report=review(doc[0],SHA,1,parents,faces,bands)
+    report['wall_perimeter_coverage']=review_perimeter(parents,faces,bands,report)
 band_geometries={r['id']:shape(r['geometry']) for r in bands}
 legacy=Counter();current=Counter();links=0
 for item in report['wall_adjacency']:

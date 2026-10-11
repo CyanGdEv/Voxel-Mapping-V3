@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v14'
+VERSION='architectural-interpretation-v15'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -268,6 +268,8 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
     links=component_links(parents,bands,associations,labels,scale_review['expected_metres_per_pdf_point'])
     from .wall_region_adjacency import review as review_adjacency
     adjacency=review_adjacency(page,sha,number,parents,list(faces.values()),bands)
+    from .wall_perimeter_coverage import review as review_perimeter
+    perimeter=review_perimeter(parents,list(faces.values()),bands,adjacency) if adjacency['status']=='wall_side_region_evidence_only' else {'status':'complete_adjacency_required','world_geometry_additions':0}
     return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
         'source_parent_records_sha256':hashlib.sha256(json.dumps(parents,sort_keys=True).encode()).hexdigest(),
         'source_polygon_records_sha256':hashlib.sha256(json.dumps(polygons,sort_keys=True).encode()).hexdigest(),
@@ -275,7 +277,7 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
         'printed_claims':labels,'role_counts':dict(Counter(r['printed_claim']['role'] for r in labels)),
         'roof_region_associations':associations,
         'architectural_references':references,
-        'component_links':links,'wall_region_adjacency':adjacency,
+        'component_links':links,'wall_region_adjacency':adjacency,'wall_perimeter_coverage':perimeter,
         'bound_roof_labels':sum(r['candidate_id'] is not None for r in labels),
         'visible_claim_counts':dict(Counter(r['printed_claim']['role'] for r in labels if r['glyph_screen']['status']=='raster_consistent_candidate')),
         'printed_scale_review':scale_review,'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0,
@@ -299,6 +301,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .architectural_view_boundaries import VERSION as viewport_version,review as review_viewports
     from .architectural_linework_frames import VERSION as frame_version,review as review_frames
     from .wall_region_adjacency import VERSION as adjacency_version
+    from .wall_perimeter_coverage import VERSION as perimeter_version
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -310,7 +313,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version,'viewport_version':viewport_version,'linework_frame_version':frame_version,'wall_region_adjacency_version':adjacency_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version,'viewport_version':viewport_version,'linework_frame_version':frame_version,'wall_region_adjacency_version':adjacency_version,'wall_perimeter_version':perimeter_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')

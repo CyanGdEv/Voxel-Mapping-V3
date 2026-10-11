@@ -224,7 +224,7 @@ is never assumed to be outdoors. Exact side intersections that collapse to
 points due to derived coordinates are withheld as continuous support rather
 than snapped into lines.
 
-Whole original face geometry, holes, source side geometry/contracts and label
+Whole original face geometry, holes, sourcece side geometry/contracts and label
 proof indices are retained. Each candidate records missing support, missing
 regions, multiple regions and missing/conflicting claims. No nearest label,
 region crop, endpoint joining or exterior hull is introduced. Exhausted
@@ -306,3 +306,44 @@ Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root INPUT_ROOT
 Tests cover disjoint fragments, touching spans, preservation of unsupported
 gaps, overlapping alternatives, deterministic source ordering and exhaustion
 of the interval-comparison budget.
+
+### Perimeter coverage from the recovered wall candidate
+
+Architectural interpretation v15 adds `wall-perimeter-coverage-v1` after a
+complete wall-region review. It traces the original exterior and protected
+hole rings of source regions beside room-to-outdoor wall candidates. Every
+original boundary segment retains its ring/segment index, exact intersecting
+source-wall intervals and unpaired remainder. Coverage unions avoid double
+counting overlapping source evidence. There is no endpoint joining, doorway
+closure, nearest-object selection, region crop or building hull.
+
+The review binds the current adjacency version, complete source-record hash
+and adjacency hash. Original side geometry, intervals and component contracts
+are replayed from the current source records. Adjacent-face overlap and visible
+uniquely contained seed claims are checked; altered sides, hidden claims and
+incomplete adjacency reject. Changed source faces reject, and exhausted check budgets
+discard every partial trace. Even complete paired coverage remains a source
+candidate: region identity, building exterior identity and placement still
+need independent support. `footprint_export_ready` remains false.
+
+The pinned floor-plan candidate yields two source-region traces:
+- The COURTYARD-labelled region retains 287 segments and 25 holes, with
+  1.71% paired-wall support on its source boundary.
+- The STOREROOM-labelled region retains 215 segments and no holes, with
+  5.08% paired-wall support.
+
+Across both traces, five original segments are wholly paired, two partially
+paired and 495 have no paired-wall support. Neither has a complete paired
+boundary. These are containing source-region rings, not verified room or
+building perimeters. An unpaired piece means missing paired-wall evidence,
+not a physical gap, door or absent wall. The explicit unpaired geometries
+now identify what a subsequent reconstruction pass must investigate.
+No footprint, dimensions, heights, registration or world geometry is
+promoted by this trace.
+
+Evidence: `evidence/mutiny-wall-perimeter-coverage-audit.json`.
+Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root INPUT_ROOT
+--output evidence/mutiny-wall-perimeter-coverage-audit.json`.
+Tests check exact paired/unpaired length, unchanged source geometry,
+protected hole rings, wrong-source and altered-support rejection, forged seed
+claims, overlapping support counted once and complete late-budget withholding.
