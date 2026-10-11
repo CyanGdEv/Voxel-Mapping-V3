@@ -58,6 +58,39 @@ class AreaSourceTests(unittest.TestCase):
         (self.root/'catalogue.json').write_text(json.dumps(self.catalogue))
         with self.assertRaisesRegex(ValueError,'inputs changed'):run(self.job)
 
+    def test_local_wing_seed_runs_as_review_only_and_reuses(self):
+        from tests.test_local_wing_review import WingReviewTests
+        import shutil
+        fixture=WingReviewTests();fixture.setUp()
+        try:
+            entries=[]
+            for key,spec in fixture.recipe['documents'].items():
+                shutil.copyfile(fixture.paths[key],self.sources/(spec['sha256']+'.pdf'))
+                entries.append({'applicationReference':'A','url':'https://portal.test/'+key,
+                                'sha256':spec['sha256'],'title':'Existing '+key})
+            (self.root/'catalogue.json').write_text(json.dumps({'entries':entries}))
+            (self.root/'wing-seed.json').write_text(json.dumps(fixture.recipe))
+            self.config['areas'][0]['local_wing_review_seeds']=['wing-seed.json']
+            self.job.write_text(json.dumps(self.config))
+            entry=run(self.job)['areas']['a'];review=entry['local_wing_reviews'][0]
+            self.assertEqual(review['status'],'provisional_local_surface_review')
+            self.assertGreater(review['wall_triangles'],0)
+            self.assertEqual(entry['status'],'awaiting_reconstruction')
+            self.assertEqual(entry['world_geometry_additions'],0)
+            self.assertFalse(review['world_placement_eligible'])
+            self.assertTrue(run(self.job)['areas']['a']['local_wing_reviews'][0]['reused'])
+            seed=fixture.recipe;seed['plan_trace']['rear_point']=[10,75]
+            (self.root/'wing-seed.json').write_text(json.dumps(seed))
+            with self.assertRaisesRegex(ValueError,'inputs changed'):run(self.job)
+        finally:fixture.tearDown()
+
+    def test_missing_local_wing_sources_are_reported_without_external_fallback(self):
+        seed={'documents':{'plan':{'sha256':'a'*64},'roof':{'sha256':'b'*64},'elevation':{'sha256':'c'*64}}}
+        (self.root/'wing-seed.json').write_text(json.dumps(seed));self.config['areas'][0]['local_wing_review_seeds']=['wing-seed.json']
+        self.job.write_text(json.dumps(self.config));entry=run(self.job)['areas']['a']
+        self.assertEqual(entry['local_wing_reviews'][0]['status'],'awaiting_local_review_sources')
+        self.assertEqual(len(entry['local_wing_reviews'][0]['missing_source_sha256']),3)
+
     def test_explicit_area_preserves_unfinished_previous_area(self):
         first=run(self.job);previous=first['areas']['a'].copy()
         result=run(self.job,area_id='b')
