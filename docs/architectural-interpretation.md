@@ -243,3 +243,32 @@ Evidence: `evidence/mutiny-wall-region-adjacency-audit.json`, including complete
 adjacent source-face and wall-band proofs.
 Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root INPUT_ROOT
 --output evidence/mutiny-wall-region-adjacency-audit.json`.
+
+### Original wall-side intervals
+
+Architectural interpretation v13 records an explicit fractional interval on
+each original straight source component when calculating paired-line overlap.
+`wall-region-adjacency-v2` reconstructs support from that interval, rather than
+intersecting the original line with rounded derived band coordinates. Intervals
+must be finite ordered fractions in [0,1], bind the retained component contract
+and agree with the band side within the existing 1e-7 PDF-point provenance
+comparison tolerance. This tolerance only screens provenance agreement: it
+never moves source lines, polygon vertices, face boundaries or gap endpoints.
+Unsupported intervals and changed band geometry reject the review.
+
+On the same Mutiny floor-plan replay, the legacy band intersection yields
+99 line sides, 34 points and one multipoint. Original intervals retain **134
+continuous source-side segments**, with **94 side-to-region links rather than
+76**. The paired-band geometries and source endpoints are unchanged. Labels
+and room/exterior classification remain conservative: two room-to-unlabelled
+candidates, 65 unresolved, zero verified exterior walls or building footprint.
+This resolves loss of source-side support due to derived polygon rounding;
+missing region boundaries and semantic claims still need separate evidence.
+
+Evidence: `evidence/mutiny-wall-source-interval-audit.json`, with the legacy
+intersection comparison, current intervals, original sides and adjacent-face
+proofs. Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root
+INPUT_ROOT --output evidence/mutiny-wall-source-interval-audit.json`.
+The regression uses the real tilted-line coordinate pattern and checks that
+continuous support survives without source mutation; nonfinite, reversed or
+out-of-range intervals and changed band geometry reject.

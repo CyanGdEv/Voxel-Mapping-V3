@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v12'
+VERSION='architectural-interpretation-v13'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -87,13 +87,15 @@ def wall_bands(parents,factor,*,interpretation_options=None):
                 return (c[0]+ratio*(d[0]-c[0]),c[1]+ratio*(d[1]-c[1]))
             polygon=Polygon([(a[0]+lo*u[0],a[1]+lo*u[1]),(a[0]+hi*u[0],a[1]+hi*u[1]),on_second(hi),on_second(lo)])
             if not polygon.is_valid or polygon.is_empty:continue
-            pairs.append((i,j,polygon,widths,(hi-lo)*factor));degree[i]+=1;degree[j]+=1
+            intervals={i:[lo/length,hi/length],j:sorted([(lo-projections[0])/(projections[1]-projections[0]),(hi-projections[0])/(projections[1]-projections[0])])}
+            pairs.append((i,j,polygon,widths,(hi-lo)*factor,intervals));degree[i]+=1;degree[j]+=1
     result=[]
-    for i,j,polygon,widths,length_m in pairs:
+    for i,j,polygon,widths,length_m,intervals in pairs:
         # Rails, hatch families and alternative offsets remain ambiguous; no nearest pair wins.
         if degree[i]!=1 or degree[j]!=1:continue
         refs=sorted([{'component_id':rows[k]['id'],'component_contract':rows[k]['extraction_contract'],
-            'parent_references':rows[k]['parent_references']} for k in (i,j)],key=lambda r:r['component_id'])
+            'parent_references':rows[k]['parent_references'],
+            'source_interval_fraction':[max(0.,min(1.,t)) for t in intervals[k]]} for k in (i,j)],key=lambda r:r['component_id'])
         identifier=hashlib.sha256(json.dumps([VERSION,refs,mapping(polygon)],sort_keys=True).encode()).hexdigest()
         result.append({'id':identifier,'document_sha256':rows[i]['document_sha256'],'page':rows[i]['page'],
             'coordinate_frame':'pdf_native_points_y_up','geometry':mapping(polygon),'role_candidate':'wall_band',

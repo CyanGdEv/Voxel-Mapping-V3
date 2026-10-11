@@ -2,7 +2,7 @@ import copy
 import unittest
 from unittest.mock import patch
 import pymupdf
-from shapely.geometry import box,mapping
+from shapely.geometry import box,mapping,shape
 import test_linework_boundaries as fixtures
 from voxel_mapper.architectural_interpretation import wall_bands
 from voxel_mapper.wall_region_adjacency import review
@@ -34,6 +34,30 @@ class WallRegionAdjacencyTests(unittest.TestCase):
             self.assertEqual(partial['counts'],{'room_to_unlabelled_side_evidence':1})
             self.assertFalse(partial['wall_adjacency'][0]['exterior_wall_verified'])
             self.assertFalse(result['building_footprint_verified']);self.assertEqual(result['world_geometry_additions'],0)
+        finally:doc.close()
+
+    def test_tilted_source_intervals_survive_derived_polygon_rounding(self):
+        rings=[[(262.5592956542969,1105.078125),(262.0798645019531,793.1983642578125)],
+               [(263.76025390625,793.1983642578125),(264.2396545410156,1105.078125)]]
+        parents=fixtures.LineworkTests().parents(rings);bands,_=wall_bands(parents,.07)
+        self.assertEqual(len(bands),1)
+        boundary=shape(bands[0]['geometry']).boundary
+        self.assertTrue(any(shape(r['geometry']).intersection(boundary).length<1 for r in parents))
+        doc=pymupdf.open();page=doc.new_page(width=1400,height=1400)
+        try:
+            before=copy.deepcopy([parents,bands])
+            result=review(page,'a'*64,1,parents,[],bands)
+            sides=result['wall_adjacency'][0]['sides']
+            self.assertTrue(all(shape(s['band_side_support']).length>300 for s in sides))
+            self.assertEqual([parents,bands],before)
+            self.assertNotIn('no_continuous_exact_band_side_support',result['wall_adjacency'][0]['blockers'])
+            self.assertFalse(result['building_footprint_verified'])
+            for interval in ([0,1.1],[True,1],[0,float('nan')],[.5,.5]):
+                bad=copy.deepcopy(bands);bad[0]['source_line_references'][0]['source_interval_fraction']=interval
+                with self.assertRaises(ValueError):review(page,'a'*64,1,parents,[],bad)
+            bad=copy.deepcopy(bands)
+            bad[0]['geometry']=mapping(box(0,0,1,1))
+            with self.assertRaises(ValueError):review(page,'a'*64,1,parents,[],bad)
         finally:doc.close()
 
     def test_hidden_competing_budget_and_wrong_contract_withhold(self):

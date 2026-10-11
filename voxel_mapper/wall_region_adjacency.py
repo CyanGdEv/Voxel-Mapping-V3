@@ -3,7 +3,9 @@ from collections import Counter
 import hashlib
 import json
 import re
-from shapely.geometry import Polygon, shape, mapping
+import math
+from shapely.geometry import Polygon, Point, shape, mapping
+from shapely.ops import substring
 from shapely.strtree import STRtree
 import pymupdf
 from .drawing_components import split_page
@@ -11,7 +13,8 @@ from .drawing_page_tools import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span
 
-VERSION='wall-region-adjacency-v1'
+VERSION='wall-region-adjacency-v2'
+PROVENANCE_EPSILON=1e-7
 ROOM=re.compile(r'^(?:toilets?|kitchen|office|store(?:room)?|plant room)$',re.I)
 OUTDOOR=re.compile(r'^(?:courtyard|grass|tarmac)$',re.I)
 
@@ -58,7 +61,16 @@ def review(page,sha,number,parents,faces,bands,*,max_checks=100000):
             for ref in refs:
                 source=components.get(ref['component_id'])
                 if source is None or source['extraction_contract']!=ref['component_contract']:raise ValueError('Retained original band-side contract required')
-                line=shape(source['geometry']);support=line.intersection(polygon.boundary)
+                line=shape(source['geometry']);interval=ref.get('source_interval_fraction')
+                if (line.geom_type!='LineString' or len(line.coords)!=2 or not isinstance(interval,list) or len(interval)!=2
+                        or any(type(t) not in (int,float) or not math.isfinite(t) for t in interval)
+                        or not 0<=interval[0]<interval[1]<=1):raise ValueError('Bounded original source-side interval required')
+                support=substring(line,*interval,normalized=True)
+                # Comparison only: support remains an interval on the original source line.
+                # No polygon, face or source endpoint is moved by this tolerance.
+                if any(polygon.boundary.distance(point)>PROVENANCE_EPSILON for point in
+                       [Point(support.coords[0]),Point(support.coords[-1]),support.interpolate(.5,normalized=True)]):
+                    raise ValueError('Source interval differs from retained band side')
                 matches=[]
                 for k in index.query(support,predicate='intersects'):
                     checks+=1
@@ -71,7 +83,8 @@ def review(page,sha,number,parents,faces,bands,*,max_checks=100000):
                     matches.append({'face_id':faces[k]['id'],'shared_source_geometry':mapping(shared),
                         'shared_length_pdf_points':shared.length,'region_claim_indices':associations.get(faces[k]['id'],[])})
                 sides.append({'source_component_id':source['id'],'component_contract':source['extraction_contract'],
-                              'original_source_geometry':source['geometry'],'band_side_support':mapping(support),
+                              'original_source_geometry':source['geometry'],'source_interval_fraction':interval,
+                              'support_method':'original_straight_source_interval','band_side_support':mapping(support),
                               'adjacent_regions':sorted(matches,key=lambda r:r['face_id'])})
                 if checks>max_checks:break
             if checks>max_checks:break
@@ -95,6 +108,7 @@ def review(page,sha,number,parents,faces,bands,*,max_checks=100000):
     exhausted=checks>max_checks
     if exhausted:labels=[];adjacency=[]
     return {'version':VERSION,'document_sha256':sha,'page':number,'coordinate_frame':'pdf_native_points_y_up',
+        'provenance_comparison_epsilon_pdf_points':PROVENANCE_EPSILON,
         'source_records_sha256':hashlib.sha256(json.dumps(records,sort_keys=True).encode()).hexdigest(),
         'status':'adjacency_budget_withheld' if exhausted else 'wall_side_region_evidence_only',
         'labels':labels,'wall_adjacency':adjacency,'checks':checks,'max_checks':max_checks,
