@@ -89,3 +89,11 @@ Source-linked evidence is retained in `evidence/mutiny-architectural-reference-l
 ```bash
 PYTHONPATH=. python scripts/audit_mutiny_architectural_references.py --input-root RETAINED_INPUT_ROOT --output AUDIT.json
 ```
+
+
+Open archway boundary audit
+--------------------------
+
+`archway_boundaries.review` preserves every original solid axis-aligned line pair that spans and brackets an entire visible archway label. It retains component contracts and original parent references. It does not create a closed polygon, choose a nearest pair, infer passage width or promote a bracket to a coordinate control. Dashed lines, curves and rotated boundaries are excluded; comparison-budget exhaustion discards all partial results. This is a diagnostic helper, not an enabled reconstruction stage.
+
+`audit_mutiny_archway_boundaries.py` replays the two checksum-pinned CTD courtyard plans. The existing plan retains 4 brackets for archway 1 and 10 for archway 2; the proposed plan retains 2 for archway 1. The other five occurrences have no qualifying pair. Multiple brackets can include distant walls and interior detail. None of the eight openings is physically resolved, and no world geometry is added. Evidence: `evidence/mutiny-archway-source-brackets-audit.json`. Resolving original passage-end linework and view scope remains necessary before plan/elevation alignment.
