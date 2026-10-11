@@ -32,3 +32,11 @@ Run through the existing `voxel-resort-cycles` stages or `python -m voxel_mapper
 Tests use a native fixture PDF containing explicit control marks and path, wall and roof callouts. They exercise automatic recipe creation, the real compiler, ten worker payloads, native assembly and a cold Bedrock block read. Missing independent checkpoints, unmatched area documents, proposed sheets, invalid boundaries and edited outputs are also tested.
 
 This is supported-element automation, not full autonomous interpretation of the real park corpus. The actual Alton job has no accepted automatic source manifest, survey-landmark bundle or area boundaries wired in yet; no new Alton world is claimed. The ordinary surface adapter has audited two real Mutiny Bay sheets; independent placement and surface scope are still unresolved. Further ordinary-drawing adapters are needed for buildings and other components.
+
+## Missing-evidence planning
+
+When architectural interpretation is enabled, the area runner now prepares a
+source-pinned reconstruction requirement queue before automatic recipe preparation.
+See [reconstruction-evidence-queue.md](reconstruction-evidence-queue.md) for
+dependencies, targeted source search terms, unchanged-input reuse and the real
+Mutiny perimeter replay. The queue does not itself satisfy compiler evidence gates.

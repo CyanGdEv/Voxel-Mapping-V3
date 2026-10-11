@@ -10,7 +10,7 @@ from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .planning_bulk import Corpus
 from .reconstruction.park_generators import FAMILY_ALIASES
 
-VERSION='resort-area-reconstruction-v1'
+VERSION='resort-area-reconstruction-v2'
 
 
 def select_documents(catalogue, area):
@@ -126,6 +126,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         if architecture.get('enabled',False):
             from .architectural_interpretation import run as interpret_architecture
             entry['architectural_interpretation']=interpret_architecture(corpus,work/'drawing-geometry',work/'architectural-interpretation',interpretation_options=architecture.get('options'))
+            from .reconstruction_evidence_queue import run as prepare_evidence_queue
+            entry['reconstruction_evidence_queue']=prepare_evidence_queue(area['id'],work/'architectural-interpretation',work/'reconstruction-evidence-queue')
         from .planning_components import run as identify
         mentions=identify(corpus,work/'drawing-geometry',work/'components')
         available={sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")}
@@ -266,7 +268,7 @@ def run_all(config_path, stage='reconstruct', max_cycles=1):
             for key in ('status','document_records','acquisition','extraction','component_mentions',
                         'generated_families','missing_components','missing_component_ids',
                         'world_geometry_additions','planned_native_changes','latest_preview','world_sha256',
-                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound'):
+                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue'):
                 if key in entry:row[key]=entry[key]
             row.setdefault('world_geometry_additions',0)
             row['blockers']=[]

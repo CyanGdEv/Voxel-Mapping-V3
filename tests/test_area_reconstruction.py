@@ -33,6 +33,19 @@ class AreaSourceTests(unittest.TestCase):
         self.assertEqual(resumed['run_pages'],0)
         self.assertEqual(resumed['resumed_pages'],1)
 
+    def test_architecture_automatically_prepares_and_reuses_missing_evidence(self):
+        self.config['architectural_interpretation']={'enabled':True}
+        self.job.write_text(json.dumps(self.config))
+        first=run(self.job)['areas']['a']['reconstruction_evidence_queue']
+        self.assertEqual(first['task_count'],2)
+        self.assertEqual(first['run_tasks'],2)
+        second=run(self.job)['areas']['a']['reconstruction_evidence_queue']
+        self.assertEqual(second['run_tasks'],0)
+        self.assertEqual(second['reused_tasks'],2)
+        sweep=run_all(self.job,stage='extract')
+        self.assertIn('reconstruction_evidence_queue',sweep['results'][0])
+        self.assertEqual(sweep['results'][0]['world_geometry_additions'],0)
+
     def test_changed_catalogue_cannot_resume_an_area_run(self):
         run(self.job);self.catalogue['entries'][0]['title']='Changed source selection'
         (self.root/'catalogue.json').write_text(json.dumps(self.catalogue))
