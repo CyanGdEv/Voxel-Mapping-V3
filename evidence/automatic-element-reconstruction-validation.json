@@ -1,0 +1,35 @@
+{
+  "version": "automatic-drawing-recipes-v1",
+  "scope": "Supported explicit drawing semantics, not arbitrary park plan interpretation",
+  "fixture": {
+    "input": "Native PDF with exact survey identifiers and explicit path, wall and roof leaders",
+    "manual_area_recipe": false,
+    "manual_component_bindings": false,
+    "automatically_discovered_elements": 3,
+    "worker_payloads": 10,
+    "verified_native_cycles": 1,
+    "cold_block_check": "Asphalt path native gray_concrete at x=7,z=-7 and source elevation 0 plus native offset",
+    "area_status": "partial_area_preview",
+    "complete_area_inventory_claimed": false
+  },
+  "failure_checks": [
+    "Unmatched area PDF cannot create a recipe",
+    "Missing area bounds remain unresolved",
+    "Missing independent survey checkpoints withhold semantics",
+    "Proposed sheet creates no features",
+    "Whole elements outside the area are excluded",
+    "Nonfinite area bounds are rejected",
+    "Edited automatic features fail resume",
+    "Shared input hashes change with changed terrain configuration"
+  ],
+  "production": {
+    "automatic_alton_job_enabled": false,
+    "new_alton_native_cycles": 0,
+    "reason": "Ordinary drawing adapters, accepted source manifest, independent registration references and area bounds remain to be connected"
+  },
+  "regression": {
+    "tests_passed": 852,
+    "duration_seconds": 73.153,
+    "command": "PYTHONPATH=. runtime-python -m unittest discover -s tests -q"
+  }
+}

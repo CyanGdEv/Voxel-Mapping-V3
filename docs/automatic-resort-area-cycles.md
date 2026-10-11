@@ -84,3 +84,5 @@ area does not make those prerequisites disappear. The real source-only pass
 publishes no new world; native cumulative behavior is independently verified
 with real two-area Bedrock integration fixtures, including a multi-cycle area,
 a missing-worker failure, publication recovery and retained partial geometry.
+
+For areas without hand-written recipes, the optional [automatic element reconstruction](automatic-element-reconstruction.md) mode derives supported recipes and component IDs from registered drawing semantics. It uses this same worker/assembler sequence and keeps discovered-only areas as partial previews.

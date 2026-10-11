@@ -79,8 +79,11 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         raise ValueError('Unique bounded area identifiers required')
     if area_id is not None and area_id not in ids:
         raise ValueError('Unknown resort area: '+area_id)
+    from .automatic_reconstruction import input_contract
+    automatic_contract=input_contract(config,resolve)
     contract={'version':VERSION,'config_sha256':hashlib.sha256(raw).hexdigest(),'catalogue_sha256':file_hash(catalogue_path),'supplement_sha256':supplement_pins,
               'recipe_sha256':{a['id']:file_hash(resolve(a['reconstruction_job'])) for a in areas if a.get('reconstruction_job')}}
+    if automatic_contract is not None:contract['automatic_reconstruction']=automatic_contract
     state_path=root/'area-state.json'
     state=json.loads(state_path.read_text()) if state_path.exists() else {'contract':contract,'areas':{i:{'status':'pending'} for i in ids}}
     if state['contract']!=contract:raise ValueError('Area inputs changed; use a fresh reconstruction run')
@@ -125,7 +128,20 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                      status='awaiting_reconstruction',missing_components=area['required_families'],
                      world_geometry_additions=0)
     finally:corpus.close()
-    if stage=='extract' or not area.get('reconstruction_job'):
+    if stage=='extract':
+        save();return state
+    automatic_job=None
+    if not area.get('reconstruction_job') and automatic_contract is not None:
+        from .automatic_reconstruction import prepare as automatic_prepare
+        automatic_job,automatic_report=automatic_prepare(config,area,resolve,work,available)
+        entry['automatic_reconstruction']=automatic_report
+        if automatic_job is None:
+            entry['status']=automatic_report['status'];save();return state
+        area={**area,'reconstruction_job':str(automatic_job),
+              'required_component_ids':area.get('required_component_ids') or automatic_report['discovered_component_ids']}
+        entry['reconstruction_recipe_configured']=True
+        entry['component_inventory_bound']=True
+    if not area.get('reconstruction_job'):
         save();return state
     job_path=resolve(area['reconstruction_job']);job=json.loads(job_path.read_text())
     # Resolve recipe assets against the recipe, not against the generated job.
@@ -142,7 +158,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     if job.get('planning_components'):
         job['planning_components'].update(mentions=str(work/'components/component-mentions.jsonl'),
             candidates=str(work/'drawing-geometry/geometry-candidates.jsonl'),corpus=str(work/'corpus'))
-    prior=[state['areas'][a['id']] for a in areas[:areas.index(area)]
+    prior=[state['areas'][a['id']] for a in areas[:areas.index(next_area)]
            if state['areas'][a['id']]['status'] in ('complete','partial_area_preview')]
     if prior:
         retained=prior[-1];source=root/retained['base_world']
@@ -214,7 +230,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         required_ids=area.get('required_component_ids',[])
         entry['missing_component_ids']=sorted(set(required_ids)-generated_ids)
         entry.update(base_world=destination.relative_to(root).as_posix(),world_sha256=file_hash(destination/'park.mcworld'),
-                     status='complete' if required_ids and not entry['missing_component_ids'] and not entry['missing_components'] else 'partial_area_preview',
+                     status='complete' if required_ids and not entry['missing_component_ids'] and not entry['missing_components'] and (automatic_job is None or next_area.get('required_component_ids')) else 'partial_area_preview',
                      component_inventory_bound=bool(required_ids))
     save();return state
 
@@ -242,14 +258,16 @@ def run_all(config_path, stage='reconstruct', max_cycles=1):
             state=run(config_path,stage,max_cycles,area['id']);entry=state['areas'][area['id']]
             for key in ('status','document_records','acquisition','extraction','component_mentions',
                         'generated_families','missing_components','missing_component_ids',
-                        'world_geometry_additions','planned_native_changes','latest_preview','world_sha256'):
+                        'world_geometry_additions','planned_native_changes','latest_preview','world_sha256',
+                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound'):
                 if key in entry:row[key]=entry[key]
             row.setdefault('world_geometry_additions',0)
             row['blockers']=[]
             if row['status']=='awaiting_applications':row['blockers'].append('No selected planning application documents')
             if not row['reconstruction_recipe_configured']:row['blockers'].append('No source-bound reconstruction recipe')
             if not row['boundary_configured']:row['blockers'].append('No accepted area boundary')
-            if not row['component_inventory_configured']:row['blockers'].append('No bound physical component inventory')
+            if not row['component_inventory_configured'] and not row.get('component_inventory_bound'):row['blockers'].append('No bound physical component inventory')
+            if row.get('automatic_reconstruction') and not area.get('required_component_ids'):row['blockers'].append('Complete area inventory remains unverified')
             if row.get('acquisition',{}).get('download_status',{}).get('pending',0):row['blockers'].append('Some planning PDFs unavailable')
             if row.get('extraction',{}).get('errors'):row['blockers'].append('Native extraction errors')
         except Exception as exc:

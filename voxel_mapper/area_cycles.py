@@ -28,6 +28,10 @@ def load(job):
     if config.get('initial_base_world'):
         if file_hash(job.parent / config['initial_base_world'] / 'park.mcworld') != config.get('initial_base_sha256'):
             raise ValueError('Initial area baseline checksum mismatch')
+    from .automatic_reconstruction import input_contract
+    automatic_contract = input_contract(config, lambda p: (job.parent / p).resolve())
+    if automatic_contract is not None:
+        contract['automatic_reconstruction'] = automatic_contract
     path = root / 'auto-cycle-state.json'
     state = json.loads(path.read_text()) if path.exists() else {
         'contract': contract, 'cursor': 0, 'areas': {}, 'status': 'running',
@@ -88,11 +92,19 @@ def prepare(job, publication_budget=10000):
             entry = result['areas'][area['id']]
             state['areas'][area['id']] = {k: entry[k] for k in (
                 'status', 'missing_components', 'missing_component_ids', 'latest_preview',
-                'world_sha256', 'base_world', 'document_records') if k in entry}
+                'world_sha256', 'base_world', 'document_records', 'automatic_reconstruction') if k in entry}
             state['areas'][area['id']]['blockers'] = [label for key, label in (
                 ('reconstruction_job', 'No source-bound reconstruction recipe'),
                 ('bounds', 'No accepted area boundary'),
-                ('required_component_ids', 'No bound physical component inventory')) if not area.get(key)]
+                ('required_component_ids', 'No bound physical component inventory'))
+                if not area.get(key)
+                and not (key == 'reconstruction_job' and entry.get('reconstruction_recipe_configured'))
+                and not (key == 'required_component_ids' and entry.get('component_inventory_bound'))]
+            automatic = entry.get('automatic_reconstruction', {})
+            if automatic.get('status') not in (None, 'recipe_ready'):
+                state['areas'][area['id']]['blockers'].append(automatic['status'])
+            if automatic.get('status') == 'recipe_ready' and not area.get('required_component_ids'):
+                state['areas'][area['id']]['blockers'].append('Complete area inventory remains unverified')
             if entry['status'] == 'awaiting_applications':
                 state['areas'][area['id']]['blockers'].append('No associated planning applications')
             if entry['status'] == 'ready_for_cycle':
@@ -167,7 +179,7 @@ def record_assembly(path, state, receipt, entry):
         raise ValueError('Verified area preview changed')
     state['areas'][receipt['area_id']] = {k: entry[k] for k in (
         'status', 'missing_components', 'missing_component_ids', 'latest_preview',
-        'world_sha256', 'base_world', 'document_records') if k in entry}
+        'world_sha256', 'base_world', 'document_records', 'automatic_reconstruction') if k in entry}
     state['latest_preview'] = {**preview, 'area_id': receipt['area_id'],
         'download_artifact': f"area-preview-{receipt['area_id']}-cycle-{receipt['cycle']:04d}"}
     atomic_json(safe_file(receipt['output'], preview['file']).parent / 'area-cycle-preview-report.json',
