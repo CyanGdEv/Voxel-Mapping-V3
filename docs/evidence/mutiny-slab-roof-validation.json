@@ -1,0 +1,13 @@
+{
+  "non_roof_cells_verified_unchanged": 3801,
+  "wooden_roof_stairs_remaining": 0,
+  "adjacent_roof_profiles_checked": 2323,
+  "open_profile_gaps": 0,
+  "focused_tests_passed": 13,
+  "world": {
+    "sha256": "9151f6d8ac165e7cbce1bf8bc0a351425b1a8325abe8c7c4883364c1770fdc23",
+    "composed_blocks": 22441,
+    "chunks": 20,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified"
+  }
+}

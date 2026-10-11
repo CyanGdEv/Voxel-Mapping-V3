@@ -16,6 +16,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--sources',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--roof-style',choices=('slabs','stairs'),default='slabs')
     p.add_argument('--seed',type=Path,default=Path(__file__).resolve().parents[1]/'evidence/mutiny-full-courtyard-layout-seed.json')
     a=p.parse_args()
     if a.output.exists():p.error('Use a fresh output directory')
@@ -31,6 +32,20 @@ def main():
     partition_review=review(parent,sources['plan'],recover_mixed_paths=True)
     north,cells,audit=apply(north,cells,audit,partition_review,partition_seed)
     model,cells,audit=build(north,cells,seed)
+    tag='V8'
+    if a.roof_style=='slabs':
+        from voxel_mapper.slab_roof_study import convert
+        model['slab_conversion_passages']=[r for r in audit['passages_and_doors'] if r['kind']=='passage']
+        model,cells,roof_audit=convert(model,cells)
+        audit['slab_roof_conversion']=roof_audit
+        audit['pre_slab_surface_cells']=audit['surface_cells']
+        audit['pre_slab_added_cells']=audit.pop('added_cells')
+        audit['pre_slab_native_roof_join_rule']=audit['native_roof_join_rule']
+        audit['native_roof_join_rule']='highest source surface sampled into slab courses; masonry collision and edge sealing adjustments retain non-roof cells'
+        audit['north_cells_unchanged']=False
+        audit['north_non_roof_cells_unchanged']=True
+        audit['surface_cells']=len(cells)
+        tag='V9'
     (a.output/'courtyard-model.json').write_text(json.dumps(model,sort_keys=True,indent=2)+'\n')
     (a.output/'courtyard-audit.json').write_text(json.dumps(audit,sort_keys=True,indent=2)+'\n')
     (a.output/'layout-seed.json').write_text(a.seed.read_text())
@@ -39,9 +54,9 @@ def main():
         mesh=c['mesh'];lines.append('o '+c['id'])
         lines.extend('v '+' '.join(map(str,v)) for v in mesh['vertices'])
         lines.extend('f '+' '.join(str(i+offset+1) for i in f) for f in mesh['triangles']);offset+=len(mesh['vertices'])
-    (a.output/'Mutiny_Full_Courtyard_V8.obj').write_text('\n'.join(lines)+'\n')
+    (a.output/('Mutiny_Full_Courtyard_'+tag+'.obj')).write_text('\n'.join(lines)+'\n')
     from voxel_mapper.study_mesh_export import write_glb
-    write_glb(model,a.output/'Mutiny_Full_Courtyard_V8.glb')
+    write_glb(model,a.output/('Mutiny_Full_Courtyard_'+tag+'.glb'))
     world=a.output/'isolated-world';world.mkdir()
     rings=[ring for ring in model['footprints'].values()]
     xs=[v[0] for ring in rings for v in ring];zs=[v[1] for ring in rings for v in ring]
@@ -53,7 +68,7 @@ def main():
     report={'voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':None,'vertical_datum':'STUDY_ZERO',
             'geographic_registration':None,'world_placement_eligible':False,'park_world_blocks_added':0,
             'spawn_local_xyz_m':[cx,0,cz],'courtyard_audit':audit,'limitations':model['assumptions']}
-    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — GROUND FLOOR LAYOUT V8',ground_depth=4)
+    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — '+('SLAB ROOFS V9' if tag=='V9' else 'GROUND FLOOR LAYOUT V8'),ground_depth=4)
     (world/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'status':model['status'],'rooms':len(model['rooms']),'audit':audit,'world':report['world']},indent=2))
 

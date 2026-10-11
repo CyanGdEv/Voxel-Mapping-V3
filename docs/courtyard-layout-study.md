@@ -5,6 +5,14 @@ annexes and 28 named room areas. The existing CTD AL05 ground-floor plan is
 checksum- and raster-pinned. All 679 V7 north-range native cells and their exact
 component solids are retained. No glass is generated.
 
+V9 makes slab roofs the default, including the north range. Bottom/top wooden
+slabs form half-height courses; plank risers seal the underside of height changes.
+All 3,801 V8 non-roof cells remain unchanged. Courses that meet retained masonry
+are raised locally to prevent overlaps and open roof edges. This supersedes the
+V8 claim that north roof cells remain unchanged. The walls and room layout remain
+the same; no wooden roof stairs are exported. Use `--roof-style stairs` to reproduce
+the V8 roof style.
+
 The new layout is an explicit manual raster-sampled hypothesis. Wall centre-lines,
 room rectangles and plan doorway cuts are approximations, not accepted original
 PDF vector geometry. New heights, wall thicknesses, window sills/heads, symmetric
@@ -30,7 +38,7 @@ python scripts/render_courtyard_layout_study.py --model /path/to/fresh-output/co
 The builder revalidates the source PDFs and reproduces the north wing before
 expanding it. It writes an OBJ in the source Z-up frame, a coloured GLB in standard
 Y-up metres, the room inventory, model/audit JSON and an isolated Bedrock world.
-GLB mesh names preserve each wall, partition and roof component for inspection
+GLB mesh names preserve each wall, partition and native slab course for inspection
 or editing in Blender/Cycles. Roof-hidden rendering does not remove the world roof.
 
 ## Remaining work
