@@ -1,0 +1,76 @@
+{
+  "area_status": "awaiting_reconstruction",
+  "first_inventory": {
+    "association_counts": {
+      "competing_source_frame_layout_candidates": 7,
+      "no_complete_source_rectangle": 6,
+      "one_source_frame_layout_candidate": 4
+    },
+    "automatic_aperture_reconstruction": false,
+    "frame_discovery_status": "source_rectangle_cycles_only",
+    "inventory_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+    "labels": 17,
+    "reused": false,
+    "seed_label_disagreements": 1,
+    "source_frames": 112,
+    "source_labels_without_seed_trace": [
+      "w.3.13"
+    ],
+    "status": "native_opening_layout_inventory_only",
+    "version": "native-opening-inventory-v1",
+    "world_geometry_additions": 0
+  },
+  "second_extraction": {
+    "candidate_types": {
+      "line": 5201,
+      "polygon": 85
+    },
+    "candidates": 5286,
+    "contract": "f6d2894c0bb9ffad446d5f4740c4bab6b3fa83bd8c33eeef964461bb74fa003e",
+    "curved_candidates": 11,
+    "errors": [],
+    "file_sha256": {
+      "geometry": "9a2c69a30c124e7942899cc4d3cb2c1ad55cfc716dede03ef862e251228b81cb",
+      "line": "b05efd8d7b51b875c6ed8f11a930cf203fed9abae7b6705c74fd7943210e040a",
+      "polygon": "67ded263747ef6ce6218b4c30dd47d95020e6eaf52079ee64ad02b1c0ff565f1"
+    },
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_candidates": 10000,
+      "max_paths": 100000,
+      "max_points": 10000,
+      "max_total_points": 200000,
+      "min_line_length_points": 0.25
+    },
+    "page_statuses": {
+      "unplaced_geometry_candidates": 3
+    },
+    "pages": 3,
+    "resumed_pages": 3,
+    "run_pages": 0,
+    "status": "unplaced_geometry_only",
+    "version": "drawing-geometry-v2",
+    "world_geometry_additions": 0
+  },
+  "second_inventory": {
+    "association_counts": {
+      "competing_source_frame_layout_candidates": 7,
+      "no_complete_source_rectangle": 6,
+      "one_source_frame_layout_candidate": 4
+    },
+    "automatic_aperture_reconstruction": false,
+    "frame_discovery_status": "source_rectangle_cycles_only",
+    "inventory_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+    "labels": 17,
+    "reused": true,
+    "seed_label_disagreements": 1,
+    "source_frames": 112,
+    "source_labels_without_seed_trace": [
+      "w.3.13"
+    ],
+    "status": "native_opening_layout_inventory_only",
+    "version": "native-opening-inventory-v1",
+    "world_geometry_additions": 0
+  },
+  "world_geometry_additions": 0
+}

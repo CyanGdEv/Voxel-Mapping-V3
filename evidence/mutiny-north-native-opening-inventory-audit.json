@@ -1,0 +1,3515 @@
+{
+  "automatic_aperture_reconstruction": false,
+  "automatic_label_discovery": true,
+  "automatic_view_discovery": false,
+  "coordinate_frame": "pinned_render_pixels_y_down",
+  "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+  "extraction": {
+    "candidates": 2836,
+    "curved_candidates": 6,
+    "geometry_types": {
+      "LineString": 2781,
+      "Polygon": 55
+    },
+    "raw_paths": 5125,
+    "rejections": {
+      "A linearring requires at least 4 coordinates.": 710,
+      "Compound stroked closed rings require topology review": 30,
+      "Compound subpath budget exceeded": 2,
+      "Crop boundary/frame candidate": 3,
+      "Invalid filled ring topology": 149,
+      "Paint group crosses clipping boundary": 18,
+      "Self-crossing line needs review": 1,
+      "Short line/symbol candidate": 2399,
+      "Small symbol or sheet enclosure candidate": 523
+    },
+    "retained_points": 7115,
+    "status": "unplaced_geometry_candidates",
+    "world_geometry_additions": 0
+  },
+  "frames": {
+    "candidates": [
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          193.40877548250137,
+          326.6713274102658,
+          238.89198932056024,
+          408.248521624133
+        ],
+        "id": "31adbb8cd876de57e02058609b6cc44d81c43356bd9b4079c0ff54ef03952d06",
+        "nominal_height_m": 1.9057842544555663,
+        "nominal_width_m": 1.0625664882192445,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          218.05317386813113,
+          412.96186324674636,
+          236.1739791316504,
+          420.3944723380264
+        ],
+        "id": "664144fbe274722a1fc5ab383b2ec7a5f1b2ba61c2a1af35036228b64d550f8e",
+        "nominal_height_m": 0.17363859485715058,
+        "nominal_width_m": 0.42333333086614255,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          269.51619445615506,
+          321.4141369041754,
+          293.2544051111181,
+          370.5417425406631
+        ],
+        "id": "e27e9a31aab2d73212260156a9c6e0e70f24ebd56a88bc8127e29ab206f9af3e",
+        "nominal_height_m": 1.1477057795793297,
+        "nominal_width_m": 0.5545656299060069,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          270.2409971731977,
+          373.9861111189239,
+          316.99261576608114,
+          393.7459000989329
+        ],
+        "id": "1a749152c304699c6525d02b96c9737b9c6d8b07843e437e026eae4f26e56603",
+        "nominal_height_m": 0.4616228232947049,
+        "nominal_width_m": 1.0921986155964614,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          271.14700056950096,
+          323.408257160685,
+          291.44230615132983,
+          368.1850717293564
+        ],
+        "id": "d70f5cebcafc90eb86b3a9b06603664eb374e052adb1174711deb40a5e3f0d1f",
+        "nominal_height_m": 1.0460637803493442,
+        "nominal_width_m": 0.4741334166974663,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          284.3752031586191,
+          243.64388487464748,
+          310.28800629907346,
+          280.4442645198433
+        ],
+        "id": "ea7fa4a501213f748d0e3cffa3a151e801fb052351eeea48391bc1177f3194b3",
+        "nominal_height_m": 0.8597204741062221,
+        "nominal_width_m": 0.605367868921997,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          293.6168064696394,
+          321.4141369041754,
+          317.7175106503055,
+          335.0103359398199
+        ],
+        "id": "2c57db5ae44244f54990b0018183ccd9517ae688e446e68c23ce4a5c250f0fe7",
+        "nominal_height_m": 0.3176307090759277,
+        "nominal_width_m": 0.5630341051984494,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          293.6168064696394,
+          335.9167584293755,
+          317.7175106503055,
+          370.5417425406631
+        ],
+        "id": "92bdd8c001bfb7bb1c321689babc53c278259e04184ce287aebc18478d56809e",
+        "nominal_height_m": 0.8088994744912295,
+        "nominal_width_m": 0.5630341051984494,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          295.24770475016703,
+          323.408257160685,
+          316.08661236977787,
+          333.01623873459175
+        ],
+        "id": "ba106a1abcd0e5e7c04df05bb4047dcf319a383e8184d118e49b7029fed38b8a",
+        "nominal_height_m": 0.22445905595436666,
+        "nominal_width_m": 0.4868328998591307,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          295.24770475016703,
+          337.7295803572051,
+          316.08661236977787,
+          368.1850717293564
+        ],
+        "id": "9998e9f0c846195926697437dbfc944dc9e1cf7bf10859712f5c1e284049f310",
+        "nominal_height_m": 0.7114929175743445,
+        "nominal_width_m": 0.4868328998591307,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          310.1068056198128,
+          397.55286533455364,
+          329.13361427963537,
+          405.1667036006693
+        ],
+        "id": "d6ab2fc40340459bf745cabcbbf9873b4091a16e9241db418c50d3417aeed35c",
+        "nominal_height_m": 0.1778724216169212,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          314.6370069356926,
+          243.64388487464748,
+          340.54971790896525,
+          280.4442645198433
+        ],
+        "id": "68bd9bd4e0f769ec999bd0493c0a90482de74a4306942b5e138a09d6e3344023",
+        "nominal_height_m": 0.8597204741062221,
+        "nominal_width_m": 0.6053657157373307,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          318.26111268808745,
+          321.4141369041754,
+          342.3618168687535,
+          335.0103359398199
+        ],
+        "id": "208e24804e7b51b1d658f21cbec7340e6fc8b03c46c0c608c0b80fb58bfe79d5",
+        "nominal_height_m": 0.3176307090759277,
+        "nominal_width_m": 0.5630341051984494,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          318.26111268808745,
+          335.9167584293755,
+          342.3618168687535,
+          370.5417425406631
+        ],
+        "id": "8633ba19030c2b20029a514cf34aa1ad064c61213d0c1a9ef0ca2db1629b0151",
+        "nominal_height_m": 0.8088994744912295,
+        "nominal_width_m": 0.5630341051984494,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          318.9860075723118,
+          373.9861111189239,
+          365.73762616519525,
+          393.7459000989329
+        ],
+        "id": "f58b85c1b2f5d0dd478822c13233284a26e5622d27c6794be05720e53accd8f3",
+        "nominal_height_m": 0.4616228232947049,
+        "nominal_width_m": 1.0921986155964614,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          319.89201096861507,
+          323.408257160685,
+          340.7309185882259,
+          333.01623873459175
+        ],
+        "id": "de7a9252a3c3bab6cd2b7c4cbd3f06d6e937141268eac49c1c715187e40cbfde",
+        "nominal_height_m": 0.22445905595436666,
+        "nominal_width_m": 0.4868328998591307,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          319.89201096861507,
+          337.7295803572051,
+          340.7309185882259,
+          368.1850717293564
+        ],
+        "id": "d9d3924280763ae3635c4416efc2d07921568fc36f2759223e4abcce8e191743",
+        "nominal_height_m": 0.7114929175743445,
+        "nominal_width_m": 0.4868328998591307,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          342.72421822727483,
+          321.4141369041754,
+          366.4624288822379,
+          370.5417425406631
+        ],
+        "id": "a4f50de68d035b6b08dd7ab6d12d8d3b61bf2956b0ac5f81487b4cdeafa78fa3",
+        "nominal_height_m": 1.1477057795793297,
+        "nominal_width_m": 0.5545656299060069,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          344.5363171870631,
+          323.408257160685,
+          364.831622768892,
+          368.1850717293564
+        ],
+        "id": "ef8f228d29327cb62972fc6230c073b68b94e4cdaae0034b2d67a6b805b1a6bd",
+        "nominal_height_m": 1.0460637803493442,
+        "nominal_width_m": 0.4741334166974663,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          347.25441954315465,
+          277.54374482505955,
+          366.2812282029772,
+          284.9763308650581
+        ],
+        "id": "8130ad92bf51f212633eeeceb87f4d6ebeade8373e4999b30f71ea2a635d28c9",
+        "nominal_height_m": 0.17363805633937396,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          420.82484467279573,
+          322.683109948528,
+          436.5900411059265,
+          334.28521177894436
+        ],
+        "id": "c6a324a628d361bd4dbd2f619b2138f937e879a3367864c5278be4dbc91d3386",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.36830223716559696,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          420.82484467279573,
+          322.683109948528,
+          436.5900411059265,
+          335.0103359398199
+        ],
+        "id": "3a0f1cb12bbef416552c5a7e422121e1d0014cd04b3e4e3a4a0dc95a52a7c46b",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.36830223716559696,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          420.82484467279573,
+          322.683109948528,
+          436.5900411059265,
+          346.6124377702363
+        ],
+        "id": "9ad9280d5d63641a25f9cdf147e06b8b8f72ba18f7b04f1b0a9690d64f108a9f",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.36830223716559696,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          420.82484467279573,
+          334.28521177894436,
+          436.5900411059265,
+          346.6124377702363
+        ],
+        "id": "90640eefefcd0c2bca763642320af0465b494bcea6adb6ba10ec78d2523a720a",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.36830223716559696,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          420.82484467279573,
+          335.0103359398199,
+          436.5900411059265,
+          346.6124377702363
+        ],
+        "id": "ed039ee923f1b3f383b6151bf29424ef7e3855214785dd43a3680e0112456d60",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.36830223716559696,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          438.40204789853306,
+          322.683109948528,
+          456.3416524827917,
+          346.6124377702363
+        ],
+        "id": "37fa447082e30832825a8793ae73f2f7c5003dfbcfd36ccc4f097262555a579d",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.41910016981225445,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          439.1268506155757,
+          351.5070546702482,
+          458.15375144257996,
+          358.93964071024675
+        ],
+        "id": "17c022abf3815c5c77561d971e3027694d09017d0a4ea799037f77364c7b5bb6",
+        "nominal_height_m": 0.17363805633937396,
+        "nominal_width_m": 0.44450128932024946,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          443.47585125219484,
+          243.825160152046,
+          464.13365035972674,
+          262.1347008103039
+        ],
+        "id": "cddffd735a5cbe52c3ddbe769c0f3eb5cc9b897ddd530af12b3071cc25777582",
+        "nominal_height_m": 0.4277425158965608,
+        "nominal_width_m": 0.4826018919899088,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          443.47585125219484,
+          243.825160152046,
+          464.13365035972674,
+          262.67854969378095
+        ],
+        "id": "5d5a981feea6947d1ac881fa2e5cd443bfbc584eed669ecad6796917fed60927",
+        "nominal_height_m": 0.440447765800309,
+        "nominal_width_m": 0.4826018919899088,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          443.47585125219484,
+          243.825160152046,
+          464.13365035972674,
+          280.8068150746403
+        ],
+        "id": "781936b281cd81ffd4fdadebd44f305251030ce8b4ef083a9d2b65809dea3f1a",
+        "nominal_height_m": 0.863955377901546,
+        "nominal_width_m": 0.4826018919899088,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          443.47585125219484,
+          262.1347008103039,
+          464.13365035972674,
+          280.8068150746403
+        ],
+        "id": "c393eabaa913c78823e720602d5730c8aa194ce5d267c97f530c0ee6f425eea3",
+        "nominal_height_m": 0.43621286200498516,
+        "nominal_width_m": 0.4826018919899088,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          443.47585125219484,
+          262.67854969378095,
+          464.13365035972674,
+          280.8068150746403
+        ],
+        "id": "96a8c339c53c09bde3d8a10c854fb6d22ae17feeb1fd4ae06236b2bb067918aa",
+        "nominal_height_m": 0.423507612101237,
+        "nominal_width_m": 0.4826018919899088,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.0664551998343,
+          287.6955752824433,
+          475.91215534757794,
+          295.3094365998404
+        ],
+        "id": "c919d4ed84abf7fac33fe454ba7bce84c089a032256cafc65a6eb7bb20a01ef4",
+        "nominal_height_m": 0.1778729601346978,
+        "nominal_width_m": 0.4402681282663613,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.9725507633193,
+          322.683109948528,
+          474.64365842557163,
+          334.28521177894436
+        ],
+        "id": "d55bd6c6e51eaf019e27554720f8ce62d8ff48448dbcb1c481b2c12617fab3e4",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.3894658892503713,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.9725507633193,
+          322.683109948528,
+          474.64365842557163,
+          335.0103359398199
+        ],
+        "id": "fa2f88932cf6363a507be9374363b088b85cd38c0ea1d9f46ad8c9af63139061",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.3894658892503713,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.9725507633193,
+          322.683109948528,
+          474.64365842557163,
+          346.6124377702363
+        ],
+        "id": "87c332ab6e170189d85b18aa85cfe1b9224e941b86b57cab1a5ad71d00f1a533",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.3894658892503713,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.9725507633193,
+          334.28521177894436,
+          474.64365842557163,
+          346.6124377702363
+        ],
+        "id": "d0817d99a74ba4be566357f02101b1b5ef4d4b41b46d8272d3ff5a0e1f252621",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.3894658892503713,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          457.9725507633193,
+          335.0103359398199,
+          474.64365842557163,
+          346.6124377702363
+        ],
+        "id": "c0bf2ebc5a1c02e44457efb9dd22794e5b469cf7b0d41e750a967496ae9d6653",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.3894658892503713,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          468.30145031708525,
+          243.825160152046,
+          488.9590650902537,
+          280.8068150746403
+        ],
+        "id": "6680d8d3e3275b768545d95754425ae40dcef0d4e332e898e1e1f9060cf23654",
+        "nominal_height_m": 0.863955377901546,
+        "nominal_width_m": 0.4825975856205763,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          540.9658720504231,
+          322.683109948528,
+          556.912084828451,
+          334.28521177894436
+        ],
+        "id": "54c03728c6a24023284bc23f2c8084e45cf9d4b726a628d8852a03a74b4fbddc",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.37253109185015254,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          540.9658720504231,
+          322.683109948528,
+          556.912084828451,
+          335.0103359398199
+        ],
+        "id": "431ca414807e7a0a6e77ee4adc4c61be01d77dad799a080730272c60e01220bb",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.37253109185015254,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          540.9658720504231,
+          322.683109948528,
+          556.912084828451,
+          346.6124377702363
+        ],
+        "id": "28789cf2ade80e74ec65ecd3d8f7c639991f68c021ae67296c0151de744f4317",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.37253109185015254,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          540.9658720504231,
+          334.28521177894436,
+          556.912084828451,
+          346.6124377702363
+        ],
+        "id": "aa29302e3c400c0372da9a520fb7e9b06998c879c11d3437b7845de825218fbf",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.37253109185015254,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          540.9658720504231,
+          335.0103359398199,
+          556.912084828451,
+          346.6124377702363
+        ],
+        "id": "ae220196f79e1a05a4a5c92ca9e4948d7008aafba593253307b101d7295a88e3",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.37253109185015254,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          558.3618745968997,
+          351.5070546702482,
+          577.3886832567223,
+          358.93964071024675
+        ],
+        "id": "1b45eaf558109d85b95f42abbe48a04701de63d2d04a8d3d39ad61c6a17cdc6a",
+        "nominal_height_m": 0.17363805633937396,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          558.5430752761604,
+          322.683109948528,
+          576.482679860419,
+          346.6124377702363
+        ],
+        "id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.41910016981225445,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          559.811480030985,
+          323.95210604416206,
+          575.214090771231,
+          334.28521177894436
+        ],
+        "id": "8d0eab336dc661f3189a2b947f9d49337b80b6ce367b5e3c38d427f38c5f27b2",
+        "nominal_height_m": 0.2413992096534387,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          559.811480030985,
+          323.95210604416206,
+          575.214090771231,
+          335.0103359398199
+        ],
+        "id": "7961d3e3a8106ff7418907ca0486820a6e2f447efed794fe2b2f0de7f3403f2d",
+        "nominal_height_m": 0.25833936335251073,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          559.811480030985,
+          323.95210604416206,
+          575.214090771231,
+          345.1621663972037
+        ],
+        "id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8",
+        "nominal_height_m": 0.49550366921062555,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          559.811480030985,
+          334.28521177894436,
+          575.214090771231,
+          345.1621663972037
+        ],
+        "id": "710b908f1651faadcaf5a9474792bfe65d5d492fee49988bd94db87220ac93fb",
+        "nominal_height_m": 0.25410445955718686,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          559.811480030985,
+          335.0103359398199,
+          575.214090771231,
+          345.1621663972037
+        ],
+        "id": "2fdded37209989ad264e47265e45586510066a4350ff94418bcd3fa23905316f",
+        "nominal_height_m": 0.23716430585811485,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          578.2946866530256,
+          322.683109948528,
+          594.9658864824596,
+          334.28521177894436
+        ],
+        "id": "b31c15a4153c7fc790687b237dcb0a1cb83211c8099c10580463bae3618776d2",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          578.2946866530256,
+          322.683109948528,
+          594.9658864824596,
+          335.0103359398199
+        ],
+        "id": "227995fefc6c5fc407d13564787c0675a8bed63218e1b1299c2bd7d9caebe645",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          578.2946866530256,
+          322.683109948528,
+          594.9658864824596,
+          346.6124377702363
+        ],
+        "id": "2ef9a797ddc5912e20bf156163cf394325e35fe76dd5925b5161469ea4feeb8d",
+        "nominal_height_m": 0.5590304572471431,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          578.2946866530256,
+          334.28521177894436,
+          594.9658864824596,
+          346.6124377702363
+        ],
+        "id": "6f9ca9d9a92207505620c34aca2f49196f7ad16eadcd38b95a50ee7dd9702fcc",
+        "nominal_height_m": 0.2879853054731075,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          578.2946866530256,
+          335.0103359398199,
+          594.9658864824596,
+          346.6124377702363
+        ],
+        "id": "b89c9fa0e4394e7b38394e7389a51a074c641f5bc7bf5b8ee23af98c016a9b76",
+        "nominal_height_m": 0.2710451517740355,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          636.28130036316,
+          244.18773375812452,
+          659.2947083010804,
+          282.9822106085485
+        ],
+        "id": "aff7f860d11319bfbc27848eff6873825983e5cbea16dfd2b0731a5ca5b2e830",
+        "nominal_height_m": 0.9063060314081144,
+        "nominal_width_m": 0.5376329856904545,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          637.5497051179846,
+          245.45670680247713,
+          658.0263035462558,
+          262.1347008103039
+        ],
+        "id": "27360e6712b6972792aaecfa1051cb799ffacb259cef57f24249ace6043604d7",
+        "nominal_height_m": 0.38962676618531633,
+        "nominal_width_m": 0.4783687309360207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          637.5497051179846,
+          245.45670680247713,
+          658.0263035462558,
+          262.67854969378095
+        ],
+        "id": "8c4f110780801699abef02f17fcd39875a76db3f10d3b8e161ed894d41669685",
+        "nominal_height_m": 0.4023320160890645,
+        "nominal_width_m": 0.4783687309360207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          637.5497051179846,
+          245.45670680247713,
+          658.0263035462558,
+          280.8068150746403
+        ],
+        "id": "d9fbaf386d2e1cd4b4fc8a6cc89293ca8b976929773d8ace89f20485b5a9e7d0",
+        "nominal_height_m": 0.8258396281903014,
+        "nominal_width_m": 0.4783687309360207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          637.5497051179846,
+          262.1347008103039,
+          658.0263035462558,
+          280.8068150746403
+        ],
+        "id": "2bb1fe52105413138b7df17b7daa459c0fc11365ec51ab6972ff47e591c856a4",
+        "nominal_height_m": 0.43621286200498516,
+        "nominal_width_m": 0.4783687309360207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          637.5497051179846,
+          262.67854969378095,
+          658.0263035462558,
+          280.8068150746403
+        ],
+        "id": "86fde1e4b1f072cc73516276a7d68c51995bbdb3c70b56aa2ca8e2ae71af836b",
+        "nominal_height_m": 0.423507612101237,
+        "nominal_width_m": 0.4783687309360207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          650.4155063485814,
+          287.6955752824433,
+          669.442315008404,
+          295.3094365998404
+        ],
+        "id": "7a00b30bad11ad1ba2b8eeb67868d1e23064f54a58e815f0cabf7f0246351dc3",
+        "nominal_height_m": 0.1778729601346978,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          660.3819123766443,
+          323.22695883200504,
+          683.0329189560434,
+          345.5247400032822
+        ],
+        "id": "cd799d4250dd61b62e13c9e0b743404effefb71fdfa596be3e046b11038b8f37",
+        "nominal_height_m": 0.5209147075358985,
+        "nominal_width_m": 0.5291666635826782,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          661.106715093687,
+          244.18773375812452,
+          684.1202151987891,
+          282.9822106085485
+        ],
+        "id": "fc409fcc2df3e4c581252cafa3200d3c51682cf18b40916740766a63e2e4ab77",
+        "nominal_height_m": 0.9063060314081144,
+        "nominal_width_m": 0.5376351388751207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          662.3752120156933,
+          245.45670680247713,
+          682.8517182767828,
+          262.1347008103039
+        ],
+        "id": "8669585033a29858ecfa1e81deeb135bc7ab615f9d58715c668f25a16ddd44eb",
+        "nominal_height_m": 0.38962676618531633,
+        "nominal_width_m": 0.47836657775135444,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          662.3752120156933,
+          245.45670680247713,
+          682.8517182767828,
+          262.67854969378095
+        ],
+        "id": "5953cbf5cfc9d32e07e9a6f68e3e04eea38b3ea8c3b6542ffb2b8994524bf6a9",
+        "nominal_height_m": 0.4023320160890645,
+        "nominal_width_m": 0.47836657775135444,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          662.3752120156933,
+          245.45670680247713,
+          682.8517182767828,
+          280.8068150746403
+        ],
+        "id": "2fb2dcd599e065a670ce750440696b350aebbccbf04cf4d8d330a162087d0e40",
+        "nominal_height_m": 0.8258396281903014,
+        "nominal_width_m": 0.47836657775135444,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          662.3752120156933,
+          262.1347008103039,
+          682.8517182767828,
+          280.8068150746403
+        ],
+        "id": "40fc7998923ca8e71f44c641e7561cbd74e7bd5cab0a9ac3d8aa9a97273c0e4d",
+        "nominal_height_m": 0.43621286200498516,
+        "nominal_width_m": 0.47836657775135444,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          662.3752120156933,
+          262.67854969378095,
+          682.8517182767828,
+          280.8068150746403
+        ],
+        "id": "e8c4a505cb02d0603f27648e634ab830a834cafd31cdc4ce1a70bdc20c648f56",
+        "nominal_height_m": 0.423507612101237,
+        "nominal_width_m": 0.47836657775135444,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          675.6034146048114,
+          350.7819305093726,
+          694.6303154318157,
+          358.3957918267697
+        ],
+        "id": "383bb2d8666c4c30d99806f43c3b0502942a1ffe49e7f7942decc7acc0344499",
+        "nominal_height_m": 0.1778729601346978,
+        "nominal_width_m": 0.44450128932024946,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          685.9323141585774,
+          323.22695883200504,
+          710.395327530583,
+          345.5247400032822
+        ],
+        "id": "659ed9e327a1de34b63eb61e336a0e9ae00929dea7d0a57952b40e3a6f2866bc",
+        "nominal_height_m": 0.5209147075358985,
+        "nominal_width_m": 0.5714982741215594,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          858.2611648412712,
+          262.1347008103039,
+          877.1067728218331,
+          269.74858517898247
+        ],
+        "id": "3c48489a23e0bb780572821c0accf45ee214e783d27501a8d49a832320219b43",
+        "nominal_height_m": 0.17787349865247443,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          921.6839832635887,
+          324.85850548243616,
+          937.0865940038348,
+          358.93964071024675
+        ],
+        "id": "0aa080e8f06af8dd0babd52593683cc8c769d79525ea5bda4d1f3885abf01146",
+        "nominal_height_m": 0.7961942245874812,
+        "nominal_width_m": 0.3598316086884881,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          921.6839832635887,
+          324.85850548243616,
+          939.2610943221443,
+          358.93964071024675
+        ],
+        "id": "fba5c7f414a165bd6e39445cbc3d2adf58fa3185824b44e44546838a02a7ffd4",
+        "nominal_height_m": 0.7961942245874812,
+        "nominal_width_m": 0.4106316945198119,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          921.6839832635887,
+          324.85850548243616,
+          955.9322941515784,
+          358.93964071024675
+        ],
+        "id": "1e69040d3986aabc70508015ca367561efc32a86c452240dc9d986d0788e1510",
+        "nominal_height_m": 0.7961942245874812,
+        "nominal_width_m": 0.8000997369548495,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          922.7711873391527,
+          325.94620324939024,
+          937.0865940038348,
+          357.30809405981563
+        ],
+        "id": "9fcec835549a1270bba07f8d21dbd61dfeb70be45687f92734b6c7a8f4294133",
+        "nominal_height_m": 0.7326679750687404,
+        "nominal_width_m": 0.3344326423651594,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          928.5698855770388,
+          364.7406800998142,
+          947.5966942368614,
+          372.1732891910942
+        ],
+        "id": "34f3b0746786ca7f9148fe2080f24a3ec2cc4c14567fe5cf19db92b23cb62c06",
+        "nominal_height_m": 0.17363859485715058,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          937.0865940038348,
+          324.85850548243616,
+          955.9322941515784,
+          358.93964071024675
+        ],
+        "id": "0eaa802a13376c68f44913e368d2b9467d7a10705e4b47ba56743a7a3dd159ae",
+        "nominal_height_m": 0.7961942245874812,
+        "nominal_width_m": 0.4402681282663613,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          939.2610943221443,
+          324.85850548243616,
+          955.9322941515784,
+          358.93964071024675
+        ],
+        "id": "9c6979498d4fe7b308b96143179e7288d86ab8272fd3ce0f42aa50e06ec8ab6d",
+        "nominal_height_m": 0.7961942245874812,
+        "nominal_width_m": 0.3894680424350376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          939.2610943221443,
+          325.94620324939024,
+          954.1201951917901,
+          357.30809405981563
+        ],
+        "id": "435be56bacc6eb6a5ca27d05d8d371b4b65ef7194bd3c3838c9c709dffc652f7",
+        "nominal_height_m": 0.7326679750687404,
+        "nominal_width_m": 0.34713427871149005,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          969.1604967406965,
+          244.9128579190001,
+          986.5564071199915,
+          266.1229413233232
+        ],
+        "id": "c4c00fe065a7d0d0393a922a33cda21d1aa7f623f0fe5331ee58acdf9a187c68",
+        "nominal_height_m": 0.49550420772840215,
+        "nominal_width_m": 0.4063985334659238,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          969.1604967406965,
+          244.9128579190001,
+          1004.6772123835108,
+          288.05812583724037
+        ],
+        "id": "b4af3e7179c746d92ea45374452a0e43b36b27d415a76d8bcf775c58d37ddfab",
+        "nominal_height_m": 1.0079480306380997,
+        "nominal_width_m": 0.8297318643320664,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          969.1604967406965,
+          266.84806548419874,
+          986.5564071199915,
+          288.05812583724037
+        ],
+        "id": "00993ef15861fa7ed42cf6bc13f4fc73345a720d75463d80eab59a64a7092f00",
+        "nominal_height_m": 0.49550366921062555,
+        "nominal_width_m": 0.4063985334659238,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          985.8316044029489,
+          409.5174946684856,
+          1003.9524096664682,
+          417.13137903716415
+        ],
+        "id": "29fd796c7e7d0cdbf2371ae3734887eefe97d7db4ddbd5a82e20f760b07a9274",
+        "nominal_height_m": 0.17787349865247443,
+        "nominal_width_m": 0.42333333086614255,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          987.2813020042158,
+          244.9128579190001,
+          1004.6772123835108,
+          266.1229413233232
+        ],
+        "id": "27c9e05e4b1cf86b78661ef45691b683edf9028b5e0fc8b6fc4082f43aa88299",
+        "nominal_height_m": 0.49550420772840215,
+        "nominal_width_m": 0.4063985334659238,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          987.2813020042158,
+          266.84806548419874,
+          1004.6772123835108,
+          288.05812583724037
+        ],
+        "id": "77016521b30179fc23ff4920814e652ad8f66a016d55bf04926bd504353976fc",
+        "nominal_height_m": 0.49550366921062555,
+        "nominal_width_m": 0.4063985334659238,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          989.4558023225254,
+          295.1281613224419,
+          1008.482610982348,
+          302.56074736244045
+        ],
+        "id": "b97e82472fb58902d4b733ab3362577f3583421d05a7e57dc594c29ac63ab048",
+        "nominal_height_m": 0.17363805633937396,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1006.1269099847777,
+          244.9128579190001,
+          1028.0531138471342,
+          288.05812583724037
+        ],
+        "id": "872eda28434f92d3d5b6c4225eb1b8b20697f78c4d02713d24c19aed9f052d09",
+        "nominal_height_m": 1.0079480306380997,
+        "nominal_width_m": 0.5122340193671256,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1007.5766075860447,
+          246.72567984682973,
+          1026.4222155666066,
+          266.1229413233232
+        ],
+        "id": "b2204aa1f2866692e4d826c43ccf550382eb454ac3777007f97683c25f0fb305",
+        "nominal_height_m": 0.4531535542218338,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1007.5766075860447,
+          246.72567984682973,
+          1026.4222155666066,
+          266.84806548419874
+        ],
+        "id": "fc746d5915f168edb83d4da36783cd573a2c4cb12e2b69c4bea78ce785cc73f1",
+        "nominal_height_m": 0.4700937079209058,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1007.5766075860447,
+          246.72567984682973,
+          1026.4222155666066,
+          286.42657918680925
+        ],
+        "id": "d546d3de67376e8d7b446f37dd452f6ee00b1c1bd26ae75fe684ef7526165258",
+        "nominal_height_m": 0.9274816274202868,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1007.5766075860447,
+          266.1229413233232,
+          1026.4222155666066,
+          286.42657918680925
+        ],
+        "id": "8491ec4a6ecc6291258b3e2f519c8994ae7746419d0255ed1f470f90b9836144",
+        "nominal_height_m": 0.47432807319845305,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1007.5766075860447,
+          266.84806548419874,
+          1026.4222155666066,
+          286.42657918680925
+        ],
+        "id": "76c915f7ed92374b7049eacb81213ea6887352a08ed18f86c82ee94c35822994",
+        "nominal_height_m": 0.457387919499381,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1028.7779165641768,
+          283.7073578207055,
+          1211.435574633455,
+          408.248521624133
+        ],
+        "id": "c5b52176bc2102c9c76bde2f953e2794131deaee9740dc380836fff3f38cef17",
+        "nominal_height_m": 2.9094968427805656,
+        "nominal_width_m": 4.267198597092531,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1058.858427494808,
+          323.7708077154821,
+          1128.985947551315,
+          367.09737396240234
+        ],
+        "id": "2d6ae9eb3077dd63d982ba9e908b99200ed74bff32b9771ed60f195cd9ed4af8",
+        "nominal_height_m": 1.0121834729512003,
+        "nominal_width_m": 1.6383000765793583,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1068.1000308058283,
+          372.35456446849275,
+          1087.1269316328326,
+          379.96842578588985
+        ],
+        "id": "7284260e2be708ac95c54c3e4dd0c8373cbb5355e9e217c0f4b863573df1d478",
+        "nominal_height_m": 0.1778729601346978,
+        "nominal_width_m": 0.44450128932024946,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1166.858456358881,
+          323.0456835546065,
+          1202.012770643174,
+          408.248521624133
+        ],
+        "id": "8ffc12a6b6e0a4048d15385f6997c63e1668b6c2e8d399c731818be4ca290c30",
+        "nominal_height_m": 1.9904855614687031,
+        "nominal_width_m": 0.82126554222429,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1171.388657674761,
+          245.09413319639862,
+          1209.6235678408484,
+          283.7073578207055
+        ],
+        "id": "fe34800ee26df7083da1a5907006e46f63d969810fe583e235a6aef480366496",
+        "nominal_height_m": 0.9020716661305671,
+        "nominal_width_m": 0.8932335865097207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1171.388657674761,
+          245.09413319639862,
+          1209.6235678408484,
+          289.14582360419445
+        ],
+        "id": "4ca710067590ffb512bc451863062a1d87550f5934c75ffb5a26748c835ae3a8",
+        "nominal_height_m": 1.0291236266502721,
+        "nominal_width_m": 0.8932335865097207,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1173.9255593515918,
+          293.49661467201076,
+          1192.9523680114144,
+          301.11047598940786
+        ],
+        "id": "cd984fce0453b3bc848d9750accd288147fd40d38e598c0540f1d5cac3596c8e",
+        "nominal_height_m": 0.1778729601346978,
+        "nominal_width_m": 0.4444991361355832,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1211.435574633455,
+          283.7073578207055,
+          1260.5429863910904,
+          408.248521624133
+        ],
+        "id": "3cac12865fd6f20b5810a5f0b86e2b5d3f247102aa436b2e7352ec48f87447f9",
+        "nominal_height_m": 2.9094968427805656,
+        "nominal_width_m": 1.1472340156663394,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1304.7577954743247,
+          324.3146565989591,
+          1337.737609440308,
+          408.248521624133
+        ],
+        "id": "c417c18aae32ed8bbd482e4172cf313d02f2df028c20be71d4e18002d377cd13",
+        "nominal_height_m": 1.960840157865883,
+        "nominal_width_m": 0.7704654563929664,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1304.7577954743247,
+          324.3146565989591,
+          1370.8987162527337,
+          408.248521624133
+        ],
+        "id": "f5254bd1dd090be3e7d6dd0e72f94a761cc118179543a6b64f484345269c673c",
+        "nominal_height_m": 1.960840157865883,
+        "nominal_width_m": 1.545166227024487,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1307.6570985096769,
+          327.39647462242283,
+          1334.8383064049558,
+          374.3486616737209
+        ],
+        "id": "b0782a33397ec4548f7867f99a895e47530ec611650971523374342bd60d802d",
+        "nominal_height_m": 1.0968842414465603,
+        "nominal_width_m": 0.6349999962992138,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1307.6570985096769,
+          382.8689454806736,
+          1334.8383064049558,
+          404.4416024910752
+        ],
+        "id": "50dd9b90a6f8c3979e66b32802b097e2c7638853195714055dbb7482b07f9c5a",
+        "nominal_height_m": 0.5039745538368264,
+        "nominal_width_m": 0.6349999962992138,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1327.4088020537238,
+          409.5174946684856,
+          1345.529607317243,
+          417.13137903716415
+        ],
+        "id": "1b7af977d8898df9ada5bb17aef80416f1f349216a4b8410d6c8a7aabb41a404",
+        "nominal_height_m": 0.17787349865247443,
+        "nominal_width_m": 0.42333333086614255,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1337.737609440308,
+          324.3146565989591,
+          1370.8987162527337,
+          408.248521624133
+        ],
+        "id": "3482b1e1ed26bd7de6c2eba71b4615a5b3de2e4f9ba66e7b3d237ebef6d696b5",
+        "nominal_height_m": 1.960840157865883,
+        "nominal_width_m": 0.7747007706315208,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1396.2678251882244,
+          332.1098162450362,
+          1420.549730048151,
+          377.0679060911061
+        ],
+        "id": "fc0a0eda2743d262e7492310905f00bc101f8beb5bb71a66d2cd22bffaec73c4",
+        "nominal_height_m": 1.0502986841446682,
+        "nominal_width_m": 0.5672672662523376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1421.8181348029757,
+          332.1098162450362,
+          1446.6436417006844,
+          377.0679060911061
+        ],
+        "id": "1f626d93545c3f37090ada3b1700f1b72dd0f73f0399efdc0cb0ebe23824d1fa",
+        "nominal_height_m": 1.0502986841446682,
+        "nominal_width_m": 0.579966749414002,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1427.6168330408618,
+          382.143821319798,
+          1446.4624410214237,
+          389.57643041107804
+        ],
+        "id": "ec1f124d76534270eccfb55c67ad0502cf56ba20d4a0e7d4f5e765bc49efa8d5",
+        "nominal_height_m": 0.17363859485715058,
+        "nominal_width_m": 0.44026597508169507,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      },
+      {
+        "aperture_identity_verified": false,
+        "bounds_pixels": [
+          1448.0933393019513,
+          332.1098162450362,
+          1472.375244161878,
+          377.0679060911061
+        ],
+        "id": "6b7c3767c80180ab384a6272deae13939c89829fc446e53edd36e3ad1b69cc69",
+        "nominal_height_m": 1.0502986841446682,
+        "nominal_width_m": 0.5672672662523376,
+        "physical_boundary_verified": false,
+        "world_geometry_additions": 0
+      }
+    ],
+    "checks": 188863,
+    "counts": {
+      "curved_or_incomplete_paint_components": 6,
+      "dashed_or_unknown_components": 59,
+      "frames": 112,
+      "source_components": 2836
+    },
+    "status": "source_rectangle_cycles_only"
+  },
+  "full_proof_file": "native-opening-inventory.json (reproduced with scripts/audit_native_opening_inventory.py)",
+  "full_proof_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+  "geometry_export_authorized": false,
+  "limitations": [
+    "Reviewed facade/profile supplies discovery scope; view selection is not automatic.",
+    "Exact solid axis-aligned source rectangles only; no gap bridging, snapping or fitted hulls.",
+    "Frame cycles may be panes or drafting objects. Even one layout candidate is not a complete physical aperture.",
+    "Every competing/nested frame is retained; no nearest, largest or longest frame is selected.",
+    "Curved arch boundaries and skew/fragmented frames remain unresolved. No automatic mesh/seed replacement.",
+    "Layout gaps are search margins, not physical uncertainty or verified annotation attachment."
+  ],
+  "metres_per_pixel_nominal": 0.023361728395061728,
+  "native_to_pixel_matrix": [
+    -0.0,
+    0.7553443908691406,
+    0.755033552646637,
+    -0.0,
+    0.0,
+    0.0
+  ],
+  "opening_inventory": {
+    "checks": 2030,
+    "counts": {
+      "competing_source_frame_layout_candidates": 7,
+      "no_complete_source_rectangle": 6,
+      "one_source_frame_layout_candidate": 4
+    },
+    "labels": [
+      {
+        "bounds_pixels": [
+          812.2353675381449,
+          386.7248330340289,
+          849.2745930716495,
+          393.2483340269767
+        ],
+        "canonical_id": "archway-3",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 342,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 185,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 276,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 6,
+              "core_pixels": 394,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 8,
+              "core_pixels": 448,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 10,
+              "core_pixels": 342,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 12,
+              "core_pixels": 344,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 16,
+              "core_pixels": 340,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 1281,
+          "source_font_sha256": "4d4f87ce599d4e2dd8bdcf0a5c450a62426edc0cf2eb1f334cb4b4012ffba770",
+          "source_font_xrefs": [
+            16
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "archway",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "a r c h w a y   3",
+        "trace_indices": [
+          27
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          219.68471859925543,
+          413.89037266673654,
+          234.25579711094798,
+          420.4137814925021
+        ],
+        "canonical_id": "d.3.01",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "31adbb8cd876de57e02058609b6cc44d81c43356bd9b4079c0ff54ef03952d06",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 258,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 758,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "door",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "one_source_frame_layout_candidate",
+        "text": "d.3.01",
+        "trace_indices": [
+          26
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          987.4637066117868,
+          410.6285300030804,
+          1002.0347851234794,
+          417.1520309960282
+        ],
+        "canonical_id": "d.3.02",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 258,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 262,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 837,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "door",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "d.3.02",
+        "trace_indices": [
+          29
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          1329.0411827548237,
+          410.6285300030804,
+          1343.6120769321517,
+          417.1520309960282
+        ],
+        "canonical_id": "d.3.03",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "c417c18aae32ed8bbd482e4172cf313d02f2df028c20be71d4e18002d377cd13",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "f5254bd1dd090be3e7d6dd0e72f94a761cc118179543a6b64f484345269c673c",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 258,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 843,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "door",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "c417c18aae32ed8bbd482e4172cf313d02f2df028c20be71d4e18002d377cd13",
+            "outer_frame_id": "f5254bd1dd090be3e7d6dd0e72f94a761cc118179543a6b64f484345269c673c"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "d.3.03",
+        "trace_indices": [
+          28
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          311.5572423742921,
+          398.66877818267614,
+          327.036075464031,
+          405.1922791756239
+        ],
+        "canonical_id": "w.3.01",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "f58b85c1b2f5d0dd478822c13233284a26e5622d27c6794be05720e53accd8f3",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 784,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "one_source_frame_layout_candidate",
+        "text": "w.3.01",
+        "trace_indices": [
+          30
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          440.7587653038486,
+          352.46066919109165,
+          456.23732189204065,
+          358.9842623512217
+        ],
+        "canonical_id": "w.3.02",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "9ad9280d5d63641a25f9cdf147e06b8b8f72ba18f7b04f1b0a9690d64f108a9f",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "90640eefefcd0c2bca763642320af0465b494bcea6adb6ba10ec78d2523a720a",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "ed039ee923f1b3f383b6151bf29424ef7e3855214785dd43a3680e0112456d60",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "37fa447082e30832825a8793ae73f2f7c5003dfbcfd36ccc4f097262555a579d",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 22,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 262,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 863,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "90640eefefcd0c2bca763642320af0465b494bcea6adb6ba10ec78d2523a720a",
+            "outer_frame_id": "9ad9280d5d63641a25f9cdf147e06b8b8f72ba18f7b04f1b0a9690d64f108a9f"
+          },
+          {
+            "inner_frame_id": "ed039ee923f1b3f383b6151bf29424ef7e3855214785dd43a3680e0112456d60",
+            "outer_frame_id": "9ad9280d5d63641a25f9cdf147e06b8b8f72ba18f7b04f1b0a9690d64f108a9f"
+          },
+          {
+            "inner_frame_id": "ed039ee923f1b3f383b6151bf29424ef7e3855214785dd43a3680e0112456d60",
+            "outer_frame_id": "90640eefefcd0c2bca763642320af0465b494bcea6adb6ba10ec78d2523a720a"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.02",
+        "trace_indices": [
+          37
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          559.993605645711,
+          352.46066919109165,
+          575.4723465682675,
+          358.9842623512217
+        ],
+        "canonical_id": "w.3.03",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "28789cf2ade80e74ec65ecd3d8f7c639991f68c021ae67296c0151de744f4317",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "aa29302e3c400c0372da9a520fb7e9b06998c879c11d3437b7845de825218fbf",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "ae220196f79e1a05a4a5c92ca9e4948d7008aafba593253307b101d7295a88e3",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "8d0eab336dc661f3189a2b947f9d49337b80b6ce367b5e3c38d427f38c5f27b2",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "7961d3e3a8106ff7418907ca0486820a6e2f447efed794fe2b2f0de7f3403f2d",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "710b908f1651faadcaf5a9474792bfe65d5d492fee49988bd94db87220ac93fb",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "2fdded37209989ad264e47265e45586510066a4350ff94418bcd3fa23905316f",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 869,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "aa29302e3c400c0372da9a520fb7e9b06998c879c11d3437b7845de825218fbf",
+            "outer_frame_id": "28789cf2ade80e74ec65ecd3d8f7c639991f68c021ae67296c0151de744f4317"
+          },
+          {
+            "inner_frame_id": "ae220196f79e1a05a4a5c92ca9e4948d7008aafba593253307b101d7295a88e3",
+            "outer_frame_id": "28789cf2ade80e74ec65ecd3d8f7c639991f68c021ae67296c0151de744f4317"
+          },
+          {
+            "inner_frame_id": "ae220196f79e1a05a4a5c92ca9e4948d7008aafba593253307b101d7295a88e3",
+            "outer_frame_id": "aa29302e3c400c0372da9a520fb7e9b06998c879c11d3437b7845de825218fbf"
+          },
+          {
+            "inner_frame_id": "8d0eab336dc661f3189a2b947f9d49337b80b6ce367b5e3c38d427f38c5f27b2",
+            "outer_frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9"
+          },
+          {
+            "inner_frame_id": "8d0eab336dc661f3189a2b947f9d49337b80b6ce367b5e3c38d427f38c5f27b2",
+            "outer_frame_id": "7961d3e3a8106ff7418907ca0486820a6e2f447efed794fe2b2f0de7f3403f2d"
+          },
+          {
+            "inner_frame_id": "8d0eab336dc661f3189a2b947f9d49337b80b6ce367b5e3c38d427f38c5f27b2",
+            "outer_frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8"
+          },
+          {
+            "inner_frame_id": "7961d3e3a8106ff7418907ca0486820a6e2f447efed794fe2b2f0de7f3403f2d",
+            "outer_frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9"
+          },
+          {
+            "inner_frame_id": "7961d3e3a8106ff7418907ca0486820a6e2f447efed794fe2b2f0de7f3403f2d",
+            "outer_frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8"
+          },
+          {
+            "inner_frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8",
+            "outer_frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9"
+          },
+          {
+            "inner_frame_id": "710b908f1651faadcaf5a9474792bfe65d5d492fee49988bd94db87220ac93fb",
+            "outer_frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9"
+          },
+          {
+            "inner_frame_id": "710b908f1651faadcaf5a9474792bfe65d5d492fee49988bd94db87220ac93fb",
+            "outer_frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8"
+          },
+          {
+            "inner_frame_id": "2fdded37209989ad264e47265e45586510066a4350ff94418bcd3fa23905316f",
+            "outer_frame_id": "ca53fd8c6b33bcbc661fdcf73a688bec417a0fad002a07e6192723761eae28f9"
+          },
+          {
+            "inner_frame_id": "2fdded37209989ad264e47265e45586510066a4350ff94418bcd3fa23905316f",
+            "outer_frame_id": "d40035f4b3b5597960be4e68a5590591888b2f47ee9e03c51b0663fd0ec839e8"
+          },
+          {
+            "inner_frame_id": "2fdded37209989ad264e47265e45586510066a4350ff94418bcd3fa23905316f",
+            "outer_frame_id": "710b908f1651faadcaf5a9474792bfe65d5d492fee49988bd94db87220ac93fb"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.03",
+        "trace_indices": [
+          38
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          677.0542221581376,
+          351.9170671501416,
+          692.5326865791474,
+          358.4405681430893
+        ],
+        "canonical_id": "w.3.04",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 242,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 796,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "w.3.04",
+        "trace_indices": [
+          39
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          930.0207867718383,
+          365.68896402448615,
+          945.4994355272127,
+          372.21246501743394
+        ],
+        "canonical_id": "w.3.05",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "fba5c7f414a165bd6e39445cbc3d2adf58fa3185824b44e44546838a02a7ffd4",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "1e69040d3986aabc70508015ca367561efc32a86c452240dc9d986d0788e1510",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "0eaa802a13376c68f44913e368d2b9467d7a10705e4b47ba56743a7a3dd159ae",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 22,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 274,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 863,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "fba5c7f414a165bd6e39445cbc3d2adf58fa3185824b44e44546838a02a7ffd4",
+            "outer_frame_id": "1e69040d3986aabc70508015ca367561efc32a86c452240dc9d986d0788e1510"
+          },
+          {
+            "inner_frame_id": "0eaa802a13376c68f44913e368d2b9467d7a10705e4b47ba56743a7a3dd159ae",
+            "outer_frame_id": "1e69040d3986aabc70508015ca367561efc32a86c452240dc9d986d0788e1510"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.05",
+        "trace_indices": [
+          40
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          1069.732317828492,
+          373.4808697796508,
+          1085.2109665838664,
+          380.0043707725986
+        ],
+        "canonical_id": "w.3.06",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "2d6ae9eb3077dd63d982ba9e908b99200ed74bff32b9771ed60f195cd9ed4af8",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 301,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 850,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "one_source_frame_layout_candidate",
+        "text": "w.3.06",
+        "trace_indices": [
+          42
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          1429.0681058128407,
+          383.0849205887557,
+          1444.5467545682152,
+          389.6084215817035
+        ],
+        "canonical_id": "w.3.07",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "fc0a0eda2743d262e7492310905f00bc101f8beb5bb71a66d2cd22bffaec73c4",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          },
+          {
+            "frame_id": "1f626d93545c3f37090ada3b1700f1b72dd0f73f0399efdc0cb0ebe23824d1fa",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 188,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 811,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.07",
+        "trace_indices": [
+          41
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          348.8861493616296,
+          278.7090429523647,
+          364.3647059498217,
+          285.2325439453125
+        ],
+        "canonical_id": "w.3.10",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "68bd9bd4e0f769ec999bd0493c0a90482de74a4306942b5e138a09d6e3344023",
+            "layout_rules": [
+              "label_at_lower_right"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 263,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 784,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "one_source_frame_layout_candidate",
+        "text": "w.3.10",
+        "trace_indices": [
+          31
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          458.5171693123427,
+          288.85664971882863,
+          473.9956337333525,
+          295.3801507117764
+        ],
+        "canonical_id": "w.3.11",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 22,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 700,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "w.3.11",
+        "trace_indices": [
+          32
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          652.0474222682466,
+          288.85664971882863,
+          667.5259788564388,
+          295.3801507117764
+        ],
+        "canonical_id": "w.3.12",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 22,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 262,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 781,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "w.3.12",
+        "trace_indices": [
+          33
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          859.7120656263107,
+          263.30629387157876,
+          875.1908065488674,
+          269.8297948645265
+        ],
+        "canonical_id": "w.3.13",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 788,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [],
+        "physical_identity_verified": false,
+        "status": "no_complete_source_rectangle",
+        "text": "w.3.13",
+        "trace_indices": [
+          34
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          990.9067960393509,
+          296.1049534330432,
+          1006.3854447947252,
+          302.628454425991
+        ],
+        "canonical_id": "w.3.14",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "b4af3e7179c746d92ea45374452a0e43b36b27d415a76d8bcf775c58d37ddfab",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "77016521b30179fc23ff4920814e652ad8f66a016d55bf04926bd504353976fc",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 242,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 736,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "77016521b30179fc23ff4920814e652ad8f66a016d55bf04926bd504353976fc",
+            "outer_frame_id": "b4af3e7179c746d92ea45374452a0e43b36b27d415a76d8bcf775c58d37ddfab"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.14",
+        "trace_indices": [
+          35
+        ],
+        "world_geometry_additions": 0
+      },
+      {
+        "bounds_pixels": [
+          1175.5577548238255,
+          294.6553019069185,
+          1191.0364957463821,
+          301.1788028998663
+        ],
+        "canonical_id": "w.3.15",
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "complete_aperture_verified": false,
+        "frame_candidates": [
+          {
+            "frame_id": "fe34800ee26df7083da1a5907006e46f63d969810fe583e235a6aef480366496",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          },
+          {
+            "frame_id": "4ca710067590ffb512bc451863062a1d87550f5934c75ffb5a26748c835ae3a8",
+            "layout_rules": [
+              "label_below_source_frame"
+            ]
+          }
+        ],
+        "glyph_screen": {
+          "glyph_encoding": "source_glyph_ids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 299,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 243,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 20,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 177,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 274,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 788,
+          "source_font_sha256": "3acf90cb5d72e9094ea714ea66ecb1b8fad158010657a44a64b20080e9fea7ab",
+          "source_font_xrefs": [
+            12
+          ],
+          "source_rotation_restored": 90,
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v2",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "kind": "window",
+        "nested_source_frames": [
+          {
+            "inner_frame_id": "fe34800ee26df7083da1a5907006e46f63d969810fe583e235a6aef480366496",
+            "outer_frame_id": "4ca710067590ffb512bc451863062a1d87550f5934c75ffb5a26748c835ae3a8"
+          }
+        ],
+        "physical_identity_verified": false,
+        "status": "competing_source_frame_layout_candidates",
+        "text": "w.3.15",
+        "trace_indices": [
+          36
+        ],
+        "world_geometry_additions": 0
+      }
+    ],
+    "status": "native_opening_layout_inventory_only"
+  },
+  "outside_scope_labels": 20,
+  "page": 1,
+  "pymupdf_version": "1.26.6",
+  "recipe_sha256": "2b0c74f7a94385b76580a62be0475f86460488ed8f7fac07379c1363a8d0191a",
+  "reviewed_scope_pixels": [
+    137,
+    106,
+    1514,
+    440
+  ],
+  "scope_from_reviewed_seed": true,
+  "seed_label_review": {
+    "automatic_seed_rewrite": false,
+    "rows": [
+      {
+        "claimed_label_id": "d.3.01",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "d3.01",
+        "source_label_candidates": [
+          "d.3.01"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.01",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.01",
+        "source_label_candidates": [
+          "w.3.01"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.02",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.02",
+        "source_label_candidates": [
+          "w.3.02"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.03",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.03",
+        "source_label_candidates": [
+          "w.3.03"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.04",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.04",
+        "source_label_candidates": [
+          "w.3.04"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "d.3.02",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "d3.02",
+        "source_label_candidates": [
+          "d.3.02"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.06",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.06-a",
+        "source_label_candidates": [
+          "w.3.05"
+        ],
+        "status": "source_label_disagreement"
+      },
+      {
+        "claimed_label_id": "w.3.06",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.06-b",
+        "source_label_candidates": [
+          "w.3.06"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "d.3.03",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "d3.03",
+        "source_label_candidates": [
+          "d.3.03"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.07",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.07",
+        "source_label_candidates": [
+          "w.3.07"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.10",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.10",
+        "source_label_candidates": [
+          "w.3.10"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.11",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.11",
+        "source_label_candidates": [
+          "w.3.11"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.12",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.12",
+        "source_label_candidates": [
+          "w.3.12"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.14",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.14",
+        "source_label_candidates": [
+          "w.3.14"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "w.3.15",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "w3.15",
+        "source_label_candidates": [
+          "w.3.15"
+        ],
+        "status": "matching_label_layout_candidate"
+      },
+      {
+        "claimed_label_id": "archway-3",
+        "geometry_selection_authorized": false,
+        "label_assignment_verified": false,
+        "seed_id": "archway-3",
+        "source_label_candidates": [
+          "archway-3"
+        ],
+        "status": "matching_label_layout_candidate"
+      }
+    ],
+    "source_labels_without_seed_trace": [
+      "w.3.13"
+    ],
+    "source_labels_without_unique_seed_assignment": [
+      "w.3.13"
+    ],
+    "world_geometry_additions": 0
+  },
+  "source_components_sha256": "c04325fbbcd78cf790f78651f26667b84a0413e704534e99ac7687476ab9c2a7",
+  "version": "native-opening-inventory-v1",
+  "world_geometry_additions": 0
+}

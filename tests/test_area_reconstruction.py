@@ -78,6 +78,11 @@ class AreaSourceTests(unittest.TestCase):
             self.assertEqual(entry['status'],'awaiting_reconstruction')
             self.assertEqual(entry['world_geometry_additions'],0)
             self.assertFalse(review['world_placement_eligible'])
+            inventory=entry['native_opening_inventories'][0]
+            self.assertEqual(inventory['labels'],0)
+            self.assertEqual(inventory['world_geometry_additions'],0)
+            self.assertFalse(inventory['automatic_aperture_reconstruction'])
+            self.assertTrue(run(self.job)['areas']['a']['native_opening_inventories'][0]['reused'])
             self.assertTrue(run(self.job)['areas']['a']['local_wing_reviews'][0]['reused'])
             seed=fixture.recipe;seed['plan_trace']['rear_point']=[10,75]
             (self.root/'wing-seed.json').write_text(json.dumps(seed))
@@ -90,6 +95,7 @@ class AreaSourceTests(unittest.TestCase):
         self.job.write_text(json.dumps(self.config));entry=run(self.job)['areas']['a']
         self.assertEqual(entry['local_wing_reviews'][0]['status'],'awaiting_local_review_sources')
         self.assertEqual(len(entry['local_wing_reviews'][0]['missing_source_sha256']),3)
+        self.assertEqual(entry['native_opening_inventories'][0]['status'],'awaiting_local_review_sources')
 
     def test_explicit_area_preserves_unfinished_previous_area(self):
         first=run(self.job);previous=first['areas']['a'].copy()
