@@ -56,9 +56,13 @@ def compiled_coverage(geometry, plan_hashes):
     finally:db.close()
 
 
-def run(config_path, stage='extract', max_cycles=1):
+def run(config_path, stage='extract', max_cycles=1, area_id=None):
     config_path=Path(config_path).resolve();raw=config_path.read_bytes();config=json.loads(raw)
     resolve=lambda value:(config_path.parent/value).resolve()
+    initial_base=config.get('initial_base_world');initial_sha=config.get('initial_base_sha256')
+    if initial_base or initial_sha:
+        if not initial_base or not initial_sha or file_hash(resolve(initial_base)/'park.mcworld')!=initial_sha:
+            raise ValueError('Initial area baseline checksum mismatch')
     root=resolve(config['work_directory']);root.mkdir(parents=True,exist_ok=True)
     catalogue_path=resolve(config['catalogue']);catalogue=json.loads(catalogue_path.read_text())
     supplement_pins={}
@@ -73,13 +77,20 @@ def run(config_path, stage='extract', max_cycles=1):
     areas=config['areas'];ids=[a['id'] for a in areas]
     if not 1<=len(areas)<=64 or len(set(ids))!=len(ids) or any(not re.fullmatch('[a-z0-9][a-z0-9-]{0,63}',i) for i in ids):
         raise ValueError('Unique bounded area identifiers required')
+    if area_id is not None and area_id not in ids:
+        raise ValueError('Unknown resort area: '+area_id)
     contract={'version':VERSION,'config_sha256':hashlib.sha256(raw).hexdigest(),'catalogue_sha256':file_hash(catalogue_path),'supplement_sha256':supplement_pins,
               'recipe_sha256':{a['id']:file_hash(resolve(a['reconstruction_job'])) for a in areas if a.get('reconstruction_job')}}
     state_path=root/'area-state.json'
     state=json.loads(state_path.read_text()) if state_path.exists() else {'contract':contract,'areas':{i:{'status':'pending'} for i in ids}}
     if state['contract']!=contract:raise ValueError('Area inputs changed; use a fresh reconstruction run')
-    next_area=next((a for a in areas if state['areas'][a['id']]['status']!='complete'),None)
+    selected_id=area_id or state.get('active_area_id')
+    if selected_id and state['areas'][selected_id]['status']=='complete' and area_id is None:selected_id=None
+    next_area=(next(a for a in areas if a['id']==selected_id) if selected_id is not None else
+               next((a for a in areas if state['areas'][a['id']]['status']!='complete'),None))
     if next_area is None:return state
+    if state['areas'][next_area['id']]['status']=='complete':return state
+    state['active_area_id']=next_area['id']
     area=next_area;entry=state['areas'][area['id']];work=root/area['id'];work.mkdir(exist_ok=True)
     def save():atomic_json(state_path,state);atomic_json(work/'area-report.json',{'area':area,**entry})
     docs=select_documents(catalogue,area)
@@ -125,6 +136,7 @@ def run(config_path, stage='extract', max_cycles=1):
         if key in path_keys and isinstance(value,str):return str((job_path.parent/value).resolve())
         return value
     job=absolute(job);job['work_directory']=str(work/'reconstruction')
+    if initial_base:job['base_world']=str(resolve(initial_base))
     job['acquisition']={'catalogue':str(work/'selected-catalogue.json'),'official_hosts':config['official_hosts'],
                         'offline':True,'cache':str(work/'corpus'),'workers':4}
     if job.get('planning_components'):
@@ -199,8 +211,9 @@ def run(config_path, stage='extract', max_cycles=1):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--job',required=True)
+    parser.add_argument('--area',help='Select a named area without completing earlier unfinished areas')
     parser.add_argument('--stage',choices=['extract','reconstruct'],default='extract');parser.add_argument('--max-cycles',type=int,default=1)
-    args=parser.parse_args();print(json.dumps(run(args.job,args.stage,args.max_cycles),indent=2))
+    args=parser.parse_args();print(json.dumps(run(args.job,args.stage,args.max_cycles,args.area),indent=2))
 
 
 if __name__=='__main__':main()

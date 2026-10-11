@@ -1,5 +1,30 @@
 # Mutiny Bay source integration
 
+## Active area handoff from V24
+
+The user-directed October 11 area cycle now targets Mutiny Bay, retaining the
+V24 Wicker queue review as the checksum-pinned cumulative baseline. Wicker
+remains partial. Use the resort coordinator's `--area mutiny-bay`; selection
+persists on resume without changing previous area statuses. Configure
+`initial_base_world` and `initial_base_sha256` for the V24 native bundle.
+
+The real source pass selected 139 council document links across the nine
+Mutiny Bay application associations. It recovered 73 distinct checksum-matching
+PDFs (120 links); 19 links remain pending. Extraction processed 213 pages,
+retaining 4,485 polygon and 21,772 line candidates without page errors or
+budget-withheld pages. Repeat extraction processed zero new pages and preserved
+all candidate hashes. The 677 indexed text mentions are unbound labels, not
+physical objects or generated geometry.
+
+The first target is the existing Ingestre courtyard wings, canopy and surrounding
+paving, followed by lake-side paths and fences. The existing site sheet 3023-01
+has separate 1:200 site and 1:500 keyplan panels; their page frames must be
+reviewed separately. Source areas elsewhere in shared resort sheets do not
+become Mutiny Bay components. Proposed smokehouse geometry remains separate,
+and the earlier rejected courtyard fit remains rejected. No new world blocks
+or accepted registration are claimed by this source cycle. See
+`evidence/mutiny-bay-area-cycle-validation.json`; all 829 tests pass.
+
 Mutiny Bay evidence is exposed in the Alton acquisition report's `mutiny_bay` inventory. The ordinary council acquisition path can inspect the new checksum-pinned drawings through `application_references`. Source acquisition and world correction are separate: no geometry is approved by an application title, a historical approval, or a material word alone.
 
 | Area | Application references | Evidence |

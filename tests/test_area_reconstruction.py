@@ -38,6 +38,27 @@ class AreaSourceTests(unittest.TestCase):
         (self.root/'catalogue.json').write_text(json.dumps(self.catalogue))
         with self.assertRaisesRegex(ValueError,'inputs changed'):run(self.job)
 
+    def test_explicit_area_preserves_unfinished_previous_area(self):
+        first=run(self.job);previous=first['areas']['a'].copy()
+        result=run(self.job,area_id='b')
+        self.assertEqual(result['areas']['a'],previous)
+        self.assertEqual(result['active_area_id'],'b')
+        self.assertEqual(result['areas']['b']['status'],'awaiting_reconstruction')
+        self.assertEqual(result['areas']['b']['selected_documents'][0]['title'],'Plan B')
+        self.assertEqual(run(self.job,area_id='b')['areas']['b']['extraction']['run_pages'],0)
+        self.assertEqual(run(self.job)['active_area_id'],'b')
+
+    def test_unknown_area_is_rejected_without_source_work(self):
+        with self.assertRaisesRegex(ValueError,'Unknown resort area'):run(self.job,area_id='missing')
+        self.assertFalse((self.root/'work/area-state.json').exists())
+
+    def test_explicit_initial_baseline_rejects_changed_package(self):
+        base=self.root/'baseline';base.mkdir();package=base/'park.mcworld';package.write_bytes(b'pinned review')
+        self.config.update(initial_base_world='baseline',initial_base_sha256=hashlib.sha256(package.read_bytes()).hexdigest())
+        self.job.write_text(json.dumps(self.config));run(self.job,area_id='b')
+        package.write_bytes(b'changed review')
+        with self.assertRaisesRegex(ValueError,'baseline checksum'):run(self.job,area_id='b')
+
     def test_no_applications_is_not_a_completed_area(self):
         self.config['areas'][0]['application_references']=[];self.job.write_text(json.dumps(self.config))
         result=run(self.job)
@@ -103,7 +124,8 @@ class AreaCompileTests(unittest.TestCase):
             job={'work_directory':'unused-'+name,'manifest':'manifest.json','terrain_config':'terrain.json','base_world':str(self.base),'feature_records':name+'.jsonl'}
             (self.root/(name+'-recipe.json')).write_text(json.dumps(job))
             areas.append({'id':name,'name':name,'application_references':[name.upper()],'required_families':['paving'],'required_component_ids':[name+'-plaza'],'reconstruction_job':name+'-recipe.json','bounds':[-16,-16,64,16],'bounds_crs':'EPSG:27700'})
-        config={'work_directory':'areas','catalogue':'catalogue.json','official_hosts':['portal.test'],'offline':True,'source_directories':['sources'],'areas':areas}
+        config={'work_directory':'areas','catalogue':'catalogue.json','official_hosts':['portal.test'],'offline':True,'source_directories':['sources'],'areas':areas,
+                'initial_base_world':str(self.base),'initial_base_sha256':hashlib.sha256((self.base/'park.mcworld').read_bytes()).hexdigest()}
         job=self.root/'area-job.json';job.write_text(json.dumps(config))
         first=run(job,'reconstruct',5);self.assertEqual(first['areas']['a']['status'],'complete');self.assertEqual(first['areas']['b']['status'],'pending')
         final=run(job,'reconstruct',5);self.assertEqual(final['areas']['b']['status'],'complete')

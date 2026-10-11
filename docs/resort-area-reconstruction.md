@@ -6,6 +6,18 @@ references and required reconstruction families. Wicker's SW8 application and
 woodland-path amendment are the first target. The seed includes fifteen named
 areas; areas without explicit application associations stay unresolved.
 
+Use `--area mutiny-bay` to switch the active work area explicitly. The selected
+area persists for subsequent runs without `--area`. Earlier unfinished areas
+keep their status and evidence; switching does not mark Wicker complete or
+relax source, registration or component-inventory checks. Once the active area
+is complete, an untargeted run returns to the first unfinished area.
+
+For a handoff from a partial review download, set `initial_base_world` to its
+native bundle directory and `initial_base_sha256` to the package hash. Every
+run verifies that package, and reconstruction inherits it until a completed
+preceding area supplies a newer cumulative world. A review baseline does not
+make its source placement accepted or mark its area complete.
+
 The default `extract` stage builds a dedicated source corpus, checks original
 PDF hashes and extracts native polygon/line candidates. Supplemental catalogues
 include the Wicker architectural and site-section documents. Existing/proposed
