@@ -1,0 +1,2453 @@
+{
+  "version": "courtyard-plan-layout-study-v1",
+  "hypotheses_acknowledged": true,
+  "plan_pdf_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+  "plan_raster_sha256": "2d79ee412ff010ddf9f6c44b07f0884d46dffb12c924f5409ce261b3fe97df29",
+  "raster_width": 1800,
+  "source_scale_denominator": 100,
+  "source_page_width_points": 2384,
+  "origin_pixel": [
+    1059,
+    305
+  ],
+  "north_model_sha256": "dde36dc6c099a0f1f46a883220208268d481d980de6c05b15c3b06b758fc5af5",
+  "wall_thickness_m": 0.4,
+  "wall_height_m": 3.9733749,
+  "partition_height_m": 2.5,
+  "ridge_height_m": 7.01,
+  "door_height_m": 2.2,
+  "window_sill_m": 1,
+  "window_head_m": 2.1,
+  "roof_thickness_m": 0.25,
+  "trace_class": "manual raster-sampled plan layout; approximate pixel centre-lines, not accepted native vector geometry",
+  "footprints": [
+    {
+      "id": "west_range",
+      "pixel_ring": [
+        [
+          222,
+          305
+        ],
+        [
+          415,
+          305
+        ],
+        [
+          415,
+          991
+        ],
+        [
+          222,
+          991
+        ]
+      ],
+      "ridge_axis": "pixel_y",
+      "roof_eave_m": 3.9733749,
+      "roof_ridge_m": 7.01
+    },
+    {
+      "id": "south_range",
+      "pixel_ring": [
+        [
+          248,
+          175
+        ],
+        [
+          1191,
+          175
+        ],
+        [
+          1191,
+          305
+        ],
+        [
+          248,
+          305
+        ]
+      ],
+      "ridge_axis": "pixel_x",
+      "roof_eave_m": 3.9733749,
+      "roof_ridge_m": 7.01
+    },
+    {
+      "id": "east_range",
+      "pixel_ring": [
+        [
+          248,
+          991
+        ],
+        [
+          1191,
+          991
+        ],
+        [
+          1191,
+          1124
+        ],
+        [
+          248,
+          1124
+        ]
+      ],
+      "ridge_axis": "pixel_x",
+      "roof_eave_m": 3.9733749,
+      "roof_ridge_m": 7.01
+    },
+    {
+      "id": "north_range",
+      "pixel_ring": [
+        [
+          1059,
+          305
+        ],
+        [
+          1191,
+          305
+        ],
+        [
+          1191,
+          991
+        ],
+        [
+          1059,
+          991
+        ]
+      ],
+      "ridge_axis": "pixel_y",
+      "roof_eave_m": 3.9733749,
+      "roof_ridge_m": 7.01
+    },
+    {
+      "id": "north_rear_annex",
+      "pixel_ring": [
+        [
+          1191,
+          392
+        ],
+        [
+          1300,
+          392
+        ],
+        [
+          1300,
+          665
+        ],
+        [
+          1191,
+          665
+        ]
+      ],
+      "ridge_axis": "pixel_y",
+      "roof_eave_m": 2.8,
+      "roof_ridge_m": 4.4
+    },
+    {
+      "id": "north_service_annex",
+      "pixel_ring": [
+        [
+          1191,
+          696
+        ],
+        [
+          1282,
+          696
+        ],
+        [
+          1282,
+          991
+        ],
+        [
+          1191,
+          991
+        ]
+      ],
+      "ridge_axis": "pixel_y",
+      "roof_eave_m": 2.8,
+      "roof_ridge_m": 4.4
+    }
+  ],
+  "external_walls": [
+    [
+      [
+        248,
+        175
+      ],
+      [
+        1191,
+        175
+      ]
+    ],
+    [
+      [
+        248,
+        175
+      ],
+      [
+        248,
+        305
+      ]
+    ],
+    [
+      [
+        248,
+        305
+      ],
+      [
+        1059,
+        305
+      ]
+    ],
+    [
+      [
+        1191,
+        175
+      ],
+      [
+        1191,
+        305
+      ]
+    ],
+    [
+      [
+        1059,
+        175
+      ],
+      [
+        1059,
+        305
+      ]
+    ],
+    [
+      [
+        222,
+        305
+      ],
+      [
+        222,
+        991
+      ]
+    ],
+    [
+      [
+        415,
+        305
+      ],
+      [
+        415,
+        991
+      ]
+    ],
+    [
+      [
+        248,
+        305
+      ],
+      [
+        248,
+        591
+      ]
+    ],
+    [
+      [
+        222,
+        991
+      ],
+      [
+        415,
+        991
+      ]
+    ],
+    [
+      [
+        248,
+        991
+      ],
+      [
+        248,
+        1124
+      ]
+    ],
+    [
+      [
+        248,
+        1124
+      ],
+      [
+        1191,
+        1124
+      ]
+    ],
+    [
+      [
+        1191,
+        991
+      ],
+      [
+        1191,
+        1124
+      ]
+    ],
+    [
+      [
+        415,
+        991
+      ],
+      [
+        1059,
+        991
+      ]
+    ],
+    [
+      [
+        1191,
+        392
+      ],
+      [
+        1300,
+        392
+      ]
+    ],
+    [
+      [
+        1300,
+        392
+      ],
+      [
+        1300,
+        665
+      ]
+    ],
+    [
+      [
+        1191,
+        665
+      ],
+      [
+        1300,
+        665
+      ]
+    ],
+    [
+      [
+        1191,
+        696
+      ],
+      [
+        1282,
+        696
+      ]
+    ],
+    [
+      [
+        1282,
+        696
+      ],
+      [
+        1282,
+        991
+      ]
+    ],
+    [
+      [
+        1191,
+        991
+      ],
+      [
+        1282,
+        991
+      ]
+    ]
+  ],
+  "partitions": [
+    [
+      [
+        374,
+        182
+      ],
+      [
+        374,
+        297
+      ]
+    ],
+    [
+      [
+        459,
+        182
+      ],
+      [
+        459,
+        297
+      ]
+    ],
+    [
+      [
+        690,
+        175
+      ],
+      [
+        690,
+        305
+      ]
+    ],
+    [
+      [
+        770,
+        175
+      ],
+      [
+        770,
+        305
+      ]
+    ],
+    [
+      [
+        954,
+        182
+      ],
+      [
+        954,
+        297
+      ]
+    ],
+    [
+      [
+        1062,
+        182
+      ],
+      [
+        1062,
+        305
+      ]
+    ],
+    [
+      [
+        1098,
+        182
+      ],
+      [
+        1098,
+        299
+      ]
+    ],
+    [
+      [
+        1098,
+        240
+      ],
+      [
+        1182,
+        240
+      ]
+    ],
+    [
+      [
+        1125,
+        182
+      ],
+      [
+        1125,
+        215
+      ]
+    ],
+    [
+      [
+        1153,
+        182
+      ],
+      [
+        1153,
+        215
+      ]
+    ],
+    [
+      [
+        1098,
+        267
+      ],
+      [
+        1182,
+        267
+      ]
+    ],
+    [
+      [
+        1125,
+        267
+      ],
+      [
+        1125,
+        299
+      ]
+    ],
+    [
+      [
+        1153,
+        267
+      ],
+      [
+        1153,
+        299
+      ]
+    ],
+    [
+      [
+        281,
+        314
+      ],
+      [
+        281,
+        533
+      ]
+    ],
+    [
+      [
+        281,
+        533
+      ],
+      [
+        405,
+        533
+      ]
+    ],
+    [
+      [
+        281,
+        470
+      ],
+      [
+        405,
+        470
+      ]
+    ],
+    [
+      [
+        322,
+        454
+      ],
+      [
+        322,
+        532
+      ]
+    ],
+    [
+      [
+        348,
+        470
+      ],
+      [
+        348,
+        532
+      ]
+    ],
+    [
+      [
+        235,
+        587
+      ],
+      [
+        405,
+        587
+      ]
+    ],
+    [
+      [
+        235,
+        598
+      ],
+      [
+        405,
+        598
+      ]
+    ],
+    [
+      [
+        235,
+        699
+      ],
+      [
+        405,
+        699
+      ]
+    ],
+    [
+      [
+        235,
+        710
+      ],
+      [
+        405,
+        710
+      ]
+    ],
+    [
+      [
+        281,
+        737
+      ],
+      [
+        281,
+        925
+      ]
+    ],
+    [
+      [
+        281,
+        925
+      ],
+      [
+        405,
+        925
+      ]
+    ],
+    [
+      [
+        281,
+        932
+      ],
+      [
+        405,
+        932
+      ]
+    ],
+    [
+      [
+        331,
+        940
+      ],
+      [
+        331,
+        991
+      ]
+    ],
+    [
+      [
+        235,
+        1027
+      ],
+      [
+        364,
+        1027
+      ]
+    ],
+    [
+      [
+        364,
+        999
+      ],
+      [
+        364,
+        1112
+      ]
+    ],
+    [
+      [
+        379,
+        999
+      ],
+      [
+        379,
+        1112
+      ]
+    ],
+    [
+      [
+        475,
+        999
+      ],
+      [
+        475,
+        1112
+      ]
+    ],
+    [
+      [
+        533,
+        999
+      ],
+      [
+        533,
+        1112
+      ]
+    ],
+    [
+      [
+        609,
+        999
+      ],
+      [
+        609,
+        1112
+      ]
+    ],
+    [
+      [
+        690,
+        991
+      ],
+      [
+        690,
+        1124
+      ]
+    ],
+    [
+      [
+        766,
+        991
+      ],
+      [
+        766,
+        1124
+      ]
+    ],
+    [
+      [
+        824,
+        999
+      ],
+      [
+        824,
+        1112
+      ]
+    ],
+    [
+      [
+        1082,
+        999
+      ],
+      [
+        1082,
+        1112
+      ]
+    ],
+    [
+      [
+        1191,
+        424
+      ],
+      [
+        1300,
+        424
+      ]
+    ],
+    [
+      [
+        1191,
+        759
+      ],
+      [
+        1282,
+        759
+      ]
+    ],
+    [
+      [
+        1232,
+        718
+      ],
+      [
+        1232,
+        798
+      ]
+    ],
+    [
+      [
+        1191,
+        798
+      ],
+      [
+        1282,
+        798
+      ]
+    ],
+    [
+      [
+        1191,
+        828
+      ],
+      [
+        1282,
+        828
+      ]
+    ],
+    [
+      [
+        1220,
+        858
+      ],
+      [
+        1220,
+        991
+      ]
+    ]
+  ],
+  "openings": [
+    {
+      "id": "archway_1",
+      "kind": "passage",
+      "pixel_ring": [
+        [
+          212,
+          603
+        ],
+        [
+          426,
+          603
+        ],
+        [
+          426,
+          692
+        ],
+        [
+          212,
+          692
+        ]
+      ]
+    },
+    {
+      "id": "archway_2",
+      "kind": "passage",
+      "pixel_ring": [
+        [
+          699,
+          165
+        ],
+        [
+          761,
+          165
+        ],
+        [
+          761,
+          315
+        ],
+        [
+          699,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "archway_4",
+      "kind": "passage",
+      "pixel_ring": [
+        [
+          698,
+          981
+        ],
+        [
+          758,
+          981
+        ],
+        [
+          758,
+          1134
+        ],
+        [
+          698,
+          1134
+        ]
+      ]
+    },
+    {
+      "id": "south_room_a_outer",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          238,
+          218
+        ],
+        [
+          258,
+          218
+        ],
+        [
+          258,
+          248
+        ],
+        [
+          238,
+          248
+        ]
+      ]
+    },
+    {
+      "id": "south_room_ab",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          364,
+          227
+        ],
+        [
+          384,
+          227
+        ],
+        [
+          384,
+          257
+        ],
+        [
+          364,
+          257
+        ]
+      ]
+    },
+    {
+      "id": "south_room_b_dressing",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          449,
+          223
+        ],
+        [
+          469,
+          223
+        ],
+        [
+          469,
+          254
+        ],
+        [
+          449,
+          254
+        ]
+      ]
+    },
+    {
+      "id": "dressing_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          480,
+          287
+        ],
+        [
+          517,
+          287
+        ],
+        [
+          517,
+          315
+        ],
+        [
+          480,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "dressing_courtyard_east",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          633,
+          287
+        ],
+        [
+          666,
+          287
+        ],
+        [
+          666,
+          315
+        ],
+        [
+          633,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "meeting_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          836,
+          287
+        ],
+        [
+          870,
+          287
+        ],
+        [
+          870,
+          315
+        ],
+        [
+          836,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "meeting_adjacent",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          940,
+          274
+        ],
+        [
+          970,
+          274
+        ],
+        [
+          970,
+          315
+        ],
+        [
+          940,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "south_lobby_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1060,
+          274
+        ],
+        [
+          1100,
+          274
+        ],
+        [
+          1100,
+          315
+        ],
+        [
+          1060,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "staff_wc",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1087,
+          207
+        ],
+        [
+          1108,
+          207
+        ],
+        [
+          1108,
+          234
+        ],
+        [
+          1087,
+          234
+        ]
+      ]
+    },
+    {
+      "id": "store_upper_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          401,
+          538
+        ],
+        [
+          429,
+          538
+        ],
+        [
+          429,
+          571
+        ],
+        [
+          401,
+          571
+        ]
+      ]
+    },
+    {
+      "id": "west_service_outer",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          212,
+          546
+        ],
+        [
+          254,
+          546
+        ],
+        [
+          254,
+          582
+        ],
+        [
+          212,
+          582
+        ]
+      ]
+    },
+    {
+      "id": "store_upper_service",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          273,
+          443
+        ],
+        [
+          291,
+          443
+        ],
+        [
+          291,
+          478
+        ],
+        [
+          273,
+          478
+        ]
+      ]
+    },
+    {
+      "id": "store_small_a",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          315,
+          477
+        ],
+        [
+          333,
+          477
+        ],
+        [
+          333,
+          510
+        ],
+        [
+          315,
+          510
+        ]
+      ]
+    },
+    {
+      "id": "store_small_b",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          340,
+          477
+        ],
+        [
+          358,
+          477
+        ],
+        [
+          358,
+          510
+        ],
+        [
+          340,
+          510
+        ]
+      ]
+    },
+    {
+      "id": "store_lower_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          400,
+          774
+        ],
+        [
+          428,
+          774
+        ],
+        [
+          428,
+          812
+        ],
+        [
+          400,
+          812
+        ]
+      ]
+    },
+    {
+      "id": "store_lower_outer",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          263,
+          881
+        ],
+        [
+          291,
+          881
+        ],
+        [
+          291,
+          911
+        ],
+        [
+          263,
+          911
+        ]
+      ]
+    },
+    {
+      "id": "west_lobby_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          400,
+          950
+        ],
+        [
+          428,
+          950
+        ],
+        [
+          428,
+          985
+        ],
+        [
+          400,
+          985
+        ]
+      ]
+    },
+    {
+      "id": "west_lobby_internal",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          318,
+          952
+        ],
+        [
+          343,
+          952
+        ],
+        [
+          343,
+          985
+        ],
+        [
+          318,
+          985
+        ]
+      ]
+    },
+    {
+      "id": "east_service_a",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          355,
+          1053
+        ],
+        [
+          389,
+          1053
+        ],
+        [
+          389,
+          1091
+        ],
+        [
+          355,
+          1091
+        ]
+      ]
+    },
+    {
+      "id": "east_service_b",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          458,
+          1007
+        ],
+        [
+          489,
+          1007
+        ],
+        [
+          489,
+          1046
+        ],
+        [
+          458,
+          1046
+        ]
+      ]
+    },
+    {
+      "id": "cellar_service",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          520,
+          1012
+        ],
+        [
+          546,
+          1012
+        ],
+        [
+          546,
+          1048
+        ],
+        [
+          520,
+          1048
+        ]
+      ]
+    },
+    {
+      "id": "cellar_outer",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          500,
+          1102
+        ],
+        [
+          536,
+          1102
+        ],
+        [
+          536,
+          1134
+        ],
+        [
+          500,
+          1134
+        ]
+      ]
+    },
+    {
+      "id": "substation_passage",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          681,
+          1030
+        ],
+        [
+          700,
+          1030
+        ],
+        [
+          700,
+          1074
+        ],
+        [
+          681,
+          1074
+        ]
+      ]
+    },
+    {
+      "id": "tavern_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          850,
+          981
+        ],
+        [
+          887,
+          981
+        ],
+        [
+          887,
+          1009
+        ],
+        [
+          850,
+          1009
+        ]
+      ]
+    },
+    {
+      "id": "tavern_outer",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          922,
+          1102
+        ],
+        [
+          959,
+          1102
+        ],
+        [
+          959,
+          1134
+        ],
+        [
+          922,
+          1134
+        ]
+      ]
+    },
+    {
+      "id": "east_lobby",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1070,
+          1102
+        ],
+        [
+          1095,
+          1102
+        ],
+        [
+          1095,
+          1124
+        ],
+        [
+          1070,
+          1124
+        ]
+      ]
+    },
+    {
+      "id": "east_lobby_courtyard",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1102,
+          981
+        ],
+        [
+          1142,
+          981
+        ],
+        [
+          1142,
+          1009
+        ],
+        [
+          1102,
+          1009
+        ]
+      ]
+    },
+    {
+      "id": "annex_north_access",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1181,
+          631
+        ],
+        [
+          1238,
+          631
+        ],
+        [
+          1238,
+          661
+        ],
+        [
+          1181,
+          661
+        ]
+      ]
+    },
+    {
+      "id": "annex_service_access",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1207,
+          739
+        ],
+        [
+          1246,
+          739
+        ],
+        [
+          1246,
+          779
+        ],
+        [
+          1207,
+          779
+        ]
+      ]
+    },
+    {
+      "id": "annex_wc_link",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1239,
+          749
+        ],
+        [
+          1270,
+          749
+        ],
+        [
+          1270,
+          779
+        ],
+        [
+          1239,
+          779
+        ]
+      ]
+    },
+    {
+      "id": "annex_stair_link",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1200,
+          817
+        ],
+        [
+          1235,
+          817
+        ],
+        [
+          1235,
+          848
+        ],
+        [
+          1200,
+          848
+        ]
+      ]
+    },
+    {
+      "id": "annex_lower_link",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1205,
+          849
+        ],
+        [
+          1231,
+          849
+        ],
+        [
+          1231,
+          881
+        ],
+        [
+          1205,
+          881
+        ]
+      ]
+    },
+    {
+      "id": "west_store_upper_window",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          400,
+          402
+        ],
+        [
+          426,
+          402
+        ],
+        [
+          426,
+          424
+        ],
+        [
+          400,
+          424
+        ]
+      ]
+    },
+    {
+      "id": "west_store_lower_window",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          400,
+          868
+        ],
+        [
+          426,
+          868
+        ],
+        [
+          426,
+          889
+        ],
+        [
+          400,
+          889
+        ]
+      ]
+    },
+    {
+      "id": "dressing_window",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          544,
+          287
+        ],
+        [
+          593,
+          287
+        ],
+        [
+          593,
+          315
+        ],
+        [
+          544,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "meeting_window",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          893,
+          287
+        ],
+        [
+          929,
+          287
+        ],
+        [
+          929,
+          315
+        ],
+        [
+          893,
+          315
+        ]
+      ]
+    },
+    {
+      "id": "east_cellar_window",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          552,
+          981
+        ],
+        [
+          583,
+          981
+        ],
+        [
+          583,
+          1009
+        ],
+        [
+          552,
+          1009
+        ]
+      ]
+    },
+    {
+      "id": "tavern_window_a",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          919,
+          981
+        ],
+        [
+          973,
+          981
+        ],
+        [
+          973,
+          1009
+        ],
+        [
+          919,
+          1009
+        ]
+      ]
+    },
+    {
+      "id": "tavern_window_b",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1016,
+          981
+        ],
+        [
+          1039,
+          981
+        ],
+        [
+          1039,
+          1009
+        ],
+        [
+          1016,
+          1009
+        ]
+      ]
+    },
+    {
+      "id": "tavern_outer_a",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          849,
+          1113
+        ],
+        [
+          875,
+          1113
+        ],
+        [
+          875,
+          1134
+        ],
+        [
+          849,
+          1134
+        ]
+      ]
+    },
+    {
+      "id": "tavern_outer_b",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          975,
+          1113
+        ],
+        [
+          1017,
+          1113
+        ],
+        [
+          1017,
+          1134
+        ],
+        [
+          975,
+          1134
+        ]
+      ]
+    },
+    {
+      "id": "annex_outer_entry",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1288,
+          482
+        ],
+        [
+          1310,
+          482
+        ],
+        [
+          1310,
+          522
+        ],
+        [
+          1288,
+          522
+        ]
+      ]
+    },
+    {
+      "id": "north_arch_annex_exit",
+      "kind": "passage",
+      "pixel_ring": [
+        [
+          1185,
+          625
+        ],
+        [
+          1310,
+          625
+        ],
+        [
+          1310,
+          675
+        ],
+        [
+          1185,
+          675
+        ]
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "south_a",
+      "label": "Unlabelled south room A",
+      "pixel_ring": [
+        [
+          260,
+          183
+        ],
+        [
+          365,
+          183
+        ],
+        [
+          365,
+          293
+        ],
+        [
+          260,
+          293
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "south_b",
+      "label": "Unlabelled south room B",
+      "pixel_ring": [
+        [
+          382,
+          183
+        ],
+        [
+          453,
+          183
+        ],
+        [
+          453,
+          293
+        ],
+        [
+          382,
+          293
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "dressing",
+      "label": "Dressing room",
+      "pixel_ring": [
+        [
+          467,
+          184
+        ],
+        [
+          686,
+          184
+        ],
+        [
+          686,
+          293
+        ],
+        [
+          467,
+          293
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "meeting",
+      "label": "Meeting room",
+      "pixel_ring": [
+        [
+          776,
+          184
+        ],
+        [
+          948,
+          184
+        ],
+        [
+          948,
+          293
+        ],
+        [
+          776,
+          293
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "south_lobby",
+      "label": "South lobby",
+      "pixel_ring": [
+        [
+          960,
+          184
+        ],
+        [
+          1056,
+          184
+        ],
+        [
+          1056,
+          293
+        ],
+        [
+          960,
+          293
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "staff_wc",
+      "label": "Staff toilets",
+      "pixel_ring": [
+        [
+          1102,
+          184
+        ],
+        [
+          1178,
+          184
+        ],
+        [
+          1178,
+          294
+        ],
+        [
+          1102,
+          294
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "store_upper",
+      "label": "Store room",
+      "pixel_ring": [
+        [
+          285,
+          319
+        ],
+        [
+          399,
+          319
+        ],
+        [
+          399,
+          454
+        ],
+        [
+          285,
+          454
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "store_small_a",
+      "label": "Store service room A",
+      "pixel_ring": [
+        [
+          284,
+          461
+        ],
+        [
+          318,
+          461
+        ],
+        [
+          318,
+          527
+        ],
+        [
+          284,
+          527
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "store_small_b",
+      "label": "Store service room B",
+      "pixel_ring": [
+        [
+          353,
+          477
+        ],
+        [
+          399,
+          477
+        ],
+        [
+          399,
+          527
+        ],
+        [
+          353,
+          527
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "west_service",
+      "label": "West service corridor",
+      "pixel_ring": [
+        [
+          241,
+          549
+        ],
+        [
+          399,
+          549
+        ],
+        [
+          399,
+          580
+        ],
+        [
+          241,
+          580
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "store_lower",
+      "label": "Store room",
+      "pixel_ring": [
+        [
+          285,
+          744
+        ],
+        [
+          399,
+          744
+        ],
+        [
+          399,
+          920
+        ],
+        [
+          285,
+          920
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "west_lobby",
+      "label": "West lobby",
+      "pixel_ring": [
+        [
+          337,
+          944
+        ],
+        [
+          399,
+          944
+        ],
+        [
+          399,
+          985
+        ],
+        [
+          337,
+          985
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "east_wc",
+      "label": "East service / stair room",
+      "pixel_ring": [
+        [
+          263,
+          1034
+        ],
+        [
+          357,
+          1034
+        ],
+        [
+          357,
+          1106
+        ],
+        [
+          263,
+          1106
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "east_a",
+      "label": "Unlabelled east room A",
+      "pixel_ring": [
+        [
+          385,
+          1006
+        ],
+        [
+          469,
+          1006
+        ],
+        [
+          469,
+          1106
+        ],
+        [
+          385,
+          1106
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "east_b",
+      "label": "Unlabelled east room B",
+      "pixel_ring": [
+        [
+          482,
+          1006
+        ],
+        [
+          527,
+          1006
+        ],
+        [
+          527,
+          1106
+        ],
+        [
+          482,
+          1106
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "cellar",
+      "label": "Cellar",
+      "pixel_ring": [
+        [
+          540,
+          1006
+        ],
+        [
+          603,
+          1006
+        ],
+        [
+          603,
+          1106
+        ],
+        [
+          540,
+          1106
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "substation",
+      "label": "Substation",
+      "pixel_ring": [
+        [
+          616,
+          1006
+        ],
+        [
+          682,
+          1006
+        ],
+        [
+          682,
+          1106
+        ],
+        [
+          616,
+          1106
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "tavern",
+      "label": "Courtyard Tavern",
+      "pixel_ring": [
+        [
+          831,
+          1006
+        ],
+        [
+          1076,
+          1006
+        ],
+        [
+          1076,
+          1106
+        ],
+        [
+          831,
+          1106
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "east_lobby",
+      "label": "East lobby",
+      "pixel_ring": [
+        [
+          1090,
+          1006
+        ],
+        [
+          1176,
+          1006
+        ],
+        [
+          1176,
+          1106
+        ],
+        [
+          1090,
+          1106
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "workshop",
+      "label": "Workshop",
+      "pixel_ring": [
+        [
+          1068,
+          369
+        ],
+        [
+          1175,
+          369
+        ],
+        [
+          1175,
+          421
+        ],
+        [
+          1068,
+          421
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "training",
+      "label": "Training room",
+      "pixel_ring": [
+        [
+          1068,
+          443
+        ],
+        [
+          1175,
+          443
+        ],
+        [
+          1175,
+          523
+        ],
+        [
+          1068,
+          523
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "office",
+      "label": "Office",
+      "pixel_ring": [
+        [
+          1068,
+          539
+        ],
+        [
+          1175,
+          539
+        ],
+        [
+          1175,
+          597
+        ],
+        [
+          1068,
+          597
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "kitchen",
+      "label": "Kitchen",
+      "pixel_ring": [
+        [
+          1068,
+          702
+        ],
+        [
+          1175,
+          702
+        ],
+        [
+          1175,
+          920
+        ],
+        [
+          1068,
+          920
+        ]
+      ],
+      "usage_evidence": "literal plan label"
+    },
+    {
+      "id": "kitchen_lobby",
+      "label": "Kitchen lobby",
+      "pixel_ring": [
+        [
+          1092,
+          933
+        ],
+        [
+          1175,
+          933
+        ],
+        [
+          1175,
+          984
+        ],
+        [
+          1092,
+          984
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "rear_annex",
+      "label": "Unlabelled rear annex",
+      "pixel_ring": [
+        [
+          1210,
+          431
+        ],
+        [
+          1293,
+          431
+        ],
+        [
+          1293,
+          613
+        ],
+        [
+          1210,
+          613
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "rear_wc_a",
+      "label": "Rear service room A",
+      "pixel_ring": [
+        [
+          1198,
+          722
+        ],
+        [
+          1226,
+          722
+        ],
+        [
+          1226,
+          752
+        ],
+        [
+          1198,
+          752
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "rear_wc_b",
+      "label": "Rear service room B",
+      "pixel_ring": [
+        [
+          1238,
+          722
+        ],
+        [
+          1275,
+          722
+        ],
+        [
+          1275,
+          752
+        ],
+        [
+          1238,
+          752
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    },
+    {
+      "id": "rear_lower",
+      "label": "Rear service / stair rooms",
+      "pixel_ring": [
+        [
+          1227,
+          869
+        ],
+        [
+          1275,
+          869
+        ],
+        [
+          1275,
+          984
+        ],
+        [
+          1227,
+          984
+        ]
+      ],
+      "usage_evidence": "display name; source room use not established"
+    }
+  ],
+  "limitations": [
+    "Manual raster sampling approximates wall centre-lines and room extents; it is not an accepted vector trace or measured construction thickness.",
+    "New range wall heights, partition heights, opening sills/heads, roof pitches and all roof intersections are display hypotheses.",
+    "Existing north-range source geometry and all 679 V7 native cells are retained unchanged. Its rear wall and joining-plane caps remain provisional.",
+    "Ground floor layout only: upper floors, tower heights/details, internal stair geometry, fine service cubicles and furnishings are not reconstructed.",
+    "Annex footprints are included; roof forms, doorway correspondence and rear connection details remain unverified.",
+    "Source dates and coordinate systems are not registered to the live park world. This is a local 1:1 study with no glass.",
+    "Component solids are individually closed; overlapping components are not a boolean-unioned manifold."
+  ],
+  "plan_render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c"
+}

@@ -20,10 +20,10 @@ def panel(model,azimuth,cutaway=False):
     light=np.array([.25,-.5,1.]);light/=np.linalg.norm(light)
     palette={'courtyard_wall':'859caf','roof_shell':'775338','floor':'b5b8ba'}
     for c in model['components']:
-        if cutaway and c['id']=='roof_shell':continue
+        if cutaway and (c['id']=='roof_shell' or c.get('role')=='roof'):continue
         vertices=np.array(c['mesh']['vertices']);rel=vertices-centre
         screen=np.column_stack(((rel@right-low[0])*scale+10,(high[1]-rel@up)*scale+10,rel@view))
-        hex_colour='67947b' if c['id'].startswith('interior_partition_') else palette.get(c['id'],'c99a5c')
+        hex_colour=c.get('colour','67947b' if c['id'].startswith('interior_partition_') else palette.get(c['id'],'c99a5c'))
         colour=np.array([int(hex_colour[i:i+2],16) for i in (0,2,4)])
         for f in c['mesh']['triangles']:
             tri=screen[f];x0=max(0,int(np.floor(tri[:,0].min())));x1=min(width-1,int(np.ceil(tri[:,0].max())))

@@ -1,0 +1,47 @@
+{
+  "status": "full_courtyard_ground_floor_layout_preview",
+  "source_trace_class": "manual raster-sampled plan layout; approximate pixel centre-lines, not accepted native vector geometry",
+  "source_plan_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+  "surveyed_complete_structure": false,
+  "room_areas": 28,
+  "ranges": 4,
+  "annexes": 2,
+  "retained_north_cells": 679,
+  "retained_north_cells_unchanged": true,
+  "native_surface_cells": 5045,
+  "passages_standing_air_verified": true,
+  "doorways_with_retained_obstruction": [
+    "south_lobby_courtyard"
+  ],
+  "glazing_cells": 0,
+  "component_solids_watertight": true,
+  "assembly_boolean_union": false,
+  "world": {
+    "sha256": "945602459f6d12235a2afd6aafdc9420271640d8484df482a613a07c2c0e1ae5",
+    "composed_blocks": 21751,
+    "chunks": 20,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified"
+  },
+  "glb": {
+    "glb_component_meshes": 153,
+    "header_and_buffer_lengths_verified": true,
+    "all_accessor_bounds_verified": true,
+    "all_triangle_normals_outward_verified": true,
+    "units": "metres",
+    "axes": "Y-up"
+  },
+  "regression": {
+    "expected_tests": 1074,
+    "tests_run": 1074,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "final_focused_tests": {
+    "tests_run": 10,
+    "failures": 0,
+    "errors": 0
+  },
+  "park_world_blocks_added": 0,
+  "world_placement_eligible": false
+}
