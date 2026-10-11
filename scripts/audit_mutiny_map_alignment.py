@@ -14,10 +14,12 @@ from voxel_mapper.linework_envelopes import combine
 from voxel_mapper.drawing_sheet_links import link
 from voxel_mapper.mapped_sheet_placement import propose
 from voxel_mapper.mapped_alignment_checks import check,printed_scale_review
+from voxel_mapper.landmark_context import page_context
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--input-root',type=Path,required=True)
 parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--envelopes',action='store_true')
+parser.add_argument('--landmark-context',action='store_true')
 args=parser.parse_args()
 root=args.input_root.resolve()
 mapfile=root/'mutiny-bay-sources/current-courtyard-osm.json'
@@ -47,17 +49,24 @@ for digest,title in [('cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b
   if key in seen:continue
   seen.add(key);retained.append(c);objects.append({'candidate_id':c['id'],'geometry':geometry})
  scale_review=printed_scale_review(pdf,1)
+ context=None
+ if args.landmark_context:
+  with pymupdf.open(pdf) as doc:
+   retained,context=page_context(doc[0],digest,1,parents,retained,scale_review)
+  objects=[{'candidate_id':c['id'],'geometry':shape(c['geometry'])} for c in retained]
  scales=scale_review['denominators']
  print(title,len(objects),'objects',len(refs),'refs',scales,flush=True)
  proposal=propose(objects,refs,max_seed_fits=512)
  sheet_records.append((retained,scale_review))
  review=check(objects,refs,proposal['hypotheses'],expected_scale=scale_review['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
  report['pages'].append({'document_sha256':digest,'page':1,'title':title,'printed_scale_review':scale_review,'printed_scale_denominators':scales,'candidate_count':len(objects),'candidate_ids_sha256':hashlib.sha256(json.dumps(sorted(o['candidate_id'] for o in objects)).encode()).hexdigest(),'extraction':extraction,'recovery':recovery,'proposal':proposal,'alignment_checks':review})
+ if context:report['pages'][-1]['landmark_context']=context
  if sha(pdf)!=digest:raise ValueError('Source changed during audit')
  print(proposal['status'],len(proposal['hypotheses']),review['status'],flush=True)
 if args.envelopes:
  report['cross_sheet_link']=link(sheet_records[0][0],sheet_records[1][0],sheet_records[0][1],sheet_records[1][1])
  report['envelopes_enabled']=True
+report['landmark_context_enabled']=args.landmark_context
 if sha(mapfile)!=report['reference_sha256'] or sha(grid)!=report['grid_sha256']:raise ValueError('Reference inputs changed during audit')
 args.output.parent.mkdir(parents=True,exist_ok=True)
 args.output.write_text(json.dumps(report,indent=2)+'\n')

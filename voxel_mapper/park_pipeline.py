@@ -68,6 +68,12 @@ def run(job_path,stage='all'):
                 selected=json.loads(path(linework['sheets']).read_text()) if linework.get('sheets') else None
                 checkpoint('linework_boundaries',recover_boundaries(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'linework-boundaries',sheets=selected,recovery_options=linework.get('options'),max_records=linework.get('max_records',2500000),envelopes=linework.get('envelopes',False)))
                 drawing_candidates=root/'linework-boundaries/boundary-candidates.jsonl';polygon_candidates=root/'linework-boundaries/polygon-candidates.jsonl'
+            context=job.get('landmark_context',{})
+            if context.get('enabled',False):
+                from .landmark_context import run as select_landmarks
+                if not geometry.get('enabled',False):raise ValueError('Landmark context requires drawing geometry')
+                checkpoint('landmark_context',select_landmarks(corpus,root/'drawing-geometry/geometry-candidates.jsonl',polygon_candidates,root/'landmark-context',context_options=context.get('options')))
+                drawing_candidates=root/'landmark-context/landmark-candidates.jsonl'
             placement=job.get('mapped_placement',{})
             if placement.get('enabled',False):
                 from .mapped_sheet_placement import run as place_mapped
