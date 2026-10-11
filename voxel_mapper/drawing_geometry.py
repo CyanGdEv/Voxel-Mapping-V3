@@ -78,10 +78,13 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS):raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
+    minimum=options.get('min_line_length_points',12)
+    if type(minimum) not in (int,float) or not math.isfinite(minimum) or not .25<=minimum<=12:
+        raise ValueError('Minimum native line length must be .25..12 PDF points')
     for key,upper in [('max_paths',200000),('max_candidates',10000),('max_points',20000),('max_total_points',1000000)]:
         if type(options[key])!=int or not 1<=options[key]<=upper:raise ValueError('Invalid extraction budget '+key)
     return options
@@ -137,7 +140,7 @@ def extract_page(page,sha,page_number,**overrides):
                 if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
                 if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
                 if geometry.geom_type=='LineString':
-                    if geometry.length<12:raise ValueError('Short line/symbol candidate')
+                    if geometry.length<options.get('min_line_length_points',12):raise ValueError('Short line/symbol candidate')
                     if not geometry.is_simple:raise ValueError('Self-crossing line needs review')
                 elif geometry.area<16 or geometry.area>frame.area*.7:raise ValueError('Small symbol or sheet enclosure candidate')
                 if mask_index is not None and any(masks[int(i)].covers(geometry) for i in mask_index.query(geometry)):raise ValueError('Text glyph/annotation mask')
@@ -171,7 +174,6 @@ def extract_page(page,sha,page_number,**overrides):
 def run(corpus,output,*,max_pages=10000,**overrides):
     import pymupdf
     if type(max_pages)!=int or not 1<=max_pages<=100000:raise ValueError('Positive bounded page budget required')
-    if set(overrides)-set(DEFAULTS):raise ValueError('Unknown geometry extraction option')
     options=validated_options(overrides);identity=contract(options);output=Path(output);output.mkdir(parents=True,exist_ok=True)
     corpus.db.execute('CREATE TABLE IF NOT EXISTS geometry_pages(sha TEXT,page INTEGER,version TEXT,contract TEXT,result TEXT,PRIMARY KEY(sha,page,version,contract))')
     valid=set();processed=resumed=0;errors=[]
@@ -209,8 +211,8 @@ def run(corpus,output,*,max_pages=10000,**overrides):
 
 def main():
     from .planning_bulk import Corpus
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--output',required=True);p.add_argument('--max-pages',type=int,default=10000);p.add_argument('--curve-tolerance',type=float,default=.25);a=p.parse_args();corpus=Corpus(a.corpus)
-    try:print(json.dumps(run(corpus,a.output,max_pages=a.max_pages,curve_tolerance_points=a.curve_tolerance),indent=2))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--output',required=True);p.add_argument('--max-pages',type=int,default=10000);p.add_argument('--curve-tolerance',type=float,default=.25);p.add_argument('--min-line-length-points',type=float);a=p.parse_args();corpus=Corpus(a.corpus)
+    try:print(json.dumps(run(corpus,a.output,max_pages=a.max_pages,curve_tolerance_points=a.curve_tolerance,**({'min_line_length_points':a.min_line_length_points} if a.min_line_length_points is not None else {})),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()

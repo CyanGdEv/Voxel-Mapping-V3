@@ -7,14 +7,15 @@ import os
 from pathlib import Path
 import re
 import pymupdf
-from shapely.geometry import Polygon, shape
+from shapely.geometry import Point, Polygon, shape
 from shapely.strtree import STRtree
+from shapely import get_coordinates
 from .drawing_geometry import native_inverse
 from .drawing_components import split_page
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_span
 
-VERSION = 'landmark-context-v1'
+VERSION = 'landmark-context-v2'
 ROOM = re.compile(r'^(?:toilets?|w\.?c\.?|office|kitchen|store(?:room)?|plant room|rooflights?)$',re.I)
 VIEW = re.compile(r'^(?:existing\s+)?(?:(ground|first|second)\s+floor\s+plan|roof\s+plan)$',re.I)
 DEFAULTS = {'min_area_m2':4.,'min_continuation_m':3.,'continuation_ratio':2.}
@@ -95,14 +96,18 @@ def page_context(page,sha,page_number,parents,records,scale_review,*,context_opt
             outside=line.difference(polygon).length
             if outside*factor<opts['min_continuation_m'] or outside<=shared*opts['continuation_ratio']:continue
             a,b=list(line.coords);length=math.dist(a,b)
+            projections=[line.project(Point(p)) for p in get_coordinates(line.intersection(polygon))]
+            margins=[min(projections)*factor,(length-max(projections))*factor] if projections else [0,0]
             continuations.append({'source_component_id':lines[i]['id'],'shared_boundary_m':shared*factor,
                 'outside_candidate_m':outside*factor,'direction':[(b[0]-a[0])/length,(b[1]-a[1])/length],
-                'line_origin_pdf':list(a)})
+                'line_origin_pdf':list(a),'extensions_beyond_candidate_m':margins})
         parallel=any(abs(sum(x*y for x,y in zip(a['direction'],b['direction'])))>.995
             and abs(a['direction'][0]*(b['line_origin_pdf'][1]-a['line_origin_pdf'][1])
                 -a['direction'][1]*(b['line_origin_pdf'][0]-a['line_origin_pdf'][0]))>1e-7
             for i,a in enumerate(continuations) for b in continuations[:i])
         if parallel:reasons.append('parallel_through_line_boundary_candidate')
+        if any(min(c['extensions_beyond_candidate_m'])>=opts['min_continuation_m']/2 for c in continuations):
+            reasons.append('bidirectional_through_line_boundary_candidate')
         status='withheld_landmark_context' if reasons else 'eligible_landmark_candidate'
         decisions.append({'candidate_id':identifier,'document_sha256':sha,'page':page_number,
             'status':status,'reasons':reasons,'area_m2':area,'room_or_detail_labels':room_hints.get(identifier,[]),

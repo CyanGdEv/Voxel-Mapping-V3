@@ -20,7 +20,9 @@ The stage requires a unique visible printed scale pinned to the exact PDF and pa
 
 Outputs are `landmark-candidates.jsonl`, `landmark-context.jsonl` and `landmark-report.json` in the stage directory. These remain diagnostic candidates. Physical boundary identity and geographic registration are still required before reconstruction.
 
-## Real Mutiny Bay replay
+Version 2 also screens a single contributing line that continues beyond both sides of its intersection with the candidate, with at least half `min_continuation_m` on each side. Shared-length and outside-ratio requirements still apply. This addresses survey-bounded fragments that can pass a two-parallel-edge test. Source-bound checkpoints reject the older context version. See [short-native-boundary-edges.md](short-native-boundary-edges.md) for the current detailed-source replay.
+
+## Historical version 1 Mutiny Bay replay
 
 Run `scripts/audit_mutiny_map_alignment.py` with `--envelopes --landmark-context` and the retained input root. `evidence/mutiny-landmark-context-audit.json` records the two pinned PDFs, glyph screens, candidate decisions, retained OSTN15 grid and mapped references.
 

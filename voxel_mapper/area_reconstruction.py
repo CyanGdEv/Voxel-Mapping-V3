@@ -58,6 +58,9 @@ def compiled_coverage(geometry, plan_hashes):
 
 def run(config_path, stage='extract', max_cycles=1, area_id=None):
     config_path=Path(config_path).resolve();raw=config_path.read_bytes();config=json.loads(raw)
+    from .drawing_geometry import validated_options
+    geometry_options=config.get('drawing_geometry_options',{})
+    validated_options(geometry_options)
     resolve=lambda value:(config_path.parent/value).resolve()
     initial_base=config.get('initial_base_world');initial_sha=config.get('initial_base_sha256')
     if initial_base or initial_sha:
@@ -118,7 +121,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         acquisition=corpus.acquire(offline=config.get('offline',True),workers=4,limit=10000,interval=0)
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
-        extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000))
+        extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
         from .planning_components import run as identify
         mentions=identify(corpus,work/'drawing-geometry',work/'components')
         available={sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")}

@@ -41,6 +41,13 @@ class LandmarkContextTests(unittest.TestCase):
         self.assertEqual(kept,records);self.assertEqual(report['decisions'][0]['continuation_count'],0)
         with self.assertRaisesRegex(ValueError,'Unique'):self.context(parents,records+records)
 
+    def test_single_survey_edge_crossing_both_sides_cannot_anchor_outline(self):
+        parents=fixtures.LineworkTests().parents([[(-200,20),(300,20)],[(20,20),(20,60)],[(20,60),(100,60)],[(100,60),(100,20)]])
+        kept,report=self.context(parents)
+        self.assertEqual(kept,[])
+        self.assertEqual(report['reason_counts']['bidirectional_through_line_boundary_candidate'],1)
+        self.assertNotIn('parallel_through_line_boundary_candidate',report['reason_counts'])
+
     def test_area_policy_is_not_object_identity_and_scale_is_pinned(self):
         parents=fixtures.LineworkTests().parents([list(box(20,20,30,30).exterior.coords)])
         kept,report=self.context(parents);self.assertEqual(kept,[])

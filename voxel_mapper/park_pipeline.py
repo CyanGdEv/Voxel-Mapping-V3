@@ -53,7 +53,10 @@ def run(job_path,stage='all'):
             geometry=job.get('drawing_geometry',{})
             if geometry.get('enabled',False):
                 from .drawing_geometry import run as extract_geometry
-                checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),curve_tolerance_points=geometry.get('curve_tolerance_points',.25)))
+                geometry_options=dict(geometry.get('options',{}))
+                for key in ('curve_tolerance_points','min_line_length_points'):
+                    if key in geometry:geometry_options[key]=geometry[key]
+                checkpoint('drawing_geometry',extract_geometry(corpus,root/'drawing-geometry',max_pages=geometry.get('max_pages',10000),**geometry_options))
             components=job.get('drawing_components',{})
             if components.get('enabled',False):
                 from .drawing_components import run as split_components

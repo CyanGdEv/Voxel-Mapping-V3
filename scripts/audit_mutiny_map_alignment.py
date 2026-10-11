@@ -20,6 +20,8 @@ parser.add_argument('--input-root',type=Path,required=True)
 parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--envelopes',action='store_true')
 parser.add_argument('--landmark-context',action='store_true')
+parser.add_argument('--min-line-length-points',type=float)
+parser.add_argument('--max-candidates',type=int,default=4000)
 args=parser.parse_args()
 root=args.input_root.resolve()
 mapfile=root/'mutiny-bay-sources/current-courtyard-osm.json'
@@ -36,7 +38,8 @@ for digest,title in [('cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b
  pdf=root/'alton-associated-area-cycle-test/mutiny-bay/corpus/files'/f'{digest}.pdf'
  if sha(pdf)!=digest:raise ValueError('Source PDF hash mismatch')
  with pymupdf.open(pdf) as doc:
-  parents,extraction=extract_page(doc[0],digest,1);recovered,recovery=recover_page(parents)
+  extraction_options={'max_candidates':args.max_candidates,**({'min_line_length_points':args.min_line_length_points} if args.min_line_length_points is not None else {})}
+  parents,extraction=extract_page(doc[0],digest,1,**extraction_options);recovered,recovery=recover_page(parents)
  if args.envelopes:
   envelopes,envelope_review=combine(recovered)
   recovered+=envelopes
@@ -67,6 +70,8 @@ if args.envelopes:
  report['cross_sheet_link']=link(sheet_records[0][0],sheet_records[1][0],sheet_records[0][1],sheet_records[1][1])
  report['envelopes_enabled']=True
 report['landmark_context_enabled']=args.landmark_context
+report['min_line_length_points']=args.min_line_length_points if args.min_line_length_points is not None else 12
+report['max_candidates']=args.max_candidates
 if sha(mapfile)!=report['reference_sha256'] or sha(grid)!=report['grid_sha256']:raise ValueError('Reference inputs changed during audit')
 args.output.parent.mkdir(parents=True,exist_ok=True)
 args.output.write_text(json.dumps(report,indent=2)+'\n')
