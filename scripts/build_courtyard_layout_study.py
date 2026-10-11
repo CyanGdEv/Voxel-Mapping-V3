@@ -17,6 +17,7 @@ def main():
     p.add_argument('--sources',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--roof-style',choices=('slabs','stairs'),default='slabs')
+    p.add_argument('--facade-sources',type=Path,help='Folder containing checksum-named existing courtyard elevations')
     p.add_argument('--seed',type=Path,default=Path(__file__).resolve().parents[1]/'evidence/mutiny-full-courtyard-layout-seed.json')
     a=p.parse_args()
     if a.output.exists():p.error('Use a fresh output directory')
@@ -33,9 +34,21 @@ def main():
     north,cells,audit=apply(north,cells,audit,partition_review,partition_seed)
     model,cells,audit=build(north,cells,seed)
     tag='V8'
+    if a.facade_sources:
+        from voxel_mapper.courtyard_facade_study import apply as apply_facade,validate_source as validate_elevation
+        facade_seed=json.loads((evidence/'mutiny-west-facade-access-seed.json').read_text())
+        validate_elevation(facade_seed,a.facade_sources/(facade_seed['source_pdf_sha256']+'.pdf'))
+        model,cells,facade_audit=apply_facade(model,cells,facade_seed)
+        audit['facade_access_review']=facade_audit
+        for row in audit['passages_and_doors']:
+            if row['id']=='south_lobby_courtyard':row['standing_air_verified']=True
+        audit['doorways_with_retained_obstruction']=[r['id'] for r in audit['passages_and_doors'] if not r['standing_air_verified']]
+        audit['north_cells_unchanged']=False
+        model['slab_conversion_passages']=model.get('slab_conversion_passages',[])+[{'native_columns':[(0,1)]}]
+        tag='V10'
     if a.roof_style=='slabs':
         from voxel_mapper.slab_roof_study import convert
-        model['slab_conversion_passages']=[r for r in audit['passages_and_doors'] if r['kind']=='passage']
+        model['slab_conversion_passages']=model.get('slab_conversion_passages',[])+[r for r in audit['passages_and_doors'] if r['kind']=='passage']
         model,cells,roof_audit=convert(model,cells)
         audit['slab_roof_conversion']=roof_audit
         audit['pre_slab_surface_cells']=audit['surface_cells']
@@ -43,9 +56,9 @@ def main():
         audit['pre_slab_native_roof_join_rule']=audit['native_roof_join_rule']
         audit['native_roof_join_rule']='highest source surface sampled into slab courses; masonry collision and edge sealing adjustments retain non-roof cells'
         audit['north_cells_unchanged']=False
-        audit['north_non_roof_cells_unchanged']=True
+        audit['north_non_roof_cells_unchanged']=not bool(a.facade_sources)
         audit['surface_cells']=len(cells)
-        tag='V9'
+        tag='V10' if a.facade_sources else 'V9'
     (a.output/'courtyard-model.json').write_text(json.dumps(model,sort_keys=True,indent=2)+'\n')
     (a.output/'courtyard-audit.json').write_text(json.dumps(audit,sort_keys=True,indent=2)+'\n')
     (a.output/'layout-seed.json').write_text(a.seed.read_text())
@@ -68,7 +81,7 @@ def main():
     report={'voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':None,'vertical_datum':'STUDY_ZERO',
             'geographic_registration':None,'world_placement_eligible':False,'park_world_blocks_added':0,
             'spawn_local_xyz_m':[cx,0,cz],'courtyard_audit':audit,'limitations':model['assumptions']}
-    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — '+('SLAB ROOFS V9' if tag=='V9' else 'GROUND FLOOR LAYOUT V8'),ground_depth=4)
+    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — '+('WEST FACADE AND ACCESS V10' if tag=='V10' else 'SLAB ROOFS V9' if tag=='V9' else 'GROUND FLOOR LAYOUT V8'),ground_depth=4)
     (world/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'status':model['status'],'rooms':len(model['rooms']),'audit':audit,'world':report['world']},indent=2))
 

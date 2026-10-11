@@ -22,7 +22,7 @@
   "trace_class": "manual raster-sampled plan layout; approximate pixel centre-lines, not accepted native vector geometry",
   "footprints": [
     {
-      "id": "west_range",
+      "id": "south_range",
       "pixel_ring": [
         [
           222,
@@ -46,7 +46,7 @@
       "roof_ridge_m": 7.01
     },
     {
-      "id": "south_range",
+      "id": "west_range",
       "pixel_ring": [
         [
           248,
@@ -1796,8 +1796,8 @@
   ],
   "rooms": [
     {
-      "id": "south_a",
-      "label": "Unlabelled south room A",
+      "id": "west_a",
+      "label": "Unlabelled west room A",
       "pixel_ring": [
         [
           260,
@@ -1819,8 +1819,8 @@
       "usage_evidence": "display name; source room use not established"
     },
     {
-      "id": "south_b",
-      "label": "Unlabelled south room B",
+      "id": "west_b",
+      "label": "Unlabelled west room B",
       "pixel_ring": [
         [
           382,
@@ -1888,8 +1888,8 @@
       "usage_evidence": "literal plan label"
     },
     {
-      "id": "south_lobby",
-      "label": "South lobby",
+      "id": "west_lobby",
+      "label": "West lobby",
       "pixel_ring": [
         [
           960,
@@ -2003,8 +2003,8 @@
       "usage_evidence": "display name; source room use not established"
     },
     {
-      "id": "west_service",
-      "label": "West service corridor",
+      "id": "south_service",
+      "label": "South service corridor",
       "pixel_ring": [
         [
           241,
@@ -2049,8 +2049,8 @@
       "usage_evidence": "literal plan label"
     },
     {
-      "id": "west_lobby",
-      "label": "West lobby",
+      "id": "south_lobby",
+      "label": "South lobby",
       "pixel_ring": [
         [
           337,
@@ -2449,5 +2449,6 @@
     "Source dates and coordinate systems are not registered to the live park world. This is a local 1:1 study with no glass.",
     "Component solids are individually closed; overlapping components are not a boolean-unioned manifold."
   ],
-  "plan_render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c"
+  "plan_render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c",
+  "range_label_review": "CTD AL07 identifies left plan range containing archway 1 as South; AL08 identifies upper plan range containing archway 2 as West. Geometry unchanged."
 }

@@ -13,10 +13,10 @@ def main():
     panels=[im.resize((width,round(im.height*width/im.width)),Image.Resampling.LANCZOS) for im in panels]
     image=Image.new('RGB',(1900,sum(p.height for p in panels)+420),'white');d=ImageDraw.Draw(image)
     font='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf';title=ImageFont.truetype(font,34);small=ImageFont.truetype(font,24);y=30
-    for p,label in zip(panels,['Mutiny Bay | '+('slab roofs V9' if model.get('native_roof_style')=='slabs' else 'full courtyard layout V8'),'Roof hidden | rooms, service spaces and courtyard passages']):
+    for p,label in zip(panels,['Mutiny Bay | '+('west facade and access V10' if model.get('facade_study') else 'slab roofs V9' if model.get('native_roof_style')=='slabs' else 'full courtyard layout V8'),'Roof hidden | rooms, service spaces and courtyard passages']):
         d.text((50,y),label,font=title,fill='#172534');y+=70;image.paste(p,(50,y));y+=p.height+35
-    for line in ['Four ranges, two rear annexes and 28 room areas. Walls and room layout retained.',
-                 'Green: room partitions. Amber: sampled plan walls. Blue: reviewed north courtyard wall.',
+    for line in ['Four ranges, two rear annexes and 28 room areas. '+('West facade and lobby access updated.' if model.get('facade_study') else 'Walls and room layout retained.'),
+                 'Green: room partitions. Amber: sampled plan walls. Blue: reviewed courtyard elevation walls.',
                  'Ground-floor layout study: new heights, roofs and joins are provisional. No glass.',
                  'Upper floors, stairs, tower details and complete elevation openings remain to be reconstructed.']:
         d.text((50,y),line,font=small,fill='#485565');y+=38

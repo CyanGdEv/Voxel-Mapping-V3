@@ -1,0 +1,38 @@
+{
+  "views": [
+    {
+      "range": "south_range",
+      "source_pdf_sha256": "cd5ddf8a912dc07ba2059d6af28b7b047c9146135f7a3f9ca984c4a03ed1506b",
+      "view_caption": "South Range Courtyard (north) Elevation 'as existing'",
+      "sheet": "AL07",
+      "state": "existing",
+      "view_scale_denominator": 50,
+      "source_render_samples_sha256": "493bfb8c095dd20ab5ff22669a5ba45c9277b04fc0c9a7da3b8375123d5eda4a",
+      "status": "withheld_pending_stepped_wall_and_tower_profile",
+      "review_note": "Left plan range, archway 1. Wall tops vary markedly; a uniform-height fa\u00e7ade would lose original structure."
+    },
+    {
+      "range": "west_range",
+      "source_pdf_sha256": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+      "view_caption": "West Range Courtyard (East) Elevation 'as existing'",
+      "sheet": "AL08",
+      "state": "existing",
+      "view_scale_denominator": 50,
+      "source_render_samples_sha256": "4768ba3ea8bd1a1f3c6e6234570851949ce2f6a0db66651f0a5077e19e9257eb",
+      "status": "ground_and_three_upper_windows_traced",
+      "review_note": "Upper plan range, archway 2. View caption 1:50 overrides the unrelated sheet-title 1:100 for this view; two dormers remain withheld."
+    },
+    {
+      "range": "east_range",
+      "source_pdf_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+      "view_caption": "East Range Courtyard (west) Elevation 'as existing'",
+      "sheet": "AL06",
+      "state": "existing",
+      "view_scale_denominator": 50,
+      "source_render_samples_sha256": "ea0d87e36f679cc3528a84f34a055d1a02631a41b195d1a1bd9be5359967d449",
+      "status": "withheld_pending_floor_slope_and_tower_correspondence",
+      "review_note": "Lower plan range, archway 4. Baseline slopes; tower junction and boarded/shuttered openings need explicit review."
+    }
+  ],
+  "geographic_registration_verified": false
+}

@@ -1,0 +1,412 @@
+{
+  "version": "courtyard-west-facade-study-v1",
+  "review_hypotheses_acknowledged": true,
+  "source_pdf_sha256": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+  "source_render_samples_sha256": "4768ba3ea8bd1a1f3c6e6234570851949ce2f6a0db66651f0a5077e19e9257eb",
+  "caption": "West Range Courtyard (East) Elevation 'as existing'",
+  "view_scale_denominator": 50,
+  "sheet_title_scale_denominator": 100,
+  "raster_width": 1800,
+  "page_width_points": 2384,
+  "floor_pixel_y": 733,
+  "eave_pixel_y": 564,
+  "right_anchor_pixel_x": 1680,
+  "right_anchor_local_depth_m": 0,
+  "facade_local_x_m": 0,
+  "wall_display_thickness_m": 0.4,
+  "source_scope_pixel_x": [
+    392,
+    1680
+  ],
+  "registration_class": "Manual single shared-junction anchor; uniform printed view scale, no stretching. Physical correspondence remains a hypothesis.",
+  "openings": [
+    {
+      "id": "w2.01",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          416,
+          701
+        ],
+        [
+          416,
+          637
+        ],
+        [
+          473,
+          637
+        ],
+        [
+          473,
+          701
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.02",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          539,
+          701
+        ],
+        [
+          539,
+          638
+        ],
+        [
+          590,
+          638
+        ],
+        [
+          590,
+          701
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.03",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          646,
+          701
+        ],
+        [
+          646,
+          638
+        ],
+        [
+          772,
+          638
+        ],
+        [
+          772,
+          701
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.04",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1131,
+          694
+        ],
+        [
+          1131,
+          638
+        ],
+        [
+          1229,
+          638
+        ],
+        [
+          1229,
+          694
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.05",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1559,
+          697
+        ],
+        [
+          1559,
+          637
+        ],
+        [
+          1608,
+          637
+        ],
+        [
+          1608,
+          697
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.10",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          571,
+          590
+        ],
+        [
+          571,
+          568
+        ],
+        [
+          623,
+          568
+        ],
+        [
+          623,
+          590
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.11",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          793,
+          590
+        ],
+        [
+          793,
+          568
+        ],
+        [
+          834,
+          568
+        ],
+        [
+          834,
+          590
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "w2.14",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1502,
+          590
+        ],
+        [
+          1502,
+          566
+        ],
+        [
+          1554,
+          566
+        ],
+        [
+          1554,
+          590
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "d2.01",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          832,
+          733
+        ],
+        [
+          832,
+          641
+        ],
+        [
+          888,
+          641
+        ],
+        [
+          888,
+          733
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "d2.02",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1261,
+          733
+        ],
+        [
+          1261,
+          641
+        ],
+        [
+          1298,
+          641
+        ],
+        [
+          1298,
+          733
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "d2.03",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1388,
+          733
+        ],
+        [
+          1388,
+          641
+        ],
+        [
+          1424,
+          641
+        ],
+        [
+          1424,
+          733
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "d2.04",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1481,
+          733
+        ],
+        [
+          1481,
+          638
+        ],
+        [
+          1528,
+          638
+        ],
+        [
+          1528,
+          733
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "d2.05",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          1639,
+          733
+        ],
+        [
+          1639,
+          641
+        ],
+        [
+          1675,
+          641
+        ],
+        [
+          1675,
+          733
+        ]
+      ],
+      "evidence_class": "explicit raster silhouette review; frame/masonry distinction approximate"
+    },
+    {
+      "id": "archway_2",
+      "kind": "archway",
+      "pixel_ring": [
+        [
+          937,
+          733
+        ],
+        [
+          937,
+          607
+        ],
+        [
+          942,
+          596
+        ],
+        [
+          952,
+          585
+        ],
+        [
+          973,
+          578
+        ],
+        [
+          995,
+          575
+        ],
+        [
+          1017,
+          574
+        ],
+        [
+          1040,
+          576
+        ],
+        [
+          1063,
+          581
+        ],
+        [
+          1083,
+          589
+        ],
+        [
+          1097,
+          606
+        ],
+        [
+          1097,
+          733
+        ]
+      ],
+      "evidence_class": "manual inner arch silhouette; sampled curve, not original vector cycle"
+    }
+  ],
+  "withheld": [
+    {
+      "id": "w2.12",
+      "reason": "Dormer projects above eaves; roof opening and dormer assembly not yet traced."
+    },
+    {
+      "id": "w2.13",
+      "reason": "Dormer projects above eaves; roof opening and dormer assembly not yet traced."
+    }
+  ],
+  "lobby_access": {
+    "id": "south_lobby_courtyard",
+    "closure_component_id": "left_junction_cap",
+    "native_cells_to_clear": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "source_plan_pixel_rectangle": [
+      1060,
+      274,
+      1100,
+      315
+    ],
+    "clear_height_m": 2.2,
+    "evidence": "Existing manual source-plan doorway trace crosses the temporary north joining-plane cap. This removes only the provisional closure, not reviewed courtyard masonry."
+  }
+}

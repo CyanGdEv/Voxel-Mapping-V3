@@ -13,6 +13,24 @@ V8 claim that north roof cells remain unchanged. The walls and room layout remai
 the same; no wooden roof stairs are exported. Use `--roof-style stairs` to reproduce
 the V8 roof style.
 
+V10 (`--facade-sources /path/to/pdfs`) opens the blocked lobby connection by
+cutting only its temporary north joining-plane cap. The corresponding exact
+solid and two standing native cells are updated together. The west courtyard
+façade now uses fourteen manually reviewed AL08 opening silhouettes: five lower
+windows, five doors, three upper windows and archway 2. Two dormer windows remain
+withheld because they require new roof openings and dormer assemblies.
+
+AL08's individual view caption is 1:50, although its title block says 1:100.
+The generator pins the per-view scale and full source render. Its shared north
+junction anchor is an explicit correspondence hypothesis; it does not certify
+survey registration. Source elevation keys also correct the provisional range
+names: the left plan strip containing archway 1 is south; the upper strip
+containing archway 2 is west. The plan footprint is unchanged.
+
+The remaining south façade requires a stepped wall/tower profile; the east
+façade requires review of the sloping floor datum and tower/boarded-opening
+correspondence. Their existing source views are pinned in the V10 review package.
+
 The new layout is an explicit manual raster-sampled hypothesis. Wall centre-lines,
 room rectangles and plan doorway cuts are approximations, not accepted original
 PDF vector geometry. New heights, wall thicknesses, window sills/heads, symmetric
@@ -34,6 +52,9 @@ one folder, then run:
 python scripts/build_courtyard_layout_study.py --sources /path/to/pdfs --output /path/to/fresh-output
 python scripts/render_courtyard_layout_study.py --model /path/to/fresh-output/courtyard-model.json --output /path/to/fresh-output/Mutiny_Full_Courtyard_V8.png
 ```
+
+Add `--facade-sources` to the build command to include V10's west façade and
+lobby connection. The source folder must contain the AL08 PDF named by its SHA.
 
 The builder revalidates the source PDFs and reproduces the north wing before
 expanding it. It writes an OBJ in the source Z-up frame, a coloured GLB in standard
