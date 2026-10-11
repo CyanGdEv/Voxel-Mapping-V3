@@ -43,6 +43,29 @@ class ArchitecturalTests(unittest.TestCase):
         self.assertEqual(wall_bands(parents,.1)[0],[])
         with self.assertRaises(ValueError):options({'min_band_width_m':True})
 
+    def test_disjoint_opposite_fragments_preserve_gap_and_touching_spans(self):
+        parents=fixtures.LineworkTests().parents([[(0,20),(100,20)],[(0,23),(40,23)],[(60,23),(100,23)]])
+        before=copy.deepcopy(parents);bands,review=wall_bands(parents,.1)
+        self.assertEqual(len(bands),2);self.assertEqual(parents,before)
+        geometries=[shape(r['geometry']) for r in bands]
+        self.assertEqual(sorted(g.bounds for g in geometries),[(0.,20.,40.,23.),(60.,20.,100.,23.)])
+        self.assertTrue(all(g.intersection(box(40,20,60,23)).area==0 for g in geometries))
+        self.assertEqual(review['ambiguous_pairs_withheld'],0)
+        touching=fixtures.LineworkTests().parents([[(0,20),(100,20)],[(0,23),(50,23)],[(50,23),(100,23)]])
+        self.assertEqual(len(wall_bands(touching,.1)[0]),2)
+        self.assertEqual(wall_bands(list(reversed(parents)),.1)[0],bands)
+        # One overlapping alternative withholds both conflicting spans; a
+        # disjoint supported fragment remains available.
+        competing=fixtures.LineworkTests().parents([[(0,20),(100,20)],[(0,23),(40,23)],[(60,23),(100,23)],[(10,24),(30,24)]])
+        result,review=wall_bands(competing,.1)
+        self.assertEqual(len(result),1)
+        self.assertEqual(shape(result[0]['geometry']).bounds,(60.,20.,100.,23.))
+        self.assertGreater(review['ambiguous_pairs_withheld'],0)
+        dense=fixtures.LineworkTests().parents([[(20,20),(100,20)],[(20,23),(100,23)],[(20,26),(100,26)]])
+        limited,receipt=wall_bands(dense,.1,interpretation_options={'max_pair_comparisons':3})
+        self.assertEqual(limited,[])
+        self.assertEqual(receipt['status'],'span_pair_budget_withheld')
+
     def test_roof_label_requires_visible_unique_complete_enclosure(self):
         with pymupdf.open() as document:
             page=document.new_page(width=400,height=400);page.draw_rect((20,20,200,180));page.insert_text((60,80),'flat roof',fontsize=12)

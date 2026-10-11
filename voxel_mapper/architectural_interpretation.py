@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v13'
+VERSION='architectural-interpretation-v14'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -61,7 +61,8 @@ def wall_bands(parents,factor,*,interpretation_options=None):
         and not r.get('curve_approximation',{}).get('cubic_segments') and not r.get('paint_reference_truncated')
         and r.get('paint_references') and all(isinstance(p['stroke_style'].get('dashes_pdf'),str)
             and re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',p['stroke_style']['dashes_pdf']) for p in r['paint_references'])]
-    geometries=[shape(r['geometry']) for r in rows];index=STRtree(geometries);pairs=[];degree=Counter();cost=0;neighbors=0
+    rows.sort(key=lambda r:r['id'])
+    geometries=[shape(r['geometry']) for r in rows];index=STRtree(geometries);pairs=[];cost=0;neighbors=0
     for i,line in enumerate(geometries):
         a,b=line.coords;length=line.length;u=((b[0]-a[0])/length,(b[1]-a[1])/length)
         for j in index.query(line.buffer(opts['max_band_width_m']/factor)):
@@ -88,11 +89,28 @@ def wall_bands(parents,factor,*,interpretation_options=None):
             polygon=Polygon([(a[0]+lo*u[0],a[1]+lo*u[1]),(a[0]+hi*u[0],a[1]+hi*u[1]),on_second(hi),on_second(lo)])
             if not polygon.is_valid or polygon.is_empty:continue
             intervals={i:[lo/length,hi/length],j:sorted([(lo-projections[0])/(projections[1]-projections[0]),(hi-projections[0])/(projections[1]-projections[0])])}
-            pairs.append((i,j,polygon,widths,(hi-lo)*factor,intervals));degree[i]+=1;degree[j]+=1
+            pairs.append((i,j,polygon,widths,(hi-lo)*factor,intervals))
+    # A long source line may support separate opposite fragments. Only
+    # positive interior overlap on that same source interval is competition.
+    spans={};ambiguous=set();span_checks=0
+    for pair_index,pair in enumerate(pairs):
+        for component,interval in pair[5].items():
+            spans.setdefault(component,[]).append((*interval,pair_index))
+    for intervals in spans.values():
+        intervals.sort()
+        for offset,(lo,hi,pair_index) in enumerate(intervals):
+            for following in range(offset+1,len(intervals)):
+                other_lo,other_hi,other_index=intervals[following]
+                if other_lo>=hi:break
+                span_checks+=1
+                if cost+span_checks>opts['max_pair_comparisons']:
+                    return [],{'status':'span_pair_budget_withheld','comparisons':cost,
+                        'span_comparisons':span_checks,'partial_candidates_discarded':len(pairs)}
+                if min(hi,other_hi)>max(lo,other_lo):ambiguous.update((pair_index,other_index))
     result=[]
-    for i,j,polygon,widths,length_m,intervals in pairs:
-        # Rails, hatch families and alternative offsets remain ambiguous; no nearest pair wins.
-        if degree[i]!=1 or degree[j]!=1:continue
+    for pair_index,(i,j,polygon,widths,length_m,intervals) in enumerate(pairs):
+        # Rails, hatches and overlapping offsets remain withheld; no nearest pair wins.
+        if pair_index in ambiguous:continue
         refs=sorted([{'component_id':rows[k]['id'],'component_contract':rows[k]['extraction_contract'],
             'parent_references':rows[k]['parent_references'],
             'source_interval_fraction':[max(0.,min(1.,t)) for t in intervals[k]]} for k in (i,j)],key=lambda r:r['component_id'])
@@ -104,7 +122,8 @@ def wall_bands(parents,factor,*,interpretation_options=None):
             'wall_type':'interior_or_exterior_unresolved','physical_identity_verified':False,'world_geometry_additions':0})
     result.sort(key=lambda r:r['id'])
     return result,{'status':'paired_source_line_hints','comparisons':cost,'neighbor_checks':neighbors,'eligible_pairs':len(pairs),
-        'unique_pairs':len(result),'ambiguous_pairs_withheld':len(pairs)-len(result)}
+        'span_comparisons':span_checks,'unique_pairs':len(result),'ambiguous_pairs_withheld':len(ambiguous),
+        'ambiguity_basis':'positive_interior_overlap_on_original_source_interval'}
 
 
 def component_links(parents,bands,associations,labels,factor,*,max_checks=100000):

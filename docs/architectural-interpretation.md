@@ -272,3 +272,37 @@ INPUT_ROOT --output evidence/mutiny-wall-source-interval-audit.json`.
 The regression uses the real tilted-line coordinate pattern and checks that
 continuous support survives without source mutation; nonfinite, reversed or
 out-of-range intervals and changed band geometry reject.
+
+### Disjoint wall-fragment spans
+
+Architectural interpretation v14 screens wall-pair ambiguity on original
+source intervals. A long line may pair with several opposite fragments when
+their source intervals have no positive interior overlap. Touching interval
+endpoints do not constitute competition. Overlapping alternatives still
+withhold every conflicting pair; no nearest or longest pair is selected.
+Source components are sorted by identity before pairing so input order cannot
+change candidate identifiers. The existing pair budget also bounds interval comparisons, and exhaustion
+discards the whole partial candidate set. Neither wall sides nor missing
+opposite fragments are extended, joined or filled.
+
+The pinned existing Mutiny floor plan retains **69 rather than 67** unique
+paired bands from 155 eligible pairs; 86 overlapping alternatives remain
+withheld. The review records 87 span comparisons. Its **138 original source
+side segments** link to regions 99 times, compared with 134 sides/94 links
+before this change. One newly retained band separates a uniquely labelled
+**STOREROOM** from a uniquely labelled **COURTYARD**. Both glyph-screen proofs,
+complete containing faces and original side intervals are retained. This is
+the first room-to-outdoor wall-side evidence in this audit, not a verified
+exterior wall, accepted footprint or geographic control. Two further bands
+retain room-to-unlabelled evidence and 66 remain unresolved.
+
+The next reconstruction step can follow this source-backed candidate while
+keeping rooms, courtyard holes and missing spans explicit. This audit does
+not identify a doorway merely because an opposite fragment is missing, apply
+physical dimensions/height/material, or generate a world.
+Evidence: `evidence/mutiny-wall-fragment-span-audit.json`.
+Reproduce with `scripts/audit_mutiny_wall_regions.py --input-root INPUT_ROOT
+--output evidence/mutiny-wall-fragment-span-audit.json`.
+Tests cover disjoint fragments, touching spans, preservation of unsupported
+gaps, overlapping alternatives, deterministic source ordering and exhaustion
+of the interval-comparison budget.
