@@ -78,8 +78,10 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
+    if 'isolate_open_stroked_subpaths' in options and type(options['isolate_open_stroked_subpaths']) is not bool:
+        raise ValueError('Boolean isolated stroke-subpath option required')
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
     minimum=options.get('min_line_length_points',12)
@@ -131,19 +133,27 @@ def extract_page(page,sha,page_number,**overrides):
             elif path['type']=='s':
                 for index,p in enumerate(parts):
                     if closed[index]:
-                        if len(parts)>1:raise ValueError('Compound stroked closed rings require topology review')
+                        if len(parts)>1:
+                            if options.get('isolate_open_stroked_subpaths',False):
+                                rejections['compound_closed_stroke_deferred']+=1;continue
+                            raise ValueError('Compound stroked closed rings require topology review')
                         geometries.append((Polygon(p),index))
                     else:geometries.append((LineString(p),index))
             else:raise ValueError('Unsupported paint type')
             for geometry,subpath_index in geometries:
-                if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
-                if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
-                if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
-                if geometry.geom_type=='LineString':
-                    if geometry.length<options.get('min_line_length_points',12):raise ValueError('Short line/symbol candidate')
-                    if not geometry.is_simple:raise ValueError('Self-crossing line needs review')
-                elif geometry.area<16 or geometry.area>frame.area*.7:raise ValueError('Small symbol or sheet enclosure candidate')
-                if mask_index is not None and any(masks[int(i)].covers(geometry) for i in mask_index.query(geometry)):raise ValueError('Text glyph/annotation mask')
+                try:
+                    if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
+                    if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
+                    if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
+                    if geometry.geom_type=='LineString':
+                        if geometry.length<options.get('min_line_length_points',12):raise ValueError('Short line/symbol candidate')
+                        if not geometry.is_simple:raise ValueError('Self-crossing line needs review')
+                    elif geometry.area<16 or geometry.area>frame.area*.7:raise ValueError('Small symbol or sheet enclosure candidate')
+                    if mask_index is not None and any(masks[int(i)].covers(geometry) for i in mask_index.query(geometry)):raise ValueError('Text glyph/annotation mask')
+                except (ValueError,TypeError,KeyError,OverflowError) as exc:
+                    if path['type']=='s' and options.get('isolate_open_stroked_subpaths',False):
+                        rejections[str(exc)]+=1;continue
+                    raise
                 digest=hashlib.sha256((sha+'/'+str(page_number)+'/'+geometry.normalize().wkb_hex).encode()).hexdigest()
                 style={'width_pdf_points':path.get('width'),'dashes_pdf':str(path.get('dashes',''))[:1024]}
                 if style['width_pdf_points'] is not None and (not math.isfinite(style['width_pdf_points']) or style['width_pdf_points']<0):raise ValueError('Invalid native stroke width')

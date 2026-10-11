@@ -96,6 +96,9 @@ def build(recipe, source_paths):
               'Roof attachment to adjacent ranges, overhangs and construction thickness', 'Outer facade, end walls and interiors',
               'Material assignments and details not measured by these traces', 'Automatic discovery of reviewed trace points']}
     result['reviewed_traces']={'plan':plan,'elevation':elev,'roof':roof,'endpoint_sampling_bound_pixels':sampling}
+    if 'aperture_proposal_review' in recipe:
+        result['aperture_proposal_review']=recipe['aperture_proposal_review']
+        result['unresolved'].append('Arch right-spring connector remains a hypothesis; reviewed derivative is not physical verification')
     for key, path in source_paths.items():
         if digest(Path(path).read_bytes()) != pins[key]: raise ValueError('Source changed during review')
     if abs(length - elevation_length) > width_bound:

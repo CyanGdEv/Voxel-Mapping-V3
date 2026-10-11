@@ -46,6 +46,15 @@ def pixel_to_native(page,width,height):
     return list(matrix)
 
 
+def native_to_render_pixels(page,width):
+    """Uniform full-page render transform; integer pixmap height is not a scale."""
+    import pymupdf
+    if type(width) is not int or not 200<=width<=4000 or not 0<page.rect.width:
+        raise ValueError('Bounded uniform render width required')
+    scale=width/page.rect.width
+    return list((~native_inverse(page))*page.rotation_matrix*pymupdf.Matrix(scale,scale))
+
+
 def native_lines(page,max_lines=20000):
     import pymupdf
     rows=[];matrix=native_inverse(page)
