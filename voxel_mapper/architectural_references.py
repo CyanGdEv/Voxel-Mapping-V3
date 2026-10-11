@@ -11,7 +11,7 @@ from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span
 from .elevation_interpretation import caption
 
-VERSION='architectural-source-references-v1'
+VERSION='architectural-source-references-v2'
 
 
 def reference(text):
@@ -93,7 +93,9 @@ def link_pages(pages,*,max_occurrences=100000):
             key=(page['project_code'],page['printed_state'],row['reference_id'])
             groups[key].append({'document_sha256':page['document_sha256'],'page':page['page'],'view_kind':page['view_kind'],
                 'occurrence_index':i,'glyph_screen_status':row['glyph_screen']['status'],
-                'containing_candidate_ids':row['containing_candidate_ids']})
+                'containing_candidate_ids':row['containing_candidate_ids'],
+                'source_end_connection_indices':row.get('source_end_connection_indices',[]),
+                'complete_source_cycle_candidates':row.get('complete_source_cycle_candidates',0)})
     links=[]
     for (project,state,identifier),occurrences in sorted(groups.items()):
         visible=[r for r in occurrences if r['glyph_screen_status']=='raster_consistent_candidate']

@@ -6,6 +6,7 @@ from pathlib import Path
 import pymupdf
 from voxel_mapper.architectural_references import review_page,link_pages
 from voxel_mapper.drawing_geometry import extract_page
+from voxel_mapper.archway_ends import review as review_ends,occurrence_index
 from voxel_mapper.linework_boundaries import recover_page
 
 SOURCES=[
@@ -32,6 +33,10 @@ for sha in SOURCES:
         if extraction['status']!='unplaced_geometry_candidates' or recovery['status']!='enclosed_faces_only':
             raise ValueError('Complete native extraction and recovery required')
         report=review_page(document[0],sha,1,[r for r in records if r['geometry']['type']=='Polygon'])
+        if report['view_kind']=='plan':
+            report['archway_end_connections']=review_ends(parents,[report])
+            for i,row in enumerate(report['reference_occurrences']):
+                row.update(occurrence_index(report['archway_end_connections'],i))
         report['extraction']=extraction;report['recovery']=recovery
         report['source_parent_records_sha256']=hashlib.sha256(json.dumps(parents,sort_keys=True).encode()).hexdigest()
         print(sha[:8],report['project_code'],report['printed_state'],report['view_kind'],len(report['reference_occurrences']),flush=True)

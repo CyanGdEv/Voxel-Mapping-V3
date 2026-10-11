@@ -2,7 +2,7 @@ import copy
 import unittest
 from shapely.geometry import box,mapping,shape
 from tests import test_linework_boundaries as fixtures
-from voxel_mapper.archway_ends import review
+from voxel_mapper.archway_ends import review,occurrence_index
 
 
 class ArchwayEndTests(unittest.TestCase):
@@ -46,6 +46,34 @@ class ArchwayEndTests(unittest.TestCase):
         result=review(parents,refs)
         self.assertEqual(len(result['connections']),1)
         self.assertEqual(result['connections'][0]['solid_sides'][0]['segment_index'],1)
+
+
+    def test_complete_source_cycle_keeps_opening_identity_unverified(self):
+        parents,refs=self.fixture()
+        parents+=fixtures.LineworkTests().parents([[(100,20),(100,80.2)]])
+        before=copy.deepcopy(parents);report=review(parents,refs)
+        self.assertEqual(report['complete_source_cycle_candidates'],1)
+        connection=report['connections'][0]
+        self.assertEqual(connection['cycle_status'],'complete_source_cycle_candidates')
+        candidate=connection['opposite_end_candidates'][0]
+        self.assertTrue(candidate['source_cycle_closed']);self.assertFalse(candidate['physical_opening_verified'])
+        self.assertFalse(candidate['coordinate_control_verified']);self.assertNotIn('geometry',candidate)
+        for portion,side in zip(candidate['source_side_portions'],connection['solid_sides']):
+            self.assertTrue(shape(side['segment_geometry']).covers(shape(portion)))
+        self.assertEqual(parents,before)
+        self.assertEqual(occurrence_index(report,0),{'source_end_connection_indices':[0],'complete_source_cycle_candidates':1})
+        limited=review(parents,refs,max_checks=report['checks']-1)
+        self.assertEqual(limited['status'],'end_budget_withheld');self.assertEqual(limited['connections'],[])
+
+    def test_opposite_gaps_partial_label_and_competing_ends(self):
+        parents,refs=self.fixture()
+        parents+=fixtures.LineworkTests().parents([[(100,20),(100,80.199)]])
+        self.assertEqual(review(parents,refs)['complete_source_cycle_candidates'],0)
+        parents,refs=self.fixture();parents[1]['geometry']['coordinates']=((20,80),(100,80))
+        parents+=fixtures.LineworkTests().parents([[(80,20),(80,80)],[(100,20),(100,80)]])
+        self.assertEqual(review(parents,refs)['complete_source_cycle_candidates'],2)
+        refs[0]['reference_occurrences'][0]['label_geometry']=mapping(box(70,40,90,60))
+        self.assertEqual(review(parents,refs)['complete_source_cycle_candidates'],1)
 
 
 if __name__=='__main__':unittest.main()

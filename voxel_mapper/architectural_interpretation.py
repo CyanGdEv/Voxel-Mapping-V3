@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v6'
+VERSION='architectural-interpretation-v7'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -197,8 +197,10 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
     from .architectural_references import review_page as reference_page
     references=reference_page(page,sha,number,polygons)
     if references['view_kind']=='plan':
-        from .archway_ends import review as review_ends
+        from .archway_ends import review as review_ends,occurrence_index
         references['archway_end_connections']=review_ends(parents,[references])
+        for i,row in enumerate(references['reference_occurrences']):
+            row.update(occurrence_index(references['archway_end_connections'],i))
     elevation=review_page(page,sha,number,polygons,scale_review)
     if elevation is not None:
         return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
@@ -326,12 +328,13 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             if 'architectural_references' in page_report:
                 reference=page_report['architectural_references'];reference_count+=len(reference['reference_occurrences'])
                 counts['archway_end_connection_candidates']+=len(reference.get('archway_end_connections',{}).get('connections',[]))
+                counts['complete_archway_source_cycle_candidates']+=reference.get('archway_end_connections',{}).get('complete_source_cycle_candidates',0)
                 if reference_count>100000:reference_pages.clear();reference_budget_exhausted=True
                 if not reference_budget_exhausted:
                     # Full native proofs stay in the hashed page stream; the
                     # bounded cross-page index retains only proof locations.
                     reference_pages.append({k:reference[k] for k in ('version','document_sha256','page','project_code','view_kind','printed_state')})
-                    reference_pages[-1]['reference_occurrences']=[{k:r[k] for k in ('reference_id','glyph_screen','containing_candidate_ids')} for r in reference['reference_occurrences']]
+                    reference_pages[-1]['reference_occurrences']=[{k:r[k] for k in ('reference_id','glyph_screen','containing_candidate_ids','source_end_connection_indices','complete_source_cycle_candidates') if k in r} for r in reference['reference_occurrences']]
                     for r in reference_pages[-1]['reference_occurrences']:r['glyph_screen']={'status':r['glyph_screen']['status']}
     if digest(feed)!=contract['source_feed_sha256'] or extraction_pin(json.loads((drawing_directory/'geometry-report.json').read_text()))!=contract['geometry_report_contract_sha256']:
         raise ValueError('Architectural source feed changed')

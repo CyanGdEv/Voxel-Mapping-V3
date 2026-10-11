@@ -1,11 +1,11 @@
 """Exact dashed-end connections to original solid passage-side candidates."""
 import math
 import re
-from shapely.geometry import LineString,Point,shape,mapping
+from shapely.geometry import LineString,Point,Polygon,shape,mapping
 from shapely.strtree import STRtree
 from .drawing_components import split_page
 
-VERSION='archway-exact-source-ends-v1'
+VERSION='archway-exact-source-ends-v2'
 SOLID=re.compile(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*')
 DASHED=re.compile(r'\s*\[\s*([\d.\s]+)\]\s*[\d.]+\s*')
 
@@ -67,11 +67,42 @@ def review(parents,references,*,max_checks=100000):
                         links.append({'reference_id':row['reference_id'],'occurrence_index':occurrence,
                             'dashed_end':end_record,'solid_sides':[ar,br],
                             'physical_passage_verified':False,'closed_opening_verified':False,'coordinate_control_verified':False})
+    # Search both solid and dashed original segments for a second complete end.
+    # A four-edge cycle is a source topology candidate, never an opening identity.
+    for link in links:
+        a,b=[shape(r['segment_geometry']) for r in link['solid_sides']]
+        end=shape(link['dashed_end']['segment_geometry']);start=list(end.coords)
+        label=shape(references[0]['reference_occurrences'][link['occurrence_index']]['label_geometry'])
+        opposite=[]
+        for candidate,record in segments+ends:
+            checks+=1
+            if checks>max_checks:return withheld()
+            if candidate.equals(end):continue
+            points=list(candidate.coords)
+            if not (a.covers(Point(points[0])) and b.covers(Point(points[1]))):
+                if a.covers(Point(points[1])) and b.covers(Point(points[0])):points.reverse()
+                else:continue
+            ring=Polygon([start[0],points[0],points[1],start[1]])
+            if not ring.is_valid or ring.is_empty or not ring.contains(label):continue
+            opposite.append({'source_end':record,'source_side_portions':[
+                mapping(LineString([start[0],points[0]])),mapping(LineString([start[1],points[1]]))],
+                'source_cycle_closed':True,'physical_opening_verified':False,'coordinate_control_verified':False})
+        opposite.sort(key=lambda r:(r['source_end']['component_id'],r['source_end']['segment_index']))
+        link['opposite_end_candidates']=opposite
+        link['cycle_status']='complete_source_cycle_candidates' if opposite else 'opposite_source_end_missing'
     links.sort(key=lambda r:(r['reference_id'],r['occurrence_index'],r['dashed_end']['component_id'],
         r['dashed_end']['segment_index'],[(s['component_id'],s['segment_index']) for s in r['solid_sides']]))
     return {'version':VERSION,'status':'exact_source_end_connections_only','connections':links,'checks':checks,
-        'solid_segments':len(segments),'dashed_segments':len(ends),'parallel_angle_policy_degrees':1,
+        'complete_source_cycle_candidates':sum(len(r['opposite_end_candidates']) for r in links),'solid_segments':len(segments),'dashed_segments':len(ends),'parallel_angle_policy_degrees':1,
         'physical_passage_verified':False,'world_geometry_additions':0,
         'limitations':['Exact endpoint incidence and full-label containment in the sides convex hull are diagnostic evidence only.',
-            'Dashed paint may denote overhead geometry or other annotations; passage semantics and opposite ends remain unresolved.',
+            'Dashed paint may denote overhead geometry or other annotations; a complete source cycle does not establish passage semantics.',
             'All competing source connections are retained. No closure polygon, scale, height or coordinate control is exported.']}
+
+
+def occurrence_index(report,occurrence):
+    """Proof locations in the full page report; never a geometry selection."""
+    if report['version']!=VERSION:raise ValueError('Current source-end review required')
+    indices=[i for i,r in enumerate(report['connections']) if r['occurrence_index']==occurrence]
+    return {'source_end_connection_indices':indices,
+        'complete_source_cycle_candidates':sum(len(report['connections'][i]['opposite_end_candidates']) for i in indices)}

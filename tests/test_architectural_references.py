@@ -43,6 +43,11 @@ class ReferenceTests(unittest.TestCase):
         try:
             links=link_pages([a[3],b[3]])['links'];self.assertEqual(len(links),1)
             self.assertFalse(links[0]['coordinate_alignment_verified']);self.assertEqual(links[0]['world_geometry_additions'],0)
+            indexed=copy.deepcopy(a[3]);indexed['reference_occurrences'][0].update(source_end_connection_indices=[0,1],complete_source_cycle_candidates=0)
+            candidate=link_pages([indexed,b[3]])['links'][0]
+            self.assertEqual(candidate['occurrences'][0]['source_end_connection_indices'],[0,1])
+            self.assertEqual(candidate['occurrences'][0]['complete_source_cycle_candidates'],0)
+            self.assertFalse(candidate['coordinate_alignment_verified'])
             changed=copy.deepcopy(b[3]);changed['project_code']='9999:AA'
             self.assertEqual(link_pages([a[3],changed])['links'],[])
             changed=copy.deepcopy(b[3]);changed['printed_state']='proposed'
