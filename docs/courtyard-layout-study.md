@@ -31,6 +31,21 @@ The remaining south façade requires a stepped wall/tower profile; the east
 façade requires review of the sloping floor datum and tower/boarded-opening
 correspondence. Their existing source views are pinned in the V10 review package.
 
+V11 (`--facade-sources /path/to/pdfs --dormers`) adds AL08 windows w2.12 and
+w2.13. Their front outlines and cap heights are sampled from the existing view;
+0.9 m depth, 0.2 m cheeks/overhang and shed-roof rear connections are explicit
+display hypotheses. The source west roof is split only at those two dormer
+bands. Native slab conversion reserves both window voids and raises roof caps
+above them; support filling and edge repairs cannot close the reserved air.
+The lobby and earlier through-passages are verified again. No glass is emitted.
+
+The south profile review now records three separate height bands relative to a
+source floor reference: main frontage, raised arch frontage and low canopy edge.
+It does not emit these as a uniform roof or assert a level survey datum. The
+rear curtain, corner towers and canopy need matching plan depths before that
+façade can replace the provisional south range safely. See
+`docs/evidence/mutiny-south-profile-review.json`.
+
 The new layout is an explicit manual raster-sampled hypothesis. Wall centre-lines,
 room rectangles and plan doorway cuts are approximations, not accepted original
 PDF vector geometry. New heights, wall thicknesses, window sills/heads, symmetric

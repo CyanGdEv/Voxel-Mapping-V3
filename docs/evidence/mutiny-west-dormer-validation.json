@@ -1,0 +1,28 @@
+{
+  "dormer_windows": 2,
+  "roof_window_void_column_halves": 8,
+  "dormer_window_air_verified": true,
+  "lobby_and_existing_passages_verified": true,
+  "wooden_roof_stairs_remaining": 0,
+  "glazing_cells": 0,
+  "native_connected_groups": 1,
+  "unsupported_components": 0,
+  "dormer_depth_measured": false,
+  "world": {
+    "sha256": "639401cfd7d95ae817095dca4f9cc1bf928e341252ca0a9d0e0affe68ce733a2",
+    "composed_blocks": 22430,
+    "chunks": 20,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified"
+  },
+  "regression": {
+    "expected_tests": 1088,
+    "tests_run": 1088,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "focused_tests_passed": 14,
+  "west_front_openings_including_dormers": 16,
+  "south_frontage_emitted": false,
+  "physical_registration_verified": false
+}

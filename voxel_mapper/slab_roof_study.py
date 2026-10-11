@@ -21,6 +21,12 @@ def convert(model,cells):
     if not wood:raise ValueError('Existing wooden roof cells required')
     old_columns={(x,z) for x,y,z in wood};tops={};cap_adjustments=[]
     protected={p:m for p,m in cells.items() if p not in wood}
+    raw_voids=model.get('roof_window_void_halves',[]);raw_minimums=model.get('roof_minimum_cap_bottoms',[])
+    if len(raw_voids)>128 or len(raw_minimums)>32:raise ValueError('Roof-window clearance budget exceeded')
+    voids={tuple(v) for v in raw_voids}
+    minimums={tuple(r['column']):r['minimum_cap_bottom_m'] for r in raw_minimums}
+    if len(voids)>128 or len(minimums)>32 or any(len(v)!=3 or any(type(x) is not int for x in v) for v in voids) or any(len(k)!=2 or any(type(x) is not int for x in k) or type(v) not in (int,float) or not math.isfinite(v) or not 2<=v<=10 for k,v in minimums.items()):raise ValueError('Bounded roof-window clearance constraints required')
+    if not set(minimums)<=old_columns or any((x,z) not in old_columns for x,z,h in voids):raise ValueError('Window clearance lies outside native roof columns')
     for x,z in sorted(old_columns):
         point=Point(x+.5,z+.5)
         if not coverage.covers(point):
@@ -38,6 +44,7 @@ def convert(model,cells):
         source=max(heights);top=math.floor(source*2+.5)
         if abs(top/2-source)>.25000001:raise ValueError('Roof top exceeded half-height rounding error')
         target=top
+        if (x,z) in minimums:top=max(top,math.ceil(minimums[x,z]*2)+1)
         for _ in range(16):
             if (x,(top-1)//2,z) not in protected:break
             top=2*((top-1)//2+1)+1
@@ -50,7 +57,8 @@ def convert(model,cells):
         # Fill the vertical riser beneath higher slab courses, preserving walls.
         start=min([top,*neighbours])-1
         layers=defaultdict(set)
-        for half in range(start,top):layers[half//2].add(half%2)
+        for half in range(start,top):
+            if (x,z,half) not in voids:layers[half//2].add(half%2)
         for y,halves in layers.items():
             p=(x,y,z)
             if p in output:
@@ -78,6 +86,7 @@ def convert(model,cells):
             low,high=(aa,bb) if lower==(x,z) else (bb,aa)
             if max(low)>=min(high):raise ValueError('Unresolved interleaved roof gap')
             for half in range(max(low)+1,min(high)+1):
+                if (*lower,half) in voids:raise ValueError('Roof edge repair would close a dormer window')
                 p=(lower[0],half//2,lower[1]);old=output.get(p)
                 if old and not old.startswith('dark_oak'):raise ValueError('Roof seal would alter retained masonry')
                 existing={1} if old and old.endswith('_top') else {0} if old and old.endswith('_slab') else {0,1} if old else set()
@@ -87,6 +96,7 @@ def convert(model,cells):
     if any(output.get(p)!=m for p,m in cells.items() if p not in wood):raise ValueError('Roof conversion changed non-roof cells')
     if any(m.startswith('dark_oak_stairs') for m in output.values()):raise ValueError('Wooden roof stairs remain')
     occupancy=occupied_halves(output)
+    if any((2*x+dx,h,2*z+dz) in occupancy for x,z,h in voids for dx in (0,1) for dz in (0,1)):raise ValueError('Roof overlaps reserved dormer window air')
     for row in model.get('slab_conversion_passages',[]):
         for x,z in row['native_columns']:
             if any((2*x+dx,y,2*z+dz) in occupancy for dx in (0,1) for dz in (0,1) for y in range(4)):
@@ -123,4 +133,5 @@ def convert(model,cells):
            'masonry_edge_seal_repairs':repairs,
            'caps_raised_above_retained_masonry':cap_adjustments,
            'retained_wall_collisions':len(blocked),'standing_passages_verified':True}
+    audit['roof_window_air_halves_verified']=len(voids)
     return result,output,audit
