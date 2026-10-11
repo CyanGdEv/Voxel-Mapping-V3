@@ -224,7 +224,7 @@ is never assumed to be outdoors. Exact side intersections that collapse to
 points due to derived coordinates are withheld as continuous support rather
 than snapped into lines.
 
-Whole original face geometry, holes, sourcece side geometry/contracts and label
+Whole original face geometry, holes, source side geometry/contracts and label
 proof indices are retained. Each candidate records missing support, missing
 regions, multiple regions and missing/conflicting claims. No nearest label,
 region crop, endpoint joining or exterior hull is introduced. Exhausted
