@@ -147,7 +147,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
             from .native_opening_inventory import run as inventory_openings
             from .opening_boundary_review import run as review_boundaries
             from .aperture_gap_proposals import run as propose_gaps
-            reviews=[];inventories=[];boundaries=[];gaps=[]
+            from .wing_outline_review import run as review_outlines
+            reviews=[];inventories=[];boundaries=[];gaps=[];outlines=[]
             for ordinal,seed in enumerate(area['local_wing_review_seeds']):
                 seed_path=resolve(seed)
                 if file_hash(seed_path)!=local_reviews[area['id']][seed]:raise ValueError('Local review seed changed during area run')
@@ -159,6 +160,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                     inventories.append({'status':'awaiting_local_review_sources','world_geometry_additions':0})
                     boundaries.append({'status':'awaiting_local_review_sources','world_geometry_additions':0})
                     gaps.append({'status':'awaiting_local_review_sources','world_geometry_additions':0})
+                    outlines.append({'status':'awaiting_local_review_sources','world_geometry_additions':0})
                     continue
                 # Corpus owns original blob paths; never fall back to an unrelated source directory.
                 paths={k:corpus.root/'files'/(v['sha256']+'.pdf') for k,v in recipe['documents'].items()}
@@ -167,10 +169,12 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                 inventories.append(inventory)
                 boundaries.append(review_boundaries(seed_path,paths['elevation'],inventory,work/'opening-boundary-reviews'/str(ordinal)))
                 gaps.append(propose_gaps(seed_path,paths['elevation'],work/'aperture-gap-proposals'/str(ordinal)))
+                outlines.append(review_outlines(seed_path,paths,work/'wing-outline-reviews'/str(ordinal)))
             entry['local_wing_reviews']=reviews
             entry['native_opening_inventories']=inventories
             entry['opening_boundary_reviews']=boundaries
             entry['aperture_gap_proposals']=gaps
+            entry['wing_outline_reviews']=outlines
         entry.update(name=area['name'],applications=area['application_references'],document_records=len(docs),
                      selected_documents=[{'title':d.get('title'),'state':d.get('state','unknown'),'sha256':d.get('sha256'),'url':d['url']} for d in docs],
                      acquisition=acquisition,extraction=extracted,component_mentions=mentions,available_planning_sha256=sorted(available),
@@ -308,7 +312,7 @@ def run_all(config_path, stage='reconstruct', max_cycles=1):
             for key in ('status','document_records','acquisition','extraction','component_mentions',
                         'generated_families','missing_components','missing_component_ids',
                         'world_geometry_additions','planned_native_changes','latest_preview','world_sha256',
-                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals'):
+                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals','wing_outline_reviews'):
                 if key in entry:row[key]=entry[key]
             row.setdefault('world_geometry_additions',0)
             row['blockers']=[]

@@ -87,6 +87,10 @@ class AreaSourceTests(unittest.TestCase):
             self.assertEqual(gaps['opening_statuses'],{'source_extraction_withheld':2})
             self.assertFalse(gaps['mesh_update_authorized'])
             self.assertTrue(run(self.job)['areas']['a']['aperture_gap_proposals'][0]['reused'])
+            outlines=entry['wing_outline_reviews'][0]
+            self.assertEqual(outlines['source_cycle_count'],0)
+            self.assertFalse(outlines['mesh_update_authorized'])
+            self.assertTrue(run(self.job)['areas']['a']['wing_outline_reviews'][0]['reused'])
             self.assertTrue(run(self.job)['areas']['a']['opening_boundary_reviews'][0]['reused'])
             self.assertEqual(inventory['world_geometry_additions'],0)
             self.assertFalse(inventory['automatic_aperture_reconstruction'])
@@ -105,6 +109,7 @@ class AreaSourceTests(unittest.TestCase):
         self.assertEqual(len(entry['local_wing_reviews'][0]['missing_source_sha256']),3)
         self.assertEqual(entry['native_opening_inventories'][0]['status'],'awaiting_local_review_sources')
         self.assertEqual(entry['aperture_gap_proposals'][0]['status'],'awaiting_local_review_sources')
+        self.assertEqual(entry['wing_outline_reviews'][0]['status'],'awaiting_local_review_sources')
 
     def test_explicit_area_preserves_unfinished_previous_area(self):
         first=run(self.job);previous=first['areas']['a'].copy()

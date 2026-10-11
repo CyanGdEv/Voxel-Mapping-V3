@@ -1,0 +1,3113 @@
+{
+  "version": "local-wing-surface-review-v1",
+  "component_id": "mutiny-north-courtyard-range",
+  "reviewed_trace_seed": true,
+  "trace_review": "Visual source review on checksum-pinned full-page 1800-pixel renders; Wicker-style seed, not automatic feature discovery; source-label-corrected derivative: geometry unchanged, native w.3.05/w.3.06 labels reviewed; explicit source/render review of inner arch silhouette and continuous floor datum, for isolated provisional preview only; seven ground-level window silhouettes explicitly reviewed against source render and complete source-cycle proofs",
+  "endpoint_sampling_bound_pixels": 2,
+  "documents": {
+    "plan": {
+      "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 100,
+      "caption": "Ground Floor Plan 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c"
+    },
+    "elevation": {
+      "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 50,
+      "caption": "North Range Courtyard (south) Elevation 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "ea0d87e36f679cc3528a84f34a055d1a02631a41b195d1a1bd9be5359967d449"
+    },
+    "roof": {
+      "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 200,
+      "caption": "Existing Roof Plan",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "1bcc21997a7408d98b46cc3cbfc1bb3ae9e50940beefcfd9d01a759dcb5d8e55"
+    }
+  },
+  "plan_trace": {
+    "facade_endpoints": [
+      [
+        1059,
+        305
+      ],
+      [
+        1059,
+        991
+      ]
+    ],
+    "rear_point": [
+      1184,
+      700
+    ],
+    "view_scope_review": "right courtyard range between adjacent internal courtyard wing faces; ignores projecting outer annexes"
+  },
+  "elevation_trace": {
+    "baseline_endpoints": [
+      [
+        139.4091297191917,
+        408.08051978770527
+      ],
+      [
+        1512.0597597620508,
+        408.08051978770527
+      ]
+    ],
+    "eave_point": [
+      500,
+      238
+    ],
+    "ridge_point": [
+      500,
+      108
+    ],
+    "view_scope_review": "upper north-range courtyard elevation, excluding adjacent return gable and tower"
+  },
+  "roof_trace": {
+    "cross_section_points": [
+      [
+        770,
+        740
+      ],
+      [
+        802,
+        740
+      ],
+      [
+        835,
+        740
+      ]
+    ],
+    "review": "2012 roof plan used only for relative ridge fraction; correspondence with 2017 floor remains a hypothesis"
+  },
+  "openings": [
+    {
+      "id": "d3.01",
+      "kind": "door",
+      "points_pixels": [
+        [
+          195,
+          330
+        ],
+        [
+          236,
+          330
+        ],
+        [
+          236,
+          408.08051978770527
+        ],
+        [
+          195,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.01",
+      "kind": "window",
+      "points_pixels": [
+        [
+          367.36852444572287,
+          320.1946188679958
+        ],
+        [
+          367.36852444572287,
+          394.8523171985871
+        ],
+        [
+          268.61009889267007,
+          394.8523171985871
+        ],
+        [
+          268.61009889267007,
+          320.1946188679958
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "w3.02",
+      "kind": "window",
+      "points_pixels": [
+        [
+          475.1872604633536,
+          320.91944462683387
+        ],
+        [
+          475.1872604633536,
+          348.2818762431689
+        ],
+        [
+          419.91884127649246,
+          348.2818762431689
+        ],
+        [
+          419.91884127649246,
+          320.91944462683387
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "w3.03",
+      "kind": "window",
+      "points_pixels": [
+        [
+          595.3282878409809,
+          320.91944462683387
+        ],
+        [
+          595.3282878409809,
+          348.2818762431689
+        ],
+        [
+          540.2410693333804,
+          348.2818762431689
+        ],
+        [
+          540.2410693333804,
+          320.91944462683387
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "w3.04",
+      "kind": "window",
+      "points_pixels": [
+        [
+          715.1067295257235,
+          320.55704326831255
+        ],
+        [
+          715.1067295257235,
+          347.7382511635915
+        ],
+        [
+          655.6705103815038,
+          347.7382511635915
+        ],
+        [
+          655.6705103815038,
+          320.55704326831255
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "d3.02",
+      "kind": "door",
+      "points_pixels": [
+        [
+          971,
+          326
+        ],
+        [
+          1022,
+          326
+        ],
+        [
+          1022,
+          408.08051978770527
+        ],
+        [
+          971,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.05",
+      "kind": "window",
+      "points_pixels": [
+        [
+          958.6503965076699,
+          322.3691191863054
+        ],
+        [
+          958.6503965076699,
+          361.87248019080835
+        ],
+        [
+          918.9657887403155,
+          361.87248019080835
+        ],
+        [
+          918.9657887403155,
+          322.3691191863054
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "w3.06",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1128.985947551315,
+          323.63757002472084
+        ],
+        [
+          1128.985947551315,
+          366.94630658626556
+        ],
+        [
+          1058.858427494808,
+          366.94630658626556
+        ],
+        [
+          1058.858427494808,
+          323.63757002472084
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "d3.03",
+      "kind": "door",
+      "points_pixels": [
+        [
+          1304,
+          328
+        ],
+        [
+          1365,
+          328
+        ],
+        [
+          1365,
+          408.08051978770527
+        ],
+        [
+          1304,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.07",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1473.6436489167027,
+          330.704696059227
+        ],
+        [
+          1473.6436489167027,
+          378.18118649453936
+        ],
+        [
+          1394.999328266218,
+          378.18118649453936
+        ],
+        [
+          1394.999328266218,
+          330.704696059227
+        ]
+      ],
+      "source_outline_status": "Explicitly reviewed complete original rectangle cycle; physical aperture extents unverified"
+    },
+    {
+      "id": "w3.10",
+      "kind": "window",
+      "points_pixels": [
+        [
+          283,
+          246
+        ],
+        [
+          341,
+          246
+        ],
+        [
+          341,
+          283
+        ],
+        [
+          283,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.11",
+      "kind": "window",
+      "points_pixels": [
+        [
+          443,
+          246
+        ],
+        [
+          487,
+          246
+        ],
+        [
+          487,
+          283
+        ],
+        [
+          443,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.12",
+      "kind": "window",
+      "points_pixels": [
+        [
+          639,
+          246
+        ],
+        [
+          684,
+          246
+        ],
+        [
+          684,
+          283
+        ],
+        [
+          639,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.14",
+      "kind": "window",
+      "points_pixels": [
+        [
+          970,
+          246
+        ],
+        [
+          1026,
+          246
+        ],
+        [
+          1026,
+          290
+        ],
+        [
+          970,
+          290
+        ]
+      ]
+    },
+    {
+      "id": "w3.15",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1150,
+          246
+        ],
+        [
+          1208,
+          246
+        ],
+        [
+          1208,
+          291
+        ],
+        [
+          1150,
+          291
+        ]
+      ]
+    },
+    {
+      "id": "archway-3",
+      "kind": "archway",
+      "points_pixels": [
+        [
+          898.6704831584866,
+          318.7449673503197
+        ],
+        [
+          897.7644797621833,
+          315.84561823137665
+        ],
+        [
+          896.3147821609164,
+          312.946292154229
+        ],
+        [
+          894.5027753683098,
+          310.22818979813746
+        ],
+        [
+          892.5094757292609,
+          307.69126507951114
+        ],
+        [
+          890.1537747316906,
+          305.51676476120156
+        ],
+        [
+          889.6230005088291,
+          305.12753003113914
+        ],
+        [
+          887.4356723755991,
+          303.52348816394806
+        ],
+        [
+          887.2845949065421,
+          303.44795006976284
+        ],
+        [
+          884.5362804314854,
+          302.0738044809912
+        ],
+        [
+          881.9993754962343,
+          300.8053627660611
+        ],
+        [
+          881.6828931333134,
+          300.67679086292515
+        ],
+        [
+          878.7553320695755,
+          299.48746045589206
+        ],
+        [
+          876.2007694255299,
+          298.44966176849084
+        ],
+        [
+          870.4020711876437,
+          296.4563621294419
+        ],
+        [
+          870.2322462539263,
+          296.41004641689284
+        ],
+        [
+          864.422172270497,
+          294.8254868907097
+        ],
+        [
+          864.2477810736129,
+          294.7895825905704
+        ],
+        [
+          858.2611648412712,
+          293.5570360522943
+        ],
+        [
+          855.0168606065687,
+          293.0799417667888
+        ],
+        [
+          852.1000652448638,
+          292.6510096141956
+        ],
+        [
+          851.769749270797,
+          292.6218641597393
+        ],
+        [
+          848.84901151851,
+          292.36415264766805
+        ],
+        [
+          845.7591099308123,
+          292.09151495204014
+        ],
+        [
+          839.7778660520489,
+          291.5637594550408
+        ],
+        [
+          827.2745583471551,
+          290.8389106544073
+        ],
+        [
+          814.952451321522,
+          291.5637594550408
+        ],
+        [
+          804.6226126202193,
+          292.46200464330497
+        ],
+        [
+          802.4490514494464,
+          292.6510096141956
+        ],
+        [
+          801.5357707762462,
+          292.7853129836471
+        ],
+        [
+          798.4417785861104,
+          293.24030298659534
+        ],
+        [
+          796.287951853039,
+          293.5570360522943
+        ],
+        [
+          792.2904285111199,
+          294.40500021680043
+        ],
+        [
+          790.3081451030739,
+          294.8254868907097
+        ],
+        [
+          789.2089669662236,
+          295.1252615911156
+        ],
+        [
+          784.3282461859271,
+          296.4563621294419
+        ],
+        [
+          783.2410369625803,
+          296.81876520389085
+        ],
+        [
+          778.3483472687803,
+          298.44966176849084
+        ],
+        [
+          777.7648144141948,
+          298.6943706388451
+        ],
+        [
+          774.9036271047692,
+          299.89423095323787
+        ],
+        [
+          772.7309418773366,
+          300.8053627660611
+        ],
+        [
+          772.0025180736831,
+          301.15782927028596
+        ],
+        [
+          769.0882025929616,
+          302.5679954188196
+        ],
+        [
+          767.1135364858928,
+          303.52348816394806
+        ],
+        [
+          764.5765426418802,
+          305.51676476120156
+        ],
+        [
+          762.2209338114917,
+          307.69126507951114
+        ],
+        [
+          760.2275420052611,
+          310.22818979813746
+        ],
+        [
+          758.4155352126545,
+          312.946292154229
+        ],
+        [
+          757.6906971475457,
+          314.39593372226534
+        ],
+        [
+          756.9658376113875,
+          315.84561823137665
+        ],
+        [
+          755.9554602251711,
+          318.1549945756986
+        ],
+        [
+          755.6973406893812,
+          318.7449673503197
+        ],
+        [
+          755.8785413686419,
+          318.7449673503197
+        ],
+        [
+          755.8785413686419,
+          408.08051978770527
+        ],
+        [
+          898.851776004929,
+          408.08051978770527
+        ],
+        [
+          898.851776004929,
+          318.7449673503197
+        ]
+      ],
+      "curve_status": "Original straight source-network inner outline, with one explicit hypothetical right-spring connector; physical identity unverified"
+    }
+  ],
+  "source_label_correction": {
+    "parent_seed_sha256": "2b0c74f7a94385b76580a62be0475f86460488ed8f7fac07379c1363a8d0191a",
+    "native_inventory_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+    "changes": {
+      "w3.06-a": "w3.05",
+      "w3.06-b": "w3.06"
+    },
+    "geometry_points_changed": false,
+    "boarded_w3_13_carved": false
+  },
+  "aperture_proposal_review": {
+    "parent_seed_sha256": "4f2fea600e48b84f54a361d5f7605700f1ce68143c47699b03d0958db61a00eb",
+    "proposal_report_sha256": "5ad4518fdeca7d8733624903f3e5b6cae5f07d99b53224224da4ee5e18b48c29",
+    "opening_id": "archway-3",
+    "geometry_identity": "80b78da8dfc0b45bed1f5989a4c6fad14dd317dfc08ac5b58be8042521718d11",
+    "support_proposal_ids": [
+      "b3dee154e2e29d3fba5582e34e5ed374edde3baad8ca3f612e1414f72d82ac95",
+      "1e7e366e4be0cadfb27dcaf2f14e4721edb384026b0adaa85b08538c91f62427"
+    ],
+    "selection_mode": "Explicit source/render review of the inner arch silhouette; all same-shape provenance variants retained",
+    "physical_identity_verified": false,
+    "automatic_aperture_reconstruction": false,
+    "hypothesis_connectors": [
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121",
+            "vertex_index": 1
+          }
+        ],
+        "id": "a4c94e760fff0b5cf8000bd9886f120ca27cbd5864404d1f60fba545b390e82b",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      },
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "995beb3094d8bc9849cdbe9eccda5ea02a743cab6c0c4004449c8c875c323286",
+            "vertex_index": 0
+          }
+        ],
+        "id": "7808415f18680f5856a47f6f641171fec732813ed8ebff846a7648643455a209",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      }
+    ],
+    "boundary_hausdorff_from_parent_pixels": 3.523633423094352,
+    "parent_two_pixel_fidelity_check_passed": false,
+    "sampling_bound_relaxed": false,
+    "source_coordinates_changed": false,
+    "floor_datum_review": {
+      "source_component": {
+        "id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3",
+        "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+        "page": 1,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              540.47998046875,
+              184.6396484375
+            ],
+            [
+              540.47998046875,
+              2002.63916015625
+            ]
+          ]
+        },
+        "coordinate_frame": "pdf_native_points_y_up",
+        "paint_references": [
+          {
+            "ordinal": 130,
+            "subpath": 0,
+            "stroke_style": {
+              "width_pdf_points": 1.9199999570846558,
+              "dashes_pdf": "[] 0"
+            },
+            "curve_approximation": {
+              "cubic_segments": 0,
+              "chord_error_bound_pdf_points": 0,
+              "requested_tolerance_pdf_points": 0.25,
+              "method": "adaptive_de_casteljau_control_hull_to_chord",
+              "points": 2
+            }
+          }
+        ],
+        "extraction_kind": "drawing_components",
+        "extraction_version": "drawing-components-v1",
+        "extraction_contract": "e863865b8f194745da6b35193f028fe67cd908fe946679bf583207e74be317c3",
+        "rendering_status": "supported_straight_unclipped_polyline",
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 2
+        },
+        "stroke_style": {
+          "width_pdf_points": 1.9199999570846558,
+          "dashes_pdf": "[] 0"
+        },
+        "semantic_status": "unclassified",
+        "line_role": "unclassified_stroked_path",
+        "physical_identity_verified": false,
+        "world_geometry_additions": 0,
+        "parent_references": [
+          {
+            "candidate_id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3",
+            "component_index": null,
+            "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+          }
+        ],
+        "component_semantics_verified": false
+      },
+      "old_baseline_pixels": [
+        [
+          139,
+          408
+        ],
+        [
+          1512,
+          408
+        ]
+      ],
+      "new_baseline_pixels": [
+        [
+          139.4091297191917,
+          408.08051978770527
+        ],
+        [
+          1512.0597597620508,
+          408.08051978770527
+        ]
+      ],
+      "door_bottom_trace_revisions": [
+        {
+          "id": "d3.01",
+          "vertex_index": 2,
+          "old_pixel": [
+            236,
+            408
+          ],
+          "new_pixel": [
+            236,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.01",
+          "vertex_index": 3,
+          "old_pixel": [
+            195,
+            408
+          ],
+          "new_pixel": [
+            195,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.02",
+          "vertex_index": 2,
+          "old_pixel": [
+            1022,
+            408
+          ],
+          "new_pixel": [
+            1022,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.02",
+          "vertex_index": 3,
+          "old_pixel": [
+            971,
+            408
+          ],
+          "new_pixel": [
+            971,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.03",
+          "vertex_index": 2,
+          "old_pixel": [
+            1365,
+            408
+          ],
+          "new_pixel": [
+            1365,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.03",
+          "vertex_index": 3,
+          "old_pixel": [
+            1304,
+            408
+          ],
+          "new_pixel": [
+            1304,
+            408.08051978770527
+          ]
+        }
+      ],
+      "review": "Continuous source floor line reviewed; manual door bottoms follow refined drawing-relative datum. No source endpoint moved and no absolute elevation inferred."
+    },
+    "boarded_w3_13_carved": false,
+    "world_placement_eligible": false
+  },
+  "opening_cycle_review": {
+    "parent_seed_sha256": "e5b17b3597a6c3f8d62fd1a403861ad96d23c315927c636d297bc640a139d84e",
+    "outline_report_sha256": "22d0f82cf62f78b5e94418842427b81743d9ef95011ae3a0c43481651630e827",
+    "window_revisions": [
+      {
+        "id": "w3.01",
+        "frame_id": "63f84daa06159521bacdc7ea9a7b18097a4e8f638f83e4afd58ccffdec95af38",
+        "parent_points_pixels": [
+          [
+            273,
+            324
+          ],
+          [
+            365,
+            324
+          ],
+          [
+            365,
+            392
+          ],
+          [
+            273,
+            392
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            367.36852444572287,
+            320.1946188679958
+          ],
+          [
+            367.36852444572287,
+            394.8523171985871
+          ],
+          [
+            268.61009889267007,
+            394.8523171985871
+          ],
+          [
+            268.61009889267007,
+            320.1946188679958
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            268.61009889267007,
+            320.1946188679958,
+            367.36852444572287,
+            394.8523171985871
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  367.36852444572287,
+                  320.1946188679958
+                ],
+                [
+                  367.36852444572287,
+                  394.8523171985871
+                ],
+                [
+                  268.61009889267007,
+                  394.8523171985871
+                ],
+                [
+                  268.61009889267007,
+                  320.1946188679958
+                ],
+                [
+                  367.36852444572287,
+                  320.1946188679958
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "63f84daa06159521bacdc7ea9a7b18097a4e8f638f83e4afd58ccffdec95af38",
+          "nominal_height_m": 1.7441328709997275,
+          "nominal_width_m": 2.3071675144943433,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "29224a75c676ec623dba73a0ac3992f3d1948d3b2b561facb5ee484bd71ab9da",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      522.9599609375,
+                      355.7591552734375
+                    ],
+                    [
+                      424.0799865722656,
+                      355.7591552734375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      268.61009889267007,
+                      394.8523171985871
+                    ],
+                    [
+                      268.61009889267007,
+                      320.1946188679958
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "9d7eaf3b97f31798e6a8eb40f2bcd95e9b2826d46a933cf8207600ac5f2d9e2f",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      522.9599609375,
+                      486.5592041015625
+                    ],
+                    [
+                      424.0799865722656,
+                      486.5592041015625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      367.36852444572287,
+                      394.8523171985871
+                    ],
+                    [
+                      367.36852444572287,
+                      320.1946188679958
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "547c932e076f74a9956d03badfa3d3558b80160d0fd6a3db7a6f4226eb401bba",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      424.0799865722656,
+                      355.7591552734375
+                    ],
+                    [
+                      424.0799865722656,
+                      486.5592041015625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      268.61009889267007,
+                      320.1946188679958
+                    ],
+                    [
+                      367.36852444572287,
+                      320.1946188679958
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "7d3f2a7af8146ff1dc1c57f23b865e39de28c8b373b011428a139d065fe91fad",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      522.9599609375,
+                      355.7591552734375
+                    ],
+                    [
+                      522.9599609375,
+                      486.5592041015625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      268.61009889267007,
+                      394.8523171985871
+                    ],
+                    [
+                      367.36852444572287,
+                      394.8523171985871
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 5.809660686473009,
+          "frame_id": "63f84daa06159521bacdc7ea9a7b18097a4e8f638f83e4afd58ccffdec95af38",
+          "iou_with_reviewed_trace": 0.8484924568737713,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.02",
+        "frame_id": "e67c34c696653b195369d841a1a5193d9dea6bc4382c0b6c00b7dd7ec3e4c420",
+        "parent_points_pixels": [
+          [
+            397,
+            322
+          ],
+          [
+            493,
+            322
+          ],
+          [
+            493,
+            357
+          ],
+          [
+            397,
+            357
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            475.1872604633536,
+            320.91944462683387
+          ],
+          [
+            475.1872604633536,
+            348.2818762431689
+          ],
+          [
+            419.91884127649246,
+            348.2818762431689
+          ],
+          [
+            419.91884127649246,
+            320.91944462683387
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            419.91884127649246,
+            320.91944462683387,
+            475.1872604633536,
+            348.2818762431689
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  475.1872604633536,
+                  320.91944462683387
+                ],
+                [
+                  475.1872604633536,
+                  348.2818762431689
+                ],
+                [
+                  419.91884127649246,
+                  348.2818762431689
+                ],
+                [
+                  419.91884127649246,
+                  320.91944462683387
+                ],
+                [
+                  475.1872604633536,
+                  320.91944462683387
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "e67c34c696653b195369d841a1a5193d9dea6bc4382c0b6c00b7dd7ec3e4c420",
+          "nominal_height_m": 0.6392336956492685,
+          "nominal_width_m": 1.2911657978678683,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "e245efc04e6714db62d1b3690dae11098f3d504ee2b99784efbe78b7e3f318fd",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      556.1591796875
+                    ],
+                    [
+                      425.03997802734375,
+                      556.1591796875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      419.91884127649246,
+                      348.2818762431689
+                    ],
+                    [
+                      419.91884127649246,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "43effb5ea129e2c31aa33952f687f65e655c6f147b1dc57051ccdd7b53ef934b",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      629.359130859375
+                    ],
+                    [
+                      425.03997802734375,
+                      629.359130859375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      475.1872604633536,
+                      348.2818762431689
+                    ],
+                    [
+                      475.1872604633536,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "ecc104caf45d74028a084665540ab6c5a7ddf24f9af09a7d6da9fe358084a5a8",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      425.03997802734375,
+                      556.1591796875
+                    ],
+                    [
+                      425.03997802734375,
+                      629.359130859375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      419.91884127649246,
+                      320.91944462683387
+                    ],
+                    [
+                      475.1872604633536,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "c750f212e15380a08366de516f220f8f03064716dd818570bd31d51947ba302a",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      556.1591796875
+                    ],
+                    [
+                      461.2799987792969,
+                      629.359130859375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      419.91884127649246,
+                      348.2818762431689
+                    ],
+                    [
+                      475.1872604633536,
+                      348.2818762431689
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 24.520990340858532,
+          "frame_id": "e67c34c696653b195369d841a1a5193d9dea6bc4382c0b6c00b7dd7ec3e4c420",
+          "iou_with_reviewed_trace": 0.42475919190916867,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.03",
+        "frame_id": "1492c3d61dc64f27dec56e22ecdcf63b05e3d316f680f6a2523c5201e0dbd59c",
+        "parent_points_pixels": [
+          [
+            543,
+            323
+          ],
+          [
+            577,
+            323
+          ],
+          [
+            577,
+            358
+          ],
+          [
+            543,
+            358
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            595.3282878409809,
+            320.91944462683387
+          ],
+          [
+            595.3282878409809,
+            348.2818762431689
+          ],
+          [
+            540.2410693333804,
+            348.2818762431689
+          ],
+          [
+            540.2410693333804,
+            320.91944462683387
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            540.2410693333804,
+            320.91944462683387,
+            595.3282878409809,
+            348.2818762431689
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  595.3282878409809,
+                  320.91944462683387
+                ],
+                [
+                  595.3282878409809,
+                  348.2818762431689
+                ],
+                [
+                  540.2410693333804,
+                  348.2818762431689
+                ],
+                [
+                  540.2410693333804,
+                  320.91944462683387
+                ],
+                [
+                  595.3282878409809,
+                  320.91944462683387
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "1492c3d61dc64f27dec56e22ecdcf63b05e3d316f680f6a2523c5201e0dbd59c",
+          "nominal_height_m": 0.6392336956492685,
+          "nominal_width_m": 1.2869326368139802,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "b099677d654b9b72ba1cb9d4b5a4a3ba6e67b043150bccfceccac7b562432663",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      715.519287109375
+                    ],
+                    [
+                      425.03997802734375,
+                      715.519287109375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      540.2410693333804,
+                      348.2818762431689
+                    ],
+                    [
+                      540.2410693333804,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "c138dde40987cfd9b8dfdbe1ca786797cce1d1ae69744cdf3beca7d71a7300ed",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      788.479248046875
+                    ],
+                    [
+                      425.03997802734375,
+                      788.479248046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      595.3282878409809,
+                      348.2818762431689
+                    ],
+                    [
+                      595.3282878409809,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "30229a8e2423bca43e2cff423d5ccc8fdad477d0a4a3a580991fcad644fdc76c",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      425.03997802734375,
+                      715.519287109375
+                    ],
+                    [
+                      425.03997802734375,
+                      788.479248046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      540.2410693333804,
+                      320.91944462683387
+                    ],
+                    [
+                      595.3282878409809,
+                      320.91944462683387
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "6cf7e8b790d9dcf873844ffbeecf7f168d62372c03d460ba61a8dc499ff081ca",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      461.2799987792969,
+                      715.519287109375
+                    ],
+                    [
+                      461.2799987792969,
+                      788.479248046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      540.2410693333804,
+                      348.2818762431689
+                    ],
+                    [
+                      595.3282878409809,
+                      348.2818762431689
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 18.44599809830467,
+          "frame_id": "1492c3d61dc64f27dec56e22ecdcf63b05e3d316f680f6a2523c5201e0dbd59c",
+          "iou_with_reviewed_trace": 0.46774051249615656,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.04",
+        "frame_id": "d78a7ae18dc0208291898b82b847e22b0ff8beaac1befb9650bde7de9d80e480",
+        "parent_points_pixels": [
+          [
+            655,
+            323
+          ],
+          [
+            690,
+            323
+          ],
+          [
+            690,
+            357
+          ],
+          [
+            655,
+            357
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            715.1067295257235,
+            320.55704326831255
+          ],
+          [
+            715.1067295257235,
+            347.7382511635915
+          ],
+          [
+            655.6705103815038,
+            347.7382511635915
+          ],
+          [
+            655.6705103815038,
+            320.55704326831255
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            655.6705103815038,
+            320.55704326831255,
+            715.1067295257235,
+            347.7382511635915
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  715.1067295257235,
+                  320.55704326831255
+                ],
+                [
+                  715.1067295257235,
+                  347.7382511635915
+                ],
+                [
+                  655.6705103815038,
+                  347.7382511635915
+                ],
+                [
+                  655.6705103815038,
+                  320.55704326831255
+                ],
+                [
+                  715.1067295257235,
+                  320.55704326831255
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "d78a7ae18dc0208291898b82b847e22b0ff8beaac1befb9650bde7de9d80e480",
+          "nominal_height_m": 0.6349999962992138,
+          "nominal_width_m": 1.3885328084766277,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "c376989ed48cd7996c9213d9c7dc9ba3d258eb894b3262daf3a6173cf3c0d867",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      460.55999755859375,
+                      868.399169921875
+                    ],
+                    [
+                      424.55999755859375,
+                      868.399169921875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      655.6705103815038,
+                      347.7382511635915
+                    ],
+                    [
+                      655.6705103815038,
+                      320.55704326831255
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "837a1911dbb1ad8808c4b1e94f827679b70708ce486985472873c460f3419e11",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      460.55999755859375,
+                      947.119140625
+                    ],
+                    [
+                      424.55999755859375,
+                      947.119140625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      715.1067295257235,
+                      347.7382511635915
+                    ],
+                    [
+                      715.1067295257235,
+                      320.55704326831255
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "69cb8adcb47007495fa5ec6043c3f378cc8481132c86f9d72efce443f29453ad",
+                  "interval_fractions": [
+                    0.08581722073647828,
+                    0.25436801749716154
+                  ],
+                  "native_endpoints": [
+                    [
+                      424.55999755859375,
+                      987.19921875
+                    ],
+                    [
+                      424.55999755859375,
+                      520.1591796875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      745.368533302797,
+                      320.55704326831255
+                    ],
+                    [
+                      392.7376333812135,
+                      320.55704326831255
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "1cb780d9636f5b97390128499b4df79cc9e74ae4c369923701c0c84179fbaec6",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      460.55999755859375,
+                      868.399169921875
+                    ],
+                    [
+                      460.55999755859375,
+                      947.119140625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      655.6705103815038,
+                      347.7382511635915
+                    ],
+                    [
+                      715.1067295257235,
+                      347.7382511635915
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 25.225302873716558,
+          "frame_id": "d78a7ae18dc0208291898b82b847e22b0ff8beaac1befb9650bde7de9d80e480",
+          "iou_with_reviewed_trace": 0.4341118296250911,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.05",
+        "frame_id": "6622db04a99e4c8057ba9d63cb4789211e0e3301832db4f50799c6db02fe35fe",
+        "parent_points_pixels": [
+          [
+            920,
+            327
+          ],
+          [
+            954,
+            327
+          ],
+          [
+            954,
+            359
+          ],
+          [
+            920,
+            359
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            958.6503965076699,
+            322.3691191863054
+          ],
+          [
+            958.6503965076699,
+            361.87248019080835
+          ],
+          [
+            918.9657887403155,
+            361.87248019080835
+          ],
+          [
+            918.9657887403155,
+            322.3691191863054
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            918.9657887403155,
+            322.3691191863054,
+            958.6503965076699,
+            361.87248019080835
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  958.6503965076699,
+                  322.3691191863054
+                ],
+                [
+                  958.6503965076699,
+                  361.87248019080835
+                ],
+                [
+                  918.9657887403155,
+                  361.87248019080835
+                ],
+                [
+                  918.9657887403155,
+                  322.3691191863054
+                ],
+                [
+                  958.6503965076699,
+                  322.3691191863054
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "6622db04a99e4c8057ba9d63cb4789211e0e3301832db4f50799c6db02fe35fe",
+          "nominal_height_m": 0.9228667904792708,
+          "nominal_width_m": 0.927101028125492,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "f49b9655caf132924090480366caf6395ca5a1ce4df4cf324cbf67edeb03c3e6",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      479.2799987792969,
+                      1217.119140625
+                    ],
+                    [
+                      426.9599914550781,
+                      1217.119140625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      918.9657887403155,
+                      361.87248019080835
+                    ],
+                    [
+                      918.9657887403155,
+                      322.3691191863054
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "5731d792e9638ef48d6e911cff18275b9caa111afc4176c7a85c92c2e0cf0af0",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      479.2799987792969,
+                      1269.67919921875
+                    ],
+                    [
+                      426.9599914550781,
+                      1269.67919921875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      958.6503965076699,
+                      361.87248019080835
+                    ],
+                    [
+                      958.6503965076699,
+                      322.3691191863054
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "116f87316340d20451e8d42418d53ec8e4de47a10168c1600104d2c92ff9b226",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      426.9599914550781,
+                      1217.119140625
+                    ],
+                    [
+                      426.9599914550781,
+                      1269.67919921875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      918.9657887403155,
+                      322.3691191863054
+                    ],
+                    [
+                      958.6503965076699,
+                      322.3691191863054
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "dfd47dd63bcbad5d8854c7eb2af5d5278001a938d747ac4cffb3955bd52948b8",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      479.2799987792969,
+                      1269.67919921875
+                    ],
+                    [
+                      479.2799987792969,
+                      1217.119140625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      958.6503965076699,
+                      361.87248019080835
+                    ],
+                    [
+                      918.9657887403155,
+                      361.87248019080835
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 6.56286864025127,
+          "frame_id": "6622db04a99e4c8057ba9d63cb4789211e0e3301832db4f50799c6db02fe35fe",
+          "iou_with_reviewed_trace": 0.6940212298112726,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.06",
+        "frame_id": "a244204acc8305bea103cdc9904afc776709497fc0a3887d4172c98b7b259b00",
+        "parent_points_pixels": [
+          [
+            1061,
+            327
+          ],
+          [
+            1125,
+            327
+          ],
+          [
+            1125,
+            365
+          ],
+          [
+            1061,
+            365
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            1128.985947551315,
+            323.63757002472084
+          ],
+          [
+            1128.985947551315,
+            366.94630658626556
+          ],
+          [
+            1058.858427494808,
+            366.94630658626556
+          ],
+          [
+            1058.858427494808,
+            323.63757002472084
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            1058.858427494808,
+            323.63757002472084,
+            1128.985947551315,
+            366.94630658626556
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  1128.985947551315,
+                  323.63757002472084
+                ],
+                [
+                  1128.985947551315,
+                  366.94630658626556
+                ],
+                [
+                  1058.858427494808,
+                  366.94630658626556
+                ],
+                [
+                  1058.858427494808,
+                  323.63757002472084
+                ],
+                [
+                  1128.985947551315,
+                  323.63757002472084
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "a244204acc8305bea103cdc9904afc776709497fc0a3887d4172c98b7b259b00",
+          "nominal_height_m": 1.0117669406840872,
+          "nominal_width_m": 1.6383000765793583,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "3bd1a5d43d66e0b91cb8fd6fec8e44a8ffa3eb1ce4179cc76d627898b43d53bc",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      486.0,
+                      1402.399169921875
+                    ],
+                    [
+                      428.6399841308594,
+                      1402.399169921875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1058.858427494808,
+                      366.94630658626556
+                    ],
+                    [
+                      1058.858427494808,
+                      323.63757002472084
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "cec07982cc41270d06ccd2f53a89570617b5e0dec5dedd6208363f58e06b8995",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      486.0,
+                      1495.2791748046875
+                    ],
+                    [
+                      428.6399841308594,
+                      1495.2791748046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1128.985947551315,
+                      366.94630658626556
+                    ],
+                    [
+                      1128.985947551315,
+                      323.63757002472084
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "e32f4f94992cd7aa1984582cf53e5f54cc4baa20073f75a1e62c3a161a290e6c",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      428.6399841308594,
+                      1402.399169921875
+                    ],
+                    [
+                      428.6399841308594,
+                      1495.2791748046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1058.858427494808,
+                      323.63757002472084
+                    ],
+                    [
+                      1128.985947551315,
+                      323.63757002472084
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "3e80308da86ea7cd94f3d84b766fae25b0250ee2c8fff00b8eec4dacd2cb824d",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      486.0,
+                      1402.399169921875
+                    ],
+                    [
+                      486.0,
+                      1495.2791748046875
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1058.858427494808,
+                      366.94630658626556
+                    ],
+                    [
+                      1128.985947551315,
+                      366.94630658626556
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 5.214759171859136,
+          "frame_id": "a244204acc8305bea103cdc9904afc776709497fc0a3887d4172c98b7b259b00",
+          "iou_with_reviewed_trace": 0.8007548452937353,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      },
+      {
+        "id": "w3.07",
+        "frame_id": "501523e19ebaf94d256ca8fc373dd5f96d9f525d122e10ac03c80897ba9b2734",
+        "parent_points_pixels": [
+          [
+            1402,
+            334
+          ],
+          [
+            1471,
+            334
+          ],
+          [
+            1471,
+            377
+          ],
+          [
+            1402,
+            377
+          ]
+        ],
+        "reviewed_points_pixels": [
+          [
+            1473.6436489167027,
+            330.704696059227
+          ],
+          [
+            1473.6436489167027,
+            378.18118649453936
+          ],
+          [
+            1394.999328266218,
+            378.18118649453936
+          ],
+          [
+            1394.999328266218,
+            330.704696059227
+          ]
+        ],
+        "original_source_cycle_proof": {
+          "aperture_identity_verified": false,
+          "bounds_pixels": [
+            1394.999328266218,
+            330.704696059227,
+            1473.6436489167027,
+            378.18118649453936
+          ],
+          "geometry_pixels": {
+            "coordinates": [
+              [
+                [
+                  1473.6436489167027,
+                  330.704696059227
+                ],
+                [
+                  1473.6436489167027,
+                  378.18118649453936
+                ],
+                [
+                  1394.999328266218,
+                  378.18118649453936
+                ],
+                [
+                  1394.999328266218,
+                  330.704696059227
+                ],
+                [
+                  1473.6436489167027,
+                  330.704696059227
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": "501523e19ebaf94d256ca8fc373dd5f96d9f525d122e10ac03c80897ba9b2734",
+          "nominal_height_m": 1.1091328747005136,
+          "nominal_width_m": 1.8372672588507653,
+          "physical_boundary_verified": false,
+          "source_side_support": [
+            {
+              "side": "left",
+              "source_intervals": [
+                {
+                  "component_id": "df0ab6dbad44fdeb34d27977ded3f58a1e06fa8c96f8ed6d33216ad7184e13b5",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      500.8799743652344,
+                      1847.59912109375
+                    ],
+                    [
+                      438.0,
+                      1847.59912109375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1394.999328266218,
+                      378.18118649453936
+                    ],
+                    [
+                      1394.999328266218,
+                      330.704696059227
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "right",
+              "source_intervals": [
+                {
+                  "component_id": "c1b8ed2e67a76fef0851864e6db216226c4821a6bbd83c13ce31d79010f77bd1",
+                  "interval_fractions": [
+                    -0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      500.8799743652344,
+                      1951.7591552734375
+                    ],
+                    [
+                      438.0,
+                      1951.7591552734375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1473.6436489167027,
+                      378.18118649453936
+                    ],
+                    [
+                      1473.6436489167027,
+                      330.704696059227
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "top",
+              "source_intervals": [
+                {
+                  "component_id": "38eec5b744cbc058defcfd624e7aed0263b03d382535c87aff398c03ad88cb43",
+                  "interval_fractions": [
+                    0.0,
+                    1.0
+                  ],
+                  "native_endpoints": [
+                    [
+                      438.0,
+                      1847.59912109375
+                    ],
+                    [
+                      438.0,
+                      1951.7591552734375
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1394.999328266218,
+                      330.704696059227
+                    ],
+                    [
+                      1473.6436489167027,
+                      330.704696059227
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            },
+            {
+              "side": "bottom",
+              "source_intervals": [
+                {
+                  "component_id": "383801287c2884f4057ecd25f9f14f69835b60abde50d4ec301e3519e3f29998",
+                  "interval_fractions": [
+                    0.026199825867552727,
+                    0.9737990635938805
+                  ],
+                  "native_endpoints": [
+                    [
+                      500.8799743652344,
+                      1844.71923828125
+                    ],
+                    [
+                      500.8799743652344,
+                      1954.63916015625
+                    ]
+                  ],
+                  "pixel_endpoints": [
+                    [
+                      1392.8249201150902,
+                      378.18118649453936
+                    ],
+                    [
+                      1475.8181492350122,
+                      378.18118649453936
+                    ]
+                  ],
+                  "ring_index": 0,
+                  "segment_index": 0
+                }
+              ]
+            }
+          ],
+          "world_geometry_additions": 0
+        },
+        "comparison_to_parent": {
+          "boundary_hausdorff_pixels": 7.737469404543542,
+          "frame_id": "501523e19ebaf94d256ca8fc373dd5f96d9f525d122e10ac03c80897ba9b2734",
+          "iou_with_reviewed_trace": 0.7946421062551867,
+          "physical_aperture_verified": false,
+          "status": "drawing_cycle_review_only"
+        },
+        "selection_mode": "Explicit visual source review of the full drawn window silhouette; not largest/nearest automated selection",
+        "physical_aperture_verified": false,
+        "added_connector_count": 0
+      }
+    ],
+    "source_coordinates_changed": false,
+    "sampling_bound_relaxed": false,
+    "automatic_aperture_reconstruction": false,
+    "physical_identity_verified": false,
+    "boarded_w3_13_carved": false,
+    "remaining_manual_opening_ids": [
+      "d3.01",
+      "d3.02",
+      "d3.03",
+      "w3.10",
+      "w3.11",
+      "w3.12",
+      "w3.14",
+      "w3.15"
+    ],
+    "junction_review": {
+      "checks": 3558,
+      "limitations": [
+        "Proximity to a reviewed cross section does not join source lines or prove an exterior end wall.",
+        "Neighbouring wing junctions, openings and vertical profiles require separate evidence."
+      ],
+      "mesh_update_authorized": false,
+      "proximity_bound_pixels": 2,
+      "rows": [
+        {
+          "end": "start",
+          "end_wall_exterior_identity_verified": false,
+          "end_wall_height_verified": false,
+          "mesh_update_authorized": false,
+          "proximity_fraction": 0.8890727302394335,
+          "reviewed_cross_section_pixels": [
+            [
+              1059.0,
+              305.0
+            ],
+            [
+              1184.0,
+              305.0
+            ]
+          ],
+          "source_segment_proofs": [
+            {
+              "native_endpoints": [
+                [
+                  406.0799865722656,
+                  1423.9991455078125
+                ],
+                [
+                  401.03997802734375,
+                  1423.9991455078125
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1075.167133798539,
+                  306.60401492035635
+                ],
+                [
+                  1075.167133798539,
+                  302.7986393633146
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.11333707038831199,
+                  0.14533707038831198
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "25dc0d5c06879184f89466436c12e807e0dc67457e2e910b8e7b71d6d32ea7a8"
+            },
+            {
+              "native_endpoints": [
+                [
+                  406.3199768066406,
+                  1450.399169921875
+                ],
+                [
+                  406.3199768066406,
+                  1453.0391845703125
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1095.1000380218466,
+                  306.785215599617
+                ],
+                [
+                  1097.0933376608955,
+                  306.785215599617
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.2888003041747725,
+                  0.3047467012871639
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "353fe488318469b0c2eae4a4a465fa35708eeee7ebb55b610f87c7f805c12d46"
+            },
+            {
+              "native_endpoints": [
+                [
+                  405.3599853515625,
+                  1423.9991455078125
+                ],
+                [
+                  405.3599853515625,
+                  1450.399169921875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1075.167133798539,
+                  306.06038984077895
+                ],
+                [
+                  1095.1000380218466,
+                  306.06038984077895
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.129337070388312,
+                  0.2888003041747725
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "4ca4a304fc02ee3dc45a86a9a36952c60832cc6fd46f06446b4bdf5d17480213"
+            },
+            {
+              "native_endpoints": [
+                [
+                  406.0799865722656,
+                  1414.1591796875
+                ],
+                [
+                  406.0799865722656,
+                  1423.9991455078125
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1067.737629447307,
+                  306.60401492035635
+                ],
+                [
+                  1075.167133798539,
+                  306.60401492035635
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.06990103557845577,
+                  0.129337070388312
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "714da8801324a5e45e5ad24e8dbcc221041842cb20118e141a35cfa65dab4b22"
+            },
+            {
+              "native_endpoints": [
+                [
+                  405.8399963378906,
+                  1482.7991943359375
+                ],
+                [
+                  406.0799865722656,
+                  1564.879150390625
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1119.563143561034,
+                  306.4228142410957
+                ],
+                [
+                  1181.5362643820845,
+                  306.60401492035635
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.4845384293563038,
+                  0.9803276343668876
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "7429b40a4138f115831cec99ca68ae716cd131658cff3dbc241046bd7fe9865e"
+            },
+            {
+              "native_endpoints": [
+                [
+                  404.8800048828125,
+                  1400.959228515625
+                ],
+                [
+                  402.7200012207031,
+                  1400.959228515625
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1057.771223419244,
+                  305.69798848225764
+                ],
+                [
+                  1057.771223419244,
+                  304.06711324352545
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.0,
+                  0.0061697873539524155
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "8c019ff2e61c21aa7204c1587f688563018988dca966fd221fdd64545a84a2ea"
+            },
+            {
+              "native_endpoints": [
+                [
+                  404.1600036621094,
+                  1019.839111328125
+                ],
+                [
+                  404.8800048828125,
+                  1402.879150390625
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  770.0127473540633,
+                  305.15436340268025
+                ],
+                [
+                  1059.2208288533293,
+                  305.69798848225764
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.0,
+                  0.0017771269107615807
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "8c5168d85718f110e49fbcd98305d03207e48b66c5ab5bb3769ff4709be8c411"
+            },
+            {
+              "native_endpoints": [
+                [
+                  406.3199768066406,
+                  1450.399169921875
+                ],
+                [
+                  401.03997802734375,
+                  1450.399169921875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1095.1000380218466,
+                  306.785215599617
+                ],
+                [
+                  1095.1000380218466,
+                  302.7986393633146
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.27280030417477247,
+                  0.30480030417477244
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "cd8693c455fe83326f87364655a9ec35482c64fb02ec2356f2f258d45642dc6a"
+            },
+            {
+              "native_endpoints": [
+                [
+                  404.3999938964844,
+                  1455.919189453125
+                ],
+                [
+                  404.6399841308594,
+                  1480.399169921875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1099.267837979205,
+                  305.3355640819409
+                ],
+                [
+                  1117.7510446012457,
+                  305.51676476120156
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.32216902153525007,
+                  0.4700488857626133
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "edd9ce1295a9b6af83f1927b088812ccfb2c1660770eb793c27ebba54f0fae29"
+            },
+            {
+              "native_endpoints": [
+                [
+                  406.3199768066406,
+                  1455.919189453125
+                ],
+                [
+                  406.3199768066406,
+                  1481.119140625
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1099.267837979205,
+                  306.785215599617
+                ],
+                [
+                  1118.2946466390276,
+                  306.785215599617
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.3221427038336406,
+                  0.4743571731122211
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "f0d75e1a260c172591199bbf081ba495b0e3ee30d555fac751249cd58b4c8bf4"
+            }
+          ],
+          "status": "junction_requires_source_and_elevation_review",
+          "unsupported_review_trace": {
+            "coordinates": [
+              [
+                [
+                  1059.771223419244,
+                  305.0
+                ],
+                [
+                  1067.737629447307,
+                  305.0
+                ]
+              ],
+              [
+                [
+                  1097.1000380218466,
+                  305.0
+                ],
+                [
+                  1099.267837979205,
+                  305.0
+                ]
+              ],
+              [
+                [
+                  1118.2946466390276,
+                  305.0
+                ],
+                [
+                  1119.567303669538,
+                  305.0
+                ]
+              ],
+              [
+                [
+                  1181.540954295861,
+                  305.0
+                ],
+                [
+                  1184.0,
+                  305.0
+                ]
+              ]
+            ],
+            "type": "MultiLineString"
+          }
+        },
+        {
+          "end": "end",
+          "end_wall_exterior_identity_verified": false,
+          "end_wall_height_verified": false,
+          "mesh_update_authorized": false,
+          "proximity_fraction": 0.3610095806554164,
+          "reviewed_cross_section_pixels": [
+            [
+              1059.0,
+              991.0
+            ],
+            [
+              1184.0,
+              991.0
+            ]
+          ],
+          "source_segment_proofs": [
+            {
+              "native_endpoints": [
+                [
+                  1312.5599365234375,
+                  1466.2391357421875
+                ],
+                [
+                  1299.1199951171875,
+                  1479.67919921875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1107.0597436889584,
+                  991.0267919349353
+                ],
+                [
+                  1117.2074425634637,
+                  980.8791852276117
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.38426361597890174,
+                  0.407319806694566
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "1c71165d2e554b40033055663b5596c76cc844f75d048c0cd6350c21219453c1"
+            },
+            {
+              "native_endpoints": [
+                [
+                  1312.5599365234375,
+                  1466.2391357421875
+                ],
+                [
+                  1312.5599365234375,
+                  1447.2791748046875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1107.0597436889584,
+                  991.0267919349353
+                ],
+                [
+                  1092.7443370242763,
+                  991.0267919349353
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.26995469619421053,
+                  0.38447794951166725
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "65ddbea461453cc0ee0746e8d16d84a37ccc56429735773e369f396759e356af"
+            },
+            {
+              "native_endpoints": [
+                [
+                  1147.43994140625,
+                  1400.71923828125
+                ],
+                [
+                  1314.0,
+                  1400.2391357421875
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1057.5900227399834,
+                  866.3556554086099
+                ],
+                [
+                  1057.2275292142804,
+                  992.114088177681
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.0,
+                  0.0018459906905736716
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 0,
+              "source_candidate_id": "75b44074d8576f04369382c35415ca10f06d574953c4dd1c19ab98704ca68dfd"
+            },
+            {
+              "native_endpoints": [
+                [
+                  1313.52001953125,
+                  1447.2791748046875
+                ],
+                [
+                  1313.52001953125,
+                  1410.5592041015625
+                ]
+              ],
+              "pixel_endpoints": [
+                [
+                  1092.7443370242763,
+                  991.7516868191597
+                ],
+                [
+                  1065.0195270912154,
+                  991.7516868191597
+                ]
+              ],
+              "review_trace_proximity_intervals": [
+                [
+                  0.04815621672972338,
+                  0.26995469619421053
+                ]
+              ],
+              "ring_index": 0,
+              "segment_index": 1,
+              "source_candidate_id": "dad5c843370e1675f329ead8af9a1ccf1d6e079ff1ee9296462a96ec71e419ad"
+            }
+          ],
+          "status": "junction_requires_source_and_elevation_review",
+          "unsupported_review_trace": {
+            "coordinates": [
+              [
+                [
+                  1059.2307488363217,
+                  991.0
+                ],
+                [
+                  1065.0195270912154,
+                  991.0
+                ]
+              ],
+              [
+                [
+                  1109.9149758368208,
+                  991.0
+                ],
+                [
+                  1184.0,
+                  991.0
+                ]
+              ]
+            ],
+            "type": "MultiLineString"
+          }
+        }
+      ],
+      "source_coordinates_changed": false,
+      "status": "plan_junction_proximity_only"
+    },
+    "end_wall_solids_added": 0,
+    "world_placement_eligible": false
+  }
+}

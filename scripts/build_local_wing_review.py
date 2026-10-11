@@ -42,6 +42,7 @@ def isolated_world(model, output):
             'wall_roof_alias_cells':len(walls&roof),'unresolved':model['unresolved'],
             'display_palette_only':{'walls':'stone_bricks','roof':'dark_oak_planks'},
             'aperture_proposal_review':model.get('aperture_proposal_review'),
+            'opening_cycle_review':model.get('opening_cycle_review'),
             'limitations':['Partial open surface study: outer facade, end walls, adjacent roofs and interiors omitted.',
                            'One-block surface thickness and materials are display proxies.',
                            'Roof assembly remains a cross-date hypothesis; no accepted park registration.',

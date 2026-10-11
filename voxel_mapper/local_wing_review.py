@@ -99,6 +99,9 @@ def build(recipe, source_paths):
     if 'aperture_proposal_review' in recipe:
         result['aperture_proposal_review']=recipe['aperture_proposal_review']
         result['unresolved'].append('Arch right-spring connector remains a hypothesis; reviewed derivative is not physical verification')
+    if 'opening_cycle_review' in recipe:
+        result['opening_cycle_review']=recipe['opening_cycle_review']
+        result['unresolved'].append('Seven source window outline cycles are explicitly reviewed drawing silhouettes; physical aperture extents remain unverified')
     for key, path in source_paths.items():
         if digest(Path(path).read_bytes()) != pins[key]: raise ValueError('Source changed during review')
     if abs(length - elevation_length) > width_bound:

@@ -1,0 +1,67 @@
+{
+  "first_outline_summary": {
+    "version": "wing-outline-review-v1",
+    "outline_path": "/workspace/scratch/3db5a87a149e/mutiny-outline-study/area-replay/work/mutiny-bay/wing-outline-reviews/0/wing-outline-review.json",
+    "outline_sha256": "22d0f82cf62f78b5e94418842427b81743d9ef95011ae3a0c43481651630e827",
+    "reused": false,
+    "source_cycle_count": 199,
+    "opening_statuses": {
+      "competing_source_cycles": 14,
+      "one_source_cycle": 1,
+      "no_nearby_source_cycle": 1
+    },
+    "junction_status": "plan_junction_proximity_only",
+    "mesh_update_authorized": false,
+    "world_geometry_additions": 0
+  },
+  "replay_outline_summary": {
+    "version": "wing-outline-review-v1",
+    "outline_path": "/workspace/scratch/3db5a87a149e/mutiny-outline-study/area-replay/work/mutiny-bay/wing-outline-reviews/0/wing-outline-review.json",
+    "outline_sha256": "22d0f82cf62f78b5e94418842427b81743d9ef95011ae3a0c43481651630e827",
+    "reused": true,
+    "source_cycle_count": 199,
+    "opening_statuses": {
+      "competing_source_cycles": 14,
+      "one_source_cycle": 1,
+      "no_nearby_source_cycle": 1
+    },
+    "junction_status": "plan_junction_proximity_only",
+    "mesh_update_authorized": false,
+    "world_geometry_additions": 0
+  },
+  "replay_extraction": {
+    "version": "drawing-geometry-v2",
+    "contract": "f6d2894c0bb9ffad446d5f4740c4bab6b3fa83bd8c33eeef964461bb74fa003e",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 10000,
+      "max_points": 10000,
+      "max_total_points": 200000,
+      "min_line_length_points": 0.25
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 3,
+    "run_pages": 0,
+    "resumed_pages": 3,
+    "candidates": 5286,
+    "candidate_types": {
+      "line": 5201,
+      "polygon": 85
+    },
+    "curved_candidates": 11,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 3
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "9a2c69a30c124e7942899cc4d3cb2c1ad55cfc716dede03ef862e251228b81cb",
+      "polygon": "67ded263747ef6ce6218b4c30dd47d95020e6eaf52079ee64ad02b1c0ff565f1",
+      "line": "b05efd8d7b51b875c6ed8f11a930cf203fed9abae7b6705c74fd7943210e040a"
+    },
+    "world_geometry_additions": 0
+  },
+  "tampered_receipt_rejected": true,
+  "status": "awaiting_reconstruction",
+  "world_geometry_additions": 0
+}

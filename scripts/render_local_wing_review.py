@@ -32,9 +32,10 @@ def render(model_path,output):
         crop=pixels[top:bottom,left:right];ax.remove()
         panel=fig.add_axes([.05,.14,.90,.64]);panel.imshow(crop);panel.set_axis_off()
     fig.text(.05,.93,'MUTINY BAY · NORTH COURTYARD RANGE',color='#a6b9cf',fontsize=12,weight='bold')
-    fig.text(.05,.87,'Source-refined arch · provisional 3D study' if reviewed_arch else 'First vertical reconstruction study',color='#eef5fc',fontsize=25,weight='bold')
+    reviewed_windows='opening_cycle_review' in model
+    fig.text(.05,.87,'Source-refined windows + arch · 3D study' if reviewed_windows else 'Source-refined arch · provisional 3D study' if reviewed_arch else 'First vertical reconstruction study',color='#eef5fc',fontsize=25,weight='bold')
     fig.text(.05,.82,f"Frontage {length:.2f} m · eaves {m['eaves_m']:.2f} m · ridge {m['ridge_m']:.2f} m above drawn floor",color='#a6b9cf',fontsize=12)
-    fig.text(.05,.095,'Arch follows source linework with one explicit gap hypothesis; 15 other openings retain reviewed traces.' if reviewed_arch else '16 traced openings retained, including archway 3. Courtyard wall + main roof candidate; other faces omitted.',color='#d2dfed',fontsize=11)
+    fig.text(.05,.095,'Seven windows follow complete source cycles. Arch retains its gap hypothesis. End junctions remain unresolved.' if reviewed_windows else 'Arch follows source linework with one explicit gap hypothesis; 15 other openings retain reviewed traces.' if reviewed_arch else '16 traced openings retained, including archway 3. Courtyard wall + main roof candidate; other faces omitted.',color='#d2dfed',fontsize=11)
     fig.text(.05,.052,'Reviewed drawing traces · cross-date roof assembly hypothesis · no geographic placement · display colours',color='#94a9c2',fontsize=10)
     fig.savefig(output,dpi=180,facecolor=fig.get_facecolor());plt.close(fig)
 
