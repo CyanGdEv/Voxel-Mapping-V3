@@ -73,6 +73,25 @@ class WingShapeTests(unittest.TestCase):
         self.assertEqual(a['glazing_policy'],'disabled_by_user')
         self.assertFalse(any('glass' in m for m in c.values()))
 
+    def test_narrow_arch_pier_survives_adjacent_window_sampling(self):
+        from voxel_mapper.local_wing_review import build
+        recipe=copy.deepcopy(self.f.recipe)
+        recipe['openings'][0]['kind']='archway'
+        recipe['openings'][0]['points_pixels']=[[110,200],[170,200],[170,80],[110,80]]
+        recipe['openings'][1]['points_pixels']=[[180,175],[230,175],[230,80],[180,80]]
+        c,a=assemble(build(recipe,self.f.paths));half=occupied_halves(c)
+        self.assertEqual(len(a['arch_side_supports']),2)
+        self.assertTrue(a['arch_side_support_contact_verified'])
+        self.assertTrue(a['arch_head_profiles'][0]['crown_profile_order_verified'])
+        for support in a['arch_side_supports']:
+            hx=2*support['column']+support['half_column']
+            for y in range(4):
+                for z in (0,1):self.assertIn((hx,y,z),half)
+            self.assertTrue(any((hx,4,z) in half for z in (0,1)))
+        self.assertTrue(any(r['changes'] for r in a['arch_side_supports']))
+        recipe['openings'][1]['points_pixels']=[[175,175],[230,175],[230,80],[175,80]]
+        with self.assertRaisesRegex(ValueError,'continuous source masonry'):assemble(build(recipe,self.f.paths))
+
     def test_roof_profiles_and_native_states_survive_cold_export(self):
         from scripts.build_local_wing_review import isolated_world
         r=isolated_world(self.model,self.f.root/'world',native_shapes=True)

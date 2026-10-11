@@ -6,7 +6,7 @@ from shapely.geometry import LineString,Point,Polygon,box
 from shapely.ops import unary_union
 
 
-VERSION='wing-native-shape-review-v2'
+VERSION='wing-native-shape-review-v3'
 
 
 def profiles():
@@ -18,12 +18,14 @@ def profiles():
             ('stairs_high_top',unary_union([top,box(.5,0,1,.5)])),('full',box(0,0,1,1))]
 
 
-def fit(target):
+def fit(target,required=None):
     # Exact areas avoid per-triangle centroid losses and input triangulation bias.
     choices=[]
     for name,geometry in profiles():
+        if required is not None and not geometry.covers(required):continue
         missing=target.difference(geometry).area;extra=geometry.difference(target).area
         choices.append((missing+extra,name,missing,extra))
+    if not choices:raise ValueError('Native support cannot be represented')
     return min(choices,key=lambda r:(round(r[0],12),r[1]!='air',r[1]))
 
 
@@ -106,6 +108,37 @@ def assemble(model,*,max_checks=100000):
             if (x,y,0) in forced_air:name='air';missing=target.area;extra=0
             missing_area+=missing;extra_area+=extra
             if name!='air':cells[x,y,0]=material(name,'stone_brick','west','east')
+    # A narrow source pier can disappear at a window, disconnecting its base.
+    # Preserve a connected half-block strip outside each declared arch passage.
+    # Source core intervals exclude every aperture projection over standing height.
+    arch_supports=[]
+    for passage in clearance:
+        row=next(r for r in rows if r['id']==passage['id'])
+        if row['kind']!='archway':continue
+        for side,x in [('left',min(passage['columns'])-1),('right',max(passage['columns'])+1)]:
+            if x<0 or x>=length:raise ValueError('Arch side support is outside reviewed facade')
+            projections=[]
+            for _,hole in holes:
+                charge()
+                overlap=hole.intersection(box(x,0,min(x+1,length),2))
+                if not overlap.is_empty:
+                    lo,_,hi,_=overlap.bounds
+                    if hi>lo:projections.append(LineString([(lo,0),(hi,0)]))
+            core=LineString([(x,0),(min(x+1,length),0)]).difference(unary_union(projections))
+            if core.length<.125:raise ValueError('Arch side lacks representable continuous source masonry')
+            widths=[core.intersection(LineString([(x+dx*.5,0),(min(x+(dx+1)*.5,length),0)])).length for dx in (0,1)]
+            dx=max(range(2),key=lambda i:(widths[i],-i))
+            required=box(dx*.5,0,(dx+1)*.5,1)
+            changes=[]
+            for y in (0,1):
+                charge();target=translate(wall.intersection(box(x,y,x+1,y+1)),xoff=-x,yoff=-y)
+                _,name,_,_=fit(target,required)
+                before=cells.get((x,y,0),'air');after=material(name,'stone_brick','west','east')
+                cells[x,y,0]=after
+                if before!=after:changes.append({'cell':[x,y,0],'before':before,'after':after})
+            arch_supports.append({'id':row['id'],'side':side,'column':x,'half_column':dx,
+                                  'continuous_source_core_width_m':core.length,'native_support_width_m':.5,
+                                  'display_quantization':True,'physical_pier_width_verified':False,'changes':changes})
     # Report and withhold disconnected masonry components instead of inventing thin piers.
     wall_half=occupied_halves(cells);todo=set(wall_half);groups=[]
     while todo:
@@ -161,6 +194,25 @@ def assemble(model,*,max_checks=100000):
             if (x,y,z) in cells:aliases.append((x,y,z));continue
             cells[x,y,z]=m;roof_cells.add((x,y,z))
     half=occupied_halves(cells)
+    for support in arch_supports:
+        hx=2*support['column']+support['half_column']
+        if any((hx,hy,hz) not in half for hy in range(4) for hz in (0,1)):
+            raise ValueError('Arch support disappeared during native assembly')
+        if not any((hx,4,hz) in half for hz in (0,1)):
+            raise ValueError('Arch support does not contact its head')
+    arch_heads=[]
+    for passage in clearance:
+        row=next(r for r in rows if r['id']==passage['id'])
+        if row['kind']!='archway':continue
+        start=2*min(passage['columns']);end=2*(max(passage['columns'])+1)
+        heights=[next((hy*.5 for hy in range(2*math.ceil(eaves)) if (hx,hy,0) in half),math.ceil(eaves))
+                 for hx in range(start,end)]
+        highest=max(p[1] for p in row['local_polygon_xz'])
+        apex=sum(p[0] for p in row['local_polygon_xz'] if p[1]==highest)/sum(p[1]==highest for p in row['local_polygon_xz'])
+        middle=min(len(heights)-1,max(0,math.floor(2*apex)-start))
+        if any(a>b for a,b in zip(heights[:middle],heights[1:middle+1])) or any(a<b for a,b in zip(heights[middle:],heights[middle+1:])):
+            raise ValueError('Quantized arch head reverses its source crown')
+        arch_heads.append({'id':row['id'],'half_column_clearance_m':heights,'crown_profile_order_verified':True})
     if any(p in half for x,y,z in forced_air for p in [(2*x+dx,2*y+dy,2*z+dz) for dx in (0,1) for dy in (0,1) for dz in (0,1)]):
         raise ValueError('Native shape obstructs declared passage clearance')
     return cells,{'version':VERSION,'world_blocks_per_source_metre':1,'shape_resolution_m':.5,'source_mesh_changed':False,
@@ -171,6 +223,8 @@ def assemble(model,*,max_checks=100000):
                   'roof_adjacent_profile_contact_verified':True,
                   'roof_shell_thickness_display_m':[.5,1],'wall_roof_aliases':aliases,'passage_clearance':clearance,
                   'native_passage_air_verified':True,'glass_proxy_cells':[],'glazing_policy':'disabled_by_user','checks':checks,
+                  'arch_side_supports':arch_supports,'arch_side_support_contact_verified':True,
+                  'arch_head_profiles':arch_heads,
                   'limitations':['Partial facade and two-slope roof only; rear/end walls and measured construction thickness are unresolved.',
                                  'Native slabs/stairs and passage clearance quantize source silhouettes; they do not establish physical aperture accuracy.',
                                  'Glazing is disabled by user instruction; window voids remain open.',
