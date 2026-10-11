@@ -50,10 +50,16 @@ class ArchitecturalTests(unittest.TestCase):
             report=interpret_page(page,SHA,1,parents,records,SCALE)
             self.assertEqual(report['bound_roof_labels'],1)
             self.assertEqual(report['printed_claims'][0]['candidate_id'],records[0]['id'])
+            self.assertEqual(report['roof_region_associations'][0]['source_candidate'],records[0])
+            self.assertEqual(report['roof_region_associations'][0]['printed_claim_indices'],[0])
+            self.assertFalse(report['roof_region_associations'][0]['physical_identity_verified'])
+            self.assertEqual(report['roof_region_associations'][0]['world_geometry_additions'],0)
             with patch('voxel_mapper.architectural_interpretation.screen_span',return_value={'status':'withheld'}):
                 self.assertEqual(interpret_page(page,SHA,1,parents,records,SCALE)['bound_roof_labels'],0)
             other=copy.deepcopy(records[0]);other['id']='overlapping'
-            self.assertEqual(interpret_page(page,SHA,1,parents,records+[other],SCALE)['bound_roof_labels'],0)
+            ambiguous=interpret_page(page,SHA,1,parents,records+[other],SCALE)
+            self.assertEqual(ambiguous['bound_roof_labels'],0)
+            self.assertEqual(ambiguous['roof_region_associations'],[])
             with self.assertRaisesRegex(ValueError,'Source-bound'):interpret_page(page,SHA,1,parents,records,{**SCALE,'page':2})
 
     def test_native_stage_resume_tamper_and_park_pipeline(self):

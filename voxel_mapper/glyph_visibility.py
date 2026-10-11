@@ -4,6 +4,7 @@ import numpy as np
 import pymupdf
 
 VERSION='source-font-glyph-raster-screen-v2'
+INK_VERSION='source-font-isolated-glyph-screen-v1'
 
 
 def grow(mask,steps=1):
@@ -13,11 +14,13 @@ def grow(mask,steps=1):
     return mask
 
 
-def screen_span(page,span,*,zoom=6,max_pixels=1000000):
+def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
     """Screen exact native glyph origins against rendered source; never certify source identity."""
     if zoom not in (6,12,24) or type(max_pixels) is not int or not 1<=max_pixels<=1000000:
         raise ValueError('Supported fixed raster scale and bounded raster budget required')
-    failure={'status':'withheld','visibility_verified':False,'version':VERSION}
+    if type(isolate_glyphs) is not bool:raise ValueError('Boolean glyph isolation required')
+    version=INK_VERSION if isolate_glyphs else VERSION
+    failure={'status':'withheld','visibility_verified':False,'version':version}
     if (span.get('type')!=0 or span.get('opacity')!=1
             or span.get('layer') or span.get('color') not in ((0.,0.,0.),(0.,))
             or not span['chars'] or len(span['chars'])>500
@@ -46,6 +49,8 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
     try:
         page.set_rotation(0)
         source=page.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,colorspace=pymupdf.csGRAY,alpha=False)
+        source_gray=np.frombuffer(source.samples,np.uint8).reshape(source.height,source.width)
+        isolated=[]
         with pymupdf.open() as document:
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
             font_name='nativeSource' if font_buffer else 'helv'
@@ -74,7 +79,25 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
                 content=document.get_new_xref();document.update_object(content,'<<>>')
                 document.update_stream(content,'\n'.join(commands).encode('ascii'))
                 document.xref_set_key(reference.xref,'Contents',f'{content} 0 R')
+                if isolate_glyphs:
+                    if source.width*source.height*sum(c[0]!=32 for c in span['chars'])>20000000:
+                        return {**failure,'reason':'Isolated glyph raster budget exceeded'}
+                    # Thin CAD strokes may have no nearly-black pixels at the
+                    # fixed raster scale. Match their antialiased ink using
+                    # the same threshold in source and isolated reference.
+                    support=grow(source_gray<200)
+                    for i,(character,command) in enumerate(zip(span['chars'],commands)):
+                        if character[0]==32:continue
+                        document.update_stream(content,command.encode('ascii'))
+                        glyph=reference.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,colorspace=pymupdf.csGRAY,alpha=False)
+                        if (glyph.width,glyph.height,glyph.x,glyph.y)!=(source.width,source.height,source.x,source.y):
+                            return {**failure,'reason':'Isolated glyph raster frames differ'}
+                        mask=np.frombuffer(glyph.samples,np.uint8).reshape(glyph.height,glyph.width)<200
+                        isolated.append({'character_index':i,'core_pixels':int(mask.sum()),
+                            'unsupported_core_pixels':int(np.count_nonzero(mask&~support))})
+                    document.update_stream(content,'\n'.join(commands).encode('ascii'))
             else:
+                if isolate_glyphs:return {**failure,'reason':'Isolated glyph screen requires original TrueType glyph IDs'}
                 for character in span['chars']:
                     options={'rotate':angle} if rotation_matrix is None else {'morph':(pymupdf.Point(character[2]),rotation_matrix)}
                     reference.insert_text(character[2],chr(character[0]),fontname=font_name,fontsize=span['size'],color=(0,0,0),**options)
@@ -94,15 +117,29 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
             mask=core[top:bottom,left:right];count=int(np.count_nonzero(mask))
             missing=int(np.count_nonzero(mask&~support[top:bottom,left:right]))
             glyphs.append({'character_index':i,'core_pixels':count,'unsupported_core_pixels':missing})
+        if isolate_glyphs:glyphs=isolated
         supported=bool(glyphs) and all(g['core_pixels']>=3 and g['unsupported_core_pixels']/g['core_pixels']<=.01 for g in glyphs)
         supported=supported and ring_count>0 and unexpected/ring_count<=.01
-        return {'status':'raster_consistent_candidate' if supported else 'withheld','version':VERSION,'visibility_verified':False,
+        return {'status':'raster_consistent_candidate' if supported else 'withheld','version':version,'visibility_verified':False,
                 'source_font_sha256':hashlib.sha256(font_buffer).hexdigest() if font_buffer else None,
                 'glyph_encoding':'source_glyph_ids' if direct_glyphs else 'unicode',
                 'source_font_xrefs':[f[0] for f in fonts],'zoom_pixels_per_pdf_point':zoom,'source_rotation_restored':rotation,'glyphs':glyphs,
                 'ring_pixels':ring_count,'unexpected_dark_ring_pixels':unexpected,
                 'pixel_position_tolerance':1,'max_unsupported_core_fraction_per_glyph':.01,'max_unexpected_dark_ring_fraction':.01,
+                **({'glyph_support_basis':'isolated_original_glyph_ink',
+                    'glyph_ink_grayscale_threshold':200,'source_support_grayscale_threshold':200,
+                    'isolated_glyph_pixel_budget':20000000} if isolate_glyphs else {}),
                 'limitations':['Raster consistency is a screen, not proof of semantic/material or as-built identity.',
                                'Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.',
                                'A one-pixel position tolerance applies at the retained raster scale.']}
     finally:page.set_rotation(rotation)
+
+
+def screen_architectural_span(page,span,*,zoom=6,max_pixels=1000000):
+    """Recover native-box clipping only through each original glyph's own ink."""
+    result=screen_span(page,span,zoom=zoom,max_pixels=max_pixels)
+    if (result['status']=='withheld' and result.get('glyph_encoding')=='source_glyph_ids'
+            and any(g['core_pixels']<3 for g in result.get('glyphs',[]))):
+        isolated=screen_span(page,span,zoom=zoom,max_pixels=max_pixels,isolate_glyphs=True)
+        return {**isolated,'native_character_box_screen':result}
+    return result

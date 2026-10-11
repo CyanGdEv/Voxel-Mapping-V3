@@ -11,9 +11,9 @@ from shapely.strtree import STRtree
 from .drawing_components import split_page
 from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
-from .glyph_visibility import screen_span
+from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v1'
+VERSION='architectural-interpretation-v2'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -137,12 +137,19 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
             hits=[int(i) for i in index.query(label_polygon,predicate='intersects') if geometries[int(i)].contains(label_polygon)]
             if len(hits)==1:row.update(association_status='unique_complete_roof_label_enclosure',candidate_id=ids[hits[0]])
             elif hits:row['association_status']='ambiguous_enclosures'
+            else:row['association_status']='no_complete_roof_label_enclosure'
         labels.append(row)
+    associations=[{'candidate_id':identifier,'source_candidate':faces[identifier],
+        'printed_claim_indices':[i for i,r in enumerate(labels) if r['candidate_id']==identifier],
+        'association_status':'unique_complete_roof_label_enclosure','physical_identity_verified':False,
+        'registration_verified':False,'world_geometry_additions':0}
+        for identifier in sorted({r['candidate_id'] for r in labels if r['candidate_id'] is not None})]
     return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
         'source_parent_records_sha256':hashlib.sha256(json.dumps(parents,sort_keys=True).encode()).hexdigest(),
         'source_polygon_records_sha256':hashlib.sha256(json.dumps(polygons,sort_keys=True).encode()).hexdigest(),
         'status':'architectural_component_candidates_only','wall_band_candidates':bands,'network_review':network,
         'printed_claims':labels,'role_counts':dict(Counter(r['printed_claim']['role'] for r in labels)),
+        'roof_region_associations':associations,
         'bound_roof_labels':sum(r['candidate_id'] is not None for r in labels),
         'visible_claim_counts':dict(Counter(r['printed_claim']['role'] for r in labels if r['glyph_screen']['status']=='raster_consistent_candidate')),
         'printed_scale_review':scale_review,'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0,
@@ -157,7 +164,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .drawing_geometry import extract_page
     from .linework_boundaries import recover_page,VERSION as recovery_version
     from .mapped_alignment_checks import printed_scale_review,VERSION as alignment_version
-    from .glyph_visibility import VERSION as glyph_version
+    from .glyph_visibility import VERSION as glyph_version,INK_VERSION as glyph_ink_version
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -168,7 +175,8 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
         return hashlib.sha256(json.dumps({k:report[k] for k in ('version','contract','options')},sort_keys=True).encode()).hexdigest()
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
-        'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version}
+        'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
+        'glyph_ink_version':glyph_ink_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
