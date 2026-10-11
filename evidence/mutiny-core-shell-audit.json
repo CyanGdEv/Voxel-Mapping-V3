@@ -1,0 +1,151 @@
+{
+  "version": "mutiny-core-shell-audit-v1",
+  "status": "provisional_core_shell_with_explicit_hypotheses",
+  "parent_model_sha256": "32baa7750ff4eb7ee325fd525bd6d4003eec91044dc3ed0932270bfeb0fe84d0",
+  "source_parent_bytes_unchanged": true,
+  "closure_seed_sha256": "a39c0a1f803861b6fac3c38c8acb5f1534bc22df7b4423654f8699183fd0d9e8",
+  "component_meshes": [
+    {
+      "id": "courtyard_wall",
+      "evidence": "reviewed front silhouette; assumed inward thickness",
+      "vertices": 240,
+      "triangles": 524,
+      "watertight": true,
+      "volume_m3": 47.60645758642851
+    },
+    {
+      "id": "rear_wall",
+      "evidence": "hypothetical rear closure; only arch is provisionally projected through",
+      "vertices": 120,
+      "triangles": 236,
+      "watertight": true,
+      "volume_m3": 59.37657080539668
+    },
+    {
+      "id": "left_junction_cap",
+      "evidence": "temporary joining-plane closure; not an exposed surveyed gable",
+      "vertices": 10,
+      "triangles": 16,
+      "watertight": true,
+      "volume_m3": 16.037497301262118
+    },
+    {
+      "id": "right_junction_cap",
+      "evidence": "temporary joining-plane closure; not an exposed surveyed gable",
+      "vertices": 10,
+      "triangles": 16,
+      "watertight": true,
+      "volume_m3": 16.03749730126218
+    },
+    {
+      "id": "roof_shell",
+      "evidence": "reviewed slope hypothesis; assumed vertical thickness",
+      "vertices": 12,
+      "triangles": 20,
+      "watertight": true,
+      "volume_m3": 46.82200123338214
+    },
+    {
+      "id": "floor",
+      "evidence": "drawn floor zero; assumed floor slab and footprint closure",
+      "vertices": 8,
+      "triangles": 12,
+      "watertight": true,
+      "volume_m3": 46.82200123338213
+    }
+  ],
+  "native_summary": {
+    "retained_surface_cells": 296,
+    "added_cells": 356,
+    "total_surface_cells": 652,
+    "additions_by_part": {
+      "rear_wall": 120,
+      "left_junction_cap": 22,
+      "right_junction_cap": 22,
+      "floor": 192
+    },
+    "native_grid": [
+      32,
+      6
+    ],
+    "arch_standing_air_verified_through_depth": true,
+    "arch_columns": [
+      14,
+      15,
+      16,
+      17
+    ],
+    "original_front_roof_cells_unchanged": true,
+    "glazing_cells": 0,
+    "assumptions": [
+      "Rear opening inventory is unresolved; absence of additional rear apertures is a temporary display closure.",
+      "Front arch is projected through the depth as a passage hypothesis; rear arch correspondence remains unverified.",
+      "End caps close joining planes temporarily; neighbouring wings and roof junctions are not reconstructed.",
+      "Wall, roof and floor thicknesses and materials are display choices, not measured construction.",
+      "Room partitions, upper floors, stairs, annexes and neighbouring ranges remain outside this core-shell study.",
+      "Individual solids are closed; overlapping assembly components are not a boolean-unioned manifold."
+    ],
+    "exact_components_watertight": true,
+    "assembly_boolean_union": false,
+    "park_world_blocks_added": 0
+  },
+  "native_world": {
+    "format": "Bedrock .mcworld",
+    "file": "park.mcworld",
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "blocks_per_metre": 1,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "vertical_offset_blocks": 65,
+    "geographic_elevation_m": null,
+    "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+    "spawn": [
+      16,
+      67,
+      7
+    ],
+    "chunks": 8,
+    "composed_blocks": 5860,
+    "explicit_air_cells": 0,
+    "ground_fill_depth_blocks": 4,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "foundation": {
+      "minecraft_y": 60,
+      "mode": "shared",
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+    },
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "sha256": "6fa3b9b14b4156a2361d75effd65765da774d481c4a58daa86a60a64061e1a83",
+    "quality": "draft_unverified",
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ]
+  },
+  "validation": {
+    "expected_tests": 1049,
+    "tests_run": 1049,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "latest_shell_tests": {
+    "tests_run": 5,
+    "failures": 0,
+    "errors": 0
+  },
+  "surveyed_complete_structure": false,
+  "full_complex_reconstructed": false,
+  "assembly_boolean_union": false,
+  "park_world_blocks_added": 0,
+  "world_placement_eligible": false,
+  "in_game_visual_check": "pending"
+}
