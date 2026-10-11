@@ -47,12 +47,12 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--model',required=True);p.add_argument('--output',required=True);p.add_argument('--cutaway',action='store_true');a=p.parse_args()
     model=json.loads(Path(a.model).read_text());panels=[panel(model,-65,a.cutaway),panel(model,115,a.cutaway)];width=1800
     panels=[im.resize((width,round(im.height*width/im.width)),Image.Resampling.LANCZOS) for im in panels]
-    im=Image.new('RGB',(1900,sum(p.height for p in panels)+330),'white');draw=ImageDraw.Draw(im)
+    im=Image.new('RGB',(1900,sum(p.height for p in panels)+370),'white');draw=ImageDraw.Draw(im)
     font='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf';title=ImageFont.truetype(font,36);small=ImageFont.truetype(font,24);y=30
     labels=['Source partition cutaway | courtyard side','Source partition cutaway | rear side'] if a.cutaway else ['North range core shell | courtyard side','North range core shell | rear side']
     for p,label in zip(panels,labels):
         draw.text((50,y),label,font=title,fill='#172534');y+=70;im.paste(p,(50,y));y+=p.height+30
-    for line in ['Green: reviewed plan wall strip; height assumed. Roof hidden for inspection.' if a.cutaway else 'Blue: reviewed courtyard silhouette. Amber: provisional rear wall and joining-plane closures.',
+    for line in ['Green: reviewed plan wall strips; heights assumed. Roof hidden for inspection.' if a.cutaway else 'Blue: reviewed courtyard silhouette. Amber: provisional rear wall and joining-plane closures.',
                  'Rear arch projection, construction thickness and floor slab are assumptions. No glass is generated.',
                  'This closes the selected range for review; neighbouring wings, annexes and room interiors remain unresolved.']:
         draw.text((50,y),line,font=small,fill='#485565');y+=38

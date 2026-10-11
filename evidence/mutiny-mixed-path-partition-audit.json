@@ -1,0 +1,515 @@
+{
+  "version": "mutiny-mixed-path-partition-audit-v1",
+  "parent_model_sha256": "32baa7750ff4eb7ee325fd525bd6d4003eec91044dc3ed0932270bfeb0fe84d0",
+  "parent_model_bytes_unchanged": true,
+  "previous_partition_cells_unchanged": true,
+  "literal_operator_review": {
+    "checks": 12354,
+    "cubic_operators_excluded": 48,
+    "literal_edges": 6125,
+    "status": "original_straight_operators_only",
+    "version": "literal-pdf-path-edges-v1"
+  },
+  "source_segments": 16,
+  "source_band_candidates": 3,
+  "source_side_angle_allowance_sine": 0.01,
+  "real_gain_reason": "Slightly divergent source wall sides; the eligible core segment count remains 16. Mixed line/curve recovery is verified on fixtures.",
+  "selected_bands": [
+    {
+      "coordinate_frame": "pdf_native_points_y_up",
+      "document_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "extraction_kind": "architectural_wall_band",
+      "extraction_version": "architectural-interpretation-v15",
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              1224.47998046875,
+              1533.19921875
+            ],
+            [
+              1224.0,
+              1444.1591796875
+            ],
+            [
+              1226.9453828132132,
+              1444.1433022660813
+            ],
+            [
+              1227.1199672141145,
+              1533.1849876008578
+            ],
+            [
+              1224.47998046875,
+              1533.19921875
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "0fd92eed0cba463135cceb410089a7f55c937d6b0aad3da48009132bba381f50",
+      "local_geometry": {
+        "coordinates": [
+          [
+            [
+              28.946278071574437,
+              4.607720272159682
+            ],
+            [
+              28.929345427358886,
+              1.466585579094712
+            ],
+            [
+              29.03325198710834,
+              1.4660254589534816
+            ],
+            [
+              29.039410936770903,
+              4.607218228845639
+            ],
+            [
+              28.946278071574437,
+              4.607720272159682
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "overlap_m": 3.1411803497135535,
+      "page": 1,
+      "physical_identity_verified": false,
+      "role_candidate": "wall_band",
+      "source_line_references": [
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "1662c5d8d72294ada76e32fabcb3fc5d73d3d45398b46b94a9b441ebcfc99ef8",
+          "parent_references": [
+            {
+              "candidate_id": "7a0e7dfda4bf02bc1be17b1c3712579b86cd71ddfd40c4ab8725db7cc86e5f42",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "ad659b2a3b3cfcc3790cfae51c2f2b12567926f7837e762afb8218d242c45053",
+          "parent_references": [
+            {
+              "candidate_id": "c76e09ac52777a7bacd5b20832bf6ddb0bf57b4bbd38916c356b7b7ee39996ab",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            0.00011626753516117562,
+            0.7275808719012569
+          ]
+        }
+      ],
+      "wall_type": "interior_or_exterior_unresolved",
+      "width_range_m": [
+        0.09313249695201298,
+        0.10794263490903303
+      ],
+      "world_geometry_additions": 0
+    },
+    {
+      "coordinate_frame": "pdf_native_points_y_up",
+      "document_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "extraction_kind": "architectural_wall_band",
+      "extraction_version": "architectural-interpretation-v15",
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              697.919999785802,
+              1440.0872736420044
+            ],
+            [
+              698.1599731445312,
+              1554.5592041015625
+            ],
+            [
+              702.2002671499102,
+              1554.5507342267308
+            ],
+            [
+              701.760009765625,
+              1440.0792236328125
+            ],
+            [
+              697.919999785802,
+              1440.0872736420044
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "1567312f8cb6c2993561f210ea39a42e2ab040b3a692aab6dc6eba3712d0a8af",
+      "local_geometry": {
+        "coordinates": [
+          [
+            [
+              10.370412194630767,
+              1.322937783326914
+            ],
+            [
+              10.378877921403266,
+              5.361253084337093
+            ],
+            [
+              10.521410514651233,
+              5.360954285976717
+            ],
+            [
+              10.505879212573909,
+              1.322653796893185
+            ],
+            [
+              10.370412194630767,
+              1.322937783326914
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "overlap_m": 4.038324198103692,
+      "page": 1,
+      "physical_identity_verified": false,
+      "role_candidate": "wall_band",
+      "source_line_references": [
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "4cdeae6d0a39879213d64aa07c0aa334fff377fbc90cc2732fcd93d8c9edef32",
+          "parent_references": [
+            {
+              "candidate_id": "f1251db5e84877df9012b66975b0ade604a05b15b6f05ae9c08a1d17d2f24883",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            7.031805175823576e-05,
+            1.0
+          ]
+        },
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "cfb96ac2eda6afb03547235befec9f85528a1e297f9174b0924284646ef75997",
+          "parent_references": [
+            {
+              "candidate_id": "086a7924293110e478abd34674dca94e9b263bfa7c98c463785dbbd78e0b04a9",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            0.0,
+            0.9172402065272243
+          ]
+        }
+      ],
+      "wall_type": "interior_or_exterior_unresolved",
+      "width_range_m": [
+        0.1354673163999585,
+        0.1431704140413464
+      ],
+      "world_geometry_additions": 0
+    },
+    {
+      "coordinate_frame": "pdf_native_points_y_up",
+      "document_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "extraction_kind": "architectural_wall_band",
+      "extraction_version": "architectural-interpretation-v15",
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              566.16235328748,
+              1414.1888889489283
+            ],
+            [
+              566.6400146484375,
+              1564.63916015625
+            ],
+            [
+              575.9983792167116,
+              1564.6094484839468
+            ],
+            [
+              575.5199584960938,
+              1414.1591796875
+            ],
+            [
+              566.16235328748,
+              1414.1888889489283
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "b998ec0a862af2f9cc8e171e5f51014e666677a1157d904eba5e4c77222a54eb",
+      "local_geometry": {
+        "coordinates": [
+          [
+            [
+              5.7222952480292335,
+              0.4093003286458554
+            ],
+            [
+              5.7391460792759155,
+              5.716851531971692
+            ],
+            [
+              6.069288382954845,
+              5.715803370204881
+            ],
+            [
+              6.05241076318697,
+              0.40825225192935477
+            ],
+            [
+              5.7222952480292335,
+              0.4093003286458554
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "overlap_m": 5.307577983863615,
+      "page": 1,
+      "physical_identity_verified": false,
+      "role_candidate": "wall_band",
+      "source_line_references": [
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "472139f310fca80f7d0994990cca255caf6baf2ebee2002aaf9fd84bcde7584f",
+          "parent_references": [
+            {
+              "candidate_id": "18780378d99e7719c080463be15b24b1a1b39b7d4d517b5ad3a2c615bda4422d",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            0.004958202424953559,
+            1.0
+          ]
+        },
+        {
+          "component_contract": "0f9415c9652d7cf8c8e75229f71cc516756b6cec95c1b26902a26314744944e5",
+          "component_id": "d2786f7ef4810f2241084a20f91b3f071364cf7c863e0c595a1d3ce6cfdc8360",
+          "parent_references": [
+            {
+              "candidate_id": "1484898e3de63fb733e2252bec66f183082cbc8cc7e0c4d1e29da170d8069882",
+              "component_index": null,
+              "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+            }
+          ],
+          "source_interval_fraction": [
+            0.0,
+            0.9966236600891536
+          ]
+        }
+      ],
+      "wall_type": "interior_or_exterior_unresolved",
+      "width_range_m": [
+        0.3301171808356888,
+        0.33014406024607423
+      ],
+      "world_geometry_additions": 0
+    }
+  ],
+  "partition_rows": [
+    {
+      "source_band_id": "0fd92eed0cba463135cceb410089a7f55c937d6b0aad3da48009132bba381f50",
+      "source_footprint": {
+        "coordinates": [
+          [
+            [
+              28.946278071574437,
+              4.607720272159682
+            ],
+            [
+              28.929345427358886,
+              1.466585579094712
+            ],
+            [
+              29.03325198710834,
+              1.4660254589534816
+            ],
+            [
+              29.039410936770903,
+              4.607218228845639
+            ],
+            [
+              28.946278071574437,
+              4.607720272159682
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "display_height_m": 2.5,
+      "height_measured": false,
+      "native_one_block_thickness_is_quantization": true,
+      "added_cells": 6,
+      "native_endpoint_gap_columns": [
+        1,
+        4
+      ],
+      "gap_identity_verified": false,
+      "source_front_gap_to_display_wall_m": 0.9660254589534816,
+      "source_rear_gap_to_display_wall_m": 0.7327118266057502,
+      "native_endpoint_gap_air_verified": true
+    },
+    {
+      "source_band_id": "1567312f8cb6c2993561f210ea39a42e2ab040b3a692aab6dc6eba3712d0a8af",
+      "source_footprint": {
+        "coordinates": [
+          [
+            [
+              10.370412194630767,
+              1.322937783326914
+            ],
+            [
+              10.378877921403266,
+              5.361253084337093
+            ],
+            [
+              10.521410514651233,
+              5.360954285976717
+            ],
+            [
+              10.505879212573909,
+              1.322653796893185
+            ],
+            [
+              10.370412194630767,
+              1.322937783326914
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "display_height_m": 2.5,
+      "height_measured": false,
+      "native_one_block_thickness_is_quantization": true,
+      "added_cells": 9,
+      "native_endpoint_gap_columns": [
+        1
+      ],
+      "gap_identity_verified": false,
+      "source_front_gap_to_display_wall_m": 0.8226537968931851,
+      "source_rear_gap_to_display_wall_m": -0.020820985571661232,
+      "native_endpoint_gap_air_verified": true
+    },
+    {
+      "source_band_id": "b998ec0a862af2f9cc8e171e5f51014e666677a1157d904eba5e4c77222a54eb",
+      "source_footprint": {
+        "coordinates": [
+          [
+            [
+              5.7222952480292335,
+              0.4093003286458554
+            ],
+            [
+              5.7391460792759155,
+              5.716851531971692
+            ],
+            [
+              6.069288382954845,
+              5.715803370204881
+            ],
+            [
+              6.05241076318697,
+              0.40825225192935477
+            ],
+            [
+              5.7222952480292335,
+              0.4093003286458554
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "display_height_m": 2.5,
+      "height_measured": false,
+      "native_one_block_thickness_is_quantization": true,
+      "added_cells": 12,
+      "native_endpoint_gap_columns": [],
+      "gap_identity_verified": false,
+      "source_front_gap_to_display_wall_m": -0.09174774807064523,
+      "source_rear_gap_to_display_wall_m": -0.3764194332062596,
+      "native_endpoint_gap_air_verified": true
+    }
+  ],
+  "previous_review_cells": 664,
+  "total_review_cells": 679,
+  "additional_cells_vs_v6": 15,
+  "native_world": {
+    "format": "Bedrock .mcworld",
+    "file": "park.mcworld",
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "blocks_per_metre": 1,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "vertical_offset_blocks": 65,
+    "geographic_elevation_m": null,
+    "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+    "spawn": [
+      16,
+      67,
+      7
+    ],
+    "chunks": 8,
+    "composed_blocks": 5887,
+    "explicit_air_cells": 0,
+    "ground_fill_depth_blocks": 4,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "foundation": {
+      "minecraft_y": 60,
+      "mode": "shared",
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+    },
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "sha256": "7fa28b718270f06f4f784b6efacb982a7b3525955f0d7f59a9203c51deb5a9fb",
+    "quality": "draft_unverified",
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ]
+  },
+  "height_measured": false,
+  "room_inventory_complete": false,
+  "park_world_blocks_added": 0,
+  "world_placement_eligible": false,
+  "in_game_visual_check": "pending",
+  "validation": {
+    "full_regression": {
+      "expected_tests": 1064,
+      "tests_run": 1064,
+      "failures": 0,
+      "errors": 0,
+      "successful": true
+    },
+    "focused_tests": {
+      "tests_run": 15,
+      "failures": 0,
+      "errors": 0
+    }
+  }
+}

@@ -57,9 +57,11 @@ def wall_bands(parents,factor,*,interpretation_options=None):
     return wall_bands_from_components(split_page(parents),factor,interpretation_options=interpretation_options)
 
 
-def wall_bands_from_components(components,factor,*,interpretation_options=None):
+def wall_bands_from_components(components,factor,*,interpretation_options=None,max_side_angle_sine=1e-5):
     """Shared pairing kernel; caller owns complete original component provenance."""
     opts=options(interpretation_options)
+    if type(max_side_angle_sine) not in (int,float) or not math.isfinite(max_side_angle_sine) or not 1e-5<=max_side_angle_sine<=.01:
+        raise ValueError('Bounded original wall-side angle allowance required')
     if type(factor) not in (int,float) or not math.isfinite(factor) or not 0<factor<=10000*.0254/72:
         raise ValueError('Bounded source metre scale required')
     rows=[r for r in components if r['geometry']['type']=='LineString' and len(r['geometry']['coordinates'])==2
@@ -78,7 +80,7 @@ def wall_bands_from_components(components,factor,*,interpretation_options=None):
                 return [],{'status':'neighbor_budget_withheld','neighbor_checks':neighbors,'partial_candidates_discarded':len(pairs)}
             other=geometries[j];c,d=other.coords;other_length=other.length
             v=((d[0]-c[0])/other_length,(d[1]-c[1])/other_length)
-            if abs(u[0]*v[1]-u[1]*v[0])>1e-5 or line.intersects(other):continue
+            if abs(u[0]*v[1]-u[1]*v[0])>max_side_angle_sine or line.intersects(other):continue
             cost+=1
             if cost>opts['max_pair_comparisons']:
                 return [],{'status':'pair_budget_withheld','comparisons':cost,'neighbor_checks':neighbors,'partial_candidates_discarded':len(pairs)}

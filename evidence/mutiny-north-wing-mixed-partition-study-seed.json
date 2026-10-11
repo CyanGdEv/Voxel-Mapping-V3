@@ -1,0 +1,15 @@
+{
+  "version": "wing-interior-partition-study-v1",
+  "parent_model_sha256": "32baa7750ff4eb7ee325fd525bd6d4003eec91044dc3ed0932270bfeb0fe84d0",
+  "review_sha256": "1e77325a95a0b1513a4e2c6ba495989d4e64dcdf994f2fbb413786c83d64c357",
+  "selected_band_ids": [
+    "0fd92eed0cba463135cceb410089a7f55c937d6b0aad3da48009132bba381f50",
+    "1567312f8cb6c2993561f210ea39a42e2ab040b3a692aab6dc6eba3712d0a8af",
+    "b998ec0a862af2f9cc8e171e5f51014e666677a1157d904eba5e4c77222a54eb"
+  ],
+  "source_footprint_reviewed": true,
+  "display_height_m": 2.5,
+  "recover_mixed_paths": true,
+  "preserve_partition_endpoint_gaps": true,
+  "review_note": "Explicit visual source-plan review of workshop/training divider, training/office divider and kitchen/lobby strip. Original slightly diverging source sides remain unchanged. Height and one-cell endpoint clearance are display hypotheses."
+}

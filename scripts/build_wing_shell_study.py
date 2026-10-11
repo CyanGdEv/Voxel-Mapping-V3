@@ -18,8 +18,9 @@ def main():
     if a.partition_seed:
         from voxel_mapper.wing_partition_review import review
         from voxel_mapper.wing_partition_study import apply
-        partition_review=review(parent,sources['plan'])
-        model,cells,audit=apply(model,cells,audit,partition_review,json.loads(a.partition_seed.read_text()))
+        partition_seed=json.loads(a.partition_seed.read_text())
+        partition_review=review(parent,sources['plan'],recover_mixed_paths=partition_seed.get('recover_mixed_paths',False))
+        model,cells,audit=apply(model,cells,audit,partition_review,partition_seed)
         (a.output/'partition-source-review.json').write_text(json.dumps(partition_review,sort_keys=True,indent=2)+'\n')
     (a.output/'shell-model.json').write_text(json.dumps(model,indent=2,sort_keys=True)+'\n')
     lines=['# Provisional core shell; rear/end closures and thickness are explicit hypotheses.'];offset=0
@@ -34,7 +35,7 @@ def main():
     report={'version':model['version'],'voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':None,'vertical_datum':'STUDY_ZERO',
             'geographic_registration':None,'world_placement_eligible':False,'park_world_blocks_added':0,'spawn_local_xyz_m':[length/2,2,-7],
             'shell_audit':audit,'limitations':model['assumptions'],'unresolved':parent['unresolved']}
-    report['world']=export_world(voxels,world,report,name='Mutiny North Range — SOURCE PARTITION STUDY V6' if a.partition_seed else 'Mutiny North Range — CORE SHELL HYPOTHESIS V5',ground_depth=4)
+    report['world']=export_world(voxels,world,report,name=('Mutiny North Range — PARTITIONS AND CLEARANCE V7' if partition_seed.get('recover_mixed_paths') else 'Mutiny North Range — SOURCE PARTITION STUDY V6') if a.partition_seed else 'Mutiny North Range — CORE SHELL HYPOTHESIS V5',ground_depth=4)
     (world/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     (a.output/'shell-audit.json').write_text(json.dumps(audit,indent=2)+'\n')
     print(json.dumps({'status':model['status'],'surface_cells':len(cells),'world':str(world/'park.mcworld'),'surveyed_complete_structure':False}))
