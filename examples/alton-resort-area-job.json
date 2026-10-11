@@ -127,104 +127,320 @@
     {
       "id": "forbidden-valley",
       "name": "Forbidden Valley",
-      "application_references": [],
+      "application_references": [
+        "SMD/2023/0515",
+        "SMD/2024/0064",
+        "SMD/2023/0516",
+        "SMD/2022/0032",
+        "SMD/2015/0473",
+        "SMD/2015/0224"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2023/0515",
+          "context_contains": "Air Shop",
+          "application_context_sha256": "4cf5bc4c49b9a50e83d8afedb393d709cbd89b36bb006d7564c682df2ecff0c8",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=174884",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2024/0064",
+          "context_contains": "Ripsaw Cafe",
+          "application_context_sha256": "5796818533f5c8d6bfd0ad008aab7063f1c91a8357b59b4028a10a642a633a1a",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=177485",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2023/0516",
+          "context_contains": "Ripsaw cafe",
+          "application_context_sha256": "f0a15818024b6db912ad6da13e32f107934c1d9484f2a7cbc8c8b4e66ce23f65",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=174904",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2022/0032",
+          "context_contains": "'Nemesis'",
+          "application_context_sha256": "f7eb61e2680449179dcbfbf64a2b6771601939c3aff7d2abbbc25d56221343a2",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=157904",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2015/0473",
+          "context_contains": "'Air'",
+          "application_context_sha256": "013554edf5d9e2dff182b3557a653e536184378b973bf80e16aa2d445df7c184",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=84554",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "forbidden-valley",
+          "application_reference": "SMD/2015/0224",
+          "context_contains": "'Air Shop'",
+          "application_context_sha256": "784af26cf046bafb706c0702a3d651544caf5a3ec8f43f10947f80d1306e41a8",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=78034",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "x-sector",
       "name": "X Sector",
-      "application_references": [],
+      "application_references": [
+        "SMD/2011/1058"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "x-sector",
+          "application_reference": "SMD/2011/1058",
+          "context_contains": "Black Hole",
+          "application_context_sha256": "c71b5fb116d102574af1ee49a8dd1545ea974321e69e6dd3f843fdeab8e2a9ce",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=16193",
+          "location_evidence_url": "https://www.altontowers.com/explore/theme-park/rides-attractions/oblivion/",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "dark-forest",
       "name": "Dark Forest",
-      "application_references": [],
+      "application_references": [
+        "SMD/2024/0136"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "dark-forest",
+          "application_reference": "SMD/2024/0136",
+          "context_contains": "Woodcutters",
+          "application_context_sha256": "72e080347989c79c3420fa2295c3ec7820134747fc740e5d21a935ae3ef3ed18",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "gardens",
       "name": "Gardens",
-      "application_references": [],
+      "application_references": [
+        "SMD/2013/1105",
+        "SMD/2013/1106",
+        "SMD/2013/0012",
+        "SMD/2013/0013",
+        "SMD/2021/0773"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "gardens",
+          "application_reference": "SMD/2013/1105",
+          "context_contains": "Gardens",
+          "application_context_sha256": "28f606ee6d1940e8c53a367855d294a34e2a2ae63985f7fef8a6381a54d54cbf",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47714",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "gardens",
+          "application_reference": "SMD/2013/1106",
+          "context_contains": "Gardens",
+          "application_context_sha256": "1991ed7c611ca2b6a0278e1025627b41e9f94b1a084326285d7580f33aa86147",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47715",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "gardens",
+          "application_reference": "SMD/2013/0012",
+          "context_contains": "White Bridge",
+          "application_context_sha256": "d6c4a4c61fbf8ccea1a70620a7d0a1bb8268daf0a5da2b4eb760998327ebde2c",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17418",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": true
+        },
+        {
+          "area_id": "gardens",
+          "application_reference": "SMD/2013/0013",
+          "context_contains": "White Bridge",
+          "application_context_sha256": "91775118694d6b26fba15afb399c9a709fa253afba4f6caadff6db4ff19ecb88",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17419",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": true
+        },
+        {
+          "area_id": "gardens",
+          "application_reference": "SMD/2021/0773",
+          "context_contains": "Swiss Cottage",
+          "application_context_sha256": "d34d33bf50d09731bedd5b78b0b36935458aabe7a96d23dfcb2aa985ccefaf49",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=155244",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "towers",
       "name": "Towers ruins",
-      "application_references": [],
+      "application_references": [
+        "SMD/2013/0587",
+        "SMD/2013/0012",
+        "SMD/2013/0013",
+        "SMD/2020/0553"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "towers",
+          "application_reference": "SMD/2013/0587",
+          "context_contains": "Towers area",
+          "application_context_sha256": "5b87f9729f745841e38a17fe30187e558db37a335837c6fbe8ec11fc787ea3a9",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=18068",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        },
+        {
+          "area_id": "towers",
+          "application_reference": "SMD/2013/0012",
+          "context_contains": "Towers area",
+          "application_context_sha256": "d6c4a4c61fbf8ccea1a70620a7d0a1bb8268daf0a5da2b4eb760998327ebde2c",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17418",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": true
+        },
+        {
+          "area_id": "towers",
+          "application_reference": "SMD/2013/0013",
+          "context_contains": "Towers area",
+          "application_context_sha256": "91775118694d6b26fba15afb399c9a709fa253afba4f6caadff6db4ff19ecb88",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17419",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": true
+        },
+        {
+          "area_id": "towers",
+          "application_reference": "SMD/2020/0553",
+          "context_contains": "heritage tour",
+          "application_context_sha256": "9926928d23ee925954e441d13c04dbd888647da7cac3a0825fd77452c09bc327",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=140644",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "cbeebies-land",
       "name": "CBeebies Land",
-      "application_references": [],
+      "application_references": [
+        "SMD/2024/0579"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "cbeebies-land",
+          "application_reference": "SMD/2024/0579",
+          "context_contains": "Cbeebies land",
+          "application_context_sha256": "beb423c211a77f012c3fb1f7bd04401068a1709bee3238e66c507106254c3402",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=180547",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "adventure-land",
@@ -246,19 +462,33 @@
     {
       "id": "katanga-canyon",
       "name": "Katanga Canyon",
-      "application_references": [],
+      "application_references": [
+        "SMD/2009/0125"
+      ],
       "required_families": [
         "local_building",
         "paving",
         "shrub"
       ],
-      "source_selection_status": "needs explicit application association",
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
       "expected_components": [
         "local_building",
         "path",
         "landscape"
       ],
-      "component_inventory_status": "requires source-bound component IDs"
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "katanga-canyon",
+          "application_reference": "SMD/2009/0125",
+          "context_contains": "Katanga",
+          "application_context_sha256": "859ae2217280bcb1b614aa0098eef865195d08f690361d164e8d026d8b8382fa",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12613",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
     },
     {
       "id": "gloomy-wood",

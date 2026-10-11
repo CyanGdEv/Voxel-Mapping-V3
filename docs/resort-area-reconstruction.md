@@ -127,3 +127,34 @@ generator aliases as reconstruction, so a path counts as paving and a wooden
 fence counts as a wall; required physical component IDs still remain mandatory. Withheld bindings leave no stale
 features in the refreshed feed. This adapter does not provide missing real
 Wicker association or registration evidence.
+
+## Expanding area planning associations
+
+`python -m voxel_mapper.area_sources --job examples/alton-resort-area-job.json --output-job /tmp/associated-job.json --report /tmp/association-report.json`
+
+The reviewed registry `voxel_mapper/data/alton-area-associations.json` adds 19
+application-to-area associations across seven formerly empty areas. The seed job
+now selects sources for 12 of 15 areas. This links existing catalogue records;
+it does not claim 19 newly discovered applications. Two application references
+are shared between Gardens and Towers, and also already selected for Mutiny Bay.
+
+Each association carries an official application page, an exact context hash,
+a required location marker and supporting resort location evidence. The binder
+rejects missing references, changed contexts, unmatched application pages and
+unapproved hosts. Outputs preserve the input job and resolve relative asset
+paths against its original location. Existing explicit selections are retained.
+Run changed selections in a **fresh work directory**: old area state remains
+pinned to its original inputs.
+
+Application association means candidate document selection only. A shared
+application may contain sheets for several locations. Neither a matching name
+nor permission approval accepts its sheets as current geometry: existing versus
+proposed state, sheet registration, area bounds, physical component inventories
+and production recipes still need validation. A withdrawn/refused scheme cannot
+be used as an existing reconstruction solely because of its area name.
+
+Adventure Land, Gloomy Wood and Towers Street remain unassociated. The registry
+records targeted search queries and pending companion references for further
+review. An unsuccessful indexed search is not proof that a council application
+does not exist. The acquisition/sweep evidence records actual available PDFs
+separately from candidate document counts and repeats.
