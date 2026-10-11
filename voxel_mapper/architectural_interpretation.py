@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v4'
+VERSION='architectural-interpretation-v5'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -194,14 +194,18 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
     if scale_review.get('document_sha256')!=sha or scale_review.get('page')!=number:
         raise ValueError('Source-bound visible scale required')
     from .elevation_interpretation import review_page
+    from .architectural_references import review_page as reference_page
+    references=reference_page(page,sha,number,polygons)
     elevation=review_page(page,sha,number,polygons,scale_review)
     if elevation is not None:
         return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
             'status':elevation['status'],'elevation_interpretation':elevation,
+            'architectural_references':references,
             'wall_band_candidates':[],'printed_claims':[],'bound_roof_labels':0,
             'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0}
     if scale_review.get('status')!='one_visible_printed_scale':
         return {'version':VERSION,'document_sha256':sha,'page':number,'status':'complete_extraction_and_visible_scale_required',
+            'architectural_references':references,
             'printed_scale_review':scale_review,'wall_band_candidates':[],'printed_claims':[],
             'physical_identity_verified':False,'world_geometry_additions':0}
     bands,network=wall_bands(parents,scale_review['expected_metres_per_pdf_point'],interpretation_options=opts)
@@ -242,6 +246,7 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
         'status':'architectural_component_candidates_only','wall_band_candidates':bands,'network_review':network,
         'printed_claims':labels,'role_counts':dict(Counter(r['printed_claim']['role'] for r in labels)),
         'roof_region_associations':associations,
+        'architectural_references':references,
         'component_links':links,
         'bound_roof_labels':sum(r['candidate_id'] is not None for r in labels),
         'visible_claim_counts':dict(Counter(r['printed_claim']['role'] for r in labels if r['glyph_screen']['status']=='raster_consistent_candidate')),
@@ -259,6 +264,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .mapped_alignment_checks import printed_scale_review,VERSION as alignment_version
     from .glyph_visibility import VERSION as glyph_version,INK_VERSION as glyph_ink_version
     from .elevation_interpretation import VERSION as elevation_version
+    from .architectural_references import VERSION as reference_version,link_pages
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -270,15 +276,16 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
         if digest(output/'architectural-pages.jsonl')!=report['output_sha256']:raise ValueError('Architectural output changed')
+        if digest(output/'architectural-reference-links.json')!=report['reference_links_sha256']:raise ValueError('Architectural reference links changed')
         for sha in report['source_documents']:
             if digest(corpus.root/'files'/f'{sha}.pdf')!=sha:raise ValueError('Source PDF checksum mismatch')
         return report
-    output.mkdir(parents=True);counts=Counter();documents=set();pages=0
+    output.mkdir(parents=True);counts=Counter();documents=set();pages=0;reference_pages=[];reference_count=0;reference_budget_exhausted=False
     target=output/'architectural-pages.jsonl';temporary=target.with_suffix('.jsonl.partial')
     with temporary.open('w') as stream:
         for sha,number,raw in corpus.db.execute('SELECT sha,page,result FROM geometry_pages WHERE version=? AND contract=? ORDER BY sha,page',
@@ -312,11 +319,27 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             counts['roof_wall_links']+=len(page_report.get('component_links',{}).get('roof_wall_links',[]))
             counts['leader_association_candidates']+=len(page_report.get('component_links',{}).get('leader_associations',[]))
             counts['elevation_material_regions']+=page_report.get('elevation_interpretation',{}).get('counts',{}).get('material_regions',0)
+            if 'architectural_references' in page_report:
+                reference=page_report['architectural_references'];reference_count+=len(reference['reference_occurrences'])
+                if reference_count>100000:reference_pages.clear();reference_budget_exhausted=True
+                if not reference_budget_exhausted:
+                    # Full native proofs stay in the hashed page stream; the
+                    # bounded cross-page index retains only proof locations.
+                    reference_pages.append({k:reference[k] for k in ('version','document_sha256','page','project_code','view_kind','printed_state')})
+                    reference_pages[-1]['reference_occurrences']=[{k:r[k] for k in ('reference_id','glyph_screen','containing_candidate_ids')} for r in reference['reference_occurrences']]
+                    for r in reference_pages[-1]['reference_occurrences']:r['glyph_screen']={'status':r['glyph_screen']['status']}
     if digest(feed)!=contract['source_feed_sha256'] or extraction_pin(json.loads((drawing_directory/'geometry-report.json').read_text()))!=contract['geometry_report_contract_sha256']:
         raise ValueError('Architectural source feed changed')
     temporary.replace(target)
+    reference_links=link_pages(reference_pages) if not reference_budget_exhausted else {
+        'version':reference_version,'status':'reference_budget_withheld','links':[],
+        'occurrences_examined':reference_count,'world_geometry_additions':0}
+    links_target=output/'architectural-reference-links.json'
+    links_target.write_text(json.dumps(reference_links,sort_keys=True)+'\n')
+    counts['printed_reference_correspondences']=len(reference_links['links'])
     report={**contract,'status':'architectural_component_candidates_only','pages':pages,'counts':dict(counts),
         'source_documents':sorted(documents),'output_sha256':digest(target),
+        'reference_links_sha256':digest(links_target),
         'physical_identity_verified':False,'registration_verified':False,'world_geometry_additions':0}
     (output/'architectural-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report

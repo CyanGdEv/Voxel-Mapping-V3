@@ -75,3 +75,17 @@ PYTHONPATH=. python scripts/audit_mutiny_elevations.py --input-root RETAINED_INP
 ```
 
 These are native elevation candidates for later profile and plan correspondence work. No new park-world geometry is generated.
+
+## Printed plan/elevation references
+
+Version 5 adds a bounded source-reference index to the same optional architectural stage. It recognises exact native `archway N` and `w.range.instance` / `d.range.instance` labels, retaining their original glyphs, coordinates and complete-enclosure candidate IDs. Letter spacing is normalised only for the reference key. Visible printed project codes such as `0860 IC`, view captions and existing/proposed claims provide candidate grouping. Conflicting project codes, mixed views, unsupported caption state or missing glyph support cannot establish that grouping. A matching printed project code does not itself verify common project scope.
+
+`architectural-reference-links.json` retains a shared-reference candidate only when visible occurrences exist on both plan and elevation pages with the same printed code and state. Existing and proposed sheets do not cross-link. All repeated and hidden occurrences remain in the candidate; no key-plan occurrence or nearest polygon is chosen as a coordinate control. Full native proofs remain in the hashed page stream, and the bounded cross-page index stores their occurrence locations. A 100,000-occurrence budget discards partial linking results on exhaustion. The separate links file and reference module version are pinned and checked on resume.
+
+The real eight-sheet CTD replay yields eight printed-reference correspondence candidates: archways 1–4 in existing sheets and separately in proposed sheets. Forty-five reference-label occurrences have one completely enclosing source polygon. The plan archway labels have no qualifying complete enclosure, and the elevation sheets also repeat IDs in small key plans. These are source-reference links, not coordinate alignment or a plan-to-profile projection. The 54 earlier material regions are not projected through these links, and no heights or new park-world geometry are generated.
+
+Source-linked evidence is retained in `evidence/mutiny-architectural-reference-links-audit.json` and reproduced with:
+
+```bash
+PYTHONPATH=. python scripts/audit_mutiny_architectural_references.py --input-root RETAINED_INPUT_ROOT --output AUDIT.json
+```
