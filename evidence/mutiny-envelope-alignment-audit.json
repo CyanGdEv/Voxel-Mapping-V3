@@ -1,0 +1,3070 @@
+{
+  "status": "map_alignment_review_only",
+  "reference_sha256": "842e14f6528be99ba0f24d14619579548f92c958405be94f0570a67c472d9c4b",
+  "reference_count": 45,
+  "target_crs": "EPSG:27700",
+  "grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+  "projection": "Inverse of OSGB36 to WGS 84 (9) + British National Grid (with axis order normalized for visualization)",
+  "pages": [
+    {
+      "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+      "page": 1,
+      "title": "3023-08 Existing ground floor plan",
+      "printed_scale_review": {
+        "status": "one_visible_printed_scale",
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "denominators": [
+          200
+        ],
+        "labels": [
+          {
+            "text": "1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1561.075927734375,
+              306.135498046875,
+              1572.503173828125,
+              335.963134765625
+            ],
+            "trace_indices": [
+              206
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "572cfb5384f81c7eb9443093536744bd567b8da4ec2ac95d814947f27e86640d",
+              "glyph_encoding": "source_glyph_ids",
+              "source_font_xrefs": [
+                18
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 387,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 79,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 481,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 585,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 585,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 957,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          },
+          {
+            "text": "1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1520.9349365234375,
+              2151.70751953125,
+              1536.8570556640625,
+              2200.400390625
+            ],
+            "trace_indices": [
+              217
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "4dfa7d9b0554b7ec2046e13674996cf65b7843aff6181d580c78eeb346c3da88",
+              "glyph_encoding": "unicode",
+              "source_font_xrefs": [
+                22
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 631,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 180,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 1198,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 1237,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 1237,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 1504,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          },
+          {
+            "text": "Scale 1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1575.696044921875,
+              378.80859375,
+              1595.758056640625,
+              496.642822265625
+            ],
+            "trace_indices": [
+              222
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "4dfa7d9b0554b7ec2046e13674996cf65b7843aff6181d580c78eeb346c3da88",
+              "glyph_encoding": "unicode",
+              "source_font_xrefs": [
+                22
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 2376,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 1360,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 1819,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 870,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 1788,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 1081,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 8,
+                  "core_pixels": 288,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 10,
+                  "core_pixels": 1929,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 11,
+                  "core_pixels": 1979,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 12,
+                  "core_pixels": 1979,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 4067,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          }
+        ],
+        "expected_metres_per_pdf_point": 0.07055555555555555
+      },
+      "printed_scale_denominators": [
+        200
+      ],
+      "candidate_count": 255,
+      "candidate_ids_sha256": "95a26d77cb9c198c6e0bc62e340e88cbba1a57e09bd49538cebf0a90ce0ca8b7",
+      "extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 9470,
+        "candidates": 1664,
+        "geometry_types": {
+          "LineString": 1653,
+          "Polygon": 11
+        },
+        "retained_points": 3481,
+        "curved_candidates": 2,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 79,
+          "Small symbol or sheet enclosure candidate": 4,
+          "Short line/symbol candidate": 7563,
+          "A linearring requires at least 4 coordinates.": 66,
+          "Text glyph/annotation mask": 3,
+          "Crop boundary/frame candidate": 4
+        },
+        "world_geometry_additions": 0
+      },
+      "recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "solid_straight_lines": 1653,
+          "segments": 1653,
+          "intersection_pairs": 1463,
+          "cut_edges": 31,
+          "dangles": 1773,
+          "invalid_rings": 0,
+          "small_faces_deferred": 26,
+          "recovered_faces": 217
+        },
+        "recovered_faces": 217,
+        "envelope_recovery": {
+          "status": "exact_adjacent_face_envelopes",
+          "envelopes": 29,
+          "face_count": 217,
+          "intersection_pairs": 320,
+          "counts": {
+            "point_contacts_withheld": 81,
+            "nested_hole_links_withheld": 3
+          },
+          "world_geometry_additions": 0
+        }
+      },
+      "proposal": {
+        "status": "withheld",
+        "hypotheses": [],
+        "seed_fit_attempts": 319,
+        "orientation_trial_attempts": 759,
+        "seed_objects": 64,
+        "priority_seed_ids": [],
+        "verification_objects": 255,
+        "review_flags": [
+          "seed_selection_truncated; all_objects_verified"
+        ],
+        "min_iou": 0.7,
+        "tolerance_m": 10.0,
+        "registration_verified": false,
+        "physical_identity_verified": false,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Mapped agreement is not independently surveyed registration",
+          "Map and drawing may differ in date, generalisation or extent",
+          "Support envelope is not a validated registration domain"
+        ]
+      },
+      "alignment_checks": {
+        "version": "held-out-map-alignment-v2",
+        "status": "withheld",
+        "expected_metres_per_pdf_point": 0.07055555555555555,
+        "tolerance_m": 1.0,
+        "min_iou": 0.85,
+        "scale_tolerance": 0.01,
+        "blockers": [
+          "requires_one_unambiguous_map_hypothesis"
+        ],
+        "hypotheses": [],
+        "registration_verified": false,
+        "physical_identity_verified": false,
+        "independent_survey_checkpoints": 0,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ]
+      }
+    },
+    {
+      "document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "title": "3023-10 Existing Roof Plan",
+      "printed_scale_review": {
+        "status": "one_visible_printed_scale",
+        "document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+        "page": 1,
+        "denominators": [
+          200
+        ],
+        "labels": [
+          {
+            "text": "1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1561.075927734375,
+              306.135498046875,
+              1572.503173828125,
+              335.963134765625
+            ],
+            "trace_indices": [
+              25
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "572cfb5384f81c7eb9443093536744bd567b8da4ec2ac95d814947f27e86640d",
+              "glyph_encoding": "source_glyph_ids",
+              "source_font_xrefs": [
+                16
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 387,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 79,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 481,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 585,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 585,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 957,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          },
+          {
+            "text": "1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1397.9351806640625,
+              1855.0682373046875,
+              1413.857177734375,
+              1903.7607421875
+            ],
+            "trace_indices": [
+              36
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "4dfa7d9b0554b7ec2046e13674996cf65b7843aff6181d580c78eeb346c3da88",
+              "glyph_encoding": "unicode",
+              "source_font_xrefs": [
+                20
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 631,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 180,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 1198,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 1237,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 1237,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 1504,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          },
+          {
+            "text": "Scale 1 : 200",
+            "denominator": 200,
+            "bbox_page_points": [
+              1561.656005859375,
+              394.048583984375,
+              1581.7181396484375,
+              511.8829345703125
+            ],
+            "trace_indices": [
+              41
+            ],
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "glyph_screen": {
+              "status": "raster_consistent_candidate",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "source_font_sha256": "4dfa7d9b0554b7ec2046e13674996cf65b7843aff6181d580c78eeb346c3da88",
+              "glyph_encoding": "unicode",
+              "source_font_xrefs": [
+                20
+              ],
+              "zoom_pixels_per_pdf_point": 6,
+              "source_rotation_restored": 90,
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 2376,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 1360,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 1819,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 870,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 1788,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 1081,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 8,
+                  "core_pixels": 288,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 10,
+                  "core_pixels": 1929,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 11,
+                  "core_pixels": 1979,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 12,
+                  "core_pixels": 1979,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "ring_pixels": 4067,
+              "unexpected_dark_ring_pixels": 0,
+              "pixel_position_tolerance": 1,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ]
+            }
+          }
+        ],
+        "expected_metres_per_pdf_point": 0.07055555555555555
+      },
+      "printed_scale_denominators": [
+        200
+      ],
+      "candidate_count": 116,
+      "candidate_ids_sha256": "b74155dd190f0e2ce27005b126fc6c70f9248971355fc742f1dde28f82229a5e",
+      "extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 931,
+        "candidates": 393,
+        "geometry_types": {
+          "LineString": 384,
+          "Polygon": 9
+        },
+        "retained_points": 813,
+        "curved_candidates": 0,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 42,
+          "Short line/symbol candidate": 443,
+          "Crop boundary/frame candidate": 4
+        },
+        "world_geometry_additions": 0
+      },
+      "recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "solid_straight_lines": 384,
+          "segments": 384,
+          "intersection_pairs": 450,
+          "cut_edges": 6,
+          "dangles": 248,
+          "invalid_rings": 0,
+          "small_faces_deferred": 6,
+          "recovered_faces": 96
+        },
+        "recovered_faces": 96,
+        "envelope_recovery": {
+          "status": "exact_adjacent_face_envelopes",
+          "envelopes": 11,
+          "face_count": 96,
+          "intersection_pairs": 170,
+          "counts": {
+            "nested_hole_links_withheld": 5,
+            "point_contacts_withheld": 58
+          },
+          "world_geometry_additions": 0
+        }
+      },
+      "proposal": {
+        "status": "withheld",
+        "hypotheses": [],
+        "seed_fit_attempts": 305,
+        "orientation_trial_attempts": 865,
+        "seed_objects": 64,
+        "priority_seed_ids": [],
+        "verification_objects": 116,
+        "review_flags": [
+          "seed_selection_truncated; all_objects_verified"
+        ],
+        "min_iou": 0.7,
+        "tolerance_m": 10.0,
+        "registration_verified": false,
+        "physical_identity_verified": false,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Mapped agreement is not independently surveyed registration",
+          "Map and drawing may differ in date, generalisation or extent",
+          "Support envelope is not a validated registration domain"
+        ]
+      },
+      "alignment_checks": {
+        "version": "held-out-map-alignment-v2",
+        "status": "withheld",
+        "expected_metres_per_pdf_point": 0.07055555555555555,
+        "tolerance_m": 1.0,
+        "min_iou": 0.85,
+        "scale_tolerance": 0.01,
+        "blockers": [
+          "requires_one_unambiguous_map_hypothesis"
+        ],
+        "hypotheses": [],
+        "registration_verified": false,
+        "physical_identity_verified": false,
+        "independent_survey_checkpoints": 0,
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ]
+      }
+    }
+  ],
+  "world_geometry_additions": 0,
+  "registration_verified": false,
+  "cross_sheet_link": {
+    "version": "drawing-sheet-links-v1",
+    "status": "withheld",
+    "source_document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+    "source_page": 1,
+    "target_document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+    "target_page": 1,
+    "source_records_sha256": "23d59230e56ae63277e1d510caf2844bb1cbfa20ff458c65b6707b4353670596",
+    "target_records_sha256": "f01d5d4df7feb1ed52c2a1a7f9af7ee42e07a356c1bd5960639f354e1ba3eb24",
+    "source_metres_per_pdf_point": 0.07055555555555555,
+    "target_metres_per_pdf_point": 0.07055555555555555,
+    "proposal": {
+      "status": "provisional_mapped_placement",
+      "hypotheses": [
+        {
+          "matrix": [
+            [
+              0.9999322166261752,
+              -1.94181473567769e-05
+            ],
+            [
+              1.94181473567769e-05,
+              0.9999322166261752
+            ]
+          ],
+          "translation_m": [
+            11.024186028294714,
+            -9.878421112462448
+          ],
+          "scale_metres_per_pdf_point": 0.9999322168147201,
+          "centroid_rms_m": 0.005119483494797275,
+          "max_centroid_error_m": 0.023120773558009747,
+          "supports": [
+            {
+              "candidate_id": "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+              "reference_id": "d4f518b462e40b08d6c618f9a4ddb88df0c42f629f4a27df3a7db9c62ddfb716",
+              "intersection_over_union": 0.999048128656719,
+              "centroid_error_m": 0.0025203202729226657,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+              "reference_id": "2246037a81e0a4304a6a4ee7dde70ce53202851e5f71de7573ace7dcb3028420",
+              "intersection_over_union": 0.9984973053670625,
+              "centroid_error_m": 0.0008750408605406103,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+              "reference_id": "7772c4e0924f5c56f6e4496991a74129a04650b80627bc2bd7b23f4ba4f30caa",
+              "intersection_over_union": 0.9982882849619252,
+              "centroid_error_m": 0.001473377391425256,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "intersection_over_union": 0.9980764467786997,
+              "centroid_error_m": 0.0013534676773636106,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+              "reference_id": "7c0a538c83de6ca0d4afb6ebee8afc0719a6a336f576825095665efba1a39866",
+              "intersection_over_union": 0.9980241532696966,
+              "centroid_error_m": 0.0030819595340068322,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+              "reference_id": "b80235b594d0c2cc61c581839022724f4b1f8df5c9b3d5793518c3e502518b43",
+              "intersection_over_union": 0.9977001600943992,
+              "centroid_error_m": 0.002362852762276159,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "intersection_over_union": 0.9974529729046152,
+              "centroid_error_m": 0.0036552127255573184,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+              "reference_id": "ef626e81d454117c14ffefe56fb79fce4c55e4733362580147590e7eef5e291c",
+              "intersection_over_union": 0.9967383409865115,
+              "centroid_error_m": 0.0016507956253257487,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+              "reference_id": "af4790c1b2b5438dde2555d496651a4d7c75545e52e39cc933dac887e07ea008",
+              "intersection_over_union": 0.9963947313657255,
+              "centroid_error_m": 0.002710656058506857,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "intersection_over_union": 0.9962628810783549,
+              "centroid_error_m": 0.005680577914239875,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+              "reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+              "intersection_over_union": 0.9962049061977419,
+              "centroid_error_m": 0.005861466666683016,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+              "reference_id": "7db43c3ffa26a25446e4f54d94da0366c6b598eeb042f90d565ed356e5bfb6d0",
+              "intersection_over_union": 0.9960089068024752,
+              "centroid_error_m": 0.0020496872093119143,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+              "reference_id": "f7c02d2fc82777c8aa4f922acdada4ce723cd0fea080ebf97a708abfc99b5e66",
+              "intersection_over_union": 0.9959544753482338,
+              "centroid_error_m": 0.000760592294326343,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+              "reference_id": "d00a0579d8db8ea6ff9dbb91682891c87b0233330075669e4a5f73e942943b69",
+              "intersection_over_union": 0.9958180394441568,
+              "centroid_error_m": 0.0012187974671102556,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+              "reference_id": "d67021530ddda1e7329bceda085c3d95ab47c098006572174db282ce17572bd8",
+              "intersection_over_union": 0.9942669175864487,
+              "centroid_error_m": 0.023120773558009747,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+              "reference_id": "57171d26ff897ed456c6b79ca34b1449e51237654e7d17b69b27bf607f7ede0a",
+              "intersection_over_union": 0.9923257912824934,
+              "centroid_error_m": 0.0008264861390083985,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+              "reference_id": "1fe2ca8e76bd0965ef1c64d281a0508baf33cdafbed67079c0240cc08d8c5d10",
+              "intersection_over_union": 0.9920225951809636,
+              "centroid_error_m": 0.00110953932823393,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+              "reference_id": "428757ced9b954250ccc9c39013f60ddb67dd4ec58ae4883c7916e6521d223de",
+              "intersection_over_union": 0.9906441627874599,
+              "centroid_error_m": 0.002308438701490061,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+              "reference_id": "b1d83248fc200226f9bbe360cd8adcb95730a648ff86f807a34bb63ad5c1c5d5",
+              "intersection_over_union": 0.9904490455101133,
+              "centroid_error_m": 0.0016178797285124368,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+              "reference_id": "3451830359b9b6fbcc785e1c1d42ec41fa45e6cbcf3747f72619198958b62e92",
+              "intersection_over_union": 0.9904458840917367,
+              "centroid_error_m": 0.0022447279483829847,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+              "reference_id": "825c872bcc6ab76185a74e267c0e3679084365548103c1a5a03d4fe93ee8663d",
+              "intersection_over_union": 0.9894064793422014,
+              "centroid_error_m": 0.0039941778842944265,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+              "reference_id": "0d5f07fd47dea8cb73f3d3df515e006f44620b58a6b9fde7d7130bbb2b930adb",
+              "intersection_over_union": 0.9876008734129825,
+              "centroid_error_m": 0.00307023748202909,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+              "reference_id": "276f978de59254432327e6737f931934cc604f6d711a4898f4917b73238ffa32",
+              "intersection_over_union": 0.9854918435522393,
+              "centroid_error_m": 0.003887612537206719,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+              "reference_id": "9359110a74e28783608732e0bdb54a5245b8fccea5b827ad5127f1fb58592c65",
+              "intersection_over_union": 0.9803563330248221,
+              "centroid_error_m": 0.001765804471373429,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+              "reference_id": "5cdb3fee536db727b868bade26e14ad3a90bb5c8b3a3d230d4a31a2a84c11b0e",
+              "intersection_over_union": 0.9799737994016201,
+              "centroid_error_m": 0.0017939363011549641,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+              "reference_id": "508e972066b3537d2df4d6f0d0157e345f1ef14cdb3626660f2cb447f491525c",
+              "intersection_over_union": 0.9793158121788091,
+              "centroid_error_m": 0.002368386404444165,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+              "reference_id": "0e6b299e5e1b9c1e96ed36e6d659ae43f92ab40158af3a51141ce19cb018a9db",
+              "intersection_over_union": 0.9777772948189059,
+              "centroid_error_m": 0.0019437641906538444,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225",
+              "reference_id": "69aecdb26be28e1abba8e454bb58e7c18a7bd020b557093dcdd3e33c751d4903",
+              "intersection_over_union": 0.9646811181897372,
+              "centroid_error_m": 0.002375329194330025,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+          "seed_reference_id": "d4f518b462e40b08d6c618f9a4ddb88df0c42f629f4a27df3a7db9c62ddfb716",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  69.63429021891602,
+                  22.166788634741266
+                ],
+                [
+                  67.8986778384894,
+                  22.192212460017416
+                ],
+                [
+                  65.64891057334869,
+                  23.19092866468769
+                ],
+                [
+                  49.112308018534286,
+                  30.852600947031192
+                ],
+                [
+                  39.604620796034745,
+                  48.0131856699344
+                ],
+                [
+                  38.30902625854222,
+                  60.72081708733873
+                ],
+                [
+                  38.461061287838874,
+                  78.22015043100521
+                ],
+                [
+                  40.44208937792267,
+                  81.2172102008304
+                ],
+                [
+                  44.31952944948439,
+                  81.20031955344847
+                ],
+                [
+                  76.25351007950388,
+                  71.90684846253099
+                ],
+                [
+                  74.02879943405756,
+                  47.580452396900995
+                ],
+                [
+                  71.74727959763527,
+                  22.63286863538881
+                ],
+                [
+                  69.63429021891602,
+                  22.166788634741266
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              1.0000155488953255,
+              0.00017374544007743388
+            ],
+            [
+              -0.00017374544007743388,
+              1.0000155488953255
+            ]
+          ],
+          "translation_m": [
+            -1.0179864460186678,
+            -1.057363536570648
+          ],
+          "scale_metres_per_pdf_point": 1.0000155639888297,
+          "centroid_rms_m": 0.0031747694800905195,
+          "max_centroid_error_m": 0.005229837022857165,
+          "supports": [
+            {
+              "candidate_id": "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+              "reference_id": "9db409600bf9508f52ab1ef4e22e0e2313d1e05775e7d0fb099cc2f65d42a5e1",
+              "intersection_over_union": 0.9990415538599413,
+              "centroid_error_m": 0.0006881520799024194,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+              "reference_id": "df68ecad7ea9dc1c50b7a8e09394258b85cbda2c1ca4d7ce59c1728af16eb00b",
+              "intersection_over_union": 0.9974564548805013,
+              "centroid_error_m": 0.0020404790584136606,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+              "reference_id": "50fbfd77310887f3526c04552c664b6c42bf252ed22ee6baedc34b7c34206714",
+              "intersection_over_union": 0.9955317041081262,
+              "centroid_error_m": 0.002654348278437578,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+              "reference_id": "e2faf216573201521a37c789858129215533e9e4518c4432f5d9067334afd381",
+              "intersection_over_union": 0.9954022814314583,
+              "centroid_error_m": 0.0034438195305004685,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+              "reference_id": "ade5f6efd097ba91232832649864843145904182ed655bfde4c6813dae540072",
+              "intersection_over_union": 0.9920292145483097,
+              "centroid_error_m": 0.003993524494077773,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+              "reference_id": "7c8660162435389982c487949e547cb5ae4a43474cd48d5d1285a323a94bbdf6",
+              "intersection_over_union": 0.9915555121299539,
+              "centroid_error_m": 0.002472294549103119,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+              "reference_id": "0b646c210d363af5f60d1827c2a6cb8a9309debfb521abb64acce29a3aaafee1",
+              "intersection_over_union": 0.9914876744178753,
+              "centroid_error_m": 0.004184391341005335,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+              "reference_id": "da4b746102398dd481bcd7671e952a928e87a33505070172a54e28d6f8716ec5",
+              "intersection_over_union": 0.9912898619196143,
+              "centroid_error_m": 0.0004990802019478204,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2",
+              "reference_id": "a49b1b917d991a731387f01d28d35bd316e7f2535ed4ef78908edc2e28dde309",
+              "intersection_over_union": 0.9895095728767949,
+              "centroid_error_m": 0.005229837022857165,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "8405b397aacff98cf9bb3b7be3ae63cc6232aa760b17c333308a866388e6f18f",
+          "seed_reference_id": "a49b1b917d991a731387f01d28d35bd316e7f2535ed4ef78908edc2e28dde309",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  113.99061435462967,
+                  120.81903401350087
+                ],
+                [
+                  112.99152974197564,
+                  120.81920759719753
+                ],
+                [
+                  111.98433452462402,
+                  122.81794806783186
+                ],
+                [
+                  110.00470026710538,
+                  132.08874052845164
+                ],
+                [
+                  110.00614630508859,
+                  140.41160912784778
+                ],
+                [
+                  114.41798460860896,
+                  142.23150919113544
+                ],
+                [
+                  115.99279669247272,
+                  142.23123557897125
+                ],
+                [
+                  115.99091954069823,
+                  131.4270328252533
+                ],
+                [
+                  115.98946025337622,
+                  123.02790585155705
+                ],
+                [
+                  115.98932344729413,
+                  122.24049980962516
+                ],
+                [
+                  113.99061435462967,
+                  120.81903401350087
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              -0.999672355735562,
+              2.5151057215062414e-05
+            ],
+            [
+              -2.5151057215062414e-05,
+              -0.999672355735562
+            ]
+          ],
+          "translation_m": [
+            132.37410279491297,
+            121.45810400692318
+          ],
+          "scale_metres_per_pdf_point": 0.9996723560519535,
+          "centroid_rms_m": 0.045360666849186375,
+          "max_centroid_error_m": 0.06471725586032578,
+          "supports": [
+            {
+              "candidate_id": "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "intersection_over_union": 0.9918050826320995,
+              "centroid_error_m": 0.06471725586032578,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "b80235b594d0c2cc61c581839022724f4b1f8df5c9b3d5793518c3e502518b43",
+              "intersection_over_union": 0.9917221465817361,
+              "centroid_error_m": 0.06343687323221109,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "2246037a81e0a4304a6a4ee7dde70ce53202851e5f71de7573ace7dcb3028420",
+              "intersection_over_union": 0.9774116167829051,
+              "centroid_error_m": 0.0294356917338581,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "intersection_over_union": 0.9763974678476652,
+              "centroid_error_m": 0.02947819324546662,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "intersection_over_union": 0.97504190248259,
+              "centroid_error_m": 0.034488129628055655,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+              "intersection_over_union": 0.9735770152764407,
+              "centroid_error_m": 0.0347581009311124,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+          "seed_reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  71.1146518772398,
+                  39.6869430246641
+                ],
+                [
+                  67.16219974782777,
+                  39.693714348113176
+                ],
+                [
+                  69.38619264578546,
+                  64.01380127514436
+                ],
+                [
+                  70.0977995473131,
+                  71.79545458838996
+                ],
+                [
+                  71.25769435831788,
+                  71.79053678111039
+                ],
+                [
+                  76.24288393942653,
+                  71.761505785984
+                ],
+                [
+                  75.52372136579042,
+                  63.89523694617935
+                ],
+                [
+                  73.59123892740948,
+                  42.75755967294948
+                ],
+                [
+                  73.31051716652982,
+                  39.6869982710988
+                ],
+                [
+                  71.1146518772398,
+                  39.6869430246641
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              1.001763427113674,
+              -0.002108443040252957
+            ],
+            [
+              0.002108443040252957,
+              1.001763427113674
+            ]
+          ],
+          "translation_m": [
+            14.13153159463156,
+            -10.177470884995529
+          ],
+          "scale_metres_per_pdf_point": 1.0017656459644577,
+          "centroid_rms_m": 0.03148121866547883,
+          "max_centroid_error_m": 0.050099189069589475,
+          "supports": [
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "b80235b594d0c2cc61c581839022724f4b1f8df5c9b3d5793518c3e502518b43",
+              "intersection_over_union": 0.9905091711783038,
+              "centroid_error_m": 0.012327801935327313,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+              "intersection_over_union": 0.9826777270491652,
+              "centroid_error_m": 0.0196368713827234,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "2246037a81e0a4304a6a4ee7dde70ce53202851e5f71de7573ace7dcb3028420",
+              "intersection_over_union": 0.9688232102801457,
+              "centroid_error_m": 0.050099189069589475,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+              "reference_id": "d67021530ddda1e7329bceda085c3d95ab47c098006572174db282ce17572bd8",
+              "intersection_over_union": 0.8810406050207594,
+              "centroid_error_m": 0.030278017619487826,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+          "seed_reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  71.05369931993904,
+                  22.863918537411564
+                ],
+                [
+                  68.78720830328831,
+                  23.066559481029486
+                ],
+                [
+                  69.72642902934912,
+                  33.580965099428184
+                ],
+                [
+                  72.87335218713466,
+                  68.81019888099468
+                ],
+                [
+                  73.14826235342557,
+                  71.88776831361024
+                ],
+                [
+                  75.34872085871311,
+                  71.89239968794
+                ],
+                [
+                  76.23160243513848,
+                  71.8927231538729
+                ],
+                [
+                  75.51399790881092,
+                  63.8599919739472
+                ],
+                [
+                  73.35845831343315,
+                  39.73128391525316
+                ],
+                [
+                  71.97674793364632,
+                  24.264675717921506
+                ],
+                [
+                  71.05369931993904,
+                  22.863918537411564
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              0.9972723834076236,
+              0.0018988560905085505
+            ],
+            [
+              -0.0018988560905085505,
+              0.9972723834076236
+            ]
+          ],
+          "translation_m": [
+            7.987451199694725,
+            -9.53375319458867
+          ],
+          "scale_metres_per_pdf_point": 0.9972741911640823,
+          "centroid_rms_m": 0.03249225626090912,
+          "max_centroid_error_m": 0.05223563821116513,
+          "supports": [
+            {
+              "candidate_id": "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "intersection_over_union": 0.9909553912737662,
+              "centroid_error_m": 0.010867778885416643,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "intersection_over_union": 0.9848411266597289,
+              "centroid_error_m": 0.01983350758926134,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "intersection_over_union": 0.969201595832944,
+              "centroid_error_m": 0.05223563821116513,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+              "reference_id": "7772c4e0924f5c56f6e4496991a74129a04650b80627bc2bd7b23f4ba4f30caa",
+              "intersection_over_union": 0.8790277294486086,
+              "centroid_error_m": 0.031352006748771616,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+          "seed_reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  68.61138637459777,
+                  22.774566566257562
+                ],
+                [
+                  66.51446593852856,
+                  22.97052301714946
+                ],
+                [
+                  65.7103050028918,
+                  24.522847014851294
+                ],
+                [
+                  67.16803765721872,
+                  40.13405741193932
+                ],
+                [
+                  70.13612227289386,
+                  71.91999104944782
+                ],
+                [
+                  70.95087175096893,
+                  71.91702339242255
+                ],
+                [
+                  73.20015492272586,
+                  71.90883056605551
+                ],
+                [
+                  68.61138637459777,
+                  22.774566566257562
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              -0.9996819865739767,
+              3.888304218819136e-05
+            ],
+            [
+              -3.888304218819136e-05,
+              -0.9996819865739767
+            ]
+          ],
+          "translation_m": [
+            129.3033639441901,
+            121.50455235153609
+          ],
+          "scale_metres_per_pdf_point": 0.9996819873301627,
+          "centroid_rms_m": 0.03376529662480949,
+          "max_centroid_error_m": 0.04775127267325581,
+          "supports": [
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "intersection_over_union": 0.9923820022127662,
+              "centroid_error_m": 0.04775127267325581,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "intersection_over_union": 0.981020120158437,
+              "centroid_error_m": 0.023805978257990076,
+              "identity_verified": false
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "intersection_over_union": 0.9798240121077673,
+              "centroid_error_m": 0.023945294438544512,
+              "identity_verified": false
+            }
+          ],
+          "seed_candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+          "seed_reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+          "mapped_support_envelope": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  68.04444606066491,
+                  39.731762083346595
+                ],
+                [
+                  67.16340207882624,
+                  39.73325938183355
+                ],
+                [
+                  67.89607222298109,
+                  47.74778612102206
+                ],
+                [
+                  70.09686590269655,
+                  71.82181170297434
+                ],
+                [
+                  73.1722869459891,
+                  71.80670430456965
+                ],
+                [
+                  72.4532254966782,
+                  63.94034979986023
+                ],
+                [
+                  70.52101479238037,
+                  42.80244233400059
+                ],
+                [
+                  70.24033250491004,
+                  39.73184749325334
+                ],
+                [
+                  68.04444606066491,
+                  39.731762083346595
+                ]
+              ]
+            ]
+          }
+        }
+      ],
+      "seed_fit_attempts": 404,
+      "orientation_trial_attempts": 945,
+      "seed_objects": 64,
+      "priority_seed_ids": [],
+      "verification_objects": 255,
+      "review_flags": [
+        "seed_selection_truncated; all_objects_verified",
+        "multiple_mapped_placements"
+      ],
+      "min_iou": 0.85,
+      "tolerance_m": 1.0,
+      "registration_verified": false,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0,
+      "limitations": [
+        "Mapped agreement is not independently surveyed registration",
+        "Map and drawing may differ in date, generalisation or extent",
+        "Support envelope is not a validated registration domain"
+      ]
+    },
+    "alignment_checks": {
+      "version": "held-out-map-alignment-v2",
+      "status": "withheld",
+      "expected_metres_per_pdf_point": 1.0,
+      "tolerance_m": 1.0,
+      "min_iou": 0.85,
+      "scale_tolerance": 0.01,
+      "blockers": [
+        "requires_one_unambiguous_map_hypothesis"
+      ],
+      "hypotheses": [
+        {
+          "status": "map_consistent_candidate",
+          "reasons": [],
+          "held_out_checks": [
+            {
+              "candidate_id": "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+              "reference_id": "d4f518b462e40b08d6c618f9a4ddb88df0c42f629f4a27df3a7db9c62ddfb716",
+              "fit_landmark_ids": [
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9989996004544351,
+              "boundary_error_m": 0.006789541352257444,
+              "relative_printed_scale_error": 7.514268417607717e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+              "reference_id": "2246037a81e0a4304a6a4ee7dde70ce53202851e5f71de7573ace7dcb3028420",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9984878133793332,
+              "boundary_error_m": 0.003222682627276029,
+              "relative_printed_scale_error": 6.86238600685618e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+              "reference_id": "7772c4e0924f5c56f6e4496991a74129a04650b80627bc2bd7b23f4ba4f30caa",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9982847627704406,
+              "boundary_error_m": 0.0043051359160364185,
+              "relative_printed_scale_error": 6.986033411027215e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.998074880601358,
+              "boundary_error_m": 0.004279824949176928,
+              "relative_printed_scale_error": 6.930479941258394e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+              "reference_id": "7c0a538c83de6ca0d4afb6ebee8afc0719a6a336f576825095665efba1a39866",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9979320206383717,
+              "boundary_error_m": 0.005914722723299039,
+              "relative_printed_scale_error": 7.041415665332007e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+              "reference_id": "b80235b594d0c2cc61c581839022724f4b1f8df5c9b3d5793518c3e502518b43",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9976995877272777,
+              "boundary_error_m": 0.0069151853364262895,
+              "relative_printed_scale_error": 6.689626970202145e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9974494982267423,
+              "boundary_error_m": 0.008133064058529248,
+              "relative_printed_scale_error": 6.604152350786485e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+              "reference_id": "ef626e81d454117c14ffefe56fb79fce4c55e4733362580147590e7eef5e291c",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9966229584470903,
+              "boundary_error_m": 0.005600396442620864,
+              "relative_printed_scale_error": 6.902820528476017e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+              "reference_id": "af4790c1b2b5438dde2555d496651a4d7c75545e52e39cc933dac887e07ea008",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.996262047804149,
+              "boundary_error_m": 0.009015362806260101,
+              "relative_printed_scale_error": 7.06036801788601e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9961079657969248,
+              "boundary_error_m": 0.007384807566846222,
+              "relative_printed_scale_error": 5.692737486673316e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+              "reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9960508386081341,
+              "boundary_error_m": 0.00826480096557598,
+              "relative_printed_scale_error": 5.6847820411487504e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+              "reference_id": "7db43c3ffa26a25446e4f54d94da0366c6b598eeb042f90d565ed356e5bfb6d0",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9955663041527312,
+              "boundary_error_m": 0.004731611189602744,
+              "relative_printed_scale_error": 7.03064309008905e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+              "reference_id": "f7c02d2fc82777c8aa4f922acdada4ce723cd0fea080ebf97a708abfc99b5e66",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9959101485792501,
+              "boundary_error_m": 0.004917785766681165,
+              "relative_printed_scale_error": 6.811694638253485e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+              "reference_id": "d00a0579d8db8ea6ff9dbb91682891c87b0233330075669e4a5f73e942943b69",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9955373442807154,
+              "boundary_error_m": 0.004563335211198197,
+              "relative_printed_scale_error": 6.664752727536527e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+              "reference_id": "d67021530ddda1e7329bceda085c3d95ab47c098006572174db282ce17572bd8",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9940873683950281,
+              "boundary_error_m": 0.16217143468063028,
+              "relative_printed_scale_error": 4.2469594429661583e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+              "reference_id": "57171d26ff897ed456c6b79ca34b1449e51237654e7d17b69b27bf607f7ede0a",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9922229518372931,
+              "boundary_error_m": 0.005838439139335633,
+              "relative_printed_scale_error": 6.735420938530634e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+              "reference_id": "1fe2ca8e76bd0965ef1c64d281a0508baf33cdafbed67079c0240cc08d8c5d10",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9919272860055242,
+              "boundary_error_m": 0.005470113952860463,
+              "relative_printed_scale_error": 6.735108990407745e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+              "reference_id": "428757ced9b954250ccc9c39013f60ddb67dd4ec58ae4883c7916e6521d223de",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9899245880944105,
+              "boundary_error_m": 0.006248412066061607,
+              "relative_printed_scale_error": 7.367824600967854e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+              "reference_id": "b1d83248fc200226f9bbe360cd8adcb95730a648ff86f807a34bb63ad5c1c5d5",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9904248298337011,
+              "boundary_error_m": 0.007354180493744038,
+              "relative_printed_scale_error": 6.51103017040855e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+              "reference_id": "3451830359b9b6fbcc785e1c1d42ec41fa45e6cbcf3747f72619198958b62e92",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9904147733797347,
+              "boundary_error_m": 0.008014504425648362,
+              "relative_printed_scale_error": 6.583436046159186e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+              "reference_id": "825c872bcc6ab76185a74e267c0e3679084365548103c1a5a03d4fe93ee8663d",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9889502697751714,
+              "boundary_error_m": 0.005878897507877464,
+              "relative_printed_scale_error": 7.252991138939624e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+              "reference_id": "0d5f07fd47dea8cb73f3d3df515e006f44620b58a6b9fde7d7130bbb2b930adb",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9873427193085647,
+              "boundary_error_m": 0.007156741932746513,
+              "relative_printed_scale_error": 7.233676090134811e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+              "reference_id": "276f978de59254432327e6737f931934cc604f6d711a4898f4917b73238ffa32",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9844353799175278,
+              "boundary_error_m": 0.009895187139885062,
+              "relative_printed_scale_error": 7.760774358522848e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+              "reference_id": "9359110a74e28783608732e0bdb54a5245b8fccea5b827ad5127f1fb58592c65",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9795030741114559,
+              "boundary_error_m": 0.006008045097457653,
+              "relative_printed_scale_error": 7.060382582424474e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+              "reference_id": "5cdb3fee536db727b868bade26e14ad3a90bb5c8b3a3d230d4a31a2a84c11b0e",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9790799740544849,
+              "boundary_error_m": 0.006117053750141579,
+              "relative_printed_scale_error": 7.068699501888709e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+              "reference_id": "508e972066b3537d2df4d6f0d0157e345f1ef14cdb3626660f2cb447f491525c",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9788381457251392,
+              "boundary_error_m": 0.005868873330124027,
+              "relative_printed_scale_error": 7.215289607220843e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07",
+              "reference_id": "0e6b299e5e1b9c1e96ed36e6d659ae43f92ab40158af3a51141ce19cb018a9db",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225"
+              ],
+              "intersection_over_union": 0.9770105808871176,
+              "boundary_error_m": 0.005972841844299531,
+              "relative_printed_scale_error": 7.045978690878307e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "9e7572705f2a7b89753d9020896c407e70333d8bcef4dfbc25b0021d7b095225",
+              "reference_id": "69aecdb26be28e1abba8e454bb58e7c18a7bd020b557093dcdd3e33c751d4903",
+              "fit_landmark_ids": [
+                "1697b210a1bef7a9b045636996047d58fe704440ff3297185ad0b29e8296f3f2",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "67e288923c47d0dd067150bba831cdd43773d29a273bffee0ec42c9c3c1026b7",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+                "cc9d2af4f452a69c9bf028f6ed8fd5d1382dd772af627c76833425053c8ea70a",
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "479a53e43e0adf64110f7c50619f56d06a8e22b1d39b7730cef04b64f1b76397",
+                "41c5a6ece7ede1565290a46fbd68e28a633a9daaf5e6905a5fe6ff0941ae939f",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "9a9fccfa2c336056daaa9523d104bd920b238ee011221184b91e903a7b759d72",
+                "70dae70998776321693bb5a66a6e0c3170c3904e3aa6f24d72925d61b1418a6c",
+                "2eb4bc34a3ebdf28258765dfedecfea3488376ba441fac10f53bf2bbe6a7ed5d",
+                "c1f14866c9f8de99e2d4e5ddea2c96e4476618a9eeb774b3ae344580f203be5f",
+                "9b6e9b104a314286655e5a345213f88e3bced93950b82af664838f47a0d93f08",
+                "103b604e8e70334e68105835596f986974851ed16c65854c4c0348e6dfcd3982",
+                "b148faefa5f438d50d9e02b780b9247d27817eb4a24b106a3216a6a1f26f21c1",
+                "ce5c2abd7eaa9f1e63e23c987eccbc14bd5cb3aa97e6c8c11895f9bd943de6f8",
+                "6c48763579802abec0bad9e5c1eaee5f44fd82920ccfc9091cd919067fcff6d6",
+                "c51b82220dd68347cfdd847371ab30c69250d4569835463949d9a6b23c4ee742",
+                "9760af00c46d52123c68024d0fe2227ec28c4c500d20d6086a6c37fc696d30f6",
+                "4e730609ec08649e82e56f43e3e713f17ce1be94553056f464f35a41c7ca76c8",
+                "6d00cbdfb047ae2dc672e3751d7c948c290b8ac90f85cc7722b387041fde9150",
+                "c6d7ee1db6e98422d320415b13ae7aff41b1518f746f48592848610be3462462",
+                "debd07864936a4cb23aec13771c08f432c38b788c03a83753e553397f3a39111",
+                "4c571a787a13533ab94c91337444c409f397be950e16b8c887071c64ba343a07"
+              ],
+              "intersection_over_union": 0.9640774297418588,
+              "boundary_error_m": 0.007489250280670603,
+              "relative_printed_scale_error": 6.469162249334026e-05,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "status": "map_consistent_candidate",
+          "reasons": [],
+          "held_out_checks": [
+            {
+              "candidate_id": "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+              "reference_id": "9db409600bf9508f52ab1ef4e22e0e2313d1e05775e7d0fb099cc2f65d42a5e1",
+              "fit_landmark_ids": [
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.998292434656178,
+              "boundary_error_m": 0.0014168870903148445,
+              "relative_printed_scale_error": 2.076084437296899e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+              "reference_id": "df68ecad7ea9dc1c50b7a8e09394258b85cbda2c1ca4d7ce59c1728af16eb00b",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9965946953992952,
+              "boundary_error_m": 0.0031121426835727935,
+              "relative_printed_scale_error": 5.453717515080392e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+              "reference_id": "50fbfd77310887f3526c04552c664b6c42bf252ed22ee6baedc34b7c34206714",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9949194667053747,
+              "boundary_error_m": 0.003089843355889886,
+              "relative_printed_scale_error": 1.1904876506818596e-06,
+              "passed": true
+            },
+            {
+              "candidate_id": "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+              "reference_id": "e2faf216573201521a37c789858129215533e9e4518c4432f5d9067334afd381",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9944378841512429,
+              "boundary_error_m": 0.004249674671669368,
+              "relative_printed_scale_error": 1.271962713822461e-06,
+              "passed": true
+            },
+            {
+              "candidate_id": "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+              "reference_id": "ade5f6efd097ba91232832649864843145904182ed655bfde4c6813dae540072",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.989661717895845,
+              "boundary_error_m": 0.005246756189174905,
+              "relative_printed_scale_error": 2.4942002359695792e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+              "reference_id": "7c8660162435389982c487949e547cb5ae4a43474cd48d5d1285a323a94bbdf6",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9915215077144942,
+              "boundary_error_m": 0.008450249548688712,
+              "relative_printed_scale_error": 1.772931982779724e-05,
+              "passed": true
+            },
+            {
+              "candidate_id": "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+              "reference_id": "0b646c210d363af5f60d1827c2a6cb8a9309debfb521abb64acce29a3aaafee1",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9886049518513335,
+              "boundary_error_m": 0.005679912683040774,
+              "relative_printed_scale_error": 7.6058899374231714e-06,
+              "passed": true
+            },
+            {
+              "candidate_id": "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed",
+              "reference_id": "da4b746102398dd481bcd7671e952a928e87a33505070172a54e28d6f8716ec5",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2"
+              ],
+              "intersection_over_union": 0.9912080620886802,
+              "boundary_error_m": 0.004778581219607149,
+              "relative_printed_scale_error": 7.733511121932324e-06,
+              "passed": true
+            },
+            {
+              "candidate_id": "4553633579b30e0e424302f7f91df70485718aafc51cc7872f2b21e739e56dc2",
+              "reference_id": "a49b1b917d991a731387f01d28d35bd316e7f2535ed4ef78908edc2e28dde309",
+              "fit_landmark_ids": [
+                "51b84985b1b8cd78797a5cf6f06e99727e39287ad2f2fab92e33397b1b891444",
+                "c8cb8420bc61a489afa4c9c2af77d3a77b3b00c28fb33d5bf864dd30962e5b0a",
+                "fc9c86bfaa164240fed7b9389a0494cbcf9be64366442ef6d739c95c8f2e4c31",
+                "c772a6c4f6c938c5477e7b5757943cbc7a71d368223a3332663060aabb3f17fd",
+                "d24124886a86018c33acf17e02f24ce8dc1150a1d7171b93f9e4fc99c6e68a92",
+                "b0efdb5e889c39ddeab1eba37d21430e7645a1255df0f6c4c338f3bfe3d66f32",
+                "47af4e63ce7d6db6388232f896d78ed3d82740cccd3ea276fe94e46b985d0c44",
+                "da6ccba31f696260fef2ee05dc2e7d551610974be2171f848f339d9f632a5eed"
+              ],
+              "intersection_over_union": 0.988126332494483,
+              "boundary_error_m": 0.00638018779318738,
+              "relative_printed_scale_error": 1.082614386649361e-05,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "status": "map_consistent_candidate",
+          "reasons": [],
+          "held_out_checks": [
+            {
+              "candidate_id": "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+              "reference_id": "f9c7118cd912457d70c04d8d2e86cc3acd5c2733d37ad827f487397c27610812",
+              "fit_landmark_ids": [
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2"
+              ],
+              "intersection_over_union": 0.9898814976383264,
+              "boundary_error_m": 0.08181346313115483,
+              "relative_printed_scale_error": 0.00033967374128562877,
+              "passed": true
+            },
+            {
+              "candidate_id": "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+              "reference_id": "b80235b594d0c2cc61c581839022724f4b1f8df5c9b3d5793518c3e502518b43",
+              "fit_landmark_ids": [
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2"
+              ],
+              "intersection_over_union": 0.989880189303541,
+              "boundary_error_m": 0.0847105481258544,
+              "relative_printed_scale_error": 0.00030896347297704185,
+              "passed": true
+            },
+            {
+              "candidate_id": "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+              "reference_id": "2246037a81e0a4304a6a4ee7dde70ce53202851e5f71de7573ace7dcb3028420",
+              "fit_landmark_ids": [
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2"
+              ],
+              "intersection_over_union": 0.9756353652374623,
+              "boundary_error_m": 0.15214755132511817,
+              "relative_printed_scale_error": 0.0006664290237177184,
+              "passed": true
+            },
+            {
+              "candidate_id": "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+              "reference_id": "5d80c84b4f13cedce0ed70a767af9ce472f0005e441ed0c1f82b653b5433cc78",
+              "fit_landmark_ids": [
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2"
+              ],
+              "intersection_over_union": 0.9752024632070111,
+              "boundary_error_m": 0.15416649866506768,
+              "relative_printed_scale_error": 0.0013206996956151018,
+              "passed": true
+            },
+            {
+              "candidate_id": "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3",
+              "reference_id": "9d08d2026cb9d58902a50a67ef3c90697fb4826c56d9bc179c050bc23121cbc7",
+              "fit_landmark_ids": [
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2"
+              ],
+              "intersection_over_union": 0.9729191527908453,
+              "boundary_error_m": 0.16794854005040635,
+              "relative_printed_scale_error": 0.0008831094045875787,
+              "passed": true
+            },
+            {
+              "candidate_id": "31ce857a8294d768c42c2b7cee17518a7e9b4f451e6a9eda297bf975d10c7ee2",
+              "reference_id": "ec24e6d558fa370b51071817af10101e07c166eadbe0f58e90135f227e3ebc9a",
+              "fit_landmark_ids": [
+                "dacdae2ead5818ceb2f1d3e14c106040391183b7fc7b5637196a28e626e40e8c",
+                "53a9c9bd39caf5d6b40f1bf0dd67692af5b9b28f0d7483d7be086462d87a4385",
+                "ab8252904a6b79f6cd7bb3b88dbea3cb965d8a817ef080d69f7289bfce727e71",
+                "f309d03302cee949feb5ddf7793fb00676fb730a8ddbe0cd66eb42d056d74645",
+                "2340516780d9289165a134ab598688c16b0d77d7928ef143c55c9bbf565c8fd3"
+              ],
+              "intersection_over_union": 0.9712094325428579,
+              "boundary_error_m": 0.17166604341511676,
+              "relative_printed_scale_error": 0.0015439050388763587,
+              "passed": true
+            }
+          ]
+        },
+        {
+          "status": "withheld",
+          "reasons": [
+            "requires_five_to_256_distinct_map_landmarks"
+          ],
+          "held_out_checks": []
+        },
+        {
+          "status": "withheld",
+          "reasons": [
+            "requires_five_to_256_distinct_map_landmarks"
+          ],
+          "held_out_checks": []
+        },
+        {
+          "status": "withheld",
+          "reasons": [
+            "requires_five_to_256_distinct_map_landmarks"
+          ],
+          "held_out_checks": []
+        }
+      ],
+      "registration_verified": false,
+      "physical_identity_verified": false,
+      "independent_survey_checkpoints": 0,
+      "world_geometry_additions": 0,
+      "limitations": [
+        "Held-out correspondences were discovered from the same map and drawing.",
+        "Passing checks is map consistency evidence, not independently surveyed registration."
+      ]
+    },
+    "native_sheet_transforms": [
+      {
+        "hypothesis_index": 0,
+        "matched_outlines": 28,
+        "consistency_status": "map_consistent_candidate",
+        "matrix": [
+          [
+            0.9999322166261752,
+            -1.94181473567769e-05
+          ],
+          [
+            1.94181473567769e-05,
+            0.9999322166261752
+          ]
+        ],
+        "translation_pdf_points": [
+          156.24830591283848,
+          -140.00911812938904
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      },
+      {
+        "hypothesis_index": 1,
+        "matched_outlines": 9,
+        "consistency_status": "map_consistent_candidate",
+        "matrix": [
+          [
+            1.0000155488953255,
+            0.00017374544007743388
+          ],
+          [
+            -0.00017374544007743388,
+            1.0000155488953255
+          ]
+        ],
+        "translation_pdf_points": [
+          -14.42815435302049,
+          -14.986254849032807
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      },
+      {
+        "hypothesis_index": 2,
+        "matched_outlines": 6,
+        "consistency_status": "map_consistent_candidate",
+        "matrix": [
+          [
+            -0.9996723557355619,
+            2.5151057215062414e-05
+          ],
+          [
+            -2.5151057215062414e-05,
+            -0.9996723557355619
+          ]
+        ],
+        "translation_pdf_points": [
+          1876.1683860696328,
+          1721.4534426178088
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      },
+      {
+        "hypothesis_index": 3,
+        "matched_outlines": 4,
+        "consistency_status": "withheld",
+        "matrix": [
+          [
+            1.001763427113674,
+            -0.002108443040252957
+          ],
+          [
+            0.002108443040252957,
+            1.001763427113674
+          ]
+        ],
+        "translation_pdf_points": [
+          200.28942417588038,
+          -144.24761884245632
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      },
+      {
+        "hypothesis_index": 4,
+        "matched_outlines": 4,
+        "consistency_status": "withheld",
+        "matrix": [
+          [
+            0.9972723834076236,
+            0.0018988560905085505
+          ],
+          [
+            -0.0018988560905085505,
+            0.9972723834076236
+          ]
+        ],
+        "translation_pdf_points": [
+          113.2079697594528,
+          -135.12406102566618
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      },
+      {
+        "hypothesis_index": 5,
+        "matched_outlines": 3,
+        "consistency_status": "withheld",
+        "matrix": [
+          [
+            -0.9996819865739767,
+            3.888304218819136e-05
+          ],
+          [
+            -3.888304218819136e-05,
+            -0.9996819865739767
+          ]
+        ],
+        "translation_pdf_points": [
+          1832.6461031460015,
+          1722.1117656123226
+        ],
+        "source_coordinate_frame": "pdf_native_points_y_up",
+        "target_coordinate_frame": "pdf_native_points_y_up"
+      }
+    ],
+    "registration_verified": false,
+    "physical_identity_verified": false,
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Common outline geometry does not establish wall/roof/annotation identity.",
+      "Cross-sheet matches are not independent survey checkpoints.",
+      "No geographic alignment is propagated or accepted."
+    ]
+  },
+  "envelopes_enabled": true,
+  "strongest_link_context_review": {
+    "method": "Visual inspection of the source PDF with the strongest-fit exact outlines overlaid",
+    "matched_outlines": 28,
+    "physical_identity_verified": false,
+    "observations": [
+      "Some matched enclosures follow repeated survey/section linework across the building and courtyard.",
+      "Some matches are small fixture-like outlines in the upper external area.",
+      "Shared source geometry can constrain relative sheet pose, but these matches do not establish physical building-boundary identity or independent geographic controls."
+    ],
+    "accepted_geographic_transforms": 0
+  },
+  "validation": {
+    "tests_passed": 891,
+    "duration_seconds": 77.727,
+    "command": "PYTHONPATH=. runtime-python -m unittest discover -s tests -q",
+    "focused_envelope_tests": 6,
+    "focused_sheet_link_tests": 4,
+    "checks": [
+      "exact adjacent divider removal",
+      "no gap/point-contact merging",
+      "protected recovered holes",
+      "order-independent source provenance",
+      "native replay and source/output checks",
+      "envelope option mismatch on resume",
+      "different printed scales and native transform recovery",
+      "source/page-bound scale",
+      "competing cross-sheet patterns",
+      "insufficient/shifted landmarks"
+    ]
+  }
+}

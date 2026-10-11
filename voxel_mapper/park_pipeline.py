@@ -66,7 +66,7 @@ def run(job_path,stage='all'):
                 from .linework_boundaries import run as recover_boundaries
                 if not geometry.get('enabled',False):raise ValueError('Linework boundary recovery requires drawing geometry')
                 selected=json.loads(path(linework['sheets']).read_text()) if linework.get('sheets') else None
-                checkpoint('linework_boundaries',recover_boundaries(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'linework-boundaries',sheets=selected,recovery_options=linework.get('options'),max_records=linework.get('max_records',2500000)))
+                checkpoint('linework_boundaries',recover_boundaries(corpus,root/'drawing-geometry/geometry-candidates.jsonl',root/'linework-boundaries',sheets=selected,recovery_options=linework.get('options'),max_records=linework.get('max_records',2500000),envelopes=linework.get('envelopes',False)))
                 drawing_candidates=root/'linework-boundaries/boundary-candidates.jsonl';polygon_candidates=root/'linework-boundaries/polygon-candidates.jsonl'
             placement=job.get('mapped_placement',{})
             if placement.get('enabled',False):

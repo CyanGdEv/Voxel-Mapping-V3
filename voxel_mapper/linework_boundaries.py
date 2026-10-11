@@ -82,16 +82,21 @@ def retained_boundaries(corpus,candidate):
     return recover_page(json.loads(row[0])['candidates'],recovery_options=opts)[0]
 
 
-def run(corpus,candidates,output,*,sheets=None,recovery_options=None,max_records=2500000):
+def run(corpus,candidates,output,*,sheets=None,recovery_options=None,max_records=2500000,envelopes=False):
     from .drawing_footprints import retained_page_candidates
     from .footprint_matching import lines
     opts=options(recovery_options)
+    if type(envelopes) is not bool:raise ValueError('Boolean envelope option required')
     if type(max_records) is not int or not 1<=max_records<=2500000:raise ValueError('Record budget must be 1..2500000')
     if sheets is not None and (not isinstance(sheets,list) or len(sheets)>10000 or any(not isinstance(s,list) or len(s)!=2 or not re.fullmatch('[0-9a-f]{64}',str(s[0])) or type(s[1]) is not int or s[1]<1 for s in sheets)):raise ValueError('Bounded source page selection required')
     contract={'version':VERSION,'source_candidate_sha256':file_hash(candidates),'options':opts,'provenance_comparison_epsilon_pdf_points':1e-7,'sheets':sheets,'max_records':max_records};output=Path(output)
+    if envelopes:
+        from .linework_envelopes import VERSION as envelope_version
+        contract.update(envelopes=True,envelope_version=envelope_version)
     if output.exists():
         if not (output/'boundary-report.json').exists():raise ValueError('Incomplete boundary recovery output; use a fresh directory')
         report=json.loads((output/'boundary-report.json').read_text())
+        if report.get('envelopes',False)!=envelopes:raise ValueError('Boundary recovery inputs changed')
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Boundary recovery inputs changed')
         for name,digest in report['output_sha256'].items():
             if file_hash(output/name)!=digest:raise ValueError('Boundary recovery output changed')
@@ -107,7 +112,12 @@ def run(corpus,candidates,output,*,sheets=None,recovery_options=None,max_records
         if file_hash(corpus.root/'files'/f'{sha}.pdf')!=sha:raise ValueError('Source PDF checksum mismatch')
         retained=retained_page_candidates(corpus,parents[0]);by_id={p['id']:p for p in retained}
         if len(parents)!=len(by_id) or {p['id'] for p in parents}!=set(by_id) or any(by_id.get(p['id'])!=p for p in parents):raise ValueError('Complete exact retained parent page required')
-        records,result=recover_page(retained,recovery_options=opts);documents.add(sha);pages.append((sha,page));counts.update(result['counts']);counts[result['status']]+=1;result.update(document_sha256=sha,page=page);streams['page-recovery.jsonl'].write(json.dumps(result)+'\n')
+        records,result=recover_page(retained,recovery_options=opts);documents.add(sha);pages.append((sha,page));counts.update(result['counts']);counts[result['status']]+=1;result.update(document_sha256=sha,page=page)
+        if envelopes:
+            from .linework_envelopes import combine
+            derived,review=combine(records);records+=derived;counts['envelopes']+=len(derived)
+            result['envelope_recovery']=review
+        streams['page-recovery.jsonl'].write(json.dumps(result)+'\n')
         for record in records:
             total+=1
             if total>max_records:raise ValueError('Boundary recovery record budget exceeded')
@@ -138,8 +148,8 @@ def main():
     from .planning_bulk import Corpus
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('corpus','candidates','output'):p.add_argument('--'+key,required=True)
-    p.add_argument('--sheets');a=p.parse_args();corpus=Corpus(a.corpus)
-    try:print(json.dumps(run(corpus,a.candidates,a.output,sheets=json.loads(Path(a.sheets).read_text()) if a.sheets else None),indent=2))
+    p.add_argument('--sheets');p.add_argument('--envelopes',action='store_true');a=p.parse_args();corpus=Corpus(a.corpus)
+    try:print(json.dumps(run(corpus,a.candidates,a.output,sheets=json.loads(Path(a.sheets).read_text()) if a.sheets else None,envelopes=a.envelopes),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()

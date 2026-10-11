@@ -3,7 +3,7 @@ import math
 import numpy as np
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v1'
+VERSION = 'held-out-map-alignment-v2'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -85,6 +85,8 @@ def printed_scale_review(pdf, page):
     from .ordinary_surfaces import label_runs
     from .glyph_visibility import screen_span
     from .drawing_registration_bridge import SCALE
+    from .boundary_registration import file_hash
+    digest = file_hash(pdf)
     labels = []; denominators = set(); visible = set()
     with pymupdf.open(pdf) as document:
         if not 1 <= page <= len(document) or len(document) > 1000:
@@ -104,7 +106,9 @@ def printed_scale_review(pdf, page):
                            'trace_indices': run['trace_indices'], 'character_indices': run['character_indices'],
                            'glyph_screen': screen})
     usable = len(denominators) == 1 and denominators <= visible
+    if file_hash(pdf) != digest: raise ValueError('Scale source PDF changed during review')
     return {'status': 'one_visible_printed_scale' if usable else 'withheld_missing_ambiguous_or_unverified_scale',
+            'document_sha256':digest,'page':page,
             'denominators': sorted(denominators), 'labels': labels,
             'expected_metres_per_pdf_point': next(iter(denominators))*.0254/72 if usable else None}
 
