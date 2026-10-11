@@ -14,13 +14,14 @@ from shapely.strtree import STRtree
 from .drawing_components import split_page
 from .boundary_registration import file_hash
 
-VERSION='linework-boundaries-v1'
-DEFAULTS={'max_segments':20000,'max_intersection_pairs':100000,'max_faces':4000,'max_noded_points':200000}
+VERSION='linework-boundaries-v2'
+DEFAULTS={'max_segments':20000,'max_intersection_pairs':100000,'max_faces':4000,'max_noded_points':200000,'max_face_provenance':256}
+LIMITS={**DEFAULTS,'max_face_provenance':2048}
 
 
 def options(values=None):
     result={**DEFAULTS,**(values or {})}
-    if set(result)!=set(DEFAULTS) or any(type(v) is not int or not 1<=v<=DEFAULTS[k] for k,v in result.items()):raise ValueError('Bounded linework recovery options required')
+    if set(result)!=set(DEFAULTS) or any(type(v) is not int or not 1<=v<=LIMITS[k] for k,v in result.items()):raise ValueError('Bounded linework recovery options required')
     return result
 
 
@@ -61,7 +62,7 @@ def recover_page(parents,*,recovery_options=None):
             links.append({'candidate_id':c['id'],'extraction_contract':c['extraction_contract'],'boundary_length_pdf_points':length,'raw_parent_references':c['parent_references']});coverage.append(g)
             for p in c['paint_references']:
                 if p not in paints:paints.append(p)
-        if len(links)>256 or len(paints)>256:counts['provenance_budget_deferred']+=1;continue
+        if len(links)>opts['max_face_provenance'] or len(paints)>opts['max_face_provenance']:counts['provenance_budget_deferred']+=1;continue
         # Buffer only compensates floating-point overlay in provenance checks.
         # It never participates in joining or polygonizing the source network.
         if not coverage or not unary_union(coverage).buffer(1e-7).covers(boundary):counts['incomplete_source_coverage']+=1;continue

@@ -174,3 +174,38 @@ Evidence: `evidence/mutiny-linework-view-frames-audit.json`.
 Reproduce with `scripts/audit_mutiny_view_layout.py --input-root INPUT_ROOT
 --output evidence/mutiny-linework-view-frames-audit.json` using the pinned
 original PDF files under `INPUT_ROOT/mutiny-bay-sources`.
+
+### Targeted Mutiny floor-plan provenance recovery
+
+`linework-boundaries-v2` exposes `max_face_provenance` in recovery options.
+The default remains **256** links/paint references per face; an explicit value
+may raise it to **2048**. Values are bounded integers, contract-pinned, and
+recomputed from retained original source geometry. Exceeding either limit
+still withholds the whole face. Polygonization, source coverage checks,
+protected holes and the prohibition on gap closure are unchanged.
+The existing park stage accepts this through
+`linework_boundaries.options.max_face_provenance`.
+
+On the pinned Smytheman 3023-08 existing floor plan, the .25-point extraction
+retains 8,454 straight source lines. Raising only the provenance allowance
+recovers **724 rather than 723** faces. The additional face retains **414
+source links, 431 paint references and 39 holes**; every previously recovered
+geometry is unchanged. Source/native overlay inspection shows the added
+face includes outdoor space as well as building edges. It is not an accepted
+building outline, wall perimeter or footprint. A larger evidence budget
+must not convert a closed drawing face into a physical building.
+
+The expanded floor/roof replay screens **102/41** map candidates against
+45 retained reference polygons and accepts **zero** map hypotheses. No
+registration, dimensions, heights, material assignment or world geometry
+is promoted. The current concrete blocker is separating the actual building
+exterior from rooms, courtyards and surrounding survey linework.
+
+Complete additional-face proof: `evidence/mutiny-dense-source-face-audit.json`.
+Map replay: `evidence/mutiny-dense-face-alignment-audit.json`.
+Reproduce the first with `scripts/audit_mutiny_dense_face.py --input-root
+INPUT_ROOT --output evidence/mutiny-dense-source-face-audit.json`.
+Reproduce the second with `scripts/audit_mutiny_map_alignment.py --input-root
+INPUT_ROOT --output evidence/mutiny-dense-face-alignment-audit.json
+--envelopes --landmark-context --min-line-length-points .25
+--max-candidates 10000 --max-face-provenance 2048`.

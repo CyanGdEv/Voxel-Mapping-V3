@@ -41,6 +41,25 @@ class LineworkTests(unittest.TestCase):
         p=self.parents([list(box(10,10,50,50).exterior.coords),[(30,10),(30,50)]]);r,report=recover_page(p);faces=[shape(c['geometry']) for c in r if c['extraction_kind']=='linework_boundaries']
         self.assertEqual(report['recovered_faces'],2);self.assertAlmostEqual(sum(g.area for g in faces),1600)
 
+    def test_dense_face_retains_complete_provenance_with_explicit_budget(self):
+        ring=([(100,i) for i in range(65)]+[(100-i*100/65,65) for i in range(65)]
+              +[(0,65-i) for i in range(65)]+[(i*100/65,0) for i in range(65)]+[(100,0)])
+        parents=self.parents([ring])
+        default,report=recover_page(parents)
+        self.assertEqual(report['counts']['provenance_budget_deferred'],1)
+        self.assertEqual(report['recovered_faces'],0)
+        records,report=recover_page(parents,recovery_options={'max_face_provenance':512})
+        face=next(r for r in records if r['extraction_kind']=='linework_boundaries')
+        self.assertEqual(report['recovered_faces'],1)
+        self.assertEqual(len(face['line_parent_references']),260)
+        self.assertEqual(len(face['paint_references']),260)
+        self.assertEqual(shape(face['geometry']).area,6500)
+        self.assertEqual({p['candidate_id'] for p in face['line_parent_references']},{p['id'] for p in parents})
+        from voxel_mapper.linework_boundaries import identity,options
+        self.assertNotEqual(identity('b'*64,options()),face['extraction_contract'])
+        for value in (True,0,2049):
+            with self.assertRaises(ValueError):recover_page(parents,recovery_options={'max_face_provenance':value})
+
     def test_actual_pdf_retained_recompute_resume_tamper_and_placement(self):
         import pymupdf
         from voxel_mapper.planning_bulk import Corpus
