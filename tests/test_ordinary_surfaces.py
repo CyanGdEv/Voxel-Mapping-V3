@@ -33,6 +33,11 @@ class OrdinarySurfaceTests(unittest.TestCase):
                 'semantic_annotation_contract': 'ordinary_surface_labels_v1', 'reuse_allowed': True,
                 'drawing_state': 'existing', 'drawing_state_verified': True, 'state_verification_reference': 'fixture',
                 'view_kind': 'horizontal_surface_plan', 'surface_label_scope_verified': True,
+                'surface_scope': {'document_sha256': sha, 'page': 1,
+                    'coordinate_frame': 'pdf_native_points_y_up', 'regions': [{
+                        'id': 'surface-view', 'view_kind': 'horizontal_surface_plan',
+                        'physical_surface_boundaries_verified': True, 'verification_reference': 'fixture surface view',
+                        'geometry': {'type': 'Polygon', 'coordinates': [[[0,0],[600,0],[600,600],[0,600],[0,0]]]}}]},
                 'registration_document_sha256': sha, 'registration_page': 1,
                 'registration_coordinate_frame': 'pdf_native_points_y_up',
                 'local_landmark_identity_verified': True, 'horizontal_registration_review': self.alignment})
@@ -123,6 +128,73 @@ class OrdinarySurfaceTests(unittest.TestCase):
         refs = [{**r, 'target': [999,999]} if r['role'] == 'checkpoint' else r for r in self.refs]
         with self.assertRaisesRegex(ValueError, 'surveyed landmark'):
             self.bridge(refs=refs)
+
+    def scoped_source(self, regions):
+        return replace(self.source, metadata={**self.source.metadata, 'view_kind': 'mixed_plan',
+            'surface_scope': {**self.source.metadata['surface_scope'], 'regions': regions}})
+
+    def test_mixed_sheet_region_keeps_paving_and_excludes_room_enclosures(self):
+        region = self.source.metadata['surface_scope']['regions'][0]
+        # One view region, not per-object bindings, covers the left material
+        # polygon and excludes all room and other-view enclosures.
+        region = {**region, 'geometry': {'type': 'Polygon', 'coordinates': [[[0,400],[200,400],[200,600],[0,600],[0,400]]]}}
+        _, features, report = self.bridge(self.scoped_source([region]))
+        self.assertEqual([f.parameters['surface']['value'] for f in features], ['brick'])
+        self.assertEqual(features[0].metadata['surface_scope_region'], 'surface-view')
+        self.assertEqual(sum(d['status'] == 'withheld' for d in report['semantic_decisions']), 2)
+
+    def test_scope_holes_and_crossings_are_withheld_without_clipping(self):
+        region = self.source.metadata['surface_scope']['regions'][0]
+        for coordinates in [
+            [[[0,0],[600,0],[600,600],[0,600],[0,0]], [[80,480],[100,480],[100,500],[80,500],[80,480]]],
+            [[[0,0],[100,0],[100,600],[0,600],[0,0]]],
+        ]:
+            _, features, _ = self.bridge(self.scoped_source([{**region, 'geometry': {'type':'Polygon','coordinates':coordinates}}]))
+            self.assertNotIn('brick', [f.parameters['surface']['value'] for f in features])
+
+    def test_scope_overlap_does_not_select_nearest_or_union_regions(self):
+        region = self.source.metadata['surface_scope']['regions'][0]
+        _, features, report = self.bridge(self.scoped_source([region, {**region, 'id':'another-view'}]))
+        self.assertEqual(features, [])
+        self.assertTrue(all(d['status'] == 'withheld' for d in report['semantic_decisions']))
+
+    def test_scope_is_pinned_and_old_sheet_boolean_cannot_publish(self):
+        scope = self.source.metadata['surface_scope']
+        for value in [None, {}, {**scope, 'document_sha256':'f'*64}, {**scope,'page':2},
+                      {**scope,'coordinate_frame':'mupdf_y_down'}, {**scope,'regions':[]}]:
+            with self.assertRaisesRegex(ValueError, 'surface-plan'):
+                self.bridge(replace(self.source, metadata={**self.source.metadata,'surface_scope':value}))
+
+    def test_scope_requires_verified_physical_boundary_context(self):
+        region = self.source.metadata['surface_scope']['regions'][0]
+        for change in [{'view_kind':'elevation'}, {'physical_surface_boundaries_verified':False},
+                       {'verification_reference':''}]:
+            with self.assertRaisesRegex(ValueError, 'boundary context'):
+                self.bridge(self.scoped_source([{**region, **change}]))
+
+    def test_scope_cannot_join_two_views_or_reuse_foreign_candidates(self):
+        from voxel_mapper.ordinary_surfaces import features
+        region = self.source.metadata['surface_scope']['regions'][0]
+        regions = [{**region, 'id':str(i), 'geometry':{'type':'Polygon','coordinates':[
+            [[lo,0],[hi,0],[hi,600],[lo,600],[lo,0]]]}} for i, (lo,hi) in enumerate([(0,100),(100,600)])]
+        _, output, _ = self.bridge(self.scoped_source(regions))
+        self.assertEqual({f.parameters['surface']['value'] for f in output}, {'asphalt','stone'})
+        rows, _, _ = self.page()
+        for changes in [{'page':2}, {'document_sha256':'f'*64}, {'coordinate_frame':'mupdf_y_down'}]:
+            edited = [{**row, 'candidate':{**row['candidate'], **changes}} for row in rows]
+            output, decisions = features(edited, self.source, self.alignment)
+            self.assertEqual(output, [])
+            self.assertTrue(all(d['status'] == 'withheld' for d in decisions))
+
+    def test_scope_rejects_invalid_and_nonfinite_polygons(self):
+        region = self.source.metadata['surface_scope']['regions'][0]
+        for coordinates in [
+            [[[0,0],[600,600],[0,600],[600,0],[0,0]]],
+            [[[0,0],[float('nan'),0],[600,600],[0,600],[0,0]]],
+            [[[0,0],[600,0],[600,600],[0,600]]],
+        ]:
+            with self.assertRaisesRegex(ValueError, 'surface-plan scope'):
+                self.bridge(self.scoped_source([{**region,'geometry':{'type':'Polygon','coordinates':coordinates}}]))
 
     def test_fit_is_recomputed_and_cannot_use_a_fabricated_accepted_matrix(self):
         alignment = {**self.alignment, 'matrix': [[100,0],[0,100]], 'translation_m': [999,999]}

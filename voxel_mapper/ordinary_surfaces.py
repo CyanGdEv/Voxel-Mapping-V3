@@ -21,7 +21,7 @@ from .paving_palette import material_label, polygon_surface
 from .reconstruction.model import Feature
 from .reconstruction.registration import apply_registration, review_registration
 
-VERSION = 'ordinary-surface-labels-v1'
+VERSION = 'ordinary-surface-labels-v2'
 # Only standalone labels. Reports, dimensions, wall/roof descriptions and title
 # block prose cannot become surface finishes.
 SURFACE_ROLE = re.compile(r'^(?:existing\s+)?(?:path|footpath|walkway|plaza|courtyard|paving|paved area)$', re.I)
@@ -199,6 +199,51 @@ def accepted_alignment(source, page_number, references, sources, printed_scales)
     return alignment
 
 
+def surface_regions(source):
+    """Validate source-bound view scopes, including excluded rooms/annotations.
+
+    These are drawing-level evidence, not inferred surface footprints. In
+    particular, polygonization and material text cannot verify boundary roles.
+    """
+    metadata = source.metadata
+    scope = metadata.get('surface_scope', {})
+    if (not isinstance(scope, dict) or scope.get('document_sha256') != source.sha256
+            or scope.get('page') != metadata.get('registration_page')
+            or scope.get('coordinate_frame') != 'pdf_native_points_y_up'):
+        raise ValueError('Source-bound surface-plan scope required')
+    regions = scope.get('regions')
+    if not isinstance(regions, list) or not 1 <= len(regions) <= 100:
+        raise ValueError('Bounded surface-plan regions required')
+    output = []; identities = set(); total_points = 0
+    for region in regions:
+        if (not isinstance(region, dict) or not isinstance(region.get('id'), str)
+                or not region['id'].strip() or region['id'] in identities
+                or region.get('view_kind') != 'horizontal_surface_plan'
+                or region.get('physical_surface_boundaries_verified') is not True
+                or not isinstance(region.get('verification_reference'), str)
+                or not region['verification_reference'].strip()):
+            raise ValueError('Verified physical surface-plan boundary context required')
+        geometry = region.get('geometry', {})
+        if not isinstance(geometry, dict) or geometry.get('type') != 'Polygon':
+            raise ValueError('Polygon surface-plan scope required')
+        rings = geometry.get('coordinates', [])
+        if (not isinstance(rings, list) or not rings or len(rings) > 100
+                or any(not isinstance(r, list) or not 4 <= len(r) <= 10000 for r in rings)):
+            raise ValueError('Bounded surface-plan scope coordinates required')
+        total_points += sum(len(r) for r in rings)
+        if total_points > 200000:
+            raise ValueError('Surface-plan scope point budget exceeded')
+        for ring in rings:
+            if ring[0] != ring[-1] or any(not isinstance(p, (list, tuple)) or len(p) != 2
+                    or any(type(v) not in (int, float) or not math.isfinite(v) for v in p) for p in ring):
+                raise ValueError('Closed finite surface-plan scope required')
+        polygon = shape(geometry)
+        if polygon.is_empty or not polygon.is_valid or polygon.area <= 0:
+            raise ValueError('Valid surface-plan scope required')
+        identities.add(region['id']); output.append((region, polygon))
+    return output
+
+
 def features(rows, source, alignment):
     metadata = source.metadata
     if (metadata.get('reuse_allowed') is not True or source.license == 'copyright-consultation-only'
@@ -206,9 +251,10 @@ def features(rows, source, alignment):
         raise ValueError('Source geometry reuse is not permitted')
     if (metadata.get('drawing_state') not in ('existing', 'as_built')
             or metadata.get('drawing_state_verified') is not True or not metadata.get('state_verification_reference')
-            or metadata.get('view_kind') != 'horizontal_surface_plan'
+            or metadata.get('view_kind') not in ('horizontal_surface_plan', 'mixed_plan')
             or metadata.get('surface_label_scope_verified') is not True):
         raise ValueError('Verified existing horizontal surface-plan label scope required')
+    regions = surface_regions(source)
     output = []; decisions = []
     for row in rows:
         candidate = row['candidate']; identifier = 'ordinary/' + source.sha256 + '/' + str(metadata['registration_page']) + '/' + candidate['id']
@@ -216,6 +262,14 @@ def features(rows, source, alignment):
             if row['status'] != 'surface_candidate':
                 raise ValueError('Contained surface finishes conflict')
             polygon = shape(candidate['geometry'])
+            if (candidate.get('document_sha256') != source.sha256
+                    or candidate.get('page') != metadata['registration_page']
+                    or candidate.get('coordinate_frame') != 'pdf_native_points_y_up'):
+                raise ValueError('Candidate does not match surface scope source/page')
+            matches = [region for region, area in regions if area.covers(polygon)]
+            if len(matches) != 1:
+                raise ValueError('Whole candidate must belong to one verified surface-plan region')
+            region = matches[0]
             def move(x, y, z=None):
                 return tuple(zip(*apply_registration(np.column_stack((np.atleast_1d(x), np.atleast_1d(y))).tolist(), alignment)))
             placed = transform(move, polygon)
@@ -225,7 +279,9 @@ def features(rows, source, alignment):
                               {'document_sha256': source.sha256, 'page': metadata['registration_page'],
                                'drawing_state': metadata['drawing_state'], 'candidate_id': candidate['id'],
                                'bound_annotation_ids': row['label_ids'], 'bound_annotation_texts': row['label_texts'],
-                               'material_basis': row['material_basis'], 'adapter_version': VERSION})
+                               'material_basis': row['material_basis'], 'adapter_version': VERSION,
+                               'surface_scope_region': region['id'],
+                               'surface_scope_verification_reference': region['verification_reference']})
             # The user's explicit stone default is a reconstruction rule, not a
             # printed stone claim. Keep that distinction in metadata and permit
             # the rule without enabling unrelated geometric estimates.
@@ -266,7 +322,7 @@ def bridge_page(pdf, page_number, source, references, sources):
         'registration': alignment, 'semantic_decisions': decisions, 'feature_count': len(output),
         'extraction_status': extraction, 'surface_label_decisions': labels, 'world_geometry_additions': 0,
         'limitations': ['Ordinary contained surface labels only; no wall, roof or report material classification.',
-                       'Independent source-bound sheet registration and existing surface-plan scope required.',
+                       'Independent source-bound sheet registration and spatially verified physical surface-plan scope required.',
                        'Unlabelled enclosures do not imply paths or paving.']}
 
 
