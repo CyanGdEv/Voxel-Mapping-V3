@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v10'
+VERSION='architectural-interpretation-v11'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -274,6 +274,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .architectural_graph import VERSION as graph_version,build as build_graph
     from .architectural_view_layout import VERSION as layout_version,review as review_layout
     from .architectural_view_boundaries import VERSION as viewport_version,review as review_viewports
+    from .architectural_linework_frames import VERSION as frame_version,review as review_frames
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -285,7 +286,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version,'viewport_version':viewport_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version,'graph_version':graph_version,'layout_version':layout_version,'viewport_version':viewport_version,'linework_frame_version':frame_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
@@ -323,6 +324,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
                         page_report['source_geometry_graph']=build_graph(parents)
                         if page_report['source_geometry_graph']['status']=='source_drawing_topology_only':
                             page_report['view_layout_review']=review_layout(doc[number-1],sha,number,page_report['source_geometry_graph'])
+                            page_report['source_linework_frame_review']=review_frames(page_report['source_geometry_graph'],page_report['view_layout_review'])
                             page_report['source_viewport_review']=review_viewports(path,sha,number,page_report['source_geometry_graph'],page_report['view_layout_review'])
                         page_report.update(extraction=parent_report,recovery=recovery)
             if digest(path)!=sha:raise ValueError('Source PDF changed during architectural review')

@@ -149,3 +149,28 @@ Architectural interpretation v10 adds `architectural_view_boundaries.review` aft
 A supported source rectangle and named-caption correspondence remain distinct from verified drawing-view semantics, physical identity and scale application. Missing declarations do not cause caption bands, page borders or printed building rectangles to be treated as view frames. Source graph/layout hashes, source/output guards and the viewport module version are pinned. Late comparison exhaustion clears all component memberships and named-caption supports. Unsupported parser/encoding, nondefault user units and source metadata budgets are recorded as withheld reviews; changed source checksums still fail.
 
 The six-sheet CTD replay finds **zero native viewport declarations**. All eight caption-layout regions therefore remain hypotheses, with no source-bound scope or measurement promoted. This explicitly records a missing evidence route rather than inventing frames. PDF viewport metadata is only one possible route to boundary evidence; these sheets still require another independently supported scope method. No world geometry is added. Reproduce `evidence/mutiny-source-view-boundaries-audit.json` with `scripts/audit_mutiny_view_layout.py`; the earlier caption-layout audit is preserved.
+
+### Exact source linework frames
+
+Architectural interpretation v11 includes `architectural-linework-frames-v1`.
+It reviews original, closed, straight, axis-aligned four-corner source rings
+around retained captions. It never joins separate paths, closes gaps, snaps
+corners or substitutes a caption band. Complete label containment, glyph
+visibility and competing nested frames remain explicit. Original components
+are classified whole inside or crossing each candidate, without clipping.
+Graph/layout hashes and the stage version are pinned; check-budget exhaustion
+removes every partial frame record.
+
+These are drawing-frame hypotheses, not verified drawing views: title blocks,
+tables and other printed rectangles may contain captions. Source paint alone
+does not establish visible frame semantics. No view-scoped measurement,
+physical identity, registration or world geometry is authorized.
+
+The six pinned CTD sheets yielded **zero closed caption-frame candidates**.
+This records the absence of this specific evidence route; it does not imply
+that the drawings lack recoverable views. Separate segment boundaries and
+caption-free outlines are outside this first check.
+Evidence: `evidence/mutiny-linework-view-frames-audit.json`.
+Reproduce with `scripts/audit_mutiny_view_layout.py --input-root INPUT_ROOT
+--output evidence/mutiny-linework-view-frames-audit.json` using the pinned
+original PDF files under `INPUT_ROOT/mutiny-bay-sources`.
