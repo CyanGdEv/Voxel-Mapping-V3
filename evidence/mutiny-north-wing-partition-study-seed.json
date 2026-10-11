@@ -1,0 +1,11 @@
+{
+  "version": "wing-interior-partition-study-v1",
+  "parent_model_sha256": "32baa7750ff4eb7ee325fd525bd6d4003eec91044dc3ed0932270bfeb0fe84d0",
+  "review_sha256": "fa0f44b2c78f8ce330fa9adc2a3b16df8aef31fc643e3d5c53b0a31250a362d1",
+  "selected_band_ids": [
+    "c1ea84fb925137dfdfbf738dcedb41559a1b3aa6a3ab62286890aca3c7081c17"
+  ],
+  "source_footprint_reviewed": true,
+  "display_height_m": 2.5,
+  "review_note": "Visual source-plan review identifies this strip between workshop and training room. Original paired source side intervals are retained. Partition height and native one-block thickness are display hypotheses, not measured construction."
+}

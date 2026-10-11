@@ -54,7 +54,12 @@ def claim(text):
 
 
 def wall_bands(parents,factor,*,interpretation_options=None):
-    opts=options(interpretation_options);components=split_page(parents)
+    return wall_bands_from_components(split_page(parents),factor,interpretation_options=interpretation_options)
+
+
+def wall_bands_from_components(components,factor,*,interpretation_options=None):
+    """Shared pairing kernel; caller owns complete original component provenance."""
+    opts=options(interpretation_options)
     if type(factor) not in (int,float) or not math.isfinite(factor) or not 0<factor<=10000*.0254/72:
         raise ValueError('Bounded source metre scale required')
     rows=[r for r in components if r['geometry']['type']=='LineString' and len(r['geometry']['coordinates'])==2
