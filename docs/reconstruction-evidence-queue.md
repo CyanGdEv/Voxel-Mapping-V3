@@ -53,8 +53,9 @@ and four for each courtyard/storeroom containing source region. It preserves
 audit; it is not a complete area inventory or a replay of all 213 acquired pages.
 All tasks remain missing evidence and no world blocks are generated.
 
-The next implementation is a retained-document matcher that consumes these
-requirements, finds source-bound candidate passages/views in acquired sheets,
-and records attempts by requirement plus corpus hash. New evidence must still
+The retained-document matcher now consumes these requirements, searches acquired
+native PDF text and records attempts by requirement plus corpus hash. See
+[retained-evidence-matching.md](retained-evidence-matching.md) for candidate proofs,
+benchmark-label review and optional official archive corroboration. New evidence must still
 pass view, physical identity, dimensions, state and registration checks before
 normalization and the existing ten-worker native generator.

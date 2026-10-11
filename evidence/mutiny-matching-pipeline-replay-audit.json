@@ -1,0 +1,2530 @@
+{
+  "first_run": {
+    "candidate_hits": 484,
+    "contract": {
+      "benchmark_archive": {
+        "search_bounds_bng": [
+          405345,
+          341810,
+          409345,
+          345810
+        ],
+        "sha256": "57d480bd272778e8b89ffd4a50f520442b8912e4b2cd6746202c2e991e910f7b"
+      },
+      "benchmark_archive_version": "os-benchmark-archive-matching-v1",
+      "benchmark_label_version": "native-benchmark-label-evidence-v1",
+      "glyph_ink_version": "source-font-isolated-glyph-screen-v1",
+      "glyph_version": "source-font-glyph-raster-screen-v2",
+      "inventory": [
+        {
+          "sha256": "010352f9c79c5e75d105074675bbbc32de99ae8213c4115bb292512d7d65726b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "3023-02 Proposed site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186542"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "3023-02 Proposed site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186565"
+            }
+          ]
+        },
+        {
+          "sha256": "03b7eab31e70ec17e577e0e577490cb1a52197f147d094c0a59db96f8d07c4b7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location of fencing in area 5",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51205"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53383"
+            }
+          ]
+        },
+        {
+          "sha256": "11fd5ff30ae54780327f7e34e622a66c6c0c11fb486c687b8204edadd4b5a36d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52885"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52893"
+            }
+          ]
+        },
+        {
+          "sha256": "14773e3fc2ea61bf784694f8a5a7f7c0033f98fa5d771f134e0479b1d0262ed3",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52067"
+            }
+          ]
+        },
+        {
+          "sha256": "172c8f3a150e1839c9179fa07bc61a39c26b8846c2808a46c5a153ff30d15fd3",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52990"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51659"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53350"
+            }
+          ]
+        },
+        {
+          "sha256": "1df03d11f87d4889aeff0d270fd8809985905c81b5d0658bca4e06d50dc6bcdd",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Design & Access Statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186538"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "unknown",
+              "title": "Design & Access Statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186563"
+            }
+          ]
+        },
+        {
+          "sha256": "1e41f1c3f03bf8297fc4e8ecc77cac7597ba63bc79d5f5459b6fe127c9a34da4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52066"
+            }
+          ]
+        },
+        {
+          "sha256": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53651"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684"
+            }
+          ]
+        },
+        {
+          "sha256": "24fe024292b37d3eb363e7cc0f3021a8d1ed3428fd0bccae801ccea4eab1a177",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51884"
+            }
+          ]
+        },
+        {
+          "sha256": "254d443de12da977557dd494325c7de31c9cb6caf15dbe90ca85dce12b627c13",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51922"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51925"
+            }
+          ]
+        },
+        {
+          "sha256": "25f5481a936ffdba9842768a63316fe8610ac7a6862d9aefe6ea4f9d4c161cb6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 11A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186536"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 11A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186561"
+            }
+          ]
+        },
+        {
+          "sha256": "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53381"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53444"
+            }
+          ]
+        },
+        {
+          "sha256": "273bc1bcae62636d3cf5dde7c2928bca1ce8feb3e27ddb9815bcd63d4a3812f7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51656"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47575"
+            }
+          ]
+        },
+        {
+          "sha256": "3457df8b2d4e8e3708ec1a8c0b408f8fd2351a6430a569aea5911d26df0156ce",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50967"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53117"
+            }
+          ]
+        },
+        {
+          "sha256": "354f1944c0caf9cf658ba52b1e26b8911586f73c5ac6b34879610dbd20023cf6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51657"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52068"
+            }
+          ]
+        },
+        {
+          "sha256": "3a74a5c1bf200949505cfa5737781ad2fc82374786c4b3e728ab91a5546bbbd5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47573"
+            }
+          ]
+        },
+        {
+          "sha256": "43ccaedfe1d2fad85cc54f3b844422cb1d59da523caf9ce1472832debb84fe34",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52892"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50968"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51662"
+            }
+          ]
+        },
+        {
+          "sha256": "4aa25638b40aa7da471d9a46baf09609089d673aafc0ecb8fa18fede5a3a735f",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage fence types",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52069"
+            }
+          ]
+        },
+        {
+          "sha256": "514fe5a728e67feb1949afc1eade19f2819777869c3fbb6b53df69c92de06c23",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47148"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47149"
+            }
+          ]
+        },
+        {
+          "sha256": "52f611a27b3969a53307353dbe4b5b37daa9a560b3772b7576cb78f916bd6e4c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-04 Existing elevations sheet 1of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186543"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-04 Existing elevations sheet 1of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186566"
+            }
+          ]
+        },
+        {
+          "sha256": "569988f24d245674995fe86e871aff9f5390aec09aa8d7f9522e429dd8692f5c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53349"
+            }
+          ]
+        },
+        {
+          "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-10 Existing roof plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186549"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-10 Existing roof plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572"
+            }
+          ]
+        },
+        {
+          "sha256": "59aade4f919e22606d1527d521b56db6e17e913ead00e075917a99a53d8d369b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51986"
+            }
+          ]
+        },
+        {
+          "sha256": "602f761d0fbad0032c0985a3aae7a081e6c1b18c05fdde445865fb402bd652a4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51206"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50994"
+            }
+          ]
+        },
+        {
+          "sha256": "62eec055f6cc9e143e2c79d3424940134d0abb79d2956422bc5d0a195e145315",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 10A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186560"
+            }
+          ]
+        },
+        {
+          "sha256": "671c33b1024367764cd7b807d7ee8585ac905111b1cb75f87d636fcabc27069d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "3023-15 Proposed outer area elevations",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186553"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "3023-15 Proposed outer area elevations",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186576"
+            }
+          ]
+        },
+        {
+          "sha256": "6850a1621930f26ae07e1f86fb1150966db552a6f90accc58d1bc26259b72927",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Report",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188688"
+            }
+          ]
+        },
+        {
+          "sha256": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 08 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186533"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 08 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186558"
+            }
+          ]
+        },
+        {
+          "sha256": "6af0218d8d8cd65526c7aa0228467d1057f65ea95bc21c05bc623e99fed0b12e",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "unknown",
+              "title": "Report",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188689"
+            }
+          ]
+        },
+        {
+          "sha256": "6cf5a9ddef3f8412a09557e590cb2ceccb93b430de4a5c89cdf0b6005fd97257",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46638"
+            }
+          ]
+        },
+        {
+          "sha256": "7162604b8645bb7da139a940c937a7132c958aa3e2ad6439684affb3b3a8ec9b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51924"
+            }
+          ]
+        },
+        {
+          "sha256": "71eea7ccfa92e7e483abb2a27ae55490d1b9b15e2ad4aa852c12265315c1e2e7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51923"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53445"
+            }
+          ]
+        },
+        {
+          "sha256": "78335a3713c61282af5442923945e51c856fe0bdb0400f1f76b609dc3d675ec7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 12A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186562"
+            }
+          ]
+        },
+        {
+          "sha256": "7bd6a40dd6e95d0eda390a5fc869ae4e1279d054c3146eac68a9a20cff646d9c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51015"
+            }
+          ]
+        },
+        {
+          "sha256": "7c94c6eab604315325bf5afdf76d683fe5a9a94aee2fe6450a260a0a8f7986be",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-05 Existing elevations sheet 2of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186544"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-05 Existing elevations sheet 2of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186567"
+            }
+          ]
+        },
+        {
+          "sha256": "7f1e311dbe5d8f424b64de1b4e37f8b703fc845cddda8f66229d41ddae4f3dd1",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51207"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53443"
+            }
+          ]
+        },
+        {
+          "sha256": "83d732ff20932b16ffa898a78ff8797b0039b312dc1b94297c566d0d3eeaba81",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51655"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47574"
+            }
+          ]
+        },
+        {
+          "sha256": "85857d113fdde3a1c794d5ed08735380a853c9f513136a70c27cf9b698b2b9a2",
+          "source_links": [
+            {
+              "application_reference": "SMD/2008/0988",
+              "declared_state": "unknown",
+              "title": "plans",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=14699"
+            }
+          ]
+        },
+        {
+          "sha256": "889ebb68f7ec903691c227751fa4b01221af21a4f10425322db8933bd4f43c0a",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52929"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47576"
+            }
+          ]
+        },
+        {
+          "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 06 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186531"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 06 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186556"
+            }
+          ]
+        },
+        {
+          "sha256": "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53650"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52192"
+            }
+          ]
+        },
+        {
+          "sha256": "9ecd9f58825ef639c5f2b86ea4752513c8730bb2644ced1ba8376f61f1afac0a",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50969"
+            }
+          ]
+        },
+        {
+          "sha256": "a3b5d82ffe4ba8db6982888e15399d18a396e0cba1141d61ed976fa43cbd1333",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53382"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47577"
+            }
+          ]
+        },
+        {
+          "sha256": "a4cfdc095fb0d7d6bff09a29d57e857e0160ece7552b01e3753683da18a9e2e6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52189"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46910"
+            }
+          ]
+        },
+        {
+          "sha256": "a67f23f7d891ee3a056aeb2ea0e7da1a5b5dadc33aba57ec8410f854c7691c9c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Site details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52190"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Site details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53457"
+            }
+          ]
+        },
+        {
+          "sha256": "a6caa60c0e7849f988ec36cc6584486caa3698140a5e4c56c70bb358d26bb42b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52889"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53348"
+            }
+          ]
+        },
+        {
+          "sha256": "a8c99580f0b80c2f6f6aba8915823ed2fff2d0ba79cc53fd022edf4b487dc539",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51987"
+            }
+          ]
+        },
+        {
+          "sha256": "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Heritage assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52887"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage Impact assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52363"
+            }
+          ]
+        },
+        {
+          "sha256": "ac70f11720aa68f48f35fbfb770edfc98f704fe6a17b6b41fda0bdef51c946a9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51658"
+            }
+          ]
+        },
+        {
+          "sha256": "afa3345509c0402667f87045e8956b51a5133dcb5b39fe982695b8cc9b14e746",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51663"
+            }
+          ]
+        },
+        {
+          "sha256": "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53193"
+            }
+          ]
+        },
+        {
+          "sha256": "b229a352f4c86081c527223fa408f0728bea3d4f5ee1083ea0b2a235e8df4124",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52280"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Heritage assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53655"
+            }
+          ]
+        },
+        {
+          "sha256": "bb0373d0dfed2d56a4ce1890c2358b21f8de31a8043b69015e4b90593fb3d213",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-09 Existing first floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186548"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-09 Existing first floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186571"
+            }
+          ]
+        },
+        {
+          "sha256": "bb9c3ceb72bcd360add235236e59a571ff5f0ed5e8be9df9819b35118d9c4274",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47624"
+            }
+          ]
+        },
+        {
+          "sha256": "c0269d3493f85963f9efd763f9fbb8be3d3da4c809d040763ed51c28c4571bc9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51661"
+            }
+          ]
+        },
+        {
+          "sha256": "c22df157011d2e64fc0538ab8d706dddc9e4a085483489bd539a4b353c552d54",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-07 Existing elevations 4of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186546"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-07 Existing elevations 4of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186569"
+            }
+          ]
+        },
+        {
+          "sha256": "c55f692aeb89a0209b3558b246ec6cd4ba3c8fae003a6a256cdf4104601808c5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47525"
+            }
+          ]
+        },
+        {
+          "sha256": "c577950913b5d979e4c5a47d2010fd6a4021061007cb87f4efceb859ffd2ba3d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-06 Existing elevations sheet 3of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186545"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-06 Existing elevations sheet 3of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186568"
+            }
+          ]
+        },
+        {
+          "sha256": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-01 Existing Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186541"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-01 Existing Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564"
+            }
+          ]
+        },
+        {
+          "sha256": "ca229c5c91f38c6d81dcdd76b19a13ed9f7112ca74c01e79454575a2bd1457fe",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53114"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51926"
+            }
+          ]
+        },
+        {
+          "sha256": "cd020b14e1cbf4a3411da72c25bfac3a2406b791db1fb1a508fedaaeb849bceb",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55184"
+            }
+          ]
+        },
+        {
+          "sha256": "cd5ddf8a912dc07ba2059d6af28b7b047c9146135f7a3f9ca984c4a03ed1506b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 07 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186557"
+            }
+          ]
+        },
+        {
+          "sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-08 Existing ground floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186547"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-08 Existing ground floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186570"
+            }
+          ]
+        },
+        {
+          "sha256": "cf8f6b73026741848e2b09b2efa320ba0ef18c1e5afd38cc138a8d0eb2c7d7e5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52989"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53442"
+            }
+          ]
+        },
+        {
+          "sha256": "dff107102c7ec9c83182e97df1f2817505ff73a97cc8632979b5f35a7d446f22",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53121"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53654"
+            }
+          ]
+        },
+        {
+          "sha256": "e33a62b7c571c88a0a8d95d6634750d8e741beaf5e30c680ddc4da25585b2718",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53116"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53351"
+            }
+          ]
+        },
+        {
+          "sha256": "e6f43c6e1e17e5f22a9811ba30690519dbd1b5af6c99e6d1fbff566d4b91a3c5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Decision",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188687"
+            }
+          ]
+        },
+        {
+          "sha256": "e77247202c6bb9955bb661f68846164b0ec33121fa36ee8f336c002e89cfdaa5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52888"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage fence types",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50970"
+            }
+          ]
+        },
+        {
+          "sha256": "e78aa23fefc2c8621dfe03851db8eafa67ffded1a1c7f4decbb1b19c6602a023",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46637"
+            }
+          ]
+        },
+        {
+          "sha256": "ecb70737c5af86fba27a342be1e81aa362105160c45b3c7082f6ebe0d8c83a2e",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46639"
+            }
+          ]
+        },
+        {
+          "sha256": "ee51901543aea06b1b9f961576c5066438a67aa1c33e6aa720cc162e37467bb8",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 09A coutyard plan 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186534"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 09A coutyard plan 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186559"
+            }
+          ]
+        },
+        {
+          "sha256": "ef5418a83359e0ad6e83f88406461e6d41654bcdc2f637d3f0663bbfa18bf708",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52669"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53352"
+            }
+          ]
+        },
+        {
+          "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186530"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555"
+            }
+          ]
+        }
+      ],
+      "pending": [
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-14A proposed elevations 1-50 sheet 2 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186575"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Farley Parish Council comments",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188493"
+        },
+        {
+          "application_reference": "SMD/2013/0420",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Application Form",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186554"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Application form",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186577"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response Interim - Minerals",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=187955"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-13 proposed elevations 1-50 sheet 1 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186551"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-14A proposed elevations 1-50 sheet 2 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186552"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response The Garden Trust",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188499"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response Conservation Officer",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188822"
+        },
+        {
+          "application_reference": "SMD/2013/0013",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384"
+        },
+        {
+          "application_reference": "SMD/2013/0419",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Farley Parish Council comments",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188492"
+        },
+        {
+          "application_reference": "SMD/2013/0012",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation reponse Conservation officer",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188823"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-13 proposed elevations 1-50 sheet 1 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186574"
+        },
+        {
+          "application_reference": "SMD/2013/0012",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "amended plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response The Gardens Trust",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188498"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Decision",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188690"
+        }
+      ],
+      "requirement_queue_sha256": "2bf62c0ee389565014dfebc37a5fd240f892b47e45fe51f544e2f3132760075e",
+      "version": "retained-evidence-matching-v1"
+    },
+    "counts": {
+      "horizontal_registration": 11,
+      "physical_exterior": 109,
+      "plan_elevation_correspondence": 191,
+      "relative_dimensions": 33,
+      "vertical_datum": 10,
+      "view_scope": 130
+    },
+    "output_sha256": "64c8dd6a137daf872de8453b9ef6d166e164043d4058d597264dd37a3e7075a5",
+    "pages_examined": 213,
+    "pending_documents": 19,
+    "requirements_resolved": 0,
+    "reused_pages": 0,
+    "run_id": "5188dc689fc6690463d38a20c25ff85d94b90d33d55cfed957143ccb085244db",
+    "run_pages": 213,
+    "status": "retained_source_leads_only",
+    "tasks_with_related_text_only": 0,
+    "tasks_with_retained_leads": 10,
+    "tasks_without_retained_leads": 0,
+    "world_geometry_additions": 0
+  },
+  "matching_attempt_output_sha256": "64c8dd6a137daf872de8453b9ef6d166e164043d4058d597264dd37a3e7075a5",
+  "requirements_resolved": 0,
+  "scope": "Targeted floor-plan queue against the actual acquired Mutiny corpus; not complete architectural inventory or production world generation.",
+  "unchanged_replay": {
+    "candidate_hits": 484,
+    "contract": {
+      "benchmark_archive": {
+        "search_bounds_bng": [
+          405345,
+          341810,
+          409345,
+          345810
+        ],
+        "sha256": "57d480bd272778e8b89ffd4a50f520442b8912e4b2cd6746202c2e991e910f7b"
+      },
+      "benchmark_archive_version": "os-benchmark-archive-matching-v1",
+      "benchmark_label_version": "native-benchmark-label-evidence-v1",
+      "glyph_ink_version": "source-font-isolated-glyph-screen-v1",
+      "glyph_version": "source-font-glyph-raster-screen-v2",
+      "inventory": [
+        {
+          "sha256": "010352f9c79c5e75d105074675bbbc32de99ae8213c4115bb292512d7d65726b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "3023-02 Proposed site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186542"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "3023-02 Proposed site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186565"
+            }
+          ]
+        },
+        {
+          "sha256": "03b7eab31e70ec17e577e0e577490cb1a52197f147d094c0a59db96f8d07c4b7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location of fencing in area 5",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51205"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53383"
+            }
+          ]
+        },
+        {
+          "sha256": "11fd5ff30ae54780327f7e34e622a66c6c0c11fb486c687b8204edadd4b5a36d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52885"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52893"
+            }
+          ]
+        },
+        {
+          "sha256": "14773e3fc2ea61bf784694f8a5a7f7c0033f98fa5d771f134e0479b1d0262ed3",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52067"
+            }
+          ]
+        },
+        {
+          "sha256": "172c8f3a150e1839c9179fa07bc61a39c26b8846c2808a46c5a153ff30d15fd3",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52990"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51659"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53350"
+            }
+          ]
+        },
+        {
+          "sha256": "1df03d11f87d4889aeff0d270fd8809985905c81b5d0658bca4e06d50dc6bcdd",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Design & Access Statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186538"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "unknown",
+              "title": "Design & Access Statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186563"
+            }
+          ]
+        },
+        {
+          "sha256": "1e41f1c3f03bf8297fc4e8ecc77cac7597ba63bc79d5f5459b6fe127c9a34da4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52066"
+            }
+          ]
+        },
+        {
+          "sha256": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53651"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684"
+            }
+          ]
+        },
+        {
+          "sha256": "24fe024292b37d3eb363e7cc0f3021a8d1ed3428fd0bccae801ccea4eab1a177",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51884"
+            }
+          ]
+        },
+        {
+          "sha256": "254d443de12da977557dd494325c7de31c9cb6caf15dbe90ca85dce12b627c13",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51922"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51925"
+            }
+          ]
+        },
+        {
+          "sha256": "25f5481a936ffdba9842768a63316fe8610ac7a6862d9aefe6ea4f9d4c161cb6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 11A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186536"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 11A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186561"
+            }
+          ]
+        },
+        {
+          "sha256": "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53381"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53444"
+            }
+          ]
+        },
+        {
+          "sha256": "273bc1bcae62636d3cf5dde7c2928bca1ce8feb3e27ddb9815bcd63d4a3812f7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51656"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47575"
+            }
+          ]
+        },
+        {
+          "sha256": "3457df8b2d4e8e3708ec1a8c0b408f8fd2351a6430a569aea5911d26df0156ce",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50967"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53117"
+            }
+          ]
+        },
+        {
+          "sha256": "354f1944c0caf9cf658ba52b1e26b8911586f73c5ac6b34879610dbd20023cf6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51657"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52068"
+            }
+          ]
+        },
+        {
+          "sha256": "3a74a5c1bf200949505cfa5737781ad2fc82374786c4b3e728ab91a5546bbbd5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47573"
+            }
+          ]
+        },
+        {
+          "sha256": "43ccaedfe1d2fad85cc54f3b844422cb1d59da523caf9ce1472832debb84fe34",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52892"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50968"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51662"
+            }
+          ]
+        },
+        {
+          "sha256": "4aa25638b40aa7da471d9a46baf09609089d673aafc0ecb8fa18fede5a3a735f",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage fence types",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52069"
+            }
+          ]
+        },
+        {
+          "sha256": "514fe5a728e67feb1949afc1eade19f2819777869c3fbb6b53df69c92de06c23",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47148"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47149"
+            }
+          ]
+        },
+        {
+          "sha256": "52f611a27b3969a53307353dbe4b5b37daa9a560b3772b7576cb78f916bd6e4c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-04 Existing elevations sheet 1of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186543"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-04 Existing elevations sheet 1of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186566"
+            }
+          ]
+        },
+        {
+          "sha256": "569988f24d245674995fe86e871aff9f5390aec09aa8d7f9522e429dd8692f5c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53349"
+            }
+          ]
+        },
+        {
+          "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-10 Existing roof plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186549"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-10 Existing roof plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572"
+            }
+          ]
+        },
+        {
+          "sha256": "59aade4f919e22606d1527d521b56db6e17e913ead00e075917a99a53d8d369b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51986"
+            }
+          ]
+        },
+        {
+          "sha256": "602f761d0fbad0032c0985a3aae7a081e6c1b18c05fdde445865fb402bd652a4",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51206"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50994"
+            }
+          ]
+        },
+        {
+          "sha256": "62eec055f6cc9e143e2c79d3424940134d0abb79d2956422bc5d0a195e145315",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 10A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186560"
+            }
+          ]
+        },
+        {
+          "sha256": "671c33b1024367764cd7b807d7ee8585ac905111b1cb75f87d636fcabc27069d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "3023-15 Proposed outer area elevations",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186553"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "3023-15 Proposed outer area elevations",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186576"
+            }
+          ]
+        },
+        {
+          "sha256": "6850a1621930f26ae07e1f86fb1150966db552a6f90accc58d1bc26259b72927",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Report",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188688"
+            }
+          ]
+        },
+        {
+          "sha256": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 08 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186533"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 08 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186558"
+            }
+          ]
+        },
+        {
+          "sha256": "6af0218d8d8cd65526c7aa0228467d1057f65ea95bc21c05bc623e99fed0b12e",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "unknown",
+              "title": "Report",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188689"
+            }
+          ]
+        },
+        {
+          "sha256": "6cf5a9ddef3f8412a09557e590cb2ceccb93b430de4a5c89cdf0b6005fd97257",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46638"
+            }
+          ]
+        },
+        {
+          "sha256": "7162604b8645bb7da139a940c937a7132c958aa3e2ad6439684affb3b3a8ec9b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51924"
+            }
+          ]
+        },
+        {
+          "sha256": "71eea7ccfa92e7e483abb2a27ae55490d1b9b15e2ad4aa852c12265315c1e2e7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51923"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53445"
+            }
+          ]
+        },
+        {
+          "sha256": "78335a3713c61282af5442923945e51c856fe0bdb0400f1f76b609dc3d675ec7",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 12A coutyard elevations 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186562"
+            }
+          ]
+        },
+        {
+          "sha256": "7bd6a40dd6e95d0eda390a5fc869ae4e1279d054c3146eac68a9a20cff646d9c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51015"
+            }
+          ]
+        },
+        {
+          "sha256": "7c94c6eab604315325bf5afdf76d683fe5a9a94aee2fe6450a260a0a8f7986be",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-05 Existing elevations sheet 2of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186544"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-05 Existing elevations sheet 2of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186567"
+            }
+          ]
+        },
+        {
+          "sha256": "7f1e311dbe5d8f424b64de1b4e37f8b703fc845cddda8f66229d41ddae4f3dd1",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51207"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Block plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53443"
+            }
+          ]
+        },
+        {
+          "sha256": "83d732ff20932b16ffa898a78ff8797b0039b312dc1b94297c566d0d3eeaba81",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51655"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47574"
+            }
+          ]
+        },
+        {
+          "sha256": "85857d113fdde3a1c794d5ed08735380a853c9f513136a70c27cf9b698b2b9a2",
+          "source_links": [
+            {
+              "application_reference": "SMD/2008/0988",
+              "declared_state": "unknown",
+              "title": "plans",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=14699"
+            }
+          ]
+        },
+        {
+          "sha256": "889ebb68f7ec903691c227751fa4b01221af21a4f10425322db8933bd4f43c0a",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52929"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47576"
+            }
+          ]
+        },
+        {
+          "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 06 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186531"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 06 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186556"
+            }
+          ]
+        },
+        {
+          "sha256": "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53650"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52192"
+            }
+          ]
+        },
+        {
+          "sha256": "9ecd9f58825ef639c5f2b86ea4752513c8730bb2644ced1ba8376f61f1afac0a",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50969"
+            }
+          ]
+        },
+        {
+          "sha256": "a3b5d82ffe4ba8db6982888e15399d18a396e0cba1141d61ed976fa43cbd1333",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53382"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47577"
+            }
+          ]
+        },
+        {
+          "sha256": "a4cfdc095fb0d7d6bff09a29d57e857e0160ece7552b01e3753683da18a9e2e6",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52189"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46910"
+            }
+          ]
+        },
+        {
+          "sha256": "a67f23f7d891ee3a056aeb2ea0e7da1a5b5dadc33aba57ec8410f854c7691c9c",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Site details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52190"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Site details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53457"
+            }
+          ]
+        },
+        {
+          "sha256": "a6caa60c0e7849f988ec36cc6584486caa3698140a5e4c56c70bb358d26bb42b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52889"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53348"
+            }
+          ]
+        },
+        {
+          "sha256": "a8c99580f0b80c2f6f6aba8915823ed2fff2d0ba79cc53fd022edf4b487dc539",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51987"
+            }
+          ]
+        },
+        {
+          "sha256": "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Heritage assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52887"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage Impact assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52363"
+            }
+          ]
+        },
+        {
+          "sha256": "ac70f11720aa68f48f35fbfb770edfc98f704fe6a17b6b41fda0bdef51c946a9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Covering letter",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51658"
+            }
+          ]
+        },
+        {
+          "sha256": "afa3345509c0402667f87045e8956b51a5133dcb5b39fe982695b8cc9b14e746",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51663"
+            }
+          ]
+        },
+        {
+          "sha256": "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53193"
+            }
+          ]
+        },
+        {
+          "sha256": "b229a352f4c86081c527223fa408f0728bea3d4f5ee1083ea0b2a235e8df4124",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52280"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Heritage assessment",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53655"
+            }
+          ]
+        },
+        {
+          "sha256": "bb0373d0dfed2d56a4ce1890c2358b21f8de31a8043b69015e4b90593fb3d213",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-09 Existing first floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186548"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-09 Existing first floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186571"
+            }
+          ]
+        },
+        {
+          "sha256": "bb9c3ceb72bcd360add235236e59a571ff5f0ed5e8be9df9819b35118d9c4274",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47624"
+            }
+          ]
+        },
+        {
+          "sha256": "c0269d3493f85963f9efd763f9fbb8be3d3da4c809d040763ed51c28c4571bc9",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51661"
+            }
+          ]
+        },
+        {
+          "sha256": "c22df157011d2e64fc0538ab8d706dddc9e4a085483489bd539a4b353c552d54",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-07 Existing elevations 4of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186546"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-07 Existing elevations 4of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186569"
+            }
+          ]
+        },
+        {
+          "sha256": "c55f692aeb89a0209b3558b246ec6cd4ba3c8fae003a6a256cdf4104601808c5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47525"
+            }
+          ]
+        },
+        {
+          "sha256": "c577950913b5d979e4c5a47d2010fd6a4021061007cb87f4efceb859ffd2ba3d",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-06 Existing elevations sheet 3of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186545"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-06 Existing elevations sheet 3of4",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186568"
+            }
+          ]
+        },
+        {
+          "sha256": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-01 Existing Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186541"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-01 Existing Site plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564"
+            }
+          ]
+        },
+        {
+          "sha256": "ca229c5c91f38c6d81dcdd76b19a13ed9f7112ca74c01e79454575a2bd1457fe",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53114"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51926"
+            }
+          ]
+        },
+        {
+          "sha256": "cd020b14e1cbf4a3411da72c25bfac3a2406b791db1fb1a508fedaaeb849bceb",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55184"
+            }
+          ]
+        },
+        {
+          "sha256": "cd5ddf8a912dc07ba2059d6af28b7b047c9146135f7a3f9ca984c4a03ed1506b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 07 coutyard elevations 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186557"
+            }
+          ]
+        },
+        {
+          "sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "3023-08 Existing ground floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186547"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "3023-08 Existing ground floor plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186570"
+            }
+          ]
+        },
+        {
+          "sha256": "cf8f6b73026741848e2b09b2efa320ba0ef18c1e5afd38cc138a8d0eb2c7d7e5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52989"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Location plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53442"
+            }
+          ]
+        },
+        {
+          "sha256": "dff107102c7ec9c83182e97df1f2817505ff73a97cc8632979b5f35a7d446f22",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53121"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Design and access statement",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53654"
+            }
+          ]
+        },
+        {
+          "sha256": "e33a62b7c571c88a0a8d95d6634750d8e741beaf5e30c680ddc4da25585b2718",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53116"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Fence details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53351"
+            }
+          ]
+        },
+        {
+          "sha256": "e6f43c6e1e17e5f22a9811ba30690519dbd1b5af6c99e6d1fbff566d4b91a3c5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "unknown",
+              "title": "Decision",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188687"
+            }
+          ]
+        },
+        {
+          "sha256": "e77247202c6bb9955bb661f68846164b0ec33121fa36ee8f336c002e89cfdaa5",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "Fencing details",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52888"
+            },
+            {
+              "application_reference": "SMD/2013/0013",
+              "declared_state": "unknown",
+              "title": "Heritage fence types",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=50970"
+            }
+          ]
+        },
+        {
+          "sha256": "e78aa23fefc2c8621dfe03851db8eafa67ffded1a1c7f4decbb1b19c6602a023",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "amended plan",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46637"
+            }
+          ]
+        },
+        {
+          "sha256": "ecb70737c5af86fba27a342be1e81aa362105160c45b3c7082f6ebe0d8c83a2e",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0012",
+              "declared_state": "unknown",
+              "title": "decision notice",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=46639"
+            }
+          ]
+        },
+        {
+          "sha256": "ee51901543aea06b1b9f961576c5066438a67aa1c33e6aa720cc162e37467bb8",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 09A coutyard plan 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186534"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "proposed",
+              "title": "0860 IC AL 09A coutyard plan 'as proposed'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186559"
+            }
+          ]
+        },
+        {
+          "sha256": "ef5418a83359e0ad6e83f88406461e6d41654bcdc2f637d3f0663bbfa18bf708",
+          "source_links": [
+            {
+              "application_reference": "SMD/2013/0419",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52669"
+            },
+            {
+              "application_reference": "SMD/2013/0420",
+              "declared_state": "unknown",
+              "title": "Application form",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53352"
+            }
+          ]
+        },
+        {
+          "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+          "source_links": [
+            {
+              "application_reference": "SMD/2017/0472",
+              "declared_state": "existing",
+              "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186530"
+            },
+            {
+              "application_reference": "SMD/2017/0473",
+              "declared_state": "existing",
+              "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+              "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555"
+            }
+          ]
+        }
+      ],
+      "pending": [
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-14A proposed elevations 1-50 sheet 2 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186575"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Farley Parish Council comments",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188493"
+        },
+        {
+          "application_reference": "SMD/2013/0420",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Application Form",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186554"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Application form",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186577"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response Interim - Minerals",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=187955"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-13 proposed elevations 1-50 sheet 1 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186551"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-14A proposed elevations 1-50 sheet 2 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186552"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response The Garden Trust",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188499"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response Conservation Officer",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188822"
+        },
+        {
+          "application_reference": "SMD/2013/0013",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384"
+        },
+        {
+          "application_reference": "SMD/2013/0419",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Farley Parish Council comments",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188492"
+        },
+        {
+          "application_reference": "SMD/2013/0012",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Block plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation reponse Conservation officer",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188823"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "proposed",
+          "download_status": "failed",
+          "title": "3023-13 proposed elevations 1-50 sheet 1 of 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186574"
+        },
+        {
+          "application_reference": "SMD/2013/0012",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "amended plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120"
+        },
+        {
+          "application_reference": "SMD/2017/0472",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Consultation Response The Gardens Trust",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188498"
+        },
+        {
+          "application_reference": "SMD/2017/0473",
+          "declared_state": "unknown",
+          "download_status": "failed",
+          "title": "Decision",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188690"
+        }
+      ],
+      "requirement_queue_sha256": "2bf62c0ee389565014dfebc37a5fd240f892b47e45fe51f544e2f3132760075e",
+      "version": "retained-evidence-matching-v1"
+    },
+    "counts": {
+      "horizontal_registration": 11,
+      "physical_exterior": 109,
+      "plan_elevation_correspondence": 191,
+      "relative_dimensions": 33,
+      "vertical_datum": 10,
+      "view_scope": 130
+    },
+    "output_sha256": "64c8dd6a137daf872de8453b9ef6d166e164043d4058d597264dd37a3e7075a5",
+    "pages_examined": 213,
+    "pending_documents": 19,
+    "requirements_resolved": 0,
+    "reused_pages": 213,
+    "run_id": "5188dc689fc6690463d38a20c25ff85d94b90d33d55cfed957143ccb085244db",
+    "run_pages": 0,
+    "status": "retained_source_leads_only",
+    "tasks_with_related_text_only": 0,
+    "tasks_with_retained_leads": 10,
+    "tasks_without_retained_leads": 0,
+    "world_geometry_additions": 0
+  },
+  "world_geometry_additions": 0
+}

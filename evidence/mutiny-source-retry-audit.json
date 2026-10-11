@@ -1,0 +1,112 @@
+{
+  "discovery_completeness": "Not implied by manifest completion",
+  "distinct_pdf_blobs": 73,
+  "document_links": 139,
+  "download_status": {
+    "downloaded": 120,
+    "failed": 19
+  },
+  "failed_urls": [
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186551",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186551"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186552",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186552"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186554",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186554"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186574",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186574"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186575",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186575"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186577",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186577"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=187955",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=187955"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188492",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188492"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188493",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188493"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188498",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188498"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188499",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188499"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188690",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188690"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188822",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188822"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188823",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=188823"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384"
+    },
+    {
+      "attempts": 1,
+      "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+    }
+  ],
+  "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration",
+  "inspected_pages": 0,
+  "run_network_bytes": 0,
+  "status": "partial_manifest",
+  "unique_urls": 139,
+  "world_geometry_additions": 0
+}
