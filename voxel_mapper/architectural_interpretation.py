@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v5'
+VERSION='architectural-interpretation-v6'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -196,6 +196,9 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
     from .elevation_interpretation import review_page
     from .architectural_references import review_page as reference_page
     references=reference_page(page,sha,number,polygons)
+    if references['view_kind']=='plan':
+        from .archway_ends import review as review_ends
+        references['archway_end_connections']=review_ends(parents,[references])
     elevation=review_page(page,sha,number,polygons,scale_review)
     if elevation is not None:
         return {'version':VERSION,'document_sha256':sha,'page':number,'options':opts,
@@ -265,6 +268,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     from .glyph_visibility import VERSION as glyph_version,INK_VERSION as glyph_ink_version
     from .elevation_interpretation import VERSION as elevation_version
     from .architectural_references import VERSION as reference_version,link_pages
+    from .archway_ends import VERSION as archway_end_version
     def digest(path):
         with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
     drawing_directory=Path(drawing_directory);output=Path(output)
@@ -276,7 +280,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
     contract={'version':VERSION,'options':options(interpretation_options),'drawing_contract':extraction['contract'],
         'geometry_report_contract_sha256':extraction_pin(extraction),'source_feed_sha256':digest(feed),
         'recovery_version':recovery_version,'alignment_version':alignment_version,'glyph_version':glyph_version,
-        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version}
+        'glyph_ink_version':glyph_ink_version,'elevation_version':elevation_version,'reference_version':reference_version,'archway_end_version':archway_end_version}
     if output.exists():
         report=json.loads((output/'architectural-report.json').read_text())
         if any(report.get(k)!=v for k,v in contract.items()):raise ValueError('Architectural interpretation inputs changed')
@@ -321,6 +325,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             counts['elevation_material_regions']+=page_report.get('elevation_interpretation',{}).get('counts',{}).get('material_regions',0)
             if 'architectural_references' in page_report:
                 reference=page_report['architectural_references'];reference_count+=len(reference['reference_occurrences'])
+                counts['archway_end_connection_candidates']+=len(reference.get('archway_end_connections',{}).get('connections',[]))
                 if reference_count>100000:reference_pages.clear();reference_budget_exhausted=True
                 if not reference_budget_exhausted:
                     # Full native proofs stay in the hashed page stream; the

@@ -6,6 +6,7 @@ from pathlib import Path
 import pymupdf
 from voxel_mapper.architectural_references import review_page
 from voxel_mapper.archway_boundaries import review
+from voxel_mapper.archway_ends import review as review_ends
 from voxel_mapper.drawing_geometry import extract_page
 from voxel_mapper.linework_boundaries import recover_page
 
@@ -24,10 +25,10 @@ for sha in ('f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b',
         if extraction['status']!='unplaced_geometry_candidates' or recovery['status']!='enclosed_faces_only':
             raise ValueError('Complete original linework required')
         references=review_page(document[0],sha,1,[r for r in polygons if r['geometry']['type']=='Polygon'])
-        result=review(parents,[references]);result.update(document_sha256=sha,page=1,
+        result=review(parents,[references]);result['passage_end_review']=review_ends(parents,[references]);result.update(document_sha256=sha,page=1,
             printed_state=references['printed_state'],source_parent_records_sha256=hashlib.sha256(json.dumps(parents,sort_keys=True).encode()).hexdigest())
         pages.append(result)
-        print(sha[:8],result['status'],[(r['reference_id'],len(r['boundary_pairs'])) for r in result['references']],flush=True)
+        print(sha[:8],len(result['passage_end_review']['connections']),'end connections',result['status'],[(r['reference_id'],len(r['boundary_pairs'])) for r in result['references']],flush=True)
     if hashlib.sha256(path.read_bytes()).hexdigest()!=sha:raise ValueError('PDF changed during audit')
 a.output.parent.mkdir(parents=True,exist_ok=True)
 a.output.write_text(json.dumps({'pages':pages,'world_geometry_additions':0},separators=(',',':'))+'\n')

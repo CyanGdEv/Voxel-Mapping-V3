@@ -89,6 +89,11 @@ class ReferenceTests(unittest.TestCase):
                 corpus.acquire(fetch=lambda url:data[url]);extract(corpus,root/'geometry')
                 report=run(corpus,root/'geometry',root/'architecture')
                 self.assertEqual(report['counts']['printed_reference_correspondences'],1)
+                pages=[json.loads(line) for line in (root/'architecture/architectural-pages.jsonl').read_text().splitlines()]
+                plan=next(p for p in pages if p['architectural_references']['view_kind']=='plan')
+                ends=plan['architectural_references']['archway_end_connections']
+                self.assertEqual(ends['world_geometry_additions'],0)
+                self.assertEqual(ends['status'],'exact_source_end_connections_only')
                 self.assertEqual(report,run(corpus,root/'geometry',root/'architecture'))
                 links=root/'architecture/architectural-reference-links.json';links.write_text('tampered')
                 with self.assertRaisesRegex(ValueError,'reference links changed'):run(corpus,root/'geometry',root/'architecture')
