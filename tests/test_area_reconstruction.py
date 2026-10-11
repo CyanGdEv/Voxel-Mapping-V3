@@ -80,6 +80,10 @@ class AreaSourceTests(unittest.TestCase):
             self.assertFalse(review['world_placement_eligible'])
             inventory=entry['native_opening_inventories'][0]
             self.assertEqual(inventory['labels'],0)
+            boundary=entry['opening_boundary_reviews'][0]
+            self.assertEqual(boundary['counts'],{'no_complete_outline_within_trace_bound':2})
+            self.assertFalse(boundary['geometry_export_authorized'])
+            self.assertTrue(run(self.job)['areas']['a']['opening_boundary_reviews'][0]['reused'])
             self.assertEqual(inventory['world_geometry_additions'],0)
             self.assertFalse(inventory['automatic_aperture_reconstruction'])
             self.assertTrue(run(self.job)['areas']['a']['native_opening_inventories'][0]['reused'])

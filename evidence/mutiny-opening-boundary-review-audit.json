@@ -1,0 +1,3779 @@
+{
+  "comparison": {
+    "checks": 53716,
+    "counts": {
+      "no_complete_outline_within_trace_bound": 16
+    },
+    "geometry_export_authorized": false,
+    "sampling_bound_pixels": 2,
+    "status": "reviewed_trace_comparison_only",
+    "world_geometry_additions": 0
+  },
+  "corrected_model_sha256": "9176a047c748cf4fb3699076b3f847aab3b0df91c9ea31773ae5a158a8e4926e",
+  "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+  "extraction": {
+    "candidates": 2836,
+    "curved_candidates": 6,
+    "geometry_types": {
+      "LineString": 2781,
+      "Polygon": 55
+    },
+    "raw_paths": 5125,
+    "rejections": {
+      "A linearring requires at least 4 coordinates.": 710,
+      "Compound stroked closed rings require topology review": 30,
+      "Compound subpath budget exceeded": 2,
+      "Crop boundary/frame candidate": 3,
+      "Invalid filled ring topology": 149,
+      "Paint group crosses clipping boundary": 18,
+      "Self-crossing line needs review": 1,
+      "Short line/symbol candidate": 2399,
+      "Small symbol or sheet enclosure candidate": 523
+    },
+    "retained_points": 7115,
+    "status": "unplaced_geometry_candidates",
+    "world_geometry_additions": 0
+  },
+  "full_proof_sha256": "4a65038390154a9a6b0d7136efa1f8459c2ea17a15c3ba5713a8f5e81e0a12f9",
+  "inventory_sha256": "136802a07084e3e24e188194c0166db6163e9b6aa6d04dfa14d03720e44dce68",
+  "limitations": [
+    "Existing reviewed trace and view scope are required; physical identity remains provisional.",
+    "All nearby complete outlines retained. Panes, holes and competing boundaries are not silently selected.",
+    "Sampling bound is a trace comparison rule, not physical accuracy. No fitted scale, snapping or repaired gaps.",
+    "Closed native curves retain approximation bounds; open curved paths are not joined into faces.",
+    "No automatic mesh replacement, newly carved boarded window, or geographic placement."
+  ],
+  "opening_rows": [
+    {
+      "complete_outline_candidates": 5,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.6709090502772768,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "858407e6192e115930754f8428815ec266aa1668917e3f9a8d242760cda9a80b",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a32ae57199717eb9457667ecb0c2fb02645f9fe3844cbb3198e98a9dea83c465",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 4,
+      "near_source_fraction": 1.0,
+      "near_source_length_pixels": 238.0,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 238.0,
+      "seed_id": "d3.01",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 32,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0eb2d3f75efcee2d018646f2ee153f855e19da73e9cc468e641cd4c4d8dd45d2",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a6f5a452c4fc3a16098bcbc28fe5a6283c644611fe76bc9b33720f9c6fd46ee9",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0eb2d3f75efcee2d018646f2ee153f855e19da73e9cc468e641cd4c4d8dd45d2",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b0eeae5cfdad04903e13f01290db43e15e46ee55578c8f78af36e73fa30e628c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0eb2d3f75efcee2d018646f2ee153f855e19da73e9cc468e641cd4c4d8dd45d2",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "14023251c503809ff7300d072469dd66e738192b156f392000af3d56c4e08319",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0eb2d3f75efcee2d018646f2ee153f855e19da73e9cc468e641cd4c4d8dd45d2",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f61befc82f0a13bd50d9fb2e88ed11b71a63ddd3ab33894c9619b4a10bfadde3",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0569318355754034,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "31d0d963967a4bdfdfe50b6e32a6029f412730039fe2e8a317bb1ca1084b017c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "90789eee27ea918cf3d0ca54c7b7994b39374b0454b40699c448d60be589909c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a73d6d1a2b04b565d1f534086650f973c2883a44c904ed52c6eb5b38686ed0c4",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "13578a2856e4913257b3c2e2bb34af717b12e237763d30a0d95088f7ec0a725e",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b0eeae5cfdad04903e13f01290db43e15e46ee55578c8f78af36e73fa30e628c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "14023251c503809ff7300d072469dd66e738192b156f392000af3d56c4e08319",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "196cbfe4722ab07a09530329e56d1562a2c119af8870458702bcc397dca80e57",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "196cbfe4722ab07a09530329e56d1562a2c119af8870458702bcc397dca80e57",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f61befc82f0a13bd50d9fb2e88ed11b71a63ddd3ab33894c9619b4a10bfadde3",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "196cbfe4722ab07a09530329e56d1562a2c119af8870458702bcc397dca80e57",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "225e535b2c162fca2be1ce1ea633995d295488a6256926a20100f1eebb3ca813",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "196cbfe4722ab07a09530329e56d1562a2c119af8870458702bcc397dca80e57",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "225e535b2c162fca2be1ce1ea633995d295488a6256926a20100f1eebb3ca813",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "225e535b2c162fca2be1ce1ea633995d295488a6256926a20100f1eebb3ca813",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a766f942543ab02e2a38e5d49e634a7c3bc25defbc533d7e265f0f5753e2b6ef",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "225e535b2c162fca2be1ce1ea633995d295488a6256926a20100f1eebb3ca813",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "bb1421a9e67ec3439903111ff85ce28b2c0e311511ff86d3165d6aae130b1f11",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2758699b97c0319b61d01b8891d9656d59806c48e7609e85e78ae7b987f83671",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a73d6d1a2b04b565d1f534086650f973c2883a44c904ed52c6eb5b38686ed0c4",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2758699b97c0319b61d01b8891d9656d59806c48e7609e85e78ae7b987f83671",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b0eeae5cfdad04903e13f01290db43e15e46ee55578c8f78af36e73fa30e628c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2758699b97c0319b61d01b8891d9656d59806c48e7609e85e78ae7b987f83671",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a766f942543ab02e2a38e5d49e634a7c3bc25defbc533d7e265f0f5753e2b6ef",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.3624013585213106,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2758699b97c0319b61d01b8891d9656d59806c48e7609e85e78ae7b987f83671",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "bb1421a9e67ec3439903111ff85ce28b2c0e311511ff86d3165d6aae130b1f11",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4156608359363774,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "29224a75c676ec623dba73a0ac3992f3d1948d3b2b561facb5ee484bd71ab9da",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f61befc82f0a13bd50d9fb2e88ed11b71a63ddd3ab33894c9619b4a10bfadde3",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4156608359363774,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "29224a75c676ec623dba73a0ac3992f3d1948d3b2b561facb5ee484bd71ab9da",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "2a39e211a52b6716bc3f7c477c642771f498905181953e30839f5345978468e4",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9759365117418467,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2a39e211a52b6716bc3f7c477c642771f498905181953e30839f5345978468e4",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9933918062306475,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2c07cf55b3a4a34d87fdee887a5bbb1cba0aed1c331f1d7ccf0e535d4d81ae32",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a05bcef7e2ba2476a1d864525fed1161ac9b8c62af82106212189b2ff5af4d34",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9933918062306475,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2c07cf55b3a4a34d87fdee887a5bbb1cba0aed1c331f1d7ccf0e535d4d81ae32",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "eb443ba99c9dacaf3c0477f82245d88954091fda55577ec392229a1ccbabc60b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31d0d963967a4bdfdfe50b6e32a6029f412730039fe2e8a317bb1ca1084b017c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31d0d963967a4bdfdfe50b6e32a6029f412730039fe2e8a317bb1ca1084b017c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0569318355754034,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31d0d963967a4bdfdfe50b6e32a6029f412730039fe2e8a317bb1ca1084b017c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31d0d963967a4bdfdfe50b6e32a6029f412730039fe2e8a317bb1ca1084b017c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "90789eee27ea918cf3d0ca54c7b7994b39374b0454b40699c448d60be589909c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4502713730325922,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3e90f78015f5f5d0e2ef66a229f6df0f46fefbed3727acecf2be54c36e085f69",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4502713730325922,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3e90f78015f5f5d0e2ef66a229f6df0f46fefbed3727acecf2be54c36e085f69",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0569318355754034,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "90789eee27ea918cf3d0ca54c7b7994b39374b0454b40699c448d60be589909c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "475a6afdefd7fd644489ed5d4fce11580d55e85b43fc0bf8b6b0228a0e5def31",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9759365117418467,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "71221048ec7112db08134e17101c1c6a4a871d50c591f6780d6dea9fc9cd6082",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9759365117418467,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "7d0d48faeddf7e30df66edd9c86de736eee47add2bdf230175333486a766b1cd",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4156608359363774,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "7d0d48faeddf7e30df66edd9c86de736eee47add2bdf230175333486a766b1cd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "9d7eaf3b97f31798e6a8eb40f2bcd95e9b2826d46a933cf8207600ac5f2d9e2f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5436020377819659,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "81b99721b7c4fe33616a1ed07dca3530319472333d145fc4464dc6d42f66210b",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "90789eee27ea918cf3d0ca54c7b7994b39374b0454b40699c448d60be589909c",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0569318355754034,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "90789eee27ea918cf3d0ca54c7b7994b39374b0454b40699c448d60be589909c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9933918062306475,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "91550715eec37081da735078b90ac393c341961f7a0ac121b1d627752c8db509",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a05bcef7e2ba2476a1d864525fed1161ac9b8c62af82106212189b2ff5af4d34",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9933918062306475,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "91550715eec37081da735078b90ac393c341961f7a0ac121b1d627752c8db509",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "eb443ba99c9dacaf3c0477f82245d88954091fda55577ec392229a1ccbabc60b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a6f5a452c4fc3a16098bcbc28fe5a6283c644611fe76bc9b33720f9c6fd46ee9",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9064224895555526,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "93bebba2ad7f221b6da9ead78ee2bf8e9f4a667d83a6b724d6651970ed0fcc76",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b0eeae5cfdad04903e13f01290db43e15e46ee55578c8f78af36e73fa30e628c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4156608359363774,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "9d7eaf3b97f31798e6a8eb40f2bcd95e9b2826d46a933cf8207600ac5f2d9e2f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a766f942543ab02e2a38e5d49e634a7c3bc25defbc533d7e265f0f5753e2b6ef",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9759365117418467,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "b2def3253f8d4f8b7e0b55b793d68186171b08023d3385abd1bd1d399d769985",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "db00c6f5b05b4feac4d31610eb8218a0dc8d615d6f52a9cdc0d6c5cccb74f56d",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 36,
+      "near_source_fraction": 0.9507506594374717,
+      "near_source_length_pixels": 304.24021101999097,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 320.0,
+      "seed_id": "w3.01",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            273.0,
+            391.7459000989329
+          ],
+          [
+            273.0,
+            375.9861111189239
+          ]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 21,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f4e682c9be6f655804f10c21acb48a2880e52e7944dc19f80cbf9ba8d8cc45a",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "2954651636702d0f76ee02b01a2e407cd9575689762cccd3530b850c4cd942a5",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f4e682c9be6f655804f10c21acb48a2880e52e7944dc19f80cbf9ba8d8cc45a",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "39f6faebbdb8fc40ecffa480b85352c3a7186500116abeb9db33924061d3b1f4",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f4e682c9be6f655804f10c21acb48a2880e52e7944dc19f80cbf9ba8d8cc45a",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "46bad9a6343882b96f37095c5216a399e447390e5f9c41a8b061965a4bf05c71",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f4e682c9be6f655804f10c21acb48a2880e52e7944dc19f80cbf9ba8d8cc45a",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "8008d48be8877736f8d88e5e86dc0fac20be130c17c12ed7f666f796d197386a",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2954651636702d0f76ee02b01a2e407cd9575689762cccd3530b850c4cd942a5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "4dd680f79cd5b99601c40c9d7c2ae109dd261eea1366ea484492a9bcdce63ff9",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2954651636702d0f76ee02b01a2e407cd9575689762cccd3530b850c4cd942a5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "6c78fba35dec258ddf8d6f8902142b7c7aa8378fe3901a980889020083f68bf4",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2954651636702d0f76ee02b01a2e407cd9575689762cccd3530b850c4cd942a5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "4dd680f79cd5b99601c40c9d7c2ae109dd261eea1366ea484492a9bcdce63ff9",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.8662225554970864,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "33285d5fd2d023f4d89ad46f29a96106da5d91a21d9efaad61733235a0485a2e",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e245efc04e6714db62d1b3690dae11098f3d504ee2b99784efbe78b7e3f318fd",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.8925714035408805,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "33693da6bf8edcfd40bfbf5500744ada5791124274028109fbb7ec1f4e8a8145",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "43effb5ea129e2c31aa33952f687f65e655c6f147b1dc57051ccdd7b53ef934b",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7197231312085413,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "33693da6bf8edcfd40bfbf5500744ada5791124274028109fbb7ec1f4e8a8145",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "43effb5ea129e2c31aa33952f687f65e655c6f147b1dc57051ccdd7b53ef934b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "39f6faebbdb8fc40ecffa480b85352c3a7186500116abeb9db33924061d3b1f4",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "4dd680f79cd5b99601c40c9d7c2ae109dd261eea1366ea484492a9bcdce63ff9",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.8925714035408805,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "43effb5ea129e2c31aa33952f687f65e655c6f147b1dc57051ccdd7b53ef934b",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "46bad9a6343882b96f37095c5216a399e447390e5f9c41a8b061965a4bf05c71",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7197231312085413,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "43effb5ea129e2c31aa33952f687f65e655c6f147b1dc57051ccdd7b53ef934b",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "528a77b8cd7e1dd2c81b0187a389d548e47651384847628c642546703f30e3cf",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "46bad9a6343882b96f37095c5216a399e447390e5f9c41a8b061965a4bf05c71",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6b0db37761e09e6a20b25edfbf69ddc928c71ae2e0297efa22e31900b3962454",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4dd680f79cd5b99601c40c9d7c2ae109dd261eea1366ea484492a9bcdce63ff9",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "cd7bec79a173c5f33c03a1d815fbf6b3802e250ecbd760361dc77b6dcd0dbdef",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "528a77b8cd7e1dd2c81b0187a389d548e47651384847628c642546703f30e3cf",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6b0db37761e09e6a20b25edfbf69ddc928c71ae2e0297efa22e31900b3962454",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "528a77b8cd7e1dd2c81b0187a389d548e47651384847628c642546703f30e3cf",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6c78fba35dec258ddf8d6f8902142b7c7aa8378fe3901a980889020083f68bf4",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6b0db37761e09e6a20b25edfbf69ddc928c71ae2e0297efa22e31900b3962454",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "8008d48be8877736f8d88e5e86dc0fac20be130c17c12ed7f666f796d197386a",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6b0db37761e09e6a20b25edfbf69ddc928c71ae2e0297efa22e31900b3962454",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "8008d48be8877736f8d88e5e86dc0fac20be130c17c12ed7f666f796d197386a",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6c78fba35dec258ddf8d6f8902142b7c7aa8378fe3901a980889020083f68bf4",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "cd7bec79a173c5f33c03a1d815fbf6b3802e250ecbd760361dc77b6dcd0dbdef",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6c78fba35dec258ddf8d6f8902142b7c7aa8378fe3901a980889020083f68bf4",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "8008d48be8877736f8d88e5e86dc0fac20be130c17c12ed7f666f796d197386a",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.8662225554970864,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "cd7bec79a173c5f33c03a1d815fbf6b3802e250ecbd760361dc77b6dcd0dbdef",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "e245efc04e6714db62d1b3690dae11098f3d504ee2b99784efbe78b7e3f318fd",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 12,
+      "near_source_fraction": 0.3840308983727267,
+      "near_source_length_pixels": 100.61609537365439,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 262.0,
+      "seed_id": "w3.02",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              400.1738380933966,
+              322.0
+            ],
+            [
+              417.91884127649246,
+              322.0
+            ]
+          ],
+          [
+            [
+              477.1872604633536,
+              322.0
+            ],
+            [
+              493.0,
+              322.0
+            ],
+            [
+              493.0,
+              357.0
+            ],
+            [
+              400.1738380933966,
+              357.0
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 29,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.9523478994923928,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0522dc2ee67b5ebdc3b1046e821175e13fc6d795786ea9252fbc68f582d5edc5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "70f58f89d95e2e462e3c9645e02a098e6474d7da9d49e3b0fd9396e4d459acb2",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9523478994923928,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0522dc2ee67b5ebdc3b1046e821175e13fc6d795786ea9252fbc68f582d5edc5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f965e7f353b1ce2914eadbc45048f9e1f76c9efb113c6b66ed855232d25d449a",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "098823e63c1366a765368576feaba913c6cd964f7a5154d8d5185b2587013f9c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "098823e63c1366a765368576feaba913c6cd964f7a5154d8d5185b2587013f9c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.926812220390131,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "95805fff0ceadcc389e12938b1b012b91f5575cebd456f6f5a7edf5bc1022675",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.926812220390131,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "d7e3dfb8393d212320ef41edd0267f3012f826da418985d61100dc22ff73b03b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b340e99f080e2bafebb948fad7f6bb23971cc527f54bd1a33fa4e0bbe24f976f",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "9d7869be7e4c487f2acde96a231f2db291755a61869a1797b6e04dfba0fa7494",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "5800331305be88650cf7bceab674f3f3fe6dcca2446c0fd3279ab2787dc3ba66",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b340e99f080e2bafebb948fad7f6bb23971cc527f54bd1a33fa4e0bbe24f976f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7943437151062804,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "0f3a4276273a6a7c7a5f25c99b54bac1f660e7d2311255524bd6b49758e1cfbb",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7943437151062804,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0b8d9b6748782371bbf2d5d7796190dd240f566671e93b2db1e392130728fa97",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "95805fff0ceadcc389e12938b1b012b91f5575cebd456f6f5a7edf5bc1022675",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.794213396671679,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f3a4276273a6a7c7a5f25c99b54bac1f660e7d2311255524bd6b49758e1cfbb",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.794213396671679,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f3a4276273a6a7c7a5f25c99b54bac1f660e7d2311255524bd6b49758e1cfbb",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7943437151062804,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0f3a4276273a6a7c7a5f25c99b54bac1f660e7d2311255524bd6b49758e1cfbb",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "8070da38e04e6a52c254a4d5fd4f03b396751d81baee71b7667ec6361453e93f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.794213396671679,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "4631dc0bf2362233737856218d53c757a37fdf0e0915a05d3d0503d8a36d74d5",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "5800331305be88650cf7bceab674f3f3fe6dcca2446c0fd3279ab2787dc3ba66",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b340e99f080e2bafebb948fad7f6bb23971cc527f54bd1a33fa4e0bbe24f976f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7943437151062804,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1533b305c8b8dbee0847d2f963e81cadfd661a46c26f79585292c7daeccb336f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "95805fff0ceadcc389e12938b1b012b91f5575cebd456f6f5a7edf5bc1022675",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7251241608755663,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "375f3fcd3fd3d604db020445ec3bb2574d2d8c755c17dbde925d88ec51b13b39",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a68bf760d10e01bb75dcf509a27f78804d1bb4ffa296392fb79370ee421ae400",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.794213396671679,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4631dc0bf2362233737856218d53c757a37fdf0e0915a05d3d0503d8a36d74d5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7251241608755663,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5ef2d35cc7401fca427246668e47afb7d1cd559e68cc57f1ee6bc911381c5313",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6edac16652667fc83edcbbd5ac9393514e6d509393e330cb8bf1aed434edf48d",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8070da38e04e6a52c254a4d5fd4f03b396751d81baee71b7667ec6361453e93f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8070da38e04e6a52c254a4d5fd4f03b396751d81baee71b7667ec6361453e93f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8070da38e04e6a52c254a4d5fd4f03b396751d81baee71b7667ec6361453e93f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.926812220390131,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "95805fff0ceadcc389e12938b1b012b91f5575cebd456f6f5a7edf5bc1022675",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "9d7869be7e4c487f2acde96a231f2db291755a61869a1797b6e04dfba0fa7494",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "b340e99f080e2bafebb948fad7f6bb23971cc527f54bd1a33fa4e0bbe24f976f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.926812220390131,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d7e3dfb8393d212320ef41edd0267f3012f826da418985d61100dc22ff73b03b",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7251241608755663,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "e4767e4b14a4e40a2b9efd8b87fe59a763fad2ca7897282f7858fad20e756590",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e6dc73a2481be52980d442df7e839e5babcecbae0f94297c3174e72335859fad",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "f2d4c2fdccc758d46b6276cb2e447107ce5bfacde5bf7fca1fe0bc094ce19405",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f965e7f353b1ce2914eadbc45048f9e1f76c9efb113c6b66ed855232d25d449a",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6309904477093369,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "f965e7f353b1ce2914eadbc45048f9e1f76c9efb113c6b66ed855232d25d449a",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fbbfe7ee21cd502b232f163d4c03a17e6dc260509fb256cc24ad90a483d0055e",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 13,
+      "near_source_fraction": 0.506886925033957,
+      "near_source_length_pixels": 69.95039565468608,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 138.0,
+      "seed_id": "w3.03",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              577.0,
+              348.5421615452825
+            ],
+            [
+              577.0,
+              358.0
+            ],
+            [
+              543.0,
+              358.0
+            ],
+            [
+              543.0,
+              348.6124377702363
+            ]
+          ],
+          [
+            [
+              543.0,
+              344.6124377702363
+            ],
+            [
+              543.0,
+              337.0103359398199
+            ]
+          ],
+          [
+            [
+              543.0,
+              332.28521177894436
+            ],
+            [
+              543.0,
+              324.683109948528
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 7,
+      "endpoint_gap_candidates": [],
+      "exact_source_endpoint_joins": 6,
+      "near_source_fraction": 0.48742354448086644,
+      "near_source_length_pixels": 67.26444913835957,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 138.0,
+      "seed_id": "w3.04",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              657.6705103815038,
+              323.0
+            ],
+            [
+              658.3961301471629,
+              323.0
+            ]
+          ],
+          [
+            [
+              690.0,
+              325.22695883200504
+            ],
+            [
+              690.0,
+              343.5247400032822
+            ]
+          ],
+          [
+            [
+              690.0,
+              347.5247400032822
+            ],
+            [
+              690.0,
+              357.0
+            ],
+            [
+              655.0,
+              357.0
+            ],
+            [
+              655.0,
+              349.7631100720136
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 5,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3371086fe4752a94dc28eee6194924a342e49cb57b387ce5519f1e36159e2b3c",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "5bd95b2b47ae5e0a0b114d46517973ec9c3eb3e8aa0556e0a7e62482c545a837",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 0,
+      "near_source_fraction": 0.8386488024426993,
+      "near_source_length_pixels": 223.08058144975803,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 266.0,
+      "seed_id": "d3.02",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              971.8852994577392,
+              326.0
+            ],
+            [
+              1014.455717371362,
+              326.0
+            ]
+          ],
+          [
+            [
+              1018.455717371362,
+              326.0
+            ],
+            [
+              1018.8047180079811,
+              326.0
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 15,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.960601227801265,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0ff577529aa922d394145b0a611464e072bd5da2adfc3004aafbc74dc1de9221",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fb399ab92407402fffd3d6924efc652a1a1073b09c81dfb0a545e708399fc06d",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.960601227801265,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0ff577529aa922d394145b0a611464e072bd5da2adfc3004aafbc74dc1de9221",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "4e20866ed710fcac414a07210a955d074a4233d2c13d1033ea6373a58d74e615",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5378878808806948,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0ff577529aa922d394145b0a611464e072bd5da2adfc3004aafbc74dc1de9221",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fb399ab92407402fffd3d6924efc652a1a1073b09c81dfb0a545e708399fc06d",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5378878808806948,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0ff577529aa922d394145b0a611464e072bd5da2adfc3004aafbc74dc1de9221",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "91192adabd093f59a586a061ee86576d52df4d11ab328d98698de516d3800366",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.631546650431119,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "42b1dfef9affd13cf12ac61e3a814cb263aae046f02c50c8c8b052baa86ee2e6",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "cdd5be5b2a73c62c99739ef2b3e529757bcedb0066fdc3fb7e3efee654ed6dc8",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.960601227801265,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4e20866ed710fcac414a07210a955d074a4233d2c13d1033ea6373a58d74e615",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b38d740bc3135013a13f1da020baf47d618a9f788e642561d6e88dbfc0f6e8a6",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5378878808806948,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "91192adabd093f59a586a061ee86576d52df4d11ab328d98698de516d3800366",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "ecaba31b457bbf191463811f566c9d9e3b7f5fbdd0690737c78fcfedcd57e8cd",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.631546650431119,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "9ddf789f0c8515b164fed4186f53dab196981aaf9d84b908a46d03a4b4173a1e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b38d740bc3135013a13f1da020baf47d618a9f788e642561d6e88dbfc0f6e8a6",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0876977669540793,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "9ddf789f0c8515b164fed4186f53dab196981aaf9d84b908a46d03a4b4173a1e",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "ecaba31b457bbf191463811f566c9d9e3b7f5fbdd0690737c78fcfedcd57e8cd",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.960601227801265,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "b38d740bc3135013a13f1da020baf47d618a9f788e642561d6e88dbfc0f6e8a6",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fb399ab92407402fffd3d6924efc652a1a1073b09c81dfb0a545e708399fc06d",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.0876977669540793,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "cdd5be5b2a73c62c99739ef2b3e529757bcedb0066fdc3fb7e3efee654ed6dc8",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "d3978d5401c51e3ab1be93f37e28de18713c0b1d094b40c73b645653b31d2cc8",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5378878808806948,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "ecaba31b457bbf191463811f566c9d9e3b7f5fbdd0690737c78fcfedcd57e8cd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fb399ab92407402fffd3d6924efc652a1a1073b09c81dfb0a545e708399fc06d",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 8,
+      "near_source_fraction": 1.0,
+      "near_source_length_pixels": 132.0,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 132.0,
+      "seed_id": "w3.05",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 6,
+      "endpoint_gap_candidates": [],
+      "exact_source_endpoint_joins": 4,
+      "near_source_fraction": 0.0,
+      "near_source_length_pixels": 0.0,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 204.0,
+      "seed_id": "w3.06",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            1061.0,
+            327.0
+          ],
+          [
+            1125.0,
+            327.0
+          ],
+          [
+            1125.0,
+            365.0
+          ],
+          [
+            1061.0,
+            365.0
+          ],
+          [
+            1061.0,
+            327.0
+          ]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 12,
+      "endpoint_gap_candidates": [],
+      "exact_source_endpoint_joins": 8,
+      "near_source_fraction": 0.6580485237516652,
+      "near_source_length_pixels": 185.5696836979696,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 282.0,
+      "seed_id": "d3.03",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              1342.8182053221026,
+              328.0
+            ],
+            [
+              1365.0,
+              328.0
+            ],
+            [
+              1365.0,
+              372.3486616737209
+            ]
+          ],
+          [
+            [
+              1365.0,
+              376.3486616737209
+            ],
+            [
+              1365.0,
+              406.248521624133
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 9,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2062546d1cc9b27c121476ae5d66cd714c52dbc77dfa749f8a278d9cc64ecc88",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "906322821a326990558ee44416de6bdfae1ca771823832d6835d2d2111eb4a5d",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2062546d1cc9b27c121476ae5d66cd714c52dbc77dfa749f8a278d9cc64ecc88",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "8047e7d9d73adafdbfc356612375d4a3e2dde1258ea2bdc0dc63d70128a6a47f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2062546d1cc9b27c121476ae5d66cd714c52dbc77dfa749f8a278d9cc64ecc88",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "906322821a326990558ee44416de6bdfae1ca771823832d6835d2d2111eb4a5d",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2062546d1cc9b27c121476ae5d66cd714c52dbc77dfa749f8a278d9cc64ecc88",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f89a999446cf648275e8a9c6df98303af30257a2e38f313033c69b539ba13b9b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2bf2057ec52484203067d4168cd424ec021b27f48e5ccebf05bf171607916eb3",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "906322821a326990558ee44416de6bdfae1ca771823832d6835d2d2111eb4a5d",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2bf2057ec52484203067d4168cd424ec021b27f48e5ccebf05bf171607916eb3",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f89a999446cf648275e8a9c6df98303af30257a2e38f313033c69b539ba13b9b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2bf2057ec52484203067d4168cd424ec021b27f48e5ccebf05bf171607916eb3",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c1b8ed2e67a76fef0851864e6db216226c4821a6bbd83c13ce31d79010f77bd1",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4e08a12c2474bd9be6a00a13e3d1a9885728e69432bec0f907581c98afca1e23",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "df0ab6dbad44fdeb34d27977ded3f58a1e06fa8c96f8ed6d33216ad7184e13b5",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4e08a12c2474bd9be6a00a13e3d1a9885728e69432bec0f907581c98afca1e23",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f89a999446cf648275e8a9c6df98303af30257a2e38f313033c69b539ba13b9b",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4e08a12c2474bd9be6a00a13e3d1a9885728e69432bec0f907581c98afca1e23",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c5b09b4ea61fb7cc9e9a48c94e614b6602314025519f9226c75f092f69cb9146",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8047e7d9d73adafdbfc356612375d4a3e2dde1258ea2bdc0dc63d70128a6a47f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "c787c06bc975264d527e66fbfd5412b6f9b2d9daaad817d8bcea4de27ee59fb0",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8047e7d9d73adafdbfc356612375d4a3e2dde1258ea2bdc0dc63d70128a6a47f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b2d74457891cc03d48c1cedc3ded7cfb5b697bd659edb385c208b46931e2b6b8",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "8047e7d9d73adafdbfc356612375d4a3e2dde1258ea2bdc0dc63d70128a6a47f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a3f4f09374cfbda25c460f0fac68c91dde9b39d5e6a59c1ed199a9080a18499c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "906322821a326990558ee44416de6bdfae1ca771823832d6835d2d2111eb4a5d",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "a3f4f09374cfbda25c460f0fac68c91dde9b39d5e6a59c1ed199a9080a18499c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "a3f4f09374cfbda25c460f0fac68c91dde9b39d5e6a59c1ed199a9080a18499c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c1b8ed2e67a76fef0851864e6db216226c4821a6bbd83c13ce31d79010f77bd1",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "b2d74457891cc03d48c1cedc3ded7cfb5b697bd659edb385c208b46931e2b6b8",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "df0ab6dbad44fdeb34d27977ded3f58a1e06fa8c96f8ed6d33216ad7184e13b5",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "b2d74457891cc03d48c1cedc3ded7cfb5b697bd659edb385c208b46931e2b6b8",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c5b09b4ea61fb7cc9e9a48c94e614b6602314025519f9226c75f092f69cb9146",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c1b8ed2e67a76fef0851864e6db216226c4821a6bbd83c13ce31d79010f77bd1",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "e2fd1a8ff56dcffa19b837e9a679089c73a15896f07b7e56b34de81c951282b5",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c1b8ed2e67a76fef0851864e6db216226c4821a6bbd83c13ce31d79010f77bd1",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e2fd1a8ff56dcffa19b837e9a679089c73a15896f07b7e56b34de81c951282b5",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c5b09b4ea61fb7cc9e9a48c94e614b6602314025519f9226c75f092f69cb9146",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "c787c06bc975264d527e66fbfd5412b6f9b2d9daaad817d8bcea4de27ee59fb0",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c5b09b4ea61fb7cc9e9a48c94e614b6602314025519f9226c75f092f69cb9146",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c787c06bc975264d527e66fbfd5412b6f9b2d9daaad817d8bcea4de27ee59fb0",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684047548245871,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c787c06bc975264d527e66fbfd5412b6f9b2d9daaad817d8bcea4de27ee59fb0",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f89a999446cf648275e8a9c6df98303af30257a2e38f313033c69b539ba13b9b",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "df0ab6dbad44fdeb34d27977ded3f58a1e06fa8c96f8ed6d33216ad7184e13b5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "fe2603e9f08bf2d13c0c19787fc7fe6efd282348e254613608ec38f16886ce3a",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "df0ab6dbad44fdeb34d27977ded3f58a1e06fa8c96f8ed6d33216ad7184e13b5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fe2603e9f08bf2d13c0c19787fc7fe6efd282348e254613608ec38f16886ce3a",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 12,
+      "near_source_fraction": 0.8171513846157593,
+      "near_source_length_pixels": 183.04191015393008,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 224.0,
+      "seed_id": "w3.07",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            1402.0,
+            375.0679060911061
+          ],
+          [
+            1402.0,
+            334.1098162450362
+          ]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 8,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.719186089254785,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "02824c7cf7c929af4d9295a0dbe3bf080f5ac1e12ef4ef463cc073bdc1772354",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a89236adce007d55fac40ccda5896186143060ab2d93a9e212186ae9bf8f3c58",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.719186089254785,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "02824c7cf7c929af4d9295a0dbe3bf080f5ac1e12ef4ef463cc073bdc1772354",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "8933e0438946c2fe98e690b22e269a4fe201de0bb2dfda49aeedb9218d376669",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7847502985044845,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "25a62b6ce37eabf2a6c6ea5761ffb19f2d4d7f64e3877a8ac5d3d123ea0d1bc4",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "d3970658254f133cee3994fd198a52e8074138c4f81c57518cfbfad8b26fef76",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7847502985044845,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2b55606b86564f2960977e779c58fd567e2ae0e09ea57efff27b6d8d087eb0a4",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "d3970658254f133cee3994fd198a52e8074138c4f81c57518cfbfad8b26fef76",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9060955634849961,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2ec7440d7aeaaf7ea3534a32be93487cea4579865417caffb572ae933f10621d",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "31eecd14c804b9c90fb0fa8375738bd5c50fd790520ddc0964bba484d9c72857",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9060955634849961,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "2ec7440d7aeaaf7ea3534a32be93487cea4579865417caffb572ae933f10621d",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f65f225a1c28e5a93c97259c1cd9760e90c128a778d41254b0d2b3597e23351c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9060955634849961,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31eecd14c804b9c90fb0fa8375738bd5c50fd790520ddc0964bba484d9c72857",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "d3970658254f133cee3994fd198a52e8074138c4f81c57518cfbfad8b26fef76",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9517960161736252,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31eecd14c804b9c90fb0fa8375738bd5c50fd790520ddc0964bba484d9c72857",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "8933e0438946c2fe98e690b22e269a4fe201de0bb2dfda49aeedb9218d376669",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9517960161736252,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31eecd14c804b9c90fb0fa8375738bd5c50fd790520ddc0964bba484d9c72857",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "956c401d5bb5e0e2466df0df8554fbed3318f3947672183576e81c3ab7202723",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9060955634849961,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "31eecd14c804b9c90fb0fa8375738bd5c50fd790520ddc0964bba484d9c72857",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "d3970658254f133cee3994fd198a52e8074138c4f81c57518cfbfad8b26fef76",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.9060955634849961,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d3970658254f133cee3994fd198a52e8074138c4f81c57518cfbfad8b26fef76",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f65f225a1c28e5a93c97259c1cd9760e90c128a778d41254b0d2b3597e23351c",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 11,
+      "near_source_fraction": 0.769339399401437,
+      "near_source_length_pixels": 146.17448588627303,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 190.0,
+      "seed_id": "w3.10",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              286.3752031586191,
+              246.0
+            ],
+            [
+              308.28800629907346,
+              246.0
+            ]
+          ],
+          [
+            [
+              316.6370069356926,
+              246.0
+            ],
+            [
+              338.54971790896525,
+              246.0
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 14,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.3192904706406112,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1bcf82c48f81ceda3ae71ad7d05d9026c9101416cd1afec22fb4ea061edccbda",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "de5765ff2abd08f711a7f5683b8e29f0f4f8a834fdea72a5914231a7212bc180",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3192904706406112,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "1bcf82c48f81ceda3ae71ad7d05d9026c9101416cd1afec22fb4ea061edccbda",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "613debd9bf64d254cd467ce20ad50b5d42d194165cb497d9ac6cfd96de53801b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3192018521989999,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3702b7bc99ba51069f05790994560c753c20aec1c371a0361b06c111d1265cb8",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "bf9784747ef882e146488930d60e42b3669e5291c9f57ecaae48a2f097f62f4e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3800805158108869,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "372a210e5551058d8df5f59a6f9619395a9729f0bb1d8402d8d2e47d7bb5388c",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "541272431ee3f495071a54785b7fc882e49e474df999e0662ff06a05fcd3e859",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3192018521989999,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "372a210e5551058d8df5f59a6f9619395a9729f0bb1d8402d8d2e47d7bb5388c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "bf9784747ef882e146488930d60e42b3669e5291c9f57ecaae48a2f097f62f4e",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5438488834770396,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "503db4f145791da6f0546e2842e0b2717ca7bc08163e4aafbc6713a09afdd101",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a7fdb71a609e2b0fc732e51bf4bfba8792db988f2fc24e8a28da5834b6ba4e53",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3800805158108869,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "541272431ee3f495071a54785b7fc882e49e474df999e0662ff06a05fcd3e859",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "81671e3f0f0ec905f1e3d78bcc73a883acaef23afa2824ccadae4909f57bc6c0",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3192904706406112,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "613debd9bf64d254cd467ce20ad50b5d42d194165cb497d9ac6cfd96de53801b",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "a3919adab41f98b83560b8c1dc597beb5c0768d250498956c48ebc5f8fcf3208",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.3192904706406112,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "750b0481f6c374b159f7ad03b19a6c672da952234da6a03ccaa7907c48427fba",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "de5765ff2abd08f711a7f5683b8e29f0f4f8a834fdea72a5914231a7212bc180",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "760ac92058a5a3a58b8e9d83fa0126c0fc4ec40bd46f8afed627722dee349e05",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "d15e0eb82303c457a556df9ab3bfe06b02e8a05f70c86544589b8ff57f543984",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "760ac92058a5a3a58b8e9d83fa0126c0fc4ec40bd46f8afed627722dee349e05",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "bf9784747ef882e146488930d60e42b3669e5291c9f57ecaae48a2f097f62f4e",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5438488834770396,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "9490bb1362166d3b23921c00b2958c6f8016b40b15e227952808b47759f2938f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f8fc52fe9278a01fed4cef67687803b091b177f4052b289347c17166ed16f8db",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "bf9784747ef882e146488930d60e42b3669e5291c9f57ecaae48a2f097f62f4e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "de5765ff2abd08f711a7f5683b8e29f0f4f8a834fdea72a5914231a7212bc180",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "bf9784747ef882e146488930d60e42b3669e5291c9f57ecaae48a2f097f62f4e",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "de5765ff2abd08f711a7f5683b8e29f0f4f8a834fdea72a5914231a7212bc180",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.6308982805276173,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d15e0eb82303c457a556df9ab3bfe06b02e8a05f70c86544589b8ff57f543984",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "de5765ff2abd08f711a7f5683b8e29f0f4f8a834fdea72a5914231a7212bc180",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 12,
+      "near_source_fraction": 0.7943492970327138,
+      "near_source_length_pixels": 128.68458611929964,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 162.0,
+      "seed_id": "w3.11",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              445.47585125219484,
+              246.0
+            ],
+            [
+              462.13365035972674,
+              246.0
+            ]
+          ],
+          [
+            [
+              470.30145031708525,
+              246.0
+            ],
+            [
+              486.9590650902537,
+              246.0
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 24,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "167e05afea48a8056091cfced99c9517a09d1eb11a96ce99e0c3e6ed69ec66cd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "7dc417f0c5a71a77419fea2b41c977a0fb14cb5d8b08c666387b96fd7a9357ab",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "167e05afea48a8056091cfced99c9517a09d1eb11a96ce99e0c3e6ed69ec66cd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "19cd32c6b3f746681830b826b7f2230087807a5d0fd5698e4004463f715f1e27",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "cab086e2613b37f1d6e7da82503482c9fab1b89e60ab0e83bf008e4e115cacfd",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "19cd32c6b3f746681830b826b7f2230087807a5d0fd5698e4004463f715f1e27",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5438488834770396,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "28ea8a925867fd6a8a77df610afea7446c20c5a85aa360ed5e57e4644c921174",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "78e37680c09d12850a64d0ceaeee9d64ef68cf11b7cf684567c09d744992532f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.5438488834770396,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "32d89682d060055bfc82c41b350c9feb9f431ae5492c2cd294c360096a03d7fa",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "3f92396d8e46dc458fcab92314cc83e4ca02713f118d466d6ce9610d36e09806",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "e92af55dce100ed55d9c40c8f6b274362146a655c6d9f4553c31135cd0ecf3dc",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f12d08d28363df24134eb5b34ce76f298880c57dd8f118e699f9718115b63b61",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3373c12e4111674aaf139eb2deebc0d04a2f3cea5bc5d886e038fbc3105efe13",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f12d08d28363df24134eb5b34ce76f298880c57dd8f118e699f9718115b63b61",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3bb37506170afdf858e2fdffd970fc9d52ccc459c8045bb3e9be62b7b9d77cb7",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3bb37506170afdf858e2fdffd970fc9d52ccc459c8045bb3e9be62b7b9d77cb7",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4ff2126aaadf3cdad6a08af57cb820c3e2f2359405fd552b11621725d7df0497",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "6b8b72635da546b15646612397a528c407abeee84bafe03d7f3e493a6181efe7",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "4ff2126aaadf3cdad6a08af57cb820c3e2f2359405fd552b11621725d7df0497",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5b170358340979d04042aacfa3b60a5bdd330afb6e1be02986c9452ad46a0ab5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "6b8b72635da546b15646612397a528c407abeee84bafe03d7f3e493a6181efe7",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5b170358340979d04042aacfa3b60a5bdd330afb6e1be02986c9452ad46a0ab5",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5b170358340979d04042aacfa3b60a5bdd330afb6e1be02986c9452ad46a0ab5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7941970932300448,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5b170358340979d04042aacfa3b60a5bdd330afb6e1be02986c9452ad46a0ab5",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "7dc417f0c5a71a77419fea2b41c977a0fb14cb5d8b08c666387b96fd7a9357ab",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "6bad62e16def764cbf28a8922e6cb74acc7db0dc0fcd049ebebd48b9fedf96c2",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e98cb6fc03e7bc2ec71be213ab18b0d2a29b535c90251d591f741e3dbfcaecf1",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "e92af55dce100ed55d9c40c8f6b274362146a655c6d9f4553c31135cd0ecf3dc",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "c5db4a495de8bf405105dc243f5dd41a11af256bd0f5b64fab29fde6bf63fe82",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f12d08d28363df24134eb5b34ce76f298880c57dd8f118e699f9718115b63b61",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.79426225185534,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "cab086e2613b37f1d6e7da82503482c9fab1b89e60ab0e83bf008e4e115cacfd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f12d08d28363df24134eb5b34ce76f298880c57dd8f118e699f9718115b63b61",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 16,
+      "near_source_fraction": 1.0,
+      "near_source_length_pixels": 164.0,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 164.0,
+      "seed_id": "w3.12",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 26,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0d85c334554f54d6c9ac4dc30a537c1640bd4a76262a95c62c7d1e7a33e47ecb",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "819b20c0e66f1d04f41d3420d9cc25591e75e59332748b691f9eb1031b2800ba",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0d85c334554f54d6c9ac4dc30a537c1640bd4a76262a95c62c7d1e7a33e47ecb",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f1f1d8d53a178812f09159f07293b6898c9c8a2d1772466559e38b60bd8b6195",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7251241608755663,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3e61ab843c2fc78895f7489b2c48a338deb57f56fe86ed093350a4b4ceda43a2",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "538f7cc6ad860b50f9e5afc9af497dae6d00fc8457d022de7ff5d0c8af90b5a7",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7248948842243408,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "3ff873816518bbf506fbaacc87b3bae6a9558cb8c6da0fa9e7a5b1a9a5b84cc9",
+              "vertex_index": 2
+            },
+            {
+              "source_candidate_id": "5745e43f35228a65899f9d036ba0e17a79e2576d2bff212342411340dc3d6125",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7251241608755663,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5745e43f35228a65899f9d036ba0e17a79e2576d2bff212342411340dc3d6125",
+              "vertex_index": 2
+            },
+            {
+              "source_candidate_id": "5b75957bc519947dcb82d9fa1d967cc3bdcd5026ea7e1f029a7dc61227f190a1",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7248948842243408,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "5b75957bc519947dcb82d9fa1d967cc3bdcd5026ea7e1f029a7dc61227f190a1",
+              "vertex_index": 2
+            },
+            {
+              "source_candidate_id": "7446ff11d7235a8a29190e34e919b7936974e53d4efc2f7ddd9d9e306ec059fb",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "7e0199c6cebb34cf4ee9dcbabdb13b7166e2e19da5053d44a3c6aa3142f90526",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "819b20c0e66f1d04f41d3420d9cc25591e75e59332748b691f9eb1031b2800ba",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.449697601266962,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "7e0199c6cebb34cf4ee9dcbabdb13b7166e2e19da5053d44a3c6aa3142f90526",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f1f1d8d53a178812f09159f07293b6898c9c8a2d1772466559e38b60bd8b6195",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 11,
+      "near_source_fraction": 0.9974396427213605,
+      "near_source_length_pixels": 199.4879285442721,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 200.0,
+      "seed_id": "w3.14",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            1005.6580969120082,
+            290.0
+          ],
+          [
+            1005.1460254562803,
+            290.0
+          ]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 13,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 1.9941202565096319,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "054d922f1f6d39ebe1c8cbeffba5ed44655fe467e69141321f536daa72151fa8",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "709b066f873d655c344d3c4ab6881fa610773c9e6301860822c00e033991b078",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.1812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0a563a42ff2cc2bcde1435ddcee60e5aae34c1c8156440e79ff423b46706e51c",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "ed5178d39e373b2a3fafd5efbbdd98cd19b9119c3d5fdd2f8c2bf3590da1a8f6",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9941202565096319,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0a563a42ff2cc2bcde1435ddcee60e5aae34c1c8156440e79ff423b46706e51c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "eeb912c107fb853714cb4e82bfb4e722d2754451faa0ec15de403758c70c872b",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5590658006356115,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0a563a42ff2cc2bcde1435ddcee60e5aae34c1c8156440e79ff423b46706e51c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fa7fb4689ca241fe4f36dae53d14024dd3c7b51e01fab334903c6a2f6df92235",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.7097440933342245,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0a563a42ff2cc2bcde1435ddcee60e5aae34c1c8156440e79ff423b46706e51c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "d07b0a8d13c6e432bc07d8bd31540fddd4133d6e7f91bfecffb0f7e78f842b5f",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.1812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "0a563a42ff2cc2bcde1435ddcee60e5aae34c1c8156440e79ff423b46706e51c",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f6523bafd6408b04e8069c50b4acd2bb6fb4ba8e8a2a62390706022e193dd4aa",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9940972052281722,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "44e350cb878bdc9b116df6c296af50e45dc98ccaca7909a37b484b9956ac99fd",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "b77c8e52169c02a356e622b2bc91097466fd75a4bfdb8c31dcb181bede2b6a60",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684969220063067,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "619996a0c27032152292840b9f224d35e77406161f1e698bd2428edb534d502a",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "bc36aba9d15ebc1abf4122dfe8f6387aab90b1b2de6c58b472a0317447bba01e",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684969220063067,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "619996a0c27032152292840b9f224d35e77406161f1e698bd2428edb534d502a",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f6523bafd6408b04e8069c50b4acd2bb6fb4ba8e8a2a62390706022e193dd4aa",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9941202565096319,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "660360cfe1d4500c4a0ef309adc02acd06c69b955ead684ac514bbb94c1973ad",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "b77c8e52169c02a356e622b2bc91097466fd75a4bfdb8c31dcb181bede2b6a60",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684969220063067,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "bc36aba9d15ebc1abf4122dfe8f6387aab90b1b2de6c58b472a0317447bba01e",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "d07b0a8d13c6e432bc07d8bd31540fddd4133d6e7f91bfecffb0f7e78f842b5f",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.2684969220063067,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d07b0a8d13c6e432bc07d8bd31540fddd4133d6e7f91bfecffb0f7e78f842b5f",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "f6523bafd6408b04e8069c50b4acd2bb6fb4ba8e8a2a62390706022e193dd4aa",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.1812006792606553,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d07b0a8d13c6e432bc07d8bd31540fddd4133d6e7f91bfecffb0f7e78f842b5f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fa7fb4689ca241fe4f36dae53d14024dd3c7b51e01fab334903c6a2f6df92235",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.5590658006356115,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "d07b0a8d13c6e432bc07d8bd31540fddd4133d6e7f91bfecffb0f7e78f842b5f",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "f6523bafd6408b04e8069c50b4acd2bb6fb4ba8e8a2a62390706022e193dd4aa",
+              "vertex_index": 1
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.9940972052281722,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "eeb912c107fb853714cb4e82bfb4e722d2754451faa0ec15de403758c70c872b",
+              "vertex_index": 0
+            },
+            {
+              "source_candidate_id": "eec6c765dd843b8ac3280073734d302f3c800b0deb9d0fe40ddc36d72007506e",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.4155616726447833,
+          "source_endpoint_references": [
+            {
+              "source_candidate_id": "f6523bafd6408b04e8069c50b4acd2bb6fb4ba8e8a2a62390706022e193dd4aa",
+              "vertex_index": 1
+            },
+            {
+              "source_candidate_id": "fa7fb4689ca241fe4f36dae53d14024dd3c7b51e01fab334903c6a2f6df92235",
+              "vertex_index": 0
+            }
+          ],
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 5,
+      "near_source_fraction": 1.0,
+      "near_source_length_pixels": 206.0,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 206.0,
+      "seed_id": "w3.15",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [],
+        "type": "LineString"
+      }
+    },
+    {
+      "complete_outline_candidates": 1,
+      "endpoint_gap_candidates": [
+        {
+          "distance_pixels": 0.18129284644237487,
+          "endpoints": [
+            {
+              "native_point": [
+                422.1600036621094,
+                1190.2391357421875
+              ],
+              "pixel_point": [
+                898.6704831584866,
+                318.8761908154702
+              ],
+              "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+              "vertex_index": 0
+            },
+            {
+              "native_point": [
+                422.1600036621094,
+                1190.479248046875
+              ],
+              "pixel_point": [
+                898.851776004929,
+                318.8761908154702
+              ],
+              "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121",
+              "vertex_index": 1
+            }
+          ],
+          "physical_connection_verified": false,
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.7471276362364591,
+          "endpoints": [
+            {
+              "native_point": [
+                417.1199951171875,
+                1203.67919921875
+              ],
+              "pixel_point": [
+                908.8181820329919,
+                315.0692486311309
+              ],
+              "source_candidate_id": "20c6ba7dcf25f16250a6de41e3f97dc85bc81252797be63a127aa8b8f98aa3f5",
+              "vertex_index": 0
+            },
+            {
+              "native_point": [
+                417.3599853515625,
+                1202.71923828125
+              ],
+              "pixel_point": [
+                908.0933793159493,
+                315.25052390852943
+              ],
+              "source_candidate_id": "ffeb5f274f9a1c3b568a3193e019429dc8d1b04fa3c753ef5e0dfa54a159f49e",
+              "vertex_index": 1
+            }
+          ],
+          "physical_connection_verified": false,
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 0.40521040319074275,
+          "endpoints": [
+            {
+              "native_point": [
+                417.1199951171875,
+                1203.67919921875
+              ],
+              "pixel_point": [
+                908.8181820329919,
+                315.0692486311309
+              ],
+              "source_candidate_id": "20c6ba7dcf25f16250a6de41e3f97dc85bc81252797be63a127aa8b8f98aa3f5",
+              "vertex_index": 0
+            },
+            {
+              "native_point": [
+                417.3599853515625,
+                1204.1591796875
+              ],
+              "pixel_point": [
+                909.1805833915132,
+                315.25052390852943
+              ],
+              "source_candidate_id": "ffeb5f274f9a1c3b568a3193e019429dc8d1b04fa3c753ef5e0dfa54a159f49e",
+              "vertex_index": 0
+            }
+          ],
+          "physical_connection_verified": false,
+          "source_gap_repaired": false
+        },
+        {
+          "distance_pixels": 1.461547379184939,
+          "endpoints": [
+            {
+              "native_point": [
+                419.2799987792969,
+                986.959228515625
+              ],
+              "pixel_point": [
+                745.1873326235363,
+                316.700795281562
+              ],
+              "source_candidate_id": "5904495fb65d4bc4e56b0dd2eb65c2c020974597338a54bbf0debb7f998fe479",
+              "vertex_index": 8
+            },
+            {
+              "native_point": [
+                417.3599853515625,
+                987.19921875
+              ],
+              "pixel_point": [
+                745.368533302797,
+                315.25052390852943
+              ],
+              "source_candidate_id": "c90908a7dc4509274866d803e8330e25aa0a44500869b0d44b81c788bf775e01",
+              "vertex_index": 1
+            }
+          ],
+          "physical_connection_verified": false,
+          "source_gap_repaired": false
+        }
+      ],
+      "exact_source_endpoint_joins": 6,
+      "near_source_fraction": 0.5341075271434059,
+      "near_source_length_pixels": 260.07047876067776,
+      "physical_aperture_verified": false,
+      "reviewed_perimeter_pixels": 486.9253203594148,
+      "seed_id": "archway-3",
+      "status": "no_complete_outline_within_trace_bound",
+      "unsupported_reviewed_trace": {
+        "coordinates": [
+          [
+            [
+              753.0,
+              406.248521624133
+            ],
+            [
+              753.0,
+              326.0
+            ],
+            [
+              753.8785413686419,
+              323.89150071525944
+            ]
+          ],
+          [
+            [
+              756.7226382238536,
+              317.0656682627516
+            ],
+            [
+              758.0,
+              314.0
+            ],
+            [
+              772.9158980459258,
+              303.0616747663211
+            ]
+          ],
+          [
+            [
+              773.1740567974886,
+              302.93670661909505
+            ],
+            [
+              786.8516903165064,
+              297.9630217030886
+            ]
+          ],
+          [
+            [
+              869.1857393902757,
+              298.3196522713534
+            ],
+            [
+              879.0,
+              302.0
+            ],
+            [
+              892.8986641160913,
+              311.5553315798128
+            ]
+          ],
+          [
+            [
+              900.851776004929,
+              325.6788480106795
+            ],
+            [
+              901.0,
+              326.0
+            ],
+            [
+              901.0,
+              406.248521624133
+            ]
+          ]
+        ],
+        "type": "MultiLineString"
+      }
+    }
+  ],
+  "recipe_sha256": "4f2fea600e48b84f54a361d5f7605700f1ce68143c47699b03d0958db61a00eb",
+  "recovery": {
+    "counts": {
+      "cut_edges": 302,
+      "dangles": 1922,
+      "dashed_or_unknown_lines_deferred": 59,
+      "existing_polygon_duplicates": 2,
+      "intersection_pairs": 4251,
+      "invalid_rings": 0,
+      "recovered_faces": 235,
+      "segments": 3446,
+      "small_faces_deferred": 339,
+      "solid_straight_lines": 2722
+    },
+    "recovered_faces": 235,
+    "status": "enclosed_faces_only"
+  },
+  "version": "opening-boundary-review-v1",
+  "wall_roof_meshes_identical_to_parent": true,
+  "world_geometry_additions": 0
+}
