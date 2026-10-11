@@ -21,7 +21,7 @@ from .drawing_geometry import extract_page
 from .reconstruction.model import Source, Feature
 from .reconstruction.registration import review_registration, apply_registration, registration_domain
 
-VERSION = 'explicit-drawing-bridge-v1'
+VERSION = 'explicit-and-ordinary-drawing-bridge-v2'
 MARK = re.compile(r'^CP:([A-Za-z0-9_.-]{1,64})$')
 OBJECT = re.compile(r'^(PATH|PLAZA|WALL|ROOF):([A-Za-z0-9_.-]{1,64})(?:\s+(.*))?$')
 SCALE = re.compile(r'^(?:Scale\s+)?1\s*:\s*(\d{1,5})$', re.I)
@@ -169,6 +169,9 @@ def semantic_features(runs, marks, candidates, source, alignment):
 
 
 def bridge_page(pdf,page_number,source,references,sources):
+    if source.metadata.get('semantic_annotation_contract')=='ordinary_surface_labels_v1':
+        from .ordinary_surfaces import bridge_page as ordinary_page
+        return ordinary_page(pdf,page_number,source,references,sources)
     if file_hash(pdf)!=source.sha256: raise ValueError('Source PDF checksum mismatch')
     reader=PdfReader(pdf)
     if not 1<=page_number<=len(reader.pages) or len(reader.pages)>1000: raise ValueError('Bounded source page required')
@@ -234,7 +237,9 @@ def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10
         if source.sha256 in identities:raise ValueError('One batch entry per distinct drawing PDF required')
         identities.add(source.sha256)
         resolved.append((pdf,source,pages,file_hash(pdf)))
-    contract={'version':VERSION,'input_sha256':{k:file_hash(p) for k,p in [('documents',documents_file),('manifest',manifest_file),('references',references_file)]},
+    from .ordinary_surfaces import VERSION as ordinary_version
+    from .glyph_visibility import VERSION as glyph_version
+    contract={'version':VERSION,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,'input_sha256':{k:file_hash(p) for k,p in [('documents',documents_file),('manifest',manifest_file),('references',references_file)]},
               'document_content_sha256':[digest for _,_,_,digest in resolved],'max_pages':max_pages,'max_features':max_features}
     output=Path(output)
     if output.exists():

@@ -3,7 +3,7 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v1'
+VERSION='source-font-glyph-raster-screen-v2'
 
 
 def grow(mask,steps=1):
@@ -15,8 +15,8 @@ def grow(mask,steps=1):
 
 def screen_span(page,span,*,zoom=6,max_pixels=1000000):
     """Screen exact native glyph origins against rendered source; never certify source identity."""
-    if zoom!=6 or type(max_pixels) is not int or not 1<=max_pixels<=1000000:
-        raise ValueError('Fixed six-pixel scale and bounded raster budget required')
+    if zoom not in (6,12,24) or type(max_pixels) is not int or not 1<=max_pixels<=1000000:
+        raise ValueError('Supported fixed raster scale and bounded raster budget required')
     failure={'status':'withheld','visibility_verified':False,'version':VERSION}
     if (span.get('type')!=0 or span.get('opacity')!=1
             or span.get('layer') or span.get('color') not in ((0.,0.,0.),(0.,))
@@ -35,7 +35,11 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
     if page.cropbox.x0!=0 or page.cropbox.y0!=0:return {**failure,'reason':'Offset cropbox requires another raster-frame adapter'}
     directions={(1.,0.):0,(0.,-1.):90,(-1.,0.):180,(0.,1.):270}
     angle=directions.get(tuple(span['dir']))
-    if angle is None or not 1<=span['size']<=40:return {**failure,'reason':'Unsupported glyph transform or size'}
+    direction=span['dir']
+    if (len(direction)!=2 or any(not math.isfinite(v) for v in direction)
+            or abs(math.hypot(*direction)-1)>1e-5 or not 1<=span['size']<=40):
+        return {**failure,'reason':'Unsupported glyph transform or size'}
+    rotation_matrix=None if angle is not None else pymupdf.Matrix(math.degrees(math.atan2(-direction[1],direction[0])))
     clip=pymupdf.Rect(span['bbox'])+(-.5,-.5,.5,.5)
     if clip.width*clip.height*zoom*zoom>max_pixels:return {**failure,'reason':'Glyph raster budget exceeded'}
     rotation=page.rotation
@@ -45,9 +49,35 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
         with pymupdf.open() as document:
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
             font_name='nativeSource' if font_buffer else 'helv'
-            if font_buffer:reference.insert_font(fontname=font_name,fontbuffer=font_buffer)
-            for character in span['chars']:
-                reference.insert_text(character[2],chr(character[0]),fontname=font_name,fontsize=span['size'],rotate=angle,color=(0,0,0))
+            direct_glyphs=False
+            if font_buffer:
+                xref=reference.insert_font(fontname=font_name,fontbuffer=font_buffer)
+                if font_buffer[:4] in (b'\x00\x01\x00\x00',b'true'):
+                    import re
+                    kind,children=document.xref_get_key(xref,'DescendantFonts')
+                    child=re.fullmatch(r'\[\s*(\d+)\s+0\s+R\s*\]',children) if kind=='array' else None
+                    if (child and document.xref_get_key(xref,'Encoding')==('name','/Identity-H')
+                            and document.xref_get_key(int(child[1]),'Subtype')==('name','/CIDFontType2')
+                            and document.xref_get_key(int(child[1]),'CIDToGIDMap') in (('name','/Identity'),('null','null'))):
+                        import io
+                        from fontTools.ttLib import TTFont
+                        with TTFont(io.BytesIO(font_buffer)) as native_font:
+                            glyph_count=native_font['maxp'].numGlyphs
+                        direct_glyphs=all(type(c[1]) is int and 0<=c[1]<min(glyph_count,65536) for c in span['chars'])
+            if direct_glyphs:
+                # Preserve the actual PDF glyph IDs. CAD subset fonts often
+                # have no Unicode cmap, so re-encoding their text loses ink.
+                dx,dy=direction;commands=[]
+                for character in span['chars']:
+                    x,y=character[2]
+                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{character[1]:04x}> Tj ET')
+                content=document.get_new_xref();document.update_object(content,'<<>>')
+                document.update_stream(content,'\n'.join(commands).encode('ascii'))
+                document.xref_set_key(reference.xref,'Contents',f'{content} 0 R')
+            else:
+                for character in span['chars']:
+                    options={'rotate':angle} if rotation_matrix is None else {'morph':(pymupdf.Point(character[2]),rotation_matrix)}
+                    reference.insert_text(character[2],chr(character[0]),fontname=font_name,fontsize=span['size'],color=(0,0,0),**options)
             expected=reference.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,colorspace=pymupdf.csGRAY,alpha=False)
         if (source.width,source.height,source.x,source.y)!=(expected.width,expected.height,expected.x,expected.y):
             return {**failure,'reason':'Source and reference raster frames differ'}
@@ -68,10 +98,11 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000):
         supported=supported and ring_count>0 and unexpected/ring_count<=.01
         return {'status':'raster_consistent_candidate' if supported else 'withheld','version':VERSION,'visibility_verified':False,
                 'source_font_sha256':hashlib.sha256(font_buffer).hexdigest() if font_buffer else None,
+                'glyph_encoding':'source_glyph_ids' if direct_glyphs else 'unicode',
                 'source_font_xrefs':[f[0] for f in fonts],'zoom_pixels_per_pdf_point':zoom,'source_rotation_restored':rotation,'glyphs':glyphs,
                 'ring_pixels':ring_count,'unexpected_dark_ring_pixels':unexpected,
                 'pixel_position_tolerance':1,'max_unsupported_core_fraction_per_glyph':.01,'max_unexpected_dark_ring_fraction':.01,
                 'limitations':['Raster consistency is a screen, not proof of semantic/material or as-built identity.',
-                               'Only black ASCII text in cardinal directions with one identified native font is supported; no custom-font substitution.',
-                               'A one-pixel position tolerance applies at six pixels per PDF point.']}
+                               'Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.',
+                               'A one-pixel position tolerance applies at the retained raster scale.']}
     finally:page.set_rotation(rotation)
