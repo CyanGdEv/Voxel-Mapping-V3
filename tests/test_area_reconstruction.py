@@ -273,3 +273,25 @@ class AreaCompileTests(unittest.TestCase):
             self.assertEqual(world.get_block(17,1+self.offset,1,'minecraft:overworld'),material_block('gray_concrete'))
             self.assertEqual(world.get_block(33,1+self.offset,1,'minecraft:overworld'),material_block(palette_block('brick',33,-1)))
         finally:world.close()
+
+class AutomaticOSMStageTests(unittest.TestCase):
+    setUp=AreaSourceTests.setUp
+    tearDown=AreaSourceTests.tearDown
+
+    def test_bounds_only_enable_snapshot_and_alignment_without_manual_seeds(self):
+        from unittest.mock import patch
+        from voxel_mapper.osm_alignment_snapshot import acquire
+        data=b'<osm><node id="1" lon="-1.88" lat="52.99"/></osm>'
+        requests=[]
+        def snapshot(directory,bounds,offline=False):
+            return acquire(directory,bounds,offline=offline,fetch=lambda *args:(requests.append(args) or data))
+        self.config['offline']=False
+        self.config['osm_provisional_alignment']={'bounds_wgs84':[-1.89,52.98,-1.88,52.99]}
+        self.job.write_text(json.dumps(self.config))
+        with patch('voxel_mapper.osm_alignment_snapshot.acquire',side_effect=snapshot):
+            first=run(self.job)['areas']['a'];second=run(self.job)['areas']['a']
+        self.assertEqual(len(requests),1)
+        self.assertEqual(first['osm_snapshot']['sha256'],second['osm_snapshot']['sha256'])
+        self.assertEqual(first['osm_provisional_alignment']['pages'],1)
+        self.assertEqual(second['osm_provisional_alignment']['reused_pages'],1)
+        self.assertFalse(first['osm_provisional_alignment']['registration_verified'])

@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
+import pymupdf
+import shutil
 from pyproj import CRS
 from pyproj.transformer import TransformerGroup
 from shapely.geometry import shape,mapping
@@ -15,8 +17,9 @@ from .evidence_memory import EvidenceMemory,identity
 from .mapped_sheet_placement import propose,placed,VERSION as MATCH_VERSION
 from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK_VERSION
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
+from .osm_landmark_context import bind_labels,topology_checks,VERSION as CONTEXT_VERSION,GLYPH_VERSION
 
-VERSION='osm-provisional-alignment-v2'
+VERSION='osm-provisional-alignment-v3'
 
 
 def recover_outlines(data):
@@ -49,7 +52,8 @@ def osm_collection(path):
         for kind in ('way','relation'):
             for item in root.findall(kind):
                 row={'type':kind,'id':int(item.attrib['id']),'tags':{t.attrib['k']:t.attrib['v'] for t in item.findall('tag')}}
-                if kind=='way':row['geometry']=ways[row['id']]
+                if kind=='way':
+                    row['geometry']=ways[row['id']];row['nodes']=[int(n.attrib['ref']) for n in item.findall('nd')]
                 else:row['members']=[{'type':m.attrib['type'],'ref':int(m.attrib['ref']),'role':m.attrib.get('role',''),
                     'geometry':ways.get(int(m.attrib['ref']),[])} for m in item.findall('member')]
                 elements.append(row)
@@ -58,6 +62,17 @@ def osm_collection(path):
     if data.get('remark') or not isinstance(data.get('elements'),list) or len(data['elements'])>100000:
         raise ValueError('Complete bounded OSM element snapshot required')
     collection,skipped=parse_osm(data)
+    way_nodes={e['id']:e['nodes'] for e in data['elements'] if e.get('type')=='way' and e.get('nodes') is not None}
+    for feature in collection['features']:
+        if feature['id'].startswith('osm/way/'):
+            nodes=way_nodes.get(int(feature['id'].split('/')[-1]))
+            if nodes is not None:feature['properties']['osm_node_ids']=nodes
+    if raw.lstrip().startswith(b'<'):
+        for node in root.findall('node'):
+            tags={t.attrib['k']:t.attrib['v'] for t in node.findall('tag')}
+            if tags.get('name'):
+                collection['features'].append({'id':'osm/node/'+node.attrib['id'],'geometry':{'type':'Point',
+                    'coordinates':[float(node.attrib['lon']),float(node.attrib['lat'])]},'properties':tags})
     return collection,hashlib.sha256(raw).hexdigest(),skipped
 
 
@@ -69,33 +84,50 @@ def map_references(path,target_crs):
     if not group.best_available or not group.transformers:raise ValueError('Preferred OSM coordinate transformation unavailable')
     converter=group.transformers[0]
     if not 0<=converter.accuracy<=1:raise ValueError('OSM projection operation accuracy is unknown or exceeds one metre')
-    rows=[]
+    rows=[];map_lines=[]
     for feature in collection['features']:
+        if feature['geometry']['type']=='LineString' and feature['properties']['kind']=='path':
+            line=transform(converter.transform,shape(feature['geometry']))
+            if line.is_valid and not line.is_empty:map_lines.append({'geometry':line,
+                'node_ids':feature['properties'].get('osm_node_ids'),'layer':feature['properties'].get('layer','0')})
         if feature['geometry']['type']!='Polygon' or feature['properties']['kind'] not in ('building','water','plaza','parking','path'):continue
         geometry=transform(converter.transform,shape(feature['geometry']))
         if geometry.is_empty or not geometry.is_valid or geometry.has_z:continue
         if len(rows)>=5000:raise ValueError('OSM reference polygon budget exceeded')
         rows.append({'id':feature['id'],'geometry':geometry,'name':feature['properties'].get('name','')})
+    from shapely.strtree import STRtree
+    index=STRtree([r['geometry'] for r in rows])
+    for feature in collection['features']:
+        if feature['geometry']['type']!='Point' or not feature['properties'].get('name'):continue
+        point=transform(converter.transform,shape(feature['geometry']))
+        hits=[int(i) for i in index.query(point,predicate='intersects') if rows[int(i)]['geometry'].contains(point)]
+        if len(hits)==1:
+            rows[hits[0]].setdefault('name_hints',[]).append({'name':feature['properties']['name'],
+                'source_id':feature['id'],'identity_verified':False})
     return rows,digest,{'reference_polygons':len(rows),'skipped_osm_elements':len(skipped),
         'operation':converter.description,'operation_accuracy_m':converter.accuracy,
-        'absolute_osm_accuracy_m':None,'registration_verified':False}
+        'absolute_osm_accuracy_m':None,'registration_verified':False},map_lines
 
 
-def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1000,max_seed_fits=512):
+def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1000,max_seed_fits=512,max_name_ocr=16):
     if type(max_pages) is not int or not 1<=max_pages<=1000:raise ValueError('OSM alignment page budget must be 1..1000')
+    if type(max_name_ocr) is not int or not 0<=max_name_ocr<=16:raise ValueError('Run name OCR budget must be 0..16')
     propose([],[],max_seed_fits=max_seed_fits)
     geometry_directory=Path(geometry_directory);extraction=json.loads((geometry_directory/'geometry-report.json').read_text())
     feed=geometry_directory/'geometry-candidates.jsonl'
     if file_hash(feed)!=extraction['file_sha256']['geometry']:raise ValueError('Retained native geometry feed changed')
-    refs,osm_sha,projection=map_references(osm_file,target_crs)
+    refs,osm_sha,projection,map_lines=map_references(osm_file,target_crs)
     pages=corpus.db.execute('SELECT sha,page,result FROM geometry_pages WHERE version=? AND contract=? ORDER BY sha,page',
         (extraction['version'],extraction['contract'])).fetchall()
     if len(pages)!=extraction['pages'] or len(pages)>max_pages:raise ValueError('OSM alignment page inventory budget/change')
     contract={'version':VERSION,'match_version':MATCH_VERSION,'check_version':CHECK_VERSION,'recovery_version':RECOVERY_VERSION,
+        'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
+        'name_ocr_engine_sha256':file_hash(shutil.which('tesseract')) if shutil.which('tesseract') else None,
+        'native_render_engine':pymupdf.VersionBind,
         'geometry_sha256':file_hash(feed),'osm_sha256':osm_sha,'target_crs':target_crs,
-        'projection':projection,'max_pages':max_pages,'max_seed_fits':max_seed_fits}
+        'projection':projection,'max_pages':max_pages,'max_seed_fits':max_seed_fits,'max_name_ocr':max_name_ocr}
     root=Path(output)/identity(contract);root.mkdir(parents=True,exist_ok=True)
-    computed=reused=0;records=[];facts=[];overlays=[]
+    computed=reused=0;records=[];facts=[];overlays=[];remaining_ocr=max_name_ocr
     with EvidenceMemory(store) as memory:
         parent=memory.put('osm_snapshot',{'sha256':osm_sha,'target_crs':target_crs,'projection':projection},
             {'sha256':osm_sha,'source_kind':'osm','projection':projection,'physical_identity_verified':False,'registration_verified':False})
@@ -103,7 +135,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
             pdf=corpus.root/'files'/(sha+'.pdf')
             if file_hash(pdf)!=sha:raise ValueError('Original alignment PDF changed')
             data=json.loads(raw)
-            inputs={**contract,'document_sha256':sha,'page':page,'native_page_sha256':identity(data)}
+            inputs={**contract,'document_sha256':sha,'page':page,'native_page_sha256':identity(data),'name_ocr_label_budget':min(8,remaining_ocr)}
             cached=memory.get('osm_provisional_alignment',inputs,[parent])
             if cached:record=cached['payload'];reused+=1
             else:
@@ -113,14 +145,18 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                     if candidate['geometry']['type']!='Polygon' or candidate.get('paint_reference_truncated'):continue
                     g=shape(candidate['geometry']);by_geometry.setdefault(g.normalize().wkb_hex,{'candidate_id':candidate['id'],'geometry':g})
                 objects=list(by_geometry.values())
+                with pymupdf.open(pdf) as document:
+                    names=bind_labels(document[page-1],objects,data['candidates'],refs,max_ocr_labels=min(8,remaining_ocr))
                 record={'document_sha256':sha,'page':page,'status':'awaiting_visible_printed_scale','printed_scale_review':scale,
-                    'objects':len(objects),'recovery':recovery,'projection':projection,'proposal':None,'alignment_checks':None,
+                    'objects':len(objects),'recovery':recovery,'projection':projection,'landmark_labels':names,'proposal':None,'alignment_checks':None,
                     'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,
                     'absolute_accuracy_verified':False,'absolute_error_bound_m':None,'provisional_geometry':[]}
                 if scale['status']=='one_visible_printed_scale':
-                    proposal=propose(objects,refs,max_seed_fits=max_seed_fits,expected_scale=scale['expected_metres_per_pdf_point'])
+                    proposal=propose(objects,refs,max_seed_fits=max_seed_fits,expected_scale=scale['expected_metres_per_pdf_point'],
+                        priority_seed_ids=names['priority_seed_ids'],named_pairs=names['named_pairs'])
                     review=check(objects,refs,proposal['hypotheses'],expected_scale=scale['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
                     record.update(proposal=proposal,alignment_checks=review,status='map_consistent_provisional_alignment' if review['status']=='map_consistent_candidate' else 'unvalidated_map_proposals' if proposal['hypotheses'] else 'no_map_correspondence_found')
+                    record['network_diagnostics']=topology_checks(data['candidates'],map_lines,proposal['hypotheses'])
                     if review['status']=='map_consistent_candidate':
                         fit=proposal['hypotheses'][0];domain=shape(fit['mapped_support_envelope'])
                         residual=max(r['boundary_error_m'] for r in review['hypotheses'][0]['held_out_checks'])
@@ -134,6 +170,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                                     'osm_sha256':osm_sha,'status':'osm_provisional_unclassified_geometry','registration_verified':False,
                                     'physical_identity_verified':False,'absolute_error_bound_m':None,'world_geometry_additions':0}})
                 computed+=1
+            remaining_ocr-=record['landmark_labels']['ocr_attempts']
             if file_hash(pdf)!=sha:raise ValueError('Original PDF changed during OSM alignment')
             fact=memory.put('osm_provisional_alignment',inputs,record,[parent]);facts.append(fact);records.append(record)
             overlays.extend(record['provisional_geometry'])

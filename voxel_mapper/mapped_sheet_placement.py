@@ -17,7 +17,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v7'
+VERSION = 'mapped-sheet-placement-v8'
 
 
 def placed(geometry, fit):
@@ -25,7 +25,7 @@ def placed(geometry, fit):
     return affine_transform(geometry, [m[0][0], m[0][1], m[1][0], m[1][1], *t])
 
 
-def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None, expected_scale=None):
+def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None, expected_scale=None, named_pairs=None):
     """Map agreement is estimated placement evidence, not survey acceptance.
 
     Full boundaries seed fits; all page objects and spatial reference neighbours
@@ -39,6 +39,11 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     if expected_scale is not None and (type(expected_scale) not in (int,float) or not math.isfinite(expected_scale) or not 0<expected_scale<=10000*.0254/72):
         raise ValueError('Bounded expected printed scale required')
     if len({o['candidate_id'] for o in objects})!=len(objects) or len({r['id'] for r in refs})!=len(refs):raise ValueError('Unique object/reference IDs required')
+    named_pairs=[] if named_pairs is None else named_pairs
+    if (not isinstance(named_pairs,list) or len(named_pairs)>128 or any(not isinstance(p,(list,tuple)) or len(p)!=2 for p in named_pairs)
+            or any(p[0] not in {o['candidate_id'] for o in objects} or p[1] not in {r['id'] for r in refs} for p in named_pairs)):
+        raise ValueError('Bounded existing named candidate/reference pairs required')
+    preferred={tuple(p) for p in named_pairs}
     priority_seed_ids=[] if priority_seed_ids is None else priority_seed_ids
     if not isinstance(priority_seed_ids,list) or len(priority_seed_ids)>16 or any(not isinstance(i,str) for i in priority_seed_ids) or len(set(priority_seed_ids))!=len(priority_seed_ids) or not set(priority_seed_ids)<=set(o['candidate_id'] for o in objects):raise ValueError('At most sixteen unique existing priority seeds required')
     object_descriptors={o['candidate_id']:descriptor(o['geometry']) for o in objects}
@@ -62,7 +67,8 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
             if error<=.2:pool.append((error,r['id'],r))
         # More than the original three alternatives, followed by actual shape fit.
-        for rank,(_,_,r) in enumerate(sorted(pool)[:8]):edges.append((-1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],o,r))
+        pool.sort(key=lambda entry:((o['candidate_id'],entry[1]) not in preferred,entry[0],entry[1]))
+        for rank,(_,_,r) in enumerate(pool[:8]):edges.append((-2 if (o['candidate_id'],r['id']) in preferred else -1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],o,r))
     edges.sort(key=lambda e:e[:3]);attempted=0;orientation_trials=0;hypotheses=[]
     def support(fit):
         hits=[]

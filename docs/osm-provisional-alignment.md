@@ -90,3 +90,60 @@ reuse unchanged in a fresh output directory. No geographic frame, physical
 component, overlay record or park block was accepted. The next matching work
 should bind landmark labels to outlines and add open-path/bridge topology.
 The receipt is `docs/evidence/mutiny-osm-provisional-alignment-validation.json`.
+
+## Automatic acquisition, labels and network diagnostics
+
+An online area cycle now runs from park bounds without a prepared snapshot,
+manual seed IDs, label bindings or a hand-written target CRS:
+
+```json
+{
+  "offline": false,
+  "osm_provisional_alignment": {
+    "bounds_wgs84": [-1.91, 52.975, -1.865, 53.008]
+  }
+}
+```
+
+Providing bounds or a pinned snapshot enables the stage automatically; an
+explicit `enabled: false` disables it. Bounds-only mode requests the fixed
+official OSM API once, within a 32 MB/30-second response budget, validates the
+complete snapshot, records its observed hash and reuses it on later cycles.
+No redirect, arbitrary attachment host or silent snapshot refresh is followed.
+The default preview frame is local WGS84 AEQD at the bounds centre. Offline mode
+reuses available data or records `awaiting_osm_snapshot`, without network calls.
+A configured snapshot retains its explicit hash and target-frame checks.
+
+The context stage matches exact normalized OSM names to native text runs.
+Visible labels bind to one containing outline or one explicit endpoint-leader
+hint. Coincident glyph/style traces are grouped; distinct repeated labels,
+multiple matching outlines and repeated map names remain ambiguous. Named OSM
+nodes can supply a hint to a uniquely containing map polygon; this does not
+certify that polygon's physical identity. Named pairs and up to 16 priority
+outlines enter the bounded search automatically, while geometric feasibility
+and fixed-scale fitting remain mandatory. No fuzzy name guessing or nearest
+outline selection occurs.
+
+Grey or unsupported-font labels have a bounded raster-name fallback. OCR must
+agree exactly with the existing native string at at least 85 minimum word
+confidence. The original glyph bounds remain the only source coordinates; OCR
+never replaces them or creates survey controls. At most eight crops per page
+and sixteen across a run are attempted, with a five-second engine timeout and
+one-million-pixel crop ceiling. Unavailable OCR, uncertain recognition, hidden
+styles and exhausted budgets remain withheld. Engine/render versions and the
+page's deterministic OCR allocation enter the evidence contract. Cached replay
+uses the same allocation without repeating recognition.
+
+Once a pose exists, an additional network diagnostic compares unique nearby
+junctions with equal degree. Native networks use exact shared vertices: crossing
+lines and gaps never create a junction. Map networks preserve OSM node IDs, so
+coincident distinct bridge and ground nodes do not connect; explicit shared
+nodes do. Missing node IDs use separate coordinate/layer groups. CAD networks
+may contain walls, fences or contours, so this diagnostic does not certify
+path identity, select an ambiguous pose or qualify a survey frame.
+
+The three-plan automatic-context audit is recorded in
+`docs/evidence/mutiny-osm-automatic-context-validation.json`. The complete
+bounds-only area test acquires once and replays without any manual landmark
+inputs. These stages run automatically, but incomplete evidence still leaves
+placement or component generation pending.
