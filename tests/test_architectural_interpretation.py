@@ -85,6 +85,35 @@ class ArchitecturalTests(unittest.TestCase):
             self.assertEqual(ambiguous['roof_region_associations'],[])
             with self.assertRaisesRegex(ValueError,'Source-bound'):interpret_page(page,SHA,1,parents,records,{**SCALE,'page':2})
 
+    def test_empty_pages_do_not_stop_later_vector_pages(self):
+        from voxel_mapper.planning_bulk import Corpus
+        from voxel_mapper.drawing_geometry import run as extract
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);corpus=Corpus(root/'corpus')
+            with pymupdf.open() as document:
+                document.new_page(width=400,height=400)
+                page=document.new_page(width=400,height=400)
+                page.insert_text((20,300),'Scanned plan: no vectors',fontsize=12)
+                page=document.new_page(width=400,height=400)
+                page.draw_rect((20,20,200,180))
+                page.insert_text((60,80),'flat roof',fontsize=12)
+                page.insert_text((20,300),'Scale 1:200',fontsize=12)
+                data=document.tobytes()
+            try:
+                corpus.ingest([{'url':'https://portal.test/plan','title':'Plan'}],['portal.test'])
+                corpus.acquire(fetch=lambda _:data)
+                extract(corpus,root/'geometry')
+                receipt=run(corpus,root/'geometry',root/'architecture')
+                self.assertEqual(receipt['pages'],3)
+                self.assertEqual(receipt['counts']['bound_roof_labels'],1)
+                rows=[json.loads(line) for line in (root/'architecture/architectural-pages.jsonl').read_text().splitlines()]
+                for row in rows[:2]:
+                    self.assertEqual(row['source_geometry_graph']['counts']['edges'],0)
+                    self.assertNotIn('view_layout_review',row)
+                    self.assertEqual(row['world_geometry_additions'],0)
+                self.assertEqual(receipt,run(corpus,root/'geometry',root/'architecture'))
+            finally:corpus.close()
+
     def test_native_stage_resume_tamper_and_park_pipeline(self):
         from voxel_mapper.planning_bulk import Corpus
         from voxel_mapper.drawing_geometry import run as extract

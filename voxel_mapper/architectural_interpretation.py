@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v15'
+VERSION='architectural-interpretation-v16'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -356,7 +356,9 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
                         page_report=interpret_page(doc[number-1],sha,number,parents,
                             [r for r in records if r['geometry']['type']=='Polygon'],scale,interpretation_options=contract['options'])
                         page_report['source_geometry_graph']=build_graph(parents)
-                        if page_report['source_geometry_graph']['status']=='source_drawing_topology_only':
+                        # Empty pages have no source graph identity. Retain their
+                        # diagnostics without assigning captions to absent vectors.
+                        if parents and page_report['source_geometry_graph']['status']=='source_drawing_topology_only':
                             page_report['view_layout_review']=review_layout(doc[number-1],sha,number,page_report['source_geometry_graph'])
                             page_report['source_linework_frame_review']=review_frames(page_report['source_geometry_graph'],page_report['view_layout_review'])
                             page_report['source_viewport_review']=review_viewports(path,sha,number,page_report['source_geometry_graph'],page_report['view_layout_review'])
