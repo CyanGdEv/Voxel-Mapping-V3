@@ -86,6 +86,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     automatic_contract=input_contract(config,resolve)
     from .registration_qualification import input_contract as qualification_contract
     frame_contract=qualification_contract(config,resolve)
+    from .survey_landmark_discovery import input_contract as station_contract
+    landmark_contract=station_contract(config,resolve)
     contract={'version':VERSION,'config_sha256':hashlib.sha256(raw).hexdigest(),'catalogue_sha256':file_hash(catalogue_path),'supplement_sha256':supplement_pins,
               'recipe_sha256':{a['id']:file_hash(resolve(a['reconstruction_job'])) for a in areas if a.get('reconstruction_job')}}
     local_reviews={}
@@ -97,6 +99,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     if local_reviews:contract['local_wing_review_seed_sha256']=local_reviews
     if automatic_contract is not None:contract['automatic_reconstruction']=automatic_contract
     if frame_contract is not None:contract['registration_qualification']=frame_contract
+    if landmark_contract is not None:contract['survey_landmark_discovery']=landmark_contract
     state_path=root/'area-state.json'
     state=json.loads(state_path.read_text()) if state_path.exists() else {'contract':contract,'areas':{i:{'status':'pending'} for i in ids}}
     if state['contract']!=contract:raise ValueError('Area inputs changed; use a fresh reconstruction run')
@@ -114,6 +117,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         entry.update(status='awaiting_applications',missing_components=area['required_families']);save();return state
     atomic_json(work/'selected-catalogue.json',{'entries':docs})
     corpus=Corpus(work/'corpus')
+    discovered_references=None
     try:
         corpus.ingest(docs,config['official_hosts'])
         # Reuse only checksum-matching native PDFs, never a park voxel overlay.
@@ -132,6 +136,19 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+        if landmark_contract is not None:
+            from .survey_landmark_discovery import run as discover_stations
+            landmark_settings=config.get('survey_landmark_discovery',{})
+            frame_settings=config.get('registration_qualification',{})
+            automatic_settings=config.get('automatic_reconstruction',{})
+            landmark_manifest=landmark_settings.get('manifest',frame_settings.get('manifest',automatic_settings.get('manifest')))
+            store=landmark_settings.get('knowledge_store',frame_settings.get('knowledge_store',automatic_settings.get('knowledge_store')))
+            entry['survey_landmark_discovery']=discover_stations(corpus,work/'drawing-geometry',
+                resolve(store) if store else root/'evidence-memory.sqlite',work/'survey-landmark-discovery',
+                manifest=resolve(landmark_manifest) if landmark_manifest else None,
+                max_pages=landmark_settings.get('max_pages',config.get('max_pages',1000)))
+            if landmark_settings.get('use_discovered_references',False):
+                discovered_references=Path(entry['survey_landmark_discovery']['references_file'])
         if frame_contract is not None:
             from .registration_qualification import run as qualify_frames
             settings=config.get('registration_qualification',{})
@@ -141,7 +158,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                 resolve(frame_setting('knowledge_store')) if frame_setting('knowledge_store') else root/'evidence-memory.sqlite',
                 work/'registration-qualification',
                 manifest=resolve(frame_setting('manifest')) if frame_setting('manifest') else None,
-                references=resolve(frame_setting('references')) if frame_setting('references') else None,
+                references=discovered_references or (resolve(frame_setting('references')) if frame_setting('references') else None),
                 max_pages=settings.get('max_pages',config.get('max_pages',1000)))
         architecture=config.get('architectural_interpretation',{})
         if architecture.get('enabled',False):
@@ -211,7 +228,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     automatic_job=None
     if not area.get('reconstruction_job') and automatic_contract is not None:
         from .automatic_reconstruction import prepare as automatic_prepare
-        automatic_job,automatic_report=automatic_prepare(config,area,resolve,work,available)
+        automatic_job,automatic_report=automatic_prepare(config,area,resolve,work,available,references_override=discovered_references)
         entry['automatic_reconstruction']=automatic_report
         if automatic_job is None:
             entry['status']=automatic_report['status'];save();return state

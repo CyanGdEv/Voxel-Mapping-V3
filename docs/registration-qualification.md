@@ -65,7 +65,7 @@ payloads, source policies and dependency ancestry are checked on replay. Changed
 references, target CRS or source policies create new audits; rejected parents
 block reuse. Adding an unrelated source preserves unchanged page computations.
 The area/controller contracts pin qualification inputs and versions. Automatic
-recipe contract v4 and bridge v3 require a fresh controller/output directory when
+recipe contract v5 and bridge v3 require a fresh controller/output directory when
 upgrading, with stable memory retained. At most 10,000 pages, 10,000 source policies
 and 1,000 survey references are accepted; each original PDF has at most 1,000 pages.
 

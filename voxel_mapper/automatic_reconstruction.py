@@ -12,19 +12,22 @@ from shapely.geometry import box, shape
 from shapely.ops import transform
 from .generation_cycles import atomic_json, file_hash
 
-VERSION = 'automatic-drawing-recipes-v4'
+VERSION = 'automatic-drawing-recipes-v5'
 
 
 def input_contract(config, resolve):
     settings = config.get('automatic_reconstruction', {})
     if not settings.get('enabled'):
         return None
+    discover=config.get('survey_landmark_discovery',{}).get('use_discovered_references',False)
+    if discover and config.get('survey_landmark_discovery',{}).get('enabled') is False:
+        raise ValueError('Discovered references require survey landmark discovery enabled')
     return {'version': VERSION, 'inputs': {
         key: file_hash(resolve(settings[key]))
-        for key in ('manifest', 'references', 'terrain_config')}}
+        for key in ('manifest', 'references', 'terrain_config') if key!='references' or not discover}}
 
 
-def prepare(config, area, resolve, work, available):
+def prepare(config, area, resolve, work, available, *, references_override=None):
     """Select only this area's acquired PDFs and create a compiler-ready recipe."""
     from .drawing_registration_bridge import run_batch
     settings = config['automatic_reconstruction']
@@ -49,7 +52,7 @@ def prepare(config, area, resolve, work, available):
         return finish()
     documents_file = root / 'documents.json'
     atomic_json(documents_file, documents)
-    bridge = run_batch(documents_file, manifest_path, resolve(settings['references']), root / 'bridge',
+    bridge = run_batch(documents_file, manifest_path, references_override or resolve(settings['references']), root / 'bridge',
                        max_pages=settings.get('max_pages', 10000), max_features=settings.get('max_features', 2500000),
                        knowledge_store=resolve(settings['knowledge_store']) if settings.get('knowledge_store') else
                            Path(work).parent/'evidence-memory.sqlite')

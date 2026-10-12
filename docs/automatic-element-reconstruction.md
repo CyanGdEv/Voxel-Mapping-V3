@@ -1,6 +1,7 @@
 # Automatic element reconstruction
 
-Automatic recipe contract v4 runs a separate [registration qualification](registration-qualification.md)
+Automatic recipe contract v5 runs [survey landmark discovery](survey-landmark-discovery.md)
+and a separate [registration qualification](registration-qualification.md)
 preflight before component reconstruction. Both supported drawing adapters use
 the same source-bound frame checks, and ordinary registrations now retain their
 combined error budgets for contextual matching. Fresh controller work directories

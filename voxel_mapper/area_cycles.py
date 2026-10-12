@@ -36,6 +36,10 @@ def load(job):
     frames = qualification_contract(config, lambda p: (job.parent / p).resolve())
     if frames is not None:
         contract['registration_qualification'] = frames
+    from .survey_landmark_discovery import input_contract as station_contract
+    stations = station_contract(config, lambda p: (job.parent / p).resolve())
+    if stations is not None:
+        contract['survey_landmark_discovery'] = stations
     path = root / 'auto-cycle-state.json'
     state = json.loads(path.read_text()) if path.exists() else {
         'contract': contract, 'cursor': 0, 'areas': {}, 'status': 'running',
