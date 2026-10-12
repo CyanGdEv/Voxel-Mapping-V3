@@ -71,9 +71,16 @@ class Corpus:
                 'world_geometry_additions':0,'geometry_status':'PDF vectors and labels require semantics, existing-state review and registration'}
 
     def acquire(self, *, workers=4, limit=10000, attempts=3, max_bytes=64_000_000,
-                max_run_bytes=2_000_000_000, interval=1., cache=None, offline=False, fetch=None):
+                max_run_bytes=2_000_000_000, interval=1., cache=None, offline=False, fetch=None, priority_urls=None):
         if not 1<=workers<=8 or not 1<=limit<=100000 or not 1<=attempts<=10 or max_bytes<=0 or max_run_bytes<=0 or interval<0:
             raise ValueError('Invalid acquisition budgets')
+        priority_urls=[] if priority_urls is None else priority_urls
+        if (not isinstance(priority_urls,(list,tuple)) or len(priority_urls)>128
+                or any(not isinstance(url,str) for url in priority_urls)
+                or len(set(priority_urls))!=len(priority_urls)):
+            raise ValueError('Distinct bounded known attachment priorities required')
+        if any(not self.db.execute('SELECT 1 FROM downloads WHERE url=?',(url,)).fetchone() for url in priority_urls):
+            raise ValueError('Priority attachment must already be in the official source catalogue')
         # Recheck retained bytes; a completed DB flag never bypasses checksums.
         with self.db:
             for url,pin,status,sha in self.db.execute('SELECT url,expected_sha,status,sha FROM downloads').fetchall():
@@ -91,7 +98,14 @@ class Corpus:
                 elif status=='downloaded':
                     self.db.execute("UPDATE downloads SET status='pending',attempts=0,error='Retained blob missing or corrupt' WHERE url=?",(url,))
         if offline:return self.report()
-        jobs=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? ORDER BY url LIMIT ?",(attempts,limit)).fetchall()
+        if priority_urls:
+            slots=','.join('?' for _ in priority_urls)
+            preferred=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? AND url IN ("+slots+")",(attempts,*priority_urls)).fetchall()
+            ranks={url:i for i,url in enumerate(priority_urls)};preferred.sort(key=lambda row:ranks[row[0]])
+            rest=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? AND url NOT IN ("+slots+") ORDER BY url LIMIT ?",(attempts,*priority_urls,limit)).fetchall()
+            jobs=(preferred+rest)[:limit]
+        else:
+            jobs=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? ORDER BY url LIMIT ?",(attempts,limit)).fetchall()
         lock=threading.Lock();next_request={};spent=[0];exhausted=threading.Event()
         def take(n):
             with lock:

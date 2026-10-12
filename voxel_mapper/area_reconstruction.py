@@ -132,7 +132,20 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                     if candidate.is_file() and file_hash(candidate)==sha:
                         shutil.copyfile(candidate,target);break
                 if target.exists() and file_hash(target)==sha:break
-        acquisition=corpus.acquire(offline=config.get('offline',True),workers=4,limit=10000,interval=0)
+        survey_sources=config.get('survey_source_discovery',{})
+        priority_urls=[]
+        if survey_sources.get('enabled',True):
+            from .survey_source_discovery import run as discover_survey_sources
+            entry['survey_source_discovery']=discover_survey_sources(corpus,work/'survey-source-discovery',
+                max_pages=survey_sources.get('max_pages',config.get('max_pages',1000)),
+                max_priorities=survey_sources.get('max_priorities',128))
+            priority_urls=entry['survey_source_discovery']['priority_urls']
+        acquisition=corpus.acquire(offline=config.get('offline',True),workers=4,
+            limit=config.get('max_acquisition_documents',10000),interval=0,priority_urls=priority_urls)
+        if survey_sources.get('enabled',True):
+            entry['survey_source_discovery']=discover_survey_sources(corpus,work/'survey-source-discovery',
+                max_pages=survey_sources.get('max_pages',config.get('max_pages',1000)),
+                max_priorities=survey_sources.get('max_priorities',128))
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
