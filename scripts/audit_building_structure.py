@@ -16,18 +16,21 @@ def main():
     parser.add_argument('--shop-model',default='evidence/wicker-shop-projection-model.json')
     parser.add_argument('--native-validation',default='docs/evidence/building-native-validation.json')
     parser.add_argument('--output',required=True)
+    parser.add_argument('--shop-display-floor',action='store_true')
     args=parser.parse_args()
     previous={r['building_id']:r for r in json.loads(Path(args.native_validation).read_text())['real_studies']}
     rows=[]
     for identifier,path in [('mutiny-v12',args.mutiny_model),('wicker-shop',args.shop_model)]:
         raw=Path(path).read_bytes();source=hashlib.sha256(raw).hexdigest()
-        spec=from_study(json.loads(raw),identifier,source);cells,audit=compile_spec(spec)
+        spec=from_study(json.loads(raw),identifier,source,display_floor=args.shop_display_floor and identifier=='wicker-shop');cells,audit=compile_spec(spec)
         native_hash=digest([[*p,m] for p,m in sorted(cells.items())])
         if previous[identifier]['source_model_sha256']!=source or previous[identifier]['native_rows_sha256']!=native_hash:
             raise ValueError('Structural checks changed previously verified native geometry or source model')
         rows.append({'building_id':identifier,'source_model_sha256':source,'spec_sha256':digest(spec),
                      'native_rows_sha256':native_hash,'native_geometry_unchanged':True,
-                     'surface_cells':len(cells),'structural_review':audit['structural_review']})
+                     'surface_cells':len(cells),'structural_review':audit['structural_review'],
+                     'structural_review_before_repair':audit['structural_review_before_repair'],
+                     'roof_join_repairs':audit['roof_join_repairs'],'floor_reference':spec.get('floor_reference')})
     report={'version':'building-native-structure-validation-v1','real_studies':rows,
             'park_world_blocks_added':0,'training_labels_generated':0}
     atomic_json(Path(args.output),report)

@@ -1,5 +1,5 @@
 {
-  "focused_tests_passed": 40,
+  "focused_tests_passed": 56,
   "limitations": [
     "Experimental surface previews, not complete solid-volume or surveyed reconstructions.",
     "Native roof joins, support connectivity and material inference remain unresolved."
@@ -12,57 +12,114 @@
       "building_id": "mutiny-v12",
       "chunks": 16,
       "component_meshes": 934,
-      "composed_blocks": 22370,
+      "composed_blocks": 22372,
+      "floor_reference": null,
       "full_blocks_withheld_for_air": 27,
       "glazing_cells": 0,
       "material_counts": {
         "dark_oak_planks": 619,
         "dark_oak_slab": 983,
-        "dark_oak_slab_top": 156,
+        "dark_oak_slab_top": 158,
         "stone_bricks": 5532
       },
       "max_roof_rounding_error_m": 0.24451969316948396,
       "native_readback": "all written blocks and all unwritten air cells verified",
-      "native_rows_sha256": "2ba0f1bb3eec9c9b20310a2723767bea940c9992d800d8a01ed539b0b8a11f85",
+      "native_rows_sha256": "863221b1bff71b4ac77af47b622fc52053529912e7afa12abba23e3207b92b9e",
       "non_roof_stairs": 0,
       "protected_air_halves": 1120,
       "protected_air_verified": true,
+      "roof_join_repairs": [
+        {
+          "added_half_height_interval": [
+            9,
+            10
+          ],
+          "cells_changed": [
+            [
+              0,
+              4,
+              -37
+            ]
+          ],
+          "column": [
+            0,
+            -37
+          ],
+          "evidence_class": "bounded_display_join_hypothesis",
+          "grounded_neighbour": [
+            1,
+            -37
+          ]
+        },
+        {
+          "added_half_height_interval": [
+            13,
+            14
+          ],
+          "cells_changed": [
+            [
+              13,
+              6,
+              -33
+            ]
+          ],
+          "column": [
+            13,
+            -33
+          ],
+          "evidence_class": "bounded_display_join_hypothesis",
+          "grounded_neighbour": [
+            14,
+            -33
+          ]
+        }
+      ],
       "sampling_checks": 138450,
       "source_model_sha256": "0b1ae21c92ee239483bec23d94c4bbff836b6d6196bb149f3d7d758162f77926",
-      "surface_cells": 7290,
+      "structural_status": "passed_native_checks",
+      "surface_cells": 7292,
+      "unsupported_roof_regions": 0,
       "wooden_roof_stairs": 0,
       "world_placement_eligible": false,
-      "world_sha256": "1320181706bbdf4395961fa036e7155839a6140dad798a26ab02129280a28194"
+      "world_sha256": "d2929e67c4d9048e90d38366dc1b96cd7cde96e687e312d9ceef3e227f68c6a4"
     },
     {
       "block_policy": "Full blocks for walls, partitions, floors, ground and towers; slabs for roofs or detail vertical extent strictly below 0.75 m.",
       "blocked_roof_cells": 60,
       "building_id": "wicker-shop",
       "chunks": 4,
-      "component_meshes": 3,
-      "composed_blocks": 2524,
+      "component_meshes": 4,
+      "composed_blocks": 2716,
+      "floor_reference": {
+        "elevation_m": 0,
+        "kind": "drawn_local_zero",
+        "surveyed_datum_verified": false
+      },
       "full_blocks_withheld_for_air": 4,
       "glazing_cells": 0,
       "material_counts": {
         "dark_oak_planks": 84,
         "dark_oak_slab": 60,
         "dark_oak_slab_top": 90,
-        "stone_bricks": 220
+        "stone_bricks": 412
       },
       "max_roof_rounding_error_m": 0.22614302174120748,
       "native_readback": "all written blocks and all unwritten air cells verified",
-      "native_rows_sha256": "aab966b0958193a0fe8ac331b8434c52e49a072cf368d8f41ae717270dc1af7c",
+      "native_rows_sha256": "07fa0e511412602784d65cc965fbb545035e57c91764e5ed63fc6b92f9ecb31d",
       "non_roof_stairs": 0,
       "protected_air_halves": 192,
       "protected_air_verified": true,
-      "sampling_checks": 2374,
+      "roof_join_repairs": [],
+      "sampling_checks": 5894,
       "source_model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
-      "surface_cells": 454,
+      "structural_status": "passed_native_checks",
+      "surface_cells": 646,
+      "unsupported_roof_regions": 0,
       "wooden_roof_stairs": 0,
       "world_placement_eligible": false,
-      "world_sha256": "acac0d826da272e3926430f57d944ea37c7f42ba56e22945bab7ef8972fcf29b"
+      "world_sha256": "2ac4416c1db4a2f94e479c2768e06c5d00501b9517ac93be403250fb764066c2"
     }
   ],
-  "regression_tests_passed": 1135,
+  "regression_tests_passed": 1151,
   "version": "building-native-validation-v1"
 }

@@ -132,7 +132,7 @@ def build(spec):
             'surveyed_complete_structure': False, 'assembly_boolean_union': False}
 
 
-def from_study(model, building_id, source_sha256):
+def from_study(model, building_id, source_sha256, *, display_floor=False):
     """Retain existing component coordinates/triangles without reinterpreting them."""
     states = {model.get('source_state')} if model.get('source_state') else set()
     states.update(s.get('state') for s in model.get('sources', []))
@@ -142,6 +142,7 @@ def from_study(model, building_id, source_sha256):
     if len(states) > 1:
         raise ValueError('Mixed source states in parent study')
     state = next(iter(states)) if states else 'unknown'
+    if type(display_floor) is not bool:raise ValueError('Explicit boolean display floor mode required')
     sources = [{'id': 'parent_study', 'sha256': source_sha256, 'state': state}]
     assumptions = model.get('assumptions') or ['Retained study assembly; source identity, complete inventory and park placement remain unresolved.']
     rows = model.get('components')
@@ -158,6 +159,15 @@ def from_study(model, building_id, source_sha256):
             'evidence': {'class': 'inferred', 'source_ids': ['parent_study'],
                          'description': str(row.get('evidence', model.get('assembly_hypothesis', 'Retained parent study')))},
             'geometry': {'kind': 'mesh', 'mesh': copy.deepcopy(row['mesh'])}})
+    if display_floor:
+        outline=model.get('outer_wall_base_outline')
+        if not isinstance(outline,list) or not 3<=len(outline)<=4096 or any(len(p)!=3 or p[2]!=0 for p in outline):
+            raise ValueError('Level drawn-floor-zero outline required for display floor')
+        spec['assumptions']=list(spec['assumptions'])+['Display floor follows the retained outline at drawn floor zero; thickness/material and surveyed datum are unverified.']
+        spec['components'].append({'id':'drawn_zero_display_floor','role':'floor',
+            'evidence':{'class':'inferred','source_ids':['parent_study'],'description':'Retained base outline at drawn floor zero; one-metre display floor below zero'},
+            'geometry':{'kind':'extrusion','axis':2,'interval_m':[-1,0],'profile':[p[:2] for p in outline]}})
+        spec['floor_reference']={'kind':'drawn_local_zero','elevation_m':0,'surveyed_datum_verified':False}
     # Retained native passage/window constraints remain explicit display air.
     from itertools import product
     air=set()

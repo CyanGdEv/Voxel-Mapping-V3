@@ -8,7 +8,7 @@ from .building_spec import build,digest
 from .wing_block_shapes import occupied_halves
 from .generation_cycles import atomic_json
 
-VERSION='building-native-surface-v3'
+VERSION='building-native-surface-v4'
 
 
 def _shapes(palette):
@@ -82,7 +82,7 @@ def compile_spec(spec,*,max_checks=2000000):
                         sampled.add(column)
                     else:
                         half=list(math.floor(q*2+1e-9) for q in sample)
-                        if axis==1 and (component['role'] in ('floor','ground') or normal[1]>0):
+                        if axis==1 and ((component['role'] in ('floor','ground') and (not mesh['watertight'] or normal[1]<0)) or (component['role'] not in ('floor','ground') and normal[1]>0)):
                             half[1]=math.floor(sample[1]*2+.5)-1
                         half=tuple(half);stone.add(half);sampled.add(half)
                         if not slab_eligible:full_block_cells.add(tuple(v//2 for v in half))
@@ -133,9 +133,14 @@ def compile_spec(spec,*,max_checks=2000000):
     if set(occupied_halves(cells))&protected:raise ValueError('Native output obstructed declared air')
     if not cells:raise ValueError('No representable native building geometry')
     from .building_structure import inspect
+    before_repair=inspect(cells,anchor_candidates,protected,expected_contacts)
+    from .building_roof_repair import repair
+    roof_columns={column for tops,_,_ in roof_surfaces for column in tops}
+    cells,repair_records=repair(cells,anchor_candidates,protected,roof_columns)
     structure=inspect(cells,anchor_candidates,protected,expected_contacts)
     return cells,{'version':VERSION,'spec_sha256':digest(spec),'source_mesh_unchanged':True,
-                  'structural_review':structure,'component_sampling':rows,'sampling_checks':checks,'surface_cells':len(cells),
+                  'structural_review':structure,'structural_review_before_repair':before_repair,
+                  'roof_join_repairs':repair_records,'component_sampling':rows,'sampling_checks':checks,'surface_cells':len(cells),
                   'material_counts':dict(sorted(Counter(cells.values()).items())),
                   'source_surface_halves_missing':missing,'extra_native_halves':extra,
                   'protected_air_halves':len(protected),'guarded_surface_cells':guarded_cells,

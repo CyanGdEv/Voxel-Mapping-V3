@@ -135,7 +135,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest='command', required=True)
     migrate = commands.add_parser('import-study')
     migrate.add_argument('--model', required=True); migrate.add_argument('--building-id', required=True)
-    migrate.add_argument('--output', required=True)
+    migrate.add_argument('--output', required=True); migrate.add_argument('--display-floor',action='store_true')
     train = commands.add_parser('train')
     train.add_argument('--feedback', required=True); train.add_argument('--split', required=True)
     train.add_argument('--parent'); train.add_argument('--output', required=True)
@@ -185,7 +185,7 @@ def main(argv=None):
     if Path(args.output).exists(): raise ValueError('Fresh output path required')
     if args.command == 'import-study':
         source = Path(args.model)
-        result = from_study(_read(source), args.building_id, hashlib.sha256(source.read_bytes()).hexdigest())
+        result = from_study(_read(source), args.building_id, hashlib.sha256(source.read_bytes()).hexdigest(),display_floor=args.display_floor)
     else:
         feedback = _read(args.feedback); split = _read(args.split)
         if feedback.get('version') != 'building-feedback-v1': raise ValueError('Versioned reviewed feedback required')

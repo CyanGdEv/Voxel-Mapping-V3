@@ -303,7 +303,39 @@ training label.
 Real full-courtyard replay identifies three native components, including two
 small roof regions without a floor connection. The retained Wicker surface model
 has no declared floor, so its support remains unassessed. Partial north-wing
-feeds likewise lack a floor component. These are actionable diagnostics, not
-repaired structures. See `docs/evidence/building-structural-validation.json`.
+feeds likewise lack a floor component. These were the pre-repair diagnostics; v4 now repairs bounded local joins as described below. See `docs/evidence/building-structural-validation.json`.
 Next: bounded source-supported roof-join repair proposals and floor evidence,
 then automatic raw-PDF geometry discovery.
+
+
+## Bounded roof joins and local display floors
+
+The v4 native compiler can connect detached wooden roof regions with at most
+sixteen joins, each no taller than one metre. A join must stay in an existing
+source roof column and reach floor-connected wooden geometry in a neighbouring
+column. It cannot alter masonry, fill declared opening air, bridge remote gaps
+or manufacture a floor reference. Every addition is recorded as a bounded display
+join hypothesis. After each candidate join, native connectivity is checked again;
+a join is retained only if it reduces detached roof regions. Source meshes are
+unchanged. This is inferred display geometry, not surveyed roof construction.
+
+Real Mutiny replay adds two half-metre wooden risers at columns `[0,-37]` and
+`[13,-33]`. All roof regions now connect to the declared floor. The repair remains
+building-neutral: no building name or hard-coded column enters the compiler.
+
+For retained models with a level `outer_wall_base_outline` at drawn zero,
+`import-study --display-floor` adds an explicit full-block floor beneath that
+outline. Source meshes and heights remain unchanged. The new floor has inferred
+evidence, thickness/material assumptions and `surveyed_datum_verified: false`.
+Source-feed entries can request the same mode with `display_floor: true`; it is
+never silently enabled for all studies. A nonlevel outline rejects. Closed floor
+bottom faces sample above their lower boundary while top faces sample below their
+upper boundary, so a one-metre floor does not gain an extra bottom layer.
+
+Wicker's retained geometry is above drawn floor zero and its base outline is
+level at zero. The new local display floor uses that reference, not ODN or a
+verified park elevation. Native support now passes, while the proposed source
+state, physical identity and geographic placement remain unresolved. No native
+check creates a real positive training label or authorizes park insertion.
+See `docs/evidence/building-native-validation.json` and
+`docs/evidence/building-structural-validation.json` for before/after findings.

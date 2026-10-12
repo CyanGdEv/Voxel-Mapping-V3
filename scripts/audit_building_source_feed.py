@@ -30,6 +30,7 @@ def main():
     for identifier,path,assets in models:
         model=pinned(path)
         config['buildings'].append({'building_id':identifier,'model':model['path'],'model_sha256':model['sha256'],
+            'display_floor':identifier=='wicker-shop',
             'diagnostics':[pinned(a) for a in assets],'source_directories':[str(Path(args.sources).resolve())]})
     with tempfile.TemporaryDirectory() as tmp:
         job,report=prepare(config,lambda p:Path(p),Path(tmp)/'feed')

@@ -130,7 +130,7 @@ def prepare(config, resolve, output):
                     if p.stat().st_size>32000000 or hashlib.sha256(p.read_bytes()).hexdigest()!=source:
                         raise ValueError('Original PDF source checksum changed')
                 verified.append(source)
-            spec = from_study(model, entry['building_id'], entry['model_sha256']); geometry = build(spec)
+            spec = from_study(model, entry['building_id'], entry['model_sha256'],display_floor=entry.get('display_floor',False)); geometry = build(spec)
             features, missing_features, dimensions_consistent = diagnostics(model, assets, len(verified)/len(required))
             from .building_native import compile_spec
             native_structure=None;native_error=None
