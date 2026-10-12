@@ -23,6 +23,8 @@ def run(job, output, model=None, exploratory=False):
     buildings = job.get('buildings')
     if not isinstance(buildings, list) or not 1 <= len(buildings) <= 1000:
         raise ValueError('Bounded building batch required')
+    native_mode=job.get('native_output','none')
+    if native_mode not in ('none','cells','world'):raise ValueError('Supported native output mode required')
     model = model or learning.baseline(); learning.validate_model(model)
     if model['iteration'] > 0 and not model['production_eligible'] and not exploratory:
         raise ValueError('Unpromoted learned checkpoint requires explicit exploratory mode')
@@ -58,12 +60,21 @@ def run(job, output, model=None, exploratory=False):
                         if candidate['spec']['building_id'] != building['building_id']:
                             raise ValueError('Candidate belongs to a different building')
                         geometry = build(candidate['spec'])
+                        if native_mode!='none':
+                            from .building_native import compile_spec
+                            compile_spec(candidate['spec'])
                     except (ValueError, KeyError, TypeError) as error:
                         failures.append({'candidate_id': row['id'], 'reason': str(error)})
                         continue
                     atomic_json(directory/'building-spec.json', candidate['spec'])
                     atomic_json(directory/'model.json', geometry)
                     exported = write_glb(geometry, directory/'model.glb')
+                    if native_mode!='none':
+                        from .building_native import export_preview
+                        native_report=export_preview(candidate['spec'],directory/'native',world=native_mode=='world')
+                        result['native_output']={'mode':native_mode,'surface_cells':native_report['native_audit']['surface_cells'],
+                            'protected_air_verified':native_report['native_audit']['protected_air_verified'],
+                            'world_exported':'world' in native_report}
                     result.update(status='local_preview_built', selected_id=row['id'],
                                   spec_sha256=geometry['spec_sha256'], export=exported,
                                   world_placement_eligible=False)
@@ -131,7 +142,16 @@ def main(argv=None):
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
     reviews.add_argument('--queue', required=True); reviews.add_argument('--decisions', required=True); reviews.add_argument('--output', required=True)
+    native = commands.add_parser('compile-native')
+    native.add_argument('--spec',required=True); native.add_argument('--output',required=True)
+    native.add_argument('--world',action='store_true')
     args = parser.parse_args(argv)
+    if args.command == 'compile-native':
+        from .building_native import export_preview
+        report=export_preview(_read(args.spec),args.output,world=args.world)
+        print(json.dumps({'surface_cells':report['native_audit']['surface_cells'],
+                          'world_exported':'world' in report,'park_world_blocks_added':0}))
+        return
     if args.command == 'prepare-feed':
         from .building_source_feed import prepare
         base = Path(args.config).resolve().parent

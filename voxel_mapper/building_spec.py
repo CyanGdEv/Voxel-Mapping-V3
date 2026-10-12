@@ -146,7 +146,7 @@ def from_study(model, building_id, source_sha256):
     assumptions = model.get('assumptions') or ['Retained study assembly; source identity, complete inventory and park placement remain unresolved.']
     rows = model.get('components')
     if rows is None:
-        rows = [{'id': key, 'role': 'roof' if key == 'roof_mesh' else 'wall',
+        rows = [{'id': key, 'role': 'roof' if key in ('roof_mesh','projection_mesh') else 'wall',
                  'mesh': model[key]} for key in ('wall_mesh', 'roof_mesh', 'projection_mesh') if key in model]
     spec = {'version': VERSION, 'coordinate_frame': FRAME, 'building_id': building_id,
             'sources': sources, 'assumptions': assumptions, 'components': []}
@@ -158,5 +158,35 @@ def from_study(model, building_id, source_sha256):
             'evidence': {'class': 'inferred', 'source_ids': ['parent_study'],
                          'description': str(row.get('evidence', model.get('assembly_hypothesis', 'Retained parent study')))},
             'geometry': {'kind': 'mesh', 'mesh': copy.deepcopy(row['mesh'])}})
+    # Retained native passage/window constraints remain explicit display air.
+    from itertools import product
+    air=set()
+    for x,z,h in model.get('roof_window_void_halves',[]):
+        air.update((2*x+dx,h,2*z+dz) for dx,dz in product((0,1),repeat=2))
+    for passage in model.get('slab_conversion_passages',[]):
+        for x,z in passage.get('native_columns',[]):
+            air.update((2*x+dx,h,2*z+dz) for dx,dz in product((0,1),repeat=2) for h in range(4))
+    from shapely.geometry import Polygon,Point,LineString
+    for opening in model.get('openings',[]):
+        if 'local_polygon_xz' not in opening:continue
+        polygon=Polygon(opening['local_polygon_xz']);lo,bottom,hi,top=polygon.bounds
+        if not polygon.is_valid or (hi-lo)*(top-bottom)*4>100000:raise ValueError('Bounded opening guard required')
+        for x in range(math.floor(2*lo),math.ceil(2*hi)):
+            for h in range(math.floor(2*bottom),math.ceil(2*top)):
+                if polygon.covers(Point((x+.5)/2,(h+.5)/2)):
+                    air.update((x,h,z) for z in (0,1))
+    for opening in model.get('opening_base_segments',[]):
+        a,b=opening['endpoints'];height=opening['height_metres']
+        if len(a)!=3 or len(b)!=3 or abs(a[2]-b[2])>1e-7 or type(height) not in (int,float) or not math.isfinite(height) or not 0<height<=30:
+            raise ValueError('Bounded level base opening required')
+        strip=LineString([a[:2],b[:2]]).buffer(.5,cap_style=2)
+        lo,back,hi,front=strip.bounds
+        if (hi-lo)*(front-back)>10000:raise ValueError('Opening guard area budget exceeded')
+        columns=[(x,z) for x in range(math.floor(lo),math.ceil(hi)) for z in range(math.floor(back),math.ceil(front)) if strip.covers(Point(x+.5,z+.5))]
+        if not columns:columns=[(math.floor((a[0]+b[0])/2),math.floor((a[1]+b[1])/2))]
+        for x,z in columns:
+            air.update((2*x+dx,h,2*z+dz) for dx,dz in product((0,1),repeat=2) for h in range(math.ceil(a[2]*2),math.floor((a[2]+height)*2)))
+    if len(air)>100000:raise ValueError('Native air-guard budget exceeded')
+    if air:spec['native_air_halves']=[list(p) for p in sorted(air)]
     build(spec)
     return spec

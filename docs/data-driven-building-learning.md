@@ -35,9 +35,9 @@ Source SHA declarations in a supplied spec are references; this module does not
 retrieve those files or certify their content. Extraction/verification adapters
 must establish them upstream. All generated models remain local previews with
 zero accepted park blocks; existing registration, terrain and native compiler
-checks are still required for park insertion. Native voxel emission for arbitrary
-shared specs is not implemented in this increment. Existing study/world exporters
-remain available and unchanged. Existing roof meshes retain their slab courses.
+checks are still required for park insertion. The shared native surface compiler now supports local spec previews; it does not
+fill arbitrary solid interiors or certify a complete connected assembly. Existing
+study/world exporters remain available and unchanged. Existing roof meshes retain their slab courses.
 
 ## Automatic batch operation
 
@@ -196,3 +196,59 @@ are absent from the retained Mutiny corpus and remain missing. Its proposed stat
 is preserved. Both candidates remain ineligible because physical identity is
 unresolved. No real training labels or activated model are fabricated. See
 `docs/evidence/building-source-feed-validation.json`.
+
+
+## Shared native surface compiler
+
+`building_native.compile_spec` takes the same building spec as the GLB generator.
+It samples non-roof surfaces at half-metre centres using each triangle's dominant
+projection, unions the sampled occupancy and chooses native full/slab/stair
+shapes. At equal error it prefers retaining source occupancy; a rotated surface
+cannot disappear merely because air ties a representable shape. It remains a
+surface compiler: thick solid interiors are not filled, and absent rooms/walls
+are never inferred. Small details can disappear and sampling/alias counts are
+retained in the audit.
+
+Roofs use metre-column centre samples of the highest source face within each
+component. Source tops round to half-metre courses with at most 0.25 m rounding
+error. Closed components retain their sampled bottom extent; separate overlaid
+roof components retain their separate levels. Neighbouring courses within the
+same component receive bounded wooden risers. Roof shapes are dark-oak slabs or
+planks; no wooden roof stairs or glass are emitted. Non-roof surfaces use stone
+brick display shapes. These palettes are illustrative, not recovered materials.
+
+Extrusion holes automatically supply protected air over their native alias
+interval. Imports also retain explicit study passage/dormer constraints, planar
+opening polygons and level base-opening segments. Their air guards are display
+quantization: a one-block alias column can be wider than a narrow source opening.
+They do not establish physical clearance. Roof and masonry shape selection cannot
+occupy those guarded halves. Masonry takes precedence at mixed-material roof
+aliases, and withheld roof cells are counted. This can leave unresolved joins;
+it does not certify a connected roof or watertight native shell. Original meshes
+are unchanged.
+
+```bash
+python -m voxel_mapper.building_pipeline compile-native \
+  --spec building-spec.json --output fresh-native-preview --world
+```
+
+Without `--world`, the compiler writes native rows and the quality report. With
+it, the existing Bedrock composer adds an explicitly artificial platform and
+exports `park.mcworld`; its cold readback verifies written blocks and unwritten
+air. Extent/work/air budgets refuse oversized geometry before native rows are
+published. Existing output directories are never overwritten.
+
+A `building-batch-v1` job can set `native_output` to `cells` or `world` (default
+`none`). Normal candidate evidence gates still apply. Eligible selected candidates
+then run the shared native compiler automatically, and the normal iteration loop
+uses that same job setting. An invalid candidate is not silently published simply
+because its learned score is high. Independent `compile-native` is an isolated
+preview operation and does not bypass acceptance for a cumulative park world.
+
+Real replay compiles all Mutiny V12 components and the Wicker shop mesh layers
+using this one path. Both export verified isolated worlds. These are experimental
+surface previews, not replacements for the reviewed building-specific worlds;
+aliasing and unresolved joins remain visible in quality reports. See
+`docs/evidence/building-native-validation.json`. Full raw-PDF geometry discovery,
+source material assignment, stronger native support/closure checks and accepted
+park placement remain unfinished.

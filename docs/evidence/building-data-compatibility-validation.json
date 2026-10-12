@@ -1,5 +1,5 @@
 {
-  "focused_tests_passed": 26,
+  "focused_tests_passed": 36,
   "learning_validation_scope": "Synthetic reviewed examples only; no real Alton correctness labels or trained production model.",
   "park_world_blocks_added": 0,
   "real_studies": [
@@ -10,7 +10,7 @@
       "geometry_sha256": "46647e58c0057c8341247f4ffa925887a6596214c2e541500db3f939e56cf907",
       "parent_sha256": "0b1ae21c92ee239483bec23d94c4bbff836b6d6196bb149f3d7d758162f77926",
       "source_state": "unknown",
-      "spec_sha256": "88f9cc37007a84141388e8ee517738cf2e2850e3ba697d1c56bf2e8fbf3cbaa3",
+      "spec_sha256": "ed5ab6d16f074ed49de2c5717634e460c48dd3af9f77b20d3b2a4e3c4fb3a9de",
       "unverified_candidate_selected": null,
       "world_placement_eligible": false
     },
@@ -21,14 +21,14 @@
       "geometry_sha256": "e8519a301051ec4fdf18669cddecd56b3f55a4403559812276ea11b8fda547df",
       "parent_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
       "source_state": "proposed",
-      "spec_sha256": "cadb95ba3a8cfc03a004a40b7de63bc922d62ff1b4d5220d068891dceec8cb40",
+      "spec_sha256": "f1f799c6978083c9645411c47f34ba7b6d9307a5187abe4235d219f23a274a10",
       "unverified_candidate_selected": null,
       "world_placement_eligible": false
     }
   ],
   "real_trained_model_activated": false,
   "real_training_records": 0,
-  "regression_tests_passed": 1121,
+  "regression_tests_passed": 1131,
   "synthetic_batch_builds": 1,
   "synthetic_glb_component_meshes": 3,
   "version": "building-data-compatibility-audit-v1"

@@ -1,0 +1,50 @@
+{
+  "focused_tests_passed": 36,
+  "limitations": [
+    "Experimental surface previews, not complete solid-volume or surveyed reconstructions.",
+    "Native roof joins, support connectivity and material inference remain unresolved."
+  ],
+  "park_world_blocks_added": 0,
+  "real_studies": [
+    {
+      "blocked_roof_cells": 116,
+      "building_id": "mutiny-v12",
+      "chunks": 16,
+      "component_meshes": 934,
+      "composed_blocks": 23041,
+      "glazing_cells": 0,
+      "max_roof_rounding_error_m": 0.24451969316948396,
+      "native_readback": "all written blocks and all unwritten air cells verified",
+      "native_rows_sha256": "fb4d3131de0ef4fe9445928d0c2955205a4a283adeaffedc154607647e1dbb44",
+      "protected_air_halves": 1120,
+      "protected_air_verified": true,
+      "sampling_checks": 138450,
+      "source_model_sha256": "0b1ae21c92ee239483bec23d94c4bbff836b6d6196bb149f3d7d758162f77926",
+      "surface_cells": 7961,
+      "wooden_roof_stairs": 0,
+      "world_placement_eligible": false,
+      "world_sha256": "692e0c095e6a3c977688da459549cf5354b1e1d396b1f4bb59669d2805708ac4"
+    },
+    {
+      "blocked_roof_cells": 52,
+      "building_id": "wicker-shop",
+      "chunks": 4,
+      "component_meshes": 3,
+      "composed_blocks": 2524,
+      "glazing_cells": 0,
+      "max_roof_rounding_error_m": 0.22614302174120748,
+      "native_readback": "all written blocks and all unwritten air cells verified",
+      "native_rows_sha256": "db3fa32f450ff1157954c44657f62a733a90be316b9030fbccdcf94dd0fc5ce6",
+      "protected_air_halves": 192,
+      "protected_air_verified": true,
+      "sampling_checks": 2374,
+      "source_model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "surface_cells": 454,
+      "wooden_roof_stairs": 0,
+      "world_placement_eligible": false,
+      "world_sha256": "81e12cc8f2e6f717ea8ccf396f700fb1467f1c703fef25b1c82a2a8668fef14d"
+    }
+  ],
+  "regression_tests_passed": 1131,
+  "version": "building-native-validation-v1"
+}
