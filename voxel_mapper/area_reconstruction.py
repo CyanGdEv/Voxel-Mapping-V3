@@ -149,6 +149,16 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+        osm_settings=config.get('osm_provisional_alignment',{})
+        if osm_settings.get('enabled',False):
+            from .osm_provisional_alignment import run as align_osm
+            osm_path=resolve(osm_settings['snapshot'])
+            if file_hash(osm_path)!=osm_settings['sha256']:raise ValueError('Pinned OSM alignment snapshot changed')
+            entry['osm_provisional_alignment']=align_osm(corpus,work/'drawing-geometry',osm_path,
+                resolve(osm_settings['knowledge_store']) if osm_settings.get('knowledge_store') else root/'evidence-memory.sqlite',
+                work/'osm-provisional-alignment',target_crs=osm_settings['target_crs'],
+                max_pages=osm_settings.get('max_pages',config.get('max_pages',1000)),
+                max_seed_fits=osm_settings.get('max_seed_fits',512))
         if landmark_contract is not None:
             from .survey_landmark_discovery import run as discover_stations
             landmark_settings=config.get('survey_landmark_discovery',{})

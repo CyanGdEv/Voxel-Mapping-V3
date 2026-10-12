@@ -1,0 +1,1837 @@
+{
+  "audit_date": "2026-10-12",
+  "version": "osm-provisional-alignment-v2",
+  "osm_sha256": "b864213364d80e398068ec0aa66c294c71a8e0ec49b85d5a9e42a34b79daa571",
+  "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.91,52.975,-1.865,53.008",
+  "acquisition": {
+    "osm_api_status": 200,
+    "bytes": 6708937,
+    "overpass_status": 406
+  },
+  "target_crs": "+proj=aeqd +lat_0=52.9915 +lon_0=-1.8875 +datum=WGS84 +units=m +no_defs",
+  "projection": {
+    "absolute_osm_accuracy_m": null,
+    "operation": "axis order change (2D) + unknown (with axis order normalized for visualization)",
+    "operation_accuracy_m": 0.0,
+    "reference_polygons": 843,
+    "registration_verified": false,
+    "skipped_osm_elements": 92
+  },
+  "page_statuses": {
+    "awaiting_visible_printed_scale": 1,
+    "no_map_correspondence_found": 2
+  },
+  "pages": [
+    {
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "page": 1,
+      "status": "no_map_correspondence_found",
+      "objects": 426,
+      "printed_scale_review": {
+        "denominators": [
+          800
+        ],
+        "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+        "effective_page_dimensions_mm": [
+          594.000177001953,
+          841.0010348849826
+        ],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "labels": [
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.71630859375,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 221,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 423,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 661,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 8,
+                  "core_pixels": 446,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 9,
+                  "core_pixels": 298,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 1946,
+              "source_font_sha256": "571322d25648d5e3f7d70959671d8515e0972bb32e7351e10b9d2c260f13191e",
+              "source_font_xrefs": [
+                46
+              ],
+              "source_rotation_restored": 0,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5627,
+              5629,
+              5631,
+              5633,
+              5635,
+              5637,
+              5639,
+              5641,
+              5643,
+              5645
+            ]
+          },
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.719970703125,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5628,
+              5630,
+              5632,
+              5634,
+              5636,
+              5638,
+              5640,
+              5642,
+              5644,
+              5646
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 221,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 378,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 7,
+                  "core_pixels": 661,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 9,
+                  "core_pixels": 445,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 10,
+                  "core_pixels": 346,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 2133,
+              "source_font_sha256": "571322d25648d5e3f7d70959671d8515e0972bb32e7351e10b9d2c260f13191e",
+              "source_font_xrefs": [
+                46
+              ],
+              "source_rotation_restored": 0,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5647,
+              5649,
+              5651,
+              5653,
+              5655,
+              5657,
+              5659,
+              5661,
+              5663,
+              5665,
+              5667
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5648,
+              5650,
+              5652,
+              5654,
+              5656,
+              5658,
+              5660,
+              5662,
+              5664,
+              5666,
+              5668
+            ]
+          }
+        ],
+        "matching_paper_sizes": [
+          "A1"
+        ],
+        "native_unit_supported": true,
+        "page": 1,
+        "pdf_user_unit": 1.0,
+        "status": "one_visible_printed_scale",
+        "unresolved_paper_scale": false
+      },
+      "recovery": {
+        "completeness_verified": false,
+        "recovered_faces": 120,
+        "regions": [
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 35,
+              "cut_edges": 127,
+              "dangles": 2000,
+              "intersection_pairs": 1795,
+              "invalid_rings": 0,
+              "recovered_faces": 16,
+              "segments": 1995,
+              "small_faces_deferred": 33,
+              "solid_straight_lines": 474
+            },
+            "recovered_faces": 16,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 19,
+              "cut_edges": 12,
+              "dangles": 2716,
+              "intersection_pairs": 2584,
+              "invalid_rings": 0,
+              "recovered_faces": 5,
+              "segments": 2705,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 209
+            },
+            "recovered_faces": 5,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "cut_edges": 0,
+              "dangles": 1170,
+              "intersection_pairs": 1054,
+              "invalid_rings": 0,
+              "recovered_faces": 1,
+              "segments": 1147,
+              "small_faces_deferred": 3,
+              "solid_straight_lines": 137
+            },
+            "recovered_faces": 1,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 17,
+              "dangles": 1605,
+              "intersection_pairs": 1517,
+              "invalid_rings": 0,
+              "recovered_faces": 8,
+              "segments": 1650,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 203
+            },
+            "recovered_faces": 8,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 10,
+              "cut_edges": 13,
+              "dangles": 2035,
+              "intersection_pairs": 1950,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2099,
+              "small_faces_deferred": 5,
+              "solid_straight_lines": 237
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 7,
+              "cut_edges": 42,
+              "dangles": 2182,
+              "intersection_pairs": 1969,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2158,
+              "small_faces_deferred": 8,
+              "solid_straight_lines": 285
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 47,
+              "dangles": 2398,
+              "intersection_pairs": 2221,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 2387,
+              "small_faces_deferred": 15,
+              "solid_straight_lines": 295
+            },
+            "recovered_faces": 7,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 4,
+              "cut_edges": 2,
+              "dangles": 3405,
+              "intersection_pairs": 3075,
+              "invalid_rings": 0,
+              "recovered_faces": 9,
+              "segments": 3290,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 356
+            },
+            "recovered_faces": 9,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 12,
+              "cut_edges": 0,
+              "dangles": 1285,
+              "intersection_pairs": 1155,
+              "invalid_rings": 0,
+              "recovered_faces": 6,
+              "segments": 1275,
+              "small_faces_deferred": 4,
+              "solid_straight_lines": 197
+            },
+            "recovered_faces": 6,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 3,
+              "cut_edges": 0,
+              "dangles": 2592,
+              "intersection_pairs": 2440,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2603,
+              "small_faces_deferred": 10,
+              "solid_straight_lines": 236
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 3449,
+              "intersection_pairs": 3181,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 3373,
+              "small_faces_deferred": 6,
+              "solid_straight_lines": 289
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 17,
+              "cut_edges": 0,
+              "dangles": 4062,
+              "intersection_pairs": 3692,
+              "invalid_rings": 0,
+              "recovered_faces": 0,
+              "segments": 3982,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 375
+            },
+            "recovered_faces": 0,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1132,
+              "intersection_pairs": 1031,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 1120,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 151
+            },
+            "recovered_faces": 7,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1331,
+              "intersection_pairs": 1182,
+              "invalid_rings": 0,
+              "recovered_faces": 21,
+              "segments": 1324,
+              "small_faces_deferred": 7,
+              "solid_straight_lines": 268
+            },
+            "recovered_faces": 21,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 30,
+              "cut_edges": 24,
+              "dangles": 2971,
+              "intersection_pairs": 2974,
+              "invalid_rings": 0,
+              "recovered_faces": 26,
+              "segments": 3215,
+              "small_faces_deferred": 16,
+              "solid_straight_lines": 447
+            },
+            "recovered_faces": 26,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 27,
+              "cut_edges": 0,
+              "dangles": 2519,
+              "intersection_pairs": 2188,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2440,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 326
+            },
+            "recovered_faces": 2,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          }
+        ],
+        "status": "regional_outline_recovery_only",
+        "whole_page_recovery": {
+          "counts": {
+            "curved_lines_deferred": 93
+          },
+          "reason": "segment_budget",
+          "recovered_faces": 0,
+          "status": "network_budget_withheld"
+        }
+      },
+      "proposal": {
+        "expected_scale": 0.2822222222222222,
+        "hypotheses": [],
+        "limitations": [
+          "Mapped agreement is not independently surveyed registration",
+          "Map and drawing may differ in date, generalisation or extent",
+          "Support envelope is not a validated registration domain"
+        ],
+        "min_iou": 0.7,
+        "orientation_trial_attempts": 1409,
+        "physical_identity_verified": false,
+        "priority_seed_ids": [],
+        "registration_verified": false,
+        "review_flags": [
+          "seed_selection_truncated; all_objects_verified"
+        ],
+        "seed_fit_attempts": 328,
+        "seed_objects": 64,
+        "status": "withheld",
+        "tolerance_m": 10.0,
+        "verification_objects": 426,
+        "world_geometry_additions": 0
+      },
+      "alignment_checks": {
+        "blockers": [
+          "requires_one_unambiguous_map_hypothesis"
+        ],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v3",
+        "world_geometry_additions": 0
+      },
+      "absolute_error_bound_m": null,
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "status": "no_map_correspondence_found",
+      "objects": 442,
+      "printed_scale_review": {
+        "denominators": [
+          800
+        ],
+        "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+        "effective_page_dimensions_mm": [
+          594.000177001953,
+          841.0010348849826
+        ],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "labels": [
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.71630859375,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 221,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 423,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 6,
+                  "core_pixels": 661,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 8,
+                  "core_pixels": 446,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 9,
+                  "core_pixels": 298,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 1946,
+              "source_font_sha256": "ea6e6afca8ff2ab120b3fd6b45cb81841bdb15694f73c21b18e7008169eac33d",
+              "source_font_xrefs": [
+                46
+              ],
+              "source_rotation_restored": 0,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5627,
+              5629,
+              5631,
+              5633,
+              5635,
+              5637,
+              5639,
+              5641,
+              5643,
+              5645
+            ]
+          },
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.719970703125,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5628,
+              5630,
+              5632,
+              5634,
+              5636,
+              5638,
+              5640,
+              5642,
+              5644,
+              5646
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 221,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 297,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 378,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 448,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 7,
+                  "core_pixels": 661,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 9,
+                  "core_pixels": 445,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 10,
+                  "core_pixels": 346,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 2133,
+              "source_font_sha256": "ea6e6afca8ff2ab120b3fd6b45cb81841bdb15694f73c21b18e7008169eac33d",
+              "source_font_xrefs": [
+                46
+              ],
+              "source_rotation_restored": 0,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5647,
+              5649,
+              5651,
+              5653,
+              5655,
+              5657,
+              5659,
+              5661,
+              5663,
+              5665,
+              5667
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5648,
+              5650,
+              5652,
+              5654,
+              5656,
+              5658,
+              5660,
+              5662,
+              5664,
+              5666,
+              5668
+            ]
+          }
+        ],
+        "matching_paper_sizes": [
+          "A1"
+        ],
+        "native_unit_supported": true,
+        "page": 1,
+        "pdf_user_unit": 1.0,
+        "status": "one_visible_printed_scale",
+        "unresolved_paper_scale": false
+      },
+      "recovery": {
+        "completeness_verified": false,
+        "recovered_faces": 120,
+        "regions": [
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 35,
+              "cut_edges": 127,
+              "dangles": 2000,
+              "intersection_pairs": 1795,
+              "invalid_rings": 0,
+              "recovered_faces": 16,
+              "segments": 1995,
+              "small_faces_deferred": 33,
+              "solid_straight_lines": 474
+            },
+            "recovered_faces": 16,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 19,
+              "cut_edges": 12,
+              "dangles": 2716,
+              "intersection_pairs": 2584,
+              "invalid_rings": 0,
+              "recovered_faces": 5,
+              "segments": 2705,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 209
+            },
+            "recovered_faces": 5,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "cut_edges": 0,
+              "dangles": 1170,
+              "intersection_pairs": 1054,
+              "invalid_rings": 0,
+              "recovered_faces": 1,
+              "segments": 1147,
+              "small_faces_deferred": 3,
+              "solid_straight_lines": 137
+            },
+            "recovered_faces": 1,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 17,
+              "dangles": 1613,
+              "intersection_pairs": 1524,
+              "invalid_rings": 0,
+              "recovered_faces": 8,
+              "segments": 1658,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 204
+            },
+            "recovered_faces": 8,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 10,
+              "cut_edges": 13,
+              "dangles": 2035,
+              "intersection_pairs": 1950,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2099,
+              "small_faces_deferred": 5,
+              "solid_straight_lines": 237
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 7,
+              "cut_edges": 42,
+              "dangles": 2182,
+              "intersection_pairs": 1969,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2158,
+              "small_faces_deferred": 8,
+              "solid_straight_lines": 285
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 47,
+              "dangles": 2398,
+              "intersection_pairs": 2221,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 2387,
+              "small_faces_deferred": 15,
+              "solid_straight_lines": 295
+            },
+            "recovered_faces": 7,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 4,
+              "cut_edges": 2,
+              "dangles": 3405,
+              "intersection_pairs": 3075,
+              "invalid_rings": 0,
+              "recovered_faces": 9,
+              "segments": 3290,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 356
+            },
+            "recovered_faces": 9,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 12,
+              "cut_edges": 0,
+              "dangles": 1285,
+              "intersection_pairs": 1155,
+              "invalid_rings": 0,
+              "recovered_faces": 6,
+              "segments": 1275,
+              "small_faces_deferred": 4,
+              "solid_straight_lines": 197
+            },
+            "recovered_faces": 6,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 3,
+              "cut_edges": 0,
+              "dangles": 2592,
+              "intersection_pairs": 2440,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2603,
+              "small_faces_deferred": 10,
+              "solid_straight_lines": 236
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 3449,
+              "intersection_pairs": 3181,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 3373,
+              "small_faces_deferred": 6,
+              "solid_straight_lines": 289
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 17,
+              "cut_edges": 0,
+              "dangles": 4062,
+              "intersection_pairs": 3692,
+              "invalid_rings": 0,
+              "recovered_faces": 0,
+              "segments": 3982,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 375
+            },
+            "recovered_faces": 0,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1132,
+              "intersection_pairs": 1031,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 1120,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 151
+            },
+            "recovered_faces": 7,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1331,
+              "intersection_pairs": 1182,
+              "invalid_rings": 0,
+              "recovered_faces": 21,
+              "segments": 1324,
+              "small_faces_deferred": 7,
+              "solid_straight_lines": 268
+            },
+            "recovered_faces": 21,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 30,
+              "cut_edges": 24,
+              "dangles": 2971,
+              "intersection_pairs": 2974,
+              "invalid_rings": 0,
+              "recovered_faces": 26,
+              "segments": 3215,
+              "small_faces_deferred": 16,
+              "solid_straight_lines": 447
+            },
+            "recovered_faces": 26,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 27,
+              "cut_edges": 0,
+              "dangles": 2519,
+              "intersection_pairs": 2188,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2440,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 326
+            },
+            "recovered_faces": 2,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          }
+        ],
+        "status": "regional_outline_recovery_only",
+        "whole_page_recovery": {
+          "counts": {
+            "curved_lines_deferred": 93
+          },
+          "reason": "segment_budget",
+          "recovered_faces": 0,
+          "status": "network_budget_withheld"
+        }
+      },
+      "proposal": {
+        "expected_scale": 0.2822222222222222,
+        "hypotheses": [],
+        "limitations": [
+          "Mapped agreement is not independently surveyed registration",
+          "Map and drawing may differ in date, generalisation or extent",
+          "Support envelope is not a validated registration domain"
+        ],
+        "min_iou": 0.7,
+        "orientation_trial_attempts": 1052,
+        "physical_identity_verified": false,
+        "priority_seed_ids": [],
+        "registration_verified": false,
+        "review_flags": [
+          "seed_selection_truncated; all_objects_verified"
+        ],
+        "seed_fit_attempts": 280,
+        "seed_objects": 64,
+        "status": "withheld",
+        "tolerance_m": 10.0,
+        "verification_objects": 442,
+        "world_geometry_additions": 0
+      },
+      "alignment_checks": {
+        "blockers": [
+          "requires_one_unambiguous_map_hypothesis"
+        ],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v3",
+        "world_geometry_additions": 0
+      },
+      "absolute_error_bound_m": null,
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "page": 1,
+      "status": "awaiting_visible_printed_scale",
+      "objects": 436,
+      "printed_scale_review": {
+        "denominators": [
+          800
+        ],
+        "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+        "effective_page_dimensions_mm": [
+          594.000177001953,
+          841.0010348849826
+        ],
+        "expected_metres_per_pdf_point": null,
+        "labels": [
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.71630859375,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "reason": "Ambiguous or oversized source font",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5627,
+              5629,
+              5631,
+              5633,
+              5635,
+              5637,
+              5639,
+              5641,
+              5643,
+              5645
+            ]
+          },
+          {
+            "applicable_to_page": true,
+            "bbox_page_points": [
+              2055.719970703125,
+              1569.186767578125,
+              2104.680908203125,
+              1579.266845703125
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 800,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A1",
+            "text": "1/800 @ A1",
+            "trace_indices": [
+              5628,
+              5630,
+              5632,
+              5634,
+              5636,
+              5638,
+              5640,
+              5642,
+              5644,
+              5646
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "reason": "Ambiguous or oversized source font",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5647,
+              5649,
+              5651,
+              5653,
+              5655,
+              5657,
+              5659,
+              5661,
+              5663,
+              5665,
+              5667
+            ]
+          },
+          {
+            "applicable_to_page": false,
+            "bbox_page_points": [
+              2055.719970703125,
+              1580.706787109375,
+              2109.478271484375,
+              1590.786865234375
+            ],
+            "character_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "denominator": 1600,
+            "glyph_screen": {
+              "reason": "Unsupported font, rendering, layer or character convention",
+              "status": "withheld",
+              "version": "source-font-glyph-raster-screen-v2",
+              "visibility_verified": false
+            },
+            "paper_size": "A3",
+            "text": "1/1600 @ A3",
+            "trace_indices": [
+              5648,
+              5650,
+              5652,
+              5654,
+              5656,
+              5658,
+              5660,
+              5662,
+              5664,
+              5666,
+              5668
+            ]
+          }
+        ],
+        "matching_paper_sizes": [
+          "A1"
+        ],
+        "native_unit_supported": true,
+        "page": 1,
+        "pdf_user_unit": 1.0,
+        "status": "withheld_missing_ambiguous_or_unverified_scale",
+        "unresolved_paper_scale": false
+      },
+      "recovery": {
+        "completeness_verified": false,
+        "recovered_faces": 120,
+        "regions": [
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 35,
+              "cut_edges": 127,
+              "dangles": 2000,
+              "intersection_pairs": 1795,
+              "invalid_rings": 0,
+              "recovered_faces": 16,
+              "segments": 1995,
+              "small_faces_deferred": 33,
+              "solid_straight_lines": 474
+            },
+            "recovered_faces": 16,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 19,
+              "cut_edges": 12,
+              "dangles": 2716,
+              "intersection_pairs": 2584,
+              "invalid_rings": 0,
+              "recovered_faces": 5,
+              "segments": 2705,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 209
+            },
+            "recovered_faces": 5,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "cut_edges": 0,
+              "dangles": 1170,
+              "intersection_pairs": 1054,
+              "invalid_rings": 0,
+              "recovered_faces": 1,
+              "segments": 1147,
+              "small_faces_deferred": 3,
+              "solid_straight_lines": 137
+            },
+            "recovered_faces": 1,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 17,
+              "dangles": 1605,
+              "intersection_pairs": 1516,
+              "invalid_rings": 0,
+              "recovered_faces": 8,
+              "segments": 1650,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 203
+            },
+            "recovered_faces": 8,
+            "row": 0,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 10,
+              "cut_edges": 13,
+              "dangles": 2035,
+              "intersection_pairs": 1950,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2099,
+              "small_faces_deferred": 5,
+              "solid_straight_lines": 237
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 7,
+              "cut_edges": 42,
+              "dangles": 2182,
+              "intersection_pairs": 1969,
+              "invalid_rings": 0,
+              "recovered_faces": 4,
+              "segments": 2158,
+              "small_faces_deferred": 8,
+              "solid_straight_lines": 285
+            },
+            "recovered_faces": 4,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 5,
+              "cut_edges": 47,
+              "dangles": 2398,
+              "intersection_pairs": 2221,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 2387,
+              "small_faces_deferred": 15,
+              "solid_straight_lines": 295
+            },
+            "recovered_faces": 7,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 4,
+              "cut_edges": 2,
+              "dangles": 3405,
+              "intersection_pairs": 3075,
+              "invalid_rings": 0,
+              "recovered_faces": 9,
+              "segments": 3290,
+              "small_faces_deferred": 9,
+              "solid_straight_lines": 356
+            },
+            "recovered_faces": 9,
+            "row": 1,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 12,
+              "cut_edges": 0,
+              "dangles": 1285,
+              "intersection_pairs": 1155,
+              "invalid_rings": 0,
+              "recovered_faces": 6,
+              "segments": 1275,
+              "small_faces_deferred": 4,
+              "solid_straight_lines": 197
+            },
+            "recovered_faces": 6,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 3,
+              "cut_edges": 0,
+              "dangles": 2592,
+              "intersection_pairs": 2440,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2603,
+              "small_faces_deferred": 10,
+              "solid_straight_lines": 236
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 3449,
+              "intersection_pairs": 3181,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 3373,
+              "small_faces_deferred": 6,
+              "solid_straight_lines": 289
+            },
+            "recovered_faces": 2,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 17,
+              "cut_edges": 0,
+              "dangles": 4062,
+              "intersection_pairs": 3692,
+              "invalid_rings": 0,
+              "recovered_faces": 0,
+              "segments": 3982,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 375
+            },
+            "recovered_faces": 0,
+            "row": 2,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 0,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1132,
+              "intersection_pairs": 1031,
+              "invalid_rings": 0,
+              "recovered_faces": 7,
+              "segments": 1120,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 151
+            },
+            "recovered_faces": 7,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 1,
+            "counts": {
+              "curved_lines_deferred": 9,
+              "cut_edges": 0,
+              "dangles": 1331,
+              "intersection_pairs": 1182,
+              "invalid_rings": 0,
+              "recovered_faces": 21,
+              "segments": 1324,
+              "small_faces_deferred": 7,
+              "solid_straight_lines": 268
+            },
+            "recovered_faces": 21,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 2,
+            "counts": {
+              "curved_lines_deferred": 30,
+              "cut_edges": 24,
+              "dangles": 2971,
+              "intersection_pairs": 2974,
+              "invalid_rings": 0,
+              "recovered_faces": 26,
+              "segments": 3215,
+              "small_faces_deferred": 16,
+              "solid_straight_lines": 447
+            },
+            "recovered_faces": 26,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          },
+          {
+            "column": 3,
+            "counts": {
+              "curved_lines_deferred": 27,
+              "cut_edges": 0,
+              "dangles": 2519,
+              "intersection_pairs": 2188,
+              "invalid_rings": 0,
+              "recovered_faces": 2,
+              "segments": 2440,
+              "small_faces_deferred": 1,
+              "solid_straight_lines": 326
+            },
+            "recovered_faces": 2,
+            "row": 3,
+            "status": "enclosed_faces_only"
+          }
+        ],
+        "status": "regional_outline_recovery_only",
+        "whole_page_recovery": {
+          "counts": {
+            "curved_lines_deferred": 93
+          },
+          "reason": "segment_budget",
+          "recovered_faces": 0,
+          "status": "network_budget_withheld"
+        }
+      },
+      "proposal": null,
+      "alignment_checks": null,
+      "absolute_error_bound_m": null,
+      "world_geometry_additions": 0
+    }
+  ],
+  "output_sha256": {
+    "page-alignments.jsonl": "fecac09801199a10d67dff257bb2d46f8ec455dea00592f1401a10d0cddd55b5",
+    "provisional-overlay.geojson": "de449d0b1ac4b3fe75a36d5ebb58b16e86d24eadb506b413cdd7ce4abcf53b8c"
+  },
+  "unchanged_replay_identical": true,
+  "reused_pages": 3,
+  "provisional_overlay_records": 0,
+  "registration_verified": false,
+  "absolute_accuracy_verified": false,
+  "world_geometry_additions": 0,
+  "validation": {
+    "focused_tests_passed": 26,
+    "full_regression_tests_passed": 1244
+  },
+  "limitations": [
+    "No shared polygon correspondence was found for the two scale-verified recovered sheets.",
+    "One source remains withheld by original-font scale visibility.",
+    "Regional recovery retains 120 unverified faces per source, including overlapping-window duplicates.",
+    "Open-path/bridge topology, landmark label binding, component semantics and survey accuracy remain separate work."
+  ]
+}

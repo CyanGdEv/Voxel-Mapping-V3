@@ -17,7 +17,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v5'
+VERSION = 'mapped-sheet-placement-v7'
 
 
 def placed(geometry, fit):
@@ -25,7 +25,7 @@ def placed(geometry, fit):
     return affine_transform(geometry, [m[0][0], m[0][1], m[1][0], m[1][1], *t])
 
 
-def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None):
+def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None, expected_scale=None):
     """Map agreement is estimated placement evidence, not survey acceptance.
 
     Full boundaries seed fits; all page objects and spatial reference neighbours
@@ -36,6 +36,8 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     if not math.isfinite(min_iou) or not .5 <= min_iou <= 1 or not math.isfinite(tolerance_m) or not 0 < tolerance_m <= 25:
         raise ValueError('Invalid mapped review thresholds')
     if len(objects)>20000 or len(refs)>5000:raise ValueError('Page/reference budget exceeded')
+    if expected_scale is not None and (type(expected_scale) not in (int,float) or not math.isfinite(expected_scale) or not 0<expected_scale<=10000*.0254/72):
+        raise ValueError('Bounded expected printed scale required')
     if len({o['candidate_id'] for o in objects})!=len(objects) or len({r['id'] for r in refs})!=len(refs):raise ValueError('Unique object/reference IDs required')
     priority_seed_ids=[] if priority_seed_ids is None else priority_seed_ids
     if not isinstance(priority_seed_ids,list) or len(priority_seed_ids)>16 or any(not isinstance(i,str) for i in priority_seed_ids) or len(set(priority_seed_ids))!=len(priority_seed_ids) or not set(priority_seed_ids)<=set(o['candidate_id'] for o in objects):raise ValueError('At most sixteen unique existing priority seeds required')
@@ -54,6 +56,9 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
         for r in refs:
             g=r['geometry']
             if g.geom_type!='Polygon' or len(g.interiors)!=len(o['geometry'].interiors):continue
+            if expected_scale is not None:
+                ratio=g.area/(o['geometry'].area*expected_scale**2)
+                if not min_iou<=ratio<=1/min_iou:continue
             error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
             if error<=.2:pool.append((error,r['id'],r))
         # More than the original three alternatives, followed by actual shape fit.
@@ -96,14 +101,26 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             m=alternative['matrix'];seeds_for_boundary.append({**best_seed,**alternative,'scale_metres_per_pdf_point':math.hypot(m[0][0],m[1][0])})
         for seed in seeds_for_boundary:
             orientation_trials+=1
-            if seed['intersection_over_union']<.8:continue
+            if expected_scale is not None:
+                m=np.asarray(seed['matrix'])*expected_scale/seed['scale_metres_per_pdf_point']
+                t=np.asarray(r['geometry'].centroid.coords[0])-m@np.asarray(o['geometry'].centroid.coords[0])
+                seed={**seed,'matrix':m.tolist(),'translation_m':t.tolist(),'scale_metres_per_pdf_point':expected_scale}
+                p=placed(o['geometry'],seed)
+                seed['intersection_over_union']=p.intersection(r['geometry']).area/p.union(r['geometry']).area
+            if seed['intersection_over_union']<(min_iou if expected_scale is not None else .8):continue
             supports=support(seed)
             if len(supports)<3:continue
             fit=seed
             for _ in range(2):
                 local=np.asarray([by_id[h['candidate_id']]['geometry'].centroid.coords[0] for h in supports]);target=np.asarray([ref_ids[h['reference_id']]['geometry'].centroid.coords[0] for h in supports])
                 if np.linalg.matrix_rank(local-local.mean(axis=0))<2:break
-                m,t,s,rms=similarity(local,target);fit={'matrix':m,'translation_m':t,'scale_metres_per_pdf_point':s,'centroid_rms_m':rms};supports=support(fit)
+                m,t,s,rms=similarity(local,target)
+                if expected_scale is not None:
+                    # Preserve the least-squares rotation; fit translation at
+                    # the printed scale rather than stretching the drawing.
+                    m=(np.asarray(m)*expected_scale/s).tolist();s=expected_scale
+                    t=(target.mean(axis=0)-np.asarray(m)@local.mean(axis=0)).tolist()
+                fit={'matrix':m,'translation_m':t,'scale_metres_per_pdf_point':s,'centroid_rms_m':rms};supports=support(fit)
                 if len(supports)<3:break
             if len(supports)<3 or 'centroid_rms_m' not in fit:continue
             # Recompute metrics for the final transform and expose map disagreement.
@@ -128,7 +145,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     if len(edges)>max_seed_fits:flags.append('seed_fit_budget_exhausted')
     if len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
     if len(best)>1:flags.append('multiple_mapped_placements')
-    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
+    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'expected_scale':expected_scale,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 
 
 def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None, priority_seeds=None):
