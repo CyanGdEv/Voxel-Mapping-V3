@@ -25,6 +25,11 @@ class Corpus:
         CREATE TABLE IF NOT EXISTS documents(id TEXT PRIMARY KEY,url TEXT NOT NULL,record TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS pages(sha TEXT,page INTEGER,summary TEXT NOT NULL,PRIMARY KEY(sha,page));
         ''')
+        # Preserve canonical HTTPS identities while retaining an explicitly
+        # observed transport for portals whose HTTPS attachment route fails.
+        if 'transport_url' not in {r[1] for r in self.db.execute('PRAGMA table_info(downloads)')}:
+            self.db.execute('ALTER TABLE downloads ADD COLUMN transport_url TEXT')
+            self.db.commit()
 
     def ingest(self, records, hosts):
         hosts=set(hosts)
@@ -36,9 +41,19 @@ class Corpus:
                     raise ValueError('Drawing URL outside declared HTTPS portals')
                 sha=record.get('sha256')
                 if sha and (len(sha)!=64 or any(c not in '0123456789abcdef' for c in sha)):raise ValueError('Invalid pinned SHA256')
+                transport=record.get('transport_url')
+                if transport:
+                    alternate=urlparse(transport)
+                    if (alternate.scheme not in ('http','https') or alternate.hostname!=parsed.hostname
+                            or alternate.port not in (None,80 if alternate.scheme=='http' else 443)
+                            or alternate.username or alternate.password or alternate.fragment
+                            or alternate.path!=parsed.path or alternate.query!=parsed.query):
+                        raise ValueError('Transport must name the same declared official resource')
+                    if alternate.scheme=='http' and not sha:
+                        raise ValueError('Pinned PDF hash required for an explicit HTTP transport')
                 previous=self.db.execute('SELECT expected_sha FROM downloads WHERE url=?',(record['url'],)).fetchone()
                 if previous and sha and previous[0] and previous[0]!=sha:raise ValueError('Conflicting expected hashes for one drawing URL')
-                self.db.execute('INSERT INTO downloads(url,expected_sha) VALUES(?,?) ON CONFLICT(url) DO UPDATE SET expected_sha=COALESCE(excluded.expected_sha,expected_sha)',(record['url'],sha))
+                self.db.execute('INSERT INTO downloads(url,expected_sha,transport_url) VALUES(?,?,?) ON CONFLICT(url) DO UPDATE SET expected_sha=COALESCE(excluded.expected_sha,expected_sha),transport_url=COALESCE(excluded.transport_url,transport_url)',(record['url'],sha,transport))
                 identity=json.dumps([record.get('applicationReference',record.get('application_reference')),record['url'],record.get('title')],sort_keys=True)
                 identifier=hashlib.sha256(identity.encode()).hexdigest()
                 self.db.execute('INSERT INTO documents VALUES(?,?,?) ON CONFLICT(id) DO UPDATE SET record=excluded.record',(identifier,record['url'],json.dumps(record,sort_keys=True)))
@@ -76,7 +91,7 @@ class Corpus:
                 elif status=='downloaded':
                     self.db.execute("UPDATE downloads SET status='pending',attempts=0,error='Retained blob missing or corrupt' WHERE url=?",(url,))
         if offline:return self.report()
-        jobs=self.db.execute("SELECT url,expected_sha FROM downloads WHERE status!='downloaded' AND attempts<? ORDER BY url LIMIT ?",(attempts,limit)).fetchall()
+        jobs=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? ORDER BY url LIMIT ?",(attempts,limit)).fetchall()
         lock=threading.Lock();next_request={};spent=[0];exhausted=threading.Event()
         def take(n):
             with lock:
@@ -84,8 +99,8 @@ class Corpus:
                     exhausted.set();raise ValueError('Run byte budget exhausted; resume remaining URLs later')
                 spent[0]+=n
         def obtain(job):
-            url,pin=job
-            if fetch:data=fetch(url);take(len(data))
+            url,pin,transport=job;request_url=transport or url
+            if fetch:data=fetch(request_url);take(len(data))
             else:
                 host=urlparse(url).hostname
                 with lock:
@@ -93,7 +108,7 @@ class Corpus:
                 if delay:time.sleep(delay)
                 with requests.Session() as session:
                     session.headers.update({'User-Agent':USER_AGENT})
-                    with session.get(url,stream=True,allow_redirects=False,timeout=(10,45)) as response:
+                    with session.get(request_url,stream=True,allow_redirects=False,timeout=(10,45)) as response:
                         response.raise_for_status()
                         if response.status_code!=200:raise ValueError('Redirect/non-200 requires recataloguing')
                         data=bytearray()
@@ -118,7 +133,7 @@ class Corpus:
             while pending:
                 done,_=futures.wait(pending,return_when=futures.FIRST_COMPLETED)
                 for future in done:
-                    url,_=pending.pop(future)
+                    url,_,_=pending.pop(future)
                     try:
                         digest,size=future.result();state,error='downloaded',None
                     except (OSError,ValueError,requests.RequestException) as exc:

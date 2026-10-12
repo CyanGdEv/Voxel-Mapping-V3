@@ -9,13 +9,14 @@ import json
 import math
 from pathlib import Path
 import re
+import shutil
 import pymupdf
 from pypdf import PdfReader
 from pyproj import CRS
 from shapely.geometry import LineString,box
 from shapely.strtree import STRtree
 from .coordinate_text import coordinate_runs
-from .drawing_marks import extract_marks, mark_for_label
+from .drawing_marks import mark_for_label
 from .drawing_page_tools import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_span, VERSION as GLYPH_VERSION
@@ -23,12 +24,28 @@ from .survey_context import inspect_survey_context, VERSION as CONTEXT_VERSION
 from .survey_reference import inspect_reference_notes
 from .evidence_memory import EvidenceMemory, identity
 from .generation_cycles import atomic_json, file_hash
+from .survey_native import text_runs as native_trace_runs,marks as native_trace_marks,VERSION as NATIVE_VERSION
+from .drawing_page_tools import inspect_ocr_page
 
-VERSION='survey-station-discovery-v1'
+VERSION='survey-station-discovery-v2'
 NUMBER=r'[+-]?\d{1,9}(?:\.\d{1,6})?'
 ROW=re.compile(r'^CP:([A-Za-z0-9_.-]{1,64})\s+E=('+NUMBER+r')\s+N=('+NUMBER+r')(?:\s+Z=('+NUMBER+r'))?$')
 MARK=re.compile(r'^CP:([A-Za-z0-9_.-]{1,64})$')
 EPSG=re.compile(r'^EPSG\s*:\s*(\d{4,6})$',re.I)
+OCR_VERSION='survey-raster-coordinate-triage-v1'
+OCR_SIGNALS=re.compile(r'\b(?:station|survey|easting|northing|OSGB|OSTN|EPSG)\b|\b\d{6}(?:[EN])?\b',re.I)
+
+
+def raster_triage(page):
+    """Retain OCR leads only; never feed recognised numbers into survey references."""
+    summary,lines=inspect_ocr_page(page,timeout=20,max_side=3072,min_confidence=70)
+    selected=[line for line in lines if OCR_SIGNALS.search(line['text'])]
+    if len(selected)>64:raise ValueError('Raster coordinate lead budget exceeded')
+    text='\n'.join(line['text'] for line in selected)
+    return {'version':OCR_VERSION,'status':'unverified_raster_coordinate_leads' if selected else
+        'ocr_inspected_no_supported_coordinate_leads' if summary['status'] not in ('unavailable','withheld') else 'ocr_unavailable',
+        'ocr_summary':summary,'coordinate_leads':selected,'reference_notes':inspect_reference_notes(text),
+        'registration_verified':False,'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0}
 
 
 class SourcePages:
@@ -58,8 +75,15 @@ def inspect_page(native, rendered, sha, page):
     content=native.get_contents()
     if content is not None and any(op in (b'BMC',b'BDC') or (op==b'Tr' and int(args[0])==3) for args,op in content.operations):
         return {**report,'status':'withheld_visibility_adapter','reason':'Invisible/layered native coordinate text'}
-    try:runs=coordinate_runs(native)
-    except ValueError as error:return {**report,'status':'unsupported_native_coordinate_text','reason':str(error)}
+    try:
+        runs=coordinate_runs(native);report['text_adapter']='positioned_standard_font_operators'
+        if not runs:runs=native_trace_runs(rendered);report['text_adapter']=NATIVE_VERSION
+    except ValueError as error:
+        report['operator_adapter_reason']=str(error)
+        try:runs=native_trace_runs(rendered);report['text_adapter']=NATIVE_VERSION
+        except ValueError as fallback:return {**report,'status':'unsupported_native_coordinate_text','reason':str(fallback)}
+    if not runs and rendered.get_images():
+        return {**report,'status':'raster_page_requires_ocr','raster_triage':{'status':'awaiting_budgeted_ocr','coordinates_verified':False}}
     tables={};marks={};declarations=[]
     for run in runs:
         label=run['text'].strip()
@@ -71,7 +95,7 @@ def inspect_page(native, rendered, sha, page):
     if not tables and not declarations:return report
     traces=rendered.get_texttrace()
     if len(traces)>10000 or sum(len(t['chars']) for t in traces)>500000:raise ValueError('Survey glyph budget exceeded')
-    glyphs={};inverse=native_inverse(rendered)
+    glyphs={};screens={};inverse=native_inverse(rendered)
     for glyph in label_runs(traces):
         label=''.join(chr(c[0]) for c in glyph['chars']).strip()
         if ROW.fullmatch(label) or MARK.fullmatch(label) or EPSG.fullmatch(label):glyphs.setdefault(label,[]).append(glyph)
@@ -80,9 +104,13 @@ def inspect_page(native, rendered, sha, page):
         if len(matches)!=1:return False
         glyph=matches[0];point=pymupdf.Point(glyph['chars'][0][2])*inverse
         if math.dist([point.x,point.y],run['origin'])>1e-4:return False
-        return screen_span(rendered,glyph,zoom=24 if glyph['size']<4 else 6)['status']=='raster_consistent_candidate'
+        screen=screen_span(rendered,glyph,zoom=24 if glyph['size']<4 else 6)
+        screens[run['text'].strip()]=screen
+        return screen['status']=='raster_consistent_candidate'
     report['visible_epsg_candidates']=sorted({code for code,run in declarations if visible(run)})
-    attachments=extract_marks(native,reuse_allowed=True)
+    report['crs_glyph_screens']={run['text'].strip():screens[run['text'].strip()] for _,run in declarations if run['text'].strip() in screens}
+    try:attachments=native_trace_marks(rendered)
+    except ValueError as error:return {**report,'status':'withheld_native_mark_budget','reason':str(error)}
     # Retain only source strokes that remain visible after subsequent fills.
     # Glyph visibility alone cannot establish that a leader or crosshair survived.
     paths=rendered.get_drawings(extended=True);paints=rendered.get_bboxlog()
@@ -130,6 +158,7 @@ def inspect_page(native, rendered, sha, page):
                     record.update(status='source_bound_station_coordinate_candidate',local=point,
                         target=[float(match[2]),float(match[3])],printed_level=float(match[4]) if match[4] else None,
                         table_text=row['text'],table_text_origin=row['origin'],mark_text_origin=mark['origin'],
+                        table_glyph_screen=screens[row['text'].strip()],mark_glyph_screen=screens[mark['text'].strip()],
                         attachment_visibility_status='unique_source_strokes_without_later_covering_fill')
                 elif point is not None:record['status']='withheld_station_attachment_visibility'
                 else:record['status']='withheld_missing_unique_leader_mark'
@@ -178,11 +207,15 @@ def input_contract(config,resolve):
     if not enabled:return None
     manifest=settings.get('manifest',config.get('registration_qualification',{}).get('manifest',automatic.get('manifest')))
     return {'version':VERSION,'glyph_version':GLYPH_VERSION,'context_version':CONTEXT_VERSION,
+            'native_adapter_version':NATIVE_VERSION,
+            'ocr_version':OCR_VERSION,
+            'ocr_engine_sha256':file_hash(shutil.which('tesseract')) if settings.get('max_ocr_pages',4) and shutil.which('tesseract') else None,
             'manifest_sha256':file_hash(resolve(manifest)) if manifest else None}
 
 
-def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000):
+def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000,max_ocr_pages=4):
     if type(max_pages) is not int or not 1<=max_pages<=10000:raise ValueError('Bounded survey discovery page budget required')
+    if type(max_ocr_pages) is not int or not 0<=max_ocr_pages<=16:raise ValueError('OCR page budget must be 0..16')
     extraction=json.loads((Path(geometry)/'geometry-report.json').read_text())
     pages=corpus.db.execute('SELECT sha,page FROM geometry_pages WHERE version=? AND contract=? ORDER BY sha,page',
         (extraction['version'],extraction['contract'])).fetchall()
@@ -190,8 +223,21 @@ def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000):
     policies=json.loads(Path(manifest).read_text())['sources'] if manifest else []
     if len(policies)>10000 or len({s['id'] for s in policies})!=len(policies):raise ValueError('Distinct bounded station source policies required')
     pin=file_hash(manifest) if manifest else None
-    contract={'version':VERSION,'glyph_version':GLYPH_VERSION,'context_version':CONTEXT_VERSION,
-              'source_pages':pages,'manifest_sha256':pin,'max_pages':max_pages}
+    selected_ocr=[]
+    if max_ocr_pages:
+        with SourcePages() as opened:
+            for sha,number in pages:
+                path=corpus.root/'files'/f'{sha}.pdf'
+                if not re.fullmatch('[0-9a-f]{64}',sha) or file_hash(path)!=sha:raise ValueError('Survey source PDF checksum mismatch')
+                _,page=opened.get(path,number)
+                if page.get_images() and len(page.get_text().strip())<80:
+                    selected_ocr.append((sha,number))
+                    if len(selected_ocr)>=max_ocr_pages:break
+    engine=shutil.which('tesseract')
+    engine_pin=file_hash(engine) if engine else None
+    contract={'version':VERSION,'glyph_version':GLYPH_VERSION,'context_version':CONTEXT_VERSION,'native_adapter_version':NATIVE_VERSION,
+              'source_pages':pages,'manifest_sha256':pin,'max_pages':max_pages,'max_ocr_pages':max_ocr_pages,
+              'ocr_version':OCR_VERSION,'ocr_engine_sha256':engine_pin,'ocr_pages':selected_ocr}
     output=Path(output)/identity(contract);records=[];refs=[];facts=[];computed=reused=0
     with EvidenceMemory(store) as memory,SourcePages() as opened:
         for sha,number in pages:
@@ -199,13 +245,16 @@ def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000):
             if not re.fullmatch('[0-9a-f]{64}',sha) or file_hash(path)!=sha:raise ValueError('Survey source PDF checksum mismatch')
             policy=[s for s in policies if s.get('sha256')==sha]
             parents=[memory.put('source_policy',s,s) for s in policy]
-            inputs={'version':VERSION,'glyph_version':GLYPH_VERSION,'context_version':CONTEXT_VERSION,
-                    'document_sha256':sha,'page':number,'source_policy_sha256':identity(policy)}
+            inputs={'version':VERSION,'glyph_version':GLYPH_VERSION,'context_version':CONTEXT_VERSION,'native_adapter_version':NATIVE_VERSION,
+                    'document_sha256':sha,'page':number,'source_policy_sha256':identity(policy),
+                    'ocr_version':OCR_VERSION,'ocr_requested':(sha,number) in selected_ocr,
+                    'ocr_engine_sha256':engine_pin if (sha,number) in selected_ocr else None}
             cached=memory.get('survey_station_page',inputs,parents)
             if cached is not None:record=cached['payload'];reused+=1
             else:
                 native,rendered=opened.get(path,number)
                 record=inspect_page(native,rendered,sha,number)
+                if (sha,number) in selected_ocr:record['raster_triage']=raster_triage(rendered)
                 references,status=survey_references(record,policy)
                 record.update(reference_status=status,survey_references=references);computed+=1
             identifier=memory.put('survey_station_page',inputs,record,parents)
@@ -223,6 +272,7 @@ def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000):
             'reference_statuses':dict(Counter(r['reference_status'] for r in records)),
             'station_candidates':sum(len(r['candidates']) for r in records),
             'reference_count':len(refs),'ambiguous_station_ids':ambiguous,'page_facts':facts,
+            'ocr_pages':len(selected_ocr),'raster_triage_statuses':dict(Counter(r['raster_triage']['status'] for r in records if r.get('raster_triage'))),
             'output_sha256':hashes,'references_file':str((output/'survey-references.json').resolve()),
             'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0}
         if output.exists():
@@ -246,9 +296,10 @@ def main():
     from .planning_bulk import Corpus
     parser=argparse.ArgumentParser(description=__doc__)
     for key in ('corpus','geometry','store','output'):parser.add_argument('--'+key,required=True)
-    parser.add_argument('--manifest');args=parser.parse_args();corpus=Corpus(args.corpus)
+    parser.add_argument('--manifest');parser.add_argument('--max-ocr-pages',type=int,default=4)
+    args=parser.parse_args();corpus=Corpus(args.corpus)
     try:
-        report=run(corpus,args.geometry,args.store,args.output,manifest=args.manifest)
+        report=run(corpus,args.geometry,args.store,args.output,manifest=args.manifest,max_ocr_pages=args.max_ocr_pages)
         print(json.dumps({k:report[k] for k in ('pages','station_candidates','reference_count','page_statuses','run_pages','reused_pages')}))
     finally:corpus.close()
 

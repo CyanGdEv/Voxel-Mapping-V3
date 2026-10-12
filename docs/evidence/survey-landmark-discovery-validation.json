@@ -5,19 +5,25 @@
   "fresh_output_reuses_pages": 213,
   "limitations": [
     "Only explicit CP:id E=... N=... native station rows and unique leader marks are supported.",
-    "Unsupported pages and raster/custom-font tables remain unresolved, not certified absent.",
+    "Raster OCR yields unverified leads only; unresolved pages are not certified absent.",
     "Reference release requires independently verified survey policies; no automatic identity certification.",
     "A released registry still requires independent qualification on the target drawing."
   ],
+  "ocr_pages": 4,
   "output_sha256": {
-    "station-pages.jsonl": "89b9e52f44585daa5a639945e75ee04e4f39a52a58e8d42735a77e729a7c0576",
+    "station-pages.jsonl": "ed0abe6aa71e1e436507c1626b82494b3e7dea6401ffbd136742e16364f74ea0",
     "survey-references.json": "5f9398aae48a2158c58352370ec44acb9d2ec9d724356a8161147fbe8d6f48e1"
   },
   "page_statuses": {
-    "station_candidates_only": 122,
-    "unsupported_native_coordinate_text": 91
+    "raster_page_requires_ocr": 42,
+    "station_candidates_only": 171
   },
   "pages": 213,
+  "raster_triage_statuses": {
+    "awaiting_budgeted_ocr": 38,
+    "ocr_inspected_no_supported_coordinate_leads": 3,
+    "unverified_raster_coordinate_leads": 1
+  },
   "reference_count": 0,
   "reference_statuses": {
     "awaiting_unique_verified_survey_policy": 213
@@ -878,6 +884,6 @@
   ],
   "station_candidates": 0,
   "unchanged_resume_identical": true,
-  "version": "survey-station-discovery-v1",
+  "version": "survey-station-discovery-v2",
   "world_geometry_additions": 0
 }

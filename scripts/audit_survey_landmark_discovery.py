@@ -26,11 +26,11 @@ def main():
             raise ValueError('Station discovery recomputed unchanged evidence')
         receipt={'version':VERSION,'source_pages':first['contract']['source_pages'],
             **{k:first[k] for k in ('pages','page_statuses','reference_statuses','station_candidates',
-                'reference_count','ambiguous_station_ids','output_sha256')},
+                'reference_count','ambiguous_station_ids','output_sha256','ocr_pages','raster_triage_statuses')},
             'unchanged_resume_identical':True,'fresh_output_reuses_pages':replay['reused_pages'],
             'accepted_controls':0,'accepted_checkpoints':0,'world_geometry_additions':0,
             'limitations':['Only explicit CP:id E=... N=... native station rows and unique leader marks are supported.',
-                'Unsupported pages and raster/custom-font tables remain unresolved, not certified absent.',
+                'Raster OCR yields unverified leads only; unresolved pages are not certified absent.',
                 'Reference release requires independently verified survey policies; no automatic identity certification.',
                 'A released registry still requires independent qualification on the target drawing.']}
         atomic_json(args.output,receipt)

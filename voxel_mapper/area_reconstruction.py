@@ -146,7 +146,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
             entry['survey_landmark_discovery']=discover_stations(corpus,work/'drawing-geometry',
                 resolve(store) if store else root/'evidence-memory.sqlite',work/'survey-landmark-discovery',
                 manifest=resolve(landmark_manifest) if landmark_manifest else None,
-                max_pages=landmark_settings.get('max_pages',config.get('max_pages',1000)))
+                max_pages=landmark_settings.get('max_pages',config.get('max_pages',1000)),
+                max_ocr_pages=landmark_settings.get('max_ocr_pages',4))
             if landmark_settings.get('use_discovered_references',False):
                 discovered_references=Path(entry['survey_landmark_discovery']['references_file'])
         if frame_contract is not None:
