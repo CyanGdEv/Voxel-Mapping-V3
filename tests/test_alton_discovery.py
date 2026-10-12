@@ -1,5 +1,11 @@
 import unittest
-from voxel_mapper.alton_discovery import parse_attachments, document_role, merge_discovered,parse_application_results,search_applications
+import hashlib
+import json
+import tempfile
+from pathlib import Path
+from unittest.mock import MagicMock, patch
+import requests
+from voxel_mapper.alton_discovery import parse_attachments, document_role, merge_discovered,parse_application_results,search_applications,discover_attachments
 from voxel_mapper.survey_reference import inspect_reference_notes
 
 
@@ -53,6 +59,69 @@ class AltonDiscoveryTests(unittest.TestCase):
     def test_reference_mismatch_rejected(self):
         with self.assertRaises(ValueError):
             parse_attachments('SMD/2022/0230', self.application())
+
+    def discovery_seeds(self, count=1):
+        html = b"SMD/2022/0556 <a href=\"javascript:AppBlobImage('316054');\">Existing site plan</a>"
+        applications = [dict(self.application(), cached_page=f'files/page-{i}.html',
+                             cached_page_sha256=hashlib.sha256(html).hexdigest()) for i in range(count)]
+        return html, {'acquired_at': 'retained-test', 'applications': applications}
+
+    def test_partial_cache_fetches_missing_html_and_retains_current_page_identity(self):
+        html, seeds = self.discovery_seeds()
+        # A current application page can change. Its observed digest must not be
+        # represented as the original cached-page digest.
+        current = html+b'<p>Current page</p>'
+        session = MagicMock()
+        session.get.return_value.status_code = 200
+        session.get.return_value.iter_content.return_value = [current]
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                result = discover_attachments(session, root, cache=root)
+            self.assertEqual(result['status'], 'checked')
+            self.assertEqual(result['missing_download_attempts'], 1)
+            self.assertEqual(len(result['documents']), 1)
+            row = result['applications'][0]
+            self.assertEqual(row['page_sha256'], hashlib.sha256(current).hexdigest())
+            self.assertEqual(row['acquisition_method'], 'official_download')
+            self.assertEqual(Path(row['local_page']).read_bytes(), current)
+            self.assertFalse(result['complete_council_discovery'])
+        session.get.assert_called_once_with(seeds['applications'][0]['url'], timeout=(5, 10),
+                                            stream=True, allow_redirects=False)
+        session.get.return_value.close.assert_called_once()
+
+    def test_corrupt_and_escaped_html_do_not_trigger_recovery(self):
+        for cache_path in ['files/page-0.html', '../escaped.html']:
+            with self.subTest(cache_path=cache_path), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                _, seeds = self.discovery_seeds()
+                seeds['applications'][0]['cached_page'] = cache_path
+                if not cache_path.startswith('..'):
+                    (root/'files').mkdir()
+                    (root/cache_path).write_bytes(b'corrupted')
+                session = MagicMock()
+                with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                    result = discover_attachments(session, root, cache=root)
+                session.get.assert_not_called()
+                self.assertEqual(result['status'], 'partial')
+                self.assertEqual(result['applications'], [])
+
+    def test_outage_caps_missing_html_requests_but_keeps_later_cached_page(self):
+        html, seeds = self.discovery_seeds(6)
+        session = MagicMock()
+        session.get.side_effect = requests.ReadTimeout('outage')
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root/'files').mkdir()
+            (root/'files/page-5.html').write_bytes(html)
+            with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                result = discover_attachments(session, root, cache=root)
+            self.assertEqual(session.get.call_count, 3)
+            self.assertEqual(result['applications_deferred_council_outage'], 2)
+            self.assertEqual(result['applications_omitted'], 2)
+            self.assertEqual(result['status'], 'partial')
+            self.assertEqual(len(result['documents']), 1)
+            self.assertEqual(result['applications'][0]['acquisition_method'], 'hash_checked_cache')
 
     def test_ecological_surveys_do_not_displace_coordinate_surveys(self):
         self.assertEqual(document_role('2936 Master Land Survey'), ('topographical-survey', 0))

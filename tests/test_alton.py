@@ -74,7 +74,8 @@ class AltonTests(unittest.TestCase):
             payload = b'%PDF-test-payload'
             (root/'cached.pdf').write_bytes(payload)
             entries = [dict(url='https://publicaccess.staffsmoorlands.gov.uk/'+str(i),
-                            title=str(i), role='elevations', priority=40) for i in range(5)]
+                            title=str(i), role='elevations', priority=40,
+                            file=f'missing-{i}.pdf') for i in range(5)]
             entries.append(dict(url='https://publicaccess.staffsmoorlands.gov.uk/cached',
                                 title='Cached', role='context-report', priority=90,
                                 file='cached.pdf', sha256=hashlib.sha256(payload).hexdigest()))
@@ -100,9 +101,53 @@ class AltonTests(unittest.TestCase):
             path = root/entries[0]['file']
             path.parent.mkdir(parents=True)
             path.write_bytes(b'%PDF-corrupted')
-            with patch('voxel_mapper.council.inspect_pdf') as inspect:
+            with patch('voxel_mapper.alton_discovery.discover_attachments',
+                       return_value={'status': 'checked', 'documents': [], 'failures': []}), \
+                 patch('voxel_mapper.alton.download_pdf') as download, \
+                 patch('voxel_mapper.council.inspect_pdf') as inspect:
                 result = acquire_alton(root, cache=root, max_documents=1)
+            download.assert_not_called()
             inspect.assert_not_called()
             self.assertIn('checksum mismatch', result['failures'][0]['reason'])
             self.assertEqual(result['geometry_records'], [])
             self.assertEqual(result['status'], 'partial')
+
+    def test_missing_catalogued_pdf_is_downloaded_and_checked_against_original_pin(self):
+        payload = b'%PDF-original'
+        entry = dict(url='https://publicaccess.staffsmoorlands.gov.uk/plan',
+                     title='Section', role='elevations', file='files/missing.pdf',
+                     sha256=hashlib.sha256(payload).hexdigest())
+        for downloaded, expected_status in [(payload, 'inspected'), (b'%PDF-changed', 'unavailable')]:
+            with self.subTest(expected_status=expected_status), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                with patch('voxel_mapper.alton_discovery.discover_attachments',
+                           return_value={'status': 'checked', 'documents': [], 'failures': []}), \
+                     patch('voxel_mapper.alton_discovery.merge_discovered', return_value=[entry]), \
+                     patch('voxel_mapper.alton.download_pdf', return_value=downloaded) as download, \
+                     patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}) as inspect:
+                    result = acquire_alton(root, cache=root, max_documents=1)
+                download.assert_called_once()
+                row = result['documents'][0]
+                self.assertEqual(row['status'], expected_status)
+                self.assertEqual(row['cache_recovery_reason'], 'catalogued_pdf_missing')
+                if expected_status == 'inspected':
+                    self.assertEqual(Path(row['local_pdf']).read_bytes(), payload)
+                    self.assertEqual(row['acquisition_method'], 'official_download')
+                    self.assertEqual(row['hash_provenance'], 'matches_recovered_document')
+                else:
+                    inspect.assert_not_called()
+                    self.assertFalse((root/'planning-documents').exists())
+                    self.assertIn('checksum mismatch', row['reason'])
+
+    def test_missing_pdf_outside_cache_is_rejected_without_downloading(self):
+        entry = dict(url='https://publicaccess.staffsmoorlands.gov.uk/plan',
+                     title='Section', role='elevations', file='../escaped.pdf')
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            with patch('voxel_mapper.alton_discovery.discover_attachments',
+                       return_value={'status': 'checked', 'documents': [], 'failures': []}), \
+                 patch('voxel_mapper.alton_discovery.merge_discovered', return_value=[entry]), \
+                 patch('voxel_mapper.alton.download_pdf') as download:
+                result = acquire_alton(root, cache=root, max_documents=1)
+            download.assert_not_called()
+            self.assertIn('escapes corpus', result['documents'][0]['reason'])

@@ -151,24 +151,38 @@ def discover_attachments(session, output, cache=None, deadline=None, application
               'historical_seed_date': seeds['acquired_at'], 'complete_council_discovery': False}
     cache = Path(cache).resolve() if cache else None
     consecutive_failures = 0
+    result['missing_download_attempts'] = 0
+    result['applications_deferred_council_outage'] = 0
     for application in seeds['applications']:
         if deadline and time.monotonic() >= deadline:
             result['failures'].append({'reason': 'Application discovery deadline reached'})
             break
+        download_pending = False
         try:
-            if cache:
-                if not application['cached_page']:
-                    raise ValueError('Application HTML not present in recovered cache')
+            html = None
+            if cache and application.get('cached_page'):
                 path = (cache/application['cached_page']).resolve()
-                if not path.is_relative_to(cache) or path.stat().st_size > 2_000_000:
+                if not path.is_relative_to(cache):
                     raise ValueError('Invalid cached application HTML')
-                html = path.read_bytes()
-                if hashlib.sha256(html).hexdigest() != application['cached_page_sha256']:
+                try:
+                    if path.stat().st_size > 2_000_000:
+                        raise ValueError('Invalid cached application HTML')
+                    html = path.read_bytes()
+                except FileNotFoundError:
+                    pass
+                if html is not None and hashlib.sha256(html).hexdigest() != application['cached_page_sha256']:
                     raise ValueError('Application HTML checksum mismatch')
-            else:
+            acquisition_method = 'hash_checked_cache'
+            if html is None:
                 parsed = urlparse(application['url'])
                 if parsed.scheme != 'https' or parsed.hostname != HOST:
                     raise ValueError('Official HTTPS application URL required')
+                if consecutive_failures >= 3:
+                    result['applications_deferred_council_outage'] += 1
+                    continue
+                acquisition_method = 'official_download'
+                download_pending = True
+                result['missing_download_attempts'] += 1
                 response = session.get(application['url'], timeout=(5, 10), stream=True, allow_redirects=False)
                 try:
                     response.raise_for_status()
@@ -184,15 +198,21 @@ def discover_attachments(session, output, cache=None, deadline=None, application
                 finally:
                     response.close()
             documents = parse_attachments(html, application)
+            digest = hashlib.sha256(html).hexdigest()
+            page_path = Path(output)/'files'/f'{digest}.html'
+            page_path.parent.mkdir(parents=True, exist_ok=True)
+            page_path.write_bytes(html)
             result['documents'].extend(documents)
             result['applications'].append({'reference': application['reference'],
-                                           'attachment_count': len(documents), 'page_sha256': hashlib.sha256(html).hexdigest()})
-            consecutive_failures = 0
+                                           'attachment_count': len(documents), 'page_sha256': digest,
+                                           'local_page': str(page_path.resolve()),
+                                           'acquisition_method': acquisition_method})
+            if download_pending:
+                consecutive_failures = 0
         except (OSError, ValueError, requests.RequestException) as error:
             result['failures'].append({'reference': application['reference'], 'reason': str(error)})
-            consecutive_failures += 1
-            if not cache and consecutive_failures >= 3:
-                break
+            if download_pending:
+                consecutive_failures += 1
     result['applications_omitted'] = len(seeds['applications'])-len(result['applications'])-sum('reference' in f for f in result['failures'])
     if result['failures'] or result['applications_omitted']:
         result['status'] = 'partial'

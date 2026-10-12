@@ -86,12 +86,17 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
         result['application_search'] = 'historical_seed_full_attachment_pages'
         relevant = merge_discovered(relevant, discovery)
         result['discovered_document_count'] = len(relevant)
-        result['uncached_discovered_documents'] = sum('file' not in e for e in relevant) if cache else 0
+        def retained_file_available(entry):
+            if not cache or not entry.get('file'):
+                return False
+            path = (cache/entry['file']).resolve()
+            return path.is_relative_to(cache) and path.is_file()
+        result['uncached_discovered_documents'] = sum(not retained_file_available(e) for e in relevant) if cache else 0
         # A recovered cache supplements live acquisition; it must not permanently
         # exclude section/elevation attachments missing from the old prefetch.
         def acquisition_priority(item):
             index, entry = item
-            if cache and entry.get('file'):
+            if retained_file_available(entry):
                 return (0, 0, 0, 0, index)
             role_priority = {'elevations': 0, 'floor-plan': 1}.get(entry.get('role'), 2)
             proposed = entry.get('state') == 'proposed' or bool(re.search(r'\bprop(?:osed)?\b', entry['title'], re.I))
@@ -115,14 +120,20 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 url = urlparse(entry['url'])
                 if url.scheme != 'https' or url.hostname != HOST:
                     raise ValueError('Expected an official HTTPS drawing URL')
+                payload = None
                 if cache and entry.get('file'):
                     path = (cache/entry['file']).resolve()
                     if not path.is_relative_to(cache):
                         raise ValueError('Cache path escapes corpus directory')
-                    if path.stat().st_size > 10_000_000:
-                        raise ValueError('Document exceeds 10 MB inspection budget')
-                    payload = path.read_bytes()
-                else:
+                    # Only absence permits recovery. Corrupt, oversized or
+                    # unreadable retained evidence must remain a visible failure.
+                    try:
+                        if path.stat().st_size > 10_000_000:
+                            raise ValueError('Document exceeds 10 MB inspection budget')
+                        payload = path.read_bytes()
+                    except FileNotFoundError:
+                        row['cache_recovery_reason'] = 'catalogued_pdf_missing'
+                if payload is None:
                     if network_failures >= 3:
                         row.update(status='deferred_council_outage',
                                    reason='Three consecutive official drawing download failures')
@@ -188,7 +199,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
 def main():
     import argparse
     parser = argparse.ArgumentParser(description='Automatically inspect recovered Alton Towers planning PDFs')
-    parser.add_argument('--cache', help='Recovered planning-prefetch-selected directory; otherwise fetch official URLs')
+    parser.add_argument('--cache', help='Recovered planning directory; fetch missing files from official URLs')
     parser.add_argument('--output', required=True)
     parser.add_argument('--max-documents', type=int, default=153)
     args = parser.parse_args()
