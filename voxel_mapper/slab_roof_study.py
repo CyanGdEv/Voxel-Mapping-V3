@@ -93,6 +93,46 @@ def convert(model,cells):
                 existing.add(half%2)
                 m='dark_oak_planks' if len(existing)==2 else 'dark_oak_slab_top' if 1 in existing else 'dark_oak_slab'
                 output[p]=roof[p]=m;repairs.append({'cell':list(p),'added_half':half%2})
+    contact_repairs=[]
+    if model.get('require_roof_masonry_contact'):
+        # Whole-cell masonry protection can leave a wooden cap above a stone
+        # bottom slab. Connect that cap through a neighbouring wooden riser;
+        # never fill the stone's empty half or a declared window void.
+        for attempt in range(16):
+            occ=occupied_halves(output);todo=set(occ);anchored=set();floating=[]
+            while todo:
+                start=todo.pop();queue=[start];group={start};masonry=False
+                while queue:
+                    point=queue.pop();masonry=masonry or not occ[point].startswith('dark_oak')
+                    for axis in range(3):
+                        for step in (-1,1):
+                            q=list(point);q[axis]+=step;q=tuple(q)
+                            if q in todo:todo.remove(q);queue.append(q);group.add(q)
+                if masonry:anchored.update(group)
+                else:floating.append(group)
+            if not floating:break
+            group=min(floating,key=lambda g:min(g));candidates=[]
+            columns={(x//2,z//2) for x,y,z in group}
+            for x,z in sorted(columns):
+                target=min(y for hx,y,hz in group if hx//2==x and hz//2==z)
+                for q in ((x-1,z),(x+1,z),(x,z-1),(x,z+1)):
+                    if q not in tops:continue
+                    bases=[y for hx,y,hz in anchored if hx//2==q[0] and hz//2==q[1] and y<target and occ[hx,y,hz].startswith('dark_oak')]
+                    if not bases:continue
+                    base=max(bases)
+                    if target-base>4:continue
+                    additions=list(range(base+1,target+1))
+                    if any((q[0],q[1],h) in voids or output.get((q[0],h//2,q[1]),'dark_oak').startswith('dark_oak') is False for h in additions):continue
+                    candidates.append((len(additions),q,additions))
+            if not candidates:raise ValueError('Floating roof cap cannot connect without changing masonry or window air')
+            _,q,additions=min(candidates)
+            for half in additions:
+                pos=(q[0],half//2,q[1]);old=output.get(pos)
+                existing={1} if old and old.endswith('_top') else {0} if old and old.endswith('_slab') else {0,1} if old else set();existing.add(half%2)
+                m='dark_oak_planks' if len(existing)==2 else 'dark_oak_slab_top' if 1 in existing else 'dark_oak_slab'
+                output[pos]=roof[pos]=m
+            contact_repairs.append({'support_column':list(q),'added_vertical_halves':additions,'floating_columns':[list(p) for p in sorted(columns)]})
+        else:raise ValueError('Roof masonry-contact repair budget exceeded')
     if any(output.get(p)!=m for p,m in cells.items() if p not in wood):raise ValueError('Roof conversion changed non-roof cells')
     if any(m.startswith('dark_oak_stairs') for m in output.values()):raise ValueError('Wooden roof stairs remain')
     occupancy=occupied_halves(output)
@@ -134,4 +174,6 @@ def convert(model,cells):
            'caps_raised_above_retained_masonry':cap_adjustments,
            'retained_wall_collisions':len(blocked),'standing_passages_verified':True}
     audit['roof_window_air_halves_verified']=len(voids)
+    audit['floating_roof_cap_repairs']=contact_repairs
+    audit['roof_masonry_contact_verified']=bool(model.get('require_roof_masonry_contact'))
     return result,output,audit

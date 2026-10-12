@@ -38,5 +38,30 @@ class SlabRoofTests(unittest.TestCase):
         self.assertEqual(len(audit['masonry_edge_seal_repairs']),1)
         self.assertEqual(output[1,3,0],'dark_oak_slab')
 
+    def test_floating_cap_contacts_masonry_without_replacing_stone_half(self):
+        mesh=solid(Polygon([(0,5.5),(2,5.5),(2,5.25),(0,5.25)]),1,0,1)
+        model={'components':[{'id':'roof_shell','mesh':mesh}],'assumptions':[],'require_roof_masonry_contact':True}
+        cells={(x,y,0):'stone_bricks' for x in (0,1) for y in range(5)}
+        cells.update({(0,5,0):'stone_brick_slab',(0,6,0):'dark_oak_stairs_north',(1,5,0):'dark_oak_stairs_north'})
+        _,output,audit=convert(model,cells)
+        self.assertEqual(output[0,5,0],'stone_brick_slab')
+        self.assertTrue(audit['roof_masonry_contact_verified'])
+        self.assertEqual(len(audit['floating_roof_cap_repairs']),1)
+        occ=occupied_halves(output);todo={next(iter(occ))};seen=set()
+        while todo:
+            p=todo.pop();seen.add(p)
+            for axis in range(3):
+                for step in (-1,1):
+                    q=list(p);q[axis]+=step;q=tuple(q)
+                    if q in occ and q not in seen:todo.add(q)
+        self.assertEqual(seen,set(occ))
+
+    def test_cap_contact_repair_cannot_fill_reserved_window_air(self):
+        mesh=solid(Polygon([(0,5.5),(2,5.5),(2,5.25),(0,5.25)]),1,0,1)
+        model={'components':[{'id':'roof_shell','mesh':mesh}],'assumptions':[],'require_roof_masonry_contact':True,'roof_window_void_halves':[[1,0,11]]}
+        cells={(x,y,0):'stone_bricks' for x in (0,1) for y in range(5)}
+        cells.update({(0,5,0):'stone_brick_slab',(0,6,0):'dark_oak_stairs_north',(1,5,0):'dark_oak_stairs_north'})
+        with self.assertRaisesRegex(ValueError,'Floating roof cap'):convert(model,cells)
+
 
 if __name__=='__main__':unittest.main()

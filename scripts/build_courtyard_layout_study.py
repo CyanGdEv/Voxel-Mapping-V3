@@ -19,10 +19,12 @@ def main():
     p.add_argument('--roof-style',choices=('slabs','stairs'),default='slabs')
     p.add_argument('--facade-sources',type=Path,help='Folder containing checksum-named existing courtyard elevations')
     p.add_argument('--dormers',action='store_true',help='Add AL08 dormer fronts with explicit depth/roof-junction hypotheses')
+    p.add_argument('--south',action='store_true',help='Add AL07 frontage, split roofs, curtain and arch tower hypotheses')
     p.add_argument('--seed',type=Path,default=Path(__file__).resolve().parents[1]/'evidence/mutiny-full-courtyard-layout-seed.json')
     a=p.parse_args()
     if a.output.exists():p.error('Use a fresh output directory')
     if a.dormers and (not a.facade_sources or a.roof_style!='slabs'):p.error('Dormers require facade sources and slab roofs')
+    if a.south and (not a.facade_sources or a.roof_style!='slabs'):p.error('South assembly requires facade sources and slab roofs')
     evidence=Path(__file__).resolve().parents[1]/'evidence'
     recipe=evidence/'mutiny-north-wing-window-cycle-review-seed.json'
     recipes=json.loads(recipe.read_text())
@@ -54,19 +56,28 @@ def main():
             audit['dormer_review']=dormer_audit
             audit['facade_access_review']['west_dormers_withheld']=0
             tag='V11'
+        if a.south:
+            from voxel_mapper.courtyard_south_study import apply as apply_south,validate_source as validate_south
+            south_seed=json.loads((evidence/'mutiny-south-assembly-seed.json').read_text())
+            validate_south(south_seed,a.facade_sources/(south_seed['source_pdf_sha256']+'.pdf'))
+            model,cells,south_audit=apply_south(model,cells,south_seed)
+            audit['south_review']=south_audit
+            tag='V12'
     if a.roof_style=='slabs':
         from voxel_mapper.slab_roof_study import convert
         model['slab_conversion_passages']=model.get('slab_conversion_passages',[])+[r for r in audit['passages_and_doors'] if r['kind']=='passage']
+        before_conversion_cells=len(cells)
         model,cells,roof_audit=convert(model,cells)
         audit['slab_roof_conversion']=roof_audit
-        audit['pre_slab_surface_cells']=audit['surface_cells']
+        audit['pre_slab_layout_surface_cells']=audit['surface_cells']
+        audit['pre_slab_surface_cells']=before_conversion_cells
         audit['pre_slab_added_cells']=audit.pop('added_cells')
         audit['pre_slab_native_roof_join_rule']=audit['native_roof_join_rule']
         audit['native_roof_join_rule']='highest source surface sampled into slab courses; masonry collision and edge sealing adjustments retain non-roof cells'
         audit['north_cells_unchanged']=False
         audit['north_non_roof_cells_unchanged']=not bool(a.facade_sources)
         audit['surface_cells']=len(cells)
-        tag='V11' if a.dormers else 'V10' if a.facade_sources else 'V9'
+        tag='V12' if a.south else 'V11' if a.dormers else 'V10' if a.facade_sources else 'V9'
     (a.output/'courtyard-model.json').write_text(json.dumps(model,sort_keys=True,indent=2)+'\n')
     (a.output/'courtyard-audit.json').write_text(json.dumps(audit,sort_keys=True,indent=2)+'\n')
     (a.output/'layout-seed.json').write_text(a.seed.read_text())
@@ -89,7 +100,7 @@ def main():
     report={'voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':None,'vertical_datum':'STUDY_ZERO',
             'geographic_registration':None,'world_placement_eligible':False,'park_world_blocks_added':0,
             'spawn_local_xyz_m':[cx,0,cz],'courtyard_audit':audit,'limitations':model['assumptions']}
-    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — '+('WEST DORMERS V11' if tag=='V11' else 'WEST FACADE AND ACCESS V10' if tag=='V10' else 'SLAB ROOFS V9' if tag=='V9' else 'GROUND FLOOR LAYOUT V8'),ground_depth=4)
+    report['world']=export_world(voxel,world,report,name='Mutiny Full Courtyard — '+('SOUTH ASSEMBLY V12' if tag=='V12' else 'WEST DORMERS V11' if tag=='V11' else 'WEST FACADE AND ACCESS V10' if tag=='V10' else 'SLAB ROOFS V9' if tag=='V9' else 'GROUND FLOOR LAYOUT V8'),ground_depth=4)
     (world/'quality-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'status':model['status'],'rooms':len(model['rooms']),'audit':audit,'world':report['world']},indent=2))
 

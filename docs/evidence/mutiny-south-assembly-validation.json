@@ -1,0 +1,36 @@
+{
+  "source_south_openings": 18,
+  "split_main_roof_sections": 3,
+  "canopy": true,
+  "small_arch_towers": 2,
+  "corner_towers_reconstructed": false,
+  "curtain_slits_native_withheld": 3,
+  "tower_depth_and_curtain_setback_measured": false,
+  "all_standing_passages_verified": true,
+  "west_dormer_window_air_verified": true,
+  "roof_masonry_contact_verified": true,
+  "floating_roof_cap_repairs": 1,
+  "native_floor_connected_groups": 1,
+  "native_unsupported_components": 0,
+  "wooden_roof_stairs_remaining": 0,
+  "glazing_cells": 0,
+  "roof_templates_leaked": 0,
+  "glb_components_verified": 934,
+  "glb_accessor_bounds_and_normals_verified": true,
+  "regression": {
+    "expected_tests": 1095,
+    "tests_run": 1095,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "final_focused_tests_passed": 15,
+  "world": {
+    "sha256": "ee6ef84fb0993edb0ffc27d0ad213af6ac1d5d48149be5aef8a9616c1d9a715d",
+    "composed_blocks": 22726,
+    "chunks": 20,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified"
+  },
+  "accepted_park_blocks_added": 0,
+  "physical_registration_verified": false
+}

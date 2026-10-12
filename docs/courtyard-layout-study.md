@@ -46,6 +46,23 @@ rear curtain, corner towers and canopy need matching plan depths before that
 façade can replace the provisional south range safely. See
 `docs/evidence/mutiny-south-profile-review.json`.
 
+V12 (`--facade-sources /path/to/pdfs --dormers --south`) assembles the south
+frontage from AL07's existing view. Its direction is reversed along the left
+plan range, supported by the three doorway positions. Eighteen frontage
+silhouettes include fourteen windows, three doors and archway 1. Separate
+main/raised-arch/hidden-right roof sections replace the single bar; a low canopy
+projects in front of the taller curtain. Two small arch towers use source front
+widths and heights with provisional depth and merlons. Adjacent corner towers
+remain withheld because their plan correspondence is unresolved.
+
+Curtain setback, tower depth, hidden roof pitch and rear closures are hypotheses.
+The single source floor reference does not establish a level or geographic datum.
+Three Gothic curtain slits are retained in the exact mesh but withheld from
+certified native apertures because they are narrower than half a metre.
+The south arch has four full standing-air columns across the range depth.
+Slab conversion checks for detached wooden caps at masonry aliases and can add
+a bounded adjacent wooden riser; it cannot change masonry or reserved window air.
+
 The new layout is an explicit manual raster-sampled hypothesis. Wall centre-lines,
 room rectangles and plan doorway cuts are approximations, not accepted original
 PDF vector geometry. New heights, wall thicknesses, window sills/heads, symmetric

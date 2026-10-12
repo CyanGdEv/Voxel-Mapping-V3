@@ -1,0 +1,641 @@
+{
+  "version": "courtyard-south-assembly-study-v1",
+  "hypotheses_acknowledged": true,
+  "source_pdf_sha256": "cd5ddf8a912dc07ba2059d6af28b7b047c9146135f7a3f9ca984c4a03ed1506b",
+  "source_render_samples_sha256": "493bfb8c095dd20ab5ff22669a5ba45c9277b04fc0c9a7da3b8375123d5eda4a",
+  "caption": "South Range Courtyard (north) Elevation 'as existing'",
+  "view_scale_denominator": 50,
+  "floor_reference_pixel_y": 558,
+  "left_anchor_pixel_x": 165,
+  "left_anchor_plan_pixel_y": 991,
+  "view_direction": "image increasing x maps to decreasing model frontage X",
+  "front_plan_pixel_x": 415,
+  "rear_plan_pixel_x": 222,
+  "wall_thickness_m": 0.4,
+  "curtain_setback_m": 1.2,
+  "canopy_overhang_m": 0.9,
+  "tower_depth_m": 2.3,
+  "tower_setback_from_rear_m": 0,
+  "depths_measured": false,
+  "roof_vertical_thickness_m": 0.25,
+  "front_sections": [
+    {
+      "id": "main",
+      "pixel_x": [
+        165,
+        728
+      ],
+      "wall_top_pixel_y": 351,
+      "roof_eave_pixel_y": 351,
+      "roof_ridge_pixel_y": 249
+    },
+    {
+      "id": "arch",
+      "pixel_x": [
+        728,
+        979
+      ],
+      "wall_top_pixel_y": 315,
+      "roof_eave_pixel_y": 315,
+      "roof_ridge_pixel_y": 210
+    },
+    {
+      "id": "low",
+      "pixel_x": [
+        979,
+        1546
+      ],
+      "wall_top_pixel_y": 420,
+      "canopy_front_pixel_y": 420,
+      "canopy_back_pixel_y": 414,
+      "hidden_roof_measured": false,
+      "hidden_roof_eave_display_m": 3.9714938271604936,
+      "hidden_roof_ridge_display_m": 5.6769
+    }
+  ],
+  "towers": [
+    {
+      "id": "south_arch_tower_left",
+      "pixel_x": [
+        650,
+        750
+      ],
+      "shaft_top_pixel_y": 145,
+      "crest_pixel_y": 107
+    },
+    {
+      "id": "south_arch_tower_right",
+      "pixel_x": [
+        957,
+        1057
+      ],
+      "shaft_top_pixel_y": 145,
+      "crest_pixel_y": 107
+    }
+  ],
+  "curtain": {
+    "pixel_x": [
+      1057,
+      1546
+    ],
+    "valley_pixel_y": 289,
+    "crest_pixel_y": 262,
+    "crest_intervals": [
+      [
+        1057,
+        1127
+      ],
+      [
+        1141,
+        1209
+      ],
+      [
+        1225,
+        1296
+      ],
+      [
+        1310,
+        1379
+      ],
+      [
+        1394,
+        1466
+      ],
+      [
+        1481,
+        1546
+      ]
+    ]
+  },
+  "openings": [
+    {
+      "id": "w1.01",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          256,
+          514
+        ],
+        [
+          256,
+          471
+        ],
+        [
+          279,
+          471
+        ],
+        [
+          279,
+          514
+        ]
+      ]
+    },
+    {
+      "id": "w1.02",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          301,
+          516
+        ],
+        [
+          301,
+          474
+        ],
+        [
+          385,
+          474
+        ],
+        [
+          385,
+          516
+        ]
+      ]
+    },
+    {
+      "id": "w1.03",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          409,
+          516
+        ],
+        [
+          409,
+          474
+        ],
+        [
+          465,
+          474
+        ],
+        [
+          465,
+          516
+        ]
+      ]
+    },
+    {
+      "id": "w1.04",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          625,
+          518
+        ],
+        [
+          625,
+          474
+        ],
+        [
+          714,
+          474
+        ],
+        [
+          714,
+          518
+        ]
+      ]
+    },
+    {
+      "id": "w1.05",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1105,
+          516
+        ],
+        [
+          1105,
+          474
+        ],
+        [
+          1196,
+          474
+        ],
+        [
+          1196,
+          516
+        ]
+      ]
+    },
+    {
+      "id": "w1.06",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1238,
+          502
+        ],
+        [
+          1238,
+          482
+        ],
+        [
+          1288,
+          482
+        ],
+        [
+          1288,
+          502
+        ]
+      ]
+    },
+    {
+      "id": "w1.07",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1350,
+          502
+        ],
+        [
+          1350,
+          482
+        ],
+        [
+          1400,
+          482
+        ],
+        [
+          1400,
+          502
+        ]
+      ]
+    },
+    {
+      "id": "w1.08",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          1445,
+          515
+        ],
+        [
+          1445,
+          474
+        ],
+        [
+          1535,
+          474
+        ],
+        [
+          1535,
+          515
+        ]
+      ]
+    },
+    {
+      "id": "w1.10",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          213,
+          410
+        ],
+        [
+          213,
+          371
+        ],
+        [
+          262,
+          371
+        ],
+        [
+          262,
+          410
+        ]
+      ]
+    },
+    {
+      "id": "w1.11",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          293,
+          410
+        ],
+        [
+          293,
+          371
+        ],
+        [
+          319,
+          371
+        ],
+        [
+          319,
+          410
+        ]
+      ]
+    },
+    {
+      "id": "w1.12",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          404,
+          410
+        ],
+        [
+          404,
+          372
+        ],
+        [
+          454,
+          372
+        ],
+        [
+          454,
+          410
+        ]
+      ]
+    },
+    {
+      "id": "w1.13",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          532,
+          410
+        ],
+        [
+          532,
+          371
+        ],
+        [
+          580,
+          371
+        ],
+        [
+          580,
+          410
+        ]
+      ]
+    },
+    {
+      "id": "w1.14",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          647,
+          410
+        ],
+        [
+          647,
+          372
+        ],
+        [
+          695,
+          372
+        ],
+        [
+          695,
+          410
+        ]
+      ]
+    },
+    {
+      "id": "w1.15",
+      "kind": "window",
+      "pixel_ring": [
+        [
+          830,
+          379
+        ],
+        [
+          830,
+          326
+        ],
+        [
+          877,
+          326
+        ],
+        [
+          877,
+          379
+        ]
+      ]
+    },
+    {
+      "id": "d1.01",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          180,
+          558
+        ],
+        [
+          180,
+          471
+        ],
+        [
+          207,
+          471
+        ],
+        [
+          207,
+          558
+        ]
+      ]
+    },
+    {
+      "id": "d1.02",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          534,
+          558
+        ],
+        [
+          534,
+          478
+        ],
+        [
+          600,
+          478
+        ],
+        [
+          600,
+          558
+        ]
+      ]
+    },
+    {
+      "id": "d1.03",
+      "kind": "door",
+      "pixel_ring": [
+        [
+          997,
+          558
+        ],
+        [
+          997,
+          475
+        ],
+        [
+          1081,
+          475
+        ],
+        [
+          1081,
+          558
+        ]
+      ]
+    },
+    {
+      "id": "archway_1",
+      "kind": "archway",
+      "pixel_ring": [
+        [
+          773,
+          558
+        ],
+        [
+          773,
+          438
+        ],
+        [
+          780,
+          427
+        ],
+        [
+          795,
+          416
+        ],
+        [
+          816,
+          408
+        ],
+        [
+          841,
+          404
+        ],
+        [
+          865,
+          405
+        ],
+        [
+          889,
+          410
+        ],
+        [
+          908,
+          421
+        ],
+        [
+          923,
+          438
+        ],
+        [
+          923,
+          558
+        ]
+      ]
+    }
+  ],
+  "curtain_slits": [
+    {
+      "id": "south_gothic_slit_1",
+      "pixel_ring": [
+        [
+          1169,
+          414
+        ],
+        [
+          1169,
+          369
+        ],
+        [
+          1172,
+          363
+        ],
+        [
+          1177,
+          360
+        ],
+        [
+          1182,
+          363
+        ],
+        [
+          1185,
+          369
+        ],
+        [
+          1185,
+          414
+        ]
+      ],
+      "native_status": "exact mesh only; sub-half-metre opening cannot be certified in a one-metre native wall"
+    },
+    {
+      "id": "south_gothic_slit_2",
+      "pixel_ring": [
+        [
+          1291,
+          414
+        ],
+        [
+          1291,
+          369
+        ],
+        [
+          1294,
+          363
+        ],
+        [
+          1299,
+          360
+        ],
+        [
+          1304,
+          363
+        ],
+        [
+          1307,
+          369
+        ],
+        [
+          1307,
+          414
+        ]
+      ],
+      "native_status": "exact mesh only; sub-half-metre opening cannot be certified in a one-metre native wall"
+    },
+    {
+      "id": "south_gothic_slit_3",
+      "pixel_ring": [
+        [
+          1412,
+          414
+        ],
+        [
+          1412,
+          369
+        ],
+        [
+          1415,
+          363
+        ],
+        [
+          1420,
+          360
+        ],
+        [
+          1425,
+          363
+        ],
+        [
+          1428,
+          369
+        ],
+        [
+          1428,
+          414
+        ]
+      ],
+      "native_status": "exact mesh only; sub-half-metre opening cannot be certified in a one-metre native wall"
+    }
+  ],
+  "corner_towers_withheld": "Corner towers are shown as adjacent returns; their plan footprints and correspondence are not established."
+}
