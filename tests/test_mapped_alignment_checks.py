@@ -79,6 +79,26 @@ class HeldOutMapTests(unittest.TestCase):
         self.assertEqual(check(objects,refs,fits+copy.deepcopy(fits),expected_scale=.1)['status'],'withheld')
         self.assertEqual(check(objects,refs,fits,expected_scale=.1,search_flags=['seed_fit_budget_exhausted'])['status'],'withheld')
 
+    def test_one_passing_correspondence_set_can_be_selected_among_failed_sets(self):
+        objects,refs,fits=self.fixture();bad=copy.deepcopy(fits[0]);bad['supports']=bad['supports'][:3]
+        result=check(objects,refs,[bad,fits[0]],expected_scale=.1)
+        self.assertEqual(result['status'],'map_consistent_candidate')
+        self.assertEqual(result['selected_hypothesis_index'],1)
+        self.assertEqual(result['hypotheses'][0]['status'],'withheld')
+        capped=check(objects,refs,[bad,fits[0]],expected_scale=.1,search_flags=['hypothesis_budget_exhausted'])
+        self.assertEqual(capped['status'],'withheld');self.assertIsNone(capped['selected_hypothesis_index'])
+        self.assertIn('map_hypothesis_budget_exhausted',capped['blockers'])
+
+    def test_good_correspondences_cannot_approve_an_incorrect_export_pose(self):
+        objects,refs,fits=self.fixture()
+        fits[0].update(matrix=[[.1,0],[0,.1]],translation_m=[400002,300000])
+        result=check(objects,refs,fits,expected_scale=.1)
+        self.assertEqual(result['status'],'withheld')
+        self.assertTrue(all(c['passed'] for c in result['hypotheses'][0]['held_out_checks']))
+        self.assertIn('proposal_transform_boundary_disagreement',result['hypotheses'][0]['reasons'])
+        fits[0]['translation_m']=[400000,300000]
+        self.assertEqual(check(objects,refs,fits,expected_scale=.1)['status'],'map_consistent_candidate')
+
     def test_invalid_thresholds_are_refused(self):
         objects, refs, fits = self.fixture()
         for options in [{'expected_scale':True},{'expected_scale':float('nan')},{'tolerance_m':2},

@@ -17,11 +17,12 @@ from .evidence_memory import EvidenceMemory,identity
 from .mapped_sheet_placement import propose,placed,VERSION as MATCH_VERSION
 from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK_VERSION
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
+from .osm_network_graph import VERSION as NETWORK_GRAPH_VERSION
 from .osm_targeted_recovery import recover as recover_targeted,VERSION as TARGETED_VERSION
 from .osm_outline_review import review as review_outlines,VERSION as OUTLINE_REVIEW_VERSION
 from .osm_landmark_context import bind_labels,topology_checks,VERSION as CONTEXT_VERSION,GLYPH_VERSION
 
-VERSION='osm-provisional-alignment-v6'
+VERSION='osm-provisional-alignment-v8'
 
 
 def recover_outlines(data):
@@ -125,7 +126,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
         (extraction['version'],extraction['contract'])).fetchall()
     if len(pages)!=extraction['pages'] or len(pages)>max_pages:raise ValueError('OSM alignment page inventory budget/change')
     contract={'version':VERSION,'match_version':MATCH_VERSION,'check_version':CHECK_VERSION,'recovery_version':RECOVERY_VERSION,
-        'targeted_recovery_version':TARGETED_VERSION,'outline_review_version':OUTLINE_REVIEW_VERSION,'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
+        'network_graph_version':NETWORK_GRAPH_VERSION,'targeted_recovery_version':TARGETED_VERSION,'outline_review_version':OUTLINE_REVIEW_VERSION,'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
         'name_ocr_engine_sha256':file_hash(shutil.which('tesseract')) if shutil.which('tesseract') else None,
         'native_render_engine':pymupdf.VersionBind,
         'geometry_sha256':file_hash(feed),'osm_sha256':osm_sha,'target_crs':target_crs,
@@ -183,8 +184,8 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                     record['outline_investigation']=review_outlines(objects,refs,review,list(source_records.values()))
                     record['network_diagnostics']=topology_checks(data['candidates'],map_lines,proposal['hypotheses'])
                     if review['status']=='map_consistent_candidate':
-                        fit=proposal['hypotheses'][0];domain=shape(fit['mapped_support_envelope'])
-                        residual=max(r['boundary_error_m'] for r in review['hypotheses'][0]['held_out_checks'])
+                        selected=review['selected_hypothesis_index'];fit=proposal['hypotheses'][selected];domain=shape(fit['mapped_support_envelope'])
+                        residual=max(r['boundary_error_m'] for r in review['hypotheses'][selected]['held_out_checks'])
                         record['uncertainty']={'held_out_map_disagreement_m':residual,'absolute_position_error_m':None,
                             'reason':'OSM and discovered correspondences are not independent survey evidence'}
                         for candidate in data['candidates']:

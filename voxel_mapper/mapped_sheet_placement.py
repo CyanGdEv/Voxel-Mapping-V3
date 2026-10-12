@@ -18,7 +18,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v10'
+VERSION = 'mapped-sheet-placement-v11'
 
 
 def placed(geometry, fit):
@@ -105,7 +105,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
         edges.sort(key=lambda e:e[0]);search['eligible_seed_pairs']=len(edges)
     search['scheduled_seed_pairs']=min(len(edges),total_fit_budget)
     search['deferred_seed_pairs']=search['eligible_seed_pairs']-search['scheduled_seed_pairs']
-    attempted=0;orientation_trials=0;hypotheses=[];attempted_objects=set()
+    attempted=0;orientation_trials=0;hypotheses=[];attempted_objects=set();hypothesis_overflow=False
     def support(fit):
         hits=[]
         centres=local_centres@np.asarray(fit['matrix']).T+fit['translation_m']
@@ -173,16 +173,21 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             # Domain uses whole supported outlines, and is explicitly unverified.
             hull=MultiPoint([xy for h in supports for xy in placed(by_id[h['candidate_id']]['geometry'],fit).exterior.coords]).convex_hull
             fit['mapped_support_envelope']=mapping(hull)
-            if any(np.allclose(fit['matrix'],h['matrix'],rtol=0,atol=fit['scale_metres_per_pdf_point']*.001) and np.allclose(fit['translation_m'],h['translation_m'],rtol=0,atol=1.) for h in hypotheses):continue
+            # Different correspondence inventories need different held-out
+            # checks even when their inferred poses occupy the same location.
+            pairs=sorted((h['candidate_id'],h['reference_id']) for h in supports)
+            duplicate=next((i for i,h in enumerate(hypotheses) if
+                sorted((s['candidate_id'],s['reference_id']) for s in h['supports'])==pairs),None)
+            if duplicate is not None:
+                if fit['centroid_rms_m']<hypotheses[duplicate]['centroid_rms_m']:hypotheses[duplicate]=fit
+                continue
             hypotheses.append(fit)
+            if len(hypotheses)>12:
+                hypothesis_overflow=True
+                hypotheses.sort(key=lambda h:(-len(h['supports']),h['centroid_rms_m'],h['seed_candidate_id'],h['seed_reference_id']))
+                hypotheses.pop()
     hypotheses.sort(key=lambda h:(-len(h['supports']),h['centroid_rms_m'],h['seed_candidate_id'],h['seed_reference_id']))
-    # Fits at the same location may differ within map uncertainty. Different
-    # locations remain separate alternatives, never silently auto-selected.
-    best=[]
-    for h in hypotheses:
-        if any(max(placed(by_id[o['candidate_id']]['geometry'],h).centroid.distance(placed(by_id[o['candidate_id']]['geometry'],b).centroid) for o in seeds[:8])<=tolerance_m for b in best):continue
-        best.append(h)
-        if len(best)>=12:break
+    best=hypotheses[:12]
     flags=[]
     search['max_seed_batches']=max_seed_batches
     search['fits_per_batch']=max_seed_fits
@@ -191,6 +196,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     search['untried_seed_objects']=len(seeds)-len(attempted_objects)
     if search['deferred_seed_pairs']:flags.append('seed_fit_budget_exhausted')
     if expected_scale is None and len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
+    if hypothesis_overflow:flags.append('hypothesis_budget_exhausted')
     if len(best)>1:flags.append('multiple_mapped_placements')
     return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'seed_search':search,'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'expected_scale':expected_scale,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 

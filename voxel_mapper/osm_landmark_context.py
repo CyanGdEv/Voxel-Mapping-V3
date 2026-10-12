@@ -17,7 +17,7 @@ from .drawing_page_tools import native_inverse
 from .glyph_visibility import screen_span,VERSION as GLYPH_VERSION
 from .mapped_sheet_placement import placed
 
-VERSION='osm-landmark-context-v4'
+VERSION='osm-landmark-context-v5'
 
 
 def raster_name_agreement(page,run,text):
@@ -140,7 +140,14 @@ def topology_checks(parents,map_lines,hypotheses):
          and not c.get('curve_approximation',{}).get('cubic_segments')]
     if not hypotheses:return {'status':'awaiting_map_pose','source_line_candidates':len(raw),'osm_path_lines':len(map_lines),
         'registration_verified':False,'physical_identity_verified':False}
-    try:local=junctions(raw);mapped=junctions(map_lines)
+    from .osm_network_graph import disk_junctions
+    def bounded(lines):
+        try:return junctions(lines),{'mode':'bounded_memory_graph'}
+        except ValueError as error:
+            if str(error)!='Network vertex budget exceeded':raise
+            return disk_junctions(lines)
+    try:
+        local,source_graph=bounded(raw);mapped,map_graph=bounded(map_lines)
     except ValueError as error:return {'status':'network_budget_withheld','reason':str(error),'registration_verified':False}
     if len(local)>2000 or len(mapped)>2000:return {'status':'junction_budget_withheld','registration_verified':False}
     reference_index=STRtree([Point(r['point']) for r in mapped]);reviews=[]
@@ -155,6 +162,6 @@ def topology_checks(parents,map_lines,hypotheses):
         distinct=[a for a in associations if counts[a['reference_junction']]==1]
         reviews.append({'unique_junction_matches':distinct,'ambiguous_reference_reuse':len(associations)-len(distinct)})
     return {'status':'unclassified_source_network_diagnostics','source_junctions':len(local),'osm_path_junctions':len(mapped),
-        'hypotheses':reviews,'registration_verified':False,'physical_identity_verified':False,
+        'hypotheses':reviews,'source_graph':source_graph,'map_graph':map_graph,'registration_verified':False,'physical_identity_verified':False,
         'limitations':['CAD lines may be walls, fences or contours; network agreement does not verify path identity.',
                        'Open path crossings without an explicit shared vertex do not create junctions.']}

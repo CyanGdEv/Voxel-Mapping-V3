@@ -5,7 +5,7 @@ import numpy as np
 from shapely.affinity import translate
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v5'
+VERSION = 'held-out-map-alignment-v7'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -83,13 +83,28 @@ def check(objects, references, hypotheses, *, expected_scale=None,
                         'source_to_map_area_ratio':polygon.area/reference.area,
                         'diagnostic_only':True,'registration_verified':False}})
             if any(not row['passed'] for row in checks): reasons.append('held_out_boundary_or_scale_disagreement')
+        proposal_checks=[]
+        if 'matrix' in hypothesis and 'translation_m' in hypothesis and pairs and all(a in by_id and b in refs and by_id[a].geom_type=='Polygon' and refs[b].geom_type=='Polygon' for a,b in pairs):
+            # Passing discovered correspondences cannot approve a different
+            # exported pose. Check the supplied proposal without refitting it.
+            for a,b in pairs:
+                polygon=placed(by_id[a],hypothesis);reference=refs[b]
+                iou=polygon.intersection(reference).area/polygon.union(reference).area
+                error=polygon.boundary.hausdorff_distance(reference.boundary)
+                passed=iou>=min_iou and error<=tolerance_m and len(polygon.interiors)==len(reference.interiors)
+                proposal_checks.append({'candidate_id':a,'reference_id':b,'intersection_over_union':iou,
+                    'boundary_error_m':error,'passed':passed})
+            if any(not row['passed'] for row in proposal_checks):reasons.append('proposal_transform_boundary_disagreement')
         reviews.append({'status': 'map_consistent_candidate' if not reasons else 'withheld',
-                        'reasons': reasons, 'held_out_checks': checks})
+                        'reasons': reasons, 'held_out_checks': checks,'proposal_boundary_checks':proposal_checks})
     blockers = []
-    if len(hypotheses) != 1: blockers.append('requires_one_unambiguous_map_hypothesis')
+    passing=[i for i,r in enumerate(reviews) if r['status']=='map_consistent_candidate']
+    if len(passing)!=1:blockers.append('requires_one_unambiguous_map_hypothesis')
+    if 'hypothesis_budget_exhausted' in search_flags:blockers.append('map_hypothesis_budget_exhausted')
     if 'seed_fit_budget_exhausted' in search_flags: blockers.append('map_search_budget_exhausted')
-    qualified = len(reviews) == 1 and reviews[0]['status'] == 'map_consistent_candidate' and not blockers
+    qualified = len(passing)==1 and not blockers
     return {'version': VERSION, 'status': 'map_consistent_candidate' if qualified else 'withheld',
+            'selected_hypothesis_index':passing[0] if qualified else None,
             'expected_metres_per_pdf_point': expected_scale, 'tolerance_m': tolerance_m,
             'min_iou': min_iou, 'scale_tolerance': scale_tolerance,
             'blockers': blockers, 'hypotheses': reviews, 'registration_verified': False,

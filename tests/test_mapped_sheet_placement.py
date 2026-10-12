@@ -146,6 +146,22 @@ class MappedPlacementTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'batch budget'):
                 propose(objects,refs,max_seed_batches=value)
 
+    def test_nearby_different_correspondence_sets_survive_pose_deduplication(self):
+        objects,refs=self.fixture()
+        alternate={**objects[2],'candidate_id':'alternative','geometry':translate(objects[2]['geometry'],.5,0)}
+        result=propose(objects+[alternate],refs,expected_scale=2)
+        inventories={tuple(sorted((s['candidate_id'],s['reference_id']) for s in h['supports'])) for h in result['hypotheses']}
+        self.assertGreaterEqual(len(inventories),2)
+        self.assertTrue(any(any(a=='alternative' for a,b in pairs) for pairs in inventories))
+
+    def test_excess_correspondence_hypotheses_report_budget_exhaustion(self):
+        objects,refs=self.fixture()
+        alternatives=[{**r,'id':f'{i}/'+r['id'],'geometry':translate(r['geometry'],i*1000,0)}
+            for i in range(13) for r in refs]
+        result=propose(objects,alternatives,expected_scale=2,max_seed_fits=2000)
+        self.assertEqual(len(result['hypotheses']),12)
+        self.assertIn('hypothesis_budget_exhausted',result['review_flags'])
+
     def test_hole_topology_mismatch_cannot_supply_support(self):
         objects,refs=self.fixture()
         g=refs[2]['geometry'];x,y=g.centroid.coords[0]
