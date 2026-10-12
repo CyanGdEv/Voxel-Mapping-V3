@@ -281,7 +281,7 @@ def run(corpus,geometry,store,output,*,manifest=None,max_pages=1000,max_ocr_page
                     or identity(json.loads((output/'survey-references.json').read_text()))!=hashes['survey-references.json']):
                 raise ValueError('Station discovery output changed')
         else:
-            output.mkdir(parents=True);(output/'station-pages.jsonl').write_text(payload)
+            output.mkdir(parents=True);(output/'station-pages.jsonl').write_bytes(payload.encode('utf-8'))
             atomic_json(output/'survey-references.json',{'landmarks':refs})
         for sha in {s for s,_ in pages}:
             if file_hash(corpus.root/'files'/f'{sha}.pdf')!=sha:raise ValueError('Survey source PDF changed')

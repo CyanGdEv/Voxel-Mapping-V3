@@ -18,7 +18,7 @@ def file_hash(path):
 def atomic_json(path, data):
     path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix+'.partial')
-    temporary.write_text(json.dumps(data, indent=2, sort_keys=True)+'\n')
+    temporary.write_text(json.dumps(data, indent=2, sort_keys=True)+'\n',encoding='utf-8',newline='\n')
     temporary.replace(path)
 
 

@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - pyproject.toml
       - voxel_mapper/overture.py
       - voxel_mapper/overture_worker.py
       - scripts/check_overture.py

@@ -157,7 +157,7 @@ def run(corpus, geometry, store, output, *, manifest=None, references=None, max_
                 raise ValueError('Qualification inputs or outputs changed')
         else:
             output.mkdir(parents=True)
-            (output/'page-frames.jsonl').write_text(payload)
+            (output/'page-frames.jsonl').write_bytes(payload.encode('utf-8'))
         # Recheck original bytes and ancestry before publishing/reusing a receipt.
         for sha in {sha for sha, _ in pages}:
             if file_hash(corpus.root/'files'/f'{sha}.pdf') != sha: raise ValueError('Qualification source PDF changed')

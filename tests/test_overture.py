@@ -123,7 +123,8 @@ class OvertureTests(unittest.TestCase):
     def test_automatic_pipeline_inserts_building_and_packages_quality_and_attribution(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);config,collection=fixtures.TerrainTests().fixture(root)
-            source={'id':'dem','url':'https://example.org','license':'CC0','resolution_m':1}
+            source={'id':'dem','url':'https://example.org','license':'CC0','resolution_m':1,
+                    'attribution':'Terrain survey \u2013 \u5730\u5f62'}
             discovery={'provider':'overture-buildings','status':'downloaded','release':'2026-09-23.1','failures':[],'feature_count':1}
             with patch('voxel_mapper.pipeline.acquire_terrain',return_value=(config['terrain'],source,[])),patch('voxel_mapper.pipeline.acquire_surface',return_value=(None,None,[])),patch('voxel_mapper.pipeline.fetch_osm',return_value=(collection,{'elements':[]},[])),patch('voxel_mapper.pipeline.acquire_buildings',return_value=({'features':[self.building()]},discovery)):
                 report=run_auto(root/'out',bounds=config['bbox'])
@@ -135,6 +136,7 @@ class OvertureTests(unittest.TestCase):
                 packaged=json.loads(archive.read('voxel-quality-report.json'))
                 self.assertEqual(packaged['supplemental_buildings']['matching']['added_physical_features'],1)
                 self.assertIn('Overture Maps Foundation',archive.read('ATTRIBUTION.txt').decode())
+                self.assertIn(source['attribution'],archive.read('ATTRIBUTION.txt').decode('utf-8'))
             self.assertEqual(report['world']['blocks_per_metre'],1)
 
     def test_partition_rows_and_versioned_provider_without_upstream_record_id(self):

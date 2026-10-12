@@ -3,8 +3,8 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v2'
-INK_VERSION='source-font-isolated-glyph-screen-v1'
+VERSION='source-font-glyph-raster-screen-v3'
+INK_VERSION='source-font-isolated-glyph-screen-v2'
 
 
 def grow(mask,steps=1):
@@ -29,10 +29,43 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
     fonts=[f for f in page.get_fonts(full=True) if f[3].split('+')[-1]==span.get('font')]
     if not fonts:return {**failure,'reason':'Source font resource not uniquely identified'}
     import hashlib
-    buffers=[page.parent.extract_font(f[0])[3] for f in fonts]
-    if len({hashlib.sha256(b).hexdigest() for b in buffers})!=1 or len(buffers[0])>2000000:
-        return {**failure,'reason':'Ambiguous or oversized source font'}
-    font_buffer=buffers[0]
+    if len(fonts)>128:return {**failure,'reason':'Source font resource budget exceeded'}
+    candidates={}
+    for font in fonts:
+        buffer=page.parent.extract_font(font[0])[3]
+        if len(buffer)>2000000:return {**failure,'reason':'Ambiguous or oversized source font'}
+        digest=hashlib.sha256(buffer).hexdigest()
+        entry=candidates.setdefault(digest,{'buffer':buffer,'fonts':[]})
+        entry['fonts'].append(font)
+        if len(candidates)>4 or sum(len(c['buffer']) for c in candidates.values())>4000000:
+            return {**failure,'reason':'Source font alternative budget exceeded'}
+    results=[]
+    for digest,candidate in sorted(candidates.items()):
+        result=_screen_font(page,span,candidate['fonts'],candidate['buffer'],
+                            zoom=zoom,max_pixels=max_pixels,isolate_glyphs=isolate_glyphs)
+        results.append((digest,candidate,result))
+    if len(results)==1:return results[0][2]
+    consistent=[r for _,_,r in results if r['status']=='raster_consistent_candidate']
+    resolution={'basis':'original_embedded_font_glyph_raster_comparison',
+        'candidate_count':len(results),'consistent_candidate_count':len(consistent),
+        'identity_verified':False,'alternatives':[{'source_font_sha256':digest,
+            'source_font_xrefs':sorted({f[0] for f in candidate['fonts']}),
+            'status':result['status'],**({'reason':result['reason']} if 'reason' in result else {})}
+            for digest,candidate,result in results]}
+    if any('reason' in result for _,_,result in results):
+        return {**failure,'reason':'Not all source font alternatives could be screened',
+                'font_resource_resolution':resolution}
+    if len(consistent)!=1:
+        return {**failure,'reason':'Ambiguous source font raster support' if consistent else 'No source font has consistent glyph raster support',
+                'font_resource_resolution':resolution}
+    return {**consistent[0],'font_resource_resolution':resolution}
+
+
+def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
+    """Screen one retained original font; candidates are never substituted fonts."""
+    import hashlib
+    version=INK_VERSION if isolate_glyphs else VERSION
+    failure={'status':'withheld','visibility_verified':False,'version':version}
     if not font_buffer and (span.get('font')!='Helvetica' or any(f[2]!='Type1' for f in fonts)):
         return {**failure,'reason':'Unsupported unembedded font'}
     if page.cropbox.x0!=0 or page.cropbox.y0!=0:return {**failure,'reason':'Offset cropbox requires another raster-frame adapter'}
@@ -130,7 +163,7 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
                     'glyph_ink_grayscale_threshold':200,'source_support_grayscale_threshold':200,
                     'isolated_glyph_pixel_budget':20000000} if isolate_glyphs else {}),
                 'limitations':['Raster consistency is a screen, not proof of semantic/material or as-built identity.',
-                               'Only black ASCII text with a unit rotation and one identified native font is supported; no custom-font substitution.',
+                               'Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.',
                                'A one-pixel position tolerance applies at the retained raster scale.']}
     finally:page.set_rotation(rotation)
 

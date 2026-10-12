@@ -5,7 +5,7 @@ import numpy as np
 from shapely.affinity import translate
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v7'
+VERSION = 'held-out-map-alignment-v8'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,

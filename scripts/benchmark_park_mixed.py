@@ -1,11 +1,12 @@
 """Mixed synthetic multi-cell park geometry benchmark; no real-drawing accuracy claim."""
-import argparse,json,resource,time
+import argparse,json,time
 from pathlib import Path
 from shapely.geometry import box,mapping
 from voxel_mapper.reconstruction.batch import GeometryStore
 from voxel_mapper.reconstruction.engine import Context
 from voxel_mapper.reconstruction.model import Source,Feature
 from voxel_mapper.reconstruction.sources import evidence
+from voxel_mapper.process_metrics import peak_process_rss_mib
 
 
 def run(output,count=10000):
@@ -33,7 +34,7 @@ def run(output,count=10000):
     try:
         start=time.perf_counter();report=store.compile(features(),ctx);report['compile_seconds']=time.perf_counter()-start
         start=time.perf_counter();resume=store.compile(features(),ctx);report['resume_seconds']=time.perf_counter()-start
-        report.update(resume_features=resume['resumed_features'],peak_process_rss_mib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024,fixture='Synthetic mixed multi-cell geometry: paths, plazas, fences, shells, rocks, water, 3D ride routes/supports and bridge components')
+        report.update(resume_features=resume['resumed_features'],peak_process_rss_mib=peak_process_rss_mib(),fixture='Synthetic mixed multi-cell geometry: paths, plazas, fences, shells, rocks, water, 3D ride routes/supports and bridge components')
         assert report['features']==count and report['decisions']=={'planned':count} and report['resume_features']==count
         (root/'benchmark.json').write_text(json.dumps(report,indent=2)+'\n');return report
     finally:store.close()

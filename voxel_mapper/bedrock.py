@@ -6,6 +6,7 @@ import shutil
 import sqlite3
 import tempfile
 import zipfile
+from contextlib import closing
 from pathlib import Path
 
 import amulet
@@ -164,8 +165,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         raise ValueError('Park exceeds Bedrock vertical range; cannot retain 1:1 scale without cropping')
     wrapper = None
     try:
-        with tempfile.TemporaryDirectory(prefix='voxel-world-') as temp:
-            connection = sqlite3.connect(str(Path(temp)/'blocks.sqlite'))
+        with (tempfile.TemporaryDirectory(prefix='voxel-world-') as temp,
+              closing(sqlite3.connect(str(Path(temp)/'blocks.sqlite'))) as connection):
             connection.execute('PRAGMA journal_mode=OFF')
             connection.execute('PRAGMA synchronous=OFF')
             connection.execute('CREATE TABLE blocks (cx INTEGER, cz INTEGER, x INTEGER, y INTEGER, z INTEGER, material TEXT, priority INTEGER, PRIMARY KEY(cx,cz,x,y,z)) WITHOUT ROWID')
@@ -282,13 +283,12 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     level.unload()
             finally:
                 level.close()
-                connection.close()
-        (world_path/'voxel-quality-report.json').write_text(json.dumps(report,indent=2))
-        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2))
+        (world_path/'voxel-quality-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
+        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2),encoding='utf-8',newline='\n')
         attribution = [f'Voxel Mapper 3.1 — draft, unverified reconstruction. {model_scale} blocks per source metre.']
         attribution += [f"{source['id']}: {source.get('attribution',source.get('license',''))} {source['url']}" for source in report.get('sources',[])]
         attribution += [source['attribution_url'] for source in report.get('sources',[]) if source.get('attribution_url')]
-        (world_path/'ATTRIBUTION.txt').write_text('\n'.join(attribution)+'\n')
+        (world_path/'ATTRIBUTION.txt').write_text('\n'.join(attribution)+'\n',encoding='utf-8',newline='\n')
         with zipfile.ZipFile(package,'w',compression=zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(world_path.rglob('*')):
                 if path.is_file() and path.name != 'LOCK':

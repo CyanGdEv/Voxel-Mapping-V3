@@ -82,6 +82,56 @@ class GlyphTests(unittest.TestCase):
             self.assertEqual(screen_span(page,span)['status'],'withheld')
         finally:document.close()
 
+    def add_font_alternative(self,document,page,*,different_ink):
+        import io
+        from fontTools.ttLib import TTFont
+        buffer=document.extract_font(page.get_fonts()[0][0])[3]
+        with TTFont(io.BytesIO(buffer)) as font:
+            font['name'].setName('Alternative original subset',0,3,1,1033)
+            if different_ink:
+                coordinates=font['glyf']['privateB'].coordinates
+                for i,(x,y) in enumerate(coordinates):
+                    if x==500:coordinates[i]=(900,y)
+            output=io.BytesIO();font.save(output)
+        xref=page.insert_font(fontname='otherSubset',fontbuffer=output.getvalue())
+        document.xref_set_key(xref,'BaseFont','/NativeGlyphTest')
+
+    def test_same_name_subsets_require_one_original_font_with_full_raster_support(self):
+        import hashlib
+        document,page,span=self.subset_source()
+        try:
+            original=hashlib.sha256(document.extract_font(page.get_fonts()[0][0])[3]).hexdigest()
+            self.add_font_alternative(document,page,different_ink=True)
+            result=screen_span(page,span)
+            self.assertEqual(result['status'],'raster_consistent_candidate',result)
+            self.assertEqual(result['source_font_sha256'],original)
+            self.assertEqual(result['font_resource_resolution']['candidate_count'],2)
+            self.assertEqual(result['font_resource_resolution']['consistent_candidate_count'],1)
+            self.assertFalse(result['visibility_verified'])
+            page.draw_rect(pymupdf.Rect(span['bbox']),fill=(1,1,1),color=None)
+            self.assertEqual(screen_span(page,span)['status'],'withheld')
+        finally:document.close()
+
+    def test_same_name_fonts_with_identical_ink_remain_ambiguous(self):
+        document,page,span=self.subset_source()
+        try:
+            self.add_font_alternative(document,page,different_ink=False)
+            result=screen_span(page,span)
+            self.assertEqual(result['status'],'withheld',result)
+            self.assertEqual(result['font_resource_resolution']['consistent_candidate_count'],2)
+        finally:document.close()
+
+    def test_unavailable_same_name_font_cannot_be_eliminated_by_failed_screen(self):
+        document,page,span=self.subset_source()
+        try:
+            xref=page.insert_font(fontname='helv')
+            document.xref_set_key(xref,'BaseFont','/NativeGlyphTest')
+            result=screen_span(page,span)
+            self.assertEqual(result['status'],'withheld',result)
+            self.assertEqual(result['reason'],'Not all source font alternatives could be screened')
+            self.assertEqual(result['font_resource_resolution']['consistent_candidate_count'],1)
+        finally:document.close()
+
     def test_isolated_ink_recovers_clipped_character_box_without_changing_default(self):
         document,page,span=self.subset_source()
         try:

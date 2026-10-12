@@ -89,11 +89,12 @@ class CycleTests(unittest.TestCase):
 
     def test_saved_chunk_intent_resumes_after_flush_before_journal_completion(self):
         import sqlite3
+        from contextlib import closing
         self.workers(1)
         with patch('voxel_mapper.reconstruction.batch_export.verify_sections',side_effect=RuntimeError('stopped after native flush')):
             with self.assertRaisesRegex(RuntimeError,'native flush'):
                 preview(self.plan,self.geometry,self.base,1,self.output)
-        with sqlite3.connect(self.output/'native/export-state.sqlite') as state:
+        with closing(sqlite3.connect(self.output/'native/export-state.sqlite')) as state:
             self.assertEqual(state.execute('SELECT ready FROM chunks').fetchone()[0],0)
         self.assertEqual(self.plan.next_cycle(),1)
         retained=preview(self.plan,self.geometry,self.base,1,self.output)
