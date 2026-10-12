@@ -71,6 +71,24 @@ class OSMAlignmentTests(unittest.TestCase):
         self.assertEqual(changed['run_pages'],1)
         self.assertNotEqual(first['page_facts'],changed['page_facts'])
 
+    def test_new_targeted_polygon_triggers_matching_and_replays_without_recovery(self):
+        from shapely.geometry import mapping
+        extra={'id':'targeted-outline','geometry':mapping(translate(self.objects[0]['geometry'],1000,1000)),
+            'extraction_kind':'drawing_geometry','paint_references':[{'ordinal':0}],'extraction_contract':'fixture'}
+        report={'status':'targeted_source_geometry_only','registration_verified':False,'world_geometry_additions':0}
+        with patch('voxel_mapper.osm_provisional_alignment.recover_targeted',return_value=([extra],report)), \
+                patch('voxel_mapper.osm_provisional_alignment.propose',wraps=propose) as matcher:
+            first=self.align()
+        self.assertEqual(matcher.call_count,3) # validation, initial, expanded inventory
+        row=json.loads((Path(first['output_directory'])/'page-alignments.jsonl').read_text())
+        self.assertEqual(row['targeted_source_recovery']['new_unique_polygons'],1)
+        self.assertEqual(row['objects'],6);self.assertEqual(row['targeted_source_candidates'],json.loads(json.dumps([extra])))
+        self.assertIn('initial_alignment_checks',row)
+        self.assertFalse(row['registration_verified']);self.assertEqual(row['world_geometry_additions'],0)
+        with patch('voxel_mapper.osm_provisional_alignment.recover_targeted',side_effect=AssertionError('recovery replayed')):
+            replay=self.align('targeted-replay')
+        self.assertEqual(replay['reused_pages'],1);self.assertEqual(first['output_sha256'],replay['output_sha256'])
+
     def test_partial_snapshot_and_invalid_scale_rejected(self):
         self.osm.write_text(json.dumps({'elements':[],'remark':'timeout'}))
         with self.assertRaisesRegex(ValueError,'Complete bounded'):osm_collection(self.osm)

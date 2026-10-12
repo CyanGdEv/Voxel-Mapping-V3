@@ -6,7 +6,7 @@ from shapely.geometry import shape
 from shapely.strtree import STRtree
 from .mapped_sheet_placement import placed
 
-VERSION='osm-outline-review-v1'
+VERSION='osm-outline-review-v2'
 
 
 def metrics(left,right):
@@ -19,7 +19,7 @@ def metrics(left,right):
 def source_trace(record,geometry):
     if record is None:return {'status':'source_trace_unavailable','physical_outline_completeness_verified':False}
     exact=shape(record['geometry']).equals(geometry)
-    windows=record.get('regional_window_references',[])
+    windows=record.get('regional_window_references',[])+record.get('targeted_window_references',[])
     margins=[]
     for window in windows:
         x0,y0,x1,y1=window['region_native_points'];a,b,c,d=geometry.bounds

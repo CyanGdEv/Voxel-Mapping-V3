@@ -17,10 +17,11 @@ from .evidence_memory import EvidenceMemory,identity
 from .mapped_sheet_placement import propose,placed,VERSION as MATCH_VERSION
 from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK_VERSION
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
+from .osm_targeted_recovery import recover as recover_targeted,VERSION as TARGETED_VERSION
 from .osm_outline_review import review as review_outlines,VERSION as OUTLINE_REVIEW_VERSION
 from .osm_landmark_context import bind_labels,topology_checks,VERSION as CONTEXT_VERSION,GLYPH_VERSION
 
-VERSION='osm-provisional-alignment-v5'
+VERSION='osm-provisional-alignment-v6'
 
 
 def recover_outlines(data):
@@ -124,7 +125,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
         (extraction['version'],extraction['contract'])).fetchall()
     if len(pages)!=extraction['pages'] or len(pages)>max_pages:raise ValueError('OSM alignment page inventory budget/change')
     contract={'version':VERSION,'match_version':MATCH_VERSION,'check_version':CHECK_VERSION,'recovery_version':RECOVERY_VERSION,
-        'outline_review_version':OUTLINE_REVIEW_VERSION,'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
+        'targeted_recovery_version':TARGETED_VERSION,'outline_review_version':OUTLINE_REVIEW_VERSION,'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
         'name_ocr_engine_sha256':file_hash(shutil.which('tesseract')) if shutil.which('tesseract') else None,
         'native_render_engine':pymupdf.VersionBind,
         'geometry_sha256':file_hash(feed),'osm_sha256':osm_sha,'target_crs':target_crs,
@@ -158,8 +159,28 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                     proposal=propose(objects,refs,max_seed_fits=max_seed_fits,max_seed_batches=max_seed_batches,expected_scale=scale['expected_metres_per_pdf_point'],
                         priority_seed_ids=names['priority_seed_ids'],named_pairs=names['named_pairs'])
                     review=check(objects,refs,proposal['hypotheses'],expected_scale=scale['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
+                    source_records={c['id']:c for c in data['candidates']+recovered}
+                    with pymupdf.open(pdf) as document:
+                        extra,targeted=recover_targeted(document[page-1],sha,page,objects,refs,review)
+                    record['targeted_source_recovery']=targeted
+                    record['targeted_source_candidates']=extra
+                    old_objects=len(objects)
+                    for candidate in extra:
+                        source_records.setdefault(candidate['id'],candidate)
+                        if candidate['geometry']['type']!='Polygon' or candidate.get('paint_reference_truncated'):continue
+                        g=shape(candidate['geometry']);by_geometry.setdefault(g.normalize().wkb_hex,{'candidate_id':candidate['id'],'geometry':g})
+                    if len(by_geometry)>20000:raise ValueError('Combined OSM outline budget exceeded')
+                    objects=list(by_geometry.values())
+                    targeted['new_unique_polygons']=len(objects)-old_objects
+                    if len(objects)>old_objects:
+                        record['initial_alignment_checks']=review
+                        record['initial_seed_search']=proposal['seed_search']
+                        proposal=propose(objects,refs,max_seed_fits=max_seed_fits,max_seed_batches=max_seed_batches,
+                            expected_scale=scale['expected_metres_per_pdf_point'],priority_seed_ids=names['priority_seed_ids'],named_pairs=names['named_pairs'])
+                        review=check(objects,refs,proposal['hypotheses'],expected_scale=scale['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
+                    record['objects']=len(objects)
                     record.update(proposal=proposal,alignment_checks=review,status='map_consistent_provisional_alignment' if review['status']=='map_consistent_candidate' else 'unvalidated_map_proposals' if proposal['hypotheses'] else 'no_map_correspondence_found')
-                    record['outline_investigation']=review_outlines(objects,refs,review,data['candidates']+recovered)
+                    record['outline_investigation']=review_outlines(objects,refs,review,list(source_records.values()))
                     record['network_diagnostics']=topology_checks(data['candidates'],map_lines,proposal['hypotheses'])
                     if review['status']=='map_consistent_candidate':
                         fit=proposal['hypotheses'][0];domain=shape(fit['mapped_support_envelope'])
