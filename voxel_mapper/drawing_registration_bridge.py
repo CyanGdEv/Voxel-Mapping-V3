@@ -21,7 +21,7 @@ from .drawing_geometry import extract_page
 from .reconstruction.model import Source, Feature
 from .reconstruction.registration import review_registration, apply_registration, registration_domain
 
-VERSION = 'explicit-and-ordinary-drawing-bridge-v3'
+VERSION = 'explicit-and-ordinary-drawing-bridge-v4'
 MARK = re.compile(r'^CP:([A-Za-z0-9_.-]{1,64})$')
 OBJECT = re.compile(r'^(PATH|PLAZA|WALL|ROOF):([A-Za-z0-9_.-]{1,64})(?:\s+(.*))?$')
 SCALE = re.compile(r'^(?:Scale\s+)?1\s*:\s*(\d{1,5})$', re.I)
@@ -32,7 +32,7 @@ def file_hash(path):
     with Path(path).open('rb') as stream: return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
-def named_registration(runs, marks, references, sources, document_source, *, tolerance_m=1.):
+def named_registration(runs, marks, references, sources, document_source, *, tolerance_m=1., expected_scale=None):
     if (document_source.metadata.get('reuse_allowed') is not True or document_source.license=='copyright-consultation-only'
             or document_source.metadata.get('reuse_status')=='consultation_only'):
         raise ValueError('Source geometry reuse is not permitted')
@@ -44,9 +44,17 @@ def named_registration(runs, marks, references, sources, document_source, *, tol
     if not math.isfinite(tolerance_m) or not 0<tolerance_m<=1:
         raise ValueError('Automatic bridge cannot exceed one-metre registration tolerance')
     scales={int(m[1]) for r in runs if (m:=SCALE.fullmatch(r['text'].strip()))}
-    if len(scales)!=1 or not 1<=next(iter(scales))<=10000:
-        raise ValueError('One explicit unambiguous printed scale required')
-    expected=next(iter(scales))*.0254/72
+    if expected_scale is None:
+        if len(scales)!=1 or not 1<=next(iter(scales))<=10000:
+            raise ValueError('One explicit unambiguous printed scale required')
+        expected=next(iter(scales))*.0254/72
+    else:
+        if (type(expected_scale) not in (int,float) or not math.isfinite(expected_scale)
+                or not .0254/72<=expected_scale<=10000*.0254/72):
+            raise ValueError('Bounded visibly reviewed printed scale required')
+        if any(not math.isclose(s*.0254/72,expected_scale,rel_tol=1e-12) for s in scales):
+            raise ValueError('Native printed scale conflicts with reviewed scale')
+        expected=expected_scale
     if len(references)>1000: raise ValueError('Survey landmark budget exceeded')
     by_id={}
     for ref in references:

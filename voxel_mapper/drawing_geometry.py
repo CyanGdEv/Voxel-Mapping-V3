@@ -11,8 +11,10 @@ from shapely.strtree import STRtree
 from .drawing_page_tools import native_inverse
 from .drawing_footprints import fill_geometry
 
-VERSION='drawing-geometry-v3'
-DEFAULTS={'curve_tolerance_points':.25,'max_paths':100000,'max_candidates':4000,'max_points':10000,'max_total_points':200000}
+VERSION='drawing-geometry-v4'
+DEFAULTS={'curve_tolerance_points':.25,'max_paths':100000,'max_candidates':4000,'max_points':10000,'max_total_points':200000,
+          'regional_fallback':True,'regional_columns':4,'regional_rows':4,'regional_overlap_points':24,
+          'max_regional_candidates':10000,'max_regional_total_points':1000000}
 
 
 def contract(options):return hashlib.sha256(json.dumps({'version':VERSION,**options},sort_keys=True).encode()).hexdigest()
@@ -80,6 +82,12 @@ def subpaths(path,matrix,options):
 def validated_options(overrides):
     if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','max_scan_paths'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
+    if type(options['regional_fallback']) is not bool:raise ValueError('Boolean regional fallback required')
+    for key in ('regional_columns','regional_rows'):
+        if type(options[key]) is not int or not 1<=options[key]<=8:raise ValueError('Invalid regional grid dimension')
+    overlap=options['regional_overlap_points']
+    if type(overlap) not in (int,float) or not math.isfinite(overlap) or not 0<=overlap<=100:
+        raise ValueError('Invalid regional overlap')
     if 'region_native_points' in options:
         region=options['region_native_points']
         if (not isinstance(region,(list,tuple)) or len(region)!=4
@@ -96,7 +104,8 @@ def validated_options(overrides):
     minimum=options.get('min_line_length_points',12)
     if type(minimum) not in (int,float) or not math.isfinite(minimum) or not .25<=minimum<=12:
         raise ValueError('Minimum native line length must be .25..12 PDF points')
-    for key,upper in [('max_paths',200000),('max_candidates',10000),('max_points',20000),('max_total_points',1000000)]:
+    for key,upper in [('max_paths',200000),('max_candidates',10000),('max_points',20000),('max_total_points',1000000),
+                      ('max_regional_candidates',10000),('max_regional_total_points',1000000)]:
         if type(options[key])!=int or not 1<=options[key]<=upper:raise ValueError('Invalid extraction budget '+key)
     return options
 
@@ -133,13 +142,16 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
         if region is not None:
             # Native path bounds enclose the complete primitive, including curves.
             # Never clip or split a source paint group to fit an extraction region.
-            bounds=box(*(pymupdf.Rect(path['rect'])*matrix))
-            if not region.intersects(bounds):
+            bounds=pymupdf.Rect(path['rect'])*matrix
+            if not all(math.isfinite(v) for v in bounds):
+                rejections['invalid_source_path_bounds']+=1;continue
+            xmin,ymin,xmax,ymax=options['region_native_points']
+            if bounds.x1<xmin or bounds.y1<ymin or bounds.x0>xmax or bounds.y0>ymax:
                 rejections['outside_region']+=1;continue
             selected+=1
             if selected>options['max_paths']:
                 return [],{'status':'region_path_budget_withheld','raw_paths':len(paths),'selected_paths':selected,'world_geometry_additions':0}
-            if not region.covers(bounds) or bounds.distance(region.boundary)<.25:
+            if min(bounds.x0-xmin,bounds.y0-ymin,xmax-bounds.x1,ymax-bounds.y1)<.25:
                 rejections['complete_primitive_crosses_region_boundary']+=1;continue
         if groups or any(c[1] is None for c in clips):rejections['unsupported_clipping_or_compositing_scope']+=1;continue
         if path.get('layer'):rejections['optional_layer_state_unknown']+=1;continue
@@ -206,6 +218,47 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
     return candidates,{'status':'partial_candidate_budget' if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred'] else 'unplaced_geometry_candidates','raw_paths':len(paths),'selected_paths':selected if region is not None else len(paths),'region_native_points':options.get('region_native_points'),'candidates':len(candidates),'geometry_types':dict(counts),'retained_points':total_points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),'rejections':dict(rejections),'world_geometry_additions':0}
 
 
+def extract_pipeline_page(page,sha,page_number,**overrides):
+    """Whole-page extraction with a persisted, bounded regional fallback."""
+    from .regional_drawing_geometry import page_regions
+    options=validated_options(overrides);paths=page.get_cdrawings(extended=True)
+    candidates,whole=extract_page(page,sha,page_number,_paths=paths,**options)
+    if (whole['status']!='path_budget_withheld' or not options['regional_fallback']
+            or 'region_native_points' in options):return candidates,whole
+    if len(paths)>options.get('max_scan_paths',500000):
+        return [],{**whole,'regional_fallback_withheld':'source_scan_budget'}
+    regions=[];retained={};points=duplicates=0
+    for rows,report in page_regions(page,sha,page_number,_paths=paths,
+            columns=options['regional_columns'],rows=options['regional_rows'],
+            overlap_points=options['regional_overlap_points'],**options):
+        regions.append(report)
+        for candidate in rows:
+            window={'extraction_contract':candidate['extraction_contract'],
+                'region_native_points':report['region_native_points'],'row':report['row'],'column':report['column']}
+            if candidate['id'] in retained:
+                retained[candidate['id']]['regional_window_references'].append(window)
+                duplicates+=1;continue
+            geometry=shape(candidate['geometry'])
+            count=len(geometry.coords) if geometry.geom_type=='LineString' else sum(
+                len(p.exterior.coords)+sum(len(r.coords) for r in p.interiors)
+                for p in ([geometry] if geometry.geom_type=='Polygon' else geometry.geoms))
+            if len(retained)>=options['max_regional_candidates'] or points+count>options['max_regional_total_points']:
+                return [],{'status':'regional_page_budget_withheld','raw_paths':len(paths),
+                    'whole_page_report':whole,'regions':regions,'world_geometry_additions':0,
+                    'reason':'combined_regional_candidate_or_point_budget'}
+            candidate['regional_parent_contract']=contract(options)
+            candidate['regional_window_references']=[window]
+            candidate['extraction_contract']=contract(options)
+            retained[candidate['id']]=candidate;points+=count
+    candidates=list(retained.values())
+    complete=all(r['status']=='unplaced_geometry_candidates' for r in regions)
+    return candidates,{'status':'unplaced_regional_geometry_candidates' if complete else 'partial_regional_geometry_candidates',
+        'raw_paths':len(paths),'whole_page_report':whole,'regions':regions,'overlap_duplicates':duplicates,
+        'candidates':len(candidates),'geometry_types':dict(Counter(c['geometry']['type'] for c in candidates)),
+        'retained_points':points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),
+        'world_geometry_additions':0,'physical_identity_verified':False,'registration_verified':False}
+
+
 def run(corpus,output,*,max_pages=10000,**overrides):
     import pymupdf
     if type(max_pages)!=int or not 1<=max_pages<=100000:raise ValueError('Positive bounded page budget required')
@@ -223,7 +276,10 @@ def run(corpus,output,*,max_pages=10000,**overrides):
                     cached=corpus.db.execute('SELECT result FROM geometry_pages WHERE sha=? AND page=? AND version=? AND contract=?',(sha,i+1,VERSION,identity)).fetchone()
                     if cached and json.loads(cached[0])['report']['status']!='withheld':resumed+=1;continue
                     if processed>=max_pages:break
-                    try:candidates,report=extract_page(pdf[i],sha,i+1,**options)
+                    try:
+                        candidates,report=extract_pipeline_page(pdf[i],sha,i+1,**options)
+                        with path.open('rb') as stream:
+                            if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('PDF changed during extraction')
                     except Exception as exc:candidates=[];report={'status':'withheld','reason':str(exc)}
                     with corpus.db:corpus.db.execute('INSERT OR REPLACE INTO geometry_pages VALUES(?,?,?,?,?)',(sha,i+1,VERSION,identity,json.dumps({'candidates':candidates,'report':report})))
                     processed+=1

@@ -17,7 +17,7 @@ from .mapped_alignment_checks import printed_scale_review, VERSION as SCALE_VERS
 from .reconstruction.model import Source
 from .reconstruction.registration import registration_domain
 
-VERSION = 'drawing-frame-qualification-v1'
+VERSION = 'drawing-frame-qualification-v2'
 
 
 def qualify_page(pdf, page_number, source, references, sources, *, scale_review=None):
@@ -41,7 +41,10 @@ def qualify_page(pdf, page_number, source, references, sources, *, scale_review=
     content = page.get_contents()
     if content is not None and any(op in (b'BMC', b'BDC') or (op == b'Tr' and int(args[0]) == 3) for args, op in content.operations):
         raise ValueError('Invisible or layered text requires a separate visibility-aware adapter')
-    scale_review = scale_review or printed_scale_review(pdf, page_number)
+    actual_scale = printed_scale_review(pdf, page_number)
+    if scale_review is not None and json.dumps(scale_review,sort_keys=True)!=json.dumps(actual_scale,sort_keys=True):
+        raise ValueError('Supplied scale review differs from original source page')
+    scale_review = actual_scale
     if (scale_review['status'] != 'one_visible_printed_scale'
             or scale_review['document_sha256'] != source.sha256 or scale_review['page'] != page_number):
         raise ValueError('One unambiguous printed scale with verified visibility required')
@@ -53,7 +56,8 @@ def qualify_page(pdf, page_number, source, references, sources, *, scale_review=
     else:
         runs = coordinate_runs(page)
         marks = extract_marks(page, reuse_allowed=True)
-        alignment = named_registration(runs, marks, references, sources, source)
+        alignment = named_registration(runs, marks, references, sources, source,
+            expected_scale=scale_review['expected_metres_per_pdf_point'])
         method = alignment['correspondence_method']
     from shapely.geometry import mapping
     domain = mapping(registration_domain(alignment))

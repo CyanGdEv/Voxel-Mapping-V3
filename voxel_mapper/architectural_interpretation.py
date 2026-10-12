@@ -13,7 +13,7 @@ from .drawing_geometry import native_inverse
 from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span as screen_span
 
-VERSION='architectural-interpretation-v16'
+VERSION='architectural-interpretation-v17'
 DEFAULTS={'min_band_width_m':.08,'max_band_width_m':1.2,'min_overlap_m':1.5,'max_pair_comparisons':100000}
 
 
@@ -296,7 +296,7 @@ def interpret_page(page,sha,number,parents,polygons,scale_review,*,interpretatio
 
 def run(corpus,drawing_directory,output,*,interpretation_options=None):
     """Replay pinned extraction and source PDFs before writing a diagnostic stage."""
-    from .drawing_geometry import extract_page
+    from .drawing_geometry import extract_pipeline_page
     from .linework_boundaries import recover_page,VERSION as recovery_version
     from .mapped_alignment_checks import printed_scale_review,VERSION as alignment_version
     from .glyph_visibility import VERSION as glyph_version,INK_VERSION as glyph_ink_version
@@ -339,7 +339,7 @@ def run(corpus,drawing_directory,output,*,interpretation_options=None):
             if not re.fullmatch('[0-9a-f]{64}',sha) or digest(path)!=sha:raise ValueError('Source PDF checksum mismatch')
             cached=json.loads(raw);scale=printed_scale_review(path,number)
             with pymupdf.open(path) as doc:
-                parents,parent_report=extract_page(doc[number-1],sha,number,**extraction['options'])
+                parents,parent_report=extract_pipeline_page(doc[number-1],sha,number,**extraction['options'])
                 parents=json.loads(json.dumps(parents))
                 if parents!=cached['candidates'] or parent_report!=cached['report']:raise ValueError('Retained native extraction differs from source')
                 if parent_report['status']!='unplaced_geometry_candidates':

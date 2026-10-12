@@ -15,6 +15,30 @@ from .mapped_alignment_checks import printed_scale_review
 VERSION='regional-drawing-geometry-v1'
 
 
+def page_regions(page, sha, page_number, *, columns=4, rows=4, overlap_points=24, _paths=None, **overrides):
+    """Yield deterministic complete-primitive windows without rewriting the PDF."""
+    if any(type(v) is not int or not 1<=v<=8 for v in (columns,rows)):
+        raise ValueError('Grid dimensions must be 1..8')
+    if type(overlap_points) not in (int,float) or not 0<=overlap_points<=100:
+        raise ValueError('Overlap must be 0..100 native PDF points')
+    options=validated_options(overrides)
+    if 'region_native_points' in options:raise ValueError('Grid supplies extraction regions')
+    matrix=native_inverse(page);angle=page.rotation
+    try:
+        page.set_rotation(0);frame=page.rect*matrix
+    finally:page.set_rotation(angle)
+    paths=page.get_cdrawings(extended=True) if _paths is None else _paths
+    for row in range(rows):
+        for column in range(columns):
+            bounds=[max(frame.x0,frame.x0+frame.width*column/columns-overlap_points),
+                    max(frame.y0,frame.y0+frame.height*row/rows-overlap_points),
+                    min(frame.x1,frame.x0+frame.width*(column+1)/columns+overlap_points),
+                    min(frame.y1,frame.y0+frame.height*(row+1)/rows+overlap_points)]
+            candidates,report=extract_page(page,sha,page_number,_paths=paths,**options,region_native_points=bounds)
+            report.update(row=row,column=column,region_native_points=bounds)
+            yield candidates,report
+
+
 def run(pdf,output,*,page_number=1,columns=4,rows=4,overlap_points=24,**overrides):
     import pymupdf
     if any(type(v) is not int or not 1<=v<=8 for v in (columns,rows)):
@@ -30,24 +54,13 @@ def run(pdf,output,*,page_number=1,columns=4,rows=4,overlap_points=24,**override
     destination=output/'geometry-candidates.jsonl';temporary=destination.with_suffix('.jsonl.partial')
     with pymupdf.open(pdf) as document,temporary.open('w') as stream:
         if type(page_number) is not int or not 1<=page_number<=len(document):raise ValueError('Valid page required')
-        page=document[page_number-1];matrix=native_inverse(page);angle=page.rotation
-        try:
-            page.set_rotation(0);frame=page.rect*matrix
-        finally:page.set_rotation(angle)
-        paths=page.get_cdrawings(extended=True)
-        for row in range(rows):
-            for column in range(columns):
-                bounds=[max(frame.x0,frame.x0+frame.width*column/columns-overlap_points),
-                        max(frame.y0,frame.y0+frame.height*row/rows-overlap_points),
-                        min(frame.x1,frame.x0+frame.width*(column+1)/columns+overlap_points),
-                        min(frame.y1,frame.y0+frame.height*(row+1)/rows+overlap_points)]
-                candidates,report=extract_page(page,digest,page_number,_paths=paths,**options,region_native_points=bounds)
-                report.update(row=row,column=column,region_native_points=bounds)
-                reports.append(report)
-                for candidate in candidates:
-                    if candidate['id'] in unique:duplicates+=1;continue
-                    unique.add(candidate['id']);counts[candidate['geometry']['type']]+=1
-                    stream.write(json.dumps(candidate,sort_keys=True)+'\n')
+        for candidates,report in page_regions(document[page_number-1],digest,page_number,
+                columns=columns,rows=rows,overlap_points=overlap_points,**options):
+            reports.append(report)
+            for candidate in candidates:
+                if candidate['id'] in unique:duplicates+=1;continue
+                unique.add(candidate['id']);counts[candidate['geometry']['type']]+=1
+                stream.write(json.dumps(candidate,sort_keys=True)+'\n')
     with pdf.open('rb') as stream:
         if hashlib.file_digest(stream,'sha256').hexdigest()!=digest:
             temporary.unlink(missing_ok=True);raise ValueError('Source PDF changed during regional extraction')

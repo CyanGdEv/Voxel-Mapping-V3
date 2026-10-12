@@ -33,3 +33,29 @@ These are discovery candidates from historical planning sheets. Their captions c
 | `cbb3d88a3eb1` | 4,295 | 319 | 16/16 |
 
 The 13,839 candidates are counted across three source revisions, not as distinct park objects. Their output hashes, region contracts and complete geometry containment were independently checked after extraction. Whole-page limits remain unchanged.
+
+## Automatic corpus fallback and cycle replay
+
+The corpus runner now invokes `extract_pipeline_page`. When the whole-page path budget is exceeded, it automatically tries the same overlapping 4 × 4 native windows, subject to a 500,000-entry source scan. Ordinary small pages retain whole-page extraction. Direct `extract_page` calls retain their explicit single-window/page behavior.
+
+The options `regional_fallback`, `regional_columns`, `regional_rows`, `regional_overlap_points`, `max_regional_candidates` and `max_regional_total_points` are validated, included in the extraction contract, and may be supplied in an area's `drawing_geometry_options`. Defaults permit at most 10,000 combined candidates and one million combined points. Exceeding either combined limit withholds the whole page; exhausted regional budgets remain explicit as a partial page status. Set `regional_fallback` to `false` to retain whole-page withholding.
+
+The complete page result is stored in `geometry_pages`, including all regional reports. Candidates share the parent page extraction contract for retained lookup and linework grouping; `regional_window_references` retains each original window contract, bounds and position. Duplicate windows do not duplicate geometry. Source SHA checks run before extraction and before caching each new page result. Unchanged runs reuse the original result and write identical feeds in fresh output directories. Changing options selects a new contract. Source byte changes cannot reuse or publish stale candidates.
+
+Architectural interpretation replays the same pipeline extractor to verify retained source geometry. It continues to withhold incomplete regional inventories from architectural inference; regional extraction does not certify that every complete source primitive was recovered. Contextual matching and frame qualification can consume the retained page inventory without accepting its physical components.
+
+The named-mark qualifier now receives the original-page scale review, including a verified paper-size caption. It rechecks that review against the original pinned PDF, rejects altered supplied receipts, and uses the verified scale in the independent control/checkpoint fit. Synthetic fixtures verify this path; the recovered plans still lack independently verified survey references and source policy.
+
+Reproduction and replay results for the automatic corpus path are recorded separately in `docs/evidence/mutiny-regional-pipeline-validation.json`. The earlier standalone receipt above remains the record of that extraction version.
+
+
+The automatic v4 trial retained 4,622 / 4,605 / 4,615 candidates for source prefixes
+`94eefa9040ce` / `3ec5325a5f62` / `cbb3d88a3eb1` respectively (13,842 across
+revisions). All earlier IDs and geometries survive; the numeric whole-primitive
+bounds check also retains one additional complete line per source. All 48
+windows stay within budget, all geometry/window references pass containment,
+and unchanged extraction reuses all three pages with identical output hashes.
+Frame qualification also reuses all three observations in a fresh output.
+Two scales are usable, but all three pages lack the verified source policy and
+independent survey registry. Zero real frames, components or world additions
+were accepted.

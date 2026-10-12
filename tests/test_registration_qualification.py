@@ -154,3 +154,27 @@ class QualificationTests(unittest.TestCase):
         self.assertEqual(self.audit()['qualified_frames'],0)
         for budget in [True,0,10001]:
             with self.assertRaises(ValueError):run(self.corpus,self.root/'geometry',self.store,self.root/'x',max_pages=budget)
+
+    def test_verified_paper_caption_reaches_named_survey_registration(self):
+        from pypdf import PdfReader,PdfWriter
+        from pypdf.generic import DecodedStreamObject,NameObject,RectangleObject
+        writer=PdfWriter();writer.clone_document_from_reader(PdfReader(self.fixture.pdf))
+        page=writer.pages[0]
+        page.mediabox=RectangleObject([0,0,841*72/25.4,594*72/25.4])
+        data=page.get_contents().get_data().replace(b'(Scale 1:100)',b'(1/100 @ A1)')
+        data+=b'\nBT /F1 8 Tf 1 0 0 1 10 25 Tm (1/200 @ A3) Tj ET'
+        stream=DecodedStreamObject();stream.set_data(data);page[NameObject('/Contents')]=writer._add_object(stream)
+        with self.fixture.pdf.open('wb') as output:writer.write(output)
+        source=replace(self.fixture.source,sha256=file_hash(self.fixture.pdf))
+        registered,receipt=self.qualify(source)
+        self.assertEqual(registered.registration_status,'accepted')
+        self.assertEqual(receipt['scale_review']['denominators'],[100])
+        self.assertAlmostEqual(receipt['registration']['expected_scale_metres_per_pdf_point'],100*.0254/72)
+        self.assertEqual(receipt['physical_components_accepted'],0)
+
+    def test_supplied_scale_receipt_cannot_override_original_source(self):
+        from voxel_mapper.mapped_alignment_checks import printed_scale_review
+        review=printed_scale_review(self.fixture.pdf,1)
+        forged={**review,'denominators':[200],'expected_metres_per_pdf_point':200*.0254/72}
+        with self.assertRaisesRegex(ValueError,'differs from original source'):
+            qualify_page(self.fixture.pdf,1,self.fixture.source,self.fixture.refs,self.fixture.sources,scale_review=forged)

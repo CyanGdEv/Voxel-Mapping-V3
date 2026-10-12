@@ -88,3 +88,11 @@ The next real test still needs independently identified park landmarks, source
 policy/view/state evidence, terrain and an accepted boundary. General cross-view
 building assembly, automatic correspondence certification and training feedback
 remain unfinished. The preflight does not infer these from shape agreement.
+
+
+Paper-size scale captions are now usable by the named-mark qualifier after
+original-page visibility and physical sheet-size checks. `qualify_page` recomputes
+the original scale review and rejects any supplied receipt that differs. The
+resolved metres-per-native-point value is passed to the independent survey fit;
+visible scale alone still cannot qualify a frame. A1/A3 alternatives do not
+become competing scale values when the actual uncropped sheet size is known.
