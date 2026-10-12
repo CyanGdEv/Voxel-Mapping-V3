@@ -16,8 +16,11 @@ from .footprint_matching import descriptor
 from .generation_cycles import atomic_json,file_hash
 from .reconstruction.registration import require_accepted_review,registration_domain
 from .sheet_alignment import fit_sheet
+from .alignment_uncertainty import horizontal_scope
 
-VERSION='cross-drawing-context-matching-v1'
+VERSION='cross-drawing-context-matching-v2'
+# Landmark extraction is unchanged; avoid duplicate anchors on matcher upgrades.
+LANDMARK_VERSION='cross-drawing-context-matching-v1'
 
 
 def collect_landmarks(memory):
@@ -40,7 +43,7 @@ def collect_landmarks(memory):
             value={'feature':feature,'target_crs':source['crs'],'document_sha256':source['sha256'],
                    'registration':review,'independent_root_sha256s':roots,
                    'trust_scope':'original bridge-checked semantics; matching does not upgrade this scope'}
-            identifier=memory.put('registered_landmark',{'version':VERSION,'feature_sha256':identity(feature)},value,[fact['id']])
+            identifier=memory.put('registered_landmark',{'version':LANDMARK_VERSION,'feature_sha256':identity(feature)},value,[fact['id']])
             landmarks.append({'id':identifier,**value})
             if len(landmarks)>1000:raise ValueError('Registered landmark budget exceeded')
     # Retain prior-cycle landmarks too; rejection propagation removes descendants.
@@ -106,6 +109,8 @@ def match_page(candidates,landmarks,*,document_sha256,target_crs,expected_scale,
     if any(abs(h['scale_metres_per_pdf_point']/expected_scale-1)>scale_tolerance for h in result['hypotheses']):
         result['review_flags'].append('contextual_fit_scale_disagreement')
     result['unique_contextual_proposal']=len(result['hypotheses'])==1 and not result['review_flags']
+    for hypothesis in result['hypotheses']:
+        hypothesis['horizontal_scope_review']=horizontal_scope(hypothesis,candidates,landmarks)
     result['remaining_requirements']=['verified_source_view_scope','physical_landmark_correspondence',
         'independent_source_bound_checkpoints','bounded_accumulated_uncertainty','construction_state_review']
     return result

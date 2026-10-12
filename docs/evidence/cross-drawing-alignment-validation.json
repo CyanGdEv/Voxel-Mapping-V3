@@ -15,7 +15,7 @@
     "training_labels_generated": 0,
     "version": "persistent-evidence-memory-v1"
   },
-  "page_proposals_sha256": "68fdd060be6d6cf5c69a703aa401c0fbbf9fea8626b45d8b80785eff050312b1",
+  "page_proposals_sha256": "72e2017ca8f6d13efb5d4a61af2f46a5b49ee91f4f6166a6d7755da67e1bd23f",
   "page_statuses": {
     "awaiting_registered_landmarks": 15,
     "awaiting_visible_unambiguous_scale": 198
@@ -954,6 +954,6 @@
   ],
   "training_labels_generated": 0,
   "unchanged_resume_identical": true,
-  "version": "cross-drawing-context-matching-v1",
+  "version": "cross-drawing-context-matching-v2",
   "world_geometry_additions": 0
 }

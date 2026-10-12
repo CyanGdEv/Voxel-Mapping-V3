@@ -93,3 +93,42 @@ Reviewed correspondence decisions need a dedicated alignment training dataset an
 held-out source/building evaluation. The existing building ranker is not trained
 by these hypotheses. This change creates no positive labels from its own guesses
 and performs no automatic model promotion.
+
+## Conditional horizontal scope and error budgets
+
+Contextual matcher v2 adds `horizontal_scope_review` to each hypothesis. It reads
+the original bridge registration's `reference_and_attachment_error_budget_m`;
+missing parent budgets remain unknown. It sums the sensitivity-weighted parent
+budgets, contextual centroid residuals and a one-PDF-point attachment allowance
+through the centered least-squares similarity fit. Errors shared by the same
+survey are not assumed independent and are never reduced by averaging.
+
+For a candidate polygon the reported maximum is evaluated on every vertex of its
+convex hull: the conditional sensitivity bound is convex, so this bounds its
+whole outline. A candidate must fit completely within both the supporting
+centroid hull and the intersection of the supporting parents' checked survey
+domains. A nearby path inside that domain receives an assessment even when it
+does not itself match a polygon landmark. Crossing the domain, including a thin
+extension beyond it, retains `outside_shared_checked_domain`; exceeding one
+metre retains `horizontal_error_budget_exceeded`. At most 16,384 hull vertices
+are assessed per hypothesis; exceeding this budget withholds the whole scope
+assessment. Separate parent domains can have an empty intersection.
+
+This is a **conditional deterministic diagnostic**, given fixed source centroids,
+correct correspondences and a valid similarity model. It is not a surveyed error
+certificate, confidence interval or guarantee about arbitrary drawing precision.
+It does not validate physical identity, view extent, source date, vertical datum
+or independent checkpoints. These reviews remain required before a proposed
+frame can place a building or path in a world, and before any chained landmark
+can be accepted. `unique_contextual_proposal` describes matching uniqueness only;
+it does not mean that every candidate passes its scope or error assessment.
+
+The matcher contract version changes so old page hypotheses are recomputed once.
+The original landmark extraction identity stays unchanged to avoid creating
+duplicate anchors when upgrading an existing evidence store. Subsequent exact
+replays reuse the scoped hypotheses; rejecting a parent invalidates them. Tests
+cover an interior path, whole-outline extrapolation, empty domain intersections,
+missing/invalid budgets, correlated parent error, adversarial target perturbations,
+and nonempty-hypothesis restart/rejection. The retained real Mutiny replay still
+has zero registered landmarks, so it cannot validate a real error budget or add
+park geometry.
