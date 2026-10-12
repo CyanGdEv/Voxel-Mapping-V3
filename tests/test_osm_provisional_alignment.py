@@ -61,6 +61,15 @@ class OSMAlignmentTests(unittest.TestCase):
         second=self.align();self.assertEqual(second['run_pages'],1);self.assertNotEqual(first['contract'],second['contract'])
         feed=self.root/'geometry/geometry-candidates.jsonl';feed.write_text('changed')
         with self.assertRaisesRegex(ValueError,'geometry feed changed'):self.align()
+    def test_batch_budget_changes_cached_page_contract(self):
+        first=self.align()
+        changed=run(self.corpus,self.root/'geometry',self.osm,self.root/'memory.sqlite',
+            self.root/'one-batch',target_crs=CRS,max_seed_batches=1)
+        self.assertEqual(first['contract']['max_seed_batches'],8)
+        self.assertEqual(changed['contract']['max_seed_batches'],1)
+        self.assertEqual(changed['run_pages'],1)
+        self.assertNotEqual(first['page_facts'],changed['page_facts'])
+
     def test_partial_snapshot_and_invalid_scale_rejected(self):
         self.osm.write_text(json.dumps({'elements':[],'remark':'timeout'}))
         with self.assertRaisesRegex(ValueError,'Complete bounded'):osm_collection(self.osm)

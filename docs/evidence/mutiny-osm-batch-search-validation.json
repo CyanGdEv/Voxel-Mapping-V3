@@ -1,0 +1,709 @@
+{
+  "audit_date": "2026-10-12",
+  "contract": {
+    "check_version": "held-out-map-alignment-v4",
+    "geometry_sha256": "2bd7c1284691a0f9fbc5b1c6c27e4f0e6ae1bcea35fd1a63cfac83f7e4ebbe8a",
+    "glyph_version": "source-font-glyph-raster-screen-v2",
+    "landmark_context_version": "osm-landmark-context-v4",
+    "match_version": "mapped-sheet-placement-v10",
+    "max_name_ocr": 16,
+    "max_pages": 1000,
+    "max_seed_batches": 8,
+    "max_seed_fits": 512,
+    "name_ocr_engine_sha256": "9f831cab7525c3dab04af41bda35182af7ea1df9dceeaaa2f3bf207ac45c06a5",
+    "native_render_engine": "1.26.6",
+    "osm_sha256": "b864213364d80e398068ec0aa66c294c71a8e0ec49b85d5a9e42a34b79daa571",
+    "projection": {
+      "absolute_osm_accuracy_m": null,
+      "operation": "axis order change (2D) + unknown (with axis order normalized for visualization)",
+      "operation_accuracy_m": 0.0,
+      "reference_polygons": 843,
+      "registration_verified": false,
+      "skipped_osm_elements": 92
+    },
+    "recovery_version": "linework-boundaries-v2",
+    "target_crs": "+proj=aeqd +lat_0=52.9915 +lon_0=-1.8875 +datum=WGS84 +units=m +no_defs",
+    "version": "osm-provisional-alignment-v4"
+  },
+  "fresh_output_reused_pages": 3,
+  "limitations": [
+    "The two usable-scale plans are revisions with the same support geometry, not independent survey observations.",
+    "The full bounded seed search is complete for these two pages under the current scale/shape/topology eligibility filters; it does not prove that the extraction inventory or map is complete.",
+    "Held-out boundary and overlap checks still fail. Diagnostic centroid alignment does not alter the evaluated held-out transform or acceptance.",
+    "Source network diagnostics retain the unchanged vertex-budget rejection; the third sheet still lacks usable printed scale."
+  ],
+  "output_sha256": {
+    "page-alignments.jsonl": "2b5739315452c4a7e178d1c766843f6183d1ce3b528fa3a7994c43fa3fb609b6",
+    "provisional-overlay.geojson": "de449d0b1ac4b3fe75a36d5ebb58b16e86d24eadb506b413cdd7ce4abcf53b8c"
+  },
+  "page_statuses": {
+    "awaiting_visible_printed_scale": 1,
+    "unvalidated_map_proposals": 2
+  },
+  "pages": 3,
+  "pages_review": [
+    {
+      "alignment_checks": {
+        "blockers": [],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [
+          {
+            "held_out_checks": [
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.7153075202045699,
+                  "centroid_aligned_intersection_over_union": 0.9034746540619574,
+                  "centroid_error_m": 1.0364143840548663,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1068379123908694
+                },
+                "boundary_error_m": 1.6979971757207604,
+                "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                "failed_thresholds": [
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "intersection_over_union": 0.8713686424916421,
+                "passed": false,
+                "reference_id": "osm/way/70689644",
+                "relative_printed_scale_error": 0.002494584500875918
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.2925994180152856,
+                  "centroid_aligned_intersection_over_union": 0.8502671851568956,
+                  "centroid_error_m": 4.65160392740228,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.9681949243595411
+                },
+                "boundary_error_m": 8.17797910669532,
+                "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "intersection_over_union": 0.6871629064176838,
+                "passed": false,
+                "reference_id": "osm/way/70692563",
+                "relative_printed_scale_error": 0.002308848301103339
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.592779139482538,
+                  "centroid_aligned_intersection_over_union": 0.7922038275774296,
+                  "centroid_error_m": 4.083798516374652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1887602369779218
+                },
+                "boundary_error_m": 8.662200551384672,
+                "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "intersection_over_union": 0.5846876485933131,
+                "passed": false,
+                "reference_id": "osm/way/70689498",
+                "relative_printed_scale_error": 0.005426956675585348
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.6620436391261972,
+                  "centroid_aligned_intersection_over_union": 0.7926001460443606,
+                  "centroid_error_m": 0.617828436791652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.7926001460443605
+                },
+                "boundary_error_m": 1.254312086705397,
+                "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "intersection_over_union": 0.7762569272930713,
+                "passed": false,
+                "reference_id": "osm/way/70689519",
+                "relative_printed_scale_error": 0.002045546317824498
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.2683379819795895,
+                  "centroid_aligned_intersection_over_union": 0.9483930166872964,
+                  "centroid_error_m": 0.61880093578694,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.013133201618978
+                },
+                "boundary_error_m": 0.8772030005018985,
+                "candidate_id": "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3",
+                "failed_thresholds": [],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d"
+                ],
+                "intersection_over_union": 0.8660128821196437,
+                "passed": true,
+                "reference_id": "osm/way/70689533",
+                "relative_printed_scale_error": 0.0018763575983523628
+              }
+            ],
+            "reasons": [
+              "held_out_boundary_or_scale_disagreement"
+            ],
+            "status": "withheld"
+          }
+        ],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v4",
+        "world_geometry_additions": 0
+      },
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "hypotheses": [
+        {
+          "centroid_rms_m": 1.5580492507899237,
+          "mapped_support_envelope": {
+            "coordinates": [
+              [
+                [
+                  66.79102246514185,
+                  -619.9164341758897
+                ],
+                [
+                  65.91032243565246,
+                  -619.8509252952025
+                ],
+                [
+                  -420.1858721858601,
+                  -442.80259546058807
+                ],
+                [
+                  -430.7698402192011,
+                  -435.8527504138158
+                ],
+                [
+                  -481.3346624285472,
+                  -282.966265809307
+                ],
+                [
+                  -434.19371445519755,
+                  -260.02506730419736
+                ],
+                [
+                  -428.307596273937,
+                  -257.3686129838851
+                ],
+                [
+                  45.097299445654244,
+                  -236.5315406993252
+                ],
+                [
+                  48.89020107893259,
+                  -236.4542408207514
+                ],
+                [
+                  52.41607714717168,
+                  -237.9354917558938
+                ],
+                [
+                  54.86079621123122,
+                  -240.43546667789457
+                ],
+                [
+                  56.291541465647356,
+                  -243.7507692612375
+                ],
+                [
+                  76.30242102543104,
+                  -604.4491970534998
+                ],
+                [
+                  76.37890088558697,
+                  -607.9034123404886
+                ],
+                [
+                  75.50230206519598,
+                  -609.4635010424297
+                ],
+                [
+                  70.37249614426105,
+                  -616.5884518483833
+                ],
+                [
+                  68.27859609040115,
+                  -618.8966848432988
+                ],
+                [
+                  66.79102246514185,
+                  -619.9164341758897
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "matrix": [
+            [
+              0.2822213240556799,
+              -0.0007120142612974183
+            ],
+            [
+              0.0007120142612974183,
+              0.2822213240556799
+            ]
+          ],
+          "max_centroid_error_m": 2.461927674963556,
+          "scale_metres_per_pdf_point": 0.2822222222222222,
+          "seed_candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+          "seed_reference_id": "osm/way/70689644",
+          "supports": [
+            {
+              "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+              "centroid_error_m": 0.5530134103553249,
+              "identity_verified": false,
+              "intersection_over_union": 0.8619704793144349,
+              "reference_id": "osm/way/70689644"
+            },
+            {
+              "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+              "centroid_error_m": 2.461927674963556,
+              "identity_verified": false,
+              "intersection_over_union": 0.8252500484436933,
+              "reference_id": "osm/way/70692563"
+            },
+            {
+              "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+              "centroid_error_m": 1.962508570947933,
+              "identity_verified": false,
+              "intersection_over_union": 0.7851135975581158,
+              "reference_id": "osm/way/70689498"
+            },
+            {
+              "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+              "centroid_error_m": 0.8390033796893421,
+              "identity_verified": false,
+              "intersection_over_union": 0.7396911361886546,
+              "reference_id": "osm/way/70689519"
+            },
+            {
+              "candidate_id": "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3",
+              "centroid_error_m": 1.1024105716459223,
+              "identity_verified": false,
+              "intersection_over_union": 0.7049729069222938,
+              "reference_id": "osm/way/70689533"
+            }
+          ],
+          "translation_m": [
+            -483.91624852727523,
+            -700.5879067405906
+          ]
+        }
+      ],
+      "network_diagnostics": {
+        "reason": "Network vertex budget exceeded",
+        "registration_verified": false,
+        "status": "network_budget_withheld"
+      },
+      "objects": 426,
+      "page": 1,
+      "review_flags": [],
+      "seed_search": {
+        "attempted_seed_objects": 133,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          47
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 133,
+        "eligible_seed_pairs": 2095,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2095,
+        "untried_seed_objects": 0
+      },
+      "status": "unvalidated_map_proposals"
+    },
+    {
+      "alignment_checks": {
+        "blockers": [],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [
+          {
+            "held_out_checks": [
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.7153075202045699,
+                  "centroid_aligned_intersection_over_union": 0.9034746540619574,
+                  "centroid_error_m": 1.0364143840548663,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1068379123908694
+                },
+                "boundary_error_m": 1.6979971757207604,
+                "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                "failed_thresholds": [
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "intersection_over_union": 0.8713686424916421,
+                "passed": false,
+                "reference_id": "osm/way/70689644",
+                "relative_printed_scale_error": 0.002494584500875918
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.2925994180152856,
+                  "centroid_aligned_intersection_over_union": 0.8502671851568956,
+                  "centroid_error_m": 4.65160392740228,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.9681949243595411
+                },
+                "boundary_error_m": 8.17797910669532,
+                "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "intersection_over_union": 0.6871629064176838,
+                "passed": false,
+                "reference_id": "osm/way/70692563",
+                "relative_printed_scale_error": 0.002308848301103339
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.592779139482538,
+                  "centroid_aligned_intersection_over_union": 0.7922038275774296,
+                  "centroid_error_m": 4.083798516374652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1887602369779218
+                },
+                "boundary_error_m": 8.662200551384672,
+                "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "intersection_over_union": 0.5846876485933131,
+                "passed": false,
+                "reference_id": "osm/way/70689498",
+                "relative_printed_scale_error": 0.005426956675585348
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.6620436391261972,
+                  "centroid_aligned_intersection_over_union": 0.7926001460443606,
+                  "centroid_error_m": 0.617828436791652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.7926001460443605
+                },
+                "boundary_error_m": 1.254312086705397,
+                "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "intersection_over_union": 0.7762569272930713,
+                "passed": false,
+                "reference_id": "osm/way/70689519",
+                "relative_printed_scale_error": 0.002045546317824498
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.2683379819795895,
+                  "centroid_aligned_intersection_over_union": 0.9483930166872964,
+                  "centroid_error_m": 0.61880093578694,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.013133201618978
+                },
+                "boundary_error_m": 0.8772030005018985,
+                "candidate_id": "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17",
+                "failed_thresholds": [],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd"
+                ],
+                "intersection_over_union": 0.8660128821196437,
+                "passed": true,
+                "reference_id": "osm/way/70689533",
+                "relative_printed_scale_error": 0.0018763575983523628
+              }
+            ],
+            "reasons": [
+              "held_out_boundary_or_scale_disagreement"
+            ],
+            "status": "withheld"
+          }
+        ],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v4",
+        "world_geometry_additions": 0
+      },
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "hypotheses": [
+        {
+          "centroid_rms_m": 1.5580492507899237,
+          "mapped_support_envelope": {
+            "coordinates": [
+              [
+                [
+                  66.79102246514185,
+                  -619.9164341758897
+                ],
+                [
+                  65.91032243565246,
+                  -619.8509252952025
+                ],
+                [
+                  -420.1858721858601,
+                  -442.80259546058807
+                ],
+                [
+                  -430.7698402192011,
+                  -435.8527504138158
+                ],
+                [
+                  -481.3346624285472,
+                  -282.966265809307
+                ],
+                [
+                  -434.19371445519755,
+                  -260.02506730419736
+                ],
+                [
+                  -428.307596273937,
+                  -257.3686129838851
+                ],
+                [
+                  45.097299445654244,
+                  -236.5315406993252
+                ],
+                [
+                  48.89020107893259,
+                  -236.4542408207514
+                ],
+                [
+                  52.41607714717168,
+                  -237.9354917558938
+                ],
+                [
+                  54.86079621123122,
+                  -240.43546667789457
+                ],
+                [
+                  56.291541465647356,
+                  -243.7507692612375
+                ],
+                [
+                  76.30242102543104,
+                  -604.4491970534998
+                ],
+                [
+                  76.37890088558697,
+                  -607.9034123404886
+                ],
+                [
+                  75.50230206519598,
+                  -609.4635010424297
+                ],
+                [
+                  70.37249614426105,
+                  -616.5884518483833
+                ],
+                [
+                  68.27859609040115,
+                  -618.8966848432988
+                ],
+                [
+                  66.79102246514185,
+                  -619.9164341758897
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "matrix": [
+            [
+              0.2822213240556799,
+              -0.0007120142612974183
+            ],
+            [
+              0.0007120142612974183,
+              0.2822213240556799
+            ]
+          ],
+          "max_centroid_error_m": 2.461927674963556,
+          "scale_metres_per_pdf_point": 0.2822222222222222,
+          "seed_candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+          "seed_reference_id": "osm/way/70689644",
+          "supports": [
+            {
+              "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+              "centroid_error_m": 0.5530134103553249,
+              "identity_verified": false,
+              "intersection_over_union": 0.8619704793144349,
+              "reference_id": "osm/way/70689644"
+            },
+            {
+              "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+              "centroid_error_m": 2.461927674963556,
+              "identity_verified": false,
+              "intersection_over_union": 0.8252500484436933,
+              "reference_id": "osm/way/70692563"
+            },
+            {
+              "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+              "centroid_error_m": 1.962508570947933,
+              "identity_verified": false,
+              "intersection_over_union": 0.7851135975581158,
+              "reference_id": "osm/way/70689498"
+            },
+            {
+              "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+              "centroid_error_m": 0.8390033796893421,
+              "identity_verified": false,
+              "intersection_over_union": 0.7396911361886546,
+              "reference_id": "osm/way/70689519"
+            },
+            {
+              "candidate_id": "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17",
+              "centroid_error_m": 1.1024105716459223,
+              "identity_verified": false,
+              "intersection_over_union": 0.7049729069222938,
+              "reference_id": "osm/way/70689533"
+            }
+          ],
+          "translation_m": [
+            -483.91624852727523,
+            -700.5879067405906
+          ]
+        }
+      ],
+      "network_diagnostics": {
+        "reason": "Network vertex budget exceeded",
+        "registration_verified": false,
+        "status": "network_budget_withheld"
+      },
+      "objects": 442,
+      "page": 1,
+      "review_flags": [],
+      "seed_search": {
+        "attempted_seed_objects": 134,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          48
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 134,
+        "eligible_seed_pairs": 2096,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2096,
+        "untried_seed_objects": 0
+      },
+      "status": "unvalidated_map_proposals"
+    },
+    {
+      "alignment_checks": null,
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "hypotheses": [],
+      "network_diagnostics": null,
+      "objects": 436,
+      "page": 1,
+      "review_flags": [],
+      "seed_search": null,
+      "status": "awaiting_visible_printed_scale"
+    }
+  ],
+  "provisional_overlay_records": 0,
+  "registration_verified": false,
+  "unchanged_replay_identical": true,
+  "validation": {
+    "focused_tests_passed": 51,
+    "full_regression_tests_passed": 1260
+  },
+  "world_geometry_additions": 0
+}

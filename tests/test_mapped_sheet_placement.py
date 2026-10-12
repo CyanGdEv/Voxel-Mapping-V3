@@ -118,6 +118,34 @@ class MappedPlacementTests(unittest.TestCase):
         self.assertEqual(result['seed_search'],again['seed_search'])
         self.assertEqual(result['hypotheses'],again['hypotheses'])
 
+    def test_automatic_batches_continue_without_repeating_pairs(self):
+        from unittest.mock import patch
+        objects,refs=self.fixture()
+        refs=refs+[{'id':'duplicate/'+r['id'],'geometry':translate(r['geometry'],5000,0)} for r in refs]
+        seen=[]
+        def decline(local,reference):
+            seen.append((local.wkb_hex,reference.wkb_hex))
+            return {'status':'withheld'}
+        with patch('voxel_mapper.mapped_sheet_placement.fit_boundary',side_effect=decline):
+            result=propose(objects,refs,expected_scale=2,max_seed_fits=3,max_seed_batches=8)
+        search=result['seed_search']
+        self.assertGreater(len(search['batch_fit_counts']),1)
+        self.assertEqual(sum(search['batch_fit_counts']),len(seen))
+        self.assertEqual(len(seen),len(set(seen)))
+        self.assertTrue(all(n<=3 for n in search['batch_fit_counts']))
+        self.assertEqual(search['deferred_seed_pairs'],0)
+        self.assertNotIn('seed_fit_budget_exhausted',result['review_flags'])
+        with patch('voxel_mapper.mapped_sheet_placement.fit_boundary',side_effect=decline):
+            capped=propose(objects,refs,expected_scale=2,max_seed_fits=1,max_seed_batches=2)
+        self.assertEqual(capped['seed_search']['batch_fit_counts'],[1,1])
+        self.assertGreater(capped['seed_search']['deferred_seed_pairs'],0)
+
+    def test_automatic_batch_budget_is_bounded(self):
+        objects,refs=self.fixture()
+        for value in (True,0,9,1.5):
+            with self.assertRaisesRegex(ValueError,'batch budget'):
+                propose(objects,refs,max_seed_batches=value)
+
     def test_hole_topology_mismatch_cannot_supply_support(self):
         objects,refs=self.fixture()
         g=refs[2]['geometry'];x,y=g.centroid.coords[0]

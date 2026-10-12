@@ -43,6 +43,25 @@ class HeldOutMapTests(unittest.TestCase):
         self.assertEqual(result['status'],'withheld')
         self.assertLess(result['hypotheses'][0]['held_out_checks'][-1]['intersection_over_union'],.85)
 
+    def test_boundary_diagnostics_distinguish_translation_and_shape(self):
+        objects,refs,fits=self.fixture()
+        refs[-1]['geometry']=translate(refs[-1]['geometry'],2,0)
+        row=check(objects,refs,fits,expected_scale=.1)['hypotheses'][0]['held_out_checks'][-1]
+        diagnostic=row['boundary_discrepancy']
+        self.assertGreater(diagnostic['centroid_error_m'],1.9)
+        self.assertLess(diagnostic['centroid_aligned_boundary_error_m'],1e-8)
+        self.assertIn('boundary_error_m',row['failed_thresholds'])
+        self.assertFalse(row['passed'])
+        objects,refs,fits=self.fixture()
+        refs[-1]['geometry']=scale(refs[-1]['geometry'],2,2)
+        row=check(objects,refs,fits,expected_scale=.1)['hypotheses'][0]['held_out_checks'][-1]
+        diagnostic=row['boundary_discrepancy']
+        self.assertLess(diagnostic['centroid_error_m'],1e-8)
+        self.assertGreater(diagnostic['centroid_aligned_boundary_error_m'],.5)
+        self.assertAlmostEqual(diagnostic['source_to_map_area_ratio'],.25)
+        self.assertTrue(diagnostic['diagnostic_only'])
+        self.assertFalse(row['passed'])
+
     def test_fewer_than_five_reused_or_collinear_landmarks_fail(self):
         objects, refs, fits = self.fixture()
         fits[0]['supports'] = fits[0]['supports'][:3]

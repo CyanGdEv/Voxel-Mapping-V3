@@ -2,9 +2,10 @@
 import math
 import re
 import numpy as np
+from shapely.affinity import translate
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v3'
+VERSION = 'held-out-map-alignment-v4'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -57,12 +58,30 @@ def check(objects, references, hypotheses, *, expected_scale=None,
                 iou = polygon.intersection(reference).area/polygon.union(reference).area
                 error = polygon.boundary.hausdorff_distance(reference.boundary)
                 scale_error = abs(scale/expected_scale-1)
+                # Diagnostic centering isolates shape disagreement from the
+                # held-out centre error. It never changes the evaluated fit.
+                centroid_error=polygon.centroid.distance(reference.centroid)
+                delta=np.asarray(reference.centroid.coords[0])-np.asarray(polygon.centroid.coords[0])
+                centered=translate(polygon,*delta)
+                centered_error=centered.boundary.hausdorff_distance(reference.boundary)
+                centered_iou=centered.intersection(reference).area/centered.union(reference).area
                 passed = (iou >= min_iou and error <= tolerance_m and scale_error <= scale_tolerance
                           and len(polygon.interiors) == len(reference.interiors))
+                failed=[]
+                if iou<min_iou:failed.append('intersection_over_union')
+                if error>tolerance_m:failed.append('boundary_error_m')
+                if scale_error>scale_tolerance:failed.append('relative_printed_scale_error')
+                if len(polygon.interiors)!=len(reference.interiors):failed.append('hole_topology')
                 checks.append({'candidate_id': candidate_id, 'reference_id': reference_id,
                     'fit_landmark_ids': [s['candidate_id'] for j, s in enumerate(supports) if j != i],
                     'intersection_over_union': iou, 'boundary_error_m': error,
-                    'relative_printed_scale_error': scale_error, 'passed': passed})
+                    'relative_printed_scale_error': scale_error, 'passed': passed,
+                    'failed_thresholds':failed,
+                    'boundary_discrepancy':{'centroid_error_m':centroid_error,
+                        'centroid_aligned_boundary_error_m':centered_error,
+                        'centroid_aligned_intersection_over_union':centered_iou,
+                        'source_to_map_area_ratio':polygon.area/reference.area,
+                        'diagnostic_only':True,'registration_verified':False}})
             if any(not row['passed'] for row in checks): reasons.append('held_out_boundary_or_scale_disagreement')
         reviews.append({'status': 'map_consistent_candidate' if not reasons else 'withheld',
                         'reasons': reasons, 'held_out_checks': checks})

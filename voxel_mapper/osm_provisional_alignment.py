@@ -19,7 +19,7 @@ from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
 from .osm_landmark_context import bind_labels,topology_checks,VERSION as CONTEXT_VERSION,GLYPH_VERSION
 
-VERSION='osm-provisional-alignment-v3'
+VERSION='osm-provisional-alignment-v4'
 
 
 def recover_outlines(data):
@@ -109,10 +109,10 @@ def map_references(path,target_crs):
         'absolute_osm_accuracy_m':None,'registration_verified':False},map_lines
 
 
-def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1000,max_seed_fits=512,max_name_ocr=16):
+def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1000,max_seed_fits=512,max_name_ocr=16,max_seed_batches=8):
     if type(max_pages) is not int or not 1<=max_pages<=1000:raise ValueError('OSM alignment page budget must be 1..1000')
     if type(max_name_ocr) is not int or not 0<=max_name_ocr<=16:raise ValueError('Run name OCR budget must be 0..16')
-    propose([],[],max_seed_fits=max_seed_fits)
+    propose([],[],max_seed_fits=max_seed_fits,max_seed_batches=max_seed_batches)
     geometry_directory=Path(geometry_directory);extraction=json.loads((geometry_directory/'geometry-report.json').read_text())
     feed=geometry_directory/'geometry-candidates.jsonl'
     if file_hash(feed)!=extraction['file_sha256']['geometry']:raise ValueError('Retained native geometry feed changed')
@@ -125,7 +125,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
         'name_ocr_engine_sha256':file_hash(shutil.which('tesseract')) if shutil.which('tesseract') else None,
         'native_render_engine':pymupdf.VersionBind,
         'geometry_sha256':file_hash(feed),'osm_sha256':osm_sha,'target_crs':target_crs,
-        'projection':projection,'max_pages':max_pages,'max_seed_fits':max_seed_fits,'max_name_ocr':max_name_ocr}
+        'projection':projection,'max_pages':max_pages,'max_seed_fits':max_seed_fits,'max_name_ocr':max_name_ocr,'max_seed_batches':max_seed_batches}
     root=Path(output)/identity(contract);root.mkdir(parents=True,exist_ok=True)
     computed=reused=0;records=[];facts=[];overlays=[];remaining_ocr=max_name_ocr
     with EvidenceMemory(store) as memory:
@@ -152,7 +152,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                     'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,
                     'absolute_accuracy_verified':False,'absolute_error_bound_m':None,'provisional_geometry':[]}
                 if scale['status']=='one_visible_printed_scale':
-                    proposal=propose(objects,refs,max_seed_fits=max_seed_fits,expected_scale=scale['expected_metres_per_pdf_point'],
+                    proposal=propose(objects,refs,max_seed_fits=max_seed_fits,max_seed_batches=max_seed_batches,expected_scale=scale['expected_metres_per_pdf_point'],
                         priority_seed_ids=names['priority_seed_ids'],named_pairs=names['named_pairs'])
                     review=check(objects,refs,proposal['hypotheses'],expected_scale=scale['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
                     record.update(proposal=proposal,alignment_checks=review,status='map_consistent_provisional_alignment' if review['status']=='map_consistent_candidate' else 'unvalidated_map_proposals' if proposal['hypotheses'] else 'no_map_correspondence_found')
@@ -190,8 +190,8 @@ def main():
     from .planning_bulk import Corpus
     parser=argparse.ArgumentParser(description=__doc__)
     for key in ('corpus','geometry','osm','store','output','target-crs'):parser.add_argument('--'+key,required=True)
-    parser.add_argument('--max-seed-fits',type=int,default=512);args=parser.parse_args();corpus=Corpus(args.corpus)
-    try:print(json.dumps(run(corpus,args.geometry,args.osm,args.store,args.output,target_crs=args.target_crs,max_seed_fits=args.max_seed_fits),indent=2))
+    parser.add_argument('--max-seed-fits',type=int,default=512);parser.add_argument('--max-seed-batches',type=int,default=8);args=parser.parse_args();corpus=Corpus(args.corpus)
+    try:print(json.dumps(run(corpus,args.geometry,args.osm,args.store,args.output,target_crs=args.target_crs,max_seed_fits=args.max_seed_fits,max_seed_batches=args.max_seed_batches),indent=2))
     finally:corpus.close()
 
 if __name__=='__main__':main()

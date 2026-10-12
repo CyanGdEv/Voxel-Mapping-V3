@@ -167,7 +167,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                     resolve(osm_settings['knowledge_store']) if osm_settings.get('knowledge_store') else root/'evidence-memory.sqlite',
                     work/'osm-provisional-alignment',target_crs=target_crs,
                     max_pages=osm_settings.get('max_pages',config.get('max_pages',1000)),
-                    max_seed_fits=osm_settings.get('max_seed_fits',512),max_name_ocr=osm_settings.get('max_name_ocr',16))
+                    max_seed_fits=osm_settings.get('max_seed_fits',512),max_name_ocr=osm_settings.get('max_name_ocr',16),
+                    max_seed_batches=osm_settings.get('max_seed_batches',8))
         if landmark_contract is not None:
             from .survey_landmark_discovery import run as discover_stations
             landmark_settings=config.get('survey_landmark_discovery',{})

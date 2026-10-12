@@ -18,7 +18,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v9'
+VERSION = 'mapped-sheet-placement-v10'
 
 
 def placed(geometry, fit):
@@ -26,7 +26,7 @@ def placed(geometry, fit):
     return affine_transform(geometry, [m[0][0], m[0][1], m[1][0], m[1][1], *t])
 
 
-def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None, expected_scale=None, named_pairs=None):
+def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., priority_seed_ids=None, expected_scale=None, named_pairs=None, max_seed_batches=1):
     """Map agreement is estimated placement evidence, not survey acceptance.
 
     Full boundaries seed fits; all page objects and spatial reference neighbours
@@ -34,6 +34,9 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     """
     if type(max_seed_fits) is not int or not 1 <= max_seed_fits <= 2000:
         raise ValueError('Seed fit budget must be 1..2000')
+    if type(max_seed_batches) is not int or not 1 <= max_seed_batches <= 8:
+        raise ValueError('Automatic seed batch budget must be 1..8')
+    total_fit_budget=max_seed_fits*max_seed_batches
     if not math.isfinite(min_iou) or not .5 <= min_iou <= 1 or not math.isfinite(tolerance_m) or not 0 < tolerance_m <= 25:
         raise ValueError('Invalid mapped review thresholds')
     if len(objects)>20000 or len(refs)>5000:raise ValueError('Page/reference budget exceeded')
@@ -84,7 +87,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
                     r=reference_polygons[i]
                     tier=0 if (o['candidate_id'],r['id']) in preferred else 1 if o['candidate_id'] in priority_seed_ids else 2
                     yield ((tier,rank,-g.area,o['candidate_id'],r['id']),o,r)
-        edges=heapq.nsmallest(max_seed_fits,eligible_edges(),key=lambda e:e[0])
+        edges=heapq.nsmallest(total_fit_budget,eligible_edges(),key=lambda e:e[0])
         search['eligible_seed_objects']=len(seeds)
     else:
         edges=[]
@@ -100,7 +103,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             for rank,(_,_,r) in enumerate(pool[:8]):
                 edges.append(((-2 if (o['candidate_id'],r['id']) in preferred else -1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],r['id']),o,r))
         edges.sort(key=lambda e:e[0]);search['eligible_seed_pairs']=len(edges)
-    search['scheduled_seed_pairs']=min(len(edges),max_seed_fits)
+    search['scheduled_seed_pairs']=min(len(edges),total_fit_budget)
     search['deferred_seed_pairs']=search['eligible_seed_pairs']-search['scheduled_seed_pairs']
     attempted=0;orientation_trials=0;hypotheses=[];attempted_objects=set()
     def support(fit):
@@ -131,7 +134,7 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             selected.append(h);used_o.add(h['candidate_id']);used_r.add(h['reference_id'])
         return selected
     for _,o,r in edges:
-        if attempted>=max_seed_fits:break
+        if attempted>=total_fit_budget:break
         attempted+=1;attempted_objects.add(o['candidate_id']);boundary=fit_boundary(o['geometry'],r['geometry'])
         if 'best_fit' not in boundary:continue
         best_seed=boundary['best_fit'];seeds_for_boundary=[best_seed]
@@ -181,6 +184,9 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
         best.append(h)
         if len(best)>=12:break
     flags=[]
+    search['max_seed_batches']=max_seed_batches
+    search['fits_per_batch']=max_seed_fits
+    search['batch_fit_counts']=[min(max_seed_fits,attempted-start) for start in range(0,attempted,max_seed_fits)]
     search['attempted_seed_objects']=len(attempted_objects)
     search['untried_seed_objects']=len(seeds)-len(attempted_objects)
     if search['deferred_seed_pairs']:flags.append('seed_fit_budget_exhausted')
