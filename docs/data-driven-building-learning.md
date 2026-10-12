@@ -10,7 +10,10 @@ these specifications, features and verified gate results.
 ## Shared geometry contract
 
 `building-spec-v1` uses `local_xyz_metres_z_up`, stable building/component IDs,
-existing-source hashes, evidence references and explicit assumptions. Each
+source hashes, drawing states, evidence references and explicit assumptions.
+Existing, proposed and unknown studies can be rendered locally, but states cannot
+be mixed within an assembly. Imports retain explicit parent state and use unknown
+when it is absent; a proposed study is never relabelled existing. Each
 component is a wall, partition, floor, roof, tower or detail. Geometry can be a
 polygon extrusion (including protected holes) or a retained triangle mesh.
 Extrusions are checked for closed oriented edges and correct volume; meshes are
@@ -135,3 +138,61 @@ compute diagnostic features automatically; capture independently checked feedbac
 benchmark untouched buildings; implement general slab-based native compilation
 and feed accepted registered results into the existing area workers. A trained
 vision/geometry model becomes useful after that real dataset and benchmark exist.
+
+
+## Retained drawing feed and real review collection
+
+`prepare-feed --config feed.json --output fresh-feed` reads a
+`retained-building-feed-v1` configuration with `buildings`. Each entry supplies
+`building_id`, `model`, `model_sha256`, optional `diagnostics` entries (`path`,
+`sha256`) and `source_directories` containing checksum-named PDFs. Paths resolve
+relative to the config. Assets must be exact parent-model inputs or carry a
+matching `corrected_model_sha256`; unrelated audits cannot supply scores.
+
+The adapter automatically translates retained study meshes to shared specs,
+checks original PDF content hashes, computes diagnostic features and emits
+`buildings.json`, `review-queue.json` and `report.json`. Source coverage is the
+fraction of required original PDFs whose bytes were verified. Width agreement
+uses the retained cross-view difference and sampling bound. Plan-normalization
+reviews use their two printed/elevation differences and the existing 0.25 m
+comparison rule. Boundary support is perimeter-weighted drawing proximity;
+opening support counts unique complete trace refinement candidates. These are
+separate: proximity can be high while opening support remains zero. Missing
+metrics remain zero and are listed explicitly. Topology quality here means the
+shared mesh checks passed, not that open surfaces form a complete closed building.
+
+The feed's identity gate stays false: retained study previews do not establish
+independent physical assembly identity. Matching widths alone do not establish
+it either. A proposed or unknown study cannot pass the existing-source gate.
+Missing PDFs remain reported; corrupt checksum-named PDFs reject that candidate.
+One failed building does not prevent the other entries from being prepared.
+Run `batch --job fresh-feed/buildings.json` for normal eligibility processing.
+This is automatic translation of retained evidence, not automatic discovery of
+new outlines from arbitrary PDFs. Retained raster traces still carry their
+manual origin.
+
+The queue supplies candidate hashes, computed features and full original source
+sets, with empty review outcomes. External review decisions use version
+`building-review-decisions-v1`, and each record supplies `building_id`,
+`candidate_sha256`, `outcome`, `review_basis` and a nonempty `review_reference`.
+
+```bash
+python -m voxel_mapper.building_pipeline collect-feedback \
+  --queue fresh-feed/review-queue.json --decisions independent-reviews.json \
+  --output reviewed-feedback.json
+```
+
+The collector binds decisions to the exact queued candidate and copies its
+computed features/source set; it refuses unknown/duplicate candidates, altered
+queue content and model-prediction review bases. The resulting feedback feeds
+`train`/`iterate` directly. Review references are audit pointers, not authenticated
+signatures, and queue integrity hashes do not prevent an authorized producer from
+creating a different queue. No successful export, proposed drawing or geometric
+consistency check is automatically labelled physically correct.
+
+Real replay now computes features for the Mutiny north-range model and Wicker
+shop. Mutiny's three original PDFs are verified; the shop's three referenced PDFs
+are absent from the retained Mutiny corpus and remain missing. Its proposed state
+is preserved. Both candidates remain ineligible because physical identity is
+unresolved. No real training labels or activated model are fabricated. See
+`docs/evidence/building-source-feed-validation.json`.

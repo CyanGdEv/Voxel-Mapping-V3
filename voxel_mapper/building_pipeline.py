@@ -127,7 +127,24 @@ def main(argv=None):
     iteration = commands.add_parser('iterate')
     for key in ('job', 'feedback', 'split', 'output'): iteration.add_argument('--'+key, required=True)
     iteration.add_argument('--parent')
+    feed = commands.add_parser('prepare-feed')
+    feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
+    reviews = commands.add_parser('collect-feedback')
+    reviews.add_argument('--queue', required=True); reviews.add_argument('--decisions', required=True); reviews.add_argument('--output', required=True)
     args = parser.parse_args(argv)
+    if args.command == 'prepare-feed':
+        from .building_source_feed import prepare
+        base = Path(args.config).resolve().parent
+        job, report = prepare(_read(args.config), lambda p: (base/p).resolve(), args.output)
+        print(json.dumps({'candidate_buildings': report['candidate_buildings'], 'training_labels_generated': 0}))
+        return
+    if args.command == 'collect-feedback':
+        from .building_source_feed import feedback_from_reviews
+        if Path(args.output).exists(): raise ValueError('Fresh feedback output required')
+        feedback = feedback_from_reviews(_read(args.queue), _read(args.decisions))
+        atomic_json(Path(args.output), feedback)
+        print(json.dumps({'reviewed_records': len(feedback['records'])}))
+        return
     if args.command == 'iterate':
         report = iterate(_read(args.job), _read(args.feedback), _read(args.split), args.output,
                          _read(args.parent) if args.parent else None)

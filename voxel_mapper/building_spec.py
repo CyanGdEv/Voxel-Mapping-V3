@@ -90,9 +90,12 @@ def build(spec):
         identifier = source.get('id')
         if not isinstance(identifier, str) or not identifier or identifier in source_map:
             raise ValueError('Unique source identity required')
-        if not re.fullmatch('[0-9a-f]{64}', source.get('sha256', '')) or source.get('state') != 'existing':
-            raise ValueError('Pinned existing source required; proposed sources stay separate')
+        if not re.fullmatch('[0-9a-f]{64}', source.get('sha256', '')) or source.get('state') not in ('existing', 'proposed', 'unknown'):
+            raise ValueError('Pinned source and explicit drawing state required')
         source_map[identifier] = source
+    states = {source['state'] for source in sources}
+    if len(states) != 1:
+        raise ValueError('Existing and proposed sources must remain separate')
     components = spec.get('components')
     if not isinstance(components, list) or not 1 <= len(components) <= MAX_COMPONENTS:
         raise ValueError('Bounded component inventory required')
@@ -123,7 +126,7 @@ def build(spec):
         output.append({'id': identifier, 'role': component['role'], 'colour': colour,
                        'evidence': copy.deepcopy(evidence), 'mesh': mesh})
     return {'version': VERSION, 'building_id': spec['building_id'], 'spec_sha256': digest(spec),
-            'status': 'local_data_driven_building_preview', 'components': output,
+            'status': 'local_data_driven_building_preview', 'source_state': next(iter(states)), 'components': output,
             'assumptions': copy.deepcopy(assumptions), 'sources': copy.deepcopy(sources),
             'world_placement_eligible': False, 'park_world_blocks_added': 0,
             'surveyed_complete_structure': False, 'assembly_boolean_union': False}
@@ -131,7 +134,15 @@ def build(spec):
 
 def from_study(model, building_id, source_sha256):
     """Retain existing component coordinates/triangles without reinterpreting them."""
-    sources = [{'id': 'parent_study', 'sha256': source_sha256, 'state': 'existing'}]
+    states = {model.get('source_state')} if model.get('source_state') else set()
+    states.update(s.get('state') for s in model.get('sources', []))
+    states.update(v.get('specification', {}).get('state') for v in model.get('source_frames', {}).values())
+    states.update(model[k].get('source_state') for k in ('wall_mesh', 'roof_mesh', 'projection_mesh') if isinstance(model.get(k), dict))
+    states.discard(None)
+    if len(states) > 1:
+        raise ValueError('Mixed source states in parent study')
+    state = next(iter(states)) if states else 'unknown'
+    sources = [{'id': 'parent_study', 'sha256': source_sha256, 'state': state}]
     assumptions = model.get('assumptions') or ['Retained study assembly; source identity, complete inventory and park placement remain unresolved.']
     rows = model.get('components')
     if rows is None:

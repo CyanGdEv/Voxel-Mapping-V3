@@ -43,7 +43,7 @@ class BuildingSpecTests(unittest.TestCase):
         self.assertEqual(model['park_world_blocks_added'], 0)
 
     def test_invalid_source_geometry_and_duplicate_component_reject(self):
-        changes = [lambda s: s['sources'][0].update(state='proposed'),
+        changes = [lambda s: s['sources'][0].update(state='invalid'),
                    lambda s: s['components'].append(copy.deepcopy(s['components'][0])),
                    lambda s: s['components'][0]['geometry'].update(interval_m=[0,float('nan')]),
                    lambda s: s['components'][0]['evidence'].update(source_ids=['missing']),

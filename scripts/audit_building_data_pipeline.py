@@ -30,7 +30,7 @@ def main():
                      'gates': dict.fromkeys(GATES, False)}
         ranking = rank([candidate], baseline())
         records.append({'building_id': identifier, 'parent_sha256': hashlib.sha256(raw).hexdigest(),
-                        'component_meshes': len(rebuilt), 'geometry_sha256': digest(original),
+                        'component_meshes': len(rebuilt), 'source_state': result['source_state'], 'geometry_sha256': digest(original),
                         'coordinates_and_triangles_unchanged': True,
                         'spec_sha256': result['spec_sha256'],
                         'unverified_candidate_selected': ranking['selected_id'],
