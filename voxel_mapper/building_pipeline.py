@@ -25,6 +25,8 @@ def run(job, output, model=None, exploratory=False):
         raise ValueError('Bounded building batch required')
     native_mode=job.get('native_output','none')
     if native_mode not in ('none','cells','world'):raise ValueError('Supported native output mode required')
+    quality_policy=job.get('native_quality','report')
+    if quality_policy not in ('report','require_pass'):raise ValueError('Supported native quality policy required')
     model = model or learning.baseline(); learning.validate_model(model)
     if model['iteration'] > 0 and not model['production_eligible'] and not exploratory:
         raise ValueError('Unpromoted learned checkpoint requires explicit exploratory mode')
@@ -60,9 +62,13 @@ def run(job, output, model=None, exploratory=False):
                         if candidate['spec']['building_id'] != building['building_id']:
                             raise ValueError('Candidate belongs to a different building')
                         geometry = build(candidate['spec'])
-                        if native_mode!='none':
+                        if native_mode!='none' or quality_policy=='require_pass':
                             from .building_native import compile_spec
-                            compile_spec(candidate['spec'])
+                            _,native_audit=compile_spec(candidate['spec'])
+                            structural=native_audit['structural_review']
+                            if quality_policy=='require_pass' and structural['status']!='passed_native_checks':
+                                failures.append({'candidate_id':row['id'],'reason':'native_structural_checks_failed','structural_review':structural})
+                                continue
                     except (ValueError, KeyError, TypeError) as error:
                         failures.append({'candidate_id': row['id'], 'reason': str(error)})
                         continue
@@ -74,7 +80,8 @@ def run(job, output, model=None, exploratory=False):
                         native_report=export_preview(candidate['spec'],directory/'native',world=native_mode=='world')
                         result['native_output']={'mode':native_mode,'surface_cells':native_report['native_audit']['surface_cells'],
                             'protected_air_verified':native_report['native_audit']['protected_air_verified'],
-                            'world_exported':'world' in native_report}
+                            'world_exported':'world' in native_report,
+                            'structural_review':native_report['native_audit']['structural_review']}
                     result.update(status='local_preview_built', selected_id=row['id'],
                                   spec_sha256=geometry['spec_sha256'], export=exported,
                                   world_placement_eligible=False)

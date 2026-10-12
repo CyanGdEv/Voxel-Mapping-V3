@@ -158,8 +158,10 @@ reviews use their two printed/elevation differences and the existing 0.25 m
 comparison rule. Boundary support is perimeter-weighted drawing proximity;
 opening support counts unique complete trace refinement candidates. These are
 separate: proximity can be high while opening support remains zero. Missing
-metrics remain zero and are listed explicitly. Topology quality here means the
-shared mesh checks passed, not that open surfaces form a complete closed building.
+metrics remain zero and are listed explicitly. Topology quality now uses native floor connectivity, roof-region support and
+expected roof contacts after the shared mesh checks. A missing declared floor
+leaves the score unassessed: the feature is zero with an explicit missing-feature
+flag, not a correctness rejection label.
 
 The feed's identity gate stays false: retained study previews do not establish
 independent physical assembly identity. Matching widths alone do not establish
@@ -263,3 +265,45 @@ vertical detail uses full blocks; the slab exception is strictly below that valu
 Roof slab behaviour is retained. `full_blocks_withheld_for_air` reports masonry
 that cannot meet both the full-block rule and an opening guard. This can alter the
 voxel silhouette around openings; the source meshes remain unchanged.
+
+
+## Native structural diagnostics
+
+The v3 compiler runs `building_structure.inspect` on actual half-block occupancy.
+It reports face-connected components, roof regions, connections to source-declared
+floor/ground cells, blocked declared air and absent expected roof contacts.
+Diagonal touches do not count as connections. Artificial export platforms are
+excluded from the anchors: they cannot make an incomplete building appear
+supported. Without a source-declared floor, roof-to-floor support is unassessed,
+not inferred from the lowest occupied block.
+
+Expected contacts come from neighbouring columns within each roof component.
+Interfaces containing protected opening air remain explicitly unassessed rather
+than proposing a fill through the opening. Other missing contacts are retained
+with their native columns and height interval. The checker never adds supports,
+changes source meshes or alters voxel rows. Floor-connected geometry is a native
+connectivity diagnostic, not structural engineering, terrain placement, complete
+building identity or a guarantee of player movement.
+
+A batch job can set `native_quality: require_pass` to withhold candidates whose
+native checks need review and try the next eligible candidate. The default
+`report` mode retains experimental previews with their diagnostics. Strict checks
+run before the candidate's GLB/native files are published. Batch results retain
+rejected candidate reports; one failed building does not stall the batch.
+
+The retained source feed now emits version `retained-building-feed-v2` and still
+accepts legacy v1 input configs. It automatically computes native diagnostics
+and carries them into candidates/review queues. Topology quality is the minimum
+of floor-connected occupancy, floor-connected roof-region fraction and assessed
+roof-contact completeness, with zero for blocked declared air. Missing floor
+references or a bounded diagnostic failure remain unassessed/missing. These
+features improve ranking/review data; passing checks never creates a positive
+training label.
+
+Real full-courtyard replay identifies three native components, including two
+small roof regions without a floor connection. The retained Wicker surface model
+has no declared floor, so its support remains unassessed. Partial north-wing
+feeds likewise lack a floor component. These are actionable diagnostics, not
+repaired structures. See `docs/evidence/building-structural-validation.json`.
+Next: bounded source-supported roof-join repair proposals and floor evidence,
+then automatic raw-PDF geometry discovery.

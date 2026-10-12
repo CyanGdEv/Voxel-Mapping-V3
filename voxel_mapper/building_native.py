@@ -8,7 +8,7 @@ from .building_spec import build,digest
 from .wing_block_shapes import occupied_halves
 from .generation_cycles import atomic_json
 
-VERSION='building-native-surface-v2'
+VERSION='building-native-surface-v3'
 
 
 def _shapes(palette):
@@ -32,7 +32,7 @@ def compile_spec(spec,*,max_checks=2000000):
     air=spec.get('native_air_halves',[])
     if not isinstance(air,list) or len(air)>100000 or any(not isinstance(p,list) or len(p)!=3 or any(type(v) is not int or abs(v)>20002 for v in p) for p in air):
         raise ValueError('Bounded integer native air guards required')
-    protected={tuple(p) for p in air};stone=set();full_block_cells=set();roof_surfaces=[];checks=0;rows=[]
+    protected={tuple(p) for p in air};stone=set();full_block_cells=set();anchor_candidates=set();roof_surfaces=[];checks=0;rows=[]
     def charge():
         nonlocal checks
         checks+=1
@@ -86,6 +86,7 @@ def compile_spec(spec,*,max_checks=2000000):
                             half[1]=math.floor(sample[1]*2+.5)-1
                         half=tuple(half);stone.add(half);sampled.add(half)
                         if not slab_eligible:full_block_cells.add(tuple(v//2 for v in half))
+                        if component['role'] in ('floor','ground'):anchor_candidates.add(tuple(v//2 for v in half))
                     count+=1
         if roof:roof_surfaces.append((roof_tops,roof_bottoms,mesh['watertight']))
         rows.append({'id':component['id'],'role':component['role'],'vertical_extent_m':height,
@@ -108,11 +109,15 @@ def compile_spec(spec,*,max_checks=2000000):
         if material!='air':cells[position]=material
     # Quantize the source roof top at metre-column centres, then bridge only
     # neighbouring roof courses. Masonry and declared air always take precedence.
-    roof_halves=defaultdict(set);blocked_roof=set();rounding=[]
+    roof_halves=defaultdict(set);blocked_roof=set();rounding=[];expected_contacts=[]
     for roof_tops,roof_bottoms,closed in roof_surfaces:
         tops={column:math.floor(height*2+.5) for column,height in roof_tops.items()}
         for (x,z),top in sorted(tops.items()):
             rounding.append(abs(top/2-roof_tops[x,z]))
+            for neighbour in ((x+1,z),(x,z+1)):
+                if neighbour in tops:
+                    expected_contacts.append({'columns':[(x,z),neighbour],
+                        'minimum_half_y':min(top,tops[neighbour])-1,'maximum_half_y':max(top,tops[neighbour])-1})
             adjacent=[tops[q] for q in ((x-1,z),(x+1,z),(x,z-1),(x,z+1)) if q in tops]
             start=min([top,*adjacent])-1
             if closed:start=min(start,math.floor(roof_bottoms[x,z]*2+.5))
@@ -127,8 +132,10 @@ def compile_spec(spec,*,max_checks=2000000):
         cells[position]='dark_oak_planks' if len(halves)==2 else 'dark_oak_slab_top' if 1 in halves else 'dark_oak_slab'
     if set(occupied_halves(cells))&protected:raise ValueError('Native output obstructed declared air')
     if not cells:raise ValueError('No representable native building geometry')
+    from .building_structure import inspect
+    structure=inspect(cells,anchor_candidates,protected,expected_contacts)
     return cells,{'version':VERSION,'spec_sha256':digest(spec),'source_mesh_unchanged':True,
-                  'component_sampling':rows,'sampling_checks':checks,'surface_cells':len(cells),
+                  'structural_review':structure,'component_sampling':rows,'sampling_checks':checks,'surface_cells':len(cells),
                   'material_counts':dict(sorted(Counter(cells.values()).items())),
                   'source_surface_halves_missing':missing,'extra_native_halves':extra,
                   'protected_air_halves':len(protected),'guarded_surface_cells':guarded_cells,

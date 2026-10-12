@@ -8,7 +8,7 @@ from .building_spec import from_study, build, digest
 from .building_learning import FEATURES
 from .generation_cycles import atomic_json
 
-VERSION = 'retained-building-feed-v1'
+VERSION = 'retained-building-feed-v2'
 
 
 def _read(path, expected):
@@ -88,7 +88,7 @@ def diagnostics(model, assets, source_coverage):
 
 
 def prepare(config, resolve, output):
-    if config.get('version') != VERSION:
+    if config.get('version') not in (VERSION,'retained-building-feed-v1'):
         raise ValueError('Versioned retained-building feed required')
     entries = config.get('buildings')
     if not isinstance(entries,list) or not 1 <= len(entries) <= 1000:
@@ -132,6 +132,18 @@ def prepare(config, resolve, output):
                 verified.append(source)
             spec = from_study(model, entry['building_id'], entry['model_sha256']); geometry = build(spec)
             features, missing_features, dimensions_consistent = diagnostics(model, assets, len(verified)/len(required))
+            from .building_native import compile_spec
+            native_structure=None;native_error=None
+            try:
+                _,native_audit=compile_spec(spec)
+                native_structure=native_audit['structural_review']
+                score=native_structure['native_diagnostic_score']
+                features['topology_quality']=score if score is not None else 0.
+                if score is None:missing_features=sorted(set(missing_features)|{'topology_quality'})
+            except ValueError as error:
+                features['topology_quality']=0.
+                missing_features=sorted(set(missing_features)|{'topology_quality'})
+                native_error=str(error)
             state = geometry['source_state']
             candidate = {'id':'retained-'+entry['model_sha256'][:16], 'spec':spec, 'features':features,
                          'gates':{'source_verified':not missing and state=='existing',
@@ -141,15 +153,17 @@ def prepare(config, resolve, output):
                          'source_feed':{'version':VERSION,'input_sha256':pins,'original_pdf_sha256':sorted(required),
                                         'verified_pdf_sha256':verified,'missing_pdf_sha256':missing,
                                         'missing_features':missing_features,'source_state':state,
+                                        'native_structural_review':native_structure,'native_diagnostic_error':native_error,
                                         'automatic_trace_discovery':False}}
             candidate['candidate_sha256'] = digest(candidate)
             job['buildings'].append({'building_id':entry['building_id'],'candidates':[candidate]})
             queue.append({'building_id':entry['building_id'],'candidate_id':candidate['id'],
                           'candidate_sha256':candidate['candidate_sha256'], 'features':features,
-                          'source_sha256':sorted(required), 'outcome':None,'review_basis':None,
+                          'source_sha256':sorted(required), 'native_structural_review':native_structure, 'outcome':None,'review_basis':None,
                           'review_scope':'whole local candidate correctness; physical placement not established'})
             report.update(status='candidate_prepared',source_state=state,component_meshes=len(geometry['components']),
                           features=features,missing_features=missing_features,
+                          native_structural_review=native_structure,native_diagnostic_error=native_error,
                           verified_source_pdfs=len(verified),missing_source_pdfs=len(missing),
                           failed_gates=[k for k,v in candidate['gates'].items() if not v])
         except (ValueError,KeyError,TypeError,OSError) as error:
