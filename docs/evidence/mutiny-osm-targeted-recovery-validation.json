@@ -1,0 +1,1537 @@
+{
+  "audit_date": "2026-10-12",
+  "contract": {
+    "check_version": "held-out-map-alignment-v5",
+    "geometry_sha256": "2bd7c1284691a0f9fbc5b1c6c27e4f0e6ae1bcea35fd1a63cfac83f7e4ebbe8a",
+    "glyph_version": "source-font-glyph-raster-screen-v2",
+    "landmark_context_version": "osm-landmark-context-v4",
+    "match_version": "mapped-sheet-placement-v10",
+    "max_name_ocr": 16,
+    "max_pages": 1000,
+    "max_seed_batches": 8,
+    "max_seed_fits": 512,
+    "name_ocr_engine_sha256": "9f831cab7525c3dab04af41bda35182af7ea1df9dceeaaa2f3bf207ac45c06a5",
+    "native_render_engine": "1.26.6",
+    "osm_sha256": "b864213364d80e398068ec0aa66c294c71a8e0ec49b85d5a9e42a34b79daa571",
+    "outline_review_version": "osm-outline-review-v2",
+    "projection": {
+      "absolute_osm_accuracy_m": null,
+      "operation": "axis order change (2D) + unknown (with axis order normalized for visualization)",
+      "operation_accuracy_m": 0.0,
+      "reference_polygons": 843,
+      "registration_verified": false,
+      "skipped_osm_elements": 92
+    },
+    "recovery_version": "linework-boundaries-v2",
+    "target_crs": "+proj=aeqd +lat_0=52.9915 +lon_0=-1.8875 +datum=WGS84 +units=m +no_defs",
+    "targeted_recovery_version": "osm-targeted-source-recovery-v2",
+    "version": "osm-provisional-alignment-v6"
+  },
+  "fresh_output_reused_pages": 3,
+  "limitations": [
+    "The two usable-scale plans are revisions with the same support geometry, not independent survey observations or distinct park objects.",
+    "Targeted candidates and recovered enclosed faces remain unclassified; source identity, observation date and absolute position are unverified.",
+    "Recovery improves the retained inventory but does not establish extraction completeness. All four held-out failures on each usable-scale revision remain.",
+    "Whole-page source network vertex budget and third-sheet scale visibility remain unresolved."
+  ],
+  "output_sha256": {
+    "page-alignments.jsonl": "c36874fff8864ffffc5db060c94aab05fbccdc9d1337f65f0b6eee81cf793e85",
+    "provisional-overlay.geojson": "de449d0b1ac4b3fe75a36d5ebb58b16e86d24eadb506b413cdd7ce4abcf53b8c"
+  },
+  "page_statuses": {
+    "awaiting_visible_printed_scale": 1,
+    "unvalidated_map_proposals": 2
+  },
+  "pages_review": [
+    {
+      "alignment_checks": {
+        "blockers": [],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [
+          {
+            "held_out_checks": [
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.7153075202045699,
+                  "centroid_aligned_intersection_over_union": 0.9034746540619574,
+                  "centroid_error_m": 1.0364143840548663,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1068379123908694
+                },
+                "boundary_error_m": 1.6979971757207604,
+                "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                "failed_thresholds": [
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2815176424224064,
+                      -0.0005578028289848568
+                    ],
+                    [
+                      0.0005578028289848568,
+                      0.2815176424224064
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.0246848752938,
+                    -699.3351759522272
+                  ]
+                },
+                "intersection_over_union": 0.8713686424916421,
+                "passed": false,
+                "reference_id": "osm/way/70689644",
+                "relative_printed_scale_error": 0.002494584500875918
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.2925994180152856,
+                  "centroid_aligned_intersection_over_union": 0.8502671851568956,
+                  "centroid_error_m": 4.65160392740228,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.9681949243595411
+                },
+                "boundary_error_m": 8.17797910669532,
+                "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2828719574176728,
+                      -0.0010294173370859502
+                    ],
+                    [
+                      0.0010294173370859502,
+                      0.2828719574176728
+                    ]
+                  ],
+                  "translation_m": [
+                    -482.8511074171661,
+                    -701.8673993742547
+                  ]
+                },
+                "intersection_over_union": 0.6871629064176838,
+                "passed": false,
+                "reference_id": "osm/way/70692563",
+                "relative_printed_scale_error": 0.002308848301103339
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.592779139482538,
+                  "centroid_aligned_intersection_over_union": 0.7922038275774296,
+                  "centroid_error_m": 4.083798516374652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1887602369779218
+                },
+                "boundary_error_m": 8.662200551384672,
+                "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2806897211571034,
+                      -0.0007081501907489584
+                    ],
+                    [
+                      0.0007081501907489584,
+                      0.2806897211571034
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.006699148049,
+                    -698.9326501638113
+                  ]
+                },
+                "intersection_over_union": 0.5846876485933131,
+                "passed": false,
+                "reference_id": "osm/way/70689498",
+                "relative_printed_scale_error": 0.005426956675585348
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.6620436391261972,
+                  "centroid_aligned_intersection_over_union": 0.7926001460443606,
+                  "centroid_error_m": 0.617828436791652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.7926001460443605
+                },
+                "boundary_error_m": 1.254312086705397,
+                "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.28164436530818265,
+                      -0.0005607823481478749
+                    ],
+                    [
+                      0.0005607823481478749,
+                      0.28164436530818265
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.1913973530997,
+                    -699.5530826535692
+                  ]
+                },
+                "intersection_over_union": 0.7762569272930713,
+                "passed": false,
+                "reference_id": "osm/way/70689519",
+                "relative_printed_scale_error": 0.002045546317824498
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.2683379819795895,
+                  "centroid_aligned_intersection_over_union": 0.9483930166872964,
+                  "centroid_error_m": 0.61880093578694,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.013133201618978
+                },
+                "boundary_error_m": 0.8772030005018985,
+                "candidate_id": "b12e3dc1dd58ad5e1bc003bb70602784b04e1f371848f8e35600eb804cbaf4f3",
+                "failed_thresholds": [],
+                "fit_landmark_ids": [
+                  "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                  "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                  "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                  "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2816920980307775,
+                      -0.0005688559958267995
+                    ],
+                    [
+                      0.0005688559958267995,
+                      0.2816920980307775
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.2994492674178,
+                    -699.6201052626401
+                  ]
+                },
+                "intersection_over_union": 0.8660128821196437,
+                "passed": true,
+                "reference_id": "osm/way/70689533",
+                "relative_printed_scale_error": 0.0018763575983523628
+              }
+            ],
+            "reasons": [
+              "held_out_boundary_or_scale_disagreement"
+            ],
+            "status": "withheld"
+          }
+        ],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v5",
+        "world_geometry_additions": 0
+      },
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "final_seed_search": {
+        "attempted_seed_objects": 134,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          84
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 134,
+        "eligible_seed_pairs": 2132,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2132,
+        "untried_seed_objects": 0
+      },
+      "initial_seed_search": {
+        "attempted_seed_objects": 133,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          47
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 133,
+        "eligible_seed_pairs": 2095,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2095,
+        "untried_seed_objects": 0
+      },
+      "objects": 431,
+      "outline_investigation": {
+        "deferred_failed_checks": 0,
+        "failed_checks": 4,
+        "geometry_replacements": 0,
+        "limitations": [
+          "Retained closed primitives do not establish complete physical object identity.",
+          "Alternative outlines are investigation hints under an unchanged held-out transform; none replace a match.",
+          "OSM edit timestamps do not establish the physical observation date; source-date change remains unresolved."
+        ],
+        "registration_verified": false,
+        "review_statuses": {
+          "no_compatible_retained_alternative": 4
+        },
+        "reviewed_failed_checks": 4,
+        "reviews": [
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+            "failed_thresholds": [
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 1,
+            "nearby_source_outlines": 2,
+            "osm_element_metadata": {
+              "timestamp": "2026-02-14T21:37:17Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689644",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 5,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                146468
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                94.94989013671875
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 1,
+            "nearby_source_outlines": 3,
+            "osm_element_metadata": {
+              "timestamp": "2010-08-02T11:58:44Z",
+              "version": "1"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70692563",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 35,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                6428
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                53.62506103515625
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 3,
+            "nearby_source_outlines": 3,
+            "osm_element_metadata": {
+              "timestamp": "2022-08-13T13:04:58Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689498",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 19,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                55186
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                43.9801025390625
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 2,
+            "nearby_source_outlines": 9,
+            "osm_element_metadata": {
+              "timestamp": "2026-03-10T19:58:56Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689519",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 5,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                143419
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                113.820068359375
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          }
+        ],
+        "status": "retained_outline_investigation_only",
+        "version": "osm-outline-review-v2",
+        "world_geometry_additions": 0
+      },
+      "page": 1,
+      "status": "unvalidated_map_proposals",
+      "targeted_candidates_sha256": "145867e96d6427839c819a41f7db1cce8ab717c2f573b39b6ef52453e8488071",
+      "targeted_source_recovery": {
+        "deferred_windows": 0,
+        "geometry_types": {
+          "LineString": 6073,
+          "Polygon": 35
+        },
+        "limitations": [
+          "Only complete original primitives are retained; no map boundary is copied into source geometry.",
+          "Short source segments may be symbols; recovered faces remain unclassified.",
+          "Window/recovery rejections and deferred windows prevent a source completeness claim."
+        ],
+        "new_unique_polygons": 5,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "requested_windows": 4,
+        "retained_points": 17663,
+        "status": "targeted_source_geometry_only",
+        "unique_candidates": 6108,
+        "version": "osm-targeted-source-recovery-v2",
+        "windows": [
+          {
+            "extraction": {
+              "candidates": 1604,
+              "curved_candidates": 118,
+              "geometry_types": {
+                "LineString": 1584,
+                "Polygon": 20
+              },
+              "raw_paths": 215486,
+              "region_native_points": [
+                106.35863756957795,
+                1460.9036780185336,
+                284.30303323787416,
+                1641.1545409858934
+              ],
+              "rejections": {
+                "Invalid candidate topology": 4,
+                "Invalid filled ring topology": 2,
+                "Short line/symbol candidate": 868,
+                "Small symbol or sheet enclosure candidate": 152,
+                "Text glyph/annotation mask": 368,
+                "complete_primitive_crosses_region_boundary": 97,
+                "outside_region": 206240
+              },
+              "retained_points": 4428,
+              "selected_paths": 3095,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+                "reference_id": "osm/way/70689519"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 106,
+                "cut_edges": 27,
+                "dangles": 2326,
+                "intersection_pairs": 1177,
+                "invalid_rings": 0,
+                "recovered_faces": 2,
+                "segments": 2204,
+                "small_faces_deferred": 27,
+                "solid_straight_lines": 1478
+              },
+              "recovered_faces": 2,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              106.35863756957795,
+              1460.9036780185336,
+              284.30303323787416,
+              1641.1545409858934
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 989,
+              "curved_candidates": 88,
+              "geometry_types": {
+                "LineString": 985,
+                "Polygon": 4
+              },
+              "raw_paths": 215486,
+              "region_native_points": [
+                119.6366425240437,
+                840.9115369929002,
+                341.88336174841726,
+                1072.9232482230266
+              ],
+              "rejections": {
+                "Invalid candidate topology": 1,
+                "Short line/symbol candidate": 105,
+                "Small symbol or sheet enclosure candidate": 90,
+                "Text glyph/annotation mask": 148,
+                "complete_primitive_crosses_region_boundary": 74,
+                "outside_region": 207926
+              },
+              "retained_points": 3320,
+              "selected_paths": 1409,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+                "reference_id": "osm/way/70689644"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 88,
+                "cut_edges": 6,
+                "dangles": 2392,
+                "intersection_pairs": 1683,
+                "invalid_rings": 0,
+                "recovered_faces": 0,
+                "segments": 2172,
+                "small_faces_deferred": 17,
+                "solid_straight_lines": 897
+              },
+              "recovered_faces": 0,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              119.6366425240437,
+              840.9115369929002,
+              341.88336174841726,
+              1072.9232482230266
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 2126,
+              "curved_candidates": 68,
+              "geometry_types": {
+                "LineString": 2121,
+                "Polygon": 5
+              },
+              "raw_paths": 215486,
+              "region_native_points": [
+                1765.3470257741758,
+                1504.9471234304258,
+                1998.4263454955394,
+                1683.780029296875
+              ],
+              "rejections": {
+                "A linearring requires at least 4 coordinates.": 2,
+                "Invalid candidate topology": 1,
+                "Short line/symbol candidate": 1060,
+                "Small symbol or sheet enclosure candidate": 44,
+                "Text glyph/annotation mask": 709,
+                "complete_primitive_crosses_region_boundary": 109,
+                "nonopaque_paint": 1,
+                "outside_region": 205282
+              },
+              "retained_points": 4756,
+              "selected_paths": 4053,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+                "reference_id": "osm/way/70689498"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 68,
+                "cut_edges": 0,
+                "dangles": 2691,
+                "intersection_pairs": 764,
+                "invalid_rings": 0,
+                "recovered_faces": 1,
+                "segments": 2453,
+                "small_faces_deferred": 7,
+                "solid_straight_lines": 2053
+              },
+              "recovered_faces": 1,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              1765.3470257741758,
+              1504.9471234304258,
+              1998.4263454955394,
+              1683.780029296875
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 1384,
+              "curved_candidates": 401,
+              "geometry_types": {
+                "LineString": 1383,
+                "Polygon": 1
+              },
+              "raw_paths": 215486,
+              "region_native_points": [
+                1768.878627735642,
+                210.2170224120247,
+                2056.822894580163,
+                480.5663460785744
+              ],
+              "rejections": {
+                "Invalid candidate topology": 3,
+                "Self-crossing line needs review": 1,
+                "Short line/symbol candidate": 5,
+                "Small symbol or sheet enclosure candidate": 34,
+                "Text glyph/annotation mask": 64,
+                "complete_primitive_crosses_region_boundary": 75,
+                "nonopaque_paint": 1,
+                "outside_region": 207768
+              },
+              "retained_points": 5101,
+              "selected_paths": 1567,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+                "reference_id": "osm/way/70692563"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 401,
+                "cut_edges": 0,
+                "dangles": 1356,
+                "intersection_pairs": 421,
+                "invalid_rings": 0,
+                "recovered_faces": 2,
+                "segments": 1278,
+                "small_faces_deferred": 2,
+                "solid_straight_lines": 982
+              },
+              "recovered_faces": 2,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              1768.878627735642,
+              210.2170224120247,
+              2056.822894580163,
+              480.5663460785744
+            ],
+            "status": "complete_primitives_retained"
+          }
+        ],
+        "world_geometry_additions": 0
+      }
+    },
+    {
+      "alignment_checks": {
+        "blockers": [],
+        "expected_metres_per_pdf_point": 0.2822222222222222,
+        "hypotheses": [
+          {
+            "held_out_checks": [
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.7153075202045699,
+                  "centroid_aligned_intersection_over_union": 0.9034746540619574,
+                  "centroid_error_m": 1.0364143840548663,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1068379123908694
+                },
+                "boundary_error_m": 1.6979971757207604,
+                "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                "failed_thresholds": [
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2815176424224064,
+                      -0.0005578028289848568
+                    ],
+                    [
+                      0.0005578028289848568,
+                      0.2815176424224064
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.0246848752938,
+                    -699.3351759522272
+                  ]
+                },
+                "intersection_over_union": 0.8713686424916421,
+                "passed": false,
+                "reference_id": "osm/way/70689644",
+                "relative_printed_scale_error": 0.002494584500875918
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.2925994180152856,
+                  "centroid_aligned_intersection_over_union": 0.8502671851568956,
+                  "centroid_error_m": 4.65160392740228,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.9681949243595411
+                },
+                "boundary_error_m": 8.17797910669532,
+                "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2828719574176728,
+                      -0.0010294173370859502
+                    ],
+                    [
+                      0.0010294173370859502,
+                      0.2828719574176728
+                    ]
+                  ],
+                  "translation_m": [
+                    -482.8511074171661,
+                    -701.8673993742547
+                  ]
+                },
+                "intersection_over_union": 0.6871629064176838,
+                "passed": false,
+                "reference_id": "osm/way/70692563",
+                "relative_printed_scale_error": 0.002308848301103339
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 4.592779139482538,
+                  "centroid_aligned_intersection_over_union": 0.7922038275774296,
+                  "centroid_error_m": 4.083798516374652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.1887602369779218
+                },
+                "boundary_error_m": 8.662200551384672,
+                "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2806897211571034,
+                      -0.0007081501907489584
+                    ],
+                    [
+                      0.0007081501907489584,
+                      0.2806897211571034
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.006699148049,
+                    -698.9326501638113
+                  ]
+                },
+                "intersection_over_union": 0.5846876485933131,
+                "passed": false,
+                "reference_id": "osm/way/70689498",
+                "relative_printed_scale_error": 0.005426956675585348
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.6620436391261972,
+                  "centroid_aligned_intersection_over_union": 0.7926001460443606,
+                  "centroid_error_m": 0.617828436791652,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 0.7926001460443605
+                },
+                "boundary_error_m": 1.254312086705397,
+                "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                "failed_thresholds": [
+                  "intersection_over_union",
+                  "boundary_error_m"
+                ],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.28164436530818265,
+                      -0.0005607823481478749
+                    ],
+                    [
+                      0.0005607823481478749,
+                      0.28164436530818265
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.1913973530997,
+                    -699.5530826535692
+                  ]
+                },
+                "intersection_over_union": 0.7762569272930713,
+                "passed": false,
+                "reference_id": "osm/way/70689519",
+                "relative_printed_scale_error": 0.002045546317824498
+              },
+              {
+                "boundary_discrepancy": {
+                  "centroid_aligned_boundary_error_m": 0.2683379819795895,
+                  "centroid_aligned_intersection_over_union": 0.9483930166872964,
+                  "centroid_error_m": 0.61880093578694,
+                  "diagnostic_only": true,
+                  "registration_verified": false,
+                  "source_to_map_area_ratio": 1.013133201618978
+                },
+                "boundary_error_m": 0.8772030005018985,
+                "candidate_id": "1914b6886d43eede99313df14e888a2289ee5e966cf579d7b4985ce968743a17",
+                "failed_thresholds": [],
+                "fit_landmark_ids": [
+                  "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                  "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                  "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                  "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd"
+                ],
+                "held_out_fit": {
+                  "matrix": [
+                    [
+                      0.2816920980307775,
+                      -0.0005688559958267995
+                    ],
+                    [
+                      0.0005688559958267995,
+                      0.2816920980307775
+                    ]
+                  ],
+                  "translation_m": [
+                    -483.2994492674178,
+                    -699.6201052626401
+                  ]
+                },
+                "intersection_over_union": 0.8660128821196437,
+                "passed": true,
+                "reference_id": "osm/way/70689533",
+                "relative_printed_scale_error": 0.0018763575983523628
+              }
+            ],
+            "reasons": [
+              "held_out_boundary_or_scale_disagreement"
+            ],
+            "status": "withheld"
+          }
+        ],
+        "independent_survey_checkpoints": 0,
+        "limitations": [
+          "Held-out correspondences were discovered from the same map and drawing.",
+          "Passing checks is map consistency evidence, not independently surveyed registration."
+        ],
+        "min_iou": 0.85,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "scale_tolerance": 0.01,
+        "status": "withheld",
+        "tolerance_m": 1.0,
+        "version": "held-out-map-alignment-v5",
+        "world_geometry_additions": 0
+      },
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "final_seed_search": {
+        "attempted_seed_objects": 135,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          85
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 135,
+        "eligible_seed_pairs": 2133,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2133,
+        "untried_seed_objects": 0
+      },
+      "initial_seed_search": {
+        "attempted_seed_objects": 134,
+        "batch_fit_counts": [
+          512,
+          512,
+          512,
+          512,
+          48
+        ],
+        "deferred_seed_pairs": 0,
+        "eligible_seed_objects": 134,
+        "eligible_seed_pairs": 2096,
+        "fits_per_batch": 512,
+        "max_seed_batches": 8,
+        "mode": "all_printed_scale_eligible_pairs",
+        "scheduled_seed_pairs": 2096,
+        "untried_seed_objects": 0
+      },
+      "objects": 447,
+      "outline_investigation": {
+        "deferred_failed_checks": 0,
+        "failed_checks": 4,
+        "geometry_replacements": 0,
+        "limitations": [
+          "Retained closed primitives do not establish complete physical object identity.",
+          "Alternative outlines are investigation hints under an unchanged held-out transform; none replace a match.",
+          "OSM edit timestamps do not establish the physical observation date; source-date change remains unresolved."
+        ],
+        "registration_verified": false,
+        "review_statuses": {
+          "no_compatible_retained_alternative": 4
+        },
+        "reviewed_failed_checks": 4,
+        "reviews": [
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+            "failed_thresholds": [
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 1,
+            "nearby_source_outlines": 2,
+            "osm_element_metadata": {
+              "timestamp": "2026-02-14T21:37:17Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689644",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 5,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                146469
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                94.94989013671875
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 1,
+            "nearby_source_outlines": 3,
+            "osm_element_metadata": {
+              "timestamp": "2010-08-02T11:58:44Z",
+              "version": "1"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70692563",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 35,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                6428
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                53.62506103515625
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 3,
+            "nearby_source_outlines": 3,
+            "osm_element_metadata": {
+              "timestamp": "2022-08-13T13:04:58Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689498",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 19,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                55186
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                43.9801025390625
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          },
+          {
+            "alternative_map_outlines": [],
+            "alternative_map_outlines_count": 0,
+            "alternative_source_outlines": [],
+            "alternative_source_outlines_count": 0,
+            "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+            "failed_thresholds": [
+              "intersection_over_union",
+              "boundary_error_m"
+            ],
+            "held_out_fit_unchanged": true,
+            "hypothesis_index": 0,
+            "nearby_map_outlines": 2,
+            "nearby_source_outlines": 9,
+            "osm_element_metadata": {
+              "timestamp": "2026-03-10T19:58:56Z",
+              "version": "4"
+            },
+            "physical_identity_verified": false,
+            "reference_id": "osm/way/70689519",
+            "registration_verified": false,
+            "source_date_difference_verified": false,
+            "source_trace": {
+              "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+              "curve_approximation": {
+                "chord_error_bound_pdf_points": 0,
+                "cubic_segments": 0,
+                "method": "adaptive_de_casteljau_control_hull_to_chord",
+                "points": 5,
+                "requested_tolerance_pdf_points": 0.25
+              },
+              "extraction_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+              "extraction_kind": "drawing_geometry",
+              "line_parent_ids": [],
+              "paint_ordinals": [
+                143420
+              ],
+              "paint_reference_truncated": false,
+              "physical_outline_completeness_verified": false,
+              "regional_boundary_margins_pdf_points": [
+                113.820068359375
+              ],
+              "status": "native_closed_boundary_retained"
+            },
+            "status": "no_compatible_retained_alternative"
+          }
+        ],
+        "status": "retained_outline_investigation_only",
+        "version": "osm-outline-review-v2",
+        "world_geometry_additions": 0
+      },
+      "page": 1,
+      "status": "unvalidated_map_proposals",
+      "targeted_candidates_sha256": "fdc898cc92f788303f9905987414c7387045be8c0cf128fe165bfc583288517b",
+      "targeted_source_recovery": {
+        "deferred_windows": 0,
+        "geometry_types": {
+          "LineString": 6073,
+          "Polygon": 35
+        },
+        "limitations": [
+          "Only complete original primitives are retained; no map boundary is copied into source geometry.",
+          "Short source segments may be symbols; recovered faces remain unclassified.",
+          "Window/recovery rejections and deferred windows prevent a source completeness claim."
+        ],
+        "new_unique_polygons": 5,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "requested_windows": 4,
+        "retained_points": 17663,
+        "status": "targeted_source_geometry_only",
+        "unique_candidates": 6108,
+        "version": "osm-targeted-source-recovery-v2",
+        "windows": [
+          {
+            "extraction": {
+              "candidates": 1604,
+              "curved_candidates": 118,
+              "geometry_types": {
+                "LineString": 1584,
+                "Polygon": 20
+              },
+              "raw_paths": 215489,
+              "region_native_points": [
+                106.35863756957795,
+                1460.9036780185336,
+                284.30303323787416,
+                1641.1545409858934
+              ],
+              "rejections": {
+                "Invalid candidate topology": 4,
+                "Invalid filled ring topology": 2,
+                "Short line/symbol candidate": 868,
+                "Small symbol or sheet enclosure candidate": 152,
+                "Text glyph/annotation mask": 368,
+                "complete_primitive_crosses_region_boundary": 97,
+                "outside_region": 206244
+              },
+              "retained_points": 4428,
+              "selected_paths": 3095,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+                "reference_id": "osm/way/70689519"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 106,
+                "cut_edges": 27,
+                "dangles": 2326,
+                "intersection_pairs": 1177,
+                "invalid_rings": 0,
+                "recovered_faces": 2,
+                "segments": 2204,
+                "small_faces_deferred": 27,
+                "solid_straight_lines": 1478
+              },
+              "recovered_faces": 2,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              106.35863756957795,
+              1460.9036780185336,
+              284.30303323787416,
+              1641.1545409858934
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 989,
+              "curved_candidates": 88,
+              "geometry_types": {
+                "LineString": 985,
+                "Polygon": 4
+              },
+              "raw_paths": 215489,
+              "region_native_points": [
+                119.6366425240437,
+                840.9115369929002,
+                341.88336174841726,
+                1072.9232482230266
+              ],
+              "rejections": {
+                "Invalid candidate topology": 1,
+                "Short line/symbol candidate": 105,
+                "Small symbol or sheet enclosure candidate": 90,
+                "Text glyph/annotation mask": 148,
+                "complete_primitive_crosses_region_boundary": 74,
+                "outside_region": 207930
+              },
+              "retained_points": 3320,
+              "selected_paths": 1409,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+                "reference_id": "osm/way/70689644"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 88,
+                "cut_edges": 6,
+                "dangles": 2392,
+                "intersection_pairs": 1683,
+                "invalid_rings": 0,
+                "recovered_faces": 0,
+                "segments": 2172,
+                "small_faces_deferred": 17,
+                "solid_straight_lines": 897
+              },
+              "recovered_faces": 0,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              119.6366425240437,
+              840.9115369929002,
+              341.88336174841726,
+              1072.9232482230266
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 2126,
+              "curved_candidates": 68,
+              "geometry_types": {
+                "LineString": 2121,
+                "Polygon": 5
+              },
+              "raw_paths": 215489,
+              "region_native_points": [
+                1765.3470257741758,
+                1504.9471234304258,
+                1998.4263454955394,
+                1683.780029296875
+              ],
+              "rejections": {
+                "A linearring requires at least 4 coordinates.": 2,
+                "Invalid candidate topology": 1,
+                "Short line/symbol candidate": 1060,
+                "Small symbol or sheet enclosure candidate": 44,
+                "Text glyph/annotation mask": 709,
+                "complete_primitive_crosses_region_boundary": 109,
+                "nonopaque_paint": 1,
+                "outside_region": 205286
+              },
+              "retained_points": 4756,
+              "selected_paths": 4053,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+                "reference_id": "osm/way/70689498"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 68,
+                "cut_edges": 0,
+                "dangles": 2691,
+                "intersection_pairs": 764,
+                "invalid_rings": 0,
+                "recovered_faces": 1,
+                "segments": 2453,
+                "small_faces_deferred": 7,
+                "solid_straight_lines": 2053
+              },
+              "recovered_faces": 1,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              1765.3470257741758,
+              1504.9471234304258,
+              1998.4263454955394,
+              1683.780029296875
+            ],
+            "status": "complete_primitives_retained"
+          },
+          {
+            "extraction": {
+              "candidates": 1384,
+              "curved_candidates": 401,
+              "geometry_types": {
+                "LineString": 1383,
+                "Polygon": 1
+              },
+              "raw_paths": 215489,
+              "region_native_points": [
+                1768.878627735642,
+                210.2170224120247,
+                2056.822894580163,
+                480.5663460785744
+              ],
+              "rejections": {
+                "Invalid candidate topology": 3,
+                "Self-crossing line needs review": 1,
+                "Short line/symbol candidate": 5,
+                "Small symbol or sheet enclosure candidate": 34,
+                "Text glyph/annotation mask": 64,
+                "complete_primitive_crosses_region_boundary": 76,
+                "nonopaque_paint": 1,
+                "outside_region": 207771
+              },
+              "retained_points": 5101,
+              "selected_paths": 1568,
+              "status": "unplaced_geometry_candidates",
+              "world_geometry_additions": 0
+            },
+            "failed_matches": [
+              {
+                "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+                "reference_id": "osm/way/70692563"
+              }
+            ],
+            "recovery": {
+              "counts": {
+                "curved_lines_deferred": 401,
+                "cut_edges": 0,
+                "dangles": 1356,
+                "intersection_pairs": 421,
+                "invalid_rings": 0,
+                "recovered_faces": 2,
+                "segments": 1278,
+                "small_faces_deferred": 2,
+                "solid_straight_lines": 982
+              },
+              "recovered_faces": 2,
+              "status": "enclosed_faces_only"
+            },
+            "region_native_points": [
+              1768.878627735642,
+              210.2170224120247,
+              2056.822894580163,
+              480.5663460785744
+            ],
+            "status": "complete_primitives_retained"
+          }
+        ],
+        "world_geometry_additions": 0
+      }
+    },
+    {
+      "alignment_checks": null,
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "final_seed_search": null,
+      "initial_seed_search": null,
+      "objects": 436,
+      "outline_investigation": null,
+      "page": 1,
+      "status": "awaiting_visible_printed_scale",
+      "targeted_candidates_sha256": null,
+      "targeted_source_recovery": null
+    }
+  ],
+  "provisional_overlay_records": 0,
+  "registration_verified": false,
+  "unchanged_replay_identical": true,
+  "validation": {
+    "focused_tests_passed": 19,
+    "full_regression_tests_passed": 1272
+  },
+  "world_geometry_additions": 0
+}

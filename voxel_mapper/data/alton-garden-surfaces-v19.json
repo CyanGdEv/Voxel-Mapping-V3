@@ -1,0 +1,11 @@
+{
+  "application":"SMD/2013/1105",
+  "registration":"provisional inherited survey alignment",
+  "surfaces":[
+    {"id":"White Bridge north tarmac approach","sheet":"White bridge plan","material":"asphalt","polygon":[[296,94],[354,104],[278,240],[249,319],[211,307],[228,226],[296,94]],"material_evidence":"tarmac label centred near PDF (332,102)","geometry_status":"visually reviewed edge trace; vertex sampling approximates curved boundaries"},
+    {"id":"Bridge Dam tarmac corridor","sheet":"Bridge/dam area plan","material":"asphalt","polygon":[[366,752],[405,775],[860,83],[817,65],[366,752]],"material_evidence":"tarmac labels on central road; excludes stone edge and brick wall labels","geometry_status":"visually reviewed road edge trace"},
+    {"id":"Bridge Dam stone paving entry","sheet":"Bridge/dam area plan","material":"stone","polygon":[[345,718],[365,686],[401,637],[426,653],[389,707],[367,739],[345,718]],"material_evidence":"stone paving label centred near PDF (361,715)","geometry_status":"visually reviewed local paving edge trace"}
+  ],
+  "miniature_bridge":{"sheet":"Upper Gardens Area plan","vector_path":12046,"outline":[[307.56,647.85],[321.96,596.97],[313.08,594.09],[298.20,644.97],[307.56,647.85]],"width_method":"distance between parallel inner edge vectors 12047 and 16900 at retained sheet scale","inner_edges":[[[299.64,645.45],[313.80,595.53]],[[306.60,646.89],[320.52,596.73]]],"survey_deck_label_odn_m":149.5},
+  "limitations":["2013 survey geometry does not establish present condition.","Materials apply only to reviewed local polygons; brick labels are not treated as paving evidence.","Native metre cells alias thin parapets and curves; bridge vertical profiles and unspecified finishes remain estimates."]
+}

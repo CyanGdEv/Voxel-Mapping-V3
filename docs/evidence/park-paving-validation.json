@@ -1,0 +1,67 @@
+{
+  "status": "provisional_park_paving_generation",
+  "overlay_records": 77394,
+  "planning_polygons_after_clipping": 93,
+  "planning_geometry_new_horizontal_cells": 3031,
+  "final_material_cells": {
+    "stone": 54914,
+    "asphalt": 16359,
+    "concrete": 596,
+    "paving_stones": 2904,
+    "compacted": 334,
+    "wood": 202,
+    "brick": 2085
+  },
+  "final_origin_cells": {
+    "generic_paving_palette_assumed": 42985,
+    "osm_surface_palette": 25839,
+    "planning_paving_unspecified_material": 4059,
+    "nearby_planning_material_estimate": 367,
+    "planning_floor_label": 2196,
+    "user_material_assignment": 1592,
+    "nearby_user_material_estimate": 356
+  },
+  "protected_cells_withheld": 43,
+  "retained_ride_mask_cells": 14391,
+  "cbeebies_extension_cells": 1913,
+  "cbeebies_new_horizontal_cells": 1585,
+  "entrance_plaza_cells": 4290,
+  "wicker_brick_cells": 2077,
+  "labelled_wicker_plaza_coverage": [
+    {
+      "feature": "planning-paving/wicker/12",
+      "footprint_cells": 218,
+      "brick_cells": 218,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    },
+    {
+      "feature": "planning-paving/wicker/17",
+      "footprint_cells": 274,
+      "brick_cells": 274,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    }
+  ],
+  "world_verification": {
+    "touched_chunks": 1247,
+    "overlay_records": 77394,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1f68b6f105ba8a77745dc05c7e00cf317952c29bcf407ea03a16888c2648bfa8",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 11
+  },
+  "limitations": [
+    "Planning alignment is provisional and inherits Wicker Man registration",
+    "Historical/proposed surfaces are a draft, not independently verified present-day paving",
+    "Material proximity is an estimate, not proof of identical construction",
+    "Unspecified paving uses a generic stone palette; block-paving labels do not establish brick",
+    "Wicker Man brick assignment follows user correction, rather than an inferred generic paving hatch",
+    "CBeebies corridors are manually traced historical planning geometry with provisional boat-boundary registration",
+    "Coverage remains incomplete; newer CBeebies sheets failed registration and were withheld",
+    "Patterns approximate materials with vanilla blocks; exact colour and joint dimensions are not surveyed"
+  ],
+  "tests_passed": 291,
+  "package_sha256": "54ad9daf09e5848f90fdea90d9dcb2390866bd53f5b0aee8c31f57e6fbdb754d"
+}

@@ -1,0 +1,110 @@
+{
+  "work_directory": "../three-area-work",
+  "catalogue": "../voxel_mapper/data/alton-planning-catalogue.json",
+  "supplemental_catalogues": [
+    "../evidence/wicker-shop-drawing-sources.json",
+    "../evidence/wicker-site-section-sources.json",
+    "../evidence/wicker-architectural-extra-sources.json"
+  ],
+  "official_hosts": [
+    "publicaccess.staffsmoorlands.gov.uk"
+  ],
+  "offline": true,
+  "source_directories": [],
+  "areas": [
+    {
+      "id": "mutiny-bay",
+      "name": "Mutiny Bay courtyard and rides",
+      "application_references": [
+        "SMD/2017/0472",
+        "SMD/2017/0473",
+        "SMD/2007/1172",
+        "SMD/2008/0940",
+        "SMD/2008/0988",
+        "SMD/2013/0012",
+        "SMD/2013/0013",
+        "SMD/2013/0419",
+        "SMD/2013/0420"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "fence",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "paving",
+        "path",
+        "fence",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "wicker-man",
+      "name": "Wicker Man and woodland paths",
+      "application_references": [
+        "SMD/2016/0315",
+        "SMD/2017/0111"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "fence",
+        "architectural_components",
+        "track",
+        "shrub"
+      ],
+      "expected_components": [
+        "local_building",
+        "paving",
+        "path",
+        "fence",
+        "stairs",
+        "ride_track",
+        "tunnel",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs"
+    },
+    {
+      "id": "katanga-canyon",
+      "name": "Katanga Canyon",
+      "application_references": [
+        "SMD/2009/0125"
+      ],
+      "required_families": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "source_selection_status": "associated; sheet location and reconstruction remain unaccepted",
+      "expected_components": [
+        "local_building",
+        "path",
+        "landscape"
+      ],
+      "component_inventory_status": "requires source-bound component IDs",
+      "application_associations": [
+        {
+          "area_id": "katanga-canyon",
+          "application_reference": "SMD/2009/0125",
+          "context_contains": "Katanga",
+          "application_context_sha256": "859ae2217280bcb1b614aa0098eef865195d08f690361d164e8d026d8b8382fa",
+          "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12613",
+          "location_evidence_url": "https://www.altontowers.com/media/uqlcs4do/alton-towers-resort-2025-theme-park-map.pdf",
+          "scope": "candidate drawings only; application association does not accept sheet location, current state or geometry",
+          "shared_application": false
+        }
+      ]
+    }
+  ],
+  "architectural_interpretation": {
+    "enabled": true
+  },
+  "cross_drawing_alignment": {
+    "enabled": true,
+    "target_crs": "EPSG:27700"
+  }
+}

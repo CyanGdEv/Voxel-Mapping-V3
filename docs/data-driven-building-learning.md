@@ -1,0 +1,406 @@
+# Data-driven buildings and reviewed learning
+
+The new building-neutral path separates source interpretation, geometry and
+learned candidate ranking. `voxel-building-data` (or
+`python -m voxel_mapper.building_pipeline`) runs the same generator for different
+buildings. It does not yet discover complete building specifications from PDFs.
+The existing architectural extraction/review stages need adapters that supply
+these specifications, features and verified gate results.
+
+## Shared geometry contract
+
+`building-spec-v1` uses `local_xyz_metres_z_up`, stable building/component IDs,
+source hashes, drawing states, evidence references and explicit assumptions.
+Existing, proposed and unknown studies can be rendered locally, but states cannot
+be mixed within an assembly. Imports retain explicit parent state and use unknown
+when it is absent; a proposed study is never relabelled existing. Each
+component is a wall, partition, floor, ground, roof, tower or detail. Geometry can be a
+polygon extrusion (including protected holes) or a retained triangle mesh.
+Extrusions are checked for closed oriented edges and correct volume; meshes are
+checked for finite coordinates, valid indices, nondegenerate triangles and any
+claimed closed topology. An open source surface can remain an open surface.
+Budgets cover component count, whole-building vertices and triangles.
+
+Import an existing study without moving its geometry:
+
+```bash
+python -m voxel_mapper.building_pipeline import-study \
+  --model courtyard-model.json --building-id mutiny-courtyard \
+  --output mutiny-building-spec.json
+```
+
+The adapter also handles the Wicker shop's wall/roof/projection mesh layers.
+Its parent-file hash is a lineage link, not independent physical verification.
+Source SHA declarations in a supplied spec are references; this module does not
+retrieve those files or certify their content. Extraction/verification adapters
+must establish them upstream. All generated models remain local previews with
+zero accepted park blocks; existing registration, terrain and native compiler
+checks are still required for park insertion. The shared native surface compiler now supports local spec previews; it does not
+fill arbitrary solid interiors or certify a complete connected assembly. Existing
+study/world exporters remain available and unchanged. Existing roof meshes retain their slab courses.
+
+## Automatic batch operation
+
+A `building-batch-v1` job contains `buildings`, each with a `building_id` and
+`candidates`. A candidate has `id`, `spec`, `features` and `gates`.
+The six normalized features are `boundary_support`, `view_agreement`,
+`dimension_agreement`, `opening_support`, `topology_quality`, `source_coverage`.
+Upstream adapters must compute these from source and geometry diagnostics; users
+should not interpret an arbitrary numeric feature as established evidence.
+
+The required local-candidate gates are `source_verified`, `identity_verified`,
+`dimensions_verified`, `topology_verified`, each explicitly true. These are
+upstream attestations, not tests performed by the ranker. A learned score cannot
+turn a failed gate into a pass. A passing candidate still goes through geometry
+validation. Invalid preferred geometry is recorded and the next eligible
+candidate is tried; a blocked building does not stall other buildings.
+
+```bash
+python -m voxel_mapper.building_pipeline batch \
+  --job buildings.json --output fresh-building-batch
+```
+
+A complete synthetic batch example is in `examples/building-data-fixture-job.json`.
+Its source and gate declarations describe the fixture only; they do not establish
+real building evidence.
+
+The untrained baseline gives equal scores and uses stable candidate IDs as a
+deterministic tie break. It provides no learned correctness estimate. The batch
+writes a pinned job/model contract, per-building rankings, specs, models, GLBs,
+results and a batch report. Existing output directories are refused; start a new
+iteration rather than rewriting dispatched results. This path is sequential and
+separate from the ten-worker area controller for now; it is not automatically
+enabled by `automatic_reconstruction`.
+
+## Actual learned model
+
+`building-candidate-ranker-v1` is a small supervised logistic model with six
+weights and a bias, trained with deterministic regularized batch gradient descent.
+It learns to prioritize candidate interpretations. It does not generate geometry,
+read pixels, infer missing dimensions or establish physical acceptance. These
+scores are not calibrated certainty, and their transfer to unseen drawing styles
+has not been measured. No pretrained neural model or training service is required.
+
+Feedback is a `building-feedback-v1` document with `records`. Each record has:
+
+- `id`, `building_id`, and the reviewed `candidate_sha256`;
+- `source_sha256`: hashes of every source used by the candidate;
+- `features`: the six normalized diagnostic values;
+- `outcome`: `accepted` or `rejected`;
+- `review_basis`: `independent_review` or `source_verified`.
+
+Duplicate candidate feedback is rejected. Generated scores or successful mesh
+exports are never automatically converted into positive training labels. Review
+basis is a declared input provenance field; authentication and an actual review
+capture/source-verification adapter remain future work. Keep the complete source
+set in each record to make leakage checks meaningful.
+
+A separate split file lists `training_buildings` and `evaluation_buildings`.
+Every feedback building must belong to exactly one split, both splits require
+positive and negative examples, and no source hash may occur in both. Previous
+training buildings/sources remain excluded from evaluation during warm starts.
+A real benchmark should group all connected source/building records, freeze an
+unseen test set and periodically use a new untouched test set: repeated adaptive
+use of one holdout can overfit even though the optimizer never sees its labels.
+
+```bash
+python -m voxel_mapper.building_pipeline iterate \
+  --job buildings.json --feedback reviewed-feedback.json --split split.json \
+  --parent previous-iteration/selected-model.json --output next-iteration
+```
+
+Omit `--parent` on the first run. One invocation automatically trains a candidate,
+evaluates it, retains the last eligible checkpoint if it fails, then builds the
+batch with the selected model. It writes candidate/selected checkpoints and the
+iteration report. A failed learned candidate can be inspected separately with
+`batch --model candidate-model.json --exploratory` but cannot become the normal
+iteration parent. Raw `train` is also available for experiments.
+
+Default checkpoint selection requires at least 100 training records, 20 evaluation
+records, five training buildings and five evaluation buildings; held-out Brier
+error must improve, precision among scores >=0.8 must be at least 95% and not
+regress, and at least five evaluation predictions must meet that score threshold.
+These are initial engineering gates, not proof of generalization or a guarantee
+of improvement at every iteration. A worse iteration is saved but not selected.
+Checksums detect checkpoint changes; they are integrity checks, not signatures.
+
+## Verified and still needed
+
+Real compatibility replay preserves the Mutiny V12 study's 934 component meshes
+and the Wicker shop's three mesh layers exactly, including coordinates and
+triangle indices. Synthetic learning tests cover improvement, failed promotion,
+source/building leakage, warm starts, duplicate feedback, model tampering, failed
+evidence gates and isolated batch failures. Synthetic labels demonstrate learning
+mechanics only. No real trained Alton model is published or activated.
+
+Next: connect extracted view/wall/opening/roof candidates to the shared spec;
+compute diagnostic features automatically; capture independently checked feedback;
+benchmark untouched buildings; implement general slab-based native compilation
+and feed accepted registered results into the existing area workers. A trained
+vision/geometry model becomes useful after that real dataset and benchmark exist.
+
+
+## Retained drawing feed and real review collection
+
+`prepare-feed --config feed.json --output fresh-feed` reads a
+`retained-building-feed-v1` configuration with `buildings`. Each entry supplies
+`building_id`, `model`, `model_sha256`, optional `diagnostics` entries (`path`,
+`sha256`) and `source_directories` containing checksum-named PDFs. Paths resolve
+relative to the config. Assets must be exact parent-model inputs or carry a
+matching `corrected_model_sha256`; unrelated audits cannot supply scores.
+
+The adapter automatically translates retained study meshes to shared specs,
+checks original PDF content hashes, computes diagnostic features and emits
+`buildings.json`, `review-queue.json` and `report.json`. Source coverage is the
+fraction of required original PDFs whose bytes were verified. Width agreement
+uses the retained cross-view difference and sampling bound. Plan-normalization
+reviews use their two printed/elevation differences and the existing 0.25 m
+comparison rule. Boundary support is perimeter-weighted drawing proximity;
+opening support counts unique complete trace refinement candidates. These are
+separate: proximity can be high while opening support remains zero. Missing
+metrics remain zero and are listed explicitly. Topology quality now uses native floor connectivity, roof-region support and
+expected roof contacts after the shared mesh checks. A missing declared floor
+leaves the score unassessed: the feature is zero with an explicit missing-feature
+flag, not a correctness rejection label.
+
+The feed's identity gate stays false: retained study previews do not establish
+independent physical assembly identity. Matching widths alone do not establish
+it either. A proposed or unknown study cannot pass the existing-source gate.
+Missing PDFs remain reported; corrupt checksum-named PDFs reject that candidate.
+One failed building does not prevent the other entries from being prepared.
+Run `batch --job fresh-feed/buildings.json` for normal eligibility processing.
+This is automatic translation of retained evidence, not automatic discovery of
+new outlines from arbitrary PDFs. Retained raster traces still carry their
+manual origin.
+
+The queue supplies candidate hashes, computed features and full original source
+sets, with empty review outcomes. External review decisions use version
+`building-review-decisions-v1`, and each record supplies `building_id`,
+`candidate_sha256`, `outcome`, `review_basis` and a nonempty `review_reference`.
+
+```bash
+python -m voxel_mapper.building_pipeline collect-feedback \
+  --queue fresh-feed/review-queue.json --decisions independent-reviews.json \
+  --output reviewed-feedback.json
+```
+
+The collector binds decisions to the exact queued candidate and copies its
+computed features/source set; it refuses unknown/duplicate candidates, altered
+queue content and model-prediction review bases. The resulting feedback feeds
+`train`/`iterate` directly. Review references are audit pointers, not authenticated
+signatures, and queue integrity hashes do not prevent an authorized producer from
+creating a different queue. No successful export, proposed drawing or geometric
+consistency check is automatically labelled physically correct.
+
+Real replay now computes features for the Mutiny north-range model and Wicker
+shop. Mutiny's three original PDFs are verified; the shop's three referenced PDFs
+are absent from the retained Mutiny corpus and remain missing. Its proposed state
+is preserved. Both candidates remain ineligible because physical identity is
+unresolved. No real training labels or activated model are fabricated. See
+`docs/evidence/building-source-feed-validation.json`.
+
+
+## Shared native surface compiler
+
+`building_native.compile_spec` takes the same building spec as the GLB generator.
+It samples non-roof surfaces at half-metre centres using each triangle's dominant
+projection, unions the sampled occupancy and chooses native full blocks for walls, partitions, floors and towers.
+Slabs are reserved for roofs and detail components whose vertical extent is
+strictly below 0.75 m; horizontal wall thickness does not trigger that exception.
+Non-roof stairs are disabled. If a full block would occupy protected opening air,
+that block is withheld and counted rather than using a partial wall shape. At equal error it prefers retaining source occupancy; a rotated surface
+cannot disappear merely because air ties a representable shape. It remains a
+surface compiler: thick solid interiors are not filled, and absent rooms/walls
+are never inferred. Small details can disappear and sampling/alias counts are
+retained in the audit.
+
+Roofs use metre-column centre samples of the highest source face within each
+component. Source tops round to half-metre courses with at most 0.25 m rounding
+error. Closed components retain their sampled bottom extent; separate overlaid
+roof components retain their separate levels. Neighbouring courses within the
+same component receive bounded wooden risers. Roof shapes are dark-oak slabs or
+planks; no wooden roof stairs or glass are emitted. Non-roof surfaces use stone
+brick display blocks; low detail components can use stone slabs. These palettes are illustrative, not recovered materials.
+
+Extrusion holes automatically supply protected air over their native alias
+interval. Imports also retain explicit study passage/dormer constraints, planar
+opening polygons and level base-opening segments. Their air guards are display
+quantization: a one-block alias column can be wider than a narrow source opening.
+They do not establish physical clearance. Roof and masonry shape selection cannot
+occupy those guarded halves. Masonry takes precedence at mixed-material roof
+aliases, and withheld roof cells are counted. This can leave unresolved joins;
+it does not certify a connected roof or watertight native shell. Original meshes
+are unchanged.
+
+```bash
+python -m voxel_mapper.building_pipeline compile-native \
+  --spec building-spec.json --output fresh-native-preview --world
+```
+
+Without `--world`, the compiler writes native rows and the quality report. With
+it, the existing Bedrock composer adds an explicitly artificial platform and
+exports `park.mcworld`; its cold readback verifies written blocks and unwritten
+air. Extent/work/air budgets refuse oversized geometry before native rows are
+published. Existing output directories are never overwritten.
+
+A `building-batch-v1` job can set `native_output` to `cells` or `world` (default
+`none`). Normal candidate evidence gates still apply. Eligible selected candidates
+then run the shared native compiler automatically, and the normal iteration loop
+uses that same job setting. An invalid candidate is not silently published simply
+because its learned score is high. Independent `compile-native` is an isolated
+preview operation and does not bypass acceptance for a cumulative park world.
+
+Real replay compiles all Mutiny V12 components and the Wicker shop mesh layers
+using this one path. Both export verified isolated worlds. These are experimental
+surface previews, not replacements for the reviewed building-specific worlds;
+aliasing and unresolved joins remain visible in quality reports. See
+`docs/evidence/building-native-validation.json`. Full raw-PDF geometry discovery,
+source material assignment, stronger native support/closure checks and accepted
+park placement remain unfinished.
+
+
+The v2 native block policy implements full-block walls and ground. Floors extend
+below their source top, preserving drawn floor zero and standing air. A 0.75 m
+vertical detail uses full blocks; the slab exception is strictly below that value.
+Roof slab behaviour is retained. `full_blocks_withheld_for_air` reports masonry
+that cannot meet both the full-block rule and an opening guard. This can alter the
+voxel silhouette around openings; the source meshes remain unchanged.
+
+
+## Native structural diagnostics
+
+The v3 compiler runs `building_structure.inspect` on actual half-block occupancy.
+It reports face-connected components, roof regions, connections to source-declared
+floor/ground cells, blocked declared air and absent expected roof contacts.
+Diagonal touches do not count as connections. Artificial export platforms are
+excluded from the anchors: they cannot make an incomplete building appear
+supported. Without a source-declared floor, roof-to-floor support is unassessed,
+not inferred from the lowest occupied block.
+
+Expected contacts come from neighbouring columns within each roof component.
+Interfaces containing protected opening air remain explicitly unassessed rather
+than proposing a fill through the opening. Other missing contacts are retained
+with their native columns and height interval. The checker never adds supports,
+changes source meshes or alters voxel rows. Floor-connected geometry is a native
+connectivity diagnostic, not structural engineering, terrain placement, complete
+building identity or a guarantee of player movement.
+
+A batch job can set `native_quality: require_pass` to withhold candidates whose
+native checks need review and try the next eligible candidate. The default
+`report` mode retains experimental previews with their diagnostics. Strict checks
+run before the candidate's GLB/native files are published. Batch results retain
+rejected candidate reports; one failed building does not stall the batch.
+
+The retained source feed now emits version `retained-building-feed-v2` and still
+accepts legacy v1 input configs. It automatically computes native diagnostics
+and carries them into candidates/review queues. Topology quality is the minimum
+of floor-connected occupancy, floor-connected roof-region fraction and assessed
+roof-contact completeness, with zero for blocked declared air. Missing floor
+references or a bounded diagnostic failure remain unassessed/missing. These
+features improve ranking/review data; passing checks never creates a positive
+training label.
+
+Real full-courtyard replay identifies three native components, including two
+small roof regions without a floor connection. The retained Wicker surface model
+has no declared floor, so its support remains unassessed. Partial north-wing
+feeds likewise lack a floor component. These were the pre-repair diagnostics; v4 now repairs bounded local joins as described below. See `docs/evidence/building-structural-validation.json`.
+Next: bounded source-supported roof-join repair proposals and floor evidence,
+then automatic raw-PDF geometry discovery.
+
+
+## Bounded roof joins and local display floors
+
+The v4 native compiler can connect detached wooden roof regions with at most
+sixteen joins, each no taller than one metre. A join must stay in an existing
+source roof column and reach floor-connected wooden geometry in a neighbouring
+column. It cannot alter masonry, fill declared opening air, bridge remote gaps
+or manufacture a floor reference. Every addition is recorded as a bounded display
+join hypothesis. After each candidate join, native connectivity is checked again;
+a join is retained only if it reduces detached roof regions. Source meshes are
+unchanged. This is inferred display geometry, not surveyed roof construction.
+
+Real Mutiny replay adds two half-metre wooden risers at columns `[0,-37]` and
+`[13,-33]`. All roof regions now connect to the declared floor. The repair remains
+building-neutral: no building name or hard-coded column enters the compiler.
+
+For retained models with a level `outer_wall_base_outline` at drawn zero,
+`import-study --display-floor` adds an explicit full-block floor beneath that
+outline. Source meshes and heights remain unchanged. The new floor has inferred
+evidence, thickness/material assumptions and `surveyed_datum_verified: false`.
+Source-feed entries can request the same mode with `display_floor: true`; it is
+never silently enabled for all studies. A nonlevel outline rejects. Closed floor
+bottom faces sample above their lower boundary while top faces sample below their
+upper boundary, so a one-metre floor does not gain an extra bottom layer.
+
+Wicker's retained geometry is above drawn floor zero and its base outline is
+level at zero. The new local display floor uses that reference, not ODN or a
+verified park elevation. Native support now passes, while the proposed source
+state, physical identity and geographic placement remain unresolved. No native
+check creates a real positive training label or authorizes park insertion.
+See `docs/evidence/building-native-validation.json` and
+`docs/evidence/building-structural-validation.json` for before/after findings.
+
+## Model-free original PDF discovery
+
+`discover-pdf` adds `raw-pdf-building-discovery-v1` ahead of the shared-spec
+adapter. Its input names buildings and checksum-pinned PDF files; it needs
+no study model, facade trace, per-polygon binding or supplied page state.
+Pages are automatically enumerated within a document budget, or explicitly
+selected by one-based page numbers.
+
+```json
+{
+  "version": "raw-pdf-building-discovery-v1",
+  "buildings": [{
+    "building_id": "building-a",
+    "sources": [{"path": "sources/original.pdf", "sha256": "<64-character SHA256>"}]
+  }]
+}
+```
+
+```bash
+python -m voxel_mapper.building_pipeline discover-pdf \
+  --config raw-pdfs.json --output fresh-pdf-discovery
+```
+
+Each page retains native original source primitives, bounded curve/paint
+contracts, original caption/glyph evidence and fully supported closed straight
+linework faces. Short edges use the existing .25-point extraction option;
+network recovery retains up to 2,048 source/paint references per face. Source
+graph hashes/counts accompany the inventory. Partial extraction/topology is
+withheld, and partial network recovery cannot supply enclosed outlines.
+Printed existing/proposed/unspecified claims stay explicit; unknown or hidden
+state is not inherited from another page, title or file name. Mixed existing
+and proposed pages remain separate and block assembly interpretation.
+
+Output contains `discovery-pages.jsonl`, an offset/length/hash index,
+`source-queue.json`, a pinned stage contract and a report. Failed source files
+are isolated. Page, record and output-byte budgets bound work; a document is
+staged and checksum-checked before any of its records are committed. A late
+document-budget failure cannot leave a partial page inventory. A fresh
+output directory is required. Replaying unchanged sources generates identical
+bytes; this first implementation recomputes pages rather than caching them.
+
+The source queue identifies required view scopes, component identity,
+cross-view dimensions/heights, materials/openings and geographic registration.
+It is an upstream source inventory, not a `building-batch-v1` job: closed
+source regions may be rooms, frames or survey enclosures. No shared building
+spec, correctness label, native building or accepted park block is generated.
+The existing retained-study feed, compiler, full-block wall/ground policy and
+roof/detail slab policy remain unchanged.
+
+Real replay independently reads the pinned Mutiny ground-floor, north
+elevation and roof sheets and discovers **5,781** source records, including
+**495** enclosed faces, without a study model. All five output files are
+byte-identical on unchanged replay. The visible roof caption supplies no
+accepted existing/proposed claim, so the roof remains unknown even though
+withheld title claims say existing. This is source discovery evidence, not
+successful automatic building reconstruction.
+Evidence: `docs/evidence/building-pdf-discovery-validation.json`.
+Reproduce with `scripts/audit_building_pdf_discovery.py --sources SOURCE_DIR
+--output docs/evidence/building-pdf-discovery-validation.json`; the directory
+must contain the three checksum-named original PDFs listed by the script.
+
+Next is a cross-view interpretation adapter that turns source-supported
+wall/opening/roof candidates into shared building specs while retaining
+unresolved dimensions, state, identity and placement as blockers.

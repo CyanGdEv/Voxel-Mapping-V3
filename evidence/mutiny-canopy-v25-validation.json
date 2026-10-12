@@ -1,0 +1,225 @@
+{
+  "alignment": {
+    "candidate": {
+      "rotation": [
+        [
+          0.8437382345290382,
+          -0.5367548710480621
+        ],
+        [
+          0.5367548710480622,
+          0.8437382345290382
+        ]
+      ],
+      "scale_m_per_pdf_point": 0.07055555555555555,
+      "translation_epsg27700_m": [
+        407465.6962148207,
+        343646.2787759865
+      ]
+    },
+    "independent_survey_controls": 0,
+    "inner_area_ratio": 1.1275531308087094,
+    "inner_boundary_hausdorff_m": 1.3680001255162784,
+    "limits": "Correct ring and north orientation, fixed printed scale; differing roof/wall extents and independent registration unresolved",
+    "mapped_identity": "courtyard relation 5496185 inner member 106842140",
+    "registration_verified": false,
+    "status": "provisional_fixed_printed_scale"
+  },
+  "area_id": "mutiny-bay",
+  "canopy": {
+    "eaves_estimate_m": 182,
+    "height_basis": "Bounded visual estimate inside retained native canopy height envelope; no source height claim",
+    "materials": "Spruce slab, fence and trapdoor proxies; canopy finish is not source-specified",
+    "ridge_estimate_m": 184,
+    "roof_columns": 227
+  },
+  "cycle_receipt": {
+    "base_terrain_includes_ungenerated_context": true,
+    "cumulative_geometry_chunks": 4,
+    "cumulative_scheduled_chunks": 4,
+    "cumulative_voxel_cells": 836,
+    "cycle": 1,
+    "detail_scope": "Draft retained layers and Wicker models through this cycle; other legacy park context remains provisional.",
+    "download_artifact": "park-preview-cycle-0001",
+    "file": "previews/cycle_0001/park.mcworld",
+    "new_scheduled_chunks": 4,
+    "plan_identity": "82674bf68ce6713e5b6de4b6c294c6b308b11d8fdc69649a6d4ac0464a6cb529",
+    "production_placement_eligible": false,
+    "section": 1,
+    "sha256": "47566a01367e8ae41fafe7222eecdde6c8fd6873e028036059d692807e3e20ef",
+    "snapshot_mode": "review_draft",
+    "status": "native_review_batch_export_verified",
+    "workflow_run_id": null
+  },
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -463.17619040061487,
+          125.96873423645977
+        ],
+        [
+          -454.8970262391628,
+          120.6628440904761
+        ],
+        [
+          -456.61718219132985,
+          118.06302442383344
+        ],
+        [
+          -453.83574168919165,
+          116.18680217269204
+        ],
+        [
+          -459.31956454850825,
+          107.99104814142629
+        ],
+        [
+          -462.08414907758095,
+          109.84656774735205
+        ],
+        [
+          -463.751497241067,
+          106.95174838817489
+        ],
+        [
+          -471.94721810786206,
+          112.4354382579146
+        ],
+        [
+          -470.09231927061154,
+          115.23053281176223
+        ],
+        [
+          -472.9330923194456,
+          116.90362093044902
+        ],
+        [
+          -467.48433763412436,
+          125.09155213627103
+        ],
+        [
+          -464.89177213262394,
+          123.37606308530339
+        ],
+        [
+          -463.17619040061487,
+          125.96873423645977
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "input_sha256": {
+    "base_package": "c5d244bafff1fff9c09d98c283a2a842cca553e946f0352c9d4c8b1e7927bd83",
+    "base_quality": "9a47246b4813028e30b3232b9c69bc1ba4ecd67962d2501f9b1e4743a10d4b7b",
+    "job": "1dd064a2937ce7e725bae9120df7efda2a39643fa2885f3ccf7addfad638307f",
+    "osm": "842e14f6528be99ba0f24d14619579548f92c958405be94f0570a67c472d9c4b",
+    "previous_review": "ce03865a8c109c2b12ebda508f0bc7d384337ebd28f2de1a67f135391b2e9c21",
+    "roof_pdf": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+    "terrain_config": "7b25d4ef036b888fa10ab0b4d7e56ca5c1c8ec51274f9e26c58313a4bd13af8b",
+    "terrain_raster": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d"
+  },
+  "limitations": [
+    "Historical measured canopy outline at printed 1:200 scale; pose remains provisional.",
+    "Roof pitch, elevation, supports and spruce materials are visual estimates, not source specifications.",
+    "Only generic stone placeholder cells above saved floor are cleared. Courtyard wings and paving are retained.",
+    "No accepted independent registration; no full courtyard or Mutiny Bay completion claimed."
+  ],
+  "native_changes": 836,
+  "production_placement_eligible": false,
+  "source": {
+    "area_m2": 222.37587570889133,
+    "corners": [
+      [
+        721.4383544921875,
+        886.7982177734375
+      ],
+      [
+        860.759033203125,
+        887.0386962890625
+      ],
+      [
+        860.0390625,
+        931.1994018554688
+      ],
+      [
+        907.5589599609375,
+        932.3988037109375
+      ],
+      [
+        904.55908203125,
+        1072.07861328125
+      ],
+      [
+        857.3983154296875,
+        1070.9979248046875
+      ],
+      [
+        859.55810546875,
+        1118.27880859375
+      ],
+      [
+        719.8782958984375,
+        1115.2789306640625
+      ],
+      [
+        720.718505859375,
+        1067.759033203125
+      ],
+      [
+        674.038818359375,
+        1069.437744140625
+      ],
+      [
+        676.6795654296875,
+        930.1187133789062
+      ],
+      [
+        720.718505859375,
+        930.8386840820312
+      ],
+      [
+        721.4383544921875,
+        886.7982177734375
+      ]
+    ],
+    "document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+    "drawing": "3023-10 Existing Roof Plan",
+    "frame": "displayed_pdf_points_rotation_applied",
+    "identity": "Visually reviewed central cruciform canopy; snapped native straight-line endpoints",
+    "page": 1,
+    "scale_m_per_pdf_point": 0.07055555555555555,
+    "source_state": "2017 existing drawing; current as-built state unverified"
+  },
+  "status": "partial Mutiny canopy review",
+  "withheld_columns": 0,
+  "world_sha256": "47566a01367e8ae41fafe7222eecdde6c8fd6873e028036059d692807e3e20ef",
+  "written_cells": 836,
+  "cold_package_readback": {
+    "verified_cells": 836,
+    "native_feature_cells": {
+      "mutiny/canopy-roof": 227,
+      "mutiny/canopy-roof-seam": 34,
+      "mutiny/canopy-support": 18,
+      "mutiny/canopy-bracket": 8,
+      "mutiny/canopy-placeholder-clearance": 549
+    },
+    "unchanged_chunks": 4753,
+    "total_chunks": 4757,
+    "support_bearing_verified": true,
+    "saved_floor_verified": true,
+    "zip_crc": "passed"
+  },
+  "tests": {
+    "full_suite": 833,
+    "canopy_tests": 4,
+    "status": "passed"
+  },
+  "download_visit_coordinates": [
+    -463,
+    141,
+    -117
+  ],
+  "next_cumulative_baseline_sha256": "47566a01367e8ae41fafe7222eecdde6c8fd6873e028036059d692807e3e20ef"
+}

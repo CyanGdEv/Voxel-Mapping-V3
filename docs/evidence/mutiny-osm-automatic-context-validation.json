@@ -1,0 +1,737 @@
+{
+  "audit_date": "2026-10-12",
+  "contract": {
+    "check_version": "held-out-map-alignment-v3",
+    "geometry_sha256": "2bd7c1284691a0f9fbc5b1c6c27e4f0e6ae1bcea35fd1a63cfac83f7e4ebbe8a",
+    "glyph_version": "source-font-glyph-raster-screen-v2",
+    "landmark_context_version": "osm-landmark-context-v4",
+    "match_version": "mapped-sheet-placement-v8",
+    "max_name_ocr": 16,
+    "max_pages": 1000,
+    "max_seed_fits": 512,
+    "name_ocr_engine_sha256": "9f831cab7525c3dab04af41bda35182af7ea1df9dceeaaa2f3bf207ac45c06a5",
+    "native_render_engine": "1.26.6",
+    "osm_sha256": "b864213364d80e398068ec0aa66c294c71a8e0ec49b85d5a9e42a34b79daa571",
+    "projection": {
+      "absolute_osm_accuracy_m": null,
+      "operation": "axis order change (2D) + unknown (with axis order normalized for visualization)",
+      "operation_accuracy_m": 0.0,
+      "reference_polygons": 843,
+      "registration_verified": false,
+      "skipped_osm_elements": 92
+    },
+    "recovery_version": "linework-boundaries-v2",
+    "target_crs": "+proj=aeqd +lat_0=52.9915 +lon_0=-1.8875 +datum=WGS84 +units=m +no_defs",
+    "version": "osm-provisional-alignment-v3"
+  },
+  "page_statuses": {
+    "awaiting_visible_printed_scale": 1,
+    "no_map_correspondence_found": 2
+  },
+  "pages": [
+    {
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "page": 1,
+      "status": "no_map_correspondence_found",
+      "landmark_labels": {
+        "association_statuses": {
+          "ambiguous_or_unbound_leader": 2,
+          "withheld_visibility": 5
+        },
+        "glyph_version": "source-font-glyph-raster-screen-v2",
+        "labels": [
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "boating lake",
+            "native_label_bounds": [
+              558.1199951171875,
+              1123.628173828125,
+              575.1615600585938,
+              1126.0281982421875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                557.1199951171875,
+                556.7518310546875,
+                576.1615600585938,
+                561.1517944335938
+              ],
+              "minimum_word_confidence": 96.315636,
+              "physical_identity_verified": false,
+              "recognized_text": "BOATING LAKE",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/4025117"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "BOATING LAKE"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1662.8399658203125,
+              1629.0029296875,
+              1691.8800048828125,
+              1631.6429443359375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1868.52001953125,
+              1611.9630126953125,
+              1897.56005859375,
+              1614.60302734375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1989.719970703125,
+              1591.322998046875,
+              2018.760009765625,
+              1593.9630126953125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              80.5199966430664,
+              182.588134765625,
+              84.83966827392578,
+              184.9881591796875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              438.84002685546875,
+              131.9481201171875,
+              443.15972900390625,
+              134.34814453125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "mutiny bay",
+            "native_label_bounds": [
+              973.7999877929688,
+              1485.068115234375,
+              987.7197265625,
+              1487.4681396484375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                972.7999877929688,
+                195.31187438964844,
+                988.7197265625,
+                199.7118682861328
+              ],
+              "minimum_word_confidence": 96.132957,
+              "physical_identity_verified": false,
+              "recognized_text": "MUTINY BAY",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/7673655"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "MUTINY BAY"
+          }
+        ],
+        "named_pairs": [],
+        "ocr_attempts": 2,
+        "physical_identity_verified": false,
+        "priority_seed_ids": [],
+        "registration_verified": false,
+        "version": "osm-landmark-context-v4",
+        "world_geometry_additions": 0
+      },
+      "network_diagnostics": {
+        "osm_path_lines": 437,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "source_line_candidates": 4107,
+        "status": "awaiting_map_pose"
+      },
+      "absolute_error_bound_m": null
+    },
+    {
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "status": "no_map_correspondence_found",
+      "landmark_labels": {
+        "association_statuses": {
+          "ambiguous_or_unbound_leader": 2,
+          "withheld_visibility": 5
+        },
+        "glyph_version": "source-font-glyph-raster-screen-v2",
+        "labels": [
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "boating lake",
+            "native_label_bounds": [
+              558.1199951171875,
+              1123.628173828125,
+              575.1615600585938,
+              1126.0281982421875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                557.1199951171875,
+                556.7518310546875,
+                576.1615600585938,
+                561.1517944335938
+              ],
+              "minimum_word_confidence": 96.315636,
+              "physical_identity_verified": false,
+              "recognized_text": "BOATING LAKE",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/4025117"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "BOATING LAKE"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1662.8399658203125,
+              1629.0029296875,
+              1691.8800048828125,
+              1631.6429443359375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1868.52001953125,
+              1611.9630126953125,
+              1897.56005859375,
+              1614.60302734375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1989.719970703125,
+              1591.322998046875,
+              2018.760009765625,
+              1593.9630126953125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              80.5199966430664,
+              182.588134765625,
+              84.83966827392578,
+              184.9881591796875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              438.84002685546875,
+              131.9481201171875,
+              443.15972900390625,
+              134.34814453125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "mutiny bay",
+            "native_label_bounds": [
+              973.7999877929688,
+              1485.068115234375,
+              987.7197265625,
+              1487.4681396484375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                972.7999877929688,
+                195.31187438964844,
+                988.7197265625,
+                199.7118682861328
+              ],
+              "minimum_word_confidence": 96.132957,
+              "physical_identity_verified": false,
+              "recognized_text": "MUTINY BAY",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/7673655"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "MUTINY BAY"
+          }
+        ],
+        "named_pairs": [],
+        "ocr_attempts": 2,
+        "physical_identity_verified": false,
+        "priority_seed_ids": [],
+        "registration_verified": false,
+        "version": "osm-landmark-context-v4",
+        "world_geometry_additions": 0
+      },
+      "network_diagnostics": {
+        "osm_path_lines": 437,
+        "physical_identity_verified": false,
+        "registration_verified": false,
+        "source_line_candidates": 4108,
+        "status": "awaiting_map_pose"
+      },
+      "absolute_error_bound_m": null
+    },
+    {
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "page": 1,
+      "status": "awaiting_visible_printed_scale",
+      "landmark_labels": {
+        "association_statuses": {
+          "ambiguous_or_unbound_leader": 2,
+          "withheld_visibility": 5
+        },
+        "glyph_version": "source-font-glyph-raster-screen-v2",
+        "labels": [
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "boating lake",
+            "native_label_bounds": [
+              558.1199951171875,
+              1123.628173828125,
+              575.1615600585938,
+              1126.0281982421875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                557.1199951171875,
+                556.7518310546875,
+                576.1615600585938,
+                561.1517944335938
+              ],
+              "minimum_word_confidence": 96.315636,
+              "physical_identity_verified": false,
+              "recognized_text": "BOATING LAKE",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/4025117"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "BOATING LAKE"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1662.8399658203125,
+              1629.0029296875,
+              1691.8800048828125,
+              1631.6429443359375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1868.52001953125,
+              1611.9630126953125,
+              1897.56005859375,
+              1614.60302734375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "congo river rapids",
+            "native_label_bounds": [
+              1989.719970703125,
+              1591.322998046875,
+              2018.760009765625,
+              1593.9630126953125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/70689498"
+            ],
+            "status": "withheld_visibility",
+            "text": "CONGO RIVER RAPIDS"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              80.5199966430664,
+              182.588134765625,
+              84.83966827392578,
+              184.9881591796875
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "hex",
+            "native_label_bounds": [
+              438.84002685546875,
+              131.9481201171875,
+              443.15972900390625,
+              134.34814453125
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": null,
+            "reference_ids": [
+              "osm/way/107364372"
+            ],
+            "status": "withheld_visibility",
+            "text": "HEX"
+          },
+          {
+            "candidate_ids": [],
+            "glyph_screens": [
+              {
+                "reason": "Unsupported font, rendering, layer or character convention",
+                "status": "withheld",
+                "version": "source-font-glyph-raster-screen-v2",
+                "visibility_verified": false
+              }
+            ],
+            "name_key": "mutiny bay",
+            "native_label_bounds": [
+              973.7999877929688,
+              1485.068115234375,
+              987.7197265625,
+              1487.4681396484375
+            ],
+            "physical_identity_verified": false,
+            "raster_name_agreement": {
+              "clip_page_points": [
+                972.7999877929688,
+                195.31187438964844,
+                988.7197265625,
+                199.7118682861328
+              ],
+              "minimum_word_confidence": 96.132957,
+              "physical_identity_verified": false,
+              "recognized_text": "MUTINY BAY",
+              "registration_verified": false,
+              "source_coordinates": "original_native_glyph_bounds; no OCR coordinate substitution",
+              "status": "native_raster_name_agreement_hint"
+            },
+            "reference_ids": [
+              "osm/relation/7673655"
+            ],
+            "status": "ambiguous_or_unbound_leader",
+            "text": "MUTINY BAY"
+          }
+        ],
+        "named_pairs": [],
+        "ocr_attempts": 2,
+        "physical_identity_verified": false,
+        "priority_seed_ids": [],
+        "registration_verified": false,
+        "version": "osm-landmark-context-v4",
+        "world_geometry_additions": 0
+      },
+      "network_diagnostics": null,
+      "absolute_error_bound_m": null
+    }
+  ],
+  "unchanged_replay_identical": true,
+  "fresh_output_reused_pages": 3,
+  "output_sha256": {
+    "page-alignments.jsonl": "a3b9c127ea892db471402fe40784fe141e78382853a3363c2ba19bd6e6e51543",
+    "provisional-overlay.geojson": "de449d0b1ac4b3fe75a36d5ebb58b16e86d24eadb506b413cdd7ce4abcf53b8c"
+  },
+  "manual_seed_ids_required": false,
+  "manual_label_binding_required": false,
+  "provisional_overlay_records": 0,
+  "registration_verified": false,
+  "world_geometry_additions": 0,
+  "validation": {
+    "focused_tests_passed": 15,
+    "full_regression_tests_passed": 1253
+  },
+  "limitations": [
+    "Names and network matches are investigation hints; source component identity remains unverified.",
+    "These three plans still have no shared OSM placement; one also lacks usable printed scale.",
+    "A map pose is required before comparing network junctions. No path crossings or snapped gaps are promoted into junctions."
+  ]
+}

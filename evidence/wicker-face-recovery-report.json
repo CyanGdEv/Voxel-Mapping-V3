@@ -1,0 +1,215 @@
+{
+  "status": "unplaced_face_association_evidence",
+  "contract": {
+    "version": "material-anchor-faces-v1",
+    "glyph_screen_version": "source-font-glyph-raster-screen-v1",
+    "pymupdf_version": "1.26.6",
+    "documents_sha256": "036ca1aa3c1b5b33ce056546836565b77ccaa1fa866dda1c8a72982940e4e336",
+    "pdf_sha256": [
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299"
+    ],
+    "max_pages": 10000
+  },
+  "pages": [
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "page": 1,
+      "callout_extraction": {
+        "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "page": 1,
+        "native_paths": 282,
+        "legend_numbers": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "callout_statuses": {
+          "explicit_material_anchor_candidate": 4,
+          "withheld_label_or_legend_visibility": 8
+        },
+        "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+      },
+      "geometry_extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 282,
+        "candidates": 231,
+        "geometry_types": {
+          "LineString": 181,
+          "Polygon": 50
+        },
+        "retained_points": 808,
+        "curved_candidates": 7,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 14,
+          "Crop boundary/frame candidate": 4,
+          "Small symbol or sheet enclosure candidate": 12
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "solid_straight_lines": 181,
+          "segments": 181,
+          "intersection_pairs": 84,
+          "cut_edges": 0,
+          "dangles": 152,
+          "invalid_rings": 0,
+          "recovered_faces": 12
+        },
+        "recovered_faces": 12
+      },
+      "face_statuses": {
+        "withheld_raster_face_adapter_required": 12
+      },
+      "glyph_screen_version": "source-font-glyph-raster-screen-v1",
+      "glyph_checks": 19,
+      "glyph_screen_passes": 19,
+      "coordinate_basis": "Faces use PDF native points with y up; raster references use unrotated MuPDF page points.",
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "page": 1,
+      "callout_extraction": {
+        "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+        "page": 1,
+        "native_paths": 982,
+        "legend_numbers": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "callout_statuses": {
+          "explicit_material_anchor_candidate": 4,
+          "withheld_label_or_legend_visibility": 7
+        },
+        "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+      },
+      "geometry_extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 982,
+        "candidates": 437,
+        "geometry_types": {
+          "Polygon": 90,
+          "LineString": 347
+        },
+        "retained_points": 1683,
+        "curved_candidates": 20,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 41,
+          "Short line/symbol candidate": 412,
+          "Text glyph/annotation mask": 2,
+          "Crop boundary/frame candidate": 4,
+          "Small symbol or sheet enclosure candidate": 13
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "curved_lines_deferred": 4,
+          "solid_straight_lines": 343,
+          "segments": 343,
+          "intersection_pairs": 134,
+          "cut_edges": 6,
+          "dangles": 311,
+          "invalid_rings": 0,
+          "small_faces_deferred": 1,
+          "recovered_faces": 16
+        },
+        "recovered_faces": 16
+      },
+      "face_statuses": {
+        "withheld_raster_face_adapter_required": 11
+      },
+      "glyph_screen_version": "source-font-glyph-raster-screen-v1",
+      "glyph_checks": 16,
+      "glyph_screen_passes": 16,
+      "coordinate_basis": "Faces use PDF native points with y up; raster references use unrotated MuPDF page points.",
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "page": 1,
+      "callout_extraction": {
+        "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+        "page": 1,
+        "native_paths": 10220,
+        "legend_numbers": [],
+        "callout_statuses": {},
+        "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+      },
+      "geometry_extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 10220,
+        "candidates": 2015,
+        "geometry_types": {
+          "Polygon": 373,
+          "LineString": 1642
+        },
+        "retained_points": 131528,
+        "curved_candidates": 85,
+        "rejections": {
+          "Crop boundary/frame candidate": 49,
+          "Self-crossing line needs review": 1585,
+          "Invalid filled ring topology": 83,
+          "Compound stroked closed rings require topology review": 10,
+          "Short line/symbol candidate": 3540,
+          "Small symbol or sheet enclosure candidate": 167,
+          "nonopaque_paint": 2690,
+          "Text glyph/annotation mask": 9
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "network_budget_withheld",
+        "reason": "segment_budget",
+        "counts": {
+          "curved_lines_deferred": 18,
+          "dashed_or_unknown_lines_deferred": 4
+        },
+        "recovered_faces": 0
+      },
+      "face_statuses": {},
+      "glyph_screen_version": "source-font-glyph-raster-screen-v1",
+      "glyph_checks": 0,
+      "glyph_screen_passes": 0,
+      "coordinate_basis": "Faces use PDF native points with y up; raster references use unrotated MuPDF page points.",
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "page": 1,
+      "status": "withheld",
+      "reason": "Material leader page budget exceeded"
+    }
+  ],
+  "anchor_records": 23,
+  "unclassified_enclosed_face_candidates": 28,
+  "face_statuses": {
+    "withheld_raster_face_adapter_required": 23
+  },
+  "glyph_checks": 35,
+  "glyph_screen_passes": 35,
+  "resolved_callout_visibility_hazards": 15,
+  "output_sha256": {
+    "face-associations.jsonl": "fb39e30a01ebd4dcecd3a19d3375057e98f493adeaa180f49764d4b340fd7e45",
+    "face-candidates.jsonl": "65db3593418bfba98b7dc7524ccff3657214e25603f99cb0983ad11bf2b0d04d",
+    "page-reviews.jsonl": "3928844922f5de0e3cd337fa5cbc20e28a942d5c54eeb779ef43a8a2a25843f1"
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "A unique enclosed face is a candidate, not proof of physical component or opening identity.",
+    "Raster glyph checks resolve a screening hazard, not material/as-built or national-grid verification.",
+    "Embedded image tiles require a raster face adapter; tile rectangles are never promoted to component boundaries.",
+    "View identity, dimensions/depth, revision state, vertical datum and independent registration remain required."
+  ]
+}

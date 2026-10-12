@@ -1,0 +1,88 @@
+{
+  "schema": "voxel-mapper-runtime-validation-v1",
+  "recorded_utc": "2026-10-12T22:11:05.850164+00:00",
+  "base_commit": "744483f906524ee13570c62b212bbe6d4d69cce2",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "numpy": "1.26.4",
+      "pyarrow": "19.0.1",
+      "overturemaps": "1.0.2",
+      "amulet-core": "1.9.49",
+      "PyMuPDF": "1.28.2",
+      "fonttools": "4.66.1"
+    }
+  },
+  "regression": {
+    "status": "passed",
+    "tests_run": 1292,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4,
+    "elapsed_seconds": 215.351,
+    "skip_details": [
+      {
+        "test": "test_real_render_and_ocr_extracts_surface_label (test_drawing_ocr.OcrTests.test_real_render_and_ocr_extracts_surface_label)",
+        "reason": "OCR tools unavailable"
+      },
+      {
+        "test": "test_real_raster_ocr_returns_unplaced_material_candidates (test_drawing_page_tools.PageToolsTests.test_real_raster_ocr_returns_unplaced_material_candidates)",
+        "reason": "Tesseract needed"
+      },
+      {
+        "test": "test_multiple_coordinate_words_in_one_crop_are_ambiguous (test_original_region.OriginalRegionTests.test_multiple_coordinate_words_in_one_crop_are_ambiguous)",
+        "reason": "OCR tools unavailable"
+      },
+      {
+        "test": "test_original_pdf_region_recovers_label_at_existing_threshold (test_original_region.OriginalRegionTests.test_original_pdf_region_recovers_label_at_existing_threshold)",
+        "reason": "OCR tools unavailable"
+      }
+    ],
+    "reproduce": "python -m unittest discover -s tests -v",
+    "test_log_sha256": "9bc0b23d669c9e57997c12cbcac4453cdb0c788d9c2327df31ffd5cab7e7a77c",
+    "test_log_storage": "Local verification directory; generated test worlds and logs are not committed"
+  },
+  "live_overture_probe": {
+    "provider": "overture-buildings",
+    "status": "downloaded",
+    "feature_count": 1531,
+    "queried_utc": "2026-10-12T21:53:01.255976+00:00",
+    "catalog_url": "https://stac.overturemaps.org/catalog.json",
+    "bbox": [
+      -0.52,
+      51.39,
+      -0.5,
+      51.41
+    ],
+    "failures": [],
+    "release": "2026-09-23.1",
+    "catalog_sha256": "5336b76af0b630f05c51c8c8bf3106a2466f7a5110df28081202c7c1775bd7f3",
+    "file": "overture-buildings.geojsonl",
+    "sha256": "88ac58fe0dae11ce7a73af68769425854c170e93e41f31a1a726babf59ff6503",
+    "download_bytes": 1826162,
+    "download_storage": "Local verification directory; raw downloaded features are not committed"
+  },
+  "behaviour_verified": [
+    "Actual NumPy/Arrow/Overture imports and NumPy array round trip",
+    "Exact UTF-8 JSONL byte and feature limits without Unix resource support",
+    "Bedrock budget/material rejection releases SQLite before temporary-directory cleanup",
+    "International attribution survives UTF-8 world package export",
+    "Source observation, station discovery, frame qualification and generation resume",
+    "Native cumulative fixture exports and cold block reads",
+    "Unique original same-name font raster support; ambiguous, unreadable and erased alternatives withheld"
+  ],
+  "real_park_evidence": {
+    "original_mutiny_plans_revalidated": false,
+    "source_retrieval": "Official original PDF endpoint timed out or failed TLS verification during this local attempt",
+    "retained_blockers": [
+      "Two previously scale-visible revisions fail four of five held-out boundary checks each",
+      "Eight retained failed-pair source boundary roles remain unresolved",
+      "The third revision needs a new original-PDF scale/font review",
+      "Independent survey controls and accepted real geographic frames remain unavailable"
+    ],
+    "accepted_new_real_park_frames": 0,
+    "new_verified_full_park_world": false,
+    "font_validation_scope": "Synthetic original embedded-font fixtures; no new real third-sheet scale acceptance"
+  }
+}

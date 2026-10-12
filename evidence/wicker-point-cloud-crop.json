@@ -1,0 +1,48 @@
+{
+  "scanned_points": 98342681,
+  "retained_points": 68237,
+  "classifications": {
+    "1": 1520,
+    "2": 23034,
+    "3": 1040,
+    "4": 7356,
+    "5": 26504,
+    "6": 8776,
+    "7": 7
+  },
+  "sha256": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+  "crs": "EPSG:27700",
+  "units": "m",
+  "vertical_datum": "ODN",
+  "vertical_datum_basis": "EA published dataset declaration; header horizontal CRS checked",
+  "scope": "observed returns only; no semantic geometry, interpolation, floor or lakebed inference",
+  "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9909726817279516
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "archive_sha256": "2bd911d556739978915046d94037c206cdb60811c2e2dfd6da48b24ce83135dc",
+  "archive_bytes": 384483857,
+  "bounds": [
+    407461.0,
+    343478.0,
+    407603.0,
+    343627.0
+  ],
+  "archive_filename": "SK0540_P_10682_20220105_20220105.laz",
+  "catalogue_sha256": "45373b09d8cbe2bd99ba924aad5cf6f7147c75066c3eefa3859ec86b08dafef6",
+  "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+  "license": "OGL-UK-3.0",
+  "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right"
+}

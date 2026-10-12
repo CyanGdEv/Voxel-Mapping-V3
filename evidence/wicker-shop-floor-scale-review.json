@@ -1,0 +1,567 @@
+{
+  "floor_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "roof_plan_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+  "input_review_hashes": {
+    "evidence/wicker-shop-local-floor.json": "41ceaa5c4571c58261b1bcb9612998621105a1eacbeecf3098ad6fbe4ef1aee4",
+    "evidence/wicker-shop-local-roof.json": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137"
+  },
+  "method": "affine native-page furniture correspondence, roof sheet to reduced floor sheet; excludes building geometry",
+  "anchors": [
+    {
+      "text": "01-08-2016",
+      "floor_native_origin": [
+        1039.3184814453125,
+        1996.617431640625
+      ],
+      "roof_native_origin": [
+        1058.9979248046875,
+        2075.69677734375
+      ],
+      "role": "holdout",
+      "residual_pdf_points": 0.0749051932470494
+    },
+    {
+      "text": "@A1",
+      "floor_native_origin": [
+        1515.23779296875,
+        1968.296630859375
+      ],
+      "roof_native_origin": [
+        1582.557861328125,
+        2044.496826171875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.05343635984522839
+    },
+    {
+      "text": "Alton Towers Resort",
+      "floor_native_origin": [
+        1148.158203125,
+        1967.9368896484375
+      ],
+      "roof_native_origin": [
+        1178.878173828125,
+        2044.1368408203125
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.07299210674630538
+    },
+    {
+      "text": "Alton Towers Resort, Farley Lane, Alton",
+      "floor_native_origin": [
+        1273.55810546875,
+        1967.9368896484375
+      ],
+      "roof_native_origin": [
+        1316.8778076171875,
+        2044.1368408203125
+      ],
+      "role": "holdout",
+      "residual_pdf_points": 0.11801888555327555
+    },
+    {
+      "text": "Author",
+      "floor_native_origin": [
+        1502.2777099609375,
+        2076.896728515625
+      ],
+      "roof_native_origin": [
+        1568.2774658203125,
+        2163.896484375
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.036861020244126935
+    },
+    {
+      "text": "Changes made following NLP comments",
+      "floor_native_origin": [
+        1039.3184814453125,
+        2069.097412109375
+      ],
+      "roof_native_origin": [
+        1058.9979248046875,
+        2155.376708984375
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.040265262492399256
+    },
+    {
+      "text": "Checker",
+      "floor_native_origin": [
+        1502.2777099609375,
+        2131.25732421875
+      ],
+      "roof_native_origin": [
+        1568.2774658203125,
+        2223.65576171875
+      ],
+      "role": "holdout",
+      "residual_pdf_points": 0.06274617847652583
+    },
+    {
+      "text": "Design and Management) and all foreseeable design risks to those involved",
+      "floor_native_origin": [
+        191.03988647460938,
+        1970.0965576171875
+      ],
+      "roof_native_origin": [
+        125.87931060791016,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.04088133547048462
+    },
+    {
+      "text": "NS",
+      "floor_native_origin": [
+        1039.3184814453125,
+        2040.655029296875
+      ],
+      "roof_native_origin": [
+        1058.9979248046875,
+        2124.054443359375
+      ],
+      "role": "holdout",
+      "residual_pdf_points": 0.02202253098839167
+    },
+    {
+      "text": "PLANNING",
+      "floor_native_origin": [
+        1105.79833984375,
+        1968.2969970703125
+      ],
+      "roof_native_origin": [
+        1132.1982421875,
+        2044.496826171875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.007255974976019445
+    },
+    {
+      "text": "SW8",
+      "floor_native_origin": [
+        1217.2781982421875,
+        1967.9368896484375
+      ],
+      "roof_native_origin": [
+        1254.8380126953125,
+        2044.1368408203125
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.023490792307911894
+    },
+    {
+      "text": "This drawing has been prepared in accordance with the CDM (Construction",
+      "floor_native_origin": [
+        181.19972229003906,
+        1970.0966796875
+      ],
+      "roof_native_origin": [
+        115.07933044433594,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.01870929607474744
+    },
+    {
+      "text": "all heights, sizes and dimensions should be checked on site by the contractor",
+      "floor_native_origin": [
+        122.51982879638672,
+        1970.0966796875
+      ],
+      "roof_native_origin": [
+        50.51932144165039,
+        2046.4168701171875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.026493839287546846
+    },
+    {
+      "text": "before any work is put in hand.",
+      "floor_native_origin": [
+        132.24002075195312,
+        1970.0966796875
+      ],
+      "roof_native_origin": [
+        61.19930648803711,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.038058707362879605
+    },
+    {
+      "text": "figured dimensions should be taken in preference to scaling and any errors or",
+      "floor_native_origin": [
+        151.79978942871094,
+        1970.0966796875
+      ],
+      "roof_native_origin": [
+        82.79927062988281,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.03778051803243177
+    },
+    {
+      "text": "omissions reported to the architect at once",
+      "floor_native_origin": [
+        161.63995361328125,
+        1970.0966796875
+      ],
+      "roof_native_origin": [
+        93.59925842285156,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.015636147387806942
+    },
+    {
+      "text": "or affected by construction have been avoided wherever possible",
+      "floor_native_origin": [
+        200.76007080078125,
+        1970.0965576171875
+      ],
+      "roof_native_origin": [
+        136.67929077148438,
+        2046.4169921875
+      ],
+      "role": "fit",
+      "residual_pdf_points": 0.0572540992236877
+    }
+  ],
+  "roof_to_floor_matrix_row_convention": [
+    [
+      0.9090493440190495,
+      -5.083208843029645e-05
+    ],
+    [
+      0.0005996230984979048,
+      0.9094514356377967
+    ],
+    [
+      75.34174431213657,
+      108.98095757288566
+    ]
+  ],
+  "floor_to_roof_linear_matrix": [
+    [
+      1.100050255479934,
+      6.148525327810508e-05
+    ],
+    [
+      -0.0007252894622478688,
+      1.0995638952735542
+    ]
+  ],
+  "linear_singular_values": [
+    0.9095906131159841,
+    0.908910282870737
+  ],
+  "heldout_max_residual_pdf_points": 0.11801888555327555,
+  "normalized_local_outer_corners": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      8.371621193449275,
+      8.376185651736293
+    ],
+    [
+      19.49956015003685,
+      -2.839797767356224
+    ],
+    [
+      11.17692894604519,
+      -11.215981864670718
+    ]
+  ],
+  "normalized_wall_segments": [
+    {
+      "edge": 0,
+      "start": [
+        0.0,
+        0.0
+      ],
+      "end": [
+        2.4048117899909425,
+        2.4054652247088546
+      ],
+      "normalized_start": [
+        0.0,
+        0.0
+      ],
+      "normalized_end": [
+        2.643669165381409,
+        2.6451105728879374
+      ]
+    },
+    {
+      "edge": 0,
+      "start": [
+        5.611229304201884,
+        5.612753985697871
+      ],
+      "end": [
+        7.615239308675125,
+        7.617308519151475
+      ],
+      "normalized_start": [
+        6.168563358323759,
+        6.171926643581089
+      ],
+      "normalized_end": [
+        8.371621193449275,
+        8.376185651736293
+      ]
+    },
+    {
+      "edge": 1,
+      "start": [
+        7.615239308675125,
+        7.617308519151475
+      ],
+      "end": [
+        17.724359554714628,
+        -2.5836493598090264
+      ],
+      "normalized_start": [
+        8.371621193449275,
+        8.376185651736293
+      ],
+      "normalized_end": [
+        19.49956015003685,
+        -2.839797767356224
+      ]
+    },
+    {
+      "edge": 2,
+      "start": [
+        17.724359554714628,
+        -2.5836493598090264
+      ],
+      "end": [
+        15.54863436795571,
+        -4.772768122826758
+      ],
+      "normalized_start": [
+        19.49956015003685,
+        -2.839797767356224
+      ],
+      "normalized_end": [
+        17.107740847259002,
+        -5.247007496650597
+      ]
+    },
+    {
+      "edge": 2,
+      "start": [
+        12.32937975151043,
+        -8.011840192535114
+      ],
+      "end": [
+        10.153654564751516,
+        -10.200958955552842
+      ],
+      "normalized_start": [
+        13.568748248823034,
+        -8.80877213537635
+      ],
+      "normalized_end": [
+        11.17692894604519,
+        -11.215981864670718
+      ]
+    },
+    {
+      "edge": 3,
+      "start": [
+        10.153654564751516,
+        -10.200958955552842
+      ],
+      "end": [
+        1.0664620825378979,
+        -1.071430573321729
+      ],
+      "normalized_start": [
+        11.17692894604519,
+        -11.215981864670718
+      ],
+      "normalized_end": [
+        1.1739389836598375,
+        -1.1780408030255616
+      ]
+    },
+    {
+      "edge": 3,
+      "start": [
+        0.48879453967944286,
+        -0.4910717619129841
+      ],
+      "end": [
+        0.0,
+        0.0
+      ],
+      "normalized_start": [
+        0.5380547274256908,
+        -0.539934725731815
+      ],
+      "normalized_end": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "normalized_openings": [
+    {
+      "id": "opening-NE",
+      "edge": 0,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "raw_native_endpoints": [
+        [
+          850.8365478515625,
+          666.7118530273438
+        ],
+        [
+          941.7271118164062,
+          757.6271362304688
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          2.4048117899909425,
+          2.4054652247088546
+        ],
+        [
+          5.611229304201884,
+          5.612753985697871
+        ]
+      ],
+      "wall_projection_residual_metres": 7.210793811243383e-07,
+      "width_metres": 4.535175241576133,
+      "sampling_interval_metres": [
+        4.283186883514204,
+        4.787163599638062
+      ],
+      "height_metres": null,
+      "as_built_verified": false,
+      "normalized_local_endpoints": [
+        [
+          2.643669165381409,
+          2.6451105728879374
+        ],
+        [
+          6.168563358323759,
+          6.171926643581089
+        ]
+      ],
+      "normalized_width_metres": 4.986312331567105
+    },
+    {
+      "id": "opening-SW",
+      "edge": 2,
+      "drawing_role": "wide dashed opening, exact door mechanism unverified",
+      "raw_native_endpoints": [
+        [
+          1223.2353515625,
+          463.4152526855469
+        ],
+        [
+          1132.3448486328125,
+          371.2373046875
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          15.54863436795571,
+          -4.772768122826758
+        ],
+        [
+          12.32937975151043,
+          -8.011840192535114
+        ]
+      ],
+      "wall_projection_residual_metres": 0.009051273784171757,
+      "width_metres": 4.566748094461639,
+      "sampling_interval_metres": [
+        4.31475973639971,
+        4.818736452523568
+      ],
+      "height_metres": null,
+      "as_built_verified": false,
+      "normalized_local_endpoints": [
+        [
+          17.107740847259002,
+          -5.247007496650597
+        ],
+        [
+          13.568748248823034,
+          -8.80877213537635
+        ]
+      ],
+      "normalized_width_metres": 5.02101941377065
+    },
+    {
+      "id": "door-NW",
+      "edge": 3,
+      "drawing_role": "small opening with drawn door swing",
+      "raw_native_endpoints": [
+        [
+          812.9655151367188,
+          568.2203369140625
+        ],
+        [
+          796.5546875,
+          584.6356201171875
+        ]
+      ],
+      "local_projected_endpoints": [
+        [
+          1.0664620825378979,
+          -1.071430573321729
+        ],
+        [
+          0.48879453967944286,
+          -0.4910717619129841
+        ]
+      ],
+      "wall_projection_residual_metres": 0.003307720707216963,
+      "width_metres": 0.8188504992072079,
+      "sampling_interval_metres": [
+        0.5668621411452789,
+        1.0708388572691367
+      ],
+      "height_metres": null,
+      "as_built_verified": false,
+      "normalized_local_endpoints": [
+        [
+          1.1739389836598375,
+          -1.1780408030255616
+        ],
+        [
+          0.5380547274256908,
+          -0.539934725731815
+        ]
+      ],
+      "normalized_width_metres": 0.9008485739599451
+    }
+  ],
+  "normalized_dimensions_metres": [
+    15.816932426606787,
+    11.825197243858444
+  ],
+  "normalized_outer_area_metres_squared": 187.03607113160382,
+  "normalized_minus_elevation_metres": [
+    -0.08587147472781531,
+    0.020594908133880097
+  ],
+  "dimension_agreement_within_0_25_metres": true,
+  "source_scale_reduction_supported": true,
+  "geographic_registration": null,
+  "world_placement_eligible": false,
+  "limitations": [
+    "Furniture holdouts validate a page-layout transform, not geographic registration.",
+    "Applying furniture scaling to the shop view is provisional; figured dimensions take priority.",
+    "Proposed wall heights, as-built identity, floor datum and geographic checkpoints remain unresolved."
+  ],
+  "world_geometry_additions": 0
+}

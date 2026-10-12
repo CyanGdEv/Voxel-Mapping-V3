@@ -1,0 +1,2284 @@
+{
+  "status": "coordinate_reference_search_only",
+  "archive_sha256": "830ef2e993ceff0ab64017f6a2324dd3cfe45a933352650064be429ffc3271fd",
+  "catalogue_sha256": "44bb3b47dabb4f70b6bd58a0c8a346685a4d51cce1ee48b03fef0147e902c999",
+  "unique_pdf_count_checked": 237,
+  "pages_text_checked": 602,
+  "wicker_unique_pdf_count": 11,
+  "selected_documents": [
+    {
+      "sha256": "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+      "archive_member": "files/bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "03224 S73 application - SW8 path proposals 22-02-17",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176958"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "937ea77f82cf0ec7e056e66face6c09d68d8966335a2372d25e62643440e13c5",
+          "extracted_text_characters": 2218,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 2,
+          "text_sha256": "2b612820cb66c58b7f2475cbbd791d827d3a1a7de2bb1c109f17480c16942bb3",
+          "extracted_text_characters": 3493,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 3,
+          "text_sha256": "e16603a9d3efdc48d7bd5750fc3e282aa518b95ebcf7d721f8e61a8656eefa20",
+          "extracted_text_characters": 3945,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 4,
+          "text_sha256": "38c8b487c871a9537794bf14f0e264b991f6013cf8eb2b98ee58834d5c7ccca3",
+          "extracted_text_characters": 3131,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 5,
+          "text_sha256": "51de81c2b113fcc3e02139f37be7bd7a2c2e8050c4e53c71828c293e83006178",
+          "extracted_text_characters": 1670,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 6,
+          "text_sha256": "6c4b73f6d3ff976be92b51b014672569d456db61f9d3a322c42f0eb01398a07f",
+          "extracted_text_characters": 999,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "archive_member": "files/bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2016/0315",
+          "title": "Existing Site Plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "6c37881d04f61698797d51129e03c8bf14b3ba2d1a2323f3dc17871f7f0dcb53",
+          "extracted_text_characters": 20702,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "231d7e3e0e14e558904e7170d079dd9e5138d678ec74d817c86c8f62c51078ad",
+      "archive_member": "files/231d7e3e0e14e558904e7170d079dd9e5138d678ec74d817c86c8f62c51078ad.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2022/0237",
+          "title": "Design and access statement",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=302126"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "aed32aaa3943ea0722c45215707cc1214d0aaeeb888f8b026cbdb9b776a5cbd6",
+          "extracted_text_characters": 3336,
+          "coordinate_reference_signal_count": 1,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [
+            "343069"
+          ],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "1e61b5a61ea9fe9cec893062155c3efb113ce343f68cf6130958353acef3d131",
+      "archive_member": "files/1e61b5a61ea9fe9cec893062155c3efb113ce343f68cf6130958353acef3d131.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2021/0851",
+          "title": "ATPI-SA-XX-XX-RP-A-0001_Rev-_Design_and_Access_Statement",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=293398"
+        }
+      ],
+      "pages": [
+        {
+          "page": 3,
+          "text_sha256": "2800865d343b7437ebc691c00062b445c51c1ffa0e98c968e537896a6dce0108",
+          "extracted_text_characters": 684,
+          "coordinate_reference_signal_count": 1,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9",
+      "archive_member": "files/82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2022/0230",
+          "title": "Topographical Survey",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=302160"
+        },
+        {
+          "applicationReference": "SMD/2021/0636",
+          "title": "4020R0-A1 Sc200 ver 3 Topographical Survey",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=283531"
+        },
+        {
+          "applicationReference": "SMD/2021/0211",
+          "title": "Topographical Survey",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=268359"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "65c47e98e3d367e41b56ab0c01bc56a881495a2afb02713cb9d7b637c9303e1c",
+          "extracted_text_characters": 5419,
+          "coordinate_reference_signal_count": 8,
+          "printed_grid_labels": [
+            {
+              "axis": "N",
+              "value": 342800,
+              "text": "342800N"
+            },
+            {
+              "axis": "N",
+              "value": 342800,
+              "text": "342800N"
+            },
+            {
+              "axis": "N",
+              "value": 342820,
+              "text": "342820N"
+            },
+            {
+              "axis": "N",
+              "value": 342820,
+              "text": "342820N"
+            },
+            {
+              "axis": "N",
+              "value": 342840,
+              "text": "342840N"
+            },
+            {
+              "axis": "N",
+              "value": 342840,
+              "text": "342840N"
+            },
+            {
+              "axis": "N",
+              "value": 342860,
+              "text": "342860N"
+            },
+            {
+              "axis": "N",
+              "value": 342860,
+              "text": "342860N"
+            },
+            {
+              "axis": "N",
+              "value": 342880,
+              "text": "342880N"
+            },
+            {
+              "axis": "N",
+              "value": 342880,
+              "text": "342880N"
+            },
+            {
+              "axis": "N",
+              "value": 342900,
+              "text": "342900N"
+            },
+            {
+              "axis": "N",
+              "value": 342900,
+              "text": "342900N"
+            },
+            {
+              "axis": "E",
+              "value": 406860,
+              "text": "406860E"
+            },
+            {
+              "axis": "E",
+              "value": 406880,
+              "text": "406880E"
+            },
+            {
+              "axis": "E",
+              "value": 406900,
+              "text": "406900E"
+            },
+            {
+              "axis": "E",
+              "value": 406920,
+              "text": "406920E"
+            },
+            {
+              "axis": "E",
+              "value": 406940,
+              "text": "406940E"
+            },
+            {
+              "axis": "E",
+              "value": 406960,
+              "text": "406960E"
+            },
+            {
+              "axis": "E",
+              "value": 406980,
+              "text": "406980E"
+            }
+          ],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": true,
+            "national_grid_orientation_claim": true,
+            "arbitrary_coordinate_warning": true,
+            "horizontal_coordinate_status": "local_grid_requires_transform",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": true,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "archive_member": "files/4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "Alton Towers Woodland Pathway - Statement",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "956523c413f53c70bccd2f8721308c802722c5d5ed6ff1ed0b9c9d1295aa3f27",
+          "extracted_text_characters": 706,
+          "coordinate_reference_signal_count": 2,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [
+            "343522",
+            "407628"
+          ],
+          "control_identity_verified": false
+        },
+        {
+          "page": 2,
+          "text_sha256": "e16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700",
+          "extracted_text_characters": 2,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 3,
+          "text_sha256": "1696ca1df768453b7514778464e83bd7df4cadf81b4da9998a5980da9f04f1f6",
+          "extracted_text_characters": 1466,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "archive_member": "files/145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2016/0315",
+          "title": "Existing Block Plan",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "c5ccd8039a3378a416b56a67c912c27c87791ab1e1a1aff2d6e7942d2a3c6a66",
+          "extracted_text_characters": 55893,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "archive_member": "files/1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "373-95-7B Site Plan Proposed showing Woodland path",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "098e1ed0eba041f29e21789d6a885913526a981afa721329d6d8aad0c136093c",
+          "extracted_text_characters": 20317,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "archive_member": "files/02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2016/0315",
+          "title": "Landscape and Visual Impact Assessment - New Ride Part 1",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "7f899e5725688804d00ebf9210c1c0f613fa9a0f8316f967eb2e320da588c0d8",
+          "extracted_text_characters": 278,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 2,
+          "text_sha256": "701131c0e1c3265b6704f8aa1280fbb4a53428ea79d340c69e95c2b7427eac7d",
+          "extracted_text_characters": 283,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 3,
+          "text_sha256": "08aaa5136937a42d9ba818187f20ed9a47638251bc4f9cf40d2c3bd538530c79",
+          "extracted_text_characters": 442,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 4,
+          "text_sha256": "836ad62efd8d77e1aafdb76d459ed1010c8872019720db21d3d6f41074a1f255",
+          "extracted_text_characters": 1780,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 5,
+          "text_sha256": "d6474a640b1340cad37684fa2885f8513de6423ee480803f432cfd9797e689aa",
+          "extracted_text_characters": 1158,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 6,
+          "text_sha256": "cf4fbdc96a564f1f6ac6e2a1a2723bab3de1f0048d2d1865aec54e8b0d04b23b",
+          "extracted_text_characters": 297,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 7,
+          "text_sha256": "83611209b4616b82654e2081c73d0192caad7052681134c5600101519eefdc8b",
+          "extracted_text_characters": 1680,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 8,
+          "text_sha256": "686ad475e8bf43109b4c303e4ec637c074e5cbc623b8152bbdbdfc9a78acdd2d",
+          "extracted_text_characters": 2501,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 9,
+          "text_sha256": "c7a5c27ef9005c29eb3138afeb511abd35b62ba2f5fdee5b676f9bf5a3b71702",
+          "extracted_text_characters": 2745,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 10,
+          "text_sha256": "984bc0ab12e307a826a63dd159e3a7d139208088fa2d3ca6ab6077b419fc73f0",
+          "extracted_text_characters": 2893,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 11,
+          "text_sha256": "5593bf371d092adfba296b4331ba5f82a07528801b3e4b1ece838d904f2f687c",
+          "extracted_text_characters": 2889,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 12,
+          "text_sha256": "62d612d4bac8595ee13db4faf9812a9dacf7a66bfe1db6fd0ad1c6e05f65b006",
+          "extracted_text_characters": 2822,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 13,
+          "text_sha256": "465310b9122273de93204014efef74d73c88d5143c2df42de5e96dbb6ccc59c4",
+          "extracted_text_characters": 2935,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 14,
+          "text_sha256": "074e2b6a196a279f3ef2a20c503d42288a995a352fcb8bd49db6bf3afe9ad7b5",
+          "extracted_text_characters": 2891,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 15,
+          "text_sha256": "6c2aeacfd2a10a16c2aff65c22ee3f315a3f74d001f4ea550577ab485659d7f9",
+          "extracted_text_characters": 2731,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 16,
+          "text_sha256": "d97f6edfd3dce8675c2a2608e71d2c502c120b12d890977738e4ec6f4fb9e834",
+          "extracted_text_characters": 1395,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 17,
+          "text_sha256": "a626561d16d69ccc3cd8b3967949dd48e6f65e894f97d4504b6d3482877ba683",
+          "extracted_text_characters": 2500,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 18,
+          "text_sha256": "c92c006edc5c0fdd99b6cd130eb2905f32d1e4a040b468b7b1d02a4e94d26a28",
+          "extracted_text_characters": 2964,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 19,
+          "text_sha256": "99fddbe3f95e213b2c254bd44286280a3d5b078dbbb9f6bb74a40e27f72cab32",
+          "extracted_text_characters": 2482,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 20,
+          "text_sha256": "e5797786c3dcc17b8d8723acd6ae715bf680ff38735412edd2f1d33d5dc7bbb5",
+          "extracted_text_characters": 2743,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 21,
+          "text_sha256": "dca6429b07fd866597b74eb8e84096c368c641668ba4adf907788f26a3875ec6",
+          "extracted_text_characters": 2622,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 22,
+          "text_sha256": "12fc5b4ec728f7c3d1cb6836309f8495c627eaa34291d3298bb588dd0cb65050",
+          "extracted_text_characters": 2409,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 23,
+          "text_sha256": "4250db7fa886a99c452bd2b5312a8a2b4b83be75e889dfd47a7675dff5de9c2c",
+          "extracted_text_characters": 3405,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 24,
+          "text_sha256": "f0992bd47e5d21ff11739131c04a2daceb2775fa78c166c9320ba5f84b40b769",
+          "extracted_text_characters": 514,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 25,
+          "text_sha256": "230b0ac36b65311ae57c1dc6cefceefb4a3cee2b06f805104e669cf3829ca696",
+          "extracted_text_characters": 2971,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 26,
+          "text_sha256": "29855df6495c9f28385357dcc8cc76076a9348dc5bf5a540c0df325490e9b523",
+          "extracted_text_characters": 2155,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 27,
+          "text_sha256": "62cff86aef8e64a1459242c966885295d94e1f41f7741ca9809db58f31bf68f8",
+          "extracted_text_characters": 2580,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 28,
+          "text_sha256": "8dc4606ccfe0f7227d00cad24ea5ab04b2e8ab6ea0dbf8b45edeb63a95a1eed5",
+          "extracted_text_characters": 2845,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 29,
+          "text_sha256": "c351412e70ffea7550beb862a78c7c8d7464ec76e1752821da01111890e6c280",
+          "extracted_text_characters": 2526,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 30,
+          "text_sha256": "f58f9ac0b3e74e43d9c6a8955879b815fb38b695f1bdfe9d73d2d0d94e504f3e",
+          "extracted_text_characters": 1119,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 31,
+          "text_sha256": "43fcfaf0cc321450dd2a7f60400d328a043389c30a5d9b237b8202d761d09048",
+          "extracted_text_characters": 2749,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 32,
+          "text_sha256": "331d25427de17af1a6fd257812c4d29b8173d44eee9c8c6cfd511e8beffac5aa",
+          "extracted_text_characters": 2898,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 33,
+          "text_sha256": "608f586bb50b046a3bc20b1c03aa827c6565cb331796d82a0d8c21006a58712f",
+          "extracted_text_characters": 2079,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 34,
+          "text_sha256": "47073e1ec084a7ea244630f8f222eebfb441cc310ea8a63f9e554df667af1921",
+          "extracted_text_characters": 2463,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 35,
+          "text_sha256": "59311be4abf2d0276efb4b70801698116cd860dc590ef92ecf429bd5879f1ac8",
+          "extracted_text_characters": 2327,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 36,
+          "text_sha256": "88597ff992faf11a6fd298c909cdf3d4f4a95a884511d228ac0551c3c4285a2b",
+          "extracted_text_characters": 236,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 37,
+          "text_sha256": "66572fccf078580764ddf96d88fc9aee00df755d2c4ab233e3dbe66f1f190de4",
+          "extracted_text_characters": 2927,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 38,
+          "text_sha256": "22700c52a4f30536398b6ad80a68978fda6f54bac32dfa0705ea3e0b8129b728",
+          "extracted_text_characters": 73,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "archive_member": "files/321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "373-95-8B Site Plan Landscape",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176956"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "911b1236a4ee0f77e80327c70ed0bb16fdadff91971d8ca39533801106678acb",
+          "extracted_text_characters": 20674,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215",
+      "archive_member": "files/78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2016/0315",
+          "title": "Landscape and Visual Impact Assessment - New Ride Part 2",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "extracted_text_characters": 0,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+      "archive_member": "files/ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "373-95-18B SW8 Planting Schedule (path change)",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176957"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "1a1d43509c8134f1d6ef3583afa495f84f0486b0b63bd75506cd0abef8a2aec6",
+          "extracted_text_characters": 2795,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "archive_member": "files/468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2016/0315",
+          "title": "Landscape and Visual Impact Assessment - New Ride Part 3",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "ff0cbfbd9761b57f7dc46473733228f07647432d69cd2fd3d4dcc03d6ac81de6",
+          "extracted_text_characters": 60,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 2,
+          "text_sha256": "5299c4e3222c27410695f4296956750273d1a36f82edb7f5b3fcd8e6315c54c3",
+          "extracted_text_characters": 533,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 3,
+          "text_sha256": "9a565e04e51c9b8bc7658aaa7e71bfefdd32243aff0cadd9fffc8107b580f285",
+          "extracted_text_characters": 57,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "dd0dc1d0ab338d63cb7b7fdad03974381d4232915c8de1dd706282a85a6f1f75",
+      "archive_member": "files/dd0dc1d0ab338d63cb7b7fdad03974381d4232915c8de1dd706282a85a6f1f75.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2020/0553",
+          "title": "Design & Access Statement",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=254071"
+        }
+      ],
+      "pages": [
+        {
+          "page": 4,
+          "text_sha256": "d5a0eeb95592cb634a5e42c75efcadbf2d606ae38b8b13b47f7f26fa87dad04d",
+          "extracted_text_characters": 1028,
+          "coordinate_reference_signal_count": 5,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [
+            "343206",
+            "407230"
+          ],
+          "control_identity_verified": false
+        }
+      ]
+    },
+    {
+      "sha256": "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428",
+      "archive_member": "files/81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428.pdf",
+      "sources": [
+        {
+          "applicationReference": "SMD/2017/0111",
+          "title": "Arboricultural Statement",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176961"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text_sha256": "ec75fbe9f55c988f34870a76e51bb0191f773a0c46b949c0c6ad6072880d33fa",
+          "extracted_text_characters": 2248,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        },
+        {
+          "page": 2,
+          "text_sha256": "30d5f528e1022b2aa1784ed227ceb110654714c3271754bfda63bc7563717da5",
+          "extracted_text_characters": 1046,
+          "coordinate_reference_signal_count": 0,
+          "printed_grid_labels": [],
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "numeric_location_mentions": [],
+          "control_identity_verified": false
+        }
+      ]
+    }
+  ],
+  "wildwood_survey": {
+    "sha256": "82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9",
+    "printed_grid_label_extent": [
+      406860,
+      342800,
+      406980,
+      342900
+    ],
+    "location_review": {
+      "status": "local_grid_requires_transform",
+      "registration_verified": false,
+      "world_geometry_additions": 0,
+      "controls_exported": false,
+      "limitations": [
+        "Grid extent overlap is not independent alignment or survey accuracy",
+        "An inferred British National Grid CRS remains a hypothesis",
+        "No raster transform, physical polygon or height datum is established"
+      ],
+      "reason": "Source explicitly disclaims true OS coordinates; national-grid orientation or an EPSG label cannot override this warning"
+    },
+    "scope": "Wildwood, Farley Lane; not the Wicker Man shop",
+    "scope_basis": "Survey title block and printed grid labels",
+    "station_table_is_registration_authority": false
+  },
+  "wicker_location_reference": {
+    "application": "SMD/2017/0111",
+    "source_sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+    "printed_numeric_reference": [
+      407628,
+      343522
+    ],
+    "role": "Application location mention; physical landmark and uncertainty not established",
+    "accepted_control": false
+  },
+  "limitations": [
+    "This text search does not inspect coordinate labels embedded solely in raster images.",
+    "No-hit pages are not proof that no survey controls exist.",
+    "Application location references are not physical correspondence points.",
+    "The retained archive is an incomplete planning subset, not all public attachments."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

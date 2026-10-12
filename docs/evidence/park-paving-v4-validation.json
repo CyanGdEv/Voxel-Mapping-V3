@@ -1,0 +1,269 @@
+{
+  "status": "expanded_application_data_and_provisional_world",
+  "data_acquisition": {
+    "search_applications": 328,
+    "search_pages": 19,
+    "search_complete_for_query": true,
+    "application_pages_inspected": 96,
+    "application_page_failures": [
+      {
+        "reference": "SMD/1998/1150",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=47396"
+      },
+      {
+        "reference": "SMD/1998/0511",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41588"
+      },
+      {
+        "reference": "SMD/1998/0198",
+        "error": "500 Server Error: Internal Server Error for url: http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=41046"
+      }
+    ],
+    "attachment_links_discovered": 861,
+    "new_application_seeds": 0,
+    "total_application_seeds": 96,
+    "documents_acquired": 68,
+    "failed_document_downloads": 6,
+    "new_catalogue_documents": 68,
+    "total_catalogue_documents": 275,
+    "changed_legacy_documents_withheld": [],
+    "unique_acquired_pdf_hashes": 61,
+    "geometry_emitted": false
+  },
+  "tests_passed": 298,
+  "inspected_planning_documents": 115,
+  "inspected_planning_pages": 134,
+  "aligned_planning_documents": 51,
+  "aligned_planning_pages": 51,
+  "paving_polygons_after_reviewed_exclusions": 129,
+  "reviewed_face_exclusions": [
+    {
+      "document_id": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "face_index": 607,
+      "feature_id": "planning-paving/94eefa9040ce/607",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "face_index": 701,
+      "feature_id": "planning-paving/94eefa9040ce/701",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "face_index": 653,
+      "feature_id": "planning-paving/94eefa9040ce/653",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "face_index": 663,
+      "feature_id": "planning-paving/94eefa9040ce/663",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "82cd17cda7201959a2671fc3aecc0b47ce5e945a3f44c889043ce2a1c098dc91",
+      "page": 1,
+      "face_index": 39,
+      "feature_id": "planning-paving/82cd17cda720/39",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "82cd17cda7201959a2671fc3aecc0b47ce5e945a3f44c889043ce2a1c098dc91",
+      "page": 1,
+      "face_index": 827,
+      "feature_id": "planning-paving/82cd17cda720/827",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "82cd17cda7201959a2671fc3aecc0b47ce5e945a3f44c889043ce2a1c098dc91",
+      "page": 1,
+      "face_index": 882,
+      "feature_id": "planning-paving/82cd17cda720/882",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "82cd17cda7201959a2671fc3aecc0b47ce5e945a3f44c889043ce2a1c098dc91",
+      "page": 1,
+      "face_index": 893,
+      "feature_id": "planning-paving/82cd17cda720/893",
+      "reason": "Previously reviewed scale-bar/annotation boundary; retain exclusion pending independent drawing review"
+    },
+    {
+      "document_id": "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+      "page": 1,
+      "face_index": 121,
+      "feature_id": "planning-paving/a451445375a0/121",
+      "reason": "Concrete hopper structure, not pedestrian floor",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+      "page": 1,
+      "face_index": 75,
+      "feature_id": "planning-paving/54b295d7c649/75",
+      "reason": "Concrete hopper structure, not pedestrian floor",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "5fb55dca14da78abc55527f0c37c08196e1ede123ac0d1fb964f4fe79ec0d676",
+      "page": 1,
+      "face_index": 15,
+      "feature_id": "planning-paving/5fb55dca14da/15",
+      "reason": "Block-paving legend swatch, not site geometry",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+      "page": 1,
+      "face_index": 95,
+      "feature_id": "planning-paving/54b295d7c649/95",
+      "reason": "Paving-over-existing-slab face coincides with cafe building plan; roof/floor ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+      "page": 1,
+      "face_index": 21,
+      "feature_id": "planning-paving/22cb90a951a1/21",
+      "reason": "Paving-over-existing-slab face coincides with cafe building plan; roof/floor ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "b61d54b6dd4e8c7ab1af698a7161465c78b397e7b95dfe3007f0fa96b9205481",
+      "page": 1,
+      "face_index": 139,
+      "feature_id": "planning-paving/b61d54b6dd4e/139",
+      "reason": "Paving text closes a face across shaded building footprint; pedestrian-floor ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      "page": 1,
+      "face_index": 48,
+      "feature_id": "planning-paving/485cebe17554/48",
+      "reason": "Block-paving legend swatch, not site geometry",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "68e254734d1b2143f3ea35cb945a117412015b6dcce0d85f66838b0977135da5",
+      "page": 1,
+      "face_index": 68,
+      "feature_id": "planning-paving/68e254734d1b/68",
+      "reason": "Block-paving legend swatch, not site geometry",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 103,
+      "feature_id": "planning-paving/d91fae46e872/103",
+      "reason": "Block-paving legend swatch, not site geometry",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 213,
+      "feature_id": "planning-paving/d91fae46e872/213",
+      "reason": "Title-block strokes close an unrelated tarmac-labelled face",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 230,
+      "feature_id": "planning-paving/d91fae46e872/230",
+      "reason": "Revision/title annotation strokes close an unrelated concrete-labelled face",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 56,
+      "feature_id": "planning-paving/d91fae46e872/56",
+      "reason": "Concrete building footprint; ground/roof ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 77,
+      "feature_id": "planning-paving/d91fae46e872/77",
+      "reason": "Concrete building footprint; ground/roof ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 24,
+      "feature_id": "planning-paving/d91fae46e872/24",
+      "reason": "Restaurant building/platform face; ground/roof ambiguity",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    },
+    {
+      "document_id": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+      "page": 1,
+      "face_index": 67,
+      "feature_id": "planning-paving/d91fae46e872/67",
+      "reason": "Historical Enterprise ride platform; excluded from pedestrian paving expansion",
+      "review_method": "Visual inspection of unrotated native page with candidate face outline",
+      "reviewed_at": "2026-10-08"
+    }
+  ],
+  "overlay_records": 78972,
+  "planning_geometry_new_horizontal_cells": 4609,
+  "added_horizontal_cells_since_v3": 1351,
+  "removed_horizontal_cells_since_v3": 2,
+  "material_changed_horizontal_cells_since_v3": 30,
+  "new_cell_materials": {
+    "asphalt": 949,
+    "concrete": 370,
+    "stone": 32
+  },
+  "labelled_wicker_plaza_coverage": [
+    {
+      "feature": "planning-paving/wicker/12",
+      "footprint_cells": 218,
+      "brick_cells": 218,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    },
+    {
+      "feature": "planning-paving/wicker/17",
+      "footprint_cells": 274,
+      "brick_cells": 274,
+      "missing_cells": 0,
+      "wrong_material_cells": 0
+    }
+  ],
+  "world_verification": {
+    "touched_chunks": 1294,
+    "overlay_records": 78972,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1f68b6f105ba8a77745dc05c7e00cf317952c29bcf407ea03a16888c2648bfa8",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 11
+  },
+  "package_sha256": "3ea188300bc6ab62608407f3937846674c88c226db248748d954cf014e9efe52",
+  "ride_layouts_changed": false
+}

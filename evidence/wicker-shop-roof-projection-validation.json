@@ -1,0 +1,8 @@
+{
+  "byte_identical_replay": true,
+  "front_width_agrees_within_0_06_metres": true,
+  "beyond_roof_depth_agrees_within_0_03_metres": true,
+  "wall_and_roof_reference_edges_retained_separately": true,
+  "projection_mesh_withheld_pending_vertical_edges": true,
+  "world_geometry_additions": 0
+}

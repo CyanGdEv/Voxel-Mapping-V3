@@ -1,0 +1,45 @@
+{
+  "source_pdf_sha256": "cd5ddf8a912dc07ba2059d6af28b7b047c9146135f7a3f9ca984c4a03ed1506b",
+  "source_render_samples_sha256": "493bfb8c095dd20ab5ff22669a5ba45c9277b04fc0c9a7da3b8375123d5eda4a",
+  "view_caption": "South Range Courtyard (north) Elevation 'as existing'",
+  "view_scale_denominator": 50,
+  "trace_class": "manual source-view profile review; correspondence and roof assembly unresolved",
+  "floor_reference_pixel_y": 558,
+  "front_wall_top_review": [
+    {
+      "source_pixel_x_interval": [
+        165,
+        728
+      ],
+      "top_pixel_y": 351,
+      "relative_height_m": 4.835877777777778,
+      "role": "left store frontage"
+    },
+    {
+      "source_pixel_x_interval": [
+        728,
+        979
+      ],
+      "top_pixel_y": 315,
+      "relative_height_m": 5.6769,
+      "role": "raised archway frontage"
+    },
+    {
+      "source_pixel_x_interval": [
+        979,
+        1546
+      ],
+      "top_pixel_y": 420,
+      "relative_height_m": 3.2239185185185186,
+      "role": "right frontage/canopy edge; underlying wall and rear curtain must be separated"
+    }
+  ],
+  "scope_direction": "source image left corresponds to lower plan end; inferred from the three doorway positions, not a geographic transform",
+  "emitted": false,
+  "blockers": [
+    "The main tiled roof, raised arch frontage and low right canopy form separate profiles; applying one roof bar would intersect upper apertures.",
+    "Rear curtain wall, corner towers and the arch frontage must be separated into their plan depths before vertical surfaces can be assembled.",
+    "The floor line is not level; the single pixel floor reference is for comparison, not a registered floor datum."
+  ],
+  "geographic_registration_verified": false
+}

@@ -1,0 +1,875 @@
+{
+  "type": "FeatureCollection",
+  "schema_version": 1,
+  "geometry_crs": "EPSG:4326",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "planning-paving/cbeebies-2013/corridor-0",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.8948859071228479,
+              52.98991457827768
+            ],
+            [
+              -1.8951834465266526,
+              52.98993860242222
+            ],
+            [
+              -1.8952802334797667,
+              52.990003629625356
+            ],
+            [
+              -1.8952568812581576,
+              52.990232944501635
+            ],
+            [
+              -1.8951930298932331,
+              52.99052875999863
+            ],
+            [
+              -1.8951082068487435,
+              52.99082267178754
+            ],
+            [
+              -1.894990062937606,
+              52.991012026145626
+            ],
+            [
+              -1.894896557707385,
+              52.99109262793082
+            ],
+            [
+              -1.8947278764388258,
+              52.9911703869492
+            ],
+            [
+              -1.8945031911878343,
+              52.991224646435356
+            ],
+            [
+              -1.8943255585527348,
+              52.9912423648937
+            ],
+            [
+              -1.894157391171006,
+              52.991222121003055
+            ],
+            [
+              -1.893955149169645,
+              52.99114005355118
+            ],
+            [
+              -1.8938927942017592,
+              52.99108910093027
+            ],
+            [
+              -1.8938368329838324,
+              52.991118362410724
+            ],
+            [
+              -1.89393322093921,
+              52.991178377313965
+            ],
+            [
+              -1.8941611877458546,
+              52.99126974813367
+            ],
+            [
+              -1.8943376637817715,
+              52.99128975086141
+            ],
+            [
+              -1.8945687020831385,
+              52.99126294469622
+            ],
+            [
+              -1.8948040514126272,
+              52.99118576309152
+            ],
+            [
+              -1.894972732604274,
+              52.99110800396529
+            ],
+            [
+              -1.8950687929613592,
+              52.991007227998836
+            ],
+            [
+              -1.8951746738333828,
+              52.990820742076814
+            ],
+            [
+              -1.8952638504611468,
+              52.99052921631882
+            ],
+            [
+              -1.8953275014601925,
+              52.990230894094275
+            ],
+            [
+              -1.8953460995513056,
+              52.989994179749374
+            ],
+            [
+              -1.8952497122739562,
+              52.98993416597937
+            ],
+            [
+              -1.8951086295526915,
+              52.989888012253076
+            ],
+            [
+              -1.8948579847106675,
+              52.98987770150593
+            ],
+            [
+              -1.8948859071228479,
+              52.98991457827768
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "North CBeebies corridor",
+        "kind": "path",
+        "surface": "stone",
+        "material_status": "paving_label_unspecified_material",
+        "document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+        "application_reference": "SMD/2013/1047",
+        "page": 1,
+        "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142",
+        "state": "historical_proposed",
+        "registration_verified": false,
+        "as_built_verified": false,
+        "geometry_method": "Reviewed corridor boundary digitisation in native PDF coordinates; no ride layout generated",
+        "material_evidence": [],
+        "native_pdf_polygon": [
+          [
+            856.6666666666667,
+            585.0
+          ],
+          [
+            878.3333333333334,
+            466.6666666666667
+          ],
+          [
+            923.3333333333334,
+            430.0
+          ],
+          [
+            1075.0,
+            446.6666666666667
+          ],
+          [
+            1270.0,
+            481.6666666666667
+          ],
+          [
+            1463.3333333333335,
+            525.0
+          ],
+          [
+            1586.6666666666667,
+            578.3333333333334
+          ],
+          [
+            1638.3333333333335,
+            618.3333333333334
+          ],
+          [
+            1686.6666666666667,
+            688.3333333333334
+          ],
+          [
+            1718.3333333333335,
+            780.0
+          ],
+          [
+            1726.6666666666667,
+            851.6666666666667
+          ],
+          [
+            1710.0,
+            918.3333333333334
+          ],
+          [
+            1651.6666666666667,
+            996.6666666666667
+          ],
+          [
+            1616.6666666666667,
+            1020.0
+          ],
+          [
+            1635.0,
+            1043.3333333333335
+          ],
+          [
+            1676.6666666666667,
+            1006.6666666666667
+          ],
+          [
+            1741.6666666666667,
+            918.3333333333334
+          ],
+          [
+            1758.3333333333335,
+            848.3333333333334
+          ],
+          [
+            1745.0,
+            755.0
+          ],
+          [
+            1698.3333333333335,
+            658.3333333333334
+          ],
+          [
+            1650.0,
+            588.3333333333334
+          ],
+          [
+            1585.0,
+            546.6666666666667
+          ],
+          [
+            1463.3333333333335,
+            498.33333333333337
+          ],
+          [
+            1271.6666666666667,
+            453.33333333333337
+          ],
+          [
+            1075.0,
+            418.33333333333337
+          ],
+          [
+            918.3333333333334,
+            403.33333333333337
+          ],
+          [
+            876.6666666666667,
+            440.0
+          ],
+          [
+            843.3333333333334,
+            495.0
+          ],
+          [
+            831.6666666666667,
+            595.0
+          ]
+        ],
+        "native_to_local_alignment": {
+          "status": "mapped_canal_boundary_alignment_hypothesis",
+          "scale_m_per_pdf_point": 0.1675694444792278,
+          "rotation": [
+            [
+              -0.04789212073092032,
+              0.9988525140239148
+            ],
+            [
+              -0.9988525140239148,
+              -0.04789212073092032
+            ]
+          ],
+          "translation_local_m": [
+            -876.1354206666304,
+            35.58027571735113
+          ],
+          "source_document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+          "target_feature": "osm/way/70684256",
+          "rms_boundary_distance_m": 1.5258217074663565,
+          "registration_verified": false,
+          "as_built_verified": false,
+          "limitations": [
+            "Canal bank outline aligned to mapped ride-water centreline; bank width and OSM accuracy limit placement"
+          ]
+        },
+        "alignment_local_crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+        "limitations": [
+          "Historical corridor widths and alignment are approximate; material unspecified",
+          "Mapped buildings/water are excluded during composition; geometry needs present-day confirmation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "planning-paving/cbeebies-2013/corridor-1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.8940421085617676,
+              52.99003705880135
+            ],
+            [
+              -1.8940018080387493,
+              52.990106065726415
+            ],
+            [
+              -1.8939625064042036,
+              52.990187606096356
+            ],
+            [
+              -1.893969099930521,
+              52.99027032692715
+            ],
+            [
+              -1.8939151378346,
+              52.99032465536649
+            ],
+            [
+              -1.893859419035967,
+              52.99040918464642
+            ],
+            [
+              -1.8937917953925476,
+              52.990448834562606
+            ],
+            [
+              -1.8937229314277362,
+              52.990420683194536
+            ],
+            [
+              -1.8938091280800375,
+              52.99035285690434
+            ],
+            [
+              -1.8938377659108219,
+              52.99029423850031
+            ],
+            [
+              -1.893884019194915,
+              52.99024767129796
+            ],
+            [
+              -1.8938750698920641,
+              52.99018763125301
+            ],
+            [
+              -1.893833087421033,
+              52.990131062393274
+            ],
+            [
+              -1.8938941588218667,
+              52.990061452710684
+            ],
+            [
+              -1.893938613585271,
+              52.98999232525674
+            ],
+            [
+              -1.8940421085617676,
+              52.99003705880135
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Boat ride and show-area link",
+        "kind": "path",
+        "surface": "stone",
+        "material_status": "paving_label_unspecified_material",
+        "document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+        "application_reference": "SMD/2013/1047",
+        "page": 1,
+        "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142",
+        "state": "historical_proposed",
+        "registration_verified": false,
+        "as_built_verified": false,
+        "geometry_method": "Reviewed corridor boundary digitisation in native PDF coordinates; no ride layout generated",
+        "material_evidence": [],
+        "native_pdf_polygon": [
+          [
+            921.6666666666667,
+            926.6666666666667
+          ],
+          [
+            966.6666666666667,
+            945.0
+          ],
+          [
+            1020.0,
+            963.3333333333334
+          ],
+          [
+            1075.0,
+            963.3333333333334
+          ],
+          [
+            1110.0,
+            986.6666666666667
+          ],
+          [
+            1165.0,
+            1011.6666666666667
+          ],
+          [
+            1190.0,
+            1040.0
+          ],
+          [
+            1170.0,
+            1066.6666666666667
+          ],
+          [
+            1126.6666666666667,
+            1030.0
+          ],
+          [
+            1088.3333333333335,
+            1016.6666666666667
+          ],
+          [
+            1058.3333333333335,
+            996.6666666666667
+          ],
+          [
+            1018.3333333333334,
+            998.3333333333334
+          ],
+          [
+            980.0,
+            1013.3333333333334
+          ],
+          [
+            935.0,
+            986.6666666666667
+          ],
+          [
+            890.0,
+            966.6666666666667
+          ]
+        ],
+        "native_to_local_alignment": {
+          "status": "mapped_canal_boundary_alignment_hypothesis",
+          "scale_m_per_pdf_point": 0.1675694444792278,
+          "rotation": [
+            [
+              -0.04789212073092032,
+              0.9988525140239148
+            ],
+            [
+              -0.9988525140239148,
+              -0.04789212073092032
+            ]
+          ],
+          "translation_local_m": [
+            -876.1354206666304,
+            35.58027571735113
+          ],
+          "source_document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+          "target_feature": "osm/way/70684256",
+          "rms_boundary_distance_m": 1.5258217074663565,
+          "registration_verified": false,
+          "as_built_verified": false,
+          "limitations": [
+            "Canal bank outline aligned to mapped ride-water centreline; bank width and OSM accuracy limit placement"
+          ]
+        },
+        "alignment_local_crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+        "limitations": [
+          "Historical corridor widths and alignment are approximate; material unspecified",
+          "Mapped buildings/water are excluded during composition; geometry needs present-day confirmation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "planning-paving/cbeebies-2013/corridor-2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.8937937933414002,
+              52.99047390148296
+            ],
+            [
+              -1.8937829707504474,
+              52.99054707779019
+            ],
+            [
+              -1.893643768384074,
+              52.990629004741926
+            ],
+            [
+              -1.8935601268419358,
+              52.99067665681882
+            ],
+            [
+              -1.8934764851156904,
+              52.9907243088365
+            ],
+            [
+              -1.8934119748709624,
+              52.9906985434333
+            ],
+            [
+              -1.8933672367328493,
+              52.9906596418086
+            ],
+            [
+              -1.8934744461898156,
+              52.99064648082113
+            ],
+            [
+              -1.8936445261760129,
+              52.99058627041954
+            ],
+            [
+              -1.8937147060070025,
+              52.990526446493895
+            ],
+            [
+              -1.893723372461325,
+              52.990478457671514
+            ],
+            [
+              -1.8937937933414002,
+              52.99047390148296
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "East CBeebies promenade",
+        "kind": "path",
+        "surface": "stone",
+        "material_status": "paving_label_unspecified_material",
+        "document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+        "application_reference": "SMD/2013/1047",
+        "page": 1,
+        "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142",
+        "state": "historical_proposed",
+        "registration_verified": false,
+        "as_built_verified": false,
+        "geometry_method": "Reviewed corridor boundary digitisation in native PDF coordinates; no ride layout generated",
+        "material_evidence": [],
+        "native_pdf_polygon": [
+          [
+            1206.6666666666667,
+            1040.0
+          ],
+          [
+            1255.0,
+            1046.6666666666667
+          ],
+          [
+            1306.6666666666667,
+            1105.0
+          ],
+          [
+            1336.6666666666667,
+            1140.0
+          ],
+          [
+            1366.6666666666667,
+            1175.0
+          ],
+          [
+            1348.3333333333335,
+            1200.0
+          ],
+          [
+            1321.6666666666667,
+            1216.6666666666667
+          ],
+          [
+            1315.0,
+            1173.3333333333335
+          ],
+          [
+            1278.3333333333335,
+            1103.3333333333335
+          ],
+          [
+            1240.0,
+            1073.3333333333335
+          ],
+          [
+            1208.3333333333335,
+            1068.3333333333335
+          ]
+        ],
+        "native_to_local_alignment": {
+          "status": "mapped_canal_boundary_alignment_hypothesis",
+          "scale_m_per_pdf_point": 0.1675694444792278,
+          "rotation": [
+            [
+              -0.04789212073092032,
+              0.9988525140239148
+            ],
+            [
+              -0.9988525140239148,
+              -0.04789212073092032
+            ]
+          ],
+          "translation_local_m": [
+            -876.1354206666304,
+            35.58027571735113
+          ],
+          "source_document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+          "target_feature": "osm/way/70684256",
+          "rms_boundary_distance_m": 1.5258217074663565,
+          "registration_verified": false,
+          "as_built_verified": false,
+          "limitations": [
+            "Canal bank outline aligned to mapped ride-water centreline; bank width and OSM accuracy limit placement"
+          ]
+        },
+        "alignment_local_crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+        "limitations": [
+          "Historical corridor widths and alignment are approximate; material unspecified",
+          "Mapped buildings/water are excluded during composition; geometry needs present-day confirmation"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "planning-paving/cbeebies-2013/corridor-3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -1.8930942115708884,
+              52.990107278976616
+            ],
+            [
+              -1.8931638736562821,
+              52.990145457483216
+            ],
+            [
+              -1.893233576719644,
+              52.99023639704374
+            ],
+            [
+              -1.8932508743021321,
+              52.99034895714899
+            ],
+            [
+              -1.8932100545983057,
+              52.99051596590863
+            ],
+            [
+              -1.8932609442581243,
+              52.990579813981164
+            ],
+            [
+              -1.893233104510737,
+              52.990648459015055
+            ],
+            [
+              -1.8931242969186601,
+              52.99064156624032
+            ],
+            [
+              -1.893110595150887,
+              52.99057412659885
+            ],
+            [
+              -1.8931255730463867,
+              52.99050082981671
+            ],
+            [
+              -1.893172744549407,
+              52.99036127417204
+            ],
+            [
+              -1.8931604003313487,
+              52.990258620290774
+            ],
+            [
+              -1.893097448307907,
+              52.99020014716553
+            ],
+            [
+              -1.8930151240571278,
+              52.990159823525524
+            ],
+            [
+              -1.8930942115708884,
+              52.990107278976616
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "CBeebies entrance connection",
+        "kind": "path",
+        "surface": "stone",
+        "material_status": "paving_label_unspecified_material",
+        "document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+        "application_reference": "SMD/2013/1047",
+        "page": 1,
+        "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142",
+        "state": "historical_proposed",
+        "registration_verified": false,
+        "as_built_verified": false,
+        "geometry_method": "Reviewed corridor boundary digitisation in native PDF coordinates; no ride layout generated",
+        "material_evidence": [],
+        "native_pdf_polygon": [
+          [
+            950.0,
+            1308.3333333333335
+          ],
+          [
+            976.6666666666667,
+            1281.6666666666667
+          ],
+          [
+            1038.3333333333335,
+            1256.6666666666667
+          ],
+          [
+            1113.3333333333335,
+            1253.3333333333335
+          ],
+          [
+            1223.3333333333335,
+            1275.0
+          ],
+          [
+            1266.6666666666667,
+            1256.6666666666667
+          ],
+          [
+            1311.6666666666667,
+            1270.0
+          ],
+          [
+            1305.0,
+            1313.3333333333335
+          ],
+          [
+            1260.0,
+            1316.6666666666667
+          ],
+          [
+            1211.6666666666667,
+            1308.3333333333335
+          ],
+          [
+            1120.0,
+            1285.0
+          ],
+          [
+            1051.6666666666667,
+            1286.6666666666667
+          ],
+          [
+            1011.6666666666667,
+            1310.0
+          ],
+          [
+            983.3333333333334,
+            1341.6666666666667
+          ]
+        ],
+        "native_to_local_alignment": {
+          "status": "mapped_canal_boundary_alignment_hypothesis",
+          "scale_m_per_pdf_point": 0.1675694444792278,
+          "rotation": [
+            [
+              -0.04789212073092032,
+              0.9988525140239148
+            ],
+            [
+              -0.9988525140239148,
+              -0.04789212073092032
+            ]
+          ],
+          "translation_local_m": [
+            -876.1354206666304,
+            35.58027571735113
+          ],
+          "source_document_id": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+          "target_feature": "osm/way/70684256",
+          "rms_boundary_distance_m": 1.5258217074663565,
+          "registration_verified": false,
+          "as_built_verified": false,
+          "limitations": [
+            "Canal bank outline aligned to mapped ride-water centreline; bank width and OSM accuracy limit placement"
+          ]
+        },
+        "alignment_local_crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+        "limitations": [
+          "Historical corridor widths and alignment are approximate; material unspecified",
+          "Mapped buildings/water are excluded during composition; geometry needs present-day confirmation"
+        ]
+      }
+    }
+  ],
+  "source_acquisition": [
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Demolition site plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55074",
+      "sha256": "0a6015c1bc25307c6b18f41518df468caeae52ddfb8f45141cc322144ae6c0fa",
+      "bytes": 2404805,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55074"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Existing plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54843",
+      "sha256": "e77470fb859177bad4c9d1e775846087cf5e2340d531ad9b96d90cf7d56207f2",
+      "bytes": 2429162,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54843"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Location plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54445",
+      "sha256": "ac3322348c1437b1508dba6ae13340992d7c15a483889f78e8a711d7cd32040e",
+      "bytes": 649520,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54445"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Marquee and green proposed lanscaping",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54847",
+      "sha256": "b5ce843f2d77252f820fcd9061b040a94ae49b3ebdd898fbb62d7ad45061813b",
+      "bytes": 2697147,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=54847"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Marquee and green proposed plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55071",
+      "sha256": "180b6034a8fe9f00993ec570e04f017bfad347fef0af5a91da11523f37d032ed",
+      "bytes": 336121,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=55071"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Proposed plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142",
+      "sha256": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+      "bytes": 2241681,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142"
+    },
+    {
+      "applicationReference": "SMD/2013/1047",
+      "title": "Design and access statement",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51818",
+      "sha256": "1d7ed78fb0e0536ce8cb39085c4c438c175dece217cc6760bcb9dc6b76eff46e",
+      "bytes": 69654,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51818"
+    }
+  ],
+  "withheld_sources": [
+    {
+      "application_reference": "SMD/2024/0579",
+      "reason": "Building-corner fit has 11.14 m withheld residual; cross-sheet application boundary is not closed. Geometry withheld."
+    }
+  ]
+}

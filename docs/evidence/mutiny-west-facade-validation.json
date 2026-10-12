@@ -1,0 +1,31 @@
+{
+  "status": "west_facade_and_lobby_access_study",
+  "lobby_standing_air_verified": true,
+  "lobby_provisional_cells_removed": 2,
+  "west_elevation_source": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+  "west_source_opening_count": 14,
+  "west_dormers_withheld": 2,
+  "view_scale_denominator": 50,
+  "sheet_title_scale_denominator": 100,
+  "all_previous_through_passages_verified": true,
+  "west_front_door_arch_clearance_verified": true,
+  "native_building_connected_to_floor_verified": true,
+  "wooden_roof_stairs_remaining": 0,
+  "glazing_cells": 0,
+  "range_labels_corrected": true,
+  "physical_registration_verified": false,
+  "regression": {
+    "expected_tests": 1083,
+    "tests_run": 1083,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "final_focused_tests_passed": 19,
+  "world": {
+    "sha256": "70bf15630ad745aace2e49252bddd7d97e26fba5bdaf7deacf7ff1ce2edac30b",
+    "chunks": 20,
+    "composed_blocks": 22426,
+    "round_trip_validation": "all written blocks and all unwritten air cells verified"
+  }
+}

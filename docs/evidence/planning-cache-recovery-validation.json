@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "validated_at_utc": "2026-10-12T22:34:46.184276+00:00",
+  "parent_commit": "7b6cb60095a129f711d369d3e6270cfb33e94d3e",
+  "change": "missing-only retained planning PDF and application-page recovery",
+  "source_file_sha256": {
+    "voxel_mapper/alton.py": "110454d129188748a265a5d423e8ee820f9338bb260aeee296715837969a771f",
+    "voxel_mapper/alton_discovery.py": "b77e0b0733b38a17c2250c33996b15e6efbd65f1f0e04af8f0d9925357e1852e",
+    "tests/test_alton.py": "27b4a65b9cf8d43b171f3bddc51b96038b8e64503e122b51fee111399c328b93",
+    "tests/test_alton_discovery.py": "108ae94ad4bf6872dd0323529d60dcb89ac2a134f20c40dae37c39ebbb576118"
+  },
+  "regression": {
+    "platform": "win32",
+    "python": "3.12.14",
+    "tests_run": 1297,
+    "elapsed_seconds": 197.531,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4,
+    "skip_reason": "external OCR executables unavailable",
+    "log_sha256": "accdf9b2b266de990b1e6f7b1526a45bfe3e09a2ac39b5e21651754c33a50602",
+    "focused_tests": 29
+  },
+  "real_empty_cache_acquisition": {
+    "status": "partial",
+    "application_download_attempts": 2,
+    "application_failures": [
+      {
+        "reference": "SMD/2017/0111",
+        "reason": "HTTPSConnectionPool(host='publicaccess.staffsmoorlands.gov.uk', port=443): Max retries exceeded with url: /portal/servlets/ApplicationSearchServlet?PKID=111996 (Caused by SSLError(SSLError(1, '[SSL] unknown error (_ssl.c:1010)')))"
+      },
+      {
+        "reference": "SMD/2016/0315",
+        "reason": "HTTPSConnectionPool(host='publicaccess.staffsmoorlands.gov.uk', port=443): Max retries exceeded with url: /portal/servlets/ApplicationSearchServlet?PKID=104356 (Caused by SSLError(SSLError(1, '[SSL] unknown error (_ssl.c:1010)')))"
+      }
+    ],
+    "pdf_download_attempts": 3,
+    "pdf_failures": [
+      {
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+        "reason": "HTTPSConnectionPool(host='publicaccess.staffsmoorlands.gov.uk', port=443): Max retries exceeded with url: /portal/servlets/AttachmentShowServlet?ImageName=176955 (Caused by SSLError(SSLError(1, '[SSL] unknown error (_ssl.c:1010)')))"
+      },
+      {
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176957",
+        "reason": "HTTPSConnectionPool(host='publicaccess.staffsmoorlands.gov.uk', port=443): Max retries exceeded with url: /portal/servlets/AttachmentShowServlet?ImageName=176957 (Caused by SSLError(SSLError(1, '[SSL] unknown error (_ssl.c:1010)')))"
+      },
+      {
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176956",
+        "reason": "HTTPSConnectionPool(host='publicaccess.staffsmoorlands.gov.uk', port=443): Max retries exceeded with url: /portal/servlets/AttachmentShowServlet?ImageName=176956 (Caused by SSLError(SSLError(1, '[SSL] unknown error (_ssl.c:1010)')))"
+      }
+    ],
+    "pdfs_deferred_council_outage": 8,
+    "inspected_original_pdfs": 0,
+    "cache_recovery_candidates": 11,
+    "uncached_discovered_documents": 11,
+    "world_geometry_additions": 0,
+    "receipt_sha256": "3b6f52cba2ff1b2972047b28f05a56c9536647192f725bfbc7b827dc6666b794"
+  },
+  "checked_prior_github_artifact": {
+    "run_id": 37678459391,
+    "artifact_id": 11508756365,
+    "sha256": "72dd82e70c620404896f7e552d41c8cb5ac3209f91f6ad91588c05c59296a13b",
+    "pdf_members": 0,
+    "finding": "successful baseline generation did not retain original planning PDFs"
+  },
+  "remaining_blockers": [
+    "Official council TLS failures prevent current source acquisition",
+    "Original retained PDFs unavailable for real scale/font rerun",
+    "Independent survey controls and failed held-out boundary checks remain unresolved"
+  ],
+  "accepted_real_planning_geometry_additions": 0
+}

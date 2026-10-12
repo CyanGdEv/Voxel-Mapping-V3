@@ -1,0 +1,47 @@
+{
+  "first": {
+    "version": "planning-component-mentions-v1",
+    "status": "unbound_component_mentions",
+    "pages": 13,
+    "mentions": 138,
+    "roles": {
+      "preshow": 14,
+      "queue": 11,
+      "fence": 113
+    },
+    "withheld_mentions": 0,
+    "errors": [],
+    "file_sha256": "6d1b6e3073864dd82b9346b8618d2c2556f2c83ff75d5f4f590628ac9b42ea27",
+    "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Proximity does not bind a label to geometry.",
+      "Printed dimensions apply only after component identity review.",
+      "Existing/proposed sheet state and physical placement require independent source binding.",
+      "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+    ]
+  },
+  "stable_resume": true,
+  "source_claim_summary": {
+    "fence_height_mentions": 106,
+    "fence_descriptions": [
+      "closeboard",
+      "rustic",
+      "steel",
+      "timber"
+    ],
+    "no_stair_text_matches": true,
+    "stairs_limit": "Absence of text matches is not evidence that stair geometry is absent."
+  },
+  "validation": {
+    "focused_tests": 11,
+    "focused_status": "passed",
+    "physical_components_verified": 0,
+    "real_area_world_additions": 0,
+    "full_suite": {
+      "tests": 813,
+      "seconds": 84.197,
+      "status": "passed"
+    }
+  }
+}

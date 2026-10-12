@@ -1,0 +1,11 @@
+{
+  "byte_identical_replay": true,
+  "wall_plus_opening_lengths_conserve_each_edge": true,
+  "out_of_wall_opening_rejected": true,
+  "overlapping_openings_rejected": true,
+  "corrupt_source_rejected": true,
+  "cross_sheet_dimension_conflict_detected": true,
+  "gia_conflict_detected": true,
+  "forced_scale_applied": false,
+  "world_geometry_additions": 0
+}

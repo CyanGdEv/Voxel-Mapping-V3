@@ -1,0 +1,76 @@
+{
+  "status": "unplaced_component_anchor_evidence",
+  "contract": {
+    "version": "numbered-material-leaders-v1",
+    "documents_sha256": "036ca1aa3c1b5b33ce056546836565b77ccaa1fa866dda1c8a72982940e4e336",
+    "pdf_sha256": [
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299"
+    ],
+    "max_pages": 10000
+  },
+  "pages": [
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "page": 1,
+      "native_paths": 282,
+      "legend_numbers": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "callout_statuses": {
+        "explicit_material_anchor_candidate": 4,
+        "withheld_label_or_legend_visibility": 8
+      },
+      "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+    },
+    {
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "page": 1,
+      "native_paths": 982,
+      "legend_numbers": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "callout_statuses": {
+        "explicit_material_anchor_candidate": 4,
+        "withheld_label_or_legend_visibility": 7
+      },
+      "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+    },
+    {
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "page": 1,
+      "native_paths": 10220,
+      "legend_numbers": [],
+      "callout_statuses": {},
+      "coordinate_basis": "MuPDF unrotated page points; not metres or park-grid geometry"
+    },
+    {
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "page": 1,
+      "status": "withheld",
+      "reason": "Material leader page budget exceeded"
+    }
+  ],
+  "callout_records": 23,
+  "callout_statuses": {
+    "explicit_material_anchor_candidate": 8,
+    "withheld_label_or_legend_visibility": 15
+  },
+  "callouts_sha256": "a6b16c8cb6448cdeae61747fcd20af0204c231f0ba30e189eb20aab2b1203117",
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Native leader connectivity is an unverified annotation association, not component outline or material identity verification.",
+    "Clipped/layered paths, branched chains, multiple legends/arrows and ambiguous starts are not resolved by nearest matching.",
+    "All visibility, drawing-state, metre-scale, datum and independent registration gates remain required."
+  ]
+}

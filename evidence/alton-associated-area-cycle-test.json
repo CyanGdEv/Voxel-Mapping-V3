@@ -1,0 +1,1130 @@
+{
+  "status": "completed_with_blockers",
+  "stage": "reconstruct",
+  "max_cycles_per_area": 1,
+  "config_sha256": "1233f0f08cfa0277418287c4f7285a9095bab925b20f2ca2458d9f2d1196eac3",
+  "results": [
+    {
+      "area_id": "wicker-man",
+      "name": "Wicker Man and woodland paths",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 40,
+      "acquisition": {
+        "document_links": 40,
+        "unique_urls": 40,
+        "download_status": {
+          "downloaded": 13,
+          "pending": 27
+        },
+        "distinct_pdf_blobs": 13,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 13,
+        "run_pages": 0,
+        "resumed_pages": 13,
+        "candidates": 25555,
+        "candidate_types": {
+          "polygon": 2447,
+          "line": 23108
+        },
+        "curved_candidates": 4638,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 10,
+          "partial_candidate_budget": 2,
+          "path_budget_withheld": 1
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "8f066e3e63574f309f98d86760a4409290821dac0dd1f52b04fe6484094aef1e",
+          "polygon": "5f5f37c5f2e6be78d07eb6365a55e06fb093f2d2c9d5761d91f7bc8539f06552",
+          "line": "82da909d758b3c7d3b632e1f85d5f578943c26ca9447e0df79bc35239ca1f74d"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 13,
+        "mentions": 138,
+        "roles": {
+          "preshow": 14,
+          "queue": 11,
+          "fence": 113
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "6d1b6e3073864dd82b9346b8618d2c2556f2c83ff75d5f4f590628ac9b42ea27",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "fence",
+        "architectural_components",
+        "track",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "mutiny-bay",
+      "name": "Mutiny Bay courtyard and rides",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 139,
+      "acquisition": {
+        "document_links": 139,
+        "unique_urls": 139,
+        "download_status": {
+          "downloaded": 120,
+          "pending": 19
+        },
+        "distinct_pdf_blobs": 73,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 213,
+        "run_pages": 0,
+        "resumed_pages": 213,
+        "candidates": 26257,
+        "candidate_types": {
+          "line": 21772,
+          "polygon": 4485
+        },
+        "curved_candidates": 1041,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 213
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "423e6b3177708e8914b3b07bd1e902bb5dcad54c443b79adcaf9eae85b1f78eb",
+          "polygon": "0463a78e7ad4fd64dfe7ef4b5fc343057b399164b8b5790dacea755db98a5354",
+          "line": "dcc191cc908c05526398a0e2190bcd0de7460f6f2ac531ab55e86e2ef1e99dcb"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 213,
+        "mentions": 677,
+        "roles": {
+          "fence": 598,
+          "stairs": 84
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "02aa7ba1e4284d56fc97ba5b88848cf9fce4d1ff970c4c366ba8b05b60998a77",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "fence",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "enchanted-village",
+      "name": "Enchanted Village",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 9,
+      "acquisition": {
+        "document_links": 9,
+        "unique_urls": 9,
+        "download_status": {
+          "downloaded": 5,
+          "pending": 4
+        },
+        "distinct_pdf_blobs": 5,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 5,
+        "run_pages": 0,
+        "resumed_pages": 5,
+        "candidates": 7575,
+        "candidate_types": {
+          "line": 6647,
+          "polygon": 928
+        },
+        "curved_candidates": 764,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 5
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "b62be2af840c690637aac4785e34700305e886c43572974e60be4c759ce34d0c",
+          "polygon": "4d446aa9c49c443aff7bc8eb36d04bd8bdf21564d38fbb049bec5c383bda9677",
+          "line": "e5346fbe4be49a983ac3a7449cb7acefc8d1b3a38f875aff926f9ea2213d8ef1"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 5,
+        "mentions": 15,
+        "roles": {
+          "fence": 15
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "a371e743328fb08cd8fa616f9b5b270bb2c169b4d04b28e47add6a9a4f7bd8c6",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "stargazing-pods",
+      "name": "Stargazing Pods",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 4,
+      "acquisition": {
+        "document_links": 4,
+        "unique_urls": 4,
+        "download_status": {
+          "downloaded": 2,
+          "pending": 2
+        },
+        "distinct_pdf_blobs": 2,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 2,
+        "run_pages": 0,
+        "resumed_pages": 2,
+        "candidates": 5047,
+        "candidate_types": {
+          "line": 3391,
+          "polygon": 1656
+        },
+        "curved_candidates": 881,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 2
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "ec928d121922fe40d718a4b3e447dec8e30a6842a9849f07b17be0542aeaada4",
+          "polygon": "a43b2371a969550be861a5820c77c9b77219034b72b71aea84f1ba47f9b9c30c",
+          "line": "4a6a016b737a23a52b59276d6f6bbf4ddd4cee29b3a246c5e1dca429e8d55c10"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 2,
+        "mentions": 7,
+        "roles": {
+          "fence": 7
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "e75b4d5a59f9c36121a0e04ff1cfea14ba3995931a53c81289751fae06afc592",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "alton-towers-hotel",
+      "name": "Alton Towers Hotel",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 4,
+      "acquisition": {
+        "document_links": 4,
+        "unique_urls": 4,
+        "download_status": {
+          "downloaded": 1,
+          "pending": 3
+        },
+        "distinct_pdf_blobs": 1,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 1,
+        "run_pages": 0,
+        "resumed_pages": 1,
+        "candidates": 0,
+        "candidate_types": {},
+        "curved_candidates": 0,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 1
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "polygon": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "line": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 1,
+        "mentions": 8,
+        "roles": {
+          "fence": 8
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "5d68cfb385aec1fbb0ea26d3ff51363a7b01c1969668b19d16c980d0c5a5f480",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "forbidden-valley",
+      "name": "Forbidden Valley",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 22,
+      "acquisition": {
+        "document_links": 22,
+        "unique_urls": 22,
+        "download_status": {
+          "downloaded": 15,
+          "pending": 7
+        },
+        "distinct_pdf_blobs": 15,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 17,
+        "run_pages": 0,
+        "resumed_pages": 17,
+        "candidates": 19939,
+        "candidate_types": {
+          "line": 17545,
+          "polygon": 2394
+        },
+        "curved_candidates": 161,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 17
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "353160e6c119b3f250a67dff07a193c7e8224a14ef009cfde54d1ba544eb6edc",
+          "polygon": "cb7329a1343d5f373999cdffd4b831a1941693d0dde87d3404843846d84cb860",
+          "line": "ec28a890e3328d042b0d1a8de8e775e0f75239d7e6de3f6ca83d4506763a9cec"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 17,
+        "mentions": 27,
+        "roles": {
+          "queue": 16,
+          "fence": 13,
+          "stairs": 5
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "18db33b2e3248b73ac7be679dccaad66e3d6317fd8d71dbee8aa6dbc94f9b80e",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "x-sector",
+      "name": "X Sector",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 3,
+      "acquisition": {
+        "document_links": 3,
+        "unique_urls": 3,
+        "download_status": {
+          "downloaded": 1,
+          "pending": 2
+        },
+        "distinct_pdf_blobs": 1,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 1,
+        "run_pages": 0,
+        "resumed_pages": 1,
+        "candidates": 1615,
+        "candidate_types": {
+          "polygon": 486,
+          "line": 1129
+        },
+        "curved_candidates": 695,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 1
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "62ee750e64cad44da47b37ab33604ba059a96cbaf3f1b339bd1962ba71d3f0d0",
+          "polygon": "193186708c9f4c75be770da6b20e96834eeb4624c1bfc29506930a0371652aa2",
+          "line": "1f31fad799cb13ea417f6e93040888e4bef8c5ff05e61b1ee0cbbf6680f7aa14"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 1,
+        "mentions": 14,
+        "roles": {
+          "fence": 14
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "f67cdc937b7c5923110d453ddb99ac05200498d10e85b296a12d611a4e34116b",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "dark-forest",
+      "name": "Dark Forest",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 5,
+      "acquisition": {
+        "document_links": 5,
+        "unique_urls": 5,
+        "download_status": {
+          "downloaded": 4,
+          "pending": 1
+        },
+        "distinct_pdf_blobs": 4,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 11,
+        "run_pages": 0,
+        "resumed_pages": 11,
+        "candidates": 6583,
+        "candidate_types": {
+          "line": 6483,
+          "polygon": 100
+        },
+        "curved_candidates": 12,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 11
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "2e9e439022e12edcff287fd26ba1032fa8cd3b62df80c7fb387eb7e529317f18",
+          "polygon": "de5ab26cf060303c03006b4595210028928537827eaf8c8534dbce480917ae0e",
+          "line": "5adefd5036f72b58841e6b809824260849c02c8d064de683e927ed01b214c81d"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 11,
+        "mentions": 5,
+        "roles": {
+          "fence": 5
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "46996da984ebcafc60a4168da39649fe6ee9d2ed199010d548b58606bee7c501",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "gardens",
+      "name": "Gardens",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 80,
+      "acquisition": {
+        "document_links": 80,
+        "unique_urls": 80,
+        "download_status": {
+          "downloaded": 77,
+          "pending": 3
+        },
+        "distinct_pdf_blobs": 50,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 116,
+        "run_pages": 0,
+        "resumed_pages": 116,
+        "candidates": 7341,
+        "candidate_types": {
+          "polygon": 2497,
+          "line": 4844
+        },
+        "curved_candidates": 499,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 116
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "63773ccb51b9471c4fa08cb7b7f4348053a9f655f1069e758cb205afb8890f66",
+          "polygon": "4e898ee6bd098785fdc37862cb88e6aaa3d017dc566c24abb6b0e27f13a90066",
+          "line": "f43113da38c56bcb6924bbf83cc5f14603b822df969ee7af6ec0e329298e9508"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 116,
+        "mentions": 495,
+        "roles": {
+          "fence": 438,
+          "stairs": 62
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "a12636bdf61998db24310d3081d57cd520040823fc7047fed8fd4d8da6d02006",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "towers",
+      "name": "Towers ruins",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 70,
+      "acquisition": {
+        "document_links": 70,
+        "unique_urls": 70,
+        "download_status": {
+          "downloaded": 66,
+          "pending": 4
+        },
+        "distinct_pdf_blobs": 43,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 121,
+        "run_pages": 0,
+        "resumed_pages": 121,
+        "candidates": 7330,
+        "candidate_types": {
+          "line": 4858,
+          "polygon": 2472
+        },
+        "curved_candidates": 496,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 121
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "b4fce65fdb6a407eda6d00c3c9c3dabc76d8574cf114761063dbb0992c977ee7",
+          "polygon": "9d779344a416658b897312e25d4de1badf03d07e8db4ed83a1b42b54f6176392",
+          "line": "27fea7864fb86c1fe4ae56fd312468b11cab6476a978814d4189827d33acf3f9"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 121,
+        "mentions": 472,
+        "roles": {
+          "fence": 408,
+          "stairs": 69
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "da9126b97deb47d0a528f4c9385c16a44b29dde0078c37133f1033b9316105a9",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "cbeebies-land",
+      "name": "CBeebies Land",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 10,
+      "acquisition": {
+        "document_links": 10,
+        "unique_urls": 10,
+        "download_status": {
+          "downloaded": 2,
+          "pending": 8
+        },
+        "distinct_pdf_blobs": 2,
+        "inspected_pages": 0,
+        "status": "partial_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 2,
+        "run_pages": 0,
+        "resumed_pages": 2,
+        "candidates": 3162,
+        "candidate_types": {
+          "line": 2342,
+          "polygon": 820
+        },
+        "curved_candidates": 473,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 2
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "031841fe14a1219cfdb4c6fd5b95238198133580564f908666a7df040d2db9b1",
+          "polygon": "16cc84daefe5d3a022677e594238c88b2b947a01e73a9873dd747afde2e46014",
+          "line": "7a6bab8c78782ffe8f9f302d0a05ccbe613156dfaf39c34ff9f6b742a09c80d4"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 2,
+        "mentions": 9,
+        "roles": {
+          "fence": 9
+        },
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "966d534bb3a4d7f8a51418335af381dbdd9f93315f7499f9c75604c7763dab04",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory",
+        "Some planning PDFs unavailable"
+      ]
+    },
+    {
+      "area_id": "adventure-land",
+      "name": "Adventure Land",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_applications",
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No selected planning application documents",
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ]
+    },
+    {
+      "area_id": "katanga-canyon",
+      "name": "Katanga Canyon",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_reconstruction",
+      "document_records": 2,
+      "acquisition": {
+        "document_links": 2,
+        "unique_urls": 2,
+        "download_status": {
+          "downloaded": 2
+        },
+        "distinct_pdf_blobs": 2,
+        "inspected_pages": 0,
+        "status": "complete_manifest",
+        "discovery_completeness": "Not implied by manifest completion",
+        "failed_urls": [],
+        "world_geometry_additions": 0,
+        "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration"
+      },
+      "extraction": {
+        "version": "drawing-geometry-v2",
+        "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "options": {
+          "curve_tolerance_points": 0.25,
+          "max_paths": 100000,
+          "max_candidates": 4000,
+          "max_points": 10000,
+          "max_total_points": 200000
+        },
+        "status": "unplaced_geometry_only",
+        "pages": 8,
+        "run_pages": 8,
+        "resumed_pages": 0,
+        "candidates": 0,
+        "candidate_types": {},
+        "curved_candidates": 0,
+        "page_statuses": {
+          "unplaced_geometry_candidates": 8
+        },
+        "errors": [],
+        "file_sha256": {
+          "geometry": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "polygon": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "line": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "world_geometry_additions": 0
+      },
+      "component_mentions": {
+        "version": "planning-component-mentions-v1",
+        "status": "unbound_component_mentions",
+        "pages": 8,
+        "mentions": 0,
+        "roles": {},
+        "withheld_mentions": 0,
+        "errors": [],
+        "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "drawing_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+        "world_geometry_additions": 0,
+        "limitations": [
+          "Proximity does not bind a label to geometry.",
+          "Printed dimensions apply only after component identity review.",
+          "Existing/proposed sheet state and physical placement require independent source binding.",
+          "Unlabelled stairs and queue structures are not ruled out by absence of a text mention."
+        ]
+      },
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ]
+    },
+    {
+      "area_id": "gloomy-wood",
+      "name": "Gloomy Wood",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_applications",
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No selected planning application documents",
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ]
+    },
+    {
+      "area_id": "towers-street",
+      "name": "Towers Street",
+      "reconstruction_recipe_configured": false,
+      "boundary_configured": false,
+      "component_inventory_configured": false,
+      "status": "awaiting_applications",
+      "missing_components": [
+        "local_building",
+        "paving",
+        "shrub"
+      ],
+      "world_geometry_additions": 0,
+      "blockers": [
+        "No selected planning application documents",
+        "No source-bound reconstruction recipe",
+        "No accepted area boundary",
+        "No bound physical component inventory"
+      ]
+    }
+  ],
+  "scope": "Area-by-area coordinator test; source scans and missing recipes are not world generation.",
+  "initial_base_sha256": "47566a01367e8ae41fafe7222eecdde6c8fd6873e028036059d692807e3e20ef",
+  "area_status_counts": {
+    "awaiting_reconstruction": 12,
+    "awaiting_applications": 3
+  },
+  "areas_tested": 15,
+  "areas_with_native_preview": 0,
+  "association_audit": "alton-area-association-audit.json",
+  "world_geometry_additions": 0,
+  "baseline_unchanged": true,
+  "resume_validation": {
+    "unchanged_source_areas_preserve_candidate_hashes": true,
+    "new_pages": 8
+  }
+}

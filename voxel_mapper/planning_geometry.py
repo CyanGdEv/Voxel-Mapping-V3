@@ -1,0 +1,93 @@
+"""Normalize explicitly verified drawing geometry into physical world features.
+
+This consumes adapter records, not application-site boundaries or raw PDF paths.
+"""
+import math
+from copy import deepcopy
+from shapely.geometry import shape, box
+from .transport import SURFACE_MATERIALS, transport_profile
+
+KINDS = {'plaza':'plaza','path':'path','ride_structure':'structure',
+         'building_component':'structure','building':'structure','sound_tunnel':'structure'}
+
+
+def physical_features(records, sources, bounds, vertical_datum, max_records=1000):
+    if len(records) > max_records:
+        raise ValueError('Planning geometry record budget exceeded')
+    features, decisions, identifiers = [], [], set()
+    for record in records:
+        identifier = record.get('id')
+        try:
+            if not isinstance(identifier,str) or not identifier or identifier in identifiers:
+                raise ValueError('Missing or duplicate planning component identity')
+            identifiers.add(identifier)
+            source = record.get('source_id')
+            if source not in sources:
+                raise ValueError('Unregistered planning source')
+            if sources[source].get('license')=='copyright-consultation-only' or sources[source].get('reuse_status')=='consultation_only':
+                raise ValueError('Registered source restricts geometry reuse to consultation')
+            for key in ('reuse_allowed','registration_verified','as_built_verified'):
+                if record.get(key) is not True:
+                    raise ValueError(key+' is not confirmed')
+            if not record.get('document_id') or not record.get('verification_reference'):
+                raise ValueError('Missing document identity or verification reference')
+            kind = KINDS.get(record.get('feature_type'))
+            if kind is None:
+                raise ValueError('Unknown drawing feature semantics')
+            if len(str(record['geometry'])) > 1_000_000:
+                raise ValueError('Drawing component coordinate budget exceeded')
+            geometry = shape(record['geometry'])
+            if geometry.geom_type not in ('Polygon','MultiPolygon') or geometry.is_empty or not geometry.is_valid or geometry.has_z:
+                raise ValueError('Expected a valid registered 2D polygon with holes preserved')
+            if not box(*bounds).covers(geometry):
+                raise ValueError('Drawing component crosses acquisition bounds')
+            props = {'kind':kind,'source_id':source,'planning_semantic_kind':record['feature_type'],
+                     'material_warnings':['Drawing material unspecified; generic Minecraft material assumed'],
+                     'planning_geometry_evidence':{k:deepcopy(record[k]) for k in
+                     ('document_id','verification_reference','reuse_allowed','registration_verified','as_built_verified')}}
+            if record.get('surface') is not None:
+                surface = record['surface']
+                if not isinstance(surface,str) or surface.strip().lower() not in SURFACE_MATERIALS:
+                    raise ValueError('Unrecognized drawing material specification')
+                props['surface'] = surface.strip().lower()
+                props['minecraft_material'] = SURFACE_MATERIALS[props['surface']]
+            elevation = record.get('elevation')
+            if record.get('surface_colour') is not None:
+                props['surface:colour'] = record['surface_colour']
+            if props.get('surface'):
+                palette = transport_profile(props,'plaza',False)
+                props['minecraft_material'] = palette['material']
+                props['material_warnings'] = palette['warnings']
+            if record.get('structural_material') is not None:
+                if kind != 'structure' or record['structural_material'] != 'dark_stained_timber':
+                    raise ValueError('Unsupported explicit structural material')
+                props['minecraft_material'] = 'dark_oak_planks'
+                props['material_warnings'] = ['Dark-stained timber represented by the approximate dark oak Minecraft palette']
+            if elevation is not None:
+                if not vertical_datum or elevation.get('vertical_datum') != vertical_datum:
+                    raise ValueError('Drawing elevation datum does not match terrain')
+                base = float(elevation['base_m'])
+                top = float(elevation['top_m'])
+                if not math.isfinite(base) or not math.isfinite(top) or not 0 < top-base <= 120:
+                    raise ValueError('Invalid component base/top elevation')
+                props.update(base_elevation_m=base,height_m=top-base,vertical_datum=vertical_datum)
+            elif kind == 'structure':
+                raise ValueError('Structure requires explicit base/top elevation; layer is not height')
+            if record['feature_type'] == 'sound_tunnel':
+                from .tunnels import validate_section
+                validate_section(record.get('section'), top-base)
+                centerline = shape(record['centerline'])
+                if (geometry.geom_type != 'Polygon' or len(geometry.interiors) or
+                        centerline.geom_type != 'LineString' or centerline.has_z or not centerline.is_valid or not centerline.is_simple or
+                        centerline.length <= 0 or not geometry.covers(centerline)):
+                    raise ValueError('Tunnel requires a single footprint and a covered explicit 2D centerline')
+                from shapely.geometry import Point
+                if any(geometry.boundary.distance(Point(point)) > 1e-8 for point in (centerline.coords[0], centerline.coords[-1])):
+                    raise ValueError('Tunnel centerline endpoints must define footprint boundary portals')
+                props.update(tunnel_section=deepcopy(record['section']), tunnel_centerline=deepcopy(record['centerline']))
+            features.append({'type':'Feature','id':'planning/'+identifier,
+                             'geometry':deepcopy(record['geometry']),'properties':props})
+            decisions.append({'id':identifier,'status':'accepted_verified_adapter_record'})
+        except (ValueError,KeyError,TypeError,OverflowError) as error:
+            decisions.append({'id':identifier,'status':'withheld','reason':str(error)})
+    return features, decisions

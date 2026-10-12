@@ -1,0 +1,779 @@
+{
+  "version": "landmark-diagnostics-v1",
+  "status": "explicit_seed_diagnostic_only",
+  "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+  "reference_id": "osm/way/834919978",
+  "default_seed_rank": 324,
+  "outside_default_seed_selection": true,
+  "descriptor_reference_rank": 2,
+  "min_iou": 0.7,
+  "tolerance_m": 10.0,
+  "orientation_trials": [
+    {
+      "fit": {
+        "method": "corner_vertices",
+        "matrix": [
+          [
+            0.08764715564724616,
+            0.0001956861688822466
+          ],
+          [
+            -0.0001956861688822466,
+            0.08764715564724616
+          ]
+        ],
+        "translation_m": [
+          -463.98797247304435,
+          30.702286023876226
+        ],
+        "scale_metres_per_pdf_point": 0.08764737409717012,
+        "rotation_degrees": -0.1279216977845424,
+        "sample_rms_m": 0.041857252214113246,
+        "intersection_over_union": 0.9921069445356722,
+        "boundary_hausdorff_m": 0.04421003382164936,
+        "boundary_error_fraction": 0.003024547802103153,
+        "corner_pairs": [
+          {
+            "local": [
+              1059.3599853515625,
+              1387.5999755859375
+            ],
+            "target": [
+              -370.9112274339383,
+              152.13138662491878
+            ],
+            "identity_verified": false
+          },
+          {
+            "local": [
+              884.6399536132812,
+              1310.320068359375
+            ],
+            "target": [
+              -386.18914385546105,
+              145.41090801311827
+            ],
+            "identity_verified": false
+          },
+          {
+            "local": [
+              943.6799926757812,
+              1177.3599853515625
+            ],
+            "target": [
+              -381.01254228939615,
+              133.70320104266588
+            ],
+            "identity_verified": false
+          },
+          {
+            "local": [
+              1118.1600341796875,
+              1254.8800048828125
+            ],
+            "target": [
+              -365.7345959683282,
+              140.42369594976392
+            ],
+            "identity_verified": false
+          }
+        ]
+      },
+      "distinct_nonoverlapping_outline_matches": [
+        {
+          "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.9921069445356722,
+          "centroid_error_m": 0.003115741671019494
+        },
+        {
+          "candidate_id": "c9dd868808f29e5ebe0064254d4fcbc52517137914abebd134bc9db71cb82670",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.7971533324467736,
+          "centroid_error_m": 0.7398504800268162
+        }
+      ],
+      "nearby_subthreshold_comparisons": [
+        {
+          "candidate_id": "621aa3badacdffba35448afc0ec1776ae238bf41b812febd46d871ea865afeed",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.6008070342548048,
+          "centroid_error_m": 0.7064844141733598
+        },
+        {
+          "candidate_id": "de6cbe692f9b518cee0168516d655c803ac425302b307a62db1f46918ace17f7",
+          "reference_id": "osm/way/107259863",
+          "reference_name": "FastTrack",
+          "intersection_over_union": 0.562585331950353,
+          "centroid_error_m": 1.1180152473633806
+        },
+        {
+          "candidate_id": "e0944246568ed3476039dc4cedd0ffa09ed8e430b457a714b6e56d0e1b59b94f",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.2767072293123385,
+          "centroid_error_m": 1.773111101153987
+        },
+        {
+          "candidate_id": "45bf7ea564bbd8897afd807a68078cff6ee673170e3f314c4c3196be662b908c",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.20604498140285665,
+          "centroid_error_m": 1.4665761477416592
+        },
+        {
+          "candidate_id": "0d9b9c1cc9b5d9a1c22590412692aaa9adab374c31003577e5799a0cf0620405",
+          "reference_id": "osm/way/107259863",
+          "reference_name": "FastTrack",
+          "intersection_over_union": 0.09451481207373243,
+          "centroid_error_m": 0.255823173597052
+        },
+        {
+          "candidate_id": "da4b76a50cdfc30535d056b83c6a3cbfa0f30ce22fd34f470a77300510dcb953",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.06547659022030805,
+          "centroid_error_m": 1.3188443179922014
+        },
+        {
+          "candidate_id": "0fbee24c3189ff4814e14e1bd8b27267bbd6a5ec0ad4dd121dea465abaf65913",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.016242329437098264,
+          "centroid_error_m": 3.0518524562825804
+        },
+        {
+          "candidate_id": "7fd5a75edd5f1c98a443ae06b58b1784c76fe6bd9af7ca53bf3f32bc1401fee8",
+          "reference_id": "osm/way/70689598",
+          "reference_name": "",
+          "intersection_over_union": 0.011938820505843249,
+          "centroid_error_m": 7.553859717498887
+        },
+        {
+          "candidate_id": "db73ada501870ffb19d57ad8a7a4119371ef053971d975bcf416869fc6790560",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.011565060427864956,
+          "centroid_error_m": 7.621369269941778
+        },
+        {
+          "candidate_id": "445514d793c9e3f12a1d41d9e9ac6aa09171b9cefd81fa0017477a291de64fba",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.0020916148508217107,
+          "centroid_error_m": 4.486979145329679
+        },
+        {
+          "candidate_id": "98f059a1e188ff39f1bef43cfd85a824a6740a10f8c8d334a804c81558522e64",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0017398222121322452,
+          "centroid_error_m": 1.040824076554157
+        },
+        {
+          "candidate_id": "9ee61862fa0ce0e000fe2a672811c8ef28d95aebd93f774d890a6bfa34b24376",
+          "reference_id": "osm/way/834919983",
+          "reference_name": "",
+          "intersection_over_union": 0.0015368949047949692,
+          "centroid_error_m": 5.460524530974428
+        },
+        {
+          "candidate_id": "1e873053e150795ca0e3430922e1f2988d149d2a93047f7f8758a7271093306a",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.001330062011917961,
+          "centroid_error_m": 7.0959503470619705
+        },
+        {
+          "candidate_id": "f14e8f12728c544d1ebcdcb7dd746d43a7a452669827bf82d227986e969db20d",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0012917246008706017,
+          "centroid_error_m": 2.0880163394179285
+        },
+        {
+          "candidate_id": "5337f5899b928fa059ce1c2472ced3540a91cf966884af4ab63aeeb71e8d877c",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0008856036828345387,
+          "centroid_error_m": 2.586406519374637
+        },
+        {
+          "candidate_id": "812a548874de955836b8dadba1a2b40c4cc0784ad74fed52e75f8b7ec4916394",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.0008320872634520684,
+          "centroid_error_m": 9.60455015888025
+        },
+        {
+          "candidate_id": "25811d741a351c5bee4fecab89fb4cdc5f123920e70e209bf965814a39f7006b",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0007252967127046696,
+          "centroid_error_m": 2.767955517807662
+        },
+        {
+          "candidate_id": "acd2aa34b03d6a0b6642bb30130e8a77497d167241a00db213ee114ebf1307a5",
+          "reference_id": "osm/way/107259863",
+          "reference_name": "FastTrack",
+          "intersection_over_union": 8.589089956865426e-05,
+          "centroid_error_m": 6.21075889325206
+        },
+        {
+          "candidate_id": "89a4dd86470d1d6b6706415d302a3516c9a8d301360a486bb4745117346e7786",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 8.01529566895494
+        },
+        {
+          "candidate_id": "7776481d3cbfa3de72bd980dd5b925f1be7ef98ac254d70c0c35ff8e370b81bf",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 9.190974952544062
+        }
+      ]
+    },
+    {
+      "fit": {
+        "matrix": [
+          [
+            -0.08764715567557287,
+            -0.00019568607260519614
+          ],
+          [
+            0.00019568607260519614,
+            -0.08764715567557287
+          ]
+        ],
+        "translation_m": [
+          -287.9357823956286,
+          255.13230992410496
+        ],
+        "rotation_degrees": 179.87207836519372,
+        "intersection_over_union": 0.9921069445335582
+      },
+      "distinct_nonoverlapping_outline_matches": [
+        {
+          "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.9921069445335582,
+          "centroid_error_m": 0.0031154023463890513
+        }
+      ],
+      "nearby_subthreshold_comparisons": [
+        {
+          "candidate_id": "cbdeaea374fea3991f91c5b30112f7f94c684eb5a425b16ac9476d8c94a04675",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.2807279114828985,
+          "centroid_error_m": 4.005274929785343
+        },
+        {
+          "candidate_id": "4736fd865775de9d1a093add3fd0af327d3832acd9604d6f27306cbba5dec717",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.21473156395051493,
+          "centroid_error_m": 4.4802646735972
+        },
+        {
+          "candidate_id": "38f252d25e94e4f12fbae612e8acef8fd58f67f04c45dcd89259582529c65139",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.20474776001757541,
+          "centroid_error_m": 9.71696382855922
+        },
+        {
+          "candidate_id": "d3d39a542c9d66b60a48f273d75dcbc92c5cc615ce75b687045361bc3654d821",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.14661249270399476,
+          "centroid_error_m": 6.120066668119445
+        },
+        {
+          "candidate_id": "79d7b967d6135ce78a82c1f4560fab37527230efdabaad122564f8be9084c6d2",
+          "reference_id": "osm/way/107259804",
+          "reference_name": "",
+          "intersection_over_union": 0.14557693680426004,
+          "centroid_error_m": 3.692118640592658
+        },
+        {
+          "candidate_id": "789586241765167177b2bd8b55fec17a3f9fc7d509c9c13df880bceb149b9827",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.1411383112804896,
+          "centroid_error_m": 1.7310765005840894
+        },
+        {
+          "candidate_id": "a39ff7e0c3091a9bb03bbe6e13e5ef96403a7b41b5e7617edce2c3a19495b3c2",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.09420752606296351,
+          "centroid_error_m": 8.313522003345932
+        },
+        {
+          "candidate_id": "34f81231800c26cb120ee89ee0fc08c57afbbe324a093465366b104fdeb2ff1e",
+          "reference_id": "osm/way/70684310",
+          "reference_name": "",
+          "intersection_over_union": 0.07160175570656557,
+          "centroid_error_m": 9.427335480926377
+        },
+        {
+          "candidate_id": "da4b76a50cdfc30535d056b83c6a3cbfa0f30ce22fd34f470a77300510dcb953",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.0654765902623098,
+          "centroid_error_m": 1.3188486266295272
+        },
+        {
+          "candidate_id": "c7c5cdeacfd4dc47a8fcbfdaf72dfa7e51cb87aae37443c0da8df0665bc8b49c",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.06317788460141369,
+          "centroid_error_m": 5.327227273776307
+        },
+        {
+          "candidate_id": "522eb15ea339dddfeda1a9815037dfe7cac67803eaf355de6fb40cc80c2958b0",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.05814755001131411,
+          "centroid_error_m": 8.556329484689694
+        },
+        {
+          "candidate_id": "15f6d8d46291af8c2df112f11889e2adb2b58fd9ea5dbbf4a04f7b4127ebbb69",
+          "reference_id": "osm/way/113576007",
+          "reference_name": "Sharkbait Reef",
+          "intersection_over_union": 0.02996731910412479,
+          "centroid_error_m": 3.823640351198798
+        },
+        {
+          "candidate_id": "bdb865840d78e661486b3f31fdaf028ef69dc89987eb88a07cf3ddfc6695841b",
+          "reference_id": "osm/way/834919982",
+          "reference_name": "",
+          "intersection_over_union": 0.029233927889128233,
+          "centroid_error_m": 5.29231671446279
+        },
+        {
+          "candidate_id": "21ef711b5ac4c034366d57d16c7e303264b0770830495691cd09d6b917aa73e2",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.02867862194978491,
+          "centroid_error_m": 8.834809435534227
+        },
+        {
+          "candidate_id": "8dd5d85b75ac96232ef94ec7a848d7b9aa62f5b032bb05a3451db35110614a7f",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.027007023020660853,
+          "centroid_error_m": 9.935392706999934
+        },
+        {
+          "candidate_id": "a8991ac144ae5ca27fad374c56dbd5851544f29fbca2827361d4a7de4e64a177",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.024884356651210828,
+          "centroid_error_m": 8.501950396237874
+        },
+        {
+          "candidate_id": "652de395816fa412ad2dce8ca9ffa322f3214120ebd115923de3ae6e2b74967e",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.01940724391226866,
+          "centroid_error_m": 9.142397687008774
+        },
+        {
+          "candidate_id": "83752f9bc49888e7b1378a71cfcf8e1636fc9cc7cf905a721d1af2467ec5609d",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.01853756289219966,
+          "centroid_error_m": 9.061452011402901
+        },
+        {
+          "candidate_id": "12ffc50c1fc1d8c508e8cccf91ca953358999d5dc9d13377ed9dd97fc536279b",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.01383860695777477,
+          "centroid_error_m": 3.1943168271318267
+        },
+        {
+          "candidate_id": "18e148db94c8c14573b5c904b9c2b5b7caf36cb7b48ec5696377e9edf6505276",
+          "reference_id": "osm/way/107259804",
+          "reference_name": "",
+          "intersection_over_union": 0.009678151611081064,
+          "centroid_error_m": 7.122590269905181
+        }
+      ]
+    },
+    {
+      "fit": {
+        "matrix": [
+          [
+            -0.08772894644265733,
+            0.00013972899241857125
+          ],
+          [
+            -0.00013972899241857125,
+            -0.08772894644265733
+          ]
+        ],
+        "translation_m": [
+          -288.28812015672014,
+          255.57300861870917
+        ],
+        "rotation_degrees": -179.90874306490556,
+        "intersection_over_union": 0.9917694712413518
+      },
+      "distinct_nonoverlapping_outline_matches": [
+        {
+          "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.9917694712413518,
+          "centroid_error_m": 0.0011320113736848997
+        }
+      ],
+      "nearby_subthreshold_comparisons": [
+        {
+          "candidate_id": "cbdeaea374fea3991f91c5b30112f7f94c684eb5a425b16ac9476d8c94a04675",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.2794981493689411,
+          "centroid_error_m": 4.017939900428801
+        },
+        {
+          "candidate_id": "4736fd865775de9d1a093add3fd0af327d3832acd9604d6f27306cbba5dec717",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.20838618640312687,
+          "centroid_error_m": 4.538971546341069
+        },
+        {
+          "candidate_id": "d3d39a542c9d66b60a48f273d75dcbc92c5cc615ce75b687045361bc3654d821",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.14826736766010348,
+          "centroid_error_m": 5.9801692915661375
+        },
+        {
+          "candidate_id": "79d7b967d6135ce78a82c1f4560fab37527230efdabaad122564f8be9084c6d2",
+          "reference_id": "osm/way/107259804",
+          "reference_name": "",
+          "intersection_over_union": 0.14548288246034505,
+          "centroid_error_m": 3.827012105614284
+        },
+        {
+          "candidate_id": "789586241765167177b2bd8b55fec17a3f9fc7d509c9c13df880bceb149b9827",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.1414015035689958,
+          "centroid_error_m": 1.921577064937297
+        },
+        {
+          "candidate_id": "a39ff7e0c3091a9bb03bbe6e13e5ef96403a7b41b5e7617edce2c3a19495b3c2",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.09161278011107674,
+          "centroid_error_m": 8.812051290260593
+        },
+        {
+          "candidate_id": "34f81231800c26cb120ee89ee0fc08c57afbbe324a093465366b104fdeb2ff1e",
+          "reference_id": "osm/way/70684310",
+          "reference_name": "",
+          "intersection_over_union": 0.07173527742561216,
+          "centroid_error_m": 9.866726505105564
+        },
+        {
+          "candidate_id": "da4b76a50cdfc30535d056b83c6a3cbfa0f30ce22fd34f470a77300510dcb953",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.06559868987848361,
+          "centroid_error_m": 1.3217927628528132
+        },
+        {
+          "candidate_id": "c7c5cdeacfd4dc47a8fcbfdaf72dfa7e51cb87aae37443c0da8df0665bc8b49c",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.05667470816902448,
+          "centroid_error_m": 5.844371996285595
+        },
+        {
+          "candidate_id": "522eb15ea339dddfeda1a9815037dfe7cac67803eaf355de6fb40cc80c2958b0",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.054206848521266796,
+          "centroid_error_m": 8.621670279868733
+        },
+        {
+          "candidate_id": "b19f3e3e528051d72cda9b4de021c04b40d6f1c2859ef05bbacc8ab4a44f1da9",
+          "reference_id": "osm/way/107259804",
+          "reference_name": "",
+          "intersection_over_union": 0.03582543849001981,
+          "centroid_error_m": 9.866192142422825
+        },
+        {
+          "candidate_id": "21ef711b5ac4c034366d57d16c7e303264b0770830495691cd09d6b917aa73e2",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.03304637963833208,
+          "centroid_error_m": 8.727637467196148
+        },
+        {
+          "candidate_id": "15f6d8d46291af8c2df112f11889e2adb2b58fd9ea5dbbf4a04f7b4127ebbb69",
+          "reference_id": "osm/way/113576007",
+          "reference_name": "Sharkbait Reef",
+          "intersection_over_union": 0.03002509064529344,
+          "centroid_error_m": 3.6053264841579837
+        },
+        {
+          "candidate_id": "bdb865840d78e661486b3f31fdaf028ef69dc89987eb88a07cf3ddfc6695841b",
+          "reference_id": "osm/way/834919982",
+          "reference_name": "",
+          "intersection_over_union": 0.02907529887447859,
+          "centroid_error_m": 5.310703034999816
+        },
+        {
+          "candidate_id": "8dd5d85b75ac96232ef94ec7a848d7b9aa62f5b032bb05a3451db35110614a7f",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.02719478988763755,
+          "centroid_error_m": 9.738243344975087
+        },
+        {
+          "candidate_id": "a8991ac144ae5ca27fad374c56dbd5851544f29fbca2827361d4a7de4e64a177",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.021541649305379145,
+          "centroid_error_m": 8.561924535468146
+        },
+        {
+          "candidate_id": "83752f9bc49888e7b1378a71cfcf8e1636fc9cc7cf905a721d1af2467ec5609d",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.02133554876596095,
+          "centroid_error_m": 8.855500416579083
+        },
+        {
+          "candidate_id": "652de395816fa412ad2dce8ca9ffa322f3214120ebd115923de3ae6e2b74967e",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.017832428114283254,
+          "centroid_error_m": 9.19434387597334
+        },
+        {
+          "candidate_id": "12ffc50c1fc1d8c508e8cccf91ca953358999d5dc9d13377ed9dd97fc536279b",
+          "reference_id": "osm/way/70684260",
+          "reference_name": "",
+          "intersection_over_union": 0.011947444229130544,
+          "centroid_error_m": 3.7357554345087918
+        },
+        {
+          "candidate_id": "b61c86bff14c0d760b2597cfd122f6e82f9fcfb8eed4dd3e877cbbbab27bf459",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.009120969526444688,
+          "centroid_error_m": 7.5556651164877415
+        }
+      ]
+    },
+    {
+      "fit": {
+        "matrix": [
+          [
+            0.0877289464248375,
+            -0.0001397289559998505
+          ],
+          [
+            0.0001397289559998505,
+            0.0877289464248375
+          ]
+        ],
+        "translation_m": [
+          -463.6356333260045,
+          30.261579817990423
+        ],
+        "rotation_degrees": 0.09125691132796539,
+        "intersection_over_union": 0.9917692948808947
+      },
+      "distinct_nonoverlapping_outline_matches": [
+        {
+          "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.9917692948808947,
+          "centroid_error_m": 0.0011335989250693156
+        },
+        {
+          "candidate_id": "c9dd868808f29e5ebe0064254d4fcbc52517137914abebd134bc9db71cb82670",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.7861483647576006,
+          "centroid_error_m": 0.8090207686689711
+        }
+      ],
+      "nearby_subthreshold_comparisons": [
+        {
+          "candidate_id": "621aa3badacdffba35448afc0ec1776ae238bf41b812febd46d871ea865afeed",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.5996887448863086,
+          "centroid_error_m": 0.777940572331662
+        },
+        {
+          "candidate_id": "de6cbe692f9b518cee0168516d655c803ac425302b307a62db1f46918ace17f7",
+          "reference_id": "osm/way/107259863",
+          "reference_name": "FastTrack",
+          "intersection_over_union": 0.541435377246429,
+          "centroid_error_m": 1.469812240363765
+        },
+        {
+          "candidate_id": "e0944246568ed3476039dc4cedd0ffa09ed8e430b457a714b6e56d0e1b59b94f",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.2772232282457228,
+          "centroid_error_m": 1.4079752445308422
+        },
+        {
+          "candidate_id": "45bf7ea564bbd8897afd807a68078cff6ee673170e3f314c4c3196be662b908c",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.20893027717354049,
+          "centroid_error_m": 1.6733172362701725
+        },
+        {
+          "candidate_id": "0d9b9c1cc9b5d9a1c22590412692aaa9adab374c31003577e5799a0cf0620405",
+          "reference_id": "osm/way/107259863",
+          "reference_name": "FastTrack",
+          "intersection_over_union": 0.13446259338050623,
+          "centroid_error_m": 0.2479507492879824
+        },
+        {
+          "candidate_id": "da4b76a50cdfc30535d056b83c6a3cbfa0f30ce22fd34f470a77300510dcb953",
+          "reference_id": "osm/way/834919978",
+          "reference_name": "Wicker Man Shop",
+          "intersection_over_union": 0.06559868985174767,
+          "centroid_error_m": 1.321795704186643
+        },
+        {
+          "candidate_id": "0fbee24c3189ff4814e14e1bd8b27267bbd6a5ec0ad4dd121dea465abaf65913",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.01627261785669294,
+          "centroid_error_m": 2.617224912205152
+        },
+        {
+          "candidate_id": "db73ada501870ffb19d57ad8a7a4119371ef053971d975bcf416869fc6790560",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.011891091814716852,
+          "centroid_error_m": 7.216492062478225
+        },
+        {
+          "candidate_id": "7fd5a75edd5f1c98a443ae06b58b1784c76fe6bd9af7ca53bf3f32bc1401fee8",
+          "reference_id": "osm/way/70689598",
+          "reference_name": "",
+          "intersection_over_union": 0.01176353928691017,
+          "centroid_error_m": 7.606076847128355
+        },
+        {
+          "candidate_id": "445514d793c9e3f12a1d41d9e9ac6aa09171b9cefd81fa0017477a291de64fba",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.002095515258609228,
+          "centroid_error_m": 4.932426251705877
+        },
+        {
+          "candidate_id": "98f059a1e188ff39f1bef43cfd85a824a6740a10f8c8d334a804c81558522e64",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0017430666029924456,
+          "centroid_error_m": 1.2988093841599826
+        },
+        {
+          "candidate_id": "1e873053e150795ca0e3430922e1f2988d149d2a93047f7f8758a7271093306a",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.001332542288928433,
+          "centroid_error_m": 7.3208379000062
+        },
+        {
+          "candidate_id": "f14e8f12728c544d1ebcdcb7dd746d43a7a452669827bf82d227986e969db20d",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0012941333869292537,
+          "centroid_error_m": 1.7828767865869122
+        },
+        {
+          "candidate_id": "5337f5899b928fa059ce1c2472ced3540a91cf966884af4ab63aeeb71e8d877c",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0008872551415147929,
+          "centroid_error_m": 2.3362952096776266
+        },
+        {
+          "candidate_id": "812a548874de955836b8dadba1a2b40c4cc0784ad74fed52e75f8b7ec4916394",
+          "reference_id": "osm/way/113576010",
+          "reference_name": "Eastern Express",
+          "intersection_over_union": 0.0008336389256240294,
+          "centroid_error_m": 9.387001001999357
+        },
+        {
+          "candidate_id": "25811d741a351c5bee4fecab89fb4cdc5f123920e70e209bf965814a39f7006b",
+          "reference_id": "osm/way/106842136",
+          "reference_name": "",
+          "intersection_over_union": 0.0007266492336745975,
+          "centroid_error_m": 2.995007811971623
+        },
+        {
+          "candidate_id": "89a4dd86470d1d6b6706415d302a3516c9a8d301360a486bb4745117346e7786",
+          "reference_id": "osm/way/107026720",
+          "reference_name": "",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 8.404159194812964
+        },
+        {
+          "candidate_id": "7776481d3cbfa3de72bd980dd5b925f1be7ef98ac254d70c0c35ff8e370b81bf",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 8.882302474867549
+        },
+        {
+          "candidate_id": "588ded2895113adc68b088517ed80e9c92a0164a7f848f14b891b28fa37eae35",
+          "reference_id": "osm/way/70689495",
+          "reference_name": "",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 9.916698416758537
+        },
+        {
+          "candidate_id": "fcece7284c75ad4603ab8104afd182ebf39fba8a78cedefd0286ca042d7c67e7",
+          "reference_id": "osm/way/70689589",
+          "reference_name": "The Burger Kitchen",
+          "intersection_over_union": 0.0,
+          "centroid_error_m": 9.219785131369076
+        }
+      ]
+    }
+  ],
+  "registration_verified": false,
+  "physical_identity_verified": false,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Explicit correspondence is a review hypothesis, not physical identity proof",
+    "Multiple corners of one object are not independent controls",
+    "Mapped outline comparison is not independent checkpoint evidence",
+    "No placement is accepted or exported by this diagnostic"
+  ],
+  "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "page": 1,
+  "candidate_feed_sha256": "f336e5e5cdbc9e7b72314fb2f6262b98287734775f0b133144f803aa0dd2a9e1",
+  "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+  "reference_crs": "EPSG:4326",
+  "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+  "rejected_references": 0,
+  "checked_polygon_objects": 630
+}

@@ -1,0 +1,102 @@
+{
+  "status": "unplaced_native_annotation_evidence",
+  "contract": {
+    "version": "native-annotation-evidence-v1",
+    "documents_sha256": "036ca1aa3c1b5b33ce056546836565b77ccaa1fa866dda1c8a72982940e4e336",
+    "pdf_sha256": [
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299"
+    ],
+    "max_pages": 10000
+  },
+  "documents": 4,
+  "pages": [
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "page": 1,
+      "rotation_degrees": 90,
+      "mediabox_page_points": [
+        0.0,
+        0.0,
+        1684.0,
+        2384.0
+      ],
+      "coordinate_basis": "MuPDF unrotated page points; not metres or the park grid",
+      "native_text_spans": 60,
+      "annotation_records": 24
+    },
+    {
+      "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "page": 1,
+      "rotation_degrees": 90,
+      "mediabox_page_points": [
+        0.0,
+        0.0,
+        1684.0,
+        2384.0
+      ],
+      "coordinate_basis": "MuPDF unrotated page points; not metres or the park grid",
+      "native_text_spans": 94,
+      "annotation_records": 32
+    },
+    {
+      "document_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "page": 1,
+      "rotation_degrees": 0,
+      "mediabox_page_points": [
+        0.0,
+        0.0,
+        2384.0,
+        1684.0
+      ],
+      "coordinate_basis": "MuPDF unrotated page points; not metres or the park grid",
+      "native_text_spans": 234,
+      "annotation_records": 28
+    },
+    {
+      "document_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "page": 1,
+      "rotation_degrees": 0,
+      "mediabox_page_points": [
+        0.0,
+        0.0,
+        2384.0,
+        1684.0
+      ],
+      "coordinate_basis": "MuPDF unrotated page points; not metres or the park grid",
+      "native_text_spans": 364,
+      "annotation_records": 34
+    }
+  ],
+  "annotation_records": 118,
+  "claim_counts": {
+    "level": 13,
+    "untyped_numeric": 55,
+    "material_note": 10,
+    "view_label": 13,
+    "state_wording": 8,
+    "explicit_dimension": 18,
+    "slope_ratio": 1,
+    "area": 2
+  },
+  "visibility_counts": {
+    "no_detected_visibility_hazard": 105,
+    "withheld": 13
+  },
+  "numeric_level_comparisons": {
+    "consistent_candidate_values": 7,
+    "conflicting_candidate_values": 1
+  },
+  "annotations_sha256": "42b32e43391ac69144883950a4ed8f150355bf361824801d3bd674f9c88efe7f",
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Text and proximity candidates are not verified component dimensions or survey controls.",
+    "Paint overlap screening is conservative; absence of overlap does not certify visible text.",
+    "Page coordinates and level candidates have no verified horizontal registration or vertical datum.",
+    "Source revision/as-built status and material identity require evidence before feature promotion."
+  ]
+}

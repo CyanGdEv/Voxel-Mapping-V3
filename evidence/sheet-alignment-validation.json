@@ -1,0 +1,161 @@
+{
+  "version": "sheet-alignment-v1",
+  "synthetic_shared_transform": {
+    "status": "sheet_hypotheses_only",
+    "reason": null,
+    "hypotheses": [
+      {
+        "matrix": [
+          [
+            1.7820130483767327,
+            -0.9079809994790938
+          ],
+          [
+            0.9079809994790938,
+            1.7820130483767327
+          ]
+        ],
+        "translation_m": [
+          1000.0,
+          2000.0
+        ],
+        "scale_metres_per_pdf_point": 1.9999999999999973,
+        "centroid_rms_m": 3.8272692633207645e-13,
+        "supports": [
+          {
+            "candidate_id": "0",
+            "reference_id": "0",
+            "intersection_over_union": 0.9999999999999822,
+            "centroid_error_m": 2.5421149729252077e-13,
+            "identity_verified": false
+          },
+          {
+            "candidate_id": "1",
+            "reference_id": "1",
+            "intersection_over_union": 0.9999999999999877,
+            "centroid_error_m": 4.547473508864641e-13,
+            "identity_verified": false
+          },
+          {
+            "candidate_id": "2",
+            "reference_id": "2",
+            "intersection_over_union": 0.9999999999999665,
+            "centroid_error_m": 2.2737367544323206e-13,
+            "identity_verified": false
+          }
+        ],
+        "assignment_ambiguous": false
+      }
+    ],
+    "hypothesis_count": 1,
+    "pair_fit_attempts": 3,
+    "review_flags": [],
+    "registration_verified": false,
+    "independent_checkpoints": [],
+    "physical_identity_verified": false,
+    "world_geometry_additions": 0
+  },
+  "retained_named_lead_audit": {
+    "source_report_sha256": "602e920be582fcb057b8c54fe8850a17a146da0faf002e50aae23addbc9ae165",
+    "pages": {
+      "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd/1": [
+        {
+          "candidate_id": "7d972c8b5d1ad989ff96293b60cd5b215767a82db8b126c74c6becd28cc098e7",
+          "reference_ids": [
+            "osm/relation/4025117"
+          ],
+          "names": [
+            "The Boating Lake"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "651184f3ebb345468cb1f397f3d2231227220dd097875479f8b252173ca75e86/1": [
+        {
+          "candidate_id": "1f9ff306204a7290d3a699a3d828c91725d8b8559dd913f12e8cdafef3112dfb",
+          "reference_ids": [
+            "osm/way/534491175"
+          ],
+          "names": [
+            "Crooked Spoon"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        },
+        {
+          "candidate_id": "ef917ab1a42823903ff8a023589df5c2e318b3a1e2193203855cc948f9ab0560",
+          "reference_ids": [
+            "osm/way/70689578"
+          ],
+          "names": [
+            "Alton Towers Hotel"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477/1": [
+        {
+          "candidate_id": "54457a13217ca53bb027671c7cba2d8f086f209f8803349dbadecf428a1ee99e",
+          "reference_ids": [
+            "osm/relation/4025117"
+          ],
+          "names": [
+            "The Boating Lake"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f/1": [
+        {
+          "candidate_id": "3801772956ab63a50c5d7a33878cd61aa8f142f0036b4e79651adbdedb117307",
+          "reference_ids": [
+            "osm/relation/4025117"
+          ],
+          "names": [
+            "The Boating Lake"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "e9c32f6ab41c64263334b39ee10fddd11cb7fa5bb9dbb5c7c99f2670e229dca1/1": [
+        {
+          "candidate_id": "d3be944e7be7436ad70379c814398e7eb3374a1994ab8b58dd0c6dced79a1528",
+          "reference_ids": [
+            "osm/relation/4025117"
+          ],
+          "names": [
+            "The Boating Lake"
+          ],
+          "flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ]
+    },
+    "reason": "At most two named candidates on one page, both with shape disagreement; no accepted placement",
+    "full_corpus_replay": false
+  },
+  "validation": {
+    "new_tests": 10,
+    "new_tests_passed": 10,
+    "full_tests": 535,
+    "full_tests_passed": 535
+  },
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Synthetic PDF/geometry validation only; full Alton corpus not replayed",
+    "Mapped centroid/outline agreement is matching evidence, not independent survey registration",
+    "Current built state, reuse, measurements and materials still require existing promotion gates",
+    "Dense sheets select at most 64 objects and report deferred objects; exhausted pair searches remain flagged",
+    "No 2.5m-record benchmark for this stage and no new Minecraft package"
+  ]
+}

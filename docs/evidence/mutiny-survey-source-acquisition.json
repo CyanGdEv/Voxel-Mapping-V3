@@ -1,0 +1,127 @@
+{
+  "accepted_checkpoints": 0,
+  "accepted_controls": 0,
+  "distinct_original_pdfs": 3,
+  "initial_https_acquisition": {
+    "discovery_completeness": "Not implied by manifest completion",
+    "distinct_pdf_blobs": 0,
+    "document_links": 5,
+    "download_status": {
+      "failed": 5
+    },
+    "failed_urls": [
+      {
+        "attempts": 1,
+        "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120"
+      },
+      {
+        "attempts": 1,
+        "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+      },
+      {
+        "attempts": 1,
+        "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+      },
+      {
+        "attempts": 1,
+        "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384"
+      },
+      {
+        "attempts": 1,
+        "error": "502 Server Error: Bad Gateway for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+      }
+    ],
+    "geometry_status": "PDF vectors and labels require semantics, existing-state review and registration",
+    "inspected_pages": 0,
+    "run_network_bytes": 0,
+    "status": "partial_manifest",
+    "unique_urls": 5,
+    "world_geometry_additions": 0
+  },
+  "limitations": [
+    "Block/key plans are dated source evidence, not certified independent surveys.",
+    "These large vector plans exceed the current extraction path budget; no partial geometry is accepted.",
+    "No geographic registration or vertical datum is certified by acquiring these documents."
+  ],
+  "native_source_analysis": {
+    "anchor_counts": {
+      "anchor_candidates_only": 3,
+      "application_location_hints": 0,
+      "axis_hypotheses": 0,
+      "embedded_candidates": 0,
+      "explicit_mark_grid_candidates": 0,
+      "pages": 3,
+      "pages_with_axis_labels": 0
+    },
+    "native_candidates": 0,
+    "page_statuses": {
+      "path_budget_withheld": 3
+    },
+    "pages": 3,
+    "reference_count": 0,
+    "station_candidates": 0
+  },
+  "recovered_documents": [
+    {
+      "application_reference": "SMD/2013/0012",
+      "bytes": 3138162,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+      "pages": 1,
+      "prior_https_result": "HTTP 502",
+      "sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "status": "downloaded",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+    },
+    {
+      "application_reference": "SMD/2013/0013",
+      "bytes": 3138162,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384",
+      "pages": 1,
+      "prior_https_result": "HTTP 502",
+      "sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "status": "downloaded",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384"
+    },
+    {
+      "application_reference": "SMD/2013/0420",
+      "bytes": 3135297,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653",
+      "pages": 1,
+      "prior_https_result": "HTTP 502",
+      "sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "status": "downloaded",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+    },
+    {
+      "application_reference": "SMD/2013/0419",
+      "bytes": 3135297,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670",
+      "pages": 1,
+      "prior_https_result": "HTTP 502",
+      "sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "status": "downloaded",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+    },
+    {
+      "application_reference": "SMD/2013/0012",
+      "bytes": 3150514,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120",
+      "pages": 1,
+      "prior_https_result": "HTTP 502",
+      "sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "status": "downloaded",
+      "title": "amended plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120"
+    }
+  ],
+  "world_geometry_additions": 0
+}

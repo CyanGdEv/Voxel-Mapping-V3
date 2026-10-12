@@ -1,0 +1,73 @@
+{
+  "restored_original_cells": 823,
+  "native_paved_columns": 19172,
+  "normalized_top_slab_landings": 867,
+  "transition_count": 1738,
+  "transition_kinds": {
+    "slab": 1606,
+    "stairs": 73,
+    "landing_stair": 59
+  },
+  "material_counts": {
+    "air": 568,
+    "grass_block": 180,
+    "dirt": 46,
+    "stone_brick_slab": 721,
+    "stone_bricks": 12,
+    "cobblestone": 2,
+    "stone": 877,
+    "stone_slab": 885,
+    "stone_brick_stairs_north": 11,
+    "stone_stairs_east": 29,
+    "stone_brick_stairs_south": 16,
+    "stone_stairs_south": 10,
+    "stone_brick_stairs_west": 16,
+    "stone_stairs_west": 12,
+    "stone_stairs_north": 21,
+    "stone_brick_stairs_east": 17
+  },
+  "withheld": {},
+  "world_verification": {
+    "touched_chunks": 453,
+    "overlay_records": 3423,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "cd425178eafdbfbfb77a5ff135af0b994dec9bac218eb6d0d1ada7eb6e6e7b2a",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 1444
+  },
+  "limitations": [
+    "Transitions only change actual paved columns inside existing mapped/retained path footprints.",
+    "Original native elevations are retained; this inserts half-step transitions, not an engineering regrade.",
+    "Protected foliage, water, ride clearance and V16 barriers/walls are not modified.",
+    "Existing gaps and rises greater than one metre are not bridged without geometry evidence.",
+    "Four provisional planning stair traces are restored to V15 and replaced by smoothing mapped native paths."
+  ],
+  "spawn_minecraft_xyz": [
+    -399,
+    126,
+    97
+  ],
+  "world_sha256": "bd726ed32c376113e726531bc30794e836f1ba28ad3bd5b2a33e9a96ee4fd401",
+  "preservation_checks": {
+    "retained_wall_barrier_cells_checked": 1360,
+    "retained_wall_barrier_changes": [],
+    "transition_support_failures": [],
+    "off_path_transitions": [],
+    "overlay_cells_checked": 3423,
+    "overlay_mismatches": [],
+    "railing_base_columns_checked": 0,
+    "floating_railing_columns": [],
+    "floating_slope_columns": [],
+    "foliage_cells_checked": 808657,
+    "foliage_mismatches": [],
+    "water_and_bed_columns": 38930,
+    "water_and_bed_cells_scanned": 667654,
+    "water_or_bed_changes": [],
+    "ride_physical_cells_checked": 21703,
+    "ride_physical_changes": [],
+    "protected_rider_air_cells": 5019,
+    "rider_obstructions": []
+  },
+  "local_tests": 362
+}

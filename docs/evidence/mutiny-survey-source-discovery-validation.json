@@ -1,0 +1,29 @@
+{
+  "version": "survey-source-discovery-v1",
+  "page_contract": "7d32d4b0e85b27612ad1aaa5ca13c73f1b2e8b19e00ee856617cd78b4658ee99",
+  "inputs_sha256": "2cb7ec30f68291cf242dbba1ea7b54e20864d08596f88229b1197756ff7412ae",
+  "pages": 213,
+  "native_signal_counts": {
+    "coordinate_grid": 2
+  },
+  "priority_urls": [],
+  "unresolved_references": 0,
+  "deferred_documents": 0,
+  "errors": [],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "audit_date": "2026-10-12",
+  "unchanged_native_page_replay_identical": true,
+  "fresh_output_reused_pages": 213,
+  "candidate_count": 0,
+  "limitations": [
+    "Native text only: raster/OCR and font visibility remain separate investigations.",
+    "No lead is a verified control, checkpoint, source policy or accepted geographic frame.",
+    "Absence of survey leads in this retained area catalogue does not establish absence from other applications or the live portal."
+  ],
+  "validation": {
+    "focused_tests_passed": 27,
+    "full_regression_tests_passed": 1238
+  }
+}

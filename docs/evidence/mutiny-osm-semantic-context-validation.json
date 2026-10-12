@@ -1,0 +1,281 @@
+{
+  "alignment_output_sha256": {
+    "page-alignments.jsonl": "cc9cc3a6c701d4bdb20d548bf440f6933de7d375b4ff561f803227f7fc9e306f",
+    "provisional-overlay.geojson": "de449d0b1ac4b3fe75a36d5ebb58b16e86d24eadb506b413cdd7ce4abcf53b8c"
+  },
+  "alignment_reused_pages": 3,
+  "audit_date": "2026-10-12",
+  "fresh_output_semantic_reused_pages": 3,
+  "limitations": [
+    "The two usable-scale plans are revisions with the same support geometry, not independent physical observations.",
+    "All eight failed source boundary roles remain unresolved; map families do not provide independent source classifications.",
+    "The contained Congo River Rapids name retains its withheld-visibility status and cannot identify roof, building or ride boundaries.",
+    "Boundary checks and third-sheet scale visibility remain unresolved. No classifications filter matches, qualify components or supply training truth."
+  ],
+  "registration_verified": false,
+  "review_statuses": {
+    "source_boundary_role_unresolved": 8
+  },
+  "semantic_contract": {
+    "glyph_version": "source-font-glyph-raster-screen-v2",
+    "map_semantics_sha256": "6591dd394e59f9d709ebd550773040600860ec319ed0ad238bf4e4fdf62b22fd",
+    "page_facts": [
+      "d51e976600afb06671a613b8220014e488c2161231b51edd892d94558fc219c6",
+      "34419e50e5cf80328f9966910cd3499a748ac16fb88b2765d0940eef57731378",
+      "3d03bee18c13ae433de2e438ebb8a8ebb484666a99248a8f2a8c6b295dcd18b5"
+    ],
+    "renderer": "1.26.6",
+    "version": "osm-semantic-context-v1"
+  },
+  "semantic_output_sha256": {
+    "semantic-reviews.jsonl": "fb99f2bfcae4dea9fd15980819f224c8add2108e2e9db69c27640a464f93432f"
+  },
+  "semantic_pages": [
+    {
+      "deferred_label_screens": 0,
+      "deferred_pairs": 0,
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "failed_pairs": 4,
+      "geometry_replacements": 0,
+      "label_screens": 1,
+      "limitations": [
+        "Neither an OSM tag nor a contained annotation establishes physical boundary identity.",
+        "Names, polygon shape and paint colour do not supply a source feature type.",
+        "Role hints and conflicts are investigation evidence; they do not filter matches or train a model."
+      ],
+      "page": 1,
+      "registration_verified": false,
+      "review_statuses": {
+        "source_boundary_role_unresolved": 4
+      },
+      "reviewed_pairs": 4,
+      "reviews": [
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "049b5aae032d8b9a84fe43f45b7f5c553016d1643481a04016eeb8c8e22483e8",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "water",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "natural": "water"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70692563",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "7c0cc3f234944187dfec4b947bcf6ccc2f61031e74be22a1fff9b4407f35de4d",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "building": "yes"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689519",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "8cf91a1d5ccae5ecc6c0947bc2c9efc06a0efd7a3bf6d55d063b93b917a1a4c3",
+          "contained_named_annotation_clues": [
+            {
+              "name_is_not_a_boundary_type": true,
+              "original_association_status": "withheld_visibility",
+              "physical_identity_verified": false,
+              "text": "CONGO RIVER RAPIDS"
+            }
+          ],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "attraction": "river_rafting",
+              "building": "yes"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689498",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "97c878ec4acb260cca754a371ab02be772da21636a5b5fed24e179d0e759dc51",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "building": "yes",
+              "leisure": "amusement_arcade"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689644",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        }
+      ],
+      "status": "semantic_investigation_only",
+      "version": "osm-semantic-context-v1",
+      "world_geometry_additions": 0
+    },
+    {
+      "deferred_label_screens": 0,
+      "deferred_pairs": 0,
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "failed_pairs": 4,
+      "geometry_replacements": 0,
+      "label_screens": 1,
+      "limitations": [
+        "Neither an OSM tag nor a contained annotation establishes physical boundary identity.",
+        "Names, polygon shape and paint colour do not supply a source feature type.",
+        "Role hints and conflicts are investigation evidence; they do not filter matches or train a model."
+      ],
+      "page": 1,
+      "registration_verified": false,
+      "review_statuses": {
+        "source_boundary_role_unresolved": 4
+      },
+      "reviewed_pairs": 4,
+      "reviews": [
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "2f362bd9b31124505f582d22c4543f9889f8a823ce734213ab35bdb77f6faf88",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "water",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "natural": "water"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70692563",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "509503811aeeabe01c82fd76324594a997f4583c050c7c651e7a1426fda37aaf",
+          "contained_named_annotation_clues": [
+            {
+              "name_is_not_a_boundary_type": true,
+              "original_association_status": "withheld_visibility",
+              "physical_identity_verified": false,
+              "text": "CONGO RIVER RAPIDS"
+            }
+          ],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "attraction": "river_rafting",
+              "building": "yes"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689498",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "5369f89a1d679a9e8993c3f7703f05daf6a31e776358a748687de2b265d164fd",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "building": "yes"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689519",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        },
+        {
+          "boundary_identity_verified": false,
+          "candidate_id": "8ff289b94405a24d1a8e80b8c64e689d44b26db80965488be891c498c7ba0356",
+          "contained_named_annotation_clues": [],
+          "map_semantics": {
+            "boundary_identity_verified": false,
+            "boundary_role": "tagged_polygon_boundary_convention_unverified",
+            "family_hint": "building",
+            "physical_identity_verified": false,
+            "source_tags": {
+              "building": "yes",
+              "leisure": "amusement_arcade"
+            }
+          },
+          "physical_identity_verified": false,
+          "reference_id": "osm/way/70689644",
+          "registration_verified": false,
+          "source_annotation_hints": [],
+          "status": "source_boundary_role_unresolved"
+        }
+      ],
+      "status": "semantic_investigation_only",
+      "version": "osm-semantic-context-v1",
+      "world_geometry_additions": 0
+    },
+    {
+      "deferred_label_screens": 0,
+      "deferred_pairs": 0,
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "failed_pairs": 0,
+      "geometry_replacements": 0,
+      "label_screens": 0,
+      "limitations": [
+        "Neither an OSM tag nor a contained annotation establishes physical boundary identity.",
+        "Names, polygon shape and paint colour do not supply a source feature type.",
+        "Role hints and conflicts are investigation evidence; they do not filter matches or train a model."
+      ],
+      "page": 1,
+      "registration_verified": false,
+      "review_statuses": {},
+      "reviewed_pairs": 0,
+      "reviews": [],
+      "status": "semantic_investigation_only",
+      "version": "osm-semantic-context-v1",
+      "world_geometry_additions": 0
+    }
+  ],
+  "unchanged_alignment_outputs": true,
+  "unchanged_semantic_replay": true,
+  "validation": {
+    "focused_tests_passed": 31,
+    "full_regression_tests_passed": 1286
+  },
+  "world_geometry_additions": 0
+}

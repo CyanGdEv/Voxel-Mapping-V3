@@ -1,0 +1,26 @@
+{
+  "url": "https://environment.data.gov.uk/KB6uNVj5ZcJr7jUP/ArcGIS/rest/services/Vertical_Aerial_Photography_Catalogues/FeatureServer/0/query",
+  "parameters": {
+    "f": "json",
+    "geometry": "407000,343000,408000,344000",
+    "geometryType": "esriGeometryEnvelope",
+    "inSR": "27700",
+    "spatialRel": "esriSpatialRelIntersects",
+    "outFields": "*",
+    "returnGeometry": "false"
+  },
+  "response": {
+    "objectIdFieldName": "objectid",
+    "uniqueIdField": {
+      "name": "objectid",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryProperties": {
+      "shapeAreaFieldName": "Shape__Area",
+      "shapeLengthFieldName": "Shape__Length",
+      "units": "esriMeters"
+    },
+    "features": []
+  }
+}

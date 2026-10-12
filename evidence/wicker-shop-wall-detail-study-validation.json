@@ -1,0 +1,1341 @@
+{
+  "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+  "package_sha256": "aeaf3c0c8f53f49ee8171190fc8073db3d48aaf2d3caed92a9ec374cd35ad904",
+  "reports": [
+    {
+      "version": "shop-local-wall-detail-v5",
+      "voxel_size_m": 1,
+      "model_blocks_per_source_metre": 1,
+      "crs": null,
+      "vertical_datum": "STUDY_ZERO",
+      "geographic_placement": "withheld",
+      "park_world_blocks_added": 0,
+      "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "source_assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+      "source_unresolved": [
+        "cross-view canopy front-height discrepancy",
+        "roof/wall centring and 180-degree source correspondence",
+        "side fascia, wall thickness and construction details",
+        "cladding/bunding geometry",
+        "as-built identity and floor datum",
+        "independent geographic registration"
+      ],
+      "model_watertight": false,
+      "wall_thickness_metres": null,
+      "wall_cells": null,
+      "roof_cells": null,
+      "wall_roof_alias_cells": null,
+      "surface_cells": 640,
+      "platform_cells": 576,
+      "wall_sampling": {
+        "per_triangle_surface_samples": [
+          6,
+          6,
+          6,
+          3,
+          27,
+          21,
+          3,
+          6,
+          6,
+          3,
+          23,
+          19,
+          2,
+          1,
+          5,
+          0,
+          5,
+          1,
+          0,
+          1,
+          26,
+          26
+        ],
+        "projection_sample_probes": 536,
+        "triangles_without_centroid_sample": 2
+      },
+      "roof_sampling": {
+        "per_triangle_surface_samples": [
+          45,
+          51,
+          51,
+          45
+        ],
+        "projection_sample_probes": 504,
+        "triangles_without_centroid_sample": 0
+      },
+      "spawn_local_xyz_m": [
+        0,
+        2,
+        -10
+      ],
+      "opening_centre_sample_audit": [
+        {
+          "id": "opening-NE",
+          "sample_column_local_xz": [
+            -8,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "opening-SW",
+          "sample_column_local_xz": [
+            7,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "door-NW",
+          "sample_column_local_xz": [
+            -7,
+            -6
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        }
+      ],
+      "surface_raster_rule": "dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces",
+      "display_palette_only": {
+        "walls": "spruce_planks",
+        "roof": "dark_oak_planks"
+      },
+      "sources": [
+        {
+          "id": "reviewed-proposed-model",
+          "url": "local://wicker-shop-wall-model",
+          "license": "source-linked proposed drawing study",
+          "attribution": "2967-21/26/48; local manual traces and provisional sheet-layout normalization"
+        }
+      ],
+      "limitations": [
+        "Isolated proposed-drawing study, not a placed or as-built park building.",
+        "Roof/wall centring and 180-degree correspondence remain assembly hypotheses.",
+        "Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.",
+        "One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.",
+        "This surface model is not watertight; no shell-completeness or in-game movement claim is made.",
+        "The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden.",
+        "Estimated wall-to-roof joins close sampled columns only; construction thickness and full shell completeness remain unresolved.",
+        "Canopy/front fascia use the retained NE-height hypothesis; side fascia and cross-view height discrepancy remain unresolved.",
+        "Boundary and roof-riser closure is an estimated voxel display; six-neighbour air closure does not establish real construction thickness or water tightness.",
+        "Half-metre samples select native top/bottom slabs at 1:1. Display shapes and two-block door clearance are quantized estimates.",
+        "Fence timber strips and trapdoor panels are user-requested decorative estimates; spacing and construction identity are not source-verified."
+      ],
+      "review_mode": "1to1-slabs-fences-trapdoors",
+      "estimated_join_audit": null,
+      "projection_cells": null,
+      "projection_sampling": {
+        "per_triangle_surface_samples": [
+          3,
+          3,
+          5,
+          1
+        ],
+        "projection_sample_probes": 56,
+        "triangles_without_centroid_sample": 0
+      },
+      "boundary_closure_audit": {
+        "status": "estimated voxel closure, not measured construction",
+        "wall_boundary_columns": 52,
+        "opening_columns": 12,
+        "added_wall_cells": 28,
+        "removed_opening_cells": 0,
+        "added_roof_riser_cells": 64,
+        "door_air_verified": true,
+        "leak_audit": {
+          "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+          "interior_probe_local_xyz": [
+            0,
+            1,
+            0
+          ],
+          "interior_reached_from_exterior": false,
+          "interior_air_cells_checked": 532,
+          "reachable_interior_air_cells": 0,
+          "probe_is_air": true,
+          "visited_air_cells": 1728,
+          "bounded_volume_cells": 2880,
+          "physical_watertightness_verified": false
+        }
+      },
+      "slab_shape_audit": {
+        "sampling_metres": 0.5,
+        "world_blocks_per_source_metre": 1,
+        "rule": "roof half-cell occupancy selects top/bottom slabs; mixed halves and wall aliases use full blocks",
+        "material_counts": {
+          "dark_oak_planks": 148,
+          "dark_oak_slab": 151,
+          "dark_oak_slab_top": 111,
+          "spruce_planks": 168
+        },
+        "source_half_cell_closure": {
+          "status": "estimated voxel closure, not measured construction",
+          "wall_boundary_columns": 108,
+          "opening_columns": 22,
+          "added_wall_cells": 20,
+          "removed_opening_cells": 0,
+          "added_roof_riser_cells": 476,
+          "door_air_verified": true,
+          "leak_audit": {
+            "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+            "interior_probe_local_xyz": [
+              0,
+              1,
+              0
+            ],
+            "interior_reached_from_exterior": false,
+            "interior_air_cells_checked": 6000,
+            "reachable_interior_air_cells": 0,
+            "probe_is_air": true,
+            "visited_air_cells": 10468,
+            "bounded_volume_cells": 19380,
+            "physical_watertightness_verified": false
+          }
+        },
+        "native_shape_leak_audit": {
+          "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+          "interior_probe_local_xyz": [
+            0,
+            1,
+            0
+          ],
+          "interior_reached_from_exterior": false,
+          "interior_air_cells_checked": 5040,
+          "reachable_interior_air_cells": 0,
+          "probe_is_air": true,
+          "visited_air_cells": 12448,
+          "bounded_volume_cells": 21760,
+          "physical_watertightness_verified": false
+        },
+        "door_air_verified": true,
+        "projection_half_cells": 36,
+        "fence_policy": "reserve fences for source-supported posts or rails; no post dimensions recovered for this canopy",
+        "brown_palette": "dark oak and spruce remain illustrative; unspecified brown cushion block not substituted"
+      },
+      "wall_detail_audit": {
+        "status": "user-requested illustrative wall detail",
+        "source_geometry_modified": false,
+        "post_spacing_blocks": 3,
+        "material_counts": {
+          "dark_oak_fence": 39,
+          "spruce_trapdoor_east": 2,
+          "spruce_trapdoor_north": 9,
+          "spruce_trapdoor_south": 9,
+          "spruce_trapdoor_west": 3
+        },
+        "placements": [
+          {
+            "local_xyz": [
+              -9,
+              0,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              0,
+              -5
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -9,
+              1,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              1,
+              -5
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -9,
+              2,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              2,
+              -5
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -9,
+              1,
+              -4
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              1,
+              -4
+            ],
+            "edge": 0,
+            "material": "spruce_trapdoor_west"
+          },
+          {
+            "local_xyz": [
+              -9,
+              1,
+              -3
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              1,
+              -3
+            ],
+            "edge": 0,
+            "material": "spruce_trapdoor_west"
+          },
+          {
+            "local_xyz": [
+              -9,
+              1,
+              3
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              1,
+              3
+            ],
+            "edge": 0,
+            "material": "spruce_trapdoor_west"
+          },
+          {
+            "local_xyz": [
+              -9,
+              0,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              0,
+              4
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -9,
+              1,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              1,
+              4
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -9,
+              2,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              -8,
+              2,
+              4
+            ],
+            "edge": 0,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -7,
+              0,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -7,
+              0,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -7,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -7,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -7,
+              2,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -7,
+              2,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -6,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -6,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              -5,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -5,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              -4,
+              0,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              0,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -4,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -4,
+              2,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              2,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -3,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -3,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              -2,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -2,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              -1,
+              0,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              0,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -1,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -1,
+              2,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              2,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              0,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              0,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              1,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              1,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              2,
+              0,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              0,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              2,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              2,
+              2,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              2,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              3,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              3,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              4,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              4,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              5,
+              0,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              0,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              5,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              5,
+              2,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              2,
+              5
+            ],
+            "edge": 1,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              6,
+              1,
+              6
+            ],
+            "wall_anchor_local_xyz": [
+              6,
+              1,
+              5
+            ],
+            "edge": 1,
+            "material": "spruce_trapdoor_south"
+          },
+          {
+            "local_xyz": [
+              8,
+              0,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              0,
+              -5
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              8,
+              1,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              1,
+              -5
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              8,
+              2,
+              -5
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              2,
+              -5
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              8,
+              1,
+              -4
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              1,
+              -4
+            ],
+            "edge": 2,
+            "material": "spruce_trapdoor_east"
+          },
+          {
+            "local_xyz": [
+              8,
+              1,
+              3
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              1,
+              3
+            ],
+            "edge": 2,
+            "material": "spruce_trapdoor_east"
+          },
+          {
+            "local_xyz": [
+              8,
+              0,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              0,
+              4
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              8,
+              1,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              1,
+              4
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              8,
+              2,
+              4
+            ],
+            "wall_anchor_local_xyz": [
+              7,
+              2,
+              4
+            ],
+            "edge": 2,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -6,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -6,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              -5,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -5,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              -4,
+              0,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              0,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -4,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -4,
+              2,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -4,
+              2,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -3,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -3,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              -2,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -2,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              -1,
+              0,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              0,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -1,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              -1,
+              2,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              -1,
+              2,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              0,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              0,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              1,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              1,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              2,
+              0,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              0,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              2,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              2,
+              2,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              2,
+              2,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              3,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              3,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              4,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              4,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          },
+          {
+            "local_xyz": [
+              5,
+              0,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              0,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              5,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              5,
+              2,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              5,
+              2,
+              -6
+            ],
+            "edge": 3,
+            "material": "dark_oak_fence"
+          },
+          {
+            "local_xyz": [
+              6,
+              1,
+              -7
+            ],
+            "wall_anchor_local_xyz": [
+              6,
+              1,
+              -6
+            ],
+            "edge": 3,
+            "material": "spruce_trapdoor_north"
+          }
+        ],
+        "door_policy": "only anchored to existing solid wall cells at both foot and head; no doorway facade columns decorated",
+        "dimensions_source_verified": false
+      },
+      "projection_review": {
+        "source_frames": {
+          "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462"
+          },
+          "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047": {
+            "matrix": [
+              0.0,
+              1.2627118825912476,
+              1.2623687982559204,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "render_size_pixels": [
+              1888,
+              1334
+            ],
+            "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70"
+          }
+        },
+        "elevation_traces": {
+          "NE": {
+            "manual_points_pixels": {
+              "rear": [
+                1140,
+                818
+              ],
+              "front-top": [
+                1140,
+                831
+              ],
+              "front-bottom": [
+                1140,
+                837
+              ],
+              "floor": [
+                1374,
+                893
+              ]
+            },
+            "native_points": {
+              "rear": [
+                1032.61767578125,
+                1439.4915771484375
+              ],
+              "front-top": [
+                1049.0284423828125,
+                1439.4915771484375
+              ],
+              "front-bottom": [
+                1056.6026611328125,
+                1439.4915771484375
+              ],
+              "floor": [
+                1127.2952880859375,
+                1734.9661865234375
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.340017445385456,
+              "front-top": 2.7610810881853105,
+              "front-bottom": 2.493879692554474
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          },
+          "SE": {
+            "manual_points_pixels": {
+              "rear": [
+                642,
+                334
+              ],
+              "front-top": [
+                676,
+                352
+              ],
+              "front-bottom": [
+                676,
+                358
+              ],
+              "floor": [
+                119,
+                407
+              ]
+            },
+            "native_points": {
+              "rear": [
+                421.63116455078125,
+                810.6610107421875
+              ],
+              "front-top": [
+                444.35382080078125,
+                853.59326171875
+              ],
+              "front-bottom": [
+                451.92803955078125,
+                853.59326171875
+              ],
+              "floor": [
+                513.7841186523438,
+                150.26271057128906
+              ]
+            },
+            "heights_above_drawn_floor_metres": {
+              "rear": 3.2509503135085107,
+              "front-top": 2.449346126616001,
+              "front-bottom": 2.1821447309851645
+            },
+            "endpoint_sampling_bound_pixels": 2,
+            "two_endpoint_height_sampling_bound_metres": 0.178134263753891
+          }
+        },
+        "roof_plan_points_pixels": [
+          [
+            522,
+            654
+          ],
+          [
+            615,
+            749
+          ],
+          [
+            631,
+            733
+          ],
+          [
+            538,
+            638
+          ]
+        ],
+        "roof_plan_local_points": [
+          [
+            -8.4743206220282,
+            -2.5748128656523015
+          ],
+          [
+            -8.424049110322628,
+            3.346213590895754
+          ],
+          [
+            -9.431862703727043,
+            3.344322853380319
+          ],
+          [
+            -9.482134215432616,
+            -2.5767036031677364
+          ]
+        ],
+        "height_choice": "NE front and rear roof/fascia edges; preserves NE entrance-head relationship. SE differences retained, not averaged.",
+        "front_height_NE_minus_SE_metres": 0.31173496156930947,
+        "combined_two_view_sampling_bound_metres": 0.356268527507782,
+        "fascia_height_metres": 0.26720139563083656,
+        "wall_to_front_depth_metres": 1.5485417947840912,
+        "width_metres": 5.921026456548056,
+        "slope_degrees": 20.49871139766755,
+        "attachment_hypothesis": "rear plane at NE wall, front plan edge retained; rear attachment hidden under main-roof overhang",
+        "physical_identity_verified": false
+      },
+      "base_full_block_counts": {
+        "wall_cells": 212,
+        "roof_cells": 256,
+        "wall_roof_alias_cells": 12,
+        "projection_cells": 12
+      },
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 1,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "spawn": [
+          0,
+          67,
+          10
+        ],
+        "chunks": 4,
+        "composed_blocks": 3520,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "a732b7cca9a1fcd91efd4e7d195809f95fe309582f9beac7c78baadde1349394",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      }
+    }
+  ],
+  "geographic_placement": "withheld",
+  "park_world_blocks_added": 0,
+  "export_scope": "isolated 1:1 slabs, fences and trapdoor decorative review"
+}

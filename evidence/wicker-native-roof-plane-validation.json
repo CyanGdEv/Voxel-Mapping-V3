@@ -1,0 +1,15 @@
+{
+  "byte_identical_native_plane_replay": true,
+  "byte_identical_correspondence_replay": true,
+  "source_return_partitions_checked": 3,
+  "native_patch_membership_and_support_checked": 21,
+  "intersection_equations_checked": 15,
+  "residuals_reproduced_from_native_returns": true,
+  "focused_tests_passed": 20,
+  "placement_gate_unchanged": true,
+  "output_sha256": {
+    "evidence/wicker-native-roof-planes.json": "8a03d6045703dfd0b0a2b3d3022eaf74bc858453365ffc6a03926b2c57335a48",
+    "evidence/wicker-roof-plane-correspondence.json": "82a7601332310a302e34a3991467ffa2bd3baab2f205da1d365316d7bb2835d0",
+    "docs/wicker-native-roof-planes.svg": "0ccad99492b2e494d5e155021a338fb11a02715d4eb7cca8cf35466e2bed8e6c"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-10",
+  "status": "real_source_annotation_extraction_passed; placement_withheld",
+  "documents_checked": 4,
+  "hash_pinned_original_bytes": true,
+  "native_annotation_records": 118,
+  "visibility_withheld_records": 13,
+  "numeric_level_conflicts": 1,
+  "tests": [
+    "native units and bounded slope parsing",
+    "rotated level conflict retained without feature promotion",
+    "ambiguous adjacency does not select nearest",
+    "invisible/layered/overpainted text withheld",
+    "batch hash and cache corruption rejection",
+    "park job annotations do not become a geometry feed",
+    "collinear native fragment joining and baseline rejection",
+    "existing registration and synthetic native cycle bridge regression"
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "remaining": [
+    "verified component associations",
+    "independent registration controls and checkpoints",
+    "verified vertical datum",
+    "verified source state and actual materials"
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "input_sha256": {
+    "evidence/wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "evidence/wicker-shop-local-roof.json": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137"
+  },
+  "coordinate_frame": "local metres, x long axis, y short axis, z above drawn floor",
+  "assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+  "source_plan_to_preview": {
+    "centre": [
+      9.762027572382829,
+      -1.4198984950726623
+    ],
+    "long_axis": [
+      0.7043150148279685,
+      -0.7098875684838258
+    ],
+    "short_axis": [
+      0.7098875684838258,
+      0.7043150148279685
+    ]
+  },
+  "roof_mesh": {
+    "coordinate_frame": "local metres: x long axis, y transverse, z above drawn shop floor",
+    "vertices": [
+      [
+        -8.44140431177285,
+        -6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        8.44140431177285,
+        -6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        -8.44140431177285,
+        0,
+        7.214437682032585
+      ],
+      [
+        8.44140431177285,
+        0,
+        7.214437682032585
+      ],
+      [
+        -8.44140431177285,
+        6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        8.44140431177285,
+        6.414576363563537,
+        3.5181517091393473
+      ]
+    ],
+    "triangles": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        3,
+        2
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        4
+      ]
+    ],
+    "scope": "main roof surface only; excludes fascia, projections, neighbouring roofs, walls and entrances",
+    "registration": null,
+    "source_state": "proposed",
+    "world_placement_eligible": false
+  },
+  "wall_base_segments": [
+    {
+      "edge": 0,
+      "start": [
+        -7.883510884554826,
+        -5.929886187219599,
+        0
+      ],
+      "end": [
+        -7.899266110097253,
+        -2.1901872191661416,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 0,
+      "start": [
+        -7.920273089242084,
+        2.796080861750226,
+        0
+      ],
+      "end": [
+        -7.93340244503665,
+        5.912496947570236,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 1,
+      "start": [
+        -7.93340244503665,
+        5.912496947570236,
+        0
+      ],
+      "end": [
+        7.866259243711549,
+        5.912496947570236,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 2,
+      "start": [
+        7.866259243711549,
+        5.912496947570236,
+        0
+      ],
+      "end": [
+        7.89051325756914,
+        2.5191402022865934,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 2,
+      "start": [
+        7.9264000720223375,
+        -2.5017509626372356,
+        0
+      ],
+      "end": [
+        7.950654085879927,
+        -5.8951077079208725,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 3,
+      "start": [
+        7.950654085879927,
+        -5.8951077079208725,
+        0
+      ],
+      "end": [
+        -6.220411510636768,
+        -5.926233322211844,
+        0
+      ],
+      "height_metres": null
+    },
+    {
+      "edge": 3,
+      "start": [
+        -7.1212579116400025,
+        -5.928211959416087,
+        0
+      ],
+      "end": [
+        -7.883510884554826,
+        -5.929886187219599,
+        0
+      ],
+      "height_metres": null
+    }
+  ],
+  "opening_base_segments": [
+    {
+      "id": "opening-NE",
+      "endpoints": [
+        [
+          -7.899266110097253,
+          -2.1901872191661416,
+          0
+        ],
+        [
+          -7.920273089242084,
+          2.796080861750226,
+          0
+        ]
+      ],
+      "width_metres": 4.986312331567105,
+      "height_metres": null
+    },
+    {
+      "id": "opening-SW",
+      "endpoints": [
+        [
+          7.89051325756914,
+          2.5191402022865934,
+          0
+        ],
+        [
+          7.9264000720223375,
+          -2.5017509626372356,
+          0
+        ]
+      ],
+      "width_metres": 5.02101941377065,
+      "height_metres": null
+    },
+    {
+      "id": "door-NW",
+      "endpoints": [
+        [
+          -6.220411510636768,
+          -5.926233322211844,
+          0
+        ],
+        [
+          -7.1212579116400025,
+          -5.928211959416087,
+          0
+        ]
+      ],
+      "width_metres": 0.9008485739599451,
+      "height_metres": null
+    }
+  ],
+  "outer_wall_base_outline": [
+    [
+      -7.883510884554826,
+      -5.929886187219599,
+      0
+    ],
+    [
+      -7.93340244503665,
+      5.912496947570236,
+      0
+    ],
+    [
+      7.866259243711549,
+      5.912496947570236,
+      0
+    ],
+    [
+      7.950654085879927,
+      -5.8951077079208725,
+      0
+    ]
+  ],
+  "roof_to_outline_margins_metres_under_centring_hypothesis": {
+    "negative_x": 0.5080018667361994,
+    "positive_x": 0.4907502258929224,
+    "negative_y": 0.4846901763439382,
+    "positive_y": 0.5020794159933013
+  },
+  "wall_surfaces": [],
+  "opening_surfaces": [],
+  "world_placement_eligible": false,
+  "geographic_registration": null,
+  "unresolved": [
+    "wall and opening heights",
+    "roof/wall centring and handedness",
+    "small roof projection and fascia",
+    "as-built identity and floor datum",
+    "independent geographic controls and checkpoints"
+  ],
+  "world_geometry_additions": 0
+}

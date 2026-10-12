@@ -1,0 +1,4408 @@
+{
+  "status": "source_section_constraints_only",
+  "source_receipt_sha256": "cbee9df5e18d20acafa3c6738336a99fbe65b323ac0876cde930211e81e1db62",
+  "documents": [
+    {
+      "attachment_id": 160141,
+      "source_sha256": "1a90686ecc9876406a0d7bbd8bdaec39ea2dea9f4f9ac3799438c9477164f8dc",
+      "attachment_label": "Proposed Block Plan",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160141",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "dfa946c036d99c5f68cf62c3f316598fc789985562d53da1827d1b055ec6030a",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160143,
+      "source_sha256": "216f920476864b1ed91f3a4accffd6bfc9a03e70a753aa0b44831db31e21553b",
+      "attachment_label": "Site Plan Setup and Demolitions Plan",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160143",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "5eb276e62c7caf261d359117797b099f57ca34c2f7c73ca5e2ee49e7abf8bc75",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": true,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160144,
+      "source_sha256": "a05ebb93f92933aced9f06da73f8f238f35b93f2de6ba69c343a424acf52a1e1",
+      "attachment_label": "Proposed Site Plan",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160144",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "75d8ca8190c59bbe78f5d038a9309cded68ced1163471a710237765fa4a48945",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160145,
+      "source_sha256": "992ce2f1bfcaf44ab2c2278aaae811e2685181c87d62d2693baebc804e911ef4",
+      "attachment_label": "Landscape Site Plan",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160145",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "a8d8f3c77c9c10c25a208d7b478697fa2225a001d9b308121798dd2052df7988",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160146,
+      "source_sha256": "f7f2db3b009972f049de66f7601936b1f96eaee8ed26dd11d4a62a067b389b89",
+      "attachment_label": "Section Plan AA BB Existing",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160146",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "e600142600eb65ce3538c38d4cdca0cea7e46caea701159ad96b34b34080a55a",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "existing",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160147,
+      "source_sha256": "c5a8287e3c4e5f071bb9bff4406a9ec172d1addb160f472e761ddc670060d299",
+      "attachment_label": "Section Plan AA BB Proposed",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160147",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "d518fa85053e8e08f1cfedc7d2718515609f4fa7e565985f5f44ba1802b3be52",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2179.173583984375,
+                1504.128173828125,
+                2230.56005859375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2179.179443359375,
+                1504.128173828125,
+                2236.3193359375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "combined_station_shop_top",
+              "value_metres": 192.2,
+              "native_word_bboxes": [
+                [
+                  920.3999633789062,
+                  986.5079345703125,
+                  954.4800415039062,
+                  999.7919311523438
+                ],
+                [
+                  957.47998046875,
+                  986.5079345703125,
+                  966.8280029296875,
+                  999.7919311523438
+                ],
+                [
+                  908.8800048828125,
+                  1000.18798828125,
+                  933.6001586914062,
+                  1013.4719848632812
+                ],
+                [
+                  936.5999755859375,
+                  1000.18798828125,
+                  978.6119384765625,
+                  1013.4719848632812
+                ],
+                [
+                  924.0,
+                  1013.867919921875,
+                  933.3599853515625,
+                  1027.1519775390625
+                ],
+                [
+                  936.3599853515625,
+                  1013.867919921875,
+                  963.3599243164062,
+                  1027.1519775390625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  886.427978515625,
+                  2042.400146484375,
+                  899.7119750976562
+                ],
+                [
+                  2045.39990234375,
+                  886.427978515625,
+                  2066.73583984375,
+                  899.7119750976562
+                ],
+                [
+                  2069.66455078125,
+                  886.427978515625,
+                  2078.39990234375,
+                  899.7119750976562
+                ],
+                [
+                  2081.39990234375,
+                  886.427978515625,
+                  2099.39990234375,
+                  899.7119750976562
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  234.1079864501953,
+                  2042.400146484375,
+                  247.39198303222656
+                ],
+                [
+                  2045.39990234375,
+                  234.1079864501953,
+                  2066.73583984375,
+                  247.39198303222656
+                ],
+                [
+                  2069.66455078125,
+                  234.1079864501953,
+                  2078.39990234375,
+                  247.39198303222656
+                ],
+                [
+                  2081.39990234375,
+                  234.1079864501953,
+                  2099.39990234375,
+                  247.39198303222656
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1704.0,
+                  900.1079711914062,
+                  1734.7198486328125,
+                  913.3919677734375
+                ],
+                [
+                  1737.719970703125,
+                  900.1079711914062,
+                  1767.7200927734375,
+                  913.3919677734375
+                ],
+                [
+                  1702.0799560546875,
+                  913.7879638671875,
+                  1733.520263671875,
+                  927.0719604492188
+                ],
+                [
+                  1736.52001953125,
+                  913.7879638671875,
+                  1769.8441162109375,
+                  927.0719604492188
+                ],
+                [
+                  1716.239990234375,
+                  927.4679565429688,
+                  1725.599853515625,
+                  940.751953125
+                ],
+                [
+                  1728.5999755859375,
+                  927.4679565429688,
+                  1755.599853515625,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  2238.239990234375,
+                  879.9479370117188,
+                  2268.9599609375,
+                  893.23193359375
+                ],
+                [
+                  2271.9599609375,
+                  879.9479370117188,
+                  2301.9599609375,
+                  893.23193359375
+                ],
+                [
+                  2236.320068359375,
+                  893.6279907226562,
+                  2267.760009765625,
+                  906.9119873046875
+                ],
+                [
+                  2270.760009765625,
+                  893.6279907226562,
+                  2304.083984375,
+                  906.9119873046875
+                ],
+                [
+                  2250.47998046875,
+                  907.3079833984375,
+                  2259.83984375,
+                  920.5919799804688
+                ],
+                [
+                  2262.83984375,
+                  907.3079833984375,
+                  2289.840087890625,
+                  920.5919799804688
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  2238.0,
+                  220.90798950195312,
+                  2268.719970703125,
+                  234.19198608398438
+                ],
+                [
+                  2271.719970703125,
+                  220.90798950195312,
+                  2301.719970703125,
+                  234.19198608398438
+                ],
+                [
+                  2236.079833984375,
+                  234.58799743652344,
+                  2267.52001953125,
+                  247.8719940185547
+                ],
+                [
+                  2270.52001953125,
+                  234.58799743652344,
+                  2303.843994140625,
+                  247.8719940185547
+                ],
+                [
+                  2250.239990234375,
+                  248.2679901123047,
+                  2259.599853515625,
+                  261.552001953125
+                ],
+                [
+                  2262.599853515625,
+                  248.2679901123047,
+                  2289.60009765625,
+                  261.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160148,
+      "source_sha256": "c3c0f64796308aec39ad6f98f285f45764bc3631209809d6d2e1acae8c32530f",
+      "attachment_label": "Section Plan CC DD Existing",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160148",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "2038eb1e8e7abfa39a40791228206b0c28e670f89da54f42fd32e8cd4a49ab98",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "existing",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160149,
+      "source_sha256": "1c6d73e983dc70638ed58ff72eb9c263fbbd824c10077888840aa1531184f2c9",
+      "attachment_label": "Section Plan CC DD Propsed",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160149",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "e857da34e4e9e038ab71e2dda5cd754783320d2189a33c377f3fbdf01139d133",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2182.7734375,
+                1504.128173828125,
+                2234.159912109375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2182.779296875,
+                1504.128173828125,
+                2239.91943359375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "combined_station_shop_top",
+              "value_metres": 192.2,
+              "native_word_bboxes": [
+                [
+                  960.47998046875,
+                  338.9880065917969,
+                  994.5599975585938,
+                  352.2720031738281
+                ],
+                [
+                  997.5599975585938,
+                  338.9880065917969,
+                  1006.9080200195312,
+                  352.2720031738281
+                ],
+                [
+                  948.9599609375,
+                  352.6679992675781,
+                  973.68017578125,
+                  365.9519958496094
+                ],
+                [
+                  976.6799926757812,
+                  352.6679992675781,
+                  1018.6919555664062,
+                  365.9519958496094
+                ],
+                [
+                  964.0799560546875,
+                  366.3479919433594,
+                  973.4400024414062,
+                  379.6319885253906
+                ],
+                [
+                  976.4400024414062,
+                  366.3479919433594,
+                  1003.4398803710938,
+                  379.6319885253906
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "combined_station_shop_top",
+              "value_metres": 192.2,
+              "native_word_bboxes": [
+                [
+                  1409.280029296875,
+                  985.5479736328125,
+                  1443.3602294921875,
+                  998.8319702148438
+                ],
+                [
+                  1446.3599853515625,
+                  985.5479736328125,
+                  1455.7080078125,
+                  998.8319702148438
+                ],
+                [
+                  1397.760009765625,
+                  999.2279663085938,
+                  1422.4801025390625,
+                  1012.511962890625
+                ],
+                [
+                  1425.47998046875,
+                  999.2279663085938,
+                  1467.491943359375,
+                  1012.511962890625
+                ],
+                [
+                  1412.8800048828125,
+                  1012.907958984375,
+                  1422.2398681640625,
+                  1026.1920166015625
+                ],
+                [
+                  1425.239990234375,
+                  1012.907958984375,
+                  1452.2398681640625,
+                  1026.1920166015625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 191.6,
+              "native_word_bboxes": [
+                [
+                  745.4400024414062,
+                  347.8680114746094,
+                  807.4198608398438,
+                  361.1520080566406
+                ],
+                [
+                  749.2799682617188,
+                  361.5480041503906,
+                  791.2919311523438,
+                  374.8320007324219
+                ],
+                [
+                  794.2799682617188,
+                  361.5480041503906,
+                  803.615966796875,
+                  374.8320007324219
+                ],
+                [
+                  762.9599609375,
+                  375.2279968261719,
+                  790.0798950195312,
+                  388.5119934082031
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 191.6,
+              "native_word_bboxes": [
+                [
+                  1643.0399169921875,
+                  985.5479736328125,
+                  1705.0201416015625,
+                  998.8319702148438
+                ],
+                [
+                  1646.8800048828125,
+                  999.2279663085938,
+                  1688.8919677734375,
+                  1012.511962890625
+                ],
+                [
+                  1691.8800048828125,
+                  999.2279663085938,
+                  1701.2159423828125,
+                  1012.511962890625
+                ],
+                [
+                  1660.5599365234375,
+                  1012.907958984375,
+                  1687.679931640625,
+                  1026.1920166015625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_low_point",
+              "value_metres": 179.0,
+              "native_word_bboxes": [
+                [
+                  851.5199584960938,
+                  627.2279663085938,
+                  874.18798828125,
+                  640.511962890625
+                ],
+                [
+                  877.0946044921875,
+                  627.2279663085938,
+                  901.2000122070312,
+                  640.511962890625
+                ],
+                [
+                  904.199951171875,
+                  627.2279663085938,
+                  922.199951171875,
+                  640.511962890625
+                ],
+                [
+                  925.0982055664062,
+                  627.2279663085938,
+                  949.9200439453125,
+                  640.511962890625
+                ],
+                [
+                  952.9199829101562,
+                  627.2279663085938,
+                  961.583984375,
+                  640.511962890625
+                ],
+                [
+                  964.4570922851562,
+                  627.2279663085938,
+                  991.5599975585938,
+                  640.511962890625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  234.1079864501953,
+                  2042.400146484375,
+                  247.39198303222656
+                ],
+                [
+                  2045.39990234375,
+                  234.1079864501953,
+                  2066.73583984375,
+                  247.39198303222656
+                ],
+                [
+                  2069.66455078125,
+                  234.1079864501953,
+                  2078.39990234375,
+                  247.39198303222656
+                ],
+                [
+                  2081.39990234375,
+                  234.1079864501953,
+                  2099.39990234375,
+                  247.39198303222656
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  284.6399841308594,
+                  871.7879638671875,
+                  312.239990234375,
+                  885.0719604492188
+                ],
+                [
+                  315.239990234375,
+                  871.7879638671875,
+                  336.57598876953125,
+                  885.0719604492188
+                ],
+                [
+                  339.50469970703125,
+                  871.7879638671875,
+                  348.239990234375,
+                  885.0719604492188
+                ],
+                [
+                  351.239990234375,
+                  871.7879638671875,
+                  369.239990234375,
+                  885.0719604492188
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1686.9599609375,
+                  275.8680114746094,
+                  1717.6798095703125,
+                  289.1520080566406
+                ],
+                [
+                  1720.679931640625,
+                  275.8680114746094,
+                  1750.6800537109375,
+                  289.1520080566406
+                ],
+                [
+                  1753.5599365234375,
+                  275.8680114746094,
+                  1784.89208984375,
+                  289.1520080566406
+                ],
+                [
+                  1698.0,
+                  289.5480041503906,
+                  1731.3599853515625,
+                  302.8320007324219
+                ],
+                [
+                  1734.3599853515625,
+                  289.5480041503906,
+                  1743.6959228515625,
+                  302.8320007324219
+                ],
+                [
+                  1746.6170654296875,
+                  289.5480041503906,
+                  1773.719970703125,
+                  302.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  616.3200073242188,
+                  900.1079711914062,
+                  647.0398559570312,
+                  913.3919677734375
+                ],
+                [
+                  650.0399780273438,
+                  900.1079711914062,
+                  680.0399780273438,
+                  913.3919677734375
+                ],
+                [
+                  614.3999633789062,
+                  913.7879638671875,
+                  645.8400268554688,
+                  927.0719604492188
+                ],
+                [
+                  648.8399658203125,
+                  913.7879638671875,
+                  682.1639404296875,
+                  927.0719604492188
+                ],
+                [
+                  628.5599975585938,
+                  927.4679565429688,
+                  637.9200439453125,
+                  940.751953125
+                ],
+                [
+                  640.9199829101562,
+                  927.4679565429688,
+                  667.919921875,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 195.4,
+              "native_word_bboxes": [
+                [
+                  1314.719970703125,
+                  286.1880187988281,
+                  1345.4398193359375,
+                  299.4720153808594
+                ],
+                [
+                  1348.43994140625,
+                  286.1880187988281,
+                  1378.4400634765625,
+                  299.4720153808594
+                ],
+                [
+                  1312.7999267578125,
+                  299.8680114746094,
+                  1344.240234375,
+                  313.1520080566406
+                ],
+                [
+                  1347.239990234375,
+                  299.8680114746094,
+                  1380.5640869140625,
+                  313.1520080566406
+                ],
+                [
+                  1326.9599609375,
+                  313.5480041503906,
+                  1336.31982421875,
+                  326.8320007324219
+                ],
+                [
+                  1339.3199462890625,
+                  313.5480041503906,
+                  1366.3199462890625,
+                  326.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160150,
+      "source_sha256": "1fa86c9829931c818093db58d272d1d3970ce1b5f696725f1d01102ad027c9c8",
+      "attachment_label": "Section Plan EE FF Existing",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160150",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "175441b7e68518a20272016ff511764fc42be7d6cf586b7846b49efb7fd61315",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "existing",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160151,
+      "source_sha256": "4b81feac812c0e82f6cea9ee6974a72f84c18e7f78a0cb9c60500c392857aaf9",
+      "attachment_label": "Section Plan EE FF Proposed",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160151",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "1906a0a6d4ba5b09ce6876406d44101de79a0c42be338ff5d659e4b61e4c52ba",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2178.933349609375,
+                1504.128173828125,
+                2230.320068359375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2178.939208984375,
+                1504.128173828125,
+                2236.079345703125,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 191.6,
+              "native_word_bboxes": [
+                [
+                  1863.1199951171875,
+                  985.5479736328125,
+                  1925.10009765625,
+                  998.8319702148438
+                ],
+                [
+                  1866.9599609375,
+                  999.2279663085938,
+                  1908.971923828125,
+                  1012.511962890625
+                ],
+                [
+                  1911.9599609375,
+                  999.2279663085938,
+                  1921.2958984375,
+                  1012.511962890625
+                ],
+                [
+                  1880.6400146484375,
+                  1012.907958984375,
+                  1907.7598876953125,
+                  1026.1920166015625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  1557.3599853515625,
+                  220.90798950195312,
+                  1584.9600830078125,
+                  234.19198608398438
+                ],
+                [
+                  1587.9599609375,
+                  220.90798950195312,
+                  1609.2958984375,
+                  234.19198608398438
+                ],
+                [
+                  1568.4000244140625,
+                  234.58799743652344,
+                  1577.0640869140625,
+                  247.8719940185547
+                ],
+                [
+                  1580.05712890625,
+                  234.58799743652344,
+                  1598.1597900390625,
+                  247.8719940185547
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1402.3199462890625,
+                  262.1880187988281,
+                  1433.0399169921875,
+                  275.4720153808594
+                ],
+                [
+                  1436.0399169921875,
+                  262.1880187988281,
+                  1466.0400390625,
+                  275.4720153808594
+                ],
+                [
+                  1400.4000244140625,
+                  275.8680114746094,
+                  1431.8402099609375,
+                  289.1520080566406
+                ],
+                [
+                  1434.8399658203125,
+                  275.8680114746094,
+                  1468.1640625,
+                  289.1520080566406
+                ],
+                [
+                  1414.5599365234375,
+                  289.5480041503906,
+                  1423.919921875,
+                  302.8320007324219
+                ],
+                [
+                  1426.919921875,
+                  289.5480041503906,
+                  1453.919921875,
+                  302.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1402.3199462890625,
+                  900.1079711914062,
+                  1433.0399169921875,
+                  913.3919677734375
+                ],
+                [
+                  1436.0399169921875,
+                  900.1079711914062,
+                  1466.0400390625,
+                  913.3919677734375
+                ],
+                [
+                  1400.4000244140625,
+                  913.7879638671875,
+                  1431.8402099609375,
+                  927.0719604492188
+                ],
+                [
+                  1434.8399658203125,
+                  913.7879638671875,
+                  1468.1640625,
+                  927.0719604492188
+                ],
+                [
+                  1414.5599365234375,
+                  927.4679565429688,
+                  1423.919921875,
+                  940.751953125
+                ],
+                [
+                  1426.919921875,
+                  927.4679565429688,
+                  1453.919921875,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  1625.760009765625,
+                  220.90798950195312,
+                  1656.4798583984375,
+                  234.19198608398438
+                ],
+                [
+                  1659.47998046875,
+                  220.90798950195312,
+                  1689.4801025390625,
+                  234.19198608398438
+                ],
+                [
+                  1623.8399658203125,
+                  234.58799743652344,
+                  1655.2801513671875,
+                  247.8719940185547
+                ],
+                [
+                  1658.2799072265625,
+                  234.58799743652344,
+                  1691.6041259765625,
+                  247.8719940185547
+                ],
+                [
+                  1638.0,
+                  248.2679901123047,
+                  1647.35986328125,
+                  261.552001953125
+                ],
+                [
+                  1650.3599853515625,
+                  248.2679901123047,
+                  1677.35986328125,
+                  261.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160152,
+      "source_sha256": "4de412414d6a0c827830ce86bbaff8d0fbf81cf3c3182652c3752b267cc0577a",
+      "attachment_label": "Section Plan GG HH Existing",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160152",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "272d81cb0d66d3131709f4ace9fb26aa00e936db6df63386c906eec10a557c42",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "existing",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 160153,
+      "source_sha256": "f3f4b6e1116c2d8d47b75138be1d3c3238dad6e38df5b6235b80ccf20f667485",
+      "attachment_label": "Section Plan GG HH Proposed",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160153",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "060118a189038554020be490878126091f40154ae5f352bdb11151fdafd43cf5",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2186.613525390625,
+                1504.128173828125,
+                2238.0,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2186.619384765625,
+                1504.128173828125,
+                2243.759521484375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "combined_station_shop_top",
+              "value_metres": 192.2,
+              "native_word_bboxes": [
+                [
+                  1728.0,
+                  312.8280029296875,
+                  1762.0802001953125,
+                  326.11199951171875
+                ],
+                [
+                  1765.0799560546875,
+                  312.8280029296875,
+                  1774.427978515625,
+                  326.11199951171875
+                ],
+                [
+                  1716.239990234375,
+                  326.50799560546875,
+                  1740.9600830078125,
+                  339.7919921875
+                ],
+                [
+                  1743.9599609375,
+                  326.50799560546875,
+                  1785.971923828125,
+                  339.7919921875
+                ],
+                [
+                  1731.5999755859375,
+                  340.1880187988281,
+                  1740.9598388671875,
+                  353.4720153808594
+                ],
+                [
+                  1743.9599609375,
+                  340.1880187988281,
+                  1770.9598388671875,
+                  353.4720153808594
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 191.6,
+              "native_word_bboxes": [
+                [
+                  1869.3599853515625,
+                  321.7080078125,
+                  1931.340087890625,
+                  334.99200439453125
+                ],
+                [
+                  1873.199951171875,
+                  335.38800048828125,
+                  1915.2119140625,
+                  348.6719970703125
+                ],
+                [
+                  1918.199951171875,
+                  335.38800048828125,
+                  1927.535888671875,
+                  348.6719970703125
+                ],
+                [
+                  1886.8800048828125,
+                  349.0679931640625,
+                  1913.9998779296875,
+                  362.35198974609375
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 191.6,
+              "native_word_bboxes": [
+                [
+                  444.9599914550781,
+                  959.387939453125,
+                  506.93994140625,
+                  972.6719360351562
+                ],
+                [
+                  448.79998779296875,
+                  973.0679321289062,
+                  490.81201171875,
+                  986.3519287109375
+                ],
+                [
+                  493.79998779296875,
+                  973.0679321289062,
+                  503.1359558105469,
+                  986.3519287109375
+                ],
+                [
+                  462.47998046875,
+                  986.7479858398438,
+                  489.5999755859375,
+                  1000.031982421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_low_point",
+              "value_metres": 179.0,
+              "native_word_bboxes": [
+                [
+                  1488.9599609375,
+                  643.0679931640625,
+                  1511.6279296875,
+                  656.3519897460938
+                ],
+                [
+                  1514.53466796875,
+                  643.0679931640625,
+                  1538.639892578125,
+                  656.3519897460938
+                ],
+                [
+                  1541.6400146484375,
+                  643.0679931640625,
+                  1559.639892578125,
+                  656.3519897460938
+                ],
+                [
+                  1562.5380859375,
+                  643.0679931640625,
+                  1587.35986328125,
+                  656.3519897460938
+                ],
+                [
+                  1590.3599853515625,
+                  643.0679931640625,
+                  1599.0240478515625,
+                  656.3519897460938
+                ],
+                [
+                  1601.8970947265625,
+                  643.0679931640625,
+                  1629.0,
+                  656.3519897460938
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 191.4,
+              "native_word_bboxes": [
+                [
+                  850.3200073242188,
+                  332.9880065917969,
+                  877.9199829101562,
+                  346.2720031738281
+                ],
+                [
+                  880.9199829101562,
+                  332.9880065917969,
+                  902.2560424804688,
+                  346.2720031738281
+                ],
+                [
+                  856.7999877929688,
+                  346.6679992675781,
+                  865.4639892578125,
+                  359.9519958496094
+                ],
+                [
+                  868.4570922851562,
+                  346.6679992675781,
+                  895.5599975585938,
+                  359.9519958496094
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  775.2000122070312,
+                  874.427978515625,
+                  802.7999877929688,
+                  887.7119750976562
+                ],
+                [
+                  805.7999877929688,
+                  874.427978515625,
+                  827.135986328125,
+                  887.7119750976562
+                ],
+                [
+                  786.47998046875,
+                  888.1079711914062,
+                  795.1439819335938,
+                  901.3919677734375
+                ],
+                [
+                  798.1370849609375,
+                  888.1079711914062,
+                  816.2398681640625,
+                  901.3919677734375
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  918.47998046875,
+                  900.1079711914062,
+                  949.1998291015625,
+                  913.3919677734375
+                ],
+                [
+                  952.199951171875,
+                  900.1079711914062,
+                  982.199951171875,
+                  913.3919677734375
+                ],
+                [
+                  916.5599975585938,
+                  913.7879638671875,
+                  948.0000610351562,
+                  927.0719604492188
+                ],
+                [
+                  951.0,
+                  913.7879638671875,
+                  984.3239135742188,
+                  927.0719604492188
+                ],
+                [
+                  930.719970703125,
+                  927.4679565429688,
+                  940.0800170898438,
+                  940.751953125
+                ],
+                [
+                  943.0799560546875,
+                  927.4679565429688,
+                  970.0798950195312,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  695.0399780273438,
+                  872.5079345703125,
+                  725.7598266601562,
+                  885.7919311523438
+                ],
+                [
+                  728.760009765625,
+                  872.5079345703125,
+                  758.7599487304688,
+                  885.7919311523438
+                ],
+                [
+                  693.1199951171875,
+                  886.18798828125,
+                  724.56005859375,
+                  899.4719848632812
+                ],
+                [
+                  727.5599975585938,
+                  886.18798828125,
+                  760.8839721679688,
+                  899.4719848632812
+                ],
+                [
+                  707.2799682617188,
+                  899.8679809570312,
+                  716.6400146484375,
+                  913.1519775390625
+                ],
+                [
+                  719.6399536132812,
+                  899.8679809570312,
+                  746.639892578125,
+                  913.1519775390625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163927,
+      "source_sha256": "afb06496d74b274c4cd36a316604f93e84996a09be6c33b8cbac7d71405fe1e4",
+      "attachment_label": "373-95-4A Block Plan as Proposed (2)",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163927",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "e69812399f51db428ae3c60f4a2882a8f794b37f3a3d54e5344e575ad98dada1",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163928,
+      "source_sha256": "713ce82e489221a265242ce020ca3b1aef3252c03c70b620cc66bd838585e81e",
+      "attachment_label": "373-95-6A Site Plan Setup & Demolitions.",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163928",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "a40f1fd6bee6bf8b775bad754ad35cc589ee7502fe505d28e353102d4f4b2f8b",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": true,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163929,
+      "source_sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279",
+      "attachment_label": "373-95-7A Site Plan Proposed (2)",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163929",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "86fa921c35ceacad98fcef2885bbb05d0c8d81d18b26619415915c3aba0ae5a6",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163930,
+      "source_sha256": "d614831dd135720465569ffb28277a94cad3369e443c37cb08e004b8a39436ed",
+      "attachment_label": "373-95-8A Site Plan Landscape",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163930",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "eb1e88944c132550c698bb87907ff656282de07469c29652bd616748344bd696",
+          "declared_sheet_role": "horizontal_site_plan",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": true,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [],
+          "text_visibility_review_required": false,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [],
+          "material_text_candidates": {},
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163931,
+      "source_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "attachment_label": "373-95-11A Sections AA BB Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163931",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "bf24683f73223662031bcbe18122cc2a1252b02e385171f041b49fc52c033a2f",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2179.173583984375,
+                1504.128173828125,
+                2230.56005859375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2179.179443359375,
+                1504.128173828125,
+                2236.3193359375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "shop_building_top",
+              "value_metres": 189.75,
+              "native_word_bboxes": [
+                [
+                  638.1599731445312,
+                  988.907958984375,
+                  662.8801879882812,
+                  1002.1919555664062
+                ],
+                [
+                  665.8800048828125,
+                  988.907958984375,
+                  707.8919677734375,
+                  1002.1919555664062
+                ],
+                [
+                  650.3999633789062,
+                  1002.5879516601562,
+                  659.760009765625,
+                  1015.8719482421875
+                ],
+                [
+                  662.760009765625,
+                  1002.5879516601562,
+                  695.7599487304688,
+                  1015.8719482421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "station_building_level",
+              "value_metres": 188.7,
+              "native_word_bboxes": [
+                [
+                  914.8800048828125,
+                  988.907958984375,
+                  948.9600219726562,
+                  1002.1919555664062
+                ],
+                [
+                  910.7999877929688,
+                  1002.5879516601562,
+                  952.8119506835938,
+                  1015.8719482421875
+                ],
+                [
+                  918.47998046875,
+                  1016.2679443359375,
+                  945.5999145507812,
+                  1029.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  745.9199829101562,
+                  988.907958984375,
+                  807.89990234375,
+                  1002.1919555664062
+                ],
+                [
+                  756.0,
+                  1002.5879516601562,
+                  798.011962890625,
+                  1015.8719482421875
+                ],
+                [
+                  763.4400024414062,
+                  1016.2679443359375,
+                  790.5598754882812,
+                  1029.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  886.427978515625,
+                  2042.400146484375,
+                  899.7119750976562
+                ],
+                [
+                  2045.39990234375,
+                  886.427978515625,
+                  2066.73583984375,
+                  899.7119750976562
+                ],
+                [
+                  2069.66455078125,
+                  886.427978515625,
+                  2078.39990234375,
+                  899.7119750976562
+                ],
+                [
+                  2081.39990234375,
+                  886.427978515625,
+                  2099.39990234375,
+                  899.7119750976562
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  234.1079864501953,
+                  2042.400146484375,
+                  247.39198303222656
+                ],
+                [
+                  2045.39990234375,
+                  234.1079864501953,
+                  2066.73583984375,
+                  247.39198303222656
+                ],
+                [
+                  2069.66455078125,
+                  234.1079864501953,
+                  2078.39990234375,
+                  247.39198303222656
+                ],
+                [
+                  2081.39990234375,
+                  234.1079864501953,
+                  2099.39990234375,
+                  247.39198303222656
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1704.0,
+                  900.1079711914062,
+                  1734.7198486328125,
+                  913.3919677734375
+                ],
+                [
+                  1737.719970703125,
+                  900.1079711914062,
+                  1767.7200927734375,
+                  913.3919677734375
+                ],
+                [
+                  1702.0799560546875,
+                  913.7879638671875,
+                  1733.520263671875,
+                  927.0719604492188
+                ],
+                [
+                  1736.52001953125,
+                  913.7879638671875,
+                  1769.8441162109375,
+                  927.0719604492188
+                ],
+                [
+                  1716.239990234375,
+                  927.4679565429688,
+                  1725.599853515625,
+                  940.751953125
+                ],
+                [
+                  1728.5999755859375,
+                  927.4679565429688,
+                  1755.599853515625,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  2238.239990234375,
+                  879.9479370117188,
+                  2268.9599609375,
+                  893.23193359375
+                ],
+                [
+                  2271.9599609375,
+                  879.9479370117188,
+                  2301.9599609375,
+                  893.23193359375
+                ],
+                [
+                  2236.320068359375,
+                  893.6279907226562,
+                  2267.760009765625,
+                  906.9119873046875
+                ],
+                [
+                  2270.760009765625,
+                  893.6279907226562,
+                  2304.083984375,
+                  906.9119873046875
+                ],
+                [
+                  2250.47998046875,
+                  907.3079833984375,
+                  2259.83984375,
+                  920.5919799804688
+                ],
+                [
+                  2262.83984375,
+                  907.3079833984375,
+                  2289.840087890625,
+                  920.5919799804688
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  2238.0,
+                  220.90798950195312,
+                  2268.719970703125,
+                  234.19198608398438
+                ],
+                [
+                  2271.719970703125,
+                  220.90798950195312,
+                  2301.719970703125,
+                  234.19198608398438
+                ],
+                [
+                  2236.079833984375,
+                  234.58799743652344,
+                  2267.52001953125,
+                  247.8719940185547
+                ],
+                [
+                  2270.52001953125,
+                  234.58799743652344,
+                  2303.843994140625,
+                  247.8719940185547
+                ],
+                [
+                  2250.239990234375,
+                  248.2679901123047,
+                  2259.599853515625,
+                  261.552001953125
+                ],
+                [
+                  2262.599853515625,
+                  248.2679901123047,
+                  2289.60009765625,
+                  261.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163932,
+      "source_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "attachment_label": "373-95-13A Sections CC DD Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163932",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "09a9af4f0176cd8c025e3bb7038a86a47c9d959158661429922b5a31d52de11d",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2182.7734375,
+                1504.128173828125,
+                2234.159912109375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2182.779296875,
+                1504.128173828125,
+                2239.91943359375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "shop_building_top",
+              "value_metres": 189.75,
+              "native_word_bboxes": [
+                [
+                  638.1599731445312,
+                  350.9880065917969,
+                  662.8801879882812,
+                  364.2720031738281
+                ],
+                [
+                  665.8800048828125,
+                  350.9880065917969,
+                  707.8919677734375,
+                  364.2720031738281
+                ],
+                [
+                  650.3999633789062,
+                  364.6679992675781,
+                  659.760009765625,
+                  377.9519958496094
+                ],
+                [
+                  662.760009765625,
+                  364.6679992675781,
+                  695.7599487304688,
+                  377.9519958496094
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "shop_building_top",
+              "value_metres": 189.75,
+              "native_word_bboxes": [
+                [
+                  1676.159912109375,
+                  988.907958984375,
+                  1700.880126953125,
+                  1002.1919555664062
+                ],
+                [
+                  1703.8800048828125,
+                  988.907958984375,
+                  1745.8919677734375,
+                  1002.1919555664062
+                ],
+                [
+                  1688.39990234375,
+                  1002.5879516601562,
+                  1697.7598876953125,
+                  1015.8719482421875
+                ],
+                [
+                  1700.760009765625,
+                  1002.5879516601562,
+                  1733.760009765625,
+                  1015.8719482421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "station_building_level",
+              "value_metres": 188.7,
+              "native_word_bboxes": [
+                [
+                  914.8800048828125,
+                  350.9880065917969,
+                  948.9600219726562,
+                  364.2720031738281
+                ],
+                [
+                  910.7999877929688,
+                  364.6679992675781,
+                  952.8119506835938,
+                  377.9519958496094
+                ],
+                [
+                  918.47998046875,
+                  378.3479919433594,
+                  945.5999145507812,
+                  391.6319885253906
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  816.47998046875,
+                  350.9880065917969,
+                  878.4598999023438,
+                  364.2720031738281
+                ],
+                [
+                  826.5599975585938,
+                  364.6679992675781,
+                  868.5719604492188,
+                  377.9519958496094
+                ],
+                [
+                  834.0,
+                  378.3479919433594,
+                  861.119873046875,
+                  391.6319885253906
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  1576.0799560546875,
+                  988.907958984375,
+                  1638.0601806640625,
+                  1002.1919555664062
+                ],
+                [
+                  1585.919921875,
+                  1002.5879516601562,
+                  1627.931884765625,
+                  1015.8719482421875
+                ],
+                [
+                  1593.5999755859375,
+                  1016.2679443359375,
+                  1620.7198486328125,
+                  1029.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_low_point",
+              "value_metres": 179.0,
+              "native_word_bboxes": [
+                [
+                  851.5199584960938,
+                  627.2279663085938,
+                  874.18798828125,
+                  640.511962890625
+                ],
+                [
+                  877.0946044921875,
+                  627.2279663085938,
+                  901.2000122070312,
+                  640.511962890625
+                ],
+                [
+                  904.199951171875,
+                  627.2279663085938,
+                  922.199951171875,
+                  640.511962890625
+                ],
+                [
+                  925.0982055664062,
+                  627.2279663085938,
+                  949.9200439453125,
+                  640.511962890625
+                ],
+                [
+                  952.9199829101562,
+                  627.2279663085938,
+                  961.583984375,
+                  640.511962890625
+                ],
+                [
+                  964.4570922851562,
+                  627.2279663085938,
+                  991.5599975585938,
+                  640.511962890625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  2014.7999267578125,
+                  234.1079864501953,
+                  2042.400146484375,
+                  247.39198303222656
+                ],
+                [
+                  2045.39990234375,
+                  234.1079864501953,
+                  2066.73583984375,
+                  247.39198303222656
+                ],
+                [
+                  2069.66455078125,
+                  234.1079864501953,
+                  2078.39990234375,
+                  247.39198303222656
+                ],
+                [
+                  2081.39990234375,
+                  234.1079864501953,
+                  2099.39990234375,
+                  247.39198303222656
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  284.6399841308594,
+                  871.7879638671875,
+                  312.239990234375,
+                  885.0719604492188
+                ],
+                [
+                  315.239990234375,
+                  871.7879638671875,
+                  336.57598876953125,
+                  885.0719604492188
+                ],
+                [
+                  339.50469970703125,
+                  871.7879638671875,
+                  348.239990234375,
+                  885.0719604492188
+                ],
+                [
+                  351.239990234375,
+                  871.7879638671875,
+                  369.239990234375,
+                  885.0719604492188
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1686.9599609375,
+                  275.8680114746094,
+                  1717.6798095703125,
+                  289.1520080566406
+                ],
+                [
+                  1720.679931640625,
+                  275.8680114746094,
+                  1750.6800537109375,
+                  289.1520080566406
+                ],
+                [
+                  1753.5599365234375,
+                  275.8680114746094,
+                  1784.89208984375,
+                  289.1520080566406
+                ],
+                [
+                  1698.0,
+                  289.5480041503906,
+                  1731.3599853515625,
+                  302.8320007324219
+                ],
+                [
+                  1734.3599853515625,
+                  289.5480041503906,
+                  1743.6959228515625,
+                  302.8320007324219
+                ],
+                [
+                  1746.6170654296875,
+                  289.5480041503906,
+                  1773.719970703125,
+                  302.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  616.3200073242188,
+                  900.1079711914062,
+                  647.0398559570312,
+                  913.3919677734375
+                ],
+                [
+                  650.0399780273438,
+                  900.1079711914062,
+                  680.0399780273438,
+                  913.3919677734375
+                ],
+                [
+                  614.3999633789062,
+                  913.7879638671875,
+                  645.8400268554688,
+                  927.0719604492188
+                ],
+                [
+                  648.8399658203125,
+                  913.7879638671875,
+                  682.1639404296875,
+                  927.0719604492188
+                ],
+                [
+                  628.5599975585938,
+                  927.4679565429688,
+                  637.9200439453125,
+                  940.751953125
+                ],
+                [
+                  640.9199829101562,
+                  927.4679565429688,
+                  667.919921875,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 195.4,
+              "native_word_bboxes": [
+                [
+                  1314.719970703125,
+                  286.1880187988281,
+                  1345.4398193359375,
+                  299.4720153808594
+                ],
+                [
+                  1348.43994140625,
+                  286.1880187988281,
+                  1378.4400634765625,
+                  299.4720153808594
+                ],
+                [
+                  1312.7999267578125,
+                  299.8680114746094,
+                  1344.240234375,
+                  313.1520080566406
+                ],
+                [
+                  1347.239990234375,
+                  299.8680114746094,
+                  1380.5640869140625,
+                  313.1520080566406
+                ],
+                [
+                  1326.9599609375,
+                  313.5480041503906,
+                  1336.31982421875,
+                  326.8320007324219
+                ],
+                [
+                  1339.3199462890625,
+                  313.5480041503906,
+                  1366.3199462890625,
+                  326.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163933,
+      "source_sha256": "aa8a1128914c708de4773997e7306f571839133d644bf454af1572f9a74c4220",
+      "attachment_label": "373-95-15A Sections EE FF Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163933",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "a2385d2c13bde8b76734134adaa3ef9e49e33beb1ec0593ec23f6190965e49f6",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2178.933349609375,
+                1504.128173828125,
+                2230.320068359375,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2178.939208984375,
+                1504.128173828125,
+                2236.079345703125,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "station_building_level",
+              "value_metres": 188.7,
+              "native_word_bboxes": [
+                [
+                  1765.679931640625,
+                  950.7479858398438,
+                  1799.76025390625,
+                  964.031982421875
+                ],
+                [
+                  1761.5999755859375,
+                  964.427978515625,
+                  1803.6119384765625,
+                  977.7119750976562
+                ],
+                [
+                  1769.0399169921875,
+                  978.1079711914062,
+                  1796.159912109375,
+                  991.3919677734375
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  1889.5198974609375,
+                  959.387939453125,
+                  1951.5001220703125,
+                  972.6719360351562
+                ],
+                [
+                  1899.3599853515625,
+                  973.0679321289062,
+                  1941.3719482421875,
+                  986.3519287109375
+                ],
+                [
+                  1907.0399169921875,
+                  986.7479858398438,
+                  1934.159912109375,
+                  1000.031982421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  1557.3599853515625,
+                  220.90798950195312,
+                  1584.9600830078125,
+                  234.19198608398438
+                ],
+                [
+                  1587.9599609375,
+                  220.90798950195312,
+                  1609.2958984375,
+                  234.19198608398438
+                ],
+                [
+                  1568.4000244140625,
+                  234.58799743652344,
+                  1577.0640869140625,
+                  247.8719940185547
+                ],
+                [
+                  1580.05712890625,
+                  234.58799743652344,
+                  1598.1597900390625,
+                  247.8719940185547
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1402.3199462890625,
+                  262.1880187988281,
+                  1433.0399169921875,
+                  275.4720153808594
+                ],
+                [
+                  1436.0399169921875,
+                  262.1880187988281,
+                  1466.0400390625,
+                  275.4720153808594
+                ],
+                [
+                  1400.4000244140625,
+                  275.8680114746094,
+                  1431.8402099609375,
+                  289.1520080566406
+                ],
+                [
+                  1434.8399658203125,
+                  275.8680114746094,
+                  1468.1640625,
+                  289.1520080566406
+                ],
+                [
+                  1414.5599365234375,
+                  289.5480041503906,
+                  1423.919921875,
+                  302.8320007324219
+                ],
+                [
+                  1426.919921875,
+                  289.5480041503906,
+                  1453.919921875,
+                  302.8320007324219
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  1402.3199462890625,
+                  900.1079711914062,
+                  1433.0399169921875,
+                  913.3919677734375
+                ],
+                [
+                  1436.0399169921875,
+                  900.1079711914062,
+                  1466.0400390625,
+                  913.3919677734375
+                ],
+                [
+                  1400.4000244140625,
+                  913.7879638671875,
+                  1431.8402099609375,
+                  927.0719604492188
+                ],
+                [
+                  1434.8399658203125,
+                  913.7879638671875,
+                  1468.1640625,
+                  927.0719604492188
+                ],
+                [
+                  1414.5599365234375,
+                  927.4679565429688,
+                  1423.919921875,
+                  940.751953125
+                ],
+                [
+                  1426.919921875,
+                  927.4679565429688,
+                  1453.919921875,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  1625.760009765625,
+                  220.90798950195312,
+                  1656.4798583984375,
+                  234.19198608398438
+                ],
+                [
+                  1659.47998046875,
+                  220.90798950195312,
+                  1689.4801025390625,
+                  234.19198608398438
+                ],
+                [
+                  1623.8399658203125,
+                  234.58799743652344,
+                  1655.2801513671875,
+                  247.8719940185547
+                ],
+                [
+                  1658.2799072265625,
+                  234.58799743652344,
+                  1691.6041259765625,
+                  247.8719940185547
+                ],
+                [
+                  1638.0,
+                  248.2679901123047,
+                  1647.35986328125,
+                  261.552001953125
+                ],
+                [
+                  1650.3599853515625,
+                  248.2679901123047,
+                  1677.35986328125,
+                  261.552001953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "attachment_id": 163934,
+      "source_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+      "attachment_label": "373-95-17A Sections GG HH Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163934",
+      "pages": [
+        {
+          "page": 1,
+          "native_rotation_degrees": 0,
+          "native_media_box_points": [
+            0.0,
+            0.0,
+            2384.0,
+            1684.0
+          ],
+          "text_sha256": "8ef085e8af4660c942830664043274257f8f582a8bc8037cc3119e775755cd9c",
+          "declared_sheet_role": "vertical_section",
+          "source_state_from_attachment_label": "proposed",
+          "horizontal_geometry_eligible": false,
+          "role_basis": "Observed attachment label; extracted text alone can contain overpainted prior titles",
+          "overlapping_incompatible_title_markers": [
+            {
+              "existing_bbox": [
+                2186.613525390625,
+                1504.128173828125,
+                2238.0,
+                1520.0440673828125
+              ],
+              "proposed_bbox": [
+                2186.619384765625,
+                1504.128173828125,
+                2243.759521484375,
+                1520.0440673828125
+              ]
+            }
+          ],
+          "text_visibility_review_required": true,
+          "reference_notes": {
+            "status": "reference_notes_candidates_only",
+            "explicit_epsg_candidates": [],
+            "national_grid_claim": false,
+            "national_grid_orientation_claim": false,
+            "arbitrary_coordinate_warning": false,
+            "horizontal_coordinate_status": "unverified",
+            "mapping_resection_claim": false,
+            "scale_factor_not_applied_claim": false,
+            "height_units_candidate": null,
+            "os_benchmark_reference_claim": false,
+            "height_datum_candidate": null,
+            "external_drawing_references": [],
+            "registration_verified": false,
+            "vertical_datum_verified": false,
+            "world_geometry_additions": 0,
+            "limitations": [
+              "National Grid wording alone does not establish EPSG:27700",
+              "An OS benchmark reference alone does not establish ODN or its current value",
+              "Printed statements require source and independent alignment verification"
+            ]
+          },
+          "level_claims": [
+            {
+              "kind": "shop_building_top",
+              "value_metres": 189.75,
+              "native_word_bboxes": [
+                [
+                  1535.52001953125,
+                  337.3080139160156,
+                  1560.2401123046875,
+                  350.5920104980469
+                ],
+                [
+                  1563.239990234375,
+                  337.3080139160156,
+                  1605.251953125,
+                  350.5920104980469
+                ],
+                [
+                  1547.760009765625,
+                  350.9880065917969,
+                  1557.119873046875,
+                  364.2720031738281
+                ],
+                [
+                  1560.1199951171875,
+                  350.9880065917969,
+                  1593.1199951171875,
+                  364.2720031738281
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "shop_building_top",
+              "value_metres": 189.75,
+              "native_word_bboxes": [
+                [
+                  825.5999755859375,
+                  961.5479736328125,
+                  850.3201293945312,
+                  974.8319702148438
+                ],
+                [
+                  853.3200073242188,
+                  961.5479736328125,
+                  895.3319091796875,
+                  974.8319702148438
+                ],
+                [
+                  837.8399658203125,
+                  975.2279663085938,
+                  847.2000122070312,
+                  988.511962890625
+                ],
+                [
+                  850.199951171875,
+                  975.2279663085938,
+                  883.199951171875,
+                  988.511962890625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "station_building_level",
+              "value_metres": 188.7,
+              "native_word_bboxes": [
+                [
+                  1765.679931640625,
+                  312.8280029296875,
+                  1799.76025390625,
+                  326.11199951171875
+                ],
+                [
+                  1761.5999755859375,
+                  326.50799560546875,
+                  1803.6119384765625,
+                  339.7919921875
+                ],
+                [
+                  1769.0399169921875,
+                  340.1880187988281,
+                  1796.159912109375,
+                  353.4720153808594
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  1889.5198974609375,
+                  321.7080078125,
+                  1951.5001220703125,
+                  334.99200439453125
+                ],
+                [
+                  1899.3599853515625,
+                  335.38800048828125,
+                  1941.3719482421875,
+                  348.6719970703125
+                ],
+                [
+                  1907.0399169921875,
+                  349.0679931640625,
+                  1934.159912109375,
+                  362.35198974609375
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "maintenance_building_level",
+              "value_metres": 190.3,
+              "native_word_bboxes": [
+                [
+                  407.2799987792969,
+                  959.387939453125,
+                  469.25994873046875,
+                  972.6719360351562
+                ],
+                [
+                  417.3599853515625,
+                  973.0679321289062,
+                  459.37200927734375,
+                  986.3519287109375
+                ],
+                [
+                  424.79998779296875,
+                  986.7479858398438,
+                  451.9199523925781,
+                  1000.031982421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_low_point",
+              "value_metres": 179.0,
+              "native_word_bboxes": [
+                [
+                  1488.9599609375,
+                  643.0679931640625,
+                  1511.6279296875,
+                  656.3519897460938
+                ],
+                [
+                  1514.53466796875,
+                  643.0679931640625,
+                  1538.639892578125,
+                  656.3519897460938
+                ],
+                [
+                  1541.6400146484375,
+                  643.0679931640625,
+                  1559.639892578125,
+                  656.3519897460938
+                ],
+                [
+                  1562.5380859375,
+                  643.0679931640625,
+                  1587.35986328125,
+                  656.3519897460938
+                ],
+                [
+                  1590.3599853515625,
+                  643.0679931640625,
+                  1599.0240478515625,
+                  656.3519897460938
+                ],
+                [
+                  1601.8970947265625,
+                  643.0679931640625,
+                  1629.0,
+                  656.3519897460938
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 191.4,
+              "native_word_bboxes": [
+                [
+                  850.3200073242188,
+                  332.9880065917969,
+                  877.9199829101562,
+                  346.2720031738281
+                ],
+                [
+                  880.9199829101562,
+                  332.9880065917969,
+                  902.2560424804688,
+                  346.2720031738281
+                ],
+                [
+                  856.7999877929688,
+                  346.6679992675781,
+                  865.4639892578125,
+                  359.9519958496094
+                ],
+                [
+                  868.4570922851562,
+                  346.6679992675781,
+                  895.5599975585938,
+                  359.9519958496094
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "ride_high_point",
+              "value_metres": 201.0,
+              "native_word_bboxes": [
+                [
+                  775.2000122070312,
+                  874.427978515625,
+                  802.7999877929688,
+                  887.7119750976562
+                ],
+                [
+                  805.7999877929688,
+                  874.427978515625,
+                  827.135986328125,
+                  887.7119750976562
+                ],
+                [
+                  786.47998046875,
+                  888.1079711914062,
+                  795.1439819335938,
+                  901.3919677734375
+                ],
+                [
+                  798.1370849609375,
+                  888.1079711914062,
+                  816.2398681640625,
+                  901.3919677734375
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 197.3,
+              "native_word_bboxes": [
+                [
+                  918.47998046875,
+                  900.1079711914062,
+                  949.1998291015625,
+                  913.3919677734375
+                ],
+                [
+                  952.199951171875,
+                  900.1079711914062,
+                  982.199951171875,
+                  913.3919677734375
+                ],
+                [
+                  916.5599975585938,
+                  913.7879638671875,
+                  948.0000610351562,
+                  927.0719604492188
+                ],
+                [
+                  951.0,
+                  913.7879638671875,
+                  984.3239135742188,
+                  927.0719604492188
+                ],
+                [
+                  930.719970703125,
+                  927.4679565429688,
+                  940.0800170898438,
+                  940.751953125
+                ],
+                [
+                  943.0799560546875,
+                  927.4679565429688,
+                  970.0798950195312,
+                  940.751953125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "sound_tunnel_top",
+              "value_metres": 199.8,
+              "native_word_bboxes": [
+                [
+                  695.0399780273438,
+                  872.5079345703125,
+                  725.7598266601562,
+                  885.7919311523438
+                ],
+                [
+                  728.760009765625,
+                  872.5079345703125,
+                  758.7599487304688,
+                  885.7919311523438
+                ],
+                [
+                  693.1199951171875,
+                  886.18798828125,
+                  724.56005859375,
+                  899.4719848632812
+                ],
+                [
+                  727.5599975585938,
+                  886.18798828125,
+                  760.8839721679688,
+                  899.4719848632812
+                ],
+                [
+                  707.2799682617188,
+                  899.8679809570312,
+                  716.6400146484375,
+                  913.1519775390625
+                ],
+                [
+                  719.6399536132812,
+                  899.8679809570312,
+                  746.639892578125,
+                  913.1519775390625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  590.7525024414062,
+                  127.91993713378906,
+                  601.6453857421875
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 180.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1228.4324951171875,
+                  127.91993713378906,
+                  1239.325439453125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  661.5525512695312,
+                  127.91993713378906,
+                  672.4454345703125
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            },
+            {
+              "kind": "section_level_mark",
+              "value_metres": 175.0,
+              "native_word_bboxes": [
+                [
+                  105.1199951171875,
+                  1299.4725341796875,
+                  127.91993713378906,
+                  1310.365478515625
+                ]
+              ],
+              "visible_text_verified": false,
+              "vertical_datum_verified": false,
+              "physical_identity_verified": false
+            }
+          ],
+          "material_text_candidates": {
+            "ride_structure_sound_tunnels_screens": "dark stained timber",
+            "roof_thatch": "artificial thatch",
+            "roof_metal": "distressed profiled metal sheeting",
+            "walls": "distressed dark timber boarding",
+            "thematic_structure": "dark stained forest thinnings"
+          },
+          "materials_as_built_verified": false,
+          "untyped_xy_annotation_present": false,
+          "drawing_family_373_95_printed": true,
+          "revision_A_note_printed": true,
+          "registration_verified": false
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Section level marks and planning parameters are not a verified ODN height datum.",
+    "A section projection does not provide a 3D ride centreline or support positions.",
+    "Material text describes proposals, not independently verified as-built materials.",
+    "Native PDF text can remain beneath overpainting; claims require visible-source review.",
+    "An untyped X/Y annotation is not a national-grid control point."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

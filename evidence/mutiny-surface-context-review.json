@@ -1,0 +1,224 @@
+{
+  "status": "withheld_pending_surface_context_and_registration",
+  "adapter_version": "ordinary-surface-labels-v2",
+  "candidate_evidence_sha256": "e3f951a321fdc1a633f1257697ee46ebf57138a4e59e16ce2f9d7470002cbec8",
+  "inspection_method": "Visual inspection of native PDF with the eight exact candidate rings overlaid; qualitative context observations are review evidence, not automatic physical classification.",
+  "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+  "page": 1,
+  "accepted_surface_regions": [],
+  "registered_features": 0,
+  "world_geometry_additions": 0,
+  "candidates": [
+    {
+      "candidate_id": "92143fc836ad2c8ada698c61b20acc63037bd788f6eb4e4465b4728abd5a4474",
+      "overlay_index": 0,
+      "native_bounds_points": [
+        1269.4775390625,
+        620.03955078125,
+        1281.838134765625,
+        698.6396484375
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "brick",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Triangular enclosure crosses the upper building wing; physical paving boundary identity is unresolved."
+    },
+    {
+      "candidate_id": "0b033918d1b653f18ab30b43a74652d094c6329100739c8423e21b384b9783bd",
+      "overlay_index": 1,
+      "native_bounds_points": [
+        832.2205601682734,
+        625.3196529258895,
+        865.8920302113213,
+        647.3983154296875
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "brick",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Small enclosure within the left building wing; external paving identity is unresolved."
+    },
+    {
+      "candidate_id": "8f3ecea0d548ab69890c1f6231103211415ee43f1e1f37b624da06e90973a897",
+      "overlay_index": 2,
+      "native_bounds_points": [
+        542.5259935425427,
+        911.881647814086,
+        620.3985302307065,
+        956.8609705538313
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "brick",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Enclosure extends along plan linework left of the building; boundary roles are unresolved."
+    },
+    {
+      "candidate_id": "101eb7d60d677d9a549aa34bba36289897a95e51efe3e940272d215cd13c66e2",
+      "overlay_index": 3,
+      "native_bounds_points": [
+        644.0908874293277,
+        1219.0782813616609,
+        685.1981393200164,
+        1240.4025842340093
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "stone",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Small enclosure within the right building wing; external paving identity is unresolved."
+    },
+    {
+      "candidate_id": "ace4b6cf289c34fe6434cc3a90e00696a20f776094925e28a3eb16ac5d18331d",
+      "overlay_index": 4,
+      "native_bounds_points": [
+        730.1123934587423,
+        1176.2389259476233,
+        770.201320706237,
+        1216.1979951393948
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "stone",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Small enclosure within the right building wing; external paving identity is unresolved."
+    },
+    {
+      "candidate_id": "7a22da45880208d3111b3be2c1675928a0afa08022d253978144b77fedbc1da9",
+      "overlay_index": 5,
+      "native_bounds_points": [
+        794.5242304065473,
+        213.02577915335965,
+        860.7095608282443,
+        463.5326334092315
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "brick",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Thin enclosure at the lower plan edge; physical surface boundary identity is unresolved."
+    },
+    {
+      "candidate_id": "5c48bf78794c270ead39951f7237ec8a9934c8e9c67ae6546233652f7641baa2",
+      "overlay_index": 6,
+      "native_bounds_points": [
+        845.3585446333229,
+        1245.957275390625,
+        910.0066947345152,
+        1476.2192249394511
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "asphalt",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Tapered enclosure crosses right-side plan linework and extends outward; physical paving boundary identity is unresolved."
+    },
+    {
+      "candidate_id": "a08dae689e74ea15d7650d4937f1bc64a2633582334e35623d65f44d30d1788f",
+      "overlay_index": 7,
+      "native_bounds_points": [
+        840.1778968334206,
+        1181.4930255892873,
+        868.67822265625,
+        1246.0707053704775
+      ],
+      "coordinate_frame": "pdf_native_points_y_up",
+      "candidate_material": "asphalt",
+      "status": "withheld_unverified_physical_boundary_context",
+      "context_observation": "Enclosure across the right building access/wing; physical paving boundary identity is unresolved."
+    }
+  ],
+  "coordinate_preflight": {
+    "method": "Text-only scan of available selected PDFs for plausible local six-digit grid numbers and grid/datum terminology; not a guarantee that graphical control marks are absent.",
+    "matching_pages": [
+      {
+        "sha": "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+        "title": "Fencing details",
+        "page": 1,
+        "numbers": [],
+        "words": [
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid"
+        ]
+      },
+      {
+        "sha": "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+        "title": "amended plan",
+        "page": 1,
+        "numbers": [],
+        "words": [
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid"
+        ]
+      },
+      {
+        "sha": "7162604b8645bb7da139a940c937a7132c958aa3e2ad6439684affb3b3a8ec9b",
+        "title": "Application form",
+        "page": 2,
+        "numbers": [
+          "407345",
+          "343810"
+        ],
+        "words": [
+          "Description of location or a grid reference ",
+          "Easting:",
+          "Northing:"
+        ]
+      },
+      {
+        "sha": "ef5418a83359e0ad6e83f88406461e6d41654bcdc2f637d3f0663bbfa18bf708",
+        "title": "Application form",
+        "page": 2,
+        "numbers": [
+          "407345",
+          "343810"
+        ],
+        "words": [
+          "Description of location or a grid reference ",
+          "Easting:",
+          "Northing:"
+        ]
+      },
+      {
+        "sha": "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+        "title": "Location plan",
+        "page": 1,
+        "numbers": [],
+        "words": [
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid",
+          "Cattle Grid"
+        ]
+      }
+    ],
+    "conclusion": "The extracted easting/northing pair appears on application forms as a location reference. It is not attached to identifiable points on a drawing and cannot establish or independently check a sheet transform. Cattle Grid text is not coordinate evidence."
+  },
+  "production_blockers": [
+    "Independent source-bound registration unavailable",
+    "No verified physical surface-boundary region in this mixed ground-floor drawing"
+  ],
+  "pipeline_policy": "Source-bound surface view regions with verified physical boundary roles are required; enclosure plus material text alone is insufficient. Whole polygons must match exactly one region without clipping or joining views.",
+  "validation": {
+    "tests_passed": 872,
+    "duration_seconds": 78.136,
+    "command": "PYTHONPATH=. runtime-python -m unittest discover -s tests -q",
+    "native_fixture_checks": [
+      "ten worker payloads",
+      "brick/asphalt/default stone materials",
+      "terrain contact",
+      "unlabelled enclosure unchanged"
+    ],
+    "scope_checks": [
+      "mixed view exclusion",
+      "holes",
+      "crossing scope edges",
+      "overlapping views",
+      "adjacent views cannot be joined",
+      "source/page/frame mismatches",
+      "physical boundary verification required",
+      "invalid/nonfinite geometry"
+    ]
+  }
+}

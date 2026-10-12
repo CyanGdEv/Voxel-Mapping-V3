@@ -1,0 +1,257 @@
+{
+  "status": "mapped_context_orientation_preference_only",
+  "shop_way_id": 834919978,
+  "station_complex_relation_id": 17436869,
+  "station_relation_name": null,
+  "station_complex_bng_centroid": [
+    407589.6121561349,
+    343587.3563978254
+  ],
+  "shop_mapped_centroid_bng": [
+    407562.21375207696,
+    343583.2490366677
+  ],
+  "station_complex_distance_from_shop_metres": 27.704565699587217,
+  "station_complex_bng_geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [
+            407576.8420937595,
+            343582.57073777943
+          ],
+          [
+            407580.8116786032,
+            343581.09730424924
+          ],
+          [
+            407591.65916054155,
+            343577.0981138556
+          ],
+          [
+            407589.8876814506,
+            343572.33408288856
+          ],
+          [
+            407588.85154311865,
+            343569.54022816906
+          ],
+          [
+            407576.0763188896,
+            343574.2706681433
+          ],
+          [
+            407574.0411518354,
+            343575.0239955179
+          ],
+          [
+            407576.8420937595,
+            343582.57073777943
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            407582.4228872384,
+            343585.32710771484
+          ],
+          [
+            407583.0780757572,
+            343587.04129482404
+          ],
+          [
+            407583.90713863756,
+            343589.178482149
+          ],
+          [
+            407599.10731044435,
+            343583.3949864214
+          ],
+          [
+            407599.70256407745,
+            343584.7975966156
+          ],
+          [
+            407600.7840235243,
+            343584.3542900302
+          ],
+          [
+            407598.85191698954,
+            343579.28964513395
+          ],
+          [
+            407597.2741460663,
+            343575.1488840431
+          ],
+          [
+            407580.8048618486,
+            343581.16404081444
+          ],
+          [
+            407581.9147914324,
+            343583.9913813343
+          ],
+          [
+            407582.4228872384,
+            343585.32710771484
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            407579.9592254644,
+            343598.2944884756
+          ],
+          [
+            407580.59443054895,
+            343599.9085237964
+          ],
+          [
+            407582.4131060435,
+            343604.5391302444
+          ],
+          [
+            407608.18592793494,
+            343594.4556893567
+          ],
+          [
+            407606.3538825042,
+            343589.8028034657
+          ],
+          [
+            407604.03653569706,
+            343590.71142424864
+          ],
+          [
+            407602.39088817756,
+            343591.3540977752
+          ],
+          [
+            407601.80906178185,
+            343589.9515080196
+          ],
+          [
+            407601.2406085796,
+            343588.58231258625
+          ],
+          [
+            407599.1005802546,
+            343583.4061005203
+          ],
+          [
+            407577.38495795935,
+            343591.76042485645
+          ],
+          [
+            407579.37081911403,
+            343596.802895148
+          ],
+          [
+            407579.9592254644,
+            343598.2944884756
+          ]
+        ]
+      ]
+    ]
+  },
+  "envelopes": [
+    {
+      "point_count": 505,
+      "hypotheses_ranked_by_context": [
+        {
+          "rotation_degrees": -154.75564001904897,
+          "rear_direction_bng_unit_vector": [
+            0.9044971311776602,
+            0.42647970607214447
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 16.71850177157773,
+          "station_context_facing": true,
+          "registration_verified": false
+        },
+        {
+          "rotation_degrees": 25.244359980951014,
+          "rear_direction_bng_unit_vector": [
+            -0.9044971311776602,
+            -0.42647970607214447
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 163.28149822842227,
+          "station_context_facing": false,
+          "registration_verified": false
+        }
+      ]
+    },
+    {
+      "point_count": 566,
+      "hypotheses_ranked_by_context": [
+        {
+          "rotation_degrees": -164.79590503849994,
+          "rear_direction_bng_unit_vector": [
+            0.9649977531999913,
+            0.2622581482413249
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 6.678236752126808,
+          "station_context_facing": true,
+          "registration_verified": false
+        },
+        {
+          "rotation_degrees": -159.40031696954216,
+          "rear_direction_bng_unit_vector": [
+            0.9360614821696956,
+            0.35183646996619405
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 12.073824821084548,
+          "station_context_facing": true,
+          "registration_verified": false
+        },
+        {
+          "rotation_degrees": 20.59968303045784,
+          "rear_direction_bng_unit_vector": [
+            -0.9360614821696956,
+            -0.35183646996619405
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 167.92617517891546,
+          "station_context_facing": false,
+          "registration_verified": false
+        },
+        {
+          "rotation_degrees": 15.204094961500058,
+          "rear_direction_bng_unit_vector": [
+            -0.9649977531999913,
+            -0.2622581482413249
+          ],
+          "rear_to_mapped_station_centroid_angle_degrees": 173.3217632478732,
+          "station_context_facing": false,
+          "registration_verified": false
+        }
+      ]
+    }
+  ],
+  "independent_access_guide_context": {
+    "url": "https://www.accessable.co.uk/alton-towers-resort/access-guides/wicker-man-shop",
+    "retrieved_date": "2026-10-10",
+    "access_route": "indexed page text; direct page and image access returned 403",
+    "survey_date_verified": false,
+    "front_opening_width_metres": 3,
+    "front_protective_canopy_reported": false,
+    "rear_ride_to_shop_access": "steps and platform lift",
+    "physical_canopy_identity_verified": false
+  },
+  "input_sha256": {
+    "../inputs/survey-recovery/park-osm.json": "49f601bb30fc11935457f26f6653b53be1b0172820a25c8c465ee84d91497d93",
+    "../inputs/survey-recovery/uk_os_OSTN15_NTv2_OSGBtoETRS.tif": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+    "evidence/wicker-shop-model-lidar-review.json": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+  },
+  "limitations": [
+    "Unnamed mapped station complex is contextual, not a positively surveyed attachment landmark.",
+    "OSM was already used to seed roof candidates; this comparison is not an independent geographic checkpoint.",
+    "Front canopy absence does not establish rear canopy absence.",
+    "Access-guide survey date and geographic control coordinates were not obtained.",
+    "Source layouts and current observations can differ; proposed opening widths are not automatically replaced."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

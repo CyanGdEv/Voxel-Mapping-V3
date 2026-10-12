@@ -1,0 +1,190 @@
+{
+  "world_sha256": "a7a0ae47d6013aabbe9084f175877bb30a6c1256b8504e364eb3635791d783bc",
+  "baseline_delivered_sha256": "4243a7d98a07c45259c4c215abe37f6895c9685dbf1ccf8fd91a0bb25da1af8d",
+  "feature_counts": {
+    "path": 11,
+    "wall": 6,
+    "barrier": 697
+  },
+  "material_counts": {
+    "stone_slab": 1006,
+    "stone": 2817,
+    "air": 4831,
+    "stone_slab_top": 885,
+    "stone_stairs_north": 114,
+    "stone_stairs_west": 53,
+    "stone_stairs_east": 16,
+    "stone_stairs_south": 34,
+    "stone_bricks": 193,
+    "green_stained_glass_pane": 1167
+  },
+  "world_verification": {
+    "touched_chunks": 123,
+    "overlay_records": 11116,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "1e7246be540f775ca3f995ec2b5cb5cb54054a167c1f30afd535a9fb69cb2578",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 3138
+  },
+  "preservation_checks": {
+    "overlay_cells_checked": 11116,
+    "overlay_mismatches": [],
+    "railing_base_columns_checked": 1167,
+    "floating_railing_columns": [],
+    "floating_slope_columns": [],
+    "foliage_cells_checked": 808657,
+    "foliage_mismatches": [],
+    "water_and_bed_columns": 38930,
+    "water_and_bed_cells_scanned": 667654,
+    "water_or_bed_changes": [],
+    "ride_physical_cells_checked": 21703,
+    "ride_physical_changes": [],
+    "protected_rider_air_cells": 5019,
+    "rider_obstructions": []
+  },
+  "local_tests": 355,
+  "withheld": {
+    "protected_path_column": 106,
+    "path_bank_cut_over_1_5m": 37,
+    "protected_wall_column": 2,
+    "protected_barrier_column": 23,
+    "barrier_intersects_path": 408
+  },
+  "spawn_minecraft_xyz": [
+    -399,
+    126,
+    97
+  ],
+  "spawn_verification": "Native metadata readback and two-block air clearance verified",
+  "visit_coordinates": [
+    {
+      "name": "Lower terrace lake promenade",
+      "minecraft_xyz": [
+        -343,
+        108,
+        175
+      ]
+    },
+    {
+      "name": "Pagoda lake west and south walk",
+      "minecraft_xyz": [
+        -347,
+        109,
+        212
+      ]
+    },
+    {
+      "name": "Lower gardens long stair flight",
+      "minecraft_xyz": [
+        -348,
+        114,
+        228
+      ]
+    },
+    {
+      "name": "Lower gardens cross terrace",
+      "minecraft_xyz": [
+        -364,
+        113,
+        220
+      ]
+    },
+    {
+      "name": "Pagoda east connection",
+      "minecraft_xyz": [
+        -257,
+        103,
+        205
+      ]
+    },
+    {
+      "name": "Conservatory north terrace",
+      "minecraft_xyz": [
+        -406,
+        132,
+        80
+      ]
+    },
+    {
+      "name": "Conservatory south promenade",
+      "minecraft_xyz": [
+        -400,
+        129,
+        100
+      ]
+    },
+    {
+      "name": "Middle terrace",
+      "minecraft_xyz": [
+        -391,
+        125,
+        114
+      ]
+    },
+    {
+      "name": "Bandstand terrace",
+      "minecraft_xyz": [
+        -353,
+        116,
+        135
+      ]
+    },
+    {
+      "name": "Bandstand stair connection",
+      "minecraft_xyz": [
+        -361,
+        124,
+        114
+      ]
+    },
+    {
+      "name": "Western cascade descent",
+      "minecraft_xyz": [
+        -448,
+        120,
+        129
+      ]
+    }
+  ],
+  "source_documents": [
+    {
+      "title": "Bridge/dam area plan",
+      "document_id": "1c3e0386c22b2718dee0ec9908caf3574b33bf7f5ba965b1016b72edb5a2cab1",
+      "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56607"
+    },
+    {
+      "title": "Lower Gardens area plan",
+      "document_id": "d1580757d1672ad2c353ed25aa9c57b0fdd55c1651ddd3bb20db9807cd0d5b42",
+      "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56610"
+    },
+    {
+      "title": "Upper Gardens Area plan",
+      "document_id": "5bfecfef211c8a20e4e005d75bd84d6095941b6bc7f8fb69f8e4b14184561883",
+      "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56609"
+    },
+    {
+      "title": "White bridge plan",
+      "document_id": "10f1a45f3b24235df29642147d1ee211163260f7c68cf9c898a9ec1bfe9dbba2",
+      "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56608"
+    },
+    {
+      "title": "Fencing details 373/82/10D",
+      "document_id": "deeab25a69238e98b4f72897af951a614189d171842c1a8573bafe318a6fe2b9",
+      "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56611",
+      "evidence": [
+        "RAL6008 dark green steel",
+        "1100 mm railing height; 900 mm stair handrails"
+      ]
+    }
+  ],
+  "registration_verified": false,
+  "limitations": [
+    "Absolute registration remains provisional.",
+    "Path widths are reviewed estimates; paving and retaining-wall materials are stone proxies where no finish is specified.",
+    "Rail routes include retained and proposed 2013 segments; drawing gaps remain gaps.",
+    "One-metre blocks round the 1.1 m railing / 0.9 m handrail spec to a 1 m proxy; green panes are the user-authorized colour proxy.",
+    "Collisions with foliage, water, ride cells and protected air are withheld; incomplete corridors are reported.",
+    "Landmark buildings and ponds are unchanged; pond-fill and planting-removal proposals are excluded."
+  ]
+}

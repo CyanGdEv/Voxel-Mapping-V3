@@ -1,0 +1,593 @@
+{
+  "focused_tests_passed": 56,
+  "park_world_blocks_added": 0,
+  "real_studies": [
+    {
+      "building_id": "mutiny-v12",
+      "floor_reference": null,
+      "native_geometry_unchanged": true,
+      "native_rows_sha256": "863221b1bff71b4ac77af47b622fc52053529912e7afa12abba23e3207b92b9e",
+      "roof_join_repairs": [
+        {
+          "added_half_height_interval": [
+            9,
+            10
+          ],
+          "cells_changed": [
+            [
+              0,
+              4,
+              -37
+            ]
+          ],
+          "column": [
+            0,
+            -37
+          ],
+          "evidence_class": "bounded_display_join_hypothesis",
+          "grounded_neighbour": [
+            1,
+            -37
+          ]
+        },
+        {
+          "added_half_height_interval": [
+            13,
+            14
+          ],
+          "cells_changed": [
+            [
+              13,
+              6,
+              -33
+            ]
+          ],
+          "column": [
+            13,
+            -33
+          ],
+          "evidence_class": "bounded_display_join_hypothesis",
+          "grounded_neighbour": [
+            14,
+            -33
+          ]
+        }
+      ],
+      "source_model_sha256": "0b1ae21c92ee239483bec23d94c4bbff836b6d6196bb149f3d7d758162f77926",
+      "spec_sha256": "47351bc73c6cc161d8471a32f8b24511045118031f2cd46196c979a041370a02",
+      "structural_review": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 440270,
+        "component_count": 1,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                -14,
+                -2,
+                -80
+              ],
+              [
+                77,
+                21,
+                23
+              ]
+            ],
+            "half_cells": 53772,
+            "id": 0,
+            "touches_declared_floor": true
+          }
+        ],
+        "declared_floor_anchor_cells": 2254,
+        "floor_connected_fraction": 1.0,
+        "floor_connected_half_cells": 53772,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": 1.0,
+        "occupied_half_cells": 53772,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [],
+        "roof_floor_connected_fraction": 1.0,
+        "roof_region_count": 10,
+        "roof_regions": [
+          {
+            "half_cells": 2496,
+            "id": 0,
+            "masonry_contact_half_cells": 400,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -12,
+              8,
+              -76
+            ]
+          },
+          {
+            "half_cells": 556,
+            "id": 1,
+            "masonry_contact_half_cells": 139,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              0,
+              8,
+              -78
+            ]
+          },
+          {
+            "half_cells": 8,
+            "id": 2,
+            "masonry_contact_half_cells": 2,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              0,
+              10,
+              -68
+            ]
+          },
+          {
+            "half_cells": 48,
+            "id": 3,
+            "masonry_contact_half_cells": 76,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              2,
+              6,
+              -60
+            ]
+          },
+          {
+            "half_cells": 1680,
+            "id": 4,
+            "masonry_contact_half_cells": 296,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              2,
+              8,
+              0
+            ]
+          },
+          {
+            "half_cells": 496,
+            "id": 5,
+            "masonry_contact_half_cells": 108,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              8,
+              6,
+              12
+            ]
+          },
+          {
+            "half_cells": 3796,
+            "id": 6,
+            "masonry_contact_half_cells": 581,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              26,
+              12,
+              -62
+            ]
+          },
+          {
+            "half_cells": 12,
+            "id": 7,
+            "masonry_contact_half_cells": 2,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              26,
+              16,
+              -72
+            ]
+          },
+          {
+            "half_cells": 420,
+            "id": 8,
+            "masonry_contact_half_cells": 188,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              36,
+              6,
+              12
+            ]
+          },
+          {
+            "half_cells": 4,
+            "id": 9,
+            "masonry_contact_half_cells": 6,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              64,
+              8,
+              12
+            ]
+          }
+        ],
+        "status": "passed_native_checks",
+        "unsupported_roof_regions": 0,
+        "version": "building-native-structure-v1"
+      },
+      "structural_review_before_repair": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 440126,
+        "component_count": 3,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                -14,
+                -2,
+                -80
+              ],
+              [
+                77,
+                21,
+                23
+              ]
+            ],
+            "half_cells": 53732,
+            "id": 0,
+            "touches_declared_floor": true
+          },
+          {
+            "bounds_half_grid": [
+              [
+                0,
+                10,
+                -76
+              ],
+              [
+                1,
+                12,
+                -69
+              ]
+            ],
+            "half_cells": 24,
+            "id": 1,
+            "touches_declared_floor": false
+          },
+          {
+            "bounds_half_grid": [
+              [
+                26,
+                14,
+                -66
+              ],
+              [
+                27,
+                14,
+                -63
+              ]
+            ],
+            "half_cells": 8,
+            "id": 2,
+            "touches_declared_floor": false
+          }
+        ],
+        "declared_floor_anchor_cells": 2254,
+        "floor_connected_fraction": 0.9994048061900156,
+        "floor_connected_half_cells": 53732,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": 0.8333333333333334,
+        "occupied_half_cells": 53764,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [
+          "roof_regions_without_floor_connection",
+          "geometry_without_floor_connection"
+        ],
+        "roof_floor_connected_fraction": 0.8333333333333334,
+        "roof_region_count": 12,
+        "roof_regions": [
+          {
+            "half_cells": 2496,
+            "id": 0,
+            "masonry_contact_half_cells": 400,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -12,
+              8,
+              -76
+            ]
+          },
+          {
+            "half_cells": 528,
+            "id": 1,
+            "masonry_contact_half_cells": 139,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              0,
+              8,
+              -78
+            ]
+          },
+          {
+            "half_cells": 24,
+            "id": 2,
+            "masonry_contact_half_cells": 0,
+            "reaches_declared_floor": false,
+            "sample_half_grid": [
+              0,
+              10,
+              -76
+            ]
+          },
+          {
+            "half_cells": 8,
+            "id": 3,
+            "masonry_contact_half_cells": 2,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              0,
+              10,
+              -68
+            ]
+          },
+          {
+            "half_cells": 48,
+            "id": 4,
+            "masonry_contact_half_cells": 76,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              2,
+              6,
+              -60
+            ]
+          },
+          {
+            "half_cells": 1680,
+            "id": 5,
+            "masonry_contact_half_cells": 296,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              2,
+              8,
+              0
+            ]
+          },
+          {
+            "half_cells": 496,
+            "id": 6,
+            "masonry_contact_half_cells": 108,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              8,
+              6,
+              12
+            ]
+          },
+          {
+            "half_cells": 3784,
+            "id": 7,
+            "masonry_contact_half_cells": 581,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              26,
+              12,
+              -62
+            ]
+          },
+          {
+            "half_cells": 8,
+            "id": 8,
+            "masonry_contact_half_cells": 0,
+            "reaches_declared_floor": false,
+            "sample_half_grid": [
+              26,
+              14,
+              -66
+            ]
+          },
+          {
+            "half_cells": 12,
+            "id": 9,
+            "masonry_contact_half_cells": 2,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              26,
+              16,
+              -72
+            ]
+          },
+          {
+            "half_cells": 420,
+            "id": 10,
+            "masonry_contact_half_cells": 188,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              36,
+              6,
+              12
+            ]
+          },
+          {
+            "half_cells": 4,
+            "id": 11,
+            "masonry_contact_half_cells": 6,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              64,
+              8,
+              12
+            ]
+          }
+        ],
+        "status": "needs_structural_review",
+        "unsupported_roof_regions": 2,
+        "version": "building-native-structure-v1"
+      },
+      "surface_cells": 7292
+    },
+    {
+      "building_id": "wicker-shop",
+      "floor_reference": {
+        "elevation_m": 0,
+        "kind": "drawn_local_zero",
+        "surveyed_datum_verified": false
+      },
+      "native_geometry_unchanged": true,
+      "native_rows_sha256": "07fa0e511412602784d65cc965fbb545035e57c91764e5ed63fc6b92f9ecb31d",
+      "roof_join_repairs": [],
+      "source_model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "spec_sha256": "ce23bd2783ca03c16dd7680fd87386c9d93a456ad159c3a4e0c9119c3b17c248",
+      "structural_review": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 43778,
+        "component_count": 1,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                -18,
+                -2,
+                -12
+              ],
+              [
+                15,
+                13,
+                11
+              ]
+            ],
+            "half_cells": 4568,
+            "id": 0,
+            "touches_declared_floor": true
+          }
+        ],
+        "declared_floor_anchor_cells": 192,
+        "floor_connected_fraction": 1.0,
+        "floor_connected_half_cells": 4568,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": 1.0,
+        "occupied_half_cells": 4568,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [],
+        "roof_floor_connected_fraction": 1.0,
+        "roof_region_count": 2,
+        "roof_regions": [
+          {
+            "half_cells": 24,
+            "id": 0,
+            "masonry_contact_half_cells": 12,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -18,
+              5,
+              -6
+            ]
+          },
+          {
+            "half_cells": 1248,
+            "id": 1,
+            "masonry_contact_half_cells": 148,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -16,
+              12,
+              -4
+            ]
+          }
+        ],
+        "status": "passed_native_checks",
+        "unsupported_roof_regions": 0,
+        "version": "building-native-structure-v1"
+      },
+      "structural_review_before_repair": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 43778,
+        "component_count": 1,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                -18,
+                -2,
+                -12
+              ],
+              [
+                15,
+                13,
+                11
+              ]
+            ],
+            "half_cells": 4568,
+            "id": 0,
+            "touches_declared_floor": true
+          }
+        ],
+        "declared_floor_anchor_cells": 192,
+        "floor_connected_fraction": 1.0,
+        "floor_connected_half_cells": 4568,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": 1.0,
+        "occupied_half_cells": 4568,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [],
+        "roof_floor_connected_fraction": 1.0,
+        "roof_region_count": 2,
+        "roof_regions": [
+          {
+            "half_cells": 24,
+            "id": 0,
+            "masonry_contact_half_cells": 12,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -18,
+              5,
+              -6
+            ]
+          },
+          {
+            "half_cells": 1248,
+            "id": 1,
+            "masonry_contact_half_cells": 148,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -16,
+              12,
+              -4
+            ]
+          }
+        ],
+        "status": "passed_native_checks",
+        "unsupported_roof_regions": 0,
+        "version": "building-native-structure-v1"
+      },
+      "surface_cells": 646
+    }
+  ],
+  "regression_tests_passed": 1151,
+  "training_labels_generated": 0,
+  "version": "building-native-structure-validation-v1"
+}

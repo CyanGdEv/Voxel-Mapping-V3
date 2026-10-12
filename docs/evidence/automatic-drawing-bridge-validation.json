@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-10",
+  "scope": "synthetic native PDF only; not real park registration",
+  "version": "explicit-drawing-bridge-v1",
+  "focused_regression_tests": 63,
+  "final_bridge_tests": 13,
+  "result": "passed",
+  "synthetic_pipeline": {
+    "survey_controls": 3,
+    "independent_checkpoints": 2,
+    "accepted_features": 3,
+    "families": [
+      "path",
+      "wall",
+      "roof_surface"
+    ],
+    "compiled_voxel_cells": 12,
+    "scheduled_chunks": 4,
+    "workers": 2,
+    "cumulative_previews": 4,
+    "final_native_blocks_verified": [
+      "paving",
+      "wall",
+      "roof at two different heights"
+    ]
+  },
+  "real_wicker": {
+    "accepted_controls": 0,
+    "accepted_checkpoints": 0,
+    "world_geometry_additions": 0
+  },
+  "not_demonstrated": [
+    "2.5 million feature production throughput",
+    "generic drawing semantics",
+    "whole park world generation",
+    "ten-worker GitHub Actions execution on real park inputs"
+  ]
+}

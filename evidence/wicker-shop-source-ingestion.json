@@ -1,0 +1,249 @@
+{
+  "status": "revised_source_review_candidates_only",
+  "source_catalogue_sha256": "91143d83e937eecd86edd67d747161a99ed72ffc6abb354a05e275094652c803",
+  "documents": [
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "drawing_number": "2967-26",
+      "role": "shop-elevations",
+      "native_page_rotation": 90,
+      "native_media_box_points": [
+        0.0,
+        0.0,
+        1684.0,
+        2384.0
+      ],
+      "scale_review": {
+        "status": "withheld",
+        "page_dimensions_mm": [
+          594.0777777777777,
+          841.0222222222221
+        ],
+        "explicit_paper_scales": [],
+        "denominator": null,
+        "size_tolerance_mm": 2,
+        "physical_geometry_verified": false
+      },
+      "raster_image_placements": 85,
+      "extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 282,
+        "candidates": 231,
+        "geometry_types": {
+          "LineString": 181,
+          "Polygon": 50
+        },
+        "retained_points": 808,
+        "curved_candidates": 7,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 14,
+          "Crop boundary/frame candidate": 4,
+          "Small symbol or sheet enclosure candidate": 12
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "solid_straight_lines": 181,
+          "segments": 181,
+          "intersection_pairs": 84,
+          "cut_edges": 0,
+          "dangles": 152,
+          "invalid_rings": 0,
+          "recovered_faces": 12
+        },
+        "recovered_faces": 12
+      },
+      "candidate_count": 243,
+      "horizontal_plan_eligible": false,
+      "native_metadata_checks": {
+        "drawing_number_reproduced": true,
+        "planning_status_printed": true,
+        "revision_P1_printed": false,
+        "shop_floor_182_50_printed": true,
+        "shop_internal_area_170m2_printed": false
+      },
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "drawing_number": "2967-21",
+      "role": "ground-floor-plan",
+      "native_page_rotation": 90,
+      "native_media_box_points": [
+        0.0,
+        0.0,
+        1684.0,
+        2384.0
+      ],
+      "scale_review": {
+        "status": "single_native_page_scale",
+        "page_dimensions_mm": [
+          594.0777777777777,
+          841.0222222222221
+        ],
+        "explicit_paper_scales": [
+          {
+            "text": "1 : 100\n@A1",
+            "text_range": [
+              1589,
+              1600
+            ],
+            "denominator": 100,
+            "paper": "A1",
+            "native_page_size_matches": true
+          }
+        ],
+        "denominator": 100,
+        "size_tolerance_mm": 2,
+        "physical_geometry_verified": false
+      },
+      "raster_image_placements": 1,
+      "extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 5782,
+        "candidates": 390,
+        "geometry_types": {
+          "Polygon": 48,
+          "LineString": 342
+        },
+        "retained_points": 1347,
+        "curved_candidates": 24,
+        "rejections": {
+          "unsupported_clipping_or_compositing_scope": 66,
+          "Short line/symbol candidate": 3276,
+          "A linearring requires at least 4 coordinates.": 1911,
+          "Small symbol or sheet enclosure candidate": 2
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "curved_lines_deferred": 12,
+          "solid_straight_lines": 330,
+          "segments": 330,
+          "intersection_pairs": 267,
+          "cut_edges": 12,
+          "dangles": 371,
+          "invalid_rings": 0,
+          "small_faces_deferred": 6,
+          "recovered_faces": 17
+        },
+        "recovered_faces": 17
+      },
+      "candidate_count": 407,
+      "horizontal_plan_eligible": true,
+      "native_metadata_checks": {
+        "drawing_number_reproduced": true,
+        "planning_status_printed": true,
+        "revision_P1_printed": true,
+        "shop_floor_182_50_printed": true,
+        "shop_internal_area_170m2_printed": true
+      },
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "drawing_number": "2967-48",
+      "role": "roof-plan",
+      "native_page_rotation": 90,
+      "native_media_box_points": [
+        0.0,
+        0.0,
+        1684.0,
+        2384.0
+      ],
+      "scale_review": {
+        "status": "single_native_page_scale",
+        "page_dimensions_mm": [
+          594.0777777777777,
+          841.0222222222221
+        ],
+        "explicit_paper_scales": [
+          {
+            "text": "1 : 100\n@A1",
+            "text_range": [
+              1601,
+              1612
+            ],
+            "denominator": 100,
+            "paper": "A1",
+            "native_page_size_matches": true
+          }
+        ],
+        "denominator": 100,
+        "size_tolerance_mm": 2,
+        "physical_geometry_verified": false
+      },
+      "raster_image_placements": 1,
+      "extraction": {
+        "status": "unplaced_geometry_candidates",
+        "raw_paths": 7711,
+        "candidates": 2979,
+        "geometry_types": {
+          "LineString": 2951,
+          "Polygon": 28
+        },
+        "retained_points": 6469,
+        "curved_candidates": 24,
+        "rejections": {
+          "Small symbol or sheet enclosure candidate": 2,
+          "Short line/symbol candidate": 4483,
+          "A linearring requires at least 4 coordinates.": 113,
+          "unsupported_clipping_or_compositing_scope": 13,
+          "Crop boundary/frame candidate": 4
+        },
+        "world_geometry_additions": 0
+      },
+      "linework_recovery": {
+        "status": "enclosed_faces_only",
+        "counts": {
+          "curved_lines_deferred": 12,
+          "solid_straight_lines": 2939,
+          "segments": 2939,
+          "intersection_pairs": 5945,
+          "cut_edges": 84,
+          "dangles": 1395,
+          "invalid_rings": 0,
+          "small_faces_deferred": 55,
+          "incomplete_source_coverage": 2,
+          "recovered_faces": 1995
+        },
+        "recovered_faces": 1995
+      },
+      "candidate_count": 4974,
+      "horizontal_plan_eligible": true,
+      "native_metadata_checks": {
+        "drawing_number_reproduced": true,
+        "planning_status_printed": true,
+        "revision_P1_printed": true,
+        "shop_floor_182_50_printed": false,
+        "shop_internal_area_170m2_printed": false
+      },
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  ],
+  "historical_documents_excluded": [
+    "92b421dc7427c4bdac86fb676a12d1b435937e00dfcbbbffd55ccc1709f3ec24",
+    "0efcaa307161c37c4cfeae55be06d26d815b228667bf6ed9d9d38afe16035e80",
+    "e9a435090c7b42526f2cf7cfd2f067d0399f64ea7b78c28c0594480da01020d3"
+  ],
+  "stream_sha256": {
+    "plan-candidates.jsonl": "5ca88ca2538446c33c6386915b5126b327b466f7470d6a493bd79c17d981e0f5",
+    "elevation-candidates.jsonl": "5d488670497982c3cda1972a574c523709cf91bebe58338c456e2a69bd39a036"
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Elevation geometry is quarantined from horizontal plan matching",
+    "Proposed materials and levels are not accepted as-built attributes",
+    "Image/clipped paint is not silently converted into complete vector outlines",
+    "Printed scale alone does not establish physical edge dimensions or independent registration"
+  ]
+}

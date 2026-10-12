@@ -1,0 +1,923 @@
+{
+  "version": "local-wing-surface-review-v1",
+  "component_id": "mutiny-north-courtyard-range",
+  "reviewed_trace_seed": true,
+  "trace_review": "Visual source review on checksum-pinned full-page 1800-pixel renders; Wicker-style seed, not automatic feature discovery; source-label-corrected derivative: geometry unchanged, native w.3.05/w.3.06 labels reviewed; explicit source/render review of inner arch silhouette and continuous floor datum, for isolated provisional preview only",
+  "endpoint_sampling_bound_pixels": 2,
+  "documents": {
+    "plan": {
+      "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 100,
+      "caption": "Ground Floor Plan 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c"
+    },
+    "elevation": {
+      "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 50,
+      "caption": "North Range Courtyard (south) Elevation 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "ea0d87e36f679cc3528a84f34a055d1a02631a41b195d1a1bd9be5359967d449"
+    },
+    "roof": {
+      "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 200,
+      "caption": "Existing Roof Plan",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "1bcc21997a7408d98b46cc3cbfc1bb3ae9e50940beefcfd9d01a759dcb5d8e55"
+    }
+  },
+  "plan_trace": {
+    "facade_endpoints": [
+      [
+        1059,
+        305
+      ],
+      [
+        1059,
+        991
+      ]
+    ],
+    "rear_point": [
+      1184,
+      700
+    ],
+    "view_scope_review": "right courtyard range between adjacent internal courtyard wing faces; ignores projecting outer annexes"
+  },
+  "elevation_trace": {
+    "baseline_endpoints": [
+      [
+        139.4091297191917,
+        408.08051978770527
+      ],
+      [
+        1512.0597597620508,
+        408.08051978770527
+      ]
+    ],
+    "eave_point": [
+      500,
+      238
+    ],
+    "ridge_point": [
+      500,
+      108
+    ],
+    "view_scope_review": "upper north-range courtyard elevation, excluding adjacent return gable and tower"
+  },
+  "roof_trace": {
+    "cross_section_points": [
+      [
+        770,
+        740
+      ],
+      [
+        802,
+        740
+      ],
+      [
+        835,
+        740
+      ]
+    ],
+    "review": "2012 roof plan used only for relative ridge fraction; correspondence with 2017 floor remains a hypothesis"
+  },
+  "openings": [
+    {
+      "id": "d3.01",
+      "kind": "door",
+      "points_pixels": [
+        [
+          195,
+          330
+        ],
+        [
+          236,
+          330
+        ],
+        [
+          236,
+          408.08051978770527
+        ],
+        [
+          195,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.01",
+      "kind": "window",
+      "points_pixels": [
+        [
+          273,
+          324
+        ],
+        [
+          365,
+          324
+        ],
+        [
+          365,
+          392
+        ],
+        [
+          273,
+          392
+        ]
+      ]
+    },
+    {
+      "id": "w3.02",
+      "kind": "window",
+      "points_pixels": [
+        [
+          397,
+          322
+        ],
+        [
+          493,
+          322
+        ],
+        [
+          493,
+          357
+        ],
+        [
+          397,
+          357
+        ]
+      ]
+    },
+    {
+      "id": "w3.03",
+      "kind": "window",
+      "points_pixels": [
+        [
+          543,
+          323
+        ],
+        [
+          577,
+          323
+        ],
+        [
+          577,
+          358
+        ],
+        [
+          543,
+          358
+        ]
+      ]
+    },
+    {
+      "id": "w3.04",
+      "kind": "window",
+      "points_pixels": [
+        [
+          655,
+          323
+        ],
+        [
+          690,
+          323
+        ],
+        [
+          690,
+          357
+        ],
+        [
+          655,
+          357
+        ]
+      ]
+    },
+    {
+      "id": "d3.02",
+      "kind": "door",
+      "points_pixels": [
+        [
+          971,
+          326
+        ],
+        [
+          1022,
+          326
+        ],
+        [
+          1022,
+          408.08051978770527
+        ],
+        [
+          971,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.05",
+      "kind": "window",
+      "points_pixels": [
+        [
+          920,
+          327
+        ],
+        [
+          954,
+          327
+        ],
+        [
+          954,
+          359
+        ],
+        [
+          920,
+          359
+        ]
+      ]
+    },
+    {
+      "id": "w3.06",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1061,
+          327
+        ],
+        [
+          1125,
+          327
+        ],
+        [
+          1125,
+          365
+        ],
+        [
+          1061,
+          365
+        ]
+      ]
+    },
+    {
+      "id": "d3.03",
+      "kind": "door",
+      "points_pixels": [
+        [
+          1304,
+          328
+        ],
+        [
+          1365,
+          328
+        ],
+        [
+          1365,
+          408.08051978770527
+        ],
+        [
+          1304,
+          408.08051978770527
+        ]
+      ]
+    },
+    {
+      "id": "w3.07",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1402,
+          334
+        ],
+        [
+          1471,
+          334
+        ],
+        [
+          1471,
+          377
+        ],
+        [
+          1402,
+          377
+        ]
+      ]
+    },
+    {
+      "id": "w3.10",
+      "kind": "window",
+      "points_pixels": [
+        [
+          283,
+          246
+        ],
+        [
+          341,
+          246
+        ],
+        [
+          341,
+          283
+        ],
+        [
+          283,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.11",
+      "kind": "window",
+      "points_pixels": [
+        [
+          443,
+          246
+        ],
+        [
+          487,
+          246
+        ],
+        [
+          487,
+          283
+        ],
+        [
+          443,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.12",
+      "kind": "window",
+      "points_pixels": [
+        [
+          639,
+          246
+        ],
+        [
+          684,
+          246
+        ],
+        [
+          684,
+          283
+        ],
+        [
+          639,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.14",
+      "kind": "window",
+      "points_pixels": [
+        [
+          970,
+          246
+        ],
+        [
+          1026,
+          246
+        ],
+        [
+          1026,
+          290
+        ],
+        [
+          970,
+          290
+        ]
+      ]
+    },
+    {
+      "id": "w3.15",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1150,
+          246
+        ],
+        [
+          1208,
+          246
+        ],
+        [
+          1208,
+          291
+        ],
+        [
+          1150,
+          291
+        ]
+      ]
+    },
+    {
+      "id": "archway-3",
+      "kind": "archway",
+      "points_pixels": [
+        [
+          898.6704831584866,
+          318.7449673503197
+        ],
+        [
+          897.7644797621833,
+          315.84561823137665
+        ],
+        [
+          896.3147821609164,
+          312.946292154229
+        ],
+        [
+          894.5027753683098,
+          310.22818979813746
+        ],
+        [
+          892.5094757292609,
+          307.69126507951114
+        ],
+        [
+          890.1537747316906,
+          305.51676476120156
+        ],
+        [
+          889.6230005088291,
+          305.12753003113914
+        ],
+        [
+          887.4356723755991,
+          303.52348816394806
+        ],
+        [
+          887.2845949065421,
+          303.44795006976284
+        ],
+        [
+          884.5362804314854,
+          302.0738044809912
+        ],
+        [
+          881.9993754962343,
+          300.8053627660611
+        ],
+        [
+          881.6828931333134,
+          300.67679086292515
+        ],
+        [
+          878.7553320695755,
+          299.48746045589206
+        ],
+        [
+          876.2007694255299,
+          298.44966176849084
+        ],
+        [
+          870.4020711876437,
+          296.4563621294419
+        ],
+        [
+          870.2322462539263,
+          296.41004641689284
+        ],
+        [
+          864.422172270497,
+          294.8254868907097
+        ],
+        [
+          864.2477810736129,
+          294.7895825905704
+        ],
+        [
+          858.2611648412712,
+          293.5570360522943
+        ],
+        [
+          855.0168606065687,
+          293.0799417667888
+        ],
+        [
+          852.1000652448638,
+          292.6510096141956
+        ],
+        [
+          851.769749270797,
+          292.6218641597393
+        ],
+        [
+          848.84901151851,
+          292.36415264766805
+        ],
+        [
+          845.7591099308123,
+          292.09151495204014
+        ],
+        [
+          839.7778660520489,
+          291.5637594550408
+        ],
+        [
+          827.2745583471551,
+          290.8389106544073
+        ],
+        [
+          814.952451321522,
+          291.5637594550408
+        ],
+        [
+          804.6226126202193,
+          292.46200464330497
+        ],
+        [
+          802.4490514494464,
+          292.6510096141956
+        ],
+        [
+          801.5357707762462,
+          292.7853129836471
+        ],
+        [
+          798.4417785861104,
+          293.24030298659534
+        ],
+        [
+          796.287951853039,
+          293.5570360522943
+        ],
+        [
+          792.2904285111199,
+          294.40500021680043
+        ],
+        [
+          790.3081451030739,
+          294.8254868907097
+        ],
+        [
+          789.2089669662236,
+          295.1252615911156
+        ],
+        [
+          784.3282461859271,
+          296.4563621294419
+        ],
+        [
+          783.2410369625803,
+          296.81876520389085
+        ],
+        [
+          778.3483472687803,
+          298.44966176849084
+        ],
+        [
+          777.7648144141948,
+          298.6943706388451
+        ],
+        [
+          774.9036271047692,
+          299.89423095323787
+        ],
+        [
+          772.7309418773366,
+          300.8053627660611
+        ],
+        [
+          772.0025180736831,
+          301.15782927028596
+        ],
+        [
+          769.0882025929616,
+          302.5679954188196
+        ],
+        [
+          767.1135364858928,
+          303.52348816394806
+        ],
+        [
+          764.5765426418802,
+          305.51676476120156
+        ],
+        [
+          762.2209338114917,
+          307.69126507951114
+        ],
+        [
+          760.2275420052611,
+          310.22818979813746
+        ],
+        [
+          758.4155352126545,
+          312.946292154229
+        ],
+        [
+          757.6906971475457,
+          314.39593372226534
+        ],
+        [
+          756.9658376113875,
+          315.84561823137665
+        ],
+        [
+          755.9554602251711,
+          318.1549945756986
+        ],
+        [
+          755.6973406893812,
+          318.7449673503197
+        ],
+        [
+          755.8785413686419,
+          318.7449673503197
+        ],
+        [
+          755.8785413686419,
+          408.08051978770527
+        ],
+        [
+          898.851776004929,
+          408.08051978770527
+        ],
+        [
+          898.851776004929,
+          318.7449673503197
+        ]
+      ],
+      "curve_status": "Original straight source-network inner outline, with one explicit hypothetical right-spring connector; physical identity unverified"
+    }
+  ],
+  "source_label_correction": {
+    "parent_seed_sha256": "2b0c74f7a94385b76580a62be0475f86460488ed8f7fac07379c1363a8d0191a",
+    "native_inventory_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+    "changes": {
+      "w3.06-a": "w3.05",
+      "w3.06-b": "w3.06"
+    },
+    "geometry_points_changed": false,
+    "boarded_w3_13_carved": false
+  },
+  "aperture_proposal_review": {
+    "parent_seed_sha256": "4f2fea600e48b84f54a361d5f7605700f1ce68143c47699b03d0958db61a00eb",
+    "proposal_report_sha256": "5ad4518fdeca7d8733624903f3e5b6cae5f07d99b53224224da4ee5e18b48c29",
+    "opening_id": "archway-3",
+    "geometry_identity": "80b78da8dfc0b45bed1f5989a4c6fad14dd317dfc08ac5b58be8042521718d11",
+    "support_proposal_ids": [
+      "b3dee154e2e29d3fba5582e34e5ed374edde3baad8ca3f612e1414f72d82ac95",
+      "1e7e366e4be0cadfb27dcaf2f14e4721edb384026b0adaa85b08538c91f62427"
+    ],
+    "selection_mode": "Explicit source/render review of the inner arch silhouette; all same-shape provenance variants retained",
+    "physical_identity_verified": false,
+    "automatic_aperture_reconstruction": false,
+    "hypothesis_connectors": [
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121",
+            "vertex_index": 1
+          }
+        ],
+        "id": "a4c94e760fff0b5cf8000bd9886f120ca27cbd5864404d1f60fba545b390e82b",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      },
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "995beb3094d8bc9849cdbe9eccda5ea02a743cab6c0c4004449c8c875c323286",
+            "vertex_index": 0
+          }
+        ],
+        "id": "7808415f18680f5856a47f6f641171fec732813ed8ebff846a7648643455a209",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      }
+    ],
+    "boundary_hausdorff_from_parent_pixels": 3.523633423094352,
+    "parent_two_pixel_fidelity_check_passed": false,
+    "sampling_bound_relaxed": false,
+    "source_coordinates_changed": false,
+    "floor_datum_review": {
+      "source_component": {
+        "id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3",
+        "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+        "page": 1,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              540.47998046875,
+              184.6396484375
+            ],
+            [
+              540.47998046875,
+              2002.63916015625
+            ]
+          ]
+        },
+        "coordinate_frame": "pdf_native_points_y_up",
+        "paint_references": [
+          {
+            "ordinal": 130,
+            "subpath": 0,
+            "stroke_style": {
+              "width_pdf_points": 1.9199999570846558,
+              "dashes_pdf": "[] 0"
+            },
+            "curve_approximation": {
+              "cubic_segments": 0,
+              "chord_error_bound_pdf_points": 0,
+              "requested_tolerance_pdf_points": 0.25,
+              "method": "adaptive_de_casteljau_control_hull_to_chord",
+              "points": 2
+            }
+          }
+        ],
+        "extraction_kind": "drawing_components",
+        "extraction_version": "drawing-components-v1",
+        "extraction_contract": "e863865b8f194745da6b35193f028fe67cd908fe946679bf583207e74be317c3",
+        "rendering_status": "supported_straight_unclipped_polyline",
+        "curve_approximation": {
+          "cubic_segments": 0,
+          "chord_error_bound_pdf_points": 0,
+          "requested_tolerance_pdf_points": 0.25,
+          "method": "adaptive_de_casteljau_control_hull_to_chord",
+          "points": 2
+        },
+        "stroke_style": {
+          "width_pdf_points": 1.9199999570846558,
+          "dashes_pdf": "[] 0"
+        },
+        "semantic_status": "unclassified",
+        "line_role": "unclassified_stroked_path",
+        "physical_identity_verified": false,
+        "world_geometry_additions": 0,
+        "parent_references": [
+          {
+            "candidate_id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3",
+            "component_index": null,
+            "extraction_contract": "43799bad5b0ed5608c2e557cef698666050c847cce5a2a226fabb6dc8da649ec"
+          }
+        ],
+        "component_semantics_verified": false
+      },
+      "old_baseline_pixels": [
+        [
+          139,
+          408
+        ],
+        [
+          1512,
+          408
+        ]
+      ],
+      "new_baseline_pixels": [
+        [
+          139.4091297191917,
+          408.08051978770527
+        ],
+        [
+          1512.0597597620508,
+          408.08051978770527
+        ]
+      ],
+      "door_bottom_trace_revisions": [
+        {
+          "id": "d3.01",
+          "vertex_index": 2,
+          "old_pixel": [
+            236,
+            408
+          ],
+          "new_pixel": [
+            236,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.01",
+          "vertex_index": 3,
+          "old_pixel": [
+            195,
+            408
+          ],
+          "new_pixel": [
+            195,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.02",
+          "vertex_index": 2,
+          "old_pixel": [
+            1022,
+            408
+          ],
+          "new_pixel": [
+            1022,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.02",
+          "vertex_index": 3,
+          "old_pixel": [
+            971,
+            408
+          ],
+          "new_pixel": [
+            971,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.03",
+          "vertex_index": 2,
+          "old_pixel": [
+            1365,
+            408
+          ],
+          "new_pixel": [
+            1365,
+            408.08051978770527
+          ]
+        },
+        {
+          "id": "d3.03",
+          "vertex_index": 3,
+          "old_pixel": [
+            1304,
+            408
+          ],
+          "new_pixel": [
+            1304,
+            408.08051978770527
+          ]
+        }
+      ],
+      "review": "Continuous source floor line reviewed; manual door bottoms follow refined drawing-relative datum. No source endpoint moved and no absolute elevation inferred."
+    },
+    "boarded_w3_13_carved": false,
+    "world_placement_eligible": false
+  }
+}

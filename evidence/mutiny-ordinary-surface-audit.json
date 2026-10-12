@@ -1,0 +1,147 @@
+{
+  "contract": {
+    "documents_sha256": "730e3249c8e3764b53aa45201785339be0928b576d0752e3a9e47c2e9bddc6f8",
+    "glyph_version": "source-font-glyph-raster-screen-v2",
+    "max_pages": 10,
+    "version": "ordinary-surface-labels-v1"
+  },
+  "label_statuses": {
+    "unique_contained_surface_label": 8,
+    "withheld_no_enclosure": 46
+  },
+  "labels": 54,
+  "output_sha256": {
+    "labels.jsonl": "c3c17671046c62651f612119a919f1934e8cb52e5ab23d6279bf18ec78e24b3c",
+    "surfaces.jsonl": "e3f951a321fdc1a633f1257697ee46ebf57138a4e59e16ce2f9d7470002cbec8"
+  },
+  "pages": [
+    {
+      "covered_boundaries_withheld": 8,
+      "document_sha256": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df",
+      "extraction": {
+        "candidates": 1995,
+        "curved_candidates": 4,
+        "geometry_types": {
+          "LineString": 1974,
+          "Polygon": 21
+        },
+        "raw_paths": 16253,
+        "rejections": {
+          "A linearring requires at least 4 coordinates.": 205,
+          "Crop boundary/frame candidate": 4,
+          "Paint group crosses clipping boundary": 99,
+          "Short line/symbol candidate": 13475,
+          "unsupported_clipping_or_compositing_scope": 33
+        },
+        "retained_points": 4293,
+        "status": "unplaced_geometry_candidates",
+        "world_geometry_additions": 0
+      },
+      "label_statuses": {
+        "withheld_no_enclosure": 5
+      },
+      "labels": 5,
+      "page": 1,
+      "polygons": 238,
+      "recovery": {
+        "counts": {
+          "cut_edges": 73,
+          "dangles": 2014,
+          "intersection_pairs": 1925,
+          "invalid_rings": 0,
+          "recovered_faces": 234,
+          "segments": 1974,
+          "small_faces_deferred": 120,
+          "solid_straight_lines": 1974
+        },
+        "recovered_faces": 234,
+        "status": "enclosed_faces_only"
+      },
+      "source_state": "existing",
+      "surface_candidates": 0,
+      "title": "3023-01 Existing Site plan",
+      "version": "ordinary-surface-labels-v1",
+      "world_geometry_additions": 0
+    },
+    {
+      "covered_boundaries_withheld": 4,
+      "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+      "extraction": {
+        "candidates": 1664,
+        "curved_candidates": 2,
+        "geometry_types": {
+          "LineString": 1653,
+          "Polygon": 11
+        },
+        "raw_paths": 9470,
+        "rejections": {
+          "A linearring requires at least 4 coordinates.": 66,
+          "Crop boundary/frame candidate": 4,
+          "Short line/symbol candidate": 7563,
+          "Small symbol or sheet enclosure candidate": 4,
+          "Text glyph/annotation mask": 3,
+          "unsupported_clipping_or_compositing_scope": 79
+        },
+        "retained_points": 3481,
+        "status": "unplaced_geometry_candidates",
+        "world_geometry_additions": 0
+      },
+      "label_statuses": {
+        "unique_contained_surface_label": 8,
+        "withheld_no_enclosure": 41
+      },
+      "labels": 49,
+      "page": 1,
+      "polygons": 218,
+      "recovery": {
+        "counts": {
+          "cut_edges": 31,
+          "dangles": 1773,
+          "intersection_pairs": 1463,
+          "invalid_rings": 0,
+          "recovered_faces": 217,
+          "segments": 1653,
+          "small_faces_deferred": 26,
+          "solid_straight_lines": 1653
+        },
+        "recovered_faces": 217,
+        "status": "enclosed_faces_only"
+      },
+      "source_state": "existing",
+      "surface_candidates": 8,
+      "title": "3023-08 Existing ground floor plan",
+      "version": "ordinary-surface-labels-v1",
+      "world_geometry_additions": 0
+    }
+  ],
+  "registered_features": 0,
+  "status": "unplaced_ordinary_surface_evidence",
+  "surface_candidates": 8,
+  "world_geometry_additions": 0,
+  "candidate_material_counts": {
+    "brick": 4,
+    "asphalt": 2,
+    "stone_default": 2
+  },
+  "production_blockers": [
+    "No independent accepted sheet registration",
+    "Horizontal surface label scope not verified for mixed ground-floor sheet"
+  ],
+  "fixture_native_validation": {
+    "automatic_recipe": true,
+    "per_polygon_bindings": false,
+    "worker_payloads": 10,
+    "native_cycles": 1,
+    "cold_material_and_terrain_contact_checks": [
+      "brick",
+      "asphalt",
+      "stone_default"
+    ],
+    "area_status": "partial_area_preview"
+  },
+  "regression": {
+    "tests_passed": 865,
+    "duration_seconds": 75.283,
+    "command": "PYTHONPATH=. runtime-python -m unittest discover -s tests -q"
+  }
+}

@@ -1,0 +1,4133 @@
+{
+  "accepted_openings": 0,
+  "accepted_registration_points": 0,
+  "discovery_tolerance_nominal_m": 0.25,
+  "endcap_recovery": {
+    "comparisons": 1553,
+    "endcaps_examined": 115,
+    "gaps": [
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                932.2783203125,
+                1397.7791748046875
+              ],
+              [
+                923.99853515625,
+                1397.7791748046875
+              ],
+              [
+                923.99853515625,
+                1359.138916015625
+              ],
+              [
+                932.2783203125,
+                1359.138916015625
+              ],
+              [
+                932.2783203125,
+                1397.7791748046875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "a43ef212ec66f9109d682d0d94d99ea4fb5f163d6b2c6cb96e9cd5e4f96f09b9",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.3631424628363715,
+        "parent_fill_candidate_ids": [
+          "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+          "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            928.138427734375,
+            1397.7791748046875
+          ],
+          [
+            928.138427734375,
+            1359.138916015625
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  928.138427734375,
+                  1397.7791749046876
+                ],
+                [
+                  928.138427734375,
+                  1406.0589599609375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                932.2783203125,
+                1397.7791748046875
+              ],
+              [
+                923.99853515625,
+                1397.7791748046875
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  928.138427734375,
+                  1359.138915915625
+                ],
+                [
+                  928.138427734375,
+                  1350.859130859375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                923.99853515625,
+                1359.138916015625
+              ],
+              [
+                932.2783203125,
+                1359.138916015625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                932.2783203125,
+                1293.1400146484375
+              ],
+              [
+                923.99853515625,
+                1293.1400146484375
+              ],
+              [
+                923.99853515625,
+                1267.219482421875
+              ],
+              [
+                932.2783203125,
+                1267.219482421875
+              ],
+              [
+                932.2783203125,
+                1293.1400146484375
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "8eb845a7f0fd19e2437e1e151e865620fe62bd03ed8664b50acb7de38148e58b",
+        "intersecting_fill_candidates": [
+          {
+            "fill_candidate_id": "820f3a4238a18bf9b4e1a83ffbdbc46c8d156c97a3b04f052b34c131cb0b07f9",
+            "gap_area_fraction": 0.18247109798777225
+          }
+        ],
+        "nominal_gap_width_m": 0.9144187757703992,
+        "parent_fill_candidate_ids": [
+          "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+          "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            928.138427734375,
+            1293.1400146484375
+          ],
+          [
+            928.138427734375,
+            1267.219482421875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  928.138427734375,
+                  1293.1400147484376
+                ],
+                [
+                  928.138427734375,
+                  1301.4197998046875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                932.2783203125,
+                1293.1400146484375
+              ],
+              [
+                923.99853515625,
+                1293.1400146484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  928.138427734375,
+                  1267.219482321875
+                ],
+                [
+                  928.138427734375,
+                  1258.939697265625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 3,
+            "source_endpoints": [
+              [
+                923.99853515625,
+                1267.219482421875
+              ],
+              [
+                932.2783203125,
+                1267.219482421875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                1040.0379638671875,
+                1675.45849609375
+              ],
+              [
+                1037.5174560546875,
+                1677.97900390625
+              ],
+              [
+                1022.6378784179688,
+                1663.33837890625
+              ],
+              [
+                1025.158447265625,
+                1660.819580078125
+              ],
+              [
+                1040.0379638671875,
+                1675.45849609375
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "9f0e6f81a097253db1a14ded2a5dac902e37a0edc958be38641f21bbce047b7b",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.7363639800256399,
+        "parent_fill_candidate_ids": [
+          "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+          "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            1038.7777099609375,
+            1676.71875
+          ],
+          [
+            1023.8981628417969,
+            1662.0789794921875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1038.7777100316482,
+                  1676.7187500707107
+                ],
+                [
+                  1041.2982177734375,
+                  1679.2392578125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                1040.0379638671875,
+                1675.45849609375
+              ],
+              [
+                1037.5174560546875,
+                1677.97900390625
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1023.8981627711111,
+                  1662.078979421452
+                ],
+                [
+                  1021.3793640136719,
+                  1659.5584106445312
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                1022.6378784179688,
+                1663.33837890625
+              ],
+              [
+                1025.158447265625,
+                1660.819580078125
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                971.9978637695312,
+                1612.699951171875
+              ],
+              [
+                974.5183715820312,
+                1610.179443359375
+              ],
+              [
+                998.397705078125,
+                1633.9384765625
+              ],
+              [
+                995.9974365234375,
+                1636.3388671875
+              ],
+              [
+                971.9978637695312,
+                1612.699951171875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "26eb6cb50cc8fadc1037321ef58c560940b758562311f432185ba4c0db669c3d",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.188348006277032,
+        "parent_fill_candidate_ids": [
+          "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+          "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            973.2581176757812,
+            1611.439697265625
+          ],
+          [
+            997.1975708007812,
+            1635.138671875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  973.2581176050705,
+                  1611.4396971949143
+                ],
+                [
+                  970.7376098632812,
+                  1608.919189453125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                971.9978637695312,
+                1612.699951171875
+              ],
+              [
+                974.5183715820312,
+                1610.179443359375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 7,
+            "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  997.1975708714938,
+                  1635.138671945709
+                ],
+                [
+                  999.5979614257812,
+                  1637.5389404296875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                998.397705078125,
+                1633.9384765625
+              ],
+              [
+                995.9974365234375,
+                1636.3388671875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                687.358154296875,
+                1358.77978515625
+              ],
+              [
+                687.358154296875,
+                1352.900146484375
+              ],
+              [
+                710.5192260742188,
+                1352.900146484375
+              ],
+              [
+                710.5192260742188,
+                1358.77978515625
+              ],
+              [
+                687.358154296875,
+                1358.77978515625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "c7a7b8eb307ab762d558753122b1fecc1467717daafba85b96b5f71f702ea2f2",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.8170711432562934,
+        "parent_fill_candidate_ids": [
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            687.358154296875,
+            1355.8399658203125
+          ],
+          [
+            710.5192260742188,
+            1355.8399658203125
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  687.358154196875,
+                  1355.8399658203125
+                ],
+                [
+                  681.478515625,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                687.358154296875,
+                1358.77978515625
+              ],
+              [
+                687.358154296875,
+                1352.900146484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  710.5192261742187,
+                  1355.8399658203125
+                ],
+                [
+                  716.3988647460938,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                710.5192260742188,
+                1352.900146484375
+              ],
+              [
+                710.5192260742188,
+                1358.77978515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                751.1990356445312,
+                1358.77978515625
+              ],
+              [
+                751.1990356445312,
+                1352.900146484375
+              ],
+              [
+                840.1184692382812,
+                1352.900146484375
+              ],
+              [
+                840.1184692382812,
+                1358.77978515625
+              ],
+              [
+                751.1990356445312,
+                1358.77978515625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "c4095656a2740387c0fbe2ce27fe67fbcd9b857643d8237d11b6a6108318f1d0",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 3.1368800184461803,
+        "parent_fill_candidate_ids": [
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            751.1990356445312,
+            1355.8399658203125
+          ],
+          [
+            840.1184692382812,
+            1355.8399658203125
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  751.1990355445313,
+                  1355.8399658203125
+                ],
+                [
+                  745.3193969726562,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                751.1990356445312,
+                1358.77978515625
+              ],
+              [
+                751.1990356445312,
+                1352.900146484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  840.1184693382812,
+                  1355.8399658203125
+                ],
+                [
+                  845.9981079101562,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                840.1184692382812,
+                1352.900146484375
+              ],
+              [
+                840.1184692382812,
+                1358.77978515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                853.0787353515625,
+                1358.77978515625
+              ],
+              [
+                853.0787353515625,
+                1352.900146484375
+              ],
+              [
+                883.91845703125,
+                1352.900146484375
+              ],
+              [
+                883.91845703125,
+                1358.77978515625
+              ],
+              [
+                853.0787353515625,
+                1358.77978515625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "6747f78c08240d87132c5df5d4c9f4025019c68ad93ddfd3bca902c8153ec73e",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.0879568481445312,
+        "parent_fill_candidate_ids": [
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+          "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            853.0787353515625,
+            1355.8399658203125
+          ],
+          [
+            883.91845703125,
+            1355.8399658203125
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  853.0787352515625,
+                  1355.8399658203125
+                ],
+                [
+                  847.1990966796875,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                853.0787353515625,
+                1358.77978515625
+              ],
+              [
+                853.0787353515625,
+                1352.900146484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  883.91845713125,
+                  1355.8399658203125
+                ],
+                [
+                  889.798095703125,
+                  1355.8399658203125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 3,
+            "source_endpoints": [
+              [
+                883.91845703125,
+                1352.900146484375
+              ],
+              [
+                883.91845703125,
+                1358.77978515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                1040.517333984375,
+                1242.6202392578125
+              ],
+              [
+                1040.517333984375,
+                1237.1005859375
+              ],
+              [
+                1066.55810546875,
+                1237.1005859375
+              ],
+              [
+                1066.55810546875,
+                1242.6202392578125
+              ],
+              [
+                1040.517333984375,
+                1242.6202392578125
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "8a3a8500aa46dfb5cbb233b9b2d0e679a31f8e51654b08483ce919286e6f4886",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.9186605495876735,
+        "parent_fill_candidate_ids": [
+          "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+          "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            1040.517333984375,
+            1239.8604125976562
+          ],
+          [
+            1066.55810546875,
+            1239.8604125976562
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1040.517333884375,
+                  1239.8604125976562
+                ],
+                [
+                  1034.9976806640625,
+                  1239.8604125976562
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                1040.517333984375,
+                1242.6202392578125
+              ],
+              [
+                1040.517333984375,
+                1237.1005859375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1066.55810556875,
+                  1239.8604125976562
+                ],
+                [
+                  1072.0777587890625,
+                  1239.8604125976562
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                1066.55810546875,
+                1237.1005859375
+              ],
+              [
+                1066.55810546875,
+                1242.6202392578125
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                888.478515625,
+                1788.6181640625
+              ],
+              [
+                890.9991455078125,
+                1786.099365234375
+              ],
+              [
+                909.478271484375,
+                1804.459716796875
+              ],
+              [
+                907.0779418945312,
+                1806.8583984375
+              ],
+              [
+                888.478515625,
+                1788.6181640625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "ec26b68e02464cf69e731c1f00da891fcb6955ff3235a21b8217bf7527f1257e",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.9189665672475987,
+        "parent_fill_candidate_ids": [
+          "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+          "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            889.7388305664062,
+            1787.3587646484375
+          ],
+          [
+            908.2781066894531,
+            1805.6590576171875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 4,
+            "fill_candidate_id": "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  889.7388304957212,
+                  1787.358764577701
+                ],
+                [
+                  887.2200317382812,
+                  1784.838134765625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                888.478515625,
+                1788.6181640625
+              ],
+              [
+                890.9991455078125,
+                1786.099365234375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 7,
+            "fill_candidate_id": "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  908.2781067601395,
+                  1805.6590576879225
+                ],
+                [
+                  910.6767883300781,
+                  1808.0593872070312
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                909.478271484375,
+                1804.459716796875
+              ],
+              [
+                907.0779418945312,
+                1806.8583984375
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                457.4392395019531,
+                950.4205322265625
+              ],
+              [
+                457.4392395019531,
+                944.541015625
+              ],
+              [
+                546.3587646484375,
+                944.541015625
+              ],
+              [
+                546.3587646484375,
+                950.4205322265625
+              ],
+              [
+                457.4392395019531,
+                950.4205322265625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "1bddd9944a7762657e02a457e01c44f73358d2e103a8a256b4e6e947dfbfe25f",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 3.1368832482231985,
+        "parent_fill_candidate_ids": [
+          "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+          "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            457.4392395019531,
+            947.4807739257812
+          ],
+          [
+            546.3587646484375,
+            947.4807739257812
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  457.4392394019531,
+                  947.4807739257812
+                ],
+                [
+                  451.5597229003906,
+                  947.4807739257812
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                457.4392395019531,
+                950.4205322265625
+              ],
+              [
+                457.4392395019531,
+                944.541015625
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  546.3587647484375,
+                  947.4807739257812
+                ],
+                [
+                  552.23828125,
+                  947.4807739257812
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                546.3587646484375,
+                944.541015625
+              ],
+              [
+                546.3587646484375,
+                950.4205322265625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                659.398193359375,
+                984.139892578125
+              ],
+              [
+                653.6387939453125,
+                984.139892578125
+              ],
+              [
+                653.6387939453125,
+                958.100830078125
+              ],
+              [
+                659.398193359375,
+                958.100830078125
+              ],
+              [
+                659.398193359375,
+                984.139892578125
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "42d14332a59099b82ecc8bc86a6f7ec582234aa7e5eb917e8f971e3323ed043e",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.9186002604166666,
+        "parent_fill_candidate_ids": [
+          "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c",
+          "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            656.5184936523438,
+            984.139892578125
+          ],
+          [
+            656.5184936523438,
+            958.100830078125
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  656.5184936523438,
+                  984.139892678125
+                ],
+                [
+                  656.5184936523438,
+                  989.8992919921875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                659.398193359375,
+                984.139892578125
+              ],
+              [
+                653.6387939453125,
+                984.139892578125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  656.5184936523438,
+                  958.100829978125
+                ],
+                [
+                  656.5184936523438,
+                  952.3414306640625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                653.6387939453125,
+                958.100830078125
+              ],
+              [
+                659.398193359375,
+                958.100830078125
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                856.1973266601562,
+                1722.858154296875
+              ],
+              [
+                850.4379272460938,
+                1717.0986328125
+              ],
+              [
+                941.8779907226562,
+                1626.2598876953125
+              ],
+              [
+                947.5188598632812,
+                1631.8990478515625
+              ],
+              [
+                856.1973266601562,
+                1722.858154296875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+        "intersecting_fill_candidates": [
+          {
+            "fill_candidate_id": "034d1756eb3eeaf92f975ce84c8fa716e1c474313d4f0822fcc49efca46f0cd6",
+            "gap_area_fraction": 0.0401529439570172
+          }
+        ],
+        "nominal_gap_width_m": 4.546996261254895,
+        "parent_fill_candidate_ids": [
+          "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+          "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            853.317626953125,
+            1719.9783935546875
+          ],
+          [
+            944.6984252929688,
+            1629.0794677734375
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 5,
+            "fill_candidate_id": "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  853.3176268824136,
+                  1719.9783936253975
+                ],
+                [
+                  847.55810546875,
+                  1725.73779296875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                856.1973266601562,
+                1722.858154296875
+              ],
+              [
+                850.4379272460938,
+                1717.0986328125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  944.6984253636687,
+                  1629.079467702716
+                ],
+                [
+                  950.3375854492188,
+                  1623.4385986328125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                941.8779907226562,
+                1626.2598876953125
+              ],
+              [
+                947.5188598632812,
+                1631.8990478515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                998.0370483398438,
+                1443.259521484375
+              ],
+              [
+                994.3170776367188,
+                1443.259521484375
+              ],
+              [
+                994.3170776367188,
+                1404.619384765625
+              ],
+              [
+                998.0370483398438,
+                1404.619384765625
+              ],
+              [
+                998.0370483398438,
+                1443.259521484375
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "1efa090aaaa703b5f8138f4801f860aa8dde6e8bbac834a897b259febf817b18",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.3631381564670138,
+        "parent_fill_candidate_ids": [
+          "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b",
+          "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            996.1770629882812,
+            1443.259521484375
+          ],
+          [
+            996.1770629882812,
+            1404.619384765625
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  996.1770629882812,
+                  1443.259521584375
+                ],
+                [
+                  996.1770629882812,
+                  1446.9794921875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                998.0370483398438,
+                1443.259521484375
+              ],
+              [
+                994.3170776367188,
+                1443.259521484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  996.1770629882812,
+                  1404.619384665625
+                ],
+                [
+                  996.1770629882812,
+                  1400.8994140625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                994.3170776367188,
+                1404.619384765625
+              ],
+              [
+                998.0370483398438,
+                1404.619384765625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                796.5590209960938,
+                1800.61962890625
+              ],
+              [
+                802.3184204101562,
+                1794.858642578125
+              ],
+              [
+                820.7991943359375,
+                1813.2191162109375
+              ],
+              [
+                815.0381469726562,
+                1818.978515625
+              ],
+              [
+                796.5590209960938,
+                1800.61962890625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "5cbfd180f4bec9add8c1c5a4ab306c24fc28120f77d915d253046721c96c90b2",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.918970721062169,
+        "parent_fill_candidate_ids": [
+          "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+          "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            799.438720703125,
+            1797.7391357421875
+          ],
+          [
+            817.9186706542969,
+            1816.0988159179688
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 4,
+            "fill_candidate_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  799.4387206324046,
+                  1797.7391356714866
+                ],
+                [
+                  793.677734375,
+                  1791.979736328125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                796.5590209960938,
+                1800.61962890625
+              ],
+              [
+                802.3184204101562,
+                1794.858642578125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 5,
+            "fill_candidate_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  817.9186707249975,
+                  1816.0988159886895
+                ],
+                [
+                  823.6780700683594,
+                  1821.85986328125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                820.7991943359375,
+                1813.2191162109375
+              ],
+              [
+                815.0381469726562,
+                1818.978515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                932.99755859375,
+                1177.4598388671875
+              ],
+              [
+                927.4779052734375,
+                1177.4598388671875
+              ],
+              [
+                927.4779052734375,
+                1138.46044921875
+              ],
+              [
+                932.99755859375,
+                1138.46044921875
+              ],
+              [
+                932.99755859375,
+                1177.4598388671875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "37b6e99e0db3ef68b8c89f71a30ef5effb57416890a1b002f5b605f24b39d469",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.375811801486545,
+        "parent_fill_candidate_ids": [
+          "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+          "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            930.2377319335938,
+            1177.4598388671875
+          ],
+          [
+            930.2377319335938,
+            1138.46044921875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  930.2377319335938,
+                  1177.4598389671876
+                ],
+                [
+                  930.2377319335938,
+                  1182.9794921875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                932.99755859375,
+                1177.4598388671875
+              ],
+              [
+                927.4779052734375,
+                1177.4598388671875
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  930.2377319335938,
+                  1138.46044911875
+                ],
+                [
+                  930.2377319335938,
+                  1132.9407958984375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                927.4779052734375,
+                1138.46044921875
+              ],
+              [
+                932.99755859375,
+                1138.46044921875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                1132.4384765625,
+                2012.29833984375
+              ],
+              [
+                1126.91796875,
+                2006.7794189453125
+              ],
+              [
+                1217.9971923828125,
+                1915.698486328125
+              ],
+              [
+                1223.637939453125,
+                1921.33935546875
+              ],
+              [
+                1132.4384765625,
+                2012.29833984375
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "9e42849a268dd34a26ee18c92a4197b868ccd3b3e69eebdd9f15124fc3d1a91b",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 4.543991704455574,
+        "parent_fill_candidate_ids": [
+          "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+          "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            1129.67822265625,
+            2009.5388793945312
+          ],
+          [
+            1220.8175659179688,
+            1918.5189208984375
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 5,
+            "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1129.6782225855495,
+                  2009.5388794652522
+                ],
+                [
+                  1124.1593017578125,
+                  2015.0593872070312
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                1132.4384765625,
+                2012.29833984375
+              ],
+              [
+                1126.91796875,
+                2006.7794189453125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1220.8175659886801,
+                  1918.5189208277277
+                ],
+                [
+                  1226.4584350585938,
+                  1912.878173828125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                1217.9971923828125,
+                1915.698486328125
+              ],
+              [
+                1223.637939453125,
+                1921.33935546875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                679.557861328125,
+                984.139892578125
+              ],
+              [
+                673.7982177734375,
+                984.139892578125
+              ],
+              [
+                673.7982177734375,
+                958.100830078125
+              ],
+              [
+                679.557861328125,
+                958.100830078125
+              ],
+              [
+                679.557861328125,
+                984.139892578125
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "c8c1caf2e4cc90f0e2d314b85ce7c3ff885722dd8601fef26f7bc53d77130f7a",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 0.9186002604166666,
+        "parent_fill_candidate_ids": [
+          "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+          "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            676.6780395507812,
+            984.139892578125
+          ],
+          [
+            676.6780395507812,
+            958.100830078125
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  676.6780395507812,
+                  984.139892678125
+                ],
+                [
+                  676.6780395507812,
+                  989.8995361328125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                679.557861328125,
+                984.139892578125
+              ],
+              [
+                673.7982177734375,
+                984.139892578125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  676.6780395507812,
+                  958.100829978125
+                ],
+                [
+                  676.6780395507812,
+                  952.3411865234375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                673.7982177734375,
+                958.100830078125
+              ],
+              [
+                679.557861328125,
+                958.100830078125
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                897.4783935546875,
+                1173.8602294921875
+              ],
+              [
+                891.718994140625,
+                1173.8602294921875
+              ],
+              [
+                891.718994140625,
+                1142.900146484375
+              ],
+              [
+                897.4783935546875,
+                1142.900146484375
+              ],
+              [
+                897.4783935546875,
+                1173.8602294921875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "726433bc754a57264b0739d6ecd7f87a0881afbd4f3c18cbcd02c59fddfec5fd",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.0922029283311632,
+        "parent_fill_candidate_ids": [
+          "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+          "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            894.5986938476562,
+            1173.8602294921875
+          ],
+          [
+            894.5986938476562,
+            1142.900146484375
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  894.5986938476562,
+                  1173.8602295921876
+                ],
+                [
+                  894.5986938476562,
+                  1179.61962890625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                897.4783935546875,
+                1173.8602294921875
+              ],
+              [
+                891.718994140625,
+                1173.8602294921875
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  894.5986938476562,
+                  1142.900146384375
+                ],
+                [
+                  894.5986938476562,
+                  1137.1407470703125
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                891.718994140625,
+                1142.900146484375
+              ],
+              [
+                897.4783935546875,
+                1142.900146484375
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                891.718994140625,
+                925.9398193359375
+              ],
+              [
+                897.4783935546875,
+                925.9398193359375
+              ],
+              [
+                897.4783935546875,
+                960.98046875
+              ],
+              [
+                891.718994140625,
+                960.98046875
+              ],
+              [
+                891.718994140625,
+                925.9398193359375
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "8cc1b44963506c5f4d9c3017edf6a8cdc52a67c52b64b29408c65019b933dbf1",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.236156243218316,
+        "parent_fill_candidate_ids": [
+          "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+          "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            894.5986938476562,
+            925.9398193359375
+          ],
+          [
+            894.5986938476562,
+            960.98046875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 1,
+            "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  894.5986938476562,
+                  925.9398192359375
+                ],
+                [
+                  894.5986938476562,
+                  920.180419921875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                891.718994140625,
+                925.9398193359375
+              ],
+              [
+                897.4783935546875,
+                925.9398193359375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  894.5986938476562,
+                  960.98046885
+                ],
+                [
+                  894.5986938476562,
+                  966.7398681640625
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                897.4783935546875,
+                960.98046875
+              ],
+              [
+                891.718994140625,
+                960.98046875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                751.1990356445312,
+                913.099853515625
+              ],
+              [
+                751.1990356445312,
+                907.22021484375
+              ],
+              [
+                840.1184692382812,
+                907.22021484375
+              ],
+              [
+                840.1184692382812,
+                913.099853515625
+              ],
+              [
+                751.1990356445312,
+                913.099853515625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "3eabed904cf88f2aa5a21729d441d46daff99ac9285335bb4901f8c183d58d5a",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 3.1368800184461803,
+        "parent_fill_candidate_ids": [
+          "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+          "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            751.1990356445312,
+            910.1600341796875
+          ],
+          [
+            840.1184692382812,
+            910.1600341796875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  751.1990355445313,
+                  910.1600341796875
+                ],
+                [
+                  745.3193969726562,
+                  910.1600341796875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                751.1990356445312,
+                913.099853515625
+              ],
+              [
+                751.1990356445312,
+                907.22021484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  840.1184693382812,
+                  910.1600341796875
+                ],
+                [
+                  845.9981079101562,
+                  910.1600341796875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                840.1184692382812,
+                907.22021484375
+              ],
+              [
+                840.1184692382812,
+                913.099853515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                848.3984375,
+                913.099853515625
+              ],
+              [
+                848.3984375,
+                907.22021484375
+              ],
+              [
+                883.4390869140625,
+                907.22021484375
+              ],
+              [
+                883.4390869140625,
+                913.099853515625
+              ],
+              [
+                848.3984375,
+                913.099853515625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "d3bc35513ca20e4ec7f1d616f6e38a76bce6aae76b57751f1c67cf6a4017c0d9",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.236156243218316,
+        "parent_fill_candidate_ids": [
+          "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+          "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            848.3984375,
+            910.1600341796875
+          ],
+          [
+            883.4390869140625,
+            910.1600341796875
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  848.3984374,
+                  910.1600341796875
+                ],
+                [
+                  842.518798828125,
+                  910.1600341796875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                848.3984375,
+                913.099853515625
+              ],
+              [
+                848.3984375,
+                907.22021484375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  883.4390870140625,
+                  910.1600341796875
+                ],
+                [
+                  889.3187255859375,
+                  910.1600341796875
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 2,
+            "source_endpoints": [
+              [
+                883.4390869140625,
+                907.22021484375
+              ],
+              [
+                883.4390869140625,
+                913.099853515625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                458.6385498046875,
+                1517.899169921875
+              ],
+              [
+                458.6385498046875,
+                1512.01953125
+              ],
+              [
+                547.55810546875,
+                1512.01953125
+              ],
+              [
+                547.55810546875,
+                1517.899169921875
+              ],
+              [
+                458.6385498046875,
+                1517.899169921875
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "a2ced6fc86437752f524d59be83f040d41d9e052348378df99d0269af2d4012e",
+        "intersecting_fill_candidates": [
+          {
+            "fill_candidate_id": "c0fc87c0b7f5f2b348242032fd9df4617024138c5091ae161f459ff1a10ab423",
+            "gap_area_fraction": 0.061718934784565284
+          }
+        ],
+        "nominal_gap_width_m": 3.1368843248155382,
+        "parent_fill_candidate_ids": [
+          "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+          "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            458.6385498046875,
+            1514.9593505859375
+          ],
+          [
+            547.55810546875,
+            1514.9593505859375
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  458.6385497046875,
+                  1514.9593505859375
+                ],
+                [
+                  452.7589111328125,
+                  1514.9593505859375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                458.6385498046875,
+                1517.899169921875
+              ],
+              [
+                458.6385498046875,
+                1512.01953125
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  547.55810556875,
+                  1514.9593505859375
+                ],
+                [
+                  553.437744140625,
+                  1514.9593505859375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                547.55810546875,
+                1512.01953125
+              ],
+              [
+                547.55810546875,
+                1517.899169921875
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                1045.6787109375,
+                1459.2197265625
+              ],
+              [
+                1045.6787109375,
+                1450.93994140625
+              ],
+              [
+                1091.2777099609375,
+                1450.93994140625
+              ],
+              [
+                1091.2777099609375,
+                1459.2197265625
+              ],
+              [
+                1045.6787109375,
+                1459.2197265625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "d3fb4ac6e2e37c035ff1ac26dbbe7a676d699b4ddde046c1260bd04bb56e35df",
+        "intersecting_fill_candidates": [],
+        "nominal_gap_width_m": 1.608631354437934,
+        "parent_fill_candidate_ids": [
+          "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9",
+          "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            1045.6787109375,
+            1455.079833984375
+          ],
+          [
+            1091.2777099609375,
+            1455.079833984375
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1045.6787108375,
+                  1455.079833984375
+                ],
+                [
+                  1037.39892578125,
+                  1455.079833984375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                1045.6787109375,
+                1459.2197265625
+              ],
+              [
+                1045.6787109375,
+                1450.93994140625
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  1091.2777100609376,
+                  1455.079833984375
+                ],
+                [
+                  1099.5574951171875,
+                  1455.079833984375
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                1091.2777099609375,
+                1450.93994140625
+              ],
+              [
+                1091.2777099609375,
+                1459.2197265625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      },
+      {
+        "candidate_recipe": {
+          "maximum_axis_difference_degrees": 0.5,
+          "maximum_cap_width_difference_pdf_points": 1,
+          "maximum_gap_m": 8,
+          "maximum_transverse_offset_pdf_points": 1,
+          "minimum_inward_support_cap_widths": 1,
+          "nominal_cap_width_range_m": [
+            0.08,
+            1
+          ],
+          "source_overlap_area_fraction_epsilon": 1e-09,
+          "support_probe_inset_pdf_points": 1e-07
+        },
+        "complete_page_visibility_verified": false,
+        "coordinate_frame": "unrotated_mupdf_points_y_down",
+        "fill_candidate_id": "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038",
+        "gap_corridor_geometry": {
+          "coordinates": [
+            [
+              [
+                371.7585754394531,
+                794.5400390625
+              ],
+              [
+                371.7585754394531,
+                786.2601318359375
+              ],
+              [
+                421.7989501953125,
+                786.2601318359375
+              ],
+              [
+                421.7989501953125,
+                794.5400390625
+              ],
+              [
+                371.7585754394531,
+                794.5400390625
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "geometry_bridge_added": false,
+        "id": "6b8d79768266c26507e54622e6513da22863b8903342519d564942c80aa6dc45",
+        "intersecting_fill_candidates": [
+          {
+            "fill_candidate_id": "acd6bd6cd5a94c3652c11f894a15e9ebe43d1237f696c63c823f7fd16a8fb7cf",
+            "gap_area_fraction": 0.004347724566703328
+          }
+        ],
+        "nominal_gap_width_m": 1.765313220553928,
+        "parent_fill_candidate_ids": [
+          "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038",
+          "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038"
+        ],
+        "physical_opening_verified": false,
+        "projected_gap_endpoints": [
+          [
+            371.7585754394531,
+            790.4000854492188
+          ],
+          [
+            421.7989501953125,
+            790.4000854492188
+          ]
+        ],
+        "source_endcaps": [
+          {
+            "boundary_edge_index": 0,
+            "fill_candidate_id": "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  371.7585753394531,
+                  790.4000854492188
+                ],
+                [
+                  363.4786682128906,
+                  790.4000854492188
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 0,
+            "source_endpoints": [
+              [
+                371.7585754394531,
+                794.5400390625
+              ],
+              [
+                371.7585754394531,
+                786.2601318359375
+              ]
+            ]
+          },
+          {
+            "boundary_edge_index": 2,
+            "fill_candidate_id": "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038",
+            "inward_support_geometry": {
+              "coordinates": [
+                [
+                  421.7989502953125,
+                  790.4000854492188
+                ],
+                [
+                  430.078857421875,
+                  790.4000854492188
+                ]
+              ],
+              "type": "LineString"
+            },
+            "polygon_part": 1,
+            "source_endpoints": [
+              [
+                421.7989501953125,
+                786.2601318359375
+              ],
+              [
+                421.7989501953125,
+                794.5400390625
+              ]
+            ]
+          }
+        ],
+        "status": "unverified_facing_fill_endcaps",
+        "world_geometry_additions": 0
+      }
+    ],
+    "version": "exact-fill-endcap-pairs-v1",
+    "world_geometry_additions": 0
+  },
+  "input_sha256": {
+    "evidence/wicker-shop-clipped-fill-replay.json": "b2d74c5a4402158248dc601a2a013b1b4b5be961bce204e104dc396aa221aa7f",
+    "evidence/wicker-shop-floor-annotations.json": "b0c0d13e2b98d66d7eea5b8ca12991b1bc476ae9730bf9caa147a52e143aa0d7",
+    "evidence/wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "evidence/wicker-shop-local-floor.json": "41ceaa5c4571c58261b1bcb9612998621105a1eacbeecf3098ad6fbe4ef1aee4",
+    "evidence/wicker-shop-local-preview.json": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50",
+    "evidence/wicker-shop-local-roof.json": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137",
+    "evidence/wicker-shop-vertical-annotations.json": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7"
+  },
+  "layout_heldout_max_residual_pdf_points": 0.11801888555281677,
+  "layout_reproduction_numerical_tolerance": 1e-09,
+  "manual_endpoint_sampling_bound_nominal_m": 0.1259941790309645,
+  "normalized_floor_minus_elevation_dimensions_m": [
+    -0.08587147472788281,
+    0.020594908133837464
+  ],
+  "records": [
+    {
+      "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.4988625623211016,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.3631424628363715,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "a43ef212ec66f9109d682d0d94d99ea4fb5f163d6b2c6cb96e9cd5e4f96f09b9",
+      "source_gap_endpoints_native": [
+        [
+          928.138427734375,
+          986.2208251953125
+        ],
+        [
+          928.138427734375,
+          1024.861083984375
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "04638d6a85eb765c7eb54eaf4977baeab969736d3d58975810ffad8c2cb1be95",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0054620897318995,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9144187757703992,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "8eb845a7f0fd19e2437e1e151e865620fe62bd03ed8664b50acb7de38148e58b",
+      "source_gap_endpoints_native": [
+        [
+          928.138427734375,
+          1090.8599853515625
+        ],
+        [
+          928.138427734375,
+          1116.780517578125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 0.8101324502124072,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.7363639800256399,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "9f0e6f81a097253db1a14ded2a5dac902e37a0edc958be38641f21bbce047b7b",
+      "source_gap_endpoints_native": [
+        [
+          1038.7777099609375,
+          707.28125
+        ],
+        [
+          1023.8981628417969,
+          721.9210205078125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.3073677314703251,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.188348006277032,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "26eb6cb50cc8fadc1037321ef58c560940b758562311f432185ba4c0db669c3d",
+      "source_gap_endpoints_native": [
+        [
+          973.2581176757812,
+          772.560302734375
+        ],
+        [
+          997.1975708007812,
+          748.861328125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 0.8988193212883421,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.8170711432562934,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "c7a7b8eb307ab762d558753122b1fecc1467717daafba85b96b5f71f702ea2f2",
+      "source_gap_endpoints_native": [
+        [
+          687.358154296875,
+          1028.1600341796875
+        ],
+        [
+          710.5192260742188,
+          1028.1600341796875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.4507256710917247,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368800184461803,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "c4095656a2740387c0fbe2ce27fe67fbcd9b857643d8237d11b6a6108318f1d0",
+      "source_gap_endpoints_native": [
+        [
+          751.1990356445312,
+          1028.1600341796875
+        ],
+        [
+          840.1184692382812,
+          1028.1600341796875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "3319c0394e85f48e7a133c3e86167eabb044e851cb70708240ffdbedb3352f68",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.1968072106219696,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.0879568481445312,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "6747f78c08240d87132c5df5d4c9f4025019c68ad93ddfd3bca902c8153ec73e",
+      "source_gap_endpoints_native": [
+        [
+          853.0787353515625,
+          1028.1600341796875
+        ],
+        [
+          883.91845703125,
+          1028.1600341796875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0105727738517927,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9186605495876735,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "8a3a8500aa46dfb5cbb233b9b2d0e679a31f8e51654b08483ce919286e6f4886",
+      "source_gap_endpoints_native": [
+        [
+          1040.517333984375,
+          1144.1395874023438
+        ],
+        [
+          1066.55810546875,
+          1144.1395874023438
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0110177025303413,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9189665672475987,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "ec26b68e02464cf69e731c1f00da891fcb6955ff3235a21b8217bf7527f1257e",
+      "source_gap_endpoints_native": [
+        [
+          889.7388305664062,
+          596.6412353515625
+        ],
+        [
+          908.2781066894531,
+          578.3409423828125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.4507292240087666,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368832482231985,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "1bddd9944a7762657e02a457e01c44f73358d2e103a8a256b4e6e947dfbfe25f",
+      "source_gap_endpoints_native": [
+        [
+          457.4392395019531,
+          1436.5192260742188
+        ],
+        [
+          546.3587646484375,
+          1436.5192260742188
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "87b3ef2e38093b6e52225c2f81e4555a0cbd15b73f9bb8d03a1b97b5fe91662c",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0100599002778152,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9186002604166666,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "42d14332a59099b82ecc8bc86a6f7ec582234aa7e5eb917e8f971e3323ed043e",
+      "source_gap_endpoints_native": [
+        [
+          656.5184936523438,
+          1399.860107421875
+        ],
+        [
+          656.5184936523438,
+          1425.899169921875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 4.999332744274312,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 4.546996261254895,
+      "reviewed_trace_candidates": [
+        {
+          "height_assignment_status": "conditional_on_unverified_plan_to_elevation_association",
+          "maximum_endpoint_residual_nominal_m": 0.14179037706385003,
+          "normalized_width_minus_reviewed_trace_m": 0.01302041270722576,
+          "physical_correspondence_verified": false,
+          "reviewed_elevation_height_trace": {
+            "bottom_pixel": [
+              1150,
+              893
+            ],
+            "height_metres": 2.493879692554474,
+            "manual_sampling_interval_metres": [
+              2.3157454288005828,
+              2.672013956308365
+            ],
+            "native_points": [
+              [
+                1056.6026611328125,
+                1452.11865234375
+              ],
+              [
+                1127.2952880859375,
+                1452.11865234375
+              ]
+            ],
+            "top_pixel": [
+              1150,
+              837
+            ],
+            "view": "NE"
+          },
+          "reviewed_opening_id": "opening-NE",
+          "reviewed_width_layout_normalized_m": 4.9863123315670865,
+          "source_cap_corner_options": [
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.27272011080398495,
+              "native_source_points": [
+                [
+                  856.1973266601562,
+                  661.141845703125
+                ],
+                [
+                  941.8779907226562,
+                  757.7401123046875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.28240528967510425,
+              "native_source_points": [
+                [
+                  856.1973266601562,
+                  661.141845703125
+                ],
+                [
+                  947.5188598632812,
+                  752.1009521484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.01557081362445492,
+              "native_source_points": [
+                [
+                  850.4379272460938,
+                  666.9013671875
+                ],
+                [
+                  941.8779907226562,
+                  757.7401123046875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": true
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.28240528967510425,
+              "native_source_points": [
+                [
+                  850.4379272460938,
+                  666.9013671875
+                ],
+                [
+                  947.5188598632812,
+                  752.1009521484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 4.5486115813714685,
+              "native_source_points": [
+                [
+                  856.1973266601562,
+                  661.141845703125
+                ],
+                [
+                  941.8779907226562,
+                  757.7401123046875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 4.550528088912073,
+              "native_source_points": [
+                [
+                  856.1973266601562,
+                  661.141845703125
+                ],
+                [
+                  947.5188598632812,
+                  752.1009521484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 4.541757115183621,
+              "native_source_points": [
+                [
+                  850.4379272460938,
+                  666.9013671875
+                ],
+                [
+                  941.8779907226562,
+                  757.7401123046875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 4.550528088912073,
+              "native_source_points": [
+                [
+                  850.4379272460938,
+                  666.9013671875
+                ],
+                [
+                  947.5188598632812,
+                  752.1009521484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            }
+          ],
+          "within_manual_endpoint_sampling_bound": false
+        }
+      ],
+      "source_gap_candidate_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+      "source_gap_endpoints_native": [
+        [
+          853.317626953125,
+          664.0216064453125
+        ],
+        [
+          944.6984252929688,
+          754.9205322265625
+        ]
+      ],
+      "status": "unverified_reviewed_trace_candidate",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "94abb124e269747440c71c1d9b89be7e8d086016630d08e56b61ae50169d778b",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.498857827191814,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.3631381564670138,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "1efa090aaaa703b5f8138f4801f860aa8dde6e8bbac834a897b259febf817b18",
+      "source_gap_endpoints_native": [
+        [
+          996.1770629882812,
+          940.740478515625
+        ],
+        [
+          996.1770629882812,
+          979.380615234375
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0110020727436058,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.918970721062169,
+      "reviewed_trace_candidates": [
+        {
+          "height_assignment_status": "conditional_on_unverified_plan_to_elevation_association",
+          "maximum_endpoint_residual_nominal_m": 0.17509867659569694,
+          "normalized_width_minus_reviewed_trace_m": 0.11015349878366443,
+          "physical_correspondence_verified": false,
+          "reviewed_elevation_height_trace": {
+            "bottom_pixel": [
+              315,
+              893
+            ],
+            "height_metres": 2.093077599108219,
+            "manual_sampling_interval_metres": [
+              1.9149433353543281,
+              2.2712118628621103
+            ],
+            "native_points": [
+              [
+                1067.9639892578125,
+                397.7542419433594
+              ],
+              [
+                1127.2952880859375,
+                397.7542419433594
+              ]
+            ],
+            "top_pixel": [
+              315,
+              846
+            ],
+            "view": "NW"
+          },
+          "reviewed_opening_id": "door-NW",
+          "reviewed_width_layout_normalized_m": 0.9008485739599413,
+          "source_cap_corner_options": [
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.9850967010548478,
+              "native_source_points": [
+                [
+                  796.5590209960938,
+                  583.38037109375
+                ],
+                [
+                  820.7991943359375,
+                  570.7808837890625
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.9507688979286111,
+              "native_source_points": [
+                [
+                  796.5590209960938,
+                  583.38037109375
+                ],
+                [
+                  815.0381469726562,
+                  565.021484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.9850967010548478,
+              "native_source_points": [
+                [
+                  802.3184204101562,
+                  589.141357421875
+                ],
+                [
+                  820.7991943359375,
+                  570.7808837890625
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.9507688979286111,
+              "native_source_points": [
+                [
+                  802.3184204101562,
+                  589.141357421875
+                ],
+                [
+                  815.0381469726562,
+                  565.021484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.2907431064950096,
+              "native_source_points": [
+                [
+                  796.5590209960938,
+                  583.38037109375
+                ],
+                [
+                  820.7991943359375,
+                  570.7808837890625
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.13446554474058067,
+              "native_source_points": [
+                [
+                  796.5590209960938,
+                  583.38037109375
+                ],
+                [
+                  815.0381469726562,
+                  565.021484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.2907431064950096,
+              "native_source_points": [
+                [
+                  802.3184204101562,
+                  589.141357421875
+                ],
+                [
+                  820.7991943359375,
+                  570.7808837890625
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.25808843624292044,
+              "native_source_points": [
+                [
+                  802.3184204101562,
+                  589.141357421875
+                ],
+                [
+                  815.0381469726562,
+                  565.021484375
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            }
+          ],
+          "within_manual_endpoint_sampling_bound": false
+        }
+      ],
+      "source_gap_candidate_id": "5cbfd180f4bec9add8c1c5a4ab306c24fc28120f77d915d253046721c96c90b2",
+      "source_gap_endpoints_native": [
+        [
+          799.438720703125,
+          586.2608642578125
+        ],
+        [
+          817.9186706542969,
+          567.9011840820312
+        ]
+      ],
+      "status": "unverified_reviewed_trace_candidate",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.5127933127084088,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.375811801486545,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "37b6e99e0db3ef68b8c89f71a30ef5effb57416890a1b002f5b605f24b39d469",
+      "source_gap_endpoints_native": [
+        [
+          930.2377319335938,
+          1206.5401611328125
+        ],
+        [
+          930.2377319335938,
+          1245.53955078125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 4.996009157940267,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 4.543991704455574,
+      "reviewed_trace_candidates": [
+        {
+          "height_assignment_status": "conditional_on_unverified_plan_to_elevation_association",
+          "maximum_endpoint_residual_nominal_m": 0.1475939049475067,
+          "normalized_width_minus_reviewed_trace_m": -0.025010255830362205,
+          "physical_correspondence_verified": false,
+          "reviewed_elevation_height_trace": {
+            "bottom_pixel": [
+              1150,
+              407
+            ],
+            "height_metres": 2.493879692554474,
+            "manual_sampling_interval_metres": [
+              2.3157454288005828,
+              2.672013956308365
+            ],
+            "native_points": [
+              [
+                443.0914611816406,
+                1452.11865234375
+              ],
+              [
+                513.7841186523438,
+                1452.11865234375
+              ]
+            ],
+            "top_pixel": [
+              1150,
+              351
+            ],
+            "view": "SW"
+          },
+          "reviewed_opening_id": "opening-SW",
+          "reviewed_width_layout_normalized_m": 5.021019413770629,
+          "source_cap_corner_options": [
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 4.566774031505755,
+              "native_source_points": [
+                [
+                  1132.4384765625,
+                  371.70166015625
+                ],
+                [
+                  1217.9971923828125,
+                  468.301513671875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 4.5578910049695995,
+              "native_source_points": [
+                [
+                  1132.4384765625,
+                  371.70166015625
+                ],
+                [
+                  1223.637939453125,
+                  462.66064453125
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 4.566774031505755,
+              "native_source_points": [
+                [
+                  1126.91796875,
+                  377.2205810546875
+                ],
+                [
+                  1217.9971923828125,
+                  468.301513671875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 4.559788857816766,
+              "native_source_points": [
+                [
+                  1126.91796875,
+                  377.2205810546875
+                ],
+                [
+                  1223.637939453125,
+                  462.66064453125
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": 1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.25270774609508007,
+              "native_source_points": [
+                [
+                  1132.4384765625,
+                  371.70166015625
+                ],
+                [
+                  1217.9971923828125,
+                  468.301513671875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                0,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.03017251384755771,
+              "native_source_points": [
+                [
+                  1132.4384765625,
+                  371.70166015625
+                ],
+                [
+                  1223.637939453125,
+                  462.66064453125
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": true
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                0
+              ],
+              "maximum_residual_nominal_m": 0.2849663278424371,
+              "native_source_points": [
+                [
+                  1126.91796875,
+                  377.2205810546875
+                ],
+                [
+                  1217.9971923828125,
+                  468.301513671875
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            },
+            {
+              "cap_corner_indices": [
+                1,
+                1
+              ],
+              "maximum_residual_nominal_m": 0.2849663278424371,
+              "native_source_points": [
+                [
+                  1126.91796875,
+                  377.2205810546875
+                ],
+                [
+                  1223.637939453125,
+                  462.66064453125
+                ]
+              ],
+              "physical_wall_face_identity_verified": false,
+              "reviewed_endpoint_order": -1,
+              "within_manual_endpoint_sampling_bound": false
+            }
+          ],
+          "within_manual_endpoint_sampling_bound": false
+        }
+      ],
+      "source_gap_candidate_id": "9e42849a268dd34a26ee18c92a4197b868ccd3b3e69eebdd9f15124fc3d1a91b",
+      "source_gap_endpoints_native": [
+        [
+          1129.67822265625,
+          374.46112060546875
+        ],
+        [
+          1220.8175659179688,
+          465.4810791015625
+        ]
+      ],
+      "status": "unverified_reviewed_trace_candidate",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0100599002778152,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9186002604166666,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "c8c1caf2e4cc90f0e2d314b85ce7c3ff885722dd8601fef26f7bc53d77130f7a",
+      "source_gap_endpoints_native": [
+        [
+          676.6780395507812,
+          1399.860107421875
+        ],
+        [
+          676.6780395507812,
+          1425.899169921875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.2009471675665702,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.0922029283311632,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "726433bc754a57264b0739d6ecd7f87a0881afbd4f3c18cbcd02c59fddfec5fd",
+      "source_gap_endpoints_native": [
+        [
+          894.5986938476562,
+          1210.1397705078125
+        ],
+        [
+          894.5986938476562,
+          1241.099853515625
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "b1b6a342c34205b685a5d8602cc9fb16b04838e1aab688da190a5863347a1443",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.35923306965594,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.236156243218316,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "8cc1b44963506c5f4d9c3017edf6a8cdc52a67c52b64b29408c65019b933dbf1",
+      "source_gap_endpoints_native": [
+        [
+          894.5986938476562,
+          1458.0601806640625
+        ],
+        [
+          894.5986938476562,
+          1423.01953125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.4507256710917247,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368800184461803,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "3eabed904cf88f2aa5a21729d441d46daff99ac9285335bb4901f8c183d58d5a",
+      "source_gap_endpoints_native": [
+        [
+          751.1990356445312,
+          1473.8399658203125
+        ],
+        [
+          840.1184692382812,
+          1473.8399658203125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "b75590d97e3e6a6f155b8f696afcedb63569e3ed3d83174c2e6e03c9764289b6",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.359833993289513,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.236156243218316,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "d3bc35513ca20e4ec7f1d616f6e38a76bce6aae76b57751f1c67cf6a4017c0d9",
+      "source_gap_endpoints_native": [
+        [
+          848.3984375,
+          1473.8399658203125
+        ],
+        [
+          883.4390869140625,
+          1473.8399658203125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.450730408314442,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368843248155382,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "a2ced6fc86437752f524d59be83f040d41d9e052348378df99d0269af2d4012e",
+      "source_gap_endpoints_native": [
+        [
+          458.6385498046875,
+          869.0406494140625
+        ],
+        [
+          547.55810546875,
+          869.0406494140625
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "cf19ad90346bf0a03f1d9b9a3692632e3ba9f0536975aef7654184f1474207c9",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.769575335186598,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.608631354437934,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "d3fb4ac6e2e37c035ff1ac26dbbe7a676d699b4ddde046c1260bd04bb56e35df",
+      "source_gap_endpoints_native": [
+        [
+          1045.6787109375,
+          928.920166015625
+        ],
+        [
+          1091.2777099609375,
+          928.920166015625
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "f93bea826023665fb1a09a0bb57a6bb14599846e100f72f626406d29dcecb038",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.9419332623057919,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.765313220553928,
+      "reviewed_trace_candidates": [],
+      "source_gap_candidate_id": "6b8d79768266c26507e54622e6513da22863b8903342519d564942c80aa6dc45",
+      "source_gap_endpoints_native": [
+        [
+          371.7585754394531,
+          1593.5999145507812
+        ],
+        [
+          421.7989501953125,
+          1593.5999145507812
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    }
+  ],
+  "source_pdf_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "unmatched_reviewed_opening_ids": [],
+  "version": "reviewed-opening-correspondence-v1",
+  "world_geometry_additions": 0
+}

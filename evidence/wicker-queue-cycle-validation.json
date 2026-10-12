@@ -1,0 +1,129 @@
+{
+  "area_id": "wicker-man",
+  "base_package_sha256": "a8025899f7775a6dbc326788efe7c9ea7240474108e3cabe924146108a744d48",
+  "cycle_receipt": {
+    "base_terrain_includes_ungenerated_context": true,
+    "cumulative_geometry_chunks": 2,
+    "cumulative_scheduled_chunks": 2,
+    "cumulative_voxel_cells": 27,
+    "cycle": 1,
+    "detail_scope": "Draft retained layers and Wicker models through this cycle; other legacy park context remains provisional.",
+    "download_artifact": "park-preview-cycle-0001",
+    "file": "previews/cycle_0001/park.mcworld",
+    "new_scheduled_chunks": 2,
+    "plan_identity": "30377732c2085491cc1c9ad06688cff1dc4d5787065611a4683a899d016ef756",
+    "production_placement_eligible": false,
+    "section": 1,
+    "sha256": "c5d244bafff1fff9c09d98c283a2a842cca553e946f0352c9d4c8b1e7927bd83",
+    "snapshot_mode": "review_draft",
+    "status": "native_review_batch_export_verified",
+    "workflow_run_id": null
+  },
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          -366.2820015348848,
+          139.06455181058453
+        ],
+        [
+          -367.4335915626157,
+          141.5063941381098
+        ],
+        [
+          -382.3586622536713,
+          134.45949076350513
+        ],
+        [
+          -381.20707461401696,
+          132.01764174434473
+        ],
+        [
+          -366.2820015348848,
+          139.06455181058453
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "limitations": [
+    "Only one source queue walkway outline is reconstructed; the full queue remains incomplete.",
+    "Placement inherits the provisional station drawing correspondence; no accepted independent survey checks.",
+    "Rail placement/material is an optional visual estimate; proposed drawing is not as-built verification."
+  ],
+  "native_collision_cells_withheld": 0,
+  "production_placement_eligible": false,
+  "raster": {
+    "maximum_neighbor_rise_blocks": 1,
+    "paving_basis": "Whole source polygon; no bound finish label, stone per user default",
+    "paving_columns": 19,
+    "protected_or_missing_columns": 26,
+    "rail_basis": "Optional inferred one-block oak-fence proxy outside path; not a verified source specification",
+    "rail_cells": 8
+  },
+  "source": {
+    "area_m2": 44.52677958423888,
+    "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "identity_basis": "2967-21 P1 queue walkway callout and visually inspected closed four-stroke outline",
+    "native_pdf_corners_y_up": [
+      [
+        1059.8382568359375,
+        856.381103515625
+      ],
+      [
+        1010.6381225585938,
+        807.180908203125
+      ],
+      [
+        1311.2379150390625,
+        506.5809326171875
+      ],
+      [
+        1360.438232421875,
+        555.7811279296875
+      ]
+    ],
+    "page": 1,
+    "paint_ordinals": [
+      601,
+      602,
+      603,
+      604
+    ],
+    "scale_basis": "Retained floor-to-roof page furniture normalization; no geographic survey acceptance",
+    "source_dimensions_m": [
+      2.698784496263749,
+      16.49881616549983
+    ],
+    "source_polygon_sha256": "670b6fbfa0982692b2fc2d8ef643845b79410776ce05ce47e21c496597d6a4ce",
+    "source_state": "2016 proposed planning drawing; current/as-built state unverified"
+  },
+  "status": "partial Wicker source-derived queue review",
+  "world_sha256": "c5d244bafff1fff9c09d98c283a2a842cca553e946f0352c9d4c8b1e7927bd83",
+  "written_cells": 27,
+  "cold_package_readback": {
+    "verified_cells": 27,
+    "unchanged_chunks": 4755,
+    "total_chunks": 4757,
+    "rail_bearing_verified": true,
+    "zip_crc": "passed"
+  },
+  "scope": "One newly reconstructed source walkway, cumulative over V23. Not a completed area revamp or full queue reconstruction.",
+  "input_sha256": {
+    "floor_pdf": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "wicker_quality": "f0f932ab07bb178ad316cc7e3b540c94d4b1b7c9a76cfe035db33575d96ee662",
+    "base_package": "a8025899f7775a6dbc326788efe7c9ea7240474108e3cabe924146108a744d48",
+    "base_quality": "8e1454fcc468af4568540856bb22fa9179bab1c0eef63a43a3ed7678d2da836a",
+    "protected_geometry": "6458c7097497c3692ab1376a9cdc58c5d478da5182e69f3bebcc7d637d3726b5",
+    "terrain_config": "7b25d4ef036b888fa10ab0b4d7e56ca5c1c8ec51274f9e26c58313a4bd13af8b",
+    "terrain_raster": "1a54c69107f4b39681bf898640d59978bd7083eb41069e8efa4d03505e968f3d",
+    "job": "eeeb4097c247a802baefcf0e0e9cd2056bfb11d10900dab29eb8087987054d66",
+    "floor_scale_review": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040"
+  },
+  "tests": {
+    "full_suite": 826,
+    "status": "passed",
+    "focused_queue_tests": 5,
+    "native_fixture": "Actual terrain-pinned cumulative native cycle; cold readback verifies protected, written and unrelated cells. PDF geometry alone is synthetic in this fixture; real PDF extraction and real download are separately evidenced."
+  }
+}

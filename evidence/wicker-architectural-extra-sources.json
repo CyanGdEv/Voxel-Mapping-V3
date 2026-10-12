@@ -1,0 +1,55 @@
+{
+  "application_reference": "SMD/2016/0315",
+  "application_page_sha256": "da203bc855a135f2cd6f2850db2b45cfac213a7d31ebf90e4f1eb8234f9a8bb3",
+  "retrieved_date": "2026-10-10",
+  "documents": [
+    {
+      "attachment_id": 163939,
+      "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939",
+      "upload_date_as_listed": "02/08/2016",
+      "http_status": 200,
+      "bytes": 537537,
+      "sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "content_type": "application/pdf",
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939",
+      "pages": 1,
+      "status": "downloaded"
+    },
+    {
+      "attachment_id": 163938,
+      "attachment_label": "2967-30 Preshow Elevations P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163938",
+      "upload_date_as_listed": "02/08/2016",
+      "http_status": 200,
+      "bytes": 516394,
+      "sha256": "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+      "content_type": "application/pdf",
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163938",
+      "pages": 1,
+      "status": "downloaded"
+    },
+    {
+      "attachment_id": 163936,
+      "attachment_label": "2967-22 Basement Plan P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163936",
+      "upload_date_as_listed": "02/08/2016",
+      "http_status": 200,
+      "bytes": 107911,
+      "sha256": "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c",
+      "content_type": "application/pdf",
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163936",
+      "pages": 1,
+      "status": "downloaded"
+    }
+  ],
+  "limits": {
+    "concurrent_requests": 4,
+    "max_pdf_bytes": 20000000,
+    "max_pdf_pages": 100
+  },
+  "limitations": [
+    "Attachment order/label does not establish final approval or as-built status.",
+    "Original and revised plans are separate source versions; no geometry is automatically accepted."
+  ]
+}

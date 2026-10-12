@@ -1,0 +1,35 @@
+{
+  "adapter_version": "local-building-park-v1",
+  "profile": "wicker-shop-projection-model",
+  "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+  "world_blocks_per_source_metre": 1,
+  "materials_preserved": ["dark_oak_slab", "dark_oak_slab_top", "dark_oak_fence", "spruce_trapdoor_north", "spruce_trapdoor_east", "spruce_trapdoor_south", "spruce_trapdoor_west"],
+  "synthetic_fixture_validation": {
+    "rotation_degrees_tested": [0, 25.244359980951014, 90],
+    "rotated_park_job_voxel_cells": 658,
+    "rotated_park_job_native_chunks": 5,
+    "park_job_native_world_export": "passed",
+    "resume_without_duplicate_features": "passed",
+    "changed_placement_resume_rejected": "passed",
+    "missing_registration_withheld": "passed",
+    "unverified_assembly_identity_withheld": "passed",
+    "datum_mismatch_withheld": "passed",
+    "existing_world_collision_atomic_withhold": "passed",
+    "model_checksum_tamper_rejected": "passed"
+  },
+  "real_wicker_shop_placement": {
+    "status": "withheld_pending_registration_floor_and_assembly_identity",
+    "mapped_centroid_epsg27700": [407562.21375207696, 343583.2490366677],
+    "accepted_controls": 0,
+    "accepted_checkpoints": 0,
+    "base_elevation_odn_metres": null,
+    "real_park_blocks_added": 0,
+    "evidence": "evidence/wicker-shop-context-review.json"
+  },
+  "limitations": [
+    "Synthetic fixture controls and terrain do not establish real park alignment.",
+    "Origin and floor snap to the nearest metre with offsets retained in provenance.",
+    "Generic building replacement and terrain excavation are not implicit; collisions withhold the feature.",
+    "Decorative wall details and construction closure remain estimates."
+  ]
+}

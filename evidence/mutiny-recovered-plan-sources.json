@@ -1,0 +1,78 @@
+{
+  "entries": [
+    {
+      "applicationReference": "SMD/2013/0012",
+      "application_context": "SMD/2013/0012 09/02/2013 09/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower. Planning Permission - Approved (Prior Oct 2013) 05/04/2013",
+      "discovery_source": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17418",
+      "file": "files/94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8.pdf",
+      "role": "block-plan",
+      "sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "state": "unknown",
+      "title": "Block plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+      "hash_provenance": "observed_official_http_download_2026-10-12",
+      "acquired_at": "2026-10-12"
+    },
+    {
+      "applicationReference": "SMD/2013/0013",
+      "application_context": "SMD/2013/0013 09/02/2013 09/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower. Planning Permission - Approved (Prior Oct 2013) 05/04/2013",
+      "discovery_source": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17419",
+      "file": "files/94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8.pdf",
+      "role": "block-plan",
+      "sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "state": "unknown",
+      "title": "Block plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53384",
+      "hash_provenance": "observed_official_http_download_2026-10-12",
+      "acquired_at": "2026-10-12"
+    },
+    {
+      "acquired_at": "2026-10-12",
+      "applicationReference": "SMD/2013/0420",
+      "application_context": "SMD/2013/0420 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area and the Bridge/Dam area Planning Permission - Approved (Prior Oct 2013) 05/06/2013",
+      "discovery_source": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17901",
+      "file": "files/3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f.pdf",
+      "hash_provenance": "observed_official_http_download_2026-10-12",
+      "priority": 10,
+      "role": "site-plan",
+      "sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "state": "unknown",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53653"
+    },
+    {
+      "acquired_at": "2026-10-12",
+      "applicationReference": "SMD/2013/0419",
+      "application_context": "SMD/2013/0419 09/04/2013 10/04/2013 Alton Towers , Alton Towers , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area and the Bridge/Dam area Planning Permission - Approved (Prior Oct 2013) 05/06/2013",
+      "discovery_source": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17900",
+      "file": "files/3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f.pdf",
+      "hash_provenance": "observed_official_http_download_2026-10-12",
+      "priority": 10,
+      "role": "site-plan",
+      "sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "state": "unknown",
+      "title": "Block plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52670"
+    },
+    {
+      "acquisition_provenance": "official_endpoint_2026-10-09",
+      "applicationReference": "SMD/2013/0012",
+      "application_context": "SMD/2013/0012 09/02/2013 09/02/2013 Alton Towers Resort , Alton Towers Resort , Farley Lane , Staffordshire , Farley , ST10 4DB The erection of outdoor safety fencing at Alton Towers Resort in the Splash Battle area, White Bridge area, Towers area and Gothic Prospect Tower. Planning Permission - Approved (Prior Oct 2013) 05/04/2013",
+      "discovered_at": "2026-10-09",
+      "discovery_source": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=17418",
+      "file": "files/cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519.pdf",
+      "role": "unknown",
+      "sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "state": "unknown",
+      "title": "amended plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=47120",
+      "hash_provenance": "observed_official_http_download_2026-10-12",
+      "acquired_at": "2026-10-12"
+    }
+  ]
+}

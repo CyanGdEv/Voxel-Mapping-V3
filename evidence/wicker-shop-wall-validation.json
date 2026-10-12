@@ -1,0 +1,12 @@
+{
+  "byte_identical_model_replay": true,
+  "wall_panels": 12,
+  "wall_triangles": 22,
+  "nondegenerate_triangles": true,
+  "wall_area_equals_shell_minus_openings": true,
+  "overheight_opening_rejected": true,
+  "changed_render_rejected": true,
+  "cross_view_heights_within_sampling_intervals": true,
+  "svg_rendered_and_visually_reviewed": true,
+  "world_geometry_additions": 0
+}

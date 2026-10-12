@@ -1,0 +1,68 @@
+{
+  "scanned_points": 98342681,
+  "retained_points": 77938,
+  "classifications": {
+    "1": 1759,
+    "2": 26083,
+    "3": 1237,
+    "4": 8633,
+    "5": 31107,
+    "6": 9109,
+    "7": 10
+  },
+  "sha256": "793a0ad62fd15642a7c4f8a51da2e2c52480a1d0027dc4c4bc0b3d69b89e7793",
+  "crs": "EPSG:27700",
+  "units": "m",
+  "vertical_datum": "ODN",
+  "vertical_datum_basis": "EA published dataset declaration; header horizontal CRS checked",
+  "scope": "observed returns only; no semantic geometry, interpolation, floor or lakebed inference",
+  "bounds": [
+    407461.0,
+    343478.0,
+    407620,
+    343627.0
+  ],
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9909726817279516
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "archive_filename": "SK0540_P_10682_20220105_20220105.laz",
+  "archive_sha256": "2bd911d556739978915046d94037c206cdb60811c2e2dfd6da48b24ce83135dc",
+  "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+  "selection_basis": "Union of original bounds and mapped station extent with 10 m search margin, rounded outward to 5 m; no point fitting",
+  "mapped_station_bounds_bng": [
+    407574.0411518354,
+    343569.54022816906,
+    407608.18592793494,
+    343604.5391302444
+  ],
+  "original_crop_bounds": [
+    407461.0,
+    343478.0,
+    407603.0,
+    343627.0
+  ],
+  "original_crop_points_preserved": 68237,
+  "original_point_records_byte_identical": true,
+  "original_point_records_sha256": "135d074d6516fa72f73c0614721e394d8d7aa14000529a81971031f50a24d5e6",
+  "new_crop_point_indices_are_separate_namespace": true,
+  "input_sha256": {
+    "old_cloud": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+    "old_receipt": "9ead4a23e0f385443c43ac048834fa4b0009ac72d7f4911525a49bb97f113992",
+    "context": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-10",
+  "scope": "real source leader connectivity; component outlines and placement unverified",
+  "recovered_connections": 23,
+  "shop_connections": 12,
+  "maintenance_connections": 11,
+  "roof_anchor_candidates": 8,
+  "wall_connections_visibility_withheld": 15,
+  "reproduced_supported_filled_face_outlines": 0,
+  "visual_check": "maintenance leader overlay inspected against the native drawing; no manual endpoint transcription",
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

@@ -1,0 +1,363 @@
+{
+  "runtime": {
+    "reader": "PyMuPDF 1.26.6"
+  },
+  "sources": {
+    "expanded_archive_sha256": "830ef2e993ceff0ab64017f6a2324dd3cfe45a933352650064be429ffc3271fd",
+    "mutiny_archive_sha256": "6b1ec3033c559bc64fb81c5d35d03ddaff390b9deb8bd37468cb7ec614487a6c",
+    "unique_retained_pdfs": 309,
+    "retained_pages": 818,
+    "live_downloads": 0
+  },
+  "full_inventory": {
+    "version": "drawing-layout-v1",
+    "contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+    "options": {
+      "max_paths": 100000,
+      "max_labels": 20000,
+      "max_masks": 5000,
+      "max_mask_points": 50000,
+      "max_regions": 256
+    },
+    "pages": 818,
+    "run_pages": 818,
+    "resumed_pages": 0,
+    "counts": {
+      "layout_hypotheses_only": 782,
+      "visible_native_text": 114838,
+      "unverified_text_trace_binding": 5436,
+      "withheld_occluded_or_invisible_text": 16362,
+      "unreviewed_drawing_region": 8368,
+      "withheld": 14,
+      "withheld_path_budget": 22,
+      "annotation_panel_hypothesis": 35
+    },
+    "errors": [],
+    "output_sha256": "e958632b8365b6992ed742d7bcd6ae640ccd86da3fc47777fe47193e2e3731be",
+    "world_geometry_additions": 0,
+    "elapsed_seconds": 347.489488363266
+  },
+  "resume": {
+    "version": "drawing-layout-v1",
+    "contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+    "options": {
+      "max_paths": 100000,
+      "max_labels": 20000,
+      "max_masks": 5000,
+      "max_mask_points": 50000,
+      "max_regions": 256
+    },
+    "pages": 818,
+    "run_pages": 0,
+    "resumed_pages": 818,
+    "counts": {
+      "layout_hypotheses_only": 782,
+      "visible_native_text": 114838,
+      "unverified_text_trace_binding": 5436,
+      "withheld_occluded_or_invisible_text": 16362,
+      "unreviewed_drawing_region": 8368,
+      "withheld": 14,
+      "withheld_path_budget": 22,
+      "annotation_panel_hypothesis": 35
+    },
+    "errors": [],
+    "output_sha256": "e958632b8365b6992ed742d7bcd6ae640ccd86da3fc47777fe47193e2e3731be",
+    "world_geometry_additions": 0
+  },
+  "withheld_reasons": {
+    "Occluder budget exceeded": 14
+  },
+  "source_case": {
+    "document_sha256": "651184f3ebb345468cb1f397f3d2231227220dd097875479f8b252173ca75e86",
+    "page": 1,
+    "elapsed_seconds": 11.784194946289062,
+    "labels": 8198,
+    "label_visibility_counts": {
+      "visible_native_text": 5776,
+      "withheld_occluded_or_invisible_text": 2293,
+      "unverified_text_trace_binding": 129
+    },
+    "regions": [
+      {
+        "id": "db1113d1da491a0f0f485b3a353cb16a0e93075a6cf45633a690ecfd40cd5db9",
+        "kind": "opaque_white_rectangle",
+        "bbox": [
+          1022.8800048828125,
+          620.0,
+          1177.679931640625,
+          827.5999755859375
+        ],
+        "paint_ordinal": 93121,
+        "seqno": 101350,
+        "role": "annotation_panel_hypothesis",
+        "scale_labels": [],
+        "annotation_clues": [
+          "Key:   See  Important  Notes  on  373/99/2"
+        ]
+      },
+      {
+        "id": "7dd5d06504d71949cf4ca948e45c7b8f95c6d98e674850d353656dd4728a6e91",
+        "kind": "opaque_white_rectangle",
+        "bbox": [
+          1021.199951171875,
+          26.72003173828125,
+          1164.47998046875,
+          155.3599853515625
+        ],
+        "paint_ordinal": 93649,
+        "seqno": 101910,
+        "role": "annotation_panel_hypothesis",
+        "scale_labels": [
+          {
+            "denominator": 1000,
+            "paper": "A3",
+            "label_bbox": [
+              1021.6799926757812,
+              52.623291015625,
+              1052.0015869140625,
+              57.908935546875
+            ]
+          },
+          {
+            "denominator": 500,
+            "paper": "A1",
+            "label_bbox": [
+              1021.6799926757812,
+              47.5843505859375,
+              1048.6488037109375,
+              52.86431884765625
+            ]
+          }
+        ],
+        "annotation_clues": [
+          "ARCHITECTS  AND  LANDSCAPE  PLANNERS",
+          "REVISION"
+        ]
+      },
+      {
+        "id": "1a8168f5bdb272c80e0e9cdbcd2c2e31219b866bde142cd4bf139341276e2e87",
+        "kind": "native_clip_rectangle",
+        "bbox": [
+          1140.9599609375,
+          48.32000732421875,
+          1147.4400634765625,
+          57.20001220703125
+        ],
+        "paint_ordinal": 93650,
+        "seqno": null,
+        "role": "unreviewed_drawing_region",
+        "scale_labels": []
+      },
+      {
+        "id": "cb51edd2dc8225b6a2aa473f8a61d0849632a72129fe38990a08a63c7a3d415a",
+        "kind": "opaque_white_rectangle",
+        "bbox": [
+          24.0,
+          80.96002197265625,
+          199.9199981689453,
+          824.719970703125
+        ],
+        "paint_ordinal": 93666,
+        "seqno": 101948,
+        "role": "unreviewed_drawing_region",
+        "scale_labels": []
+      },
+      {
+        "id": "0aa8ac44b8ee8c1c5632cf02c07c311200ea9e2925fd8045075ef274e154181f",
+        "kind": "native_clip_rectangle",
+        "bbox": [
+          0.0,
+          557.5999755859375,
+          494.1600036621094,
+          842.0
+        ],
+        "paint_ordinal": 93668,
+        "seqno": null,
+        "role": "unreviewed_drawing_region",
+        "scale_labels": []
+      }
+    ],
+    "paper_size_hypothesis": "A3",
+    "named_labels": [
+      {
+        "text": "ALTON  TOWERS HOTEL",
+        "bbox": [
+          98.4000015258789,
+          410.693603515625,
+          125.7887954711914,
+          413.37200927734375
+        ],
+        "local": [
+          112.09439849853516,
+          412.0328063964844
+        ],
+        "visibility_status": "withheld_occluded_or_invisible_text",
+        "visibility_reasons": [
+          "covered_by_later_opaque_fill"
+        ],
+        "trace_seqnos": [
+          50547
+        ],
+        "region_ids": [
+          "cb51edd2dc8225b6a2aa473f8a61d0849632a72129fe38990a08a63c7a3d415a"
+        ],
+        "scale_labels": [],
+        "origin": "native_text_box_center_unverified"
+      },
+      {
+        "text": "THE CROOKED SPOON",
+        "bbox": [
+          788.2283935546875,
+          269.09521484375,
+          815.2120971679688,
+          273.88629150390625
+        ],
+        "local": [
+          801.7202453613281,
+          271.49075317382807
+        ],
+        "visibility_status": "withheld_occluded_or_invisible_text",
+        "visibility_reasons": [
+          "partially_or_possibly_occluded"
+        ],
+        "trace_seqnos": [
+          72037
+        ],
+        "region_ids": [],
+        "scale_labels": [],
+        "origin": "native_text_box_center_unverified"
+      }
+    ],
+    "geometry_report": {
+      "status": "unplaced_geometry_candidates",
+      "raw_paths": 93669,
+      "candidates": 3576,
+      "geometry_types": {
+        "LineString": 3461,
+        "Polygon": 115
+      },
+      "retained_points": 16520,
+      "curved_candidates": 453,
+      "rejections": {
+        "nonopaque_paint": 27727,
+        "Short line/symbol candidate": 53069,
+        "Crop boundary/frame candidate": 6355,
+        "Small symbol or sheet enclosure candidate": 1937,
+        "Text glyph/annotation mask": 41,
+        "Invalid candidate topology": 19,
+        "A linearring requires at least 4 coordinates.": 815,
+        "Compound stroked closed rings require topology review": 1
+      },
+      "world_geometry_additions": 0
+    },
+    "outline_review_counts": {
+      "unclassified_outline": 3048,
+      "annotation_or_occluded_review": 385,
+      "physical_outline_hypothesis": 143
+    },
+    "outline_review_flags": {
+      "annotation_panel_overlap": 126,
+      "all_original_paints_occluded": 337
+    },
+    "world_geometry_additions": 0
+  },
+  "source_pinned_replay": {
+    "geometry": {
+      "version": "drawing-geometry-v2",
+      "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+      "options": {
+        "curve_tolerance_points": 0.25,
+        "max_paths": 100000,
+        "max_candidates": 4000,
+        "max_points": 10000,
+        "max_total_points": 200000
+      },
+      "status": "unplaced_geometry_only",
+      "pages": 1,
+      "run_pages": 1,
+      "resumed_pages": 0,
+      "candidates": 3576,
+      "candidate_types": {
+        "line": 3461,
+        "polygon": 115
+      },
+      "curved_candidates": 453,
+      "page_statuses": {
+        "unplaced_geometry_candidates": 1
+      },
+      "errors": [],
+      "file_sha256": {
+        "geometry": "4cd2983e91d9513d5d2f3b5f2d38f6edbec7099409e7adaf7421cdf48d4672a1",
+        "polygon": "58d284a5fe44341cc6f513191e4c57d15cf1887b3d684fad487d2520c93ed920",
+        "line": "bfe07c2f3f0e1dd34f1ac0266aa26d6ac88e2f01685ade96d2bbebf214f25c8a"
+      },
+      "world_geometry_additions": 0
+    },
+    "layout": {
+      "version": "drawing-layout-v1",
+      "contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+      "options": {
+        "max_paths": 100000,
+        "max_labels": 20000,
+        "max_masks": 5000,
+        "max_mask_points": 50000,
+        "max_regions": 256
+      },
+      "pages": 1,
+      "run_pages": 1,
+      "resumed_pages": 0,
+      "counts": {
+        "layout_hypotheses_only": 1,
+        "visible_native_text": 5776,
+        "withheld_occluded_or_invisible_text": 2293,
+        "unverified_text_trace_binding": 129,
+        "annotation_panel_hypothesis": 2,
+        "unreviewed_drawing_region": 3
+      },
+      "errors": [],
+      "output_sha256": "dca7873c11b4c9519381ef3e3348759fa5dcb0cb53e2112626c4be63e9ced667",
+      "world_geometry_additions": 0
+    },
+    "outline": {
+      "version": "drawing-layout-v1",
+      "contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+      "candidates": 3576,
+      "counts": {
+        "unclassified_outline": 3048,
+        "annotation_or_occluded_review": 385,
+        "annotation_panel_overlap": 126,
+        "all_original_paints_occluded": 337,
+        "physical_outline_hypothesis": 143
+      },
+      "candidate_sha256": "4cd2983e91d9513d5d2f3b5f2d38f6edbec7099409e7adaf7421cdf48d4672a1",
+      "output_sha256": "d916f2fe0f3eb1213200163fc5c5b0cce1f923976bc3b052a6446c4cb3466437",
+      "max_records": 2500000,
+      "world_geometry_additions": 0
+    },
+    "named_polygon_matches_for_covered_labels": 0,
+    "acquisition": "retained checksum-verified PDF; no live request; synthetic inspection URL is not discovery evidence",
+    "world_geometry_additions": 0
+  },
+  "validation": {
+    "tests_passed": 549,
+    "command": "python -m unittest discover -s tests -q",
+    "checks": [
+      "covered and partial/nonopaque labels withheld",
+      "invisible text excluded",
+      "filled holes retained",
+      "native rotation coordinates preserved",
+      "region budget defers safely",
+      "PDF corruption excluded from cached output",
+      "changed candidate paint references rejected",
+      "optional pipeline stage resumes",
+      "corpus resume produces identical inventory hash"
+    ]
+  },
+  "limitations": [
+    "Layout regions and family hints require review; no physical identity or placement verified",
+    "36 pages withheld by path or occluder budgets",
+    "Paint analysis does not prove arbitrary stroke/text clipping visibility",
+    "2.5 million is the outline stream record ceiling; this is not a 2.5 million object reconstruction benchmark"
+  ],
+  "world_geometry_additions": 0
+}

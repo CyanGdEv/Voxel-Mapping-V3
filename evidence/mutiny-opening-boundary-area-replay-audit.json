@@ -1,0 +1,28 @@
+{
+  "area_status": "awaiting_reconstruction",
+  "first_review": {
+    "counts": {
+      "no_complete_outline_within_trace_bound": 16
+    },
+    "geometry_export_authorized": false,
+    "reused": false,
+    "review_sha256": "4a65038390154a9a6b0d7136efa1f8459c2ea17a15c3ba5713a8f5e81e0a12f9",
+    "status": "reviewed_trace_comparison_only",
+    "version": "opening-boundary-review-v1",
+    "world_geometry_additions": 0
+  },
+  "second_extraction_run_pages": 0,
+  "second_review": {
+    "counts": {
+      "no_complete_outline_within_trace_bound": 16
+    },
+    "geometry_export_authorized": false,
+    "reused": true,
+    "review_sha256": "4a65038390154a9a6b0d7136efa1f8459c2ea17a15c3ba5713a8f5e81e0a12f9",
+    "status": "reviewed_trace_comparison_only",
+    "version": "opening-boundary-review-v1",
+    "world_geometry_additions": 0
+  },
+  "seed_label_disagreements": 0,
+  "world_geometry_additions": 0
+}

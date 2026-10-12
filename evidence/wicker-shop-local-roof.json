@@ -1,0 +1,524 @@
+{
+  "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "annotation_sha256": "624fa077d998d7b793c62d48b8efe311bdd73451c92e143b83f4b282ae0e0215",
+  "pixel_to_native_matrix": [
+    0.0,
+    1.2627118825912476,
+    1.2623687982559204,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "profiles": [
+    {
+      "view": "SE",
+      "points_pixels": {
+        "roof_left": [
+          274,
+          328
+        ],
+        "roof_right": [
+          653,
+          328
+        ],
+        "wall_left": [
+          285,
+          350
+        ],
+        "wall_right": [
+          642,
+          350
+        ],
+        "ridge": [
+          450,
+          245
+        ],
+        "eave": [
+          450,
+          328
+        ],
+        "floor": [
+          119,
+          407
+        ]
+      },
+      "points_native_pdf": {
+        "roof_left": [
+          414.0569763183594,
+          345.9830627441406
+        ],
+        "roof_right": [
+          414.0569763183594,
+          824.5508422851562
+        ],
+        "wall_left": [
+          441.8290710449219,
+          359.8728942871094
+        ],
+        "wall_right": [
+          441.8290710449219,
+          810.6610107421875
+        ],
+        "ridge": [
+          309.2803649902344,
+          568.2203369140625
+        ],
+        "eave": [
+          414.0569763183594,
+          568.2203369140625
+        ],
+        "floor": [
+          513.7841186523438,
+          150.26271057128906
+        ]
+      },
+      "measurements": {
+        "roof_span": {
+          "metres": 16.8828086235457,
+          "manual_sampling_interval_metres": [
+            16.704625946780045,
+            17.060991300311354
+          ]
+        },
+        "wall_span": {
+          "metres": 15.902803901334602,
+          "manual_sampling_interval_metres": [
+            15.72462122456895,
+            16.080986578100255
+          ]
+        },
+        "ridge_above_floor": {
+          "metres": 7.214437682032585,
+          "manual_sampling_interval_metres": [
+            7.0363034182786945,
+            7.392571945786476
+          ]
+        },
+        "eave_above_floor": {
+          "metres": 3.5181517091393473,
+          "manual_sampling_interval_metres": [
+            3.340017445385456,
+            3.6962859728932385
+          ]
+        },
+        "left_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        },
+        "right_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        }
+      }
+    },
+    {
+      "view": "SW",
+      "points_pixels": {
+        "roof_left": [
+          1005,
+          328
+        ],
+        "roof_right": [
+          1293,
+          328
+        ],
+        "wall_left": [
+          1017,
+          350
+        ],
+        "wall_right": [
+          1282,
+          350
+        ],
+        "ridge": [
+          1149,
+          245
+        ],
+        "eave": [
+          1005,
+          328
+        ],
+        "floor": [
+          1537,
+          407
+        ]
+      },
+      "points_native_pdf": {
+        "roof_left": [
+          414.0569763183594,
+          1269.025390625
+        ],
+        "roof_right": [
+          414.0569763183594,
+          1632.6865234375
+        ],
+        "wall_left": [
+          441.8290710449219,
+          1284.177978515625
+        ],
+        "wall_right": [
+          441.8290710449219,
+          1618.796630859375
+        ],
+        "ridge": [
+          309.2803649902344,
+          1450.85595703125
+        ],
+        "eave": [
+          414.0569763183594,
+          1269.025390625
+        ],
+        "floor": [
+          513.7841186523438,
+          1940.7882080078125
+        ]
+      },
+      "measurements": {
+        "roof_span": {
+          "metres": 12.829152727127074,
+          "manual_sampling_interval_metres": [
+            12.650970050361419,
+            13.007335403892728
+          ]
+        },
+        "wall_span": {
+          "metres": 11.804602335724564,
+          "manual_sampling_interval_metres": [
+            11.626419658958909,
+            11.982785012490218
+          ]
+        },
+        "ridge_above_floor": {
+          "metres": 7.214437682032585,
+          "manual_sampling_interval_metres": [
+            7.0363034182786945,
+            7.392571945786476
+          ]
+        },
+        "eave_above_floor": {
+          "metres": 3.5181517091393473,
+          "manual_sampling_interval_metres": [
+            3.340017445385456,
+            3.6962859728932385
+          ]
+        },
+        "left_overhang": {
+          "metres": 0.5345480302969614,
+          "manual_sampling_interval_metres": [
+            0.3563653535313076,
+            0.7127307070626152
+          ]
+        },
+        "right_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        }
+      }
+    },
+    {
+      "view": "NW",
+      "points_pixels": {
+        "roof_left": [
+          274,
+          814
+        ],
+        "roof_right": [
+          653,
+          814
+        ],
+        "wall_left": [
+          285,
+          842
+        ],
+        "wall_right": [
+          642,
+          842
+        ],
+        "ridge": [
+          450,
+          730
+        ],
+        "eave": [
+          450,
+          814
+        ],
+        "floor": [
+          112,
+          893
+        ]
+      },
+      "points_native_pdf": {
+        "roof_left": [
+          1027.5682373046875,
+          345.9830627441406
+        ],
+        "roof_right": [
+          1027.5682373046875,
+          824.5508422851562
+        ],
+        "wall_left": [
+          1062.91455078125,
+          359.8728942871094
+        ],
+        "wall_right": [
+          1062.91455078125,
+          810.6610107421875
+        ],
+        "ridge": [
+          921.5292358398438,
+          568.2203369140625
+        ],
+        "eave": [
+          1027.5682373046875,
+          568.2203369140625
+        ],
+        "floor": [
+          1127.2952880859375,
+          141.42373657226562
+        ]
+      },
+      "measurements": {
+        "roof_span": {
+          "metres": 16.8828086235457,
+          "manual_sampling_interval_metres": [
+            16.704625946780045,
+            17.060991300311354
+          ]
+        },
+        "wall_span": {
+          "metres": 15.902803901334602,
+          "manual_sampling_interval_metres": [
+            15.72462122456895,
+            16.080986578100255
+          ]
+        },
+        "ridge_above_floor": {
+          "metres": 7.258971247971058,
+          "manual_sampling_interval_metres": [
+            7.080836984217167,
+            7.4371055117249485
+          ]
+        },
+        "eave_above_floor": {
+          "metres": 3.5181517091393473,
+          "manual_sampling_interval_metres": [
+            3.340017445385456,
+            3.6962859728932385
+          ]
+        },
+        "left_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        },
+        "right_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        }
+      }
+    },
+    {
+      "view": "NE",
+      "points_pixels": {
+        "roof_left": [
+          1005,
+          814
+        ],
+        "roof_right": [
+          1293,
+          814
+        ],
+        "wall_left": [
+          1017,
+          850
+        ],
+        "wall_right": [
+          1282,
+          850
+        ],
+        "ridge": [
+          1149,
+          730
+        ],
+        "eave": [
+          1005,
+          814
+        ],
+        "floor": [
+          1374,
+          893
+        ]
+      },
+      "points_native_pdf": {
+        "roof_left": [
+          1027.5682373046875,
+          1269.025390625
+        ],
+        "roof_right": [
+          1027.5682373046875,
+          1632.6865234375
+        ],
+        "wall_left": [
+          1073.013427734375,
+          1284.177978515625
+        ],
+        "wall_right": [
+          1073.013427734375,
+          1618.796630859375
+        ],
+        "ridge": [
+          921.5292358398438,
+          1450.85595703125
+        ],
+        "eave": [
+          1027.5682373046875,
+          1269.025390625
+        ],
+        "floor": [
+          1127.2952880859375,
+          1734.9661865234375
+        ]
+      },
+      "measurements": {
+        "roof_span": {
+          "metres": 12.829152727127074,
+          "manual_sampling_interval_metres": [
+            12.650970050361419,
+            13.007335403892728
+          ]
+        },
+        "wall_span": {
+          "metres": 11.804602335724564,
+          "manual_sampling_interval_metres": [
+            11.626419658958909,
+            11.982785012490218
+          ]
+        },
+        "ridge_above_floor": {
+          "metres": 7.258971247971058,
+          "manual_sampling_interval_metres": [
+            7.080836984217167,
+            7.4371055117249485
+          ]
+        },
+        "eave_above_floor": {
+          "metres": 3.5181517091393473,
+          "manual_sampling_interval_metres": [
+            3.340017445385456,
+            3.6962859728932385
+          ]
+        },
+        "left_overhang": {
+          "metres": 0.5345480302969614,
+          "manual_sampling_interval_metres": [
+            0.3563653535313076,
+            0.7127307070626152
+          ]
+        },
+        "right_overhang": {
+          "metres": 0.49000236110554796,
+          "manual_sampling_interval_metres": [
+            0.31181968433989415,
+            0.6681850378712018
+          ]
+        }
+      }
+    }
+  ],
+  "local_roof_mesh": {
+    "coordinate_frame": "local metres: x long axis, y transverse, z above drawn shop floor",
+    "vertices": [
+      [
+        -8.44140431177285,
+        -6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        8.44140431177285,
+        -6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        -8.44140431177285,
+        0,
+        7.214437682032585
+      ],
+      [
+        8.44140431177285,
+        0,
+        7.214437682032585
+      ],
+      [
+        -8.44140431177285,
+        6.414576363563537,
+        3.5181517091393473
+      ],
+      [
+        8.44140431177285,
+        6.414576363563537,
+        3.5181517091393473
+      ]
+    ],
+    "triangles": [
+      [
+        0,
+        1,
+        3
+      ],
+      [
+        0,
+        3,
+        2
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        2,
+        5,
+        4
+      ]
+    ],
+    "scope": "main roof surface only; excludes fascia, projections, neighbouring roofs, walls and entrances",
+    "registration": null,
+    "source_state": "proposed",
+    "world_placement_eligible": false
+  },
+  "scale_check": {
+    "graphic_bar_pixels": [
+      1344,
+      1568
+    ],
+    "graphic_bar_drawn_metres": 10,
+    "graphic_bar_scaled_metres": 9.978229898876613
+  },
+  "roof_plan_comparison": {
+    "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "line_record_id": "96cae9d1a97616dc2b5bf863665ea4e4efc0994a981fec1529c20709994fede2",
+    "line_length_metres": 16.846922054473985,
+    "elevation_minus_plan_metres": 0.035886569071713836,
+    "physical_edge_correspondence_verified": false
+  },
+  "limitations": [
+    "Manual endpoint bounds describe sampling only, not total physical accuracy.",
+    "Scale checked within proposed drawing; no as-built dimensions or ODN datum acceptance.",
+    "Mesh is a local provisional main roof, not an accepted wall footprint or park registration."
+  ],
+  "world_geometry_additions": 0
+}

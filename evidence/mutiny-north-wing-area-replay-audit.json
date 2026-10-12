@@ -1,0 +1,28 @@
+{
+  "area_completed": false,
+  "first_extraction_run_pages": 3,
+  "first_review": {
+    "model_sha256": "43cc96dd5fabe9887a3ecfbe627c721c0fb5a61aa8ea0217e5d9dbf78207dfcd",
+    "reused": false,
+    "roof_triangles": 4,
+    "status": "provisional_local_surface_review",
+    "version": "local-wing-surface-review-v1",
+    "wall_triangles": 97,
+    "world_geometry_additions": 0,
+    "world_placement_eligible": false
+  },
+  "second_extraction_run_pages": 0,
+  "second_review": {
+    "model_sha256": "43cc96dd5fabe9887a3ecfbe627c721c0fb5a61aa8ea0217e5d9dbf78207dfcd",
+    "reused": true,
+    "roof_triangles": 4,
+    "status": "provisional_local_surface_review",
+    "version": "local-wing-surface-review-v1",
+    "wall_triangles": 97,
+    "world_geometry_additions": 0,
+    "world_placement_eligible": false
+  },
+  "source_pdfs": 3,
+  "status": "awaiting_reconstruction",
+  "world_geometry_additions": 0
+}

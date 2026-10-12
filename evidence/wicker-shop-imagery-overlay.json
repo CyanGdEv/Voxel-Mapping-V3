@@ -1,0 +1,333 @@
+{
+  "status": "context_overlay_only",
+  "input_sha256": {
+    "context": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd",
+    "lidar": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f",
+    "imagery": "46292810f963704172108ba215122fbd176b01b22f87d06ac7e54bd33cc0d733",
+    "svg": "05ff9037de11f0a577bc716dc11bb12cf4139b98cd7dc0280ea0ee68b9c1349f",
+    "grid": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa"
+  },
+  "transform": {
+    "datum_pipeline": "proj=pipeline step inv proj=tmerc lat_0=49 lon_0=-2 k=0.9996012717 x_0=400000 y_0=-100000 ellps=airy step proj=hgridshift grids=uk_os_OSTN15_NTv2_OSGBtoETRS.tif step proj=unitconvert xy_in=rad xy_out=deg",
+    "datum_reported_accuracy_metres": 1.0,
+    "mosaic_pixel_edges_to_epsg3857": [
+      0.29858214164761665,
+      0,
+      0,
+      -0.29858214164761665,
+      -210354.7079048045,
+      6981146.671334151
+    ],
+    "mosaic_size_pixels": [
+      512,
+      512
+    ],
+    "fitted_image_translation_pixels": [
+      0,
+      0
+    ],
+    "fitted_image_rotation_degrees": 0
+  },
+  "overlays": [
+    {
+      "label": "Main roof hypothesis",
+      "rotation_degrees": 25.244359980951014,
+      "colour": "#00ffff",
+      "geometry_mosaic_pixel_edges": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              295.7523590629613,
+              322.05747704575174
+            ],
+            [
+              380.6255259371802,
+              282.1017242496181
+            ],
+            [
+              350.3380478679486,
+              217.4501174737417
+            ],
+            [
+              265.46472107508913,
+              257.40606241265255
+            ],
+            [
+              295.7523590629613,
+              322.05747704575174
+            ]
+          ]
+        ]
+      },
+      "registration_verified": false
+    },
+    {
+      "label": "Canopy hypothesis",
+      "rotation_degrees": 25.244359980951014,
+      "colour": "#ff64dd",
+      "geometry_mosaic_pixel_edges": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              289.3709818432048,
+              301.45555188049747
+            ],
+            [
+              275.39235787281024,
+              271.61704251697745
+            ],
+            [
+              267.60753747458114,
+              275.2819272367332
+            ],
+            [
+              281.5861682147015,
+              305.12042846862846
+            ],
+            [
+              289.3709818432048,
+              301.45555188049747
+            ]
+          ]
+        ]
+      },
+      "registration_verified": false
+    },
+    {
+      "label": "Main roof hypothesis",
+      "rotation_degrees": -154.75564001904897,
+      "colour": "#00ffff",
+      "geometry_mosaic_pixel_edges": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              350.33804786736374,
+              217.4501174737417
+            ],
+            [
+              265.46472107450427,
+              257.40606241265255
+            ],
+            [
+              295.75235906237646,
+              322.0574770426326
+            ],
+            [
+              380.6255259364004,
+              282.1017242496181
+            ],
+            [
+              350.33804786736374,
+              217.4501174737417
+            ]
+          ]
+        ]
+      },
+      "registration_verified": false
+    },
+    {
+      "label": "Canopy hypothesis",
+      "rotation_degrees": -154.75564001904897,
+      "colour": "#ffde00",
+      "geometry_mosaic_pixel_edges": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              356.7193981238205,
+              238.05212144120895
+            ],
+            [
+              370.6979489108589,
+              267.8907105489254
+            ],
+            [
+              378.48278554173095,
+              264.22585490900775
+            ],
+            [
+              364.5042415244184,
+              234.3872576571899
+            ],
+            [
+              356.7193981238205,
+              238.05212144120895
+            ]
+          ]
+        ]
+      },
+      "registration_verified": false
+    },
+    {
+      "label": "Mapped adjacent complex",
+      "colour": "#ff9a40",
+      "geometry_mosaic_pixel_edges": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                400.0776852969745,
+                277.4871320803245
+              ],
+              [
+                422.11176231666644,
+                285.72454358138566
+              ],
+              [
+                482.32332642447335,
+                308.0832191947782
+              ],
+              [
+                472.44341033229557,
+                334.5915416749611
+              ],
+              [
+                466.66459148590724,
+                350.1372980112224
+              ],
+              [
+                395.7528918377199,
+                323.69092626321856
+              ],
+              [
+                384.45623306143233,
+                319.47932365489385
+              ],
+              [
+                400.0776852969745,
+                277.4871320803245
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                431.09689355517844,
+                262.18907539147494
+              ],
+              [
+                434.75059837384254,
+                252.6510113311173
+              ],
+              [
+                439.3736534510507,
+                240.75939424497145
+              ],
+              [
+                523.7444086057865,
+                273.0897158593517
+              ],
+              [
+                527.0625691045452,
+                265.2858487100405
+              ],
+              [
+                533.0650841643013,
+                267.7632670960222
+              ],
+              [
+                522.2903832185552,
+                295.94388516553227
+              ],
+              [
+                513.4916654916541,
+                318.98384096646816
+              ],
+              [
+                422.07447961481216,
+                285.35293108783634
+              ],
+              [
+                428.2634081853993,
+                269.6213307428074
+              ],
+              [
+                431.09689355517844,
+                262.18907539147494
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                417.5259899423848,
+                189.97222006008485
+              ],
+              [
+                421.0678466543163,
+                180.99155118266853
+              ],
+              [
+                431.2087416620085,
+                155.22630510574083
+              ],
+              [
+                574.2624701321492,
+                211.58774865577874
+              ],
+              [
+                564.047009720456,
+                237.47681149965752
+              ],
+              [
+                551.1844774500097,
+                232.39809779857217
+              ],
+              [
+                542.0502154026184,
+                228.8058363049955
+              ],
+              [
+                538.806620308543,
+                236.60971410932413
+              ],
+              [
+                535.6375906182736,
+                244.22778310449615
+              ],
+              [
+                523.7071259036397,
+                273.0277804203666
+              ],
+              [
+                403.1721495825605,
+                226.32841430703775
+              ],
+              [
+                414.24511214548033,
+                198.27159413361954
+              ],
+              [
+                417.5259899423848,
+                189.97222006008485
+              ]
+            ]
+          ]
+        ]
+      },
+      "registration_verified": false
+    }
+  ],
+  "imagery_date_at_shop": "2023-05-27",
+  "source_resolution_metres": 0.5,
+  "reported_imagery_accuracy_metres": 8.47,
+  "review": {
+    "main_roof_candidate_visible": true,
+    "rear_canopy_independently_identified": false,
+    "orientation_independently_resolved": false,
+    "reason": "Main roof and nearby roof cluster are visible. The narrow attachment zone is not cleanly separable from roof edges, shadows and adjacent structures at this source resolution."
+  },
+  "limitations": [
+    "Mapped outlines and LiDAR fit are hypotheses, not image-derived measurements.",
+    "No manual image controls, canopy corners or image adjustment were introduced.",
+    "8.47 m reported imagery accuracy exceeds the 1 m control gate.",
+    "Shop-point acquisition citation is not a date verification for every mosaic pixel."
+  ],
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0
+}

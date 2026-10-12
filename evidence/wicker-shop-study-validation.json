@@ -1,0 +1,379 @@
+{
+  "model_sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+  "package_sha256": "31146da715f8e327fd1abd78345aff69df867ba5ba2bf5570467f653500eb69c",
+  "reports": [
+    {
+      "version": "shop-local-surface-study-v1",
+      "voxel_size_m": 1,
+      "model_blocks_per_source_metre": 1,
+      "crs": null,
+      "vertical_datum": "STUDY_ZERO",
+      "geographic_placement": "withheld",
+      "park_world_blocks_added": 0,
+      "model_sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+      "source_assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+      "source_unresolved": [
+        "roof/wall centring and 180-degree source correspondence",
+        "fascia, wall thickness and roof projection depth",
+        "cladding/bunding geometry",
+        "as-built identity and floor datum",
+        "independent geographic registration"
+      ],
+      "model_watertight": false,
+      "wall_thickness_metres": null,
+      "wall_cells": 184,
+      "roof_cells": 192,
+      "wall_roof_alias_cells": 4,
+      "surface_cells": 372,
+      "platform_cells": 576,
+      "wall_sampling": {
+        "per_triangle_surface_samples": [
+          6,
+          6,
+          6,
+          3,
+          27,
+          21,
+          3,
+          6,
+          6,
+          3,
+          23,
+          19,
+          2,
+          1,
+          5,
+          0,
+          5,
+          1,
+          0,
+          1,
+          26,
+          26
+        ],
+        "projection_sample_probes": 536,
+        "triangles_without_centroid_sample": 2
+      },
+      "roof_sampling": {
+        "per_triangle_surface_samples": [
+          45,
+          51,
+          51,
+          45
+        ],
+        "projection_sample_probes": 504,
+        "triangles_without_centroid_sample": 0
+      },
+      "spawn_local_xyz_m": [
+        0,
+        2,
+        -10
+      ],
+      "opening_centre_sample_audit": [
+        {
+          "id": "opening-NE",
+          "sample_column_local_xz": [
+            -8,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "opening-SW",
+          "sample_column_local_xz": [
+            7,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "door-NW",
+          "sample_column_local_xz": [
+            -7,
+            -6
+          ],
+          "sampled_levels": [
+            0,
+            1
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        }
+      ],
+      "surface_raster_rule": "dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces",
+      "display_palette_only": {
+        "walls": "spruce_planks",
+        "roof": "dark_oak_planks"
+      },
+      "sources": [
+        {
+          "id": "reviewed-proposed-model",
+          "url": "local://wicker-shop-wall-model",
+          "license": "source-linked proposed drawing study",
+          "attribution": "2967-21/26/48; local manual traces and provisional sheet-layout normalization"
+        }
+      ],
+      "limitations": [
+        "Isolated proposed-drawing study, not a placed or as-built park building.",
+        "Roof/wall centring and 180-degree correspondence remain assembly hypotheses.",
+        "Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.",
+        "One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.",
+        "Palette is illustrative; fascia, canopy, cladding/bunding, interior and construction joints are omitted.",
+        "This surface model is not watertight; no shell-completeness or in-game movement claim is made.",
+        "The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden."
+      ],
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 1,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "spawn": [
+          0,
+          67,
+          10
+        ],
+        "chunks": 4,
+        "composed_blocks": 3252,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "c2a5ca74cd4776c5869146c7592d4326e1d75dc5398d32375a9f4cc116aea640",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      }
+    },
+    {
+      "version": "shop-local-surface-study-v1",
+      "voxel_size_m": 1,
+      "model_blocks_per_source_metre": 4,
+      "crs": null,
+      "vertical_datum": "STUDY_ZERO",
+      "geographic_placement": "withheld",
+      "park_world_blocks_added": 0,
+      "model_sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+      "source_assembly_hypothesis": "roof and wall outline centred, long axes aligned; 180-degree source correspondence unresolved",
+      "source_unresolved": [
+        "roof/wall centring and 180-degree source correspondence",
+        "fascia, wall thickness and roof projection depth",
+        "cladding/bunding geometry",
+        "as-built identity and floor datum",
+        "independent geographic registration"
+      ],
+      "model_watertight": false,
+      "wall_thickness_metres": null,
+      "wall_cells": 3127,
+      "roof_cells": 3536,
+      "wall_roof_alias_cells": 0,
+      "surface_cells": 6663,
+      "platform_cells": 9216,
+      "wall_sampling": {
+        "per_triangle_surface_samples": [
+          96,
+          99,
+          88,
+          81,
+          411,
+          408,
+          91,
+          91,
+          91,
+          91,
+          375,
+          366,
+          26,
+          26,
+          30,
+          30,
+          32,
+          28,
+          8,
+          7,
+          347,
+          344
+        ],
+        "projection_sample_probes": 7026,
+        "triangles_without_centroid_sample": 0
+      },
+      "roof_sampling": {
+        "per_triangle_surface_samples": [
+          896,
+          872,
+          872,
+          896
+        ],
+        "projection_sample_probes": 7072,
+        "triangles_without_centroid_sample": 0
+      },
+      "spawn_local_xyz_m": [
+        0,
+        2,
+        -40
+      ],
+      "opening_centre_sample_audit": [
+        {
+          "id": "opening-NE",
+          "sample_column_local_xz": [
+            -32,
+            1
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "opening-SW",
+          "sample_column_local_xz": [
+            31,
+            0
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        },
+        {
+          "id": "door-NW",
+          "sample_column_local_xz": [
+            -27,
+            -24
+          ],
+          "sampled_levels": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "all_centre_samples_air": true,
+          "full_width_clearance_verified": false,
+          "player_movement_verified": false
+        }
+      ],
+      "surface_raster_rule": "dominant-axis triangle projection; source plane at projected cell centres; one-block display surfaces",
+      "display_palette_only": {
+        "walls": "spruce_planks",
+        "roof": "dark_oak_planks"
+      },
+      "sources": [
+        {
+          "id": "reviewed-proposed-model",
+          "url": "local://wicker-shop-wall-model",
+          "license": "source-linked proposed drawing study",
+          "attribution": "2967-21/26/48; local manual traces and provisional sheet-layout normalization"
+        }
+      ],
+      "limitations": [
+        "Isolated proposed-drawing study, not a placed or as-built park building.",
+        "Roof/wall centring and 180-degree correspondence remain assembly hypotheses.",
+        "Northwest opening uses the retained manual 0.901 m normalized span; recovered 1.011 m cap span remains unresolved.",
+        "One-block display surfaces do not establish physical wall or roof thickness. Fine details alias at 1:1.",
+        "Palette is illustrative; fascia, canopy, cladding/bunding, interior and construction joints are omitted.",
+        "This surface model is not watertight; no shell-completeness or in-game movement claim is made.",
+        "The 4:1 world, when requested, is four blocks per source metre; geographic use is forbidden."
+      ],
+      "world": {
+        "format": "Bedrock .mcworld",
+        "file": "park.mcworld",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "blocks_per_metre": 4,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "vertical_offset_blocks": 65,
+        "geographic_elevation_m": null,
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 4",
+        "spawn": [
+          0,
+          67,
+          40
+        ],
+        "chunks": 42,
+        "composed_blocks": 52743,
+        "explicit_air_cells": 0,
+        "ground_fill_depth_blocks": 4,
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "foundation": {
+          "minecraft_y": 60,
+          "mode": "shared",
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+        },
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "sha256": "15dce78090a6281d8988abc0a18e554f68cff1e92509e0d270dd3a9d8e1f51c0",
+        "quality": "draft_unverified",
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ]
+      }
+    }
+  ],
+  "geographic_placement": "withheld",
+  "park_world_blocks_added": 0,
+  "export_scope": "isolated proposed-source surface study only"
+}

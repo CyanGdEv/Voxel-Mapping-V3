@@ -1,0 +1,8 @@
+# Pinned text fixtures and source models must retain their committed bytes on Windows.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.mcworld binary
+*.sqlite binary

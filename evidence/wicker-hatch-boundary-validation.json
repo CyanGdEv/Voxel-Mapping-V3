@@ -1,0 +1,21 @@
+{
+  "status": "unplaced_real_hatch_boundary_evidence",
+  "anchor_records": 23,
+  "boundary_statuses": {
+    "withheld_hatch_suppression_region": 18,
+    "unverified_hatch_suppressed_boundary_candidate": 5
+  },
+  "candidate_component_classes": {
+    "wall_face": 5
+  },
+  "additional_anchor_candidates_beyond_raw_regions": 2,
+  "opening_ring_candidates": 1,
+  "focused_tests_passed": 57,
+  "all_output_checksums_verified": true,
+  "all_candidate_polygons_valid": true,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "physical_face_identity_verified": false,
+  "maintenance_overlay_visually_reviewed": true
+}

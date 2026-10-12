@@ -1,0 +1,1709 @@
+{
+  "audit_date": "2026-10-12",
+  "first_extraction": {
+    "version": "drawing-geometry-v4",
+    "contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000,
+      "regional_fallback": true,
+      "regional_columns": 4,
+      "regional_rows": 4,
+      "regional_overlap_points": 24,
+      "max_regional_candidates": 10000,
+      "max_regional_total_points": 1000000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 3,
+    "run_pages": 3,
+    "resumed_pages": 0,
+    "candidates": 13842,
+    "candidate_types": {
+      "line": 12889,
+      "polygon": 953
+    },
+    "curved_candidates": 999,
+    "page_statuses": {
+      "unplaced_regional_geometry_candidates": 3
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "2bd7c1284691a0f9fbc5b1c6c27e4f0e6ae1bcea35fd1a63cfac83f7e4ebbe8a",
+      "polygon": "912119b0fc7e7428661d59f0d69d6074322bbd108839aeacdb6319af7960c5e2",
+      "line": "fb8d6ebad24e879b0fc9e395b0d683999836775d9fdf26bea1ea727f29b89f14"
+    },
+    "world_geometry_additions": 0
+  },
+  "unchanged_extraction_replay": {
+    "version": "drawing-geometry-v4",
+    "contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000,
+      "regional_fallback": true,
+      "regional_columns": 4,
+      "regional_rows": 4,
+      "regional_overlap_points": 24,
+      "max_regional_candidates": 10000,
+      "max_regional_total_points": 1000000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 3,
+    "run_pages": 0,
+    "resumed_pages": 3,
+    "candidates": 13842,
+    "candidate_types": {
+      "line": 12889,
+      "polygon": 953
+    },
+    "curved_candidates": 999,
+    "page_statuses": {
+      "unplaced_regional_geometry_candidates": 3
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "2bd7c1284691a0f9fbc5b1c6c27e4f0e6ae1bcea35fd1a63cfac83f7e4ebbe8a",
+      "polygon": "912119b0fc7e7428661d59f0d69d6074322bbd108839aeacdb6319af7960c5e2",
+      "line": "fb8d6ebad24e879b0fc9e395b0d683999836775d9fdf26bea1ea727f29b89f14"
+    },
+    "world_geometry_additions": 0
+  },
+  "source_pages": [
+    {
+      "document_sha256": "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+      "page": 1,
+      "report": {
+        "status": "unplaced_regional_geometry_candidates",
+        "raw_paths": 215486,
+        "whole_page_report": {
+          "status": "path_budget_withheld",
+          "raw_paths": 215486,
+          "world_geometry_additions": 0
+        },
+        "regions": [
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 11731,
+            "region_native_points": [
+              0.0,
+              0.0,
+              619.9849853515625,
+              444.94500732421875
+            ],
+            "candidates": 547,
+            "geometry_types": {
+              "LineString": 509,
+              "Polygon": 38
+            },
+            "retained_points": 3559,
+            "curved_candidates": 44,
+            "rejections": {
+              "outside_region": 197604,
+              "Short line/symbol candidate": 10223,
+              "Invalid candidate topology": 18,
+              "Invalid filled ring topology": 7,
+              "Small symbol or sheet enclosure candidate": 572,
+              "A linearring requires at least 4 coordinates.": 28,
+              "complete_primitive_crosses_region_boundary": 326,
+              "Self-crossing line needs review": 9,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 16354,
+            "region_native_points": [
+              571.9849853515625,
+              0.0,
+              1215.969970703125,
+              444.94500732421875
+            ],
+            "candidates": 253,
+            "geometry_types": {
+              "LineString": 228,
+              "Polygon": 25
+            },
+            "retained_points": 3660,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 192981,
+              "complete_primitive_crosses_region_boundary": 219,
+              "Short line/symbol candidate": 15643,
+              "A linearring requires at least 4 coordinates.": 7,
+              "Small symbol or sheet enclosure candidate": 226,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 9510,
+            "region_native_points": [
+              1167.969970703125,
+              0.0,
+              1811.9549560546875,
+              444.94500732421875
+            ],
+            "candidates": 149,
+            "geometry_types": {
+              "LineString": 137,
+              "Polygon": 12
+            },
+            "retained_points": 1522,
+            "curved_candidates": 1,
+            "rejections": {
+              "outside_region": 199825,
+              "complete_primitive_crosses_region_boundary": 201,
+              "Short line/symbol candidate": 9020,
+              "Small symbol or sheet enclosure candidate": 130,
+              "Self-crossing line needs review": 4,
+              "A linearring requires at least 4 coordinates.": 3,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 13874,
+            "region_native_points": [
+              1763.9549560546875,
+              0.0,
+              2383.93994140625,
+              444.94500732421875
+            ],
+            "candidates": 212,
+            "geometry_types": {
+              "LineString": 208,
+              "Polygon": 4
+            },
+            "retained_points": 2032,
+            "curved_candidates": 5,
+            "rejections": {
+              "outside_region": 195461,
+              "complete_primitive_crosses_region_boundary": 159,
+              "nonopaque_paint": 2,
+              "Short line/symbol candidate": 13302,
+              "Small symbol or sheet enclosure candidate": 164,
+              "Invalid candidate topology": 7,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 12,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 10925,
+            "region_native_points": [
+              0.0,
+              396.94500732421875,
+              619.9849853515625,
+              865.8900146484375
+            ],
+            "candidates": 252,
+            "geometry_types": {
+              "LineString": 247,
+              "Polygon": 5
+            },
+            "retained_points": 2543,
+            "curved_candidates": 12,
+            "rejections": {
+              "outside_region": 198410,
+              "Short line/symbol candidate": 10159,
+              "Small symbol or sheet enclosure candidate": 156,
+              "complete_primitive_crosses_region_boundary": 351,
+              "Invalid candidate topology": 1,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 16297,
+            "region_native_points": [
+              571.9849853515625,
+              396.94500732421875,
+              1215.969970703125,
+              865.8900146484375
+            ],
+            "candidates": 312,
+            "geometry_types": {
+              "LineString": 292,
+              "Polygon": 20
+            },
+            "retained_points": 2834,
+            "curved_candidates": 21,
+            "rejections": {
+              "outside_region": 193038,
+              "nonopaque_paint": 1,
+              "complete_primitive_crosses_region_boundary": 185,
+              "Short line/symbol candidate": 15628,
+              "Small symbol or sheet enclosure candidate": 160,
+              "Self-crossing line needs review": 7,
+              "Text glyph/annotation mask": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 14784,
+            "region_native_points": [
+              1167.969970703125,
+              396.94500732421875,
+              1811.9549560546875,
+              865.8900146484375
+            ],
+            "candidates": 320,
+            "geometry_types": {
+              "LineString": 300,
+              "Polygon": 20
+            },
+            "retained_points": 3063,
+            "curved_candidates": 18,
+            "rejections": {
+              "outside_region": 194551,
+              "complete_primitive_crosses_region_boundary": 207,
+              "nonopaque_paint": 3,
+              "Short line/symbol candidate": 14047,
+              "Small symbol or sheet enclosure candidate": 202,
+              "Self-crossing line needs review": 5
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 17492,
+            "region_native_points": [
+              1763.9549560546875,
+              396.94500732421875,
+              2383.93994140625,
+              865.8900146484375
+            ],
+            "candidates": 370,
+            "geometry_types": {
+              "LineString": 360,
+              "Polygon": 10
+            },
+            "retained_points": 3846,
+            "curved_candidates": 6,
+            "rejections": {
+              "outside_region": 191843,
+              "complete_primitive_crosses_region_boundary": 250,
+              "Short line/symbol candidate": 16525,
+              "Small symbol or sheet enclosure candidate": 309,
+              "Invalid candidate topology": 27,
+              "Self-crossing line needs review": 3,
+              "Invalid filled ring topology": 4,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 7835,
+            "region_native_points": [
+              0.0,
+              817.8900146484375,
+              619.9849853515625,
+              1286.8350219726562
+            ],
+            "candidates": 220,
+            "geometry_types": {
+              "LineString": 209,
+              "Polygon": 11
+            },
+            "retained_points": 1668,
+            "curved_candidates": 13,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 284,
+              "outside_region": 201500,
+              "Short line/symbol candidate": 6873,
+              "Small symbol or sheet enclosure candidate": 440,
+              "Self-crossing line needs review": 3,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 5,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 9976,
+            "region_native_points": [
+              571.9849853515625,
+              817.8900146484375,
+              1215.969970703125,
+              1286.8350219726562
+            ],
+            "candidates": 262,
+            "geometry_types": {
+              "LineString": 239,
+              "Polygon": 23
+            },
+            "retained_points": 3285,
+            "curved_candidates": 20,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 188,
+              "outside_region": 199359,
+              "Short line/symbol candidate": 9252,
+              "Small symbol or sheet enclosure candidate": 264,
+              "Text glyph/annotation mask": 1,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 3,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 15557,
+            "region_native_points": [
+              1167.969970703125,
+              817.8900146484375,
+              1811.9549560546875,
+              1286.8350219726562
+            ],
+            "candidates": 307,
+            "geometry_types": {
+              "LineString": 298,
+              "Polygon": 9
+            },
+            "retained_points": 3881,
+            "curved_candidates": 10,
+            "rejections": {
+              "outside_region": 193778,
+              "complete_primitive_crosses_region_boundary": 262,
+              "Short line/symbol candidate": 14646,
+              "Small symbol or sheet enclosure candidate": 326,
+              "Self-crossing line needs review": 6,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 2,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 13222,
+            "region_native_points": [
+              1763.9549560546875,
+              817.8900146484375,
+              2383.93994140625,
+              1286.8350219726562
+            ],
+            "candidates": 416,
+            "geometry_types": {
+              "LineString": 392,
+              "Polygon": 24
+            },
+            "retained_points": 4857,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 196113,
+              "complete_primitive_crosses_region_boundary": 268,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 12307,
+              "Text glyph/annotation mask": 6,
+              "Self-crossing line needs review": 8,
+              "Small symbol or sheet enclosure candidate": 211,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 17699,
+            "region_native_points": [
+              0.0,
+              1238.8350219726562,
+              619.9849853515625,
+              1683.780029296875
+            ],
+            "candidates": 188,
+            "geometry_types": {
+              "LineString": 160,
+              "Polygon": 28
+            },
+            "retained_points": 2145,
+            "curved_candidates": 23,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 287,
+              "outside_region": 191636,
+              "Short line/symbol candidate": 16547,
+              "Small symbol or sheet enclosure candidate": 637,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 21,
+              "Self-crossing line needs review": 7,
+              "Invalid filled ring topology": 7
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 12427,
+            "region_native_points": [
+              571.9849853515625,
+              1238.8350219726562,
+              1215.969970703125,
+              1683.780029296875
+            ],
+            "candidates": 354,
+            "geometry_types": {
+              "LineString": 277,
+              "Polygon": 77
+            },
+            "retained_points": 3146,
+            "curved_candidates": 82,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 150,
+              "outside_region": 196908,
+              "Short line/symbol candidate": 11556,
+              "Small symbol or sheet enclosure candidate": 338,
+              "Self-crossing line needs review": 8,
+              "Text glyph/annotation mask": 3,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 1,
+              "Invalid filled ring topology": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 26673,
+            "region_native_points": [
+              1167.969970703125,
+              1238.8350219726562,
+              1811.9549560546875,
+              1683.780029296875
+            ],
+            "candidates": 492,
+            "geometry_types": {
+              "LineString": 477,
+              "Polygon": 15
+            },
+            "retained_points": 4598,
+            "curved_candidates": 34,
+            "rejections": {
+              "outside_region": 182662,
+              "complete_primitive_crosses_region_boundary": 227,
+              "Short line/symbol candidate": 25413,
+              "Small symbol or sheet enclosure candidate": 501,
+              "Self-crossing line needs review": 13,
+              "Text glyph/annotation mask": 1,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 5,
+              "Invalid filled ring topology": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215486,
+            "selected_paths": 24063,
+            "region_native_points": [
+              1763.9549560546875,
+              1238.8350219726562,
+              2383.93994140625,
+              1683.780029296875
+            ],
+            "candidates": 370,
+            "geometry_types": {
+              "LineString": 353,
+              "Polygon": 17
+            },
+            "retained_points": 3197,
+            "curved_candidates": 28,
+            "rejections": {
+              "outside_region": 185272,
+              "complete_primitive_crosses_region_boundary": 313,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 22920,
+              "Self-crossing line needs review": 7,
+              "Invalid candidate topology": 3,
+              "Small symbol or sheet enclosure candidate": 431,
+              "A linearring requires at least 4 coordinates.": 12,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 3
+          }
+        ],
+        "overlap_duplicates": 419,
+        "candidates": 4605,
+        "geometry_types": {
+          "LineString": 4296,
+          "Polygon": 309
+        },
+        "retained_points": 46583,
+        "curved_candidates": 333,
+        "world_geometry_additions": 0,
+        "physical_identity_verified": false,
+        "registration_verified": false
+      },
+      "verified_complete_window_containment": true,
+      "previous_standalone_candidates_preserved": 4604,
+      "additional_candidates": 1
+    },
+    {
+      "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+      "page": 1,
+      "report": {
+        "status": "unplaced_regional_geometry_candidates",
+        "raw_paths": 215489,
+        "whole_page_report": {
+          "status": "path_budget_withheld",
+          "raw_paths": 215489,
+          "world_geometry_additions": 0
+        },
+        "regions": [
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 11737,
+            "region_native_points": [
+              0.0,
+              0.0,
+              619.9849853515625,
+              444.94500732421875
+            ],
+            "candidates": 552,
+            "geometry_types": {
+              "LineString": 509,
+              "Polygon": 43
+            },
+            "retained_points": 3630,
+            "curved_candidates": 44,
+            "rejections": {
+              "outside_region": 197602,
+              "Short line/symbol candidate": 10223,
+              "Invalid candidate topology": 18,
+              "Invalid filled ring topology": 7,
+              "Small symbol or sheet enclosure candidate": 572,
+              "A linearring requires at least 4 coordinates.": 28,
+              "complete_primitive_crosses_region_boundary": 327,
+              "Self-crossing line needs review": 9,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 16354,
+            "region_native_points": [
+              571.9849853515625,
+              0.0,
+              1215.969970703125,
+              444.94500732421875
+            ],
+            "candidates": 253,
+            "geometry_types": {
+              "LineString": 228,
+              "Polygon": 25
+            },
+            "retained_points": 3660,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 192985,
+              "complete_primitive_crosses_region_boundary": 219,
+              "Short line/symbol candidate": 15643,
+              "A linearring requires at least 4 coordinates.": 7,
+              "Small symbol or sheet enclosure candidate": 226,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 9510,
+            "region_native_points": [
+              1167.969970703125,
+              0.0,
+              1811.9549560546875,
+              444.94500732421875
+            ],
+            "candidates": 149,
+            "geometry_types": {
+              "LineString": 137,
+              "Polygon": 12
+            },
+            "retained_points": 1522,
+            "curved_candidates": 1,
+            "rejections": {
+              "outside_region": 199829,
+              "complete_primitive_crosses_region_boundary": 201,
+              "Short line/symbol candidate": 9020,
+              "Small symbol or sheet enclosure candidate": 130,
+              "Self-crossing line needs review": 4,
+              "A linearring requires at least 4 coordinates.": 3,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 13874,
+            "region_native_points": [
+              1763.9549560546875,
+              0.0,
+              2383.93994140625,
+              444.94500732421875
+            ],
+            "candidates": 213,
+            "geometry_types": {
+              "LineString": 209,
+              "Polygon": 4
+            },
+            "retained_points": 2041,
+            "curved_candidates": 5,
+            "rejections": {
+              "outside_region": 195465,
+              "complete_primitive_crosses_region_boundary": 159,
+              "nonopaque_paint": 2,
+              "Short line/symbol candidate": 13302,
+              "Small symbol or sheet enclosure candidate": 164,
+              "Invalid candidate topology": 7,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 11,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 10927,
+            "region_native_points": [
+              0.0,
+              396.94500732421875,
+              619.9849853515625,
+              865.8900146484375
+            ],
+            "candidates": 253,
+            "geometry_types": {
+              "LineString": 247,
+              "Polygon": 6
+            },
+            "retained_points": 2582,
+            "curved_candidates": 12,
+            "rejections": {
+              "outside_region": 198412,
+              "Short line/symbol candidate": 10159,
+              "Small symbol or sheet enclosure candidate": 156,
+              "complete_primitive_crosses_region_boundary": 352,
+              "Invalid candidate topology": 1,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 16289,
+            "region_native_points": [
+              571.9849853515625,
+              396.94500732421875,
+              1215.969970703125,
+              865.8900146484375
+            ],
+            "candidates": 317,
+            "geometry_types": {
+              "LineString": 292,
+              "Polygon": 25
+            },
+            "retained_points": 2949,
+            "curved_candidates": 21,
+            "rejections": {
+              "outside_region": 193050,
+              "nonopaque_paint": 1,
+              "complete_primitive_crosses_region_boundary": 185,
+              "Short line/symbol candidate": 15615,
+              "Small symbol or sheet enclosure candidate": 160,
+              "Self-crossing line needs review": 7,
+              "Text glyph/annotation mask": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 14789,
+            "region_native_points": [
+              1167.969970703125,
+              396.94500732421875,
+              1811.9549560546875,
+              865.8900146484375
+            ],
+            "candidates": 324,
+            "geometry_types": {
+              "LineString": 300,
+              "Polygon": 24
+            },
+            "retained_points": 3174,
+            "curved_candidates": 18,
+            "rejections": {
+              "outside_region": 194550,
+              "complete_primitive_crosses_region_boundary": 208,
+              "nonopaque_paint": 3,
+              "Short line/symbol candidate": 14047,
+              "Small symbol or sheet enclosure candidate": 202,
+              "Self-crossing line needs review": 5
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 17495,
+            "region_native_points": [
+              1763.9549560546875,
+              396.94500732421875,
+              2383.93994140625,
+              865.8900146484375
+            ],
+            "candidates": 371,
+            "geometry_types": {
+              "LineString": 360,
+              "Polygon": 11
+            },
+            "retained_points": 3857,
+            "curved_candidates": 6,
+            "rejections": {
+              "outside_region": 191844,
+              "complete_primitive_crosses_region_boundary": 252,
+              "Short line/symbol candidate": 16525,
+              "Small symbol or sheet enclosure candidate": 309,
+              "Invalid candidate topology": 27,
+              "Self-crossing line needs review": 3,
+              "Invalid filled ring topology": 4,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 7835,
+            "region_native_points": [
+              0.0,
+              817.8900146484375,
+              619.9849853515625,
+              1286.8350219726562
+            ],
+            "candidates": 220,
+            "geometry_types": {
+              "LineString": 209,
+              "Polygon": 11
+            },
+            "retained_points": 1668,
+            "curved_candidates": 13,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 284,
+              "outside_region": 201504,
+              "Short line/symbol candidate": 6873,
+              "Small symbol or sheet enclosure candidate": 440,
+              "Self-crossing line needs review": 3,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 5,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 9969,
+            "region_native_points": [
+              571.9849853515625,
+              817.8900146484375,
+              1215.969970703125,
+              1286.8350219726562
+            ],
+            "candidates": 262,
+            "geometry_types": {
+              "LineString": 239,
+              "Polygon": 23
+            },
+            "retained_points": 3285,
+            "curved_candidates": 20,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 187,
+              "outside_region": 199370,
+              "Short line/symbol candidate": 9246,
+              "Small symbol or sheet enclosure candidate": 264,
+              "Text glyph/annotation mask": 1,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 3,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 15557,
+            "region_native_points": [
+              1167.969970703125,
+              817.8900146484375,
+              1811.9549560546875,
+              1286.8350219726562
+            ],
+            "candidates": 307,
+            "geometry_types": {
+              "LineString": 298,
+              "Polygon": 9
+            },
+            "retained_points": 3881,
+            "curved_candidates": 10,
+            "rejections": {
+              "outside_region": 193782,
+              "complete_primitive_crosses_region_boundary": 262,
+              "Short line/symbol candidate": 14646,
+              "Small symbol or sheet enclosure candidate": 326,
+              "Self-crossing line needs review": 6,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 2,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 13222,
+            "region_native_points": [
+              1763.9549560546875,
+              817.8900146484375,
+              2383.93994140625,
+              1286.8350219726562
+            ],
+            "candidates": 416,
+            "geometry_types": {
+              "LineString": 392,
+              "Polygon": 24
+            },
+            "retained_points": 4857,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 196117,
+              "complete_primitive_crosses_region_boundary": 268,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 12307,
+              "Text glyph/annotation mask": 6,
+              "Self-crossing line needs review": 8,
+              "Small symbol or sheet enclosure candidate": 211,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 17699,
+            "region_native_points": [
+              0.0,
+              1238.8350219726562,
+              619.9849853515625,
+              1683.780029296875
+            ],
+            "candidates": 188,
+            "geometry_types": {
+              "LineString": 160,
+              "Polygon": 28
+            },
+            "retained_points": 2145,
+            "curved_candidates": 23,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 287,
+              "outside_region": 191640,
+              "Short line/symbol candidate": 16547,
+              "Small symbol or sheet enclosure candidate": 637,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 21,
+              "Self-crossing line needs review": 7,
+              "Invalid filled ring topology": 7
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 12427,
+            "region_native_points": [
+              571.9849853515625,
+              1238.8350219726562,
+              1215.969970703125,
+              1683.780029296875
+            ],
+            "candidates": 354,
+            "geometry_types": {
+              "LineString": 277,
+              "Polygon": 77
+            },
+            "retained_points": 3176,
+            "curved_candidates": 82,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 150,
+              "outside_region": 196912,
+              "Short line/symbol candidate": 11556,
+              "Small symbol or sheet enclosure candidate": 338,
+              "Self-crossing line needs review": 8,
+              "Text glyph/annotation mask": 3,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 1,
+              "Invalid filled ring topology": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 26673,
+            "region_native_points": [
+              1167.969970703125,
+              1238.8350219726562,
+              1811.9549560546875,
+              1683.780029296875
+            ],
+            "candidates": 492,
+            "geometry_types": {
+              "LineString": 477,
+              "Polygon": 15
+            },
+            "retained_points": 4598,
+            "curved_candidates": 34,
+            "rejections": {
+              "outside_region": 182666,
+              "complete_primitive_crosses_region_boundary": 227,
+              "Short line/symbol candidate": 25413,
+              "Small symbol or sheet enclosure candidate": 501,
+              "Self-crossing line needs review": 13,
+              "Text glyph/annotation mask": 1,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 5,
+              "Invalid filled ring topology": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215489,
+            "selected_paths": 24063,
+            "region_native_points": [
+              1763.9549560546875,
+              1238.8350219726562,
+              2383.93994140625,
+              1683.780029296875
+            ],
+            "candidates": 370,
+            "geometry_types": {
+              "LineString": 353,
+              "Polygon": 17
+            },
+            "retained_points": 3197,
+            "curved_candidates": 28,
+            "rejections": {
+              "outside_region": 185276,
+              "complete_primitive_crosses_region_boundary": 313,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 22920,
+              "Self-crossing line needs review": 7,
+              "Invalid candidate topology": 3,
+              "Small symbol or sheet enclosure candidate": 431,
+              "A linearring requires at least 4 coordinates.": 12,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 3
+          }
+        ],
+        "overlap_duplicates": 419,
+        "candidates": 4622,
+        "geometry_types": {
+          "LineString": 4297,
+          "Polygon": 325
+        },
+        "retained_points": 46969,
+        "curved_candidates": 333,
+        "world_geometry_additions": 0,
+        "physical_identity_verified": false,
+        "registration_verified": false
+      },
+      "verified_complete_window_containment": true,
+      "previous_standalone_candidates_preserved": 4621,
+      "additional_candidates": 1
+    },
+    {
+      "document_sha256": "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+      "page": 1,
+      "report": {
+        "status": "unplaced_regional_geometry_candidates",
+        "raw_paths": 215484,
+        "whole_page_report": {
+          "status": "path_budget_withheld",
+          "raw_paths": 215484,
+          "world_geometry_additions": 0
+        },
+        "regions": [
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 11737,
+            "region_native_points": [
+              0.0,
+              0.0,
+              619.9849853515625,
+              444.94500732421875
+            ],
+            "candidates": 552,
+            "geometry_types": {
+              "LineString": 509,
+              "Polygon": 43
+            },
+            "retained_points": 3630,
+            "curved_candidates": 44,
+            "rejections": {
+              "outside_region": 197595,
+              "Short line/symbol candidate": 10223,
+              "Invalid candidate topology": 18,
+              "Invalid filled ring topology": 7,
+              "Small symbol or sheet enclosure candidate": 572,
+              "A linearring requires at least 4 coordinates.": 28,
+              "complete_primitive_crosses_region_boundary": 327,
+              "Self-crossing line needs review": 9,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 16354,
+            "region_native_points": [
+              571.9849853515625,
+              0.0,
+              1215.969970703125,
+              444.94500732421875
+            ],
+            "candidates": 253,
+            "geometry_types": {
+              "LineString": 228,
+              "Polygon": 25
+            },
+            "retained_points": 3660,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 192978,
+              "complete_primitive_crosses_region_boundary": 219,
+              "Short line/symbol candidate": 15643,
+              "A linearring requires at least 4 coordinates.": 7,
+              "Small symbol or sheet enclosure candidate": 226,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 9510,
+            "region_native_points": [
+              1167.969970703125,
+              0.0,
+              1811.9549560546875,
+              444.94500732421875
+            ],
+            "candidates": 149,
+            "geometry_types": {
+              "LineString": 137,
+              "Polygon": 12
+            },
+            "retained_points": 1522,
+            "curved_candidates": 1,
+            "rejections": {
+              "outside_region": 199822,
+              "complete_primitive_crosses_region_boundary": 201,
+              "Short line/symbol candidate": 9020,
+              "Small symbol or sheet enclosure candidate": 130,
+              "Self-crossing line needs review": 4,
+              "A linearring requires at least 4 coordinates.": 3,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 13875,
+            "region_native_points": [
+              1763.9549560546875,
+              0.0,
+              2383.93994140625,
+              444.94500732421875
+            ],
+            "candidates": 212,
+            "geometry_types": {
+              "LineString": 208,
+              "Polygon": 4
+            },
+            "retained_points": 2032,
+            "curved_candidates": 5,
+            "rejections": {
+              "outside_region": 195457,
+              "complete_primitive_crosses_region_boundary": 159,
+              "nonopaque_paint": 2,
+              "Short line/symbol candidate": 13302,
+              "Small symbol or sheet enclosure candidate": 164,
+              "Invalid candidate topology": 7,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 13,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 0,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 10927,
+            "region_native_points": [
+              0.0,
+              396.94500732421875,
+              619.9849853515625,
+              865.8900146484375
+            ],
+            "candidates": 253,
+            "geometry_types": {
+              "LineString": 247,
+              "Polygon": 6
+            },
+            "retained_points": 2582,
+            "curved_candidates": 12,
+            "rejections": {
+              "outside_region": 198405,
+              "Short line/symbol candidate": 10159,
+              "Small symbol or sheet enclosure candidate": 156,
+              "complete_primitive_crosses_region_boundary": 352,
+              "Invalid candidate topology": 1,
+              "Self-crossing line needs review": 4,
+              "Text glyph/annotation mask": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 16287,
+            "region_native_points": [
+              571.9849853515625,
+              396.94500732421875,
+              1215.969970703125,
+              865.8900146484375
+            ],
+            "candidates": 316,
+            "geometry_types": {
+              "LineString": 292,
+              "Polygon": 24
+            },
+            "retained_points": 2906,
+            "curved_candidates": 21,
+            "rejections": {
+              "outside_region": 193045,
+              "nonopaque_paint": 1,
+              "complete_primitive_crosses_region_boundary": 185,
+              "Short line/symbol candidate": 15614,
+              "Small symbol or sheet enclosure candidate": 160,
+              "Self-crossing line needs review": 7,
+              "Text glyph/annotation mask": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 14784,
+            "region_native_points": [
+              1167.969970703125,
+              396.94500732421875,
+              1811.9549560546875,
+              865.8900146484375
+            ],
+            "candidates": 320,
+            "geometry_types": {
+              "LineString": 300,
+              "Polygon": 20
+            },
+            "retained_points": 3063,
+            "curved_candidates": 18,
+            "rejections": {
+              "outside_region": 194548,
+              "complete_primitive_crosses_region_boundary": 207,
+              "nonopaque_paint": 3,
+              "Short line/symbol candidate": 14047,
+              "Small symbol or sheet enclosure candidate": 202,
+              "Self-crossing line needs review": 5
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 17493,
+            "region_native_points": [
+              1763.9549560546875,
+              396.94500732421875,
+              2383.93994140625,
+              865.8900146484375
+            ],
+            "candidates": 371,
+            "geometry_types": {
+              "LineString": 360,
+              "Polygon": 11
+            },
+            "retained_points": 3857,
+            "curved_candidates": 6,
+            "rejections": {
+              "outside_region": 191839,
+              "complete_primitive_crosses_region_boundary": 250,
+              "Short line/symbol candidate": 16525,
+              "Small symbol or sheet enclosure candidate": 309,
+              "Invalid candidate topology": 27,
+              "Self-crossing line needs review": 3,
+              "Invalid filled ring topology": 4,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 1,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 7835,
+            "region_native_points": [
+              0.0,
+              817.8900146484375,
+              619.9849853515625,
+              1286.8350219726562
+            ],
+            "candidates": 220,
+            "geometry_types": {
+              "LineString": 209,
+              "Polygon": 11
+            },
+            "retained_points": 1668,
+            "curved_candidates": 13,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 284,
+              "outside_region": 201497,
+              "Short line/symbol candidate": 6873,
+              "Small symbol or sheet enclosure candidate": 440,
+              "Self-crossing line needs review": 3,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 5,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 9968,
+            "region_native_points": [
+              571.9849853515625,
+              817.8900146484375,
+              1215.969970703125,
+              1286.8350219726562
+            ],
+            "candidates": 261,
+            "geometry_types": {
+              "LineString": 239,
+              "Polygon": 22
+            },
+            "retained_points": 3264,
+            "curved_candidates": 20,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 187,
+              "outside_region": 199364,
+              "Short line/symbol candidate": 9246,
+              "Small symbol or sheet enclosure candidate": 264,
+              "Text glyph/annotation mask": 1,
+              "Self-crossing line needs review": 5,
+              "Invalid candidate topology": 3,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 15557,
+            "region_native_points": [
+              1167.969970703125,
+              817.8900146484375,
+              1811.9549560546875,
+              1286.8350219726562
+            ],
+            "candidates": 307,
+            "geometry_types": {
+              "LineString": 298,
+              "Polygon": 9
+            },
+            "retained_points": 3881,
+            "curved_candidates": 10,
+            "rejections": {
+              "outside_region": 193775,
+              "complete_primitive_crosses_region_boundary": 262,
+              "Short line/symbol candidate": 14646,
+              "Small symbol or sheet enclosure candidate": 326,
+              "Self-crossing line needs review": 6,
+              "Invalid candidate topology": 2,
+              "Text glyph/annotation mask": 2,
+              "Invalid filled ring topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 13222,
+            "region_native_points": [
+              1763.9549560546875,
+              817.8900146484375,
+              2383.93994140625,
+              1286.8350219726562
+            ],
+            "candidates": 416,
+            "geometry_types": {
+              "LineString": 392,
+              "Polygon": 24
+            },
+            "retained_points": 4857,
+            "curved_candidates": 20,
+            "rejections": {
+              "outside_region": 196110,
+              "complete_primitive_crosses_region_boundary": 268,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 12307,
+              "Text glyph/annotation mask": 6,
+              "Self-crossing line needs review": 8,
+              "Small symbol or sheet enclosure candidate": 211,
+              "Invalid candidate topology": 1
+            },
+            "world_geometry_additions": 0,
+            "row": 2,
+            "column": 3
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 17699,
+            "region_native_points": [
+              0.0,
+              1238.8350219726562,
+              619.9849853515625,
+              1683.780029296875
+            ],
+            "candidates": 188,
+            "geometry_types": {
+              "LineString": 160,
+              "Polygon": 28
+            },
+            "retained_points": 2145,
+            "curved_candidates": 23,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 287,
+              "outside_region": 191633,
+              "Short line/symbol candidate": 16547,
+              "Small symbol or sheet enclosure candidate": 637,
+              "A linearring requires at least 4 coordinates.": 4,
+              "Invalid candidate topology": 21,
+              "Self-crossing line needs review": 7,
+              "Invalid filled ring topology": 7
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 0
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 12427,
+            "region_native_points": [
+              571.9849853515625,
+              1238.8350219726562,
+              1215.969970703125,
+              1683.780029296875
+            ],
+            "candidates": 354,
+            "geometry_types": {
+              "LineString": 277,
+              "Polygon": 77
+            },
+            "retained_points": 3124,
+            "curved_candidates": 82,
+            "rejections": {
+              "complete_primitive_crosses_region_boundary": 150,
+              "outside_region": 196905,
+              "Short line/symbol candidate": 11556,
+              "Small symbol or sheet enclosure candidate": 338,
+              "Self-crossing line needs review": 8,
+              "Text glyph/annotation mask": 3,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 1,
+              "Invalid filled ring topology": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 1
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 26673,
+            "region_native_points": [
+              1167.969970703125,
+              1238.8350219726562,
+              1811.9549560546875,
+              1683.780029296875
+            ],
+            "candidates": 492,
+            "geometry_types": {
+              "LineString": 477,
+              "Polygon": 15
+            },
+            "retained_points": 4598,
+            "curved_candidates": 34,
+            "rejections": {
+              "outside_region": 182659,
+              "complete_primitive_crosses_region_boundary": 227,
+              "Short line/symbol candidate": 25413,
+              "Small symbol or sheet enclosure candidate": 501,
+              "Self-crossing line needs review": 13,
+              "Text glyph/annotation mask": 1,
+              "Invalid candidate topology": 11,
+              "A linearring requires at least 4 coordinates.": 5,
+              "Invalid filled ring topology": 4
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 2
+          },
+          {
+            "status": "unplaced_geometry_candidates",
+            "raw_paths": 215484,
+            "selected_paths": 24063,
+            "region_native_points": [
+              1763.9549560546875,
+              1238.8350219726562,
+              2383.93994140625,
+              1683.780029296875
+            ],
+            "candidates": 370,
+            "geometry_types": {
+              "LineString": 353,
+              "Polygon": 17
+            },
+            "retained_points": 3197,
+            "curved_candidates": 28,
+            "rejections": {
+              "outside_region": 185269,
+              "complete_primitive_crosses_region_boundary": 313,
+              "nonopaque_paint": 1,
+              "Short line/symbol candidate": 22920,
+              "Self-crossing line needs review": 7,
+              "Invalid candidate topology": 3,
+              "Small symbol or sheet enclosure candidate": 431,
+              "A linearring requires at least 4 coordinates.": 12,
+              "Text glyph/annotation mask": 3
+            },
+            "world_geometry_additions": 0,
+            "row": 3,
+            "column": 3
+          }
+        ],
+        "overlap_duplicates": 419,
+        "candidates": 4615,
+        "geometry_types": {
+          "LineString": 4296,
+          "Polygon": 319
+        },
+        "retained_points": 46733,
+        "curved_candidates": 333,
+        "world_geometry_additions": 0,
+        "physical_identity_verified": false,
+        "registration_verified": false
+      },
+      "verified_complete_window_containment": true,
+      "previous_standalone_candidates_preserved": 4614,
+      "additional_candidates": 1
+    }
+  ],
+  "world_geometry_additions": 0,
+  "physical_identity_verified": false,
+  "registration_verified": false,
+  "checks": {
+    "source_pins_verified": true,
+    "all_retained_geometries_inside_all_referenced_windows": true,
+    "original_candidate_ids_and_geometries_preserved": true,
+    "replay_reused_all_three_pages": true
+  },
+  "validation": {
+    "full_regression_tests_passed": 1233,
+    "provenance_focused_tests_passed": 33
+  },
+  "registration_qualification": {
+    "fresh_output_reuses_pages": 3,
+    "limitations": [
+      "Qualification is horizontal only; component, state, view, height and material evidence remain separate.",
+      "Without a supplied verified source policy and independent survey registry, frames remain unqualified."
+    ],
+    "missing_requirements": {
+      "independent_survey_reference_bundle": 3,
+      "unique_checksum_bound_source_policy": 3,
+      "visible_unambiguous_printed_scale": 1
+    },
+    "page_frames_sha256": "fc672f08a76ccf7d549c38c6f9f979e26001a7e45506f05c812d705dbbc6cb3c",
+    "page_statuses": {
+      "awaiting_registration_evidence": 3
+    },
+    "pages": 3,
+    "physical_components_accepted": 0,
+    "policy_sha256": {},
+    "qualified_frames": 0,
+    "source_pages": [
+      [
+        "3ec5325a5f62bcb7708b3763886f65a6e1254c58a76813e619932ef039ef411f",
+        1
+      ],
+      [
+        "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+        1
+      ],
+      [
+        "cbb3d88a3eb1a07d980a08912177dad035d6a4b1a96cac5b841bb61f285cc519",
+        1
+      ]
+    ],
+    "unchanged_resume_identical": true,
+    "version": "drawing-frame-qualification-v2",
+    "world_geometry_additions": 0
+  },
+  "remaining_blockers": [
+    "Three pages lack a unique verified source policy and independent survey reference bundle.",
+    "One page additionally lacks a usable original-font visibility check for its printed scale.",
+    "Component view, identity, construction state, dimensions/materials and vertical datum remain separate requirements."
+  ]
+}

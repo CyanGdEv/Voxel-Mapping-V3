@@ -1,0 +1,36 @@
+{
+  "suite_tests": 331,
+  "synthetic_batch": {
+    "rides": 300,
+    "planned": 300,
+    "voxel_cells": 4500,
+    "scope": "synthetic dispatch/connected geometry test, not surveyed rides"
+  },
+  "retained_alton_test": {
+    "source_candidates": {
+      "paving": 686,
+      "cable": 5,
+      "building_shell": 280,
+      "beam": 14,
+      "ride_extent": 9,
+      "track": 79,
+      "wall": 105
+    },
+    "input_features": 1166,
+    "planned_voxel_cells": 13477,
+    "decisions": {
+      "withheld": 1153,
+      "planned": 13
+    },
+    "withheld_reasons": {
+      "Missing surface": 12,
+      "No generator for unclassified": 71,
+      "Missing height_m": 329,
+      "Landmark footprint budget exceeded": 1,
+      "Missing width_m": 645,
+      "Ride/cable/beam needs measured or explicitly estimated 3D route": 95
+    },
+    "scope": "Retained Alton OSM + DTM coverage test; no world or ride profile changes"
+  },
+  "migration": "Wicker connected line, polygon and 3D-member primitives extracted; ride-specific binding/profile/clearance remains specialized"
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-10",
+  "result": "real source evidence recovered; roof/wall outline placement withheld",
+  "focused_tests_passed": 33,
+  "source_drawings": 4,
+  "unique_glyph_spans_checked": 35,
+  "glyph_spans_screen_passes": 35,
+  "previous_visibility_hazards_resolved_at_screening_stage": 15,
+  "unclassified_enclosed_faces": 28,
+  "material_arrow_face_matches": 0,
+  "material_arrows_inside_embedded_images": 23,
+  "source_font_policy": "original embedded font bytes reused; no arbitrary substitution",
+  "pixel_policy": "one pixel tolerance at six pixels per PDF point; at least 99 percent support per glyph and background-ring check",
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "remaining": [
+    "raster face reconstruction and view separation",
+    "component and opening identity",
+    "verified source state/materials",
+    "independent registration checkpoints",
+    "verified vertical datum"
+  ]
+}

@@ -1,0 +1,574 @@
+{
+  "status": "orientation_cues_unverified",
+  "source_interior_line_midpoint_offset_pdf_points": 0.05869932091221204,
+  "orientation_comparisons": [
+    {
+      "rotation_degrees": 1.3604524947119747,
+      "projection_geometry_bng": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              407572.0282917002,
+              343584.48729133233
+            ],
+            [
+              407572.9286489032,
+              343584.9109482336
+            ],
+            [
+              407570.3650120795,
+              343590.33378029143
+            ],
+            [
+              407569.464655132,
+              343589.91011262726
+            ],
+            [
+              407572.0282917002,
+              343584.48729133233
+            ]
+          ]
+        ]
+      },
+      "interior_line_geometry_bng": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            407570.579979901,
+            343587.52292120864
+          ],
+          [
+            407555.3579658622,
+            343580.34382502956
+          ]
+        ]
+      },
+      "projection_to_lower_envelope": {
+        "centroid_distance_m": 8.535769874117591,
+        "intersection_area_m2": 0.0,
+        "projection_area_m2": 5.968596540725727,
+        "physical_correspondence_verified": false
+      },
+      "high_return_line_comparisons": [
+        {
+          "height_quantile": 0.8,
+          "threshold_z_odn_m": 189.10399999999998,
+          "point_count": 101,
+          "distance_to_interior_line_m": {
+            "median": 0.6834136064668465,
+            "p95": 1.257021845546041,
+            "max": 1.3961448075212404
+          },
+          "physical_ridge_identity_verified": false
+        },
+        {
+          "height_quantile": 0.9,
+          "threshold_z_odn_m": 189.466,
+          "point_count": 51,
+          "distance_to_interior_line_m": {
+            "median": 0.3831726477338046,
+            "p95": 0.6693123656340239,
+            "max": 0.7758220124807554
+          },
+          "physical_ridge_identity_verified": false
+        },
+        {
+          "height_quantile": 0.95,
+          "threshold_z_odn_m": 189.648,
+          "point_count": 26,
+          "distance_to_interior_line_m": {
+            "median": 0.15352132198847723,
+            "p95": 0.4646671781267552,
+            "max": 0.5081545699366856
+          },
+          "physical_ridge_identity_verified": false
+        }
+      ]
+    },
+    {
+      "rotation_degrees": -178.63937659201278,
+      "projection_geometry_bng": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              407553.9118475476,
+              343583.38941407995
+            ],
+            [
+              407553.01149160834,
+              343582.9657544929
+            ],
+            [
+              407555.5751446084,
+              343577.5429300825
+            ],
+            [
+              407556.4755002921,
+              343577.96660043235
+            ],
+            [
+              407553.9118475476,
+              343583.38941407995
+            ]
+          ]
+        ]
+      },
+      "interior_line_geometry_bng": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            407555.360168402,
+            343580.353788524
+          ],
+          [
+            407570.58216102555,
+            343587.5329301103
+          ]
+        ]
+      },
+      "projection_to_lower_envelope": {
+        "centroid_distance_m": 18.046239565345203,
+        "intersection_area_m2": 0.0,
+        "projection_area_m2": 5.968596540715799,
+        "physical_correspondence_verified": false
+      },
+      "high_return_line_comparisons": [
+        {
+          "height_quantile": 0.8,
+          "threshold_z_odn_m": 189.10399999999998,
+          "point_count": 101,
+          "distance_to_interior_line_m": {
+            "median": 0.6753400070362431,
+            "p95": 1.2651211447609942,
+            "max": 1.3880657859068006
+          },
+          "physical_ridge_identity_verified": false
+        },
+        {
+          "height_quantile": 0.9,
+          "threshold_z_odn_m": 189.466,
+          "point_count": 51,
+          "distance_to_interior_line_m": {
+            "median": 0.3750595965450558,
+            "p95": 0.669323627011637,
+            "max": 0.7677439625193182
+          },
+          "physical_ridge_identity_verified": false
+        },
+        {
+          "height_quantile": 0.95,
+          "threshold_z_odn_m": 189.648,
+          "point_count": 26,
+          "distance_to_interior_line_m": {
+            "median": 0.14541486029786885,
+            "p95": 0.4687330293402967,
+            "max": 0.5162744475202283
+          },
+          "physical_ridge_identity_verified": false
+        }
+      ]
+    }
+  ],
+  "selected_orientation": null,
+  "registration_verified": false,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Interior line role and high-return ridge identity are not established",
+    "A nearly centred unoriented line cannot by itself distinguish a 180-degree reversal",
+    "A nearby lower cluster is not the planned projection solely because it is nearby",
+    "These cues reuse the fitted cloud and are not independent checkpoints"
+  ],
+  "document_northing_direction_review": {
+    "status": "local_north_direction_consistency_only",
+    "source_labels": [
+      {
+        "text": "1550N",
+        "northing": 1550,
+        "native_centre": [
+          13.439987182617188,
+          162.3955078125
+        ]
+      },
+      {
+        "text": "1600N",
+        "northing": 1600,
+        "native_centre": [
+          13.439987182617188,
+          729.2755126953125
+        ]
+      },
+      {
+        "text": "1650N",
+        "northing": 1650,
+        "native_centre": [
+          13.439987182617188,
+          1296.155517578125
+        ]
+      }
+    ],
+    "increasing_local_north_native_vector": [
+      0.0,
+      1.0
+    ],
+    "label_interval_metres_per_pdf_point": 0.08820208786573128,
+    "orientation_comparisons": [
+      {
+        "rotation_degrees": 1.3604524947119747,
+        "mapped_increasing_local_north_unit_vector": [
+          -0.02374214425114545,
+          0.9997181155637613
+        ],
+        "north_half_plane_consistent": true,
+        "physical_registration_verified": false
+      },
+      {
+        "rotation_degrees": -178.63937659201278,
+        "mapped_increasing_local_north_unit_vector": [
+          0.023745126409567146,
+          -0.9997180447365116
+        ],
+        "north_half_plane_consistent": false,
+        "physical_registration_verified": false
+      }
+    ],
+    "north_consistent_hypothesis_count": 1,
+    "accepted_checkpoints": 0,
+    "limitations": [
+      "Local northing direction constrains orientation, not absolute placement",
+      "Exact relationship of the local site grid to BNG/true north remains unverified",
+      "Label centres are document context, not physical attachment points"
+    ]
+  },
+  "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "page": 1,
+  "source_cues": {
+    "outline": {
+      "id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "page": 1,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1059.3599853515625,
+              1387.5999755859375
+            ],
+            [
+              884.6399536132812,
+              1310.320068359375
+            ],
+            [
+              943.6799926757812,
+              1177.3599853515625
+            ],
+            [
+              1118.1600341796875,
+              1254.8800048828125
+            ],
+            [
+              1059.3599853515625,
+              1387.5999755859375
+            ]
+          ]
+        ]
+      },
+      "coordinate_frame": "pdf_native_points_y_up",
+      "paint_references": [
+        {
+          "ordinal": 89263,
+          "subpath": null,
+          "stroke_style": {
+            "width_pdf_points": null,
+            "dashes_pdf": ""
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 5
+          }
+        },
+        {
+          "ordinal": 89264,
+          "subpath": 0,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 5
+          }
+        },
+        {
+          "ordinal": 90016,
+          "subpath": null,
+          "stroke_style": {
+            "width_pdf_points": null,
+            "dashes_pdf": ""
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 5
+          }
+        },
+        {
+          "ordinal": 90017,
+          "subpath": 0,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 5
+          }
+        }
+      ],
+      "extraction_kind": "drawing_components",
+      "extraction_version": "drawing-components-v1",
+      "extraction_contract": "475f75117d4a2d8c70ef52785d90982debacf965fc7e83778384aeacf4f70385",
+      "rendering_status": "supported_straight_unclipped_polygon",
+      "curve_approximation": {
+        "cubic_segments": 0,
+        "chord_error_bound_pdf_points": 0,
+        "requested_tolerance_pdf_points": 0.25,
+        "method": "adaptive_de_casteljau_control_hull_to_chord",
+        "points": 5
+      },
+      "stroke_style": {
+        "width_pdf_points": null,
+        "dashes_pdf": ""
+      },
+      "semantic_status": "unclassified",
+      "line_role": null,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0,
+      "parent_references": [
+        {
+          "candidate_id": "c631c9fa7adff4f77172e3d30eac1cf566847a40d391ddad7b18a596a7d7be52",
+          "component_index": null,
+          "extraction_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd"
+        }
+      ],
+      "component_semantics_verified": false
+    },
+    "projection": {
+      "id": "017f2e1f17de2c8965bd947b90b85cb57a924ab5da7dbde9cc6564b74120d080",
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "page": 1,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1104.239990234375,
+              1286.320068359375
+            ],
+            [
+              1114.5599365234375,
+              1290.8800048828125
+            ],
+            [
+              1086.9599609375,
+              1353.0400390625
+            ],
+            [
+              1076.6400146484375,
+              1348.47998046875
+            ],
+            [
+              1104.239990234375,
+              1286.320068359375
+            ]
+          ]
+        ]
+      },
+      "coordinate_frame": "pdf_native_points_y_up",
+      "paint_references": [
+        {
+          "ordinal": 89266,
+          "subpath": null,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 4
+          }
+        },
+        {
+          "ordinal": 90019,
+          "subpath": null,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 4
+          }
+        }
+      ],
+      "extraction_kind": "drawing_components",
+      "extraction_version": "drawing-components-v1",
+      "extraction_contract": "475f75117d4a2d8c70ef52785d90982debacf965fc7e83778384aeacf4f70385",
+      "rendering_status": "supported_straight_unclipped_polygon",
+      "curve_approximation": {
+        "cubic_segments": 0,
+        "chord_error_bound_pdf_points": 0,
+        "requested_tolerance_pdf_points": 0.25,
+        "method": "adaptive_de_casteljau_control_hull_to_chord",
+        "points": 4
+      },
+      "stroke_style": {
+        "width_pdf_points": 0.35999998450279236,
+        "dashes_pdf": "[] 0"
+      },
+      "semantic_status": "unclassified",
+      "line_role": null,
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0,
+      "parent_references": [
+        {
+          "candidate_id": "017f2e1f17de2c8965bd947b90b85cb57a924ab5da7dbde9cc6564b74120d080",
+          "component_index": null,
+          "extraction_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd"
+        }
+      ],
+      "component_semantics_verified": false
+    },
+    "interior_line": {
+      "id": "102c8401a3282b973f89faca10c0a059f40417d61deb210144b3cf04f8d7d816",
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "page": 1,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1088.6400146484375,
+            1321.1199951171875
+          ],
+          [
+            914.1599731445312,
+            1243.8399658203125
+          ]
+        ]
+      },
+      "coordinate_frame": "pdf_native_points_y_up",
+      "paint_references": [
+        {
+          "ordinal": 89265,
+          "subpath": 0,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 2
+          }
+        },
+        {
+          "ordinal": 90018,
+          "subpath": 0,
+          "stroke_style": {
+            "width_pdf_points": 0.35999998450279236,
+            "dashes_pdf": "[] 0"
+          },
+          "curve_approximation": {
+            "cubic_segments": 0,
+            "chord_error_bound_pdf_points": 0,
+            "requested_tolerance_pdf_points": 0.25,
+            "method": "adaptive_de_casteljau_control_hull_to_chord",
+            "points": 2
+          }
+        }
+      ],
+      "extraction_kind": "drawing_geometry",
+      "extraction_version": "drawing-geometry-v2",
+      "extraction_contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+      "rendering_status": "supported_straight_unclipped_polyline",
+      "curve_approximation": {
+        "cubic_segments": 0,
+        "chord_error_bound_pdf_points": 0,
+        "requested_tolerance_pdf_points": 0.25,
+        "method": "adaptive_de_casteljau_control_hull_to_chord",
+        "points": 2
+      },
+      "stroke_style": {
+        "width_pdf_points": 0.35999998450279236,
+        "dashes_pdf": "[] 0"
+      },
+      "semantic_status": "unclassified",
+      "line_role": "unclassified_stroked_path",
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  },
+  "lower_return_count": 61,
+  "aerial_catalogue_search": {
+    "query": {
+      "url": "https://environment.data.gov.uk/KB6uNVj5ZcJr7jUP/ArcGIS/rest/services/Vertical_Aerial_Photography_Catalogues/FeatureServer/0/query",
+      "parameters": {
+        "f": "json",
+        "geometry": "407000,343000,408000,344000",
+        "geometryType": "esriGeometryEnvelope",
+        "inSR": "27700",
+        "spatialRel": "esriSpatialRelIntersects",
+        "outFields": "*",
+        "returnGeometry": "false"
+      },
+      "response": {
+        "objectIdFieldName": "objectid",
+        "uniqueIdField": {
+          "name": "objectid",
+          "isSystemMaintained": true
+        },
+        "globalIdFieldName": "",
+        "geometryProperties": {
+          "shapeAreaFieldName": "Shape__Area",
+          "shapeLengthFieldName": "Shape__Length",
+          "units": "esriMeters"
+        },
+        "features": []
+      }
+    },
+    "feature_count": 0,
+    "status": "no_coverage_in_queried_catalogue",
+    "accepted_checkpoints": 0,
+    "scope": "One official vertical photography catalogue and the queried tile; not all aerial imagery providers"
+  },
+  "input_sha256": {
+    "pdf": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "cloud": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+    "roof_report": "47486f708adecd5690afdd4878aa9366678763d507372efd357b20c85119dc7f",
+    "plan_review": "792f0448b81cfa398f1ce8e552d88e9f3bf2cda2f8b95a4a0b2811deaed6d17c",
+    "aerial_query": "5613d6cb80e08a7f678c3e2089e7b2d063d015f57d40797a68b2520c76c5ef29"
+  }
+}

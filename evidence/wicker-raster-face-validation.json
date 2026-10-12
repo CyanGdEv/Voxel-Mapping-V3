@@ -1,0 +1,15 @@
+{
+  "status": "unplaced_real_raster_evidence",
+  "anchor_records": 23,
+  "region_statuses": {
+    "withheld_unstable_or_unbounded_raster_region": 20,
+    "unverified_stable_raster_region_candidate": 3
+  },
+  "focused_tests_passed": 44,
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "world_geometry_additions": 0,
+  "all_output_checksums_verified": true,
+  "candidate_boundary_identity_verified": false,
+  "candidate_view_identity_verified": false
+}

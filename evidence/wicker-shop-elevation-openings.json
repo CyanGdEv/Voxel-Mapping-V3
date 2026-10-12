@@ -1,0 +1,506 @@
+{
+  "accepted_components": 0,
+  "annotation_sha256": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7",
+  "as_built_verified": false,
+  "elevation_pdf_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "grayscale_recipe": "RGB weighted sum 0.299R+0.587G+0.114B; numpy rint to uint8",
+  "northwest_door_nearby_plan_stroke_review": {
+    "door_leaf_width_m": null,
+    "layout_review_sha256": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "maximum_gap_distance_nominal_m": 0.25,
+    "nominal_length_discovery_range_m": [
+      0.5,
+      1.2
+    ],
+    "physical_roles_verified": false,
+    "reveal_depth_m": null,
+    "source_gap_candidate_id": "5cbfd180f4bec9add8c1c5a4ab306c24fc28120f77d915d253046721c96c90b2",
+    "source_pdf_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "stroke_candidates": [
+      {
+        "door_leaf_or_reveal_role_verified": false,
+        "layout_normalized_length_m": 0.8101271190996587,
+        "nominal_distance_to_gap_corridor_m": 0.0,
+        "nominal_length_m": 0.7363860580559196,
+        "source_edge": {
+          "clipping_and_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "id": "aca90c8b0f3723b3f0cd3ead933a410cb4f0dda0a12b8da39367a92ba61c4cb3",
+          "item_index": 0,
+          "item_part": 0,
+          "length_pdf_points": 20.87393550394733,
+          "outer_component_edge_verified": false,
+          "page": 1,
+          "paint_seqno": 235,
+          "path_index": 234,
+          "points": [
+            [
+              781.91845703125,
+              1785.858642578125
+            ],
+            [
+              796.6776733398438,
+              1800.61962890625
+            ]
+          ],
+          "stroke_color": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stroke_width": 0.5999987721443176
+        },
+        "world_geometry_additions": 0
+      },
+      {
+        "door_leaf_or_reveal_role_verified": false,
+        "layout_normalized_length_m": 0.9215089607581702,
+        "nominal_distance_to_gap_corridor_m": 0.00013656229027540594,
+        "nominal_length_m": 0.8381353143095798,
+        "source_edge": {
+          "clipping_and_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "id": "b3d05536198f5fe0098f39908146e40394f81833da0c17c3119b3d250a828488",
+          "item_index": 0,
+          "item_part": 0,
+          "length_pdf_points": 23.758166389877854,
+          "outer_component_edge_verified": false,
+          "page": 1,
+          "paint_seqno": 413,
+          "path_index": 412,
+          "points": [
+            [
+              780.5988159179688,
+              1818.258544921875
+            ],
+            [
+              797.3976440429688,
+              1801.458251953125
+            ]
+          ],
+          "stroke_color": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "stroke_width": 0.23999950289726257
+        },
+        "world_geometry_additions": 0
+      }
+    ]
+  },
+  "opening_reviews": [
+    {
+      "plan_comparisons": [
+        {
+          "physical_plan_elevation_correspondence_verified": false,
+          "plan_layout_normalized_cap_centre_span_m": 4.996009157940267,
+          "raster_interval_candidates": [
+            {
+              "interval_m": [
+                4.677295197740113,
+                5.167297551789077
+              ],
+              "plan_span_in_raster_sampling_interval": true
+            }
+          ],
+          "reviewed_opening_id": "opening-SW",
+          "source_plan_gap_candidate_id": "9e42849a268dd34a26ee18c92a4197b868ccd3b3e69eebdd9f15124fc3d1a91b"
+        }
+      ],
+      "raster_review": {
+        "candidates": [
+          {
+            "height_datum_verified": false,
+            "nominal_width_interval_m": [
+              4.677295197740113,
+              5.167297551789077
+            ],
+            "observed_jamb_span_interval_m": [
+              4.855477871939737,
+              4.989114877589454
+            ],
+            "physical_opening_verified": false,
+            "status": "unverified_raster_jamb_head_candidate",
+            "threshold_candidates": [
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 350
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 351
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 352
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 353
+                  }
+                ],
+                "left_pixel_columns": [
+                  1093,
+                  1094,
+                  1095,
+                  1096
+                ],
+                "nominal_width_m": 4.922296374764596,
+                "right_pixel_columns": [
+                  1205
+                ],
+                "threshold": 220
+              },
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 350
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 351
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 352
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 353
+                  }
+                ],
+                "left_pixel_columns": [
+                  1093,
+                  1094,
+                  1095,
+                  1096
+                ],
+                "nominal_width_m": 4.922296374764596,
+                "right_pixel_columns": [
+                  1205
+                ],
+                "threshold": 235
+              }
+            ],
+            "world_geometry_additions": 0
+          }
+        ],
+        "manual_endpoint_bound_pixels": 2,
+        "metres_per_pixel_nominal": 0.04454566854990584,
+        "recipe": {
+          "maximum_threshold_edge_spread_pixels": 2,
+          "minimum_head_dark_fraction": 0.9,
+          "minimum_jamb_dark_fraction": 0.8,
+          "nominal_width_discovery_range_m": [
+            0.5,
+            6
+          ],
+          "search_radius_pixels": 140,
+          "thresholds": [
+            220,
+            235
+          ]
+        },
+        "seed_trace_bottom_pixels": [
+          1150,
+          407
+        ],
+        "seed_trace_top_pixels": [
+          1150,
+          351
+        ],
+        "source_crop_bbox_pixels": [
+          1010,
+          349,
+          1291,
+          408
+        ],
+        "source_crop_pixels_sha256": "447a731c7d92be37e1c1a25b9f86432836a86fb76c1e79e6355c93b7cef33ead",
+        "version": "raster-jamb-head-hypotheses-v1",
+        "world_geometry_additions": 0
+      },
+      "trace_id": "SW-opening",
+      "view": "SW"
+    },
+    {
+      "plan_comparisons": [
+        {
+          "physical_plan_elevation_correspondence_verified": false,
+          "plan_layout_normalized_cap_centre_span_m": 4.999332744274312,
+          "raster_interval_candidates": [
+            {
+              "interval_m": [
+                4.677295197740113,
+                5.2118432203389835
+              ],
+              "plan_span_in_raster_sampling_interval": true
+            }
+          ],
+          "reviewed_opening_id": "opening-NE",
+          "source_plan_gap_candidate_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602"
+        }
+      ],
+      "raster_review": {
+        "candidates": [
+          {
+            "height_datum_verified": false,
+            "nominal_width_interval_m": [
+              4.677295197740113,
+              5.2118432203389835
+            ],
+            "observed_jamb_span_interval_m": [
+              4.855477871939737,
+              5.03366054613936
+            ],
+            "physical_opening_verified": false,
+            "status": "unverified_raster_jamb_head_candidate",
+            "threshold_candidates": [
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 835
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 836
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 837
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 838
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 839
+                  }
+                ],
+                "left_pixel_columns": [
+                  1084,
+                  1085,
+                  1086,
+                  1087
+                ],
+                "nominal_width_m": 4.966842043314501,
+                "right_pixel_columns": [
+                  1197
+                ],
+                "threshold": 220
+              },
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 835
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 836
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 837
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 838
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 839
+                  }
+                ],
+                "left_pixel_columns": [
+                  1084,
+                  1085,
+                  1086,
+                  1087,
+                  1088
+                ],
+                "nominal_width_m": 4.944569209039548,
+                "right_pixel_columns": [
+                  1197
+                ],
+                "threshold": 235
+              }
+            ],
+            "world_geometry_additions": 0
+          }
+        ],
+        "manual_endpoint_bound_pixels": 2,
+        "metres_per_pixel_nominal": 0.04454566854990584,
+        "recipe": {
+          "maximum_threshold_edge_spread_pixels": 2,
+          "minimum_head_dark_fraction": 0.9,
+          "minimum_jamb_dark_fraction": 0.8,
+          "nominal_width_discovery_range_m": [
+            0.5,
+            6
+          ],
+          "search_radius_pixels": 140,
+          "thresholds": [
+            220,
+            235
+          ]
+        },
+        "seed_trace_bottom_pixels": [
+          1150,
+          893
+        ],
+        "seed_trace_top_pixels": [
+          1150,
+          837
+        ],
+        "source_crop_bbox_pixels": [
+          1010,
+          835,
+          1291,
+          894
+        ],
+        "source_crop_pixels_sha256": "9989887e1dd2bd9fac94183f2fbc8f0fb032bb59e216766ac2c48be51236166a",
+        "version": "raster-jamb-head-hypotheses-v1",
+        "world_geometry_additions": 0
+      },
+      "trace_id": "NE-opening",
+      "view": "NE"
+    },
+    {
+      "plan_comparisons": [
+        {
+          "physical_plan_elevation_correspondence_verified": false,
+          "plan_layout_normalized_cap_centre_span_m": 1.0110020727436058,
+          "raster_interval_candidates": [
+            {
+              "interval_m": [
+                0.7127306967984934,
+                1.2472787193973636
+              ],
+              "plan_span_in_raster_sampling_interval": true
+            }
+          ],
+          "reviewed_opening_id": "door-NW",
+          "source_plan_gap_candidate_id": "5cbfd180f4bec9add8c1c5a4ab306c24fc28120f77d915d253046721c96c90b2"
+        }
+      ],
+      "raster_review": {
+        "candidates": [
+          {
+            "height_datum_verified": false,
+            "nominal_width_interval_m": [
+              0.7127306967984934,
+              1.2472787193973636
+            ],
+            "observed_jamb_span_interval_m": [
+              0.8909133709981167,
+              1.0690960451977403
+            ],
+            "physical_opening_verified": false,
+            "status": "unverified_raster_jamb_head_candidate",
+            "threshold_candidates": [
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 846
+                  }
+                ],
+                "left_pixel_columns": [
+                  303,
+                  304
+                ],
+                "nominal_width_m": 1.0022775423728814,
+                "right_pixel_columns": [
+                  325,
+                  326,
+                  327
+                ],
+                "threshold": 220
+              },
+              {
+                "head_row_support": [
+                  {
+                    "dark_fraction": 0.96,
+                    "row": 844
+                  },
+                  {
+                    "dark_fraction": 1.0,
+                    "row": 846
+                  }
+                ],
+                "left_pixel_columns": [
+                  303,
+                  304,
+                  305
+                ],
+                "nominal_width_m": 0.9800047080979285,
+                "right_pixel_columns": [
+                  325,
+                  326,
+                  327
+                ],
+                "threshold": 235
+              }
+            ],
+            "world_geometry_additions": 0
+          }
+        ],
+        "manual_endpoint_bound_pixels": 2,
+        "metres_per_pixel_nominal": 0.04454566854990584,
+        "recipe": {
+          "maximum_threshold_edge_spread_pixels": 2,
+          "minimum_head_dark_fraction": 0.9,
+          "minimum_jamb_dark_fraction": 0.8,
+          "nominal_width_discovery_range_m": [
+            0.5,
+            6
+          ],
+          "search_radius_pixels": 140,
+          "thresholds": [
+            220,
+            235
+          ]
+        },
+        "seed_trace_bottom_pixels": [
+          315,
+          893
+        ],
+        "seed_trace_top_pixels": [
+          315,
+          846
+        ],
+        "source_crop_bbox_pixels": [
+          175,
+          844,
+          456,
+          894
+        ],
+        "source_crop_pixels_sha256": "02ff48eaf3236170190d663f2a54630ad8865f03b9aff00289fac10bf4f7d0b2",
+        "version": "raster-jamb-head-hypotheses-v1",
+        "world_geometry_additions": 0
+      },
+      "trace_id": "NW-door",
+      "view": "NW"
+    }
+  ],
+  "plan_review_sha256": "1850d3f53acc4c7f28cbc3b4ce10eebfa66609fad1105c1d69baa26a2742d513",
+  "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462",
+  "render_to_unrotated_mupdf_matrix": [
+    0.0,
+    -1.2627118825912476,
+    1.2627118825912476,
+    0.0,
+    -0.0,
+    2384.0
+  ],
+  "scale_is_nominal": true,
+  "world_geometry_additions": 0
+}

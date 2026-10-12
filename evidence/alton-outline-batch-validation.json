@@ -1,0 +1,145 @@
+{
+  "sources": {
+    "retained_pdf_blobs": 309,
+    "retained_pages": 818,
+    "live_downloads": 0,
+    "archive_sha256": [
+      "830ef2e993ceff0ab64017f6a2324dd3cfe45a933352650064be429ffc3271fd",
+      "6b1ec3033c559bc64fb81c5d35d03ddaff390b9deb8bd37468cb7ec614487a6c"
+    ]
+  },
+  "geometry_replay": {
+    "version": "drawing-geometry-v2",
+    "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 818,
+    "run_pages": 818,
+    "resumed_pages": 0,
+    "candidates": 211831,
+    "candidate_types": {
+      "line": 173059,
+      "polygon": 38772
+    },
+    "curved_candidates": 18602,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 790,
+      "path_budget_withheld": 22,
+      "partial_candidate_budget": 6
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+      "polygon": "d56f9bd3933756e59ff57d6b72aedb9b4ae059c9853fd1456cb0290176720875",
+      "line": "1cb98842d935ce97b853f3825d84437b31c604011c2159c925adc0163feacc64"
+    },
+    "world_geometry_additions": 0
+  },
+  "full_review": {
+    "version": "outline-batch-v1",
+    "candidate_sha256": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+    "layout_contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+    "max_records": 2500000,
+    "candidates": 211831,
+    "run_candidates": 211831,
+    "resumed_candidates": 0,
+    "pages_with_candidates": 353,
+    "counts": {
+      "unclassified_outline": 177647,
+      "physical_outline_hypothesis": 3553,
+      "annotation_or_occluded_review": 30631,
+      "paint_order_unverified": 27119,
+      "all_original_paints_occluded": 2640,
+      "annotation_panel_overlap": 1648
+    },
+    "priority_tiers": {
+      "0": 53,
+      "1": 38,
+      "2": 201,
+      "3": 9,
+      "4": 39,
+      "5": 13
+    },
+    "file_sha256": {
+      "outline-review.jsonl": "0b6e655cb5c5fa549faef0f3c2532b678cb9d5cd8c743ca3dbe23b38ec2e8e36",
+      "alignment-priority.jsonl": "7e2a2c010057c9689cb2367b210cc98d662f6b64f7b150e1515119bad548aee3"
+    },
+    "physical_identity_verified": false,
+    "registration_verified": false,
+    "world_geometry_additions": 0,
+    "elapsed_seconds": 121.54104852676392
+  },
+  "resume": {
+    "version": "outline-batch-v1",
+    "candidate_sha256": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+    "layout_contract": "5023fe061dc8f8298c04b00ed9398373b8ec8c41e986fb9877ea7fa06ab709c0",
+    "max_records": 2500000,
+    "candidates": 211831,
+    "run_candidates": 0,
+    "resumed_candidates": 211831,
+    "pages_with_candidates": 353,
+    "counts": {
+      "unclassified_outline": 177647,
+      "physical_outline_hypothesis": 3553,
+      "annotation_or_occluded_review": 30631,
+      "paint_order_unverified": 27119,
+      "all_original_paints_occluded": 2640,
+      "annotation_panel_overlap": 1648
+    },
+    "priority_tiers": {
+      "0": 53,
+      "1": 38,
+      "2": 201,
+      "3": 9,
+      "4": 39,
+      "5": 13
+    },
+    "file_sha256": {
+      "outline-review.jsonl": "0b6e655cb5c5fa549faef0f3c2532b678cb9d5cd8c743ca3dbe23b38ec2e8e36",
+      "alignment-priority.jsonl": "7e2a2c010057c9689cb2367b210cc98d662f6b64f7b150e1515119bad548aee3"
+    },
+    "physical_identity_verified": false,
+    "registration_verified": false,
+    "world_geometry_additions": 0,
+    "elapsed_seconds": 16.58771800994873
+  },
+  "checkpoint_integrity": {
+    "journal_mode": "wal",
+    "quick_check": "ok",
+    "cached_records": 211831,
+    "earlier_rollback_journal_index_failure": "Discarded; fresh WAL rebuild reproduced identical review-feed SHA, then passed full resume and integrity checks"
+  },
+  "compact_alignment_queue": {
+    "path": "evidence/alton-outline-alignment-queue.jsonl",
+    "pages": 353,
+    "sha256": "33626ec2bf1474b80ce787b8e5a99fa277051e996e84a638aa215a6c154e19a0",
+    "purpose": "Ranked review effort; no accepted placement or physical identity"
+  },
+  "validation": {
+    "tests_passed": 558,
+    "command": "python -m unittest discover -s tests -q",
+    "checks": [
+      "checkpoint interruption resumes committed decisions",
+      "same-input full corpus resume produces identical feeds",
+      "source PDF corruption refused on resume",
+      "changed feeds and duplicate or forged candidates refused",
+      "different process hash seeds produce identical feeds",
+      "damaged checkpoint refused",
+      "optional park pipeline stage resumes"
+    ]
+  },
+  "limitations": [
+    "177647 outlines remain semantically unclassified",
+    "3553 label-proximity hypotheses are not confirmed physical objects",
+    "53 highest-tier sheets have at least three hinted polygons; this does not prove independent control correspondences",
+    "Current as-built state, reuse, dimensions, materials, independent registration and vertical geometry remain unverified",
+    "2.5 million is a configured record ceiling, not a full reconstruction benchmark"
+  ],
+  "world_geometry_additions": 0
+}

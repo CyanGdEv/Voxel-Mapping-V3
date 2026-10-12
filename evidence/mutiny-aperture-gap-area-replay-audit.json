@@ -1,0 +1,61 @@
+{
+  "first_gap_summary": {
+    "version": "aperture-gap-proposals-v1",
+    "proposal_path": "/workspace/scratch/3db5a87a149e/mutiny-gap-study/area-replay/work/mutiny-bay/aperture-gap-proposals/0/aperture-gap-proposals.json",
+    "proposal_sha256": "5ad4518fdeca7d8733624903f3e5b6cae5f07d99b53224224da4ee5e18b48c29",
+    "reused": false,
+    "opening_statuses": {
+      "single_connector_network_faces_only": 16
+    },
+    "openings_with_proposals": 1,
+    "world_geometry_additions": 0,
+    "mesh_update_authorized": false
+  },
+  "replay_gap_summary": {
+    "version": "aperture-gap-proposals-v1",
+    "proposal_path": "/workspace/scratch/3db5a87a149e/mutiny-gap-study/area-replay/work/mutiny-bay/aperture-gap-proposals/0/aperture-gap-proposals.json",
+    "proposal_sha256": "5ad4518fdeca7d8733624903f3e5b6cae5f07d99b53224224da4ee5e18b48c29",
+    "reused": true,
+    "opening_statuses": {
+      "single_connector_network_faces_only": 16
+    },
+    "openings_with_proposals": 1,
+    "world_geometry_additions": 0,
+    "mesh_update_authorized": false
+  },
+  "replay_extraction": {
+    "version": "drawing-geometry-v2",
+    "contract": "f6d2894c0bb9ffad446d5f4740c4bab6b3fa83bd8c33eeef964461bb74fa003e",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 10000,
+      "max_points": 10000,
+      "max_total_points": 200000,
+      "min_line_length_points": 0.25
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 3,
+    "run_pages": 0,
+    "resumed_pages": 3,
+    "candidates": 5286,
+    "candidate_types": {
+      "line": 5201,
+      "polygon": 85
+    },
+    "curved_candidates": 11,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 3
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "9a2c69a30c124e7942899cc4d3cb2c1ad55cfc716dede03ef862e251228b81cb",
+      "polygon": "67ded263747ef6ce6218b4c30dd47d95020e6eaf52079ee64ad02b1c0ff565f1",
+      "line": "b05efd8d7b51b875c6ed8f11a930cf203fed9abae7b6705c74fd7943210e040a"
+    },
+    "world_geometry_additions": 0
+  },
+  "status": "awaiting_reconstruction",
+  "world_geometry_additions": 0,
+  "tampered_receipt_rejected": true
+}

@@ -1,0 +1,188 @@
+{
+  "accepted_openings": 0,
+  "accepted_registration_points": 0,
+  "discovery_tolerance_nominal_m": 0.25,
+  "input_sha256": {
+    "evidence/wicker-shop-clipped-fill-replay.json": "b2d74c5a4402158248dc601a2a013b1b4b5be961bce204e104dc396aa221aa7f",
+    "evidence/wicker-shop-floor-annotations.json": "b0c0d13e2b98d66d7eea5b8ca12991b1bc476ae9730bf9caa147a52e143aa0d7",
+    "evidence/wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "evidence/wicker-shop-local-floor.json": "41ceaa5c4571c58261b1bcb9612998621105a1eacbeecf3098ad6fbe4ef1aee4",
+    "evidence/wicker-shop-local-preview.json": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50",
+    "evidence/wicker-shop-local-roof.json": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137",
+    "evidence/wicker-shop-vertical-annotations.json": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7"
+  },
+  "layout_heldout_max_residual_pdf_points": 0.11801888555281677,
+  "layout_reproduction_numerical_tolerance": 1e-09,
+  "manual_endpoint_sampling_bound_nominal_m": 0.1259941790309645,
+  "normalized_floor_minus_elevation_dimensions_m": [
+    -0.08587147472788281,
+    0.020594908133837464
+  ],
+  "records": [
+    {
+      "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 4.99268544270468,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 4.5409714740765,
+      "reviewed_trace_candidates": [
+        {
+          "height_assignment_status": "conditional_on_unverified_plan_to_elevation_association",
+          "maximum_endpoint_residual_nominal_m": 0.15087069683675558,
+          "physical_correspondence_verified": false,
+          "reviewed_elevation_height_trace": {
+            "bottom_pixel": [
+              1150,
+              407
+            ],
+            "height_metres": 2.493879692554474,
+            "manual_sampling_interval_metres": [
+              2.3157454288005828,
+              2.672013956308365
+            ],
+            "native_points": [
+              [
+                443.0914611816406,
+                1452.11865234375
+              ],
+              [
+                513.7841186523438,
+                1452.11865234375
+              ]
+            ],
+            "top_pixel": [
+              1150,
+              351
+            ],
+            "view": "SW"
+          },
+          "reviewed_opening_id": "opening-SW",
+          "within_manual_endpoint_sampling_bound": false
+        }
+      ],
+      "source_gap_endpoints_native": [
+        [
+          1129.678982644421,
+          374.58138766598995
+        ],
+        [
+          1220.6979970445964,
+          465.6005811551597
+        ]
+      ],
+      "status": "unverified_reviewed_trace_candidate",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0105727738517927,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9186605495876735,
+      "reviewed_trace_candidates": [],
+      "source_gap_endpoints_native": [
+        [
+          1040.517333984375,
+          1144.1395874023438
+        ],
+        [
+          1066.55810546875,
+          1144.1395874023438
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.5127933127084088,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 1.375811801486545,
+      "reviewed_trace_candidates": [],
+      "source_gap_endpoints_native": [
+        [
+          930.2377319335938,
+          1245.53955078125
+        ],
+        [
+          930.2377319335938,
+          1206.5401611328125
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.4507292240087666,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368832482231985,
+      "reviewed_trace_candidates": [],
+      "source_gap_endpoints_native": [
+        [
+          457.4392395019531,
+          1436.5192260742188
+        ],
+        [
+          546.3587646484375,
+          1436.5192260742188
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 3.450730408314442,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 3.1368843248155382,
+      "reviewed_trace_candidates": [],
+      "source_gap_endpoints_native": [
+        [
+          458.6385498046875,
+          869.0406494140625
+        ],
+        [
+          547.55810546875,
+          869.0406494140625
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    },
+    {
+      "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+      "layout_correction_is_provisional": true,
+      "layout_normalized_width_m": 1.0100599002778152,
+      "physical_opening_verified": false,
+      "raw_nominal_width_m": 0.9186002604166666,
+      "reviewed_trace_candidates": [],
+      "source_gap_endpoints_native": [
+        [
+          676.6780395507812,
+          1425.899169921875
+        ],
+        [
+          676.6780395507812,
+          1399.860107421875
+        ]
+      ],
+      "status": "no_reviewed_trace_match",
+      "world_geometry_additions": 0
+    }
+  ],
+  "source_pdf_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "unmatched_reviewed_opening_ids": [
+    "door-NW",
+    "opening-NE"
+  ],
+  "version": "reviewed-opening-correspondence-v1",
+  "world_geometry_additions": 0
+}

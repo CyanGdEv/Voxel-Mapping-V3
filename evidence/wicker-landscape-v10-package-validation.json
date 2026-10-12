@@ -1,0 +1,20 @@
+{
+  "status": "downloadable archive reopened and landscape verified",
+  "world_name": "Wicker V10 PATHS \u2014 recovered curve \u2014 provisional \u2014 draft 1:1",
+  "spawn": [
+    407553,
+    73,
+    -343578
+  ],
+  "landscape_cells_checked": 3946,
+  "materials": {
+    "bricks": 1627,
+    "stone": 1193,
+    "black_concrete": 876,
+    "dirt": 185,
+    "oak_leaves": 65
+  },
+  "uncovered_path_cells_checked": 3793,
+  "sha256": "1ebff4bf449ce0dfd410e84cc616a0d67dddc1d35afdb88fbe26794844c432ad",
+  "limitation": "Native block verification; no Minecraft client screenshot validation."
+}

@@ -1,0 +1,11 @@
+{
+  "receipt_and_svg_byte_identical_replay": true,
+  "four_JPEG_tiles_256_square_verified": true,
+  "source_tile_hashes_match": true,
+  "adjacent_tile_georeferencing_contiguous": true,
+  "acquisition_and_release_dates_distinguished": true,
+  "shop_point_metadata_scope_retained": true,
+  "accuracy_gate_failure_preserved": true,
+  "svg_rendered_and_visually_reviewed": true,
+  "world_geometry_additions": 0
+}

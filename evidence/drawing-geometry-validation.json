@@ -1,0 +1,266 @@
+{
+  "geometry_extraction": {
+    "version": "drawing-geometry-v2",
+    "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 818,
+    "run_pages": 7,
+    "resumed_pages": 811,
+    "candidates": 211831,
+    "candidate_types": {
+      "line": 173059,
+      "polygon": 38772
+    },
+    "curved_candidates": 18602,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 790,
+      "path_budget_withheld": 22,
+      "partial_candidate_budget": 6
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+      "polygon": "d56f9bd3933756e59ff57d6b72aedb9b4ae059c9853fd1456cb0290176720875",
+      "line": "1cb98842d935ce97b853f3825d84437b31c604011c2159c925adc0163feacc64"
+    },
+    "world_geometry_additions": 0
+  },
+  "geometry_resume": {
+    "version": "drawing-geometry-v2",
+    "contract": "1a3c6db8fbe13e5fc85587b69cd38c45fe1b36ddb75cd78d572934d0b3bc90fd",
+    "options": {
+      "curve_tolerance_points": 0.25,
+      "max_paths": 100000,
+      "max_candidates": 4000,
+      "max_points": 10000,
+      "max_total_points": 200000
+    },
+    "status": "unplaced_geometry_only",
+    "pages": 818,
+    "run_pages": 0,
+    "resumed_pages": 818,
+    "candidates": 211831,
+    "candidate_types": {
+      "line": 173059,
+      "polygon": 38772
+    },
+    "curved_candidates": 18602,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 790,
+      "path_budget_withheld": 22,
+      "partial_candidate_budget": 6
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+      "polygon": "d56f9bd3933756e59ff57d6b72aedb9b4ae059c9853fd1456cb0290176720875",
+      "line": "1cb98842d935ce97b853f3825d84437b31c604011c2159c925adc0163feacc64"
+    },
+    "world_geometry_additions": 0
+  },
+  "expanded_polygon_matching": {
+    "status": "review_queues_only",
+    "version": "footprint-matching-v1",
+    "counts": {
+      "native_candidates": 38772,
+      "native_with_shortlist": 14113,
+      "native_with_name_match": 6
+    },
+    "reference_polygons": 92,
+    "rejected_nonpolygon_or_invalid_references": 52,
+    "reference_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+    "target_crs": "EPSG:27700",
+    "reference_crs": "EPSG:4326",
+    "native_names_enabled": true,
+    "max_records": 2500000,
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Unplaced shape descriptors cannot establish location, absolute size or identity",
+      "Mapped references are comparison evidence, not independent survey verification",
+      "No automatic latest-revision, existing-state, reuse or material acceptance"
+    ],
+    "candidate_sha256": "d56f9bd3933756e59ff57d6b72aedb9b4ae059c9853fd1456cb0290176720875",
+    "associations.jsonl_sha256": "d58997fa4e6703aa9046f67ebbb5a6457979609ed9ec8ca9b5203e94a2ea1844",
+    "revision-review.jsonl_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "named_match_examples": [
+    {
+      "candidate_id": "7d972c8b5d1ad989ff96293b60cd5b215767a82db8b126c74c6becd28cc098e7",
+      "document_sha256": "271c4b298d904313779232dab121858e04445f562570e4204b23f2b27cade0fd",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796358238371997,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "1f9ff306204a7290d3a699a3d828c91725d8b8559dd913f12e8cdafef3112dfb",
+      "document_sha256": "651184f3ebb345468cb1f397f3d2231227220dd097875479f8b252173ca75e86",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/way/534491175",
+          "name": "Crooked Spoon",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.7285313486451033,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "ef917ab1a42823903ff8a023589df5c2e318b3a1e2193203855cc948f9ab0560",
+      "document_sha256": "651184f3ebb345468cb1f397f3d2231227220dd097875479f8b252173ca75e86",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/way/70689578",
+          "name": "Alton Towers Hotel",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.7427067966485192,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "54457a13217ca53bb027671c7cba2d8f086f209f8803349dbadecf428a1ee99e",
+      "document_sha256": "9c31a255a3a2c9501b5b9d93bc2c15db6a3ff17df6e6b3d47cf85788f16bb477",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796339397785301,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "3801772956ab63a50c5d7a33878cd61aa8f142f0036b4e79651adbdedb117307",
+      "document_sha256": "b007488ac21b1ec6aeb06d55f757a0463d5edc77e1ae43f504fa2286de5abd1f",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796339397785301,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    },
+    {
+      "candidate_id": "d3be944e7be7436ad70379c814398e7eb3374a1994ab8b58dd0c6dced79a1528",
+      "document_sha256": "e9c32f6ab41c64263334b39ee10fddd11cb7fa5bb9dbb5c7c99f2670e229dca1",
+      "page": 1,
+      "status": "unplaced_shape_name_hypotheses",
+      "matches": [
+        {
+          "reference_id": "osm/relation/4025117",
+          "name": "The Boating Lake",
+          "source_sha256": "1001085c0df5987ae8b18c81b7dca5b97c8899cb325d4e4961af6610e3d99ebe",
+          "metrics": {
+            "shape_descriptor_error": 0.6796358238371997,
+            "exact_interior_name": true,
+            "area_ratio": null,
+            "distance_m": null,
+            "intersection_over_union": null
+          },
+          "review_flags": [
+            "name_shape_disagreement"
+          ]
+        }
+      ],
+      "physical_identity_verified": false,
+      "world_geometry_additions": 0
+    }
+  ],
+  "validation": {
+    "new_tests": 12,
+    "focused_tests": 101,
+    "focused_passed": 101,
+    "full_tests": 525,
+    "full_passed": 525,
+    "checked_line_fixture": {
+      "compiled_features": 1,
+      "voxel_cells": 42,
+      "export": "tiles",
+      "resume": "identical feature/cell counts; changed review rejected"
+    }
+  },
+  "world_geometry_additions": 0,
+  "limitations": [
+    "Raw native paint candidates include symbols and annotation geometry",
+    "No Alton candidate has accepted registration/physical identity/state/reuse",
+    "2D ride lines lack measured 3D routes",
+    "Line widths, materials, heights and rock/ride meanings are not inferred from drawing stroke style",
+    "Raw paint lists are materialized before per-page budget checks; this extraction is not a 2.5m-feature export benchmark"
+  ]
+}

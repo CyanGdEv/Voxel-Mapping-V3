@@ -1,0 +1,3297 @@
+{
+  "area_id": "mutiny-bay",
+  "counts": {
+    "horizontal_registration": 1,
+    "physical_exterior": 2,
+    "plan_elevation_correspondence": 2,
+    "relative_dimensions": 2,
+    "vertical_datum": 2,
+    "view_scope": 1
+  },
+  "geometry_export_authorized": false,
+  "input_audit": {
+    "repository_path": "mutiny-wall-perimeter-coverage-audit.json",
+    "sha256": "9a6de1a42ad291786805b25c54d9bb7cbf9fe20812b744df62cf944d6940bcdc"
+  },
+  "limitations": [
+    "Source region IDs identify diagnostic candidates, not physical building objects.",
+    "Search terms are a worklist; discovery, download and evidence acceptance are separate stages.",
+    "No task status establishes dimensions, datum, registration or reconstruction completeness."
+  ],
+  "max_tasks": 10000,
+  "source_pages": [
+    {
+      "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+      "page": 1,
+      "record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250"
+    }
+  ],
+  "status": "missing_evidence_worklist",
+  "tasks": [
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "fe3ed621d84cc80611068a7d816a3800e9ce613a1854c6dc08420de6c6605bdf"
+      ],
+      "geometry_export_authorized": false,
+      "id": "0d962f58a26645d22e9ec051e7c7fee57889046f436be76e95e4f882e36f9aa6",
+      "kind": "physical_exterior",
+      "paired_boundary_fraction": 0.017103540514875903,
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/0",
+        "source_face_sha256": "84c5696c142a3a6107b5a9f50e8c073060e2db2ef88ffdbfb0461738fa0c7e96"
+      },
+      "requirement": "Identify the physical exterior across plans/elevations; a source region ring is not a building footprint.",
+      "search_terms": [
+        "existing floor plan",
+        "existing roof plan",
+        "courtyard elevation",
+        "building section"
+      ],
+      "source_hole_count": 25,
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "1e7b5c8c113e42400beaa6cdfb3bd9a50b6da6558b184052f0bf75713fea886c"
+      },
+      "unpaired_source_segments": [
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 5,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 6,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 7,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 8,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 9,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 10,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 11,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 12,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 13,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 14,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 15,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 16,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 17,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 18,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 19,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 20,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 21,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 22,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 23,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 24,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 25,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 26,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 27,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 28,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 29,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 30,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 31,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 32,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 33,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 34,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 35,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 36,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 37,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 38,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 39,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 40,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 41,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 42,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 43,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 44,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 45,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 46,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 47,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 48,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 49,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 50,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 51,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 52,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 53,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 54,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 55,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 56,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 57,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 58,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 59,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 60,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 61,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 62,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 63,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 64,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 65,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 66,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 67,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 68,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 69,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 70,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 71,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 72,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 73,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 74,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 75,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 76,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 77,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 78,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 79,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 80,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 81,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 82,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 83,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 84,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 85,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 86,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 87,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 88,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 89,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 90,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 91,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 92,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 93,
+          "status": "partial_source_segment_paired"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 94,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 95,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 96,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 97,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 98,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 99,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 100,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 101,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 102,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 103,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 104,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 105,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 106,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 107,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 108,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 109,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 110,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 111,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 112,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 113,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 114,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 115,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 116,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 117,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 118,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 119,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 120,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 121,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 122,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 123,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 124,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 125,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 126,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 127,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 128,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 129,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 130,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 131,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 132,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 133,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 134,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 135,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 136,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 137,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 138,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 139,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 140,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 141,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 142,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 143,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 144,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 145,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 146,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 147,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 148,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 149,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 150,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 151,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 152,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 153,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 154,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 155,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 156,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 157,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 158,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 159,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 160,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 161,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 162,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 163,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 164,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 165,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 166,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 167,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 168,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 169,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 5,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 6,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 7,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 8,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 9,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 10,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 1,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 11,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 5,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 6,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 7,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 8,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 9,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 2,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 10,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 3,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 3,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 3,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 4,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 4,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 4,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 4,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 5,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 5,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 5,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 5,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 6,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 6,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 6,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 6,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 6,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 7,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 7,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 7,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 7,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 8,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 8,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 8,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 8,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 8,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 9,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 9,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 9,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 9,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 10,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 10,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 10,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 10,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 11,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 11,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 11,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 11,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 12,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 12,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 12,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 12,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 13,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 13,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 13,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 13,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 14,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 14,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 14,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 14,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 15,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 15,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 15,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 15,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 16,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 16,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 16,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 16,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 16,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 17,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 17,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 17,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 17,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 18,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 18,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 18,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 18,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 19,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 19,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 19,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 19,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 20,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 20,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 20,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 20,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 21,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 21,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 21,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 21,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 22,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 22,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 22,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 22,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 23,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 23,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 23,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 23,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 24,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 24,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 24,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 24,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 25,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 25,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 25,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 25,
+          "ring_role": "protected_hole_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        }
+      ]
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "812e60c404d2e2056739dc243d5ed51f144bc4767638b8a445b7f4449ac149bb",
+        "fe3ed621d84cc80611068a7d816a3800e9ce613a1854c6dc08420de6c6605bdf"
+      ],
+      "geometry_export_authorized": false,
+      "id": "1f574a5884580521975aba5490d1b0e9aeb51fafb3b7617258ca00db84c15f55",
+      "kind": "plan_elevation_correspondence",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/1",
+        "source_face_sha256": "d05480e15f96e2d85efb2232b469f1659421809a86ec9fa33cae4e89cbe48cc7"
+      },
+      "requirement": "Bind the same physical wing, walls, openings and roof between source views.",
+      "search_terms": [
+        "existing elevation",
+        "section",
+        "archway",
+        "roof plan"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "eb148e0467164b5a6245223722e9b3d80fb16a2237b4ed87624173df9388cef9"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "0d962f58a26645d22e9ec051e7c7fee57889046f436be76e95e4f882e36f9aa6",
+        "fe3ed621d84cc80611068a7d816a3800e9ce613a1854c6dc08420de6c6605bdf"
+      ],
+      "geometry_export_authorized": false,
+      "id": "29dd4ae3e15436b74d9d8091a93b93a1fdaac49e91ee05c6380429c090e77b56",
+      "kind": "plan_elevation_correspondence",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/0",
+        "source_face_sha256": "84c5696c142a3a6107b5a9f50e8c073060e2db2ef88ffdbfb0461738fa0c7e96"
+      },
+      "requirement": "Bind the same physical wing, walls, openings and roof between source views.",
+      "search_terms": [
+        "existing elevation",
+        "section",
+        "archway",
+        "roof plan"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "1e7b5c8c113e42400beaa6cdfb3bd9a50b6da6558b184052f0bf75713fea886c"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [],
+      "geometry_export_authorized": false,
+      "id": "2c3a01620b76a55d0f1ad6e2852ee40ad7c68dc3b86a945d6900466968a58f7a",
+      "kind": "horizontal_registration",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/"
+      },
+      "requirement": "Establish physical landmark identities, independent checkpoints and a validated placement domain.",
+      "search_terms": [
+        "survey control",
+        "topographical survey",
+        "site location plan"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "2c3a01620b76a55d0f1ad6e2852ee40ad7c68dc3b86a945d6900466968a58f7a"
+      ],
+      "geometry_export_authorized": false,
+      "id": "60de360099edb684cf3c08f5c64bdc0641ec40967b93c6a4265ac89c81ce634a",
+      "kind": "vertical_datum",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/0",
+        "source_face_sha256": "84c5696c142a3a6107b5a9f50e8c073060e2db2ef88ffdbfb0461738fa0c7e96"
+      },
+      "requirement": "Resolve the absolute floor datum and terrain contact without assuming drawing zero equals terrain.",
+      "search_terms": [
+        "survey benchmark",
+        "finished floor level",
+        "Ordnance Datum",
+        "site levels"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "1e7b5c8c113e42400beaa6cdfb3bd9a50b6da6558b184052f0bf75713fea886c"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "29dd4ae3e15436b74d9d8091a93b93a1fdaac49e91ee05c6380429c090e77b56"
+      ],
+      "geometry_export_authorized": false,
+      "id": "678664577cadce20e3dd4ec365de8d011674926ac79350dede7023e88bffdd8c",
+      "kind": "relative_dimensions",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/0",
+        "source_face_sha256": "84c5696c142a3a6107b5a9f50e8c073060e2db2ef88ffdbfb0461738fa0c7e96"
+      },
+      "requirement": "Bind printed dimensions and floor/eaves/ridge levels to the matched physical component.",
+      "search_terms": [
+        "dimensioned section",
+        "floor level",
+        "eaves level",
+        "ridge level"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "1e7b5c8c113e42400beaa6cdfb3bd9a50b6da6558b184052f0bf75713fea886c"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "fe3ed621d84cc80611068a7d816a3800e9ce613a1854c6dc08420de6c6605bdf"
+      ],
+      "geometry_export_authorized": false,
+      "id": "812e60c404d2e2056739dc243d5ed51f144bc4767638b8a445b7f4449ac149bb",
+      "kind": "physical_exterior",
+      "paired_boundary_fraction": 0.05077859802987942,
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/1",
+        "source_face_sha256": "d05480e15f96e2d85efb2232b469f1659421809a86ec9fa33cae4e89cbe48cc7"
+      },
+      "requirement": "Identify the physical exterior across plans/elevations; a source region ring is not a building footprint.",
+      "search_terms": [
+        "existing floor plan",
+        "existing roof plan",
+        "courtyard elevation",
+        "building section"
+      ],
+      "source_hole_count": 0,
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "eb148e0467164b5a6245223722e9b3d80fb16a2237b4ed87624173df9388cef9"
+      },
+      "unpaired_source_segments": [
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 0,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 1,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 2,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 3,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 4,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 5,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 6,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 7,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 8,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 9,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 10,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 11,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 12,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 13,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 14,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 15,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 16,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 17,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 18,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 19,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 20,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 21,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 22,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 23,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 24,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 25,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 26,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 27,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 28,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 29,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 30,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 31,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 32,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 33,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 34,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 35,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 36,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 37,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 38,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 39,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 40,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 41,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 42,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 43,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 44,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 45,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 46,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 47,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 48,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 49,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 50,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 51,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 52,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 53,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 54,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 55,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 56,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 57,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 58,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 59,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 60,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 61,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 62,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 63,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 64,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 65,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 66,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 67,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 68,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 69,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 70,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 71,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 72,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 73,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 74,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 75,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 76,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 77,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 78,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 79,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 80,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 81,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 82,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 83,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 84,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 85,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 86,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 87,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 88,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 89,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 90,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 91,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 92,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 93,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 94,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 95,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 96,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 97,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 98,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 99,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 100,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 101,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 102,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 103,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 104,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 105,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 106,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 107,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 108,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 110,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 111,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 112,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 113,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 114,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 115,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 116,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 117,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 118,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 119,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 123,
+          "status": "partial_source_segment_paired"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 124,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 125,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 126,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 127,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 128,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 129,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 130,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 131,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 132,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 133,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 134,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 135,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 136,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 137,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 138,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 139,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 140,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 141,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 142,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 143,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 144,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 145,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 146,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 147,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 148,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 149,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 150,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 151,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 152,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 153,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 154,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 155,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 156,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 157,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 158,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 159,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 160,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 161,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 162,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 163,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 164,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 165,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 166,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 167,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 168,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 169,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 170,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 171,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 172,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 173,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 174,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 175,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 176,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 177,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 178,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 179,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 180,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 181,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 182,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 183,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 184,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 185,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 186,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 187,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 188,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 189,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 190,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 191,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 192,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 193,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 194,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 195,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 196,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 197,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 198,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 199,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 200,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 201,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 202,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 203,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 204,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 205,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 206,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 207,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 208,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 209,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 210,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 212,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 213,
+          "status": "no_paired_wall_support"
+        },
+        {
+          "ring_index": 0,
+          "ring_role": "exterior_ring",
+          "segment_index": 214,
+          "status": "no_paired_wall_support"
+        }
+      ]
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "2c3a01620b76a55d0f1ad6e2852ee40ad7c68dc3b86a945d6900466968a58f7a"
+      ],
+      "geometry_export_authorized": false,
+      "id": "9f138e0887cb8ec77115ef6406d95c16f4a5559699e0b3aacae13f52fab2bcfa",
+      "kind": "vertical_datum",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/1",
+        "source_face_sha256": "d05480e15f96e2d85efb2232b469f1659421809a86ec9fa33cae4e89cbe48cc7"
+      },
+      "requirement": "Resolve the absolute floor datum and terrain contact without assuming drawing zero equals terrain.",
+      "search_terms": [
+        "survey benchmark",
+        "finished floor level",
+        "Ordnance Datum",
+        "site levels"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "eb148e0467164b5a6245223722e9b3d80fb16a2237b4ed87624173df9388cef9"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [
+        "1f574a5884580521975aba5490d1b0e9aeb51fafb3b7617258ca00db84c15f55"
+      ],
+      "geometry_export_authorized": false,
+      "id": "c2f53544ab7c6be8c24386ea790ac804d18c32ed2622caced013383770f61c69",
+      "kind": "relative_dimensions",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/wall_perimeter_coverage/region_traces/1",
+        "source_face_sha256": "d05480e15f96e2d85efb2232b469f1659421809a86ec9fa33cae4e89cbe48cc7"
+      },
+      "requirement": "Bind printed dimensions and floor/eaves/ridge levels to the matched physical component.",
+      "search_terms": [
+        "dimensioned section",
+        "floor level",
+        "eaves level",
+        "ridge level"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1,
+        "source_region_id": "eb148e0467164b5a6245223722e9b3d80fb16a2237b4ed87624173df9388cef9"
+      }
+    },
+    {
+      "area_id": "mutiny-bay",
+      "depends_on": [],
+      "geometry_export_authorized": false,
+      "id": "fe3ed621d84cc80611068a7d816a3800e9ce613a1854c6dc08420de6c6605bdf",
+      "kind": "view_scope",
+      "physical_identity_verified": false,
+      "proof": {
+        "page_record_sha256": "8bcce5233d2780541c9e4f2ca703d6b34ff352fe2899af87e5cce034f3679250",
+        "path": "/"
+      },
+      "requirement": "Separate the relevant view and support its own scale/state before measurement.",
+      "search_terms": [
+        "existing site plan",
+        "ground floor plan",
+        "drawing view scale",
+        "key plan"
+      ],
+      "status": "missing_evidence",
+      "target": {
+        "document_sha256": "cefe2556ff04c5bf4822f99ca88a1a295c58def18467f73d2eac3db6b09a6bd2",
+        "page": 1
+      }
+    }
+  ],
+  "version": "reconstruction-evidence-queue-v1",
+  "world_geometry_additions": 0
+}

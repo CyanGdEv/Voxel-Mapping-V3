@@ -1,0 +1,571 @@
+{
+  "boundary_recovery": {
+    "version": "linework-boundaries-v1",
+    "source_candidate_sha256": "8776b57635fc25c1d57bfca6889dd5a5f706ea55ef8953a5ba4334a5e122a365",
+    "options": {
+      "max_segments": 20000,
+      "max_intersection_pairs": 100000,
+      "max_faces": 4000,
+      "max_noded_points": 200000
+    },
+    "provenance_comparison_epsilon_pdf_points": 1e-07,
+    "sheets": [
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+        1
+      ],
+      [
+        "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+        1
+      ],
+      [
+        "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+        1
+      ],
+      [
+        "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+        1
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+        1
+      ],
+      [
+        "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+        1
+      ],
+      [
+        "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+        1
+      ],
+      [
+        "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+        1
+      ],
+      [
+        "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+        1
+      ],
+      [
+        "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+        1
+      ],
+      [
+        "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+        1
+      ],
+      [
+        "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+        1
+      ],
+      [
+        "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+        1
+      ],
+      [
+        "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+        1
+      ],
+      [
+        "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+        1
+      ],
+      [
+        "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+        1
+      ],
+      [
+        "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+        1
+      ],
+      [
+        "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        39
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        15
+      ],
+      [
+        "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+        1
+      ],
+      [
+        "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e",
+        1
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        35
+      ]
+    ],
+    "max_records": 2500000,
+    "pages": 30,
+    "records": 49952,
+    "counts": {
+      "solid_straight_lines": 22220,
+      "segments": 60791,
+      "no_eligible_linework": 4,
+      "curved_lines_deferred": 8822,
+      "dashed_or_unknown_lines_deferred": 8606,
+      "intersection_pairs": 57540,
+      "cut_edges": 1141,
+      "dangles": 56708,
+      "invalid_rings": 0,
+      "small_faces_deferred": 2514,
+      "recovered_faces": 2933,
+      "enclosed_faces_only": 26,
+      "existing_polygon_duplicates": 16
+    },
+    "source_documents": [
+      "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+      "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+      "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+      "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+      "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+      "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+      "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+      "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+      "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+      "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+      "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+      "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+      "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+      "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+      "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+      "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+      "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+      "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+      "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e"
+    ],
+    "output_sha256": {
+      "boundary-candidates.jsonl": "911d0ac2ffa0541bacd405313dabc5be519f5297dda845ca8c030fddf3ce2127",
+      "polygon-candidates.jsonl": "89af971f409275201744486ff0dd62733e81757b03f26d67ca7237dc4f35f428",
+      "page-recovery.jsonl": "d6b2d6ee2c5189cdde4e0a12055037657a9bf1795e5114ef9e68be98042a3f4d"
+    },
+    "world_geometry_additions": 0,
+    "limitations": [
+      "Enclosed linework is not a verified physical footprint or fill",
+      "No endpoint snapping, gap filling or automatic state/material acceptance",
+      "Curved and dashed lines are withheld from recovery"
+    ]
+  },
+  "orientation_only_comparison": {
+    "version": "mapped-sheet-placement-v3",
+    "candidate_sha256": "3f7c95f481d868bcc5a103cf464c9446caec7357e98950f065f09d425f88a7ab",
+    "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+    "reference_crs": "EPSG:4326",
+    "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "sheets": [
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+        1
+      ],
+      [
+        "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+        1
+      ],
+      [
+        "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+        1
+      ],
+      [
+        "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+        1
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+        1
+      ],
+      [
+        "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+        1
+      ],
+      [
+        "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+        1
+      ],
+      [
+        "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+        1
+      ],
+      [
+        "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+        1
+      ],
+      [
+        "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+        1
+      ],
+      [
+        "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+        1
+      ],
+      [
+        "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+        1
+      ],
+      [
+        "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+        1
+      ],
+      [
+        "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+        1
+      ],
+      [
+        "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+        1
+      ],
+      [
+        "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+        1
+      ],
+      [
+        "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+        1
+      ],
+      [
+        "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        39
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        15
+      ],
+      [
+        "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+        1
+      ],
+      [
+        "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e",
+        1
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        35
+      ]
+    ],
+    "max_seed_fits": 512,
+    "min_iou": 0.7,
+    "tolerance_m": 10.0,
+    "max_records": 2500000,
+    "counts": {
+      "candidates_checked": 47019,
+      "page_cache_computed": 30,
+      "withheld": 29,
+      "seed_fit_attempts": 11945,
+      "orientation_trial_attempts": 72516,
+      "provisional_mapped_placement": 1,
+      "outside_support_envelope": 2944,
+      "positioned_review_records": 23
+    },
+    "source_documents": [
+      "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+      "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+      "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+      "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+      "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+      "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+      "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+      "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+      "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+      "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+      "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+      "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+      "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+      "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+      "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+      "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+      "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+      "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+      "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e"
+    ],
+    "output_sha256": {
+      "sheet-placements.jsonl": "cb488855cf8e2956c7f9e9e530a9e11530d22e4bc8d8b3a4da314a1933d18ac1",
+      "placed-review-geometry.jsonl": "c69357c8a9eba0cb41cb5614ac0e53074a792a0124832b93ccef0b505ceb5f75"
+    },
+    "status": "provisional_map_review_only",
+    "world_geometry_additions": 0
+  },
+  "recovered_geometry_comparison": {
+    "version": "mapped-sheet-placement-v3",
+    "candidate_sha256": "911d0ac2ffa0541bacd405313dabc5be519f5297dda845ca8c030fddf3ce2127",
+    "reference_sha256": "ec297b1060451e197d1db34e10e008d927b5d20f3cc3e0a221034efbe4c620de",
+    "reference_crs": "EPSG:4326",
+    "target_crs": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.988264798265,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",-1.88319475,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "sheets": [
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+        1
+      ],
+      [
+        "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+        1
+      ],
+      [
+        "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+        1
+      ],
+      [
+        "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+        1
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+        1
+      ],
+      [
+        "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+        1
+      ],
+      [
+        "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+        1
+      ],
+      [
+        "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+        1
+      ],
+      [
+        "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+        1
+      ],
+      [
+        "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+        1
+      ],
+      [
+        "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+        1
+      ],
+      [
+        "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+        1
+      ],
+      [
+        "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+        1
+      ],
+      [
+        "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+        1
+      ],
+      [
+        "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+        1
+      ],
+      [
+        "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+        1
+      ],
+      [
+        "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+        1
+      ],
+      [
+        "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        39
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        15
+      ],
+      [
+        "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+        1
+      ],
+      [
+        "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e",
+        1
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+        1
+      ],
+      [
+        "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+        35
+      ]
+    ],
+    "max_seed_fits": 512,
+    "min_iou": 0.7,
+    "tolerance_m": 10.0,
+    "max_records": 2500000,
+    "counts": {
+      "candidates_checked": 49952,
+      "page_cache_computed": 30,
+      "withheld": 29,
+      "seed_fit_attempts": 11713,
+      "orientation_trial_attempts": 60449,
+      "provisional_mapped_placement": 1,
+      "outside_support_envelope": 2956,
+      "positioned_review_records": 23
+    },
+    "source_documents": [
+      "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "16fa137dc5c725c407da9f5ee9f78e6ceb643f92a16408aae17d37f21cf0cdd1",
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "1d357006cdc6c3b3d90ff95185ef6cf56ec3ed834554f0f18e09f9ba3b09fa4d",
+      "1f63552a5939d90185011fa3c7c71cd755b4fb2c44b59f52b71ae1b7133372be",
+      "22cb90a951a1311ec2c7c60e5b806c37092f54f12ab38fe2790b9545e5026026",
+      "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "3b29eac74ab2aee4c56c10a5caaedc2178fcfe4d72c555b7b50356163b1fe72e",
+      "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+      "586d2e38367c60d2c29eaee037c1d3029b833788b500bde3d2f9ccfa1fc31e77",
+      "6dde1cb372aa83d4439f0d934072f85de4890b00336e454bbb027e51b10cab1a",
+      "78fc3cccc361b7fff83abe5b8b0cf7fecee60198a7cd34b00ebcf0b9366c5da9",
+      "81f12793d24a59d9323de346e8fbdce11f4112eb975abd3417efcdf82fe81578",
+      "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+      "8d6748f7b8f4619e30a56a051b601484f233dc20445bd0bcf59743603cc7a0a3",
+      "932f2b59aac4ebc45264c88427c66d107e8991cbcc957e67ca00fce7503b2c14",
+      "a451445375a0bd3a0c7c9fc1cfa051278814d0e286b3d5e6e604db82e763a7b1",
+      "a9baeb346f2fd616b23833882ed58cd07523980c09fe0daeb6322ac870f95a95",
+      "b1b6a436d4719ed912c467483a46fbf3126ba70c50af4711767151c0ea965db0",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "c672f480553cacee525d5f11356526ba0737f76fed83717968d3a73bbd28f076",
+      "d3c0197d1b4d58686a38aeef0b0bd98754709c08e708ac8a1af7bf658f6f2d3a",
+      "d743d0b3fea1eb87a69714a0ce9a27773cccb00c0978edd6259061d94d66afbb",
+      "ddd2bd0349ec0256b1293dc75de9427590cb5b15bad99ee16004eed4c907817a",
+      "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+      "fa8f3970d88a7a0f5f7d1c6f4a586acda439e8a33cb5c7f224f942fc1ef83f8e"
+    ],
+    "output_sha256": {
+      "sheet-placements.jsonl": "62038a8bc7c268abe4e90bb4272b797e4aefa12fa2eaed532c00b75bc1a8d68d",
+      "placed-review-geometry.jsonl": "a2a68ed65a9a5ffe5b9f1c2a5cbdfcdf4af15babd1d53f4884ec7e4d0db40a33"
+    },
+    "status": "provisional_map_review_only",
+    "world_geometry_additions": 0
+  },
+  "validation": {
+    "tests_passed": 587,
+    "final_focused_tests_passed": 16,
+    "recovery_and_both_placement_resumes_identical": true,
+    "all_final_feed_hashes_rechecked": true,
+    "recovered_face_records": 2933,
+    "same_single_placement_sheet": true,
+    "same_positioned_geometry_records": 23,
+    "recovery_added_placement_sheets": 0,
+    "orientation_fix_added_provisional_sheets_against_prior_v2": 1
+  },
+  "world_geometry_additions": 0,
+  "remaining_blockers": [
+    "New enclosed faces have no accepted physical identity, fill, current state or dimensions/materials",
+    "Boundary recovery did not improve map placement in the thirty-sheet comparison",
+    "29 selected sheets still lack shared map outline agreement",
+    "The newly fitted source is catalogued proposed, so placement cannot establish current as-built objects",
+    "Independent surveyed controls/checkpoints remain absent"
+  ]
+}

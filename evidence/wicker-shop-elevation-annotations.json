@@ -1,0 +1,151 @@
+{
+  "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "method": "manual visual annotations on fixed full-page rendered raster; roof exterior upper edge and main wall planes",
+  "render_width_pixels": 1888,
+  "render_size_pixels": [
+    1888,
+    1334
+  ],
+  "render_samples_sha256": "1908d990a40f13a79341a68ba58ae9762b06a5463850ee7fec147f0a8fd8d462",
+  "manual_endpoint_bound_pixels": 2,
+  "scale_denominator": 100,
+  "graphic_scale_bar_pixels": [
+    1344,
+    1568
+  ],
+  "views": [
+    {
+      "view": "SE",
+      "points_pixels": {
+        "roof_left": [
+          274,
+          328
+        ],
+        "roof_right": [
+          653,
+          328
+        ],
+        "wall_left": [
+          285,
+          350
+        ],
+        "wall_right": [
+          642,
+          350
+        ],
+        "ridge": [
+          450,
+          245
+        ],
+        "eave": [
+          450,
+          328
+        ],
+        "floor": [
+          119,
+          407
+        ]
+      }
+    },
+    {
+      "view": "SW",
+      "points_pixels": {
+        "roof_left": [
+          1005,
+          328
+        ],
+        "roof_right": [
+          1293,
+          328
+        ],
+        "wall_left": [
+          1017,
+          350
+        ],
+        "wall_right": [
+          1282,
+          350
+        ],
+        "ridge": [
+          1149,
+          245
+        ],
+        "eave": [
+          1005,
+          328
+        ],
+        "floor": [
+          1537,
+          407
+        ]
+      }
+    },
+    {
+      "view": "NW",
+      "points_pixels": {
+        "roof_left": [
+          274,
+          814
+        ],
+        "roof_right": [
+          653,
+          814
+        ],
+        "wall_left": [
+          285,
+          842
+        ],
+        "wall_right": [
+          642,
+          842
+        ],
+        "ridge": [
+          450,
+          730
+        ],
+        "eave": [
+          450,
+          814
+        ],
+        "floor": [
+          112,
+          893
+        ]
+      }
+    },
+    {
+      "view": "NE",
+      "points_pixels": {
+        "roof_left": [
+          1005,
+          814
+        ],
+        "roof_right": [
+          1293,
+          814
+        ],
+        "wall_left": [
+          1017,
+          850
+        ],
+        "wall_right": [
+          1282,
+          850
+        ],
+        "ridge": [
+          1149,
+          730
+        ],
+        "eave": [
+          1005,
+          814
+        ],
+        "floor": [
+          1374,
+          893
+        ]
+      }
+    }
+  ],
+  "physical_identity_verified": false
+}

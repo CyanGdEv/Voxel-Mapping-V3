@@ -1,0 +1,15 @@
+{
+  "byte_identical_comparison_replay": true,
+  "native_components_reconstructed": 11,
+  "membership_codec_lossless": true,
+  "altered_frozen_fit_rejected": true,
+  "old_crop_point_records_preserved": 68237,
+  "expanded_points": 77938,
+  "focused_tests_passed": 16,
+  "placement_gate_unchanged": true,
+  "output_sha256": {
+    "evidence/wicker-station-point-cloud-crop.json": "aa4267ac4fedf1475be49acc5408335e73dcb759800a4dc30eacce718665fdc7",
+    "evidence/wicker-site-roof-comparison.json": "f79db22b761d23feeff4f306cfbb7c07c4861d45515e4a6fcc64da162ee97cc3",
+    "docs/wicker-site-roof-comparison.svg": "6cdf9c84735cb31517f856f892464f3acae48140baacaa26691a5fd8faf93bcc"
+  }
+}

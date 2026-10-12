@@ -1,0 +1,216 @@
+{
+  "closed_source_faces": 495,
+  "discovered_pages": 3,
+  "limitations": [
+    "Automatic source inventory only: drawing regions are not verified building parts.",
+    "Roof state remains unknown where visible captions do not establish existing/proposed state.",
+    "View scopes, cross-view dimensions, heights, component identity and geographic placement remain unresolved."
+  ],
+  "model_or_manual_trace_input_required": false,
+  "output_bytes": 12032379,
+  "pages": [
+    {
+      "assembly_state": "unknown",
+      "counts": {
+        "closed_source_faces": 149,
+        "source_primitives": 820,
+        "view_captions": 5
+      },
+      "document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "printed_view_claims": [
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "withheld",
+          "text": "Existing Roof Plan"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "withheld",
+          "text": "Existing Roof Plan"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "withheld",
+          "text": "Existing Roof Plan"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "withheld",
+          "text": "Existing Roof Plan"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "plan"
+          },
+          "glyph_status": "raster_consistent_candidate",
+          "text": "roof plan"
+        }
+      ],
+      "record_sha256": "905dddd516e47aaf0e1eaa5e81d94af5c6a0b42e83ed8442ef358d8d93cf84ae",
+      "scope_verified": false,
+      "source_graph_counts": {
+        "branch_or_crossing_nodes": 334,
+        "connected_subgraphs": 110,
+        "continuation_nodes": 525,
+        "edges": 847,
+        "intersection_pair_checks": 1515,
+        "nodes": 1079,
+        "open_end_nodes": 220,
+        "overlaps": 22,
+        "solid_edges": 847
+      },
+      "visible_printed_states": [
+        "unspecified"
+      ]
+    },
+    {
+      "assembly_state": "existing",
+      "counts": {
+        "closed_source_faces": 235,
+        "source_primitives": 2836,
+        "view_captions": 2
+      },
+      "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+      "page": 1,
+      "printed_view_claims": [
+        {
+          "claim": {
+            "kind": "view_caption",
+            "printed_scale_denominator": 50,
+            "printed_state": "existing",
+            "range_or_direction": "east",
+            "range_part": "courtyard",
+            "view_direction": "west",
+            "view_kind": "elevation"
+          },
+          "glyph_status": "raster_consistent_candidate",
+          "text": "E a s t  R a n g e  C o u r t y a r d  ( w e s t )   E l e v a t i o n   ' a s   e x i s t i n g '   |   1 : 5 0"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "printed_scale_denominator": 50,
+            "printed_state": "existing",
+            "range_or_direction": "north",
+            "range_part": "courtyard",
+            "view_direction": "south",
+            "view_kind": "elevation"
+          },
+          "glyph_status": "raster_consistent_candidate",
+          "text": "N o r t h   R a n g e  C o u r t y a r d  ( s o u t h )  E l e v a t i o n   ' a s   e x i s t i n g '   |   1 : 5 0"
+        }
+      ],
+      "record_sha256": "e8cc2f563a2c548e3024b527dfe77422ac456161288b26180a0c40dac9be4732",
+      "scope_verified": false,
+      "source_graph_counts": {
+        "bounded_curve_chord_edges": 112,
+        "branch_or_crossing_nodes": 1635,
+        "connected_subgraphs": 480,
+        "continuation_nodes": 2504,
+        "dashed_pattern_edges": 61,
+        "edges": 4279,
+        "intersection_pair_checks": 5643,
+        "nodes": 5542,
+        "open_end_nodes": 1403,
+        "overlaps": 334,
+        "solid_edges": 4218
+      },
+      "visible_printed_states": [
+        "existing"
+      ]
+    },
+    {
+      "assembly_state": "existing",
+      "counts": {
+        "closed_source_faces": 111,
+        "source_primitives": 1630,
+        "view_captions": 2
+      },
+      "document_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "page": 1,
+      "printed_view_claims": [
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "firstfloor",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "raster_consistent_candidate",
+          "text": "First Floor Plan 'as existing'"
+        },
+        {
+          "claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "groundfloor",
+            "printed_scale_denominator": 100,
+            "printed_state": "existing",
+            "view_kind": "plan"
+          },
+          "glyph_status": "raster_consistent_candidate",
+          "text": "G r o u n d   F l o o r   P l a n   ' a s   e x i s t i n g '   |   1 : 1 0 0"
+        }
+      ],
+      "record_sha256": "9a3b29fb4937236129d95f6e263f3ec8e60483658498eab4c2dfe703871a74d1",
+      "scope_verified": false,
+      "source_graph_counts": {
+        "bounded_curve_chord_edges": 192,
+        "branch_or_crossing_nodes": 670,
+        "connected_subgraphs": 242,
+        "continuation_nodes": 2561,
+        "dashed_pattern_edges": 17,
+        "edges": 3311,
+        "intersection_pair_checks": 3735,
+        "nodes": 4083,
+        "open_end_nodes": 852,
+        "overlaps": 22,
+        "solid_edges": 3294
+      },
+      "visible_printed_states": [
+        "existing"
+      ]
+    }
+  ],
+  "pages_sha256": "5fbafcbfdce073a96c1c0cb55b354641f0106109482085ca39b3d0ff6302f085",
+  "park_world_blocks_added": 0,
+  "shared_specs_generated": 0,
+  "source_pdf_sha256": [
+    "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+    "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+    "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b"
+  ],
+  "source_records": 5781,
+  "training_labels_generated": 0,
+  "unchanged_replay_identical": true,
+  "version": "raw-pdf-building-discovery-v1"
+}

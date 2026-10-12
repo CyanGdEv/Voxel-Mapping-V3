@@ -1,0 +1,75 @@
+{
+  "world": "Alton_Towers_Garden_Bridges_V19.mcworld",
+  "sha256": "d16e1ac9065fc68da47d5babb6f05887aa0ef58a122913759663e669525b4328",
+  "native": {
+    "touched_chunks": 25,
+    "overlay_records": 1713,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "8aad80e3492db00c523d9bcd9645f8cc1734662b978251f109201fc64d76d15c",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 401
+  },
+  "bridges": [
+    {
+      "name": "White Bridge",
+      "walk_columns": 183,
+      "headroom": "two native blocks clear",
+      "connected": true,
+      "visit_minecraft_xyz": [
+        -579,
+        140,
+        152
+      ]
+    },
+    {
+      "name": "Miniature Bridge",
+      "walk_columns": 36,
+      "headroom": "two native blocks clear",
+      "connected": true,
+      "visit_minecraft_xyz": [
+        -436,
+        113,
+        155
+      ]
+    },
+    {
+      "name": "Western garden crossing",
+      "walk_columns": 46,
+      "headroom": "two native blocks clear",
+      "connected": true,
+      "visit_minecraft_xyz": [
+        -510,
+        133,
+        141
+      ]
+    },
+    {
+      "name": "Cascade stream crossing",
+      "walk_columns": 34,
+      "headroom": "two native blocks clear",
+      "connected": true,
+      "visit_minecraft_xyz": [
+        -488,
+        123,
+        144
+      ]
+    }
+  ],
+  "surface_columns": 353,
+  "replaced_native_types": {
+    "grass_block": 272,
+    "concrete": 259,
+    "cobblestone": 10,
+    "stone_bricks": 11,
+    "stone": 12,
+    "air": 1113,
+    "dirt": 12,
+    "slab": 9,
+    "stained_glass_pane": 15
+  },
+  "preservation": "No baseline water, gravel beds, leaves, fence trunks or logs were overwritten; all unchanged cells of touched sections verified",
+  "known_rail_cells_relocated": 15,
+  "registration_verified": false,
+  "zip_crc_pass": true
+}

@@ -1,0 +1,729 @@
+{
+  "provider": "Historic England NHLE",
+  "crs": "EPSG:27700",
+  "attribution": "\u00a9 Historic England 2026. Contains Ordnance Survey data \u00a9 Crown copyright and database right 2026.",
+  "license": "OGL-UK-3.0",
+  "candidates": [
+    {
+      "id": "nhle/1037866",
+      "name": "THE BIRDCAGE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037866",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407327.999999999,
+          343150
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037867",
+      "name": "THE FLAG TOWER",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037867",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          406984.000000002,
+          343068.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037868",
+      "name": "THE SWISS COTTAGE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037868",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407506.000000001,
+          343182.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037869",
+      "name": "RETAINING WALL, PIERS AND WELL APPROXIMATELY 20 YARDS NORTH OF SWISS COTTAGE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037869",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407513,
+          343202
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037870",
+      "name": "White Bridge and attached wall and gate piers",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037870",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407365.000000001,
+          343298
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037871",
+      "name": "Wall and basin enclosing the Italian Garden to the north west ",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037871",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407395.000000001,
+          343327
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037872",
+      "name": "RETAINING WALL OF DAM TO SOUTH EAST SIDE OF THE BOATING LAKE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037872",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407407,
+          343388.000000007
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037873",
+      "name": "GATEPIERS AND GATES AT NGR SK 07424335",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037873",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407420,
+          343350
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037874",
+      "name": "STONEHENGE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037874",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407484,
+          343411.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037875",
+      "name": "Fountain, terrace walls, steps, lions, urns and sundial approximately 27 metres south of The Orangery",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037875",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407490.000000001,
+          343365.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037876",
+      "name": "Retaining wall to terrace south of The Loggia and attached steps and piers",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037876",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407585.000000001,
+          343312.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037877",
+      "name": "Summerhouse, and retaining wall and urns to terrace south of the conservatory",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037877",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407471,
+          343338.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037878",
+      "name": "MINIATURE BRIDGE",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037878",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407507.000000001,
+          343288
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037884",
+      "name": "GATE PIERS, GATES AND RAILINGS FORMING PRINCIPAL ENTRANCE TO ALTON PARK",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037884",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407078.000000001,
+          343605.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1037906",
+      "name": "GARDEN WALL EAST OF ALTON TOWERS",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1037906",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407370.000000001,
+          343141.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1191842",
+      "name": "POOL AND FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE ORANGERY",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1191842",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407480,
+          343378.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1191877",
+      "name": "THE LOGGIA AND ATTACHED TERRACE WALL AND STEPS",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1191877",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407521.000000002,
+          343326.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1191919",
+      "name": "LE REFUGE AND ATTACHED RETAINING WALL, ARCHWAY AND STEPS TO TERRACE IMMEDIATELY EAST OF THE LOGGIA",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1191919",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407643,
+          343323.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1191969",
+      "name": "THE CONSERVATORY AND ATTACHED WALL, STEPS AND URNS",
+      "grade": "II*",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1191969",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407519.000000001,
+          343356
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1192015",
+      "name": "THE PROSPECT TOWER AND WALL AND RAILINGS TO THE SOUTH",
+      "grade": "II*",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1192015",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407743.000000001,
+          343326.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1192054",
+      "name": "The Pagoda Fountain and bridge pier",
+      "grade": "II*",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1192054",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407670.000000001,
+          343228
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1192210",
+      "name": "GATES AND GATE PIERS",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1192210",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407039.000000001,
+          343518.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1286814",
+      "name": "WALLS, GATEPIERS AND STEPS DEFINING THE NORTH AND EAST SIDES OF THE TERRACED GARDENS SOUTH EAST OF THE CONSERVATORY",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1286814",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407611.000000002,
+          343344.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1286887",
+      "name": "Retaining wall approximately 9 metres south west of the stables",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1286887",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407459.000000001,
+          343531.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1286956",
+      "name": "FOUNTAIN APPROXIMATELY 10 YARDS SOUTH OF THE CHAPEL OF ALTON TOWERS",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1286956",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407256,
+          343180.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374685",
+      "name": "Alton Towers and attached garden walls and gatehouse",
+      "grade": "II*",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374685",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407249.000000001,
+          343235.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374704",
+      "name": "Stables at Alton Towers",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374704",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407457,
+          343563.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374705",
+      "name": "THE ORANGERY",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374705",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407473.999999999,
+          343390.000000004
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374706",
+      "name": "THE ROMAN BATH AND TERRACE WALL TO THE SOUTH",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374706",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407633,
+          343311
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374707",
+      "name": "THE CORKSCREW FOUNTAIN",
+      "grade": "II",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374707",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407692.000000001,
+          343352.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    },
+    {
+      "id": "nhle/1374741",
+      "name": "MEMORIAL TO THE 15TH EARL OF SHREWSBURY",
+      "grade": "II*",
+      "listing_url": "https://historicengland.org.uk/listing/the-list/list-entry/1374741",
+      "capture_scale": "1:2500",
+      "location_bng": [
+        [
+          407408.000000001,
+          343297.000000002
+        ]
+      ],
+      "location_role": "listing reference; not verified structure centre",
+      "polygon_role": "triangular_location_symbol",
+      "family": "heritage_asset",
+      "status": "discovered; not reconstructed",
+      "needed_evidence": [
+        "physical footprint and components",
+        "independent plan registration",
+        "base elevation and vertical profile",
+        "materials and current condition"
+      ]
+    }
+  ],
+  "world_blocks_added": 0,
+  "limitations": [
+    "Listed assets can include multiple structures.",
+    "Listing location and listing polygons do not establish structural dimensions or heights."
+  ],
+  "input_sha256": "108bdf4b1be7fddee0b8c2e497a2f4f27c468ac0808e1015c187bcba9cb02c8e",
+  "retrieved_date": "2026-10-09",
+  "selection": "Listing locations intersect retained Alton Towers park boundary; discovery transform only, not survey registration"
+}

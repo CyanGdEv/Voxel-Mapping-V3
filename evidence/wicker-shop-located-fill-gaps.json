@@ -1,0 +1,514 @@
+{
+  "accepted_physical_openings": 0,
+  "accepted_registration_points": 0,
+  "pages": [
+    {
+      "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "fills_reproduced": 98,
+      "gaps": [
+        {
+          "axis_candidate": [
+            0.7071060855353104,
+            -0.7071074768371003
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  1126.7391299578628,
+                  2006.4787654318939
+                ],
+                [
+                  1217.7581443580382,
+                  1915.459571942724
+                ],
+                [
+                  1223.6378497311548,
+                  1921.3392657469562
+                ],
+                [
+                  1132.6188353309794,
+                  2012.3584592361258
+                ],
+                [
+                  1126.7391299578628,
+                  2006.4787654318939
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [],
+          "left_polygon_part": 0,
+          "nominal_gap_width_m": 4.5409714740765,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              1129.678982644421,
+              2009.41861233401
+            ],
+            [
+              1220.6979970445964,
+              1918.3994188448403
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            -622.0720415478006,
+            -493.35159031413605
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 1,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "no_retained_fill_overlap",
+          "world_geometry_additions": 0
+        },
+        {
+          "axis_candidate": [
+            1.0,
+            0.0
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "5af0e23ccd9127593e4fcd7b3e0c0b38e04b64ab730bde1a8d857189fe99fada",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  1040.517333984375,
+                  1237.1005859375
+                ],
+                [
+                  1066.55810546875,
+                  1237.1005859375
+                ],
+                [
+                  1066.55810546875,
+                  1242.6202392578125
+                ],
+                [
+                  1040.517333984375,
+                  1242.6202392578125
+                ],
+                [
+                  1040.517333984375,
+                  1237.1005859375
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [],
+          "left_polygon_part": 0,
+          "nominal_gap_width_m": 0.9186605495876735,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              1040.517333984375,
+              1239.8604125976562
+            ],
+            [
+              1066.55810546875,
+              1239.8604125976562
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            1040.517333984375,
+            1066.55810546875
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 1,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "no_retained_fill_overlap",
+          "world_geometry_additions": 0
+        },
+        {
+          "axis_candidate": [
+            0.0,
+            1.0
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "9b46a7bcf9ce11541d0995f8816758016521a86f4838487a24d599739ad99253",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  932.99755859375,
+                  1138.46044921875
+                ],
+                [
+                  932.99755859375,
+                  1177.4598388671875
+                ],
+                [
+                  927.4779052734375,
+                  1177.4598388671875
+                ],
+                [
+                  927.4779052734375,
+                  1138.46044921875
+                ],
+                [
+                  932.99755859375,
+                  1138.46044921875
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [],
+          "left_polygon_part": 1,
+          "nominal_gap_width_m": 1.375811801486545,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              930.2377319335938,
+              1138.46044921875
+            ],
+            [
+              930.2377319335938,
+              1177.4598388671875
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            1138.46044921875,
+            1177.4598388671875
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 0,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "no_retained_fill_overlap",
+          "world_geometry_additions": 0
+        },
+        {
+          "axis_candidate": [
+            1.0,
+            0.0
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "74ee84ff2bfe10bb3b4611ef318be9bf87819a6968eb8d4338ce355e27412f65",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  457.4392395019531,
+                  944.541015625
+                ],
+                [
+                  546.3587646484375,
+                  944.541015625
+                ],
+                [
+                  546.3587646484375,
+                  950.4205322265625
+                ],
+                [
+                  457.4392395019531,
+                  950.4205322265625
+                ],
+                [
+                  457.4392395019531,
+                  944.541015625
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [],
+          "left_polygon_part": 0,
+          "nominal_gap_width_m": 3.1368832482231985,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              457.4392395019531,
+              947.4807739257812
+            ],
+            [
+              546.3587646484375,
+              947.4807739257812
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            457.4392395019531,
+            546.3587646484375
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 1,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "no_retained_fill_overlap",
+          "world_geometry_additions": 0
+        },
+        {
+          "axis_candidate": [
+            1.0,
+            0.0
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "cb4d29abffd9cb70ba8661a936466d4fbbcd974e55c2fabfce1c5440f2651132",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  458.6385498046875,
+                  1512.01953125
+                ],
+                [
+                  547.55810546875,
+                  1512.01953125
+                ],
+                [
+                  547.55810546875,
+                  1517.899169921875
+                ],
+                [
+                  458.6385498046875,
+                  1517.899169921875
+                ],
+                [
+                  458.6385498046875,
+                  1512.01953125
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [
+            {
+              "fill_candidate_id": "c0fc87c0b7f5f2b348242032fd9df4617024138c5091ae161f459ff1a10ab423",
+              "fill_color": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "gap_area_fraction": 0.061718934784565284,
+              "intersection_geometry": {
+                "coordinates": [
+                  [
+                    [
+                      538.918212890625,
+                      1517.899169921875
+                    ],
+                    [
+                      538.918212890625,
+                      1514.6593017578125
+                    ],
+                    [
+                      528.9586791992188,
+                      1514.6593017578125
+                    ],
+                    [
+                      528.9586791992188,
+                      1517.899169921875
+                    ],
+                    [
+                      538.918212890625,
+                      1517.899169921875
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "paint_seqno": 5685
+            }
+          ],
+          "left_polygon_part": 0,
+          "nominal_gap_width_m": 3.1368843248155382,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              458.6385498046875,
+              1514.9593505859375
+            ],
+            [
+              547.55810546875,
+              1514.9593505859375
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            458.6385498046875,
+            547.55810546875
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 1,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "intersecting_fills_require_review",
+          "world_geometry_additions": 0
+        },
+        {
+          "axis_candidate": [
+            0.0,
+            1.0
+          ],
+          "basis": "disjoint aligned thin fill parts; width measured by projected source extents",
+          "candidate_recipe": {
+            "maximum_axis_difference_degrees": 0.5,
+            "maximum_transverse_extent_difference_pdf_points": 1,
+            "minimum_aspect_ratio": 3,
+            "minimum_rotated_rectangle_area_fraction": 0.85,
+            "nominal_thickness_range_m": [
+              0.08,
+              1
+            ]
+          },
+          "complete_page_visibility_verified": false,
+          "coordinate_frame": "unrotated_mupdf_points_y_down",
+          "door_or_window_identity_verified": false,
+          "fill_candidate_id": "a03f7f02548e520ba18ed790c1f2df3920210dc527e73c48c33c4e87cdd156fa",
+          "gap_corridor_geometry": {
+            "coordinates": [
+              [
+                [
+                  679.557861328125,
+                  958.100830078125
+                ],
+                [
+                  679.557861328125,
+                  984.139892578125
+                ],
+                [
+                  673.7982177734375,
+                  984.139892578125
+                ],
+                [
+                  673.7982177734375,
+                  958.100830078125
+                ],
+                [
+                  679.557861328125,
+                  958.100830078125
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "geometry_bridge_added": false,
+          "height_m": null,
+          "intersecting_fill_candidates": [],
+          "left_polygon_part": 1,
+          "nominal_gap_width_m": 0.9186002604166666,
+          "opening_type": null,
+          "physical_attachment_points_verified": false,
+          "projected_gap_endpoints": [
+            [
+              676.6780395507812,
+              958.100830078125
+            ],
+            [
+              676.6780395507812,
+              984.139892578125
+            ]
+          ],
+          "projection_interval_pdf_points": [
+            958.100830078125,
+            984.139892578125
+          ],
+          "recipe_version": "located-fill-discontinuities-v2",
+          "right_polygon_part": 0,
+          "scale_verified": false,
+          "status": "unverified_fill_strip_discontinuity",
+          "visibility_review_status": "no_retained_fill_overlap",
+          "world_geometry_additions": 0
+        }
+      ],
+      "gaps_with_fill_overlap": 1,
+      "nominal_metres_per_pdf_point_candidate": 0.035277777777777776,
+      "page": 1
+    },
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "fills_reproduced": 31,
+      "gaps": [],
+      "gaps_with_fill_overlap": 0,
+      "nominal_metres_per_pdf_point_candidate": 0.035277777777777776,
+      "page": 1
+    }
+  ],
+  "retained_replay_sha256": "3f09ec92d90410e36af1dcc3b822d70ef4c5786a82e9a7b77edf5027c83dcd38",
+  "version": "located-fill-discontinuities-v2",
+  "world_geometry_additions": 0
+}

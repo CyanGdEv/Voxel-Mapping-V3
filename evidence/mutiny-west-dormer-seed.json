@@ -1,0 +1,43 @@
+{
+  "version": "courtyard-west-dormer-study-v1",
+  "review_hypotheses_acknowledged": true,
+  "source_pdf_sha256": "6abc1f8e7de17e0a0dc7bf2f1c845a5a0ee1aab35a74409b6ee4c1a77e35d510",
+  "source_frame": "AL08 existing west courtyard elevation; 1800 pixels; view 1:50",
+  "depth_display_m": 0.9,
+  "front_overhang_display_m": 0.2,
+  "cheek_thickness_display_m": 0.2,
+  "roof_vertical_thickness_display_m": 0.25,
+  "depth_measured": false,
+  "dormers": [
+    {
+      "id": "w2.12",
+      "outer_pixels": [
+        1149,
+        535,
+        1208,
+        590
+      ],
+      "window_pixels": [
+        1159,
+        543,
+        1199,
+        585
+      ]
+    },
+    {
+      "id": "w2.13",
+      "outer_pixels": [
+        1365,
+        535,
+        1427,
+        590
+      ],
+      "window_pixels": [
+        1377,
+        543,
+        1417,
+        585
+      ]
+    }
+  ]
+}

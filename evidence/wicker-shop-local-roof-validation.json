@@ -1,0 +1,12 @@
+{
+  "byte_identical_replay": true,
+  "opposite_view_sampling_intervals_overlap": true,
+  "graphic_scale_check_within_0_1_metres": true,
+  "pinned_roof_plan_line_reproduced": true,
+  "roof_length_difference_within_sampling_interval": true,
+  "corrupt_pdf_rejected": true,
+  "changed_raster_annotations_rejected": true,
+  "mesh_vertices": 6,
+  "mesh_triangles": 4,
+  "world_placement_eligible": false
+}

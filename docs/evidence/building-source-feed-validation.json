@@ -1,0 +1,211 @@
+{
+  "buildings": [
+    {
+      "building_id": "mutiny-north-range",
+      "component_meshes": 2,
+      "failed_gates": [
+        "identity_verified"
+      ],
+      "features": {
+        "boundary_support": 0.7219027725542384,
+        "dimension_agreement": 0.9166666666666499,
+        "opening_support": 0.0,
+        "source_coverage": 1.0,
+        "topology_quality": 0.0,
+        "view_agreement": 0.9166666666666499
+      },
+      "missing_features": [
+        "topology_quality"
+      ],
+      "missing_source_pdfs": 0,
+      "native_diagnostic_error": null,
+      "native_structural_review": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 37060,
+        "component_count": 2,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                63,
+                12,
+                11
+              ]
+            ],
+            "half_cells": 2384,
+            "id": 0,
+            "touches_declared_floor": false
+          },
+          {
+            "bounds_half_grid": [
+              [
+                36,
+                0,
+                0
+              ],
+              [
+                37,
+                1,
+                1
+              ]
+            ],
+            "half_cells": 8,
+            "id": 1,
+            "touches_declared_floor": false
+          }
+        ],
+        "declared_floor_anchor_cells": 0,
+        "floor_connected_fraction": null,
+        "floor_connected_half_cells": 0,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": null,
+        "occupied_half_cells": 2392,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [
+          "missing_declared_floor_anchor"
+        ],
+        "roof_floor_connected_fraction": null,
+        "roof_region_count": 1,
+        "roof_regions": [
+          {
+            "half_cells": 1792,
+            "id": 0,
+            "masonry_contact_half_cells": 92,
+            "reaches_declared_floor": null,
+            "sample_half_grid": [
+              0,
+              8,
+              0
+            ]
+          }
+        ],
+        "status": "needs_structural_review",
+        "unsupported_roof_regions": null,
+        "version": "building-native-structure-v1"
+      },
+      "source_state": "existing",
+      "status": "candidate_prepared",
+      "verified_source_pdfs": 3
+    },
+    {
+      "building_id": "wicker-shop",
+      "component_meshes": 4,
+      "failed_gates": [
+        "source_verified",
+        "identity_verified"
+      ],
+      "features": {
+        "boundary_support": 0.0,
+        "dimension_agreement": 0.6565141010887388,
+        "opening_support": 0.0,
+        "source_coverage": 0.0,
+        "topology_quality": 1.0,
+        "view_agreement": 0.6565141010887388
+      },
+      "missing_features": [
+        "boundary_support",
+        "opening_support"
+      ],
+      "missing_source_pdfs": 3,
+      "native_diagnostic_error": null,
+      "native_structural_review": {
+        "blocked_air_half_cells": 0,
+        "blocked_air_samples": [],
+        "checks": 43778,
+        "component_count": 1,
+        "components": [
+          {
+            "bounds_half_grid": [
+              [
+                -18,
+                -2,
+                -12
+              ],
+              [
+                15,
+                13,
+                11
+              ]
+            ],
+            "half_cells": 4568,
+            "id": 0,
+            "touches_declared_floor": true
+          }
+        ],
+        "declared_floor_anchor_cells": 192,
+        "floor_connected_fraction": 1.0,
+        "floor_connected_half_cells": 4568,
+        "guarded_roof_contacts_unassessed": 0,
+        "limitations": [
+          "Face connectivity is a native geometry diagnostic, not load-bearing engineering evidence.",
+          "Source-declared floor anchors do not establish terrain, foundations or surveyed elevation.",
+          "Guarded roof interfaces remain unassessed; absent guards cannot establish a complete passage inventory."
+        ],
+        "missing_roof_contact_count": 0,
+        "missing_roof_contacts": [],
+        "native_diagnostic_score": 1.0,
+        "occupied_half_cells": 4568,
+        "physical_structural_safety_verified": false,
+        "player_movement_verified": false,
+        "reasons": [],
+        "roof_floor_connected_fraction": 1.0,
+        "roof_region_count": 2,
+        "roof_regions": [
+          {
+            "half_cells": 24,
+            "id": 0,
+            "masonry_contact_half_cells": 12,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -18,
+              5,
+              -6
+            ]
+          },
+          {
+            "half_cells": 1248,
+            "id": 1,
+            "masonry_contact_half_cells": 148,
+            "reaches_declared_floor": true,
+            "sample_half_grid": [
+              -16,
+              12,
+              -4
+            ]
+          }
+        ],
+        "status": "passed_native_checks",
+        "unsupported_roof_regions": 0,
+        "version": "building-native-structure-v1"
+      },
+      "source_state": "proposed",
+      "status": "candidate_prepared",
+      "verified_source_pdfs": 0
+    }
+  ],
+  "candidate_buildings": 2,
+  "config_sha256": "191a6713aee127512b90c3f6b847457dd9fdbb74c8a73a9972606626d702f9f2",
+  "focused_tests_passed": 56,
+  "learning_model_activated": false,
+  "park_world_blocks_added": 0,
+  "real_training_labels": 0,
+  "regression_tests_passed": 1151,
+  "scope": "Retained drawing/model adapters; automatic raw-PDF trace discovery remains unfinished.",
+  "training_labels_generated": 0,
+  "unverified_real_candidates_selected": 0,
+  "version": "retained-building-feed-v2"
+}

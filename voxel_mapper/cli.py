@@ -2,13 +2,22 @@ import argparse
 import hashlib
 import json
 import math
+import time
+from .water import surface_level,estimated_bed_y,flowing_level,is_flowing_water
+from .planning_geometry import physical_features
 from pathlib import Path
 
 import requests
 from pyproj import CRS, Transformer
-from shapely.geometry import Point, shape, mapping
-from shapely.ops import transform
+from shapely.geometry import Point, shape, mapping, LineString
+from shapely.ops import transform, polygonize_full, unary_union
+from .terrain import Terrain
 from shapely.validation import explain_validity
+from .acquisition import USER_AGENT
+from .buildings import reconstruct_with_fallback
+from .bridges import reconstruct_bridge
+from .transport import TRANSPORT_KINDS, transport_kind, transport_profile
+from .point_cloud import building_returns
 
 
 KINDS = {"building": "building", "highway": "path", "waterway": "water"}
@@ -16,61 +25,158 @@ KINDS = {"building": "building", "highway": "path", "waterway": "water"}
 
 def fetch_osm(bounds):
     west, south, east, north = bounds
-    query = f'[out:json][timeout:120];(way({south},{west},{north},{east});relation["type"="multipolygon"]({south},{west},{north},{east}););out geom;'
-    response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, timeout=180)
-    response.raise_for_status()
-    data = response.json()
-    if data.get("remark"):
-        raise ValueError("Overpass returned incomplete data: " + data["remark"])
-    features, skipped = [], []
-    for element in data.get("elements", []):
+    query = f'[out:json][timeout:120];(way({south},{west},{north},{east});relation["type"="multipolygon"]({south},{west},{north},{east}););out meta geom;'
+    for attempt in range(3):
+        try:
+            response = requests.post("https://overpass-api.de/api/interpreter", data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=180)
+            response.raise_for_status()
+            data = response.json()
+            if data.get("remark"):
+                raise ValueError("Overpass returned incomplete data: " + data["remark"])
+            break
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt == 2:
+                raise
+        except requests.HTTPError:
+            if response.status_code not in (429, 500, 502, 503, 504) or attempt == 2:
+                raise
+        time.sleep(attempt+1)
+    collection, skipped = parse_osm(data)
+    return collection, data, skipped
+
+
+def parse_osm(data):
+    features, skipped, represented_members = [], [], set()
+    elements = sorted(data.get("elements", []), key=lambda e: e["type"] != "relation")
+    for element in elements:
         tags = element.get("tags", {})
         kind = next((v for k, v in KINDS.items() if k in tags), None)
+        transport = transport_kind(tags)
+        if transport == 'inactive_transport':
+            skipped.append({'id': element['id'], 'reason': 'inactive/proposed/construction highway omitted'})
+            continue
+        if transport and kind != 'building':
+            kind = transport
         if tags.get("amenity") == "parking":
             kind = "parking"
         if tags.get("natural") == "water":
             kind = "water"
-        if tags.get("attraction") or tags.get("roller_coaster"):
-            kind = "attraction"
+        # Attraction outlines describe the extent of a ride, not its supports,
+        # track, building or paving. Preserve independently mapped physical types.
+        if not kind and (tags.get("attraction") or tags.get("roller_coaster")):
+            skipped.append({'id': element['id'], 'reason': 'attraction extent/track has no verified physical reconstruction; generic extrusion omitted'})
+            continue
         if not kind:
             continue
-        if element["type"] != "way":
-            skipped.append({"id": element["id"], "reason": "multipolygon requires curated geometry"})
+        if element["type"] == "way" and element["id"] in represented_members:
             continue
-        coords = [[p["lon"], p["lat"]] for p in element.get("geometry", [])]
-        if len(coords) < 2:
-            skipped.append({"id": element["id"], "reason": "missing geometry"})
-            continue
-        closed = len(coords) >= 4 and coords[0] == coords[-1]
-        geometry = {"type": "Polygon", "coordinates": [coords]} if closed and kind not in ("path", "attraction") else {"type": "LineString", "coordinates": coords}
-        features.append({"type": "Feature", "id": f'osm/way/{element["id"]}', "geometry": geometry,
-                         "properties": {**tags, "kind": kind, "source_id": "osm"}})
-    return {"type": "FeatureCollection", "features": features}, data, skipped
+        try:
+            if element["type"] == "relation":
+                rings = {"outer": [], "inner": []}
+                for member in element.get("members", []):
+                    role = member.get("role") or "outer"
+                    if member.get("type") != "way" or role not in rings:
+                        raise ValueError("unsupported multipolygon member")
+                    coords = [(p["lon"], p["lat"]) for p in member.get("geometry", [])]
+                    if len(coords) < 2:
+                        raise ValueError("missing relation member geometry")
+                    rings[role].append(LineString(coords))
+                assembled = {}
+                for role, lines in rings.items():
+                    polygons, cuts, dangles, invalid = polygonize_full(lines)
+                    if not cuts.is_empty or not dangles.is_empty or not invalid.is_empty:
+                        raise ValueError("unclosed or invalid multipolygon rings")
+                    assembled[role] = unary_union(polygons)
+                outer, inner = assembled["outer"], assembled["inner"]
+                if outer.is_empty or not outer.covers(inner):
+                    raise ValueError("missing outer ring or inner outside outer")
+                geom = outer.difference(inner)
+                if not geom.is_valid or geom.is_empty:
+                    raise ValueError("invalid assembled multipolygon")
+                represented_members.update(m["ref"] for m in element["members"])
+                geometry = mapping(geom)
+            else:
+                coords = [[p["lon"], p["lat"]] for p in element.get("geometry", [])]
+                if len(coords) < 2:
+                    raise ValueError("missing geometry")
+                closed = len(coords) >= 4 and coords[0] == coords[-1]
+                if kind == 'plaza' and not closed:
+                    raise ValueError('Pedestrian area boundary is not closed; no plaza width inferred')
+                geometry = {"type": "Polygon", "coordinates": [coords]} if closed and (kind not in TRANSPORT_KINDS | {"attraction"} or tags.get("area") == "yes" or tags.get('area:highway')) else {"type": "LineString", "coordinates": coords}
+            features.append({"type": "Feature", "id": f'osm/{element["type"]}/{element["id"]}', "geometry": geometry,
+                             "properties": {**tags, "kind": kind, "source_id": "osm"}})
+        except (ValueError, KeyError) as error:
+            skipped.append({"id": element["id"], "reason": str(error)})
+    return {"type": "FeatureCollection", "features": features}, skipped
 
 
-def build(config, collection, output):
+def validate_config(config):
     west, south, east, north = config["bbox"]
     if not (-180 <= west < east <= 180 and -90 < south < north < 90):
         raise ValueError("bbox must be west,south,east,north; antimeridian areas must be split")
     resolution = float(config.get("voxel_size_m", 1))
     if not math.isfinite(resolution) or resolution <= 0:
         raise ValueError("voxel_size_m must be positive")
+    return west, south, east, north, resolution
+
+
+def build(config, collection, output):
+    west, south, east, north, resolution = validate_config(config)
     crs = CRS.from_proj4(f'+proj=aeqd +lat_0={(south+north)/2} +lon_0={(west+east)/2} +datum=WGS84 +units=m')
     projector = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
     area = transform(projector.transform, shape({"type": "Polygon", "coordinates": [[[west,south],[east,south],[east,north],[west,north],[west,south]]]}))
+    if config.get("boundary_geojson") and config.get('clip_to_boundary', True):
+        boundary = shape(config["boundary_geojson"])
+        if not boundary.is_valid or boundary.geom_type not in ("Polygon", "MultiPolygon"):
+            raise ValueError("Park boundary is not a valid polygon")
+        area = area.intersection(transform(projector.transform, boundary))
     if area.area > config.get("max_area_m2", 4_000_000):
         raise ValueError("Area exceeds configured build budget; split into smaller areas")
     sources = {s["id"]: s for s in config.get("sources", [])}
     for source in sources.values():
         if not source.get("url") or not source.get("license"):
             raise ValueError("Every source needs url and license")
+    drawing_features, drawing_decisions = physical_features(collection.get('planning_geometry_records',[]),
+        sources,config['bbox'],config.get('terrain',{}).get('vertical_datum'))
     output.mkdir(parents=True, exist_ok=True)
     issues, accepted, count = [], [], 0
+    scanned = 0
+    scan_budget = int(config.get("max_column_checks", 10_000_000))
+    if scan_budget <= 0:
+        raise ValueError("max_column_checks must be positive")
     budget = int(config.get("max_voxels", 5_000_000))
+    if budget <= 0:
+        raise ValueError("max_voxels must be positive")
     voxel_path = output / "voxels.jsonl"
+    terrain = Terrain(config["terrain"], crs, sources) if config.get("terrain") else None
+    terrain_missing = 0
+    point_cloud_geometry={'status':'not_configured'}
+    surface = None
+    surface_fallback = None
+    building_profiles = []
+    transport_profiles = []
+    bridge_profiles = []
+    water_footprints = []
+    water_profiles = []
+    bathymetry = None
     try:
+        if config.get('bathymetry'):
+            specification = config['bathymetry']
+            if specification.get('elevation_type') != 'bed_elevation':
+                raise ValueError('Bathymetry must declare absolute bed_elevation, not depth or airborne terrain')
+            if terrain is None or specification.get('vertical_datum') != config['terrain'].get('vertical_datum'):
+                raise ValueError('Bathymetry and terrain must share the same declared vertical datum')
+            bathymetry = Terrain(specification, crs, sources)
+        if config.get("surface"):
+            if terrain is None or config["surface"].get("vertical_datum") != config["terrain"].get("vertical_datum"):
+                raise ValueError("Surface and terrain must have the same declared vertical datum")
+            surface = Terrain(config["surface"], crs, sources)
+        if config.get('surface_fallback'):
+            if surface is None or config['surface_fallback'].get('vertical_datum')!=config['terrain'].get('vertical_datum'):
+                raise ValueError('Fallback surface requires primary surface and matching terrain datum')
+            surface_fallback=Terrain(config['surface_fallback'],crs,sources)
         with voxel_path.open("w") as stream:
-            for feature in collection["features"]:
+            for feature in [*collection["features"],*drawing_features]:
                 fid = feature.get("id", len(accepted))
                 properties = feature.get("properties", {})
                 source_id = properties.get("source_id")
@@ -80,80 +186,321 @@ def build(config, collection, output):
                 if geometry.is_empty or not geometry.is_valid:
                     issues.append({"feature": fid, "severity": "error", "reason": explain_validity(geometry)})
                     continue
-                geometry = transform(projector.transform, geometry).intersection(area)
+                metric_geometry = transform(projector.transform, geometry)
+                geometry = metric_geometry.intersection(area)
+                tunnel_centerline = None
+                if properties.get('planning_semantic_kind') == 'sound_tunnel' and properties.get('planning_geometry_evidence'):
+                    tunnel_centerline = transform(projector.transform, shape(properties['tunnel_centerline']))
+                    if geometry.buffer(-max(resolution,properties['tunnel_section']['wall_thickness_m'])).is_empty:
+                        raise ValueError('Tunnel footprint has no interior after wall thickness and voxel quantisation')
                 kind = properties.get("kind", "structure")
+                if kind == 'attraction' and not properties.get('planning_geometry_evidence'):
+                    issues.append({'feature': fid, 'severity': 'warning', 'reason': 'attraction extent/track has no verified physical reconstruction; generic extrusion omitted'})
+                    continue
                 assumptions = []
+                assumptions.extend(properties.get('material_warnings',[]))
+                transport = None
+                is_line = geometry.geom_type in ("LineString", "MultiLineString", "Point")
+                if kind in TRANSPORT_KINDS and (properties.get('highway') or properties.get('area:highway') or kind=='plaza' or properties.get('planning_geometry_evidence')):
+                    transport = transport_profile(properties, kind, is_line)
+                    assumptions.extend(transport['warnings'])
+                    transport_profiles.append({'feature': fid, 'source_id': source_id, **transport})
                 if geometry.geom_type in ("LineString", "MultiLineString", "Point"):
-                    width = properties.get("width_m")
+                    width = transport['width_m'] if transport else properties.get("width_m", properties.get("width"))
                     if width is None:
-                        width = 1
-                        assumptions.append("width assumed 1 m")
+                        width = config.get("fallback_width_m", 1)
+                        assumptions.append(f"width assumed {width} m")
                     width = float(width)
                     if not math.isfinite(width) or width <= 0:
                         raise ValueError(f"Invalid width on {fid}")
                     geometry = geometry.buffer(width / 2).intersection(area)
+                bridge_rows = None
+                elevated_roof = None
+                feature_surface = surface
                 base = float(properties.get("base_elevation_m", 0))
-                if "base_elevation_m" not in properties:
+                elevated = properties.get("bridge") not in (None, "no", False) or properties.get("tunnel") not in (None, "no", False) or str(properties.get("layer", "0")) != "0"
+                use_terrain = terrain is not None and "base_elevation_m" not in properties and not elevated
+                if elevated and "base_elevation_m" not in properties:
+                    reason = 'elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height'
+                    layer = str(properties.get('layer','0'))
+                    if kind == 'building' and layer.isdigit() and 1 <= int(layer) <= 10 and surface and terrain and not geometry.is_empty and geometry.geom_type in ('Polygon','MultiPolygon') and properties.get('tunnel') in (None,'no',False):
+                        elevated_roof,profile,feature_surface = reconstruct_with_fallback(geometry,resolution,terrain,surface,surface_fallback,
+                            max_checks=min(200_000,scan_budget-scanned))
+                        scanned += profile['checks']
+                        profile['model_scope'] = 'roof_surface_only_unknown_floor'
+                        profile['warnings'] = [w for w in profile['warnings'] if not w.startswith('Foundation is an estimate')]
+                        if 'foundation_elevation_m' in profile:
+                            profile['ground_reference_elevation_m'] = profile.pop('foundation_elevation_m')
+                            profile['foundation_method'] = 'not_reconstructed'
+                        building_profiles.append({'feature':fid,**profile})
+                        if elevated_roof is not None:
+                            assumptions.extend(profile['warnings'])
+                            assumptions.append('Elevated building roof only: floor, walls, supports and roof thickness are unmeasured; roof represented by one block')
+                        else:
+                            reason += '; roof surface rejected: '+profile['reason']
+                    if properties.get('bridge') in ('yes','boardwalk',True) and kind in TRANSPORT_KINDS:
+                        if properties.get('tunnel') not in (None,'no',False) or str(properties.get('layer','0')) not in ('0','1') or kind=='steps':
+                            profile={'status':'rejected','checks':0,'reason':'Tunnel, stacked/negative layer or steps are not supported bridge candidates'}
+                        elif not (surface and terrain and transport and is_line) or metric_geometry.geom_type!='LineString':
+                            profile={'status':'rejected','checks':0,'reason':'Bridge requires one centerline, transport width and compatible terrain/surface data'}
+                        elif not area.covers(metric_geometry.buffer(transport['width_m']/2)):
+                            profile={'status':'rejected','checks':0,'reason':'Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported'}
+                        else:
+                            bridge_rows,profile=reconstruct_bridge(metric_geometry,geometry,resolution,terrain,surface,
+                                max_checks=min(100_000,scan_budget-scanned),width_m=transport['width_m'])
+                        scanned += profile['checks']
+                        bridge_profiles.append({'feature':fid,**profile})
+                        if bridge_rows is not None:
+                            assumptions.extend(profile['warnings'])
+                            if transport['material'] in ('gravel','sand'):
+                                transport['material']='stone'
+                                transport_profiles[-1]['material']='stone'
+                                transport_profiles[-1]['material_method']='bridge_stability_fallback_assumed'
+                                assumptions.append('Gravity-sensitive bridge surface represented by stable stone; structural support/material is unmeasured')
+                        else:
+                            reason += '; automatic bridge candidate rejected: '+profile['reason']
+                    if bridge_rows is None and elevated_roof is None:
+                        issues.append({"feature": fid, "severity": "error", "reason": reason})
+                        continue
+                if "base_elevation_m" in properties and terrain and properties.get("vertical_datum") != config["terrain"]["vertical_datum"]:
+                    raise ValueError(f"Feature {fid} vertical datum must match terrain")
+                if "base_elevation_m" not in properties and not use_terrain and bridge_rows is None and elevated_roof is None:
                     assumptions.append("base elevation assumed 0 m; terrain unavailable")
-                height = properties.get("height_m", properties.get("height"))
+                declared = properties.get("height_m", properties.get("height"))
+                height = declared
+                height_assumption = None
                 if height is None:
-                    height = 1
-                    assumptions.append("height assumed 1 m; actual vertical geometry unknown")
+                    height = config.get("fallback_heights_m", {}).get(kind, 1)
+                    height_assumption = f"height assumed {height} m; actual vertical geometry unknown"
                 try:
                     height = float(str(height).removesuffix(" m"))
                 except ValueError:
                     height = 1
-                    assumptions.append("unparseable height; assumed 1 m")
+                    declared = None
+                    height_assumption = "unparseable height; assumed 1 m"
                 if not math.isfinite(base) or not math.isfinite(height) or height <= 0:
                     raise ValueError(f"Invalid elevation or height on {fid}")
-                if assumptions:
-                    issues.append({"feature": fid, "severity": "warning", "reason": assumptions})
                 if geometry.is_empty:
                     continue
+                lake_level = None
+                water_profile = None
+                flowing_water=kind=='water' and is_flowing_water(properties, 0)
+                preview_bed=config.get('water',{}).get('estimated_bed',True)
+                if kind == 'water' and geometry.geom_type in ('Polygon','MultiPolygon'):
+                    if 'base_elevation_m' in properties:
+                        lake_level = base
+                        message = 'Explicit water surface elevation; lakebed depth unavailable'
+                    else:
+                        lake_level, message = surface_level(geometry, terrain)
+                        scanned += 81
+                        if scanned > scan_budget:
+                            raise ValueError('Column scan budget exceeded')
+                    if properties.get('waterway')=='canal' and lake_level is None:
+                        flowing_water=True
+                    if flowing_water and terrain:
+                        lake_level=terrain.sample(geometry.representative_point().x,geometry.representative_point().y)
+                        message='Stream surface follows local terrain; estimated visual bed'
+                    if lake_level is None:
+                        issues.append({'feature':fid,'severity':'error','reason':message})
+                        continue
+                    water_footprints.append(geometry)
+                    assumptions.append(message.split('Lakebed depth unavailable')[0].rstrip('; .') if bathymetry else message)
+                    water_profile = {'feature':fid,'surface_elevation_m':lake_level,
+                        'bed_source':config['bathymetry']['source_id'] if bathymetry else None,
+                        'estimated_bed_columns':0,'measured_bed_columns':0,'missing_bed_columns':0,'invalid_bed_columns':0,
+                        'unknown_depth_columns':0,'derived_depth_range_m':None,
+                        'water_surface_method':'local_stream_terrain' if flowing_water else 'declared_elevation' if 'base_elevation_m' in properties else 'terrain_estimate',
+                        'depth_method':'measured_bed_relative_to_unverified_water_surface' if bathymetry else 'unknown',
+                        'depth_status':'unknown','surface_elevation_is_depth':False}
+                    water_profiles.append(water_profile)
+                    if bathymetry:
+                        assumptions.append('Lakebed uses declared measured bed raster; substrate material is unknown and represented by stone')
+                roof_rows = elevated_roof
+                if roof_rows is None and kind == "building" and surface and terrain and geometry.geom_type in ("Polygon", "MultiPolygon"):
+                    roof_rows, profile,feature_surface = reconstruct_with_fallback(geometry, resolution, terrain, surface,surface_fallback,
+                        declared_height=height if declared is not None else None,
+                        base_override=base if "base_elevation_m" in properties else None,
+                        max_checks=min(200_000, scan_budget-scanned))
+                    scanned += profile["checks"]
+                    building_profiles.append({"feature":fid, **profile})
+                    if roof_rows is None:
+                        assumptions.append("surface model rejected: " + profile["reason"])
+                    else:
+                        assumptions.extend(profile["warnings"])
+                        if profile["omitted_columns"]:
+                            assumptions.append(f'{profile["omitted_columns"]} building columns omitted because surface samples were missing or rejected')
+                if roof_rows is None and height_assumption and lake_level is None:
+                    if kind not in TRANSPORT_KINDS:
+                        assumptions.append(height_assumption)
+                if assumptions:
+                    issues.append({"feature":fid,"severity":"warning","reason":assumptions})
+                feature_start = count
                 minx, miny, maxx, maxy = geometry.bounds
-                for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
-                    for z in range(math.floor(miny/resolution), math.ceil(maxy/resolution)):
-                        if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
-                            continue
-                        for y in range(math.floor(base/resolution), math.ceil((base+height)/resolution)):
-                            count += 1
-                            if count > budget:
-                                raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
-                            stream.write(json.dumps({"x": x, "y": y, "z": z, "kind": kind, "feature": fid, "source": source_id}) + "\n")
+                if bridge_rows is not None:
+                    columns = ((x,z,cell_base,top) for (x,z),(cell_base,top) in bridge_rows.items())
+                elif roof_rows is not None:
+                    columns = ((x,z,(math.ceil(top/resolution)-1)*resolution if elevated_roof is not None else cell_base,top) for (x,z),(cell_base,top) in roof_rows.items())
+                else:
+                    def fallback_columns():
+                        nonlocal scanned, terrain_missing
+                        for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
+                            for z in range(math.floor(miny/resolution), math.ceil(maxy/resolution)):
+                                scanned += 1
+                                if scanned > scan_budget:
+                                    raise ValueError("Column scan budget exceeded")
+                                if not geometry.covers(Point((x+.5)*resolution, (z+.5)*resolution)):
+                                    continue
+                                cell_base = flowing_level(metric_geometry,terrain,x,z,resolution) if flowing_water and terrain else lake_level if lake_level is not None else terrain.sample((x+.5)*resolution, (z+.5)*resolution) if use_terrain else base
+                                if cell_base is None:
+                                    terrain_missing += 1
+                                    continue
+                                yield x,z,cell_base,cell_base+height
+                    columns = fallback_columns()
+                for x,z,cell_base,top in columns:
+                    # Ground paving replaces the sampled terrain block, rather than
+                    # extruding two blocks when the raster elevation is fractional.
+                    upper = math.floor(cell_base/resolution)+1 if kind in TRANSPORT_KINDS or lake_level is not None else math.ceil(top/resolution)
+                    bottom = math.floor(cell_base/resolution)
+                    bed_y = None
+                    measured_bed=False
+                    if lake_level is not None and bathymetry:
+                        bed = bathymetry.sample((x+.5)*resolution,(z+.5)*resolution)
+                        if bed is None or not math.isfinite(bed):
+                            water_profile['missing_bed_columns'] += 1
+                        elif not 0 < cell_base-bed <= 100 or math.floor(bed/resolution) >= math.floor(cell_base/resolution):
+                            water_profile['invalid_bed_columns'] += 1
+                        else:
+                            water_profile['measured_bed_columns'] += 1
+                            measured_bed=True
+                            depth=cell_base-bed
+                            previous_range=water_profile['derived_depth_range_m']
+                            water_profile['derived_depth_range_m']=[min(previous_range[0],depth),max(previous_range[1],depth)] if previous_range else [depth,depth]
+                            bed_y = math.floor(bed/resolution)
+                            bottom = bed_y
+                    if lake_level is not None and bed_y is None:
+                        water_profile['unknown_depth_columns'] += 1
+                        if preview_bed:
+                            bed_y=estimated_bed_y(geometry,x,z,cell_base,resolution,config.get('water',{}).get('max_depth_m',3))
+                            bottom=bed_y
+                            water_profile['estimated_bed_columns']+=1
+                    for y in range(bottom, upper):
+                        tunnel_void = False
+                        if tunnel_centerline is not None:
+                            from .tunnels import occupied
+                            tunnel_void = not occupied(geometry,tunnel_centerline,properties['tunnel_section'],x,z,y,cell_base,top,resolution)
+                        count += 1
+                        if count > budget:
+                            raise ValueError("Voxel budget exceeded; reduce area or increase voxel size")
+                        voxel_kind = "roof" if roof_rows is not None and y==upper-1 else kind
+                        if bed_y is not None and y == bed_y:
+                            voxel_kind = 'lakebed'
+                        stream.write(json.dumps({"x":x,"y":y,"z":z,"kind":voxel_kind,"feature":fid,
+                            "source":source_id,"elevation_source":config['bathymetry']['source_id'] if voxel_kind=='lakebed' and measured_bed else feature_surface.config['source_id'] if elevated_roof is not None else config["surface"]["source_id"] if bridge_rows is not None else config["terrain"]["source_id"] if use_terrain else source_id,
+                            "roof_source":feature_surface.config['source_id'] if roof_rows is not None else None,
+                            **({'material': transport['material']} if transport else {'material':properties['minecraft_material']} if properties.get('minecraft_material') else {}),
+                            **({'material':'air','material_origin':'accepted_planning_void'} if tunnel_void else {'material_origin':'accepted_planning_shell'} if tunnel_centerline is not None else {}),
+                            **({'material_origin':'accepted_planning_paving' if properties.get('planning_geometry_evidence') else 'mapped_transport_surface'} if transport and transport['material_method']=='tagged_surface_approximation' and properties.get('surface') not in ('paved','unpaved') else {}),
+                            **({'bed_source':config['bathymetry']['source_id']} if measured_bed else {'bed_source':None,'bed_status':'estimated_shore_shelf','material':'gravel' if voxel_kind=='lakebed' else 'water'} if bed_y is not None else {}),
+                            "geometry_method":"measured_bed_water_column" if measured_bed else "estimated_bed_water_column" if bed_y is not None else "elevated_roof_surface_only" if elevated_roof is not None else "level_water_surface_estimate" if lake_level is not None else "bridge_surface_candidate" if bridge_rows is not None else "surface_profile_2_5d" if roof_rows is not None else "terrain_surface" if kind in TRANSPORT_KINDS else "extrusion"}) + "\n")
+                if count == feature_start:
+                    issues.append({"feature": fid, "severity": "error", "reason": "feature produced no voxel columns; check coverage or voxel resolution"})
                 accepted.append({**feature, "geometry": mapping(geometry)})
+                if water_profile:
+                    water_profile['depth_status']='partial_measured_bed_coverage' if water_profile['measured_bed_columns'] and water_profile['unknown_depth_columns'] else 'measured_bed_coverage' if water_profile['measured_bed_columns'] else 'estimated_visual_bed' if water_profile['estimated_bed_columns'] else 'unknown'
+                if water_profile and water_profile['estimated_bed_columns']:
+                    water_profile['depth_method']='estimated_shore_distance_shelf_with_measured_columns_preserved'
+                if water_profile and (water_profile['missing_bed_columns'] or water_profile['invalid_bed_columns']):
+                    issues.append({'feature':fid,'severity':'warning','reason':'Incomplete or invalid bathymetry: affected columns use labelled estimated visual beds when enabled; no measured depths interpolated',**water_profile})
+            if terrain and config["terrain"].get("emit_surface", True):
+                water_mask = unary_union(water_footprints)
+                minx, minz, maxx, maxz = area.bounds
+                for x in range(math.floor(minx/resolution), math.ceil(maxx/resolution)):
+                    for z in range(math.floor(minz/resolution), math.ceil(maxz/resolution)):
+                        scanned += 1
+                        if scanned > scan_budget:
+                            raise ValueError("Column scan budget exceeded")
+                        px, pz = (x+.5)*resolution, (z+.5)*resolution
+                        if not area.covers(Point(px, pz)):
+                            continue
+                        # Airborne DTM over water does not measure the submerged bed.
+                        # Do not export it as grass or a fictitious lake floor.
+                        if not water_mask.is_empty and water_mask.covers(Point(px,pz)):
+                            continue
+                        elevation = terrain.sample(px, pz)
+                        if elevation is None:
+                            terrain_missing += 1
+                            continue
+                        count += 1
+                        if count > budget:
+                            raise ValueError("Voxel budget exceeded during terrain generation")
+                        stream.write(json.dumps({"x": x, "y": math.floor(elevation/resolution), "z": z, "kind": "terrain", "source": config["terrain"]["source_id"]}) + "\n")
+            if config.get('point_cloud_evidence',{}).get('geometry_use')=='classified_building_returns':
+                cloud=config['point_cloud_evidence']
+                if cloud.get('source_id') not in sources or cloud.get('units')!='m' or not terrain or cloud.get('vertical_datum')!=config['terrain'].get('vertical_datum'):
+                    raise ValueError('Point-cloud geometry requires registered source, metre units and matching terrain datum')
+                rows,point_cloud_geometry=building_returns(cloud,accepted,crs,terrain,resolution,
+                    max_voxels=min(500_000,budget-count))
+                for record in rows:
+                    count+=1
+                    if count>budget:raise ValueError('Voxel budget exceeded during point-cloud geometry')
+                    stream.write(json.dumps(record)+'\n')
+                issues.append({'severity':'warning','reason':'Classified building point surfaces are partial observations, not complete meshes or measured materials',
+                               'occupied_voxels':point_cloud_geometry.get('occupied_voxels',0)})
     except Exception:
         voxel_path.unlink(missing_ok=True)
         raise
+    finally:
+        if bathymetry:
+            bathymetry.close()
+        if surface:
+            surface.close()
+        if surface_fallback:
+            surface_fallback.close()
+        if terrain:
+            terrain.close()
+    if terrain_missing:
+        issues.append({"severity": "error", "reason": "terrain coverage/nodata gaps", "missing_column_requests": terrain_missing})
     report = {"version": "3.1.0", "voxel_size_m": resolution, "crs": crs.to_wkt(), "axis": {"x": "east", "y": "up", "z": "north"}, "sources": list(sources.values()), "voxel_records": count, "features": len(accepted), "issues": issues,
-              "limitations": ["Footprint extrusion; no mesh or LiDAR reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
-              "sha256": hashlib.sha256(voxel_path.read_bytes()).hexdigest()}
+              "limitations": ["Footprint extrusions or DSM surface profiles; no classified 3D mesh or point-cloud reconstruction", "Overlapping feature records require downstream composition", "No automatic planning drawing georeferencing", "Metric scale is approximate away from local projection origin"],
+              "sha256": file_sha256(voxel_path)}
+    report["building_profiles"] = building_profiles
+    report["bridge_profiles"] = bridge_profiles
+    report['transport_profiles'] = transport_profiles
+    report["surface"] = surface.report() if surface else None
+    report['surface_fallback']=surface_fallback.report() if surface_fallback else None
+    report['water_profiles'] = water_profiles
+    report['point_cloud_geometry'] = point_cloud_geometry
+    report['planning_geometry_decisions'] = drawing_decisions
+    for decision in drawing_decisions:
+        if decision['status']=='withheld':
+            report['issues'].append({'severity':'warning','feature':'planning/'+str(decision['id']),'reason':decision['reason']})
+    report['bathymetry'] = bathymetry.report() if bathymetry else None
+    report["column_checks"] = scanned
+    report["terrain"] = terrain.report() if terrain else None
     (output / "quality-report.json").write_text(json.dumps(report, indent=2))
     (output / "features-local.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": accepted}))
     return report
 
 
+def file_sha256(path):
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--config", required=True)
-    parser.add_argument("--features", help="WGS84 GeoJSON with source_id, kind, height_m, base_elevation_m")
+    from .pipeline import run_auto
+    parser = argparse.ArgumentParser(description="Automatically fetch public data and build a 1 block/metre Bedrock world")
+    area = parser.add_mutually_exclusive_group(required=True)
+    area.add_argument("--location", help="Specific park name and country/address")
+    area.add_argument("--bbox", help="west,south,east,north")
     parser.add_argument("--output", default="output")
+    parser.add_argument("--planning-cache", help="Recovered official Alton planning corpus directory")
+    parser.add_argument("--strict", action="store_true", help="Fail after export if evidence quality checks fail")
     args = parser.parse_args()
-    config = json.loads(Path(args.config).read_text())
-    output = Path(args.output)
-    output.mkdir(parents=True, exist_ok=True)
-    skipped = []
-    if args.features:
-        collection = json.loads(Path(args.features).read_text())
-    else:
-        collection, raw, skipped = fetch_osm(config["bbox"])
-        (output / "osm-raw.json").write_text(json.dumps(raw))
-        config.setdefault("sources", []).append({"id": "osm", "url": "https://www.openstreetmap.org/copyright", "license": "ODbL-1.0"})
-    (output / "input.geojson").write_text(json.dumps(collection))
-    report = build(config, collection, output)
-    report["skipped_osm"] = skipped
-    (output / "quality-report.json").write_text(json.dumps(report, indent=2))
-    if config.get("strict", False) and (report["issues"] or skipped or not report["features"]):
-        raise SystemExit("Strict accuracy gate failed; inspect quality-report.json")
+    bounds = list(map(float, args.bbox.split(','))) if args.bbox else None
+    report = run_auto(Path(args.output), location=args.location, bounds=bounds, planning_cache=args.planning_cache)
+    if args.strict and report["issues"]:
+        raise SystemExit("Strict accuracy gate failed; draft world and evidence retained in output")
 
 
 if __name__ == "__main__":

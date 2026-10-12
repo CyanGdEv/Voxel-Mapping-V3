@@ -1,0 +1,496 @@
+{
+  "version": "local-wing-surface-review-v1",
+  "component_id": "mutiny-north-courtyard-range",
+  "reviewed_trace_seed": true,
+  "trace_review": "Visual source review on checksum-pinned full-page 1800-pixel renders; Wicker-style seed, not automatic feature discovery; source-label-corrected derivative: geometry unchanged, native w.3.05/w.3.06 labels reviewed",
+  "endpoint_sampling_bound_pixels": 2,
+  "documents": {
+    "plan": {
+      "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 100,
+      "caption": "Ground Floor Plan 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c"
+    },
+    "elevation": {
+      "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 50,
+      "caption": "North Range Courtyard (south) Elevation 'as existing'",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "ea0d87e36f679cc3528a84f34a055d1a02631a41b195d1a1bd9be5359967d449"
+    },
+    "roof": {
+      "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "page": 1,
+      "state": "existing",
+      "scale_denominator": 200,
+      "caption": "Existing Roof Plan",
+      "render_width_pixels": 1800,
+      "render_size_pixels": [
+        1800,
+        1272
+      ],
+      "render_samples_sha256": "1bcc21997a7408d98b46cc3cbfc1bb3ae9e50940beefcfd9d01a759dcb5d8e55"
+    }
+  },
+  "plan_trace": {
+    "facade_endpoints": [
+      [
+        1059,
+        305
+      ],
+      [
+        1059,
+        991
+      ]
+    ],
+    "rear_point": [
+      1184,
+      700
+    ],
+    "view_scope_review": "right courtyard range between adjacent internal courtyard wing faces; ignores projecting outer annexes"
+  },
+  "elevation_trace": {
+    "baseline_endpoints": [
+      [
+        139,
+        408
+      ],
+      [
+        1512,
+        408
+      ]
+    ],
+    "eave_point": [
+      500,
+      238
+    ],
+    "ridge_point": [
+      500,
+      108
+    ],
+    "view_scope_review": "upper north-range courtyard elevation, excluding adjacent return gable and tower"
+  },
+  "roof_trace": {
+    "cross_section_points": [
+      [
+        770,
+        740
+      ],
+      [
+        802,
+        740
+      ],
+      [
+        835,
+        740
+      ]
+    ],
+    "review": "2012 roof plan used only for relative ridge fraction; correspondence with 2017 floor remains a hypothesis"
+  },
+  "openings": [
+    {
+      "id": "d3.01",
+      "kind": "door",
+      "points_pixels": [
+        [
+          195,
+          330
+        ],
+        [
+          236,
+          330
+        ],
+        [
+          236,
+          408
+        ],
+        [
+          195,
+          408
+        ]
+      ]
+    },
+    {
+      "id": "w3.01",
+      "kind": "window",
+      "points_pixels": [
+        [
+          273,
+          324
+        ],
+        [
+          365,
+          324
+        ],
+        [
+          365,
+          392
+        ],
+        [
+          273,
+          392
+        ]
+      ]
+    },
+    {
+      "id": "w3.02",
+      "kind": "window",
+      "points_pixels": [
+        [
+          397,
+          322
+        ],
+        [
+          493,
+          322
+        ],
+        [
+          493,
+          357
+        ],
+        [
+          397,
+          357
+        ]
+      ]
+    },
+    {
+      "id": "w3.03",
+      "kind": "window",
+      "points_pixels": [
+        [
+          543,
+          323
+        ],
+        [
+          577,
+          323
+        ],
+        [
+          577,
+          358
+        ],
+        [
+          543,
+          358
+        ]
+      ]
+    },
+    {
+      "id": "w3.04",
+      "kind": "window",
+      "points_pixels": [
+        [
+          655,
+          323
+        ],
+        [
+          690,
+          323
+        ],
+        [
+          690,
+          357
+        ],
+        [
+          655,
+          357
+        ]
+      ]
+    },
+    {
+      "id": "d3.02",
+      "kind": "door",
+      "points_pixels": [
+        [
+          971,
+          326
+        ],
+        [
+          1022,
+          326
+        ],
+        [
+          1022,
+          408
+        ],
+        [
+          971,
+          408
+        ]
+      ]
+    },
+    {
+      "id": "w3.05",
+      "kind": "window",
+      "points_pixels": [
+        [
+          920,
+          327
+        ],
+        [
+          954,
+          327
+        ],
+        [
+          954,
+          359
+        ],
+        [
+          920,
+          359
+        ]
+      ]
+    },
+    {
+      "id": "w3.06",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1061,
+          327
+        ],
+        [
+          1125,
+          327
+        ],
+        [
+          1125,
+          365
+        ],
+        [
+          1061,
+          365
+        ]
+      ]
+    },
+    {
+      "id": "d3.03",
+      "kind": "door",
+      "points_pixels": [
+        [
+          1304,
+          328
+        ],
+        [
+          1365,
+          328
+        ],
+        [
+          1365,
+          408
+        ],
+        [
+          1304,
+          408
+        ]
+      ]
+    },
+    {
+      "id": "w3.07",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1402,
+          334
+        ],
+        [
+          1471,
+          334
+        ],
+        [
+          1471,
+          377
+        ],
+        [
+          1402,
+          377
+        ]
+      ]
+    },
+    {
+      "id": "w3.10",
+      "kind": "window",
+      "points_pixels": [
+        [
+          283,
+          246
+        ],
+        [
+          341,
+          246
+        ],
+        [
+          341,
+          283
+        ],
+        [
+          283,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.11",
+      "kind": "window",
+      "points_pixels": [
+        [
+          443,
+          246
+        ],
+        [
+          487,
+          246
+        ],
+        [
+          487,
+          283
+        ],
+        [
+          443,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.12",
+      "kind": "window",
+      "points_pixels": [
+        [
+          639,
+          246
+        ],
+        [
+          684,
+          246
+        ],
+        [
+          684,
+          283
+        ],
+        [
+          639,
+          283
+        ]
+      ]
+    },
+    {
+      "id": "w3.14",
+      "kind": "window",
+      "points_pixels": [
+        [
+          970,
+          246
+        ],
+        [
+          1026,
+          246
+        ],
+        [
+          1026,
+          290
+        ],
+        [
+          970,
+          290
+        ]
+      ]
+    },
+    {
+      "id": "w3.15",
+      "kind": "window",
+      "points_pixels": [
+        [
+          1150,
+          246
+        ],
+        [
+          1208,
+          246
+        ],
+        [
+          1208,
+          291
+        ],
+        [
+          1150,
+          291
+        ]
+      ]
+    },
+    {
+      "id": "archway-3",
+      "kind": "archway",
+      "points_pixels": [
+        [
+          753,
+          408
+        ],
+        [
+          753,
+          326
+        ],
+        [
+          758,
+          314
+        ],
+        [
+          773,
+          303
+        ],
+        [
+          795,
+          295
+        ],
+        [
+          827,
+          290
+        ],
+        [
+          855,
+          293
+        ],
+        [
+          879,
+          302
+        ],
+        [
+          895,
+          313
+        ],
+        [
+          901,
+          326
+        ],
+        [
+          901,
+          408
+        ]
+      ],
+      "curve_status": "reviewed_polygonal_inner-opening_trace; not exact masonry arch"
+    }
+  ],
+  "source_label_correction": {
+    "parent_seed_sha256": "2b0c74f7a94385b76580a62be0475f86460488ed8f7fac07379c1363a8d0191a",
+    "native_inventory_sha256": "04fe9d5316f066a1cd629c36ace9567fff925893cda54654dbea6bfd3f1937c4",
+    "changes": {
+      "w3.06-a": "w3.05",
+      "w3.06-b": "w3.06"
+    },
+    "geometry_points_changed": false,
+    "boarded_w3_13_carved": false
+  }
+}

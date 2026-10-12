@@ -1,0 +1,285 @@
+{
+  "count": 14,
+  "results": [
+    {
+      "product": {
+        "id": "lidar_composite_dtm",
+        "label": "LIDAR Composite DTM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_dtm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_dtm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_composite_dtm",
+        "label": "LIDAR Composite DTM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "2",
+        "label": "2m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_dtm-2022-2m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_dtm/2022/2/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_composite_first_return_dsm",
+        "label": "LIDAR Composite First Return DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_first_return_dsm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_first_return_dsm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_composite_first_return_dsm",
+        "label": "LIDAR Composite First Return DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "2",
+        "label": "2m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_first_return_dsm-2022-2m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_first_return_dsm/2022/2/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_composite_last_return_dsm",
+        "label": "LIDAR Composite Last Return DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_last_return_dsm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_last_return_dsm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_composite_last_return_dsm",
+        "label": "LIDAR Composite Last Return DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "2",
+        "label": "2m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_composite_last_return_dsm-2022-2m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_composite_last_return_dsm/2022/2/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_tiles_dsm",
+        "label": "LIDAR Tiles DSM"
+      },
+      "year": {
+        "id": "1999",
+        "label": "1999"
+      },
+      "resolution": {
+        "id": "2",
+        "label": "2m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_tiles_dsm-1999-2m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_tiles_dsm/1999/2/SK0540"
+    },
+    {
+      "product": {
+        "id": "lidar_tiles_dtm",
+        "label": "LIDAR Tiles DTM"
+      },
+      "year": {
+        "id": "1999",
+        "label": "1999"
+      },
+      "resolution": {
+        "id": "2",
+        "label": "2m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "lidar_tiles_dtm-1999-2m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/lidar_tiles_dtm/1999/2/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_dsm",
+        "label": "National LIDAR Programme DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_dsm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_dtm",
+        "label": "National LIDAR Programme DTM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_dtm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_first_return_dsm",
+        "label": "National LIDAR Programme First Return DSM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_first_return_dsm-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_first_return_dsm/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_intensity",
+        "label": "National LIDAR Programme Intensity"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_intensity-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_intensity/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_point_cloud",
+        "label": "National LIDAR Programme Point Cloud"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_point_cloud-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540"
+    },
+    {
+      "product": {
+        "id": "national_lidar_programme_vom",
+        "label": "National LIDAR Programme VOM"
+      },
+      "year": {
+        "id": "2022",
+        "label": "2022"
+      },
+      "resolution": {
+        "id": "1",
+        "label": "1m"
+      },
+      "tile": {
+        "id": "SK0540",
+        "label": "SK04se"
+      },
+      "label": "national_lidar_programme_vom-2022-1m-SK04se",
+      "uri": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_vom/2022/1/SK0540"
+    }
+  ]
+}

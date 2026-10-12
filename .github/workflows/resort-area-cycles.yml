@@ -1,0 +1,192 @@
+name: Automatic resort area cycles
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Run containing the self-contained area inputs bundle with job.json
+        required: true
+        type: string
+      source_artifact:
+        description: Initial area inputs artifact
+        default: resort-area-inputs
+        required: true
+        type: string
+      continuation_run_id:
+        description: Prior area-cycle checkpoint run; blank starts the area pass
+        default: ''
+        type: string
+      generator_commit:
+        description: Generator SHA pinned on the first run
+        default: ''
+        type: string
+      continue_automatically:
+        description: Dispatch each subsequent chunk cycle and area
+        default: true
+        type: boolean
+      max_publications:
+        description: Total native cycle budget for this area pass (1-10000)
+        default: '200'
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: resort-areas-${{ inputs.source_run_id }}-${{ inputs.source_artifact }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      ready: ${{ steps.area.outputs.ready }}
+      generator_commit: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.generator_commit || github.sha }}
+      - id: commit
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-eng
+      - run: python -m pip install '.[planning]'
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        if: inputs.continuation_run_id == ''
+        with:
+          name: ${{ inputs.source_artifact }}
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+          path: area-cycle-work
+      - uses: actions/download-artifact@v4
+        if: inputs.continuation_run_id != ''
+        with:
+          name: area-cycle-checkpoint
+          run-id: ${{ inputs.continuation_run_id }}
+          github-token: ${{ github.token }}
+          path: area-cycle-work
+      - id: area
+        name: Advance to the next ready area cycle
+        env:
+          PUBLICATION_BUDGET: ${{ inputs.max_publications }}
+        run: python -m voxel_mapper.area_cycles prepare --job area-cycle-work/job.json --bundle-root area-cycle-work --max-publications "$PUBLICATION_BUDGET"
+      - name: Summarize area progress
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          job=Path('area-cycle-work/job.json')
+          root=(job.parent/json.loads(job.read_text())['work_directory']).resolve()
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+              out.write((root/'auto-cycle-summary.md').read_text())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.area.outputs.ready == 'true'
+        with:
+          name: area-cycle-input
+          path: area-cycle-work/
+          include-hidden-files: true
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: steps.area.outputs.ready != 'true'
+        with:
+          name: area-cycle-checkpoint
+          path: area-cycle-work/
+          include-hidden-files: true
+          retention-days: 30
+  chunks:
+    needs: prepare
+    if: needs.prepare.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        worker: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.generator_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install '.[planning]'
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        with:
+          name: area-cycle-input
+          path: area-cycle-work
+      - id: worker
+        env:
+          WORKER_NUMBER: ${{ matrix.worker }}
+        run: python -m voxel_mapper.area_cycles worker --job area-cycle-work/job.json --worker "$WORKER_NUMBER"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: area-cycle-worker-${{ matrix.worker }}
+          path: ${{ steps.worker.outputs.directory }}/
+          if-no-files-found: error
+          retention-days: 7
+  assemble:
+    needs: [prepare, chunks]
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.generator_commit }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install '.[planning]'
+        env:
+          CC: gcc
+          CXX: g++
+      - uses: actions/download-artifact@v4
+        with:
+          name: area-cycle-input
+          path: area-cycle-work
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: area-cycle-worker-*
+          path: worker-downloads
+      - run: python -m voxel_mapper.area_cycles collect --job area-cycle-work/job.json --source worker-downloads
+      - id: assembled
+        name: Verify all workers and publish cumulative native world
+        run: python -m voxel_mapper.area_cycles assemble --job area-cycle-work/job.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.assembled.outputs.preview_artifact }}
+          path: ${{ steps.assembled.outputs.preview_directory }}/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: area-cycle-checkpoint
+          path: area-cycle-work/
+          include-hidden-files: true
+          retention-days: 30
+      - name: Continue the area pass
+        if: inputs.continue_automatically
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          SOURCE_ARTIFACT: ${{ inputs.source_artifact }}
+          GENERATOR_COMMIT: ${{ needs.prepare.outputs.generator_commit }}
+          GENERATION_REF: ${{ github.ref_name }}
+          PUBLICATION_BUDGET: ${{ inputs.max_publications }}
+        run: |
+          gh workflow run resort-area-cycles.yml --ref "$GENERATION_REF" -f source_run_id="$SOURCE_RUN_ID" -f source_artifact="$SOURCE_ARTIFACT" -f continuation_run_id="$GITHUB_RUN_ID" -f generator_commit="$GENERATOR_COMMIT" -f continue_automatically=true -f max_publications="$PUBLICATION_BUDGET"

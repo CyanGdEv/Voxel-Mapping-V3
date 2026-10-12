@@ -1,0 +1,27 @@
+{
+  "tests": {
+    "passed": 314,
+    "runner": "unittest"
+  },
+  "full_route": {
+    "route_samples_checked": 1949,
+    "unique_centre_deck_cells": 957,
+    "minimum_deck_above_original_terrain_blocks": 2,
+    "missing_or_incorrect_deck_samples": [],
+    "terrain_blocks_immediately_above_deck": [],
+    "v6_detail_cells_preserved": 245,
+    "v6_detail_total": 245,
+    "maximum_uplift_m": 7.0
+  },
+  "world": {
+    "touched_chunks": 383,
+    "overlay_records": 68557,
+    "check": "All cells of touched chunk sections and total chunk coverage verified",
+    "untouched_chunks": "Copied from previously verified full-park world",
+    "base_package_sha256": "06c438c11e3ca0b9358131e9c5b40ff32adf01b16275a69842861214b29652e9",
+    "vertical_offset_blocks": -39,
+    "composed_block_delta": 1782
+  },
+  "package_sha256": "c08ab1631c817e8ca9604e0e487e2e2d61b4b150aae34287e36a27e53f37d796",
+  "height_status": "terrain-constrained preview; not measured track elevations"
+}

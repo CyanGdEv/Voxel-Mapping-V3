@@ -1,0 +1,2823 @@
+{
+  "version": "aperture-gap-proposals-v1",
+  "proposal_report_sha256": "5ad4518fdeca7d8733624903f3e5b6cae5f07d99b53224224da4ee5e18b48c29",
+  "extraction": {
+    "candidates": 3451,
+    "curved_candidates": 6,
+    "geometry_types": {
+      "LineString": 3396,
+      "Polygon": 55
+    },
+    "raw_paths": 5125,
+    "rejections": {
+      "A linearring requires at least 4 coordinates.": 710,
+      "Compound subpath budget exceeded": 2,
+      "Crop boundary/frame candidate": 6,
+      "Invalid filled ring topology": 149,
+      "Paint group crosses clipping boundary": 44,
+      "Self-crossing line needs review": 2,
+      "Short line/symbol candidate": 2400,
+      "Small symbol or sheet enclosure candidate": 523,
+      "compound_closed_stroke_deferred": 221
+    },
+    "retained_points": 9070,
+    "status": "unplaced_geometry_candidates",
+    "world_geometry_additions": 0
+  },
+  "opening_statuses": {
+    "d3.01": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 12,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 7,
+        "gap_edges": 11,
+        "network_faces_across_trials": 125,
+        "proposals": 0,
+        "source_segments": 63
+      },
+      "checks": 3771
+    },
+    "w3.01": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 91,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 81,
+        "gap_edges": 90,
+        "multi_ring_face_deferred": 364,
+        "network_faces_across_trials": 2643,
+        "proposals": 0,
+        "source_segments": 91
+      },
+      "checks": 7097
+    },
+    "w3.02": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 48,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 26,
+        "gap_edges": 47,
+        "multi_ring_face_deferred": 48,
+        "network_faces_across_trials": 533,
+        "proposals": 0,
+        "source_segments": 78
+      },
+      "checks": 4438
+    },
+    "w3.03": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 61,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 23,
+        "gap_edges": 60,
+        "network_faces_across_trials": 697,
+        "proposals": 0,
+        "source_segments": 57
+      },
+      "checks": 4725
+    },
+    "w3.04": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 1,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 7,
+        "gap_edges": 0,
+        "network_faces_across_trials": 2,
+        "proposals": 0,
+        "source_segments": 24
+      },
+      "checks": 3503
+    },
+    "d3.02": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 8,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 24,
+        "gap_edges": 7,
+        "network_faces_across_trials": 164,
+        "proposals": 0,
+        "source_segments": 83
+      },
+      "checks": 4012
+    },
+    "w3.05": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 17,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 18,
+        "gap_edges": 16,
+        "multi_ring_face_deferred": 17,
+        "network_faces_across_trials": 161,
+        "proposals": 0,
+        "source_segments": 35
+      },
+      "checks": 3801
+    },
+    "w3.06": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 1,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 7,
+        "gap_edges": 0,
+        "network_faces_across_trials": 1,
+        "proposals": 0,
+        "source_segments": 14
+      },
+      "checks": 3496
+    },
+    "d3.03": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 1,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 26,
+        "gap_edges": 0,
+        "multi_ring_face_deferred": 2,
+        "network_faces_across_trials": 12,
+        "proposals": 0,
+        "source_segments": 48
+      },
+      "checks": 3598
+    },
+    "w3.07": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 39,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 23,
+        "gap_edges": 38,
+        "multi_ring_face_deferred": 39,
+        "network_faces_across_trials": 195,
+        "proposals": 0,
+        "source_segments": 25
+      },
+      "checks": 3957
+    },
+    "w3.10": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 24,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 19,
+        "gap_edges": 23,
+        "network_faces_across_trials": 202,
+        "proposals": 0,
+        "source_segments": 59
+      },
+      "checks": 4056
+    },
+    "w3.11": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 34,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 21,
+        "gap_edges": 33,
+        "multi_ring_face_deferred": 21,
+        "network_faces_across_trials": 408,
+        "proposals": 0,
+        "source_segments": 49
+      },
+      "checks": 4317
+    },
+    "w3.12": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 47,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 27,
+        "gap_edges": 46,
+        "network_faces_across_trials": 776,
+        "proposals": 0,
+        "source_segments": 43
+      },
+      "checks": 4687
+    },
+    "w3.14": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 22,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 21,
+        "gap_edges": 21,
+        "network_faces_across_trials": 770,
+        "proposals": 0,
+        "source_segments": 98
+      },
+      "checks": 4758
+    },
+    "w3.15": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 22,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 6,
+        "gap_edges": 21,
+        "network_faces_across_trials": 130,
+        "proposals": 0,
+        "source_segments": 44
+      },
+      "checks": 3789
+    },
+    "archway-3": {
+      "status": "single_connector_network_faces_only",
+      "counts": {
+        "connector_trials": 55,
+        "curved_or_truncated_components_deferred": 6,
+        "exact_endpoint_pairs": 23,
+        "gap_edges": 54,
+        "multi_ring_face_deferred": 3,
+        "network_faces_across_trials": 2241,
+        "proposals": 2,
+        "source_segments": 170
+      },
+      "checks": 6685
+    }
+  },
+  "arch_review": {
+    "proposals": [
+      {
+        "boundary_hausdorff_pixels": 3.523633423094352,
+        "connector_trial_id": "a4c94e760fff0b5cf8000bd9886f120ca27cbd5864404d1f60fba545b390e82b",
+        "geometry_identity": "80b78da8dfc0b45bed1f5989a4c6fad14dd317dfc08ac5b58be8042521718d11",
+        "geometry_pixels": {
+          "coordinates": [
+            [
+              [
+                898.6704831584866,
+                318.7449673503197
+              ],
+              [
+                897.7644797621833,
+                315.84561823137665
+              ],
+              [
+                896.3147821609164,
+                312.946292154229
+              ],
+              [
+                894.5027753683098,
+                310.22818979813746
+              ],
+              [
+                892.5094757292609,
+                307.69126507951114
+              ],
+              [
+                890.1537747316906,
+                305.51676476120156
+              ],
+              [
+                889.6230005088291,
+                305.12753003113914
+              ],
+              [
+                887.4356723755991,
+                303.52348816394806
+              ],
+              [
+                887.2845949065421,
+                303.44795006976284
+              ],
+              [
+                884.5362804314854,
+                302.0738044809912
+              ],
+              [
+                881.9993754962343,
+                300.8053627660611
+              ],
+              [
+                881.6828931333134,
+                300.67679086292515
+              ],
+              [
+                878.7553320695755,
+                299.48746045589206
+              ],
+              [
+                876.2007694255299,
+                298.44966176849084
+              ],
+              [
+                870.4020711876437,
+                296.4563621294419
+              ],
+              [
+                870.2322462539263,
+                296.41004641689284
+              ],
+              [
+                864.422172270497,
+                294.8254868907097
+              ],
+              [
+                864.2477810736129,
+                294.7895825905704
+              ],
+              [
+                858.2611648412712,
+                293.5570360522943
+              ],
+              [
+                855.0168606065687,
+                293.0799417667888
+              ],
+              [
+                852.1000652448638,
+                292.6510096141956
+              ],
+              [
+                851.769749270797,
+                292.6218641597393
+              ],
+              [
+                848.84901151851,
+                292.36415264766805
+              ],
+              [
+                845.7591099308123,
+                292.09151495204014
+              ],
+              [
+                839.7778660520489,
+                291.5637594550408
+              ],
+              [
+                827.2745583471551,
+                290.8389106544073
+              ],
+              [
+                814.952451321522,
+                291.5637594550408
+              ],
+              [
+                804.6226126202193,
+                292.46200464330497
+              ],
+              [
+                802.4490514494464,
+                292.6510096141956
+              ],
+              [
+                801.5357707762462,
+                292.7853129836471
+              ],
+              [
+                798.4417785861104,
+                293.24030298659534
+              ],
+              [
+                796.287951853039,
+                293.5570360522943
+              ],
+              [
+                792.2904285111199,
+                294.40500021680043
+              ],
+              [
+                790.3081451030739,
+                294.8254868907097
+              ],
+              [
+                789.2089669662236,
+                295.1252615911156
+              ],
+              [
+                784.3282461859271,
+                296.4563621294419
+              ],
+              [
+                783.2410369625803,
+                296.81876520389085
+              ],
+              [
+                778.3483472687803,
+                298.44966176849084
+              ],
+              [
+                777.7648144141948,
+                298.6943706388451
+              ],
+              [
+                774.9036271047692,
+                299.89423095323787
+              ],
+              [
+                772.7309418773366,
+                300.8053627660611
+              ],
+              [
+                772.0025180736831,
+                301.15782927028596
+              ],
+              [
+                769.0882025929616,
+                302.5679954188196
+              ],
+              [
+                767.1135364858928,
+                303.52348816394806
+              ],
+              [
+                764.5765426418802,
+                305.51676476120156
+              ],
+              [
+                762.2209338114917,
+                307.69126507951114
+              ],
+              [
+                760.2275420052611,
+                310.22818979813746
+              ],
+              [
+                758.4155352126545,
+                312.946292154229
+              ],
+              [
+                757.6906971475457,
+                314.39593372226534
+              ],
+              [
+                756.9658376113875,
+                315.84561823137665
+              ],
+              [
+                755.9554602251711,
+                318.1549945756986
+              ],
+              [
+                755.6973406893812,
+                318.7449673503197
+              ],
+              [
+                755.8785413686419,
+                318.7449673503197
+              ],
+              [
+                755.8785413686419,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                318.7449673503197
+              ],
+              [
+                898.6704831584866,
+                318.7449673503197
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "hypothesis_interval_proofs": [
+          {
+            "boundary_length_pixels": 0.18129284644237487,
+            "gap_id": "a4c94e760fff0b5cf8000bd9886f120ca27cbd5864404d1f60fba545b390e82b",
+            "interval_fractions": [
+              0.0,
+              1.0
+            ]
+          }
+        ],
+        "id": "b3dee154e2e29d3fba5582e34e5ed374edde3baad8ca3f612e1414f72d82ac95",
+        "iou_with_reviewed_trace": 0.9588944794330186,
+        "mesh_update_authorized": false,
+        "physical_aperture_verified": false,
+        "provenance_comparison_epsilon_pixels": 1e-07,
+        "source_coordinates_changed": false,
+        "source_interval_proofs": [
+          {
+            "boundary_length_pixels": 6.091352109488891,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                395.2799987792969,
+                1030.879150390625
+              ],
+              [
+                398.3999938964844,
+                1023.439208984375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                778.3483472687803,
+                298.44966176849084
+              ],
+              [
+                772.7309418773366,
+                300.8053627660611
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.226374026320628,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                402.0,
+                1015.999267578125
+              ],
+              [
+                404.6399841308594,
+                1012.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                767.1135364858928,
+                303.52348816394806
+              ],
+              [
+                764.5765426418802,
+                305.51676476120156
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 89.33555243738556,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                1001.119140625
+              ],
+              [
+                422.1600036621094,
+                1001.119140625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                755.8785413686419,
+                408.08051978770527
+              ],
+              [
+                755.8785413686419,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "fe27c95d8089024c0a7f2f4409c2f0c3ba9ce18a1a848da3f3dc9f75f155f19d"
+          },
+          {
+            "boundary_length_pixels": 6.290228936410133,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                390.47998046875,
+                1144.879150390625
+              ],
+              [
+                388.79998779296875,
+                1136.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                864.422172270497,
+                294.8254868907097
+              ],
+              [
+                858.2611648412712,
+                293.5570360522943
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.258846503403278,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                398.3999938964844,
+                1168.1591796875
+              ],
+              [
+                395.2799987792969,
+                1160.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                881.9993754962343,
+                300.8053627660611
+              ],
+              [
+                876.2007694255299,
+                298.44966176849084
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 12.550582507182709,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                386.1600036621094,
+                1079.3592529296875
+              ],
+              [
+                387.6000061035156,
+                1062.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                814.952451321522,
+                291.5637594550408
+              ],
+              [
+                802.4490514494464,
+                292.6510096141956
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "a0bdadff05eeaab29a2b93c662b541b924b248e968c71184a9909d1084ae5408"
+          },
+          {
+            "boundary_length_pixels": 6.198301791910671,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                390.47998046875,
+                1046.71923828125
+              ],
+              [
+                392.6399841308594,
+                1038.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                790.3081451030739,
+                294.8254868907097
+              ],
+              [
+                784.3282461859271,
+                296.4563621294419
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 6.30336691858612,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                392.6399841308594,
+                1038.7991943359375
+              ],
+              [
+                395.2799987792969,
+                1030.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                784.3282461859271,
+                296.4563621294419
+              ],
+              [
+                778.3483472687803,
+                298.44966176849084
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.037608840458066,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                422.1600036621094,
+                1190.2391357421875
+              ],
+              [
+                418.3199768066406,
+                1189.0391845703125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                898.6704831584866,
+                318.7449673503197
+              ],
+              [
+                897.7644797621833,
+                315.84561823137665
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 0.1812007884126859,
+            "interval_fractions": [
+              0.0,
+              0.01724077035662673
+            ],
+            "native_endpoints": [
+              [
+                422.1600036621094,
+                1001.119140625
+              ],
+              [
+                422.1600036621094,
+                987.19921875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                755.8785413686419,
+                318.7449673503197
+              ],
+              [
+                745.368533302797,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "5c0078802cc1c95f4b27968fa806050f4a8dffbb4985fdf389842d99556093df"
+          },
+          {
+            "boundary_length_pixels": 142.97323483628713,
+            "interval_fractions": [
+              0.44910875218860447,
+              0.5532672550931804
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                184.6396484375
+              ],
+              [
+                540.47998046875,
+                2002.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                139.4091297191917,
+                408.08051978770527
+              ],
+              [
+                1512.0597597620508,
+                408.08051978770527
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3"
+          },
+          {
+            "boundary_length_pixels": 3.20582978277588,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                404.6399841308594,
+                1012.63916015625
+              ],
+              [
+                407.5199890136719,
+                1009.519287109375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                764.5765426418802,
+                305.51676476120156
+              ],
+              [
+                762.2209338114917,
+                307.69126507951114
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 3.266718389246725,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                414.47998046875,
+                1187.119140625
+              ],
+              [
+                410.8800048828125,
+                1184.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                896.3147821609164,
+                312.946292154229
+              ],
+              [
+                894.5027753683098,
+                310.22818979813746
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.240468653110886,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                398.3999938964844,
+                1023.439208984375
+              ],
+              [
+                402.0,
+                1015.999267578125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                772.7309418773366,
+                300.8053627660611
+              ],
+              [
+                767.1135364858928,
+                303.52348816394806
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.266718389246725,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                410.8800048828125,
+                1006.879150390625
+              ],
+              [
+                414.47998046875,
+                1004.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                760.2275420052611,
+                310.22818979813746
+              ],
+              [
+                758.4155352126545,
+                312.946292154229
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 12.370072993155286,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                387.6000061035156,
+                1128.5592041015625
+              ],
+              [
+                386.1600036621094,
+                1112.2391357421875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                852.1000652448638,
+                292.6510096141956
+              ],
+              [
+                839.7778660520489,
+                291.5637594550408
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "50b2c38988e99af2687562561603d228d6577e9d32f0ba65fcad20625fe7e80b"
+          },
+          {
+            "boundary_length_pixels": 12.343408254405986,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                385.1999816894531,
+                1095.67919921875
+              ],
+              [
+                386.1600036621094,
+                1079.3592529296875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                827.2745583471551,
+                290.8389106544073
+              ],
+              [
+                814.952451321522,
+                291.5637594550408
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "a0bdadff05eeaab29a2b93c662b541b924b248e968c71184a9909d1084ae5408"
+          },
+          {
+            "boundary_length_pixels": 6.131732602217442,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                395.2799987792969,
+                1160.479248046875
+              ],
+              [
+                392.6399841308594,
+                1152.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                876.2007694255299,
+                298.44966176849084
+              ],
+              [
+                870.4020711876437,
+                296.4563621294419
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.112859911400276,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                388.79998779296875,
+                1054.63916015625
+              ],
+              [
+                390.47998046875,
+                1046.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                796.287951853039,
+                293.5570360522943
+              ],
+              [
+                790.3081451030739,
+                294.8254868907097
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 12.524300752817972,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                386.1600036621094,
+                1112.2391357421875
+              ],
+              [
+                385.1999816894531,
+                1095.67919921875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                839.7778660520489,
+                291.5637594550408
+              ],
+              [
+                827.2745583471551,
+                290.8389106544073
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "50b2c38988e99af2687562561603d228d6577e9d32f0ba65fcad20625fe7e80b"
+          },
+          {
+            "boundary_length_pixels": 3.2415605557736344,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                414.47998046875,
+                1004.479248046875
+              ],
+              [
+                418.3199768066406,
+                1002.5592041015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                758.4155352126545,
+                312.946292154229
+              ],
+              [
+                756.9658376113875,
+                315.84561823137665
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 6.22736157159561,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                388.79998779296875,
+                1136.71923828125
+              ],
+              [
+                387.6000061035156,
+                1128.5592041015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                858.2611648412712,
+                293.5570360522943
+              ],
+              [
+                852.1000652448638,
+                292.6510096141956
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.077954379495614,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                402.0,
+                1175.3592529296875
+              ],
+              [
+                398.3999938964844,
+                1168.1591796875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                887.4356723755991,
+                303.52348816394806
+              ],
+              [
+                881.9993754962343,
+                300.8053627660611
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 3.164697419131156,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                418.3199768066406,
+                1002.5592041015625
+              ],
+              [
+                422.1600036621094,
+                1000.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                756.9658376113875,
+                315.84561823137665
+              ],
+              [
+                755.6973406893812,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 3.2263339069305643,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                410.8800048828125,
+                1184.71923828125
+              ],
+              [
+                407.5199890136719,
+                1182.0792236328125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                894.5027753683098,
+                310.22818979813746
+              ],
+              [
+                892.5094757292609,
+                307.69126507951114
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 3.205897506827362,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                407.5199890136719,
+                1182.0792236328125
+              ],
+              [
+                404.6399841308594,
+                1178.959228515625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                892.5094757292609,
+                307.69126507951114
+              ],
+              [
+                890.1537747316906,
+                305.51676476120156
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.198301791910672,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                392.6399841308594,
+                1152.7991943359375
+              ],
+              [
+                390.47998046875,
+                1144.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                870.4020711876437,
+                296.4563621294419
+              ],
+              [
+                864.422172270497,
+                294.8254868907097
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 3.2415605557736344,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                418.3199768066406,
+                1189.0391845703125
+              ],
+              [
+                414.47998046875,
+                1187.119140625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                897.7644797621833,
+                315.84561823137665
+              ],
+              [
+                896.3147821609164,
+                312.946292154229
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 3.370642670374437,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                404.6399841308594,
+                1178.959228515625
+              ],
+              [
+                402.0,
+                1175.3592529296875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                890.1537747316906,
+                305.51676476120156
+              ],
+              [
+                887.4356723755991,
+                303.52348816394806
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.227361571595609,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                387.6000061035156,
+                1062.7991943359375
+              ],
+              [
+                388.79998779296875,
+                1054.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                802.4490514494464,
+                292.6510096141956
+              ],
+              [
+                796.287951853039,
+                293.5570360522943
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.22639085064484,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                407.5199890136719,
+                1009.519287109375
+              ],
+              [
+                410.8800048828125,
+                1006.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                762.2209338114917,
+                307.69126507951114
+              ],
+              [
+                760.2275420052611,
+                310.22818979813746
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 89.33555243738556,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                1190.479248046875
+              ],
+              [
+                422.1600036621094,
+                1190.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                898.851776004929,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121"
+          }
+        ],
+        "status": "gap_qualified_outline_proposal",
+        "world_geometry_additions": 0
+      },
+      {
+        "boundary_hausdorff_pixels": 3.523633423094352,
+        "connector_trial_id": "7808415f18680f5856a47f6f641171fec732813ed8ebff846a7648643455a209",
+        "geometry_identity": "80b78da8dfc0b45bed1f5989a4c6fad14dd317dfc08ac5b58be8042521718d11",
+        "geometry_pixels": {
+          "coordinates": [
+            [
+              [
+                898.6704831584866,
+                318.7449673503197
+              ],
+              [
+                897.7644797621833,
+                315.84561823137665
+              ],
+              [
+                896.3147821609164,
+                312.946292154229
+              ],
+              [
+                894.5027753683098,
+                310.22818979813746
+              ],
+              [
+                892.5094757292609,
+                307.69126507951114
+              ],
+              [
+                890.1537747316906,
+                305.51676476120156
+              ],
+              [
+                889.6230005088291,
+                305.12753003113914
+              ],
+              [
+                887.4356723755991,
+                303.52348816394806
+              ],
+              [
+                887.2845949065421,
+                303.44795006976284
+              ],
+              [
+                884.5362804314854,
+                302.0738044809912
+              ],
+              [
+                881.9993754962343,
+                300.8053627660611
+              ],
+              [
+                881.6828931333134,
+                300.67679086292515
+              ],
+              [
+                878.7553320695755,
+                299.48746045589206
+              ],
+              [
+                876.2007694255299,
+                298.44966176849084
+              ],
+              [
+                870.4020711876437,
+                296.4563621294419
+              ],
+              [
+                870.2322462539263,
+                296.41004641689284
+              ],
+              [
+                864.422172270497,
+                294.8254868907097
+              ],
+              [
+                864.2477810736129,
+                294.7895825905704
+              ],
+              [
+                858.2611648412712,
+                293.5570360522943
+              ],
+              [
+                855.0168606065687,
+                293.0799417667888
+              ],
+              [
+                852.1000652448638,
+                292.6510096141956
+              ],
+              [
+                851.769749270797,
+                292.6218641597393
+              ],
+              [
+                848.84901151851,
+                292.36415264766805
+              ],
+              [
+                845.7591099308123,
+                292.09151495204014
+              ],
+              [
+                839.7778660520489,
+                291.5637594550408
+              ],
+              [
+                827.2745583471551,
+                290.8389106544073
+              ],
+              [
+                814.952451321522,
+                291.5637594550408
+              ],
+              [
+                804.6226126202193,
+                292.46200464330497
+              ],
+              [
+                802.4490514494464,
+                292.6510096141956
+              ],
+              [
+                801.5357707762462,
+                292.7853129836471
+              ],
+              [
+                798.4417785861104,
+                293.24030298659534
+              ],
+              [
+                796.287951853039,
+                293.5570360522943
+              ],
+              [
+                792.2904285111199,
+                294.40500021680043
+              ],
+              [
+                790.3081451030739,
+                294.8254868907097
+              ],
+              [
+                789.2089669662236,
+                295.1252615911156
+              ],
+              [
+                784.3282461859271,
+                296.4563621294419
+              ],
+              [
+                783.2410369625803,
+                296.81876520389085
+              ],
+              [
+                778.3483472687803,
+                298.44966176849084
+              ],
+              [
+                777.7648144141948,
+                298.6943706388451
+              ],
+              [
+                774.9036271047692,
+                299.89423095323787
+              ],
+              [
+                772.7309418773366,
+                300.8053627660611
+              ],
+              [
+                772.0025180736831,
+                301.15782927028596
+              ],
+              [
+                769.0882025929616,
+                302.5679954188196
+              ],
+              [
+                767.1135364858928,
+                303.52348816394806
+              ],
+              [
+                764.5765426418802,
+                305.51676476120156
+              ],
+              [
+                762.2209338114917,
+                307.69126507951114
+              ],
+              [
+                760.2275420052611,
+                310.22818979813746
+              ],
+              [
+                758.4155352126545,
+                312.946292154229
+              ],
+              [
+                757.6906971475457,
+                314.39593372226534
+              ],
+              [
+                756.9658376113875,
+                315.84561823137665
+              ],
+              [
+                755.9554602251711,
+                318.1549945756986
+              ],
+              [
+                755.6973406893812,
+                318.7449673503197
+              ],
+              [
+                755.8785413686419,
+                318.7449673503197
+              ],
+              [
+                755.8785413686419,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                318.7449673503197
+              ],
+              [
+                898.6704831584866,
+                318.7449673503197
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "hypothesis_interval_proofs": [
+          {
+            "boundary_length_pixels": 0.18129284644237487,
+            "gap_id": "7808415f18680f5856a47f6f641171fec732813ed8ebff846a7648643455a209",
+            "interval_fractions": [
+              0.0,
+              1.0
+            ]
+          }
+        ],
+        "id": "1e7e366e4be0cadfb27dcaf2f14e4721edb384026b0adaa85b08538c91f62427",
+        "iou_with_reviewed_trace": 0.9588944794330186,
+        "mesh_update_authorized": false,
+        "physical_aperture_verified": false,
+        "provenance_comparison_epsilon_pixels": 1e-07,
+        "source_coordinates_changed": false,
+        "source_interval_proofs": [
+          {
+            "boundary_length_pixels": 6.091352109488891,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                395.2799987792969,
+                1030.879150390625
+              ],
+              [
+                398.3999938964844,
+                1023.439208984375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                778.3483472687803,
+                298.44966176849084
+              ],
+              [
+                772.7309418773366,
+                300.8053627660611
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.226374026320628,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                402.0,
+                1015.999267578125
+              ],
+              [
+                404.6399841308594,
+                1012.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                767.1135364858928,
+                303.52348816394806
+              ],
+              [
+                764.5765426418802,
+                305.51676476120156
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 89.33555243738556,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                1001.119140625
+              ],
+              [
+                422.1600036621094,
+                1001.119140625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                755.8785413686419,
+                408.08051978770527
+              ],
+              [
+                755.8785413686419,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "fe27c95d8089024c0a7f2f4409c2f0c3ba9ce18a1a848da3f3dc9f75f155f19d"
+          },
+          {
+            "boundary_length_pixels": 6.290228936410133,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                390.47998046875,
+                1144.879150390625
+              ],
+              [
+                388.79998779296875,
+                1136.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                864.422172270497,
+                294.8254868907097
+              ],
+              [
+                858.2611648412712,
+                293.5570360522943
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.258846503403278,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                398.3999938964844,
+                1168.1591796875
+              ],
+              [
+                395.2799987792969,
+                1160.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                881.9993754962343,
+                300.8053627660611
+              ],
+              [
+                876.2007694255299,
+                298.44966176849084
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 12.550582507182709,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                386.1600036621094,
+                1079.3592529296875
+              ],
+              [
+                387.6000061035156,
+                1062.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                814.952451321522,
+                291.5637594550408
+              ],
+              [
+                802.4490514494464,
+                292.6510096141956
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "a0bdadff05eeaab29a2b93c662b541b924b248e968c71184a9909d1084ae5408"
+          },
+          {
+            "boundary_length_pixels": 6.198301791910671,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                390.47998046875,
+                1046.71923828125
+              ],
+              [
+                392.6399841308594,
+                1038.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                790.3081451030739,
+                294.8254868907097
+              ],
+              [
+                784.3282461859271,
+                296.4563621294419
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 6.30336691858612,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                392.6399841308594,
+                1038.7991943359375
+              ],
+              [
+                395.2799987792969,
+                1030.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                784.3282461859271,
+                296.4563621294419
+              ],
+              [
+                778.3483472687803,
+                298.44966176849084
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.037608840458066,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                422.1600036621094,
+                1190.2391357421875
+              ],
+              [
+                418.3199768066406,
+                1189.0391845703125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                898.6704831584866,
+                318.7449673503197
+              ],
+              [
+                897.7644797621833,
+                315.84561823137665
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 0.1812007884126859,
+            "interval_fractions": [
+              0.0,
+              0.01724077035662673
+            ],
+            "native_endpoints": [
+              [
+                422.1600036621094,
+                1001.119140625
+              ],
+              [
+                422.1600036621094,
+                987.19921875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                755.8785413686419,
+                318.7449673503197
+              ],
+              [
+                745.368533302797,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "5c0078802cc1c95f4b27968fa806050f4a8dffbb4985fdf389842d99556093df"
+          },
+          {
+            "boundary_length_pixels": 142.97323483628713,
+            "interval_fractions": [
+              0.44910875218860447,
+              0.5532672550931804
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                184.6396484375
+              ],
+              [
+                540.47998046875,
+                2002.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                139.4091297191917,
+                408.08051978770527
+              ],
+              [
+                1512.0597597620508,
+                408.08051978770527
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "07805aff6f23818fda1068406e15f5230261b8adf04efe166b50ed4bffc8c2d3"
+          },
+          {
+            "boundary_length_pixels": 3.20582978277588,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                404.6399841308594,
+                1012.63916015625
+              ],
+              [
+                407.5199890136719,
+                1009.519287109375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                764.5765426418802,
+                305.51676476120156
+              ],
+              [
+                762.2209338114917,
+                307.69126507951114
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 3.266718389246725,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                414.47998046875,
+                1187.119140625
+              ],
+              [
+                410.8800048828125,
+                1184.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                896.3147821609164,
+                312.946292154229
+              ],
+              [
+                894.5027753683098,
+                310.22818979813746
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.240468653110886,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                398.3999938964844,
+                1023.439208984375
+              ],
+              [
+                402.0,
+                1015.999267578125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                772.7309418773366,
+                300.8053627660611
+              ],
+              [
+                767.1135364858928,
+                303.52348816394806
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.266718389246725,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                410.8800048828125,
+                1006.879150390625
+              ],
+              [
+                414.47998046875,
+                1004.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                760.2275420052611,
+                310.22818979813746
+              ],
+              [
+                758.4155352126545,
+                312.946292154229
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 12.370072993155286,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                387.6000061035156,
+                1128.5592041015625
+              ],
+              [
+                386.1600036621094,
+                1112.2391357421875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                852.1000652448638,
+                292.6510096141956
+              ],
+              [
+                839.7778660520489,
+                291.5637594550408
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "50b2c38988e99af2687562561603d228d6577e9d32f0ba65fcad20625fe7e80b"
+          },
+          {
+            "boundary_length_pixels": 12.343408254405986,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                385.1999816894531,
+                1095.67919921875
+              ],
+              [
+                386.1600036621094,
+                1079.3592529296875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                827.2745583471551,
+                290.8389106544073
+              ],
+              [
+                814.952451321522,
+                291.5637594550408
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "a0bdadff05eeaab29a2b93c662b541b924b248e968c71184a9909d1084ae5408"
+          },
+          {
+            "boundary_length_pixels": 6.131732602217442,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                395.2799987792969,
+                1160.479248046875
+              ],
+              [
+                392.6399841308594,
+                1152.7991943359375
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                876.2007694255299,
+                298.44966176849084
+              ],
+              [
+                870.4020711876437,
+                296.4563621294419
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.112859911400276,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                388.79998779296875,
+                1054.63916015625
+              ],
+              [
+                390.47998046875,
+                1046.71923828125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                796.287951853039,
+                293.5570360522943
+              ],
+              [
+                790.3081451030739,
+                294.8254868907097
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 12.524300752817972,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                386.1600036621094,
+                1112.2391357421875
+              ],
+              [
+                385.1999816894531,
+                1095.67919921875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                839.7778660520489,
+                291.5637594550408
+              ],
+              [
+                827.2745583471551,
+                290.8389106544073
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "50b2c38988e99af2687562561603d228d6577e9d32f0ba65fcad20625fe7e80b"
+          },
+          {
+            "boundary_length_pixels": 3.2415605557736344,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                414.47998046875,
+                1004.479248046875
+              ],
+              [
+                418.3199768066406,
+                1002.5592041015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                758.4155352126545,
+                312.946292154229
+              ],
+              [
+                756.9658376113875,
+                315.84561823137665
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 6.22736157159561,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                388.79998779296875,
+                1136.71923828125
+              ],
+              [
+                387.6000061035156,
+                1128.5592041015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                858.2611648412712,
+                293.5570360522943
+              ],
+              [
+                852.1000652448638,
+                292.6510096141956
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 6.077954379495614,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                402.0,
+                1175.3592529296875
+              ],
+              [
+                398.3999938964844,
+                1168.1591796875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                887.4356723755991,
+                303.52348816394806
+              ],
+              [
+                881.9993754962343,
+                300.8053627660611
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 3.164697419131156,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                418.3199768066406,
+                1002.5592041015625
+              ],
+              [
+                422.1600036621094,
+                1000.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                756.9658376113875,
+                315.84561823137665
+              ],
+              [
+                755.6973406893812,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 3.2263339069305643,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                410.8800048828125,
+                1184.71923828125
+              ],
+              [
+                407.5199890136719,
+                1182.0792236328125
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                894.5027753683098,
+                310.22818979813746
+              ],
+              [
+                892.5094757292609,
+                307.69126507951114
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 3.205897506827362,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                407.5199890136719,
+                1182.0792236328125
+              ],
+              [
+                404.6399841308594,
+                1178.959228515625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                892.5094757292609,
+                307.69126507951114
+              ],
+              [
+                890.1537747316906,
+                305.51676476120156
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 4,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.198301791910672,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                392.6399841308594,
+                1152.7991943359375
+              ],
+              [
+                390.47998046875,
+                1144.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                870.4020711876437,
+                296.4563621294419
+              ],
+              [
+                864.422172270497,
+                294.8254868907097
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 3,
+            "source_candidate_id": "92d7c36b3f0b8b7c564bf9fdcdcf141c5216c2447a96a2d77da5c08e4278efa1"
+          },
+          {
+            "boundary_length_pixels": 3.2415605557736344,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                418.3199768066406,
+                1189.0391845703125
+              ],
+              [
+                414.47998046875,
+                1187.119140625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                897.7644797621833,
+                315.84561823137665
+              ],
+              [
+                896.3147821609164,
+                312.946292154229
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 1,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 3.370642670374437,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                404.6399841308594,
+                1178.959228515625
+              ],
+              [
+                402.0,
+                1175.3592529296875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                890.1537747316906,
+                305.51676476120156
+              ],
+              [
+                887.4356723755991,
+                303.52348816394806
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 5,
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b"
+          },
+          {
+            "boundary_length_pixels": 6.227361571595609,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                387.6000061035156,
+                1062.7991943359375
+              ],
+              [
+                388.79998779296875,
+                1054.63916015625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                802.4490514494464,
+                292.6510096141956
+              ],
+              [
+                796.287951853039,
+                293.5570360522943
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "bb17bf7a42227218fc8f10c1b770ea764e54b6c55b590ad1a87608378f1a865f"
+          },
+          {
+            "boundary_length_pixels": 3.22639085064484,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                407.5199890136719,
+                1009.519287109375
+              ],
+              [
+                410.8800048828125,
+                1006.879150390625
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                762.2209338114917,
+                307.69126507951114
+              ],
+              [
+                760.2275420052611,
+                310.22818979813746
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 2,
+            "source_candidate_id": "02d7dd7ba0c50827e6aac21c29fa739f056c5502f9d2ec6dacb06eb36875b0ec"
+          },
+          {
+            "boundary_length_pixels": 89.33555243738556,
+            "interval_fractions": [
+              0.0,
+              1.0
+            ],
+            "native_endpoints": [
+              [
+                540.47998046875,
+                1190.479248046875
+              ],
+              [
+                422.1600036621094,
+                1190.479248046875
+              ]
+            ],
+            "pixel_endpoints": [
+              [
+                898.851776004929,
+                408.08051978770527
+              ],
+              [
+                898.851776004929,
+                318.7449673503197
+              ]
+            ],
+            "ring_index": 0,
+            "segment_index": 0,
+            "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121"
+          }
+        ],
+        "status": "gap_qualified_outline_proposal",
+        "world_geometry_additions": 0
+      }
+    ],
+    "support_gaps": [
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "f152a8f4e35bb25d1ce2a48aacbde5bff6e8fb21d38a77980bcb231b696fd121",
+            "vertex_index": 1
+          }
+        ],
+        "id": "a4c94e760fff0b5cf8000bd9886f120ca27cbd5864404d1f60fba545b390e82b",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      },
+      {
+        "distance_pixels": 0.18129284644237487,
+        "endpoints": [
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.2391357421875
+            ],
+            "pixel_point": [
+              898.6704831584866,
+              318.7449673503197
+            ],
+            "source_candidate_id": "01ee8629d7db2cb532c7d55c0563e0ceb7317a8ffd63e7ce5e857368050b003b",
+            "vertex_index": 0
+          },
+          {
+            "native_point": [
+              422.1600036621094,
+              1190.479248046875
+            ],
+            "pixel_point": [
+              898.851776004929,
+              318.7449673503197
+            ],
+            "source_candidate_id": "995beb3094d8bc9849cdbe9eccda5ea02a743cab6c0c4004449c8c875c323286",
+            "vertex_index": 0
+          }
+        ],
+        "id": "7808415f18680f5856a47f6f641171fec732813ed8ebff846a7648643455a209",
+        "kind": "added_hypothesis_edge",
+        "original_endpoints_moved": false,
+        "physical_connection_verified": false
+      }
+    ],
+    "same_geometry_variants": true
+  },
+  "reviewed_seed_sha256": "e5b17b3597a6c3f8d62fd1a403861ad96d23c315927c636d297bc640a139d84e",
+  "model_replay": {
+    "version": "local-wing-surface-review-v1",
+    "status": "provisional_local_surface_review",
+    "model_path": "/workspace/scratch/3db5a87a149e/mutiny-gap-study/final-model/local-wing-model.json",
+    "model_sha256": "e446791988fa8a57191c8c05021c8dffc248a873722bb54eeda082dc20cd6454",
+    "reused": true,
+    "world_geometry_additions": 0,
+    "world_placement_eligible": false,
+    "wall_triangles": 142,
+    "roof_triangles": 4
+  },
+  "mesh_validation": {
+    "triangulated_area_matches": true,
+    "all_16_apertures_clear": true,
+    "wall_triangles": 142,
+    "roof_triangles": 4
+  },
+  "world": {
+    "local_review_surface_cells": 281,
+    "wall_cells": 89,
+    "roof_cells": 192,
+    "world_placement_eligible": false,
+    "park_world_blocks_added": 0,
+    "world": {
+      "format": "Bedrock .mcworld",
+      "file": "park.mcworld",
+      "target_version": [
+        1,
+        21,
+        130
+      ],
+      "blocks_per_metre": 1,
+      "horizontal_transform": {
+        "minecraft_x": "east",
+        "minecraft_z": "negative north"
+      },
+      "vertical_offset_blocks": 65,
+      "geographic_elevation_m": null,
+      "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+      "spawn": [
+        16,
+        67,
+        7
+      ],
+      "chunks": 8,
+      "composed_blocks": 5681,
+      "explicit_air_cells": 0,
+      "ground_fill_depth_blocks": 4,
+      "round_trip_validation": "all written blocks and all unwritten air cells verified",
+      "foundation": {
+        "minecraft_y": 60,
+        "mode": "shared",
+        "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry"
+      },
+      "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+      "sha256": "777134e2c26cce8fea18e195ddd2fb5d2d104f67230dd0df74a7465a5de1c659",
+      "quality": "draft_unverified",
+      "limitations": [
+        "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+        "Artificial dry-land foundation; unmapped lake depths remain unknown",
+        "Outside mapped chunks Minecraft may generate unrelated terrain",
+        "This export has no automated in-game visual fidelity validation"
+      ]
+    }
+  }
+}
