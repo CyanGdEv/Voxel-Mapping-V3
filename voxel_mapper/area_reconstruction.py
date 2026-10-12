@@ -139,6 +139,17 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
             archive=config.get('evidence_matching',{}).get('benchmark_archive')
             archive={**archive,'file':str(resolve(archive['file']))} if archive else None
             entry['retained_evidence_matching']=match_retained_evidence(corpus,work/'reconstruction-evidence-queue',work/'retained-evidence-matching',benchmark_archive=archive)
+        contextual=config.get('cross_drawing_alignment',{})
+        automatic_settings=config.get('automatic_reconstruction',{})
+        if contextual.get('enabled',automatic_settings.get('enabled',False)):
+            from .cross_drawing_alignment import run as match_cross_drawing
+            store=contextual.get('knowledge_store',automatic_settings.get('knowledge_store'))
+            target_crs=contextual.get('target_crs')
+            if target_crs is None:
+                target_crs=json.loads(resolve(automatic_settings['manifest']).read_text())['crs']
+            entry['cross_drawing_alignment']=match_cross_drawing(corpus,work/'drawing-geometry',
+                resolve(store) if store else root/'evidence-memory.sqlite',work/'cross-drawing-alignment',
+                target_crs=target_crs,max_pages=contextual.get('max_pages',1000))
         from .planning_components import run as identify
         mentions=identify(corpus,work/'drawing-geometry',work/'components')
         available={sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")}

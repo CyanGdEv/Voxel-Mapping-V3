@@ -115,6 +115,18 @@ class EvidenceMemory:
             'reviewed_rejections':self.db.execute('SELECT COUNT(*) FROM feedback').fetchone()[0],
             'training_labels_generated':0}
 
+    def retained(self,kind,*,limit=1000):
+        """Read one bounded kind, checking every fact and its ancestry."""
+        if type(limit) is not int or not 1<=limit<=10000:raise ValueError('Bounded evidence inventory required')
+        rows=self.db.execute('SELECT id,input FROM facts WHERE kind=? AND status=? ORDER BY id LIMIT ?',
+            (kind,'retained',limit+1)).fetchall()
+        if len(rows)>limit:raise ValueError('Evidence inventory budget exceeded')
+        for identifier,inputs in rows:
+            parents=[r[0] for r in self.db.execute('SELECT parent FROM dependencies WHERE child=? ORDER BY parent',(identifier,))]
+            record=self.get(kind,json.loads(inputs),parents)
+            if record is None or record['id']!=identifier:raise ValueError('Evidence inventory identity changed')
+            yield record
+
 
 def main():
     import argparse

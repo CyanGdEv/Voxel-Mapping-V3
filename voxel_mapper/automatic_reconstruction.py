@@ -12,7 +12,7 @@ from shapely.geometry import box, shape
 from shapely.ops import transform
 from .generation_cycles import atomic_json, file_hash
 
-VERSION = 'automatic-drawing-recipes-v2'
+VERSION = 'automatic-drawing-recipes-v3'
 
 
 def input_contract(config, resolve):
