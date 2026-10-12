@@ -219,7 +219,15 @@ def run(pdf,page_number,manifest_file,references_file,source_id,output):
     return report
 
 
-def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10000,max_features=2500000):
+def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10000,max_features=2500000,knowledge_store=None):
+    from .evidence_memory import EvidenceMemory
+    if knowledge_store is None:
+        return _run_batch(documents_file,manifest_file,references_file,output,max_pages=max_pages,max_features=max_features)
+    with EvidenceMemory(knowledge_store) as memory:
+        return _run_batch(documents_file,manifest_file,references_file,output,max_pages=max_pages,max_features=max_features,memory=memory)
+
+
+def _run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10000,max_features=2500000,memory=None):
     """Stream page features into one compiler-ready manifest; cache exact input/output hashes."""
     if type(max_pages) is not int or not 1<=max_pages<=10000 or type(max_features) is not int or not 1<=max_features<=2500000:
         raise ValueError('Bridge page/feature budget exceeded')
@@ -241,16 +249,25 @@ def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10
     from .glyph_visibility import VERSION as glyph_version
     contract={'version':VERSION,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,'input_sha256':{k:file_hash(p) for k,p in [('documents',documents_file),('manifest',manifest_file),('references',references_file)]},
               'document_content_sha256':[digest for _,_,_,digest in resolved],'max_pages':max_pages,'max_features':max_features}
+    if memory is not None:
+        from .evidence_memory import VERSION as memory_version
+        contract['knowledge_memory_version']=memory_version
     output=Path(output)
     if output.exists():
         report=json.loads((output/'bridge-report.json').read_text())
         if report.get('contract')!=contract:raise ValueError('Bridge batch inputs changed')
         for name,sha in report['output_sha256'].items():
             if file_hash(output/name)!=sha:raise ValueError('Bridge batch output checksum mismatch')
+        if memory is not None:
+            for fact in report['knowledge_memory']['page_facts']:
+                retained=memory.get('drawing_page',fact['inputs'],fact['parents'])
+                if retained is None or retained['id']!=fact['id']:
+                    raise ValueError('Bridge evidence memory missing or changed')
         return report
     temporary=output.with_name(output.name+'.partial')
     if temporary.exists():raise ValueError('Incomplete bridge batch; use a fresh output directory')
     temporary.mkdir(parents=True);total=0;page_count=0;registered_sources=[];counts={}
+    page_facts=[];computed_pages=reused_pages=0
     with (temporary/'features.jsonl').open('w') as features_out,(temporary/'pages.jsonl').open('w') as page_out:
         for pdf,source,pages,digest in resolved:
             if pages is None:
@@ -263,10 +280,29 @@ def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10
                 if page_count>max_pages:raise ValueError('Bridge batch page budget exceeded')
                 page_source=replace(source,id=source.id+'/page-'+str(page))
                 if page_source.id in sources:raise ValueError('Generated page source ID collides with original manifest')
-                try:
-                    registered,features,review=bridge_page(pdf,page,page_source,references,sources)
-                except (ValueError,KeyError,TypeError) as error:
-                    registered=None;features=[];review={'status':'withheld','reason':str(error),'document_sha256':source.sha256,'page':page,'feature_count':0,'world_geometry_additions':0}
+                if digest!=source.sha256:raise ValueError('Batch source PDF checksum mismatch')
+                from .evidence_memory import identity
+                relevant_ids={source.id}|{r.get('source_id') for r in references if isinstance(r.get('source_id'),str)}
+                relevant_sources={i:sources[i].__dict__ if i in sources else None for i in sorted(relevant_ids)}
+                parent_facts=[memory.put('source_policy',p,p) for p in relevant_sources.values() if p is not None] if memory is not None else []
+                page_inputs={'source_id':page_source.id,'document_sha256':digest,'page':page,
+                    'bridge_version':VERSION,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,
+                    'source_policy_sha256':identity(relevant_sources),'references_sha256':contract['input_sha256']['references']}
+                retained=memory.get('drawing_page',page_inputs,parent_facts) if memory is not None else None
+                if retained is not None:
+                    payload=retained['payload'];registered=Source(**payload['source']) if payload['source'] else None
+                    features=[Feature(**f) for f in payload['features']];review=payload['review'];reused_pages+=1
+                else:
+                    try:
+                        registered,features,review=bridge_page(pdf,page,page_source,references,sources)
+                    except (ValueError,KeyError,TypeError) as error:
+                        registered=None;features=[];review={'status':'withheld','reason':str(error),'document_sha256':source.sha256,'page':page,'feature_count':0,'world_geometry_additions':0}
+                    computed_pages+=1
+                if memory is not None:
+                    payload={'source':registered.__dict__ if registered else None,
+                             'features':[f.__dict__ for f in features],'review':review}
+                    fact_id=memory.put('drawing_page',page_inputs,payload,parent_facts)
+                    page_facts.append({'id':fact_id,'inputs':page_inputs,'parents':parent_facts})
                 if total+len(features)>max_features:raise ValueError('Bridge feature budget exceeded')
                 for feature in features:features_out.write(json.dumps(feature.__dict__,sort_keys=True)+'\n')
                 if registered:registered_sources.append(registered.__dict__)
@@ -278,6 +314,12 @@ def run_batch(documents_file,manifest_file,references_file,output,*,max_pages=10
             'contract':contract,'pages':page_count,'page_statuses':counts,'feature_count':total,
             'accepted_page_sources':len(registered_sources),'world_geometry_additions':0,
             'output_sha256':{n:file_hash(temporary/n) for n in ['features.jsonl','manifest.json','pages.jsonl']}}
+    if memory is not None:
+        for fact in page_facts:
+            if memory.get('drawing_page',fact['inputs'],fact['parents']) is None:
+                raise ValueError('Bridge evidence memory missing before output commit')
+        report['knowledge_memory']={'page_facts':page_facts,'computed_pages':computed_pages,'reused_pages':reused_pages,
+            'trust_rule':'Cached hypotheses remain hypotheses; only original bridge checks authorize registered semantics.'}
     (temporary/'bridge-report.json').write_text(json.dumps(report,indent=2)+'\n');temporary.replace(output)
     return report
 

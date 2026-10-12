@@ -109,6 +109,39 @@ class BridgeTests(unittest.TestCase):
         (self.root/'documents.json').write_text(json.dumps([{'file':'source.pdf','source_id':'drawing'}]))
         return self.root/'documents.json',self.root/'manifest.json',self.root/'refs.json'
 
+    def test_shared_memory_reuses_page_across_outputs_and_unrelated_sources(self):
+        import json
+        from unittest.mock import patch
+        from voxel_mapper.drawing_registration_bridge import run_batch
+        from voxel_mapper.evidence_memory import EvidenceMemory
+        inputs=self.batch_inputs();memory_path=self.root/'knowledge.sqlite'
+        first=run_batch(*inputs,self.root/'first',knowledge_store=memory_path)
+        self.assertEqual(first['knowledge_memory']['computed_pages'],1)
+        manifest=json.loads(inputs[1].read_text())
+        manifest['sources'].append(replace(self.source,id='unrelated-drawing').__dict__)
+        inputs[1].write_text(json.dumps(manifest))
+        with patch('voxel_mapper.drawing_registration_bridge.bridge_page',side_effect=AssertionError('Unexpected extraction')):
+            second=run_batch(*inputs,self.root/'second',knowledge_store=memory_path)
+        self.assertEqual(second['knowledge_memory']['reused_pages'],1)
+        self.assertEqual((self.root/'first/features.jsonl').read_bytes(),(self.root/'second/features.jsonl').read_bytes())
+        fact=second['knowledge_memory']['page_facts'][0]
+        with EvidenceMemory(memory_path) as memory:
+            memory.reject(fact['parents'][0],reviewer='tester',reason='wrong landmark identity',review_reference='qa/1')
+        with self.assertRaisesRegex(ValueError,'rejected or invalidated'):
+            run_batch(*inputs,self.root/'second',knowledge_store=memory_path)
+
+    def test_shared_memory_changed_reference_recomputes_and_keeps_withheld_result(self):
+        import json
+        from voxel_mapper.drawing_registration_bridge import run_batch
+        inputs=self.batch_inputs();memory_path=self.root/'knowledge.sqlite'
+        first=run_batch(*inputs,self.root/'first',knowledge_store=memory_path)
+        inputs[2].write_text(json.dumps({'landmarks':self.refs[:3]}))
+        second=run_batch(*inputs,self.root/'second',knowledge_store=memory_path)
+        self.assertEqual(second['knowledge_memory']['computed_pages'],1)
+        self.assertEqual(second['feature_count'],0)
+        self.assertEqual(second['accepted_page_sources'],0)
+        self.assertNotEqual(first['knowledge_memory']['page_facts'][0]['id'],second['knowledge_memory']['page_facts'][0]['id'])
+
     def test_batch_page_sources_cache_and_tamper_detection(self):
         from voxel_mapper.drawing_registration_bridge import run_batch
         inputs=self.batch_inputs();output=self.root/'batch'

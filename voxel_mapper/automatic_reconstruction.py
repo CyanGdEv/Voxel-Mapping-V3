@@ -12,7 +12,7 @@ from shapely.geometry import box, shape
 from shapely.ops import transform
 from .generation_cycles import atomic_json, file_hash
 
-VERSION = 'automatic-drawing-recipes-v1'
+VERSION = 'automatic-drawing-recipes-v2'
 
 
 def input_contract(config, resolve):
@@ -50,7 +50,9 @@ def prepare(config, area, resolve, work, available):
     documents_file = root / 'documents.json'
     atomic_json(documents_file, documents)
     bridge = run_batch(documents_file, manifest_path, resolve(settings['references']), root / 'bridge',
-                       max_pages=settings.get('max_pages', 10000), max_features=settings.get('max_features', 2500000))
+                       max_pages=settings.get('max_pages', 10000), max_features=settings.get('max_features', 2500000),
+                       knowledge_store=resolve(settings['knowledge_store']) if settings.get('knowledge_store') else
+                           Path(work).parent/'evidence-memory.sqlite')
     report['bridge'] = bridge
     bounds = area['bounds']
     if (len(bounds) != 4 or any(type(v) not in (int, float) or not math.isfinite(v) for v in bounds)
