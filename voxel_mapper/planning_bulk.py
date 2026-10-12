@@ -24,12 +24,41 @@ class Corpus:
         CREATE TABLE IF NOT EXISTS downloads(url TEXT PRIMARY KEY,expected_sha TEXT,status TEXT NOT NULL DEFAULT 'pending',attempts INTEGER NOT NULL DEFAULT 0,sha TEXT,size INTEGER,error TEXT);
         CREATE TABLE IF NOT EXISTS documents(id TEXT PRIMARY KEY,url TEXT NOT NULL,record TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS pages(sha TEXT,page INTEGER,summary TEXT NOT NULL,PRIMARY KEY(sha,page));
+        CREATE TABLE IF NOT EXISTS applications(reference TEXT PRIMARY KEY,record TEXT,status TEXT,attempts INTEGER DEFAULT 0,sha TEXT,error TEXT,expected_sha TEXT);
         ''')
         # Preserve canonical HTTPS identities while retaining an explicitly
         # observed transport for portals whose HTTPS attachment route fails.
         if 'transport_url' not in {r[1] for r in self.db.execute('PRAGMA table_info(downloads)')}:
             self.db.execute('ALTER TABLE downloads ADD COLUMN transport_url TEXT')
             self.db.commit()
+
+        if 'expected_sha' not in {r[1] for r in self.db.execute('PRAGMA table_info(applications)')}:
+            self.db.execute('ALTER TABLE applications ADD COLUMN expected_sha TEXT')
+            self.db.commit()
+
+    def validate_applications(self, records, hosts):
+        from .source_archive import application_records
+        application_records({'applications': records}, set(hosts), allow_unpinned=True)
+        seen = {}
+        for record in records:
+            identity = (record['url'], record.get('cached_page_sha256'))
+            if record['reference'] in seen and seen[record['reference']] != identity:
+                raise ValueError('Conflicting retained application snapshots')
+            seen[record['reference']] = identity
+            previous = self.db.execute('SELECT record,expected_sha FROM applications WHERE reference=?',
+                                       (record['reference'],)).fetchone()
+            if previous:
+                prior = json.loads(previous[0])
+                if prior['url'] != record['url'] or (previous[1] and identity[1] and previous[1] != identity[1]):
+                    raise ValueError('Conflicting retained application snapshots; use a fresh corpus')
+
+    def ingest_applications(self, records, hosts):
+        self.validate_applications(records, hosts)
+        with self.db:
+            for record in records:
+                self.db.execute("INSERT INTO applications(reference,record,status,expected_sha) VALUES(?,?,'pending',?) "
+                                "ON CONFLICT(reference) DO UPDATE SET record=excluded.record,expected_sha=COALESCE(excluded.expected_sha,expected_sha)",
+                                (record['reference'], json.dumps(record, sort_keys=True), record.get('cached_page_sha256')))
 
     def ingest(self, records, hosts):
         hosts=set(hosts)
@@ -68,6 +97,9 @@ class Corpus:
                 'discovery_completeness':'Not implied by manifest completion',
                 'failed_urls':[{
                     'url':url,'attempts':attempts,'error':error} for url,attempts,error in self.db.execute("SELECT url,attempts,error FROM downloads WHERE status='failed' ORDER BY url LIMIT 100")],
+                'retained_blob_issues':[{'url':url,'sha256':pin or sha,'reason':error} for url,pin,sha,error in
+                    self.db.execute("SELECT url,expected_sha,sha,error FROM downloads WHERE error LIKE 'Retained blob %' ORDER BY url LIMIT 10000")],
+                'application_states':dict(self.db.execute('SELECT status,COUNT(*) FROM applications GROUP BY status')),
                 'world_geometry_additions':0,'geometry_status':'PDF vectors and labels require semantics, existing-state review and registration'}
 
     def acquire(self, *, workers=4, limit=10000, attempts=3, max_bytes=64_000_000,
@@ -87,16 +119,21 @@ class Corpus:
                 candidates=[self.root/'files'/f'{sha}.pdf'] if sha else []
                 if pin:candidates.append(self.root/'files'/f'{pin}.pdf')
                 if cache and pin:candidates.append(Path(cache)/'files'/f'{pin}.pdf')
-                retained=None
+                retained=None;issue='missing'
                 for path in candidates:
-                    if path.is_file() and path.stat().st_size<=max_bytes:
-                        data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
-                        if data.startswith(b'%PDF-') and digest==(pin or sha):retained=(data,digest);break
+                    if path.exists():
+                        issue='corrupt'
+                        if path.is_file() and path.stat().st_size<=max_bytes:
+                            data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
+                            if data.startswith(b'%PDF-') and digest==(pin or sha):retained=(data,digest);break
                 if retained:
                     data,digest=retained;self._retain(data,digest)
                     self.db.execute("UPDATE downloads SET status='downloaded',sha=?,size=?,error=NULL WHERE url=?",(digest,len(data),url))
                 elif status=='downloaded':
-                    self.db.execute("UPDATE downloads SET status='pending',attempts=0,error='Retained blob missing or corrupt' WHERE url=?",(url,))
+                    self.db.execute("UPDATE downloads SET status='pending',attempts=0,error=? WHERE url=?",('Retained blob '+issue,url))
+                    if sha:self.db.execute('DELETE FROM pages WHERE sha=?',(sha,))
+                elif offline and (pin or sha) and status=='pending':
+                    self.db.execute('UPDATE downloads SET error=? WHERE url=?',('Retained blob '+issue,url))
         if offline:return self.report()
         if priority_urls:
             slots=','.join('?' for _ in priority_urls)
@@ -167,6 +204,14 @@ class Corpus:
         processed=0;errors=[]
         for (sha,) in self.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded' ORDER BY sha").fetchall():
             try:
+                # A cached inventory never substitutes for its original PDF.
+                path=self.root/'files'/f'{sha}.pdf'
+                if not path.is_file():raise ValueError('Retained blob missing')
+                if path.stat().st_size>64_000_000:raise ValueError('Retained blob corrupt; PDF byte budget exceeded')
+                with path.open('rb') as stream:
+                    header=stream.read(5);stream.seek(0)
+                    if header!=b'%PDF-' or hashlib.file_digest(stream,'sha256').hexdigest()!=sha:
+                        raise ValueError('Retained blob corrupt; checksum/header mismatch')
                 with pymupdf.open(self.root/'files'/f'{sha}.pdf') as pdf:
                     for page_number in range(len(pdf)):
                         if self.db.execute('SELECT 1 FROM pages WHERE sha=? AND page=?',(sha,page_number+1)).fetchone():continue
@@ -178,8 +223,37 @@ class Corpus:
                         with self.db:self.db.execute('INSERT INTO pages VALUES(?,?,?)',(sha,page_number+1,json.dumps(summary)))
                         processed+=1
                 if processed>=max_pages:break
-            except Exception as exc:errors.append({'sha256':sha,'error':str(exc)})
+            except Exception as exc:
+                errors.append({'sha256':sha,'error':str(exc)})
+                if str(exc).startswith('Retained blob '):
+                    with self.db:
+                        self.db.execute('DELETE FROM pages WHERE sha=?',(sha,))
+                        self.db.execute("UPDATE downloads SET status='pending',attempts=0,error=? WHERE sha=?",(str(exc),sha))
         result=self.report();result.update(run_inspected_pages=processed,inspection_errors=errors);return result
+
+    def export_inspection(self, output):
+        """Portable JSONL evidence only; no database flags or geometry approvals."""
+        from .source_archive import pinned_sha
+        output=Path(output);output.parent.mkdir(parents=True,exist_ok=True)
+        temporary=output.with_suffix('.'+uuid.uuid4().hex+'.partial');pages=0;invalid=[]
+        try:
+            with temporary.open('w',encoding='utf-8',newline='\n') as stream:
+                for (sha,) in self.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded' ORDER BY sha").fetchall():
+                    pinned_sha(sha);path=self.root/'files'/f'{sha}.pdf'
+                    if not path.is_file() or path.stat().st_size>64_000_000:
+                        invalid.append(sha);continue
+                    with path.open('rb') as original:
+                        if hashlib.file_digest(original,'sha256').hexdigest()!=sha:
+                            invalid.append(sha);continue
+                    for (raw,) in self.db.execute('SELECT summary FROM pages WHERE sha=? ORDER BY page',(sha,)):
+                        row=json.loads(raw)
+                        row.update(status='page_inventory_only',world_geometry_additions=0)
+                        stream.write(json.dumps(row,sort_keys=True)+'\n');pages+=1
+            temporary.replace(output)
+        finally:temporary.unlink(missing_ok=True)
+        with output.open('rb') as stream:sha=hashlib.file_digest(stream,'sha256').hexdigest()
+        return {'pages':pages,'sha256':sha,'size':output.stat().st_size,'excluded_original_sha256s':invalid,
+                'world_geometry_additions':0}
 
     def close(self):self.db.close()
 

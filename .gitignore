@@ -4,3 +4,7 @@ build/
 output/
 .venv/
 examples/park-build/
+alton-test/
+retained-source-input/
+retained-source-replay/
+retained-corpus/
