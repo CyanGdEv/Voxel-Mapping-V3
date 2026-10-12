@@ -24,12 +24,15 @@ def run(job_path,stage='all'):
         corpus=Corpus(root/'corpus')
         try:
             acquisition=job.get('acquisition',{})
-            if acquisition.get('provider')=='alton':checkpoint('discovery',discover_alton(corpus,max_search_pages=acquisition.get('max_search_pages',40),max_applications=acquisition.get('max_applications',1000)))
+            if acquisition.get('provider')=='alton':
+                if acquisition.get('offline',False):
+                    checkpoint('discovery',{'status':'skipped_offline','live_downloads':0,'complete_council_discovery':False})
+                else:checkpoint('discovery',discover_alton(corpus,max_search_pages=acquisition.get('max_search_pages',40),max_applications=acquisition.get('max_applications',1000)))
             if acquisition.get('catalogue'):
                 catalogue=json.loads(path(acquisition['catalogue']).read_text());corpus.ingest(catalogue.get('entries',catalogue.get('documents',[])),acquisition['official_hosts'])
             for index,archive in enumerate(acquisition.get('retained_archives',[])):
                 from .planning_archive import import_archive
-                checkpoint('retained_archive_'+str(index),import_archive(corpus,path(archive['file']),archive['sha256'],acquisition['official_hosts'],catalogue_member=archive.get('catalogue_member','metadata/alton-planning-catalogue.json'),allow_partial=archive.get('allow_partial',False)))
+                checkpoint('retained_archive_'+str(index),import_archive(corpus,path(archive['file']),archive['sha256'],acquisition['official_hosts'],catalogue_member=archive.get('catalogue_member','metadata/alton-planning-catalogue.json'),applications_member=archive.get('applications_member','metadata/alton-applications.json'),allow_partial=archive.get('allow_partial',False)))
             report=corpus.acquire(workers=acquisition.get('workers',4),limit=acquisition.get('max_downloads',10000),max_run_bytes=acquisition.get('max_run_bytes',2000000000),
                                   offline=acquisition.get('offline',False),cache=str(path(acquisition['cache'])) if acquisition.get('cache') else None)
             checkpoint('downloads',report);checkpoint('inspection',corpus.inspect(acquisition.get('max_inspection_pages',10000)))

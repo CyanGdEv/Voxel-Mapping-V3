@@ -37,6 +37,7 @@ voxel-boundary-registration = "voxel_mapper.boundary_registration:main"
 voxel-sheet-alignment = "voxel_mapper.sheet_alignment:main"
 voxel-mapped-placement = "voxel_mapper.mapped_sheet_placement:main"
 voxel-planning-archive = "voxel_mapper.planning_archive:main"
+voxel-planning-bundle = "voxel_mapper.planning_bundle:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 
 [project.optional-dependencies]

@@ -1,5 +1,10 @@
 # Retained source recovery and anchor audit
 
+For portable source storage, pinned application HTML recovery, offline inspection
+inventories and the supplied-artifact CI path, see [source bundles](source-bundles.md).
+Legacy ZIP imports now retain application-page catalogues and HTML as well as PDFs;
+missing-source reports do not imply a download or accepted geometry.
+
 A park job can now import a retained planning archive before attempting downloads. The importer checks a supplied archive SHA256, bounded catalogue/member sizes, unique member names, declared official HTTPS hosts and each content-addressed PDF checksum/header. It preserves application links, titles and declared construction states as source metadata, never as current-state authority. It copies missing blobs atomically, repairs corrupt retained copies from verified archive bytes, and resumes unchanged files. No archive paths are extracted into arbitrary directories. Recovery makes no live-download claim.
 
 ```bash

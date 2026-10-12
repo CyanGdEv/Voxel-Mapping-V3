@@ -2,11 +2,29 @@ name: Alton Towers Wicker Man planning test
 # Recover missing official sections alongside cached drawing evidence.
 on:
   workflow_dispatch:
+    inputs:
+      retained_source_run_id:
+        description: Same-repository Actions run containing a source-bundle.zip artifact (optional)
+        type: string
+        default: ''
+      retained_source_artifact:
+        description: Exact artifact name in that run
+        type: string
+        default: ''
+      retained_source_sha256:
+        description: SHA256 of source-bundle.zip from the retained source receipt
+        type: string
+        default: ''
+      allow_partial_sources:
+        description: Permit absent originals while retaining complete missing-source diagnostics
+        type: boolean
+        default: false
   pull_request:
     paths:
       - .github/workflows/alton-generation-test.yml
 permissions:
   contents: read
+  actions: read
 jobs:
   alton-world:
     runs-on: ubuntu-latest
@@ -23,8 +41,75 @@ jobs:
         env:
           CC: gcc
           CXX: g++
+      - name: Validate retained-source inputs
+        env:
+          SOURCE_RUN_ID: ${{ inputs.retained_source_run_id }}
+          SOURCE_ARTIFACT: ${{ inputs.retained_source_artifact }}
+          SOURCE_PIN: ${{ inputs.retained_source_sha256 }}
+        run: |
+          python - <<'PY'
+          import os, re
+          run, artifact, pin = (os.environ[k] for k in ('SOURCE_RUN_ID', 'SOURCE_ARTIFACT', 'SOURCE_PIN'))
+          if any((run, artifact, pin)):
+              if not re.fullmatch(r'[1-9][0-9]{0,19}', run):
+                  raise SystemExit('A positive same-repository retained_source_run_id is required.')
+              if not re.fullmatch(r'[A-Za-z0-9_.-]{1,128}', artifact):
+                  raise SystemExit('An exact retained_source_artifact name is required.')
+              if not re.fullmatch(r'[0-9a-f]{64}', pin):
+                  raise SystemExit('The original source-bundle.zip SHA256 is required.')
+          PY
+      - name: Download supplied retained-source artifact
+        id: retained-download
+        if: github.event_name == 'workflow_dispatch' && inputs.retained_source_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.retained_source_artifact }}
+          run-id: ${{ inputs.retained_source_run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: retained-source-input
+      - name: Replay checksum-bound original sources without council requests
+        id: retained-replay
+        if: github.event_name == 'workflow_dispatch' && inputs.retained_source_run_id != ''
+        env:
+          SOURCE_PIN: ${{ inputs.retained_source_sha256 }}
+          ALLOW_PARTIAL: ${{ inputs.allow_partial_sources }}
+        run: |
+          python - <<'PY'
+          import os, subprocess, sys
+          args = [sys.executable, '-m', 'voxel_mapper.planning_bundle', 'replay',
+                  '--bundle', 'retained-source-input/source-bundle.zip', '--sha256', os.environ['SOURCE_PIN'],
+                  '--official-host', 'publicaccess.staffsmoorlands.gov.uk',
+                  '--corpus', 'retained-corpus', '--output', 'retained-source-replay']
+          if os.environ['ALLOW_PARTIAL'] == 'true':
+              args.append('--allow-partial')
+          subprocess.run(args, check=True)
+          PY
       - name: Generate Wicker Man area and check SW8 planning geometry
-        run: python -m voxel_mapper.wickerman --output alton-test
+        id: generation
+        env:
+          SOURCE_RUN_ID: ${{ inputs.retained_source_run_id }}
+        run: |
+          python - <<'PY'
+          import os, subprocess, sys
+          args = [sys.executable, '-m', 'voxel_mapper.wickerman', '--output', 'alton-test']
+          if os.environ['SOURCE_RUN_ID']:
+              args.extend(['--planning-cache', 'retained-corpus'])
+          # The genuine geometry gate remains mandatory and its exit code propagates.
+          subprocess.run(args, check=True)
+          PY
+      - name: Preserve original sources after generation or geometry failure
+        if: always() && (steps.generation.outcome == 'success' || steps.generation.outcome == 'failure')
+        env:
+          SOURCE_ORIGIN: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import os, subprocess, sys
+          subprocess.run([sys.executable, '-m', 'voxel_mapper.planning_bundle', 'capture',
+                          '--source', 'alton-test', '--bundle', 'alton-test/source-bundle/source-bundle.zip',
+                          '--official-host', 'publicaccess.staffsmoorlands.gov.uk',
+                          '--origin', os.environ['SOURCE_ORIGIN']], check=True)
+          PY
       - name: Summarise actual planning geometry usage
         if: always()
         run: |
@@ -32,6 +117,13 @@ jobs:
           import json
           from pathlib import Path
           report = Path('alton-test/quality-report.json')
+          replay = Path('retained-source-replay/replay-report.json')
+          if replay.exists():
+              retained = json.loads(replay.read_text())
+              with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+                  summary.write('Retained-source offline replay: '+retained['sources']['status']+'\n\n')
+                  summary.write('Original source counts: '+json.dumps(retained['sources']['counts'])+'\n\n')
+                  summary.write('Replay performs no live council downloads and approves no world geometry.\n\n')
           if report.exists():
               data = json.loads(report.read_text())
               acceptance = Path('alton-test/wicker-man-acceptance.json')
@@ -60,6 +152,27 @@ jobs:
         if: always()
         with:
           name: alton-generation-test-${{ github.run_id }}
-          path: alton-test/
+          path: |
+            alton-test/
+            !alton-test/source-bundle/
+            retained-source-replay/
           if-no-files-found: warn
           retention-days: 14
+      - name: Retain generated original-source bundle separately from diagnostics
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alton-source-bundle-${{ github.run_id }}
+          path: alton-test/source-bundle/source-bundle.zip*
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 90
+      - name: Preserve the supplied bundle even if replay rejects it
+        uses: actions/upload-artifact@v4
+        if: always() && steps.retained-download.outcome == 'success'
+        with:
+          name: alton-supplied-source-bundle-${{ github.run_id }}
+          path: retained-source-input/source-bundle.zip*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 90

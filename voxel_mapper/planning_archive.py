@@ -2,68 +2,107 @@
 import argparse
 import hashlib
 import json
-from pathlib import Path
-import re
-import uuid
-import zipfile
+
+from .source_archive import (MAX_HTML_BYTES, MAX_METADATA_BYTES, MAX_PDF_BYTES,
+                             application_records, checked_archive, load_json,
+                             pdf_records, read_member, retain, safe_member)
 
 
-def import_archive(corpus,archive,expected_sha256,hosts,*,catalogue_member='metadata/alton-planning-catalogue.json',allow_partial=False):
-    if type(allow_partial) is not bool:raise ValueError('allow_partial must be a boolean')
-    archive=Path(archive)
-    if not re.fullmatch('[0-9a-f]{64}',str(expected_sha256)):raise ValueError('Pinned archive SHA256 required')
-    if archive.stat().st_size>2000000000:raise ValueError('Archive compressed-byte budget exceeded')
-    with archive.open('rb') as stream:
-        if hashlib.file_digest(stream,'sha256').hexdigest()!=expected_sha256:raise ValueError('Archive checksum mismatch')
-    with zipfile.ZipFile(archive) as source:
-        members=source.infolist()
-        if len(members)>20000 or len({m.filename for m in members})!=len(members):raise ValueError('Archive member budget or duplicate names')
-        index={m.filename:m for m in members};catalogue=index[catalogue_member]
-        if catalogue.file_size>8000000:raise ValueError('Catalogue byte budget exceeded')
-        entries=json.loads(source.read(catalogue))['entries']
-        if not isinstance(entries,list) or len(entries)>10000:raise ValueError('Bounded archive catalogue required')
-        records=[];blobs={};total=0;deferred=0
-        for record in entries:
-            sha=record.get('sha256');member=record.get('file')
-            if not re.fullmatch('[0-9a-f]{64}',str(sha)) or member!=f'files/{sha}.pdf':raise ValueError('Pinned content-addressed PDF member required')
-            if member not in index:
-                if not allow_partial:raise ValueError('Catalogue PDF is absent from retained archive')
-                deferred+=1
-                records.append({**record,'retained_archive_sha256':expected_sha256,'retained_archive_member':member,'acquisition_provenance':'retained_archive_catalogue_only; PDF_not_retained'})
-                continue
-            item=index[member]
-            if item.file_size>64000000:raise ValueError('PDF byte budget exceeded')
-            if sha not in blobs:total+=item.file_size;blobs[sha]=item
-            if total>2000000000:raise ValueError('Archive expanded PDF budget exceeded')
-            records.append({**record,'retained_archive_sha256':expected_sha256,'retained_archive_member':member,'acquisition_provenance':'checksum_verified_retained_archive; no live download'})
+def import_archive(corpus, archive, expected_sha256, hosts, *,
+                   catalogue_member='metadata/alton-planning-catalogue.json',
+                   applications_member='metadata/alton-applications.json', allow_partial=False):
+    if type(allow_partial) is not bool:
+        raise ValueError('allow_partial must be a boolean')
+    hosts = set(hosts)
+    if not hosts:
+        raise ValueError('Explicit official portal hosts required')
+    with checked_archive(archive, expected_sha256) as (source, index):
+        if 'bundle.json' in index:
+            from .planning_bundle import import_bundle
+            return import_bundle(corpus, archive, expected_sha256, hosts, allow_partial=allow_partial)
+        safe_member(catalogue_member)
+        if catalogue_member not in index:
+            raise ValueError('Archive catalogue is absent')
+        metadata = {catalogue_member: read_member(source, index[catalogue_member], MAX_METADATA_BYTES)}
+        entries = pdf_records(load_json(metadata[catalogue_member]), hosts)
+        applications = []
+        safe_member(applications_member)
+        if applications_member in index:
+            metadata[applications_member] = read_member(source, index[applications_member], MAX_METADATA_BYTES)
+            applications = application_records(load_json(metadata[applications_member]), hosts)
+        selected = {r['file']: ('pdf', r['sha256']) for r in entries}
+        selected.update({r['cached_page']: ('application_html', r['cached_page_sha256']) for r in applications})
+        missing = [{'member': name, 'kind': kind, 'sha256': sha, 'status': 'missing'}
+                   for name, (kind, sha) in selected.items() if name not in index]
         # Validate every selected blob before changing catalogue/availability.
-        for sha,item in blobs.items():
-            data=source.read(item)
-            if not data.startswith(b'%PDF-') or hashlib.sha256(data).hexdigest()!=sha:raise ValueError('Retained PDF header/checksum mismatch')
-        corpus.ingest(records,hosts)
-        copied=resumed=0
-        for sha,item in blobs.items():
-            target=corpus.root/'files'/f'{sha}.pdf';valid=False
-            if target.exists():
-                with target.open('rb') as stream:valid=hashlib.file_digest(stream,'sha256').hexdigest()==sha
-            if valid:resumed+=1
+        # Partial mode permits absence only; it never permits corrupt evidence.
+        for name, (kind, sha) in selected.items():
+            if name in index:
+                data = read_member(source, index[name], MAX_PDF_BYTES if kind == 'pdf' else MAX_HTML_BYTES, sha)
+                if kind == 'pdf' and not data.startswith(b'%PDF-'):
+                    raise ValueError('Retained PDF header/checksum mismatch')
+        if missing and not allow_partial:
+            raise ValueError('Catalogue source file is absent from retained archive')
+        corpus.validate_applications(applications, hosts)
+        records = [{**r, 'retained_archive_sha256': expected_sha256, 'retained_archive_member': r['file'],
+                    'acquisition_provenance': ('retained_archive_catalogue_only; PDF_not_retained' if r['file'] not in index
+                                               else 'checksum_verified_retained_archive; no live download')} for r in entries]
+        corpus.ingest(records, hosts)
+        corpus.ingest_applications(applications, hosts)
+        copied = resumed = html_copied = html_resumed = 0
+        for name, (kind, sha) in selected.items():
+            if name not in index:
+                continue
+            data = read_member(source, index[name], MAX_PDF_BYTES if kind == 'pdf' else MAX_HTML_BYTES, sha)
+            changed = retain(corpus.root, name, data, sha)
+            if kind == 'pdf':
+                copied += int(changed)
+                resumed += int(not changed)
+                with corpus.db:
+                    corpus.db.execute("UPDATE downloads SET status='downloaded',sha=?,size=?,error=NULL WHERE expected_sha=?",
+                                      (sha, len(data), sha))
             else:
-                temporary=target.with_suffix('.'+uuid.uuid4().hex+'.partial')
-                try:
-                    data=source.read(item)
-                    if hashlib.sha256(data).hexdigest()!=sha:raise ValueError('Retained PDF changed during import')
-                    temporary.write_bytes(data);temporary.replace(target)
-                finally:temporary.unlink(missing_ok=True)
-                copied+=1
-            with corpus.db:corpus.db.execute("UPDATE downloads SET status='downloaded',sha=?,size=?,error=NULL WHERE expected_sha=?",(sha,item.file_size,sha))
-    report={'status':'retained_archive_imported','archive_sha256':expected_sha256,'catalogue_records':len(records),'retained_catalogue_records':len(records)-deferred,'deferred_catalogue_records':deferred,'allow_partial':allow_partial,'unique_pdf_blobs':len(blobs),'copied_blobs':copied,'resumed_blobs':resumed,'expanded_pdf_bytes':total,'live_downloads':0,'world_geometry_additions':0}
-    (corpus.root/f'archive-{expected_sha256}.json').write_text(json.dumps(report,indent=2)+'\n');return report
+                html_copied += int(changed)
+                html_resumed += int(not changed)
+                with corpus.db:
+                    corpus.db.execute("UPDATE applications SET status='retained',sha=?,error=NULL WHERE expected_sha=?", (sha, sha))
+        for name, data in metadata.items():
+            retain(corpus.root, f'bundles/{expected_sha256}/{name}', data, hashlib.sha256(data).hexdigest())
+    deferred = sum(r['file'] not in index for r in entries)
+    report = {'status': 'retained_archive_imported', 'archive_sha256': expected_sha256,
+              'catalogue_records': len(entries), 'retained_catalogue_records': len(entries) - deferred,
+              'deferred_catalogue_records': deferred, 'allow_partial': allow_partial,
+              'unique_pdf_blobs': copied + resumed, 'copied_blobs': copied, 'resumed_blobs': resumed,
+              'expanded_pdf_bytes': sum(index[n].file_size for n, (k, _) in selected.items() if n in index and k == 'pdf'),
+              'application_catalogue_available': applications_member in metadata,
+              'application_records': len(applications), 'retained_application_pages': html_copied + html_resumed,
+              'copied_application_pages': html_copied, 'resumed_application_pages': html_resumed,
+              'missing_sources': missing, 'source_completeness': 'partial' if missing else 'selected_members_complete',
+              'discovery_completeness': 'Not implied by archive completion',
+              'live_downloads': 0, 'world_geometry_additions': 0}
+    (corpus.root / f'archive-{expected_sha256}.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    return report
 
 
 def main():
     from .planning_bulk import Corpus
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--corpus',required=True);p.add_argument('--archive',required=True);p.add_argument('--sha256',required=True);p.add_argument('--official-host',action='append',required=True);p.add_argument('--catalogue-member',default='metadata/alton-planning-catalogue.json');p.add_argument('--allow-partial',action='store_true');a=p.parse_args();corpus=Corpus(a.corpus)
-    try:print(json.dumps(import_archive(corpus,a.archive,a.sha256,a.official_host,catalogue_member=a.catalogue_member,allow_partial=a.allow_partial),indent=2))
-    finally:corpus.close()
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--corpus', required=True)
+    p.add_argument('--archive', required=True)
+    p.add_argument('--sha256', required=True)
+    p.add_argument('--official-host', action='append', required=True)
+    p.add_argument('--catalogue-member', default='metadata/alton-planning-catalogue.json')
+    p.add_argument('--applications-member', default='metadata/alton-applications.json')
+    p.add_argument('--allow-partial', action='store_true')
+    a = p.parse_args()
+    corpus = Corpus(a.corpus)
+    try:
+        print(json.dumps(import_archive(corpus, a.archive, a.sha256, a.official_host,
+                                        catalogue_member=a.catalogue_member, applications_member=a.applications_member,
+                                        allow_partial=a.allow_partial), indent=2))
+    finally:
+        corpus.close()
 
-if __name__=='__main__':main()
+
+if __name__ == '__main__':
+    main()
