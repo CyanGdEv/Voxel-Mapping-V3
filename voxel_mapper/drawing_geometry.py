@@ -11,7 +11,7 @@ from shapely.strtree import STRtree
 from .drawing_page_tools import native_inverse
 from .drawing_footprints import fill_geometry
 
-VERSION='drawing-geometry-v2'
+VERSION='drawing-geometry-v3'
 DEFAULTS={'curve_tolerance_points':.25,'max_paths':100000,'max_candidates':4000,'max_points':10000,'max_total_points':200000}
 
 
@@ -78,8 +78,17 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','max_scan_paths'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
+    if 'region_native_points' in options:
+        region=options['region_native_points']
+        if (not isinstance(region,(list,tuple)) or len(region)!=4
+                or any(type(v) not in (int,float) or not math.isfinite(v) for v in region)
+                or region[0]>=region[2] or region[1]>=region[3]):
+            raise ValueError('Finite ordered native region bounds required')
+        options['region_native_points']=list(region)
+    if 'max_scan_paths' in options and (type(options['max_scan_paths']) is not int or not 1<=options['max_scan_paths']<=500000):
+        raise ValueError('Invalid regional source scan budget')
     if 'isolate_open_stroked_subpaths' in options and type(options['isolate_open_stroked_subpaths']) is not bool:
         raise ValueError('Boolean isolated stroke-subpath option required')
     tolerance=options['curve_tolerance_points']
@@ -92,15 +101,19 @@ def validated_options(overrides):
     return options
 
 
-def extract_page(page,sha,page_number,**overrides):
+def extract_page(page,sha,page_number,*,_paths=None,**overrides):
     import pymupdf
     options=validated_options(overrides);identity=contract(options)
     matrix=native_inverse(page);angle=page.rotation
     try:
         page.set_rotation(0);frame=box(*(page.rect*matrix))
     finally:page.set_rotation(angle)
-    paths=page.get_cdrawings(extended=True);rejections=Counter();candidates=[];seen={};clips=[];groups=[];total_points=0
-    if len(paths)>options['max_paths']:return [],{'status':'path_budget_withheld','raw_paths':len(paths),'world_geometry_additions':0}
+    region=box(*options['region_native_points']) if 'region_native_points' in options else None
+    if region is not None and not frame.covers(region):raise ValueError('Region must lie within native page frame')
+    paths=page.get_cdrawings(extended=True) if _paths is None else _paths;rejections=Counter();candidates=[];seen={};clips=[];groups=[];total_points=0
+    scan_limit=options.get('max_scan_paths',500000) if region is not None else options['max_paths']
+    if len(paths)>scan_limit:return [],{'status':'path_budget_withheld','raw_paths':len(paths),'world_geometry_additions':0}
+    selected=0
     masks=[]
     for block in page.get_text('dict',flags=pymupdf.TEXTFLAGS_DICT & ~pymupdf.TEXT_PRESERVE_IMAGES)['blocks']:
         for line in block.get('lines',[]):
@@ -117,6 +130,17 @@ def extract_page(page,sha,page_number,**overrides):
                 if not clip.equals(box(*clip.bounds)):raise ValueError('Nonrectangular clip')
             except (ValueError,KeyError,TypeError):clip=None
             clips.append((level,clip));continue
+        if region is not None:
+            # Native path bounds enclose the complete primitive, including curves.
+            # Never clip or split a source paint group to fit an extraction region.
+            bounds=box(*(pymupdf.Rect(path['rect'])*matrix))
+            if not region.intersects(bounds):
+                rejections['outside_region']+=1;continue
+            selected+=1
+            if selected>options['max_paths']:
+                return [],{'status':'region_path_budget_withheld','raw_paths':len(paths),'selected_paths':selected,'world_geometry_additions':0}
+            if not region.covers(bounds) or bounds.distance(region.boundary)<.25:
+                rejections['complete_primitive_crosses_region_boundary']+=1;continue
         if groups or any(c[1] is None for c in clips):rejections['unsupported_clipping_or_compositing_scope']+=1;continue
         if path.get('layer'):rejections['optional_layer_state_unknown']+=1;continue
         if path.get('fill_opacity',1)!=1 or path.get('stroke_opacity',1)!=1:rejections['nonopaque_paint']+=1;continue
@@ -143,6 +167,7 @@ def extract_page(page,sha,page_number,**overrides):
             for geometry,subpath_index in geometries:
                 try:
                     if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
+                    if region is not None and not region.covers(geometry):raise ValueError('Complete geometry crosses region boundary')
                     if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
                     if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
                     if geometry.geom_type=='LineString':
@@ -178,7 +203,7 @@ def extract_page(page,sha,page_number,**overrides):
             if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred']:break
         except (ValueError,TypeError,KeyError,OverflowError) as exc:rejections[str(exc)]+=1
     counts=Counter(c['geometry']['type'] for c in candidates)
-    return candidates,{'status':'partial_candidate_budget' if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred'] else 'unplaced_geometry_candidates','raw_paths':len(paths),'candidates':len(candidates),'geometry_types':dict(counts),'retained_points':total_points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),'rejections':dict(rejections),'world_geometry_additions':0}
+    return candidates,{'status':'partial_candidate_budget' if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred'] else 'unplaced_geometry_candidates','raw_paths':len(paths),'selected_paths':selected if region is not None else len(paths),'region_native_points':options.get('region_native_points'),'candidates':len(candidates),'geometry_types':dict(counts),'retained_points':total_points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),'rejections':dict(rejections),'world_geometry_additions':0}
 
 
 def run(corpus,output,*,max_pages=10000,**overrides):

@@ -1,9 +1,10 @@
 """Automatic map consistency checks; never independent survey registration."""
 import math
+import re
 import numpy as np
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v2'
+VERSION = 'held-out-map-alignment-v3'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -79,6 +80,45 @@ def check(objects, references, hypotheses, *, expected_scale=None,
                            'Passing checks is map consistency evidence, not independently surveyed registration.']}
 
 
+def fragmented_scale_runs(runs):
+    """Join only adjacent singleton glyphs of one native font and baseline.
+
+    CAD sometimes paints each glyph twice. Coincident duplicates retain all
+    source references; conflicting characters cannot form a scale caption.
+    """
+    groups={}
+    for run in runs:
+        if len(run['chars'])!=1 or tuple(run['dir'])!=(1.,0.):continue
+        char=run['chars'][0]
+        key=(run['font'],round(run['size'],3),round(char[2][1],2),run.get('type'),run.get('opacity'),str(run.get('color')),run.get('layer'))
+        groups.setdefault(key,[]).append(run)
+    output=[]
+    for group in groups.values():
+        ordered=sorted(group,key=lambda r:r['chars'][0][2][0]);chains=[];chain=[]
+        for run in ordered:
+            char=run['chars'][0]
+            if chain:
+                previous=chain[-1]['chars'][0]
+                if abs(char[2][0]-previous[2][0])<.02 and char[0]==previous[0]:
+                    chain[-1]={**chain[-1],'trace_indices':chain[-1]['trace_indices']+run['trace_indices'],
+                               'character_indices':chain[-1]['character_indices']+run['character_indices']}
+                    continue
+                gap=char[3][0]-previous[3][2]
+                if gap<-.1 or gap>run['size']*.25:
+                    chains.append(chain);chain=[]
+            chain.append(run)
+        if chain:chains.append(chain)
+        for chain in chains:
+            text=''.join(chr(r['chars'][0][0]) for r in chain)
+            if '@' not in text or len(chain)>64:continue
+            output.append({**chain[0],'chars':[r['chars'][0] for r in chain],
+                'bbox':[min(r['bbox'][0] for r in chain),min(r['bbox'][1] for r in chain),
+                        max(r['bbox'][2] for r in chain),max(r['bbox'][3] for r in chain)],
+                'trace_indices':[i for r in chain for i in r['trace_indices']],
+                'character_indices':[i for r in chain for i in r['character_indices']]})
+    return output
+
+
 def printed_scale_review(pdf, page):
     """Screen exact native scale labels, including split CAD text traces."""
     import pymupdf
@@ -87,28 +127,47 @@ def printed_scale_review(pdf, page):
     from .drawing_registration_bridge import SCALE
     from .boundary_registration import file_hash
     digest = file_hash(pdf)
-    labels = []; denominators = set(); visible = set()
+    labels = []; denominators = set(); visible = set(); unresolved = False
+    paper_pattern = re.compile(r'^(?:Scale\s+)?1\s*[:/]\s*(\d{1,5})\s*@\s*(A[0-5])$',re.I)
+    papers={'A0':(841,1189),'A1':(594,841),'A2':(420,594),'A3':(297,420),'A4':(210,297),'A5':(148,210)}
     with pymupdf.open(pdf) as document:
         if not 1 <= page <= len(document) or len(document) > 1000:
             raise ValueError('Bounded map scale page required')
         native = document[page-1]; traces = native.get_texttrace()
+        # Unrotated effective dimensions include PDF UserUnit; crop changes are
+        # deliberately withheld because they may hide a resized sheet.
+        angle=native.rotation
+        try:
+            native.set_rotation(0)
+            dimensions=sorted([native.rect.width*25.4/72,native.rect.height*25.4/72])
+        finally:native.set_rotation(angle)
+        cropped=native.cropbox!=native.mediabox
+        unit_kind,unit_text=document.xref_get_key(native.xref,'UserUnit')
+        unit=1. if unit_kind=='null' else float(unit_text)
+        paper_matches=[name for name,size in papers.items() if all(abs(a-b)<=1.5 for a,b in zip(dimensions,size)) and not cropped]
         if len(traces) > 10000 or sum(len(t['chars']) for t in traces) > 500000:
             raise ValueError('Map scale text budget exceeded')
-        for run in label_runs(traces):
+        runs=label_runs(traces)
+        for run in runs+fragmented_scale_runs(runs):
             text = ''.join(chr(c[0]) for c in run['chars']).strip()
             match = SCALE.fullmatch(text)
+            paper_match=paper_pattern.fullmatch(text)
+            match=match or paper_match
             if not match or not 1 <= int(match[1]) <= 10000: continue
             if len(labels) >= 16: raise ValueError('Map scale label budget exceeded')
-            denominator = int(match[1]); denominators.add(denominator)
+            denominator = int(match[1])
+            applicable=paper_match is None or (len(paper_matches)==1 and paper_match[2].upper()==paper_matches[0])
+            if paper_match is not None and len(paper_matches)!=1:unresolved=True
+            if applicable:denominators.add(denominator)
             screen = screen_span(native, run, zoom=24 if run['size'] < 4 else 6)
-            if screen['status'] == 'raster_consistent_candidate': visible.add(denominator)
+            if applicable and screen['status'] == 'raster_consistent_candidate': visible.add(denominator)
             labels.append({'text': text, 'denominator': denominator, 'bbox_page_points': list(run['bbox']),
                            'trace_indices': run['trace_indices'], 'character_indices': run['character_indices'],
-                           'glyph_screen': screen})
-    usable = len(denominators) == 1 and denominators <= visible
+                           'glyph_screen': screen,'paper_size':paper_match[2].upper() if paper_match else None,'applicable_to_page':applicable})
+    usable = unit==1 and not unresolved and len(denominators) == 1 and denominators <= visible
     if file_hash(pdf) != digest: raise ValueError('Scale source PDF changed during review')
     return {'status': 'one_visible_printed_scale' if usable else 'withheld_missing_ambiguous_or_unverified_scale',
-            'document_sha256':digest,'page':page,
+            'document_sha256':digest,'page':page,'effective_page_dimensions_mm':dimensions,'matching_paper_sizes':paper_matches,'unresolved_paper_scale':unresolved,'pdf_user_unit':unit,'native_unit_supported':unit==1,
             'denominators': sorted(denominators), 'labels': labels,
             'expected_metres_per_pdf_point': next(iter(denominators))*.0254/72 if usable else None}
 
