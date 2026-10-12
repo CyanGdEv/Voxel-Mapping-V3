@@ -84,6 +84,8 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         raise ValueError('Unknown resort area: '+area_id)
     from .automatic_reconstruction import input_contract
     automatic_contract=input_contract(config,resolve)
+    from .registration_qualification import input_contract as qualification_contract
+    frame_contract=qualification_contract(config,resolve)
     contract={'version':VERSION,'config_sha256':hashlib.sha256(raw).hexdigest(),'catalogue_sha256':file_hash(catalogue_path),'supplement_sha256':supplement_pins,
               'recipe_sha256':{a['id']:file_hash(resolve(a['reconstruction_job'])) for a in areas if a.get('reconstruction_job')}}
     local_reviews={}
@@ -94,6 +96,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         if seeds:local_reviews[a['id']]={s:file_hash(resolve(s)) for s in seeds}
     if local_reviews:contract['local_wing_review_seed_sha256']=local_reviews
     if automatic_contract is not None:contract['automatic_reconstruction']=automatic_contract
+    if frame_contract is not None:contract['registration_qualification']=frame_contract
     state_path=root/'area-state.json'
     state=json.loads(state_path.read_text()) if state_path.exists() else {'contract':contract,'areas':{i:{'status':'pending'} for i in ids}}
     if state['contract']!=contract:raise ValueError('Area inputs changed; use a fresh reconstruction run')
@@ -129,6 +132,17 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+        if frame_contract is not None:
+            from .registration_qualification import run as qualify_frames
+            settings=config.get('registration_qualification',{})
+            automatic=config.get('automatic_reconstruction',{})
+            def frame_setting(key):return settings.get(key,automatic.get(key))
+            entry['registration_qualification']=qualify_frames(corpus,work/'drawing-geometry',
+                resolve(frame_setting('knowledge_store')) if frame_setting('knowledge_store') else root/'evidence-memory.sqlite',
+                work/'registration-qualification',
+                manifest=resolve(frame_setting('manifest')) if frame_setting('manifest') else None,
+                references=resolve(frame_setting('references')) if frame_setting('references') else None,
+                max_pages=settings.get('max_pages',config.get('max_pages',1000)))
         architecture=config.get('architectural_interpretation',{})
         if architecture.get('enabled',False):
             from .architectural_interpretation import run as interpret_architecture

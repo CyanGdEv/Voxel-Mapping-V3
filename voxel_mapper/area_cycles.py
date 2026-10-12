@@ -32,6 +32,10 @@ def load(job):
     automatic_contract = input_contract(config, lambda p: (job.parent / p).resolve())
     if automatic_contract is not None:
         contract['automatic_reconstruction'] = automatic_contract
+    from .registration_qualification import input_contract as qualification_contract
+    frames = qualification_contract(config, lambda p: (job.parent / p).resolve())
+    if frames is not None:
+        contract['registration_qualification'] = frames
     path = root / 'auto-cycle-state.json'
     state = json.loads(path.read_text()) if path.exists() else {
         'contract': contract, 'cursor': 0, 'areas': {}, 'status': 'running',

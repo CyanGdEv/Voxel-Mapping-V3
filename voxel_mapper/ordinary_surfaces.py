@@ -21,7 +21,7 @@ from .paving_palette import material_label, polygon_surface
 from .reconstruction.model import Feature
 from .reconstruction.registration import apply_registration, review_registration
 
-VERSION = 'ordinary-surface-labels-v2'
+VERSION = 'ordinary-surface-labels-v3'
 # Only standalone labels. Reports, dimensions, wall/roof descriptions and title
 # block prose cannot become surface finishes.
 SURFACE_ROLE = re.compile(r'^(?:existing\s+)?(?:path|footpath|walkway|plaza|courtyard|paving|paved area)$', re.I)
@@ -196,6 +196,9 @@ def accepted_alignment(source, page_number, references, sources, printed_scales)
     bound = alignment['checkpoint_error']['max_m'] + max(p['accuracy_m'] for p in controls) + max(p['accuracy_m'] for p in checks) + scale
     if bound > tolerance:
         raise ValueError('Ordinary sheet registration error budget exceeded')
+    alignment.update(target_crs=source.crs, expected_scale_metres_per_pdf_point=scale,
+                     reference_and_attachment_error_budget_m=bound,
+                     correspondence_method='source-bound native points checked against independent survey registry')
     return alignment
 
 
@@ -296,30 +299,15 @@ def features(rows, source, alignment):
 
 
 def bridge_page(pdf, page_number, source, references, sources):
-    from dataclasses import replace
-    from .drawing_registration_bridge import file_hash, SCALE
-    from .coordinate_text import coordinate_runs
-    from pypdf import PdfReader
-    if (source.kind not in ('planning', 'cad') or not re.fullmatch('[0-9a-f]{64}', str(source.sha256))
-            or file_hash(pdf) != source.sha256):
-        raise ValueError('Pinned ordinary planning drawing source required')
-    crs = CRS.from_user_input(source.crs)
-    if not crs.is_projected or any(abs(a.unit_conversion_factor - 1) > 1e-9 for a in crs.axis_info[:2]):
-        raise ValueError('Projected metre CRS required')
-    reader = PdfReader(pdf)
-    if not 1 <= page_number <= len(reader.pages) or len(reader.pages) > 1000:
-        raise ValueError('Bounded ordinary drawing page required')
-    scales = {int(match[1]) for r in coordinate_runs(reader.pages[page_number-1])
-              if (match := SCALE.fullmatch(r['text'].strip()))}
-    alignment = accepted_alignment(source, page_number, references, sources, scales)
-    registered = replace(source, registration_status='accepted', metadata={**source.metadata,
-        'horizontal_registration_review': alignment})
+    from .registration_qualification import qualify_page
+    registered, qualification = qualify_page(pdf, page_number, source, references, sources)
+    alignment = qualification['registration']
     with pymupdf.open(pdf) as document:
         rows, labels, extraction = page_candidates(document[page_number-1], source.sha256, page_number)
     output, decisions = features(rows, registered, alignment)
     return registered, output, {'status': 'registered_semantic_features' if output else 'registered_no_supported_semantics',
         'adapter_version': VERSION, 'document_sha256': source.sha256, 'page': page_number,
-        'registration': alignment, 'semantic_decisions': decisions, 'feature_count': len(output),
+        'registration': alignment, 'registration_qualification': qualification, 'semantic_decisions': decisions, 'feature_count': len(output),
         'extraction_status': extraction, 'surface_label_decisions': labels, 'world_geometry_additions': 0,
         'limitations': ['Ordinary contained surface labels only; no wall, roof or report material classification.',
                        'Independent source-bound sheet registration and spatially verified physical surface-plan scope required.',

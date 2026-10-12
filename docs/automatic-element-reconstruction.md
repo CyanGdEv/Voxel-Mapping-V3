@@ -1,5 +1,11 @@
 # Automatic element reconstruction
 
+Automatic recipe contract v4 runs a separate [registration qualification](registration-qualification.md)
+preflight before component reconstruction. Both supported drawing adapters use
+the same source-bound frame checks, and ordinary registrations now retain their
+combined error budgets for contextual matching. Fresh controller work directories
+are required on upgrade; an existing configured evidence store remains reusable.
+
 The resort runner can now create area recipes and discovered component IDs from drawing PDFs without a hand-written recipe or per-object binding. It uses the existing explicit drawing registration bridge, compiler and ten-worker native cycle pipeline. Enable this once in the resort job:
 
 ```json

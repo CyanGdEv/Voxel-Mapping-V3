@@ -21,7 +21,7 @@ from .drawing_geometry import extract_page
 from .reconstruction.model import Source, Feature
 from .reconstruction.registration import review_registration, apply_registration, registration_domain
 
-VERSION = 'explicit-and-ordinary-drawing-bridge-v2'
+VERSION = 'explicit-and-ordinary-drawing-bridge-v3'
 MARK = re.compile(r'^CP:([A-Za-z0-9_.-]{1,64})$')
 OBJECT = re.compile(r'^(PATH|PLAZA|WALL|ROOF):([A-Za-z0-9_.-]{1,64})(?:\s+(.*))?$')
 SCALE = re.compile(r'^(?:Scale\s+)?1\s*:\s*(\d{1,5})$', re.I)
@@ -180,15 +180,14 @@ def bridge_page(pdf,page_number,source,references,sources):
     if content is not None and any(op in (b'BMC',b'BDC') or (op==b'Tr' and int(args[0])==3) for args,op in content.operations):
         raise ValueError('Invisible or layered text requires a separate visibility-aware adapter')
     runs=coordinate_runs(page);marks=extract_marks(page,reuse_allowed=source.metadata.get('reuse_allowed') is True)
-    alignment=named_registration(runs,marks,references,sources,source)
-    metadata={**source.metadata,'horizontal_registration_review':alignment,
-              'registration_document_sha256':source.sha256,'registration_page':page_number}
-    registered=replace(source,registration_status='accepted',metadata=metadata)
+    from .registration_qualification import qualify_page
+    registered,qualification=qualify_page(pdf,page_number,source,references,sources)
+    alignment=qualification['registration']
     import pymupdf as fitz
     with fitz.open(pdf) as document: candidates,extraction=extract_page(document[page_number-1],source.sha256,page_number)
     features,decisions=semantic_features(runs,marks,candidates,registered,alignment)
     return registered,features,{'status':'registered_semantic_features' if features else 'registered_no_supported_semantics',
-            'document_sha256':source.sha256,'page':page_number,'registration':alignment,'semantic_decisions':decisions,
+            'document_sha256':source.sha256,'page':page_number,'registration':alignment,'registration_qualification':qualification,'semantic_decisions':decisions,
             'feature_count':len(features),'extraction_status':extraction['status'], 'world_geometry_additions':0,
             'limitations':['Exact named marks and verified structured object callouts only; not generic PDF interpretation.',
                            'Registered features still require compile, conflict and native export checks.',
@@ -247,7 +246,8 @@ def _run_batch(documents_file,manifest_file,references_file,output,*,max_pages=1
         resolved.append((pdf,source,pages,file_hash(pdf)))
     from .ordinary_surfaces import VERSION as ordinary_version
     from .glyph_visibility import VERSION as glyph_version
-    contract={'version':VERSION,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,'input_sha256':{k:file_hash(p) for k,p in [('documents',documents_file),('manifest',manifest_file),('references',references_file)]},
+    from .registration_qualification import VERSION as qualification_version
+    contract={'version':VERSION,'registration_qualification_version':qualification_version,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,'input_sha256':{k:file_hash(p) for k,p in [('documents',documents_file),('manifest',manifest_file),('references',references_file)]},
               'document_content_sha256':[digest for _,_,_,digest in resolved],'max_pages':max_pages,'max_features':max_features}
     if memory is not None:
         from .evidence_memory import VERSION as memory_version
@@ -286,7 +286,7 @@ def _run_batch(documents_file,manifest_file,references_file,output,*,max_pages=1
                 relevant_sources={i:sources[i].__dict__ if i in sources else None for i in sorted(relevant_ids)}
                 parent_facts=[memory.put('source_policy',p,p) for p in relevant_sources.values() if p is not None] if memory is not None else []
                 page_inputs={'source_id':page_source.id,'document_sha256':digest,'page':page,
-                    'bridge_version':VERSION,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,
+                    'bridge_version':VERSION,'registration_qualification_version':qualification_version,'ordinary_adapter_version':ordinary_version,'glyph_screen_version':glyph_version,
                     'source_policy_sha256':identity(relevant_sources),'references_sha256':contract['input_sha256']['references']}
                 retained=memory.get('drawing_page',page_inputs,parent_facts) if memory is not None else None
                 if retained is not None:
