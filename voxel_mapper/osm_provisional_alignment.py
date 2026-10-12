@@ -17,9 +17,10 @@ from .evidence_memory import EvidenceMemory,identity
 from .mapped_sheet_placement import propose,placed,VERSION as MATCH_VERSION
 from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK_VERSION
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
+from .osm_outline_review import review as review_outlines,VERSION as OUTLINE_REVIEW_VERSION
 from .osm_landmark_context import bind_labels,topology_checks,VERSION as CONTEXT_VERSION,GLYPH_VERSION
 
-VERSION='osm-provisional-alignment-v4'
+VERSION='osm-provisional-alignment-v5'
 
 
 def recover_outlines(data):
@@ -51,7 +52,7 @@ def osm_collection(path):
         elements=[]
         for kind in ('way','relation'):
             for item in root.findall(kind):
-                row={'type':kind,'id':int(item.attrib['id']),'tags':{t.attrib['k']:t.attrib['v'] for t in item.findall('tag')}}
+                row={'type':kind,'id':int(item.attrib['id']),**{k:item.attrib[k] for k in ('timestamp','version') if k in item.attrib},'tags':{t.attrib['k']:t.attrib['v'] for t in item.findall('tag')}}
                 if kind=='way':
                     row['geometry']=ways[row['id']];row['nodes']=[int(n.attrib['ref']) for n in item.findall('nd')]
                 else:row['members']=[{'type':m.attrib['type'],'ref':int(m.attrib['ref']),'role':m.attrib.get('role',''),
@@ -63,7 +64,9 @@ def osm_collection(path):
         raise ValueError('Complete bounded OSM element snapshot required')
     collection,skipped=parse_osm(data)
     way_nodes={e['id']:e['nodes'] for e in data['elements'] if e.get('type')=='way' and e.get('nodes') is not None}
+    metadata={'osm/'+e['type']+'/'+str(e['id']):{k:str(e[k])[:128] for k in ('timestamp','version') if k in e} for e in data['elements'] if e.get('type') in ('way','relation')}
     for feature in collection['features']:
+        feature['properties']['source_metadata']=metadata.get(feature['id'],{})
         if feature['id'].startswith('osm/way/'):
             nodes=way_nodes.get(int(feature['id'].split('/')[-1]))
             if nodes is not None:feature['properties']['osm_node_ids']=nodes
@@ -94,7 +97,7 @@ def map_references(path,target_crs):
         geometry=transform(converter.transform,shape(feature['geometry']))
         if geometry.is_empty or not geometry.is_valid or geometry.has_z:continue
         if len(rows)>=5000:raise ValueError('OSM reference polygon budget exceeded')
-        rows.append({'id':feature['id'],'geometry':geometry,'name':feature['properties'].get('name','')})
+        rows.append({'id':feature['id'],'geometry':geometry,'name':feature['properties'].get('name',''),'source_metadata':feature['properties'].get('source_metadata',{})})
     from shapely.strtree import STRtree
     index=STRtree([r['geometry'] for r in rows])
     for feature in collection['features']:
@@ -121,7 +124,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
         (extraction['version'],extraction['contract'])).fetchall()
     if len(pages)!=extraction['pages'] or len(pages)>max_pages:raise ValueError('OSM alignment page inventory budget/change')
     contract={'version':VERSION,'match_version':MATCH_VERSION,'check_version':CHECK_VERSION,'recovery_version':RECOVERY_VERSION,
-        'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
+        'outline_review_version':OUTLINE_REVIEW_VERSION,'landmark_context_version':CONTEXT_VERSION,'glyph_version':GLYPH_VERSION,
         'name_ocr_engine_sha256':file_hash(shutil.which('tesseract')) if shutil.which('tesseract') else None,
         'native_render_engine':pymupdf.VersionBind,
         'geometry_sha256':file_hash(feed),'osm_sha256':osm_sha,'target_crs':target_crs,
@@ -156,6 +159,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
                         priority_seed_ids=names['priority_seed_ids'],named_pairs=names['named_pairs'])
                     review=check(objects,refs,proposal['hypotheses'],expected_scale=scale['expected_metres_per_pdf_point'],search_flags=proposal['review_flags'])
                     record.update(proposal=proposal,alignment_checks=review,status='map_consistent_provisional_alignment' if review['status']=='map_consistent_candidate' else 'unvalidated_map_proposals' if proposal['hypotheses'] else 'no_map_correspondence_found')
+                    record['outline_investigation']=review_outlines(objects,refs,review,data['candidates']+recovered)
                     record['network_diagnostics']=topology_checks(data['candidates'],map_lines,proposal['hypotheses'])
                     if review['status']=='map_consistent_candidate':
                         fit=proposal['hypotheses'][0];domain=shape(fit['mapped_support_envelope'])

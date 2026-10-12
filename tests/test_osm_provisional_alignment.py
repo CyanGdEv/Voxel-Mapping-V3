@@ -43,6 +43,7 @@ class OSMAlignmentTests(unittest.TestCase):
         first=self.align();self.assertEqual(first['page_statuses'],{'map_consistent_provisional_alignment':1})
         self.assertEqual(first['provisional_overlay_records'],5);self.assertFalse(first['registration_verified'])
         row=json.loads((Path(first['output_directory'])/'page-alignments.jsonl').read_text())
+        self.assertEqual(row['outline_investigation']['failed_checks'],0)
         self.assertIsNone(row['absolute_error_bound_m']);self.assertLess(row['uncertainty']['held_out_map_disagreement_m'],1e-6)
         for check in row['alignment_checks']['hypotheses'][0]['held_out_checks']:
             self.assertNotIn(check['candidate_id'],check['fit_landmark_ids'])
@@ -76,8 +77,9 @@ class OSMAlignmentTests(unittest.TestCase):
         for value in (True,float('nan'),0):
             with self.assertRaises(ValueError):propose(self.objects,self.refs,expected_scale=value)
     def test_osm_api_xml_keeps_way_identity(self):
-        self.osm.write_text('<osm><node id="1" lon="0" lat="0"/><node id="2" lon="0.001" lat="0"/><node id="3" lon="0.001" lat="0.001"/><way id="7"><nd ref="1"/><nd ref="2"/><nd ref="3"/><nd ref="1"/><tag k="building" v="yes"/></way></osm>')
+        self.osm.write_text('<osm><node id="1" lon="0" lat="0"/><node id="2" lon="0.001" lat="0"/><node id="3" lon="0.001" lat="0.001"/><way id="7" version="2" timestamp="2020-01-01T00:00:00Z"><nd ref="1"/><nd ref="2"/><nd ref="3"/><nd ref="1"/><tag k="building" v="yes"/></way></osm>')
         collection,_,_=osm_collection(self.osm);self.assertEqual(collection['features'][0]['id'],'osm/way/7')
+        self.assertEqual(collection['features'][0]['properties']['source_metadata'],{'version':'2','timestamp':'2020-01-01T00:00:00Z'})
 
     def test_regional_recovery_uses_complete_source_lines_without_clipping(self):
         from voxel_mapper.drawing_geometry import extract_pipeline_page

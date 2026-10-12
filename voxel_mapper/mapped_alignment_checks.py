@@ -5,7 +5,7 @@ import numpy as np
 from shapely.affinity import translate
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v4'
+VERSION = 'held-out-map-alignment-v5'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -76,7 +76,7 @@ def check(objects, references, hypotheses, *, expected_scale=None,
                     'fit_landmark_ids': [s['candidate_id'] for j, s in enumerate(supports) if j != i],
                     'intersection_over_union': iou, 'boundary_error_m': error,
                     'relative_printed_scale_error': scale_error, 'passed': passed,
-                    'failed_thresholds':failed,
+                    'failed_thresholds':failed,'held_out_fit':fit,
                     'boundary_discrepancy':{'centroid_error_m':centroid_error,
                         'centroid_aligned_boundary_error_m':centered_error,
                         'centroid_aligned_intersection_over_union':centered_iou,
