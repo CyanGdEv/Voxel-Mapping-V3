@@ -147,3 +147,9 @@ The three-plan automatic-context audit is recorded in
 bounds-only area test acquires once and replays without any manual landmark
 inputs. These stages run automatically, but incomplete evidence still leaves
 placement or component generation pending.
+
+Printed-scale seed coverage now screens every retained polygon against all reference polygons for area, hole topology and shape feasibility. The bounded scheduler tries one feasible alternative per outline before ordinary second alternatives, with exact named hints retaining priority. It no longer drops outlines after the first 64 or reference alternatives after the first eight. Only the configured number of fits is retained in the schedule; no unbounded pair list is materialized. The `seed_search` receipt records eligible, scheduled and deferred pairs, attempted outlines and untried outlines. Any deferred feasible pair raises `seed_fit_budget_exhausted`, which prevents a map-consistent overlay even if a hypothesis passes held-out checks. These filters and checks still describe provisional map agreement, not physical identity or independent survey accuracy.
+
+The unscaled mapped-placement workflow retains its existing discovery shortlist; the full eligibility scheduler requires the original visible printed scale. See `docs/evidence/mutiny-osm-seed-coverage-validation.json` for the retained-plan audit.
+
+At the default 512-fit budget, the retained Mutiny audit now tries all 133 and 134 eligible outlines on the two usable-scale revisions and finds one five-outline hypothesis on each. Both remain withheld: held-out boundary errors range from 0.877 to 8.662 m, four of five checks fail, and 1,583 / 1,584 feasible seed pairs remain deferred. Network diagnostics also retain their vertex-budget rejection. The third revision remains withheld by scale visibility. A fresh output reuses all three page facts with identical feed hashes; no overlays, surveyed frames or world blocks are accepted.

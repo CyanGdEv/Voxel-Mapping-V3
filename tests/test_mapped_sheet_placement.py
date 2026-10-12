@@ -77,6 +77,47 @@ class MappedPlacementTests(unittest.TestCase):
         r=propose(objects,refs);self.assertEqual(r['verification_objects'],73);self.assertEqual(r['seed_objects'],64)
         self.assertEqual(r['status'],'provisional_mapped_placement')
 
+    def test_printed_scale_search_reaches_outlines_beyond_first_64(self):
+        objects,refs=self.fixture()
+        for i in range(70):
+            objects.append({'candidate_id':'decoy'+str(i),'geometry':Polygon([(10000+i*500,10000),(10400+i*500,10000),(10400+i*500,10200),(10300+i*500,10200),(10300+i*500,10400),(10000+i*500,10400)])})
+        result=propose(objects,refs,expected_scale=2)
+        self.assertEqual(result['status'],'provisional_mapped_placement')
+        self.assertEqual(result['seed_search']['eligible_seed_objects'],3)
+        self.assertEqual(result['seed_search']['untried_seed_objects'],0)
+        self.assertNotIn('seed_selection_truncated; all_objects_verified',result['review_flags'])
+        self.assertEqual(result['verification_objects'],73)
+
+    def test_printed_scale_search_covers_objects_before_second_alternatives(self):
+        from unittest.mock import patch
+        objects,refs=self.fixture()
+        refs=refs+[{'id':'duplicate/'+r['id'],'geometry':translate(r['geometry'],5000,0)} for r in refs]
+        seen=[]
+        def decline(local,reference):
+            seen.append(local.wkb_hex)
+            return {'status':'withheld'}
+        with patch('voxel_mapper.mapped_sheet_placement.fit_boundary',side_effect=decline):
+            result=propose(objects,refs,expected_scale=2,max_seed_fits=3)
+        self.assertEqual(len(set(seen)),3)
+        self.assertEqual(result['seed_search']['attempted_seed_objects'],3)
+        self.assertGreater(result['seed_search']['deferred_seed_pairs'],0)
+        self.assertIn('seed_fit_budget_exhausted',result['review_flags'])
+
+    def test_printed_scale_search_keeps_reference_alternatives_beyond_eight(self):
+        objects,refs=self.fixture();alternatives=[]
+        for i,o in enumerate(objects):
+            for j in range(9):
+                alternatives.append({'id':f'a/{i}/{j}','geometry':translate(refs[i]['geometry'],(i+1)*20000+j*1000,j*7000)})
+        refs=[{**r,'id':'z/'+r['id']} for r in refs]+alternatives
+        result=propose(objects,refs,expected_scale=2)
+        self.assertEqual(result['status'],'provisional_mapped_placement')
+        self.assertEqual(result['seed_search']['deferred_seed_pairs'],0)
+        self.assertGreaterEqual(result['seed_search']['eligible_seed_pairs'],30)
+        self.assertTrue(all(h['reference_id'].startswith('z/') for h in result['hypotheses'][0]['supports']))
+        again=propose(list(reversed(objects)),list(reversed(refs)),expected_scale=2)
+        self.assertEqual(result['seed_search'],again['seed_search'])
+        self.assertEqual(result['hypotheses'],again['hypotheses'])
+
     def test_hole_topology_mismatch_cannot_supply_support(self):
         objects,refs=self.fixture()
         g=refs[2]['geometry'];x,y=g.centroid.coords[0]

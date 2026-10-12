@@ -2,6 +2,7 @@
 import argparse
 from collections import Counter
 import hashlib
+import heapq
 import json
 import math
 import os
@@ -17,7 +18,7 @@ from shapely import points
 from .boundary_registration import file_hash, fit_boundary, similarity
 from .footprint_matching import descriptor, lines, references, NativeNames
 
-VERSION = 'mapped-sheet-placement-v8'
+VERSION = 'mapped-sheet-placement-v9'
 
 
 def placed(geometry, fit):
@@ -54,22 +55,54 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
     # verification objects. Rectangles remain available as fallback seeds.
     ordered=sorted(objects,key=lambda o:(len(o['geometry'].exterior.coords)<=5 if o['geometry'].geom_type=='Polygon' else True,-o['geometry'].area,o['candidate_id']))
     seeds=[by_id[i] for i in priority_seed_ids]+[o for o in ordered if o['candidate_id'] not in priority_seed_ids][:64-len(priority_seed_ids)]
-    edges=[]
-    for o in seeds:
-        if o['geometry'].geom_type!='Polygon':continue
-        a=object_descriptors[o['candidate_id']];pool=[]
-        for r in refs:
-            g=r['geometry']
-            if g.geom_type!='Polygon' or len(g.interiors)!=len(o['geometry'].interiors):continue
-            if expected_scale is not None:
-                ratio=g.area/(o['geometry'].area*expected_scale**2)
-                if not min_iou<=ratio<=1/min_iou:continue
-            error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
-            if error<=.2:pool.append((error,r['id'],r))
-        # More than the original three alternatives, followed by actual shape fit.
-        pool.sort(key=lambda entry:((o['candidate_id'],entry[1]) not in preferred,entry[0],entry[1]))
-        for rank,(_,_,r) in enumerate(pool[:8]):edges.append((-2 if (o['candidate_id'],r['id']) in preferred else -1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],o,r))
-    edges.sort(key=lambda e:e[:3]);attempted=0;orientation_trials=0;hypotheses=[]
+    search={'mode':'legacy_unscaled_shortlist','eligible_seed_objects':len(seeds),
+            'eligible_seed_pairs':0,'scheduled_seed_pairs':0,'deferred_seed_pairs':0}
+    if expected_scale is not None:
+        # Screen every source outline. Keep only the bounded best schedule in
+        # memory, rather than materialising up to 100 million candidate pairs.
+        # One alternative per eligible outline precedes its second alternative;
+        # large decoys can no longer consume every seed slot.
+        reference_polygons=[r for r in refs if r['geometry'].geom_type=='Polygon']
+        reference_shapes=np.asarray([reference_descriptors[r['id']] for r in reference_polygons])
+        reference_areas=np.asarray([r['geometry'].area for r in reference_polygons])
+        reference_holes=np.asarray([len(r['geometry'].interiors) for r in reference_polygons])
+        seeds=[];search['mode']='all_printed_scale_eligible_pairs'
+        def eligible_edges():
+            for o in ordered:
+                g=o['geometry']
+                if g.geom_type!='Polygon' or not reference_polygons:continue
+                ratios=reference_areas/(g.area*expected_scale**2)
+                errors=np.abs(reference_shapes-np.asarray(object_descriptors[o['candidate_id']])).sum(axis=1)
+                indices=np.flatnonzero((ratios>=min_iou)&(ratios<=1/min_iou)&
+                    (reference_holes==len(g.interiors))&(errors<=.2))
+                pool=sorted((int(i) for i in indices),key=lambda i:
+                    ((o['candidate_id'],reference_polygons[i]['id']) not in preferred,
+                     errors[i],reference_polygons[i]['id']))
+                if not pool:continue
+                seeds.append(o);search['eligible_seed_pairs']+=len(pool)
+                for rank,i in enumerate(pool):
+                    r=reference_polygons[i]
+                    tier=0 if (o['candidate_id'],r['id']) in preferred else 1 if o['candidate_id'] in priority_seed_ids else 2
+                    yield ((tier,rank,-g.area,o['candidate_id'],r['id']),o,r)
+        edges=heapq.nsmallest(max_seed_fits,eligible_edges(),key=lambda e:e[0])
+        search['eligible_seed_objects']=len(seeds)
+    else:
+        edges=[]
+        for o in seeds:
+            if o['geometry'].geom_type!='Polygon':continue
+            a=object_descriptors[o['candidate_id']];pool=[]
+            for r in refs:
+                g=r['geometry']
+                if g.geom_type!='Polygon' or len(g.interiors)!=len(o['geometry'].interiors):continue
+                error=sum(abs(x-y) for x,y in zip(a,reference_descriptors[r['id']]))
+                if error<=.2:pool.append((error,r['id'],r))
+            pool.sort(key=lambda entry:((o['candidate_id'],entry[1]) not in preferred,entry[0],entry[1]))
+            for rank,(_,_,r) in enumerate(pool[:8]):
+                edges.append(((-2 if (o['candidate_id'],r['id']) in preferred else -1 if o['candidate_id'] in priority_seed_ids else rank,-o['geometry'].area,o['candidate_id'],r['id']),o,r))
+        edges.sort(key=lambda e:e[0]);search['eligible_seed_pairs']=len(edges)
+    search['scheduled_seed_pairs']=min(len(edges),max_seed_fits)
+    search['deferred_seed_pairs']=search['eligible_seed_pairs']-search['scheduled_seed_pairs']
+    attempted=0;orientation_trials=0;hypotheses=[];attempted_objects=set()
     def support(fit):
         hits=[]
         centres=local_centres@np.asarray(fit['matrix']).T+fit['translation_m']
@@ -97,9 +130,9 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
             if overlap:continue
             selected.append(h);used_o.add(h['candidate_id']);used_r.add(h['reference_id'])
         return selected
-    for _,_,_,o,r in edges:
+    for _,o,r in edges:
         if attempted>=max_seed_fits:break
-        attempted+=1;boundary=fit_boundary(o['geometry'],r['geometry'])
+        attempted+=1;attempted_objects.add(o['candidate_id']);boundary=fit_boundary(o['geometry'],r['geometry'])
         if 'best_fit' not in boundary:continue
         best_seed=boundary['best_fit'];seeds_for_boundary=[best_seed]
         for alternative in boundary.get('equivalent_orientations',[]):
@@ -148,10 +181,12 @@ def propose(objects, refs, *, max_seed_fits=512, min_iou=.7, tolerance_m=10., pr
         best.append(h)
         if len(best)>=12:break
     flags=[]
-    if len(edges)>max_seed_fits:flags.append('seed_fit_budget_exhausted')
-    if len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
+    search['attempted_seed_objects']=len(attempted_objects)
+    search['untried_seed_objects']=len(seeds)-len(attempted_objects)
+    if search['deferred_seed_pairs']:flags.append('seed_fit_budget_exhausted')
+    if expected_scale is None and len(objects)>len(seeds):flags.append('seed_selection_truncated; all_objects_verified')
     if len(best)>1:flags.append('multiple_mapped_placements')
-    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'expected_scale':expected_scale,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
+    return {'status':'provisional_mapped_placement' if best else 'withheld','hypotheses':best,'seed_fit_attempts':attempted,'orientation_trial_attempts':orientation_trials,'seed_objects':len(seeds),'seed_search':search,'priority_seed_ids':priority_seed_ids,'verification_objects':len(objects),'review_flags':flags,'min_iou':min_iou,'tolerance_m':tolerance_m,'expected_scale':expected_scale,'registration_verified':False,'physical_identity_verified':False,'world_geometry_additions':0,'limitations':['Mapped agreement is not independently surveyed registration','Map and drawing may differ in date, generalisation or extent','Support envelope is not a validated registration domain']}
 
 
 def run(candidates, reference_file, reference_crs, target_crs, output, corpus, *, sheets=None, max_seed_fits=512, min_iou=.7, tolerance_m=10., max_records=2500000, progress=None, priority_seeds=None):
