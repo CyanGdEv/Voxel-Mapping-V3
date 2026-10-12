@@ -145,6 +145,8 @@ def main(argv=None):
     iteration = commands.add_parser('iterate')
     for key in ('job', 'feedback', 'split', 'output'): iteration.add_argument('--'+key, required=True)
     iteration.add_argument('--parent')
+    discover = commands.add_parser('discover-pdf')
+    discover.add_argument('--config',required=True); discover.add_argument('--output',required=True)
     feed = commands.add_parser('prepare-feed')
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
@@ -158,6 +160,13 @@ def main(argv=None):
         report=export_preview(_read(args.spec),args.output,world=args.world)
         print(json.dumps({'surface_cells':report['native_audit']['surface_cells'],
                           'world_exported':'world' in report,'park_world_blocks_added':0}))
+        return
+    if args.command == 'discover-pdf':
+        from .building_pdf_discovery import prepare
+        base=Path(args.config).resolve().parent
+        report=prepare(_read(args.config),lambda p:(base/p).resolve(),args.output)
+        print(json.dumps({'discovered_pages':report['discovered_pages'],'source_records':report['source_records'],
+                          'shared_specs_generated':0,'park_world_blocks_added':0}))
         return
     if args.command == 'prepare-feed':
         from .building_source_feed import prepare

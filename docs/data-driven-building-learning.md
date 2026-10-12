@@ -339,3 +339,68 @@ state, physical identity and geographic placement remain unresolved. No native
 check creates a real positive training label or authorizes park insertion.
 See `docs/evidence/building-native-validation.json` and
 `docs/evidence/building-structural-validation.json` for before/after findings.
+
+## Model-free original PDF discovery
+
+`discover-pdf` adds `raw-pdf-building-discovery-v1` ahead of the shared-spec
+adapter. Its input names buildings and checksum-pinned PDF files; it needs
+no study model, facade trace, per-polygon binding or supplied page state.
+Pages are automatically enumerated within a document budget, or explicitly
+selected by one-based page numbers.
+
+```json
+{
+  "version": "raw-pdf-building-discovery-v1",
+  "buildings": [{
+    "building_id": "building-a",
+    "sources": [{"path": "sources/original.pdf", "sha256": "<64-character SHA256>"}]
+  }]
+}
+```
+
+```bash
+python -m voxel_mapper.building_pipeline discover-pdf \
+  --config raw-pdfs.json --output fresh-pdf-discovery
+```
+
+Each page retains native original source primitives, bounded curve/paint
+contracts, original caption/glyph evidence and fully supported closed straight
+linework faces. Short edges use the existing .25-point extraction option;
+network recovery retains up to 2,048 source/paint references per face. Source
+graph hashes/counts accompany the inventory. Partial extraction/topology is
+withheld, and partial network recovery cannot supply enclosed outlines.
+Printed existing/proposed/unspecified claims stay explicit; unknown or hidden
+state is not inherited from another page, title or file name. Mixed existing
+and proposed pages remain separate and block assembly interpretation.
+
+Output contains `discovery-pages.jsonl`, an offset/length/hash index,
+`source-queue.json`, a pinned stage contract and a report. Failed source files
+are isolated. Page, record and output-byte budgets bound work; a document is
+staged and checksum-checked before any of its records are committed. A late
+document-budget failure cannot leave a partial page inventory. A fresh
+output directory is required. Replaying unchanged sources generates identical
+bytes; this first implementation recomputes pages rather than caching them.
+
+The source queue identifies required view scopes, component identity,
+cross-view dimensions/heights, materials/openings and geographic registration.
+It is an upstream source inventory, not a `building-batch-v1` job: closed
+source regions may be rooms, frames or survey enclosures. No shared building
+spec, correctness label, native building or accepted park block is generated.
+The existing retained-study feed, compiler, full-block wall/ground policy and
+roof/detail slab policy remain unchanged.
+
+Real replay independently reads the pinned Mutiny ground-floor, north
+elevation and roof sheets and discovers **5,781** source records, including
+**495** enclosed faces, without a study model. All five output files are
+byte-identical on unchanged replay. The visible roof caption supplies no
+accepted existing/proposed claim, so the roof remains unknown even though
+withheld title claims say existing. This is source discovery evidence, not
+successful automatic building reconstruction.
+Evidence: `docs/evidence/building-pdf-discovery-validation.json`.
+Reproduce with `scripts/audit_building_pdf_discovery.py --sources SOURCE_DIR
+--output docs/evidence/building-pdf-discovery-validation.json`; the directory
+must contain the three checksum-named original PDFs listed by the script.
+
+Next is a cross-view interpretation adapter that turns source-supported
+wall/opening/roof candidates into shared building specs while retaining
+unresolved dimensions, state, identity and placement as blockers.
