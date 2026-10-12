@@ -14,7 +14,7 @@ source hashes, drawing states, evidence references and explicit assumptions.
 Existing, proposed and unknown studies can be rendered locally, but states cannot
 be mixed within an assembly. Imports retain explicit parent state and use unknown
 when it is absent; a proposed study is never relabelled existing. Each
-component is a wall, partition, floor, roof, tower or detail. Geometry can be a
+component is a wall, partition, floor, ground, roof, tower or detail. Geometry can be a
 polygon extrusion (including protected holes) or a retained triangle mesh.
 Extrusions are checked for closed oriented edges and correct volume; meshes are
 checked for finite coordinates, valid indices, nondegenerate triangles and any
@@ -202,8 +202,11 @@ unresolved. No real training labels or activated model are fabricated. See
 
 `building_native.compile_spec` takes the same building spec as the GLB generator.
 It samples non-roof surfaces at half-metre centres using each triangle's dominant
-projection, unions the sampled occupancy and chooses native full/slab/stair
-shapes. At equal error it prefers retaining source occupancy; a rotated surface
+projection, unions the sampled occupancy and chooses native full blocks for walls, partitions, floors and towers.
+Slabs are reserved for roofs and detail components whose vertical extent is
+strictly below 0.75 m; horizontal wall thickness does not trigger that exception.
+Non-roof stairs are disabled. If a full block would occupy protected opening air,
+that block is withheld and counted rather than using a partial wall shape. At equal error it prefers retaining source occupancy; a rotated surface
 cannot disappear merely because air ties a representable shape. It remains a
 surface compiler: thick solid interiors are not filled, and absent rooms/walls
 are never inferred. Small details can disappear and sampling/alias counts are
@@ -215,7 +218,7 @@ error. Closed components retain their sampled bottom extent; separate overlaid
 roof components retain their separate levels. Neighbouring courses within the
 same component receive bounded wooden risers. Roof shapes are dark-oak slabs or
 planks; no wooden roof stairs or glass are emitted. Non-roof surfaces use stone
-brick display shapes. These palettes are illustrative, not recovered materials.
+brick display blocks; low detail components can use stone slabs. These palettes are illustrative, not recovered materials.
 
 Extrusion holes automatically supply protected air over their native alias
 interval. Imports also retain explicit study passage/dormer constraints, planar
@@ -252,3 +255,11 @@ aliasing and unresolved joins remain visible in quality reports. See
 `docs/evidence/building-native-validation.json`. Full raw-PDF geometry discovery,
 source material assignment, stronger native support/closure checks and accepted
 park placement remain unfinished.
+
+
+The v2 native block policy implements full-block walls and ground. Floors extend
+below their source top, preserving drawn floor zero and standing air. A 0.75 m
+vertical detail uses full blocks; the slab exception is strictly below that value.
+Roof slab behaviour is retained. `full_blocks_withheld_for_air` reports masonry
+that cannot meet both the full-block rule and an opening guard. This can alter the
+voxel silhouette around openings; the source meshes remain unchanged.

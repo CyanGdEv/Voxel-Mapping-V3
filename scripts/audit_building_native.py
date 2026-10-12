@@ -30,12 +30,16 @@ def main():
             'native_rows_sha256':digest([[*p,m] for p,m in sorted(cells.items())]),
             'sampling_checks':audit['sampling_checks'],'protected_air_halves':audit['protected_air_halves'],
             'protected_air_verified':audit['protected_air_verified'],'blocked_roof_cells':audit['blocked_roof_cells'],
+            'block_policy':audit['block_policy'],
+            'full_blocks_withheld_for_air':audit['full_blocks_withheld_for_air'],
+            'non_roof_stairs':audit['non_roof_stairs'],
+            'material_counts':audit['material_counts'],
             'max_roof_rounding_error_m':audit['max_roof_top_rounding_error_m'],
             'wooden_roof_stairs':0,'glazing_cells':0,
             'world_sha256':world['sha256'],'composed_blocks':world['composed_blocks'],'chunks':world['chunks'],
             'native_readback':world['round_trip_validation'],'world_placement_eligible':False})
     atomic_json(Path(args.output),{'version':'building-native-validation-v1','real_studies':rows,
-        'regression_tests_passed':1131,'focused_tests_passed':36,'park_world_blocks_added':0,
+        'regression_tests_passed':1135,'focused_tests_passed':40,'park_world_blocks_added':0,
         'limitations':['Experimental surface previews, not complete solid-volume or surveyed reconstructions.',
             'Native roof joins, support connectivity and material inference remain unresolved.']})
     print(json.dumps({'real_studies':len(rows),'world_rows_match_shared_compiler':True}))

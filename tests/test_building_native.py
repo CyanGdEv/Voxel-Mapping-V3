@@ -102,3 +102,39 @@ class NativeIntegrationTests(unittest.TestCase):
             self.assertEqual(report['built'],1)
             self.assertTrue(report['buildings'][0]['native_output']['protected_air_verified'])
             self.assertTrue((root/'building-0000/native/voxels.jsonl').is_file())
+
+
+class FullBlockPolicyTests(unittest.TestCase):
+    def test_thin_wall_and_ground_use_full_blocks(self):
+        cells,audit=compile_spec(hall())
+        self.assertTrue(all(m=='stone_bricks' for m in cells.values() if m.startswith('stone_')))
+        self.assertEqual(cells[4,-1,3],'stone_bricks')
+        self.assertEqual(audit['non_roof_stairs'],0)
+        self.assertFalse(audit['component_sampling'][0]['non_roof_slab_eligible'])
+
+    def test_detail_vertical_threshold_is_strict_and_not_wall_thickness(self):
+        for height,allows_slab in [(.5,True),(.749,True),(.75,False),(1,False)]:
+            s=spec();s['components'][0].update(role='detail')
+            s['components'][0]['geometry']={'kind':'extrusion','axis':2,'interval_m':[0,height],
+                'profile':[[0,0],[2,0],[2,2],[0,2]]}
+            cells,audit=compile_spec(s)
+            self.assertEqual(audit['component_sampling'][0]['non_roof_slab_eligible'],allows_slab)
+            if not allows_slab:self.assertTrue(all(m=='stone_bricks' for m in cells.values()))
+            if height==.5:self.assertTrue(any('_slab' in m for m in cells.values()))
+
+    def test_full_block_policy_preserves_guarded_openings(self):
+        s=hall();s['native_air_halves']=[[0,0,0]]
+        cells,audit=compile_spec(s)
+        self.assertNotIn((0,0,0),cells)
+        self.assertTrue(audit['full_blocks_withheld_for_air'])
+        self.assertFalse(set(map(tuple,s['native_air_halves']))&set(occupied_halves(cells)))
+
+
+class GroundPolicyTests(unittest.TestCase):
+    def test_imported_courtyard_ground_retains_role_and_full_blocks(self):
+        s=hall();s['components'][1]['role']='ground'
+        parent=build(s);common=from_study(parent,'ground-test','a'*64)
+        self.assertEqual(common['components'][1]['role'],'ground')
+        cells,audit=compile_spec(common)
+        self.assertEqual(cells[4,-1,3],'stone_bricks')
+        self.assertFalse(audit['component_sampling'][1]['non_roof_slab_eligible'])

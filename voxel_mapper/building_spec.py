@@ -8,7 +8,7 @@ from collections import Counter
 
 VERSION = 'building-spec-v1'
 FRAME = 'local_xyz_metres_z_up'
-ROLES = {'wall', 'partition', 'floor', 'roof', 'tower', 'detail'}
+ROLES = {'wall', 'partition', 'floor', 'ground', 'roof', 'tower', 'detail'}
 MAX_COMPONENTS = 4096
 MAX_VERTICES = 250000
 MAX_TRIANGLES = 500000

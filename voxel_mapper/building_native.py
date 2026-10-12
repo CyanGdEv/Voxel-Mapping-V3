@@ -8,13 +8,11 @@ from .building_spec import build,digest
 from .wing_block_shapes import occupied_halves
 from .generation_cycles import atomic_json
 
-VERSION='building-native-surface-v1'
+VERSION='building-native-surface-v2'
 
 
 def _shapes(palette):
     names=['full','slab','slab_top']
-    if palette=='stone_brick':
-        names += ['stairs_'+side+suffix for side in ('west','east','north','south') for suffix in ('','_top')]
     result=[('air',set())]
     for name in names:
         material=('stone_bricks' if palette=='stone_brick' else 'dark_oak_planks') if name=='full' else palette+'_'+name
@@ -34,7 +32,7 @@ def compile_spec(spec,*,max_checks=2000000):
     air=spec.get('native_air_halves',[])
     if not isinstance(air,list) or len(air)>100000 or any(not isinstance(p,list) or len(p)!=3 or any(type(v) is not int or abs(v)>20002 for v in p) for p in air):
         raise ValueError('Bounded integer native air guards required')
-    protected={tuple(p) for p in air};stone=set();roof_surfaces=[];checks=0;rows=[]
+    protected={tuple(p) for p in air};stone=set();full_block_cells=set();roof_surfaces=[];checks=0;rows=[]
     def charge():
         nonlocal checks
         checks+=1
@@ -60,6 +58,8 @@ def compile_spec(spec,*,max_checks=2000000):
     for x,y,z in protected:guard_groups[x//2,y//2,z//2].add((x%2,y%2,z%2))
     for component in model['components']:
         mesh=component['mesh'];roof=component['role']=='roof';sampled=set();count=0;roof_tops={};roof_bottoms={}
+        height=max(v[2] for v in mesh['vertices'])-min(v[2] for v in mesh['vertices'])
+        slab_eligible=component['role']=='detail' and height<.75
         for indices in mesh['triangles']:
             # Geometry XYZ is frontage/depth/height; native XYZ is frontage/height/depth.
             points=[(mesh['vertices'][i][0],mesh['vertices'][i][2],mesh['vertices'][i][1]) for i in indices]
@@ -82,21 +82,28 @@ def compile_spec(spec,*,max_checks=2000000):
                         sampled.add(column)
                     else:
                         half=list(math.floor(q*2+1e-9) for q in sample)
-                        if axis==1 and (component['role']=='floor' or normal[1]>0):
+                        if axis==1 and (component['role'] in ('floor','ground') or normal[1]>0):
                             half[1]=math.floor(sample[1]*2+.5)-1
                         half=tuple(half);stone.add(half);sampled.add(half)
+                        if not slab_eligible:full_block_cells.add(tuple(v//2 for v in half))
                     count+=1
         if roof:roof_surfaces.append((roof_tops,roof_bottoms,mesh['watertight']))
-        rows.append({'id':component['id'],'role':component['role'],'samples':len(sampled),'unrepresented_at_native_resolution':not bool(sampled)})
+        rows.append({'id':component['id'],'role':component['role'],'vertical_extent_m':height,
+                     'non_roof_slab_eligible':slab_eligible,'samples':len(sampled),'unrepresented_at_native_resolution':not bool(sampled)})
     groups=defaultdict(set)
     for x,y,z in stone:
         groups[x//2,y//2,z//2].add((x%2,y%2,z%2))
-    cells={};missing=extra=0;guarded_cells=0
+    cells={};missing=extra=0;guarded_cells=0;full_blocks_withheld_for_air=0
     stone_shapes=_shapes('stone_brick')
     for position,target in sorted(groups.items()):
         forbidden=guard_groups.get(position,set())
-        choices=[(len(target-shape)+len(shape-target),material,shape) for material,shape in stone_shapes if not shape&forbidden]
-        _,material,shape=min(choices,key=lambda r:(r[0],len(target-r[2]),r[1]))
+        if position in full_block_cells:
+            material,shape=next((m,s) for m,s in stone_shapes if m=='stone_bricks')
+            if shape&forbidden:
+                material,shape='air',set();full_blocks_withheld_for_air+=1
+        else:
+            choices=[(len(target-shape)+len(shape-target),material,shape) for material,shape in stone_shapes if not shape&forbidden]
+            _,material,shape=min(choices,key=lambda r:(r[0],len(target-r[2]),r[1]))
         missing+=len(target-shape);extra+=len(shape-target);guarded_cells+=bool(forbidden)
         if material!='air':cells[position]=material
     # Quantize the source roof top at metre-column centres, then bridge only
@@ -126,6 +133,8 @@ def compile_spec(spec,*,max_checks=2000000):
                   'source_surface_halves_missing':missing,'extra_native_halves':extra,
                   'protected_air_halves':len(protected),'guarded_surface_cells':guarded_cells,
                   'protected_air_verified':True,'blocked_roof_cells':len(blocked_roof),
+                  'block_policy':'Full blocks for walls, partitions, floors, ground and towers; slabs for roofs or detail vertical extent strictly below 0.75 m.',
+                  'non_roof_stairs':0,'full_blocks_withheld_for_air':full_blocks_withheld_for_air,
                   'max_roof_top_rounding_error_m':max(rounding,default=0),
                   'wooden_roof_stairs':0,'glazing_cells':0,'world_placement_eligible':False,'park_world_blocks_added':0,
                   'limitations':['Surface sampling, not solid-volume filling or complete-building inference.',
