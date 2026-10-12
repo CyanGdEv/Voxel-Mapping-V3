@@ -17,6 +17,7 @@ from .evidence_memory import EvidenceMemory,identity
 from .mapped_sheet_placement import propose,placed,VERSION as MATCH_VERSION
 from .mapped_alignment_checks import printed_scale_review,check,VERSION as CHECK_VERSION
 from .linework_boundaries import recover_page,VERSION as RECOVERY_VERSION
+from .osm_semantic_context import map_semantics,run as review_semantics
 from .osm_network_graph import VERSION as NETWORK_GRAPH_VERSION
 from .osm_targeted_recovery import recover as recover_targeted,VERSION as TARGETED_VERSION
 from .osm_outline_review import review as review_outlines,VERSION as OUTLINE_REVIEW_VERSION
@@ -99,7 +100,7 @@ def map_references(path,target_crs):
         geometry=transform(converter.transform,shape(feature['geometry']))
         if geometry.is_empty or not geometry.is_valid or geometry.has_z:continue
         if len(rows)>=5000:raise ValueError('OSM reference polygon budget exceeded')
-        rows.append({'id':feature['id'],'geometry':geometry,'name':feature['properties'].get('name',''),'source_metadata':feature['properties'].get('source_metadata',{})})
+        rows.append({'id':feature['id'],'geometry':geometry,'name':feature['properties'].get('name',''),'source_metadata':feature['properties'].get('source_metadata',{}),'map_semantics':map_semantics(feature['properties'])})
     from shapely.strtree import STRtree
     index=STRtree([r['geometry'] for r in rows])
     for feature in collection['features']:
@@ -209,6 +210,7 @@ def run(corpus,geometry_directory,osm_file,store,output,*,target_crs,max_pages=1
         'page_facts':facts,'run_pages':computed,'reused_pages':reused,'provisional_overlay_records':len(overlays),
         'output_sha256':{'page-alignments.jsonl':file_hash(page_file),'provisional-overlay.geojson':file_hash(root/'provisional-overlay.geojson')},
         'output_directory':str(root),'world_geometry_additions':0,'registration_verified':False,'absolute_accuracy_verified':False}
+    report['semantic_context']=review_semantics(corpus,refs,records,facts,pages,store,root/'semantic-context')
     atomic_json(root/'osm-alignment-report.json',report);return report
 
 

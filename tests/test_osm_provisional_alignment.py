@@ -51,6 +51,9 @@ class OSMAlignmentTests(unittest.TestCase):
             second=self.align('replay')
             self.assertEqual(second['reused_pages'],1);self.assertEqual(matcher.call_count,1) # input budget validation only
         self.assertEqual(first['output_sha256'],second['output_sha256'])
+        self.assertEqual(first['semantic_context']['run_pages'],1)
+        self.assertEqual(second['semantic_context']['reused_pages'],1)
+        self.assertEqual(first['semantic_context']['output_sha256'],second['semantic_context']['output_sha256'])
     def test_wrong_scale_and_alternative_map_locations_do_not_supply_overlay(self):
         wrong=propose(self.objects,self.refs,expected_scale=.2)
         self.assertEqual(wrong['hypotheses'],[])
@@ -60,6 +63,7 @@ class OSMAlignmentTests(unittest.TestCase):
     def test_changed_reference_snapshot_is_a_new_fact_and_source_changes_fail(self):
         first=self.align();raw=json.loads(self.osm.read_text());raw['elements'][0]['tags']['name']='Updated';self.osm.write_text(json.dumps(raw))
         second=self.align();self.assertEqual(second['run_pages'],1);self.assertNotEqual(first['contract'],second['contract'])
+        self.assertEqual(second['semantic_context']['run_pages'],1)
         feed=self.root/'geometry/geometry-candidates.jsonl';feed.write_text('changed')
         with self.assertRaisesRegex(ValueError,'geometry feed changed'):self.align()
     def test_batch_budget_changes_cached_page_contract(self):
