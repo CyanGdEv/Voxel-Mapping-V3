@@ -4,8 +4,11 @@ The new building-neutral path separates source interpretation, geometry and
 learned candidate ranking. `voxel-building-data` (or
 `python -m voxel_mapper.building_pipeline`) runs the same generator for different
 buildings. It does not yet discover complete building specifications from PDFs.
-The existing architectural extraction/review stages need adapters that supply
-these specifications, features and verified gate results.
+The first [cross-view adapter](cross-view-building-adapter.md) now supplies
+inferred local surface specifications and diagnostics from supported native
+plan/elevation views with source-bound scope inputs. Its acceptance gates remain
+withheld; generalized interpretation and verified physical acceptance are still
+unfinished.
 
 ## Shared geometry contract
 
@@ -401,6 +404,11 @@ Reproduce with `scripts/audit_building_pdf_discovery.py --sources SOURCE_DIR
 --output docs/evidence/building-pdf-discovery-validation.json`; the directory
 must contain the three checksum-named original PDFs listed by the script.
 
-Next is a cross-view interpretation adapter that turns source-supported
-wall/opening/roof candidates into shared building specs while retaining
-unresolved dimensions, state, identity and placement as blockers.
+`assemble-views` now connects supported native floor-plan and four-elevation
+candidates to shared building specs, local GLB previews, the existing ranker job
+format and hash-bound external review capture. It preserves source holes and
+widths, refuses ambiguous/conflicting assemblies, and generates no training
+labels or accepted park blocks. See the
+[cross-view adapter and real Wicker replay](cross-view-building-adapter.md).
+Numbered/image-backed view interpretation, generalized plans/roofs, materials,
+authenticated scope/identity review and verified park placement remain unfinished.
