@@ -1,0 +1,528 @@
+{
+  "artifact_hashes": {
+    "building-0000/faces/face-associations.jsonl": "645ed0fa8a5234da4d841aa0f398d26d76a23609dc28f5741bf93d28da69ed7b",
+    "building-0000/opening-candidates.json": "aede7fc9b7081eef0763f32ace3d8697fd85495890d140a138aa6d9c07538195",
+    "building-0000/region-view-0000/model.glb": "3f92ddc8e4f95c5f5d7ebf16df0acaf0cc52e71918e31c9e6727a20f97c294e3",
+    "building-0000/region-view-0000/spec.json": "7fe411c72a13013f47437e5632006803f74c7685611a466aaf2ff9f65c8b760d",
+    "building-0000/region-view-0001/model.glb": "6d1cdb85becba7f88d5f43b4ca2371a425e35f8c6cc81374d928ee13fe2d65c8",
+    "building-0000/region-view-0001/spec.json": "126928012e69059c437cb4ef788784dc46ec8fcb31bf236f89576c5b30c766dc",
+    "building-0000/region-view-0002/model.glb": "c06b07bb511c3919bbbd21825c2108aabe69581213db7945aaf1e714dc9ab3c7",
+    "building-0000/region-view-0002/spec.json": "105ede8e8f9f8b8946bf987c92504ad3ff2a518b3fe9a28b22831578623e3df4",
+    "building-0000/regions.json": "79be4fd473662be17a65e5ebceb7a9cc9498aaac209088fd3b4e720a4dcd1bbf"
+  },
+  "complete_building_specs_generated": 0,
+  "config_sha256": "97f1d272c93879a012a05238a2019877042879a589275b741f993287bfe808b5",
+  "date": "2026-10-13",
+  "opening_scans": [
+    {
+      "candidate_count": 33,
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "gray_sha256": "d538fe12aef7232bba4ad4654730706b157a3d1db453a0019be83b6872b92694",
+      "page": 1,
+      "reason": null,
+      "render_receipt_sha256": "176b1e6d8d4b3017de39bbaca4c17cb3b3f647b41d0f2075d8d262efa4416291",
+      "status": "jamb_head_correspondence_candidates_only",
+      "view_key_candidate": [
+        "2967",
+        26,
+        2
+      ]
+    },
+    {
+      "candidate_count": 0,
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "gray_sha256": "55512aa99afcb0153c748396fda4cb0e429937ff322f6d066a82d1dec8d6c986",
+      "page": 1,
+      "reason": "opening_pair_count_budget",
+      "render_receipt_sha256": "833140b58f9fe1b4e1a99aaf111ae7238346e25d1905406c030ad678b10ccf8f",
+      "status": "scan_budget_withheld",
+      "view_key_candidate": [
+        "2967",
+        26,
+        4
+      ]
+    },
+    {
+      "candidate_count": 49,
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "gray_sha256": "08168f0c25b6353f21ef735db446e5d9f70d293e3a1c2693ea21a3f209dffa96",
+      "page": 1,
+      "reason": null,
+      "render_receipt_sha256": "aefbc5d350522155e609676f91a25183ceca9e966fd19627653aef443ad53a9f",
+      "status": "jamb_head_correspondence_candidates_only",
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "candidate_count": 3,
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "gray_sha256": "0ec06e9bb7ba8abe7be3bc58214b3435293dbbf0e708da42abc95fc8201743d9",
+      "page": 1,
+      "reason": null,
+      "render_receipt_sha256": "13d3262ceb889ae08ec65fff7b09ae6ddbfbea13548d77f64e86a53cd016ead1",
+      "status": "jamb_head_correspondence_candidates_only",
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    }
+  ],
+  "park_world_blocks_added": 0,
+  "plan_dimension_checks": [
+    {
+      "connected_run_candidates": 0,
+      "material_number": "1",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 59.750104513888886,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 3.615972222222222,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 16.68638888888889
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 0,
+      "material_number": "2",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 25.889782947530865,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 1.6404166666666666,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.804444444444444
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 0,
+      "material_number": "3",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 5.944146315586419,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 1.0406944444444444,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.786805555555555
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 0,
+      "material_number": "1",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 60.82412665895061,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 3.7041666666666666,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 16.68638888888889
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "connected_run_candidates": 0,
+      "material_number": "2",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 36.655517091049376,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 2.9456944444444444,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.804444444444444
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "connected_run_candidates": 1,
+      "material_number": "3",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 3.517018055555555,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 0.5820833333333333,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 13.493749999999999
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "connected_run_candidates": 1,
+      "material_number": "1",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 19.913590200617282,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 3.1220833333333333,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 11.641666666666666
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        4
+      ]
+    },
+    {
+      "connected_run_candidates": 46,
+      "material_number": "4",
+      "native_edge_candidates": 69,
+      "nominal_elevation_measurements": {
+        "area_m2": 0.6496402777777777,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 1.0583333333333333,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 1.3229166666666665
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        4
+      ]
+    },
+    {
+      "connected_run_candidates": 4,
+      "material_number": "1",
+      "native_edge_candidates": 4,
+      "nominal_elevation_measurements": {
+        "area_m2": 59.750104513888886,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 3.615972222222222,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 16.68638888888889
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 3,
+      "material_number": "2",
+      "native_edge_candidates": 1,
+      "nominal_elevation_measurements": {
+        "area_m2": 25.889782947530865,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 1.6404166666666666,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.804444444444444
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 3,
+      "material_number": "3",
+      "native_edge_candidates": 1,
+      "nominal_elevation_measurements": {
+        "area_m2": 5.944146315586419,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 1.0406944444444444,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.786805555555555
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "connected_run_candidates": 4,
+      "material_number": "1",
+      "native_edge_candidates": 4,
+      "nominal_elevation_measurements": {
+        "area_m2": 60.82412665895061,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 3.7041666666666666,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 16.68638888888889
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "connected_run_candidates": 3,
+      "material_number": "2",
+      "native_edge_candidates": 1,
+      "nominal_elevation_measurements": {
+        "area_m2": 36.655517091049376,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 2.9456944444444444,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 15.804444444444444
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "connected_run_candidates": 0,
+      "material_number": "3",
+      "native_edge_candidates": 0,
+      "nominal_elevation_measurements": {
+        "area_m2": 3.517018055555555,
+        "depth_verified": false,
+        "height_datum_verified": false,
+        "height_m": 0.5820833333333333,
+        "limitations": [
+          "Paper scale is a drawing claim; component completeness and world registration remain unverified."
+        ],
+        "scale_verified": false,
+        "width_m": 13.493749999999999
+      },
+      "physical_correspondence_verified": false,
+      "plan_document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "plan_page": 1,
+      "view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    }
+  ],
+  "result": {
+    "building_id": "wicker-shop-revised-sheets",
+    "complete_building_specs_generated": 0,
+    "material_anchor_records": 12,
+    "numbered_reference_statuses": {
+      "unique_unverified_plan_elevation_reference": 7,
+      "withheld_nonunique_or_missing_view_target": 1
+    },
+    "opening_candidates": 85,
+    "opening_scan_statuses": [
+      "jamb_head_correspondence_candidates_only",
+      "scan_budget_withheld",
+      "jamb_head_correspondence_candidates_only",
+      "jamb_head_correspondence_candidates_only"
+    ],
+    "park_world_blocks_added": 0,
+    "plan_region_reference_pairs": 14,
+    "raster_contrast_statuses": {
+      "unverified_contrast_boundary_candidate": 8,
+      "withheld_contrast_mixed_material_anchors": 2,
+      "withheld_hatch_suppression_region": 2
+    },
+    "raster_region_candidates": 8,
+    "region_preview_specs_generated": 3,
+    "region_previews": [
+      {
+        "export": {
+          "byte_length": 160632,
+          "component_meshes": 3,
+          "coordinate_frame": "Y-up, metres; source depth maps to negative Z"
+        },
+        "preview_scope": "independent_elevation_regions_not_complete_building",
+        "source_region_ids": [
+          "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+          "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+          "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522"
+        ],
+        "spec_sha256": "e017dff8aabf72565e2dd10d9cca2b88547238b45af3156efc84fee530b64531",
+        "view_key_candidate": [
+          "2967",
+          26,
+          1
+        ]
+      },
+      {
+        "export": {
+          "byte_length": 162788,
+          "component_meshes": 3,
+          "coordinate_frame": "Y-up, metres; source depth maps to negative Z"
+        },
+        "preview_scope": "independent_elevation_regions_not_complete_building",
+        "source_region_ids": [
+          "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+          "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+          "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230"
+        ],
+        "spec_sha256": "c9b99fa5bdcf3b30a1a492dcdcff44a3def421112b63adeb5e8697587b376c01",
+        "view_key_candidate": [
+          "2967",
+          26,
+          3
+        ]
+      },
+      {
+        "export": {
+          "byte_length": 58008,
+          "component_meshes": 2,
+          "coordinate_frame": "Y-up, metres; source depth maps to negative Z"
+        },
+        "preview_scope": "independent_elevation_regions_not_complete_building",
+        "source_region_ids": [
+          "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+          "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb"
+        ],
+        "spec_sha256": "8a25c267396c41318097063868142c065cd3d395eaf3e432e04095be377095a3",
+        "view_key_candidate": [
+          "2967",
+          26,
+          4
+        ]
+      }
+    ],
+    "requirements": [
+      "physical_facade_and_opening_interpretation",
+      "per_view_state_and_scale",
+      "verified_revision_correspondence",
+      "closed_non_rectangular_footprint",
+      "cross_view_dimensions_and_depth",
+      "vertical_datum",
+      "geographic_registration"
+    ],
+    "revision_scope_claim": "Declared revised separate-building sheets 2967-21, 2967-26 and 2967-48 from SMD/2016/0315; catalogue claim, not authenticated revision identity",
+    "revision_scope_verified": false,
+    "source_sha256": [
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+    ],
+    "status": "awaiting_facade_interpretation",
+    "training_labels_generated": 0
+  },
+  "source_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "training_labels_generated": 0,
+  "trial_report_sha256": "85670e01dc2dab83d13c39f7ab5bd6bcfd11dd1c62668c08e08a0d8d89db892c",
+  "validation": {
+    "focused_tests_passed": 55,
+    "full_test_errors": 0,
+    "full_test_failures": 0,
+    "full_tests_passed": 1362
+  },
+  "version": "wicker-facade-source-feed-receipt-v1"
+}
