@@ -4,6 +4,56 @@ from voxel_mapper.glyph_visibility import screen_span,screen_architectural_span,
 
 
 class GlyphTests(unittest.TestCase):
+    def simple_cff_source(self):
+        import io
+        from fontTools.fontBuilder import FontBuilder
+        from fontTools.pens.t2CharStringPen import T2CharStringPen
+        builder=FontBuilder(1000,isTTF=False);names=['.notdef','A','B']
+        builder.setupGlyphOrder(names);builder.setupCharacterMap({65:'A',66:'B'});strings={}
+        for name in names:
+            pen=T2CharStringPen(600,None)
+            if name!='.notdef':
+                pen.moveTo((100,0));pen.lineTo((500,0));pen.lineTo((500,700));pen.lineTo((100,700));pen.closePath()
+            strings[name]=pen.getCharString()
+        builder.setupCFF('SimpleCTest',{'FullName':'SimpleCTest','FamilyName':'SimpleCTest','Weight':'Regular'},strings,{})
+        buffer=io.BytesIO();builder.font['CFF '].cff.compile(buffer,builder.font)
+        document=pymupdf.open();page=document.new_page(width=400,height=200)
+        font=page.insert_font(fontname='original',fontbuffer=buffer.getvalue())
+        stream=document.get_new_xref();document.update_object(stream,'<< /Subtype /Type1C >>')
+        document.update_stream(stream,buffer.getvalue())
+        descriptor=document.get_new_xref()
+        document.update_object(descriptor,f'<< /Type /FontDescriptor /FontName /SimpleCTest /Flags 32 /FontBBox [0 0 600 700] /ItalicAngle 0 /Ascent 700 /Descent 0 /CapHeight 700 /StemV 80 /FontFile3 {stream} 0 R >>')
+        document.update_object(font,f'<< /Type /Font /Subtype /Type1 /BaseFont /SimpleCTest /Encoding /WinAnsiEncoding /FirstChar 65 /LastChar 66 /Widths [600 600] /FontDescriptor {descriptor} 0 R >>')
+        content=document.get_new_xref();document.update_object(content,'<<>>')
+        document.update_stream(content,b'BT /original 12 Tf 1 0 0 1 100 100 Tm (AB) Tj ET')
+        document.xref_set_key(page.xref,'Contents',f'{content} 0 R')
+        # Reopen to avoid cached font resources from insert_font.
+        data=document.tobytes();document.close();document=pymupdf.open(stream=data,filetype='pdf')
+        page=document[0];return document,page,page.get_texttrace()[0]
+
+    def test_original_simple_cff_font_and_overpaint(self):
+        for color in ((1,1,1),(0,0,0)):
+            document,page,span=self.simple_cff_source()
+            try:
+                page.set_rotation(90);result=screen_architectural_span(page,span)
+                self.assertEqual(result['status'],'raster_consistent_candidate',result)
+                self.assertEqual(result['glyph_encoding'],'source_type1_winansi_cff')
+                self.assertEqual(page.rotation,90)
+                page.draw_rect(pymupdf.Rect(span['bbox']),color=None,fill=color)
+                self.assertEqual(screen_architectural_span(page,span)['status'],'withheld')
+            finally:document.close()
+
+    def test_simple_cff_rejects_unknown_glyph_and_encoding_override(self):
+        import copy
+        document,page,span=self.simple_cff_source()
+        try:
+            forged=copy.deepcopy(span);c=forged['chars'][0];forged['chars']=[(c[0],2,*c[2:])]
+            self.assertEqual(screen_span(page,forged)['status'],'withheld')
+            xref=page.get_fonts()[0][0]
+            document.xref_set_key(xref,'Encoding','<< /BaseEncoding /WinAnsiEncoding /Differences [65 /B] >>')
+            self.assertEqual(screen_span(page,span)['status'],'withheld')
+        finally:document.close()
+
     def source(self):
         document=pymupdf.open();page=document.new_page(width=400,height=200)
         page.insert_text((40,60),'Timber wall cladding',fontsize=12,fontname='helv')

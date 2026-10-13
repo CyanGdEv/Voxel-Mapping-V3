@@ -3,8 +3,27 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v4'
-INK_VERSION='source-font-isolated-glyph-screen-v3'
+VERSION='source-font-glyph-raster-screen-v5'
+INK_VERSION='source-font-isolated-glyph-screen-v4'
+
+
+def simple_cff_codes(buffer, chars):
+    """Validate ASCII WinAnsi codes against name-keyed original CFF glyph IDs."""
+    import io
+    from fontTools.cffLib import CFFFontSet
+    from fontTools.agl import UV2AGL
+    font=CFFFontSet();font.decompile(io.BytesIO(buffer),None)
+    if len(font.fontNames)!=1:raise ValueError('One original CFF font required')
+    top=font[font.fontNames[0]]
+    if (hasattr(top,'ROS') or not 1<=len(top.charset)<=256
+            or top.charset[0]!='.notdef' or len(set(top.charset))!=len(top.charset)
+            or list(top.FontMatrix)!=[.001,0,0,.001,0,0]):
+        raise ValueError('Bounded standard-matrix name-keyed CFF required')
+    for char in chars:
+        if (not 32<=char[0]<=126 or type(char[1]) is not int or not 0<char[1]<len(top.charset)
+                or top.charset[char[1]]!=UV2AGL.get(char[0])):
+            raise ValueError('Native simple CFF glyph differs from ASCII WinAnsi mapping')
+    return [c[0] for c in chars]
 
 
 def cff_glyph_codes(buffer, chars):
@@ -117,7 +136,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
         with pymupdf.open() as document:
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
             font_name='nativeSource' if font_buffer else 'helv'
-            direct_glyphs=False;glyph_codes=None;encoding='unicode'
+            direct_glyphs=False;glyph_codes=None;encoding='unicode';code_digits=4
             if font_buffer:
                 xref=reference.insert_font(fontname=font_name,fontbuffer=font_buffer)
                 if font_buffer[:4] in (b'\x00\x01\x00\x00',b'true'):
@@ -135,12 +154,24 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
                         if direct_glyphs:
                             glyph_codes=[c[1] for c in span['chars']];encoding='source_glyph_ids'
                 elif font_buffer[:1] == b'\x01':
-                    if any(f[2] != 'Type0' or f[5] != 'Identity-H' for f in fonts):
+                    simple=all(f[2]=='Type1' and f[5]=='WinAnsiEncoding'
+                        and page.parent.xref_get_key(f[0],'Encoding')==('name','/WinAnsiEncoding') for f in fonts)
+                    if simple:
+                        try:glyph_codes=simple_cff_codes(font_buffer,span['chars'])
+                        except (ValueError,KeyError,IndexError,AssertionError) as error:
+                            return {**failure,'reason':str(error)}
+                        # Copy the original font dictionary, widths, encoding and
+                        # embedded stream. Never synthesize a replacement font.
+                        document.insert_pdf(page.parent,from_page=page.number,to_page=page.number)
+                        reference=document[-1];reference.set_rotation(0)
+                        font_name=fonts[0][4];code_digits=2
+                        direct_glyphs=True;encoding='source_type1_winansi_cff'
+                    elif any(f[2] != 'Type0' or f[5] != 'Identity-H' for f in fonts):
                         return {**failure,'reason':'Original CFF font requires Identity-H native CID convention'}
                     import re
                     kind,children=document.xref_get_key(xref,'DescendantFonts')
                     child=re.fullmatch(r'\[\s*(\d+)\s+0\s+R\s*\]',children) if kind=='array' else None
-                    if (child and document.xref_get_key(xref,'Encoding')==('name','/Identity-H')
+                    if (not simple and child and document.xref_get_key(xref,'Encoding')==('name','/Identity-H')
                             and document.xref_get_key(int(child[1]),'Subtype')==('name','/CIDFontType0')):
                         try:
                             glyph_codes=cff_glyph_codes(font_buffer,span['chars'])
@@ -153,7 +184,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
                 dx,dy=direction;commands=[]
                 for character,code in zip(span['chars'],glyph_codes):
                     x,y=character[2]
-                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:04x}> Tj ET')
+                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:0{code_digits}x}> Tj ET')
                 content=document.get_new_xref();document.update_object(content,'<<>>')
                 document.update_stream(content,'\n'.join(commands).encode('ascii'))
                 document.xref_set_key(reference.xref,'Contents',f'{content} 0 R')
@@ -216,7 +247,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
 def screen_architectural_span(page,span,*,zoom=6,max_pixels=1000000):
     """Recover native-box clipping only through each original glyph's own ink."""
     result=screen_span(page,span,zoom=zoom,max_pixels=max_pixels)
-    if (result['status']=='withheld' and result.get('glyph_encoding') in ('source_glyph_ids','source_cff_charset_cids')
+    if (result['status']=='withheld' and result.get('glyph_encoding') in ('source_glyph_ids','source_cff_charset_cids','source_type1_winansi_cff')
             and any(g['core_pixels']<3 for g in result.get('glyphs',[]))):
         isolated=screen_span(page,span,zoom=zoom,max_pixels=max_pixels,isolate_glyphs=True)
         return {**isolated,'native_character_box_screen':result}

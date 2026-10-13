@@ -22,6 +22,20 @@ class ViewLayoutTests(unittest.TestCase):
         self.assertEqual(view_claim("Roof Plan 'as proposed'")['printed_state'],'proposed')
         for text in ('see south elevation','1:100','section A-B','plan','South Elevation | 1:99999'):self.assertIsNone(view_claim(text))
 
+    def test_numbered_revit_captions_keep_numbers_and_do_not_inherit_state(self):
+        for number,direction,expected in [(1,'S.East','southeast'),(2,'S.West','southwest'),
+                                           (3,'N. West','northwest'),(4,'N. East','northeast')]:
+            claim=view_claim(f'Elevation {number} to the {direction}')
+            self.assertEqual(claim['view_number'],number);self.assertEqual(claim['direction'],expected)
+            self.assertEqual(claim['printed_state'],'unspecified')
+            self.assertIsNone(claim['printed_scale_denominator'])
+            self.assertFalse(claim['numbered_reference_verified'])
+        self.assertEqual(view_claim('00. Overall Ground Floor Plan')['plan_level_or_form'],'groundfloor')
+        self.assertEqual(view_claim('Overall Roof Plan')['plan_level_or_form'],'roof')
+        for text in ('see Elevation 1 to the S.East','Elevation 0 to the S.East',
+                     'Elevation 1 to the N.Eest','Elevation 1 to the S.East | 1:99999'):
+            self.assertIsNone(view_claim(text))
+
     def test_mixed_views_keep_inline_state_scale_and_whole_source_geometry(self):
         doc,page,parents,graph=self.source()
         try:
@@ -65,6 +79,26 @@ class ViewLayoutTests(unittest.TestCase):
             self.assertEqual(title['layout_candidate_status'],'unscaled_caption_scope_withheld')
             self.assertNotIn(title['id'],[w['caption_id'] for w in report['candidate_windows']])
             self.assertIsNone(title['printed_claim']['printed_scale_denominator'])
+        finally:doc.close()
+
+    def test_adjacent_revit_scale_is_a_candidate_not_an_inline_measurement(self):
+        doc=pymupdf.open();page=doc.new_page(width=500,height=600)
+        page.draw_rect((30,40,200,160))
+        page.insert_text((30,200),'Elevation 1 to the S.East',fontsize=10)
+        page.insert_text((30,218),'1 : 100',fontsize=8)
+        page.insert_text((300,550),'Scale 1:200',fontsize=10)
+        parents,_=extract_page(page,'a'*64,1,min_line_length_points=.25,max_candidates=10000)
+        graph=build(parents)
+        try:
+            row=review(page,'a'*64,1,graph)['view_captions'][0]
+            self.assertEqual(row['adjacent_scale_status'],'one_adjacent_printed_scale_candidate')
+            self.assertEqual(row['adjacent_scale_candidates'][0]['printed_denominator'],100)
+            self.assertIsNone(row['printed_claim']['printed_scale_denominator'])
+            self.assertEqual(row['printed_claim']['printed_state'],'unspecified')
+            self.assertFalse(row['adjacent_scale_assignment_verified'])
+            page.insert_text((30,218),'1 : 100',fontsize=8)
+            row=review(page,'a'*64,1,graph)['view_captions'][0]
+            self.assertEqual(row['adjacent_scale_status'],'ambiguous_adjacent_printed_scales')
         finally:doc.close()
 
     def test_budget_discards_all_assignments_and_wrong_source_graph_rejects(self):

@@ -13,14 +13,22 @@ from .glyph_visibility import screen_architectural_span
 from .elevation_interpretation import caption
 from .architectural_graph import VERSION as GRAPH_VERSION
 
-VERSION='architectural-caption-layout-v1'
+VERSION='architectural-caption-layout-v2'
 
 
 def view_claim(text):
     elevation=caption(text)
     if elevation:return {**elevation,'view_kind':'elevation' if elevation['kind']=='view_caption' else 'sheet_title'}
     value=re.sub(r'\s+','',text.lower())
-    plan=re.fullmatch(r'(?:(existing|proposed))?((?:ground|first|second)?floor|roof)plan(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
+    numbered=re.fullmatch(r'elevation([1-9]\d{0,2})tothe([ns])\.?(east|west)(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
+    if numbered:
+        denominator=int(numbered[5]) if numbered[5] else None
+        if denominator is not None and not 1<=denominator<=10000:return None
+        return {'kind':'view_caption','view_kind':'elevation','view_number':int(numbered[1]),
+            'direction':{'n':'north','s':'south'}[numbered[2]]+numbered[3],
+            'printed_state':numbered[4] or 'unspecified','printed_scale_denominator':denominator,
+            'numbered_reference_verified':False}
+    plan=re.fullmatch(r'(?:\d{1,3}\.)?(?:overall)?(?:(existing|proposed))?((?:ground|first|second)?floor|roof)plan(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
     key=re.fullmatch(r'keyplan(?:\((ground|first|second)floor\))?(?:\|1:(\d{1,5}))?',value)
     section=re.fullmatch(r'section([a-z]{1,2})[-–](\1)(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
     if plan:kind='plan';state=plan[3] or plan[1] or 'unspecified';denominator=plan[4]
@@ -29,8 +37,13 @@ def view_claim(text):
     else:return None
     scale=int(denominator) if denominator else None
     if scale is not None and not 1<=scale<=10000:return None
-    return {'kind':'view_caption','view_kind':kind,'printed_state':state,'printed_scale_denominator':scale,
-        'plan_level_or_form':plan[2] if plan else None}
+    prefix=re.match(r'^(\d{1,3})\.',value) if plan else None
+    overall_title=bool(plan and value.startswith('overall'))
+    return {'kind':'sheet_title' if overall_title else 'view_caption',
+        'view_kind':'sheet_title' if overall_title else kind,
+        'printed_state':state,'printed_scale_denominator':scale,
+        'plan_level_or_form':plan[2] if plan else None,
+        **({'view_number':int(prefix[1]),'numbered_reference_verified':False} if prefix else {})}
 
 
 def review(page,sha,number,graph,*,max_assignments=100000):
@@ -69,6 +82,24 @@ def review(page,sha,number,graph,*,max_assignments=100000):
         row['scale_scope_status']='no_inline_scale' if denominator is None else (
             'page_view_claim_difference' if page_denominators and set(page_denominators)!={denominator} else
             'agreeing_printed_claims_only' if page_denominators else 'inline_caption_claim_only')
+        # Revit prints the per-view ratio on a separate line beneath the
+        # caption. Keep local geometric correspondence as a hypothesis; a
+        # nearby scale must never silently replace the inline printed claim.
+        u=row['reading_direction_pdf_native'];n=(-u[1],u[0]);label=shape(row['label_geometry'])
+        def extent(g,axis):return [sum(p[k]*axis[k] for k in (0,1)) for p in g.exterior.coords]
+        a=extent(label,u);b=extent(label,n);height=max(b)-min(b);candidates=[]
+        if row['glyph_screen']['status']=='raster_consistent_candidate':
+            for scale in scales:
+                if scale['glyph_screen']['status']!='raster_consistent_candidate':continue
+                if sum(u[k]*scale['reading_direction_pdf_native'][k] for k in (0,1))<1-1e-7:continue
+                g=shape(scale['label_geometry']);sa=extent(g,u);sb=extent(g,n)
+                gap=min(b)-max(sb)
+                if 0<=gap<=2*height and abs(min(a)-min(sa))<=height:
+                    candidates.append(scale)
+        row['adjacent_scale_candidates']=candidates
+        row['adjacent_scale_assignment_verified']=False
+        row['adjacent_scale_status']='one_adjacent_printed_scale_candidate' if len(candidates)==1 else (
+            'ambiguous_adjacent_printed_scales' if candidates else 'no_supported_adjacent_scale')
     rotation=page.rotation
     try:
         page.set_rotation(0);r=page.rect
