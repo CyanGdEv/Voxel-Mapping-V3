@@ -139,8 +139,10 @@ def parse_attachments(html, application, max_documents=2000):
     return sorted(documents.values(), key=lambda d: (d['priority'], d['title'], d['url']))
 
 
-def discover_attachments(session, output, cache=None, deadline=None, application_references=None):
-    seeds = json.loads((Path(__file__).parent/'data/alton-applications.json').read_text())
+def discover_attachments(session, output, cache=None, deadline=None, application_references=None,
+                         application_catalogue=None):
+    seeds = dict(application_catalogue) if application_catalogue is not None else json.loads(
+        (Path(__file__).parent/'data/alton-applications.json').read_text())
     if application_references:
         wanted = set(application_references)
         known = {a['reference'] for a in seeds['applications']}
@@ -148,7 +150,7 @@ def discover_attachments(session, output, cache=None, deadline=None, application
             raise ValueError('Application references absent from the Alton park catalogue: '+', '.join(sorted(wanted-known)))
         seeds['applications'] = [a for a in seeds['applications'] if a['reference'] in wanted]
     result = {'status': 'checked', 'applications': [], 'documents': [], 'failures': [],
-              'historical_seed_date': seeds['acquired_at'], 'complete_council_discovery': False}
+              'historical_seed_date': seeds.get('acquired_at'), 'complete_council_discovery': False}
     cache = Path(cache).resolve() if cache else None
     consecutive_failures = 0
     result['missing_download_attempts'] = 0

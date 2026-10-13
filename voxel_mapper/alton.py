@@ -74,19 +74,27 @@ def download_pdf(session, url, max_bytes=10_000_000, *, transport_url=None, expe
         response.close()
 
 
-def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=2, application_references=None):
+def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=2, application_references=None,
+                  planning_catalogue=None, planning_application_catalogue=None):
     # Import lazily: council owns the common bounded PDF inspection routine.
     from .council import inspect_pdf
     from .alton_registration import inspect_axis_alignment
     from .alton_discovery import discover_attachments, merge_discovered
-    catalogue = json.loads((Path(__file__).parent/'data/alton-planning-catalogue.json').read_text())
+    from .planning_catalogues import load_planning_catalogues
+    catalogue, application_catalogue = load_planning_catalogues(
+        planning_catalogue, planning_application_catalogue, cache)
+    if planning_catalogue:
+        # Preserve the exact input scope for the next automatic source capture.
+        for name, value in [('planning-input-catalogue.json', catalogue),
+                            ('planning-input-applications.json', application_catalogue)]:
+            (Path(output)/name).write_text(json.dumps(value, indent=2), encoding='utf-8')
     result = {'provider': SOURCE['id'], 'source': SOURCE, 'status': 'checked',
               'application_search': 'recovered_historical_catalogue',
-              'catalogue_acquired_at': catalogue['acquired_at'],
+              'catalogue_acquired_at': catalogue.get('acquired_at'),
               'applications': sorted({e['applicationReference'] for e in catalogue['entries']}),
               'documents': [], 'failures': [], 'geometry_records': [],
               'reuse_status': 'not_confirmed', 'geometry_replacements': 0,
-              'limitations': [catalogue['coverage'],
+              'limitations': [catalogue.get('coverage', 'Retained catalogue scope; complete council coverage is not implied'),
                              'Approval is not as-built verification',
                              'Report vectors and PDF labels are not physical footprints']}
     cache = Path(cache).resolve() if cache else None
@@ -102,9 +110,13 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
     deadline = time.monotonic()+900
     with requests.Session() as session:
         session.headers.update({'User-Agent': USER_AGENT})
-        discovery = discover_attachments(session, output, cache, deadline, application_references)
+        discovery = discover_attachments(session, output, cache, deadline, application_references,
+                                         application_catalogue=application_catalogue)
         result['attachment_discovery'] = {k: v for k, v in discovery.items() if k != 'documents'}
-        result['application_search'] = 'historical_seed_full_attachment_pages'
+        result['application_search'] = ('retained_catalogue_attachment_pages' if planning_catalogue
+                                        else 'historical_seed_full_attachment_pages')
+        discovery = {**discovery, 'documents': [entry for entry in discovery['documents']
+                                              if is_park_application(entry)]}
         relevant = merge_discovered(relevant, discovery)
         result['discovered_document_count'] = len(relevant)
         def retained_file_available(entry):
