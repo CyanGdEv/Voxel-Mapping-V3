@@ -147,6 +147,8 @@ def main(argv=None):
     iteration.add_argument('--parent')
     discover = commands.add_parser('discover-pdf')
     discover.add_argument('--config',required=True); discover.add_argument('--output',required=True)
+    cross_view = commands.add_parser('assemble-views')
+    cross_view.add_argument('--config', required=True); cross_view.add_argument('--output', required=True)
     feed = commands.add_parser('prepare-feed')
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
@@ -160,6 +162,13 @@ def main(argv=None):
         report=export_preview(_read(args.spec),args.output,world=args.world)
         print(json.dumps({'surface_cells':report['native_audit']['surface_cells'],
                           'world_exported':'world' in report,'park_world_blocks_added':0}))
+        return
+    if args.command == 'assemble-views':
+        from .building_cross_view import prepare
+        base = Path(args.config).resolve().parent
+        report = prepare(_read(args.config), lambda p: (base/p).resolve(), args.output)
+        print(json.dumps({'shared_specs_generated': report['shared_specs_generated'],
+                          'training_labels_generated': 0, 'park_world_blocks_added': 0}))
         return
     if args.command == 'discover-pdf':
         from .building_pdf_discovery import prepare

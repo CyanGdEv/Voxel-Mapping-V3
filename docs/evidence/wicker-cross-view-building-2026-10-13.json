@@ -1,0 +1,148 @@
+{
+  "validated_at": "2026-10-13T20:11:05.792584+00:00",
+  "evidence_kind": "real",
+  "adapter_version": "cross-view-building-v1",
+  "scope": "Three revised Wicker shop originals; not a full area reconstruction",
+  "source_bundle": {
+    "status": "catalogued_sources_complete",
+    "counts": {
+      "catalogue_records": 3,
+      "application_records": 0,
+      "metadata_only_records": 0,
+      "expected_pdf_blobs": 3,
+      "retained_pdf_blobs": 3,
+      "missing_pdf_blobs": 0,
+      "expected_application_pages": 0,
+      "retained_application_pages": 0,
+      "missing_application_pages": 0
+    },
+    "missing_sources": [],
+    "metadata_only_sources": [],
+    "discovery_completeness": "Not implied by bundle completion; catalogue scope and dates still apply",
+    "world_geometry_additions": 0,
+    "live_downloads": 0,
+    "contract": "voxel_mapper.planning_source_bundle/v1",
+    "archive_sha256": "a20dd115caf811f25f60731489244da0b737425accbd47aaba4b5ff5773388a9",
+    "archive_bytes": 493959,
+    "evidence_kind": "real",
+    "inspection_inventories": 0
+  },
+  "sources": [
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "page": 1,
+      "title": "2967-26 Shop Elevations P1 FINAL.",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+      "bytes": 443573,
+      "original_sha256_verified": true,
+      "catalogue_state": "proposed",
+      "visible_native_view_states": [],
+      "native_counts": {
+        "source_primitives": 231,
+        "closed_source_faces": 12,
+        "view_captions": 0
+      },
+      "raster_image_placements": 85,
+      "printed_page_scale_status": "withheld_missing_ambiguous_or_unverified_scale",
+      "printed_page_scale_denominators": [
+        100
+      ]
+    },
+    {
+      "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "page": 1,
+      "title": "2967-21 GF Plan P1 FINAL",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+      "bytes": 135946,
+      "original_sha256_verified": true,
+      "catalogue_state": "proposed",
+      "visible_native_view_states": [],
+      "native_counts": {
+        "source_primitives": 2200,
+        "closed_source_faces": 92,
+        "view_captions": 0
+      },
+      "raster_image_placements": 1,
+      "printed_page_scale_status": "one_visible_printed_scale",
+      "printed_page_scale_denominators": [
+        100
+      ]
+    },
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "page": 1,
+      "title": "2967-48 Roof Plan P1 FINAL",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+      "bytes": 169647,
+      "original_sha256_verified": true,
+      "catalogue_state": "proposed",
+      "visible_native_view_states": [],
+      "native_counts": {
+        "source_primitives": 7122,
+        "closed_source_faces": 2491,
+        "view_captions": 1
+      },
+      "raster_image_placements": 1,
+      "printed_page_scale_status": "one_visible_printed_scale",
+      "printed_page_scale_denominators": [
+        100
+      ]
+    }
+  ],
+  "discovery": {
+    "discovered_pages": 3,
+    "source_records": 12148,
+    "output_bytes": 30938727,
+    "pages_sha256": "608d1e79583f3b5a29968c16533133cac3dd29c3f325f800ce8bae2bd2ef5fe6",
+    "shared_specs_generated": 0
+  },
+  "interpretation_report_sha256": "0676ab9cd7b873f8d35c8c83f0d418d45101f27a85cb6b3be60b9e65c4a06748",
+  "interpretation": [
+    {
+      "building_id": "wicker-shop-revised-sheets",
+      "discovered_view_claims": [
+        {
+          "caption_index": 0,
+          "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "glyph_status": "withheld",
+          "page": 1,
+          "printed_claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "plan"
+          },
+          "text": "Roof Plan",
+          "view_scope_verified": false
+        }
+      ],
+      "park_world_blocks_added": 0,
+      "reason": "One floor plan and four separately scoped elevations required",
+      "status": "awaiting_cross_view_evidence",
+      "training_labels_generated": 0,
+      "view_reviews": []
+    }
+  ],
+  "shared_specs_generated": 0,
+  "accepted_real_models": 0,
+  "park_world_blocks_added": 0,
+  "training_labels_generated": 0,
+  "supported_fixture": {
+    "evidence_kind": "synthetic",
+    "shared_specs_generated": 1,
+    "component_surfaces": 6,
+    "original_window_hole_preserved": true,
+    "acceptance_gates_all_false": true
+  },
+  "validation": {
+    "focused_tests": 44,
+    "full_regression_tests": 1345,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  }
+}
