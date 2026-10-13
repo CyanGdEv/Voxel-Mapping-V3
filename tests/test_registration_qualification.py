@@ -67,6 +67,47 @@ class QualificationTests(unittest.TestCase):
         self.assertEqual(report['missing_requirements']['independent_survey_reference_bundle'],1)
         self.assertNotIn('visible_unambiguous_printed_scale',report['missing_requirements'])
 
+    def test_scale_budget_failure_is_retained_and_other_pages_still_qualify(self):
+        from pypdf import PdfReader, PdfWriter
+        from voxel_mapper.mapped_alignment_checks import printed_scale_review
+        pdf = self.fixture.pdf; writer = PdfWriter()
+        reader = PdfReader(pdf)
+        writer.add_page(reader.pages[0]); writer.add_page(reader.pages[0])
+        with pdf.open('wb') as stream: writer.write(stream)
+        manifest = json.loads((self.root/'manifest.json').read_text())
+        manifest['sources'][0]['sha256'] = file_hash(pdf)
+        (self.root/'manifest.json').write_text(json.dumps(manifest))
+        corpus = Corpus(self.root/'two-page-corpus')
+        try:
+            corpus.ingest([{'url': 'https://example.test/two-pages'}], ['example.test'])
+            corpus.acquire(fetch=lambda _: pdf.read_bytes())
+            extract(corpus, self.root/'two-page-geometry')
+            def bounded_review(path, page):
+                if page == 1: raise ValueError('Map scale text budget exceeded')
+                return printed_scale_review(path, page)
+            with patch('voxel_mapper.registration_qualification.printed_scale_review', side_effect=bounded_review):
+                report = run(corpus, self.root/'two-page-geometry', self.store, self.root/'two-page-output',
+                    manifest=self.root/'manifest.json', references=self.root/'refs.json')
+            self.assertEqual(report['pages'], 2)
+            self.assertEqual(report['qualified_frames'], 1)
+            records = [json.loads(line) for line in (self.root/'two-page-output'/report['run_id']/'page-frames.jsonl').read_text().splitlines()]
+            self.assertEqual(records[0]['scale_review']['reason'], 'Map scale text budget exceeded')
+            self.assertEqual(records[0]['status'], 'awaiting_registration_evidence')
+            self.assertEqual(records[1]['status'], 'qualified_horizontal_frame')
+            replay = run(corpus, self.root/'two-page-geometry', self.store, self.root/'two-page-replay',
+                manifest=self.root/'manifest.json', references=self.root/'refs.json')
+            self.assertEqual(replay['output_sha256'], report['output_sha256'])
+            self.assertEqual(replay['reused_pages'], 2)
+        finally: corpus.close()
+
+    def test_scale_review_failure_cannot_hide_changed_original(self):
+        def changed(path, page):
+            path.write_bytes(path.read_bytes()+b'changed')
+            raise ValueError('Map scale text budget exceeded')
+        with patch('voxel_mapper.registration_qualification.printed_scale_review', side_effect=changed):
+            with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
+                self.audit()
+
     def test_exact_replay_reuses_frames_and_rejection_blocks_recipe_preflight(self):
         first = self.audit()
         self.assertEqual(first['qualified_frames'],1)

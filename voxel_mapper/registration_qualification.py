@@ -17,7 +17,7 @@ from .mapped_alignment_checks import printed_scale_review, VERSION as SCALE_VERS
 from .reconstruction.model import Source
 from .reconstruction.registration import registration_domain
 
-VERSION = 'drawing-frame-qualification-v2'
+VERSION = 'drawing-frame-qualification-v3'
 
 
 def qualify_page(pdf, page_number, source, references, sources, *, scale_review=None):
@@ -121,7 +121,14 @@ def run(corpus, geometry, store, output, *, manifest=None, references=None, max_
             cached = memory.get('drawing_frame_qualification', inputs, parents)
             if cached is not None: record = cached['payload']; reused += 1
             else:
-                scale = printed_scale_review(pdf, page)
+                try:
+                    scale = printed_scale_review(pdf, page)
+                except (ValueError, RuntimeError) as error:
+                    if file_hash(pdf) != sha:
+                        raise ValueError('Pinned source PDF checksum mismatch') from error
+                    scale = {'status': 'withheld_scale_review_error', 'document_sha256': sha,
+                             'page': page, 'reason': str(error), 'denominators': [],
+                             'expected_metres_per_pdf_point': None}
                 missing = []
                 if len(policies) != 1: missing.append('unique_checksum_bound_source_policy')
                 if scale['status'] != 'one_visible_printed_scale': missing.append('visible_unambiguous_printed_scale')
