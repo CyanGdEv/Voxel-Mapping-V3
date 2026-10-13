@@ -477,24 +477,35 @@ def capture_acquisition(source, archive, hosts, *, origin, inventory=None, evide
     data_root = Path(__file__).parent / 'data'
     catalogue_path, applications_path = (data_root / name for name in
                                         ('alton-planning-catalogue.json', 'alton-applications.json'))
+    retained_catalogue = source / 'planning-input-catalogue.json'
+    retained_applications = source / 'planning-input-applications.json'
+    if retained_catalogue.exists() or retained_applications.exists():
+        from .planning_catalogues import load_planning_catalogues
+        load_planning_catalogues(retained_catalogue, retained_applications, source)
+        catalogue_path, applications_path = retained_catalogue, retained_applications
     catalogue = load_json(_bounded_file(catalogue_path, MAX_METADATA_BYTES))
     applications = load_json(_bounded_file(applications_path, MAX_METADATA_BYTES))
     provenance = {'evidence_kind': evidence_kind, 'origin': origin,
                   'hash_policy': 'historical pins or observed original bytes; no independent source/geometry qualification',
-                  'historical_catalogue_sha256': hashlib.sha256(catalogue_path.read_bytes()).hexdigest(),
-                  'historical_applications_sha256': hashlib.sha256(applications_path.read_bytes()).hexdigest()}
+                  'input_catalogue_sha256': hashlib.sha256(catalogue_path.read_bytes()).hexdigest(),
+                  'input_applications_sha256': hashlib.sha256(applications_path.read_bytes()).hexdigest()}
     inspection_path = source / 'alton-planning-inspection.json'
     if inspection_path.is_file():
         inspection_data = _bounded_file(inspection_path, MAX_INVENTORY_BYTES)
         inspection = load_json(inspection_data)
         provenance['acquisition_report_sha256'] = hashlib.sha256(inspection_data).hexdigest()
         # Keep the recovered catalogue and all newly observed original attachments.
-        by_url = {r['url']: r['sha256'] for r in catalogue['entries']}
+        by_url = {r['url']: r.get('sha256') for r in catalogue['entries']}
         for row in inspection.get('documents', []):
             if row.get('sha256'):
                 sha = pinned_sha(row['sha256'])
-                if row['url'] in by_url and by_url[row['url']] != sha:
+                if by_url.get(row['url']) and by_url[row['url']] != sha:
                     raise ValueError('Acquisition conflicts with historical PDF pin; recatalogue explicitly')
+                if row['url'] in by_url and not by_url[row['url']]:
+                    for entry in catalogue['entries']:
+                        if entry['url'] == row['url']:
+                            entry.update(sha256=sha, file=f'files/{sha}.pdf')
+                    by_url[row['url']] = sha
                 if row['url'] not in by_url:
                     keys = ('url', 'title', 'applicationReference', 'application_context', 'role', 'state', 'hash_provenance')
                     catalogue['entries'].append({**{k: row[k] for k in keys if k in row},

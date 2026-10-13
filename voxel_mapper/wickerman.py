@@ -207,9 +207,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True)
     parser.add_argument('--planning-cache')
+    parser.add_argument('--planning-catalogue', help='Replayed PDF catalogue; paths are relative to planning-cache')
+    parser.add_argument('--planning-application-catalogue', help='Replayed official application snapshots')
     parser.add_argument('--source-output', help='Reuse an existing Alton acquisition directory for a local test')
     parser.add_argument('--estimated-reconstruction', action='store_true', help='Emit visible estimated track/support/paving preview from retained evidence')
     args = parser.parse_args()
+    if args.planning_catalogue or args.planning_application_catalogue:
+        from .planning_catalogues import load_planning_catalogues
+        load_planning_catalogues(args.planning_catalogue, args.planning_application_catalogue, args.planning_cache)
     if args.estimated_reconstruction and not args.source_output:
         parser.error('--estimated-reconstruction currently requires --source-output')
     output = Path(args.output).resolve()
@@ -234,13 +239,17 @@ def main():
         if args.planning_cache:
             from .alton import acquire_alton
             inspection = acquire_alton(output, bounds=BBOX, cache=args.planning_cache,
-                                       application_references=APPLICATIONS)
+                                       application_references=APPLICATIONS,
+                                       planning_catalogue=args.planning_catalogue,
+                                       planning_application_catalogue=args.planning_application_catalogue)
             quality['council_drawings'] = inspection
         else:
             inspection = json.loads((source/'alton-planning-inspection.json').read_text())
     else:
         quality = run_auto(output, location='Alton Towers — Wicker Man BASELINE ONLY', bounds=BBOX,
-                           planning_cache=args.planning_cache, planning_applications=APPLICATIONS)
+                           planning_cache=args.planning_cache, planning_applications=APPLICATIONS,
+                           planning_catalogue=args.planning_catalogue,
+                           planning_application_catalogue=args.planning_application_catalogue)
         inspection = quality['council_drawings']
     from .alton_discovery import document_role
     for document in inspection['documents']:

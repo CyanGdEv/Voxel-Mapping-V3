@@ -186,3 +186,38 @@ Real repository catalogues can be packaged as metadata-only evidence with every
 unavailable original listed. Actual planning PDFs were unavailable for this job;
 no real PDF inspection, new drawing frame or planning geometry acceptance is
 claimed. Job 1's recovered bytes are required for real-source replay.
+
+## Automatic generation handoff
+
+The Alton workflow supplies both exported replay catalogues to Wicker generation,
+with the replay corpus as the cache root. Explicit replay catalogues replace
+packaged historical seeds. This permits newly retained application references
+and PDF pins to reach acquisition without historical URL matching. A normal
+run without these options continues to use the packaged catalogues.
+
+```bash
+python -m voxel_mapper.wickerman --output alton-test \
+  --planning-cache retained-corpus \
+  --planning-catalogue retained-source-replay/replayed-catalogue.json \
+  --planning-application-catalogue retained-source-replay/replayed-applications.json
+```
+
+Both catalogue options and the cache are required together. Metadata is bounded
+and validated before acquisition: official HTTPS identity, original SHA256 pins,
+content-addressed paths, conflicting snapshots and application context. PDF-only
+references may lack a retained application page; explicitly requested discovery
+references must still appear in the supplied application catalogue.
+
+Generation writes `planning-input-catalogue.json` and
+`planning-input-applications.json` alongside its evidence. Subsequent automatic
+bundle capture uses those inputs and the observed originals, preserving new
+applications, pinned revisions and newly downloaded previously unpinned PDFs.
+Missing originals remain explicit and may use existing bounded official recovery.
+A fully retained selected scope needs no council requests. Terrain and OSM
+acquisition are separate providers and are not made offline by these options.
+
+Synthetic regression exercises bundle creation, offline replay, new-reference
+acquisition without network calls, pin preservation during HTML discovery and
+next-bundle capture. Source replay does not approve registration, semantic
+interpretation, source reuse or park blocks; the Wicker geometry gate still fails
+until independently qualified physical components are actually emitted.

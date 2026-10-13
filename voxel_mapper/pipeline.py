@@ -15,7 +15,11 @@ from .bathymetry import acquire_bathymetry
 from .point_cloud import acquire_point_cloud
 
 
-def run_auto(output, location=None, bounds=None, planning_cache=None, planning_applications=None):
+def run_auto(output, location=None, bounds=None, planning_cache=None, planning_applications=None,
+             planning_catalogue=None, planning_application_catalogue=None):
+    if planning_catalogue or planning_application_catalogue:
+        from .planning_catalogues import load_planning_catalogues
+        load_planning_catalogues(planning_catalogue, planning_application_catalogue, planning_cache)
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     # Avoid stale successful exports being mistaken for a failed current run.
@@ -98,7 +102,10 @@ def run_auto(output, location=None, bounds=None, planning_cache=None, planning_a
                 site_name = names.pop()
         if (site_name and 'alton towers' in site_name.lower()) or planning_applications:
             from .alton import acquire_alton
-            council = acquire_alton(output, bounds, planning_cache, application_references=planning_applications)
+            council = acquire_alton(output, bounds, planning_cache, application_references=planning_applications,
+                                    **({'planning_catalogue': planning_catalogue,
+                                        'planning_application_catalogue': planning_application_catalogue}
+                                       if planning_catalogue or planning_application_catalogue else {}))
         else:
             council = acquire_council(planning_matches['authorities'],planning['records'],site_name,output,bounds=bounds,
                                       reference_features=collection['features'])

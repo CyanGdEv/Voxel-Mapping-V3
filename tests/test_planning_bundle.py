@@ -102,6 +102,88 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(repacked['counts']['retained_pdf_blobs'], 1)
         self.assertEqual(repacked['inspection_inventories'], 1)
 
+    def test_replayed_new_application_reaches_acquisition_and_next_bundle_without_network(self):
+        # A reference and attachment absent from the packaged historical seeds.
+        from voxel_mapper.alton import acquire_alton
+        reference = 'SMD/2099/9999'
+        html = (f"<html>{reference} <a href=\"javascript:AppBlobImage('111')\">"
+                'Fixture existing site plan</a></html>').encode()
+        sha = hashlib.sha256(html).hexdigest()
+        self.application.update(reference=reference, cached_page=f'files/{sha}.html',
+                                cached_page_sha256=sha)
+        (self.source / self.application['cached_page']).write_bytes(html)
+        self.record['applicationReference'] = reference
+        self.catalogue.write_text(json.dumps({'entries': [self.record]}), encoding='utf-8')
+        self.applications.write_text(json.dumps({'applications': [self.application]}), encoding='utf-8')
+        bundle = self.create()
+        cache, replay, output = (self.root / name for name in ('portable-cache', 'replay', 'generation'))
+        replay_bundle(self.archive, bundle['archive_sha256'], [HOST], cache, replay, inspect=False)
+        output.mkdir()
+        with patch('requests.Session.get', side_effect=AssertionError('Unexpected network access')) as get, \
+             patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+            result = acquire_alton(output, cache=cache, application_references=[reference],
+                                   planning_catalogue=replay / 'replayed-catalogue.json',
+                                   planning_application_catalogue=replay / 'replayed-applications.json')
+        get.assert_not_called()
+        self.assertEqual(result['applications'], [reference])
+        self.assertEqual(len(result['documents']), 1)
+        self.assertEqual(result['documents'][0]['sha256'], self.pdf_sha)
+        self.assertEqual(result['documents'][0]['acquisition_method'], 'hash_checked_cache')
+        self.assertEqual(result['attachment_discovery']['applications'][0]['acquisition_method'], 'hash_checked_cache')
+        self.assertEqual(result['geometry_records'], [])
+        captured = capture_acquisition(output, output / 'next.zip', [HOST],
+                                       origin='Synthetic replay handoff test', evidence_kind='fixture')
+        self.assertEqual(captured['counts']['retained_pdf_blobs'], 1)
+        self.assertEqual(captured['counts']['retained_application_pages'], 1)
+        self.assertEqual(captured['counts']['missing_pdf_blobs'], 0)
+
+    def test_capture_pins_previously_unpinned_replay_attachment(self):
+        from voxel_mapper.alton import acquire_alton
+        record = {k: v for k, v in self.record.items() if k not in ('sha256', 'file')}
+        self.catalogue.write_text(json.dumps({'entries': [record]}), encoding='utf-8')
+        output = self.root / 'downloaded-generation'
+        output.mkdir()
+        with patch('requests.Session.get', side_effect=AssertionError('Unexpected HTML download')), \
+             patch('voxel_mapper.alton.download_pdf', return_value=self.pdf_data) as download, \
+             patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+            result = acquire_alton(output, cache=self.source,
+                                   application_references=[self.application['reference']],
+                                   planning_catalogue=self.catalogue,
+                                   planning_application_catalogue=self.applications)
+        download.assert_called_once()
+        self.assertEqual(result['documents'][0]['sha256'], self.pdf_sha)
+        captured = capture_acquisition(output, output / 'next.zip', [HOST],
+                                       origin='Synthetic unpinned attachment test', evidence_kind='fixture')
+        self.assertEqual(captured['counts']['retained_pdf_blobs'], 1)
+        self.assertEqual(captured['counts']['missing_pdf_blobs'], 0)
+        with zipfile.ZipFile(output / 'next.zip') as archive:
+            catalogue_member = next(n for n in archive.namelist() if 'pdf_catalogue-' in n)
+            entries = json.loads(archive.read(catalogue_member))['entries']
+        self.assertEqual(entries[0]['sha256'], self.pdf_sha)
+        self.assertEqual(entries[0]['file'], self.pdf_member)
+
+    def test_replayed_catalogue_validation_rejects_conflicts_and_unsafe_records(self):
+        from voxel_mapper.planning_catalogues import load_planning_catalogues
+        with self.assertRaisesRegex(ValueError, 'both catalogues'):
+            load_planning_catalogues(self.catalogue, None, self.source)
+        cases = [
+            [{**self.record, 'file': '../outside.pdf'}],
+            [{**self.record, 'url': 'https://other.example/plan.pdf'}],
+            [self.record, {**self.record, 'sha256': 'a'*64, 'file': 'files/'+ 'a'*64 + '.pdf'}],
+            [{**self.record, 'application_context': 'Another site'}],
+        ]
+        for rows in cases:
+            with self.subTest(rows=rows):
+                self.catalogue.write_text(json.dumps({'entries': rows}), encoding='utf-8')
+                with patch('requests.Session.get') as get, self.assertRaises(ValueError):
+                    load_planning_catalogues(self.catalogue, self.applications, self.source)
+                get.assert_not_called()
+        self.catalogue.write_text(json.dumps({'entries': [self.record]}), encoding='utf-8')
+        self.applications.write_text(json.dumps({'applications': [self.application,
+                                      {**self.application, 'url': f'https://{HOST}/different'}]}), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Conflicting retained application snapshots'):
+            load_planning_catalogues(self.catalogue, self.applications, self.source)
+
     def test_unchanged_bundle_is_deterministic_and_import_repairs_then_resumes(self):
         first = self.create()
         self.assertEqual(first['archive_sha256'], self.create()['archive_sha256'])

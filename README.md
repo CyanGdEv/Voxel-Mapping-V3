@@ -416,3 +416,5 @@ See [park paving](docs/park-paving.md) for bounded OSM material inheritance,
 planning evidence and vanilla-block palettes.
 
 Planning path-side details: see [docs/park-details.md](docs/park-details.md) for reviewed rock, planter, wall and building extraction and the additive V5 world pass.
+
+The Alton workflow automatically passes verified replay catalogues into Wicker generation and preserves them in the next source bundle. New application references and pinned drawings no longer depend on the historical seed catalogue. See [automatic generation handoff](docs/source-bundles.md#automatic-generation-handoff) for local options and validation.

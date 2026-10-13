@@ -94,7 +94,9 @@ jobs:
           import os, subprocess, sys
           args = [sys.executable, '-m', 'voxel_mapper.wickerman', '--output', 'alton-test']
           if os.environ['SOURCE_RUN_ID']:
-              args.extend(['--planning-cache', 'retained-corpus'])
+              args.extend(['--planning-cache', 'retained-corpus',
+                           '--planning-catalogue', 'retained-source-replay/replayed-catalogue.json',
+                           '--planning-application-catalogue', 'retained-source-replay/replayed-applications.json'])
           # The genuine geometry gate remains mandatory and its exit code propagates.
           subprocess.run(args, check=True)
           PY
