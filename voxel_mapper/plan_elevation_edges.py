@@ -97,7 +97,10 @@ def match_edges(edges, nominal_unit, width, *, tolerance_m=.25):
     return sorted(result, key=lambda r: r['id'])
 
 
-def run(documents_file, face_directory, *, component_label=None):
+def run(documents_file, face_directory, *, component_label=None, max_results=10000, max_correspondence_candidates=1000000):
+    if (type(max_results) is not int or not 1<=max_results<=10000
+            or type(max_correspondence_candidates) is not int or not 1<=max_correspondence_candidates<=1000000):
+        raise ValueError('Bounded plan/elevation correspondence output required')
     if component_label is not None and (not isinstance(component_label, str) or not 1 <= len(component_label) <= 100):
         raise ValueError('Bounded literal component label required')
     catalogue = Path(documents_file)
@@ -131,7 +134,7 @@ def run(documents_file, face_directory, *, component_label=None):
             if association_count > 10000:
                 raise ValueError('View association budget exceeded')
             associations.setdefault((record['document_sha256'], record['page'], tuple(view)), []).append(record)
-    pages = {}; results = []; network_pages = []
+    pages = {}; results = []; network_pages = []; correspondence_count=0
     for link in rows('view-links.jsonl'):
         if link['status'] != 'unique_unverified_plan_elevation_reference':
             continue
@@ -192,6 +195,9 @@ def run(documents_file, face_directory, *, component_label=None):
             unit = scale['nominal_metres_per_pdf_point_candidate']
             candidates = match_edges(edges, unit, metric['width_m']) if unit else []
             chain_candidates = match_edges(chains, unit, metric['width_m']) if unit else []
+            correspondence_count+=len(candidates)+len(chain_candidates)
+            if correspondence_count>max_correspondence_candidates:
+                raise ValueError('Plan/elevation correspondence candidate budget exceeded')
             results.append({'plan_document_sha256': sha, 'plan_page': number,
                             'plan_reference': link['reference'], 'target_document_sha256': target['document_sha256'],
                             'target_page': target['page'], 'view_key_candidate': target['view']['view_key_candidate'],
@@ -204,7 +210,7 @@ def run(documents_file, face_directory, *, component_label=None):
                             'status': 'withheld_plan_scale' if not unit else 'unverified_length_hypotheses' if candidates else 'withheld_no_full_segment_length_match',
                             'mesh_status': 'withheld_incomplete_component_correspondence',
                             'mesh': None, 'accepted_feature': False, 'world_geometry_additions': 0})
-            if len(results) > 10000:
+            if len(results) > max_results:
                 raise ValueError('Correspondence budget exceeded')
     return {'version': VERSION, 'network_version': NETWORK_VERSION, 'fill_version': FILL_VERSION,
             'component_label_search': component_label, 'network_pages': network_pages,

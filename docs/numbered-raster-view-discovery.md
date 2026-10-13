@@ -1,5 +1,10 @@
 # Numbered views and source-bound raster review
 
+The next stage, [facade region discovery](raster-facade-source-feed.md), now
+connects material-anchor contrast regions and numbered references to separate
+local view studies and unseeded opening review candidates. Those studies do
+not yet assemble a complete shop.
+
 The raw PDF discovery feed now recognizes the Wicker revised shop's numbered
 Revit elevation captions and numbered overall floor plan. Unnumbered `Overall`
 titles are retained as sheet titles, not additional views. Caption numbers and
