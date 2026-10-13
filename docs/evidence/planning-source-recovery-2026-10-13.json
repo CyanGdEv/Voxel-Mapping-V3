@@ -1,0 +1,215 @@
+{
+  "validated_at": "2026-10-13T10:35:42.551990+00:00",
+  "evidence_kind": "real",
+  "scope": "Pinned Wicker Man and Katanga catalogue subset; not complete park acquisition",
+  "retained_pdf_blobs": 11,
+  "pdfs": [
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176958",
+      "file": "files/bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+      "title": "03224 S73 application - SW8 path proposals 22-02-17",
+      "role": "access-plan",
+      "state": "unknown",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176958",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142",
+      "file": "files/bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953.pdf",
+      "applicationReference": "SMD/2016/0315",
+      "sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "title": "Existing Site Plan",
+      "role": "site-plan",
+      "state": "existing",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 , Alton Towers , Farley Lane, , Farley, ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959",
+      "file": "files/4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "title": "Alton Towers Woodland Pathway - Statement",
+      "role": "access-plan",
+      "state": "unknown",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139",
+      "file": "files/145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1.pdf",
+      "applicationReference": "SMD/2016/0315",
+      "sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "title": "Existing Block Plan",
+      "role": "block-plan",
+      "state": "existing",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 , Alton Towers , Farley Lane, , Farley, ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+      "file": "files/1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "title": "373-95-7B Site Plan Proposed showing Woodland path",
+      "role": "access-plan",
+      "state": "proposed",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+      "file": "files/02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e.pdf",
+      "applicationReference": "SMD/2016/0315",
+      "sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 1",
+      "role": "ride-layout",
+      "state": "unknown",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 , Alton Towers , Farley Lane, , Farley, ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176956",
+      "file": "files/321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "title": "373-95-8B Site Plan Landscape",
+      "role": "landscape-plan",
+      "state": "unknown",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176956",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171",
+      "file": "files/78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215.pdf",
+      "applicationReference": "SMD/2016/0315",
+      "sha256": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 2",
+      "role": "ride-layout",
+      "state": "unknown",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 , Alton Towers , Farley Lane, , Farley, ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176957",
+      "file": "files/ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+      "title": "373-95-18B SW8 Planting Schedule (path change)",
+      "role": "landscape-plan",
+      "state": "unknown",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176957",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172",
+      "file": "files/468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce.pdf",
+      "applicationReference": "SMD/2016/0315",
+      "sha256": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 3",
+      "role": "ride-layout",
+      "state": "unknown",
+      "application_context": "SMD/2016/0315 17/05/2016 19/05/2016 , Alton Towers , Farley Lane, , Farley, ST10 4DB Demolition of existing structures and the installation of a new rollercoaster, construction of associated buildings, landscaping and groundworks Planning Permission - Approved 31/08/2016",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172",
+      "recovery_status": "retained"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176961",
+      "file": "files/81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428.pdf",
+      "applicationReference": "SMD/2017/0111",
+      "sha256": "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428",
+      "title": "Arboricultural Statement",
+      "role": "landscape-plan",
+      "state": "unknown",
+      "application_context": "SMD/2017/0111 22/02/2017 24/02/2017 , Alton Towers , Farley Lane, , Farley, ST10 4DB Variation of conditions 2 (plans) and 16 (planting) attached to planning permission SMD/2016/0315 to incorporate an amended path and additional landscaping in association with the approved SW8 ride. Planning Permission - Approved 02/06/2017",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176961",
+      "recovery_status": "retained"
+    }
+  ],
+  "failed_urls": [
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12965",
+      "attempts": 1,
+      "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=45)"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=15348",
+      "attempts": 1,
+      "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=45)"
+    }
+  ],
+  "applications": [
+    {
+      "reference": "SMD/2017/0111",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=111996",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=111996",
+      "observed_sha256": "d2c6f38abc2c8b6d0470b70a221112f732ba6f2d9c002a648bafbb5cd5201fdc",
+      "expected_sha256": "d2c6f38abc2c8b6d0470b70a221112f732ba6f2d9c002a648bafbb5cd5201fdc",
+      "attachment_count": 15,
+      "status": "retained"
+    },
+    {
+      "reference": "SMD/2016/0315",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=104356",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=104356",
+      "observed_sha256": "da203bc855a135f2cd6f2850db2b45cfac213a7d31ebf90e4f1eb8234f9a8bb3",
+      "expected_sha256": "da203bc855a135f2cd6f2850db2b45cfac213a7d31ebf90e4f1eb8234f9a8bb3",
+      "attachment_count": 89,
+      "status": "retained"
+    },
+    {
+      "reference": "SMD/2009/0125",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12613",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=12613",
+      "observed_sha256": "6b4ce322c18744fafad106fb3c5a4e922e53133330f6922e68e2d4a54e11cb3d",
+      "expected_sha256": "206ee3d127665e78104c1b0c74ada1e390e29692ede009e52dd31bf51402e76d",
+      "status": "unavailable",
+      "reason": "Historical HTML pin differs; not accepted as retained historical page"
+    },
+    {
+      "reference": "SMD/2007/0009",
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9726",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9726",
+      "observed_sha256": "c55e457d61b54f00f0b90716ad39a4fc5620e6bf5148e22285f9b4090e63b63c",
+      "expected_sha256": "c55e457d61b54f00f0b90716ad39a4fc5620e6bf5148e22285f9b4090e63b63c",
+      "attachment_count": 3,
+      "status": "retained"
+    }
+  ],
+  "bundle_sha256": "858121a1a410ea26647419def6fcb065ffbb6df1c408d2537d46cdb324460cd3",
+  "world_geometry_additions": 0,
+  "registration_verified": false,
+  "offline_replay": {
+    "inspected_pages": 58,
+    "page_inventory_sha256": "a946aff86979187bd5480fff885cdaa03f08c3695aed4b21fd644e72e4d8c58b",
+    "parsed_application_pages": 3,
+    "discovered_attachment_links": 107,
+    "live_downloads": 0,
+    "verified_registrations": 0,
+    "world_geometry_additions": 0,
+    "unavailable_unique_pdf_urls": 98
+  },
+  "drawing_inspection": {
+    "documents": 11,
+    "drawing_annotation_candidates": 1379,
+    "acceptance_status": "failed_missing_planning_geometry",
+    "verified_geometry_input": "empty; annotation evidence is not verified geometry"
+  },
+  "live_acquisition": {
+    "pinned_pdf_bytes": 1008558,
+    "parsed_wicker_application_pages": 2,
+    "discovered_attachment_links": 104,
+    "failures": []
+  }
+}

@@ -183,7 +183,10 @@ def discover_attachments(session, output, cache=None, deadline=None, application
                 acquisition_method = 'official_download'
                 download_pending = True
                 result['missing_download_attempts'] += 1
-                response = session.get(application['url'], timeout=(5, 10), stream=True, allow_redirects=False)
+                from .alton import official_request_url
+                request_url = official_request_url(application['url'], application.get('transport_url'),
+                                                   application.get('cached_page_sha256'))
+                response = session.get(request_url, timeout=(5, 10), stream=True, allow_redirects=False)
                 try:
                     response.raise_for_status()
                     if 300 <= response.status_code < 400:
@@ -195,6 +198,9 @@ def discover_attachments(session, output, cache=None, deadline=None, application
                             raise ValueError('Application HTML exceeds 2 MB budget')
                         chunks.append(chunk)
                     html = b''.join(chunks)
+                    if (application.get('transport_url') and hashlib.sha256(html).hexdigest()
+                            != application['cached_page_sha256']):
+                        raise ValueError('Application transport checksum mismatch; recataloguing required')
                 finally:
                     response.close()
             documents = parse_attachments(html, application)
@@ -207,6 +213,8 @@ def discover_attachments(session, output, cache=None, deadline=None, application
                                            'attachment_count': len(documents), 'page_sha256': digest,
                                            'local_page': str(page_path.resolve()),
                                            'acquisition_method': acquisition_method})
+            if application.get('transport_url'):
+                result['applications'][-1]['transport_url'] = application['transport_url']
             if download_pending:
                 consecutive_failures = 0
         except (OSError, ValueError, requests.RequestException) as error:

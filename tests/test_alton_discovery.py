@@ -90,6 +90,50 @@ class AltonDiscoveryTests(unittest.TestCase):
                                             stream=True, allow_redirects=False)
         session.get.return_value.close.assert_called_once()
 
+    def test_recorded_application_transport_matches_historical_page(self):
+        html, seeds = self.discovery_seeds()
+        app = seeds['applications'][0]
+        app['transport_url'] = app['url'].replace('https:', 'http:')
+        session = MagicMock()
+        session.get.return_value.status_code = 200
+        session.get.return_value.iter_content.return_value = [html]
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                result = discover_attachments(session, Path(temporary))
+        self.assertEqual(result['status'], 'checked')
+        self.assertEqual(result['applications'][0]['page_sha256'], app['cached_page_sha256'])
+        self.assertEqual(result['applications'][0]['transport_url'], app['transport_url'])
+        session.get.assert_called_once_with(app['transport_url'], timeout=(5, 10),
+                                            stream=True, allow_redirects=False)
+
+    def test_changed_application_transport_bytes_are_not_published(self):
+        html, seeds = self.discovery_seeds()
+        app = seeds['applications'][0]
+        app['transport_url'] = app['url'].replace('https:', 'http:')
+        session = MagicMock()
+        session.get.return_value.status_code = 200
+        session.get.return_value.iter_content.return_value = [html+b'<p>Changed</p>']
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                result = discover_attachments(session, Path(temporary))
+            self.assertFalse((Path(temporary)/'files').exists())
+        self.assertEqual(result['status'], 'partial')
+        self.assertEqual(result['documents'], [])
+        self.assertIn('checksum mismatch', result['failures'][0]['reason'])
+        session.get.return_value.close.assert_called_once()
+
+    def test_unpinned_application_transport_is_rejected_before_network(self):
+        _, seeds = self.discovery_seeds()
+        app = seeds['applications'][0]
+        app['transport_url'] = app['url'].replace('https:', 'http:')
+        del app['cached_page_sha256']
+        session = MagicMock()
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch('voxel_mapper.alton_discovery.json.loads', return_value=seeds):
+                result = discover_attachments(session, Path(temporary))
+        self.assertEqual(result['documents'], [])
+        session.get.assert_not_called()
+
     def test_corrupt_and_escaped_html_do_not_trigger_recovery(self):
         for cache_path in ['files/page-0.html', '../escaped.html']:
             with self.subTest(cache_path=cache_path), tempfile.TemporaryDirectory() as temporary:

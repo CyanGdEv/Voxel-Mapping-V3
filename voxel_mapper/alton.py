@@ -30,11 +30,30 @@ def is_park_application(entry):
                 and re.search(r'\bfarley\s+lane\b', address_context, re.I))
 
 
-def download_pdf(session, url, max_bytes=10_000_000):
+def official_request_url(url, transport_url=None, expected_sha256=None):
+    """Validate an explicit same-resource transport bound to historical bytes."""
     parsed = urlparse(url)
-    if parsed.scheme != 'https' or parsed.hostname != HOST:
+    if (parsed.scheme != 'https' or parsed.hostname != HOST
+            or parsed.port not in (None, 443) or parsed.username or parsed.password
+            or parsed.fragment):
         raise ValueError('Expected an official HTTPS drawing URL')
-    response = session.get(url, timeout=(10, 30), stream=True, allow_redirects=False)
+    request_url = transport_url or url
+    if transport_url:
+        alternate = urlparse(transport_url)
+        if (alternate.scheme not in ('http', 'https') or alternate.hostname != parsed.hostname
+                or alternate.port not in (None, 80 if alternate.scheme == 'http' else 443)
+                or alternate.username or alternate.password or alternate.fragment
+                or alternate.path != parsed.path or alternate.query != parsed.query):
+            raise ValueError('Transport must name the same declared official resource')
+        if (not isinstance(expected_sha256, str) or
+                re.fullmatch(r'[0-9a-f]{64}', expected_sha256) is None):
+            raise ValueError('Pinned source hash required for an explicit transport')
+    return request_url
+
+
+def download_pdf(session, url, max_bytes=10_000_000, *, transport_url=None, expected_sha256=None):
+    request_url = official_request_url(url, transport_url, expected_sha256)
+    response = session.get(request_url, timeout=(10, 30), stream=True, allow_redirects=False)
     try:
         response.raise_for_status()
         if 300 <= response.status_code < 400:
@@ -48,6 +67,8 @@ def download_pdf(session, url, max_bytes=10_000_000):
         payload = b''.join(chunks)
         if not payload.startswith(b'%PDF-'):
             raise ValueError('Official endpoint did not return a PDF')
+        if expected_sha256 and hashlib.sha256(payload).hexdigest() != expected_sha256:
+            raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
         return payload
     finally:
         response.close()
@@ -103,7 +124,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
             revised = bool(re.search(r'\b\d{3}[-/]\d{2}[-/]\d+[A-Z]\b', entry['title'], re.I))
             return (1, role_priority, 0 if proposed else 1, 0 if revised else 1, index)
         eligible = [entry for _, entry in sorted(enumerate(relevant), key=acquisition_priority)]
-        network_failures = 0
+        network_failures = {}
         result['missing_download_attempts'] = 0
         result['documents_deferred_council_outage'] = 0
         entries = eligible[:max_documents]
@@ -134,18 +155,26 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                     except FileNotFoundError:
                         row['cache_recovery_reason'] = 'catalogued_pdf_missing'
                 if payload is None:
-                    if network_failures >= 3:
+                    request_url = official_request_url(entry['url'], entry.get('transport_url'),
+                                                       entry.get('sha256'))
+                    transport = urlparse(request_url).scheme
+                    if network_failures.get(transport, 0) >= 3:
                         row.update(status='deferred_council_outage',
-                                   reason='Three consecutive official drawing download failures')
+                                   reason='Three consecutive official drawing download failures for this transport')
                         result['documents_deferred_council_outage'] += 1
                         result['documents'].append(row)
                         continue
                     downloading = True
                     download_pending = True
                     result['missing_download_attempts'] += 1
-                    payload = download_pdf(session, entry['url'])
+                    if entry.get('transport_url'):
+                        payload = download_pdf(session, entry['url'],
+                                               transport_url=entry['transport_url'],
+                                               expected_sha256=entry.get('sha256'))
+                    else:
+                        payload = download_pdf(session, entry['url'])
                     download_pending = False
-                    network_failures = 0
+                    network_failures[transport] = 0
                 checksum = hashlib.sha256(payload).hexdigest()
                 if entry.get('sha256') and checksum != entry['sha256']:
                     raise ValueError('Recovered document checksum mismatch; changed document needs recataloguing')
@@ -183,7 +212,7 @@ def acquire_alton(output, bounds=None, cache=None, max_documents=153, max_pages=
                 row['status'] = 'inspected'
             except (OSError, ValueError, PdfReadError, requests.RequestException) as error:
                 if download_pending:
-                    network_failures += 1
+                    network_failures[transport] = network_failures.get(transport, 0) + 1
                 row['status'] = 'unavailable'
                 row['reason'] = str(error)
                 result['failures'].append({'url': entry['url'], 'reason': str(error)})
