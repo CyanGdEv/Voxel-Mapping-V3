@@ -10,6 +10,7 @@ from .drawing_geometry import extract_page, VERSION as GEOMETRY_VERSION
 from .architectural_graph import build, VERSION as GRAPH_VERSION
 from .architectural_view_layout import review, VERSION as LAYOUT_VERSION
 from .linework_boundaries import recover_page, VERSION as BOUNDARY_VERSION
+from .building_raster_views import placements, VERSION as RASTER_VERSION
 
 VERSION='raw-pdf-building-discovery-v1'
 LIMITS={'max_total_pages':128,'max_document_pages':32,'max_records':200000,'max_document_output_bytes':32000000,'max_output_bytes':128000000}
@@ -21,14 +22,21 @@ def discover_page(page,sha,number,*,max_candidates=10000):
     row={'version':VERSION,'document_sha256':sha,'page':number,'coordinate_frame':'pdf_native_points_y_up',
         'extraction':extraction,'source_geometry':[],'closed_source_faces':[],
         'shared_spec_generated':False,'physical_identity_verified':False,'world_placement_eligible':False}
+    row['source_image_placements']=placements(page,sha,number)
     if extraction['status']!='unplaced_geometry_candidates':
         row['status']='complete_geometry_extraction_required';return row
-    if not parents:
-        row['status']='no_native_geometry_candidates';return row
     graph=build(parents)
+    if not parents:
+        # Bind the empty graph to this inspected page so raster-only drawings
+        # still retain native captions without inventing linework.
+        graph.update(document_sha256=sha,page=number)
     if graph['status']!='source_drawing_topology_only':
         row.update(status='complete_source_topology_required',graph_review=graph);return row
     layout=review(page,sha,number,graph)
+    if not parents:
+        row.update(status='no_native_geometry_candidates',caption_layout=layout,
+            counts={'source_primitives':0,'closed_source_faces':0,'view_captions':len(layout['view_captions'])})
+        return row
     recovered,recovery=recover_page(parents,recovery_options={'max_face_provenance':2048})
     # Partial source-network recovery cannot become an enclosed source outline.
     faces=[r for r in recovered if r.get('extraction_kind')=='linework_boundaries'] if recovery['status']=='enclosed_faces_only' else []
@@ -78,7 +86,7 @@ def prepare(config,resolve,output):
     root.mkdir(parents=True)
     contract={'version':VERSION,'config_sha256':digest(config),'options':options,
         'geometry_version':GEOMETRY_VERSION,'graph_version':GRAPH_VERSION,'layout_version':LAYOUT_VERSION,
-        'boundary_version':BOUNDARY_VERSION}
+        'boundary_version':BOUNDARY_VERSION,'raster_version':RASTER_VERSION}
     atomic_json(root/'contract.json',contract)
     pages_used=records_used=bytes_used=0;reports=[];index=[];queue=[]
     with (root/'discovery-pages.jsonl.partial').open('wb') as stream:
@@ -102,7 +110,7 @@ def prepare(config,resolve,output):
                         for number in selected:
                             row=discover_page(document[number-1],sha,number)
                             row['building_id']=building['building_id']
-                            record_count+=len(row['source_geometry'])+len(row['closed_source_faces'])
+                            record_count+=len(row['source_geometry'])+len(row['closed_source_faces'])+len(row['source_image_placements']['placements'])
                             if records_used+record_count>options['max_records']:raise ValueError('PDF discovery record budget exceeded')
                             raw=(json.dumps(row,sort_keys=True,allow_nan=False)+'\n').encode()
                             document_bytes+=len(raw)
@@ -115,6 +123,7 @@ def prepare(config,resolve,output):
                         pointer={'building_id':building['building_id'],'document_sha256':sha,'page':row['page'],
                             'offset_bytes':start,'length_bytes':len(raw),'record_sha256':hashlib.sha256(raw).hexdigest(),
                             'status':row['status'],'counts':row.get('counts',{}),'assembly_state':row.get('assembly_state','unknown')}
+                        pointer['image_inventory_status']=row['source_image_placements']['status']
                         index.append(pointer);page_rows.append(pointer);receipt['pages'].append(row['page'])
                     pages_used+=len(staged);records_used+=record_count;bytes_used+=document_bytes
                     receipt['status']='verified_original_pdf_discovered'
@@ -122,7 +131,8 @@ def prepare(config,resolve,output):
                     receipt['reason']=str(error)
                 documents.append(receipt)
             complete=all(d['status']=='verified_original_pdf_discovered' for d in documents) and all(
-                p['status']=='native_drawing_candidates_discovered' for p in page_rows)
+                p['status']=='native_drawing_candidates_discovered' and
+                p['image_inventory_status']=='source_image_placements_only' for p in page_rows)
             states=sorted({p['assembly_state'] for p in page_rows})
             report={'building_id':building['building_id'],'status':'source_inventory_prepared' if complete else 'incomplete_source_inventory',
                     'documents':documents,'discovered_pages':len(page_rows),'source_states':states,

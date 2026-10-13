@@ -1,0 +1,276 @@
+{
+  "date": "2026-10-13",
+  "discovered_pages": 3,
+  "discovery_pages_sha256": "903cba2b207e87cc949d7a62326250e7af1dbef2255489f27e5ce4a19fb8b8c8",
+  "original_documents": 3,
+  "pages": [
+    {
+      "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "image_occurrences": 1,
+      "page": 1,
+      "view_captions": [
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "kind": "view_caption",
+            "numbered_reference_verified": false,
+            "plan_level_or_form": "groundfloor",
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "plan",
+            "view_number": 0
+          },
+          "text": "00. Overall Ground Floor Plan"
+        }
+      ]
+    },
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "image_occurrences": 1,
+      "page": 1,
+      "view_captions": [
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "kind": "view_caption",
+            "plan_level_or_form": "roof",
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "plan"
+          },
+          "text": "Roof Plan"
+        }
+      ]
+    },
+    {
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "image_occurrences": 85,
+      "page": 1,
+      "view_captions": [
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "direction": "southeast",
+            "kind": "view_caption",
+            "numbered_reference_verified": false,
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "elevation",
+            "view_number": 1
+          },
+          "text": "Elevation 1 to the S.East"
+        },
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "direction": "southwest",
+            "kind": "view_caption",
+            "numbered_reference_verified": false,
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "elevation",
+            "view_number": 2
+          },
+          "text": "Elevation 2 to the S.West"
+        },
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "direction": "northwest",
+            "kind": "view_caption",
+            "numbered_reference_verified": false,
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "elevation",
+            "view_number": 3
+          },
+          "text": "Elevation 3 to the N. West"
+        },
+        {
+          "adjacent_scale_assignment_verified": false,
+          "adjacent_scale_denominators": [
+            100
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "printed_claim": {
+            "direction": "northeast",
+            "kind": "view_caption",
+            "numbered_reference_verified": false,
+            "printed_scale_denominator": null,
+            "printed_state": "unspecified",
+            "view_kind": "elevation",
+            "view_number": 4
+          },
+          "text": "Elevation 4 to the N. East"
+        }
+      ]
+    }
+  ],
+  "real_trial": {
+    "contract": {
+      "config_sha256": "e1f226497d2095d3f7466e03c20828ed8ca1ee3374dccdc026e71a96467c6ce4",
+      "discovery_contract_sha256": "95301b2eb60b91fcbd49eb631667230bb411b55dc3c97a98042a669732b94837",
+      "discovery_pages_sha256": "903cba2b207e87cc949d7a62326250e7af1dbef2255489f27e5ce4a19fb8b8c8",
+      "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+      "glyph_version": "source-font-glyph-raster-screen-v5",
+      "options": {
+        "dimension_tolerance_m": 0.25,
+        "max_checks": 100000,
+        "max_faces_per_view": 256
+      },
+      "scale_version": "held-out-map-alignment-v10",
+      "version": "cross-view-building-v1"
+    },
+    "park_world_blocks_added": 0,
+    "reason": "One floor plan and four separately scoped elevations required",
+    "report_sha256": "0f4d81e48e226dcb64de29c1fd02d10267253668a2060568eacbf1b23cc38a9e",
+    "shared_specs_generated": 0,
+    "status": "awaiting_cross_view_evidence",
+    "training_labels_generated": 0
+  },
+  "review_crops": [
+    {
+      "bounds_pdf_native": [
+        250,
+        100,
+        650,
+        1100
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "geometry_verified": false,
+      "page": 1,
+      "pixel_edge_to_pdf_native_matrix": [
+        0.0,
+        0.625,
+        0.625,
+        0.0,
+        250.0,
+        100.0
+      ],
+      "png_sha256": "51487bb2e2ff484a665c76e7c35bc613d4d0d4dcb8e1147f07c25c37d4e36461",
+      "render_rotation_degrees": 90,
+      "scope_basis": "declared_review_region_not_verified_view",
+      "size_pixels": [
+        1600,
+        640
+      ]
+    },
+    {
+      "bounds_pdf_native": [
+        250,
+        1100,
+        650,
+        2000
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "geometry_verified": false,
+      "page": 1,
+      "pixel_edge_to_pdf_native_matrix": [
+        0.0,
+        0.5625,
+        0.5625,
+        0.0,
+        249.75,
+        1099.6875
+      ],
+      "png_sha256": "c63fb80554d5845016a3513dd27a48b972de39851414416c2a19aeed7e2b1c8d",
+      "render_rotation_degrees": 90,
+      "scope_basis": "declared_review_region_not_verified_view",
+      "size_pixels": [
+        1601,
+        712
+      ]
+    },
+    {
+      "bounds_pdf_native": [
+        850,
+        100,
+        1260,
+        1100
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "geometry_verified": false,
+      "page": 1,
+      "pixel_edge_to_pdf_native_matrix": [
+        0.0,
+        0.625,
+        0.625,
+        0.0,
+        850.0,
+        100.0
+      ],
+      "png_sha256": "2c207d8aa146d74acb299e68732e79693d16447c74ab25e0c5e9c5ca1b588bab",
+      "render_rotation_degrees": 90,
+      "scope_basis": "declared_review_region_not_verified_view",
+      "size_pixels": [
+        1600,
+        656
+      ]
+    },
+    {
+      "bounds_pdf_native": [
+        850,
+        1100,
+        1260,
+        2000
+      ],
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "geometry_verified": false,
+      "page": 1,
+      "pixel_edge_to_pdf_native_matrix": [
+        0.0,
+        0.5625,
+        0.5625,
+        0.0,
+        849.9375,
+        1099.6875
+      ],
+      "png_sha256": "5bcc9c4d4c19106feac4b8e20f8642ce2185efbb662b517c4dd582ab15de1bbe",
+      "render_rotation_degrees": 90,
+      "scope_basis": "declared_review_region_not_verified_view",
+      "size_pixels": [
+        1601,
+        729
+      ]
+    }
+  ],
+  "source_records_including_images": 12235,
+  "unresolved": [
+    "source_bound_view_scope",
+    "per_view_drawing_state",
+    "numbered_plan_reference_and_revision_correspondence",
+    "raster_facade_silhouette_and_opening_interpretation",
+    "non_rectangular_floor_geometry",
+    "cross_view_dimensions",
+    "physical_identity_and_as_built_status",
+    "geographic_registration"
+  ],
+  "validation": {
+    "focused_tests_passed": 50,
+    "full_test_errors": 0,
+    "full_test_failures": 0,
+    "full_tests_passed": 1354,
+    "scale_registration_assembly_tests_after_version_update": 42
+  },
+  "version": "wicker-numbered-raster-view-receipt-v1"
+}

@@ -149,6 +149,8 @@ def main(argv=None):
     discover.add_argument('--config',required=True); discover.add_argument('--output',required=True)
     cross_view = commands.add_parser('assemble-views')
     cross_view.add_argument('--config', required=True); cross_view.add_argument('--output', required=True)
+    raster = commands.add_parser('render-view')
+    raster.add_argument('--config', required=True); raster.add_argument('--output', required=True)
     feed = commands.add_parser('prepare-feed')
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
@@ -157,6 +159,13 @@ def main(argv=None):
     native.add_argument('--spec',required=True); native.add_argument('--output',required=True)
     native.add_argument('--world',action='store_true')
     args = parser.parse_args(argv)
+    if args.command == 'render-view':
+        from .building_raster_views import render
+        base = Path(args.config).resolve().parent
+        receipt = render(_read(args.config), lambda p: (base/p).resolve(), args.output)
+        print(json.dumps({'size_pixels': receipt['size_pixels'], 'geometry_verified': False,
+                          'park_world_blocks_added': 0}))
+        return
     if args.command == 'compile-native':
         from .building_native import export_preview
         report=export_preview(_read(args.spec),args.output,world=args.world)

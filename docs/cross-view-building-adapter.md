@@ -6,6 +6,11 @@ assemble-views`) connects original native PDF discovery to the shared
 face and four separately scoped, straight-line elevation faces. It generates
 local surface hypotheses, not a geographically accepted building.
 
+[Numbered captions and raster review](numbered-raster-view-discovery.md) now
+retain numbered Revit claims and original image placements. Adjacent scale
+claims and rendered crops remain review evidence; they do not supply accepted
+raster facade geometry or bypass assembly state/scale/scope checks.
+
 ## Input and source scope
 
 Use `version: "cross-view-building-v1"` and a `buildings` array. Each building has
