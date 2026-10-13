@@ -96,3 +96,14 @@ the original scale review and rejects any supplied receipt that differs. The
 resolved metres-per-native-point value is passed to the independent survey fit;
 visible scale alone still cannot qualify a frame. A1/A3 alternatives do not
 become competing scale values when the actual uncropped sheet size is known.
+
+Split multi-character paper captions are also retained when native runs are
+tightly adjacent, share a baseline/font/rendering convention, and have at most
+two percent size variation. Every source part is checked at its own original
+size and glyph position. CID-keyed CFF fonts use validated original native CIDs;
+failed visibility, unsupported fonts and ambiguous alternatives remain withheld.
+Scale-review errors are recorded per page, allowing other pages to continue;
+changed original checksums still reject the audit. The
+[13 October Wicker preflight](wicker-registration-preflight-2026-10-13.md)
+recovers one real printed scale but qualifies zero frames because independently
+verified source policies and survey controls/checkpoints remain absent.

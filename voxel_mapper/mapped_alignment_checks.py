@@ -5,7 +5,7 @@ import numpy as np
 from shapely.affinity import translate
 from .boundary_registration import similarity
 
-VERSION = 'held-out-map-alignment-v8'
+VERSION = 'held-out-map-alignment-v9'
 
 
 def check(objects, references, hypotheses, *, expected_scale=None,
@@ -153,6 +153,60 @@ def fragmented_scale_runs(runs):
     return output
 
 
+def split_paper_scale_runs(runs):
+    """Join adjacent native runs without inventing text or sharing font sizes."""
+    pattern = re.compile(r'^(?:Scale\s+)?1\s*[:/]\s*\d{1,5}\s*@\s*A[0-5]$', re.I)
+    groups = {}
+    for run in runs:
+        if (not run['chars'] or tuple(run['dir']) != (1., 0.)
+                or not math.isfinite(run['size']) or not 1 <= run['size'] <= 40):
+            continue
+        if any(abs(c[2][1]-run['chars'][0][2][1]) > .02 for c in run['chars']):
+            continue
+        key = (run['font'], round(run['chars'][0][2][1], 2), run.get('type'),
+               run.get('opacity'), str(run.get('color')), run.get('layer'))
+        groups.setdefault(key, []).append(run)
+    output = []
+    for group in groups.values():
+        unique = {}
+        for run in group:
+            key = (round(run['size'], 3), tuple((c[0], c[1],
+                tuple(round(v, 2) for v in c[2]), tuple(round(v, 2) for v in c[3]))
+                for c in run['chars']))
+            unique.setdefault(key, []).append(run)
+        ordered = sorted((parts[0] for parts in unique.values()), key=lambda r: r['chars'][0][2][0])
+        duplicates = {id(parts[0]): parts for parts in unique.values()}
+        chains = []; chain = []; smallest = largest = None
+        for run in ordered:
+            if chain:
+                previous = chain[-1]
+                gap = run['chars'][0][3][0]-previous['chars'][-1][3][2]
+                low, high = min(smallest, run['size']), max(largest, run['size'])
+                if gap < -.1 or gap > low*.25 or high/low > 1.02:
+                    chains.append(chain); chain = []
+            chain.append(run)
+            smallest = min(smallest, run['size']) if len(chain) > 1 else run['size']
+            largest = max(largest, run['size']) if len(chain) > 1 else run['size']
+        if chain: chains.append(chain)
+        for chain in chains:
+            chars = [c for r in chain for c in r['chars']]
+            text = ''.join(chr(c[0]) for c in chars).strip()
+            if len(chain) < 2 or len(chars) > 64 or not pattern.fullmatch(text):
+                continue
+            if len(output) >= 16:
+                raise ValueError('Split paper scale caption budget exceeded')
+            parts = [part for r in chain for part in duplicates[id(r)]]
+            if len(parts) > 64:
+                raise ValueError('Split paper scale part budget exceeded')
+            output.append({**chain[0], 'chars': chars,
+                'bbox': [min(r['bbox'][0] for r in chain), min(r['bbox'][1] for r in chain),
+                         max(r['bbox'][2] for r in chain), max(r['bbox'][3] for r in chain)],
+                'trace_indices': [i for r in parts for i in r['trace_indices']],
+                'character_indices': [i for r in parts for i in r['character_indices']],
+                'source_parts': parts})
+    return output
+
+
 def printed_scale_review(pdf, page):
     """Screen exact native scale labels, including split CAD text traces."""
     import pymupdf
@@ -182,7 +236,7 @@ def printed_scale_review(pdf, page):
         if len(traces) > 10000 or sum(len(t['chars']) for t in traces) > 500000:
             raise ValueError('Map scale text budget exceeded')
         runs=label_runs(traces)
-        for run in runs+fragmented_scale_runs(runs):
+        for run in runs+fragmented_scale_runs(runs)+split_paper_scale_runs(runs):
             text = ''.join(chr(c[0]) for c in run['chars']).strip()
             match = SCALE.fullmatch(text)
             paper_match=paper_pattern.fullmatch(text)
@@ -193,7 +247,19 @@ def printed_scale_review(pdf, page):
             applicable=paper_match is None or (len(paper_matches)==1 and paper_match[2].upper()==paper_matches[0])
             if paper_match is not None and len(paper_matches)!=1:unresolved=True
             if applicable:denominators.add(denominator)
-            screen = screen_span(native, run, zoom=24 if run['size'] < 4 else 6)
+            if 'source_parts' in run:
+                parts = [{'text': ''.join(chr(c[0]) for c in part['chars']),
+                          'trace_indices': part['trace_indices'],
+                          'character_indices': part['character_indices'],
+                          'bbox_page_points': list(part['bbox']), 'font_size': part['size'],
+                          'screen': screen_span(native, part, zoom=24 if part['size'] < 4 else 6)}
+                         for part in run['source_parts'] if any(c[0] != 32 for c in part['chars'])]
+                screen = {'status': 'raster_consistent_candidate' if parts and all(
+                    p['screen']['status'] == 'raster_consistent_candidate' for p in parts) else 'withheld',
+                    'visibility_verified': False, 'basis': 'individually_screened_adjacent_native_runs',
+                    'parts': parts}
+            else:
+                screen = screen_span(native, run, zoom=24 if run['size'] < 4 else 6)
             if applicable and screen['status'] == 'raster_consistent_candidate': visible.add(denominator)
             labels.append({'text': text, 'denominator': denominator, 'bbox_page_points': list(run['bbox']),
                            'trace_indices': run['trace_indices'], 'character_indices': run['character_indices'],

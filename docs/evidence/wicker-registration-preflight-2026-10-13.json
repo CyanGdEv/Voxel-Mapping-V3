@@ -1,0 +1,1198 @@
+{
+  "validated_at": "2026-10-13T10:58:03.754163+00:00",
+  "evidence_kind": "real",
+  "scope": "Eleven recovered Wicker Man PDFs; not a complete park corpus",
+  "source_bundle_sha256": "858121a1a410ea26647419def6fcb065ffbb6df1c408d2537d46cdb324460cd3",
+  "scale_before": {
+    "one_visible_printed_scale": 0,
+    "scale_budget_errors": 1,
+    "scale_version": "held-out-map-alignment-v8",
+    "glyph_version": "source-font-glyph-raster-screen-v3",
+    "audit_log_sha256": "1219f96e06cf3dee2adf2750c48712b23394956d869ffb82b61891b495b7c1df"
+  },
+  "scale_after": {
+    "withheld_missing_ambiguous_or_unverified_scale": 56,
+    "one_visible_printed_scale": 1,
+    "error": 1
+  },
+  "scale_pages": [
+    {
+      "document_sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "page": 1,
+      "title": "Existing Site Plan",
+      "status": "one_visible_printed_scale",
+      "denominators": [
+        250
+      ],
+      "expected_metres_per_pdf_point": 0.08819444444444444,
+      "effective_page_dimensions_mm": [
+        594.0777777777778,
+        841.0222222222222
+      ],
+      "matching_paper_sizes": [
+        "A1"
+      ],
+      "scale_review_sha256": "bbf04b7132ebb6ddfd95becab3ee6400db75b59406e3faee5adbdc579b0f93a1",
+      "labels": [
+        {
+          "text": "1/250 @ A1",
+          "denominator": 250,
+          "paper_size": "A1",
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            2079.35986328125,
+            1558.9818115234375,
+            2142.551513671875,
+            1570.96337890625
+          ],
+          "trace_indices": [
+            5217,
+            5218,
+            5219,
+            5220
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/250",
+              "trace_indices": [
+                5217
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                5218
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A1",
+              "trace_indices": [
+                5219
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.98155689239502,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        },
+        {
+          "text": "1/500 @ A3",
+          "denominator": 500,
+          "paper_size": "A3",
+          "applicable_to_page": false,
+          "bbox_page_points": [
+            2079.35986328125,
+            1572.26806640625,
+            2137.451904296875,
+            1584.13720703125
+          ],
+          "trace_indices": [
+            5221,
+            5222,
+            5223
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/500",
+              "trace_indices": [
+                5221
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                5222
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A3",
+              "trace_indices": [
+                5223
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.869132041931152,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "page": 1,
+      "title": "373-95-7B Site Plan Proposed showing Woodland path",
+      "status": "withheld_missing_ambiguous_or_unverified_scale",
+      "denominators": [
+        3,
+        11,
+        20,
+        250
+      ],
+      "expected_metres_per_pdf_point": null,
+      "effective_page_dimensions_mm": [
+        594.0777777777778,
+        841.0222222222222
+      ],
+      "matching_paper_sizes": [
+        "A1"
+      ],
+      "scale_review_sha256": "bb40525d98cd20e7786c1babcf82f60cb089739bec341ec1fdf65c5d9f993478",
+      "labels": [
+        {
+          "text": "1:20",
+          "denominator": 20,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            597.4012451171875,
+            1025.855224609375,
+            613.971923828125,
+            1046.182861328125
+          ],
+          "trace_indices": [
+            4725
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:11",
+          "denominator": 11,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1185.20361328125,
+            1185.0146484375,
+            1200.557373046875,
+            1194.02783203125
+          ],
+          "trace_indices": [
+            5118
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:3",
+          "denominator": 3,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1267.199951171875,
+            1242.8255615234375,
+            1285.6920166015625,
+            1254.9197998046875
+          ],
+          "trace_indices": [
+            5124
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:3",
+          "denominator": 3,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1441.43994140625,
+            1351.6214599609375,
+            1459.7879638671875,
+            1363.6214599609375
+          ],
+          "trace_indices": [
+            5143
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1/250 @ A1",
+          "denominator": 250,
+          "paper_size": "A1",
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            2079.35986328125,
+            1558.9818115234375,
+            2142.551513671875,
+            1570.96337890625
+          ],
+          "trace_indices": [
+            4986,
+            4987,
+            4988,
+            4989
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/250",
+              "trace_indices": [
+                4986
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                4987
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A1",
+              "trace_indices": [
+                4988
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.98155689239502,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        },
+        {
+          "text": "1/500 @ A3",
+          "denominator": 500,
+          "paper_size": "A3",
+          "applicable_to_page": false,
+          "bbox_page_points": [
+            2079.35986328125,
+            1572.26806640625,
+            2137.451904296875,
+            1584.13720703125
+          ],
+          "trace_indices": [
+            4990,
+            4991,
+            4992
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            2
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/500",
+              "trace_indices": [
+                4990
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                4991
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A3",
+              "trace_indices": [
+                4992
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.869132041931152,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "document_sha256": "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+      "page": 1,
+      "title": "373-95-8B Site Plan Landscape",
+      "status": "withheld_missing_ambiguous_or_unverified_scale",
+      "denominators": [
+        3,
+        11,
+        20,
+        250
+      ],
+      "expected_metres_per_pdf_point": null,
+      "effective_page_dimensions_mm": [
+        594.0777777777778,
+        841.0222222222222
+      ],
+      "matching_paper_sizes": [
+        "A1"
+      ],
+      "scale_review_sha256": "f51279cfeeb8d1a551c84540ee69e6f920c63af0cad383a6ff3be4ff3b94e34d",
+      "labels": [
+        {
+          "text": "1:20",
+          "denominator": 20,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            597.4012451171875,
+            1025.855224609375,
+            613.971923828125,
+            1046.182861328125
+          ],
+          "trace_indices": [
+            4725
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:11",
+          "denominator": 11,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1185.20361328125,
+            1185.0146484375,
+            1200.557373046875,
+            1194.02783203125
+          ],
+          "trace_indices": [
+            5181
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:3",
+          "denominator": 3,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1267.199951171875,
+            1242.8255615234375,
+            1285.6920166015625,
+            1254.9197998046875
+          ],
+          "trace_indices": [
+            5187
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1:3",
+          "denominator": 3,
+          "paper_size": null,
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            1441.43994140625,
+            1351.6214599609375,
+            1459.7879638671875,
+            1363.6214599609375
+          ],
+          "trace_indices": [
+            5206
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "glyph_status": "withheld",
+          "parts": []
+        },
+        {
+          "text": "1/250 @ A1",
+          "denominator": 250,
+          "paper_size": "A1",
+          "applicable_to_page": true,
+          "bbox_page_points": [
+            2079.35986328125,
+            1558.9818115234375,
+            2142.551513671875,
+            1570.96337890625
+          ],
+          "trace_indices": [
+            4982,
+            5106,
+            4983,
+            5107,
+            4984,
+            5108,
+            4985,
+            5109
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            1
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/250",
+              "trace_indices": [
+                4982
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": "1/250",
+              "trace_indices": [
+                5106
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                4983
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                5107
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A1",
+              "trace_indices": [
+                4984
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.98155689239502,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A1",
+              "trace_indices": [
+                5108
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.98155689239502,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        },
+        {
+          "text": "1/500 @ A3",
+          "denominator": 500,
+          "paper_size": "A3",
+          "applicable_to_page": false,
+          "bbox_page_points": [
+            2079.35986328125,
+            1572.26806640625,
+            2137.451904296875,
+            1584.13720703125
+          ],
+          "trace_indices": [
+            4986,
+            5110,
+            4987,
+            5111,
+            4988,
+            5112
+          ],
+          "character_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1,
+            2
+          ],
+          "glyph_status": "raster_consistent_candidate",
+          "parts": [
+            {
+              "text": "1/500",
+              "trace_indices": [
+                4986
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": "1/500",
+              "trace_indices": [
+                5110
+              ],
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "font_size": 11.821621894836426,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                4987
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " @",
+              "trace_indices": [
+                5111
+              ],
+              "character_indices": [
+                0,
+                1
+              ],
+              "font_size": 11.826678276062012,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A3",
+              "trace_indices": [
+                4988
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.869132041931152,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            },
+            {
+              "text": " A3",
+              "trace_indices": [
+                5112
+              ],
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "font_size": 11.869132041931152,
+              "status": "raster_consistent_candidate",
+              "source_font_sha256": "2de1a43ddf9a9e648eb2e055ce4d928d92ae1115cab61c3f7ba1fbc32b0db993",
+              "glyph_encoding": "source_cff_charset_cids"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scale_errors": [
+    {
+      "document_sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+      "page": 1,
+      "title": "Existing Block Plan",
+      "reason": "Map scale text budget exceeded"
+    }
+  ],
+  "qualification": {
+    "fresh_output_reuses_pages": 58,
+    "limitations": [
+      "Qualification is horizontal only; component, state, view, height and material evidence remain separate.",
+      "Without a supplied verified source policy and independent survey registry, frames remain unqualified."
+    ],
+    "missing_requirements": {
+      "independent_survey_reference_bundle": 58,
+      "unique_checksum_bound_source_policy": 58,
+      "visible_unambiguous_printed_scale": 57
+    },
+    "page_frames_sha256": "9df5313190a4e6bc71c037ad403977a0be418d7114373fd77966bd0a3b123996",
+    "page_statuses": {
+      "awaiting_registration_evidence": 58
+    },
+    "pages": 58,
+    "physical_components_accepted": 0,
+    "policy_sha256": {},
+    "qualified_frames": 0,
+    "source_pages": [
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        1
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        2
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        3
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        4
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        5
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        6
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        7
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        8
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        9
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        10
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        11
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        12
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        13
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        14
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        15
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        16
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        17
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        18
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        19
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        20
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        21
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        22
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        23
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        24
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        25
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        26
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        27
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        28
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        29
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        30
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        31
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        32
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        33
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        34
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        35
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        36
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        37
+      ],
+      [
+        "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        38
+      ],
+      [
+        "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        1
+      ],
+      [
+        "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        1
+      ],
+      [
+        "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        1
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        2
+      ],
+      [
+        "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+        3
+      ],
+      [
+        "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+        1
+      ],
+      [
+        "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+        2
+      ],
+      [
+        "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+        3
+      ],
+      [
+        "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215",
+        1
+      ],
+      [
+        "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428",
+        1
+      ],
+      [
+        "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428",
+        2
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        1
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        2
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        3
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        4
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        5
+      ],
+      [
+        "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055",
+        6
+      ],
+      [
+        "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+        1
+      ],
+      [
+        "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb",
+        1
+      ]
+    ],
+    "unchanged_resume_identical": true,
+    "version": "drawing-frame-qualification-v3",
+    "world_geometry_additions": 0
+  },
+  "survey_discovery": {
+    "version": "survey-station-discovery-v2",
+    "pages": 58,
+    "page_statuses": {
+      "raster_page_requires_ocr": 1,
+      "station_candidates_only": 46,
+      "unsupported_native_coordinate_text": 1,
+      "withheld_visibility_adapter": 10
+    },
+    "station_candidates": 0,
+    "reference_count": 0,
+    "reference_statuses": {
+      "awaiting_unique_verified_survey_policy": 58
+    },
+    "ocr_pages": 1,
+    "raster_triage_statuses": {
+      "ocr_inspected_no_supported_coordinate_leads": 1
+    },
+    "output_sha256": {
+      "station-pages.jsonl": "4b9d69cfbfc54413f2ec69ac245c96ce951feb214cf982ad8ceb035563a1489e",
+      "survey-references.json": "5f9398aae48a2158c58352370ec44acb9d2ec9d724356a8161147fbe8d6f48e1"
+    },
+    "unchanged_resume_identical": true,
+    "fresh_output_reuses_pages": 58
+  },
+  "geometry_inventory": {
+    "version": "drawing-geometry-v4",
+    "contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "pages": 58,
+    "candidates": 15360,
+    "candidate_types": {
+      "polygon": 2245,
+      "line": 13115
+    },
+    "curved_candidates": 4226,
+    "page_statuses": {
+      "unplaced_geometry_candidates": 57,
+      "partial_candidate_budget": 1
+    },
+    "errors": [],
+    "file_sha256": {
+      "geometry": "da64550eb2f16c536ddb132eb192622efd2d745415229b924d7edd6dcd7ff4b7",
+      "polygon": "276420553a06e0ba8fd20c85025e86cae54ef3cad892a5cbb93d2af0dd0bb08b",
+      "line": "4e2fff35c9322a1c56c765f492caaed867539101502eed6fddd05ab069022075"
+    }
+  },
+  "accepted_controls": 0,
+  "accepted_checkpoints": 0,
+  "qualified_frames": 0,
+  "physical_components_accepted": 0,
+  "world_geometry_additions": 0,
+  "remaining_blockers": [
+    "Independently verified source policy and permitted geometry reuse",
+    "Three non-collinear independently identified controls and two independent checkpoints",
+    "Unambiguous verified scales for the remaining pages",
+    "Source-bound view, state, component and vertical-datum evidence"
+  ],
+  "validation": {
+    "focused_tests": 43,
+    "full_regression_tests": 1332,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "real_frame_acceptance": false
+  }
+}

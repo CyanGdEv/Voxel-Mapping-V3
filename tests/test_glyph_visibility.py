@@ -82,6 +82,97 @@ class GlyphTests(unittest.TestCase):
             self.assertEqual(screen_span(page,span)['status'],'withheld')
         finally:document.close()
 
+    def cff_font(self, *, alternative=False, different_ink=False, matrix=None):
+        import io
+        from fontTools.fontBuilder import FontBuilder
+        from fontTools.pens.t2CharStringPen import T2CharStringPen
+        from fontTools.cffLib import FDArrayIndex, FontDict, FDSelect
+        builder = FontBuilder(1000, isTTF=False)
+        names = ['.notdef', 'cid00042', 'cid00421']
+        builder.setupGlyphOrder(names)
+        builder.setupCharacterMap({0xF001: names[1], 0xF002: names[2]})
+        strings = {}
+        for name in names:
+            pen = T2CharStringPen(600, None)
+            if name != '.notdef':
+                right = 900 if different_ink else 500
+                pen.moveTo((100, 0)); pen.lineTo((right, 0))
+                pen.lineTo((right, 700)); pen.lineTo((100, 700)); pen.closePath()
+            strings[name] = pen.getCharString()
+        name = 'AlternativeCID' if alternative else 'NativeCIDTest'
+        builder.setupCFF(name, {'FullName': name, 'FamilyName': name, 'Weight': 'Regular'}, strings, {})
+        cff = builder.font['CFF '].cff; top = cff[cff.fontNames[0]]
+        top.ROS = ('Adobe', 'Identity', 0); top.CIDCount = 422
+        if matrix is not None: top.FontMatrix = matrix
+        array = FDArrayIndex(); fd = FontDict(); fd.Private = top.Private
+        array.append(fd); top.FDArray = array
+        select = FDSelect(); select.gidArray = [0]*len(names)
+        top.FDSelect = select; del top.Private
+        output = io.BytesIO(); cff.compile(output, builder.font)
+        return output.getvalue()
+
+    def cff_source(self):
+        document = pymupdf.open(); page = document.new_page(width=400, height=200)
+        xref = page.insert_font(fontname='native', fontbuffer=self.cff_font())
+        document.xref_set_key(xref, 'BaseFont', '/NativeCIDTest')
+        content = document.get_new_xref(); document.update_object(content, '<<>>')
+        document.update_stream(content, b'BT /native 12 Tf 1 0 0 1 100 100 Tm <002a01a5> Tj ET')
+        document.xref_set_key(page.xref, 'Contents', f'{content} 0 R')
+        span = page.get_texttrace()[0]
+        # Native CIDs 42 and 421 are neither Unicode values nor charset ordinals.
+        span = {**span, 'chars': [(97+i, *c[1:]) for i, c in enumerate(span['chars'])]}
+        return document, page, span
+
+    def test_cid_cff_preserves_native_identifiers_and_rejects_overpaint(self):
+        for color in [(1, 1, 1), (0, 0, 0)]:
+            document, page, span = self.cff_source()
+            try:
+                page.set_rotation(90)
+                result = screen_span(page, span)
+                self.assertEqual(result['status'], 'raster_consistent_candidate', result)
+                self.assertEqual(result['glyph_encoding'], 'source_cff_charset_cids')
+                self.assertEqual([c[1] for c in span['chars']], [42, 421])
+                self.assertTrue(all(g['core_pixels'] >= 3 for g in result['glyphs']))
+                page.draw_rect(pymupdf.Rect(span['bbox']), color=None, fill=color)
+                self.assertEqual(screen_span(page, span)['status'], 'withheld')
+                self.assertEqual(page.rotation, 90)
+            finally: document.close()
+
+    def test_cff_unknown_cid_is_not_reinterpreted_as_charset_index(self):
+        document, page, span = self.cff_source()
+        try:
+            c = span['chars'][0]
+            unknown = {**span, 'chars': [(c[0], 1, *c[2:])]}
+            result = screen_span(page, unknown)
+            self.assertEqual(result['status'], 'withheld')
+            self.assertIn('outside original charset', result['reason'])
+        finally: document.close()
+
+    def test_cff_same_name_alternatives_require_unique_original_ink(self):
+        for different_ink in [False, True]:
+            document, page, span = self.cff_source()
+            try:
+                xref = page.insert_font(fontname='other', fontbuffer=self.cff_font(
+                    alternative=True, different_ink=different_ink))
+                document.xref_set_key(xref, 'BaseFont', '/NativeCIDTest')
+                result = screen_span(page, span)
+                self.assertEqual(result['status'], 'raster_consistent_candidate' if different_ink else 'withheld', result)
+                self.assertEqual(result['font_resource_resolution']['candidate_count'], 2)
+                self.assertEqual(result['font_resource_resolution']['consistent_candidate_count'], 1 if different_ink else 2)
+            finally: document.close()
+
+    def test_cff_nonstandard_matrix_and_malformed_font_are_withheld(self):
+        from voxel_mapper.glyph_visibility import cff_glyph_codes
+        document, page, span = self.cff_source()
+        try:
+            with self.assertRaisesRegex(ValueError, 'standard-matrix'):
+                cff_glyph_codes(self.cff_font(matrix=[.002, 0, 0, .002, 0, 0]), span['chars'])
+            for cid in [-1, 65536, True]:
+                c = span['chars'][0]
+                with self.assertRaisesRegex(ValueError, 'outside original charset'):
+                    cff_glyph_codes(self.cff_font(), [(c[0], cid, *c[2:])])
+        finally: document.close()
+
     def add_font_alternative(self,document,page,*,different_ink):
         import io
         from fontTools.ttLib import TTFont

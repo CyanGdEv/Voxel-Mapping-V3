@@ -3,8 +3,38 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v3'
-INK_VERSION='source-font-isolated-glyph-screen-v2'
+VERSION='source-font-glyph-raster-screen-v4'
+INK_VERSION='source-font-isolated-glyph-screen-v3'
+
+
+def cff_glyph_codes(buffer, chars):
+    """Validate native CIDs against the retained CID-keyed CFF charset."""
+    import io
+    import re
+    from fontTools.cffLib import CFFFontSet
+    font = CFFFontSet()
+    font.decompile(io.BytesIO(buffer), None)
+    if len(font.fontNames) != 1:
+        raise ValueError('One original CFF font required')
+    top = font[font.fontNames[0]]
+    if (not hasattr(top, 'ROS') or not 1 <= len(top.charset) <= 65536
+            or top.charset[0] != '.notdef'
+            or list(top.FontMatrix) != [.001, 0, 0, .001, 0, 0]):
+        raise ValueError('Bounded standard-matrix CID-keyed CFF required')
+    codes = [0]
+    for name in top.charset[1:]:
+        match = re.fullmatch(r'cid(\d{1,5})', name)
+        if not match or not 1 <= int(match[1]) <= 65535:
+            raise ValueError('Unsupported original CFF charset')
+        codes.append(int(match[1]))
+    if len(set(codes)) != len(codes):
+        raise ValueError('Distinct original CFF character identifiers required')
+    # MuPDF reports character identifiers, not charset ordinal positions, for
+    # these CID-keyed fonts. Never reinterpret an unknown CID as a glyph index.
+    supported = set(codes)
+    if any(type(c[1]) is not int or c[1] not in supported for c in chars):
+        raise ValueError('Native CFF character identifier outside original charset')
+    return [c[1] for c in chars]
 
 
 def grow(mask,steps=1):
@@ -87,7 +117,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
         with pymupdf.open() as document:
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
             font_name='nativeSource' if font_buffer else 'helv'
-            direct_glyphs=False
+            direct_glyphs=False;glyph_codes=None;encoding='unicode'
             if font_buffer:
                 xref=reference.insert_font(fontname=font_name,fontbuffer=font_buffer)
                 if font_buffer[:4] in (b'\x00\x01\x00\x00',b'true'):
@@ -102,13 +132,28 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
                         with TTFont(io.BytesIO(font_buffer)) as native_font:
                             glyph_count=native_font['maxp'].numGlyphs
                         direct_glyphs=all(type(c[1]) is int and 0<=c[1]<min(glyph_count,65536) for c in span['chars'])
+                        if direct_glyphs:
+                            glyph_codes=[c[1] for c in span['chars']];encoding='source_glyph_ids'
+                elif font_buffer[:1] == b'\x01':
+                    if any(f[2] != 'Type0' or f[5] != 'Identity-H' for f in fonts):
+                        return {**failure,'reason':'Original CFF font requires Identity-H native CID convention'}
+                    import re
+                    kind,children=document.xref_get_key(xref,'DescendantFonts')
+                    child=re.fullmatch(r'\[\s*(\d+)\s+0\s+R\s*\]',children) if kind=='array' else None
+                    if (child and document.xref_get_key(xref,'Encoding')==('name','/Identity-H')
+                            and document.xref_get_key(int(child[1]),'Subtype')==('name','/CIDFontType0')):
+                        try:
+                            glyph_codes=cff_glyph_codes(font_buffer,span['chars'])
+                        except (ValueError, KeyError, IndexError, AssertionError) as error:
+                            return {**failure,'reason':str(error)}
+                        direct_glyphs=True;encoding='source_cff_charset_cids'
             if direct_glyphs:
                 # Preserve the actual PDF glyph IDs. CAD subset fonts often
                 # have no Unicode cmap, so re-encoding their text loses ink.
                 dx,dy=direction;commands=[]
-                for character in span['chars']:
+                for character,code in zip(span['chars'],glyph_codes):
                     x,y=character[2]
-                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{character[1]:04x}> Tj ET')
+                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:04x}> Tj ET')
                 content=document.get_new_xref();document.update_object(content,'<<>>')
                 document.update_stream(content,'\n'.join(commands).encode('ascii'))
                 document.xref_set_key(reference.xref,'Contents',f'{content} 0 R')
@@ -155,7 +200,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
         supported=supported and ring_count>0 and unexpected/ring_count<=.01
         return {'status':'raster_consistent_candidate' if supported else 'withheld','version':version,'visibility_verified':False,
                 'source_font_sha256':hashlib.sha256(font_buffer).hexdigest() if font_buffer else None,
-                'glyph_encoding':'source_glyph_ids' if direct_glyphs else 'unicode',
+                'glyph_encoding':encoding,
                 'source_font_xrefs':[f[0] for f in fonts],'zoom_pixels_per_pdf_point':zoom,'source_rotation_restored':rotation,'glyphs':glyphs,
                 'ring_pixels':ring_count,'unexpected_dark_ring_pixels':unexpected,
                 'pixel_position_tolerance':1,'max_unsupported_core_fraction_per_glyph':.01,'max_unexpected_dark_ring_fraction':.01,
@@ -171,7 +216,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
 def screen_architectural_span(page,span,*,zoom=6,max_pixels=1000000):
     """Recover native-box clipping only through each original glyph's own ink."""
     result=screen_span(page,span,zoom=zoom,max_pixels=max_pixels)
-    if (result['status']=='withheld' and result.get('glyph_encoding')=='source_glyph_ids'
+    if (result['status']=='withheld' and result.get('glyph_encoding') in ('source_glyph_ids','source_cff_charset_cids')
             and any(g['core_pixels']<3 for g in result.get('glyphs',[]))):
         isolated=screen_span(page,span,zoom=zoom,max_pixels=max_pixels,isolate_glyphs=True)
         return {**isolated,'native_character_box_screen':result}
