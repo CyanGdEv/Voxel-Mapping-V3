@@ -42,6 +42,65 @@ class AltonTests(unittest.TestCase):
                 download_pdf(session, 'https://other.example/plan.pdf')
             session.get.assert_not_called()
 
+    def test_recorded_transport_requires_same_resource_and_historical_pin(self):
+        from unittest.mock import MagicMock
+        url = 'https://publicaccess.staffsmoorlands.gov.uk/plan?id=1'
+        transport = url.replace('https:', 'http:')
+        payload = b'%PDF-historical-original'
+        pin = hashlib.sha256(payload).hexdigest()
+        session = MagicMock()
+        response = session.get.return_value
+        response.status_code = 200
+        response.iter_content.return_value = [payload]
+        self.assertEqual(download_pdf(session, url, transport_url=transport,
+                                      expected_sha256=pin), payload)
+        session.get.assert_called_once_with(transport, timeout=(10, 30),
+                                            stream=True, allow_redirects=False)
+        response.close.assert_called_once()
+        session.reset_mock()
+        for alternative, checksum in [(transport, None), (transport, 'invalid'),
+                                      (transport+'2', pin),
+                                      ('http://other.example/plan?id=1', pin),
+                                      (transport+'#fragment', pin)]:
+            with self.subTest(alternative=alternative, checksum=checksum):
+                with self.assertRaises(ValueError):
+                    download_pdf(session, url, transport_url=alternative,
+                                 expected_sha256=checksum)
+                session.get.assert_not_called()
+
+    def test_recorded_transport_rejects_changed_bytes_and_closes_response(self):
+        from unittest.mock import MagicMock
+        url = 'https://publicaccess.staffsmoorlands.gov.uk/plan'
+        session = MagicMock()
+        response = session.get.return_value
+        response.status_code = 200
+        response.iter_content.return_value = [b'%PDF-changed']
+        with self.assertRaisesRegex(ValueError, 'checksum mismatch'):
+            download_pdf(session, url, transport_url=url.replace('https:', 'http:'),
+                         expected_sha256=hashlib.sha256(b'%PDF-original').hexdigest())
+        response.close.assert_called_once()
+
+    def test_acquisition_passes_recorded_transport_and_preserves_pin(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payload = b'%PDF-pinned'
+            pin = hashlib.sha256(payload).hexdigest()
+            entry = dict(url='https://publicaccess.staffsmoorlands.gov.uk/plan?id=1',
+                         transport_url='http://publicaccess.staffsmoorlands.gov.uk/plan?id=1',
+                         title='Existing elevation', role='elevations', sha256=pin)
+            discovery = {'status': 'checked', 'documents': [entry], 'failures': []}
+            with patch('voxel_mapper.alton_discovery.discover_attachments', return_value=discovery), \
+                 patch('voxel_mapper.alton_discovery.merge_discovered', return_value=[entry]), \
+                 patch('voxel_mapper.alton.download_pdf', return_value=payload) as download, \
+                 patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+                result = acquire_alton(root, max_documents=1)
+            download.assert_called_once_with(unittest.mock.ANY, entry['url'],
+                                             transport_url=entry['transport_url'],
+                                             expected_sha256=pin)
+            self.assertEqual(result['documents'][0]['sha256'], pin)
+            self.assertEqual(result['documents'][0]['transport_url'], entry['transport_url'])
+            self.assertEqual(result['geometry_records'], [])
+
     def test_cache_downloads_missing_sections_before_other_uncached_documents(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -66,6 +125,28 @@ class AltonTests(unittest.TestCase):
             self.assertEqual(result['documents'][0]['acquisition_method'], 'hash_checked_cache')
             self.assertEqual(result['documents'][1]['acquisition_method'], 'official_download')
             self.assertEqual(result['geometry_records'], [])
+
+    def test_https_outage_does_not_defer_explicit_pinned_http_transport(self):
+        import requests
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payload = b'%PDF-historical-original'
+            entries = [dict(url='https://publicaccess.staffsmoorlands.gov.uk/'+str(i),
+                            title=str(i), role='elevations') for i in range(4)]
+            entries.append(dict(url='https://publicaccess.staffsmoorlands.gov.uk/pinned',
+                                transport_url='http://publicaccess.staffsmoorlands.gov.uk/pinned',
+                                sha256=hashlib.sha256(payload).hexdigest(),
+                                title='Pinned drawing', role='elevations'))
+            discovery = {'status': 'checked', 'documents': entries, 'failures': []}
+            with patch('voxel_mapper.alton_discovery.discover_attachments', return_value=discovery), \
+                 patch('voxel_mapper.alton_discovery.merge_discovered', return_value=entries), \
+                 patch('voxel_mapper.alton.download_pdf', side_effect=[
+                     requests.RequestException('HTTPS outage') for _ in range(3)]+[payload]) as download, \
+                 patch('voxel_mapper.council.inspect_pdf', return_value={'pages': []}):
+                result = acquire_alton(root, max_documents=5)
+            self.assertEqual(download.call_count, 4)
+            self.assertEqual(result['documents_deferred_council_outage'], 1)
+            self.assertEqual(result['documents'][-1]['status'], 'inspected')
 
     def test_outage_defers_missing_downloads_but_preserves_cached_inspection(self):
         import requests
