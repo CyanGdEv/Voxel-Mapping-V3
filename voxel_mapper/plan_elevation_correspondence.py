@@ -62,6 +62,39 @@ def marker_frames(polygon,marker,unit,layout=None,axis_tolerance=5):
         'frames':frames,'orientation_basis':'inferred from printed marker corner; all eligible ray hits retained'}
 
 
+def continuous_paint_runs(segments, charge):
+    """Group exactly connected collinear source segments; never bridge a gap."""
+    parents=list(range(len(segments)))
+    def find(i):
+        while parents[i]!=i:
+            parents[i]=parents[parents[i]];i=parents[i]
+        return i
+    for i,left in enumerate(segments):
+        for j in range(i):
+            charge();right=segments[j]
+            if (left['part_index'],left['ring_index'],left['source_paint_side_candidate']) != (
+                right['part_index'],right['ring_index'],right['source_paint_side_candidate']):continue
+            a,b=left['source_native_endpoints'];c,d=right['source_native_endpoints']
+            if not any(p==q for p in (a,b) for q in (c,d)):continue
+            if (b[0]-a[0])*(d[1]-c[1]) != (b[1]-a[1])*(d[0]-c[0]):continue
+            parents[find(i)]=find(j)
+    groups={}
+    for i in range(len(segments)):groups.setdefault(find(i),[]).append(i)
+    runs=[]
+    for indices in groups.values():
+        members=[segments[i] for i in indices]
+        intervals=[v for m in members for v in m['diagnostic_projection_interval_m']]
+        run={'source_segment_record_indices':indices,
+            'source_native_segments':[m['source_native_endpoints'] for m in members],
+            'source_paint_side_candidate':members[0]['source_paint_side_candidate'],
+            'diagnostic_projection_interval_m':[min(intervals),max(intervals)],
+            'diagnostic_projected_width_m':max(intervals)-min(intervals),
+            'continuity_basis':'exact shared endpoints and exact collinearity within one source ring',
+            'gaps_bridged':False,'physical_wall_identity_verified':False}
+        run['id']=digest(run);runs.append(run)
+    return runs
+
+
 def trace_paint_boundaries(native, frame, unit, layout, charge, axis_tolerance=5):
     """Original parallel ring segments; source-paint sides are not physical wall roles."""
     transform=layout or [[1.,0.],[0.,1.]]
@@ -97,7 +130,8 @@ def trace_paint_boundaries(native, frame, unit, layout, charge, axis_tolerance=5
                     'source_paint_side_candidate':'outer_facing' if inward and not outward else
                         'inner_facing' if outward and not inward else 'ambiguous',
                     'physical_wall_role_verified':False})
-    return {'segments':records,'side_probe_distance_pdf_points':.1,
+    return {'segments':records,'continuous_source_runs':continuous_paint_runs(records,charge),
+        'side_probe_distance_pdf_points':.1,
         'all_parallel_segments_retained':True,'segments_joined':False,
         'source_geometry_changed':False,'complete_wall_extent_verified':False}
 
@@ -175,6 +209,15 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                             'material_number':region['material_number'],'source_paint_minus_region_width_m':span-width,
                             'within_discovery_tolerance':abs(span-width)<=opts['dimension_tolerance_m'],
                             'physical_correspondence_verified':False})
+                        for run in witness['source_boundary_trace']['continuous_source_runs']:
+                            charge()
+                            paint_matches.append({'frame_id':frame['id'],'source_fill_id':fill['id'],
+                                'source_run_id':run['id'],'region_id':region['id'],
+                                'comparison_basis':'exact_continuous_source_run',
+                                'source_paint_side_candidate':run['source_paint_side_candidate'],
+                                'source_paint_minus_region_width_m':run['diagnostic_projected_width_m']-width,
+                                'within_discovery_tolerance':abs(run['diagnostic_projected_width_m']-width)<=opts['dimension_tolerance_m'],
+                                'physical_correspondence_verified':False})
                 for region in view_regions:
                     charge();bounds=shape(region['display_geometry']).bounds;factor=region['nominal_metres_per_pdf_point_candidate']
                     width=(bounds[2]-bounds[0])*factor;residual=frame['projected_extent_width_m']-width
@@ -289,7 +332,8 @@ def prepare(config,resolve,output):
         'source_marker_candidates':len(markers),'candidate_reports':len(results),
         'view_frame_candidates':sum(len(v['frame_review']['frames']) for r in results for v in r['views']),
         'region_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['region_width_comparisons']),
-        'source_paint_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons']),
+        'source_paint_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' not in m),
+        'continuous_source_run_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' in m),
         'opening_position_matches':sum(len(v['opening_position_matches']) for r in results for v in r['views']),
         'selected_physical_footprint_id':None,'complete_building_specs_generated':0,
         'training_labels_generated':0,'park_world_blocks_added':0}

@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pymupdf
 from shapely.geometry import box,mapping,Polygon
-from voxel_mapper.plan_elevation_correspondence import marker_frames,compare,prepare,VERSION,trace_paint_boundaries
+from voxel_mapper.plan_elevation_correspondence import marker_frames,compare,prepare,VERSION,trace_paint_boundaries,continuous_paint_runs
 from tests import test_building_plan_audit as fixtures
 
 
@@ -88,6 +88,22 @@ class CorrespondenceTests(unittest.TestCase):
         self.assertTrue(all(tuple(p) in original for s in trace['segments'] for p in s['source_native_endpoints']))
         self.assertEqual(mapping(polygon),before)
         self.assertFalse(trace['segments_joined'])
+
+    def test_exact_runs_do_not_bridge_small_gaps_bends_or_source_rings(self):
+        def segment(a,b,index,ring=0):
+            return {'part_index':0,'ring_index':ring,'segment_index':index,
+                'source_native_endpoints':[a,b],'source_paint_side_candidate':'outer_facing',
+                'diagnostic_projection_interval_m':sorted([a[0],b[0]])}
+        segments=[segment([0,0],[1,0],0),segment([1,0],[2,0],1),
+            segment([2.00000001,0],[3,0],2),segment([2,0],[3,1],3),
+            segment([2,0],[4,0],4,ring=1)]
+        before=copy.deepcopy(segments)
+        runs=continuous_paint_runs(segments,lambda:None)
+        self.assertEqual(len(runs),4)
+        self.assertEqual(runs[0]['source_segment_record_indices'],[0,1])
+        self.assertEqual(runs[0]['diagnostic_projected_width_m'],2)
+        self.assertEqual(segments,before)
+        self.assertTrue(all(not r['gaps_bridged'] for r in runs))
 
     def fake_facade(self,plan,*,mutate=False):
         def stage(config,resolve,output):
