@@ -110,3 +110,5 @@ state and revision review still required.
 
 The original-source receipt is
 [`evidence/wicker-footprint-hypotheses-2026-10-14.json`](evidence/wicker-footprint-hypotheses-2026-10-14.json).
+
+[Automatic source dimension comparisons](source-dimension-feed.md) recompute both feeds in one command and retain every source-linked match and conflict without manual width targets or physical-footprint selection.

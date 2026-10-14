@@ -128,3 +128,5 @@ scale and revision before assembly.
 
 The original-source trial receipt is
 [`evidence/wicker-facade-source-feed-2026-10-13.json`](evidence/wicker-facade-source-feed-2026-10-13.json).
+
+[Automatic source dimension comparisons](source-dimension-feed.md) recompute both feeds in one command and retain every source-linked match and conflict without manual width targets or physical-footprint selection.
