@@ -108,3 +108,27 @@ require review before assembly.
 
 The original-source receipt is
 [`evidence/wicker-plan-elevation-correspondence-2026-10-14.json`](evidence/wicker-plan-elevation-correspondence-2026-10-14.json).
+
+Source paint boundary tracing now records every original ring segment parallel
+(within the existing five-degree bound) to each eligible marker frame. Each
+record keeps part, ring and segment indices, unchanged native endpoints,
+diagnostic projected interval and signed offset from the frame plane. Both
+sides, interior rings and disconnected parts remain separate; there is no
+joining, buffering or replacement footprint.
+
+Midpoint probes 0.1 PDF point along the actual segment normal classify paint
+as inward, outward or ambiguous relative to the marker-facing plane. These
+are source-paint side candidates, not physical inner/outer wall roles. Narrow
+paint, overpainting, clipping and unknown drawing semantics still require
+review. Segment traversal shares the correspondence work budget; exceeding
+it discards the whole candidate's partial views.
+
+The retained original-source extraction replay produced 72 segment records
+across six competing candidates: 36 inner-facing and 36 outer-facing. These
+counts include repeated witnesses across alternative candidates. The replay
+checked the original plan hash and recorded all retained input hashes in
+`docs/evidence/wicker-source-paint-tracing-2026-10-14.json`; it did not freshly
+extract the facade sources. No complete footprint, wall role, opening match
+or training label was promoted. Remaining work is to establish wall continuity
+and scope, resolve the northwest width discrepancy, and recover supported
+southwest facade and northeast opening evidence.
