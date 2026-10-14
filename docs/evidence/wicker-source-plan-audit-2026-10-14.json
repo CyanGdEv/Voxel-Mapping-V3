@@ -1,0 +1,1297 @@
+{
+  "apparent_subject_layout_scale": 0.9093180212292867,
+  "closed_source_footprint_candidates": 0,
+  "complete_building_specs_generated": 0,
+  "component_scope_gap_candidates": 6,
+  "config_sha256": "5af83502232b4a89e0df1ff8fb5cc58ecac5c102f8e0a922a747c6e1d7612a59",
+  "date": "2026-10-14",
+  "declared_diagnostic_width_source": {
+    "artifact_sha256": "79be4fd473662be17a65e5ebceb7a9cc9498aaac209088fd3b4e720a4dcd1bbf",
+    "elevation_pdf_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+    "origin": "Prior original-source facade region trial; dimensions remain hypotheses"
+  },
+  "diagnostic_dimensions": [
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": 0.1544969533826106,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4774136200492771,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3440620863323622,
+          "raw_residual_m": 0.02114541966569572,
+          "source_edge_id": "00f4a1b47a3838b84a60222770ea62b239eb1268e9b6d615f840afcd0778e956",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.13774263905484352,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.46065930572151,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.327571779862365,
+          "raw_residual_m": 0.004655113195698446,
+          "source_edge_id": "02a67d792809108890751ccdd2fe6cc3a44b895c11e34001e4e6c88be02c2eb0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.0732527439522419,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3961694106189084,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2699784681532118,
+          "raw_residual_m": -0.052938198513454715,
+          "source_edge_id": "045fb8c0cdfd510d44f03f2de2ac2a675db1bdb6dd3f9ad06344186054eb1ea6",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03272327391563046,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.355639940582297,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2332818494871418,
+          "raw_residual_m": -0.0896348171795247,
+          "source_edge_id": "0987c0386da9409cce80bc6b83077b4844237ab3424fb40e0a970217a008a1db",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.23375834868760936,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0891583179790572,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9908512885588469,
+          "raw_residual_m": -0.33206537810781966,
+          "source_edge_id": "09920ca3776a4ceaa1a2a14737e39b155773decb299e141eb4a22a6826a16229",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22391714250555506,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0989995241611115,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9998022751790657,
+          "raw_residual_m": -0.3231143914876008,
+          "source_edge_id": "0b8f2f1ca61a80ddac156e3f75a9bb30a0357686b00d72ae9e7944be6fb92e96",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.08258399044123621,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4055006571079027,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.278466322157118,
+          "raw_residual_m": -0.044450344509548545,
+          "source_edge_id": "0bac9fda9219d22fc11fb851e2130c163e332d7b95b1bebcd201ef7f668e10c0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "0d9978ed1253bba1df5b9f3809772c6d97c686b4699341d563cf079fe63c1462",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.015400618491252516,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.307516048175414,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1883960492298973,
+          "raw_residual_m": -0.13452061743676924,
+          "source_edge_id": "0e4f74a34cd03fb3b1deb3d7cb458085d5e4af21ed1d030c6d787da60948bfcb",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.17551540154999512,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1474012651166714,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.042844136598589,
+          "raw_residual_m": -0.28007253006807753,
+          "source_edge_id": "0e5c3ebd891994cc2cd3128e349107597918133c41cec99b6cab74f1cd00bf9e",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "0f43dac583251b43732d12e8df66e85f950f617cf851c17c36c90bf1d67968f9",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.17567394463357355,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.49859061130024,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3631424628363715,
+          "raw_residual_m": 0.04022579616970501,
+          "source_edge_id": "1170aeb0bfb84e572a9b8e786e633278345e400af40049fbdf2586beec4fb607",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.018712105474094187,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3042045611925723,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.185388205831835,
+          "raw_residual_m": -0.1375284608348315,
+          "source_edge_id": "12cc8d722b3ce054b2ee175ca345fc828d472b4d5b6338c9a4af2ef7143607b8",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.12521198610292528,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1977046805637412,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0895981365277256,
+          "raw_residual_m": -0.23331853013894088,
+          "source_edge_id": "166def79b36d09d29dce1d13c3e2bca11cc4703e722ba69ae710554f1d9c09f3",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "16763d54b1ce35fc03109e7eb10ba90cd1e1e979ec70ae7053613419e9c0bf8d",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.018708757505000895,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3042079091616656,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.185391250789208,
+          "raw_residual_m": -0.1375254158774586,
+          "source_edge_id": "268d9fc30457df453a0c791be77413b83bf82c5da9bb89fa6998087b239ef1a4",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.16634743241474093,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4892640990814074,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.354658915201823,
+          "raw_residual_m": 0.03174224853515639,
+          "source_edge_id": "26e6f712eb86461d020c841a2151efefe9e9c67a1c2164510edc3726dbc5b937",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.2381489697961865,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.561065636462853,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.4188486157710236,
+          "raw_residual_m": 0.0959319491043571,
+          "source_edge_id": "272a15717381c7f62f3d84b1380bf3fa2e864752733d884105736b352840013b",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.12249776551136793,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2004189011552986,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0910289135200242,
+          "raw_residual_m": -0.23188775314664234,
+          "source_edge_id": "286c091c45bb48d873eb2980ebbf4e84239fb3d5d1fb4b408a3f220857d03c56",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "2a0fbc07a2f1f5043fab8d63007bdc7dddc9354f66e101e6a013e86b2da6efb1",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.18493891134030194,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.5078555780069685,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3715700276692708,
+          "raw_residual_m": 0.04865336100260431,
+          "source_edge_id": "33304ed43821eb92346e6566a2b13454ccdee7274f6c55942a9f5d745b4b2b07",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.16634743241474093,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4892640990814074,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.354658915201823,
+          "raw_residual_m": 0.03174224853515639,
+          "source_edge_id": "355a8fc8174b6bc5384d3e281e514e3a5326054531cc16ec8ca6e09a2e69e48c",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.015449331168674751,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3074673354979918,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1883517991828316,
+          "raw_residual_m": -0.1345648674838349,
+          "source_edge_id": "3972e794f82e9de17f71f9e19fabb84b4cf4b7b6db8aea654df6db996707e9da",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22391714250555506,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0989995241611115,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9998022751790657,
+          "raw_residual_m": -0.3231143914876008,
+          "source_edge_id": "3bec70fcbeb49c333dd95856270e1260d08cea0d9427f9ab48c0a3c752dba645",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22061411518693985,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1023025514797267,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0028090789941135,
+          "raw_residual_m": -0.320107587672553,
+          "source_edge_id": "3c8ef3e4086f6e673cd63969f8003df52876dd30489f1bae4adfc22c30807dbb",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.06367571434970354,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.38659238101637,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2602683539296422,
+          "raw_residual_m": -0.06264831273702431,
+          "source_edge_id": "3ec8af596c27809f297a8d7d350716e59d4f00f04b2a333c7df2335c774d80c0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "402be8fa3a5620bae3aaee72bbeaa7f5ce83023698adec6ab576a9ff848857eb",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.0802749031261949,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2426417635404716,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1303272162543403,
+          "raw_residual_m": -0.19258945041232622,
+          "source_edge_id": "4c52cac9f7b6e75d449eaa302e7c9f79108ec13ee9a3e5a23c35f9118badd97b",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22849217156651913,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0944244951001474,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9948531426323785,
+          "raw_residual_m": -0.32806352403428807,
+          "source_edge_id": "552d79f85ce4bbe65b8a383c54c704a0e1f2cc12e6a4f2c272eb5c694563a814",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.05821078208290009,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2647058845837664,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1494841050022648,
+          "raw_residual_m": -0.17343256166440169,
+          "source_edge_id": "584ddfa858a807bad90e4a93c311ac217af1bbcdf5b7006cb708b8ebea91ac46",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.17094596614287227,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1519707005237942,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0469976937962993,
+          "raw_residual_m": -0.27591897287036726,
+          "source_edge_id": "58b7df351990684c0408e3efdc345b415fe6e1fb2c5c4bae0e4fb576073fb0ac",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.12348343244412341,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.199433234222543,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0901354980884022,
+          "raw_residual_m": -0.23278116857826436,
+          "source_edge_id": "5b88dba439c1a9fa34d29e1baddc0ff829366dd0e8e5717d9666a2014f81b59b",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "5d231874ba1c65c4f498c93f2aa234644d612932ba5478e107f90a1a20681465",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.17101542279431925,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4939320894609858,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3589049953884549,
+          "raw_residual_m": 0.035988328721788365,
+          "source_edge_id": "5ed717152a9c5440e82943139c8540ab19c33e6b90fa193df73d686ce35a04a0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.06030086044221328,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3832175271088798,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2571990116652247,
+          "raw_residual_m": -0.06571765500144178,
+          "source_edge_id": "6141093a4cd47f7a642788814d726e72908ec3c1aa769d53cc89eeb108d7b5e1",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "6674b5be470db09c04d6f3d39990988967aa9ae2472732772f7c8b21dc0e3079",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.18494364561046384,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.5078603122771304,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3715743340386284,
+          "raw_residual_m": 0.048657667371961866,
+          "source_edge_id": "6831298dff968b3d2aa368d7a625a3dba026fc0c80610d68fdc56a1fb000cedd",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03276490942048027,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3556815760871468,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2333196983008328,
+          "raw_residual_m": -0.08959696836583375,
+          "source_edge_id": "68d270d8c22f78ee0881d2bbf693b1cfe387d2694ade08575a3db017f0c9cfa7",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.23380029478982456,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.089116371876842,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9908131017927564,
+          "raw_residual_m": -0.33210356487391013,
+          "source_edge_id": "68e15f38875fbb09b8428116b5d5e9bf5a111b94a103729391c6ae4a082f36b7",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "6f102bf69c65f2b25195adbd45d518988dcb681f331621c15fcbe2b4e8604aab",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.18494364561046384,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.5078603122771304,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3715743340386284,
+          "raw_residual_m": 0.048657667371961866,
+          "source_edge_id": "6ffc72ab13c09f20938a95c755bd9c4a1d615bc287a62e08c3cc1271a824bd27",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.15707773143785064,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4799943981045172,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3462270439995658,
+          "raw_residual_m": 0.023310377332899312,
+          "source_edge_id": "70d135c9b561c48ee3b4955e66b297ac0853ae4d733eb73fd07ee293460c3935",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.15937982326044509,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1635368434062214,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.058372090657552,
+          "raw_residual_m": -0.2645445760091145,
+          "source_edge_id": "71310a27147d3bd53f80a7b116a4ff9a238c6855cda83001deea441757160962",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "73d67c753ef01af6759a9ead7af77abda8b03fc1134e905398c3110144aca9ce",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22061747005547971,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1022991966111868,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0028060249568538,
+          "raw_residual_m": -0.32011064170981274,
+          "source_edge_id": "75cf237582f24651237b0eb33c3dc9b708bcda0bf1330f17a7d6e8dcc15037de",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.04920756200484644,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.372124228671513,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2482723517022896,
+          "raw_residual_m": -0.07464431496437696,
+          "source_edge_id": "80512bba951672fb314286cc0ef4bd4ddcbcda8ab1407de8a2ae437d477da43e",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.015447671992377954,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3074689946742886,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1883533101779895,
+          "raw_residual_m": -0.134563356488677,
+          "source_edge_id": "8203fbea73462f7b81617284a64c398490da88fafb5175c8b464a8e734aa3267",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "8599ca0c27c407059152dee7f545f12eaec722e684a6e750a78d99dbb99cde10",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.018708757505000895,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3042079091616656,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.185391250789208,
+          "raw_residual_m": -0.1375254158774586,
+          "source_edge_id": "88d5c9a5cbd096acc584b4d55a0eecdad75922dd206cfd17422bae7bdd1d6e5c",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.05818516117479211,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2647315054918744,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1495112730928565,
+          "raw_residual_m": -0.17340539357381002,
+          "source_edge_id": "88e88fd923507b44155f309b3b3d45f5814ef31a05a6efaab6a6ca4611afa306",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22725145141755743,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.095665215249109,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9967708639947241,
+          "raw_residual_m": -0.3261458026719424,
+          "source_edge_id": "8b40675a0b231f50cf57795952eab6b43dec5b6ee783d662894e8a00787c56b1",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.05703057674448608,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3799472434111526,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2542285803730668,
+          "raw_residual_m": -0.06868808629359968,
+          "source_edge_id": "8caa1a8f9b1bb32cd394c64c8e6d31188e6cc51e8db0d9095ec0122bfaccac80",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.0732527439522419,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3961694106189084,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2699784681532118,
+          "raw_residual_m": -0.052938198513454715,
+          "source_edge_id": "8f039bdf6195b365a9285363ee2d3122852416d4cc0c55d9fc7990250236589f",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.06148205568201859,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.261434610984648,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1465127723180086,
+          "raw_residual_m": -0.17640389434865789,
+          "source_edge_id": "8fce3c4c8fa1046b7d679b8b3f10976635ce0f828c0226b96e987f3411acfe34",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.049204225082459585,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.372120891749126,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2482693139611614,
+          "raw_residual_m": -0.07464735270550515,
+          "source_edge_id": "8fe2ee12c592290b528537ce4b7f5d336ee706a188b79e9ab4a2a1d529908dd5",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "9b3ea2f58ac2c902fc0ff2d93d4735901d9aba6c8dfd6828c1260b8f7ddaa7b0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.2284898028771578,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0944268637895087,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9948552958170572,
+          "raw_residual_m": -0.3280613708496093,
+          "source_edge_id": "9c1a54eeba01046f55b91d1f22caf95cfa92abb711c6e08a4318fe0df0dd0fec",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22391714250555506,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0989995241611115,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9998022751790657,
+          "raw_residual_m": -0.3231143914876008,
+          "source_edge_id": "a0421b7b32a4ae28fbc3cbadc9e6c8619101d13daca854a363df5bd86e60393c",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.18493891134030194,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.5078555780069685,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3715700276692708,
+          "raw_residual_m": 0.04865336100260431,
+          "source_edge_id": "a449434eda54458830333cbdb4c39f7f4f72af2e3972b8fc47b52d8ebf281f04",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.23375834868760936,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0891583179790572,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9908512885588469,
+          "raw_residual_m": -0.33206537810781966,
+          "source_edge_id": "a816940d71d5850c9f9eecdd4a5181fe87f017dfd7962dd5820f3682bf5e44b1",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406695794139408,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1088497087252724,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087653042873257,
+          "raw_residual_m": -0.3141513623793408,
+          "source_edge_id": "a87d748dca78bdfce6282cc8deeb127fec2d0b39b4d8dcdcce177286f85af86c",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.2381489697961865,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.561065636462853,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.4188486157710236,
+          "raw_residual_m": 0.0959319491043571,
+          "source_edge_id": "af0661f05f7ad864c877968e50366befb02c7f2aa0648b7b92cafc861f4f53f2",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.1372618981411915,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.185654768525475,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0776386524191033,
+          "raw_residual_m": -0.24527801424756324,
+          "source_edge_id": "b402d541cacc79d231775b19c6b3b05d4a8b08b24f4d0a71b57b5f508680ce39",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.049196551552691536,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.372113218219358,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2482662762274972,
+          "raw_residual_m": -0.07465039043916932,
+          "source_edge_id": "b475f497532d9ab0dabe09f8fbaeee160481d4e419b61a61ed30f15ec1cb552a",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03696210777172437,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.359878774438391,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "b5ea74b462e911681d947635115dda9f803c4ae418b1580ec1902e22bcc7dc6a",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.05818516117479211,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2647315054918744,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1495112730928565,
+          "raw_residual_m": -0.17340539357381002,
+          "source_edge_id": "c25d57e12352aa016e19c2468f704b8f811117546a4295eff6236e70ee014822",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406360299994742,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.108853063666719,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087683583907887,
+          "raw_residual_m": -0.3141483082758778,
+          "source_edge_id": "c71712b852e074c0d1140b03822e0d659478bf641618586960d3f391da8d9d41",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.17551175031598998,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1474049163506765,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0428474580698857,
+          "raw_residual_m": -0.28006920859678086,
+          "source_edge_id": "c86541aa76762c3b8f43bcab819098a82a2484649c3d6b03078a63d54e8d1013",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.17567394463357355,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.49859061130024,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3631424628363715,
+          "raw_residual_m": 0.04022579616970501,
+          "source_edge_id": "c89220a8ba5b111742b73c51f8e707c479515fcf715738d46076706c88244924",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22061411518693985,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1023025514797267,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0028090789941135,
+          "raw_residual_m": -0.320107587672553,
+          "source_edge_id": "cbc45bfdda80353131a8e1857f7d3d3a01cc0b7d68b7175828fac3ea317b248f",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.17095158163454682,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1519650850321197,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.04699259194645,
+          "raw_residual_m": -0.2759240747202165,
+          "source_edge_id": "cc315f688d17661b2e8e38997166ab4215ea1d2fa4f941be4f6e4cfb134973f0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "cc33898ef976993624bc9a3cc460ff426011d39594dc416d2addb112a149857d",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.018731342639549453,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.304185324027117,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1853668433745146,
+          "raw_residual_m": -0.13754982329215193,
+          "source_edge_id": "d2cf9e45d60a9ae0492ffd16beaf88d7db49996b46592249ce5036fb123b3ad9",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "d365c5e9c910a60a21c4777999ebd03bbf61df06bd46d67fd598a66da01fbcfd",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406360299994742,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.108853063666719,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087683583907887,
+          "raw_residual_m": -0.3141483082758778,
+          "source_edge_id": "d482ad77f57e1f1369152363a60ae37df730592d6343439c17072fbb2cdafc81",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03272327391563046,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.355639940582297,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2332818494871418,
+          "raw_residual_m": -0.0896348171795247,
+          "source_edge_id": "d57de4689d0220db79b049b33d1ecea560738bd607c1837b7b86c75c044e3244",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.0701903044354264,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.393106971102093,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2661894513597922,
+          "raw_residual_m": -0.0567272153068743,
+          "source_edge_id": "d6303c73b392d988d2c71e8a0c09411565a5683416fb47a74251e7905e8b46ee",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "d792bd17a65b50b4f27249a2dc9f6610a63d1d5a933f294ac9ed1069a65baecc",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.14926241254058836,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4721790792072549,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3380617942681814,
+          "raw_residual_m": 0.015145127601514874,
+          "source_edge_id": "db973924cd51dad217549bdcd8309e3660f0f16907344d6e00b1e156a26104e9",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406360299994742,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.108853063666719,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087683583907887,
+          "raw_residual_m": -0.3141483082758778,
+          "source_edge_id": "de7a49e91072efc2afa1161388193bb31ee4323fba9b6822cf494803e5ed5149",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "e0eabeec238a3a2f365086f26c4711c07bcfad796208c6afb6e94e2aec01843d",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "e72fe873d192d01c5a4cefe94014ac87ff3081c411d706613ee70f59fa02c098",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03276490942048027,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3556815760871468,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.2333196983008328,
+          "raw_residual_m": -0.08959696836583375,
+          "source_edge_id": "e8df3b3563d1d1feb3425c35f558d1c22a21bd2ca7a2a2e890e5e8bba3b193a0",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.17557762258132525,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1473390440853413,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0427875836360034,
+          "raw_residual_m": -0.2801290830306631,
+          "source_edge_id": "ec4d7159728dafdfcee0c0b3f6b749e50b6408ea77aae50bf0977ee04a4245aa",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.19993267320547736,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.5228493398721439,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3842996554904514,
+          "raw_residual_m": 0.0613829888237849,
+          "source_edge_id": "ec5e40be53791aca67237006fa234829e429bd2b6ced838a2a3c6b7adb32a194",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.1755766388797464,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1473400277869201,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0427884752574965,
+          "raw_residual_m": -0.28012819140917,
+          "source_edge_id": "efb4c659bf79ceb4288b00e69be4977d2c32193ac403db54bab090862c942633",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.03606978610111966,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3589864527677862,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.236156243218316,
+          "raw_residual_m": -0.08676042344835055,
+          "source_edge_id": "efbfab8f7118034bbf4eee3f32ce68caabf2ec3200a9dd621745780a45371b5d",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.08413239844422526,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.2387842682224413,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1260789828830295,
+          "raw_residual_m": -0.19683768378363697,
+          "source_edge_id": "f0104160b161dff8238181473cabeb3f1528b628ce09b9eebb8b6a782e8ab8ee",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.15707773143785064,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4799943981045172,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3462270439995658,
+          "raw_residual_m": 0.023310377332899312,
+          "source_edge_id": "f17d8f6c32485c7166cba07b4716157c0f3cd20037dda6ecc3c8b165222543c6",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.22716778007164784,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.0957488865950187,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 0.9968469810619139,
+          "raw_residual_m": -0.3260696856047526,
+          "source_edge_id": "f188e8afd64325cb784b123a632410976d326f654bbb94fcc015a979682d0b49",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406360299994742,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.108853063666719,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087683583907887,
+          "raw_residual_m": -0.3141483082758778,
+          "source_edge_id": "f3603c9fa129f2a4db3d17448055f1507c9865e2d0441ac10ef66360c9b5a28f",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.015447671992377954,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.3074689946742886,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1883533101779895,
+          "raw_residual_m": -0.134563356488677,
+          "source_edge_id": "f5a90f7673740b6743a8d9ce64fe6a1badab71d48955f5ba1449cfd24cf0d76f",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": 0.17101542279431925,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.4939320894609858,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.3589049953884549,
+          "raw_residual_m": 0.035988328721788365,
+          "source_edge_id": "f601b62ae1f8efd45efdaec7ca526fd5472115f0f293b93e50cce036a2de5a6b",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.21406360299994742,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.108853063666719,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0087683583907887,
+          "raw_residual_m": -0.3141483082758778,
+          "source_edge_id": "f6cf573a926cd07f901e0f2505ff234e7e8558fcd02bb63f634351e99841b6d5",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.15937982326044509,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1635368434062214,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.058372090657552,
+          "raw_residual_m": -0.2645445760091145,
+          "source_edge_id": "f6e4b52519038486d3f275be2b73ce5f0e8a30a10ae9eddf73e189a774ff4d0e",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.018731342639549453,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.304185324027117,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.1853668433745146,
+          "raw_residual_m": -0.13754982329215193,
+          "source_edge_id": "f80e4728ba892a6a1f6768117ce110c642d4fe49d72fab7a24d6e6c5c8791436",
+          "target_width_m": 1.3229166666666665
+        },
+        {
+          "diagnostic_residual_m": -0.20988848532314397,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 1.1130281813435225,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 1.0117642550998263,
+          "raw_residual_m": -0.31115241156684026,
+          "source_edge_id": "f9cc2b97c0bc7ecfa265502fa4a7642bfbbd9c0d86421d652f5cf9dd2e6a8ca8",
+          "target_width_m": 1.3229166666666665
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 1.3229166666666665
+    },
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": 0.16434903309293247,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 11.806015699759598,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 10.740387782428936,
+          "raw_residual_m": -0.9012788842377297,
+          "source_edge_id": "9617895742b566b5c7968b5cec6bfb51fe09edb4c0620b970b2b6a54f1275a6f",
+          "target_width_m": 11.641666666666666
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 11.641666666666666
+    },
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": 0.20708975037425148,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 13.70083975037425,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 12.452658666477985,
+          "raw_residual_m": -1.0410913335220133,
+          "source_edge_id": "6cea3c425af45dab308d7983905b9d25e18baa546556abf8a5d26b664638feda",
+          "target_width_m": 13.493749999999999
+        },
+        {
+          "diagnostic_residual_m": 0.20703784853352936,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 13.700787848533528,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 12.452611468064697,
+          "raw_residual_m": -1.0411385319353013,
+          "source_edge_id": "b3ae75d2dcac5cf3bf62941ef87509b9b1486af89da5e6cc42714b72419c994b",
+          "target_width_m": 13.493749999999999
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 13.493749999999999
+    },
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": 0.06134392393372323,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.848149479489278,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.404343059348163,
+          "raw_residual_m": -1.382462496207392,
+          "source_edge_id": "5ac04caaa472970c32f8401db5d4bbd36b6da6a74b8bb24c9203129a44d8e6f4",
+          "target_width_m": 15.786805555555555
+        },
+        {
+          "diagnostic_residual_m": 0.10649444801666164,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.893300003572216,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.456804911295572,
+          "raw_residual_m": -1.3300006442599823,
+          "source_edge_id": "7a2b6370b037baa4cc4b2ba632ff2ba8cb3d3ee8f97072ca455ed99ba986a8f4",
+          "target_width_m": 15.786805555555555
+        },
+        {
+          "diagnostic_residual_m": 0.058047096259711495,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.844852651815266,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.401348553524839,
+          "raw_residual_m": -1.3854570020307158,
+          "source_edge_id": "df642ad71fd72500951b7fe1b9b76353a46c83013148c09d12bf749f422b2bee",
+          "target_width_m": 15.786805555555555
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 15.786805555555555
+    },
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": 0.043705035044833807,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.848149479489278,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.404343059348163,
+          "raw_residual_m": -1.4001013850962813,
+          "source_edge_id": "5ac04caaa472970c32f8401db5d4bbd36b6da6a74b8bb24c9203129a44d8e6f4",
+          "target_width_m": 15.804444444444444
+        },
+        {
+          "diagnostic_residual_m": 0.08885555912777221,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.893300003572216,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.456804911295572,
+          "raw_residual_m": -1.3476395331488717,
+          "source_edge_id": "7a2b6370b037baa4cc4b2ba632ff2ba8cb3d3ee8f97072ca455ed99ba986a8f4",
+          "target_width_m": 15.804444444444444
+        },
+        {
+          "diagnostic_residual_m": 0.04040820737082207,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 15.844852651815266,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.401348553524839,
+          "raw_residual_m": -1.4030958909196052,
+          "source_edge_id": "df642ad71fd72500951b7fe1b9b76353a46c83013148c09d12bf749f422b2bee",
+          "target_width_m": 15.804444444444444
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 15.804444444444444
+    },
+    {
+      "comparison_status": "nominal_equal_scale_layout_hypotheses_only",
+      "geometry_correction_applied": false,
+      "inverse_layout_length_candidates": [
+        {
+          "diagnostic_residual_m": -0.18615390040786295,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 16.500234988481026,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.99702193656653,
+          "raw_residual_m": -1.6893669523223593,
+          "source_edge_id": "6408e372c5a330fae13a7ff59391602c56216870bd300c646f0d232e8e963afc",
+          "target_width_m": 16.68638888888889
+        },
+        {
+          "diagnostic_residual_m": -0.18614887168982364,
+          "geometry_correction_applied": false,
+          "inverse_layout_nominal_length_candidate_m": 16.500240017199065,
+          "layout_application_verified": false,
+          "physical_correspondence_verified": false,
+          "raw_nominal_length_m": 14.997026504160296,
+          "raw_residual_m": -1.689362384728593,
+          "source_edge_id": "f09231d39341f1c2d0a2d1ddacc5f4b0b39c89f19aa72bd5d6edcb9f822a6983",
+          "target_width_m": 16.68638888888889
+        }
+      ],
+      "target_width_basis": "declared_diagnostic_input_not_verified_measurement",
+      "target_width_m": 16.68638888888889
+    }
+  ],
+  "fit_anchors": 11,
+  "fit_max_residual_pdf_points": 0.0576527242581138,
+  "geometry_correction_applied": false,
+  "holdout_anchors": 4,
+  "holdout_max_residual_pdf_points": 0.08250934755574447,
+  "layout_status": "supported_furniture_layout_correspondence_only",
+  "linear_singular_values": [
+    0.9098338430038907,
+    0.908802491895006
+  ],
+  "named_component_label": "Shop",
+  "named_label_statuses": [
+    "no_exact_named_enclosure"
+  ],
+  "original_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+  ],
+  "page_gap_candidates": 24,
+  "park_world_blocks_added": 0,
+  "physical_scale_verified": false,
+  "printed_gia_claims": [
+    170.0
+  ],
+  "report_sha256": "f0e0745b601fc4491ea13e69bf252a5e9f9cad12a8b83e13494842d906a7b095",
+  "source_network_counts": {
+    "chains": 3111,
+    "cuts": 71,
+    "dangles": 964,
+    "enclosed_faces": 99,
+    "intersection_pairs": 12454,
+    "invalid_rings": 0,
+    "noded_segments": 4364,
+    "provenance_or_vertex_budget_holds": 8,
+    "source_segments": 3681,
+    "straight_chains": 2599,
+    "straight_runs": 2402
+  },
+  "training_labels_generated": 0,
+  "validation": {
+    "focused_tests_passed": 23,
+    "full_test_errors": 0,
+    "full_test_failures": 0,
+    "full_tests_passed": 1368
+  },
+  "version": "wicker-source-plan-audit-receipt-v1"
+}
