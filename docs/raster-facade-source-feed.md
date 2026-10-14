@@ -1,5 +1,10 @@
 # Source-bound facade region discovery
 
+[The original plan audit](source-plan-footprint-audit.md) now diagnoses the
+floor-sheet reduction from held-out page furniture and retains exact named
+enclosure and gap evidence. Its hypothetical corrected lengths do not rescale
+source geometry or authorize facade assembly.
+
 `voxel-building-data discover-facades` connects the existing original-PDF
 material-anchor, contrast-boundary and numbered-view reference extractors to
 independent local elevation-region studies. It also scans the original
