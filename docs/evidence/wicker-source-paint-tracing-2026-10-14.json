@@ -1,0 +1,20 @@
+{
+  "version": "source-paint-boundary-trace-replay-v1",
+  "original_plan_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "validation_mode": "Retained extraction replay; original plan hash checked. Not a fresh full facade extraction.",
+  "input_sha256": {
+    "correspondences.json": "209d74bb88165bc721d476a9afe581e4e15f346fb59cdef17d8601b68d406c3b",
+    "footprint/hypotheses.json": "4b04668abf25e598b205752512a1b5d0add528b4ec1df4b588a1aba932023cbd",
+    "footprint/source-audit/report.json": "f0e0745b601fc4491ea13e69bf252a5e9f9cad12a8b83e13494842d906a7b095",
+    "facades/building-0000/regions.json": "79be4fd473662be17a65e5ebceb7a9cc9498aaac209088fd3b4e720a4dcd1bbf",
+    "facades/building-0000/opening-candidates.json": "aede7fc9b7081eef0763f32ace3d8697fd85495890d140a138aa6d9c07538195",
+    "footprint/source-audit/source-fill-endcaps.json": "88b2c6f88b58c21d01d6db0e419f60ffb310ab6f1d328430a40cf8f3a3441843",
+    "footprint/source-audit/source-fills.json": "75729e66c648f7bb187c4a637843b3624cf6f256747c7ffafebf3381a22e61b4"
+  },
+  "output_sha256": "dac9578cabb23eac113c1e0923b0518b44a46056d976534fc1bc8a48c9b6e743",
+  "candidate_reports": 6,
+  "inner_facing_segment_records": 36,
+  "outer_facing_segment_records": 36,
+  "physical_wall_roles_verified": false,
+  "complete_buildings_generated": 0
+}

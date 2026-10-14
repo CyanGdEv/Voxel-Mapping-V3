@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pymupdf
 from shapely.geometry import box,mapping,Polygon
-from voxel_mapper.plan_elevation_correspondence import marker_frames,compare,prepare,VERSION
+from voxel_mapper.plan_elevation_correspondence import marker_frames,compare,prepare,VERSION,trace_paint_boundaries
 from tests import test_building_plan_audit as fixtures
 
 
@@ -68,6 +68,26 @@ class CorrespondenceTests(unittest.TestCase):
         self.assertEqual(witness['ray_hit_sidedness'][0]['attribution'],'inner_edge_of_source_paint')
         self.assertFalse(witness['ray_hit_sidedness'][0]['exact_boundary_coincidence'])
         self.assertFalse(witness['physical_wall_role_verified']);self.assertEqual(paint,before)
+        limited=compare(*values,pymupdf.Matrix(1,0,0,-1,0,100),.1,None,
+            options={'max_checks':3},paint_fills=[paint])
+        self.assertEqual(limited['status'],'correspondence_budget_withheld')
+        self.assertEqual(limited['views'],[])
+
+    def test_trace_preserves_both_paint_sides_holes_and_disconnected_parts(self):
+        from shapely.geometry import MultiPolygon
+        polygon=MultiPolygon([Polygon([(100,0),(104,0),(104,100),(100,100)],
+            holes=[[(101,20),(103,20),(103,40),(101,40)]]),box(110,0,114,10)])
+        before=mapping(polygon)
+        frame=marker_frames(box(0,0,100,100),self.evidence()[1][0],.1)['frames'][0]
+        trace=trace_paint_boundaries(polygon,frame,.1,None,lambda:None)
+        self.assertEqual(len(trace['segments']),6)
+        self.assertEqual({s['part_index'] for s in trace['segments']},{0,1})
+        self.assertEqual({s['ring_index'] for s in trace['segments']},{0,1})
+        self.assertEqual({s['source_paint_side_candidate'] for s in trace['segments']},{'inner_facing','outer_facing'})
+        original={tuple(p) for part in polygon.geoms for ring in [part.exterior,*part.interiors] for p in ring.coords}
+        self.assertTrue(all(tuple(p) in original for s in trace['segments'] for p in s['source_native_endpoints']))
+        self.assertEqual(mapping(polygon),before)
+        self.assertFalse(trace['segments_joined'])
 
     def fake_facade(self,plan,*,mutate=False):
         def stage(config,resolve,output):

@@ -62,6 +62,46 @@ def marker_frames(polygon,marker,unit,layout=None,axis_tolerance=5):
         'frames':frames,'orientation_basis':'inferred from printed marker corner; all eligible ray hits retained'}
 
 
+def trace_paint_boundaries(native, frame, unit, layout, charge, axis_tolerance=5):
+    """Original parallel ring segments; source-paint sides are not physical wall roles."""
+    transform=layout or [[1.,0.],[0.,1.]]
+    a,b=frame['source_native_endpoints'];length=math.dist(a,b)
+    tangent=[(b[i]-a[i])/length for i in (0,1)]
+    direction=frame['marker_direction_pdf_native']
+    normal=[tangent[1],-tangent[0]]
+    if sum(normal[i]*direction[i] for i in (0,1))>0:normal=[-v for v in normal]
+    axis=frame['diagnostic_axis']
+    def metric(p):return [(p[0]*transform[0][i]+p[1]*transform[1][i])*unit for i in (0,1)]
+    records=[]
+    for part_index,part in enumerate(native.geoms if native.geom_type=='MultiPolygon' else [native]):
+        for ring_index,ring in enumerate([part.exterior,*part.interiors]):
+            coords=list(ring.coords)
+            for segment_index,(start,end) in enumerate(zip(coords,coords[1:])):
+                charge();size=math.dist(start,end)
+                if not size:continue
+                alignment=abs(sum((end[i]-start[i])/size*tangent[i] for i in (0,1)))
+                if alignment<math.cos(math.radians(axis_tolerance)):continue
+                midpoint=[(start[i]+end[i])/2 for i in (0,1)]
+                segment_normal=[(end[1]-start[1])/size,-(end[0]-start[0])/size]
+                if sum(segment_normal[i]*normal[i] for i in (0,1))<0:
+                    segment_normal=[-v for v in segment_normal]
+                inward=native.contains(Point([midpoint[i]-.1*segment_normal[i] for i in (0,1)]))
+                outward=native.contains(Point([midpoint[i]+.1*segment_normal[i] for i in (0,1)]))
+                projections=sorted(sum(metric(p)[i]*axis[i] for i in (0,1)) for p in (start,end))
+                records.append({'part_index':part_index,'ring_index':ring_index,'segment_index':segment_index,
+                    'source_native_endpoints':[list(start),list(end)],
+                    'diagnostic_projection_interval_m':projections,
+                    'diagnostic_projected_length_m':projections[1]-projections[0],
+                    'signed_marker_normal_offset_pdf_points':sum((midpoint[i]-a[i])*normal[i] for i in (0,1)),
+                    'paint_on_inward_side':inward,'paint_on_outward_side':outward,
+                    'source_paint_side_candidate':'outer_facing' if inward and not outward else
+                        'inner_facing' if outward and not inward else 'ambiguous',
+                    'physical_wall_role_verified':False})
+    return {'segments':records,'side_probe_distance_pdf_points':.1,
+        'all_parallel_segments_retained':True,'segments_joined':False,
+        'source_geometry_changed':False,'complete_wall_extent_verified':False}
+
+
 def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layout,options=None,*,paint_fills=None):
     opts={**DEFAULTS,**(options or {})}
     if set(opts)!=set(DEFAULTS):raise ValueError('Unknown correspondence option')
@@ -120,6 +160,7 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                     span=max(projected)-min(projected)
                     witness={'frame_id':frame['id'],'source_fill_id':fill['id'],'paint_seqno':fill.get('paint_seqno'),
                         'ray_hit_sidedness':sides,'side_probe_distance_pdf_points':.1,
+                        'source_boundary_trace':trace_paint_boundaries(native,frame,unit,layout,charge,opts['marker_axis_tolerance_degrees']),
                         'paint_boundary_neighborhood_pdf_points':opts['paint_boundary_neighborhood_pdf_points'],
                         'paint_neighbor_is_discovery_hypothesis':True,
                         'source_paint_projected_extent_m':span,'source_fill_geometry_pdf_native':mapping(native),
