@@ -1,0 +1,1494 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "87017e4be4e55e3d99ccee8ea2f61b5421d0fc5d23f8f0e9c791a995edf6b607",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 5,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "972adea5b8d4513ef5fcdca79d3361ceecd96f0639a8e71b27f2becfb9dc5c12",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "972adea5b8d4513ef5fcdca79d3361ceecd96f0639a8e71b27f2becfb9dc5c12",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "972adea5b8d4513ef5fcdca79d3361ceecd96f0639a8e71b27f2becfb9dc5c12",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "ee3a5248330dd57cf517163f046fbe3fa65433d0010c5fd0862ecf0ca1000f9b",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "ee3a5248330dd57cf517163f046fbe3fa65433d0010c5fd0862ecf0ca1000f9b",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "ee3a5248330dd57cf517163f046fbe3fa65433d0010c5fd0862ecf0ca1000f9b",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "8a5dbe79dc52f085fba8e366d3d4bc51dec0fa61e5ee7984d2ed624a239fcce9",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 6,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "706f3f987483c83dbadc0d94000885457a2d8825f8b7fcf410b9fba8046ad19f",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "706f3f987483c83dbadc0d94000885457a2d8825f8b7fcf410b9fba8046ad19f",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "706f3f987483c83dbadc0d94000885457a2d8825f8b7fcf410b9fba8046ad19f",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "06e0a65cf4c0c06a946fd6bbae20dbe77f27e2bd22f007d554cd9c8fa0088f28",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "06e0a65cf4c0c06a946fd6bbae20dbe77f27e2bd22f007d554cd9c8fa0088f28",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "06e0a65cf4c0c06a946fd6bbae20dbe77f27e2bd22f007d554cd9c8fa0088f28",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "d032f6314a6355dd43b3f4059edc6a702df183a80d84c614a78e2739d0f6c3d1",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 6,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "62eff3a508b89ff6e868b41dea9c871ef5131dba954d23312f7fb742b91931ca",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "62eff3a508b89ff6e868b41dea9c871ef5131dba954d23312f7fb742b91931ca",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "62eff3a508b89ff6e868b41dea9c871ef5131dba954d23312f7fb742b91931ca",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "43eb991b08d76e27427f33d6218e99db3b0f4f3134961792f39100b92e0bc1e1",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "43eb991b08d76e27427f33d6218e99db3b0f4f3134961792f39100b92e0bc1e1",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "43eb991b08d76e27427f33d6218e99db3b0f4f3134961792f39100b92e0bc1e1",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "d2c56b8b0559d7cb6300566ad9387ecb66710f84ad29056fb6334932b1e72eb4",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 6,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "3c221f0db2b8aadb34c8892fc673032f2c4973ba85c178ed5502396e6a5cfd41",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "3c221f0db2b8aadb34c8892fc673032f2c4973ba85c178ed5502396e6a5cfd41",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "3c221f0db2b8aadb34c8892fc673032f2c4973ba85c178ed5502396e6a5cfd41",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "163bd692e1f5c6d2b34c76adf5b5454ceef40816209211ad897f4768155d402c",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "163bd692e1f5c6d2b34c76adf5b5454ceef40816209211ad897f4768155d402c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "163bd692e1f5c6d2b34c76adf5b5454ceef40816209211ad897f4768155d402c",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "da3259e109ef874bc9ca2b2e5b9ae77bbc601bfb53279395e60052f8855e787a",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 6,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "1c3d3ca5debe14085b58272ff59b2f639d35571f1f0e72e73c1786378e0c0b02",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "1c3d3ca5debe14085b58272ff59b2f639d35571f1f0e72e73c1786378e0c0b02",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "1c3d3ca5debe14085b58272ff59b2f639d35571f1f0e72e73c1786378e0c0b02",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "a1839e78cf7db0fb9baf57f49447c3134829e168d46ee9a5a966759b48ecaa6b",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "a1839e78cf7db0fb9baf57f49447c3134829e168d46ee9a5a966759b48ecaa6b",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "a1839e78cf7db0fb9baf57f49447c3134829e168d46ee9a5a966759b48ecaa6b",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "f66c7bd184e2e141c4446979cd2422ae71415030673fb3198b740b39c26b7785",
+      "status": "source_view_correspondence_hypotheses_only",
+      "unclassified_voids": 5,
+      "views": [
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.00032340332603586383,
+                  "source_ray_hit_pdf_native": [
+                    1133.6386935565702,
+                    665.1009304626564
+                  ]
+                }
+              ],
+              "source_fill_id": "ca3b1470ed1128fad14f3b00657cab617d9c886bcbe78c42c95cf6623a8ff626",
+              "source_paint_projected_extent_m": 15.848308454301538
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            1
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.1480590407410283,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "263e497458e9ffac48abb22fb571a2f8f77e5339fc4eb98d93588c84d00a7582",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.2661145962965836,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "816f66f933e358ed58d68da46c42a3a58bba8bef5bbc3c3d2e4abdc0bb5989e9",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "6ead3225ce210579c01d2abfe4170bf212ab7021b5988e40b5d51f53ef2c028c",
+              "material_number": "3",
+              "plan_minus_region_width_m": -0.2484757074076942,
+              "plan_projected_width_m": 15.53832984814786,
+              "region_id": "8982053fc8114d5a7f88a5654bd39fa5534c85ef10e26c62f5ce2fbf9e4a8522",
+              "region_width_m": 15.786805555555555,
+              "within_discovery_tolerance": true
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [],
+          "view_key_candidate": [
+            "2967",
+            26,
+            2
+          ],
+          "width_comparisons": []
+        },
+        {
+          "boundary_gap_projections": [],
+          "frame_candidates": 1,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "jamb_head_correspondence_candidates_only",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "inner_edge_of_source_paint",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": true,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.08441743527049525,
+                  "source_ray_hit_pdf_native": [
+                    945.6457004191847,
+                    446.05382304604143
+                  ]
+                }
+              ],
+              "source_fill_id": "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+              "source_paint_projected_extent_m": 15.525524347354331
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            3
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "aa3ded0749af76fe1c48676c6e30b50ff79041d5e70ad461af6b12565137919c",
+              "material_number": "1",
+              "plan_minus_region_width_m": -1.148026217297506,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "2d5c87c3cc7fe40f03cd48b0661a1c7094a79763b9b968f4120668b5d6db53e6",
+              "region_width_m": 16.68638888888889,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "aa3ded0749af76fe1c48676c6e30b50ff79041d5e70ad461af6b12565137919c",
+              "material_number": "2",
+              "plan_minus_region_width_m": -0.26608177285306134,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "0467ac4a75939f029ca2acbd4f90b720cab2a4da0492567226025d30b0bf3bc5",
+              "region_width_m": 15.804444444444444,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "aa3ded0749af76fe1c48676c6e30b50ff79041d5e70ad461af6b12565137919c",
+              "material_number": "3",
+              "plan_minus_region_width_m": 2.044612671591384,
+              "plan_projected_width_m": 15.538362671591383,
+              "region_id": "b4ae060957fbec228cc222e675ada0dd9048bcb653d5858dcef77f89f38bc230",
+              "region_width_m": 13.493749999999999,
+              "within_discovery_tolerance": false
+            }
+          ]
+        },
+        {
+          "boundary_gap_projections": [
+            {
+              "frame_id": "b52f6915836012bc0acc641e722b04254adc3e94d483bf3011234170dbe56971",
+              "physical_opening_verified": false,
+              "plane_residual_m": 0.15807078625463022,
+              "position_interval_m": [
+                2.758510240668187,
+                7.756670311752323
+              ],
+              "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602",
+              "width_m": 4.998160071084136
+            }
+          ],
+          "frame_candidates": 2,
+          "frame_status": "source_marker_ray_frame_candidates",
+          "opening_position_matches": 0,
+          "opening_scan_status": "scan_budget_withheld",
+          "source_paint_summary": [
+            {
+              "sidedness": [
+                {
+                  "attribution": "ambiguous_source_paint_side",
+                  "exact_boundary_coincidence": false,
+                  "paint_on_enclosure_exterior_side": false,
+                  "paint_on_enclosure_interior_side": false,
+                  "source_boundary_distance_pdf_points": 0.12498598021904612,
+                  "source_ray_hit_pdf_native": [
+                    987.8413182565516,
+                    644.1682829300646
+                  ]
+                }
+              ],
+              "source_fill_id": "b39324928112733a23151bc9ea225668d5551ca817924d0c197314c54ab65895",
+              "source_paint_projected_extent_m": 8.63404218065898
+            }
+          ],
+          "view_key_candidate": [
+            "2967",
+            26,
+            4
+          ],
+          "width_comparisons": [
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.14598928076322437,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "5ed876c5d4b2637f5a250d2724186feaf4850a362ecd0e318325566ad8178541",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.172760719236775,
+              "plan_projected_width_m": 11.495677385903441,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "roof_surface",
+              "frame_id": "b52f6915836012bc0acc641e722b04254adc3e94d483bf3011234170dbe56971",
+              "material_number": "1",
+              "plan_minus_region_width_m": -0.12234982864318766,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "8efc6753f12f3ee5678466dddb8b2aa1b8531e41331eb52f67c65ddbfaabbaa8",
+              "region_width_m": 11.641666666666666,
+              "within_discovery_tolerance": true
+            },
+            {
+              "complete_facade_identity_verified": false,
+              "component_class_candidate": "wall_face",
+              "frame_id": "b52f6915836012bc0acc641e722b04254adc3e94d483bf3011234170dbe56971",
+              "material_number": "4",
+              "plan_minus_region_width_m": 10.196400171356812,
+              "plan_projected_width_m": 11.519316838023478,
+              "region_id": "a92ddbcd5298a28d003f179dea4c6bcda11ec55bfb93ceac3ac8fae55a1ba3bb",
+              "region_width_m": 1.3229166666666665,
+              "within_discovery_tolerance": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "correspondence_file_sha256": "209d74bb88165bc721d476a9afe581e4e15f346fb59cdef17d8601b68d406c3b",
+  "date": "2026-10-14",
+  "report": {
+    "building_id": "wicker-shop-revised-sheets",
+    "candidate_reports": 6,
+    "complete_building_specs_generated": 0,
+    "config_sha256": "0492faac4b8f7939e9d662f266b0357601e74ceda80caba14fdc74312749e22a",
+    "focus_candidate_ids": [
+      "87017e4be4e55e3d99ccee8ea2f61b5421d0fc5d23f8f0e9c791a995edf6b607",
+      "8a5dbe79dc52f085fba8e366d3d4bc51dec0fa61e5ee7984d2ed624a239fcce9",
+      "d032f6314a6355dd43b3f4059edc6a702df183a80d84c614a78e2739d0f6c3d1",
+      "d2c56b8b0559d7cb6300566ad9387ecb66710f84ad29056fb6334932b1e72eb4",
+      "da3259e109ef874bc9ca2b2e5b9ae77bbc601bfb53279395e60052f8855e787a",
+      "f66c7bd184e2e141c4446979cd2422ae71415030673fb3198b740b39c26b7785"
+    ],
+    "opening_position_matches": 0,
+    "park_world_blocks_added": 0,
+    "region_width_matches": 18,
+    "selected_physical_footprint_id": null,
+    "source_marker_candidates": 4,
+    "source_paint_width_matches": 12,
+    "source_sha256": [
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+    ],
+    "training_labels_generated": 0,
+    "version": "source-plan-elevation-correspondence-v1",
+    "view_frame_candidates": 36
+  },
+  "report_sha256": "22f79a1d4c1a41a322d89abe1e4588f36984dabe58147a91cc2acfc6fd1367eb",
+  "validation": {
+    "focused_tests_passed": 23,
+    "full_test_errors": 0,
+    "full_test_failures": 0,
+    "full_tests_passed": 1380
+  },
+  "version": "wicker-plan-elevation-correspondence-receipt-v1"
+}
