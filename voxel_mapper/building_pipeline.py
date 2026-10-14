@@ -157,6 +157,8 @@ def main(argv=None):
     plan_audit.add_argument('--config', required=True); plan_audit.add_argument('--output', required=True)
     footprint = commands.add_parser('propose-footprint')
     footprint.add_argument('--config', required=True); footprint.add_argument('--output', required=True)
+    correspond = commands.add_parser('compare-plan-views')
+    correspond.add_argument('--config', required=True); correspond.add_argument('--output', required=True)
     feed = commands.add_parser('prepare-feed')
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
@@ -165,6 +167,13 @@ def main(argv=None):
     native.add_argument('--spec',required=True); native.add_argument('--output',required=True)
     native.add_argument('--world',action='store_true')
     args = parser.parse_args(argv)
+    if args.command == 'compare-plan-views':
+        from .plan_elevation_correspondence import prepare
+        base=Path(args.config).resolve().parent
+        report=prepare(_read(args.config),lambda p:(base/p).resolve(),args.output)
+        print(json.dumps({'candidate_reports':report['candidate_reports'],
+            'opening_position_matches':report['opening_position_matches'],'complete_building_specs_generated':0}))
+        return
     if args.command == 'propose-footprint':
         from .footprint_hypotheses import prepare
         base = Path(args.config).resolve().parent

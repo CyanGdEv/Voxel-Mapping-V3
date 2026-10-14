@@ -1,5 +1,10 @@
 # Mixed-source footprint enclosure hypotheses
 
+[Specific plan/elevation correspondence](plan-elevation-correspondence.md) now
+checks the focused candidates against numbered source views. It exposes partial
+region matches and inner-paint-edge hypotheses without selecting a physical
+footprint or certifying an opening.
+
 `voxel-building-data propose-footprint --config request.json --output fresh-dir`
 recomputes original plan evidence and combines exact solid strokes with supported
 clipped-fill boundaries. It then enumerates explicit source-endcap corridor
