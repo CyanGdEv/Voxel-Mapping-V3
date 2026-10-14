@@ -155,6 +155,8 @@ def main(argv=None):
     facades.add_argument('--config', required=True); facades.add_argument('--output', required=True)
     plan_audit = commands.add_parser('audit-plan')
     plan_audit.add_argument('--config', required=True); plan_audit.add_argument('--output', required=True)
+    footprint = commands.add_parser('propose-footprint')
+    footprint.add_argument('--config', required=True); footprint.add_argument('--output', required=True)
     feed = commands.add_parser('prepare-feed')
     feed.add_argument('--config', required=True); feed.add_argument('--output', required=True)
     reviews = commands.add_parser('collect-feedback')
@@ -163,6 +165,13 @@ def main(argv=None):
     native.add_argument('--spec',required=True); native.add_argument('--output',required=True)
     native.add_argument('--world',action='store_true')
     args = parser.parse_args(argv)
+    if args.command == 'propose-footprint':
+        from .footprint_hypotheses import prepare
+        base = Path(args.config).resolve().parent
+        result = prepare(_read(args.config), lambda p: (base/p).resolve(), args.output)
+        print(json.dumps({'status':result['status'],'candidate_count':result['candidate_count'],
+            'complete_building_specs_generated':0,'park_world_blocks_added':0}))
+        return
     if args.command == 'audit-plan':
         from .building_plan_audit import prepare
         base = Path(args.config).resolve().parent

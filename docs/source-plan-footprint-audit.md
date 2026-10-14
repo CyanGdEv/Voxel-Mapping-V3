@@ -1,5 +1,11 @@
 # Original plan footprint and sheet-layout diagnostics
 
+[Mixed-source enclosure hypotheses](footprint-closure-hypotheses.md) add clipped
+fill boundaries to the stroked-line evidence channel. This finds a closed
+drafting enclosure around the Shop label, but its extents conflict with the
+elevation evidence; it is not accepted as the shop footprint. The zero-face
+result below remains the result of the original stroked-line-only audit.
+
 `voxel-building-data audit-plan --config request.json --output fresh-dir`
 checks a named component against exact native plan faces and independently
 audits the relative layout of two original sheets. It explains apparent scale

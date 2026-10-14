@@ -1,0 +1,170 @@
+{
+  "baseline_candidate": {
+    "boundary_gap_ids": [],
+    "boundary_provenance_links": 436,
+    "dimension_review": {
+      "declared_target_matches_per_axis": [
+        [],
+        [
+          11.641666666666666
+        ]
+      ],
+      "extent_recipe": "minimum_rotated_rectangle_for_diagnostics_only_not_outline_replacement",
+      "inverse_layout_extent_candidates_m": [
+        20.648359216811,
+        11.470771994233182
+      ],
+      "layout_application_verified": false,
+      "physical_correspondence_verified": false,
+      "raw_nominal_extent_dimensions_m": [
+        18.76698646641865,
+        10.435559930662283
+      ],
+      "source_geometry_changed": false
+    },
+    "exterior_coordinates": 247,
+    "id": "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00",
+    "interior_ring_candidates": 7,
+    "nominal_area_m2": 151.2619070908182
+  },
+  "checks": 181218,
+  "complete_building_specs_generated": 0,
+  "config_sha256": "32ddd42c9604ff81f0cc60778b9f8da1567ed94a5962b1763dd8c84809e5e0e2",
+  "date": "2026-10-14",
+  "diagnostic_extent_compatible_candidate_ids": [
+    "87017e4be4e55e3d99ccee8ea2f61b5421d0fc5d23f8f0e9c791a995edf6b607",
+    "8a5dbe79dc52f085fba8e366d3d4bc51dec0fa61e5ee7984d2ed624a239fcce9",
+    "d032f6314a6355dd43b3f4059edc6a702df183a80d84c614a78e2739d0f6c3d1",
+    "d2c56b8b0559d7cb6300566ad9387ecb66710f84ad29056fb6334932b1e72eb4",
+    "da3259e109ef874bc9ca2b2e5b9ae77bbc601bfb53279395e60052f8855e787a",
+    "f66c7bd184e2e141c4446979cd2422ae71415030673fb3198b740b39c26b7785"
+  ],
+  "distinct_named_enclosures": 48,
+  "gap_effects": [
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+        "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "25ae286a4fac95d4fc0545752496d5673fd02da2156de7941990b711ec10a7a8"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "26eb6cb50cc8fadc1037321ef58c560940b758562311f432185ba4c0db669c3d"
+    },
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6",
+        "9acebdf470799e9dd4c488595f4b9828091f63f811557e5d0db9c84fab51c2b6"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "cb9be3452d99ef461a22d67ef177fd644fc9d95cae5f27b14661116783d6d421"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "5cbfd180f4bec9add8c1c5a4ab306c24fc28120f77d915d253046721c96c90b2"
+    },
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a",
+        "9b53eee03cceddedec9bb75df7e19bbedc3a7323901ac1c994a50aa2d91e6d6a"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "19f9c33c4f6c34f737d04c1a810041ef124a49070ef3a65c7d41d36c9a6e439b"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "9e42849a268dd34a26ee18c92a4197b868ccd3b3e69eebdd9f15124fc3d1a91b"
+    },
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4",
+        "2b2a67a3055ab6cc55b1e0bce6fa204100e076abd89fe01ec3dc672e488695e4"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "eeb37532bb657b9b17933507ce9531434c5d02aa567207cba9a5ae4de8327108"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "9f0e6f81a097253db1a14ded2a5dac902e37a0edc958be38641f21bbce047b7b"
+    },
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605",
+        "6aac058cdcb48cafc8f1957c8a8f515310c30cd298cdcba176f5e38e74e73605"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "ce5a4aed6a37db6be649f74636b186fb30505db9331b6c5a2fc2a2a583a64f09"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "ec26b68e02464cf69e731c1f00da891fcb6955ff3235a21b8217bf7527f1257e"
+    },
+    {
+      "baseline_candidate_ids": [
+        "bb88992e8cb8d83c6eb4cee90b881ce6a1e1966c813ca150a0f6d42075f07d00"
+      ],
+      "parent_fill_candidate_ids": [
+        "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b",
+        "8fe310af60703e5dc371d2da0a79f8f3a83c11a441831a99693fdb4a13ec5d2b"
+      ],
+      "physical_opening_verified": false,
+      "physical_role": "unclassified",
+      "single_gap_candidate_ids": [
+        "d032f6314a6355dd43b3f4059edc6a702df183a80d84c614a78e2739d0f6c3d1"
+      ],
+      "single_gap_effect": "changes_existing_named_enclosure",
+      "source_gap_id": "f541eab902bdc9fa587b24339bcaa777bd07c21db1c9b710d37bec655bb72602"
+    }
+  ],
+  "hypotheses_sha256": "4b04668abf25e598b205752512a1b5d0add528b4ec1df4b588a1aba932023cbd",
+  "model_glb_sha256": "e917eab16cf87bf8296a80cc1c15e70967cf235c493696aadc5d86f2d83f867c",
+  "park_world_blocks_added": 0,
+  "preview_mesh_numerical_review": {
+    "maximum_omitted_area_m2": 1e-08,
+    "minimum_mesh_triangle_cross_squared": 1e-20,
+    "omitted_area_m2": 1.4375348033434584e-12,
+    "omitted_triangle_indices": [
+      23
+    ],
+    "preview_mesh_is_exact_source_polygon": false,
+    "source_polygon_modified": false
+  },
+  "report_sha256": "73ac62748d86a7607dd87cb39104dc3e122c7b3257af71d451783cd134b7e083",
+  "selected_physical_footprint_id": null,
+  "source_polygon_modified": false,
+  "source_segments": 2670,
+  "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "status": "mixed_source_enclosure_hypotheses_only",
+  "training_labels_generated": 0,
+  "trials": 64,
+  "validation": {
+    "focused_tests_passed": 24,
+    "full_test_errors": 0,
+    "full_test_failures": 0,
+    "full_tests_passed": 1374,
+    "report_tests_after_summary_field_added": 6
+  },
+  "version": "wicker-footprint-hypotheses-receipt-v1"
+}
