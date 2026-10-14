@@ -132,3 +132,20 @@ extract the facade sources. No complete footprint, wall role, opening match
 or training label was promoted. Remaining work is to establish wall continuity
 and scope, resolve the northwest width discrepancy, and recover supported
 southwest facade and northeast opening evidence.
+
+Exact wall-run continuity review groups traced segments only when they share
+identical original endpoints, are exactly collinear, and belong to the same
+source part, ring and paint-side candidate. Original segment lists remain
+unchanged. Small gaps, bends and separate rings cannot be bridged. Pair checks
+and per-region run comparisons charge the existing whole-candidate budget.
+Whole-fill width counts remain separate from the new continuous-run counts.
+
+Original retained extraction replay found 72 runs across six alternatives
+(12 per candidate), with 36 partial-region width comparisons within the
+existing tolerance. The southeast outer-facing run spans approximately
+15.842 m and its long inner-facing run 15.822 m. Northwest runs instead expose
+13.688/13.694 m long boundaries and separate 0.797 m short boundaries; they
+cannot be combined into the 15.804 m main facade by bridging gaps. Some match
+the narrower base region, which does not establish complete facade identity.
+The northwest main-wall discrepancy remains unresolved. Receipt:
+`docs/evidence/wicker-source-wall-runs-2026-10-14.json`.
