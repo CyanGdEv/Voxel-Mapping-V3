@@ -176,10 +176,10 @@ def prepare(config,resolve,output):
                             with Image.open(crop_dir/'view.png') as image:
                                 rgb=np.asarray(image.convert('RGB'))
                                 gray=np.rint(rgb.astype(float)@np.array([.299,.587,.114])).astype('uint8')
-                            detected=scan(gray);matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
+                            detected=scan(gray);adjacent=scan(gray,pair_scope='adjacent_compatible_jambs');matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
                             factors={r['drawing_view_candidate']['nominal_metres_per_pdf_point_candidate'] for r in view_records}
                             factor=next(iter(factors)) if len(factors)==1 else None
-                            for candidate in detected['candidates']:
+                            for candidate in [*detected['candidates'],*adjacent['candidates']]:
                                 x0,y0,x1,y1=candidate['bounds_pixels']
                                 points=[pymupdf.Point(x,y)*matrix for x,y in [(x0,y0),(x1,y0),(x1,y1),(x0,y1)]]
                                 candidate.update(geometry=mapping(Polygon([(p.x,p.y) for p in points])),
@@ -194,7 +194,9 @@ def prepare(config,resolve,output):
                                 candidate['id']=digest([sha,receipt['page'],next(iter(keys)),candidate])
                             opening_report={'document_sha256':sha,'page':receipt['page'],
                                 'view_key_candidate':list(next(iter(keys))),
-                                'view_scope_verified':False,'render_receipt_sha256':digest(rendered),'scan':detected}
+                                'view_scope_verified':False,'render_receipt_sha256':digest(rendered),'scan':detected,
+                                'adjacent_bay_review_scan':adjacent,
+                                'adjacent_bay_candidates_are_complete_openings':False}
                             atomic_json(crop_dir/'opening-scan.json',opening_report);opening_reports.append(opening_report)
             groups={}
             for region in regions:groups.setdefault((region['document_sha256'],tuple(region['view_key_candidate'])),[]).append(region)

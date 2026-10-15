@@ -128,3 +128,26 @@ scale and revision before assembly.
 
 The original-source trial receipt is
 [`evidence/wicker-facade-source-feed-2026-10-13.json`](evidence/wicker-facade-source-feed-2026-10-13.json).
+
+The v2 opening scan adds a separate `adjacent_bay_review_scan` to each rendered
+view. The original `scan` remains the all-pairs channel, including its original
+budget-withheld outcome. The new channel considers only the nearest compatible
+right-hand jamb group (all ties retained), with endpoint agreement within two
+pixels. Adjacency is checked before the minimum-width filter: a narrow
+intervening bay cannot be skipped to create a larger span. No pixels, jambs or
+head thresholds are changed. The same group, pair, consensus and work limits
+apply; adjacency-search comparisons also charge the work budget.
+
+These candidates describe atomic drafting bays. They exclude spans across
+intermediate compatible jambs, so they cannot replace the all-pairs inventory
+or establish full physical opening extent. Both channels retain independent
+statuses and candidates with original PNG hashes, native geometry and nominal
+scale diagnostics. Existing plan correspondence reads only the original
+`scan`; adjacent bays are not silently used as door/window matches.
+
+A fresh original-PDF render of the retained northeast artwork window reproduced
+the previous PNG hash. The all-pairs scan still withheld after exceeding 512
+supported pairs. The adjacent channel completed with 13,199 checks and one
+23-by-45-pixel candidate. This small bay does not resolve the large plan gap
+or establish a physical opening. Original source, scope, render and scan hashes
+are recorded in `evidence/wicker-ne-adjacent-bays-2026-10-15.json`.

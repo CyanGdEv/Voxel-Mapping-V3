@@ -1,0 +1,36 @@
+{
+  "version": "northeast-adjacent-bay-review-v1",
+  "source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "page": 1,
+  "view_key_candidate": [
+    "2967",
+    26,
+    4
+  ],
+  "scope_basis": "retained automatically discovered artwork review window; physical scope unverified",
+  "bounds_pdf_native": [
+    924.0,
+    1172.0,
+    1156.0,
+    1648.0
+  ],
+  "fresh_original_render": true,
+  "png_sha256": "4c99a268d942bdfa9603a1216f30925df46c973b29c0139d4ed9cca757b2f5d7",
+  "gray_sha256": "55512aa99afcb0153c748396fda4cb0e429937ff322f6d066a82d1dec8d6c986",
+  "raw_status": "scan_budget_withheld",
+  "raw_reason": "opening_pair_count_budget",
+  "adjacent_status": "jamb_head_correspondence_candidates_only",
+  "adjacent_candidates": 1,
+  "adjacent_checks": 13199,
+  "candidate_bounds_pixels": [
+    [
+      1191,
+      417,
+      1214,
+      462
+    ]
+  ],
+  "scans_sha256": "b9c3e66197bb01072d56b58ec7d0f84b6056c535ae42c1112c1bc7c9a81ac63e",
+  "physical_openings_verified": 0,
+  "complete_buildings_generated": 0
+}
