@@ -174,7 +174,8 @@ def main(argv=None):
         print(json.dumps({'candidate_reports':report['candidate_reports'],
             'opening_position_matches':report['opening_position_matches'],
             'indexed_opening_position_matches':report['indexed_opening_position_matches'],
-            'indexed_matches_near_printed_shop_level':report['indexed_matches_near_printed_shop_level'],'complete_building_specs_generated':0}))
+            'indexed_matches_near_printed_shop_level':report['indexed_matches_near_printed_shop_level'],
+            'partial_level_jamb_pair_hypotheses':report['partial_level_jamb_pair_hypotheses'],'complete_building_specs_generated':0}))
         return
     if args.command == 'propose-footprint':
         from .footprint_hypotheses import prepare

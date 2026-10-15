@@ -238,3 +238,46 @@ matches satisfy the Shop-Level bottom-proximity discovery screen. They remain
 horizontal drafting hypotheses; no physical floor, wall, opening or survey
 datum is verified. Receipt:
 `evidence/wicker-opening-relative-levels-2026-10-15.json`.
+
+A separate partial-jamb profile review now addresses source boundaries that the
+strict maximal-dark-run index cannot retain. A jamb may merge photometrically
+into shaded ground and reach the raster edge, or two visible sides may stop at
+different heights. Strict indexed candidates and their original endpoint rules
+remain unchanged.
+
+The new review uses losslessly packed binary masks derived from adjacent-source
+column intensity differences (24 and 48 gray levels) and original dark pixels
+(220 and 235). It searches only width/position-compatible column pairs using
+the existing plan projection, numbered-view binding and native printed Shop
+Level reference. For each source column, its lower support extent is the last
+observed edge within the bounded printed-level review band. This is explicitly
+not a physical jamb endpoint. Extents whose source support continues beyond an analysis boundary are marked
+censored. At least one uncensored side must reach the existing level-proximity
+tolerance in both recipes.
+
+Every retained head row must have at least 90% original dark support across
+the span. Each side must have at least 80% contrast-edge support from that head
+to its own observed lower extent, over 24–700 source pixels. All qualifying
+head rows and contiguous head bands remain. Exact supported fragments, missing
+intervals, and the unsupported interval to printed Shop Level are exported;
+none are joined, filled or extended. Head rows may be shutter lines, rails,
+shadows or other drafting strokes. No unique head, physical lower endpoint,
+continuous jamb, complete wall, opening type or physical floor is inferred.
+
+Source masks retain grayscale/packed-mask hashes, source dimensions and fixed
+recipes. Corrupt/mismatched masks or missing level references withhold the new
+review. Column, pair and head-row checks share the existing whole-candidate
+work budget; at most 128 qualifying column profiles per side and 1,024 column
+pairs per query are retained, with exhaustion withholding the whole candidate.
+The source raster remains bounded to six million pixels and 3,000 pixels per
+side. Mask packing is lossless for the declared binary recipes, not a replacement
+for the original grayscale image.
+
+Fresh original-source replay finds six distinct source column pairs, repeated
+as 36 partial pair hypotheses across six competing footprints, with 720
+competing head bands. The left observed edge extent is approximately 0.016 m
+above printed Shop Level; right extents are approximately 0.415–0.426 m above.
+Missing source support remains explicit. Existing 180 horizontal indexed
+matches and zero strict Shop-Level-proximate matches remain unchanged. No
+complete building or labels were generated. Receipt:
+`evidence/wicker-partial-jamb-profiles-2026-10-15.json`.

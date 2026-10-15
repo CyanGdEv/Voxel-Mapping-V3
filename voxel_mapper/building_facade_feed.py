@@ -11,7 +11,7 @@ from PIL import Image
 from shapely.affinity import affine_transform
 from shapely.geometry import shape, mapping, Polygon, box
 
-from . import drawing_faces, plan_elevation_edges,elevation_levels
+from . import drawing_faces, plan_elevation_edges,elevation_levels,jamb_profile_queries
 from .building_cross_view import _surface
 from .building_spec import build, digest, FRAME
 from .building_raster_views import render, VERSION as RENDER_VERSION
@@ -162,7 +162,7 @@ def prepare(config,resolve,output):
     if root.exists():raise ValueError('Fresh facade evidence directory required')
     root.mkdir(parents=True);results=[]
     atomic_json(root/'contract.json',{'version':VERSION,'config_sha256':digest(config),
-        'opening_scan_version':OPENING_VERSION,'level_review_version':elevation_levels.VERSION,'preview_policy':'independent_elevation_regions_only'})
+        'opening_scan_version':OPENING_VERSION,'level_review_version':elevation_levels.VERSION,'jamb_profile_version':jamb_profile_queries.VERSION,'preview_policy':'independent_elevation_regions_only'})
     for index,building in enumerate(buildings):
         directory=root/f'building-{index:04d}';partial=directory.with_name(directory.name+'.partial');partial.mkdir()
         result={'building_id':building['building_id'],'revision_scope_claim':building['revision_scope'],
@@ -236,7 +236,7 @@ def prepare(config,resolve,output):
                                 rgb=np.asarray(image.convert('RGB'))
                                 gray=np.rint(rgb.astype(float)@np.array([.299,.587,.114])).astype('uint8')
                             detected=scan(gray);adjacent=scan(gray,pair_scope='adjacent_compatible_jambs')
-                            indexed=scan(gray,representation='indexed');matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
+                            indexed=scan(gray,representation='indexed');profiles=jamb_profile_queries.build(gray);matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
                             factors={r['drawing_view_candidate']['nominal_metres_per_pdf_point_candidate'] for r in view_records}
                             factor=next(iter(factors)) if len(factors)==1 else None
                             for candidate in [*detected['candidates'],*adjacent['candidates']]:
@@ -258,6 +258,7 @@ def prepare(config,resolve,output):
                                 'relative_level_reference':elevation_levels.relative_reference(level_review,list(next(iter(keys)))),
                                 'adjacent_bay_review_scan':adjacent,'indexed_opening_scan':indexed,
                                 'indexed_scan_sha256':digest(indexed),'source_png_sha256':rendered['png_sha256'],
+                                'jamb_profile_evidence':profiles,'jamb_profile_evidence_sha256':digest(profiles),
                                 'pixel_edge_to_pdf_native_matrix':rendered['pixel_edge_to_pdf_native_matrix'],
                                 'adjacent_bay_candidates_are_complete_openings':False}
                             atomic_json(crop_dir/'opening-scan.json',opening_report);opening_reports.append(opening_report)
