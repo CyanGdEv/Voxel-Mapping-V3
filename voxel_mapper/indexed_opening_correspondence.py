@@ -6,6 +6,7 @@ import pymupdf
 from shapely.geometry import shape,box
 
 from .raster_opening_scan import width_candidates
+from . import jamb_profile_queries
 
 
 def relative_height_review(view,region,pixels,display,factor,tolerance):
@@ -74,6 +75,7 @@ def compare(view,projection,frame,region,tolerance,charge,*,source_regions=()):
         result['status']='withheld_nonpositive_or_skew_display_pixel_transform';return result
     factor=region['nominal_metres_per_pdf_point_candidate'];unit=display.a*factor
     bounds=shape(region['display_geometry']).bounds;region_width=(bounds[2]-bounds[0])*factor
+    result['level_jamb_review']=jamb_profile_queries.query(view,projection,frame,region,display,factor,tolerance,charge)
     families=width_candidates(scan,projection['width_m']/unit,tolerance/unit,charge)
     result['width_family_candidates']=len(families)
     for identity,family in families:

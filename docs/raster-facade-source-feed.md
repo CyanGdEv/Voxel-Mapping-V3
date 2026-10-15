@@ -220,3 +220,10 @@ status. Level review failure does not remove independent facade/opening
 channels. Printed relative-level agreement remains distinct from physical
 floor identity and survey datum verification. See
 `plan-elevation-correspondence.md` for association bounds and review behavior.
+
+Opening views now also retain `jamb_profile_evidence`: fixed-recipe contrast
+and dark masks packed losslessly into checksum-bound bit arrays. This adds
+source evidence for the separate partial-jamb review described in
+`plan-elevation-correspondence.md`. Original pixels, strict opening indices,
+material regions and meshes remain unchanged. The feed contract records the
+partial-jamb profile version; no physical lower endpoint or opening is accepted.

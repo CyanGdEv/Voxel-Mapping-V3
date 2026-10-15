@@ -196,7 +196,7 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
             charge();key=marker['target_view_key_candidate']
             frame_review=marker_frames(polygon,marker,unit,layout,opts['marker_axis_tolerance_degrees'])
             matches=[];projected_gaps=[];opening_matches=[];paint_witnesses=[];paint_matches=[]
-            restoration_matches=[];restoration_ambiguities=[];indexed_queries=[];indexed_matches=[]
+            restoration_matches=[];restoration_ambiguities=[];indexed_queries=[];indexed_matches=[];partial_jamb_queries=[];partial_jamb_matches=[]
             view_regions=[r for r in regions if r['view_key_candidate']==key]
             scans=[v for v in opening_views if v['view_key_candidate']==key]
             if len(scans)!=1:scan_status='withheld_nonunique_or_missing_opening_view';openings=[]
@@ -279,8 +279,11 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                         region_width=(bounds[2]-bounds[0])*factor
                         if len(scans)==1:
                             query=indexed_opening_correspondence.compare(scans[0],projection,frame,region,opts['dimension_tolerance_m'],charge,source_regions=view_regions)
-                            indexed_queries.append({k:v for k,v in query.items() if k!='matches'})
+                            indexed_queries.append({k:v for k,v in query.items() if k not in ('matches','level_jamb_review')})
                             indexed_matches.extend(query['matches'])
+                            partial=query.get('level_jamb_review',{'status':'withheld_index_prerequisites','matches':[]})
+                            partial_jamb_queries.append({k:v for k,v in partial.items() if k!='matches'})
+                            partial_jamb_matches.extend(partial['matches'])
                         for opening in openings:
                             charge();native=shape(opening['geometry'])
                             # Original elevation pages in this feed retain their
@@ -309,6 +312,7 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                 'restoration_region_width_comparisons':restoration_matches,
                 'restoration_separator_ambiguities':restoration_ambiguities,
                 'indexed_opening_queries':indexed_queries,'indexed_opening_position_matches':indexed_matches,
+                'partial_jamb_queries':partial_jamb_queries,'partial_level_jamb_pair_hypotheses':partial_jamb_matches,
                 'indexed_opening_scan_status':scans[0].get('indexed_opening_scan',{}).get('status','missing') if len(scans)==1 else 'withheld_nonunique_or_missing_opening_view',
                 'view_scope_and_state_verified':False,'region_matches_are_partial_not_complete_facades':True})
         voids=[{'ring_index':i,'geometry':mapping(Polygon(ring)),
@@ -379,6 +383,8 @@ def prepare(config,resolve,output):
         'continuous_source_run_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' in m),
         'opening_position_matches':sum(len(v['opening_position_matches']) for r in results for v in r['views']),
         'indexed_opening_position_matches':sum(len(v['indexed_opening_position_matches']) for r in results for v in r['views']),
+        'partial_level_jamb_pair_hypotheses':sum(len(v['partial_level_jamb_pair_hypotheses']) for r in results for v in r['views']),
+        'partial_jamb_head_band_hypotheses':sum(len(m['head_row_bands_pixels']) for r in results for v in r['views'] for m in v['partial_level_jamb_pair_hypotheses']),
         'indexed_matches_with_relative_level_review':sum(m['relative_height_and_component_review']['status']=='unverified_source_relative_height_and_component' for r in results for v in r['views'] for m in v['indexed_opening_position_matches']),
         'indexed_matches_near_printed_shop_level':sum(m['relative_height_and_component_review'].get('bottom_within_shop_level_discovery_tolerance',False) for r in results for v in r['views'] for m in v['indexed_opening_position_matches']),
         'restoration_region_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['restoration_region_width_comparisons']),
