@@ -8,7 +8,7 @@ import pymupdf
 from shapely.affinity import affine_transform
 from shapely.geometry import LineString,Point,Polygon,shape,mapping
 
-from . import footprint_hypotheses,building_facade_feed
+from . import footprint_hypotheses,building_facade_feed,indexed_opening_correspondence
 from .building_spec import digest
 from .drawing_geometry import native_inverse
 from .generation_cycles import atomic_json
@@ -196,7 +196,7 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
             charge();key=marker['target_view_key_candidate']
             frame_review=marker_frames(polygon,marker,unit,layout,opts['marker_axis_tolerance_degrees'])
             matches=[];projected_gaps=[];opening_matches=[];paint_witnesses=[];paint_matches=[]
-            restoration_matches=[];restoration_ambiguities=[]
+            restoration_matches=[];restoration_ambiguities=[];indexed_queries=[];indexed_matches=[]
             view_regions=[r for r in regions if r['view_key_candidate']==key]
             scans=[v for v in opening_views if v['view_key_candidate']==key]
             if len(scans)!=1:scan_status='withheld_nonunique_or_missing_opening_view';openings=[]
@@ -277,6 +277,10 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                     for region in view_regions:
                         bounds=shape(region['display_geometry']).bounds;factor=region['nominal_metres_per_pdf_point_candidate']
                         region_width=(bounds[2]-bounds[0])*factor
+                        if len(scans)==1:
+                            query=indexed_opening_correspondence.compare(scans[0],projection,frame,region,opts['dimension_tolerance_m'],charge)
+                            indexed_queries.append({k:v for k,v in query.items() if k!='matches'})
+                            indexed_matches.extend(query['matches'])
                         for opening in openings:
                             charge();native=shape(opening['geometry'])
                             # Original elevation pages in this feed retain their
@@ -304,6 +308,8 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                 'source_paint_boundary_witnesses':paint_witnesses,'source_paint_width_comparisons':paint_matches,
                 'restoration_region_width_comparisons':restoration_matches,
                 'restoration_separator_ambiguities':restoration_ambiguities,
+                'indexed_opening_queries':indexed_queries,'indexed_opening_position_matches':indexed_matches,
+                'indexed_opening_scan_status':scans[0].get('indexed_opening_scan',{}).get('status','missing') if len(scans)==1 else 'withheld_nonunique_or_missing_opening_view',
                 'view_scope_and_state_verified':False,'region_matches_are_partial_not_complete_facades':True})
         voids=[{'ring_index':i,'geometry':mapping(Polygon(ring)),
             'role':'unclassified_drafting_void','physical_void_identity_verified':False}
@@ -372,6 +378,7 @@ def prepare(config,resolve,output):
         'source_paint_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' not in m),
         'continuous_source_run_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' in m),
         'opening_position_matches':sum(len(v['opening_position_matches']) for r in results for v in r['views']),
+        'indexed_opening_position_matches':sum(len(v['indexed_opening_position_matches']) for r in results for v in r['views']),
         'restoration_region_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['restoration_region_width_comparisons']),
         'ambiguous_restoration_separator_groups':sum(a['multiple_compatible_separator_alternatives'] for r in results for v in r['views'] for a in v['restoration_separator_ambiguities']),
         'selected_physical_footprint_id':None,'complete_building_specs_generated':0,

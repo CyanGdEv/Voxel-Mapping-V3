@@ -1,0 +1,67 @@
+{
+  "version": "indexed-opening-original-source-trial-v1",
+  "validation_mode": "Fresh full original-source compare-plan-views run",
+  "source_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "report": {
+    "ambiguous_restoration_separator_groups": 12,
+    "building_id": "wicker-shop-revised-sheets",
+    "candidate_reports": 6,
+    "complete_building_specs_generated": 0,
+    "config_sha256": "0492faac4b8f7939e9d662f266b0357601e74ceda80caba14fdc74312749e22a",
+    "continuous_source_run_width_matches": 36,
+    "focus_candidate_ids": [
+      "87017e4be4e55e3d99ccee8ea2f61b5421d0fc5d23f8f0e9c791a995edf6b607",
+      "8a5dbe79dc52f085fba8e366d3d4bc51dec0fa61e5ee7984d2ed624a239fcce9",
+      "d032f6314a6355dd43b3f4059edc6a702df183a80d84c614a78e2739d0f6c3d1",
+      "d2c56b8b0559d7cb6300566ad9387ecb66710f84ad29056fb6334932b1e72eb4",
+      "da3259e109ef874bc9ca2b2e5b9ae77bbc601bfb53279395e60052f8855e787a",
+      "f66c7bd184e2e141c4446979cd2422ae71415030673fb3198b740b39c26b7785"
+    ],
+    "indexed_opening_position_matches": 180,
+    "opening_position_matches": 0,
+    "park_world_blocks_added": 0,
+    "region_width_matches": 18,
+    "restoration_region_width_matches": 156,
+    "selected_physical_footprint_id": null,
+    "source_marker_candidates": 4,
+    "source_paint_width_matches": 12,
+    "source_sha256": [
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+    ],
+    "training_labels_generated": 0,
+    "version": "source-plan-elevation-correspondence-v1",
+    "view_frame_candidates": 36
+  },
+  "northeast_index": {
+    "png_sha256": "4c99a268d942bdfa9603a1216f30925df46c973b29c0139d4ed9cca757b2f5d7",
+    "indexed_scan_sha256": "a0e4127f8dac8dfe1df63fe6b34cd463e6a7308fcb873665572496d7afc4433e",
+    "gray_sha256": "55512aa99afcb0153c748396fda4cb0e429937ff322f6d066a82d1dec8d6c986",
+    "status": "indexed_jamb_head_correspondence_candidates_only",
+    "checks": 25204,
+    "pairs_per_threshold": [
+      3003,
+      2993
+    ],
+    "consensus_families": 2997,
+    "consensus_edges": 3027,
+    "expanded_scan_status": "scan_budget_withheld",
+    "expanded_scan_reason": "opening_pair_count_budget"
+  },
+  "indexed_match_region_class_counts": {
+    "roof_surface": 180
+  },
+  "output_sha256": {
+    "report.json": "b38c917d152a776fd8f572b83d7f4ea0aa689236444e8b0dc01cf9d3ba6be29f",
+    "correspondences.json": "10627e0772863d814a3fb7241bfa2945ee93f6f05490ec7e3de26e92d07710ec",
+    "facades/building-0000/opening-candidates.json": "a137f11eb75ca562b272dc4f1536cc858ed01a86dea8d0067b4a5c3f6324b2a5"
+  },
+  "physical_openings_verified": 0,
+  "complete_buildings_generated": 0,
+  "training_labels_generated": 0
+}
