@@ -15,6 +15,10 @@ The opt-in [provisional Wicker component review](docs/provisional-component-revi
 places an existing study mesh on dated terrain and mapped paths in two separate
 orientation scenes. These worlds retain explicit estimated placement and zero
 accepted planning components; originals and study evidence must be restored first.
+The additional `examples/wicker-access-review-a-job.json` and `-b-job.json` add
+an explicitly estimated half-step approach. Saved-world access audits check
+headroom, interior connectivity and a grounded spawn, and retain unresolved doors
+in `access-review.json` with a standalone plan/profile diagram.
 
 ## Whole-park batch jobs
 

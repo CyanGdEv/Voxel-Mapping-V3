@@ -121,7 +121,20 @@ def material_block(material):
     return Block('universal_minecraft', material)
 
 
-def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16, foundation_mode='shared'):
+def record_priority(record):
+    """Shared composition order for native export and provisional access planning."""
+    kind, material = record['kind'], record.get('material', MATERIALS.get(record['kind'], 'stone'))
+    priority = PRIORITY.get(kind, 6) * 10
+    if record.get('material_origin') in ('estimated_reconstruction_void', 'estimated_reconstruction_shell'):
+        priority = 89 if material == 'air' else 90
+    if record.get('material_origin') in ('accepted_planning_void', 'accepted_planning_shell'):
+        priority = 95 if material == 'air' else 96
+    if kind in TRANSPORT_KINDS:
+        priority += {'mapped_transport_surface': 1, 'accepted_planning_paving': 2}.get(record.get('material_origin'), 0)
+    return priority
+
+
+def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_000_000, ground_depth=16, foundation_mode='shared', post_export_check=None):
     if report['voxel_size_m'] != 1:
         raise ValueError('Bedrock 1:1 world export requires voxel_size_m = 1')
     model_scale = report.get('model_blocks_per_source_metre', 1)
@@ -184,13 +197,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     # An accepted drawing material must beat generic/mapped paving
                     # at the same block, regardless of input ordering. Keep its
                     # physical layer below buildings, structures and roofs.
-                    priority=PRIORITY.get(kind,6)*10
-                    if record.get('material_origin') in ('estimated_reconstruction_void','estimated_reconstruction_shell'):
-                        priority = 89 if material == 'air' else 90
-                    if record.get('material_origin') in ('accepted_planning_void','accepted_planning_shell'):
-                        priority = 95 if material == 'air' else 96
-                    if kind in TRANSPORT_KINDS:
-                        priority += {'mapped_transport_surface':1,'accepted_planning_paving':2}.get(record.get('material_origin'),0)
+                    priority = record_priority(record)
                     pending.append((x//16,z//16,x%16,y,z%16,material,priority))
                     if kind in ('terrain','lakebed'):
                         bottom = foundation_y if foundation_mode == 'shared' else max(-64,math.floor(chunk_ground[(x//16,z//16)])+y_offset-ground_depth)
@@ -283,6 +290,8 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
                     level.unload()
             finally:
                 level.close()
+        if post_export_check is not None:
+            post_export_check(world_path, y_offset, [spawn_x, top + 2, spawn_z])
         (world_path/'voxel-quality-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
         (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2),encoding='utf-8',newline='\n')
         attribution = [f'Voxel Mapper 3.1 — draft, unverified reconstruction. {model_scale} blocks per source metre.']

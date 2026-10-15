@@ -9,6 +9,7 @@ from shapely.ops import transform
 from .horizontal_grid import OSTN15Transform
 from .reconstruction.local_buildings import rotate_model
 from .shop_foundations import level_pad
+from .shop_shell import opening_columns
 from .shop_slabs import assemble
 from .shop_wall_details import decorate
 from .terrain import Terrain
@@ -19,6 +20,9 @@ VERSION = 'provisional-study-component-v1'
 def prepare(settings, asset, load_json, directory, pins):
     if not isinstance(settings, dict) or settings.get('policy') != 'estimated_review_only':
         raise ValueError('Explicit estimated_review_only component policy required')
+    access = settings.get('access')
+    if access is not None and access != {'policy': 'estimated_half_step_approach_v1'}:
+        raise ValueError('Unsupported provisional access policy')
     model_path = asset(settings.get('model'), directory, 'review_model')
     placement_path = asset(settings.get('placement'), directory, 'review_placement')
     model, placement = load_json(model_path), load_json(placement_path)
@@ -77,7 +81,7 @@ def prepare(settings, asset, load_json, directory, pins):
         extents = [max(v[i] for v in vertices) - min(v[i] for v in vertices) for i in range(3)]
         if math.prod(math.ceil(2 * extent) + 3 for extent in extents) > 2_000_000:
             raise ValueError('Review mesh sampling extent exceeds budget')
-    return {'model': model, 'placement': placement, 'original_pdf_sha256': sorted(pdf_hashes),
+    return {'model': model, 'placement': placement, 'access': access, 'original_pdf_sha256': sorted(pdf_hashes),
             'model_sha256': settings['model']['sha256'], 'placement_sha256': settings['placement']['sha256']}
 
 
@@ -151,6 +155,11 @@ def append_component(component, config, quality, output):
         'anchor_bng_m': anchor_bng, 'anchor_local_m': list(anchor),
         'anchor_snap_offsets_m': [round(v) - v for v in anchor], 'local_tangent_scale': tangent_scale,
         'floor_elevation_m': base, 'floor_snap_offset_m': round(base) - base,
+        'access_openings': [{'id': opening.get('id', str(index)),
+                             'columns_local_xz': [[x + round(anchor[0]), z + round(anchor[1])]
+                                                  for x, z in sorted(opening_columns([opening], 1))],
+                             'declared_height_m': opening['height_metres']}
+                            for index, opening in enumerate(rotated['opening_base_segments'])],
         'floor_datum_verified': False, 'source_geometry_cells': len(cells), 'foundation_cells': len(foundations),
         'emitted_review_voxel_records': len(combined), 'grounding': grounding, 'native_mesh_audit': native,
         'accepted_controls': 0, 'accepted_checkpoints': 0, 'world_placement_eligible': False,

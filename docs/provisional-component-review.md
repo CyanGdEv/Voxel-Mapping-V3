@@ -88,8 +88,79 @@ resolve those source ambiguities.
 Native export checks all written blocks and unwritten air. The comparison also
 reads component materials from the saved native world. This establishes storage
 and rasterization behaviour, not real-world fidelity. Minecraft inspection,
-entrance access, source-to-building identity, floor datum and independent
-controls/checkpoints remain outstanding.
+source-to-building identity, floor datum and independent controls/checkpoints
+remain outstanding. The bounded entrance audit below checks a conservative
+collision route; it does not replace Minecraft inspection.
+
+## Access review and estimated approaches
+
+Review jobs now audit supported standing positions, two metres of headroom,
+doorway-to-interior connectivity and routes from emitted mapped walking surfaces.
+They choose an integer-height spawn with bearing support and clearance instead
+of the previous fixed position above the terrain. Ordinary `world-pilot-v1`
+jobs do not run this review-only stage.
+
+The existing component-review examples add no approach geometry. To opt into
+estimated approach construction, run the additional jobs:
+
+```sh
+python -m voxel_mapper.world_pilot \
+  --job examples/wicker-access-review-a-job.json \
+  --output output/wicker-access-a
+
+python -m voxel_mapper.world_pilot \
+  --job examples/wicker-access-review-b-job.json \
+  --output output/wicker-access-b
+```
+
+These retain the same pinned originals, source study, terrain and both placement
+hypotheses. The explicit extra setting is:
+
+```json
+"access": {"policy": "estimated_half_step_approach_v1"}
+```
+
+Put it inside `review_component`. Other policies or additional acceptance flags
+are rejected. Approach blocks carry `accepted_physical_geometry: false` and a
+separate `review/<component>/approach` feature ID. They add no accepted planning
+components or training labels. A second review feature is not a second building.
+
+The rule uses centred, cardinal movement in a one-block-wide corridor with no
+more than a half-metre change between standing surfaces. It checks swept overhead
+clearance at changes in height. Known full cubes and slabs may bear weight;
+stairs, fences, trapdoors, liquids and unknown shapes conservatively obstruct
+the corridor. This is a simplified player route, not complete Minecraft physics
+or an accessible-design assessment.
+
+The construction search covers at most 32 metres in each horizontal direction,
+32 route columns and 60,000 explored states. It considers level or descending
+routes from existing interior-connected openings to emitted `path`, `sidewalk`,
+`queue` or `plaza` cells. Withheld elevated paths and roads do not become targets.
+It prefers short routes with little fill and adds only full stone or bottom
+stone slabs over emitted terrain. Fill depth is at most 16 blocks. It never
+excavates terrain, covers mapped path cells or alters source building cells.
+Absence of a bounded route is reported, not interpreted as proof that no route
+could exist. Other orientations, higher approaches or different site access
+designs require separate review.
+
+Before packaging, the audit reopens the native LevelDB, reads collision geometry
+and stored spawn metadata, and rechecks the proposed route, threshold, interior
+connection, support and headroom. A proposed route or spawn that fails these
+checks prevents publication of the world. `access-review.json` and the standalone
+plan/profile diagram `access-review.svg` record the result. The same audit is
+embedded in `park.mcworld`'s quality report before its checksum is calculated.
+
+On the retained Wicker scenes, both hypotheses need two bottom stone slabs for a
+seven-metre route from `osm/way/1182076342`. The two broad openings connect through
+the existing interior. The narrow `door-NW` has clear air at its declared column
+but no usable interior connection under this rule. It stays explicitly unresolved;
+the source opening is not widened to make the check pass. The spawn is on mapped
+paving at native coordinates `[11, 69, 3]` for both current exports.
+
+These are estimated access experiments using the unverified **184 m** review
+floor. They establish neither a real-world entrance design nor measured floor
+height. The three elevated paths remain withheld. See the retained validation
+receipt in `docs/evidence/pilot-access/` for hashes and replay results.
 
 ## Review component contract
 
