@@ -173,7 +173,8 @@ def main(argv=None):
         report=prepare(_read(args.config),lambda p:(base/p).resolve(),args.output)
         print(json.dumps({'candidate_reports':report['candidate_reports'],
             'opening_position_matches':report['opening_position_matches'],
-            'indexed_opening_position_matches':report['indexed_opening_position_matches'],'complete_building_specs_generated':0}))
+            'indexed_opening_position_matches':report['indexed_opening_position_matches'],
+            'indexed_matches_near_printed_shop_level':report['indexed_matches_near_printed_shop_level'],'complete_building_specs_generated':0}))
         return
     if args.command == 'propose-footprint':
         from .footprint_hypotheses import prepare

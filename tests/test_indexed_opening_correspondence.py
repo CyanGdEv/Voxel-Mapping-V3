@@ -52,6 +52,31 @@ class IndexedCorrespondenceTests(unittest.TestCase):
         self.assertEqual(result['status'],'correspondence_budget_withheld')
         self.assertEqual(result['views'],[])
 
+    def test_source_relative_height_and_component_overlap_do_not_promote_openings(self):
+        view,projection,frame,region=self.evidence()
+        view['relative_level_reference']={'status':'unverified_source_relative_shop_level',
+            'document_sha256':view['document_sha256'],'page':1,'view_key_candidate':view['view_key_candidate'],
+            'nominal_metres_per_pdf_point_candidate':.1,'datum_y_display_points':152.45,
+            'reference_id':'source-level','source_level_review_sha256':'c'*64,'level_scale_check_available':True}
+        result=compare(view,projection,frame,region,.25,lambda:None,source_regions=[region])
+        self.assertTrue(result['matches'])
+        for match in result['matches']:
+            vertical=match['relative_height_and_component_review']
+            self.assertAlmostEqual(vertical['nominal_bottom_above_printed_shop_level_m'],2.745)
+            self.assertFalse(vertical['bottom_within_shop_level_discovery_tolerance'])
+            self.assertFalse(vertical['physical_floor_role_verified']);self.assertFalse(vertical['vertical_datum_verified'])
+            component=match['component_region_review']
+            self.assertTrue(component['same_view_wall_region_comparisons'][0]['rectangle_covered_by_region_candidate'])
+            self.assertFalse(component['complete_wall_component_scope_verified'])
+            self.assertFalse(match['physical_correspondence_verified'])
+        view['relative_level_reference']['datum_y_display_points']=125.
+        near=compare(view,projection,frame,region,.25,lambda:None)['matches'][0]
+        self.assertTrue(near['relative_height_and_component_review']['bottom_within_shop_level_discovery_tolerance'])
+        self.assertFalse(near['physical_correspondence_verified'])
+        view['relative_level_reference']['document_sha256']='d'*64
+        rejected=compare(view,projection,frame,region,.25,lambda:None)['matches'][0]
+        self.assertEqual(rejected['relative_height_and_component_review']['status'],'withheld_source_relative_level_reference')
+
     def test_wrong_source_missing_hash_skew_and_withheld_index_cannot_match(self):
         for fault in ('source','hash','skew','budget'):
             view,projection,frame,region=self.evidence()

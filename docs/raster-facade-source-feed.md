@@ -211,3 +211,12 @@ pairs, 2,997 consensus families and 3,027 consensus edges in 25,204 charged
 checks. Its expanded channel still reports `opening_pair_count_budget`, while
 the indexed channel completes. This resolves the representation/workload
 blocker for this source; it does not verify any physical opening.
+
+The feed now extracts native elevation level markers and exports
+`elevation-levels.json`. Marker quadrants use the existing clipped-fill
+recovery, preserving source fill and clip identities. Each opening view carries
+a source-hash-linked relative Shop Level hypothesis or an explicit withholding
+status. Level review failure does not remove independent facade/opening
+channels. Printed relative-level agreement remains distinct from physical
+floor identity and survey datum verification. See
+`plan-elevation-correspondence.md` for association bounds and review behavior.

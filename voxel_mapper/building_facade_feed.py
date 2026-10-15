@@ -11,7 +11,7 @@ from PIL import Image
 from shapely.affinity import affine_transform
 from shapely.geometry import shape, mapping, Polygon, box
 
-from . import drawing_faces, plan_elevation_edges
+from . import drawing_faces, plan_elevation_edges,elevation_levels
 from .building_cross_view import _surface
 from .building_spec import build, digest, FRAME
 from .building_raster_views import render, VERSION as RENDER_VERSION
@@ -162,7 +162,7 @@ def prepare(config,resolve,output):
     if root.exists():raise ValueError('Fresh facade evidence directory required')
     root.mkdir(parents=True);results=[]
     atomic_json(root/'contract.json',{'version':VERSION,'config_sha256':digest(config),
-        'opening_scan_version':OPENING_VERSION,'preview_policy':'independent_elevation_regions_only'})
+        'opening_scan_version':OPENING_VERSION,'level_review_version':elevation_levels.VERSION,'preview_policy':'independent_elevation_regions_only'})
     for index,building in enumerate(buildings):
         directory=root/f'building-{index:04d}';partial=directory.with_name(directory.name+'.partial');partial.mkdir()
         result={'building_id':building['building_id'],'revision_scope_claim':building['revision_scope'],
@@ -192,7 +192,7 @@ def prepare(config,resolve,output):
                         raise ValueError('Material anchor record budget exceeded')
                     records.append(json.loads(line))
             if len(records)>4000:raise ValueError('Material anchor record budget exceeded')
-            regions=[];opening_reports=[];seen_windows=set();restoration_widths=[]
+            regions=[];opening_reports=[];seen_windows=set();restoration_widths=[];level_reviews=[]
             for sha,path in paths.items():
                 with pymupdf.open(path) as document:
                     for record in records:
@@ -204,6 +204,22 @@ def prepare(config,resolve,output):
                         page=document[receipt['page']-1];inverse=native_inverse(page)
                         restoration_widths.extend(scope_restoration_widths(receipt,records,page))
                         windows=receipt.get('raster_review',{}).get('atlas',{}).get('artwork_review_windows',[])
+                        level_scopes=[]
+                        for window in windows:
+                            scoped=[r for r in records if r['document_sha256']==sha and r['page']==receipt['page']
+                                and r.get('raster_region_review',{}).get('artwork_review_window_ids')==[window['id']]
+                                and r.get('drawing_view_candidate',{}).get('view_key_candidate')]
+                            scoped_keys={tuple(r['drawing_view_candidate']['view_key_candidate']) for r in scoped}
+                            units={r['drawing_view_candidate']['nominal_metres_per_pdf_point_candidate'] for r in scoped}
+                            if len(scoped_keys)==1 and len(units)==1:
+                                level_scopes.append({'view_key_candidate':list(next(iter(scoped_keys))),
+                                    'display_bounds':list(pymupdf.Rect(window['bbox_page_points'])*page.rotation_matrix),
+                                    'nominal_metres_per_pdf_point_candidate':next(iter(units))})
+                        try:level_review=elevation_levels.extract(page,sha,receipt['page'],level_scopes)
+                        except ValueError as error:
+                            level_review={'version':elevation_levels.VERSION,'document_sha256':sha,'page':receipt['page'],
+                                'status':'withheld_native_level_review','reason':str(error),'records':[]}
+                        level_reviews.append(level_review)
                         for window in windows:
                             view_records=[r for r in records if r['document_sha256']==sha and r['page']==receipt['page']
                                 and r.get('raster_region_review',{}).get('artwork_review_window_ids')==[window['id']]
@@ -239,6 +255,7 @@ def prepare(config,resolve,output):
                             opening_report={'document_sha256':sha,'page':receipt['page'],
                                 'view_key_candidate':list(next(iter(keys))),
                                 'view_scope_verified':False,'render_receipt_sha256':digest(rendered),'scan':detected,
+                                'relative_level_reference':elevation_levels.relative_reference(level_review,list(next(iter(keys)))),
                                 'adjacent_bay_review_scan':adjacent,'indexed_opening_scan':indexed,
                                 'indexed_scan_sha256':digest(indexed),'source_png_sha256':rendered['png_sha256'],
                                 'pixel_edge_to_pdf_native_matrix':rendered['pixel_edge_to_pdf_native_matrix'],
@@ -256,6 +273,7 @@ def prepare(config,resolve,output):
                     'spec_sha256':digest(spec),'export':exported,'preview_scope':spec['preview_scope']})
             atomic_json(partial/'regions.json',{'version':VERSION,'regions':regions})
             atomic_json(partial/'opening-candidates.json',{'version':OPENING_VERSION,'views':opening_reports})
+            atomic_json(partial/'elevation-levels.json',{'version':elevation_levels.VERSION,'pages':level_reviews})
             atomic_json(partial/'material-boundary-alternatives.json',{'version':'source-stroke-restoration-v2',
                 'view_scoped_reviews':restoration_widths,
                 'pages':[{'document_sha256':p['document_sha256'],'page':p['page'],

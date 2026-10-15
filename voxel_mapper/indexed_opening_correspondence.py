@@ -3,12 +3,55 @@ import math
 import re
 
 import pymupdf
-from shapely.geometry import shape
+from shapely.geometry import shape,box
 
 from .raster_opening_scan import width_candidates
 
 
-def compare(view,projection,frame,region,tolerance,charge):
+def relative_height_review(view,region,pixels,display,factor,tolerance):
+    reference=view.get('relative_level_reference',{})
+    result={'status':'withheld_source_relative_level_reference',
+        'comparison_reference_component_class_candidate':region['component_class_candidate'],
+        'complete_wall_component_scope_verified':False,'physical_floor_role_verified':False,
+        'vertical_datum_verified':False,'physical_opening_verified':False}
+    if reference.get('status')!='unverified_source_relative_shop_level':return result
+    if (reference.get('document_sha256')!=view.get('document_sha256') or reference.get('page')!=view.get('page')
+            or reference.get('view_key_candidate')!=view.get('view_key_candidate')
+            or reference.get('nominal_metres_per_pdf_point_candidate')!=factor):return result
+    top=pixels[1]*display.d+display.f;bottom=pixels[3]*display.d+display.f
+    datum=reference['datum_y_display_points'];base=(datum-bottom)*factor;head=(datum-top)*factor
+    result.update(status='unverified_source_relative_height_and_component',
+        source_level_reference_id=reference['reference_id'],source_level_review_sha256=reference['source_level_review_sha256'],
+        nominal_bottom_above_printed_shop_level_m=base,nominal_top_above_printed_shop_level_m=head,
+        nominal_jamb_run_height_m=(bottom-top)*factor,
+        bottom_within_shop_level_discovery_tolerance=abs(base)<=tolerance,
+        level_scale_check_available=reference['level_scale_check_available'])
+    return result
+
+
+def component_region_review(view,region,pixels,display,source_regions,charge):
+    rectangle=box(pixels[0]*display.a+display.e,pixels[1]*display.d+display.f,
+        pixels[2]*display.a+display.e,pixels[3]*display.d+display.f)
+    if len(source_regions)>128:raise ValueError('Bounded component region inventory required')
+    walls=[]
+    for source in source_regions:
+        charge()
+        if (source.get('document_sha256')!=view['document_sha256'] or source.get('page')!=view['page']
+                or source.get('view_key_candidate')!=view['view_key_candidate']
+                or source.get('component_class_candidate')!='wall_face'):continue
+        polygon=shape(source['display_geometry'])
+        walls.append({'source_region_id':source['id'],
+            'rectangle_intersection_area_fraction':polygon.intersection(rectangle).area/rectangle.area,
+            'rectangle_covered_by_region_candidate':polygon.covers(rectangle),
+            'physical_wall_identity_verified':False})
+    return {'status':'withheld_complete_physical_wall_scope',
+        'comparison_reference_component_class_candidate':region['component_class_candidate'],
+        'same_view_wall_region_comparisons':walls,'complete_wall_component_scope_verified':False,
+        'physical_opening_verified':False,
+        'limitation':'Partial material paint regions and their holes do not establish complete wall or opening extent.'}
+
+
+def compare(view,projection,frame,region,tolerance,charge,*,source_regions=()):
     result={'frame_id':frame['id'],'source_gap_id':projection['source_gap_id'],'region_id':region['id'],
         'status':'withheld_missing_or_budgeted_opening_index','width_family_candidates':0,'matches':[],
         'physical_correspondence_verified':False}
@@ -53,5 +96,7 @@ def compare(view,projection,frame,region,tolerance,charge):
                 'width_residual_m':width_residual,'maximum_position_residual_m':residual,
                 'region_component_class_candidate':region['component_class_candidate'],
                 'facade_width_within_discovery_tolerance':abs(frame['projected_extent_width_m']-region_width)<=tolerance,
+                'relative_height_and_component_review':relative_height_review(view,region,pixels,display,factor,tolerance),
+                'component_region_review':component_region_review(view,region,pixels,display,source_regions,charge),
                 'floor_or_vertical_datum_verified':False,'physical_correspondence_verified':False})
     result['status']='indexed_width_and_position_query_hypotheses_only';return result
