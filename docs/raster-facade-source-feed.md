@@ -187,3 +187,27 @@ alternative, alongside exact anchor-linked view/scale width summaries. The
 raster contract is now v5. Cross-view width comparisons and ambiguity reports
 are documented in `plan-elevation-correspondence.md`; they do not promote the
 alternatives into ordinary facade regions or opening matches.
+
+Opening scan v3 adds an indexed representation beside the existing expanded
+and adjacent-bay channels. Each threshold stores original jamb groups once;
+head-supported pairs reference their group indices. Endpoint buckets find all
+threshold pairs whose four bounds agree within the existing two-pixel rule.
+Consensus families retain the first-threshold pair and every matching
+second-threshold pair. Width bins reference these families for bounded queries.
+No pair is selected, merged, snapped or semantically promoted.
+
+Expanded output retains its 512-pair/candidate limits. Indexed storage allows
+at most 8,192 pair references per threshold, with the same 512-group and
+100,000-check limits. Endpoint-bin lookups and consensus comparisons charge
+that work budget. Any failure withholds the whole index. Both threshold
+inventories remain available, including pairs without threshold consensus.
+The feed records the PNG hash, indexed-scan hash and original pixel-edge to
+native affine with each view. Small-fixture expansion tests verify that the
+index reproduces every original threshold correspondence, including different
+bounds at the two thresholds.
+
+The fresh northeast original-source run retained 3,003 and 2,993 threshold
+pairs, 2,997 consensus families and 3,027 consensus edges in 25,204 charged
+checks. Its expanded channel still reports `opening_pair_count_budget`, while
+the indexed channel completes. This resolves the representation/workload
+blocker for this source; it does not verify any physical opening.

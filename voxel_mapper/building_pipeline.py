@@ -172,7 +172,8 @@ def main(argv=None):
         base=Path(args.config).resolve().parent
         report=prepare(_read(args.config),lambda p:(base/p).resolve(),args.output)
         print(json.dumps({'candidate_reports':report['candidate_reports'],
-            'opening_position_matches':report['opening_position_matches'],'complete_building_specs_generated':0}))
+            'opening_position_matches':report['opening_position_matches'],
+            'indexed_opening_position_matches':report['indexed_opening_position_matches'],'complete_building_specs_generated':0}))
         return
     if args.command == 'propose-footprint':
         from .footprint_hypotheses import prepare

@@ -183,3 +183,22 @@ width in this trial; their potentially partial extent prevents treating that
 alone as a physical rejection. No separator, opening, footprint or complete
 building was accepted. Source and output hashes are recorded in
 `evidence/wicker-restoration-view-ambiguity-2026-10-15.json`.
+
+Indexed opening evidence is queried separately from expanded opening matches.
+For every eligible plan gap and same-view source region, the original
+pixel/native/display transforms must establish a positive axis-aligned
+mapping. Document, page, view, PNG hash and indexed-scan hash bindings must be
+present. A width-bin query retains every compatible consensus family; the
+existing width and both horizontal-endpoint residual checks then retain both
+elevation-X orientations where supported. Query work shares the candidate's
+existing whole-candidate budget, with all partial views discarded on exhaustion.
+Source family and threshold-pair indices remain in every match. No vertical
+sill/head datum or physical door/window identity is inferred.
+
+The fresh original-source run produced 180 indexed width/horizontal-position
+matches across six competing footprints, all relative to a roof-class source
+region. Expanded opening matches remain zero. These are competing drafting
+hypotheses: component identity and independent vertical alignment are still
+required before any could become a physical opening. No complete building or
+training label was generated. The original-source receipt is
+`evidence/wicker-indexed-openings-2026-10-15.json`.

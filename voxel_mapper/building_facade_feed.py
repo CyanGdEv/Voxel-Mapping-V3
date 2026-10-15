@@ -219,7 +219,8 @@ def prepare(config,resolve,output):
                             with Image.open(crop_dir/'view.png') as image:
                                 rgb=np.asarray(image.convert('RGB'))
                                 gray=np.rint(rgb.astype(float)@np.array([.299,.587,.114])).astype('uint8')
-                            detected=scan(gray);adjacent=scan(gray,pair_scope='adjacent_compatible_jambs');matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
+                            detected=scan(gray);adjacent=scan(gray,pair_scope='adjacent_compatible_jambs')
+                            indexed=scan(gray,representation='indexed');matrix=pymupdf.Matrix(rendered['pixel_edge_to_pdf_native_matrix'])
                             factors={r['drawing_view_candidate']['nominal_metres_per_pdf_point_candidate'] for r in view_records}
                             factor=next(iter(factors)) if len(factors)==1 else None
                             for candidate in [*detected['candidates'],*adjacent['candidates']]:
@@ -238,7 +239,9 @@ def prepare(config,resolve,output):
                             opening_report={'document_sha256':sha,'page':receipt['page'],
                                 'view_key_candidate':list(next(iter(keys))),
                                 'view_scope_verified':False,'render_receipt_sha256':digest(rendered),'scan':detected,
-                                'adjacent_bay_review_scan':adjacent,
+                                'adjacent_bay_review_scan':adjacent,'indexed_opening_scan':indexed,
+                                'indexed_scan_sha256':digest(indexed),'source_png_sha256':rendered['png_sha256'],
+                                'pixel_edge_to_pdf_native_matrix':rendered['pixel_edge_to_pdf_native_matrix'],
                                 'adjacent_bay_candidates_are_complete_openings':False}
                             atomic_json(crop_dir/'opening-scan.json',opening_report);opening_reports.append(opening_report)
             groups={}
