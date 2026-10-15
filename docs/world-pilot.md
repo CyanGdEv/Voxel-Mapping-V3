@@ -111,3 +111,72 @@ records the real trial and replay: 7,936 terrain, 178 road and 90 path voxel
 records, 32 native chunks, zero reported generation errors and identical voxel
 hashes. The full suite passed 1,410 tests. The 213,433 composed blocks include
 artificial foundations; they are not a count of reconstructed park objects.
+
+## Explicit OSTN15 placement and saved-world overlay
+
+Use the second retained job to remove dependence on which datum grids happen to
+be installed in the runtime:
+
+```sh
+python -m voxel_mapper.world_pilot \
+  --job examples/alton-world-pilot-ostn15-job.json \
+  --output output/alton-world-pilot-v2
+```
+
+This job pins a 3,250-byte regional window of the original OSTN15 grid. It retains
+the original sample positions, all four bands, units and grid metadata without
+resampling. The provenance records the complete upstream grid SHA256, exact
+window, sample hash and nine full-grid/crop equivalence checks. The operation is
+explicit: local WGS84-based projection to longitude/latitude, inverse horizontal
+grid shift, then British National Grid projection. It does not use global PROJ
+grid search, silently select a Helmert alternative, or change ODN heights. A
+missing/corrupt grid, unsupported raster CRS or point outside the grid fails the
+build rather than exporting a fallback world.
+
+The EPSG:7710 WGS84 approximation has advertised one-metre operation accuracy.
+This is not independent validation of OSM, planning controls, source epochs or
+the resulting park. At the retained sample longitude/latitude, the former
+two-metre operation and the explicit grid operation differ horizontally by
+about 1.953 m. Sampling different terrain pixels can change generated ground
+heights; this is not a vertical datum correction. Independent physical controls
+and checkpoints are still required for planning-component acceptance.
+
+Optional job `horizontal_operation` contains `method: ostn15-bng-v1`, plus pinned
+`grid` and `provenance` descriptors relative to the job. This operation applies
+to every configured elevation raster, which must use EPSG:27700. A raster-level
+operation cannot bypass the job's input pinning. Other jobs retain their original
+operation selection. The cropped grid is distributed under the retained
+[upstream notice and BSD terms](evidence/world-pilot/OSTN15-LICENSE.txt).
+
+To reproduce the grid retention from the original checksum-pinned download:
+
+```sh
+PYTHONPATH=. python scripts/retain_alton_ostn15_grid.py \
+  --source /absolute/path/uk_os_OSTN15_NTv2_OSGBtoETRS.tif \
+  --output /absolute/path/fresh-grid-output
+```
+
+Every exported pilot now also writes `placement-comparison.svg` and
+`placement-comparison.json`. The overlay shows projected source boundaries in
+blue, saved matching materials in orange and overridden materials in magenta,
+over the generated terrain. JSON retains per-feature emitted/material-match
+counts and block-centre distances outside projected geometry. Native coordinates
+are read with the export's height offset and northing sign convention. Shared
+materials do not prove unique feature provenance. Rasterization distances are
+not survey residuals, and an overlap under composition is not automatically a
+reconstruction fault.
+
+The original Smiler existing/proposed planning PDF requests were checked again
+for this iteration. HTTPS returned HTTP 503; the pinned existing-plan HTTP
+fallback timed out. The retained source-check receipt and v2 review task record
+that failure. No inaccessible PDF, proposed sketch, missing landmark or learned
+score was used to authorize a real planning component. The updated world remains
+a terrain/path prototype, with the first planning-component placement pending.
+
+The [v2 validation receipt](evidence/world-pilot/alton-pinned-placement-validation-2026-10-15.json)
+records 1,416 passing tests, identical source/native comparison and voxel hashes
+on a fresh replay, zero missing terrain requests, and the 32-chunk native export.
+Of 268 emitted road/path records, 261 match saved materials and seven are
+overridden under the existing composition rules. No real planning component or
+complete building was added. The SVG overlay was inspected; Minecraft visual
+inspection remains outstanding.

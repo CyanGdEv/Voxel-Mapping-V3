@@ -1,0 +1,126 @@
+{
+  "attribution": "Derived from work by Ordnance Survey via PROJ-data.",
+  "crop_bounds_osgb36_degrees": [
+    -2.008333333333333,
+    52.92916666666667,
+    -1.791666666666666,
+    53.0375
+  ],
+  "crop_bytes": 3250,
+  "crop_sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117",
+  "derivation": "Exact source sample window; no resampling. All four bands, units, coordinates and source metadata retained.",
+  "independent_placement_accuracy": "not_verified",
+  "license": "BSD-2-Clause",
+  "license_reference": "https://raw.githubusercontent.com/OSGeo/PROJ-data/master/uk_os/uk_os_README.txt",
+  "operation_equivalence_checks": [
+    {
+      "crop_error_m": 0.0,
+      "original_bng_m": [
+        407065.42587190005,
+        343298.95694277476
+      ],
+      "wgs84": [
+        -1.8962,
+        52.987
+      ]
+    },
+    {
+      "crop_error_m": 0.0,
+      "original_bng_m": [
+        407065.38071584183,
+        343330.10550111486
+      ],
+      "wgs84": [
+        -1.8962,
+        52.98728
+      ]
+    },
+    {
+      "crop_error_m": 0.0,
+      "original_bng_m": [
+        407065.32910870085,
+        343365.7038553043
+      ],
+      "wgs84": [
+        -1.8962,
+        52.9876
+      ]
+    },
+    {
+      "crop_error_m": 5.820766091346741e-11,
+      "original_bng_m": [
+        407132.55810100934,
+        343299.0538643418
+      ],
+      "wgs84": [
+        -1.8952,
+        52.987
+      ]
+    },
+    {
+      "crop_error_m": 5.820766091346741e-11,
+      "original_bng_m": [
+        407132.5125101812,
+        343330.20242216287
+      ],
+      "wgs84": [
+        -1.8952,
+        52.98728
+      ]
+    },
+    {
+      "crop_error_m": 5.820766091346741e-11,
+      "original_bng_m": [
+        407132.4604061583,
+        343365.8007757575
+      ],
+      "wgs84": [
+        -1.8952,
+        52.9876
+      ]
+    },
+    {
+      "crop_error_m": 5.820766091346741e-11,
+      "original_bng_m": [
+        407199.6903295791,
+        343299.1517215985
+      ],
+      "wgs84": [
+        -1.8942,
+        52.987
+      ]
+    },
+    {
+      "crop_error_m": 5.820766091346741e-11,
+      "original_bng_m": [
+        407199.644303981,
+        343330.30027889565
+      ],
+      "wgs84": [
+        -1.8942,
+        52.98728
+      ]
+    },
+    {
+      "crop_error_m": 0.0,
+      "original_bng_m": [
+        407199.59170307615,
+        343365.898631892
+      ],
+      "wgs84": [
+        -1.8942,
+        52.9876
+      ]
+    }
+  ],
+  "original_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+  "original_url": "https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+  "sample_values_sha256": "80b153be4b1cded797e0a4db928915ad09cbc11710eecf1c8796ac7c3a6422c7",
+  "vertical_transformation": false,
+  "window_columns_rows": [
+    420,
+    956,
+    13,
+    13
+  ]
+}

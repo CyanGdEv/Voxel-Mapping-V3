@@ -6,6 +6,11 @@ paths/roads. The [pilot guide](docs/world-pilot.md) explains input checksums,
 planning readiness decisions and replay. Pending planning components stay in the
 report; this example adds no verified planning building or ride geometry.
 
+The additional `examples/alton-world-pilot-ostn15-job.json` pins an exact regional
+OSTN15 grid for explicit terrain placement. Pilot exports also include a
+source-boundary/saved-material comparison overlay; independent planning controls
+and detailed structure acceptance remain separate requirements.
+
 ## Whole-park batch jobs
 
 The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,

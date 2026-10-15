@@ -78,11 +78,33 @@ def _prepare(job_path):
         raise ValueError('Pilot requires terrain with surface emission enabled')
     if config.get('point_cloud_evidence'):
         raise ValueError('Point-cloud inputs are not supported by this pilot contract')
+    operation = job.get('horizontal_operation')
+    grid = None
+    if operation is not None:
+        from .horizontal_grid import VERSION as GRID_VERSION, ORIGINAL_SHA256, SOURCE_URL
+        if not isinstance(operation, dict) or operation.get('method') != GRID_VERSION:
+            raise ValueError('Unsupported pilot horizontal operation')
+        grid_path = asset(operation.get('grid'), job_path.parent, 'horizontal_grid')
+        proof_path = asset(operation.get('provenance'), job_path.parent, 'horizontal_grid_provenance')
+        proof = _json(proof_path)
+        if (proof.get('original_sha256') != ORIGINAL_SHA256
+                or proof.get('crop_sha256') != operation['grid']['sha256']):
+            raise ValueError('Horizontal grid provenance mismatch')
+        grid = {'method': GRID_VERSION, 'path': str(grid_path), 'sha256': operation['grid']['sha256']}
+        if any(source.get('id') == 'pilot-ostn15-grid' for source in config.get('sources', [])):
+            raise ValueError('Reserved pilot datum-grid source identity')
+        config.setdefault('sources', []).append({'id': 'pilot-ostn15-grid', 'kind': 'datum_grid',
+            'url': SOURCE_URL, 'license': 'BSD-2-Clause', 'sha256': grid['sha256'],
+            'attribution': 'Derived from Ordnance Survey OSTN15 via PROJ-data; exact regional grid samples.'})
     for key in ('terrain', 'surface', 'surface_fallback', 'bathymetry'):
         if config.get(key):
             specification = config[key]
+            if specification.get('horizontal_operation'):
+                raise ValueError('Declare horizontal operations in the pinned pilot job')
             descriptor = {'file': specification.get('path'), 'sha256': specification.get('sha256')}
             specification['path'] = str(asset(descriptor, config_path.parent, key))
+            if grid:
+                specification['horizontal_operation'] = dict(grid)
     sources = config.get('sources', [])
     if (not isinstance(sources, list) or any(not isinstance(s, dict) or not s.get('id') for s in sources)
             or len({s['id'] for s in sources}) != len(sources)):
@@ -172,6 +194,10 @@ def run(job_path, output):
         if quality['voxel_records']:
             world = export_world(staging / 'voxels.jsonl', staging, quality, job['name'], max_blocks=4_000_000)
             quality['world'] = world
+        comparison = None
+        if world:
+            from .pilot_comparison import write as compare_placement
+            comparison = compare_placement(staging, quality, world)
         _write(staging / 'quality-report.json', quality)
         report = {
             'version': VERSION, 'name': job['name'],
@@ -182,6 +208,7 @@ def run(job_path, output):
                                      'status': 'voxelized_for_export' if counts[feature['id']] else 'no_voxels'}
                                     for feature in collection['features']],
             'terrain': quality['terrain'], 'issues': quality['issues'],
+            'placement_comparison': comparison,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
                            'minecraft_visual_inspection': 'not_performed',
@@ -195,6 +222,7 @@ def run(job_path, output):
                        'Planning records withheld or producing no voxels: ' + str(readiness['planning_components_withheld']), '',
                        'Reported generation errors: ' + str(report['generation_errors']),
                        'See pilot-report.json for missing evidence and quality-report.json for generation decisions.',
+                       'Open placement-comparison.svg to compare projected source boundaries and saved block materials.' if comparison else '',
                        'Voxel counts describe inputs to composition; overlapping records can share the same final block.',
                        'Native block readback does not establish visual fidelity, a complete building or surveyed accuracy.']
         if world:
@@ -207,6 +235,8 @@ def run(job_path, output):
                 raise ValueError('Pilot input changed during generation: ' + path.name)
         artifacts = ['inputs.json', 'resolved-config.json', 'voxels.jsonl', 'features-local.geojson',
                      'quality-report.json', 'README.txt'] + (['park.mcworld'] if world else [])
+        if comparison:
+            artifacts += ['placement-comparison.json', 'placement-comparison.svg']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
         _write(staging / 'pilot-report.json', report)
         staging.rename(output)
