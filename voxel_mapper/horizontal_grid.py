@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 
 from pyproj import CRS, Transformer
+from pyproj.enums import TransformDirection
 import rasterio
 
 VERSION = 'ostn15-bng-v1'
@@ -53,6 +54,10 @@ class OSTN15Transform:
         # errcheck is mandatory: points outside the retained grid cannot select
         # a lower-accuracy operation or receive an identity transformation.
         return self.grid_to_bng.transform(lon, lat, errcheck=True)
+
+    def inverse(self, easting, northing):
+        lon, lat = self.grid_to_bng.transform(easting, northing, direction=TransformDirection.INVERSE, errcheck=True)
+        return self.local_to_wgs84.transform(lon, lat, direction=TransformDirection.INVERSE, errcheck=True)
 
     def get_last_used_operation(self):
         return self

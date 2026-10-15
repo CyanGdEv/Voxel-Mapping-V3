@@ -1,0 +1,94 @@
+{
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "bbox": [
+    -1.889617078095083,
+    52.98905146868848,
+    -1.8879460425857328,
+    52.99005980480418
+  ],
+  "excluded_generic_features": [
+    {
+      "id": "osm/way/70689589",
+      "kind": "building",
+      "name": "The Burger Kitchen"
+    },
+    {
+      "id": "osm/way/106842138",
+      "kind": "water",
+      "name": null
+    },
+    {
+      "id": "osm/way/107079976",
+      "kind": "water",
+      "name": null
+    },
+    {
+      "id": "osm/way/107259804",
+      "kind": "water",
+      "name": null
+    },
+    {
+      "id": "osm/way/113576007",
+      "kind": "building",
+      "name": "Sharkbait Reef"
+    },
+    {
+      "id": "osm/way/113576010",
+      "kind": "building",
+      "name": "Eastern Express"
+    },
+    {
+      "id": "osm/way/113576011",
+      "kind": "building",
+      "name": "Courtyard Tavern BBQ"
+    },
+    {
+      "id": "osm/way/834919978",
+      "kind": "building",
+      "name": "Wicker Man Shop"
+    },
+    {
+      "id": "osm/way/834919982",
+      "kind": "building",
+      "name": null
+    },
+    {
+      "id": "osm/way/834919983",
+      "kind": "building",
+      "name": null
+    }
+  ],
+  "license": "ODbL-1.0",
+  "nodes": 746,
+  "response_bytes": 157162,
+  "response_sha256": "f6be21c8d7ecb332fac740791600ce0b09a21a5edcb9dd640505e50cfd39d6bb",
+  "retained_surface_features": 13,
+  "skipped": [
+    {
+      "id": 7673655,
+      "reason": "missing relation member geometry"
+    },
+    {
+      "id": 17436869,
+      "reason": "missing outer ring or inner outside outer"
+    },
+    {
+      "id": 834919977,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691421,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691422,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691423,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    }
+  ],
+  "url": "https://api.openstreetmap.org/api/0.6/map",
+  "ways": 32
+}

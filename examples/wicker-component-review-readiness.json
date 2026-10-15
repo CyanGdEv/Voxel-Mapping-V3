@@ -1,0 +1,25 @@
+[
+  {
+    "evidence": [
+      {
+        "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+        "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+      },
+      {
+        "file": "../evidence/wicker-shop-context-review.json",
+        "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+      },
+      {
+        "file": "../evidence/wicker-shop-model-lidar-review.json",
+        "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+      }
+    ],
+    "id": "wicker-physical-placement",
+    "required_evidence": [
+      "Independent horizontal controls and checkpoints, assembly identity and source handedness.",
+      "Independent floor datum/height and as-built revision/state.",
+      "Source material/foundation evidence; current palette and grounding remain illustrative."
+    ],
+    "title": "Wicker shop physical placement remains unverified"
+  }
+]

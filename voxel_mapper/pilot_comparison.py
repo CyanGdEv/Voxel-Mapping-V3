@@ -53,6 +53,8 @@ def write(output, quality, world):
                            for identifier, counter in sorted(counts.items())],
               'planning_features_with_emitted_records': sum(identifier.startswith('planning/') and bool(counter)
                                                             for identifier, counter in counts.items()),
+              'provisional_review_features_with_emitted_records': sum(identifier.startswith('review/') and bool(counter)
+                                                                      for identifier, counter in counts.items()),
               'independent_placement_accuracy': 'not_verified',
               'limitations': ['Material agreement can be shared by overlapping features; it does not prove unique provenance.',
                               'Block-centre distance is a rasterization diagnostic, not source registration error.',

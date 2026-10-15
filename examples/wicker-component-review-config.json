@@ -1,0 +1,36 @@
+{
+  "bbox": [
+    -1.889617078095083,
+    52.98905146868848,
+    -1.8879460425857328,
+    52.99005980480418
+  ],
+  "max_area_m2": 40000,
+  "max_column_checks": 1000000,
+  "max_voxels": 1000000,
+  "sources": [
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "id": "ea-wicker-dtm",
+      "kind": "terrain",
+      "license": "OGL-UK-3.0",
+      "survey_date": "2022-01-05",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540"
+    },
+    {
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "id": "osm",
+      "kind": "osm",
+      "license": "ODbL-1.0",
+      "url": "https://www.openstreetmap.org/copyright"
+    }
+  ],
+  "terrain": {
+    "path": "../docs/evidence/pilot-review/ea-national-dtm.tif",
+    "sha256": "aff1e68ba0d2674c00df4780b74f7f40b80af1f8d7dec356e1a619e22b8be96d",
+    "source_id": "ea-wicker-dtm",
+    "units": "m",
+    "vertical_datum": "ODN"
+  },
+  "voxel_size_m": 1
+}
