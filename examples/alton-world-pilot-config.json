@@ -1,0 +1,42 @@
+{
+  "bbox": [
+    -1.8961639809521875,
+    52.987008151254315,
+    -1.8942559712390854,
+    52.98755816667691
+  ],
+  "max_area_m2": 40000,
+  "max_column_checks": 1000000,
+  "max_voxels": 1000000,
+  "sources": [
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "id": "ea-pilot-dtm",
+      "kind": "terrain",
+      "license": "OGL-UK-3.0",
+      "resolution_m": 1,
+      "sha256": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453",
+      "survey_date": "2022-01-05",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "vertical_datum": "ODN"
+    },
+    {
+      "acquisition_receipt_sha256": "eb049a8c6264ca53beabdc54a5e878e60cc5f9675563fbd51a7a627753afc368",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "id": "osm",
+      "kind": "osm",
+      "license": "ODbL-1.0",
+      "snapshot_sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724",
+      "url": "https://www.openstreetmap.org/copyright"
+    }
+  ],
+  "terrain": {
+    "emit_surface": true,
+    "path": "../docs/evidence/smiler-review/ea-national-dtm.tif",
+    "sha256": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453",
+    "source_id": "ea-pilot-dtm",
+    "units": "m",
+    "vertical_datum": "ODN"
+  },
+  "voxel_size_m": 1
+}

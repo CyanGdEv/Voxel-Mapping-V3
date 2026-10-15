@@ -1,0 +1,18 @@
+[
+  {
+    "evidence": [
+      {
+        "file": "../docs/evidence/smiler-review/smiler-audit.json",
+        "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+      }
+    ],
+    "id": "smiler-planning-structure",
+    "required_evidence": [
+      "Accepted horizontal registration using fixed physical controls and independent checkpoints.",
+      "Confirmed source revision, reuse permission and existing/as-built identity for each selected planning component.",
+      "Source-bound footprint, component dimensions and vertical references matching the terrain datum.",
+      "For ride geometry: identified branches, heights and roll; retained 2D route and DSM surfaces do not supply these."
+    ],
+    "title": "Planning-derived structures within the pilot area"
+  }
+]

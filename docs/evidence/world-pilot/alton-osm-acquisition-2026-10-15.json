@@ -1,0 +1,84 @@
+{
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "bbox": [
+    -1.8961639809521875,
+    52.987008151254315,
+    -1.8942559712390854,
+    52.98755816667691
+  ],
+  "endpoint": "https://api.openstreetmap.org/api/0.6/map",
+  "excluded_features": [
+    {
+      "id": "osm/way/70684266",
+      "name": null,
+      "reason": "Generic building extrusion excluded; planning-derived physical structure remains unverified."
+    },
+    {
+      "id": "osm/way/453955411",
+      "name": "The Smiler Station",
+      "reason": "Generic building extrusion excluded; planning-derived physical structure remains unverified."
+    },
+    {
+      "id": "osm/way/453957469",
+      "name": "The Marmaliser",
+      "reason": "Generic building extrusion excluded; planning-derived physical structure remains unverified."
+    }
+  ],
+  "license": "ODbL-1.0",
+  "nodes": 715,
+  "parser": "voxel_mapper.cli.parse_osm after XML node/way/member expansion",
+  "previous_provider_failures": [
+    "Overpass POST returned HTTP 502/500; GET returned timeout/500. Main OSM map API snapshot acquired successfully."
+  ],
+  "raw_response_in_repository": false,
+  "raw_response_sha256": "92230467ff8da3cc04618226695f780d9b426ed248f8b148ceaf3e36bc66734a",
+  "request_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.8961639809521875%2C52.987008151254315%2C-1.8942559712390854%2C52.98755816667691",
+  "retained_feature_count": 7,
+  "retained_features_sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724",
+  "retrieved_utc": "2026-10-15T20:05:56.717630+00:00",
+  "selection": "Mapped ground-level road and path candidates only; no track, generic building volumes or reconstructed planning components.",
+  "skipped": [
+    {
+      "id": 7696078,
+      "reason": "missing relation member geometry"
+    },
+    {
+      "id": 453955410,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823137,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823138,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823139,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823140,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823141,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 597823142,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1074706894,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1075009268,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    }
+  ],
+  "version": "retained-osm-pilot-snapshot-v1",
+  "ways": 23
+}

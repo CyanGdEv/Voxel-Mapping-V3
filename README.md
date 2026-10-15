@@ -1,3 +1,11 @@
+## Small-area world prototype
+
+Run `python -m voxel_mapper.world_pilot --job examples/alton-world-pilot-job.json --output output/alton-world-pilot`
+to generate an offline draft Bedrock world from retained Alton terrain and mapped
+paths/roads. The [pilot guide](docs/world-pilot.md) explains input checksums,
+planning readiness decisions and replay. Pending planning components stay in the
+report; this example adds no verified planning building or ride geometry.
+
 ## Whole-park batch jobs
 
 The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,

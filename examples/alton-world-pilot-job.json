@@ -1,0 +1,26 @@
+{
+  "config": {
+    "file": "alton-world-pilot-config.json",
+    "sha256": "60bf1192e44748f11928308bbde71a7ba30c556ab31d14630673794ada540e9e"
+  },
+  "evidence": [
+    {
+      "file": "../docs/evidence/world-pilot/alton-osm-acquisition-2026-10-15.json",
+      "sha256": "eb049a8c6264ca53beabdc54a5e878e60cc5f9675563fbd51a7a627753afc368"
+    },
+    {
+      "file": "../docs/evidence/smiler-review/smiler-audit.json",
+      "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+    }
+  ],
+  "features": {
+    "file": "../docs/evidence/world-pilot/alton-mapped-surfaces.geojson",
+    "sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724"
+  },
+  "name": "Alton small-area terrain and paths pilot",
+  "planning_review": {
+    "file": "alton-world-pilot-review.json",
+    "sha256": "5bb9c11de2d2c4a067cc6878f03a658f2d3b35246b418e4f54cee74035bcda0f"
+  },
+  "version": "world-pilot-v1"
+}
