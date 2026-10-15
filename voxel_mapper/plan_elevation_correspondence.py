@@ -136,7 +136,38 @@ def trace_paint_boundaries(native, frame, unit, layout, charge, axis_tolerance=5
         'source_geometry_changed':False,'complete_wall_extent_verified':False}
 
 
-def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layout,options=None,*,paint_fills=None):
+def compare_restoration_widths(frame,view_key,reviews,tolerance,charge):
+    comparisons=[];ambiguities=[]
+    if len(reviews)>32:raise ValueError('Bounded restoration review inventory required')
+    for review in reviews:
+        charge()
+        if review.get('status')!='unverified_exact_anchor_view_scope' or review.get('view_key_candidate')!=view_key:continue
+        rows=review['region_widths']
+        if len(rows)>4096:raise ValueError('Bounded restoration region inventory required')
+        groups={}
+        for row in rows:
+            charge();width=row['region_width_m']
+            if type(width) not in (int,float) or not math.isfinite(width) or not 0<width<=20000:
+                raise ValueError('Bounded nominal restoration width required')
+            residual=frame['projected_extent_width_m']-width
+            comparison={'frame_id':frame['id'],'source_review_sha256':review['source_review_sha256'],
+                'alternative_id':row['alternative_id'],'material_number':row['number'],
+                'region_width_m':width,'plan_projected_width_m':frame['projected_extent_width_m'],
+                'plan_minus_region_width_m':residual,'within_discovery_tolerance':abs(residual)<=tolerance,
+                'source_periodic_family_witnesses':len(row.get('periodic_source_witnesses',[])),
+                'physical_correspondence_verified':False,'complete_facade_identity_verified':False}
+            comparisons.append(comparison);groups.setdefault(row['number'],[]).append(comparison)
+        for number,items in groups.items():
+            compatible=sorted({r['alternative_id'] for r in items if r['within_discovery_tolerance']})
+            ambiguities.append({'frame_id':frame['id'],'source_review_sha256':review['source_review_sha256'],
+                'material_number':number,'compatible_alternative_ids':compatible,
+                'compatible_nominal_region_widths_m':sorted({r['region_width_m'] for r in items if r['within_discovery_tolerance']}),
+                'multiple_compatible_separator_alternatives':len(compatible)>1,
+                'selected_physical_boundary_id':None,'physical_selection_supported':False})
+    return comparisons,ambiguities
+
+
+def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layout,options=None,*,paint_fills=None,restoration_reviews=None):
     opts={**DEFAULTS,**(options or {})}
     if set(opts)!=set(DEFAULTS):raise ValueError('Unknown correspondence option')
     for key in ('dimension_tolerance_m','marker_axis_tolerance_degrees','paint_boundary_neighborhood_pdf_points'):
@@ -165,11 +196,14 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
             charge();key=marker['target_view_key_candidate']
             frame_review=marker_frames(polygon,marker,unit,layout,opts['marker_axis_tolerance_degrees'])
             matches=[];projected_gaps=[];opening_matches=[];paint_witnesses=[];paint_matches=[]
+            restoration_matches=[];restoration_ambiguities=[]
             view_regions=[r for r in regions if r['view_key_candidate']==key]
             scans=[v for v in opening_views if v['view_key_candidate']==key]
             if len(scans)!=1:scan_status='withheld_nonunique_or_missing_opening_view';openings=[]
             else:scan_status=scans[0]['scan']['status'];openings=scans[0]['scan']['candidates']
             for frame in frame_review['frames']:
+                rm,ra=compare_restoration_widths(frame,key,restoration_reviews or [],opts['dimension_tolerance_m'],charge)
+                restoration_matches.extend(rm);restoration_ambiguities.extend(ra)
                 a,b=frame['source_native_endpoints'];length=math.dist(a,b)
                 tangent=[(b[i]-a[i])/length for i in (0,1)]
                 outward=(tangent[1],-tangent[0]) if polygon.exterior.is_ccw else (-tangent[1],tangent[0])
@@ -268,6 +302,8 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                 'region_width_comparisons':matches,'boundary_gap_projections':projected_gaps,
                 'opening_scan_status':scan_status,'opening_position_matches':opening_matches,
                 'source_paint_boundary_witnesses':paint_witnesses,'source_paint_width_comparisons':paint_matches,
+                'restoration_region_width_comparisons':restoration_matches,
+                'restoration_separator_ambiguities':restoration_ambiguities,
                 'view_scope_and_state_verified':False,'region_matches_are_partial_not_complete_facades':True})
         voids=[{'ring_index':i,'geometry':mapping(Polygon(ring)),
             'role':'unclassified_drafting_void','physical_void_identity_verified':False}
@@ -296,6 +332,7 @@ def prepare(config,resolve,output):
     source_report=json.loads((root/'footprint/source-audit/report.json').read_text())
     region_feed=json.loads((directory/'regions.json').read_text())['regions']
     opening_feed=json.loads((directory/'opening-candidates.json').read_text())['views']
+    restoration_feed=json.loads((directory/'material-boundary-alternatives.json').read_text())['view_scoped_reviews']
     view_pages=[json.loads(line) for line in (directory/'faces/drawing-view-pages.jsonl').read_text().splitlines()]
     page_rows=[p for p in view_pages if p['document_sha256']==plan['sha256'] and p['page']==plan['page']]
     if len(page_rows)!=1:raise ValueError('Same original plan reference page required')
@@ -321,7 +358,7 @@ def prepare(config,resolve,output):
     focus=set(footprint['diagnostic_extent_compatible_candidate_ids']);results=[]
     for candidate in hypotheses['candidates']:
         if candidate['id'] in focus:
-            results.append(compare(candidate,markers,region_feed,opening_feed,gaps,matrix,unit,inverse,config.get('options'),paint_fills=fills))
+            results.append(compare(candidate,markers,region_feed,opening_feed,gaps,matrix,unit,inverse,config.get('options'),paint_fills=fills,restoration_reviews=restoration_feed))
     atomic_json(root/'correspondences.json',{'version':VERSION,'records':results})
     originals=[request['plan'],request['reference_sheet'],*buildings[0]['sources']]
     for source in originals:
@@ -335,6 +372,8 @@ def prepare(config,resolve,output):
         'source_paint_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' not in m),
         'continuous_source_run_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' in m),
         'opening_position_matches':sum(len(v['opening_position_matches']) for r in results for v in r['views']),
+        'restoration_region_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['restoration_region_width_comparisons']),
+        'ambiguous_restoration_separator_groups':sum(a['multiple_compatible_separator_alternatives'] for r in results for v in r['views'] for a in v['restoration_separator_ambiguities']),
         'selected_physical_footprint_id':None,'complete_building_specs_generated':0,
         'training_labels_generated':0,'park_world_blocks_added':0}
     atomic_json(root/'report.json',report);atomic_json(root/'review-queue.json',{'version':VERSION,

@@ -14,7 +14,7 @@ from scipy import ndimage
 from rasterio.features import shapes
 from affine import Affine
 
-VERSION = 'raster-anchor-regions-v4'
+VERSION = 'raster-anchor-regions-v5'
 ZOOM = 2
 THRESHOLDS = (176, 192, 208, 216)
 MAX_PIXELS = 20000000

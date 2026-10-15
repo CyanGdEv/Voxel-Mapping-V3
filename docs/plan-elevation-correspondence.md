@@ -149,3 +149,37 @@ cannot be combined into the 15.804 m main facade by bridging gaps. Some match
 the narrower base region, which does not establish complete facade identity.
 The northwest main-wall discrepancy remains unresolved. Receipt:
 `docs/evidence/wicker-source-wall-runs-2026-10-14.json`.
+
+Restoration alternatives now have a separate numbered-view width audit. Each
+review must link every conflicting anchor to exactly one original material
+record with the same document, page, number and target point. All linked
+records must agree on the numbered view and nominal printed scale. Missing,
+duplicate or cross-view associations remain withheld. Source page rotation
+maps each unchanged restoration polygon into display coordinates before its
+nominal width is measured; the plan furniture transform is never applied to
+the elevation.
+
+`compare-plan-views` compares these widths against every eligible marker frame
+in the same view, retaining all residuals. It groups compatible alternative IDs
+by source review, frame and material number. Multiple compatible alternatives
+are explicitly reported as ambiguous. A unique width match still cannot
+certify a physical boundary or complete facade. The new comparisons are
+separate from original region matches and opening-position matches and charge
+the existing whole-candidate correspondence budget.
+
+Restoration v2 also records periodic-family spacing, stroke count, source
+indices and neighboring original stroke boxes for each separator. This is
+source repetition evidence, not verified hatch identity. Raster contract v5
+invalidates cached reviews missing these witnesses. The source facade feed
+retains its raw restoration pages and adds `view_scoped_reviews` with source
+review and region geometry hashes.
+
+The fresh original-source run retained all 13 southwest alternatives. Every
+wall-region span is 11.6416667 m and is compatible with both southwest frames
+for each of six competing footprint candidates: 156 width comparisons pass,
+but all 12 wall comparison groups remain ambiguous. Each alternative has an
+original periodic-family witness. Roof regions have no compatible whole-plan
+width in this trial; their potentially partial extent prevents treating that
+alone as a physical rejection. No separator, opening, footprint or complete
+building was accepted. Source and output hashes are recorded in
+`evidence/wicker-restoration-view-ambiguity-2026-10-15.json`.

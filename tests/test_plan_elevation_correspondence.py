@@ -111,6 +111,7 @@ class CorrespondenceTests(unittest.TestCase):
             region=self.evidence()[2][0];region['id']='source-region'
             (root/'regions.json').write_text(json.dumps({'regions':[region]}))
             (root/'opening-candidates.json').write_text(json.dumps({'views':[]}))
+            (root/'material-boundary-alternatives.json').write_text(json.dumps({'view_scoped_reviews':[]}))
             marker={'status':'unverified_native_view_reference_candidate','target_view_key_candidate':['2967',26,1],
                 'circle_bbox_page_points':[390,580,410,600],'corner_fill_bbox_page_points':[380,580,390,600],
                 'circle_path_index':0,'corner_fill_path_index':1}
