@@ -1,0 +1,270 @@
+{
+  "base_commit": "e33ae4d0e2325d7c221e8ad376d11505349820cf",
+  "date": "2026-10-15",
+  "implementation_sha256": {
+    "voxel_mapper/doorway_raster.py": "3713cb9b56bb3791694dc3a6d0c852a55a2be47255684451ce4a5512f6426bea",
+    "voxel_mapper/draft_park_cycles.py": "708151531672e263988e990b4ad2bac7d75b1cdcf1d337135065f4c8b00d991d",
+    "voxel_mapper/pilot_access.py": "f26a16485361bbbd37bab87821a5b789dada77f82b42f2fdf339ee0114dcf355",
+    "voxel_mapper/pilot_review.py": "45a3c4db799b688137ed71f5786912bfee0b3372cdc9cad31282b75b4d1c9768",
+    "voxel_mapper/shop_slabs.py": "9b6472ec7c5ef74b6542be9d15a0ad4cfcbc5926221b9554c994de0bacc11315"
+  },
+  "limitations": [
+    "Native doorway cell envelopes are wider than source spans; source endpoints and meshes remain unchanged.",
+    "Orientation, source-to-building identity, 184 m floor and materials remain provisional.",
+    "Only conservative centred player collision rules are checked; no Minecraft playtest or accessible-design certification.",
+    "Three elevated mapped paths remain withheld without absolute elevations.",
+    "No new trained model or automatic complete PDF reconstruction."
+  ],
+  "replay": {
+    "hypothesis": "A",
+    "matching_artifacts": [
+      "inputs.json",
+      "voxels.jsonl",
+      "review-component.json",
+      "access-review.json",
+      "access-review.svg"
+    ],
+    "package_byte_identity_claimed": false,
+    "passed": true
+  },
+  "scenes": [
+    {
+      "access_material_counts": {
+        "stone": 3,
+        "stone_slab": 8
+      },
+      "added_access_voxel_records": 11,
+      "artifacts_sha256": {
+        "access-review.json": "c5fa5eac6daec95d7a06e84ecd683d65a3c64304f168dd271448a299cd706b0c",
+        "access-review.svg": "500308cc2eadd22af9b286ffe3e03b5581f49450ea5d3448130ebfde3c6c0332",
+        "park.mcworld": "a85eb84d59842103f19646a3461c3bff65077d0ba21040d3163dfbd7ca1b11a5",
+        "pilot-report.json": "e1cbae165e8e728230931bedb1bba31a09ad1b8b7e20ca1a14ae609a5079edce",
+        "quality-report.json": "0507f9c10af705529e14ca0b974706c3ae83948dd2018ab136510ba79aa0b392",
+        "voxels.jsonl": "691698585dc696a1d8e479dd4217917176fb78d08c395b4e477b3201e32e0b47"
+      },
+      "generation_errors": [
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "hypothesis": "A",
+      "job_sha256": "c9e05ea1d9382a67d5e4212009e3290de87cfe0445f8758b375484c008bd9a69",
+      "native_access_sampled_blocks": 37753,
+      "native_chunks": 64,
+      "native_composed_blocks": 263105,
+      "native_round_trip": "all written blocks and all unwritten air cells verified",
+      "remaining_component_voxel_records": 993,
+      "removed_component_cells": [
+        [
+          3,
+          184,
+          7
+        ],
+        [
+          3,
+          185,
+          7
+        ]
+      ],
+      "route_lengths_m": {
+        "door-NW": 21,
+        "opening-NE": 7,
+        "opening-SW": 26
+      },
+      "source_mesh_modified": false,
+      "source_narrow_door_rasterization": {
+        "additional_columns_xz": [
+          [
+            3,
+            7
+          ]
+        ],
+        "endpoint_envelope_overruns_m": [
+          0.5312706558931366,
+          0.32623841110254426
+        ],
+        "id": "door-NW",
+        "legacy_columns_xz": [
+          [
+            3,
+            8
+          ]
+        ],
+        "native_cell_envelope_width_m": 1.7583576409556259,
+        "native_columns_xz": [
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            8
+          ]
+        ],
+        "native_geometry_exact": false,
+        "normal_cell_projection_radius_m": 0.6656441232367629,
+        "representation_status": "quantized_source_aperture",
+        "source_endpoints": [
+          [
+            3.11129763121216,
+            8.008344885241272,
+            0
+          ],
+          [
+            3.9258618945763346,
+            8.393069740242408,
+            0
+          ]
+        ],
+        "source_height_m": 2.093077599108219,
+        "source_width_m": 0.900848573959945
+      },
+      "spawn_native_xyz": [
+        11,
+        69,
+        3
+      ],
+      "terrain_and_mapped_surface_records_preserved": true,
+      "terrain_excavation_cells": 0,
+      "unresolved_opening_ids": []
+    },
+    {
+      "access_material_counts": {
+        "stone": 4,
+        "stone_slab": 10
+      },
+      "added_access_voxel_records": 14,
+      "artifacts_sha256": {
+        "access-review.json": "625d566d3f9186526ef7fa56405e68586283c638cf8b8b4dcbd1190db3a06115",
+        "access-review.svg": "ac178f9c2e2648b631aac11d62a4594d4925c60b823109cf4b15751563f0d5d7",
+        "park.mcworld": "8c9071cde95552eba4df086deaa49037c9901d7f0f0586d064eb04fa7fc406ce",
+        "pilot-report.json": "7af1c890e38779532919f05fb66238484a0d9ad13f7c64a2e61d5295bfce6e1e",
+        "quality-report.json": "7fca1af3f3119dffbe6a5356bbc1a8a38d61ba32a39763d8d1329223a29f23aa",
+        "voxels.jsonl": "fc6421f5e47948ba1bc5889e198cbe9c4fbc7c6a56d5b9b54b3c2cc2bf6ffec3"
+      },
+      "generation_errors": [
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "hypothesis": "B",
+      "job_sha256": "b4207a01be6acf4122f2df5117a84603d0e5acc457087680c91a69517b22a6f6",
+      "native_access_sampled_blocks": 37754,
+      "native_chunks": 64,
+      "native_composed_blocks": 263108,
+      "native_round_trip": "all written blocks and all unwritten air cells verified",
+      "remaining_component_voxel_records": 993,
+      "removed_component_cells": [
+        [
+          -4,
+          184,
+          -8
+        ],
+        [
+          -4,
+          185,
+          -8
+        ]
+      ],
+      "route_lengths_m": {
+        "door-NW": 16,
+        "opening-NE": 28,
+        "opening-SW": 7
+      },
+      "source_mesh_modified": false,
+      "source_narrow_door_rasterization": {
+        "additional_columns_xz": [
+          [
+            -4,
+            -8
+          ]
+        ],
+        "endpoint_envelope_overruns_m": [
+          0.5312706467687432,
+          0.326238422723637
+        ],
+        "id": "door-NW",
+        "legacy_columns_xz": [
+          [
+            -4,
+            -9
+          ]
+        ],
+        "native_cell_envelope_width_m": 1.758357643452325,
+        "native_columns_xz": [
+          [
+            -4,
+            -9
+          ],
+          [
+            -4,
+            -8
+          ]
+        ],
+        "native_geometry_exact": false,
+        "normal_cell_projection_radius_m": 0.6656441236679654,
+        "representation_status": "quantized_source_aperture",
+        "source_endpoints": [
+          [
+            -3.1112976167377937,
+            -8.008344890864663,
+            0
+          ],
+          [
+            -3.9258618794066127,
+            -8.393069747338052,
+            0
+          ]
+        ],
+        "source_height_m": 2.093077599108219,
+        "source_width_m": 0.9008485739599448
+      },
+      "spawn_native_xyz": [
+        11,
+        69,
+        3
+      ],
+      "terrain_and_mapped_surface_records_preserved": true,
+      "terrain_excavation_cells": 0,
+      "unresolved_opening_ids": []
+    }
+  ],
+  "scope": {
+    "accepted_park_world_blocks_added": 0,
+    "accepted_planning_components": 0,
+    "minecraft_visual_inspection": "not_performed",
+    "training_labels_generated": 0
+  },
+  "source_model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+  "tests": {
+    "cases": "Oblique and reversed jambs, half-turns, finite-span/band bounds, width and grid limits, source immutability, native shell closure, separate exterior approaches, shared search budgets, protected overridden mapped paths, actual obstruction of secondary native routes, spawn/headroom failures and existing exporter regressions.",
+    "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+    "elapsed_seconds": 109.187,
+    "passed": 1447
+  },
+  "version": "connected-doorway-validation-v1"
+}

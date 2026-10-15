@@ -4,6 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 import zipfile
+from unittest.mock import patch
 
 import amulet
 from amulet.api.block import Block
@@ -40,7 +41,7 @@ class CollisionTests(unittest.TestCase):
 
 
 class AccessWorldTests(unittest.TestCase):
-    def fixture(self, root, *, path=True, door=True, roof=False, terrain_hole=False):
+    def fixture(self, root, *, path=True, door=True, roof=False, terrain_hole=False, second_door=False):
         rows = [dict(x=x, y=0, z=z, kind='terrain') for x in range(-5, 6) for z in range(-3, 7)
                 if not terrain_hole or x != -2]
         building = []
@@ -48,7 +49,7 @@ class AccessWorldTests(unittest.TestCase):
             for z in range(4):
                 building += [(x, y, z) for y in (1, 2)]
                 if x in (0, 3) or z in (0, 3):
-                    if door and (x, z) == (0, 1):
+                    if (door and (x, z) == (0, 1)) or (second_door and (x, z) == (3, 1)):
                         continue
                     building += [(x, y, z) for y in (3, 4, 5)]
         if roof:
@@ -65,6 +66,8 @@ class AccessWorldTests(unittest.TestCase):
         quality = {'voxel_size_m': 1, 'voxel_records': len(rows), 'quality_status': 'provisional_component_review'}
         component = {'anchor_local_m': [0, 0], 'feature_id': 'review/test', 'floor_elevation_m': 3,
                      'access_openings': [{'id': 'test-door', 'columns_local_xz': [[0, 1]], 'declared_height_m': 2}]}
+        if second_door:
+            component['access_openings'].append({'id': 'other-door', 'columns_local_xz': [[3, 1]], 'declared_height_m': 2})
         return quality, component, rows
 
     def build(self, root, quality, component, settings=True, callback=None):
@@ -203,6 +206,87 @@ class AccessWorldTests(unittest.TestCase):
             self.assertEqual(prepared['report']['status'], 'existing_access_verified')
             self.assertTrue(prepared['report']['native_readback']['interior_connected_to_path_and_spawn'])
             self.assertEqual(prepared['report']['approach']['added_voxel_records'], 0)
+
+    def test_reaching_second_door_via_interior_does_not_prove_exterior_approach(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, _ = self.fixture(root, second_door=True)
+            prepared, _ = self.build(root, quality, component)
+            report = prepared['report']['native_readback']
+            other = next(o for o in report['openings'] if o['id'] == 'other-door')
+            self.assertTrue(other['reachable_from_mapped_path'])
+            self.assertTrue(other['reachable_from_spawn'])
+            self.assertFalse(other['exterior_route_from_mapped_path'])
+            self.assertEqual(report['unresolved_opening_ids'], ['other-door'])
+
+    def test_explicit_per_opening_policy_builds_and_verifies_both_external_routes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, _ = self.fixture(root, second_door=True)
+            prepared, _ = self.build(root, quality, component, settings={'policy': 'estimated_each_opening_approach_v2'})
+            report = prepared['report']
+            self.assertEqual(report['status'], 'route_verified')
+            self.assertEqual(len(report['approach']['decisions']), 2)
+            self.assertEqual(report['native_readback']['verified_approach_routes'], 2)
+            self.assertEqual(report['native_readback']['unresolved_opening_ids'], [])
+            self.assertTrue(all(o['exterior_route_from_mapped_path'] for o in report['native_readback']['openings']))
+
+    def test_source_width_below_player_clearance_never_becomes_accepted_passage(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, _ = self.fixture(root)
+            component['access_openings'][0]['declared_width_m'] = .4
+            prepared, _ = self.build(root, quality, component, settings={'policy': 'estimated_each_opening_approach_v2'})
+            opening = prepared['report']['native_readback']['openings'][0]
+            self.assertFalse(opening['source_player_clearance'])
+            self.assertFalse(opening['exterior_route_from_mapped_path'])
+            self.assertEqual(prepared['report']['status'], 'access_unresolved')
+
+    def test_per_opening_search_uses_a_shared_budget(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, _ = self.fixture(root, second_door=True)
+            with patch('voxel_mapper.pilot_access.MAX_APPROACH_SEARCH_STATES', 1):
+                # Inspect planning only: the independent audit has its own graph budget.
+                prepared = prepare(root, quality, component, {'policy': 'estimated_each_opening_approach_v2'})
+            self.assertLessEqual(prepared['report']['approach']['search_states'], 1)
+            self.assertFalse(prepared['routes'])
+
+    def test_overridden_mapped_path_column_cannot_be_covered_by_a_new_step(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, rows = self.fixture(root)
+            rows += [dict(x=-1, y=0, z=1, kind='path', feature='osm/overridden', material='stone'),
+                     dict(x=-1, y=0, z=1, kind='road', feature='synthetic/road', material='black_concrete',
+                          material_origin='accepted_planning_paving')]
+            (root / 'voxels.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in rows))
+            quality['voxel_records'] = len(rows)
+            prepared, _ = self.build(root, quality, component, settings={'policy': 'estimated_each_opening_approach_v2'})
+            self.assertEqual(prepared['report']['approach']['status'], 'withheld_no_bounded_route')
+            self.assertEqual(prepared['report']['approach']['added_voxel_records'], 0)
+
+    def test_obstructed_nonprimary_saved_route_rejects_the_export(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, _ = self.fixture(root, second_door=True)
+            prepared = prepare(root, quality, component, {'policy': 'estimated_each_opening_approach_v2'})
+            self.assertEqual(len(prepared['routes']), 2)
+            def corrupt_and_check(path, offset, spawn):
+                x, z, feet = prepared['routes'][1][0]
+                level = amulet.load_level(str(path))
+                try:
+                    chunk = level.get_chunk(x // 16, -z // 16, 'minecraft:overworld')
+                    stone = chunk.block_palette.get_add_block(Block('universal_minecraft', 'stone'))
+                    chunk.blocks[x % 16, feet // 2 + offset, -z % 16] = stone
+                    chunk.changed = True
+                    level.put_chunk(chunk, 'minecraft:overworld')
+                    level.save()
+                finally:
+                    level.close()
+                verify_saved(path, offset, spawn, prepared)
+            with self.assertRaisesRegex(ValueError, 'route is blocked'):
+                export_world(root / 'voxels.jsonl', root, quality, post_export_check=corrupt_and_check)
+            self.assertFalse((root / 'park.mcworld').exists())
 
     def test_replay_preserves_voxel_hash_and_route_decisions(self):
         with tempfile.TemporaryDirectory() as temporary:
