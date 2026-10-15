@@ -1,0 +1,67 @@
+{
+  "accepted_checkpoints": 0,
+  "accepted_controls": 0,
+  "accepted_park_components": 0,
+  "artifact_inventory": {
+    "checked_archive_sha256": "928666ed636e014244e99489b2abd726417be85335e4f7b51ce11c4c3550234f",
+    "checked_artifact_id": 11516538148,
+    "checked_members": 47,
+    "checked_original_pdfs": 0,
+    "listed_artifacts": 469,
+    "qualification": "Other artifacts were inventoried, not all downloaded or inspected."
+  },
+  "excluded_survey_lead": {
+    "reason": "Wildwood private property; not Alton Towers park controls.",
+    "sha256": "82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9"
+  },
+  "fallback": "Three retained Wicker shop originals and an existing manually reviewed proposed study model.",
+  "purpose": "Explicit provisional visual review. Original verified world export remains gated.",
+  "smiler_sources": [
+    {
+      "attempts": [
+        {
+          "bytes": 98,
+          "pdf": false,
+          "sha256": "33fbc61ad080ef68dd7a6479f8c53f1bf864dba2930567dbbc4ceb47490a1909",
+          "status_code": 503,
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=40663"
+        },
+        {
+          "bytes": 95,
+          "pdf": false,
+          "sha256": "9deff96f9b5925fa5081257849ace321304b382d64cfb67d90a21a3c7cbf2925",
+          "status_code": 503,
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=40663"
+        }
+      ],
+      "expected_sha256": "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+      "source": "existing"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 98,
+          "pdf": false,
+          "sha256": "33fbc61ad080ef68dd7a6479f8c53f1bf864dba2930567dbbc4ceb47490a1909",
+          "status_code": 503,
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=41683"
+        },
+        {
+          "bytes": 95,
+          "pdf": false,
+          "sha256": "9deff96f9b5925fa5081257849ace321304b382d64cfb67d90a21a3c7cbf2925",
+          "status_code": 503,
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=41683"
+        }
+      ],
+      "expected_sha256": "68e254734d1b2143f3ea35cb945a117412015b6dcce0d85f66838b0977135da5",
+      "source": "proposed"
+    }
+  ],
+  "source_pdf_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "status": "provisional_review_source_selected"
+}

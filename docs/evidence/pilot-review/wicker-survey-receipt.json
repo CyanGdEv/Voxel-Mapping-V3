@@ -1,0 +1,39 @@
+{
+  "acquisition": {
+    "dsm": {
+      "archive_sha256": "8ed17ab23fefdd981751bee5a8df9ab4cbdb36efc42c190656b53eae2aab1329",
+      "bytes": 77522213,
+      "kind": "dsm",
+      "raster_bytes": 78856460,
+      "raster_sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540"
+    },
+    "dtm": {
+      "archive_sha256": "115d6c9b030fe18c2dff2cbebd7a87198c28c5f70f6327ca2e7d2dd2c7162b79",
+      "bytes": 76420370,
+      "kind": "dtm",
+      "raster_bytes": 77640426,
+      "raster_sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540"
+    }
+  },
+  "crop_sha256": {
+    "dsm": "38e62f0c57add11f617d7ed528cbd8d62884ba8044ffbf4c5729965ee659cee5",
+    "dtm": "aff1e68ba0d2674c00df4780b74f7f40b80af1f8d7dec356e1a619e22b8be96d"
+  },
+  "survey": {
+    "archive_files": {
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dsm": 0.9952777777777778,
+      "dtm": 1.0
+    },
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+    "survey_end": "20220105",
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "terrain_coverage_threshold": 0.99
+  }
+}

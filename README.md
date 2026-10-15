@@ -11,6 +11,11 @@ OSTN15 grid for explicit terrain placement. Pilot exports also include a
 source-boundary/saved-material comparison overlay; independent planning controls
 and detailed structure acceptance remain separate requirements.
 
+The opt-in [provisional Wicker component review](docs/provisional-component-review.md)
+places an existing study mesh on dated terrain and mapped paths in two separate
+orientation scenes. These worlds retain explicit estimated placement and zero
+accepted planning components; originals and study evidence must be restored first.
+
 ## Whole-park batch jobs
 
 The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,

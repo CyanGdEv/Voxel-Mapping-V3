@@ -28,6 +28,9 @@ class HorizontalGridTests(unittest.TestCase):
             observed = operation.transform(*check['wgs84'])
             for actual, expected in zip(observed, check['original_bng_m']):
                 self.assertAlmostEqual(actual, expected, places=6)
+            recovered = operation.inverse(*observed)
+            for actual, expected in zip(recovered, check['wgs84']):
+                self.assertAlmostEqual(actual, expected, places=9)
         with rasterio.open(GRID) as grid:
             self.assertEqual(hashlib.sha256(grid.read().tobytes()).hexdigest(), proof['sample_values_sha256'])
         report = operation.report()

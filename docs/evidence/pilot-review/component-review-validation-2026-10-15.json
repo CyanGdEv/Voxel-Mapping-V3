@@ -1,0 +1,713 @@
+{
+  "accepted_checkpoints": 0,
+  "accepted_controls": 0,
+  "accepted_planning_components": 0,
+  "complete_buildings_verified": 0,
+  "implementation_sha256": {
+    "voxel_mapper/horizontal_grid.py": "403ad5b0fc047d1b4bee173994cf21e06f6da000f306a4f4eea3ce4d06e87905",
+    "voxel_mapper/pilot_comparison.py": "863c985a6d1325f936d3baa8f650312a377f1741dc07f95d9908a869ccd1e838",
+    "voxel_mapper/pilot_review.py": "f65cbb059c1564310863f7cc8173627d15c11cdf459da464d9d41ee04ad88ef7",
+    "voxel_mapper/world_pilot.py": "1f5be356d368a7d5ec152319b829b3f97caaded08bb12b9aabf1a29a335e1638"
+  },
+  "minecraft_visual_inspection": "not_performed",
+  "new_automatic_pdf_reconstruction": false,
+  "new_tests": 4,
+  "pip_check": "No broken requirements found.",
+  "replay": {
+    "component_report_sha256_identical": true,
+    "inputs_identical": true,
+    "scene": "a",
+    "voxel_sha256_identical": true
+  },
+  "runtime": {
+    "numpy": "1.26.4",
+    "pyproj": "3.8.0",
+    "rasterio": "1.4.4"
+  },
+  "scenes": {
+    "a": {
+      "comparison": {
+        "features_compared": 11,
+        "file": "placement-comparison.json",
+        "independent_placement_accuracy": "not_verified",
+        "native_material_matches": 1674,
+        "native_material_overrides": 4,
+        "overlay": "placement-comparison.svg"
+      },
+      "component": {
+        "accepted_checkpoints": 0,
+        "accepted_controls": 0,
+        "accepted_park_world_blocks_added": 0,
+        "anchor_bng_m": [
+          407562.9700688051,
+          343583.93836621655
+        ],
+        "anchor_local_m": [
+          -0.030690448201251237,
+          -0.06128346483973783
+        ],
+        "anchor_snap_offsets_m": [
+          0.030690448201251237,
+          0.06128346483973783
+        ],
+        "emitted_review_voxel_records": 995,
+        "feature_id": "review/wicker-shop-a",
+        "floor_datum_verified": false,
+        "floor_elevation_m": 184,
+        "floor_snap_offset_m": 0,
+        "foundation_cells": 336,
+        "grounding": {
+          "added_cells": 336,
+          "continuous_terrain_contact": true,
+          "existing_terrain_at_floor_columns": 1,
+          "floor_local_y": -1,
+          "footprint_columns": 231,
+          "materials_source_verified": false,
+          "maximum_fill_depth_blocks": 3,
+          "source_dimensions_modified": false,
+          "status": "estimated level floor and terrain-bearing foundation",
+          "terrain_excavation_cells": 0
+        },
+        "limitations": [
+          "Model reuses an existing manual study; no new trained model or complete drawing interpretation.",
+          "Orientation, assembly identity, base floor, materials and foundations are estimates.",
+          "A local tangent rotates before voxelization; no source dimensions are stretched.",
+          "Terrain is not excavated. This world is for visual review, not accepted park placement."
+        ],
+        "local_tangent_scale": 1.0003779598292482,
+        "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+        "native_mesh_audit": {
+          "brown_palette": "dark oak and spruce remain illustrative; unspecified brown cushion block not substituted",
+          "door_air_verified": true,
+          "fence_policy": "reserve fences for source-supported posts or rails; no post dimensions recovered for this canopy",
+          "material_counts": {
+            "dark_oak_planks": 170,
+            "dark_oak_slab": 120,
+            "dark_oak_slab_top": 94,
+            "spruce_planks": 238
+          },
+          "native_shape_leak_audit": {
+            "bounded_volume_cells": 35904,
+            "interior_air_cells_checked": 5500,
+            "interior_probe_local_xyz": [
+              0,
+              1,
+              0
+            ],
+            "interior_reached_from_exterior": false,
+            "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+            "physical_watertightness_verified": false,
+            "probe_is_air": true,
+            "reachable_interior_air_cells": 0,
+            "visited_air_cells": 25536
+          },
+          "projection_half_cells": 43,
+          "roof_palette": {
+            "bottom": "dark_oak_slab",
+            "full": "dark_oak_planks",
+            "top": "dark_oak_slab_top"
+          },
+          "rule": "roof half-cell occupancy selects top/bottom slabs; mixed halves and wall aliases use full blocks",
+          "sampling_metres": 0.5,
+          "source_half_cell_closure": {
+            "added_roof_riser_cells": 410,
+            "added_wall_cells": 429,
+            "door_air_verified": true,
+            "leak_audit": {
+              "bounded_volume_cells": 32844,
+              "interior_air_cells_checked": 6215,
+              "interior_probe_local_xyz": [
+                0,
+                1,
+                0
+              ],
+              "interior_reached_from_exterior": false,
+              "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+              "physical_watertightness_verified": false,
+              "probe_is_air": true,
+              "reachable_interior_air_cells": 0,
+              "visited_air_cells": 23454
+            },
+            "opening_columns": 20,
+            "removed_opening_cells": 0,
+            "status": "estimated voxel closure, not measured construction",
+            "wall_boundary_columns": 148
+          },
+          "world_blocks_per_source_metre": 1
+        },
+        "original_pdf_sha256": [
+          "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+        ],
+        "placement_basis": "Retained roof self-fit and mapped context hypothesis; not independent registration. Floor 184 m is an explicit clearance experiment, not a measured floor.",
+        "placement_sha256": "93527972f9007900ea4ba6e4b887e0224abf16f0895ec885e64962d4d81c8f8c",
+        "retained_orientation_alternatives_bng_degrees": [
+          -154.75564001904897,
+          25.244359980951014
+        ],
+        "rotation_bng_degrees": -154.75564001904897,
+        "rotation_local_degrees": -154.84412559781634,
+        "source_geometry_cells": 659,
+        "status": "estimated_component_review_only",
+        "training_labels_generated": 0,
+        "version": "provisional-study-component-v1",
+        "world_placement_eligible": false
+      },
+      "generation_errors": 3,
+      "inputs": {
+        "assets": [
+          {
+            "file": "wicker-component-review-config.json",
+            "role": "config",
+            "sha256": "cff10f376c5980e2b98fc39a4775fc1ec86927db6482f3b9933d068fb7a677d8"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-mapped-surfaces.geojson",
+            "role": "features",
+            "sha256": "5d7eb062cfb255f804e52bbca2ca2766072c31c8d4c614ab98545dd94b57fd23"
+          },
+          {
+            "file": "wicker-component-review-readiness.json",
+            "role": "planning_review",
+            "sha256": "482a5bd83869249d53c89e55cd2823296b502c69e0903015a09e2a3e63db8ea9"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-survey-receipt.json",
+            "role": "evidence:0",
+            "sha256": "a805867f18178a5a0c6c9799d81bcbc9ef3ad124525708de541fcdaa52bda3b9"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-osm-receipt.json",
+            "role": "evidence:1",
+            "sha256": "bf1d4571819d159901b6cb0913b6cc777b2b1fd39fb578e12cf48c529153169b"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+            "role": "evidence:2",
+            "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+          },
+          {
+            "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+            "role": "horizontal_grid",
+            "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+          },
+          {
+            "file": "../docs/evidence/world-pilot/alton-ostn15-grid-provenance.json",
+            "role": "horizontal_grid_provenance",
+            "sha256": "0531f195e3fd88ea63b31507226ed50071ef384701ae098f4c5a431089674e75"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/ea-national-dtm.tif",
+            "role": "terrain",
+            "sha256": "aff1e68ba0d2674c00df4780b74f7f40b80af1f8d7dec356e1a619e22b8be96d"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+            "role": "review:wicker-physical-placement:0",
+            "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+          },
+          {
+            "file": "../evidence/wicker-shop-context-review.json",
+            "role": "review:wicker-physical-placement:1",
+            "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+          },
+          {
+            "file": "../evidence/wicker-shop-model-lidar-review.json",
+            "role": "review:wicker-physical-placement:2",
+            "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+          },
+          {
+            "file": "../evidence/wicker-shop-projection-model.json",
+            "role": "review_model",
+            "sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1"
+          },
+          {
+            "file": "wicker-component-review-placement-a.json",
+            "role": "review_placement",
+            "sha256": "93527972f9007900ea4ba6e4b887e0224abf16f0895ec885e64962d4d81c8f8c"
+          },
+          {
+            "file": "../evidence/wicker-shop-floor-scale-review.json",
+            "role": "review_evidence:0",
+            "sha256": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040"
+          },
+          {
+            "file": "../evidence/wicker-shop-local-roof.json",
+            "role": "review_evidence:1",
+            "sha256": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137"
+          },
+          {
+            "file": "../evidence/wicker-shop-vertical-annotations.json",
+            "role": "review_evidence:2",
+            "sha256": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7"
+          },
+          {
+            "file": "../evidence/wicker-shop-wall-model.json",
+            "role": "review_evidence:3",
+            "sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22"
+          },
+          {
+            "file": "../evidence/wicker-shop-local-preview.json",
+            "role": "review_evidence:4",
+            "sha256": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50"
+          },
+          {
+            "file": "../evidence/wicker-shop-context-review.json",
+            "role": "review_evidence:5",
+            "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+          },
+          {
+            "file": "../evidence/wicker-shop-model-lidar-review.json",
+            "role": "review_evidence:6",
+            "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf",
+            "role": "review_original:0",
+            "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf",
+            "role": "review_original:1",
+            "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6.pdf",
+            "role": "review_original:2",
+            "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+          }
+        ],
+        "job_sha256": "7b8b3758f7913c171dbb37dc8af7ae477668a0188a34f52c005df316f1d17a8a"
+      },
+      "job": "examples/wicker-component-review-a-job.json",
+      "output_sha256": {
+        "README.txt": "9dcce230858523f97a2777ce42b674e62b3a91eb5c31e9696738283c6975099d",
+        "features-local.geojson": "213a91ce8cabdd519fee4d1d790d9431ba119446199aff02a4e045839d6f4d61",
+        "inputs.json": "c1637924f6b972d9004c7e0a429643d1492afec10e64d9a4b62af44e26a8500c",
+        "park.mcworld": "f5020bedee889cbbd4c5621af526151348481eed67d3b5cd1b6ff8af9e058789",
+        "placement-comparison.json": "cc2b84957f6e5dc94e2f97fc4cf14408582a5216b9f4037d8665983ecd3aae4e",
+        "placement-comparison.svg": "1e3634effc945afe3a4d5045b5c640ea0dff8949f929b32f9213a3e00bd3e797",
+        "quality-report.json": "4ca7cb57020cabc963dc0c95d7d0890a797bd0c21a545046151b3f80e0549db4",
+        "resolved-config.json": "93f706983d1c3ec794a7f1ec1253257ea006bc3fdba735483e939ed9950a41ec",
+        "review-component.json": "9b1d486a1dbcc66644620109fe1e77645f46c36f824b31b3a69e1d52500d4d0f",
+        "voxels.jsonl": "6c8e994d86b8c4579584d7898221149f4e5b3c9eb74011ea328cf5a592ccf658"
+      },
+      "status": "completed_provisional_review",
+      "terrain_missing_requests": 0,
+      "voxel_records_by_kind": {
+        "building": 995,
+        "path": 569,
+        "road": 114,
+        "terrain": 12544
+      },
+      "withheld_elevated_paths": [
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "world": {
+        "blocks_per_metre": 1,
+        "chunks": 64,
+        "composed_blocks": 263096,
+        "explicit_air_cells": 0,
+        "file": "park.mcworld",
+        "format": "Bedrock .mcworld",
+        "foundation": {
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+          "minecraft_y": 48,
+          "mode": "shared"
+        },
+        "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+        "ground_fill_depth_blocks": 16,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ],
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "quality": "draft_unverified",
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "sha256": "f5020bedee889cbbd4c5621af526151348481eed67d3b5cd1b6ff8af9e058789",
+        "spawn": [
+          -18,
+          74,
+          18
+        ],
+        "study_source_height_m": null,
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "vertical_offset_blocks": -113
+      }
+    },
+    "b": {
+      "comparison": {
+        "features_compared": 11,
+        "file": "placement-comparison.json",
+        "independent_placement_accuracy": "not_verified",
+        "native_material_matches": 1674,
+        "native_material_overrides": 4,
+        "overlay": "placement-comparison.svg"
+      },
+      "component": {
+        "accepted_checkpoints": 0,
+        "accepted_controls": 0,
+        "accepted_park_world_blocks_added": 0,
+        "anchor_bng_m": [
+          407562.9700688052,
+          343583.93836621643
+        ],
+        "anchor_local_m": [
+          -0.030690448094458648,
+          -0.06128346483973783
+        ],
+        "anchor_snap_offsets_m": [
+          0.030690448094458648,
+          0.06128346483973783
+        ],
+        "emitted_review_voxel_records": 995,
+        "feature_id": "review/wicker-shop-b",
+        "floor_datum_verified": false,
+        "floor_elevation_m": 184,
+        "floor_snap_offset_m": 0,
+        "foundation_cells": 335,
+        "grounding": {
+          "added_cells": 335,
+          "continuous_terrain_contact": true,
+          "existing_terrain_at_floor_columns": 1,
+          "floor_local_y": -1,
+          "footprint_columns": 231,
+          "materials_source_verified": false,
+          "maximum_fill_depth_blocks": 3,
+          "source_dimensions_modified": false,
+          "status": "estimated level floor and terrain-bearing foundation",
+          "terrain_excavation_cells": 0
+        },
+        "limitations": [
+          "Model reuses an existing manual study; no new trained model or complete drawing interpretation.",
+          "Orientation, assembly identity, base floor, materials and foundations are estimates.",
+          "A local tangent rotates before voxelization; no source dimensions are stretched.",
+          "Terrain is not excavated. This world is for visual review, not accepted park placement."
+        ],
+        "local_tangent_scale": 1.0003779609353463,
+        "model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+        "native_mesh_audit": {
+          "brown_palette": "dark oak and spruce remain illustrative; unspecified brown cushion block not substituted",
+          "door_air_verified": true,
+          "fence_policy": "reserve fences for source-supported posts or rails; no post dimensions recovered for this canopy",
+          "material_counts": {
+            "dark_oak_planks": 170,
+            "dark_oak_slab": 120,
+            "dark_oak_slab_top": 94,
+            "spruce_planks": 238
+          },
+          "native_shape_leak_audit": {
+            "bounded_volume_cells": 35904,
+            "interior_air_cells_checked": 5500,
+            "interior_probe_local_xyz": [
+              0,
+              1,
+              0
+            ],
+            "interior_reached_from_exterior": false,
+            "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+            "physical_watertightness_verified": false,
+            "probe_is_air": true,
+            "reachable_interior_air_cells": 0,
+            "visited_air_cells": 25536
+          },
+          "projection_half_cells": 43,
+          "roof_palette": {
+            "bottom": "dark_oak_slab",
+            "full": "dark_oak_planks",
+            "top": "dark_oak_slab_top"
+          },
+          "rule": "roof half-cell occupancy selects top/bottom slabs; mixed halves and wall aliases use full blocks",
+          "sampling_metres": 0.5,
+          "source_half_cell_closure": {
+            "added_roof_riser_cells": 410,
+            "added_wall_cells": 429,
+            "door_air_verified": true,
+            "leak_audit": {
+              "bounded_volume_cells": 32844,
+              "interior_air_cells_checked": 6215,
+              "interior_probe_local_xyz": [
+                0,
+                1,
+                0
+              ],
+              "interior_reached_from_exterior": false,
+              "method": "six-neighbour outside-air flood; floor sealed at study zero; door apertures temporarily sealed",
+              "physical_watertightness_verified": false,
+              "probe_is_air": true,
+              "reachable_interior_air_cells": 0,
+              "visited_air_cells": 23454
+            },
+            "opening_columns": 20,
+            "removed_opening_cells": 0,
+            "status": "estimated voxel closure, not measured construction",
+            "wall_boundary_columns": 148
+          },
+          "world_blocks_per_source_metre": 1
+        },
+        "original_pdf_sha256": [
+          "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+        ],
+        "placement_basis": "Retained roof self-fit and mapped context hypothesis; not independent registration. Floor 184 m is an explicit clearance experiment, not a measured floor.",
+        "placement_sha256": "726b577369ce3ce95061fc5483d27940222cd4a8a974b82da747637200c032cb",
+        "retained_orientation_alternatives_bng_degrees": [
+          -154.75564001904897,
+          25.244359980951014
+        ],
+        "rotation_bng_degrees": 25.244359980951014,
+        "rotation_local_degrees": 25.155874505740634,
+        "source_geometry_cells": 660,
+        "status": "estimated_component_review_only",
+        "training_labels_generated": 0,
+        "version": "provisional-study-component-v1",
+        "world_placement_eligible": false
+      },
+      "generation_errors": 3,
+      "inputs": {
+        "assets": [
+          {
+            "file": "wicker-component-review-config.json",
+            "role": "config",
+            "sha256": "cff10f376c5980e2b98fc39a4775fc1ec86927db6482f3b9933d068fb7a677d8"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-mapped-surfaces.geojson",
+            "role": "features",
+            "sha256": "5d7eb062cfb255f804e52bbca2ca2766072c31c8d4c614ab98545dd94b57fd23"
+          },
+          {
+            "file": "wicker-component-review-readiness.json",
+            "role": "planning_review",
+            "sha256": "482a5bd83869249d53c89e55cd2823296b502c69e0903015a09e2a3e63db8ea9"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-survey-receipt.json",
+            "role": "evidence:0",
+            "sha256": "a805867f18178a5a0c6c9799d81bcbc9ef3ad124525708de541fcdaa52bda3b9"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/wicker-osm-receipt.json",
+            "role": "evidence:1",
+            "sha256": "bf1d4571819d159901b6cb0913b6cc777b2b1fd39fb578e12cf48c529153169b"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+            "role": "evidence:2",
+            "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+          },
+          {
+            "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+            "role": "horizontal_grid",
+            "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+          },
+          {
+            "file": "../docs/evidence/world-pilot/alton-ostn15-grid-provenance.json",
+            "role": "horizontal_grid_provenance",
+            "sha256": "0531f195e3fd88ea63b31507226ed50071ef384701ae098f4c5a431089674e75"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/ea-national-dtm.tif",
+            "role": "terrain",
+            "sha256": "aff1e68ba0d2674c00df4780b74f7f40b80af1f8d7dec356e1a619e22b8be96d"
+          },
+          {
+            "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+            "role": "review:wicker-physical-placement:0",
+            "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+          },
+          {
+            "file": "../evidence/wicker-shop-context-review.json",
+            "role": "review:wicker-physical-placement:1",
+            "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+          },
+          {
+            "file": "../evidence/wicker-shop-model-lidar-review.json",
+            "role": "review:wicker-physical-placement:2",
+            "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+          },
+          {
+            "file": "../evidence/wicker-shop-projection-model.json",
+            "role": "review_model",
+            "sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1"
+          },
+          {
+            "file": "wicker-component-review-placement-b.json",
+            "role": "review_placement",
+            "sha256": "726b577369ce3ce95061fc5483d27940222cd4a8a974b82da747637200c032cb"
+          },
+          {
+            "file": "../evidence/wicker-shop-floor-scale-review.json",
+            "role": "review_evidence:0",
+            "sha256": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040"
+          },
+          {
+            "file": "../evidence/wicker-shop-local-roof.json",
+            "role": "review_evidence:1",
+            "sha256": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137"
+          },
+          {
+            "file": "../evidence/wicker-shop-vertical-annotations.json",
+            "role": "review_evidence:2",
+            "sha256": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7"
+          },
+          {
+            "file": "../evidence/wicker-shop-wall-model.json",
+            "role": "review_evidence:3",
+            "sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22"
+          },
+          {
+            "file": "../evidence/wicker-shop-local-preview.json",
+            "role": "review_evidence:4",
+            "sha256": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50"
+          },
+          {
+            "file": "../evidence/wicker-shop-context-review.json",
+            "role": "review_evidence:5",
+            "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+          },
+          {
+            "file": "../evidence/wicker-shop-model-lidar-review.json",
+            "role": "review_evidence:6",
+            "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf",
+            "role": "review_original:0",
+            "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf",
+            "role": "review_original:1",
+            "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+          },
+          {
+            "file": "../retained-source-input/wicker-shop/files/d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6.pdf",
+            "role": "review_original:2",
+            "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+          }
+        ],
+        "job_sha256": "ca413bee7b8611d0560b4a33bed695dda657909daf2ee81c522e66de3b67ee69"
+      },
+      "job": "examples/wicker-component-review-b-job.json",
+      "output_sha256": {
+        "README.txt": "55be5572fe0bbd3beb6bfb14ea168cf118a5a83f223ff1dc4df9f5262202fbf8",
+        "features-local.geojson": "4eb96a46cd13fed323d380811602d193560f11d490516b43418dd13a86f3d448",
+        "inputs.json": "35979fcda7106e96cdebb3ac9c069afd930b97a125b3d538f2bbcfcc1fd22ea2",
+        "park.mcworld": "0e6802f44e1ff6361c7328dc84e9eef2b49e83bf0a32e0987683fc4106117045",
+        "placement-comparison.json": "eb2c34df74b9e57ce6269ad1c8c3e56e1822113859b94e2db27ab2008ef27b95",
+        "placement-comparison.svg": "8b4eecbd4ce8ff92fc8eeb6b953dc0f1c21b0e70d70fc464014e37372a89dc95",
+        "quality-report.json": "5f908fb25b982ea11590e08b48bbab43b8d42bcbc580178097f25d9068289605",
+        "resolved-config.json": "93f706983d1c3ec794a7f1ec1253257ea006bc3fdba735483e939ed9950a41ec",
+        "review-component.json": "e85b6ae5a6c6db987e1a506f9cad42c3ee3b12f5a50afd6dd10065c22e2ee046",
+        "voxels.jsonl": "d89fb5e2c16a9bea4439e03bd5d6bfe99ac582b16f454d2144d9d1d6dde391f0"
+      },
+      "status": "completed_provisional_review",
+      "terrain_missing_requests": 0,
+      "voxel_records_by_kind": {
+        "building": 995,
+        "path": 569,
+        "road": 114,
+        "terrain": 12544
+      },
+      "withheld_elevated_paths": [
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "world": {
+        "blocks_per_metre": 1,
+        "chunks": 64,
+        "composed_blocks": 263096,
+        "explicit_air_cells": 0,
+        "file": "park.mcworld",
+        "format": "Bedrock .mcworld",
+        "foundation": {
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+          "minecraft_y": 48,
+          "mode": "shared"
+        },
+        "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+        "ground_fill_depth_blocks": 16,
+        "horizontal_transform": {
+          "minecraft_x": "east",
+          "minecraft_z": "negative north"
+        },
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ],
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "quality": "draft_unverified",
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "sha256": "0e6802f44e1ff6361c7328dc84e9eef2b49e83bf0a32e0987683fc4106117045",
+        "spawn": [
+          -18,
+          74,
+          18
+        ],
+        "study_source_height_m": null,
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "vertical_offset_blocks": -113
+      }
+    }
+  },
+  "schematic_preview_inspection": "performed",
+  "source_model_unresolved": [
+    "cross-view canopy front-height discrepancy",
+    "roof/wall centring and 180-degree source correspondence",
+    "side fascia, wall thickness and construction details",
+    "cladding/bunding geometry",
+    "as-built identity and floor datum",
+    "independent geographic registration"
+  ],
+  "source_scope": "Three retained real Wicker originals, an existing manually reviewed proposed study model, current mapped surface candidates and hash-matched dated survey crops.",
+  "test_seconds": 105.912,
+  "tests_passed": 1420,
+  "training_labels_generated": 0,
+  "version": "provisional-component-review-validation-v1"
+}

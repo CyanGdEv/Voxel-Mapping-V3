@@ -1,0 +1,19 @@
+{
+  "anchor_bng_m": [
+    407562.9700688052,
+    343583.93836621643
+  ],
+  "basis": "Retained roof self-fit and mapped context hypothesis; not independent registration. Floor 184 m is an explicit clearance experiment, not a measured floor.",
+  "context_preferred": false,
+  "estimated": true,
+  "floor_elevation_m": 184,
+  "id": "wicker-shop-b",
+  "orientation_alternatives_bng_degrees": [
+    -154.75564001904897,
+    25.244359980951014
+  ],
+  "production_placement_eligible": false,
+  "retained_self_fit_floor_m": 182.64722166695495,
+  "rotation_bng_degrees": 25.244359980951014,
+  "vertical_datum": "ODN"
+}

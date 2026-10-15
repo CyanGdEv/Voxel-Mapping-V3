@@ -14,6 +14,7 @@ from .bedrock import export_world
 from .cli import build, validate_config
 
 VERSION = 'world-pilot-v1'
+REVIEW_VERSION = 'world-pilot-review-v1'
 MAX_AREA_M2 = 40_000
 MAX_JSON_BYTES = 16_000_000
 MAX_RECORDS = 10_000
@@ -38,8 +39,10 @@ def _write(path, value):
 
 def _prepare(job_path):
     job = _json(job_path)
-    if job.get('version') != VERSION or not isinstance(job.get('name'), str) or not job['name'].strip():
+    if job.get('version') not in (VERSION, REVIEW_VERSION) or not isinstance(job.get('name'), str) or not job['name'].strip():
         raise ValueError('Named world-pilot-v1 job required')
+    if (job.get('version') == REVIEW_VERSION) != bool(job.get('review_component')):
+        raise ValueError('Provisional components require an explicit world-pilot-review-v1 job')
     pins = [(job_path, _sha(job_path))]
     assets = []
 
@@ -120,7 +123,8 @@ def _prepare(job_path):
         identifier = feature.get('id')
         properties = feature.get('properties', {})
         source = sources.get(properties.get('source_id'), {})
-        if not isinstance(identifier, str) or not identifier or identifier in identifiers or identifier.startswith('planning/'):
+        if (not isinstance(identifier, str) or not identifier or identifier in identifiers
+                or identifier.startswith(('planning/', 'review/'))):
             raise ValueError('Unique geographic feature IDs outside the planning namespace required')
         identifiers.add(identifier)
         if source.get('kind') not in ('osm', 'geographic') or any(
@@ -143,7 +147,17 @@ def _prepare(job_path):
             asset(descriptor, review_path.parent, 'review:' + row['id'] + ':' + str(index))
         tasks.append({'id': row['id'], 'title': row['title'], 'status': 'awaiting_evidence',
                       'required_evidence': requirements, 'evidence': evidence})
-    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}
+    prepared_review = None
+    if job.get('review_component'):
+        from .pilot_review import prepare as prepare_review
+        prepared_review = prepare_review(job['review_component'], asset, _json, job_path.parent, pins)
+        if any(source['id'] == 'provisional-study-model' for source in config['sources']):
+            raise ValueError('Reserved provisional study source identity')
+        config['sources'].append({'id': 'provisional-study-model', 'kind': 'planning_study',
+            'url': 'https://publicaccess.staffsmoorlands.gov.uk/portal/', 'license': 'unconfirmed-drawing-reuse',
+            'sha256': job['review_component']['model']['sha256'],
+            'attribution': 'Retained proposed shop study from three council PDFs; individual drawing authors. Review placement and materials remain estimates.'})
+    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review
 
 
 def run(job_path, output):
@@ -152,12 +166,16 @@ def run(job_path, output):
     staging = output.with_name(output.name + '.partial')
     if output.exists() or staging.exists():
         raise ValueError('Use a fresh pilot output directory; existing output is never overwritten')
-    job, config, collection, tasks, pins, inputs = _prepare(job_path)
+    job, config, collection, tasks, pins, inputs, prepared_review = _prepare(job_path)
     staging.mkdir(parents=True)
     try:
         _write(staging / 'inputs.json', inputs)
         _write(staging / 'resolved-config.json', config)
         quality = build(config, collection, staging)
+        review_component = None
+        if prepared_review:
+            from .pilot_review import append_component
+            review_component = append_component(prepared_review, config, quality, staging)
         accuracy = (quality.get('terrain') or {}).get('coordinate_transform', {}).get('accuracy_m', -1)
         if accuracy < 0 or accuracy > 1:
             quality['issues'].append({'severity': 'warning', 'reason': 'Terrain coordinate operation has unknown or greater-than-one-metre advertised accuracy; no independent placement accuracy established.',
@@ -188,11 +206,17 @@ def run(job_path, output):
             'scope': 'Draft terrain and geographic features, plus only planning records passing existing adapter checks.',
             'learning': 'Not run; no training labels or model promotion generated.',
             'complete_building_verification': 'Not established by this pilot.',
+            'review_components_voxelized': int(review_component is not None),
         }
+        if review_component:
+            readiness['scope'] = 'Provisional study component on draft terrain/mapped features; review geometry is excluded from accepted planning counts.'
         quality.update(quality_status='draft_unverified', pilot_readiness=readiness)
+        if review_component:
+            quality['quality_status'] = 'provisional_component_review'
         world = None
         if quality['voxel_records']:
-            world = export_world(staging / 'voxels.jsonl', staging, quality, job['name'], max_blocks=4_000_000)
+            name = 'PROVISIONAL REVIEW — ' + job['name'] if review_component else job['name']
+            world = export_world(staging / 'voxels.jsonl', staging, quality, name, max_blocks=4_000_000)
             quality['world'] = world
         comparison = None
         if world:
@@ -200,8 +224,8 @@ def run(job_path, output):
             comparison = compare_placement(staging, quality, world)
         _write(staging / 'quality-report.json', quality)
         report = {
-            'version': VERSION, 'name': job['name'],
-            'status': 'completed_draft' if world else 'awaiting_exportable_geometry',
+            'version': job['version'], 'name': job['name'],
+            'status': 'completed_provisional_review' if world and review_component else 'completed_draft' if world else 'awaiting_exportable_geometry',
             'inputs': inputs, 'bbox': config['bbox'], 'world': world, 'readiness': readiness,
             'generated_voxel_records_by_kind': dict(sorted(kinds.items())),
             'geographic_features': [{'id': feature['id'], 'emitted_voxel_records': counts[feature['id']],
@@ -209,6 +233,7 @@ def run(job_path, output):
                                     for feature in collection['features']],
             'terrain': quality['terrain'], 'issues': quality['issues'],
             'placement_comparison': comparison,
+            'review_component': review_component,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
                            'minecraft_visual_inspection': 'not_performed',
@@ -218,6 +243,7 @@ def run(job_path, output):
                        'Open park.mcworld in Minecraft Bedrock to inspect this draft.' if world else
                        'No world was exported because no exportable voxel records were generated.', '',
                        'Planning components voxelized: ' + str(planning_count),
+                       'Provisional review components voxelized: ' + str(readiness['review_components_voxelized']),
                        'Pending planning review tasks: ' + str(len(tasks)),
                        'Planning records withheld or producing no voxels: ' + str(readiness['planning_components_withheld']), '',
                        'Reported generation errors: ' + str(report['generation_errors']),
@@ -227,6 +253,12 @@ def run(job_path, output):
                        'Native block readback does not establish visual fidelity, a complete building or surveyed accuracy.']
         if world:
             description += ['', 'Minecraft spawn: ' + ', '.join(map(str, world['spawn']))]
+        if review_component:
+            description += ['', 'PROVISIONAL COMPONENT REVIEW — not accepted park placement.',
+                            'This scene reuses a previously reviewed study model; it is not a newly trained AI reconstruction.',
+                            'Orientation, floor, materials and foundations remain estimates.',
+                            'Retained BNG orientation alternatives: ' + str(review_component['retained_orientation_alternatives_bng_degrees']),
+                            'Explicit review floor: ' + str(review_component['floor_elevation_m']) + ' m; datum role unverified.']
         for task in tasks:
             description += ['', task['title'] + ':', *['- ' + value for value in task['required_evidence']]]
         (staging / 'README.txt').write_text('\n'.join(description) + '\n', encoding='utf-8')
@@ -237,6 +269,8 @@ def run(job_path, output):
                      'quality-report.json', 'README.txt'] + (['park.mcworld'] if world else [])
         if comparison:
             artifacts += ['placement-comparison.json', 'placement-comparison.svg']
+        if review_component:
+            artifacts += ['review-component.json']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
         _write(staging / 'pilot-report.json', report)
         staging.rename(output)
@@ -256,6 +290,7 @@ def main():
     report = run(args.job, args.output)
     print(json.dumps({'status': report['status'], 'world': str(args.output / 'park.mcworld') if report['world'] else None,
                       'planning_components_voxelized': report['readiness']['planning_components_voxelized'],
+                      'review_components_voxelized': report['readiness']['review_components_voxelized'],
                       'generation_errors': report['generation_errors'],
                       'pending_review_tasks': len(report['readiness']['pending_review_tasks'])}))
 
