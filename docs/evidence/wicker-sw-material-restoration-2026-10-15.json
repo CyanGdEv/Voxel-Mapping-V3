@@ -1,0 +1,52 @@
+{
+  "version": "southwest-source-stroke-restoration-trial-v1",
+  "original_source_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "page": 1,
+  "view_key_candidate": [
+    "2967",
+    26,
+    2
+  ],
+  "fresh_native_leader_chain_and_anchor_replay": true,
+  "fresh_original_image_atlas": true,
+  "atlas_sha256": "a377de3ae56f234e854c6667ba3bb338d1d4a12e4366d897fa0f0bbb02c099c8",
+  "source_crop_sha256": "811ff5f98d6ec2b778ed71a957de038126bea444e74a80faf67d1b324f74de42",
+  "retained_anchor_record_sha256": "645ed0fa8a5234da4d841aa0f398d26d76a23609dc28f5741bf93d28da69ed7b",
+  "trial_count": 113,
+  "status": "competing_source_stroke_separator_hypotheses",
+  "pixel_work": 565673472,
+  "geometry_coordinate_count": 9000,
+  "alternative_ids": [
+    "ff20dcd77a8c3c41658d8b5a7d7b23f8d36ea2a073f7c924207bf9fd13d8efbd",
+    "43ac7b0a116fb1b70f05ea860a3dcd1e5f45160c4686fbb91a227175f2d1fef5",
+    "73d6349fbca9a36694a7b54d379ec26d0be4af3aa6c7f5f0e0218e91188e0d4b",
+    "73e9deafb75a843883bb689bab676af7d08a7b6ce8d451b83039525502b65741",
+    "b56650558f3ff248ec03307e29a24b07c815c5d0886646ac9d4f4ed8fc69c3b4",
+    "db9eb41ffe5d7ce5dddcc235b07b0b66458a83f47f866ef248453f04f75fd929",
+    "8029fc070c248f01d6601a60ffbe7a46c90468d9284275168c4e7e7b0533e30e",
+    "b300d8bda03115f57b153e89af8452fbd633b605aa09c4d81c0c0f1909dd71bc",
+    "c02d73f7be7d59734016195bd33b44e8f5190915ea6f0f858388fe25b6fa6841",
+    "11cfb6a4d5c83a7ee9f7b08c0a27a9e91cab5419b06d8279b45379a2f4eda858",
+    "a2614121c99c2b8fd2d7c4634be919e054f8d9abef31d9f94020407a9c02ba0a",
+    "b953f00e7dcdd923a8b674e6005f0a6e6ece2fce5dad86f211144e7c30478d45",
+    "257c66dbf04ba176238246e9fac11888b929646e1ff29fafac3138667cde6076"
+  ],
+  "alternatives": 13,
+  "output_sha256": "20047a1d2fbe950ceb47df02751e88b09007f73f0c29e9f2067b92603e8e70e2",
+  "selected_physical_boundary_id": null,
+  "complete_buildings_generated": 0,
+  "training_labels_generated": 0,
+  "full_original_facade_pipeline": {
+    "source_sha256": [
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+    ],
+    "status": "awaiting_facade_interpretation",
+    "original_material_region_candidates": 8,
+    "independent_view_previews": 3,
+    "complete_buildings_generated": 0,
+    "material_alternatives_output_sha256": "128652397ed1ca58de650a9b51a595acf4a2ac8994578de5cc2f14c9d18cd2bf",
+    "report_sha256": "85670e01dc2dab83d13c39f7ab5bd6bcfd11dd1c62668c08e08a0d8d89db892c"
+  }
+}

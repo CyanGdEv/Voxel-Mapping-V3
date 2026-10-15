@@ -151,3 +151,33 @@ supported pairs. The adjacent channel completed with 13,199 checks and one
 23-by-45-pixel candidate. This small bay does not resolve the large plan gap
 or establish a physical opening. Original source, scope, render and scan hashes
 are recorded in `evidence/wicker-ne-adjacent-bays-2026-10-15.json`.
+
+Mixed-material regions now receive a separate source-stroke restoration review.
+For every interior stroke box already identified by the contrast suppression
+recipe, one trial restores the original contrast pixels inside that box in
+both gain variants. The trial adds no ink and makes no gap closure. Boxes from
+either variant are retained, with exact variant/family/stroke references; no
+nearest separator is selected. Each trial must pass the existing two-gain,
+four-threshold, original-outline, dark-fill and hole checks for every conflicting
+anchor, and its regions must exclude differently numbered anchors.
+
+The review retains all passing alternatives. The original mixed-material
+withholding remains in force, and these alternatives never enter normalized
+facade regions, preview meshes or plan/elevation matching. The facade feed
+exports them separately in `material-boundary-alternatives.json`, using
+unrotated MuPDF page points with y down and the original document/page binding.
+The raster review contract advances to v4 to invalidate old cached outputs.
+
+Limits are 32 anchors, 128 distinct source-stroke boxes, 768 million charged
+pixel-work units, and 100,000 output geometry coordinates per review. Exhaustion
+withholds the whole alternative inventory. The charged work is an explicit
+processing bound, not a runtime or physical-accuracy claim.
+
+The original southwest source trial reproduced the native leader chains and
+anchor tips, assembled the original image atlas, and tested 113 source-stroke
+restorations. Thirteen alternatives passed for the conflicting roof/wall
+anchors. They are competing source-supported cuts, including hatch lines;
+passing the pixel checks does not identify which line is a physical material
+boundary. No southwest facade was accepted and no complete building or
+training labels were generated. See the source receipt in
+`evidence/wicker-sw-material-restoration-2026-10-15.json`.
