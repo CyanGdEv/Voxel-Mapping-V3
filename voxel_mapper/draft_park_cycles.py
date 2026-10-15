@@ -23,7 +23,7 @@ from .reconstruction.local_buildings import rotate_model
 from .shop_slabs import assemble
 from .shop_wall_details import decorate
 from .shop_foundations import level_pad
-from .shop_shell import opening_columns
+from .doorway_raster import wall_openings
 from .wicker_access import build_access
 from .terrain import Terrain
 
@@ -83,7 +83,8 @@ def wicker_layer(directory,shop_model,crs,ground):
         ax,az=tr.transform(*p['anchor_bng_m']);angle=p['rotation_degrees']+convergence;floor=p['provisional_base_m']
         model=rotate_model(p['model'],angle);cells,shell=assemble(model);cells,details=decorate(model,cells)
         fill,foundation=level_pad(model,cells,[ax,az],floor,ground)
-        for (x,z),head in opening_columns(model['opening_base_segments'],1).items():
+        door_mask,_=wall_openings(model['opening_base_segments'])
+        for (x,z),head in door_mask.items():
             apertures.update((x+round(ax),y+round(floor),z+round(az)) for y in range(head))
         for (x,y,z),material in {**fill,**cells}.items():
             point=(x+round(ax),y+round(floor),z+round(az))

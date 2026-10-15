@@ -15,11 +15,13 @@ from shapely.geometry import Point, box, mapping, shape
 from shapely.ops import unary_union
 
 from .bedrock import MATERIALS, material_block, record_priority
+from .doorway_raster import PLAYER_WIDTH_M
 
-VERSION = 'provisional-world-access-v1'
+VERSION = 'provisional-world-access-v2'
 RADIUS = 32
 MAX_ROUTE_COLUMNS = 32
 MAX_SEARCH_STATES = 60_000
+MAX_APPROACH_SEARCH_STATES = 60_000
 MAX_FILL = 16
 MAX_READ_CELLS = 1_000_000
 WALKING_KINDS = {'path', 'sidewalk', 'queue', 'plaza'}
@@ -139,11 +141,24 @@ def _flood(scene, starts, allowed=None):
     return seen
 
 
+def _exterior_predicate(footprint):
+    cache = {}
+    def exterior(node):
+        key = node[0], node[1]
+        if key not in cache:
+            cache[key] = footprint.intersection(box(key[0], key[1], key[0] + 1, key[1] + 1)).area <= 1e-8
+        return cache[key]
+    return exterior
+
+
 def _openings(scene, component, footprint):
     """A doorway must connect into this building, rather than around its exterior."""
     floor = 2 * round(component['floor_elevation_m'])
     interior = footprint.buffer(-1)
     results, usable = [], set()
+    exterior = _exterior_predicate(footprint)
+    exterior_starts = [(x, z, height) for x, z in scene.columns if exterior((x, z))
+                       for height in scene.nodes(x, z)]
     for opening in component['access_openings']:
         columns = {tuple(p) for p in opening['columns_local_xz']}
         nodes = {(x, z, floor) for x, z in columns if scene.standing((x, z, floor))}
@@ -153,12 +168,21 @@ def _openings(scene, component, footprint):
                              ((p[0], p[1]) in columns or footprint.contains(Point(p[0] + .5, p[1] + .5))))
             if any(interior.contains(Point(p[0] + .5, p[1] + .5)) for p in reached):
                 connected.add(node)
-        if opening['declared_height_m'] < 2:
+        source_passable = (opening['declared_height_m'] >= 2 and
+                           opening.get('declared_width_m', PLAYER_WIDTH_M) >= PLAYER_WIDTH_M and
+                           opening.get('native_representation') not in
+                           ('source_too_narrow_for_player', 'unrepresented_on_native_grid'))
+        if not source_passable:
             connected.clear()
+        from_exterior = _flood(scene, exterior_starts, lambda p: exterior(p) or (p[0], p[1]) in columns)
+        crossing = connected & from_exterior
         usable.update(connected)
         results.append({'id': opening['id'], 'declared_height_m': opening['declared_height_m'],
+                        'declared_width_m': opening.get('declared_width_m'), 'source_player_clearance': source_passable,
                         'declared_native_columns': len(columns), 'standing_floor_columns': len(nodes),
                         'interior_connected_columns': len(connected),
+                        'exterior_connected_columns': len(crossing),
+                        'crossing_nodes_x_z_half_y': [list(p) for p in sorted(crossing)],
                         'usable_nodes_x_z_half_y': [list(p) for p in sorted(connected)],
                         'status': 'interior_connected' if connected else 'blocked_or_unresolved'})
     return results, usable
@@ -191,16 +215,17 @@ def _fill(scene, records, terrain, node, footprint, door_columns, path_columns):
     return cells
 
 
-def _route(scene, records, terrain, targets, starts, footprint):
+def _route(scene, records, terrain, targets, starts, footprint, state_budget=MAX_APPROACH_SEARCH_STATES, path_columns=None):
     """Bounded level/descending half-step search; failure stays explicit."""
     doors = {(x, z) for x, z, _ in starts}
-    path_columns = {(x, z) for x, z, _ in targets}
+    if path_columns is None:
+        path_columns = {(x, z) for (x, _, z), row in records.items() if row['kind'] in WALKING_KINDS}
     queue, best, fill_cache = [], {}, {}
     for node in sorted(starts):
         best[node] = 0
         heapq.heappush(queue, (0, (node,)))
     explored = 0
-    while queue and explored < MAX_SEARCH_STATES:
+    while queue and explored < state_budget:
         cost, path = heapq.heappop(queue)
         node = path[-1]
         if cost != best.get(node):
@@ -242,6 +267,7 @@ def prepare(output, quality, component, settings, max_voxels=1_000_000):
     report = {'version': VERSION, 'status': 'audit_only', 'estimated': True,
               'accepted_physical_geometry': False, 'bounds_local_xz': list(bounds),
               'minimum_headroom_m': 2, 'maximum_step_m': .5, 'route_width_blocks': 1,
+              'minimum_source_player_width_m': PLAYER_WIDTH_M,
               'before': {'basis': 'composed input voxels before estimated access work',
                          'openings': openings, 'mapped_path_reachable_opening_columns': len(starts & before)},
               'approach': {'status': 'not_requested', 'added_voxel_records': 0},
@@ -250,25 +276,53 @@ def prepare(output, quality, component, settings, max_voxels=1_000_000):
               'limitations': ['Centred one-player route; no in-game physics or accessible-design certification.',
                               'Only known full blocks and slabs bear weight; other shapes conservatively obstruct.',
                               'Estimated one-block-wide approach; no source-supported site access design.',
+                              'Exterior reachability excludes routes through other building openings.',
                               'Placement and floor remain unverified; no independent geographic accuracy established.',
                               'Route search is bounded, level or descending, and does not prove absence of other routes.']}
-    route, fill = None, {}
+    routes, fill, decisions = [], {}, []
+    per_opening = isinstance(settings, dict) and settings.get('policy') == 'estimated_each_opening_approach_v2'
     if settings:
-        route, explored = _route(scene, records, terrain, targets, starts, footprint)
-        report['approach'] = {'status': 'withheld_no_bounded_route', 'added_voxel_records': 0,
-                              'search_states': explored}
-        if route:
-            doors = {(x, z) for x, z, _ in starts}
-            path_columns = {(x, z) for x, z, _ in targets}
+        groups = [(opening['id'], {tuple(p) for p in opening['usable_nodes_x_z_half_y']})
+                  for opening in openings] if per_opening else [('any_opening', starts)]
+        def distance(group):
+            return min((abs(a[0] - b[0]) + abs(a[1] - b[1]) for a in group[1] for b in targets), default=math.inf), group[0]
+        groups.sort(key=distance)
+        remaining = MAX_APPROACH_SEARCH_STATES
+        path_columns = {(x, z) for x, _, z in paths}
+        for identifier, group in groups:
+            route, explored = _route(scene, records, terrain, targets, group, footprint, remaining, path_columns)
+            remaining -= explored
+            decision = {'opening_id': identifier, 'status': 'withheld_no_bounded_route',
+                        'search_states': explored, 'added_voxel_records': 0}
+            decisions.append(decision)
+            if not route:
+                continue
+            doors = {(x, z) for x, z, _ in group}
+            additions = {}
             for node in route:
-                additions = _fill(scene, records, terrain, node, footprint, doors, path_columns)
-                if additions is None:
+                proposed = _fill(scene, records, terrain, node, footprint, doors, path_columns)
+                if proposed is None:
                     raise ValueError('Estimated access route lost its construction clearance')
-                fill.update(additions)
-            report['approach'].update(status='estimated_approach_added' if fill else 'existing_route',
-                added_voxel_records=len(fill), route_local_x_z_half_y=[list(p) for p in route],
+                additions.update(proposed)
+            fill.update(additions)
+            for (x, y, z), material in additions.items():
+                records[x, y, z] = _approach_row(component['feature_id'] + '/approach', x, y, z, material)
+            scene = _scene(records, bounds)
+            routes.append(route)
+            decision.update(status='estimated_approach_added' if additions else 'existing_route',
+                added_voxel_records=len(additions), route_local_x_z_half_y=[list(p) for p in route],
                 mapped_path_feature=targets[route[-1]], horizontal_length_m=len(route) - 1,
                 maximum_step_m=max((abs(a[2] - b[2]) / 2 for a, b in zip(route, route[1:])), default=0))
+        report['approach'] = {'status': 'estimated_approach_added' if fill else 'existing_route' if routes else 'withheld_no_bounded_route',
+                              'added_voxel_records': len(fill), 'search_states': MAX_APPROACH_SEARCH_STATES - remaining,
+                              'per_opening_requested': per_opening, 'decisions': decisions}
+        if routes:
+            primary = next(d for d in decisions if 'route_local_x_z_half_y' in d)
+            for key in ('route_local_x_z_half_y', 'mapped_path_feature', 'horizontal_length_m', 'maximum_step_m'):
+                report['approach'][key] = primary[key]
+        if per_opening and any(d['status'] == 'withheld_no_bounded_route' for d in decisions):
+            report['approach']['unresolved_opening_ids'] = [d['opening_id'] for d in decisions if d['status'] == 'withheld_no_bounded_route']
+    route = routes[0] if routes else None
     identifier = component['feature_id'] + '/approach'
     if quality['voxel_records'] + len(fill) > max_voxels:
         raise ValueError('Access approach exceeds pilot voxel budget')
@@ -276,9 +330,7 @@ def prepare(output, quality, component, settings, max_voxels=1_000_000):
     # an emitted terrain cell; no inferred terrain is added beyond that domain.
     with (output / 'voxels.jsonl').open('a', encoding='utf-8') as stream:
         for (x, y, z), material in sorted(fill.items()):
-            row = {'x': x, 'y': y, 'z': z, 'kind': 'steps', 'feature': identifier,
-                   'source': 'provisional-study-model', 'material': material,
-                   'material_origin': 'estimated_reconstruction_shell', 'accepted_physical_geometry': False}
+            row = _approach_row(identifier, x, y, z, material)
             stream.write(json.dumps(row) + '\n')
             records[x, y, z] = row
     if fill:
@@ -306,7 +358,13 @@ def prepare(output, quality, component, settings, max_voxels=1_000_000):
     quality['sha256'] = file_sha256(output / 'voxels.jsonl')
     quality['access_review'] = report
     return {'records': records, 'terrain': terrain, 'paths': paths, 'bounds': bounds,
-            'footprint': footprint, 'component': component, 'report': report, 'route': route}
+            'footprint': footprint, 'component': component, 'report': report, 'route': route, 'routes': routes}
+
+
+def _approach_row(identifier, x, y, z, material):
+    return {'x': x, 'y': y, 'z': z, 'kind': 'steps', 'feature': identifier,
+            'source': 'provisional-study-model', 'material': material,
+            'material_origin': 'estimated_reconstruction_shell', 'accepted_physical_geometry': False}
 
 
 def verify_saved(world_path, offset, spawn, prepared):
@@ -350,20 +408,29 @@ def verify_saved(world_path, offset, spawn, prepared):
     mapped = _mapped_nodes(scene, prepared['paths'], records)
     from_path, from_spawn = _flood(scene, mapped), _flood(scene, [local_spawn])
     openings, usable = _openings(scene, component, footprint)
+    source = {opening['id']: opening for opening in component['access_openings']}
+    exterior = _exterior_predicate(footprint)
     for opening in openings:
         nodes = {tuple(p) for p in opening['usable_nodes_x_z_half_y']}
+        columns = {tuple(p) for p in source[opening['id']]['columns_local_xz']}
+        exterior_path = _flood(scene, [p for p in mapped if exterior(p)],
+                               lambda p: exterior(p) or (p[0], p[1]) in columns)
         opening['reachable_from_mapped_path'] = bool(nodes & from_path)
         opening['reachable_from_spawn'] = bool(nodes & from_spawn)
-    route = prepared['route']
-    route_verified = bool(route and all(scene.standing(p) for p in route)
-                          and all(scene.transition(a, b) for a, b in zip(route, route[1:]))
-                          and route[0] in usable and route[-1] in mapped
-                          and route[0] in from_spawn)
-    if route and not route_verified:
-        raise ValueError('Saved estimated access route is blocked, unsupported or disconnected')
+        crossing = {tuple(p) for p in opening['crossing_nodes_x_z_half_y']}
+        opening['exterior_route_from_mapped_path'] = bool(crossing & exterior_path)
+    routes = prepared['routes']
+    verified_routes = 0
+    for route in routes:
+        if not (all(scene.standing(p) for p in route)
+                and all(scene.transition(a, b) for a, b in zip(route, route[1:]))
+                and route[0] in usable and route[-1] in mapped and route[0] in from_spawn):
+            raise ValueError('Saved estimated access route is blocked, unsupported or disconnected')
+        verified_routes += 1
+    route_verified = bool(routes and verified_routes == len(routes))
     unresolved = [opening['id'] for opening in openings
-                  if not opening['reachable_from_mapped_path'] or not opening['reachable_from_spawn']]
-    connected = bool(usable & from_path & from_spawn)
+                  if not opening['exterior_route_from_mapped_path'] or not opening['reachable_from_spawn']]
+    connected = any(opening['exterior_route_from_mapped_path'] and opening['reachable_from_spawn'] for opening in openings)
     report['status'] = ('route_verified' if route_verified else 'existing_access_verified') if connected else 'access_unresolved'
     if connected and unresolved:
         report['status'] += '_with_unresolved_openings'
@@ -371,6 +438,7 @@ def verify_saved(world_path, offset, spawn, prepared):
         'coordinate_frame': 'Routes use local x, north-positive z, and half-unit local Y; native z is negated and native Y includes the export offset.',
         'spawn_native_xyz': spawn, 'spawn_supported': supported, 'spawn_headroom_m': 2,
         'spawn_on_mapped_path': local_spawn in mapped, 'route_verified': route_verified,
+        'verified_approach_routes': verified_routes,
         'interior_connected_to_path_and_spawn': connected,
         'openings': openings, 'unresolved_opening_ids': unresolved,
         'minecraft_visual_inspection': 'not_performed'}
@@ -386,7 +454,7 @@ def _write_svg(path, prepared):
     route = prepared['route'] or []
     openings = report['native_readback']['openings']
     xmin, zmin, xmax, zmax = footprint.bounds
-    points = [(p[0] + .5, p[1] + .5) for p in route]
+    points = [(p[0] + .5, p[1] + .5) for candidate in prepared['routes'] for p in candidate]
     if points:
         xmin, xmax = min(xmin, *(p[0] for p in points)), max(xmax, *(p[0] for p in points))
         zmin, zmax = min(zmin, *(p[1] for p in points)), max(zmax, *(p[1] for p in points))
@@ -401,7 +469,7 @@ def _write_svg(path, prepared):
         return f'<text x="{x}" y="{y}" font-family="sans-serif" font-size="{size}" fill="{colour}">{escape(str(text))}</text>'
     svg = ['<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700">',
            '<rect width="1100" height="700" fill="white"/>',
-           label(35, 32, 'Wicker / provisional building access review', 23),
+           label(35, 32, 'Provisional building doorway access review', 23),
            label(35, 59, 'Saved-world collision checks. Estimated placement, floor and approach; no in-game inspection.'),
            label(35, 88, 'Plan: local north up', 16)]
     for x, _, z in sorted(prepared['paths']):
@@ -411,12 +479,14 @@ def _write_svg(path, prepared):
     svg.append(f'<polygon points="{coords}" fill="#f2dfc1" stroke="#6d4c41" stroke-width="2"/>')
     source = {o['id']: o for o in prepared['component']['access_openings']}
     for opening in openings:
-        colour = '#207d49' if opening['reachable_from_spawn'] else '#c62828'
+        colour = '#207d49' if opening['exterior_route_from_mapped_path'] and opening['reachable_from_spawn'] else '#c62828'
         for x, z in source[opening['id']]['columns_local_xz']:
             svg.append(cell(x, z, colour))
     if route:
-        coords = ' '.join(f'{x:.2f},{z:.2f}' for x, z in [point(x + .5, z + .5) for x, z, _ in route])
-        svg.append(f'<polyline points="{coords}" fill="none" stroke="#087da3" stroke-width="3"/>')
+        for candidate in prepared['routes']:
+            coords = ' '.join(f'{x:.2f},{z:.2f}' for x, z in [point(x + .5, z + .5) for x, z, _ in candidate])
+            colour = '#087da3' if candidate == route else '#5baab5'
+            svg.append(f'<polyline points="{coords}" fill="none" stroke="{colour}" stroke-width="3"/>')
         for index, node in enumerate(route):
             px, pz = point(node[0] + .5, node[1] + .5)
             svg.append(f'<circle cx="{px:.2f}" cy="{pz:.2f}" r="3" fill="#087da3"/>')
@@ -447,11 +517,17 @@ def _write_svg(path, prepared):
                 svg.append(f'<path d="M{px:.2f} {previous:.2f} V{ry:.2f}" stroke="#087da3" stroke-width="3"/>')
         svg += [label(555, 453, 'Green: existing terrain | Amber: support above terrain', 12),
                 label(555, 476, 'Blue: verified standing surface; maximum step 0.5 m', 12),
-                label(555, 505, f"{len(route) - 1} m route; {report['approach']['added_voxel_records']} added blocks; no excavation.", 14)]
+                label(535, 505, f"Primary route {len(route) - 1} m; {report['approach']['added_voxel_records']} total added access blocks; no excavation.", 13),
+                label(535, 532, f"Verified external approach routes: {report['native_readback']['verified_approach_routes']}", 14)]
+        raster = prepared['component'].get('native_mesh_audit', {}).get('doorway_rasterization', {})
+        narrow = [o for o in raster.get('openings', []) if o['source_width_m'] < 1 and o['native_cell_envelope_width_m']]
+        if narrow:
+            opening = narrow[0]
+            svg.append(label(535, 555, f"Narrow study span {opening['source_width_m']:.3f} m; cell envelope {opening['native_cell_envelope_width_m']:.3f} m (approx.).", 12))
     else:
         svg.append(label(535, 140, 'No constructed route requested or found. See JSON audit.', 15))
     unresolved = ', '.join(report['native_readback']['unresolved_opening_ids']) or 'none under this rule'
-    svg += [label(35, 575, 'Grey: mapped paving | Brown: study footprint | Green: reachable opening | Red: unresolved opening', 13),
+    svg += [label(35, 575, 'Grey: mapped paving | Brown: study footprint | Green: exterior-connected opening | Red: unresolved', 13),
             label(35, 606, 'Audit: ' + report['status'], 15),
             label(35, 634, 'Unresolved: ' + unresolved, 14, '#a52222'),
             label(35, 669, 'Schematic only. One-player route; no site access design, survey accuracy or accessible-design certification.', 13),

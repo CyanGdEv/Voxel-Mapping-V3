@@ -19,6 +19,10 @@ The additional `examples/wicker-access-review-a-job.json` and `-b-job.json` add
 an explicitly estimated half-step approach. Saved-world access audits check
 headroom, interior connectivity and a grounded spawn, and retain unresolved doors
 in `access-review.json` with a standalone plan/profile diagram.
+The [connected doorway review](docs/connected-doorway-review.md) fixes the angled
+narrow-opening cut and checks a separate exterior approach for every entrance.
+Its additional jobs retain explicit native width approximations and zero
+accepted planning components.
 
 ## Whole-park batch jobs
 

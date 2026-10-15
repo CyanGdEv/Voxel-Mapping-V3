@@ -120,8 +120,9 @@ hypotheses. The explicit extra setting is:
 "access": {"policy": "estimated_half_step_approach_v1"}
 ```
 
-Put it inside `review_component`. Other policies or additional acceptance flags
-are rejected. Approach blocks carry `accepted_physical_geometry: false` and a
+Put it inside `review_component`. The additional per-opening policy is described
+in the [connected doorway guide](connected-doorway-review.md). Unsupported
+policies or additional acceptance flags are rejected. Approach blocks carry `accepted_physical_geometry: false` and a
 separate `review/<component>/approach` feature ID. They add no accepted planning
 components or training labels. A second review feature is not a second building.
 
@@ -150,12 +151,14 @@ checks prevents publication of the world. `access-review.json` and the standalon
 plan/profile diagram `access-review.svg` record the result. The same audit is
 embedded in `park.mcworld`'s quality report before its checksum is calculated.
 
-On the retained Wicker scenes, both hypotheses need two bottom stone slabs for a
-seven-metre route from `osm/way/1182076342`. The two broad openings connect through
-the existing interior. The narrow `door-NW` has clear air at its declared column
-but no usable interior connection under this rule. It stays explicitly unresolved;
-the source opening is not widened to make the check pass. The spawn is on mapped
-paving at native coordinates `[11, 69, 3]` for both current exports.
+In the initial access exports (PR #25), both hypotheses needed two bottom stone
+slabs for a seven-metre route from `osm/way/1182076342`. The narrow `door-NW` had
+clear air at its declared column but no usable interior connection. Those
+historical exports retain that unresolved result. The connected-doorway revision
+changes the native cut, records its width approximation and offers a separate
+exterior approach for every opening. The single-approach policy above still
+builds only one approach and can leave other exterior connections unresolved.
+The spawn remains on mapped paving at native coordinates `[11, 69, 3]`.
 
 These are estimated access experiments using the unverified **184 m** review
 floor. They establish neither a real-world entrance design nor measured floor

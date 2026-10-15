@@ -1,7 +1,8 @@
 """Half-metre roof samples mapped to native slabs in a one-block-per-metre world."""
 from collections import Counter
 from itertools import product
-from .shop_shell import close_shell,boundary_columns,opening_columns,leak_audit
+from .shop_shell import close_shell,boundary_columns,leak_audit
+from .doorway_raster import wall_openings
 
 
 def half_mesh(mesh):
@@ -33,9 +34,12 @@ def assemble(model):
     for p,halves in grouped.items():
         # Full wall occupancy wins at wall/roof aliases, preserving the join.
         materials[p]=palette['full'] if p in materials or len(halves)==2 else palette['top'] if halves=={1} else palette['bottom']
-    doors=opening_columns(model['opening_base_segments'],1)
+    doors,doorway_audit=wall_openings(model['opening_base_segments'])
+    removed_door_cells=set()
     for (x,z),head in doors.items():
-        for y in range(head):materials.pop((x,y,z),None)
+        for y in range(head):
+            if (x,y,z) in materials:removed_door_cells.add((x,y,z))
+            materials.pop((x,y,z),None)
     door_halves={(2*x+dx,2*z+dz):2*head for (x,z),head in doors.items() for dx,dz in product((0,1),repeat=2)}
     occupied=occupied_halves(materials)
     audit=leak_audit(occupied,boundary_columns(model['outer_wall_base_outline'],2),
@@ -51,13 +55,17 @@ def assemble(model):
                 materials[p]=palette['full'] if len(halves)==2 else palette['top'] if halves=={1} else palette['bottom']
     # Preserve the already quantized two-block doorway clearance at 1:1.
     for (x,z),head in doors.items():
-        for y in range(head):materials.pop((x,y,z),None)
+        for y in range(head):
+            if (x,y,z) in materials:removed_door_cells.add((x,y,z))
+            materials.pop((x,y,z),None)
     if any((x,y,z) in materials for (x,z),head in doors.items() for y in range(head)):
         raise ValueError('Slab palette obstructs a declared doorway')
+    doorway_audit['removed_native_cells']=[list(p) for p in sorted(removed_door_cells)]
     return materials,{'sampling_metres':.5,'world_blocks_per_source_metre':1,
         'rule':'roof half-cell occupancy selects top/bottom slabs; mixed halves and wall aliases use full blocks',
         'material_counts':dict(sorted(Counter(materials.values()).items())),'roof_palette':palette,
         'source_half_cell_closure':closure,'native_shape_leak_audit':audit,
         'door_air_verified':True,'projection_half_cells':len(projection),
+        'doorway_rasterization':doorway_audit,
         'fence_policy':'reserve fences for source-supported posts or rails; no post dimensions recovered for this canopy',
         'brown_palette':'dark oak and spruce remain illustrative; unspecified brown cushion block not substituted'}
