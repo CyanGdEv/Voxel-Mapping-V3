@@ -1,0 +1,202 @@
+{
+  "comparison": {
+    "features_compared": 7,
+    "file": "placement-comparison.json",
+    "independent_placement_accuracy": "not_verified",
+    "native_material_matches": 261,
+    "native_material_overrides": 7,
+    "overlay": "placement-comparison.svg"
+  },
+  "comparison_overlay_visual_inspection": "performed",
+  "complete_buildings_verified": 0,
+  "generated_voxel_records_by_kind": {
+    "path": 90,
+    "road": 178,
+    "terrain": 7936
+  },
+  "generation_errors": 0,
+  "implementation_sha256": {
+    "voxel_mapper/horizontal_grid.py": "f664af3072768fcb373f415e295214bf95f9eef24d9d469e802558508f918ee7",
+    "voxel_mapper/pilot_comparison.py": "a84582df0f089d2eea418aee2b4f0b31e5ce1ffa74bf6838864b23c79f5ae88f",
+    "voxel_mapper/terrain.py": "cd35f66d105b63c942e7cab81cb159ea9ab52d4918f93efab2ac05a0cd80b080",
+    "voxel_mapper/world_pilot.py": "df061e4b3c22517cef47ef90de9d6453d5daf4637b00926a1df85aaf5a2c2824"
+  },
+  "independent_placement_accuracy": "not_verified",
+  "inputs": {
+    "assets": [
+      {
+        "file": "alton-world-pilot-config.json",
+        "role": "config",
+        "sha256": "60bf1192e44748f11928308bbde71a7ba30c556ab31d14630673794ada540e9e"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-mapped-surfaces.geojson",
+        "role": "features",
+        "sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724"
+      },
+      {
+        "file": "alton-world-pilot-ostn15-review.json",
+        "role": "planning_review",
+        "sha256": "37e8d717064833048c5073787b2fe32d10e661e9a0ad7fc3ba686be43a5531c6"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-osm-acquisition-2026-10-15.json",
+        "role": "evidence:0",
+        "sha256": "eb049a8c6264ca53beabdc54a5e878e60cc5f9675563fbd51a7a627753afc368"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/smiler-audit.json",
+        "role": "evidence:1",
+        "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/smiler-placement-source-check-2026-10-15.json",
+        "role": "evidence:2",
+        "sha256": "744230399ed3ae8458e3fd6e334ba06c71ce115944fe9b33fa639390a11ce84f"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+        "role": "horizontal_grid",
+        "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-ostn15-grid-provenance.json",
+        "role": "horizontal_grid_provenance",
+        "sha256": "0531f195e3fd88ea63b31507226ed50071ef384701ae098f4c5a431089674e75"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/ea-national-dtm.tif",
+        "role": "terrain",
+        "sha256": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/smiler-audit.json",
+        "role": "review:smiler-planning-structure:0",
+        "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/smiler-placement-source-check-2026-10-15.json",
+        "role": "review:smiler-planning-structure:1",
+        "sha256": "744230399ed3ae8458e3fd6e334ba06c71ce115944fe9b33fa639390a11ce84f"
+      }
+    ],
+    "job_sha256": "1a3378b65927f2ecf7c17e5c9c4c17aca44229df286972289f7bcd5fa5ff6cf3"
+  },
+  "job": "examples/alton-world-pilot-ostn15-job.json",
+  "minecraft_visual_inspection": "not_performed",
+  "model_training_run": false,
+  "new_tests": 6,
+  "output_sha256": {
+    "README.txt": "d565088fa1d0d070e6a7bee24f0292796cceb4de702cbf6fd8f3741e54f9aa1e",
+    "features-local.geojson": "b63fb3c9c72477955e11951d44dda47503578ee9a8dd5eb083c8cc1455c2358a",
+    "inputs.json": "587eacc4a3b5fc9819b93afd6efe04dbf5e11c26df0ef9186dd780acaa2680d2",
+    "park.mcworld": "c6421973122185b0167d4be1efbdd553414d02bb9f996934751383060d550a9f",
+    "placement-comparison.json": "e7a804161fea3d126e67f7bf4d5127abee033c2a0128915e775fd29363d4d23f",
+    "placement-comparison.svg": "b6079ba6a4e4bd0042c520bec43a7f3b08cbc23e8e36da7f207b733b7352b9a4",
+    "quality-report.json": "e989bbc3cfa6e29d58382937d9e323275cd703b25ce9e1818d55a13c23b247b7",
+    "resolved-config.json": "a596c38430799be7abe8186346032511a85b0cc7fbe70686ee222b63eb504a95",
+    "voxels.jsonl": "357e8e74df2d6e646f24be1f2b69eb1a9fadcdd7ea6346b24964bbf013b09b46"
+  },
+  "planning_components_added": 0,
+  "replay_identical": {
+    "placement-comparison.json": true,
+    "placement-comparison.svg": true,
+    "voxels.jsonl": true
+  },
+  "replay_inputs_identical": true,
+  "runtime": {
+    "numpy": "1.26.4",
+    "proj": "9.8.1",
+    "pyproj": "3.8.0",
+    "rasterio": "1.4.4"
+  },
+  "sample_operation_change": {
+    "horizontal_difference_m": 1.952816353178103,
+    "interpretation": "Operation difference, not independently measured absolute error; changed horizontal sampling is not a vertical datum correction.",
+    "pinned_bng_m": [
+      407132.51251018123,
+      343330.20242216287
+    ],
+    "previous_bng_m": [
+      407132.6714620575,
+      343332.1487587243
+    ],
+    "wgs84": [
+      -1.8952,
+      52.98728
+    ]
+  },
+  "source_downloads": "Existing/proposed planning PDFs unavailable; see smiler-placement-source-check-2026-10-15.json.",
+  "terrain_changed_grid_heights_vs_previous_pilot": 1900,
+  "terrain_coordinate_operation": {
+    "accuracy_m": 1.0,
+    "description": "Explicit OSTN15 WGS84-to-OSGB36 grid operation and British National Grid projection",
+    "pinned_operation": {
+      "accuracy_basis": "EPSG:7710 approximates ETRS89 as WGS84 at advertised 1 m accuracy; no epoch correction.",
+      "advertised_accuracy_m": 1.0,
+      "fallback_allowed": false,
+      "grid_bounds_osgb36_degrees": [
+        -2.008333333333333,
+        52.92916666666667,
+        -1.791666666666666,
+        53.0375
+      ],
+      "grid_sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117",
+      "independent_placement_accuracy": "not_verified",
+      "method": "ostn15-bng-v1",
+      "original_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+      "pipeline": "+proj=pipeline +step +proj=unitconvert +xy_in=deg +xy_out=rad +step +inv +proj=hgridshift +grids=\"<pinned-grid>\" +step +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy",
+      "vertical_transformation": false
+    }
+  },
+  "terrain_grid_height_change_range_blocks": [
+    -4,
+    7
+  ],
+  "terrain_missing_requests": 0,
+  "test_seconds": 102.261,
+  "tests_passed": 1416,
+  "training_labels_generated": 0,
+  "version": "pinned-pilot-placement-validation-v1",
+  "world": {
+    "blocks_per_metre": 1,
+    "chunks": 32,
+    "composed_blocks": 213523,
+    "explicit_air_cells": 0,
+    "file": "park.mcworld",
+    "format": "Bedrock .mcworld",
+    "foundation": {
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+      "minecraft_y": 48,
+      "mode": "shared"
+    },
+    "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+    "ground_fill_depth_blocks": 16,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ],
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "quality": "draft_unverified",
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "sha256": "c6421973122185b0167d4be1efbdd553414d02bb9f996934751383060d550a9f",
+    "spawn": [
+      0,
+      72,
+      0
+    ],
+    "study_source_height_m": null,
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "vertical_offset_blocks": -94
+  }
+}

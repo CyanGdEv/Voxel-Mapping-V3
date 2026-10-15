@@ -1,0 +1,41 @@
+{
+  "config": {
+    "file": "alton-world-pilot-config.json",
+    "sha256": "60bf1192e44748f11928308bbde71a7ba30c556ab31d14630673794ada540e9e"
+  },
+  "evidence": [
+    {
+      "file": "../docs/evidence/world-pilot/alton-osm-acquisition-2026-10-15.json",
+      "sha256": "eb049a8c6264ca53beabdc54a5e878e60cc5f9675563fbd51a7a627753afc368"
+    },
+    {
+      "file": "../docs/evidence/smiler-review/smiler-audit.json",
+      "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+    },
+    {
+      "file": "../docs/evidence/world-pilot/smiler-placement-source-check-2026-10-15.json",
+      "sha256": "744230399ed3ae8458e3fd6e334ba06c71ce115944fe9b33fa639390a11ce84f"
+    }
+  ],
+  "features": {
+    "file": "../docs/evidence/world-pilot/alton-mapped-surfaces.geojson",
+    "sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724"
+  },
+  "horizontal_operation": {
+    "grid": {
+      "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+      "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+    },
+    "method": "ostn15-bng-v1",
+    "provenance": {
+      "file": "../docs/evidence/world-pilot/alton-ostn15-grid-provenance.json",
+      "sha256": "0531f195e3fd88ea63b31507226ed50071ef384701ae098f4c5a431089674e75"
+    }
+  },
+  "name": "Alton terrain and paths pilot with pinned OSTN15",
+  "planning_review": {
+    "file": "alton-world-pilot-ostn15-review.json",
+    "sha256": "37e8d717064833048c5073787b2fe32d10e661e9a0ad7fc3ba686be43a5531c6"
+  },
+  "version": "world-pilot-v1"
+}

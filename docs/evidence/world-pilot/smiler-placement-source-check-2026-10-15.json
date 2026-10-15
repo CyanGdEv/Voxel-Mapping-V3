@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "attempts": [
+      {
+        "bytes": 91,
+        "content_type": "text/plain",
+        "pdf": false,
+        "sha256": "2f85832e31ca57711e6107af6b142363351ae516adb71c69afc643fac26be7f6",
+        "status_code": 503,
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=40663"
+      },
+      {
+        "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=30)",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=40663"
+      }
+    ],
+    "expected_sha256": "485cebe17554a6c054e5604c71a1a11d55f66ebf09a0919132dcdcb6f7e2070f",
+    "status": "unavailable"
+  },
+  "physical_components_accepted": 0,
+  "proposed": {
+    "bytes": 91,
+    "content_type": "text/plain",
+    "expected_sha256": "68e254734d1b2143f3ea35cb945a117412015b6dcce0d85f66838b0977135da5",
+    "pdf": false,
+    "status_code": 503,
+    "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=41683"
+  },
+  "source_scope": "Real Smiler planning originals; no alternate image treated as an accepted physical component.",
+  "status": "original_drawing_unavailable",
+  "world_planning_components_added": 0
+}

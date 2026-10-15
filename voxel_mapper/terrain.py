@@ -20,7 +20,15 @@ class Terrain:
         if self.dataset.crs is None:
             self.dataset.close()
             raise ValueError('Terrain raster has no horizontal CRS')
-        self.transformer = Transformer.from_crs(local_crs, self.dataset.crs, always_xy=True)
+        try:
+            if config.get('horizontal_operation'):
+                from .horizontal_grid import OSTN15Transform
+                self.transformer = OSTN15Transform(local_crs, self.dataset.crs, config['horizontal_operation'])
+            else:
+                self.transformer = Transformer.from_crs(local_crs, self.dataset.crs, always_xy=True)
+        except Exception:
+            self.dataset.close()
+            raise
         self.offset = float(config.get('offset_m', 0))
         if not math.isfinite(self.offset):
             self.dataset.close()
@@ -54,6 +62,8 @@ class Terrain:
             transform_info = {'accuracy_m':operation.accuracy, 'description':operation.description}
         except Exception:
             transform_info = {'accuracy_m':self.transformer.accuracy, 'description':self.transformer.description}
+        if self.config.get('horizontal_operation'):
+            transform_info['pinned_operation'] = self.transformer.report()
         return {'source_id': self.config['source_id'], 'vertical_datum': self.config['vertical_datum'],
                 'sha256': self.checksum, 'horizontal_crs': self.dataset.crs.to_wkt(),
                 'pixel_size_native_units': list(self.dataset.res), 'sampling': 'nearest neighbour',

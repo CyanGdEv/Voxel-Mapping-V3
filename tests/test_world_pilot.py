@@ -66,6 +66,9 @@ class WorldPilotTests(unittest.TestCase):
             first = run(job_path, root / 'first')
             readiness = first['readiness']
             self.assertEqual(first['status'], 'completed_draft')
+            self.assertGreater(first['placement_comparison']['native_material_matches'], 0)
+            self.assertEqual(first['placement_comparison']['native_material_overrides'], 0)
+            self.assertTrue((root / 'first/placement-comparison.svg').is_file())
             self.assertEqual(readiness['planning_components_voxelized'], 1)
             self.assertEqual(readiness['planning_components_withheld'], 1)
             self.assertEqual(readiness['planning_records'][1]['reason'], 'registration_verified is not confirmed')
@@ -91,6 +94,46 @@ class WorldPilotTests(unittest.TestCase):
                 self.assertEqual(self.pin(root / 'first' / filename)['sha256'], expected)
             with self.assertRaisesRegex(ValueError, 'fresh'):
                 run(job_path, root / 'first')
+
+    def test_comparison_reports_material_overrides_without_claiming_registration_accuracy(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            job_path, _, features, job = self.fixture(root)
+            overlap = copy.deepcopy(features['features'][0])
+            overlap['id'] = 'osm/overlapping-path'
+            overlap['properties'].update(surface='concrete')
+            features['features'].append(overlap)
+            job['features'] = self.write_json(root / 'features.geojson', features)
+            self.write_json(job_path, job)
+            report = run(job_path, root / 'output')
+            self.assertGreater(report['placement_comparison']['native_material_overrides'], 0)
+            comparison = json.loads((root / 'output/placement-comparison.json').read_text())
+            self.assertEqual(comparison['independent_placement_accuracy'], 'not_verified')
+            self.assertEqual(comparison['planning_features_with_emitted_records'], 1)
+            self.assertIn('#cc3399', (root / 'output/placement-comparison.svg').read_text())
+
+    def test_pinned_job_grid_is_required_and_cannot_be_declared_only_inside_config(self):
+        source = Path(__file__).resolve().parents[1]
+        real_job = json.loads((source / 'examples/alton-world-pilot-ostn15-job.json').read_text())
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            job_path, config, _, job = self.fixture(root)
+            config['terrain']['horizontal_operation'] = {'method': 'ostn15-bng-v1'}
+            job['config'] = self.write_json(root / 'config.json', config)
+            self.write_json(job_path, job)
+            with self.assertRaisesRegex(ValueError, 'pinned pilot job'):
+                run(job_path, root / 'output')
+            config['terrain'].pop('horizontal_operation')
+            job['config'] = self.write_json(root / 'config.json', config)
+            operation = real_job['horizontal_operation']
+            for key in ('grid', 'provenance'):
+                operation[key]['file'] = str((source / 'examples' / operation[key]['file']).resolve())
+            operation['grid']['sha256'] = '0' * 64
+            job['horizontal_operation'] = operation
+            self.write_json(job_path, job)
+            with self.assertRaisesRegex(ValueError, 'checksum'):
+                run(job_path, root / 'output')
+            self.assertFalse((root / 'output.partial').exists())
 
     def test_all_withheld_planning_still_exports_geographic_world(self):
         with tempfile.TemporaryDirectory() as temporary:
