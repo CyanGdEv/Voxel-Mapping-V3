@@ -210,6 +210,11 @@ def prepare(config,resolve,output):
                     'spec_sha256':digest(spec),'export':exported,'preview_scope':spec['preview_scope']})
             atomic_json(partial/'regions.json',{'version':VERSION,'regions':regions})
             atomic_json(partial/'opening-candidates.json',{'version':OPENING_VERSION,'views':opening_reports})
+            atomic_json(partial/'material-boundary-alternatives.json',{'version':'source-stroke-restoration-v1',
+                'pages':[{'document_sha256':p['document_sha256'],'page':p['page'],
+                    'reviews':p.get('raster_review',{}).get('material_boundary_restoration_reviews',[])}
+                    for p in face_report['pages']],
+                'selected_physical_boundary_id':None,'complete_building_specs_generated':0})
             for sha,path in paths.items():
                 if hashlib.sha256(path.read_bytes()).hexdigest()!=sha:raise ValueError('Original PDF changed before facade publication')
             if sum(p.stat().st_size for p in partial.rglob('*') if p.is_file())>MAX_OUTPUT_BYTES:

@@ -14,7 +14,7 @@ from scipy import ndimage
 from rasterio.features import shapes
 from affine import Affine
 
-VERSION = 'raster-anchor-regions-v3'
+VERSION = 'raster-anchor-regions-v4'
 ZOOM = 2
 THRESHOLDS = (176, 192, 208, 216)
 MAX_PIXELS = 20000000
@@ -238,11 +238,19 @@ def review(page, records):
         counts[proposal['status']] = counts.get(proposal['status'], 0)+1
     from .contrast_boundaries import check_material_regions
     check_material_regions(records)
+    from .material_boundary_restoration import review as restoration_review
+    restoration_reviews=[]
+    for identity,prepared_contrast in contrast_prepared.items():
+        conflicting=[r for r in eligible if r['raster_contrast_boundary_review'].get('status')=='withheld_contrast_mixed_material_anchors'
+            and r['raster_contrast_boundary_review'].get('artwork_review_window_id')==identity]
+        if prepared_contrast is not None and 2<=len(conflicting)<=32:
+            restoration_reviews.append(restoration_review(prepared_contrast,conflicting))
     contrast_counts={}
     for record in eligible:
         status=record['raster_contrast_boundary_review']['status']
         contrast_counts[status]=contrast_counts.get(status,0)+1
     return {'status': 'unplaced_raster_review', 'atlas': receipt, 'region_statuses': counts,
             'contrast_statuses':contrast_counts,'contrast_review_windows':list(contrast_receipts.values()),
+            'material_boundary_restoration_reviews':restoration_reviews,
             'boundary_statuses':boundary_counts,'boundary_review_windows':list(boundary_receipts.values()),
             'world_geometry_additions': 0}
