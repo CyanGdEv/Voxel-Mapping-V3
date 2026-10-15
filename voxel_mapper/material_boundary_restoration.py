@@ -10,7 +10,7 @@ from .building_spec import digest
 from .contrast_boundaries import audit
 from .raster_faces import ZOOM,THRESHOLDS
 
-VERSION='source-stroke-restoration-v1'
+VERSION='source-stroke-restoration-v2'
 MAX_TRIALS=128
 MAX_PIXEL_WORK=768000000
 
@@ -91,6 +91,13 @@ def review(prepared,anchors,*,max_trials=MAX_TRIALS,max_pixel_work=MAX_PIXEL_WOR
             trial['status']='competing_source_stroke_separator_candidate'
             alternative={'restored_stroke_box_crop_pixels':list(box),
                 'source_stroke_references':trial['source_stroke_references'],
+                'periodic_source_witnesses':[{'variant_index':ref['variant_index'],
+                    'family_index':ref['family_index'],'stroke_index':ref['stroke_index'],
+                    'axis':receipt['variants'][ref['variant_index']]['families'][ref['family_index']]['axis'],
+                    'stroke_count':receipt['variants'][ref['variant_index']]['families'][ref['family_index']]['stroke_count'],
+                    'spacing_pixels_candidate':receipt['variants'][ref['variant_index']]['families'][ref['family_index']]['spacing_pixels_candidate'],
+                    'neighbor_stroke_boxes_crop_pixels':receipt['variants'][ref['variant_index']]['families'][ref['family_index']]['stroke_boxes_crop_pixels'][max(0,ref['stroke_index']-1):ref['stroke_index']+2],
+                    'physical_hatch_identity_verified':False} for ref in trial['source_stroke_references']],
                 'restored_stroke_box_page_points':[(x0+origin[0])/ZOOM,(y0+origin[1])/ZOOM,
                     (x1+origin[0])/ZOOM,(y1+origin[1])/ZOOM],
                 'regions':[{'number':a['number'],'target_page_point':a['target_page_point'],'boundary_review':c}

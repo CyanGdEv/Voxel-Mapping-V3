@@ -181,3 +181,9 @@ passing the pixel checks does not identify which line is a physical material
 boundary. No southwest facade was accepted and no complete building or
 training labels were generated. See the source receipt in
 `evidence/wicker-sw-material-restoration-2026-10-15.json`.
+
+Restoration v2 adds neighboring stroke and periodic-family witnesses to every
+alternative, alongside exact anchor-linked view/scale width summaries. The
+raster contract is now v5. Cross-view width comparisons and ambiguity reports
+are documented in `plan-elevation-correspondence.md`; they do not promote the
+alternatives into ordinary facade regions or opening matches.

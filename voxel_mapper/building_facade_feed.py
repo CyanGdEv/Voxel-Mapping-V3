@@ -1,6 +1,7 @@
 """Original material anchors -> independent local elevation studies and review evidence."""
 import hashlib
 import json
+import math
 import re
 from pathlib import Path
 
@@ -51,6 +52,47 @@ def normalize_region(record,page):
         'source_record_sha256':digest(record),'interior_ring_candidates':len(polygon.interiors),
         'physical_opening_count':None,'view_scope_verified':False,'physical_identity_verified':False,
         'scale_application_verified':False,'per_view_state':'unknown','world_placement_eligible':False}
+
+
+def scope_restoration_widths(receipt,records,page):
+    """Exact original anchor links only; no nearest view or complete-facade claim."""
+    reviews=receipt.get('raster_review',{}).get('material_boundary_restoration_reviews',[])
+    if len(reviews)>32:raise ValueError('Restoration review inventory budget exceeded')
+    output=[]
+    for review in reviews:
+        item={'document_sha256':receipt['document_sha256'],'page':receipt['page'],
+            'source_review_sha256':digest(review),'status':'withheld_restoration_view_scope',
+            'region_widths':[],'physical_view_identity_verified':False}
+        output.append(item);linked=[]
+        for anchor in review['anchors']:
+            matches=[r for r in records if r.get('document_sha256')==receipt['document_sha256']
+                and r.get('page')==receipt['page'] and r.get('number')==anchor['number']
+                and list(r.get('target_page_point',[]))==list(anchor['target_page_point'])
+                and r.get('glyph_screen_status')=='raster_consistent_candidate']
+            if len(matches)!=1:break
+            linked.append(matches[0].get('drawing_view_candidate',{}))
+        if len(linked)!=len(review['anchors']) or not linked:continue
+        keys={tuple(v['view_key_candidate']) for v in linked if v.get('view_key_candidate')}
+        factors={v.get('nominal_metres_per_pdf_point_candidate') for v in linked}
+        if len(keys)!=1 or any(not v.get('view_key_candidate') for v in linked) or len(factors)!=1:continue
+        factor=next(iter(factors))
+        if type(factor) not in (int,float) or not math.isfinite(factor) or not .0001<=factor<=4:continue
+        if len(review['alternatives'])>128:raise ValueError('Restoration alternative inventory budget exceeded')
+        for alternative in review['alternatives']:
+            if len(alternative['regions'])>32:raise ValueError('Restoration region inventory budget exceeded')
+            for region in alternative['regions']:
+                polygon=shape(region['boundary_review']['geometry'])
+                if polygon.geom_type!='Polygon' or not polygon.is_valid or sum(len(r.coords) for r in [polygon.exterior,*polygon.interiors])>4096:
+                    raise ValueError('Bounded valid restoration region required')
+                display=affine_transform(polygon,_affine(page.rotation_matrix))
+                item['region_widths'].append({'alternative_id':alternative['id'],'number':region['number'],
+                    'source_region_geometry_sha256':digest(region['boundary_review']['geometry']),
+                    'region_width_m':(display.bounds[2]-display.bounds[0])*factor,
+                    'periodic_source_witnesses':alternative.get('periodic_source_witnesses',[]),
+                    'complete_facade_identity_verified':False})
+        item.update(status='unverified_exact_anchor_view_scope',view_key_candidate=list(next(iter(keys))),
+            nominal_metres_per_pdf_point_candidate=factor,source_scale_application_verified=False)
+    return output
 
 
 def region_study(building_id,regions):
@@ -150,7 +192,7 @@ def prepare(config,resolve,output):
                         raise ValueError('Material anchor record budget exceeded')
                     records.append(json.loads(line))
             if len(records)>4000:raise ValueError('Material anchor record budget exceeded')
-            regions=[];opening_reports=[];seen_windows=set()
+            regions=[];opening_reports=[];seen_windows=set();restoration_widths=[]
             for sha,path in paths.items():
                 with pymupdf.open(path) as document:
                     for record in records:
@@ -160,6 +202,7 @@ def prepare(config,resolve,output):
                     for receipt in face_report['pages']:
                         if receipt.get('document_sha256')!=sha:continue
                         page=document[receipt['page']-1];inverse=native_inverse(page)
+                        restoration_widths.extend(scope_restoration_widths(receipt,records,page))
                         windows=receipt.get('raster_review',{}).get('atlas',{}).get('artwork_review_windows',[])
                         for window in windows:
                             view_records=[r for r in records if r['document_sha256']==sha and r['page']==receipt['page']
@@ -210,7 +253,8 @@ def prepare(config,resolve,output):
                     'spec_sha256':digest(spec),'export':exported,'preview_scope':spec['preview_scope']})
             atomic_json(partial/'regions.json',{'version':VERSION,'regions':regions})
             atomic_json(partial/'opening-candidates.json',{'version':OPENING_VERSION,'views':opening_reports})
-            atomic_json(partial/'material-boundary-alternatives.json',{'version':'source-stroke-restoration-v1',
+            atomic_json(partial/'material-boundary-alternatives.json',{'version':'source-stroke-restoration-v2',
+                'view_scoped_reviews':restoration_widths,
                 'pages':[{'document_sha256':p['document_sha256'],'page':p['page'],
                     'reviews':p.get('raster_review',{}).get('material_boundary_restoration_reviews',[])}
                     for p in face_report['pages']],
