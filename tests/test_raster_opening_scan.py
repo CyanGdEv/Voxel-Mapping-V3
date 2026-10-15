@@ -25,6 +25,20 @@ class OpeningScanTests(unittest.TestCase):
         self.assertEqual(scan(gray)['candidates'],[])
         self.assertEqual(scan(np.full((160,240),255,dtype=np.uint8))['candidates'],[])
 
+    def test_adjacent_scope_keeps_atomic_bays_without_promoting_spanning_pairs(self):
+        gray=self.frame();gray[30:125,100:103]=80
+        all_pairs=scan(gray);adjacent=scan(gray,pair_scope='adjacent_compatible_jambs')
+        self.assertTrue(any(c['bounds_pixels'][0]==43 and c['bounds_pixels'][2]==170 for c in all_pairs['candidates']))
+        self.assertFalse(any(c['bounds_pixels'][0]==43 and c['bounds_pixels'][2]==170 for c in adjacent['candidates']))
+        self.assertTrue(adjacent['candidates'])
+        self.assertEqual(adjacent['recipe']['pair_scope'],'adjacent_compatible_jambs')
+        # An intervening jamb narrower than the minimum bay width still blocks adjacency.
+        gray=self.frame();gray[30:125,50:53]=80
+        adjacent=scan(gray,pair_scope='adjacent_compatible_jambs')
+        self.assertFalse(any(c['bounds_pixels'][0]==43 for c in adjacent['candidates']))
+        self.assertEqual(scan(gray,pair_scope='adjacent_compatible_jambs',max_checks=1)['candidates'],[])
+        with self.assertRaises(ValueError):scan(gray,pair_scope='nearest')
+
     def test_budget_discards_all_candidates_and_crop_edge_is_not_jamb(self):
         gray=self.frame()
         r=scan(gray,max_checks=1);self.assertEqual(r['status'],'scan_budget_withheld')

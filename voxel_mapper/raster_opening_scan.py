@@ -2,11 +2,13 @@
 import hashlib
 import numpy as np
 
-VERSION = 'raster-opening-scan-v1'
+VERSION = 'raster-opening-scan-v2'
 THRESHOLDS = (220, 235)
 
 
-def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000):
+def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000, pair_scope="all"):
+    if pair_scope not in ("all","adjacent_compatible_jambs"):
+        raise ValueError("Declared opening pair scope required")
     gray=np.asarray(gray)
     if gray.ndim!=2 or gray.dtype!=np.uint8 or gray.size>6000000 or max(gray.shape)>3000:
         raise ValueError('Bounded uint8 opening raster required')
@@ -15,7 +17,7 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
     if min_width>max_width:raise ValueError('Ordered opening discovery widths required')
     base={'version':VERSION,'source_gray_sha256':hashlib.sha256(gray.tobytes()).hexdigest(),
           'size_pixels':[gray.shape[1],gray.shape[0]],
-          'recipe':{'thresholds':list(THRESHOLDS),'min_height_pixels':min_height,
+          'recipe':{'pair_scope':pair_scope,'thresholds':list(THRESHOLDS),'min_height_pixels':min_height,
                     'min_width_pixels':min_width,'max_groups':max_groups,'max_checks':max_checks,
                     'max_endpoint_spread_pixels':2,'minimum_head_dark_fraction':.9,
                     'maximum_width_pixels':max_width,'maximum_height_pixels':700},
@@ -45,6 +47,15 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
             for top_bin in range((left['top']-2)//3,(left['top']+2)//3+1):
                 for bottom_bin in range((left['bottom']-2)//3,(left['bottom']+2)//3+1):
                     nearby.extend(buckets.get((top_bin,bottom_bin),[]))
+            if pair_scope=='adjacent_compatible_jambs':
+                compatible=[]
+                for right in nearby:
+                    checks+=1
+                    if checks>max_checks:return withheld('adjacency_search_budget')
+                    if right['left']>=left['right'] and max(abs(left[k]-right[k]) for k in ('top','bottom'))<=2:
+                        compatible.append(right)
+                nearest=min((r['left'] for r in compatible),default=None)
+                nearby=[r for r in compatible if r['left']==nearest]
             for right in nearby:
                 width=right['left']-left['right']
                 if not min_width<=width<=max_width:continue
@@ -69,7 +80,7 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
             if checks>max_checks:return withheld('threshold_consensus_budget')
             if max(abs(x-y) for x,y in zip(a['bounds_pixels'],b['bounds_pixels']))>2:continue
             bounds=a['bounds_pixels']
-            candidates.append({'bounds_pixels':bounds,'threshold_candidates':[a,b],
+            candidates.append({'pair_scope':pair_scope,'bounds_pixels':bounds,'threshold_candidates':[a,b],
                 'pixel_sampling_bound':2,'status':'unverified_jamb_head_correspondence',
                 'physical_opening_verified':False,'opening_type':None,
                 'floor_datum_verified':False})
@@ -77,4 +88,5 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
     return {**base,'status':'jamb_head_correspondence_candidates_only','candidates':candidates,'checks':checks,
         'limitations':['Rails, textures and unrelated rectangular drafting objects may produce candidates.',
                        'No seed trace, physical role, sill/floor datum, reveal depth or door/window type is inferred.',
-                       'Threshold agreement is not confidence calibration; all competing candidates are retained.']}
+                       'Threshold agreement is not confidence calibration; all competing candidates within the declared pair scope are retained.',
+                       'Adjacent-compatible-jamb scope describes atomic drafting bays; it excludes spans across intermediate jambs and cannot establish full opening extent.']}

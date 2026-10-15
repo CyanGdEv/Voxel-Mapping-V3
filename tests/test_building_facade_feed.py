@@ -88,6 +88,34 @@ class FacadeFeedTests(unittest.TestCase):
             queue=json.loads((root/'out/source-review-queue.json').read_text());self.assertEqual(queue['review_outcomes_generated'],0)
             with self.assertRaises(ValueError):prepare(config,lambda p:root/p,root/'out')
 
+    def test_adjacent_review_channel_keeps_raw_withholding_and_native_geometry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);sha,config=self.source(root)
+            def faces(documents,output,**kwargs):
+                report=self.fake_faces(sha)(documents,output,**kwargs)
+                path=Path(output)/'face-associations.jsonl'
+                record=self.record(sha)
+                record['raster_region_review']={'artwork_review_window_ids':['window']}
+                path.write_text(json.dumps(record)+'\n')
+                report['pages']=[{'document_sha256':sha,'page':1,'raster_review':{'atlas':{
+                    'artwork_review_windows':[{'id':'window','bbox_page_points':[20,20,150,150]}]}}}]
+                return report
+            def scans(gray,**kwargs):
+                if not kwargs:return {'status':'scan_budget_withheld','candidates':[]}
+                return {'status':'jamb_head_correspondence_candidates_only',
+                    'candidates':[{'bounds_pixels':[30,30,80,100],'physical_opening_verified':False}]}
+            with patch('voxel_mapper.building_facade_feed.drawing_faces.run',side_effect=faces),\
+                 patch('voxel_mapper.building_facade_feed.plan_elevation_edges.run',return_value={'results':[]}),\
+                 patch('voxel_mapper.building_facade_feed.scan',side_effect=scans):
+                report=prepare(config,lambda p:root/p,root/'out')
+            self.assertEqual(report['buildings'][0]['status'],'awaiting_facade_interpretation',report)
+            row=json.loads((root/'out/building-0000/opening-candidates.json').read_text())['views'][0]
+            self.assertEqual(row['scan']['candidates'],[])
+            candidate=row['adjacent_bay_review_scan']['candidates'][0]
+            self.assertEqual(candidate['coordinate_frame'],'pdf_native_points_y_up')
+            self.assertIn('source_png_sha256',candidate)
+            self.assertFalse(row['adjacent_bay_candidates_are_complete_openings'])
+
     def test_invalid_source_isolation_and_no_publication_after_mutation(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);sha,config=self.source(root);bad=copy.deepcopy(config['buildings'][0]);bad['building_id']='bad'
