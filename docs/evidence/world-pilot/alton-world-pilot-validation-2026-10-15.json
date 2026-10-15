@@ -1,0 +1,144 @@
+{
+  "bbox_wgs84": [
+    -1.8961639809521875,
+    52.987008151254315,
+    -1.8942559712390854,
+    52.98755816667691
+  ],
+  "complete_buildings_verified": 0,
+  "full_test_seconds": 100.996,
+  "full_tests_passed": 1410,
+  "generated_voxel_records_by_kind": {
+    "path": 90,
+    "road": 178,
+    "terrain": 7936
+  },
+  "generation_errors": 0,
+  "implementation_sha256": {
+    "tests/test_world_pilot.py": "79ea0719886636851033398604e8b24663eb6748556c4d2d10efe95c400755e1",
+    "voxel_mapper/world_pilot.py": "dd51c62faae99bb80bb4e10ab380e9afd79d36d85e2d354dc6910df22fd174ac"
+  },
+  "inputs": {
+    "assets": [
+      {
+        "file": "alton-world-pilot-config.json",
+        "role": "config",
+        "sha256": "60bf1192e44748f11928308bbde71a7ba30c556ab31d14630673794ada540e9e"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-mapped-surfaces.geojson",
+        "role": "features",
+        "sha256": "a82389466375f3ec1b4c59ae6f9412ab39bc9065434327485bea55a11b2e6724"
+      },
+      {
+        "file": "alton-world-pilot-review.json",
+        "role": "planning_review",
+        "sha256": "5bb9c11de2d2c4a067cc6878f03a658f2d3b35246b418e4f54cee74035bcda0f"
+      },
+      {
+        "file": "../docs/evidence/world-pilot/alton-osm-acquisition-2026-10-15.json",
+        "role": "evidence:0",
+        "sha256": "eb049a8c6264ca53beabdc54a5e878e60cc5f9675563fbd51a7a627753afc368"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/smiler-audit.json",
+        "role": "evidence:1",
+        "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/ea-national-dtm.tif",
+        "role": "terrain",
+        "sha256": "8b8be6534a4f18d914d2877b605a1dbfe2f449a7ae33beaae690be9ca72d9453"
+      },
+      {
+        "file": "../docs/evidence/smiler-review/smiler-audit.json",
+        "role": "review:smiler-planning-structure:0",
+        "sha256": "ac6d5a28a32dd9e75ad34ba19a673a62dd5db34275ff8a73ac5a2d04543ebc05"
+      }
+    ],
+    "job_sha256": "88595f8f857584ba39bf83e07ae39fb34141751b1ae0cfd07f4fa74f6fb0dea9"
+  },
+  "job": "examples/alton-world-pilot-job.json",
+  "limitations": [
+    "No real planning component inserted; source registration, state, identity and dimensions remain unresolved.",
+    "One-block-per-metre voxel scale does not establish one-metre world accuracy; this trial used an advertised two-metre datum operation.",
+    "Path widths/materials include reported assumptions. Artificial terrain foundations are included in composed block counts.",
+    "This terrain/path pilot does not reinstate the withdrawn Smiler lift model or generate coaster geometry."
+  ],
+  "minecraft_visual_inspection": "not_performed",
+  "model_training_run": false,
+  "new_focused_tests": 6,
+  "output_sha256": {
+    "README.txt": "1f11c0be30a196e2e5b2a03c409da5b0652089e9b37e04e6a48773d390deb63d",
+    "features-local.geojson": "b63fb3c9c72477955e11951d44dda47503578ee9a8dd5eb083c8cc1455c2358a",
+    "inputs.json": "8d9a873a8403b30e03a66452e79ff47c19566b7ff8ae884a5942052f065a020b",
+    "park.mcworld": "a2279fd9e278ce95af90e69e9eaa355183c2f36c7ca0c496ca94c8cbd73fd259",
+    "quality-report.json": "01c0b2fa4f3ddb8e93eef7ddad67a0c2825dfa7511faea16c52e024d1637559b",
+    "resolved-config.json": "7ef8f31599c4393146d3f50d4a1500c5f587e92538e1578edd783a0163916f4f",
+    "voxels.jsonl": "fd4ab493ff691d732656989b35394215471b9a9642a3ae9944aaa33f9e5cd6db"
+  },
+  "pending_review_tasks": 1,
+  "planning_components_voxelized": 0,
+  "replay": {
+    "inputs_identical": true,
+    "package_byte_equality_required": false,
+    "readiness_identical": true,
+    "voxel_hash_identical": true,
+    "voxel_sha256": "fd4ab493ff691d732656989b35394215471b9a9642a3ae9944aaa33f9e5cd6db"
+  },
+  "runtime": {
+    "numpy": "1.26.4",
+    "proj": "9.8.1",
+    "pyproj": "3.8.0",
+    "rasterio": "1.4.4"
+  },
+  "source_scope": "Retained real Environment Agency terrain and current OSM road/path snapshot; planning audit is a pending review input only.",
+  "terrain_coordinate_operation": {
+    "accuracy_m": 2.0,
+    "description": "Inverse of unknown + axis order change (2D) + Inverse of OSGB36 to WGS 84 (6) + British National Grid"
+  },
+  "terrain_missing_requests": 0,
+  "training_labels_generated": 0,
+  "version": "small-area-world-pilot-validation-v1",
+  "world": {
+    "blocks_per_metre": 1,
+    "chunks": 32,
+    "composed_blocks": 213433,
+    "explicit_air_cells": 0,
+    "file": "park.mcworld",
+    "format": "Bedrock .mcworld",
+    "foundation": {
+      "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+      "minecraft_y": 48,
+      "mode": "shared"
+    },
+    "geographic_elevation_m": "Minecraft Y minus vertical_offset_blocks",
+    "ground_fill_depth_blocks": 16,
+    "horizontal_transform": {
+      "minecraft_x": "east",
+      "minecraft_z": "negative north"
+    },
+    "limitations": [
+      "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+      "Artificial dry-land foundation; unmapped lake depths remain unknown",
+      "Outside mapped chunks Minecraft may generate unrelated terrain",
+      "This export has no automated in-game visual fidelity validation"
+    ],
+    "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+    "quality": "draft_unverified",
+    "round_trip_validation": "all written blocks and all unwritten air cells verified",
+    "sha256": "a2279fd9e278ce95af90e69e9eaa355183c2f36c7ca0c496ca94c8cbd73fd259",
+    "spawn": [
+      0,
+      72,
+      0
+    ],
+    "study_source_height_m": null,
+    "target_version": [
+      1,
+      21,
+      130
+    ],
+    "vertical_offset_blocks": -94
+  }
+}

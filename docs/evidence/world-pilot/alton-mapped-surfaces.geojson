@@ -1,0 +1,205 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8946287,
+            52.9870536
+          ],
+          [
+            -1.8942074,
+            52.9868503
+          ],
+          [
+            -1.8939777,
+            52.9867513
+          ],
+          [
+            -1.8935993,
+            52.9866026
+          ],
+          [
+            -1.8923368,
+            52.9862337
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/24868490",
+      "properties": {
+        "foot": "yes",
+        "highway": "service",
+        "kind": "road",
+        "source": "Bing",
+        "source_id": "osm",
+        "surface": "asphalt"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8946287,
+            52.9870536
+          ],
+          [
+            -1.8949643,
+            52.9869842
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/24868493",
+      "properties": {
+        "foot": "yes",
+        "highway": "service",
+        "kind": "road",
+        "source": "Bing",
+        "source_id": "osm"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8939141,
+            52.987468
+          ],
+          [
+            -1.8940998,
+            52.9873253
+          ],
+          [
+            -1.8942722,
+            52.9872265
+          ],
+          [
+            -1.8944952,
+            52.9871138
+          ],
+          [
+            -1.8946287,
+            52.9870536
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/107255915",
+      "properties": {
+        "access": "private",
+        "foot": "yes",
+        "highway": "service",
+        "kind": "road",
+        "source": "Bing",
+        "source_id": "osm"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8944638,
+            52.9872076
+          ],
+          [
+            -1.8944572,
+            52.9872146
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/122057764",
+      "properties": {
+        "highway": "footway",
+        "kind": "path",
+        "source_id": "osm"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.894525,
+            52.9872139
+          ],
+          [
+            -1.8945926,
+            52.9872207
+          ],
+          [
+            -1.8945882,
+            52.9872289
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/122057767",
+      "properties": {
+        "highway": "footway",
+        "kind": "path",
+        "source_id": "osm"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8944952,
+            52.9871138
+          ],
+          [
+            -1.8944638,
+            52.9872076
+          ],
+          [
+            -1.894525,
+            52.9872139
+          ],
+          [
+            -1.894522,
+            52.9872217
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/122057770",
+      "properties": {
+        "highway": "footway",
+        "kind": "path",
+        "source_id": "osm",
+        "wheelchair": "yes"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            -1.8944589,
+            52.9874023
+          ],
+          [
+            -1.8940949,
+            52.9875371
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "osm/way/536935125",
+      "properties": {
+        "highway": "footway",
+        "kind": "path",
+        "source_id": "osm"
+      },
+      "type": "Feature"
+    }
+  ],
+  "planning_geometry_records": [],
+  "type": "FeatureCollection"
+}
