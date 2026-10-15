@@ -1,0 +1,132 @@
+{
+  "base_commit": "28f7ce1e523e6e5155b9c34518450f32a8d3dc48",
+  "date": "2026-10-15",
+  "implementation_sha256": {
+    "voxel_mapper/bedrock.py": "9688f5d83f59e9175ba36dc11f6d6dfc35c5374802d67338be2c65327269dc77",
+    "voxel_mapper/pilot_access.py": "b74d8c5dd8577ab8a448e3196d9179065a14560c1075a270de2717a83e293eed",
+    "voxel_mapper/pilot_review.py": "547b4e3e5974a7828da71e1cf77e8fa85cf028b2af0f381badb0bfa48bc0ee8c",
+    "voxel_mapper/world_pilot.py": "9d517c5a9e6ceacbe3382dea9dd98d722715a23dc2b9eb868ed11fcb29d6fb84"
+  },
+  "limitations": [
+    "Orientation, source-to-building identity, 184 m floor and materials remain provisional.",
+    "Conservative centred one-player route; not full Minecraft physics or a source-supported site access design.",
+    "Narrow door-NW remains disconnected from the interior under the access rule.",
+    "Three elevated mapped paths remain withheld without absolute elevations.",
+    "No new trained model or automatic complete PDF reconstruction."
+  ],
+  "replay": {
+    "matching_artifacts": [
+      "inputs.json",
+      "voxels.jsonl",
+      "review-component.json",
+      "access-review.json",
+      "access-review.svg"
+    ],
+    "package_byte_identity_claimed": false,
+    "scene": "A"
+  },
+  "scenes": [
+    {
+      "access_status": "route_verified_with_unresolved_openings",
+      "added_cells": [
+        [
+          9,
+          183,
+          1
+        ],
+        [
+          10,
+          182,
+          -1
+        ]
+      ],
+      "added_voxel_records": 2,
+      "artifacts_sha256": {
+        "access-review.json": "8fe3a94a0076ae24b2407cadba50d66c60cae9c7bdcb19f24d9d2a4d0bbe5539",
+        "access-review.svg": "37dd42490a1bd23324324aadfa0d5cdbe032ca1908ae7f61753e926c00df393f",
+        "park.mcworld": "7ced8d1d9a7d65386bc48489958fee3152a5b7e500a20f40e4d7a5903abe73b9",
+        "pilot-report.json": "7d688bf545e2292d08ebe94c9fdb4621927105a574d3fab809ec33eecc183737",
+        "quality-report.json": "b95822090c8fd48f331e6abf04edb03c5f3d59e56e9d0b3f1700acf016f8927d",
+        "voxels.jsonl": "5dc2ae640ebb7132d7aadff2dff7160fdf7cbddebacee5762db3e2174603d96d"
+      },
+      "generation_errors": 3,
+      "hypothesis": "A",
+      "job_sha256": "799b0cf9c9a4dc10e43812762ac6e8ef93d952667f3345ac4b4f3ddcb21e1477",
+      "maximum_step_m": 0.5,
+      "native_access_sampled_blocks": 37753,
+      "native_chunks": 64,
+      "native_composed_blocks": 263098,
+      "native_round_trip": "all written blocks and all unwritten air cells verified",
+      "preserved_previous_voxel_records": 14222,
+      "route_length_m": 7,
+      "source_geometry_cells_modified": 0,
+      "spawn_native_xyz": [
+        11,
+        69,
+        3
+      ],
+      "terrain_excavation_cells": 0,
+      "unresolved_opening_ids": [
+        "door-NW"
+      ]
+    },
+    {
+      "access_status": "route_verified_with_unresolved_openings",
+      "added_cells": [
+        [
+          9,
+          183,
+          1
+        ],
+        [
+          11,
+          182,
+          -1
+        ]
+      ],
+      "added_voxel_records": 2,
+      "artifacts_sha256": {
+        "access-review.json": "2db28b15e77f10155052097e42f52a37e53ddc6bc9b49983546c4561b7cfeb47",
+        "access-review.svg": "a11fd3baa417d4d2b56758ac0206e52b64e0576948aa065494be3d8c78d3d04c",
+        "park.mcworld": "a2902cf4338467eb45b1839b2beb5ce042fcf5d7d57efb9cc89d33bf10384575",
+        "pilot-report.json": "dea9f5b0b737cbe7de3014fa93cb02fe7d1a0530cbc55836d58eca0295d63fc9",
+        "quality-report.json": "c97b2246b8b04b8cc7b2f2aeb88bf9a94f65a3365dcb20c1b582d95d4a7c2c5f",
+        "voxels.jsonl": "a383a618fac8f791e37808e860bc3e854212f227c8626f21acb712ec1cda8ccb"
+      },
+      "generation_errors": 3,
+      "hypothesis": "B",
+      "job_sha256": "a1344a00f34caf77d7e24c079d0f28fa2dc8018e9491b22d486162b39c24f046",
+      "maximum_step_m": 0.5,
+      "native_access_sampled_blocks": 37754,
+      "native_chunks": 64,
+      "native_composed_blocks": 263098,
+      "native_round_trip": "all written blocks and all unwritten air cells verified",
+      "preserved_previous_voxel_records": 14222,
+      "route_length_m": 7,
+      "source_geometry_cells_modified": 0,
+      "spawn_native_xyz": [
+        11,
+        69,
+        3
+      ],
+      "terrain_excavation_cells": 0,
+      "unresolved_opening_ids": [
+        "door-NW"
+      ]
+    }
+  ],
+  "scope": {
+    "accepted_park_world_blocks_added": 0,
+    "accepted_planning_components": 0,
+    "minecraft_visual_inspection": "not_performed",
+    "training_labels_generated": 0
+  },
+  "source_model_sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+  "tests": {
+    "cases": "Half-slab occupancy, swept headroom, unsupported shapes, absent paths, blocked doors, low roofs, missing terrain, voxel budgets, actual saved-world obstruction and spawn checks, replay and original pilot regressions.",
+    "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+    "elapsed_seconds": 108.551,
+    "passed": 1434
+  },
+  "version": "provisional-access-validation-v1"
+}

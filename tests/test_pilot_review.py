@@ -84,6 +84,9 @@ class PilotReviewTests(unittest.TestCase):
             self.assertEqual(len(component['retained_orientation_alternatives_bng_degrees']), 2)
             self.assertEqual(component['grounding']['terrain_excavation_cells'], 0)
             self.assertTrue(component['grounding']['continuous_terrain_contact'])
+            self.assertTrue(report['access_review']['native_readback']['spawn_supported'])
+            self.assertEqual(report['access_review']['approach']['status'], 'not_requested')
+            self.assertEqual(report['access_review']['native_readback']['minecraft_visual_inspection'], 'not_performed')
             rows = [json.loads(line) for line in (root / 'first/voxels.jsonl').read_text().splitlines()]
             cell = next(row for row in rows if row.get('feature', '').startswith('review/'))
             self.assertFalse(cell['accepted_physical_geometry'])
@@ -97,6 +100,7 @@ class PilotReviewTests(unittest.TestCase):
                 embedded = json.loads(archive.read('voxel-quality-report.json'))
                 self.assertEqual(embedded['quality_status'], 'provisional_component_review')
                 self.assertFalse(embedded['review_component']['world_placement_eligible'])
+                self.assertEqual(embedded['access_review'], report['access_review'])
             second = run(path, root / 'second')
             self.assertEqual(report['output_sha256']['voxels.jsonl'], second['output_sha256']['voxels.jsonl'])
             self.assertEqual(model_before, Path(job['review_component']['model']['file']).read_bytes())
@@ -154,3 +158,14 @@ class PilotReviewTests(unittest.TestCase):
                     run(path, root / 'output')
                 self.assertFalse((root / 'output').exists())
                 self.assertFalse((root / 'output.partial/park.mcworld').exists())
+
+    def test_access_policy_must_be_explicit_and_cannot_claim_verified_geometry(self):
+        for settings in ({}, {'policy': 'verified_access'}, {'policy': 'estimated_half_step_approach_v1', 'accepted': True}):
+            with self.subTest(settings=settings), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                path, job, _ = self.fixture(root)
+                job['review_component']['access'] = settings
+                self.write(path, job)
+                with self.assertRaisesRegex(ValueError, 'access policy'):
+                    run(path, root / 'output')
+                self.assertFalse((root / 'output.partial').exists())

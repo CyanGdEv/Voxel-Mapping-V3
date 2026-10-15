@@ -176,6 +176,10 @@ def run(job_path, output):
         if prepared_review:
             from .pilot_review import append_component
             review_component = append_component(prepared_review, config, quality, staging)
+        access = None
+        if review_component:
+            from .pilot_access import prepare as prepare_access
+            access = prepare_access(staging, quality, review_component, prepared_review['access'], config['max_voxels'])
         accuracy = (quality.get('terrain') or {}).get('coordinate_transform', {}).get('accuracy_m', -1)
         if accuracy < 0 or accuracy > 1:
             quality['issues'].append({'severity': 'warning', 'reason': 'Terrain coordinate operation has unknown or greater-than-one-metre advertised accuracy; no independent placement accuracy established.',
@@ -216,7 +220,12 @@ def run(job_path, output):
         world = None
         if quality['voxel_records']:
             name = 'PROVISIONAL REVIEW — ' + job['name'] if review_component else job['name']
-            world = export_world(staging / 'voxels.jsonl', staging, quality, name, max_blocks=4_000_000)
+            post_check = None
+            if access:
+                from .pilot_access import verify_saved
+                post_check = lambda path, offset, spawn: verify_saved(path, offset, spawn, access)
+            world = export_world(staging / 'voxels.jsonl', staging, quality, name, max_blocks=4_000_000,
+                                 post_export_check=post_check)
             quality['world'] = world
         comparison = None
         if world:
@@ -234,6 +243,7 @@ def run(job_path, output):
             'terrain': quality['terrain'], 'issues': quality['issues'],
             'placement_comparison': comparison,
             'review_component': review_component,
+            'access_review': quality.get('access_review'),
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
                            'minecraft_visual_inspection': 'not_performed',
@@ -259,6 +269,9 @@ def run(job_path, output):
                             'Orientation, floor, materials and foundations remain estimates.',
                             'Retained BNG orientation alternatives: ' + str(review_component['retained_orientation_alternatives_bng_degrees']),
                             'Explicit review floor: ' + str(review_component['floor_elevation_m']) + ' m; datum role unverified.']
+            description += ['', 'Native access review: ' + quality['access_review']['status'],
+                            'See access-review.json for supported spawn, headroom, half-step routes and unresolved openings.',
+                            'Estimated approaches do not establish real site access or accessible-design compliance.']
         for task in tasks:
             description += ['', task['title'] + ':', *['- ' + value for value in task['required_evidence']]]
         (staging / 'README.txt').write_text('\n'.join(description) + '\n', encoding='utf-8')
@@ -270,7 +283,7 @@ def run(job_path, output):
         if comparison:
             artifacts += ['placement-comparison.json', 'placement-comparison.svg']
         if review_component:
-            artifacts += ['review-component.json']
+            artifacts += ['review-component.json', 'access-review.json', 'access-review.svg']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
         _write(staging / 'pilot-report.json', report)
         staging.rename(output)
