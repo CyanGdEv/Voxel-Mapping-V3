@@ -278,7 +278,7 @@ def compare(candidate,markers,regions,opening_views,gaps,plan_inverse,unit,layou
                         bounds=shape(region['display_geometry']).bounds;factor=region['nominal_metres_per_pdf_point_candidate']
                         region_width=(bounds[2]-bounds[0])*factor
                         if len(scans)==1:
-                            query=indexed_opening_correspondence.compare(scans[0],projection,frame,region,opts['dimension_tolerance_m'],charge)
+                            query=indexed_opening_correspondence.compare(scans[0],projection,frame,region,opts['dimension_tolerance_m'],charge,source_regions=view_regions)
                             indexed_queries.append({k:v for k,v in query.items() if k!='matches'})
                             indexed_matches.extend(query['matches'])
                         for opening in openings:
@@ -379,6 +379,8 @@ def prepare(config,resolve,output):
         'continuous_source_run_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['source_paint_width_comparisons'] if 'source_run_id' in m),
         'opening_position_matches':sum(len(v['opening_position_matches']) for r in results for v in r['views']),
         'indexed_opening_position_matches':sum(len(v['indexed_opening_position_matches']) for r in results for v in r['views']),
+        'indexed_matches_with_relative_level_review':sum(m['relative_height_and_component_review']['status']=='unverified_source_relative_height_and_component' for r in results for v in r['views'] for m in v['indexed_opening_position_matches']),
+        'indexed_matches_near_printed_shop_level':sum(m['relative_height_and_component_review'].get('bottom_within_shop_level_discovery_tolerance',False) for r in results for v in r['views'] for m in v['indexed_opening_position_matches']),
         'restoration_region_width_matches':sum(m['within_discovery_tolerance'] for r in results for v in r['views'] for m in v['restoration_region_width_comparisons']),
         'ambiguous_restoration_separator_groups':sum(a['multiple_compatible_separator_alternatives'] for r in results for v in r['views'] for a in v['restoration_separator_ambiguities']),
         'selected_physical_footprint_id':None,'complete_building_specs_generated':0,

@@ -202,3 +202,39 @@ hypotheses: component identity and independent vertical alignment are still
 required before any could become a physical opening. No complete building or
 training label was generated. The original-source receipt is
 `evidence/wicker-indexed-openings-2026-10-15.json`.
+
+Opening matches now receive a separate relative-height and component review.
+Native level extraction requires a small four-curve circle, two opposite black
+quadrant fills with recovered source clipping, one source horizontal datum-line
+endpoint within 0.3 PDF point, one visible numeric level label above the marker,
+and one source-linked numbered-view scope. The marker must sit outside the
+artwork window horizontally within 128 PDF points, at a height inside that
+window. These are declared discovery bounds; no endpoints are snapped or lines
+extended into physical geometry. Missing or competing links are withheld.
+
+All quadrant fill, clip, circle, datum-line and label source identities remain
+in `facades/building-0000/elevation-levels.json`. The printed Shop Level must be
+unique within its numbered view. Multiple linked levels retain signed printed
+and nominal geometric differences; a discrepancy greater than 0.01 m withholds
+the relative-height basis. Missing second levels leave the nominal paper scale
+unchecked. Neither agreement nor the wording "Shop Level" verifies a finished
+floor, physical component, level units or survey datum.
+
+For each indexed match, unchanged pixel bounds map through the original source
+transforms to nominal top/bottom heights above the printed Shop Level. Bottom
+proximity uses the existing 0.25 m discovery tolerance. It never changes the
+horizontal candidate inventory or labels a door/window. Source/view/scale
+mismatches withhold the relative-height review. Same-view wall regions receive
+separate rectangle intersection/coverage diagnostics, with complete physical
+wall scope kept unverified: openings may be holes and material regions may be
+partial, so lack of paint overlap does not prove absence of a wall or opening.
+
+Fresh original-source replay links six level references and withholds one
+split-label marker. The northeast Shop/Ride-Exit difference has approximately
+0.00284 m nominal residual against the printed 0.92 m difference. All 180
+indexed horizontal matches receive relative-height reviews: their lower edge
+is about 2.745 m and upper edge about 3.333 m above printed Shop Level. Zero
+matches satisfy the Shop-Level bottom-proximity discovery screen. They remain
+horizontal drafting hypotheses; no physical floor, wall, opening or survey
+datum is verified. Receipt:
+`evidence/wicker-opening-relative-levels-2026-10-15.json`.
