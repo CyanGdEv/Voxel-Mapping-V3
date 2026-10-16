@@ -118,3 +118,8 @@ as generation errors. Minecraft playtesting, independent building identity,
 placement, source dimension disputes and the floor datum still need review.
 The validation receipt in `docs/evidence/doorway-review/` retains exact artifact
 hashes, source-grid approximation and replay checks.
+
+The subsequent [native walkthrough](native-world-walkthrough.md) adds complete
+spawn-to-interior route witnesses and a guide/result form for testing this
+same geometry in Minecraft. It also rejects the case where two disconnected
+mapped approaches appear reachable only through another entrance's interior.

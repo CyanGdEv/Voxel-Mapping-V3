@@ -87,6 +87,11 @@ class PilotReviewTests(unittest.TestCase):
             self.assertTrue(report['access_review']['native_readback']['spawn_supported'])
             self.assertEqual(report['access_review']['approach']['status'], 'not_requested')
             self.assertEqual(report['access_review']['native_readback']['minecraft_visual_inspection'], 'not_performed')
+            form = json.loads((root / 'first/playtest-results.json').read_text())
+            self.assertEqual(form['world']['sha256'], report['world']['sha256'])
+            self.assertEqual(form['training_labels_generated'], 0)
+            self.assertFalse(form['accepted_physical_geometry'])
+            self.assertTrue(all(check['outcome'] == 'not_run' for check in form['checks']))
             rows = [json.loads(line) for line in (root / 'first/voxels.jsonl').read_text().splitlines()]
             cell = next(row for row in rows if row.get('feature', '').startswith('review/'))
             self.assertFalse(cell['accepted_physical_geometry'])

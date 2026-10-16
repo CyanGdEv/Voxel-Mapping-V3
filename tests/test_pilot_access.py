@@ -11,10 +11,30 @@ from amulet.api.block import Block
 from shapely.geometry import box, mapping
 
 from voxel_mapper.bedrock import export_world, material_block
-from voxel_mapper.pilot_access import Scene, collision, prepare, verify_saved
+from voxel_mapper.pilot_access import Scene, collision, prepare, verify_saved, _walkthrough, _shortest_path
 
 
 class CollisionTests(unittest.TestCase):
+    def test_walkthrough_keeps_half_steps_and_centres_negative_native_coordinates(self):
+        scene = Scene({(-2, -3): [(0, 2, 2)], (-1, -3): [(0, 3, 3)],
+                       (0, -3): [(0, 4, 4)], (1, -3): [(0, 4, 4)]}, (-3, -4, 4, 1))
+        route = _walkthrough(scene, (-2, -3, 2), {(0, -3, 4)}, {(0, -3)},
+                             box(0, -4, 4, 0), 4, 64)
+        self.assertEqual(route['status'], 'native_route_ready')
+        self.assertEqual(route['route_native_xyz'],
+                         [[-1.5, 65, 3.5], [-.5, 65.5, 3.5], [.5, 66, 3.5], [1.5, 66, 3.5]])
+        self.assertEqual(route['doorway_index'], 2)
+        self.assertEqual(route['horizontal_length_m'], 3)
+        self.assertEqual(route['minecraft_playtest'], 'not_performed')
+
+    def test_witness_search_respects_obstructions_and_its_work_budget(self):
+        scene = Scene({(x, 0): [(0, 2, 2)] for x in range(5)}, (0, 0, 4, 0))
+        self.assertEqual(_shortest_path(scene, [(0, 0, 2)], lambda p: p[0] == 4,
+                                        lambda p: p[0] != 2), [])
+        with patch('voxel_mapper.pilot_access.MAX_SEARCH_STATES', 2):
+            with self.assertRaisesRegex(ValueError, 'witness search budget'):
+                _shortest_path(scene, [(0, 0, 2)], lambda p: p[0] == 4)
+
     def test_slabs_have_distinct_bearing_heights_and_leave_correct_half_air(self):
         self.assertEqual(collision(material_block('stone_slab')), (0, 1, 1))
         self.assertEqual(collision(material_block('stone_slab_top')), (1, 2, 2))
@@ -101,6 +121,12 @@ class AccessWorldTests(unittest.TestCase):
                 embedded = json.loads(archive.read('voxel-quality-report.json'))
                 self.assertEqual(embedded['access_review'], report)
             self.assertEqual(json.loads((root / 'access-review.json').read_text()), report)
+            witness = report['native_readback']['openings'][0]['walkthrough']
+            self.assertEqual(witness['status'], 'native_route_ready')
+            self.assertEqual(witness['route_native_xyz'][0], [-3.5, 65, -.5])
+            self.assertEqual(witness['route_native_xyz'][-1], [1.5, 67, -.5])
+            self.assertEqual(witness['route_native_xyz'][witness['doorway_index']], [.5, 67, -.5])
+
 
     def test_audit_only_adds_no_geometry_and_still_sets_supported_spawn(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -218,6 +244,28 @@ class AccessWorldTests(unittest.TestCase):
             self.assertTrue(other['reachable_from_spawn'])
             self.assertFalse(other['exterior_route_from_mapped_path'])
             self.assertEqual(report['unresolved_opening_ids'], ['other-door'])
+
+    def test_two_mapped_islands_cannot_make_an_interior_detour_a_spawn_walkthrough(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            quality, component, rows = self.fixture(root, second_door=True)
+            # Two separate elevated mapped approaches meet the same floor. Their
+            # only connection to one another runs through the building interior.
+            rows = [row for row in rows if row.get('feature') != 'osm/test-path']
+            rows += [dict(x=x, y=2, z=1, kind='path', feature='osm/island', material='stone')
+                     for x in (-4, -3, -2, -1, 4, 5)]
+            (root / 'voxels.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in rows))
+            quality['voxel_records'] = len(rows)
+            prepared, _ = self.build(root, quality, component, settings=None)
+            report = prepared['report']['native_readback']
+            other = next(o for o in report['openings'] if o['id'] == 'other-door')
+            self.assertTrue(other['reachable_from_spawn'])
+            self.assertTrue(other['exterior_route_from_mapped_path'])
+            self.assertEqual(other['walkthrough']['status'], 'unresolved')
+            self.assertEqual(other['walkthrough']['route_native_xyz'], [])
+            self.assertIn('other-door', report['unresolved_opening_ids'])
+            first = next(o for o in report['openings'] if o['id'] == 'test-door')
+            self.assertEqual(first['walkthrough']['status'], 'native_route_ready')
 
     def test_explicit_per_opening_policy_builds_and_verifies_both_external_routes(self):
         with tempfile.TemporaryDirectory() as temporary:
