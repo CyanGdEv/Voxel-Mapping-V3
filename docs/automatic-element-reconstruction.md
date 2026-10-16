@@ -1,5 +1,10 @@
 # Automatic element reconstruction
 
+The opt-in [evidence-directed acquisition](evidence-directed-acquisition.md)
+can now bootstrap missing source PDFs, follow the evidence queue and refresh
+extraction before alignment and recipe preparation, without per-object prompts.
+It does not qualify unsupported drawing semantics or missing registration.
+
 Automatic recipe contract v5 runs [survey landmark discovery](survey-landmark-discovery.md)
 and a separate [registration qualification](registration-qualification.md)
 preflight before component reconstruction. Both supported drawing adapters use

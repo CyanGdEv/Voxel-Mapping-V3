@@ -103,7 +103,7 @@ class Corpus:
                 'world_geometry_additions':0,'geometry_status':'PDF vectors and labels require semantics, existing-state review and registration'}
 
     def acquire(self, *, workers=4, limit=10000, attempts=3, max_bytes=64_000_000,
-                max_run_bytes=2_000_000_000, interval=1., cache=None, offline=False, fetch=None, priority_urls=None):
+                max_run_bytes=2_000_000_000, interval=1., cache=None, offline=False, fetch=None, priority_urls=None, only_urls=None):
         if not 1<=workers<=8 or not 1<=limit<=100000 or not 1<=attempts<=10 or max_bytes<=0 or max_run_bytes<=0 or interval<0:
             raise ValueError('Invalid acquisition budgets')
         priority_urls=[] if priority_urls is None else priority_urls
@@ -113,9 +113,16 @@ class Corpus:
             raise ValueError('Distinct bounded known attachment priorities required')
         if any(not self.db.execute('SELECT 1 FROM downloads WHERE url=?',(url,)).fetchone() for url in priority_urls):
             raise ValueError('Priority attachment must already be in the official source catalogue')
+        if only_urls is not None:
+            if (not isinstance(only_urls,(list,tuple)) or not 1<=len(only_urls)<=128
+                    or any(not isinstance(url,str) for url in only_urls) or len(set(only_urls))!=len(only_urls)
+                    or any(not self.db.execute('SELECT 1 FROM downloads WHERE url=?',(url,)).fetchone() for url in only_urls)
+                    or not set(priority_urls)<=set(only_urls)):
+                raise ValueError('Distinct bounded known attachment selection required')
         # Recheck retained bytes; a completed DB flag never bypasses checksums.
         with self.db:
             for url,pin,status,sha in self.db.execute('SELECT url,expected_sha,status,sha FROM downloads').fetchall():
+                if only_urls is not None and url not in only_urls:continue
                 candidates=[self.root/'files'/f'{sha}.pdf'] if sha else []
                 if pin:candidates.append(self.root/'files'/f'{pin}.pdf')
                 if cache and pin:candidates.append(Path(cache)/'files'/f'{pin}.pdf')
@@ -135,7 +142,12 @@ class Corpus:
                 elif offline and (pin or sha) and status=='pending':
                     self.db.execute('UPDATE downloads SET error=? WHERE url=?',('Retained blob '+issue,url))
         if offline:return self.report()
-        if priority_urls:
+        if only_urls is not None:
+            slots=','.join('?' for _ in only_urls)
+            jobs=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? AND url IN ("+slots+") ORDER BY url",(attempts,*only_urls)).fetchall()
+            ranks={url:i for i,url in enumerate(priority_urls)}
+            jobs.sort(key=lambda row:(ranks.get(row[0],len(ranks)),row[0]));jobs=jobs[:limit]
+        elif priority_urls:
             slots=','.join('?' for _ in priority_urls)
             preferred=self.db.execute("SELECT url,expected_sha,transport_url FROM downloads WHERE status!='downloaded' AND attempts<? AND url IN ("+slots+")",(attempts,*priority_urls)).fetchall()
             ranks={url:i for i,url in enumerate(priority_urls)};preferred.sort(key=lambda row:ranks[row[0]])

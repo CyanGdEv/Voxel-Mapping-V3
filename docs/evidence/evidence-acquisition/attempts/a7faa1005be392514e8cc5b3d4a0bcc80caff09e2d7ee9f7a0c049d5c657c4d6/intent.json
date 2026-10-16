@@ -1,0 +1,11 @@
+{
+  "queue_sha256": "34aae106c0ddfa91b607e241d38c66c47132af8e4b01c2c13e203fed808572b7",
+  "request": {
+    "expected_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+    "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+    "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+    "version": "evidence-directed-acquisition-v1"
+  },
+  "reserved_bytes": 16000000,
+  "task_ids": []
+}

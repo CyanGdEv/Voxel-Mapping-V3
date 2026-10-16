@@ -58,6 +58,12 @@ and planning acceptance.
 
 ## Whole-park batch jobs
 
+The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
+bootstraps known planning drawings from an empty corpus, follows missing-evidence
+requirements, and refreshes extraction after bounded downloads. Attempt receipts
+prevent unchanged failed requests from repeating on restart; source matches do
+not authorize physical geometry.
+
 The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,
 normalizes source-linked geometry feeds, and reconstructs/export chunks through a
 resumable disk-backed job. The compiler has been exercised with 150,000 synthetic

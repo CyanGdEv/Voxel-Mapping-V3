@@ -1,0 +1,14 @@
+{
+  "charged_network_bytes": 135946,
+  "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+  "error": null,
+  "geometry_export_authorized": false,
+  "recovered_after_interruption": false,
+  "request": {
+    "expected_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+    "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+    "version": "evidence-directed-acquisition-v1"
+  },
+  "status": "downloaded"
+}
