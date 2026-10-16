@@ -1,0 +1,27 @@
+{
+  "base_commit": "2e4054b5bd7379f288318f068564d76f80b31a69",
+  "code_sha256": {
+    "scripts/audit_drawing_view_candidates.py": "66582a363c493e5a81e59c8271e2b341140a06ca5cec5100d1be11a259a699e7",
+    "scripts/plot_drawing_view_candidates.py": "657e5099afe9f48df6bea675ad3b4129e71cbf5e3a29887a48592753fd82c41c",
+    "tests/test_drawing_view_candidates.py": "18615918165aed01c27311281de2af769acc8689c712b10516b505421bb165b3",
+    "voxel_mapper/architectural_view_layout.py": "4e7297be9c48e28247bba352774e5d20276177416bdeba737c26e1076803def3",
+    "voxel_mapper/area_cycles.py": "0bc983f7151b4eb758ccfd88c3c1625b07529e46c8a153af4b62aacba1d43514",
+    "voxel_mapper/area_reconstruction.py": "b57397687582b8f0757bbb94236af128986674e4d56708d85fb78797d16b3e30",
+    "voxel_mapper/caption_fragments.py": "62210bf5b218a9bd0e2338df5442a56ad6b696403bea038ddf7bd5acd853ae5d",
+    "voxel_mapper/drawing_view_candidates.py": "1be60c650d3e4a8897d8684adb2514786542b24f0c1f0590e653077051027ffa"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "4b51fae437f0ec6871c5e1b1eac62071e5db0dfb0304de553fd4120ca98dbd3b",
+  "focused_tests": 13,
+  "full_suite_log_sha256": "0efaf1021c0b5c676c1b8fb3443db16bbe804671ac1d1e761df257dff76ff537",
+  "python": "3.12",
+  "real_source_audits": {
+    "ordinary-site-title-audit.json": "3791dd3f1c1c682b02ea2e7ce2185b9346e29a1c0402ba027e4f31dfe1859267",
+    "wicker-view-audit.json": "8151dd32555b7e1f33b12451f0de5b0513234c52157d086c8490c9860172c766"
+  },
+  "scope": "Local full suite and offline original-PDF audits; no Minecraft-client visual test or accepted reconstruction.",
+  "seconds": 151.199,
+  "status": "passed",
+  "tests": 1539,
+  "version": "drawing-view-local-validation-v1"
+}

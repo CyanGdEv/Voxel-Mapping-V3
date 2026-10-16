@@ -13,10 +13,11 @@ from .glyph_visibility import screen_architectural_span
 from .elevation_interpretation import caption
 from .architectural_graph import VERSION as GRAPH_VERSION
 
-VERSION='architectural-caption-layout-v2'
+VERSION='architectural-caption-layout-v3'
 
 
 def view_claim(text):
+    if not isinstance(text,str) or len(text)>500:return None
     elevation=caption(text)
     if elevation:return {**elevation,'view_kind':'elevation' if elevation['kind']=='view_caption' else 'sheet_title'}
     value=re.sub(r'\s+','',text.lower())
@@ -34,7 +35,25 @@ def view_claim(text):
     if plan:kind='plan';state=plan[3] or plan[1] or 'unspecified';denominator=plan[4]
     elif key:kind='key_plan';state='unspecified';denominator=key[2]
     elif section:kind='section';state=section[3] or 'unspecified';denominator=section[4]
-    else:return None
+    else:
+        # Exact ordinary captions only. A title's existing/proposed claim stays
+        # attached to that caption; surrounding prose and catalogue state do not.
+        ordinary=re.fullmatch(r"(?:(existing|proposed)\s+)?(site|block|location|(?:ground|first|second)\s+floor|roof)\s+plan(?:\s+(?:as\s+)?(existing|proposed))?(?:\s+showing\s+([A-Za-z][A-Za-z0-9 -]{0,79}))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
+        cardinal=re.fullmatch(r"(?:(existing|proposed)\s+)?(north(?:[ -]?(?:east|west))?|south(?:[ -]?(?:east|west))?|east|west)\s+elevation(?:\s+(?:as\s+)?(existing|proposed))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
+        match=ordinary or cardinal
+        if not match:return None
+        if match[1] and match[3] and match[1].lower()!=match[3].lower():return None
+        scale_text=match[5] if ordinary else match[4]
+        scale=int(scale_text) if scale_text else None
+        if scale is not None and not 1<=scale<=10000:return None
+        sheet_title=bool(ordinary and match[2].lower() in ('site','block','location'))
+        return {'kind':'sheet_title' if sheet_title else 'view_caption',
+            'view_kind':'sheet_title' if sheet_title else 'plan' if ordinary else 'elevation',
+            'plan_level_or_form':re.sub(r'\s+','',match[2].lower()) if ordinary else None,
+            'caption_subject':match[4] if ordinary else None,
+            'direction':None if ordinary else re.sub(r'[ -]','',match[2].lower()),
+            'printed_state':(match[3] or match[1] or 'unspecified').lower(),
+            'printed_scale_denominator':scale}
     scale=int(denominator) if denominator else None
     if scale is not None and not 1<=scale<=10000:return None
     prefix=re.match(r'^(\d{1,3})\.',value) if plan else None
@@ -61,20 +80,32 @@ def review(page,sha,number,graph,*,max_assignments=100000):
         return {'text':''.join(chr(c[0]) for c in run['chars']).strip(),'label_geometry':mapping(Polygon([(p.x,p.y) for p in points])),
             'reading_direction_pdf_native':[v/length for v in vector],'trace_indices':run['trace_indices'],
             'character_indices':run['character_indices'],'glyph_screen':screen_architectural_span(page,run,zoom=24 if run['size']<4 else 6)}
-    for run in label_runs(traces):
+    runs=list(label_runs(traces))
+    from .caption_fragments import collect
+    joined,fragment_status,fragment_contexts=collect(page,runs,view_claim,retained)
+    grouped={json.dumps(key) for context in fragment_contexts for key in context['fragment_keys']}
+    def add_caption(evidence,claim):
+        if len(views)+len(titles)>=128:raise ValueError('View-caption budget exceeded')
+        row={**evidence,'printed_claim':claim}
+        row['id']=hashlib.sha256(json.dumps([VERSION,sha,number,row],sort_keys=True).encode()).hexdigest()
+        row.update(view_scope_verified=False,scale_application_verified=False,physical_identity_verified=False,
+            layout_candidate_status='glyph_screen_withheld' if row['glyph_screen']['status']!='raster_consistent_candidate' else
+                'inline_scale_layout_candidate' if claim.get('printed_scale_denominator') is not None else 'unscaled_caption_scope_withheld')
+        (titles if claim['kind']=='sheet_title' else views).append(row)
+    for run in runs:
         text=''.join(chr(c[0]) for c in run['chars']).strip();claim=view_claim(text)
         scale=re.fullmatch(r'(?:scale\s*)?1\s*:\s*(\d{1,5})(?:\s*@\s*A[0-4])?',text,re.I)
-        if claim:
-            if len(views)+len(titles)>=128:raise ValueError('View-caption budget exceeded')
-            row={**retained(run),'printed_claim':claim}
-            row['id']=hashlib.sha256(json.dumps([VERSION,sha,number,row],sort_keys=True).encode()).hexdigest()
-            row.update(view_scope_verified=False,scale_application_verified=False,physical_identity_verified=False,
-                layout_candidate_status='glyph_screen_withheld' if row['glyph_screen']['status']!='raster_consistent_candidate' else
-                    'inline_scale_layout_candidate' if claim.get('printed_scale_denominator') is not None else 'unscaled_caption_scope_withheld')
-            (titles if claim['kind']=='sheet_title' else views).append(row)
+        if claim and json.dumps([run['trace_indices'],run['character_indices']]) not in grouped:
+            add_caption(retained(run),claim)
         if scale and 1<=int(scale[1])<=10000:
             if len(scales)>=128:raise ValueError('Page scale-claim budget exceeded')
             scales.append({**retained(run),'printed_denominator':int(scale[1]),'view_assignment_verified':False})
+    for evidence,claim in joined:add_caption(evidence,claim)
+    if fragment_status=='caption_fragment_budget_withheld':
+        for row in views+titles:
+            row['glyph_screen']={'status':'withheld','reason':'Complete caption fragment context budget required',
+                'original_screen':row['glyph_screen']}
+            row['layout_candidate_status']='glyph_screen_withheld'
     page_denominators=sorted({s['printed_denominator'] for s in scales})
     for row in views:
         denominator=row['printed_claim'].get('printed_scale_denominator')
@@ -151,6 +182,8 @@ def review(page,sha,number,graph,*,max_assignments=100000):
         'source_graph_sha256':hashlib.sha256(json.dumps(graph,sort_keys=True).encode()).hexdigest(),
         'status':'layout_assignment_budget_withheld' if exhausted else 'caption_layout_hypotheses_only',
         'view_captions':views,'sheet_titles':titles,'page_scale_claims':scales,'candidate_windows':windows,
+        'caption_fragment_status':fragment_status,
+        'native_fragment_line_contexts':fragment_contexts,
         'component_membership':membership,'subgraph_membership':groups,'checks':checks,'max_assignments':max_assignments,
         'counts':{**dict(counts),'view_captions':len(views),'candidate_windows':len(windows),'scoped_subgraph_candidates':sum(len(g['candidate_window_ids'])==1 for g in groups)},
         'view_scope_verified':False,'scale_application_verified':False,'world_geometry_additions':0,

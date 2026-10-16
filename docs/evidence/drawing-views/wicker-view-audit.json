@@ -1,0 +1,205 @@
+{
+  "accepted_physical_components": 0,
+  "fresh_replay_artifact_hashes_identical": 13,
+  "job_sha256": "e67742645bac39a4c1e8354840417076bb22d4d7b0891d0c4960fdba600c855a",
+  "limits": "Candidate review scopes and nominal source measurements; no physical building, mesh assembly or geographic placement is accepted.",
+  "nominal_scaled_views": 6,
+  "output_sha256": {
+    "view-candidates.json": "dd3c8848cc122612681ccac50a41c974c499bceb12b34357b6202faa2c6cf757",
+    "views/060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46/receipt.json": "f37de70261b255db3f3a465f1a19e2ce4151df7ccc0e64dd1c9cfd691f862f4f",
+    "views/060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46/view.png": "e8773a1e3c23f65e0981fa98596c3837cd99c6a9ba69430f5ae240160e6e7392",
+    "views/164850462a695817d258412abe7c0a89f9b044d1d1cc86c17e7a8b2c657efd61/receipt.json": "6d92c77f80150fa18183c7067b5628acb74f7a7de04808781353f51eab8a6820",
+    "views/164850462a695817d258412abe7c0a89f9b044d1d1cc86c17e7a8b2c657efd61/view.png": "54b10915c124854d2bc875b9249cb2b428f204b421491b6cf0dbbcd3f3c1989b",
+    "views/207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e/receipt.json": "4aa8abc2cc7ec80c2978854b00b6bea3e232c07b5cf002050b5a5fc449dd31a4",
+    "views/207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e/view.png": "8ef882f52397a617c1b7868632b025c8bdf4031ce7778779c3dad95d6061bd9d",
+    "views/8199f2efbf8e0236cfb59472f4c96ff0d17109a0174a21b2e15bfc969638420e/receipt.json": "6cad66d7d87ff20f4bbaac02ae7c52fa98426ff56a9d7bb4b7078a7c5dd68a37",
+    "views/8199f2efbf8e0236cfb59472f4c96ff0d17109a0174a21b2e15bfc969638420e/view.png": "d044d8ca4651fb3641a319870dc94e1d36229be309a7dc22909f715568f87e28",
+    "views/be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff/receipt.json": "a5b33f0154397c4f73de813b04844b7f983837fd3ae7d5915fdf5250ffbae583",
+    "views/be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff/view.png": "44ddb62dbeac5386800eb2d7f6f9798047534f47199a097d65b88080fbdf61b1",
+    "views/ecd11f4d31c7942263518aa05114c6c49583df8bef8d3572fe60ac3cea957d12/receipt.json": "c33271f1251eb0bf88b1340729a68fe005789394f57c9a6a48053cfb1ac9f402",
+    "views/ecd11f4d31c7942263518aa05114c6c49583df8bef8d3572fe60ac3cea957d12/view.png": "ade36d21e3c3e307098ec65a27681f2353bc065b759758e389bb5cffb2ee97e8"
+  },
+  "pages": 3,
+  "sheet_title_claims": [
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "fragment_count": 0,
+      "page": 1,
+      "printed_claim": {
+        "kind": "sheet_title",
+        "plan_level_or_form": "roof",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "sheet_title"
+      },
+      "text": "Overall Roof Plan",
+      "view_scope_verified": false
+    },
+    {
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "fragment_count": 0,
+      "page": 1,
+      "printed_claim": {
+        "kind": "sheet_title",
+        "plan_level_or_form": "roof",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "sheet_title"
+      },
+      "text": "Overall Roof Plan",
+      "view_scope_verified": false
+    }
+  ],
+  "source_contract": {
+    "caption_implementation_sha256": "4e7297be9c48e28247bba352774e5d20276177416bdeba737c26e1076803def3",
+    "caption_version": "architectural-caption-layout-v3",
+    "drawing_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "drawing_feed_sha256": "58f13ea97768155ca3f88596b330029c7100a543d2b7c2f20493c438cfc3ee28",
+    "fragment_implementation_sha256": "62210bf5b218a9bd0e2338df5442a56ad6b696403bea038ddf7bd5acd853ae5d",
+    "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+    "glyph_version": "source-font-glyph-raster-screen-v5",
+    "implementation_sha256": "1be60c650d3e4a8897d8684adb2514786542b24f0c1f0590e653077051027ffa",
+    "options": {
+      "max_checks": 100000,
+      "max_pages": 8,
+      "render_width": 1200
+    },
+    "pymupdf_version": "1.28.2",
+    "raster_version": "building-raster-view-v1",
+    "source_sha256": [
+      "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+    ],
+    "version": "automatic-drawing-view-candidates-v1"
+  },
+  "source_membership_counts": {
+    "crossing_or_competing_candidates": 31,
+    "one_whole_source_candidate": 3552,
+    "outside_candidates": 104
+  },
+  "status": "passed",
+  "training_labels_generated": 0,
+  "version": "automatic-drawing-view-audit-v1",
+  "view_candidates": 6,
+  "views": [
+    {
+      "caption": "00. Overall Ground Floor Plan",
+      "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "id": "8199f2efbf8e0236cfb59472f4c96ff0d17109a0174a21b2e15bfc969638420e",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "d044d8ca4651fb3641a319870dc94e1d36229be309a7dc22909f715568f87e28",
+      "printed_claim": {
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "plan_level_or_form": "groundfloor",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "plan",
+        "view_number": 0
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 386
+    },
+    {
+      "caption": "Roof Plan",
+      "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "id": "164850462a695817d258412abe7c0a89f9b044d1d1cc86c17e7a8b2c657efd61",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "54b10915c124854d2bc875b9249cb2b428f204b421491b6cf0dbbcd3f3c1989b",
+      "printed_claim": {
+        "kind": "view_caption",
+        "plan_level_or_form": "roof",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "plan"
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 2969
+    },
+    {
+      "caption": "Elevation 1 to the S.East",
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "id": "060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "e8773a1e3c23f65e0981fa98596c3837cd99c6a9ba69430f5ae240160e6e7392",
+      "printed_claim": {
+        "direction": "southeast",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 1
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 40
+    },
+    {
+      "caption": "Elevation 2 to the S.West",
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "id": "be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "44ddb62dbeac5386800eb2d7f6f9798047534f47199a097d65b88080fbdf61b1",
+      "printed_claim": {
+        "direction": "southwest",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 2
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 58
+    },
+    {
+      "caption": "Elevation 3 to the N. West",
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "id": "207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "8ef882f52397a617c1b7868632b025c8bdf4031ce7778779c3dad95d6061bd9d",
+      "printed_claim": {
+        "direction": "northwest",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 3
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 56
+    },
+    {
+      "caption": "Elevation 4 to the N. East",
+      "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "id": "ecd11f4d31c7942263518aa05114c6c49583df8bef8d3572fe60ac3cea957d12",
+      "nominal_metres_per_pdf_point": 0.035277777777777776,
+      "page": 1,
+      "png_sha256": "ade36d21e3c3e307098ec65a27681f2353bc065b759758e389bb5cffb2ee97e8",
+      "printed_claim": {
+        "direction": "northeast",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 4
+      },
+      "source_view_scope_verified": false,
+      "whole_sources": 43
+    }
+  ],
+  "whole_source_kinds": {
+    "native_vector": 3528,
+    "raster_placement": 24
+  },
+  "whole_source_objects_checked": 3552,
+  "world_geometry_additions": 0
+}
