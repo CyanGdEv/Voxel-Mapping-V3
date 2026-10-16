@@ -1,0 +1,98 @@
+{
+  "absolute_finished_levels_applied": 0,
+  "accepted_physical_geometry": false,
+  "artifact_hashes_checked": 24,
+  "baseline_world_sha256": "e7e3f96852f6a422a6260092e067bc1952b32fe147e94dc3436e1e94f461eb1b",
+  "before": {
+    "adjacent_walking_surface_barriers": 577,
+    "mapped_reachable_cells_any_walking": 1649,
+    "mapped_reachable_cells_on_walking_surfaces": 536,
+    "mapped_supported_cells": 1673,
+    "planning_review_reachable_cells_any_walking": 5888,
+    "planning_review_reachable_cells_on_walking_surfaces": 3298,
+    "planning_review_supported_cells": 5956,
+    "walking_surface_components": 97
+  },
+  "mapped_supports_native_checked": 1673,
+  "minecraft_playtest": "not_performed",
+  "native_added_bottom_stone_slabs": 54,
+  "native_after": {
+    "adjacent_walking_surface_barriers": 491,
+    "mapped_reachable_cells_any_walking": 1649,
+    "mapped_reachable_cells_on_walking_surfaces": 1397,
+    "mapped_supported_cells": 1673,
+    "planning_review_reachable_cells_any_walking": 5935,
+    "planning_review_reachable_cells_on_walking_surfaces": 5181,
+    "planning_review_supported_cells": 5956,
+    "walking_surface_components": 36
+  },
+  "native_cells_compared": 15335424,
+  "native_height_range_inclusive": [
+    -64,
+    319
+  ],
+  "native_nonzero_adjacent_height_gaps_checked": 99,
+  "native_original_blocks_modified_or_removed": 0,
+  "native_route_count": 14,
+  "native_route_points_checked": 1281,
+  "original_input_assets_identical": true,
+  "planning_paving_supports_native_checked": 5956,
+  "preexisting_nonzero_height_gaps_enlarged": 0,
+  "ready_paved_plaza_entrance_routes": 6,
+  "replay_identical_files": [
+    "inputs.json",
+    "voxels.jsonl",
+    "features-local.geojson",
+    "review-component.json",
+    "access-review.json",
+    "navigation-review.json",
+    "navigation-review.svg",
+    "path-steps-review.json",
+    "context-review.json",
+    "placement-comparison.json",
+    "planning-surfaces-review.json",
+    "planning-surfaces-source.geojson",
+    "planning-surfaces-local.geojson",
+    "planning-paving-joins-review.json",
+    "planning-paving-levels-review.json"
+  ],
+  "retained_level_claims": 25,
+  "source_component_byte_identical": true,
+  "source_polygon_files_byte_identical": true,
+  "source_records_byte_identical": true,
+  "status": "passed",
+  "training_labels_generated": 0,
+  "unresolved_connections": [
+    {
+      "opening_id": "door-NW",
+      "plaza_feature_id": "review/planning-paving/004"
+    },
+    {
+      "opening_id": "door-NW",
+      "plaza_feature_id": "review/planning-paving/017"
+    },
+    {
+      "opening_id": "door-NW",
+      "plaza_feature_id": "review/planning-paving/022"
+    }
+  ],
+  "unresolved_paved_plaza_entrance_routes": 3,
+  "version": "wicker-planning-paving-join-cold-check-v1",
+  "withheld_feature_ids_remain_without_geometry": [
+    "osm/way/107026704",
+    "osm/way/1182076343",
+    "osm/way/1182178170",
+    "osm/way/1182178172",
+    "osm/way/1182179734",
+    "osm/way/453986307",
+    "osm/way/453986308",
+    "osm/way/536931482",
+    "osm/way/536931484"
+  ],
+  "world_sha256": "bea7ceb010679101ae52b8ca13c3946d6f643014dd119d954ed1682387ab4fe9",
+  "world_spawn_native_xyz": [
+    11,
+    71,
+    3
+  ]
+}

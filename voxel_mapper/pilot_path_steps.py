@@ -44,6 +44,47 @@ def _row(node, source):
             'mapped_source_cell': {key: source[key] for key in ('feature', 'x', 'y', 'z')}}
 
 
+def _select_joins(scene, walking, spawn, candidates, limit):
+    """Choose deterministic component joins and lock their upper endpoints."""
+    parents, sizes = {node: node for node in walking}, {node: 1 for node in walking}
+    def find(node):
+        while node != parents[node]:
+            parents[node] = parents[parents[node]]
+            node = parents[node]
+        return node
+    def union(a, b):
+        a, b = find(a), find(b)
+        if a != b:
+            if sizes[a] < sizes[b]:
+                a, b = b, a
+            parents[b] = a
+            sizes[a] += sizes[b]
+    for node in sorted(walking):
+        for other in scene.neighbours(node):
+            if other in walking:
+                union(node, other)
+    selected, locked = {}, set()
+    for _ in range(limit):
+        best = None
+        for node, upper in candidates.items():
+            if node in selected or node in locked:
+                continue
+            links = [other for other in upper if other not in selected and find(other) != find(node)]
+            groups = {find(node)} | {find(other) for other in links}
+            score = (find(spawn) in groups if spawn in parents else False,
+                     len(groups) - 1, sum(sizes[group] for group in groups))
+            if len(groups) > 1 and (best is None or score > best[0]):
+                best = score, node, links
+        if best is None:
+            break
+        _, node, links = best
+        selected[node] = links
+        for other in links:
+            locked.add(other)
+            union(node, other)
+    return selected
+
+
 def append(output, quality, access, settings, max_voxels=1_000_000):
     validate_settings(settings)
     if access.get('audit_scope') != 'whole_pilot':
@@ -97,43 +138,7 @@ def append(output, quality, access, settings, max_voxels=1_000_000):
 
     # Build the existing walking components. A join locks its upper endpoints
     # at their original heights, so a later slab cannot undo an earlier join.
-    parents, sizes = {node: node for node in walking}, {node: 1 for node in walking}
-    def find(node):
-        while node != parents[node]:
-            parents[node] = parents[parents[node]]
-            node = parents[node]
-        return node
-    def union(a, b):
-        a, b = find(a), find(b)
-        if a != b:
-            if sizes[a] < sizes[b]:
-                a, b = b, a
-            parents[b] = a
-            sizes[a] += sizes[b]
-    for node in sorted(walking):
-        for other in scene.neighbours(node):
-            if other in walking:
-                union(node, other)
-
-    selected, locked = {}, set()
-    for _ in range(settings['max_slabs']):
-        best = None
-        for node, upper in candidates.items():
-            if node in selected or node in locked:
-                continue
-            links = [other for other in upper if other not in selected and find(other) != find(node)]
-            groups = {find(node)} | {find(other) for other in links}
-            score = (find(spawn) in groups if spawn in parents else False,
-                     len(groups) - 1, sum(sizes[group] for group in groups))
-            if len(groups) > 1 and (best is None or score > best[0]):
-                best = score, node, links
-        if best is None:
-            break
-        _, node, links = best
-        selected[node] = links
-        for other in links:
-            locked.add(other)
-            union(node, other)
+    selected = _select_joins(scene, walking, spawn, candidates, settings['max_slabs'])
 
     adjustments = {node: (node[0], node[1], node[2] + 1) for node in selected}
     preserved_edges = [(node, other) for node in selected for other in scene.neighbours(node)]

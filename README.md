@@ -44,6 +44,10 @@ The opt-in [planning plaza and paving review](docs/planning-paving-review.md)
 recovers 40 source-linked footprints, including all three labelled plazas, from
 the retained proposed site plan. Both review worlds retain terrain levels and
 separate walking-surface routes from routes that need other surfaces.
+The [planning paving joins](docs/planning-paving-joins.md) add bounded estimated
+half steps on those footprints. All three plazas then have walking-surface
+access in both orientations, with separate plaza-to-entrance results and
+unapplied proposed level annotations.
 
 ## Whole-park batch jobs
 
