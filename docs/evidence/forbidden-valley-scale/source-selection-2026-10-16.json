@@ -1,0 +1,50 @@
+{
+  "version": "forbidden-valley-scale-source-selection-v1",
+  "date": "2026-10-16",
+  "area": {
+    "name": "Forbidden Valley and surrounding Alton context",
+    "anchor_source": "OSM node 674445842, Forbidden Valley",
+    "anchor_position_wgs84": [
+      -1.88309,
+      52.9866941
+    ]
+  },
+  "anchor_bng_m": [
+    407952,
+    343264
+  ],
+  "osm_snapshot": {
+    "version": "osm-alignment-snapshot-v1",
+    "status": "observed_osm_snapshot",
+    "source_url": "https://api.openstreetmap.org/api/0.6/map",
+    "bounds_wgs84": [
+      -1.8951672904352252,
+      52.979325904921595,
+      -1.8708175779347371,
+      52.99402000241732
+    ],
+    "sha256": "8779e7055e54bfb41752184d3da00c784d195d18a54ec0ad90b4b7ee3f92b479",
+    "bytes": 2816755,
+    "retrieved_at": "2026-10-16T15:36:27.494031+00:00",
+    "registration_verified": false,
+    "world_geometry_additions": 0
+  },
+  "original_rasters": {
+    "terrain": {
+      "filename": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    "surface": {
+      "filename": "DSM_SK0540_P_10682_20220105_20220105.tif",
+      "sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af"
+    }
+  },
+  "archive_sha256": {
+    "dtm": "d1e5e7d9fbcde369336ba035a943a420b226bd6e983ae0e12dc360d829862acc",
+    "dsm": "4e38b366589079fba9bb14ee70f827964c6dcbd9f2f40ca7fa381d46ef82b50d"
+  },
+  "source_epoch_warning": "OSM snapshot is 2026; paired LiDAR survey is 2022. Neither establishes current as-built detail.",
+  "proposed_planning_geometry_applied": 0,
+  "accepted_planning_components": 0,
+  "training_labels_generated": 0
+}

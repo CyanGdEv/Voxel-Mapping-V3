@@ -1,0 +1,20 @@
+{
+  "artifacts": {
+    "compile-report.json": "84b7e5903ea562bcb489392120b9257cceaa792a3a12c7d858667e76d896b5c9",
+    "features-bng.geojson": "d4a0f901fe8a5a24262bd87dd2642f5056bc4399ce41c2808601d98e63e94922",
+    "heights.npy": "9a1658ad18b2fd5d81e2653b7357a0a10f9cc9d72e1bb5bcd929a5d11ff2ec5f",
+    "osm.xml": "8779e7055e54bfb41752184d3da00c784d195d18a54ec0ad90b4b7ee3f92b479",
+    "overlays.sqlite": "87a23e5d8f4b5de4e701215f806f0d85af88c254246fa90caa385b7cc998be14"
+  },
+  "identity": {
+    "inputs": {
+      "horizontal_grid": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117",
+      "osm": "50e43937cd7093a72a85c4ee19f0b64383d092ccd5524a52c1ac0c8730dc4f35",
+      "surface": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "terrain": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    "job_sha256": "54d18d10ae84a44f5424f430f38a4bd891cea26762208cea8cb5116bdc51d090",
+    "native_exporter_sha256": "d6d4ad20a45a22e3e9b667769f436a16ab3727969ed476f55f2c7e5219658a3e",
+    "renderer_sha256": "fc07e5aae8918aabd37a4371730e9b591958772f9cc7c53bb3344972659278d2"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "version": "forbidden-valley-scale-local-validation-v1",
+  "status": "passed",
+  "date": "2026-10-16",
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "tests": 1515,
+  "elapsed_seconds": 158.056,
+  "log_sha256": "d87b0959d88a6a71ff9a5d92655551e85ef77358f3e007c8d3816db1f8416c2d",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "dependencies": {
+    "amulet-core": "1.9.49",
+    "numpy": "1.26.4",
+    "rasterio": "1.4.4",
+    "shapely": "2.2.0",
+    "pyproj": "3.8.0",
+    "matplotlib": "3.10.9"
+  },
+  "tested_code_sha256": {
+    "voxel_mapper/native_tile_export.py": "d6d4ad20a45a22e3e9b667769f436a16ab3727969ed476f55f2c7e5219658a3e",
+    "voxel_mapper/scale_trial.py": "fc07e5aae8918aabd37a4371730e9b591958772f9cc7c53bb3344972659278d2",
+    "tests/test_scale_trial.py": "1a1d0ef83980c34616792386d2c1522b7fe57dd4c86a2f1c70c1014e57b3b4ab",
+    "scripts/restore_scale_trial_inputs.py": "4f4becf0f07d29645192720477fd4f0d4147fddb77bbe5a4818797bbf2590b98",
+    "scripts/validate_scale_trial.py": "65cc91bbc36f013b771d39d5cefd67a1c9054f3bd5a89bf325b1f39427ddf4f1",
+    "scripts/plot_scale_trial.py": "4c922fe44de42a5240d46034bf55167c958ddcd1349436e9eb0821a6684b2293",
+    "examples/forbidden-valley-scale-job.json": "54d18d10ae84a44f5424f430f38a4bd891cea26762208cea8cb5116bdc51d090"
+  },
+  "minecraft_playtest": "not_performed",
+  "scope": "The full local unit suite covers the generator and exporter. Separate cold native validation covers all three real worlds. Plotting and restoration verification were exercised separately; Minecraft was not run.",
+  "retained_log_gzip_sha256": "81f066cba1b11bfb343377d5c852784cbdebaf891589d52ed5c21155518a5373"
+}

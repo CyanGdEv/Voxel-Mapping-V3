@@ -1,0 +1,77 @@
+{
+  "version": "real-area-scale-trial-v1",
+  "name": "Alton Forbidden Valley scale trial",
+  "area": {
+    "name": "Forbidden Valley and surrounding Alton context",
+    "anchor_source": "OSM node 674445842, Forbidden Valley",
+    "anchor_position_wgs84": [
+      -1.88309,
+      52.9866941
+    ]
+  },
+  "anchor_bng_m": [
+    407952,
+    343264
+  ],
+  "stages": [
+    32,
+    64,
+    100
+  ],
+  "terrain": {
+    "file": "../retained-source-input/forbidden-valley-scale/DTM_SK0540_P_10682_20220105_20220105.tif",
+    "sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+  },
+  "surface": {
+    "file": "../retained-source-input/forbidden-valley-scale/DSM_SK0540_P_10682_20220105_20220105.tif",
+    "sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af"
+  },
+  "osm": {
+    "file": "../docs/evidence/forbidden-valley-scale/osm-snapshot.xml.gz",
+    "sha256": "50e43937cd7093a72a85c4ee19f0b64383d092ccd5524a52c1ac0c8730dc4f35",
+    "xml_sha256": "8779e7055e54bfb41752184d3da00c784d195d18a54ec0ad90b4b7ee3f92b479"
+  },
+  "horizontal_grid": {
+    "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+    "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+  },
+  "budgets": {
+    "max_feature_columns": 100000,
+    "max_overlay_voxels": 2000000,
+    "max_native_blocks": 200000000
+  },
+  "sources": [
+    {
+      "id": "osm",
+      "kind": "osm",
+      "url": "https://api.openstreetmap.org/api/0.6/map",
+      "license": "ODbL-1.0",
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "attribution_url": "https://www.openstreetmap.org/copyright",
+      "sha256": "8779e7055e54bfb41752184d3da00c784d195d18a54ec0ad90b4b7ee3f92b479",
+      "retrieved_at": "2026-10-16T15:36:27.494031+00:00"
+    },
+    {
+      "id": "ea-dtm",
+      "kind": "terrain",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "license": "OGL-UK-3.0",
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "vertical_datum": "ODN",
+      "survey_id": "P_10682",
+      "survey_date": "2022-01-05",
+      "sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    {
+      "id": "ea-dsm",
+      "kind": "surface",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "license": "OGL-UK-3.0",
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "vertical_datum": "ODN",
+      "survey_id": "P_10682",
+      "survey_date": "2022-01-05",
+      "sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af"
+    }
+  ]
+}

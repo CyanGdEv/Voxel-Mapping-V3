@@ -1,0 +1,122 @@
+{
+  "accepted_planning_components": 0,
+  "anchor_bng_m": [
+    407952,
+    343264
+  ],
+  "area": {
+    "anchor_position_wgs84": [
+      -1.88309,
+      52.9866941
+    ],
+    "anchor_source": "OSM node 674445842, Forbidden Valley",
+    "name": "Forbidden Valley and surrounding Alton context"
+  },
+  "area_m2": 2560000,
+  "chunks_per_side": 100,
+  "composed_blocks": 48121274,
+  "contract": {
+    "chunks_per_side": 100,
+    "coordinates_sha256": "b99a5354efbf57f3c3ab7764dec35f3acb613726cec899d379cd84fc813ed798",
+    "export_version": "dense-native-tile-export-v1",
+    "inputs": {
+      "horizontal_grid": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117",
+      "osm": "50e43937cd7093a72a85c4ee19f0b64383d092ccd5524a52c1ac0c8730dc4f35",
+      "surface": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "terrain": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    "job_sha256": "54d18d10ae84a44f5424f430f38a4bd891cea26762208cea8cb5116bdc51d090",
+    "materials": [
+      "air",
+      "black_concrete",
+      "coarse_dirt",
+      "cobblestone",
+      "dirt",
+      "grass_block",
+      "gravel",
+      "iron_block",
+      "oak_planks",
+      "stone",
+      "stone_bricks"
+    ],
+    "native_exporter_sha256": "d6d4ad20a45a22e3e9b667769f436a16ab3727969ed476f55f2c7e5219658a3e",
+    "renderer_sha256": "fc07e5aae8918aabd37a4371730e9b591958772f9cc7c53bb3344972659278d2",
+    "spawn": [
+      0,
+      150,
+      0
+    ]
+  },
+  "coordinate_frame": "Native X=easting-anchorE; native Z=anchorN-northing; source sampled at block centres.",
+  "crs": "EPSG:27700",
+  "elapsed_seconds": 83.97336934499981,
+  "foundation": "Artificial chunk minimum terrain minus 16 blocks; not measured subsurface geology.",
+  "limitations": [
+    "Real terrain and mapped geometry are used; this is not a full planning-derived park reconstruction.",
+    "Building profiles are solid unverified 2.5D DSM proxies within mapped footprints, not detailed meshes or current as-built verification.",
+    "Mapping and survey epochs differ. Ride tracks, mechanisms, unsupported water and unbound planning objects are not invented.",
+    "Chunk-local foundation, default path widths and unspecified materials are display assumptions.",
+    "No AI training, whole-area walking certification or Minecraft gameplay test is performed."
+  ],
+  "minecraft_playtest": "not_performed",
+  "name": "Alton Forbidden Valley scale trial 100\u00d7100",
+  "native_cell_positions_checked_this_run": 983040000,
+  "native_database_bytes": 1565580,
+  "native_height_range_inclusive": [
+    -64,
+    319
+  ],
+  "new_chunks": 10000,
+  "package_bytes": 1534475,
+  "peak_process_rss_mib": 542.9140625,
+  "recovered_flushed_chunk_intents": 0,
+  "requested_chunks": 10000,
+  "resumed_verified_chunks": 0,
+  "sources": [
+    {
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "attribution_url": "https://www.openstreetmap.org/copyright",
+      "id": "osm",
+      "kind": "osm",
+      "license": "ODbL-1.0",
+      "retrieved_at": "2026-10-16T15:36:27.494031+00:00",
+      "sha256": "8779e7055e54bfb41752184d3da00c784d195d18a54ec0ad90b4b7ee3f92b479",
+      "url": "https://api.openstreetmap.org/api/0.6/map"
+    },
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "id": "ea-dtm",
+      "kind": "terrain",
+      "license": "OGL-UK-3.0",
+      "sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493",
+      "survey_date": "2022-01-05",
+      "survey_id": "P_10682",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "vertical_datum": "ODN"
+    },
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "id": "ea-dsm",
+      "kind": "surface",
+      "license": "OGL-UK-3.0",
+      "sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "survey_date": "2022-01-05",
+      "survey_id": "P_10682",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "vertical_datum": "ODN"
+    }
+  ],
+  "spawn_native_xyz": [
+    0,
+    150,
+    0
+  ],
+  "status": "native_complete",
+  "training_labels_generated": 0,
+  "verified_chunks": 10000,
+  "version": "dense-native-tile-export-v1",
+  "vertical_offset_blocks": -28,
+  "voxel_size_m": 1,
+  "width_m": 1600,
+  "world_sha256": "8fd68c7a98bbe9f3505a430b50adce0c1f688b358ee53de1d940e8b798b128a7"
+}
