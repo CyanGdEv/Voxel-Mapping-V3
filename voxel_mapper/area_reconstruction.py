@@ -10,7 +10,7 @@ from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .planning_bulk import Corpus
 from .reconstruction.park_generators import FAMILY_ALIASES
 
-VERSION='resort-area-reconstruction-v3'
+VERSION='resort-area-reconstruction-v4'
 
 
 def select_documents(catalogue, area):
@@ -61,6 +61,14 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     from .drawing_geometry import validated_options
     geometry_options=config.get('drawing_geometry_options',{})
     validated_options(geometry_options)
+    evidence_settings=config.get('evidence_acquisition',{})
+    if not isinstance(evidence_settings,dict) or type(evidence_settings.get('enabled',False)) is not bool:
+        raise ValueError('Explicit evidence acquisition settings required')
+    from .evidence_acquisition import options as acquisition_options
+    evidence_budget=acquisition_options({k:v for k,v in evidence_settings.items() if k!='enabled'})
+    evidence_enabled=evidence_settings.get('enabled',False)
+    if evidence_enabled and not config.get('architectural_interpretation',{}).get('enabled',False):
+        raise ValueError('Evidence acquisition requires architectural interpretation')
     resolve=lambda value:(config_path.parent/value).resolve()
     initial_base=config.get('initial_base_world');initial_sha=config.get('initial_base_sha256')
     if initial_base or initial_sha:
@@ -140,7 +148,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                 max_pages=survey_sources.get('max_pages',config.get('max_pages',1000)),
                 max_priorities=survey_sources.get('max_priorities',128))
             priority_urls=entry['survey_source_discovery']['priority_urls']
-        acquisition=corpus.acquire(offline=config.get('offline',True),workers=4,
+        acquisition=corpus.acquire(offline=config.get('offline',True) or evidence_enabled,workers=4,
             limit=config.get('max_acquisition_documents',10000),interval=0,priority_urls=priority_urls)
         if survey_sources.get('enabled',True):
             entry['survey_source_discovery']=discover_survey_sources(corpus,work/'survey-source-discovery',
@@ -149,6 +157,36 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         # Real native PDF extraction precedes semantic reconstruction per area.
         from .drawing_geometry import run as extract
         extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+        def architecture_review():
+            from .architectural_interpretation import run as interpret_architecture, VERSION as architecture_version
+            from .reconstruction_evidence_queue import run as prepare_evidence_queue, digest
+            from .retained_evidence_matching import run as match_retained_evidence
+            architecture=config['architectural_interpretation']
+            review_root=work
+            if evidence_enabled:
+                review_root=work/'evidence-reviews'/digest({'version':architecture_version,
+                    'geometry':extracted['file_sha256'], 'drawing_contract':extracted['contract'],
+                    'sources':sorted(sha for (sha,) in corpus.db.execute("SELECT DISTINCT sha FROM downloads WHERE status='downloaded'")),
+                    'options':architecture.get('options')})
+            entry['architectural_interpretation']=interpret_architecture(corpus,work/'drawing-geometry',review_root/'architectural-interpretation',interpretation_options=architecture.get('options'))
+            entry['reconstruction_evidence_queue']=prepare_evidence_queue(area['id'],review_root/'architectural-interpretation',review_root/'reconstruction-evidence-queue')
+            archive=config.get('evidence_matching',{}).get('benchmark_archive')
+            archive={**archive,'file':str(resolve(archive['file']))} if archive else None
+            entry['retained_evidence_matching']=match_retained_evidence(corpus,review_root/'reconstruction-evidence-queue',work/'retained-evidence-matching',benchmark_archive=archive)
+            return review_root/'reconstruction-evidence-queue'
+        if evidence_enabled:
+            from .evidence_acquisition import run as acquire_evidence
+            queue_directory=architecture_review()
+            entry['evidence_acquisition']=acquire_evidence(corpus,queue_directory,work/'evidence-acquisition',
+                official_hosts=config['official_hosts'],offline=config.get('offline',True),settings=evidence_budget)
+            # Refresh native extraction before every downstream registration,
+            # interpretation, component and recipe stage consumes the corpus.
+            extracted=extract(corpus,work/'drawing-geometry',max_pages=config.get('max_pages',1000),**geometry_options)
+            acquisition=corpus.report()
+            if survey_sources.get('enabled',True):
+                entry['survey_source_discovery']=discover_survey_sources(corpus,work/'survey-source-discovery',
+                    max_pages=survey_sources.get('max_pages',config.get('max_pages',1000)),
+                    max_priorities=survey_sources.get('max_priorities',128))
         osm_settings=config.get('osm_provisional_alignment',{})
         if osm_settings.get('enabled',bool(osm_settings.get('snapshot') or osm_settings.get('bounds_wgs84'))):
             from .osm_provisional_alignment import run as align_osm
@@ -196,14 +234,7 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
                 max_pages=settings.get('max_pages',config.get('max_pages',1000)))
         architecture=config.get('architectural_interpretation',{})
         if architecture.get('enabled',False):
-            from .architectural_interpretation import run as interpret_architecture
-            entry['architectural_interpretation']=interpret_architecture(corpus,work/'drawing-geometry',work/'architectural-interpretation',interpretation_options=architecture.get('options'))
-            from .reconstruction_evidence_queue import run as prepare_evidence_queue
-            entry['reconstruction_evidence_queue']=prepare_evidence_queue(area['id'],work/'architectural-interpretation',work/'reconstruction-evidence-queue')
-            from .retained_evidence_matching import run as match_retained_evidence
-            archive=config.get('evidence_matching',{}).get('benchmark_archive')
-            archive={**archive,'file':str(resolve(archive['file']))} if archive else None
-            entry['retained_evidence_matching']=match_retained_evidence(corpus,work/'reconstruction-evidence-queue',work/'retained-evidence-matching',benchmark_archive=archive)
+            architecture_review()
         contextual=config.get('cross_drawing_alignment',{})
         automatic_settings=config.get('automatic_reconstruction',{})
         if contextual.get('enabled',automatic_settings.get('enabled',False)):
@@ -388,7 +419,7 @@ def run_all(config_path, stage='reconstruct', max_cycles=1):
             for key in ('status','document_records','acquisition','extraction','component_mentions',
                         'generated_families','missing_components','missing_component_ids',
                         'world_geometry_additions','planned_native_changes','latest_preview','world_sha256',
-                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals','wing_outline_reviews'):
+                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','evidence_acquisition','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals','wing_outline_reviews'):
                 if key in entry:row[key]=entry[key]
             row.setdefault('world_geometry_additions',0)
             row['blockers']=[]

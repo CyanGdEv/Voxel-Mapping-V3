@@ -1,0 +1,466 @@
+{
+  "accepted_planning_components": 0,
+  "architectural_pages": 3,
+  "area_id": "wicker-shop",
+  "available_planning_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "code_sha256": {
+    "scripts/audit_evidence_acquisition_replay.py": "03e389aea9e187b8f9251e3684f7fd5238f5c2f4f719fc23798666c4debc20db",
+    "voxel_mapper/area_cycles.py": "485cac51762923b49241f7618025701b0ccc680eb4f09cccbfa89a00475d432e",
+    "voxel_mapper/area_reconstruction.py": "1be94756772db161db52d5bdc7c33c23063a914557f4e9157465e658660f4a67",
+    "voxel_mapper/evidence_acquisition.py": "893ec77e6c3e5855416cc41a28c4a8acf3bdec9f26e746938df58c62200f40be",
+    "voxel_mapper/planning_bulk.py": "e2c9a533f85fd1525c7aea1e71b38d0ad90f0bdc14cc274d0bd4a3ca474f157a"
+  },
+  "first_acquisition": {
+    "after_matching": {
+      "candidate_hits": 0,
+      "contract": {
+        "benchmark_label_version": "native-benchmark-label-evidence-v1",
+        "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+        "glyph_version": "source-font-glyph-raster-screen-v5",
+        "inventory": [
+          {
+            "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-21 GF Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+              }
+            ]
+          },
+          {
+            "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-48 Roof Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+              }
+            ]
+          },
+          {
+            "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-26 Shop Elevations P1 FINAL.",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "requirement_queue_sha256": "34aae106c0ddfa91b607e241d38c66c47132af8e4b01c2c13e203fed808572b7",
+        "version": "retained-evidence-matching-v1"
+      },
+      "counts": {},
+      "output_sha256": "1d21c0f7863a52ab3313243d9678aa8a68f996b76a44e0717761ff99e5e17994",
+      "pages_examined": 3,
+      "pending_documents": 0,
+      "requirements_resolved": 0,
+      "reused_pages": 0,
+      "run_id": "2e30569d66783298644769cf75d4e178b8856c1791065a0550f8ca8c582da7fc",
+      "run_pages": 3,
+      "status": "retained_source_leads_only",
+      "tasks_with_related_text_only": 0,
+      "tasks_with_retained_leads": 0,
+      "tasks_without_retained_leads": 0,
+      "world_geometry_additions": 0
+    },
+    "attempts": [
+      {
+        "charged_network_bytes": 443573,
+        "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      },
+      {
+        "charged_network_bytes": 135946,
+        "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      },
+      {
+        "charged_network_bytes": 169647,
+        "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      }
+    ],
+    "before_matching": {
+      "candidate_hits": 0,
+      "contract": {
+        "benchmark_label_version": "native-benchmark-label-evidence-v1",
+        "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+        "glyph_version": "source-font-glyph-raster-screen-v5",
+        "inventory": [],
+        "pending": [
+          {
+            "application_reference": "SMD/2016/0315",
+            "declared_state": "proposed",
+            "download_status": "pending",
+            "title": "2967-21 GF Plan P1 FINAL",
+            "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+          },
+          {
+            "application_reference": "SMD/2016/0315",
+            "declared_state": "proposed",
+            "download_status": "pending",
+            "title": "2967-48 Roof Plan P1 FINAL",
+            "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+          },
+          {
+            "application_reference": "SMD/2016/0315",
+            "declared_state": "proposed",
+            "download_status": "pending",
+            "title": "2967-26 Shop Elevations P1 FINAL.",
+            "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+          }
+        ],
+        "requirement_queue_sha256": "34aae106c0ddfa91b607e241d38c66c47132af8e4b01c2c13e203fed808572b7",
+        "version": "retained-evidence-matching-v1"
+      },
+      "counts": {},
+      "output_sha256": "34947079be0159a539ce024e6760cd9a11a7ad7843a5034bae85d5d334034b42",
+      "pages_examined": 0,
+      "pending_documents": 3,
+      "requirements_resolved": 0,
+      "reused_pages": 0,
+      "run_id": "5ab85cf3449b563283e137be48b45bfb42fe4fe2d14205b71e464aea5fcd2bc7",
+      "run_pages": 0,
+      "status": "retained_source_leads_only",
+      "tasks_with_related_text_only": 0,
+      "tasks_with_retained_leads": 0,
+      "tasks_without_retained_leads": 0,
+      "world_geometry_additions": 0
+    },
+    "budgets": {
+      "max_documents": 3,
+      "max_file_bytes": 16000000,
+      "max_run_bytes": 32000000
+    },
+    "candidates": [
+      {
+        "geometry_export_authorized": false,
+        "matching_basis": "catalogue_bootstrap",
+        "physical_identity_verified": false,
+        "request": {
+          "expected_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "request_id": "5ae9c6f8249cc72b0d855db9b55346addf93d1c45ae2ac3f626bfca9c1f1f985",
+        "requirement_kinds": [
+          "physical_exterior",
+          "view_scope"
+        ],
+        "task_ids": [],
+        "titles": [
+          "2967-21 GF Plan P1 FINAL"
+        ]
+      },
+      {
+        "geometry_export_authorized": false,
+        "matching_basis": "catalogue_bootstrap",
+        "physical_identity_verified": false,
+        "request": {
+          "expected_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "request_id": "a7faa1005be392514e8cc5b3d4a0bcc80caff09e2d7ee9f7a0c049d5c657c4d6",
+        "requirement_kinds": [
+          "physical_exterior",
+          "plan_elevation_correspondence",
+          "view_scope"
+        ],
+        "task_ids": [],
+        "titles": [
+          "2967-26 Shop Elevations P1 FINAL."
+        ]
+      },
+      {
+        "geometry_export_authorized": false,
+        "matching_basis": "catalogue_bootstrap",
+        "physical_identity_verified": false,
+        "request": {
+          "expected_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "request_id": "e36977ed9d8b5f425025d5717f8f1d96ec87365e23f35f27f4478469d8505c29",
+        "requirement_kinds": [
+          "physical_exterior",
+          "plan_elevation_correspondence",
+          "view_scope"
+        ],
+        "task_ids": [],
+        "titles": [
+          "2967-48 Roof Plan P1 FINAL"
+        ]
+      }
+    ],
+    "catalogue_bootstrap": true,
+    "charged_network_bytes": 749166,
+    "geometry_export_authorized": false,
+    "limitations": [
+      "Only known official catalogue attachments are considered; no new application or URL discovery is claimed.",
+      "Title/text matches are investigation priorities, not physical identity, dimensions or registration.",
+      "An unchanged failed or interrupted resource is not requested again by this acquisition pass."
+    ],
+    "new_downloads": 3,
+    "queue_sha256": "34aae106c0ddfa91b607e241d38c66c47132af8e4b01c2c13e203fed808572b7",
+    "remaining_unattempted_candidates": 0,
+    "requirements_resolved": 0,
+    "retained_attempts": 0,
+    "run_attempts": 3,
+    "run_network_bytes": 749166,
+    "status": "evidence_sources_rechecked",
+    "version": "evidence-directed-acquisition-v1",
+    "world_geometry_additions": 0
+  },
+  "first_seconds": 18.3645442440029,
+  "job_sha256": "15fdbd410141750d8661d8d84443e2ec4bbfb392bb6335e337ba0eb917625f34",
+  "missing_evidence_tasks": 6,
+  "native_extracted_pages": 3,
+  "replay_acquisition": {
+    "after_matching": {
+      "candidate_hits": 25,
+      "contract": {
+        "benchmark_label_version": "native-benchmark-label-evidence-v1",
+        "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+        "glyph_version": "source-font-glyph-raster-screen-v5",
+        "inventory": [
+          {
+            "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-21 GF Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+              }
+            ]
+          },
+          {
+            "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-48 Roof Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+              }
+            ]
+          },
+          {
+            "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-26 Shop Elevations P1 FINAL.",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "requirement_queue_sha256": "787bf4aed03dd280e6a8e47e87bc774b164bdfe76623c852b6c732e909ded774",
+        "version": "retained-evidence-matching-v1"
+      },
+      "counts": {
+        "view_scope": 25
+      },
+      "output_sha256": "d07f29594ded5805bbbd6b06a3c98a9af80d2ca50c3d9a4770d445b69f9793db",
+      "pages_examined": 3,
+      "pending_documents": 0,
+      "requirements_resolved": 0,
+      "reused_pages": 3,
+      "run_id": "61188b7648fd143f5c58349fb59b111728eac9daf3898002a02bdbf22a3adf0b",
+      "run_pages": 0,
+      "status": "retained_source_leads_only",
+      "tasks_with_related_text_only": 0,
+      "tasks_with_retained_leads": 3,
+      "tasks_without_retained_leads": 3,
+      "world_geometry_additions": 0
+    },
+    "attempts": [
+      {
+        "charged_network_bytes": 135946,
+        "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      },
+      {
+        "charged_network_bytes": 443573,
+        "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      },
+      {
+        "charged_network_bytes": 169647,
+        "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "error": null,
+        "geometry_export_authorized": false,
+        "recovered_after_interruption": false,
+        "request": {
+          "expected_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+          "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "version": "evidence-directed-acquisition-v1"
+        },
+        "status": "downloaded"
+      }
+    ],
+    "before_matching": {
+      "candidate_hits": 25,
+      "contract": {
+        "benchmark_label_version": "native-benchmark-label-evidence-v1",
+        "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+        "glyph_version": "source-font-glyph-raster-screen-v5",
+        "inventory": [
+          {
+            "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-21 GF Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+              }
+            ]
+          },
+          {
+            "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-48 Roof Plan P1 FINAL",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+              }
+            ]
+          },
+          {
+            "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "source_links": [
+              {
+                "application_reference": "SMD/2016/0315",
+                "declared_state": "proposed",
+                "title": "2967-26 Shop Elevations P1 FINAL.",
+                "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+              }
+            ]
+          }
+        ],
+        "pending": [],
+        "requirement_queue_sha256": "787bf4aed03dd280e6a8e47e87bc774b164bdfe76623c852b6c732e909ded774",
+        "version": "retained-evidence-matching-v1"
+      },
+      "counts": {
+        "view_scope": 25
+      },
+      "output_sha256": "d07f29594ded5805bbbd6b06a3c98a9af80d2ca50c3d9a4770d445b69f9793db",
+      "pages_examined": 3,
+      "pending_documents": 0,
+      "requirements_resolved": 0,
+      "reused_pages": 0,
+      "run_id": "61188b7648fd143f5c58349fb59b111728eac9daf3898002a02bdbf22a3adf0b",
+      "run_pages": 3,
+      "status": "retained_source_leads_only",
+      "tasks_with_related_text_only": 0,
+      "tasks_with_retained_leads": 3,
+      "tasks_without_retained_leads": 3,
+      "world_geometry_additions": 0
+    },
+    "budgets": {
+      "max_documents": 3,
+      "max_file_bytes": 16000000,
+      "max_run_bytes": 32000000
+    },
+    "candidates": [],
+    "catalogue_bootstrap": false,
+    "charged_network_bytes": 749166,
+    "geometry_export_authorized": false,
+    "limitations": [
+      "Only known official catalogue attachments are considered; no new application or URL discovery is claimed.",
+      "Title/text matches are investigation priorities, not physical identity, dimensions or registration.",
+      "An unchanged failed or interrupted resource is not requested again by this acquisition pass."
+    ],
+    "new_downloads": 0,
+    "queue_sha256": "787bf4aed03dd280e6a8e47e87bc774b164bdfe76623c852b6c732e909ded774",
+    "remaining_unattempted_candidates": 0,
+    "requirements_resolved": 0,
+    "retained_attempts": 3,
+    "run_attempts": 0,
+    "run_network_bytes": 0,
+    "status": "evidence_sources_rechecked",
+    "version": "evidence-directed-acquisition-v1",
+    "world_geometry_additions": 0
+  },
+  "replay_seconds": 0.4511869839989231,
+  "requirements_resolved": 0,
+  "retained_text_leads": 25,
+  "scope": "Known official Wicker attachment catalogue; no new application/URL discovery or physical reconstruction is claimed.",
+  "status": "passed",
+  "training_labels_generated": 0,
+  "unchanged_replay_http_blocked": true,
+  "version": "evidence-acquisition-real-replay-v1",
+  "world_geometry_additions": 0,
+  "date": "2026-10-16",
+  "initial_retained_pdfs": 0,
+  "known_catalogue_documents": 3,
+  "catalogue_sha256": "b8bc58f208511e5aebb295855610505ac4a4cf8edb857987b8aca36a8d5a8fea",
+  "portable_job_sha256": "c457238ee40e2f35fe366667cb6102242f6bfda5370072927625f195a2267868"
+}

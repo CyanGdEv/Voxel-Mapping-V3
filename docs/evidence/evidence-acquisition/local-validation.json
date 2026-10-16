@@ -1,0 +1,19 @@
+{
+  "version": "evidence-acquisition-local-validation-v1",
+  "status": "passed",
+  "date": "2026-10-16",
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "tests_passed": 1526,
+  "added_tests": 11,
+  "elapsed_seconds": 145.178,
+  "log_sha256": "60d9efd82eef08e2f4014e02a25c42ec428185fba86f74647d12d70bf78f69a1",
+  "log_gzip_sha256": "b631ea7844be46cca6b86d899f726aea27c818f5e2abb151a4d3144c8f5432f0",
+  "code_sha256": {
+    "voxel_mapper/evidence_acquisition.py": "893ec77e6c3e5855416cc41a28c4a8acf3bdec9f26e746938df58c62200f40be",
+    "voxel_mapper/planning_bulk.py": "e2c9a533f85fd1525c7aea1e71b38d0ad90f0bdc14cc274d0bd4a3ca474f157a",
+    "voxel_mapper/area_reconstruction.py": "1be94756772db161db52d5bdc7c33c23063a914557f4e9157465e658660f4a67",
+    "voxel_mapper/area_cycles.py": "485cac51762923b49241f7618025701b0ccc680eb4f09cccbfa89a00475d432e",
+    "tests/test_evidence_acquisition.py": "bd1ee2401894c4332ce6ddad515927009e2a4e93145f871c084d3146986e7307"
+  },
+  "world_geometry_additions": 0
+}

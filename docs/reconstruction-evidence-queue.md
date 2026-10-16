@@ -1,5 +1,10 @@
 # Reconstruction missing-evidence queue
 
+The optional [evidence-directed acquisition](evidence-directed-acquisition.md)
+now follows this queue with bounded downloads of known official attachments and
+automatic extraction/rematching. It can bootstrap from catalogue titles before
+page requirements exist. Source acquisition leaves physical acceptance separate.
+
 An area run with `architectural_interpretation.enabled: true` now automatically
 prepares `reconstruction-evidence-queue/missing-evidence.json` after the source
 architectural review. The area report and full sweep expose its summary.
