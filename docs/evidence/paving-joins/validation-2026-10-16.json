@@ -1,0 +1,143 @@
+{
+  "accepted_physical_geometry": false,
+  "base_commit": "98322bbb3eed9d695502573873e4403d1f0eec98",
+  "changed_code_sha256": {
+    "scripts/validate_wicker_paving_joins.py": "7b5e6bc630a271d9e4a8ca4840357ccb12b09372a1250e99556931bae1ef0718",
+    "tests/test_pilot_surface_steps.py": "ac587040dba3a221767ebb85a83691bff500f28d7af416eec4de308899164cd9",
+    "voxel_mapper/pilot_access.py": "6a319d1518f7a4d765ab86c2812dc57a99c125b96222ac3687486a84d9db23d5",
+    "voxel_mapper/pilot_path_steps.py": "7b52187723930638f09773e5dbb8cf7d9cdc2f1cda25f4193fc00e3f643f1ecf",
+    "voxel_mapper/pilot_playtest.py": "33e720cdeec94952f103fa0cb5d24ea5c9fc5a95b1802d5556e6cb9ef8c3c2f2",
+    "voxel_mapper/pilot_surface_levels.py": "ae5ead01a9cdfa646448e62d275bbdb19aab39a545bfe0ce633c023f29cd52fc",
+    "voxel_mapper/pilot_surface_steps.py": "210b5ab3dc47237c22e44619881b0ee66e8558e23ada34962ca9b5b54fa5d262",
+    "voxel_mapper/world_pilot.py": "180b0a2dfd2724e905db7667791d422597299c141b4237c1729e8870382f97ab"
+  },
+  "cold_check_receipts": {
+    "cold-validation-a-2026-10-16.json": "0ed5f9da0d7ba38b1fa69e27bea3484d791761190e80ee33e702621c0e8cbac7",
+    "cold-validation-b-2026-10-16.json": "84dff5ce9b6de24cf7c17f21f8f6e25bc397c642b839840c117174929d993612"
+  },
+  "date": "2026-10-16",
+  "hypotheses": {
+    "A": {
+      "added_paving_joins": 54,
+      "before": {
+        "adjacent_walking_surface_barriers": 577,
+        "mapped_reachable_cells_any_walking": 1649,
+        "mapped_reachable_cells_on_walking_surfaces": 536,
+        "mapped_supported_cells": 1673,
+        "planning_review_reachable_cells_any_walking": 5888,
+        "planning_review_reachable_cells_on_walking_surfaces": 3298,
+        "planning_review_supported_cells": 5956,
+        "walking_surface_components": 97
+      },
+      "composed_blocks": 888108,
+      "native_after": {
+        "adjacent_walking_surface_barriers": 491,
+        "mapped_reachable_cells_any_walking": 1649,
+        "mapped_reachable_cells_on_walking_surfaces": 1397,
+        "mapped_supported_cells": 1673,
+        "planning_review_reachable_cells_any_walking": 5935,
+        "planning_review_reachable_cells_on_walking_surfaces": 5181,
+        "planning_review_supported_cells": 5956,
+        "walking_surface_components": 36
+      },
+      "plazas": [
+        {
+          "feature_id": "review/planning-paving/004",
+          "native_supported_footprint_cells": 719,
+          "reachable_cells_on_walking_surfaces": 719
+        },
+        {
+          "feature_id": "review/planning-paving/017",
+          "native_supported_footprint_cells": 214,
+          "reachable_cells_on_walking_surfaces": 214
+        },
+        {
+          "feature_id": "review/planning-paving/022",
+          "native_supported_footprint_cells": 277,
+          "reachable_cells_on_walking_surfaces": 277
+        }
+      ],
+      "ready_paved_plaza_entrance_routes": 6,
+      "unresolved_paved_plaza_entrance_routes": 3,
+      "world_sha256": "bea7ceb010679101ae52b8ca13c3946d6f643014dd119d954ed1682387ab4fe9"
+    },
+    "B": {
+      "added_paving_joins": 53,
+      "before": {
+        "adjacent_walking_surface_barriers": 581,
+        "mapped_reachable_cells_any_walking": 1649,
+        "mapped_reachable_cells_on_walking_surfaces": 60,
+        "mapped_supported_cells": 1673,
+        "planning_review_reachable_cells_any_walking": 5885,
+        "planning_review_reachable_cells_on_walking_surfaces": 87,
+        "planning_review_supported_cells": 5953,
+        "walking_surface_components": 97
+      },
+      "composed_blocks": 888110,
+      "native_after": {
+        "adjacent_walking_surface_barriers": 497,
+        "mapped_reachable_cells_any_walking": 1649,
+        "mapped_reachable_cells_on_walking_surfaces": 1397,
+        "mapped_supported_cells": 1673,
+        "planning_review_reachable_cells_any_walking": 5932,
+        "planning_review_reachable_cells_on_walking_surfaces": 5120,
+        "planning_review_supported_cells": 5953,
+        "walking_surface_components": 38
+      },
+      "plazas": [
+        {
+          "feature_id": "review/planning-paving/004",
+          "native_supported_footprint_cells": 719,
+          "reachable_cells_on_walking_surfaces": 719
+        },
+        {
+          "feature_id": "review/planning-paving/017",
+          "native_supported_footprint_cells": 214,
+          "reachable_cells_on_walking_surfaces": 214
+        },
+        {
+          "feature_id": "review/planning-paving/022",
+          "native_supported_footprint_cells": 277,
+          "reachable_cells_on_walking_surfaces": 277
+        }
+      ],
+      "ready_paved_plaza_entrance_routes": 9,
+      "unresolved_paved_plaza_entrance_routes": 0,
+      "world_sha256": "293a3f75822f9449c10c1aa9fff91afa05a11a5b514be6cc9d17a569b9a6c66e"
+    }
+  },
+  "known_remaining": {
+    "a_northwest_paved_plaza_connections": "unresolved",
+    "ai_ranker": "untrained_baseline",
+    "as_built_verified": false,
+    "finished_level_identity_and_datum_verified": false,
+    "independent_registration_verified": false,
+    "overridden_mapped_cells_per_world": 18,
+    "planning_paving_cells_unreachable_per_world": 21,
+    "supported_mapped_cells_unreachable_per_world": 24,
+    "withheld_bridge_or_tunnel_features_per_world": 9
+  },
+  "level_evidence": {
+    "absolute_finished_levels_applied": 0,
+    "retained_floor_claims": 3,
+    "retained_proposed_plus_claims": 22,
+    "review_floor_datum_verified": false,
+    "review_floor_m": 184
+  },
+  "minecraft_playtest": "not_performed",
+  "native_added_bottom_stone_slabs_total": 107,
+  "native_cells_compared_total": 30670848,
+  "native_nonzero_adjacent_height_gaps_checked_total": 197,
+  "native_original_blocks_modified_or_removed": 0,
+  "native_route_count_total": 31,
+  "native_route_points_checked_total": 2797,
+  "preexisting_nonzero_height_gaps_enlarged": 0,
+  "source_records_byte_identical": true,
+  "status": "passed",
+  "test_command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "test_duration_seconds": 225.684,
+  "test_log_sha256": "6a9236f2eb73620c463f86e22f23c085f15691771c05dd846545d73c1b346d49",
+  "tests_passed": 1508,
+  "training_labels_generated": 0,
+  "version": "wicker-planning-paving-joins-validation-v1"
+}

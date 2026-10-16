@@ -169,3 +169,7 @@ Independent placement, the unverified 184 m review floor, as-built/reuse
 qualification and omitted bridge/tunnel evidence remain separate blockers.
 Accepted planning components and training labels stay at zero; the ranker
 remains an untrained baseline.
+
+The subsequent [estimated paving joins](planning-paving-joins.md) address some
+of these height gaps while retaining the original terrain and paving blocks.
+That guide records the updated walking results and remaining entrance gaps.

@@ -26,6 +26,7 @@ def write(output, report):
     access = (report.get('access_review') or {}).get('native_readback', {})
     navigation = (report.get('access_review') or {}).get('whole_area_navigation')
     paving = report.get('planning_surfaces_review')
+    plaza_entrances = (report.get('planning_paving_joins_review') or {}).get('plaza_entrance_connections',[])
     plazas = [{**feature['walkthrough'], 'feature_id': feature['feature_id'],
                'supported_cells': feature['native_supported_footprint_cells'],
                'reachable_cells_on_walking_surfaces': feature['reachable_cells_on_walking_surfaces']}
@@ -47,6 +48,9 @@ def write(output, report):
     if report.get('path_steps_review'):
         checks.append({'id': 'path-step-joins',
                        'title': 'Walk the estimated slab joins in both directions without jumping'})
+    if report.get('planning_paving_joins_review'):
+        checks.append({'id':'planning-paving-joins',
+                       'title':'Walk the planning paving joins uphill and downhill without jumping'})
     for opening in access.get('openings', []):
         witness = opening['walkthrough']
         ready = (witness['status'] == 'native_route_ready'
@@ -65,6 +69,10 @@ def write(output, report):
     checks += [{'id': 'plaza/' + route['feature_id'],
                 'title': 'Walk from spawn to planning plaza ' + route['feature_id'].rsplit('/', 1)[1] + ' and back',
                 'surface_scope': route['surface_scope']} for route in plazas]
+    checks += [{'id':'plaza-entrance/'+r['plaza_feature_id']+'/'+r['opening_id'],
+                'title':'Walk from plaza '+r['plaza_feature_id'].rsplit('/',1)[1]+' through '+r['opening_id'],
+                'native_route_status':'ready_to_test' if r['status']=='native_route_ready' else 'unresolved'}
+               for r in plaza_entrances]
     results = {'version': VERSION, 'world': binding, 'status': 'awaiting_minecraft_playtest',
                'observer': {'name': None, 'platform': None, 'minecraft_version': None, 'tested_at_utc': None},
                'checks': [{**check, 'outcome': 'not_run', 'notes': '', 'evidence_reference': None}
@@ -75,7 +83,8 @@ def write(output, report):
     _write(output / 'playtest-routes.json', {'version': VERSION, 'world': binding,
         'coordinate_frame': 'Native block-centred Minecraft X/Y/Z; Y is feet height including half slabs.',
         'basis': 'Bounded conservative routes traced from reopened native blocks; not in-game physics.',
-        'routes': routes, 'site_routes': navigation['walkthroughs'] if navigation else [], 'planning_plaza_routes': plazas})
+        'routes': routes, 'site_routes': navigation['walkthroughs'] if navigation else [], 'planning_plaza_routes': plazas,
+        'plaza_entrance_routes':plaza_entrances})
     spawn = world['spawn']
     spawn_command = '/tp @s ' + _coordinates([spawn[0] + .5, spawn[1], spawn[2] + .5])
     version = '.'.join(map(str, world['target_version']))
@@ -125,6 +134,12 @@ def write(output, report):
                   'provisional; materials use the recorded drawing labels or display rules. '
                   'The paving follows retained terrain rather than verified finished levels. '
                   'A route that uses other surfaces does not establish a continuous paved connection.', '']
+        if report.get('planning_paving_joins_review'):
+            guide += [str(report['planning_paving_joins_review']['added_slab_records']) +
+                      ' estimated bottom stone slabs join existing planning paving at isolated full-block rises. '
+                      'Inspect them uphill and downhill without jumping. Their source-cell links are in '
+                      '`planning-paving-joins-review.json`. Proposed level claims are retained separately in '
+                      '`planning-paving-levels-review.json`; none are applied as verified grading.', '']
         for route in plazas:
             guide += ['### Planning plaza ' + route['feature_id'].rsplit('/', 1)[1], '',
                       'Route scope: `' + route['surface_scope'] + '`. Supported footprint cells reached '
@@ -136,6 +151,21 @@ def write(output, report):
             guide += [f"Length: {route['horizontal_length_m']} m. Reset with `{spawn_command}`.", '',
                       '| Point | X | Feet Y | Z |', '| ---: | ---: | ---: | ---: |']
             for i, (x, y, z) in enumerate(route['route_native_xyz']):
+                guide.append(f'| {i} | {x:g} | {y:g} | {z:g} |')
+            guide.append('')
+    if plaza_entrances:
+        guide += ['## Plaza to entrance walking checks','',
+                  'First follow the matching spawn-to-plaza route above. From its final point, follow each route below. '
+                  'The exterior prefix stays on walking surfaces and enters only the named opening; '
+                  'its final points are on the declared interior floor. An unresolved result remains a gap.','']
+        for route in plaza_entrances:
+            guide += ['### Plaza '+route['plaza_feature_id'].rsplit('/',1)[1]+' to '+route['opening_id'],'']
+            if route['status']!='native_route_ready':
+                guide += ['Unresolved: no complete route on walking surfaces through this entrance is claimed.','']
+                continue
+            guide += [f"Length: {route['horizontal_length_m']} m. Entrance crossing at point {route['doorway_index']}.",'',
+                      '| Point | X | Feet Y | Z |','| ---: | ---: | ---: | ---: |']
+            for i,(x,y,z) in enumerate(route['route_native_xyz']):
                 guide.append(f'| {i} | {x:g} | {y:g} | {z:g} |')
             guide.append('')
     if navigation:

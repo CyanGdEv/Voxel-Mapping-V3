@@ -169,6 +169,11 @@ def _prepare(job_path):
             raise ValueError('Provisional planning surfaces require a component review and whole_pilot native audit')
         from .pilot_surfaces import prepare as prepare_surfaces
         prepared_surfaces = prepare_surfaces(job['review_surfaces'], asset, _json, job_path.parent, config)
+    if job.get('review_surface_steps') is not None:
+        if not prepared_surfaces:
+            raise ValueError('Planning paving joins require an explicit planning surface review job')
+        from .pilot_surface_steps import validate_settings
+        validate_settings(job['review_surface_steps'])
     return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review, prepared_context, prepared_surfaces
 
 
@@ -201,6 +206,10 @@ def run(job_path, output):
             from .pilot_surfaces import append as append_surfaces
             surfaces = append_surfaces(staging, quality, config, access, prepared_surfaces)
             access['surfaces'] = surfaces
+        if job.get('review_surface_steps') is not None:
+            from .pilot_surface_steps import append as append_surface_steps
+            access['surface_steps'] = append_surface_steps(staging, quality, access,
+                job['review_surface_steps'], surfaces, prepared_surfaces, config['max_voxels'])
         context = None
         if prepared_context:
             from .pilot_context import append as append_context
@@ -275,6 +284,8 @@ def run(job_path, output):
             'access_review': quality.get('access_review'),
             'path_steps_review': quality.get('path_steps_review'),
             'planning_surfaces_review': quality.get('planning_surfaces_review'),
+            'planning_paving_joins_review': quality.get('planning_paving_joins_review'),
+            'planning_paving_levels_review': quality.get('planning_paving_levels_review'),
             'context_review': context,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
@@ -316,6 +327,10 @@ def run(job_path, output):
             description += ['', 'Provisional planning paving cells: ' + str(surfaces['report']['added_paving_records']),
                             'See planning-surfaces-review.json for source outlines, material rules and plaza route scopes.',
                             'Printed scale is retained; placement and terrain-following paving levels remain estimates.']
+        if quality.get('planning_paving_joins_review'):
+            description += ['', 'Estimated planning paving joins: ' + str(quality['planning_paving_joins_review']['added_slab_records']),
+                            'See planning-paving-joins-review.json for preserved source supports and remaining barriers.',
+                            'Proposed level annotations are retained separately; no absolute grading or floor change is applied.']
         for task in tasks:
             description += ['', task['title'] + ':', *['- ' + value for value in task['required_evidence']]]
         (staging / 'README.txt').write_text('\n'.join(description) + '\n', encoding='utf-8')
@@ -338,6 +353,9 @@ def run(job_path, output):
         if surfaces:
             from .pilot_surfaces import ARTIFACTS as SURFACE_ARTIFACTS
             artifacts += SURFACE_ARTIFACTS
+        if quality.get('planning_paving_joins_review'):
+            from .pilot_surface_steps import ARTIFACTS as SURFACE_STEP_ARTIFACTS
+            artifacts += SURFACE_STEP_ARTIFACTS
         if world:
             artifacts += report['playtest']['artifacts']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
