@@ -47,7 +47,7 @@ def prepare(settings, asset, load_json, directory, config):
             'max_trees': maximum_trees, 'max_cells': maximum_cells}
 
 
-def append(output, quality, config, prepared):
+def append(output, quality, config, prepared, walking_mask=None):
     """Reuse the foliage generator against a temporary native occupancy snapshot."""
     from .bedrock import export_world
     from .park_foliage import reconstruct
@@ -81,7 +81,7 @@ def append(output, quality, config, prepared):
         rows, report = reconstruct(scratch, prepared['raw_osm'], scratch / 'nodes.json',
             prepared['surface_path'], scratch / 'boundary.json', scratch / 'unused',
             max_trees=prepared['max_trees'], max_cells=prepared['max_cells'],
-            collect_only=True, surface_config=surface)
+            collect_only=True, surface_config=surface, additional_path_mask=walking_mask)
         if quality['voxel_records'] + len(rows) > config['max_voxels']:
             raise ValueError('Context exceeds pilot voxel budget')
         for row in rows:

@@ -20,6 +20,7 @@ from .doorway_raster import PLAYER_WIDTH_M
 VERSION = 'provisional-world-access-v4'
 PATH_STEP_POLICY = 'estimated_half_slab_joins_v1'
 PATH_STEP_FEATURE = 'review/path-step-joins'
+SURFACE_POLICY = 'wicker_planning_paving_review_v1'
 RADIUS = 32
 MAX_ROUTE_COLUMNS = 32
 MAX_SEARCH_STATES = 60_000
@@ -29,7 +30,7 @@ MAX_READ_CELLS = 1_000_000
 WALKING_KINDS = {'path', 'sidewalk', 'queue', 'plaza'}
 FULL_BLOCKS = {'stone', 'dirt', 'grass_block', 'concrete', 'planks', 'stone_bricks',
                'granite', 'sandstone', 'brick_block', 'terracotta', 'stained_terracotta',
-               'mud_bricks', 'iron_block', 'log'}
+               'mud_bricks', 'iron_block', 'log', 'cobblestone'}
 
 
 def collision(block):
@@ -134,11 +135,25 @@ def _read_inputs(output, component, whole_area=False):
     return records, terrain, paths, bounds
 
 
+def _surface_row(row):
+    return (isinstance(row, dict) and row.get('review_surface_policy') == SURFACE_POLICY
+            and row.get('feature', '').startswith('review/planning-paving/')
+            and row.get('kind') in WALKING_KINDS
+            and row.get('source') == 'provisional-plan-paving'
+            and row.get('material_origin') == 'estimated_reconstruction_shell'
+            and row.get('accepted_physical_geometry') is False)
+
+
 def _mapped_node(scene, key, row, records):
     """Resolve a surviving mapped cell, including an explicitly linked display slab."""
-    if records.get(key) != row:
-        return None
     x, y, z = key
+    reference = {'feature': row['feature'], 'x': x, 'y': y, 'z': z}
+    base = records.get(key)
+    if base != row and not (_surface_row(base) and base.get('overlays_mapped_source_cell') == reference):
+        return None
+    # A planning finish can replace the material while retaining the original
+    # mapped footprint and any already verified display slab above it.
+    slab_reference = row.get('overlays_mapped_source_cell', reference) if _surface_row(row) else reference
     height = 2 * y + 2
     overlay = records.get((x, y + 1, z), {})
     if (overlay.get('feature') == PATH_STEP_FEATURE and overlay.get('kind') == 'steps'
@@ -146,10 +161,15 @@ def _mapped_node(scene, key, row, records):
             and overlay.get('material') == 'stone_slab'
             and overlay.get('material_origin') == 'estimated_reconstruction_shell'
             and overlay.get('accepted_physical_geometry') is False
-            and overlay.get('mapped_source_cell') == {'feature': row['feature'], 'x': x, 'y': y, 'z': z}):
+            and overlay.get('mapped_source_cell') == slab_reference):
         height += 1
     node = x, z, height
     return node if scene.standing(node) else None
+
+
+def _review_surface_nodes(scene, records):
+    return {node: row['feature'] for key, row in records.items() if _surface_row(row)
+            and (node := _mapped_node(scene, key, row, records)) is not None}
 
 
 def _mapped_nodes(scene, paths, records):
@@ -479,6 +499,12 @@ def verify_saved(world_path, offset, spawn, prepared):
                 if read_cells > MAX_READ_CELLS:
                     raise ValueError('Native access readback budget exceeded')
                 block = chunk.block_palette[int(chunk.blocks[x % 16, y + offset, native_z % 16])]
+                row = records.get((x, y, z))
+                if _surface_row(row):
+                    expected = material_block(row['material'])
+                    if (block.namespaced_name != expected.namespaced_name
+                            or any(block.properties.get(k) != v for k, v in expected.properties.items())):
+                        raise ValueError('Saved planning paving material differs from the composed source row')
                 form = collision(block)
                 if form:
                     bottom, top, bearing = form
@@ -541,6 +567,10 @@ def verify_saved(world_path, offset, spawn, prepared):
             from .pilot_path_steps import verify
             verify(world_path.parent, scene, mapped, records, offset,
                    report['whole_area_navigation'], prepared['path_steps'])
+        if prepared.get('surfaces') is not None:
+            from .pilot_surfaces import verify
+            verify(world_path.parent, scene, records, paths, local_spawn, offset,
+                   report['whole_area_navigation'], prepared['surfaces'])
         write(world_path.parent, report['whole_area_navigation'], footprint)
     (world_path.parent / 'access-review.json').write_text(
         json.dumps(report, indent=2, sort_keys=True) + '\n', encoding='utf-8')

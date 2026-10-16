@@ -41,7 +41,7 @@ def mapped_geometry(element,project):
 
 def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,grid=None,
                 clearance_path=None,hints_path=None,max_trees=2600,max_cells=3_000_000,cloud_path=None,cloud_metadata_path=None,
-                collect_only=False,surface_config=None):
+                collect_only=False,surface_config=None,additional_path_mask=None):
     source,output=Path(source),Path(output)
     q=json.loads((source/'quality-report.json').read_text());config=json.loads((source/'resolved-config.json').read_text());sources={s['id']:s for s in config['sources']}
     if grid:
@@ -76,6 +76,8 @@ def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,gri
             except ValueError:width=2
             paths.append(geom.buffer(width/2+1) if geom.geom_type in ('LineString','MultiLineString') else geom.buffer(1))
         if t.get('aerialway') or t.get('railway')=='monorail' or t.get('roller_coaster')=='track':transport.append(geom.buffer(3))
+    if additional_path_mask is not None:
+        paths.append(additional_path_mask.buffer(1))
     woodland=unary_union([w['geometry'] for w in woods]);hard=unary_union(hard+transport);ride_areas=unary_union(rides);path_areas=unary_union(paths)
     for geom in (woodland,hard,ride_areas,path_areas):shapely.prepare(geom)
     hints=json.loads(Path(hints_path).read_text()) if hints_path else []

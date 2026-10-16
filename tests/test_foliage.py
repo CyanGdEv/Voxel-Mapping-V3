@@ -115,6 +115,10 @@ class FoliageTests(unittest.TestCase):
             report=reconstruct(source,p/'osm.json',p/'nodes.json',surface,p/'boundary.json',p/'grown')
             self.assertEqual(report['tree_count'],1)
             self.assertEqual(report['trees'][0]['height_method'],'DSM_minus_DTM_envelope')
+            report=reconstruct(source,p/'osm.json',p/'nodes.json',surface,p/'boundary.json',
+                               p/'paving-protected',additional_path_mask=box(-1,-1,1,1))
+            self.assertEqual(report['tree_count'],0)
+            self.assertEqual(report['trees'],[])
 
     def test_neighbour_preview_cleanup_preserves_generated_skeletons(self):
         import shutil,rasterio

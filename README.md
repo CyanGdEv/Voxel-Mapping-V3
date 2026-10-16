@@ -40,6 +40,10 @@ unresolved steps, disconnected components and rejected bridge candidates.
 The opt-in [estimated path slab joins](docs/estimated-path-step-joins.md) add
 source-linked half steps without replacing original blocks. Native checks retain
 remaining steep sections and a separate pending gameplay result form.
+The opt-in [planning plaza and paving review](docs/planning-paving-review.md)
+recovers 40 source-linked footprints, including all three labelled plazas, from
+the retained proposed site plan. Both review worlds retain terrain levels and
+separate walking-surface routes from routes that need other surfaces.
 
 ## Whole-park batch jobs
 

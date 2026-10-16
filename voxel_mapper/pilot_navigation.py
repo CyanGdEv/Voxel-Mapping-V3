@@ -4,9 +4,9 @@ from html import escape
 import json
 
 from .bedrock import material_block, MATERIALS
-from .pilot_access import collision, _mapped_node, MAX_SEARCH_STATES
+from .pilot_access import collision, _mapped_node, _review_surface_nodes, MAX_SEARCH_STATES
 
-VERSION = 'whole-pilot-navigation-v2'
+VERSION = 'whole-pilot-navigation-v3'
 ARTIFACTS = ['navigation-review.json', 'navigation-review.svg']
 MAX_WITNESS_POINTS = 512
 
@@ -49,7 +49,7 @@ def _witness(identifier, candidates, parents, depths, offset, scope):
 
 
 def _walking_nodes(scene, mapped, records):
-    walking = set(mapped)
+    walking = set(mapped) | _review_surface_nodes(scene, records).keys()
     for (x, y, z), row in records.items():
         if row['kind'] != 'steps' or not row.get('feature', '').startswith('review/'):
             continue
@@ -62,6 +62,8 @@ def _walking_nodes(scene, mapped, records):
 
 def inspect(scene, spawn, mapped, paths, records, offset, withheld):
     all_parents, all_depths = _tree(scene, spawn)
+    review = _review_surface_nodes(scene, records)
+    surfaces = {**mapped, **review}
     walking = _walking_nodes(scene, mapped, records)
     path_parents, path_depths = _tree(scene, spawn, walking)
     remaining, components, membership = set(walking), [], {}
@@ -74,7 +76,7 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
             membership[node] = identifier
         components.append({'id': identifier, 'supported_nodes': len(nodes),
             'contains_spawn': spawn in nodes, 'reachable_from_spawn_by_any_walking': bool(nodes & all_parents.keys()),
-            'feature_ids': sorted({mapped[node] for node in nodes if node in mapped}),
+            'feature_ids': sorted({surfaces[node] for node in nodes if node in surfaces}),
             'representative_native_xyz': _native(min(nodes), offset),
             'cells_local_x_z_half_y': [list(node) for node in sorted(nodes)]})
     features = {}
@@ -86,7 +88,7 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
             'overridden_cells': 0, 'blocked_or_unsupported_cells': 0, 'component_ids': set(),
             'unreachable_examples_native_xyz': []})
         group['emitted_cells'] += 1
-        if records.get(key) != row:
+        if node is None and records.get(key) != row:
             group['overridden_cells'] += 1
         elif node not in mapped:
             group['blocked_or_unsupported_cells'] += 1
@@ -117,7 +119,7 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
                                          'reason': 'step_exceeds_half_metre' if abs(nh - height) > 1 else 'swept_headroom'})
     witnesses = [
         _witness('mapped-walk', set(mapped) & path_parents.keys(), path_parents, path_depths, offset,
-                 'mapped walking surfaces, estimated slab joins and estimated approaches'),
+                 'mapped walking surfaces, provisional planning paving, estimated slab joins and estimated approaches'),
         _witness('terrain-detour', (set(mapped) & all_parents.keys()) - path_parents.keys(),
                  all_parents, all_depths, offset, 'includes terrain or other surfaces outside the mapped walking network'),
     ]
@@ -130,8 +132,14 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
         'mapped_cells_with_estimated_display_slabs': sum(
             node[2] != 2 * key[1] + 2
             for key, row in paths.items() if (node := _mapped_node(scene, key, row, records)) is not None),
+        'mapped_cells_with_planning_review_finish': sum(
+            _mapped_node(scene, key, row, records) is not None and records.get(key) != row
+            for key, row in paths.items()),
         'mapped_reachable_cells_any_walking': len(reachable),
         'mapped_reachable_cells_on_walking_surfaces': len(set(mapped) & path_parents.keys()),
+        'planning_review_supported_cells': len(review),
+        'planning_review_reachable_cells_any_walking': len(set(review) & all_parents.keys()),
+        'planning_review_reachable_cells_on_walking_surfaces': len(set(review) & path_parents.keys()),
         'walking_components': components, 'features': feature_rows,
         'adjacent_walking_surface_barriers': barrier_count, 'barrier_examples': barriers,
         'withheld_feature_ids_not_audited_as_geometry': withheld,
@@ -174,5 +182,9 @@ def write(output, report, footprint):
                     (897, 'Separate components can still connect off path. Missing/withheld geometry is not made walkable.'),
                     (923, 'Estimated world placement and vegetation; no physical acceptance or AI training labels.')]:
         svg.append(f'<text x="35" y="{y}" font-size="13">{escape(text)}</text>')
+    if report.get('planning_review_supported_cells'):
+        text = (f'Provisional planning paving: {report["planning_review_supported_cells"]} cells; '
+                f'{report["planning_review_reachable_cells_on_walking_surfaces"]} reachable on walking surfaces.')
+        svg.append(f'<text x="35" y="823" font-size="13">{escape(text)}</text>')
     svg += ['</g>', '</svg>']
     (output / 'navigation-review.svg').write_text('\n'.join(svg))
