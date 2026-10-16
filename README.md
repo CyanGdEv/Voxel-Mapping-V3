@@ -23,6 +23,10 @@ The [connected doorway review](docs/connected-doorway-review.md) fixes the angle
 narrow-opening cut and checks a separate exterior approach for every entrance.
 Its additional jobs retain explicit native width approximations and zero
 accepted planning components.
+The [placement evidence replay fix](docs/registration-evidence-replay.md)
+recomputes control/checkpoint fits before applying a saved registration. A real
+retained-source job records the missing independent evidence and withholds
+placement; stale accepted flags cannot authorize a changed transform.
 
 ## Whole-park batch jobs
 

@@ -1,0 +1,239 @@
+{
+  "accepted_real_planning_components": 0,
+  "base_commit": "9383aa6371f77bae42c73c718fcc9aacf4d4816d",
+  "before_file_sha256": "1e8c91ab2d49343f5245f216c2ee8d2bd007de4f29388571cbb75a12c37148e6",
+  "date": "2026-10-16",
+  "implementation_sha256": {
+    "voxel_mapper/drawing_batch.py": "cf7d0abbf83b88437ce8f55345a56d035baa014de05fa2e4034a11e6fd045947",
+    "voxel_mapper/reconstruction/model.py": "bcff420b0022c28dd5e831238ee1199149029dfd6facc37bd39907fcc2c0c7ee",
+    "voxel_mapper/reconstruction/registration.py": "4785d9da80cfc38ca61665b9644f38e7f83b5fa772062b18df66edeaff099829",
+    "voxel_mapper/registration_qualification.py": "09fb2e19ae15d60c39c2d3b5349189c6ba3db436ebdc87ea8271d7f8c61b3e96"
+  },
+  "public_recovery_attempts": [
+    {
+      "bytes": 215,
+      "content_type": "text/plain",
+      "pdf_header": false,
+      "sha256": "2522fab2c87c49287ffbd7535f186009034ad29ea22f029d9d574e6c537bbcb5",
+      "status": 503,
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=40663"
+    },
+    {
+      "bytes": 215,
+      "content_type": "text/plain",
+      "pdf_header": false,
+      "sha256": "2522fab2c87c49287ffbd7535f186009034ad29ea22f029d9d574e6c537bbcb5",
+      "status": 503,
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=41683"
+    },
+    {
+      "bytes": 215,
+      "content_type": "text/plain",
+      "pdf_header": false,
+      "sha256": "2522fab2c87c49287ffbd7535f186009034ad29ea22f029d9d574e6c537bbcb5",
+      "status": 503,
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=104356"
+    }
+  ],
+  "real_source_checkpoint": {
+    "accepted_page_sources": 0,
+    "bridge_page_statuses": {
+      "withheld": 1
+    },
+    "bridge_status": "withheld_no_registered_semantics",
+    "earlier_qualification_audit": {
+      "accepted_checkpoints": 0,
+      "accepted_controls": 0,
+      "audit_date": "2026-10-13",
+      "file": "docs/evidence/wicker-registration-preflight-2026-10-13.json",
+      "qualified_frames": 0,
+      "sha256": "1bd670c7e1fefb5172c202147ff1cbc0037060187ac54e8098cc0ab569a0fc9e"
+    },
+    "example_job": "examples/wicker-placement-evidence-job.json",
+    "feature_count": 0,
+    "geometry_database_created": false,
+    "inventory": [
+      {
+        "bytes": 328643,
+        "pages": 38,
+        "sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e"
+      },
+      {
+        "bytes": 135946,
+        "pages": 1,
+        "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3"
+      },
+      {
+        "bytes": 1299016,
+        "pages": 1,
+        "sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1"
+      },
+      {
+        "bytes": 1008558,
+        "pages": 1,
+        "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d"
+      },
+      {
+        "bytes": 999538,
+        "pages": 1,
+        "sha256": "321760ac2ebc683b2f001e0bb206ff791cca0798582dc0d2ef43c324645fff3f"
+      },
+      {
+        "bytes": 1531467,
+        "pages": 3,
+        "sha256": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce"
+      },
+      {
+        "bytes": 114755,
+        "pages": 3,
+        "sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee"
+      },
+      {
+        "bytes": 169647,
+        "pages": 1,
+        "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+      },
+      {
+        "bytes": 748344,
+        "pages": 1,
+        "sha256": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215"
+      },
+      {
+        "bytes": 362745,
+        "pages": 2,
+        "sha256": "81176973b923e775429385f69fb5d362f9fc3a0f47a1f008f04f532d07c6a428"
+      },
+      {
+        "bytes": 261792,
+        "pages": 6,
+        "sha256": "bbc8395ef3588036a94c9ece2cd3d401af430e18a883bdb3d8305646702d5055"
+      },
+      {
+        "bytes": 532650,
+        "pages": 1,
+        "sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953"
+      },
+      {
+        "bytes": 443573,
+        "pages": 1,
+        "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+      },
+      {
+        "bytes": 92362,
+        "pages": 1,
+        "sha256": "ffa53ac60372052a93ca6cd1dfab5a4d0885cf3202f7fba0cb171538c0532bdb"
+      }
+    ],
+    "inventory_scope": "Retained Wicker corpus and three shop originals; not a complete park source inventory.",
+    "job_sha256": "137e898090fe750a1d9972c7cf3ff4f5b35a15e11a07438b2fd1c9383c9dfaa9",
+    "original_pdf_sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+    "pipeline_output_sha256": {
+      "job-state.json": "dd44511b36e2af3fb9a132841473e110cc45f55b4122a66f657889a2829c81c1",
+      "registration-bridge/bridge-report.json": "c20daf7624b5f29ea986f31dfc8c1b72c59faedd263fab22ab7343eee1321b30",
+      "registration-bridge/features.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "registration-bridge/manifest.json": "d75d684d785f053e212456614fdc093f14cf13e5b32e7cbb3675a8049bdd1752",
+      "registration-bridge/pages.jsonl": "034320ca229b572e07436bfc88605018b1a61f6b64f6e4707eaebdcf2023a1bc"
+    },
+    "provided_independent_landmark_records": 0,
+    "reconstruction_status": "awaiting_normalized_geometry",
+    "retained_pages": 61,
+    "unchanged_resume_verified": true,
+    "unique_retained_pdfs": 14,
+    "world_exported": false
+  },
+  "registration_version": "independent-registration-v2",
+  "remaining_evidence": [
+    "Independently identified horizontal controls and checkpoints, with source identities and accuracy.",
+    "Verified source policy, component/view identity and existing/as-built state for the intended park date.",
+    "Independent floor/height and vertical datum where needed; neither the 184 m review experiment nor roof self-fit is a measurement."
+  ],
+  "synthetic_reproduction": {
+    "actual_checkpoint_error_m": 4,
+    "after_consumer": "withheld",
+    "after_reason": "Serialized registration transform exceeds control/checkpoint tolerance",
+    "before_applied_point": [
+      98.99999999999996,
+      205.00000000000003
+    ],
+    "before_consumer": "accepted",
+    "checkpoints": [
+      {
+        "id": "q0",
+        "local": [
+          8,
+          8
+        ],
+        "target": [
+          92,
+          208
+        ]
+      },
+      {
+        "id": "q1",
+        "local": [
+          3,
+          6
+        ],
+        "target": [
+          94,
+          203
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "id": "0",
+        "local": [
+          0,
+          0
+        ],
+        "target": [
+          100,
+          200
+        ]
+      },
+      {
+        "id": "1",
+        "local": [
+          10,
+          0
+        ],
+        "target": [
+          100,
+          210
+        ]
+      },
+      {
+        "id": "2",
+        "local": [
+          0,
+          10
+        ],
+        "target": [
+          90,
+          200
+        ]
+      }
+    ],
+    "correct_applied_point": [
+      95,
+      205
+    ],
+    "declared_tolerance_m": 1.0,
+    "scope": "Numerical regression fixture; not real surveyed landmarks or a park component.",
+    "stale_checkpoint_summary_max_m": 6.355287432313019e-14,
+    "translation_edit_m": [
+      4,
+      0
+    ]
+  },
+  "tests": {
+    "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+    "elapsed_seconds": 107.638,
+    "full_log_sha256": "c97964fd9b75299c2b7eb20a8b30590a4d0b54c2f7149e26042a014af2e7be92",
+    "passed": 1461,
+    "positive_source_to_world_scope": "Synthetic surveyed PDFs through the existing normal compiler/native export; not accepted Alton source geometry."
+  },
+  "training_labels_generated": 0,
+  "version": "registration-evidence-replay-validation-v1"
+}

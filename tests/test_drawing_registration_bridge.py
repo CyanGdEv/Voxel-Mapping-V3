@@ -59,6 +59,21 @@ class BridgeTests(unittest.TestCase):
         self.assertGreater(len({r['y'] for r in roof_rows}),1)
         self.assertEqual(report['world_geometry_additions'],0)
 
+    def test_changed_registered_pose_with_old_checkpoint_summary_emits_no_world_geometry(self):
+        from copy import deepcopy
+        source, features, _ = bridge_page(self.pdf, 1, self.source, self.refs, self.sources)
+        metadata = deepcopy(source.metadata)
+        review = metadata['horizontal_registration_review']
+        review['translation_m'][0] += 4
+        self.assertEqual(review['status'], 'accepted_horizontal_fit')
+        self.assertLess(review['checkpoint_error']['max_m'], 1e-8)
+        stale = replace(source, metadata=metadata)
+        ctx = Context({**self.sources, stale.id: stale}, lambda *p: 0, box(0, 0, 24, 24), 'ODN')
+        rows, compiled = ReconstructionEngine(park_registry()).plan(features, ctx)
+        self.assertEqual(rows, [])
+        self.assertTrue(all(d['status'] == 'withheld' for d in compiled['decisions']))
+        self.assertTrue(all('registration' in d['reason'].lower() for d in compiled['decisions']))
+
     def test_missing_and_reused_checkpoint_sources_withheld(self):
         with self.assertRaisesRegex(ValueError,'two separately sourced'):
             bridge_page(self.pdf,1,self.source,self.refs[:3],self.sources)
