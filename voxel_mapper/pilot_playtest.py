@@ -33,6 +33,11 @@ def write(output, report):
     ]
     if not report.get('review_component'):
         checks = [check for check in checks if check['id'] != 'building-exterior']
+    if report.get('context_review'):
+        checks += [
+            {'id': 'context-terrain', 'title': 'Inspect the transition from the original area into buffered terrain'},
+            {'id': 'context-vegetation', 'title': 'Check that woodland proxies leave mapped paths clear'},
+        ]
     for opening in access.get('openings', []):
         witness = opening['walkthrough']
         ready = (witness['status'] == 'native_route_ready'
@@ -77,6 +82,12 @@ def write(output, report):
     ]
     if not routes:
         guide += ['No declared entrance walkthroughs are available for this export.', '']
+    if report.get('context_review'):
+        context = report['context_review']
+        guide += ['Woodland context outside the original area contains ' + str(context['tree_count']) +
+                  ' estimated trees and ' + str(context['shrub_clusters']) +
+                  ' shrub clusters. Inspect the terrain transition and path clearance separately. '
+                  'Tree positions within woodland, shapes and species are visual estimates.', '']
     for route in routes:
         guide += ['### ' + route['opening_id'], '']
         if route['status'] != 'ready_to_test':

@@ -148,6 +148,7 @@ def _prepare(job_path):
         tasks.append({'id': row['id'], 'title': row['title'], 'status': 'awaiting_evidence',
                       'required_evidence': requirements, 'evidence': evidence})
     prepared_review = None
+    prepared_context = None
     if job.get('review_component'):
         from .pilot_review import prepare as prepare_review
         prepared_review = prepare_review(job['review_component'], asset, _json, job_path.parent, pins)
@@ -157,7 +158,12 @@ def _prepare(job_path):
             'url': 'https://publicaccess.staffsmoorlands.gov.uk/portal/', 'license': 'unconfirmed-drawing-reuse',
             'sha256': job['review_component']['model']['sha256'],
             'attribution': 'Retained proposed shop study from three council PDFs; individual drawing authors. Review placement and materials remain estimates.'})
-    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review
+    if job.get('review_context') is not None:
+        if not prepared_review:
+            raise ValueError('Estimated context requires an explicit provisional component review job')
+        from .pilot_context import prepare as prepare_context
+        prepared_context = prepare_context(job['review_context'], asset, _json, job_path.parent, config)
+    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review, prepared_context
 
 
 def run(job_path, output):
@@ -166,7 +172,7 @@ def run(job_path, output):
     staging = output.with_name(output.name + '.partial')
     if output.exists() or staging.exists():
         raise ValueError('Use a fresh pilot output directory; existing output is never overwritten')
-    job, config, collection, tasks, pins, inputs, prepared_review = _prepare(job_path)
+    job, config, collection, tasks, pins, inputs, prepared_review, prepared_context = _prepare(job_path)
     staging.mkdir(parents=True)
     try:
         _write(staging / 'inputs.json', inputs)
@@ -180,6 +186,10 @@ def run(job_path, output):
         if review_component:
             from .pilot_access import prepare as prepare_access
             access = prepare_access(staging, quality, review_component, prepared_review['access'], config['max_voxels'])
+        context = None
+        if prepared_context:
+            from .pilot_context import append as append_context
+            context = append_context(staging, quality, config, prepared_context)
         accuracy = (quality.get('terrain') or {}).get('coordinate_transform', {}).get('accuracy_m', -1)
         if accuracy < 0 or accuracy > 1:
             quality['issues'].append({'severity': 'warning', 'reason': 'Terrain coordinate operation has unknown or greater-than-one-metre advertised accuracy; no independent placement accuracy established.',
@@ -244,6 +254,7 @@ def run(job_path, output):
             'placement_comparison': comparison,
             'review_component': review_component,
             'access_review': quality.get('access_review'),
+            'context_review': context,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
                            'minecraft_visual_inspection': 'not_performed',
@@ -288,6 +299,8 @@ def run(job_path, output):
             artifacts += ['placement-comparison.json', 'placement-comparison.svg']
         if review_component:
             artifacts += ['review-component.json', 'access-review.json', 'access-review.svg']
+        if context:
+            artifacts += ['context-review.json']
         if world:
             artifacts += report['playtest']['artifacts']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}

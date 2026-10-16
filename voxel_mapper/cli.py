@@ -117,12 +117,19 @@ def validate_config(config):
     resolution = float(config.get("voxel_size_m", 1))
     if not math.isfinite(resolution) or resolution <= 0:
         raise ValueError("voxel_size_m must be positive")
+    if 'local_origin_wgs84' in config:
+        origin = config['local_origin_wgs84']
+        if (not isinstance(origin, list) or len(origin) != 2
+                or any(type(v) not in (int, float) or not math.isfinite(v) for v in origin)
+                or not -180 <= origin[0] <= 180 or not -90 < origin[1] < 90):
+            raise ValueError('local_origin_wgs84 requires finite longitude, latitude')
     return west, south, east, north, resolution
 
 
 def build(config, collection, output):
     west, south, east, north, resolution = validate_config(config)
-    crs = CRS.from_proj4(f'+proj=aeqd +lat_0={(south+north)/2} +lon_0={(west+east)/2} +datum=WGS84 +units=m')
+    longitude, latitude = config.get('local_origin_wgs84', [(west+east)/2, (south+north)/2])
+    crs = CRS.from_proj4(f'+proj=aeqd +lat_0={latitude} +lon_0={longitude} +datum=WGS84 +units=m')
     projector = Transformer.from_crs("EPSG:4326", crs, always_xy=True)
     area = transform(projector.transform, shape({"type": "Polygon", "coordinates": [[[west,south],[east,south],[east,north],[west,north],[west,south]]]}))
     if config.get("boundary_geojson") and config.get('clip_to_boundary', True):

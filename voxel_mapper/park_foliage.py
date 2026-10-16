@@ -13,7 +13,7 @@ import amulet
 import numpy as np
 import shapely
 from pyproj import CRS,Transformer
-from shapely.geometry import Point,Polygon,LineString,shape,mapping
+from shapely.geometry import Point,Polygon,LineString,shape,mapping,box
 from shapely.ops import transform,unary_union
 from .foliage import tree_cells,shrub_cells,stable_seed
 from .terrain import Terrain
@@ -40,7 +40,8 @@ def mapped_geometry(element,project):
 
 
 def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,grid=None,
-                clearance_path=None,hints_path=None,max_trees=2600,max_cells=3_000_000,cloud_path=None,cloud_metadata_path=None):
+                clearance_path=None,hints_path=None,max_trees=2600,max_cells=3_000_000,cloud_path=None,cloud_metadata_path=None,
+                collect_only=False,surface_config=None):
     source,output=Path(source),Path(output)
     q=json.loads((source/'quality-report.json').read_text());config=json.loads((source/'resolved-config.json').read_text());sources={s['id']:s for s in config['sources']}
     if grid:
@@ -49,7 +50,13 @@ def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,gri
                 s['coordinate_transform']['grid']['file']=str(Path(grid).resolve());activate_retained_grid(s)
     crs=CRS.from_wkt(q['crs']);project=Transformer.from_crs(4326,crs,always_xy=True).transform
     ground=Terrain(config['terrain'],crs,sources)
-    surface=Terrain({'path':str(surface_path),'source_id':config['terrain']['source_id'],'vertical_datum':config['terrain']['vertical_datum'],'units':'m'},crs,sources)
+    surface_spec=dict(surface_config) if surface_config else {'path':str(surface_path),'source_id':config['terrain']['source_id'],'vertical_datum':config['terrain']['vertical_datum'],'units':'m'}
+    if surface_spec.get('vertical_datum')!=config['terrain']['vertical_datum']:
+        ground.close()
+        raise ValueError('Foliage surface and terrain must share their declared vertical datum')
+    if config['terrain'].get('horizontal_operation'):
+        surface_spec['horizontal_operation']=dict(config['terrain']['horizontal_operation'])
+    surface=Terrain(surface_spec,crs,sources)
     boundary=shape(json.loads(Path(boundary_path).read_text()));shapely.prepare(boundary)
     raw=json.loads(Path(raw_path).read_text());nodes=json.loads(Path(nodes_path).read_text())
     woods=[];scrubs=[];hedges=[];hard=[];rides=[];paths=[];transport=[]
@@ -114,7 +121,9 @@ def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,gri
     def masks(x,z):
         key=x,z
         if key not in horizontal:
-            p=Point(x+.5,z+.5);horizontal[key]=(boundary.covers(p),hard.covers(p),path_areas.covers(p),ground.sample(p.x,p.y))
+            p=Point(x+.5,z+.5)
+            inside=boundary.covers(box(x,z,x+1,z+1)) if collect_only else boundary.covers(p)
+            horizontal[key]=(inside,hard.covers(p),path_areas.covers(p),ground.sample(p.x,p.y))
         return horizontal[key]
     def real_ground(x,z):
         value=ground.sample(x+.5,z+.5)
@@ -195,7 +204,7 @@ def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,gri
                     if h is None or h<5:continue
                     forest.append({'id':f"{item['id']}/canopy/{gx}/{gz}",'x':x,'z':z,'height':min(35,h),'position_method':'estimated_centre_in_mapped_woodland_with_DSM_canopy','tags':item['tags'],'height_method':'DSM_minus_DTM_envelope','woodland':geom})
         forest.sort(key=lambda c:(-c['height'],c['id']));candidates.extend(forest)
-        print(json.dumps({'phase':'vegetation_candidates','retained_tree_centres':len(existing),'candidates':len(candidates),'classified_vegetation':cloud_report}),flush=True)
+        if not collect_only:print(json.dumps({'phase':'vegetation_candidates','retained_tree_centres':len(existing),'candidates':len(candidates),'classified_vegetation':cloud_report}),flush=True)
         for c in candidates:
             x,z=c['x'],c['z'];seed=stable_seed(c['id']);base=real_ground(x,z);h=max(3,round(c['height']));r=max(2,min(6.5,h*.25))
             if base is None:skip['no_unpaved_root_ground']+=1;continue
@@ -270,8 +279,13 @@ def reconstruct(source,raw_path,nodes_path,surface_path,boundary_path,output,gri
                     for dy in (1,2):
                         k=x,base+dy,z
                         if permitted(k,'dark_oak_leaves') and k not in rows:write(k,'dark_oak_leaves',item['id'],'mapped_hedge_estimated_two_metre_height');hedge_cells+=1
-    finally:world.close();ground.close();surface.close()
+    finally:
+        transforms={'terrain':ground.report()['coordinate_transform'],'surface':surface.report()['coordinate_transform']} if collect_only else None
+        world.close();ground.close();surface.close()
     report={'stations':[],'world_name':'Alton Towers — Rounded branch foliage V15','trees':accepted,'tree_count':len(accepted),'mapped_tree_nodes_in_boundary':sum(c['position_method']=='mapped_tree_node' for c in candidates),'woodland_polygons':len(woods),'woodland_area_m2':woodland.area,'shrub_clusters':shrubs,'groundcover_plants':plants,'hedge_cells':hedge_cells,'withheld_candidates':dict(skip),'overlay_records':len(rows),'sources':{'raw_osm_sha256':hashlib.sha256(Path(raw_path).read_bytes()).hexdigest(),'terrain_sha256':ground.checksum,'surface_sha256':surface.checksum,'planning_hints':len(hints),'classified_vegetation':cloud_report},'limitations':['DSM-minus-DTM is a canopy envelope proxy; DSM may include other objects. Mapped vegetation masks and structure exclusions reduce this ambiguity.','Canopy centres inferred within woodland, widths, branches, understorey density and unspecified species are visual estimates.','Mapped named species use Minecraft block/shape proxies; nearby planning species labels do not establish individual tree identity.','Composite survey dates vary; foliage is a summer visual reconstruction, not a complete current arboricultural survey.']}
+    if collect_only:
+        report['coordinate_transforms']=transforms
+        return list(rows.values()),report
     apply_overlay(source,output,list(rows.values()),report,report_key='park_foliage',report_filename='park-foliage-report.json')
     (output/'foliage-overlay.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows.values()))
     print(json.dumps({k:v for k,v in report.items() if k not in ('trees','stations')}));return report
