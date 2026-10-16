@@ -58,6 +58,11 @@ and planning acceptance.
 
 ## Whole-park batch jobs
 
+The opt-in [automatic drawing views](docs/automatic-drawing-views.md) prepares
+source-linked view crops and nominal local geometry without per-view rectangles.
+It retains original glyph evidence, whole-object membership and unresolved
+scale/scope claims before physical assembly or alignment.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

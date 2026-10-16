@@ -10,7 +10,7 @@ from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .planning_bulk import Corpus
 from .reconstruction.park_generators import FAMILY_ALIASES
 
-VERSION='resort-area-reconstruction-v4'
+VERSION='resort-area-reconstruction-v5'
 
 
 def select_documents(catalogue, area):
@@ -69,6 +69,11 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
     evidence_enabled=evidence_settings.get('enabled',False)
     if evidence_enabled and not config.get('architectural_interpretation',{}).get('enabled',False):
         raise ValueError('Evidence acquisition requires architectural interpretation')
+    view_settings=config.get('drawing_views',{})
+    if not isinstance(view_settings,dict) or type(view_settings.get('enabled',False)) is not bool:
+        raise ValueError('Explicit drawing-view settings required')
+    from .drawing_view_candidates import options as view_options
+    view_budget=view_options({k:v for k,v in view_settings.items() if k!='enabled'})
     resolve=lambda value:(config_path.parent/value).resolve()
     initial_base=config.get('initial_base_world');initial_sha=config.get('initial_base_sha256')
     if initial_base or initial_sha:
@@ -235,6 +240,9 @@ def run(config_path, stage='extract', max_cycles=1, area_id=None):
         architecture=config.get('architectural_interpretation',{})
         if architecture.get('enabled',False):
             architecture_review()
+        if view_settings.get('enabled',False):
+            from .drawing_view_candidates import run as discover_views
+            entry['drawing_views']=discover_views(corpus,work/'drawing-geometry',work/'drawing-views',settings=view_budget)
         contextual=config.get('cross_drawing_alignment',{})
         automatic_settings=config.get('automatic_reconstruction',{})
         if contextual.get('enabled',automatic_settings.get('enabled',False)):
@@ -419,7 +427,7 @@ def run_all(config_path, stage='reconstruct', max_cycles=1):
             for key in ('status','document_records','acquisition','extraction','component_mentions',
                         'generated_families','missing_components','missing_component_ids',
                         'world_geometry_additions','planned_native_changes','latest_preview','world_sha256',
-                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','evidence_acquisition','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals','wing_outline_reviews'):
+                        'automatic_reconstruction','reconstruction_recipe_configured','component_inventory_bound','reconstruction_evidence_queue','retained_evidence_matching','evidence_acquisition','drawing_views','local_wing_reviews','native_opening_inventories','opening_boundary_reviews','aperture_gap_proposals','wing_outline_reviews'):
                 if key in entry:row[key]=entry[key]
             row.setdefault('world_geometry_additions',0)
             row['blockers']=[]

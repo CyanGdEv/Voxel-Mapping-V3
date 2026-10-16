@@ -1,0 +1,62 @@
+{
+  "accepted_physical_components": 0,
+  "fresh_replay_artifact_hashes_identical": 1,
+  "job_sha256": "956ff2442d69258b9a1e23b24b5877ee35d79c20141fb8ff9991ec6393c97417",
+  "limits": "Candidate review scopes and nominal source measurements; no physical building, mesh assembly or geographic placement is accepted.",
+  "nominal_scaled_views": 0,
+  "output_sha256": {
+    "view-candidates.json": "2f56e229a9436733095f8a17f70c85785129c7007914b7eb13fc8a2bf4979f1a"
+  },
+  "pages": 2,
+  "sheet_title_claims": [
+    {
+      "document_sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "fragment_count": 4,
+      "page": 1,
+      "printed_claim": {
+        "caption_subject": null,
+        "direction": null,
+        "kind": "sheet_title",
+        "plan_level_or_form": "site",
+        "printed_scale_denominator": null,
+        "printed_state": "existing",
+        "view_kind": "sheet_title"
+      },
+      "text": "Site Plan as Existing",
+      "view_scope_verified": false
+    }
+  ],
+  "source_contract": {
+    "caption_implementation_sha256": "4e7297be9c48e28247bba352774e5d20276177416bdeba737c26e1076803def3",
+    "caption_version": "architectural-caption-layout-v3",
+    "drawing_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "drawing_feed_sha256": "1b697799e2a3b0cf6bc1c3961ed11e810819403ed0045519d0fce247dc12d43d",
+    "fragment_implementation_sha256": "62210bf5b218a9bd0e2338df5442a56ad6b696403bea038ddf7bd5acd853ae5d",
+    "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+    "glyph_version": "source-font-glyph-raster-screen-v5",
+    "implementation_sha256": "1be60c650d3e4a8897d8684adb2514786542b24f0c1f0590e653077051027ffa",
+    "options": {
+      "max_checks": 100000,
+      "max_pages": 4,
+      "render_width": 800
+    },
+    "pymupdf_version": "1.28.2",
+    "raster_version": "building-raster-view-v1",
+    "source_sha256": [
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953"
+    ],
+    "version": "automatic-drawing-view-candidates-v1"
+  },
+  "source_membership_counts": {
+    "outside_candidates": 6756
+  },
+  "status": "passed",
+  "training_labels_generated": 0,
+  "version": "automatic-drawing-view-audit-v1",
+  "view_candidates": 0,
+  "views": [],
+  "whole_source_kinds": {},
+  "whole_source_objects_checked": 0,
+  "world_geometry_additions": 0
+}

@@ -1,0 +1,459 @@
+{
+  "pages": [
+    {
+      "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "page": 1,
+      "source_sheet_titles": []
+    },
+    {
+      "document_sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "page": 1,
+      "source_sheet_titles": [
+        {
+          "caption_fragments": [
+            {
+              "character_indices": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "glyph_screen": {
+                "glyph_encoding": "source_cff_charset_cids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 875,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 1,
+                    "core_pixels": 443,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 2,
+                    "core_pixels": 393,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 3,
+                    "core_pixels": 551,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 962,
+                "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+                "source_font_xrefs": [
+                  110
+                ],
+                "source_rotation_restored": 0,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "label_geometry": {
+                "coordinates": [
+                  [
+                    [
+                      2053.679931640625,
+                      179.1461181640625
+                    ],
+                    [
+                      2076.254150390625,
+                      179.1461181640625
+                    ],
+                    [
+                      2076.254150390625,
+                      164.80419921875
+                    ],
+                    [
+                      2053.679931640625,
+                      164.80419921875
+                    ],
+                    [
+                      2053.679931640625,
+                      179.1461181640625
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "reading_direction_pdf_native": [
+                1.0,
+                0.0
+              ],
+              "text": "Site",
+              "trace_indices": [
+                5248
+              ]
+            },
+            {
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ],
+              "glyph_screen": {
+                "glyph_encoding": "source_cff_charset_cids",
+                "glyphs": [
+                  {
+                    "character_index": 1,
+                    "core_pixels": 1092,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 2,
+                    "core_pixels": 508,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 3,
+                    "core_pixels": 587,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 4,
+                    "core_pixels": 703,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 1035,
+                "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+                "source_font_xrefs": [
+                  110
+                ],
+                "source_rotation_restored": 0,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "label_geometry": {
+                "coordinates": [
+                  [
+                    [
+                      2076.239990234375,
+                      179.07470703125
+                    ],
+                    [
+                      2106.973876953125,
+                      179.07470703125
+                    ],
+                    [
+                      2106.973876953125,
+                      164.8260498046875
+                    ],
+                    [
+                      2076.239990234375,
+                      164.8260498046875
+                    ],
+                    [
+                      2076.239990234375,
+                      179.07470703125
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "reading_direction_pdf_native": [
+                1.0,
+                0.0
+              ],
+              "text": "Plan",
+              "trace_indices": [
+                5249
+              ]
+            },
+            {
+              "character_indices": [
+                0,
+                1,
+                2
+              ],
+              "glyph_screen": {
+                "glyph_encoding": "source_cff_charset_cids",
+                "glyphs": [
+                  {
+                    "character_index": 1,
+                    "core_pixels": 587,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 2,
+                    "core_pixels": 495,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 511,
+                "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+                "source_font_xrefs": [
+                  110
+                ],
+                "source_rotation_restored": 0,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "label_geometry": {
+                "coordinates": [
+                  [
+                    [
+                      2106.9599609375,
+                      179.0687255859375
+                    ],
+                    [
+                      2123.294189453125,
+                      179.0687255859375
+                    ],
+                    [
+                      2123.294189453125,
+                      164.827880859375
+                    ],
+                    [
+                      2106.9599609375,
+                      164.827880859375
+                    ],
+                    [
+                      2106.9599609375,
+                      179.0687255859375
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "reading_direction_pdf_native": [
+                1.0,
+                0.0
+              ],
+              "text": "as",
+              "trace_indices": [
+                5250
+              ]
+            },
+            {
+              "character_indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "glyph_screen": {
+                "glyph_encoding": "source_cff_charset_cids",
+                "glyphs": [
+                  {
+                    "character_index": 1,
+                    "core_pixels": 1140,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 2,
+                    "core_pixels": 563,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 3,
+                    "core_pixels": 442,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 4,
+                    "core_pixels": 497,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 5,
+                    "core_pixels": 393,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 6,
+                    "core_pixels": 442,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 7,
+                    "core_pixels": 701,
+                    "unsupported_core_pixels": 0
+                  },
+                  {
+                    "character_index": 8,
+                    "core_pixels": 1022,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 2210,
+                "source_font_sha256": "7bdc71094a65aab4b07d2c6c050e9b3bdbef19db424a36621690d8f660d223c9",
+                "source_font_xrefs": [
+                  110
+                ],
+                "source_rotation_restored": 0,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "label_geometry": {
+                "coordinates": [
+                  [
+                    [
+                      2123.280029296875,
+                      179.109375
+                    ],
+                    [
+                      2178.25439453125,
+                      179.109375
+                    ],
+                    [
+                      2178.25439453125,
+                      164.8154296875
+                    ],
+                    [
+                      2123.280029296875,
+                      164.8154296875
+                    ],
+                    [
+                      2123.280029296875,
+                      179.109375
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "reading_direction_pdf_native": [
+                1.0,
+                0.0
+              ],
+              "text": "Existing",
+              "trace_indices": [
+                5251
+              ]
+            }
+          ],
+          "fragment_contract": "native-caption-fragments-v1",
+          "glyph_screen": {
+            "basis": "all_original_native_fragments_screened_individually",
+            "fragment_count": 4,
+            "status": "raster_consistent_candidate",
+            "visibility_verified": false
+          },
+          "id": "5d3f9c2f9b4734fb95817597a22e2510f2d423fbcf55f7fcbc742fd50cf14668",
+          "label_geometry": {
+            "coordinates": [
+              [
+                [
+                  2178.25439453125,
+                  164.80419921875
+                ],
+                [
+                  2178.25439453125,
+                  179.1461181640625
+                ],
+                [
+                  2053.679931640625,
+                  179.1461181640625
+                ],
+                [
+                  2053.679931640625,
+                  164.80419921875
+                ],
+                [
+                  2178.25439453125,
+                  164.80419921875
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "layout_candidate_status": "unscaled_caption_scope_withheld",
+          "physical_identity_verified": false,
+          "printed_claim": {
+            "caption_subject": null,
+            "direction": null,
+            "kind": "sheet_title",
+            "plan_level_or_form": "site",
+            "printed_scale_denominator": null,
+            "printed_state": "existing",
+            "view_kind": "sheet_title"
+          },
+          "reading_direction_pdf_native": [
+            1.0,
+            0.0
+          ],
+          "scale_application_verified": false,
+          "text": "Site Plan as Existing",
+          "text_basis": "native_line_exact_fragment_character_coverage_whitespace_only_normalization",
+          "view_scope_verified": false
+        }
+      ]
+    }
+  ],
+  "scope": "Sheet context only; no view rectangle or physical geometry accepted.",
+  "source_contract": {
+    "caption_implementation_sha256": "4e7297be9c48e28247bba352774e5d20276177416bdeba737c26e1076803def3",
+    "caption_version": "architectural-caption-layout-v3",
+    "drawing_contract": "eed59cd08250a5163c916f11cd5bcb743ccb4495c2a7756a0430e83e4cc9d628",
+    "drawing_feed_sha256": "1b697799e2a3b0cf6bc1c3961ed11e810819403ed0045519d0fce247dc12d43d",
+    "fragment_implementation_sha256": "62210bf5b218a9bd0e2338df5442a56ad6b696403bea038ddf7bd5acd853ae5d",
+    "glyph_ink_version": "source-font-isolated-glyph-screen-v4",
+    "glyph_version": "source-font-glyph-raster-screen-v5",
+    "implementation_sha256": "1be60c650d3e4a8897d8684adb2514786542b24f0c1f0590e653077051027ffa",
+    "options": {
+      "max_checks": 100000,
+      "max_pages": 4,
+      "render_width": 800
+    },
+    "pymupdf_version": "1.28.2",
+    "raster_version": "building-raster-view-v1",
+    "source_sha256": [
+      "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953"
+    ],
+    "version": "automatic-drawing-view-candidates-v1"
+  }
+}
