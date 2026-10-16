@@ -17,7 +17,7 @@ from shapely.ops import unary_union
 from .bedrock import MATERIALS, material_block, record_priority
 from .doorway_raster import PLAYER_WIDTH_M
 
-VERSION = 'provisional-world-access-v3'
+VERSION = 'provisional-world-access-v4'
 RADIUS = 32
 MAX_ROUTE_COLUMNS = 32
 MAX_SEARCH_STATES = 60_000
@@ -100,7 +100,7 @@ def _scene(records, bounds):
     return Scene(columns, bounds)
 
 
-def _read_inputs(output, component):
+def _read_inputs(output, component, whole_area=False):
     ax, az = [round(v) for v in component['anchor_local_m']]
     bounds = ax - RADIUS, az - RADIUS, ax + RADIUS, az + RADIUS
     records, terrain, paths = {}, {}, {}
@@ -110,7 +110,7 @@ def _read_inputs(output, component):
                 raise ValueError('Access input voxel budget exceeded')
             row = json.loads(line)
             x, y, z = row['x'], row['y'], row['z']
-            if not bounds[0] <= x <= bounds[2] or not bounds[1] <= z <= bounds[3]:
+            if not whole_area and (not bounds[0] <= x <= bounds[2] or not bounds[1] <= z <= bounds[3]):
                 continue
             key = x, y, z
             if key not in records or record_priority(row) > record_priority(records[key]):
@@ -118,7 +118,17 @@ def _read_inputs(output, component):
             if row['kind'] == 'terrain':
                 terrain[x, z] = y
             if row['kind'] in WALKING_KINDS and not row.get('feature', '').startswith(('review/', 'planning/')):
-                paths[key] = row
+                # Composition retains the first equal-priority record. A later
+                # alias must not hide that surviving mapped junction.
+                if key not in paths or record_priority(row) > record_priority(paths[key]):
+                    paths[key] = row
+    if whole_area:
+        if not records:
+            raise ValueError('Whole-area access requires emitted geometry')
+        bounds = (min(p[0] for p in records), min(p[2] for p in records),
+                  max(p[0] for p in records), max(p[2] for p in records))
+        if (bounds[2] - bounds[0] + 1) * (bounds[3] - bounds[1] + 1) > 40_000:
+            raise ValueError('Whole-area access column budget exceeded')
     return records, terrain, paths, bounds
 
 
@@ -402,7 +412,10 @@ def prepare(output, quality, component, settings, max_voxels=1_000_000):
     quality['sha256'] = file_sha256(output / 'voxels.jsonl')
     quality['access_review'] = report
     return {'records': records, 'terrain': terrain, 'paths': paths, 'bounds': bounds,
-            'footprint': footprint, 'component': component, 'report': report, 'route': route, 'routes': routes}
+            'footprint': footprint, 'component': component, 'report': report, 'route': route, 'routes': routes,
+            'audit_scope': settings.get('audit_scope', 'component_neighbourhood') if isinstance(settings, dict) else 'component_neighbourhood',
+            'withheld_feature_ids': sorted({issue['feature'] for issue in quality.get('issues', [])
+                                            if issue.get('severity') == 'error' and issue.get('feature')})}
 
 
 def _approach_row(identifier, x, y, z, material):
@@ -415,6 +428,10 @@ def verify_saved(world_path, offset, spawn, prepared):
     """Read collision geometry and spawn metadata from the saved native world."""
     records, terrain, bounds = prepared['records'], prepared['terrain'], prepared['bounds']
     component, footprint, report = prepared['component'], prepared['footprint'], prepared['report']
+    paths = prepared['paths']
+    whole_area = prepared.get('audit_scope') == 'whole_pilot'
+    if whole_area:
+        records, terrain, paths, bounds = _read_inputs(world_path.parent, component, whole_area=True)
     columns, read_cells = {}, 0
     by_column = {}
     for x, y, z in records:
@@ -425,10 +442,15 @@ def verify_saved(world_path, offset, spawn, prepared):
         stored_spawn = [int(root['Spawn' + axis]) for axis in 'XYZ']
         if stored_spawn != spawn:
             raise ValueError('Saved review spawn differs from the requested spawn')
-        for (x, z), ys in sorted(by_column.items()):
+        active_chunk = None
+        for (x, z), ys in sorted(by_column.items(), key=lambda item: (item[0][0] // 16, (-item[0][1]) // 16, item[0])):
             native_z = -z
             if not level.has_chunk(x // 16, native_z // 16, 'minecraft:overworld'):
                 continue
+            key = x // 16, native_z // 16
+            if key != active_chunk:
+                level.unload()
+                active_chunk = key
             chunk = level.get_chunk(x // 16, native_z // 16, 'minecraft:overworld')
             low = min(ys) - 1
             high = max(max(ys) + 2, round(component['floor_elevation_m']) + 3)
@@ -449,7 +471,7 @@ def verify_saved(world_path, offset, spawn, prepared):
     supported = scene.standing(local_spawn)
     if not supported:
         raise ValueError('Saved review spawn lacks bearing support or two metres of headroom')
-    mapped = _mapped_nodes(scene, prepared['paths'], records)
+    mapped = _mapped_nodes(scene, paths, records)
     from_path, from_spawn = _flood(scene, mapped), _flood(scene, [local_spawn])
     openings, usable = _openings(scene, component, footprint)
     source = {opening['id']: opening for opening in component['access_openings']}
@@ -489,6 +511,13 @@ def verify_saved(world_path, offset, spawn, prepared):
         'interior_connected_to_path_and_spawn': connected,
         'openings': openings, 'unresolved_opening_ids': unresolved,
         'minecraft_visual_inspection': 'not_performed'}
+    report['native_readback']['audit_scope'] = prepared.get('audit_scope', 'component_neighbourhood')
+    report['native_readback']['bounds_local_xz'] = list(bounds)
+    if whole_area:
+        from .pilot_navigation import inspect, write
+        report['whole_area_navigation'] = inspect(scene, local_spawn, mapped, paths, records, offset,
+                                                 prepared.get('withheld_feature_ids', []))
+        write(world_path.parent, report['whole_area_navigation'], footprint)
     (world_path.parent / 'access-review.json').write_text(
         json.dumps(report, indent=2, sort_keys=True) + '\n', encoding='utf-8')
     _write_svg(world_path.parent / 'access-review.svg', prepared)

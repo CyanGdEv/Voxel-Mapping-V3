@@ -20,8 +20,10 @@ def prepare(settings, asset, load_json, directory, pins):
     if not isinstance(settings, dict) or settings.get('policy') != 'estimated_review_only':
         raise ValueError('Explicit estimated_review_only component policy required')
     access = settings.get('access')
-    if access is not None and access not in ({'policy': 'estimated_half_step_approach_v1'},
-                                            {'policy': 'estimated_each_opening_approach_v2'}):
+    if access is not None and (not isinstance(access, dict)
+            or set(access) - {'policy', 'audit_scope'}
+            or access.get('policy') not in ('estimated_half_step_approach_v1', 'estimated_each_opening_approach_v2')
+            or access.get('audit_scope', 'component_neighbourhood') not in ('component_neighbourhood', 'whole_pilot')):
         raise ValueError('Unsupported provisional access policy')
     model_path = asset(settings.get('model'), directory, 'review_model')
     placement_path = asset(settings.get('placement'), directory, 'review_placement')

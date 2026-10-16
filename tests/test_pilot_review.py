@@ -19,6 +19,40 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PilotReviewTests(unittest.TestCase):
+    def test_whole_pilot_navigation_writes_pending_world_bound_walkthrough_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path, job, _ = self.fixture(root)
+            job['review_component']['access'] = {'policy': 'estimated_each_opening_approach_v2', 'audit_scope': 'whole_pilot'}
+            self.write(path, job)
+            report = run(path, root / 'scene')
+            access = report['access_review']
+            self.assertEqual(access['native_readback']['audit_scope'], 'whole_pilot')
+            self.assertEqual(access['whole_area_navigation']['mapped_supported_cells'], 0)
+            self.assertEqual(access['whole_area_navigation']['status'], 'partial_or_unresolved')
+            for name in ('navigation-review.json', 'navigation-review.svg'):
+                self.assertIn(name, report['output_sha256'])
+                self.assertTrue((root / 'scene' / name).is_file())
+            form = json.loads((root / 'scene/playtest-results.json').read_text())
+            self.assertEqual(form['world']['sha256'], report['world']['sha256'])
+            self.assertTrue(all(check['outcome'] == 'not_run' for check in form['checks']))
+            self.assertIn('whole-area-obstacles', [check['id'] for check in form['checks']])
+            with zipfile.ZipFile(root / 'scene/park.mcworld') as archive:
+                embedded = json.loads(archive.read('voxel-quality-report.json'))
+                self.assertEqual(embedded['access_review']['whole_area_navigation'], access['whole_area_navigation'])
+
+    def test_invalid_audit_scope_and_unknown_access_fields_are_rejected(self):
+        for access in ({'policy': 'estimated_each_opening_approach_v2', 'audit_scope': 'all_park'},
+                       {'policy': 'estimated_each_opening_approach_v2', 'ignore_blocked': True}):
+            with self.subTest(access=access), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                path, job, _ = self.fixture(root)
+                job['review_component']['access'] = access
+                self.write(path, job)
+                with self.assertRaisesRegex(ValueError, 'access policy'):
+                    run(path, root / 'scene')
+                self.assertFalse((root / 'scene').exists())
+
     def pin(self, path):
         return {'file': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 

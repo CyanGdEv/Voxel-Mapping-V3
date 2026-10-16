@@ -1,0 +1,181 @@
+{
+  "config_sha256": "9f9be13bd8f4063b4b0b2e78de97ec9952c34cad7af724831b558db885439e5a",
+  "date_utc": "2026-10-16",
+  "decisions": [
+    {
+      "bridge_candidate": {
+        "checks": 9,
+        "deck_source_id": "ea-wicker-dsm",
+        "feature": "osm/way/107026704",
+        "ground_source_id": "ea-wicker-dtm",
+        "length_m": 19.411677939734766,
+        "method": "bridge_surface_candidate",
+        "reason": "Transverse surface variation exceeds 0.75 m; possible rails/canopy",
+        "status": "rejected",
+        "warnings": [
+          "DSM returns can include vegetation, rails or vehicles; deck identity is not independently classified",
+          "Composite survey dates and mapped bridge dates may differ",
+          "One voxel deck thickness is assumed; no supports, railings or underside are inferred"
+        ]
+      },
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/107026704",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Transverse surface variation exceeds 0.75 m; possible rails/canopy",
+      "source_tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "kind": "path",
+        "oneway": "yes",
+        "source": "Bing",
+        "source_id": "osm"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": {
+        "checks": 0,
+        "feature": "osm/way/453986307",
+        "reason": "Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported",
+        "status": "rejected"
+      },
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/453986307",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported",
+      "source_tags": {
+        "bridge": "yes",
+        "highway": "service",
+        "kind": "road",
+        "maxweight:signed": "no",
+        "source": "Bing",
+        "source_id": "osm"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": {
+        "checks": 0,
+        "feature": "osm/way/453986308",
+        "reason": "Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported",
+        "status": "rejected"
+      },
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/453986308",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge footprint/endpoints cross the build boundary; clipped spans are unsupported",
+      "source_tags": {
+        "bridge": "yes",
+        "highway": "service",
+        "kind": "road",
+        "maxweight:signed": "no",
+        "source": "Bing",
+        "source_id": "osm"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/536931482",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "highway": "service",
+        "kind": "road",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/536931484",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "highway": "service",
+        "kind": "road",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/1182076343",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "highway": "footway",
+        "kind": "path",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/1182178170",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "bicycle": "no",
+        "foot": "yes",
+        "highway": "footway",
+        "horse": "no",
+        "kind": "path",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/1182178172",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "highway": "footway",
+        "kind": "path",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    },
+    {
+      "bridge_candidate": null,
+      "emitted_voxel_records": 0,
+      "feature_id": "osm/way/1182179734",
+      "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+      "source_tags": {
+        "bicycle": "no",
+        "foot": "yes",
+        "highway": "footway",
+        "horse": "no",
+        "kind": "path",
+        "layer": "-1",
+        "source_id": "osm",
+        "tunnel": "yes"
+      },
+      "status": "withheld"
+    }
+  ],
+  "horizontal_operation": "Same pinned OSTN15 grid for terrain and surface; no vertical datum transformation.",
+  "limitations": [
+    "Above-ground DSM does not establish tunnel floor levels.",
+    "Surface variation and full-footprint gates are unchanged.",
+    "No measured building placement or training labels supplied."
+  ],
+  "new_geometry": 0,
+  "qualified_bridges": 0,
+  "qualified_tunnels": 0,
+  "source_sha256": {
+    "ea-buffer-dsm.tif": "04a422aa2934021203364e868c3effb5026eff97a3c6734db3cceaa4558686ab",
+    "ea-buffer-dtm.tif": "72278920775b1fdbeb6b983305ee7a6d84a1ce3176465da73aeaee040dd4b1e3",
+    "mapped-surfaces.geojson": "78079ee016f9d97dc8ac57ab6c0b2ee8f83c1de0799a64b86c7e2b139e722333",
+    "osm-map.xml": "04fcb53ac82db134fa27483e9cb74eed188a8fd004698d2f60038b82d1e26dc6"
+  },
+  "version": "retained-bridge-qualification-v1"
+}

@@ -24,6 +24,7 @@ def write(output, report):
             raise ValueError('Play-test world checksum mismatch')
     binding = {key: world[key] for key in ('file', 'sha256', 'target_version', 'spawn')}
     access = (report.get('access_review') or {}).get('native_readback', {})
+    navigation = (report.get('access_review') or {}).get('whole_area_navigation')
     routes = []
     checks = [
         {'id': 'world-import', 'title': 'World imports and loads in Minecraft Bedrock'},
@@ -49,6 +50,10 @@ def write(output, report):
                        'title': 'Walk from spawn through ' + opening['id'] + ' and back without flying',
                        'native_route_status': 'ready_to_test' if ready else 'unresolved'})
     checks.append({'id': 'terrain-edge', 'title': 'Inspect terrain edges and omitted elevated paths'})
+    if navigation:
+        checks.append({'id': 'whole-area-obstacles', 'title': 'Inspect disconnected walking components and steps across the full area'})
+        checks += [{'id': 'site/' + route['id'], 'title': 'Walk the site route: ' + route['id']}
+                   for route in navigation['walkthroughs']]
     results = {'version': VERSION, 'world': binding, 'status': 'awaiting_minecraft_playtest',
                'observer': {'name': None, 'platform': None, 'minecraft_version': None, 'tested_at_utc': None},
                'checks': [{**check, 'outcome': 'not_run', 'notes': '', 'evidence_reference': None}
@@ -59,7 +64,7 @@ def write(output, report):
     _write(output / 'playtest-routes.json', {'version': VERSION, 'world': binding,
         'coordinate_frame': 'Native block-centred Minecraft X/Y/Z; Y is feet height including half slabs.',
         'basis': 'Bounded conservative routes traced from reopened native blocks; not in-game physics.',
-        'routes': routes})
+        'routes': routes, 'site_routes': navigation['walkthroughs'] if navigation else []})
     spawn = world['spawn']
     spawn_command = '/tp @s ' + _coordinates([spawn[0] + .5, spawn[1], spawn[2] + .5])
     version = '.'.join(map(str, world['target_version']))
@@ -103,6 +108,24 @@ def write(output, report):
                      else 'Inside' if index == len(points) - 1 else '')
             guide.append(f'| {index} | {x:g} | {y:g} | {z:g} | {label} |')
         guide.append('')
+    if navigation:
+        guide += ['## Whole-area walking', '',
+                  'Open `navigation-review.svg` to inspect the complete area. Blue marks the spawn walking '
+                  'component. Amber components can be reached using other surfaces, including terrain or '
+                  'the building interior; red components are unresolved from spawn under this rule.', '',
+                  f"Supported mapped cells reachable by any walking route: {navigation['mapped_reachable_cells_any_walking']}"
+                  f"/{navigation['mapped_supported_cells']}. Reachable while staying on mapped walking surfaces "
+                  f"and estimated approaches: {navigation['mapped_reachable_cells_on_walking_surfaces']}.", '',
+                  'Missing/overridden cells and full-block steps remain separate findings in `navigation-review.json`. '
+                  'An off-path route does not establish continuous paving. The sampled site routes below '
+                  'are native checks; walk them in Adventure mode and record the result.', '']
+        for route in navigation['walkthroughs']:
+            guide += ['### Site route: ' + route['id'], '', route['surface_scope'] + '.', '',
+                      f"Length: {route['horizontal_length_m']} m. Reset with `{spawn_command}`.", '',
+                      '| Point | X | Feet Y | Z |', '| ---: | ---: | ---: | ---: |']
+            for index, (x, y, z) in enumerate(route['route_native_xyz']):
+                guide.append(f'| {index} | {x:g} | {y:g} | {z:g} |')
+            guide.append('')
     guide += [
         '## Record the result', '',
         'Fill in the observer fields in `playtest-results.json`. For each check, set `outcome` to '
@@ -119,4 +142,5 @@ def write(output, report):
     return {'version': VERSION, 'status': 'awaiting_minecraft_playtest', 'world_sha256': world['sha256'],
             'ready_entrance_routes': sum(route['status'] == 'ready_to_test' for route in routes),
             'unresolved_entrance_routes': sum(route['status'] != 'ready_to_test' for route in routes),
+            'ready_site_routes': len(navigation['walkthroughs']) if navigation else 0,
             'artifacts': list(ARTIFACTS), 'training_labels_generated': 0}
