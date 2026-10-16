@@ -34,6 +34,9 @@ In-game playtesting remains pending.
 The [buffered site context](docs/buffered-site-context.md) expands the pilot to
 192 × 192 m with a fixed local origin, retained EA terrain, additional mapped
 surfaces and estimated woodland proxies outside the original core.
+The [whole-area navigation jobs](docs/whole-area-navigation.md) audit that complete
+scene, distinguish continuous walking surfaces from terrain detours and retain
+unresolved steps, disconnected components and rejected bridge candidates.
 
 ## Whole-park batch jobs
 

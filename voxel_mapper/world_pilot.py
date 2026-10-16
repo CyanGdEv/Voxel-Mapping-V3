@@ -299,6 +299,9 @@ def run(job_path, output):
             artifacts += ['placement-comparison.json', 'placement-comparison.svg']
         if review_component:
             artifacts += ['review-component.json', 'access-review.json', 'access-review.svg']
+        if quality.get('access_review', {}).get('whole_area_navigation'):
+            from .pilot_navigation import ARTIFACTS as NAVIGATION_ARTIFACTS
+            artifacts += NAVIGATION_ARTIFACTS
         if context:
             artifacts += ['context-review.json']
         if world:

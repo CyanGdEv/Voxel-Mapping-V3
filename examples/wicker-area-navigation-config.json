@@ -1,0 +1,57 @@
+{
+  "bbox": [
+    -1.8902110940526333,
+    52.98869298645517,
+    -1.887351969663943,
+    52.99041826972453
+  ],
+  "local_origin_wgs84": [
+    -1.888781560340408,
+    52.98955563674633
+  ],
+  "max_area_m2": 40000,
+  "max_column_checks": 1000000,
+  "max_voxels": 1000000,
+  "sources": [
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "id": "ea-wicker-dtm",
+      "kind": "terrain",
+      "license": "OGL-UK-3.0",
+      "survey_date": "2022-01-05",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540"
+    },
+    {
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "id": "osm",
+      "kind": "osm",
+      "license": "ODbL-1.0",
+      "sha256": "04fcb53ac82db134fa27483e9cb74eed188a8fd004698d2f60038b82d1e26dc6",
+      "url": "https://www.openstreetmap.org/copyright"
+    },
+    {
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right; canopy envelope used for estimated woodland proxies.",
+      "id": "ea-wicker-dsm",
+      "kind": "surface",
+      "license": "OGL-UK-3.0",
+      "sha256": "04a422aa2934021203364e868c3effb5026eff97a3c6734db3cceaa4558686ab",
+      "survey_date": "2022-01-05",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540"
+    }
+  ],
+  "surface": {
+    "path": "../docs/evidence/site-context/ea-buffer-dsm.tif",
+    "sha256": "04a422aa2934021203364e868c3effb5026eff97a3c6734db3cceaa4558686ab",
+    "source_id": "ea-wicker-dsm",
+    "units": "m",
+    "vertical_datum": "ODN"
+  },
+  "terrain": {
+    "path": "../docs/evidence/site-context/ea-buffer-dtm.tif",
+    "sha256": "72278920775b1fdbeb6b983305ee7a6d84a1ce3176465da73aeaee040dd4b1e3",
+    "source_id": "ea-wicker-dtm",
+    "units": "m",
+    "vertical_datum": "ODN"
+  },
+  "voxel_size_m": 1
+}

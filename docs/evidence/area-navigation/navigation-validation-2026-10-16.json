@@ -1,0 +1,179 @@
+{
+  "base_commit": "88b5cd0b4ed95e3a572180432cf9ca77cee7e2ea",
+  "date_utc": "2026-10-16",
+  "limitations": [
+    "Cardinal centred-player graph; maximum half-metre step, no jumping or flight.",
+    "General walking routes can cross terrain or the interior; entrance exterior witnesses remain separate.",
+    "All withheld features stay absent; full-block path steps are not repaired by this audit.",
+    "Physical placement, floor/datum and source state remain provisional."
+  ],
+  "minecraft_client_playtest": "not_performed",
+  "ranker": "untrained_baseline",
+  "real_training_labels": 0,
+  "scenes": [
+    {
+      "accepted_real_planning_components": 0,
+      "artifacts_sha256": {
+        "navigation-review.json": "88da730b7bed3e6d80a2ff50d23b7bbffbdd03284e6f5d44a2e7b2e3ae9133ec",
+        "navigation-review.svg": "766893ddbc7ab2c34c449d51d721479ee4ca07a2c005167ab84089346e6e5869",
+        "park.mcworld": "ac50710aebe51594354ac88190bc36554318b6f13f19b01adc37dc6ef88516b9",
+        "pilot-report.json": "b953015da7ca79c0ad744aee3db94c0cf054c619ef83aca092aa1f330a7c2557",
+        "playtest-guide.md": "ea915aeed778a158bcd5c949d9983d381c7cbd2eccfdb028dbeaf438abf0d814",
+        "playtest-results.json": "937b35ddedbb00564736c4fdb913f612339754ee360ca66251ea2da9aaa774d3",
+        "playtest-routes.json": "52e9a9197fe9b0718051ddda5b5d8fda0f886e5880203fc0ddf0a6411571698a",
+        "voxels.jsonl": "5ebe9b0b6d123247514ac40b0ae9b1bb8ebdb02b1ea36fd94cef18ee025d7800"
+      },
+      "audit_bounds_local_xz": [
+        -96,
+        -96,
+        95,
+        95
+      ],
+      "barrier_reasons": {
+        "step_exceeds_half_metre": 176
+      },
+      "barriers": 176,
+      "generation_errors": 9,
+      "hypothesis": "A",
+      "mapped_emitted_distinct_cells": 1691,
+      "mapped_reachable_any_walking": 381,
+      "mapped_reachable_on_walking_surfaces": 3,
+      "mapped_supported_cells": 1673,
+      "native_blocks_sampled": 275664,
+      "native_composed_blocks": 888255,
+      "native_walkthrough_checks": [
+        {
+          "id": "opening-NE",
+          "length_m": 9,
+          "native_points_checked": 10,
+          "surface_scope": "entrance exterior then interior"
+        },
+        {
+          "id": "opening-SW",
+          "length_m": 57,
+          "native_points_checked": 58,
+          "surface_scope": "entrance exterior then interior"
+        },
+        {
+          "id": "door-NW",
+          "length_m": 23,
+          "native_points_checked": 24,
+          "surface_scope": "entrance exterior then interior"
+        },
+        {
+          "id": "mapped-walk",
+          "length_m": 2,
+          "native_points_checked": 3,
+          "surface_scope": "mapped walking surfaces and estimated approaches"
+        },
+        {
+          "id": "terrain-detour",
+          "length_m": 147,
+          "native_points_checked": 148,
+          "surface_scope": "includes terrain or other surfaces outside the mapped walking network"
+        }
+      ],
+      "pending_gameplay_checks": 13,
+      "replayed_identical_artifacts": [
+        "inputs.json",
+        "voxels.jsonl",
+        "review-component.json",
+        "context-review.json",
+        "access-review.json",
+        "access-review.svg",
+        "navigation-review.json",
+        "navigation-review.svg"
+      ],
+      "sampled_columns": 36864,
+      "unresolved_opening_ids": [],
+      "voxel_identical_to_buffered_scene": true,
+      "voxel_sha256": "5ebe9b0b6d123247514ac40b0ae9b1bb8ebdb02b1ea36fd94cef18ee025d7800",
+      "walking_components": 95,
+      "world_sha256": "ac50710aebe51594354ac88190bc36554318b6f13f19b01adc37dc6ef88516b9"
+    },
+    {
+      "accepted_real_planning_components": 0,
+      "artifacts_sha256": {
+        "navigation-review.json": "15dce14276a0c5e4c03a3d30a1b736a8672f9f3d7571b89e7875af0de3f31e88",
+        "navigation-review.svg": "548a4e7dfa353bee4ec38bab04403d2061e9d26d5bd5985a32278a862f213cf1",
+        "park.mcworld": "8f6a7f01a0b506c9a0ee123f085130d87ecd19dcc0d09fc33d93b363b931424d",
+        "pilot-report.json": "d2652d09883511b1ef664b3c4ee98b94f796ef0bab9f7aeec3cf1543e3ec258d",
+        "playtest-guide.md": "5434656e3ac4cfc091638672373362571460495ff7b4abee1ec39230d39796b4",
+        "playtest-results.json": "693472b0cf891f76e8a14281d229e580e5f89f8e5f1b9b332b2913081b9ad2f0",
+        "playtest-routes.json": "53215477a8a020ed8a345b1cf58f5e686aa82e02c311ca15812c65844fb2dcd7",
+        "voxels.jsonl": "42c65c6bf5818bafcb3ce491c2380c097e4f027a9d00af97d626d0fab4c5307f"
+      },
+      "audit_bounds_local_xz": [
+        -96,
+        -96,
+        95,
+        95
+      ],
+      "barrier_reasons": {
+        "step_exceeds_half_metre": 176
+      },
+      "barriers": 176,
+      "generation_errors": 9,
+      "hypothesis": "B",
+      "mapped_emitted_distinct_cells": 1691,
+      "mapped_reachable_any_walking": 536,
+      "mapped_reachable_on_walking_surfaces": 3,
+      "mapped_supported_cells": 1673,
+      "native_blocks_sampled": 275665,
+      "native_composed_blocks": 888258,
+      "native_walkthrough_checks": [
+        {
+          "id": "opening-NE",
+          "length_m": 81,
+          "native_points_checked": 82,
+          "surface_scope": "entrance exterior then interior"
+        },
+        {
+          "id": "opening-SW",
+          "length_m": 9,
+          "native_points_checked": 10,
+          "surface_scope": "entrance exterior then interior"
+        },
+        {
+          "id": "mapped-walk",
+          "length_m": 2,
+          "native_points_checked": 3,
+          "surface_scope": "mapped walking surfaces and estimated approaches"
+        },
+        {
+          "id": "terrain-detour",
+          "length_m": 197,
+          "native_points_checked": 198,
+          "surface_scope": "includes terrain or other surfaces outside the mapped walking network"
+        }
+      ],
+      "pending_gameplay_checks": 13,
+      "replayed_identical_artifacts": [
+        "inputs.json",
+        "voxels.jsonl",
+        "review-component.json",
+        "context-review.json",
+        "access-review.json",
+        "access-review.svg",
+        "navigation-review.json",
+        "navigation-review.svg"
+      ],
+      "sampled_columns": 36864,
+      "unresolved_opening_ids": [
+        "door-NW"
+      ],
+      "voxel_identical_to_buffered_scene": true,
+      "voxel_sha256": "42c65c6bf5818bafcb3ce491c2380c097e4f027a9d00af97d626d0fab4c5307f",
+      "walking_components": 95,
+      "world_sha256": "8f6a7f01a0b506c9a0ee123f085130d87ecd19dcc0d09fc33d93b363b931424d"
+    }
+  ],
+  "source_qualification_sha256": "6b91a996cd6effd1f3a14e6c40d0c1b56467fef50fc6455c18de5c85b45a5944",
+  "tests": {
+    "duration_seconds": 126.037,
+    "focused_pilot_tests": 41,
+    "log_sha256": "2bea313ef0d0fca7dbd86049e4d07cd8feac23889cd367af09aad416fd5b6f23",
+    "passed": 1481
+  },
+  "version": "whole-area-navigation-validation-v1"
+}

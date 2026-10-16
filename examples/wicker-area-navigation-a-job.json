@@ -1,0 +1,131 @@
+{
+  "config": {
+    "file": "wicker-area-navigation-config.json",
+    "sha256": "9f9be13bd8f4063b4b0b2e78de97ec9952c34cad7af724831b558db885439e5a"
+  },
+  "evidence": [
+    {
+      "file": "../docs/evidence/pilot-review/wicker-survey-receipt.json",
+      "sha256": "a805867f18178a5a0c6c9799d81bcbc9ef3ad124525708de541fcdaa52bda3b9"
+    },
+    {
+      "file": "../docs/evidence/pilot-review/wicker-osm-receipt.json",
+      "sha256": "bf1d4571819d159901b6cb0913b6cc777b2b1fd39fb578e12cf48c529153169b"
+    },
+    {
+      "file": "../docs/evidence/pilot-review/source-selection-2026-10-15.json",
+      "sha256": "78554ff69173c5d6496d3cac9d113eaa26e4adffce00ce8829d47fd663bd903b"
+    },
+    {
+      "file": "../docs/evidence/site-context/retention-receipt.json",
+      "sha256": "f8afa3845e20660d1fc252b6b35b3fc24930d0e3de6786cbfaa2955c76d74ef6"
+    },
+    {
+      "file": "../docs/evidence/site-context/osm-acquisition.json",
+      "sha256": "f7aa567f29ab7e1d1ec01710e850255f677787800718bfe40fae598aa2d36734"
+    },
+    {
+      "file": "../docs/evidence/site-context/osm-map.xml",
+      "sha256": "04fcb53ac82db134fa27483e9cb74eed188a8fd004698d2f60038b82d1e26dc6"
+    }
+  ],
+  "features": {
+    "file": "../docs/evidence/site-context/mapped-surfaces.geojson",
+    "sha256": "78079ee016f9d97dc8ac57ab6c0b2ee8f83c1de0799a64b86c7e2b139e722333"
+  },
+  "horizontal_operation": {
+    "grid": {
+      "file": "../docs/evidence/world-pilot/alton-ostn15-grid.tif",
+      "sha256": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117"
+    },
+    "method": "ostn15-bng-v1",
+    "provenance": {
+      "file": "../docs/evidence/world-pilot/alton-ostn15-grid-provenance.json",
+      "sha256": "0531f195e3fd88ea63b31507226ed50071ef384701ae098f4c5a431089674e75"
+    }
+  },
+  "name": "Wicker whole-area navigation hypothesis A",
+  "planning_review": {
+    "file": "wicker-component-review-readiness.json",
+    "sha256": "482a5bd83869249d53c89e55cd2823296b502c69e0903015a09e2a3e63db8ea9"
+  },
+  "review_component": {
+    "access": {
+      "audit_scope": "whole_pilot",
+      "policy": "estimated_each_opening_approach_v2"
+    },
+    "evidence": [
+      {
+        "file": "../evidence/wicker-shop-floor-scale-review.json",
+        "sha256": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040"
+      },
+      {
+        "file": "../evidence/wicker-shop-local-roof.json",
+        "sha256": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137"
+      },
+      {
+        "file": "../evidence/wicker-shop-vertical-annotations.json",
+        "sha256": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7"
+      },
+      {
+        "file": "../evidence/wicker-shop-wall-model.json",
+        "sha256": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22"
+      },
+      {
+        "file": "../evidence/wicker-shop-local-preview.json",
+        "sha256": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50"
+      },
+      {
+        "file": "../evidence/wicker-shop-context-review.json",
+        "sha256": "58639eb20b641669aa9404e80b4dd00232b16b2caac242b18af7c484693013fd"
+      },
+      {
+        "file": "../evidence/wicker-shop-model-lidar-review.json",
+        "sha256": "b4d282fd2e9a14b27417f4db04951327fbac48224fa63281dd6e8260b02ace6f"
+      }
+    ],
+    "model": {
+      "file": "../evidence/wicker-shop-projection-model.json",
+      "sha256": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1"
+    },
+    "original_pdfs": [
+      {
+        "file": "../retained-source-input/wicker-shop/files/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf",
+        "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3"
+      },
+      {
+        "file": "../retained-source-input/wicker-shop/files/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf",
+        "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047"
+      },
+      {
+        "file": "../retained-source-input/wicker-shop/files/d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6.pdf",
+        "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+      }
+    ],
+    "placement": {
+      "file": "wicker-component-review-placement-a.json",
+      "sha256": "93527972f9007900ea4ba6e4b887e0224abf16f0895ec885e64962d4d81c8f8c"
+    },
+    "policy": "estimated_review_only"
+  },
+  "review_context": {
+    "core_config": {
+      "file": "wicker-component-review-config.json",
+      "sha256": "cff10f376c5980e2b98fc39a4775fc1ec86927db6482f3b9933d068fb7a677d8"
+    },
+    "max_cells": 100000,
+    "max_trees": 64,
+    "osm_source_id": "osm",
+    "policy": "mapped-woodland-buffer-v1",
+    "raw_osm": {
+      "file": "../docs/evidence/site-context/osm-elements.json",
+      "sha256": "4ce5cb0f9c154d43bb5539e78a6dc00ad840a0a1e14f9f46efbfe0d01d56ee62"
+    },
+    "surface": {
+      "file": "../docs/evidence/site-context/ea-buffer-dsm.tif",
+      "sha256": "04a422aa2934021203364e868c3effb5026eff97a3c6734db3cceaa4558686ab"
+    },
+    "surface_source_id": "ea-wicker-dsm"
+  },
+  "version": "world-pilot-review-v1"
+}
