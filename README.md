@@ -27,6 +27,10 @@ The [placement evidence replay fix](docs/registration-evidence-replay.md)
 recomputes control/checkpoint fits before applying a saved registration. A real
 retained-source job records the missing independent evidence and withholds
 placement; stale accepted flags cannot authorize a changed transform.
+The [native world walkthrough](docs/native-world-walkthrough.md) traces complete
+spawn-to-interior routes through each entrance, rejects interior detours and
+writes native waypoints plus a world-bound blank gameplay result form.
+In-game playtesting remains pending.
 
 ## Whole-park batch jobs
 

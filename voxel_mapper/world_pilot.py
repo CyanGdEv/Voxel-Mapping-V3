@@ -249,6 +249,9 @@ def run(job_path, output):
                            'minecraft_visual_inspection': 'not_performed',
                            'repeatability': 'Compare input hashes, voxel SHA256 and readiness across fresh outputs; package bytes may differ.'},
         }
+        if world:
+            from .pilot_playtest import write as write_playtest
+            report['playtest'] = write_playtest(staging, report)
         description = [job['name'], '', 'Status: ' + report['status'], '',
                        'Open park.mcworld in Minecraft Bedrock to inspect this draft.' if world else
                        'No world was exported because no exportable voxel records were generated.', '',
@@ -263,6 +266,7 @@ def run(job_path, output):
                        'Native block readback does not establish visual fidelity, a complete building or surveyed accuracy.']
         if world:
             description += ['', 'Minecraft spawn: ' + ', '.join(map(str, world['spawn']))]
+            description += ['See playtest-guide.md for native entrance waypoints and playtest-results.json for pending in-game checks.']
         if review_component:
             description += ['', 'PROVISIONAL COMPONENT REVIEW — not accepted park placement.',
                             'This scene reuses a previously reviewed study model; it is not a newly trained AI reconstruction.',
@@ -284,6 +288,8 @@ def run(job_path, output):
             artifacts += ['placement-comparison.json', 'placement-comparison.svg']
         if review_component:
             artifacts += ['review-component.json', 'access-review.json', 'access-review.svg']
+        if world:
+            artifacts += report['playtest']['artifacts']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
         _write(staging / 'pilot-report.json', report)
         staging.rename(output)

@@ -17,7 +17,7 @@ from shapely.ops import unary_union
 from .bedrock import MATERIALS, material_block, record_priority
 from .doorway_raster import PLAYER_WIDTH_M
 
-VERSION = 'provisional-world-access-v2'
+VERSION = 'provisional-world-access-v3'
 RADIUS = 32
 MAX_ROUTE_COLUMNS = 32
 MAX_SEARCH_STATES = 60_000
@@ -139,6 +139,50 @@ def _flood(scene, starts, allowed=None):
         if len(seen) > MAX_SEARCH_STATES:
             raise ValueError('Access graph budget exceeded')
     return seen
+
+
+def _shortest_path(scene, starts, goal, allowed=None):
+    """Retain a bounded, deterministic witness rather than just reachability."""
+    parents = {node: None for node in sorted(set(starts))
+               if scene.standing(node) and (allowed is None or allowed(node))}
+    queue = deque(parents)
+    while queue:
+        if len(parents) > MAX_SEARCH_STATES:
+            raise ValueError('Access witness search budget exceeded')
+        node = queue.popleft()
+        if goal(node):
+            route = []
+            while node is not None:
+                route.append(node)
+                node = parents[node]
+            return list(reversed(route))
+        for neighbour in scene.neighbours(node):
+            if neighbour not in parents and (allowed is None or allowed(neighbour)):
+                parents[neighbour] = node
+                queue.append(neighbour)
+    return []
+
+
+def _walkthrough(scene, spawn, crossing, columns, footprint, floor, offset):
+    """Reach this entrance from outside, then continue into its declared floor."""
+    exterior = _exterior_predicate(footprint)
+    approach = (_shortest_path(scene, [spawn], lambda p: p in crossing,
+                               lambda p: exterior(p) or (p[0], p[1]) in columns)
+                if crossing and exterior(spawn) else [])
+    interior = footprint.buffer(-1)
+    passage = _shortest_path(scene, approach[-1:],
+        lambda p: p[2] == floor and interior.contains(Point(p[0] + .5, p[1] + .5)),
+        lambda p: p[2] == floor and ((p[0], p[1]) in columns or
+                  footprint.contains(Point(p[0] + .5, p[1] + .5))))
+    route = approach + passage[1:] if approach and passage else []
+    return {'status': 'native_route_ready' if route else 'unresolved',
+            'doorway_index': len(approach) - 1 if route else None,
+            'horizontal_length_m': len(route) - 1 if route else None,
+            'route_local_x_z_half_y': [list(p) for p in route],
+            # Convert block indices to block centres, then negate the Z index.
+            # Negating the local centre itself would shift native Z by one block.
+            'route_native_xyz': [[x + .5, h / 2 + offset, -z + .5] for x, z, h in route],
+            'minecraft_playtest': 'not_performed'}
 
 
 def _exterior_predicate(footprint):
@@ -419,6 +463,8 @@ def verify_saved(world_path, offset, spawn, prepared):
         opening['reachable_from_spawn'] = bool(nodes & from_spawn)
         crossing = {tuple(p) for p in opening['crossing_nodes_x_z_half_y']}
         opening['exterior_route_from_mapped_path'] = bool(crossing & exterior_path)
+        opening['walkthrough'] = _walkthrough(scene, local_spawn, crossing, columns, footprint,
+                                               2 * round(component['floor_elevation_m']), offset)
     routes = prepared['routes']
     verified_routes = 0
     for route in routes:
@@ -429,8 +475,9 @@ def verify_saved(world_path, offset, spawn, prepared):
         verified_routes += 1
     route_verified = bool(routes and verified_routes == len(routes))
     unresolved = [opening['id'] for opening in openings
-                  if not opening['exterior_route_from_mapped_path'] or not opening['reachable_from_spawn']]
-    connected = any(opening['exterior_route_from_mapped_path'] and opening['reachable_from_spawn'] for opening in openings)
+                  if not opening['exterior_route_from_mapped_path'] or not opening['reachable_from_spawn']
+                  or opening['walkthrough']['status'] != 'native_route_ready']
+    connected = any(opening['id'] not in unresolved for opening in openings)
     report['status'] = ('route_verified' if route_verified else 'existing_access_verified') if connected else 'access_unresolved'
     if connected and unresolved:
         report['status'] += '_with_unresolved_openings'
@@ -479,7 +526,7 @@ def _write_svg(path, prepared):
     svg.append(f'<polygon points="{coords}" fill="#f2dfc1" stroke="#6d4c41" stroke-width="2"/>')
     source = {o['id']: o for o in prepared['component']['access_openings']}
     for opening in openings:
-        colour = '#207d49' if opening['exterior_route_from_mapped_path'] and opening['reachable_from_spawn'] else '#c62828'
+        colour = '#207d49' if opening['id'] not in report['native_readback']['unresolved_opening_ids'] else '#c62828'
         for x, z in source[opening['id']]['columns_local_xz']:
             svg.append(cell(x, z, colour))
     if route:

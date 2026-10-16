@@ -1,0 +1,221 @@
+{
+  "access_audit_version": "provisional-world-access-v3",
+  "base_commit": "8e4194d02f645527daa9a9d1f74859966a3df5f9",
+  "date_utc": "2026-10-16",
+  "limitations": [
+    "No Minecraft client gameplay or visual playtest performed.",
+    "Routes use conservative centred-player collision shapes, not the game physics engine.",
+    "Placement, 184 m floor, materials and source identity remain provisional.",
+    "Three elevated OSM paths remain withheld without absolute elevation evidence.",
+    "No real accepted planning component or real training label; ranker remains an untrained baseline."
+  ],
+  "scenes": [
+    {
+      "accepted_planning_components": 0,
+      "artifacts_sha256": {
+        "access-review.json": "a6a5993fc299b3f3d7500100603900903a361dd75b6b42ba38ecf656b1456305",
+        "park.mcworld": "8980e90b2ab5a59f0b955fe1de75331a88c0d9d327116a197278d3cc590b558f",
+        "pilot-report.json": "2f55c4f192c975155bd72b88d0de7e20ec9c350f40ee570425a11dc72b434ed8",
+        "playtest-guide.md": "510959f49a52659993c02d10cac284a14f646def1c2046e9f1452fec323e7559",
+        "playtest-results.json": "d8e89ed841420e839ae1660c2c059edd0b5a5d63a6942471a701a9e764cb39b9",
+        "playtest-routes.json": "a91fc7df17951a2cc62d1394959e66ef46eaf9107182d4776c9382e0072d0e09",
+        "voxels.jsonl": "691698585dc696a1d8e479dd4217917176fb78d08c395b4e477b3201e32e0b47"
+      },
+      "blank_gameplay_checks": 8,
+      "current_voxels_sha256": "691698585dc696a1d8e479dd4217917176fb78d08c395b4e477b3201e32e0b47",
+      "fresh_replay_identical_artifacts": [
+        "inputs.json",
+        "voxels.jsonl",
+        "review-component.json",
+        "access-review.json",
+        "access-review.svg"
+      ],
+      "fresh_replay_identical_route_coordinates": true,
+      "generation_errors": 3,
+      "hypothesis": "A",
+      "minecraft_visual_inspection": "not_performed",
+      "native_chunks": 64,
+      "native_composed_blocks": 263105,
+      "playtest_status": "awaiting_minecraft_playtest",
+      "previous_voxels_sha256": "691698585dc696a1d8e479dd4217917176fb78d08c395b4e477b3201e32e0b47",
+      "routes": [
+        {
+          "crossing_native_xyz": [
+            8.5,
+            71.0,
+            -0.5
+          ],
+          "interior_native_xyz": [
+            6.5,
+            71.0,
+            -0.5
+          ],
+          "length_m": 9,
+          "native_points_checked": 10,
+          "opening_id": "opening-NE",
+          "spawn_native_xyz": [
+            11.5,
+            69.0,
+            3.5
+          ],
+          "status": "native_route_ready",
+          "support_headroom_swept_steps_and_exterior_prefix": "passed"
+        },
+        {
+          "crossing_native_xyz": [
+            -6.5,
+            71.0,
+            6.5
+          ],
+          "interior_native_xyz": [
+            -5.5,
+            71.0,
+            5.5
+          ],
+          "length_m": 57,
+          "native_points_checked": 58,
+          "opening_id": "opening-SW",
+          "spawn_native_xyz": [
+            11.5,
+            69.0,
+            3.5
+          ],
+          "status": "native_route_ready",
+          "support_headroom_swept_steps_and_exterior_prefix": "passed"
+        },
+        {
+          "crossing_native_xyz": [
+            3.5,
+            71.0,
+            -7.5
+          ],
+          "interior_native_xyz": [
+            3.5,
+            71.0,
+            -5.5
+          ],
+          "length_m": 23,
+          "native_points_checked": 24,
+          "opening_id": "door-NW",
+          "spawn_native_xyz": [
+            11.5,
+            69.0,
+            3.5
+          ],
+          "status": "native_route_ready",
+          "support_headroom_swept_steps_and_exterior_prefix": "passed"
+        }
+      ],
+      "training_labels_generated": 0,
+      "unresolved_opening_ids": [],
+      "voxels_identical_to_previous": true,
+      "world_path": "/workspace/wicker-walkthrough-a-verified/park.mcworld",
+      "world_sha256": "8980e90b2ab5a59f0b955fe1de75331a88c0d9d327116a197278d3cc590b558f"
+    },
+    {
+      "accepted_planning_components": 0,
+      "artifacts_sha256": {
+        "access-review.json": "b34aeee754f1fc21bf9ec25d92eaf6d5688a66fc029a1f2cbc49f6a75dc8ee1c",
+        "park.mcworld": "221753a75e8d2ef7f8467085d37b78a014ba0377d78994b42c9bab475dc90039",
+        "pilot-report.json": "399ea4de3bd3a05cf34d4869ff02271bc8141090a70803102f283b209512f22f",
+        "playtest-guide.md": "1469466a4259720de10c8b7b93d5137efe5736bc0b5ed6e43de41e52a947ba47",
+        "playtest-results.json": "0c83e8ac08207b11ff5bdd9768d2d843956a9cbd8e13b2706e8539f299c0f166",
+        "playtest-routes.json": "17ad9e819f0eeb055e9b7c54d78c7425b71940d1fa2c5972c609205cdc6bbed3",
+        "voxels.jsonl": "fc6421f5e47948ba1bc5889e198cbe9c4fbc7c6a56d5b9b54b3c2cc2bf6ffec3"
+      },
+      "blank_gameplay_checks": 8,
+      "current_voxels_sha256": "fc6421f5e47948ba1bc5889e198cbe9c4fbc7c6a56d5b9b54b3c2cc2bf6ffec3",
+      "fresh_replay_identical_artifacts": [
+        "inputs.json",
+        "voxels.jsonl",
+        "review-component.json",
+        "access-review.json",
+        "access-review.svg"
+      ],
+      "fresh_replay_identical_route_coordinates": true,
+      "generation_errors": 3,
+      "hypothesis": "B",
+      "minecraft_visual_inspection": "not_performed",
+      "native_chunks": 64,
+      "native_composed_blocks": 263108,
+      "playtest_status": "awaiting_minecraft_playtest",
+      "previous_voxels_sha256": "fc6421f5e47948ba1bc5889e198cbe9c4fbc7c6a56d5b9b54b3c2cc2bf6ffec3",
+      "routes": [
+        {
+          "crossing_native_xyz": [
+            -8.5,
+            71.0,
+            2.5
+          ],
+          "interior_native_xyz": [
+            -6.5,
+            71.0,
+            2.5
+          ],
+          "length_m": 81,
+          "native_points_checked": 82,
+          "opening_id": "opening-NE",
+          "spawn_native_xyz": [
+            11.5,
+            69.0,
+            3.5
+          ],
+          "status": "native_route_ready",
+          "support_headroom_swept_steps_and_exterior_prefix": "passed"
+        },
+        {
+          "crossing_native_xyz": [
+            8.5,
+            71.0,
+            -0.5
+          ],
+          "interior_native_xyz": [
+            6.5,
+            71.0,
+            -0.5
+          ],
+          "length_m": 9,
+          "native_points_checked": 10,
+          "opening_id": "opening-SW",
+          "spawn_native_xyz": [
+            11.5,
+            69.0,
+            3.5
+          ],
+          "status": "native_route_ready",
+          "support_headroom_swept_steps_and_exterior_prefix": "passed"
+        },
+        {
+          "native_points_checked": 0,
+          "opening_id": "door-NW",
+          "status": "unresolved"
+        }
+      ],
+      "training_labels_generated": 0,
+      "unresolved_opening_ids": [
+        "door-NW"
+      ],
+      "voxels_identical_to_previous": true,
+      "world_path": "/workspace/wicker-walkthrough-b-verified/park.mcworld",
+      "world_sha256": "221753a75e8d2ef7f8467085d37b78a014ba0377d78994b42c9bab475dc90039"
+    }
+  ],
+  "synthetic_regression": {
+    "previous_unresolved_openings": [],
+    "same_geometry": true,
+    "scenario": "Two disconnected elevated mapped approaches joined only through the building interior.",
+    "updated_unresolved_openings": [
+      "other-door"
+    ]
+  },
+  "tests": {
+    "ci_status": "not_yet_published",
+    "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+    "duration_seconds": 110.762,
+    "focused_tests_passed": 37,
+    "log_sha256": "d1982b74d69338d7418de1c4e80e14e7190e5723c83618b97b5cd453f4b7af53",
+    "passed": 1466
+  },
+  "verification": "Cold-read the packaged native worlds, inspect each witness bearing/headroom/swept transition and exterior prefix independently of the path search.",
+  "version": "native-walkthrough-validation-v1"
+}

@@ -74,6 +74,11 @@ class WorldPilotTests(unittest.TestCase):
             self.assertEqual(readiness['planning_records'][1]['reason'], 'registration_verified is not confirmed')
             self.assertEqual(readiness['pending_review_tasks'][0]['status'], 'awaiting_evidence')
             self.assertIn('not_performed', first['validation']['minecraft_visual_inspection'])
+            self.assertEqual(first['playtest']['status'], 'awaiting_minecraft_playtest')
+            self.assertEqual(first['playtest']['ready_entrance_routes'], 0)
+            form = json.loads((root / 'first/playtest-results.json').read_text())
+            self.assertEqual(form['world']['sha256'], first['world']['sha256'])
+            self.assertTrue(all(check['outcome'] == 'not_run' for check in form['checks']))
             with zipfile.ZipFile(root / 'first/park.mcworld') as archive:
                 embedded = json.loads(archive.read('voxel-quality-report.json'))
                 self.assertEqual(embedded['pilot_readiness'], readiness)
@@ -160,6 +165,8 @@ class WorldPilotTests(unittest.TestCase):
             self.assertEqual(report['readiness']['planning_records'][0]['status'], 'no_voxels')
             self.assertFalse((root / 'output/park.mcworld').exists())
             self.assertIsNone(report['world'])
+            self.assertNotIn('playtest', report)
+            self.assertFalse((root / 'output/playtest-results.json').exists())
 
     def test_changed_config_terrain_and_review_evidence_fail_before_output(self):
         for filename in ('config.json', 'terrain.tif', 'evidence.json'):
