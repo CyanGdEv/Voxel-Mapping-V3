@@ -55,6 +55,20 @@ class LocalBuildingTests(unittest.TestCase):
             ctx.sources['placement']=Source('placement','survey','x','fixture','EPSG:27700','ODN','accepted')
             self.assertFalse(engine.plan([f],ctx)[0])
 
+    def test_changed_pose_cannot_place_building_using_a_stale_accepted_review(self):
+        with tempfile.TemporaryDirectory() as d:
+            feature, context, _, _, _ = self.fixture(d)
+            engine = ReconstructionEngine(park_registry())
+            self.assertTrue(engine.plan([feature], context)[0])
+            review = context.sources['placement'].metadata['horizontal_registration_review']
+            review['translation_m'][0] += 4
+            self.assertEqual(review['status'], 'accepted_horizontal_fit')
+            self.assertLess(review['checkpoint_error']['max_m'], 1e-8)
+            rows, report = engine.plan([feature], context)
+            self.assertEqual(rows, [])
+            self.assertEqual(report['decisions'][0]['status'], 'withheld')
+            self.assertIn('registration', report['decisions'][0]['reason'].lower())
+
     def test_asset_tamper_and_changed_floor_are_pinned(self):
         with tempfile.TemporaryDirectory() as d:
             f,ctx,receipt,entry,manifest=self.fixture(d);root=Path(d)

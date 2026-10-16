@@ -17,7 +17,7 @@ from .mapped_alignment_checks import printed_scale_review, VERSION as SCALE_VERS
 from .reconstruction.model import Source
 from .reconstruction.registration import registration_domain
 
-VERSION = 'drawing-frame-qualification-v3'
+VERSION = 'drawing-frame-qualification-v4'
 
 
 def qualify_page(pdf, page_number, source, references, sources, *, scale_review=None):

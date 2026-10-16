@@ -1,0 +1,11 @@
+{
+  "manifest": "wicker-placement-evidence-manifest.json",
+  "registration_bridge": {
+    "documents": "wicker-placement-evidence-documents.json",
+    "enabled": true,
+    "max_features": 10000,
+    "max_pages": 1,
+    "references": "wicker-placement-evidence-references.json"
+  },
+  "work_directory": "../output/wicker-placement-evidence"
+}

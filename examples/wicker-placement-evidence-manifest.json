@@ -1,0 +1,24 @@
+{
+  "crs": "EPSG:27700",
+  "scope": "Real retained existing-site source; placement evidence is incomplete and no current park component is accepted.",
+  "sources": [
+    {
+      "crs": "EPSG:27700",
+      "id": "wicker-existing-site-2016",
+      "kind": "planning",
+      "license": "unconfirmed-drawing-reuse",
+      "metadata": {
+        "drawing_state": "existing",
+        "drawing_state_verified": false,
+        "reuse_allowed": false,
+        "reuse_status": "unconfirmed",
+        "vertical_datum_verified": false
+      },
+      "registration_status": "unregistered",
+      "sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142",
+      "vertical_datum": null
+    }
+  ],
+  "vertical_datum": "ODN"
+}
