@@ -1,5 +1,6 @@
 """Dense native tiles: real material faults, restart intent and source-bound scaling."""
 import copy
+from contextlib import closing
 import gzip
 import hashlib
 import json
@@ -66,7 +67,7 @@ class NativeTileTests(unittest.TestCase):
                 if phase=='after_flush':raise RuntimeError('simulated interruption after native flush')
             with self.assertRaisesRegex(RuntimeError,'native flush'):self.run_export(root,fault=crash)
             self.assertFalse((root/'park.mcworld').exists())
-            with sqlite3.connect(root/'export-state.sqlite') as db:
+            with closing(sqlite3.connect(root/'export-state.sqlite')) as db:
                 self.assertEqual(db.execute('SELECT COUNT(*) FROM chunks WHERE ready=0').fetchone()[0],2)
             result=self.run_export(root)
             self.assertEqual(result['recovered_flushed_chunk_intents'],2)
@@ -156,7 +157,7 @@ class ScaleSourceTests(unittest.TestCase):
                     self.assertEqual(level.get_block(x,y,z,'minecraft:overworld').base_name,'grass_block')
                     self.assertEqual(level.get_block(x,y+1,z,'minecraft:overworld').base_name,'air')
             finally:level.close()
-            with sqlite3.connect(output/'stage-2/export-state.sqlite') as a,sqlite3.connect(output/'stage-4/export-state.sqlite') as b:
+            with closing(sqlite3.connect(output/'stage-2/export-state.sqlite')) as a,closing(sqlite3.connect(output/'stage-4/export-state.sqlite')) as b:
                 larger={(x,z):sha for x,z,sha in b.execute('SELECT cx,cz,sha FROM chunks')}
                 for x,z,sha in a.execute('SELECT cx,cz,sha FROM chunks'):self.assertEqual(sha,larger[x,z])
             self.assertEqual(compiled['accepted_planning_components'],0)
