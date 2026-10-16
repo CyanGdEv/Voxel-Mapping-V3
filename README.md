@@ -31,6 +31,9 @@ The [native world walkthrough](docs/native-world-walkthrough.md) traces complete
 spawn-to-interior routes through each entrance, rejects interior detours and
 writes native waypoints plus a world-bound blank gameplay result form.
 In-game playtesting remains pending.
+The [buffered site context](docs/buffered-site-context.md) expands the pilot to
+192 × 192 m with a fixed local origin, retained EA terrain, additional mapped
+surfaces and estimated woodland proxies outside the original core.
 
 ## Whole-park batch jobs
 

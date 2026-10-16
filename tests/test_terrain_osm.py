@@ -1,4 +1,5 @@
 import json
+import copy
 import tempfile
 import unittest
 from pathlib import Path
@@ -9,6 +10,38 @@ from voxel_mapper.cli import build, parse_osm
 
 
 class TerrainTests(unittest.TestCase):
+    def test_pinned_origin_preserves_existing_cells_when_bounds_grow_asymmetrically(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            config, features = self.fixture(root)
+            # A gradient makes a sampling shift detectable, unlike flat ground.
+            with rasterio.open(config['terrain']['path'], 'r+') as raster:
+                raster.write(np.arange(144, dtype='float32').reshape(12, 12), 1)
+            first = build(config, features, root / 'core')
+            expanded = copy.deepcopy(config)
+            expanded.update(bbox=[0, 0, .0012, .0012], local_origin_wgs84=[.0005, .0005])
+            second = build(expanded, features, root / 'buffer')
+            original = [json.loads(line) for line in (root / 'core/voxels.jsonl').read_text().splitlines()]
+            larger = [json.loads(line) for line in (root / 'buffer/voxels.jsonl').read_text().splitlines()]
+            self.assertEqual(first['crs'], second['crs'])
+            terrain = {(r['x'], r['z']): r['y'] for r in larger if r['kind'] == 'terrain'}
+            for row in original:
+                if row['kind'] == 'terrain':
+                    self.assertEqual(terrain[row['x'], row['z']], row['y'])
+            self.assertEqual([r for r in original if r.get('feature') == 'path'],
+                             [r for r in larger if r.get('feature') == 'path'])
+            self.assertGreater(len(larger), len(original))
+
+    def test_invalid_origins_fail_before_creating_output(self):
+        for origin in (None, [True, 0], ['0', 0], [0, float('nan')], [181, 0], [0, 90], [0]):
+            with self.subTest(origin=origin), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                config, features = self.fixture(root)
+                config['local_origin_wgs84'] = origin
+                with self.assertRaisesRegex(ValueError, 'local_origin_wgs84'):
+                    build(config, features, root / 'output')
+                self.assertFalse((root / 'output').exists())
+
     def fixture(self, root, nodata=False):
         path = root / 'terrain.tif'
         values = np.full((12,12), 25, dtype='float32')

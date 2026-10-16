@@ -1,0 +1,184 @@
+{
+  "bbox": [
+    -1.8902110940526333,
+    52.98869298645517,
+    -1.887351969663943,
+    52.99041826972453
+  ],
+  "core_config_sha256": "cff10f376c5980e2b98fc39a4775fc1ec86927db6482f3b9933d068fb7a677d8",
+  "local_origin_wgs84": [
+    -1.888781560340408,
+    52.98955563674633
+  ],
+  "mapped_surfaces": 32,
+  "mapped_surfaces_sha256": "78079ee016f9d97dc8ac57ab6c0b2ee8f83c1de0799a64b86c7e2b139e722333",
+  "omitted_generic_features": [
+    {
+      "id": "osm/relation/5496185",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/70684310",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/70689589",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/70689598",
+      "kind": "water"
+    },
+    {
+      "id": "osm/way/70689615",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/106842136",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/106842138",
+      "kind": "water"
+    },
+    {
+      "id": "osm/way/107079976",
+      "kind": "water"
+    },
+    {
+      "id": "osm/way/107259804",
+      "kind": "water"
+    },
+    {
+      "id": "osm/way/107259863",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/113576007",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/113576009",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/113576010",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/113576011",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/453976766",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/834919978",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/834919982",
+      "kind": "building"
+    },
+    {
+      "id": "osm/way/834919983",
+      "kind": "building"
+    }
+  ],
+  "osm_elements_sha256": "4ce5cb0f9c154d43bb5539e78a6dc00ad840a0a1e14f9f46efbfe0d01d56ee62",
+  "osm_xml_sha256": "04fcb53ac82db134fa27483e9cb74eed188a8fd004698d2f60038b82d1e26dc6",
+  "rasters": {
+    "dsm": {
+      "archive_member": "DSM_SK0540_P_10682_20220105_20220105.tif",
+      "archive_sha256": "8ed17ab23fefdd981751bee5a8df9ab4cbdb36efc42c190656b53eae2aab1329",
+      "bounds_bng_m": [
+        407462,
+        343483,
+        407664,
+        343685
+      ],
+      "crop_sha256": "04a422aa2934021203364e868c3effb5026eff97a3c6734db3cceaa4558686ab",
+      "dimensions_pixels": [
+        202,
+        202
+      ],
+      "native_samples_equal": true,
+      "nodata_preserved": -3.4028234663852886e+38,
+      "original_raster_sha256": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "resampling": "none",
+      "survey_date": "2022-01-05",
+      "survey_id": "P_10682",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540"
+    },
+    "dtm": {
+      "archive_member": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "archive_sha256": "115d6c9b030fe18c2dff2cbebd7a87198c28c5f70f6327ca2e7d2dd2c7162b79",
+      "bounds_bng_m": [
+        407462,
+        343483,
+        407664,
+        343685
+      ],
+      "crop_sha256": "72278920775b1fdbeb6b983305ee7a6d84a1ce3176465da73aeaee040dd4b1e3",
+      "dimensions_pixels": [
+        202,
+        202
+      ],
+      "native_samples_equal": true,
+      "nodata_preserved": -3.4028234663852886e+38,
+      "original_raster_sha256": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493",
+      "resampling": "none",
+      "survey_date": "2022-01-05",
+      "survey_id": "P_10682",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540"
+    }
+  },
+  "skipped": [
+    {
+      "id": 4025117,
+      "reason": "missing relation member geometry"
+    },
+    {
+      "id": 7673655,
+      "reason": "missing relation member geometry"
+    },
+    {
+      "id": 17436869,
+      "reason": "missing outer ring or inner outside outer"
+    },
+    {
+      "id": 11978318640,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 106842129,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 834919977,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691421,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691422,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691423,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691424,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    },
+    {
+      "id": 1293691425,
+      "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+    }
+  ],
+  "version": "retained-buffer-context-v1"
+}

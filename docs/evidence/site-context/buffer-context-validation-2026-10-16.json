@@ -1,0 +1,273 @@
+{
+  "accepted_real_planning_components": 0,
+  "base_commit": "1a0d50e53d96eaae0a1001d17073d9c66ae95dcf",
+  "date_utc": "2026-10-16",
+  "limitations": [
+    "Minecraft playtesting of the expanded worlds remains pending.",
+    "Woodland centres, tree/shrub geometry and unspecified species are estimates.",
+    "Nine elevated/tunnel mapped features remain withheld without absolute levels.",
+    "Crop joins are farther from the core, not eliminated outside the exported chunks.",
+    "Placement, source identity, floor datum and materials remain provisional; no AI training labels generated."
+  ],
+  "minecraft_client_playtest": "not_performed_for_expanded_worlds",
+  "overview_sha256": "35cd88cf8ac407b7244615c6e3d41566506339feef9e2fa829eb719bc2b994bb",
+  "ranker": "untrained_baseline",
+  "raster_core_comparison": {
+    "dsm": {
+      "native_nodata": -3.4028234663852886e+38,
+      "nodata_masks_equal": true,
+      "old_nodata": -9999.0,
+      "original_pixels": 14400,
+      "valid_samples_equal": true
+    },
+    "dtm": {
+      "native_nodata": -3.4028234663852886e+38,
+      "nodata_masks_equal": true,
+      "old_nodata": -9999.0,
+      "original_pixels": 14400,
+      "valid_samples_equal": true
+    }
+  },
+  "real_training_labels": 0,
+  "retention_replay": {
+    "identical_artifacts": [
+      "osm-map.xml",
+      "ea-buffer-dtm.tif",
+      "ea-buffer-dsm.tif",
+      "osm-elements.json",
+      "mapped-surfaces.geojson",
+      "retention-receipt.json"
+    ],
+    "passed": true,
+    "resampling": "none"
+  },
+  "scene_replay": {
+    "hypothesis": "A",
+    "identical_artifacts": [
+      "inputs.json",
+      "voxels.jsonl",
+      "review-component.json",
+      "context-review.json",
+      "access-review.json",
+      "access-review.svg"
+    ],
+    "identical_route_coordinates": true,
+    "package_byte_identity_claimed": false
+  },
+  "scenes": [
+    {
+      "additional_artificial_foundation_cells_in_core": 25088,
+      "artifacts_sha256": {
+        "access-review.json": "62bcd3b8af9823cc541485c11bdf751cb75e2ad6c42b1858c1937210d93f76ab",
+        "context-review.json": "d358e617c7bd34f990aee465afcad4f7ca788fc18875477e34bcba19838f531b",
+        "park.mcworld": "1d011815c2b7ba4a3e5c48213d65a00c8c03f06ff5581d7ff0501ee8334b05b3",
+        "pilot-report.json": "c8bf84a4e5126bf622386a4119c2850c558f8328a66aa3a684e36c89607870df",
+        "playtest-guide.md": "1cf67cf912555b3bd5b1b8ab1c595182d160d609f0194395a6ada886d0aeb860",
+        "playtest-results.json": "cd12a8b646ea132f15385b472bf44cfc0e48beee6b5a02ecac2450c50c42d42e",
+        "playtest-routes.json": "757fc28559a8913218765aaac1cbd824a9af6404ed2eaa6c8cbe39785f82b1b8",
+        "voxels.jsonl": "5ebe9b0b6d123247514ac40b0ae9b1bb8ebdb02b1ea36fd94cef18ee025d7800"
+      },
+      "context_native_cells_checked": 3014,
+      "core_and_approach_records_preserved": true,
+      "generated_voxel_records_by_kind": {
+        "building": 993,
+        "parking": 1044,
+        "path": 1695,
+        "road": 1518,
+        "steps": 11,
+        "structure": 3014,
+        "terrain": 36864
+      },
+      "generation_errors": [
+        {
+          "feature": "osm/way/107026704",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/453986307",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/453986308",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/536931482",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/536931484",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178170",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "groundcover_plants": 22,
+      "hypothesis": "A",
+      "native_chunks": 156,
+      "native_composed_blocks": 888255,
+      "native_core_cells_compared": 3386880,
+      "native_core_differences_above_original_foundation": [
+        {
+          "after": "universal_minecraft:concrete[color=\"black\"]",
+          "before": "universal_minecraft:grass_block[snowy=\"false\"]",
+          "local_xyz": [
+            29,
+            182,
+            55
+          ]
+        }
+      ],
+      "native_witness_points_checked": 92,
+      "pending_gameplay_checks": 10,
+      "preserved_original_terrain_columns": 12544,
+      "ready_entrance_routes": 3,
+      "shrub_clusters": 32,
+      "spawn_native_xyz": [
+        11,
+        71,
+        3
+      ],
+      "terrain_columns": 36864,
+      "terrain_missing_requests": 0,
+      "trees": 15,
+      "unresolved_opening_ids": [],
+      "vertical_offset_blocks": -111,
+      "world_sha256": "1d011815c2b7ba4a3e5c48213d65a00c8c03f06ff5581d7ff0501ee8334b05b3"
+    },
+    {
+      "additional_artificial_foundation_cells_in_core": 25088,
+      "artifacts_sha256": {
+        "access-review.json": "c5a9785db6b93e350f611df9bf8fc338c9c70b92bd408f3b32d98e969d87dd8f",
+        "context-review.json": "d358e617c7bd34f990aee465afcad4f7ca788fc18875477e34bcba19838f531b",
+        "park.mcworld": "9dbd20ec685d25772e9de1792aaec5a6c0e044474d6085c2ac101ba821ee73d3",
+        "pilot-report.json": "754fad238266c2bfb53838a1cf6b6054c66189d95fe9c0b849ee038a5c0b0193",
+        "playtest-guide.md": "9f2d9f401cffc348fec83280626a1ec5dda60b26f975f6cf7f2eb2f6bf9f9c1a",
+        "playtest-results.json": "b98dbe5fe5852cadb54f3c6d7390bbdacfb32b77c7f68f36b6dfe4bb4943f76f",
+        "playtest-routes.json": "48b1d9058ed87ca517d659005a8f1d1e3f49b820332fbaa9988fa212016726bf",
+        "voxels.jsonl": "42c65c6bf5818bafcb3ce491c2380c097e4f027a9d00af97d626d0fab4c5307f"
+      },
+      "context_native_cells_checked": 3014,
+      "core_and_approach_records_preserved": true,
+      "generated_voxel_records_by_kind": {
+        "building": 993,
+        "parking": 1044,
+        "path": 1695,
+        "road": 1518,
+        "steps": 14,
+        "structure": 3014,
+        "terrain": 36864
+      },
+      "generation_errors": [
+        {
+          "feature": "osm/way/107026704",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/453986307",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/453986308",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height; automatic bridge candidate rejected: Bridge requires one centerline, transport width and compatible terrain/surface data",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/536931482",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/536931484",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182076343",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178170",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182178172",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        },
+        {
+          "feature": "osm/way/1182179734",
+          "reason": "elevated/tunnel feature requires explicit absolute base_elevation_m; layer is not a height",
+          "severity": "error"
+        }
+      ],
+      "groundcover_plants": 22,
+      "hypothesis": "B",
+      "native_chunks": 156,
+      "native_composed_blocks": 888258,
+      "native_core_cells_compared": 3386880,
+      "native_core_differences_above_original_foundation": [
+        {
+          "after": "universal_minecraft:concrete[color=\"black\"]",
+          "before": "universal_minecraft:grass_block[snowy=\"false\"]",
+          "local_xyz": [
+            29,
+            182,
+            55
+          ]
+        }
+      ],
+      "native_witness_points_checked": 92,
+      "pending_gameplay_checks": 10,
+      "preserved_original_terrain_columns": 12544,
+      "ready_entrance_routes": 2,
+      "shrub_clusters": 32,
+      "spawn_native_xyz": [
+        11,
+        71,
+        3
+      ],
+      "terrain_columns": 36864,
+      "terrain_missing_requests": 0,
+      "trees": 15,
+      "unresolved_opening_ids": [
+        "door-NW"
+      ],
+      "vertical_offset_blocks": -111,
+      "world_sha256": "9dbd20ec685d25772e9de1792aaec5a6c0e044474d6085c2ac101ba821ee73d3"
+    }
+  ],
+  "tests": {
+    "duration_seconds": 121.225,
+    "log_sha256": "6d997d401dc4e5e9d083f2a0e7110697093d4395cefb777421894fc71701a2b9",
+    "passed": 1472
+  },
+  "version": "buffer-context-validation-v1"
+}

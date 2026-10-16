@@ -16,6 +16,16 @@ from voxel_mapper.world_pilot import run
 
 
 class WorldPilotTests(unittest.TestCase):
+    def test_normal_pilot_cannot_enable_estimated_woodland_context(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            job_path, _, _, job = self.fixture(root)
+            job['review_context'] = {'policy': 'mapped-woodland-buffer-v1'}
+            self.write_json(job_path, job)
+            with self.assertRaisesRegex(ValueError, 'explicit provisional component review'):
+                run(job_path, root / 'output')
+            self.assertFalse((root / 'output').exists())
+
     def pin(self, path):
         return {'file': path.name, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 
