@@ -25,6 +25,11 @@ def write(output, report):
     binding = {key: world[key] for key in ('file', 'sha256', 'target_version', 'spawn')}
     access = (report.get('access_review') or {}).get('native_readback', {})
     navigation = (report.get('access_review') or {}).get('whole_area_navigation')
+    paving = report.get('planning_surfaces_review')
+    plazas = [{**feature['walkthrough'], 'feature_id': feature['feature_id'],
+               'supported_cells': feature['native_supported_footprint_cells'],
+               'reachable_cells_on_walking_surfaces': feature['reachable_cells_on_walking_surfaces']}
+              for feature in paving['features'] if feature['surface_role'] == 'labelled_plaza'] if paving else []
     routes = []
     checks = [
         {'id': 'world-import', 'title': 'World imports and loads in Minecraft Bedrock'},
@@ -57,6 +62,9 @@ def write(output, report):
         checks.append({'id': 'whole-area-obstacles', 'title': 'Inspect disconnected walking components and steps across the full area'})
         checks += [{'id': 'site/' + route['id'], 'title': 'Walk the site route: ' + route['id']}
                    for route in navigation['walkthroughs']]
+    checks += [{'id': 'plaza/' + route['feature_id'],
+                'title': 'Walk from spawn to planning plaza ' + route['feature_id'].rsplit('/', 1)[1] + ' and back',
+                'surface_scope': route['surface_scope']} for route in plazas]
     results = {'version': VERSION, 'world': binding, 'status': 'awaiting_minecraft_playtest',
                'observer': {'name': None, 'platform': None, 'minecraft_version': None, 'tested_at_utc': None},
                'checks': [{**check, 'outcome': 'not_run', 'notes': '', 'evidence_reference': None}
@@ -67,7 +75,7 @@ def write(output, report):
     _write(output / 'playtest-routes.json', {'version': VERSION, 'world': binding,
         'coordinate_frame': 'Native block-centred Minecraft X/Y/Z; Y is feet height including half slabs.',
         'basis': 'Bounded conservative routes traced from reopened native blocks; not in-game physics.',
-        'routes': routes, 'site_routes': navigation['walkthroughs'] if navigation else []})
+        'routes': routes, 'site_routes': navigation['walkthroughs'] if navigation else [], 'planning_plaza_routes': plazas})
     spawn = world['spawn']
     spawn_command = '/tp @s ' + _coordinates([spawn[0] + .5, spawn[1], spawn[2] + .5])
     version = '.'.join(map(str, world['target_version']))
@@ -111,6 +119,25 @@ def write(output, report):
                      else 'Inside' if index == len(points) - 1 else '')
             guide.append(f'| {index} | {x:g} | {y:g} | {z:g} | {label} |')
         guide.append('')
+    if plazas:
+        guide += ['## Planning plazas', '',
+                  'These footprints come from a proposed planning sheet. Placement and paving levels remain '
+                  'provisional; materials use the recorded drawing labels or display rules. '
+                  'The paving follows retained terrain rather than verified finished levels. '
+                  'A route that uses other surfaces does not establish a continuous paved connection.', '']
+        for route in plazas:
+            guide += ['### Planning plaza ' + route['feature_id'].rsplit('/', 1)[1], '',
+                      'Route scope: `' + route['surface_scope'] + '`. Supported footprint cells reached '
+                      'while staying on walking surfaces: ' + str(route['reachable_cells_on_walking_surfaces']) +
+                      '/' + str(route['supported_cells']) + '.', '']
+            if route['status'] != 'native_route_ready':
+                guide += ['No complete native route is available.', '']
+                continue
+            guide += [f"Length: {route['horizontal_length_m']} m. Reset with `{spawn_command}`.", '',
+                      '| Point | X | Feet Y | Z |', '| ---: | ---: | ---: | ---: |']
+            for i, (x, y, z) in enumerate(route['route_native_xyz']):
+                guide.append(f'| {i} | {x:g} | {y:g} | {z:g} |')
+            guide.append('')
     if navigation:
         guide += ['## Whole-area walking', '',
                   'Open `navigation-review.svg` to inspect the complete area. Blue marks the spawn walking '
@@ -152,4 +179,5 @@ def write(output, report):
             'ready_entrance_routes': sum(route['status'] == 'ready_to_test' for route in routes),
             'unresolved_entrance_routes': sum(route['status'] != 'ready_to_test' for route in routes),
             'ready_site_routes': len(navigation['walkthroughs']) if navigation else 0,
+            'ready_plaza_routes': sum(route['status'] == 'native_route_ready' for route in plazas),
             'artifacts': list(ARTIFACTS), 'training_labels_generated': 0}

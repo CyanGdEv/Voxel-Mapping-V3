@@ -48,7 +48,7 @@ def painted_polygon(path):
     return result if not result.is_empty and result.is_valid and result.geom_type in ('Polygon', 'MultiPolygon') else None
 
 
-def visible_fills(vectors, max_paths=150_000):
+def visible_fills(vectors, max_paths=150_000, polygon_resolver=painted_polygon):
     if len(vectors) > max_paths:
         raise ValueError('Surface vector budget exceeded')
     scopes, fills = [], []
@@ -57,14 +57,14 @@ def visible_fills(vectors, max_paths=150_000):
         level = path.get('level', 0)
         scopes = [scope for scope in scopes if scope[0] < level]
         if path['type'] in ('clip', 'group'):
-            polygon = painted_polygon(path) if path['type'] == 'clip' and not path.get('layer') else None
+            polygon = polygon_resolver(path) if path['type'] == 'clip' and not path.get('layer') else None
             scopes.append((level, polygon))
             continue
         if path['type'] not in ('f', 'fs') or path.get('fill') is None:
             continue
         if path.get('layer') or path.get('fill_opacity') != 1 or any(p is None for _, p in scopes):
             withheld += 1; continue
-        polygon = painted_polygon(path)
+        polygon = polygon_resolver(path)
         if polygon is None:
             withheld += 1; continue
         for _, clip in scopes:
@@ -76,10 +76,10 @@ def visible_fills(vectors, max_paths=150_000):
     return fills, withheld
 
 
-def extract_surfaces(vectors, annotations, scale):
+def extract_surfaces(vectors, annotations, scale, polygon_resolver=painted_polygon):
     if not isinstance(scale, (int, float)) or not math.isfinite(scale) or scale <= 0:
         raise ValueError('A finite positive printed drawing scale is required')
-    fills, withheld = visible_fills(vectors)
+    fills, withheld = visible_fills(vectors, polygon_resolver=polygon_resolver)
     legends, candidates = [], []
     excluded_text_masks, identities = set(), set()
     for label in annotations:

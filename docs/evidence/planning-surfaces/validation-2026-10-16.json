@@ -1,0 +1,132 @@
+{
+  "accepted_physical_geometry": false,
+  "base_commit": "d887286735fbb8c001fc068f4db78da431a42fe7",
+  "changed_code_sha256": {
+    "scripts/validate_wicker_planning_surfaces.py": "fa286ca51f8cac64177f0cfe0c2c521db4ec1b8054c63ac84f5425c27557a685",
+    "tests/test_foliage.py": "55db9f58847d4500b2f764475aae45396cc2c270c1c0cd370a9fa0e014172108",
+    "tests/test_pilot_surfaces.py": "92b0d2684046a37e73d900b55052d6341e433c8a2a50a3cc1f41a3fff79e59d1",
+    "voxel_mapper/park_foliage.py": "4bd52e7d65429fd949338185f5b9aaaccf3b18d60197ffb9e9e58350a3fa838b",
+    "voxel_mapper/pilot_access.py": "e6fbd66662eb920764f2654c77e67602b0ea2b40d73211ebd5cb98f354a00bf1",
+    "voxel_mapper/pilot_context.py": "a05e6a2270e7b7ca38ea4df02a484887578490c0c899538ca3d41a758b551745",
+    "voxel_mapper/pilot_navigation.py": "f1b9d92105b6b1651b19aba2f59e10a7bbef30a4a46251c9d910a930e11ae650",
+    "voxel_mapper/pilot_playtest.py": "e49b72d682001623472376f20435953c0b2d874bad2baf29db0b55d9a7c10404",
+    "voxel_mapper/pilot_surfaces.py": "919d6551ab796428b110ed117071e95f6abb7fc51e84d2483417d8f37aff27a5",
+    "voxel_mapper/wicker_surfaces.py": "859c8c4db83aa87cf8cb79a7a46dbdc077573a7ff88df0d0a00bc7958d8bea44",
+    "voxel_mapper/world_pilot.py": "40a4f1e1c2006f34433c88812de94b0ce33abc4bb329ff20a2605e2407d217ed"
+  },
+  "cold_check_receipts": {
+    "cold-validation-a-2026-10-16.json": "75d53fcddc6a529823fbdc12f06b69b3646505f91b32be3870590c45f26ff2f5",
+    "cold-validation-b-2026-10-16.json": "d6c92a0965cd8644fd8ee2d88b88ae0001c2598fdc7d8f801ab0aa32e654112b"
+  },
+  "date": "2026-10-16",
+  "hypotheses": {
+    "A": {
+      "adjacent_walking_surface_barriers": 577,
+      "composed_blocks": 888054,
+      "mapped_finish_cells": 314,
+      "planning_paving": {
+        "all_planned_materials_verified": true,
+        "mapped_cells_supported": 1673,
+        "minecraft_playtest": "not_performed",
+        "reachable_cells_any_walking": 5888,
+        "reachable_cells_on_walking_surfaces": 3298,
+        "status": "completed",
+        "verified_paving_cells": 5956
+      },
+      "plazas": [
+        {
+          "feature_id": "review/planning-paving/004",
+          "native_supported_footprint_cells": 719,
+          "reachable_cells_any_walking": 719,
+          "reachable_cells_on_walking_surfaces": 643,
+          "status": "reachable_using_other_surfaces"
+        },
+        {
+          "feature_id": "review/planning-paving/017",
+          "native_supported_footprint_cells": 214,
+          "reachable_cells_any_walking": 214,
+          "reachable_cells_on_walking_surfaces": 214,
+          "status": "reachable_on_walking_surfaces"
+        },
+        {
+          "feature_id": "review/planning-paving/022",
+          "native_supported_footprint_cells": 277,
+          "reachable_cells_any_walking": 277,
+          "reachable_cells_on_walking_surfaces": 277,
+          "status": "reachable_on_walking_surfaces"
+        }
+      ],
+      "terrain_repaint_cells": 5642,
+      "walking_surface_components": 97,
+      "world_sha256": "e7e3f96852f6a422a6260092e067bc1952b32fe147e94dc3436e1e94f461eb1b"
+    },
+    "B": {
+      "adjacent_walking_surface_barriers": 581,
+      "composed_blocks": 888057,
+      "mapped_finish_cells": 314,
+      "planning_paving": {
+        "all_planned_materials_verified": true,
+        "mapped_cells_supported": 1673,
+        "minecraft_playtest": "not_performed",
+        "reachable_cells_any_walking": 5885,
+        "reachable_cells_on_walking_surfaces": 87,
+        "status": "completed",
+        "verified_paving_cells": 5953
+      },
+      "plazas": [
+        {
+          "feature_id": "review/planning-paving/004",
+          "native_supported_footprint_cells": 719,
+          "reachable_cells_any_walking": 719,
+          "reachable_cells_on_walking_surfaces": 0,
+          "status": "reachable_using_other_surfaces"
+        },
+        {
+          "feature_id": "review/planning-paving/017",
+          "native_supported_footprint_cells": 214,
+          "reachable_cells_any_walking": 214,
+          "reachable_cells_on_walking_surfaces": 0,
+          "status": "reachable_using_other_surfaces"
+        },
+        {
+          "feature_id": "review/planning-paving/022",
+          "native_supported_footprint_cells": 277,
+          "reachable_cells_any_walking": 277,
+          "reachable_cells_on_walking_surfaces": 0,
+          "status": "reachable_using_other_surfaces"
+        }
+      ],
+      "terrain_repaint_cells": 5639,
+      "walking_surface_components": 97,
+      "world_sha256": "83abf72b3d6ababf07b7cf5f028e871fbe84759de991d954290644c0d73cd439"
+    }
+  },
+  "known_remaining": {
+    "ai_ranker": "untrained_baseline",
+    "as_built_verified": false,
+    "finished_paving_levels_verified": false,
+    "independent_registration_verified": false,
+    "overridden_mapped_cells_per_world": 18,
+    "planning_paving_cells_unreachable_per_world": 68,
+    "review_floor_datum_verified": false,
+    "supported_mapped_cells_unreachable_per_world": 24,
+    "withheld_bridge_or_tunnel_features_per_world": 9
+  },
+  "minecraft_playtest": "not_performed",
+  "native_cells_compared_total": 30670848,
+  "native_changes_outside_paving_and_estimated_vegetation": 0,
+  "native_route_count_total": 16,
+  "native_route_points_checked_total": 1292,
+  "recovered_source_features": 40,
+  "source_and_slab_records_byte_identical": true,
+  "source_plaza_labels": 3,
+  "source_record_sha256": "e4527cf2415829b4d64a5e05942fb05569b80101e3c6a550c6394d8a5e27cffa",
+  "status": "passed",
+  "test_command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "test_duration_seconds": 180.009,
+  "test_log_sha256": "459df7892d7b6d5a9b674232da04368aa7ca31fa27df771d04e3b1f773d0820e",
+  "tests_passed": 1502,
+  "training_labels_generated": 0,
+  "unmatched_plaza_labels": [],
+  "version": "wicker-planning-paving-validation-v1"
+}

@@ -149,6 +149,7 @@ def _prepare(job_path):
                       'required_evidence': requirements, 'evidence': evidence})
     prepared_review = None
     prepared_context = None
+    prepared_surfaces = None
     if job.get('review_component'):
         from .pilot_review import prepare as prepare_review
         prepared_review = prepare_review(job['review_component'], asset, _json, job_path.parent, pins)
@@ -163,7 +164,12 @@ def _prepare(job_path):
             raise ValueError('Estimated context requires an explicit provisional component review job')
         from .pilot_context import prepare as prepare_context
         prepared_context = prepare_context(job['review_context'], asset, _json, job_path.parent, config)
-    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review, prepared_context
+    if job.get('review_surfaces') is not None:
+        if not prepared_review or not isinstance(prepared_review.get('access'), dict) or prepared_review['access'].get('audit_scope') != 'whole_pilot':
+            raise ValueError('Provisional planning surfaces require a component review and whole_pilot native audit')
+        from .pilot_surfaces import prepare as prepare_surfaces
+        prepared_surfaces = prepare_surfaces(job['review_surfaces'], asset, _json, job_path.parent, config)
+    return job, config, collection, tasks, pins, {'job_sha256': pins[0][1], 'assets': assets}, prepared_review, prepared_context, prepared_surfaces
 
 
 def run(job_path, output):
@@ -172,7 +178,7 @@ def run(job_path, output):
     staging = output.with_name(output.name + '.partial')
     if output.exists() or staging.exists():
         raise ValueError('Use a fresh pilot output directory; existing output is never overwritten')
-    job, config, collection, tasks, pins, inputs, prepared_review, prepared_context = _prepare(job_path)
+    job, config, collection, tasks, pins, inputs, prepared_review, prepared_context, prepared_surfaces = _prepare(job_path)
     staging.mkdir(parents=True)
     try:
         _write(staging / 'inputs.json', inputs)
@@ -190,10 +196,16 @@ def run(job_path, output):
                 from .pilot_path_steps import append as append_path_steps
                 access['path_steps'] = append_path_steps(staging, quality, access,
                     prepared_review['access']['path_steps'], config['max_voxels'])
+        surfaces = None
+        if prepared_surfaces:
+            from .pilot_surfaces import append as append_surfaces
+            surfaces = append_surfaces(staging, quality, config, access, prepared_surfaces)
+            access['surfaces'] = surfaces
         context = None
         if prepared_context:
             from .pilot_context import append as append_context
-            context = append_context(staging, quality, config, prepared_context)
+            context = append_context(staging, quality, config, prepared_context,
+                                     walking_mask=surfaces['walking_mask'] if surfaces else None)
         accuracy = (quality.get('terrain') or {}).get('coordinate_transform', {}).get('accuracy_m', -1)
         if accuracy < 0 or accuracy > 1:
             quality['issues'].append({'severity': 'warning', 'reason': 'Terrain coordinate operation has unknown or greater-than-one-metre advertised accuracy; no independent placement accuracy established.',
@@ -228,6 +240,9 @@ def run(job_path, output):
         }
         if review_component:
             readiness['scope'] = 'Provisional study component on draft terrain/mapped features; review geometry is excluded from accepted planning counts.'
+        if surfaces:
+            readiness['provisional_planning_paving_features'] = sum(f['owned_cells'] > 0 for f in surfaces['report']['features'])
+            readiness['scope'] += ' Source-linked provisional paving is also excluded from accepted planning counts.'
         quality.update(quality_status='draft_unverified', pilot_readiness=readiness)
         if review_component:
             quality['quality_status'] = 'provisional_component_review'
@@ -259,6 +274,7 @@ def run(job_path, output):
             'review_component': review_component,
             'access_review': quality.get('access_review'),
             'path_steps_review': quality.get('path_steps_review'),
+            'planning_surfaces_review': quality.get('planning_surfaces_review'),
             'context_review': context,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
@@ -296,6 +312,10 @@ def run(job_path, output):
             description += ['', 'Estimated display path slabs: ' + str(quality['path_steps_review']['added_slab_records']),
                             'See path-steps-review.json for original/adjusted heights, source links and remaining gaps.',
                             'Display joins preserve source rows and do not establish measured site steps or ramps.']
+        if surfaces:
+            description += ['', 'Provisional planning paving cells: ' + str(surfaces['report']['added_paving_records']),
+                            'See planning-surfaces-review.json for source outlines, material rules and plaza route scopes.',
+                            'Printed scale is retained; placement and terrain-following paving levels remain estimates.']
         for task in tasks:
             description += ['', task['title'] + ':', *['- ' + value for value in task['required_evidence']]]
         (staging / 'README.txt').write_text('\n'.join(description) + '\n', encoding='utf-8')
@@ -315,6 +335,9 @@ def run(job_path, output):
             artifacts += ['context-review.json']
         if quality.get('path_steps_review'):
             artifacts += ['path-steps-review.json']
+        if surfaces:
+            from .pilot_surfaces import ARTIFACTS as SURFACE_ARTIFACTS
+            artifacts += SURFACE_ARTIFACTS
         if world:
             artifacts += report['playtest']['artifacts']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}
