@@ -18,6 +18,8 @@ from .bedrock import MATERIALS, material_block, record_priority
 from .doorway_raster import PLAYER_WIDTH_M
 
 VERSION = 'provisional-world-access-v4'
+PATH_STEP_POLICY = 'estimated_half_slab_joins_v1'
+PATH_STEP_FEATURE = 'review/path-step-joins'
 RADIUS = 32
 MAX_ROUTE_COLUMNS = 32
 MAX_SEARCH_STATES = 60_000
@@ -132,9 +134,27 @@ def _read_inputs(output, component, whole_area=False):
     return records, terrain, paths, bounds
 
 
+def _mapped_node(scene, key, row, records):
+    """Resolve a surviving mapped cell, including an explicitly linked display slab."""
+    if records.get(key) != row:
+        return None
+    x, y, z = key
+    height = 2 * y + 2
+    overlay = records.get((x, y + 1, z), {})
+    if (overlay.get('feature') == PATH_STEP_FEATURE and overlay.get('kind') == 'steps'
+            and overlay.get('display_policy') == PATH_STEP_POLICY
+            and overlay.get('material') == 'stone_slab'
+            and overlay.get('material_origin') == 'estimated_reconstruction_shell'
+            and overlay.get('accepted_physical_geometry') is False
+            and overlay.get('mapped_source_cell') == {'feature': row['feature'], 'x': x, 'y': y, 'z': z}):
+        height += 1
+    node = x, z, height
+    return node if scene.standing(node) else None
+
+
 def _mapped_nodes(scene, paths, records):
-    return {(x, z, 2 * y + 2): row['feature'] for (x, y, z), row in paths.items()
-            if records.get((x, y, z)) == row and scene.standing((x, z, 2 * y + 2))}
+    return {node: row['feature'] for key, row in paths.items()
+            if (node := _mapped_node(scene, key, row, records)) is not None}
 
 
 def _flood(scene, starts, allowed=None):
@@ -517,6 +537,10 @@ def verify_saved(world_path, offset, spawn, prepared):
         from .pilot_navigation import inspect, write
         report['whole_area_navigation'] = inspect(scene, local_spawn, mapped, paths, records, offset,
                                                  prepared.get('withheld_feature_ids', []))
+        if prepared.get('path_steps') is not None:
+            from .pilot_path_steps import verify
+            verify(world_path.parent, scene, mapped, records, offset,
+                   report['whole_area_navigation'], prepared['path_steps'])
         write(world_path.parent, report['whole_area_navigation'], footprint)
     (world_path.parent / 'access-review.json').write_text(
         json.dumps(report, indent=2, sort_keys=True) + '\n', encoding='utf-8')

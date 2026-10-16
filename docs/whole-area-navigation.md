@@ -100,6 +100,10 @@ playtesting of these jobs remains pending. The next geometry problem is source-
 preserving pedestrian step/ramp representation, with explicit display changes
 and native movement checks; it cannot be solved by relabelling the audit green.
 
+The subsequent opt-in [slab-join jobs](estimated-path-step-joins.md) add explicit
+display geometry and retain the remaining gaps. The original audit jobs and
+the findings above remain reproducible without those additions.
+
 ## Nine withheld features
 
 The new config exposes the already retained, checksum-pinned DSM to the existing

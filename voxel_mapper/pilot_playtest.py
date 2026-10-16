@@ -39,6 +39,9 @@ def write(output, report):
             {'id': 'context-terrain', 'title': 'Inspect the transition from the original area into buffered terrain'},
             {'id': 'context-vegetation', 'title': 'Check that woodland proxies leave mapped paths clear'},
         ]
+    if report.get('path_steps_review'):
+        checks.append({'id': 'path-step-joins',
+                       'title': 'Walk the estimated slab joins in both directions without jumping'})
     for opening in access.get('openings', []):
         witness = opening['walkthrough']
         ready = (witness['status'] == 'native_route_ready'
@@ -119,6 +122,12 @@ def write(output, report):
                   'Missing/overridden cells and full-block steps remain separate findings in `navigation-review.json`. '
                   'An off-path route does not establish continuous paving. The sampled site routes below '
                   'are native checks; walk them in Adventure mode and record the result.', '']
+        if report.get('path_steps_review'):
+            steps = report['path_steps_review']
+            guide += [str(steps['added_slab_records']) + ' estimated stone slabs raise selected mapped path cells '
+                      'by half a metre. Inspect `path-steps-review.json` for each native block position. '
+                      'Walk them uphill and downhill without jumping; the source terrain does not establish '
+                      'real steps at these positions. Remaining barriers stay listed in the navigation report.', '']
         for route in navigation['walkthroughs']:
             guide += ['### Site route: ' + route['id'], '', route['surface_scope'] + '.', '',
                       f"Length: {route['horizontal_length_m']} m. Reset with `{spawn_command}`.", '',

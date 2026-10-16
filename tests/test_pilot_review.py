@@ -19,6 +19,65 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PilotReviewTests(unittest.TestCase):
+    def test_estimated_path_steps_flow_through_the_job_native_audit_and_package(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path, job, _ = self.fixture(root)
+            terrain = root / 'terrain.tif'
+            with rasterio.open(terrain, 'r+') as raster:
+                heights = raster.read(1)
+                heights[:, 20:] = 181
+                raster.write(heights, 1)
+            config_path = root / 'config.json'
+            config = json.loads(config_path.read_text())
+            config['terrain']['sha256'] = self.pin(terrain)['sha256']
+            config['sources'].append({'id': 'osm', 'kind': 'osm', 'url': 'https://example.test/map', 'license': 'CC0'})
+            job['config'] = self.write(config_path, config)
+            operation = OSTN15Transform(4326, 27700, {'method': 'ostn15-bng-v1',
+                'path': str(ROOT / 'docs/evidence/world-pilot/alton-ostn15-grid.tif'),
+                'sha256': job['horizontal_operation']['grid']['sha256']})
+            job['features'] = self.write(root / 'features.json', {'features': [
+                {'type': 'Feature', 'id': 'osm/path',
+                 'geometry': {'type': 'LineString', 'coordinates': [operation.inverse(x, 343580) for x in (407534, 407550)]},
+                 'properties': {'source_id': 'osm', 'kind': 'path', 'highway': 'footway', 'width_m': 2}}],
+                'planning_geometry_records': []})
+            job['review_component']['access'] = {'policy': 'estimated_each_opening_approach_v2',
+                'audit_scope': 'whole_pilot', 'path_steps': {'policy': 'estimated_half_slab_joins_v1', 'max_slabs': 128}}
+            self.write(path, job)
+            report = run(path, root / 'scene')
+            steps = report['path_steps_review']
+            self.assertEqual(steps['status'], 'native_joins_verified')
+            self.assertGreater(steps['verified_joins'], 0)
+            self.assertEqual(steps['native_after']['mapped_supported_cells'], steps['before']['mapped_supported_cells'])
+            self.assertLess(steps['native_after']['walking_surface_components'], steps['before']['walking_surface_components'])
+            self.assertIn('path-steps-review.json', report['output_sha256'])
+            self.assertEqual(steps, json.loads((root / 'scene/path-steps-review.json').read_text()))
+            self.assertEqual(report['readiness']['planning_components_voxelized'], 0)
+            with zipfile.ZipFile(root / 'scene/park.mcworld') as archive:
+                embedded = json.loads(archive.read('voxel-quality-report.json'))
+                self.assertEqual(embedded['path_steps_review'], steps)
+            form = json.loads((root / 'scene/playtest-results.json').read_text())
+            self.assertEqual(form['world']['sha256'], report['world']['sha256'])
+            self.assertTrue(all(check['outcome'] == 'not_run' for check in form['checks']))
+            self.assertIn('path-step-joins', [check['id'] for check in form['checks']])
+
+    def test_path_steps_require_an_explicit_bounded_policy_and_whole_area_readback(self):
+        valid = {'policy': 'estimated_half_slab_joins_v1', 'max_slabs': 128}
+        for scope, steps in [('component_neighbourhood', valid), ('whole_pilot', None),
+                             ('whole_pilot', {**valid, 'max_slabs': True}),
+                             ('whole_pilot', {**valid, 'max_slabs': 513}),
+                             ('whole_pilot', {**valid, 'excavate': True}),
+                             ('whole_pilot', {**valid, 'policy': 'assume_all_walkable'})]:
+            with self.subTest(scope=scope, steps=steps), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                path, job, _ = self.fixture(root)
+                job['review_component']['access'] = {'policy': 'estimated_each_opening_approach_v2',
+                    'audit_scope': scope, 'path_steps': steps}
+                self.write(path, job)
+                with self.assertRaises(ValueError):
+                    run(path, root / 'scene')
+                self.assertFalse((root / 'scene.partial').exists())
+
     def test_whole_pilot_navigation_writes_pending_world_bound_walkthrough_files(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

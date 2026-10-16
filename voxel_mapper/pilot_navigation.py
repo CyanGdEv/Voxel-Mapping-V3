@@ -4,9 +4,9 @@ from html import escape
 import json
 
 from .bedrock import material_block, MATERIALS
-from .pilot_access import collision, MAX_SEARCH_STATES
+from .pilot_access import collision, _mapped_node, MAX_SEARCH_STATES
 
-VERSION = 'whole-pilot-navigation-v1'
+VERSION = 'whole-pilot-navigation-v2'
 ARTIFACTS = ['navigation-review.json', 'navigation-review.svg']
 MAX_WITNESS_POINTS = 512
 
@@ -48,8 +48,7 @@ def _witness(identifier, candidates, parents, depths, offset, scope):
             'route_native_xyz': [_native(p, offset) for p in route], 'minecraft_playtest': 'not_performed'}
 
 
-def inspect(scene, spawn, mapped, paths, records, offset, withheld):
-    all_parents, all_depths = _tree(scene, spawn)
+def _walking_nodes(scene, mapped, records):
     walking = set(mapped)
     for (x, y, z), row in records.items():
         if row['kind'] != 'steps' or not row.get('feature', '').startswith('review/'):
@@ -58,6 +57,12 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
         node = (x, z, 2 * y + form[2]) if form and form[2] is not None else None
         if node is not None and scene.standing(node):
             walking.add(node)
+    return walking
+
+
+def inspect(scene, spawn, mapped, paths, records, offset, withheld):
+    all_parents, all_depths = _tree(scene, spawn)
+    walking = _walking_nodes(scene, mapped, records)
     path_parents, path_depths = _tree(scene, spawn, walking)
     remaining, components, membership = set(walking), [], {}
     while remaining:
@@ -75,7 +80,7 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
     features = {}
     for key, row in paths.items():
         x, y, z = key
-        node = x, z, 2 * y + 2
+        node = _mapped_node(scene, key, row, records)
         group = features.setdefault(row['feature'], {'emitted_cells': 0, 'supported_cells': 0,
             'reachable_cells_any_walking': 0, 'reachable_cells_on_walking_surfaces': 0,
             'overridden_cells': 0, 'blocked_or_unsupported_cells': 0, 'component_ids': set(),
@@ -112,7 +117,7 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
                                          'reason': 'step_exceeds_half_metre' if abs(nh - height) > 1 else 'swept_headroom'})
     witnesses = [
         _witness('mapped-walk', set(mapped) & path_parents.keys(), path_parents, path_depths, offset,
-                 'mapped walking surfaces and estimated approaches'),
+                 'mapped walking surfaces, estimated slab joins and estimated approaches'),
         _witness('terrain-detour', (set(mapped) & all_parents.keys()) - path_parents.keys(),
                  all_parents, all_depths, offset, 'includes terrain or other surfaces outside the mapped walking network'),
     ]
@@ -122,6 +127,9 @@ def inspect(scene, spawn, mapped, paths, records, offset, withheld):
         'bounds_local_xz': list(scene.bounds), 'sampled_columns': len(scene.columns),
         'supported_standing_nodes_reachable_from_spawn': len(all_parents),
         'mapped_emitted_cells': len(paths), 'mapped_supported_cells': len(mapped),
+        'mapped_cells_with_estimated_display_slabs': sum(
+            node[2] != 2 * key[1] + 2
+            for key, row in paths.items() if (node := _mapped_node(scene, key, row, records)) is not None),
         'mapped_reachable_cells_any_walking': len(reachable),
         'mapped_reachable_cells_on_walking_surfaces': len(set(mapped) & path_parents.keys()),
         'walking_components': components, 'features': feature_rows,

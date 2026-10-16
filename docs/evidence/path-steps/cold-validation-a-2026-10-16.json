@@ -1,0 +1,75 @@
+{
+  "accepted_physical_geometry": false,
+  "all_entrance_prefixes_remain_exterior": true,
+  "artifact_hashes_checked": 19,
+  "baseline_world_sha256": "ac50710aebe51594354ac88190bc36554318b6f13f19b01adc37dc6ef88516b9",
+  "minecraft_playtest": "not_performed",
+  "native_cells_compared": 15335424,
+  "native_changed_cells": 56,
+  "native_changes": "Only previously empty cells became bottom stone slabs.",
+  "native_height_range_inclusive": [
+    -64,
+    319
+  ],
+  "native_nonzero_adjacent_height_gaps_checked": 87,
+  "native_original_blocks_modified_or_removed": 0,
+  "native_route_points_checked": 353,
+  "original_voxel_records_byte_identical": true,
+  "preexisting_nonzero_adjacent_height_gaps_enlarged": 0,
+  "replay_identical_files": [
+    "inputs.json",
+    "voxels.jsonl",
+    "features-local.geojson",
+    "review-component.json",
+    "access-review.json",
+    "navigation-review.json",
+    "navigation-review.svg",
+    "path-steps-review.json",
+    "context-review.json",
+    "placement-comparison.json"
+  ],
+  "route_count": 5,
+  "slab_review": {
+    "before": {
+      "adjacent_walking_surface_barriers": 176,
+      "mapped_cells_with_estimated_display_slabs": 0,
+      "mapped_emitted_cells": 1691,
+      "mapped_reachable_cells_any_walking": 381,
+      "mapped_reachable_cells_on_walking_surfaces": 3,
+      "mapped_supported_cells": 1673,
+      "walking_surface_components": 95
+    },
+    "native_after": {
+      "adjacent_walking_surface_barriers": 101,
+      "mapped_cells_with_estimated_display_slabs": 56,
+      "mapped_emitted_cells": 1691,
+      "mapped_reachable_cells_any_walking": 1649,
+      "mapped_reachable_cells_on_walking_surfaces": 60,
+      "mapped_supported_cells": 1673,
+      "walking_surface_components": 29
+    },
+    "verified_joins": 56
+  },
+  "source_component_byte_identical": true,
+  "source_input_assets_identical": true,
+  "status": "passed",
+  "training_labels_generated": 0,
+  "version": "wicker-path-step-cold-check-v1",
+  "withheld_feature_ids_remain_without_geometry": [
+    "osm/way/107026704",
+    "osm/way/1182076343",
+    "osm/way/1182178170",
+    "osm/way/1182178172",
+    "osm/way/1182179734",
+    "osm/way/453986307",
+    "osm/way/453986308",
+    "osm/way/536931482",
+    "osm/way/536931484"
+  ],
+  "world_sha256": "54068ba358894e57c35efaf7a8a404fab690e88a007e0e0819b70556c76364cf",
+  "world_spawn_native_xyz": [
+    11,
+    71,
+    3
+  ]
+}

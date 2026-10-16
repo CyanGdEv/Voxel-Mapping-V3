@@ -1,0 +1,45 @@
+{
+  "accepted_physical_geometry": false,
+  "base_commit": "e722549e9ac13afd5409da515971e2dfdfdfc1bc",
+  "changed_code_sha256": {
+    "scripts/validate_wicker_path_steps.py": "0abe0a3d09a4854f3b0a8155ef8f841ea5b944c2b9cd21cdb4597d3678eecac1",
+    "tests/test_pilot_path_steps.py": "37dee222c7b8435440310d999877c0c999dd667b54834996194922088334d9eb",
+    "tests/test_pilot_review.py": "600504fdee9e91f6adc1ec40d2f5bcec6c5f6df520da72791fea8419aad9f8b8",
+    "voxel_mapper/pilot_access.py": "0b54232f287a13a7d349ec91c2abf32b5af7f210256f048a30cbbb5e62b90536",
+    "voxel_mapper/pilot_navigation.py": "597636c5edc25dd5c15ec211d1c98eea3af4a8e6b848e7b30452c81cce06612c",
+    "voxel_mapper/pilot_path_steps.py": "28f7aa10a611ceab12dd922f2608e8889c69cced5d2d3c21eb18ca5533415f53",
+    "voxel_mapper/pilot_playtest.py": "e77e1a301f15a9096dcd2efc56322dccff7204aa3b68a8e3208f54c9b42a4f23",
+    "voxel_mapper/pilot_review.py": "c448e2f5556a2ea7b95b4eb5dfa2f5f88ace63fde96ea66bfc6b83087a70196b",
+    "voxel_mapper/world_pilot.py": "483c5556dc8a5e60ae71a26c03ec7559b47e5e5e5ca410abe87436df3863acf2"
+  },
+  "cold_check_receipts": {
+    "cold-validation-a-2026-10-16.json": "b69f1f7e91890ea81183fe1fbf22f480f03101b4eb590684add66436e0c2d62c",
+    "cold-validation-b-2026-10-16.json": "9fdc4daec95b59a3177c96a89657b9d3ef057340683a384a351b75c3d9f97f18"
+  },
+  "date": "2026-10-16",
+  "hypotheses_retained": [
+    "A",
+    "B"
+  ],
+  "known_remaining": {
+    "adjacent_walking_barriers_per_world": 101,
+    "ai_ranker": "untrained_baseline",
+    "overridden_mapped_cells_per_world": 18,
+    "supported_mapped_cells_unreachable_per_world": 24,
+    "walking_surface_components_per_world": 29,
+    "withheld_bridge_or_tunnel_features_per_world": 9
+  },
+  "minecraft_playtest": "not_performed",
+  "native_cells_compared_total": 30670848,
+  "native_original_blocks_modified_or_removed": 0,
+  "native_route_points_checked_total": 754,
+  "preexisting_nonzero_adjacent_height_gaps_enlarged": 0,
+  "slab_additions_total": 112,
+  "status": "passed",
+  "test_command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "test_duration_seconds": 168.411,
+  "test_log_sha256": "c1689a641f60daa1f554b05cd7c0a4be47e2697d906792181e6f0ea2b4e41f61",
+  "tests_passed": 1495,
+  "training_labels_generated": 0,
+  "version": "wicker-path-step-validation-v1"
+}

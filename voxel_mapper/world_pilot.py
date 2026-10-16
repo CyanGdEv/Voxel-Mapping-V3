@@ -186,6 +186,10 @@ def run(job_path, output):
         if review_component:
             from .pilot_access import prepare as prepare_access
             access = prepare_access(staging, quality, review_component, prepared_review['access'], config['max_voxels'])
+            if isinstance(prepared_review['access'], dict) and 'path_steps' in prepared_review['access']:
+                from .pilot_path_steps import append as append_path_steps
+                access['path_steps'] = append_path_steps(staging, quality, access,
+                    prepared_review['access']['path_steps'], config['max_voxels'])
         context = None
         if prepared_context:
             from .pilot_context import append as append_context
@@ -254,6 +258,7 @@ def run(job_path, output):
             'placement_comparison': comparison,
             'review_component': review_component,
             'access_review': quality.get('access_review'),
+            'path_steps_review': quality.get('path_steps_review'),
             'context_review': context,
             'generation_errors': sum(issue.get('severity') == 'error' for issue in quality['issues']),
             'validation': {'native_readback': world['round_trip_validation'] if world else 'not_run',
@@ -287,6 +292,10 @@ def run(job_path, output):
             description += ['', 'Native access review: ' + quality['access_review']['status'],
                             'See access-review.json for supported spawn, headroom, half-step routes and unresolved openings.',
                             'Estimated approaches do not establish real site access or accessible-design compliance.']
+        if quality.get('path_steps_review'):
+            description += ['', 'Estimated display path slabs: ' + str(quality['path_steps_review']['added_slab_records']),
+                            'See path-steps-review.json for original/adjusted heights, source links and remaining gaps.',
+                            'Display joins preserve source rows and do not establish measured site steps or ramps.']
         for task in tasks:
             description += ['', task['title'] + ':', *['- ' + value for value in task['required_evidence']]]
         (staging / 'README.txt').write_text('\n'.join(description) + '\n', encoding='utf-8')
@@ -304,6 +313,8 @@ def run(job_path, output):
             artifacts += NAVIGATION_ARTIFACTS
         if context:
             artifacts += ['context-review.json']
+        if quality.get('path_steps_review'):
+            artifacts += ['path-steps-review.json']
         if world:
             artifacts += report['playtest']['artifacts']
         report['output_sha256'] = {name: _sha(staging / name) for name in artifacts}

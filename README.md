@@ -37,6 +37,9 @@ surfaces and estimated woodland proxies outside the original core.
 The [whole-area navigation jobs](docs/whole-area-navigation.md) audit that complete
 scene, distinguish continuous walking surfaces from terrain detours and retain
 unresolved steps, disconnected components and rejected bridge candidates.
+The opt-in [estimated path slab joins](docs/estimated-path-step-joins.md) add
+source-linked half steps without replacing original blocks. Native checks retain
+remaining steep sections and a separate pending gameplay result form.
 
 ## Whole-park batch jobs
 

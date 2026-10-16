@@ -21,10 +21,15 @@ def prepare(settings, asset, load_json, directory, pins):
         raise ValueError('Explicit estimated_review_only component policy required')
     access = settings.get('access')
     if access is not None and (not isinstance(access, dict)
-            or set(access) - {'policy', 'audit_scope'}
+            or set(access) - {'policy', 'audit_scope', 'path_steps'}
             or access.get('policy') not in ('estimated_half_step_approach_v1', 'estimated_each_opening_approach_v2')
             or access.get('audit_scope', 'component_neighbourhood') not in ('component_neighbourhood', 'whole_pilot')):
         raise ValueError('Unsupported provisional access policy')
+    if access is not None and 'path_steps' in access:
+        from .pilot_path_steps import validate_settings
+        validate_settings(access['path_steps'])
+        if access.get('audit_scope') != 'whole_pilot':
+            raise ValueError('Estimated path steps require a whole_pilot native audit')
     model_path = asset(settings.get('model'), directory, 'review_model')
     placement_path = asset(settings.get('placement'), directory, 'review_placement')
     model, placement = load_json(model_path), load_json(placement_path)
