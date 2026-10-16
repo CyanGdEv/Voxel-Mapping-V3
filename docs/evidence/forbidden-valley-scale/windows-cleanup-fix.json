@@ -1,0 +1,23 @@
+{
+  "version": "scale-trial-windows-cleanup-fix-v1",
+  "date": "2026-10-16",
+  "prior_commit": "c9ef7dc4e3267ef1f383d67ea3bbdf8c8e589526",
+  "prior_ci_run": "https://github.com/CyanGdEv/Voxel-Mapping-V3/actions/runs/38929327489",
+  "prior_ci": {
+    "linux": "success",
+    "windows": "failure",
+    "windows_tests_run": 1515,
+    "windows_errors": 2,
+    "windows_skips": 4
+  },
+  "cause": "Two scale tests retained SQLite read connections until after TemporaryDirectory cleanup. SQLite connection context managers commit/rollback but do not close; Windows refused deletion of the open database files.",
+  "change": "Wrap all three read connections in contextlib.closing so their handles close before temporary directories are removed.",
+  "production_generator_changed": false,
+  "world_geometry_changed": false,
+  "local_command": "python -m unittest discover -s tests -p test_scale_trial.py -q",
+  "local_tests_passed": 7,
+  "local_elapsed_seconds": 1.141,
+  "test_file_sha256": "e0947e2560a93bb35e35a127dc7be0fa4d15f183a6d9e5266cfe1e9d178ac07c",
+  "focused_log_sha256": "f27070ad2cc0d714580e7c168e01d3df448c632e2c5cb4942736014587e1f797",
+  "followup_github_ci": "Awaiting the new commit run; this receipt is not a claim of a Windows pass."
+}

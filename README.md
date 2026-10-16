@@ -49,6 +49,13 @@ half steps on those footprints. All three plazas then have walking-surface
 access in both orientations, with separate plaza-to-entrance results and
 unapplied proposed level annotations.
 
+The [Forbidden Valley scale trial](docs/forbidden-valley-scale-trial.md) runs
+real retained terrain and mapped geometry at 32 × 32, 64 × 64 and 100 × 100
+chunks. All three saved worlds pass complete native readback, nested-area and
+terrain-boundary checks; the largest covers 1.6 × 1.6 km. A checkpoint/restart
+trial and measured export memory/time are retained separately from gameplay
+and planning acceptance.
+
 ## Whole-park batch jobs
 
 The [park job runner](docs/park-batch.md) collects planning PDFs, inventories pages,

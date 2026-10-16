@@ -1,0 +1,80 @@
+{
+  "accepted_planning_components": 0,
+  "area": {
+    "anchor_position_wgs84": [
+      -1.88309,
+      52.9866941
+    ],
+    "anchor_source": "OSM node 674445842, Forbidden Valley",
+    "name": "Forbidden Valley and surrounding Alton context"
+  },
+  "bare_terrain_boundary_columns_checked": 816467,
+  "minecraft_playtest": "not_performed",
+  "native_cell_positions_cold_checked": 1486356480,
+  "native_height_range_inclusive": [
+    -64,
+    319
+  ],
+  "native_preview_arrays_sha256": {
+    "native-top-height.npy": "77ed1ba1d22807d2a79730e66f0f57ca92dc52d1067086731542daea1f99a8a4",
+    "native-top-material.npy": "14535f8c2e276e641ae2b4604f18ff25fde15c36b34de5c6f0b08123fdfd7314"
+  },
+  "nested_chunk_pairs_identical": 5120,
+  "raw_terrain_window_matches_prepared_heights": true,
+  "source_identity": {
+    "inputs": {
+      "horizontal_grid": "48dc9fd95196e22d987353bc128186890fc5283d0bc82c7fc1d0e461cdfa3117",
+      "osm": "50e43937cd7093a72a85c4ee19f0b64383d092ccd5524a52c1ac0c8730dc4f35",
+      "surface": "caca385431739d291ab92f839e26840eee76650ab5593088a48dbfeac04907af",
+      "terrain": "57becd3683c8492b645472d936ff0d714acd5d037326a6c6f0b6050e04eb2493"
+    },
+    "job_sha256": "54d18d10ae84a44f5424f430f38a4bd891cea26762208cea8cb5116bdc51d090",
+    "native_exporter_sha256": "d6d4ad20a45a22e3e9b667769f436a16ab3727969ed476f55f2c7e5219658a3e",
+    "renderer_sha256": "fc07e5aae8918aabd37a4371730e9b591958772f9cc7c53bb3344972659278d2"
+  },
+  "stages": {
+    "100": {
+      "bare_terrain_boundary_columns_checked": 544578,
+      "composed_blocks": 48121274,
+      "elapsed_export_seconds": 83.97336934499981,
+      "native_cell_positions_cold_checked": 983040000,
+      "native_chunks_cold_checked": 10000,
+      "nested_previous_chunk_hashes_identical": true,
+      "package_bytes": 1534475,
+      "peak_process_rss_mib": 542.9140625,
+      "resumed_verified_chunks": 0,
+      "status": "passed",
+      "world_sha256": "8fd68c7a98bbe9f3505a430b50adce0c1f688b358ee53de1d940e8b798b128a7"
+    },
+    "32": {
+      "bare_terrain_boundary_columns_checked": 50670,
+      "composed_blocks": 5028923,
+      "elapsed_export_seconds": 9.143356820000918,
+      "native_cell_positions_cold_checked": 100663296,
+      "native_chunks_cold_checked": 1024,
+      "nested_previous_chunk_hashes_identical": true,
+      "package_bytes": 282465,
+      "peak_process_rss_mib": 205.77734375,
+      "resumed_verified_chunks": 128,
+      "status": "passed",
+      "world_sha256": "d44ef6c36cd15d0a48dd9b9f1157ed5e7c628558ec40c71e9168990290d9ace6"
+    },
+    "64": {
+      "bare_terrain_boundary_columns_checked": 221219,
+      "composed_blocks": 19885284,
+      "elapsed_export_seconds": 37.65901047200168,
+      "native_cell_positions_cold_checked": 402653184,
+      "native_chunks_cold_checked": 4096,
+      "nested_previous_chunk_hashes_identical": true,
+      "package_bytes": 1068306,
+      "peak_process_rss_mib": 269.00390625,
+      "resumed_verified_chunks": 0,
+      "status": "passed",
+      "world_sha256": "1ebcaf1149721bb246a1bd5e59e55bbb7ca0690b555ce79e7de02f55716d5e40"
+    }
+  },
+  "status": "passed",
+  "training_labels_generated": 0,
+  "validation_script_sha256": "65cc91bbc36f013b771d39d5cefd67a1c9054f3bd5a89bf325b1f39427ddf4f1",
+  "version": "real-area-scale-cold-validation-v1"
+}

@@ -1,0 +1,30 @@
+{
+  "version": "leveldb-reopen-diagnostic-v1",
+  "method": "Three separate LevelDB opens; enumerate keys; close; delete handle; collect Python garbage. Same 10000-chunk native database. Current RSS from Linux procfs; peak RSS from resource.getrusage.",
+  "python": "3.12.14",
+  "baseline_geometry_sha256": "7e30cd9bee643c77cebf239edfb35c740a9423bd4ccbede3c619000b1cc58b40",
+  "before": {
+    "peak_mib": 10.3046875,
+    "current_rss_mib": 10.40625
+  },
+  "opens": [
+    {
+      "open": 1,
+      "keys_scanned": 52289,
+      "peak_process_rss_mib": 39.15625,
+      "current_rss_mib_after_close_and_gc": 38.0234375
+    },
+    {
+      "open": 2,
+      "keys_scanned": 52289,
+      "peak_process_rss_mib": 66.0078125,
+      "current_rss_mib_after_close_and_gc": 64.81640625
+    },
+    {
+      "open": 3,
+      "keys_scanned": 52289,
+      "peak_process_rss_mib": 92.7578125,
+      "current_rss_mib_after_close_and_gc": 91.57421875
+    }
+  ]
+}
