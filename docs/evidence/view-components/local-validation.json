@@ -1,0 +1,21 @@
+{
+  "base_commit": "5ee0d21d11b1b0e4cdab220765f446a8417cd020",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "ac519364668a26ebb95fa1e2fe281efd7b8ea125866ba5549459c37de974a70e",
+    "tests/test_drawing_view_components.py": "cb70aee9982496145b03803701e84aa7f0d68b29975417516ae2b7efb17e0ad2",
+    "voxel_mapper/area_cycles.py": "1e243c8c08649d131a683d5f0496527aa0155735d3a180bd30113c23286a28fb",
+    "voxel_mapper/area_reconstruction.py": "a45fcb7ba8069158c15c5f58199298d5bb4e0f324b741eb66bc317fb4ba8b9a7",
+    "voxel_mapper/drawing_view_components.py": "75475a6a06b625bf8081745628010de1c1902f089bc784d7053ee29d0478fbb0"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "62df540f2d1a2f0e5d49bab927549ab38bb0cb896b7581e6ec9f408e02d0f5e1",
+  "full_suite_log_sha256": "fe43bd17ac2e460f38fa4e28abe949508a0a536e10e19cd3bf67381a8773b50e",
+  "limits": "Local suite and real source evidence audit; no Minecraft client visual test, accepted building, placement or training labels.",
+  "new_component_tests": 13,
+  "python": "3.12.14",
+  "real_audit_sha256": "4107763649de2f4f74bbd1ec6766a76867f21fce0fb9545548944573a1ff1753",
+  "seconds": 352.713,
+  "status": "passed",
+  "tests": 1552,
+  "version": "view-component-local-validation-v1"
+}
