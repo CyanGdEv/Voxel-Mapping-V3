@@ -1,0 +1,25 @@
+{
+  "base_commit": "0b2c771f59a6c8f4f4519a6765bdb42722a6fae6",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "9ce61c825ef40402b6b62fad447cb0d33a7367308e6ff80ac5574171a352bfdb",
+    "tests/test_raster_stroke_context.py": "7ef2c62143f6ea605783eaa736061db677185d6f82761604d40ecf3a45612179",
+    "voxel_mapper/area_cycles.py": "4d47688bcab507e2d3f678995082576ba684b208fead75dbc3d175a604eee363",
+    "voxel_mapper/area_reconstruction.py": "4c291f6a3cf6afbbbb50379cac391283382993a215847bff97e2ae561da35cd3",
+    "voxel_mapper/drawing_annotation_context.py": "eda6e3628657e01809420cd89a57640ecf3211b4e523b573e2614fc4bcefba2c",
+    "voxel_mapper/drawing_view_components.py": "96381de834758b0aabe41c155c0d54d2af79fb563ba9bd06f9c3f113401f7fe4",
+    "voxel_mapper/raster_opening_scan.py": "44b38ac83fec29cf930c57fd6b86955e19557f46a45302d7198454d9062724df",
+    "voxel_mapper/raster_stroke_context.py": "1df7c0b1df33af0d0564659dec405beebfc07bff774ef33b46bb6a6dadc15800"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "9613be8cab054de5dc059ab6ef5965c36223697157d1d20d3258e419232951cf",
+  "focused_related_tests": 30,
+  "full_suite_log_sha256": "3bcb831839e8a0223d2bdbd451c32c5a375164efeb85ab30e2326b1a2e490ac7",
+  "limits": "Source context and residual search only; no trained semantic model, physical component, geographic placement, world blocks or training labels. South-west residual scan remains withheld.",
+  "new_tests": 10,
+  "python": "3.12.14",
+  "real_audit_sha256": "97787406e4e4aaac162f6829ea0ac3d7c7e7428e182d41ce93d0132f931633c6",
+  "seconds": 295.793,
+  "status": "passed",
+  "tests": 1562,
+  "version": "drawing-stroke-context-local-validation-v1"
+}
