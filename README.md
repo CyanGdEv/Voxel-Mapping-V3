@@ -63,6 +63,11 @@ source-linked view crops and nominal local geometry without per-view rectangles.
 It retains original glyph evidence, whole-object membership and unresolved
 scale/scope claims before physical assembly or alignment.
 
+The optional [view component inventory](docs/automatic-view-components.md) then
+discovers closed source regions, wall-band evidence and native/raster opening
+alternatives without manual wing seeds. Original boundary and threshold proofs
+remain available; physical outline and aperture selection stay unresolved.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

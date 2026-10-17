@@ -1,0 +1,30 @@
+{
+  "catalogue_sha256": "b8bc58f208511e5aebb295855610505ac4a4cf8edb857987b8aca36a8d5a8fea",
+  "documents": [
+    {
+      "bytes": 443573,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+      "physical_state_accepted": false,
+      "recorded_transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+      "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "source": "known checksum-pinned acquisition catalogue"
+    },
+    {
+      "bytes": 135946,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+      "physical_state_accepted": false,
+      "recorded_transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+      "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "source": "known checksum-pinned acquisition catalogue"
+    },
+    {
+      "bytes": 169647,
+      "canonical_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+      "physical_state_accepted": false,
+      "recorded_transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+      "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "source": "known checksum-pinned acquisition catalogue"
+    }
+  ],
+  "validation_mode": "Originals fetched and checksum-verified this session; area/component replay offline."
+}
