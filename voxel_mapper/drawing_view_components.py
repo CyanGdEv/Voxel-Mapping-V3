@@ -16,11 +16,12 @@ from shapely.geometry import Polygon, box, mapping, shape
 
 from . import architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan
 from . import raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces
+from . import jamb_group_partitions
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v2'
+VERSION = 'automatic-view-component-inventory-v3'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -92,6 +93,7 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
     frames = {'status': 'not_an_elevation', 'frames': []}
     scan = {'status': 'not_an_elevation', 'candidates': [], 'index': None}
     hypotheses = []; residual_hypotheses = []; raster = None
+    legacy_attempts = {}
     stroke_context = {'status': 'not_an_elevation', 'variants': []}
     residual_scan = {'status': 'not_an_elevation', 'index': None}
     text_context = {'status': 'not_an_elevation', 'labels': [], 'cycles': []}
@@ -121,6 +123,10 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
                 for frame in frames['frames']:
                     frame.update(geometry_record(affine_transform(shape(frame['geometry_pixels']), affine(matrix))))
             scan = raster_opening_scan.scan(gray, representation='indexed', pair_scope='all', max_checks=config['max_checks'])
+            if scan.get('reason') == 'vertical_run_group_budget':
+                legacy_attempts['raster'] = scan
+                scan = raster_opening_scan.scan(gray, representation='indexed', pair_scope='all',
+                    max_checks=config['max_checks'], partition_groups=True)
             if scan['index'] is not None:
                 for i, family in enumerate(scan['index']['consensus_families']):
                     g = affine_transform(box(*family['bounds_pixels']), affine(matrix))
@@ -132,6 +138,10 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
             if stroke_context['status'] == 'repeated_stroke_layout_context_only':
                 residual_scan = raster_opening_scan.scan(gray, representation='indexed', pair_scope='all',
                     max_checks=config['max_checks'], excluded_groups=stroke_context['excluded_groups'])
+                if residual_scan.get('reason') == 'vertical_run_group_budget':
+                    legacy_attempts['residual'] = residual_scan
+                    residual_scan = raster_opening_scan.scan(gray, representation='indexed', pair_scope='all',
+                        max_checks=config['max_checks'], excluded_groups=stroke_context['excluded_groups'], partition_groups=True)
                 if residual_scan['index'] is not None:
                     for i, family in enumerate(residual_scan['index']['consensus_families']):
                         g = affine_transform(box(*family['bounds_pixels']), affine(matrix))
@@ -150,10 +160,12 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
             'raster_coordinate_receipt': raster, 'raster_opening_hypotheses': hypotheses,
             'repeated_stroke_context': stroke_context, 'residual_raster_scan': residual_scan,
             'residual_raster_hypotheses': residual_hypotheses, 'native_cycle_text_context': text_context,
+            'legacy_group_limit_attempts': legacy_attempts,
             'counts': {'source_components': len(records), 'closed_source_regions': len(regions), 'wall_bands': len(bands),
                        'native_rectangle_cycles': len(frames['frames']), 'raster_opening_families': len(hypotheses),
                        'raster_scope_crossings': sum(h['status']=='candidate_scope_crossing_withheld' for h in hypotheses),
                        'residual_raster_families': len(residual_hypotheses),
+                       'partitioned_scan_passes': int('group_partition_proofs' in scan)+int('group_partition_proofs' in residual_scan),
                        'repeated_stroke_groups': sum(len(v['residual_excluded_group_indices']) for v in stroke_context['variants']),
                        'numeric_or_level_cycle_contexts': sum(c['status']=='visible_numeric_or_level_text_overlap' for c in text_context['cycles'])},
             'view_scope_verified': False, 'physical_boundary_verified': False, 'world_placement_eligible': False,
@@ -181,7 +193,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                 'implementation_sha256': file_hash(Path(__file__)),
                 'kernel_sha256': {module.__name__: file_hash(Path(module.__file__)) for module in
                     [architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan,
-                     raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces]},
+                     raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)

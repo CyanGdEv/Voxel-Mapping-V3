@@ -2,12 +2,14 @@
 import hashlib
 import numpy as np
 
-VERSION = 'raster-opening-scan-v4'
+VERSION = 'raster-opening-scan-v5'
 MAX_INDEX_PAIRS = 8192
 THRESHOLDS = (220, 235)
 
 
-def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000, pair_scope="all", representation="expanded", excluded_groups=None):
+def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000, pair_scope="all", representation="expanded", excluded_groups=None, partition_groups=False):
+    if type(partition_groups) is not bool or partition_groups and pair_scope!='all':
+        raise ValueError('Boolean group partitioning supports all-pair scope only')
     if pair_scope not in ("all","adjacent_compatible_jambs"):
         raise ValueError("Declared opening pair scope required")
     if representation not in ("expanded","indexed"):
@@ -50,8 +52,15 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
     if excluded_groups is not None:
         base.update(search_scope='residual_jamb_groups_only',excluded_group_bounds=excluded_groups,
                     complete_unscreened_inventory=False)
-    checks=0;variants=[];group_tables=[]
-    def withheld(reason):return {**base,'status':'scan_budget_withheld','reason':reason,'candidates':[],
+    checks=0;variants=[];group_tables=[];partition_reports=[]
+    if partition_groups:
+        base['recipe'].update(group_partitioning='exact_compatibility_components',max_retained_groups=4096,
+                              max_groups_per_component=max_groups)
+    def charge():
+        nonlocal checks
+        checks+=1
+        if checks>max_checks:raise OverflowError('compatible_group_partition_work_budget')
+    def withheld(reason):return {**{k:v for k,v in base.items() if k!='group_partition_proofs'},'status':'scan_budget_withheld','reason':reason,'candidates':[],
         'index':None,'checks':checks}
     for threshold in THRESHOLDS:
         dark=gray<threshold;groups=[];previous=[]
@@ -67,12 +76,18 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
                 if len(same)==1:group=same[0];group['right']=x+1
                 else:
                     group={'left':x,'right':x+1,'top':int(top),'bottom':int(bottom)};groups.append(group)
-                    if len(groups)>max_groups:return withheld('vertical_run_group_budget')
+                    if len(groups)>(4096 if partition_groups else max_groups):return withheld('retained_group_budget' if partition_groups else 'vertical_run_group_budget')
                 current.append(group)
             previous=current
         group_tables.append(groups)
         group_indices={id(g):i for i,g in enumerate(groups)}
         pairs=[];buckets={}
+        owners=None
+        if partition_groups:
+            from .jamb_group_partitions import partition
+            try:proof=partition(groups,min_width,max_width,max_groups,charge)
+            except OverflowError as exc:return withheld(str(exc))
+            partition_reports.append({'threshold':threshold,**proof});owners={i:k for k,c in enumerate(proof['components']) for i in c['group_indices']}
         for group in groups:buckets.setdefault((group['top']//3,group['bottom']//3),[]).append(group)
         for left in groups:
             nearby=[]
@@ -89,6 +104,7 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
                 nearest=min((r['left'] for r in compatible),default=None)
                 nearby=[r for r in compatible if r['left']==nearest]
             for right in nearby:
+                if owners is not None and owners[group_indices[id(left)]]!=owners[group_indices[id(right)]]:continue
                 width=right['left']-left['right']
                 if not min_width<=width<=max_width:continue
                 checks+=1
@@ -110,6 +126,7 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
                 if len(pairs)>(MAX_INDEX_PAIRS if representation=='indexed' else 512):
                     return withheld('indexed_pair_count_budget' if representation=='indexed' else 'opening_pair_count_budget')
         variants.append(pairs)
+    if partition_groups:base['group_partition_proofs']=partition_reports
     if representation=='indexed':
         # Endpoint bins avoid a Cartesian threshold-consensus scan. Every
         # nearby pair still receives the original four-coordinate test.

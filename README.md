@@ -72,6 +72,10 @@ remain available; physical outline and aperture selection stay unresolved.
 and bounded residual searches around repeated-stroke ambiguity, preserving the
 original scans and every excluded source group.
 
+[Exact jamb work partitions](docs/partitioned-jamb-discovery.md) handle dense
+independent stroke groups while preserving every eligible pairing and the
+existing active-group, pair and work caps.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts
