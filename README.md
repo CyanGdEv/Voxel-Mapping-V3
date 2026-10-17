@@ -68,6 +68,10 @@ discovers closed source regions, wall-band evidence and native/raster opening
 alternatives without manual wing seeds. Original boundary and threshold proofs
 remain available; physical outline and aperture selection stay unresolved.
 
+[Drawing stroke context](docs/drawing-stroke-context.md) adds original-glyph links
+and bounded residual searches around repeated-stroke ambiguity, preserving the
+original scans and every excluded source group.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

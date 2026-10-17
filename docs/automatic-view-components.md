@@ -35,6 +35,9 @@ The area report and all-area sweep expose `drawing_view_components`. Output unde
 a hash-bound `component-report.json`. Source PDFs and original-source crops stay
 in the upstream corpus/view pack. No synthetic physical recipe is produced.
 
+Inventory v2 also adds [drawing text and repeated-stroke context](drawing-stroke-context.md),
+retaining the broad scan alongside an explicitly scoped residual search.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -95,7 +98,8 @@ Contracts bind source report/feed/artifact hashes, source PDFs, implementation
 hashes for the adapter and existing kernels, options and runtime dependencies
 (including Shapely/GEOS, PyMuPDF, NumPy and Pillow).
 Replay verifies inputs and every output; a fresh audit recomputes all view files.
-Area/controller contracts advance to v6/v4. Use a fresh work directory for older
+The original inventory used area/controller v6/v4; context v2 advances these to
+v7/v5. Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 
 The remaining building gates are actual boundary/aperture identity, construction

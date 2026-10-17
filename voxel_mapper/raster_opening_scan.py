@@ -2,12 +2,12 @@
 import hashlib
 import numpy as np
 
-VERSION = 'raster-opening-scan-v3'
+VERSION = 'raster-opening-scan-v4'
 MAX_INDEX_PAIRS = 8192
 THRESHOLDS = (220, 235)
 
 
-def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000, pair_scope="all", representation="expanded"):
+def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, max_checks=100000, pair_scope="all", representation="expanded", excluded_groups=None):
     if pair_scope not in ("all","adjacent_compatible_jambs"):
         raise ValueError("Declared opening pair scope required")
     if representation not in ("expanded","indexed"):
@@ -18,6 +18,28 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
     for value,limit in ((min_height,400),(min_width,600),(max_width,600),(max_groups,512),(max_checks,100000)):
         if type(value) is not int or not 1<=value<=limit:raise ValueError('Bounded opening scan options required')
     if min_width>max_width:raise ValueError('Ordered opening discovery widths required')
+    exclusions={t:set() for t in THRESHOLDS}
+    if excluded_groups is not None:
+        if not isinstance(excluded_groups,dict) or set(excluded_groups)!={str(t) for t in THRESHOLDS}:
+            raise ValueError('Both threshold-specific source group lists required')
+        h,w=gray.shape
+        for threshold in THRESHOLDS:
+            rows=excluded_groups[str(threshold)];seen=set()
+            if not isinstance(rows,list) or len(rows)>4096:raise ValueError('Bounded source group exclusions required')
+            dark=gray<threshold
+            for row in rows:
+                if not isinstance(row,list) or len(row)!=4 or any(type(v) is not int for v in row):
+                    raise ValueError('Integer original group bounds required')
+                left,top,right,bottom=row;key=tuple(row)
+                if (key in seen or not 0<=left<right<=w or not 1<=right-left<=3 or not 0<top<bottom<h
+                        or not min_height<=bottom-top<=700):raise ValueError('Unique bounded original groups required')
+                seen.add(key)
+                if (not dark[top:bottom,left:right].all() or dark[top-1,left:right].any() or dark[bottom,left:right].any()):
+                    raise ValueError('Excluded group differs from original complete vertical runs')
+                for x in (left-1,right):
+                    if (0<=x<w and dark[top:bottom,x].all() and not dark[top-1,x] and not dark[bottom,x]):
+                        raise ValueError('Whole original group width required')
+                exclusions[threshold].update((x,top,bottom) for x in range(left,right))
     base={'version':VERSION,'source_gray_sha256':hashlib.sha256(gray.tobytes()).hexdigest(),
           'size_pixels':[gray.shape[1],gray.shape[0]],
           'recipe':{'representation':representation,'pair_scope':pair_scope,'thresholds':list(THRESHOLDS),'min_height_pixels':min_height,
@@ -25,6 +47,9 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
                     'max_endpoint_spread_pixels':2,'minimum_head_dark_fraction':.9,
                     'maximum_width_pixels':max_width,'maximum_height_pixels':700},
           'physical_opening_verified':False,'world_geometry_additions':0}
+    if excluded_groups is not None:
+        base.update(search_scope='residual_jamb_groups_only',excluded_group_bounds=excluded_groups,
+                    complete_unscreened_inventory=False)
     checks=0;variants=[];group_tables=[]
     def withheld(reason):return {**base,'status':'scan_budget_withheld','reason':reason,'candidates':[],
         'index':None,'checks':checks}
@@ -35,6 +60,7 @@ def scan(gray, *, min_height=24, min_width=20, max_width=600, max_groups=512, ma
             current=[]
             for top,bottom in zip(changes[::2],changes[1::2]):
                 if not min_height<=bottom-top<=700 or top==0 or bottom==gray.shape[0]:continue
+                if (x,int(top),int(bottom)) in exclusions[threshold]:continue
                 # Merge only adjacent columns with identical full run extents.
                 # No gaps, diagonal snapping or partial-jamb extension.
                 same=[g for g in previous if g['top']==top and g['bottom']==bottom]

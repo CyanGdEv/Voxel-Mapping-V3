@@ -18,9 +18,10 @@ from voxel_mapper.drawing_view_components import run as inventory, orient, affin
 from voxel_mapper.generation_cycles import atomic_json, file_hash
 from voxel_mapper.planning_bulk import Corpus
 from voxel_mapper.reconstruction_evidence_queue import digest
+from voxel_mapper.raster_opening_scan import scan as opening_scan
 
 
-def audit(job, output):
+def audit(job, output, baseline=None):
     job = Path(job).resolve(); configuration = json.loads(job.read_text())
     if len(configuration['areas']) != 1: raise ValueError('One bounded area required')
     area = configuration['areas'][0]['id']; work = (job.parent/configuration['work_directory']).resolve()/area
@@ -38,9 +39,25 @@ def audit(job, output):
             fresh = inventory(corpus, work/'drawing-geometry', pack, Path(temporary)/'components', settings=report['contract']['options'])
             assert fresh['output_sha256'] == report['output_sha256']
     finally: corpus.close()
-    checked = Counter(); rows = []
+    checked = Counter(); rows = []; baseline_comparison = None; old_views = {}
+    if baseline is not None:
+        baseline = Path(baseline); baseline_report = json.loads((baseline/'component-report.json').read_text())
+        for name, pin in baseline_report['output_sha256'].items(): assert file_hash(baseline/name) == pin
+        old_views = {r['view_id']: json.loads((baseline/r['file']).read_text()) for r in baseline_report['results']}
+        baseline_comparison = {'report_sha256': file_hash(baseline/'component-report.json'), 'views_checked': 0,
+            'native_geometry_and_raw_scan_preserved': True}
     for row in report['results']:
         result = json.loads((root/row['file']).read_text()); view = views[result['view_id']]
+        if baseline is not None:
+            old = old_views[result['view_id']]
+            assert digest(old['source_components']) == digest(result['source_components'])
+            assert digest(old['wall_band_candidates']) == digest(result['wall_band_candidates'])
+            assert digest(old['native_rectangle_review']) == digest(result['native_rectangle_review'])
+            assert [digest(r['geometry_pdf_native']) for r in old['closed_source_regions']] == [digest(r['geometry_pdf_native']) for r in result['closed_source_regions']]
+            before = {k: v for k, v in old['raster_opening_scan'].items() if k != 'version'}
+            after = {k: v for k, v in result['raster_opening_scan'].items() if k != 'version'}
+            assert before == after
+            baseline_comparison['views_checked'] += 1
         originals = [parents[s['id']] for s in view['whole_sources'] if s['kind'] == 'native_vector']
         components = sorted(split_page(originals), key=lambda r: r['id']); by_id = {r['id']: r for r in components}
         assert result['source_view_sha256'] == digest(view)
@@ -85,14 +102,66 @@ def audit(job, output):
                 assert affine_transform(g, view['native_to_nominal_local_affine']).equals_exact(shape(h['geometry_nominal_local']), 0)
             assert (h['status']=='candidate_scope_crossing_withheld') == (not shape(view['geometry']).covers(g))
             checked['raster_families'] += 1
+        context = result['repeated_stroke_context']; residual = result['residual_raster_scan']
+        if context['status'] == 'repeated_stroke_layout_context_only':
+            assert context['source_gray_sha256'] == scan['source_gray_sha256']
+            for variant in context['variants']:
+                groups = variant['original_vertical_groups']; union = set()
+                for lattice in variant['lattices']:
+                    ids = lattice['group_indices']; rows_for_lattice = [groups[i] for i in ids]
+                    assert len(ids) >= 6 and len(set(ids)) == len(ids)
+                    assert max(g[1] for g in rows_for_lattice)-min(g[1] for g in rows_for_lattice) <= 2
+                    assert max(g[3] for g in rows_for_lattice)-min(g[3] for g in rows_for_lattice) <= 2
+                    for a, b in zip(rows_for_lattice, rows_for_lattice[1:]):
+                        pitch = b[0]-a[0]
+                        assert 2 <= pitch <= 16 and abs(pitch-lattice['first_pitch_pixels']) <= 1 and b[0] > a[2]
+                    assert all(1 <= g[2]-g[0] <= 3 for g in rows_for_lattice)
+                    union.update(ids)
+                assert sorted(union) == variant['residual_excluded_group_indices']
+                assert context['excluded_groups'][str(variant['threshold'])] == [groups[i] for i in sorted(union)]
+                dark = gray < variant['threshold']
+                for left, top, right, bottom in groups:
+                    assert dark[top:bottom, left:right].all() and not dark[top-1, left:right].any() and not dark[bottom, left:right].any()
+                    checked['original_stroke_groups'] += 1
+            recomputed = opening_scan(gray, representation='indexed', pair_scope='all',
+                max_checks=report['contract']['options']['max_checks'], excluded_groups=context['excluded_groups'])
+            assert recomputed == residual
+            if residual['index'] is not None:
+                families = residual['index']['consensus_families']
+                assert len(families) == len(result['residual_raster_hypotheses'])
+                for h in result['residual_raster_hypotheses']:
+                    family = families[h['consensus_family_index']]
+                    g = affine_transform(box(*family['bounds_pixels']), affine(matrix))
+                    assert g.equals_exact(shape(h['geometry_pdf_native']), 0)
+                    assert not h['physical_opening_verified'] and h['opening_type'] is None
+                    if h['geometry_nominal_local'] is not None:
+                        assert affine_transform(g, view['native_to_nominal_local_affine']).equals_exact(shape(h['geometry_nominal_local']), 0)
+                    checked['residual_family_transforms'] += 1
+        text = result['native_cycle_text_context']
+        frame_lookup = {f['id']: f for f in result['native_rectangle_review']['frames']}
+        for cycle in text['cycles']:
+            assert not cycle['physical_opening_verified'] and not cycle['automatic_geometry_selection']
+            for i in cycle['visible_label_indices']:
+                label = text['labels'][i]
+                assert label['glyph_screen']['status'] == 'raster_consistent_candidate'
+                g = shape(frame_lookup[cycle['cycle_id']]['geometry_pdf_native']); label_geometry = shape(label['geometry_pdf_native'])
+                assert g.intersection(label_geometry).area > 0
+                assert cycle['cycle_id'] in label['intersecting_cycle_ids']
+                relation = next(r for r in label['cycle_box_relations'] if r['cycle_id']==cycle['cycle_id'])
+                assert relation['label_box_overlap_fraction'] == g.intersection(label_geometry).area/label_geometry.area
+                assert (relation['relationship']=='whole_label_box_contained') == g.covers(label_geometry)
+                checked['original_glyph_cycle_links'] += 1
         rows.append({'caption': result['caption'], 'view_id': result['view_id'], 'printed_claim': result['printed_claim'],
             'counts': result['counts'], 'native_status': result['native_rectangle_review']['status'],
             'raster_status': scan['status'], 'scan_checks': scan.get('checks', 0),
+            'residual_raster_status': residual['status'], 'residual_scan_checks': residual.get('checks', 0),
+            'text_context_status': text['status'],
             'source_png_sha256': result['source_png_sha256'], 'source_components_sha256': digest(components)})
     result = {'version': 'automatic-view-component-audit-v1', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
+        'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,
         'training_labels_generated': 0, 'scope': 'Unseeded source evidence; no selected physical boundary, aperture or park placement.'}
@@ -104,4 +173,5 @@ def audit(job, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--job', type=Path, required=True); parser.add_argument('--output', type=Path, required=True)
-    args = parser.parse_args(); audit(args.job, args.output)
+    parser.add_argument('--baseline', type=Path, help='Optional prior component pack for native/raw preservation checks')
+    args = parser.parse_args(); audit(args.job, args.output, args.baseline)

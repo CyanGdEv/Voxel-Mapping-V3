@@ -15,11 +15,12 @@ from shapely.affinity import affine_transform
 from shapely.geometry import Polygon, box, mapping, shape
 
 from . import architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan
+from . import raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v1'
+VERSION = 'automatic-view-component-inventory-v2'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -57,7 +58,7 @@ def orient(gray, pixel_native, direction):
     return np.ascontiguousarray(np.rot90(gray, k)), old*matrix, k
 
 
-def inspect_view(view, parents, gray, pixel_native, *, settings=None):
+def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_page=None):
     """The caller binds original parents and source crop bytes before this pass."""
     config = options(settings); scope = shape(view['geometry'])
     if len(parents) > 10000 or len({p['id'] for p in parents}) != len(parents):
@@ -90,11 +91,17 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None):
                 records, factor, interpretation_options={'max_pair_comparisons': config['max_checks']})
     frames = {'status': 'not_an_elevation', 'frames': []}
     scan = {'status': 'not_an_elevation', 'candidates': [], 'index': None}
-    hypotheses = []; raster = None
+    hypotheses = []; residual_hypotheses = []; raster = None
+    stroke_context = {'status': 'not_an_elevation', 'variants': []}
+    residual_scan = {'status': 'not_an_elevation', 'index': None}
+    text_context = {'status': 'not_an_elevation', 'labels': [], 'cycles': []}
     if kind == 'elevation':
         if gray is None:
             frames = {'status': 'source_raster_budget_withheld', 'frames': []}
             scan = {'status': 'source_raster_budget_withheld', 'candidates': [], 'index': None}
+            stroke_context = {'status': 'source_raster_budget_withheld', 'variants': []}
+            residual_scan = {'status': 'source_raster_budget_withheld', 'index': None}
+            text_context = {'status': 'source_raster_budget_withheld', 'labels': [], 'cycles': []}
         else:
             gray = np.asarray(gray)
             if gray.dtype != np.uint8 or gray.ndim != 2 or gray.size > 6000000 or max(gray.shape) > 3000:
@@ -121,15 +128,34 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None):
                         'consensus_family_index': i, **geometry_record(g),
                         'status': 'unverified_jamb_head_correspondence' if scope.covers(g) else 'candidate_scope_crossing_withheld',
                         'physical_opening_verified': False, 'opening_type': None, 'floor_datum_verified': False})
+            stroke_context = raster_stroke_context.review(gray, max_checks=config['max_checks'])
+            if stroke_context['status'] == 'repeated_stroke_layout_context_only':
+                residual_scan = raster_opening_scan.scan(gray, representation='indexed', pair_scope='all',
+                    max_checks=config['max_checks'], excluded_groups=stroke_context['excluded_groups'])
+                if residual_scan['index'] is not None:
+                    for i, family in enumerate(residual_scan['index']['consensus_families']):
+                        g = affine_transform(box(*family['bounds_pixels']), affine(matrix))
+                        residual_hypotheses.append({'id': digest([VERSION, view['id'], 'residual', i, family]),
+                            'consensus_family_index': i, **geometry_record(g),
+                            'status': 'residual_jamb_head_context_candidate' if scope.covers(g) else 'candidate_scope_crossing_withheld',
+                            'search_scope': 'residual_jamb_groups_only', 'physical_opening_verified': False,
+                            'opening_type': None, 'floor_datum_verified': False})
+            else: residual_scan = {'status': 'stroke_context_budget_withheld', 'index': None}
+            text_context = drawing_annotation_context.review(source_page, scope, frames['frames'], max_checks=config['max_checks']) if source_page is not None else {'status': 'original_text_page_required', 'labels': [], 'cycles': []}
     return {'version': VERSION, 'view_id': view['id'], 'document_sha256': view['document_sha256'], 'page': view['page'],
             'caption': view['caption_text'], 'printed_claim': view['printed_claim'],
             'source_view_sha256': digest(view), 'source_parent_records_sha256': digest(sorted(parents, key=lambda p: p['id'])),
             'source_components': records, 'closed_source_regions': regions, 'wall_band_candidates': bands,
             'wall_band_review': band_review, 'native_rectangle_review': frames, 'raster_opening_scan': scan,
             'raster_coordinate_receipt': raster, 'raster_opening_hypotheses': hypotheses,
+            'repeated_stroke_context': stroke_context, 'residual_raster_scan': residual_scan,
+            'residual_raster_hypotheses': residual_hypotheses, 'native_cycle_text_context': text_context,
             'counts': {'source_components': len(records), 'closed_source_regions': len(regions), 'wall_bands': len(bands),
                        'native_rectangle_cycles': len(frames['frames']), 'raster_opening_families': len(hypotheses),
-                       'raster_scope_crossings': sum(h['status']=='candidate_scope_crossing_withheld' for h in hypotheses)},
+                       'raster_scope_crossings': sum(h['status']=='candidate_scope_crossing_withheld' for h in hypotheses),
+                       'residual_raster_families': len(residual_hypotheses),
+                       'repeated_stroke_groups': sum(len(v['residual_excluded_group_indices']) for v in stroke_context['variants']),
+                       'numeric_or_level_cycle_contexts': sum(c['status']=='visible_numeric_or_level_text_overlap' for c in text_context['cycles'])},
             'view_scope_verified': False, 'physical_boundary_verified': False, 'world_placement_eligible': False,
             'accepted_physical_components': 0, 'world_geometry_additions': 0, 'training_labels_generated': 0,
             'remaining_requirements': ['Identify actual exterior, roof and aperture boundaries among the retained alternatives.',
@@ -154,7 +180,8 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                 'view_candidates_sha256': file_hash(source_data), 'drawing_feed_sha256': file_hash(feed),
                 'implementation_sha256': file_hash(Path(__file__)),
                 'kernel_sha256': {module.__name__: file_hash(Path(module.__file__)) for module in
-                    [architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan]},
+                    [architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan,
+                     raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -201,14 +228,18 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                 if list(image.size) != receipt['size_pixels']: raise ValueError('Source raster dimensions changed')
                 if image.width*image.height <= 6000000 and max(image.size) <= 3000:
                     gray = np.asarray(image.convert('L')).copy()
-        result = inspect_view({**view, 'document_sha256': key[0], 'page': key[1]}, retained, gray,
-                              receipt['pixel_edge_to_pdf_native_matrix'], settings=config)
+        with pymupdf.open(corpus.root/'files'/(key[0]+'.pdf')) as document:
+            result = inspect_view({**view, 'document_sha256': key[0], 'page': key[1]}, retained, gray,
+                                  receipt['pixel_edge_to_pdf_native_matrix'], settings=config, source_page=document[key[1]-1])
         result['source_view_sha256'] = digest(view)
         result['source_render_receipt_sha256'] = file_hash(receipt_path)
         result['source_png_sha256'] = receipt['png_sha256']
         for kernel, review in [('wall_bands', result['wall_band_review']),
                                ('native_rectangles', result['native_rectangle_review']),
-                               ('raster_openings', result['raster_opening_scan'])]:
+                               ('raster_openings', result['raster_opening_scan']),
+                               ('stroke_context', result['repeated_stroke_context']),
+                               ('residual_raster', result['residual_raster_scan']),
+                               ('cycle_text', result['native_cycle_text_context'])]:
             if review['status'].endswith(('_withheld', '_required')):
                 withheld.append({'view_id': view['id'], 'kernel': kernel, 'status': review['status'],
                                  'reason': review.get('reason')})
@@ -217,7 +248,9 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
         if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
         names.append(name); counts.update(result['counts']); results.append({'view_id': view['id'], 'file': name,
             'caption': result['caption'], 'counts': result['counts'],
-            'native_status': result['native_rectangle_review']['status'], 'raster_status': result['raster_opening_scan']['status']})
+            'native_status': result['native_rectangle_review']['status'], 'raster_status': result['raster_opening_scan']['status'],
+            'residual_raster_status': result['residual_raster_scan']['status'],
+            'text_context_status': result['native_cycle_text_context']['status']})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
