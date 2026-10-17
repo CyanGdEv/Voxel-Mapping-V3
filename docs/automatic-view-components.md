@@ -98,8 +98,8 @@ Contracts bind source report/feed/artifact hashes, source PDFs, implementation
 hashes for the adapter and existing kernels, options and runtime dependencies
 (including Shapely/GEOS, PyMuPDF, NumPy and Pillow).
 Replay verifies inputs and every output; a fresh audit recomputes all view files.
-The original inventory used area/controller v6/v4; context v2 advances these to
-v7/v5. Use a fresh work directory for older
+The original inventory used area/controller v6/v4; context v2 uses v7/v5 and
+[partitioned discovery](partitioned-jamb-discovery.md) v3 uses v8/v6. Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 
 The remaining building gates are actual boundary/aperture identity, construction

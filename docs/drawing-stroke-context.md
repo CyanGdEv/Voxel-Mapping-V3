@@ -113,5 +113,8 @@ openings from texture and assign physical boundary roles with independent eviden
 Cross-view dimensions/state, registration and datum still gate park reconstruction.
 This pass produces zero accepted physical components, world blocks or training labels.
 
+The subsequent [exact work-partition stage](partitioned-jamb-discovery.md) resolves
+the south-west group-limit failure while retaining this capped attempt as evidence.
+
 The final local suite passes **1,562 tests**, including 10 new context regressions.
 The related focused suite passes 30 tests.

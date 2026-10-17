@@ -45,7 +45,8 @@ def audit(job, output, baseline=None):
         for name, pin in baseline_report['output_sha256'].items(): assert file_hash(baseline/name) == pin
         old_views = {r['view_id']: json.loads((baseline/r['file']).read_text()) for r in baseline_report['results']}
         baseline_comparison = {'report_sha256': file_hash(baseline/'component-report.json'), 'views_checked': 0,
-            'native_geometry_and_raw_scan_preserved': True}
+            'native_geometry_and_raw_scan_preserved': True,
+            'comparison_scope': 'Original default attempts; selected partitioned fallbacks are additional evidence.'}
     for row in report['results']:
         result = json.loads((root/row['file']).read_text()); view = views[result['view_id']]
         if baseline is not None:
@@ -55,8 +56,12 @@ def audit(job, output, baseline=None):
             assert digest(old['native_rectangle_review']) == digest(result['native_rectangle_review'])
             assert [digest(r['geometry_pdf_native']) for r in old['closed_source_regions']] == [digest(r['geometry_pdf_native']) for r in result['closed_source_regions']]
             before = {k: v for k, v in old['raster_opening_scan'].items() if k != 'version'}
-            after = {k: v for k, v in result['raster_opening_scan'].items() if k != 'version'}
+            legacy = result['legacy_group_limit_attempts'].get('raster', result['raster_opening_scan'])
+            after = {k: v for k, v in legacy.items() if k != 'version'}
             assert before == after
+            if 'residual_raster_scan' in old:
+                legacy_residual = result['legacy_group_limit_attempts'].get('residual', result['residual_raster_scan'])
+                assert {k: v for k, v in old['residual_raster_scan'].items() if k!='version'} == {k: v for k, v in legacy_residual.items() if k!='version'}
             baseline_comparison['views_checked'] += 1
         originals = [parents[s['id']] for s in view['whole_sources'] if s['kind'] == 'native_vector']
         components = sorted(split_page(originals), key=lambda r: r['id']); by_id = {r['id']: r for r in components}
@@ -103,6 +108,33 @@ def audit(job, output, baseline=None):
             assert (h['status']=='candidate_scope_crossing_withheld') == (not shape(view['geometry']).covers(g))
             checked['raster_families'] += 1
         context = result['repeated_stroke_context']; residual = result['residual_raster_scan']
+        for inspected in [scan, residual]:
+            for proof in inspected.get('group_partition_proofs', []):
+                variant = next(v for v in inspected['index']['variants'] if v['threshold']==proof['threshold'])
+                groups = variant['jamb_groups']; owners = {}; per_component = [0]*len(proof['components'])
+                source_variant = next(v for v in context['variants'] if v['threshold']==proof['threshold'])
+                excluded = {tuple(g) for g in inspected.get('excluded_group_bounds', {}).get(str(proof['threshold']), [])}
+                expected = [g for g in source_variant['original_vertical_groups'] if tuple(g) not in excluded]
+                assert [[g[k] for k in ['left', 'top', 'right', 'bottom']] for g in groups] == expected
+                checked['partition_source_tables_verified'] += 1
+                for k, component in enumerate(proof['components']):
+                    assert len(component['group_indices']) <= inspected['recipe']['max_groups_per_component']
+                    for i in component['group_indices']:
+                        assert i not in owners; owners[i] = k
+                assert set(owners) == set(range(len(groups)))
+                for i, left in enumerate(groups):
+                    for j, right in enumerate(groups):
+                        if (inspected['recipe']['min_width_pixels'] <= right['left']-left['right'] <= inspected['recipe']['maximum_width_pixels']
+                                and max(abs(left[k]-right[k]) for k in ['top', 'bottom']) <= 2):
+                            assert owners[i] == owners[j]
+                            per_component[owners[i]] += 1; checked['partition_eligible_pairs'] += 1
+                assert per_component == [c['eligible_directed_pairs'] for c in proof['components']]
+                assert sum(per_component) == proof['eligible_directed_pairs']
+                assert proof['total_original_groups'] == len(groups)
+                assert proof['max_component_groups'] == max((len(c['group_indices']) for c in proof['components']), default=0)
+                for pair in variant['pairs']:
+                    a, b = pair['jamb_group_indices']; assert owners[a] == owners[b]
+                checked['partition_original_groups'] += len(groups)
         if context['status'] == 'repeated_stroke_layout_context_only':
             assert context['source_gray_sha256'] == scan['source_gray_sha256']
             for variant in context['variants']:
@@ -124,7 +156,8 @@ def audit(job, output, baseline=None):
                     assert dark[top:bottom, left:right].all() and not dark[top-1, left:right].any() and not dark[bottom, left:right].any()
                     checked['original_stroke_groups'] += 1
             recomputed = opening_scan(gray, representation='indexed', pair_scope='all',
-                max_checks=report['contract']['options']['max_checks'], excluded_groups=context['excluded_groups'])
+                max_checks=report['contract']['options']['max_checks'], excluded_groups=context['excluded_groups'],
+                partition_groups='group_partition_proofs' in residual)
             assert recomputed == residual
             if residual['index'] is not None:
                 families = residual['index']['consensus_families']

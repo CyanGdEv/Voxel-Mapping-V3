@@ -1,0 +1,24 @@
+{
+  "base_commit": "5b9098e57099c277de219290e6955d3f29d31a7a",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "0f78a3c0baec1d16ec5c65badef5e24bdb381f58b9f205f259e21663ff10fcd2",
+    "tests/test_jamb_group_partitions.py": "ff1931b577df2c9024120bfa394fc1353ca4c5b7d7bfc97a088f7bc3e4ce91de",
+    "voxel_mapper/area_cycles.py": "2f25a84f594d81ad26232f209867f7a7de406a4d670b940333ef834c4709e0f5",
+    "voxel_mapper/area_reconstruction.py": "e8c84710b92814473bbaf40e86b7d80e18a93e6ed597da64bc3d6662d2bfca3c",
+    "voxel_mapper/drawing_view_components.py": "d151e532c405727cc249268ccb31369b90a48d1ab52c4a534e75d04a78f29596",
+    "voxel_mapper/jamb_group_partitions.py": "98033f2cc877bc587e6b7875d5c768221ad81145d527c3738c4ee2cc051de08f",
+    "voxel_mapper/raster_opening_scan.py": "ffcf74f84c3216e3b97b3c5abe9a6eccfc87b8018a4a229995b1c8f70311baf2"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "e62fbc0ee95fdb5f8710c47ade5a68ce07ece227af510cb3325af048a1c648ef",
+  "focused_related_tests": 39,
+  "full_suite_log_sha256": "9d69f5601111667d68837f72b9944cbb220c1c5ca04f218443952a4de13cb39a",
+  "limits": "Exact source work partitions; physical boundary/opening identity, construction state, placement and datum unresolved. Zero accepted physical components, world blocks or training labels.",
+  "new_tests": 9,
+  "python": "3.12.14",
+  "real_audit_sha256": "d17bc305a726f10f58e7860001384d6ae36a651936621ff1fc8429491d5b93a2",
+  "seconds": 383.626,
+  "status": "passed",
+  "tests": 1571,
+  "version": "jamb-partition-local-validation-v1"
+}
