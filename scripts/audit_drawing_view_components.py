@@ -7,6 +7,7 @@ from pathlib import Path
 import tempfile
 
 import numpy as np
+import pymupdf
 from PIL import Image
 
 from shapely.affinity import affine_transform
@@ -19,6 +20,7 @@ from voxel_mapper.generation_cycles import atomic_json, file_hash
 from voxel_mapper.planning_bulk import Corpus
 from voxel_mapper.reconstruction_evidence_queue import digest
 from voxel_mapper.raster_opening_scan import scan as opening_scan
+from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endcaps
 
 
 def audit(job, output, baseline=None):
@@ -39,7 +41,7 @@ def audit(job, output, baseline=None):
             fresh = inventory(corpus, work/'drawing-geometry', pack, Path(temporary)/'components', settings=report['contract']['options'])
             assert fresh['output_sha256'] == report['output_sha256']
     finally: corpus.close()
-    checked = Counter(); rows = []; baseline_comparison = None; old_views = {}
+    checked = Counter(); rows = []; baseline_comparison = None; old_views = {}; inspected_views = []
     if baseline is not None:
         baseline = Path(baseline); baseline_report = json.loads((baseline/'component-report.json').read_text())
         for name, pin in baseline_report['output_sha256'].items(): assert file_hash(baseline/name) == pin
@@ -49,19 +51,22 @@ def audit(job, output, baseline=None):
             'comparison_scope': 'Original default attempts; selected partitioned fallbacks are additional evidence.'}
     for row in report['results']:
         result = json.loads((root/row['file']).read_text()); view = views[result['view_id']]
+        inspected_views.append(result)
         if baseline is not None:
             old = old_views[result['view_id']]
             assert digest(old['source_components']) == digest(result['source_components'])
             assert digest(old['wall_band_candidates']) == digest(result['wall_band_candidates'])
             assert digest(old['native_rectangle_review']) == digest(result['native_rectangle_review'])
             assert [digest(r['geometry_pdf_native']) for r in old['closed_source_regions']] == [digest(r['geometry_pdf_native']) for r in result['closed_source_regions']]
-            before = {k: v for k, v in old['raster_opening_scan'].items() if k != 'version'}
+            old_raw = old.get('legacy_group_limit_attempts', {}).get('raster', old['raster_opening_scan'])
+            before = {k: v for k, v in old_raw.items() if k != 'version'}
             legacy = result['legacy_group_limit_attempts'].get('raster', result['raster_opening_scan'])
             after = {k: v for k, v in legacy.items() if k != 'version'}
             assert before == after
             if 'residual_raster_scan' in old:
                 legacy_residual = result['legacy_group_limit_attempts'].get('residual', result['residual_raster_scan'])
-                assert {k: v for k, v in old['residual_raster_scan'].items() if k!='version'} == {k: v for k, v in legacy_residual.items() if k!='version'}
+                old_residual = old.get('legacy_group_limit_attempts', {}).get('residual', old['residual_raster_scan'])
+                assert {k: v for k, v in old_residual.items() if k!='version'} == {k: v for k, v in legacy_residual.items() if k!='version'}
             baseline_comparison['views_checked'] += 1
         originals = [parents[s['id']] for s in view['whole_sources'] if s['kind'] == 'native_vector']
         components = sorted(split_page(originals), key=lambda r: r['id']); by_id = {r['id']: r for r in components}
@@ -69,6 +74,37 @@ def audit(job, output, baseline=None):
         assert digest(components) == digest(result['source_components'])
         assert result['source_parent_records_sha256'] == digest(sorted(originals, key=lambda r: r['id']))
         assert not result['world_placement_eligible'] and not result['physical_boundary_verified']
+        gaps = result['plan_gap_review']
+        if gaps['status'] == 'whole_view_source_endcap_gaps_only':
+            with pymupdf.open(work/'corpus/files'/(result['document_sha256']+'.pdf')) as document:
+                fills = clipped_plan_fills.recover(document[result['page']-1], result['document_sha256'], result['page'])
+            assert digest(fills) == digest(gaps['page_fill_recovery'])
+            originals = fill_endcaps.recover(fills['candidates'], view['nominal_metres_per_pdf_point'],
+                                            max_checks=report['contract']['options']['max_checks'])
+            assert digest(originals) == digest(gaps['page_endcap_recovery'])
+            lookup = {g['id']: g for g in originals['gaps']}
+            matrix = pymupdf.Matrix(gaps['unrotated_mupdf_to_pdf_native_matrix'])
+            fill_lookup = {c['id']: c for c in fills['candidates']}
+            retained_ids = {g['id'] for g in gaps['gaps']}
+            assert retained_ids | set(gaps['withheld_scope_gap_ids']) == set(lookup)
+            assert not retained_ids & set(gaps['withheld_scope_gap_ids'])
+            scope = shape(view['geometry'])
+            for gap in gaps['gaps']:
+                source_gap = lookup[gap['id']]
+                assert gap['source_gap_sha256'] == digest(source_gap)
+                native = affine_transform(shape(source_gap['gap_corridor_geometry']), affine(matrix))
+                assert native.equals_exact(shape(gap['geometry_pdf_native']), 0) and scope.covers(native)
+                assert gap['nominal_gap_width_m'] == source_gap['nominal_gap_width_m']
+                assert gap['source_fill_overlap_present'] == bool(source_gap['intersecting_fill_candidates'])
+                for cap in source_gap['source_endcaps']:
+                    fill = fill_lookup[cap['fill_candidate_id']]; geometry = shape(fill['geometry'])
+                    part = list(geometry.geoms)[cap['polygon_part']] if geometry.geom_type=='MultiPolygon' else geometry
+                    coords = list(part.exterior.coords); i = cap['boundary_edge_index']
+                    assert digest([list(coords[i]), list(coords[i+1])]) == digest(cap['source_endpoints'])
+                    assert scope.covers(affine_transform(geometry, affine(matrix)))
+                    checked['original_plan_endcap_edges'] += 1
+                checked['whole_view_plan_gaps'] += 1
+            checked['original_page_fill_records'] += len(fills['candidates'])
         for region in result['closed_source_regions']:
             record = by_id[region['source_component_id']]; g = shape(record['geometry'])
             if g.geom_type == 'LineString': g = Polygon(g.coords)
@@ -190,10 +226,38 @@ def audit(job, output, baseline=None):
             'residual_raster_status': residual['status'], 'residual_scan_checks': residual.get('checks', 0),
             'text_context_status': text['status'],
             'source_png_sha256': result['source_png_sha256'], 'source_components_sha256': digest(components)})
-    result = {'version': 'automatic-view-component-audit-v1', 'status': 'passed',
+    opening_links = json.loads((root/report['opening_links']['file']).read_text())
+    assert automatic_opening_links.compare(inspected_views, max_checks=report['contract']['options']['max_checks']) == opening_links
+    by_view = {v['view_id']: v for v in inspected_views}; expected = set()
+    for plan in inspected_views:
+        for gap in plan['plan_gap_review']['gaps']:
+            for elevation in inspected_views:
+                scale = elevation['nominal_metres_per_pdf_point']
+                scan = elevation['residual_raster_scan']
+                if scan.get('index') is None or scale is None: continue
+                states = [v['printed_claim'].get('printed_state', 'unspecified') for v in (plan, elevation)]
+                if 'unspecified' not in states and states[0] != states[1]: continue
+                matrix = elevation['raster_coordinate_receipt']['pixel_edge_to_pdf_native_matrix']
+                for h in elevation['residual_raster_hypotheses']:
+                    if h['status']=='candidate_scope_crossing_withheld': continue
+                    family = scan['index']['consensus_families'][h['consensus_family_index']]
+                    width = (family['bounds_pixels'][2]-family['bounds_pixels'][0])*(matrix[0]**2+matrix[1]**2)**.5*scale
+                    if abs(width-gap['nominal_gap_width_m']) <= .25:
+                        expected.add((plan['view_id'], gap['id'], elevation['view_id'], h['id']))
+                    checked['independent_width_pair_comparisons'] += 1
+    if opening_links['status']=='nominal_width_links_only':
+        observed = {(m['plan_view_id'], m['source_gap_id'], m['elevation_view_id'], m['residual_family_id']) for m in opening_links['matches']}
+        assert observed == expected and len(observed)==len(opening_links['matches'])
+        for match in opening_links['matches']:
+            assert match['plan_inventory_sha256']==digest(by_view[match['plan_view_id']])
+            assert match['elevation_inventory_sha256']==digest(by_view[match['elevation_view_id']])
+            assert not match['physical_correspondence_verified'] and not match['position_alignment_verified']
+        checked['independent_nominal_width_links'] += len(observed)
+    result = {'version': 'automatic-view-component-audit-v2', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
+        'opening_links': report['opening_links'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,
