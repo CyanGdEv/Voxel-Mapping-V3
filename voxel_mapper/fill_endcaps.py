@@ -8,7 +8,9 @@ from shapely.strtree import STRtree
 VERSION = 'exact-fill-endcap-pairs-v1'
 
 
-def recover(candidates, unit, maximum_gap_m=8):
+def recover(candidates, unit, maximum_gap_m=8, *, max_checks=100000):
+    if type(max_checks) is not int or not 1 <= max_checks <= 100000:
+        raise ValueError('Bounded endcap work required')
     if not math.isfinite(unit) or unit <= 0 or not 0 < maximum_gap_m <= 10:
         raise ValueError('Finite positive scale and bounded gap search required')
     if len(candidates) > 4000:
@@ -54,7 +56,7 @@ def recover(candidates, unit, maximum_gap_m=8):
             if j <= i:
                 continue
             comparisons += 1
-            if comparisons > 100000:
+            if comparisons > max_checks:
                 raise ValueError('Endcap comparison budget exceeded')
             right = caps[j]; lc = candidates[left['candidate_index']]; rc = candidates[right['candidate_index']]
             if lc['fill_color'] != rc['fill_color'] or (left['candidate_index'], left['polygon_part']) == (right['candidate_index'], right['polygon_part']):
@@ -76,7 +78,7 @@ def recover(candidates, unit, maximum_gap_m=8):
             overlap = []; blocked = False
             for k in sorted(fill_tree.query(corridor).tolist()):
                 comparisons += 1
-                if comparisons > 100000:
+                if comparisons > max_checks:
                     raise ValueError('Endcap overlap budget exceeded')
                 area = corridor.intersection(geometries[k]).area
                 if area <= corridor.area * 1e-9:

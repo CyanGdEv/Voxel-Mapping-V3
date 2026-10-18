@@ -76,6 +76,11 @@ original scans and every excluded source group.
 independent stroke groups while preserving every eligible pairing and the
 existing active-group, pair and work caps.
 
+[Automatic plan opening links](docs/automatic-plan-opening-links.md) recover
+original facing-endcap gaps inside floor-plan views and retain all compatible
+nominal-width alternatives in the elevation residual scans. These links expose
+cross-view ambiguity before facade alignment or physical opening selection.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

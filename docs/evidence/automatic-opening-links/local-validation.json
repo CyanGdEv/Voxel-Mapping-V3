@@ -1,0 +1,24 @@
+{
+  "base_commit": "d83a8ff4c7085ae85ee6c06ff6daafa047a55d5c",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "cc775064f84eaa08e175d6f7da2aba314d6135995dc7027e4a9b827a8b749da2",
+    "tests/test_automatic_opening_links.py": "36472ac77e9b98a0176ad87f09eddab3d9b0203636312963ca033ef7f66881da",
+    "voxel_mapper/area_cycles.py": "209b4cce93001e0eda9654c0d6588133e2285d53960d377417b89586556f5819",
+    "voxel_mapper/area_reconstruction.py": "d70a646370c6e7b3591c3198450d4f86238baedbb022f8c05f372fdbd010c34b",
+    "voxel_mapper/automatic_opening_links.py": "56a3aa225db121acc7874aa10c6f783f1e19a530d648d1a81fd3034ad4942b31",
+    "voxel_mapper/drawing_view_components.py": "fb51a7af586ac34b2fc686d9983de81dae8d9434d5bae52d614172a4469f7882",
+    "voxel_mapper/fill_endcaps.py": "e83f8b24b16cdc91a7c5b4bd7643f516628266a2cf7716bf469d2bfc942dcaed"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "8b5eb5410f26adf58878e271cffc3b1f2dbdce3ce2ce705b6cb2c43d51cfd4e6",
+  "focused_related_tests": 55,
+  "full_suite_log_sha256": "3b693b9d299a1fe22a3de101989ea0587f6f73f0de458aeab70e3955960a6f0b",
+  "limits": "Nominal-width alternatives only; all 24 Wicker plan gaps remain ambiguous. Physical roles, building/view association, position/direction, state, placement and datum unresolved. Zero accepted physical components, world blocks or training labels.",
+  "new_tests": 9,
+  "python": "3.12.14",
+  "real_audit_sha256": "3922f0f9967e9d6587236dfdec357d49a6f13155c11bbce85d2be97ffd956c50",
+  "seconds": 427.09,
+  "status": "passed",
+  "tests": 1580,
+  "version": "automatic-opening-links-local-validation-v1"
+}

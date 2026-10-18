@@ -1,0 +1,327 @@
+{
+  "accepted_physical_components": 0,
+  "all_requested_passes_completed": false,
+  "baseline_comparison": {
+    "comparison_scope": "Original default attempts; selected partitioned fallbacks are additional evidence.",
+    "native_geometry_and_raw_scan_preserved": true,
+    "report_sha256": "57a7acfd90ca65a10f4d2d072f8d1e78ca49d79f07e5ccad080ed0109b0635ff",
+    "views_checked": 6
+  },
+  "checked": {
+    "closed_regions": 110,
+    "independent_nominal_width_links": 955,
+    "independent_width_pair_comparisons": 6984,
+    "native_cycle_side_intervals": 112,
+    "original_crop_gray_hashes": 4,
+    "original_glyph_cycle_links": 30,
+    "original_page_fill_records": 98,
+    "original_plan_endcap_edges": 48,
+    "original_stroke_groups": 2477,
+    "partition_eligible_pairs": 8118,
+    "partition_original_groups": 1888,
+    "partition_source_tables_verified": 4,
+    "protected_holes": 0,
+    "raster_families": 2572,
+    "residual_family_transforms": 291,
+    "whole_view_plan_gaps": 24
+  },
+  "counts": {
+    "closed_source_regions": 110,
+    "native_rectangle_cycles": 28,
+    "numeric_or_level_cycle_contexts": 28,
+    "partitioned_scan_passes": 2,
+    "plan_scope_gaps_withheld": 0,
+    "raster_opening_families": 2572,
+    "raster_scope_crossings": 0,
+    "repeated_stroke_groups": 865,
+    "residual_raster_families": 291,
+    "source_components": 3528,
+    "source_plan_gaps": 24,
+    "wall_bands": 14
+  },
+  "fresh_replay_artifact_hashes_identical": 7,
+  "inventory_status": "component_candidates_with_withheld_passes",
+  "job_sha256": "12ed9356fa7ae63c5247d34d38c1b5526eea847ff522e0ee72b536bf5ea8de60",
+  "opening_links": {
+    "counts": {
+      "linked_residual_families": 145,
+      "nominal_width_links": 955,
+      "scoped_residual_families": 291,
+      "source_plan_gaps": 24,
+      "unmatched_plan_gaps": 0
+    },
+    "file": "opening-links.json",
+    "status": "nominal_width_links_only"
+  },
+  "output_sha256": {
+    "opening-links.json": "3c72096b317ee502ce2ed71de70f82b69176b49ee6ff92ab3fdc13121e6e57f1",
+    "views/060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46.json": "1ae2bb7446c00d292d5a20ea5020a69ed96bb51c671ab7a889f44bb1bd76762c",
+    "views/164850462a695817d258412abe7c0a89f9b044d1d1cc86c17e7a8b2c657efd61.json": "40c27dd43c51aead8bc4b5da9fa0c8ef1f4f7824b5845c1423b53e7b08fdc122",
+    "views/207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e.json": "53ae600335d6ee2c8d388dbe1734b9b2939d63101755f913c615fa6301949b92",
+    "views/8199f2efbf8e0236cfb59472f4c96ff0d17109a0174a21b2e15bfc969638420e.json": "4705f01eaed52a5f50856fcf7ef5198894f0c1e5f7115d4d5a08a4f429fb6dbd",
+    "views/be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff.json": "34881b1097c7b0217861e21572422c3ee41f3942412075674e8cefab7993e4ba",
+    "views/ecd11f4d31c7942263518aa05114c6c49583df8bef8d3572fe60ac3cea957d12.json": "6d377840364264f6df3de0e2a1e30edcf194afb02cff0aa163641464a8ee9f5a"
+  },
+  "scope": "Unseeded source evidence; no selected physical boundary, aperture or park placement.",
+  "source_contract": {
+    "drawing_feed_sha256": "58f13ea97768155ca3f88596b330029c7100a543d2b7c2f20493c438cfc3ee28",
+    "geos_version": "3.14.1",
+    "implementation_sha256": "fb51a7af586ac34b2fc686d9983de81dae8d9434d5bae52d614172a4469f7882",
+    "kernel_sha256": {
+      "voxel_mapper.architectural_interpretation": "b6e41ca446fb911efd67b63186393fcf4b551945b38301407cd1e29ea1f9f9ba",
+      "voxel_mapper.automatic_opening_links": "56a3aa225db121acc7874aa10c6f783f1e19a530d648d1a81fd3034ad4942b31",
+      "voxel_mapper.clipped_plan_fills": "322a3b89aa32ab3f2d8f89ec248b97d691dda117d994c575c38a2e257f178198",
+      "voxel_mapper.drawing_annotation_context": "eda6e3628657e01809420cd89a57640ecf3211b4e523b573e2614fc4bcefba2c",
+      "voxel_mapper.drawing_components": "c06de2d1335bd62aebb5d9d575223c5aae30a754b68fe2bfab87469c4b9a331d",
+      "voxel_mapper.drawing_footprints": "ed0c183b6ebee52b5d23ee408dd83fb4b458e1b474eaac1e2d67757a62466750",
+      "voxel_mapper.drawing_page_tools": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20",
+      "voxel_mapper.fill_endcaps": "e83f8b24b16cdc91a7c5b4bd7643f516628266a2cf7716bf469d2bfc942dcaed",
+      "voxel_mapper.glyph_visibility": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67",
+      "voxel_mapper.jamb_group_partitions": "98033f2cc877bc587e6b7875d5c768221ad81145d527c3738c4ee2cc051de08f",
+      "voxel_mapper.native_opening_inventory": "b31acf03e2cb102f01e2298cacc15959aeb72e682acbf75e37f8371f4164eb9e",
+      "voxel_mapper.ordinary_surfaces": "332150a26e79ed697af3df5effb5d3699020bedeb49072822bf9bcfa8599ebe4",
+      "voxel_mapper.raster_opening_scan": "ffcf74f84c3216e3b97b3c5abe9a6eccfc87b8018a4a229995b1c8f70311baf2",
+      "voxel_mapper.raster_stroke_context": "1df7c0b1df33af0d0564659dec405beebfc07bff774ef33b46bb6a6dadc15800"
+    },
+    "numpy_version": "1.26.4",
+    "options": {
+      "max_checks": 100000,
+      "max_frames": 512,
+      "max_views": 16
+    },
+    "pillow_version": "12.3.0",
+    "pymupdf_version": "1.28.2",
+    "shapely_version": "2.2.0",
+    "version": "automatic-view-component-inventory-v4",
+    "view_candidates_sha256": "dd3c8848cc122612681ccac50a41c974c499bceb12b34357b6202faa2c6cf757",
+    "view_report_sha256": "2a02468d3bf1b4334dc79635b7eb387de252fb02f99f9f2cb05a99268b9593da"
+  },
+  "status": "passed",
+  "training_labels_generated": 0,
+  "version": "automatic-view-component-audit-v2",
+  "views": [
+    {
+      "caption": "00. Overall Ground Floor Plan",
+      "counts": {
+        "closed_source_regions": 48,
+        "native_rectangle_cycles": 0,
+        "numeric_or_level_cycle_contexts": 0,
+        "partitioned_scan_passes": 0,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 0,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 0,
+        "residual_raster_families": 0,
+        "source_components": 385,
+        "source_plan_gaps": 24,
+        "wall_bands": 14
+      },
+      "native_status": "not_an_elevation",
+      "printed_claim": {
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "plan_level_or_form": "groundfloor",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "plan",
+        "view_number": 0
+      },
+      "raster_status": "not_an_elevation",
+      "residual_raster_status": "not_an_elevation",
+      "residual_scan_checks": 0,
+      "scan_checks": 0,
+      "source_components_sha256": "cac372d1f0ffd0f0b2fc9ceaedc6f6628f79429794e8c292803f16a0f5cc0a42",
+      "source_png_sha256": "d044d8ca4651fb3641a319870dc94e1d36229be309a7dc22909f715568f87e28",
+      "text_context_status": "not_an_elevation",
+      "view_id": "8199f2efbf8e0236cfb59472f4c96ff0d17109a0174a21b2e15bfc969638420e"
+    },
+    {
+      "caption": "Roof Plan",
+      "counts": {
+        "closed_source_regions": 28,
+        "native_rectangle_cycles": 0,
+        "numeric_or_level_cycle_contexts": 0,
+        "partitioned_scan_passes": 0,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 0,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 0,
+        "residual_raster_families": 0,
+        "source_components": 2969,
+        "source_plan_gaps": 0,
+        "wall_bands": 0
+      },
+      "native_status": "not_an_elevation",
+      "printed_claim": {
+        "kind": "view_caption",
+        "plan_level_or_form": "roof",
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "plan"
+      },
+      "raster_status": "not_an_elevation",
+      "residual_raster_status": "not_an_elevation",
+      "residual_scan_checks": 0,
+      "scan_checks": 0,
+      "source_components_sha256": "17ef0ff429d6f94aafe0b01023ed5c964006e83b0df91df2caabb989050dd909",
+      "source_png_sha256": "54b10915c124854d2bc875b9249cb2b428f204b421491b6cf0dbbcd3f3c1989b",
+      "text_context_status": "not_an_elevation",
+      "view_id": "164850462a695817d258412abe7c0a89f9b044d1d1cc86c17e7a8b2c657efd61"
+    },
+    {
+      "caption": "Elevation 1 to the S.East",
+      "counts": {
+        "closed_source_regions": 6,
+        "native_rectangle_cycles": 5,
+        "numeric_or_level_cycle_contexts": 5,
+        "partitioned_scan_passes": 0,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 0,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 371,
+        "residual_raster_families": 18,
+        "source_components": 31,
+        "source_plan_gaps": 0,
+        "wall_bands": 0
+      },
+      "native_status": "source_rectangle_cycles_only",
+      "printed_claim": {
+        "direction": "southeast",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 1
+      },
+      "raster_status": "scan_budget_withheld",
+      "residual_raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_scan_checks": 4130,
+      "scan_checks": 8224,
+      "source_components_sha256": "07492d6d6e29c123562b1b224adf3155ba36885f54f5a941ec17882355e6f5bc",
+      "source_png_sha256": "e8773a1e3c23f65e0981fa98596c3837cd99c6a9ba69430f5ae240160e6e7392",
+      "text_context_status": "original_glyph_cycle_context_only",
+      "view_id": "060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46"
+    },
+    {
+      "caption": "Elevation 2 to the S.West",
+      "counts": {
+        "closed_source_regions": 10,
+        "native_rectangle_cycles": 9,
+        "numeric_or_level_cycle_contexts": 9,
+        "partitioned_scan_passes": 2,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 52,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 0,
+        "residual_raster_families": 52,
+        "source_components": 49,
+        "source_plan_gaps": 0,
+        "wall_bands": 0
+      },
+      "native_status": "source_rectangle_cycles_only",
+      "printed_claim": {
+        "direction": "southwest",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 2
+      },
+      "raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_scan_checks": 29208,
+      "scan_checks": 29208,
+      "source_components_sha256": "3f164b8b58c8ffc5359bf6b6b7a0c35fb0789a1b2d3658004194bd3b9be7e4ad",
+      "source_png_sha256": "44ddb62dbeac5386800eb2d7f6f9798047534f47199a097d65b88080fbdf61b1",
+      "text_context_status": "original_glyph_cycle_context_only",
+      "view_id": "be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff"
+    },
+    {
+      "caption": "Elevation 3 to the N. West",
+      "counts": {
+        "closed_source_regions": 9,
+        "native_rectangle_cycles": 7,
+        "numeric_or_level_cycle_contexts": 7,
+        "partitioned_scan_passes": 0,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 0,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 353,
+        "residual_raster_families": 192,
+        "source_components": 53,
+        "source_plan_gaps": 0,
+        "wall_bands": 0
+      },
+      "native_status": "source_rectangle_cycles_only",
+      "printed_claim": {
+        "direction": "northwest",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 3
+      },
+      "raster_status": "scan_budget_withheld",
+      "residual_raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_scan_checks": 22741,
+      "scan_checks": 8559,
+      "source_components_sha256": "cb167cf11c5c7bf0a8db368221f7e9c15c33a4cc5f349a33c40a81ac82f9fae5",
+      "source_png_sha256": "8ef882f52397a617c1b7868632b025c8bdf4031ce7778779c3dad95d6061bd9d",
+      "text_context_status": "original_glyph_cycle_context_only",
+      "view_id": "207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e"
+    },
+    {
+      "caption": "Elevation 4 to the N. East",
+      "counts": {
+        "closed_source_regions": 9,
+        "native_rectangle_cycles": 7,
+        "numeric_or_level_cycle_contexts": 7,
+        "partitioned_scan_passes": 0,
+        "plan_scope_gaps_withheld": 0,
+        "raster_opening_families": 2520,
+        "raster_scope_crossings": 0,
+        "repeated_stroke_groups": 141,
+        "residual_raster_families": 29,
+        "source_components": 41,
+        "source_plan_gaps": 0,
+        "wall_bands": 0
+      },
+      "native_status": "source_rectangle_cycles_only",
+      "printed_claim": {
+        "direction": "northeast",
+        "kind": "view_caption",
+        "numbered_reference_verified": false,
+        "printed_scale_denominator": null,
+        "printed_state": "unspecified",
+        "view_kind": "elevation",
+        "view_number": 4
+      },
+      "raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_raster_status": "indexed_jamb_head_correspondence_candidates_only",
+      "residual_scan_checks": 913,
+      "scan_checks": 31174,
+      "source_components_sha256": "847b3c214eadf46db6675b984e8c7345505a639a707991c98219987ac4c761c1",
+      "source_png_sha256": "ade36d21e3c3e307098ec65a27681f2353bc065b759758e389bb5cffb2ee97e8",
+      "text_context_status": "original_glyph_cycle_context_only",
+      "view_id": "ecd11f4d31c7942263518aa05114c6c49583df8bef8d3572fe60ac3cea957d12"
+    }
+  ],
+  "withheld_passes": [
+    {
+      "kernel": "raster_openings",
+      "reason": "indexed_pair_count_budget",
+      "status": "scan_budget_withheld",
+      "view_id": "060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46"
+    },
+    {
+      "kernel": "raster_openings",
+      "reason": "indexed_pair_count_budget",
+      "status": "scan_budget_withheld",
+      "view_id": "207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e"
+    }
+  ],
+  "world_geometry_additions": 0
+}

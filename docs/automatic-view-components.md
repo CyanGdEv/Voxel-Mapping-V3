@@ -38,6 +38,10 @@ in the upstream corpus/view pack. No synthetic physical recipe is produced.
 Inventory v2 also adds [drawing text and repeated-stroke context](drawing-stroke-context.md),
 retaining the broad scan alongside an explicitly scoped residual search.
 
+Inventory v4 adds [automatic plan opening links](automatic-plan-opening-links.md):
+source-bound floor-plan endcaps and all compatible nominal-width alternatives in
+the residual elevation scans, without manual traces or facade origins.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -99,7 +103,8 @@ hashes for the adapter and existing kernels, options and runtime dependencies
 (including Shapely/GEOS, PyMuPDF, NumPy and Pillow).
 Replay verifies inputs and every output; a fresh audit recomputes all view files.
 The original inventory used area/controller v6/v4; context v2 uses v7/v5 and
-[partitioned discovery](partitioned-jamb-discovery.md) v3 uses v8/v6. Use a fresh work directory for older
+[partitioned discovery](partitioned-jamb-discovery.md) v3 uses v8/v6, and
+automatic opening links v4 uses v9/v7. Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 
 The remaining building gates are actual boundary/aperture identity, construction

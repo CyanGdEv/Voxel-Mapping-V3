@@ -17,11 +17,12 @@ from shapely.geometry import Polygon, box, mapping, shape
 from . import architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan
 from . import raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces
 from . import jamb_group_partitions
+from . import automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v3'
+VERSION = 'automatic-view-component-inventory-v4'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -97,6 +98,7 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
     stroke_context = {'status': 'not_an_elevation', 'variants': []}
     residual_scan = {'status': 'not_an_elevation', 'index': None}
     text_context = {'status': 'not_an_elevation', 'labels': [], 'cycles': []}
+    gap_review = automatic_opening_links.plan_gaps(source_page, view, max_checks=config['max_checks'])
     if kind == 'elevation':
         if gray is None:
             frames = {'status': 'source_raster_budget_withheld', 'frames': []}
@@ -154,6 +156,7 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
             text_context = drawing_annotation_context.review(source_page, scope, frames['frames'], max_checks=config['max_checks']) if source_page is not None else {'status': 'original_text_page_required', 'labels': [], 'cycles': []}
     return {'version': VERSION, 'view_id': view['id'], 'document_sha256': view['document_sha256'], 'page': view['page'],
             'caption': view['caption_text'], 'printed_claim': view['printed_claim'],
+            'nominal_metres_per_pdf_point': factor, 'plan_gap_review': gap_review,
             'source_view_sha256': digest(view), 'source_parent_records_sha256': digest(sorted(parents, key=lambda p: p['id'])),
             'source_components': records, 'closed_source_regions': regions, 'wall_band_candidates': bands,
             'wall_band_review': band_review, 'native_rectangle_review': frames, 'raster_opening_scan': scan,
@@ -162,6 +165,8 @@ def inspect_view(view, parents, gray, pixel_native, *, settings=None, source_pag
             'residual_raster_hypotheses': residual_hypotheses, 'native_cycle_text_context': text_context,
             'legacy_group_limit_attempts': legacy_attempts,
             'counts': {'source_components': len(records), 'closed_source_regions': len(regions), 'wall_bands': len(bands),
+                       'source_plan_gaps': len(gap_review['gaps']),
+                       'plan_scope_gaps_withheld': len(gap_review['withheld_scope_gap_ids']),
                        'native_rectangle_cycles': len(frames['frames']), 'raster_opening_families': len(hypotheses),
                        'raster_scope_crossings': sum(h['status']=='candidate_scope_crossing_withheld' for h in hypotheses),
                        'residual_raster_families': len(residual_hypotheses),
@@ -193,7 +198,8 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                 'implementation_sha256': file_hash(Path(__file__)),
                 'kernel_sha256': {module.__name__: file_hash(Path(module.__file__)) for module in
                     [architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan,
-                     raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions]},
+                     raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions,
+                     automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -251,7 +257,8 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                                ('raster_openings', result['raster_opening_scan']),
                                ('stroke_context', result['repeated_stroke_context']),
                                ('residual_raster', result['residual_raster_scan']),
-                               ('cycle_text', result['native_cycle_text_context'])]:
+                               ('cycle_text', result['native_cycle_text_context']),
+                               ('plan_gaps', result['plan_gap_review'])]:
             if review['status'].endswith(('_withheld', '_required')):
                 withheld.append({'view_id': view['id'], 'kernel': kernel, 'status': review['status'],
                                  'reason': review.get('reason')})
@@ -263,6 +270,14 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
             'native_status': result['native_rectangle_review']['status'], 'raster_status': result['raster_opening_scan']['status'],
             'residual_raster_status': result['residual_raster_scan']['status'],
             'text_context_status': result['native_cycle_text_context']['status']})
+    links = automatic_opening_links.compare([json.loads((root/r['file']).read_text()) for r in results],
+                                             max_checks=config['max_checks'])
+    link_name = 'opening-links.json'; atomic_json(root/link_name, links)
+    output_bytes += (root/link_name).stat().st_size
+    if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
+    names.append(link_name)
+    if links['status'].endswith('_withheld'):
+        withheld.append({'view_id': None, 'kernel': 'opening_links', 'status': links['status'], 'reason': links.get('reason')})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
@@ -273,6 +288,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
               'component_candidates_with_withheld_passes' if withheld else 'component_candidates_only',
               'views': len(results), 'deferred_views': len(views)-len(results), 'counts': dict(counts), 'results': results,
               'withheld_passes': withheld, 'all_requested_passes_completed': not withheld and len(views)==len(selected),
+              'opening_links': {'file': link_name, 'status': links['status'], 'counts': links.get('counts', {})},
               'output_sha256': {name: file_hash(root/name) for name in names}, 'world_geometry_additions': 0,
               'accepted_physical_components': 0, 'training_labels_generated': 0, 'world_placement_eligible': False}
     atomic_json(root/'component-report.json', result)
