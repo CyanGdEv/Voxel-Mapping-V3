@@ -19,11 +19,12 @@ from . import raster_stroke_context, drawing_annotation_context, glyph_visibilit
 from . import jamb_group_partitions
 from . import automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools
 from . import automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views, plan_elevation_correspondence, building_spec
+from . import automatic_elevation_context, elevation_levels, drawing_annotations
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v5'
+VERSION = 'automatic-view-component-inventory-v6'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -208,7 +209,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                      raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions,
                      automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools,
                      automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views,
-                     plan_elevation_correspondence, building_spec]},
+                     plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -296,6 +297,13 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
     names.append(building_name)
     if buildings['status'].endswith(('_withheld', '_required')):
         withheld.append({'view_id': None, 'kernel': 'building_facades', 'status': buildings['status'], 'reason': buildings.get('reason')})
+    levels = automatic_elevation_context.run(corpus, data['pages'], inventories, buildings, max_checks=config['max_checks'])
+    level_name = 'elevation-level-context.json'; atomic_json(root/level_name, levels)
+    output_bytes += (root/level_name).stat().st_size
+    if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
+    names.append(level_name)
+    if levels['status'].endswith(('_withheld', '_required')):
+        withheld.append({'view_id': None, 'kernel': 'elevation_levels', 'status': levels['status'], 'reason': levels.get('reason')})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
@@ -308,6 +316,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
               'withheld_passes': withheld, 'all_requested_passes_completed': not withheld and len(views)==len(selected),
               'opening_links': {'file': link_name, 'status': links['status'], 'counts': links.get('counts', {})},
               'building_facade_links': {'file': building_name, 'status': buildings['status'], 'counts': buildings.get('counts', {})},
+              'elevation_level_context': {'file': level_name, 'status': levels['status'], 'counts': levels.get('counts', {})},
               'output_sha256': {name: file_hash(root/name) for name in names}, 'world_geometry_additions': 0,
               'accepted_physical_components': 0, 'training_labels_generated': 0, 'world_placement_eligible': False}
     atomic_json(root/'component-report.json', result)

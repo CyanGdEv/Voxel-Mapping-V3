@@ -45,6 +45,9 @@ the residual elevation scans, without manual traces or facade origins.
 Inventory v5 adds [named building and facade scope](automatic-building-facade-scope.md),
 retaining exact whole-label enclosures and numbered source-reference ray candidates.
 
+Inventory v6 adds [source-relative elevation level context](automatic-elevation-level-context.md),
+including all original threshold witnesses and a conditional above-level row review.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -108,6 +111,7 @@ Replay verifies inputs and every output; a fresh audit recomputes all view files
 The original inventory used area/controller v6/v4; context v2 uses v7/v5 and
 [partitioned discovery](partitioned-jamb-discovery.md) v3 uses v8/v6, and
 automatic opening links v4 uses v9/v7, and building/facade scope v5 uses v10/v8.
+Elevation level context v6 uses v11/v9.
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 

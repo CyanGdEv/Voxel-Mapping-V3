@@ -1,5 +1,8 @@
 # Automatic named building scope and facade references
 
+[Automatic elevation level context](automatic-elevation-level-context.md) now
+adds conditional original-row support above printed levels alongside these links.
+
 Automatic component inventory v5 adds visible named source enclosures and
 numbered facade-ray hypotheses. This follows the broad
 [plan opening width links](automatic-plan-opening-links.md) and keeps those

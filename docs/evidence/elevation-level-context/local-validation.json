@@ -1,0 +1,24 @@
+{
+  "base_commit": "dea6b899cb19a36554e8aed19e09fb941fcc4919",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "66490a7a4b072af21719965192617fdf870f1cf54aee943eb055b4dd5bba94ff",
+    "tests/test_automatic_elevation_context.py": "035eea05bcc1726ff3859956e16421c708900df11fc704ef38e9fffae42e1ef6",
+    "voxel_mapper/area_cycles.py": "cfaa6814b968c8b8915f5b0c0fabdc0dbaeee1d1bd5b18627406eaa6d6e0a486",
+    "voxel_mapper/area_reconstruction.py": "39568b74e7858bf97606aee028bc1b2aa6f391852086461da88c0c630a9a89c3",
+    "voxel_mapper/automatic_elevation_context.py": "cf281a7d702e4707918662daa940162871b3acfc53ea9a9e94d9053645f1e22e",
+    "voxel_mapper/drawing_view_components.py": "3a6a861d6e5a3ae37e4ce3d4c9ca50209f07f6859afa7144380e3ed135e5d029",
+    "voxel_mapper/elevation_levels.py": "23ecdd9fe14a8baeb7b8f568fd27871183847c54242783c4c03b7e31cd0b9171"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "4d23bd3e5c1d0d0d539a4a18f3d0219883f86bb53d2b876197fc9d34bbf2571e",
+  "focused_related_tests": 42,
+  "full_suite_log_sha256": "75355f779fb90187d88a84c317cb8cb13fa94428b6df4741ad838a828d901fa9",
+  "limits": "Conditional source-relative above-level rows only. Six NW alternatives are not six physical openings. Original source extents and 955/40 prior width pairs preserved; physical floor/aperture roles, facade origin/position, state and independent registration/datum remain unresolved. Zero world blocks or training labels.",
+  "new_tests": 9,
+  "python": "3.12.14",
+  "real_audit_sha256": "387e5f0f1b0e4e707e486444ffdc1f1f4359082ccfc674fa3c667640f6035423",
+  "seconds": 650.479,
+  "status": "passed",
+  "tests": 1598,
+  "version": "automatic-elevation-context-local-validation-v1"
+}
