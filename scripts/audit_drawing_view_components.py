@@ -21,6 +21,71 @@ from voxel_mapper.planning_bulk import Corpus
 from voxel_mapper.reconstruction_evidence_queue import digest
 from voxel_mapper.raster_opening_scan import scan as opening_scan
 from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endcaps
+from voxel_mapper import automatic_building_scope, plan_elevation_edges
+from voxel_mapper.ordinary_surfaces import label_runs
+
+
+def verify_building_scope(page, view, result, checked):
+    review = result['building_scope_review']
+    if review['status']!='named_source_enclosure_candidates_only': return
+    edges = plan_elevation_edges.straight_edges(page, result['document_sha256'], result['page'])
+    assert digest(edges)==review['source_edges_sha256']
+    fills = result['plan_gap_review']['page_fill_recovery']['candidates']
+    assert digest(fills)==review['source_fills_sha256']
+    edge_lookup = {e['id']: e for e in edges}; fill_lookup = {f['id']: f for f in fills}
+    runs = {(tuple(r['trace_indices']),tuple(r['character_indices'])): r for r in label_runs(page.get_texttrace())}
+    matrix = pymupdf.Matrix(result['plan_gap_review']['unrotated_mupdf_to_pdf_native_matrix'])
+    expected = set(); gap_lookup = {g['id']: g for g in result['plan_gap_review']['gaps']}
+    for label in review['labels']:
+        run = runs[(tuple(label['trace_indices']),tuple(label['character_indices']))]
+        assert ''.join(chr(c[0]) for c in run['chars']).strip()==label['text']
+        rect = pymupdf.Rect(run['bbox'])
+        native_label = Polygon([tuple(p*matrix) for p in (rect.tl,rect.tr,rect.br,rect.bl)])
+        assert native_label.equals_exact(shape(label['geometry_pdf_native']),0)
+        source = label['source_only_enclosure_review']
+        if source is None:
+            assert not label['candidates']; continue
+        assert not source['gap_effects'] and all(not t['active_gap_ids'] for t in source['trials'])
+        candidate_lookup = {c['id']: c for c in source['candidates']}
+        for candidate in label['candidates']:
+            original = candidate_lookup[candidate['id']]
+            assert digest(original)==candidate['source_candidate_sha256']
+            polygon = affine_transform(shape(original['geometry']),affine(matrix))
+            assert polygon.equals_exact(shape(candidate['geometry_pdf_native']),0)
+            assert polygon.contains(native_label) and shape(view['geometry']).covers(polygon)
+            assert len(polygon.interiors)==candidate['source_hole_count']
+            for proof in original['boundary_provenance']:
+                if proof['kind']=='original_stroke':
+                    assert digest(proof['source_endpoints'])==digest(edge_lookup[proof['source_edge_id']]['points'])
+                else:
+                    assert proof['kind']=='original_fill_boundary'
+                    fill = fill_lookup[proof['source_fill_id']]; geometry = shape(fill['geometry'])
+                    part = list(geometry.geoms)[proof['part_index']] if geometry.geom_type=='MultiPolygon' else geometry
+                    ring = part.exterior if proof['ring_index']==0 else part.interiors[proof['ring_index']-1]
+                    coords = list(ring.coords); i = proof['segment_index']
+                    assert digest(proof['source_endpoints'])==digest([list(coords[i]),list(coords[i+1])])
+                    assert proof['paint_seqno']==fill['paint_seqno']
+                    assert proof['clip_source_path_ordinals']==[c['path_ordinal'] for c in fill['clip_references']]
+                checked['named_enclosure_boundary_proofs'] += 1
+            for gap in gap_lookup.values():
+                corridor = shape(gap['geometry_pdf_native']); fraction = polygon.intersection(corridor).area/corridor.area
+                if fraction>0: expected.add((label['id'],candidate['id'],gap['id']))
+            checked['whole_label_named_enclosures'] += 1
+            checked['named_enclosure_protected_holes'] += len(polygon.interiors)
+        for identifier in label['whole_label_crossing_candidate_ids']:
+            polygon = affine_transform(shape(candidate_lookup[identifier]['geometry']),affine(matrix))
+            assert not polygon.contains(native_label)
+            checked['whole_label_crossing_enclosures_withheld'] += 1
+        checked['original_named_labels'] += 1
+    observed = {(r['label_id'],r['enclosure_id'],r['source_gap_id']) for r in review['gap_links']}
+    assert observed==expected and len(observed)==len(review['gap_links'])
+    for link in review['gap_links']:
+        label = next(r for r in review['labels'] if r['id']==link['label_id'])
+        candidate = next(c for c in label['candidates'] if c['id']==link['enclosure_id'])
+        corridor = shape(gap_lookup[link['source_gap_id']]['geometry_pdf_native'])
+        assert link['corridor_overlap_area_fraction']==shape(candidate['geometry_pdf_native']).intersection(corridor).area/corridor.area
+        assert not link['physical_building_assignment_verified']
+    checked['independent_named_gap_links'] += len(observed)
 
 
 def audit(job, output, baseline=None):
@@ -74,6 +139,9 @@ def audit(job, output, baseline=None):
         assert digest(components) == digest(result['source_components'])
         assert result['source_parent_records_sha256'] == digest(sorted(originals, key=lambda r: r['id']))
         assert not result['world_placement_eligible'] and not result['physical_boundary_verified']
+        if result['building_scope_review']['status']=='named_source_enclosure_candidates_only':
+            with pymupdf.open(work/'corpus/files'/(result['document_sha256']+'.pdf')) as document:
+                verify_building_scope(document[result['page']-1],view,result,checked)
         gaps = result['plan_gap_review']
         if gaps['status'] == 'whole_view_source_endcap_gaps_only':
             with pymupdf.open(work/'corpus/files'/(result['document_sha256']+'.pdf')) as document:
@@ -228,6 +296,13 @@ def audit(job, output, baseline=None):
             'source_png_sha256': result['source_png_sha256'], 'source_components_sha256': digest(components)})
     opening_links = json.loads((root/report['opening_links']['file']).read_text())
     assert automatic_opening_links.compare(inspected_views, max_checks=report['contract']['options']['max_checks']) == opening_links
+    if baseline is not None and 'opening_links' in baseline_report:
+        before = json.loads((baseline/baseline_report['opening_links']['file']).read_text())
+        keys = ['plan_view_id','source_gap_id','elevation_view_id','consensus_family_index',
+                'plan_nominal_width_m','elevation_nominal_width_m','elevation_minus_plan_width_m',
+                'source_fill_overlap_present','construction_state_unresolved']
+        assert sorted(tuple(m[k] for k in keys) for m in before['matches'])==sorted(tuple(m[k] for k in keys) for m in opening_links['matches'])
+        baseline_comparison['nominal_width_pairs_preserved'] = len(opening_links['matches'])
     by_view = {v['view_id']: v for v in inspected_views}; expected = set()
     for plan in inspected_views:
         for gap in plan['plan_gap_review']['gaps']:
@@ -253,11 +328,51 @@ def audit(job, output, baseline=None):
             assert match['elevation_inventory_sha256']==digest(by_view[match['elevation_view_id']])
             assert not match['physical_correspondence_verified'] and not match['position_alignment_verified']
         checked['independent_nominal_width_links'] += len(observed)
-    result = {'version': 'automatic-view-component-audit-v2', 'status': 'passed',
+    building_links = json.loads((root/report['building_facade_links']['file']).read_text())
+    assert automatic_building_scope.link(inspected_views,opening_links,max_checks=report['contract']['options']['max_checks'])==building_links
+    width_lookup = {w['id']: w for w in opening_links['matches']}
+    records = {r['id']: r for r in building_links['frames']}
+    projection_lookup = {p['id']: p for p in building_links['projected_gaps']}
+    for record in records.values():
+        plan = by_view[record['plan_view_id']]
+        reference = next(r for r in plan['drawing_reference_review']['plan_references']['references'] if digest(r)==record['source_reference_sha256'])
+        assert digest(reference) in plan['drawing_reference_review']['whole_view_reference_sha256']
+        assert reference['target_view_key_candidate']==record['target_view_key_candidate']
+        label = next(l for l in plan['building_scope_review']['labels'] if l['id']==record['label_id'])
+        candidate = next(c for c in label['candidates'] if c['id']==record['enclosure_id'])
+        polygon = shape(candidate['geometry_pdf_native'])
+        for frame in record['frame_review']['frames']:
+            coords = list(polygon.exterior.coords); i = frame['boundary_segment_index']
+            assert digest(frame['source_native_endpoints'])==digest([list(coords[i]),list(coords[i+1])])
+            checked['original_named_facade_segments'] += 1
+        checked['numbered_marker_enclosure_reviews'] += 1
+    expected = set()
+    for projection in projection_lookup.values():
+        record = records[projection['facade_record_id']]
+        frame = next(f for f in record['frame_review']['frames'] if f['id']==projection['frame_id'])
+        plan = by_view[projection['plan_view_id']]
+        gap = next(g for g in plan['plan_gap_review']['gaps'] if g['id']==projection['source_gap_id'])
+        axis = frame['diagnostic_axis']; factor = plan['nominal_metres_per_pdf_point']
+        expected_interval = sorted(sum(p[i]*axis[i] for i in (0,1))*factor-frame['projection_min_m'] for p in gap['gap_endpoints_pdf_native'])
+        assert expected_interval==projection['nominal_plan_position_interval_m']
+        assert projection['maximum_gap_plane_offset_nominal_m']<=.25 and not projection['position_alignment_verified']
+        for width in width_lookup.values():
+            if (width['plan_view_id']==projection['plan_view_id'] and width['source_gap_id']==projection['source_gap_id']
+                    and width['elevation_view_id'] in record['target_elevation_view_ids']):
+                expected.add((projection['id'],width['id']))
+        checked['nominal_plan_gap_projections'] += 1
+    observed = {(r['projection_id'],r['source_width_link_id']) for r in building_links['width_links']}
+    assert observed==expected and len(observed)==len(building_links['width_links'])
+    for link in building_links['width_links']:
+        assert digest(width_lookup[link['source_width_link_id']])==link['source_width_link_sha256']
+        assert not link['physical_correspondence_verified'] and not link['position_alignment_verified']
+    checked['independent_reference_scoped_width_links'] += len(observed)
+    result = {'version': 'automatic-view-component-audit-v3', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
         'opening_links': report['opening_links'],
+        'building_facade_links': report['building_facade_links'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,

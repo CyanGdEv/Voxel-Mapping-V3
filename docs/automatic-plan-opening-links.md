@@ -1,5 +1,8 @@
 # Automatic plan-to-elevation opening discovery
 
+[Named building and facade scope](automatic-building-facade-scope.md) now supplies
+a narrower numbered-reference channel alongside these broad alternatives.
+
 The automatic component inventory now recovers facing plan endcaps and compares
 nominal gap widths with retained residual elevation families. It needs no manual
 wing seed, opening trace, facade datum or view rectangle. This supplies candidates

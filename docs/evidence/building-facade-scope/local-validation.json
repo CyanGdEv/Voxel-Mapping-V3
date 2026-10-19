@@ -1,0 +1,23 @@
+{
+  "base_commit": "69dc5dc3885e436a1cb45e57caed95ee33b8d240",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "de4e77850a5de091b0080b0646936805e8b60bfc772794c2bf64f5cfc11445c5",
+    "tests/test_automatic_building_scope.py": "b416fe8e337377ac5cea60f37767c6687ad3d1a7893f77dda82370e58e9fc8f4",
+    "voxel_mapper/area_cycles.py": "418b2319a258f8b1f5f50b934cb3ac586b66f5b94aaf07c314a83c046804f696",
+    "voxel_mapper/area_reconstruction.py": "25031b69b425a26f855dddc8378e3ac804631feb966462569443f8deff1d2a08",
+    "voxel_mapper/automatic_building_scope.py": "b81837f70bc68f4e4c3865816a7e69947a8536bb68a70f91b6c44088398a6c62",
+    "voxel_mapper/drawing_view_components.py": "682de98cdfe8f70fd9a105b47e22940e05280b86b207a7e30900e0f09b630f66"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "490a0d94dd45bf78c7adeac16bb487642d9423bf23d83846f9cd274cc767c8f9",
+  "focused_related_tests": 51,
+  "full_suite_log_sha256": "9e968d837c012ed2b2bf4393c9d9c3b5657e6a44a1f3143fd3ad1c7dd39826d7",
+  "limits": "Source-only named enclosure/gap associations and numbered facade candidates; physical identities, complete exterior/opening roles, elevation facade origin/position alignment, state and independent placement/datum remain unresolved. Zero accepted physical geometry, world blocks or training labels.",
+  "new_tests": 9,
+  "python": "3.12.14",
+  "real_audit_sha256": "d75b7a0bcb46cd57de2a87804ad18744cd687fcc72d3117a1accedd83d1e0125",
+  "seconds": 738.019,
+  "status": "passed",
+  "tests": 1589,
+  "version": "automatic-building-scope-local-validation-v1"
+}

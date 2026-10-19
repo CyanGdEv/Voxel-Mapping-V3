@@ -81,6 +81,11 @@ original facing-endcap gaps inside floor-plan views and retain all compatible
 nominal-width alternatives in the elevation residual scans. These links expose
 cross-view ambiguity before facade alignment or physical opening selection.
 
+[Automatic building and facade scope](docs/automatic-building-facade-scope.md)
+uses visible building labels, exact source enclosures and numbered reference
+rays to narrow those links, retaining original boundaries and unresolved facade
+origins without manual building boxes or opening traces.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts
