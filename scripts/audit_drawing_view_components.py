@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 import hashlib
 import json
+import math
 from pathlib import Path
 import tempfile
 
@@ -22,6 +23,7 @@ from voxel_mapper.reconstruction_evidence_queue import digest
 from voxel_mapper.raster_opening_scan import scan as opening_scan
 from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endcaps
 from voxel_mapper import automatic_building_scope, plan_elevation_edges
+from voxel_mapper import automatic_elevation_context, elevation_levels
 from voxel_mapper.ordinary_surfaces import label_runs
 
 
@@ -86,6 +88,93 @@ def verify_building_scope(page, view, result, checked):
         assert link['corridor_overlap_area_fraction']==shape(candidate['geometry_pdf_native']).intersection(corridor).area/corridor.area
         assert not link['physical_building_assignment_verified']
     checked['independent_named_gap_links'] += len(observed)
+
+
+def verify_elevation_context(corpus, source_pages, inventories, buildings, context, checked, max_checks):
+    fresh = automatic_elevation_context.run(corpus,source_pages,inventories,buildings,max_checks=max_checks)
+    assert digest(fresh)==digest(context)
+    if context['status']!='source_relative_elevation_context_only': return
+    by_view = {v['view_id']:v for v in inventories}; qualified = {}
+    for page_context in context['pages']:
+        sha=page_context['document_sha256']; number=page_context['page']
+        with pymupdf.open(corpus.root/'files'/(sha+'.pdf')) as document:
+            page=document[number-1]; paths=page.get_drawings(extended=True); traces=page.get_texttrace()
+            fills=clipped_plan_fills.recover(page,sha,number)['candidates']; fill_lookup={f['paint_ordinal']:f for f in fills}
+            rotation=page.rotation_matrix
+            for record in page_context['level_review']['records']:
+                path=paths[record['source_circle_path_ordinal']]
+                assert len(path['items'])==4 and all(item[0]=='c' for item in path['items'])
+                assert list(pymupdf.Rect(path['rect'])*rotation)==record['circle_bbox_display_points']
+                for ordinal,fill in zip(record['source_quadrant_path_ordinals'],record['source_quadrant_fills']):
+                    assert digest(fill_lookup[ordinal])==digest(fill)
+                    assert list(fill['fill_color'])==[0,0,0]
+                    checked['original_level_quadrant_fills']+=1
+                for line in record['datum_line_candidates']:
+                    item=paths[line['source_path_ordinal']]['items'][0]; assert item[0]=='l'
+                    assert digest([list(p*rotation) for p in item[1:3]])==digest(line['display_endpoints'])
+                    checked['original_level_leader_lines']+=1
+                for label in record['label_candidates']:
+                    span=traces[label['trace_index']]
+                    assert ''.join(chr(c[0]) for c in span['chars']).strip()==label['text']
+                    assert digest(elevation_levels.screen_span(page,span))==digest(label['glyph_screen'])
+                    assert list(pymupdf.Rect(span['bbox'])*rotation)==label['bbox_display_points']
+                    checked['original_level_glyph_claims']+=1
+                expected=[]
+                for scope in page_context['source_scopes']:
+                    bounds=pymupdf.Rect(scope['display_bounds'])
+                    if (bounds.contains(pymupdf.Rect(record['circle_bbox_display_points']))
+                            and all(bounds.contains(pymupdf.Rect(l['bbox_display_points'])) for l in record['label_candidates'])
+                            and all(bounds.contains(pymupdf.Point(*p)) for l in record['datum_line_candidates'] for p in l['display_endpoints'])):
+                        expected.append(scope['view_key_candidate'])
+                assert expected==record['view_key_candidates']
+                checked['whole_view_level_markers']+=1
+    for view in context['views']:
+        inventory=by_view[view['view_id']]; reference=view['relative_reference']
+        if view['status']!='all_original_residual_families_reviewed_against_source_level':continue
+        index=inventory['residual_raster_scan']['index']; matrix=pymupdf.Matrix(view['pixel_edge_to_source_display_matrix'])
+        # Point/Matrix inversion through MuPDF rounds to single precision.
+        # Solve the retained affine coefficients independently in float64.
+        level=float(np.linalg.solve(np.array([[matrix.a,matrix.c],[matrix.b,matrix.d]],dtype=float),
+            np.array([-matrix.e,reference['datum_y_display_points']-matrix.f],dtype=float))[1])
+        assert [f['consensus_family_index'] for f in view['families']]==list(range(len(index['consensus_families'])))
+        for family in view['families']:
+            original=index['consensus_families'][family['consensus_family_index']]
+            assert digest(original)==family['source_family_sha256']
+            expected=[(0,original['first_pair_index']),*[(1,i) for i in original['second_pair_indices']]]
+            assert expected==[(w['variant_index'],w['pair_index']) for w in family['witnesses']]
+            assert abs(level-family['printed_level_pixel_candidate'])<=1e-9
+            counts=[]
+            for witness in family['witnesses']:
+                variant=index['variants'][witness['variant_index']]; pair=variant['pairs'][witness['pair_index']]
+                groups=[variant['jamb_groups'][i] for i in pair['jamb_group_indices']]
+                assert digest(pair)==witness['source_pair_sha256'] and pair['bounds_pixels']==witness['source_bounds_pixels']
+                assert [digest(g) for g in groups]==witness['source_group_sha256']
+                top=max(g['top'] for g in groups); bottom=min(g['bottom'] for g in groups)
+                end=min(bottom,math.floor(level)); rows=max(0,end-top); counts.append(rows)
+                assert witness['common_jamb_row_interval_pixels']==[top,bottom]
+                assert witness['whole_rows_above_printed_level_interval_pixels']==([top,end] if rows else None)
+                assert witness['whole_rows_above_printed_level']==rows
+                assert witness['minimum_above_level_rows_met']==(rows>=24)
+                head=(reference['datum_y_display_points']-(pair['bounds_pixels'][1]*matrix.d+matrix.f))*inventory['nominal_metres_per_pdf_point']
+                assert abs(head-witness['nominal_head_above_printed_level_m'])<=1e-9
+                checked['original_threshold_level_witnesses']+=1
+            expected_status=('all_threshold_witnesses_support_above_level_rows' if min(counts)>=24 else
+                'threshold_witnesses_disagree_about_above_level_rows' if max(counts)>=24 else 'insufficient_above_level_rows_in_all_witnesses')
+            assert family['status']==expected_status and family['observed_above_level_row_count_range']==[min(counts),max(counts)]
+            assert not family['source_geometry_changed'] and not family['physical_opening_verified']
+            if min(counts)>=24 and family['candidate_scope_status']!='candidate_scope_crossing_withheld':
+                qualified[(view['view_id'],family['residual_family_id'])]=family['id']
+            checked['independent_source_level_family_reviews']+=1
+    expected={(w['projection_id'],w['source_width_link_id'],w['elevation_view_id'],w['residual_family_id'])
+        for w in buildings['width_links'] if (w['elevation_view_id'],w['residual_family_id']) in qualified}
+    observed={(w['projection_id'],w['source_width_link_id'],w['elevation_view_id'],w['residual_family_id'])
+        for w in context['level_supported_width_links']}
+    assert observed==expected and len(observed)==len(context['level_supported_width_links'])
+    for link in context['level_supported_width_links']:
+        original=next(w for w in buildings['width_links'] if digest(w)==link['source_building_link_sha256'])
+        assert link['family_review_id']==qualified[(original['elevation_view_id'],original['residual_family_id'])]
+        assert not link['physical_correspondence_verified'] and not link['position_alignment_verified']
+    checked['independent_level_supported_width_links']+=len(observed)
 
 
 def audit(job, output, baseline=None):
@@ -367,12 +456,27 @@ def audit(job, output, baseline=None):
         assert digest(width_lookup[link['source_width_link_id']])==link['source_width_link_sha256']
         assert not link['physical_correspondence_verified'] and not link['position_alignment_verified']
     checked['independent_reference_scoped_width_links'] += len(observed)
-    result = {'version': 'automatic-view-component-audit-v3', 'status': 'passed',
+    if baseline is not None and 'building_facade_links' in baseline_report:
+        old_buildings=json.loads((baseline/baseline_report['building_facade_links']['file']).read_text())
+        old_widths=json.loads((baseline/baseline_report['opening_links']['file']).read_text())
+        def semantic_pairs(buildings,widths):
+            lookup={w['id']:w for w in widths['matches']}; projections={p['id']:p for p in buildings['projected_gaps']}
+            return sorted((lookup[w['source_width_link_id']]['plan_view_id'],lookup[w['source_width_link_id']]['source_gap_id'],
+                w['elevation_view_id'],lookup[w['source_width_link_id']]['consensus_family_index'],
+                tuple(projections[w['projection_id']]['nominal_plan_position_interval_m'])) for w in buildings['width_links'])
+        assert semantic_pairs(old_buildings,old_widths)==semantic_pairs(building_links,opening_links)
+        baseline_comparison['reference_scoped_width_pairs_preserved']=len(building_links['width_links'])
+    levels=json.loads((root/report['elevation_level_context']['file']).read_text())
+    corpus=Corpus(work/'corpus')
+    try:verify_elevation_context(corpus,source['pages'],inspected_views,building_links,levels,checked,report['contract']['options']['max_checks'])
+    finally:corpus.close()
+    result = {'version': 'automatic-view-component-audit-v4', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
         'opening_links': report['opening_links'],
         'building_facade_links': report['building_facade_links'],
+        'elevation_level_context': report['elevation_level_context'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,

@@ -11,10 +11,12 @@ from .building_spec import digest
 from .drawing_annotations import LEVEL
 from .glyph_visibility import screen_span
 
-VERSION='native-elevation-level-review-v1'
+VERSION='native-elevation-level-review-v2'
 
 
-def extract(page,sha,number,views,*,max_checks=100000):
+def extract(page,sha,number,views,*,max_checks=100000,scope_mode='artwork_side'):
+    if scope_mode not in ('artwork_side','whole_view_containment'):
+        raise ValueError('Supported level view-scope recipe required')
     if type(max_checks) is not int or not 1<=max_checks<=100000:
         raise ValueError('Bounded level review work required')
     paths=page.get_drawings(extended=True);traces=page.get_texttrace();rotation=page.rotation_matrix
@@ -24,7 +26,8 @@ def extract(page,sha,number,views,*,max_checks=100000):
         bounds=view['display_bounds'];unit=view['nominal_metres_per_pdf_point_candidate']
         if (len(bounds)!=4 or not all(type(v) in (int,float) and math.isfinite(v) for v in bounds)
                 or bounds[0]>=bounds[2] or bounds[1]>=bounds[3]
-                or type(unit) not in (int,float) or not math.isfinite(unit) or not .0001<=unit<=4):
+                or (not (scope_mode=='whole_view_containment' and unit is None)
+                    and (type(unit) not in (int,float) or not math.isfinite(unit) or not .0001<=unit<=4))):
             raise ValueError('Bounded source view and nominal level scale required')
     checks=0
     def charge():
@@ -81,21 +84,28 @@ def extract(page,sha,number,views,*,max_checks=100000):
             if identity not in screens:screens[identity]=screen_span(page,span)
             labels.append({'trace_index':identity,'text':text,'level_label_candidate':label,
                 'value_m_candidate':value,'bbox_display_points':list(box),
-                'glyph_screen_status':screens[identity]['status']})
+                'glyph_screen_status':screens[identity]['status'],'glyph_screen':screens[identity]})
         scope=[]
         for view in views:
             charge();box=pymupdf.Rect(view['display_bounds'])
-            if box.y0<=center.y<=box.y1 and (0<=box.x0-center.x<=128 or 0<=center.x-box.x1<=128):scope.append(view)
+            if scope_mode=='artwork_side':
+                eligible=box.y0<=center.y<=box.y1 and (0<=box.x0-center.x<=128 or 0<=center.x-box.x1<=128)
+            else:
+                eligible=(box.contains(bounds)
+                    and all(box.contains(pymupdf.Rect(label['bbox_display_points'])) for label in labels)
+                    and all(box.contains(pymupdf.Point(*p)) for line in leaders for p in line['display_endpoints']))
+            if eligible:scope.append(view)
         record={'source_circle_path_ordinal':ordinal,'source_quadrant_path_ordinals':[q[0] for q in quadrants],
             'source_circle_paint_seqno':paths[ordinal]['seqno'],
             'source_quadrant_fills':[q[3] for q in quadrants],
             'marker_visibility_verified':False,
             'circle_bbox_display_points':list(bounds),'label_candidates':labels,'datum_line_candidates':leaders,
-            'view_key_candidates':[v['view_key_candidate'] for v in scope],
+            'view_key_candidates':[v['view_key_candidate'] for v in scope], 'view_scope_recipe':scope_mode,
             'status':'withheld_nonunique_level_label_line_or_view','vertical_datum_verified':False,
             'floor_role_verified':False,'source_geometry_changed':False}
         if len(labels)==1 and len(leaders)==1 and len(scope)==1:
-            if labels[0]['glyph_screen_status']!='raster_consistent_candidate':record['status']='withheld_level_label_visibility'
+            if scope[0]['nominal_metres_per_pdf_point_candidate'] is None:record['status']='withheld_missing_nominal_view_scale'
+            elif labels[0]['glyph_screen_status']!='raster_consistent_candidate':record['status']='withheld_level_label_visibility'
             else:
                 record.update(status='unverified_native_level_reference_candidate',label=labels[0],
                     datum_y_display_points=leaders[0]['display_endpoints'][0][1],
@@ -104,6 +114,7 @@ def extract(page,sha,number,views,*,max_checks=100000):
                     reference_line_extension_across_view_verified=False)
         record['id']=digest(record);records.append(record)
     return {'version':VERSION,'document_sha256':sha,'page':number,'records':records,'checks':checks,
+        'view_scope_recipe':scope_mode,
         'coordinate_frame':'source_display_pdf_points_y_down','vertical_datum_verified':False,
         'physical_level_identity_verified':False,'world_geometry_additions':0}
 

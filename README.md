@@ -86,6 +86,11 @@ uses visible building labels, exact source enclosures and numbered reference
 rays to narrow those links, retaining original boundaries and unresolved facade
 origins without manual building boxes or opening traces.
 
+[Automatic elevation level context](docs/automatic-elevation-level-context.md)
+binds original printed markers to whole automatic views and records every
+threshold witness's jamb support above the printed level, preserving source
+extents and unresolved physical floor/opening roles.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts
