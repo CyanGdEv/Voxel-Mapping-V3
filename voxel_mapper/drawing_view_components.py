@@ -19,12 +19,12 @@ from . import raster_stroke_context, drawing_annotation_context, glyph_visibilit
 from . import jamb_group_partitions
 from . import automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools
 from . import automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views, plan_elevation_correspondence, building_spec
-from . import automatic_elevation_context, elevation_levels, drawing_annotations
+from . import automatic_elevation_context, elevation_levels, drawing_annotations, automatic_facade_alignment
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v6'
+VERSION = 'automatic-view-component-inventory-v7'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -209,7 +209,8 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                      raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions,
                      automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools,
                      automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views,
-                     plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations]},
+                     plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations,
+                     automatic_facade_alignment]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -304,6 +305,13 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
     names.append(level_name)
     if levels['status'].endswith(('_withheld', '_required')):
         withheld.append({'view_id': None, 'kernel': 'elevation_levels', 'status': levels['status'], 'reason': levels.get('reason')})
+    alignment = automatic_facade_alignment.run(data['pages'], inventories, buildings, levels, max_checks=config['max_checks'])
+    alignment_name = 'facade-alignment.json'; atomic_json(root/alignment_name, alignment)
+    output_bytes += (root/alignment_name).stat().st_size
+    if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
+    names.append(alignment_name)
+    if alignment['status'].endswith(('_withheld', '_required')):
+        withheld.append({'view_id': None, 'kernel': 'facade_alignment', 'status': alignment['status'], 'reason': alignment.get('reason')})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
@@ -317,6 +325,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
               'opening_links': {'file': link_name, 'status': links['status'], 'counts': links.get('counts', {})},
               'building_facade_links': {'file': building_name, 'status': buildings['status'], 'counts': buildings.get('counts', {})},
               'elevation_level_context': {'file': level_name, 'status': levels['status'], 'counts': levels.get('counts', {})},
+              'facade_alignment': {'file': alignment_name, 'status': alignment['status'], 'counts': alignment.get('counts', {})},
               'output_sha256': {name: file_hash(root/name) for name in names}, 'world_geometry_additions': 0,
               'accepted_physical_components': 0, 'training_labels_generated': 0, 'world_placement_eligible': False}
     atomic_json(root/'component-report.json', result)

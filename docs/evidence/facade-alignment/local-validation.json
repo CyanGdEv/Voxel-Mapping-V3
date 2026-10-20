@@ -1,0 +1,28 @@
+{
+  "base_commit": "a29741ca6b965a84bede401bc99ed280db69902e",
+  "browser_review_sha256": "5f74bfae9e5dcef898176867452d913894358c2a722ca84e78cad51f23b3be81",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "681c5ce64f9864bd61dbce5b32f83aeae86d0ad1c7138a6149946567ec8d655c",
+    "scripts/render_facade_alignment_review.py": "21975c16c6c6720e9d03cfd0cab0080b07937cb5ca988d9beb22d7242d2545ae",
+    "tests/test_automatic_facade_alignment.py": "726be8a71dae2d41ae427e49b904a5a4d6b5a7809a20e763aa1ab685f257e5e7",
+    "tests/test_drawing_view_components.py": "0e01b470971398a0465542700cd0f9f1841c9b883ae5dbcb4207dcd00dc4a498",
+    "voxel_mapper/area_cycles.py": "7f9adf51a77f018c8b36a3d0df8194748bfad15834b7ab5e77f0aecb31aa47e6",
+    "voxel_mapper/area_reconstruction.py": "5aba590d410e8efe8ffa1b34e8ddc46f1e674b56dc557e852800ab6916e5a950",
+    "voxel_mapper/automatic_facade_alignment.py": "86ddb9bca1343be8ce110d4f5bdf581955b249121d0a39e2f2f75cf5defb38ec",
+    "voxel_mapper/drawing_view_components.py": "9df9476f86fd9d5485896345224990589e7b1cf10d0193ef6f93f0775664c3e0"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "daca12cfd82d7609d0e3bfe52264e85bac967bf190902966f4db42852b3fa9f9",
+  "focused_log_sha256": "285993e6d670c96f72c1c81669ed46962db09e40f6f8b2c423508298c18c09fa",
+  "focused_related_tests": 50,
+  "full_suite_log_sha256": "66f3c894070cf2eba47f4ec93cd6aeaef454d26481bc4d4a503c37d7087adb43",
+  "limits": "Independent source extents and conditional origins only. Wicker has two extent mismatches and no origin/position hypotheses. All 955/40/6 prior alternatives preserved. No physical facade/opening/floor acceptance, state/registration/datum, world blocks or training labels.",
+  "new_tests": 11,
+  "python": "3.12.14",
+  "real_audit_sha256": "ffe9dab0d9df7b3cb398f3fb0a289e1aa45a9afffad29b20ae666a1e712c320a",
+  "seconds": 372.43,
+  "status": "passed",
+  "tests": 1609,
+  "validation_sequence": "The full suite started before an audit/test-only correction to compare serialized geometry canonically. All 50 affected tests, including the saved-JSON regression, and the original-source audit were rerun after the correction. Reconstruction implementation stayed unchanged. The new review renderer was separately checked in Chromium across all five facade/frame states.",
+  "version": "automatic-facade-alignment-local-validation-v1"
+}
