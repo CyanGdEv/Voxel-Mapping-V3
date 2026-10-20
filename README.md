@@ -91,6 +91,12 @@ binds original printed markers to whole automatic views and records every
 threshold witness's jamb support above the printed level, preserving source
 extents and unresolved physical floor/opening roles.
 
+[Automatic facade alignment review](docs/automatic-facade-alignment.md) compares
+independent plan and elevation extents before testing positions. Wicker's nearby
+plan paint spans 14.111 nominal metres versus a surrounding elevation frame's
+15.830 metres; the whole labelled enclosure spans 18.763 metres. Both comparisons
+fail, so no origin is fitted to the opening and the discrepancy remains explicit.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

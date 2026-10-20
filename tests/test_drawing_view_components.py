@@ -133,6 +133,8 @@ class ComponentInventoryTests(unittest.TestCase):
                 pack = views_run(corpus, root/'geometry', root/'views', settings={'render_width': 400})
                 first = run(corpus, root/'geometry', pack['directory'], root/'components')
                 self.assertEqual(first['views'], 4); self.assertEqual(first['world_geometry_additions'], 0)
+                self.assertIn('facade-alignment.json', first['output_sha256'])
+                self.assertIn('voxel_mapper.automatic_facade_alignment', first['contract']['kernel_sha256'])
                 replay = run(corpus, root/'geometry', pack['directory'], root/'components')
                 self.assertEqual(replay['run_views'], 0); self.assertEqual(first['output_sha256'], replay['output_sha256'])
                 path = Path(first['directory'])/first['results'][0]['file']; data = path.read_bytes(); path.write_bytes(b'changed')

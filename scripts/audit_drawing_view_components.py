@@ -12,7 +12,7 @@ import pymupdf
 from PIL import Image
 
 from shapely.affinity import affine_transform
-from shapely.geometry import Polygon, box, shape
+from shapely.geometry import Point, Polygon, box, shape
 
 from voxel_mapper.area_reconstruction import run as area_run
 from voxel_mapper.drawing_components import split_page
@@ -23,7 +23,7 @@ from voxel_mapper.reconstruction_evidence_queue import digest
 from voxel_mapper.raster_opening_scan import scan as opening_scan
 from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endcaps
 from voxel_mapper import automatic_building_scope, plan_elevation_edges
-from voxel_mapper import automatic_elevation_context, elevation_levels
+from voxel_mapper import automatic_elevation_context, elevation_levels, automatic_facade_alignment
 from voxel_mapper.ordinary_surfaces import label_runs
 
 
@@ -175,6 +175,119 @@ def verify_elevation_context(corpus, source_pages, inventories, buildings, conte
         assert link['family_review_id']==qualified[(original['elevation_view_id'],original['residual_family_id'])]
         assert not link['physical_correspondence_verified'] and not link['position_alignment_verified']
     checked['independent_level_supported_width_links']+=len(observed)
+
+
+def verify_facade_alignment(source_pages, inventories, buildings, levels, alignment, checked, max_checks):
+    assert digest(automatic_facade_alignment.run(source_pages,inventories,buildings,levels,max_checks=max_checks))==digest(alignment)
+    if alignment['status']!='independent_source_extent_and_origin_hypotheses_only': return
+    by_view={v['view_id']:v for v in inventories}
+    views={v['id']:v for p in source_pages for v in p['views']}
+    level_views={v['view_id']:v for v in levels['views']}
+    records={r['id']:r for r in buildings['frames']}
+    projections={p['id']:p for p in buildings['projected_gaps']}
+    for row in alignment['frames']:
+        original=records[row['facade_record_id']]; plan=by_view[original['plan_view_id']]
+        assert digest(original)==row['source_facade_record_sha256']
+        if row['status']!='independent_extent_reviews_only':
+            assert not row['frame_reviews']; continue
+        target=original['target_elevation_view_ids'][0]; level=level_views[target]
+        families={f['id']:f for f in level['families']}; matrix=level['pixel_edge_to_source_display_matrix']
+        unit=by_view[target]['nominal_metres_per_pdf_point']; pixel_unit=matrix[0]*unit
+        for review in row['frame_reviews']:
+            frame=next(f for f in original['frame_review']['frames'] if f['id']==review['frame_id'])
+            label=next(l for l in plan['building_scope_review']['labels'] if l['id']==original['label_id'])
+            enclosure=next(c for c in label['candidates'] if c['id']==original['enclosure_id'])
+            inverse=pymupdf.Matrix(plan['plan_gap_review']['unrotated_mupdf_to_pdf_native_matrix'])
+            expected_sources={('named_enclosure',enclosure['id']):(enclosure,shape(enclosure['geometry_pdf_native']))}
+            for fill in plan['plan_gap_review']['page_fill_recovery']['candidates']:
+                if fill['fill_color']==[1,1,1]:continue
+                geometry=affine_transform(shape(fill['geometry']),affine(inverse))
+                if (min(geometry.boundary.distance(Point(p)) for p in frame['ray_hits_pdf_native'])<=.25
+                        and shape(views[plan['view_id']]['geometry']).covers(geometry)):
+                    expected_sources[('near_ray_original_paint',fill['id'])]=(fill,geometry)
+            assert {(e['source_kind'],e['source_id']) for e in review['plan_extents']}==set(expected_sources)
+            extents={e['id']:e for e in review['plan_extents']}
+            for extent in extents.values():
+                record,geometry=expected_sources[(extent['source_kind'],extent['source_id'])]
+                assert extent['source_record_sha256']==digest(record)
+                assert geometry.equals_exact(shape(extent['geometry_pdf_native']),0)
+                parts=list(geometry.geoms) if geometry.geom_type=='MultiPolygon' else [geometry]
+                positions=[sum(point[i]*frame['diagnostic_axis'][i] for i in (0,1))*plan['nominal_metres_per_pdf_point']-frame['projection_min_m']
+                    for part in parts for point in part.exterior.coords]
+                assert extent['nominal_plan_position_interval_m']==[min(positions),max(positions)]
+                assert extent['source_part_count']==len(parts) and extent['source_hole_count']==sum(len(p.interiors) for p in parts)
+                for witness in extent['source_extreme_vertices']:
+                    point=list(parts[witness['part_index']].exterior.coords[witness['exterior_vertex_index']])
+                    assert point==witness['point_pdf_native']
+                    checked['independent_plan_extent_vertex_proofs']+=1
+                assert not extent['span_establishes_continuity'] and not extent['physical_facade_extent_verified']
+                checked['independent_whole_plan_extent_candidates']+=1
+            links=[l for l in levels['level_supported_width_links'] if l['elevation_view_id']==target
+                and projections[l['projection_id']]['facade_record_id']==original['id']
+                and projections[l['projection_id']]['frame_id']==frame['id']]
+            assert review['reviewed_level_link_sha256']==[digest(l) for l in links]
+            def surrounds(outer,inner):
+                if outer['id']==inner['id']:return False
+                return all(a['source_bounds_pixels'][0]<b['source_bounds_pixels'][0]
+                    and a['source_bounds_pixels'][2]>b['source_bounds_pixels'][2]
+                    and a['source_bounds_pixels'][1]<b['source_bounds_pixels'][1]
+                    and a['source_bounds_pixels'][3]>=b['source_bounds_pixels'][3]
+                    and (a['variant_index']!=b['variant_index'] or not set(a['jamb_group_indices'])&set(b['jamb_group_indices']))
+                    for a in outer['witnesses'] for b in inner['witnesses'])
+            expected_relations=set()
+            for link in links:
+                child=next(f for f in families.values() if f['residual_family_id']==link['residual_family_id'])
+                for parent in families.values():
+                    if (parent['status']=='all_threshold_witnesses_support_above_level_rows'
+                            and parent['candidate_scope_status']!='candidate_scope_crossing_withheld' and surrounds(parent,child)):
+                        expected_relations.add((digest(link),parent['id'],child['id']))
+            assert {(r['source_level_link_sha256'],r['parent_family_review_id'],r['child_family_review_id'])
+                for r in review['parent_child_relations']}==expected_relations
+            checked['independent_all_witness_parent_child_relations']+=len(expected_relations)
+            expected_extents={(e,parent) for _,parent,_ in expected_relations for e in extents}
+            assert {(c['plan_extent_id'],c['parent_family_review_id']) for c in review['extent_comparisons']}==expected_extents
+            accepted={}
+            for comparison in review['extent_comparisons']:
+                parent=families[comparison['parent_family_review_id']]; extent=extents[comparison['plan_extent_id']]
+                assert digest(parent)==comparison['source_parent_review_sha256']
+                low,high=extent['nominal_plan_position_interval_m']; width=high-low; passes=[]
+                assert comparison['nominal_plan_width_m']==width
+                for witness,original_witness in zip(comparison['witnesses'],parent['witnesses'],strict=True):
+                    bounds=original_witness['source_bounds_pixels']; measured=(bounds[2]-bounds[0])*pixel_unit
+                    assert witness['source_witness_sha256']==digest(original_witness)
+                    assert abs(witness['nominal_elevation_width_m']-measured)<1e-9
+                    assert abs(witness['elevation_minus_plan_width_m']-(measured-width))<1e-9
+                    assert abs(witness['diagnostic_elevation_to_plan_width_ratio']-measured/width)<1e-9
+                    passes.append(abs(measured-width)<=.25)
+                    assert witness['within_discovery_tolerance']==passes[-1]
+                    checked['independent_extent_threshold_widths']+=1
+                expected_status='all_witness_extent_widths_compatible' if all(passes) else 'extent_width_witnesses_disagree' if any(passes) else 'independent_extent_width_mismatch'
+                assert comparison['status']==expected_status and not comparison['scale_correction_applied']
+                if all(passes):accepted[(extent['id'],parent['id'])]=comparison['id']
+            expected_positions={(e,parent,child,l['projection_id'],reverse)
+                for link_sha,parent,child in expected_relations for l in links if digest(l)==link_sha
+                for e in extents if (e,parent) in accepted for reverse in (False,True)}
+            observed_positions={(p['plan_extent_id'],p['parent_family_review_id'],p['child_family_review_id'],p['projection_id'],p['elevation_x_reversed'])
+                for p in review['position_comparisons']}
+            assert expected_positions==observed_positions
+            for position in review['position_comparisons']:
+                parent=families[position['parent_family_review_id']]; child=families[position['child_family_review_id']]
+                extent=extents[position['plan_extent_id']]; low,high=extent['nominal_plan_position_interval_m']
+                target_interval=projections[position['projection_id']]['nominal_plan_position_interval_m']
+                assert position['source_extent_comparison_id']==accepted[(extent['id'],parent['id'])]
+                expected_witnesses=[(a,b) for a in parent['witnesses'] for b in child['witnesses']]; passes=[]
+                for witness,(outer,inner) in zip(position['witnesses'],expected_witnesses,strict=True):
+                    bounds=inner['source_bounds_pixels']; left=outer['source_bounds_pixels'][0]
+                    observed=[(x-left)*pixel_unit for x in (bounds[0],bounds[2])]
+                    interval=sorted(high-x for x in observed) if position['elevation_x_reversed'] else [low+x for x in observed]
+                    assert np.allclose(interval,witness['nominal_position_interval_m'],rtol=0,atol=1e-9)
+                    residual=max(abs(interval[i]-target_interval[i]) for i in (0,1)); passes.append(residual<=.25)
+                    assert abs(residual-witness['maximum_endpoint_residual_m'])<1e-9
+                    assert witness['source_parent_witness_sha256']==digest(outer) and witness['source_child_witness_sha256']==digest(inner)
+                    checked['independent_origin_position_witnesses']+=1
+                assert position['status']==('all_witness_positions_compatible' if all(passes) else 'position_witnesses_disagree' if any(passes) else 'independent_origin_position_mismatch')
+                assert not position['origin_fit_to_opening'] and not position['scale_correction_applied']
+                assert not position['position_alignment_verified'] and not position['physical_correspondence_verified']
 
 
 def audit(job, output, baseline=None):
@@ -470,13 +583,25 @@ def audit(job, output, baseline=None):
     corpus=Corpus(work/'corpus')
     try:verify_elevation_context(corpus,source['pages'],inspected_views,building_links,levels,checked,report['contract']['options']['max_checks'])
     finally:corpus.close()
-    result = {'version': 'automatic-view-component-audit-v4', 'status': 'passed',
+    if baseline is not None and 'elevation_level_context' in baseline_report:
+        old_levels=json.loads((baseline/baseline_report['elevation_level_context']['file']).read_text())
+        def semantic_levels(context,buildings):
+            projections={p['id']:p for p in buildings['projected_gaps']}
+            families={f['id']:f for v in context['views'] for f in v['families']}
+            return sorted((p['plan_view_id'],p['source_gap_id'],w['elevation_view_id'],families[w['family_review_id']]['consensus_family_index'])
+                for w in context['level_supported_width_links'] for p in [projections[w['projection_id']]])
+        assert semantic_levels(old_levels,old_buildings)==semantic_levels(levels,building_links)
+        baseline_comparison['level_supported_width_pairs_preserved']=len(levels['level_supported_width_links'])
+    alignment=json.loads((root/report['facade_alignment']['file']).read_text())
+    verify_facade_alignment(source['pages'],inspected_views,building_links,levels,alignment,checked,report['contract']['options']['max_checks'])
+    result = {'version': 'automatic-view-component-audit-v5', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
         'opening_links': report['opening_links'],
         'building_facade_links': report['building_facade_links'],
         'elevation_level_context': report['elevation_level_context'],
+        'facade_alignment': report['facade_alignment'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,

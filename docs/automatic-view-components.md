@@ -48,6 +48,10 @@ retaining exact whole-label enclosures and numbered source-reference ray candida
 Inventory v6 adds [source-relative elevation level context](automatic-elevation-level-context.md),
 including all original threshold witnesses and a conditional above-level row review.
 
+Inventory v7 adds [independent facade extent and origin review](automatic-facade-alignment.md).
+It retains source width mismatches and tests positions only after every independent
+extent witness passes, without fitting an origin or scale to an opening.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -112,6 +116,7 @@ The original inventory used area/controller v6/v4; context v2 uses v7/v5 and
 [partitioned discovery](partitioned-jamb-discovery.md) v3 uses v8/v6, and
 automatic opening links v4 uses v9/v7, and building/facade scope v5 uses v10/v8.
 Elevation level context v6 uses v11/v9.
+Facade extent/origin review v7 uses v12/v10.
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 

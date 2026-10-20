@@ -1,5 +1,9 @@
 # Automatic source-relative elevation level context
 
+[Independent facade extent and origin review](automatic-facade-alignment.md)
+now consumes these conditional links. Wicker's independently extracted extents
+disagree, so the new stage retains the discrepancy and withholds an origin.
+
 Component inventory v6 connects original printed level markers to the automatic
 view pack and reviews original residual jamb evidence above a printed Shop Level.
 It follows [named building/facade scope](automatic-building-facade-scope.md) and

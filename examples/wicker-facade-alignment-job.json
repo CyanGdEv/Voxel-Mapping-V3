@@ -1,0 +1,43 @@
+{
+  "work_directory": "../output/wicker-facade-alignment",
+  "catalogue": "wicker-evidence-acquisition-catalogue.json",
+  "official_hosts": [
+    "publicaccess.staffsmoorlands.gov.uk"
+  ],
+  "offline": false,
+  "max_pages": 20,
+  "architectural_interpretation": {
+    "enabled": true
+  },
+  "evidence_acquisition": {
+    "enabled": true,
+    "max_documents": 3,
+    "max_file_bytes": 16000000,
+    "max_run_bytes": 32000000
+  },
+  "areas": [
+    {
+      "id": "wicker-shop",
+      "name": "Wicker shop source investigation",
+      "application_references": [
+        "SMD/2016/0315"
+      ],
+      "required_families": [
+        "local_building",
+        "paving"
+      ]
+    }
+  ],
+  "drawing_views": {
+    "enabled": true,
+    "max_pages": 8,
+    "max_checks": 100000,
+    "render_width": 1200
+  },
+  "drawing_view_components": {
+    "enabled": true,
+    "max_views": 16,
+    "max_checks": 100000,
+    "max_frames": 512
+  }
+}
