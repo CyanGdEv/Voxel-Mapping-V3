@@ -103,6 +103,13 @@ independent page-layout relation narrows the nearby-paint discrepancy to 0.305 m
 which still fails the 0.25 m gate. Artwork scale and corresponding physical corners
 remain unverified; raw geometry and the original width rejections are preserved.
 
+[Automatic wall-return corners](docs/automatic-wall-return-corners.md) now trace
+original paint-side vertices and adjacent edge support. Wicker's marker-facing
+corner diagnostic spans 15.837 m against the elevation's 15.830 m; six overlapping
+opening alternatives agree in the forward direction, with the opposite side and
+reverse results retained. The correspondence remains conditional on physical
+corner roles and artwork-scale application; no source geometry is repaired.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

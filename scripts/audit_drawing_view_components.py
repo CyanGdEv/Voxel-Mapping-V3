@@ -25,6 +25,7 @@ from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endca
 from voxel_mapper import automatic_building_scope, plan_elevation_edges
 from voxel_mapper import automatic_elevation_context, elevation_levels, automatic_facade_alignment
 from voxel_mapper import automatic_sheet_scale, drawing_annotations
+from scripts.audit_wall_return_corners import verify as verify_wall_returns
 from voxel_mapper.drawing_page_tools import native_inverse
 from voxel_mapper.glyph_visibility import screen_architectural_span
 from voxel_mapper.ordinary_surfaces import label_runs
@@ -695,7 +696,14 @@ def audit(job, output, baseline=None):
     corpus=Corpus(work/'corpus')
     try:verify_sheet_scale(corpus,source['pages'],inspected_views,building_links,levels,alignment,scale,checked,report['contract']['options']['max_checks'])
     finally:corpus.close()
-    result = {'version': 'automatic-view-component-audit-v6', 'status': 'passed',
+    if baseline is not None and 'sheet_scale_evidence' in baseline_report:
+        old_scale=json.loads((baseline/baseline_report['sheet_scale_evidence']['file']).read_text())
+        assert sorted(p['layout_fit']['apparent_subject_layout_scale'] for p in old_scale['pairs'] if p['layout_fit'])==sorted(p['layout_fit']['apparent_subject_layout_scale'] for p in scale['pairs'] if p['layout_fit'])
+        assert sorted(c['nominal_plan_width_m'] for d in old_scale['diagnostics'] for c in d['width_comparisons'])==sorted(c['nominal_plan_width_m'] for d in scale['diagnostics'] for c in d['width_comparisons'])
+        baseline_comparison['prior_sheet_layout_diagnostics_preserved']=True
+    returns=json.loads((root/report['wall_return_corners']['file']).read_text())
+    verify_wall_returns(source['pages'],inspected_views,building_links,levels,alignment,scale,returns,checked,report['contract']['options']['max_checks'])
+    result = {'version': 'automatic-view-component-audit-v7', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
@@ -704,6 +712,7 @@ def audit(job, output, baseline=None):
         'elevation_level_context': report['elevation_level_context'],
         'facade_alignment': report['facade_alignment'],
         'sheet_scale_evidence': report['sheet_scale_evidence'],
+        'wall_return_corners': report['wall_return_corners'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,

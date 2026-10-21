@@ -1,5 +1,9 @@
 # Automatic peripheral-sheet scale evidence
 
+[Original wall-return corners](automatic-wall-return-corners.md) now provide a
+separate corner-based diagnostic. Wicker's marker-facing source vertices yield
+conditional width and position agreement; the earlier span mismatches remain.
+
 Inventory v8 investigates independent source-layout evidence after the raw facade
 extent review. It writes `sheet-scale-evidence.json`, an eleventh hash-bound output.
 No manual title-block box, literal anchor list, fit/holdout selection, dimension,

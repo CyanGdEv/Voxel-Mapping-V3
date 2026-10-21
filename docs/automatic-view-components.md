@@ -56,6 +56,10 @@ Inventory v8 adds [automatic sheet-scale evidence](automatic-sheet-scale-evidenc
 with peripheral-text fit/holdout discovery and separate inverse-layout width
 diagnostics. Source geometry and physical scale/origin acceptance stay separate.
 
+Inventory v9 adds [original wall-return corners](automatic-wall-return-corners.md),
+with both paint sides, source edge/probe proofs and conditional width/position
+checks. Original joints and source coordinates remain unchanged.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -122,6 +126,7 @@ automatic opening links v4 uses v9/v7, and building/facade scope v5 uses v10/v8.
 Elevation level context v6 uses v11/v9.
 Facade extent/origin review v7 uses v12/v10.
 Automatic sheet-scale evidence v8 uses v13/v11.
+Original wall-return corners v9 uses v14/v12.
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 
