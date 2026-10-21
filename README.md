@@ -97,6 +97,12 @@ plan paint spans 14.111 nominal metres versus a surrounding elevation frame's
 15.830 metres; the whole labelled enclosure spans 18.763 metres. Both comparisons
 fail, so no origin is fitted to the opening and the discrepancy remains explicit.
 
+[Automatic sheet-scale evidence](docs/automatic-sheet-scale-evidence.md) discovers
+shared peripheral text and assigns fit/holdout roles before fitting. Wicker's
+independent page-layout relation narrows the nearby-paint discrepancy to 0.305 m,
+which still fails the 0.25 m gate. Artwork scale and corresponding physical corners
+remain unverified; raw geometry and the original width rejections are preserved.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

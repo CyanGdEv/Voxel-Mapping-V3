@@ -24,6 +24,9 @@ from voxel_mapper.raster_opening_scan import scan as opening_scan
 from voxel_mapper import automatic_opening_links, clipped_plan_fills, fill_endcaps
 from voxel_mapper import automatic_building_scope, plan_elevation_edges
 from voxel_mapper import automatic_elevation_context, elevation_levels, automatic_facade_alignment
+from voxel_mapper import automatic_sheet_scale, drawing_annotations
+from voxel_mapper.drawing_page_tools import native_inverse
+from voxel_mapper.glyph_visibility import screen_architectural_span
 from voxel_mapper.ordinary_surfaces import label_runs
 
 
@@ -288,6 +291,91 @@ def verify_facade_alignment(source_pages, inventories, buildings, levels, alignm
                 assert position['status']==('all_witness_positions_compatible' if all(passes) else 'position_witnesses_disagree' if any(passes) else 'independent_origin_position_mismatch')
                 assert not position['origin_fit_to_opening'] and not position['scale_correction_applied']
                 assert not position['position_alignment_verified'] and not position['physical_correspondence_verified']
+
+
+def verify_sheet_scale(corpus, source_pages, inventories, buildings, levels, alignment, scale, checked, max_checks):
+    assert digest(automatic_sheet_scale.run(corpus,source_pages,inventories,buildings,levels,alignment,max_checks=max_checks))==digest(scale)
+    if scale['status']!='peripheral_sheet_layout_evidence_only':return
+    pages={(p['document_sha256'],p['page']):p for p in scale['pages']}
+    for key,review in pages.items():
+        with pymupdf.open(corpus.root/'files'/(key[0]+'.pdf')) as document:
+            page=document[key[1]-1];inverse=native_inverse(page);runs=list(label_runs(page.get_texttrace()))
+            original={(tuple(r['trace_indices']),tuple(r['character_indices'])):r for r in runs}
+            counts=Counter(''.join(chr(c[0]) for c in r['chars']).strip() for r in runs)
+            assert review['text_occurrence_counts']==dict(counts)
+            x0,y0,x1,y1=review['native_page_bounds'];inner=box(x0+.2*(x1-x0),y0+.2*(y1-y0),x1-.2*(x1-x0),y1-.2*(y1-y0))
+            for row in [*review['peripheral_text'],*review['dimension_text']]:
+                run=original[(tuple(row['trace_indices']),tuple(row['character_indices']))]
+                text=''.join(chr(c[0]) for c in run['chars']).strip();assert row['text']==text
+                rect=pymupdf.Rect(run['bbox']);geometry=Polygon([tuple(p*inverse) for p in (rect.tl,rect.tr,rect.br,rect.bl)])
+                assert geometry.equals_exact(shape(row['geometry_pdf_native']),0)
+                assert list(pymupdf.Point(run['chars'][0][2])*inverse)==row['origin_pdf_native']
+                assert row['page_literal_occurrences']==counts[text]
+                if row['glyph_screen'] is not None:
+                    assert digest(screen_architectural_span(page,run,zoom=24 if run['size']<4 else 6))==digest(row['glyph_screen'])
+                    checked['original_sheet_scale_glyph_screens']+=1
+                if 'claims' in row:
+                    assert row['claims']==[c for c in drawing_annotations.categories(text) if c['kind'] in ('explicit_dimension','untyped_numeric')]
+                    assert not row['component_dimension_verified']
+                    checked['unassociated_original_dimension_texts']+=1
+                else:
+                    assert not inner.intersects(geometry) and box(x0,y0,x1,y1).covers(geometry)
+                    checked['original_peripheral_text_records']+=1
+    pairs={p['id']:p for p in scale['pairs']}
+    for pair in pairs.values():
+        a=pages[tuple(pair['subject_page_key'])];b=pages[tuple(pair['reference_page_key'])]
+        assert digest(a)==pair['source_subject_review_sha256'] and digest(b)==pair['source_reference_review_sha256']
+        if pair['layout_fit'] is None:continue
+        terms=pair['terms'];assert [t['role'] for t in terms]==['holdout' if i%3==0 else 'fit' for i in range(len(terms))]
+        assert [t['text'] for t in terms]==sorted(t['text'] for t in terms)
+        fit=pair['layout_fit']
+        if pair['status']!='supported_furniture_layout_correspondence_only':continue
+        rows=fit['rows'];train=[r for r in rows if r['role']=='fit']
+        reference=np.asarray([r['reference_origin'] for r in train]);subject=np.asarray([r['subject_origin'] for r in train])
+        center=reference.mean(axis=0);coefficients=np.linalg.lstsq(np.column_stack((reference-center,np.ones(len(train)))),subject,rcond=None)[0]
+        linear=coefficients[:2];translation=coefficients[2]-center@linear
+        assert np.allclose(linear,fit['reference_to_subject_linear_row_matrix'],atol=1e-10,rtol=0)
+        assert np.allclose(translation,fit['reference_to_subject_translation'],atol=1e-9,rtol=0)
+        assert np.allclose(np.linalg.inv(linear),fit['subject_to_reference_linear_row_matrix'],atol=1e-10,rtol=0)
+        for row in rows:
+            residual=float(np.linalg.norm(np.asarray(row['reference_origin'])@linear+translation-np.asarray(row['subject_origin'])))
+            assert abs(residual-row['residual_pdf_points'])<1e-9 and residual<=.25
+            assert abs(row['observed_font_size_ratio']/math.sqrt(np.linalg.det(linear))-1)<=.015
+            checked['independent_layout_'+row['role']+'_anchors']+=1
+        assert not pair['physical_scale_verified'] and not pair['geometry_correction_applied']
+    by_view={v['view_id']:v for v in inventories};records={r['id']:r for r in buildings['frames']}
+    reviews={digest(r):r for row in alignment['frames'] for r in row['frame_reviews']}
+    families={f['id']:f for v in levels['views'] for f in v['families']}
+    for diagnostic in scale['diagnostics']:
+        pair=pairs[diagnostic['pair_id']];review=reviews[diagnostic['source_frame_review_sha256']]
+        record=records[diagnostic['facade_record_id']];plan=by_view[record['plan_view_id']]
+        frame=next(f for f in record['frame_review']['frames'] if f['id']==diagnostic['frame_id'])
+        inverse=np.asarray(pair['layout_fit']['subject_to_reference_linear_row_matrix']);axis=np.asarray(frame['diagnostic_axis'])@inverse;axis/=np.linalg.norm(axis)
+        origin=np.asarray(frame['source_native_endpoints'][0]);unit=plan['nominal_metres_per_pdf_point']
+        extents={e['id']:e for e in diagnostic['extents']};raw={e['id']:e for e in review['plan_extents']}
+        for extent in extents.values():
+            original=raw[extent['source_extent_id']];assert digest(original)==extent['source_extent_sha256']
+            assert digest(original['geometry_pdf_native'])==extent['source_geometry_sha256']
+            geometry=shape(original['geometry_pdf_native']);parts=list(geometry.geoms) if geometry.geom_type=='MultiPolygon' else [geometry]
+            values=[float(np.dot(np.dot(np.asarray(p)-origin,inverse),axis)*unit) for part in parts for p in part.exterior.coords]
+            assert np.allclose([min(values),max(values)],extent['nominal_plan_position_interval_m'],rtol=0,atol=1e-9)
+            for proof in extent['diagnostic_extreme_vertices']:
+                assert list(parts[proof['part_index']].exterior.coords[proof['exterior_vertex_index']])==proof['point_pdf_native']
+                checked['independent_layout_extreme_vertex_proofs']+=1
+            assert not extent['layout_application_verified'] and not extent['source_geometry_changed']
+            checked['independent_layout_extent_candidates']+=1
+        target=record['target_elevation_view_ids'][0];level=next(v for v in levels['views'] if v['view_id']==target)
+        for comparison in diagnostic['width_comparisons']:
+            parent=families[comparison['parent_family_review_id']];interval=extents[comparison['plan_extent_id']]['nominal_plan_position_interval_m'];width=interval[1]-interval[0]
+            assert abs(width-comparison['nominal_plan_width_m'])<1e-9
+            for witness,source in zip(comparison['witnesses'],parent['witnesses'],strict=True):
+                bounds=source['source_bounds_pixels'];measured=(bounds[2]-bounds[0])*level['pixel_edge_to_source_display_matrix'][0]*by_view[target]['nominal_metres_per_pdf_point']
+                assert abs(measured-witness['nominal_elevation_width_m'])<1e-9
+                assert abs(measured-width-witness['elevation_minus_plan_width_m'])<1e-9
+                assert witness['within_discovery_tolerance']==(abs(measured-width)<=.25)
+                checked['independent_layout_threshold_widths']+=1
+            assert not comparison['layout_application_verified'] and not comparison['scale_correction_applied']
+    assert all(not r['automatic_geometry_authorized'] for r in scale['evidence_requirements'])
 
 
 def audit(job, output, baseline=None):
@@ -594,7 +682,20 @@ def audit(job, output, baseline=None):
         baseline_comparison['level_supported_width_pairs_preserved']=len(levels['level_supported_width_links'])
     alignment=json.loads((root/report['facade_alignment']['file']).read_text())
     verify_facade_alignment(source['pages'],inspected_views,building_links,levels,alignment,checked,report['contract']['options']['max_checks'])
-    result = {'version': 'automatic-view-component-audit-v5', 'status': 'passed',
+    if baseline is not None and 'facade_alignment' in baseline_report:
+        old_alignment=json.loads((baseline/baseline_report['facade_alignment']['file']).read_text())
+        def semantic_extents(value):
+            return sorted((r['frame_id'],e['source_kind'],e['source_id'],c['nominal_plan_width_m'],c['status'],
+                tuple(w['nominal_elevation_width_m'] for w in c['witnesses']))
+                for row in value['frames'] for r in row['frame_reviews'] for c in r['extent_comparisons']
+                for e in r['plan_extents'] if e['id']==c['plan_extent_id'])
+        assert semantic_extents(old_alignment)==semantic_extents(alignment)
+        baseline_comparison['raw_facade_extent_comparisons_preserved']=len(semantic_extents(alignment))
+    scale=json.loads((root/report['sheet_scale_evidence']['file']).read_text())
+    corpus=Corpus(work/'corpus')
+    try:verify_sheet_scale(corpus,source['pages'],inspected_views,building_links,levels,alignment,scale,checked,report['contract']['options']['max_checks'])
+    finally:corpus.close()
+    result = {'version': 'automatic-view-component-audit-v6', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
@@ -602,6 +703,7 @@ def audit(job, output, baseline=None):
         'building_facade_links': report['building_facade_links'],
         'elevation_level_context': report['elevation_level_context'],
         'facade_alignment': report['facade_alignment'],
+        'sheet_scale_evidence': report['sheet_scale_evidence'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,
