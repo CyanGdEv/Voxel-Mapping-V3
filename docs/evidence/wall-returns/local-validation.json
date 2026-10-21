@@ -1,0 +1,28 @@
+{
+  "base_commit": "3d168ac81d0ebbb3a193e1a484f24dde9a5f073a",
+  "browser_review_sha256": "828ce75729bb1c7a46951ae6cd660b7e65b7d4f6341311fac99a17d70d198271",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "cbdb7d62e92748d8829b2dd1de887dec7470c8dcc1599ddb088270863d11d1d5",
+    "scripts/audit_wall_return_corners.py": "f158a4aa4810f2a664f7d90d8c4122b4ffda5341ffb502b974ef595dd813a182",
+    "scripts/render_wall_return_review.py": "b1bad953a072a24d9ad176816035302cdcb42689c04b07a60aa84f10a6dbed3a",
+    "tests/test_automatic_wall_returns.py": "7642370326d8e85fd94b945e88447a0befd4d8c4a010e7c14952dddac98d8ee0",
+    "tests/test_drawing_view_components.py": "ff30a7366d883d7fead0a6328ffc94a5280a0d81cda87c8412ddc41bd5e4fab0",
+    "voxel_mapper/area_cycles.py": "390d050c8da1b2c0d0b849139eed7a4ce7221804ae2af163265a5e4473326419",
+    "voxel_mapper/area_reconstruction.py": "ffea035e316518073b79aacaec0ef0f80650cd4db9bec88e2ab59e678e2af277",
+    "voxel_mapper/automatic_wall_returns.py": "231784caf7eec0415bfa0159a35ecaa14ad932f63d0e0ec50ffd646e9aa429dc",
+    "voxel_mapper/drawing_view_components.py": "5a75845a7b1c7e0dfc87fa8780f3c9d122ea57caa82b8bfc21cda544af304edd"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "96ad19ffa921077c43004c18e3a2bc3ce057b6c0a1af87198111dde8ab9695c6",
+  "focused_log_sha256": "5694a82c74100548d1db35e3645a5c75b66bdc3c4c187b7bc8b2275155fefd70",
+  "focused_related_tests": 46,
+  "full_suite_log_sha256": "1568a7fff2f5cb570696662ad98c25b2c5a03ed92b1bc74fcc94a18d202f734c",
+  "limits": "Original paint-return corner hypotheses only. NW marker-facing diagnostic width 15.837297 m versus 15.829751 m; opposite side fails. Six overlapping alternatives in one opening neighbourhood pass forward positions, six reverse comparisons fail; 60 source-witness combinations checked. Original vertices and nonzero proximity distance preserved. Physical wall/aperture roles, artwork scale/application, floor/bottoms, construction state and geographic/vertical registration remain unverified. No accepted physical geometry, world blocks or training labels. Semantic ranker untrained.",
+  "new_tests": 11,
+  "python": "3.12.14",
+  "real_audit_sha256": "7f14d69c9096d0b0b1684e96ab8ad9d3ec90d4994a00238a3ec0ac5c2d51bc93",
+  "seconds": 465.497,
+  "status": "passed",
+  "tests": 1631,
+  "version": "automatic-wall-return-local-validation-v1"
+}
