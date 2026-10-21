@@ -52,6 +52,10 @@ Inventory v7 adds [independent facade extent and origin review](automatic-facade
 It retains source width mismatches and tests positions only after every independent
 extent witness passes, without fitting an origin or scale to an opening.
 
+Inventory v8 adds [automatic sheet-scale evidence](automatic-sheet-scale-evidence.md),
+with peripheral-text fit/holdout discovery and separate inverse-layout width
+diagnostics. Source geometry and physical scale/origin acceptance stay separate.
+
 ## Native boundaries and wall bands
 
 Only whole, uniquely assigned native parents enter a view. Parent record hashes,
@@ -117,6 +121,7 @@ The original inventory used area/controller v6/v4; context v2 uses v7/v5 and
 automatic opening links v4 uses v9/v7, and building/facade scope v5 uses v10/v8.
 Elevation level context v6 uses v11/v9.
 Facade extent/origin review v7 uses v12/v10.
+Automatic sheet-scale evidence v8 uses v13/v11.
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 

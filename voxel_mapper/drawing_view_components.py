@@ -20,11 +20,12 @@ from . import jamb_group_partitions
 from . import automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools
 from . import automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views, plan_elevation_correspondence, building_spec
 from . import automatic_elevation_context, elevation_levels, drawing_annotations, automatic_facade_alignment
+from . import automatic_sheet_scale, sheet_layout_audit, architectural_view_layout
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v7'
+VERSION = 'automatic-view-component-inventory-v8'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -210,7 +211,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                      automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools,
                      automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views,
                      plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations,
-                     automatic_facade_alignment]},
+                     automatic_facade_alignment, automatic_sheet_scale, sheet_layout_audit, architectural_view_layout]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -312,6 +313,13 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
     names.append(alignment_name)
     if alignment['status'].endswith(('_withheld', '_required')):
         withheld.append({'view_id': None, 'kernel': 'facade_alignment', 'status': alignment['status'], 'reason': alignment.get('reason')})
+    scale = automatic_sheet_scale.run(corpus, data['pages'], inventories, buildings, levels, alignment, max_checks=config['max_checks'])
+    scale_name = 'sheet-scale-evidence.json'; atomic_json(root/scale_name, scale)
+    output_bytes += (root/scale_name).stat().st_size
+    if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
+    names.append(scale_name)
+    if scale['status'].endswith(('_withheld', '_required')):
+        withheld.append({'view_id': None, 'kernel': 'sheet_scale', 'status': scale['status'], 'reason': scale.get('reason')})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
@@ -326,6 +334,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
               'building_facade_links': {'file': building_name, 'status': buildings['status'], 'counts': buildings.get('counts', {})},
               'elevation_level_context': {'file': level_name, 'status': levels['status'], 'counts': levels.get('counts', {})},
               'facade_alignment': {'file': alignment_name, 'status': alignment['status'], 'counts': alignment.get('counts', {})},
+              'sheet_scale_evidence': {'file': scale_name, 'status': scale['status'], 'counts': scale.get('counts', {})},
               'output_sha256': {name: file_hash(root/name) for name in names}, 'world_geometry_additions': 0,
               'accepted_physical_components': 0, 'training_labels_generated': 0, 'world_placement_eligible': False}
     atomic_json(root/'component-report.json', result)

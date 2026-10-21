@@ -1,5 +1,9 @@
 # Automatic facade extent and origin review
 
+[Automatic sheet-scale evidence](automatic-sheet-scale-evidence.md) now adds an
+independent peripheral-text layout diagnostic alongside these raw comparisons.
+It narrows Wicker's nearby-paint mismatch to 0.305 m; the 0.25 m gate still fails.
+
 Component inventory v7 adds `facade-alignment.json`. It compares independently
 extracted source extents before attempting an opening position comparison.
 No user facade box, opening trace, origin, translation or scale fit is supplied.

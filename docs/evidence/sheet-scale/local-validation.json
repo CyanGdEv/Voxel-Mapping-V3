@@ -1,0 +1,27 @@
+{
+  "base_commit": "42bb821e848f76effa9eaf94558378545e5e9314",
+  "browser_review_sha256": "1ab61358e49e5263414a90bc2f385d9eeafadf4a5f6b64c7ff8fdab219eb82be",
+  "code_sha256": {
+    "scripts/audit_drawing_view_components.py": "f6f886e77a108c537743ca4e7c91e0d04af3879371a17b44bb8bb0231efc373a",
+    "scripts/render_sheet_scale_review.py": "5466639f63b86eff616b9d4ab450eac189442315d9ee22612166642418ac6d4e",
+    "tests/test_automatic_sheet_scale.py": "26dd6b83a05689ca5408a255d0d5c40f97739ae60b7da01b8959a5b25839f1d3",
+    "tests/test_drawing_view_components.py": "c68f1d1238a6e4e097381644b178b787ddd572bf98f1d2f8d76e61ec76cd28dc",
+    "voxel_mapper/area_cycles.py": "bc6d6ba7f8da96dccc70b2cd4ac5c7b5343b353d95f349adf7408cb209d4fac6",
+    "voxel_mapper/area_reconstruction.py": "dad4e8515f8e2fb17d75bea5d0d374d47d29d77594bbc639cbe8d4e4cca177d3",
+    "voxel_mapper/automatic_sheet_scale.py": "6acfdf2c1d5b328d661763552380e00698d453e5836e5795eceb7f73373b9eea",
+    "voxel_mapper/drawing_view_components.py": "78ccde588646c09e465d6dacd3ad5d19cfa1eeedacb404459b8681d13ce2fdff"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "9fdadeb0078879e95aed39f477ddbb1828bba8b7bd66316d399e2cf70dfa8bea",
+  "focused_log_sha256": "597fa236958a61caba28d8873a7b7eaa8894154dffc01a5ee2623ab9825d0e44",
+  "focused_related_tests": 38,
+  "full_suite_log_sha256": "f7bfe0809d15662f0645075071de343da99021d395b8c830b6e79c5953151f73",
+  "limits": "Independent peripheral-text layout evidence only. Fourteen anchors: nine fit and five holdout. Nearby-paint diagnostic 15.524630 m versus 15.829751 m remains outside the 0.25 m gate. All six extents require artwork extrapolation. Original geometry and 955/40/6 alternatives plus two raw extent rejections are preserved. No physical scale, origin, state/registration/datum, world blocks or training labels.",
+  "new_tests": 11,
+  "python": "3.12.14",
+  "real_audit_sha256": "94737c15f20ad7e07faafa93457c3e2d7ad8693277c49a97b078d9283df6fcbc",
+  "seconds": 708.396,
+  "status": "passed",
+  "tests": 1620,
+  "version": "automatic-sheet-scale-local-validation-v1"
+}
