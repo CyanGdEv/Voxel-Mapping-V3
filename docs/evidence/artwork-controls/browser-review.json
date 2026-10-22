@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "source_page_pairs": 1,
+  "fit_controls": 2,
+  "holdout_controls": 3,
+  "excluded_reference_keys": 7,
+  "target_sheet_exclusions": 4,
+  "heldout_table_states": 2,
+  "source_crop_hashes_verified": 2,
+  "control_coordinate_error_max": 0,
+  "original_corner_spans": 4,
+  "spans_requiring_extrapolation": 4,
+  "javascript_errors": 0
+}

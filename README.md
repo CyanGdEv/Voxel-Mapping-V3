@@ -116,6 +116,12 @@ Wicker's 24 plan gaps have symbol candidates; one supports the six overlapping
 NW position alternatives. The original illustrative-layout wording is retained.
 Physical aperture identity and artwork-scale application still require evidence.
 
+[Independent artwork controls](docs/automatic-artwork-scale-controls.md) now test
+the layout relation with five visible non-Shop references: two fit controls and
+three holdouts. The maximum held-out error is 0.0721 PDF points. The independent
+NW corner span is 15.8347 nominal m versus the elevation's 15.8298 m. All target
+spans remain outside the control hull, so physical scale/application stays unverified.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

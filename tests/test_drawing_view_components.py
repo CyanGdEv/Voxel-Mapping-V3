@@ -187,6 +187,7 @@ class ComponentInventoryTests(unittest.TestCase):
             path = root/'job.json'; path.write_text(json.dumps(job)); result = area_run(path)['areas']['test']
             self.assertEqual(result['drawing_view_components']['views'], 4)
             self.assertIn('door_symbol_evidence', result['drawing_view_components'])
+            self.assertIn('artwork_scale_controls', result['drawing_view_components'])
             self.assertEqual(result['world_geometry_additions'], 0)
             self.assertEqual(area_run(path)['areas']['test']['drawing_view_components']['run_views'], 0)
             self.assertIn('drawing_view_components', run_all(path, stage='extract')['results'][0])

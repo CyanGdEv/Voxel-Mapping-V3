@@ -1,5 +1,9 @@
 # Automatic original door-symbol evidence
 
+[Independent artwork controls](automatic-artwork-scale-controls.md) now add a
+separate non-Shop layout check. The original symbol candidates and all six NW
+correspondence alternatives remain unchanged; physical scale and bottoms stay held.
+
 Inventory v10 adds `door-symbol-evidence.json`, the thirteenth hash-bound output.
 It tests original plan leaf and segmented-swing geometry independently of the
 elevation width/position comparison. It supplies a source role cue rather than

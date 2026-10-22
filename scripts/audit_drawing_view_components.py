@@ -27,6 +27,7 @@ from voxel_mapper import automatic_elevation_context, elevation_levels, automati
 from voxel_mapper import automatic_sheet_scale, drawing_annotations
 from scripts.audit_wall_return_corners import verify as verify_wall_returns
 from scripts.audit_door_symbol_evidence import verify as verify_door_symbols
+from scripts.audit_artwork_scale_controls import verify as verify_artwork_controls
 from voxel_mapper.drawing_page_tools import native_inverse
 from voxel_mapper.glyph_visibility import screen_architectural_span
 from voxel_mapper.ordinary_surfaces import label_runs
@@ -717,7 +718,22 @@ def audit(job, output, baseline=None):
     corpus=Corpus(work/'corpus')
     try:verify_door_symbols(corpus,source['pages'],inspected_views,returns,symbols,checked,report['contract']['options']['max_checks'])
     finally:corpus.close()
-    result = {'version': 'automatic-view-component-audit-v8', 'status': 'passed',
+    if baseline is not None and 'door_symbol_evidence' in baseline_report:
+        old_symbols=json.loads((baseline/baseline_report['door_symbol_evidence']['file']).read_text())
+        assert old_symbols['counts']==symbols['counts']
+        assert digest([p['edges'] for p in old_symbols['pages']])==digest([p['edges'] for p in symbols['pages']])
+        assert digest([v['gaps'] for v in old_symbols['views']])==digest([v['gaps'] for v in symbols['views']])
+        def semantic_symbol_links(value):
+            return sorted((l['source_gap_sha256'],l['status'],tuple(sorted((s['plan_view_id'],s['symbol_id']) for s in l['symbol_candidates'])))
+                for l in value['conditional_position_links'])
+        assert semantic_symbol_links(old_symbols)==semantic_symbol_links(symbols)
+        baseline_comparison['prior_original_door_symbols_preserved']=symbols['counts']['symbol_candidates']
+        baseline_comparison['prior_symbol_position_links_preserved']=len(symbols['conditional_position_links'])
+    artwork=json.loads((root/report['artwork_scale_controls']['file']).read_text())
+    corpus=Corpus(work/'corpus')
+    try:verify_artwork_controls(corpus,source['pages'],inspected_views,building_links,levels,scale,returns,artwork,checked,report['contract']['options']['max_checks'])
+    finally:corpus.close()
+    result = {'version': 'automatic-view-component-audit-v9', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
@@ -728,6 +744,7 @@ def audit(job, output, baseline=None):
         'sheet_scale_evidence': report['sheet_scale_evidence'],
         'wall_return_corners': report['wall_return_corners'],
         'door_symbol_evidence': report['door_symbol_evidence'],
+        'artwork_scale_controls': report['artwork_scale_controls'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,
