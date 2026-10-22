@@ -579,3 +579,8 @@ The [roof-junction review](docs/roof-source-topology.md) connects original plan
 strokes before comparing all relative-position hypotheses. One source candidate
 agrees, while its outer rails retain a half-metre tail beyond the ridge. Full
 depth, eave heights and physical correspondence remain unresolved.
+
+The [preshow source review](docs/preshow-reference-evidence.md) recovers the
+dedicated checksum-verified elevations, recognizes numbered cardinal captions,
+and fixes staggered-caption crops. Original roof-sheet references now link to
+three additional preshow views; source visibility and geometry holds remain.

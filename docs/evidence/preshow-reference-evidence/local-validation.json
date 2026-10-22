@@ -1,0 +1,52 @@
+{
+  "acquisition_sha256": "23963d81d4ca64b7622d73407ba70ae14ae992efd467ae61feff6d9b1a1064fa",
+  "base_commit": "2e7ff7a83998a33b72ef6e5d85e6819b034e39ed",
+  "browser_review_sha256": "9bedb2f968222736dfa4598b272f3e24a510a9207920e26ccb1b0ed1ecafcdbb",
+  "code_sha256": {
+    "scripts/audit_roof_reference_evidence.py": "7825f5a9520730b025124dcfc30cc007ef461feedfa0abd77bb9da43c43ebd40",
+    "scripts/build_roof_reference_evidence.py": "bc9e17cec785b1d9074443ee54bbd5b075dba52b93a1285c6d2f2af6a6e4bddf",
+    "scripts/render_roof_reference_evidence.py": "6be910dae831e77b078545dfe663eeff5a39c4c61377f3f1ce2941bfd5099bd5",
+    "tests/test_roof_reference_evidence.py": "ff0c7fffccb75816ff41c661e77f0ab94064c019e222fe1830f5b277780df221",
+    "voxel_mapper/architectural_view_layout.py": "18b6481e9a1a00f5a2d7b78d1fb4806c5e88095881c2cf44570fef26c9487324",
+    "voxel_mapper/drawing_side_references.py": "2c8115437d97ccef180a8b5ce09a5a7d10341ec6c580815bd0707c98dac3fdca",
+    "voxel_mapper/drawing_view_candidates.py": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86",
+    "voxel_mapper/drawing_view_components.py": "80ae5f8960e5d904e9a7c4ae9f2b31c42e81d7f9f0514e4197cc6ab419fd441d",
+    "voxel_mapper/drawing_views.py": "ee11f77b01ff269684ff017c078380e15b3018a2bd182d6360a5852c4802af8b",
+    "voxel_mapper/numbered_elevation_captions.py": "6c2d54ffe033a9e2469b613bc18411dfb1e9157f2b4c8f2e3138fa37708e3130",
+    "voxel_mapper/roof_reference_evidence.py": "53bdc029971e6ec7504fe3730decd92b35bbb6c17b460365a9e1a7e261630f3e"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "71a4eacc3ceba1e565d55937d94bdd0c246411245198a58e63af66ccd23b5354",
+  "counts": {
+    "additional_source_documents": 1,
+    "additional_source_pages": 1,
+    "additional_view_candidates": 4,
+    "missing_source_targets": 2,
+    "new_roof_models": 0,
+    "side_reference_candidates": 13,
+    "source_aim_diagnostics": 364,
+    "source_visibility_holds": 5,
+    "unique_source_target_links": 6
+  },
+  "focused_log_sha256": "b591d09f6474d02c491bf40fbe5897cefda9613a1325cecb9a074999598a1159",
+  "focused_tests": 41,
+  "full_suite_log_sha256": "d407a38826a04cec376faf8b41df54e97823fe51d7567aaee610dc8e615fb65f",
+  "html_sha256": "07c31424c549416ae1ac20bd5b63de28db4bd404c65098c0e8ece86feebd4445",
+  "limits": "One recorded original preshow PDF reacquired with matching checksum. Cardinal captions, staggered-row source crops and exact sheet/view links only. Split level-label marker binding, eave/ridge measurements, full depth, physical identity and registration remain unresolved. Source visibility holds and main roof unchanged. No new mesh, accepted component, world block or training label; semantic ranker untrained.",
+  "new_regressions": 15,
+  "parent_ci": {
+    "conclusion": "success",
+    "run_id": 39839479031,
+    "run_number": 634,
+    "workflow": "Tests"
+  },
+  "parent_topology_audit_sha256": "7c43f7e3e3bb44a989c0309f68645f760d77544971d8110acf3788e018348cfe",
+  "python": "3.12.14",
+  "review_json_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+  "screenshot_sha256": "4ad594f98c71130798c1b06feb4d96969feca76788f4aba85ba84eef13ada03b",
+  "seconds": 327.349,
+  "source_audit_sha256": "e22fd87e742cf16aeef98b783b047d561d4257b0988e37d6b50c75e6baa08d5e",
+  "status": "passed",
+  "tests": 1737,
+  "version": "preshow-reference-local-validation-v1"
+}

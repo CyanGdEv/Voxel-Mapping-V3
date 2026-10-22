@@ -24,6 +24,7 @@ from . import automatic_sheet_scale, sheet_layout_audit, architectural_view_layo
 from . import automatic_wall_returns
 from . import automatic_door_symbols
 from . import automatic_artwork_controls
+from . import numbered_elevation_captions
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
@@ -212,7 +213,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                     [architectural_interpretation, drawing_components, native_opening_inventory, raster_opening_scan,
                      raster_stroke_context, drawing_annotation_context, glyph_visibility, ordinary_surfaces, jamb_group_partitions,
                      automatic_opening_links, clipped_plan_fills, fill_endcaps, drawing_footprints, drawing_page_tools,
-                     automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views,
+                     automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views, numbered_elevation_captions,
                      plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations,
                      automatic_facade_alignment, automatic_sheet_scale, sheet_layout_audit, architectural_view_layout,
                      automatic_wall_returns, automatic_door_symbols, automatic_artwork_controls]},
