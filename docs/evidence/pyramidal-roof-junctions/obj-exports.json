@@ -1,0 +1,61 @@
+{
+  "all_vertices_and_triangles_round_trip_identical": true,
+  "models": [
+    {
+      "file": "c6667ebb2f2bece51b4640536e6e93d936b56f1cc122ca2593e02b8cb440718e.obj",
+      "model_id": "c6667ebb2f2bece51b4640536e6e93d936b56f1cc122ca2593e02b8cb440718e",
+      "sha256": "268e062d2748567ef1ca530fae5851d15acb922cf56915c930d89efdc4597c53",
+      "source_level_binding_id": "fc379af9be962ec40ad2f6db38a58e22c4a6a139b436a59b2f5c777d75a3822b",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "06a72325a6cd4b974c4aa061a04dc0b3cba980fc2dfb841e7ae6b89a4fac5ea4.obj",
+      "model_id": "06a72325a6cd4b974c4aa061a04dc0b3cba980fc2dfb841e7ae6b89a4fac5ea4",
+      "sha256": "3026343021815a023f936efef466eb2e833c693867c4a38799ebb43182aa8efc",
+      "source_level_binding_id": "1ce5f1b63fcfdaa48c02f469546b7178e6b2513bf3172530534d87885db3bff0",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "cb0d0e863e35f48c0321b463bf1da8ca1489bc092989e91ba7129286aca3dfc8.obj",
+      "model_id": "cb0d0e863e35f48c0321b463bf1da8ca1489bc092989e91ba7129286aca3dfc8",
+      "sha256": "9a1760059715e31f241a40d32d72c2942bd115a91836c9eb0db884d1d589a30a",
+      "source_level_binding_id": "7c74bf66040607593711fa0b77ac228eef01567fa41019762bd676fdcf66f7fb",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "32261f51dd3026952f51293fc8f5df8da5adbd169ed5ee123bdcf60a623ef29c.obj",
+      "model_id": "32261f51dd3026952f51293fc8f5df8da5adbd169ed5ee123bdcf60a623ef29c",
+      "sha256": "d113ed90e5751e9721178d65fb4676031bcef65567411b98646c2bf8d5ccdb1a",
+      "source_level_binding_id": "fc379af9be962ec40ad2f6db38a58e22c4a6a139b436a59b2f5c777d75a3822b",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "58cdfffecd204a732c106d447ae1d76d4254cb0c56b93f0134225a48afdfe4bb.obj",
+      "model_id": "58cdfffecd204a732c106d447ae1d76d4254cb0c56b93f0134225a48afdfe4bb",
+      "sha256": "ade2110613a4c1d27249ba4df9907f11d1bf5efe2afc5b43128c3db60751b127",
+      "source_level_binding_id": "1ce5f1b63fcfdaa48c02f469546b7178e6b2513bf3172530534d87885db3bff0",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "09c73b44122a628efa75711a1ff92f56d3807936991beb136f56ef28b8d44bec.obj",
+      "model_id": "09c73b44122a628efa75711a1ff92f56d3807936991beb136f56ef28b8d44bec",
+      "sha256": "09d3cb518fa2ccd386e2ed4b727a74d34ca9f89e2ac212cb6edb62c86c410658",
+      "source_level_binding_id": "7c74bf66040607593711fa0b77ac228eef01567fa41019762bd676fdcf66f7fb",
+      "triangles": 4,
+      "vertices": 5,
+      "world_placement_eligible": false
+    }
+  ],
+  "source_review_sha256": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+  "status": "conditional_pyramid_inspection_exports"
+}
