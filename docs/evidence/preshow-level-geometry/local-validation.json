@@ -1,0 +1,49 @@
+{
+  "base_commit": "3f8f51321dae4fe2ad32122a10b22fb07a79cd27",
+  "browser_review_sha256": "2e91f99f3f3cbf5fd2cd498b8cacc39893f58615af1f0958cde7df108898f020",
+  "charged_checks": 97889,
+  "code_sha256": {
+    "scripts/audit_preshow_level_geometry.py": "ced1efcb8acb5e98b6bb7047799e5003d132e07fea667356763d56992be83049",
+    "scripts/build_preshow_level_geometry.py": "88eddad6a85a026ffedb2b4aeb1ceb3794d83509754c89ff1e5a6b336719113b",
+    "scripts/export_preshow_roof_patches.py": "c47b165c2fd4092f9e7dae492806cda93c3711eefb6adae0dbbca80832b4daff",
+    "scripts/render_preshow_level_geometry.py": "848b4ec2069d4a22269c95bd38167cbfa9ab3fb9ae982adedd4603d972f3f9bb",
+    "tests/test_preshow_level_geometry.py": "3ee330d9c94a5741d976b685571506fab4f2893e04f7e81ac466e17817d91199",
+    "voxel_mapper/preshow_level_geometry.py": "e02b13560a7329fe3256e01286f52c1ef13d88af2c795e429cdab35133d98fb9",
+    "voxel_mapper/preshow_roof_patches.py": "9bb39f7da7c7ae756f49d9822b89601869421d724ece1d1a9e05c01cd874fac1",
+    "voxel_mapper/split_level_labels.py": "2a1f2f873f4a53294fa552908bfbc6260fd847e2d71e2518156d25c16c5c3dbe"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "fa2151be8492fc6c0a7c640ccedcd1ad98ea7e2c45ff583ba2a9a292ab8a562d",
+  "counts": {
+    "conditional_roof_patches": 32,
+    "inter_sheet_height_checks": 3588,
+    "relative_level_checks": 6,
+    "source_endcap_checks": 298,
+    "source_gable_intersections": 39,
+    "source_marker_bindings": 9,
+    "split_label_pairs": 3,
+    "threshold_checks": 48
+  },
+  "focused_log_sha256": "c457ab4e0f2714454cabf31281ed283d6e29c9078b2f16e6e8d415de0fa3f2eb",
+  "focused_tests": 16,
+  "full_suite_log_sha256": "916c2cc87df69af7b731a9a5db43d9f8d9810e01a6b41ca1a8582a7cf75a768e",
+  "html_sha256": "907226dddcd578135b2c8cafaf3f571802f0b046cd940be9259957cf005bb1ee",
+  "limits": "Conditional unplaced source-cap roof patches only. Printed datum shared across sheets, orthographic view, physical roof/fascia roles and continuous surfaces assumed. Original rail tails left unmeshed. Physical identity, full wing, walls, joins and geographic registration unresolved. Earlier source holds and main roof unchanged. No accepted component, world block or training label; semantic ranker untrained.",
+  "new_regressions": 16,
+  "obj_manifest_sha256": "cfae95ab00ef2b3e59f1926eb5655fc1c13e668f7db506494201d0a54fb9e2f9",
+  "parent_ci": {
+    "conclusion": "success",
+    "run_id": 39860198181,
+    "run_number": 636,
+    "workflow": "Tests"
+  },
+  "parent_reference_audit_sha256": "e22fd87e742cf16aeef98b783b047d561d4257b0988e37d6b50c75e6baa08d5e",
+  "python": "3.12.14",
+  "review_json_sha256": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+  "screenshot_sha256": "c0c2fe479f076b39babc7ce3a3fe49bc2723dd58832f724284af1cea914cd50c",
+  "seconds": 539.031,
+  "source_audit_sha256": "73da2e61e3d1dc0667f74653dbf1377080e1deccc1b66a04285f3256bebd0278",
+  "status": "passed",
+  "tests": 1753,
+  "version": "preshow-level-geometry-local-validation-v1"
+}

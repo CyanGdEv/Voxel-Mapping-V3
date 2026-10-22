@@ -584,3 +584,8 @@ The [preshow source review](docs/preshow-reference-evidence.md) recovers the
 dedicated checksum-verified elevations, recognizes numbered cardinal captions,
 and fixes staggered-caption crops. Original roof-sheet references now link to
 three additional preshow views; source visibility and geometry holds remain.
+
+The [preshow level and geometry review](docs/preshow-level-geometry.md) binds
+separate original level labels and extracts own-source ridge/fascia candidates.
+It exports conditional roof patches bounded by original plan caps; rail tails,
+physical correspondence, walls and world placement remain unresolved.

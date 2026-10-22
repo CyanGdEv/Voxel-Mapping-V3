@@ -1,0 +1,16 @@
+{
+  "checked": {
+    "exact_source_view_key_joins": 13,
+    "independent_composited_row_windows": 1,
+    "independent_source_heads": 13,
+    "independent_symbol_aim_diagnostics": 364,
+    "original_arm_paint_witnesses": 60,
+    "original_caption_traces": 4,
+    "original_circle_markers": 13,
+    "original_render_artifacts": 8
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+  "source_topology_sha256": "56a2a4fd2e13476e487a42b95fd875f1f96b44972602f555f915540ac29b1295",
+  "status": "passed"
+}
