@@ -58,6 +58,11 @@ and planning acceptance.
 
 ## Whole-park batch jobs
 
+The [automatic pitched-roof review](docs/automatic-gable-roof.md) combines
+original roof-plan lines and long-elevation panel heights into a provisional 3D
+main roof, with separate gable checks and an offline OBJ download. The adjacent
+wing and physical identity/placement remain unresolved.
+
 The [automatic wall and roof profiles](docs/automatic-facade-profile.md) recover
 the main NW façade’s source-cell silhouette and uneven ground interface, with
 separate raster thresholds and an interactive source comparison. Meshes retain

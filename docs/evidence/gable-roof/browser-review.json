@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "source_height_witnesses": 2,
+  "source_elevations": 4,
+  "source_thresholds": 2,
+  "model_view_threshold_camera_states": 40,
+  "last_pair_choices_checked": 8,
+  "display_toggles": 3,
+  "source_image_hashes_verified": 5,
+  "projected_coordinate_error_max": 0,
+  "original_source_points_and_roles_exact": true,
+  "original_plan_endpoints_exact": true,
+  "disagreeing_checks_visible": 223,
+  "roof_triangles": 4,
+  "obj_vertices_verified": 6,
+  "obj_triangles_verified": 4,
+  "obj_sha256": "419df352615fe7d539d30cc203649df93b4dc35b16a0541b44a096dfa36bbb72",
+  "javascript_errors": 0
+}
