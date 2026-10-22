@@ -110,6 +110,12 @@ opening alternatives agree in the forward direction, with the opposite side and
 reverse results retained. The correspondence remains conditional on physical
 corner roles and artwork-scale application; no source geometry is repaired.
 
+[Automatic door-symbol evidence](docs/automatic-door-symbol-evidence.md) recovers
+original short leaf/swing segments with exact source connectivity. Seven of
+Wicker's 24 plan gaps have symbol candidates; one supports the six overlapping
+NW position alternatives. The original illustrative-layout wording is retained.
+Physical aperture identity and artwork-scale application still require evidence.
+
 The opt-in [evidence-directed acquisition](docs/evidence-directed-acquisition.md)
 bootstraps known planning drawings from an empty corpus, follows missing-evidence
 requirements, and refreshes extraction after bounded downloads. Attempt receipts

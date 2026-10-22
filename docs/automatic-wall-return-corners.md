@@ -1,5 +1,9 @@
 # Automatic original wall-return corners
 
+[Original door-symbol evidence](automatic-door-symbol-evidence.md) now supplies
+a separate plan-role cue for the conditionally aligned NW gap. The source symbol
+and illustrative-layout wording do not verify physical aperture identity or scale.
+
 Inventory v9 adds `wall-return-corners.json`, the twelfth hash-bound output. It
 traces original facing paint and perpendicular returns, then compares original
 paint-side vertices with elevation evidence. It does not merge paints, repair

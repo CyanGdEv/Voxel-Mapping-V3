@@ -10,7 +10,7 @@ from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .planning_bulk import Corpus
 from .reconstruction.park_generators import FAMILY_ALIASES
 
-VERSION='resort-area-reconstruction-v14'
+VERSION='resort-area-reconstruction-v15'
 
 
 def select_documents(catalogue, area):

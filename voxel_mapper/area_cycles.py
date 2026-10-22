@@ -10,7 +10,7 @@ from .area_reconstruction import run
 from .generation_cycles import CyclePlan, atomic_json, file_hash
 from .generation_cycle_export import worker, worker_directory, safe_file
 
-VERSION = 'resort-area-cycles-v12'
+VERSION = 'resort-area-cycles-v13'
 
 def load(job):
     job = Path(job).resolve()
