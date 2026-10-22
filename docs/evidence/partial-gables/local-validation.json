@@ -1,0 +1,46 @@
+{
+  "audit_sha256": "e8912e7fcc6580d2a22e08cd59c98455477ff5c865fac75bd1c745eb0f2c6f31",
+  "base_commit": "849c99e82737294e515dc2f4c2075ae8ef4d6952",
+  "browser_review_sha256": "f352ed07fb8919c586ffece39afa635ab7d2e4eb1e5c353407c7d862dc8e7d65",
+  "code_sha256": {
+    "scripts/audit_automatic_partial_gables.py": "257d7ad23e419d4a1d5418e98c6fcdd85856fb95b85baddd948e6fce0fdc1f1a",
+    "scripts/build_automatic_partial_gables.py": "975b7fc2b479a1dca20214a31ccf3fd44382f6a3f32ffeabb6160eef95d91273",
+    "scripts/render_automatic_partial_gables.py": "3d22350b7cb641aaeef3b62b5ff9e680e2fb8b21478025749ebc66075e2aa152",
+    "tests/test_automatic_partial_gables.py": "c33f36e64569aa99de39962b1af5e0c6a5bc09728cee1098242f57ccafb5d3a0",
+    "voxel_mapper/automatic_partial_gables.py": "640f2af487f30f6a79446a369f43d50dbf059bd1cf7e7a4891fad990ba9c196c"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "cdf26b1f8e4347d3d698d1076891e95ae363b38a2d8c23a240060c741da55f32",
+  "counts": {
+    "conditional_partial_gable_pairs": 5,
+    "cross_threshold_checks": 0,
+    "held_partial_gable_pairs": 76,
+    "new_roof_models": 0,
+    "original_short_source_pixels": 17683,
+    "partial_gable_pairs": 81,
+    "short_source_lines": 479,
+    "source_views": 4,
+    "views_with_cross_threshold_support": 0
+  },
+  "download_matches_original_review": true,
+  "focused_log_sha256": "ddf6df8bd8b4f4883356d386ce1ec6581f530458e3be5cc4b96d217575342796",
+  "full_suite_log_sha256": "e8a313d988bcc0303e5159ca22fd3a7096142f7702777670445024f90308b985",
+  "html_payload_matches_original_review": true,
+  "html_sha256": "dbc98ce1f1bcc874198651c3b92f3255e197dfc1e28fc6be4e9f4bf6d32c883f",
+  "limits": "Short original source strokes and conditional partial intersections only. Five NW alternatives at threshold 235; no view supported at both thresholds. Eaves, wing depth, complete silhouette and physical correspondence held. Parent main roof unchanged; no new mesh, accepted component, world block or training label. Semantic ranker untrained. Same three originals; no new acquisition.",
+  "new_focused_tests": 12,
+  "parent_ci": {
+    "conclusion": "success",
+    "run_id": 39819128734,
+    "run_number": 628,
+    "workflow": "Tests"
+  },
+  "parent_roof_audit_sha256": "0533ee8527de982f7915afaee1084d9873e1898b279a98ae445b8761e9bbcb09",
+  "python": "3.12.14",
+  "review_json_sha256": "94419a1133ff3741da04b72c46d1a9939c3bc036017605473fba48d2faa60e90",
+  "screenshot_sha256": "c2ae0ba1475ea25424e798c48a1e48b53b5db3901fe041d040ca5a7c85472fcd",
+  "seconds": 791.414,
+  "status": "passed",
+  "tests": 1699,
+  "version": "automatic-partial-gable-local-validation-v1"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "source_elevations": 4,
+  "source_thresholds": 2,
+  "interaction_states": 113,
+  "individual_pair_options_checked": 81,
+  "source_image_hashes_verified": 4,
+  "original_source_coordinates_and_roles_exact": true,
+  "fit_spans_and_intersections_exact": true,
+  "all_held_alternatives_retained": true,
+  "cross_threshold_hold_visible": true,
+  "downloaded_evidence_identical": true,
+  "new_roof_models": 0,
+  "parent_roof_changed": false,
+  "javascript_errors": 0
+}

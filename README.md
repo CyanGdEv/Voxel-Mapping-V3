@@ -561,3 +561,9 @@ See [park paving](docs/park-paving.md) for bounded OSM material inheritance,
 planning evidence and vanilla-block palettes.
 
 Planning path-side details: see [docs/park-details.md](docs/park-details.md) for reviewed rock, planter, wall and building extraction and the additive V5 world pass.
+
+### Partially occluded gable source evidence
+
+The downstream [short-gable review](docs/automatic-partial-gables.md) recovers
+short original strokes and retains competing partial intersections. Cross-threshold
+stability and complete wing geometry remain held; the main roof is unchanged.

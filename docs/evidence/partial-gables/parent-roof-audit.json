@@ -1,0 +1,33 @@
+{
+  "checked": {
+    "conditional_pitched_roof_models": 2,
+    "independent_gable_intersections": 223,
+    "independent_gable_model_checks": 446,
+    "independent_parallel_triples": 2,
+    "original_hough_seed_receipts": 81,
+    "original_native_plan_line_receipts": 6,
+    "original_slope_pixels": 10474,
+    "pitched_roof_triangles": 8,
+    "source_line_fit_and_check_solutions": 80,
+    "source_long_panel_height_witnesses": 2
+  },
+  "counts": {
+    "conditional_roof_models": 2,
+    "distinct_roof_meshes": 1,
+    "gable_checks": 446,
+    "gable_checks_agree": 28,
+    "long_height_witnesses": 2,
+    "models_with_both_source_threshold_checks": 2,
+    "native_parallel_triples": 2,
+    "source_gable_pairs": 223,
+    "source_gable_views": 4,
+    "source_plan_reviews": 2,
+    "source_slope_lines": 80
+  },
+  "fresh_replay_identical": true,
+  "scope": "Conditional source-plan/long-view roof, checked against separate end-elevation fits; no physical identity, as-built, registration or full-building acceptance.",
+  "source_review_sha256": "b1671d73923bd9b0cde9b6a7c631e4235dca48600da62f8fae395eddfa16192e",
+  "status": "passed",
+  "version": "automatic-gable-roof-audit-v1",
+  "world_geometry_additions": 0
+}
