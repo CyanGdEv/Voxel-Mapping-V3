@@ -58,6 +58,12 @@ and planning acceptance.
 
 ## Whole-park batch jobs
 
+The [automatic unplaced façade preview](docs/automatic-facade-preview.md) now
+checks Shop annotations against the fixed non-Shop layout and produces an
+orbitable NW source context with seven overlapping opening outlines. Original
+jamb bounds and a separately detected base band remain visible; physical wall,
+aperture and placement roles are unresolved.
+
 The opt-in [automatic drawing views](docs/automatic-drawing-views.md) prepares
 source-linked view crops and nominal local geometry without per-view rectangles.
 It retains original glyph evidence, whole-object membership and unresolved

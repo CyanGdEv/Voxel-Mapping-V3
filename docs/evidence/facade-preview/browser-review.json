@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "distinct_opening_choices": 7,
+  "source_alternatives": 30,
+  "interaction_states": 28,
+  "original_image_hashes_verified": 8,
+  "projected_coordinate_error_max": 0,
+  "target_annotation_rows": 4,
+  "held_target_rows": 1,
+  "physical_dimensions_unset": true,
+  "apertures_carved": 0,
+  "javascript_errors": 0
+}

@@ -181,3 +181,9 @@ Retained audit and local-test receipts are in `docs/evidence/view-components/`.
 | North-east elevation | 9 | 7 | 2,520 unverified families |
 
 The local suite passes **1,552 tests**, including 13 new component-inventory tests.
+
+The downstream [automatic façade preview](automatic-facade-preview.md) consumes
+the v11 pack without changing extraction. It retains the fixed non-target fit,
+adds target annotation checks and separate position/base-band diagnostics, and
+shows original raster context and overlapping opening outlines in an unplaced
+review. Physical geometry acceptance and world placement stay false.

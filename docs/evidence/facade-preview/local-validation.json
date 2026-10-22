@@ -1,0 +1,37 @@
+{
+  "audit_sha256": "8c9c0ee676322b630d2f2ac17a7f25e99e78abc7d397476967f37c91e93ca39d",
+  "base_commit": "774bf4c410b09d6a0b84603ec63442cf4a4f082e",
+  "browser_review_sha256": "fb91449b3e8a8f50cf7e727b55a3735f9686b393e4ad9b156bf78df1e9e274e3",
+  "code_sha256": {
+    "scripts/audit_automatic_facade_preview.py": "10e12295b1a74c4b49798d65c9d3e5aa5a83e8c40699c2d56ae7958b24321a6a",
+    "scripts/build_automatic_facade_preview.py": "9b44f277a74b6d9658add7a2537b4fb0f326f92d0f86d37d153a6328fb65977e",
+    "scripts/render_automatic_facade_preview.py": "f439c49e8bb1263571ca2dda6ee9723d1a98ed31c909197205cc9ce14e0a5d18",
+    "tests/test_automatic_facade_preview.py": "3a8171a1ec500f8a6e2c880be79b3dbf0e28b648d76304e5c54c920a7c68e159",
+    "voxel_mapper/automatic_facade_preview.py": "00e868a955839d7e48064cb28ebb225fe4401fd1d6abc8a4adaea56de3653db1"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "e5eda5cece6a996e4fa2ef1bf3bc5a3a3abb10a7442ffeefbaa2a28789d15f63",
+  "counts": {
+    "base_band_candidate_crops": 7,
+    "position_checks": 12,
+    "positions_compatible": 6,
+    "source_linked_alternatives": 30,
+    "target_annotations_agree": 3,
+    "target_checks": 4,
+    "unique_meshes": 7,
+    "unique_source_crops": 7
+  },
+  "focused_log_sha256": "3d815113e8a20bf8d777fd5678ef7b921436aaf8d1d5db4abc8f100864d787d6",
+  "full_suite_log_sha256": "cc1b8159084eddfc58e1d64d0cb721e3c5bc23f6f76839720f88cce523be4267",
+  "html_sha256": "4492f3fb25f98522799f2199e8b7c81c9ad74ae1b774604ee304ab06aab6d117",
+  "limits": "Drawing-only context plane and opening outlines. Base-band candidate separately retained; physical wall/aperture/threshold, thickness/heights, scale, construction state and park registration unverified. No world blocks, accepted components, training labels or trained semantic ranker. Same three originals; no new source acquired.",
+  "new_focused_tests": 10,
+  "preview_json_sha256": "e62da2fcad4f920005fa46b3e7739b6ca8a51218d77f69fbc7d2c4028af6b885",
+  "python": "3.12.14",
+  "screenshot_sha256": "e3052cd4b06e62d88cf0c127c56cb098044fbdfbceee4cc40fa1a72ee8217a4b",
+  "seconds": 929.906,
+  "status": "passed",
+  "tests": 1663,
+  "upstream_audit_sha256": "36a76fe139694ed2320e946c37eeb24934cefe27924badde58ef47f940192e85",
+  "version": "automatic-unplaced-facade-local-validation-v1"
+}
