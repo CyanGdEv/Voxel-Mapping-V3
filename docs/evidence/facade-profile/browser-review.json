@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "source_profile_groups": 1,
+  "threshold_variants": 2,
+  "opening_choices": 7,
+  "choice_threshold_angle_states": 28,
+  "independent_display_toggles": 6,
+  "source_image_hashes_verified": 1,
+  "mesh_triangle_coordinate_error_max": 0,
+  "source_polygon_paths_exact": true,
+  "physical_pitch_and_thickness_unset": true,
+  "javascript_errors": 0
+}

@@ -1,0 +1,60 @@
+{
+  "checked": {
+    "independent_base_band_witnesses": 14,
+    "independent_bottom_crops": 7,
+    "independent_fixed_target_checks": 3,
+    "independent_position_witnesses": 60,
+    "original_pdf_crop_replays": 7,
+    "original_target_circle_receipts": 8,
+    "source_linked_mesh_alternatives": 30
+  },
+  "component_report_sha256": "52438c3aebebf5de8210405f6f04e63bc19c220f9f0a67fd4ea37d30744d075d",
+  "counts": {
+    "base_band_candidate_crops": 7,
+    "position_checks": 12,
+    "positions_compatible": 6,
+    "source_linked_alternatives": 30,
+    "target_annotations_agree": 3,
+    "target_checks": 4,
+    "unique_meshes": 7,
+    "unique_source_crops": 7
+  },
+  "fresh_preview_replay_identical": true,
+  "preview_sha256": "e62da2fcad4f920005fa46b3e7739b6ca8a51218d77f69fbc7d2c4028af6b885",
+  "scope": "Source drawing preview only. Raw bounds and separate base bands retained; no accepted wall, aperture or threshold.",
+  "source_level_labels": [
+    {
+      "datum_y_display_points": 514.318115234375,
+      "id": "47fed9d1c8dc5d0c4f00af8ab5f05eed091842548d4914b8d7832d1e7b12a1c1",
+      "text": "Shop Level + 182.50"
+    },
+    {
+      "datum_y_display_points": 514.318115234375,
+      "id": "c9e853acc43d58be6dc643dcc9856bb9fbf8a79104db502b05a93c906e81d2f9",
+      "text": "Shop Level + 182.50"
+    },
+    {
+      "datum_y_display_points": 1101.238037109375,
+      "id": "f06236181493dc188c9d8b8d82e4f2d5b5d8aa55dba7489390a82f791b47f359",
+      "text": "Ride Exit Level +183.42"
+    },
+    {
+      "datum_y_display_points": 1127.3973388671875,
+      "id": "c7e355a10cb7ea3fbed176e8e71ce4d8c1ea7a0ab0badc46db1dd19d56b45b73",
+      "text": "Shop Level + 182.50"
+    },
+    {
+      "datum_y_display_points": 1101.238037109375,
+      "id": "e40b69d3a9d30b4497eed25d079dba456db90c59af999d475727451c95abb15e",
+      "text": "Ride Exit Level +183.42"
+    },
+    {
+      "datum_y_display_points": 1127.3973388671875,
+      "id": "ef3f91efcc38f1eac16c67f2f465a8e940c960f2981dd768c7ed7c44ed9305e3",
+      "text": "Shop Level + 182.50"
+    }
+  ],
+  "status": "passed",
+  "version": "automatic-unplaced-facade-audit-v1",
+  "world_geometry_additions": 0
+}

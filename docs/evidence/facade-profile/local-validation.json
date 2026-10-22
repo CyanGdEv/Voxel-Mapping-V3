@@ -1,0 +1,36 @@
+{
+  "audit_sha256": "3d6aa028ccc26e30f66cfb6f742ad4336bf23e4a39db4347622c0d6e00ef1bda",
+  "base_commit": "56b6b5faef0cc364d28556d45e16a51ffdb9f603",
+  "browser_review_sha256": "f55147b146ef059d5984a5e792c879b9275446aa20712cade73bf36fd961e3a2",
+  "code_sha256": {
+    "scripts/audit_automatic_facade_profile.py": "d7b9865eae6d924da989c1c5f59412f0a8c9c138bde56fe39cf6f74330422dbb",
+    "scripts/build_automatic_facade_profile.py": "4e578565a92421823e20c8050163acab0c969ba008dd99113a311f4ae66d072c",
+    "scripts/render_automatic_facade_profile.py": "38d8a43a401fe6f08c52d2bfdd274242ff566dc24448c69d38b0c7869e2e426f",
+    "tests/test_automatic_facade_profile.py": "78b59d80cd5adb5bfc4e0486fd74766838e349d93c5899dc268226e26f8138b3",
+    "voxel_mapper/automatic_facade_profile.py": "75d27510f699971ab9f66c4238f95dc2b0949dd817ff58f73e3a6d7e7e4c5c26"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "02ca0c4013c35c7d35e0cff18e4b01a3f1fb8794f845ae56a379a9c1689321f9",
+  "counts": {
+    "mesh_triangles": 1014,
+    "source_masks": 4,
+    "source_opening_alternatives": 30,
+    "source_profile_groups": 1,
+    "supported_profile_variants": 2,
+    "threshold_variants": 2
+  },
+  "focused_log_sha256": "653364e08974b09f4ab882908b92f04af43a00210b0854c400abcdca8d5b17ef",
+  "full_suite_log_sha256": "dd3ee49e3a7ce92067dd66aa6bd64781de6f7f5bb1a323dad4f5b5cc9b1f9854",
+  "html_sha256": "1f4124c98544b8eaaa334fb972f8a7a8a7fb7f9d8b4ee54bd66ad79e8972a6da",
+  "limits": "Exact source-cell main facade projections, not verified physical wall/roof geometry. Adjacent gable/wing, raster gaps/callouts, physical ground/floor/threshold roles, source state, scale, roof depth/pitch, wall thickness and registration remain unresolved. Zero accepted components, apertures, world blocks or training labels; semantic ranker untrained. Same three originals; no new acquisition.",
+  "new_focused_tests": 11,
+  "profile_json_sha256": "c6c753fcb5139f80b7a2ef7f05248e14f2a97cec412c9d942550bc00040687cc",
+  "python": "3.12.14",
+  "screenshot_sha256": "ef8170f914e4168dc46738a686493bb0151b370587234ac76eec337d863c41e3",
+  "seconds": 645.088,
+  "source_preview_audit_sha256": "8c9c0ee676322b630d2f2ac17a7f25e99e78abc7d397476967f37c91e93ca39d",
+  "status": "passed",
+  "tests": 1674,
+  "upstream_audit_sha256": "36a76fe139694ed2320e946c37eeb24934cefe27924badde58ef47f940192e85",
+  "version": "automatic-raster-facade-profile-local-validation-v1"
+}
