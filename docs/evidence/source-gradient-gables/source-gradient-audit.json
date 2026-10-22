@@ -1,0 +1,41 @@
+{
+  "checked": {
+    "conditional_pitch_projection_diagnostics": 828,
+    "fixed_source_projection_contexts": 4,
+    "floor_roof_direction_comparisons": 432,
+    "independent_partial_intersections": 439,
+    "original_gradient_source_pixels": 87262,
+    "original_native_plan_lines": 2695,
+    "separate_covariance_fits": 1599,
+    "source_variant_comparisons": 529,
+    "whole_original_hough_groups": 1652
+  },
+  "counts": {
+    "anchor_checks": 269,
+    "anchor_checks_agree": 259,
+    "conditional_partial_intersections": 46,
+    "conditional_pitch_diagnostics": 828,
+    "contrast_checks": 260,
+    "contrast_checks_agree": 252,
+    "edge_on_pitch_holds": 46,
+    "floor_roof_direction_checks": 432,
+    "floor_roof_direction_checks_agree": 24,
+    "held_partial_intersections": 393,
+    "new_roof_models": 0,
+    "partial_intersections": 439,
+    "repeated_plan_direction_cohorts": 24,
+    "source_gradient_lines": 1599,
+    "source_gradient_pixel_memberships": 87262,
+    "source_plan_line_receipts": 2695,
+    "source_projection_contexts": 4,
+    "source_views": 4,
+    "views_with_pairwise_contrast_support": 1
+  },
+  "fresh_replay_identical": true,
+  "scope": "Grayscale source consistency and conditional projection diagnostics, no eave/depth/building match, true pitch or new mesh acceptance.",
+  "source_parent_roof_sha256": "b1671d73923bd9b0cde9b6a7c631e4235dca48600da62f8fae395eddfa16192e",
+  "source_partial_sha256": "94419a1133ff3741da04b72c46d1a9939c3bc036017605473fba48d2faa60e90",
+  "source_review_sha256": "160705ab78c843ae6abfc0c1f4e4e85f834157cc1e9452fbf00a242d5b8402e2",
+  "status": "passed",
+  "version": "source-gradient-gable-audit-v1"
+}
