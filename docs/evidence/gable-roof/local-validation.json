@@ -1,0 +1,42 @@
+{
+  "audit_sha256": "0533ee8527de982f7915afaee1084d9873e1898b279a98ae445b8761e9bbcb09",
+  "base_commit": "37c1d6c2bbe92fcb47dc6ecb370358a3c9f565ea",
+  "browser_review_sha256": "47b78f39ca5f976c4361b4d8c6744e56e05869ddef63ec64d5c2cd6b4253b401",
+  "code_sha256": {
+    "scripts/audit_automatic_gable_roof.py": "827fefd24453446bf232f6cee1a1e443e364e4cb2d6e8b84c1321e2f6158bcf7",
+    "scripts/build_automatic_gable_roof.py": "b789188fa5c9ebdefe0db8e29d84bc427f92a88705b081b1cb170cac94c646dc",
+    "scripts/render_automatic_gable_roof.py": "f76fe52a8a2734cbae1cb42d597c421da53ce00776ecdfa9212db78571d686ed",
+    "tests/test_automatic_gable_roof.py": "22b13a7e86a536b4c0e12cac348c4e3afe57cdbb82e84dd6c92452c5b6ff85ac",
+    "voxel_mapper/automatic_gable_roof.py": "a4fb4d38a6f63d1e306741de6b4f94d75f5eef6ebe220920fab8b4926bf165f8"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "5336694a77d6a7a2c3c45013f55deb4fddeb4f74564364d31f3198de0748be5f",
+  "counts": {
+    "conditional_roof_models": 2,
+    "distinct_roof_meshes": 1,
+    "gable_checks": 446,
+    "gable_checks_agree": 28,
+    "long_height_witnesses": 2,
+    "models_with_both_source_threshold_checks": 2,
+    "native_parallel_triples": 2,
+    "source_gable_pairs": 223,
+    "source_gable_views": 4,
+    "source_plan_reviews": 2,
+    "source_slope_lines": 80
+  },
+  "focused_log_sha256": "0e68fceb1a9c0e7be6fc63db2d15458dfa0f8d8700813580f898822241347962",
+  "full_suite_log_sha256": "12b65cdc8bde84ed4fa9219300198bf2651b72bdbd2cb65585af1eb83c884d34",
+  "html_sha256": "2ff9b8c86344e615850de2d97ce2888e274152e17aa438403e511d8940adbfb8",
+  "limits": "Conditional continuous-plane roof hypothesis from native plan spacing and long-view panel heights, checked against separate gable source slopes. Adjacent wing, physical identity, source state, scale, complete walls/fascia/openings, floor roles and registration unresolved. Zero accepted components, world blocks or training labels; semantic ranker untrained. Same three originals; no new acquisition.",
+  "new_focused_tests": 13,
+  "obj_sha256": "419df352615fe7d539d30cc203649df93b4dc35b16a0541b44a096dfa36bbb72",
+  "python": "3.12.14",
+  "review_json_sha256": "b1671d73923bd9b0cde9b6a7c631e4235dca48600da62f8fae395eddfa16192e",
+  "screenshot_sha256": "c04dd3259e6e022c1f26ac135b947fac61e6d0e1481ba6312b501dde2c0e1323",
+  "seconds": 576.807,
+  "source_profile_audit_sha256": "3d6aa028ccc26e30f66cfb6f742ad4336bf23e4a39db4347622c0d6e00ef1bda",
+  "status": "passed",
+  "tests": 1687,
+  "upstream_audit_sha256": "36a76fe139694ed2320e946c37eeb24934cefe27924badde58ef47f940192e85",
+  "version": "automatic-gable-roof-local-validation-v1"
+}

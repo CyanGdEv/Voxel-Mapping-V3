@@ -152,3 +152,8 @@ columns, four masks, 507 rectangles and 1,014 triangles. Browser verification
 covers 28 threshold/choice/angle states, six display toggles and the original
 image hash with exact coordinates and zero JavaScript errors. Receipts are in
 `docs/evidence/facade-profile/`.
+
+The downstream [pitched-roof review](automatic-gable-roof.md) now derives a
+conditional main roof from original plan-line spacing and these source panel
+heights, then checks separate end-elevation slopes without refitting. These
+original profile masks, gaps and all opening witness links remain unchanged.
