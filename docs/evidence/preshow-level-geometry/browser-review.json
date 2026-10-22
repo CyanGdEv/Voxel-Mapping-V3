@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "interactive_states": 127,
+  "source_level_bindings": 9,
+  "own_source_gable_alternatives": 39,
+  "own_source_gable_level_states": 78,
+  "held_gable_level_states": 68,
+  "exact_obj_downloads": 32,
+  "source_images_hash_verified": 4,
+  "original_split_fragment_boxes_leaders_slope_and_fascia_pixels_exact": true,
+  "all_mesh_vertices_and_triangles_exact": true,
+  "rotation_states": 5,
+  "export_original_bytes_sha256": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+  "javascript_errors": 0
+}

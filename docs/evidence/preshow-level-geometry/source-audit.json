@@ -1,0 +1,22 @@
+{
+  "checked": {
+    "independent_endcap_comparisons": 298,
+    "independent_gable_intersections": 39,
+    "independent_inter_sheet_height_checks": 3588,
+    "independent_partial_roof_meshes": 32,
+    "independent_relative_level_checks": 6,
+    "independent_threshold_comparisons": 48,
+    "original_fascia_pixel_memberships": 29167,
+    "original_glyph_fragments": 15,
+    "original_level_marker_leaders": 9,
+    "original_native_patch_vertices": 6,
+    "original_slope_pixel_memberships": 3708,
+    "separate_level_fragment_pairs": 3,
+    "whole_hough_source_groups": 29,
+    "whole_literal_fascia_columns": 817
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+  "source_reference_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+  "status": "passed"
+}
