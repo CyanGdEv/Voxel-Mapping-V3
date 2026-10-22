@@ -131,6 +131,11 @@ Original door-symbol evidence v10 uses v15/v13. Its thirteenth artifact retains
 original short leaf/swing segments, supported clip receipts, exact endpoint
 connectivity, complete source arcs and all competing source-role candidates;
 see [door-symbol evidence](automatic-door-symbol-evidence.md).
+
+Inventory v11 adds [independent artwork controls](automatic-artwork-scale-controls.md)
+as a fourteenth artifact, with complete non-target reference exclusions, fixed
+fit/holdout roles and a uniform scale/rotation model. It uses area/controller
+v16/v14 and retains target extrapolation and all prior diagnostics.
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 

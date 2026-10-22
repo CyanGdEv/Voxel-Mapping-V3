@@ -1,0 +1,29 @@
+{
+  "base_commit": "569a5260067180d98c837d5bafb77ce85a98aa96",
+  "browser_review_sha256": "51eb5b038bd737d2300bd8f74b08e219a713dff6889c0acb792bda672d559a57",
+  "code_sha256": {
+    "scripts/audit_artwork_scale_controls.py": "be4f049474b7bceba0607c03a463479f629be28c161dd92e7a89c38614d7c6ff",
+    "scripts/audit_drawing_view_components.py": "dd09f0a0f921cf0022481cd1fae5630bb50285f2d4ce67c12de969439a65a7eb",
+    "scripts/render_artwork_control_review.py": "7ca01aac039219f7f7b11e446da3ea691c4cf15a606ccbfe75f4c08067cdefaf",
+    "tests/test_automatic_artwork_controls.py": "423176ba013cd1f96ebe3ee39a30475ba0d59ca54ba87a3cc08c23e5a9a5daf3",
+    "tests/test_drawing_view_components.py": "eb32842e91f7880b35253558ce525376e06eaf2bc1a3e4258d85c7620fcd9349",
+    "voxel_mapper/area_cycles.py": "76a3e321525b4d60853f98d3315b565d8e0594c97d0d41ed4e6c046bef8c76ef",
+    "voxel_mapper/area_reconstruction.py": "f68f625dd469fd76357c42fe8eb3f84f27e9dc7976d8a96a771011809ec57ad4",
+    "voxel_mapper/automatic_artwork_controls.py": "9d371b34db1fbff623216656fa8f494159a826a5c729e685f4c624f4d78d8c5d",
+    "voxel_mapper/drawing_view_components.py": "48c8375506bbc33386f5c766ac2b6b9bf5140e4a542195116928510d982a374f"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "dfd1eeed8e6961e409f08c65e90ee901717d69f0b8e27a5e7e1f91e81c4fcccf",
+  "focused_log_sha256": "f3c209953ea1f90a2731ed98bde51d56c333da6ffca0f30d3ab3cab7b98a96e7",
+  "focused_related_tests": 57,
+  "full_suite_log_sha256": "c49cb90b3c71d88248467cfbb754948bd93d848e281b0c45d60e97519ce40fec",
+  "limits": "Independent non-target artwork layout only. Five visible controls: two fit and three holdouts, uniform scale/rotation without shear or reflection. Four target sheet keys excluded before roles, three non-target glyph failures retained. All four target corner spans require extrapolation; physical scale and Shop application remain unverified. No new origin, position, accepted physical geometry, world blocks or training labels. Opening bottoms/floor roles, construction state and park registration remain unresolved; semantic ranker untrained. Official application page HTTP 503; no new document acquired.",
+  "new_tests": 11,
+  "official_page_attempt_sha256": "17a754c0f7a159bac9aeac489a1508e87d384c8a9ef5bf224a6aff9a1205c2c0",
+  "python": "3.12.14",
+  "real_audit_sha256": "8ddc22da4f73b59e0d1dca429aa6f4831f1dc8c711ce363f110c1119616d120e",
+  "seconds": 830.287,
+  "status": "passed",
+  "tests": 1653,
+  "version": "automatic-artwork-control-local-validation-v1"
+}
