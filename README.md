@@ -574,3 +574,8 @@ The [source-gradient review](docs/source-gradient-gables.md) checks bright short
 edges across two contrast cutoffs and retains original floor/roof directions.
 Consistent NW source evidence remains separate from unresolved wing identity,
 eaves, true pitch and depth; no new wing mesh is accepted.
+
+The [roof-junction review](docs/roof-source-topology.md) connects original plan
+strokes before comparing all relative-position hypotheses. One source candidate
+agrees, while its outer rails retain a half-metre tail beyond the ridge. Full
+depth, eave heights and physical correspondence remain unresolved.

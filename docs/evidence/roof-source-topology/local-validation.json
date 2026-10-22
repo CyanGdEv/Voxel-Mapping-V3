@@ -1,0 +1,39 @@
+{
+  "base_commit": "baf0559565c7363e01b1f67804fe185684c85a7c",
+  "browser_review_sha256": "f688a5d3ef0dec34cf41283c3e6fffbdbb2c5ae673311de6af2e48695e5010cf",
+  "code_sha256": {
+    "scripts/audit_roof_source_topology.py": "9ad1e34c74cb18ab575cc6b029a24fb034908fc50e1f849cb63c682d92fc99a3",
+    "scripts/build_roof_source_topology.py": "2f52caf79076d04a2402940f5e254f077c898c4f119e8bbd4c66943927d654dc",
+    "scripts/render_roof_source_topology.py": "4ec772ffb09dc4631aed3d979e6a780a7f518deb87a545d0b41f65507ccd52fc",
+    "tests/test_roof_source_topology.py": "e813f2f070d0e46ba3f20aee1ed1427e9beeff3e3c7bbcb09ce55fbef3fde8da",
+    "voxel_mapper/roof_source_topology.py": "234db561e9c25a73546029359c8b1962e9332a3dcbfc59f9c2810efe9bea97bd"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "f49946b2219a678e3738618766642f2a3f83e07d2b788f4b515b9d2c843c73d9",
+  "counts": {
+    "new_roof_models": 0,
+    "original_plan_lines": 2492,
+    "relative_position_agreements": 276,
+    "relative_position_checks": 30912,
+    "source_connected_candidates": 28
+  },
+  "focused_log_sha256": "6db404e83e35abfdc7321b347cd544df857f9ee9edc45a2d85bc9abf5a464f64",
+  "focused_tests": 11,
+  "full_suite_log_sha256": "f7b5ab4c9fbf27a6761cc11f128d332f0c995558436fe7618fc6f436c7df70a6",
+  "html_sha256": "a600368a6167563a5682fe1c0a36b06a2c2e813e1d098a707f39f6039ef15f1b",
+  "limits": "Source-connected near-balanced templates and relative-position agreement only. Hatching can qualify. Original rails/tails remain whole; physical roof/building identity, eave heights, full depth, independent second-view edge support, complete geometry and park registration remain held. No new roof model, accepted component, world block or training label; semantic ranker untrained. Same three drawings; portal HTTP 503; no acquisition.",
+  "parent_ci": {
+    "conclusion": "success",
+    "run_id": 39828717767,
+    "run_number": 632,
+    "workflow": "Tests"
+  },
+  "python": "3.12.14",
+  "review_json_sha256": "56a2a4fd2e13476e487a42b95fd875f1f96b44972602f555f915540ac29b1295",
+  "screenshot_sha256": "5241faa6d2006781b2d460397aa63601e8e4482a40570c2a99826195e79a66b9",
+  "seconds": 360.655,
+  "source_audit_sha256": "7c43f7e3e3bb44a989c0309f68645f760d77544971d8110acf3788e018348cfe",
+  "status": "passed",
+  "tests": 1722,
+  "version": "roof-source-topology-local-validation-v1"
+}
