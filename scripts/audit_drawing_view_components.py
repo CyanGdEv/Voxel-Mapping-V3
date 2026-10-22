@@ -26,6 +26,7 @@ from voxel_mapper import automatic_building_scope, plan_elevation_edges
 from voxel_mapper import automatic_elevation_context, elevation_levels, automatic_facade_alignment
 from voxel_mapper import automatic_sheet_scale, drawing_annotations
 from scripts.audit_wall_return_corners import verify as verify_wall_returns
+from scripts.audit_door_symbol_evidence import verify as verify_door_symbols
 from voxel_mapper.drawing_page_tools import native_inverse
 from voxel_mapper.glyph_visibility import screen_architectural_span
 from voxel_mapper.ordinary_surfaces import label_runs
@@ -703,7 +704,20 @@ def audit(job, output, baseline=None):
         baseline_comparison['prior_sheet_layout_diagnostics_preserved']=True
     returns=json.loads((root/report['wall_return_corners']['file']).read_text())
     verify_wall_returns(source['pages'],inspected_views,building_links,levels,alignment,scale,returns,checked,report['contract']['options']['max_checks'])
-    result = {'version': 'automatic-view-component-audit-v7', 'status': 'passed',
+    if baseline is not None and 'wall_return_corners' in baseline_report:
+        old_returns=json.loads((baseline/baseline_report['wall_return_corners']['file']).read_text())
+        def semantic_return_positions(value):
+            return sorted((tuple(map(tuple,d['source_points_pdf_native'])),p['elevation_x_reversed'],p['status'],
+                tuple(w['maximum_endpoint_residual_m'] for w in p['witnesses']))
+                for d in value['diagnostics'] for p in d['position_comparisons'])
+        assert old_returns['counts']==returns['counts']
+        assert semantic_return_positions(old_returns)==semantic_return_positions(returns)
+        baseline_comparison['prior_wall_return_position_comparisons_preserved']=len(semantic_return_positions(returns))
+    symbols=json.loads((root/report['door_symbol_evidence']['file']).read_text())
+    corpus=Corpus(work/'corpus')
+    try:verify_door_symbols(corpus,source['pages'],inspected_views,returns,symbols,checked,report['contract']['options']['max_checks'])
+    finally:corpus.close()
+    result = {'version': 'automatic-view-component-audit-v8', 'status': 'passed',
         'job_sha256': file_hash(job), 'source_contract': report['contract'], 'views': rows, 'counts': report['counts'],
         'checked': dict(checked), 'fresh_replay_artifact_hashes_identical': len(report['output_sha256']),
         'inventory_status': report['status'], 'withheld_passes': report['withheld_passes'],
@@ -713,6 +727,7 @@ def audit(job, output, baseline=None):
         'facade_alignment': report['facade_alignment'],
         'sheet_scale_evidence': report['sheet_scale_evidence'],
         'wall_return_corners': report['wall_return_corners'],
+        'door_symbol_evidence': report['door_symbol_evidence'],
         'baseline_comparison': baseline_comparison,
         'all_requested_passes_completed': report['all_requested_passes_completed'],
         'output_sha256': report['output_sha256'], 'world_geometry_additions': 0, 'accepted_physical_components': 0,

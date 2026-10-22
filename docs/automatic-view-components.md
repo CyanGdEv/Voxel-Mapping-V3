@@ -127,6 +127,10 @@ Elevation level context v6 uses v11/v9.
 Facade extent/origin review v7 uses v12/v10.
 Automatic sheet-scale evidence v8 uses v13/v11.
 Original wall-return corners v9 uses v14/v12.
+Original door-symbol evidence v10 uses v15/v13. Its thirteenth artifact retains
+original short leaf/swing segments, supported clip receipts, exact endpoint
+connectivity, complete source arcs and all competing source-role candidates;
+see [door-symbol evidence](automatic-door-symbol-evidence.md).
 Use a fresh work directory for older
 area jobs and retain prior worlds as pinned baselines.
 

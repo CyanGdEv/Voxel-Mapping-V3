@@ -1,0 +1,28 @@
+{
+  "base_commit": "cecfb3e81b2aa594784cdd5a4977e2cc405af79b",
+  "browser_review_sha256": "53783c37e563394fb448fb0c80015fc71e21adcc374ba871cb2771218acaefa7",
+  "code_sha256": {
+    "scripts/audit_door_symbol_evidence.py": "05a43e83459f8a7f0314cdf46390b03732a7d957181dd77754d830bd3745a9b9",
+    "scripts/audit_drawing_view_components.py": "d429ed320575921f27212bb5441f08971fc6250f5f57ce3f7c6cac77dd3ebfae",
+    "scripts/render_door_symbol_review.py": "0a236f8966cefa711a7a824c4790ffae77292568029883e924ee27927130a751",
+    "tests/test_automatic_door_symbols.py": "edbd7b77b2c1976e86c408079349188bdc534ad966db08cd70c1849de33b13f1",
+    "tests/test_drawing_view_components.py": "71fea0c573587206f5e6805fb70ae5ab8c59ba10c8fcd11a2e8a2e550758c958",
+    "voxel_mapper/area_cycles.py": "e2fd8b4129ecbd0697148e9f1d59057d9c8fd0c890ed89c2ad54c2592176c8f1",
+    "voxel_mapper/area_reconstruction.py": "52062efbd0fbcd2c5c81b3d2deb8f8824485304f364b832e774738c9c02039b1",
+    "voxel_mapper/automatic_door_symbols.py": "1c06b61fb96a944e83c492a9f868fcd05df524548aaa2422691345134a2b290a",
+    "voxel_mapper/drawing_view_components.py": "5f5abf89b9e59bbb77872e956f6f2114ba4bfd86be6762ddcaea43b43f96f7cd"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "fb7a12ed210eec859e1d87753fedae6b4607efa9e210d984b815850a1a4c3b93",
+  "focused_log_sha256": "68066943c3775bd75e3a86b9e073f404cb936fde4a37a2f685b70bf2ced1faf6",
+  "focused_related_tests": 46,
+  "full_suite_log_sha256": "11dff27105b59df95284ac3207fc457e3efd24cd23310cf4a4de46fe16e18430",
+  "limits": "Original door-symbol evidence only. Seven source candidates across 24 plan gaps; one original NW leaf plus eight arc segments supports six overlapping elevation alternatives. Original illustrative-layout wording retained. Exact source connectivity, original hinge, no circle fit, snapping, source-point movement or arc trimming. Physical wall/aperture roles, artwork scale/application, bottom/floor roles, construction state and park registration remain unverified. No accepted physical geometry, world blocks or training labels; semantic ranker untrained.",
+  "new_tests": 11,
+  "python": "3.12.14",
+  "real_audit_sha256": "12d246711fe511fccd86479e5d7e7aa2c8de075d8e7a9238b5eb6874d5c99bea",
+  "seconds": 769.957,
+  "status": "passed",
+  "tests": 1642,
+  "version": "automatic-door-symbol-local-validation-v1"
+}

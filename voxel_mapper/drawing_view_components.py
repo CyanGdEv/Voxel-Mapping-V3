@@ -22,11 +22,12 @@ from . import automatic_building_scope, footprint_hypotheses, plan_elevation_edg
 from . import automatic_elevation_context, elevation_levels, drawing_annotations, automatic_facade_alignment
 from . import automatic_sheet_scale, sheet_layout_audit, architectural_view_layout
 from . import automatic_wall_returns
+from . import automatic_door_symbols
 from .drawing_view_candidates import VERSION as VIEW_VERSION
 from .generation_cycles import atomic_json, file_hash
 from .reconstruction_evidence_queue import digest
 
-VERSION = 'automatic-view-component-inventory-v9'
+VERSION = 'automatic-view-component-inventory-v10'
 DEFAULTS = {'max_views': 32, 'max_checks': 100000, 'max_frames': 512}
 MAX_OUTPUT_BYTES = 64000000
 
@@ -213,7 +214,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
                      automatic_building_scope, footprint_hypotheses, plan_elevation_edges, drawing_views,
                      plan_elevation_correspondence, building_spec, automatic_elevation_context, elevation_levels, drawing_annotations,
                      automatic_facade_alignment, automatic_sheet_scale, sheet_layout_audit, architectural_view_layout,
-                     automatic_wall_returns]},
+                     automatic_wall_returns, automatic_door_symbols]},
                 'pillow_version': PIL_VERSION, 'numpy_version': np.__version__, 'pymupdf_version': pymupdf.VersionBind,
                 'shapely_version': shapely.__version__, 'geos_version': shapely.geos_version_string}
     root = Path(output)/digest(contract)
@@ -329,6 +330,13 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
     names.append(return_name)
     if returns['status'].endswith(('_withheld', '_required')):
         withheld.append({'view_id': None, 'kernel': 'wall_returns', 'status': returns['status'], 'reason': returns.get('reason')})
+    symbols = automatic_door_symbols.run(corpus, data['pages'], inventories, returns, max_checks=config['max_checks'])
+    symbol_name = 'door-symbol-evidence.json'; atomic_json(root/symbol_name, symbols)
+    output_bytes += (root/symbol_name).stat().st_size
+    if output_bytes > MAX_OUTPUT_BYTES: raise ValueError('Component output budget exceeded')
+    names.append(symbol_name)
+    if symbols['status'].endswith(('_withheld', '_required')):
+        withheld.append({'view_id': None, 'kernel': 'door_symbols', 'status': symbols['status'], 'reason': symbols.get('reason')})
     if (file_hash(feed) != contract['drawing_feed_sha256'] or file_hash(source_data) != contract['view_candidates_sha256']
             or file_hash(source_report) != contract['view_report_sha256']): raise ValueError('Source inputs changed during component inventory')
     for name, pin in source_pins.items():
@@ -345,6 +353,7 @@ def run(corpus, drawing_directory, view_directory, output, *, settings=None):
               'facade_alignment': {'file': alignment_name, 'status': alignment['status'], 'counts': alignment.get('counts', {})},
               'sheet_scale_evidence': {'file': scale_name, 'status': scale['status'], 'counts': scale.get('counts', {})},
               'wall_return_corners': {'file': return_name, 'status': returns['status'], 'counts': returns.get('counts', {})},
+              'door_symbol_evidence': {'file': symbol_name, 'status': symbols['status'], 'counts': symbols.get('counts', {})},
               'output_sha256': {name: file_hash(root/name) for name in names}, 'world_geometry_additions': 0,
               'accepted_physical_components': 0, 'training_labels_generated': 0, 'world_placement_eligible': False}
     atomic_json(root/'component-report.json', result)
