@@ -129,3 +129,8 @@ wall-return position comparisons, seven symbols and six symbol links survive
 against PR #46. Browser verification checks two original crops, exact control
 coordinates, both fit/holdout states and all four extrapolations with zero
 JavaScript errors. Receipts are under `docs/evidence/artwork-controls/`.
+
+The downstream [unplaced façade preview](automatic-facade-preview.md) checks the
+excluded Shop annotations without refitting and investigates the original base
+band. The wider source identifies the line through the door as Ride Exit Level;
+Shop Level is near the drawn base. Raw jamb ends remain separate evidence.
