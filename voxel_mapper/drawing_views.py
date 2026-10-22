@@ -4,9 +4,9 @@ import math
 import re
 import pymupdf
 from .glyph_visibility import screen_span
+from .numbered_elevation_captions import parse as numbered_caption
 
 VERSION='native-drawing-view-links-v1'
-TITLE=re.compile(r'Elevation\s+(\d{1,2})\s+to\s+(?:the\s+)?([NS])\.?\s*(East|West)',re.I)
 SCALE=re.compile(r'\s*1\s*:\s*(\d{1,5})\s*')
 
 
@@ -53,7 +53,7 @@ def page_labels(page,groups,*,sheet_metadata=None):
     if len(traces)>10000 or sum(len(s['chars']) for s in traces)>500000:raise ValueError('View text budget exceeded')
     identity=resolve_identity(traces,sheet_metadata);rotation=page.rotation_matrix;views=[];screens={}
     for index,span in enumerate(traces):
-        match=TITLE.fullmatch(text(span))
+        match=numbered_caption(text(span))
         if not match:continue
         box=pymupdf.Rect(span['bbox'])*rotation;center=(box.tl+box.br)*.5
         possible=[]
@@ -71,7 +71,7 @@ def page_labels(page,groups,*,sheet_metadata=None):
         for j in checks:
             if j not in screens:screens[j]=screen_span(page,traces[j])
         visible=all(screens[j]['status']=='raster_consistent_candidate' for j in checks)
-        record={'view_index':int(match[1]),'bearing_label_candidate':match[2].upper()+match[3][0].upper(),
+        record={'view_index':match['view_number'],'bearing_label_candidate':match['bearing'],
                 'title':text(span),'title_trace_index':index,'title_bbox_page_points':list(span['bbox']),
                 'artwork_review_window_ids':possible,'scale_candidates':scales,'sheet_identity_candidate':identity,
                 'glyph_screen_trace_indices':checks,'glyph_screen_status':'raster_consistent_candidate' if visible else 'withheld',

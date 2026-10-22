@@ -1,0 +1,12 @@
+{
+  "checked": {
+    "independent_junction_contacts": 112,
+    "independent_relative_position_checks": 30912,
+    "original_pdf_strokes": 2492,
+    "untrimmed_source_rails": 56
+  },
+  "fresh_replay_identical": true,
+  "source_gradient_sha256": "160705ab78c843ae6abfc0c1f4e4e85f834157cc1e9452fbf00a242d5b8402e2",
+  "source_review_sha256": "56a2a4fd2e13476e487a42b95fd875f1f96b44972602f555f915540ac29b1295",
+  "status": "passed"
+}

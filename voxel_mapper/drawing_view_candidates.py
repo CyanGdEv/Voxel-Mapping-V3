@@ -15,7 +15,7 @@ from shapely.strtree import STRtree
 
 from .architectural_graph import build
 from .architectural_view_layout import review as caption_review,VERSION as CAPTION_VERSION
-from . import architectural_view_layout,caption_fragments
+from . import architectural_view_layout,caption_fragments,numbered_elevation_captions
 from .building_raster_views import placements,render,VERSION as RASTER_VERSION
 from .drawing_geometry import native_inverse
 from .generation_cycles import atomic_json,file_hash
@@ -60,6 +60,60 @@ def _raster(page,u):
     finally:page.set_rotation(original)
 
 
+def staggered_rows(rows, gray, pixel_native, axis, charge):
+    """Merge disjoint caption columns only without a separating white row run.
+
+The composited raster supplies a layout hint, never physical view boundaries.
+Original caption rows and every tested pixel window remain in the receipts.
+"""
+    normal = (-axis[1], axis[0]); inverse = ~pixel_native
+    merged = []; receipts = []
+    for row in rows:
+        charge()
+        if not merged:
+            merged.append(row); continue
+        previous = merged[-1]
+        old_intervals = [_extent(shape(c['label_geometry']), axis) for c in previous['captions']]
+        new_intervals = [_extent(shape(c['label_geometry']), axis) for c in row['captions']]
+        if any(min(a[1], b[1]) > max(a[0], b[0]) for a in old_intervals for b in new_intervals):
+            merged.append(row); continue
+        # A caption normally has a small blank margin above it. That margin
+        # cannot separate its own artwork from another column's staggered title.
+        margin = 2 * max(_extent(shape(c['label_geometry']), normal)[1]
+            - _extent(shape(c['label_geometry']), normal)[0] for c in previous['captions'])
+        low = min(previous['high'] + margin, row['low']); high = row['low']
+        start = min(a[0] for a in old_intervals + new_intervals)
+        end = max(a[1] for a in old_intervals + new_intervals)
+        points = [pymupdf.Point(a * axis[0] + b * normal[0], a * axis[1] + b * normal[1]) * inverse
+            for a in (start, end) for b in (low, high)]
+        x0 = max(0, int(math.floor(min(p.x for p in points))))
+        x1 = min(gray.shape[1], int(math.ceil(max(p.x for p in points))))
+        y0 = max(0, int(math.floor(min(p.y for p in points))))
+        y1 = min(gray.shape[0], int(math.ceil(max(p.y for p in points))))
+        if x1 <= x0:
+            merged.append(row); continue
+        white = np.all(gray[y0:y1, x0:x1] >= 250, axis=1) if y1 > y0 else np.array([], dtype=bool)
+        changes = np.diff(np.r_[False, white, False].astype(np.int8))
+        runs = list(zip(np.flatnonzero(changes == 1).tolist(), np.flatnonzero(changes == -1).tolist()))
+        step = math.hypot(pixel_native.c, pixel_native.d)
+        separator = any((b - a) * step >= 8 for a, b in runs)
+        receipts.append({'lower_caption_ids': [c['id'] for c in previous['captions']],
+            'upper_caption_ids': [c['id'] for c in row['captions']],
+            'original_caption_normal_intervals': [[previous['low'], previous['high']], [row['low'], row['high']]],
+            'source_raster_window_pixels': [x0, y0, x1, y1],
+            'white_row_runs_relative_pixels': [[a, b] for a, b in runs],
+            'minimum_separator_pdf_points': 8, 'pdf_points_per_source_row': step,
+            'lower_caption_margin_excluded_pdf_points': margin,
+            'status': 'separate_caption_rows_with_white_corridor' if separator else 'staggered_disjoint_caption_row_hypothesis',
+            'physical_separator_verified': False})
+        if separator:
+            merged.append(row)
+        else:
+            merged[-1] = {'low': previous['low'], 'high': row['high'],
+                'captions': previous['captions'] + row['captions'], 'staggered': True}
+    return merged, receipts
+
+
 def candidates(page,sha,number,layout,sources,*,max_checks=100000):
     if type(max_checks) is not int or not 1<=max_checks<=100000:raise ValueError('Bounded view work required')
     if (layout['version']!=CAPTION_VERSION or layout['document_sha256']!=sha or layout['page']!=number
@@ -76,7 +130,7 @@ def candidates(page,sha,number,layout,sources,*,max_checks=100000):
         frame=Polygon([tuple(pymupdf.Point(p)*inverse) for p in (r.tl,r.tr,r.br,r.bl)])
     finally:page.set_rotation(rotation)
     visible=[v for v in layout['view_captions'] if v['glyph_screen']['status']=='raster_consistent_candidate']
-    families={};withheld=[];views=[];checks=0;raster_proofs=[]
+    families={};withheld=[];views=[];checks=0;raster_proofs=[];row_reviews=[]
     for caption in visible:
         u=caption['reading_direction_pdf_native']
         if abs(math.hypot(*u)-1)>1e-6 or any(abs(v)>1e-6 and abs(abs(v)-1)>1e-6 for v in u):
@@ -97,9 +151,13 @@ def candidates(page,sha,number,layout,sources,*,max_checks=100000):
                 if rows and low<rows[-1]['high']:
                     rows[-1]['high']=max(high,rows[-1]['high']);rows[-1]['captions'].append(caption)
                 else:rows.append({'low':low,'high':high,'captions':[caption]})
+            rows, receipts = staggered_rows(rows, gray, pixel_native, u, charge)
+            row_reviews.extend(receipts)
             upper=bmax
             for row in reversed(rows):
-                height=row['high']-row['low'];lower=row['low']-2*height
+                height=(max(_extent(shape(c['label_geometry']),n)[1]-_extent(shape(c['label_geometry']),n)[0]
+                    for c in row['captions']) if row.get('staggered') else row['high']-row['low'])
+                lower=row['low']-2*height
                 labels=sorted(row['captions'],key=lambda c:_extent(shape(c['label_geometry']),u))
                 if upper<=lower:
                     withheld.extend({'caption_id':c['id'],'status':'overlapping_caption_row_bands'} for c in labels)
@@ -177,12 +235,13 @@ def candidates(page,sha,number,layout,sources,*,max_checks=100000):
                     if view['native_to_nominal_local_affine'] is not None else None}
                 for m in membership if m['status']=='one_whole_source_candidate' and m['contained_candidate_ids']==[view['id']]]
     except OverflowError:
-        views=[];membership=[];withheld=[]
+        views=[];membership=[];withheld=[];row_reviews=[]
     return {'version':VERSION,'document_sha256':sha,'page':number,'source_layout_sha256':digest(layout),
         'source_objects_sha256':digest(sources),'status':'view_budget_withheld' if checks>max_checks else 'automatic_view_candidates_only',
         'views':views,'source_membership':membership,'withheld_captions':withheld,'checks':checks,
         'source_sheet_titles':layout['sheet_titles'],
         'layout_raster_evidence':raster_proofs,
+        'caption_row_grouping_evidence':row_reviews,
         'counts':{'visible_captions':len(visible),'view_candidates':len(views),'withheld_captions':len(withheld),
                   'visible_sheet_title_claims':sum(t['glyph_screen']['status']=='raster_consistent_candidate' for t in layout['sheet_titles']),
                   **dict(Counter(m['status'] for m in membership))},
@@ -203,6 +262,7 @@ def run(corpus,drawing_directory,output,*,settings=None):
         'glyph_version':GLYPH_VERSION,'glyph_ink_version':INK_VERSION,'pymupdf_version':pymupdf.VersionBind,
         'implementation_sha256':file_hash(Path(__file__)),
         'caption_implementation_sha256':file_hash(Path(architectural_view_layout.__file__)),
+        'numbered_caption_implementation_sha256':file_hash(Path(numbered_elevation_captions.__file__)),
         'fragment_implementation_sha256':file_hash(Path(caption_fragments.__file__)),
         'options':config,'source_sha256':inventory,'drawing_feed_sha256':file_hash(feed),'drawing_contract':extraction['contract']}
     root=output/digest(contract)

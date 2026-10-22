@@ -12,6 +12,7 @@ from .ordinary_surfaces import label_runs
 from .glyph_visibility import screen_architectural_span
 from .elevation_interpretation import caption
 from .architectural_graph import VERSION as GRAPH_VERSION
+from .numbered_elevation_captions import parse as numbered_caption
 
 VERSION='architectural-caption-layout-v3'
 
@@ -21,13 +22,11 @@ def view_claim(text):
     elevation=caption(text)
     if elevation:return {**elevation,'view_kind':'elevation' if elevation['kind']=='view_caption' else 'sheet_title'}
     value=re.sub(r'\s+','',text.lower())
-    numbered=re.fullmatch(r'elevation([1-9]\d{0,2})tothe([ns])\.?(east|west)(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
+    numbered=numbered_caption(text)
     if numbered:
-        denominator=int(numbered[5]) if numbered[5] else None
-        if denominator is not None and not 1<=denominator<=10000:return None
-        return {'kind':'view_caption','view_kind':'elevation','view_number':int(numbered[1]),
-            'direction':{'n':'north','s':'south'}[numbered[2]]+numbered[3],
-            'printed_state':numbered[4] or 'unspecified','printed_scale_denominator':denominator,
+        return {'kind':'view_caption','view_kind':'elevation','view_number':numbered['view_number'],
+            'direction':numbered['direction'],
+            'printed_state':numbered['printed_state'],'printed_scale_denominator':numbered['printed_scale_denominator'],
             'numbered_reference_verified':False}
     plan=re.fullmatch(r'(?:\d{1,3}\.)?(?:overall)?(?:(existing|proposed))?((?:ground|first|second)?floor|roof)plan(?:[\'’]as(existing|proposed)[\'’])?(?:\|1:(\d{1,5}))?',value)
     key=re.fullmatch(r'keyplan(?:\((ground|first|second)floor\))?(?:\|1:(\d{1,5}))?',value)
