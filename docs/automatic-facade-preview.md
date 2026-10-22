@@ -136,3 +136,8 @@ eight original circles, three fixed target checks, 60 position witnesses, seven
 original crops, 30 mesh alternatives and 14 base-band witnesses. Browser checks
 cover 28 interaction states and eight original image hashes with zero JavaScript
 errors. Receipts are in `docs/evidence/facade-preview/`.
+
+The downstream [wall and roof profile pass](automatic-facade-profile.md) now
+replaces this rectangular context with exact source-cell projection meshes for
+the main NW façade. It preserves this preview and its original opening/base-band
+evidence, retains both thresholds and leaves physical surface roles unresolved.

@@ -58,6 +58,12 @@ and planning acceptance.
 
 ## Whole-park batch jobs
 
+The [automatic wall and roof profiles](docs/automatic-facade-profile.md) recover
+the main NW façade’s source-cell silhouette and uneven ground interface, with
+separate raster thresholds and an interactive source comparison. Meshes retain
+raster gaps and unresolved physical roles; adjacent gable/wing association and
+roof depth/pitch remain separate work.
+
 The [automatic unplaced façade preview](docs/automatic-facade-preview.md) now
 checks Shop annotations against the fixed non-Shop layout and produces an
 orbitable NW source context with seven overlapping opening outlines. Original

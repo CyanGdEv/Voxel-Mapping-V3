@@ -1,0 +1,28 @@
+{
+  "checked": {
+    "closed_roof_source_regions": 463,
+    "independent_source_masks": 4,
+    "independent_threshold_comparisons": 2,
+    "lossless_source_rectangles": 507,
+    "original_ground_column_runs": 1072,
+    "original_source_rasters": 1,
+    "separate_threshold_variants": 2,
+    "source_mesh_triangles": 1014,
+    "source_opening_witness_links": 30
+  },
+  "counts": {
+    "mesh_triangles": 1014,
+    "source_masks": 4,
+    "source_opening_alternatives": 30,
+    "source_profile_groups": 1,
+    "supported_profile_variants": 2,
+    "threshold_variants": 2
+  },
+  "fresh_profile_replay_identical": true,
+  "scope": "Exact original raster-cell projections; no physical wall/roof/aperture/floor identity, depth, pitch, thickness or placement acceptance.",
+  "source_preview_sha256": "e62da2fcad4f920005fa46b3e7739b6ca8a51218d77f69fbc7d2c4028af6b885",
+  "source_profile_sha256": "c6c753fcb5139f80b7a2ef7f05248e14f2a97cec412c9d942550bc00040687cc",
+  "status": "passed",
+  "version": "automatic-facade-profile-audit-v1",
+  "world_geometry_additions": 0
+}
