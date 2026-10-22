@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "source_elevations": 4,
+  "gradient_cutoffs": 2,
+  "parent_ink_anchors": 2,
+  "source_interaction_states": 503,
+  "individual_partial_pair_options_checked": 439,
+  "plan_context_direction_states": 149,
+  "conditional_pitch_direction_states": 72,
+  "source_image_hashes_verified": 6,
+  "original_source_coordinates_roles_and_plan_endpoints_exact": true,
+  "all_held_alternatives_retained": true,
+  "edge_on_and_missing_frame_holds_visible": true,
+  "downloaded_evidence_identical": true,
+  "previous_binary_hold_overridden": false,
+  "new_roof_models": 0,
+  "parent_roof_changed": false,
+  "javascript_errors": 0
+}

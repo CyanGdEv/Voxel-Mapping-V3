@@ -149,3 +149,8 @@ All 81 pair choices, four untouched source images, original coordinates/roles,
 fit intervals, inferred intersections, held alternatives and JSON export are
 verified, with zero JavaScript errors. Receipts and the compressed full-suite
 log are in `docs/evidence/partial-gables/`.
+
+The complementary [original grayscale review](source-gradient-gables.md) now
+checks contrast support and plan-direction ambiguity. Its NW evidence has pairwise
+support at two gradient cutoffs with both unchanged long anchors; this does not
+override the binary-threshold hold or identify a complete physical wing.

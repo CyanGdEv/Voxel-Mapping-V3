@@ -567,3 +567,10 @@ Planning path-side details: see [docs/park-details.md](docs/park-details.md) for
 The downstream [short-gable review](docs/automatic-partial-gables.md) recovers
 short original strokes and retains competing partial intersections. Cross-threshold
 stability and complete wing geometry remain held; the main roof is unchanged.
+
+### Grayscale gable evidence and plan directions
+
+The [source-gradient review](docs/source-gradient-gables.md) checks bright short
+edges across two contrast cutoffs and retains original floor/roof directions.
+Consistent NW source evidence remains separate from unresolved wing identity,
+eaves, true pitch and depth; no new wing mesh is accepted.
