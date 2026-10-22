@@ -169,3 +169,7 @@ solutions, 223 intersections, two models and all 446 comparisons. Browser checks
 cover 40 interaction states, five source images and an exact six-vertex/four-
 triangle OBJ download with zero JavaScript errors. Receipts are in
 `docs/evidence/gable-roof/`.
+
+The [short-edge follow-up](automatic-partial-gables.md) now reviews visible
+partial-gable evidence. It retains five NW alternatives at one source threshold,
+with cross-threshold stability and complete wing geometry still held.

@@ -1,0 +1,27 @@
+{
+  "checked": {
+    "independent_partial_intersections": 81,
+    "original_short_source_pixels": 17683,
+    "separate_covariance_fits": 479,
+    "source_threshold_variants": 8,
+    "whole_original_hough_groups": 530
+  },
+  "counts": {
+    "conditional_partial_gable_pairs": 5,
+    "cross_threshold_checks": 0,
+    "held_partial_gable_pairs": 76,
+    "new_roof_models": 0,
+    "original_short_source_pixels": 17683,
+    "partial_gable_pairs": 81,
+    "short_source_lines": 479,
+    "source_views": 4,
+    "views_with_cross_threshold_support": 0
+  },
+  "fresh_replay_identical": true,
+  "parent_review_sha256": "b1671d73923bd9b0cde9b6a7c631e4235dca48600da62f8fae395eddfa16192e",
+  "scope": "Short original strokes and competing inferred partial ridges; no complete wing, eaves, plan depth or physical correspondence acceptance.",
+  "source_review_sha256": "94419a1133ff3741da04b72c46d1a9939c3bc036017605473fba48d2faa60e90",
+  "status": "passed",
+  "version": "automatic-partial-gable-audit-v1",
+  "world_geometry_additions": 0
+}
