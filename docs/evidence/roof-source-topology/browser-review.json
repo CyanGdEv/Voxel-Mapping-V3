@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "interactive_states": 101,
+  "source_candidates_checked": 28,
+  "conditional_pairs_checked": 46,
+  "individual_alignment_options_checked": 24,
+  "source_images_verified": 2,
+  "exact_original_plan_endpoints_and_source_fit_spans": true,
+  "untrimmed_tails_and_all_disagreements_visible": true,
+  "export_original_bytes_sha256": "56a2a4fd2e13476e487a42b95fd875f1f96b44972602f555f915540ac29b1295",
+  "javascript_errors": 0
+}
