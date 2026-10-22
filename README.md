@@ -589,3 +589,8 @@ The [preshow level and geometry review](docs/preshow-level-geometry.md) binds
 separate original level labels and extracts own-source ridge/fascia candidates.
 It exports conditional roof patches bounded by original plan caps; rail tails,
 physical correspondence, walls and world placement remain unresolved.
+
+The [adjoining-roof review](docs/pyramidal-roof-junctions.md) detects an original
+four-spoke roof graph and traces both retained rail tails along its boundary.
+Six taller-roof inspection variants expose an open vertical join; second-threshold
+support, wall closure, physical correspondence and world placement remain held.
