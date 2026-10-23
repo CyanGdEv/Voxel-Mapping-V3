@@ -1,0 +1,70 @@
+{
+  "checked": {
+    "complete_source_configuration_indices": 4,
+    "independent_configuration_comparisons": 111,
+    "independent_cross_view_checks": 4704,
+    "independent_four_configuration_coverage": 6,
+    "independent_local_corner_checks": 70,
+    "independent_observed_face_strips": 42,
+    "independent_open_join_samples": 4032,
+    "independent_original_edge_intersections": 1,
+    "independent_roof_meshes": 42,
+    "independent_shared_cap_transfer_holds": 1,
+    "independent_supported_endcap_witnesses": 42,
+    "original_neighbour_pixel_triplets": 12710,
+    "whole_original_contrast_columns": 342
+  },
+  "fresh_replay_identical": true,
+  "parent_audit": {
+    "checked": {
+      "equivalent_height_original_witnesses": 62,
+      "independent_conditional_pyramid_meshes": 6,
+      "independent_corner_failures_and_supports": 1631,
+      "independent_cross_view_checks": 672,
+      "independent_endcap_checks": 30,
+      "independent_finite_symbol_contexts": 13,
+      "independent_missing_threshold_holds": 6,
+      "independent_open_join_checks": 192,
+      "independent_open_join_samples": 576,
+      "independent_original_corner_edge_supports": 250,
+      "independent_slope_intersections": 125,
+      "original_column_pixel_memberships": 111973,
+      "original_perimeter_witnesses": 4,
+      "original_slope_pixel_memberships": 5548,
+      "original_spoke_witnesses": 4,
+      "original_untrimmed_boundary_tail_intervals": 2,
+      "source_silhouettes": 62,
+      "whole_literal_columns": 3874,
+      "whole_original_hough_groups": 53
+    },
+    "fresh_replay_identical": true,
+    "parent_audit": {
+      "checked": {
+        "independent_endcap_comparisons": 298,
+        "independent_gable_intersections": 39,
+        "independent_inter_sheet_height_checks": 3588,
+        "independent_partial_roof_meshes": 32,
+        "independent_relative_level_checks": 6,
+        "independent_threshold_comparisons": 48,
+        "original_fascia_pixel_memberships": 29167,
+        "original_glyph_fragments": 15,
+        "original_level_marker_leaders": 9,
+        "original_native_patch_vertices": 6,
+        "original_slope_pixel_memberships": 3708,
+        "separate_level_fragment_pairs": 3,
+        "whole_hough_source_groups": 29,
+        "whole_literal_fascia_columns": 817
+      },
+      "fresh_replay_identical": true,
+      "review_sha256": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+      "source_reference_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+      "status": "passed"
+    },
+    "review_sha256": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+    "source_preshow_sha256": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+    "status": "passed"
+  },
+  "review_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "source_pyramid_sha256": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+  "status": "passed"
+}

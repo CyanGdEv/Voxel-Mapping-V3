@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "interactive_states": 1979,
+  "original_source_pair_level_contrast_states": 516,
+  "original_finite_symbol_contexts": 13,
+  "conditional_pyramid_obj_downloads": 42,
+  "open_join_scene_states": 1344,
+  "open_join_scene_obj_downloads": 42,
+  "all_cross_view_side_assignment_checks": 4704,
+  "source_images_hash_verified": 5,
+  "original_plan_lines_tail_intervals_finite_aim_and_raster_pixels_exact": true,
+  "scene_vertices": 13,
+  "scene_triangles": 10,
+  "observed_fascia_only_no_shared_cap_closure": true,
+  "all_six_four_configuration_groups_checked": true,
+  "rotations_checked": 5,
+  "parent_geometry_sha256_unchanged": "216c30932ea8686f7e9e5e6207f95c48f5b51bb391ac99a0bff5d89e503810ff",
+  "source_pyramid_sha256_unchanged": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+  "export_original_bytes_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "default_scene_obj_sha256": "da3bcbb18c95c227f31b9cd27c8caaf40a35a612e4cac009c5e25d4d0d7053da",
+  "javascript_errors": 0
+}

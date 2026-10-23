@@ -1,0 +1,52 @@
+{
+  "base_commit": "c0824e27bcf99d0569a63e686dcaffe625283616",
+  "browser_review_sha256": "3d14f24e3bddb9f078d1d69b86693a7896942f830e0a5cda0af642bdd8559f78",
+  "charged_checks": 19364,
+  "code_sha256": {
+    "scripts/audit_pyramid_fascia_evidence.py": "582e9758b38d9482c361e74e01ef911627920c45d03a908d15ba3f246ea34d61",
+    "scripts/build_pyramid_fascia_evidence.py": "8c583578135f8acfa600365fc9ca8ff92d3f285795b8eee0083293f4ad517de2",
+    "scripts/export_pyramid_fascia_models.py": "f89d113d39a3b5698431ddfdf5996a069a7e8bd9789723f910735e715b163400",
+    "scripts/render_pyramid_fascia_evidence.py": "60fbf403ad3486263ff24588961548326ecb2d14cfdaf7b4d219b98bc30dc783",
+    "tests/test_pyramid_fascia_evidence.py": "0a9502766ff983830138e39382e8366cd365c083a0ac055aac007800119be7e6",
+    "voxel_mapper/pyramid_fascia_evidence.py": "908ea87539a66982b36551d91d42fd10fc5e04c0dd3646844e91e9c616ca1269",
+    "voxel_mapper/source_gradient_fascia.py": "254f84a0ca730f76ac3a98052adda3db8da0891f4e6a9c06ec3daa85a7cea3b4"
+  },
+  "command": "CC=gcc CXX=g++ python -m unittest discover -s tests -q",
+  "compressed_log_sha256": "3ffcc72d5b4822c85001104a3b0a97b7fd83133accd75405bf468b8423767262",
+  "counts": {
+    "configuration_coverage": 6,
+    "cross_view_checks": 4704,
+    "edge_views": 4,
+    "endcap_checks": 14,
+    "models": 42,
+    "observed_faces": 1,
+    "open_join_checks": 1344,
+    "primary_silhouettes": 42,
+    "shared_cap_face_checks": 1,
+    "source_corner_checks": 70,
+    "source_corner_edge_checks": 344,
+    "stability_checks": 111
+  },
+  "default_scene_obj_sha256": "da3bcbb18c95c227f31b9cd27c8caaf40a35a612e4cac009c5e25d4d0d7053da",
+  "focused_log_sha256": "f17d4f3bb33020ef79468cddcc07bfe6cd3f76d73e01c97b4f92cb7f61521f81",
+  "focused_tests": 18,
+  "full_suite_log_sha256": "85e3c6fc522366de6754bd1360ed8ad520dbe0605e4f78b7752b6e41ad7cff72",
+  "html_sha256": "0bd3f5ea6f6b9b1496c70d3c3aaefd037055091904616d837879a7f806873c6a",
+  "limits": "Complementary original-neighbour-contrast recipe only. Four source configurations support six inspection groups; original literal-column ink-235 holds and previous models unchanged. One observed-face strip is on the opposite edge from the shared cap. No transfer of fascia depth, shared-cap wall/closure, physical acceptance, world blocks or training labels. Source datum, roles and correspondence remain assumed; semantic ranker untrained.",
+  "new_regressions": 18,
+  "obj_manifest_sha256": "f35df99cfc52a53cc0d18cc9b5a267a10d653b96f036ebf124d931e7158118ad",
+  "parent_ci": {
+    "conclusion": "success",
+    "run_id": 39868145896,
+    "run_number": 640,
+    "workflow": "Tests"
+  },
+  "python": "3.12.14",
+  "review_json_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "screenshot_sha256": "043acd3ac0a56b3af0fb531014d067516a559c000feeb418172c89aa63813c98",
+  "seconds": 1023.837,
+  "source_audit_sha256": "0ca53d263bc88732da7ea6f8280e447112fc96630456b1da154f6ae37f397274",
+  "status": "passed",
+  "tests": 1791,
+  "version": "source-gradient-fascia-local-validation-v1"
+}

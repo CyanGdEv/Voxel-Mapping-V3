@@ -594,3 +594,8 @@ The [adjoining-roof review](docs/pyramidal-roof-junctions.md) detects an origina
 four-spoke roof graph and traces both retained rail tails along its boundary.
 Six taller-roof inspection variants expose an open vertical join; second-threshold
 support, wall closure, physical correspondence and world placement remain held.
+
+The [original-contrast fascia review](docs/source-gradient-fascia.md) recovers
+fascia-edge support at both ink thresholds and both contrast cutoffs. It adds a
+strip on one observed perimeter edge; the opposite shared-cap interface stays
+open, and earlier literal-column holds remain unchanged.
