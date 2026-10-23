@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "parent_commit": "ec348c482c2db515d7b92cc57fbaebd939457c67",
+  "parent_ci": {
+    "run_id": 39946620556,
+    "run_number": 642,
+    "conclusion": "success"
+  },
+  "review_sha256": "0fd44d0df033e94efe7f26c9eb758668c8455e1d3b3bb3983a5d6abf4d0671f0",
+  "code_sha256": {
+    "voxel_mapper/drawing_caption_inventory.py": "3a2ac390c7b2b78e143f32d3e4fc507f5afb70ec09529e389fc6ca8d1353b038",
+    "tests/test_drawing_caption_inventory.py": "5bd4dc6b51f9a90a899c7ffea235452af67dba95c35b147cf39c9900d0457543",
+    "scripts/audit_drawing_caption_coverage.py": "890e647b114a09fc6801962d0ea41d3984aa52fb7232492bb743e4205945257c",
+    "scripts/build_drawing_caption_coverage.py": "715b6cefd955d58ffb356d50012cf7e4f9fdff686d23466c9035ee6020df206a",
+    "scripts/render_drawing_caption_coverage.py": "7795606c795ff04812c2b344ca9c8759ee5678cba3fe6ed0f5664f98d2bad18d"
+  },
+  "focused_tests": 15,
+  "source_audit": "passed",
+  "browser_review": "passed",
+  "full_suite": {
+    "tests": 1806,
+    "duration_seconds": 577.247,
+    "log_sha256": "55349935c343d8f3b36a871fa1de4d701bf9e61bd6046c7b758fee2908ec85e9"
+  },
+  "review_html_sha256": "175d515afee2baacac914a1ae575e63ffb0a0a0791778fa6e088c1155ac60016",
+  "review_png_sha256": "ec7bdbeb480616a7e6bc111027990e7df8b075b09aab69b4751bfc9bfb740e04"
+}

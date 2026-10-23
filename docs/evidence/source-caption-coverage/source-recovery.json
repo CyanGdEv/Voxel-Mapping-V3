@@ -1,0 +1,151 @@
+{
+  "status": "known_original_sources_recovered",
+  "retrieved_at_utc": "2026-10-23T12:10:08.513240+00:00",
+  "application_reference": "SMD/2016/0315",
+  "application_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=104356",
+  "application_page_sha256": "da203bc855a135f2cd6f2850db2b45cfac213a7d31ebf90e4f1eb8234f9a8bb3",
+  "observed_attachment_links": 89,
+  "documents": [
+    {
+      "attachment_id": 163929,
+      "attachment_label": "373-95-7A Site Plan Proposed (2)",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163929",
+      "sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279",
+      "bytes": 970349,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163931,
+      "attachment_label": "373-95-11A Sections AA BB Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163931",
+      "sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "bytes": 2310814,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163932,
+      "attachment_label": "373-95-13A Sections CC DD Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163932",
+      "sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "bytes": 2114168,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163933,
+      "attachment_label": "373-95-15A Sections EE FF Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163933",
+      "sha256": "aa8a1128914c708de4773997e7306f571839133d644bf454af1572f9a74c4220",
+      "bytes": 2305767,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163934,
+      "attachment_label": "373-95-17A Sections GG HH Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163934",
+      "sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+      "bytes": 2900983,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163939,
+      "attachment_label": "2967-42 Maintenance Building P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939",
+      "sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "bytes": 537537,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    },
+    {
+      "attachment_id": 163936,
+      "attachment_label": "2967-22 Basement Plan P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163936",
+      "sha256": "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c",
+      "bytes": 107911,
+      "status": "checksum_verified_source_available",
+      "observed_on_pinned_application_page": true
+    }
+  ],
+  "initial_attempts": [
+    {
+      "attachment_id": 163929,
+      "label": "373-95-7A Site Plan Proposed (2)",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163929",
+      "expected_sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279",
+      "http_status": 200,
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163929",
+      "status": "verified",
+      "bytes": 970349,
+      "sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279"
+    },
+    {
+      "attachment_id": 163931,
+      "label": "373-95-11A Sections AA BB Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163931",
+      "expected_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "http_status": 200,
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163931",
+      "status": "verified",
+      "bytes": 2310814,
+      "sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1"
+    },
+    {
+      "attachment_id": 163932,
+      "label": "373-95-13A Sections CC DD Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163932",
+      "expected_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "http_status": 200,
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163932",
+      "status": "verified",
+      "bytes": 2114168,
+      "sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78"
+    },
+    {
+      "attachment_id": 163933,
+      "label": "373-95-15A Sections EE FF Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163933",
+      "expected_sha256": "aa8a1128914c708de4773997e7306f571839133d644bf454af1572f9a74c4220",
+      "status": "unavailable",
+      "reason": "timed out"
+    },
+    {
+      "attachment_id": 163934,
+      "label": "373-95-17A Sections GG HH Prop",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163934",
+      "expected_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+      "status": "unavailable",
+      "reason": "timed out"
+    },
+    {
+      "attachment_id": 163939,
+      "label": "2967-42 Maintenance Building P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939",
+      "expected_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "http_status": 200,
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939",
+      "status": "verified",
+      "bytes": 537537,
+      "sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f"
+    },
+    {
+      "attachment_id": 163936,
+      "label": "2967-22 Basement Plan P1 FINAL",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163936",
+      "expected_sha256": "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c",
+      "http_status": 200,
+      "final_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163936",
+      "status": "verified",
+      "bytes": 107911,
+      "sha256": "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c"
+    }
+  ],
+  "limitations": [
+    "The initial receipt includes two timeouts; subsequent retrieval verified both original PDF hashes.",
+    "Only known links on the pinned application page were requested. No claim that this is the entire planning record.",
+    "Source recovery does not establish a physical shared-cap detail, approved revision or as-built state."
+  ]
+}

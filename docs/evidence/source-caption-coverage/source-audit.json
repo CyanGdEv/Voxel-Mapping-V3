@@ -1,0 +1,11 @@
+{
+  "checked": {
+    "independent_exact_caption_joins": 13,
+    "original_caption_and_header_witnesses": 12,
+    "original_caption_traces": 12
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "0fd44d0df033e94efe7f26c9eb758668c8455e1d3b3bb3983a5d6abf4d0671f0",
+  "source_reference_review_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+  "status": "passed"
+}
