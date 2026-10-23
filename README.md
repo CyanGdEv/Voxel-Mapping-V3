@@ -610,3 +610,9 @@ The [section roof leader review](docs/section-roof-leaders.md) links four origin
 numeric labels to source leaders and roof strokes. Three closed section outlines
 conditionally agree with the existing apex/eave heights; five alternatives,
 section projection, physical correspondence and shared-cap geometry stay held.
+
+The [section projection review](docs/section-roof-projections.md) tests the
+original three-spoke section groups against the roof plan. All 24 orientation
+candidates remain supported; half show the shared cap and half hide it. Face
+assignment now has an explicit ambiguity gate and requires independent cut or
+adjoining-feature evidence before a wall/fascia join can be generated.

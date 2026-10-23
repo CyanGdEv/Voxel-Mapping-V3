@@ -1,0 +1,2975 @@
+{
+  "accepted_physical_components": 0,
+  "checks": 21628,
+  "contract": {
+    "implementation_sha256": "15a950eedbc00c45928ec2c452704e812f26d2e8df697aff3d97cd7a84a8a34b",
+    "kernel_sha256": {
+      "voxel_mapper.pyramidal_roof_topology": "3046d6bbc291f8f6a4f489514c8060d73c1d095e9b5748365907bcb3ef8f2518",
+      "voxel_mapper.section_roof_evidence": "68a6bdc0f2a989e483eb5af6f3ef38e307f395d1d6e98fb8e00f921222234871",
+      "voxel_mapper.section_roof_projection": "af50bf832ffac3e8f8ecac79570e86a2c200f3dc64e82a51e98bd79829fd282f"
+    },
+    "max_projection_checks": 100000,
+    "original_roof_pdf_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "parent_section_max_checks": 2000000,
+    "pymupdf_version": "1.28.2",
+    "source_catalogue_sha256": "eca804de6875aaf84e47540904669f65e73d7ffb5cf7b7fafcb3c40fb99b31c1",
+    "source_fascia_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+    "source_pyramid_sha256": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+    "source_section_sha256": "1f05cc0756af068e550ede7cbbf65217dd155b7bbc04acca696f92f906c60bfc",
+    "version": "section-projection-evidence-v1"
+  },
+  "counts": {
+    "original_plan_line_witnesses": 8,
+    "projection_candidates": 24,
+    "shared_cap_hidden_candidates": 12,
+    "shared_cap_visible_candidates": 12,
+    "source_groups": 4,
+    "supported_projection_candidates": 24,
+    "supported_source_groups": 3
+  },
+  "face_ambiguity": [
+    {
+      "best_residual_candidate_selected": false,
+      "id": "96f14fd11d5d3573d71e9cfab1132cbaf77141fc2950013bf1657a0f6113711f",
+      "next_requirement": "Section cut/view direction tied to the original roof plan and adjoining gable",
+      "physical_face_assignment_verified": false,
+      "shared_cap_hidden_candidates": 4,
+      "shared_cap_visible_candidates": 4,
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "status": "source_projection_supported_shared_cap_ambiguous",
+      "supported_projection_count": 8,
+      "supported_projection_ids": [
+        "4af6f7c2170b0c3c975d3a401bc9777bfaf21cedb76772db5668f4ad212cd742",
+        "37422bf0bebc52e3d49770ba08f50d96a1c3213ad595a33c075e83ff88ad0262",
+        "9c942246a4fb51ef1b17809a80747a772d3bc908a04e55b066148a7d42fc3dde",
+        "b7debeffe0b15d3c8ec70a2405f01ac8bb1e1087db212817e1d91a7332069e0a",
+        "22baf808af4ccb45aef383e001517cd6aff5c7553a064938146ad8fb1250b3d3",
+        "470b2382cf5e184471af131122571a1db3ba9974124f227ea675800b6bc40564",
+        "ad87cd4afdf387ae2f1defc78bd05286af42e5fb9ceac3aeb41758d899912c50",
+        "ac58d9f55b99af3aa56f056a296bb379657a188105bf9b2a5b53f4c332d88109"
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "best_residual_candidate_selected": false,
+      "id": "3401b91802db186534aee6000a5a7899a4fe8446ba01252b416648511b1cb267",
+      "next_requirement": "Section cut/view direction tied to the original roof plan and adjoining gable",
+      "physical_face_assignment_verified": false,
+      "shared_cap_hidden_candidates": 4,
+      "shared_cap_visible_candidates": 4,
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "status": "source_projection_supported_shared_cap_ambiguous",
+      "supported_projection_count": 8,
+      "supported_projection_ids": [
+        "fc4b2586caa3874e29b8dde1489fc9eef7b06869e21ce3fe55896ecb3bfce19b",
+        "d71bb0c8846cfdf52aa2f68755cbdf501659fc37197066a9d2f8a16120511627",
+        "7f48ec5af4031f59eb24a915ada11f58c6f2b09cce53e914346f5b1094382a8b",
+        "d81d13eebd2943c40714029dcfb22a08d6dd539ea6bbda8514395af919125d98",
+        "0bcb25e50a9c6e0a8a52992250830880a395d6f72f1c9c251682cba05ac2eee9",
+        "3089552619231866bd558c2de85baa8283974f408efe1841614ce9a83f3fc688",
+        "ab9690e062490df50b9d13458d47f797c78420fd4497cbe32d133c949f073480",
+        "be97f43c82610084832be72a4fb53fcab0f99e9c361772e79119d154d77cad1e"
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "best_residual_candidate_selected": false,
+      "id": "c72d16518fd56713aab57f8fe77c75093ddedf971c80317292c2dd6ee88c1ec9",
+      "next_requirement": "Section cut/view direction tied to the original roof plan and adjoining gable",
+      "physical_face_assignment_verified": false,
+      "shared_cap_hidden_candidates": 0,
+      "shared_cap_visible_candidates": 0,
+      "source_group_id": "b8feec8b481d7d6417d1daa232249b6ebca2ac38fccc5154a1af42213e1dc966",
+      "status": "section_projection_support_held",
+      "supported_projection_count": 0,
+      "supported_projection_ids": [],
+      "wall_closure_authorized": false
+    },
+    {
+      "best_residual_candidate_selected": false,
+      "id": "3fcad80443af7b71a80ed8d8aa667d9b1450d4e8de71c5616db8c05d22a411d3",
+      "next_requirement": "Section cut/view direction tied to the original roof plan and adjoining gable",
+      "physical_face_assignment_verified": false,
+      "shared_cap_hidden_candidates": 4,
+      "shared_cap_visible_candidates": 4,
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "status": "source_projection_supported_shared_cap_ambiguous",
+      "supported_projection_count": 8,
+      "supported_projection_ids": [
+        "dc7cabfcf606f0e3b2a7feeb1a50c70ea2bb792e2ffbc77ebfc023fe69186c9c",
+        "62d2e079331eff1c5ec1f3039f009f645feb26fa9a7278f944a6131401bb3a9b",
+        "5c2bcc8da2f8064f43f56d39be7bf69971f13423b370f74b7384402a2aec0518",
+        "9e5f2c92d2c20816bbafc6025cefc7ea43072f26ec9d9ea5dac18244c033d38a",
+        "977664ae78776dc1f48d2a900b4c68e14b7e6b4ad75a3d9242bbadf9bd90f0e9",
+        "2c678f59737f1c56c1569c839d92dc4a1a1bb3c96bf7aeba62bbae4b70b61941",
+        "a207dc7e6e6caa79e2040664826b7f9e046c71396979785ac6804b2616295adb",
+        "529516b84adececcd63ef47d6c6cb9949fb33eed46f7feee861f7b587e6af77e"
+      ],
+      "wall_closure_authorized": false
+    }
+  ],
+  "parent_section_fresh_replay_identical": true,
+  "plan_source_witnesses": [
+    {
+      "original_endpoints_pdf_native": [
+        [
+          912.8389282226562,
+          1383.0595703125
+        ],
+        [
+          912.8389282226562,
+          1160.70068359375
+        ]
+      ],
+      "original_paint_seqno": 6311,
+      "original_path_record_sha256": "425e15c417c8e93a9d8492bd8509b1df5a95a1316afa6cb80880f849eca36bcc",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6357,
+      "source_component_id": "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          1024.0777587890625,
+          1271.9395751953125
+        ],
+        [
+          912.8389282226562,
+          1383.0595703125
+        ]
+      ],
+      "original_paint_seqno": 6310,
+      "original_path_record_sha256": "e89bd867127de75976f0bbbf43064aed32af3243bab1991dd27a9df4f18f805b",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6356,
+      "source_component_id": "375283f24c25eec45c0014f84378ce3b8b102356b4a9c31dadc25f378a79790a"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          1024.0777587890625,
+          1271.9395751953125
+        ],
+        [
+          1135.1978759765625,
+          1383.0595703125
+        ]
+      ],
+      "original_paint_seqno": 6314,
+      "original_path_record_sha256": "ea887d7e970070b25360337a71200f6641f5907cb4681dbe5c94deb9e95652eb",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6360,
+      "source_component_id": "38ccc8312c66199cd8d6a0b8c115a3a1cdeef868b9228f4c6bdb1ef6e43a2c1b"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          1135.1978759765625,
+          1383.0595703125
+        ],
+        [
+          912.8389282226562,
+          1383.0595703125
+        ]
+      ],
+      "original_paint_seqno": 6312,
+      "original_path_record_sha256": "d14a215b752489aea4fcec7efe0c205908057c76bddf8c0397860d463af663f1",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6358,
+      "source_component_id": "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          912.8389282226562,
+          1160.70068359375
+        ],
+        [
+          1024.0777587890625,
+          1271.9395751953125
+        ]
+      ],
+      "original_paint_seqno": 6317,
+      "original_path_record_sha256": "b02e6fd320dd3be97d352099e5c0edce25482aebbe35c1713d6d7e44ad84683b",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6363,
+      "source_component_id": "5284ec50b7824272ece4dbb2a45ca534206968a4ad946f0d7fccea830623f58b"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          1135.1978759765625,
+          1160.70068359375
+        ],
+        [
+          1135.1978759765625,
+          1383.0595703125
+        ]
+      ],
+      "original_paint_seqno": 6313,
+      "original_path_record_sha256": "271b76ac36d85421715859017a7de2dcd1909f93e6abec16d23620215372b16d",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6359,
+      "source_component_id": "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          912.8389282226562,
+          1160.70068359375
+        ],
+        [
+          1135.1978759765625,
+          1160.70068359375
+        ]
+      ],
+      "original_paint_seqno": 6315,
+      "original_path_record_sha256": "cc09b375cdf7237eed01b6264e107e41424687eaf7a2c79e30ebfa7c83769ce1",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6361,
+      "source_component_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+    },
+    {
+      "original_endpoints_pdf_native": [
+        [
+          1024.0777587890625,
+          1271.9395751953125
+        ],
+        [
+          1135.1978759765625,
+          1160.70068359375
+        ]
+      ],
+      "original_paint_seqno": 6316,
+      "original_path_record_sha256": "acd956d8086410bb1dccdca01421d33ad0a6392279a4c97ff0bdbd849eefeb82",
+      "original_pdf_item_index": 0,
+      "original_pdf_path_index": 6362,
+      "source_component_id": "c7897b4c955ddf676453b40d6c3d167783a397189c79e5775e0b5575c1fa8da7"
+    }
+  ],
+  "previous_source_holds_overridden": false,
+  "projection_candidates": [
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.646158329725755,
+        -3.031165224557465,
+        -4.641198653498656,
+        3.0361249007845634
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9787099725342628,
+        -0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "4af6f7c2170b0c3c975d3a401bc9777bfaf21cedb76772db5668f4ad212cd742",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.0789549659483555,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        990.4204154073204,
+        967.6010377098329,
+        1076.4134676664614,
+        1099.232845363949
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507371547919384,
+        0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          967.6799926757812,
+          990.47998046875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        0,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.0789549659483555,
+        -0.05956506142956641,
+        0.03289419207408173
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.20524811731653592,
+        0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.646160329854733,
+        3.0361256123367,
+        -4.641195657051918,
+        -3.031160939533885
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20524822524669556,
+        -0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "37422bf0bebc52e3d49770ba08f50d96a1c3213ad595a33c075e83ff88ad0262",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07891730842925426,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        990.4204588007792,
+        1099.2329161087903,
+        1076.413532675363,
+        967.601075367352
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9778780822748796,
+        -0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          990.47998046875,
+          1099.199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        0,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.07891730842925426,
+        -0.05952166797078462,
+        0.032964936915277576
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9787099498999088,
+        -0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0352660442221557,
+        4.645300761740188,
+        -3.0320205076484297,
+        -4.642055225166462
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20524822524669556,
+        -0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "9c942246a4fb51ef1b17809a80747a772d3bc908a04e55b066148a7d42fc3dde",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09105791947604303,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1099.291009091351,
+        990.4785517833401,
+        967.6591683499129,
+        1076.4716256579238
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9778780822748796,
+        -0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          990.47998046875,
+          1099.199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        1,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.020824325868375126,
+        -0.0014286854099054835,
+        0.09105791947604303
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9787099498999088,
+        -0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0352640073107198,
+        4.6420595469725,
+        3.0320261180313093,
+        -4.645297436251911
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9787099725342628,
+        -0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "b7debeffe0b15d3c8ec70a2405f01ac8bb1e1087db212817e1d91a7332069e0a",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09113781470875892,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        967.5888548610725,
+        990.40823255856,
+        1099.2206625151887,
+        1076.401284817701
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507371547919384,
+        0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          967.6799926757812,
+          990.47998046875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.09113781470875892,
+        -0.07174791018996984,
+        0.0207113433136783
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.20524811731653592,
+        0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.646158329725755,
+        3.031165224557465,
+        4.641198653498656,
+        -3.0361249007845634
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9787099725342628,
+        0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "22baf808af4ccb45aef383e001517cd6aff5c7553a064938146ad8fb1250b3d3",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07889393079221918,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1076.4594674051796,
+        1099.2788451026672,
+        990.4664151460386,
+        967.647037448551
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507371547919384,
+        -0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        2,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.03295522723021804,
+        -0.013565322711428962,
+        0.07889393079221918
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.20524811731653592,
+        -0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.646160329854733,
+        -3.0361256123367,
+        4.641195657051918,
+        3.031160939533885
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20524822524669556,
+        0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "470b2382cf5e184471af131122571a1db3ba9974124f227ea675800b6bc40564",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07885627327300426,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1076.4594240117208,
+        967.6469667037098,
+        990.466350137137,
+        1099.278807445148
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9778780822748796,
+        0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        2,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.03302597207141389,
+        -0.013630331612944246,
+        0.07885627327300426
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9787099498999088,
+        0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0352660442221557,
+        -4.645300761740188,
+        3.0320205076484297,
+        4.642055225166462
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20524822524669556,
+        0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "ad87cd4afdf387ae2f1defc78bd05286af42e5fb9ceac3aeb41758d899912c50",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09111895463229303,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        967.588873721149,
+        1076.40133102916,
+        1099.2207144625872,
+        990.4082571545762
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9778780822748796,
+        0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        3,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.09111895463229303,
+        -0.07172331417382338,
+        0.020763290712238813
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9787099498999088,
+        0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0352640073107198,
+        -4.6420595469725,
+        -3.0320261180313093,
+        4.645297436251911
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9787099725342628,
+        0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "ac58d9f55b99af3aa56f056a296bb379657a188105bf9b2a5b53f4c332d88109",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09107677955262261,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1099.2910279514276,
+        1076.47165025394,
+        967.6592202973114,
+        990.478597994799
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507371547919384,
+        -0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_group_id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        3,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          1114.3199462890625
+        ],
+        [
+          990.47998046875,
+          1114.3199462890625
+        ],
+        [
+          1099.199951171875,
+          1114.3199462890625
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.020772378469814612,
+        -0.0013824739510255313,
+        0.09107677955262261
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.20524811731653592,
+        -0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.646158329725755,
+        -3.031165224557465,
+        -4.641198653498656,
+        3.0361249007845634
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9787099725342628,
+        -0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "fc4b2586caa3874e29b8dde1489fc9eef7b06869e21ce3fe55896ecb3bfce19b",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.0789549659483555,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        990.4204154073204,
+        967.6010377098329,
+        1076.4134676664614,
+        1099.232845363949
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507371547919384,
+        0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          967.6799926757812,
+          990.47998046875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        0,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.0789549659483555,
+        -0.05956506142956641,
+        0.03289419207408173
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.20524811731653592,
+        0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.646160329854733,
+        3.0361256123367,
+        -4.641195657051918,
+        -3.031160939533885
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20524822524669556,
+        -0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "d71bb0c8846cfdf52aa2f68755cbdf501659fc37197066a9d2f8a16120511627",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07891730842925426,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        990.4204588007792,
+        1099.2329161087903,
+        1076.413532675363,
+        967.601075367352
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9778780822748796,
+        -0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          990.47998046875,
+          1099.199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        0,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.07891730842925426,
+        -0.05952166797078462,
+        0.032964936915277576
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9787099498999088,
+        -0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0352660442221557,
+        4.645300761740188,
+        -3.0320205076484297,
+        -4.642055225166462
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20524822524669556,
+        -0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "7f48ec5af4031f59eb24a915ada11f58c6f2b09cce53e914346f5b1094382a8b",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09105791947604303,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1099.291009091351,
+        990.4785517833401,
+        967.6591683499129,
+        1076.4716256579238
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9778780822748796,
+        -0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          990.47998046875,
+          1099.199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        1,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.020824325868375126,
+        -0.0014286854099054835,
+        0.09105791947604303
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9787099498999088,
+        -0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0352640073107198,
+        4.6420595469725,
+        3.0320261180313093,
+        -4.645297436251911
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9787099725342628,
+        -0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "d81d13eebd2943c40714029dcfb22a08d6dd539ea6bbda8514395af919125d98",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09113781470875892,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        967.5888548610725,
+        990.40823255856,
+        1099.2206625151887,
+        1076.401284817701
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507371547919384,
+        0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          967.6799926757812,
+          990.47998046875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.09113781470875892,
+        -0.07174791018996984,
+        0.0207113433136783
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.20524811731653592,
+        0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.646158329725755,
+        3.031165224557465,
+        4.641198653498656,
+        -3.0361249007845634
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9787099725342628,
+        0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "0bcb25e50a9c6e0a8a52992250830880a395d6f72f1c9c251682cba05ac2eee9",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07889393079221918,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1076.4594674051796,
+        1099.2788451026672,
+        990.4664151460386,
+        967.647037448551
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507371547919384,
+        -0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        2,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.03295522723021804,
+        -0.013565322711428962,
+        0.07889393079221918
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.20524811731653592,
+        -0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.646160329854733,
+        -3.0361256123367,
+        4.641195657051918,
+        3.031160939533885
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20524822524669556,
+        0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "3089552619231866bd558c2de85baa8283974f408efe1841614ce9a83f3fc688",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.07885627327300426,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1076.4594240117208,
+        967.6469667037098,
+        990.466350137137,
+        1099.278807445148
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9778780822748796,
+        0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        2,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.03302597207141389,
+        -0.013630331612944246,
+        0.07885627327300426
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9787099498999088,
+        0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0352660442221557,
+        -4.645300761740188,
+        3.0320205076484297,
+        4.642055225166462
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20524822524669556,
+        0.9787099498999088
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "ab9690e062490df50b9d13458d47f797c78420fd4497cbe32d133c949f073480",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09111895463229303,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        967.588873721149,
+        1076.40133102916,
+        1099.2207144625872,
+        990.4082571545762
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9778780822748796,
+        0.20507377176975392
+      ],
+      "raw_projection_vector_norm": 0.999150036611854,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        3,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.09111895463229303,
+        -0.07172331417382338,
+        0.020763290712238813
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9787099498999088,
+        0.20524822524669556
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0352640073107198,
+        -4.6420595469725,
+        -3.0320261180313093,
+        4.645297436251911
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9787099725342628,
+        0.20524811731653592
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "be97f43c82610084832be72a4fb53fcab0f99e9c361772e79119d154d77cad1e",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.09107677955262261,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1099.2910279514276,
+        1076.47165025394,
+        967.6592202973114,
+        990.478597994799
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507371547919384,
+        -0.9778783506920428
+      ],
+      "raw_projection_vector_norm": 0.9991502877608709,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086658053927951,
+        7.670797932942708
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_group_id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        3,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          967.6799926757812,
+          476.3999938964844
+        ],
+        [
+          990.47998046875,
+          476.3999938964844
+        ],
+        [
+          1099.199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.020772378469814612,
+        -0.0013824739510255313,
+        0.09107677955262261
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            967.6799926757812,
+            990.47998046875
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            990.47998046875,
+            1099.199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.20524811731653592,
+        -0.9787099725342628
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.644812498043592,
+        -3.033223946058764,
+        -4.639854260880941,
+        3.038182183221414
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9788008521709453,
+        -0.2048142860970188
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "dc7cabfcf606f0e3b2a7feeb1a50c70ea2bb792e2ffbc77ebfc023fe69186c9c",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.22617620867004007,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1616.07128500447,
+        1593.3001404337197,
+        1702.1226743377672,
+        1724.8938189085175
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507316650055485,
+        0.9800380332505474
+      ],
+      "raw_projection_vector_norm": 1.001263976300039,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          1593.3599853515625,
+          1616.159912109375
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        0,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.059844917842838186,
+        -0.08862710490507197,
+        -0.22617620867004007
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.2048142860970188,
+        0.9788008521709453
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        4.644814498852498,
+        3.038182898020226,
+        -4.639851261725213,
+        -3.033219660892941
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20481439381904995,
+        -0.9788008296300812
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "62d2e079331eff1c5ec1f3039f009f645feb26fa9a7278f944a6131401bb3a9b",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.22610547790304736,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 0,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1616.0713283706868,
+        1724.8938896392845,
+        1702.1227393424947,
+        1593.300178073897
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9800377642405745,
+        -0.20507322279096424
+      ],
+      "raw_projection_vector_norm": 1.0012637245219345,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          1616.159912109375,
+          1725.1199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        0,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.059807277665413494,
+        -0.08858373868815761,
+        -0.22610547790304736
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9788008296300812,
+        -0.20481439381904995
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0373251467674933,
+        4.643956747599765,
+        -3.034077412145675,
+        -4.640709012977947
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20481439381904995,
+        -0.9788008296300812
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "5c2bcc8da2f8064f43f56d39be7bf69971f13423b370f74b7384402a2aec0518",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.16800710102234007,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1724.9519880161652,
+        1616.1294267475675,
+        1593.3582764507778,
+        1702.1808377193754
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9800377642405745,
+        -0.20507322279096424
+      ],
+      "raw_projection_vector_norm": 1.0012637245219345,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          1616.159912109375,
+          1725.1199951171875
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        1,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.001708900784706202,
+        -0.030485361807450317,
+        -0.16800710102234007
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9788008296300812,
+        -0.20481439381904995
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0373231094108664,
+        4.6407133346914895,
+        3.0340830198693123,
+        -4.643953424233044
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9788008521709453,
+        -0.2048142860970188
+      ],
+      "candidate_visible_original_edge_indices": [
+        0,
+        1
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "9e5f2c92d2c20816bbafc6025cefc7ea43072f26ec9d9ea5dac18244c033d38a",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.23833330664547248,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 1,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1593.2879833357442,
+        1616.0591279064945,
+        1724.881661810542,
+        1702.1105172397918
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507316650055485,
+        0.9800380332505474
+      ],
+      "raw_projection_vector_norm": 1.001263976300039,
+      "shared_cap_candidate_visible": true,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [
+        [
+          1593.3599853515625,
+          1616.159912109375
+        ]
+      ],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.07200201581827059,
+        -0.10078420288050438,
+        -0.23833330664547248
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 0,
+          "original_plan_perimeter_source_ids": [
+            "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.2048142860970188,
+        0.9788008521709453
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.644812498043592,
+        3.033223946058764,
+        4.639854260880941,
+        -3.038182183221414
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.9788008521709453,
+        0.2048142860970188
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "977664ae78776dc1f48d2a900b4c68e14b7e6b4ad75a3d9242bbadf9bd90f0e9",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.18014531653216181,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1702.168705229905,
+        1724.9398498006553,
+        1616.1173158966078,
+        1593.3461713258575
+      ],
+      "raw_projection_horizontal_vector": [
+        0.20507316650055485,
+        -0.9800380332505474
+      ],
+      "raw_projection_vector_norm": 1.001263976300039,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        3,
+        2,
+        1
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.013814025704959931,
+        -0.04259621276719372,
+        -0.18014531653216181
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.2048142860970188,
+        -0.9788008521709453
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -4.644814498852498,
+        -3.038182898020226,
+        4.639851261725213,
+        3.033219660892941
+      ],
+      "candidate_viewer_direction_native_xy": [
+        0.20481439381904995,
+        0.9788008296300812
+      ],
+      "candidate_visible_original_edge_indices": [
+        1,
+        2
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "2c678f59737f1c56c1569c839d92dc4a1a1bb3c96bf7aeba62bbae4b70b61941",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.1801829567095865,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 2,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1702.1686618636882,
+        1593.3461005950905,
+        1616.1172508918803,
+        1724.939812160478
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.9800377642405745,
+        0.20507322279096424
+      ],
+      "raw_projection_vector_norm": 1.0012637245219345,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        1,
+        2,
+        3
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.013884756471952642,
+        -0.04266121749469676,
+        -0.1801829567095865
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 1,
+          "original_plan_perimeter_source_ids": [
+            "7ecb5737baabc98f1a72a21e0c2bf4a8fc2a532025964ae0114b1ca4593a5782"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.9788008296300812,
+        0.20481439381904995
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        -3.0373251467674933,
+        -4.643956747599765,
+        3.034077412145675,
+        4.640709012977947
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.20481439381904995,
+        0.9788008296300812
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "a207dc7e6e6caa79e2040664826b7f9e046c71396979785ac6804b2616295adb",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.2382813335902938,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1593.2880022182098,
+        1702.1105634868075,
+        1724.8817137835972,
+        1616.0591525149996
+      ],
+      "raw_projection_horizontal_vector": [
+        0.9800377642405745,
+        0.20507322279096424
+      ],
+      "raw_projection_vector_norm": 1.0012637245219345,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        0,
+        3,
+        2
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.07198313335265993,
+        -0.10075959437540405,
+        -0.2382813335902938
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        0.9788008296300812,
+        0.20481439381904995
+      ],
+      "wall_closure_authorized": false
+    },
+    {
+      "camera_unit_constraint_applied": true,
+      "candidate_corner_depths_nominal_m": [
+        3.0373231094108664,
+        -4.6407133346914895,
+        -3.0340830198693123,
+        4.643953424233044
+      ],
+      "candidate_viewer_direction_native_xy": [
+        -0.9788008521709453,
+        0.2048142860970188
+      ],
+      "candidate_visible_original_edge_indices": [
+        2,
+        3
+      ],
+      "geographic_bearing_verified": false,
+      "geometry_export_authorized": false,
+      "id": "529516b84adececcd63ef47d6c6cb9949fb33eed46f7feee861f7b587e6af77e",
+      "maximum_permitted_source_station_residual_pdf_points": 0.5,
+      "maximum_source_station_residual_pdf_points": 0.1679882185567294,
+      "original_plan_candidate_id": "4f97ee221a0366719d5336abdbbfb23441c54980c5511dd341036b59037229e2",
+      "original_plan_front_corner_index": 3,
+      "original_source_stations_changed": false,
+      "orthographic_rectangular_roof_and_same_component_assumed": true,
+      "physical_face_assignment_verified": false,
+      "plan_corners_or_apex_moved": false,
+      "projected_original_plan_corner_x_pdf_points": [
+        1724.9520068986308,
+        1702.1808623278805,
+        1593.358328423833,
+        1616.1294729945832
+      ],
+      "raw_projection_horizontal_vector": [
+        -0.20507316650055485,
+        -0.9800380332505474
+      ],
+      "raw_projection_vector_norm": 1.001263976300039,
+      "shared_cap_candidate_visible": false,
+      "shared_cap_original_edge_index": 0,
+      "shared_cap_source_id": "be36604afd7b4114da4014ad0a26873113da13fc834ddf749ba502782a0d09ce",
+      "shared_cap_source_interval_candidates": [],
+      "source_adjacent_span_lengths_nominal_m": [
+        1.6086614990234374,
+        7.68773918999566
+      ],
+      "source_apex_anchor_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_group_id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "source_left_middle_right_plan_corner_indices": [
+        2,
+        3,
+        0
+      ],
+      "source_projected_base_vertices_pdf_unrotated": [
+        [
+          1593.3599853515625,
+          476.3999938964844
+        ],
+        [
+          1616.159912109375,
+          476.3999938964844
+        ],
+        [
+          1725.1199951171875,
+          476.3999938964844
+        ]
+      ],
+      "source_station_residuals_pdf_points": [
+        -0.0016569277295275242,
+        -0.030439114791761313,
+        -0.1679882185567294
+      ],
+      "source_visible_edge_assignments": [
+        {
+          "original_plan_edge_index": 2,
+          "original_plan_perimeter_source_ids": [
+            "4f447d70e872cce10d99bbd582b93c3eab99b15bae117a6b64e27d62869ab253"
+          ],
+          "source_section_interval_pdf_points": [
+            1593.3599853515625,
+            1616.159912109375
+          ]
+        },
+        {
+          "original_plan_edge_index": 3,
+          "original_plan_perimeter_source_ids": [
+            "1df4c6ace8ee859ed3387635a22aae7e36de2b40a891ba1488f777d12f39f676"
+          ],
+          "source_section_interval_pdf_points": [
+            1616.159912109375,
+            1725.1199951171875
+          ]
+        }
+      ],
+      "status": "conditional_source_projection_supported",
+      "unit_projection_horizontal_vector": [
+        -0.2048142860970188,
+        -0.9788008521709453
+      ],
+      "wall_closure_authorized": false
+    }
+  ],
+  "source_groups": [
+    {
+      "all_used_source_line_samples_supported": true,
+      "closed_source_pair_id": "6bf8204405d01833064e4d2056bfd2d36beb4ba81deeab558395ef4b1b1a096f",
+      "id": "b1d71017c94065ced3d70e17ef2244129e12c63f996c0dc55d5cb9d500a5de1a",
+      "nominal_metres_per_pdf_point": 0.07055555555555555,
+      "original_closed_base_source_ids": [
+        "7aa0754dbfb547bfb86a7425fab59298fcc4b22cd7a3576885400a34530ced09"
+      ],
+      "original_closed_base_split": false,
+      "previous_outline_holds_overridden": false,
+      "source_apex_pdf_unrotated": [
+        1033.43994140625,
+        1078.0799560546875
+      ],
+      "source_document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "source_leader_id": "b7b8e501a5f200a133984a2276f06b670b4399ca7a23d3f603cd93c042546bbb",
+      "source_page": 1,
+      "source_roof_spokes": [
+        {
+          "source_base_vertex_pdf_unrotated": [
+            967.6799926757812,
+            1114.3199462890625
+          ],
+          "whole_source_spoke_ids": [
+            "a9d9f899906176ebda9f8cf3e9214328375ae26eec6ea77d59503f8e7e925f02"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            990.47998046875,
+            1114.3199462890625
+          ],
+          "whole_source_spoke_ids": [
+            "ce7d6b3221ec3ce72f199eccf42a65fc132895c3d9c189718da23b85b6f7a81e"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            1099.199951171875,
+            1114.3199462890625
+          ],
+          "whole_source_spoke_ids": [
+            "3331b8821d34990ef1ca8fd717985a161e37b8b9b2ceaf07faf2a72b03c8f4fb"
+          ]
+        }
+      ],
+      "status": "original_three_spoke_whole_base_candidate"
+    },
+    {
+      "all_used_source_line_samples_supported": true,
+      "closed_source_pair_id": "924d66dcfaad95d1b37e1b76cac367ec9d0b72449b21b24d7fed26706a24b43d",
+      "id": "5aff5803e184475bd0cd7dc0be5a7e96f3415b0c3f358ad4385a58bd1343e0b1",
+      "nominal_metres_per_pdf_point": 0.07055555555555555,
+      "original_closed_base_source_ids": [
+        "8364ab99f77b13895af6f1aca1ba2931edc179156646123e0a6c821a8766f09c"
+      ],
+      "original_closed_base_split": false,
+      "previous_outline_holds_overridden": false,
+      "source_apex_pdf_unrotated": [
+        1033.43994140625,
+        440.3999938964844
+      ],
+      "source_document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "source_leader_id": "472c4a18a1176671615a52c09a7bc04054224934c452294a78529a505d7f9bc2",
+      "source_page": 1,
+      "source_roof_spokes": [
+        {
+          "source_base_vertex_pdf_unrotated": [
+            967.6799926757812,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "ead2cc74fbacf4ac702cd7907df012284f3f4178f75b93314aee3e6fcf919332"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            990.47998046875,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "bf85fa33d199ab7e43934561b1b284033d3129e46eb665eb46c5a232392acde3"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            1099.199951171875,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "95a39279b2d0769850e86c742ebdcea12220e5281da47495f4017b4b48f13ff2"
+          ]
+        }
+      ],
+      "status": "original_three_spoke_whole_base_candidate"
+    },
+    {
+      "closed_source_pair_id": null,
+      "id": "b8feec8b481d7d6417d1daa232249b6ebca2ac38fccc5154a1af42213e1dc966",
+      "original_closed_base_split": false,
+      "previous_outline_holds_overridden": false,
+      "source_document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "source_leader_id": "6354851842706f9ba634f53ba5cb356dafdd321b18564b89ed0196ae1d3c5c18",
+      "source_page": 1,
+      "source_roof_spokes": [],
+      "status": "section_three_spoke_group_held"
+    },
+    {
+      "all_used_source_line_samples_supported": true,
+      "closed_source_pair_id": "c67897e0bb163e66541e6f9c9a391da09aa7bf3b1206ac21014ea45b0ff02f4e",
+      "id": "77f7e15b9b4fdf7cc9083ed4924646256c5679fbc40d7e2f090ed1c48215bd25",
+      "nominal_metres_per_pdf_point": 0.07055555555555555,
+      "original_closed_base_source_ids": [
+        "ca101308b7497f75ba5116898b2c4227726d42470d72d92ec56eef0f30dd00ab"
+      ],
+      "original_closed_base_split": false,
+      "previous_outline_holds_overridden": false,
+      "source_apex_pdf_unrotated": [
+        1659.1199951171875,
+        440.3999938964844
+      ],
+      "source_document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+      "source_leader_id": "878a73b63b47881fa3d587b2d836f0001dceb341e6d6070bf0258f5aed532553",
+      "source_page": 1,
+      "source_roof_spokes": [
+        {
+          "source_base_vertex_pdf_unrotated": [
+            1593.3599853515625,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "298d16a22077890d0f8880f0a144f26dbb2f860c9b3f590c96c6921f7d50ec71"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            1616.159912109375,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "56bd7fb2375d1ee653f417a9e23c91a602632e705df771fab4145448c00fdf02"
+          ]
+        },
+        {
+          "source_base_vertex_pdf_unrotated": [
+            1725.1199951171875,
+            476.3999938964844
+          ],
+          "whole_source_spoke_ids": [
+            "aba4c74c740861376d95b7f949fb151523aaf0db0b28e2f1a7d6217014eafc93"
+          ]
+        }
+      ],
+      "status": "original_three_spoke_whole_base_candidate"
+    }
+  ],
+  "status": "section_projection_diagnostics_only",
+  "training_labels_generated": 0,
+  "unresolved": [
+    "Section cut/view direction tied to the original plan and adjoining gable",
+    "Physical component correspondence, source-state and datum",
+    "Shared-cap fascia/wall surface"
+  ],
+  "wall_closure_authorized": false,
+  "world_geometry_additions": 0
+}

@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "parent_commit": "ac30f2c567e52aacb932c975ad264301dfb1cb9a",
+  "parent_ci": {
+    "run_id": 39958459190,
+    "run_number": 646,
+    "conclusion": "success",
+    "tests": 1823
+  },
+  "validation_scope": "63 targeted tests, fresh original-source replay, independent native/camera audit and browser review; complete suite delegated to GitHub CI",
+  "targeted_tests": 63,
+  "new_projection_tests": 20,
+  "counts": {
+    "original_plan_line_witnesses": 8,
+    "projection_candidates": 24,
+    "shared_cap_hidden_candidates": 12,
+    "shared_cap_visible_candidates": 12,
+    "source_groups": 4,
+    "supported_projection_candidates": 24,
+    "supported_source_groups": 3
+  },
+  "checks": 21628,
+  "review_sha256": "59fec64d0829e09adca26f22f5e3c92ff22113a3473f5379aa6f82856a2f1bde",
+  "code_sha256": {
+    "voxel_mapper/section_roof_projection.py": "af50bf832ffac3e8f8ecac79570e86a2c200f3dc64e82a51e98bd79829fd282f",
+    "voxel_mapper/section_projection_evidence.py": "15a950eedbc00c45928ec2c452704e812f26d2e8df697aff3d97cd7a84a8a34b",
+    "scripts/build_section_projection_evidence.py": "12a8621c285d8061c053decaa39a717612184337ce1d28bd91d2ec799c5e6d39",
+    "scripts/audit_section_projection_evidence.py": "e034aba248420a6a7265e9c73d65ceb29ffe45fe8c1f807d2a6a3c10f1c1535b",
+    "scripts/render_section_projection_evidence.py": "249287313126f829d5a79084535ffa67a3c7d3e9ff3ccd613dc3fa526fd66f75",
+    "tests/test_section_projection_evidence.py": "b48401f0fa0fe8e93524014e75ee4b40188fbbb6b7c93e48d11fa814d423bb3b"
+  },
+  "html_sha256": "a09b3811fbb8a0a1712278d36959c5b2fa2e80cfb7060f5153f6dc4e29035807",
+  "screenshot_sha256": "6808622671ac0f64110e1792dbc2d795a298a49febba19427e5ab1ee16141134",
+  "world_geometry_additions": 0,
+  "physical_face_assignment_verified": false,
+  "wall_closure_authorized": false
+}
