@@ -5,6 +5,9 @@ jobs in isolated background workers, remembers evidence and failures locally,
 and trains a small neural candidate ranker from independently reviewed feedback.
 Its default profile targets 6 GB RAM with no GPU. Windows builds package the
 runtime into `VoxelMapperV3.exe`; optional local-model reasoning is separate.
+Choose **Generate an area** to run the included real Alton pilot without editing JSON.
+The [desktop area guide](docs/desktop-area-pilots.md) covers the Wicker building/plaza
+studies, original-PDF recovery, cached evidence and bundled OCR/PDF helpers.
 Full park autonomy and a trained general drawing/geometry model remain unfinished.
 
 ## Small-area world prototype

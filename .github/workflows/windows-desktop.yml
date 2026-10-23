@@ -6,11 +6,22 @@ on:
       include_ocr_tools:
         description: Bundle optional Tesseract and Poppler helpers
         type: boolean
-        default: false
+        default: true
   pull_request:
     paths:
       - 'voxel_mapper/desktop_*.py'
       - 'examples/desktop/**'
+      - 'examples/alton-world-pilot*.json'
+      - 'examples/wicker-component-review*.json'
+      - 'examples/wicker-area-navigation-config.json'
+      - 'examples/wicker-planning-paving-joins-*-job.json'
+      - 'examples/wicker-evidence-acquisition-catalogue.json'
+      - 'docs/evidence/world-pilot/**'
+      - 'docs/evidence/smiler-review/**'
+      - 'docs/evidence/pilot-review/**'
+      - 'docs/evidence/site-context/**'
+      - 'docs/evidence/planning-surfaces/**'
+      - 'evidence/wicker-shop-*.json'
       - 'voxel_mapper/neural_learning.py'
       - 'voxel_mapper/local_reasoning.py'
       - 'scripts/windows_desktop_entry.py'
@@ -52,7 +63,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_neural_building_pipeline.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Neural building pipeline tests failed' }
       - name: Install optional OCR and PDF helpers
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.include_ocr_tools }}
+        if: ${{ github.event_name == 'pull_request' || inputs.include_ocr_tools }}
         shell: pwsh
         run: |
           choco install tesseract poppler --yes --no-progress
@@ -78,7 +89,9 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force build/desktop-validation | Out-Null
-          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --check-dependencies 2>&1 | Tee-Object build/desktop-validation/dependencies.log
+          $helperArgs = @('--check-dependencies')
+          if ($env:VOXEL_DESKTOP_OCR_DIR) { $helperArgs += '--require-ocr-tools' }
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe @helperArgs 2>&1 | Tee-Object build/desktop-validation/dependencies.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen dependency smoke test failed' }
       - name: Smoke test frozen workers, persistent memory and neural learning
         shell: pwsh
@@ -97,7 +110,7 @@ jobs:
           $files = @(Get-ChildItem $root -File -Recurse | ForEach-Object {
             @{ path = [IO.Path]::GetRelativePath($root, $_.FullName).Replace('\','/'); bytes = $_.Length; sha256 = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant() }
           })
-          $receipt = @{ version = 'windows-desktop-build-v1'; commit = (git rev-parse HEAD).Trim(); runner = '${{ runner.os }}'; architecture = 'x64'; python = '3.12'; cpu_only = $true; model_weights_bundled = $false; optional_ocr_helpers_requested = '${{ inputs.include_ocr_tools }}'; files = $files }
+          $receipt = @{ version = 'windows-desktop-build-v1'; commit = (git rev-parse HEAD).Trim(); runner = '${{ runner.os }}'; architecture = 'x64'; python = '3.12'; cpu_only = $true; model_weights_bundled = $false; ocr_helpers_bundled = [bool]($env:VOXEL_DESKTOP_OCR_DIR -and $env:VOXEL_DESKTOP_PDF_DIR); files = $files }
           $receipt | ConvertTo-Json -Depth 8 | Set-Content ./build/desktop-validation/build-receipt.json -Encoding utf8
           Copy-Item ./build/desktop-validation ./dist/VoxelMapperV3/validation -Recurse
           Compress-Archive -Path ./dist/VoxelMapperV3 -DestinationPath ./dist/VoxelMapperV3-Windows-x64.zip -CompressionLevel Optimal

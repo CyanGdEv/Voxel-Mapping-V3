@@ -1,0 +1,93 @@
+{
+  "successful_http_check": {
+    "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+    "expected_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "status_code": 200,
+    "bytes": 1008558,
+    "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d"
+  },
+  "https_check": {
+    "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+    "expected_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "status_code": 503,
+    "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+  },
+  "later_cold_retrieval": [
+    {
+      "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+      "status": "unavailable",
+      "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935; HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "status": "unavailable",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "status_code": 503
+        },
+        {
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935",
+          "status": "unavailable",
+          "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)"
+        }
+      ]
+    },
+    {
+      "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+      "status": "unavailable",
+      "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940; HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "status": "unavailable",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "status_code": 503
+        },
+        {
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940",
+          "status": "unavailable",
+          "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)"
+        }
+      ]
+    },
+    {
+      "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+      "status": "unavailable",
+      "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937; HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "status": "unavailable",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "status_code": 503
+        },
+        {
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937",
+          "status": "unavailable",
+          "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)"
+        }
+      ]
+    },
+    {
+      "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+      "status": "unavailable",
+      "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955; HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+          "status": "unavailable",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+          "status_code": 503
+        },
+        {
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+          "status": "unavailable",
+          "error": "HTTPConnectionPool(host='proxy', port=8080): Read timed out. (read timeout=15)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "real_tk_widgets": true,
+  "area_picker_submission": true,
+  "manual_json_required": false,
+  "auto_selected_job": true,
+  "world_and_comparison_controls": true,
+  "generated_voxel_records_by_kind": {
+    "path": 90,
+    "road": 178,
+    "terrain": 7936
+  },
+  "accepted_planning_components": 0,
+  "managed_peak_memory_mb": 197.390625,
+  "screenshot": "desktop.png"
+}

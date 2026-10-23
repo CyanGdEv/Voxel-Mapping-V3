@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "parent_commit": "b015517aae5d3c1bff225492ab6c5e795ec5b89c",
+  "parent_ci_run": 40022958864,
+  "targeted_tests": 103,
+  "new_area_tests": 13,
+  "scope": "Source tests plus final canonical-path expectation rerun; actual Tk area submission, retained Alton worker/native replay, provisional Wicker A+B native worlds, bounded source recovery and native English OCR/PDF helpers. Frozen Windows exact-head build runs separately in Actions.",
+  "code_sha256": {
+    "voxel_mapper/desktop_area.py": "c43a974fff46019ae4e10aff9315bfc245c29bb83efdfa02030821a500ff04f4",
+    "voxel_mapper/desktop_app.py": "25486b6f85865eaf7430ee69f4ad95dd7d209e4bdf634007e8ad4c8238feda63",
+    "voxel_mapper/desktop_runtime.py": "eeb7dad26b935ac37424a59d42842a7c13a9de13b125d6ff58ce7ce7a4a110bb",
+    "tests/test_desktop_area.py": "3cbfefb5e46546b47e8b96af17669ff28e7da97116551e59ff55fe897712c4c5",
+    "packaging/voxel_mapper.spec": "db60956ed87502973d0a82772ba9df7dedb3f9eb15847637d2148083ef2d8efc",
+    ".github/workflows/windows-desktop.yml": "30a0de7be44a25698915f680e741a03e1cdee5b8f33c09964b2ade2dde9a525e"
+  },
+  "ui_screenshot_sha256": "3b51f358e892df3f3a91e8fcd3a016b9bd058059b2f2c4bf513f0ae2f74809a8",
+  "retained_area_manifest_sha256": "e54fcfac5a9f73badc0df3748ac288997a1304c9d2a142f83bc5c0e8c1bf9470",
+  "real_trained_park_model": false,
+  "minecraft_playtest": "not_performed",
+  "general_drawing_understanding": "not_implemented",
+  "source_reliability": "One exact plaza original recovered through recorded HTTP fallback. Later cold retrievals of all four originals failed; retained source folders/cache are needed when the portal is down.",
+  "hardware_scope": "Measured process budget on development/CI hardware; physical 6 GB Windows PC untested."
+}
