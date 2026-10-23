@@ -1,0 +1,156 @@
+[
+  {
+    "preset": "wicker-plazas-a",
+    "status": "completed_provisional_review",
+    "world_sha256": "e5857eb042879a0f54d71b2cb71e0842e484d2fc9fc7a99e85e64c3db0071052",
+    "native_chunks": 156,
+    "composed_blocks": 888108,
+    "peak_managed_memory_mb": 491.0,
+    "voxel_records_by_kind": {
+      "building": 993,
+      "parking": 1044,
+      "path": 6466,
+      "plaza": 1185,
+      "road": 1518,
+      "steps": 121,
+      "structure": 2757,
+      "terrain": 36864
+    },
+    "planning_components_accepted": 0,
+    "provisional_study_components": 1,
+    "provisional_paving_features": 36,
+    "plaza_labels": 3,
+    "unmatched_plaza_labels": [],
+    "native_readback": "all written blocks and all unwritten air cells verified",
+    "paving_native_readback": {
+      "all_planned_materials_verified": true,
+      "mapped_cells_supported": 1673,
+      "minecraft_playtest": "not_performed",
+      "reachable_cells_any_walking": 5935,
+      "reachable_cells_on_walking_surfaces": 5181,
+      "status": "completed",
+      "verified_paving_cells": 5956
+    },
+    "joins_native_readback": {
+      "all_existing_incident_edges_preserved": true,
+      "minecraft_playtest": "not_performed",
+      "no_nonzero_adjacent_height_gap_enlarged": true,
+      "original_mapped_supports_unchanged": true,
+      "prior_entrance_witnesses_preserved": true,
+      "status": "completed"
+    },
+    "added_estimated_paving_slabs": 54,
+    "absolute_finished_levels_applied": 0,
+    "source_pdf_status": [
+      {
+        "file": "retained-source-input/wicker-shop/files/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf",
+        "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+      },
+      {
+        "file": "retained-source-input/wicker-shop/files/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf",
+        "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+      },
+      {
+        "file": "retained-source-input/wicker-shop/files/d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6.pdf",
+        "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      {
+        "download_attempts": [
+          {
+            "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+            "status": "unavailable",
+            "status_code": 503,
+            "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+          },
+          {
+            "bytes": 1008558,
+            "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+            "status": "checksum_verified",
+            "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+          }
+        ],
+        "file": "retained-source-input/wicker-surfaces/files/1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d.pdf",
+        "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        "status": "downloaded_and_checksum_verified",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+      }
+    ],
+    "minecraft_playtest": "not_performed"
+  },
+  {
+    "preset": "wicker-plazas-b",
+    "status": "completed_provisional_review",
+    "world_sha256": "54b640e2b76d4fd724b39ca4bdc3e36071f98bacb7f5288f49a8f4ca149dd16d",
+    "native_chunks": 156,
+    "composed_blocks": 888110,
+    "peak_managed_memory_mb": 498.78515625,
+    "voxel_records_by_kind": {
+      "building": 993,
+      "parking": 1044,
+      "path": 6463,
+      "plaza": 1185,
+      "road": 1518,
+      "steps": 123,
+      "structure": 2757,
+      "terrain": 36864
+    },
+    "planning_components_accepted": 0,
+    "provisional_study_components": 1,
+    "provisional_paving_features": 36,
+    "plaza_labels": 3,
+    "unmatched_plaza_labels": [],
+    "native_readback": "all written blocks and all unwritten air cells verified",
+    "paving_native_readback": {
+      "all_planned_materials_verified": true,
+      "mapped_cells_supported": 1673,
+      "minecraft_playtest": "not_performed",
+      "reachable_cells_any_walking": 5932,
+      "reachable_cells_on_walking_surfaces": 5120,
+      "status": "completed",
+      "verified_paving_cells": 5953
+    },
+    "joins_native_readback": {
+      "all_existing_incident_edges_preserved": true,
+      "minecraft_playtest": "not_performed",
+      "no_nonzero_adjacent_height_gap_enlarged": true,
+      "original_mapped_supports_unchanged": true,
+      "prior_entrance_witnesses_preserved": true,
+      "status": "completed"
+    },
+    "added_estimated_paving_slabs": 53,
+    "absolute_finished_levels_applied": 0,
+    "source_pdf_status": [
+      {
+        "file": "retained-source-input/wicker-shop/files/08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3.pdf",
+        "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+      },
+      {
+        "file": "retained-source-input/wicker-shop/files/6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047.pdf",
+        "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+      },
+      {
+        "file": "retained-source-input/wicker-shop/files/d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6.pdf",
+        "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      {
+        "file": "retained-source-input/wicker-surfaces/files/1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d.pdf",
+        "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        "status": "retained",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+      }
+    ],
+    "minecraft_playtest": "not_performed"
+  }
+]

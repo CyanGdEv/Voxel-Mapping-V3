@@ -3,16 +3,21 @@ from pathlib import Path
 import importlib.util
 from importlib.metadata import PackageNotFoundError
 import os
+import tempfile
 
 from PyInstaller.utils.hooks import collect_all,collect_submodules,copy_metadata
 
 ROOT=Path(SPECPATH).parent
 BUNDLE=Path(SPECPATH)
+from voxel_mapper.desktop_area import build_bundle
+area_temp=tempfile.TemporaryDirectory(prefix='voxel-desktop-area-build-')
+area_data=Path(area_temp.name)/'area-pilots'
+build_bundle(ROOT,area_data)
 # Core geospatial, native Bedrock and source-PDF dependencies are bundled. The
 # package's own optional neural learner uses NumPy, not an implicit GPU runtime.
 packages=('voxel_mapper','amulet','amulet_nbt','leveldb','PyMCTranslate','rasterio',
           'pyproj','pyarrow','numpy','scipy','pymupdf','laspy','lazrs','PIL')
-datas=[];binaries=[];hiddenimports=[]
+datas=[(str(area_data),'area-pilots')];binaries=[];hiddenimports=[]
 for package in packages:
     if importlib.util.find_spec(package) is None:
         raise RuntimeError('Desktop build dependency is missing: '+package)

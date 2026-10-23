@@ -1,5 +1,10 @@
 Voxel Mapper desktop jobs
 
+The Generate an area tab runs the included real Alton terrain/path preset
+without JSON setup. Wicker building/plaza presets accept retained PDF folders
+or bounded checksum-pinned council downloads. Open world and Compare geometry
+use the selected completed job. The jobs below remain in Advanced jobs / learning.
+
 Start without external data:
 - Select "Inspect retained evidence" and inspect-evidence.json. This adds an
   explicitly synthetic observation to persistent memory, not a training label.

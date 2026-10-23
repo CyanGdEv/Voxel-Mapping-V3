@@ -19,7 +19,12 @@ extract `VoxelMapperV3-Windows-x64.zip`, and keep the executable and `_internal`
 folder together. Double-click `VoxelMapperV3.exe`. The distribution is unsigned;
 its exact commit, file hashes and frozen test receipts accompany the build.
 
-The `examples` folder contains editable jobs:
+Start with **Generate an area**, choose the included real Alton preset and press
+**Generate area**. No JSON editing or network is needed for that retained pilot.
+The Wicker building/plaza studies can recover their exact original PDFs or use a
+retained-source folder. See the [area workflow](desktop-area-pilots.md).
+
+The **Advanced jobs / learning** tab retains the editable jobs in `examples`:
 
 - **Inspect retained evidence** + `inspect-evidence.json` stores an explicitly
   synthetic source observation and demonstrates persistent memory.
@@ -172,6 +177,6 @@ python -m PyInstaller --noconfirm --clean packaging/voxel_mapper.spec
 The Windows workflow checks out the exact PR head, runs desktop/neural tests,
 builds the actual executable, tests the frozen native dependencies, exercises
 persistent workers/neural learning plus native world readback, constructs the
-actual UI, and uploads the ZIP with hashes and receipts. Optional scanned-page
-OCR helpers can be requested in a manual workflow run. Native PDF/vector work
-uses the bundled runtime; missing external OCR utilities remain explicit.
+actual UI, and uploads the ZIP with hashes and receipts. English OCR and PDF helpers are
+included by default and exercised through the frozen executable. A manual
+workflow can explicitly omit them.

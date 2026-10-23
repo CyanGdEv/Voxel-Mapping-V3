@@ -1,0 +1,13 @@
+{
+  "cpu_neural_training": "passed",
+  "isolated_worker": "passed",
+  "native_terrain_world_and_saved_readback": "passed",
+  "observed_managed_peak_memory_mb": 221.30859375,
+  "persistent_job_and_observation_restart": "passed",
+  "real_alton_area_peak_managed_memory_mb": 233.2265625,
+  "real_alton_area_preset_and_readback": "passed",
+  "status": "passed",
+  "synthetic_training_only": true,
+  "trained_real_park_model": false,
+  "undersized_checkpoint_withheld": true
+}

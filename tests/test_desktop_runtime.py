@@ -36,7 +36,11 @@ class DesktopRuntimeTests(unittest.TestCase):
         finally:runtime.close(wait=True)
 
     def completed(self,runtime,jid):
-        job=_wait(runtime,jid,timeout=8)
+        # Real neural workers perform bounded training plus durable progress
+        # writes. Slow Windows CI disks/CPUs can exceed eight seconds without
+        # changing learning or promotion correctness; retain a finite deadline.
+        timeout=30 if runtime.store.job(jid)['kind']=='train_ranker' else 8
+        job=_wait(runtime,jid,timeout=timeout)
         self.assertEqual(job['status'],'completed',job.get('error') or job.get('message'))
         # A completed import can be visible just before its finally block queues
         # training. Joining that existing future observes the complete operation.

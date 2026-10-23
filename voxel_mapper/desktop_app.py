@@ -30,6 +30,19 @@ def default_data_directory():
     return root/'VoxelMapperV3'
 
 
+def initial_window_geometry(root):
+    left=top=0;width=root.winfo_screenwidth();height=root.winfo_screenheight()
+    if os.name=='nt':
+        try:
+            import ctypes
+            from ctypes.wintypes import RECT
+            work=RECT()
+            if ctypes.windll.user32.SystemParametersInfoW(48,0,ctypes.byref(work),0):
+                left,top=work.left,work.top;width=work.right-work.left;height=work.bottom-work.top
+        except (AttributeError,OSError):pass
+    return f'{min(1120,max(900,width-60))}x{min(820,max(560,height-90))}{left+20:+d}{top+20:+d}'
+
+
 def learning_summary(snapshot):
     """Human-readable memory and evaluation state; hashes stay in job details."""
     memory=snapshot.get('memory',{});training=snapshot.get('training',{});config=snapshot.get('config',{})
@@ -81,7 +94,7 @@ def learning_summary(snapshot):
     return '\n'.join(lines)
 
 
-def check_dependencies():
+def check_dependencies(require_ocr_tools=False):
     """Exercise native data resources in the frozen distribution without a GUI."""
     checks = {}
     def check(name, action):
@@ -138,10 +151,49 @@ def check_dependencies():
     check('pyarrow',arrow_check)
     check('scipy',lambda: importlib.import_module('scipy').__version__)
     check('tkinter',lambda: str(importlib.import_module('tkinter').TkVersion))
-    optional={name:{'available':bool(shutil.which(name))} for name in ('tesseract','pdftotext','pdftoppm')}
-    return {'status':'passed' if all(c['status']=='passed' for c in checks.values()) else 'failed',
+    optional=check_pdf_helpers()
+    helpers_ok=all(row.get('status')=='passed' if row['available'] else not require_ocr_tools for row in optional.values())
+    return {'status':'passed' if all(c['status']=='passed' for c in checks.values()) and helpers_ok else 'failed',
             'checks':checks,'optional_external_tools':optional,
             'reasoning_model_weights_bundled':False}
+
+
+def check_pdf_helpers():
+    """Exercise bundled executables and their data/DLLs, beyond PATH lookup."""
+    import subprocess
+    result={name:{'available':bool(shutil.which(name))} for name in ('tesseract','pdftotext','pdftoppm')}
+    with tempfile.TemporaryDirectory(prefix='voxel-pdf-helper-smoke-') as directory:
+        root=Path(directory)
+        for name,row in result.items():
+            if not row['available']:
+                row['status']='unavailable';continue
+            try:
+                if name=='tesseract':
+                    from PIL import Image,ImageDraw,ImageFont
+                    image=Image.new('RGB',(360,90),'white')
+                    ImageDraw.Draw(image).text((10,15),'VOXEL 123',fill='black',font=ImageFont.load_default(size=42))
+                    image.save(root/'sample.png')
+                    command=[shutil.which(name),str(root/'sample.png'),'stdout','-l','eng','--psm','7']
+                    response=subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=20,check=True)
+                    text=response.stdout.decode('utf-8',errors='replace').strip()
+                    if 'VOXEL' not in text.upper() or '123' not in text:raise ValueError('English OCR smoke did not recognize its test text')
+                    row['recognized_text']=text
+                else:
+                    import pymupdf
+                    with pymupdf.open() as document:
+                        page=document.new_page(width=300,height=100);page.insert_text((10,40),'Voxel Mapper helper check',fontsize=16)
+                        document.save(root/'sample.pdf')
+                    if name=='pdftotext':
+                        command=[shutil.which(name),str(root/'sample.pdf'),'-']
+                        response=subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=20,check=True)
+                        if b'Voxel Mapper' not in response.stdout:raise ValueError('PDF text helper did not extract its test text')
+                    else:
+                        command=[shutil.which(name),'-f','1','-singlefile','-scale-to','128','-png',str(root/'sample.pdf'),str(root/'page')]
+                        subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=20,check=True)
+                        if not (root/'page.png').read_bytes().startswith(b'\x89PNG'):raise ValueError('PDF raster helper did not render its test page')
+                row['status']='passed'
+            except Exception as error:row.update(status='failed',error=str(error))
+    return result
 
 
 class DesktopWindow:
@@ -159,7 +211,7 @@ class DesktopWindow:
         font_family='Segoe UI' if os.name=='nt' else 'DejaVu Sans'
         style.configure('.',font=(font_family,10))
         root.title('Voxel Mapper V3 - CPU desktop')
-        root.geometry('1120x820');root.minsize(900,650)
+        root.geometry(initial_window_geometry(root));root.minsize(900,560)
         self.data_directory=tk.StringVar(value=str(Path(data_directory).expanduser().resolve()))
         self.workers=tk.IntVar(value=workers);self.memory_budget=tk.IntVar(value=memory_budget_mb)
         self.kind=tk.StringVar(value=JOB_KINDS[0][0]);self.config_path=tk.StringVar();self.automatic_learning=tk.BooleanVar(value=True)
@@ -178,7 +230,24 @@ class DesktopWindow:
         ttk.Button(settings,text='Apply',command=self._apply_settings).grid(row=1,column=4)
         ttk.Label(settings,text='6 GB RAM default: 2 CPU workers, one heavy generation job at a time. Memory polling cancels over-budget jobs; it is not an OS reservation.',wraplength=980).grid(row=2,column=0,columnspan=5,sticky='w')
         settings.columnconfigure(1,weight=1)
-        controls=ttk.LabelFrame(outer,text='Run a job',padding=10);controls.pack(fill='x',pady=12)
+        from .desktop_area import PRESETS
+        tabs=ttk.Notebook(outer);tabs.pack(fill='x',pady=12)
+        area=ttk.Frame(tabs,padding=10);controls=ttk.Frame(tabs,padding=10)
+        tabs.add(area,text='Generate an area');tabs.add(controls,text='Advanced jobs / learning')
+        self.area_presets=PRESETS;self.area_preset=tk.StringVar(value=PRESETS[0]['label'])
+        self.area_sources=tk.StringVar();self.area_download=tk.BooleanVar(value=True)
+        self.area_scope=tk.StringVar(value=PRESETS[0]['scope']);self.select_when_visible=None
+        self.area_picker=ttk.Combobox(area,textvariable=self.area_preset,values=[p['label'] for p in PRESETS],state='readonly',width=53)
+        self.area_picker.grid(row=0,column=0,columnspan=2,sticky='ew')
+        self.area_picker.bind('<<ComboboxSelected>>',self._area_changed)
+        self.area_generate=ttk.Button(area,text='Generate area',command=self._submit_area)
+        self.area_generate.grid(row=0,column=2,padx=(8,0))
+        ttk.Label(area,text='Retained PDFs folder (optional)').grid(row=1,column=0,sticky='w',pady=(8,0))
+        ttk.Entry(area,textvariable=self.area_sources).grid(row=1,column=1,sticky='ew',padx=8,pady=(8,0))
+        ttk.Button(area,text='Browse...',command=self._browse_area_sources).grid(row=1,column=2,pady=(8,0))
+        ttk.Checkbutton(area,text='Download missing original council PDFs (uses internet)',variable=self.area_download).grid(row=2,column=0,columnspan=3,sticky='w',pady=(8,0))
+        ttk.Label(area,textvariable=self.area_scope,wraplength=980).grid(row=3,column=0,columnspan=3,sticky='w',pady=(8,0))
+        area.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
         ttk.Button(controls,text='Choose JSON...',command=self._browse_job).grid(row=0,column=2)
@@ -196,9 +265,13 @@ class DesktopWindow:
         scroll=ttk.Scrollbar(top,orient='vertical',command=self.jobs.yview);self.jobs.configure(yscrollcommand=scroll.set)
         self.jobs.pack(side='left',fill='both',expand=True);scroll.pack(side='right',fill='y')
         self.jobs.bind('<<TreeviewSelect>>',lambda event:self._show_details())
-        actions=ttk.Frame(outer);actions.pack(fill='x',pady=(8,0))
-        ttk.Button(actions,text='Cancel selected job',command=self._cancel).pack(side='left')
+        actions=ttk.Frame(outer);actions.pack(side='bottom',before=panes,fill='x',pady=(8,0))
+        cancel_button=ttk.Button(actions,text='Cancel selected job',command=self._cancel);cancel_button.pack(side='left')
         ttk.Button(actions,text='Open data folder',command=self._open_directory).pack(side='left',padx=8)
+        world_button=ttk.Button(actions,text='Open world',command=lambda:self._open_job_output('park.mcworld'));world_button.pack(side='left')
+        compare_button=ttk.Button(actions,text='Compare geometry',command=lambda:self._open_job_output('placement-comparison.svg'));compare_button.pack(side='left',padx=8)
+        results_button=ttk.Button(actions,text='Results folder',command=self._open_job_folder);results_button.pack(side='left')
+        self.primary_controls=(self.area_generate,cancel_button,world_button,compare_button,results_button)
         ttk.Label(actions,textvariable=self.status).pack(side='left',padx=8)
         bottom=ttk.Notebook(panes);panes.add(bottom,weight=2)
         memory_frame=ttk.Frame(bottom);detail_frame=ttk.Frame(bottom)
@@ -253,6 +326,52 @@ class DesktopWindow:
         path=filedialog.askopenfilename(parent=self.root,title='Choose a Voxel Mapper JSON job',initialdir=str(example_root if example_root.is_dir() else Path.cwd()),filetypes=[('JSON job','*.json'),('All files','*.*')])
         if path:self.config_path.set(path)
 
+    def _area_changed(self,event=None):
+        preset=next(p for p in self.area_presets if p['label']==self.area_preset.get())
+        self.area_scope.set(preset['scope'])
+
+    def _browse_area_sources(self):
+        from tkinter import filedialog
+        folder=filedialog.askdirectory(parent=self.root,title='Choose the folder containing retained original planning PDFs')
+        if folder:self.area_sources.set(folder)
+
+    def _submit_area(self):
+        try:
+            preset=next(p for p in self.area_presets if p['label']==self.area_preset.get())
+            folder=self.area_sources.get().strip() or None;download=bool(self.area_download.get())
+            self.area_generate.state(['disabled'])
+            def queued(jid):
+                self.area_generate.state(['!disabled']);self.select_when_visible=str(jid)
+                self.status.set('Area generation queued; progress and outputs appear below')
+            def failed(error):
+                self.area_generate.state(['!disabled']);self._error(error)
+            self._background(lambda:self.runtime.submit_area(preset['id'],evidence_directory=folder,download_missing=download),queued,failed)
+        except Exception as error:
+            self.area_generate.state(['!disabled']);self._error(error)
+
+    def _open_job_output(self,name):
+        try:
+            selected=self.jobs.selection()
+            row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
+            if not row or row.get('status')!='completed':raise ValueError('Select a completed area or world job first.')
+            if row.get('kind') not in ('area_pilot','world_pilot','alton_world'):raise ValueError('Select a world generation job.')
+            path=Path(row['output_directory'])/name
+            if not path.is_file():raise ValueError('This job did not produce '+name+'. Inspect its results for missing evidence.')
+            if os.name=='nt':os.startfile(str(path))
+            else:self.status.set('Output: '+str(path))
+        except Exception as error:self._error(error)
+
+    def _open_job_folder(self):
+        try:
+            selected=self.jobs.selection()
+            row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
+            if not row:raise ValueError('Select a job first.')
+            path=Path(row['output_directory'])
+            if not path.is_dir():path=path.parent
+            if os.name=='nt':os.startfile(str(path))
+            else:self.status.set('Results: '+str(path))
+        except Exception as error:self._error(error)
+
     def _submit(self):
         try:
             path=Path(self.config_path.get()).expanduser().resolve()
@@ -298,6 +417,8 @@ class DesktopWindow:
             if identifier in present:self.jobs.item(identifier,values=values)
             else:self.jobs.insert('',0,iid=identifier,values=values)
         for identifier in present-wanted:self.jobs.delete(identifier)
+        if self.select_when_visible and self.select_when_visible in wanted:
+            self.jobs.selection_set(self.select_when_visible);self.jobs.see(self.select_when_visible);self.select_when_visible=None
         if not self.learning_pending:self.automatic_learning.set(bool(snapshot.get('training',{}).get('enabled',False)))
         self._replace(self.memory_text,learning_summary(snapshot));self._show_details()
 
@@ -337,10 +458,18 @@ def launch(data_directory,workers=2,memory_budget_mb=2048,smoke_output=None):
         def finish():
             try:
                 root.update_idletasks()
-                from PIL import ImageGrab
-                box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
-                ImageGrab.grab(bbox=box).save(smoke_output/'desktop.png');result['screenshot']='desktop.png'
-            except Exception as error:result['screenshot_reason']=str(error)
+                for widget in window.primary_controls:
+                    x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
+                    if (not widget.winfo_ismapped() or x<0 or y<0 or x+widget.winfo_width()>root.winfo_width()
+                            or y+widget.winfo_height()>root.winfo_height()):
+                        raise ValueError('Primary control is hidden or clipped: '+str(widget.cget('text')))
+                result['primary_controls_visible']=True
+                try:
+                    from PIL import ImageGrab
+                    box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
+                    ImageGrab.grab(bbox=box).save(smoke_output/'desktop.png');result['screenshot']='desktop.png'
+                except Exception as error:result['screenshot_reason']=str(error)
+            except Exception as error:result.update(status='failed',error=str(error))
             finally:
                 (smoke_output/'ui-smoke.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
                 window.close()
@@ -356,6 +485,7 @@ def main(argv=None):
     parser.add_argument('--memory-budget-mb',type=int,default=2048)
     parser.add_argument('--self-test',action='store_true',help='Exercise persistent memory, worker jobs and neural learning without opening a window.')
     parser.add_argument('--check-dependencies',action='store_true',help='Exercise bundled native dependencies without a window.')
+    parser.add_argument('--require-ocr-tools',action='store_true',help='Require functional English OCR and PDF helper executables in the dependency check.')
     parser.add_argument('--ui-smoke-test',type=Path,metavar='OUTPUT',help='Construct the real desktop UI, capture it if supported, then close.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
@@ -364,7 +494,7 @@ def main(argv=None):
         from .desktop_runtime import worker_main
         return worker_main(args.runtime_worker)
     if args.check_dependencies:
-        result=check_dependencies();print(json.dumps(result,sort_keys=True));return int(result['status']!='passed')
+        result=check_dependencies(require_ocr_tools=args.require_ocr_tools);print(json.dumps(result,sort_keys=True));return int(result['status']!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

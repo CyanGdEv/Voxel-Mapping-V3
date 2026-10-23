@@ -12,8 +12,10 @@ memory reservation. Large regions and local language models may need more RAM.
 
 Evidence, job history, reviewed feedback and model checkpoints are persistent
 in %LOCALAPPDATA%\VoxelMapperV3, or the folder selected in the UI. Application
-updates do not automatically erase that folder. Inputs are supplied through
-versioned JSON jobs. Original planning PDFs, survey data, online provider
+updates do not automatically erase that folder. Start with Generate an area for the included real Alton pilot, without JSON
+setup. Wicker building/plaza studies need their pinned original PDFs, supplied
+from a retained folder or recovered from the recorded council attachments.
+Advanced jobs still accept versioned JSON inputs. Original planning PDFs, survey data, online provider
 credentials, and optional reasoning-model weights are not supplied by this ZIP.
 
 The CPU neural network learns candidate priorities from independently reviewed
@@ -21,9 +23,10 @@ outcomes. It does not invent verified geometry, treat its own predictions as
 correctness labels, or expand the program's source code automatically. Model
 promotion is evaluated separately from training and physical acceptance.
 
-Optional Tesseract/Poppler helper availability is recorded by
+Default builds include English Tesseract and Poppler; manual builds can omit
+them. Their actual OCR/text/render results are recorded by
 VoxelMapperV3.exe --check-dependencies. Native PDF/vector operations use the
-bundled Python runtime. Scanned-page OCR needs the optional helpers when absent.
+bundled Python runtime. The original source and physical geometry checks remain.
 
 Diagnostics:
   VoxelMapperV3.exe --check-dependencies

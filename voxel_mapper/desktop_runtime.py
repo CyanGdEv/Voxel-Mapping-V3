@@ -14,8 +14,8 @@ import uuid
 
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
-KINDS={'world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason'}
-HEAVY={'world_pilot','alton_world','building_batch','reason'}
+KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -138,6 +138,15 @@ class DesktopRuntime:
             self._futures[jid]=self._pool.submit(self._execute,jid)
         return jid
 
+    def submit_area(self,preset_id,*,evidence_directory=None,download_missing=False):
+        from .desktop_area import PRESETS
+        if preset_id not in {p['id'] for p in PRESETS}:raise ValueError('Choose a registered area preset')
+        if type(download_missing) is not bool:raise ValueError('Download setting must be boolean')
+        config={'preset':preset_id,'download_missing':download_missing}
+        if evidence_directory:config['evidence_directory']=str(Path(evidence_directory).expanduser().resolve())
+        path=self.directory/'area-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
+        return self.submit('area_pilot',path)
+
     def cancel(self,job_id):
         with self._mutex:
             event=self._events.get(job_id);future=self._futures.get(job_id)
@@ -171,6 +180,11 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
+                if kind=='area_pilot':
+                    self.store.remember('area_generation',jid,{'preset':result['desktop_area']['preset'],
+                        'source_report':result['desktop_area']['source_report'],'readiness':result['readiness'],
+                        'generated_voxel_records_by_kind':result['generated_voxel_records_by_kind'],
+                        'physical_correctness_label_generated':False})
                 self.store.remember('job_outcome',jid,{'kind':kind,'status':result.get('status','completed'),'artifact_directory':job['output_directory'],
                     'result_sha256':digest(result),'physical_correctness_label_generated':False})
                 self.store.update_job(jid,status='completed',progress=1,message=result.get('status','Completed'),result=result)
@@ -360,7 +374,13 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='world_pilot':
+    if kind=='area_pilot':
+        from .desktop_area import run
+        if set(config)-{'preset','evidence_directory','download_missing'}:raise ValueError('Unsupported area generation settings')
+        result=run(config.get('preset'),output,evidence_directory=config.get('evidence_directory'),
+            download_missing=config.get('download_missing',False),cache_directory=output.parents[2]/'source-cache',
+            cancelled=cancelled,progress=progress)
+    elif kind=='world_pilot':
         from .world_pilot import run
         result=run(config_path,output)
     elif kind=='alton_world':
@@ -497,6 +517,16 @@ def self_test(data_directory=None,workers=2):
             if not (native_output/'park.mcworld').is_file():raise AssertionError('Frozen native world package missing')
             native_peak=native_result['peak_memory_mb']
         finally:native_runtime.close(wait=True)
+        area_runtime=DesktopRuntime(root/'area-memory',workers=workers)
+        try:
+            area_id=area_runtime.submit_area('alton-terrain-paths');area_result=_wait(area_runtime,area_id,timeout=120)
+            if area_result['status']!='completed':raise RuntimeError(area_result.get('error') or area_result['status'])
+            area_report=area_result['result']
+            if area_report['generated_voxel_records_by_kind']!={'terrain':7936,'road':178,'path':90}:raise AssertionError('Retained Alton area counts changed')
+            if area_report['readiness']['planning_components_voxelized']!=0:raise AssertionError('Area preset invented accepted planning geometry')
+            if not (Path(area_result['output_directory'])/'park.mcworld').is_file():raise AssertionError('Retained Alton world missing')
+            area_peak=area_result['peak_memory_mb']
+        finally:area_runtime.close(wait=True)
         from .neural_learning import baseline,train,validate_model
         records=[]
         for phase in ('training','evaluation'):
@@ -513,7 +543,9 @@ def self_test(data_directory=None,workers=2):
         if model['parameters']==baseline()['parameters']:raise AssertionError('Neural weights did not learn')
         if model['production_eligible']:raise AssertionError('Undersized synthetic dataset should not qualify')
         return {'status':'passed','isolated_worker':'passed','persistent_job_and_observation_restart':'passed','cpu_neural_training':'passed',
-            'undersized_checkpoint_withheld':True,'native_terrain_world_and_saved_readback':'passed','observed_managed_peak_memory_mb':native_peak,'synthetic_test_only':True,'trained_real_park_model':False}
+            'undersized_checkpoint_withheld':True,'native_terrain_world_and_saved_readback':'passed','observed_managed_peak_memory_mb':native_peak,
+            'real_alton_area_preset_and_readback':'passed','real_alton_area_peak_managed_memory_mb':area_peak,
+            'synthetic_training_only':True,'trained_real_park_model':False}
 
 
 if __name__=='__main__':

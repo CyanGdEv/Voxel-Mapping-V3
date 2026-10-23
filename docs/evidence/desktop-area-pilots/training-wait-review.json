@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "parent_commit": "727447b462e143925c337cfc4467ee8a46bf3507",
+  "previous_windows_full_run": 40029654154,
+  "previous_failures": "Two automatic-training integration checks raised TimeoutError at their eight-second completion wait; all model-evaluation assertions remain unchanged.",
+  "change": "Only train_ranker completion waits receive a finite 30-second test budget. Other job waits remain eight seconds. Product runtime behavior is unchanged.",
+  "product_code_changed": false,
+  "model_promotion_requirements_changed": false,
+  "focused_tests": 12,
+  "focused_test_summary": [
+    "Ran 12 tests in 10.775s",
+    "OK"
+  ],
+  "test_code_sha256": "c30f94ff75b2ed949ea49cc1dac5b2d7963411a861da6d17570b93ae17cedf6e"
+}
