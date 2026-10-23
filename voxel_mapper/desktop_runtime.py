@@ -48,10 +48,13 @@ def resolve_path(config_path,value):
 
 class DirectoryLock:
     def __init__(self,path):
-        self.stream=Path(path).open('a+b');self.stream.seek(0)
-        if self.stream.read(1)==b'':self.stream.write(b'0');self.stream.flush()
-        self.stream.seek(0)
+        self.stream=None
         try:
+            self.stream=Path(path).open('a+b');self.stream.seek(0)
+            # Windows may reject reading a byte already locked by another
+            # instance. Initialization and locking share the same error path.
+            if self.stream.read(1)==b'':self.stream.write(b'0');self.stream.flush()
+            self.stream.seek(0)
             if os.name=='nt':
                 import msvcrt
                 msvcrt.locking(self.stream.fileno(),msvcrt.LK_NBLCK,1)
@@ -59,7 +62,8 @@ class DirectoryLock:
                 import fcntl
                 fcntl.flock(self.stream,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except (OSError,IOError) as error:
-            self.stream.close();raise ValueError('This data directory is already open in another Voxel Mapper process') from error
+            if self.stream is not None:self.stream.close()
+            raise ValueError('This data directory is already open in another Voxel Mapper process') from error
 
     def close(self):
         if self.stream.closed:return

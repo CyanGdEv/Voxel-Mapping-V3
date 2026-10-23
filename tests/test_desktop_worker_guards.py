@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 
 from voxel_mapper import desktop_runtime as runtime_module
 from voxel_mapper.desktop_memory import MemoryStore, digest
-from voxel_mapper.desktop_runtime import DesktopRuntime, file_hash, read_json, write_json
+from voxel_mapper.desktop_runtime import DesktopRuntime, DirectoryLock, file_hash, read_json, write_json
 from voxel_mapper.neural_learning import FEATURES, baseline
 
 
@@ -44,6 +44,12 @@ def runtime_without_workers(directory,store=None):
 
 
 class DesktopWorkerGuardTests(unittest.TestCase):
+    def test_lock_setup_permission_error_closes_the_open_handle_and_reports_contention(self):
+        stream=Mock();stream.read.side_effect=PermissionError('locked byte')
+        with patch.object(Path,'open',return_value=stream),self.assertRaisesRegex(ValueError,'already open'):
+            DirectoryLock('runtime.lock')
+        stream.close.assert_called_once_with()
+
     def test_retained_context_obeys_zero_and_short_character_budgets(self):
         with tempfile.TemporaryDirectory() as tmp:
             store=MemoryStore(tmp)
@@ -93,7 +99,7 @@ class DesktopWorkerGuardTests(unittest.TestCase):
             request=worker_request(root,'inspect_evidence',{'paths':['source.json']});original_read=read_json
             def changed(path,*args,**kwargs):
                 value=original_read(path,*args,**kwargs)
-                if Path(path)==source:write_json(source,{'status':'after','counts':{'corners':8}})
+                if Path(path).resolve()==source.resolve():write_json(source,{'status':'after','counts':{'corners':8}})
                 return value
             with patch.object(runtime_module,'read_json',side_effect=changed),self.assertRaisesRegex(ValueError,'Evidence changed'):
                 runtime_module._worker(request)

@@ -17,7 +17,7 @@ class DesktopGenerationTests(unittest.TestCase):
             root=Path(tmp);request=self.fixture(root)
             with patch('voxel_mapper.alton_world.generate_park',return_value={'status':'draft_only'}) as generator:
                 result=_worker(request)
-            generator.assert_called_once_with(root/'park inputs',root/'wicker inputs',root/'fresh output',max_blocks=1000)
+            generator.assert_called_once_with((root/'park inputs').resolve(),(root/'wicker inputs').resolve(),root/'fresh output',max_blocks=1000)
             self.assertEqual(result['status'],'draft_only')
             self.assertFalse((root/'fresh output').exists())
 

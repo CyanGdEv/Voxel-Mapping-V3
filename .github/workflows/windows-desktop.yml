@@ -44,9 +44,13 @@ jobs:
       - name: Test desktop and neural runtime
         run: |
           python -m unittest discover -s tests -p 'test_desktop*.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Desktop runtime tests failed' }
           python -m unittest discover -s tests -p 'test_neural_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Neural learning tests failed' }
           python -m unittest discover -s tests -p 'test_local_reasoning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Local reasoning tests failed' }
           python -m unittest discover -s tests -p 'test_neural_building_pipeline.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Neural building pipeline tests failed' }
       - name: Install optional OCR and PDF helpers
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.include_ocr_tools }}
         shell: pwsh
