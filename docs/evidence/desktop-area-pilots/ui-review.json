@@ -1,6 +1,8 @@
 {
   "status": "passed",
   "real_tk_widgets": true,
+  "primary_controls_visible": true,
+  "client_size": "964x650",
   "area_picker_submission": true,
   "manual_json_required": false,
   "auto_selected_job": true,
@@ -11,6 +13,6 @@
     "terrain": 7936
   },
   "accepted_planning_components": 0,
-  "managed_peak_memory_mb": 197.390625,
+  "managed_peak_memory_mb": 197.8203125,
   "screenshot": "desktop.png"
 }

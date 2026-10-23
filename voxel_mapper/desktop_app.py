@@ -30,6 +30,19 @@ def default_data_directory():
     return root/'VoxelMapperV3'
 
 
+def initial_window_geometry(root):
+    left=top=0;width=root.winfo_screenwidth();height=root.winfo_screenheight()
+    if os.name=='nt':
+        try:
+            import ctypes
+            from ctypes.wintypes import RECT
+            work=RECT()
+            if ctypes.windll.user32.SystemParametersInfoW(48,0,ctypes.byref(work),0):
+                left,top=work.left,work.top;width=work.right-work.left;height=work.bottom-work.top
+        except (AttributeError,OSError):pass
+    return f'{min(1120,max(900,width-60))}x{min(820,max(560,height-90))}{left+20:+d}{top+20:+d}'
+
+
 def learning_summary(snapshot):
     """Human-readable memory and evaluation state; hashes stay in job details."""
     memory=snapshot.get('memory',{});training=snapshot.get('training',{});config=snapshot.get('config',{})
@@ -198,7 +211,7 @@ class DesktopWindow:
         font_family='Segoe UI' if os.name=='nt' else 'DejaVu Sans'
         style.configure('.',font=(font_family,10))
         root.title('Voxel Mapper V3 - CPU desktop')
-        root.geometry(f'{min(1120,max(900,root.winfo_screenwidth()-60))}x{min(820,max(650,root.winfo_screenheight()-90))}');root.minsize(900,650)
+        root.geometry(initial_window_geometry(root));root.minsize(900,560)
         self.data_directory=tk.StringVar(value=str(Path(data_directory).expanduser().resolve()))
         self.workers=tk.IntVar(value=workers);self.memory_budget=tk.IntVar(value=memory_budget_mb)
         self.kind=tk.StringVar(value=JOB_KINDS[0][0]);self.config_path=tk.StringVar();self.automatic_learning=tk.BooleanVar(value=True)
@@ -252,12 +265,13 @@ class DesktopWindow:
         scroll=ttk.Scrollbar(top,orient='vertical',command=self.jobs.yview);self.jobs.configure(yscrollcommand=scroll.set)
         self.jobs.pack(side='left',fill='both',expand=True);scroll.pack(side='right',fill='y')
         self.jobs.bind('<<TreeviewSelect>>',lambda event:self._show_details())
-        actions=ttk.Frame(outer);actions.pack(fill='x',pady=(8,0))
-        ttk.Button(actions,text='Cancel selected job',command=self._cancel).pack(side='left')
+        actions=ttk.Frame(outer);actions.pack(side='bottom',before=panes,fill='x',pady=(8,0))
+        cancel_button=ttk.Button(actions,text='Cancel selected job',command=self._cancel);cancel_button.pack(side='left')
         ttk.Button(actions,text='Open data folder',command=self._open_directory).pack(side='left',padx=8)
-        ttk.Button(actions,text='Open world',command=lambda:self._open_job_output('park.mcworld')).pack(side='left')
-        ttk.Button(actions,text='Compare geometry',command=lambda:self._open_job_output('placement-comparison.svg')).pack(side='left',padx=8)
-        ttk.Button(actions,text='Results folder',command=self._open_job_folder).pack(side='left')
+        world_button=ttk.Button(actions,text='Open world',command=lambda:self._open_job_output('park.mcworld'));world_button.pack(side='left')
+        compare_button=ttk.Button(actions,text='Compare geometry',command=lambda:self._open_job_output('placement-comparison.svg'));compare_button.pack(side='left',padx=8)
+        results_button=ttk.Button(actions,text='Results folder',command=self._open_job_folder);results_button.pack(side='left')
+        self.primary_controls=(self.area_generate,cancel_button,world_button,compare_button,results_button)
         ttk.Label(actions,textvariable=self.status).pack(side='left',padx=8)
         bottom=ttk.Notebook(panes);panes.add(bottom,weight=2)
         memory_frame=ttk.Frame(bottom);detail_frame=ttk.Frame(bottom)
@@ -444,10 +458,18 @@ def launch(data_directory,workers=2,memory_budget_mb=2048,smoke_output=None):
         def finish():
             try:
                 root.update_idletasks()
-                from PIL import ImageGrab
-                box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
-                ImageGrab.grab(bbox=box).save(smoke_output/'desktop.png');result['screenshot']='desktop.png'
-            except Exception as error:result['screenshot_reason']=str(error)
+                for widget in window.primary_controls:
+                    x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
+                    if (not widget.winfo_ismapped() or x<0 or y<0 or x+widget.winfo_width()>root.winfo_width()
+                            or y+widget.winfo_height()>root.winfo_height()):
+                        raise ValueError('Primary control is hidden or clipped: '+str(widget.cget('text')))
+                result['primary_controls_visible']=True
+                try:
+                    from PIL import ImageGrab
+                    box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
+                    ImageGrab.grab(bbox=box).save(smoke_output/'desktop.png');result['screenshot']='desktop.png'
+                except Exception as error:result['screenshot_reason']=str(error)
+            except Exception as error:result.update(status='failed',error=str(error))
             finally:
                 (smoke_output/'ui-smoke.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
                 window.close()
