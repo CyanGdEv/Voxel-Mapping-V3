@@ -11,6 +11,11 @@ source drawing and geometry editor. Review Wicker building prepares a real
 provisional building review using matching PDFs from your folder/cache.
 Correction drafts create no training labels. Reviewed outcomes apply to the
 original candidate and require an external reference plus explicit import.
+The correction demo now deliberately uses a 6 m frontage against an 8 m source
+drawing. Add an X dimension correction of 8 m, save the draft, then press
+Regenerate saved corrections. A new candidate and native world are generated,
+with a frozen synthetic before/after reference. New candidates require their
+own review; original decisions and models remain intact.
 Choose reconstruction-benchmark-synthetic.json to exercise accuracy reporting;
 its exact, wrong and missing geometry cases are all explicitly synthetic.
 

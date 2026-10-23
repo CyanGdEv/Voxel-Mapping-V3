@@ -222,7 +222,7 @@ class DesktopWindow:
         self.tk=tk;self.ttk=ttk;self.root=root;self.runtime_factory=DesktopRuntime
         self.runtime=None;self.messages=Queue();self.dispatch=ThreadPoolExecutor(max_workers=1,thread_name_prefix='voxel-ui-dispatch')
         self.closed=False;self.last_snapshot={};self.poll_token=None;self.snapshot_pending=False;self.learning_pending=False
-        self.review_windows=[];self.review_jobs=set()
+        self.review_windows=[];self.review_jobs=set();self.regeneration_jobs=set()
         style=ttk.Style(root)
         if os.name=='nt' and 'vista' in style.theme_names():style.theme_use('vista')
         elif 'clam' in style.theme_names():style.theme_use('clam')
@@ -268,7 +268,7 @@ class DesktopWindow:
         area.columnconfigure(1,weight=1)
         review_buttons=ttk.Frame(review);review_buttons.grid(row=0,column=0,columnspan=3,sticky='w')
         ttk.Button(review_buttons,text='Review Wicker building',command=lambda:self._prepare_review('wicker')).pack(side='left')
-        ttk.Button(review_buttons,text='Try correction demo',command=lambda:self._prepare_review('synthetic_demo')).pack(side='left',padx=8)
+        ttk.Button(review_buttons,text='Try correction demo',command=lambda:self._prepare_review('correction_demo')).pack(side='left',padx=8)
         self.review_open=ttk.Button(review_buttons,text='Open review queue...',command=self._open_review_queue);self.review_open.pack(side='left')
         ttk.Label(review,text='Compare the source drawing with local geometry. Save correction drafts or record an independently checked decision.',wraplength=980).grid(row=1,column=0,columnspan=3,sticky='w',pady=(8,0))
         self.benchmark_path=tk.StringVar()
@@ -376,14 +376,23 @@ class DesktopWindow:
                 path=filedialog.askopenfilename(parent=self.root,title='Choose a building review queue',filetypes=[('JSON review queue','*.json')])
                 if not path:return
                 report={'queue_path':path}
-            window=ReviewWindow(self.root,Path(self.data_directory.get()).expanduser().resolve()/'reviews',on_feedback=self._import_reviewed_feedback)
+            window=ReviewWindow(self.root,Path(self.data_directory.get()).expanduser().resolve()/'reviews',
+                on_feedback=self._import_reviewed_feedback,on_regenerate=self._regenerate_review)
             self.review_windows.append(window)
+            window.benchmark_path.set(report.get('benchmark_path') or '')
+            window.regeneration_guidance.set(report.get('demo_instructions') or 'The regenerated candidate remains provisional until independently reviewed.')
             window.load_queue(report['queue_path'],batch_path=report.get('batch_path'),source_paths=report.get('source_paths'))
         except Exception as error:self._error(error)
 
     def _import_reviewed_feedback(self,path):
         self._background(lambda:self.runtime.submit_reviewed_feedback(path),
             lambda jid:self.status.set('Reviewed feedback import queued; automatic learning still requires enough independent examples'))
+
+    def _regenerate_review(self,directory,benchmark_path=None):
+        def queued(jid):
+            self.regeneration_jobs.add(str(jid));self.select_when_visible=str(jid)
+            self.status.set('Regenerating a new local candidate and world preview; the original is retained')
+        self._background(lambda:self.runtime.submit_regeneration(directory,benchmark_path=benchmark_path),queued)
 
     def _browse_benchmark(self):
         from tkinter import filedialog
@@ -427,7 +436,9 @@ class DesktopWindow:
             selected=self.jobs.selection()
             row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
             if not row or row.get('status')!='completed':raise ValueError('Select a completed area or world job first.')
-            if row.get('kind') not in ('area_pilot','world_pilot','alton_world'):raise ValueError('Select a world generation job.')
+            if row.get('kind') not in ('area_pilot','world_pilot','alton_world','regenerate_corrections'):raise ValueError('Select a world generation job.')
+            if row.get('kind')=='regenerate_corrections':
+                name={'park.mcworld':'corrected-native/park.mcworld','placement-comparison.svg':'geometry-comparison.svg'}[name]
             path=Path(row['output_directory'])/name
             if not path.is_file():raise ValueError('This job did not produce '+name+'. Inspect its results for missing evidence.')
             if os.name=='nt':os.startfile(str(path))
@@ -469,6 +480,14 @@ class DesktopWindow:
             if len(detail)>50000:detail=detail[:50000]+'\n... Display truncated; complete results remain in the job output directory.'
             if row.get('kind')=='reconstruction_benchmark' and row.get('result'):
                 detail=benchmark_summary(row['result'])+'\n\nAdvanced receipt:\n'+detail
+            if row.get('kind')=='regenerate_corrections' and row.get('result'):
+                result=row['result'];comparison=result.get('benchmark',{})
+                summary='New corrected local model and native preview generated. Original geometry retained.\n'
+                summary+='The corrected candidate needs an independent review; no training labels or physical placement acceptance were created.\n'
+                if comparison.get('status')=='measured':
+                    summary+=f"Cases within reference tolerances: {comparison['before']['cases_within_thresholds']} before, {comparison['after']['cases_within_thresholds']} after. Measurements describe continuous candidate geometry.\n"
+                else:summary+='Accuracy comparison awaits an independently checked reference.\n'
+                detail=summary+'\nAdvanced receipt:\n'+detail
             self._replace(self.detail_text,detail)
 
     def _toggle_learning(self):
@@ -493,6 +512,9 @@ class DesktopWindow:
             else:self.jobs.insert('',0,iid=identifier,values=values)
             if identifier in self.review_jobs and row.get('status') in ('completed','failed','cancelled','interrupted'):
                 self.review_jobs.discard(identifier)
+                if row.get('status')=='completed':self._open_review_queue(row['result'])
+            if identifier in self.regeneration_jobs and row.get('status') in ('completed','failed','cancelled','interrupted'):
+                self.regeneration_jobs.discard(identifier)
                 if row.get('status')=='completed':self._open_review_queue(row['result'])
         for identifier in present-wanted:self.jobs.delete(identifier)
         if self.select_when_visible and self.select_when_visible in wanted:
@@ -568,6 +590,7 @@ def main(argv=None):
     parser.add_argument('--require-ocr-tools',action='store_true',help='Require functional English OCR and PDF helper executables in the dependency check.')
     parser.add_argument('--ui-smoke-test',type=Path,metavar='OUTPUT',help='Construct the real desktop UI, capture it if supported, then close.')
     parser.add_argument('--review-smoke-test',type=Path,metavar='OUTPUT',help='Exercise the source drawing, geometry correction and draft-saving UI, then close.')
+    parser.add_argument('--correction-smoke-test',type=Path,metavar='OUTPUT',help='Exercise actual desktop correction submission and regenerated native world readback.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -579,6 +602,9 @@ def main(argv=None):
     if args.review_smoke_test is not None:
         from .desktop_review_ui import smoke_test
         result=smoke_test(args.review_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.correction_smoke_test is not None:
+        from .desktop_correction_smoke import run
+        result=run(args.correction_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

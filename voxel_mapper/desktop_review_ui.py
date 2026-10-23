@@ -88,7 +88,7 @@ def render_pdf_preview(source, page):
 
 class ReviewWindow:
     """Scrollable source/candidate review window; all file work is asynchronous."""
-    def __init__(self, parent, output_root, on_feedback=None):
+    def __init__(self, parent, output_root, on_feedback=None, on_regenerate=None):
         import tkinter as tk
         from tkinter import ttk
         self.tk = tk
@@ -101,6 +101,8 @@ class ReviewWindow:
         self.window.minsize(min(900, screen_w - 50), min(560, screen_h - 90))
         self.output_root = Path(output_root)
         self.on_feedback = on_feedback
+        self.on_regenerate = on_regenerate
+        self.regeneration_directory = None
         self.session = None
         self.preview = None
         self.corrections = []
@@ -255,6 +257,18 @@ class ReviewWindow:
         self.save_button.pack(side='left', padx=8)
         self.import_button = ttk.Button(actions, text='Import saved reviewed feedback', command=self.import_feedback, state='disabled')
         self.import_button.pack(side='left')
+        regeneration = ttk.LabelFrame(content, text='Generate a new candidate', padding=8)
+        regeneration.pack(fill='x', pady=(0, 8))
+        self.benchmark_path = tk.StringVar()
+        self.regeneration_guidance = tk.StringVar(value='Save or resume a current correction draft to enable regeneration.')
+        ttk.Label(regeneration, text='Independent benchmark reference (optional)').grid(row=0, column=0, sticky='w')
+        ttk.Entry(regeneration, textvariable=self.benchmark_path).grid(row=0, column=1, sticky='ew', padx=6)
+        ttk.Button(regeneration, text='Choose...', command=self._choose_regeneration_reference).grid(row=0, column=2)
+        self.regenerate_button = ttk.Button(regeneration, text='Regenerate saved corrections', command=self.regenerate_saved, state='disabled')
+        self.regenerate_button.grid(row=1, column=0, columnspan=3, sticky='w', pady=(6, 0))
+        ttk.Label(regeneration, text='Creates a new local model and world preview. The original stays intact; the new candidate needs its own review.', wraplength=760).grid(row=2, column=0, columnspan=3, sticky='w', pady=(6, 0))
+        ttk.Label(regeneration, textvariable=self.regeneration_guidance, wraplength=760).grid(row=3, column=0, columnspan=3, sticky='w', pady=(6, 0))
+        regeneration.columnconfigure(1, weight=1)
         ttk.Label(content, textvariable=self.status, wraplength=1050).pack(anchor='w', pady=(0, 8))
         self.window.protocol('WM_DELETE_WINDOW', self.close)
         for variable in (self.outcome, self.review_basis, self.review_reference,
@@ -268,6 +282,8 @@ class ReviewWindow:
         self._state_revision += 1
         self.last_report = None
         self.import_button.state(['disabled'])
+        self.regeneration_directory = None
+        self.regenerate_button.state(['disabled'])
 
     @property
     def current_record(self):
@@ -369,6 +385,9 @@ class ReviewWindow:
             self.last_saved_report = value['report']
             self.last_report = None
             self.import_button.state(['disabled'])
+            if corrections and self.on_regenerate:
+                self.regeneration_directory = value['report']['output_directory']
+                self.regenerate_button.state(['!disabled'])
             self.status.set('Saved review reopened with original source pins checked. No feedback was imported.')
         self._background(lambda: resume_review(directory), resumed, 'Checking saved corrections and original source evidence...')
 
@@ -729,6 +748,9 @@ class ReviewWindow:
                     self.status.set('Review saved for the previous edit state: ' + str(report['output_directory']))
                     return
                 self.last_report = report
+                if report.get('correction_count') and self.on_regenerate:
+                    self.regeneration_directory = report['output_directory']
+                    self.regenerate_button.state(['!disabled'])
                 self.status.set(('Reviewed original decision saved. ' if reviewed else 'Correction draft saved without training labels. ') + str(report['output_directory']))
                 if reviewed and report.get('feedback_path') and self.on_feedback:
                     self.import_button.state(['!disabled'])
@@ -745,6 +767,20 @@ class ReviewWindow:
             self.status.set('Reviewed feedback submitted to persistent learning. Existing model promotion checks still apply.')
         except Exception as error:
             self._error(str(error))
+
+    def _choose_regeneration_reference(self):
+        from tkinter import filedialog
+        path = filedialog.askopenfilename(parent=self.window, title='Choose a frozen independent geometry reference', filetypes=[('JSON reference', '*.json')])
+        if path:self.benchmark_path.set(path)
+
+    def regenerate_saved(self):
+        try:
+            if self.pending:raise ValueError('Wait for the current review operation before regenerating.')
+            if not self.regeneration_directory or not self.on_regenerate:
+                raise ValueError('Save or resume the current corrections in the desktop before regenerating.')
+            self.on_regenerate(self.regeneration_directory, benchmark_path=self.benchmark_path.get().strip() or None)
+            self.status.set('Regeneration requested. The new candidate and preview appear in the desktop job list.')
+        except Exception as error:self._error(str(error))
 
     def close(self):
         if self.closed:

@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "Deliberate engineering rotation/translation of real retained Wicker geometry; not a proposed physical correction or independent accuracy result.",
+  "source_pdfs_verified": 3,
+  "source_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "original_candidate_sha256": "aa6fc34a5d2b5add772cce8c1fa8082aa9d8e3c624c09d4999ad044914ecd6e7",
+  "corrected_candidate_sha256": "2d27f35af6a68197445847d99c0cf2db5aad5f88ccecc7e44b5122392656dc2c",
+  "original_protected_air_halves": 192,
+  "corrected_protected_air_halves": 192,
+  "protected_air_verified": true,
+  "native_world_readback": "all written blocks and all unwritten air cells verified",
+  "world_path": "/workspace/scratch/correction-regeneration-real-wicker-final/memory/jobs/2f655529980e4839bda4240164b31991/output/corrected-native/park.mcworld",
+  "world_sha256": "d4510df848c3aad8605176280e9ed9d956bea552a9e277dce3e7149c58597ff6",
+  "output_directory": "/workspace/scratch/correction-regeneration-real-wicker-final/memory/jobs/2f655529980e4839bda4240164b31991/output",
+  "peak_managed_memory_mb": 186.484375,
+  "new_candidate_requires_review": true,
+  "training_labels_generated": 0,
+  "physical_acceptance": false,
+  "real_world_accuracy_established": false,
+  "benchmark_status": "awaiting_independent_reference"
+}

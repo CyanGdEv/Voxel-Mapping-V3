@@ -302,6 +302,39 @@ class ReviewInteractionTests(unittest.TestCase):
         self.assertTrue(review.closed)
         self.assertEqual(callback_calls, [])
 
+    def test_regeneration_requires_current_saved_corrections_and_is_explicit(self):
+        review=self.review;requests=[]
+        review.on_regenerate=lambda path,**options:requests.append((path,options))
+        self.assertIn('disabled',review.regenerate_button.state())
+        review.correction_type.set('dimension');review.dimension.set('9');review.dimension_axis.set('x');review.add_correction()
+        review.save_draft();self.wait_for(lambda:review.pending==0 and review.last_report is not None)
+        self.assertEqual(requests,[])
+        self.assertNotIn('disabled',review.regenerate_button.state())
+        review.regenerate_button.invoke()
+        self.assertEqual(requests,[(review.last_report['output_directory'],{'benchmark_path':None})])
+        self.assertEqual(self.imported,[])
+        review.dimension.set('10')
+        self.assertIn('disabled',review.regenerate_button.state())
+        review.regenerate_saved()
+        self.assertEqual(len(requests),1)
+
+    def test_resumed_draft_can_regenerate_without_importing_feedback(self):
+        from voxel_mapper.desktop_review_ui import ReviewWindow
+        review=self.review
+        review.correction_type.set('dimension');review.dimension.set('9');review.dimension_axis.set('x');review.add_correction()
+        review.save_draft();self.wait_for(lambda:review.pending==0 and review.last_report is not None)
+        saved=review.last_report;review.close();self.root.destroy()
+        import tkinter as tk
+        self.root=tk.Tk();self.root.withdraw();requests=[]
+        self.review=ReviewWindow(self.root,self.directory/'reviews',self.imported.append,
+            on_regenerate=lambda path,**options:requests.append((path,options)))
+        self.review.load_saved_review(saved['output_directory'])
+        self.wait_for(lambda:self.review.pending==0 and self.review.preview is not None)
+        self.assertNotIn('disabled',self.review.regenerate_button.state())
+        self.review.regenerate_button.invoke()
+        self.assertEqual(requests[0][0],saved['output_directory'])
+        self.assertEqual(self.imported,[])
+
 
 if __name__ == '__main__':
     unittest.main()
