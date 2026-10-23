@@ -1,0 +1,1473 @@
+{
+  "status": "section_roof_source_diagnostics_only",
+  "review_sha256": "1f05cc0756af068e550ede7cbbf65217dd155b7bbc04acca696f92f906c60bfc",
+  "contract": {
+    "implementation_sha256": "68a6bdc0f2a989e483eb5af6f3ef38e307f395d1d6e98fb8e00f921222234871",
+    "kernel_sha256": {
+      "voxel_mapper.colored_source_glyphs": "9bd74fddc9ee20cca17ab9d079541caf81f7b4851e63ac864f4eb181949cb1d8",
+      "voxel_mapper.glyph_visibility": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67",
+      "voxel_mapper.section_roof_leaders": "af4d8acced6890a1ae3c8c60bef6c31ed2e2a14ad25ea1da6838f66477e311e6"
+    },
+    "level_text": "191.5",
+    "max_checks": 2000000,
+    "pymupdf_version": "1.28.2",
+    "source_catalogue_sha256": "eca804de6875aaf84e47540904669f65e73d7ffb5cf7b7fafcb3c40fb99b31c1",
+    "source_fascia_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+    "source_pdf_sha256": [
+      "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "aa8a1128914c708de4773997e7306f571839133d644bf454af1572f9a74c4220",
+      "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84"
+    ],
+    "version": "section-roof-evidence-v1"
+  },
+  "counts": {
+    "agreeing_height_comparisons": 126,
+    "closed_section_roof_pairs": 3,
+    "height_comparisons": 126,
+    "held_section_roof_pairs": 5,
+    "leaders": 4,
+    "numeric_words": 4,
+    "source_pages": 4
+  },
+  "checks": 1169876,
+  "source_pages": [
+    {
+      "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+      "page": 1,
+      "source_title": "373-95-11A Sections AA BB Prop",
+      "coordinate_frame": "pymupdf_unrotated_points_y_down",
+      "numeric_words": [
+        {
+          "id": "cc2f284724730f95ec277fdaa988ee4e3ad5c9f90a7966463e56dbba48b1b193",
+          "physical_level_identity_verified": false,
+          "source_bbox_pdf_unrotated": [
+            1019.2799682617188,
+            988.907958984375,
+            1046.39990234375,
+            1002.1919555664062
+          ],
+          "source_colors_rgb": [
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ],
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ]
+          ],
+          "status": "source_numeric_glyph_candidate",
+          "text": "191.5",
+          "trace_character_indices": [
+            [
+              390,
+              0
+            ],
+            [
+              390,
+              1
+            ],
+            [
+              390,
+              2
+            ],
+            [
+              391,
+              0
+            ],
+            [
+              391,
+              1
+            ]
+          ],
+          "trace_glyphs_match_original_word": true,
+          "trace_indices": [
+            390,
+            391
+          ],
+          "vertical_datum_verified": false,
+          "word_index": 344
+        }
+      ],
+      "source_lines": [
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "3331b8821d34990ef1ca8fd717985a161e37b8b9b2ceaf07faf2a72b03c8f4fb",
+          "item_index": 0,
+          "length_pdf_points": 75.08472398938875,
+          "page": 1,
+          "paint_seqno": 1639,
+          "path_index": 1641,
+          "path_record_sha256": "d1eee2016300bbddc6bfc2ab7ba9c905e5d0ef765191871dbd34d3f7c17bbf77",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1099.199951171875,
+              1114.3199462890625
+            ],
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "a9d9f899906176ebda9f8cf3e9214328375ae26eec6ea77d59503f8e7e925f02",
+          "item_index": 0,
+          "length_pdf_points": 75.08467053414748,
+          "page": 1,
+          "paint_seqno": 1640,
+          "path_index": 1642,
+          "path_record_sha256": "2769cfca37efe368a70dafed53e253e4bd80dcdc022145fccc963ad18ad5d84d",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ],
+            [
+              967.6799926757812,
+              1114.3199462890625
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "ce7d6b3221ec3ce72f199eccf42a65fc132895c3d9c189718da23b85b6f7a81e",
+          "item_index": 0,
+          "length_pdf_points": 56.2040491062621,
+          "page": 1,
+          "paint_seqno": 1641,
+          "path_index": 1643,
+          "path_record_sha256": "543a6702f779f8b0e6d15570dfc387c3641b40ff193561386570404165aeeb11",
+          "source_endpoints_pdf_unrotated": [
+            [
+              990.47998046875,
+              1114.3199462890625
+            ],
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "7aa0754dbfb547bfb86a7425fab59298fcc4b22cd7a3576885400a34530ced09",
+          "item_index": 0,
+          "length_pdf_points": 131.51995849609375,
+          "page": 1,
+          "paint_seqno": 1643,
+          "path_index": 1645,
+          "path_record_sha256": "b57a77bc28350d23cbef279daf85966f0bbb02548fbbfdf2fd61e41ac473473a",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1099.199951171875,
+              1114.3199462890625
+            ],
+            [
+              967.6799926757812,
+              1114.3199462890625
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "090b63232efa6f311202a661a420ceae4e6dcc41e0d60abf522f096134423681",
+          "item_index": 0,
+          "length_pdf_points": 75.60340380173173,
+          "page": 1,
+          "paint_seqno": 301761,
+          "path_index": 301536,
+          "path_record_sha256": "73a72fc3675210a2a791d8c4be02dbf774e3ef58b280434cc7c6a2021382347c",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1032.719970703125,
+              1002.47998046875
+            ],
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "d14925ca8d37d91830a7f33afff830746999030a466b68331ec2ca098e4c40d8",
+          "item_index": 0,
+          "length_pdf_points": 5.942135428151094,
+          "page": 1,
+          "paint_seqno": 301762,
+          "path_index": 301537,
+          "path_record_sha256": "43ef3298020923e416950ce1de40cd361e33c4c648fc7b680af29a91181e9b53",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1037.52001953125,
+              1073.760009765625
+            ],
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "134ee23718d83a538d140c53672f475e38e77488726838a4d8165082eec3a0a1",
+          "id": "143375c5867502c1c6290ab6565f68b1ac53092656235971848684e4833fc08f",
+          "item_index": 1,
+          "length_pdf_points": 5.942051611065496,
+          "page": 1,
+          "paint_seqno": 301762,
+          "path_index": 301537,
+          "path_record_sha256": "43ef3298020923e416950ce1de40cd361e33c4c648fc7b680af29a91181e9b53",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1033.43994140625,
+              1078.0799560546875
+            ],
+            [
+              1029.1199951171875,
+              1074.0
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        }
+      ],
+      "leaders": [
+        {
+          "id": "b7b8e501a5f200a133984a2276f06b670b4399ca7a23d3f603cd93c042546bbb",
+          "leader_source_id": "090b63232efa6f311202a661a420ceae4e6dcc41e0d60abf522f096134423681",
+          "physical_level_identity_verified": false,
+          "roof_pairs": [
+            {
+              "cap_source_ids": [
+                "7aa0754dbfb547bfb86a7425fab59298fcc4b22cd7a3576885400a34530ced09"
+              ],
+              "geometry_export_authorized": false,
+              "id": "6bf8204405d01833064e4d2056bfd2d36beb4ba81deeab558395ef4b1b1a096f",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "3331b8821d34990ef1ca8fd717985a161e37b8b9b2ceaf07faf2a72b03c8f4fb",
+                "a9d9f899906176ebda9f8cf3e9214328375ae26eec6ea77d59503f8e7e925f02"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1033.43994140625,
+                1078.0799560546875
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1099.199951171875,
+                  1114.3199462890625
+                ],
+                [
+                  967.6799926757812,
+                  1114.3199462890625
+                ]
+              ],
+              "status": "closed_original_section_triangle_candidate"
+            },
+            {
+              "cap_source_ids": [],
+              "geometry_export_authorized": false,
+              "id": "afdda5b87c7bf551f5d4d9011b92279f37390bc4c479d27bbb6e62c4fc22000b",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "3331b8821d34990ef1ca8fd717985a161e37b8b9b2ceaf07faf2a72b03c8f4fb",
+                "ce7d6b3221ec3ce72f199eccf42a65fc132895c3d9c189718da23b85b6f7a81e"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1033.43994140625,
+                1078.0799560546875
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1099.199951171875,
+                  1114.3199462890625
+                ],
+                [
+                  990.47998046875,
+                  1114.3199462890625
+                ]
+              ],
+              "status": "section_roof_boundary_or_visibility_held"
+            }
+          ],
+          "source_arrow_head_pairs": [
+            [
+              "d14925ca8d37d91830a7f33afff830746999030a466b68331ec2ca098e4c40d8",
+              "143375c5867502c1c6290ab6565f68b1ac53092656235971848684e4833fc08f"
+            ]
+          ],
+          "source_label_gap_pdf_points": 0.28802490234375,
+          "source_line_clipped_or_extended": false,
+          "word_id": "cc2f284724730f95ec277fdaa988ee4e3ad5c9f90a7966463e56dbba48b1b193"
+        }
+      ],
+      "printed_scale_word_witnesses": [
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        },
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        }
+      ],
+      "nominal_metres_per_pdf_point_candidate": 0.07055555555555555,
+      "scale_application_verified": false
+    },
+    {
+      "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+      "page": 1,
+      "source_title": "373-95-13A Sections CC DD Prop",
+      "coordinate_frame": "pymupdf_unrotated_points_y_down",
+      "numeric_words": [
+        {
+          "id": "06dd8d266d956e0421dbccb0ff999e346c7b0bb558fd7568f92765d7225c423b",
+          "physical_level_identity_verified": false,
+          "source_bbox_pdf_unrotated": [
+            1019.2799682617188,
+            350.9880065917969,
+            1046.39990234375,
+            364.2720031738281
+          ],
+          "source_colors_rgb": [
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ],
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ]
+          ],
+          "status": "source_numeric_glyph_candidate",
+          "text": "191.5",
+          "trace_character_indices": [
+            [
+              458,
+              0
+            ],
+            [
+              458,
+              1
+            ],
+            [
+              458,
+              2
+            ],
+            [
+              459,
+              0
+            ],
+            [
+              459,
+              1
+            ]
+          ],
+          "trace_glyphs_match_original_word": true,
+          "trace_indices": [
+            458,
+            459
+          ],
+          "vertical_datum_verified": false,
+          "word_index": 407
+        },
+        {
+          "id": "e72a1995d8e3c5962de12468de0c74bb2995a912a3cc7aa250d9bb3c6eddf735",
+          "physical_level_identity_verified": false,
+          "source_bbox_pdf_unrotated": [
+            1337.760009765625,
+            988.907958984375,
+            1364.8798828125,
+            1002.1919555664062
+          ],
+          "source_colors_rgb": [
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ],
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ]
+          ],
+          "status": "source_numeric_glyph_candidate",
+          "text": "191.5",
+          "trace_character_indices": [
+            [
+              469,
+              0
+            ],
+            [
+              469,
+              1
+            ],
+            [
+              469,
+              2
+            ],
+            [
+              470,
+              0
+            ],
+            [
+              470,
+              1
+            ]
+          ],
+          "trace_glyphs_match_original_word": true,
+          "trace_indices": [
+            469,
+            470
+          ],
+          "vertical_datum_verified": false,
+          "word_index": 415
+        }
+      ],
+      "source_lines": [
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "95a39279b2d0769850e86c742ebdcea12220e5281da47495f4017b4b48f13ff2",
+          "item_index": 0,
+          "length_pdf_points": 74.96918623257888,
+          "page": 1,
+          "paint_seqno": 96422,
+          "path_index": 96170,
+          "path_record_sha256": "e98589990023fd6a4bd0e631fb3f6bcd98e2aa1f8cad5db5f2639a32a49c1b09",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1099.199951171875,
+              476.3999938964844
+            ],
+            [
+              1033.43994140625,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "ead2cc74fbacf4ac702cd7907df012284f3f4178f75b93314aee3e6fcf919332",
+          "item_index": 0,
+          "length_pdf_points": 74.96913269495572,
+          "page": 1,
+          "paint_seqno": 96423,
+          "path_index": 96171,
+          "path_record_sha256": "91d0ca2cc5a001d23d5a48d88cb70c2bb1fe0c38320958587a4737c0c28f824c",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1033.43994140625,
+              440.3999938964844
+            ],
+            [
+              967.6799926757812,
+              476.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "bf85fa33d199ab7e43934561b1b284033d3129e46eb665eb46c5a232392acde3",
+          "item_index": 0,
+          "length_pdf_points": 56.04960520602733,
+          "page": 1,
+          "paint_seqno": 96424,
+          "path_index": 96172,
+          "path_record_sha256": "fc3ee7a7d9db5817eae6249785690d92f1dda688bedeb3a368132d8370ebbf10",
+          "source_endpoints_pdf_unrotated": [
+            [
+              990.47998046875,
+              476.3999938964844
+            ],
+            [
+              1033.43994140625,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "8364ab99f77b13895af6f1aca1ba2931edc179156646123e0a6c821a8766f09c",
+          "item_index": 0,
+          "length_pdf_points": 131.51995849609375,
+          "page": 1,
+          "paint_seqno": 96426,
+          "path_index": 96174,
+          "path_record_sha256": "6917a11d293ed3f963fd64be542b74144f1de0cb3705bb9e14b6686cbd272203",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1099.199951171875,
+              476.3999938964844
+            ],
+            [
+              967.6799926757812,
+              476.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "0d9b0d961ef76e67ffc74f65727cb7302561e8abf51a88a4b36ed5fd0ee30795",
+          "item_index": 0,
+          "length_pdf_points": 27.256663190523806,
+          "page": 1,
+          "paint_seqno": 203479,
+          "path_index": 203226,
+          "path_record_sha256": "0d77adbf1a9b4bb186ae56062aa2f8189abab00ead1ea91d2d0ec3eb16c16907",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ],
+            [
+              1329.5999755859375,
+              1095.5999755859375
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "68c840301793db93b4b794a09f41860f61e6b605176bd383141fdc7321ab5aef",
+          "item_index": 0,
+          "length_pdf_points": 36.41208988572426,
+          "page": 1,
+          "paint_seqno": 203480,
+          "path_index": 203227,
+          "path_record_sha256": "2e849bcec3f681cb5a4455a5cd8e4a57bc8774dd0fe2aa362740f9fad52999a8",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ],
+            [
+              1318.5599365234375,
+              1095.5999755859375
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "d66b14473c1614dd376545a9e6f47ec0862f64a8f8e1e2744623de4c6abfd092",
+          "item_index": 0,
+          "length_pdf_points": 36.41208988572426,
+          "page": 1,
+          "paint_seqno": 203481,
+          "path_index": 203228,
+          "path_record_sha256": "ac933689a18800756a89f2dbd90c0b5d8059444d772a5f8e9cf8c86724fceec7",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1382.4000244140625,
+              1095.5999755859375
+            ],
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "9eaec1e0de7e28aabde5dae79cc8682612ad8940ea31982b9357f1a13b194801",
+          "item_index": 0,
+          "length_pdf_points": 75.60343431792604,
+          "page": 1,
+          "paint_seqno": 215694,
+          "path_index": 215270,
+          "path_record_sha256": "d8eb08f1a70d433beef17eb6c123258c60ea1a700c95abf0f7fb8bccfb1f2d76",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1032.719970703125,
+              364.79998779296875
+            ],
+            [
+              1033.43994140625,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "f653f727beefb51b790ed95b32922a074d3f8db29bc449274aa1bd8816526451",
+          "item_index": 0,
+          "length_pdf_points": 5.9421798009995594,
+          "page": 1,
+          "paint_seqno": 215695,
+          "path_index": 215271,
+          "path_record_sha256": "2165f0d68ddb04da30fce15a81e6b3897039964e875c77ba1bcb1d7d6e34edcd",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1037.52001953125,
+              436.0799865722656
+            ],
+            [
+              1033.43994140625,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "d12cab39dd47986ed1b6d740b3ae1775baa6c0dc89b28a3b329af84c7cd9fc37",
+          "item_index": 1,
+          "length_pdf_points": 6.109369789240827,
+          "page": 1,
+          "paint_seqno": 215695,
+          "path_index": 215271,
+          "path_record_sha256": "2165f0d68ddb04da30fce15a81e6b3897039964e875c77ba1bcb1d7d6e34edcd",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1033.43994140625,
+              440.3999938964844
+            ],
+            [
+              1029.1199951171875,
+              436.0799865722656
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "9b4fe289972f181f90ff7a8febf17ac0b6c2c6f5a2e735d4416c8efb1188d3b4",
+          "item_index": 0,
+          "length_pdf_points": 75.60340380173173,
+          "page": 1,
+          "paint_seqno": 215709,
+          "path_index": 215279,
+          "path_record_sha256": "b4cf17344cf8088df0a35c469dd7f33b6b415e17bac1010fffd37ce755cdf068",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1351.199951171875,
+              1002.47998046875
+            ],
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "b18950172590654b2b2579d4b06008185fedb7a47cea7f647a5bbd57323bb032",
+          "item_index": 0,
+          "length_pdf_points": 5.942051611065496,
+          "page": 1,
+          "paint_seqno": 215710,
+          "path_index": 215280,
+          "path_record_sha256": "108a105a9a541707e9245091993b292009042da407b372a00a3387c49a233cad",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1354.7999267578125,
+              1074.0
+            ],
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "75987cef323f7e04056b198c8873e9a28d777482909e432b81cedf3443ca1e78",
+          "id": "9bc93290e3e8d9b3088ad757ebd41c31a609493547e92a158d45a3d10ff7d099",
+          "item_index": 1,
+          "length_pdf_points": 5.942051611065496,
+          "page": 1,
+          "paint_seqno": 215710,
+          "path_index": 215280,
+          "path_record_sha256": "108a105a9a541707e9245091993b292009042da407b372a00a3387c49a233cad",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1350.47998046875,
+              1078.0799560546875
+            ],
+            [
+              1346.4000244140625,
+              1073.760009765625
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        }
+      ],
+      "leaders": [
+        {
+          "id": "472c4a18a1176671615a52c09a7bc04054224934c452294a78529a505d7f9bc2",
+          "leader_source_id": "9eaec1e0de7e28aabde5dae79cc8682612ad8940ea31982b9357f1a13b194801",
+          "physical_level_identity_verified": false,
+          "roof_pairs": [
+            {
+              "cap_source_ids": [
+                "8364ab99f77b13895af6f1aca1ba2931edc179156646123e0a6c821a8766f09c"
+              ],
+              "geometry_export_authorized": false,
+              "id": "924d66dcfaad95d1b37e1b76cac367ec9d0b72449b21b24d7fed26706a24b43d",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "95a39279b2d0769850e86c742ebdcea12220e5281da47495f4017b4b48f13ff2",
+                "ead2cc74fbacf4ac702cd7907df012284f3f4178f75b93314aee3e6fcf919332"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1033.43994140625,
+                440.3999938964844
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1099.199951171875,
+                  476.3999938964844
+                ],
+                [
+                  967.6799926757812,
+                  476.3999938964844
+                ]
+              ],
+              "status": "closed_original_section_triangle_candidate"
+            },
+            {
+              "cap_source_ids": [],
+              "geometry_export_authorized": false,
+              "id": "2076b0965949340293d41f75ef2ddf4e05e9b09180d4c3aa9a9088fc49cea20e",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "95a39279b2d0769850e86c742ebdcea12220e5281da47495f4017b4b48f13ff2",
+                "bf85fa33d199ab7e43934561b1b284033d3129e46eb665eb46c5a232392acde3"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1033.43994140625,
+                440.3999938964844
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1099.199951171875,
+                  476.3999938964844
+                ],
+                [
+                  990.47998046875,
+                  476.3999938964844
+                ]
+              ],
+              "status": "section_roof_boundary_or_visibility_held"
+            }
+          ],
+          "source_arrow_head_pairs": [
+            [
+              "f653f727beefb51b790ed95b32922a074d3f8db29bc449274aa1bd8816526451",
+              "d12cab39dd47986ed1b6d740b3ae1775baa6c0dc89b28a3b329af84c7cd9fc37"
+            ]
+          ],
+          "source_label_gap_pdf_points": 0.527984619140625,
+          "source_line_clipped_or_extended": false,
+          "word_id": "06dd8d266d956e0421dbccb0ff999e346c7b0bb558fd7568f92765d7225c423b"
+        },
+        {
+          "id": "6354851842706f9ba634f53ba5cb356dafdd321b18564b89ed0196ae1d3c5c18",
+          "leader_source_id": "9b4fe289972f181f90ff7a8febf17ac0b6c2c6f5a2e735d4416c8efb1188d3b4",
+          "physical_level_identity_verified": false,
+          "roof_pairs": [
+            {
+              "cap_source_ids": [],
+              "geometry_export_authorized": false,
+              "id": "7bf36b79b824855012b9995058cab2c641369af5df3c9edeee722a1826d554d7",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "0d9b0d961ef76e67ffc74f65727cb7302561e8abf51a88a4b36ed5fd0ee30795",
+                "d66b14473c1614dd376545a9e6f47ec0862f64a8f8e1e2744623de4c6abfd092"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1350.47998046875,
+                1078.0799560546875
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1329.5999755859375,
+                  1095.5999755859375
+                ],
+                [
+                  1382.4000244140625,
+                  1095.5999755859375
+                ]
+              ],
+              "status": "section_roof_boundary_or_visibility_held"
+            },
+            {
+              "cap_source_ids": [],
+              "geometry_export_authorized": false,
+              "id": "b4913c32940568f51948ba4ea0eebb591537fd3c63e18eef1391036a78c8b2df",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "68c840301793db93b4b794a09f41860f61e6b605176bd383141fdc7321ab5aef",
+                "d66b14473c1614dd376545a9e6f47ec0862f64a8f8e1e2744623de4c6abfd092"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1350.47998046875,
+                1078.0799560546875
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1318.5599365234375,
+                  1095.5999755859375
+                ],
+                [
+                  1382.4000244140625,
+                  1095.5999755859375
+                ]
+              ],
+              "status": "section_roof_boundary_or_visibility_held"
+            }
+          ],
+          "source_arrow_head_pairs": [
+            [
+              "b18950172590654b2b2579d4b06008185fedb7a47cea7f647a5bbd57323bb032",
+              "9bc93290e3e8d9b3088ad757ebd41c31a609493547e92a158d45a3d10ff7d099"
+            ]
+          ],
+          "source_label_gap_pdf_points": 0.28802490234375,
+          "source_line_clipped_or_extended": false,
+          "word_id": "e72a1995d8e3c5962de12468de0c74bb2995a912a3cc7aa250d9bb3c6eddf735"
+        }
+      ],
+      "printed_scale_word_witnesses": [
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        },
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        },
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        }
+      ],
+      "nominal_metres_per_pdf_point_candidate": 0.07055555555555555,
+      "scale_application_verified": false
+    },
+    {
+      "document_sha256": "aa8a1128914c708de4773997e7306f571839133d644bf454af1572f9a74c4220",
+      "page": 1,
+      "source_title": "373-95-15A Sections EE FF Prop",
+      "coordinate_frame": "pymupdf_unrotated_points_y_down",
+      "numeric_words": [],
+      "source_lines": [],
+      "leaders": [],
+      "printed_scale_word_witnesses": [
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        },
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        }
+      ],
+      "nominal_metres_per_pdf_point_candidate": 0.07055555555555555,
+      "scale_application_verified": false
+    },
+    {
+      "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+      "page": 1,
+      "source_title": "373-95-17A Sections GG HH Prop",
+      "coordinate_frame": "pymupdf_unrotated_points_y_down",
+      "numeric_words": [
+        {
+          "id": "640a5da8ee4287584a5dc194ca904924e20e4f54f5fb04fdd9162a756f8551de",
+          "physical_level_identity_verified": false,
+          "source_bbox_pdf_unrotated": [
+            1645.199951171875,
+            323.6280212402344,
+            1672.31982421875,
+            336.9120178222656
+          ],
+          "source_colors_rgb": [
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ],
+            [
+              0.49803900718688965,
+              0.32548999786376953,
+              0.16862699389457703
+            ]
+          ],
+          "status": "source_numeric_glyph_candidate",
+          "text": "191.5",
+          "trace_character_indices": [
+            [
+              441,
+              0
+            ],
+            [
+              441,
+              1
+            ],
+            [
+              441,
+              2
+            ],
+            [
+              442,
+              0
+            ],
+            [
+              442,
+              1
+            ]
+          ],
+          "trace_glyphs_match_original_word": true,
+          "trace_indices": [
+            441,
+            442
+          ],
+          "vertical_datum_verified": false,
+          "word_index": 401
+        }
+      ],
+      "source_lines": [
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "aba4c74c740861376d95b7f949fb151523aaf0db0b28e2f1a7d6217014eafc93",
+          "item_index": 0,
+          "length_pdf_points": 75.17978451685,
+          "page": 1,
+          "paint_seqno": 113969,
+          "path_index": 113677,
+          "path_record_sha256": "586363e81dd74f923026df069810f4b8e5fbc9386961e123a7125c9be6145e55",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1725.1199951171875,
+              476.3999938964844
+            ],
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "56bd7fb2375d1ee653f417a9e23c91a602632e705df771fab4145448c00fdf02",
+          "item_index": 0,
+          "length_pdf_points": 56.04969876848706,
+          "page": 1,
+          "paint_seqno": 113970,
+          "path_index": 113678,
+          "path_record_sha256": "dd3519d2d3d836ca675e7bcc3a86634827377cc00f07b2afeeb75da672767b7c",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1616.159912109375,
+              476.3999938964844
+            ],
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "298d16a22077890d0f8880f0a144f26dbb2f860c9b3f590c96c6921f7d50ec71",
+          "item_index": 0,
+          "length_pdf_points": 74.96918623257888,
+          "page": 1,
+          "paint_seqno": 113971,
+          "path_index": 113679,
+          "path_record_sha256": "cd5f75c0349e40a0cdf9ec0edebd589c539b15dee14d8bc38887b2d4ec36bc77",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1593.3599853515625,
+              476.3999938964844
+            ],
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.6509799957275391,
+            0.4235289990901947,
+            0.21568599343299866
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "ca101308b7497f75ba5116898b2c4227726d42470d72d92ec56eef0f30dd00ab",
+          "item_index": 0,
+          "length_pdf_points": 131.760009765625,
+          "page": 1,
+          "paint_seqno": 113974,
+          "path_index": 113682,
+          "path_record_sha256": "06069c96f92076a63409383ff657ed0cc2adc27d3528f14693b02a7b2d93da26",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1725.1199951171875,
+              476.3999938964844
+            ],
+            [
+              1593.3599853515625,
+              476.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "bd7ea780d3071c4eb694a0410881919c1fda38277131ca46fa6166b34c097416",
+          "item_index": 0,
+          "length_pdf_points": 102.96111023915846,
+          "page": 1,
+          "paint_seqno": 218289,
+          "path_index": 217832,
+          "path_record_sha256": "a286c745a9d2c385474ae047cf095259730d7eb85378c44093718115951115cb",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1658.6400146484375,
+              337.44000244140625
+            ],
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "4315e9850796c573d2658c270c1ca8364a019e23c2d8bc1e490c70a97f87a4c8",
+          "item_index": 0,
+          "length_pdf_points": 6.109369789240827,
+          "page": 1,
+          "paint_seqno": 218290,
+          "path_index": 217833,
+          "path_record_sha256": "6e9cd992ed39010733c8c183927e310f7669f8e8f892a7b80655af1296f3c5b0",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1663.43994140625,
+              436.0799865722656
+            ],
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        },
+        {
+          "color_rgb": [
+            0.49803900718688965,
+            0.32548999786376953,
+            0.16862699389457703
+          ],
+          "document_sha256": "fb6e5a1c88b4f94b1ebda7308120af1853c05661ecb6f12546d125ecdcf7ad84",
+          "id": "2975342b0de4119f41410aa44222a5fbdb6c32b4e43f221b612ecb5664a4194b",
+          "item_index": 1,
+          "length_pdf_points": 5.9421798009995594,
+          "page": 1,
+          "paint_seqno": 218290,
+          "path_index": 217833,
+          "path_record_sha256": "6e9cd992ed39010733c8c183927e310f7669f8e8f892a7b80655af1296f3c5b0",
+          "source_endpoints_pdf_unrotated": [
+            [
+              1659.1199951171875,
+              440.3999938964844
+            ],
+            [
+              1655.0399169921875,
+              436.0799865722656
+            ]
+          ],
+          "source_line_clipped_or_extended": false,
+          "stroke_width_pdf_points": 0.35999998450279236
+        }
+      ],
+      "leaders": [
+        {
+          "id": "878a73b63b47881fa3d587b2d836f0001dceb341e6d6070bf0258f5aed532553",
+          "leader_source_id": "bd7ea780d3071c4eb694a0410881919c1fda38277131ca46fa6166b34c097416",
+          "physical_level_identity_verified": false,
+          "roof_pairs": [
+            {
+              "cap_source_ids": [],
+              "geometry_export_authorized": false,
+              "id": "d6105313ec8ea901d389f84c6a38d52f044032fb3da4bf792b1974d9838286c7",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "aba4c74c740861376d95b7f949fb151523aaf0db0b28e2f1a7d6217014eafc93",
+                "56bd7fb2375d1ee653f417a9e23c91a602632e705df771fab4145448c00fdf02"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1659.1199951171875,
+                440.3999938964844
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1725.1199951171875,
+                  476.3999938964844
+                ],
+                [
+                  1616.159912109375,
+                  476.3999938964844
+                ]
+              ],
+              "status": "section_roof_boundary_or_visibility_held"
+            },
+            {
+              "cap_source_ids": [
+                "ca101308b7497f75ba5116898b2c4227726d42470d72d92ec56eef0f30dd00ab"
+              ],
+              "geometry_export_authorized": false,
+              "id": "c67897e0bb163e66541e6f9c9a391da09aa7bf3b1206ac21014ea45b0ff02f4e",
+              "nominal_metres_per_pdf_point": null,
+              "physical_roof_correspondence_verified": false,
+              "scale_application_verified": false,
+              "slope_source_ids": [
+                "aba4c74c740861376d95b7f949fb151523aaf0db0b28e2f1a7d6217014eafc93",
+                "298d16a22077890d0f8880f0a144f26dbb2f860c9b3f590c96c6921f7d50ec71"
+              ],
+              "source_apex_endpoint_gaps_pdf_points": [
+                0.0,
+                0.0
+              ],
+              "source_apex_pdf_unrotated": [
+                1659.1199951171875,
+                440.3999938964844
+              ],
+              "source_slope_far_endpoints": [
+                [
+                  1725.1199951171875,
+                  476.3999938964844
+                ],
+                [
+                  1593.3599853515625,
+                  476.3999938964844
+                ]
+              ],
+              "status": "closed_original_section_triangle_candidate"
+            }
+          ],
+          "source_arrow_head_pairs": [
+            [
+              "4315e9850796c573d2658c270c1ca8364a019e23c2d8bc1e490c70a97f87a4c8",
+              "2975342b0de4119f41410aa44222a5fbdb6c32b4e43f221b612ecb5664a4194b"
+            ]
+          ],
+          "source_label_gap_pdf_points": 0.527984619140625,
+          "source_line_clipped_or_extended": false,
+          "word_id": "640a5da8ee4287584a5dc194ca904924e20e4f54f5fb04fdd9162a756f8551de"
+        }
+      ],
+      "printed_scale_word_witnesses": [
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        },
+        {
+          "bbox_pdf_unrotated": [
+            2056.320068359375,
+            1558.5146484375,
+            2084.159912109375,
+            1571.73291015625
+          ],
+          "text": "1/200"
+        }
+      ],
+      "nominal_metres_per_pdf_point_candidate": 0.07055555555555555,
+      "scale_application_verified": false
+    }
+  ],
+  "wall_closure_authorized": false,
+  "height_comparison_groups": [
+    {
+      "section_roof_pair_id": "6bf8204405d01833064e4d2056bfd2d36beb4ba81deeab558395ef4b1b1a096f",
+      "comparison_count": 42,
+      "agreeing_comparisons": 42,
+      "source_label_value_m_candidate": 191.5,
+      "source_eave_value_m_candidate": 188.94306735568577,
+      "source_roof_rise_nominal_m_candidate": 2.556932644314236,
+      "largest_absolute_residual_nominal_m": 0.021286241975104758,
+      "common_datum_and_same_physical_roof_assumed": true,
+      "shared_cap_face_identified": false
+    },
+    {
+      "section_roof_pair_id": "924d66dcfaad95d1b37e1b76cac367ec9d0b72449b21b24d7fed26706a24b43d",
+      "comparison_count": 42,
+      "agreeing_comparisons": 42,
+      "source_label_value_m_candidate": 191.5,
+      "source_eave_value_m_candidate": 188.96,
+      "source_roof_rise_nominal_m_candidate": 2.54,
+      "largest_absolute_residual_nominal_m": 0.009931661475576448,
+      "common_datum_and_same_physical_roof_assumed": true,
+      "shared_cap_face_identified": false
+    },
+    {
+      "section_roof_pair_id": "c67897e0bb163e66541e6f9c9a391da09aa7bf3b1206ac21014ea45b0ff02f4e",
+      "comparison_count": 42,
+      "agreeing_comparisons": 42,
+      "source_label_value_m_candidate": 191.5,
+      "source_eave_value_m_candidate": 188.96,
+      "source_roof_rise_nominal_m_candidate": 2.54,
+      "largest_absolute_residual_nominal_m": 0.009931661475576448,
+      "common_datum_and_same_physical_roof_assumed": true,
+      "shared_cap_face_identified": false
+    }
+  ]
+}

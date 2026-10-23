@@ -605,3 +605,8 @@ printed elevation targets independently of artwork crops. All eight readable
 roof references now have source-caption candidates; two still need usable
 artwork assignments. Revised site sections are recovered for the next interface
 check, with original visibility holds and shared-cap closure still unresolved.
+
+The [section roof leader review](docs/section-roof-leaders.md) links four original
+numeric labels to source leaders and roof strokes. Three closed section outlines
+conditionally agree with the existing apex/eave heights; five alternatives,
+section projection, physical correspondence and shared-cap geometry stay held.

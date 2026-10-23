@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "parent_commit": "066a94ff094d0b5fb3fcf2c2468adfd4abf1bcd8",
+  "parent_ci": {
+    "run_id": 39952341067,
+    "run_number": 644,
+    "conclusion": "success"
+  },
+  "focused_tests": 17,
+  "review_sha256": "1f05cc0756af068e550ede7cbbf65217dd155b7bbc04acca696f92f906c60bfc",
+  "counts": {
+    "agreeing_height_comparisons": 126,
+    "closed_section_roof_pairs": 3,
+    "height_comparisons": 126,
+    "held_section_roof_pairs": 5,
+    "leaders": 4,
+    "numeric_words": 4,
+    "source_pages": 4
+  },
+  "checks": 1169876,
+  "code_sha256": {
+    "voxel_mapper/colored_source_glyphs.py": "9bd74fddc9ee20cca17ab9d079541caf81f7b4851e63ac864f4eb181949cb1d8",
+    "voxel_mapper/section_roof_leaders.py": "af4d8acced6890a1ae3c8c60bef6c31ed2e2a14ad25ea1da6838f66477e311e6",
+    "voxel_mapper/section_roof_evidence.py": "68a6bdc0f2a989e483eb5af6f3ef38e307f395d1d6e98fb8e00f921222234871",
+    "scripts/build_section_roof_evidence.py": "0513dec4448aa63ad00919fb052d01871887a4c0b713e29c07473eb320f542bd",
+    "scripts/audit_section_roof_evidence.py": "454c48bbce1fd74077c03c3bb421709a295911f2a844417da73f88160158224d",
+    "scripts/render_section_roof_evidence.py": "707b0cb517a09c8ec2f2bda2d2208c849822945db0cd38755e4eba792340570e",
+    "tests/test_section_roof_evidence.py": "0cb4ace155e2dbcf7d4111918f1bbd771a888343e57e400afeda014895719638"
+  },
+  "full_suite": {
+    "tests": 1823,
+    "duration_seconds": 1508.086,
+    "log_sha256": "08c9ebc64ea95d77f9ed52ae25acc46fb01a4f50c880134dc18afad067cabb73"
+  },
+  "review_html_sha256": "f0dee72bfdd0303b4953d0cdbb0de760441eec1114d0b80e2d920c32987047c0",
+  "review_png_sha256": "8979c713e570a9c31dd078c3bbed33692ae0844c856f873ed625e00c3c8becbc"
+}

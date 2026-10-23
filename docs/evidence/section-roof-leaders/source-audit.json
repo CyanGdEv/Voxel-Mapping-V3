@@ -1,0 +1,14 @@
+{
+  "checked": {
+    "independent_closed_triangles": 3,
+    "independent_height_comparisons": 126,
+    "independent_original_rgb_neighbourhoods": 837,
+    "original_color_glyph_traces": 8,
+    "original_numeric_words": 4,
+    "original_whole_path_items": 27
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "1f05cc0756af068e550ede7cbbf65217dd155b7bbc04acca696f92f906c60bfc",
+  "source_fascia_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "status": "passed"
+}
