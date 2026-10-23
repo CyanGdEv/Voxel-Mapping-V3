@@ -1,0 +1,18 @@
+{
+  "benchmark_missing_prediction_remains_unassessed": true,
+  "correction_draft_has_no_feedback": true,
+  "cpu_neural_training": "passed",
+  "isolated_worker": "passed",
+  "managed_reconstruction_benchmark": "passed",
+  "native_terrain_world_and_saved_readback": "passed",
+  "observed_managed_peak_memory_mb": 222.1875,
+  "persistent_job_and_observation_restart": "passed",
+  "real_alton_area_peak_managed_memory_mb": 234.609375,
+  "real_alton_area_preset_and_readback": "passed",
+  "review_and_benchmark_peak_managed_memory_mb": 134.62890625,
+  "source_linked_correction_draft": "passed",
+  "status": "passed",
+  "synthetic_training_only": true,
+  "trained_real_park_model": false,
+  "undersized_checkpoint_withheld": true
+}

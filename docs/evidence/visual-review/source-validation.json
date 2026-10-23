@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "parent_commit": "30e330bf0c4b3592f410fe4e61086ce7c8923cbf",
+  "scope": "Final source backend tests, actual Tk UI tests/smoke with fresh-window resume, real Wicker managed review preparation and exact original PDF binding, frozen-compatible worker/self-test. Exact-head Windows build runs separately in Actions.",
+  "focused_backend_tests": 47,
+  "actual_tk_ui_tests": 13,
+  "code_sha256": {
+    "voxel_mapper/desktop_app.py": "9b3756ecf3f34ef366a1bddd5db00bfaf91ce01ed9478f86d40bc659eb44a61a",
+    "voxel_mapper/desktop_runtime.py": "32104a2903d58148b2f699639b97b741498a7335422e7ea439d88109aca8e7ed",
+    "voxel_mapper/desktop_review.py": "617a201e04705df606825acfd83d3afa08bd63ff0acc45278ba6e567f569558c",
+    "voxel_mapper/desktop_review_presets.py": "09ad563ee5c82ea10ac364c2aa249cb432ea3884e99456827f9c5625071a28fb",
+    "voxel_mapper/desktop_review_ui.py": "ff43f797fca45ff8d0868d9e32dca44d22eaf7b365ff17d6d0c1265e5a71b4cb",
+    "voxel_mapper/reconstruction_benchmark.py": "40224dfc1656840b01ed27d7e5a321225e36da6106298a1e40fb5cb91f3d4996",
+    "tests/test_desktop_review.py": "d04dfb9cb8a1c244ffe82ffd60e1c830fbda090a143ee701e486d5d9e11bab8f",
+    "tests/test_desktop_review_integration.py": "f4804bbf520dfd363eea18900f5c0c8c7f83f14b65e28aac5a967de6cca7759d",
+    "tests/test_desktop_review_presets.py": "7ff345f83a44a99f786d652c884caaed9ab6301b04f22499a2f348427c8d441b",
+    "tests/test_desktop_review_ui.py": "4d8109cc5e66d93de53093b2406105e54abe09b5d2266be72c5d846441ed1436",
+    "tests/test_reconstruction_benchmark.py": "fd92324b9055f01bdf1e336c142d5c8455642d57fed6e597a84b84a2d4cb63e3"
+  },
+  "real_trained_park_model": false,
+  "real_building_accuracy_benchmark_completed": false,
+  "original_pdfs_committed": false,
+  "hardware_scope": "CPU/memory measurements on development/CI hardware; physical 6 GB Windows PC untested.",
+  "review_limitations": "Corrections remain source-linked local annotations. Original-candidate labels require declared external review and explicit import; references are audit pointers, not authenticated reviews. No automatic source segmentation, geometry replacement, geographic qualification or model promotion is implied."
+}

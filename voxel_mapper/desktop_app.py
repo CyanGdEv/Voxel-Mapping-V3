@@ -15,6 +15,7 @@ JOB_KINDS = (
     ('World pilot from retained inputs', 'world_pilot'),
     ('Full Alton draft from retained inputs', 'alton_world'),
     ('Building batch / local previews', 'building_batch'),
+    ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -91,6 +92,22 @@ def learning_summary(snapshot):
                   f"Observed process memory budget: {config.get('memory_budget_mb',2048)} MB",
                   'Memory and checkpoints remain available after the application closes.',
                   'The neural model ranks evidence candidates; it does not certify physical geometry.'])
+    return '\n'.join(lines)
+
+
+def benchmark_summary(report):
+    """Keep measured errors and missing cases visible alongside the raw receipt."""
+    summary=report.get('summary',{});metrics=summary.get('metrics',{})
+    lines=['Reconstruction accuracy: '+('synthetic example' if report.get('dataset_kind')=='synthetic' else 'supplied real reference dataset'),
+        f"Cases within the supplied tolerances: {summary.get('cases_within_thresholds',0)} / {summary.get('case_count',0)}",
+        f"Missing predictions: {summary.get('missing_predictions',0)}; incomplete predictions: {summary.get('incomplete_predictions',0)}"]
+    for key,label,unit in [('footprint_iou','Mean footprint overlap',''),('boundary_hausdorff_m','Mean boundary distance',' m'),
+                           ('height_error_m','Mean height error',' m'),('position_error_m','Mean placement error',' m')]:
+        metric=metrics.get(key,{})
+        value=metric.get('mean');measured=metric.get('measured_cases',0)
+        lines.append(f'{label}: {value:.3f}{unit} ({measured} measured cases)' if isinstance(value,(int,float)) else label+': unassessed')
+    lines.extend(['Missing geometry remains failed or unassessed. Completing measurement does not mean the reconstruction passed.',
+        'Reference provenance and model lineage are declared inputs; this report does not establish independent physical correctness.'])
     return '\n'.join(lines)
 
 
@@ -205,6 +222,7 @@ class DesktopWindow:
         self.tk=tk;self.ttk=ttk;self.root=root;self.runtime_factory=DesktopRuntime
         self.runtime=None;self.messages=Queue();self.dispatch=ThreadPoolExecutor(max_workers=1,thread_name_prefix='voxel-ui-dispatch')
         self.closed=False;self.last_snapshot={};self.poll_token=None;self.snapshot_pending=False;self.learning_pending=False
+        self.review_windows=[];self.review_jobs=set()
         style=ttk.Style(root)
         if os.name=='nt' and 'vista' in style.theme_names():style.theme_use('vista')
         elif 'clam' in style.theme_names():style.theme_use('clam')
@@ -232,8 +250,8 @@ class DesktopWindow:
         settings.columnconfigure(1,weight=1)
         from .desktop_area import PRESETS
         tabs=ttk.Notebook(outer);tabs.pack(fill='x',pady=12)
-        area=ttk.Frame(tabs,padding=10);controls=ttk.Frame(tabs,padding=10)
-        tabs.add(area,text='Generate an area');tabs.add(controls,text='Advanced jobs / learning')
+        area=ttk.Frame(tabs,padding=10);controls=ttk.Frame(tabs,padding=10);review=ttk.Frame(tabs,padding=10)
+        tabs.add(area,text='Generate an area');tabs.add(review,text='Review and accuracy');tabs.add(controls,text='Advanced jobs / learning')
         self.area_presets=PRESETS;self.area_preset=tk.StringVar(value=PRESETS[0]['label'])
         self.area_sources=tk.StringVar();self.area_download=tk.BooleanVar(value=True)
         self.area_scope=tk.StringVar(value=PRESETS[0]['scope']);self.select_when_visible=None
@@ -248,6 +266,18 @@ class DesktopWindow:
         ttk.Checkbutton(area,text='Download missing original council PDFs (uses internet)',variable=self.area_download).grid(row=2,column=0,columnspan=3,sticky='w',pady=(8,0))
         ttk.Label(area,textvariable=self.area_scope,wraplength=980).grid(row=3,column=0,columnspan=3,sticky='w',pady=(8,0))
         area.columnconfigure(1,weight=1)
+        review_buttons=ttk.Frame(review);review_buttons.grid(row=0,column=0,columnspan=3,sticky='w')
+        ttk.Button(review_buttons,text='Review Wicker building',command=lambda:self._prepare_review('wicker')).pack(side='left')
+        ttk.Button(review_buttons,text='Try correction demo',command=lambda:self._prepare_review('synthetic_demo')).pack(side='left',padx=8)
+        self.review_open=ttk.Button(review_buttons,text='Open review queue...',command=self._open_review_queue);self.review_open.pack(side='left')
+        ttk.Label(review,text='Compare the source drawing with local geometry. Save correction drafts or record an independently checked decision.',wraplength=980).grid(row=1,column=0,columnspan=3,sticky='w',pady=(8,0))
+        self.benchmark_path=tk.StringVar()
+        ttk.Entry(review,textvariable=self.benchmark_path).grid(row=2,column=0,sticky='ew',pady=(8,0))
+        ttk.Button(review,text='Choose benchmark...',command=self._browse_benchmark).grid(row=2,column=1,padx=8,pady=(8,0))
+        self.benchmark_run=ttk.Button(review,text='Run accuracy benchmark',command=self._submit_benchmark)
+        self.benchmark_run.grid(row=2,column=2,pady=(8,0))
+        ttk.Label(review,text='Benchmarks measure geometry against supplied references. The included example is synthetic; real accuracy needs independently reviewed references.',wraplength=980).grid(row=3,column=0,columnspan=3,sticky='w',pady=(8,0))
+        review.columnconfigure(0,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
         ttk.Button(controls,text='Choose JSON...',command=self._browse_job).grid(row=0,column=2)
@@ -326,6 +356,49 @@ class DesktopWindow:
         path=filedialog.askopenfilename(parent=self.root,title='Choose a Voxel Mapper JSON job',initialdir=str(example_root if example_root.is_dir() else Path.cwd()),filetypes=[('JSON job','*.json'),('All files','*.*')])
         if path:self.config_path.set(path)
 
+    def _prepare_review(self,preset):
+        try:
+            folder=None
+            if preset=='wicker':
+                from tkinter import filedialog
+                folder=filedialog.askdirectory(parent=self.root,title='Choose retained planning PDFs, or cancel to prepare a review with missing sources') or None
+            def queued(jid):
+                self.review_jobs.add(str(jid));self.select_when_visible=str(jid)
+                self.status.set('Preparing the source-linked review; the review window opens when it is ready')
+            self._background(lambda:self.runtime.submit_review(preset,evidence_directory=folder),queued)
+        except Exception as error:self._error(error)
+
+    def _open_review_queue(self,report=None):
+        try:
+            from .desktop_review_ui import ReviewWindow
+            if report is None:
+                from tkinter import filedialog
+                path=filedialog.askopenfilename(parent=self.root,title='Choose a building review queue',filetypes=[('JSON review queue','*.json')])
+                if not path:return
+                report={'queue_path':path}
+            window=ReviewWindow(self.root,Path(self.data_directory.get()).expanduser().resolve()/'reviews',on_feedback=self._import_reviewed_feedback)
+            self.review_windows.append(window)
+            window.load_queue(report['queue_path'],batch_path=report.get('batch_path'),source_paths=report.get('source_paths'))
+        except Exception as error:self._error(error)
+
+    def _import_reviewed_feedback(self,path):
+        self._background(lambda:self.runtime.submit_reviewed_feedback(path),
+            lambda jid:self.status.set('Reviewed feedback import queued; automatic learning still requires enough independent examples'))
+
+    def _browse_benchmark(self):
+        from tkinter import filedialog
+        example_root=(Path(sys.executable).parent if getattr(sys,'frozen',False) else Path(__file__).resolve().parent.parent)/'examples'/'desktop'
+        path=filedialog.askopenfilename(parent=self.root,title='Choose an accuracy benchmark',initialdir=str(example_root),filetypes=[('JSON benchmark','*.json')])
+        if path:self.benchmark_path.set(path)
+
+    def _submit_benchmark(self):
+        try:
+            path=Path(self.benchmark_path.get()).expanduser().resolve()
+            if not path.is_file():raise ValueError('Choose an existing accuracy benchmark JSON file')
+            self._background(lambda:self.runtime.submit('reconstruction_benchmark',path),
+                lambda jid:self.status.set('Accuracy benchmark queued; its measured results appear in the job results folder'))
+        except Exception as error:self._error(error)
+
     def _area_changed(self,event=None):
         preset=next(p for p in self.area_presets if p['label']==self.area_preset.get())
         self.area_scope.set(preset['scope'])
@@ -394,6 +467,8 @@ class DesktopWindow:
         if row:
             detail=json.dumps(row,indent=2,ensure_ascii=False,default=str)
             if len(detail)>50000:detail=detail[:50000]+'\n... Display truncated; complete results remain in the job output directory.'
+            if row.get('kind')=='reconstruction_benchmark' and row.get('result'):
+                detail=benchmark_summary(row['result'])+'\n\nAdvanced receipt:\n'+detail
             self._replace(self.detail_text,detail)
 
     def _toggle_learning(self):
@@ -416,6 +491,9 @@ class DesktopWindow:
             values=(identifier,row.get('kind',''),row.get('status',''),progress,str(message)[:240])
             if identifier in present:self.jobs.item(identifier,values=values)
             else:self.jobs.insert('',0,iid=identifier,values=values)
+            if identifier in self.review_jobs and row.get('status') in ('completed','failed','cancelled','interrupted'):
+                self.review_jobs.discard(identifier)
+                if row.get('status')=='completed':self._open_review_queue(row['result'])
         for identifier in present-wanted:self.jobs.delete(identifier)
         if self.select_when_visible and self.select_when_visible in wanted:
             self.jobs.selection_set(self.select_when_visible);self.jobs.see(self.select_when_visible);self.select_when_visible=None
@@ -443,6 +521,8 @@ class DesktopWindow:
         self.closed=True
         if self.poll_token:self.root.after_cancel(self.poll_token)
         try:
+            for window in self.review_windows:
+                window.close()
             if self.runtime:self.runtime.close(wait=False)
         finally:
             self.dispatch.shutdown(wait=False,cancel_futures=True);self.root.destroy()
@@ -487,6 +567,7 @@ def main(argv=None):
     parser.add_argument('--check-dependencies',action='store_true',help='Exercise bundled native dependencies without a window.')
     parser.add_argument('--require-ocr-tools',action='store_true',help='Require functional English OCR and PDF helper executables in the dependency check.')
     parser.add_argument('--ui-smoke-test',type=Path,metavar='OUTPUT',help='Construct the real desktop UI, capture it if supported, then close.')
+    parser.add_argument('--review-smoke-test',type=Path,metavar='OUTPUT',help='Exercise the source drawing, geometry correction and draft-saving UI, then close.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -495,6 +576,9 @@ def main(argv=None):
         return worker_main(args.runtime_worker)
     if args.check_dependencies:
         result=check_dependencies(require_ocr_tools=args.require_ocr_tools);print(json.dumps(result,sort_keys=True));return int(result['status']!='passed')
+    if args.review_smoke_test is not None:
+        from .desktop_review_ui import smoke_test
+        result=smoke_test(args.review_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

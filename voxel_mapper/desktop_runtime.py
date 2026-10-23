@@ -14,8 +14,9 @@ import uuid
 
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
-KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason'}
+KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
+       'prepare_review','reconstruction_benchmark'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -146,6 +147,22 @@ class DesktopRuntime:
         if evidence_directory:config['evidence_directory']=str(Path(evidence_directory).expanduser().resolve())
         path=self.directory/'area-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
         return self.submit('area_pilot',path)
+
+    def submit_review(self,preset,*,evidence_directory=None):
+        """Prepare a review queue; this never supplies reviewed outcomes."""
+        if preset not in ('wicker','synthetic_demo'):raise ValueError('Choose a supported review preset')
+        config={'preset':preset}
+        if evidence_directory:config['evidence_directory']=str(Path(evidence_directory).expanduser().resolve())
+        path=self.directory/'review-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
+        return self.submit('prepare_review',path)
+
+    def submit_reviewed_feedback(self,feedback_path):
+        """Explicit UI import uses the same durable reviewed-feedback operation."""
+        path=Path(feedback_path).expanduser().resolve()
+        if not path.is_file():raise ValueError('Choose an existing reviewed feedback file')
+        config=self.directory/'review-requests'/(uuid.uuid4().hex+'.json')
+        write_json(config,{'feedback_path':str(path)})
+        return self.submit('import_feedback',config)
 
     def cancel(self,job_id):
         with self._mutex:
@@ -380,6 +397,26 @@ def _worker(request):
         result=run(config.get('preset'),output,evidence_directory=config.get('evidence_directory'),
             download_missing=config.get('download_missing',False),cache_directory=output.parents[2]/'source-cache',
             cancelled=cancelled,progress=progress)
+    elif kind=='prepare_review':
+        from .desktop_review_presets import prepare_demo,prepare_wicker
+        if set(config)-{'preset','evidence_directory'}:raise ValueError('Unsupported review preparation settings')
+        if config.get('preset')=='synthetic_demo':
+            if config.get('evidence_directory'):raise ValueError('The synthetic example does not use real source inputs')
+            result=prepare_demo(output)
+        elif config.get('preset')=='wicker':
+            result=prepare_wicker(output,evidence_directory=config.get('evidence_directory'),
+                cache_directory=output.parents[2]/'source-cache',cancelled=cancelled,progress=progress)
+        else:raise ValueError('Choose a supported review preset')
+    elif kind=='reconstruction_benchmark':
+        from .reconstruction_benchmark import run
+        model=None;active=request.get('active_model');model_path=config.get('model_path')
+        if model_path:
+            path=resolve_path(config_path,model_path);pin=file_hash(path);model=read_json(path,1000000)
+            if file_hash(path)!=pin:raise ValueError('Benchmark model changed during loading')
+        elif active:
+            model=read_json(active['path'],1000000)
+            if model.get('artifact_sha256')!=active['sha256']:raise ValueError('Active benchmark model changed')
+        result=run({k:v for k,v in config.items() if k!='model_path'},output,model=model)
     elif kind=='world_pilot':
         from .world_pilot import run
         result=run(config_path,output)
@@ -527,6 +564,42 @@ def self_test(data_directory=None,workers=2):
             if not (Path(area_result['output_directory'])/'park.mcworld').is_file():raise AssertionError('Retained Alton world missing')
             area_peak=area_result['peak_memory_mb']
         finally:area_runtime.close(wait=True)
+        # Exercise the same new entry points inside a frozen worker. The source
+        # and decisions here are explicitly synthetic, and stay outside user data.
+        from .desktop_review import load_session,bind_source,save_review
+        from .reconstruction_benchmark import reference_digest
+        review_runtime=DesktopRuntime(root/'review-memory',workers=workers)
+        try:
+            review_id=review_runtime.submit_review('synthetic_demo')
+            review_job=_wait(review_runtime,review_id,timeout=90)
+            if review_job['status']!='completed':raise RuntimeError(review_job.get('error') or review_job['status'])
+            prepared=review_job['result'];session=load_session(prepared['queue_path'],prepared['batch_path'])
+            for path in prepared['source_paths']:session=bind_source(session,path)
+            row=session['records'][0]
+            correction={'type':'dimension','component_id':row['candidate']['spec']['components'][0]['id'],
+                'axis':'x','value_m':8.5,'source_sha256':row['source_sha256'][0],'source_page':1}
+            draft=save_review(session,building_id=row['building_id'],candidate_sha256=row['candidate_sha256'],
+                outcome=None,review_basis=None,review_reference='',corrections=[correction],output_directory=root/'correction-draft')
+            if draft['feedback_path'] is not None:raise AssertionError('A correction draft created training feedback')
+            geometry={'footprint_m':[[0,0],[8,0],[8,5],[0,5]],'height_m':4,'position_m':[0,0,0]}
+            case={'id':'synthetic-exact','building_id':row['building_id'],'source_sha256':row['source_sha256'],
+                'reference':{'geometry':geometry,'review_basis':'independent_review',
+                    'review_reference':'Synthetic executable check; no real review claim'},'prediction':geometry}
+            missing={**case,'id':'synthetic-missing','prediction':None}
+            benchmark={'version':'reconstruction-benchmark-v1','dataset_kind':'synthetic','units':'metres',
+                'coordinate_frame':'synthetic_local_xyz_metres','cases':[case,missing]}
+            benchmark['reference_sha256']=reference_digest(benchmark)
+            benchmark_path=root/'synthetic-benchmark.json';write_json(benchmark_path,benchmark)
+            benchmark_id=review_runtime.submit('reconstruction_benchmark',benchmark_path)
+            benchmark_job=_wait(review_runtime,benchmark_id,timeout=90)
+            if benchmark_job['status']!='completed':raise RuntimeError(benchmark_job.get('error') or benchmark_job['status'])
+            summary=benchmark_job['result']['summary']
+            if summary['cases_within_thresholds']!=1 or summary['missing_predictions']!=1 or summary['all_cases_within_thresholds']:
+                raise AssertionError('Benchmark did not preserve missing geometry as a failed/unassessed case')
+            if review_runtime.store.summary()['feedback_records'] or review_runtime.store.summary()['checkpoints']:
+                raise AssertionError('Review preparation/draft or benchmark created learning labels/checkpoints')
+            review_peak=max(review_job['peak_memory_mb'],benchmark_job['peak_memory_mb'])
+        finally:review_runtime.close(wait=True)
         from .neural_learning import baseline,train,validate_model
         records=[]
         for phase in ('training','evaluation'):
@@ -545,6 +618,9 @@ def self_test(data_directory=None,workers=2):
         return {'status':'passed','isolated_worker':'passed','persistent_job_and_observation_restart':'passed','cpu_neural_training':'passed',
             'undersized_checkpoint_withheld':True,'native_terrain_world_and_saved_readback':'passed','observed_managed_peak_memory_mb':native_peak,
             'real_alton_area_preset_and_readback':'passed','real_alton_area_peak_managed_memory_mb':area_peak,
+            'source_linked_correction_draft':'passed','correction_draft_has_no_feedback':True,
+            'managed_reconstruction_benchmark':'passed','benchmark_missing_prediction_remains_unassessed':True,
+            'review_and_benchmark_peak_managed_memory_mb':review_peak,
             'synthetic_training_only':True,'trained_real_park_model':False}
 
 
