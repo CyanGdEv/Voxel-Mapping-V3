@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "original_pngs_checked": 8,
+  "projection_states": 24,
+  "shared_cap_visible_states": 12,
+  "shared_cap_hidden_states": 12,
+  "held_source_groups": 1,
+  "exact_original_plan_lines": 192,
+  "exact_source_and_projected_lines": 168,
+  "exact_json_download_sha256": "59fec64d0829e09adca26f22f5e3c92ff22113a3473f5379aa6f82856a2f1bde",
+  "javascript_errors": [],
+  "screenshot_sha256": "6808622671ac0f64110e1792dbc2d795a298a49febba19427e5ab1ee16141134"
+}

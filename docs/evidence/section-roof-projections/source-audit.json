@@ -1,0 +1,14 @@
+{
+  "checked": {
+    "independent_ambiguity_gates": 4,
+    "independent_original_plan_items": 8,
+    "independent_source_span_camera_equations": 24,
+    "independent_source_station_residuals": 72,
+    "independent_visible_face_sets": 24
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "59fec64d0829e09adca26f22f5e3c92ff22113a3473f5379aa6f82856a2f1bde",
+  "source_pyramid_sha256": "04509a9e3af68761a76c54fd81e19f1d2235a128df7ceae43c87848666997986",
+  "source_section_sha256": "1f05cc0756af068e550ede7cbbf65217dd155b7bbc04acca696f92f906c60bfc",
+  "status": "passed"
+}
