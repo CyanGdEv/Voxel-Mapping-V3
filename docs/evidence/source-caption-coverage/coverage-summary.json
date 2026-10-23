@@ -1,0 +1,481 @@
+{
+  "review_sha256": "0fd44d0df033e94efe7f26c9eb758668c8455e1d3b3bb3983a5d6abf4d0671f0",
+  "contract": {
+    "caption_parser_sha256": "6c2d54ffe033a9e2469b613bc18411dfb1e9157f2b4c8f2e3138fa37708e3130",
+    "implementation_sha256": "3a2ac390c7b2b78e143f32d3e4fc507f5afb70ec09529e389fc6ca8d1353b038",
+    "kernel_sha256": {
+      "voxel_mapper.drawing_side_references": "2c8115437d97ccef180a8b5ce09a5a7d10341ec6c580815bd0707c98dac3fdca",
+      "voxel_mapper.drawing_views": "ee11f77b01ff269684ff017c078380e15b3018a2bd182d6360a5852c4802af8b",
+      "voxel_mapper.glyph_visibility": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+    },
+    "max_checks": 100000,
+    "pymupdf_version": "1.28.2",
+    "source_catalogue_sha256": "3f3e22008656cf9177fa3d32d9a240cc5e1129275fcd8acf13247d5db869534c",
+    "source_pdf_sha256": [
+      "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+      "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+      "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+      "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+      "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c"
+    ],
+    "source_reference_review_sha256": "e95ae3969cc80c677ad8897816648f3e6427fd18343753623de7801847343424",
+    "version": "drawing-caption-inventory-v1"
+  },
+  "counts": {
+    "captions": 12,
+    "competing_caption_links": 0,
+    "held_source_references": 5,
+    "missing_captions": 0,
+    "source_documents": 5,
+    "source_pages": 5,
+    "unique_caption_links": 8
+  },
+  "checks": 9396,
+  "reference_links": [
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "272aa6f9fc92b2a6ac0d2493a6ad8f76a6d8bdf7a93b5cfff6521cfef345198b"
+      ],
+      "geometry_export_authorized": false,
+      "id": "0a7987a928fc79a524f9e94f18feb27138f601b001600da6f6aa8047f6948ceb",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "9f2fd045512c0a2db3038646f1293cd50f6659dfc7bf8431fa2d63f742ba52da",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "5b2e177055a17d1a8aa629b99f754406dfd495710f8348885c5229a7308e7636",
+        "source_reference_sha256": "2a5f7a9f01c3f0fe172ecfff4ba9f6b58141ef5c999e5336f8ff84de4f8cde7a",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "060f9a71d423fab454742ba932461a9df9a59be8561f5d152ce83308ff592a46",
+            "view_key_candidate": [
+              "2967",
+              26,
+              1
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          26,
+          1
+        ]
+      },
+      "source_reference_id": "5b2e177055a17d1a8aa629b99f754406dfd495710f8348885c5229a7308e7636",
+      "source_reference_sha256": "2a5f7a9f01c3f0fe172ecfff4ba9f6b58141ef5c999e5336f8ff84de4f8cde7a",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        26,
+        1
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "be4f497fbc4c7db26d3d345afd2ccc1d290b9422c05ca9c583ae049ae5c5bbe8"
+      ],
+      "geometry_export_authorized": false,
+      "id": "afdd621803cddaf1dfa19dd1ead41c8f78ae83ad2cbf946ce470e8680c2841ec",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "bd87b9e4930923efcc99fc14aa7fd6f9ca5d5c4aa6558df39007ab5e25f209d1",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "3dcc8286809831731073cce4f74d9e700f69a8a06cac3bedfa2c689591cc4e8e",
+        "source_reference_sha256": "f04b911288f87c76679fb5e326ca2ed8ecfa622bfecaab2e551b7c24eecbeb42",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "be0d944c8df25a6514f8bd6622ad718395ab8e125bcd7e3d24dda29e3e1be4ff",
+            "view_key_candidate": [
+              "2967",
+              26,
+              2
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          26,
+          2
+        ]
+      },
+      "source_reference_id": "3dcc8286809831731073cce4f74d9e700f69a8a06cac3bedfa2c689591cc4e8e",
+      "source_reference_sha256": "f04b911288f87c76679fb5e326ca2ed8ecfa622bfecaab2e551b7c24eecbeb42",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        26,
+        2
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "241f50e4e5eb4d25916d5786ecbba700fb163afc390c590e6cef88163d0dbabf"
+      ],
+      "geometry_export_authorized": false,
+      "id": "a280b63999824ca568ea4b01aa153c9469c301bf572d680637e9bb0ddc6d978d",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "6517fe387216fbbe8cc245862e69c79b5771d2475fe9b2a22be8903e319b9881",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "752d921e3d5f0e2a12f1cf62072911510a7aa3af72bd4b30b26e7ed036612c25",
+        "source_reference_sha256": "f6b551500c9ee9d4bec3f7a808369ae22c61243edd9343715c38bd955c11c870",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "207e8b2031c6982cb171200241585266c9f4cd8962a2093e7abcc2d76ebd195e",
+            "view_key_candidate": [
+              "2967",
+              26,
+              3
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          26,
+          3
+        ]
+      },
+      "source_reference_id": "752d921e3d5f0e2a12f1cf62072911510a7aa3af72bd4b30b26e7ed036612c25",
+      "source_reference_sha256": "f6b551500c9ee9d4bec3f7a808369ae22c61243edd9343715c38bd955c11c870",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        26,
+        3
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [],
+      "geometry_export_authorized": false,
+      "id": "980fc6bcc5839bbdb7b1260a682cfb5f0a3263944c1b172125bc06386da1caa5",
+      "next_requirement": "source_reference_visibility_or_identity",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "2ce50e6d871894308238d766aff6b3ecb0b38fb2df198f6cedc28c73f63d561d",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "2868d76df631b32197fcce3a97d4121b7fc347fbc9833fcdc789a09c76230227",
+        "source_reference_sha256": "2ebe4d435bba126a738e58d5f38b48e1edebb7c53fce96087a211c7cc2f55991",
+        "status": "source_reference_visibility_or_identity_held",
+        "target_candidates": [],
+        "target_view_key_candidate": null
+      },
+      "source_reference_id": "2868d76df631b32197fcce3a97d4121b7fc347fbc9833fcdc789a09c76230227",
+      "source_reference_sha256": "2ebe4d435bba126a738e58d5f38b48e1edebb7c53fce96087a211c7cc2f55991",
+      "status": "source_reference_visibility_or_identity_held",
+      "target_view_key_candidate": null
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "10e6b14a1a9029464eefacf66fe7cda83736a760615a29eae288bc6493758fc2"
+      ],
+      "geometry_export_authorized": false,
+      "id": "fe13a5dbf22783a1ba61fd034532da48fe9b304131f8256c1af9c91d9d90a642",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "e2a2a5b3d03b245887e7af3fa6718e947961275ae3dc36def28c5b1a1b134971",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "95af14885f576c7efac78320f3f5c5c5d338b701b90da1190f0b31ef4090c1ae",
+        "source_reference_sha256": "8092601e75ab1924651a633a2a417a0ce66ebc5ead61e18c0e418a3da9251725",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+            "label_sha256": "0a2658afed2bf4e1de73acc3bfffed48a789c2b0916eea669d5c6786e662f76c",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "6971d91366ff05a2ed044d10521e313012f8f8c71cf2fae2b58abc7c3d065a34",
+            "view_key_candidate": [
+              "2967",
+              30,
+              5
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          30,
+          5
+        ]
+      },
+      "source_reference_id": "95af14885f576c7efac78320f3f5c5c5d338b701b90da1190f0b31ef4090c1ae",
+      "source_reference_sha256": "8092601e75ab1924651a633a2a417a0ce66ebc5ead61e18c0e418a3da9251725",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        30,
+        5
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "2b1cd35c5801b8aeb47a5cd4845d2c10e02f9afeae03ea11807109d2c3735a6f"
+      ],
+      "geometry_export_authorized": false,
+      "id": "01a5a87bf01894fe5d791fde635f213a8a733480e2c5b1cefd04f875a5da287a",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "998c7983806abbb0feda6293a448ef0976fec609d443dc13255397870328a429",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "29d76d3aea8b5d76da7fe2677ae16527e53894e0b3f57311d35e96d406830b70",
+        "source_reference_sha256": "06e0896349069f314ff17782fc4e4f3037451f40efd263ff5181d2216d380ceb",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+            "label_sha256": "a9cf69591598b9b86b0160f863719bc83f6778956d95ef0a4230f7b0d56d2fab",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "b79d320ed85a1718a7f4432d461689d8c7c748883acdf5be316fab767ad6cce2",
+            "view_key_candidate": [
+              "2967",
+              30,
+              6
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          30,
+          6
+        ]
+      },
+      "source_reference_id": "29d76d3aea8b5d76da7fe2677ae16527e53894e0b3f57311d35e96d406830b70",
+      "source_reference_sha256": "06e0896349069f314ff17782fc4e4f3037451f40efd263ff5181d2216d380ceb",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        30,
+        6
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [],
+      "geometry_export_authorized": false,
+      "id": "634a7cca4f260b601282addc6b776d8c218de10542e24737710686a51734fbd5",
+      "next_requirement": "source_reference_visibility_or_identity",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "5567add39bb1e8173eaf040a7af72e1e7f493ebe088f36f99d61b4570f196475",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "ec817c4eb496d6d2a162cc349664272aff5f09aaa2c958f369e7c59e7759a759",
+        "source_reference_sha256": "1050ad223bb48c3990417fa94ec64b9cb08f33d07f4cfe2b97bf103f53792c5c",
+        "status": "source_reference_visibility_or_identity_held",
+        "target_candidates": [],
+        "target_view_key_candidate": null
+      },
+      "source_reference_id": "ec817c4eb496d6d2a162cc349664272aff5f09aaa2c958f369e7c59e7759a759",
+      "source_reference_sha256": "1050ad223bb48c3990417fa94ec64b9cb08f33d07f4cfe2b97bf103f53792c5c",
+      "status": "source_reference_visibility_or_identity_held",
+      "target_view_key_candidate": null
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "83ca835e15c86668a05ead46a9c047f7abdbc436d0b07523dbbabca008c0b7f1"
+      ],
+      "geometry_export_authorized": false,
+      "id": "c6645020af29d09ebceb737f1fbca07385dd9a165c530ec88c91605166caacf1",
+      "next_requirement": "physical_correspondence_and_dimensions",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "a1100b0a0b84ef83cf83b82348445abf33f42108375279ce3736c2a840d6bf2d",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "a97beaded00e47dd9439deb0202a9a7cc5c275d1bebb2262b127a6d76d3785f8",
+        "source_reference_sha256": "67a5dc49b2e745031076a6d79613c33fa3142ca761a9871ce39de5f96c6146ca",
+        "status": "unique_source_view_reference_candidate",
+        "target_candidates": [
+          {
+            "document_sha256": "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+            "label_sha256": "62ff57fb4136d1a7da0f3b06e14bbed0cbe020fe85bdf8bb87c45983e889ccee",
+            "page": 1,
+            "physical_building_identity_verified": false,
+            "view_id": "3fc1ac673b30798404df08f4090f6833e9c5ee0356b5e152c95eecdba975461f",
+            "view_key_candidate": [
+              "2967",
+              30,
+              8
+            ]
+          }
+        ],
+        "target_view_key_candidate": [
+          "2967",
+          30,
+          8
+        ]
+      },
+      "source_reference_id": "a97beaded00e47dd9439deb0202a9a7cc5c275d1bebb2262b127a6d76d3785f8",
+      "source_reference_sha256": "67a5dc49b2e745031076a6d79613c33fa3142ca761a9871ce39de5f96c6146ca",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        30,
+        8
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "cfc0c0fbe09acb6a07574e71d9df1b81478387b45f5ac909b7343b2a6216a8ae"
+      ],
+      "geometry_export_authorized": false,
+      "id": "6de258e19dbfe6c7fe87816ad27afd9206c5e9460f2743589d7e709f278c47ef",
+      "next_requirement": "artwork_assignment_and_scale",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "f439dff12b36008a9d368ed40220bbe3ef1709afc9d0c6b75684fbf519e2d03b",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "33239e89b1c26ce9c77d0743a4b5a20520a5e3d53af7e9946da20a8a0157331d",
+        "source_reference_sha256": "6dae6784ffd8f71903fa6e4dc701692c1130a592fa159b8733a2e79afb52f805",
+        "status": "missing_source_view_target",
+        "target_candidates": [],
+        "target_view_key_candidate": [
+          "2967",
+          42,
+          9
+        ]
+      },
+      "source_reference_id": "33239e89b1c26ce9c77d0743a4b5a20520a5e3d53af7e9946da20a8a0157331d",
+      "source_reference_sha256": "6dae6784ffd8f71903fa6e4dc701692c1130a592fa159b8733a2e79afb52f805",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        42,
+        9
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [],
+      "geometry_export_authorized": false,
+      "id": "5ebe7446bf2d4d057947ac595160dcca1fc1359415168cf4fa6658c5016c1189",
+      "next_requirement": "source_reference_visibility_or_identity",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "a554376a33b8c598f372d92f386b5bad5704bf8b8dd02ade9b1a376b5163f84f",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "39a723bd6a9ae1cb0a7f9203d075f6b4f51ea105dd891a0f07734db8c12c2e80",
+        "source_reference_sha256": "1375623ab30b4b35bd3d879df7c52954ef1244f49e2a76c3e87ab298ffb3c65d",
+        "status": "source_reference_visibility_or_identity_held",
+        "target_candidates": [],
+        "target_view_key_candidate": null
+      },
+      "source_reference_id": "39a723bd6a9ae1cb0a7f9203d075f6b4f51ea105dd891a0f07734db8c12c2e80",
+      "source_reference_sha256": "1375623ab30b4b35bd3d879df7c52954ef1244f49e2a76c3e87ab298ffb3c65d",
+      "status": "source_reference_visibility_or_identity_held",
+      "target_view_key_candidate": null
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [],
+      "geometry_export_authorized": false,
+      "id": "d80291de5e22f56e49735d8fcfc6919d00561bda7fb55f02aa706eb124209d8c",
+      "next_requirement": "source_reference_visibility_or_identity",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "fae7e2754258a553947254cc08f8ab644ff7dc855ba3587d08734fe67260a176",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "4be4c8a45a44afef7df22857f4cedc53e5a9a5ad45b5c5e8e11cc1c7c9596823",
+        "source_reference_sha256": "20b1ed670299d1a88121aad67a8a1154ef034eb034ffb6052b8b27e297517e3a",
+        "status": "source_reference_visibility_or_identity_held",
+        "target_candidates": [],
+        "target_view_key_candidate": null
+      },
+      "source_reference_id": "4be4c8a45a44afef7df22857f4cedc53e5a9a5ad45b5c5e8e11cc1c7c9596823",
+      "source_reference_sha256": "20b1ed670299d1a88121aad67a8a1154ef034eb034ffb6052b8b27e297517e3a",
+      "status": "source_reference_visibility_or_identity_held",
+      "target_view_key_candidate": null
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [
+        "7f6766a85a8eb456c40cb8bc889934b7d5d7e8fb5eb42160b37e15875655bd51"
+      ],
+      "geometry_export_authorized": false,
+      "id": "352a5cd4c3a3c61c8e129178e3ba710ed74711a1e094023591ff647eb3424932",
+      "next_requirement": "artwork_assignment_and_scale",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "672583bedbf108ea60d1b8947a61fad4f9035492af458b01228f9f6510361b45",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "6b0453fdd05bf78841810b751aa9a19c85c55d6c56f5377c7a7cbf8e5c138019",
+        "source_reference_sha256": "301185a255e9f5b14f242f25ad129f8164a1fbc8a4ebd99869e8b204e4467933",
+        "status": "missing_source_view_target",
+        "target_candidates": [],
+        "target_view_key_candidate": [
+          "2967",
+          42,
+          12
+        ]
+      },
+      "source_reference_id": "6b0453fdd05bf78841810b751aa9a19c85c55d6c56f5377c7a7cbf8e5c138019",
+      "source_reference_sha256": "301185a255e9f5b14f242f25ad129f8164a1fbc8a4ebd99869e8b204e4467933",
+      "status": "unique_source_caption_candidate",
+      "target_view_key_candidate": [
+        "2967",
+        42,
+        12
+      ]
+    },
+    {
+      "artwork_assignment_verified": false,
+      "caption_candidates": [],
+      "geometry_export_authorized": false,
+      "id": "158fc8ea45e2c67fab0dc506b16fd0728b72a3c271d3ef1e1caa4b4cf903da5d",
+      "next_requirement": "source_reference_visibility_or_identity",
+      "physical_identity_verified": false,
+      "previous_measurement_link": {
+        "geometry_export_authorized": false,
+        "id": "ac35b75065d016b691968efbbce755461f6021ef939be4cb54dd5f9af9141d91",
+        "physical_building_identity_verified": false,
+        "source_reference_id": "433aecdab709c630077a058c0ea907dd42a4a6cae4a12ce6416b93fe8e6c7c3d",
+        "source_reference_sha256": "31b722afab5211ddec2219ae434171a410bb696b59939c6e7ce58207b84b7bbf",
+        "status": "source_reference_visibility_or_identity_held",
+        "target_candidates": [],
+        "target_view_key_candidate": null
+      },
+      "source_reference_id": "433aecdab709c630077a058c0ea907dd42a4a6cae4a12ce6416b93fe8e6c7c3d",
+      "source_reference_sha256": "31b722afab5211ddec2219ae434171a410bb696b59939c6e7ce58207b84b7bbf",
+      "status": "source_reference_visibility_or_identity_held",
+      "target_view_key_candidate": null
+    }
+  ],
+  "unchanged_fascia_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "section_inspector_sha256": "d938eff70883653708be720de487ee21085fe2382585dc6923557c7cd3fdbe27",
+  "world_geometry_additions": 0,
+  "shared_cap_closure_authorized": false
+}

@@ -599,3 +599,9 @@ The [original-contrast fascia review](docs/source-gradient-fascia.md) recovers
 fascia-edge support at both ink thresholds and both contrast cutoffs. It adds a
 strip on one observed perimeter edge; the opposite shared-cap interface stays
 open, and earlier literal-column holds remain unchanged.
+
+The [source-caption coverage review](docs/source-caption-coverage.md) finds
+printed elevation targets independently of artwork crops. All eight readable
+roof references now have source-caption candidates; two still need usable
+artwork assignments. Revised site sections are recovered for the next interface
+check, with original visibility holds and shared-cap closure still unresolved.
