@@ -622,3 +622,9 @@ original ridge endpoints against whole section strokes. AA and CC each retain
 two conditional orientations, both showing the shared cap. GG has no supported
 whole ridge match in the checked region. All parent cameras are retained;
 physical identity, reflection, datum and join surfaces remain unresolved.
+
+The [original site-roof correspondence review](docs/site-roof-correspondence.md)
+matches the architectural roof and whole adjoining ridge to a source-only roof
+graph on the revised site plan. One rotation and one reflection remain supported
+at the original scales. The nearby Station label supplies context; physical
+identity, section direction, geographic placement and wall closure stay held.

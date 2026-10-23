@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "original_pngs_checked": 4,
+  "registration_states": 8,
+  "supported_registration_states": 2,
+  "supported_reflected_states": 1,
+  "held_registration_states": 6,
+  "section_camera_states": 8,
+  "exact_original_site_edge_displays": 132,
+  "exact_original_architectural_edge_displays": 72,
+  "exact_projected_compound_edge_displays": 72,
+  "exact_json_download_sha256": "a17786c5ac39f98b6b391fd50d19be7cfe8da5c953565a62edd6693c6e13a76e",
+  "javascript_errors": [],
+  "screenshot_sha256": "6b9eab94a460371a7cbfb2eeb93226bb9ca10b42b9208329a1e1a8c2a45383de"
+}

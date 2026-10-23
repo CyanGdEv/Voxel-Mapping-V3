@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "parent_commit": "16f9634d74c4e15aa0b921f774e1b2d3809235b6",
+  "parent_ci": {
+    "run_id": 39975923592,
+    "run_number": 650,
+    "conclusion": "success"
+  },
+  "validation_scope": "82 targeted tests, fresh original-source replay, independent original primitive/RGB/registration audit and standalone browser review; complete suite runs separately in GitHub CI",
+  "targeted_tests": 82,
+  "new_site_correspondence_tests": 20,
+  "counts": {
+    "original_site_line_items": 798,
+    "original_site_pixel_checks": 18,
+    "original_site_roof_candidates": 1,
+    "registrations": 8,
+    "section_site_camera_candidates": 8,
+    "source_context_words": 2,
+    "source_pages": 1,
+    "supported_registrations": 2
+  },
+  "checks": 147039,
+  "review_sha256": "a17786c5ac39f98b6b391fd50d19be7cfe8da5c953565a62edd6693c6e13a76e",
+  "code_sha256": {
+    "voxel_mapper/site_roof_correspondence.py": "20a71432aa74c6b52b21314f7879a68a469746c86b17086bc608ef86fc90ba24",
+    "voxel_mapper/site_roof_evidence.py": "bf06b1d434cb31e970ee42fd6843f9f55be944261ca2baf2cd9f46b4a9cc4a46",
+    "scripts/build_site_roof_evidence.py": "d5357d0ed68d610483491986208400c48efd813eae79630a88e2edccadfa186b",
+    "scripts/audit_site_roof_evidence.py": "5f33f9f4cc9bfa9a4185cf9aab5a7874b11c3b91c686cca0fa24d588f707dd6b",
+    "scripts/render_site_roof_evidence.py": "e373eba023351f210c7d5ef2e9f4963f2dca97f15c5bd195c6b9469761c1c35b",
+    "tests/test_site_roof_evidence.py": "201ef45e2ee2991fef3518734c10ae31036a42048a7267fae85adfb653a861e0"
+  },
+  "html_sha256": "f6fa67cbdcc44c6346d81b10d2dd272ab27c574151c5c2e695acc82ef37b73fe",
+  "screenshot_sha256": "6b9eab94a460371a7cbfb2eeb93226bb9ca10b42b9208329a1e1a8c2a45383de",
+  "world_geometry_additions": 0,
+  "physical_component_identity_verified": false,
+  "geographic_registration_verified": false,
+  "wall_closure_authorized": false
+}
