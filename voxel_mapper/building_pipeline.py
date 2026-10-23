@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 from . import building_learning as learning
+from . import neural_learning
 from .building_spec import build, from_study, digest
 from .generation_cycles import atomic_json
 from .study_mesh_export import write_glb
@@ -27,7 +28,10 @@ def run(job, output, model=None, exploratory=False):
     if native_mode not in ('none','cells','world'):raise ValueError('Supported native output mode required')
     quality_policy=job.get('native_quality','report')
     if quality_policy not in ('report','require_pass'):raise ValueError('Supported native quality policy required')
-    model = model or learning.baseline(); learning.validate_model(model)
+    model = model or learning.baseline()
+    if not isinstance(model,dict):raise ValueError('Versioned building ranker checkpoint required')
+    ranker = neural_learning if model.get('version')==neural_learning.VERSION else learning
+    ranker.validate_model(model)
     if model['iteration'] > 0 and not model['production_eligible'] and not exploratory:
         raise ValueError('Unpromoted learned checkpoint requires explicit exploratory mode')
     root = Path(output)
@@ -48,7 +52,7 @@ def run(job, output, model=None, exploratory=False):
                   'park_world_blocks_added': 0}
         try:
             candidates = building['candidates']
-            ranking = learning.rank(candidates, model)
+            ranking = ranker.rank(candidates, model)
             atomic_json(directory/'ranking.json', ranking)
             if ranking['selected_id'] is not None:
                 # A ranker cannot authorize invalid geometry. If the preferred

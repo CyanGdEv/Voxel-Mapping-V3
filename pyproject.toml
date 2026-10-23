@@ -11,6 +11,7 @@ requires-python = ">=3.11"
 dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3", "rasterio>=1.4,<1.5", "numpy>=1.26,<2", "amulet-core==1.9.49", "beautifulsoup4>=4.12,<5", "pypdf>=6,<7", "fonttools>=4.50,<5", "overturemaps==1.0.2", "pyarrow>=15.0.2,<20", "laspy>=2.7,<3", "lazrs>=0.8,<1", "Pillow>=10,<13"]
 
 [project.scripts]
+voxel-mapper-desktop = "voxel_mapper.desktop_app:main"
 voxel-building-data = "voxel_mapper.building_pipeline:main"
 voxel-mapper = "voxel_mapper.cli:main"
 voxel-heritage = "voxel_mapper.reconstruction.heritage:main"
@@ -42,6 +43,7 @@ voxel-planning-bundle = "voxel_mapper.planning_bundle:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 
 [project.optional-dependencies]
+desktop = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2", "psutil>=6,<8", "pyinstaller>=6.10,<7"]
 planning = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2"]
 
 [tool.setuptools.packages.find]

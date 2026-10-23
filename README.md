@@ -1,3 +1,12 @@
+## Windows desktop and CPU learning
+
+The [Windows desktop application](docs/windows-desktop-learning.md) runs world
+jobs in isolated background workers, remembers evidence and failures locally,
+and trains a small neural candidate ranker from independently reviewed feedback.
+Its default profile targets 6 GB RAM with no GPU. Windows builds package the
+runtime into `VoxelMapperV3.exe`; optional local-model reasoning is separate.
+Full park autonomy and a trained general drawing/geometry model remain unfinished.
+
 ## Small-area world prototype
 
 Run `python -m voxel_mapper.world_pilot --job examples/alton-world-pilot-job.json --output output/alton-world-pilot`
