@@ -6,6 +6,15 @@ Windows workflow builds a self-contained executable distribution and exercises
 its native libraries, worker processes, saved-world readback and actual widgets.
 The application does not require a separate Python installation.
 
+The **Review and accuracy** tab now opens source-linked building review and
+correction windows, prepares the real provisional Wicker study or an offline
+synthetic demonstration, and runs geometric benchmarks. See the
+[visual review guide](desktop-visual-review.md). Correction drafts are retained
+without training labels; importing an independently reviewed original-candidate
+decision is explicit. Benchmarks measure supplied geometry against frozen
+references and check declared model lineage; a completed run is not proof of
+correct geometry or generalization.
+
 This is the desktop and learning foundation for the reconstruction prototype.
 The neural model learns which supported building interpretation to prioritize.
 General drawing understanding, verified complete park reconstruction and an AI

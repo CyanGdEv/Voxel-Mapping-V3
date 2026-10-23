@@ -24,11 +24,13 @@ on:
       - 'evidence/wicker-shop-*.json'
       - 'voxel_mapper/neural_learning.py'
       - 'voxel_mapper/local_reasoning.py'
+      - 'voxel_mapper/reconstruction_benchmark.py'
       - 'scripts/windows_desktop_entry.py'
       - 'packaging/**'
       - 'tests/test_desktop*.py'
       - 'tests/test_neural_learning.py'
       - 'tests/test_neural_building_pipeline.py'
+      - 'tests/test_reconstruction_benchmark.py'
       - 'pyproject.toml'
       - '.github/workflows/windows-desktop.yml'
 
@@ -62,6 +64,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Local reasoning tests failed' }
           python -m unittest discover -s tests -p 'test_neural_building_pipeline.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Neural building pipeline tests failed' }
+          python -m unittest discover -s tests -p 'test_reconstruction_benchmark.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Reconstruction benchmark tests failed' }
       - name: Install optional OCR and PDF helpers
         if: ${{ github.event_name == 'pull_request' || inputs.include_ocr_tools }}
         shell: pwsh
@@ -103,6 +107,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --data-dir "$env:RUNNER_TEMP/voxel-desktop-ui" --ui-smoke-test build/desktop-validation/ui 2>&1 | Tee-Object build/desktop-validation/ui.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen UI smoke test failed' }
+      - name: Exercise the frozen source and geometry correction window
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --review-smoke-test build/desktop-validation/review-ui 2>&1 | Tee-Object build/desktop-validation/review-ui.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen geometry review UI smoke test failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |

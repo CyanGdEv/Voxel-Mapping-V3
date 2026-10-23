@@ -1,0 +1,22 @@
+{
+  "version": "desktop-review-ui-smoke-v1",
+  "status": "passed",
+  "dataset_kind": "synthetic",
+  "training_labels_generated": 0,
+  "physical_acceptance": false,
+  "source_page_rendered": true,
+  "geometry_displayed": true,
+  "source_and_geometry_frames": "separate",
+  "geometry_edges": 48,
+  "source_screenshot": "review-source.png",
+  "controls_reachable_by_scrolling": true,
+  "draft_saved": true,
+  "feedback_import_enabled": false,
+  "corrections_path": "/workspace/scratch/visual-review-delivery-ui/reviews/f3a512fe1a824cddbe2edf8d00983fe7/corrections.json",
+  "window_size": [
+    940,
+    650
+  ],
+  "controls_screenshot": "review-controls.png",
+  "saved_draft_reopened_in_fresh_window": true
+}

@@ -1,0 +1,255 @@
+{
+  "version": "reconstruction-benchmark-v1",
+  "description": "Synthetic metric demonstration: exact, displaced and missing predictions; no real park accuracy claim.",
+  "dataset_kind": "synthetic",
+  "coordinate_frame": "EPSG:27700 horizontal; ODN vertical",
+  "units": "metres",
+  "cases": [
+    {
+      "id": "synthetic-exact",
+      "building_id": "synthetic-exact-building",
+      "source_sha256": [
+        "5af7c663df7fa7a806914c045968d542406a4b9506d3c2361f547f5393e4a279"
+      ],
+      "reference": {
+        "geometry": {
+          "footprint_m": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              0,
+              8
+            ]
+          ],
+          "height_m": 4.0,
+          "position_m": [
+            410000.0,
+            345000.0,
+            120.0
+          ],
+          "openings_m": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        },
+        "review_basis": "independent_review",
+        "review_reference": "Synthetic engineering fixture only; no real planning evidence or external building review."
+      },
+      "prediction": {
+        "footprint_m": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            10,
+            8
+          ],
+          [
+            0,
+            8
+          ]
+        ],
+        "height_m": 4.0,
+        "position_m": [
+          410000.0,
+          345000.0,
+          120.0
+        ],
+        "openings_m": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "synthetic-shifted",
+      "building_id": "synthetic-shifted-building",
+      "source_sha256": [
+        "a4c54e67caee2e07f476487ec7372cad034a8d8e69eb4d0fbdfecaef435a83ce"
+      ],
+      "reference": {
+        "geometry": {
+          "footprint_m": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              0,
+              8
+            ]
+          ],
+          "height_m": 4.0,
+          "position_m": [
+            410000.0,
+            345000.0,
+            120.0
+          ],
+          "openings_m": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        },
+        "review_basis": "independent_review",
+        "review_reference": "Synthetic engineering fixture only; no real planning evidence or external building review."
+      },
+      "prediction": {
+        "footprint_m": [
+          [
+            1,
+            0
+          ],
+          [
+            11,
+            0
+          ],
+          [
+            11,
+            8
+          ],
+          [
+            1,
+            8
+          ]
+        ],
+        "height_m": 4.75,
+        "position_m": [
+          410002.0,
+          345000.0,
+          120.0
+        ],
+        "openings_m": []
+      }
+    },
+    {
+      "id": "synthetic-missing",
+      "building_id": "synthetic-missing-building",
+      "source_sha256": [
+        "b94ca784a3ce3f5d12c62019165b1855197b1b4baf4949fbcc5033bd2e0bc888"
+      ],
+      "reference": {
+        "geometry": {
+          "footprint_m": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              8
+            ],
+            [
+              0,
+              8
+            ]
+          ],
+          "height_m": 4.0,
+          "position_m": [
+            410000.0,
+            345000.0,
+            120.0
+          ],
+          "openings_m": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        },
+        "review_basis": "independent_review",
+        "review_reference": "Synthetic engineering fixture only; no real planning evidence or external building review."
+      },
+      "prediction": null
+    }
+  ],
+  "reference_sha256": "6d1d2316c548844e63827d51429565a229e97a6500f4d1a8f41ec79cbd1821e5"
+}

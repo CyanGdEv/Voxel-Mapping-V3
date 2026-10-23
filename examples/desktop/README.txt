@@ -6,6 +6,14 @@ or bounded checksum-pinned council downloads. Open world and Compare geometry
 use the selected completed job. The jobs below remain in Advanced jobs / learning.
 
 Start without external data:
+Open Review and accuracy and choose Try correction demo for the synthetic
+source drawing and geometry editor. Review Wicker building prepares a real
+provisional building review using matching PDFs from your folder/cache.
+Correction drafts create no training labels. Reviewed outcomes apply to the
+original candidate and require an external reference plus explicit import.
+Choose reconstruction-benchmark-synthetic.json to exercise accuracy reporting;
+its exact, wrong and missing geometry cases are all explicitly synthetic.
+
 - Select "Inspect retained evidence" and inspect-evidence.json. This adds an
   explicitly synthetic observation to persistent memory, not a training label.
 - Select "Building batch / local previews" and building-preview.json. This

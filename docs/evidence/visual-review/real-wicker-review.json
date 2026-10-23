@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "dataset_kind": "real_retained_provisional",
+  "training_labels_generated": 0,
+  "physical_acceptance": false,
+  "managed_desktop_submission": true,
+  "automatic_review_window": true,
+  "original_pdfs_bound": 3,
+  "source_sha256": [
+    "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6"
+  ],
+  "local_components": 3,
+  "displayed_edges": 75,
+  "source_page_rendered": true,
+  "physical_gates_preserved": true,
+  "feedback_records": 0,
+  "queue_path": "/workspace/scratch/visual-review-real-wicker-ui/memory/jobs/fe6fc8a990a64909b1a54a71bbbbf74d/output/feed/review-queue.json",
+  "peak_managed_memory_mb": 75.38671875,
+  "screenshot": "wicker-source-and-geometry.png"
+}
