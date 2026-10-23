@@ -1,0 +1,15 @@
+{
+  "checked": {
+    "independent_context_word_items": 2,
+    "independent_correspondence_gates": 8,
+    "independent_original_rgb_neighbourhoods": 558,
+    "independent_original_site_edges": 798,
+    "independent_orthogonal_registrations": 8,
+    "independent_section_camera_bridges": 8,
+    "independent_whole_ridge_endpoint_orders": 12768
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "a17786c5ac39f98b6b391fd50d19be7cfe8da5c953565a62edd6693c6e13a76e",
+  "source_adjoining_sha256": "c027a6f980f3ea064f49ee2443312afa6813beb75701be924f1b815f947f2114",
+  "status": "passed"
+}
