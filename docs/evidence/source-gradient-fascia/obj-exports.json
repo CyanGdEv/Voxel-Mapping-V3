@@ -1,0 +1,385 @@
+{
+  "all_vertices_and_triangles_round_trip_identical": true,
+  "models": [
+    {
+      "file": "80c184c214dda81ec161003e89c0ee465610c1ae973842baeb7e4d8e6034c392.obj",
+      "model_id": "80c184c214dda81ec161003e89c0ee465610c1ae973842baeb7e4d8e6034c392",
+      "observed_edge_index": 2,
+      "sha256": "1478c842746c48dce431ecda27e3dc1ac54f5c6d3b606574db1b5d3c74067f01",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "b8845ed6a2f68e130254371c233906ac7995c1478185ff98210e503b612247ca.obj",
+      "model_id": "b8845ed6a2f68e130254371c233906ac7995c1478185ff98210e503b612247ca",
+      "observed_edge_index": 2,
+      "sha256": "5ec513da776f3e3b4907639bece8e0c4bd4dadf4b005486ac0b135ddcaf838b5",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "4ee570474c066d3d86ce64b36f0c777d603c3e7fb29ac97100887f8c9a8fbfcc.obj",
+      "model_id": "4ee570474c066d3d86ce64b36f0c777d603c3e7fb29ac97100887f8c9a8fbfcc",
+      "observed_edge_index": 2,
+      "sha256": "c81f6cf2d3b0dcb7bfa2c9824ee48773545aa05d8c20d866c1569c76b424dd8a",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "b5ff5624a20f3b98e4a58982bc46a4ddbbf9858cfc5a7f2e2f99b78f6095d89d.obj",
+      "model_id": "b5ff5624a20f3b98e4a58982bc46a4ddbbf9858cfc5a7f2e2f99b78f6095d89d",
+      "observed_edge_index": 2,
+      "sha256": "985d4a38185b6d59b1f67a408de3ac4e7a0d4e9335b421f9f5ceca4e5a418a2f",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "f52530cd8fa7d66625aa243415ef74332cfebb4396b019fcdc361eb14c325e67.obj",
+      "model_id": "f52530cd8fa7d66625aa243415ef74332cfebb4396b019fcdc361eb14c325e67",
+      "observed_edge_index": 2,
+      "sha256": "5b06bcaca948fc2d3afec08244ba93ba85e2b2ac81af2059b7fc6dd5a4598801",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "ab8e6dcddfcac9309107b693c6cb3f610192bc8471b8c2298da99811c1bc1610.obj",
+      "model_id": "ab8e6dcddfcac9309107b693c6cb3f610192bc8471b8c2298da99811c1bc1610",
+      "observed_edge_index": 2,
+      "sha256": "4f078bcd366eb29168a31d37793ee5aee656d405d6456f79181425f26809b484",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "c755f0096418a6efeec151f12112ea9c85a91d8af90e0bb6abccc0950c3510e4.obj",
+      "model_id": "c755f0096418a6efeec151f12112ea9c85a91d8af90e0bb6abccc0950c3510e4",
+      "observed_edge_index": 2,
+      "sha256": "16d85c4dd653520910b635ca06d9c8fd8cf392c9793cbc51946994161b285bbc",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "a103f5f03f298699f96619a00f3ddda02fa0d5c9ac44986fa2baff8fc053a697.obj",
+      "model_id": "a103f5f03f298699f96619a00f3ddda02fa0d5c9ac44986fa2baff8fc053a697",
+      "observed_edge_index": 2,
+      "sha256": "7751f4449df41d683e760f76fd90bee108d05f12b7213ca1563680512086aa06",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "c1ae172a0fb780c645be6f1bb7473a8d145a4f79bb8dbfe861cb2da66204b981.obj",
+      "model_id": "c1ae172a0fb780c645be6f1bb7473a8d145a4f79bb8dbfe861cb2da66204b981",
+      "observed_edge_index": 2,
+      "sha256": "55e4a2937afc8d26962fe3eeac92a6816bee08b979ce63064f14306eb737421f",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "f8a6dfd2b93fdc5afe074c4997c7078694cafc843af7bf54c83c39b943becd41.obj",
+      "model_id": "f8a6dfd2b93fdc5afe074c4997c7078694cafc843af7bf54c83c39b943becd41",
+      "observed_edge_index": 2,
+      "sha256": "1478c842746c48dce431ecda27e3dc1ac54f5c6d3b606574db1b5d3c74067f01",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "f8d556172f0aabbd49fc9b68f93d939bcfcd805d91c517a6de545ddd7d108c6e.obj",
+      "model_id": "f8d556172f0aabbd49fc9b68f93d939bcfcd805d91c517a6de545ddd7d108c6e",
+      "observed_edge_index": 2,
+      "sha256": "5ec513da776f3e3b4907639bece8e0c4bd4dadf4b005486ac0b135ddcaf838b5",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "7b69944909fbf6cedb17406b6cb9408fb46adf571d5bd7c6acd49067c1238248.obj",
+      "model_id": "7b69944909fbf6cedb17406b6cb9408fb46adf571d5bd7c6acd49067c1238248",
+      "observed_edge_index": 2,
+      "sha256": "c81f6cf2d3b0dcb7bfa2c9824ee48773545aa05d8c20d866c1569c76b424dd8a",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "3b3ee67dcab9737526b4cfa34c56ff1b29c5ae5f72714871bb157577e3f3dcb4.obj",
+      "model_id": "3b3ee67dcab9737526b4cfa34c56ff1b29c5ae5f72714871bb157577e3f3dcb4",
+      "observed_edge_index": 2,
+      "sha256": "985d4a38185b6d59b1f67a408de3ac4e7a0d4e9335b421f9f5ceca4e5a418a2f",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "af20a985e32d462d5e4836ab3fa786b926088eac6370d7f0595984ea41b64c6f.obj",
+      "model_id": "af20a985e32d462d5e4836ab3fa786b926088eac6370d7f0595984ea41b64c6f",
+      "observed_edge_index": 2,
+      "sha256": "5b06bcaca948fc2d3afec08244ba93ba85e2b2ac81af2059b7fc6dd5a4598801",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "90c1698268159a907d5e3ce0e29a0aafbed872c59f6d4464b5aea61dd76dd80d.obj",
+      "model_id": "90c1698268159a907d5e3ce0e29a0aafbed872c59f6d4464b5aea61dd76dd80d",
+      "observed_edge_index": 2,
+      "sha256": "4f078bcd366eb29168a31d37793ee5aee656d405d6456f79181425f26809b484",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "7b8a8fcce0653d3b394cba027ce1e09fb32a1bd1b8e19669b387c521c2880a56.obj",
+      "model_id": "7b8a8fcce0653d3b394cba027ce1e09fb32a1bd1b8e19669b387c521c2880a56",
+      "observed_edge_index": 2,
+      "sha256": "16d85c4dd653520910b635ca06d9c8fd8cf392c9793cbc51946994161b285bbc",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "1494c770e217cf9edfaffbbc6076ce122cc2ce0c35cfea891f9d09dab1177b0c.obj",
+      "model_id": "1494c770e217cf9edfaffbbc6076ce122cc2ce0c35cfea891f9d09dab1177b0c",
+      "observed_edge_index": 2,
+      "sha256": "7751f4449df41d683e760f76fd90bee108d05f12b7213ca1563680512086aa06",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "0d0de8a66d8e471d49552c32230382b0af05238551c32449cfd34c85f1baffe6.obj",
+      "model_id": "0d0de8a66d8e471d49552c32230382b0af05238551c32449cfd34c85f1baffe6",
+      "observed_edge_index": 2,
+      "sha256": "55e4a2937afc8d26962fe3eeac92a6816bee08b979ce63064f14306eb737421f",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "052987b925f98f659057cd0501761fac68c62960a6a80ae040b3e93645320a5d.obj",
+      "model_id": "052987b925f98f659057cd0501761fac68c62960a6a80ae040b3e93645320a5d",
+      "observed_edge_index": 2,
+      "sha256": "a9578c2556509084bd67fa708c68178958caa57851665e78a3bc6e14266b44ac",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "6ed8cc57303b194616b3f9b6480c86d65bdb8776e560789660edd41e0872cea8.obj",
+      "model_id": "6ed8cc57303b194616b3f9b6480c86d65bdb8776e560789660edd41e0872cea8",
+      "observed_edge_index": 2,
+      "sha256": "bf628b12b6d72700c2236ce906a7c9a353de9ec9dc234ce672f6140d5e643611",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "aca0d555755e2b4344881908863219af50d25a7b3ca6076e847faf39f80ab7e1.obj",
+      "model_id": "aca0d555755e2b4344881908863219af50d25a7b3ca6076e847faf39f80ab7e1",
+      "observed_edge_index": 2,
+      "sha256": "9169f3fb358e386d1d7bd482de2e862a6d3ee54ea2cf7cda9dc47a6f60d3bc55",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "b72a4357297f756b350a711a3492ddb8b48a9ac1f4614962cd635c69f06b2d9a.obj",
+      "model_id": "b72a4357297f756b350a711a3492ddb8b48a9ac1f4614962cd635c69f06b2d9a",
+      "observed_edge_index": 2,
+      "sha256": "c690c5232e57bf03a5b2a9cafd2c206514315983d6d08b1eb0ce6c40940961d7",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "744fb6d2ef77f30dbbc5325531468f065c57cd9ff7e69f3281157a9e1b691d9b.obj",
+      "model_id": "744fb6d2ef77f30dbbc5325531468f065c57cd9ff7e69f3281157a9e1b691d9b",
+      "observed_edge_index": 2,
+      "sha256": "8fb7b73313974bfbd6f0b4068dc63139e9e98725bf75725d7cb8351645af869b",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "7573a5d5f1e45d2ab760a2f132e8088b910f6ba54eb6a156f6357985b5140f1d.obj",
+      "model_id": "7573a5d5f1e45d2ab760a2f132e8088b910f6ba54eb6a156f6357985b5140f1d",
+      "observed_edge_index": 2,
+      "sha256": "aa9d49a96cad89ca9f381ed62071fb1d15f09fb41afe9b1eee4b4c8ffd792594",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "fe69d6587541a3d3d936ad5643f77a09ad6c7abea6333a924be35485a6d35b68.obj",
+      "model_id": "fe69d6587541a3d3d936ad5643f77a09ad6c7abea6333a924be35485a6d35b68",
+      "observed_edge_index": 2,
+      "sha256": "0b068332dfe24581e88b66c51d7a8adfc45da2c955f80a3bc2dba78c7d13b9ff",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "76de4d6340df81d821be128f20db58c1a2fc7fdf9046e31aea10bbb37e85893a.obj",
+      "model_id": "76de4d6340df81d821be128f20db58c1a2fc7fdf9046e31aea10bbb37e85893a",
+      "observed_edge_index": 2,
+      "sha256": "e331f87ee2fb33f41e2d09fbb975198416fd0852934970ad2a2153e598eba2f6",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "2cbd6e2129dd70e23c8a83f268a596185e0eefef4abf6660d7f5a36dc1dac08c.obj",
+      "model_id": "2cbd6e2129dd70e23c8a83f268a596185e0eefef4abf6660d7f5a36dc1dac08c",
+      "observed_edge_index": 2,
+      "sha256": "6d386321ca04885d269a90f6ae233b50c203e861dc1025643b2042ac52eefa08",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "f9a305a6d2b29ea9ef684efaf6abbe5a2d76170a95007ecb5290c9574d430505.obj",
+      "model_id": "f9a305a6d2b29ea9ef684efaf6abbe5a2d76170a95007ecb5290c9574d430505",
+      "observed_edge_index": 2,
+      "sha256": "ff0bcdc14d8d5ce554af12db349cb951bfff3e603b85fdbadcdd7cfddd97c616",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "9218d497b7f092c4421225a4cdb0a44d3bbc1af9edb8bfb65422853d192c270a.obj",
+      "model_id": "9218d497b7f092c4421225a4cdb0a44d3bbc1af9edb8bfb65422853d192c270a",
+      "observed_edge_index": 2,
+      "sha256": "fb434fb7b1021c70b5985108840ad13c665ff05233c601c7b633bbac70cb55ed",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "707e15336a4ea4097f47b9849e1d97b078faa696d293bf0f6d27b1c6fe82147b.obj",
+      "model_id": "707e15336a4ea4097f47b9849e1d97b078faa696d293bf0f6d27b1c6fe82147b",
+      "observed_edge_index": 2,
+      "sha256": "5abf3d38fab8d00a3188d3282ab8d532fe9889e9482378128d507834a35a0b50",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "d1c1f0af29f833cd6cece51a9e8164b685fe9038426fed54bc3cfe192f10c35b.obj",
+      "model_id": "d1c1f0af29f833cd6cece51a9e8164b685fe9038426fed54bc3cfe192f10c35b",
+      "observed_edge_index": 2,
+      "sha256": "a9578c2556509084bd67fa708c68178958caa57851665e78a3bc6e14266b44ac",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "dbfe907ee39fb9c62df4784cb11802d87dd25459ab161c6f9e70559569694355.obj",
+      "model_id": "dbfe907ee39fb9c62df4784cb11802d87dd25459ab161c6f9e70559569694355",
+      "observed_edge_index": 2,
+      "sha256": "bf628b12b6d72700c2236ce906a7c9a353de9ec9dc234ce672f6140d5e643611",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "6cbe5048beba7b8fa1d671a6818585eed3f6c27c6c9c74960b007b2f91f32226.obj",
+      "model_id": "6cbe5048beba7b8fa1d671a6818585eed3f6c27c6c9c74960b007b2f91f32226",
+      "observed_edge_index": 2,
+      "sha256": "9169f3fb358e386d1d7bd482de2e862a6d3ee54ea2cf7cda9dc47a6f60d3bc55",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "b460844a26cca7932268c869aeae890270f2991517639c264297128ccd1d409b.obj",
+      "model_id": "b460844a26cca7932268c869aeae890270f2991517639c264297128ccd1d409b",
+      "observed_edge_index": 2,
+      "sha256": "c690c5232e57bf03a5b2a9cafd2c206514315983d6d08b1eb0ce6c40940961d7",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "5cb80a9d08153f994dcd61d97ce728e92a925201033257f492398c765ae151fb.obj",
+      "model_id": "5cb80a9d08153f994dcd61d97ce728e92a925201033257f492398c765ae151fb",
+      "observed_edge_index": 2,
+      "sha256": "8fb7b73313974bfbd6f0b4068dc63139e9e98725bf75725d7cb8351645af869b",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "7760a6c44e443ade9d73a5e4fe38978015ffb7c74520151b36c4ac3d115eafcb.obj",
+      "model_id": "7760a6c44e443ade9d73a5e4fe38978015ffb7c74520151b36c4ac3d115eafcb",
+      "observed_edge_index": 2,
+      "sha256": "aa9d49a96cad89ca9f381ed62071fb1d15f09fb41afe9b1eee4b4c8ffd792594",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "99b0f231cb504d0b16d0728932a88073745f211b50708790022f0937965ef706.obj",
+      "model_id": "99b0f231cb504d0b16d0728932a88073745f211b50708790022f0937965ef706",
+      "observed_edge_index": 2,
+      "sha256": "0b068332dfe24581e88b66c51d7a8adfc45da2c955f80a3bc2dba78c7d13b9ff",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "6c20414a01215beb5bd78b04a46d5655b4b43d3668e9ff01f8c134502c5c87f3.obj",
+      "model_id": "6c20414a01215beb5bd78b04a46d5655b4b43d3668e9ff01f8c134502c5c87f3",
+      "observed_edge_index": 2,
+      "sha256": "e331f87ee2fb33f41e2d09fbb975198416fd0852934970ad2a2153e598eba2f6",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "245124f44918d7b2e6a2544fc3321c4e949c755f3bbb336aaf58f4ee016bc43c.obj",
+      "model_id": "245124f44918d7b2e6a2544fc3321c4e949c755f3bbb336aaf58f4ee016bc43c",
+      "observed_edge_index": 2,
+      "sha256": "6d386321ca04885d269a90f6ae233b50c203e861dc1025643b2042ac52eefa08",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "e252f9d713521df5cd2d60d41103f0149e5760e295a74e9524cfff9205801ca2.obj",
+      "model_id": "e252f9d713521df5cd2d60d41103f0149e5760e295a74e9524cfff9205801ca2",
+      "observed_edge_index": 2,
+      "sha256": "ff0bcdc14d8d5ce554af12db349cb951bfff3e603b85fdbadcdd7cfddd97c616",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "74af1b9fc2a110de4209f0fdbc871fe77b26ce5e68df44fb1bf08d895d1e153a.obj",
+      "model_id": "74af1b9fc2a110de4209f0fdbc871fe77b26ce5e68df44fb1bf08d895d1e153a",
+      "observed_edge_index": 2,
+      "sha256": "fb434fb7b1021c70b5985108840ad13c665ff05233c601c7b633bbac70cb55ed",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    },
+    {
+      "file": "80f29d635976e05c2cea9b0544c1741d672903668aa8f422e8730964e1c02eea.obj",
+      "model_id": "80f29d635976e05c2cea9b0544c1741d672903668aa8f422e8730964e1c02eea",
+      "observed_edge_index": 2,
+      "sha256": "5abf3d38fab8d00a3188d3282ab8d532fe9889e9482378128d507834a35a0b50",
+      "triangles": 6,
+      "vertices": 7,
+      "world_placement_eligible": false
+    }
+  ],
+  "source_review_sha256": "8f5af50fa495231b562de2ba98639f59c880833605ed3f38075206c092054466",
+  "status": "conditional_observed_face_fascia_exports"
+}
