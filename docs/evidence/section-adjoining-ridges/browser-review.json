@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "original_pngs_checked": 8,
+  "parent_camera_states": 24,
+  "whole_ridge_supported_states": 4,
+  "held_source_groups": 1,
+  "sheets_without_requested_group": 1,
+  "exact_original_plan_line_displays": 216,
+  "exact_ridge_line_displays": 48,
+  "original_stroke_selections": 642,
+  "exact_json_download_sha256": "c027a6f980f3ea064f49ee2443312afa6813beb75701be924f1b815f947f2114",
+  "javascript_errors": [],
+  "screenshot_sha256": "2a297b65e2c01cef60570e740f2d4f593826a8ba4696a35959ab9989673c067b"
+}

@@ -1,0 +1,14 @@
+{
+  "checked": {
+    "independent_conditional_face_gates": 4,
+    "independent_endpoint_comparisons": 5136,
+    "independent_original_plan_items": 4,
+    "independent_original_rgb_neighbourhoods": 62,
+    "independent_original_section_items": 642,
+    "independent_whole_ridge_projections": 24
+  },
+  "fresh_replay_identical": true,
+  "review_sha256": "c027a6f980f3ea064f49ee2443312afa6813beb75701be924f1b815f947f2114",
+  "source_projection_sha256": "59fec64d0829e09adca26f22f5e3c92ff22113a3473f5379aa6f82856a2f1bde",
+  "status": "passed"
+}

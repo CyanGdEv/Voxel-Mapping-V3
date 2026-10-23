@@ -616,3 +616,9 @@ original three-spoke section groups against the roof plan. All 24 orientation
 candidates remain supported; half show the shared cap and half hide it. Face
 assignment now has an explicit ambiguity gate and requires independent cut or
 adjoining-feature evidence before a wall/fascia join can be generated.
+
+The [whole adjoining-ridge review](docs/section-adjoining-ridges.md) tests both
+original ridge endpoints against whole section strokes. AA and CC each retain
+two conditional orientations, both showing the shared cap. GG has no supported
+whole ridge match in the checked region. All parent cameras are retained;
+physical identity, reflection, datum and join surfaces remain unresolved.

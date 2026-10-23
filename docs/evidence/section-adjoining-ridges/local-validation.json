@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "parent_commit": "bb543ecf38cce2fc5cc3aa9c0171edf828dc0a9d",
+  "parent_ci": {
+    "run_id": 39968406674,
+    "run_number": 648,
+    "conclusion": "success"
+  },
+  "validation_scope": "62 targeted tests, fresh original-source replay, independent PDF/ridge/pixel audit and browser review; complete suite runs separately in GitHub CI",
+  "targeted_tests": 62,
+  "new_adjoining_tests": 19,
+  "counts": {
+    "conditional_face_constraints": 4,
+    "conditional_shared_cap_hidden": 0,
+    "conditional_shared_cap_visible": 4,
+    "conditionally_supported_projections": 4,
+    "original_plan_witnesses": 4,
+    "plan_ridges": 1,
+    "projection_ridge_checks": 24,
+    "source_horizontal_lines": 642,
+    "source_line_pixel_checks": 2
+  },
+  "checks": 815667,
+  "review_sha256": "c027a6f980f3ea064f49ee2443312afa6813beb75701be924f1b815f947f2114",
+  "code_sha256": {
+    "voxel_mapper/section_adjoining_ridges.py": "56ad1f19700a13f631f0c14266eb2b32d7418c958bd416442d2ac0336cd29456",
+    "voxel_mapper/section_adjoining_evidence.py": "61212be09fe8e45919ec553afb6ce548d91a0242dbef34a9ae3759349890966d",
+    "scripts/build_section_adjoining_evidence.py": "287d5cf91982d04f65179e024e664e9a828a3f74e554324f40ead16cd2a1a04a",
+    "scripts/audit_section_adjoining_evidence.py": "4745624f1c6ce21824b049e92f9197c1a186ed6088613169692e5e330c9d31ce",
+    "scripts/render_section_adjoining_evidence.py": "a7fa88d9be747f5cdce1e593198c77efb4c517a09f63afd1eb9184fd7c1653ea",
+    "tests/test_section_adjoining_evidence.py": "e4438561e8a78dffbda1173c4f606bcf149cb542b362e762c1dacbedaaab0167"
+  },
+  "html_sha256": "62ccf5b0566b194171a979654059758b835a4bb8e0551e75cbb278c4a951ce80",
+  "screenshot_sha256": "2a297b65e2c01cef60570e740f2d4f593826a8ba4696a35959ab9989673c067b",
+  "world_geometry_additions": 0,
+  "physical_face_assignment_verified": false,
+  "wall_closure_authorized": false
+}
