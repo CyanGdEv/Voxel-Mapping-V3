@@ -1,0 +1,49 @@
+{
+  "checks": {
+    "bedrock": {
+      "detail": "1.9.49",
+      "status": "passed"
+    },
+    "numpy": {
+      "detail": "1.26.4",
+      "status": "passed"
+    },
+    "pyarrow": {
+      "detail": "19.0.1",
+      "status": "passed"
+    },
+    "pymupdf": {
+      "detail": "1.28.2",
+      "status": "passed"
+    },
+    "pyproj": {
+      "detail": "OSGB36 / British National Grid",
+      "status": "passed"
+    },
+    "rasterio": {
+      "detail": "1.4.4",
+      "status": "passed"
+    },
+    "scipy": {
+      "detail": "1.17.1",
+      "status": "passed"
+    },
+    "tkinter": {
+      "detail": "9.0",
+      "status": "passed"
+    }
+  },
+  "optional_external_tools": {
+    "pdftoppm": {
+      "available": true
+    },
+    "pdftotext": {
+      "available": true
+    },
+    "tesseract": {
+      "available": true
+    }
+  },
+  "reasoning_model_weights_bundled": false,
+  "status": "passed"
+}

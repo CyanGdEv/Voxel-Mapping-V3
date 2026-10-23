@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "parent_commit": "c7a534376f0525a79e33a0dfb61b41c9c44e4017",
+  "parent_ci": {
+    "commit": "c71cb39be866b4a7e4748e4d03bd9cd2d8466d23",
+    "run_id": 39982560888,
+    "run_number": 652,
+    "conclusion": "success"
+  },
+  "scope": "85 targeted source tests, actual UI integration, isolated subprocess/persistence and synthetic native world readback; final exact-head frozen Windows distribution checks run separately in Actions",
+  "targeted_tests": 85,
+  "new_neural_tests": 20,
+  "new_neural_pipeline_tests": 10,
+  "new_reasoning_tests": 16,
+  "new_desktop_runtime_tests": 12,
+  "new_worker_guard_tests": 8,
+  "new_full_park_adapter_tests": 2,
+  "minimum_profile": {
+    "system_ram_gb": 6,
+    "gpu_required": false,
+    "cpu_workers": 2,
+    "heavy_jobs_at_once": 1,
+    "managed_memory_budget_mb": 2048
+  },
+  "synthetic_native_world_peak_managed_memory_mb": 222.0703125,
+  "code_sha256": {
+    "pyproject.toml": "ea607b6c80ecab92bb0c270befe259bb4f66196399f25f47540b1c9e5a106425",
+    "voxel_mapper/building_pipeline.py": "5c19fe1a4a9a92367676e01a7a2ade152ed6dc863ed3475406864b1883a58488",
+    "voxel_mapper/desktop_app.py": "bc1400a3fe45286d2155595ad9d56edd5d13a29ffafe758e09e92bdcab67a7d6",
+    "voxel_mapper/desktop_memory.py": "577756f94fafff4244e14b65e981ea692b119daf67aad47c946c1728d1ff07d2",
+    "voxel_mapper/desktop_runtime.py": "20e0dbc7cef8f81d72efc887fc252bcbe47f51663ffc8415542db2663a09e24d",
+    "voxel_mapper/neural_learning.py": "92276dd7e2f21779d5e034fad76bbf3bbfe79549a0cc50bda0ac2511ec684d5e",
+    "voxel_mapper/local_reasoning.py": "1560cd652b822547a4a669dabcc76cc50d4fdb74b7a332f05db69ef3d169ee36",
+    "scripts/windows_desktop_entry.py": "debab1841d4010ece15cbe3703efb594b0183f3353320a340da87557f6d53a2e",
+    ".github/workflows/windows-desktop.yml": "ba156de661bce7080a6b34b52489326976ded853e5a69d43c1efdb66bb27760f",
+    "packaging/LICENSES.txt": "19f5c2a40cc461cdc8ddc6669aaf31f4564872e9b51567e9329af0ff11272eec",
+    "packaging/README.txt": "04f1e35c76bf300453130e9cb62a127c196dd814e553a4f78607b374ed25bb51",
+    "packaging/desktop_runtime_hook.py": "47d8e873fb7711f27d319c691a38219f1de424c712067a01df63c7c498a3cced",
+    "packaging/voxel_mapper.spec": "51be90b3d6ccc839a0938125cadfa0082b340be9d368f48c3de937f5119019b8",
+    "tests/test_desktop_generation.py": "07c9ff4f932846059af4e28f065986ecf1991c6694ba4e30ad702983a2baf612",
+    "tests/test_desktop_runtime.py": "3623ef1fe2d8815dd00a0df161f4aa1ec940078cb50bc1ec2c8ac6fad5fe9f85",
+    "tests/test_desktop_worker_guards.py": "3c099687819dc0a7609e95444470720c5b1416c3702abcfc48fe9eb188885ebf",
+    "tests/test_neural_learning.py": "24dd769d35ec88d88f03d7cde922b41c853eeaa66e7dbf2c3375cf25ae32266d",
+    "tests/test_neural_building_pipeline.py": "7ada286097396c13823a3b856d8233b34e1c17bd755d4eefe9395605f91b2202",
+    "tests/test_local_reasoning.py": "ff70c415b632db665ed5f6aff713a63d3433b473002146ac97be9e6e7f935360",
+    ".github/workflows/test.yml": "63975898cd98a5585f1c29658a2cfa3db699822f364a92ef92e7919f9147d67f"
+  },
+  "ui_screenshot_sha256": "240f46a3449e152c0818d1696fb3893d83a8e0f7f8c1931d16e4e7fd2cc8dbfd",
+  "real_park_model_trained": false,
+  "reasoning_model_bundled": false,
+  "actual_local_language_inference_tested": false,
+  "windows_binary_built_locally": false,
+  "training_data_note": "Neural learning and promotion tests use explicitly synthetic reviewed fixtures; no real correctness labels or model weights are fabricated.",
+  "prior_windows_frozen_checks": {
+    "commit": "f48958767af00a831b0b1ae6dd204b209687312a",
+    "run_id": 40021306918,
+    "native_dependencies": "passed",
+    "workers_memory_training_native_world_readback": "passed",
+    "actual_frozen_ui": "passed",
+    "distribution_packaging": "failed; fixed duplicate Copy-Item in followup",
+    "scope": "prior executable; followup is rebuilt separately"
+  }
+}

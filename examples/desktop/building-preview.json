@@ -1,0 +1,189 @@
+{
+  "version": "building-batch-v1",
+  "description": "Synthetic API demonstration; gates attest fixture validity only, no physical survey.",
+  "buildings": [
+    {
+      "building_id": "synthetic-training-hall",
+      "candidates": [
+        {
+          "id": "fixture-a",
+          "spec": {
+            "version": "building-spec-v1",
+            "building_id": "synthetic-training-hall",
+            "coordinate_frame": "local_xyz_metres_z_up",
+            "sources": [
+              {
+                "id": "fixture",
+                "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "state": "existing"
+              }
+            ],
+            "assumptions": [
+              "Synthetic example dimensions; no real building or source PDF."
+            ],
+            "components": [
+              {
+                "id": "front",
+                "role": "wall",
+                "colour": "859caf",
+                "evidence": {
+                  "class": "inferred",
+                  "source_ids": [
+                    "fixture"
+                  ],
+                  "description": "Synthetic fixture only"
+                },
+                "geometry": {
+                  "kind": "extrusion",
+                  "axis": 1,
+                  "interval_m": [
+                    0,
+                    0.3
+                  ],
+                  "profile": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      8,
+                      0
+                    ],
+                    [
+                      8,
+                      4
+                    ],
+                    [
+                      0,
+                      4
+                    ]
+                  ],
+                  "holes": [
+                    [
+                      [
+                        1,
+                        1
+                      ],
+                      [
+                        2,
+                        1
+                      ],
+                      [
+                        2,
+                        2
+                      ],
+                      [
+                        1,
+                        2
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "floor",
+                "role": "floor",
+                "colour": "859caf",
+                "evidence": {
+                  "class": "inferred",
+                  "source_ids": [
+                    "fixture"
+                  ],
+                  "description": "Synthetic fixture only"
+                },
+                "geometry": {
+                  "kind": "extrusion",
+                  "axis": 2,
+                  "interval_m": [
+                    -0.25,
+                    0
+                  ],
+                  "profile": [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      8,
+                      0
+                    ],
+                    [
+                      8,
+                      6
+                    ],
+                    [
+                      0,
+                      6
+                    ]
+                  ],
+                  "holes": []
+                }
+              },
+              {
+                "id": "roof",
+                "role": "roof",
+                "colour": "775338",
+                "evidence": {
+                  "class": "inferred",
+                  "source_ids": [
+                    "fixture"
+                  ],
+                  "description": "Synthetic fixture only"
+                },
+                "geometry": {
+                  "kind": "extrusion",
+                  "axis": 0,
+                  "interval_m": [
+                    0,
+                    8
+                  ],
+                  "profile": [
+                    [
+                      0,
+                      4
+                    ],
+                    [
+                      3,
+                      6
+                    ],
+                    [
+                      6,
+                      4
+                    ],
+                    [
+                      6,
+                      3.75
+                    ],
+                    [
+                      3,
+                      5.75
+                    ],
+                    [
+                      0,
+                      3.75
+                    ]
+                  ],
+                  "holes": []
+                }
+              }
+            ]
+          },
+          "features": {
+            "boundary_support": 0.5,
+            "view_agreement": 0.5,
+            "dimension_agreement": 0.5,
+            "opening_support": 0.5,
+            "topology_quality": 0.5,
+            "source_coverage": 0.5
+          },
+          "gates": {
+            "source_verified": true,
+            "identity_verified": true,
+            "dimensions_verified": true,
+            "topology_verified": true
+          }
+        }
+      ]
+    }
+  ]
+}

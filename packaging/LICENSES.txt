@@ -1,0 +1,17 @@
+Voxel Mapper V3 desktop distribution
+
+The bundled application and dependencies retain their upstream copyright and
+licence notices in package metadata and resource directories under _internal.
+This file is an index, not a replacement for those original notices.
+
+Key components include CPython and Tcl/Tk (Python/Tcl licences), NumPy/SciPy
+(BSD), PyInstaller bootloader (GPL with distribution exception), Shapely/GEOS
+(BSD/LGPL), Rasterio/GDAL (BSD/MIT style), pyproj/PROJ (MIT style), Apache Arrow
+(Apache-2.0), Pillow (HPND), Amulet packages and PyMCTranslate (upstream
+licences), PyMuPDF/MuPDF (AGPL or commercial), and their retained transitive
+libraries. Review the exact bundled upstream notices before redistribution.
+
+Optional helper tools retain their complete installed resource/licence files:
+Tesseract (Apache-2.0) and Poppler (GPL). Those optional helpers are included
+only when explicitly configured during the build. Original planning documents
+and external model weights are not redistributed by this build.

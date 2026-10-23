@@ -1,0 +1,6 @@
+{
+  "prompt": "Review the retained evidence observations and propose the next reconstruction checks. Preserve unresolved physical identity and placement limitations.",
+  "model": "REPLACE_WITH_YOUR_INSTALLED_SMALL_MODEL_NAME",
+  "endpoint": "http://127.0.0.1:11434",
+  "options": {"num_ctx": 2048, "num_predict": 512, "num_thread": 2}
+}
