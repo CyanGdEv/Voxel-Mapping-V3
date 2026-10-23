@@ -84,5 +84,49 @@ class DesktopReviewIntegrationTests(unittest.TestCase):
                 self.assertEqual(runtime.store.summary()['feedback_records'],0)
                 self.assertFalse((Path(job['output_directory'])/'report.json').exists())
 
+    def test_managed_regeneration_produces_world_and_new_unreviewed_candidate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with self.runtime(root/'memory') as runtime:
+                prepared=self.completed(runtime,runtime.submit_review('synthetic_demo'))['result']
+                session=load_session(prepared['queue_path'],prepared['batch_path'])
+                for path in prepared['source_paths']:session=bind_source(session,path)
+                row=session['records'][0]
+                change={'type':'dimension','component_id':'front-wall','axis':'x','value_m':9,
+                    'source_sha256':row['source_sha256'][0],'source_page':1}
+                draft=save_review(session,building_id=row['building_id'],candidate_sha256=row['candidate_sha256'],outcome=None,
+                    review_basis=None,review_reference='',corrections=[change],output_directory=root/'draft')
+                job=self.completed(runtime,runtime.submit_regeneration(draft['output_directory']))
+                result=job['result']
+                self.assertTrue(Path(result['corrected_world_path']).is_file())
+                next_session=load_session(result['queue_path'],result['batch_path'])
+                self.assertEqual(max(p[0] for p in next_session['records'][0]['candidate']['spec']['components'][0]['geometry']['profile']),9)
+                self.assertFalse(any(next_session['records'][0]['candidate']['gates'].values()))
+                self.assertEqual(runtime.store.summary()['feedback_records'],0)
+                self.assertEqual(runtime.store.summary()['checkpoints'],0)
+                self.assertGreater(job['peak_memory_mb'],0)
+
+    def test_queued_review_pin_refuses_a_changed_review_before_start(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            with self.runtime(root/'memory') as runtime:
+                prepared=self.completed(runtime,runtime.submit_review('synthetic_demo'))['result']
+                session=load_session(prepared['queue_path'],prepared['batch_path'])
+                for path in prepared['source_paths']:session=bind_source(session,path)
+                row=session['records'][0]
+                change={'type':'dimension','component_id':'front-wall','axis':'x','value_m':9,
+                    'source_sha256':row['source_sha256'][0],'source_page':1}
+                draft=save_review(session,building_id=row['building_id'],candidate_sha256=row['candidate_sha256'],outcome=None,
+                    review_basis=None,review_reference='',corrections=[change],output_directory=root/'draft')
+                runtime._heavy.acquire()
+                try:
+                    jid=runtime.submit_regeneration(draft['output_directory'],world=False)
+                    path=Path(draft['output_directory'])/'report.json';path.write_bytes(path.read_bytes()+b' ')
+                finally:runtime._heavy.release()
+                job=_wait(runtime,jid,timeout=30)
+                self.assertEqual(job['status'],'failed')
+                self.assertIn('Queued saved review changed',job['error'])
+                self.assertFalse((Path(job['output_directory'])/'report.json').exists())
+
 
 if __name__=='__main__':unittest.main()

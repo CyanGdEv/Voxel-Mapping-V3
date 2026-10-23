@@ -1,0 +1,20 @@
+{
+  "benchmark_missing_prediction_remains_unassessed": true,
+  "corrected_candidate_requires_independent_review": true,
+  "correction_draft_has_no_feedback": true,
+  "correction_regeneration_world_and_readback": "passed",
+  "cpu_neural_training": "passed",
+  "isolated_worker": "passed",
+  "managed_reconstruction_benchmark": "passed",
+  "native_terrain_world_and_saved_readback": "passed",
+  "observed_managed_peak_memory_mb": 221.2421875,
+  "persistent_job_and_observation_restart": "passed",
+  "real_alton_area_peak_managed_memory_mb": 233.5546875,
+  "real_alton_area_preset_and_readback": "passed",
+  "review_and_benchmark_peak_managed_memory_mb": 237.60546875,
+  "source_linked_correction_draft": "passed",
+  "status": "passed",
+  "synthetic_training_only": true,
+  "trained_real_park_model": false,
+  "undersized_checkpoint_withheld": true
+}

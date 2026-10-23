@@ -55,5 +55,9 @@ position and optional opening matches. Missing predictions and missing evidence
 remain visible. Training and evaluation source/building lineage must not overlap
 an untouched benchmark. See [benchmark contract](reconstruction-benchmark.md).
 
-This release provides the review and measurement workflow; it does not publish
-a trained real-park model or claim a completed real-building accuracy benchmark.
+Saved corrections can now produce a new candidate and native world through
+**Regenerate saved corrections**. See [correction regeneration](correction-regeneration.md)
+for supported edits, the intentionally incorrect synthetic scale example and
+independent before/after measurement. The corrected candidate needs its own
+review. No trained real-park model or completed real-building accuracy benchmark
+is claimed.

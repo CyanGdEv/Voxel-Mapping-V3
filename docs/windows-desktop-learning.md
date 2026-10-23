@@ -15,6 +15,13 @@ decision is explicit. Benchmarks measure supplied geometry against frozen
 references and check declared model lineage; a completed run is not proof of
 correct geometry or generalization.
 
+Saved supported corrections now regenerate into separate model/native-world
+previews through a managed worker. The synthetic demonstration repairs a known
+scale error and measures the actual before/after geometry. Corrected candidates
+receive new identities and require their own independent decisions. See the
+[regeneration guide](correction-regeneration.md) for edit limits and local-only
+placement scope.
+
 This is the desktop and learning foundation for the reconstruction prototype.
 The neural model learns which supported building interpretation to prioritize.
 General drawing understanding, verified complete park reconstruction and an AI

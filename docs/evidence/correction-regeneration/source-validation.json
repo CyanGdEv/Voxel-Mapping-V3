@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "parent_commit": "3b6b259b7d271d309229e0dfabbcca69d0b2e052",
+  "scope": "Source geometry/native/managed-worker tests; actual Tk correction-to-world submission and fixed synthetic before/after comparison; real retained Wicker engineering transform. Exact-head frozen Windows and full regression run separately in Actions.",
+  "focused_backend_tests": 29,
+  "actual_tk_ui_tests": 15,
+  "code_sha256": {
+    "tests/test_desktop_review_integration.py": "e90d096382686af7d27ad9fde75e10ef38c731c05c5b6385ada057ac1d4f4beb",
+    "tests/test_desktop_review_ui.py": "c0145d4796f0e9bf4106e1ea256bf35abd4ff8c7955c2d16e28ba0f53d0a7e54",
+    "voxel_mapper/desktop_app.py": "bdf89510e4693f3f4e1ec759a002b3924d9323aca98f29f13cfe2aec0aaee53a",
+    "voxel_mapper/desktop_review_presets.py": "2a131794aa842d39663104e42657fb9e52381e1a0bd831ccab608c5156942b92",
+    "voxel_mapper/desktop_review_ui.py": "ed776a715d19bb7b2e2877269633e9e833a6a9cca201c33345a3135636257b36",
+    "voxel_mapper/desktop_runtime.py": "fa1e9fcc740b4143a6ad14f260272ed86c5dec50e4af688ba64a076e6d86ccd0",
+    "tests/test_building_corrections.py": "1731ae3c623f29c10b5358f19e67a9d5817b6e770412c396825af0b863cb9283",
+    "voxel_mapper/building_corrections.py": "e57c6423c2d5d22afc2c0d0fb0ecc2851647ab5ecb12c3903eb759a402d533a8",
+    "voxel_mapper/desktop_correction_smoke.py": "ced4a1e1ff57c5f03ff771066cc0a1ebacdf5dd46a862cbf4ac6b0cd3204a85e"
+  },
+  "real_trained_park_model": false,
+  "real_building_accuracy_benchmark_completed": false,
+  "original_planning_pdfs_committed": false,
+  "hardware_scope": "CPU-only development/CI measurements; physical 6 GB Windows PC untested.",
+  "regeneration_scope": "Isolated local candidate/native study worlds. No qualified park registration, real terrain insertion or path/plaza connection acceptance. Mesh shape edits with unassigned air guards remain blocked; quarter-turn local placement is supported."
+}

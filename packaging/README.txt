@@ -6,7 +6,11 @@ Python is included in the distribution; a separate Python installation is not
 required. A console remains available for diagnostics and worker errors.
 
 Review and accuracy opens a source PDF beside its local building geometry.
-Try correction demo supplies an offline synthetic example. Review Wicker
+Try correction demo supplies an offline synthetic example with a deliberate
+6 m frontage error against an 8 m drawing. Add an X dimension correction of
+8 m, save the draft, then press Regenerate saved corrections. The new model
+and native world appear as a separate candidate/job, with before/after metrics.
+Original geometry and labels are retained. Review Wicker
 building prepares the retained provisional shop and matches original PDFs from
 your chosen folder or cache. Save correction drafts without training labels;
 reviewed decisions require an external reference and explicit feedback import.
@@ -41,6 +45,7 @@ Diagnostics:
   VoxelMapperV3.exe --self-test --data-dir PATH_TO_FRESH_TEST_DIRECTORY
   VoxelMapperV3.exe --ui-smoke-test PATH_TO_UI_TEST_RESULTS
   VoxelMapperV3.exe --review-smoke-test PATH_TO_FRESH_REVIEW_TEST_DIRECTORY
+  VoxelMapperV3.exe --correction-smoke-test PATH_TO_FRESH_REGENERATION_TEST_DIRECTORY
 
 This build is unsigned. The build receipt records the exact commit, executable
 hashes, native dependency results, backend smoke test and UI smoke test. Full

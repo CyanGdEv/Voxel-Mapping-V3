@@ -86,7 +86,7 @@ def _pinned_diagnostics(model):
     return diagnostics
 
 
-def _report(root, *, preset, dataset_kind, required, found, feed_report):
+def _report(root, *, preset, dataset_kind, required, found, feed_report, extras=None):
     verified = sorted(found)
     report = {
         'version': VERSION,
@@ -108,6 +108,7 @@ def _report(root, *, preset, dataset_kind, required, found, feed_report):
             'No review outcomes, training labels or model promotions are generated.',
         ],
     }
+    report.update(extras or {})
     atomic_json(root/'review-preset-report.json', report)
     return report
 
@@ -178,7 +179,7 @@ def prepare_wicker(output, *, evidence_directory=None, cache_directory=None,
     return report
 
 
-def prepare_demo(output):
+def prepare_demo(output, *, incorrect_geometry=False):
     """Make an offline synthetic drawing/spec pair without reviewed decisions."""
     import pymupdf
     from .building_learning import FEATURES, GATES
@@ -211,6 +212,13 @@ def prepare_demo(output):
                          'holes': [[[1, 1], [2, 1], [2, 2], [1, 2]]]},
         }],
     }
+    if type(incorrect_geometry) is not bool:raise ValueError('Demo geometry setting must be boolean')
+    if incorrect_geometry:
+        # Deliberately misread the horizontal scale of the explicitly synthetic
+        # source. A width correction to the printed 8 m repairs the whole face.
+        geometry=spec['components'][0]['geometry']
+        for ring in [geometry['profile'],*geometry['holes']]:
+            for point in ring:point[0]*=.75
     features = dict.fromkeys(FEATURES, 0.)
     features['source_coverage'] = 1.
     candidate = {
@@ -231,7 +239,20 @@ def prepare_demo(output):
     (root/'feed').mkdir()
     atomic_json(root/'feed'/'buildings.json', batch)
     atomic_json(root/'feed'/'review-queue.json', queue)
-    report = _report(root, preset='synthetic-demo', dataset_kind='synthetic',
+    extras={}
+    if incorrect_geometry:
+        from .reconstruction_benchmark import reference_digest
+        reference={'version':'reconstruction-benchmark-v1','dataset_kind':'synthetic','coordinate_frame':FRAME,'units':'metres',
+            'cases':[{'id':'synthetic-drawing-scale','building_id':spec['building_id'],'source_sha256':[source_pin],
+                'reference':{'review_basis':'independent_review','review_reference':'Fixed synthetic drawing constants; no real park evidence.',
+                    'geometry_definition':'projected_xy_bounds_origin_v1','component_id':'front-wall','opening_projection':'xz',
+                    'geometry':{'footprint_m':[[0,0],[8,0],[8,.3],[0,.3]],'height_m':4,'position_m':[0,0,0],
+                        'openings_m':[[[1,1],[2,1],[2,2],[1,2]]]}},'prediction':None}]}
+        reference['reference_sha256']=reference_digest(reference)
+        atomic_json(root/'synthetic-reference.json',reference)
+        extras={'benchmark_path':str(root/'synthetic-reference.json'),
+            'demo_instructions':'The source says width 8 m; the candidate deliberately uses 6 m. Add an X dimension correction of 8 m, save the draft and regenerate.'}
+    report = _report(root, preset='synthetic-correction-demo' if incorrect_geometry else 'synthetic-demo', dataset_kind='synthetic',
                      required={source_pin}, found={source_pin: root/'sources'/(source_pin+'.pdf')},
-                     feed_report={'candidate_buildings': 1})
+                     feed_report={'candidate_buildings': 1},extras=extras)
     return report

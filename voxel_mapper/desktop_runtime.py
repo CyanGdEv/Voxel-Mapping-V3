@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -150,7 +150,7 @@ class DesktopRuntime:
 
     def submit_review(self,preset,*,evidence_directory=None):
         """Prepare a review queue; this never supplies reviewed outcomes."""
-        if preset not in ('wicker','synthetic_demo'):raise ValueError('Choose a supported review preset')
+        if preset not in ('wicker','synthetic_demo','correction_demo'):raise ValueError('Choose a supported review preset')
         config={'preset':preset}
         if evidence_directory:config['evidence_directory']=str(Path(evidence_directory).expanduser().resolve())
         path=self.directory/'review-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
@@ -163,6 +163,16 @@ class DesktopRuntime:
         config=self.directory/'review-requests'/(uuid.uuid4().hex+'.json')
         write_json(config,{'feedback_path':str(path)})
         return self.submit('import_feedback',config)
+
+    def submit_regeneration(self,saved_review,*,world=True,benchmark_path=None):
+        if type(world) is not bool:raise ValueError('World preview setting must be boolean')
+        directory=Path(saved_review).expanduser().resolve()
+        config={'review_directory':str(directory),'review_report_sha256':file_hash(directory/'report.json'),'world':world}
+        if benchmark_path:
+            path=Path(benchmark_path).expanduser().resolve()
+            config.update(benchmark_path=str(path),benchmark_sha256=file_hash(path))
+        request=self.directory/'correction-requests'/(uuid.uuid4().hex+'.json');write_json(request,config)
+        return self.submit('regenerate_corrections',request)
 
     def cancel(self,job_id):
         with self._mutex:
@@ -400,13 +410,25 @@ def _worker(request):
     elif kind=='prepare_review':
         from .desktop_review_presets import prepare_demo,prepare_wicker
         if set(config)-{'preset','evidence_directory'}:raise ValueError('Unsupported review preparation settings')
-        if config.get('preset')=='synthetic_demo':
+        if config.get('preset') in ('synthetic_demo','correction_demo'):
             if config.get('evidence_directory'):raise ValueError('The synthetic example does not use real source inputs')
-            result=prepare_demo(output)
+            result=prepare_demo(output,incorrect_geometry=config['preset']=='correction_demo')
         elif config.get('preset')=='wicker':
             result=prepare_wicker(output,evidence_directory=config.get('evidence_directory'),
                 cache_directory=output.parents[2]/'source-cache',cancelled=cancelled,progress=progress)
         else:raise ValueError('Choose a supported review preset')
+    elif kind=='regenerate_corrections':
+        from .building_corrections import run
+        if set(config)-{'review_directory','review_report_sha256','world','benchmark_path','benchmark_sha256'}:
+            raise ValueError('Unsupported correction regeneration settings')
+        directory=resolve_path(config_path,config.get('review_directory'))
+        if file_hash(directory/'report.json')!=config.get('review_report_sha256'):raise ValueError('Queued saved review changed')
+        benchmark_path=resolve_path(config_path,config['benchmark_path']) if config.get('benchmark_path') else None
+        if benchmark_path and file_hash(benchmark_path)!=config.get('benchmark_sha256'):raise ValueError('Queued benchmark references changed')
+        active=request.get('active_model');model=read_json(active['path'],1000000) if active and benchmark_path else None
+        if model and model.get('artifact_sha256')!=active['sha256']:raise ValueError('Active comparison model changed')
+        result=run(directory,output,world=config.get('world',True),benchmark_path=benchmark_path,model=model,cancelled=cancelled,progress=progress)
+        if file_hash(directory/'report.json')!=config['review_report_sha256']:raise ValueError('Saved review changed during regeneration')
     elif kind=='reconstruction_benchmark':
         from .reconstruction_benchmark import run
         model=None;active=request.get('active_model');model_path=config.get('model_path')
@@ -581,6 +603,15 @@ def self_test(data_directory=None,workers=2):
             draft=save_review(session,building_id=row['building_id'],candidate_sha256=row['candidate_sha256'],
                 outcome=None,review_basis=None,review_reference='',corrections=[correction],output_directory=root/'correction-draft')
             if draft['feedback_path'] is not None:raise AssertionError('A correction draft created training feedback')
+            regeneration_id=review_runtime.submit_regeneration(draft['output_directory'])
+            regeneration_job=_wait(review_runtime,regeneration_id,timeout=120)
+            if regeneration_job['status']!='completed':raise RuntimeError(regeneration_job.get('error') or regeneration_job['status'])
+            regeneration_result=regeneration_job['result']
+            if not Path(regeneration_result['corrected_world_path']).is_file():raise AssertionError('Regenerated native world missing')
+            if 'all written blocks' not in regeneration_result['corrected_native']['world']['round_trip_validation']:
+                raise AssertionError('Regenerated native world did not pass saved readback')
+            regenerated=load_session(regeneration_result['queue_path'],regeneration_result['batch_path'])
+            if any(regenerated['records'][0]['candidate']['gates'].values()):raise AssertionError('Regeneration bypassed independent review')
             geometry={'footprint_m':[[0,0],[8,0],[8,5],[0,5]],'height_m':4,'position_m':[0,0,0]}
             case={'id':'synthetic-exact','building_id':row['building_id'],'source_sha256':row['source_sha256'],
                 'reference':{'geometry':geometry,'review_basis':'independent_review',
@@ -598,7 +629,7 @@ def self_test(data_directory=None,workers=2):
                 raise AssertionError('Benchmark did not preserve missing geometry as a failed/unassessed case')
             if review_runtime.store.summary()['feedback_records'] or review_runtime.store.summary()['checkpoints']:
                 raise AssertionError('Review preparation/draft or benchmark created learning labels/checkpoints')
-            review_peak=max(review_job['peak_memory_mb'],benchmark_job['peak_memory_mb'])
+            review_peak=max(review_job['peak_memory_mb'],benchmark_job['peak_memory_mb'],regeneration_job['peak_memory_mb'])
         finally:review_runtime.close(wait=True)
         from .neural_learning import baseline,train,validate_model
         records=[]
@@ -619,6 +650,7 @@ def self_test(data_directory=None,workers=2):
             'undersized_checkpoint_withheld':True,'native_terrain_world_and_saved_readback':'passed','observed_managed_peak_memory_mb':native_peak,
             'real_alton_area_preset_and_readback':'passed','real_alton_area_peak_managed_memory_mb':area_peak,
             'source_linked_correction_draft':'passed','correction_draft_has_no_feedback':True,
+            'correction_regeneration_world_and_readback':'passed','corrected_candidate_requires_independent_review':True,
             'managed_reconstruction_benchmark':'passed','benchmark_missing_prediction_remains_unassessed':True,
             'review_and_benchmark_peak_managed_memory_mb':review_peak,
             'synthetic_training_only':True,'trained_real_park_model':False}
