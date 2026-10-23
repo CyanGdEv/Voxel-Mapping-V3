@@ -18,7 +18,6 @@ on:
       - 'tests/test_desktop*.py'
       - 'tests/test_neural_learning.py'
       - 'tests/test_neural_building_pipeline.py'
-      - 'examples/desktop/**'
       - 'pyproject.toml'
       - '.github/workflows/windows-desktop.yml'
 
@@ -90,7 +89,6 @@ jobs:
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |
-          Copy-Item ./examples/desktop ./dist/VoxelMapperV3/examples -Recurse
           $root = (Resolve-Path ./dist/VoxelMapperV3).Path
           $files = @(Get-ChildItem $root -File -Recurse | ForEach-Object {
             @{ path = [IO.Path]::GetRelativePath($root, $_.FullName).Replace('\','/'); bytes = $_.Length; sha256 = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant() }
@@ -100,6 +98,16 @@ jobs:
           Copy-Item ./build/desktop-validation ./dist/VoxelMapperV3/validation -Recurse
           Compress-Archive -Path ./dist/VoxelMapperV3 -DestinationPath ./dist/VoxelMapperV3-Windows-x64.zip -CompressionLevel Optimal
           (Get-FileHash ./dist/VoxelMapperV3-Windows-x64.zip -Algorithm SHA256).Hash.ToLowerInvariant() + '  VoxelMapperV3-Windows-x64.zip' | Set-Content ./dist/VoxelMapperV3-Windows-x64.zip.sha256 -Encoding ascii
+      - name: Upload small Windows validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoxelMapperV3-Windows-validation
+          path: |
+            build/desktop-validation
+            dist/VoxelMapperV3-Windows-x64.zip.sha256
+          if-no-files-found: warn
+          retention-days: 30
       - name: Upload executable distribution and test evidence
         uses: actions/upload-artifact@v4
         with:
@@ -116,7 +124,7 @@ jobs:
           name: VoxelMapperV3-Windows-build-failure
           path: |
             build/desktop-validation
-            build/VoxelMapperV3/warn-VoxelMapperV3.txt
-            build/VoxelMapperV3/xref-VoxelMapperV3.html
+            build/voxel_mapper/warn-voxel_mapper.txt
+            build/voxel_mapper/xref-voxel_mapper.html
           if-no-files-found: ignore
           retention-days: 14

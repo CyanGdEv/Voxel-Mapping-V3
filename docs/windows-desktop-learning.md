@@ -79,8 +79,8 @@ A process-level data-directory lock prevents two desktop instances from changing
 one memory store. SQLite connections are short-lived and never shared across
 worker processes. Completed jobs and observations survive restart; queued,
 running or cancelling work interrupted by a crash is retained explicitly rather
-than reported as complete. Failed/interrupted automatic training can retry on
-restart, at most three attempts per unchanged dataset. Explicit cancellation is
+than reported as complete. Failed automatic training retries after completion, and interrupted training can
+retry on restart, at most three attempts per unchanged dataset. Explicit cancellation is
 retained; re-enable automatic learning or submit a manual job to resume it.
 
 Evidence observations retain source hashes, status and numeric counts. Errors
@@ -120,7 +120,8 @@ Training is bounded to 10,000 records and the model's CPU work limits. Evaluatio
 must improve held-out Brier error, retain at least 95% accepted-candidate precision
 at the confidence threshold and provide enough qualifying predictions. A worse
 or undersized checkpoint is retained for inspection while the prior active model
-remains selected. The same evaluated dataset is not trained endlessly in the
+remains selected. New feedback imported during an active training run is picked up after that
+run finishes. The same evaluated dataset is not trained endlessly in the
 background. Periodically supplying genuinely untouched evaluation examples is
 still necessary; repeated use of one holdout does not prove generalization.
 

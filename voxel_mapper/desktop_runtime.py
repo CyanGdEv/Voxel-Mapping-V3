@@ -180,7 +180,10 @@ class DesktopRuntime:
         finally:
             if heavy:self._heavy.release()
             if training:self._training_mutex.release()
-            if kind=='import_feedback' and not self._closed:self._maybe_auto_train()
+            # A review import can arrive while a trainer is active. Recheck
+            # after its terminal status is stored so the newest snapshot is
+            # scheduled without requiring another import or application restart.
+            if kind in ('import_feedback','train_ranker') and not self._closed:self._maybe_auto_train()
 
     def _import_feedback(self,job):
         config=read_json(job['config_path']);path=resolve_path(job['config_path'],config.get('feedback_path'));feedback_pin=file_hash(path);feedback=read_json(path)

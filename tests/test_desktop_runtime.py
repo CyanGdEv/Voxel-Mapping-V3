@@ -13,9 +13,9 @@ from voxel_mapper.desktop_runtime import DesktopRuntime,_wait,write_json
 from voxel_mapper.neural_learning import FEATURES
 
 
-def reviewed_fixture(suffix='initial',invert=False):
+def reviewed_fixture(suffix='initial',invert=False,training_records_per_building=20):
     records=[];split={'training_buildings':[],'evaluation_buildings':[]}
-    for phase,count in (('training',20),('evaluation',4)):
+    for phase,count in (('training',training_records_per_building),('evaluation',4)):
         for i in range(5):
             building=f'synthetic-{phase}-{i}';split[phase+'_buildings'].append(building)
             for j in range(count):
@@ -166,6 +166,72 @@ class DesktopRuntimeTests(unittest.TestCase):
                 self.assertEqual(reopened.store.setting('active_model'),active)
                 self.assertEqual(len(self.training_jobs(reopened)),2)
                 self.assertEqual(reopened.store.summary()['feedback_records'],240)
+
+    def test_reviews_imported_during_active_training_schedule_the_newest_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);records,split=reviewed_fixture(training_records_per_building=400)
+            with self.runtime(root/'memory') as runtime:
+                self.import_dataset(runtime,root,records,split)
+                first=self.training_jobs(runtime)[0];progress=Path(first['output_directory']).parent/'progress.json'
+                deadline=time.monotonic()+6
+                while time.monotonic()<deadline:
+                    current=runtime.store.job(first['id'])
+                    if current['status'] in ('failed','completed','cancelled'):
+                        self.fail('Trainer ended before concurrent review import: '+str(current.get('error')))
+                    if progress.exists():
+                        try:value=json.loads(progress.read_text())
+                        except (OSError,ValueError):value={}
+                        if str(value.get('message','')).startswith('CPU neural training epoch '):break
+                    time.sleep(.005)
+                else:self.fail('Actual subprocess trainer did not enter a training epoch')
+                newer,_=reviewed_fixture('new-reviewed-snapshot',invert=True)
+                self.import_dataset(runtime,root,newer,split,name='newer')
+                self.assertEqual(runtime.store.job(first['id'])['status'],'running')
+                self.assertEqual(len(self.training_jobs(runtime)),1)
+                completed=self.completed(runtime,first['id'])
+                self.assertTrue(completed['result']['promotion_eligible'])
+                jobs=self.training_jobs(runtime);self.assertEqual(len(jobs),2)
+                next_job=next(j for j in jobs if j['id']!=first['id']);latest=self.completed(runtime,next_job['id'])
+                self.assertNotEqual(latest['result']['feedback_sha256'],completed['result']['feedback_sha256'])
+                self.assertFalse(latest['result']['promotion_eligible'])
+                self.assertEqual(runtime.store.setting('active_model')['sha256'],completed['result']['candidate_sha256'])
+                self.assertEqual(runtime.store.summary()['feedback_records'],2140)
+                self.assertEqual(len(self.training_jobs(runtime)),2)
+
+    def test_explicit_auto_training_cancellation_does_not_restart_same_dataset(self):
+        records,split=reviewed_fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            directory=Path(tmp)/'memory';store=MemoryStore(directory)
+            store.import_feedback(records);store.set_setting('explicit_split',split)
+            with self.runtime(directory) as runtime:
+                jid=runtime.store.setting('last_auto_job');self.assertTrue(runtime.cancel(jid))
+                self.assertEqual(_wait(runtime,jid,timeout=8)['status'],'cancelled')
+                runtime._maybe_auto_train()
+                self.assertEqual(len(self.training_jobs(runtime)),1)
+                self.assertIsNone(runtime.store.setting('active_model'))
+            with self.runtime(directory) as reopened:
+                self.assertEqual(len(self.training_jobs(reopened)),1)
+                self.assertIsNone(reopened.store.setting('active_model'))
+
+    def test_failed_automatic_training_retries_stop_at_existing_limit(self):
+        records,split=reviewed_fixture()
+        # A real worker rejects this shared training/evaluation source before
+        # gradient work. The automatic completion callback must not loop forever.
+        records[-1]['source_sha256']=records[0]['source_sha256']
+        with tempfile.TemporaryDirectory() as tmp:
+            directory=Path(tmp)/'memory';store=MemoryStore(directory)
+            store.import_feedback(records);store.set_setting('explicit_split',split)
+            with self.runtime(directory) as runtime:
+                deadline=time.monotonic()+8
+                while time.monotonic()<deadline:
+                    if runtime.store.setting('learning_state',{}).get('status')=='retry_limit_reached':break
+                    time.sleep(.02)
+                else:self.fail('Automatic retry limit was not reached')
+                jobs=self.training_jobs(runtime);self.assertEqual(len(jobs),3)
+                self.assertTrue(all(j['status']=='failed' for j in jobs))
+                self.assertTrue(all('source leakage' in j['error'] for j in jobs))
+                self.assertEqual(runtime.store.setting('auto_training_attempts')['count'],3)
+                self.assertIsNone(runtime.store.setting('active_model'))
 
     def test_crashed_cancelling_job_becomes_interrupted_on_memory_restart(self):
         with tempfile.TemporaryDirectory() as tmp:
