@@ -18,6 +18,7 @@ JOB_KINDS = (
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Web research / cited source evidence', 'web_research'),
+    ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -285,6 +286,7 @@ class DesktopWindow:
         self.web_query=tk.StringVar();self.web_urls=tk.StringVar()
         self.web_hosts=tk.StringVar(value=' '.join(DEFAULT_HOSTS));self.web_model=tk.StringVar()
         self.web_offline=tk.BooleanVar(value=False)
+        self.web_application=tk.StringVar(value='SMD/2024/0136')
         for index,(label,variable) in enumerate([('Public search query',self.web_query),
                 ('Source URLs (space separated)',self.web_urls),('Approved source hosts',self.web_hosts),
                 ('Installed local model (optional)',self.web_model)]):
@@ -293,7 +295,11 @@ class DesktopWindow:
         self.web_run=ttk.Button(web,text='Research web',command=self._submit_web)
         self.web_run.grid(row=0,column=2,sticky='ne')
         ttk.Checkbutton(web,text='Use cached sources only',variable=self.web_offline).grid(row=1,column=2,sticky='w')
-        ttk.Label(web,text='Read public pages and PDFs, save citations and evidence. An installed model can choose discovered links; source claims still need verification.',wraplength=980).grid(row=4,column=0,columnspan=3,sticky='w',pady=(6,0))
+        ttk.Label(web,text='Planning application reference').grid(row=4,column=0,sticky='w',pady=2)
+        ttk.Entry(web,textvariable=self.web_application).grid(row=4,column=1,sticky='ew',padx=8,pady=2)
+        self.web_planning_run=ttk.Button(web,text='Analyse planning PDFs',command=lambda:self._submit_web(planning=True))
+        self.web_planning_run.grid(row=4,column=2,sticky='e')
+        ttk.Label(web,text='Gather cited sources, or analyse discovered original PDFs into a drawing review pack. Source membership and physical geometry still need verification.',wraplength=980).grid(row=5,column=0,columnspan=3,sticky='w',pady=(6,0))
         web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
@@ -385,16 +391,20 @@ class DesktopWindow:
             self._background(lambda:self.runtime.submit_review(preset,evidence_directory=folder),queued)
         except Exception as error:self._error(error)
 
-    def _submit_web(self):
+    def _submit_web(self,planning=False):
         try:
             query=self.web_query.get().strip();urls=self.web_urls.get().split()
             approved=self.web_hosts.get().split();model=self.web_model.get().strip()
             offline=bool(self.web_offline.get())
+            reference=self.web_application.get().strip()
             def queued(jid):
                 self.select_when_visible=str(jid)
                 self.status.set('Web research queued; citations and failures will appear in job details')
-            self._background(lambda:self.runtime.submit_web(query,urls,allowed_hosts=approved,
-                model=model,offline=offline),queued)
+            def submit():
+                if planning: return self.runtime.submit_web_planning(reference,query,urls,
+                    allowed_hosts=approved,model=model,offline=offline)
+                return self.runtime.submit_web(query,urls,allowed_hosts=approved,model=model,offline=offline)
+            self._background(submit,queued)
         except Exception as error:self._error(error)
 
     def _open_review_queue(self,report=None):
@@ -519,6 +529,12 @@ class DesktopWindow:
                 result=row['result']
                 detail=(f"Web sources retained: {len(result.get('sources',[]))}; unavailable: {len(result.get('failures',[]))}.\n"
                     +result.get('summary','')+'\nWebsite claims are stored evidence; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='web_planning_pilot' and row.get('result'):
+                counts=row['result']['summary']
+                detail=(f"Original web PDFs analysed: {counts['unique_originals_handed_to_analysis']}; pages completed: {counts['completed_pages']}.\n"
+                    f"Visible drawing captions: {counts['visible_view_captions']}; surface candidates: {counts['surface_candidates']}.\n"
+                    'Open review.html in Results folder for original drawings, page classifications and acquisition gaps.\n'
+                    'Application membership and physical geometry remain unverified; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -607,12 +623,13 @@ def launch(data_directory,workers=2,memory_budget_mb=2048,smoke_output=None):
                 result['primary_controls_visible']=True
                 notebook=window.web_run.master.master
                 notebook.select(window.web_run.master);root.update()
-                widget=window.web_run
-                x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
-                if (not widget.winfo_ismapped() or x<0 or y<0 or
-                        x+widget.winfo_width()>root.winfo_width() or y+widget.winfo_height()>root.winfo_height()):
-                    raise ValueError('Web research button is hidden or clipped')
+                for widget in (window.web_run,window.web_planning_run):
+                    x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
+                    if (not widget.winfo_ismapped() or x<0 or y<0 or
+                            x+widget.winfo_width()>root.winfo_width() or y+widget.winfo_height()>root.winfo_height()):
+                        raise ValueError('Web research/planning button is hidden or clipped')
                 result['web_research_control_visible']=True
+                result['web_planning_control_visible']=True
                 try:
                     from PIL import ImageGrab
                     box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
@@ -640,6 +657,7 @@ def main(argv=None):
     parser.add_argument('--correction-smoke-test',type=Path,metavar='OUTPUT',help='Exercise actual desktop correction submission and regenerated native world readback.')
     parser.add_argument('--planning-pilot-smoke-test',type=Path,metavar='OUTPUT',help='Exercise planning discovery through a managed worker and verify retained evidence.')
     parser.add_argument('--web-smoke-test',type=Path,metavar='OUTPUT',help='Exercise offline web citations and persistent memory through a managed worker.')
+    parser.add_argument('--web-planning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic application-to-original-PDF analysis through a managed worker.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -660,6 +678,9 @@ def main(argv=None):
     if args.web_smoke_test is not None:
         from .desktop_web_smoke import run
         result=run(args.web_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.web_planning_smoke_test is not None:
+        from .desktop_web_planning_smoke import run
+        result=run(args.web_planning_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

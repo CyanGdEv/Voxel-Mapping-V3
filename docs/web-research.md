@@ -1,5 +1,7 @@
 # Public web research
 
+Use **Analyse planning PDFs** for the [automatic drawing-analysis handoff](web-planning-pilot.md).
+
 The desktop **Web research** tab gathers public pages, native PDF text and plain
 text as cited evidence. Enter an explicit search query, source URLs, or both.
 The default source hosts cover Staffordshire Moorlands Council and Alton Towers;

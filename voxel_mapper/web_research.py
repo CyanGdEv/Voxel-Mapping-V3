@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import time
+from urllib.parse import urlsplit
 
 from . import web_evidence as web
 from .desktop_memory import digest
@@ -82,7 +83,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     if cancelled(): raise CancelledError('Web research cancelled')
     output.mkdir(parents=True);atomic_json(output/'config.json',config)
     started=time.monotonic();deadline=started+limits['max_seconds'];budget=web.Budget(limits['max_run_bytes'])
-    sources=[];failures=[];attempted=set();known=[];rounds=[];executions=[];withheld=[]
+    sources=[];failures=[];attempted=set();known=[];document_links=set();rounds=[];executions=[];withheld=[]
     search_report=None;model_error=None
     def check():
         if cancelled(): raise CancelledError('Web research cancelled')
@@ -91,6 +92,10 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         try: target=web.url(value,approved)
         except ValueError: return
         if target not in known and len(known)<64: known.append(target)
+        return target if target in known else None
+    def pending():
+        return sorted((value for value in known if value not in attempted),
+            key=lambda value:0 if value in document_links else 1)
     for value in seeds: discover(value)
     if config.get('query','').strip():
         check();progress({'progress':.05,'message':'Searching public web sources'})
@@ -112,7 +117,12 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
                 refresh=config.get('refresh',True),budget=budget,cancelled=cancelled,deadline=deadline)
             source=item['source'];sources.append(item)
             atomic_json(output/(source['citation_id']+'.json'),item)
-            for link in source['links']: discover(link['url'])
+            for link in source['links']:
+                target=discover(link['url'])
+                if target and (urlsplit(target).path.lower().endswith('.pdf') or
+                        'attachmentshowservlet' in urlsplit(target).path.lower() or
+                        re.search(r'\b(plan|drawing|elevations?|sections?|surfacing)\b',link['title'],re.I)):
+                    document_links.add(target)
             if proposal_id: executions.append({'proposal_id':proposal_id,'url':value,'citation_id':source['citation_id']})
         except (web.WebError,ValueError) as error:
             failures.append({'url':value,'code':getattr(error,'code','invalid_source'),'error':str(error)})
@@ -122,12 +132,14 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     for value in initial: read(value)
     model=config.get('model','')
     if not model:
-        for value in list(known): read(value)
+        while len(attempted)<limits['max_sources'] and check():
+            candidates=pending()
+            if not candidates: break
+            read(candidates[0])
     else:
         for number in range(limits['max_model_rounds']):
             if not check(): break
-            context,included,offered=_context(prompt,memory,sources,
-                [value for value in known if value not in attempted])
+            context,included,offered=_context(prompt,memory,sources,pending())
             try:
                 reply=reason(prompt,model=model,memory=context,
                     endpoint=config.get('endpoint',local_reasoning.DEFAULT_ENDPOINT),
@@ -178,6 +190,10 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         'read_only_model_requests_executed':executions,'withheld_proposals':withheld,
         'model_error':model_error,'limits':limits,'attempted_sources':len(attempted),
         'network_bytes':budget.spent,'cache_directory':str(Path(cache).resolve()),
+        'unattempted_discovered_urls':pending(),
+        'unattempted_document_urls':[value for value in pending() if value in document_links],
+        'source_budget_exhausted':len(attempted)>=limits['max_sources'] and bool(pending()),
+        'discovery_exhaustive':False,
         'time_budget_exhausted':not within_time,'byte_budget_exhausted':budget.spent>=budget.limit,
         'operational_proposals_executed':False,'source_evidence_verified':False,
         'training_labels_generated':0,'model_weights_updated':False,'world_geometry_additions':0,

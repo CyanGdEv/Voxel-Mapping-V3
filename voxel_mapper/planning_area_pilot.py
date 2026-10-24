@@ -27,7 +27,7 @@ LIMITS = {'max_documents': 16, 'max_pages': 32, 'max_document_pages': 8,
           'max_document_bytes': 24000000, 'max_output_bytes': 128000000,
           'render_edge_pixels': 1200}
 ROLES = {'site-plan', 'floor-plan', 'block-plan', 'landscape-plan',
-         'elevation', 'section', 'detail', 'location-plan'}
+         'elevation', 'section', 'detail', 'location-plan', 'roof-plan', 'unclassified'}
 SURFACE_ROLES = {'site-plan', 'block-plan', 'floor-plan', 'landscape-plan'}
 
 
@@ -84,7 +84,7 @@ def validate(config):
     for item in documents:
         if not isinstance(item, dict) or set(item)-{
                 'file', 'sha256', 'title', 'role', 'drawing_state',
-                'application_reference', 'url', 'transport_url', 'pages'}:
+                'application_reference', 'url', 'transport_url', 'pages', 'page_roles'}:
             raise ValueError('Known original drawing fields required')
         sha = item.get('sha256')
         if not isinstance(sha, str) or not re.fullmatch('[0-9a-f]{64}', sha) or sha in seen:
@@ -106,6 +106,12 @@ def validate(config):
                 any(type(p) is not int or not 1<=p<=10000 for p in pages) or
                 len(set(pages))!=len(pages)):
             raise ValueError('Distinct bounded source pages required')
+        page_roles=item.get('page_roles',{})
+        if (not isinstance(page_roles,dict) or len(page_roles)>limits['max_document_pages'] or
+                any(not isinstance(k,str) or not re.fullmatch(r'[1-9][0-9]{0,4}',k) or
+                    int(k)>10000 or not isinstance(v,str) or v not in ROLES for k,v in page_roles.items()) or
+                (pages is not None and not set(page_roles)<=set(map(str,pages)))):
+            raise ValueError('Bounded roles for selected original pages required')
     return limits
 
 
@@ -146,6 +152,7 @@ def _page(page, sha, number, role):
     titles = [] if layout is None else layout['sheet_titles']
     blockers = ['geographic_registration_unresolved', 'finished_levels_unresolved',
                 'current_as_built_state_unverified', 'independent_reference_inventory_missing']
+    if role=='unclassified': blockers.append('page_drawing_role_unresolved')
     if discovery['status']!='native_drawing_candidates_discovered':
         blockers.append(discovery['status'])
     if visible: blockers += ['physical_view_scope_unverified', 'cross_view_component_correspondence_unresolved']
@@ -156,7 +163,7 @@ def _page(page, sha, number, role):
         'coordinate_frame':'pdf_native_points_y_up',
         'discovery':discovery, 'view_candidates':view_pack,
         'surface_candidates':surfaces, 'surface_labels':labels, 'surface_report':surface_report,
-        'summary':{'geometry_status':discovery['status'],
+        'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
             'printed_view_states':states,
@@ -257,7 +264,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                     name=item['sha256']+'-page-'+str(number)
                     record={'document_sha256':item['sha256'],'page':number}
                     try:
-                        result=_page(document[number-1],item['sha256'],number,item['role'])
+                        role=item.get('page_roles',{}).get(str(number),item['role'])
+                        result=_page(document[number-1],item['sha256'],number,role)
                         check()
                         raw=(json.dumps(result,sort_keys=True,allow_nan=False)+'\n').encode()
                         if len(raw)>32000000 or written+len(raw)>limits['max_output_bytes']:

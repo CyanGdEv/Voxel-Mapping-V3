@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -166,6 +166,18 @@ class DesktopRuntime:
         path=self.directory/'web-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
         return self.submit('web_research',path)
 
+    def submit_web_planning(self,application_reference,query='',urls=None,*,allowed_hosts=None,model='',offline=False,refresh=True):
+        from .web_planning_pilot import VERSION,validate
+        from .web_research import VERSION as WEB_VERSION
+        from .web_evidence import DEFAULT_HOSTS
+        config={'version':VERSION,'area_id':application_reference,'application_reference':application_reference,
+            'research':{'version':WEB_VERSION,'query':query,'urls':urls or [],
+                'allowed_hosts':list(DEFAULT_HOSTS) if allowed_hosts is None else allowed_hosts,
+                'model':model,'offline':offline,'refresh':refresh}}
+        validate(config)
+        path=self.directory/'web-planning-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
+        return self.submit('web_planning_pilot',path)
+
     def submit_reviewed_feedback(self,feedback_path):
         """Explicit UI import uses the same durable reviewed-feedback operation."""
         path=Path(feedback_path).expanduser().resolve()
@@ -217,7 +229,7 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind=='web_research':
+                if kind in ('web_research','web_planning_pilot'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
                 if kind=='area_pilot':
@@ -305,7 +317,7 @@ class DesktopRuntime:
         directory=Path(job['output_directory']).parent;request=directory/'request.json';active=self.store.setting('active_model')
         payload={'version':'desktop-worker-v1','kind':job['kind'],'config_path':job['config_path'],'config_sha256':job['config_sha256'],
             'output_directory':job['output_directory'],'result_path':str(directory/'worker-result.json'),'progress_path':str(directory/'progress.json'),
-            'cancel_path':str(directory/'cancel'),'active_model':active,'memory_context':self.store.context(max_characters=max(0,min(2048,4096-len(str(read_json(job['config_path']).get('prompt','')))))) if job['kind'] in ('reason','web_research') else ''}
+            'cancel_path':str(directory/'cancel'),'active_model':active,'memory_context':self.store.context(max_characters=max(0,min(2048,4096-len(str(read_json(job['config_path']).get('prompt','')))))) if job['kind'] in ('reason','web_research','web_planning_pilot') else ''}
         import psutil
         payload.update(parent_pid=os.getpid(),parent_created=psutil.Process(os.getpid()).create_time())
         write_json(request,payload)
@@ -414,7 +426,11 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='web_research':
+    if kind=='web_planning_pilot':
+        from .web_planning_pilot import run
+        result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
+            cancelled=cancelled,progress=progress)
+    elif kind=='web_research':
         from .web_research import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)
