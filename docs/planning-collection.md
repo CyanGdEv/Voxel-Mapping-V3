@@ -120,3 +120,9 @@ and its source-pinned JSON index across completed batches. It preserves labelled
 source section spans through restart. These profiles remain unassigned to plan
 components and supply no physical height or 3D building acceptance.
 No height is inferred from a two-length note; 3D generation remains withheld.
+
+[Section to plan comparisons](planning-section-correspondence.md) add
+`section-correspondence.html` and a source-pinned JSON receipt across all batches.
+Original sheet-reference circles and every contextual component rival survive
+verified restart. Numeric view indices do not identify lettered sections, and
+nominal size agreement never selects a physical component or assigns a height.

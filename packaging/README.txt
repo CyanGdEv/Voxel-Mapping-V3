@@ -108,3 +108,8 @@ Planning Results include section-profiles.html and section-profiles.json.
 These retain nominal source-polygon spans and exact drawing evidence. Profiles
 remain unassigned to floor-plan components; no physical building height or 3D
 shell is accepted. Blue original-page overlays identify the retained profiles.
+
+Planning review outputs include section-correspondence.html. This retains original
+sheet-reference circles and competing section/plan component hypotheses across
+automatic batches and restart. Similar widths and numeric view indices do not
+assign physical component identity, height or a 3D building.

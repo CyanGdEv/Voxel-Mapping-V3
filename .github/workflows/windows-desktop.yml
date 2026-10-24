@@ -34,6 +34,7 @@ on:
       - 'voxel_mapper/planning_component_footprints.py'
       - 'voxel_mapper/planning_component_measurements.py'
       - 'voxel_mapper/planning_section_profiles.py'
+      - 'voxel_mapper/planning_section_correspondence.py'
       - 'voxel_mapper/drawing_view_candidates.py'
       - 'voxel_mapper/ordinary_surfaces.py'
       - 'voxel_mapper/architectural_view_layout.py'
@@ -49,6 +50,7 @@ on:
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
+      - 'tests/test_planning_section_correspondence.py'
       - 'tests/test_drawing_view_candidates.py'
       - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
@@ -107,6 +109,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Component nominal measurement and size-note tests failed' }
           python -m unittest discover -s tests -p 'test_planning_section_profiles.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Section profile tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_section_correspondence.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Section correspondence tests failed' }
           python -m unittest discover -s tests -p 'test_drawing_view_candidates.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Drawing view layout tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v

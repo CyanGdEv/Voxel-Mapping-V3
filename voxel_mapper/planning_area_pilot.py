@@ -21,7 +21,7 @@ import pymupdf
 from . import architectural_view_layout, building_pdf_discovery, drawing_view_candidates
 from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linework_boundaries, drawing_page_tools, building_raster_views
 from . import planning_outline_semantics, glyph_visibility, planning_component_footprints, planning_component_measurements
-from . import planning_section_profiles
+from . import planning_section_profiles, planning_section_correspondence
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
 from .drawing_page_tools import native_inverse
@@ -158,7 +158,8 @@ def _outline_overlay(result, preview, path):
                   'vertical_span_nominal_m':r['vertical_span_nominal_m'],
                   'physical_height_m':None,'plan_component_correspondence_verified':False})
                 for r in (result.get('section_profiles') or {}).get('profiles',[])]
-    if not records:return None
+    markers=(result.get('drawing_references') or {}).get('markers',[])
+    if not records and not markers:return None
     if len(records)>1000:raise PilotBudgetExceeded('Outline overlay record budget exceeded')
     width,height=preview['size_pixels'];matrix=pymupdf.Matrix(preview['pdf_native_to_pixels'])
     background=base64.b64encode((path.parent/preview['file']).read_bytes()).decode('ascii')
@@ -177,6 +178,15 @@ def _outline_overlay(result, preview, path):
         title=escape(kind+' outline '+identifier+'; '+json.dumps(metrics,sort_keys=True))
         color={'source':'#007985','view':'#c94b00','label_hint':'#087b36','component':'#a315a8','section_profile':'#4933d6'}[kind]
         parts.append(f'<path class="{kind}" data-source-candidate-id="{escape(identifier,quote=True)}" fill="none" stroke="{color}" stroke-width="1.5" vector-effect="non-scaling-stroke" d="{" ".join(commands)}"><title>{title}</title></path>')
+    for marker in markers:
+        commands=[]
+        for curve in marker['circle_source_beziers_pdf_native']:
+            projected=[pymupdf.Point(*p)*matrix for p in curve]
+            if not commands:commands.append(f'M{projected[0].x:.3f},{projected[0].y:.3f}')
+            commands.append('C'+' '.join(f'{p.x:.3f},{p.y:.3f}' for p in projected[1:]))
+        title=escape('Unverified sheet reference '+marker['target_sheet_candidate']+
+            '; outside index '+str(marker['target_view_index_candidate'])+'; no section-cut assignment')
+        parts.append(f'<path class="sheet_reference" data-source-candidate-id="{marker["id"]}" fill="none" stroke="#a12828" stroke-width="2" d="{" ".join(commands)}"><title>{title}</title></path>')
     parts.append('</svg>');data=''.join(parts).encode('utf-8')
     if len(data)>16000000:raise PilotBudgetExceeded('Outline overlay byte budget exceeded')
     path.write_bytes(data)
@@ -185,7 +195,9 @@ def _outline_overlay(result, preview, path):
             'legend':{'cyan':'unclassified closed source outlines','orange':'view-region source outlines',
                       'green':'visible source-label enclosure hints; physical identity unverified',
                       'purple':'fine component boundary hypotheses; physical identity unverified',
-                      'blue':'unassigned nominal section profiles; physical heights unverified'},
+                      'blue':'unassigned nominal section profiles; physical heights unverified',
+                      'red':'original sheet reference circles; section cut identity unverified'},
+            'sheet_reference_markers':len(markers),
             'physical_geometry_verified':False}
 
 
@@ -211,6 +223,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         page,sha,number,layout,components,cancelled=cancelled)
     profiles = None if view_pack is None else planning_section_profiles.page_evidence(
         page,sha,number,view_pack,measurements,cancelled=cancelled)
+    references = None if measurements is None else planning_section_correspondence.page_references(
+        page,sha,number,measurements,cancelled=cancelled)
     scoped = None if view_pack is None or not view_pack['views'] else planning_view_geometry.page_candidates(
         page,sha,number,view_pack,cancelled=cancelled)
     visible = [] if layout is None else [r for r in layout['view_captions']
@@ -255,6 +269,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'component_footprints':components,
         'component_measurements':measurements,
         'section_profiles':profiles,
+        'drawing_references':references,
         'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
@@ -347,7 +362,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             ordinary_surfaces,drawing_view_candidates,planning_view_geometry,
             drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views,
             planning_outline_semantics,glyph_visibility,planning_component_footprints,planning_component_measurements,
-            planning_section_profiles)},
+            planning_section_profiles,planning_section_correspondence)},
         'semantic_backends':planning_outline_semantics.BACKENDS,
         'caption_version':architectural_view_layout.VERSION,
         'pymupdf_version':pymupdf.VersionBind}
@@ -450,10 +465,11 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}
-    measurement_pages=[];profile_pages=[]
+    measurement_pages=[];profile_pages=[];correspondence_pages=[]
     for record in pages:
         check()
         evidence=json.loads((root/record['evidence_file']).read_text(encoding='utf-8'))
+        correspondence_pages.append(planning_section_correspondence.source_page(evidence))
         if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
         if evidence.get('section_profiles'):profile_pages.append(evidence['section_profiles'])
     measurement_review=planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
@@ -461,6 +477,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
     summary.update(measurement_review['summary'])
     profile_review=planning_section_profiles.write_review(root,profile_pages,cancelled=cancelled)
     summary.update(profile_review['summary'])
+    correspondence_review=planning_section_correspondence.review_pages(correspondence_pages,cancelled=cancelled)
+    planning_section_correspondence.write_review(root,correspondence_review)
+    summary.update(correspondence_review['summary'])
     reference={'status':'awaiting_separate_checked_reference_inventory',
         'required_families':['buildings','paths_and_plazas'],
         'requirements':['source_bound_component_identities','drawing_state_and_current_state',
@@ -473,7 +492,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
     (root/'review.html').write_text(_html(config,documents,pages).replace('</html>',
         '<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>. '
         'Physical height and cross-view correspondence remain unresolved; no 3D building is generated.</p>'
-        '<p><a href="section-profiles.html">Unassigned section profile measurements</a></p></html>'),encoding='utf-8')
+        '<p><a href="section-profiles.html">Unassigned section profile measurements</a></p>'
+        '<p><a href="section-correspondence.html">Section to plan candidates and original sheet references</a></p></html>'),encoding='utf-8')
     total=sum(p.stat().st_size for p in root.iterdir() if p.is_file())
     if total>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
     report={'version':VERSION,'status':'source_review_pack_generated_with_reconstruction_blockers',
@@ -481,6 +501,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'summary':summary,'source_blockers':source_blockers,'page_blocker_counts':dict(page_blockers),
         'component_measurement_review':'component-measurements.json',
         'section_profile_review':'section-profiles.json',
+        'section_correspondence_review':'section-correspondence.json',
         'benchmark':reference,'training_labels_generated':0,'model_promoted':False,
         'world_placement_eligible':False,'park_world_blocks_added':0,
         'output_sha256':{p.name:file_hash(p) for p in sorted(root.iterdir()) if p.is_file()}}
