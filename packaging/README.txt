@@ -132,3 +132,14 @@ audit. Each saved world is read back and its archive and outside spawn checked.
 The target is Bedrock 1.21.130; Minecraft import and gameplay are not certified.
 At most eight worlds may be exported per job. Larger reviews can use an advanced
 planning_world_preview request selecting complete source-claim spacing pairs.
+
+Retained study image learning: extract the separate portable study dataset ZIP.
+In Advanced jobs / learning choose Train study component recognizer, choose its
+included training request JSON and start. Results contain open model.json weights
+and report.json with source-group evaluation. Full original PDFs are unnecessary
+for this portable training job. This is a research crop classifier, not automatic
+object discovery or geometry generation. It never replaces the building ranker.
+The first real 127-example run scored 9.4% on separate source groups; many test
+classes are absent from their training folds. More independent examples are needed.
+Frozen runtime check:
+  VoxelMapperV3.exe --study-learning-smoke-test PATH_TO_FRESH_TEST_DIRECTORY
