@@ -110,3 +110,8 @@ individual source-linework hypotheses around visible container labels on floor
 plans. Counts survive automatic follow-up batches and restart. Purple overlays
 retain native geometry and label/provenance evidence; physical exteriors, heights
 and placement remain unverified.
+
+[Component measurement review](planning-component-measurements.md) combines
+nominal floor-plan trials and literal size notes across completed batches. Open
+`component-measurements.html` for the measured plans and diagnostic differences.
+No height is inferred from a two-length note; 3D generation remains withheld.

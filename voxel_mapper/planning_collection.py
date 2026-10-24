@@ -50,7 +50,7 @@ def contract(config):
          pilot.planning.planning_view_geometry,pilot.planning.drawing_geometry,
          pilot.planning.linework_boundaries,pilot.planning.drawing_page_tools,
          pilot.planning.building_raster_views,pilot.planning.planning_outline_semantics,pilot.planning.glyph_visibility,
-         pilot.planning.planning_component_footprints)}}
+         pilot.planning.planning_component_footprints,pilot.planning.planning_component_measurements)}}
 
 
 def collection_key(config):return digest(contract(config))
@@ -289,12 +289,20 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
         unresolved=[deepcopy(e) for e in state['entries'].values() if e['status']!='completed']
         summary['unresolved_sources']=len(unresolved)
         summary['documents_needing_analysis_review']=len(analysis_gaps)
+        measurement_pages=[]
+        for path in sorted(root.glob('batches/*/analysis/*-page-*.json')):
+            check();evidence=json.loads(path.read_text(encoding='utf-8'))
+            if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
+        measurement_review=pilot.planning.planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
+        pilot.planning.planning_component_measurements.write_review(root,measurement_review)
+        summary.update(measurement_review['summary'])
         body='<h1>'+escape(config['pilot']['area_id'])+'</h1><p>Planning document collection. Source membership and physical geometry remain unverified.</p><ul>'
         body+=''.join('<li><a href="batches/batch-'+str(r['number']).zfill(4)+'/review.html">Batch '+str(r['number'])+' drawings and source gaps</a></li>' for r,_ in reports)
         body+='</ul><p>'+str(len(unresolved))+' unresolved sources. Stop: '+escape(stop)+'.</p>'
         body+='<p>'+str(summary['closed_source_outlines'])+' unclassified closed source outlines; '+str(summary['nominal_view_outlines'])+' outlines with nominal view measurements. These inventories may overlap. Physical identity, scale application and geographic placement remain unverified.</p><p><a href="ledger.json">Saved document queue</a></p>'
         body+='<p>'+str(summary['source_outline_role_hints'])+' source-label enclosure hints ('+str(summary['building_outline_hints'])+' building-related; '+str(summary['path_plaza_outline_hints'])+' path/plaza-related). Open each batch for original-page overlays and exact label evidence.</p>'
         body+='<p>'+str(summary['component_boundary_candidates'])+' fine component boundary hypotheses; physical building exteriors remain unverified.</p>'
+        body+='<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>: '+str(summary['size_consistent_component_hypotheses'])+' size-consistent; '+str(summary['size_mismatched_component_hypotheses'])+' mismatched. These are source comparisons, not accepted building footprints. Height and cross-view correspondence remain unresolved.</p>'
         (root/'review.html').write_text('<!doctype html><html><meta charset="utf-8"><title>Planning collection</title><body>'+body+'</body></html>',encoding='utf-8')
         write_json(root/'ledger.json',state)
         result={'version':VERSION,'status':'known_documents_processed_with_reconstruction_gaps' if not unresolved and not state['queue_overflow'] and state['initial_done'] else 'planning_collection_with_source_gaps',

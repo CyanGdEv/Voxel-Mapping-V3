@@ -56,11 +56,16 @@ def run(output):
             raise ValueError('Visible source-label enclosure hint missing')
         if summary.get('component_boundary_candidates')!=2:
             raise ValueError('Fine linework did not recover two separate component boundaries')
+        if summary.get('components_with_nominal_scale_trials')!=2:
+            raise ValueError('Nominal component scale trials were not retained')
         page_evidence=json.loads((pack/result['pages'][0]['evidence_file']).read_text(encoding='utf-8'))
         components=page_evidence['component_footprints']
         if (not components['analysis_complete'] or len({r['source_outline']['candidate_id'] for r in components['candidates']})!=2
                 or any(r['physical_identity_verified'] or r['world_placement_eligible'] for r in components['candidates'])):
             raise ValueError('Separate source components or acceptance boundaries changed')
+        measurement_review=json.loads((pack/'component-measurements.json').read_text())
+        if measurement_review['local_3d_components'] or measurement_review['physical_component_footprints_verified']:
+            raise ValueError('Missing height or unverified source footprints became a 3D building')
         if summary['geometric_accuracy'] is not None or result['world_placement_eligible'] or result['training_labels_generated']:
             raise ValueError('Discovery supplied unverified accuracy, acceptance or labels')
         for name,pin in result['output_sha256'].items():
@@ -79,6 +84,7 @@ def run(output):
         'output_hashes_verified':True,'persistent_restart_verified':True,
         'source_label_hints_verified':True,
         'component_boundaries_verified':True,
+        'component_measurements_verified':True,
         'real_park_accuracy_assessed':False,'world_placement_eligible':False,
         'training_labels_generated':0,'model_promoted':False}
     write_json(root/'planning-pilot-smoke.json',receipt)

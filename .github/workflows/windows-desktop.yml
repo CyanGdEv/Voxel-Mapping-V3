@@ -32,6 +32,7 @@ on:
       - 'voxel_mapper/planning_view_geometry.py'
       - 'voxel_mapper/planning_outline_semantics.py'
       - 'voxel_mapper/planning_component_footprints.py'
+      - 'voxel_mapper/planning_component_measurements.py'
       - 'voxel_mapper/ordinary_surfaces.py'
       - 'voxel_mapper/architectural_view_layout.py'
       - 'voxel_mapper/building_pdf_discovery.py'
@@ -44,6 +45,7 @@ on:
       - 'tests/test_planning_view_geometry.py'
       - 'tests/test_planning_outline_semantics.py'
       - 'tests/test_planning_component_footprints.py'
+      - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
       - 'tests/test_reconstruction_benchmark.py'
@@ -97,6 +99,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Planning source-label enclosure tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Component nominal measurement and size-note tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Planning closed-outline inventory tests failed' }
           python -m unittest discover -s tests -p 'test_architectural_view_layout.py' -v

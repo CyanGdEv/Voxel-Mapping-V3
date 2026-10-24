@@ -20,7 +20,7 @@ import pymupdf
 
 from . import architectural_view_layout, building_pdf_discovery, drawing_view_candidates
 from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linework_boundaries, drawing_page_tools, building_raster_views
-from . import planning_outline_semantics, glyph_visibility, planning_component_footprints
+from . import planning_outline_semantics, glyph_visibility, planning_component_footprints, planning_component_measurements
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
 from .drawing_page_tools import native_inverse
@@ -200,6 +200,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     semantic_summary={} if semantics is None else semantics['summary']
     components = None if role!='floor-plan' or semantics is None or not semantics['inventory_complete'] else planning_component_footprints.page_candidates(
         page,sha,number,outlines,semantics,cancelled=cancelled)
+    measurements = None if layout is None else planning_component_measurements.page_evidence(
+        page,sha,number,layout,components,cancelled=cancelled)
     scoped = None if view_pack is None or not view_pack['views'] else planning_view_geometry.page_candidates(
         page,sha,number,view_pack,cancelled=cancelled)
     visible = [] if layout is None else [r for r in layout['view_captions']
@@ -238,6 +240,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'view_geometry':scoped,
         'outline_semantics':semantics,
         'component_footprints':components,
+        'component_measurements':measurements,
         'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
@@ -328,7 +331,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             sys.modules[__name__],building_pdf_discovery,architectural_view_layout,
             ordinary_surfaces,drawing_view_candidates,planning_view_geometry,
             drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views,
-            planning_outline_semantics,glyph_visibility,planning_component_footprints)},
+            planning_outline_semantics,glyph_visibility,planning_component_footprints,planning_component_measurements)},
         'semantic_backends':planning_outline_semantics.BACKENDS,
         'caption_version':architectural_view_layout.VERSION,
         'pymupdf_version':pymupdf.VersionBind}
@@ -431,6 +434,14 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}
+    measurement_pages=[]
+    for record in pages:
+        check()
+        evidence=json.loads((root/record['evidence_file']).read_text(encoding='utf-8'))
+        if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
+    measurement_review=planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
+    planning_component_measurements.write_review(root,measurement_review)
+    summary.update(measurement_review['summary'])
     reference={'status':'awaiting_separate_checked_reference_inventory',
         'required_families':['buildings','paths_and_plazas'],
         'requirements':['source_bound_component_identities','drawing_state_and_current_state',
@@ -440,12 +451,15 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'development_exposure':config.get('development_exposure','unassessed'),
         'unseen_source_generalisation':'not_assessed'}
     atomic_json(root/'reference-requirements.json',reference)
-    (root/'review.html').write_text(_html(config,documents,pages),encoding='utf-8')
+    (root/'review.html').write_text(_html(config,documents,pages).replace('</html>',
+        '<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>. '
+        'Height and cross-view correspondence remain unresolved; no 3D building is generated.</p></html>'),encoding='utf-8')
     total=sum(p.stat().st_size for p in root.iterdir() if p.is_file())
     if total>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
     report={'version':VERSION,'status':'source_review_pack_generated_with_reconstruction_blockers',
         'contract':contract,'area_id':config['area_id'],'documents':documents,'pages':pages,
         'summary':summary,'source_blockers':source_blockers,'page_blocker_counts':dict(page_blockers),
+        'component_measurement_review':'component-measurements.json',
         'benchmark':reference,'training_labels_generated':0,'model_promoted':False,
         'world_placement_eligible':False,'park_world_blocks_added':0,
         'output_sha256':{p.name:file_hash(p) for p in sorted(root.iterdir()) if p.is_file()}}

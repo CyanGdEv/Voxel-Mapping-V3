@@ -20,6 +20,12 @@ def seed(cache):
             draw_component_fixture(page)
             page.insert_text((30,190),'Proposed Ground Floor Plan | 1:100',fontsize=10)
             page.insert_text((30,450),'Synthetic document '+str(number),fontsize=10)
+            page.insert_text((30,400),'DEMO-AA-BB-CC-DR-A-0201',fontsize=8)
+            page.insert_text((500,400),'0301',fontsize=8)
+            page=document.new_page(width=600,height=500)
+            page.insert_text((30,190),'Proposed Section A-A | 1:100',fontsize=10)
+            page.insert_text((30,240),'2 No. 2.1m x 3.5m Shipping containers.',fontsize=8)
+            page.insert_text((30,400),'DEMO-AA-BB-CC-DR-A-0301',fontsize=8)
             sources.append(('https://example.org/plan-'+str(number)+'.pdf',document.tobytes()))
     index=('<html><main>APP/1 '+''.join('<a href="'+value+'">Drawing</a>' for value,_ in sources)+'</main></html>').encode()
     class Response:
@@ -50,7 +56,7 @@ def run(output):
     runtime=DesktopRuntime(root/'memory',workers=2,memory_budget_mb=2048)
     try:
         first=submit(runtime);result=first['result'];pack=Path(first['output_directory'])
-        if result['summary']['completed_batches']!=2 or result['summary']['completed_pages']!=7:
+        if result['summary']['completed_batches']!=2 or result['summary']['completed_pages']!=14:
             raise ValueError('Automatic collection did not complete its follow-up batch')
         if result['summary']['completed_sources']!=8 or result['unresolved_sources']:
             raise ValueError('Known synthetic sources were left unread')
@@ -60,6 +66,8 @@ def run(output):
             raise ValueError('Automatic batches lost source-label enclosure hints')
         if result['summary'].get('component_boundary_candidates')!=14:
             raise ValueError('Automatic batches lost distinct fine component boundaries')
+        if result['summary'].get('size_consistent_component_hypotheses')!=14:
+            raise ValueError('Automatic batches lost printed-size diagnostics')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
@@ -69,10 +77,12 @@ def run(output):
         if runtime.store.job(first['id'])['result']['summary']!=result['summary']:
             raise ValueError('Collection history did not survive restart')
         second=submit(runtime)
-        if second['result']['summary']['new_batches']!=0 or second['result']['summary']['completed_pages']!=7:
+        if second['result']['summary']['new_batches']!=0 or second['result']['summary']['completed_pages']!=14:
             raise ValueError('Restart repeated completed drawing analysis')
         if second['result']['summary'].get('component_boundary_candidates')!=14:
             raise ValueError('Restart lost fine component boundary candidates')
+        if second['result']['summary'].get('size_consistent_component_hypotheses')!=14:
+            raise ValueError('Restart lost printed-size diagnostics')
         if runtime.store.summary()['feedback_records'] or runtime.store.summary()['checkpoints']:
             raise ValueError('Collection created reviewed labels or model checkpoints')
     finally:runtime.close(wait=True)
@@ -81,6 +91,7 @@ def run(output):
         'original_and_output_hashes_verified':True,'network_bytes':result['network_bytes'],
         'source_label_hints_verified':True,
         'component_boundaries_verified':True,
+        'component_measurements_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)
