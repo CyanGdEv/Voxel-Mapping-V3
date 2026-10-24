@@ -82,8 +82,12 @@ def _size(root):
 
 
 def run(config, output, cache, *, memory='', cancelled=lambda:False,
-        progress=lambda value:None, research=None, analyze=None):
+        progress=lambda value:None, research=None, analyze=None, research_options=None,
+        already_processed_sha256=()):
     approved,limits=validate(config)
+    processed=set(already_processed_sha256)
+    if len(processed)>64 or any(not isinstance(v,str) or not re.fullmatch('[0-9a-f]{64}',v) for v in processed):
+        raise ValueError('Bounded previously processed original hashes required')
     config=json.loads(json.dumps(config,allow_nan=False));root=Path(output);cache=Path(cache)
     if root.exists(): raise ValueError('Fresh web-to-planning output required')
     def check():
@@ -94,7 +98,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
     check();root.mkdir(parents=True);atomic_json(root/'config.json',config);quota()
     research=research or web_research.run;analyze=analyze or planning.run
     web_report=research(config['research'],root/'web-research',cache,memory=memory,
-        cancelled=cancelled,progress=progress)
+        cancelled=cancelled,progress=progress,**(research_options or {}))
     check();quota();originals=root/'originals';originals.mkdir()
     # Reload the verified receipts, not model descriptions or model-supplied
     # local paths. Preserve the exact snapshot that the web stage reported.
@@ -131,6 +135,8 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
             'parent_link_claims':links.get(source['requested_url'],[]),
             'status':'pending','pages':[]}
         handoffs.append(row)
+        if sha in processed:
+            row['status']='original_bytes_processed_in_prior_batch';continue
         if sha in seen:
             row['status']='duplicate_original_bytes';continue
         seen.add(sha)
@@ -155,7 +161,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
             states={state for page in row['pages'] for state in page['observed_states']}
             roles={page['role'] for page in row['pages']}
             title=next((v['title'] for v in row['parent_link_claims'] if v['title']),source['title'])
-            item={'file':target.name,'sha256':sha,'title':title[:512] or 'Unclassified original PDF',
+            item={'file':target.name,'sha256':sha,'title':title.strip()[:512] or 'Unclassified original PDF',
                 'role':next(iter(roles)) if len(roles)==1 else 'unclassified',
                 'page_roles':{str(p['page']):p['role'] for p in row['pages']},
                 'drawing_state':next(iter(states)) if len(states)==1 else 'unknown',
@@ -220,7 +226,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
         'source_evidence_verified':False,'application_membership_verified':False,
         'world_placement_eligible':False,'training_labels_generated':0,'model_weights_updated':False,
         'world_geometry_additions':0,'geometric_accuracy':None,
-        'output_sha256':{str(p.relative_to(root)):file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}}
+        'output_sha256':{p.relative_to(root).as_posix():file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}}
     atomic_json(root/'report.json',report)
     if _size(root)>limits['max_output_bytes']:
         (root/'report.json').unlink()

@@ -1,13 +1,15 @@
 # Automatic web PDFs to drawing analysis
 
-The **Web research** tab now has **Analyse planning PDFs**. Enter an application
+The **Web research** tab now uses [automatic follow-up collection](planning-collection.md)
+through **Collect & analyse PDFs**. The single-batch pilot described here remains
+available in Advanced jobs. Enter an application
 reference and a public application URL or search query, then start the job.
 The app gathers sources, verifies cached original bytes, copies original PDFs
 into the job's `originals` folder, creates a drawing manifest and runs the
 existing building-view and surface discovery pipeline automatically. No file-by-file
 PDF selection, drawing roles, page numbers or view rectangles are required.
 
-The [Woodcutters example](../examples/desktop/alton-web-planning-pilot.json) can
+The [single-batch Woodcutters example](../examples/desktop/alton-web-planning-pilot.json) can
 also be loaded under **Web planning PDFs / automatic source pack** in Advanced
 jobs. The example uses the public HTTP council application page that was reachable
 in development; HTTP supplies no authenticated transport. HTTPS can be entered

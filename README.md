@@ -1,5 +1,9 @@
 ## Windows desktop and CPU learning
 
+The [planning document collector](docs/planning-collection.md) follows unread
+planning links in automatic bounded batches, retries temporary failures and
+resumes verified saved progress without repeating completed PDF analysis.
+
 The [automatic web planning pilot](docs/web-planning-pilot.md) passes discovered
 original PDFs directly into drawing analysis, with page-specific role hints,
 separate existing/proposed claims and a source review pack.

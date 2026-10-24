@@ -19,6 +19,7 @@ JOB_KINDS = (
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Web research / cited source evidence', 'web_research'),
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
+    ('Planning collection / automatic follow-up batches', 'planning_collection'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -297,9 +298,9 @@ class DesktopWindow:
         ttk.Checkbutton(web,text='Use cached sources only',variable=self.web_offline).grid(row=1,column=2,sticky='w')
         ttk.Label(web,text='Planning application reference').grid(row=4,column=0,sticky='w',pady=2)
         ttk.Entry(web,textvariable=self.web_application).grid(row=4,column=1,sticky='ew',padx=8,pady=2)
-        self.web_planning_run=ttk.Button(web,text='Analyse planning PDFs',command=lambda:self._submit_web(planning=True))
+        self.web_planning_run=ttk.Button(web,text='Collect & analyse PDFs',command=lambda:self._submit_web(planning=True))
         self.web_planning_run.grid(row=4,column=2,sticky='e')
-        ttk.Label(web,text='Gather cited sources, or analyse discovered original PDFs into a drawing review pack. Source membership and physical geometry still need verification.',wraplength=980).grid(row=5,column=0,columnspan=3,sticky='w',pady=(6,0))
+        ttk.Label(web,text='Collect planning documents with saved progress and bounded retries. Review source gaps and drawing previews in Results.',wraplength=860).grid(row=5,column=0,columnspan=3,sticky='w',pady=(6,0))
         web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
@@ -402,7 +403,7 @@ class DesktopWindow:
                 self.status.set('Web research queued; citations and failures will appear in job details')
             def submit():
                 if planning: return self.runtime.submit_web_planning(reference,query,urls,
-                    allowed_hosts=approved,model=model,offline=offline)
+                    allowed_hosts=approved,model=model,offline=offline,collect=True)
                 return self.runtime.submit_web(query,urls,allowed_hosts=approved,model=model,offline=offline)
             self._background(submit,queued)
         except Exception as error:self._error(error)
@@ -535,6 +536,13 @@ class DesktopWindow:
                     f"Visible drawing captions: {counts['visible_view_captions']}; surface candidates: {counts['surface_candidates']}.\n"
                     'Open review.html in Results folder for original drawings, page classifications and acquisition gaps.\n'
                     'Application membership and physical geometry remain unverified; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='planning_collection' and row.get('result'):
+                result=row['result'];counts=result['summary']
+                detail=(f"Saved planning batches: {counts['completed_batches']}; completed sources: {counts['completed_sources']}; unresolved: {counts['unresolved_sources']}.\n"
+                    f"Originals analysed: {counts['unique_originals_handed_to_analysis']}; completed pages: {counts['completed_pages']}.\n"
+                    f"Documents needing analysis review: {counts['documents_needing_analysis_review']}.\n"
+                    'Open review.html in Results folder for all batch previews and the saved document queue.\n'
+                    'Starting the same request resumes verified progress. Physical reconstruction remains unverified.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -658,6 +666,7 @@ def main(argv=None):
     parser.add_argument('--planning-pilot-smoke-test',type=Path,metavar='OUTPUT',help='Exercise planning discovery through a managed worker and verify retained evidence.')
     parser.add_argument('--web-smoke-test',type=Path,metavar='OUTPUT',help='Exercise offline web citations and persistent memory through a managed worker.')
     parser.add_argument('--web-planning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic application-to-original-PDF analysis through a managed worker.')
+    parser.add_argument('--planning-collection-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic follow-up batches and restart without reanalysis.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -681,6 +690,9 @@ def main(argv=None):
     if args.web_planning_smoke_test is not None:
         from .desktop_web_planning_smoke import run
         result=run(args.web_planning_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.planning_collection_smoke_test is not None:
+        from .desktop_planning_collection_smoke import run
+        result=run(args.planning_collection_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:
