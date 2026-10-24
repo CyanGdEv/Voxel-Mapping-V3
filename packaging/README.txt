@@ -143,3 +143,14 @@ The first real 127-example run scored 9.4% on separate source groups; many test
 classes are absent from their training folds. More independent examples are needed.
 Frozen runtime check:
   VoxelMapperV3.exe --study-learning-smoke-test PATH_TO_FRESH_TEST_DIRECTORY
+
+CPU component outline learning: in Advanced jobs / learning choose
+Train component outlines (CPU), then select the separate vision training request.
+This compact convolutional research model learns component types and drawing
+masks from source crops, with separate-source evaluation and training-only
+baselines. Its masks are proposed regions in an already supplied crop; full-sheet
+object discovery, real-world dimensions, 3D reconstruction and park placement
+remain separate work. It uses the existing CPU runtime and managed memory budget.
+The existing component recognizer and active building ranker remain separate.
+Frozen runtime check:
+  VoxelMapperV3.exe --study-vision-smoke-test PATH_TO_FRESH_TEST_DIRECTORY

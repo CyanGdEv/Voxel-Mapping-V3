@@ -1,0 +1,836 @@
+{
+  "version": "study-vision-development-validation-v1",
+  "status": "engineering_checks_passed_quality_not_improved",
+  "fixed_first_snapshot": {
+    "records": 127,
+    "source_groups": 10,
+    "dataset_id": "a9f56a014a1d05cf7d86997bacab2a26ae3d45fe431a929ed1333fcebf210f8e",
+    "dataset_manifest_sha256": "cac07c945fd18b06ad556eb3c74b669918eb3303884d1ad37d1c36b85e39f7ac",
+    "settings": {
+      "input_size": 64,
+      "channels": 4,
+      "epochs": 30
+    },
+    "classification": {
+      "accuracy": 0.07086614173228346,
+      "class_order": [
+        "archway",
+        "building",
+        "door",
+        "opening",
+        "planter",
+        "retaining_wall",
+        "rock",
+        "roof",
+        "structural_member",
+        "wall",
+        "window"
+      ],
+      "confusion": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          1,
+          4,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          6,
+          2,
+          2,
+          6,
+          4,
+          23,
+          0,
+          2,
+          17
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          7,
+          1
+        ],
+        [
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          6,
+          0,
+          1,
+          2,
+          0
+        ]
+      ],
+      "macro_f1": 0.04671717171717171,
+      "per_class": {
+        "archway": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 2,
+          "recall": 0.0,
+          "support": 1
+        },
+        "building": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 8,
+          "recall": 0.0,
+          "support": 3
+        },
+        "door": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 11,
+          "recall": 0.0,
+          "support": 5
+        },
+        "opening": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 4,
+          "recall": 0.0,
+          "support": 4
+        },
+        "planter": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 2,
+          "recall": 0.0,
+          "support": 1
+        },
+        "retaining_wall": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 8,
+          "recall": 0.0,
+          "support": 2
+        },
+        "rock": {
+          "f1": 0.125,
+          "precision": 0.1111111111111111,
+          "predicted": 18,
+          "recall": 0.14285714285714285,
+          "support": 14
+        },
+        "roof": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 26,
+          "recall": 0.0,
+          "support": 7
+        },
+        "structural_member": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 7,
+          "recall": 0.0,
+          "support": 63
+        },
+        "wall": {
+          "f1": 0.3888888888888889,
+          "precision": 0.3333333333333333,
+          "predicted": 21,
+          "recall": 0.4666666666666667,
+          "support": 15
+        },
+        "window": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 20,
+          "recall": 0.0,
+          "support": 12
+        }
+      },
+      "records": 127
+    },
+    "image16_baseline_classification": {
+      "accuracy": 0.09448818897637795,
+      "class_order": [
+        "archway",
+        "building",
+        "door",
+        "opening",
+        "planter",
+        "retaining_wall",
+        "rock",
+        "roof",
+        "structural_member",
+        "wall",
+        "window"
+      ],
+      "confusion": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          4,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          6,
+          2,
+          4,
+          11,
+          3,
+          23,
+          8,
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          5,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_f1": 0.06826178395646663,
+      "per_class": {
+        "archway": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 1,
+          "recall": 0.0,
+          "support": 1
+        },
+        "building": {
+          "f1": 0.18181818181818182,
+          "precision": 0.125,
+          "predicted": 8,
+          "recall": 0.3333333333333333,
+          "support": 3
+        },
+        "door": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 3,
+          "recall": 0.0,
+          "support": 5
+        },
+        "opening": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 8,
+          "recall": 0.0,
+          "support": 4
+        },
+        "planter": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 11,
+          "recall": 0.0,
+          "support": 1
+        },
+        "retaining_wall": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 4,
+          "recall": 0.0,
+          "support": 2
+        },
+        "rock": {
+          "f1": 0.07547169811320754,
+          "precision": 0.05128205128205128,
+          "predicted": 39,
+          "recall": 0.14285714285714285,
+          "support": 14
+        },
+        "roof": {
+          "f1": 0.08333333333333333,
+          "precision": 0.058823529411764705,
+          "predicted": 17,
+          "recall": 0.14285714285714285,
+          "support": 7
+        },
+        "structural_member": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 63
+        },
+        "wall": {
+          "f1": 0.4102564102564102,
+          "precision": 0.3333333333333333,
+          "predicted": 24,
+          "recall": 0.5333333333333333,
+          "support": 15
+        },
+        "window": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 12,
+          "recall": 0.0,
+          "support": 12
+        }
+      },
+      "records": 127
+    },
+    "mask_metrics": {
+      "binary_assessed_records": 127,
+      "mean_binary_dice": 0.4139495429126252,
+      "mean_binary_iou": 0.29503137474413765,
+      "mean_soft_dice": 0.3719153583492141,
+      "mean_soft_iou": 0.24340428267605746,
+      "mean_support_dice": 0.4199244533666706,
+      "mean_support_iou": 0.30047601500124244,
+      "records": 127,
+      "thin_target_records": 0
+    },
+    "train_only_mean_mask_baseline": {
+      "binary_assessed_records": 127,
+      "mean_binary_dice": 0.5596602162305802,
+      "mean_binary_iou": 0.4164845159972326,
+      "mean_soft_dice": 0.49220290205622874,
+      "mean_soft_iou": 0.34628402105533723,
+      "mean_support_dice": 0.5598316449580844,
+      "mean_support_iou": 0.416133510268946,
+      "records": 127,
+      "thin_target_records": 0
+    },
+    "unknown_class_records": 81,
+    "training": {
+      "batch_size": 4,
+      "channels": 4,
+      "class_balanced": true,
+      "conv_filters_updated": true,
+      "epochs": 30,
+      "final_class_loss": 0.5051964862407181,
+      "final_loss": 1.003652763478141,
+      "final_mask_loss": 0.4984562772374229,
+      "initial_class_loss": 2.41401879142,
+      "initial_loss": 3.10518265024677,
+      "initial_mask_loss": 0.6911638588267697,
+      "initial_parameters_sha256": "ef1f5566fce03e902692601c576d9f2ec51607e4458ff239c616ef65eafed498",
+      "learning_rate": 0.01,
+      "mask_balancing_weights": {
+        "negative": 0.699830821628824,
+        "positive": 1.7510582599933597
+      },
+      "optimizer": "Adam",
+      "records": 127,
+      "seed": 0
+    },
+    "model_artifact_sha256": "bb96bebbe20b0c074eac69182d7c5b5af99d6630e132aa5b8ef9ce9342cfd10c",
+    "model_file_sha256": "bb269c2c43d36f7ae4279c6932b26f9d220084ca689f5bf71f51911f6d201f10",
+    "managed_peak_memory_mb": 79.2734375,
+    "elapsed_seconds": 219.37398962999941,
+    "history_survives_restart": true,
+    "independent_audit": {
+      "all_data_checkpoint_used_for_predictions": false,
+      "class_unknown_to_fit_records": 81,
+      "classification": {
+        "accuracy": 0.07086614173228346,
+        "correct": 9,
+        "macro_f1": 0.04671717171717171,
+        "records": 127
+      },
+      "dataset_id": "a9f56a014a1d05cf7d86997bacab2a26ae3d45fe431a929ed1333fcebf210f8e",
+      "dataset_manifest_sha256": "cac07c945fd18b06ad556eb3c74b669918eb3303884d1ad37d1c36b85e39f7ac",
+      "dataset_output_hashes_verified": 405,
+      "folds": 10,
+      "image16_baseline": {
+        "accuracy": 0.09448818897637795,
+        "correct": 12,
+        "macro_f1": 0.06826178395646663,
+        "records": 127
+      },
+      "majority_baseline": {
+        "accuracy": 0.0,
+        "correct": 0,
+        "macro_f1": 0.0,
+        "records": 127
+      },
+      "mean_mask_baseline_pixels_exact_records": 127,
+      "method": [
+        "Independent SHA256/self-hash and record checks; connected groups rebuilt using graph traversal.",
+        "Every record is assessed exactly once on its declared held-out original-PDF/building group.",
+        "Fold normalization independently recomputed from only the training source-image pixels.",
+        "Reviewed masks resized to the model grid using Pillow BOX fractional coverage.",
+        "Training-only mean target mask rebuilt per fold and rounded PNG pixels required to match exactly.",
+        "CNN binary/support IoU and Dice independently recomputed from saved probability PNGs; thin fractional-only targets have unassessed binary metrics.",
+        "CNN soft scores from PNGs are labeled quantized; the original report uses unrounded probabilities.",
+        "Mean-mask baseline soft and binary scores independently recomputed from the unrounded training-only average.",
+        "Only existing source-held-out files are displayed. No fitting, tuning, checkpoint inference or original-PDF rendering performed."
+      ],
+      "physical_geometry_verified": false,
+      "prior_16px_baseline_comparison": {
+        "records": 127,
+        "report_sha256": "4eb7a151c7de4246bc6a7a8a1643ab9f4143c0072994cd9f2e0d13b6b168559f",
+        "status": "all_predictions_and_fit_statistics_exact"
+      },
+      "production_eligible": false,
+      "quantized_cnn_mask_metrics": {
+        "binary_assessed_records": 127,
+        "mean_binary_dice": 0.4139495429126252,
+        "mean_binary_iou": 0.29503137474413765,
+        "mean_soft_dice": 0.3715627813072411,
+        "mean_soft_iou": 0.24308913705262727,
+        "mean_support_dice": 0.4199244533666706,
+        "mean_support_iou": 0.30047601500124244,
+        "records": 127,
+        "thin_target_records": 0
+      },
+      "records": 127,
+      "reported_unrounded_cnn_mask_metrics": {
+        "binary_assessed_records": 127,
+        "mean_binary_dice": 0.4139495429126252,
+        "mean_binary_iou": 0.29503137474413765,
+        "mean_soft_dice": 0.3719153583492141,
+        "mean_soft_iou": 0.24340428267605746,
+        "mean_support_dice": 0.4199244533666706,
+        "mean_support_iou": 0.30047601500124244,
+        "records": 127,
+        "thin_target_records": 0
+      },
+      "representative_selection": {
+        "method": "Deterministic class and connected-source-group coverage, independent of score or correctness.",
+        "record_ids": [
+          "mutiny-opening-archway-3",
+          "detail-d91fae46e872-1-381",
+          "mutiny-opening-d3.01",
+          "wicker-floor-opening-NE",
+          "detail-145ec82874dd-1-937",
+          "detail-8c9a288aeb9f-1-102",
+          "detail-54b295d7c649-1-136",
+          "mutiny-roof-cross-section",
+          "prospect-AL3.02-path-0",
+          "mutiny-elevation-baseline",
+          "mutiny-opening-w3.01",
+          "detail-2c7bac429c19-1-429",
+          "detail-94eefa9040ce-1-1062",
+          "detail-e039622d21f7-1-8"
+        ]
+      },
+      "source_groups": 10,
+      "source_report_sha256": "4b64a296a7d484a6bcdce5eacb37cf417fdf3d78cffbc1f07a0dbe6f71523a88",
+      "status": "passed",
+      "training_output_hashes_verified": 255,
+      "unrounded_mean_mask_baseline_metrics": {
+        "binary_assessed_records": 127,
+        "mean_binary_dice": 0.5596602162305802,
+        "mean_binary_iou": 0.4164845159972326,
+        "mean_soft_dice": 0.49220290205622874,
+        "mean_soft_iou": 0.34628402105533723,
+        "mean_support_dice": 0.5598316449580844,
+        "mean_support_iou": 0.416133510268946,
+        "records": 127,
+        "thin_target_records": 0
+      },
+      "version": "study-vision-independent-oof-review-v1",
+      "world_generation_demonstrated": false,
+      "record_receipts_count": 127,
+      "record_receipts_sha256": "5d87c6175ea232ac03a9daafcb49b5f3ab2bc6e1bb79bfabd3afe9fb3d028609"
+    },
+    "classification_improved": false,
+    "mask_prediction_beats_template": false
+  },
+  "expanded_source_dataset": {
+    "records": 148,
+    "source_groups": 12,
+    "original_pdfs_verified": 23,
+    "dataset_id": "4d57388dc2970979997b43690c01c174bb50d60f759090b805943b0bca19aa63",
+    "dataset_manifest_sha256": "031004626fa90f388f1ab8b8d6ea54bb9b6627189e59850b769a5298b564194a",
+    "verified_output_files": 478,
+    "review_input_pins": {
+      "docs/evidence/planning-surfaces/source-record.json": "e4527cf2415829b4d64a5e05942fb05569b80101e3c6a550c6394d8a5e27cffa",
+      "docs/park-paving.md": "419a3e3486312070e0749824ac0f027598d55e42693a6d30fe45a538519b6c1b",
+      "evidence/mutiny-north-wing-partition-study-seed.json": "135bf78797439244098da1b15b8e5e17012225932ca73ef1e9096a659cc1521e",
+      "evidence/mutiny-north-wing-shell-study-seed.json": "547733ad70fac1429d4663565cdb1a947ef2f3e339a991aa014d7d0beb6ebe21",
+      "evidence/mutiny-north-wing-source-label-corrected-seed.json": "4f2fea600e48b84f54a361d5f7605700f1ce68143c47699b03d0958db61a00eb",
+      "evidence/wicker-architectural-extra-sources.json": "9036e84ed523040163296fc964a2d1d5729e4d65abe7343b884b48838616fd24",
+      "evidence/wicker-architectural-outline-annotations.json": "38f7ce1279005ab896bbb280ac0fd07ab958d77acc581660ac3837bec61108fc",
+      "evidence/wicker-preshow_low-model.json": "8d78564a4974fcfaa91c60d083140abac79175fdfbc18f529d301089bf23f4b7",
+      "evidence/wicker-preshow_tower-model.json": "81cd8167c0a264967280ada1c6a1a6853e7020e7ccd340a822f2c48925804462",
+      "evidence/wicker-reviewed-plaza-source.geojson": "cfc09c18f2b7f1a35ff84ae4f2676b55824afd89b19e331efd4f20b38bbdf7d7",
+      "evidence/wicker-shop-drawing-sources.json": "91143d83e937eecd86edd67d747161a99ed72ffc6abb354a05e275094652c803",
+      "evidence/wicker-shop-floor-annotations.json": "b0c0d13e2b98d66d7eea5b8ca12991b1bc476ae9730bf9caa147a52e143aa0d7",
+      "evidence/wicker-shop-joined-study-validation.json": "4630631f8e286461b0a6d6e3046b75cf0854ea77c52239ee9d7598c728e8c8da",
+      "evidence/wicker-shop-projection-model.json": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+      "evidence/wicker-shop-vertical-annotations.json": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7",
+      "evidence/wicker-shop-wall-detail-study-validation.json": "da24099c6d745b3e35a52ff71cd76a099730c9d8a6fe22f1f27ad0e050c89e56",
+      "evidence/wicker-shop-wall-model.json": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+      "evidence/wicker-station-model.json": "e92bb7d312f19b94f41c3d20f233b7d0226dc29a25ddbbb353ff0bf7e3cc4174",
+      "scripts/build_garden_bridges.py": "036659a494c6fef5434cf235dbd7e3f96a8d413d9c8a983d2584e08c264318a5",
+      "scripts/extract_prospect_profiles.py": "aa04fa895751d1a4ea49cdf138658c5044a6eb5584f1a951629ceb7c734e8ada",
+      "scripts/extract_prospect_storeys.py": "4f9073a8a7a5567f3bafd2d932915362adbcbf7961f82f83a408a19c69508944",
+      "scripts/extract_reviewed_gardens.py": "2445da7f9f99234d71bf18be7588876cf4928c7c8af7b39bb3c12ae623323fda",
+      "voxel_mapper/data/alton-garden-surfaces-v19.json": "0845dfafaf53cd52fa1596716ba6f80fa82ec1e5eceb4e344cbfbeb7f000ac04",
+      "voxel_mapper/data/alton-gardens-v16.json": "be72bf9ce7cf47826edcc69b5b2945e45342bf5aedc3699b7c2a44c5aa0e2528",
+      "voxel_mapper/data/alton-path-details.json": "69c63a2bce75c63d9ff512b43c4f5e98b497296bfeb8244749176ec1f3b47b6e",
+      "voxel_mapper/data/alton-paving-extensions.geojson": "7ba0444dde9d7bc0dda50494343bbb3a78b427a5689122d88586ba0583936df8",
+      "voxel_mapper/data/alton-planning-catalogue.json": "9f42a11a56c4c2ad7cbb37b29d17af5e74dd5971b93896cf9c96278519ab64f9",
+      "voxel_mapper/data/prospect-ground-profiles.json": "e9bf56d34984dcab4d41c82aa36ff97a647721e31efdfb9d08c09d04155ba8d9",
+      "voxel_mapper/data/prospect-upper-profiles.json": "569df00749865625cce1c256252ba3c0c321d522c385de059abc515b12b81e4b",
+      "voxel_mapper/pilot_surfaces.py": "919d6551ab796428b110ed117071e95f6abb7fc51e84d2483417d8f37aff27a5",
+      "voxel_mapper/reconstruction/prospect.py": "534811f3124f3ae45c98490c2334821fbb60ad7efc79d0767d562d45dc4a4066",
+      "voxel_mapper/wicker_registration.py": "09319ccf2f8de09affb0a34ac684bb0097492de608a308d5c7e04019db9f007c"
+    },
+    "original_127_targets_unchanged": true,
+    "original_127_canonical_sha256": "b7d502800a2216be5d5c1fee0e28ea9c76e8c3d4217899644be6de37b6263082",
+    "added_target_roles": {
+      "reviewed_path_centreline": 11,
+      "reviewed_path_footprint": 4,
+      "reviewed_paving_footprint": 3,
+      "source_labelled_plaza_footprint": 3
+    },
+    "originals": [
+      {
+        "sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+      },
+      {
+        "sha256": "10f1a45f3b24235df29642147d1ee211163260f7c68cf9c898a9ec1bfe9dbba2",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56608"
+      },
+      {
+        "sha256": "122058b4a585b267cf6a5a29ad8bd1b33c6165f0bc1ede9a173f45d6c1bfd26d",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89795"
+      },
+      {
+        "sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139"
+      },
+      {
+        "sha256": "1c3e0386c22b2718dee0ec9908caf3574b33bf7f5ba965b1016b72edb5a2cab1",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56607"
+      },
+      {
+        "sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955"
+      },
+      {
+        "sha256": "1cd9cc093782878efb8371930d8286184cbdd08456b349e0a22749fea2976de6",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=51142"
+      },
+      {
+        "sha256": "2c7bac429c194d1a1d26a7d34706b50fc04faa683bca73b1624e8be662d2b1b9",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=140591"
+      },
+      {
+        "sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      {
+        "sha256": "51b4bff0df222ab5b6050b3e0b608534b900bf59bd93e4ab17d51c2812731383",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89793"
+      },
+      {
+        "sha256": "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=86630"
+      },
+      {
+        "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186549"
+      },
+      {
+        "sha256": "5bfecfef211c8a20e4e005d75bd84d6095941b6bc7f8fb69f8e4b14184561883",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56609"
+      },
+      {
+        "sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+      },
+      {
+        "sha256": "8b07a06706e5dc3c436889c2d285f7c5d47855d7a80c08ede5237983b508c7fe",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89794"
+      },
+      {
+        "sha256": "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=162824"
+      },
+      {
+        "sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186531"
+      },
+      {
+        "sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+      },
+      {
+        "sha256": "d1580757d1672ad2c353ed25aa9c57b0fdd55c1651ddd3bb20db9807cd0d5b42",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=56610"
+      },
+      {
+        "sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      {
+        "sha256": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=35668"
+      },
+      {
+        "sha256": "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=316028"
+      },
+      {
+        "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186530"
+      }
+    ],
+    "coverage": {
+      "additional_reviewed_building_footprint_identities": 2,
+      "classes_below_requested_group_count": 11,
+      "component_classes": 14,
+      "eligible_component_examples": 148,
+      "named_study_building_identities": 6,
+      "pinned_source_document_identities": 23,
+      "single_group_classes": 7,
+      "site_detail_context_identities": 8,
+      "source_connected_groups": 12,
+      "unclassified_identities": 0
+    },
+    "expanded_training_scores_included_in_this_receipt": false
+  },
+  "scope": {
+    "production_eligible": false,
+    "full_page_discovery_assessed": false,
+    "physical_3d_geometry_generated": false,
+    "world_blocks_added": 0,
+    "twenty_building_generation_demonstrated": false,
+    "active_building_ranker_unchanged": true,
+    "gpu_required": false
+  },
+  "limits": {
+    "estimated_baseline_work": 702259200,
+    "estimated_forward_work": 11419027200,
+    "max_epochs": 100,
+    "max_forward_work": 12000000000,
+    "max_source_group_folds": 16
+  },
+  "notes": [
+    "Initial fixed-snapshot experiment is retained even though it underperforms both learned-class and mask-template comparisons.",
+    "Expanded data adds original reviewed traces and source-labelled regions; estimated widths/heights/materials/geographic alignment are not targets.",
+    "Software tests, fitting loss and synthetic accuracy do not establish real-park reconstruction quality."
+  ],
+  "id": "24aa49a3b298e9fe319a2a9f7f47bab014f44acd13adbd901cc847d9b713f97f"
+}

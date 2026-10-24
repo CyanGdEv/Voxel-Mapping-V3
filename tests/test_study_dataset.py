@@ -267,6 +267,32 @@ class StudyDatasetTests(unittest.TestCase):
                 self.assertFalse((root/'export').exists())
                 self.assertFalse(list(root.glob('study-dataset-*')))
 
+    def test_geojson_review_assets_validate_exact_json_pointers_and_hashes(self):
+        for mode in ('valid', 'missing_pointer', 'changed_bytes'):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                repo, sources, _, catalogue = fixture(root)
+                original = repo/'annotations/review.json'
+                retained = repo/'annotations/review.geojson'
+                original.rename(retained)
+                pin = sha(retained)
+                catalogue['input_sha256'] = {'annotations/review.geojson': pin}
+                for row in catalogue['records']:
+                    row['review_refs'][0]['path'] = 'annotations/review.geojson'
+                if mode == 'missing_pointer':
+                    catalogue['records'][0]['review_refs'][0]['pointer'] = '/absent/geometry'
+                elif mode == 'changed_bytes':
+                    retained.write_bytes(retained.read_bytes()+b' ')
+                output = root/'export'
+                if mode == 'valid':
+                    result = dataset.build(catalogue, sources, output, repo_root=repo)
+                    self.assertEqual(result['summary']['source_paired_examples'], 1)
+                    self.assertEqual(sha(output/'reviews/annotations/review.geojson'), pin)
+                else:
+                    with self.assertRaises(ValueError):
+                        dataset.build(catalogue, sources, output, repo_root=repo)
+                    self.assertFalse(output.exists())
+
     def test_cancellation_before_and_during_export_cleans_staging_and_existing_outputs_survive(self):
         for mode in ('before', 'during', 'existing'):
             with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp:

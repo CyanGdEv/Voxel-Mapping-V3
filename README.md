@@ -10,7 +10,9 @@ The [component measurement stage](docs/planning-component-measurements.md) produ
 
 [Planning world downloads](docs/planning-world-downloads.md): select a completed planning job in the Windows app and choose **Export preview worlds**. This creates separate Bedrock `.mcworld` downloads for both spacing interpretations, with flat display terrain, supported spawn and saved-block/archive checks. These are local surface-envelope prototypes; canopy, openings, paths and surveyed park placement remain unresolved.
 
-[Learning from retained studies](docs/retained-study-learning.md) packages 127 source-paired component examples from 17 original PDFs and trains a separate CPU image recognizer. Exact source traces, masks, conditional 3D context and source-connected evaluation remain distinct. The first real source-held-out accuracy is 9.4%; the checkpoint remains research-only and does not generate buildings or replace the active ranker.
+[Learning from retained studies](docs/retained-study-learning.md) began with 127 source-paired component examples from 17 original PDFs and a separate CPU image recognizer. Exact source traces, masks, conditional 3D context and source-connected evaluation remain distinct. The first real source-held-out accuracy was 9.4%; the checkpoint remains research-only.
+
+[CPU component outline learning](docs/study-vision-learning.md) adds a higher-resolution convolutional class/mask experiment and expands the portable dataset to 148 examples from 23 verified PDFs, including reviewed paths, paving and labelled plazas. On the unchanged first 127-example benchmark, the CNN scored 7.1% versus the previous classifier's 9.4%, and its mask overlap was below a training-only template. These research results do not demonstrate an accuracy improvement or autonomous building generation.
 
 The [fine component boundary stage](docs/planning-component-footprints.md) recovers individual source faces around visible container labels using short source segments that coarse discovery omits. Original-page overlays distinguish these hypotheses from accepted physical building exteriors; heights, map alignment and path boundaries remain unfinished.
 
@@ -46,8 +48,9 @@ Choose **Generate an area** to run the included real Alton pilot without editing
 Use **Review and accuracy** to compare source PDFs with local geometry, save
 correction drafts, regenerate supported edits into new native previews, explicitly import reviewed decisions and measure reconstruction
 errors. The [visual review guide](docs/desktop-visual-review.md) covers the real
-retained Wicker review and offline synthetic demonstration. No trained real-park
-checkpoint or completed real-building benchmark is claimed.
+retained Wicker review and offline synthetic demonstration. Retained-study
+checkpoints are separate research models; autonomous real-building reconstruction
+has not passed a complete benchmark.
 The [desktop area guide](docs/desktop-area-pilots.md) covers the Wicker building/plaza
 studies, original-PDF recovery, cached evidence and bundled OCR/PDF helpers.
 Full park autonomy and a trained general drawing/geometry model remain unfinished.

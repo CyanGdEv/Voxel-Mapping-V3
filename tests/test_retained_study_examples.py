@@ -10,6 +10,8 @@ from unittest.mock import patch
 from shapely.geometry import shape
 
 from voxel_mapper import retained_study_examples as examples
+from voxel_mapper.building_spec import digest
+from voxel_mapper.study_dataset import connected_groups
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,9 +39,9 @@ class RetainedStudyExamplesTests(unittest.TestCase):
     def test_retained_inventory_has_pinned_targets_and_no_generated_3d_labels(self):
         result = self.result
         self.assertEqual(result['version'], 'retained-study-examples-v1')
-        self.assertEqual(len(result['records']), 127)
-        self.assertEqual(len(result['documents']), 17)
-        self.assertEqual(len({r['id'] for r in result['records']}), 127)
+        self.assertEqual(len(result['records']), 148)
+        self.assertEqual(len(result['documents']), 23)
+        self.assertEqual(len({r['id'] for r in result['records']}), 148)
         self.assertTrue(all(d.get('url', '').startswith(('http://', 'https://')) for d in result['documents']))
         for relative, pin in result['input_sha256'].items():
             self.assertEqual(hashlib.sha256((ROOT/relative).read_bytes()).hexdigest(), pin)
@@ -51,7 +53,7 @@ class RetainedStudyExamplesTests(unittest.TestCase):
             for ref in record['review_refs']:
                 path = ROOT/ref['path']
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), ref['sha256'])
-                if path.suffix == '.json':
+                if path.suffix in ('.json', '.geojson'):
                     resolve(json.loads(path.read_text()), ref['pointer'])
         exclusions = ' '.join(row['reason'] for row in result['excluded'])
         for text in ('join cells', 'rear', 'illustrative', 'proxy', 'Single point'):
@@ -138,6 +140,62 @@ class RetainedStudyExamplesTests(unittest.TestCase):
         before = {p: (ROOT/p).read_bytes() for p in self.result['input_sha256']}
         self.assertEqual(examples.catalogue(ROOT), self.result)
         self.assertEqual(before, {p: (ROOT/p).read_bytes() for p in before})
+
+    def test_first_127_source_targets_are_unchanged_after_surface_expansion(self):
+        self.assertEqual(digest(self.result['records'][:127]),
+            'b7d502800a2216be5d5c1fee0e28ea9c76e8c3d4217899644be6de37b6263082')
+
+    def test_new_paths_keep_reviewed_source_geometry_and_group_related_garden_sheets(self):
+        paths = [r for r in self.result['records'] if r['kind'] == 'path']
+        self.assertEqual(len(paths), 15)
+        by_group = connected_groups(self.result['records'])
+        groups = {rid: g['group_id'] for g in by_group for rid in g['record_ids']}
+        self.assertEqual(len({groups[r['id']] for r in paths}), 2)
+        garden = [r for r in paths if r['id'].startswith('reviewed-garden-path-')]
+        self.assertEqual(len(garden), 11)
+        self.assertEqual(len({r['source']['document_sha256'] for r in garden}), 2)
+        self.assertEqual(len({r['building_id'] for r in garden}), 1)
+        for row in paths:
+            ref = row['review_refs'][0]
+            raw = json.loads((ROOT/ref['path']).read_text())
+            original = resolve(raw, ref['pointer'])
+            if row['id'].startswith('reviewed-cbeebies'):
+                expected = copy.deepcopy(original)
+                if expected[0] != expected[-1]:
+                    expected.append(expected[0])
+                self.assertEqual(row['target_geometry']['coordinates'], [expected])
+                self.assertEqual(row['source_state'], 'proposed')
+            else:
+                self.assertEqual(row['target_geometry'], original)
+                self.assertEqual(row['target_geometry']['type'], 'LineString')
+                self.assertEqual(row['source_state'], 'unknown')
+            self.assertEqual(row['entity_type'], 'site_detail')
+            self.assertEqual(row['source']['coordinate_frame'], 'page_points')
+            self.assertNotIn('width_m', row)
+            self.assertNotIn('force_stairs', row)
+            self.assertNotIn('height_m', row)
+        paving = [r for r in self.result['records'] if r['kind'] == 'paving_surface']
+        self.assertEqual(len(paving), 3)
+        self.assertTrue(all(r['source_state'] == 'unknown' for r in paving))
+        self.assertTrue(any('road' in ' '.join(r['assumptions']) for r in paving))
+
+    def test_only_source_labelled_plazas_are_imported_without_display_materials_or_heights(self):
+        path = ROOT/'evidence/wicker-reviewed-plaza-source.geojson'
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+            'cfc09c18f2b7f1a35ff84ae4f2676b55824afd89b19e331efd4f20b38bbdf7d7')
+        raw = json.loads(path.read_text())
+        rows = [r for r in self.result['records'] if r['kind'] == 'plaza']
+        self.assertEqual(len(rows), 3)
+        self.assertEqual([r['source_state'] for r in rows], ['existing', 'existing', 'proposed'])
+        for row, index in zip(rows, (4, 17, 22)):
+            original = raw['features'][index]
+            self.assertEqual(original['properties']['contained_labels'], ['Plaza'])
+            self.assertEqual(row['target_geometry'], original['geometry'])
+            self.assertEqual(row['evidence_level'], 'source_extracted_profile')
+            self.assertEqual(row['source']['coordinate_frame'], 'page_points')
+            self.assertEqual(row['building_id'], 'alton-site-details-SMD-2016-0315')
+            for key in ('surface', 'material', 'finished_level_method', 'area_m2_printed_scale'):
+                self.assertNotIn(key, row)
 
     def test_missing_or_oversized_known_input_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:

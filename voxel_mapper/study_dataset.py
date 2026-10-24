@@ -210,7 +210,7 @@ def _retain_reviews(catalogue, repo_root, root):
         raw = path.read_bytes();total += len(raw)
         if total > 32_000_000 or hashlib.sha256(raw).hexdigest() != expected:
             raise ValueError('Retained review asset checksum changed or byte budget exceeded')
-        if path.suffix == '.json':
+        if path.suffix.lower() in ('.json', '.geojson'):
             values[relative] = json.loads(raw)
         target = root/'reviews'/relative
         target.parent.mkdir(parents=True, exist_ok=True)
