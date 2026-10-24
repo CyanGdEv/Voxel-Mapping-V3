@@ -1,0 +1,774 @@
+{
+  "status": "passed",
+  "dataset_kind": "previously_inspected_retained_sources",
+  "source_paired_examples": 127,
+  "original_pdfs_verified": 17,
+  "independent_source_groups": 10,
+  "named_building_study_identities": 6,
+  "other_reviewed_building_footprints": 2,
+  "site_detail_grouping_contexts": 6,
+  "twenty_complete_buildings_reconstructed": false,
+  "dataset_id": "a9f56a014a1d05cf7d86997bacab2a26ae3d45fe431a929ed1333fcebf210f8e",
+  "dataset_manifest_sha256": "cac07c945fd18b06ad556eb3c74b669918eb3303884d1ad37d1c36b85e39f7ac",
+  "dataset_verified_output_files": 405,
+  "source_reviews": {
+    "evidence/mutiny-north-wing-partition-study-seed.json": "135bf78797439244098da1b15b8e5e17012225932ca73ef1e9096a659cc1521e",
+    "evidence/mutiny-north-wing-shell-study-seed.json": "547733ad70fac1429d4663565cdb1a947ef2f3e339a991aa014d7d0beb6ebe21",
+    "evidence/mutiny-north-wing-source-label-corrected-seed.json": "4f2fea600e48b84f54a361d5f7605700f1ce68143c47699b03d0958db61a00eb",
+    "evidence/wicker-architectural-extra-sources.json": "9036e84ed523040163296fc964a2d1d5729e4d65abe7343b884b48838616fd24",
+    "evidence/wicker-architectural-outline-annotations.json": "38f7ce1279005ab896bbb280ac0fd07ab958d77acc581660ac3837bec61108fc",
+    "evidence/wicker-preshow_low-model.json": "8d78564a4974fcfaa91c60d083140abac79175fdfbc18f529d301089bf23f4b7",
+    "evidence/wicker-preshow_tower-model.json": "81cd8167c0a264967280ada1c6a1a6853e7020e7ccd340a822f2c48925804462",
+    "evidence/wicker-shop-drawing-sources.json": "91143d83e937eecd86edd67d747161a99ed72ffc6abb354a05e275094652c803",
+    "evidence/wicker-shop-floor-annotations.json": "b0c0d13e2b98d66d7eea5b8ca12991b1bc476ae9730bf9caa147a52e143aa0d7",
+    "evidence/wicker-shop-joined-study-validation.json": "4630631f8e286461b0a6d6e3046b75cf0854ea77c52239ee9d7598c728e8c8da",
+    "evidence/wicker-shop-projection-model.json": "4beebc02761e1e694468cc94aa8e013d8036987b14a7138cc4e4e681c36b02b1",
+    "evidence/wicker-shop-vertical-annotations.json": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7",
+    "evidence/wicker-shop-wall-detail-study-validation.json": "da24099c6d745b3e35a52ff71cd76a099730c9d8a6fe22f1f27ad0e050c89e56",
+    "evidence/wicker-shop-wall-model.json": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+    "evidence/wicker-station-model.json": "e92bb7d312f19b94f41c3d20f233b7d0226dc29a25ddbbb353ff0bf7e3cc4174",
+    "scripts/extract_prospect_profiles.py": "aa04fa895751d1a4ea49cdf138658c5044a6eb5584f1a951629ceb7c734e8ada",
+    "scripts/extract_prospect_storeys.py": "4f9073a8a7a5567f3bafd2d932915362adbcbf7961f82f83a408a19c69508944",
+    "voxel_mapper/data/alton-path-details.json": "69c63a2bce75c63d9ff512b43c4f5e98b497296bfeb8244749176ec1f3b47b6e",
+    "voxel_mapper/data/alton-planning-catalogue.json": "9f42a11a56c4c2ad7cbb37b29d17af5e74dd5971b93896cf9c96278519ab64f9",
+    "voxel_mapper/data/prospect-ground-profiles.json": "e9bf56d34984dcab4d41c82aa36ff97a647721e31efdfb9d08c09d04155ba8d9",
+    "voxel_mapper/data/prospect-upper-profiles.json": "569df00749865625cce1c256252ba3c0c321d522c385de059abc515b12b81e4b",
+    "voxel_mapper/reconstruction/prospect.py": "534811f3124f3ae45c98490c2334821fbb60ad7efc79d0767d562d45dc4a4066"
+  },
+  "source_acquisition": {
+    "available": 17,
+    "bytes": 13831319,
+    "documents": [
+      {
+        "bytes": 135946,
+        "document_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+        "status": "cached",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163935"
+      },
+      {
+        "bytes": 165785,
+        "document_sha256": "122058b4a585b267cf6a5a29ad8bd1b33c6165f0bc1ede9a173f45d6c1bfd26d",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89795",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89795"
+      },
+      {
+        "bytes": 1299016,
+        "document_sha256": "145ec82874dde7afc7db4a4c5556f07249b49678bf39ea7d66af2da5f5afddb1",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160139"
+      },
+      {
+        "bytes": 1694646,
+        "document_sha256": "2c7bac429c194d1a1d26a7d34706b50fc04faa683bca73b1624e8be662d2b1b9",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=140591",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=140591"
+      },
+      {
+        "bytes": 537537,
+        "document_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+        "status": "cached",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163939"
+      },
+      {
+        "bytes": 325306,
+        "document_sha256": "51b4bff0df222ab5b6050b3e0b608534b900bf59bd93e4ab17d51c2812731383",
+        "status": "cached",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89793"
+      },
+      {
+        "bytes": 1189045,
+        "document_sha256": "54b295d7c6499d999dbfd7c0abca6f93338fcaba145212085431f8beeb5e2fe7",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=86630",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=86630"
+      },
+      {
+        "bytes": 98467,
+        "document_sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186549",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186549"
+      },
+      {
+        "bytes": 169647,
+        "document_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+        "status": "cached",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163940"
+      },
+      {
+        "bytes": 206843,
+        "document_sha256": "8b07a06706e5dc3c436889c2d285f7c5d47855d7a80c08ede5237983b508c7fe",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89794",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=89794"
+      },
+      {
+        "bytes": 659500,
+        "document_sha256": "8c9a288aeb9f2f0aaed03ff92fd1e2e95e1f93308bff536e587f351aadf523fa",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=162824",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=162824"
+      },
+      {
+        "bytes": 117312,
+        "document_sha256": "90ecfc6b13f95eb5a911f11b7f481ae8eb25900d9fac7518160cecd5944468a1",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186531",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186531"
+      },
+      {
+        "bytes": 3138162,
+        "document_sha256": "94eefa9040ce15a3f281ef6b532c6ed08a5d6e013574005edd440764a961f8d8",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=52886"
+      },
+      {
+        "bytes": 443573,
+        "document_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+        "status": "cached",
+        "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=163937"
+      },
+      {
+        "bytes": 3128709,
+        "document_sha256": "d91fae46e872694415abf88db1095ea1d78beb68d45f976fe29c6f45d432aa67",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=35668",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=35668"
+      },
+      {
+        "bytes": 437257,
+        "document_sha256": "e039622d21f702a0eb2e6c2474165e54a239865012736eb7febf13305e2d5674",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=316028",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=316028"
+      },
+      {
+        "bytes": 84568,
+        "document_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+        "original_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186530",
+        "status": "downloaded_original",
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186530"
+      }
+    ],
+    "requested": 17
+  },
+  "classifier": {
+    "version": "study-component-image-classifier-v1",
+    "records": 127,
+    "class_counts": {
+      "archway": 1,
+      "building": 3,
+      "door": 5,
+      "opening": 4,
+      "planter": 1,
+      "retaining_wall": 2,
+      "rock": 14,
+      "roof": 7,
+      "structural_member": 63,
+      "wall": 15,
+      "window": 12
+    },
+    "epochs": 150,
+    "hidden_units": 16,
+    "model_sha256": "a70a4c53ab4fff87086633e0caed0e0f480d29e7145c0b0d1ab8bf51d5c70cb6",
+    "model_file_sha256": "ff395269186e24f229a775e0aa2a0494b640c251ecca602a040cf825829bd924",
+    "training_loss": {
+      "class_balanced": true,
+      "epochs": 150,
+      "final_loss": 0.02617479456104324,
+      "initial_loss": 2.452202190481275,
+      "optimizer": "Adam",
+      "records": 127,
+      "seed": 0
+    },
+    "source_held_out_metrics": {
+      "accuracy": 0.09448818897637795,
+      "class_order": [
+        "archway",
+        "building",
+        "door",
+        "opening",
+        "planter",
+        "retaining_wall",
+        "rock",
+        "roof",
+        "structural_member",
+        "wall",
+        "window"
+      ],
+      "confusion": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          4,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          6,
+          2,
+          4,
+          11,
+          3,
+          23,
+          8,
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          5,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          0,
+          1,
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_f1": 0.06826178395646663,
+      "per_class": {
+        "archway": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 1,
+          "recall": 0.0,
+          "support": 1
+        },
+        "building": {
+          "f1": 0.18181818181818182,
+          "precision": 0.125,
+          "predicted": 8,
+          "recall": 0.3333333333333333,
+          "support": 3
+        },
+        "door": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 3,
+          "recall": 0.0,
+          "support": 5
+        },
+        "opening": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 8,
+          "recall": 0.0,
+          "support": 4
+        },
+        "planter": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 11,
+          "recall": 0.0,
+          "support": 1
+        },
+        "retaining_wall": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 4,
+          "recall": 0.0,
+          "support": 2
+        },
+        "rock": {
+          "f1": 0.07547169811320754,
+          "precision": 0.05128205128205128,
+          "predicted": 39,
+          "recall": 0.14285714285714285,
+          "support": 14
+        },
+        "roof": {
+          "f1": 0.08333333333333333,
+          "precision": 0.058823529411764705,
+          "predicted": 17,
+          "recall": 0.14285714285714285,
+          "support": 7
+        },
+        "structural_member": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 63
+        },
+        "wall": {
+          "f1": 0.4102564102564102,
+          "precision": 0.3333333333333333,
+          "predicted": 24,
+          "recall": 0.5333333333333333,
+          "support": 15
+        },
+        "window": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 12,
+          "recall": 0.0,
+          "support": 12
+        }
+      },
+      "records": 127
+    },
+    "majority_baseline": {
+      "accuracy": 0.0,
+      "class_order": [
+        "archway",
+        "building",
+        "door",
+        "opening",
+        "planter",
+        "retaining_wall",
+        "rock",
+        "roof",
+        "structural_member",
+        "wall",
+        "window"
+      ],
+      "confusion": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          63,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ]
+      ],
+      "macro_f1": 0.0,
+      "per_class": {
+        "archway": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 1
+        },
+        "building": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 3
+        },
+        "door": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 5
+        },
+        "opening": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 4
+        },
+        "planter": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 1
+        },
+        "retaining_wall": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 2
+        },
+        "rock": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 14
+        },
+        "roof": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 7
+        },
+        "structural_member": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 64,
+          "recall": 0.0,
+          "support": 63
+        },
+        "wall": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 63,
+          "recall": 0.0,
+          "support": 15
+        },
+        "window": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "predicted": 0,
+          "recall": 0.0,
+          "support": 12
+        }
+      },
+      "records": 127
+    },
+    "unknown_class_records": 81,
+    "known_class_records": 46,
+    "known_class_correct": 12,
+    "known_class_accuracy": 0.2608695652173913,
+    "final_checkpoint_scope": "Fit on all127 retained examples; no untouched final-modeltest.",
+    "production_eligible": false,
+    "model_weights_updated": true,
+    "geometry_generated": false
+  },
+  "class_coverage": [
+    {
+      "kind": "archway",
+      "examples": 1,
+      "independent_source_groups": 1,
+      "building_or_object_identities": 1,
+      "held_out_class_absent_from_training": 1
+    },
+    {
+      "kind": "building",
+      "examples": 3,
+      "independent_source_groups": 3,
+      "building_or_object_identities": 3,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "door",
+      "examples": 5,
+      "independent_source_groups": 2,
+      "building_or_object_identities": 2,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "opening",
+      "examples": 4,
+      "independent_source_groups": 1,
+      "building_or_object_identities": 1,
+      "held_out_class_absent_from_training": 4
+    },
+    {
+      "kind": "planter",
+      "examples": 1,
+      "independent_source_groups": 1,
+      "building_or_object_identities": 1,
+      "held_out_class_absent_from_training": 1
+    },
+    {
+      "kind": "retaining_wall",
+      "examples": 2,
+      "independent_source_groups": 2,
+      "building_or_object_identities": 2,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "rock",
+      "examples": 14,
+      "independent_source_groups": 4,
+      "building_or_object_identities": 4,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "roof",
+      "examples": 7,
+      "independent_source_groups": 2,
+      "building_or_object_identities": 5,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "structural_member",
+      "examples": 63,
+      "independent_source_groups": 1,
+      "building_or_object_identities": 1,
+      "held_out_class_absent_from_training": 63
+    },
+    {
+      "kind": "wall",
+      "examples": 15,
+      "independent_source_groups": 5,
+      "building_or_object_identities": 8,
+      "held_out_class_absent_from_training": 0
+    },
+    {
+      "kind": "window",
+      "examples": 12,
+      "independent_source_groups": 1,
+      "building_or_object_identities": 1,
+      "held_out_class_absent_from_training": 12
+    }
+  ],
+  "managed_peak_memory_mb": 56.52734375,
+  "memory_cap_mb": 16384,
+  "history_survives_restart": true,
+  "active_building_ranker_unchanged": true,
+  "whole_building_feedback_records_generated": 0,
+  "world_placement_eligible": false,
+  "physical_geometry_verified": false,
+  "limitations": [
+    "Targets describe reviewed source drawing geometry, not measured complete physical buildings.",
+    "Input crops use reference bounding boxes; a crop classifier still needs independently proposed regions at inference.",
+    "All variants of a building and every shared source PDF stay in the same evaluation group.",
+    "Metric dimensions, 3D joins, hidden faces, heights and geographic alignment retain their original assumptions.",
+    "No whole-building acceptance decision or current-ranker feedback is inferred from successful export."
+  ]
+}

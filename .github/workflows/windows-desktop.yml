@@ -23,6 +23,9 @@ on:
       - 'docs/evidence/planning-surfaces/**'
       - 'evidence/wicker-shop-*.json'
       - 'voxel_mapper/neural_learning.py'
+      - 'voxel_mapper/study_component_learning.py'
+      - 'voxel_mapper/study_dataset.py'
+      - 'voxel_mapper/retained_study_examples.py'
       - 'voxel_mapper/local_reasoning.py'
       - 'voxel_mapper/web_*.py'
       - 'voxel_mapper/reconstruction_benchmark.py'
@@ -49,6 +52,9 @@ on:
       - 'packaging/**'
       - 'tests/test_desktop*.py'
       - 'tests/test_neural_learning.py'
+      - 'tests/test_study_component_learning.py'
+      - 'tests/test_study_dataset.py'
+      - 'tests/test_retained_study_examples.py'
       - 'tests/test_web*.py'
       - 'tests/test_planning_collection.py'
       - 'tests/test_planning_view_geometry.py'
@@ -95,6 +101,12 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_desktop*.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Desktop runtime tests failed' }
+          python -m unittest discover -s tests -p 'test_study_component_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-crop component recognizer tests failed' }
+          python -m unittest discover -s tests -p 'test_retained_study_examples.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Retained source target adapter tests failed' }
+          python -m unittest discover -s tests -p 'test_study_dataset.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-paired study dataset tests failed' }
           python -m unittest discover -s tests -p 'test_neural_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Neural learning tests failed' }
           python -m unittest discover -s tests -p 'test_local_reasoning.py' -v
@@ -214,6 +226,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --planning-collection-smoke-test build/desktop-validation/planning-collection 2>&1 | Tee-Object build/desktop-validation/planning-collection.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen planning collection follow-up/restart check failed' }
+      - name: Exercise frozen source-crop neural training and durable research checkpoint
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-learning-smoke-test build/desktop-validation/study-learning 2>&1 | Tee-Object build/desktop-validation/study-learning.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen source-crop learning and restart check failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |

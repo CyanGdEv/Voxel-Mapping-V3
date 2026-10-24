@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components'}
 MAX_JSON_BYTES=16_000_000
 MIN_MEMORY_BUDGET_MB=512
 MAX_MEMORY_BUDGET_MB=16*1024
@@ -48,6 +48,13 @@ def write_json(path,value):
 def resolve_path(config_path,value):
     if not isinstance(value,str) or not value:raise ValueError('A source path is required')
     return (Path(config_path).parent/Path(value)).resolve()
+
+
+def _study_training_options(epochs,hidden_units):
+    if type(epochs) is not int or not 1<=epochs<=300:
+        raise ValueError('Study component training requires one to 300 epochs')
+    if type(hidden_units) is not int or not 4<=hidden_units<=32:
+        raise ValueError('Study component training requires four to 32 hidden units')
 
 
 class DirectoryLock:
@@ -225,6 +232,19 @@ class DesktopRuntime:
             config.update(benchmark_path=str(path),benchmark_sha256=file_hash(path))
         request=self.directory/'correction-requests'/(uuid.uuid4().hex+'.json');write_json(request,config)
         return self.submit('regenerate_corrections',request)
+
+    def submit_study_training(self,dataset_directory,*,epochs=150,hidden_units=16):
+        """Fit an exploratory crop recognizer; never activate a building ranker."""
+        _study_training_options(epochs,hidden_units)
+        directory=Path(dataset_directory).expanduser().resolve();manifest=directory/'dataset.json'
+        dataset=read_json(manifest)
+        if not isinstance(dataset,dict) or dataset.get('version')!='retained-study-dataset-v1':
+            raise ValueError('Choose a retained-study-dataset-v1 directory')
+        config={'dataset_directory':str(directory),'dataset_sha256':file_hash(manifest),
+                'epochs':epochs,'hidden_units':hidden_units}
+        request=self.directory/'study-training-requests'/(uuid.uuid4().hex+'.json')
+        write_json(request,config)
+        return self.submit('train_study_components',request)
 
     def cancel(self,job_id):
         with self._mutex:
@@ -456,7 +476,21 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='planning_world_preview':
+    if kind=='train_study_components':
+        if set(config)-{'dataset_directory','dataset_sha256','epochs','hidden_units'}:
+            raise ValueError('Unsupported study component training settings')
+        directory=resolve_path(config_path,config.get('dataset_directory'));manifest=directory/'dataset.json'
+        pin=config.get('dataset_sha256')
+        if (not isinstance(pin,str) or len(pin)!=64 or any(c not in '0123456789abcdef' for c in pin)
+                or not manifest.is_file() or manifest.stat().st_size>MAX_JSON_BYTES or file_hash(manifest)!=pin):
+            raise ValueError('Queued study dataset manifest is missing or changed')
+        epochs=config.get('epochs',150);hidden_units=config.get('hidden_units',16)
+        _study_training_options(epochs,hidden_units)
+        from .study_component_learning import train
+        result=train(directory,output,epochs=epochs,hidden_units=hidden_units,
+                     cancelled=cancelled,progress=progress)
+        if file_hash(manifest)!=pin:raise ValueError('Study dataset changed during training')
+    elif kind=='planning_world_preview':
         from .planning_world_preview import run
         config={**config,'review_path':str(resolve_path(config_path,config.get('review_path')))}
         result=run(config,output,cancelled=cancelled,progress=progress)
