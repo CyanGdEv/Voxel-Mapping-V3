@@ -74,15 +74,18 @@ def _context(prompt,memory,sources,known):
 
 
 def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=lambda value:None,
-        fetch=None, search=None, reason=None):
+        fetch=None, search=None, reason=None, skip_urls=(), parent_budget=None, run_deadline=None):
     approved,seeds,prompt,limits=validate(config)
+    skipped={web.url(value,approved) for value in skip_urls}
     config=json.loads(json.dumps(config,allow_nan=False));output=Path(output)
     if output.exists(): raise ValueError('Fresh web research output required')
     if not isinstance(memory,str): raise ValueError('Retained source context must be text')
     fetch=fetch or web.fetch;search=search or web.search;reason=reason or local_reasoning.reason
     if cancelled(): raise CancelledError('Web research cancelled')
     output.mkdir(parents=True);atomic_json(output/'config.json',config)
-    started=time.monotonic();deadline=started+limits['max_seconds'];budget=web.Budget(limits['max_run_bytes'])
+    started=time.monotonic();deadline=started+limits['max_seconds']
+    if run_deadline is not None:deadline=min(deadline,run_deadline)
+    budget=web.Budget(limits['max_run_bytes'],parent=parent_budget)
     sources=[];failures=[];attempted=set();known=[];document_links=set();rounds=[];executions=[];withheld=[]
     search_report=None;model_error=None
     def check():
@@ -94,7 +97,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         if target not in known and len(known)<64: known.append(target)
         return target if target in known else None
     def pending():
-        return sorted((value for value in known if value not in attempted),
+        return sorted((value for value in known if value not in attempted and value not in skipped),
             key=lambda value:0 if value in document_links else 1)
     for value in seeds: discover(value)
     if config.get('query','').strip():
@@ -109,7 +112,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     def read(value,proposal_id=None):
         if not check(): return
         value=web.url(value,approved)
-        if value in attempted or len(attempted)>=limits['max_sources']: return
+        if value in attempted or value in skipped or len(attempted)>=limits['max_sources']: return
         attempted.add(value);progress({'progress':.1+.5*len(attempted)/limits['max_sources'],
             'message':'Reading web evidence: '+value[:180]})
         try:
@@ -125,7 +128,9 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
                     document_links.add(target)
             if proposal_id: executions.append({'proposal_id':proposal_id,'url':value,'citation_id':source['citation_id']})
         except (web.WebError,ValueError) as error:
-            failures.append({'url':value,'code':getattr(error,'code','invalid_source'),'error':str(error)})
+            failures.append({'url':value,'code':getattr(error,'code','invalid_source'),
+                'http_status':getattr(error,'http_status',None),
+                'retry_after_seconds':getattr(error,'retry_after_seconds',None),'error':str(error)})
     # Explicit seeds are read first. Without a model, bounded search results
     # can still be gathered and retained for later local-model reasoning.
     initial=seeds or known[:2]
@@ -189,6 +194,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         'sources':observations,'failures':failures,'search':search_report,'model_rounds':rounds,
         'read_only_model_requests_executed':executions,'withheld_proposals':withheld,
         'model_error':model_error,'limits':limits,'attempted_sources':len(attempted),
+        'attempted_urls':sorted(attempted),
         'network_bytes':budget.spent,'cache_directory':str(Path(cache).resolve()),
         'unattempted_discovered_urls':pending(),
         'unattempted_document_urls':[value for value in pending() if value in document_links],

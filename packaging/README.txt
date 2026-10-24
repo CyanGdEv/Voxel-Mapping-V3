@@ -41,6 +41,7 @@ VoxelMapperV3.exe --check-dependencies. Native PDF/vector operations use the
 bundled Python runtime. The original source and physical geometry checks remain.
 
 Diagnostics:
+  VoxelMapperV3.exe --planning-collection-smoke-test PATH_TO_FRESH_COLLECTION_TEST_DIRECTORY
   VoxelMapperV3.exe --web-planning-smoke-test PATH_TO_FRESH_HANDOFF_TEST_DIRECTORY
   VoxelMapperV3.exe --web-smoke-test PATH_TO_FRESH_WEB_TEST_DIRECTORY
   VoxelMapperV3.exe --check-dependencies
@@ -64,10 +65,18 @@ limited to six public sources, two model rounds and bounded text/bytes. Scanned
 PDFs need the separate OCR/planning analysis. Web research does not verify
 physical claims, generate training labels, update weights or modify a world.
 
-Analyse planning PDFs: enter the planning application reference and source URL
-or search terms in Web research, then press Analyse planning PDFs. Discovered
+Collect & analyse PDFs: enter the planning application reference and source URL
+or search terms in Web research, then press Collect & analyse PDFs. Discovered
 original PDF bytes are verified, exported and automatically analysed by page.
 Open review.html in Results folder for drawing previews, classifications and
 source gaps. Mixed states/roles and application membership stay unverified.
 Roof plans and elevations do not enter ground-surface discovery. Scanned PDFs
 retain an OCR gap. No per-file source manifest or view rectangles are needed.
+
+Collection continues through unread document links in small saved batches.
+Temporary network/server errors receive up to three attempts, with backoff.
+Starting the same request resumes verified saved batches without repeating
+finished analysis; offline misses can resume online. Source, time, byte and
+disk limits preserve explicit gaps. Review ledger.json and each batch review
+from the top-level review.html. Exhausted retries and analysis/OCR limits stay
+visible. Collection does not establish exhaustive coverage or physical accuracy.

@@ -76,6 +76,16 @@ class WebPlanningPilotTests(unittest.TestCase):
         self.assertEqual(report['summary']['surface_candidates'],0)
         self.assertIn('page_drawing_role_unresolved',report['page_blocker_counts'])
 
+    def test_whitespace_only_pdf_metadata_title_gets_a_nonempty_fallback(self):
+        with pymupdf.open(stream=self.data,filetype='pdf') as doc:
+            doc.set_metadata({'title':'   '});data=doc.tobytes()
+        web.fetch(PUBLIC+'drawing',self.cache,['example.org'],session=Session([Response(data)]),resolver=resolver)
+        self.config['research']['urls']=[PUBLIC+'drawing']
+        report=self.run_job()
+        manifest=json.loads((self.root/'output/planning-manifest.json').read_text())
+        self.assertEqual(manifest['documents'][0]['title'],'Unclassified original PDF')
+        self.assertEqual(report['summary']['completed_pages'],2)
+
     def test_roof_plan_cannot_become_ground_paving_from_link_title(self):
         self.config,self.data=fixture(self.cache,pages=['Proposed Roof Plan'],link_title='Proposed Floor Plan')
         with patch.object(planning.ordinary_surfaces,'page_candidates',side_effect=AssertionError('Roof is not ground paving')):

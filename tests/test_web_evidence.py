@@ -50,6 +50,26 @@ def capture(root,value=PUBLIC,data=None,headers=None):
 
 
 class WebEvidenceTests(unittest.TestCase):
+    def test_shared_parent_budget_stops_later_requests_after_one_oversized_chunk(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            parent=web.Budget(100);budget=web.Budget(10000,parent=parent)
+            with self.assertRaises(web.WebError):
+                web.fetch(PUBLIC,tmp,['example.org'],budget=budget,
+                    session=Session([Response(b'x'*4096)]),resolver=resolver)
+            self.assertEqual(parent.spent,1024);self.assertTrue(budget.exhausted)
+            session=Session([Response()])
+            with self.assertRaises(web.WebError):
+                web.fetch(PUBLIC,tmp,['example.org'],budget=budget,session=session,resolver=resolver)
+            self.assertEqual(session.calls,[])
+
+    def test_retry_after_and_http_status_survive_cached_network_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            capture(tmp)
+            result=web.fetch(PUBLIC,tmp,['example.org'],session=Session([
+                Response(status=429,headers={'Retry-After':'12'})]),resolver=resolver)
+            self.assertEqual(result['retrieval'],'cached_after_network_failure')
+            self.assertEqual(result['http_status'],429)
+            self.assertEqual(result['retry_after_seconds'],12)
     def test_main_content_and_drawing_links_precede_navigation(self):
         data=('<html><title>Application</title><nav>Ignore navigation</nav><main>SMD/2024/0136 '
             +''.join('<a href="/navigation/'+str(i)+'">Navigation</a>' for i in range(40))

@@ -84,6 +84,12 @@ class WebResearchTests(unittest.TestCase):
         self.assertEqual(report['unattempted_document_urls'],[PUBLIC+'plan'])
         self.assertFalse(report['discovery_exhaustive'])
 
+    def test_followup_controller_skips_completed_seed_urls(self):
+        self.config['urls'].append(PUBLIC+'plan')
+        report=self.run_job(skip_urls=[PUBLIC])
+        self.assertEqual([s['url'] for s in report['sources']],[PUBLIC+'plan'])
+        self.assertEqual(report['attempted_urls'],[PUBLIC+'plan'])
+
     def test_context_is_complete_bounded_json_and_records_only_offered_sources(self):
         prompt='x'*2048
         sources=[self.first,self.second]*6

@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -166,7 +166,8 @@ class DesktopRuntime:
         path=self.directory/'web-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
         return self.submit('web_research',path)
 
-    def submit_web_planning(self,application_reference,query='',urls=None,*,allowed_hosts=None,model='',offline=False,refresh=True):
+    def submit_web_planning(self,application_reference,query='',urls=None,*,allowed_hosts=None,model='',offline=False,refresh=True,collect=False):
+        if type(collect) is not bool:raise ValueError('Explicit follow-up collection setting required')
         from .web_planning_pilot import VERSION,validate
         from .web_research import VERSION as WEB_VERSION
         from .web_evidence import DEFAULT_HOSTS
@@ -175,6 +176,11 @@ class DesktopRuntime:
                 'allowed_hosts':list(DEFAULT_HOSTS) if allowed_hosts is None else allowed_hosts,
                 'model':model,'offline':offline,'refresh':refresh}}
         validate(config)
+        if collect:
+            from .planning_collection import VERSION as COLLECTION_VERSION,validate as validate_collection
+            request={'version':COLLECTION_VERSION,'pilot':config};validate_collection(request)
+            path=self.directory/'web-planning-requests'/(uuid.uuid4().hex+'.json');write_json(path,request)
+            return self.submit('planning_collection',path)
         path=self.directory/'web-planning-requests'/(uuid.uuid4().hex+'.json');write_json(path,config)
         return self.submit('web_planning_pilot',path)
 
@@ -229,7 +235,7 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind in ('web_research','web_planning_pilot'):
+                if kind in ('web_research','web_planning_pilot','planning_collection'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
                 if kind=='area_pilot':
@@ -317,7 +323,7 @@ class DesktopRuntime:
         directory=Path(job['output_directory']).parent;request=directory/'request.json';active=self.store.setting('active_model')
         payload={'version':'desktop-worker-v1','kind':job['kind'],'config_path':job['config_path'],'config_sha256':job['config_sha256'],
             'output_directory':job['output_directory'],'result_path':str(directory/'worker-result.json'),'progress_path':str(directory/'progress.json'),
-            'cancel_path':str(directory/'cancel'),'active_model':active,'memory_context':self.store.context(max_characters=max(0,min(2048,4096-len(str(read_json(job['config_path']).get('prompt','')))))) if job['kind'] in ('reason','web_research','web_planning_pilot') else ''}
+            'cancel_path':str(directory/'cancel'),'active_model':active,'memory_context':self.store.context(max_characters=max(0,min(2048,4096-len(str(read_json(job['config_path']).get('prompt','')))))) if job['kind'] in ('reason','web_research','web_planning_pilot','planning_collection') else ''}
         import psutil
         payload.update(parent_pid=os.getpid(),parent_created=psutil.Process(os.getpid()).create_time())
         write_json(request,payload)
@@ -426,7 +432,12 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='web_planning_pilot':
+    if kind=='planning_collection':
+        from .planning_collection import run,collection_key
+        memory_root=output.parents[2]
+        result=run(config,output,memory_root/'web-cache',memory_root/'planning-collections'/collection_key(config),
+            memory=request.get('memory_context',''),cancelled=cancelled,progress=progress)
+    elif kind=='web_planning_pilot':
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)

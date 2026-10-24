@@ -1,6 +1,7 @@
 """Bounded public-web evidence, immutable cached bytes and explicit provenance."""
 from concurrent.futures import CancelledError
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import hashlib
 import ipaddress
 import json
@@ -26,20 +27,27 @@ DEFAULT_HOSTS = ('publicaccess.staffsmoorlands.gov.uk', 'www.staffsmoorlands.gov
 
 
 class WebError(ValueError):
-    def __init__(self, code, message):
-        self.code=code
+    def __init__(self, code, message, *, http_status=None,retry_after_seconds=None):
+        self.code=code;self.http_status=http_status;self.retry_after_seconds=retry_after_seconds
         super().__init__(message)
 
 
 class Budget:
-    def __init__(self, limit=16000000):
-        if type(limit) is not int or not 1<=limit<=32000000:
+    def __init__(self, limit=16000000, *, parent=None):
+        if type(limit) is not int or not 1<=limit<=64000000:
             raise ValueError('Bounded web byte budget required')
-        self.limit=limit;self.spent=0
+        if parent is not None and not isinstance(parent,Budget):raise ValueError('Known parent byte budget required')
+        self.limit=limit;self.spent=0;self.parent=parent
 
     def take(self, count):
+        if type(count) is not int or count<0:raise ValueError('Nonnegative streamed byte count required')
         self.spent+=count
+        if self.parent is not None:self.parent.take(count)
         if self.spent>self.limit: raise WebError('byte_budget','Web run byte budget exceeded')
+
+    @property
+    def exhausted(self):
+        return self.spent>=self.limit or (self.parent is not None and self.parent.exhausted)
 
 
 def host(value):
@@ -228,7 +236,7 @@ def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
         for _ in range(4):
             if cancelled(): raise CancelledError('Web retrieval cancelled')
             if time.monotonic()>=deadline: raise WebError('deadline','Web retrieval time budget exceeded')
-            if budget.spent>=budget.limit: raise WebError('byte_budget','Web run byte budget exhausted')
+            if budget.exhausted: raise WebError('byte_budget','Web run byte budget exhausted')
             addresses=_public_dns(current,resolver)
             client.cookies.clear()
             response=client.get(current,stream=True,allow_redirects=False,auth=_NoOriginAuth(),
@@ -239,7 +247,15 @@ def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
                     target=url(urljoin(current,response.headers.get('Location','')),approved)
                     if target==current: raise WebError('redirect_loop','Web source redirect loop')
                     redirects.append({'url':current,'status':response.status_code,'target':target});current=target;continue
-                if response.status_code!=200: raise WebError('http_status','Web source returned HTTP '+str(response.status_code))
+                if response.status_code!=200:
+                    retry=None;header=response.headers.get('Retry-After','')
+                    try:
+                        if re.fullmatch('[0-9]{1,10}',header):retry=int(header)
+                        elif len(header)<=128:
+                            retry=max(0,(parsedate_to_datetime(header)-datetime.now(timezone.utc)).total_seconds())
+                    except (ValueError,TypeError,OverflowError):pass
+                    raise WebError('http_status','Web source returned HTTP '+str(response.status_code),
+                        http_status=response.status_code,retry_after_seconds=retry)
                 data=bytearray()
                 for chunk in response.iter_content(65536):
                     if cancelled(): raise CancelledError('Web retrieval cancelled')
@@ -261,7 +277,10 @@ def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
     except (requests.RequestException,WebError) as error:
         if prior is not None:
             return {'source':prior,'retrieval':'cached_after_network_failure',
-                'network_bytes':budget.spent-start,'network_error':str(error)}
+                'network_bytes':budget.spent-start,'network_error':str(error),
+                'network_error_code':getattr(error,'code','network_unavailable'),
+                'http_status':getattr(error,'http_status',None),
+                'retry_after_seconds':getattr(error,'retry_after_seconds',None)}
         if isinstance(error,WebError): raise
         raise WebError('network_unavailable','Public web source request failed: '+type(error).__name__) from error
     finally:

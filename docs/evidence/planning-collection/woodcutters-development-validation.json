@@ -1,0 +1,308 @@
+{
+  "status": "passed",
+  "dataset_kind": "real_previously_inspected_area",
+  "application_reference": "SMD/2024/0136",
+  "live_acquisition": {
+    "completed_sources": 20,
+    "unresolved": [],
+    "resumed_new_batches": 1
+  },
+  "final_code_cached_replay": {
+    "completed_batches": 4,
+    "completed_pages": 35,
+    "completed_sources": 20,
+    "documents_needing_analysis_review": 14,
+    "known_urls": 20,
+    "new_batches": 4,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unique_originals_handed_to_analysis": 14,
+    "unresolved_sources": 0,
+    "visible_view_captions": 14
+  },
+  "final_restart": {
+    "completed_batches": 4,
+    "completed_pages": 35,
+    "completed_sources": 20,
+    "documents_needing_analysis_review": 14,
+    "known_urls": 20,
+    "new_batches": 0,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unique_originals_handed_to_analysis": 14,
+    "unresolved_sources": 0,
+    "visible_view_captions": 14
+  },
+  "format_counts": {
+    "html": 1,
+    "pdf": 19
+  },
+  "original_pdfs": [
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353041",
+      "sha256": "b344ab3cb85aa249525a9ff4afc71a1dac31c273a623186b72dee34c11927d05",
+      "bytes": 3115375
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "bytes": 996422
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "bytes": 1089394
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "bytes": 889213
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "bytes": 698616
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "bytes": 570143
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "bytes": 476955
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353049",
+      "sha256": "349ad3d15c760b3d7747bf7f065fa4d42b01ba24516f1ec6744369dd98338507",
+      "bytes": 574030
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353036",
+      "sha256": "c52061cd8c263779fab215f8c4d97f7219ce77622c24a3a97b940bad896c68ff",
+      "bytes": 1980775
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353037",
+      "sha256": "9837ac0f642e111ce3924da22f3c29aa64fc3e65bd104bb8cf7f5dd58c4405d8",
+      "bytes": 553059
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353038",
+      "sha256": "5d1612eef20965c4b95dddc29f91758cb55a9e8de4d9c93df8fd6ba0658f3c8d",
+      "bytes": 4019523
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039",
+      "sha256": "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d",
+      "bytes": 713803
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353040",
+      "sha256": "bf25faf2f9c1f322a6cbc0f73ad321cdb1189019436b76e41eab5000192b9c22",
+      "bytes": 1486197
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353048",
+      "sha256": "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881",
+      "bytes": 190425
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354194",
+      "sha256": "c089684cad7dd747921aababad9d99fb4cf266eb2afd9c5b1aea9892e5887718",
+      "bytes": 182221
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354408",
+      "sha256": "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6",
+      "bytes": 227631
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356354",
+      "sha256": "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b",
+      "bytes": 252220
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356356",
+      "sha256": "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892",
+      "bytes": 317526
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357",
+      "sha256": "5009eed9b7fa3d4e8d09dd4aada7c5488c2556865fc8b7c7d18bac99cc97d51c",
+      "bytes": 522090
+    }
+  ],
+  "collection_key": "dc466709fe423f1dffe7732e539b26c04320979dc84d483c436b17ca1638275c",
+  "output_hashes_verified": true,
+  "restart_without_reanalysis_verified": true,
+  "restart_network_bytes": 0,
+  "analysis_gaps": [
+    {
+      "batch": 1,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "batch": 2,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    },
+    {
+      "batch": 2,
+      "ocr_required": true,
+      "reason": null,
+      "sha256": "349ad3d15c760b3d7747bf7f065fa4d42b01ba24516f1ec6744369dd98338507",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353049"
+    },
+    {
+      "batch": 2,
+      "ocr_required": false,
+      "reason": "Complete document exceeds bounded page analysis; no pages silently selected",
+      "sha256": "c52061cd8c263779fab215f8c4d97f7219ce77622c24a3a97b940bad896c68ff",
+      "status": "drawing_withheld",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353036"
+    },
+    {
+      "batch": 2,
+      "ocr_required": false,
+      "reason": "Complete document exceeds bounded page analysis; no pages silently selected",
+      "sha256": "9837ac0f642e111ce3924da22f3c29aa64fc3e65bd104bb8cf7f5dd58c4405d8",
+      "status": "drawing_withheld",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353037"
+    },
+    {
+      "batch": 2,
+      "ocr_required": false,
+      "reason": "Complete document exceeds bounded page analysis; no pages silently selected",
+      "sha256": "5d1612eef20965c4b95dddc29f91758cb55a9e8de4d9c93df8fd6ba0658f3c8d",
+      "status": "drawing_withheld",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353038"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": "Complete document exceeds bounded page analysis; no pages silently selected",
+      "sha256": "bf25faf2f9c1f322a6cbc0f73ad321cdb1189019436b76e41eab5000192b9c22",
+      "status": "drawing_withheld",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353040"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353048"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "c089684cad7dd747921aababad9d99fb4cf266eb2afd9c5b1aea9892e5887718",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354194"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354408"
+    },
+    {
+      "batch": 3,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356354"
+    },
+    {
+      "batch": 4,
+      "ocr_required": false,
+      "reason": null,
+      "sha256": "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892",
+      "status": "original_pdf_handed_to_analysis",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356356"
+    },
+    {
+      "batch": 4,
+      "ocr_required": false,
+      "reason": "Complete document exceeds bounded page analysis; no pages silently selected",
+      "sha256": "5009eed9b7fa3d4e8d09dd4aada7c5488c2556865fc8b7c7d18bac99cc97d51c",
+      "status": "drawing_withheld",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357"
+    }
+  ],
+  "replay_peak_memory_mb": 776.125,
+  "focused_tests": {
+    "collection": 18,
+    "web": 40,
+    "managed_collection": 1,
+    "status": "passed"
+  },
+  "world_geometry_additions": 0,
+  "training_labels_generated": 0,
+  "model_weights_updated": false,
+  "application_membership_verified": false,
+  "source_discovery_exhaustive": false,
+  "geometric_accuracy": null,
+  "physical_6gb_pc_acceptance_assessed": false,
+  "installed_model_quality_assessed": false,
+  "implementations": {
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "332150a26e79ed697af3df5effb5d3699020bedeb49072822bf9bcfa8599ebe4"
+    },
+    "voxel_mapper.planning_area_pilot": {
+      "basis": "module_file_bytes",
+      "sha256": "9acb447c529f5798cd471a2519da49d87daf341f637c5dd24378a64d411f9f97"
+    },
+    "voxel_mapper.planning_collection": {
+      "basis": "module_file_bytes",
+      "sha256": "9c8095fea30214d0eba927de9de1812fa3682876935ebdf2ff7144ab7a0d032e"
+    },
+    "voxel_mapper.web_evidence": {
+      "basis": "module_file_bytes",
+      "sha256": "ff767db31ecc370c60c30664e15b1322f425647de5db118f15ab839b7d1714a9"
+    },
+    "voxel_mapper.web_planning_pilot": {
+      "basis": "module_file_bytes",
+      "sha256": "85e732fa248b661a1f097f5dde8a9cfc9d4d30aff8b2ddd8c046231f97e7e7db"
+    },
+    "voxel_mapper.web_research": {
+      "basis": "module_file_bytes",
+      "sha256": "ab38f1bf09660334bf1ae6018faf15203670cc7522ce66cdd2c03117c17d76bb"
+    }
+  }
+}
