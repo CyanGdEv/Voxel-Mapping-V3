@@ -1,0 +1,105 @@
+{
+  "application_reference": "SMD/2024/0136",
+  "caption_comparison": [
+    {
+      "after": [],
+      "before": [],
+      "page": 1,
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "title": "Existing Site Plan"
+    },
+    {
+      "after": [],
+      "before": [],
+      "page": 1,
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "title": "Proposed Site Plan"
+    },
+    {
+      "after": [
+        "Existing Front Elevation",
+        "Existing Rear Elevation",
+        "Existing Side Elevation.",
+        "Existing Side Elevation",
+        "Existing Section A-A",
+        "Existing Section B-B"
+      ],
+      "before": [],
+      "page": 1,
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "title": "Existing Sections and Elevations"
+    },
+    {
+      "after": [
+        "Proposed Floor Plan",
+        "Proposed Ground Floor Plan"
+      ],
+      "before": [
+        "Proposed Floor Plan",
+        "Proposed Ground Floor Plan"
+      ],
+      "page": 1,
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "title": "Proposed Floor Plan"
+    },
+    {
+      "after": [
+        "Proposed Front Elevation",
+        "Proposed Rear Elevation",
+        "Proposed Side Elevation.",
+        "Proposed Side Elevation",
+        "Proposed Section A-A",
+        "Proposed Section B-B"
+      ],
+      "before": [],
+      "page": 1,
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "title": "Proposed Sections and Elevations"
+    },
+    {
+      "after": [],
+      "before": [],
+      "page": 1,
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "title": "No Dig Surfacing Detail"
+    }
+  ],
+  "caption_comparison_base_commit": "689b48a9f510de39ffc52963a710b9fa4ffa74f7",
+  "caption_comparison_basis": "same_original_pages_empty_graph_native_glyph_inventory_only_not_geometry_accuracy",
+  "dataset_kind": "real_source_development_pilot",
+  "elapsed_s": 76.088,
+  "independently_verified_reconstruction_accuracy": null,
+  "model_promoted": false,
+  "output_hashes_verified": true,
+  "peak_memory_mb": 453.1484375,
+  "persistent_restart_verified": true,
+  "physical_6gb_pc_tested": false,
+  "report_sha256": "a0513b6bc08bbfb19f4c3ce74f07402217fbeb8f6768b6974bfa2970c1c118e8",
+  "source_pdfs_unchanged": true,
+  "source_sha256": [
+    "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+    "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+    "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+    "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+    "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+    "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526"
+  ],
+  "status": "passed_engineering_checks",
+  "summary": {
+    "attempted_pages": 6,
+    "completed_pages": 6,
+    "geometric_accuracy": null,
+    "inspected_documents": 6,
+    "physical_component_coverage": null,
+    "reconstructed_buildings": 0,
+    "reconstruction_completed": false,
+    "registered_path_networks": 0,
+    "requested_documents": 6,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "view_candidates": 6,
+    "visible_view_captions": 14
+  },
+  "training_labels_generated": 0,
+  "world_placement_eligible": false
+}

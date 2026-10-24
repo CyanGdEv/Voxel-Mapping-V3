@@ -23,15 +23,26 @@ def discover_page(page,sha,number,*,max_candidates=10000):
         'extraction':extraction,'source_geometry':[],'closed_source_faces':[],
         'shared_spec_generated':False,'physical_identity_verified':False,'world_placement_eligible':False}
     row['source_image_placements']=placements(page,sha,number)
+    def caption_inventory_only(status, **diagnostics):
+        # Text/glyph evidence does not depend on complete linework topology.
+        # Bind an explicitly empty graph; partial geometry cannot acquire a
+        # caption scope or masquerade as a complete source inventory.
+        empty=build([]);empty.update(document_sha256=sha,page=number)
+        layout=review(page,sha,number,empty)
+        row.update(status=status,caption_layout=layout,
+            caption_inventory_basis='original_text_with_empty_geometry_graph',
+            counts={'source_primitives':0,'closed_source_faces':0,
+                    'view_captions':len(layout['view_captions'])},**diagnostics)
+        return row
     if extraction['status']!='unplaced_geometry_candidates':
-        row['status']='complete_geometry_extraction_required';return row
+        return caption_inventory_only('complete_geometry_extraction_required')
     graph=build(parents)
     if not parents:
         # Bind the empty graph to this inspected page so raster-only drawings
         # still retain native captions without inventing linework.
         graph.update(document_sha256=sha,page=number)
     if graph['status']!='source_drawing_topology_only':
-        row.update(status='complete_source_topology_required',graph_review=graph);return row
+        return caption_inventory_only('complete_source_topology_required',graph_review=graph)
     layout=review(page,sha,number,graph)
     if not parents:
         row.update(status='no_native_geometry_candidates',caption_layout=layout,

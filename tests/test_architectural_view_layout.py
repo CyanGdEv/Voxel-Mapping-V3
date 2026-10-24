@@ -8,6 +8,27 @@ from voxel_mapper.drawing_geometry import extract_page
 
 
 class ViewLayoutTests(unittest.TestCase):
+    def test_relative_elevations_and_prefixed_sections_preserve_unknown_orientation(self):
+        for text,kind,state in [
+            ('Existing Front Elevation','elevation','existing'),
+            ('Proposed Rear Elevation | 1:100','elevation','proposed'),
+            ('Existing Side Elevation.','elevation','existing'),
+            ('Side Elevation','elevation','unspecified'),
+            ('Existing Section A-A','section','existing'),
+            ('Proposed Section AB-AB | 1:50','section','proposed')]:
+            with self.subTest(text=text):
+                claim=view_claim(text)
+                self.assertEqual(claim['view_kind'],kind)
+                self.assertEqual(claim['printed_state'],state)
+                self.assertIsNone(claim['direction'])
+                self.assertFalse(claim['physical_orientation_verified'])
+        self.assertEqual(view_claim('Existing Front Elevation')['relative_facade'],'front')
+        self.assertEqual(view_claim('Existing Section A-A')['section_identifier'],'A')
+        for text in ('See Existing Front Elevation','Existing Rear Elevation as Proposed',
+                     'Existing Section A-B','Existing Section A-A as Proposed',
+                     'Existing Side Elevation | 1:99999','Existing Side Elevation requires repair'):
+            self.assertIsNone(view_claim(text),text)
+
     def source(self):
         doc=pymupdf.open();page=doc.new_page(width=500,height=600)
         page.draw_rect((30,40,200,160));page.insert_text((30,200),"South Elevation 'as existing' | 1:50",fontsize=10)

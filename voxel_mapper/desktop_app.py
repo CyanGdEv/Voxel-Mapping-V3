@@ -16,6 +16,7 @@ JOB_KINDS = (
     ('Full Alton draft from retained inputs', 'alton_world'),
     ('Building batch / local previews', 'building_batch'),
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
+    ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -480,6 +481,12 @@ class DesktopWindow:
             if len(detail)>50000:detail=detail[:50000]+'\n... Display truncated; complete results remain in the job output directory.'
             if row.get('kind')=='reconstruction_benchmark' and row.get('result'):
                 detail=benchmark_summary(row['result'])+'\n\nAdvanced receipt:\n'+detail
+            if row.get('kind')=='planning_source_pilot' and row.get('result'):
+                counts=row['result'].get('summary',{})
+                detail=(f"Planning source review pack: {counts.get('completed_pages',0)} pages inspected.\n"
+                    f"Visible view captions: {counts.get('visible_view_captions',0)}; enclosed surface candidates: {counts.get('surface_candidates',0)}.\n"
+                    'Open review.html in the Results folder to inspect the drawings and remaining blockers.\n'
+                    'Building reconstruction, registered paths and real accuracy remain unfinished.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -591,6 +598,7 @@ def main(argv=None):
     parser.add_argument('--ui-smoke-test',type=Path,metavar='OUTPUT',help='Construct the real desktop UI, capture it if supported, then close.')
     parser.add_argument('--review-smoke-test',type=Path,metavar='OUTPUT',help='Exercise the source drawing, geometry correction and draft-saving UI, then close.')
     parser.add_argument('--correction-smoke-test',type=Path,metavar='OUTPUT',help='Exercise actual desktop correction submission and regenerated native world readback.')
+    parser.add_argument('--planning-pilot-smoke-test',type=Path,metavar='OUTPUT',help='Exercise planning discovery through a managed worker and verify retained evidence.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -605,6 +613,9 @@ def main(argv=None):
     if args.correction_smoke_test is not None:
         from .desktop_correction_smoke import run
         result=run(args.correction_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.planning_pilot_smoke_test is not None:
+        from .desktop_planning_smoke import run
+        result=run(args.planning_pilot_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

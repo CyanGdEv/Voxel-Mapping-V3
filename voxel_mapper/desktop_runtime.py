@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot'}
 MAX_JSON_BYTES=16_000_000
 
 
@@ -407,6 +407,11 @@ def _worker(request):
         result=run(config.get('preset'),output,evidence_directory=config.get('evidence_directory'),
             download_missing=config.get('download_missing',False),cache_directory=output.parents[2]/'source-cache',
             cancelled=cancelled,progress=progress)
+    elif kind=='planning_source_pilot':
+        from .planning_area_pilot import run
+        base=resolve_path(config_path,config.get('source_directory','.'))
+        result=run(config,lambda name:base/name,output,cancelled=cancelled,
+            progress=lambda message:progress({'progress':.1,'message':message}))
     elif kind=='prepare_review':
         from .desktop_review_presets import prepare_demo,prepare_wicker
         if set(config)-{'preset','evidence_directory'}:raise ValueError('Unsupported review preparation settings')

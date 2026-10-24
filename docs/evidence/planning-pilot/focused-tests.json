@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "tests_run": 41,
+  "failures": 0,
+  "errors": 0,
+  "modules": [
+    "test_architectural_view_layout",
+    "test_building_pdf_discovery",
+    "test_drawing_view_candidates",
+    "test_planning_area_pilot",
+    "test_desktop_planning_pilot"
+  ],
+  "implementation_sha256": {
+    "voxel_mapper/architectural_view_layout.py": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83",
+    "voxel_mapper/building_pdf_discovery.py": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88",
+    "voxel_mapper/planning_area_pilot.py": "da445d0e80741b77d3a6eab5d5fb39639b7710196b39666e44a6203e5643700c",
+    "voxel_mapper/desktop_runtime.py": "b64d1599055964ee0aa76242133ffa40662736fad7b5f869d246248a6fe88746",
+    "voxel_mapper/desktop_app.py": "d3145457720df4150a8f87c4eb48c11081001965cec4d2fa3f3cfafc221ca965",
+    "voxel_mapper/desktop_planning_smoke.py": "4e4300f887fe349ce2181ac705ca71c107095dc6fb0459c92ea02ae0b6a0bb73"
+  }
+}

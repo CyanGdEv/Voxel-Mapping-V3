@@ -1,0 +1,71 @@
+{
+  "version": "planning-area-pilot-v1",
+  "area_id": "alton-woodcutters-facilities",
+  "application_references": [
+    "SMD/2024/0136"
+  ],
+  "source_directory": "planning-originals",
+  "development_exposure": "previously_inspected",
+  "documents": [
+    {
+      "file": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d.pdf",
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "title": "Existing Site Plan",
+      "role": "site-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+    },
+    {
+      "file": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b.pdf",
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "title": "Proposed Site Plan",
+      "role": "site-plan",
+      "drawing_state": "proposed",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+    },
+    {
+      "file": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718.pdf",
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "title": "Existing Sections and Elevations",
+      "role": "elevation",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    },
+    {
+      "file": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534.pdf",
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "title": "Proposed Floor Plan",
+      "role": "floor-plan",
+      "drawing_state": "proposed",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+    },
+    {
+      "file": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0.pdf",
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "title": "Proposed Sections and Elevations",
+      "role": "elevation",
+      "drawing_state": "proposed",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "file": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526.pdf",
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "title": "No Dig Surfacing Detail",
+      "role": "detail",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2024/0136",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+    }
+  ]
+}
