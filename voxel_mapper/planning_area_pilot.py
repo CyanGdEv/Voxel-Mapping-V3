@@ -17,11 +17,14 @@ import re
 import sys
 
 import pymupdf
+import pypdf
 
 from . import architectural_view_layout, building_pdf_discovery, drawing_view_candidates
 from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linework_boundaries, drawing_page_tools, building_raster_views
 from . import planning_outline_semantics, glyph_visibility, planning_component_footprints, planning_component_measurements
 from . import planning_section_profiles, planning_section_correspondence
+from . import planning_section_cuts, planning_design_dimensions, planning_design_massing
+from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
 from .drawing_page_tools import native_inverse
@@ -225,6 +228,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         page,sha,number,view_pack,measurements,cancelled=cancelled)
     references = None if measurements is None else planning_section_correspondence.page_references(
         page,sha,number,measurements,cancelled=cancelled)
+    cuts = planning_section_cuts.page_evidence(page,sha,number,cancelled=cancelled)
+    dimensions = planning_design_dimensions.page_evidence(page,sha,number,cancelled=cancelled)
     scoped = None if view_pack is None or not view_pack['views'] else planning_view_geometry.page_candidates(
         page,sha,number,view_pack,cancelled=cancelled)
     visible = [] if layout is None else [r for r in layout['view_captions']
@@ -270,6 +275,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'component_measurements':measurements,
         'section_profiles':profiles,
         'drawing_references':references,
+        'section_cuts':cuts,
+        'design_dimensions':dimensions,
         'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
@@ -284,6 +291,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
             'building_outline_hints':semantic_summary.get('outline_role_hints',{}).get('building',0),
             'path_plaza_outline_hints':sum(semantic_summary.get('outline_role_hints',{}).get(k,0) for k in ('path','plaza')),
             'component_boundary_candidates':0 if components is None else len(components['candidates']),
+            'section_cut_topology_candidates':len(cuts['cuts']),
+            'source_design_dimension_claims':len(dimensions['claims']),
             'nominal_section_profile_hypotheses':0 if profiles is None else len(profiles['profiles']),
             'surface_label_statuses':dict(Counter(r['status'] for r in labels)),
             'surface_connectivity_status':'not_assessed_unverified_surface_geometry',
@@ -362,10 +371,11 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             ordinary_surfaces,drawing_view_candidates,planning_view_geometry,
             drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views,
             planning_outline_semantics,glyph_visibility,planning_component_footprints,planning_component_measurements,
-            planning_section_profiles,planning_section_correspondence)},
+            planning_section_profiles,planning_section_correspondence,
+            planning_section_cuts,planning_design_dimensions,planning_design_massing,building_spec,study_mesh_export,wing_shell_study)},
         'semantic_backends':planning_outline_semantics.BACKENDS,
         'caption_version':architectural_view_layout.VERSION,
-        'pymupdf_version':pymupdf.VersionBind}
+        'pymupdf_version':pymupdf.VersionBind,'text_operator_parser_version':pypdf.__version__}
     atomic_json(root/'config.json',config);atomic_json(root/'contract.json',contract)
     documents=[];pages=[];verified=[];used=0;written=0
     for item in config['documents']:
@@ -461,15 +471,17 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'surface_candidates':sum(p['summary']['surface_candidates'] for p in pages),
         **{k:sum(p['summary'].get(k,0) for p in pages) for k in
            ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
-            'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates')},
+            'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates',
+            'section_cut_topology_candidates','source_design_dimension_claims')},
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}
-    measurement_pages=[];profile_pages=[];correspondence_pages=[]
+    measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[]
     for record in pages:
         check()
         evidence=json.loads((root/record['evidence_file']).read_text(encoding='utf-8'))
         correspondence_pages.append(planning_section_correspondence.source_page(evidence))
+        if evidence.get('design_dimensions'):dimension_pages.append(evidence['design_dimensions'])
         if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
         if evidence.get('section_profiles'):profile_pages.append(evidence['section_profiles'])
     measurement_review=planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
@@ -480,6 +492,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
     correspondence_review=planning_section_correspondence.review_pages(correspondence_pages,cancelled=cancelled)
     planning_section_correspondence.write_review(root,correspondence_review)
     summary.update(correspondence_review['summary'])
+    massing_review=planning_design_massing.review_pages(dimension_pages,cancelled=cancelled)
+    planning_design_massing.write_review(root,massing_review,cancelled=cancelled)
+    summary.update(massing_review['summary'])
     reference={'status':'awaiting_separate_checked_reference_inventory',
         'required_families':['buildings','paths_and_plazas'],
         'requirements':['source_bound_component_identities','drawing_state_and_current_state',
@@ -493,8 +508,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         '<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>. '
         'Physical height and cross-view correspondence remain unresolved; no 3D building is generated.</p>'
         '<p><a href="section-profiles.html">Unassigned section profile measurements</a></p>'
-        '<p><a href="section-correspondence.html">Section to plan candidates and original sheet references</a></p></html>'),encoding='utf-8')
-    total=sum(p.stat().st_size for p in root.iterdir() if p.is_file())
+        '<p><a href="section-correspondence.html">Section to plan candidates and original sheet references</a></p>'
+        '<p><a href="design-massing.html">Interactive conditional 3D design row groups</a></p></html>'),encoding='utf-8')
+    total=sum(p.stat().st_size for p in root.rglob('*') if p.is_file())
     if total>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
     report={'version':VERSION,'status':'source_review_pack_generated_with_reconstruction_blockers',
         'contract':contract,'area_id':config['area_id'],'documents':documents,'pages':pages,
@@ -502,9 +518,10 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'component_measurement_review':'component-measurements.json',
         'section_profile_review':'section-profiles.json',
         'section_correspondence_review':'section-correspondence.json',
+        'conditional_design_massing_review':'design-massing.json',
         'benchmark':reference,'training_labels_generated':0,'model_promoted':False,
         'world_placement_eligible':False,'park_world_blocks_added':0,
-        'output_sha256':{p.name:file_hash(p) for p in sorted(root.iterdir()) if p.is_file()}}
+        'output_sha256':{p.relative_to(root).as_posix():file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}}
     if total+len(json.dumps(report,indent=2,sort_keys=True,allow_nan=False).encode())+1>limits['max_output_bytes']:
         raise PilotBudgetExceeded('Pilot report byte budget exceeded')
     check();atomic_json(root/'report.json',report)

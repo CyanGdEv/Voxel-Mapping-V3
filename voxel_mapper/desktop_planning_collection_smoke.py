@@ -30,6 +30,10 @@ def seed(cache):
             page.draw_rect((60,40,120,110))
             page.insert_text((70,80),'Container',fontsize=6)
             page.insert_text((30,240),'2 No. 2.1m x 3.5m Shipping containers.',fontsize=8)
+            page.insert_textbox((30,270,570,350),
+                'The proposed layout will result in a building footprint of 472 sq.m.\n'
+                'The two lines of portacabins are located 8.05m apart, 35.85m long and 2.5m wide\n'
+                'with an eaves height of 2.5m and linked by a domed ridge approximately 5.70m above ground level.',fontsize=7)
             page.insert_text((30,400),'DEMO-AA-BB-CC-DR-A-0301',fontsize=8)
             sources.append(('https://example.org/plan-'+str(number)+'.pdf',document.tobytes()))
     index=('<html><main>APP/1 '+''.join('<a href="'+value+'">Drawing</a>' for value,_ in sources)+'</main></html>').encode()
@@ -85,6 +89,14 @@ def run(output):
                 or correspondence['local_3d_components'] or correspondence['physical_height_verified']
                 or any(p['selected_component_id'] is not None for p in correspondence['profiles'])):
             raise ValueError('Collection lost competing plan candidates or selected an unsupported physical link')
+        massing=json.loads((pack/'design-massing.json').read_text())
+        if (massing['summary']['conditional_design_massing_alternatives']!=14
+                or massing['summary']['conditional_design_row_groups']!=28
+                or massing['physical_height_verified'] or massing['world_placement_eligible']):
+            raise ValueError('Source design dimensions lost conditional 3D row-group alternatives')
+        for model_path in pack.glob('design-massing-*/model.glb'):
+            if model_path.read_bytes()[:4]!=b'glTF':
+                raise ValueError('Conditional massing did not export an actual GLB')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
@@ -105,6 +117,8 @@ def run(output):
         for key in ('section_plan_context_pairs','profiles_with_multiple_plan_candidates','source_sheet_reference_markers'):
             if second['result']['summary'].get(key)!=result['summary'][key]:
                 raise ValueError('Restart changed correspondence diagnostics')
+        if second['result']['summary'].get('conditional_design_massing_alternatives')!=14:
+            raise ValueError('Restart lost conditional 3D design massing')
         if runtime.store.summary()['feedback_records'] or runtime.store.summary()['checkpoints']:
             raise ValueError('Collection created reviewed labels or model checkpoints')
     finally:runtime.close(wait=True)
@@ -116,6 +130,7 @@ def run(output):
         'component_measurements_verified':True,
         'unassigned_section_profiles_verified':True,
         'section_correspondence_rivals_retained_verified':True,
+        'conditional_design_massing_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)

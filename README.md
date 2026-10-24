@@ -6,6 +6,8 @@ The [component measurement stage](docs/planning-component-measurements.md) produ
 
 [Section to plan diagnostics](docs/planning-section-correspondence.md) retain original sheet-reference circles and competing component hypotheses. Numeric view references and similar widths cannot silently assign a section profile or building height.
 
+[Conditional 3D design massing](docs/planning-design-massing.md) turns visible row-group dimensions and eaves heights into rotatable local previews and GLB models. Both meanings of ambiguous row spacing are retained; complete roofs, individual cabin identity and park placement remain unresolved.
+
 The [fine component boundary stage](docs/planning-component-footprints.md) recovers individual source faces around visible container labels using short source segments that coarse discovery omits. Original-page overlays distinguish these hypotheses from accepted physical building exteriors; heights, map alignment and path boundaries remain unfinished.
 
 The [source-label outline stage](docs/planning-outline-semantics.md) links visible building/path/plaza role nouns to unique closed source enclosures, exposes shared-component and conflicting claims, and highlights supported associations on the original drawings. Physical identity remains unverified.

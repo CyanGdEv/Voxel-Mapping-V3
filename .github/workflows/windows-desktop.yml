@@ -35,6 +35,10 @@ on:
       - 'voxel_mapper/planning_component_measurements.py'
       - 'voxel_mapper/planning_section_profiles.py'
       - 'voxel_mapper/planning_section_correspondence.py'
+      - 'voxel_mapper/planning_section_cuts.py'
+      - 'voxel_mapper/planning_design_dimensions.py'
+      - 'voxel_mapper/planning_design_massing.py'
+      - 'voxel_mapper/glyph_visibility.py'
       - 'voxel_mapper/drawing_view_candidates.py'
       - 'voxel_mapper/ordinary_surfaces.py'
       - 'voxel_mapper/architectural_view_layout.py'
@@ -51,6 +55,11 @@ on:
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
       - 'tests/test_planning_section_correspondence.py'
+      - 'tests/test_planning_section_cuts.py'
+      - 'tests/test_planning_design_dimensions.py'
+      - 'tests/test_planning_design_massing.py'
+      - 'tests/test_design_glyph_visibility.py'
+      - 'tests/test_glyph_visibility.py'
       - 'tests/test_drawing_view_candidates.py'
       - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
@@ -111,6 +120,16 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Section profile tests failed' }
           python -m unittest discover -s tests -p 'test_planning_section_correspondence.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Section correspondence tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_section_cuts.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original section-cut topology tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_design_dimensions.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original design-dimension text tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_design_massing.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Conditional source design massing tests failed' }
+          python -m unittest discover -s tests -p 'test_design_glyph_visibility.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Design statement source-font visibility tests failed' }
+          python -m unittest discover -s tests -p 'test_glyph_visibility.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Existing source-font visibility regressions failed' }
           python -m unittest discover -s tests -p 'test_drawing_view_candidates.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Drawing view layout tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v

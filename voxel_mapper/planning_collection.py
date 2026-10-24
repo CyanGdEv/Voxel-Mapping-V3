@@ -43,6 +43,7 @@ def contract(config):
     value['analysis_options']=analysis
     value['development_exposure']=value.get('development_exposure','unassessed')
     return {'version':VERSION,'scope':value,'pymupdf_version':pilot.pymupdf.VersionBind,
+        'text_operator_parser_version':pilot.planning.pypdf.__version__,
         'semantic_backends':pilot.planning.planning_outline_semantics.BACKENDS,'implementations':{
         m.__name__:pilot.planning._implementation(m) for m in
         (sys.modules[__name__],pilot,pilot.planning,pilot.captions,web,web_research,
@@ -51,7 +52,10 @@ def contract(config):
          pilot.planning.linework_boundaries,pilot.planning.drawing_page_tools,
          pilot.planning.building_raster_views,pilot.planning.planning_outline_semantics,pilot.planning.glyph_visibility,
          pilot.planning.planning_component_footprints,pilot.planning.planning_component_measurements,
-         pilot.planning.planning_section_profiles,pilot.planning.planning_section_correspondence)}}
+         pilot.planning.planning_section_profiles,pilot.planning.planning_section_correspondence,
+         pilot.planning.planning_section_cuts,pilot.planning.planning_design_dimensions,
+         pilot.planning.planning_design_massing,pilot.planning.building_spec,pilot.planning.study_mesh_export,
+         pilot.planning.wing_shell_study)}}
 
 
 def collection_key(config):return digest(contract(config))
@@ -272,7 +276,8 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
             'completed_pages':0,'unique_originals_handed_to_analysis':0,'visible_view_captions':0,
             'surface_labels':0,'surface_candidates':0,
             'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0,
-            'source_outline_role_hints':0,'building_outline_hints':0,'path_plaza_outline_hints':0,'component_boundary_candidates':0}
+            'source_outline_role_hints':0,'building_outline_hints':0,'path_plaza_outline_hints':0,'component_boundary_candidates':0,
+            'section_cut_topology_candidates':0,'source_design_dimension_claims':0}
         analysis_gaps={}
         for record,result in reports:
             for item in result['sources']:sources[item['requested_url']]=item
@@ -285,15 +290,17 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
             for name in ('completed_pages','unique_originals_handed_to_analysis','visible_view_captions','surface_labels','surface_candidates'):
                 summary[name]+=result['summary'][name]
             for name in ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
-                         'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates'):
+                         'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates',
+                         'section_cut_topology_candidates','source_design_dimension_claims'):
                 summary[name]+=result['summary'].get(name,0)
         unresolved=[deepcopy(e) for e in state['entries'].values() if e['status']!='completed']
         summary['unresolved_sources']=len(unresolved)
         summary['documents_needing_analysis_review']=len(analysis_gaps)
-        measurement_pages=[];profile_pages=[];correspondence_pages=[]
+        measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[]
         for path in sorted(root.glob('batches/*/analysis/*-page-*.json')):
             check();evidence=json.loads(path.read_text(encoding='utf-8'))
             correspondence_pages.append(pilot.planning.planning_section_correspondence.source_page(evidence))
+            if evidence.get('design_dimensions'):dimension_pages.append(evidence['design_dimensions'])
             if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
             if evidence.get('section_profiles'):profile_pages.append(evidence['section_profiles'])
         measurement_review=pilot.planning.planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
@@ -304,6 +311,9 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
         correspondence_review=pilot.planning.planning_section_correspondence.review_pages(correspondence_pages,cancelled=cancelled)
         pilot.planning.planning_section_correspondence.write_review(root,correspondence_review)
         summary.update(correspondence_review['summary'])
+        massing_review=pilot.planning.planning_design_massing.review_pages(dimension_pages,cancelled=cancelled)
+        pilot.planning.planning_design_massing.write_review(root,massing_review,cancelled=cancelled)
+        summary.update(massing_review['summary'])
         body='<h1>'+escape(config['pilot']['area_id'])+'</h1><p>Planning document collection. Source membership and physical geometry remain unverified.</p><ul>'
         body+=''.join('<li><a href="batches/batch-'+str(r['number']).zfill(4)+'/review.html">Batch '+str(r['number'])+' drawings and source gaps</a></li>' for r,_ in reports)
         body+='</ul><p>'+str(len(unresolved))+' unresolved sources. Stop: '+escape(stop)+'.</p>'
@@ -313,6 +323,7 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
         body+='<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>: '+str(summary['size_consistent_component_hypotheses'])+' size-consistent; '+str(summary['size_mismatched_component_hypotheses'])+' mismatched. These are source comparisons, not accepted building footprints. Height and cross-view correspondence remain unresolved.</p>'
         body+='<p><a href="section-profiles.html">Unassigned section profiles</a>: '+str(summary['nominal_section_profile_hypotheses'])+' nominal source-polygon measurements. Plan correspondence and physical heights remain unresolved.</p>'
         body+='<p><a href="section-correspondence.html">Section to plan comparisons and original sheet references</a>: '+str(summary['section_plan_context_pairs'])+' contextual component pairs; '+str(summary['profiles_with_multiple_plan_candidates'])+' profiles with competing plan candidates. No physical correspondence is assigned.</p>'
+        body+='<p><a href="design-massing.html">Interactive conditional 3D design row groups</a>: '+str(summary['conditional_design_massing_alternatives'])+' spacing alternatives from visible design dimensions. Local ground zero is assumed; no complete roof or park placement is generated.</p>'
         (root/'review.html').write_text('<!doctype html><html><meta charset="utf-8"><title>Planning collection</title><body>'+body+'</body></html>',encoding='utf-8')
         write_json(root/'ledger.json',state)
         result={'version':VERSION,'status':'known_documents_processed_with_reconstruction_gaps' if not unresolved and not state['queue_overflow'] and state['initial_done'] else 'planning_collection_with_source_gaps',
