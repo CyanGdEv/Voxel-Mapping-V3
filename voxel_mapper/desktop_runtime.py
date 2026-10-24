@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision'}
 MAX_JSON_BYTES=16_000_000
 MIN_MEMORY_BUDGET_MB=512
 MAX_MEMORY_BUDGET_MB=16*1024
@@ -55,6 +55,15 @@ def _study_training_options(epochs,hidden_units):
         raise ValueError('Study component training requires one to 300 epochs')
     if type(hidden_units) is not int or not 4<=hidden_units<=32:
         raise ValueError('Study component training requires four to 32 hidden units')
+
+
+def _study_vision_options(epochs,channels,input_size):
+    if type(epochs) is not int or not 1<=epochs<=100:
+        raise ValueError('Study vision training requires one to 100 epochs')
+    if type(channels) is not int or channels not in (4,8):
+        raise ValueError('Study vision training requires four or eight convolution channels')
+    if type(input_size) is not int or input_size not in (32,64):
+        raise ValueError('Study vision training requires a 32 or 64 pixel input grid')
 
 
 class DirectoryLock:
@@ -245,6 +254,19 @@ class DesktopRuntime:
         request=self.directory/'study-training-requests'/(uuid.uuid4().hex+'.json')
         write_json(request,config)
         return self.submit('train_study_components',request)
+
+    def submit_study_vision(self,dataset_directory,*,epochs=30,channels=4,input_size=64):
+        """Fit research crop-type and mask proposals without replacing a ranker."""
+        _study_vision_options(epochs,channels,input_size)
+        directory=Path(dataset_directory).expanduser().resolve();manifest=directory/'dataset.json'
+        dataset=read_json(manifest)
+        if not isinstance(dataset,dict) or dataset.get('version')!='retained-study-dataset-v1':
+            raise ValueError('Choose a retained-study-dataset-v1 directory')
+        config={'dataset_directory':str(directory),'dataset_sha256':file_hash(manifest),
+                'epochs':epochs,'channels':channels,'input_size':input_size}
+        request=self.directory/'study-vision-requests'/(uuid.uuid4().hex+'.json')
+        write_json(request,config)
+        return self.submit('train_study_vision',request)
 
     def cancel(self,job_id):
         with self._mutex:
@@ -476,7 +498,21 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='train_study_components':
+    if kind=='train_study_vision':
+        if set(config)-{'dataset_directory','dataset_sha256','epochs','channels','input_size'}:
+            raise ValueError('Unsupported study vision training settings')
+        directory=resolve_path(config_path,config.get('dataset_directory'));manifest=directory/'dataset.json'
+        pin=config.get('dataset_sha256')
+        if (not isinstance(pin,str) or len(pin)!=64 or any(c not in '0123456789abcdef' for c in pin)
+                or not manifest.is_file() or manifest.stat().st_size>MAX_JSON_BYTES or file_hash(manifest)!=pin):
+            raise ValueError('Queued study vision dataset manifest is missing or changed')
+        epochs=config.get('epochs',30);channels=config.get('channels',4);input_size=config.get('input_size',64)
+        _study_vision_options(epochs,channels,input_size)
+        from .study_vision_learning import train
+        result=train(directory,output,epochs=epochs,channels=channels,input_size=input_size,
+                     cancelled=cancelled,progress=progress)
+        if file_hash(manifest)!=pin:raise ValueError('Study vision dataset changed during training')
+    elif kind=='train_study_components':
         if set(config)-{'dataset_directory','dataset_sha256','epochs','hidden_units'}:
             raise ValueError('Unsupported study component training settings')
         directory=resolve_path(config_path,config.get('dataset_directory'));manifest=directory/'dataset.json'

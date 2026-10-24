@@ -5,8 +5,13 @@ supervision. The dataset also includes reviewed rock, planter, wall and building
 footprints. Original source crops, exact trace coordinates, target masks and
 review references remain bound to their source PDF and review-file checksums.
 
-The first real export contains **127 examples from 17 verified PDFs**, with ten
-source-connected evaluation groups and no missing source pairs:
+The first real export contained **127 examples from 17 verified PDFs**, with ten
+source-connected evaluation groups and no missing source pairs. That first
+export remains the fixed comparison snapshot. The newer
+[CPU vision experiment](study-vision-learning.md) expands the current catalogue
+to 148 examples from 23 PDFs, with reviewed path, paving and plaza supervision.
+Its convolutional and mask results are separate experiments; the original
+127-example classifier metrics below have not been relabelled as new results.
 
 | Drawing-level target | Examples |
 | --- | ---: |

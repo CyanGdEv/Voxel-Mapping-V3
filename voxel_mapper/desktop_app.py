@@ -26,6 +26,7 @@ JOB_KINDS = (
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Train study component recognizer', 'train_study_components'),
+    ('Train component outlines (CPU)', 'train_study_vision'),
     ('Inspect retained evidence', 'inspect_evidence'),
     ('Reason about evidence (optional model)', 'reason'),
 )
@@ -599,6 +600,10 @@ class DesktopWindow:
                 detail=('Exploratory study component recognizer trained from source drawing crops.\n'
                     'Inspect report.json for evaluation on separate source groups and model.json for the saved research checkpoint.\n'
                     'This model classifies already proposed drawing crops. Building generation, physical acceptance and automatic ranker promotion remain separate.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='train_study_vision' and row.get('result'):
+                detail=('Research component outlines and crop types learned from supplied drawing regions.\n'
+                    'Open report.json to compare classification and mask proposals against source-separated baselines.\n'
+                    'The saved checkpoint proposes masks inside a provided crop; it does not find objects on a full drawing, generate 3D buildings or replace the active building ranker.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -739,6 +744,7 @@ def main(argv=None):
     parser.add_argument('--web-planning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic application-to-original-PDF analysis through a managed worker.')
     parser.add_argument('--planning-collection-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic follow-up batches and restart without reanalysis.')
     parser.add_argument('--study-learning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise source-separated component learning through an actual managed worker.')
+    parser.add_argument('--study-vision-smoke-test',type=Path,metavar='OUTPUT',help='Exercise CPU component type and mask learning through an actual managed worker.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not MIN_MEMORY_BUDGET_MB<=args.memory_budget_mb<=MAX_MEMORY_BUDGET_MB:parser.error(f'Use 1-4 workers and {MIN_MEMORY_BUDGET_MB}-{MAX_MEMORY_BUDGET_MB} MB observed worker memory.')
@@ -768,6 +774,9 @@ def main(argv=None):
     if args.study_learning_smoke_test is not None:
         from .desktop_study_learning_smoke import run
         result=run(args.study_learning_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.study_vision_smoke_test is not None:
+        from .desktop_study_vision_smoke import run
+        result=run(args.study_vision_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

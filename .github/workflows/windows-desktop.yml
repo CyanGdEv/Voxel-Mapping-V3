@@ -24,6 +24,9 @@ on:
       - 'evidence/wicker-shop-*.json'
       - 'voxel_mapper/neural_learning.py'
       - 'voxel_mapper/study_component_learning.py'
+      - 'voxel_mapper/study_vision_network.py'
+      - 'voxel_mapper/study_vision_learning.py'
+      - 'voxel_mapper/study_training_coverage.py'
       - 'voxel_mapper/study_dataset.py'
       - 'voxel_mapper/retained_study_examples.py'
       - 'voxel_mapper/local_reasoning.py'
@@ -53,6 +56,9 @@ on:
       - 'tests/test_desktop*.py'
       - 'tests/test_neural_learning.py'
       - 'tests/test_study_component_learning.py'
+      - 'tests/test_study_vision_network.py'
+      - 'tests/test_study_vision_learning.py'
+      - 'tests/test_study_training_coverage.py'
       - 'tests/test_study_dataset.py'
       - 'tests/test_retained_study_examples.py'
       - 'tests/test_web*.py'
@@ -103,6 +109,12 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Desktop runtime tests failed' }
           python -m unittest discover -s tests -p 'test_study_component_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Source-crop component recognizer tests failed' }
+          python -m unittest discover -s tests -p 'test_study_vision_network.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'CPU convolutional network checks failed' }
+          python -m unittest discover -s tests -p 'test_study_vision_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-separated component mask learning checks failed' }
+          python -m unittest discover -s tests -p 'test_study_training_coverage.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Independent study training coverage checks failed' }
           python -m unittest discover -s tests -p 'test_retained_study_examples.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Retained source target adapter tests failed' }
           python -m unittest discover -s tests -p 'test_study_dataset.py' -v
@@ -231,6 +243,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-learning-smoke-test build/desktop-validation/study-learning 2>&1 | Tee-Object build/desktop-validation/study-learning.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen source-crop learning and restart check failed' }
+      - name: Exercise frozen CPU convolutional mask training and durable research checkpoint
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-vision-smoke-test build/desktop-validation/study-vision 2>&1 | Tee-Object build/desktop-validation/study-vision.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen CPU component mask learning and restart check failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |

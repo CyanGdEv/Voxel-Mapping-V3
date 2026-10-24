@@ -48,7 +48,7 @@ def catalogue(repo_root):
         if len(data) > MAX_INPUT_BYTES:
             raise ValueError('Retained study input changed beyond byte budget')
         inputs[relative] = hashlib.sha256(data).hexdigest()
-        if path.suffix == '.json':
+        if path.suffix.lower() in ('.json', '.geojson'):
             def invalid(value):
                 raise ValueError('Nonfinite retained study JSON: '+value)
             value = json.loads(data.decode('utf-8'), parse_constant=invalid)
@@ -277,6 +277,114 @@ def catalogue(repo_root):
     for i, entry in enumerate(details['withheld_examples']):
         excluded.append({'id': 'detail-withheld-'+str(i), 'reason': entry['reason'],
             'review_refs': [ref(path, _pointer('withheld_examples', i))]})
+
+    # Additional explicitly reviewed source-local surfaces. Geographic output
+    # polygons, widths, stairs, heights and inferred paving extents are excluded.
+    frame_doc = 'docs/park-paving.md'
+    frame_kernel = 'voxel_mapper/wicker_registration.py'
+    read(frame_doc); read(frame_kernel)
+    paving_path = 'voxel_mapper/data/alton-paving-extensions.geojson'
+    paving = read(paving_path)
+    if len(paving['features']) != 4:
+        raise ValueError('Exact retained CBeebies path review inventory required')
+    for i, feature in enumerate(paving['features']):
+        props = feature['properties']
+        if (props.get('kind') != 'path' or props.get('page') != 1
+                or props.get('geometry_method') != 'Reviewed corridor boundary digitisation in native PDF coordinates; no ride layout generated'
+                or props.get('state') != 'historical_proposed'):
+            raise ValueError('Explicit historical proposed native corridor review required')
+        document(props['document_id'], props['source_url'])
+        emit('reviewed-cbeebies-path-'+str(i), 'alton-site-details-SMD-2013-1047', 'path',
+            source(props['document_id'], props['page']), _geometry('Polygon', props['native_pdf_polygon']),
+            [ref(paving_path, _pointer('features', i, 'properties', 'native_pdf_polygon')),
+                ref(paving_path, _pointer('features', i, 'properties', 'geometry_method')),
+                ref(frame_doc), ref(frame_kernel)], state='proposed', assumptions=[
+                props['geometry_method'], 'Original state is historical_proposed; present or as-built condition is not verified.',
+                'Coordinates are MuPDF unrotated page points, Y downward, before the retained alignment Y flip.',
+                'Reviewed digitised corridor outline only; geographic alignment, paving height and material estimates are excluded.'],
+            entity_type='site_detail', target_role='reviewed_path_footprint')
+
+    gardens_path = 'voxel_mapper/data/alton-gardens-v16.json'
+    surfaces_path = 'voxel_mapper/data/alton-garden-surfaces-v19.json'
+    gardens, surfaces = read(gardens_path), read(surfaces_path)
+    garden_builder, garden_extractor = 'scripts/build_garden_bridges.py', 'scripts/extract_reviewed_gardens.py'
+    read(garden_builder); read(garden_extractor)
+    sheets = {entry['title']: (i, entry) for i, entry in enumerate(gardens['sources'])}
+    for i, surface in enumerate(surfaces['surfaces']):
+        source_index, sheet = sheets[surface['sheet']]
+        if not surface['geometry_status'].startswith('visually reviewed'):
+            raise ValueError('Explicitly reviewed native garden surface required')
+        document(sheet['document_id'], sheet['source_url'])
+        emit('reviewed-garden-surface-'+str(i), 'alton-site-details-SMD-2013-1105', 'paving_surface',
+            source(sheet['document_id']), _geometry('Polygon', surface['polygon']),
+            [ref(surfaces_path, _pointer('surfaces', i, 'polygon')),
+                ref(surfaces_path, _pointer('surfaces', i, 'geometry_status')),
+                ref(gardens_path, _pointer('sources', source_index)), ref(garden_builder), ref(frame_kernel)],
+            state='unknown', assumptions=[surface['geometry_status'],
+                'Source is a retained 2013 garden sheet with mixed/unknown proposal state; no existing/as-built state is asserted.',
+                'MuPDF unrotated page points, Y downward; source page 1 confirmed for the pinned single-page original.',
+                'Paving surface includes a reviewed road edge; this umbrella label does not assert pedestrian path or plaza.',
+                'Materials, heights, bridge proxies, geographic alignment and current physical condition are not targets.'],
+            entity_type='site_detail', target_role='reviewed_paving_footprint')
+
+    path_indices = [i for i, feature in enumerate(gardens['features'])
+        if feature.get('kind') == 'path' and feature.get('geometry_status') == 'reviewed_native_boundary_centre_trace_with_estimated_width']
+    if path_indices != [27, 28, 29, 30, 31, 262, 263, 264, 265, 266, 267]:
+        raise ValueError('Exact retained reviewed garden centreline inventory required')
+    sources_by_sha = {entry['document_id']: (i, entry) for i, entry in enumerate(gardens['sources'])}
+    for i in path_indices:
+        feature = gardens['features'][i]
+        source_index, sheet = sources_by_sha[feature['document_id']]
+        if feature['native_geometry'].get('type') != 'LineString':
+            raise ValueError('Original reviewed path centreline required; no inferred width polygon')
+        document(sheet['document_id'], sheet['source_url'])
+        emit('reviewed-garden-path-'+str(i), 'alton-site-details-SMD-2013-1105', 'path',
+            source(sheet['document_id']), feature['native_geometry'],
+            [ref(gardens_path, _pointer('features', i, 'native_geometry')),
+                ref(gardens_path, _pointer('features', i, 'geometry_status')),
+                ref(gardens_path, _pointer('sources', source_index)), ref(garden_extractor), ref(frame_kernel)],
+            state='unknown', assumptions=[
+                'Retained manual source path centre between visible grey boundaries; MuPDF unrotated page points, Y downward.',
+                'The original extraction explicitly uses page 1; the pinned source is a single-page PDF.',
+                'Only the reviewed LineString is a target; estimated width, forced stairs, heights and material proxies are excluded.',
+                'Related upper/lower garden sheets stay in one site context; they do not count as independent acquisition groups.',
+                'Mixed retained/proposed 2013 scope; current and as-built conditions are not verified.'],
+            entity_type='site_detail', target_role='reviewed_path_centreline')
+
+    plaza_path = 'evidence/wicker-reviewed-plaza-source.geojson'
+    plaza_record_path = 'docs/evidence/planning-surfaces/source-record.json'
+    plaza_source_code = 'voxel_mapper/pilot_surfaces.py'
+    plaza_source, plaza_record = read(plaza_path), read(plaza_record_path)
+    read(plaza_source_code)
+    if plaza_source['coordinate_frame'] != 'unrotated PDF points, x right/y down':
+        raise ValueError('Explicit retained native plaza source coordinate frame required')
+    document(plaza_record['document_sha256'], plaza_record['source_url'])
+    for i in (4, 17, 22):
+        feature = plaza_source['features'][i]
+        props = feature['properties']
+        if (props.get('surface_role') != 'labelled_plaza' or props.get('contained_labels') != ['Plaza']
+                or props.get('source_document_sha256') != plaza_record['document_sha256']
+                or props.get('source_page') != 1 or props.get('state') not in ('existing', 'new')
+                or feature['geometry'].get('type') != 'Polygon'):
+            raise ValueError('Exact source-labelled native plaza footprint required')
+        refs = [ref(plaza_path, _pointer('features', i, 'geometry')),
+            ref(plaza_path, _pointer('features', i, 'properties', 'contained_labels')),
+            ref(plaza_path, _pointer('features', i, 'properties', 'surface_role')),
+            ref(plaza_path, '/coordinate_frame'), ref(plaza_record_path), ref(plaza_source_code)]
+        for key in ('vector_sequence', 'legend_sequence', 'pdf_operation_index',
+                    'legend_operation_index', 'pattern_sha256', 'curve_flattening_tolerance_pdf_points'):
+            if key in props:
+                refs.append(ref(plaza_path, _pointer('features', i, 'properties', key)))
+        emit('reviewed-wicker-plaza-'+str(i), 'alton-site-details-SMD-2016-0315', 'plaza',
+            source(props['source_document_sha256'], props['source_page']), feature['geometry'], refs,
+            level='source_extracted_profile', state='proposed' if props['state'] == 'new' else 'existing',
+            assumptions=[
+                'Native paving footprint and contained Plaza label extracted from the pinned source; original-page overlay checked in this development session.',
+                'MuPDF unrotated page points, X right and Y downward; retained source extraction preserves holes and curves with stated flattening where used.',
+                'Legend state is '+props['state']+' within the proposed 2017 site-plan document; proposed state is not as-built verification.',
+                'Only source geometry and plaza role are targets; display brick material, printed-scale area, finished heights and map placement are excluded.',
+                'The Wicker site context joins retained scenery examples rather than creating another independent building.'],
+            entity_type='site_detail', target_role='source_labelled_plaza_footprint')
 
     contexts = [
         ('evidence/wicker-shop-projection-model.json', 'Conditional assembled roof/wall/canopy geometry and unresolved physical correspondence; context only.'),
