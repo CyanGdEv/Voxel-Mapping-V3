@@ -1,0 +1,17 @@
+{
+  "version": "web-research-v1",
+  "query": "Alton Towers Woodcutters SMD/2024/0136 planning",
+  "urls": [
+    "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165"
+  ],
+  "allowed_hosts": [
+    "publicaccess.staffsmoorlands.gov.uk",
+    "www.staffsmoorlands.gov.uk",
+    "www.altontowers.com",
+    "altontowers.com"
+  ],
+  "prompt": "Find original planning drawings for the Woodcutters facilities application. Cite retrieved sources, distinguish proposed and existing drawings, and identify missing measurements and geometry checks.",
+  "model": "",
+  "offline": false,
+  "refresh": true
+}

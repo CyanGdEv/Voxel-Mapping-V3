@@ -1,5 +1,9 @@
 ## Windows desktop and CPU learning
 
+The [Web research tab](docs/web-research.md) gathers public source pages and PDF
+text with citations and persistent cached evidence. An optional installed local
+model can choose discovered links; website claims remain unverified observations.
+
 The [original-drawing planning pilot](docs/planning-area-pilot.md) runs building
 view and paving-candidate discovery together, with a source review pack and
 explicit reconstruction blockers. A six-drawing Alton Woodcutters application

@@ -17,6 +17,7 @@ JOB_KINDS = (
     ('Building batch / local previews', 'building_batch'),
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
+    ('Web research / cited source evidence', 'web_research'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -252,7 +253,8 @@ class DesktopWindow:
         from .desktop_area import PRESETS
         tabs=ttk.Notebook(outer);tabs.pack(fill='x',pady=12)
         area=ttk.Frame(tabs,padding=10);controls=ttk.Frame(tabs,padding=10);review=ttk.Frame(tabs,padding=10)
-        tabs.add(area,text='Generate an area');tabs.add(review,text='Review and accuracy');tabs.add(controls,text='Advanced jobs / learning')
+        web=ttk.Frame(tabs,padding=10)
+        tabs.add(area,text='Generate an area');tabs.add(review,text='Review and accuracy');tabs.add(web,text='Web research');tabs.add(controls,text='Advanced jobs / learning')
         self.area_presets=PRESETS;self.area_preset=tk.StringVar(value=PRESETS[0]['label'])
         self.area_sources=tk.StringVar();self.area_download=tk.BooleanVar(value=True)
         self.area_scope=tk.StringVar(value=PRESETS[0]['scope']);self.select_when_visible=None
@@ -279,6 +281,20 @@ class DesktopWindow:
         self.benchmark_run.grid(row=2,column=2,pady=(8,0))
         ttk.Label(review,text='Benchmarks measure geometry against supplied references. The included example is synthetic; real accuracy needs independently reviewed references.',wraplength=980).grid(row=3,column=0,columnspan=3,sticky='w',pady=(8,0))
         review.columnconfigure(0,weight=1)
+        from .web_evidence import DEFAULT_HOSTS
+        self.web_query=tk.StringVar();self.web_urls=tk.StringVar()
+        self.web_hosts=tk.StringVar(value=' '.join(DEFAULT_HOSTS));self.web_model=tk.StringVar()
+        self.web_offline=tk.BooleanVar(value=False)
+        for index,(label,variable) in enumerate([('Public search query',self.web_query),
+                ('Source URLs (space separated)',self.web_urls),('Approved source hosts',self.web_hosts),
+                ('Installed local model (optional)',self.web_model)]):
+            ttk.Label(web,text=label).grid(row=index,column=0,sticky='w',pady=2)
+            ttk.Entry(web,textvariable=variable).grid(row=index,column=1,sticky='ew',padx=8,pady=2)
+        self.web_run=ttk.Button(web,text='Research web',command=self._submit_web)
+        self.web_run.grid(row=0,column=2,sticky='ne')
+        ttk.Checkbutton(web,text='Use cached sources only',variable=self.web_offline).grid(row=1,column=2,sticky='w')
+        ttk.Label(web,text='Read public pages and PDFs, save citations and evidence. An installed model can choose discovered links; source claims still need verification.',wraplength=980).grid(row=4,column=0,columnspan=3,sticky='w',pady=(6,0))
+        web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
         ttk.Button(controls,text='Choose JSON...',command=self._browse_job).grid(row=0,column=2)
@@ -367,6 +383,18 @@ class DesktopWindow:
                 self.review_jobs.add(str(jid));self.select_when_visible=str(jid)
                 self.status.set('Preparing the source-linked review; the review window opens when it is ready')
             self._background(lambda:self.runtime.submit_review(preset,evidence_directory=folder),queued)
+        except Exception as error:self._error(error)
+
+    def _submit_web(self):
+        try:
+            query=self.web_query.get().strip();urls=self.web_urls.get().split()
+            approved=self.web_hosts.get().split();model=self.web_model.get().strip()
+            offline=bool(self.web_offline.get())
+            def queued(jid):
+                self.select_when_visible=str(jid)
+                self.status.set('Web research queued; citations and failures will appear in job details')
+            self._background(lambda:self.runtime.submit_web(query,urls,allowed_hosts=approved,
+                model=model,offline=offline),queued)
         except Exception as error:self._error(error)
 
     def _open_review_queue(self,report=None):
@@ -487,6 +515,10 @@ class DesktopWindow:
                     f"Visible view captions: {counts.get('visible_view_captions',0)}; enclosed surface candidates: {counts.get('surface_candidates',0)}.\n"
                     'Open review.html in the Results folder to inspect the drawings and remaining blockers.\n'
                     'Building reconstruction, registered paths and real accuracy remain unfinished.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='web_research' and row.get('result'):
+                result=row['result']
+                detail=(f"Web sources retained: {len(result.get('sources',[]))}; unavailable: {len(result.get('failures',[]))}.\n"
+                    +result.get('summary','')+'\nWebsite claims are stored evidence; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -573,6 +605,14 @@ def launch(data_directory,workers=2,memory_budget_mb=2048,smoke_output=None):
                             or y+widget.winfo_height()>root.winfo_height()):
                         raise ValueError('Primary control is hidden or clipped: '+str(widget.cget('text')))
                 result['primary_controls_visible']=True
+                notebook=window.web_run.master.master
+                notebook.select(window.web_run.master);root.update()
+                widget=window.web_run
+                x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
+                if (not widget.winfo_ismapped() or x<0 or y<0 or
+                        x+widget.winfo_width()>root.winfo_width() or y+widget.winfo_height()>root.winfo_height()):
+                    raise ValueError('Web research button is hidden or clipped')
+                result['web_research_control_visible']=True
                 try:
                     from PIL import ImageGrab
                     box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
@@ -599,6 +639,7 @@ def main(argv=None):
     parser.add_argument('--review-smoke-test',type=Path,metavar='OUTPUT',help='Exercise the source drawing, geometry correction and draft-saving UI, then close.')
     parser.add_argument('--correction-smoke-test',type=Path,metavar='OUTPUT',help='Exercise actual desktop correction submission and regenerated native world readback.')
     parser.add_argument('--planning-pilot-smoke-test',type=Path,metavar='OUTPUT',help='Exercise planning discovery through a managed worker and verify retained evidence.')
+    parser.add_argument('--web-smoke-test',type=Path,metavar='OUTPUT',help='Exercise offline web citations and persistent memory through a managed worker.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
@@ -616,6 +657,9 @@ def main(argv=None):
     if args.planning_pilot_smoke_test is not None:
         from .desktop_planning_smoke import run
         result=run(args.planning_pilot_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.web_smoke_test is not None:
+        from .desktop_web_smoke import run
+        result=run(args.web_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:
