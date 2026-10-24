@@ -1,5 +1,6 @@
 """Actual managed collection workers, multiple batches and restart without reanalysis."""
 import hashlib
+import json
 from pathlib import Path
 from unittest.mock import patch
 
@@ -24,6 +25,8 @@ def seed(cache):
             page.insert_text((500,400),'0301',fontsize=8)
             page=document.new_page(width=600,height=500)
             page.insert_text((30,190),'Proposed Section A-A | 1:100',fontsize=10)
+            page.draw_rect((60,40,120,110))
+            page.insert_text((70,80),'Container',fontsize=6)
             page.insert_text((30,240),'2 No. 2.1m x 3.5m Shipping containers.',fontsize=8)
             page.insert_text((30,400),'DEMO-AA-BB-CC-DR-A-0301',fontsize=8)
             sources.append(('https://example.org/plan-'+str(number)+'.pdf',document.tobytes()))
@@ -68,6 +71,11 @@ def run(output):
             raise ValueError('Automatic batches lost distinct fine component boundaries')
         if result['summary'].get('size_consistent_component_hypotheses')!=14:
             raise ValueError('Automatic batches lost printed-size diagnostics')
+        if result['summary'].get('nominal_section_profile_hypotheses')!=7:
+            raise ValueError('Automatic batches lost unassigned section profiles')
+        profiles=json.loads((pack/'section-profiles.json').read_text())
+        if profiles['local_3d_components'] or profiles['physical_height_verified'] or len(profiles['profiles'])!=7:
+            raise ValueError('Section profiles asserted physical height or lost evidence')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
@@ -83,6 +91,8 @@ def run(output):
             raise ValueError('Restart lost fine component boundary candidates')
         if second['result']['summary'].get('size_consistent_component_hypotheses')!=14:
             raise ValueError('Restart lost printed-size diagnostics')
+        if second['result']['summary'].get('nominal_section_profile_hypotheses')!=7:
+            raise ValueError('Restart lost unassigned section profiles')
         if runtime.store.summary()['feedback_records'] or runtime.store.summary()['checkpoints']:
             raise ValueError('Collection created reviewed labels or model checkpoints')
     finally:runtime.close(wait=True)
@@ -92,6 +102,7 @@ def run(output):
         'source_label_hints_verified':True,
         'component_boundaries_verified':True,
         'component_measurements_verified':True,
+        'unassigned_section_profiles_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)

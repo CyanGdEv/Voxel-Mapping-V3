@@ -176,12 +176,20 @@ def candidates(page,sha,number,layout,sources,*,max_checks=100000):
                 cuts=[];proofs=[];failed=False
                 for left,right in zip(labels,labels[1:]):
                     charge();end=_extent(shape(left['label_geometry']),u)[1];start=_extent(shape(right['label_geometry']),u)[0]
-                    eligible=[g for g in gaps if end<=g[0] and g[1]<=start]
+                    # Caption positions can be staggered relative to their
+                    # artwork. A genuine white corridor may extend beyond a
+                    # caption's horizontal start/end; only its intersection
+                    # with the interval between the captions is relevant.
+                    # This intersects layout evidence, never source geometry.
+                    eligible=[(max(end,a),min(start,b)) for a,b in gaps
+                              if min(start,b)-max(end,a)>=8]
                     if not eligible:failed=True;break
                     widest=max(b-a for a,b in eligible);best=[g for g in eligible if abs(g[1]-g[0]-widest)<1e-7]
                     if len(best)!=1:failed=True;break
                     cuts.append(sum(best[0])/2);proofs.append({'gap_candidates_pdf_points':eligible,'chosen_gap_pdf_points':best[0],
-                        'basis':'unique_widest_composited_white_corridor_layout_heuristic','physical_separator_verified':False})
+                        'original_white_corridors_pdf_points':[g for g in gaps if min(start,g[1])-max(end,g[0])>=8],
+                        'between_caption_interval_pdf_points':[end,start],
+                        'basis':'unique_widest_composited_white_corridor_intersection_layout_heuristic','physical_separator_verified':False})
                 if failed:
                     withheld.extend({'caption_id':c['id'],'status':'column_gap_absent_or_competing'} for c in labels)
                     upper=lower;continue

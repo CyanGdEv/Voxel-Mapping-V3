@@ -114,4 +114,9 @@ and placement remain unverified.
 [Component measurement review](planning-component-measurements.md) combines
 nominal floor-plan trials and literal size notes across completed batches. Open
 `component-measurements.html` for the measured plans and diagnostic differences.
+
+[Section profile review](planning-section-profiles.md) adds `section-profiles.html`
+and its source-pinned JSON index across completed batches. It preserves labelled
+source section spans through restart. These profiles remain unassigned to plan
+components and supply no physical height or 3D building acceptance.
 No height is inferred from a two-length note; 3D generation remains withheld.

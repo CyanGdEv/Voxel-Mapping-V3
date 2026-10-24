@@ -529,7 +529,8 @@ class DesktopWindow:
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
                     f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
-                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Height remains unresolved.\n"
+                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
+                    f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     'Open review.html in the Results folder to inspect the drawings and remaining blockers.\n'
                     'Building reconstruction, registered paths and real accuracy remain unfinished.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='web_research' and row.get('result'):
@@ -543,7 +544,8 @@ class DesktopWindow:
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
                     f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
-                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Height remains unresolved.\n"
+                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
+                    f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     'Open review.html in Results folder for original drawings, page classifications and acquisition gaps.\n'
                     'Application membership and physical geometry remain unverified; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='planning_collection' and row.get('result'):
@@ -554,7 +556,8 @@ class DesktopWindow:
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
                     f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
-                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Height remains unresolved.\n"
+                    f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
+                    f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     'Open review.html in Results folder for all batch previews and the saved document queue.\n'
                     'Starting the same request resumes verified progress. Physical reconstruction remains unverified.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
