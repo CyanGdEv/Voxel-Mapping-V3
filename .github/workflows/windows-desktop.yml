@@ -29,6 +29,8 @@ on:
       - 'voxel_mapper/building_corrections.py'
       - 'voxel_mapper/planning_area_pilot.py'
       - 'voxel_mapper/planning_collection.py'
+      - 'voxel_mapper/planning_view_geometry.py'
+      - 'voxel_mapper/ordinary_surfaces.py'
       - 'voxel_mapper/architectural_view_layout.py'
       - 'voxel_mapper/building_pdf_discovery.py'
       - 'scripts/windows_desktop_entry.py'
@@ -37,6 +39,8 @@ on:
       - 'tests/test_neural_learning.py'
       - 'tests/test_web*.py'
       - 'tests/test_planning_collection.py'
+      - 'tests/test_planning_view_geometry.py'
+      - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
       - 'tests/test_reconstruction_benchmark.py'
       - 'tests/test_building_corrections.py'
@@ -83,6 +87,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Planning area pilot tests failed' }
           python -m unittest discover -s tests -p 'test_planning_collection.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Durable planning collection tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_view_geometry.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Regional planning geometry tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Planning closed-outline inventory tests failed' }
           python -m unittest discover -s tests -p 'test_architectural_view_layout.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Drawing caption layout tests failed' }
           python -m unittest discover -s tests -p 'test_building_pdf_discovery.py' -v

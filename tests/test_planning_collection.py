@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from voxel_mapper import planning_collection as collection
 from voxel_mapper import web_evidence as web,web_research,web_planning_pilot as pilot
@@ -33,6 +34,16 @@ class PlanningCollectionTests(unittest.TestCase):
 
     def run_job(self,name='output',**kwargs):
         return collection.run(self.config,self.root/name,self.cache,self.storage,**kwargs)
+
+    def test_changed_geometry_dependencies_create_a_fresh_analysis_scope(self):
+        original=collection.collection_key(self.config)
+        fingerprint=pilot.planning._implementation
+        for module in (pilot.planning.drawing_geometry,pilot.planning.linework_boundaries,
+                       pilot.planning.drawing_page_tools):
+            def changed(value):
+                return {'basis':'module_file_bytes','sha256':'f'*64} if value is module else fingerprint(value)
+            with patch.object(pilot.planning,'_implementation',side_effect=changed):
+                self.assertNotEqual(collection.collection_key(self.config),original)
 
     def test_followup_batches_finish_more_than_six_sources_from_one_request(self):
         result=self.run_job()

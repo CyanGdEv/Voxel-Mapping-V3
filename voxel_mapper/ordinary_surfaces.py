@@ -22,6 +22,7 @@ from .reconstruction.model import Feature
 from .reconstruction.registration import apply_registration, review_registration
 
 VERSION = 'ordinary-surface-labels-v3'
+OUTLINE_VERSION = 'planning-source-outline-inventory-v1'
 # Only standalone labels. Reports, dimensions, wall/roof descriptions and title
 # block prose cannot become surface finishes.
 SURFACE_ROLE = re.compile(r'^(?:existing\s+)?(?:path|footpath|walkway|plaza|courtyard|paving|paved area)$', re.I)
@@ -52,7 +53,60 @@ def label_runs(traces):
     return runs
 
 
-def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000):
+def _outline_inventory(faces, extraction, recovery, maximum):
+    """Retain source enclosures independently of a physical/material label.
+
+    This is an inventory of supported coarse straight source outlines. It
+    makes no claim that an enclosure is a building, path, plaza or view, and
+    native PDF measurements do not authorize a sheet scale or park placement.
+    Incomplete extraction, recovery and output budgets withhold the entire
+    inventory so a truncated subset cannot appear complete.
+    """
+    extraction_complete = extraction.get('status') == 'unplaced_geometry_candidates'
+    recovery_complete = recovery.get('status') in (
+        'enclosed_faces_only', 'no_eligible_linework', 'no_geometry')
+    deferred = recovery.get('counts', {})
+    if any(deferred.get(key, 0) for key in ('face_vertex_budget',
+            'provenance_budget_deferred', 'combined_page_budget_deferred')):
+        recovery_complete = False
+    reason = ('complete_geometry_extraction_required' if not extraction_complete else
+              'complete_line_recovery_required' if not recovery_complete else
+              'outline_candidate_budget_exceeded' if len(faces) > maximum else None)
+    records = []
+    if reason is None:
+        for candidate in sorted(faces, key=lambda row: row['id']):
+            polygon = shape(candidate['geometry'])
+            source_json = json.dumps(candidate, sort_keys=True,
+                separators=(',', ':'), allow_nan=False)
+            source_hash = hashlib.sha256(source_json.encode()).hexdigest()
+            records.append({'type': 'unclassified_closed_source_outline',
+                'document_sha256': candidate['document_sha256'], 'page': candidate['page'],
+                'coordinate_frame': 'pdf_native_points_y_up',
+                'candidate_id': candidate['id'], 'source_record_sha256': source_hash,
+                'candidate': json.loads(source_json),
+                'native_metrics': {'area_square_pdf_points': polygon.area,
+                    'perimeter_pdf_points': polygon.length,
+                    'bounds_pdf_points': list(polygon.bounds),
+                    'hole_count': len(polygon.interiors)},
+                'semantic_classification_verified': False, 'physical_identity_verified': False,
+                'registration_verified': False, 'scale_verified': False,
+                'world_placement_eligible': False, 'geometric_accuracy': None,
+                'training_labels_generated': 0, 'world_geometry_additions': 0})
+    return {'version': OUTLINE_VERSION,
+        'status': 'complete_source_outline_inventory' if reason is None else 'outline_inventory_withheld',
+        'reason': reason, 'eligible_outline_count': len(faces),
+        'retained_outline_count': len(records), 'max_outline_candidates': maximum,
+        'extraction_complete': extraction_complete, 'line_recovery_complete': recovery_complete,
+        'inventory_complete': reason is None, 'records': records,
+        'scope': 'Supported unclipped straight closed source geometry after paint and visibility filtering; no physical object classification.',
+        'world_geometry_additions': 0, 'training_labels_generated': 0,
+        'geometric_accuracy': None, 'world_placement_eligible': False}
+
+
+def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000,
+                    max_outline_candidates=500):
+    if type(max_outline_candidates) is not int or not 1 <= max_outline_candidates <= 500:
+        raise ValueError('Bounded outline inventory candidate limit required')
     raw = page.get_texttrace()
     if len(raw) > 10000 or sum(len(t['chars']) for t in raw) > 500000:
         raise ValueError('Ordinary label text budget exceeded')
@@ -95,6 +149,7 @@ def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000):
         seen.add(identity); faces.append(candidate)
         if len(faces) > max_faces:
             raise ValueError('Ordinary label polygon budget exceeded')
+    outline_inventory = _outline_inventory(faces, extraction, recovery, max_outline_candidates)
     geometries = [shape(f['geometry']) for f in faces]
     index = STRtree(geometries) if geometries else None
     inverse = native_inverse(page); records = []; bound = {}; screens = {}
@@ -145,6 +200,7 @@ def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000):
     return rows, records, {'version': VERSION, 'extraction': extraction, 'recovery': recovery,
                            'polygons': len(faces), 'covered_boundaries_withheld': covered_boundaries, 'labels': len(records), 'surface_candidates': len(rows),
                            'label_statuses': dict(Counter(r['status'] for r in records)),
+                           'source_outline_inventory': outline_inventory,
                            'world_geometry_additions': 0}
 
 
@@ -333,7 +389,8 @@ def audit(documents_file, output, *, max_pages=1000):
         seen.add(item['sha256']); resolved.append((pdf, item))
     output = Path(output)
     from .glyph_visibility import VERSION as glyph_version
-    contract = {'version': VERSION, 'glyph_version': glyph_version,
+    contract = {'version': VERSION, 'outline_inventory_version': OUTLINE_VERSION,
+                'glyph_version': glyph_version,
                 'documents_sha256': file_hash(documents_file), 'max_pages': max_pages}
     if output.exists():
         report = json.loads((output/'ordinary-audit-report.json').read_text())
