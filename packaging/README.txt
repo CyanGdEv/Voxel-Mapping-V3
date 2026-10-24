@@ -41,6 +41,7 @@ VoxelMapperV3.exe --check-dependencies. Native PDF/vector operations use the
 bundled Python runtime. The original source and physical geometry checks remain.
 
 Diagnostics:
+  VoxelMapperV3.exe --web-smoke-test PATH_TO_FRESH_WEB_TEST_DIRECTORY
   VoxelMapperV3.exe --check-dependencies
   VoxelMapperV3.exe --self-test --data-dir PATH_TO_FRESH_TEST_DIRECTORY
   VoxelMapperV3.exe --ui-smoke-test PATH_TO_UI_TEST_RESULTS
@@ -51,3 +52,13 @@ This build is unsigned. The build receipt records the exact commit, executable
 hashes, native dependency results, backend smoke test and UI smoke test. Full
 park autonomy, generalized physical building identity and geographic placement
 remain separate reconstruction work.
+
+Web research: enter public search terms or URLs in the Web research tab. The
+approved host list limits source reads; source citations and short observations
+are retained in local memory. Leave the model blank for evidence-only gathering,
+or separately install Ollama and a small model and enter its installed name.
+No model weights are bundled. Cached-sources-only avoids website requests;
+an enabled reasoning model still contacts its configured endpoint. Reads are
+limited to six public sources, two model rounds and bounded text/bytes. Scanned
+PDFs need the separate OCR/planning analysis. Web research does not verify
+physical claims, generate training labels, update weights or modify a world.

@@ -24,6 +24,7 @@ on:
       - 'evidence/wicker-shop-*.json'
       - 'voxel_mapper/neural_learning.py'
       - 'voxel_mapper/local_reasoning.py'
+      - 'voxel_mapper/web_*.py'
       - 'voxel_mapper/reconstruction_benchmark.py'
       - 'voxel_mapper/building_corrections.py'
       - 'voxel_mapper/planning_area_pilot.py'
@@ -33,6 +34,7 @@ on:
       - 'packaging/**'
       - 'tests/test_desktop*.py'
       - 'tests/test_neural_learning.py'
+      - 'tests/test_web*.py'
       - 'tests/test_neural_building_pipeline.py'
       - 'tests/test_reconstruction_benchmark.py'
       - 'tests/test_building_corrections.py'
@@ -67,6 +69,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Neural learning tests failed' }
           python -m unittest discover -s tests -p 'test_local_reasoning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Local reasoning tests failed' }
+          python -m unittest discover -s tests -p 'test_web*.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Web evidence and reasoning tests failed' }
           python -m unittest discover -s tests -p 'test_neural_building_pipeline.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Neural building pipeline tests failed' }
           python -m unittest discover -s tests -p 'test_reconstruction_benchmark.py' -v
@@ -135,6 +139,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --planning-pilot-smoke-test build/desktop-validation/planning-pilot 2>&1 | Tee-Object build/desktop-validation/planning-pilot.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen planning pilot smoke test failed' }
+      - name: Exercise frozen web evidence worker and persistent citations
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --web-smoke-test build/desktop-validation/web-evidence 2>&1 | Tee-Object build/desktop-validation/web-evidence.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen web evidence smoke test failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |
