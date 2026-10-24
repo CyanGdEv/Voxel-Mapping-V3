@@ -8,6 +8,7 @@ import requests
 
 from . import web_evidence as web
 from .desktop_runtime import DesktopRuntime,_wait,write_json
+from .desktop_planning_smoke import draw_component_fixture
 
 
 def seed(cache):
@@ -16,6 +17,7 @@ def seed(cache):
         with pymupdf.open() as document:
             page=document.new_page(width=600,height=500)
             page.draw_rect((30,30,190,140));page.insert_text((50,80),'Footpath',fontsize=10)
+            draw_component_fixture(page)
             page.insert_text((30,190),'Proposed Ground Floor Plan | 1:100',fontsize=10)
             page.insert_text((30,450),'Synthetic document '+str(number),fontsize=10)
             sources.append(('https://example.org/plan-'+str(number)+'.pdf',document.tobytes()))
@@ -56,6 +58,8 @@ def run(output):
             raise ValueError('Automatic batches lost source outlines or nominal view measurements')
         if result['summary'].get('source_outline_role_hints')!=7 or result['summary'].get('path_plaza_outline_hints')!=7:
             raise ValueError('Automatic batches lost source-label enclosure hints')
+        if result['summary'].get('component_boundary_candidates')!=14:
+            raise ValueError('Automatic batches lost distinct fine component boundaries')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
@@ -67,6 +71,8 @@ def run(output):
         second=submit(runtime)
         if second['result']['summary']['new_batches']!=0 or second['result']['summary']['completed_pages']!=7:
             raise ValueError('Restart repeated completed drawing analysis')
+        if second['result']['summary'].get('component_boundary_candidates')!=14:
+            raise ValueError('Restart lost fine component boundary candidates')
         if runtime.store.summary()['feedback_records'] or runtime.store.summary()['checkpoints']:
             raise ValueError('Collection created reviewed labels or model checkpoints')
     finally:runtime.close(wait=True)
@@ -74,6 +80,7 @@ def run(output):
         'multiple_automatic_batches_verified':True,'restart_without_reanalysis_verified':True,
         'original_and_output_hashes_verified':True,'network_bytes':result['network_bytes'],
         'source_label_hints_verified':True,
+        'component_boundaries_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)

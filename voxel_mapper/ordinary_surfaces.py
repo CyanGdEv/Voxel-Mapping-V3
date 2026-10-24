@@ -103,15 +103,11 @@ def _outline_inventory(faces, extraction, recovery, maximum):
         'geometric_accuracy': None, 'world_placement_eligible': False}
 
 
-def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000,
-                    max_outline_candidates=500):
-    if type(max_outline_candidates) is not int or not 1 <= max_outline_candidates <= 500:
-        raise ValueError('Bounded outline inventory candidate limit required')
-    raw = page.get_texttrace()
-    if len(raw) > 10000 or sum(len(t['chars']) for t in raw) > 500000:
-        raise ValueError('Ordinary label text budget exceeded')
-    parents, extraction = extract_page(page, sha, page_number)
-    recovered, recovery = recover_page(parents) if parents else ([], {'status': 'no_geometry'})
+def closed_source_faces(page, sha, page_number, *, max_faces=4000,
+                        extraction_options=None, recovery_options=None):
+    """Apply the same paint/visibility filters to coarse and focused linework."""
+    parents, extraction = extract_page(page, sha, page_number, **(extraction_options or {}))
+    recovered, recovery = recover_page(parents, recovery_options=recovery_options) if parents else ([], {'status': 'no_geometry'})
     paths=page.get_drawings(extended=True)
     paints=page.get_bboxlog()
     if len(paths)>100000 or len(paints)>500000:
@@ -149,6 +145,17 @@ def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000,
         seen.add(identity); faces.append(candidate)
         if len(faces) > max_faces:
             raise ValueError('Ordinary label polygon budget exceeded')
+    return faces, extraction, recovery, covered_boundaries
+
+
+def page_candidates(page, sha, page_number, *, max_labels=500, max_faces=4000,
+                    max_outline_candidates=500):
+    if type(max_outline_candidates) is not int or not 1 <= max_outline_candidates <= 500:
+        raise ValueError('Bounded outline inventory candidate limit required')
+    raw = page.get_texttrace()
+    if len(raw) > 10000 or sum(len(t['chars']) for t in raw) > 500000:
+        raise ValueError('Ordinary label text budget exceeded')
+    faces, extraction, recovery, covered_boundaries = closed_source_faces(page, sha, page_number, max_faces=max_faces)
     outline_inventory = _outline_inventory(faces, extraction, recovery, max_outline_candidates)
     geometries = [shape(f['geometry']) for f in faces]
     index = STRtree(geometries) if geometries else None

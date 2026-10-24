@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+The [fine component boundary stage](docs/planning-component-footprints.md) recovers individual source faces around visible container labels using short source segments that coarse discovery omits. Original-page overlays distinguish these hypotheses from accepted physical building exteriors; heights, map alignment and path boundaries remain unfinished.
+
 The [source-label outline stage](docs/planning-outline-semantics.md) links visible building/path/plaza role nouns to unique closed source enclosures, exposes shared-component and conflicting claims, and highlights supported associations on the original drawings. Physical identity remains unverified.
 
 The [planning outline recovery](docs/planning-outline-recovery.md) retains unclassified closed source outlines and extracts bounded caption-view geometry with nominal paper-scale measurements and original-page overlays. Physical identity and geographic placement remain unresolved.

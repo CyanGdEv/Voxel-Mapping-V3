@@ -528,6 +528,7 @@ class DesktopWindow:
                     f"Visible view captions: {counts.get('visible_view_captions',0)}; enclosed surface candidates: {counts.get('surface_candidates',0)}.\n"
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
+                    f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
                     'Open review.html in the Results folder to inspect the drawings and remaining blockers.\n'
                     'Building reconstruction, registered paths and real accuracy remain unfinished.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='web_research' and row.get('result'):
@@ -540,6 +541,7 @@ class DesktopWindow:
                     f"Visible drawing captions: {counts['visible_view_captions']}; surface candidates: {counts['surface_candidates']}.\n"
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
+                    f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
                     'Open review.html in Results folder for original drawings, page classifications and acquisition gaps.\n'
                     'Application membership and physical geometry remain unverified; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='planning_collection' and row.get('result'):
@@ -549,6 +551,7 @@ class DesktopWindow:
                     f"Documents needing analysis review: {counts['documents_needing_analysis_review']}.\n"
                     f"Closed source outlines: {counts.get('closed_source_outlines',0)}; nominal view outlines: {counts.get('nominal_view_outlines',0)}. These require physical interpretation.\n"
                     f"Source-label enclosure hints: {counts.get('source_outline_role_hints',0)} (building-related {counts.get('building_outline_hints',0)}; path/plaza-related {counts.get('path_plaza_outline_hints',0)}).\n"
+                    f"Fine component boundary hypotheses: {counts.get('component_boundary_candidates',0)}; physical building exteriors require verification.\n"
                     'Open review.html in Results folder for all batch previews and the saved document queue.\n'
                     'Starting the same request resumes verified progress. Physical reconstruction remains unverified.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):

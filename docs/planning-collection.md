@@ -104,3 +104,9 @@ and saved output paths support both Windows and Linux separators.
 Closed source outlines, bounded regional extraction, nominal scale measurements and source overlays are described in [planning outline recovery](planning-outline-recovery.md). They remain unclassified and unregistered.
 
 [Visible source-label associations](planning-outline-semantics.md) now distinguish supported enclosure hints from unclassified outlines while retaining ambiguous, hidden and unbound labels.
+
+[Fine component boundaries](planning-component-footprints.md) additionally recover
+individual source-linework hypotheses around visible container labels on floor
+plans. Counts survive automatic follow-up batches and restart. Purple overlays
+retain native geometry and label/provenance evidence; physical exteriors, heights
+and placement remain unverified.
