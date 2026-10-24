@@ -20,6 +20,7 @@ import pymupdf
 
 from . import architectural_view_layout, building_pdf_discovery, drawing_view_candidates
 from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linework_boundaries, drawing_page_tools, building_raster_views
+from . import planning_outline_semantics, glyph_visibility
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
 from .drawing_page_tools import native_inverse
@@ -139,7 +140,10 @@ def _preview(page, path, edge):
 def _outline_overlay(result, preview, path):
     """Draw the retained source outlines over their original-page preview."""
     inventory=(result.get('surface_report') or {}).get('source_outline_inventory') or {}
-    records=[('source',r['candidate']['geometry'],r['candidate_id'],r['native_metrics'])
+    hints={r['candidate_id']:r for r in (result.get('outline_semantics') or {}).get('outlines',[])
+           if r['status'] in ('visible_label_enclosure_hint','shared_component_label_enclosure_hint')}
+    records=[('label_hint' if r['candidate_id'] in hints else 'source',r['candidate']['geometry'],
+              r['candidate_id'],{**r['native_metrics'],**({'source_label_hint':hints[r['candidate_id']]} if r['candidate_id'] in hints else {})})
              for r in inventory.get('records',[])]
     scoped=result.get('view_geometry') or {}
     records += [('view',r['geometry_pdf_native'],r['id'],r.get('measurements_nominal_metres') or {})
@@ -161,14 +165,15 @@ def _outline_overlay(result, preview, path):
                 projected=[pymupdf.Point(*p)*matrix for p in ring]
                 commands.append('M'+' L'.join(f'{p.x:.3f},{p.y:.3f}' for p in projected)+' Z')
         title=escape(kind+' outline '+identifier+'; '+json.dumps(metrics,sort_keys=True))
-        color='#007985' if kind=='source' else '#c94b00'
-        parts.append(f'<path class="{kind}" fill="none" stroke="{color}" stroke-width="1.5" vector-effect="non-scaling-stroke" d="{" ".join(commands)}"><title>{title}</title></path>')
+        color={'source':'#007985','view':'#c94b00','label_hint':'#087b36'}[kind]
+        parts.append(f'<path class="{kind}" data-source-candidate-id="{escape(identifier,quote=True)}" fill="none" stroke="{color}" stroke-width="1.5" vector-effect="non-scaling-stroke" d="{" ".join(commands)}"><title>{title}</title></path>')
     parts.append('</svg>');data=''.join(parts).encode('utf-8')
     if len(data)>16000000:raise PilotBudgetExceeded('Outline overlay byte budget exceeded')
     path.write_bytes(data)
     return {'file':path.name,'sha256':file_hash(path),'outlines':len(records),
             'pdf_native_to_pixels':preview['pdf_native_to_pixels'],
-            'legend':{'cyan':'unclassified closed source outlines','orange':'view-region source outlines'},
+            'legend':{'cyan':'unclassified closed source outlines','orange':'view-region source outlines',
+                      'green':'visible source-label enclosure hints; physical identity unverified'},
             'physical_geometry_verified':False}
 
 
@@ -185,6 +190,9 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     if role in SURFACE_ROLES:
         surfaces, labels, surface_report = ordinary_surfaces.page_candidates(page,sha,number)
     outlines = None if surface_report is None else surface_report.get('source_outline_inventory')
+    semantics = None if outlines is None or not outlines.get('inventory_complete') else planning_outline_semantics.page_candidates(
+        page,sha,number,outlines,cancelled=cancelled)
+    semantic_summary={} if semantics is None else semantics['summary']
     scoped = None if view_pack is None or not view_pack['views'] else planning_view_geometry.page_candidates(
         page,sha,number,view_pack,cancelled=cancelled)
     visible = [] if layout is None else [r for r in layout['view_captions']
@@ -210,11 +218,14 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     view_outlines=[] if scoped is None else scoped['outlines']
     if outline_count or view_outlines:
         blockers.append('source_outlines_require_physical_interpretation')
+    if semantics and not semantics['inventory_complete']:
+        blockers.append('source_label_association_incomplete')
     return {'document_sha256':sha, 'page':number,
         'coordinate_frame':'pdf_native_points_y_up',
         'discovery':discovery, 'view_candidates':view_pack,
         'surface_candidates':surfaces, 'surface_labels':labels, 'surface_report':surface_report,
         'view_geometry':scoped,
+        'outline_semantics':semantics,
         'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
@@ -225,6 +236,9 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
             'closed_source_outlines':outline_count,
             'view_source_outlines':len(view_outlines),
             'nominal_view_outlines':sum(r.get('geometry_nominal_local') is not None for r in view_outlines),
+            'source_outline_role_hints':semantic_summary.get('associated_outline_hints',0),
+            'building_outline_hints':semantic_summary.get('outline_role_hints',{}).get('building',0),
+            'path_plaza_outline_hints':sum(semantic_summary.get('outline_role_hints',{}).get(k,0) for k in ('path','plaza')),
             'surface_label_statuses':dict(Counter(r['status'] for r in labels)),
             'surface_connectivity_status':'not_assessed_unverified_surface_geometry',
             'blockers':blockers},
@@ -245,6 +259,9 @@ def _html(config, documents, pages):
                 f'{summary["surface_candidates"]} enclosed surface candidates; '
                 f'{summary.get("closed_source_outlines",0)} unclassified closed source outlines; '
                 f'{summary.get("nominal_view_outlines",0)} outlines with nominal view measurements.</p>')
+            sections.append(f'<p>{summary.get("source_outline_role_hints",0)} source-label enclosure hints '
+                f'({summary.get("building_outline_hints",0)} building-related; '
+                f'{summary.get("path_plaza_outline_hints",0)} path/plaza-related). These are source associations, not accepted physical features.</p>')
             evidence=escape(page['evidence_file'],quote=True)
             sections.append(f'<p><a href="{evidence}">Source-bound extraction evidence</a></p>')
             captions=page.get('captions',[])
@@ -255,10 +272,20 @@ def _html(config, documents, pages):
             if page.get('outline_overlay'):
                 overlay=escape(page['outline_overlay']['file'],quote=True)
                 sections.append('<details><summary>Inspect extracted source outlines</summary>'
-                    '<p>Cyan: unclassified closed outlines. Orange: view-region outlines. Inventories may overlap. '
+                    '<p>Cyan: unclassified closed outlines. Orange: view-region outlines. Green: visible source-label enclosure hints. Inventories may overlap. '
                     'Symbols, annotations and context can be included. Nominal metres use printed view scale claims; '
                     'physical identity, scale application and geographic placement remain unverified.</p>'
                     f'<a href="{overlay}"><img src="{overlay}" alt="Extracted source outlines over original drawing"></a></details>')
+            hints=page.get('source_label_hints',[])
+            if hints:
+                sections.append('<h4>Visible source-label associations</h4><p>Printed words identify source enclosure hints. '
+                    'Multiple component labels in one enclosure do not identify separate component footprints.</p><ul>')
+                for hint in hints:
+                    sections.append('<li>'+escape(str(hint['source_role_hint']))+': '+escape(', '.join(hint['label_texts']))+
+                        ' — '+escape(hint['status'].replace('_',' '))+'; source outline '+escape(hint['candidate_id'])+'.</li>')
+                sections.append('</ul>')
+                if page.get('source_label_hint_count',0)>len(hints):
+                    sections.append('<p>Showing the first 50 associations. The linked extraction evidence retains all bounded records.</p>')
             sections.append('<p>Remaining: '+escape(', '.join(summary['blockers']).replace('_',' '))+'.</p>')
     return ('<!doctype html><html lang="en"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -285,7 +312,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'implementations':{m.__name__:_implementation(m) for m in (
             sys.modules[__name__],building_pdf_discovery,architectural_view_layout,
             ordinary_surfaces,drawing_view_candidates,planning_view_geometry,
-            drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views)},
+            drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views,
+            planning_outline_semantics,glyph_visibility)},
+        'semantic_backends':planning_outline_semantics.BACKENDS,
         'caption_version':architectural_view_layout.VERSION,
         'pymupdf_version':pymupdf.VersionBind}
     atomic_json(root/'config.json',config);atomic_json(root/'contract.json',contract)
@@ -346,6 +375,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                             preview_file=preview['file'],preview=preview,
                             outline_overlay=overlay,
                             captions=[r['text'] for r in layout.get('view_captions',[])])
+                        hints=[r for r in (result.get('outline_semantics') or {}).get('outlines',[])
+                               if r['status'] in ('visible_label_enclosure_hint','shared_component_label_enclosure_hint')]
+                        record.update(source_label_hints=hints[:50],source_label_hint_count=len(hints))
                         row['completed_pages']+=1
                     except PilotBudgetExceeded:
                         raise
@@ -355,6 +387,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                                 'visible_view_kinds':{},'printed_view_states':[], 'view_candidates':0,
                                 'surface_labels':0,'surface_candidates':0,'surface_label_statuses':{},
                                 'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0,
+                                'source_outline_role_hints':0,'building_outline_hints':0,'path_plaza_outline_hints':0,
                                 'blockers':['page_extraction_failed'],'reason':str(error)})
                         atomic_json(root/record['evidence_file'],record)
                     pages.append(record)
@@ -378,7 +411,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'surface_labels':sum(p['summary']['surface_labels'] for p in pages),
         'surface_candidates':sum(p['summary']['surface_candidates'] for p in pages),
         **{k:sum(p['summary'].get(k,0) for p in pages) for k in
-           ('closed_source_outlines','view_source_outlines','nominal_view_outlines')},
+           ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
+            'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints')},
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}

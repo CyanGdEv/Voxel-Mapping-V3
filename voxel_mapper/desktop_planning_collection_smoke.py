@@ -54,6 +54,8 @@ def run(output):
             raise ValueError('Known synthetic sources were left unread')
         if result['summary'].get('closed_source_outlines')!=7 or result['summary'].get('nominal_view_outlines',0)<7:
             raise ValueError('Automatic batches lost source outlines or nominal view measurements')
+        if result['summary'].get('source_outline_role_hints')!=7 or result['summary'].get('path_plaza_outline_hints')!=7:
+            raise ValueError('Automatic batches lost source-label enclosure hints')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
@@ -71,6 +73,7 @@ def run(output):
     receipt={'status':'passed','dataset_kind':'synthetic','first_job':first,'resumed_job':second,
         'multiple_automatic_batches_verified':True,'restart_without_reanalysis_verified':True,
         'original_and_output_hashes_verified':True,'network_bytes':result['network_bytes'],
+        'source_label_hints_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)

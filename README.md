@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+The [source-label outline stage](docs/planning-outline-semantics.md) links visible building/path/plaza role nouns to unique closed source enclosures, exposes shared-component and conflicting claims, and highlights supported associations on the original drawings. Physical identity remains unverified.
+
 The [planning outline recovery](docs/planning-outline-recovery.md) retains unclassified closed source outlines and extracts bounded caption-view geometry with nominal paper-scale measurements and original-page overlays. Physical identity and geographic placement remain unresolved.
 
 The [planning document collector](docs/planning-collection.md) follows unread

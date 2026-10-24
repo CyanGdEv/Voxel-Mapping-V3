@@ -69,3 +69,5 @@ See the retained [development validation](evidence/planning-outlines/woodcutters
 for the final complete collection/restart counts and source/implementation hashes.
 This is a cached replay of previously acquired development sources, not an
 unseen-area or full-park reconstruction benchmark.
+
+[Visible source-label associations](planning-outline-semantics.md) now distinguish supported enclosure hints from unclassified outlines while retaining ambiguous, hidden and unbound labels.

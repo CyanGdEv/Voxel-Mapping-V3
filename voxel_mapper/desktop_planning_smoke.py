@@ -39,6 +39,8 @@ def run(output):
             raise ValueError('Closed outline inventory and nominal regional geometry were not retained')
         if not result['pages'][0].get('outline_overlay'):
             raise ValueError('Source-bound outline preview missing')
+        if summary.get('path_plaza_outline_hints')!=1 or summary.get('source_outline_role_hints')!=1:
+            raise ValueError('Visible source-label enclosure hint missing')
         if summary['geometric_accuracy'] is not None or result['world_placement_eligible'] or result['training_labels_generated']:
             raise ValueError('Discovery supplied unverified accuracy, acceptance or labels')
         for name,pin in result['output_sha256'].items():
@@ -55,6 +57,7 @@ def run(output):
     receipt={'status':'passed','dataset_kind':'synthetic','job':job,
         'original_pdf_verified':hashlib.sha256(source.read_bytes()).hexdigest()==sha,
         'output_hashes_verified':True,'persistent_restart_verified':True,
+        'source_label_hints_verified':True,
         'real_park_accuracy_assessed':False,'world_placement_eligible':False,
         'training_labels_generated':0,'model_promoted':False}
     write_json(root/'planning-pilot-smoke.json',receipt)
