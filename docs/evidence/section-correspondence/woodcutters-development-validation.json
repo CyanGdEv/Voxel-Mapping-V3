@@ -1,0 +1,2913 @@
+{
+  "analysis_contracts": [
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "ef49ddeabfd9cc5d88738e2c858e0f1821de02c9327ec1e5159e10a5f6250b6f",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "648b592b4357918f1945dcf3dd0cb4d3e7497f157c70ea9a29681edc80afa279"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_section_correspondence": {
+          "basis": "module_file_bytes",
+          "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+        },
+        "voxel_mapper.planning_section_profiles": {
+          "basis": "module_file_bytes",
+          "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 120164382,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "842c01806455c2da9e743d9e24ae4e1a72f884878a40e55273bbcd312fafdc85",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "648b592b4357918f1945dcf3dd0cb4d3e7497f157c70ea9a29681edc80afa279"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_section_correspondence": {
+          "basis": "module_file_bytes",
+          "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+        },
+        "voxel_mapper.planning_section_profiles": {
+          "basis": "module_file_bytes",
+          "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 88500547,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "1338dd47bcab86358ca0c35d407d49d73632b1c0dd57a236a11e7a6235952a84",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "648b592b4357918f1945dcf3dd0cb4d3e7497f157c70ea9a29681edc80afa279"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_section_correspondence": {
+          "basis": "module_file_bytes",
+          "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+        },
+        "voxel_mapper.planning_section_profiles": {
+          "basis": "module_file_bytes",
+          "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 72042937,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "3a9149b66efbac821368593bdfcf4c846b9891a44448d8f39cf8086beb814299",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "648b592b4357918f1945dcf3dd0cb4d3e7497f157c70ea9a29681edc80afa279"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_section_correspondence": {
+          "basis": "module_file_bytes",
+          "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+        },
+        "voxel_mapper.planning_section_profiles": {
+          "basis": "module_file_bytes",
+          "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 66474838,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    }
+  ],
+  "application_reference": "SMD/2024/0136",
+  "collection_key": "6d36e8ef0a300f02b7ad321bb6abaddbc5b0dafeb3984d5d94b72368d98c4520",
+  "configured_memory_budget_mb": 16384,
+  "correspondence_review": {
+    "analysis_complete": true,
+    "checks": 50,
+    "ground_datum_verified": false,
+    "id": "14046836217286b65f7e590810d5fe0fb1ff1049ec3e24543b9db04cfc0cd5a3",
+    "limitations": [
+      "Shared series and sheet references establish drawing context only.",
+      "Numeric view indices are not mapped to lettered sections or caption order.",
+      "Width checks compare both oriented plan spans; oblique section cuts are not modelled.",
+      "All contextual rivals remain, including size mismatches; no nearest or best match is selected.",
+      "Section cut topology, physical scale, exterior walls and local ground datum remain unresolved."
+    ],
+    "local_3d_components": 0,
+    "model_weights_updated": false,
+    "physical_component_correspondences_verified": 0,
+    "physical_height_m": null,
+    "physical_height_verified": false,
+    "profiles": [
+      {
+        "document_sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+        "horizontal_span_nominal_m": 2.4003013780381934,
+        "page": 1,
+        "physical_height_m": null,
+        "physical_height_verified": false,
+        "plan_candidates": [
+          {
+            "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+            "drawing_code_evidence_id": "4d4bf358c5602c5d5b13d38b59d73a4d5910a4f539432afffb30c4d9d6bfabfe",
+            "label": "Container",
+            "link_basis": "shared_visible_series_sheet_reference_state_and_component_noun_only",
+            "literal_sheet_reference_ids": [
+              "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+              "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+              "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+              "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+            ],
+            "nominal_width_comparisons": [
+              {
+                "absolute_span_errors_m": [
+                  0.10074059974438843,
+                  8.991480058219725
+                ],
+                "correspondence_verified": false,
+                "cut_axis_verified": false,
+                "plan_oriented_span_pair_nominal_m": [
+                  2.501041977782582,
+                  11.391781436257919
+                ],
+                "source_trial_sha256": "6206e8f310b89a25b0a10364e468c535e1ec697a445a35174d84ada4b1d55eeb",
+                "span_within_tolerance": [
+                  true,
+                  false
+                ],
+                "trial_id": "4a29cb875d050debf6cd8d209c16d6bf20390c7bcddbb82e602b1e2bc27f1543"
+              }
+            ],
+            "page": 1,
+            "physical_component_identity_verified": false,
+            "reference_view_to_section_status": "withheld_numeric_view_index_is_not_a_section_cut_label",
+            "section_cut_link_supported": false,
+            "section_drawing_code_evidence_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+            "sheet_marker_candidate_ids": [
+              "a32c544b1b3e2e620ac505f21ba27b8a8a228c6c64031703c6294192933646d9",
+              "7b97961cdac65020ed1ba358ba874faa7e2823bca7d0d8b2c1daeaedbc14fd01",
+              "69bb39d999637da0dbaaa186c30b8f7f21e96176e1b4b6dee961f3d46c2a72c8",
+              "a4cc9fd43de7c965a3c409ed06597971893c784365970db8a982d60f37970cbc"
+            ],
+            "source_component_id": "f5f8edd51dc80f877f3c5a3abef1f8cb9616492fc90dc0a3d6f0016f76346aa7",
+            "source_component_sha256": "ed06e2af7a42f123f31458a66dbe3c2cd166a7f98e04793c1ec6cfac457c22c3"
+          },
+          {
+            "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+            "drawing_code_evidence_id": "4d4bf358c5602c5d5b13d38b59d73a4d5910a4f539432afffb30c4d9d6bfabfe",
+            "label": "Container",
+            "link_basis": "shared_visible_series_sheet_reference_state_and_component_noun_only",
+            "literal_sheet_reference_ids": [
+              "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+              "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+              "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+              "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+            ],
+            "nominal_width_comparisons": [
+              {
+                "absolute_span_errors_m": [
+                  0.1018517456872634,
+                  9.600835275676351
+                ],
+                "correspondence_verified": false,
+                "cut_axis_verified": false,
+                "plan_oriented_span_pair_nominal_m": [
+                  2.502153123725457,
+                  12.001136653714545
+                ],
+                "source_trial_sha256": "a2f1fce56ad8d439480e5f9f551dfa4e983b0587a2f704430d81e50190defd2e",
+                "span_within_tolerance": [
+                  true,
+                  false
+                ],
+                "trial_id": "f730796e0298fa9ef6125a23952dd2812bc45dabf3e7da56445ca9a06343fa4c"
+              }
+            ],
+            "page": 1,
+            "physical_component_identity_verified": false,
+            "reference_view_to_section_status": "withheld_numeric_view_index_is_not_a_section_cut_label",
+            "section_cut_link_supported": false,
+            "section_drawing_code_evidence_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+            "sheet_marker_candidate_ids": [
+              "a32c544b1b3e2e620ac505f21ba27b8a8a228c6c64031703c6294192933646d9",
+              "7b97961cdac65020ed1ba358ba874faa7e2823bca7d0d8b2c1daeaedbc14fd01",
+              "69bb39d999637da0dbaaa186c30b8f7f21e96176e1b4b6dee961f3d46c2a72c8",
+              "a4cc9fd43de7c965a3c409ed06597971893c784365970db8a982d60f37970cbc"
+            ],
+            "source_component_id": "b3612bfd2f490759c4b44b6382dd40230bdba50195d60541f0727b0533200fcd",
+            "source_component_sha256": "d0b4559c59b63b7b744c554397d91e62dcd454597acc15d5f716dff9f5622095"
+          },
+          {
+            "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+            "drawing_code_evidence_id": "4d4bf358c5602c5d5b13d38b59d73a4d5910a4f539432afffb30c4d9d6bfabfe",
+            "label": "Container",
+            "link_basis": "shared_visible_series_sheet_reference_state_and_component_noun_only",
+            "literal_sheet_reference_ids": [
+              "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+              "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+              "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+              "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+            ],
+            "nominal_width_comparisons": [
+              {
+                "absolute_span_errors_m": [
+                  0.10074357799605504,
+                  9.603685290987698
+                ],
+                "correspondence_verified": false,
+                "cut_axis_verified": false,
+                "plan_oriented_span_pair_nominal_m": [
+                  2.5010449560342485,
+                  12.003986669025892
+                ],
+                "source_trial_sha256": "dc34f9333a9126d86e3c94be37fd66ffb22b7e43919e983e68d10a088663f4ac",
+                "span_within_tolerance": [
+                  true,
+                  false
+                ],
+                "trial_id": "87f69f1f5866b13c9af37581adf09bb8c721800334561d2a457a1edd9370ec1b"
+              }
+            ],
+            "page": 1,
+            "physical_component_identity_verified": false,
+            "reference_view_to_section_status": "withheld_numeric_view_index_is_not_a_section_cut_label",
+            "section_cut_link_supported": false,
+            "section_drawing_code_evidence_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+            "sheet_marker_candidate_ids": [
+              "a32c544b1b3e2e620ac505f21ba27b8a8a228c6c64031703c6294192933646d9",
+              "7b97961cdac65020ed1ba358ba874faa7e2823bca7d0d8b2c1daeaedbc14fd01",
+              "69bb39d999637da0dbaaa186c30b8f7f21e96176e1b4b6dee961f3d46c2a72c8",
+              "a4cc9fd43de7c965a3c409ed06597971893c784365970db8a982d60f37970cbc"
+            ],
+            "source_component_id": "ddd05d0196188372af56d03bd9daa75cf976202ed75321ec859dafd45032fb63",
+            "source_component_sha256": "8270329e19528c5ce7b120e4521b71fd4e85a83562334bdb149aa83859aac863"
+          }
+        ],
+        "profile_id": "d9dfa9530999388e26d25f283f70a6e95dc0de557650ea929ebb868429e81c2a",
+        "required_evidence": [
+          "source_section_cut_to_plan_component_link",
+          "checked_scale_and_exterior_wall_interpretation",
+          "local_ground_datum_and_height_endpoints"
+        ],
+        "section_caption": "Proposed Section A-A",
+        "section_cut_reference_status": "withheld_no_source_cut_topology",
+        "selected_component_id": null,
+        "source_profile_sha256": "e1f74abe8e53ae80a6ed6570d1850c4eb0e3d8af110ff32b1fa390f89578481c",
+        "status": "withheld_section_cut_component_identity_unresolved",
+        "vertical_span_nominal_m": 2.451103617350256
+      }
+    ],
+    "source_pages": {
+      "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "2d74a883d8c47d8e51a9ba72fdb13001ce09aedb6a7c77d70690aef7d8bb9a9f"
+      },
+      "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b:2": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "233def0704040c9314785ea4329e3dc15e60c680f1e715eaa3317c422165cc12"
+      },
+      "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b:3": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "8482aae1eb6b12b4d7ec6d7989cc5064a89877239b8d8b2eb2801c2ddec7cdd4"
+      },
+      "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "13c41f9c4f34ca07a1b4d2981643495f23f19dca6a7035a3ff754c80db7ecaae"
+      },
+      "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6:2": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "effc6e20a4bb8bbb8ef591196121a9228ed3578b218dc3dbfd7f005843e731c4"
+      },
+      "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6:3": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "6677d68ac159b91a7d70d4358efad5d0fddaa2a02694ea536a652843073bb419"
+      },
+      "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6:4": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "622af64a507207f32a32c3778ca0a820f92388fb74d7f3ad74db241b64a9f671"
+      },
+      "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6:5": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "476f3493351ea0d7459491521d37ffadfac43078b16d6f3514081486a062d38c"
+      },
+      "349ad3d15c760b3d7747bf7f065fa4d42b01ba24516f1ec6744369dd98338507:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "580550df93456819389fbde166fe201af09ed5d63cffcdc7882c22cc73215fd0"
+      },
+      "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "854a5ef6c2bab67bef310d6e17a31fe83a28fa84c28330489d4724b1bad2d311"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "902bd4ea9a8c2a0a3bc41c0b5620510f9186405e0cd3de0baf8be31c5ef2b8dd"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:2": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "52d2973697214c62b272a154d24b7092ca299652d3c3d2c23b04b123d4c624a0"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:3": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "5f5b343d23d287af24a180af3178fa07d1e8c0a004fe01783e2eacc6bd758c18"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:4": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "58b97f6768a80bd67df49a06bdb16250d14fba2c840b253802964893a0de1050"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:5": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "09dc5fc1096e4522673df775b2481470e0781db07c75a855f7a8c77dc0c31791"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:6": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "c167883f3aba8bfed4562b0cdfb2d2768d2369db8593d88cc87db23f373cc76b"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:7": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "fbecb9243586f1500bfad9ba45b95500e1968b266cfbdfcb582556ed7fb7d2d7"
+      },
+      "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d:8": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "be88f5c678dce703e87fd23addade7b086611d845ae50dd80479d3bdab1ef5bc"
+      },
+      "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": false,
+        "reference_markers_complete": true,
+        "sha256": "e1223b69ed1008549bc888ac6b3e9d7f311d59e7f53cf3aef1fab9be1e6e33b0"
+      },
+      "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "93de105ba89967f91e44aa689149651405876a8e1f6229de5548bbb8e899367c"
+      },
+      "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881:2": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "0d9bcde9a1c9fddf2030829d9ed12bef83d150b7f5b5f0be009ba7cf2a6d415a"
+      },
+      "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881:3": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "1c743f74c79f34d522e50056070dcf34e8d2b0675cee7203f8c33a4e2cfc8da7"
+      },
+      "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881:4": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "0f7c7ebf6b187ecb13ab1569dc710e2b59c240c74c19bc96af32441bdc4c2e2d"
+      },
+      "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881:5": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "9400f563c749de011afe93845f7846461996087863b310d5485bbc183891ae4c"
+      },
+      "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "3935e15c5dfa2b48c4b4b86ef3da20b8834340a04bb08a15f1f094dd3dabffde"
+      },
+      "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534:1": {
+        "components_complete": true,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "613a5e8a713f7497657a7be06997d736bf8746cfff5af22ba0d83dd97cff93f9"
+      },
+      "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "4022fea8efa06daef0b22053ec40ce6e586eeb08aee36375a1ce269225b6faec"
+      },
+      "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892:2": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "b06247c6bfc10fee84f3931d848e7da045d8e908f666c47b4d95fc204bca4570"
+      },
+      "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892:3": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "4925287e75faf208f19590f515f43aad3b108f94ba7fc8992c97c8e21778ac54"
+      },
+      "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892:4": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "47c7e792597981bcfe5819de2c880a9367024381e167a5f7af932ecbffc8585f"
+      },
+      "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892:5": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "2c72dbf06a1620e2fbe97ab281f011ffbd7a725df7af61e549cd845d5da2d803"
+      },
+      "b344ab3cb85aa249525a9ff4afc71a1dac31c273a623186b72dee34c11927d05:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": false,
+        "sha256": "fd2c3b54081fb6046e43f339f29e617bb63600ffef675722e62769b49f7a5de5"
+      },
+      "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "8ea3971ac4b0a9b13d7e47e5a95656a5f38f7ff07f07388324555ff25fe030c2"
+      },
+      "c089684cad7dd747921aababad9d99fb4cf266eb2afd9c5b1aea9892e5887718:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "96489aad027bd53a691ce7366f41de0a2a4e562515a4a513cc74063c8f94a37c"
+      },
+      "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b:1": {
+        "components_complete": null,
+        "measurements_complete": true,
+        "profiles_complete": true,
+        "reference_markers_complete": true,
+        "sha256": "d3ef1ef73474550aa272e672a978ecd07656f2455e3f5cfb69313dcbbd740648"
+      }
+    },
+    "source_reference_markers": [
+      {
+        "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+        "marker": {
+          "center_pdf_native": [
+            506.1600036621094,
+            1024.56005859375
+          ],
+          "circle_paint_seqno": 12044,
+          "circle_path_index": 12044,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                506.1600036621094,
+                1041.5999755859375
+              ],
+              [
+                515.5199584960938,
+                1041.5999755859375
+              ],
+              [
+                523.2000122070312,
+                1033.919921875
+              ],
+              [
+                523.2000122070312,
+                1024.5599365234375
+              ]
+            ],
+            [
+              [
+                523.2000122070312,
+                1024.5599365234375
+              ],
+              [
+                523.2000122070312,
+                1015.0799560546875
+              ],
+              [
+                515.5199584960938,
+                1007.52001953125
+              ],
+              [
+                506.1600036621094,
+                1007.52001953125
+              ]
+            ],
+            [
+              [
+                506.1600036621094,
+                1007.52001953125
+              ],
+              [
+                496.67999267578125,
+                1007.52001953125
+              ],
+              [
+                489.1199951171875,
+                1015.0799560546875
+              ],
+              [
+                489.1199951171875,
+                1024.5599365234375
+              ]
+            ],
+            [
+              [
+                489.1199951171875,
+                1024.5599365234375
+              ],
+              [
+                489.1199951171875,
+                1033.919921875
+              ],
+              [
+                496.67999267578125,
+                1041.5999755859375
+              ],
+              [
+                506.1600036621094,
+                1041.5999755859375
+              ]
+            ]
+          ],
+          "id": "a32c544b1b3e2e620ac505f21ba27b8a8a228c6c64031703c6294192933646d9",
+          "index_search_radius_pdf_points": 51.11997985839844,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      531.2992553710938,
+                      1035.50439453125
+                    ],
+                    [
+                      541.2694702148438,
+                      1035.50439453125
+                    ],
+                    [
+                      541.2694702148438,
+                      1029.95947265625
+                    ],
+                    [
+                      531.2992553710938,
+                      1029.95947265625
+                    ],
+                    [
+                      531.2992553710938,
+                      1035.50439453125
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 382,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 197,
+                "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+                "source_font_xrefs": [
+                  11
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "4",
+              "trace_indices": [
+                1
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.039993286132812,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    503.10943603515625,
+                    1035.017333984375
+                  ],
+                  [
+                    513.0665893554688,
+                    1035.017333984375
+                  ],
+                  [
+                    513.0665893554688,
+                    1013.15966796875
+                  ],
+                  [
+                    503.10943603515625,
+                    1013.15966796875
+                  ],
+                  [
+                    503.10943603515625,
+                    1035.017333984375
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+              "source_font_xrefs": [
+                11
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              0
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 4
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "6a01d0e1e5fa93b45b6588ef367d80ea953f52054a1588afec95d198dc2bf170"
+      },
+      {
+        "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+        "marker": {
+          "center_pdf_native": [
+            601.3800048828125,
+            1749.89990234375
+          ],
+          "circle_paint_seqno": 12066,
+          "circle_path_index": 12064,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                601.3200073242188,
+                1766.8800048828125
+              ],
+              [
+                610.6799926757812,
+                1766.8800048828125
+              ],
+              [
+                618.3599853515625,
+                1759.199951171875
+              ],
+              [
+                618.3599853515625,
+                1749.8399658203125
+              ]
+            ],
+            [
+              [
+                618.3599853515625,
+                1749.8399658203125
+              ],
+              [
+                618.3599853515625,
+                1740.47998046875
+              ],
+              [
+                610.6799926757812,
+                1732.919921875
+              ],
+              [
+                601.3200073242188,
+                1732.919921875
+              ]
+            ],
+            [
+              [
+                601.3200073242188,
+                1732.919921875
+              ],
+              [
+                591.9599609375,
+                1732.919921875
+              ],
+              [
+                584.3999633789062,
+                1740.47998046875
+              ],
+              [
+                584.3999633789062,
+                1749.8399658203125
+              ]
+            ],
+            [
+              [
+                584.3999633789062,
+                1749.8399658203125
+              ],
+              [
+                584.3999633789062,
+                1759.199951171875
+              ],
+              [
+                591.9599609375,
+                1766.8800048828125
+              ],
+              [
+                601.3200073242188,
+                1766.8800048828125
+              ]
+            ]
+          ],
+          "id": "7b97961cdac65020ed1ba358ba874faa7e2823bca7d0d8b2c1daeaedbc14fd01",
+          "index_search_radius_pdf_points": 50.94007873535156,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      604.8592529296875,
+                      1722.8642578125
+                    ],
+                    [
+                      614.8295288085938,
+                      1722.8642578125
+                    ],
+                    [
+                      614.8295288085938,
+                      1717.3192138671875
+                    ],
+                    [
+                      604.8592529296875,
+                      1717.3192138671875
+                    ],
+                    [
+                      604.8592529296875,
+                      1722.8642578125
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 451,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 249,
+                "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+                "source_font_xrefs": [
+                  11
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "2",
+              "trace_indices": [
+                3
+              ]
+            }
+          ],
+          "radius_pdf_points": 16.980026245117188,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    598.389404296875,
+                    1760.297119140625
+                  ],
+                  [
+                    608.3466186523438,
+                    1760.297119140625
+                  ],
+                  [
+                    608.3466186523438,
+                    1738.439208984375
+                  ],
+                  [
+                    598.389404296875,
+                    1738.439208984375
+                  ],
+                  [
+                    598.389404296875,
+                    1760.297119140625
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+              "source_font_xrefs": [
+                11
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              2
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 2
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "6a01d0e1e5fa93b45b6588ef367d80ea953f52054a1588afec95d198dc2bf170"
+      },
+      {
+        "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+        "marker": {
+          "center_pdf_native": [
+            958.0799560546875,
+            568.919921875
+          ],
+          "circle_paint_seqno": 12088,
+          "circle_path_index": 12084,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                958.0799560546875,
+                585.9599609375
+              ],
+              [
+                967.4400024414062,
+                585.9599609375
+              ],
+              [
+                975.1199951171875,
+                578.280029296875
+              ],
+              [
+                975.1199951171875,
+                568.919921875
+              ]
+            ],
+            [
+              [
+                975.1199951171875,
+                568.919921875
+              ],
+              [
+                975.1199951171875,
+                559.43994140625
+              ],
+              [
+                967.4400024414062,
+                551.8800048828125
+              ],
+              [
+                958.0799560546875,
+                551.8800048828125
+              ]
+            ],
+            [
+              [
+                958.0799560546875,
+                551.8800048828125
+              ],
+              [
+                948.5999755859375,
+                551.8800048828125
+              ],
+              [
+                941.0399780273438,
+                559.43994140625
+              ],
+              [
+                941.0399780273438,
+                568.919921875
+              ]
+            ],
+            [
+              [
+                941.0399780273438,
+                568.919921875
+              ],
+              [
+                941.0399780273438,
+                578.280029296875
+              ],
+              [
+                948.5999755859375,
+                585.9599609375
+              ],
+              [
+                958.0799560546875,
+                585.9599609375
+              ]
+            ]
+          ],
+          "id": "69bb39d999637da0dbaaa186c30b8f7f21e96176e1b4b6dee961f3d46c2a72c8",
+          "index_search_radius_pdf_points": 51.11997985839844,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      945.1790771484375,
+                      601.104736328125
+                    ],
+                    [
+                      955.1492919921875,
+                      601.104736328125
+                    ],
+                    [
+                      955.1492919921875,
+                      595.5596923828125
+                    ],
+                    [
+                      945.1790771484375,
+                      595.5596923828125
+                    ],
+                    [
+                      945.1790771484375,
+                      601.104736328125
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 263,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 139,
+                "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+                "source_font_xrefs": [
+                  11
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "1",
+              "trace_indices": [
+                5
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.039993286132812,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    955.0292358398438,
+                    579.37744140625
+                  ],
+                  [
+                    964.9863891601562,
+                    579.37744140625
+                  ],
+                  [
+                    964.9863891601562,
+                    557.519775390625
+                  ],
+                  [
+                    955.0292358398438,
+                    557.519775390625
+                  ],
+                  [
+                    955.0292358398438,
+                    579.37744140625
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+              "source_font_xrefs": [
+                11
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              4
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 1
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "6a01d0e1e5fa93b45b6588ef367d80ea953f52054a1588afec95d198dc2bf170"
+      },
+      {
+        "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+        "marker": {
+          "center_pdf_native": [
+            1111.43994140625,
+            1198.260009765625
+          ],
+          "circle_paint_seqno": 12110,
+          "circle_path_index": 12104,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                1111.43994140625,
+                1215.239990234375
+              ],
+              [
+                1120.7999267578125,
+                1215.239990234375
+              ],
+              [
+                1128.47998046875,
+                1207.5599365234375
+              ],
+              [
+                1128.47998046875,
+                1198.199951171875
+              ]
+            ],
+            [
+              [
+                1128.47998046875,
+                1198.199951171875
+              ],
+              [
+                1128.47998046875,
+                1188.8399658203125
+              ],
+              [
+                1120.7999267578125,
+                1181.280029296875
+              ],
+              [
+                1111.43994140625,
+                1181.280029296875
+              ]
+            ],
+            [
+              [
+                1111.43994140625,
+                1181.280029296875
+              ],
+              [
+                1101.9599609375,
+                1181.280029296875
+              ],
+              [
+                1094.4000244140625,
+                1188.8399658203125
+              ],
+              [
+                1094.4000244140625,
+                1198.199951171875
+              ]
+            ],
+            [
+              [
+                1094.4000244140625,
+                1198.199951171875
+              ],
+              [
+                1094.4000244140625,
+                1207.5599365234375
+              ],
+              [
+                1101.9599609375,
+                1215.239990234375
+              ],
+              [
+                1111.43994140625,
+                1215.239990234375
+              ]
+            ]
+          ],
+          "id": "a4cc9fd43de7c965a3c409ed06597971893c784365970db8a982d60f37970cbc",
+          "index_search_radius_pdf_points": 51.029937744140625,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      1077.5390625,
+                      1192.4647216796875
+                    ],
+                    [
+                      1087.50927734375,
+                      1192.4647216796875
+                    ],
+                    [
+                      1087.50927734375,
+                      1186.919677734375
+                    ],
+                    [
+                      1077.5390625,
+                      1186.919677734375
+                    ],
+                    [
+                      1077.5390625,
+                      1192.4647216796875
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 410,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 258,
+                "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+                "source_font_xrefs": [
+                  11
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "3",
+              "trace_indices": [
+                7
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.009979248046875,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    1108.38916015625,
+                    1208.657470703125
+                  ],
+                  [
+                    1118.3463134765625,
+                    1208.657470703125
+                  ],
+                  [
+                    1118.3463134765625,
+                    1186.7996826171875
+                  ],
+                  [
+                    1108.38916015625,
+                    1186.7996826171875
+                  ],
+                  [
+                    1108.38916015625,
+                    1208.657470703125
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "6cf80de89b4906076d067108dd984254ed9765bffd577eb6b2e00d38a73223a7",
+              "source_font_xrefs": [
+                11
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              6
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 3
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "6a01d0e1e5fa93b45b6588ef367d80ea953f52054a1588afec95d198dc2bf170"
+      },
+      {
+        "document_sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+        "marker": {
+          "center_pdf_native": [
+            788.4000244140625,
+            1089.5999755859375
+          ],
+          "circle_paint_seqno": 32460,
+          "circle_path_index": 32453,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                788.3999633789062,
+                1106.6400146484375
+              ],
+              [
+                797.760009765625,
+                1106.6400146484375
+              ],
+              [
+                805.4400024414062,
+                1098.9599609375
+              ],
+              [
+                805.4400024414062,
+                1089.5999755859375
+              ]
+            ],
+            [
+              [
+                805.4400024414062,
+                1089.5999755859375
+              ],
+              [
+                805.4400024414062,
+                1080.1199951171875
+              ],
+              [
+                797.760009765625,
+                1072.5599365234375
+              ],
+              [
+                788.3999633789062,
+                1072.5599365234375
+              ]
+            ],
+            [
+              [
+                788.3999633789062,
+                1072.5599365234375
+              ],
+              [
+                778.9199829101562,
+                1072.5599365234375
+              ],
+              [
+                771.3599853515625,
+                1080.1199951171875
+              ],
+              [
+                771.3599853515625,
+                1089.5999755859375
+              ]
+            ],
+            [
+              [
+                771.3599853515625,
+                1089.5999755859375
+              ],
+              [
+                771.3599853515625,
+                1098.9599609375
+              ],
+              [
+                778.9199829101562,
+                1106.6400146484375
+              ],
+              [
+                788.3999633789062,
+                1106.6400146484375
+              ]
+            ]
+          ],
+          "id": "e1fc26006f2fca1ee228ae77b6cd53fa0a1e07549fdd1ceed67724073ae30fb9",
+          "index_search_radius_pdf_points": 51.12007141113281,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      784.4992065429688,
+                      1122.984375
+                    ],
+                    [
+                      794.4694213867188,
+                      1122.984375
+                    ],
+                    [
+                      794.4694213867188,
+                      1117.439453125
+                    ],
+                    [
+                      784.4992065429688,
+                      1117.439453125
+                    ],
+                    [
+                      784.4992065429688,
+                      1122.984375
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 382,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 197,
+                "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+                "source_font_xrefs": [
+                  13
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "4",
+              "trace_indices": [
+                92
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.040023803710938,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    784.7493286132812,
+                    1101.617431640625
+                  ],
+                  [
+                    794.7064819335938,
+                    1101.617431640625
+                  ],
+                  [
+                    794.7064819335938,
+                    1079.759521484375
+                  ],
+                  [
+                    784.7493286132812,
+                    1079.759521484375
+                  ],
+                  [
+                    784.7493286132812,
+                    1101.617431640625
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+              "source_font_xrefs": [
+                13
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              91
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 4
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "99a924c788f1264fd9b9596c4c559f8f8189817c8a9d25e236d0752d6a447ff8"
+      },
+      {
+        "document_sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+        "marker": {
+          "center_pdf_native": [
+            454.5,
+            1239.0599365234375
+          ],
+          "circle_paint_seqno": 32482,
+          "circle_path_index": 32473,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                454.44000244140625,
+                1256.0399169921875
+              ],
+              [
+                463.79998779296875,
+                1256.0399169921875
+              ],
+              [
+                471.47998046875,
+                1248.3599853515625
+              ],
+              [
+                471.47998046875,
+                1239.0
+              ]
+            ],
+            [
+              [
+                471.47998046875,
+                1239.0
+              ],
+              [
+                471.47998046875,
+                1229.6400146484375
+              ],
+              [
+                463.79998779296875,
+                1222.0799560546875
+              ],
+              [
+                454.44000244140625,
+                1222.0799560546875
+              ]
+            ],
+            [
+              [
+                454.44000244140625,
+                1222.0799560546875
+              ],
+              [
+                445.0799865722656,
+                1222.0799560546875
+              ],
+              [
+                437.5199890136719,
+                1229.6400146484375
+              ],
+              [
+                437.5199890136719,
+                1239.0
+              ]
+            ],
+            [
+              [
+                437.5199890136719,
+                1239.0
+              ],
+              [
+                437.5199890136719,
+                1248.3599853515625
+              ],
+              [
+                445.0799865722656,
+                1256.0399169921875
+              ],
+              [
+                454.44000244140625,
+                1256.0399169921875
+              ]
+            ]
+          ],
+          "id": "5a4b2c9f3481205099c379fe49af80518ae2d7980b7e9caf2cd4d00a0ad2a7dd",
+          "index_search_radius_pdf_points": 50.939964294433594,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      480.779296875,
+                      1240.70458984375
+                    ],
+                    [
+                      490.74951171875,
+                      1240.70458984375
+                    ],
+                    [
+                      490.74951171875,
+                      1235.1595458984375
+                    ],
+                    [
+                      480.779296875,
+                      1235.1595458984375
+                    ],
+                    [
+                      480.779296875,
+                      1240.70458984375
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 451,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 249,
+                "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+                "source_font_xrefs": [
+                  13
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "2",
+              "trace_indices": [
+                94
+              ]
+            }
+          ],
+          "radius_pdf_points": 16.97998809814453,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    450.90948486328125,
+                    1251.0174560546875
+                  ],
+                  [
+                    460.86663818359375,
+                    1251.0174560546875
+                  ],
+                  [
+                    460.86663818359375,
+                    1229.15966796875
+                  ],
+                  [
+                    450.90948486328125,
+                    1229.15966796875
+                  ],
+                  [
+                    450.90948486328125,
+                    1251.0174560546875
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+              "source_font_xrefs": [
+                13
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              93
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 2
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "99a924c788f1264fd9b9596c4c559f8f8189817c8a9d25e236d0752d6a447ff8"
+      },
+      {
+        "document_sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+        "marker": {
+          "center_pdf_native": [
+            1071.3599853515625,
+            1240.919921875
+          ],
+          "circle_paint_seqno": 32504,
+          "circle_path_index": 32493,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                1071.3599853515625,
+                1257.9599609375
+              ],
+              [
+                1080.719970703125,
+                1257.9599609375
+              ],
+              [
+                1088.4000244140625,
+                1250.280029296875
+              ],
+              [
+                1088.4000244140625,
+                1240.919921875
+              ]
+            ],
+            [
+              [
+                1088.4000244140625,
+                1240.919921875
+              ],
+              [
+                1088.4000244140625,
+                1231.43994140625
+              ],
+              [
+                1080.719970703125,
+                1223.8800048828125
+              ],
+              [
+                1071.3599853515625,
+                1223.8800048828125
+              ]
+            ],
+            [
+              [
+                1071.3599853515625,
+                1223.8800048828125
+              ],
+              [
+                1061.8800048828125,
+                1223.8800048828125
+              ],
+              [
+                1054.3199462890625,
+                1231.43994140625
+              ],
+              [
+                1054.3199462890625,
+                1240.919921875
+              ]
+            ],
+            [
+              [
+                1054.3199462890625,
+                1240.919921875
+              ],
+              [
+                1054.3199462890625,
+                1250.280029296875
+              ],
+              [
+                1061.8800048828125,
+                1257.9599609375
+              ],
+              [
+                1071.3599853515625,
+                1257.9599609375
+              ]
+            ]
+          ],
+          "id": "9b421e2af53838c950d2511c5fdd0acd4eb57c9a013841d3c8deadffdc9e14e7",
+          "index_search_radius_pdf_points": 51.120025634765625,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      1036.259033203125,
+                      1243.9444580078125
+                    ],
+                    [
+                      1046.229248046875,
+                      1243.9444580078125
+                    ],
+                    [
+                      1046.229248046875,
+                      1238.3994140625
+                    ],
+                    [
+                      1036.259033203125,
+                      1238.3994140625
+                    ],
+                    [
+                      1036.259033203125,
+                      1243.9444580078125
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 263,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 139,
+                "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+                "source_font_xrefs": [
+                  13
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "1",
+              "trace_indices": [
+                96
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.040008544921875,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    1067.7091064453125,
+                    1252.9373779296875
+                  ],
+                  [
+                    1077.666259765625,
+                    1252.9373779296875
+                  ],
+                  [
+                    1077.666259765625,
+                    1231.07958984375
+                  ],
+                  [
+                    1067.7091064453125,
+                    1231.07958984375
+                  ],
+                  [
+                    1067.7091064453125,
+                    1252.9373779296875
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+              "source_font_xrefs": [
+                13
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              95
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 1
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "99a924c788f1264fd9b9596c4c559f8f8189817c8a9d25e236d0752d6a447ff8"
+      },
+      {
+        "document_sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+        "marker": {
+          "center_pdf_native": [
+            791.760009765625,
+            1404.47998046875
+          ],
+          "circle_paint_seqno": 32526,
+          "circle_path_index": 32513,
+          "circle_source_beziers_pdf_native": [
+            [
+              [
+                791.760009765625,
+                1421.52001953125
+              ],
+              [
+                801.1199951171875,
+                1421.52001953125
+              ],
+              [
+                808.7999877929688,
+                1413.8399658203125
+              ],
+              [
+                808.7999877929688,
+                1404.47998046875
+              ]
+            ],
+            [
+              [
+                808.7999877929688,
+                1404.47998046875
+              ],
+              [
+                808.7999877929688,
+                1395.0
+              ],
+              [
+                801.1199951171875,
+                1387.43994140625
+              ],
+              [
+                791.760009765625,
+                1387.43994140625
+              ]
+            ],
+            [
+              [
+                791.760009765625,
+                1387.43994140625
+              ],
+              [
+                782.2799682617188,
+                1387.43994140625
+              ],
+              [
+                774.719970703125,
+                1395.0
+              ],
+              [
+                774.719970703125,
+                1404.47998046875
+              ]
+            ],
+            [
+              [
+                774.719970703125,
+                1404.47998046875
+              ],
+              [
+                774.719970703125,
+                1413.8399658203125
+              ],
+              [
+                782.2799682617188,
+                1421.52001953125
+              ],
+              [
+                791.760009765625,
+                1421.52001953125
+              ]
+            ]
+          ],
+          "id": "05c55aa24f33bffb9ddfbd40d41be969be9c13860dd5905f852a4f19d10a30be",
+          "index_search_radius_pdf_points": 51.12007141113281,
+          "marker_clipping_verified": false,
+          "marker_paint_visibility_verified": false,
+          "marker_semantics_verified": false,
+          "outside_view_index_candidates": [
+            {
+              "character_indices": [
+                0
+              ],
+              "geometry_pdf_native": {
+                "coordinates": [
+                  [
+                    [
+                      786.8992309570312,
+                      1376.4244384765625
+                    ],
+                    [
+                      796.8695068359375,
+                      1376.4244384765625
+                    ],
+                    [
+                      796.8695068359375,
+                      1370.87939453125
+                    ],
+                    [
+                      786.8992309570312,
+                      1370.87939453125
+                    ],
+                    [
+                      786.8992309570312,
+                      1376.4244384765625
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "glyph_screen": {
+                "glyph_encoding": "source_glyph_ids",
+                "glyphs": [
+                  {
+                    "character_index": 0,
+                    "core_pixels": 410,
+                    "unsupported_core_pixels": 0
+                  }
+                ],
+                "limitations": [
+                  "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                  "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                  "A one-pixel position tolerance applies at the retained raster scale."
+                ],
+                "max_unexpected_dark_ring_fraction": 0.01,
+                "max_unsupported_core_fraction_per_glyph": 0.01,
+                "pixel_position_tolerance": 1,
+                "ring_pixels": 258,
+                "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+                "source_font_xrefs": [
+                  13
+                ],
+                "source_rotation_restored": 90,
+                "status": "raster_consistent_candidate",
+                "unexpected_dark_ring_pixels": 0,
+                "version": "source-font-glyph-raster-screen-v5",
+                "visibility_verified": false,
+                "zoom_pixels_per_pdf_point": 6
+              },
+              "text": "3",
+              "trace_indices": [
+                98
+              ]
+            }
+          ],
+          "radius_pdf_points": 17.040023803710938,
+          "section_cut_identity_verified": false,
+          "sheet_number_evidence": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    788.109375,
+                    1416.497314453125
+                  ],
+                  [
+                    798.0665893554688,
+                    1416.497314453125
+                  ],
+                  [
+                    798.0665893554688,
+                    1394.639404296875
+                  ],
+                  [
+                    788.109375,
+                    1394.639404296875
+                  ],
+                  [
+                    788.109375,
+                    1416.497314453125
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "glyph_encoding": "source_glyph_ids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 408,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 463,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 263,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 893,
+              "source_font_sha256": "797b9499d884c0588f43c4c304d83c00ed7f28c8da4bbc73cd104283f854eda4",
+              "source_font_xrefs": [
+                13
+              ],
+              "source_rotation_restored": 90,
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v5",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "0301",
+            "trace_indices": [
+              97
+            ]
+          },
+          "status": "unverified_sheet_reference_marker_candidate",
+          "target_sheet_candidate": "0301",
+          "target_view_index_candidate": 3
+        },
+        "page": 1,
+        "source_reference_evidence_sha256": "99a924c788f1264fd9b9596c4c559f8f8189817c8a9d25e236d0752d6a447ff8"
+      }
+    ],
+    "status": "section_plan_correspondence_diagnostics_only",
+    "summary": {
+      "physical_component_correspondences_verified": 0,
+      "profiles_with_multiple_plan_candidates": 1,
+      "section_plan_context_pairs": 3,
+      "source_sheet_reference_markers": 8
+    },
+    "tolerance_m": 0.25,
+    "training_labels_generated": 0,
+    "version": "planning-section-correspondence-v1",
+    "world_geometry_additions": 0,
+    "world_placement_eligible": false
+  },
+  "correspondence_review_sha256": "e7b5955fa394560d0f1a8070ed9b9ae2b7a256099afdc9b1bb95a96df0005599",
+  "dataset_kind": "cached_previously_inspected_development_sources",
+  "implementation_bytes_verified_against_current_source": true,
+  "independent_physical_accuracy_assessed": false,
+  "limitations": [
+    "Shared series and sheet references establish drawing context only.",
+    "Numeric view indices are not mapped to lettered sections or caption order.",
+    "Width checks compare both oriented plan spans; oblique section cuts are not modelled.",
+    "All contextual rivals remain, including size mismatches; no nearest or best match is selected.",
+    "Section cut topology, physical scale, exterior walls and local ground datum remain unresolved.",
+    "No independently checked physical reference, Minecraft gameplay or installed-PC test."
+  ],
+  "local_3d_components": 0,
+  "model_weights_updated": false,
+  "network_bytes_first_run": 0,
+  "network_bytes_restart": 0,
+  "new_batches_first_run": 4,
+  "new_batches_restart": 0,
+  "original_pdf_pins": [
+    {
+      "bytes": 3115375,
+      "sha256": "b344ab3cb85aa249525a9ff4afc71a1dac31c273a623186b72dee34c11927d05",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353041"
+    },
+    {
+      "bytes": 996422,
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+    },
+    {
+      "bytes": 1089394,
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+    },
+    {
+      "bytes": 889213,
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+    },
+    {
+      "bytes": 698616,
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "bytes": 570143,
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    },
+    {
+      "bytes": 476955,
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+    },
+    {
+      "bytes": 574030,
+      "sha256": "349ad3d15c760b3d7747bf7f065fa4d42b01ba24516f1ec6744369dd98338507",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353049"
+    },
+    {
+      "bytes": 1980775,
+      "sha256": "c52061cd8c263779fab215f8c4d97f7219ce77622c24a3a97b940bad896c68ff",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353036"
+    },
+    {
+      "bytes": 553059,
+      "sha256": "9837ac0f642e111ce3924da22f3c29aa64fc3e65bd104bb8cf7f5dd58c4405d8",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353037"
+    },
+    {
+      "bytes": 4019523,
+      "sha256": "5d1612eef20965c4b95dddc29f91758cb55a9e8de4d9c93df8fd6ba0658f3c8d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353038"
+    },
+    {
+      "bytes": 713803,
+      "sha256": "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039"
+    },
+    {
+      "bytes": 1486197,
+      "sha256": "bf25faf2f9c1f322a6cbc0f73ad321cdb1189019436b76e41eab5000192b9c22",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353040"
+    },
+    {
+      "bytes": 190425,
+      "sha256": "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353048"
+    },
+    {
+      "bytes": 182221,
+      "sha256": "c089684cad7dd747921aababad9d99fb4cf266eb2afd9c5b1aea9892e5887718",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354194"
+    },
+    {
+      "bytes": 227631,
+      "sha256": "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354408"
+    },
+    {
+      "bytes": 252220,
+      "sha256": "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356354"
+    },
+    {
+      "bytes": 317526,
+      "sha256": "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356356"
+    },
+    {
+      "bytes": 522090,
+      "sha256": "5009eed9b7fa3d4e8d09dd4aada7c5488c2556865fc8b7c7d18bac99cc97d51c",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357"
+    }
+  ],
+  "output_receipt_sha256": "94ebafbaecbd94472dcf64883eda778a97cf5d41daee82c5f963d83a6cbb9b90",
+  "peak_managed_memory_mb": 851.5,
+  "physical_height_verified": false,
+  "status": "passed",
+  "summary": {
+    "building_outline_hints": 1,
+    "closed_source_outlines": 318,
+    "completed_batches": 4,
+    "completed_pages": 35,
+    "completed_sources": 20,
+    "component_boundary_candidates": 3,
+    "components_with_nominal_scale_trials": 3,
+    "documents_needing_analysis_review": 14,
+    "known_urls": 20,
+    "new_batches": 0,
+    "nominal_section_profile_hypotheses": 1,
+    "nominal_view_outlines": 335,
+    "path_plaza_outline_hints": 0,
+    "physical_component_correspondences_verified": 0,
+    "physical_section_heights_verified": 0,
+    "profiles_with_multiple_plan_candidates": 1,
+    "section_plan_context_pairs": 3,
+    "size_consistent_component_hypotheses": 2,
+    "size_mismatched_component_hypotheses": 1,
+    "source_outline_role_hints": 1,
+    "source_sheet_reference_markers": 8,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unique_originals_handed_to_analysis": 14,
+    "unresolved_component_size_hypotheses": 0,
+    "unresolved_sources": 0,
+    "view_source_outlines": 335,
+    "visible_view_captions": 14
+  },
+  "training_labels_generated": 0,
+  "unseen_source_generalisation_assessed": false,
+  "verified_output_files": 196,
+  "world_geometry_additions": 0
+}
