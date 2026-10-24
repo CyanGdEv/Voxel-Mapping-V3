@@ -2,6 +2,8 @@
 
 The [component measurement stage](docs/planning-component-measurements.md) produces nominal plan previews and compares explicit printed container sizes across linked drawing sheets. It reports mismatches without stretching source geometry; missing height and cross-view scope keep 3D building generation withheld.
 
+[Section profile evidence](docs/planning-section-profiles.md) adds labelled source-polygon spans from inferred section views. The Woodcutters Section A–A profile is retained as an unassigned nominal measurement; physical building height and floor-plan correspondence remain unresolved.
+
 The [fine component boundary stage](docs/planning-component-footprints.md) recovers individual source faces around visible container labels using short source segments that coarse discovery omits. Original-page overlays distinguish these hypotheses from accepted physical building exteriors; heights, map alignment and path boundaries remain unfinished.
 
 The [source-label outline stage](docs/planning-outline-semantics.md) links visible building/path/plaza role nouns to unique closed source enclosures, exposes shared-component and conflicting claims, and highlights supported associations on the original drawings. Physical identity remains unverified.

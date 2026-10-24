@@ -102,3 +102,9 @@ The default 0.25 m span-comparison policy is diagnostic, not physical accuracy.
 Conflicting notes/scales, hidden text and frame/paper mismatches stay withheld.
 Missing source height and cross-view scope prevent a 3D building preview; two
 printed lengths are never treated as an automatic container height.
+
+Section profile review:
+Planning Results include section-profiles.html and section-profiles.json.
+These retain nominal source-polygon spans and exact drawing evidence. Profiles
+remain unassigned to floor-plan components; no physical building height or 3D
+shell is accepted. Blue original-page overlays identify the retained profiles.

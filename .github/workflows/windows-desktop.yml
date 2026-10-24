@@ -33,6 +33,8 @@ on:
       - 'voxel_mapper/planning_outline_semantics.py'
       - 'voxel_mapper/planning_component_footprints.py'
       - 'voxel_mapper/planning_component_measurements.py'
+      - 'voxel_mapper/planning_section_profiles.py'
+      - 'voxel_mapper/drawing_view_candidates.py'
       - 'voxel_mapper/ordinary_surfaces.py'
       - 'voxel_mapper/architectural_view_layout.py'
       - 'voxel_mapper/building_pdf_discovery.py'
@@ -46,6 +48,8 @@ on:
       - 'tests/test_planning_outline_semantics.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
+      - 'tests/test_planning_section_profiles.py'
+      - 'tests/test_drawing_view_candidates.py'
       - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
       - 'tests/test_reconstruction_benchmark.py'
@@ -101,6 +105,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Component nominal measurement and size-note tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_section_profiles.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Section profile tests failed' }
+          python -m unittest discover -s tests -p 'test_drawing_view_candidates.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Drawing view layout tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Planning closed-outline inventory tests failed' }
           python -m unittest discover -s tests -p 'test_architectural_view_layout.py' -v
