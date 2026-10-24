@@ -1,5 +1,9 @@
 ## Windows desktop and CPU learning
 
+The [automatic web planning pilot](docs/web-planning-pilot.md) passes discovered
+original PDFs directly into drawing analysis, with page-specific role hints,
+separate existing/proposed claims and a source review pack.
+
 The [Web research tab](docs/web-research.md) gathers public source pages and PDF
 text with citations and persistent cached evidence. An optional installed local
 model can choose discovered links; website claims remain unverified observations.

@@ -144,6 +144,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --web-smoke-test build/desktop-validation/web-evidence 2>&1 | Tee-Object build/desktop-validation/web-evidence.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen web evidence smoke test failed' }
+      - name: Exercise frozen automatic web PDF planning handoff
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --web-planning-smoke-test build/desktop-validation/web-planning 2>&1 | Tee-Object build/desktop-validation/web-planning.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen automatic web planning handoff failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |

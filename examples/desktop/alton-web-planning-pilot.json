@@ -1,0 +1,21 @@
+{
+  "version": "web-planning-pilot-v1",
+  "area_id": "alton-woodcutters-facilities",
+  "application_reference": "SMD/2024/0136",
+  "development_exposure": "previously_inspected",
+  "research": {
+    "version": "web-research-v1",
+    "query": "Alton Towers Woodcutters SMD/2024/0136 planning",
+    "urls": [
+      "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165"
+    ],
+    "allowed_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk",
+      "www.staffsmoorlands.gov.uk"
+    ],
+    "prompt": "Find the original site plans, floor plans, elevations and surfacing details for the Woodcutters facilities application. Cite the source documents and retain missing sources as gaps.",
+    "model": "",
+    "offline": false,
+    "refresh": true
+  }
+}

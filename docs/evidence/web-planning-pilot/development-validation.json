@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "dataset_kind": "real_previously_inspected_area",
+  "application_reference": "SMD/2024/0136",
+  "live_acquisition_completed": true,
+  "live_job_id": "b18bc81466ad4c1395d22021271bf1e4",
+  "live_summary": {
+    "completed_pages": 5,
+    "drawing_state_conflicts": 0,
+    "pdf_sources": 5,
+    "retrieved_sources": 6,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unclassified_pages": 1,
+    "unique_originals_handed_to_analysis": 5,
+    "visible_view_captions": 8
+  },
+  "final_code_cache_replay_completed": true,
+  "replay_job_id": "46408653f3f940e98d640759564d30c3",
+  "summary": {
+    "completed_pages": 5,
+    "drawing_state_conflicts": 0,
+    "pdf_sources": 5,
+    "retrieved_sources": 6,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unattempted_document_links": 14,
+    "unclassified_pages": 1,
+    "unique_originals_handed_to_analysis": 5,
+    "visible_view_captions": 8
+  },
+  "original_pdfs": [
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353041",
+      "sha256": "b344ab3cb85aa249525a9ff4afc71a1dac31c273a623186b72dee34c11927d05",
+      "page_roles": {
+        "1": "location-plan"
+      },
+      "drawing_state": "unknown"
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "page_roles": {
+        "1": "site-plan"
+      },
+      "drawing_state": "existing"
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "page_roles": {
+        "1": "site-plan"
+      },
+      "drawing_state": "proposed"
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "page_roles": {
+        "1": "floor-plan"
+      },
+      "drawing_state": "proposed"
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "page_roles": {
+        "1": "unclassified"
+      },
+      "drawing_state": "proposed"
+    }
+  ],
+  "cached_replay_network_bytes": 0,
+  "live_peak_memory_mb": 756.50390625,
+  "replay_peak_memory_mb": 775.37109375,
+  "outputs_hashes_verified": true,
+  "history_restart_verified": true,
+  "unattempted_document_urls": [
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353049",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353036",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353037",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353038",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353040",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353048",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354194",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354408",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356354",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356356",
+    "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357"
+  ],
+  "blockers": [
+    "application_membership_unverified",
+    "measured_building_geometry_unresolved",
+    "geographic_registration_unresolved",
+    "current_as_built_state_unverified",
+    "independent_reference_inventory_missing",
+    "discovered_document_links_remain_unread"
+  ],
+  "application_membership_verified": false,
+  "geometric_accuracy": null,
+  "physical_6gb_pc_acceptance_assessed": false,
+  "installed_model_quality_assessed": false,
+  "world_geometry_additions": 0,
+  "training_labels_generated": 0,
+  "model_weights_updated": false,
+  "focused_tests": {
+    "web": 36,
+    "desktop_web": 2,
+    "planning": 12,
+    "status": "passed"
+  },
+  "implementations": {
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+    },
+    "voxel_mapper.planning_area_pilot": {
+      "basis": "module_file_bytes",
+      "sha256": "9acb447c529f5798cd471a2519da49d87daf341f637c5dd24378a64d411f9f97"
+    },
+    "voxel_mapper.web_evidence": {
+      "basis": "module_file_bytes",
+      "sha256": "0d846a989bdb2a2f22a3f9bc3871d871340a227a2b9e55e52954da31dc3e4b4c"
+    },
+    "voxel_mapper.web_planning_pilot": {
+      "basis": "module_file_bytes",
+      "sha256": "56313ec480987dccdc86d668588226108b1d1cedc6e3611ec330bb34120a6687"
+    },
+    "voxel_mapper.web_research": {
+      "basis": "module_file_bytes",
+      "sha256": "3deebff11c6557ff0c2540814aea1e503cbd5fb18025b0ae87097351e4c43636"
+    }
+  }
+}

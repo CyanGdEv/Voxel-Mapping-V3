@@ -80,6 +80,9 @@ class WebResearchTests(unittest.TestCase):
         self.config['limits']={'max_sources':1}
         report=self.run_job();self.assertEqual(len(report['sources']),1)
         self.assertEqual(report['attempted_sources'],1)
+        self.assertTrue(report['source_budget_exhausted'])
+        self.assertEqual(report['unattempted_document_urls'],[PUBLIC+'plan'])
+        self.assertFalse(report['discovery_exhaustive'])
 
     def test_context_is_complete_bounded_json_and_records_only_offered_sources(self):
         prompt='x'*2048
@@ -98,6 +101,14 @@ class WebResearchTests(unittest.TestCase):
         report=self.run_job(search=search,memory='private-local-observation')
         self.assertEqual(len(report['sources']),2)
         self.assertTrue(all(r['url'].startswith(PUBLIC) for r in report['sources']))
+
+    def test_discovered_drawing_is_read_before_remaining_search_results_use_budget(self):
+        self.config['query']='Planning drawings';self.config['limits']={'max_sources':2}
+        def search(*args,**kwargs):
+            return {'status':'synthetic','results':[{'url':PUBLIC+'general-a'},{'url':PUBLIC+'general-b'}]}
+        report=self.run_job(search=search)
+        self.assertEqual([s['url'] for s in report['sources']],[PUBLIC,PUBLIC+'plan'])
+        self.assertEqual(report['failures'],[])
 
     def test_cancelled_run_does_not_create_completed_report(self):
         with self.assertRaises(CancelledError): self.run_job(cancelled=lambda:True)
