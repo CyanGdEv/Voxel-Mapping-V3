@@ -27,6 +27,8 @@ JOB_KINDS = (
     ('Train neural candidate ranker', 'train_ranker'),
     ('Train study component recognizer', 'train_study_components'),
     ('Train component outlines (CPU)', 'train_study_vision'),
+    ('Train context-aware outlines (CPU)', 'train_study_context'),
+    ('Train pretrained vision heads (CPU)', 'train_study_transfer'),
     ('Inspect retained evidence', 'inspect_evidence'),
     ('Reason about evidence (optional model)', 'reason'),
 )
@@ -604,6 +606,14 @@ class DesktopWindow:
                 detail=('Research component outlines and crop types learned from supplied drawing regions.\n'
                     'Open report.json to compare classification and mask proposals against source-separated baselines.\n'
                     'The saved checkpoint proposes masks inside a provided crop; it does not find objects on a full drawing, generate 3D buildings or replace the active building ranker.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='train_study_context' and row.get('result'):
+                detail=('Research component outlines and crop types learned with the supplied crop context.\n'
+                    'Open index.html in Results to inspect held-out source crops, target regions, learned mask proposals and training-only templates.\n'
+                    'These proposals cover provided crops. Full drawing object discovery, physical interpretation and 3D building generation still need separate evidence; the active building ranker is unchanged.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='train_study_transfer' and row.get('result'):
+                detail=('Research component and outline heads trained over frozen CPU image features.\n'
+                    'Open index.html in Results to compare source-separated predictions with training-only baselines. The encoder weights remain fixed.\n'
+                    'Predictions cover provided drawing crops; full drawing discovery, physical interpretation and 3D building generation need separate evidence. The active building ranker is unchanged.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -745,6 +755,8 @@ def main(argv=None):
     parser.add_argument('--planning-collection-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic follow-up batches and restart without reanalysis.')
     parser.add_argument('--study-learning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise source-separated component learning through an actual managed worker.')
     parser.add_argument('--study-vision-smoke-test',type=Path,metavar='OUTPUT',help='Exercise CPU component type and mask learning through an actual managed worker.')
+    parser.add_argument('--study-context-smoke-test',type=Path,metavar='OUTPUT',help='Exercise CPU crop-context outlines, held-out source evaluation and checkpoint restart through a managed worker.')
+    parser.add_argument('--study-transfer-smoke-test',type=Path,metavar='OUTPUT',help='Exercise frozen CPU encoder features, learned component heads and checkpoint restart through a managed worker.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
     if not 1<=args.workers<=4 or not MIN_MEMORY_BUDGET_MB<=args.memory_budget_mb<=MAX_MEMORY_BUDGET_MB:parser.error(f'Use 1-4 workers and {MIN_MEMORY_BUDGET_MB}-{MAX_MEMORY_BUDGET_MB} MB observed worker memory.')
@@ -777,6 +789,12 @@ def main(argv=None):
     if args.study_vision_smoke_test is not None:
         from .desktop_study_vision_smoke import run
         result=run(args.study_vision_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.study_context_smoke_test is not None:
+        from .desktop_study_context_smoke import run
+        result=run(args.study_context_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.study_transfer_smoke_test is not None:
+        from .desktop_study_transfer_smoke import run
+        result=run(args.study_transfer_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.self_test:
         from .desktop_runtime import self_test
         if args.data_dir is None:

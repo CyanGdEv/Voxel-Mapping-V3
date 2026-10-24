@@ -154,3 +154,23 @@ remain separate work. It uses the existing CPU runtime and managed memory budget
 The existing component recognizer and active building ranker remain separate.
 Frozen runtime check:
   VoxelMapperV3.exe --study-vision-smoke-test PATH_TO_FRESH_TEST_DIRECTORY
+
+Whole-crop context and pretrained CPU features: the separate research bundle
+contains two ready training requests. In Advanced jobs / learning select Train
+context-aware outlines (CPU) or Train pretrained vision heads (CPU). Open the
+result index.html for source-held-out comparisons and assumptions. Saved models
+and history survive restart. In the current 148-example benchmark, context mask
+IoU is 0.438 versus 0.265 for the older local CNN and 0.308 for the template;
+the separate pretrained-feature classifier scores 15/148 versus 10/148. The
+record-average mask gain is concentrated in the Prospect examples: with equal
+source-group weighting both new models still trail the simple template. Path
+targets remain weak. Open the detailed review before interpreting aggregate scores.
+
+The CPU ONNX Runtime is bundled. The separate verified MobileNetV2 descriptor
+weights and complete Apache license are in the offline research model bundle;
+they are not downloaded automatically. The descriptor stays frozen while new
+class/mask heads are fitted. These remain supplied-crop research proposals,
+without full-page discovery, verified dimensions or autonomous 3D buildings.
+Frozen runtime checks use small explicitly synthetic fixtures:
+  VoxelMapperV3.exe --study-context-smoke-test PATH_TO_FRESH_TEST_DIRECTORY
+  VoxelMapperV3.exe --study-transfer-smoke-test PATH_TO_FRESH_TEST_DIRECTORY

@@ -14,9 +14,10 @@ area_temp=tempfile.TemporaryDirectory(prefix='voxel-desktop-area-build-')
 area_data=Path(area_temp.name)/'area-pilots'
 build_bundle(ROOT,area_data)
 # Core geospatial, native Bedrock and source-PDF dependencies are bundled. The
-# package's own optional neural learner uses NumPy, not an implicit GPU runtime.
+# package's learners use NumPy and the CPU ONNX runtime. Pretrained weights are
+# supplied separately in a pinned offline research bundle.
 packages=('voxel_mapper','amulet','amulet_nbt','leveldb','PyMCTranslate','rasterio',
-          'pyproj','pyarrow','numpy','scipy','pymupdf','laspy','lazrs','PIL')
+          'pyproj','pyarrow','numpy','scipy','pymupdf','laspy','lazrs','PIL','onnxruntime')
 datas=[(str(area_data),'area-pilots')];binaries=[];hiddenimports=[]
 for package in packages:
     if importlib.util.find_spec(package) is None:
@@ -28,7 +29,8 @@ hiddenimports.extend(collect_submodules('tkinter'))
 for distribution in ('voxel-mapper','amulet-core','amulet-nbt','amulet-leveldb',
                      'PyMCTranslate','rasterio','pyproj','numpy','scipy','PyMuPDF',
                      'pyarrow','overturemaps','laspy','lazrs','Pillow','requests',
-                     'beautifulsoup4','pypdf','fonttools'):
+                     'beautifulsoup4','pypdf','fonttools','onnxruntime','coloredlogs',
+                     'flatbuffers','protobuf','sympy','humanfriendly','packaging'):
     try:datas.extend(copy_metadata(distribution))
     except PackageNotFoundError:
         # A few native wheels expose a differently normalized distribution
@@ -46,7 +48,7 @@ for name in ('README.txt','LICENSES.txt'):
 a=Analysis([str(ROOT/'scripts'/'windows_desktop_entry.py')],pathex=[str(ROOT)],
     binaries=binaries,datas=datas,hiddenimports=sorted(set(hiddenimports)),
     hookspath=[],runtime_hooks=[str(BUNDLE/'desktop_runtime_hook.py')],
-    excludes=['pytest','IPython','jupyter','notebook','torch','tensorflow','matplotlib'],
+    excludes=['pytest','IPython','jupyter','notebook','torch','tensorflow','matplotlib','onnx'],
     noarchive=False)
 pyz=PYZ(a.pure)
 exe=EXE(pyz,a.scripts,[],exclude_binaries=True,name='VoxelMapperV3',debug=False,
