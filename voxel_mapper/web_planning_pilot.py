@@ -197,7 +197,9 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
         'surface_labels':0 if analysis is None else analysis['summary']['surface_labels'],
         **{k:0 if analysis is None else analysis['summary'].get(k,0) for k in
            ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
-            'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates')},
+            'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates',
+            'components_with_nominal_scale_trials','size_consistent_component_hypotheses',
+            'size_mismatched_component_hypotheses','unresolved_component_size_hypotheses')},
         'unattempted_document_links':len(web_report.get('unattempted_document_urls',[])),
         'unclassified_pages':sum(p['role']=='unclassified' for r in handoffs for p in r['pages']),
         'drawing_state_conflicts':sum(len(p['observed_states'])>1 for r in handoffs for p in r['pages'])}

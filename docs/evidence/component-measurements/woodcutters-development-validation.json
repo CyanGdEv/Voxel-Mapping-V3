@@ -1,0 +1,544 @@
+{
+  "analysis_contracts": [
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "ef49ddeabfd9cc5d88738e2c858e0f1821de02c9327ec1e5159e10a5f6250b6f",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "3ad826996ad3a98be339daa11553f1f7c259dc2ba875986906f85c10587a29b4"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 120164382,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "48e8db68d3dc4ed2c9c296590a8b97f27af59722943ea6e67af386007cad829e",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "3ad826996ad3a98be339daa11553f1f7c259dc2ba875986906f85c10587a29b4"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 92782127,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "723d7d42a33f5398985431be8b2710e7a7676a9a347ec7e5df9fd0214508e38f",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "3ad826996ad3a98be339daa11553f1f7c259dc2ba875986906f85c10587a29b4"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 76340212,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "23a29f7544a5a32a524f42aaad1c71c84e811ce3800a609a91ca247334fb6eaa",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "3ad826996ad3a98be339daa11553f1f7c259dc2ba875986906f85c10587a29b4"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_component_measurements": {
+          "basis": "module_file_bytes",
+          "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 70838899,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    }
+  ],
+  "application_reference": "SMD/2024/0136",
+  "collection_key": "90f7b4bdb4a21fe3f4efb4714d35f21f6531debbfee7152aad0d094c4d8400a8",
+  "component_diagnostics": [
+    {
+      "absolute_span_errors_m": [
+        0.06375312372545672,
+        0.19086334628545565
+      ],
+      "component_correspondence_verified": false,
+      "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "maximum_span_error_m": 0.19086334628545565,
+      "nominal_geometry_sha256": "c81c76b30047601e92fab84e5a1a0046125b2d8d2e235f3ca75f154fb34f1d41",
+      "nominal_length_pair_m": [
+        2.502153123725457,
+        12.001136653714545
+      ],
+      "note_evidence": [
+        {
+          "claim": {
+            "axes_verified": false,
+            "family": "container",
+            "height_supplied": false,
+            "length_pair_m": [
+              2.4384,
+              12.192
+            ],
+            "printed_count": 6,
+            "printed_units": [
+              "ft",
+              "ft"
+            ]
+          },
+          "count_agrees_with_printed_labels": true,
+          "document_sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+          "drawing_code": "ATFB-SA-DF-XX-DR-A-0301",
+          "drawing_code_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+          "drawing_code_sha256": "0d4d78f3756b778392d2467efca697b63af245390276bafaa4f7c039ec311920",
+          "glyph_screen_status": "raster_consistent_candidate",
+          "literal_reference_ids": [
+            "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+            "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+            "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+            "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+          ],
+          "note_id": "fba890ebdc8188f4e07a08f0faa8a9a2b5d8a7178089120a646d4ffe52d8d6c0",
+          "note_sha256": "631cc65d303d77abc5f4bfc2cd2744584eb8243d063098027c69348e4541bceb",
+          "note_text": "6 No. 8ft x 40ft Shipping containers.",
+          "page": 1
+        }
+      ],
+      "page": 1,
+      "physical_exterior_boundary_verified": false,
+      "physical_scale_verified": false,
+      "printed_length_pair_m": [
+        2.4384,
+        12.192
+      ],
+      "printed_scale_denominator": 100,
+      "source_component_id": "b3612bfd2f490759c4b44b6382dd40230bdba50195d60541f0727b0533200fcd",
+      "source_geometry_sha256": "e0392a97c34ba562436bcdf9cf5ccfb7f6c1fe4262275e55a49180a47e80b94a",
+      "status": "printed_size_pair_consistent_diagnostic"
+    },
+    {
+      "absolute_span_errors_m": [
+        0.06264495603424836,
+        0.18801333097410833
+      ],
+      "component_correspondence_verified": false,
+      "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "maximum_span_error_m": 0.18801333097410833,
+      "nominal_geometry_sha256": "02bde4ba00cf40e6a0031f29d99caac1e9f80dfeed360a767c50db114cac985c",
+      "nominal_length_pair_m": [
+        2.5010449560342485,
+        12.003986669025892
+      ],
+      "note_evidence": [
+        {
+          "claim": {
+            "axes_verified": false,
+            "family": "container",
+            "height_supplied": false,
+            "length_pair_m": [
+              2.4384,
+              12.192
+            ],
+            "printed_count": 6,
+            "printed_units": [
+              "ft",
+              "ft"
+            ]
+          },
+          "count_agrees_with_printed_labels": true,
+          "document_sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+          "drawing_code": "ATFB-SA-DF-XX-DR-A-0301",
+          "drawing_code_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+          "drawing_code_sha256": "0d4d78f3756b778392d2467efca697b63af245390276bafaa4f7c039ec311920",
+          "glyph_screen_status": "raster_consistent_candidate",
+          "literal_reference_ids": [
+            "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+            "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+            "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+            "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+          ],
+          "note_id": "fba890ebdc8188f4e07a08f0faa8a9a2b5d8a7178089120a646d4ffe52d8d6c0",
+          "note_sha256": "631cc65d303d77abc5f4bfc2cd2744584eb8243d063098027c69348e4541bceb",
+          "note_text": "6 No. 8ft x 40ft Shipping containers.",
+          "page": 1
+        }
+      ],
+      "page": 1,
+      "physical_exterior_boundary_verified": false,
+      "physical_scale_verified": false,
+      "printed_length_pair_m": [
+        2.4384,
+        12.192
+      ],
+      "printed_scale_denominator": 100,
+      "source_component_id": "ddd05d0196188372af56d03bd9daa75cf976202ed75321ec859dafd45032fb63",
+      "source_geometry_sha256": "04b73810cdb12470bd522fe13303b5557d7ff392c5f851fc320ce8a22ff98a11",
+      "status": "printed_size_pair_consistent_diagnostic"
+    },
+    {
+      "absolute_span_errors_m": [
+        0.06264197778258174,
+        0.8002185637420816
+      ],
+      "component_correspondence_verified": false,
+      "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "maximum_span_error_m": 0.8002185637420816,
+      "nominal_geometry_sha256": "cec9a2fd373e562f57582a51bffb30e1d93af396a1744ca6c07c961838c26658",
+      "nominal_length_pair_m": [
+        2.501041977782582,
+        11.391781436257919
+      ],
+      "note_evidence": [
+        {
+          "claim": {
+            "axes_verified": false,
+            "family": "container",
+            "height_supplied": false,
+            "length_pair_m": [
+              2.4384,
+              12.192
+            ],
+            "printed_count": 6,
+            "printed_units": [
+              "ft",
+              "ft"
+            ]
+          },
+          "count_agrees_with_printed_labels": true,
+          "document_sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+          "drawing_code": "ATFB-SA-DF-XX-DR-A-0301",
+          "drawing_code_id": "32517946ec4ffaf93d84535ec92f506764e713bcb7f390396fa0790ce2d2421b",
+          "drawing_code_sha256": "0d4d78f3756b778392d2467efca697b63af245390276bafaa4f7c039ec311920",
+          "glyph_screen_status": "raster_consistent_candidate",
+          "literal_reference_ids": [
+            "f6cee839ed56659e0945978e93ae22c174e1bb11bb2f2ce3b4fa1631ea3a2561",
+            "47a97d82a8816254683302b930a2051610b23911fa3ae1bd9246e7697781206d",
+            "1489c47e3b8fbcfc03555f984a3797dab5158ce99ad84da79bd5ee10a2385c27",
+            "da1b8a085f146e40db54fa337c4b1d11f85c2172d5af22401cf79726286afbdc"
+          ],
+          "note_id": "fba890ebdc8188f4e07a08f0faa8a9a2b5d8a7178089120a646d4ffe52d8d6c0",
+          "note_sha256": "631cc65d303d77abc5f4bfc2cd2744584eb8243d063098027c69348e4541bceb",
+          "note_text": "6 No. 8ft x 40ft Shipping containers.",
+          "page": 1
+        }
+      ],
+      "page": 1,
+      "physical_exterior_boundary_verified": false,
+      "physical_scale_verified": false,
+      "printed_length_pair_m": [
+        2.4384,
+        12.192
+      ],
+      "printed_scale_denominator": 100,
+      "source_component_id": "f5f8edd51dc80f877f3c5a3abef1f8cb9616492fc90dc0a3d6f0016f76346aa7",
+      "source_geometry_sha256": "ee8af8970cd872e639247be335391831545a2c1e895f3a765201fef1045276e0",
+      "status": "printed_size_pair_mismatch"
+    }
+  ],
+  "configured_memory_budget_mb": 16384,
+  "dataset_kind": "cached_previously_inspected_development_sources",
+  "diagnostic_tolerance_m": 0.25,
+  "height_m": null,
+  "implementation_bytes_verified_against_current_source": true,
+  "limitations": [
+    "The 0.25 m size-pair tolerance is a declared diagnostic policy, not physical accuracy",
+    "Structured drawing codes and literal sheet references do not verify component scope or reference marker semantics",
+    "Two size-consistent hypotheses remain unverified exterior building footprints; shortened third source boundary is not stretched",
+    "No source-supported height or cross-view correspondence; 3D preview withheld",
+    "Four raster elevation views, section extraction gap, 14 document analysis gaps, paths/plazas and park alignment remain unresolved",
+    "Previously inspected cached originals; no unseen-source generalization, physical Windows PC acceptance or independent real-building benchmark"
+  ],
+  "local_3d_components": 0,
+  "measurement_review_sha256": "3cc6dd9ad9fff87bd910144d65b4875b120bdb7faf8a5aa34dad12d8a4d6d044",
+  "model_weights_updated": false,
+  "network_bytes_first_run": 0,
+  "network_bytes_restart": 0,
+  "new_batches_first_run": 4,
+  "new_batches_restart": 0,
+  "output_receipt_sha256": "c62405433fb07a72017044968231ce4affce3c69197c523cdb2da8648e6706c3",
+  "peak_managed_memory_mb": 777.4765625,
+  "printed_size_note": "6 No. 8ft x 40ft Shipping containers.",
+  "status": "passed",
+  "summary": {
+    "building_outline_hints": 1,
+    "closed_source_outlines": 318,
+    "completed_batches": 4,
+    "completed_pages": 35,
+    "completed_sources": 20,
+    "component_boundary_candidates": 3,
+    "components_with_nominal_scale_trials": 3,
+    "documents_needing_analysis_review": 14,
+    "known_urls": 20,
+    "new_batches": 0,
+    "nominal_view_outlines": 255,
+    "path_plaza_outline_hints": 0,
+    "size_consistent_component_hypotheses": 2,
+    "size_mismatched_component_hypotheses": 1,
+    "source_outline_role_hints": 1,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unique_originals_handed_to_analysis": 14,
+    "unresolved_component_size_hypotheses": 0,
+    "unresolved_sources": 0,
+    "view_source_outlines": 255,
+    "visible_view_captions": 14
+  },
+  "training_labels_generated": 0,
+  "verified_output_files": 175,
+  "world_geometry_additions": 0
+}

@@ -14,11 +14,14 @@ from .desktop_planning_smoke import draw_component_fixture
 
 def seed(cache):
     with pymupdf.open() as document:
-        for text in ('Proposed Ground Floor Plan | 1:100','Existing Front Elevation'):
+        for index,text in enumerate(('Proposed Ground Floor Plan | 1:100','Proposed Front Elevation')):
             page=document.new_page(width=600,height=500)
             page.draw_rect((30,30,190,140));page.insert_text((50,80),'Footpath',fontsize=10)
             draw_component_fixture(page)
             page.insert_text((30,190),text,fontsize=10)
+            page.insert_text((30,450),'DEMO-AA-BB-CC-DR-A-'+('0201' if index==0 else '0301'),fontsize=8)
+            if index==0:page.insert_text((500,450),'0301',fontsize=8)
+            else:page.insert_text((30,240),'2 No. 2.1m x 3.5m Shipping containers.',fontsize=8)
         data=document.tobytes()
     class Response:
         status_code=200
@@ -54,6 +57,8 @@ def run(output):
             raise ValueError('Drawing page roles were lost')
         if result['summary'].get('component_boundary_candidates')!=2:
             raise ValueError('Automatic web planning lost fine component boundary candidates')
+        if result['summary'].get('size_consistent_component_hypotheses')!=2:
+            raise ValueError('Automatic web planning lost linked printed-size diagnostics')
         if hashlib.sha256((pack/'originals'/(sha+'.pdf')).read_bytes()).hexdigest()!=sha:
             raise ValueError('Original web PDF bytes changed')
         for name,pin in result['output_sha256'].items():
@@ -75,6 +80,7 @@ def run(output):
     receipt={'status':'passed','dataset_kind':'synthetic','job':job,
         'single_application_url_to_original_analysis':True,'page_roles_verified':True,
         'component_boundaries_verified':True,
+        'component_measurements_verified':True,
         'original_and_output_hashes_verified':True,'persistent_restart_verified':True,
         'public_network_assessed':False,'installed_model_inference_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}

@@ -67,3 +67,8 @@ This is development evidence from previously inspected cached originals, not an
 unseen-area benchmark or independent geometry truth. Paths/plazas, raster
 elevations and park placement remain unfinished. See the retained
 [collection and restart proof](evidence/component-footprints/woodcutters-development-validation.json).
+
+The following [measurement stage](planning-component-measurements.md) adds nominal
+plan previews and linked printed-size diagnostics. Two Woodcutters candidates
+agree with the printed size pair within the declared 0.25 m policy; the shortened
+third fails. Physical exterior-wall identity, height and placement remain unverified.

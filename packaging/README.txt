@@ -95,3 +95,10 @@ short source segments omitted by coarse discovery, without snapping or repairing
 gaps. Nested, shared, conflicting, hidden, obscured or holed boundaries remain
 withheld. These hypotheses require physical exterior-wall, state, height, scale
 and park-alignment checks before building reconstruction can accept them.
+
+Nominal component plans: open the component measurement review from planning
+review.html to inspect printed-scale trials and linked explicit size notes.
+The default 0.25 m span-comparison policy is diagnostic, not physical accuracy.
+Conflicting notes/scales, hidden text and frame/paper mismatches stay withheld.
+Missing source height and cross-view scope prevent a 3D building preview; two
+printed lengths are never treated as an automatic container height.
