@@ -9,6 +9,7 @@ import requests
 
 from . import web_evidence as web
 from .desktop_runtime import DesktopRuntime, _wait, write_json
+from .desktop_planning_smoke import draw_component_fixture
 
 
 def seed(cache):
@@ -16,6 +17,7 @@ def seed(cache):
         for text in ('Proposed Ground Floor Plan | 1:100','Existing Front Elevation'):
             page=document.new_page(width=600,height=500)
             page.draw_rect((30,30,190,140));page.insert_text((50,80),'Footpath',fontsize=10)
+            draw_component_fixture(page)
             page.insert_text((30,190),text,fontsize=10)
         data=document.tobytes()
     class Response:
@@ -50,6 +52,8 @@ def run(output):
             raise ValueError('Application link did not produce page-specific drawing analysis')
         if result['handoffs'][0]['page_roles']!={'1':'floor-plan','2':'elevation'}:
             raise ValueError('Drawing page roles were lost')
+        if result['summary'].get('component_boundary_candidates')!=2:
+            raise ValueError('Automatic web planning lost fine component boundary candidates')
         if hashlib.sha256((pack/'originals'/(sha+'.pdf')).read_bytes()).hexdigest()!=sha:
             raise ValueError('Original web PDF bytes changed')
         for name,pin in result['output_sha256'].items():
@@ -70,6 +74,7 @@ def run(output):
     finally:runtime.close(wait=True)
     receipt={'status':'passed','dataset_kind':'synthetic','job':job,
         'single_application_url_to_original_analysis':True,'page_roles_verified':True,
+        'component_boundaries_verified':True,
         'original_and_output_hashes_verified':True,'persistent_restart_verified':True,
         'public_network_assessed':False,'installed_model_inference_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}

@@ -64,3 +64,8 @@ four raster elevation views and the other section's extraction gap remain.
 See [final collection/restart development receipts](evidence/planning-semantics/woodcutters-development-validation.json).
 The source PDFs were previously inspected. The run is a cached development replay,
 not an unseen-area benchmark or a physical 6 GB Windows-PC acceptance test.
+
+The subsequent [fine component boundary pass](planning-component-footprints.md)
+retains short source segments in a bounded automatic search around visible
+component labels. It recovers separate boundary hypotheses without changing
+these coarse enclosure hints or accepting physical building geometry.

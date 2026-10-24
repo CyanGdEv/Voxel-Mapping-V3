@@ -1,0 +1,616 @@
+{
+  "analysis_contracts": [
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "ef49ddeabfd9cc5d88738e2c858e0f1821de02c9327ec1e5159e10a5f6250b6f",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "88eb60def38010e7097a3989551a15aca4c43398cffa0674421717282da302f8"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 120164382,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "7ddbcf84c87b56837bf924624eafbe402b9cdbae566f1fdfb63f39520000351e",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "88eb60def38010e7097a3989551a15aca4c43398cffa0674421717282da302f8"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 93160269,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "094be1923ae1f38460ff714c5730093cea5ffa7bd1ea8f14a7ca126175eba726",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "88eb60def38010e7097a3989551a15aca4c43398cffa0674421717282da302f8"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 76738379,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    },
+    {
+      "caption_version": "architectural-caption-layout-v4",
+      "config_sha256": "977272b649026579777e1b7b2ba4f1d73a0fdc634248f9cd1ec09ee4d399a3c6",
+      "implementations": {
+        "voxel_mapper.architectural_view_layout": {
+          "basis": "module_file_bytes",
+          "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+        },
+        "voxel_mapper.building_pdf_discovery": {
+          "basis": "module_file_bytes",
+          "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+        },
+        "voxel_mapper.building_raster_views": {
+          "basis": "module_file_bytes",
+          "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+        },
+        "voxel_mapper.drawing_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+        },
+        "voxel_mapper.drawing_page_tools": {
+          "basis": "module_file_bytes",
+          "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+        },
+        "voxel_mapper.drawing_view_candidates": {
+          "basis": "module_file_bytes",
+          "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+        },
+        "voxel_mapper.glyph_visibility": {
+          "basis": "module_file_bytes",
+          "sha256": "199b4ebca4b912e356c99ca9efad3581b7c6d675becc8286313e7c7b1b8ffb67"
+        },
+        "voxel_mapper.linework_boundaries": {
+          "basis": "module_file_bytes",
+          "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+        },
+        "voxel_mapper.ordinary_surfaces": {
+          "basis": "module_file_bytes",
+          "sha256": "99af85eef9baf77130715879f6b6f6fe74fcf7f8a4564854c9fd47d2aac6a2c2"
+        },
+        "voxel_mapper.planning_area_pilot": {
+          "basis": "module_file_bytes",
+          "sha256": "88eb60def38010e7097a3989551a15aca4c43398cffa0674421717282da302f8"
+        },
+        "voxel_mapper.planning_component_footprints": {
+          "basis": "module_file_bytes",
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+        },
+        "voxel_mapper.planning_outline_semantics": {
+          "basis": "module_file_bytes",
+          "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+        },
+        "voxel_mapper.planning_view_geometry": {
+          "basis": "module_file_bytes",
+          "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+        }
+      },
+      "limits": {
+        "max_document_bytes": 24000000,
+        "max_document_pages": 8,
+        "max_documents": 16,
+        "max_output_bytes": 71277630,
+        "max_pages": 32,
+        "render_edge_pixels": 1200
+      },
+      "pymupdf_version": "1.28.2",
+      "semantic_backends": {
+        "fonttools": "4.67.0",
+        "pymupdf": "1.28.2",
+        "shapely": "2.2.0"
+      },
+      "version": "planning-area-pilot-v1"
+    }
+  ],
+  "application_reference": "SMD/2024/0136",
+  "candidates": [
+    {
+      "geometry_sha256": "ee8af8970cd872e639247be335391831545a2c1e895f3a765201fef1045276e0",
+      "id": "f5f8edd51dc80f877f3c5a3abef1f8cb9616492fc90dc0a3d6f0016f76346aa7",
+      "label_id": "9cf1918d51778d108ce7091be3c1702309b55c063d4ef46a570449b668db515a",
+      "native_metrics": {
+        "area_square_pdf_points": 21496.905415757108,
+        "bounds_pdf_points": [
+          930.3599853515625,
+          737.941706847476,
+          1080.478036860732,
+          1067.52001953125
+        ],
+        "hole_count": 0,
+        "perimeter_pdf_points": 876.3295610018463
+      },
+      "physical_identity_verified": false,
+      "source_candidate_id": "3a6f94ba0dc6fad9c1edd6f58c7e433a47b9322b28fe52e3b12840c500006424",
+      "source_line_parent_references": 372,
+      "source_paint_references": 550,
+      "source_record_sha256": "5a8755b14f6034e70c5a6e6a62c08c415a78a15fa318855cc0287c93b9313459",
+      "text": "Container",
+      "world_placement_eligible": false
+    },
+    {
+      "geometry_sha256": "e0392a97c34ba562436bcdf9cf5ccfb7f6c1fe4262275e55a49180a47e80b94a",
+      "id": "b3612bfd2f490759c4b44b6382dd40230bdba50195d60541f0727b0533200fcd",
+      "label_id": "f8f2a59b421ba07f1227f0bf0289844fd00c048c0af2fea0668f8b0a5722eabb",
+      "native_metrics": {
+        "area_square_pdf_points": 23457.93522081268,
+        "bounds_pdf_points": [
+          550.6799926757812,
+          968.0400390625,
+          710.760009765625,
+          1314.6667844893711
+        ],
+        "hole_count": 0,
+        "perimeter_pdf_points": 939.2068293988802
+      },
+      "physical_identity_verified": false,
+      "source_candidate_id": "67b672093e7d0ddac669eca029596ec3700e5c05e41550b9643d0da424c78474",
+      "source_line_parent_references": 399,
+      "source_paint_references": 588,
+      "source_record_sha256": "66d0bb7a8b1f00fdef44dde595be788d34e85c362a240a0a68fef9d7c3018fa8",
+      "text": "Container",
+      "world_placement_eligible": false
+    },
+    {
+      "geometry_sha256": "04b73810cdb12470bd522fe13303b5557d7ff392c5f851fc320ce8a22ff98a11",
+      "id": "ddd05d0196188372af56d03bd9daa75cf976202ed75321ec859dafd45032fb63",
+      "label_id": "2313ebb8261cca8e06dd9d82f3e67039c8852829e0cf240522d4dc245b8a8700",
+      "native_metrics": {
+        "area_square_pdf_points": 23455.530322115163,
+        "bounds_pdf_points": [
+          642.5999755859375,
+          640.43994140625,
+          802.6799926757812,
+          987.1199951171875
+        ],
+        "hole_count": 0,
+        "perimeter_pdf_points": 939.4281386503562
+      },
+      "physical_identity_verified": false,
+      "source_candidate_id": "6e1ef0ceed91ff848418bedab11b0484499bdf6e0a31b5006549c03a0f224801",
+      "source_line_parent_references": 403,
+      "source_paint_references": 591,
+      "source_record_sha256": "0b3f6cba561e7b7bed62b0a0dbecdb817d99a0792bcc19ae91d3c2dca1cb7d6d",
+      "text": "Container",
+      "world_placement_eligible": false
+    }
+  ],
+  "collection_key": "7da6c8f16bdc5af536e6fe7c9c6aef35b7d5de1455a8dc78c30e69d631729200",
+  "configured_memory_budget_mb": 16384,
+  "dataset_kind": "cached_previously_inspected_development_sources",
+  "floor_page_evidence_sha256": "0e85ba6d92e303c2a0df898a1225c9ec5e942cf939af99795f06d3739bc09544",
+  "floor_plan": {
+    "boundary_decisions": [
+      {
+        "candidate_id": "3a6f94ba0dc6fad9c1edd6f58c7e433a47b9322b28fe52e3b12840c500006424",
+        "label_ids": [
+          "9cf1918d51778d108ce7091be3c1702309b55c063d4ef46a570449b668db515a"
+        ],
+        "reason": null,
+        "status": "source_component_boundary_hypothesis"
+      },
+      {
+        "candidate_id": "41b1e16f738d7d4ee9f13762e06855c5f23f63fd672f18a6a941a3bde6ace5a9",
+        "label_ids": [
+          "13dadc77cf78377a408d89d49975ae79d332ac59f8d0bebc0913f70cad4e2a32"
+        ],
+        "reason": "interior_rings_require_component_boundary_interpretation",
+        "status": "withheld"
+      },
+      {
+        "candidate_id": "67b672093e7d0ddac669eca029596ec3700e5c05e41550b9643d0da424c78474",
+        "label_ids": [
+          "f8f2a59b421ba07f1227f0bf0289844fd00c048c0af2fea0668f8b0a5722eabb"
+        ],
+        "reason": null,
+        "status": "source_component_boundary_hypothesis"
+      },
+      {
+        "candidate_id": "6e1ef0ceed91ff848418bedab11b0484499bdf6e0a31b5006549c03a0f224801",
+        "label_ids": [
+          "2313ebb8261cca8e06dd9d82f3e67039c8852829e0cf240522d4dc245b8a8700"
+        ],
+        "reason": null,
+        "status": "source_component_boundary_hypothesis"
+      }
+    ],
+    "covered_boundaries_withheld": 9,
+    "extraction": {
+      "candidates": 5356,
+      "curved_candidates": 4,
+      "geometry_types": {
+        "LineString": 5351,
+        "Polygon": 5
+      },
+      "raw_paths": 12285,
+      "region_native_points": [
+        390.00189208984375,
+        610.8665771484375,
+        1189.98486328125,
+        1606.589599609375
+      ],
+      "rejections": {
+        "A linearring requires at least 4 coordinates.": 5,
+        "Short line/symbol candidate": 42,
+        "Text glyph/annotation mask": 11,
+        "complete_primitive_crosses_region_boundary": 124,
+        "outside_region": 5176,
+        "unsupported_clipping_or_compositing_scope": 26
+      },
+      "retained_points": 10793,
+      "selected_paths": 7064,
+      "status": "unplaced_geometry_candidates",
+      "world_geometry_additions": 0
+    },
+    "extraction_options": {
+      "max_candidates": 10000,
+      "max_paths": 100000,
+      "max_scan_paths": 100000,
+      "max_total_points": 200000,
+      "min_line_length_points": 0.25,
+      "region_native_points": [
+        390.00189208984375,
+        610.8665771484375,
+        1189.98486328125,
+        1606.589599609375
+      ],
+      "regional_fallback": false
+    },
+    "fine_inventory_sha256": "eb2cdd8c6a37b3b8ce91ce715c8872c162880ea1c6c84b9e426561191ceaeea9",
+    "recovery": {
+      "counts": {
+        "curved_lines_deferred": 2,
+        "cut_edges": 446,
+        "dangles": 2328,
+        "intersection_pairs": 5709,
+        "invalid_rings": 0,
+        "recovered_faces": 157,
+        "segments": 5349,
+        "small_faces_deferred": 152,
+        "solid_straight_lines": 5349
+      },
+      "recovered_faces": 157,
+      "status": "enclosed_faces_only"
+    },
+    "search_margin_pdf_points": 144,
+    "search_region_pdf_native": [
+      390.00189208984375,
+      610.8665771484375,
+      1189.98486328125,
+      1606.589599609375
+    ],
+    "source_associations_sha256": "90e095a9778ee861471238fe46d70c483799904bbfed2080fd5422158371a9ba",
+    "source_inventory_sha256": "56e849e10a2add2c07dbb0f1d4df295b130a37a5fd2678359a8266879aee5ba5",
+    "summary": {
+      "component_boundary_candidates": 3,
+      "component_labels": 6,
+      "unresolved_component_labels": 3,
+      "visible_component_labels": 5
+    },
+    "version": "planning-component-boundaries-v1"
+  },
+  "implementation_bytes_verified_against_current_source": true,
+  "limitations": [
+    "Three unique source component boundary hypotheses; no verified physical building exteriors",
+    "Six Container labels: one glyph comparison withheld, one without enclosure, one in a face with interior rings",
+    "No supported path/plaza boundaries, raster elevation interpretation or geographic alignment",
+    "No reviewed training labels, model weights or park blocks created",
+    "Cached development sources, not unseen-source generalization or independent accuracy evidence",
+    "16 GB configured monitor limit; physical Windows PC RAM acceptance unassessed"
+  ],
+  "network_bytes_first_run": 0,
+  "network_bytes_restart": 0,
+  "new_batches_first_run": 4,
+  "new_batches_restart": 0,
+  "original_pdf_pins": [
+    {
+      "bytes": 3115375,
+      "sha256": "b344ab3cb85aa249525a9ff4afc71a1dac31c273a623186b72dee34c11927d05",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353041"
+    },
+    {
+      "bytes": 996422,
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+    },
+    {
+      "bytes": 1089394,
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+    },
+    {
+      "bytes": 889213,
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+    },
+    {
+      "bytes": 698616,
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "bytes": 570143,
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    },
+    {
+      "bytes": 476955,
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+    },
+    {
+      "bytes": 574030,
+      "sha256": "349ad3d15c760b3d7747bf7f065fa4d42b01ba24516f1ec6744369dd98338507",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353049"
+    },
+    {
+      "bytes": 1980775,
+      "sha256": "c52061cd8c263779fab215f8c4d97f7219ce77622c24a3a97b940bad896c68ff",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353036"
+    },
+    {
+      "bytes": 553059,
+      "sha256": "9837ac0f642e111ce3924da22f3c29aa64fc3e65bd104bb8cf7f5dd58c4405d8",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353037"
+    },
+    {
+      "bytes": 4019523,
+      "sha256": "5d1612eef20965c4b95dddc29f91758cb55a9e8de4d9c93df8fd6ba0658f3c8d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353038"
+    },
+    {
+      "bytes": 713803,
+      "sha256": "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039"
+    },
+    {
+      "bytes": 1486197,
+      "sha256": "bf25faf2f9c1f322a6cbc0f73ad321cdb1189019436b76e41eab5000192b9c22",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353040"
+    },
+    {
+      "bytes": 190425,
+      "sha256": "78d63f51a89cc84882d87a641c577d860eaf16d73c1de58dd356536abad66881",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353048"
+    },
+    {
+      "bytes": 182221,
+      "sha256": "c089684cad7dd747921aababad9d99fb4cf266eb2afd9c5b1aea9892e5887718",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354194"
+    },
+    {
+      "bytes": 227631,
+      "sha256": "28ba78317cdfed2e8bce9c03e5e1b4d5d300c3f3947f4fb552ced14f729263b6",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=354408"
+    },
+    {
+      "bytes": 252220,
+      "sha256": "17b0cf3114078ddd6745188c788e467a92d801f2e53f8dfdafdda67faffb1f1b",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356354"
+    },
+    {
+      "bytes": 317526,
+      "sha256": "a53faf41deffc306877d7e03b27dcbe0df7f4db3636c4b15815c6a8e9c2d6892",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356356"
+    },
+    {
+      "bytes": 522090,
+      "sha256": "5009eed9b7fa3d4e8d09dd4aada7c5488c2556865fc8b7c7d18bac99cc97d51c",
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357"
+    }
+  ],
+  "output_receipt_sha256": "9cd6591f00518bec0015f11c53a3562d5755dc23fee754c9411896be4497b7c5",
+  "peak_managed_memory_mb": 777.41015625,
+  "status": "passed",
+  "summary": {
+    "building_outline_hints": 1,
+    "closed_source_outlines": 318,
+    "completed_batches": 4,
+    "completed_pages": 35,
+    "completed_sources": 20,
+    "component_boundary_candidates": 3,
+    "documents_needing_analysis_review": 14,
+    "known_urls": 20,
+    "new_batches": 0,
+    "nominal_view_outlines": 255,
+    "path_plaza_outline_hints": 0,
+    "source_outline_role_hints": 1,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "unique_originals_handed_to_analysis": 14,
+    "unresolved_sources": 0,
+    "view_source_outlines": 255,
+    "visible_view_captions": 14
+  },
+  "verified_output_files": 165
+}

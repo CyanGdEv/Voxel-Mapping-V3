@@ -9,6 +9,18 @@ from .desktop_runtime import DesktopRuntime, _wait, write_json
 from .planning_area_pilot import VERSION
 
 
+def draw_component_fixture(page):
+    """Adjacent labelled faces made only of sub-12-point source segments."""
+    for x1,y1,x2,y2 in ((300,40,500,40),(300,100,500,100),
+                          (300,40,300,100),(400,40,400,100),(500,40,500,100)):
+        count=int(max(abs(x2-x1),abs(y2-y1))/5)
+        for i in range(count):
+            page.draw_line((x1+(x2-x1)*i/count,y1+(y2-y1)*i/count),
+                           (x1+(x2-x1)*(i+1)/count,y1+(y2-y1)*(i+1)/count))
+    page.insert_text((320,75),'Container',fontsize=8)
+    page.insert_text((420,75),'Container',fontsize=8)
+
+
 def run(output):
     root=Path(output).resolve()
     if root.exists(): raise ValueError('Fresh planning pilot smoke output required')
@@ -17,6 +29,7 @@ def run(output):
     with pymupdf.open() as document:
         page=document.new_page(width=600,height=500)
         page.draw_rect((30,30,190,140));page.insert_text((50,80),'Footpath',fontsize=10)
+        draw_component_fixture(page)
         page.insert_text((30,190),'Proposed Ground Floor Plan | 1:100',fontsize=10)
         page.insert_text((30,450),'Existing Front Elevation',fontsize=10)
         document.save(source)
@@ -41,6 +54,13 @@ def run(output):
             raise ValueError('Source-bound outline preview missing')
         if summary.get('path_plaza_outline_hints')!=1 or summary.get('source_outline_role_hints')!=1:
             raise ValueError('Visible source-label enclosure hint missing')
+        if summary.get('component_boundary_candidates')!=2:
+            raise ValueError('Fine linework did not recover two separate component boundaries')
+        page_evidence=json.loads((pack/result['pages'][0]['evidence_file']).read_text(encoding='utf-8'))
+        components=page_evidence['component_footprints']
+        if (not components['analysis_complete'] or len({r['source_outline']['candidate_id'] for r in components['candidates']})!=2
+                or any(r['physical_identity_verified'] or r['world_placement_eligible'] for r in components['candidates'])):
+            raise ValueError('Separate source components or acceptance boundaries changed')
         if summary['geometric_accuracy'] is not None or result['world_placement_eligible'] or result['training_labels_generated']:
             raise ValueError('Discovery supplied unverified accuracy, acceptance or labels')
         for name,pin in result['output_sha256'].items():
@@ -58,6 +78,7 @@ def run(output):
         'original_pdf_verified':hashlib.sha256(source.read_bytes()).hexdigest()==sha,
         'output_hashes_verified':True,'persistent_restart_verified':True,
         'source_label_hints_verified':True,
+        'component_boundaries_verified':True,
         'real_park_accuracy_assessed':False,'world_placement_eligible':False,
         'training_labels_generated':0,'model_promoted':False}
     write_json(root/'planning-pilot-smoke.json',receipt)
