@@ -39,7 +39,8 @@ class PlanningCollectionTests(unittest.TestCase):
         original=collection.collection_key(self.config)
         fingerprint=pilot.planning._implementation
         for module in (pilot.planning.drawing_geometry,pilot.planning.linework_boundaries,
-                       pilot.planning.drawing_page_tools):
+                       pilot.planning.drawing_page_tools,pilot.planning.planning_outline_semantics,
+                       pilot.planning.glyph_visibility):
             def changed(value):
                 return {'basis':'module_file_bytes','sha256':'f'*64} if value is module else fingerprint(value)
             with patch.object(pilot.planning,'_implementation',side_effect=changed):

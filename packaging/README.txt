@@ -82,3 +82,5 @@ from the top-level review.html. Exhausted retries and analysis/OCR limits stay
 visible. Collection does not establish exhaustive coverage or physical accuracy.
 
 Planning source outlines: Collect & analyse PDFs now retains unclassified closed outlines and bounded view-region geometry. Open review.html in Results, then Inspect extracted source outlines. Cyan and orange inventories can overlap; nominal paper-scale measurements are not verified physical dimensions or geographic registration.
+
+Source-label outline hints: green outlines in planning review.html show unique whole-label/source-enclosure associations. Shared Container labels identify one enclosure hint, not separate component footprints. Physical building/path identity, dimensions and geographic placement still require interpretation. No neural weights or reviewed training labels are created.

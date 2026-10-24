@@ -42,13 +42,14 @@ def contract(config):
         query=value['research'].get('query',''),prompt=prompt)
     value['analysis_options']=analysis
     value['development_exposure']=value.get('development_exposure','unassessed')
-    return {'version':VERSION,'scope':value,'pymupdf_version':pilot.pymupdf.VersionBind,'implementations':{
+    return {'version':VERSION,'scope':value,'pymupdf_version':pilot.pymupdf.VersionBind,
+        'semantic_backends':pilot.planning.planning_outline_semantics.BACKENDS,'implementations':{
         m.__name__:pilot.planning._implementation(m) for m in
         (sys.modules[__name__],pilot,pilot.planning,pilot.captions,web,web_research,
          pilot.planning.building_pdf_discovery,pilot.planning.ordinary_surfaces,pilot.planning.drawing_view_candidates,
          pilot.planning.planning_view_geometry,pilot.planning.drawing_geometry,
          pilot.planning.linework_boundaries,pilot.planning.drawing_page_tools,
-         pilot.planning.building_raster_views)}}
+         pilot.planning.building_raster_views,pilot.planning.planning_outline_semantics,pilot.planning.glyph_visibility)}}
 
 
 def collection_key(config):return digest(contract(config))
@@ -268,7 +269,8 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
             'completed_sources':sum(e['status']=='completed' for e in state['entries'].values()),
             'completed_pages':0,'unique_originals_handed_to_analysis':0,'visible_view_captions':0,
             'surface_labels':0,'surface_candidates':0,
-            'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0}
+            'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0,
+            'source_outline_role_hints':0,'building_outline_hints':0,'path_plaza_outline_hints':0}
         analysis_gaps={}
         for record,result in reports:
             for item in result['sources']:sources[item['requested_url']]=item
@@ -280,7 +282,8 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
                         'ocr_required':item.get('ocr_required',False),'batch':record['number']}
             for name in ('completed_pages','unique_originals_handed_to_analysis','visible_view_captions','surface_labels','surface_candidates'):
                 summary[name]+=result['summary'][name]
-            for name in ('closed_source_outlines','view_source_outlines','nominal_view_outlines'):
+            for name in ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
+                         'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints'):
                 summary[name]+=result['summary'].get(name,0)
         unresolved=[deepcopy(e) for e in state['entries'].values() if e['status']!='completed']
         summary['unresolved_sources']=len(unresolved)
@@ -289,6 +292,7 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
         body+=''.join('<li><a href="batches/batch-'+str(r['number']).zfill(4)+'/review.html">Batch '+str(r['number'])+' drawings and source gaps</a></li>' for r,_ in reports)
         body+='</ul><p>'+str(len(unresolved))+' unresolved sources. Stop: '+escape(stop)+'.</p>'
         body+='<p>'+str(summary['closed_source_outlines'])+' unclassified closed source outlines; '+str(summary['nominal_view_outlines'])+' outlines with nominal view measurements. These inventories may overlap. Physical identity, scale application and geographic placement remain unverified.</p><p><a href="ledger.json">Saved document queue</a></p>'
+        body+='<p>'+str(summary['source_outline_role_hints'])+' source-label enclosure hints ('+str(summary['building_outline_hints'])+' building-related; '+str(summary['path_plaza_outline_hints'])+' path/plaza-related). Open each batch for original-page overlays and exact label evidence.</p>'
         (root/'review.html').write_text('<!doctype html><html><meta charset="utf-8"><title>Planning collection</title><body>'+body+'</body></html>',encoding='utf-8')
         write_json(root/'ledger.json',state)
         result={'version':VERSION,'status':'known_documents_processed_with_reconstruction_gaps' if not unresolved and not state['queue_overflow'] and state['initial_done'] else 'planning_collection_with_source_gaps',
