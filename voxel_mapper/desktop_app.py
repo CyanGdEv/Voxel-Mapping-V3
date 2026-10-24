@@ -253,7 +253,7 @@ class DesktopWindow:
         ttk.Label(settings,text='Observed worker memory budget (MB)').grid(row=1,column=2,sticky='w')
         ttk.Spinbox(settings,from_=MIN_MEMORY_BUDGET_MB,to=MAX_MEMORY_BUDGET_MB,increment=256,textvariable=self.memory_budget,width=8).grid(row=1,column=3,sticky='w',padx=8)
         ttk.Button(settings,text='Apply',command=self._apply_settings).grid(row=1,column=4)
-        ttk.Label(settings,text='16 GB managed memory limit. Default: 2 CPU workers, one heavy job. Polling cancels over-budget jobs. Leave RAM for Windows and other apps.',wraplength=840).grid(row=2,column=0,columnspan=5,sticky='w')
+        ttk.Label(settings,text='16 GB managed limit; 2 CPU workers by default, one heavy job at a time. Leave RAM for Windows.',wraplength=840).grid(row=2,column=0,columnspan=5,sticky='w')
         settings.columnconfigure(1,weight=1)
         from .desktop_area import PRESETS
         tabs=ttk.Notebook(outer);tabs.pack(fill='x',pady=12)
@@ -303,10 +303,9 @@ class DesktopWindow:
         ttk.Entry(web,textvariable=self.web_application).grid(row=4,column=1,sticky='ew',padx=8,pady=2)
         self.web_planning_run=ttk.Button(web,text='Collect & analyse PDFs',command=lambda:self._submit_web(planning=True))
         self.web_planning_run.grid(row=4,column=2,sticky='e')
-        ttk.Label(web,text='Collect planning documents with saved progress and bounded retries. Review source gaps and drawing previews in Results.',wraplength=860).grid(row=5,column=0,columnspan=3,sticky='w',pady=(6,0))
-        ttk.Label(web,text='Select a completed planning job below to export its conditional models as separate flat Bedrock worlds.',wraplength=640).grid(row=6,column=0,columnspan=2,sticky='w',pady=(6,0))
+        ttk.Label(web,text='Collect PDFs, then select a completed planning job below to export its preview worlds.',wraplength=640).grid(row=5,column=0,columnspan=2,sticky='w',pady=(6,0))
         self.planning_world_export=ttk.Button(web,text='Export preview worlds',command=self._submit_planning_world_preview)
-        self.planning_world_export.grid(row=6,column=2,sticky='e',pady=(6,0))
+        self.planning_world_export.grid(row=5,column=2,sticky='e',pady=(6,0))
         web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
@@ -691,6 +690,20 @@ def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,sm
                 result['web_research_control_visible']=True
                 result['web_planning_control_visible']=True
                 result['planning_world_export_control_visible']=True
+                # A reachable button is insufficient if its source job cannot be
+                # selected. Exercise a real row after selecting the largest tab.
+                probe=window.jobs.insert('', 'end', values=('layout-check','planning_collection','completed','100%','Preview source'))
+                try:
+                    window.jobs.see(probe);root.update_idletasks()
+                    bounds=window.jobs.bbox(probe)
+                    if not bounds or bounds[1]+bounds[3]>window.jobs.winfo_height():
+                        raise ValueError('Planning job rows are clipped below the export controls')
+                    window.jobs.selection_set(probe)
+                    if probe not in window.jobs.selection():
+                        raise ValueError('Planning source job row cannot be selected')
+                    result['planning_job_row_visible_and_selectable']=True
+                finally:
+                    window.jobs.delete(probe)
                 try:
                     from PIL import ImageGrab
                     box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())
