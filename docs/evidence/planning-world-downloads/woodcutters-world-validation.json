@@ -1,0 +1,218 @@
+{
+  "status": "passed",
+  "dataset_kind": "previously_inspected_development_source",
+  "application_reference": "SMD/2024/0136",
+  "source_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353039",
+  "source_pdf_sha256": "4ba203887e6c0f005c361a4f385b50eb0603bcf0746c581342b5306a0a53da6d",
+  "source_page": 7,
+  "source_review_sha256": "8cf345e032b53fae091f38c655f950408168cd65719367b592a0b4458f59e94c",
+  "source_review_id": "03230f414257b0c14c1dcc6498e9203430b48e9e79f64d32ff6662c25091a5ae",
+  "source_review_unchanged": true,
+  "original_pdf_reanalysed_by_export": false,
+  "preview_worlds_exported": 2,
+  "worlds": [
+    {
+      "file": "Alton-Woodcutters-Clear-Gap-Preview.mcworld",
+      "bytes": 35066,
+      "sha256": "3ab5e63524379e2df92685371b3f38d20676f8eefc12ea6f225d5dbe4c34431f",
+      "spacing_interpretation": "clear_gap",
+      "alternative_id": "b71b496303511de6dbc66b9d68247187618083efcdbc81d1cc57edf3db61f1c9",
+      "source_spec_sha256": "696aa0fa2602962334a87aaa4a9f940324750451f460073cda98482323d0d717",
+      "source_nominal_extents_m": [
+        35.85,
+        13.05,
+        2.5
+      ],
+      "native_bounds_xyz": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          35,
+          2,
+          13
+        ]
+      ],
+      "native_surface_cells": 768,
+      "structural_review": {
+        "status": "needs_structural_review",
+        "reasons": [
+          "missing_declared_floor_anchor"
+        ]
+      },
+      "world": {
+        "blocks_per_metre": 1,
+        "chunks": 12,
+        "composed_blocks": 8568,
+        "explicit_air_cells": 0,
+        "file": "preview-000-clear-gap.mcworld",
+        "format": "Bedrock .mcworld",
+        "foundation": {
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+          "minecraft_y": 60,
+          "mode": "shared"
+        },
+        "geographic_elevation_m": null,
+        "ground_fill_depth_blocks": 4,
+        "horizontal_transform": {
+          "minecraft_x": "local model X",
+          "minecraft_z": "negative local model Y (depth); not surveyed north"
+        },
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ],
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "quality": "draft_unverified",
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "sha256": "3ab5e63524379e2df92685371b3f38d20676f8eefc12ea6f225d5dbe4c34431f",
+        "spawn": [
+          -4,
+          65,
+          -6
+        ],
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "vertical_offset_blocks": 66
+      },
+      "spawn_validation": {
+        "headroom_air_blocks": 2,
+        "metadata_verified": true,
+        "player_movement_verified": false,
+        "spawn": [
+          -4,
+          65,
+          -6
+        ],
+        "support": "grass_block",
+        "verified": true
+      },
+      "archive_validation": {
+        "chunks_reopened": 12,
+        "crc_verified": true,
+        "packaged_files_match_verified_world": true,
+        "saved_world_reopened": true,
+        "spawn_rechecked": true,
+        "verified_files": 12
+      }
+    },
+    {
+      "file": "Alton-Woodcutters-Row-Centres-Preview.mcworld",
+      "bytes": 35076,
+      "sha256": "fee718df004ab66d4d574e9dce879e6f356e1eac31acd430626228d153f6b6f7",
+      "spacing_interpretation": "row_centre_separation",
+      "alternative_id": "b658ac3f031409cca6556046df00e4bb74ccbb09725002860ef06490eba0e0df",
+      "source_spec_sha256": "0651168104ee519459065e1865e090ea2a0eb33dd92542d0b4a7e631e8ccaed4",
+      "source_nominal_extents_m": [
+        35.85,
+        10.55,
+        2.5
+      ],
+      "native_bounds_xyz": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          35,
+          2,
+          10
+        ]
+      ],
+      "native_surface_cells": 728,
+      "structural_review": {
+        "status": "needs_structural_review",
+        "reasons": [
+          "missing_declared_floor_anchor"
+        ]
+      },
+      "world": {
+        "blocks_per_metre": 1,
+        "chunks": 12,
+        "composed_blocks": 7748,
+        "explicit_air_cells": 0,
+        "file": "preview-001-row-centre-separation.mcworld",
+        "format": "Bedrock .mcworld",
+        "foundation": {
+          "method": "shared artificial terrain/lakebed foundation; not measured subsurface geology or bathymetry",
+          "minecraft_y": 60,
+          "mode": "shared"
+        },
+        "geographic_elevation_m": null,
+        "ground_fill_depth_blocks": 4,
+        "horizontal_transform": {
+          "minecraft_x": "local model X",
+          "minecraft_z": "negative local model Y (depth); not surveyed north"
+        },
+        "limitations": [
+          "Generic materials; solid building extrusion or DSM surface profile, not a detailed mesh",
+          "Artificial dry-land foundation; unmapped lake depths remain unknown",
+          "Outside mapped chunks Minecraft may generate unrelated terrain",
+          "This export has no automated in-game visual fidelity validation"
+        ],
+        "paving_composition": "mapped constituent materials beat assumed paving; accepted planning materials take precedence; higher structures remain intact",
+        "quality": "draft_unverified",
+        "round_trip_validation": "all written blocks and all unwritten air cells verified",
+        "sha256": "fee718df004ab66d4d574e9dce879e6f356e1eac31acd430626228d153f6b6f7",
+        "spawn": [
+          -4,
+          65,
+          -5
+        ],
+        "study_source_height_m": "(Minecraft Y minus vertical_offset_blocks) / 1",
+        "target_version": [
+          1,
+          21,
+          130
+        ],
+        "vertical_offset_blocks": 66
+      },
+      "spawn_validation": {
+        "headroom_air_blocks": 2,
+        "metadata_verified": true,
+        "player_movement_verified": false,
+        "spawn": [
+          -4,
+          65,
+          -5
+        ],
+        "support": "grass_block",
+        "verified": true
+      },
+      "archive_validation": {
+        "chunks_reopened": 12,
+        "crc_verified": true,
+        "packaged_files_match_verified_world": true,
+        "saved_world_reopened": true,
+        "spawn_rechecked": true,
+        "verified_files": 12
+      }
+    }
+  ],
+  "managed_peak_memory_mb": 302.0625,
+  "memory_cap_mb": 16384,
+  "verified_output_files": 10,
+  "conditional_local_flat_preview_only": true,
+  "physical_height_verified": false,
+  "ground_datum_verified": false,
+  "world_placement_eligible": false,
+  "park_world_blocks_added": 0,
+  "minecraft_import_and_gameplay_verified": false,
+  "training_labels_generated": 0,
+  "model_weights_updated": false,
+  "limitations": [
+    "The original two row-group models become sampled block surfaces with native rounding, not complete cabins.",
+    "2.5 m source height aliases to native cell Y -1 through 2; the native bounds are not measured physical height.",
+    "Canopy, openings, paths/plazas, real terrain and geographic alignment are not generated.",
+    "Native structural diagnostics retain missing_declared_floor_anchor; a preview platform does not supply physical floor evidence."
+  ]
+}

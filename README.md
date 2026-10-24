@@ -8,6 +8,8 @@ The [component measurement stage](docs/planning-component-measurements.md) produ
 
 [Conditional 3D design massing](docs/planning-design-massing.md) turns visible row-group dimensions and eaves heights into rotatable local previews and GLB models. Both meanings of ambiguous row spacing are retained; complete roofs, individual cabin identity and park placement remain unresolved.
 
+[Planning world downloads](docs/planning-world-downloads.md): select a completed planning job in the Windows app and choose **Export preview worlds**. This creates separate Bedrock `.mcworld` downloads for both spacing interpretations, with flat display terrain, supported spawn and saved-block/archive checks. These are local surface-envelope prototypes; canopy, openings, paths and surveyed park placement remain unresolved.
+
 The [fine component boundary stage](docs/planning-component-footprints.md) recovers individual source faces around visible container labels using short source segments that coarse discovery omits. Original-page overlays distinguish these hypotheses from accepted physical building exteriors; heights, map alignment and path boundaries remain unfinished.
 
 The [source-label outline stage](docs/planning-outline-semantics.md) links visible building/path/plaza role nouns to unique closed source enclosures, exposes shared-component and conflicting claims, and highlights supported associations on the original drawings. Physical identity remains unverified.
