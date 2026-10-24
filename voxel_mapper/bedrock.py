@@ -142,6 +142,10 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         raise ValueError('Model study scale must be 1 or 4')
     if model_scale != 1 and (report.get('crs') is not None or report.get('vertical_datum') != 'STUDY_ZERO'):
         raise ValueError('Enlarged studies cannot claim geographic coordinates or a survey datum')
+    horizontal = report.get('horizontal_transform', {'minecraft_x':'east','minecraft_z':'negative north'})
+    if (not isinstance(horizontal, dict) or set(horizontal) != {'minecraft_x','minecraft_z'}
+            or any(not isinstance(v, str) or not 1 <= len(v) <= 120 for v in horizontal.values())):
+        raise ValueError('Bounded explicit horizontal axis descriptions required')
     output = Path(output)
     world_path = output/'bedrock-world'
     package = output/'park.mcworld'
@@ -293,7 +297,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         if post_export_check is not None:
             post_export_check(world_path, y_offset, [spawn_x, top + 2, spawn_z])
         (world_path/'voxel-quality-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8',newline='\n')
-        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,'minecraft_z':'negative north','quality':'draft_unverified'},indent=2),encoding='utf-8',newline='\n')
+        (world_path/'voxel-georeferencing.json').write_text(json.dumps({'blocks_per_metre':model_scale,'crs':report.get('crs'),'vertical_offset_blocks':y_offset,**horizontal,'quality':'draft_unverified'},indent=2),encoding='utf-8',newline='\n')
         attribution = [f'Voxel Mapper 3.1 — draft, unverified reconstruction. {model_scale} blocks per source metre.']
         attribution += [f"{source['id']}: {source.get('attribution',source.get('license',''))} {source['url']}" for source in report.get('sources',[])]
         attribution += [source['attribution_url'] for source in report.get('sources',[]) if source.get('attribution_url')]
@@ -305,7 +309,7 @@ def export_world(voxel_path, output, report, name='Voxel Park', max_blocks=40_00
         with package.open('rb') as stream:
             checksum = hashlib.file_digest(stream,'sha256').hexdigest()
         return {'format':'Bedrock .mcworld','file':package.name,'target_version':list(VERSION),
-                'blocks_per_metre':model_scale,'horizontal_transform':{'minecraft_x':'east','minecraft_z':'negative north'},
+                'blocks_per_metre':model_scale,'horizontal_transform':horizontal,
                 'vertical_offset_blocks':y_offset,'geographic_elevation_m':('Minecraft Y minus vertical_offset_blocks' if report.get('crs') is not None else None),
                 'study_source_height_m':('(Minecraft Y minus vertical_offset_blocks) / '+str(model_scale) if report.get('vertical_datum')=='STUDY_ZERO' else None),
                 'spawn':[spawn_x,top+2,spawn_z], 'chunks':chunk_count,'composed_blocks':stored,'explicit_air_cells':air_cells,

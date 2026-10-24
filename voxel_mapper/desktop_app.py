@@ -22,6 +22,7 @@ JOB_KINDS = (
     ('Web research / cited source evidence', 'web_research'),
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
     ('Planning collection / automatic follow-up batches', 'planning_collection'),
+    ('Planning models / Bedrock preview worlds', 'planning_world_preview'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Inspect retained evidence', 'inspect_evidence'),
@@ -303,6 +304,9 @@ class DesktopWindow:
         self.web_planning_run=ttk.Button(web,text='Collect & analyse PDFs',command=lambda:self._submit_web(planning=True))
         self.web_planning_run.grid(row=4,column=2,sticky='e')
         ttk.Label(web,text='Collect planning documents with saved progress and bounded retries. Review source gaps and drawing previews in Results.',wraplength=860).grid(row=5,column=0,columnspan=3,sticky='w',pady=(6,0))
+        ttk.Label(web,text='Select a completed planning job below to export its conditional models as separate flat Bedrock worlds.',wraplength=640).grid(row=6,column=0,columnspan=2,sticky='w',pady=(6,0))
+        self.planning_world_export=ttk.Button(web,text='Export preview worlds',command=self._submit_planning_world_preview)
+        self.planning_world_export.grid(row=6,column=2,sticky='e',pady=(6,0))
         web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
@@ -478,13 +482,32 @@ class DesktopWindow:
             selected=self.jobs.selection()
             row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
             if not row or row.get('status')!='completed':raise ValueError('Select a completed area or world job first.')
-            if row.get('kind') not in ('area_pilot','world_pilot','alton_world','regenerate_corrections'):raise ValueError('Select a world generation job.')
+            if row.get('kind') not in ('area_pilot','world_pilot','alton_world','regenerate_corrections','planning_world_preview'):raise ValueError('Select a world generation job.')
+            if row.get('kind')=='planning_world_preview':
+                if name!='park.mcworld':raise ValueError('Use Open world to choose between the planning preview worlds.')
+                name='index.html'
             if row.get('kind')=='regenerate_corrections':
                 name={'park.mcworld':'corrected-native/park.mcworld','placement-comparison.svg':'geometry-comparison.svg'}[name]
             path=Path(row['output_directory'])/name
             if not path.is_file():raise ValueError('This job did not produce '+name+'. Inspect its results for missing evidence.')
             if os.name=='nt':os.startfile(str(path))
             else:self.status.set('Output: '+str(path))
+        except Exception as error:self._error(error)
+
+    def _submit_planning_world_preview(self):
+        try:
+            selected=self.jobs.selection()
+            row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
+            if (not row or row.get('status')!='completed' or row.get('kind') not in
+                    ('planning_source_pilot','web_planning_pilot','planning_collection')):
+                raise ValueError('Select a completed planning job below first.')
+            self.planning_world_export.state(['disabled'])
+            def queued(jid):
+                self.planning_world_export.state(['!disabled']);self.select_when_visible=str(jid)
+                self.status.set('Preview worlds queued; use Open world on the completed export to choose a download')
+            def failed(error):
+                self.planning_world_export.state(['!disabled']);self._error(error)
+            self._background(lambda:self.runtime.submit_planning_world_preview(row['id']),queued,failed)
         except Exception as error:self._error(error)
 
     def _open_job_folder(self):
@@ -532,7 +555,7 @@ class DesktopWindow:
                     f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
                     f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     f"Section/plan contextual pairs: {counts.get('section_plan_context_pairs',0)}; profiles with competing plans: {counts.get('profiles_with_multiple_plan_candidates',0)}. Open section-correspondence.html for evidence.\n"
-                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to rotate and inspect the spacing alternatives.\n"
+                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to inspect them, or use Export preview worlds in the Web research tab.\n"
                     'Open review.html in the Results folder to inspect the drawings and remaining blockers.\n'
                     'Building reconstruction, registered paths and real accuracy remain unfinished.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='web_research' and row.get('result'):
@@ -549,7 +572,7 @@ class DesktopWindow:
                     f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
                     f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     f"Section/plan contextual pairs: {counts.get('section_plan_context_pairs',0)}; profiles with competing plans: {counts.get('profiles_with_multiple_plan_candidates',0)}. Open section-correspondence.html for evidence.\n"
-                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to rotate and inspect the spacing alternatives.\n"
+                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to inspect them, or use Export preview worlds in the Web research tab.\n"
                     'Open review.html in Results folder for original drawings, page classifications and acquisition gaps.\n'
                     'Application membership and physical geometry remain unverified; no training labels or world changes were created.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='planning_collection' and row.get('result'):
@@ -563,9 +586,15 @@ class DesktopWindow:
                     f"Nominal component plans: {counts.get('components_with_nominal_scale_trials',0)}; printed-size consistent: {counts.get('size_consistent_component_hypotheses',0)}; mismatched: {counts.get('size_mismatched_component_hypotheses',0)}. Physical height remains unresolved.\n"
                     f"Unassigned nominal section profiles: {counts.get('nominal_section_profile_hypotheses',0)}; plan correspondence still required.\n"
                     f"Section/plan contextual pairs: {counts.get('section_plan_context_pairs',0)}; profiles with competing plans: {counts.get('profiles_with_multiple_plan_candidates',0)}. Open section-correspondence.html for evidence.\n"
-                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to rotate and inspect the spacing alternatives.\n"
+                    f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to inspect them, or use Export preview worlds in the Web research tab.\n"
                     'Open review.html in Results folder for all batch previews and the saved document queue.\n'
                     'Starting the same request resumes verified progress. Physical reconstruction remains unverified.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='planning_world_preview' and row.get('result'):
+                result=row['result']
+                detail=(f"Bedrock preview worlds: {len(result.get('worlds',[]))}. Use Open world to choose a spacing alternative.\n"
+                    'Each world contains source-linked row-group surface envelopes on an artificial flat platform at one block per metre.\n'
+                    'These are local prototype worlds. Roofs, openings, individual cabins and park alignment still need work.\n'
+                    'Saved blocks and the spawn beside the structures are checked; Minecraft gameplay has not been assessed.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='regenerate_corrections' and row.get('result'):
                 result=row['result'];comparison=result.get('benchmark',{})
                 summary='New corrected local model and native preview generated. Original geometry retained.\n'
@@ -654,13 +683,14 @@ def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,sm
                 result['primary_controls_visible']=True
                 notebook=window.web_run.master.master
                 notebook.select(window.web_run.master);root.update()
-                for widget in (window.web_run,window.web_planning_run):
+                for widget in (window.web_run,window.web_planning_run,window.planning_world_export):
                     x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
                     if (not widget.winfo_ismapped() or x<0 or y<0 or
                             x+widget.winfo_width()>root.winfo_width() or y+widget.winfo_height()>root.winfo_height()):
                         raise ValueError('Web research/planning button is hidden or clipped')
                 result['web_research_control_visible']=True
                 result['web_planning_control_visible']=True
+                result['planning_world_export_control_visible']=True
                 try:
                     from PIL import ImageGrab
                     box=(root.winfo_rootx(),root.winfo_rooty(),root.winfo_rootx()+root.winfo_width(),root.winfo_rooty()+root.winfo_height())

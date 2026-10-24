@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 from unittest.mock import patch
+import zipfile
 
 import pymupdf
 import requests
@@ -100,11 +101,46 @@ def run(output):
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')
+        first_alternative=massing['alternatives'][0]
+        pair=[row for row in massing['alternatives'] if all(row[key]==first_alternative[key]
+            for key in ('document_sha256','page','source_claim_id'))]
+        if len(pair)!=2:raise ValueError('Expected both spacing interpretations for the first source claim')
+        world_jid=runtime.submit_planning_world_preview(first['id'],alternative_ids=[row['id'] for row in pair])
+        preview_job=_wait(runtime,world_jid,timeout=120);runtime._futures[world_jid].result(timeout=10)
+        if preview_job['status']!='completed':
+            raise ValueError('Managed planning world export failed: '+str(preview_job.get('error')))
+        preview_result=preview_job['result'];preview_root=Path(preview_job['output_directory'])
+        if (preview_result.get('status')!='conditional_world_previews_exported'
+                or preview_result.get('world_placement_eligible')
+                or preview_result.get('training_labels_generated')!=0
+                or len(preview_result.get('worlds',[]))!=2
+                or not (preview_root/'index.html').is_file()):
+            raise ValueError('Planning preview worlds lost a rival or asserted physical placement')
+        if {row['spacing_interpretation'] for row in preview_result['worlds']}!={'clear_gap','row_centre_separation'}:
+            raise ValueError('Planning world export selected a single spacing interpretation')
+        spec_pins={row['spacing_interpretation']:row['spec_sha256'] for row in pair}
+        for world in preview_result['worlds']:
+            if (world['source_spec_sha256']!=spec_pins[world['spacing_interpretation']]
+                    or world.get('world_placement_eligible')
+                    or not world['spawn_validation']['verified']
+                    or not world['archive_validation']['crc_verified']
+                    or not world['archive_validation']['saved_world_reopened']
+                    or world['world']['round_trip_validation']!='all written blocks and all unwritten air cells verified'):
+                raise ValueError('Planning world lost its source specification, safe spawn or saved-world checks')
+            with zipfile.ZipFile(preview_root/world['file']) as archive:
+                names=archive.namelist()
+                if archive.testzip() is not None or 'level.dat' not in names or not any(name.startswith('db/') for name in names):
+                    raise ValueError('Planning world is not a valid root-level Bedrock archive')
+        for name,pin in preview_result['output_sha256'].items():
+            if hashlib.sha256((preview_root/name).read_bytes()).hexdigest()!=pin:
+                raise ValueError('Planning world output changed after validation')
     finally:runtime.close(wait=True)
     runtime=DesktopRuntime(root/'memory',workers=2,memory_budget_mb=2048)
     try:
         if runtime.store.job(first['id'])['result']['summary']!=result['summary']:
             raise ValueError('Collection history did not survive restart')
+        if runtime.store.job(preview_job['id'])['result']!=preview_result:
+            raise ValueError('Planning world export history did not survive restart')
         second=submit(runtime)
         if second['result']['summary']['new_batches']!=0 or second['result']['summary']['completed_pages']!=14:
             raise ValueError('Restart repeated completed drawing analysis')
@@ -123,6 +159,7 @@ def run(output):
             raise ValueError('Collection created reviewed labels or model checkpoints')
     finally:runtime.close(wait=True)
     receipt={'status':'passed','dataset_kind':'synthetic','first_job':first,'resumed_job':second,
+        'preview_world_job':preview_job,
         'multiple_automatic_batches_verified':True,'restart_without_reanalysis_verified':True,
         'original_and_output_hashes_verified':True,'network_bytes':result['network_bytes'],
         'source_label_hints_verified':True,
@@ -131,6 +168,9 @@ def run(output):
         'unassigned_section_profiles_verified':True,
         'section_correspondence_rivals_retained_verified':True,
         'conditional_design_massing_verified':True,
+        'planning_world_pair_export_verified':True,
+        'planning_world_archive_readback_and_spawn_verified':True,
+        'planning_world_history_survives_restart_verified':True,
         'public_network_assessed':False,'installed_model_quality_assessed':False,
         'training_labels_generated':0,'world_placement_eligible':False}
     write_json(root/'planning-collection-smoke.json',receipt)

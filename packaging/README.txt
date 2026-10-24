@@ -120,3 +120,15 @@ dimensions, and compare spacing alternatives. Each has a GLB model, source-linke
 specification and static SVG view. Local ground zero is assumed. These are group
 envelopes, not complete roofs, individually identified cabins or surveyed park
 placements. Extract the whole review folder so linked models remain available.
+
+Planning world downloads: select a completed planning source, web planning or
+collection job, then choose Export preview worlds. When the new export completes,
+select it and choose Open world. The page links both spacing alternatives as
+separate .mcworld downloads. Open a downloaded file with Minecraft Bedrock.
+These are Creative-mode surface-envelope prototypes on flat display terrain;
+canopy, individual cabins, openings, paths and surveyed placement remain absent.
+One block represents one source metre, with boundary rounding documented in the
+audit. Each saved world is read back and its archive and outside spawn checked.
+The target is Bedrock 1.21.130; Minecraft import and gameplay are not certified.
+At most eight worlds may be exported per job. Larger reviews can use an advanced
+planning_world_preview request selecting complete source-claim spacing pairs.

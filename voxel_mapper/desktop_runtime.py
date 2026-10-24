@@ -15,8 +15,8 @@ import uuid
 from .desktop_memory import MemoryStore, canonical, digest, source_separated_split
 
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
-       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
-HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
+       'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview'}
+HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview'}
 MAX_JSON_BYTES=16_000_000
 MIN_MEMORY_BUDGET_MB=512
 MAX_MEMORY_BUDGET_MB=16*1024
@@ -194,6 +194,27 @@ class DesktopRuntime:
         config=self.directory/'review-requests'/(uuid.uuid4().hex+'.json')
         write_json(config,{'feedback_path':str(path)})
         return self.submit('import_feedback',config)
+
+    def submit_planning_world_preview(self,completed_job_id,*,alternative_ids=None):
+        """Export pinned design alternatives to separate flat hypothesis worlds."""
+        from .planning_world_preview import VERSION,validate
+        try:job=self.store.job(completed_job_id)
+        except KeyError as error:raise ValueError('Select a completed planning job first') from error
+        if (job['status']!='completed' or job['kind'] not in
+                ('planning_source_pilot','web_planning_pilot','planning_collection')):
+            raise ValueError('Select a completed planning source, web planning or collection job first')
+        name='analysis/design-massing.json' if job['kind']=='web_planning_pilot' else 'design-massing.json'
+        root=Path(job['output_directory']).resolve();path=(root/name).resolve()
+        pin=(job.get('result') or {}).get('output_sha256',{}).get(name)
+        if (not path.is_relative_to(root) or not isinstance(pin,str) or len(pin)!=64
+                or not path.is_file() or path.stat().st_size>8_000_000 or file_hash(path)!=pin):
+            raise ValueError('Saved design massing review is missing or changed; run the planning analysis again')
+        config={'version':VERSION,'review_path':str(path),'review_sha256':pin}
+        if alternative_ids is not None:config['alternative_ids']=alternative_ids
+        validate(config)
+        request=self.directory/'planning-world-requests'/(uuid.uuid4().hex+'.json')
+        write_json(request,config)
+        return self.submit('planning_world_preview',request)
 
     def submit_regeneration(self,saved_review,*,world=True,benchmark_path=None):
         if type(world) is not bool:raise ValueError('World preview setting must be boolean')
@@ -435,7 +456,11 @@ def _worker(request):
         threading.Thread(target=watch_parent,name='voxel-parent-watch',daemon=True).start()
     if cancelled():raise CancelledError()
     progress({'progress':.03,'message':'Preparing '+kind})
-    if kind=='planning_collection':
+    if kind=='planning_world_preview':
+        from .planning_world_preview import run
+        config={**config,'review_path':str(resolve_path(config_path,config.get('review_path')))}
+        result=run(config,output,cancelled=cancelled,progress=progress)
+    elif kind=='planning_collection':
         from .planning_collection import run,collection_key
         memory_root=output.parents[2]
         result=run(config,output,memory_root/'web-cache',memory_root/'planning-collections'/collection_key(config),
