@@ -14,7 +14,7 @@ from .elevation_interpretation import caption
 from .architectural_graph import VERSION as GRAPH_VERSION
 from .numbered_elevation_captions import parse as numbered_caption
 
-VERSION='architectural-caption-layout-v3'
+VERSION='architectural-caption-layout-v4'
 
 
 def view_claim(text):
@@ -37,6 +37,19 @@ def view_claim(text):
     else:
         # Exact ordinary captions only. A title's existing/proposed claim stays
         # attached to that caption; surrounding prose and catalogue state do not.
+        relative=re.fullmatch(r"(?:(existing|proposed)\s+)?(front|rear|side)\s+elevation\.?(?:\s+(?:as\s+)?(existing|proposed))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
+        ordinary_section=re.fullmatch(r"(?:(existing|proposed)\s+)?section\s+([a-z]{1,2})\s*[-–]\s*\2(?:\s+(?:as\s+)?(existing|proposed))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
+        local=relative or ordinary_section
+        if local:
+            if local[1] and local[3] and local[1].lower()!=local[3].lower():return None
+            scale=int(local[4]) if local[4] else None
+            if scale is not None and not 1<=scale<=10000:return None
+            return {'kind':'view_caption','view_kind':'elevation' if relative else 'section',
+                'printed_state':(local[3] or local[1] or 'unspecified').lower(),
+                'printed_scale_denominator':scale,
+                'relative_facade':local[2].lower() if relative else None,
+                'section_identifier':local[2].upper() if ordinary_section else None,
+                'direction':None,'physical_orientation_verified':False}
         ordinary=re.fullmatch(r"(?:(existing|proposed)\s+)?(site|block|location|(?:ground|first|second)\s+floor|roof)\s+plan(?:\s+(?:as\s+)?(existing|proposed))?(?:\s+showing\s+([A-Za-z][A-Za-z0-9 -]{0,79}))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
         cardinal=re.fullmatch(r"(?:(existing|proposed)\s+)?(north(?:[ -]?(?:east|west))?|south(?:[ -]?(?:east|west))?|east|west)\s+elevation(?:\s+(?:as\s+)?(existing|proposed))?(?:\s*\|\s*1\s*:\s*(\d{1,5}))?",text.strip(),re.I)
         match=ordinary or cardinal

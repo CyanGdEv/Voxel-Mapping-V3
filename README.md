@@ -1,5 +1,10 @@
 ## Windows desktop and CPU learning
 
+The [original-drawing planning pilot](docs/planning-area-pilot.md) runs building
+view and paving-candidate discovery together, with a source review pack and
+explicit reconstruction blockers. A six-drawing Alton Woodcutters application
+manifest is included; original PDFs and checked reference geometry are separate.
+
 The [Windows desktop application](docs/windows-desktop-learning.md) runs world
 jobs in isolated background workers, remembers evidence and failures locally,
 and trains a small neural candidate ranker from independently reviewed feedback.

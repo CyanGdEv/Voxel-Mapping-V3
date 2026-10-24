@@ -1,0 +1,135 @@
+{
+  "recorded_at_utc": "2026-10-24T00:10:08.605352+00:00",
+  "application_reference": "SMD/2024/0136",
+  "application_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165",
+  "application_page_sha256": "11e0a666225fc3da6a1b22879ff937461dfe427400f62a5b261e1ddeff0e96e5",
+  "application_page_bytes": 74712,
+  "application_recovery": [
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165",
+      "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165"
+    },
+    {
+      "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=178165",
+      "status": "retrieved",
+      "rows": [
+        "28/03/2024 Ecologcal Appraisal <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353036');\">Ecologcal Appraisal</a>\n</td>\n</tr>",
+        "28/03/2024 Application Form <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353037');\">Application Form</a>\n</td>\n</tr>",
+        "28/03/2024 Arboricultural Report <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353038');\">Arboricultural Report</a>\n</td>\n</tr>",
+        "28/03/2024 Design and Access Statement <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353039');\">Design and Access Statement</a>\n</td>\n</tr>",
+        "28/03/2024 Heritage Statement <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353040');\">Heritage Statement</a>\n</td>\n</tr>",
+        "28/03/2024 Site Location Plan <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353041');\">Site Location Plan</a>\n</td>\n</tr>",
+        "28/03/2024 Existing Site Plan <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353042');\">Existing Site Plan</a>\n</td>\n</tr>",
+        "28/03/2024 Proposed Site Plan <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353043');\">Proposed Site Plan</a>\n</td>\n</tr>",
+        "28/03/2024 Proposed Floor Plan <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353044');\">Proposed Floor Plan</a>\n</td>\n</tr>",
+        "28/03/2024 Proposed Sections and Elevations <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353045');\">Proposed Sections and Elevations</a>\n</td>\n</tr>",
+        "28/03/2024 Existing Sections and Elevations <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353046');\">Existing Sections and Elevations</a>\n</td>\n</tr>",
+        "28/03/2024 No Dig Surfacing Detail <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353047');\">No Dig Surfacing Detail</a>\n</td>\n</tr>",
+        "28/03/2024 Tree Schedule <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353048');\"> Tree Schedule</a>\n</td>\n</tr>",
+        "28/03/2024 Tree Plan <tr>\n<td>28/03/2024</td>\n<td><a href=\"javascript:AppBlobImage('353049');\">Tree Plan</a>\n</td>\n</tr>",
+        "12/04/2024 Consultation Response Alton Parish Council <tr>\n<td>12/04/2024</td>\n<td><a href=\"javascript:AppBlobImage('354194');\">Consultation Response Alton Parish Council</a>\n</td>\n</tr>",
+        "17/04/2024 Consultation Response SMDC EH <tr>\n<td>17/04/2024</td>\n<td><a href=\"javascript:AppBlobImage('354408');\">Consultation Response SMDC EH</a>\n</td>\n</tr>",
+        "31/05/2024 Consultation Response Arboricultural Officer <tr>\n<td>31/05/2024</td>\n<td><a href=\"javascript:AppBlobImage('356354');\">Consultation Response Arboricultural Officer</a>\n</td>\n</tr>",
+        "31/05/2024 Report <tr>\n<td>31/05/2024</td>\n<td><a href=\"javascript:AppBlobImage('356356');\">Report</a>\n</td>\n</tr>",
+        "31/05/2024 Decision <tr>\n<td>31/05/2024</td>\n<td><a href=\"javascript:AppBlobImage('356357');\">Decision</a>\n</td>\n</tr>"
+      ]
+    }
+  ],
+  "existing_pin_recovery": [
+    {
+      "title": "Existing Site Plan",
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+      "state": "existing",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+        }
+      ],
+      "status": "verified_original",
+      "bytes": 996422,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+    },
+    {
+      "title": "Proposed Site Plan",
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+      "state": "proposed",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+        }
+      ],
+      "status": "verified_original",
+      "bytes": 1089394,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+    },
+    {
+      "title": "Existing Sections and Elevations",
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+      "state": "existing",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+        }
+      ],
+      "status": "verified_original",
+      "bytes": 570143,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    }
+  ],
+  "additional_original_downloads": [
+    {
+      "title": "Proposed Floor Plan",
+      "role": "floor-plan",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+        }
+      ],
+      "status": "observed_original_download",
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "bytes": 889213,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+    },
+    {
+      "title": "Proposed Sections and Elevations",
+      "role": "elevation",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+        }
+      ],
+      "status": "observed_original_download",
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "bytes": 698616,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "title": "No Dig Surfacing Detail",
+      "role": "detail",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+      "attempts": [
+        {
+          "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+          "error": "503 Server Error: Service Unavailable for url: https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+        }
+      ],
+      "status": "observed_original_download",
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "bytes": 476955,
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+    }
+  ],
+  "new_hashes_are_observations": true,
+  "physical_accuracy_verified": false,
+  "original_pdfs_bundled_in_repository": false
+}

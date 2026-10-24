@@ -1,0 +1,439 @@
+{
+  "area_id": "alton-woodcutters-facilities",
+  "benchmark": {
+    "development_exposure": "previously_inspected",
+    "reference_geometry_generated_from_predictions": false,
+    "required_families": [
+      "buildings",
+      "paths_and_plazas"
+    ],
+    "requirements": [
+      "source_bound_component_identities",
+      "drawing_state_and_current_state",
+      "footprints_heights_and_openings",
+      "surveyed_positions_and_finished_levels",
+      "surface_boundaries_entrances_and_expected_connections"
+    ],
+    "status": "awaiting_separate_checked_reference_inventory",
+    "unseen_source_generalisation": "not_assessed"
+  },
+  "contract": {
+    "caption_version": "architectural-caption-layout-v4",
+    "config_sha256": "433016dcd3b5cd535842505125acde33ffc5b20b602fa085b7ef1d2b3fabbfcf",
+    "implementations": {
+      "voxel_mapper.architectural_view_layout": {
+        "basis": "module_file_bytes",
+        "sha256": "fe38a5c7502009f1e6ddeb29b369f74a88c7ff4d401c492a591c4fab7749ae83"
+      },
+      "voxel_mapper.building_pdf_discovery": {
+        "basis": "module_file_bytes",
+        "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+      },
+      "voxel_mapper.drawing_view_candidates": {
+        "basis": "module_file_bytes",
+        "sha256": "d1244dd7666392a973d78bbe11e5d93bc728c682905fd3fb485415908042ec86"
+      },
+      "voxel_mapper.ordinary_surfaces": {
+        "basis": "module_file_bytes",
+        "sha256": "332150a26e79ed697af3df5effb5d3699020bedeb49072822bf9bcfa8599ebe4"
+      },
+      "voxel_mapper.planning_area_pilot": {
+        "basis": "module_file_bytes",
+        "sha256": "da445d0e80741b77d3a6eab5d5fb39639b7710196b39666e44a6203e5643700c"
+      }
+    },
+    "limits": {
+      "max_document_bytes": 24000000,
+      "max_document_pages": 8,
+      "max_documents": 16,
+      "max_output_bytes": 128000000,
+      "max_pages": 32,
+      "render_edge_pixels": 1200
+    },
+    "pymupdf_version": "1.28.2",
+    "version": "planning-area-pilot-v1"
+  },
+  "documents": [
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "existing",
+      "role": "site-plan",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "status": "original_pdf_inspected",
+      "title": "Existing Site Plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353042"
+    },
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "proposed",
+      "role": "site-plan",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "status": "original_pdf_inspected",
+      "title": "Proposed Site Plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353043"
+    },
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "existing",
+      "role": "elevation",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "status": "original_pdf_inspected",
+      "title": "Existing Sections and Elevations",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353046"
+    },
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "proposed",
+      "role": "floor-plan",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "status": "original_pdf_inspected",
+      "title": "Proposed Floor Plan",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353044"
+    },
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "proposed",
+      "role": "elevation",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "status": "original_pdf_inspected",
+      "title": "Proposed Sections and Elevations",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353045"
+    },
+    {
+      "application_reference": "SMD/2024/0136",
+      "completed_pages": 1,
+      "drawing_state": "unknown",
+      "role": "detail",
+      "selected_pages": [
+        1
+      ],
+      "sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "status": "original_pdf_inspected",
+      "title": "No Dig Surfacing Detail",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=353047"
+    }
+  ],
+  "model_promoted": false,
+  "output_sha256": {
+    "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526-page-1.json": "1eb9313255921767966a33154a12001f1e7889e27f8476918ce912b588d77926",
+    "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526-page-1.png": "3f52b2393a3f488f8597220a90ded64bced4c1e7ab44a4961cb2cae944f4a1ad",
+    "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718-page-1.json": "ed92669f8f2a14832bb184ff2519235c740ba7c5bc2aa7d96c4a0e020ef4cb13",
+    "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718-page-1.png": "b2e1390724d4fb55dab5d3c550158bd7cbcf2cf29e8f942b6b8d4c697e5f8b3c",
+    "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d-page-1.json": "5b3899e489a22b550e29bc56f50d6eadbd37ee1ed9ea20b88f2e9bf3fb093e07",
+    "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d-page-1.png": "8dc791f000c301d88c0537048184bf10861d9fc40ec964caacd2a53f63ca0048",
+    "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534-page-1.json": "2bbade8cedd6e73d769b185e3634b4f9bf5c1f540953c75211b5cbe26e61cdb2",
+    "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534-page-1.png": "4461cd143488ebf6eec7d70ed9dd0021659ec2a45cba6367da79629c9e659e7f",
+    "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0-page-1.json": "81282382254da3cc87c1448ec2f233f814df50a3461cfe8b7b46ef7e5449351c",
+    "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0-page-1.png": "e7a49e5497acaf544508f0f2f0fdd17cbc7849c01555f937a47094f0dac744fa",
+    "config.json": "88000ceb0a981eacde72f9a4a392eef6cc3b6fbe8e5e538b0457cefe18ce9739",
+    "contract.json": "e22fdda087559598f0a1725b810f89da2a93eedee69a7d0545b662691d2f4185",
+    "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b-page-1.json": "7d3de84814ff5d0182d54be3d534c4dda9415d3cb28197aeed6a52366aa3f60a",
+    "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b-page-1.png": "a448a623531fa6aa802aa328b022e01bf5ab8b2a5bbe90280df887f614cc4ead",
+    "reference-requirements.json": "51c2b4895e4942fbd6b8d6ec649528b020607d33827d0a9e843de0497757ab05",
+    "review.html": "d83e2b77cd8b3f34effc65e8cdfc77ed5c13419cd704ab979cfe8bcd2e4e3d67"
+  },
+  "page_blocker_counts": {
+    "complete_geometry_extraction_required": 3,
+    "complete_source_topology_required": 1,
+    "cross_view_component_correspondence_unresolved": 3,
+    "current_as_built_state_unverified": 6,
+    "finished_levels_unresolved": 6,
+    "geographic_registration_unresolved": 6,
+    "independent_reference_inventory_missing": 6,
+    "no_supported_contained_surface_boundaries": 1,
+    "physical_view_scope_unverified": 3,
+    "surface_boundary_role_and_scope_unverified": 1
+  },
+  "pages": [
+    {
+      "captions": [],
+      "document_sha256": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d",
+      "evidence_file": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d-page-1.png",
+        "sha256": "8dc791f000c301d88c0537048184bf10861d9fc40ec964caacd2a53f63ca0048",
+        "size_pixels": [
+          1200,
+          848
+        ]
+      },
+      "preview_file": "a03a63b4705fbbe871f1bf2dce63dd42833aec6c888a8761d1da7ee8826eec3d-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing",
+          "complete_geometry_extraction_required",
+          "surface_boundary_role_and_scope_unverified",
+          "no_supported_contained_surface_boundaries"
+        ],
+        "geometry_status": "complete_geometry_extraction_required",
+        "printed_view_states": [],
+        "sheet_title_claims": 2,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {
+          "withheld_no_enclosure": 20
+        },
+        "surface_labels": 20,
+        "view_candidates": 0,
+        "visible_view_captions": 0,
+        "visible_view_kinds": {}
+      }
+    },
+    {
+      "captions": [],
+      "document_sha256": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b",
+      "evidence_file": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b-page-1.png",
+        "sha256": "a448a623531fa6aa802aa328b022e01bf5ab8b2a5bbe90280df887f614cc4ead",
+        "size_pixels": [
+          1200,
+          848
+        ]
+      },
+      "preview_file": "e2dbde06a95ffb64f3e7cd3fab7e92ba59847cabf5375f9e27939ac4c42af49b-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing",
+          "complete_geometry_extraction_required"
+        ],
+        "geometry_status": "complete_geometry_extraction_required",
+        "printed_view_states": [],
+        "sheet_title_claims": 2,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {},
+        "surface_labels": 0,
+        "view_candidates": 0,
+        "visible_view_captions": 0,
+        "visible_view_kinds": {}
+      }
+    },
+    {
+      "captions": [
+        "Existing Front Elevation",
+        "Existing Rear Elevation",
+        "Existing Side Elevation.",
+        "Existing Side Elevation",
+        "Existing Section A-A",
+        "Existing Section B-B"
+      ],
+      "document_sha256": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718",
+      "evidence_file": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718-page-1.png",
+        "sha256": "b2e1390724d4fb55dab5d3c550158bd7cbcf2cf29e8f942b6b8d4c697e5f8b3c",
+        "size_pixels": [
+          1200,
+          848
+        ]
+      },
+      "preview_file": "66c9db8556549251e7fce2c1c7177cdc39895210441add5f0c6803564031e718-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing",
+          "complete_source_topology_required",
+          "physical_view_scope_unverified",
+          "cross_view_component_correspondence_unresolved"
+        ],
+        "geometry_status": "complete_source_topology_required",
+        "printed_view_states": [
+          "existing"
+        ],
+        "sheet_title_claims": 0,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {},
+        "surface_labels": 0,
+        "view_candidates": 6,
+        "visible_view_captions": 6,
+        "visible_view_kinds": {
+          "elevation": 4,
+          "section": 2
+        }
+      }
+    },
+    {
+      "captions": [
+        "Proposed Floor Plan",
+        "Proposed Ground Floor Plan"
+      ],
+      "document_sha256": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534",
+      "evidence_file": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534-page-1.png",
+        "sha256": "4461cd143488ebf6eec7d70ed9dd0021659ec2a45cba6367da79629c9e659e7f",
+        "size_pixels": [
+          1200,
+          848
+        ]
+      },
+      "preview_file": "a45d13ea9b21a324fbef4171d73fa5f874214c5a68865faf6b8b0371299ba534-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing",
+          "complete_geometry_extraction_required",
+          "physical_view_scope_unverified",
+          "cross_view_component_correspondence_unresolved"
+        ],
+        "geometry_status": "complete_geometry_extraction_required",
+        "printed_view_states": [
+          "proposed"
+        ],
+        "sheet_title_claims": 0,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {},
+        "surface_labels": 0,
+        "view_candidates": 0,
+        "visible_view_captions": 2,
+        "visible_view_kinds": {
+          "plan": 2
+        }
+      }
+    },
+    {
+      "captions": [
+        "Proposed Front Elevation",
+        "Proposed Rear Elevation",
+        "Proposed Side Elevation.",
+        "Proposed Side Elevation",
+        "Proposed Section A-A",
+        "Proposed Section B-B"
+      ],
+      "document_sha256": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0",
+      "evidence_file": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0-page-1.png",
+        "sha256": "e7a49e5497acaf544508f0f2f0fdd17cbc7849c01555f937a47094f0dac744fa",
+        "size_pixels": [
+          1200,
+          848
+        ]
+      },
+      "preview_file": "b3e3a7469b132d9ddc4f3a9bd5fe6addde9567d007ade58356ce49948c5c67a0-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing",
+          "physical_view_scope_unverified",
+          "cross_view_component_correspondence_unresolved"
+        ],
+        "geometry_status": "native_drawing_candidates_discovered",
+        "printed_view_states": [
+          "proposed"
+        ],
+        "sheet_title_claims": 0,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {},
+        "surface_labels": 0,
+        "view_candidates": 0,
+        "visible_view_captions": 6,
+        "visible_view_kinds": {
+          "elevation": 4,
+          "section": 2
+        }
+      }
+    },
+    {
+      "captions": [],
+      "document_sha256": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526",
+      "evidence_file": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526-page-1.json",
+      "page": 1,
+      "preview": {
+        "file": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526-page-1.png",
+        "sha256": "3f52b2393a3f488f8597220a90ded64bced4c1e7ab44a4961cb2cae944f4a1ad",
+        "size_pixels": [
+          1200,
+          849
+        ]
+      },
+      "preview_file": "3c60a2e976c93ffd7203e7aa154452e5f024fd3dd1229b2b90cc50b24a16d526-page-1.png",
+      "summary": {
+        "blockers": [
+          "geographic_registration_unresolved",
+          "finished_levels_unresolved",
+          "current_as_built_state_unverified",
+          "independent_reference_inventory_missing"
+        ],
+        "geometry_status": "native_drawing_candidates_discovered",
+        "printed_view_states": [],
+        "sheet_title_claims": 0,
+        "surface_candidates": 0,
+        "surface_connectivity_status": "not_assessed_unverified_surface_geometry",
+        "surface_label_statuses": {},
+        "surface_labels": 0,
+        "view_candidates": 0,
+        "visible_view_captions": 0,
+        "visible_view_kinds": {}
+      }
+    }
+  ],
+  "park_world_blocks_added": 0,
+  "source_blockers": [],
+  "status": "source_review_pack_generated_with_reconstruction_blockers",
+  "summary": {
+    "attempted_pages": 6,
+    "completed_pages": 6,
+    "geometric_accuracy": null,
+    "inspected_documents": 6,
+    "physical_component_coverage": null,
+    "reconstructed_buildings": 0,
+    "reconstruction_completed": false,
+    "registered_path_networks": 0,
+    "requested_documents": 6,
+    "surface_candidates": 0,
+    "surface_labels": 20,
+    "view_candidates": 6,
+    "visible_view_captions": 14
+  },
+  "training_labels_generated": 0,
+  "version": "planning-area-pilot-v1",
+  "world_placement_eligible": false
+}

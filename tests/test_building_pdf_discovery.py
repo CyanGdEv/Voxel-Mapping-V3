@@ -99,3 +99,37 @@ class PDFDiscoveryTests(unittest.TestCase):
             self.assertEqual(row['source_geometry'],[]);self.assertEqual(row['closed_source_faces'],[])
             self.assertEqual(row['status'],'complete_geometry_extraction_required')
         finally:doc.close()
+
+    def test_geometry_budget_failure_retains_original_caption_inventory_only(self):
+        doc=pymupdf.open();page=doc.new_page()
+        page.insert_text((30,100),'Existing Front Elevation',fontsize=10)
+        try:
+            with patch('voxel_mapper.building_pdf_discovery.extract_page',return_value=(
+                    [{'forged':'partial'}],{'status':'partial_candidate_budget'})):
+                row=discover_page(page,'a'*64,1)
+            self.assertEqual(row['status'],'complete_geometry_extraction_required')
+            self.assertEqual(row['source_geometry'],[])
+            self.assertEqual(row['closed_source_faces'],[])
+            layout=row['caption_layout']
+            self.assertEqual([v['text'] for v in layout['view_captions']],['Existing Front Elevation'])
+            self.assertEqual(layout['component_membership'],[])
+            self.assertEqual(layout['subgraph_membership'],[])
+            self.assertFalse(row['world_placement_eligible'])
+            self.assertFalse(layout['view_scope_verified'])
+        finally:doc.close()
+
+    def test_topology_failure_also_preserves_captions_without_partial_geometry(self):
+        original=__import__('voxel_mapper.building_pdf_discovery',fromlist=['build']).build
+        doc=pymupdf.open();page=doc.new_page();page.draw_rect((30,30,200,60))
+        page.insert_text((30,100),'Existing Section A-A',fontsize=10)
+        def fail_nonempty(parents):
+            return {'status':'withheld','reason':'intersection_budget'} if parents else original([])
+        try:
+            with patch('voxel_mapper.building_pdf_discovery.build',side_effect=fail_nonempty):
+                row=discover_page(page,'a'*64,1)
+            self.assertEqual(row['status'],'complete_source_topology_required')
+            self.assertEqual(row['source_geometry'],[])
+            self.assertEqual(row['counts']['view_captions'],1)
+            self.assertEqual(row['graph_review']['reason'],'intersection_budget')
+            self.assertEqual(row['caption_layout']['component_membership'],[])
+        finally:doc.close()
