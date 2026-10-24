@@ -46,7 +46,7 @@
         },
         "voxel_mapper.planning_component_footprints": {
           "basis": "module_file_bytes",
-          "sha256": "fc543c414748b5b9191c0ab17beefd7cce5f812c314dfa96aea6b511f50e2cf2"
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
         },
         "voxel_mapper.planning_outline_semantics": {
           "basis": "module_file_bytes",
@@ -119,7 +119,7 @@
         },
         "voxel_mapper.planning_component_footprints": {
           "basis": "module_file_bytes",
-          "sha256": "fc543c414748b5b9191c0ab17beefd7cce5f812c314dfa96aea6b511f50e2cf2"
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
         },
         "voxel_mapper.planning_outline_semantics": {
           "basis": "module_file_bytes",
@@ -148,7 +148,7 @@
     },
     {
       "caption_version": "architectural-caption-layout-v4",
-      "config_sha256": "9b34823c24c3e28652feabee5fa2f840a0c0191b2d1ef95fc0520aadd535d494",
+      "config_sha256": "094be1923ae1f38460ff714c5730093cea5ffa7bd1ea8f14a7ca126175eba726",
       "implementations": {
         "voxel_mapper.architectural_view_layout": {
           "basis": "module_file_bytes",
@@ -192,7 +192,7 @@
         },
         "voxel_mapper.planning_component_footprints": {
           "basis": "module_file_bytes",
-          "sha256": "fc543c414748b5b9191c0ab17beefd7cce5f812c314dfa96aea6b511f50e2cf2"
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
         },
         "voxel_mapper.planning_outline_semantics": {
           "basis": "module_file_bytes",
@@ -207,7 +207,7 @@
         "max_document_bytes": 24000000,
         "max_document_pages": 8,
         "max_documents": 16,
-        "max_output_bytes": 76738378,
+        "max_output_bytes": 76738379,
         "max_pages": 32,
         "render_edge_pixels": 1200
       },
@@ -221,7 +221,7 @@
     },
     {
       "caption_version": "architectural-caption-layout-v4",
-      "config_sha256": "c494fc4fab2980c6a6a9b3143e46191d296506397d3002a2fdac21597f9b8d53",
+      "config_sha256": "977272b649026579777e1b7b2ba4f1d73a0fdc634248f9cd1ec09ee4d399a3c6",
       "implementations": {
         "voxel_mapper.architectural_view_layout": {
           "basis": "module_file_bytes",
@@ -265,7 +265,7 @@
         },
         "voxel_mapper.planning_component_footprints": {
           "basis": "module_file_bytes",
-          "sha256": "fc543c414748b5b9191c0ab17beefd7cce5f812c314dfa96aea6b511f50e2cf2"
+          "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
         },
         "voxel_mapper.planning_outline_semantics": {
           "basis": "module_file_bytes",
@@ -280,7 +280,7 @@
         "max_document_bytes": 24000000,
         "max_document_pages": 8,
         "max_documents": 16,
-        "max_output_bytes": 71277629,
+        "max_output_bytes": 71277630,
         "max_pages": 32,
         "render_edge_pixels": 1200
       },
@@ -365,7 +365,7 @@
       "world_placement_eligible": false
     }
   ],
-  "collection_key": "bdce410ce5fea77fd583be7c2fa24d368e0a22d8c08a78884cdb48a82be332fe",
+  "collection_key": "7da6c8f16bdc5af536e6fe7c9c6aef35b7d5de1455a8dc78c30e69d631729200",
   "configured_memory_budget_mb": 16384,
   "dataset_kind": "cached_previously_inspected_development_sources",
   "floor_page_evidence_sha256": "0e85ba6d92e303c2a0df898a1225c9ec5e942cf939af99795f06d3739bc09544",
@@ -479,6 +479,7 @@
     },
     "version": "planning-component-boundaries-v1"
   },
+  "implementation_bytes_verified_against_current_source": true,
   "limitations": [
     "Three unique source component boundary hypotheses; no verified physical building exteriors",
     "Six Container labels: one glyph comparison withheld, one without enclosure, one in a face with interior rings",
@@ -588,8 +589,8 @@
       "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=356357"
     }
   ],
-  "output_receipt_sha256": "44390a26500d35dadec844c8e02104e0802916183d1999fdfd8285b4f9433d13",
-  "peak_managed_memory_mb": 776.796875,
+  "output_receipt_sha256": "9cd6591f00518bec0015f11c53a3562d5755dc23fee754c9411896be4497b7c5",
+  "peak_managed_memory_mb": 777.41015625,
   "status": "passed",
   "summary": {
     "building_outline_hints": 1,

@@ -23,6 +23,8 @@ source paint/visibility filters, one unique whole-label enclosure, one visible
 component label, consistent role/state claims, and no interior rings. Conflicting
 roles, legend labels, shared enclosures, nested competing outlines, hidden text,
 dashed dividers, obscured boundaries and interior rings remain explicit gaps.
+Known competing coarse enclosures remain withheld even when their complete
+paint primitives fall outside the fine scan; cropping cannot remove ambiguity.
 Native geometry, source record hashes, exact label/glyph evidence and original
 paint/line provenance accompany each candidate.
 

@@ -16,8 +16,9 @@ from voxel_mapper.building_spec import digest
 
 
 def fixture(*, divider=True, dashed=False, nested=False, conflict=None, hidden=False,
-            hole=False, covered_edge=False, short_outer=False, rotation=0, wide=False):
-    doc=pymupdf.open();page=doc.new_page(width=1100 if wide else 500,height=350)
+            hole=False, covered_edge=False, short_outer=False, rotation=0, wide=False,
+            distant_outer=False):
+    doc=pymupdf.open();page=doc.new_page(width=1100 if wide or distant_outer else 500,height=350)
     right=1000 if wide else 300
     def edge(a,b,short=False,dashes=None):
         count=int(max(abs(b[0]-a[0]),abs(b[1]-a[1]))/5) if short else 1
@@ -30,6 +31,7 @@ def fixture(*, divider=True, dashed=False, nested=False, conflict=None, hidden=F
     page.insert_text((500 if wide else 120,125),'Container',fontsize=8)
     if not wide:page.insert_text((220,125),'Container',fontsize=8)
     if nested:page.draw_rect((90,70,310,170))
+    if distant_outer:page.draw_rect((30,30,1000,300))
     if hole:
         for a,b in (((170,90),(185,90)),((185,90),(185,105)),
                     ((185,105),(170,105)),((170,105),(170,90))):edge(a,b)
@@ -86,6 +88,14 @@ class ComponentFootprintTests(unittest.TestCase):
         result,_,_=self.analyze(nested=True)
         self.assertEqual(result['candidates'],[])
         self.assertEqual(result['fine_associations']['summary']['label_statuses']['ambiguous_source_enclosures_withheld'],2)
+
+    def test_known_coarse_competing_enclosure_cannot_disappear_at_fine_scan_border(self):
+        result,_,coarse=self.analyze(distant_outer=True)
+        self.assertEqual(coarse['summary']['label_statuses']['ambiguous_source_enclosures_withheld'],2)
+        self.assertEqual(result['fine_associations']['summary']['associated_outline_hints'],2)
+        self.assertEqual(result['candidates'],[])
+        self.assertTrue(all(r['reason']=='coarse_competing_enclosures_require_interpretation'
+                            for r in result['boundary_decisions']))
 
     def test_conflicting_path_or_legend_context_withholds_the_affected_component(self):
         for conflict in ('Path','Legend'):

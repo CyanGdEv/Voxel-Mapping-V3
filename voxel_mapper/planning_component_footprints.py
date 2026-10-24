@@ -105,6 +105,7 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
     if not fine['inventory_complete']:return finish('fine_label_associations_incomplete')
     by_id={r['candidate_id']:r for r in fine_inventory['records']}
     label_by_id={r['id']:r for r in fine['labels']}
+    coarse_labels={r['id']:r for r in associations['labels']}
     for outline in fine['outlines']:
         check()
         decision={'candidate_id':outline['candidate_id'],'label_ids':outline['label_ids'],
@@ -115,6 +116,12 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         component=[label_by_id[k] for k in outline['label_ids']
                    if label_by_id[k]['claim']['scope']=='component']
         if len(component)!=1:continue
+        coarse_label=coarse_labels.get(component[0]['id'])
+        if coarse_label is None or coarse_label['status']=='ambiguous_source_enclosures_withheld':
+            # A focused scan can omit a larger competing enclosure whose paint
+            # crosses its border. Never resolve that known ambiguity by cropping.
+            decision['reason']='coarse_competing_enclosures_require_interpretation'
+            continue
         record=by_id[outline['candidate_id']]
         if shape(record['candidate']['geometry']).interiors:
             decision['reason']='interior_rings_require_component_boundary_interpretation'
