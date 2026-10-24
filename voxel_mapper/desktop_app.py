@@ -11,6 +11,8 @@ import shutil
 import sys
 import tempfile
 
+from .desktop_runtime import DEFAULT_MEMORY_BUDGET_MB, MAX_MEMORY_BUDGET_MB, MIN_MEMORY_BUDGET_MB
+
 JOB_KINDS = (
     ('World pilot from retained inputs', 'world_pilot'),
     ('Full Alton draft from retained inputs', 'alton_world'),
@@ -93,7 +95,7 @@ def learning_summary(snapshot):
     for reason in evaluation.get('reasons',[]):lines.append('Evaluation hold: '+reasons.get(reason,str(reason).replace('_',' ')))
     if latest.get('reason'):lines.append('Details: '+str(latest['reason']))
     lines.extend(['',f"CPU workers: {config.get('workers',2)}; heavy jobs at once: {config.get('heavy_jobs_at_once',1)}",
-                  f"Observed process memory budget: {config.get('memory_budget_mb',2048)} MB",
+                  f"Observed process memory budget: {config.get('memory_budget_mb',DEFAULT_MEMORY_BUDGET_MB)} MB",
                   'Memory and checkpoints remain available after the application closes.',
                   'The neural model ranks evidence candidates; it does not certify physical geometry.'])
     return '\n'.join(lines)
@@ -219,7 +221,7 @@ def check_pdf_helpers():
 
 class DesktopWindow:
     """Only the Tk event thread touches widgets; runtime calls use a UI queue."""
-    def __init__(self,root,data_directory,workers=2,memory_budget_mb=2048):
+    def __init__(self,root,data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB):
         import tkinter as tk
         from tkinter import ttk
         from .desktop_runtime import DesktopRuntime
@@ -248,9 +250,9 @@ class DesktopWindow:
         ttk.Label(settings,text='CPU workers').grid(row=1,column=0,sticky='w',pady=8)
         ttk.Spinbox(settings,from_=1,to=4,textvariable=self.workers,width=6).grid(row=1,column=1,sticky='w',padx=8)
         ttk.Label(settings,text='Observed worker memory budget (MB)').grid(row=1,column=2,sticky='w')
-        ttk.Spinbox(settings,from_=512,to=3072,increment=256,textvariable=self.memory_budget,width=8).grid(row=1,column=3,sticky='w',padx=8)
+        ttk.Spinbox(settings,from_=MIN_MEMORY_BUDGET_MB,to=MAX_MEMORY_BUDGET_MB,increment=256,textvariable=self.memory_budget,width=8).grid(row=1,column=3,sticky='w',padx=8)
         ttk.Button(settings,text='Apply',command=self._apply_settings).grid(row=1,column=4)
-        ttk.Label(settings,text='6 GB RAM default: 2 CPU workers, one heavy generation job at a time. Memory polling cancels over-budget jobs; it is not an OS reservation.',wraplength=980).grid(row=2,column=0,columnspan=5,sticky='w')
+        ttk.Label(settings,text='16 GB managed memory limit: 2 CPU workers, one heavy generation job at a time. Memory polling cancels over-budget jobs; it is not an OS reservation. Lower the budget to leave RAM for Windows and other apps.',wraplength=980).grid(row=2,column=0,columnspan=5,sticky='w')
         settings.columnconfigure(1,weight=1)
         from .desktop_area import PRESETS
         tabs=ttk.Notebook(outer);tabs.pack(fill='x',pady=12)
@@ -357,7 +359,7 @@ class DesktopWindow:
 
     def _create_runtime(self):
         path=Path(self.data_directory.get()).expanduser().resolve();workers=int(self.workers.get());budget=int(self.memory_budget.get())
-        if not 1<=workers<=4 or not 512<=budget<=3072:raise ValueError('Choose 1-4 CPU workers and 512-3072 MB of observed worker memory.')
+        if not 1<=workers<=4 or not MIN_MEMORY_BUDGET_MB<=budget<=MAX_MEMORY_BUDGET_MB:raise ValueError(f'Choose 1-4 CPU workers and {MIN_MEMORY_BUDGET_MB}-{MAX_MEMORY_BUDGET_MB} MB of observed worker memory.')
         self.runtime=self.runtime_factory(path,workers=workers,memory_budget_mb=budget)
         self.status.set('Ready - evidence and checkpoints persist in the data folder')
 
@@ -619,13 +621,13 @@ class DesktopWindow:
             self.dispatch.shutdown(wait=False,cancel_futures=True);self.root.destroy()
 
 
-def launch(data_directory,workers=2,memory_budget_mb=2048,smoke_output=None):
+def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,smoke_output=None):
     import tkinter as tk
     root=tk.Tk();window=DesktopWindow(root,data_directory,workers,memory_budget_mb)
     result=None
     if smoke_output is not None:
         smoke_output=Path(smoke_output);smoke_output.mkdir(parents=True,exist_ok=True)
-        result={'status':'passed','widgets_constructed':True,'screenshot':'unavailable'}
+        result={'status':'passed','widgets_constructed':True,'screenshot':'unavailable','memory_budget_mb':window.memory_budget.get()}
         def finish():
             try:
                 root.update_idletasks()
@@ -662,7 +664,7 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-dir',type=Path)
     parser.add_argument('--workers',type=int,default=2)
-    parser.add_argument('--memory-budget-mb',type=int,default=2048)
+    parser.add_argument('--memory-budget-mb',type=int,default=DEFAULT_MEMORY_BUDGET_MB,help=f'Observed managed-process memory limit in MB ({MIN_MEMORY_BUDGET_MB}-{MAX_MEMORY_BUDGET_MB}; default: {DEFAULT_MEMORY_BUDGET_MB}).')
     parser.add_argument('--self-test',action='store_true',help='Exercise persistent memory, worker jobs and neural learning without opening a window.')
     parser.add_argument('--check-dependencies',action='store_true',help='Exercise bundled native dependencies without a window.')
     parser.add_argument('--require-ocr-tools',action='store_true',help='Require functional English OCR and PDF helper executables in the dependency check.')
@@ -675,7 +677,7 @@ def main(argv=None):
     parser.add_argument('--planning-collection-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic follow-up batches and restart without reanalysis.')
     parser.add_argument('--runtime-worker',nargs=argparse.REMAINDER,help=argparse.SUPPRESS)
     args=parser.parse_args(argv)
-    if not 1<=args.workers<=4 or not 512<=args.memory_budget_mb<=3072:parser.error('Use 1-4 workers and 512-3072 MB observed worker memory.')
+    if not 1<=args.workers<=4 or not MIN_MEMORY_BUDGET_MB<=args.memory_budget_mb<=MAX_MEMORY_BUDGET_MB:parser.error(f'Use 1-4 workers and {MIN_MEMORY_BUDGET_MB}-{MAX_MEMORY_BUDGET_MB} MB observed worker memory.')
     if args.runtime_worker is not None:
         from .desktop_runtime import worker_main
         return worker_main(args.runtime_worker)
