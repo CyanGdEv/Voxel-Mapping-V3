@@ -1,0 +1,6577 @@
+{
+  "version": "study-context-transfer-development-validation-v1",
+  "status": "neural_benchmark_improved_equal_group_template_still_stronger",
+  "dataset": {
+    "records": 148,
+    "verified_original_pdf_identities": 23,
+    "connected_source_groups": 12,
+    "original_snapshot_unchanged": true,
+    "dataset_id": "4d57388dc2970979997b43690c01c174bb50d60f759090b805943b0bca19aa63",
+    "dataset_manifest_sha256": "031004626fa90f388f1ab8b8d6ea54bb9b6627189e59850b769a5298b564194a"
+  },
+  "models": {
+    "context": {
+      "version": "study-component-context-learning-v1",
+      "dataset_id": "4d57388dc2970979997b43690c01c174bb50d60f759090b805943b0bca19aa63",
+      "dataset_manifest_sha256": "031004626fa90f388f1ab8b8d6ea54bb9b6627189e59850b769a5298b564194a",
+      "model_artifact_sha256": "b8eb63c61668407c55c5d3e2b18f4301458f51e2ea7facff4e8799949c9c54e7",
+      "model_file_sha256": "1b28d9290904b707bebbe8e247b40b72d1b322ca1729b9f2cca1d22df449f4e9",
+      "report_file_sha256": "ad0c77b5667b1cbdbb2ce8219b671bd8dfcb944889e12d847d02f82d21f50fc9",
+      "verified_output_files": 298,
+      "records": 148,
+      "groups": 12,
+      "class_metrics": {
+        "accuracy": 0.05405405405405406,
+        "class_order": [
+          "archway",
+          "building",
+          "door",
+          "opening",
+          "path",
+          "paving_surface",
+          "planter",
+          "plaza",
+          "retaining_wall",
+          "rock",
+          "roof",
+          "structural_member",
+          "wall",
+          "window"
+        ],
+        "confusion": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            6,
+            1,
+            3,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            2,
+            2,
+            2,
+            0,
+            0,
+            21,
+            0,
+            23,
+            6,
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            4,
+            0,
+            0,
+            0,
+            0,
+            4,
+            1,
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            2,
+            1,
+            1,
+            0,
+            3,
+            1,
+            2,
+            0
+          ]
+        ],
+        "macro_f1": 0.030340883282059753,
+        "per_class": {
+          "archway": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "building": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 1,
+            "recall": 0.0,
+            "support": 3
+          },
+          "door": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 5
+          },
+          "opening": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 4
+          },
+          "path": {
+            "f1": 0.11764705882352941,
+            "precision": 0.10526315789473684,
+            "predicted": 19,
+            "recall": 0.13333333333333333,
+            "support": 15
+          },
+          "paving_surface": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 3
+          },
+          "planter": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 1
+          },
+          "plaza": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 25,
+            "recall": 0.0,
+            "support": 3
+          },
+          "retaining_wall": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 2
+          },
+          "rock": {
+            "f1": 0.09090909090909091,
+            "precision": 0.06666666666666667,
+            "predicted": 30,
+            "recall": 0.14285714285714285,
+            "support": 14
+          },
+          "roof": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 19,
+            "recall": 0.0,
+            "support": 7
+          },
+          "structural_member": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 8,
+            "recall": 0.0,
+            "support": 63
+          },
+          "wall": {
+            "f1": 0.21621621621621623,
+            "precision": 0.18181818181818182,
+            "predicted": 22,
+            "recall": 0.26666666666666666,
+            "support": 15
+          },
+          "window": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 11,
+            "recall": 0.0,
+            "support": 12
+          }
+        },
+        "records": 148
+      },
+      "old_16px_class_metrics": {
+        "accuracy": 0.06756756756756757,
+        "class_order": [
+          "archway",
+          "building",
+          "door",
+          "opening",
+          "path",
+          "paving_surface",
+          "planter",
+          "plaza",
+          "retaining_wall",
+          "rock",
+          "roof",
+          "structural_member",
+          "wall",
+          "window"
+        ],
+        "confusion": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3,
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            2,
+            4,
+            0,
+            0,
+            27,
+            2,
+            14,
+            8,
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            2,
+            3,
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            7,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        "macro_f1": 0.035236081747709654,
+        "per_class": {
+          "archway": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 1,
+            "recall": 0.0,
+            "support": 1
+          },
+          "building": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 3
+          },
+          "door": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 5
+          },
+          "opening": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 4
+          },
+          "path": {
+            "f1": 0.1212121212121212,
+            "precision": 0.1111111111111111,
+            "predicted": 18,
+            "recall": 0.13333333333333333,
+            "support": 15
+          },
+          "paving_surface": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 3
+          },
+          "planter": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "plaza": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 28,
+            "recall": 0.0,
+            "support": 3
+          },
+          "retaining_wall": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 6,
+            "recall": 0.0,
+            "support": 2
+          },
+          "rock": {
+            "f1": 0.09302325581395349,
+            "precision": 0.06896551724137931,
+            "predicted": 29,
+            "recall": 0.14285714285714285,
+            "support": 14
+          },
+          "roof": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 18,
+            "recall": 0.0,
+            "support": 7
+          },
+          "structural_member": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 63
+          },
+          "wall": {
+            "f1": 0.27906976744186046,
+            "precision": 0.21428571428571427,
+            "predicted": 28,
+            "recall": 0.4,
+            "support": 15
+          },
+          "window": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 12,
+            "recall": 0.0,
+            "support": 12
+          }
+        },
+        "records": 148
+      },
+      "mask_metrics": {
+        "binary_assessed_records": 148,
+        "mean_binary_dice": 0.5432493634045472,
+        "mean_binary_iou": 0.4381410468455015,
+        "mean_soft_dice": 0.5170934876449287,
+        "mean_soft_iou": 0.39746632348025895,
+        "mean_support_dice": 0.5486110520468628,
+        "mean_support_iou": 0.44295752265237215,
+        "records": 148,
+        "thin_target_records": 0
+      },
+      "training_only_mean_template": {
+        "binary_assessed_records": 148,
+        "mean_binary_dice": 0.43948459680583685,
+        "mean_binary_iou": 0.3079119030666865,
+        "mean_soft_dice": 0.4153515690045061,
+        "mean_soft_iou": 0.280264672104517,
+        "mean_support_dice": 0.44132858334023733,
+        "mean_support_iou": 0.308968702863026,
+        "records": 148,
+        "thin_target_records": 0
+      },
+      "settings": {
+        "epochs": 40,
+        "channels": 4,
+        "input_size": 64
+      },
+      "seconds": 91.77475269300157,
+      "managed_peak_mb": 88.31640625,
+      "history_survives_restart": true,
+      "active_ranker_unchanged": true,
+      "training": {
+        "batch_size": 4,
+        "channels": 4,
+        "class_balanced": true,
+        "context_decoder_updated": true,
+        "conv_filters_updated": true,
+        "epochs": 40,
+        "final_class_loss": 0.00935448681875611,
+        "final_loss": 0.18964916533676274,
+        "final_mask_loss": 0.13809771748537114,
+        "final_regularization_loss": 0.04219696103263549,
+        "initial_class_loss": 2.687712898208608,
+        "initial_loss": 3.2004829312614675,
+        "initial_mask_loss": 0.5100176426521672,
+        "initial_parameters_sha256": "1856e7067c6337875a20c8993162705f9f62f9d54f4fabae0bde1a5bc12e1881",
+        "initial_regularization_loss": 0.0027523904006924414,
+        "learning_rate": 0.005,
+        "mask_balancing_weights": {
+          "negative": 0.6709703939636876,
+          "positive": 1.9622414688539445
+        },
+        "mask_prior": "training_fold_mean_only",
+        "optimizer": "Adam",
+        "records": 148,
+        "regularization": 0.0001,
+        "seed": 0
+      },
+      "scope": "Provided-crop component class and source-trace mask proposal; not full-page discovery, physical geometry or park placement."
+    },
+    "transfer": {
+      "version": "study-pretrained-transfer-v1",
+      "dataset_id": "4d57388dc2970979997b43690c01c174bb50d60f759090b805943b0bca19aa63",
+      "dataset_manifest_sha256": "031004626fa90f388f1ab8b8d6ea54bb9b6627189e59850b769a5298b564194a",
+      "model_artifact_sha256": "93d279a5099adb516c292bf9386c40822d1cb12b3558d5af1616dd5247ff58cf",
+      "model_file_sha256": "74545b3ba783ea09b33998cc416155c0344739ecc97afbf9bb40973edc31c097",
+      "report_file_sha256": "54e5ca51c1616d0551f0bac778da4badc24149bf0878956a1cef5b2f407154d8",
+      "verified_output_files": 305,
+      "records": 148,
+      "groups": 12,
+      "class_metrics": {
+        "accuracy": 0.10135135135135136,
+        "class_order": [
+          "archway",
+          "building",
+          "door",
+          "opening",
+          "path",
+          "paving_surface",
+          "planter",
+          "plaza",
+          "retaining_wall",
+          "rock",
+          "roof",
+          "structural_member",
+          "wall",
+          "window"
+        ],
+        "confusion": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            4,
+            5,
+            1,
+            0,
+            1,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            7,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            5,
+            1,
+            2,
+            11,
+            0,
+            0,
+            4,
+            0,
+            6,
+            0,
+            0,
+            24,
+            10
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            7,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            11,
+            0
+          ]
+        ],
+        "macro_f1": 0.04538020163020163,
+        "per_class": {
+          "archway": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "building": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 7,
+            "recall": 0.0,
+            "support": 3
+          },
+          "door": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 5
+          },
+          "opening": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 4
+          },
+          "path": {
+            "f1": 0.0625,
+            "precision": 0.058823529411764705,
+            "predicted": 17,
+            "recall": 0.06666666666666667,
+            "support": 15
+          },
+          "paving_surface": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 1,
+            "recall": 0.0,
+            "support": 3
+          },
+          "planter": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "plaza": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 9,
+            "recall": 0.0,
+            "support": 3
+          },
+          "retaining_wall": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 6,
+            "recall": 0.0,
+            "support": 2
+          },
+          "rock": {
+            "f1": 0.3783783783783784,
+            "precision": 0.30434782608695654,
+            "predicted": 23,
+            "recall": 0.5,
+            "support": 14
+          },
+          "roof": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 7
+          },
+          "structural_member": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 63
+          },
+          "wall": {
+            "f1": 0.19444444444444442,
+            "precision": 0.12280701754385964,
+            "predicted": 57,
+            "recall": 0.4666666666666667,
+            "support": 15
+          },
+          "window": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 20,
+            "recall": 0.0,
+            "support": 12
+          }
+        },
+        "records": 148
+      },
+      "old_16px_class_metrics": {
+        "accuracy": 0.06756756756756757,
+        "class_order": [
+          "archway",
+          "building",
+          "door",
+          "opening",
+          "path",
+          "paving_surface",
+          "planter",
+          "plaza",
+          "retaining_wall",
+          "rock",
+          "roof",
+          "structural_member",
+          "wall",
+          "window"
+        ],
+        "confusion": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            3,
+            0,
+            7,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            2,
+            4,
+            0,
+            0,
+            27,
+            2,
+            14,
+            8,
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            2,
+            3,
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            1,
+            7,
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        "macro_f1": 0.035236081747709654,
+        "per_class": {
+          "archway": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 1,
+            "recall": 0.0,
+            "support": 1
+          },
+          "building": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 3
+          },
+          "door": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 5
+          },
+          "opening": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 2,
+            "recall": 0.0,
+            "support": 4
+          },
+          "path": {
+            "f1": 0.1212121212121212,
+            "precision": 0.1111111111111111,
+            "predicted": 18,
+            "recall": 0.13333333333333333,
+            "support": 15
+          },
+          "paving_surface": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 3,
+            "recall": 0.0,
+            "support": 3
+          },
+          "planter": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "plaza": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 28,
+            "recall": 0.0,
+            "support": 3
+          },
+          "retaining_wall": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 6,
+            "recall": 0.0,
+            "support": 2
+          },
+          "rock": {
+            "f1": 0.09302325581395349,
+            "precision": 0.06896551724137931,
+            "predicted": 29,
+            "recall": 0.14285714285714285,
+            "support": 14
+          },
+          "roof": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 18,
+            "recall": 0.0,
+            "support": 7
+          },
+          "structural_member": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 63
+          },
+          "wall": {
+            "f1": 0.27906976744186046,
+            "precision": 0.21428571428571427,
+            "predicted": 28,
+            "recall": 0.4,
+            "support": 15
+          },
+          "window": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "predicted": 12,
+            "recall": 0.0,
+            "support": 12
+          }
+        },
+        "records": 148
+      },
+      "mask_metrics": {
+        "binary_assessed_records": 148,
+        "mean_binary_dice": 0.4975946039550441,
+        "mean_binary_iou": 0.3714451771579153,
+        "mean_soft_dice": 0.4766683529677268,
+        "mean_soft_iou": 0.3446372642809637,
+        "mean_support_dice": 0.49849807698734844,
+        "mean_support_iou": 0.37111009494913344,
+        "records": 148,
+        "thin_target_records": 0
+      },
+      "training_only_mean_template": {
+        "binary_assessed_records": 148,
+        "mean_binary_dice": 0.43948459680583685,
+        "mean_binary_iou": 0.3079119030666865,
+        "mean_soft_dice": 0.4153515690045061,
+        "mean_soft_iou": 0.280264672104517,
+        "mean_support_dice": 0.44132858334023733,
+        "mean_support_iou": 0.308968702863026,
+        "records": 148,
+        "thin_target_records": 0
+      },
+      "settings": {
+        "ridge_alpha": 100.0,
+        "input_size": 64,
+        "frozen_encoder_sha256": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb"
+      },
+      "seconds": 25.485928801999762,
+      "managed_peak_mb": 168.37890625,
+      "history_survives_restart": true,
+      "active_ranker_unchanged": true,
+      "training": {
+        "bias_regularized": false,
+        "class_balanced": true,
+        "class_weighting": "n/(number_of_training_classes * training_class_count)",
+        "encoder_finetuned": false,
+        "encoder_weights_updated": false,
+        "final_class_loss": 0.0008661826963404738,
+        "final_loss": 0.0032828559798837665,
+        "final_mask_loss": 0.002416673283543293,
+        "head_weights_updated": true,
+        "initial_class_loss": 0.0663265306122449,
+        "initial_loss": 0.16964025696123314,
+        "initial_mask_loss": 0.10331372634898824,
+        "initial_parameters_sha256": "d382d4467ffb7ea1c1e8587d3b88f88226923d5c401c70239e838c2545c5a94b",
+        "loss_semantics": "Class-balanced mean squared one-hot error plus unweighted mean squared 16x16 mask coverage error; fitting statistics, not held-out quality.",
+        "optimizer": "weighted_dual_ridge_closed_form",
+        "records": 148,
+        "ridge_alpha": 100.0,
+        "ridge_convention": "alpha regularizes summed squared errors; intercept is weighted-centered and unregularized."
+      },
+      "scope": "Provided-crop component class and source-trace mask proposal; not full-page discovery, physical geometry or park placement."
+    }
+  },
+  "independent_statistics": {
+    "class_metrics": {
+      "context": {
+        "class_accuracy": 0.05405405405405406,
+        "correct_class_records": 8,
+        "macro_f1": 0.030340883282059753
+      },
+      "old_cnn": {
+        "class_accuracy": 0.06756756756756757,
+        "correct_class_records": 10,
+        "macro_f1": 0.04598364598364598
+      },
+      "transfer": {
+        "class_accuracy": 0.10135135135135136,
+        "correct_class_records": 15,
+        "macro_f1": 0.04538020163020163
+      }
+    },
+    "classification_detail": {
+      "checks": {
+        "known_flags_equal_independent_train_class_inventory_all_3_reports": true,
+        "no_retraining_or_parameter_tuning": true,
+        "old_image16_predictions_identical_all_3_reports": true
+      },
+      "group_balanced_semantics": "Arithmetic mean of per-source/building-connected-group accuracy across all 12 groups, including groups with no known-class records.",
+      "groups": [
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2013-1047"
+          ],
+          "group_id": "03f8b79fa1a3cba44082ee1bda173a67698d2aae12dbb8631d7c84f77667cf01",
+          "known_class_records": 4,
+          "models": {
+            "context": {
+              "accuracy": 0.25,
+              "correct": 1,
+              "records": 4
+            },
+            "old_cnn": {
+              "accuracy": 0.25,
+              "correct": 1,
+              "records": 4
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.25,
+              "correct": 1,
+              "records": 4
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 4
+            },
+            "transfer": {
+              "accuracy": 0.25,
+              "correct": 1,
+              "records": 4
+            }
+          },
+          "records": 4
+        },
+        {
+          "building_ids": [
+            "prospect-tower"
+          ],
+          "group_id": "05d8fe0908a82edbb0e43389f0cc51aa66ed68064fdc98250447aa3ed3fb4307",
+          "known_class_records": 0,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 63
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 63
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 63
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 63
+            },
+            "transfer": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 63
+            }
+          },
+          "records": 63
+        },
+        {
+          "building_ids": [
+            "mutiny-north-range"
+          ],
+          "group_id": "31bd746f15a3ef2c0c278a2eb30377359e580e08b6350c277927aa7e4e36ff31",
+          "known_class_records": 6,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 19
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 19
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 19
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 19
+            },
+            "transfer": {
+              "accuracy": 0.05263157894736842,
+              "correct": 1,
+              "records": 19
+            }
+          },
+          "records": 19
+        },
+        {
+          "building_ids": [
+            "planning-building-d91fae46e872-381"
+          ],
+          "group_id": "64f599336054fdadc66b3cbb54afa5ce5a7e5256bdec4a57770e9b299917f353",
+          "known_class_records": 1,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "transfer": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            }
+          },
+          "records": 1
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2014-0782"
+          ],
+          "group_id": "65511b6b0ca043f0975c7be8f1fbdb08e2e6ad6531ec17ca4de883b2736f957d",
+          "known_class_records": 1,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "transfer": {
+              "accuracy": 1.0,
+              "correct": 1,
+              "records": 1
+            }
+          },
+          "records": 1
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2016-0040"
+          ],
+          "group_id": "7f8e1cfc211e0fa934e583fc5abd7f4ab57ed6a369c56d704d57751f177e7934",
+          "known_class_records": 1,
+          "models": {
+            "context": {
+              "accuracy": 1.0,
+              "correct": 1,
+              "records": 1
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_image16_mlp": {
+              "accuracy": 1.0,
+              "correct": 1,
+              "records": 1
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "transfer": {
+              "accuracy": 1.0,
+              "correct": 1,
+              "records": 1
+            }
+          },
+          "records": 1
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2016-0410"
+          ],
+          "group_id": "8fcec5c912e8c4a5f04908e4569884e44a5bef7c0ef642edcec8a64fd463ae58",
+          "known_class_records": 5,
+          "models": {
+            "context": {
+              "accuracy": 0.2,
+              "correct": 1,
+              "records": 5
+            },
+            "old_cnn": {
+              "accuracy": 0.4,
+              "correct": 2,
+              "records": 5
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.4,
+              "correct": 2,
+              "records": 5
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 5
+            },
+            "transfer": {
+              "accuracy": 0.6,
+              "correct": 3,
+              "records": 5
+            }
+          },
+          "records": 5
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2016-0315",
+            "planning-building-145ec82874dd-982"
+          ],
+          "group_id": "a0d1d83802b22f8112629a71f7b3fd2cc0666caf96a79b51b5f9fd8f4ffed374",
+          "known_class_records": 10,
+          "models": {
+            "context": {
+              "accuracy": 0.07142857142857142,
+              "correct": 1,
+              "records": 14
+            },
+            "old_cnn": {
+              "accuracy": 0.14285714285714285,
+              "correct": 2,
+              "records": 14
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.07142857142857142,
+              "correct": 1,
+              "records": 14
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 14
+            },
+            "transfer": {
+              "accuracy": 0.21428571428571427,
+              "correct": 3,
+              "records": 14
+            }
+          },
+          "records": 14
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2013-0012"
+          ],
+          "group_id": "a1611bfcb6d62b1a291df4f210930adc8e8a714d4e1875e74c951b372b473731",
+          "known_class_records": 3,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 3
+            },
+            "old_cnn": {
+              "accuracy": 0.3333333333333333,
+              "correct": 1,
+              "records": 3
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.3333333333333333,
+              "correct": 1,
+              "records": 3
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 3
+            },
+            "transfer": {
+              "accuracy": 0.3333333333333333,
+              "correct": 1,
+              "records": 3
+            }
+          },
+          "records": 3
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2022-0556"
+          ],
+          "group_id": "b2e765c5b1bdc3cb8d9a17230bc729970e896649058568ae8f5bbc2b15b95983",
+          "known_class_records": 1,
+          "models": {
+            "context": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            },
+            "transfer": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 1
+            }
+          },
+          "records": 1
+        },
+        {
+          "building_ids": [
+            "wickerman-communications",
+            "wickerman-maintenance",
+            "wickerman-shop",
+            "wickerman-station"
+          ],
+          "group_id": "c2ebdb38f617562c41c4b292dd83d2253b7ee0f8454ed65c38a14556302c5f1e",
+          "known_class_records": 18,
+          "models": {
+            "context": {
+              "accuracy": 0.13636363636363635,
+              "correct": 3,
+              "records": 22
+            },
+            "old_cnn": {
+              "accuracy": 0.18181818181818182,
+              "correct": 4,
+              "records": 22
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.13636363636363635,
+              "correct": 3,
+              "records": 22
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 22
+            },
+            "transfer": {
+              "accuracy": 0.18181818181818182,
+              "correct": 4,
+              "records": 22
+            }
+          },
+          "records": 22
+        },
+        {
+          "building_ids": [
+            "alton-site-details-SMD-2013-1105"
+          ],
+          "group_id": "c499eeeb772de1b3668ede3c0973f5600496ce30fc0bae3c52c90d8adb5ca3a5",
+          "known_class_records": 11,
+          "models": {
+            "context": {
+              "accuracy": 0.07142857142857142,
+              "correct": 1,
+              "records": 14
+            },
+            "old_cnn": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 14
+            },
+            "old_image16_mlp": {
+              "accuracy": 0.07142857142857142,
+              "correct": 1,
+              "records": 14
+            },
+            "training_majority": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 14
+            },
+            "transfer": {
+              "accuracy": 0.0,
+              "correct": 0,
+              "records": 14
+            }
+          },
+          "records": 14
+        }
+      ],
+      "known_class_records": 61,
+      "known_class_semantics": "Held-out record whose expected class occurs in the fitting groups for its fold; derived independently from dataset rows, not supplied unknown flags.",
+      "macro_f1_semantics": "Unweighted arithmetic mean of class F1 over the 14 dataset classes; zero for classes with no true positives.",
+      "models": {
+        "context": {
+          "accuracy": 0.05405405405405406,
+          "class_order": [
+            "archway",
+            "building",
+            "door",
+            "opening",
+            "path",
+            "paving_surface",
+            "planter",
+            "plaza",
+            "retaining_wall",
+            "rock",
+            "roof",
+            "structural_member",
+            "wall",
+            "window"
+          ],
+          "confusion": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              0,
+              6,
+              1,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              4,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              2,
+              2,
+              0,
+              0,
+              21,
+              0,
+              23,
+              6,
+              0,
+              2,
+              4
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              4,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              0,
+              4,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              2,
+              1,
+              1,
+              0,
+              3,
+              1,
+              2,
+              0
+            ]
+          ],
+          "correct": 8,
+          "group_balanced_accuracy": 0.1441017316017316,
+          "known_class_group_balanced_accuracy_over_nonempty_groups": 0.16432506887052342,
+          "known_class_nonempty_source_groups": 11,
+          "known_class_only": {
+            "accuracy": 0.13114754098360656,
+            "class_order": [
+              "archway",
+              "building",
+              "door",
+              "opening",
+              "path",
+              "paving_surface",
+              "planter",
+              "plaza",
+              "retaining_wall",
+              "rock",
+              "roof",
+              "structural_member",
+              "wall",
+              "window"
+            ],
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                1,
+                0,
+                6,
+                1,
+                3,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2,
+                1,
+                0,
+                0,
+                0,
+                2,
+                1,
+                0,
+                4,
+                4
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                3,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                4,
+                0,
+                0,
+                0,
+                0,
+                4,
+                1,
+                0,
+                4,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "correct": 8,
+            "macro_f1_over_all_14_dataset_classes": 0.04285714285714286,
+            "macro_f1_over_classes_with_true_support": 0.08571428571428572,
+            "per_class": {
+              "archway": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "building": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 3
+              },
+              "door": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 5
+              },
+              "opening": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "path": {
+                "correct": 2,
+                "f1": 0.14285714285714285,
+                "precision": 0.15384615384615385,
+                "predicted": 13,
+                "recall": 0.13333333333333333,
+                "support": 15
+              },
+              "paving_surface": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "planter": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "plaza": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 3,
+                "recall": 0.0,
+                "support": 0
+              },
+              "retaining_wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 2
+              },
+              "rock": {
+                "correct": 2,
+                "f1": 0.19047619047619047,
+                "precision": 0.2857142857142857,
+                "predicted": 7,
+                "recall": 0.14285714285714285,
+                "support": 14
+              },
+              "roof": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 9,
+                "recall": 0.0,
+                "support": 7
+              },
+              "structural_member": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 4,
+                "recall": 0.0,
+                "support": 0
+              },
+              "wall": {
+                "correct": 4,
+                "f1": 0.26666666666666666,
+                "precision": 0.26666666666666666,
+                "predicted": 15,
+                "recall": 0.26666666666666666,
+                "support": 15
+              },
+              "window": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 6,
+                "recall": 0.0,
+                "support": 0
+              }
+            },
+            "records": 61
+          },
+          "macro_f1_over_all_14_dataset_classes": 0.030340883282059753,
+          "macro_f1_over_classes_with_true_support": 0.030340883282059753,
+          "per_class": {
+            "archway": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "building": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 3
+            },
+            "door": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 5
+            },
+            "opening": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 4
+            },
+            "path": {
+              "correct": 2,
+              "f1": 0.11764705882352941,
+              "precision": 0.10526315789473684,
+              "predicted": 19,
+              "recall": 0.13333333333333333,
+              "support": 15
+            },
+            "paving_surface": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 3
+            },
+            "planter": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 1
+            },
+            "plaza": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 25,
+              "recall": 0.0,
+              "support": 3
+            },
+            "retaining_wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 2
+            },
+            "rock": {
+              "correct": 2,
+              "f1": 0.09090909090909091,
+              "precision": 0.06666666666666667,
+              "predicted": 30,
+              "recall": 0.14285714285714285,
+              "support": 14
+            },
+            "roof": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 19,
+              "recall": 0.0,
+              "support": 7
+            },
+            "structural_member": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 8,
+              "recall": 0.0,
+              "support": 63
+            },
+            "wall": {
+              "correct": 4,
+              "f1": 0.21621621621621623,
+              "precision": 0.18181818181818182,
+              "predicted": 22,
+              "recall": 0.26666666666666666,
+              "support": 15
+            },
+            "window": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 11,
+              "recall": 0.0,
+              "support": 12
+            }
+          },
+          "records": 148
+        },
+        "old_cnn": {
+          "accuracy": 0.06756756756756757,
+          "class_order": [
+            "archway",
+            "building",
+            "door",
+            "opening",
+            "path",
+            "paving_surface",
+            "planter",
+            "plaza",
+            "retaining_wall",
+            "rock",
+            "roof",
+            "structural_member",
+            "wall",
+            "window"
+          ],
+          "confusion": [
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              3,
+              1,
+              0,
+              0,
+              0,
+              2,
+              0,
+              1,
+              1,
+              4,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              1,
+              1,
+              3
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              2,
+              0
+            ],
+            [
+              0,
+              1,
+              4,
+              4,
+              2,
+              0,
+              0,
+              39,
+              1,
+              0,
+              10,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              4,
+              2,
+              0,
+              0,
+              0,
+              1,
+              2,
+              0,
+              5,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              2,
+              0,
+              0,
+              6,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "correct": 10,
+          "group_balanced_accuracy": 0.1090007215007215,
+          "known_class_group_balanced_accuracy_over_nonempty_groups": 0.12777777777777777,
+          "known_class_nonempty_source_groups": 11,
+          "known_class_only": {
+            "accuracy": 0.16393442622950818,
+            "class_order": [
+              "archway",
+              "building",
+              "door",
+              "opening",
+              "path",
+              "paving_surface",
+              "planter",
+              "plaza",
+              "retaining_wall",
+              "rock",
+              "roof",
+              "structural_member",
+              "wall",
+              "window"
+            ],
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                2,
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                1,
+                3,
+                1,
+                0,
+                0,
+                0,
+                2,
+                0,
+                1,
+                1,
+                4,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0,
+                4,
+                1,
+                1,
+                1,
+                3
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                4,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                4,
+                2,
+                0,
+                0,
+                0,
+                1,
+                2,
+                0,
+                5,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "correct": 10,
+            "macro_f1_over_all_14_dataset_classes": 0.05725212790430182,
+            "macro_f1_over_classes_with_true_support": 0.11450425580860364,
+            "per_class": {
+              "archway": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 2,
+                "recall": 0.0,
+                "support": 0
+              },
+              "building": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 3
+              },
+              "door": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 5
+              },
+              "opening": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 5,
+                "recall": 0.0,
+                "support": 0
+              },
+              "path": {
+                "correct": 1,
+                "f1": 0.08333333333333333,
+                "precision": 0.1111111111111111,
+                "predicted": 9,
+                "recall": 0.06666666666666667,
+                "support": 15
+              },
+              "paving_surface": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 3,
+                "recall": 0.0,
+                "support": 0
+              },
+              "planter": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "plaza": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "retaining_wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 2,
+                "recall": 0.0,
+                "support": 2
+              },
+              "rock": {
+                "correct": 4,
+                "f1": 0.34782608695652173,
+                "precision": 0.4444444444444444,
+                "predicted": 9,
+                "recall": 0.2857142857142857,
+                "support": 14
+              },
+              "roof": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 5,
+                "recall": 0.0,
+                "support": 7
+              },
+              "structural_member": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 6,
+                "recall": 0.0,
+                "support": 0
+              },
+              "wall": {
+                "correct": 5,
+                "f1": 0.37037037037037035,
+                "precision": 0.4166666666666667,
+                "predicted": 12,
+                "recall": 0.3333333333333333,
+                "support": 15
+              },
+              "window": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 5,
+                "recall": 0.0,
+                "support": 0
+              }
+            },
+            "records": 61
+          },
+          "macro_f1_over_all_14_dataset_classes": 0.04598364598364598,
+          "macro_f1_over_classes_with_true_support": 0.04598364598364598,
+          "per_class": {
+            "archway": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 1
+            },
+            "building": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 4,
+              "recall": 0.0,
+              "support": 3
+            },
+            "door": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 6,
+              "recall": 0.0,
+              "support": 5
+            },
+            "opening": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 10,
+              "recall": 0.0,
+              "support": 4
+            },
+            "path": {
+              "correct": 1,
+              "f1": 0.07407407407407407,
+              "precision": 0.08333333333333333,
+              "predicted": 12,
+              "recall": 0.06666666666666667,
+              "support": 15
+            },
+            "paving_surface": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 4,
+              "recall": 0.0,
+              "support": 3
+            },
+            "planter": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 1
+            },
+            "plaza": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 40,
+              "recall": 0.0,
+              "support": 3
+            },
+            "retaining_wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 2
+            },
+            "rock": {
+              "correct": 4,
+              "f1": 0.26666666666666666,
+              "precision": 0.25,
+              "predicted": 16,
+              "recall": 0.2857142857142857,
+              "support": 14
+            },
+            "roof": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 15,
+              "recall": 0.0,
+              "support": 7
+            },
+            "structural_member": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 9,
+              "recall": 0.0,
+              "support": 63
+            },
+            "wall": {
+              "correct": 5,
+              "f1": 0.30303030303030304,
+              "precision": 0.2777777777777778,
+              "predicted": 18,
+              "recall": 0.3333333333333333,
+              "support": 15
+            },
+            "window": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 7,
+              "recall": 0.0,
+              "support": 12
+            }
+          },
+          "records": 148
+        },
+        "old_image16_mlp": {
+          "accuracy": 0.06756756756756757,
+          "class_order": [
+            "archway",
+            "building",
+            "door",
+            "opening",
+            "path",
+            "paving_surface",
+            "planter",
+            "plaza",
+            "retaining_wall",
+            "rock",
+            "roof",
+            "structural_member",
+            "wall",
+            "window"
+          ],
+          "confusion": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              1,
+              3,
+              0,
+              7,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              2,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              2,
+              4,
+              0,
+              0,
+              27,
+              2,
+              14,
+              8,
+              0,
+              2,
+              3
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0,
+              2,
+              3,
+              0,
+              6,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              7,
+              1,
+              0,
+              1,
+              0
+            ]
+          ],
+          "correct": 10,
+          "group_balanced_accuracy": 0.18854617604617607,
+          "known_class_group_balanced_accuracy_over_nonempty_groups": 0.21280991735537186,
+          "known_class_nonempty_source_groups": 11,
+          "known_class_only": {
+            "accuracy": 0.16393442622950818,
+            "class_order": [
+              "archway",
+              "building",
+              "door",
+              "opening",
+              "path",
+              "paving_surface",
+              "planter",
+              "plaza",
+              "retaining_wall",
+              "rock",
+              "roof",
+              "structural_member",
+              "wall",
+              "window"
+            ],
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                1,
+                1,
+                3,
+                0,
+                7,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0,
+                2,
+                1,
+                0,
+                2,
+                5
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                2,
+                1,
+                0,
+                0,
+                0,
+                2,
+                3,
+                0,
+                6,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "correct": 10,
+            "macro_f1_over_all_14_dataset_classes": 0.04867724867724867,
+            "macro_f1_over_classes_with_true_support": 0.09735449735449735,
+            "per_class": {
+              "archway": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "building": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 3
+              },
+              "door": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 5
+              },
+              "opening": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "path": {
+                "correct": 2,
+                "f1": 0.14814814814814814,
+                "precision": 0.16666666666666666,
+                "predicted": 12,
+                "recall": 0.13333333333333333,
+                "support": 15
+              },
+              "paving_surface": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "planter": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "plaza": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "retaining_wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 2,
+                "recall": 0.0,
+                "support": 2
+              },
+              "rock": {
+                "correct": 2,
+                "f1": 0.19047619047619047,
+                "precision": 0.2857142857142857,
+                "predicted": 7,
+                "recall": 0.14285714285714285,
+                "support": 14
+              },
+              "roof": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 8,
+                "recall": 0.0,
+                "support": 7
+              },
+              "structural_member": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "wall": {
+                "correct": 6,
+                "f1": 0.34285714285714286,
+                "precision": 0.3,
+                "predicted": 20,
+                "recall": 0.4,
+                "support": 15
+              },
+              "window": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 8,
+                "recall": 0.0,
+                "support": 0
+              }
+            },
+            "records": 61
+          },
+          "macro_f1_over_all_14_dataset_classes": 0.035236081747709654,
+          "macro_f1_over_classes_with_true_support": 0.035236081747709654,
+          "per_class": {
+            "archway": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 1
+            },
+            "building": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 3
+            },
+            "door": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 5
+            },
+            "opening": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 4
+            },
+            "path": {
+              "correct": 2,
+              "f1": 0.12121212121212122,
+              "precision": 0.1111111111111111,
+              "predicted": 18,
+              "recall": 0.13333333333333333,
+              "support": 15
+            },
+            "paving_surface": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 3,
+              "recall": 0.0,
+              "support": 3
+            },
+            "planter": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "plaza": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 28,
+              "recall": 0.0,
+              "support": 3
+            },
+            "retaining_wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 6,
+              "recall": 0.0,
+              "support": 2
+            },
+            "rock": {
+              "correct": 2,
+              "f1": 0.09302325581395349,
+              "precision": 0.06896551724137931,
+              "predicted": 29,
+              "recall": 0.14285714285714285,
+              "support": 14
+            },
+            "roof": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 18,
+              "recall": 0.0,
+              "support": 7
+            },
+            "structural_member": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 63
+            },
+            "wall": {
+              "correct": 6,
+              "f1": 0.27906976744186046,
+              "precision": 0.21428571428571427,
+              "predicted": 28,
+              "recall": 0.4,
+              "support": 15
+            },
+            "window": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 12,
+              "recall": 0.0,
+              "support": 12
+            }
+          },
+          "records": 148
+        },
+        "training_majority": {
+          "accuracy": 0.0,
+          "class_order": [
+            "archway",
+            "building",
+            "door",
+            "opening",
+            "path",
+            "paving_surface",
+            "planter",
+            "plaza",
+            "retaining_wall",
+            "rock",
+            "roof",
+            "structural_member",
+            "wall",
+            "window"
+          ],
+          "confusion": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              15,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              14,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              63,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              15,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              12,
+              0,
+              0
+            ]
+          ],
+          "correct": 0,
+          "group_balanced_accuracy": 0.0,
+          "known_class_group_balanced_accuracy_over_nonempty_groups": 0.0,
+          "known_class_nonempty_source_groups": 11,
+          "known_class_only": {
+            "accuracy": 0.0,
+            "class_order": [
+              "archway",
+              "building",
+              "door",
+              "opening",
+              "path",
+              "paving_surface",
+              "planter",
+              "plaza",
+              "retaining_wall",
+              "rock",
+              "roof",
+              "structural_member",
+              "wall",
+              "window"
+            ],
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                5,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                15,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                14,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                7,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                15,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "correct": 0,
+            "macro_f1_over_all_14_dataset_classes": 0.0,
+            "macro_f1_over_classes_with_true_support": 0.0,
+            "per_class": {
+              "archway": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "building": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 3
+              },
+              "door": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 5
+              },
+              "opening": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "path": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 15
+              },
+              "paving_surface": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "planter": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "plaza": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "retaining_wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 2
+              },
+              "rock": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 14
+              },
+              "roof": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 7
+              },
+              "structural_member": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 61,
+                "recall": 0.0,
+                "support": 0
+              },
+              "wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 15
+              },
+              "window": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              }
+            },
+            "records": 61
+          },
+          "macro_f1_over_all_14_dataset_classes": 0.0,
+          "macro_f1_over_classes_with_true_support": 0.0,
+          "per_class": {
+            "archway": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "building": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 3
+            },
+            "door": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 5
+            },
+            "opening": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 4
+            },
+            "path": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 63,
+              "recall": 0.0,
+              "support": 15
+            },
+            "paving_surface": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 3
+            },
+            "planter": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "plaza": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 3
+            },
+            "retaining_wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 2
+            },
+            "rock": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 14
+            },
+            "roof": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 7
+            },
+            "structural_member": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 85,
+              "recall": 0.0,
+              "support": 63
+            },
+            "wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 15
+            },
+            "window": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 12
+            }
+          },
+          "records": 148
+        },
+        "transfer": {
+          "accuracy": 0.10135135135135136,
+          "class_order": [
+            "archway",
+            "building",
+            "door",
+            "opening",
+            "path",
+            "paving_surface",
+            "planter",
+            "plaza",
+            "retaining_wall",
+            "rock",
+            "roof",
+            "structural_member",
+            "wall",
+            "window"
+          ],
+          "confusion": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              4,
+              5,
+              1,
+              0,
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              7,
+              0,
+              0,
+              4,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              5
+            ],
+            [
+              0,
+              5,
+              1,
+              2,
+              11,
+              0,
+              0,
+              4,
+              0,
+              6,
+              0,
+              0,
+              24,
+              10
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              7,
+              5
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              11,
+              0
+            ]
+          ],
+          "correct": 15,
+          "group_balanced_accuracy": 0.3026724006987165,
+          "known_class_group_balanced_accuracy_over_nonempty_groups": 0.352020202020202,
+          "known_class_nonempty_source_groups": 11,
+          "known_class_only": {
+            "accuracy": 0.2459016393442623,
+            "class_order": [
+              "archway",
+              "building",
+              "door",
+              "opening",
+              "path",
+              "paving_surface",
+              "planter",
+              "plaza",
+              "retaining_wall",
+              "rock",
+              "roof",
+              "structural_member",
+              "wall",
+              "window"
+            ],
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                3,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                4,
+                5,
+                1,
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                2,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                7,
+                0,
+                0,
+                4,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                5
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                7,
+                5
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "correct": 15,
+            "macro_f1_over_all_14_dataset_classes": 0.07395382395382397,
+            "macro_f1_over_classes_with_true_support": 0.14790764790764793,
+            "per_class": {
+              "archway": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "building": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 3
+              },
+              "door": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 5
+              },
+              "opening": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "path": {
+                "correct": 1,
+                "f1": 0.1111111111111111,
+                "precision": 0.3333333333333333,
+                "predicted": 3,
+                "recall": 0.06666666666666667,
+                "support": 15
+              },
+              "paving_surface": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 0
+              },
+              "planter": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 0,
+                "recall": 0.0,
+                "support": 0
+              },
+              "plaza": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 4,
+                "recall": 0.0,
+                "support": 0
+              },
+              "retaining_wall": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 6,
+                "recall": 0.0,
+                "support": 2
+              },
+              "rock": {
+                "correct": 7,
+                "f1": 0.5,
+                "precision": 0.5,
+                "predicted": 14,
+                "recall": 0.5,
+                "support": 14
+              },
+              "roof": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 1,
+                "recall": 0.0,
+                "support": 7
+              },
+              "structural_member": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 2,
+                "recall": 0.0,
+                "support": 0
+              },
+              "wall": {
+                "correct": 7,
+                "f1": 0.42424242424242425,
+                "precision": 0.3888888888888889,
+                "predicted": 18,
+                "recall": 0.4666666666666667,
+                "support": 15
+              },
+              "window": {
+                "correct": 0,
+                "f1": 0.0,
+                "precision": 0.0,
+                "predicted": 10,
+                "recall": 0.0,
+                "support": 0
+              }
+            },
+            "records": 61
+          },
+          "macro_f1_over_all_14_dataset_classes": 0.04538020163020163,
+          "macro_f1_over_classes_with_true_support": 0.04538020163020163,
+          "per_class": {
+            "archway": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "building": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 7,
+              "recall": 0.0,
+              "support": 3
+            },
+            "door": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 5
+            },
+            "opening": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 4
+            },
+            "path": {
+              "correct": 1,
+              "f1": 0.0625,
+              "precision": 0.058823529411764705,
+              "predicted": 17,
+              "recall": 0.06666666666666667,
+              "support": 15
+            },
+            "paving_surface": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 1,
+              "recall": 0.0,
+              "support": 3
+            },
+            "planter": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 1
+            },
+            "plaza": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 9,
+              "recall": 0.0,
+              "support": 3
+            },
+            "retaining_wall": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 6,
+              "recall": 0.0,
+              "support": 2
+            },
+            "rock": {
+              "correct": 7,
+              "f1": 0.3783783783783784,
+              "precision": 0.30434782608695654,
+              "predicted": 23,
+              "recall": 0.5,
+              "support": 14
+            },
+            "roof": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 7
+            },
+            "structural_member": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 2,
+              "recall": 0.0,
+              "support": 63
+            },
+            "wall": {
+              "correct": 7,
+              "f1": 0.19444444444444445,
+              "precision": 0.12280701754385964,
+              "predicted": 57,
+              "recall": 0.4666666666666667,
+              "support": 15
+            },
+            "window": {
+              "correct": 0,
+              "f1": 0.0,
+              "precision": 0.0,
+              "predicted": 20,
+              "recall": 0.0,
+              "support": 12
+            }
+          },
+          "records": 148
+        }
+      },
+      "records": 148,
+      "source_groups": 12,
+      "unknown_class_records": 87,
+      "version": "study-context-transfer-independent-class-audit-v1"
+    },
+    "equal_group_binary_iou": {
+      "context": 0.30789769518834303,
+      "old_cnn": 0.14272484583520792,
+      "template": 0.340195490128608,
+      "transfer": 0.305946654198444
+    },
+    "equal_group_saved_png_soft_iou": {
+      "context": 0.2866306866586672,
+      "old_cnn": 0.14290279916811996,
+      "template": 0.25524090107270053,
+      "transfer": 0.2841236590484137
+    },
+    "group_counts_with_binary_iou_gain": {
+      "context": {
+        "vs_old_cnn": 11,
+        "vs_template": 2
+      },
+      "transfer": {
+        "vs_old_cnn": 12,
+        "vs_template": 5
+      }
+    },
+    "largest_group_sensitivity": {
+      "excluded_building_ids": [
+        "prospect-tower"
+      ],
+      "excluded_group_id": "05d8fe0908a82edbb0e43389f0cc51aa66ed68064fdc98250447aa3ed3fb4307",
+      "excluded_records": 63,
+      "remaining_record_weighted_mask_means": {
+        "context": {
+          "binary_dice": 0.37069197862075165,
+          "binary_iou": 0.2760411995649177,
+          "soft_dice": 0.36859202044321443,
+          "soft_iou": 0.26336229305663983
+        },
+        "old_cnn": {
+          "binary_dice": 0.20471153965175823,
+          "binary_iou": 0.13620386974626414,
+          "soft_dice": 0.22955689910353946,
+          "soft_iou": 0.14312790285911842
+        },
+        "template": {
+          "binary_dice": 0.4342403114429277,
+          "binary_iou": 0.3208919029826644,
+          "soft_dice": 0.3598059906371716,
+          "soft_iou": 0.245489242410476
+        },
+        "transfer": {
+          "binary_dice": 0.4084201630010854,
+          "binary_iou": 0.30067504254360455,
+          "soft_dice": 0.38115567604917383,
+          "soft_iou": 0.26850270832495715
+        }
+      },
+      "remaining_records": 85
+    },
+    "per_class_mask_metrics": {
+      "archway": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.3235294117647059,
+            "binary_iou": 0.19298245614035087,
+            "soft_dice": 0.4929927470120708,
+            "soft_iou": 0.32713362595609197
+          },
+          "old_cnn": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.16869300676684634,
+            "soft_iou": 0.09211618117016009
+          },
+          "template": {
+            "binary_dice": 0.5985401459854015,
+            "binary_iou": 0.4270833333333333,
+            "soft_dice": 0.606849661593224,
+            "soft_iou": 0.43559524400448024
+          },
+          "transfer": {
+            "binary_dice": 0.7997685185185185,
+            "binary_iou": 0.6663452266152362,
+            "soft_dice": 0.7331962170727105,
+            "soft_iou": 0.5787764663746617
+          }
+        },
+        "records": 1
+      },
+      "building": {
+        "groups": 3,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.650440114932305,
+            "binary_iou": 0.4849898544233791,
+            "soft_dice": 0.5861070355253474,
+            "soft_iou": 0.414949200879631
+          },
+          "old_cnn": {
+            "binary_dice": 0.16364049839804298,
+            "binary_iou": 0.09686196124641328,
+            "soft_dice": 0.3069458345738265,
+            "soft_iou": 0.18180152879988606
+          },
+          "template": {
+            "binary_dice": 0.7764707815413573,
+            "binary_iou": 0.6371728210299753,
+            "soft_dice": 0.6080842133320209,
+            "soft_iou": 0.43803115550507843
+          },
+          "transfer": {
+            "binary_dice": 0.6491993096041861,
+            "binary_iou": 0.5042780941702009,
+            "soft_dice": 0.6118844902898365,
+            "soft_iou": 0.4473484074586678
+          }
+        },
+        "records": 3
+      },
+      "door": {
+        "groups": 2,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.162751284563272,
+            "binary_iou": 0.09777932946338311,
+            "soft_dice": 0.21837373952155287,
+            "soft_iou": 0.13485032013338122
+          },
+          "old_cnn": {
+            "binary_dice": 0.17849403432808156,
+            "binary_iou": 0.10842339216392172,
+            "soft_dice": 0.2649450808569605,
+            "soft_iou": 0.16812008575672727
+          },
+          "template": {
+            "binary_dice": 0.3941278421735328,
+            "binary_iou": 0.28149959288862575,
+            "soft_dice": 0.3588589526497485,
+            "soft_iou": 0.24897714604772547
+          },
+          "transfer": {
+            "binary_dice": 0.46041388310351233,
+            "binary_iou": 0.3512162841265129,
+            "soft_dice": 0.41951288814080756,
+            "soft_iou": 0.312263049812332
+          }
+        },
+        "records": 5
+      },
+      "opening": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.05641258318209316,
+            "binary_iou": 0.0299864084267754,
+            "soft_dice": 0.05615284449601396,
+            "soft_iou": 0.02900669367954432
+          },
+          "old_cnn": {
+            "binary_dice": 0.0867013472055489,
+            "binary_iou": 0.0474680170575693,
+            "soft_dice": 0.04078957960081471,
+            "soft_iou": 0.02085767458283528
+          },
+          "template": {
+            "binary_dice": 0.047711356423018714,
+            "binary_iou": 0.024505050006874824,
+            "soft_dice": 0.036380402985220876,
+            "soft_iou": 0.018530875279541222
+          },
+          "transfer": {
+            "binary_dice": 0.09005960386671047,
+            "binary_iou": 0.04748601689320487,
+            "soft_dice": 0.0438534271777749,
+            "soft_iou": 0.022426923089651114
+          }
+        },
+        "records": 4
+      },
+      "path": {
+        "groups": 2,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.11793737461264493,
+            "binary_iou": 0.06687440105613442,
+            "soft_dice": 0.1199768364914045,
+            "soft_iou": 0.06652447937282659
+          },
+          "old_cnn": {
+            "binary_dice": 0.028750472487112554,
+            "binary_iou": 0.0157185797622611,
+            "soft_dice": 0.06536914634722511,
+            "soft_iou": 0.034762872200855395
+          },
+          "template": {
+            "binary_dice": 0.118224543978704,
+            "binary_iou": 0.06832807447120742,
+            "soft_dice": 0.09915761241510587,
+            "soft_iou": 0.055885211352528295
+          },
+          "transfer": {
+            "binary_dice": 0.14397181651247118,
+            "binary_iou": 0.08121023507527354,
+            "soft_dice": 0.11764439727748538,
+            "soft_iou": 0.06505084861375746
+          }
+        },
+        "records": 15
+      },
+      "paving_surface": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.21563851032545486,
+            "binary_iou": 0.13963570947760476,
+            "soft_dice": 0.24385439809606135,
+            "soft_iou": 0.1475302751827976
+          },
+          "old_cnn": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.16705183216361805,
+            "soft_iou": 0.091872367181622
+          },
+          "template": {
+            "binary_dice": 0.4294211234249598,
+            "binary_iou": 0.2870991839025357,
+            "soft_dice": 0.3768828602097927,
+            "soft_iou": 0.24052278796181756
+          },
+          "transfer": {
+            "binary_dice": 0.3113182598329083,
+            "binary_iou": 0.19136137553254287,
+            "soft_dice": 0.3668020635548725,
+            "soft_iou": 0.23172246319986675
+          }
+        },
+        "records": 3
+      },
+      "planter": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.40498442367601245,
+            "binary_iou": 0.25390625,
+            "soft_dice": 0.35576421491914456,
+            "soft_iou": 0.21637055837563451
+          },
+          "old_cnn": {
+            "binary_dice": 0.21566401816118047,
+            "binary_iou": 0.12086513994910941,
+            "soft_dice": 0.201647294223292,
+            "soft_iou": 0.11212889083190197
+          },
+          "template": {
+            "binary_dice": 0.5256064690026954,
+            "binary_iou": 0.35648994515539306,
+            "soft_dice": 0.3674498419056404,
+            "soft_iou": 0.2250772143715061
+          },
+          "transfer": {
+            "binary_dice": 0.648578811369509,
+            "binary_iou": 0.47992351816443596,
+            "soft_dice": 0.4298634585948674,
+            "soft_iou": 0.2737745713568184
+          }
+        },
+        "records": 1
+      },
+      "plaza": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.6289603141507979,
+            "binary_iou": 0.4653765609606752,
+            "soft_dice": 0.587471328239181,
+            "soft_iou": 0.4217802340227193
+          },
+          "old_cnn": {
+            "binary_dice": 0.46483408255712616,
+            "binary_iou": 0.3057154602228758,
+            "soft_dice": 0.4030267988471559,
+            "soft_iou": 0.2557372274639978
+          },
+          "template": {
+            "binary_dice": 0.6199028132594867,
+            "binary_iou": 0.45793982717869114,
+            "soft_dice": 0.4951958239042063,
+            "soft_iou": 0.3336543640758403
+          },
+          "transfer": {
+            "binary_dice": 0.11954022988505747,
+            "binary_iou": 0.07282913165266107,
+            "soft_dice": 0.23624368704832657,
+            "soft_iou": 0.1400931177800919
+          }
+        },
+        "records": 3
+      },
+      "retaining_wall": {
+        "groups": 2,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.3946586041824137,
+            "binary_iou": 0.2588777660695469,
+            "soft_dice": 0.29056915085880036,
+            "soft_iou": 0.17145696341533112
+          },
+          "old_cnn": {
+            "binary_dice": 0.21049026676279742,
+            "binary_iou": 0.11980600045116174,
+            "soft_dice": 0.1474733503452499,
+            "soft_iou": 0.08008806090766589
+          },
+          "template": {
+            "binary_dice": 0.2730765402607744,
+            "binary_iou": 0.15854700854700854,
+            "soft_dice": 0.20800648023398877,
+            "soft_iou": 0.1165777529346563
+          },
+          "transfer": {
+            "binary_dice": 0.3011574074074074,
+            "binary_iou": 0.18256525942636156,
+            "soft_dice": 0.2400462470367633,
+            "soft_iou": 0.13692901225621007
+          }
+        },
+        "records": 2
+      },
+      "rock": {
+        "groups": 4,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.5473615064519648,
+            "binary_iou": 0.3962008963764478,
+            "soft_dice": 0.5158647949178683,
+            "soft_iou": 0.3595178043927864
+          },
+          "old_cnn": {
+            "binary_dice": 0.2007412675208867,
+            "binary_iou": 0.11488984067800113,
+            "soft_dice": 0.24238523227515132,
+            "soft_iou": 0.13884576736567097
+          },
+          "template": {
+            "binary_dice": 0.701478150578743,
+            "binary_iou": 0.5544125152725432,
+            "soft_dice": 0.5003326469605224,
+            "soft_iou": 0.3380506524608085
+          },
+          "transfer": {
+            "binary_dice": 0.5941878236893438,
+            "binary_iou": 0.44626559714986874,
+            "soft_dice": 0.5324447818575461,
+            "soft_iou": 0.3717204483116038
+          }
+        },
+        "records": 14
+      },
+      "roof": {
+        "groups": 2,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.3783708725400606,
+            "binary_iou": 0.28787769401531443,
+            "soft_dice": 0.4185896133887463,
+            "soft_iou": 0.30897358091212807
+          },
+          "old_cnn": {
+            "binary_dice": 0.5466729881698622,
+            "binary_iou": 0.4749269987569463,
+            "soft_dice": 0.41282989723612745,
+            "soft_iou": 0.3121144966295319
+          },
+          "template": {
+            "binary_dice": 0.4546536094331569,
+            "binary_iou": 0.35777747909997165,
+            "soft_dice": 0.38135793465501955,
+            "soft_iou": 0.2756210670986481
+          },
+          "transfer": {
+            "binary_dice": 0.26821245385757186,
+            "binary_iou": 0.16965739753749398,
+            "soft_dice": 0.3054821097026981,
+            "soft_iou": 0.19976644980392713
+          }
+        },
+        "records": 7
+      },
+      "structural_member": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.7760648825572873,
+            "binary_iou": 0.6568471900018447,
+            "soft_dice": 0.7174561414187591,
+            "soft_iou": 0.5784031135018189
+          },
+          "old_cnn": {
+            "binary_dice": 0.6057214579428714,
+            "binary_iou": 0.4394703022753219,
+            "soft_dice": 0.4867168875546758,
+            "soft_iou": 0.3267618505248723
+          },
+          "template": {
+            "binary_dice": 0.4465602199145236,
+            "binary_iou": 0.2903992047673513,
+            "soft_dice": 0.4902940160080526,
+            "soft_iou": 0.3271839026440962
+          },
+          "transfer": {
+            "binary_dice": 0.6179093258770518,
+            "binary_iou": 0.4669286921137314,
+            "soft_dice": 0.6055614197840192,
+            "soft_iou": 0.44738425440002944
+          }
+        },
+        "records": 63
+      },
+      "wall": {
+        "groups": 5,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.3240635641640916,
+            "binary_iou": 0.23510641621466982,
+            "soft_dice": 0.31888190407426376,
+            "soft_iou": 0.22668752091834854
+          },
+          "old_cnn": {
+            "binary_dice": 0.1732640303792966,
+            "binary_iou": 0.10756417630273646,
+            "soft_dice": 0.18192621632335151,
+            "soft_iou": 0.1086203157507619
+          },
+          "template": {
+            "binary_dice": 0.37754862903567543,
+            "binary_iou": 0.2726011397575024,
+            "soft_dice": 0.30892247018719166,
+            "soft_iou": 0.21035941022572804
+          },
+          "transfer": {
+            "binary_dice": 0.38413876851045997,
+            "binary_iou": 0.2846780995423383,
+            "soft_dice": 0.3469658150159347,
+            "soft_iou": 0.24310660088794067
+          }
+        },
+        "records": 15
+      },
+      "window": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.6270660237857463,
+            "binary_iou": 0.5440283668908359,
+            "soft_dice": 0.6330443818162014,
+            "soft_iou": 0.5135062467299951
+          },
+          "old_cnn": {
+            "binary_dice": 0.3309859008255813,
+            "binary_iou": 0.20791186602980516,
+            "soft_dice": 0.3946216108428911,
+            "soft_iou": 0.2508163344129834
+          },
+          "template": {
+            "binary_dice": 0.5967825847126564,
+            "binary_iou": 0.428569584682787,
+            "soft_dice": 0.5847939861331792,
+            "soft_iou": 0.41344979657037184
+          },
+          "transfer": {
+            "binary_dice": 0.7203995831200648,
+            "binary_iou": 0.5725752415148,
+            "soft_dice": 0.6896297103348822,
+            "soft_iou": 0.5302494225938251
+          }
+        },
+        "records": 12
+      }
+    },
+    "per_geometry_role_mask_metrics": {
+      "elevation_aperture": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.5319101855309293,
+            "binary_iou": 0.445515768314534,
+            "soft_dice": 0.5656331821387692,
+            "soft_iou": 0.4434683762599972
+          },
+          "old_cnn": {
+            "binary_dice": 0.30010466993257007,
+            "binary_iou": 0.18782530258875374,
+            "soft_dice": 0.3853880840029872,
+            "soft_iou": 0.2444173262898428
+          },
+          "template": {
+            "binary_dice": 0.6014051846675712,
+            "binary_iou": 0.4326149483001036,
+            "soft_dice": 0.5842129522456179,
+            "soft_iou": 0.41284935789410676
+          },
+          "transfer": {
+            "binary_dice": 0.7230992661210838,
+            "binary_iou": 0.5749998887010851,
+            "soft_dice": 0.688473921551703,
+            "soft_iou": 0.528536367379678
+          }
+        },
+        "records": 16
+      },
+      "elevation_height_trace": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.08082930782580237,
+            "binary_iou": 0.044169683938470226,
+            "soft_dice": 0.07947469882970885,
+            "soft_iou": 0.04146634198077556
+          },
+          "old_cnn": {
+            "binary_dice": 0.14127300181566282,
+            "binary_iou": 0.07739335612942909,
+            "soft_dice": 0.04707519286395994,
+            "soft_iou": 0.024118465391096102
+          },
+          "template": {
+            "binary_dice": 0.06168610531127104,
+            "binary_iou": 0.03182462144210778,
+            "soft_dice": 0.04002040545254473,
+            "soft_iou": 0.020418787583384126
+          },
+          "transfer": {
+            "binary_dice": 0.1173195038088538,
+            "binary_iou": 0.062468526483090314,
+            "soft_dice": 0.05532747521470322,
+            "soft_iou": 0.028458427225852803
+          }
+        },
+        "records": 9
+      },
+      "labelled_plan_footprint": {
+        "groups": 7,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.48994660360643144,
+            "binary_iou": 0.34711714627149315,
+            "soft_dice": 0.4558255135000609,
+            "soft_iou": 0.309078707516059
+          },
+          "old_cnn": {
+            "binary_dice": 0.20182217628791033,
+            "binary_iou": 0.11602548086323669,
+            "soft_dice": 0.22575669401173898,
+            "soft_iou": 0.12875485176936605
+          },
+          "template": {
+            "binary_dice": 0.6101699959052794,
+            "binary_iou": 0.46355984785122273,
+            "soft_dice": 0.4428551392480288,
+            "soft_iou": 0.29306794106049167
+          },
+          "transfer": {
+            "binary_dice": 0.5478249288931025,
+            "binary_iou": 0.406484868322975,
+            "soft_dice": 0.48502467643302083,
+            "soft_iou": 0.3329167135948528
+          }
+        },
+        "records": 23
+      },
+      "plan_envelope": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.6402192771300743,
+            "binary_iou": 0.4975476737474258,
+            "soft_dice": 0.641223718950249,
+            "soft_iou": 0.4908181019131577
+          },
+          "old_cnn": {
+            "binary_dice": 0.48374575233151357,
+            "binary_iou": 0.4042836789834362,
+            "soft_dice": 0.48596381243834513,
+            "soft_iou": 0.3421252808238938
+          },
+          "template": {
+            "binary_dice": 0.7438175631004798,
+            "binary_iou": 0.5970319343301477,
+            "soft_dice": 0.6351709446607059,
+            "soft_iou": 0.46559606730387443
+          },
+          "transfer": {
+            "binary_dice": 0.5863211486580422,
+            "binary_iou": 0.4344881706797013,
+            "soft_dice": 0.5855884058747942,
+            "soft_iou": 0.42075332438539875
+          }
+        },
+        "records": 10
+      },
+      "plan_member_footprint": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.7760648825572873,
+            "binary_iou": 0.6568471900018447,
+            "soft_dice": 0.7174561414187591,
+            "soft_iou": 0.5784031135018189
+          },
+          "old_cnn": {
+            "binary_dice": 0.6057214579428714,
+            "binary_iou": 0.4394703022753219,
+            "soft_dice": 0.4867168875546758,
+            "soft_iou": 0.3267618505248723
+          },
+          "template": {
+            "binary_dice": 0.4465602199145236,
+            "binary_iou": 0.2903992047673513,
+            "soft_dice": 0.4902940160080526,
+            "soft_iou": 0.3271839026440962
+          },
+          "transfer": {
+            "binary_dice": 0.6179093258770518,
+            "binary_iou": 0.4669286921137314,
+            "soft_dice": 0.6055614197840192,
+            "soft_iou": 0.44738425440002944
+          }
+        },
+        "records": 63
+      },
+      "plan_opening_span": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.050505050505050504,
+            "binary_iou": 0.0273224043715847,
+            "soft_dice": 0.05147157696066801,
+            "soft_iou": 0.026537724925577835
+          },
+          "old_cnn": {
+            "binary_dice": 0.007407407407407408,
+            "binary_iou": 0.003745318352059925,
+            "soft_dice": 0.03148135849334315,
+            "soft_iou": 0.01600609043546523
+          },
+          "template": {
+            "binary_dice": 0.03793398315929172,
+            "binary_iou": 0.01936161304195558,
+            "soft_dice": 0.0323011631590629,
+            "soft_iou": 0.016416217827407945
+          },
+          "transfer": {
+            "binary_dice": 0.058304164970831636,
+            "binary_iou": 0.03013497757702133,
+            "soft_dice": 0.03645499415308683,
+            "soft_iou": 0.01856760344556159
+          }
+        },
+        "records": 3
+      },
+      "reviewed_path_centreline": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.09325276293740982,
+            "binary_iou": 0.05127104947939032,
+            "soft_dice": 0.07426814461440757,
+            "soft_iou": 0.03868862141959502
+          },
+          "old_cnn": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.03431003769480065,
+            "soft_iou": 0.017458633640509095
+          },
+          "template": {
+            "binary_dice": 0.05307855084137729,
+            "binary_iou": 0.027310917615682325,
+            "soft_dice": 0.0409959536386065,
+            "soft_iou": 0.020927818855741267
+          },
+          "transfer": {
+            "binary_dice": 0.12460451335490416,
+            "binary_iou": 0.06898042364701495,
+            "soft_dice": 0.07672357275691849,
+            "soft_iou": 0.04017790296252413
+          }
+        },
+        "records": 11
+      },
+      "reviewed_path_footprint": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.18582005671954152,
+            "binary_iou": 0.1097836178921807,
+            "soft_dice": 0.24567573915314608,
+            "soft_iou": 0.14307308874421337
+          },
+          "old_cnn": {
+            "binary_dice": 0.10781427182667208,
+            "binary_iou": 0.058944674108479124,
+            "soft_dice": 0.15078169514139236,
+            "soft_iou": 0.08234952824180775
+          },
+          "template": {
+            "binary_dice": 0.2973760251063524,
+            "binary_iou": 0.1811252558239014,
+            "soft_dice": 0.25910217405047914,
+            "soft_iou": 0.15201804071869263
+          },
+          "transfer": {
+            "binary_dice": 0.19723190019578032,
+            "binary_iou": 0.1148422165029847,
+            "soft_dice": 0.2301766647090443,
+            "soft_iou": 0.13345144915464907
+          }
+        },
+        "records": 4
+      },
+      "reviewed_paving_footprint": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.21563851032545486,
+            "binary_iou": 0.13963570947760476,
+            "soft_dice": 0.24385439809606135,
+            "soft_iou": 0.1475302751827976
+          },
+          "old_cnn": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.16705183216361805,
+            "soft_iou": 0.091872367181622
+          },
+          "template": {
+            "binary_dice": 0.4294211234249598,
+            "binary_iou": 0.2870991839025357,
+            "soft_dice": 0.3768828602097927,
+            "soft_iou": 0.24052278796181756
+          },
+          "transfer": {
+            "binary_dice": 0.3113182598329083,
+            "binary_iou": 0.19136137553254287,
+            "soft_dice": 0.3668020635548725,
+            "soft_iou": 0.23172246319986675
+          }
+        },
+        "records": 3
+      },
+      "source_labelled_plaza_footprint": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.6289603141507979,
+            "binary_iou": 0.4653765609606752,
+            "soft_dice": 0.587471328239181,
+            "soft_iou": 0.4217802340227193
+          },
+          "old_cnn": {
+            "binary_dice": 0.46483408255712616,
+            "binary_iou": 0.3057154602228758,
+            "soft_dice": 0.4030267988471559,
+            "soft_iou": 0.2557372274639978
+          },
+          "template": {
+            "binary_dice": 0.6199028132594867,
+            "binary_iou": 0.45793982717869114,
+            "soft_dice": 0.4951958239042063,
+            "soft_iou": 0.3336543640758403
+          },
+          "transfer": {
+            "binary_dice": 0.11954022988505747,
+            "binary_iou": 0.07282913165266107,
+            "soft_dice": 0.23624368704832657,
+            "soft_iou": 0.1400931177800919
+          }
+        },
+        "records": 3
+      },
+      "source_trace": {
+        "groups": 1,
+        "mask_means": {
+          "context": {
+            "binary_dice": 0.048484848484848485,
+            "binary_iou": 0.026143790849673203,
+            "soft_dice": 0.0735500255742821,
+            "soft_iou": 0.03823354228027995
+          },
+          "old_cnn": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.028397031201080374,
+            "soft_iou": 0.014407932225757335
+          },
+          "template": {
+            "binary_dice": 0.07518037137609519,
+            "binary_iou": 0.03907738480952968,
+            "soft_dice": 0.04601231393310264,
+            "soft_iou": 0.023548397673707113
+          },
+          "transfer": {
+            "binary_dice": 0.0,
+            "binary_iou": 0.0,
+            "soft_dice": 0.06336087742721182,
+            "soft_iou": 0.03283084849843771
+          }
+        },
+        "records": 3
+      }
+    },
+    "record_weighted_binary_iou": {
+      "context": 0.4381410468455015,
+      "old_cnn": 0.26529701332282246,
+      "template": 0.3079119030666865,
+      "transfer": 0.3714451771579153
+    },
+    "record_weighted_reported_unrounded_soft_iou": {
+      "context": 0.39746632348025895,
+      "old_cnn": 0.22155543581025688,
+      "template": 0.280264672104517,
+      "transfer": 0.3446372642809637
+    },
+    "records": 148,
+    "scope": "148 previously supplied component crops from 12 connected source/building groups; predictions are raster proposals. No untouched final-checkpoint test, full-page discovery, 20-building reconstruction, physical 3D acceptance or world generation is established.",
+    "source_groups": 12
+  },
+  "independent_audit": {
+    "all_data_fit_consistency_only": {
+      "stationarity": {
+        "class": {
+          "coefficient_gradient_max_abs": 9.146849944130508e-14,
+          "intercept_gradient_max_abs": 1.0422218643668657e-14
+        },
+        "mask": {
+          "coefficient_gradient_max_abs": 5.10702591327572e-14,
+          "intercept_gradient_max_abs": 1.9012569296705806e-14
+        }
+      },
+      "used_for_held_out_quality": false
+    },
+    "artifact_receipts": {
+      "context": {
+        "model_artifact_sha256": "b8eb63c61668407c55c5d3e2b18f4301458f51e2ea7facff4e8799949c9c54e7",
+        "model_sha256": "1b28d9290904b707bebbe8e247b40b72d1b322ca1729b9f2cca1d22df449f4e9",
+        "output_hashes_verified": 298,
+        "report_sha256": "ad0c77b5667b1cbdbb2ce8219b671bd8dfcb944889e12d847d02f82d21f50fc9"
+      },
+      "old_cnn": {
+        "model_artifact_sha256": "c3e15868ad93eb571a58fdfcbf94bb2890722d0efb83824f7dce188a6a7f484e",
+        "model_sha256": "c48b95d86e8c653ff97647d7cf4b3575e1e22b5611908c5f3bc2e53be3300562",
+        "output_hashes_verified": 298,
+        "report_sha256": "d96297034124a4ed7be41fcece9edb1253d2c81c1856221f808db49d74bcf9d8"
+      },
+      "transfer": {
+        "model_artifact_sha256": "93d279a5099adb516c292bf9386c40822d1cb12b3558d5af1616dd5247ff58cf",
+        "model_sha256": "74545b3ba783ea09b33998cc416155c0344739ecc97afbf9bb40973edc31c097",
+        "output_hashes_verified": 305,
+        "report_sha256": "54e5ca51c1616d0551f0bac778da4badc24149bf0878956a1cef5b2f407154d8"
+      }
+    },
+    "artifact_sha256": "29305961459c6c91135792878a2498517c5a2d1fee3ffdc9df9fa11b75dd1d32",
+    "asset_and_fold_audit_script": "/workspace/scratch/audit-study-context-transfer.py",
+    "connected_source_groups": 12,
+    "dataset_asset_hashes_verified": 478,
+    "dataset_id": "4d57388dc2970979997b43690c01c174bb50d60f759090b805943b0bca19aa63",
+    "dataset_manifest_sha256": "031004626fa90f388f1ab8b8d6ea54bb9b6627189e59850b769a5298b564194a",
+    "frozen_encoder": {
+      "feature_count": 1280,
+      "provider": "CPUExecutionProvider",
+      "sha256": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb",
+      "source_only_features_sha256": "f5c0f9606b50ef0e505beccc6ac750847d6d9dfd5904bbc38dd07d5eff397a64",
+      "weights_updated": false
+    },
+    "metric_audit_script": "/workspace/scratch/audit-context-transfer-metrics.py",
+    "records": 148,
+    "representative_selection": {
+      "contact_png": "/workspace/artifacts/Study-Context-Transfer-Examples.png",
+      "contact_png_sha256": "14b1d2325ae11d11bf2ae174086974bb2497abc678e22f505c31fc0ecd591417",
+      "method": "Deterministic first coverage of each class and connected group; no selection by prediction score or correctness.",
+      "record_ids": [
+        "mutiny-opening-archway-3",
+        "detail-d91fae46e872-1-381",
+        "mutiny-opening-d3.01",
+        "wicker-floor-opening-NE",
+        "reviewed-cbeebies-path-0",
+        "reviewed-garden-surface-0",
+        "detail-145ec82874dd-1-937",
+        "reviewed-wicker-plaza-17",
+        "detail-8c9a288aeb9f-1-102",
+        "detail-54b295d7c649-1-136",
+        "mutiny-roof-cross-section",
+        "prospect-AL3.02-path-0",
+        "mutiny-elevation-baseline",
+        "mutiny-opening-w3.01",
+        "detail-2c7bac429c19-1-429",
+        "detail-94eefa9040ce-1-1062",
+        "detail-e039622d21f7-1-8"
+      ]
+    },
+    "review_directory": "/workspace/scratch/study-context-transfer-review-verified",
+    "review_html": "/workspace/scratch/study-context-transfer-review-verified/index.html",
+    "review_verification": {
+      "all_review_asset_copies_hash_verified_at_creation": true,
+      "all_saved_model_masks_are_out_of_fold": true,
+      "article_cards": 148,
+      "model_quality_not_recomputed_from_all_data_checkpoint": true,
+      "separate_image_panels": 888
+    },
+    "scope": "148 previously supplied component crops from 12 connected source/building groups; predictions are raster proposals. No untouched final-checkpoint test, full-page discovery, 20-building reconstruction, physical 3D acceptance or world generation is established.",
+    "status": "passed",
+    "version": "study-context-transfer-independent-audit-v1"
+  },
+  "independent_audit_sha256": "358d4f4002418cba60a91861540d1cb4c9a18f958fbe976d55d0091313a43a43",
+  "scope": {
+    "provided_crop_only": true,
+    "pretrained_encoder_finetuned": false,
+    "class_record_accuracy_improved": true,
+    "mask_record_iou_improved": true,
+    "automatic_production_promotion": false,
+    "physical_3d_buildings_generated": false,
+    "full_page_object_discovery_assessed": false,
+    "twenty_building_reconstruction_demonstrated": false,
+    "untouched_final_model_test": false,
+    "mask_group_balanced_binary_template_beaten": false,
+    "mask_group_balanced_soft_template_beaten": true
+  },
+  "method": [
+    "Context40epochs/fourchannels and transfer alpha100 were fixed before their first real benchmark.",
+    "The same148targets/twelveconnectedgroups and same150epoch16unitMLP baseline are used throughout.",
+    "No image masks, geometryroles, sourceIDs or buildingnames enter encoder or inferencefeatures.",
+    "No fit, threshold or heldout partition was tuned to improve the saved results.",
+    "Learned encoder descriptor is generic ImageNet; its parameters remain frozen. Only project ridgeheads are fitted.",
+    "The record-average mask improvement is concentrated in63Prospect examples; equal-group and without-largest-group results are reported.",
+    "No model is selected separately for each heldout target, and finalweightsfitallrecordsare separatefromOOFgallery."
+  ],
+  "id": "132186df8cef8784a290d9d96bf347cd005a72efe839a310ccab6c6e690ec223"
+}

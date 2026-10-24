@@ -26,6 +26,12 @@ on:
       - 'voxel_mapper/study_component_learning.py'
       - 'voxel_mapper/study_vision_network.py'
       - 'voxel_mapper/study_vision_learning.py'
+      - 'voxel_mapper/study_context_network.py'
+      - 'voxel_mapper/study_context_learning.py'
+      - 'voxel_mapper/study_pretrained_encoder.py'
+      - 'voxel_mapper/study_transfer_learning.py'
+      - 'voxel_mapper/data/study-pretrained-encoder.json'
+      - 'scripts/prepare_study_encoder.py'
       - 'voxel_mapper/study_training_coverage.py'
       - 'voxel_mapper/study_dataset.py'
       - 'voxel_mapper/retained_study_examples.py'
@@ -58,6 +64,10 @@ on:
       - 'tests/test_study_component_learning.py'
       - 'tests/test_study_vision_network.py'
       - 'tests/test_study_vision_learning.py'
+      - 'tests/test_study_context_network.py'
+      - 'tests/test_study_context_learning.py'
+      - 'tests/test_study_pretrained_encoder.py'
+      - 'tests/test_study_transfer_learning.py'
       - 'tests/test_study_training_coverage.py'
       - 'tests/test_study_dataset.py'
       - 'tests/test_retained_study_examples.py'
@@ -113,6 +123,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'CPU convolutional network checks failed' }
           python -m unittest discover -s tests -p 'test_study_vision_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Source-separated component mask learning checks failed' }
+          python -m unittest discover -s tests -p 'test_study_context_network.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Global context network checks failed' }
+          python -m unittest discover -s tests -p 'test_study_context_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-separated context mask learning checks failed' }
+          python -m unittest discover -s tests -p 'test_study_pretrained_encoder.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Pinned CPU pretrained encoder checks failed' }
+          python -m unittest discover -s tests -p 'test_study_transfer_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-separated pretrained vision head checks failed' }
           python -m unittest discover -s tests -p 'test_study_training_coverage.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Independent study training coverage checks failed' }
           python -m unittest discover -s tests -p 'test_retained_study_examples.py' -v
@@ -248,6 +266,16 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-vision-smoke-test build/desktop-validation/study-vision 2>&1 | Tee-Object build/desktop-validation/study-vision.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen CPU component mask learning and restart check failed' }
+      - name: Exercise frozen whole-crop context learning and restart
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-context-smoke-test build/desktop-validation/study-context 2>&1 | Tee-Object build/desktop-validation/study-context.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen global context mask learning and restart check failed' }
+      - name: Exercise frozen CPU ONNX features and pretrained head learning
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --study-transfer-smoke-test build/desktop-validation/study-transfer 2>&1 | Tee-Object build/desktop-validation/study-transfer.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen CPU pretrained feature/head learning and restart check failed' }
       - name: Write exact build receipt and zip distribution
         shell: pwsh
         run: |

@@ -15,3 +15,10 @@ Optional helper tools retain their complete installed resource/licence files:
 Tesseract (Apache-2.0) and Poppler (GPL). Those optional helpers are included
 only when explicitly configured during the build. Original planning documents
 and external model weights are not redistributed by this build.
+
+CPU pretrained feature inference uses ONNX Runtime 1.20.1 (MIT); its complete
+LICENSE and ThirdPartyNotices remain in the bundled package resources. The
+separate offline research model bundle contains a modified MobileNetV2 ONNX
+graph distributed upstream under Apache-2.0, its complete license, source
+attribution, exact hashes and graph-modification notice. Those external
+pretrained weights are not installed or downloaded automatically by the app.
