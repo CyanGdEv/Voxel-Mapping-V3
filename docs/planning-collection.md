@@ -100,3 +100,5 @@ was about 776 MB. These are source-coverage/development results; application
 membership, exhaustive discovery, physical accuracy and 6 GB PC acceptance
 remain unassessed. Blank PDF metadata titles use a bounded fallback title,
 and saved output paths support both Windows and Linux separators.
+
+Closed source outlines, bounded regional extraction, nominal scale measurements and source overlays are described in [planning outline recovery](planning-outline-recovery.md). They remain unclassified and unregistered.

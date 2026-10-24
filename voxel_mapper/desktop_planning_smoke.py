@@ -35,6 +35,10 @@ def run(output):
         result=job['result'];summary=result['summary'];pack=Path(job['output_directory'])
         if summary['completed_pages']!=1 or summary['visible_view_captions']!=2 or summary['surface_candidates']!=1:
             raise ValueError('Original drawing extraction did not match synthetic fixture')
+        if summary.get('closed_source_outlines')!=1 or summary.get('nominal_view_outlines',0)<1:
+            raise ValueError('Closed outline inventory and nominal regional geometry were not retained')
+        if not result['pages'][0].get('outline_overlay'):
+            raise ValueError('Source-bound outline preview missing')
         if summary['geometric_accuracy'] is not None or result['world_placement_eligible'] or result['training_labels_generated']:
             raise ValueError('Discovery supplied unverified accuracy, acceptance or labels')
         for name,pin in result['output_sha256'].items():

@@ -4,6 +4,7 @@ Discovery runs without per-view recipes. Candidates remain source evidence;
 this command neither supplies reference truth nor accepts park geometry.
 """
 import argparse
+import base64
 from collections import Counter
 from concurrent.futures import CancelledError
 import hashlib
@@ -18,9 +19,10 @@ import sys
 import pymupdf
 
 from . import architectural_view_layout, building_pdf_discovery, drawing_view_candidates
-from . import ordinary_surfaces
+from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linework_boundaries, drawing_page_tools, building_raster_views
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
+from .drawing_page_tools import native_inverse
 
 VERSION = 'planning-area-pilot-v1'
 LIMITS = {'max_documents': 16, 'max_pages': 32, 'max_document_pages': 8,
@@ -129,10 +131,48 @@ def _preview(page, path, edge):
         raise ValueError('Pilot preview edge budget exceeded')
     pix.save(path)
     return {'file':path.name, 'sha256':file_hash(path),
-            'size_pixels':[pix.width,pix.height]}
+            'size_pixels':[pix.width,pix.height],
+            'pdf_native_to_pixels':list((~native_inverse(page))*page.rotation_matrix*
+                pymupdf.Matrix(scale,scale)*pymupdf.Matrix(1,0,0,1,-pix.x,-pix.y))}
 
 
-def _page(page, sha, number, role):
+def _outline_overlay(result, preview, path):
+    """Draw the retained source outlines over their original-page preview."""
+    inventory=(result.get('surface_report') or {}).get('source_outline_inventory') or {}
+    records=[('source',r['candidate']['geometry'],r['candidate_id'],r['native_metrics'])
+             for r in inventory.get('records',[])]
+    scoped=result.get('view_geometry') or {}
+    records += [('view',r['geometry_pdf_native'],r['id'],r.get('measurements_nominal_metres') or {})
+                for r in scoped.get('outlines',[])]
+    if not records:return None
+    if len(records)>1000:raise PilotBudgetExceeded('Outline overlay record budget exceeded')
+    width,height=preview['size_pixels'];matrix=pymupdf.Matrix(preview['pdf_native_to_pixels'])
+    background=base64.b64encode((path.parent/preview['file']).read_bytes()).decode('ascii')
+    parts=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-label="Unclassified source outlines over the original drawing">',
+        f'<image href="data:image/png;base64,{background}" width="{width}" height="{height}"/>']
+    points=0
+    for kind,geometry,identifier,metrics in records:
+        polygons=[geometry['coordinates']] if geometry['type']=='Polygon' else geometry['coordinates']
+        commands=[]
+        for polygon in polygons:
+            for ring in polygon:
+                points+=len(ring)
+                if points>250000:raise PilotBudgetExceeded('Outline overlay point budget exceeded')
+                projected=[pymupdf.Point(*p)*matrix for p in ring]
+                commands.append('M'+' L'.join(f'{p.x:.3f},{p.y:.3f}' for p in projected)+' Z')
+        title=escape(kind+' outline '+identifier+'; '+json.dumps(metrics,sort_keys=True))
+        color='#007985' if kind=='source' else '#c94b00'
+        parts.append(f'<path class="{kind}" fill="none" stroke="{color}" stroke-width="1.5" vector-effect="non-scaling-stroke" d="{" ".join(commands)}"><title>{title}</title></path>')
+    parts.append('</svg>');data=''.join(parts).encode('utf-8')
+    if len(data)>16000000:raise PilotBudgetExceeded('Outline overlay byte budget exceeded')
+    path.write_bytes(data)
+    return {'file':path.name,'sha256':file_hash(path),'outlines':len(records),
+            'pdf_native_to_pixels':preview['pdf_native_to_pixels'],
+            'legend':{'cyan':'unclassified closed source outlines','orange':'view-region source outlines'},
+            'physical_geometry_verified':False}
+
+
+def _page(page, sha, number, role, *, cancelled=lambda:False):
     discovery = building_pdf_discovery.discover_page(page,sha,number)
     layout = discovery.get('caption_layout')
     view_pack = None
@@ -144,6 +184,9 @@ def _page(page, sha, number, role):
     surfaces, labels, surface_report = [], [], None
     if role in SURFACE_ROLES:
         surfaces, labels, surface_report = ordinary_surfaces.page_candidates(page,sha,number)
+    outlines = None if surface_report is None else surface_report.get('source_outline_inventory')
+    scoped = None if view_pack is None or not view_pack['views'] else planning_view_geometry.page_candidates(
+        page,sha,number,view_pack,cancelled=cancelled)
     visible = [] if layout is None else [r for r in layout['view_captions']
         if r['glyph_screen']['status']=='raster_consistent_candidate']
     # Catalogue state is never a substitute for the visible native claims.
@@ -159,10 +202,19 @@ def _page(page, sha, number, role):
     if labels:
         blockers.append('surface_boundary_role_and_scope_unverified')
         if not surfaces: blockers.append('no_supported_contained_surface_boundaries')
+    if outlines and outlines['status']!='complete_source_outline_inventory':
+        blockers.append('closed_source_outline_inventory_incomplete')
+    if scoped and scoped['status']!='scoped_source_geometry_candidates':
+        blockers.append('view_region_geometry_incomplete')
+    outline_count=0 if outlines is None else len(outlines['records'])
+    view_outlines=[] if scoped is None else scoped['outlines']
+    if outline_count or view_outlines:
+        blockers.append('source_outlines_require_physical_interpretation')
     return {'document_sha256':sha, 'page':number,
         'coordinate_frame':'pdf_native_points_y_up',
         'discovery':discovery, 'view_candidates':view_pack,
         'surface_candidates':surfaces, 'surface_labels':labels, 'surface_report':surface_report,
+        'view_geometry':scoped,
         'summary':{'geometry_status':discovery['status'],'analysis_role':role,
             'visible_view_captions':len(visible),
             'visible_view_kinds':dict(Counter(r['printed_claim']['view_kind'] for r in visible)),
@@ -170,6 +222,9 @@ def _page(page, sha, number, role):
             'sheet_title_claims':len(titles),
             'view_candidates':0 if view_pack is None else len(view_pack['views']),
             'surface_labels':len(labels), 'surface_candidates':len(surfaces),
+            'closed_source_outlines':outline_count,
+            'view_source_outlines':len(view_outlines),
+            'nominal_view_outlines':sum(r.get('geometry_nominal_local') is not None for r in view_outlines),
             'surface_label_statuses':dict(Counter(r['status'] for r in labels)),
             'surface_connectivity_status':'not_assessed_unverified_surface_geometry',
             'blockers':blockers},
@@ -187,7 +242,9 @@ def _html(config, documents, pages):
                 f'{summary["visible_view_captions"]} visible view captions; '
                 f'{summary["view_candidates"]} candidate view regions; '
                 f'{summary["surface_labels"]} surface labels; '
-                f'{summary["surface_candidates"]} enclosed surface candidates.</p>')
+                f'{summary["surface_candidates"]} enclosed surface candidates; '
+                f'{summary.get("closed_source_outlines",0)} unclassified closed source outlines; '
+                f'{summary.get("nominal_view_outlines",0)} outlines with nominal view measurements.</p>')
             evidence=escape(page['evidence_file'],quote=True)
             sections.append(f'<p><a href="{evidence}">Source-bound extraction evidence</a></p>')
             captions=page.get('captions',[])
@@ -195,6 +252,13 @@ def _html(config, documents, pages):
             if 'preview_file' in page:
                 image=escape(page['preview_file'],quote=True)
                 sections.append(f'<a href="{image}"><img src="{image}" alt="{title}, original drawing page"></a>')
+            if page.get('outline_overlay'):
+                overlay=escape(page['outline_overlay']['file'],quote=True)
+                sections.append('<details><summary>Inspect extracted source outlines</summary>'
+                    '<p>Cyan: unclassified closed outlines. Orange: view-region outlines. Inventories may overlap. '
+                    'Symbols, annotations and context can be included. Nominal metres use printed view scale claims; '
+                    'physical identity, scale application and geographic placement remain unverified.</p>'
+                    f'<a href="{overlay}"><img src="{overlay}" alt="Extracted source outlines over original drawing"></a></details>')
             sections.append('<p>Remaining: '+escape(', '.join(summary['blockers']).replace('_',' '))+'.</p>')
     return ('<!doctype html><html lang="en"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -220,7 +284,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
     contract={'version':VERSION,'config_sha256':digest(config),'limits':limits,
         'implementations':{m.__name__:_implementation(m) for m in (
             sys.modules[__name__],building_pdf_discovery,architectural_view_layout,
-            ordinary_surfaces,drawing_view_candidates)},
+            ordinary_surfaces,drawing_view_candidates,planning_view_geometry,
+            drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views)},
         'caption_version':architectural_view_layout.VERSION,
         'pymupdf_version':pymupdf.VersionBind}
     atomic_json(root/'config.json',config);atomic_json(root/'contract.json',contract)
@@ -265,7 +330,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                     record={'document_sha256':item['sha256'],'page':number}
                     try:
                         role=item.get('page_roles',{}).get(str(number),item['role'])
-                        result=_page(document[number-1],item['sha256'],number,role)
+                        result=_page(document[number-1],item['sha256'],number,role,cancelled=cancelled)
                         check()
                         raw=(json.dumps(result,sort_keys=True,allow_nan=False)+'\n').encode()
                         if len(raw)>32000000 or written+len(raw)>limits['max_output_bytes']:
@@ -273,10 +338,13 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                         (root/(name+'.json')).write_bytes(raw);written+=len(raw)
                         preview=_preview(document[number-1],root/(name+'.png'),limits['render_edge_pixels'])
                         written+=(root/preview['file']).stat().st_size
+                        overlay=_outline_overlay(result,preview,root/(name+'-outlines.svg'))
+                        if overlay:written+=(root/overlay['file']).stat().st_size
                         if written>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
                         layout=result['discovery'].get('caption_layout',{})
                         record.update(summary=result['summary'],evidence_file=name+'.json',
                             preview_file=preview['file'],preview=preview,
+                            outline_overlay=overlay,
                             captions=[r['text'] for r in layout.get('view_captions',[])])
                         row['completed_pages']+=1
                     except PilotBudgetExceeded:
@@ -286,6 +354,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                             summary={'geometry_status':'page_failed','visible_view_captions':0,
                                 'visible_view_kinds':{},'printed_view_states':[], 'view_candidates':0,
                                 'surface_labels':0,'surface_candidates':0,'surface_label_statuses':{},
+                                'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0,
                                 'blockers':['page_extraction_failed'],'reason':str(error)})
                         atomic_json(root/record['evidence_file'],record)
                     pages.append(record)
@@ -308,6 +377,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'view_candidates':sum(p['summary']['view_candidates'] for p in pages),
         'surface_labels':sum(p['summary']['surface_labels'] for p in pages),
         'surface_candidates':sum(p['summary']['surface_candidates'] for p in pages),
+        **{k:sum(p['summary'].get(k,0) for p in pages) for k in
+           ('closed_source_outlines','view_source_outlines','nominal_view_outlines')},
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}

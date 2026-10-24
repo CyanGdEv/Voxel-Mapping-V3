@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from unittest.mock import MagicMock, patch
 
 import pymupdf
@@ -64,11 +65,18 @@ class PlanningPilotTests(unittest.TestCase):
             self.assertEqual(report['summary']['completed_pages'],1)
             self.assertEqual(report['summary']['visible_view_captions'],2)
             self.assertEqual(report['summary']['surface_candidates'],1)
+            self.assertEqual(report['summary']['closed_source_outlines'],1)
+            self.assertGreaterEqual(report['summary']['nominal_view_outlines'],1)
             self.assertEqual(report['pages'][0]['summary']['printed_view_states'],['existing','proposed'])
             self.assertEqual(report['documents'][0]['drawing_state'],'proposed')
             evidence=json.loads((root/'output'/report['pages'][0]['evidence_file']).read_text())
             self.assertEqual(evidence['surface_labels'][0]['text'],'Footpath')
             self.assertFalse(evidence['world_placement_eligible'])
+            overlay=report['pages'][0]['outline_overlay']
+            svg=ET.fromstring((root/'output'/overlay['file']).read_bytes())
+            self.assertTrue(svg.find('{http://www.w3.org/2000/svg}image').attrib['href'].startswith('data:image/png;base64,'))
+            self.assertTrue(svg.findall('{http://www.w3.org/2000/svg}path'))
+            self.assertTrue(all(p.attrib['fill']=='none' for p in svg.findall('{http://www.w3.org/2000/svg}path')))
             self.assertIsNone(report['summary']['geometric_accuracy'])
             self.assertIsNone(report['summary']['physical_component_coverage'])
             self.assertFalse(report['summary']['reconstruction_completed'])
@@ -82,6 +90,43 @@ class PlanningPilotTests(unittest.TestCase):
             self.assertEqual((root/'source.pdf').read_bytes(),before)
             self.assertLessEqual(max(report['pages'][0]['preview']['size_pixels']),1202)
             with self.assertRaisesRegex(ValueError,'Fresh'):pilot.run(config,lambda p:root/p,root/'output')
+
+    def test_region_outlines_survive_whole_sheet_graph_budget_without_acceptance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);config=fixture(root)
+            original=pilot.building_pdf_discovery.discover_page
+            def incomplete(*args,**kwargs):
+                row=original(*args,**kwargs)
+                row.update(status='complete_source_topology_required',source_geometry=[],closed_source_faces=[])
+                return row
+            with patch.object(pilot.building_pdf_discovery,'discover_page',side_effect=incomplete):
+                report=pilot.run(config,lambda p:root/p,root/'output')
+            self.assertGreater(report['summary']['nominal_view_outlines'],0)
+            evidence=json.loads((root/'output'/report['pages'][0]['evidence_file']).read_text())
+            self.assertEqual(evidence['discovery']['source_geometry'],[])
+            self.assertFalse(evidence['view_geometry']['world_placement_eligible'])
+            self.assertIn('complete_source_topology_required',report['page_blocker_counts'])
+            self.assertEqual(report['summary']['reconstructed_buildings'],0)
+
+    def test_rotated_cropped_source_preview_and_overlay_share_native_pixel_frame(self):
+        with tempfile.TemporaryDirectory() as tmp, pymupdf.open() as doc:
+            root=Path(tmp);page=doc.new_page(width=600,height=500)
+            page.draw_rect((100,100,300,200));page.set_cropbox(pymupdf.Rect(50,50,550,450));page.set_rotation(90)
+            preview=pilot._preview(page,root/'page.png',1000)
+            native=pilot.native_inverse(page)
+            original_rect=pymupdf.Rect(50,50,250,150)
+            corners=[p* native for p in (original_rect.tl,original_rect.tr,original_rect.br,original_rect.bl)]
+            geometry={'type':'Polygon','coordinates':[[[p.x,p.y] for p in corners]+[[corners[0].x,corners[0].y]]]}
+            result={'surface_report':{'source_outline_inventory':{'records':[{
+                'candidate':{'geometry':geometry},'candidate_id':'fixture','native_metrics':{}}]}}}
+            overlay=pilot._outline_overlay(result,preview,root/'overlay.svg')
+            svg=ET.fromstring((root/'overlay.svg').read_bytes())
+            self.assertEqual(overlay['pdf_native_to_pixels'],preview['pdf_native_to_pixels'])
+            matrix=pymupdf.Matrix(preview['pdf_native_to_pixels'])
+            points=[p*matrix for p in corners]
+            self.assertEqual([[round(p.x),round(p.y)] for p in points],[[700,100],[700,500],[500,500],[500,100]])
+            self.assertIn('700.000,100.000',svg.find('{http://www.w3.org/2000/svg}path').attrib['d'])
+            self.assertEqual(page.rotation,90)
 
     def test_missing_and_wrong_source_do_not_become_completed_pages(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -131,9 +176,9 @@ class PlanningPilotTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);config=fixture(root,pages=2)
             original=pilot._page
-            def fail_first(page,sha,number,role):
+            def fail_first(page,sha,number,role,**kwargs):
                 if number==1:raise ValueError('Test drawing budget exceeded')
-                return original(page,sha,number,role)
+                return original(page,sha,number,role,**kwargs)
             with patch.object(pilot,'_page',side_effect=fail_first):
                 report=pilot.run(config,lambda p:root/p,root/'output')
             self.assertEqual(report['summary']['attempted_pages'],2)
@@ -145,8 +190,8 @@ class PlanningPilotTests(unittest.TestCase):
     def test_changed_source_or_cancellation_cannot_publish_a_success_report(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);config=fixture(root);original=pilot._page
-            def change_source(*args):
-                result=original(*args)
+            def change_source(*args,**kwargs):
+                result=original(*args,**kwargs)
                 with (root/'source.pdf').open('ab') as stream:stream.write(b'changed')
                 return result
             with patch.object(pilot,'_page',side_effect=change_source):

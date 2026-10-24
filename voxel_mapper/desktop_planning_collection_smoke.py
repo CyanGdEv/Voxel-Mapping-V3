@@ -52,6 +52,8 @@ def run(output):
             raise ValueError('Automatic collection did not complete its follow-up batch')
         if result['summary']['completed_sources']!=8 or result['unresolved_sources']:
             raise ValueError('Known synthetic sources were left unread')
+        if result['summary'].get('closed_source_outlines')!=7 or result['summary'].get('nominal_view_outlines',0)<7:
+            raise ValueError('Automatic batches lost source outlines or nominal view measurements')
         for name,pin in result['output_sha256'].items():
             if hashlib.sha256((pack/name).read_bytes()).hexdigest()!=pin:
                 raise ValueError('Planning collection snapshot output changed')

@@ -195,6 +195,8 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
         'visible_view_captions':0 if analysis is None else analysis['summary']['visible_view_captions'],
         'surface_candidates':0 if analysis is None else analysis['summary']['surface_candidates'],
         'surface_labels':0 if analysis is None else analysis['summary']['surface_labels'],
+        **{k:0 if analysis is None else analysis['summary'].get(k,0) for k in
+           ('closed_source_outlines','view_source_outlines','nominal_view_outlines')},
         'unattempted_document_links':len(web_report.get('unattempted_document_urls',[])),
         'unclassified_pages':sum(p['role']=='unclassified' for r in handoffs for p in r['pages']),
         'drawing_state_conflicts':sum(len(p['observed_states'])>1 for r in handoffs for p in r['pages'])}

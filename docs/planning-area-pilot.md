@@ -126,3 +126,5 @@ caption claims and one enclosed surface candidate, verifies output hashes and
 persistent restart, and confirms zero labels/checkpoints/physical acceptance.
 The Windows workflow runs this against the frozen executable in addition to
 source tests. A synthetic check does not supply real Alton reconstruction truth.
+
+Closed source outlines, bounded regional extraction, nominal scale measurements and source overlays are described in [planning outline recovery](planning-outline-recovery.md). They remain unclassified and unregistered.
