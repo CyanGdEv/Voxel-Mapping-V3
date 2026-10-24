@@ -1,10 +1,137 @@
-"""Bounded raster consistency screen for black native CAD glyphs using their original embedded font."""
+"""Bounded native glyph consistency using embedded programs or bound original resources."""
 import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v5'
+VERSION='source-font-glyph-raster-screen-v6'
 INK_VERSION='source-font-isolated-glyph-screen-v4'
+
+
+def _direct_winansi_resource(page,span,fonts):
+    """Bind unembedded direct WinAnsi text to its actual original show operator.
+
+    This narrow adapter needs explicit horizontal Tm positioning, no form text,
+    standard units and an unchanged native character/glyph/origin inventory.
+    It does not infer a resource from its name or eliminate an unknown font by
+    failed raster support. Unsupported cases keep the existing font holds.
+    """
+    import hashlib
+    import re
+    try:
+        from pypdf.generic import ContentStream, DecodedStreamObject
+        from pypdf.errors import PdfReadError
+    except ImportError:return None
+    from .drawing_page_tools import native_inverse
+    if (tuple(span['dir'])!=(1.,0.) or page.get_xobjects()
+            or page.parent.xref_get_key(page.xref,'UserUnit') not in (('null','null'),('int','1'),('real','1'))):
+        return None
+    supported={}
+    for font in fonts:
+        if (font[6]!=0 or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]*',font[4])
+                or font[2] not in ('TrueType','Type1') or font[5]!='WinAnsiEncoding'
+                or page.parent.xref_get_key(font[0],'Encoding')!=('name','/WinAnsiEncoding')
+                or page.parent.xref_get_key(font[0],'ToUnicode')!=('null','null')
+                or page.parent.extract_font(font[0])[3]):
+            continue
+        supported['/'+font[4]]=font
+    if not supported:return None
+    content=page.read_contents()
+    if len(content)>2000000:return None
+    stream=DecodedStreamObject();stream.set_data(content)
+    try:operations=ContentStream(stream,None).operations
+    except (ValueError,TypeError,KeyError,IndexError,PdfReadError):return None
+    if len(operations)>20000:return None
+    original=page.get_texttrace()
+    if len(original)>10000 or sum(len(r['chars']) for r in original)>100000:return None
+    indexed={};occurrences={}
+    def char_key(c):return (c[0],c[1],tuple(c[2]),tuple(c[3]))
+    for row in original:
+        if (any(row.get(k)!=span.get(k) for k in ('font','size','type','color','opacity','dir','layer'))
+                or tuple(row['dir'])!=(1.,0.) or row.get('type')!=0 or not row['chars']):continue
+        text=''.join(chr(c[0]) for c in row['chars'])
+        x,y=row['chars'][0][2]
+        key=(text,round(x,3),round(y,3),round(row['size'],6))
+        indexed.setdefault(key,[]).append(row)
+        for char in row['chars']:occurrences.setdefault(char_key(char),set()).add(row['seqno'])
+    if any(len(occurrences.get(char_key(c),set()))!=1 for c in span['chars']):return None
+    transform=~native_inverse(page)
+    cm=pymupdf.Matrix(1,0,0,1,0,0);font_key=None;size=0.;tm=None;stack=[]
+    bindings={};witnesses={};glyph_witnesses={};characters=0
+    for op_index,(args,op) in enumerate(operations):
+        if op==b'q':
+            if len(stack)>=64:return None
+            stack.append((cm,font_key,size));tm=None
+        elif op==b'Q':
+            if not stack:return None
+            cm,font_key,size=stack.pop();tm=None
+        elif op==b'cm':
+            if len(args)!=6:return None
+            try:cm=pymupdf.Matrix(*map(float,args))*cm
+            except (TypeError,ValueError):return None
+            tm=None
+        elif op==b'Tf':
+            if len(args)!=2:return None
+            try:font_key,size=str(args[0]),float(args[1])
+            except (TypeError,ValueError):return None
+        elif op==b'Tm':
+            try:tm=list(map(float,args)) if len(args)==6 else None
+            except (TypeError,ValueError):return None
+        elif op==b'gs':
+            if len(args)!=1:return None
+            name=str(args[0]).lstrip('/')
+            if not re.fullmatch(r'[A-Za-z][A-Za-z0-9]*',name):return None
+            kind,value=page.parent.xref_get_key(page.xref,'Resources/ExtGState/'+name)
+            if kind=='xref':
+                target=re.fullmatch(r'(\d+) 0 R',value)
+                if not target or page.parent.xref_get_key(int(target[1]),'Font')!=('null','null'):return None
+            elif kind!='dict' or re.search(r'/Font\b',value):return None
+        elif op in (b'BT',b'ET',b'Td',b'TD',b'T*',b"'",b'"',b'Ts',b'Tz'):tm=None
+        elif op in (b'Tj',b'TJ'):
+            positioned=tm;tm=None
+            if (font_key not in supported or positioned is None or positioned[:4]!=[1.,0.,0.,1.]
+                    or list(cm)[:4]!=[1.,0.,0.,1.]):continue
+            parts=[args[0]] if op==b'Tj' else [v for v in args[0] if isinstance(v,(str,bytes))]
+            if op==b'TJ':
+                first=next((i for i,v in enumerate(args[0]) if isinstance(v,(str,bytes))),len(args[0]))
+                if any(isinstance(v,(int,float)) and float(v)!=0 for v in args[0][:first]):continue
+            try:encoded=b''.join(v.original_bytes if hasattr(v,'original_bytes') else bytes(v) for v in parts)
+            except (AttributeError,TypeError,ValueError,UnicodeError):continue
+            characters+=len(encoded)
+            if characters>100000:return None
+            if not encoded or len(encoded)>500 or any(not 32<=v<=126 for v in encoded):continue
+            if not all(math.isfinite(v) for v in (*positioned,*list(cm),size)):return None
+            point=pymupdf.Point(positioned[4],positioned[5])*cm*transform
+            key=(encoded.decode('ascii'),round(point.x,3),round(point.y,3),round(size,6))
+            matching=indexed.get(key,[])
+            if len(matching)!=1:continue
+            for row in matching:
+                if math.dist(row['chars'][0][2],point)>.002:continue
+                selected=supported[font_key]
+                proof={'operator_index':op_index,'operator':op.decode('ascii'),'font_resource':font_key,
+                    'source_font_xref':selected[0],'encoded_ascii_sha256':hashlib.sha256(encoded).hexdigest(),
+                    'encoded_character_count':len(encoded),'source_text_matrix':positioned,
+                    'source_ctm':list(cm),'source_paint_seqno':row['seqno']}
+                witnesses[op_index]=proof
+                for char in row['chars']:
+                    bindings.setdefault(char_key(char),set()).add(selected[0])
+                    glyph_witnesses.setdefault(char_key(char),set()).add(op_index)
+    if stack:return None
+    resolved=[bindings.get(char_key(c),set()) for c in span['chars']]
+    if not resolved or any(len(r)!=1 for r in resolved):return None
+    identifiers=set.union(*resolved)
+    if len(identifiers)!=1:return None
+    selected=next(f for f in supported.values() if f[0] in identifiers)
+    # Identical same-name unembedded overprints from distinct resources cannot
+    # be proven by the glyph inventory; retain that ambiguity above.
+    contributing=set().union(*(glyph_witnesses[char_key(c)] for c in span['chars']))
+    relevant=[witnesses[i] for i in sorted(contributing)]
+    proof={'basis':'original_direct_text_show_operator_and_native_glyph_binding',
+        'source_font_xref':selected[0],'font_resource':selected[4],
+        'source_font_dictionary_sha256':hashlib.sha256(page.parent.xref_object(selected[0]).encode()).hexdigest(),
+        'source_content_sha256':hashlib.sha256(content).hexdigest(),'source_operations':relevant,
+        'position_match_tolerance_pdf_points':.002,'source_font_program_embedded':False,
+        'font_appearance_across_renderers_verified':False,'source_pdf_modified':False}
+    return selected,proof
 
 
 def simple_cff_codes(buffer, chars):
@@ -89,6 +216,14 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
         if len(candidates)>4 or sum(len(c['buffer']) for c in candidates.values())>4000000:
             return {**failure,'reason':'Source font alternative budget exceeded'}
     results=[]
+    if any(not c['buffer'] and any(f[3].split('+')[-1]!='Helvetica' for f in c['fonts'])
+           for c in candidates.values()):
+        bound=_direct_winansi_resource(page,span,fonts)
+        if bound is not None:
+            font,proof=bound
+            result=_screen_font(page,span,[font],b'',zoom=zoom,max_pixels=max_pixels,
+                                isolate_glyphs=isolate_glyphs,original_resource_proof=proof)
+            return {**result,'font_resource_resolution':proof}
     for digest,candidate in sorted(candidates.items()):
         result=_screen_font(page,span,candidate['fonts'],candidate['buffer'],
                             zoom=zoom,max_pixels=max_pixels,isolate_glyphs=isolate_glyphs)
@@ -110,12 +245,13 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
     return {**consistent[0],'font_resource_resolution':resolution}
 
 
-def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
+def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,original_resource_proof=None):
     """Screen one retained original font; candidates are never substituted fonts."""
     import hashlib
     version=INK_VERSION if isolate_glyphs else VERSION
     failure={'status':'withheld','visibility_verified':False,'version':version}
-    if not font_buffer and (span.get('font')!='Helvetica' or any(f[2]!='Type1' for f in fonts)):
+    if (not font_buffer and original_resource_proof is None
+            and (span.get('font')!='Helvetica' or any(f[2]!='Type1' for f in fonts))):
         return {**failure,'reason':'Unsupported unembedded font'}
     if page.cropbox.x0!=0 or page.cropbox.y0!=0:return {**failure,'reason':'Offset cropbox requires another raster-frame adapter'}
     directions={(1.,0.):0,(0.,-1.):90,(-1.,0.):180,(0.,1.):270}
@@ -137,7 +273,15 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
             font_name='nativeSource' if font_buffer else 'helv'
             direct_glyphs=False;glyph_codes=None;encoding='unicode';code_digits=4
-            if font_buffer:
+            if original_resource_proof is not None:
+                # Retain the original unembedded dictionary, encoding, widths
+                # and descriptor. Both rasters use the same PDF renderer; no
+                # replacement font program is chosen or inserted here.
+                document.insert_pdf(page.parent,from_page=page.number,to_page=page.number)
+                reference=document[-1];reference.set_rotation(0)
+                font_name=fonts[0][4];glyph_codes=[c[0] for c in span['chars']]
+                code_digits=2;direct_glyphs=True;encoding='source_unembedded_winansi_resource'
+            elif font_buffer:
                 xref=reference.insert_font(fontname=font_name,fontbuffer=font_buffer)
                 if font_buffer[:4] in (b'\x00\x01\x00\x00',b'true'):
                     import re
@@ -233,6 +377,8 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs):
                 'source_font_sha256':hashlib.sha256(font_buffer).hexdigest() if font_buffer else None,
                 'glyph_encoding':encoding,
                 'source_font_xrefs':[f[0] for f in fonts],'zoom_pixels_per_pdf_point':zoom,'source_rotation_restored':rotation,'glyphs':glyphs,
+                **({'source_font_program_embedded':False,'renderer_font_fallback_may_be_used':True,
+                    'font_appearance_across_renderers_verified':False} if original_resource_proof is not None else {}),
                 'ring_pixels':ring_count,'unexpected_dark_ring_pixels':unexpected,
                 'pixel_position_tolerance':1,'max_unsupported_core_fraction_per_glyph':.01,'max_unexpected_dark_ring_fraction':.01,
                 **({'glyph_support_basis':'isolated_original_glyph_ink',

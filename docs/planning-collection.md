@@ -126,3 +126,9 @@ No height is inferred from a two-length note; 3D generation remains withheld.
 Original sheet-reference circles and every contextual component rival survive
 verified restart. Numeric view indices do not identify lettered sections, and
 nominal size agreement never selects a physical component or assigns a height.
+
+[Conditional design massing](planning-design-massing.md) adds an offline interactive
+3D review and real GLB/specification exports for complete visible paired-row
+dimension claims. All spacing interpretations survive verified restart. Nested
+geometry exports are included in recursive output hashes and quotas; they do not
+authorize physical component correspondence or park placement.

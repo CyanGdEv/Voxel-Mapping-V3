@@ -113,3 +113,10 @@ Planning review outputs include section-correspondence.html. This retains origin
 sheet-reference circles and competing section/plan component hypotheses across
 automatic batches and restart. Similar widths and numeric view indices do not
 assign physical component identity, height or a 3D building.
+
+Planning Results can also include design-massing.html. Open it to rotate and
+zoom actual conditional 3D row-group envelopes from visible design-statement
+dimensions, and compare spacing alternatives. Each has a GLB model, source-linked
+specification and static SVG view. Local ground zero is assumed. These are group
+envelopes, not complete roofs, individually identified cabins or surveyed park
+placements. Extract the whole review folder so linked models remain available.
