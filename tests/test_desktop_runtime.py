@@ -31,7 +31,7 @@ def reviewed_fixture(suffix='initial',invert=False,training_records_per_building
 class DesktopRuntimeTests(unittest.TestCase):
     @contextmanager
     def runtime(self,path):
-        runtime=DesktopRuntime(path,workers=2,memory_budget_mb=2048)
+        runtime=DesktopRuntime(path,workers=2)
         try:yield runtime
         finally:runtime.close(wait=True)
 
@@ -69,6 +69,8 @@ class DesktopRuntimeTests(unittest.TestCase):
                     self.assertTrue((files/'request.json').is_file());self.assertTrue((files/'worker-result.json').is_file())
                     self.assertTrue((files/'worker.log').is_file())
                 self.assertEqual(runtime.snapshot()['config']['workers'],2)
+                self.assertEqual(runtime.snapshot()['config']['memory_budget_mb'],16384)
+                self.assertEqual(runtime.store.setting('profile')['memory_budget_mb'],16384)
                 self.assertEqual(runtime.store.summary()['feedback_records'],0)
                 self.assertGreaterEqual(runtime.store.summary()['knowledge_items'],3)
                 self.assertEqual(self.training_jobs(runtime),[])

@@ -17,10 +17,14 @@ reviewed decisions require an external reference and explicit feedback import.
 The included accuracy benchmark example is synthetic. It deliberately includes
 wrong and missing geometry; measurement completion does not mean geometry passed.
 
-The default profile supports a 6 GB RAM PC without a GPU: two CPU workers, a
-2048 MB observed worker-memory budget, and one heavy generation job at a time.
+The default profile needs no GPU: two CPU workers, a 16384 MB (16 GiB)
+observed managed-process memory budget, and one heavy generation job at a time.
 Memory is monitored and over-budget jobs are cancelled; this is not a hard OS
-memory reservation. Large regions and local language models may need more RAM.
+memory reservation or allocation at startup. Settings allow 512-16384 MB;
+lower the budget to leave RAM for Windows and other applications, especially
+on a PC with 16 GB total RAM. The previous 2048 MB setting remains available.
+Independent model servers are outside this budget. Large regions and local
+language models may need more RAM.
 
 Evidence, job history, reviewed feedback and model checkpoints are persistent
 in %LOCALAPPDATA%\VoxelMapperV3, or the folder selected in the UI. Application

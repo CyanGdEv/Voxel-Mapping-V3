@@ -24,7 +24,9 @@ manifest is included; original PDFs and checked reference geometry are separate.
 The [Windows desktop application](docs/windows-desktop-learning.md) runs world
 jobs in isolated background workers, remembers evidence and failures locally,
 and trains a small neural candidate ranker from independently reviewed feedback.
-Its default profile targets 6 GB RAM with no GPU. Windows builds package the
+Its default managed-process memory limit is 16 GB (16,384 MB), with no GPU
+required. Lower budgets remain available in Settings; leave RAM for the OS
+and other applications. Windows builds package the
 runtime into `VoxelMapperV3.exe`; optional local-model reasoning is separate.
 Choose **Generate an area** to run the included real Alton pilot without editing JSON.
 Use **Review and accuracy** to compare source PDFs with local geometry, save

@@ -18,6 +18,9 @@ KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_eviden
        'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection'}
 MAX_JSON_BYTES=16_000_000
+MIN_MEMORY_BUDGET_MB=512
+MAX_MEMORY_BUDGET_MB=16*1024
+DEFAULT_MEMORY_BUDGET_MB=MAX_MEMORY_BUDGET_MB
 
 
 def read_json(path,limit=MAX_JSON_BYTES):
@@ -98,9 +101,9 @@ def _terminate(process):
 
 
 class DesktopRuntime:
-    def __init__(self,data_directory,workers=2,memory_budget_mb=2048):
+    def __init__(self,data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB):
         if type(workers) is not int or not 1<=workers<=4:raise ValueError('Choose one to four CPU workers')
-        if type(memory_budget_mb) is not int or not 512<=memory_budget_mb<=3072:raise ValueError('Choose a 512–3072 MB managed-process memory budget')
+        if type(memory_budget_mb) is not int or not MIN_MEMORY_BUDGET_MB<=memory_budget_mb<=MAX_MEMORY_BUDGET_MB:raise ValueError(f'Choose a {MIN_MEMORY_BUDGET_MB}–{MAX_MEMORY_BUDGET_MB} MB managed-process memory budget')
         self.directory=Path(data_directory).expanduser().resolve();self.directory.mkdir(parents=True,exist_ok=True)
         self._directory_lock=DirectoryLock(self.directory/'runtime.lock')
         try:self.store=MemoryStore(self.directory)

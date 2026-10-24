@@ -64,21 +64,25 @@ observations, reviewed examples, dataset splits and open JSON model checkpoints
 across application updates. It is local storage, not a cloud account or the
 language model's hidden context.
 
-## 6 GB RAM, no GPU profile
+## 16 GB managed memory limit, no GPU
 
 Defaults are two CPU worker slots, one heavy generation/reasoning job at a time,
-and a 2,048 MB observed memory budget across managed processes. Worker settings
-allow one to four slots and a 512–3,072 MB managed-process budget. NumPy/BLAS
+and a 16,384 MB (16 GiB) observed memory budget across managed processes. Worker settings
+allow one to four slots and a 512–16,384 MB managed-process budget. NumPy/BLAS
 threads are capped at one inside each managed worker to avoid oversubscription.
 A running generation can coexist with lightweight neural training when two
 slots are available. The GUI polls status asynchronously and remains responsive.
 
 Memory monitoring cancels an over-budget process tree; polling is not an
 instantaneous operating-system reservation. It includes the desktop's managed
-process tree, but cannot budget an independently running Ollama server. Optional
+process tree, but cannot budget an independently running Ollama server. Memory
+is allocated as needed, rather than reserved at startup. Leave RAM for Windows
+and other applications: a PC with 16 GB total RAM needs a lower managed budget.
+The previous 2,048 MB setting remains available for smaller PCs, including the
+original 6 GB RAM profile. Optional
 reasoning is off until a user supplies a model job. Its CPU profile requests
 2,048 context tokens, at most 512 output tokens, two inference threads and model
-unloading after the request. Large models or large areas can exceed a 6 GB
+unloading after the request. Large models or large areas can exceed the
 machine's practical capacity. Training a large language model from scratch is
 not supported by this profile.
 
