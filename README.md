@@ -1,8 +1,10 @@
 ## Windows desktop and CPU learning
 
-[Paper-qualified planning scales](docs/planning-paper-scale-context.md) recover original title/scale fragments and select nominal scale by the original ISO paper. The real Wicker title still has two unsupported coloured glyph fragments, so its area frame remains withheld.
+[Original PDF text transforms](docs/source-text-transforms.md) preserve word scaling without loosening glyph checks. The Wicker title now passes and supported surface labels increase from 9 to 46/134; fine recovery now exceeds its unchanged 32-region limit, so real area export remains withheld.
 
-[Regional surface recovery](docs/regional-surface-recovery.md) replaces the encompassing fine scan with bounded label windows and shared original-page paint data. The Wicker development replay completes nine windows within the existing candidate limit; two source-boundary hypotheses remain unregistered, and area scale/context still needs work.
+[Paper-qualified planning scales](docs/planning-paper-scale-context.md) recover original title/scale fragments and select nominal scale by the original ISO paper. The original-transform stage now supports the previously withheld Wicker title.
+
+[Regional surface recovery](docs/regional-surface-recovery.md) replaces the encompassing fine scan with bounded label windows and shared original-page paint data. The earlier nine-label Wicker replay completed nine windows within the existing candidate limit; the later transform stage exposes a larger supported inventory requiring further bounded recovery.
 
 [Original-colour planning labels](docs/coloured-planning-labels.md) verify supported coloured text against original glyph shape and RGB evidence. The Wicker development replay improves supported surface/material labels from 3 to 9 out of 134, while complete area geometry remains unresolved.
 

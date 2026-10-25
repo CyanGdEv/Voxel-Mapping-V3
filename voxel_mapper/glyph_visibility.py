@@ -3,8 +3,8 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v7'
-INK_VERSION='source-font-isolated-glyph-screen-v5'
+VERSION='source-font-glyph-raster-screen-v8'
+INK_VERSION='source-font-isolated-glyph-screen-v6'
 
 
 def _source_rgb(span):
@@ -364,13 +364,20 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
                         except (ValueError, KeyError, IndexError, AssertionError) as error:
                             return {**failure,'reason':str(error)}
                         direct_glyphs=True;encoding='source_cff_charset_cids'
+            transform_proof=None
             if direct_glyphs:
+                from .source_text_transforms import bind
+                transform_proof=bind(page,span,fonts,glyph_codes,code_digits)
                 # Preserve the actual PDF glyph IDs. CAD subset fonts often
                 # have no Unicode cmap, so re-encoding their text loses ink.
                 dx,dy=direction;commands=[]
                 for character,code in zip(span['chars'],glyph_codes):
                     x,y=character[2]
-                    commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:0{code_digits}x}> Tj ET')
+                    if transform_proof is not None:
+                        a,b,c,d=transform_proof['effective_font_basis_pdf_native']
+                        commands.append(f'BT /{font_name} 1 Tf {a:.12g} {b:.12g} {c:.12g} {d:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:0{code_digits}x}> Tj ET')
+                    else:
+                        commands.append(f'BT /{font_name} {span["size"]:.12g} Tf {dx:.12g} {-dy:.12g} {dy:.12g} {dx:.12g} {x:.12g} {reference.rect.height-y:.12g} Tm <{code:0{code_digits}x}> Tj ET')
                 content=document.get_new_xref();document.update_object(content,'<<>>')
                 document.update_stream(content,'\n'.join(commands).encode('ascii'))
                 document.xref_set_key(reference.xref,'Contents',f'{content} 0 R')
@@ -420,6 +427,7 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
         return {'status':'raster_consistent_candidate' if supported else 'withheld','version':version,'visibility_verified':False,
                 'source_font_sha256':hashlib.sha256(font_buffer).hexdigest() if font_buffer else None,
                 'glyph_encoding':encoding,
+                **({'source_text_transform':transform_proof} if transform_proof is not None else {}),
                 'source_font_xrefs':[f[0] for f in fonts],'zoom_pixels_per_pdf_point':zoom,'source_rotation_restored':rotation,'glyphs':glyphs,
                 **({'source_font_program_embedded':False,'renderer_font_fallback_may_be_used':True,
                     'font_appearance_across_renderers_verified':False} if original_resource_proof is not None else {}),
