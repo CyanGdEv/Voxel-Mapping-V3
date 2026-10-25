@@ -26,6 +26,7 @@ from . import planning_section_profiles, planning_section_correspondence
 from . import planning_section_cuts, planning_design_dimensions, planning_design_massing
 from . import planning_surface_footprints, planning_area_layout, paving_palette
 from . import planning_area_scale, caption_fragments
+from . import source_text_transforms
 from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
@@ -413,7 +414,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             planning_outline_semantics,glyph_visibility,planning_component_footprints,planning_component_measurements,
             planning_section_profiles,planning_section_correspondence,
             planning_section_cuts,planning_design_dimensions,planning_design_massing,
-            planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,
+            planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,source_text_transforms,
             paving_palette,building_spec,study_mesh_export,wing_shell_study)},
         'surface_footprint_limits':dict(planning_surface_footprints.LIMITS),
         'surface_footprint_search_margin_points':planning_surface_footprints.SEARCH_MARGIN_POINTS,

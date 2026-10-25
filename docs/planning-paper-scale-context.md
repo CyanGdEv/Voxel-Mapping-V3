@@ -1,5 +1,9 @@
 # Paper-qualified planning scales
 
+This page records the earlier scale stage. The later [original text-transform
+upgrade](source-text-transforms.md) resolves the Wicker title screen and exposes
+a regional recovery budget blocker.
+
 Source-local area layouts can now interpret one or two literal paper-qualified
 scale rows below a single visible site/block plan title. Both `1:250 @ A1` and
 `1/250 @ A1` notation are supported. Each original text fragment is retained

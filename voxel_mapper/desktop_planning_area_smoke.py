@@ -1,5 +1,6 @@
 """Full source-plan to saved local layout through real managed desktop jobs."""
 import hashlib
+import base64
 import json
 import math
 from pathlib import Path
@@ -9,6 +10,33 @@ from shapely.geometry import shape
 
 from .desktop_runtime import DesktopRuntime, _wait, write_json
 from .planning_area_pilot import VERSION
+from .glyph_visibility import screen_architectural_span
+
+
+# Original 748-byte synthetic TrueType program: A triangle and B rectangle.
+_TRANSFORM_FONT='AAEAAAAKAIAAAwAgT1MvMkUhRDYAAAEoAAAAYGNtYXAADACVAAABkAAAADRnbHlmLwD8igAAAcwAAAAyaGVhZFm5pJwAAACsAAAANmhoZWEFegH2AAAA5AAAACRobXR4ArwAZAAAAYgAAAAIbG9jYQAMABkAAAHEAAAACG1heHAABQAGAAABCAAAACBuYW1lEn9neQAAAgAAAADDcG9zdAApACUAAALEAAAAKAABAAAAAQAA0+n7tF8PPPUAAwPoAAAAAHwlsIAAAAAAfCWwgABkAAAB9AK8AAAAAwACAAAAAAAAAAEAAAMg/zgAAAJYAGQAZAH0AAEAAAAAAAAAAAAAAAAAAAABAAEAAAADAAQAAQAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAwJYAZAABQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAPz8/PwAAAEEAQgMg/zgAAAMgAMgAAAAAAAAAAAAAAAAAAAAgAAACWAAAAGQAZAAAAAIAAAADAAAAFAADAAEAAAAUAAQAIAAAAAQABAABAAAAQv//AAAAQf///8AAAQAAAAAAAAAAAAwAGQABAGQAAAH0ArwAAgAAMyEDZAGQyAK8AAABAGQAAAH0ArwAAwAAMyERIWQBkP5wArwAAAAAAAAKAH4AAQAAAAAAAQAQAAAAAQAAAAAAAgAHABAAAQAAAAAAAwAQAAAAAQAAAAAABAAQAAAAAQAAAAAABgAQAAAAAwABBAkAAQAgABcAAwABBAkAAgAOADcAAwABBAkAAwAgABcAAwABBAkABAAgABcAAwABBAkABgAgABdUcmFuc2Zvcm1GaXh0dXJlUmVndWxhcgBUAHIAYQBuAHMAZgBvAHIAbQBGAGkAeAB0AHUAcgBlAFIAZQBnAHUAbABhAHIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAACQAJQ=='
+
+
+def _check_text_transform(root):
+    source=root/'native-transform-original.pdf'
+    with pymupdf.open() as document:
+        page=document.new_page(width=300,height=180)
+        font=page.insert_font(fontname='fixture',fontbuffer=base64.b64decode(_TRANSFORM_FONT))
+        document.xref_set_key(font,'BaseFont','/TransformFixture')
+        anchor=pymupdf.Point(80,90)
+        page.insert_text(anchor,'AB',fontname='fixture',fontsize=12,color=(1,0,0),
+            morph=(anchor,pymupdf.Matrix(1.4,0,0,1,0,0)))
+        document.save(source)
+    before=hashlib.sha256(source.read_bytes()).hexdigest()
+    with pymupdf.open(source) as document:
+        page=document[0];screen=screen_architectural_span(page,page.get_texttrace()[0])
+    proof=screen.get('source_text_transform',{});basis=proof.get('effective_font_basis_pdf_native',[])
+    if (screen['status']!='raster_consistent_candidate' or len(basis)!=4
+            or not math.isclose(basis[0]/basis[3],1.4,rel_tol=1e-6)
+            or proof.get('encoded_glyph_count')!=2
+            or hashlib.sha256(source.read_bytes()).hexdigest()!=before):
+        raise ValueError('Original anisotropic glyph transform check failed')
+    write_json(root/'original-text-transform.json',{'original_pdf_sha256':before,'screen':screen})
 
 
 def make_source(path):
@@ -39,6 +67,7 @@ def run(output):
     root=Path(output).resolve()
     if root.exists():raise ValueError('Fresh planning area smoke output required')
     root.mkdir(parents=True)
+    _check_text_transform(root)
     source=root/'synthetic-area-original.pdf';sha=make_source(source)
     config={'version':VERSION,'area_id':'synthetic-shared-plan-area',
         'application_references':['synthetic-fixture'],'source_directory':str(root),
@@ -116,6 +145,7 @@ def run(output):
         'coloured_original_labels_verified':True,
         'regional_surface_windows_verified':True,
         'original_paper_scale_verified':True,
+        'original_text_transform_verified':True,
         'independent_building_centroid_spacing_m':expected_offset,
         'saved_paving_components':2,'saved_paving_cells':149,
         'persistent_restart_verified':True,'real_park_accuracy_assessed':False,

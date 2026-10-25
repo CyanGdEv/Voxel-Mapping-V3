@@ -1,0 +1,439 @@
+{
+  "after": {
+    "area_hold": "complete_fine_boundary_discovery_required",
+    "coarse_building_role_hints": 3,
+    "fine_boundary_hypotheses": 0,
+    "fine_hold": "surface_region_budget_exceeded",
+    "real_area_frame_generated": false,
+    "real_area_world_generated": false,
+    "region_limit": 32,
+    "total_surface_labels": 134,
+    "visible_surface_labels": 46
+  },
+  "all_report_output_hashes_verified": true,
+  "before": {
+    "fine_boundary_hypotheses": 2,
+    "title_status": "withheld",
+    "total_surface_labels": 134,
+    "visible_surface_labels": 9
+  },
+  "independent_nominal_context_check": {
+    "measurement_sha256": "c8ae11d2041f735746a26a75eaeaab8f50e8bbba349415932528d5903b19384d",
+    "physical_scale_verified": false,
+    "scale_resolution": {
+      "basis": "original_page_iso_paper_match",
+      "physical_scale_verified": false,
+      "printed_scale_denominator": 250,
+      "scale_alternatives_sha256": "b1c119c0edaff10422056ac9c81fca49aa8a808c34586b148e6fa2f2ecdb9989",
+      "selected_paper_size": "A1",
+      "selected_scale_sha256": "f8dd65110c9492697bb7a8434fb05c7b9d078f01716413499bf19c265cd71a50"
+    },
+    "visible_contexts": 1
+  },
+  "local_focused_tests": {
+    "seconds": 100.354,
+    "skips": 1,
+    "status": "passed",
+    "tests": 103
+  },
+  "model_weights_updated": false,
+  "new_transform_tests": 9,
+  "report_sha256": "25f68ba01689053521f830ec7ddf2cb46ef19b57e23e07123127522facf88fa2",
+  "runtime_implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "a9be3075a4334bd615c011d7054fb5083c1783832e0a27ed6625e81220408772"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "87c57c355f60d39dbcd203d7690472601cab7d6665ad4d3c49394ef8ed5cf6ba"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "3306a7ae2d545f26e3cb8307f97edf4afdcd3a19c4c235fb4139af1dae3ff7c3"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "e50262df9a3d8535815ff91a08711cace01907df9fcd41c87c7eb7f613f4cd2e"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "52399c4e78943fd61c6dd47da444981593546303ae163a355698d4c2615ddeb8"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.source_text_transforms": {
+      "basis": "module_file_bytes",
+      "sha256": "6cd94779061b7bc9e075027a8ba81daa803e06b02973808dd0dea55b3728b367"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "source_exposure": "previously_inspected_development",
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "title": {
+    "native_fragment_count": 7,
+    "non_whitespace_fragments": [
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.34195613861084,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "edd5896c488c2a98bd4fd25075f85ddab1d8a8ecb3aa72eff1046b3e040fc4bd",
+          "encoded_glyph_count": 4,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5017,
+          "native_trace_sha256": "d9979a840a86e61f26b2a14ba247e87b2ec237ed03edf976fa8b5acd7398ac1c",
+          "operator_count": 351398,
+          "operator_index": 348811,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            1.01285,
+            0.0,
+            0.0,
+            -1.0,
+            8557.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "Site"
+      },
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.248641967773438,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "c0dda2eb1a6dcf185716aa29e4935dc9a32822daeddac538bd585fd621cd8f5a",
+          "encoded_glyph_count": 5,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5018,
+          "native_trace_sha256": "318906b80395f58403111c4719b24794d4fcaf9f659732b41b3db3024ae6b293",
+          "operator_count": 351398,
+          "operator_index": 348813,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            1.00626,
+            0.0,
+            0.0,
+            -1.0,
+            8651.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "Plan"
+      },
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.317317008972168,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "964cc243e270e856ebb1792d5a3c09df1e766267e11611fdf2d1c325b11f9e1f",
+          "encoded_glyph_count": 9,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5019,
+          "native_trace_sha256": "7332c59d4593678d5d249c33646bda4bb1418734092f098069e29dc97a0e281f",
+          "operator_count": 351398,
+          "operator_index": 348815,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            1.01111,
+            0.0,
+            0.0,
+            -1.0,
+            8779.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "Proposed"
+      },
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.236180305480957,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "62d300b714bdcb8b139a336252d9ad7d07e7d5bfd4f55fda629a36d2bceb422e",
+          "encoded_glyph_count": 7,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5021,
+          "native_trace_sha256": "96216413a883b7ad1898ef02e81e4c6f32a716f043444a46ba8b0233bb25f841",
+          "operator_count": 351398,
+          "operator_index": 348822,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            1.00538,
+            0.0,
+            0.0,
+            -1.0,
+            9047.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "showing"
+      },
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.15999984741211,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "5e5ea32d4d738de3581a056f5e7bd1ac3671d80990825806633e7df9775026ac",
+          "encoded_glyph_count": 9,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5022,
+          "native_trace_sha256": "1d765d9c1fd7f5013cba4d49c3684c1ba71f4c7a481dadd3daee14f8e349cd01",
+          "operator_count": 351398,
+          "operator_index": 348824,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0,
+            9259.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "Woodland"
+      },
+      {
+        "binding": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            14.015398025512695,
+            0.0,
+            0.0,
+            14.15999984741211
+          ],
+          "encoded_glyph_bytes_sha256": "c1ab351579e9aff393a8e40ff8da369ede92e7210c738c11ce5cbc2e742dc8f1",
+          "encoded_glyph_count": 5,
+          "font_resource": "F103",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 5023,
+          "native_trace_sha256": "ad923458d494438471c9c70316ba61ee91296f234e4150a1e9e667c5f62955e2",
+          "operator_count": 351398,
+          "operator_index": 348826,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 59.0,
+          "source_font_xref": 308,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            0.989788,
+            0.0,
+            0.0,
+            -1.0,
+            9529.0,
+            6316.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "source_font_sha256": "97b7014d7dd143a460ac75b8dbc0c7ff062aa9d03bdf26f9dba996210bbad45b",
+        "status": "raster_consistent_candidate",
+        "text": "Path"
+      }
+    ],
+    "status": "raster_consistent_candidate",
+    "text": "Site Plan Proposed showing Woodland Path"
+  },
+  "training_labels_generated": 0,
+  "unchanged_glyph_thresholds": {
+    "colour_residual_tolerance_rgb_levels": 12,
+    "max_unsupported_core_fraction_per_glyph": 0.01,
+    "pixel_position_tolerance": 1
+  },
+  "unseen_accuracy_benchmark": false,
+  "version": "source-text-transform-development-validation-v1",
+  "windows_linux_ci": "recorded separately after publication",
+  "world_geometry_additions": 0
+}
