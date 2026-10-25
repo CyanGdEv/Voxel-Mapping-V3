@@ -51,6 +51,9 @@ on:
       - 'voxel_mapper/planning_design_dimensions.py'
       - 'voxel_mapper/planning_design_massing.py'
       - 'voxel_mapper/planning_world_preview.py'
+      - 'voxel_mapper/planning_surface_footprints.py'
+      - 'voxel_mapper/planning_area_layout.py'
+      - 'voxel_mapper/planning_area_world_preview.py'
       - 'voxel_mapper/bedrock.py'
       - 'voxel_mapper/glyph_visibility.py'
       - 'voxel_mapper/drawing_view_candidates.py'
@@ -83,6 +86,11 @@ on:
       - 'tests/test_planning_design_dimensions.py'
       - 'tests/test_planning_design_massing.py'
       - 'tests/test_planning_world_preview.py'
+      - 'tests/test_planning_surface_footprints.py'
+      - 'tests/test_planning_area_layout.py'
+      - 'tests/test_planning_area_world_preview.py'
+      - 'tests/test_planning_area_layout_integration.py'
+      - 'tests/test_planning_collection_area_layout.py'
       - 'tests/test_design_glyph_visibility.py'
       - 'tests/test_glyph_visibility.py'
       - 'tests/test_drawing_view_candidates.py'
@@ -173,6 +181,16 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Conditional source design massing tests failed' }
           python -m unittest discover -s tests -p 'test_planning_world_preview.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Conditional Bedrock preview world tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_surface_footprints.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Fine path and plaza boundary tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_area_layout.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Shared-frame area geometry tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_area_world_preview.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Saved source-local area world tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_area_layout_integration.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Managed pilot area layout tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_collection_area_layout.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Durable collection area layout tests failed' }
           python -m unittest discover -s tests -p 'test_design_glyph_visibility.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Design statement source-font visibility tests failed' }
           python -m unittest discover -s tests -p 'test_glyph_visibility.py' -v
@@ -241,6 +259,11 @@ jobs:
         run: |
           & ./dist/VoxelMapperV3/VoxelMapperV3.exe --planning-pilot-smoke-test build/desktop-validation/planning-pilot 2>&1 | Tee-Object build/desktop-validation/planning-pilot.log
           if ($LASTEXITCODE -ne 0) { throw 'Frozen planning pilot smoke test failed' }
+      - name: Exercise frozen source plan to saved area layout world
+        shell: pwsh
+        run: |
+          & ./dist/VoxelMapperV3/VoxelMapperV3.exe --planning-area-smoke-test build/desktop-validation/planning-area 2>&1 | Tee-Object build/desktop-validation/planning-area.log
+          if ($LASTEXITCODE -ne 0) { throw 'Frozen shared-plan area world check failed' }
       - name: Exercise frozen web evidence worker and persistent citations
         shell: pwsh
         run: |

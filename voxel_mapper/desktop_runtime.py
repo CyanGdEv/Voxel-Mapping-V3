@@ -18,6 +18,8 @@ from .desktop_memory import MemoryStore, canonical, digest, source_separated_spl
 KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_evidence','import_feedback','train_ranker','reason',
        'prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
+KINDS.add('planning_area_world_preview')
+HEAVY.add('planning_area_world_preview')
 MAX_JSON_BYTES=16_000_000
 MIN_MEMORY_BUDGET_MB=512
 MAX_MEMORY_BUDGET_MB=16*1024
@@ -256,6 +258,62 @@ class DesktopRuntime:
             config.update(benchmark_path=str(path),benchmark_sha256=file_hash(path))
         request=self.directory/'correction-requests'/(uuid.uuid4().hex+'.json');write_json(request,config)
         return self.submit('regenerate_corrections',request)
+
+    def planning_area_layouts(self,completed_job_id):
+        """List intact source-local plan pages from a completed planning job."""
+        try:job=self.store.job(completed_job_id)
+        except KeyError as error:raise ValueError('Select a completed planning job first') from error
+        if (job['status']!='completed' or job['kind'] not in
+                ('planning_source_pilot','web_planning_pilot','planning_collection')):
+            raise ValueError('Select a completed planning source, web planning or collection job first')
+        root=Path(job['output_directory']).resolve()
+        prefix='analysis/' if job['kind']=='web_planning_pilot' else ''
+        manifest=(job.get('result') or {}).get('output_sha256',{})
+        name=prefix+'area-layouts.json';path=root/name
+        if (not path.is_file() or path.stat().st_size>8_000_000
+                or file_hash(path)!=manifest.get(name)):
+            raise ValueError('Saved area layouts are missing or changed; run the planning analysis again')
+        review=read_json(path,8_000_000)
+        rows=review.get('page_layout_files')
+        if not isinstance(rows,list) or len(rows)>512:
+            raise ValueError('Bounded saved area page inventory required')
+        usable=[]
+        for row in rows:
+            if not isinstance(row,dict):raise ValueError('Saved area page descriptor required')
+            relative=row.get('file')
+            if (not isinstance(relative,str) or not relative.startswith('area-layout-')
+                    or '/' in relative or '\\' in relative or not relative.endswith('.json')):
+                raise ValueError('Saved area page must stay within its planning output')
+            page_path=root/(prefix+relative)
+            pin=manifest.get(prefix+relative)
+            if (pin!=row.get('sha256') or not isinstance(pin,str) or len(pin)!=64
+                    or not page_path.is_file() or page_path.stat().st_size>8_000_000
+                    or file_hash(page_path)!=pin):
+                raise ValueError('Saved area page changed; run the planning analysis again')
+            page=read_json(page_path,8_000_000)
+            if (page.get('id')!=row.get('id') or page.get('analysis_complete') is not True
+                    or not page.get('shared_frame') or not page.get('candidates')):continue
+            usable.append({**row,'layout_path':str(page_path),'layout_sha256':pin})
+        if not usable:
+            raise ValueError('No measured area page is available. Open area-layouts.html for the missing scale, scope or boundary evidence.')
+        return usable
+
+    def submit_planning_area_world_preview(self,completed_job_id,*,layout_id=None):
+        """Export a selected plan page without inventing building heights."""
+        from .planning_area_world_preview import VERSION,validate
+        rows=self.planning_area_layouts(completed_job_id)
+        if layout_id is None:
+            if len(rows)!=1:raise ValueError('Choose one measured plan page for this preview')
+            row=rows[0]
+        else:
+            matches=[r for r in rows if r['id']==layout_id]
+            if len(matches)!=1:raise ValueError('Selected plan page is absent or ambiguous')
+            row=matches[0]
+        config={'version':VERSION,'layout_path':row['layout_path'],'layout_sha256':row['layout_sha256']}
+        validate(config)
+        request=self.directory/'planning-area-world-requests'/(uuid.uuid4().hex+'.json')
+        write_json(request,config)
+        return self.submit('planning_area_world_preview',request)
 
     def submit_study_training(self,dataset_directory,*,epochs=150,hidden_units=16):
         """Fit an exploratory crop recognizer; never activate a building ranker."""
@@ -592,6 +650,10 @@ def _worker(request):
         result=train(directory,output,epochs=epochs,hidden_units=hidden_units,
                      cancelled=cancelled,progress=progress)
         if file_hash(manifest)!=pin:raise ValueError('Study dataset changed during training')
+    elif kind=='planning_area_world_preview':
+        from .planning_area_world_preview import run
+        config={**config,'layout_path':str(resolve_path(config_path,config.get('layout_path')))}
+        result=run(config,output,cancelled=cancelled,progress=progress)
     elif kind=='planning_world_preview':
         from .planning_world_preview import run
         config={**config,'review_path':str(resolve_path(config_path,config.get('review_path')))}

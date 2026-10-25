@@ -16,6 +16,11 @@ VERSION='planning-document-collection-v1'
 LIMITS={'max_batches':12,'max_urls':64,'max_attempts':3,'max_seconds':900,
         'max_run_bytes':64000000,'max_output_bytes':128000000}
 TRANSIENT_HTTP={408,425,429,500,502,503,504}
+SURFACE_BOUNDARY_COUNTERS=('surface_boundary_candidates','extracted_surface_labels',
+    'visible_surface_labels','unresolved_surface_labels')
+AREA_LAYOUT_COUNTERS=('nominal_area_layout_candidates','nominal_area_building_candidates',
+    'nominal_area_path_plaza_candidates','nominal_area_boundary_contacts',
+    'nominal_area_overlap_pairs','nominal_area_gap_pairs','registered_area_layouts')
 
 
 def validate(config):
@@ -44,6 +49,9 @@ def contract(config):
     value['development_exposure']=value.get('development_exposure','unassessed')
     return {'version':VERSION,'scope':value,'pymupdf_version':pilot.pymupdf.VersionBind,
         'text_operator_parser_version':pilot.planning.pypdf.__version__,
+        'surface_footprint_limits':dict(pilot.planning.planning_surface_footprints.LIMITS),
+        'surface_footprint_search_margin_points':pilot.planning.planning_surface_footprints.SEARCH_MARGIN_POINTS,
+        'area_layout_limits':dict(pilot.planning.planning_area_layout.LIMITS),
         'semantic_backends':pilot.planning.planning_outline_semantics.BACKENDS,'implementations':{
         m.__name__:pilot.planning._implementation(m) for m in
         (sys.modules[__name__],pilot,pilot.planning,pilot.captions,web,web_research,
@@ -51,6 +59,7 @@ def contract(config):
          pilot.planning.planning_view_geometry,pilot.planning.drawing_geometry,
          pilot.planning.linework_boundaries,pilot.planning.drawing_page_tools,
          pilot.planning.building_raster_views,pilot.planning.planning_outline_semantics,pilot.planning.glyph_visibility,
+         pilot.planning.planning_surface_footprints,pilot.planning.planning_area_layout,pilot.planning.paving_palette,
          pilot.planning.planning_component_footprints,pilot.planning.planning_component_measurements,
          pilot.planning.planning_section_profiles,pilot.planning.planning_section_correspondence,
          pilot.planning.planning_section_cuts,pilot.planning.planning_design_dimensions,
@@ -277,7 +286,8 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
             'surface_labels':0,'surface_candidates':0,
             'closed_source_outlines':0,'view_source_outlines':0,'nominal_view_outlines':0,
             'source_outline_role_hints':0,'building_outline_hints':0,'path_plaza_outline_hints':0,'component_boundary_candidates':0,
-            'section_cut_topology_candidates':0,'source_design_dimension_claims':0}
+            'section_cut_topology_candidates':0,'source_design_dimension_claims':0,
+            **{name:0 for name in SURFACE_BOUNDARY_COUNTERS+AREA_LAYOUT_COUNTERS}}
         analysis_gaps={}
         for record,result in reports:
             for item in result['sources']:sources[item['requested_url']]=item
@@ -293,16 +303,19 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
                          'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates',
                          'section_cut_topology_candidates','source_design_dimension_claims'):
                 summary[name]+=result['summary'].get(name,0)
+            for name in SURFACE_BOUNDARY_COUNTERS+AREA_LAYOUT_COUNTERS:
+                summary[name]+=result['summary'].get(name,0)
         unresolved=[deepcopy(e) for e in state['entries'].values() if e['status']!='completed']
         summary['unresolved_sources']=len(unresolved)
         summary['documents_needing_analysis_review']=len(analysis_gaps)
-        measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[]
+        measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[];area_pages=[]
         for path in sorted(root.glob('batches/*/analysis/*-page-*.json')):
             check();evidence=json.loads(path.read_text(encoding='utf-8'))
             correspondence_pages.append(pilot.planning.planning_section_correspondence.source_page(evidence))
             if evidence.get('design_dimensions'):dimension_pages.append(evidence['design_dimensions'])
             if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
             if evidence.get('section_profiles'):profile_pages.append(evidence['section_profiles'])
+            if evidence.get('area_layout'):area_pages.append(evidence['area_layout'])
         measurement_review=pilot.planning.planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
         pilot.planning.planning_component_measurements.write_review(root,measurement_review)
         summary.update(measurement_review['summary'])
@@ -314,12 +327,16 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
         massing_review=pilot.planning.planning_design_massing.review_pages(dimension_pages,cancelled=cancelled)
         pilot.planning.planning_design_massing.write_review(root,massing_review,cancelled=cancelled)
         summary.update(massing_review['summary'])
+        area_review=pilot.planning.planning_area_layout.write_review(root,area_pages,cancelled=cancelled)
+        summary.update(area_review['summary'])
         body='<h1>'+escape(config['pilot']['area_id'])+'</h1><p>Planning document collection. Source membership and physical geometry remain unverified.</p><ul>'
         body+=''.join('<li><a href="batches/batch-'+str(r['number']).zfill(4)+'/review.html">Batch '+str(r['number'])+' drawings and source gaps</a></li>' for r,_ in reports)
         body+='</ul><p>'+str(len(unresolved))+' unresolved sources. Stop: '+escape(stop)+'.</p>'
         body+='<p>'+str(summary['closed_source_outlines'])+' unclassified closed source outlines; '+str(summary['nominal_view_outlines'])+' outlines with nominal view measurements. These inventories may overlap. Physical identity, scale application and geographic placement remain unverified.</p><p><a href="ledger.json">Saved document queue</a></p>'
         body+='<p>'+str(summary['source_outline_role_hints'])+' source-label enclosure hints ('+str(summary['building_outline_hints'])+' building-related; '+str(summary['path_plaza_outline_hints'])+' path/plaza-related). Open each batch for original-page overlays and exact label evidence.</p>'
         body+='<p>'+str(summary['component_boundary_candidates'])+' fine component boundary hypotheses; physical building exteriors remain unverified.</p>'
+        body+='<p>'+str(summary['surface_boundary_candidates'])+' source surface boundary hypotheses; '+str(summary['unresolved_surface_labels'])+' surface labels still lack a supported boundary.</p>'
+        body+='<p><a href="area-layouts.html">Source-local building and path layouts</a>: '+str(summary['nominal_area_layout_candidates'])+' nominal boundary candidates; '+str(summary['nominal_area_boundary_contacts'])+' boundary-contact hypotheses. Printed scale and a common drawing frame support source comparisons; physical heights, traversability and geographic registration remain unresolved.</p>'
         body+='<p><a href="component-measurements.html">Nominal component plans and printed-size diagnostics</a>: '+str(summary['size_consistent_component_hypotheses'])+' size-consistent; '+str(summary['size_mismatched_component_hypotheses'])+' mismatched. These are source comparisons, not accepted building footprints. Height and cross-view correspondence remain unresolved.</p>'
         body+='<p><a href="section-profiles.html">Unassigned section profiles</a>: '+str(summary['nominal_section_profile_hypotheses'])+' nominal source-polygon measurements. Plan correspondence and physical heights remain unresolved.</p>'
         body+='<p><a href="section-correspondence.html">Section to plan comparisons and original sheet references</a>: '+str(summary['section_plan_context_pairs'])+' contextual component pairs; '+str(summary['profiles_with_multiple_plan_candidates'])+' profiles with competing plan candidates. No physical correspondence is assigned.</p>'
@@ -331,6 +348,8 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
             'limits':limits,'queue_overflow':state['queue_overflow'],'unresolved_sources':unresolved,'sources':list(sources.values()),
             'initial_search_pending':not state['initial_done'],
             'analysis_gaps':list(analysis_gaps.values()),
+            'area_layout_review':'area-layouts.json',
+            'area_layout_files':area_review.get('page_layout_files',[]),
             'source_discovery_exhaustive':False,'application_membership_verified':False,
             'source_evidence_verified':False,'world_placement_eligible':False,'geometric_accuracy':None,
             'training_labels_generated':0,'model_weights_updated':False,'world_geometry_additions':0,
