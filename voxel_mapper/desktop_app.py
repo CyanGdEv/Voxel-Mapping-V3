@@ -308,11 +308,12 @@ class DesktopWindow:
         ttk.Entry(web,textvariable=self.web_application).grid(row=4,column=1,sticky='ew',padx=8,pady=2)
         self.web_planning_run=ttk.Button(web,text='Collect & analyse PDFs',command=lambda:self._submit_web(planning=True))
         self.web_planning_run.grid(row=4,column=2,sticky='e')
-        ttk.Label(web,text='Select a completed planning job to export its models or measured plan layout.',wraplength=350).grid(row=5,column=0,sticky='w',pady=(6,0))
-        self.planning_area_export=ttk.Button(web,text='Export plan layout',command=self._submit_planning_area_world_preview)
-        self.planning_area_export.grid(row=5,column=1,sticky='e',padx=8,pady=(6,0))
-        self.planning_world_export=ttk.Button(web,text='Export preview worlds',command=self._submit_planning_world_preview)
-        self.planning_world_export.grid(row=5,column=2,sticky='e',pady=(6,0))
+        ttk.Label(web,text='Select a completed planning job below to export.',wraplength=480).grid(row=5,column=0,columnspan=2,sticky='w',pady=(6,0))
+        export_actions=ttk.Frame(web);export_actions.grid(row=5,column=2,sticky='e',pady=(6,0))
+        self.planning_area_export=ttk.Button(export_actions,text='Export plan layout',command=self._submit_planning_area_world_preview)
+        self.planning_area_export.pack(side='left',padx=(0,6))
+        self.planning_world_export=ttk.Button(export_actions,text='Export preview worlds',command=self._submit_planning_world_preview)
+        self.planning_world_export.pack(side='left')
         web.columnconfigure(1,weight=1)
         ttk.Combobox(controls,textvariable=self.kind,values=[label for label,_ in JOB_KINDS],state='readonly',width=38).grid(row=0,column=0,sticky='ew')
         ttk.Entry(controls,textvariable=self.config_path).grid(row=0,column=1,sticky='ew',padx=8)
@@ -745,6 +746,8 @@ def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,sm
         def finish():
             try:
                 root.update_idletasks()
+                result['window_dimensions']=[root.winfo_width(),root.winfo_height()]
+                result['screen_dimensions']=[root.winfo_screenwidth(),root.winfo_screenheight()]
                 for widget in window.primary_controls:
                     x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
                     if (not widget.winfo_ismapped() or x<0 or y<0 or x+widget.winfo_width()>root.winfo_width()
@@ -761,12 +764,15 @@ def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,sm
                 result['web_research_control_visible']=True
                 result['web_planning_control_visible']=True
                 result['planning_world_export_control_visible']=True
+                result['planning_area_export_control_visible']=True
                 # A reachable button is insufficient if its source job cannot be
                 # selected. Exercise a real row after selecting the largest tab.
                 probe=window.jobs.insert('', 'end', values=('layout-check','planning_collection','completed','100%','Preview source'))
                 try:
                     window.jobs.see(probe);root.update_idletasks()
                     bounds=window.jobs.bbox(probe)
+                    result['planning_job_table_dimensions']=[window.jobs.winfo_width(),window.jobs.winfo_height()]
+                    result['planning_job_row_bounds']=list(bounds) if bounds else None
                     if not bounds or bounds[1]+bounds[3]>window.jobs.winfo_height():
                         raise ValueError('Planning job rows are clipped below the export controls')
                     window.jobs.selection_set(probe)

@@ -1,15 +1,51 @@
 """Actual managed source-plan export and saved-page integrity at submission."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from voxel_mapper.desktop_runtime import DesktopRuntime, write_json
 from voxel_mapper.desktop_planning_area_smoke import run
 
 
 class DesktopPlanningAreaTests(unittest.TestCase):
+    @unittest.skipUnless(os.name=='nt' or os.environ.get('DISPLAY'),'An actual desktop display is required')
+    def test_short_viewports_keep_both_exports_and_the_source_job_row_reachable(self):
+        import tkinter as tk
+        from voxel_mapper.desktop_app import DesktopWindow
+        try:root=tk.Tk()
+        except tk.TclError as error:raise unittest.SkipTest(str(error))
+        with tempfile.TemporaryDirectory() as temporary:
+            with patch.object(DesktopWindow,'_create_runtime'),patch.object(DesktopWindow,'_poll'):
+                window=DesktopWindow(root,Path(temporary))
+            try:
+                for width,height in ((1120,630),(964,638),(1024,650)):
+                    with self.subTest(viewport=(width,height)):
+                        root.geometry(f'{width}x{height}+0+0')
+                        root.update()
+                        window.web_run.master.master.select(window.web_run.master)
+                        root.update()
+                        for widget in (window.planning_area_export,window.planning_world_export):
+                            x=widget.winfo_rootx()-root.winfo_rootx()
+                            y=widget.winfo_rooty()-root.winfo_rooty()
+                            self.assertTrue(widget.winfo_ismapped())
+                            self.assertGreaterEqual(x,0);self.assertGreaterEqual(y,0)
+                            self.assertLessEqual(x+widget.winfo_width(),root.winfo_width())
+                            self.assertLessEqual(y+widget.winfo_height(),root.winfo_height())
+                        probe=window.jobs.insert('','end',values=('probe','planning_collection','completed','100%','source'))
+                        try:
+                            window.jobs.see(probe);root.update_idletasks()
+                            bounds=window.jobs.bbox(probe)
+                            self.assertTrue(bounds)
+                            self.assertLessEqual(bounds[1]+bounds[3],window.jobs.winfo_height())
+                            window.jobs.selection_set(probe)
+                            self.assertIn(probe,window.jobs.selection())
+                        finally:window.jobs.delete(probe)
+            finally:window.close()
+
     def test_full_pdf_analysis_and_native_export_survive_restart(self):
         with tempfile.TemporaryDirectory() as temporary:
             result=run(Path(temporary)/'managed area with spaces')
