@@ -1,0 +1,217 @@
+{
+  "version": "coloured-planning-labels-validation-v1",
+  "status": "source_colour_screen_improved_area_reconstruction_unresolved",
+  "source_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "glyph_implementation_sha256": "38bb6e610a339e76f47dc39beda13cf10011cac0cf4216f26ee5fd2faf7f4ce7",
+  "dataset_scope": "previously_inspected_development_source",
+  "thresholds_fixed_before_source_replay": true,
+  "before": {
+    "visible_surface_labels": 3,
+    "selected_surface_labels": 134,
+    "visible_role_labels": 6,
+    "coarse_surface_candidates": 0
+  },
+  "after": {
+    "visible_surface_labels": 9,
+    "selected_surface_labels": 134,
+    "visible_role_labels": 13,
+    "coarse_surface_candidates": 2
+  },
+  "source_page_sha256": "73e0f0562a96be050bbe19e025736a21c02c39a23f9c02f27590b8a42d3eaa4e",
+  "report_sha256": "636412279a182dbd5712d4c2333f8babdb04621550da9a228d4ca32e621ca991",
+  "output_pins_verified": 18,
+  "surface_candidates": [
+    {
+      "id": "de6cbe692f9b518cee0168516d655c803ac425302b307a62db1f46918ace17f7",
+      "geometry_pdf_native": {
+        "coordinates": [
+          [
+            [
+              213.83999633789062,
+              448.239990234375
+            ],
+            [
+              225.59999084472656,
+              473.9200439453125
+            ],
+            [
+              210.239990234375,
+              481.1199951171875
+            ],
+            [
+              222.95999145507812,
+              508.9600830078125
+            ],
+            [
+              238.55999755859375,
+              501.760009765625
+            ],
+            [
+              250.3199920654297,
+              527.4400634765625
+            ],
+            [
+              277.91998291015625,
+              514.719970703125
+            ],
+            [
+              258.47998046875,
+              472.47998046875
+            ],
+            [
+              284.1600036621094,
+              460.719970703125
+            ],
+            [
+              267.1199951171875,
+              423.52001953125
+            ],
+            [
+              235.50776082509535,
+              438.1869400167004
+            ],
+            [
+              233.15844144459484,
+              439.2769382822563
+            ],
+            [
+              213.83999633789062,
+              448.239990234375
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "label_texts": [
+        "ground"
+      ],
+      "surface": "compacted"
+    },
+    {
+      "id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+      "geometry_pdf_native": {
+        "coordinates": [
+          [
+            [
+              154.3199920654297,
+              1181.9200439453125
+            ],
+            [
+              249.1199951171875,
+              1120.239990234375
+            ],
+            [
+              348.9599914550781,
+              1055.199951171875
+            ],
+            [
+              226.3199920654297,
+              867.52001953125
+            ],
+            [
+              168.239990234375,
+              904.9600219726562
+            ],
+            [
+              234.1692902011082,
+              1006.7653864926054
+            ],
+            [
+              235.1100594685233,
+              1008.2180844318628
+            ],
+            [
+              252.47999572753906,
+              1035.0400390625
+            ],
+            [
+              196.55999755859375,
+              1071.280029296875
+            ],
+            [
+              193.44000244140625,
+              1066.47998046875
+            ],
+            [
+              182.63999938964844,
+              1073.679931640625
+            ],
+            [
+              185.75999450683594,
+              1078.47998046875
+            ],
+            [
+              143.74248102591594,
+              1105.8132433797011
+            ],
+            [
+              116.39999389648438,
+              1123.60009765625
+            ],
+            [
+              154.3199920654297,
+              1181.9200439453125
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "label_texts": [
+        "COURTYARD"
+      ],
+      "surface": "stone"
+    }
+  ],
+  "fine_surface_reason": "complete_geometry_extraction_required",
+  "fine_extraction": {
+    "candidates": 10000,
+    "curved_candidates": 1594,
+    "geometry_types": {
+      "LineString": 9771,
+      "Polygon": 229
+    },
+    "raw_paths": 92902,
+    "region_native_points": [
+      0.0,
+      176.3758544921875,
+      2384.0,
+      1575.15283203125
+    ],
+    "rejections": {
+      "A linearring requires at least 4 coordinates.": 5,
+      "Invalid candidate topology": 6,
+      "Invalid filled ring topology": 10,
+      "Self-crossing line needs review": 10,
+      "Short line/symbol candidate": 2042,
+      "Small symbol or sheet enclosure candidate": 358,
+      "Text glyph/annotation mask": 477,
+      "candidate_budget_deferred": 1,
+      "complete_primitive_crosses_region_boundary": 275,
+      "nonopaque_paint": 316,
+      "outside_region": 2414
+    },
+    "retained_points": 33035,
+    "selected_paths": 13696,
+    "status": "partial_candidate_budget",
+    "world_geometry_additions": 0
+  },
+  "area_reason": "complete_fine_boundary_discovery_required",
+  "source_unchanged": true,
+  "physical_geometry_accepted": false,
+  "reconstructed_buildings": 0,
+  "registered_area_layouts": 0,
+  "model_weights_updated": false,
+  "synthetic_frozen_smoke_scope": {
+    "coloured_labels_verified": true,
+    "building_footprint_markers": 2,
+    "path_plaza_candidates": 3,
+    "saved_paving_cells": 149,
+    "saved_paving_components": 2,
+    "persistent_restart_verified": true
+  },
+  "limitations": [
+    "RGB/coverage match is source rendering consistency, not physical identity or independent accuracy.",
+    "Unsupported backgrounds, low contrast, incomplete boundaries and scale/context remain unresolved.",
+    "No real building, path network or park world was reconstructed."
+  ]
+}

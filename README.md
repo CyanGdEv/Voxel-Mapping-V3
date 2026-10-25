@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Original-colour planning labels](docs/coloured-planning-labels.md) verify supported coloured text against original glyph shape and RGB evidence. The Wicker development replay improves supported surface/material labels from 3 to 9 out of 134, while complete area geometry remains unresolved.
+
 [Shared building and path layouts](docs/planning-area-layouts.md) preserve relative positions in one nominal plan frame, recover fine labelled surface boundaries and report contacts, overlaps and gaps. **Export plan layout** creates a checked flat Bedrock map with paving and yellow building footprint markers. Building heights and complete real-area reconstruction remain unresolved; retained Alton source replays still expose text and boundary blockers.
 
 The [component measurement stage](docs/planning-component-measurements.md) produces nominal plan previews and compares explicit printed container sizes across linked drawing sheets. It reports mismatches without stretching source geometry; missing height and cross-view scope keep 3D building generation withheld.

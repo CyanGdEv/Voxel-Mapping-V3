@@ -15,14 +15,15 @@ def make_source(path):
     """Two buildings, joined paving and an intentionally disconnected path."""
     with pymupdf.open() as document:
         page=document.new_page(width=700,height=420)
-        for rectangle,label,origin in (
+        for index,(rectangle,label,origin) in enumerate((
                 ((60,80,160,180),'Shop',(80,110)),
                 ((160,120,400,160),'Footpath',(210,145)),
                 ((400,80,500,200),'Plaza',(420,110)),
                 ((500,100,600,180),'Toilets',(520,130)),
-                ((250,260,450,300),'Footpath',(300,285))):
+                ((250,260,450,300),'Footpath',(300,285)))):
             page.draw_rect(rectangle)
-            page.insert_text(origin,label,fontsize=10)
+            page.insert_text(origin,label,fontsize=10,
+                color=((.65,.65,.65),(.55,.35,.2),(.7,0,0))[index%3])
         page.insert_text((60,360),'Proposed Ground Floor Plan | 1:200',fontsize=12)
         document.save(path)
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -52,6 +53,14 @@ def run(output):
             raise ValueError('Automatic area outline inventory changed: '+str(roles))
         if not layout['shared_frame'] or any(row['height_m'] is not None for row in layout['candidates']):
             raise ValueError('Missing shared frame or invented building heights')
+        screens=[]
+        for candidate in layout['candidates']:
+            for evidence in candidate['source_evidence']:
+                semantic=evidence['semantic_evidence']
+                labels=semantic.get('labels',[])+([semantic['label']] if 'label' in semantic else [])
+                screens.extend(label.get('glyph_screen',{}) for label in labels)
+        if not screens or any(screen.get('source_colour_support')!='original_rgb_over_white_projection' for screen in screens):
+            raise ValueError('Original coloured area labels were not independently screened')
         buildings=sorted((shape(row['geometry_nominal_local']) for row in layout['candidates']
                           if row['role']=='building'),key=lambda geometry:geometry.centroid.x)
         expected_offset=440*200*.0254/72
@@ -86,6 +95,7 @@ def run(output):
     receipt={'status':'passed','dataset_kind':'synthetic','original_pdf_sha256':sha,
         'source_plan_job':pilot,'area_world_job':exported,'building_footprint_markers':2,
         'path_plaza_candidates':3,'shared_frame_verified':True,'source_and_output_hashes_verified':True,
+        'coloured_original_labels_verified':True,
         'independent_building_centroid_spacing_m':expected_offset,
         'saved_paving_components':2,'saved_paving_cells':149,
         'persistent_restart_verified':True,'real_park_accuracy_assessed':False,

@@ -93,6 +93,7 @@ on:
       - 'tests/test_planning_collection_area_layout.py'
       - 'tests/test_design_glyph_visibility.py'
       - 'tests/test_glyph_visibility.py'
+      - 'tests/test_coloured_glyph_visibility.py'
       - 'tests/test_drawing_view_candidates.py'
       - 'tests/test_planning_surface_outlines.py'
       - 'tests/test_neural_building_pipeline.py'
@@ -195,6 +196,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Design statement source-font visibility tests failed' }
           python -m unittest discover -s tests -p 'test_glyph_visibility.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Existing source-font visibility regressions failed' }
+          python -m unittest discover -s tests -p 'test_coloured_glyph_visibility.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original-colour glyph verification failed' }
           python -m unittest discover -s tests -p 'test_drawing_view_candidates.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Drawing view layout tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_outlines.py' -v
