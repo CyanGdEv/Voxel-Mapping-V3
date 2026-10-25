@@ -14,6 +14,18 @@ def printed_scale(text):
     return {'printed_denominator':int(match[1]), 'paper_size':match[2].upper() if match[2] else None}
 
 
+def scoped_rows(caption, layout):
+    """All printed ratios in the bounded title-block hypothesis, including rivals."""
+    u=caption['reading_direction_pdf_native'];n=(-u[1],u[0])
+    def extent(geometry,axis):return [sum(p[k]*axis[k] for k in (0,1)) for p in shape(geometry).exterior.coords]
+    a=extent(caption['label_geometry'],u);b=extent(caption['label_geometry'],n);height=max(b)-min(b)
+    rows=[]
+    for row in layout.get('page_scale_claims',[]):
+        sa=extent(row['label_geometry'],u);sb=extent(row['label_geometry'],n)
+        if 0<=min(b)-max(sb)<=6*height and abs(min(a)-min(sa))<=3*height:rows.append(row)
+    return rows
+
+
 def resolve(caption, layout, measurements):
     """Keep the legacy inline/adjacent route; paper alternatives need one site title."""
     if caption.get('glyph_screen',{}).get('status')!='raster_consistent_candidate':
@@ -29,14 +41,7 @@ def resolve(caption, layout, measurements):
         return {'printed_scale_denominator':values[0], 'basis':'inline_or_adjacent_printed_scale'}
     if claim.get('view_kind')!='sheet_title' or claim.get('plan_level_or_form') not in ('site','block'):
         raise ValueError('one_visible_plan_scale_required')
-    u=caption['reading_direction_pdf_native'];n=(-u[1],u[0])
-    def extent(geometry,axis):return [sum(p[k]*axis[k] for k in (0,1)) for p in shape(geometry).exterior.coords]
-    a=extent(caption['label_geometry'],u);b=extent(caption['label_geometry'],n);height=max(b)-min(b)
-    scales=[]
-    for row in layout.get('page_scale_claims',[]):
-        sa=extent(row['label_geometry'],u);sb=extent(row['label_geometry'],n)
-        if 0<=min(b)-max(sb)<=6*height and abs(min(a)-min(sa))<=3*height:
-            scales.append(row)
+    u=caption['reading_direction_pdf_native'];scales=scoped_rows(caption,layout)
     if not 1<=len(scales)<=2:raise ValueError('one_or_two_paper_qualified_sheet_scales_required')
     papers=[]
     for row in scales:

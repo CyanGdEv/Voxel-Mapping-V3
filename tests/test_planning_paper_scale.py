@@ -18,7 +18,7 @@ class PaperScaleTests(unittest.TestCase):
     def source(self, *, paper='A1', rows=('1/250 @ A1', '1/500 @ A3'),
                hidden=False, duplicate=False, split=False, clutter=False, rotation=0,
                size_ratio=1.027, cropped=False, split_scales=False, hidden_scale=False,
-               scale_y=430, title='Site Plan Proposed showing Woodland Path'):
+               scale_y=430, paper_note=None, title='Site Plan Proposed showing Woodland Path'):
         doc=pymupdf.open(); self.addCleanup(doc.close)
         width,height=(2384,1684) if paper=='A1' else (1191,842)
         page=doc.new_page(width=width,height=height)
@@ -41,6 +41,7 @@ class PaperScaleTests(unittest.TestCase):
                     x+=pymupdf.get_text_length(part,fontsize=10)
             else:page.insert_text((90,scale_y+i*13),text,fontsize=10)
         if hidden_scale:page.draw_rect((122,scale_y-10,147,scale_y+3),color=None,fill=(1,1,1))
+        if paper_note:page.insert_text((500,600),paper_note,fontsize=10)
         if hidden:page.draw_rect((68,388,315,405),color=None,fill=(1,1,1))
         if duplicate:page.insert_text((70,500),'Proposed Ground Floor Plan | 1:100',fontsize=10)
         if cropped:page.set_cropbox(pymupdf.Rect(0,0,width-5,height))
@@ -133,6 +134,16 @@ class PaperScaleTests(unittest.TestCase):
             result=self.run_area(**kwargs)
             self.assertFalse(result['analysis_complete'])
             self.assertIsNone(result['shared_frame'])
+
+    def test_colon_paper_alternatives_are_not_conflicting_sheet_declarations(self):
+        result=self.run_area(rows=('1:250 @ A1','1:500 @ A3'))
+        self.assertTrue(result['analysis_complete'])
+        self.assertEqual(result['shared_frame']['printed_scale_denominator'],250)
+        for rows in (('1:250 @ A1','1:999 @ A3'),('1:250 @ A1','1:500 @ A1')):
+            result=self.run_area(rows=rows)
+            self.assertFalse(result['analysis_complete'])
+        result=self.run_area(rows=('1:250 @ A1','1:500 @ A3'),paper_note='As indicated @ A2')
+        self.assertFalse(result['analysis_complete'])
 
 
 if __name__=='__main__':unittest.main()

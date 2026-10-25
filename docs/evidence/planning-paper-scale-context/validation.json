@@ -69,7 +69,7 @@
     },
     "voxel_mapper.planning_area_scale": {
       "basis": "module_file_bytes",
-      "sha256": "5bc87d109335dbb438e1133cf627ec947ec225668de967214853c6d2a1d956e7"
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
     },
     "voxel_mapper.planning_component_footprints": {
       "basis": "module_file_bytes",
@@ -77,7 +77,7 @@
     },
     "voxel_mapper.planning_component_measurements": {
       "basis": "module_file_bytes",
-      "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
     },
     "voxel_mapper.planning_design_dimensions": {
       "basis": "module_file_bytes",
@@ -125,16 +125,16 @@
     "sha256": "4d3e94a4ca85ee23e69644062e6e2b431be7b854c97a78decd426797742f534c"
   },
   "local_focused_tests": {
-    "seconds": 53.515,
+    "seconds": 70.883,
     "skips": 1,
     "status": "passed",
-    "tests": 74
+    "tests": 75
   },
   "matching_paper_sizes": [
     "A1"
   ],
   "model_weights_updated": false,
-  "new_paper_scale_tests": 8,
+  "new_paper_scale_tests": 9,
   "original_page_dimensions_mm": [
     594.0777777777778,
     841.0222222222222
@@ -156,7 +156,7 @@
   "previously_inspected": true,
   "real_area_frame_generated": false,
   "regional_boundary_candidates": 2,
-  "report_sha256": "a1407c3a30d0291210db2ce7d58161b4a75d0f774b01edbdf9c1867eb22dbb3f",
+  "report_sha256": "432d486cfd8cc93c2cd28b533b8674e76c5306703538c78a716b36e3898c7109",
   "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
   "training_labels_generated": 0,
   "unseen_accuracy_benchmark": false,

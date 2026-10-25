@@ -12,7 +12,10 @@ uncropped page must use ordinary PDF units and match exactly one printed ISO
 paper size (the existing 1.5 mm dimension tolerance). The alternative rows must
 name different papers and agree with ISO square-root-of-two scaling within 1%
 for printed rounding. Duplicate, conflicting, unsupported, hidden and missing
-claims remain holds. A page-wide scale is never inherited by a floor view or a
+claims remain holds. Older paper declarations may bypass the paper-conflict hold
+only when every visible declaration binds an exact native scale row in the
+validated alternative set. An unrelated paper declaration still withholds the
+result. A page-wide scale is never inherited by a floor view or a
 mixed-view sheet. The older inline and adjacent-caption paths remain supported.
 
 The saved scale receipt identifies the selected paper and hashes the unchanged

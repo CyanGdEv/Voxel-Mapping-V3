@@ -11,6 +11,7 @@ from shapely.affinity import affine_transform
 from shapely.geometry import Polygon, mapping, shape
 
 from . import architectural_view_layout, glyph_visibility, ordinary_surfaces, planning_component_footprints
+from . import planning_area_scale
 from .building_spec import digest
 from .drawing_page_tools import native_inverse
 
@@ -124,7 +125,22 @@ def page_evidence(page,sha,number,layout,components,*,options=None,cancelled=lam
         scale_claim_denominators=denominators)
     if unit!=1 or page.cropbox!=page.mediabox:return finish('unsupported_native_unit_or_cropped_page')
     if visible_papers and (len(visible_papers)!=1 or visible_papers!=set(paper_matches)):
-        return finish('printed_paper_size_does_not_match_original_page')
+        # Paper-qualified alternatives are scale rows, not contradictory
+        # declarations of this PDF's physical sheet. Only the exact original
+        # rows admitted by the single-title resolver can take this route.
+        captions=[r for r in layout['view_captions']+layout['sheet_titles']
+                  if r.get('glyph_screen',{}).get('status')=='raster_consistent_candidate']
+        alternative=False
+        if len(captions)==1:
+            try:
+                resolved=planning_area_scale.resolve(captions[0],layout,result)
+                rows=planning_area_scale.scoped_rows(captions[0],layout)
+                alternative=(resolved['basis']=='original_page_iso_paper_match' and
+                    all(any(all(row.get(key)==paper.get(key) for key in ('text','trace_indices','character_indices'))
+                            for row in rows) for paper in result['paper_claims']
+                        if paper['glyph_screen']['status']=='raster_consistent_candidate'))
+            except ValueError:pass
+        if not alternative:return finish('printed_paper_size_does_not_match_original_page')
     if components is None:return finish()
     if not components['analysis_complete']:return finish('complete_component_inventory_required')
     if len(components['candidates'])>limits['max_components']:return finish('measurement_component_budget_exceeded')
