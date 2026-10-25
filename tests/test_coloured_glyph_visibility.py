@@ -3,11 +3,20 @@ import copy
 import unittest
 
 import pymupdf
+import numpy as np
 
 from voxel_mapper.glyph_visibility import screen_architectural_span,screen_span
+from voxel_mapper.glyph_visibility import _colour_match
 
 
 class ColouredGlyphTests(unittest.TestCase):
+    def test_white_pixels_never_support_faint_isolated_reference_ink(self):
+        # At low coverage, white is within the RGB tolerance of light grey
+        # reference ink. It still supplies no actual source ink evidence.
+        white=np.full((5,5,3),255,dtype=np.uint8)
+        reference=np.full((5,5),195,dtype=np.uint8)
+        self.assertFalse(_colour_match(white,(.8,.8,.8),reference).any())
+
     def source(self,colour=(.65,.65,.65),rotation=0):
         doc=pymupdf.open();page=doc.new_page(width=500,height=300)
         page.insert_text((80,150),'Plaza',fontsize=16,color=colour,rotate=rotation)

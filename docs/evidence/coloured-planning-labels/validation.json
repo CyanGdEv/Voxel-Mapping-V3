@@ -2,7 +2,7 @@
   "version": "coloured-planning-labels-validation-v1",
   "status": "source_colour_screen_improved_area_reconstruction_unresolved",
   "source_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
-  "glyph_implementation_sha256": "38bb6e610a339e76f47dc39beda13cf10011cac0cf4216f26ee5fd2faf7f4ce7",
+  "glyph_implementation_sha256": "f2ac438f5ca4d2540d020caff1595ec0c2824a90b105d290996dd4f8e8ea03e3",
   "dataset_scope": "previously_inspected_development_source",
   "thresholds_fixed_before_source_replay": true,
   "before": {
@@ -17,8 +17,8 @@
     "visible_role_labels": 13,
     "coarse_surface_candidates": 2
   },
-  "source_page_sha256": "73e0f0562a96be050bbe19e025736a21c02c39a23f9c02f27590b8a42d3eaa4e",
-  "report_sha256": "636412279a182dbd5712d4c2333f8babdb04621550da9a228d4ca32e621ca991",
+  "source_page_sha256": "a8625015f914ee19a445f4f8d5d5a44f4b4bfa4e0d9f67fbf9ab0fcb6c40a566",
+  "report_sha256": "921be414290e30e1f298ee722f2b8e8a0396b6a96307d504263fc542f0123533",
   "output_pins_verified": 18,
   "surface_candidates": [
     {
@@ -213,5 +213,6 @@
     "RGB/coverage match is source rendering consistency, not physical identity or independent accuracy.",
     "Unsupported backgrounds, low contrast, incomplete boundaries and scale/context remain unresolved.",
     "No real building, path network or park world was reconstructed."
-  ]
+  ],
+  "faint_reference_requires_actual_source_ink": true
 }

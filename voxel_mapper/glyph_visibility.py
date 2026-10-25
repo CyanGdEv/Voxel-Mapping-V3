@@ -32,8 +32,9 @@ def _colour_support(samples,rgb,threshold):
 def _colour_match(samples,rgb,reference):
     expected=255-(255-reference.astype(float))[...,None]*(1-np.asarray(rgb))
     padded=np.pad(samples.astype(float),((1,1),(1,1),(0,0)),constant_values=255)
+    ink=np.pad(_colour_support(samples,rgb,200),1,constant_values=False)
     height,width=reference.shape
-    return np.logical_or.reduce([np.max(np.abs(padded[y:y+height,x:x+width]-expected),axis=2)<=12
+    return np.logical_or.reduce([(np.max(np.abs(padded[y:y+height,x:x+width]-expected),axis=2)<=12)&ink[y:y+height,x:x+width]
         for y in range(3) for x in range(3)])
 
 

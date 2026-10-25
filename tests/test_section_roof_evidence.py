@@ -50,7 +50,10 @@ class SectionRoofEvidenceTests(unittest.TestCase):
             self.assertEqual(r['status'],'raster_consistent_candidate',r);self.assertEqual(page.rotation,90)
             self.assertFalse(r['font_substitution_used']);self.assertEqual(doc.tobytes(no_new_id=True),before)
             self.assertEqual(r['original_font_candidates'][0]['original_cids'],[42,421])
-            self.assertEqual(glyph_visibility.screen_span(page,span)['status'],'withheld')
+            general=glyph_visibility.screen_span(page,span)
+            self.assertEqual(general['status'],'raster_consistent_candidate',general)
+            self.assertEqual(general['source_colour_support'],'original_rgb_over_white_projection')
+            self.assertEqual(doc.tobytes(no_new_id=True),before)
         finally:doc.close()
 
     def test_colored_glyph_overpainting_with_white_black_or_same_color_is_held(self):
@@ -59,6 +62,7 @@ class SectionRoofEvidenceTests(unittest.TestCase):
             try:
                 page.draw_rect(pymupdf.Rect(span['bbox']),color=None,fill=fill)
                 self.assertEqual(color.screen(page,span)['status'],'withheld')
+                self.assertEqual(glyph_visibility.screen_span(page,span)['status'],'withheld')
             finally:doc.close()
 
     def test_wrong_cid_color_or_rendering_never_becomes_supported(self):
