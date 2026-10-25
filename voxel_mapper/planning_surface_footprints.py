@@ -6,11 +6,12 @@ remove a known competing enclosure, establish scale or accept physical geometry.
 from concurrent.futures import CancelledError
 from collections import Counter
 import json
+import heapq
 import math
 import re
 
 import pymupdf
-from shapely.geometry import Polygon, shape
+from shapely.geometry import Polygon, shape, box
 from shapely.strtree import STRtree
 
 from . import glyph_visibility, ordinary_surfaces, planning_outline_semantics, planning_view_geometry
@@ -18,14 +19,55 @@ from .building_spec import digest
 from .drawing_page_tools import native_inverse
 from .paving_palette import material_label, polygon_surface
 
-VERSION = 'planning-surface-boundaries-v2'
+VERSION = 'planning-surface-boundaries-v3'
 FRAME = 'pdf_native_points_y_up'
 SEARCH_MARGIN_POINTS = 144
 LIMITS = {'max_surface_labels': 256, 'max_native_candidates': 10000,
           'max_native_points': 200000, 'max_outlines': 500,
           'max_association_checks': 64000, 'max_output_bytes': 8000000,
-          'max_regions':32, 'max_scan_work_paths':3200000}
+          'max_regions':32, 'max_scan_work_paths':3200000,
+          'max_region_merge_checks':65536}
 ROLES = {'path', 'plaza', 'surface'}
+
+
+def _coalesce_windows(windows,maximum_checks,check):
+    """Cover every original scope with bounded non-increasing-area rectangles.
+
+    Search bounds can merge; source primitives and recovered faces never do.
+    The schedule depends only on source bounds, not recovery success or quotas.
+    """
+    active={i:(tuple(w),(i,)) for i,w in enumerate(windows)};heap=[];checks=0
+    def area(w):return (w[2]-w[0])*(w[3]-w[1])
+    def offer(i,j):
+        nonlocal checks
+        check();checks+=1
+        if checks>maximum_checks:raise ValueError('surface_region_merge_work_budget_exceeded')
+        a,am=active[i];b,bm=active[j]
+        ix=max(0,min(a[2],b[2])-max(a[0],b[0]));iy=max(0,min(a[3],b[3])-max(a[1],b[1]))
+        if ix*iy<=0:return
+        bounds=(min(a[0],b[0]),min(a[1],b[1]),max(a[2],b[2]),max(a[3],b[3]))
+        combined=area(bounds)
+        if combined>area(a)+area(b):return
+        added=combined-area(a)-area(b)+ix*iy
+        heapq.heappush(heap,(added,combined,bounds,am,bm,i,j))
+    for i,w in enumerate(windows):
+        if len(w)!=4 or not all(math.isfinite(v) for v in w) or w[0]>=w[2] or w[1]>=w[3]:
+            raise ValueError('Finite original source window required')
+        for j in range(i+1,len(windows)):offer(i,j)
+    next_id=len(windows);merges=0
+    while heap:
+        check();_,_,bounds,_,_,i,j=heapq.heappop(heap)
+        if i not in active or j not in active:continue
+        members=tuple(sorted(active.pop(i)[1]+active.pop(j)[1]))
+        identity=next_id;next_id+=1;active[identity]=(bounds,members);merges+=1
+        for other in sorted(active):
+            if other!=identity:offer(other,identity)
+    rows=[{'region_native_points':list(w),'source_window_indices':list(m)}
+          for w,m in sorted(active.values())]
+    return rows,{'pair_checks':checks,'merges':merges,
+        'original_window_count':len(windows),'coalesced_region_count':len(rows),
+        'original_summed_area_pdf_points_squared':sum(area(w) for w in windows),
+        'coalesced_summed_area_pdf_points_squared':sum(area(r['region_native_points']) for r in rows)}
 
 
 def _regional_faces(page,sha,number,visible,limits,check):
@@ -35,6 +77,8 @@ def _regional_faces(page,sha,number,visible,limits,check):
         min(frame[3],b[3]+SEARCH_MARGIN_POINTS))
         for b in (shape(r['geometry_pdf_native']).bounds for r in visible)})
     extraction={'status':'unplaced_geometry_candidates','strategy':'per_label_native_windows',
+        'region_schedule':'bounded_coalesced_source_windows',
+        'source_windows':[list(w) for w in windows],
         'regions':[],'candidates':0,'retained_points':0,'raw_paths':0,'scan_work_paths':0,
         'rejections':{},'world_geometry_additions':0}
     recovery={'status':'enclosed_faces_only','counts':{},'recovered_faces':0}
@@ -42,29 +86,56 @@ def _regional_faces(page,sha,number,visible,limits,check):
     def fail(reason):
         extraction.update(status='regional_surface_scan_withheld',reason=reason)
         return [],extraction,recovery,covered
-    if len(windows)>limits['max_regions']:return fail('surface_region_budget_exceeded')
+    try:regions,coalescing=_coalesce_windows(windows,limits['max_region_merge_checks'],check)
+    except ValueError as error:return fail(str(error))
+    extraction['coalescing']=coalescing
+    if len(regions)>limits['max_regions']:return fail('surface_region_budget_exceeded')
     check();cache=ordinary_surfaces._source_page_cache(page)
     extraction['raw_paths']=len(cache['compact'])
-    if len(windows)*len(cache['compact'])>limits['max_scan_work_paths']:
+    if len(regions)*len(cache['compact'])>limits['max_scan_work_paths']:
         return fail('surface_scan_work_budget_exceeded')
-    for index,window in enumerate(windows):
+    options={'region_native_windows':[r['region_native_points'] for r in regions],
+        'min_line_length_points':.25,'max_candidates':limits['max_native_candidates'],
+        'max_total_points':limits['max_native_points'],'max_paths':100000,
+        'max_scan_paths':100000,'regional_fallback':False,'source_face_primitives_only':True}
+    check();parents,shared=ordinary_surfaces.extract_page(page,sha,number,_paths=cache['compact'],**options)
+    check();extraction.update(shared_native_extraction=shared,shared_extraction_options=options,
+        candidates=shared.get('candidates',0),retained_points=shared.get('retained_points',0),
+        scan_work_paths=len(regions)*len(cache['compact']),source_path_passes=1,
+        region_schedule='coalesced_shared_native_union')
+    rejections.update(shared.get('rejections',{}));extraction['rejections']=dict(rejections)
+    if shared.get('status')!='unplaced_geometry_candidates':
+        return fail('shared_native_'+str(shared.get('status')))
+    buckets=[[] for _ in regions]
+    for parent in parents:
+        check();references={}
+        for paint in parent['paint_references']:
+            for index in paint.get('source_region_indices',[]):
+                extraction['scan_work_paths']+=1
+                if extraction['scan_work_paths']>limits['max_scan_work_paths']:
+                    return fail('surface_scan_work_budget_exceeded')
+                references.setdefault(index,[]).append(paint)
+        for index,paints in sorted(references.items()):
+            if index in parent.get('source_face_ineligible_regions',[]):continue
+            if not box(*regions[index]['region_native_points']).covers(shape(parent['geometry'])):
+                return fail('shared_native_geometry_crosses_source_region')
+            buckets[index].append({**parent,'paint_references':paints})
+    extraction['shared_parent_inventory_sha256']=digest(parents)
+    for index,region in enumerate(regions):
+        window=region['region_native_points']
         check()
-        remaining=limits['max_native_candidates']-extraction['candidates']
-        points=limits['max_native_points']-extraction['retained_points']
-        if remaining<1 or points<1:return fail('combined_surface_native_budget_exceeded')
-        options={'region_native_points':list(window),'min_line_length_points':.25,
-            'max_candidates':remaining,'max_total_points':points,
-            'max_paths':100000,'max_scan_paths':100000,'regional_fallback':False}
+        scoped=buckets[index]
+        part={'status':'unplaced_geometry_candidates','raw_paths':len(cache['compact']),
+            'candidates':len(scoped),'region_native_points':window,
+            'shared_parent_inventory_sha256':extraction['shared_parent_inventory_sha256'],
+            'candidate_and_point_work_charged_at_shared_extraction':True}
         rows,part,found,occluded=ordinary_surfaces.closed_source_faces(page,sha,number,
-            extraction_options=options,recovery_options={'max_face_provenance':2048},_cache=cache)
+            recovery_options={'max_face_provenance':2048},_cache=cache,_parents=(scoped,part))
         check();covered+=occluded
-        extraction['candidates']+=part.get('candidates',0)
-        extraction['retained_points']+=part.get('retained_points',0)
-        extraction['scan_work_paths']+=len(cache['compact'])
-        rejections.update(part.get('rejections',{}));counts.update(found.get('counts',{}))
+        counts.update(found.get('counts',{}))
         extraction['rejections']=dict(rejections);recovery['counts']=dict(counts)
         inventory=ordinary_surfaces._outline_inventory(rows,part,found,limits['max_outlines'])
-        receipt={'index':index,'region_native_points':list(window),'extraction_options':options,
+        receipt={'index':index,**region,'extraction_options':extraction['shared_extraction_options'],
             'extraction':part,'recovery':found,'inventory_complete':inventory['inventory_complete'],
             'source_inventory_sha256':digest(inventory),
             'source_records':[{'candidate_id':r['candidate_id'],'source_record_sha256':r['source_record_sha256']}
