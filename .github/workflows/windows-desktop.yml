@@ -91,6 +91,7 @@ on:
       - 'tests/test_planning_world_preview.py'
       - 'tests/test_planning_surface_footprints.py'
       - 'tests/test_planning_surface_regions.py'
+      - 'tests/test_coalesced_surface_regions.py'
       - 'tests/test_planning_paper_scale.py'
       - 'tests/test_planning_area_layout.py'
       - 'tests/test_planning_area_world_preview.py'
@@ -192,6 +193,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Fine path and plaza boundary tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_regions.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Bounded regional surface recovery tests failed' }
+          python -m unittest discover -s tests -p 'test_coalesced_surface_regions.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Coalesced shared-source recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_paper_scale.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Original paper-qualified scale tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_layout.py' -v

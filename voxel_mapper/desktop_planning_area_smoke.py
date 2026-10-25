@@ -92,7 +92,10 @@ def run(output):
         surface_evidence=json.loads(evidence_path.read_text(encoding='utf-8'))['surface_footprints']
         regional=surface_evidence['extraction']
         if (regional.get('strategy')!='per_label_native_windows'
-                or len(regional.get('regions',[]))<2
+                or regional.get('region_schedule')!='coalesced_shared_native_union'
+                or regional.get('source_path_passes')!=1
+                or len(regional.get('source_windows',[]))<2
+                or not 1<=len(regional.get('regions',[]))<len(regional['source_windows'])
                 or any(not region['inventory_complete'] for region in regional['regions'])):
             raise ValueError('Bounded regional surface recovery was not exercised')
         roles=[row['role'] for row in layout['candidates']]
@@ -144,6 +147,7 @@ def run(output):
         'path_plaza_candidates':3,'shared_frame_verified':True,'source_and_output_hashes_verified':True,
         'coloured_original_labels_verified':True,
         'regional_surface_windows_verified':True,
+        'coalesced_shared_regions_verified':True,
         'original_paper_scale_verified':True,
         'original_text_transform_verified':True,
         'independent_building_centroid_spacing_m':expected_offset,

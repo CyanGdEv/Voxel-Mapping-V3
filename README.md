@@ -1,6 +1,8 @@
 ## Windows desktop and CPU learning
 
-[Original PDF text transforms](docs/source-text-transforms.md) preserve word scaling without loosening glyph checks. The Wicker title now passes and supported surface labels increase from 9 to 46/134; fine recovery now exceeds its unchanged 32-region limit, so real area export remains withheld.
+[Coalesced shared-source recovery](docs/coalesced-surface-recovery.md) completes Wicker’s 46 label windows in 14 regions within the existing limits. Its first shared nominal layout has three building-footprint and two material-surface proposals; full-sheet world export still exceeds the current preview size limit.
+
+[Original PDF text transforms](docs/source-text-transforms.md) preserve word scaling without loosening glyph checks. The Wicker title now passes and supported surface labels increase from 9 to 46/134; the subsequent coalesced recovery stage resolves that regional limit.
 
 [Paper-qualified planning scales](docs/planning-paper-scale-context.md) recover original title/scale fragments and select nominal scale by the original ISO paper. The original-transform stage now supports the previously withheld Wicker title.
 

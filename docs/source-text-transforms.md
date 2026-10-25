@@ -1,5 +1,8 @@
 # Original PDF glyph transforms
 
+This page records the preceding text stage. The later [coalesced recovery
+upgrade](coalesced-surface-recovery.md) resolves its regional-budget blocker.
+
 Glyph reference rasters now preserve the original direct-page text-show matrix,
 font size, horizontal scale and graphics matrix when a unique original binding
 is available. CAD can stretch individual words horizontally while leaving their

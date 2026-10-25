@@ -4,6 +4,7 @@ from collections import Counter
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 from shapely.geometry import LineString,Polygon,box,shape,mapping
@@ -80,7 +81,7 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','max_scan_paths'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
     if type(options['regional_fallback']) is not bool:raise ValueError('Boolean regional fallback required')
     for key in ('regional_columns','regional_rows'):
@@ -95,10 +96,22 @@ def validated_options(overrides):
                 or region[0]>=region[2] or region[1]>=region[3]):
             raise ValueError('Finite ordered native region bounds required')
         options['region_native_points']=list(region)
+    if 'region_native_windows' in options:
+        windows=options['region_native_windows']
+        if ('region_native_points' in options or not isinstance(windows,list) or not 1<=len(windows)<=32):
+            raise ValueError('One to 32 exclusive native source windows required')
+        for window in windows:
+            if (not isinstance(window,(list,tuple)) or len(window)!=4
+                    or any(type(v) not in (int,float) or not math.isfinite(v) for v in window)
+                    or window[0]>=window[2] or window[1]>=window[3]):
+                raise ValueError('Finite ordered native source windows required')
+        options['region_native_windows']=[list(w) for w in windows]
     if 'max_scan_paths' in options and (type(options['max_scan_paths']) is not int or not 1<=options['max_scan_paths']<=500000):
         raise ValueError('Invalid regional source scan budget')
     if 'isolate_open_stroked_subpaths' in options and type(options['isolate_open_stroked_subpaths']) is not bool:
         raise ValueError('Boolean isolated stroke-subpath option required')
+    if 'source_face_primitives_only' in options and type(options['source_face_primitives_only']) is not bool:
+        raise ValueError('Boolean source-face primitive filter required')
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
     minimum=options.get('min_line_length_points',12)
@@ -119,8 +132,11 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
     finally:page.set_rotation(angle)
     region=box(*options['region_native_points']) if 'region_native_points' in options else None
     if region is not None and not frame.covers(region):raise ValueError('Region must lie within native page frame')
-    paths=page.get_cdrawings(extended=True) if _paths is None else _paths;rejections=Counter();candidates=[];seen={};clips=[];groups=[];total_points=0
-    scan_limit=options.get('max_scan_paths',500000) if region is not None else options['max_paths']
+    windows=options.get('region_native_windows')
+    zones=[box(*w) for w in windows] if windows is not None else []
+    if any(not frame.covers(z) for z in zones):raise ValueError('Source windows must lie within native page frame')
+    paths=page.get_cdrawings(extended=True) if _paths is None else _paths;rejections=Counter();candidates=[];seen={};clips=[];groups=[];total_points=0;ineligible_aliases={}
+    scan_limit=options.get('max_scan_paths',500000) if region is not None or windows is not None else options['max_paths']
     if len(paths)>scan_limit:return [],{'status':'path_budget_withheld','raw_paths':len(paths),'world_geometry_additions':0}
     selected=0
     masks=[]
@@ -139,19 +155,24 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                 if not clip.equals(box(*clip.bounds)):raise ValueError('Nonrectangular clip')
             except (ValueError,KeyError,TypeError):clip=None
             clips.append((level,clip));continue
-        if region is not None:
+        memberships=[]
+        if region is not None or windows is not None:
             # Native path bounds enclose the complete primitive, including curves.
             # Never clip or split a source paint group to fit an extraction region.
             bounds=pymupdf.Rect(path['rect'])*matrix
             if not all(math.isfinite(v) for v in bounds):
                 rejections['invalid_source_path_bounds']+=1;continue
-            xmin,ymin,xmax,ymax=options['region_native_points']
-            if bounds.x1<xmin or bounds.y1<ymin or bounds.x0>xmax or bounds.y0>ymax:
+            scopes=[options['region_native_points']] if windows is None else windows
+            intersecting=[i for i,(xmin,ymin,xmax,ymax) in enumerate(scopes)
+                if not (bounds.x1<xmin or bounds.y1<ymin or bounds.x0>xmax or bounds.y0>ymax)]
+            if not intersecting:
                 rejections['outside_region']+=1;continue
             selected+=1
             if selected>options['max_paths']:
                 return [],{'status':'region_path_budget_withheld','raw_paths':len(paths),'selected_paths':selected,'world_geometry_additions':0}
-            if min(bounds.x0-xmin,bounds.y0-ymin,xmax-bounds.x1,ymax-bounds.y1)<.25:
+            memberships=[i for i in intersecting if min(bounds.x0-scopes[i][0],bounds.y0-scopes[i][1],
+                scopes[i][2]-bounds.x1,scopes[i][3]-bounds.y1)>=.25]
+            if not memberships:
                 rejections['complete_primitive_crosses_region_boundary']+=1;continue
         if groups or any(c[1] is None for c in clips):rejections['unsupported_clipping_or_compositing_scope']+=1;continue
         if path.get('layer'):rejections['optional_layer_state_unknown']+=1;continue
@@ -180,6 +201,8 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                 try:
                     if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
                     if region is not None and not region.covers(geometry):raise ValueError('Complete geometry crosses region boundary')
+                    if windows is not None and not any(zones[i].covers(geometry) for i in memberships):
+                        raise ValueError('Complete geometry crosses source window boundary')
                     if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
                     if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
                     if geometry.geom_type=='LineString':
@@ -192,9 +215,18 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                         rejections[str(exc)]+=1;continue
                     raise
                 digest=hashlib.sha256((sha+'/'+str(page_number)+'/'+geometry.normalize().wkb_hex).encode()).hexdigest()
+                if options.get('source_face_primitives_only'):
+                    reason=('source_face_curved_paint_ineligible' if approximation['cubic_segments'] else
+                        'source_face_nonsolid_open_paint_ineligible' if geometry.geom_type=='LineString'
+                        and not re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',str(path.get('dashes',''))) else None)
+                    if reason:
+                        rejections[reason]+=1
+                        ineligible_aliases.setdefault(digest,set()).update(memberships if windows is not None else [-1])
+                        continue
                 style={'width_pdf_points':path.get('width'),'dashes_pdf':str(path.get('dashes',''))[:1024]}
                 if style['width_pdf_points'] is not None and (not math.isfinite(style['width_pdf_points']) or style['width_pdf_points']<0):raise ValueError('Invalid native stroke width')
                 paint={'ordinal':ordinal,'subpath':subpath_index,'stroke_style':style,'curve_approximation':approximation}
+                if windows is not None:paint['source_region_indices']=list(memberships)
                 if digest in seen:
                     retained=seen[digest]
                     if len(retained['paint_references'])>=256:
@@ -215,7 +247,10 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
             if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred']:break
         except (ValueError,TypeError,KeyError,OverflowError) as exc:rejections[str(exc)]+=1
     counts=Counter(c['geometry']['type'] for c in candidates)
-    return candidates,{'status':'partial_candidate_budget' if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred'] else 'unplaced_geometry_candidates','raw_paths':len(paths),'selected_paths':selected if region is not None else len(paths),'region_native_points':options.get('region_native_points'),'candidates':len(candidates),'geometry_types':dict(counts),'retained_points':total_points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),'rejections':dict(rejections),'world_geometry_additions':0}
+    for candidate in candidates:
+        if candidate['id'] in ineligible_aliases:
+            candidate['source_face_ineligible_regions']=sorted(ineligible_aliases[candidate['id']])
+    return candidates,{'status':'partial_candidate_budget' if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred'] else 'unplaced_geometry_candidates','raw_paths':len(paths),'selected_paths':selected if region is not None or windows is not None else len(paths),'region_native_points':options.get('region_native_points'),**({'region_native_windows':windows} if windows is not None else {}),'candidates':len(candidates),'geometry_types':dict(counts),'retained_points':total_points,'curved_candidates':sum(c['curve_approximation']['cubic_segments']>0 for c in candidates),'rejections':dict(rejections),'world_geometry_additions':0}
 
 
 def extract_pipeline_page(page,sha,page_number,**overrides):
@@ -224,7 +259,7 @@ def extract_pipeline_page(page,sha,page_number,**overrides):
     options=validated_options(overrides);paths=page.get_cdrawings(extended=True)
     candidates,whole=extract_page(page,sha,page_number,_paths=paths,**options)
     if (whole['status']!='path_budget_withheld' or not options['regional_fallback']
-            or 'region_native_points' in options):return candidates,whole
+            or 'region_native_points' in options or 'region_native_windows' in options):return candidates,whole
     if len(paths)>options.get('max_scan_paths',500000):
         return [],{**whole,'regional_fallback_withheld':'source_scan_budget'}
     regions=[];retained={};points=duplicates=0

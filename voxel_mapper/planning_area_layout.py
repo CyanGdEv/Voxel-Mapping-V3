@@ -152,7 +152,7 @@ def _semantics(evidence, sha, number):
     record = evidence['source_outline']; native = _record(record, sha, number)
     semantic = evidence['semantic_evidence']; kind = evidence.get('kind')
     surface_version=semantic.get('surface_version','planning-surface-boundaries-v1')
-    if surface_version not in ('planning-surface-boundaries-v1',planning_surface_footprints.VERSION):
+    if surface_version not in ('planning-surface-boundaries-v1','planning-surface-boundaries-v2',planning_surface_footprints.VERSION):
         raise ValueError('Known source surface boundary version required')
     labels = semantic.get('labels', []) + ([semantic['label']] if 'label' in semantic else [])
     if not labels or len(labels) > 256:

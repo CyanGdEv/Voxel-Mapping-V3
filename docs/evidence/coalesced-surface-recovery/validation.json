@@ -1,0 +1,321 @@
+{
+  "all_output_hashes_verified": true,
+  "focused_tests": {
+    "seconds": 50.217,
+    "skips": 1,
+    "status": "passed",
+    "tests": 91
+  },
+  "legacy_v2_layout": {
+    "candidate_count": 5,
+    "layout_sha256": "647abb3cf23b8791edbf4512e0c12e5b13c788293fad25f105e71c4c8746cf64",
+    "reloaded_with_current_validator": true,
+    "saved_surface_versions": [
+      "planning-surface-boundaries-v2"
+    ],
+    "source_commit": "f79c48e6810ead63163ecf3f3bca31bda1ce042f"
+  },
+  "model_weights_updated": false,
+  "new_regression_suite": {
+    "seconds": 3.287,
+    "status": "passed",
+    "tests": 9
+  },
+  "nominal_layout": {
+    "building_footprints": 3,
+    "candidate_count": 5,
+    "explicit_path_plaza_candidates": 0,
+    "height_or_roof_supplied": false,
+    "material_surfaces": 2,
+    "nominal_scale": 250,
+    "relations": {
+      "nominal_area_boundary_contacts": 0,
+      "nominal_area_building_candidates": 3,
+      "nominal_area_gap_pairs": 10,
+      "nominal_area_layout_candidates": 5,
+      "nominal_area_overlap_pairs": 0,
+      "nominal_area_path_plaza_candidates": 0,
+      "registered_area_layouts": 0
+    },
+    "verified_physical_scale": false,
+    "verified_registration": false
+  },
+  "recovery": {
+    "all_original_windows_covered_once_in_schedule": true,
+    "all_regional_inventories_complete": true,
+    "coalescing": {
+      "coalesced_region_count": 14,
+      "coalesced_summed_area_pdf_points_squared": 2173643.5249183327,
+      "merges": 32,
+      "original_summed_area_pdf_points_squared": 3848275.2704429496,
+      "original_window_count": 46,
+      "pair_checks": 1947
+    },
+    "complete_regions": 14,
+    "limits": {
+      "max_association_checks": 64000,
+      "max_native_candidates": 10000,
+      "max_native_points": 200000,
+      "max_outlines": 500,
+      "max_output_bytes": 8000000,
+      "max_region_merge_checks": 65536,
+      "max_regions": 32,
+      "max_scan_work_paths": 3200000,
+      "max_surface_labels": 256
+    },
+    "native_candidates": 9902,
+    "native_points": 20966,
+    "original_label_windows": 46,
+    "raw_paths": 92902,
+    "scan_work": 1310936,
+    "shared_native_extraction": {
+      "candidates": 9902,
+      "curved_candidates": 0,
+      "geometry_types": {
+        "LineString": 9795,
+        "Polygon": 107
+      },
+      "raw_paths": 92902,
+      "region_native_points": null,
+      "region_native_windows": [
+        [
+          0.0,
+          248.226806640625,
+          500.6455078125,
+          1406.277587890625
+        ],
+        [
+          321.7452392578125,
+          1482.0667724609375,
+          775.9256591796875,
+          1684.0
+        ],
+        [
+          506.39996337890625,
+          0.0,
+          923.7799072265625,
+          267.003662109375
+        ],
+        [
+          839.0399780273438,
+          1468.862548828125,
+          1244.8856201171875,
+          1684.0
+        ],
+        [
+          947.1070556640625,
+          0.0,
+          1327.043212890625,
+          234.5543212890625
+        ],
+        [
+          1009.679931640625,
+          176.3758544921875,
+          1508.4478759765625,
+          585.1143798828125
+        ],
+        [
+          1544.6400146484375,
+          742.87060546875,
+          2030.16552734375,
+          1175.876708984375
+        ],
+        [
+          1557.4970703125,
+          1159.442626953125,
+          1858.716064453125,
+          1469.3304443359375
+        ],
+        [
+          1693.447509765625,
+          242.9661865234375,
+          1996.00244140625,
+          539.30810546875
+        ],
+        [
+          1701.1199951171875,
+          1357.9869384765625,
+          2010.4854736328125,
+          1651.556640625
+        ],
+        [
+          1976.639892578125,
+          598.87060546875,
+          2384.0,
+          1289.740234375
+        ],
+        [
+          2038.56005859375,
+          257.4986572265625,
+          2350.236083984375,
+          557.4986572265625
+        ],
+        [
+          2123.52001953125,
+          1273.2962646484375,
+          2384.0,
+          1575.15283203125
+        ],
+        [
+          2142.9599609375,
+          20.880615234375,
+          2384.0,
+          322.89599609375
+        ]
+      ],
+      "rejections": {
+        "A linearring requires at least 4 coordinates.": 632,
+        "Invalid candidate topology": 4,
+        "Self-crossing line needs review": 16,
+        "Short line/symbol candidate": 5295,
+        "Small symbol or sheet enclosure candidate": 279,
+        "Text glyph/annotation mask": 707,
+        "complete_primitive_crosses_region_boundary": 785,
+        "nonopaque_paint": 143,
+        "outside_region": 73239,
+        "source_face_curved_paint_ineligible": 1256,
+        "source_face_nonsolid_open_paint_ineligible": 452
+      },
+      "retained_points": 20966,
+      "selected_paths": 19620,
+      "status": "unplaced_geometry_candidates",
+      "world_geometry_additions": 0
+    },
+    "source_path_passes": 1,
+    "surface_boundary_proposals": 2,
+    "unique_enclosures": 199
+  },
+  "report_sha256": "d9140027b11c28a13d692669f233bfc8f9ee498a2fca5c9c8b175319e4db7ea2",
+  "runtime_implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "a9be3075a4334bd615c011d7054fb5083c1783832e0a27ed6625e81220408772"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "d52e22d301e743c07b9942bbb819e314deb007b59e1a09991fbea067d9163281"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "87c57c355f60d39dbcd203d7690472601cab7d6665ad4d3c49394ef8ed5cf6ba"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "731ea0f42a3a141825cd85f6ac206c01852cef0da20ec26f2943e84e69a2ae6f"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "1f4c825ed49cf3a05785841155ddf193b6b13f3df0319de892cab9fe1a3343ba"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "6ff6d9af41a7285525e9a0dde5c9ab2e183bcf3da47c4bd4e3320b40f87c3487"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.source_text_transforms": {
+      "basis": "module_file_bytes",
+      "sha256": "6cd94779061b7bc9e075027a8ba81daa803e06b02973808dd0dea55b3728b367"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "source_exposure": "previously_inspected_development",
+  "source_layout_sha256": "ca5f53d7a33d8cd22f1e91983372cc17c78df65f32d403c2a7a6893a3d2b946c",
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "version": "coalesced-surface-recovery-development-validation-v1",
+  "windows_linux_ci": "recorded separately after publication",
+  "world_attempt": {
+    "complete_layout_preserved": true,
+    "padded_platform_size_m": [
+      196,
+      115
+    ],
+    "reason": "Flat area display platform exceeds 128 by 128 metre budget",
+    "status": "withheld",
+    "world_created": false
+  },
+  "world_geometry_additions": 0
+}

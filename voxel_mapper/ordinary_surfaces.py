@@ -123,14 +123,18 @@ def _source_page_cache(page):
 
 
 def closed_source_faces(page, sha, page_number, *, max_faces=4000,
-                        extraction_options=None, recovery_options=None, _cache=None):
+                        extraction_options=None, recovery_options=None, _cache=None, _parents=None):
     """Apply identical original paint filters; optionally share one page scan."""
     cache=_source_page_cache(page) if _cache is None else _cache
     if cache.get('page') is not page:raise ValueError('Same original page cache required')
     if cache['source_content_sha256']!=hashlib.sha256(page.read_contents()).hexdigest():
         raise ValueError('Original page changed during cached surface extraction')
-    parents, extraction = extract_page(page, sha, page_number,
-        _paths=cache['compact'], **(extraction_options or {}))
+    if _parents is None:
+        parents, extraction = extract_page(page, sha, page_number,
+            _paths=cache['compact'], **(extraction_options or {}))
+    else:
+        parents,extraction=_parents
+    parents=[p for p in parents if -1 not in p.get('source_face_ineligible_regions',[])]
     recovered, recovery = recover_page(parents, recovery_options=recovery_options) if parents else ([], {'status': 'no_geometry'})
     paths=cache['paths'];later_fills=cache['later_fills'];fill_index=cache['fill_index']
     faces = []; seen = set(); covered_boundaries=0
