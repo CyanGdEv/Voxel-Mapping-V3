@@ -87,6 +87,7 @@ on:
       - 'tests/test_planning_design_massing.py'
       - 'tests/test_planning_world_preview.py'
       - 'tests/test_planning_surface_footprints.py'
+      - 'tests/test_planning_surface_regions.py'
       - 'tests/test_planning_area_layout.py'
       - 'tests/test_planning_area_world_preview.py'
       - 'tests/test_planning_area_layout_integration.py'
@@ -184,6 +185,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Conditional Bedrock preview world tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine path and plaza boundary tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_surface_regions.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Bounded regional surface recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_layout.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Shared-frame area geometry tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_world_preview.py' -v

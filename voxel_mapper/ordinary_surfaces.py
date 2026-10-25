@@ -103,14 +103,12 @@ def _outline_inventory(faces, extraction, recovery, maximum):
         'geometric_accuracy': None, 'world_placement_eligible': False}
 
 
-def closed_source_faces(page, sha, page_number, *, max_faces=4000,
-                        extraction_options=None, recovery_options=None):
-    """Apply the same paint/visibility filters to coarse and focused linework."""
-    parents, extraction = extract_page(page, sha, page_number, **(extraction_options or {}))
-    recovered, recovery = recover_page(parents, recovery_options=recovery_options) if parents else ([], {'status': 'no_geometry'})
+def _source_page_cache(page):
+    """Ephemeral original-page paint data; never a serialized extraction input."""
+    compact=page.get_cdrawings(extended=True)
     paths=page.get_drawings(extended=True)
     paints=page.get_bboxlog()
-    if len(paths)>100000 or len(paints)>500000:
+    if len(compact)>100000 or len(paths)>100000 or len(paints)>500000:
         raise ValueError('Ordinary drawing paint budget exceeded')
     inverse=native_inverse(page)
     later_fills=[]
@@ -119,6 +117,22 @@ def closed_source_faces(page, sha, page_number, *, max_faces=4000,
             rect=pymupdf.Rect(bounds)*inverse
             later_fills.append((seq,box(rect.x0,rect.y0,rect.x1,rect.y1)))
     fill_index=STRtree([g for _,g in later_fills]) if later_fills else None
+    return {'page':page,'compact':compact,'paths':paths,
+            'source_content_sha256':hashlib.sha256(page.read_contents()).hexdigest(),
+            'later_fills':later_fills,'fill_index':fill_index}
+
+
+def closed_source_faces(page, sha, page_number, *, max_faces=4000,
+                        extraction_options=None, recovery_options=None, _cache=None):
+    """Apply identical original paint filters; optionally share one page scan."""
+    cache=_source_page_cache(page) if _cache is None else _cache
+    if cache.get('page') is not page:raise ValueError('Same original page cache required')
+    if cache['source_content_sha256']!=hashlib.sha256(page.read_contents()).hexdigest():
+        raise ValueError('Original page changed during cached surface extraction')
+    parents, extraction = extract_page(page, sha, page_number,
+        _paths=cache['compact'], **(extraction_options or {}))
+    recovered, recovery = recover_page(parents, recovery_options=recovery_options) if parents else ([], {'status': 'no_geometry'})
+    paths=cache['paths'];later_fills=cache['later_fills'];fill_index=cache['fill_index']
     faces = []; seen = set(); covered_boundaries=0
     for candidate in parents + recovered:
         if candidate.get('paint_reference_truncated') or candidate['geometry']['type'] != 'Polygon':
