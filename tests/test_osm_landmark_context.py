@@ -82,14 +82,21 @@ class LandmarkAutomationTests(unittest.TestCase):
             self.assertFalse(proof['registration_verified'])
             with patch('voxel_mapper.osm_landmark_context.shutil.which',return_value='/fake/tesseract'),patch('voxel_mapper.osm_landmark_context.subprocess.run',side_effect=recognized('Other Cottage')):
                 self.assertEqual(raster_name_agreement(page,run,'Swiss Cottage')['status'],'withheld')
-    def test_zero_ocr_budget_defers_grey_labels_without_spawning_ocr(self):
+    def test_zero_ocr_budget_accepts_screened_grey_labels_and_withholds_erased_ones(self):
         from unittest.mock import patch
         with pymupdf.open() as doc:
             page=doc.new_page(width=400,height=400);page.insert_text((50,80),'Swiss Cottage',fontsize=9,color=(.54,.54,.54))
             with patch('voxel_mapper.osm_landmark_context.raster_name_agreement',side_effect=AssertionError('OCR')):
                 result=bind_labels(page,[{'candidate_id':'outline','geometry':box(40,300,160,370)}],[],
                     [{'id':'osm/way/1','name':'Swiss Cottage'}],max_ocr_labels=0)
-            self.assertEqual(result['ocr_attempts'],0);self.assertEqual(result['priority_seed_ids'],[])
+            self.assertEqual(result['ocr_attempts'],0);self.assertEqual(result['priority_seed_ids'],['outline'])
+            self.assertEqual(result['named_pairs'],[('outline','osm/way/1')])
+            self.assertFalse(result['physical_identity_verified'])
+            page.draw_rect((40,60,160,90),color=None,fill=(1,1,1))
+            with patch('voxel_mapper.osm_landmark_context.raster_name_agreement',side_effect=AssertionError('OCR')):
+                erased=bind_labels(page,[{'candidate_id':'outline','geometry':box(40,300,160,370)}],[],
+                    [{'id':'osm/way/1','name':'Swiss Cottage'}],max_ocr_labels=0)
+            self.assertEqual(erased['ocr_attempts'],0);self.assertEqual(erased['priority_seed_ids'],[])
 
     def test_coincident_distinct_osm_nodes_do_not_join_bridge_and_ground_paths(self):
         lines=[{'geometry':LineString([(0,0),(1,0)]),'node_ids':[1,2]},

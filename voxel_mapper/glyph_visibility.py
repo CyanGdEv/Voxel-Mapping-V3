@@ -3,8 +3,39 @@ import math
 import numpy as np
 import pymupdf
 
-VERSION='source-font-glyph-raster-screen-v6'
-INK_VERSION='source-font-isolated-glyph-screen-v4'
+VERSION='source-font-glyph-raster-screen-v7'
+INK_VERSION='source-font-isolated-glyph-screen-v5'
+
+
+def _source_rgb(span):
+    value=span.get('color')
+    if (not isinstance(value,(tuple,list)) or len(value) not in (1,3)
+            or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in value)):
+        return None
+    rgb=tuple(float(v) for v in value)
+    return rgb*3 if len(rgb)==1 else rgb
+
+
+def _colour_support(samples,rgb,threshold):
+    """Match original-colour ink blended over white, retaining chromaticity.
+
+    Black paint cannot stand in for grey/coloured text. Surrounding matching
+    paint is still rejected by the independent reference-ink ring check.
+    """
+    delta=255*(1-np.asarray(rgb,dtype=float))
+    ink=255-samples.astype(float)
+    coverage=np.sum(ink*delta,axis=2)/float(delta@delta)
+    residual=np.max(np.abs(ink-coverage[...,None]*delta),axis=2)
+    return (coverage>(255-threshold)/255)&(coverage<=1.04)&(residual<=12)
+
+
+def _colour_match(samples,rgb,reference):
+    expected=255-(255-reference.astype(float))[...,None]*(1-np.asarray(rgb))
+    padded=np.pad(samples.astype(float),((1,1),(1,1),(0,0)),constant_values=255)
+    ink=np.pad(_colour_support(samples,rgb,200),1,constant_values=False)
+    height,width=reference.shape
+    return np.logical_or.reduce([(np.max(np.abs(padded[y:y+height,x:x+width]-expected),axis=2)<=12)&ink[y:y+height,x:x+width]
+        for y in range(3) for x in range(3)])
 
 
 def _direct_winansi_resource(page,span,fonts):
@@ -197,11 +228,14 @@ def screen_span(page,span,*,zoom=6,max_pixels=1000000,isolate_glyphs=False):
     if type(isolate_glyphs) is not bool:raise ValueError('Boolean glyph isolation required')
     version=INK_VERSION if isolate_glyphs else VERSION
     failure={'status':'withheld','visibility_verified':False,'version':version}
+    rgb=_source_rgb(span)
     if (span.get('type')!=0 or span.get('opacity')!=1
-            or span.get('layer') or span.get('color') not in ((0.,0.,0.),(0.,))
+            or span.get('layer') or rgb is None
             or not span['chars'] or len(span['chars'])>500
             or any(not 32<=c[0]<=126 for c in span['chars'])):
         return {**failure,'reason':'Unsupported font, rendering, layer or character convention'}
+    if max(1-v for v in rgb)*255<48:
+        return {**failure,'reason':'Original text colour has insufficient contrast over white'}
     fonts=[f for f in page.get_fonts(full=True) if f[3].split('+')[-1]==span.get('font')]
     if not fonts:return {**failure,'reason':'Source font resource not uniquely identified'}
     import hashlib
@@ -266,8 +300,16 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
     rotation=page.rotation
     try:
         page.set_rotation(0)
-        source=page.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,colorspace=pymupdf.csGRAY,alpha=False)
-        source_gray=np.frombuffer(source.samples,np.uint8).reshape(source.height,source.width)
+        coloured=_source_rgb(span)!=(0.,0.,0.)
+        source=page.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,
+            colorspace=pymupdf.csRGB if coloured else pymupdf.csGRAY,alpha=False)
+        if coloured:
+            pixels=np.frombuffer(source.samples,np.uint8).reshape(source.height,source.width,3)
+            source_dark=_colour_support(pixels,_source_rgb(span),100)
+            source_ink=_colour_support(pixels,_source_rgb(span),200)
+        else:
+            source_gray=np.frombuffer(source.samples,np.uint8).reshape(source.height,source.width)
+            source_dark=source_gray<100;source_ink=source_gray<200
         isolated=[]
         with pymupdf.open() as document:
             reference=document.new_page(width=page.rect.width,height=page.rect.height)
@@ -338,14 +380,16 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
                     # Thin CAD strokes may have no nearly-black pixels at the
                     # fixed raster scale. Match their antialiased ink using
                     # the same threshold in source and isolated reference.
-                    support=grow(source_gray<200)
+                    support=grow(source_ink)
                     for i,(character,command) in enumerate(zip(span['chars'],commands)):
                         if character[0]==32:continue
                         document.update_stream(content,command.encode('ascii'))
                         glyph=reference.get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),clip=clip,colorspace=pymupdf.csGRAY,alpha=False)
                         if (glyph.width,glyph.height,glyph.x,glyph.y)!=(source.width,source.height,source.x,source.y):
                             return {**failure,'reason':'Isolated glyph raster frames differ'}
-                        mask=np.frombuffer(glyph.samples,np.uint8).reshape(glyph.height,glyph.width)<200
+                        reference_gray=np.frombuffer(glyph.samples,np.uint8).reshape(glyph.height,glyph.width)
+                        mask=reference_gray<200
+                        if coloured:support=_colour_match(pixels,_source_rgb(span),reference_gray)
                         isolated.append({'character_index':i,'core_pixels':int(mask.sum()),
                             'unsupported_core_pixels':int(np.count_nonzero(mask&~support))})
                     document.update_stream(content,'\n'.join(commands).encode('ascii'))
@@ -358,10 +402,10 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
         if (source.width,source.height,source.x,source.y)!=(expected.width,expected.height,expected.x,expected.y):
             return {**failure,'reason':'Source and reference raster frames differ'}
         a=np.frombuffer(expected.samples,np.uint8).reshape(expected.height,expected.width)
-        b=np.frombuffer(source.samples,np.uint8).reshape(source.height,source.width)
-        core=a<60;support=grow(b<100)
+        core=a<60;support=grow(source_dark)
+        if coloured:support=_colour_match(pixels,_source_rgb(span),a)
         ring=grow(a<200,2)&~grow(a<200)
-        unexpected=int(np.count_nonzero((b<100)&ring));ring_count=int(np.count_nonzero(ring));glyphs=[]
+        unexpected=int(np.count_nonzero(source_dark&ring));ring_count=int(np.count_nonzero(ring));glyphs=[]
         for i,c in enumerate(span['chars']):
             if c[0]==32:continue
             x0,y0,x1,y1=c[3]
@@ -381,11 +425,16 @@ def _screen_font(page,span,fonts,font_buffer,*,zoom,max_pixels,isolate_glyphs,or
                     'font_appearance_across_renderers_verified':False} if original_resource_proof is not None else {}),
                 'ring_pixels':ring_count,'unexpected_dark_ring_pixels':unexpected,
                 'pixel_position_tolerance':1,'max_unsupported_core_fraction_per_glyph':.01,'max_unexpected_dark_ring_fraction':.01,
+                'source_colour_rgb':list(_source_rgb(span)),
+                'source_colour_support':('original_rgb_over_white_projection' if coloured else 'legacy_black_grayscale'),
+                **({'colour_residual_tolerance_rgb_levels':12,'max_colour_coverage':1.04,
+                    'minimum_colour_contrast_rgb_levels':48} if coloured else {}),
                 **({'glyph_support_basis':'isolated_original_glyph_ink',
-                    'glyph_ink_grayscale_threshold':200,'source_support_grayscale_threshold':200,
+                    'glyph_ink_grayscale_threshold':200,
+                    **({'source_colour_match_tolerance_rgb_levels':12} if coloured else {'source_support_grayscale_threshold':200}),
                     'isolated_glyph_pixel_budget':20000000} if isolate_glyphs else {}),
                 'limitations':['Raster consistency is a screen, not proof of semantic/material or as-built identity.',
-                               'Only black ASCII text with a unit rotation and one raster-consistent original font candidate is supported; no custom-font substitution.',
+                               'Opaque ASCII text with supported original colour/contrast and one raster-consistent original font candidate; no custom-font substitution.',
                                'A one-pixel position tolerance applies at the retained raster scale.']}
     finally:page.set_rotation(rotation)
 
