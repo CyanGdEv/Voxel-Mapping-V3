@@ -53,6 +53,8 @@ on:
       - 'voxel_mapper/planning_world_preview.py'
       - 'voxel_mapper/planning_surface_footprints.py'
       - 'voxel_mapper/planning_area_layout.py'
+      - 'voxel_mapper/planning_area_scale.py'
+      - 'voxel_mapper/caption_fragments.py'
       - 'voxel_mapper/planning_area_world_preview.py'
       - 'voxel_mapper/bedrock.py'
       - 'voxel_mapper/glyph_visibility.py'
@@ -88,6 +90,7 @@ on:
       - 'tests/test_planning_world_preview.py'
       - 'tests/test_planning_surface_footprints.py'
       - 'tests/test_planning_surface_regions.py'
+      - 'tests/test_planning_paper_scale.py'
       - 'tests/test_planning_area_layout.py'
       - 'tests/test_planning_area_world_preview.py'
       - 'tests/test_planning_area_layout_integration.py'
@@ -187,6 +190,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Fine path and plaza boundary tests failed' }
           python -m unittest discover -s tests -p 'test_planning_surface_regions.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Bounded regional surface recovery tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_paper_scale.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original paper-qualified scale tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_layout.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Shared-frame area geometry tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_world_preview.py' -v

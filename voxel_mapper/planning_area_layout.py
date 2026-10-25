@@ -13,6 +13,7 @@ from shapely.geometry import box, mapping, shape
 from . import architectural_view_layout, ordinary_surfaces, planning_component_measurements
 from . import planning_component_footprints, planning_outline_semantics, planning_view_geometry
 from . import planning_surface_footprints
+from . import planning_area_scale
 from .building_spec import digest
 from .paving_palette import material_label, polygon_surface
 
@@ -62,7 +63,7 @@ def _affine(context):
     source_layout = context['caption_layout']
     visible = [r for r in source_layout['view_captions']+source_layout['sheet_titles']
                if r.get('glyph_screen', {}).get('status') == 'raster_consistent_candidate']
-    if (source_layout.get('version') != architectural_view_layout.VERSION
+    if (source_layout.get('version') not in ('architectural-caption-layout-v4',architectural_view_layout.VERSION)
             or visible != [caption]
             or (claim.get('view_kind') != 'plan' and not
                 (claim.get('view_kind') == 'sheet_title' and claim.get('plan_level_or_form') in ('site', 'block')))
@@ -73,13 +74,10 @@ def _affine(context):
             or context['measurements'].get('pdf_user_unit') != 1):
         raise ValueError('Visible nominal plan and supported native paper required')
     denominator = context['printed_scale_denominator']
-    adjacent = caption.get('adjacent_scale_candidates', [])
-    inline = claim.get('printed_scale_denominator')
-    values = [inline] if inline is not None else [r.get('printed_denominator') for r in adjacent]
-    if (len(values) != 1 or type(denominator) is not int or not 1 <= denominator <= 10000
-            or values[0] != denominator
-            or any(r.get('printed_denominator') != denominator
-                   or r.get('glyph_screen', {}).get('status') != 'raster_consistent_candidate' for r in adjacent)):
+    resolution=planning_area_scale.resolve(caption,source_layout,context['measurements'])
+    if (type(denominator) is not int or resolution['printed_scale_denominator']!=denominator
+            or ('scale_resolution' in context and context['scale_resolution']!=resolution)
+            or (resolution['basis']=='original_page_iso_paper_match' and 'scale_resolution' not in context)):
         raise ValueError('One visible unambiguous per-plan scale required')
     axis = caption.get('reading_direction_pdf_native')
     if axis not in ([1., 0.], [0., 1.], [-1., 0.], [0., -1.]):
@@ -277,6 +275,8 @@ def page_layout(page, sha, number, layout, inventory, associations, components, 
     visible = [r for r in layout['view_captions']+layout['sheet_titles']
                if r.get('glyph_screen', {}).get('status') == 'raster_consistent_candidate']
     if len(visible) != 1:
+        if not visible and layout['view_captions']+layout['sheet_titles']:
+            return finish('complete_plan_caption_glyph_evidence_required')
         return finish('one_unambiguous_horizontal_plan_context_required')
     caption = visible[0]; claim = caption['printed_claim']
     if (claim.get('view_kind') != 'plan' and not
@@ -288,14 +288,12 @@ def page_layout(page, sha, number, layout, inventory, associations, components, 
         cancelled=cancelled)
     if measurements['analysis_complete'] is not True:
         return finish(measurements.get('reason', 'supported_native_paper_required'))
-    adjacent = caption.get('adjacent_scale_candidates', [])
-    inline = claim.get('printed_scale_denominator')
-    values = [inline] if inline is not None else [r.get('printed_denominator') for r in adjacent]
-    if len(values) != 1:
-        return finish('one_visible_plan_scale_required')
+    try:resolution=planning_area_scale.resolve(caption,layout,measurements)
+    except ValueError as error:return finish(str(error))
     result['source_context'] = {'caption': caption, 'caption_layout': layout, 'measurements': measurements,
         'native_page_bounds': list(planning_view_geometry._native_frame(page).bounds),
-        'printed_scale_denominator': values[0],
+        'printed_scale_denominator': resolution['printed_scale_denominator'],
+        'scale_resolution':resolution,
         'context_scope': 'single visible horizontal plan context; physical view extent unverified'}
     try: result['shared_frame'] = _affine(result['source_context'])
     except ValueError as error: return finish(str(error))

@@ -14,17 +14,23 @@ from .planning_area_pilot import VERSION
 def make_source(path):
     """Two buildings, joined paving and an intentionally disconnected path."""
     with pymupdf.open() as document:
-        page=document.new_page(width=700,height=420)
+        page=document.new_page(width=2384,height=1684)
+        # Keep the previous native y-up coordinates and voxel-grid phase while
+        # adding real ISO paper around the unchanged synthetic area.
+        offset=page.rect.height-420
         for index,(rectangle,label,origin) in enumerate((
                 ((60,80,160,180),'Shop',(80,110)),
                 ((160,120,400,160),'Footpath',(210,145)),
                 ((400,80,500,200),'Plaza',(420,110)),
                 ((500,100,600,180),'Toilets',(520,130)),
                 ((250,260,450,300),'Footpath',(300,285)))):
-            page.draw_rect(rectangle)
-            page.insert_text(origin,label,fontsize=10,
+            x0,y0,x1,y1=rectangle
+            page.draw_rect((x0,y0+offset,x1,y1+offset))
+            page.insert_text((origin[0],origin[1]+offset),label,fontsize=10,
                 color=((.65,.65,.65),(.55,.35,.2),(.7,0,0))[index%3])
-        page.insert_text((60,360),'Proposed Ground Floor Plan | 1:200',fontsize=12)
+        page.insert_text((60,360+offset),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
+        page.insert_text((80,390+offset),'1/200 @ A1',fontsize=12)
+        page.insert_text((80,405+offset),'1/400 @ A3',fontsize=12)
         document.save(path)
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -48,6 +54,11 @@ def run(output):
         layouts=runtime.planning_area_layouts(pilot_id)
         if len(layouts)!=1:raise ValueError('Expected one supported same-plan layout')
         layout=json.loads(Path(layouts[0]['layout_path']).read_text(encoding='utf-8'))
+        scale=layout['source_context'].get('scale_resolution',{})
+        if (scale.get('basis')!='original_page_iso_paper_match'
+                or scale.get('selected_paper_size')!='A1'
+                or scale.get('printed_scale_denominator')!=200):
+            raise ValueError('Original paper-qualified site plan scale was not exercised')
         evidence_path=Path(pilot['output_directory'])/pilot['result']['pages'][0]['evidence_file']
         surface_evidence=json.loads(evidence_path.read_text(encoding='utf-8'))['surface_footprints']
         regional=surface_evidence['extraction']
@@ -104,6 +115,7 @@ def run(output):
         'path_plaza_candidates':3,'shared_frame_verified':True,'source_and_output_hashes_verified':True,
         'coloured_original_labels_verified':True,
         'regional_surface_windows_verified':True,
+        'original_paper_scale_verified':True,
         'independent_building_centroid_spacing_m':expected_offset,
         'saved_paving_components':2,'saved_paving_cells':149,
         'persistent_restart_verified':True,'real_park_accuracy_assessed':False,

@@ -13,8 +13,9 @@ from .glyph_visibility import screen_architectural_span
 from .elevation_interpretation import caption
 from .architectural_graph import VERSION as GRAPH_VERSION
 from .numbered_elevation_captions import parse as numbered_caption
+from .planning_area_scale import printed_scale
 
-VERSION='architectural-caption-layout-v4'
+VERSION='architectural-caption-layout-v5'
 
 
 def view_claim(text):
@@ -94,8 +95,10 @@ def review(page,sha,number,graph,*,max_assignments=100000):
             'character_indices':run['character_indices'],'glyph_screen':screen_architectural_span(page,run,zoom=24 if run['size']<4 else 6)}
     runs=list(label_runs(traces))
     from .caption_fragments import collect
-    joined,fragment_status,fragment_contexts=collect(page,runs,view_claim,retained)
+    joined,fragment_status,fragment_contexts=collect(page,runs,view_claim,retained,max_size_ratio=1.05)
+    joined_scales,scale_fragment_status,scale_contexts=collect(page,runs,printed_scale,retained,max_size_ratio=1.05)
     grouped={json.dumps(key) for context in fragment_contexts for key in context['fragment_keys']}
+    grouped_scales={json.dumps(key) for context in scale_contexts if context['whole_native_line_caption_supported'] for key in context['fragment_keys']}
     def add_caption(evidence,claim):
         if len(views)+len(titles)>=128:raise ValueError('View-caption budget exceeded')
         row={**evidence,'printed_claim':claim}
@@ -106,14 +109,18 @@ def review(page,sha,number,graph,*,max_assignments=100000):
         (titles if claim['kind']=='sheet_title' else views).append(row)
     for run in runs:
         text=''.join(chr(c[0]) for c in run['chars']).strip();claim=view_claim(text)
-        scale=re.fullmatch(r'(?:scale\s*)?1\s*:\s*(\d{1,5})(?:\s*@\s*A[0-4])?',text,re.I)
+        scale=printed_scale(text)
         if claim and json.dumps([run['trace_indices'],run['character_indices']]) not in grouped:
             add_caption(retained(run),claim)
-        if scale and 1<=int(scale[1])<=10000:
+        if scale and json.dumps([run['trace_indices'],run['character_indices']]) not in grouped_scales:
             if len(scales)>=128:raise ValueError('Page scale-claim budget exceeded')
-            scales.append({**retained(run),'printed_denominator':int(scale[1]),'view_assignment_verified':False})
+            scales.append({**retained(run),**scale,'view_assignment_verified':False})
     for evidence,claim in joined:add_caption(evidence,claim)
-    if fragment_status=='caption_fragment_budget_withheld':
+    for evidence,claim in joined_scales:
+        if len(scales)>=128:raise ValueError('Page scale-claim budget exceeded')
+        scales.append({**evidence,**claim,'view_assignment_verified':False})
+    if 'caption_fragment_budget_withheld' in (fragment_status,scale_fragment_status):
+        for row in scales:row['glyph_screen']={'status':'withheld','reason':'Complete scale fragment context budget required'}
         for row in views+titles:
             row['glyph_screen']={'status':'withheld','reason':'Complete caption fragment context budget required',
                 'original_screen':row['glyph_screen']}
@@ -195,7 +202,9 @@ def review(page,sha,number,graph,*,max_assignments=100000):
         'status':'layout_assignment_budget_withheld' if exhausted else 'caption_layout_hypotheses_only',
         'view_captions':views,'sheet_titles':titles,'page_scale_claims':scales,'candidate_windows':windows,
         'caption_fragment_status':fragment_status,
+        'scale_fragment_status':scale_fragment_status,
         'native_fragment_line_contexts':fragment_contexts,
+        'native_scale_fragment_line_contexts':scale_contexts,
         'component_membership':membership,'subgraph_membership':groups,'checks':checks,'max_assignments':max_assignments,
         'counts':{**dict(counts),'view_captions':len(views),'candidate_windows':len(windows),'scoped_subgraph_candidates':sum(len(g['candidate_window_ids'])==1 for g in groups)},
         'view_scope_verified':False,'scale_application_verified':False,'world_geometry_additions':0,
