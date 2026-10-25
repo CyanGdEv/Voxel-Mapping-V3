@@ -4,10 +4,11 @@ from shapely.geometry import box,mapping
 from shapely.strtree import STRtree
 
 
-VERSION='native-caption-fragments-v1'
+VERSION='native-caption-fragments-v2'
 
 
-def collect(page,runs,parse,retain):
+def collect(page,runs,parse,retain,*,max_size_ratio=1.02):
+    if not 1<=max_size_ratio<=1.05:raise ValueError('Bounded native fragment size tolerance required')
     if len(runs)>20000:return [],'caption_fragment_budget_withheld',[]
     index=STRtree([box(*r['bbox']) for r in runs]);rows=[];lines=0;contexts=[];checks=0
     for block in page.get_text('dict',flags=0)['blocks']:
@@ -17,8 +18,9 @@ def collect(page,runs,parse,retain):
             text=''.join(s['text'] for s in line['spans']).strip();claim=parse(text)
             if not claim and not re.search(r'\b(?:plan|elevation|section)s?\b',text,re.I):continue
             region=box(*line['bbox']).buffer(.1,join_style=2)
+            line_fonts={s['font'] for s in line['spans']}
             group=[runs[int(k)] for k in index.query(region,predicate='intersects')
-                   if region.covers(box(*runs[int(k)]['bbox']))]
+                   if region.covers(box(*runs[int(k)]['bbox'])) and runs[int(k)]['font'] in line_fonts]
             checks+=len(group)
             if checks>100000:return [],'caption_fragment_budget_withheld',[]
             if not 2<=len(group)<=16:continue
@@ -26,7 +28,7 @@ def collect(page,runs,parse,retain):
             group.sort(key=lambda r:sum(r['chars'][0][2][k]*direction[k] for k in (0,1)))
             if any(not r['chars'] or r['font']!=group[0]['font'] or tuple(r['dir'])!=direction for r in group):continue
             sizes=[r['size'] for r in group]
-            if min(sizes)<=0 or max(sizes)/min(sizes)>1.02:continue
+            if min(sizes)<=0 or max(sizes)/min(sizes)>max_size_ratio:continue
             origin=group[0]['chars'][0][2]
             if any(abs(sum((r['chars'][0][2][k]-origin[k])*perpendicular[k] for k in (0,1)))>.25 for r in group):continue
             native=''.join(''.join(chr(c[0]) for c in r['chars']) for r in group)
@@ -40,7 +42,9 @@ def collect(page,runs,parse,retain):
             from shapely.geometry import shape
             bounds=[shape(g).bounds for g in geometries]
             envelope=box(min(b[0] for b in bounds),min(b[1] for b in bounds),max(b[2] for b in bounds),max(b[3] for b in bounds))
-            visible=all(f['glyph_screen']['status']=='raster_consistent_candidate' for f in fragments)
+            # Native whitespace has no ink to screen, but remains in the exact
+            # character-coverage contract and retained fragment inventory.
+            visible=all(not f['text'].strip() or f['glyph_screen']['status']=='raster_consistent_candidate' for f in fragments)
             rows.append(({'text':text,'label_geometry':mapping(envelope),
                 'reading_direction_pdf_native':fragments[0]['reading_direction_pdf_native'],
                 'caption_fragments':fragments,'fragment_contract':VERSION,

@@ -1,0 +1,166 @@
+{
+  "actual_area_hold": "complete_plan_caption_glyph_evidence_required",
+  "all_report_output_hashes_verified": true,
+  "caption": {
+    "fragment_count": 7,
+    "status": "withheld",
+    "text": "Site Plan Proposed showing Woodland Path",
+    "unsupported_non_whitespace_fragments": [
+      "showing",
+      "Path"
+    ]
+  },
+  "implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "204a18a4c845d25df6ef1c1dc8d209bdd133215d4d695fa6ee27b79f74d27b50"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "59a63a24942e911a832174fcd2c0752e54d48480cb759b25232b1890963f19ec"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "f2ac438f5ca4d2540d020caff1595ec0c2824a90b105d290996dd4f8e8ea03e3"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "3306a7ae2d545f26e3cb8307f97edf4afdcd3a19c4c235fb4139af1dae3ff7c3"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "e50262df9a3d8535815ff91a08711cace01907df9fcd41c87c7eb7f613f4cd2e"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "5bc87d109335dbb438e1133cf627ec947ec225668de967214853c6d2a1d956e7"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "4c57fc18c4f328075f22bbc8120a307cc909f137dc639154dcd7388095fb9e20"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "899fa1066dab74a9fb7ca07aadeb1db3c924e52f0071b00530a8872fcf1e74e9"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "52399c4e78943fd61c6dd47da444981593546303ae163a355698d4c2615ddeb8"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "legacy_v4_standalone_checkpoint": {
+    "reload_verified": true,
+    "sha256": "4d3e94a4ca85ee23e69644062e6e2b431be7b854c97a78decd426797742f534c"
+  },
+  "local_focused_tests": {
+    "seconds": 53.515,
+    "skips": 1,
+    "status": "passed",
+    "tests": 74
+  },
+  "matching_paper_sizes": [
+    "A1"
+  ],
+  "model_weights_updated": false,
+  "new_paper_scale_tests": 8,
+  "original_page_dimensions_mm": [
+    594.0777777777778,
+    841.0222222222222
+  ],
+  "paper_scale_rows": [
+    {
+      "denominator": 250,
+      "paper_size": "A1",
+      "status": "raster_consistent_candidate",
+      "text": "1/250 @ A1"
+    },
+    {
+      "denominator": 500,
+      "paper_size": "A3",
+      "status": "raster_consistent_candidate",
+      "text": "1/500 @ A3"
+    }
+  ],
+  "previously_inspected": true,
+  "real_area_frame_generated": false,
+  "regional_boundary_candidates": 2,
+  "report_sha256": "a1407c3a30d0291210db2ce7d58161b4a75d0f774b01edbdf9c1867eb22dbb3f",
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "version": "planning-paper-context-development-validation-v1",
+  "windows_linux_ci": "recorded separately after publication",
+  "world_geometry_additions": 0
+}
