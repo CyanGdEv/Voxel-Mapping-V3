@@ -14,6 +14,7 @@ from voxel_mapper import architectural_graph, architectural_view_layout, ordinar
 from voxel_mapper import planning_outline_semantics as semantics
 from voxel_mapper import planning_component_footprints as components
 from voxel_mapper import planning_area_layout as area
+from voxel_mapper import planning_surface_footprints as surfaces
 from voxel_mapper.building_spec import digest
 
 
@@ -41,13 +42,13 @@ def fixture(*, second_caption=False, hidden_caption=False, caption='Proposed Gro
     fine = components.page_candidates(page, sha, 1, inventory, assoc)
     records = {r['candidate_id']:r for r in inventory['records']}
     labels = {r['id']:r for r in assoc['labels']}
-    pack = {'version':'planning-surface-boundaries-v1', 'document_sha256':sha, 'page':1,
+    pack = {'version':surfaces.VERSION, 'document_sha256':sha, 'page':1,
         'source_inventory_sha256':digest(inventory), 'source_associations_sha256':digest(assoc),
         'analysis_complete':True, 'candidates':[]}
     for a in assoc['outlines']:
         if a['status']=='visible_label_enclosure_hint' and a['source_role_hint'] in ('path','plaza'):
             record = records[a['candidate_id']]
-            pack['candidates'].append({'id':digest(['planning-surface-boundaries-v1',sha,1,record['candidate_id'],sorted(a['label_ids'])]), 'document_sha256':sha, 'page':1,
+            pack['candidates'].append({'id':digest([surfaces.VERSION,sha,1,record['candidate_id'],sorted(a['label_ids'])]), 'document_sha256':sha, 'page':1,
                 'coordinate_frame':area.FRAME, 'geometry_pdf_native':record['candidate']['geometry'],
                 'source_outline':record, 'labels':[labels[k] for k in a['label_ids']],
                 'source_role_hint':a['source_role_hint'], 'surface':'stone', 'material_basis':'user stone default on labelled surface'})

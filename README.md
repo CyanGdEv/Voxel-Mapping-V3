@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Regional surface recovery](docs/regional-surface-recovery.md) replaces the encompassing fine scan with bounded label windows and shared original-page paint data. The Wicker development replay completes nine windows within the existing candidate limit; two source-boundary hypotheses remain unregistered, and area scale/context still needs work.
+
 [Original-colour planning labels](docs/coloured-planning-labels.md) verify supported coloured text against original glyph shape and RGB evidence. The Wicker development replay improves supported surface/material labels from 3 to 9 out of 134, while complete area geometry remains unresolved.
 
 [Shared building and path layouts](docs/planning-area-layouts.md) preserve relative positions in one nominal plan frame, recover fine labelled surface boundaries and report contacts, overlaps and gaps. **Export plan layout** creates a checked flat Bedrock map with paving and yellow building footprint markers. Building heights and complete real-area reconstruction remain unresolved; retained Alton source replays still expose text and boundary blockers.

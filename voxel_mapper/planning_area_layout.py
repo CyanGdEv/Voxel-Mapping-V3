@@ -12,6 +12,7 @@ from shapely.geometry import box, mapping, shape
 
 from . import architectural_view_layout, ordinary_surfaces, planning_component_measurements
 from . import planning_component_footprints, planning_outline_semantics, planning_view_geometry
+from . import planning_surface_footprints
 from .building_spec import digest
 from .paving_palette import material_label, polygon_surface
 
@@ -152,6 +153,9 @@ def _semantics(evidence, sha, number):
     """Derive role/material/state from the retained visible literal labels."""
     record = evidence['source_outline']; native = _record(record, sha, number)
     semantic = evidence['semantic_evidence']; kind = evidence.get('kind')
+    surface_version=semantic.get('surface_version','planning-surface-boundaries-v1')
+    if surface_version not in ('planning-surface-boundaries-v1',planning_surface_footprints.VERSION):
+        raise ValueError('Known source surface boundary version required')
     labels = semantic.get('labels', []) + ([semantic['label']] if 'label' in semantic else [])
     if not labels or len(labels) > 256:
         raise ValueError('Bounded visible source labels required')
@@ -170,7 +174,7 @@ def _semantics(evidence, sha, number):
         elif kind == 'fine_surface' and finish is not None:
             if label.get('claim') != {'role': 'surface', 'scope': 'enclosure', 'printed_state': 'unspecified'}:
                 raise ValueError('Literal material label cannot supply another role')
-            expected_label_id = digest(['planning-surface-boundaries-v1', sha, number,
+            expected_label_id = digest([surface_version, sha, number,
                 label['trace_indices'], label['character_indices']])
         else:
             raise ValueError('Supported literal role or material label required')
@@ -201,7 +205,7 @@ def _semantics(evidence, sha, number):
     elif kind == 'fine_surface':
         if role not in ('path', 'plaza', 'surface'):
             raise ValueError('Exact visible surface role required')
-        if semantic.get('surface_candidate') != digest(['planning-surface-boundaries-v1', sha,
+        if semantic.get('surface_candidate') != digest([surface_version, sha,
                 number, record['candidate_id'], sorted(r['id'] for r in labels)]):
             raise ValueError('Exact fine surface identity required')
         surface = polygon_surface(materials)
@@ -262,7 +266,7 @@ def page_layout(page, sha, number, layout, inventory, associations, components, 
     if inventory.get('inventory_complete') is not True or associations.get('inventory_complete') is not True:
         return finish('complete_source_boundary_associations_required')
     for pack, version in ((components, planning_component_footprints.VERSION),
-                          (surfaces, 'planning-surface-boundaries-v1')):
+                          (surfaces, planning_surface_footprints.VERSION)):
         if pack is not None:
             if (pack.get('version') != version or pack.get('document_sha256') != sha or pack.get('page') != number
                     or pack.get('source_inventory_sha256') != digest(inventory)
@@ -327,7 +331,7 @@ def page_layout(page, sha, number, layout, inventory, associations, components, 
         role = row.get('source_role_hint')
         if role not in ('path', 'plaza', 'surface'): raise ValueError('Supported literal surface role required')
         add(role, row['geometry_pdf_native'], row['source_outline'],
-            {'surface_candidate': row['id'], 'labels': row['labels'],
+            {'surface_candidate': row['id'], 'surface_version':surfaces['version'], 'labels': row['labels'],
              'material_basis': row.get('material_basis')}, 'fine_surface', row.get('surface'))
     if len(raw) > limits['max_candidates']: return finish('area_layout_candidate_budget_exceeded')
     merged = []

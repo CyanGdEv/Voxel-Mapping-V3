@@ -1,0 +1,321 @@
+{
+  "version": "regional-surface-recovery-validation-v1",
+  "status": "regional_scan_complete_area_context_unresolved",
+  "development_scope": "previously_inspected_original_pdf",
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_page_sha256": "cf57666d420f6acf058d759a4de0b1ded929ef41ae256f05dd458784d0d66e30",
+  "report_sha256": "5a731e8c7922ee1e9bdc5cdcc357ff04cccc75e406211acce3d17a5c7958b220",
+  "implementation_sha256": {
+    "planning_surface_footprints": "52399c4e78943fd61c6dd47da444981593546303ae163a355698d4c2615ddeb8",
+    "ordinary_surfaces": "3306a7ae2d545f26e3cb8307f97edf4afdcd3a19c4c235fb4139af1dae3ff7c3",
+    "planning_area_layout": "8004d37c46a7df70b7636690d0c4c336f2127916ffaf48d7c941829c0e6ebbfc"
+  },
+  "source_and_output_pins_verified": true,
+  "output_pins": 18,
+  "before": {
+    "strategy": "encompassing_label_rectangle",
+    "status": "partial_candidate_budget",
+    "native_candidates": 10000,
+    "fine_boundary_candidates": 0
+  },
+  "after": {
+    "strategy": "per_label_native_windows",
+    "regions": 9,
+    "native_candidates": 2733,
+    "native_points": 8362,
+    "raw_page_paths": 92902,
+    "charged_raw_path_visits": 836118,
+    "unique_enclosures": 66,
+    "fine_boundary_candidates": 2,
+    "supported_labels": 9,
+    "selected_labels": 134
+  },
+  "regions": [
+    {
+      "region_native_points": [
+        0.0,
+        546.310546875,
+        288.9655456542969,
+        839.8614501953125
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 126,
+      "points": 381,
+      "source_inventory_sha256": "3304b42e19b1529a3aac29eb2a176395a45dd7e08351a477201f28a336661ae9"
+    },
+    {
+      "region_native_points": [
+        93.59999084472656,
+        839.5963745117188,
+        416.5636291503906,
+        1133.1163330078125
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 308,
+      "points": 1113,
+      "source_inventory_sha256": "a20d096d472c16e34ad83d83413be5719ae9c5aa21b577ae14a99d5a6925ef3e"
+    },
+    {
+      "region_native_points": [
+        104.63999938964844,
+        361.030517578125,
+        409.925537109375,
+        654.58154296875
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 289,
+      "points": 922,
+      "source_inventory_sha256": "664f881d3f1cb1022daca5035b7a4a3e8b4b1dd532c1a67e93b626abf79447ab"
+    },
+    {
+      "region_native_points": [
+        1100.159912109375,
+        176.3758544921875,
+        1409.5318603515625,
+        476.3892822265625
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 295,
+      "points": 1139,
+      "source_inventory_sha256": "67d4572b89c61f9dcd5b7814c40c2d45a4a2f87e6ccf6beeb3f816e1bcdf8803"
+    },
+    {
+      "region_native_points": [
+        1183.43994140625,
+        176.3785400390625,
+        1508.4478759765625,
+        476.3785400390625
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 564,
+      "points": 1680,
+      "source_inventory_sha256": "c4dc33669aeb53dee98f7c39d2effb82656b80f4c77ca6a8a5ccd41148ae5782"
+    },
+    {
+      "region_native_points": [
+        2017.679931640625,
+        940.18896484375,
+        2347.453369140625,
+        1241.980224609375
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 130,
+      "points": 403,
+      "source_inventory_sha256": "a124514202479bc47d5d3dd231bacbee6e2e908c65aba947c981785df2c1ec0f"
+    },
+    {
+      "region_native_points": [
+        2037.599853515625,
+        987.948974609375,
+        2367.373291015625,
+        1289.740234375
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 816,
+      "points": 1884,
+      "source_inventory_sha256": "0c674d412fe822b5a371e79781719b4b1a25bfbcb4295cb7c72ca580b546266e"
+    },
+    {
+      "region_native_points": [
+        2038.56005859375,
+        257.4986572265625,
+        2350.236083984375,
+        557.4986572265625
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 116,
+      "points": 531,
+      "source_inventory_sha256": "61a39cd245cde66fa83ecd992eca1b7c021dec11f2655a03dffe82587384a704"
+    },
+    {
+      "region_native_points": [
+        2123.52001953125,
+        1273.2962646484375,
+        2384.0,
+        1575.15283203125
+      ],
+      "status": "unplaced_geometry_candidates",
+      "candidates": 88,
+      "points": 294,
+      "source_inventory_sha256": "b24ec4da8d55db93dcc271d99001ac2862a75f2ddadaae6c9d24dd761952a940"
+    }
+  ],
+  "complete_coarse_fallbacks": [
+    {
+      "candidate_id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+      "reason": "complete_coarse_boundary_exceeds_regional_scope",
+      "source_record_sha256": "57671436f2d784a563fc7526e8794f318aa32890fc357919c97ae2a7c3f12ee0"
+    }
+  ],
+  "boundary_hypotheses": [
+    {
+      "id": "af4ecb5bbcdad57fda16563453f283e726c7b9df6fbaf748f821a29d2ef0e21e",
+      "role": "plaza",
+      "labels": [
+        "COURTYARD"
+      ],
+      "source_record_sha256": "57671436f2d784a563fc7526e8794f318aa32890fc357919c97ae2a7c3f12ee0",
+      "geometry_pdf_native": {
+        "coordinates": [
+          [
+            [
+              154.3199920654297,
+              1181.9200439453125
+            ],
+            [
+              249.1199951171875,
+              1120.239990234375
+            ],
+            [
+              348.9599914550781,
+              1055.199951171875
+            ],
+            [
+              226.3199920654297,
+              867.52001953125
+            ],
+            [
+              168.239990234375,
+              904.9600219726562
+            ],
+            [
+              234.1692902011082,
+              1006.7653864926054
+            ],
+            [
+              235.1100594685233,
+              1008.2180844318628
+            ],
+            [
+              252.47999572753906,
+              1035.0400390625
+            ],
+            [
+              196.55999755859375,
+              1071.280029296875
+            ],
+            [
+              193.44000244140625,
+              1066.47998046875
+            ],
+            [
+              182.63999938964844,
+              1073.679931640625
+            ],
+            [
+              185.75999450683594,
+              1078.47998046875
+            ],
+            [
+              143.74248102591594,
+              1105.8132433797011
+            ],
+            [
+              116.39999389648438,
+              1123.60009765625
+            ],
+            [
+              154.3199920654297,
+              1181.9200439453125
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "id": "f64160f1e134ce93c249bd2409dd6b413168f71c038e070de38ffb603095ea68",
+      "role": "surface",
+      "labels": [
+        "ground"
+      ],
+      "source_record_sha256": "470060e7917669e4b5f4d5ce2fff7127c4e347fa705ff4e9d1ce39b4eee81ba1",
+      "geometry_pdf_native": {
+        "coordinates": [
+          [
+            [
+              213.83999633789062,
+              448.239990234375
+            ],
+            [
+              225.59999084472656,
+              473.9200439453125
+            ],
+            [
+              210.239990234375,
+              481.1199951171875
+            ],
+            [
+              222.95999145507812,
+              508.9600830078125
+            ],
+            [
+              238.55999755859375,
+              501.760009765625
+            ],
+            [
+              250.3199920654297,
+              527.4400634765625
+            ],
+            [
+              277.91998291015625,
+              514.719970703125
+            ],
+            [
+              258.47998046875,
+              472.47998046875
+            ],
+            [
+              284.1600036621094,
+              460.719970703125
+            ],
+            [
+              267.1199951171875,
+              423.52001953125
+            ],
+            [
+              258.28925554782063,
+              427.61715970473097
+            ],
+            [
+              235.50776082509535,
+              438.1869400167004
+            ],
+            [
+              233.15844144459484,
+              439.2769382822563
+            ],
+            [
+              213.83999633789062,
+              448.239990234375
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    }
+  ],
+  "area_hold": "one_unambiguous_horizontal_plan_context_required",
+  "legacy_v1_layout_reload_verified": true,
+  "legacy_layout_sha256": "4d3e94a4ca85ee23e69644062e6e2b431be7b854c97a78decd426797742f534c",
+  "registered_area_layouts": 0,
+  "reconstructed_buildings": 0,
+  "physical_geometry_accepted": false,
+  "model_weights_updated": false,
+  "reviewed_training_labels_generated": 0,
+  "limits": {
+    "max_association_checks": 64000,
+    "max_native_candidates": 10000,
+    "max_native_points": 200000,
+    "max_outlines": 500,
+    "max_output_bytes": 8000000,
+    "max_regions": 32,
+    "max_scan_work_paths": 3200000,
+    "max_surface_labels": 256
+  },
+  "limitations": [
+    "Regional completeness covers supported extraction in the queried windows, not the entire drawing or physical park.",
+    "The ground and courtyard are unregistered source hypotheses; the same kinds already appeared in coarse extraction.",
+    "Unambiguous horizontal context, scale, physical roles, terrain levels and registration remain unresolved."
+  ]
+}

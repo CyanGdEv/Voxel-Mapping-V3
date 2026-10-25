@@ -127,8 +127,14 @@ class PlanningSurfaceFootprintsTests(unittest.TestCase):
 
     def test_search_rectangle_does_not_clip_large_path_into_a_closed_surface(self):
         result,_ = self.analyze(labels=('Footpath',),wide=True,short=False)
-        self.assertEqual(result['candidates'],[])
+        self.assertEqual(len(result['candidates']),1)
+        self.assertTrue(shape(result['candidates'][0]['geometry_pdf_native']).equals(box(100,190,1000,270)))
+        self.assertEqual(len(result['extraction']['complete_coarse_fallbacks']),1)
         self.assertGreater(result['extraction']['rejections']['complete_primitive_crosses_region_boundary'],0)
+        # Without an existing complete coarse boundary, the focused scan
+        # cannot turn an oversized open subset into a footprint.
+        result,_=self.analyze(labels=('Footpath',),wide=True,short=True)
+        self.assertEqual(result['candidates'],[])
 
     def test_label_candidate_and_work_budget_stops_are_all_or_none(self):
         doc,page,sha,inventory,associations=fixture(short=False);self.addCleanup(doc.close)

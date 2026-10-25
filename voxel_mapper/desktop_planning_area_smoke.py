@@ -48,6 +48,13 @@ def run(output):
         layouts=runtime.planning_area_layouts(pilot_id)
         if len(layouts)!=1:raise ValueError('Expected one supported same-plan layout')
         layout=json.loads(Path(layouts[0]['layout_path']).read_text(encoding='utf-8'))
+        evidence_path=Path(pilot['output_directory'])/pilot['result']['pages'][0]['evidence_file']
+        surface_evidence=json.loads(evidence_path.read_text(encoding='utf-8'))['surface_footprints']
+        regional=surface_evidence['extraction']
+        if (regional.get('strategy')!='per_label_native_windows'
+                or len(regional.get('regions',[]))<2
+                or any(not region['inventory_complete'] for region in regional['regions'])):
+            raise ValueError('Bounded regional surface recovery was not exercised')
         roles=[row['role'] for row in layout['candidates']]
         if roles.count('building')!=2 or sum(role in ('path','plaza','surface') for role in roles)!=3:
             raise ValueError('Automatic area outline inventory changed: '+str(roles))
@@ -96,6 +103,7 @@ def run(output):
         'source_plan_job':pilot,'area_world_job':exported,'building_footprint_markers':2,
         'path_plaza_candidates':3,'shared_frame_verified':True,'source_and_output_hashes_verified':True,
         'coloured_original_labels_verified':True,
+        'regional_surface_windows_verified':True,
         'independent_building_centroid_spacing_m':expected_offset,
         'saved_paving_components':2,'saved_paving_cells':149,
         'persistent_restart_verified':True,'real_park_accuracy_assessed':False,

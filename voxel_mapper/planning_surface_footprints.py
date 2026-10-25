@@ -4,6 +4,7 @@ The search rectangle selects whole paint primitives. It cannot close a path,
 remove a known competing enclosure, establish scale or accept physical geometry.
 """
 from concurrent.futures import CancelledError
+from collections import Counter
 import json
 import math
 import re
@@ -17,13 +18,73 @@ from .building_spec import digest
 from .drawing_page_tools import native_inverse
 from .paving_palette import material_label, polygon_surface
 
-VERSION = 'planning-surface-boundaries-v1'
+VERSION = 'planning-surface-boundaries-v2'
 FRAME = 'pdf_native_points_y_up'
 SEARCH_MARGIN_POINTS = 144
 LIMITS = {'max_surface_labels': 256, 'max_native_candidates': 10000,
           'max_native_points': 200000, 'max_outlines': 500,
-          'max_association_checks': 64000, 'max_output_bytes': 8000000}
+          'max_association_checks': 64000, 'max_output_bytes': 8000000,
+          'max_regions':32, 'max_scan_work_paths':3200000}
 ROLES = {'path', 'plaza', 'surface'}
+
+
+def _regional_faces(page,sha,number,visible,limits,check):
+    frame=planning_view_geometry._native_frame(page).bounds
+    windows=sorted({(max(frame[0],b[0]-SEARCH_MARGIN_POINTS),
+        max(frame[1],b[1]-SEARCH_MARGIN_POINTS),min(frame[2],b[2]+SEARCH_MARGIN_POINTS),
+        min(frame[3],b[3]+SEARCH_MARGIN_POINTS))
+        for b in (shape(r['geometry_pdf_native']).bounds for r in visible)})
+    extraction={'status':'unplaced_geometry_candidates','strategy':'per_label_native_windows',
+        'regions':[],'candidates':0,'retained_points':0,'raw_paths':0,'scan_work_paths':0,
+        'rejections':{},'world_geometry_additions':0}
+    recovery={'status':'enclosed_faces_only','counts':{},'recovered_faces':0}
+    faces={};geometry_ids={};covered=0;rejections=Counter();counts=Counter()
+    def fail(reason):
+        extraction.update(status='regional_surface_scan_withheld',reason=reason)
+        return [],extraction,recovery,covered
+    if len(windows)>limits['max_regions']:return fail('surface_region_budget_exceeded')
+    check();cache=ordinary_surfaces._source_page_cache(page)
+    extraction['raw_paths']=len(cache['compact'])
+    if len(windows)*len(cache['compact'])>limits['max_scan_work_paths']:
+        return fail('surface_scan_work_budget_exceeded')
+    for index,window in enumerate(windows):
+        check()
+        remaining=limits['max_native_candidates']-extraction['candidates']
+        points=limits['max_native_points']-extraction['retained_points']
+        if remaining<1 or points<1:return fail('combined_surface_native_budget_exceeded')
+        options={'region_native_points':list(window),'min_line_length_points':.25,
+            'max_candidates':remaining,'max_total_points':points,
+            'max_paths':100000,'max_scan_paths':100000,'regional_fallback':False}
+        rows,part,found,occluded=ordinary_surfaces.closed_source_faces(page,sha,number,
+            extraction_options=options,recovery_options={'max_face_provenance':2048},_cache=cache)
+        check();covered+=occluded
+        extraction['candidates']+=part.get('candidates',0)
+        extraction['retained_points']+=part.get('retained_points',0)
+        extraction['scan_work_paths']+=len(cache['compact'])
+        rejections.update(part.get('rejections',{}));counts.update(found.get('counts',{}))
+        extraction['rejections']=dict(rejections);recovery['counts']=dict(counts)
+        inventory=ordinary_surfaces._outline_inventory(rows,part,found,limits['max_outlines'])
+        receipt={'index':index,'region_native_points':list(window),'extraction_options':options,
+            'extraction':part,'recovery':found,'inventory_complete':inventory['inventory_complete'],
+            'source_inventory_sha256':digest(inventory),
+            'source_records':[{'candidate_id':r['candidate_id'],'source_record_sha256':r['source_record_sha256']}
+                              for r in inventory['records']]}
+        extraction['regions'].append(receipt)
+        if not inventory['inventory_complete']:
+            return fail('regional_'+str(inventory['reason']))
+        for row in inventory['records']:
+            geometry=shape(row['candidate']['geometry']).normalize().wkb_hex
+            # Identical whole boundaries need one canonical original witness.
+            # Distinct source boundaries stay separate, even when nested.
+            if geometry in geometry_ids:continue
+            if row['candidate_id'] in faces:
+                return fail('conflicting_regional_source_identity')
+            geometry_ids[geometry]=row['candidate_id'];faces[row['candidate_id']]=row['candidate']
+            if len(faces)>limits['max_outlines']:return fail('combined_surface_outline_budget_exceeded')
+        if len(json.dumps([extraction,list(faces.values())],allow_nan=False).encode())>limits['max_output_bytes']:
+            return fail('surface_output_budget_exceeded')
+    recovery['recovered_faces']=len(faces)
+    return list(faces.values()),extraction,recovery,covered
 
 
 def page_candidates(page, sha, number, inventory, associations, *, options=None,
@@ -185,17 +246,44 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
                   extraction_options=extraction_options)
     check()
     try:
-        faces, extraction, recovery, covered = ordinary_surfaces.closed_source_faces(page, sha, number,
-            extraction_options=extraction_options, recovery_options={'max_face_provenance': 2048})
+        faces, extraction, recovery, covered = _regional_faces(page,sha,number,visible,limits,check)
     except (ValueError, RuntimeError, OverflowError) as error:
         result['error'] = str(error)[:512]
         return finish('fine_source_geometry_failed')
     check()
+    # A complete coarse enclosure may legitimately extend beyond every focused
+    # window. Retain its unchanged source boundary only when no fine enclosure
+    # contains this label and the complete coarse inventory has exactly one.
+    # Never use this to select among competing fine or coarse enclosures.
+    if extraction['status']=='unplaced_geometry_candidates':
+        fine_index=STRtree([shape(r['geometry']) for r in faces])
+        existing={r['id'] for r in faces};fallback=[]
+        for label in visible:
+            check();polygon=shape(label['geometry_pdf_native'])
+            matches=fine_index.query(polygon,predicate='within')
+            coarse=label['coarse_candidate_ids']
+            if len(matches)==0 and len(coarse)==1:
+                record=next(r for r in records if r['candidate_id']==coarse[0])
+                if record['candidate_id'] not in existing:
+                    faces.append(record['candidate']);existing.add(record['candidate_id'])
+                    fallback.append({'candidate_id':record['candidate_id'],
+                        'source_record_sha256':record['source_record_sha256'],
+                        'reason':'complete_coarse_boundary_exceeds_regional_scope'})
+        extraction['complete_coarse_fallbacks']=fallback
+        added=[shape(r['geometry']) for r in faces if r['id'] in {f['candidate_id'] for f in fallback}]
+        extraction['candidates']+=len(added)
+        extraction['retained_points']+=sum(len(g.exterior.coords)+sum(len(r.coords) for r in g.interiors) for g in added)
+        if (extraction['candidates']>limits['max_native_candidates']
+                or extraction['retained_points']>limits['max_native_points']):
+            extraction.update(status='regional_surface_scan_withheld',reason='combined_surface_native_budget_exceeded')
+            faces=[]
     fine_inventory = ordinary_surfaces._outline_inventory(faces, extraction, recovery, limits['max_outlines'])
     result.update(extraction=extraction, recovery=recovery, covered_boundaries_withheld=covered,
         fine_inventory_sha256=digest(fine_inventory),
         fine_inventory_records=[{'candidate_id': r['candidate_id'], 'source_record_sha256': r['source_record_sha256']}
                                 for r in fine_inventory['records']])
+    if extraction['status']!='unplaced_geometry_candidates':
+        return finish(extraction.get('reason','complete_regional_surface_scan_required'))
     if not fine_inventory['inventory_complete']:
         return finish(fine_inventory['reason'])
     fine = planning_outline_semantics.page_candidates(page, sha, number, fine_inventory, cancelled=cancelled)
@@ -212,6 +300,9 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
                 if geometries[int(position)].contains(polygon):
                     matches.append(fine_records[int(position)]['candidate_id'])
             label['candidate_ids'] = sorted(matches)
+            if len(label['coarse_candidate_ids'])>1:
+                result['boundary_decisions'].append({'candidate_id':None,'label_ids':[label['id']],
+                    'status':'withheld','reason':'coarse_competing_enclosures_require_interpretation'})
             label['status'] = ('ambiguous_source_enclosures_withheld' if len(matches) > 1 else
                               'unique_visible_source_enclosure' if len(matches) == 1 else 'no_supported_source_enclosure')
             if len(matches) == 1:
