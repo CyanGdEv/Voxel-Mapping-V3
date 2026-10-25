@@ -23,6 +23,7 @@ JOB_KINDS = (
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
     ('Planning collection / automatic follow-up batches', 'planning_collection'),
     ('Planning models / Bedrock preview worlds', 'planning_world_preview'),
+    ('Planning area / flat layout world', 'planning_area_world_preview'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Train study component recognizer', 'train_study_components'),
@@ -307,7 +308,9 @@ class DesktopWindow:
         ttk.Entry(web,textvariable=self.web_application).grid(row=4,column=1,sticky='ew',padx=8,pady=2)
         self.web_planning_run=ttk.Button(web,text='Collect & analyse PDFs',command=lambda:self._submit_web(planning=True))
         self.web_planning_run.grid(row=4,column=2,sticky='e')
-        ttk.Label(web,text='Collect PDFs, then select a completed planning job below to export its preview worlds.',wraplength=640).grid(row=5,column=0,columnspan=2,sticky='w',pady=(6,0))
+        ttk.Label(web,text='Select a completed planning job to export its models or measured plan layout.',wraplength=350).grid(row=5,column=0,sticky='w',pady=(6,0))
+        self.planning_area_export=ttk.Button(web,text='Export plan layout',command=self._submit_planning_area_world_preview)
+        self.planning_area_export.grid(row=5,column=1,sticky='e',padx=8,pady=(6,0))
         self.planning_world_export=ttk.Button(web,text='Export preview worlds',command=self._submit_planning_world_preview)
         self.planning_world_export.grid(row=5,column=2,sticky='e',pady=(6,0))
         web.columnconfigure(1,weight=1)
@@ -485,8 +488,8 @@ class DesktopWindow:
             selected=self.jobs.selection()
             row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
             if not row or row.get('status')!='completed':raise ValueError('Select a completed area or world job first.')
-            if row.get('kind') not in ('area_pilot','world_pilot','alton_world','regenerate_corrections','planning_world_preview'):raise ValueError('Select a world generation job.')
-            if row.get('kind')=='planning_world_preview':
+            if row.get('kind') not in ('area_pilot','world_pilot','alton_world','regenerate_corrections','planning_world_preview','planning_area_world_preview'):raise ValueError('Select a world generation job.')
+            if row.get('kind') in ('planning_world_preview','planning_area_world_preview'):
                 if name!='park.mcworld':raise ValueError('Use Open world to choose between the planning preview worlds.')
                 name='index.html'
             if row.get('kind')=='regenerate_corrections':
@@ -512,6 +515,42 @@ class DesktopWindow:
                 self.planning_world_export.state(['!disabled']);self._error(error)
             self._background(lambda:self.runtime.submit_planning_world_preview(row['id']),queued,failed)
         except Exception as error:self._error(error)
+
+    def _submit_planning_area_world_preview(self):
+        try:
+            selected=self.jobs.selection()
+            row=next((j for j in self.last_snapshot.get('jobs',[]) if j['id'] in selected),None)
+            if not row or row.get('status')!='completed':
+                raise ValueError('Select a completed planning job below first.')
+            self.planning_area_export.state(['disabled'])
+            def failed(error):
+                self.planning_area_export.state(['!disabled']);self._error(error)
+            def submit(layout_id):
+                def queued(jid):
+                    self.planning_area_export.state(['!disabled']);self.select_when_visible=str(jid)
+                    self.status.set('Plan layout queued; use Open world when the export completes')
+                self._background(lambda:self.runtime.submit_planning_area_world_preview(
+                    row['id'],layout_id=layout_id),queued,failed)
+            def choose(rows):
+                if len(rows)==1:
+                    submit(rows[0]['id']);return
+                import tkinter as tk
+                from tkinter import ttk
+                dialog=tk.Toplevel(self.root);dialog.title('Choose plan layout');dialog.transient(self.root)
+                labels=[f"Page {r['page']} · {r['candidate_count']} outlines · {r['document_sha256'][:12]}" for r in rows]
+                value=tk.StringVar(value=labels[0])
+                ttk.Label(dialog,text='Choose one measured plan page. Building footprints have no recovered height.',
+                    wraplength=540).pack(padx=16,pady=(16,8))
+                ttk.Combobox(dialog,textvariable=value,values=labels,state='readonly',width=62).pack(padx=16,pady=8)
+                def cancel():
+                    dialog.destroy();self.planning_area_export.state(['!disabled'])
+                def accept():
+                    identifier=rows[labels.index(value.get())]['id'];dialog.destroy();submit(identifier)
+                ttk.Button(dialog,text='Export layout',command=accept).pack(padx=16,pady=(8,16))
+                dialog.protocol('WM_DELETE_WINDOW',cancel)
+            self._background(lambda:self.runtime.planning_area_layouts(row['id']),choose,failed)
+        except Exception as error:
+            self.planning_area_export.state(['!disabled']);self._error(error)
 
     def _open_job_folder(self):
         try:
@@ -592,12 +631,24 @@ class DesktopWindow:
                     f"Conditional 3D row-group previews: {counts.get('conditional_design_massing_alternatives',0)}; open design-massing.html to inspect them, or use Export preview worlds in the Web research tab.\n"
                     'Open review.html in Results folder for all batch previews and the saved document queue.\n'
                     'Starting the same request resumes verified progress. Physical reconstruction remains unverified.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind') in ('planning_source_pilot','web_planning_pilot','planning_collection') and row.get('result'):
+                counts=row['result'].get('summary',{})
+                detail=(f"Nominal area plan: {counts.get('nominal_area_building_candidates',0)} building outlines; "
+                    f"{counts.get('nominal_area_path_plaza_candidates',0)} path/plaza outlines; "
+                    f"{counts.get('nominal_area_boundary_contacts',0)} boundary contacts.\n"
+                    'Open area-layouts.html for the shared plan layout, or choose Export plan layout for a flat Minecraft preview.\n'
+                    'Heights, entrances, traversability and geographic placement remain unverified.\n\n'+detail)
             if row.get('kind')=='planning_world_preview' and row.get('result'):
                 result=row['result']
                 detail=(f"Bedrock preview worlds: {len(result.get('worlds',[]))}. Use Open world to choose a spacing alternative.\n"
                     'Each world contains source-linked row-group surface envelopes on an artificial flat platform at one block per metre.\n'
                     'These are local prototype worlds. Roofs, openings, individual cabins and park alignment still need work.\n'
                     'Saved blocks and the spawn beside the structures are checked; Minecraft gameplay has not been assessed.\n\nAdvanced receipt:\n'+detail)
+            if row.get('kind')=='planning_area_world_preview' and row.get('result'):
+                detail=('Measured plan layout exported to a local Bedrock preview. Use Open world for the download.\n'
+                    'Paths, plazas and building footprint markers retain their relative positions on the source plan.\n'
+                    'The display uses flat ground. Building heights, entrances, terrain levels and park placement remain unresolved.\n'
+                    'Paving grid connections are checked in the saved world; physical accessibility remains unassessed.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='train_study_components' and row.get('result'):
                 detail=('Exploratory study component recognizer trained from source drawing crops.\n'
                     'Inspect report.json for evaluation on separate source groups and model.json for the saved research checkpoint.\n'
@@ -702,7 +753,7 @@ def launch(data_directory,workers=2,memory_budget_mb=DEFAULT_MEMORY_BUDGET_MB,sm
                 result['primary_controls_visible']=True
                 notebook=window.web_run.master.master
                 notebook.select(window.web_run.master);root.update()
-                for widget in (window.web_run,window.web_planning_run,window.planning_world_export):
+                for widget in (window.web_run,window.web_planning_run,window.planning_world_export,window.planning_area_export):
                     x=widget.winfo_rootx()-root.winfo_rootx();y=widget.winfo_rooty()-root.winfo_rooty()
                     if (not widget.winfo_ismapped() or x<0 or y<0 or
                             x+widget.winfo_width()>root.winfo_width() or y+widget.winfo_height()>root.winfo_height()):
@@ -750,6 +801,7 @@ def main(argv=None):
     parser.add_argument('--review-smoke-test',type=Path,metavar='OUTPUT',help='Exercise the source drawing, geometry correction and draft-saving UI, then close.')
     parser.add_argument('--correction-smoke-test',type=Path,metavar='OUTPUT',help='Exercise actual desktop correction submission and regenerated native world readback.')
     parser.add_argument('--planning-pilot-smoke-test',type=Path,metavar='OUTPUT',help='Exercise planning discovery through a managed worker and verify retained evidence.')
+    parser.add_argument('--planning-area-smoke-test',type=Path,metavar='OUTPUT',help='Exercise a full source plan through managed layout extraction and saved Bedrock layout readback.')
     parser.add_argument('--web-smoke-test',type=Path,metavar='OUTPUT',help='Exercise offline web citations and persistent memory through a managed worker.')
     parser.add_argument('--web-planning-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic application-to-original-PDF analysis through a managed worker.')
     parser.add_argument('--planning-collection-smoke-test',type=Path,metavar='OUTPUT',help='Exercise automatic follow-up batches and restart without reanalysis.')
@@ -774,6 +826,9 @@ def main(argv=None):
     if args.planning_pilot_smoke_test is not None:
         from .desktop_planning_smoke import run
         result=run(args.planning_pilot_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
+    if args.planning_area_smoke_test is not None:
+        from .desktop_planning_area_smoke import run
+        result=run(args.planning_area_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')
     if args.web_smoke_test is not None:
         from .desktop_web_smoke import run
         result=run(args.web_smoke_test);print(json.dumps(result,sort_keys=True));return int(result.get('status')!='passed')

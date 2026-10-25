@@ -204,7 +204,8 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
             'source_sheet_reference_markers','physical_component_correspondences_verified',
             'section_cut_topology_candidates','source_design_dimension_claims',
             'conditional_design_massing_alternatives','conditional_design_row_groups','physical_design_buildings_verified',
-            'size_mismatched_component_hypotheses','unresolved_component_size_hypotheses')},
+            'size_mismatched_component_hypotheses','unresolved_component_size_hypotheses',
+            *planning.SURFACE_FOOTPRINT_COUNTS,*planning.AREA_LAYOUT_COUNTS)},
         'unattempted_document_links':len(web_report.get('unattempted_document_urls',[])),
         'unclassified_pages':sum(p['role']=='unclassified' for r in handoffs for p in r['pages']),
         'drawing_state_conflicts':sum(len(p['observed_states'])>1 for r in handoffs for p in r['pages'])}
@@ -217,7 +218,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
     if any(r['ocr_required'] for r in handoffs): blockers.append('scanned_pdf_requires_ocr')
     body='<h1>'+escape(config['area_id'])+'</h1><p>Automatic web evidence and original-drawing analysis. Source membership, current state and physical geometry remain unverified.</p>'
     body+='<p><a href="web-research/report.json">Web sources and failures</a> | <a href="handoff.json">PDF handoff and page classifications</a></p>'
-    if analysis is not None: body+='<p><a href="analysis/review.html">Open analysed original drawings and previews</a></p>'
+    if analysis is not None: body+='<p><a href="analysis/review.html">Open analysed original drawings and previews</a> | <a href="analysis/area-layouts.html">Source-local building and path plan layouts</a></p>'
     else: body+='<p>No original PDF was eligible for analysis. Inspect the source gaps.</p>'
     body+='<p>Remaining: '+escape(', '.join(blockers).replace('_',' '))+'.</p>'
     (root/'review.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Web planning source pack</title><body>'+body+'</body></html>',encoding='utf-8')
@@ -227,6 +228,11 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False,
         'implementations':{m.__name__:planning._implementation(m) for m in
             (sys.modules[__name__],web,web_research,planning,captions)},
         'web_report':'web-research/report.json','planning_report':'analysis/report.json' if analysis is not None else None,
+        'area_layout_review':'analysis/area-layouts.json' if analysis is not None else None,
+        'area_layout_files':[] if analysis is None else [
+            {**entry,'file':'analysis/'+entry['file'],
+             **({'geojson_file':'analysis/'+entry['geojson_file']} if 'geojson_file' in entry else {})}
+            for entry in analysis.get('area_layout_files',[])],
         'handoffs':handoffs,'handoff_gaps':gaps,'blockers':blockers,
         'unattempted_document_urls':web_report.get('unattempted_document_urls',[]),
         'source_budget_exhausted':web_report.get('source_budget_exhausted',False),

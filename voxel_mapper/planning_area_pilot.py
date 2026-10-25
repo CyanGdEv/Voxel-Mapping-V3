@@ -24,6 +24,7 @@ from . import ordinary_surfaces, planning_view_geometry, drawing_geometry, linew
 from . import planning_outline_semantics, glyph_visibility, planning_component_footprints, planning_component_measurements
 from . import planning_section_profiles, planning_section_correspondence
 from . import planning_section_cuts, planning_design_dimensions, planning_design_massing
+from . import planning_surface_footprints, planning_area_layout, paving_palette
 from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
@@ -36,6 +37,11 @@ LIMITS = {'max_documents': 16, 'max_pages': 32, 'max_document_pages': 8,
 ROLES = {'site-plan', 'floor-plan', 'block-plan', 'landscape-plan',
          'elevation', 'section', 'detail', 'location-plan', 'roof-plan', 'unclassified'}
 SURFACE_ROLES = {'site-plan', 'block-plan', 'floor-plan', 'landscape-plan'}
+SURFACE_FOOTPRINT_COUNTS = ('surface_boundary_candidates','extracted_surface_labels',
+    'visible_surface_labels','unresolved_surface_labels')
+AREA_LAYOUT_COUNTS = ('nominal_area_layout_candidates','nominal_area_building_candidates',
+    'nominal_area_path_plaza_candidates','nominal_area_boundary_contacts',
+    'nominal_area_overlap_pairs','nominal_area_gap_pairs','registered_area_layouts')
 
 
 class PilotBudgetExceeded(ValueError):
@@ -156,6 +162,11 @@ def _outline_overlay(result, preview, path):
                  {'label':r['label']['text'],'source_record_sha256':r['source_outline']['source_record_sha256'],
                   'physical_identity_verified':False})
                 for r in (result.get('component_footprints') or {}).get('candidates',[])]
+    records += [('surface',r['geometry_pdf_native'],r['id'],
+                 {'source_role_hint':r['source_role_hint'],
+                  'labels':[label['text'] for label in r['labels']],
+                  'physical_identity_verified':False})
+                for r in (result.get('surface_footprints') or {}).get('candidates',[])]
     records += [('section_profile',r['geometry_pdf_native'],r['id'],
                  {'horizontal_span_nominal_m':r['horizontal_span_nominal_m'],
                   'vertical_span_nominal_m':r['vertical_span_nominal_m'],
@@ -179,7 +190,8 @@ def _outline_overlay(result, preview, path):
                 projected=[pymupdf.Point(*p)*matrix for p in ring]
                 commands.append('M'+' L'.join(f'{p.x:.3f},{p.y:.3f}' for p in projected)+' Z')
         title=escape(kind+' outline '+identifier+'; '+json.dumps(metrics,sort_keys=True))
-        color={'source':'#007985','view':'#c94b00','label_hint':'#087b36','component':'#a315a8','section_profile':'#4933d6'}[kind]
+        color={'source':'#007985','view':'#c94b00','label_hint':'#087b36','component':'#a315a8',
+               'surface':'#007f9f','section_profile':'#4933d6'}[kind]
         parts.append(f'<path class="{kind}" data-source-candidate-id="{escape(identifier,quote=True)}" fill="none" stroke="{color}" stroke-width="1.5" vector-effect="non-scaling-stroke" d="{" ".join(commands)}"><title>{title}</title></path>')
     for marker in markers:
         commands=[]
@@ -198,6 +210,7 @@ def _outline_overlay(result, preview, path):
             'legend':{'cyan':'unclassified closed source outlines','orange':'view-region source outlines',
                       'green':'visible source-label enclosure hints; physical identity unverified',
                       'purple':'fine component boundary hypotheses; physical identity unverified',
+                      'teal':'source-labelled surface boundary hypotheses; material and physical scope unverified',
                       'blue':'unassigned nominal section profiles; physical heights unverified',
                       'red':'original sheet reference circles; section cut identity unverified'},
             'sheet_reference_markers':len(markers),
@@ -222,6 +235,12 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     semantic_summary={} if semantics is None else semantics['summary']
     components = None if role!='floor-plan' or semantics is None or not semantics['inventory_complete'] else planning_component_footprints.page_candidates(
         page,sha,number,outlines,semantics,cancelled=cancelled)
+    surface_footprints = None if semantics is None or not semantics['inventory_complete'] else planning_surface_footprints.page_candidates(
+        page,sha,number,outlines,semantics,cancelled=cancelled)
+    area_layout = None if role not in SURFACE_ROLES else planning_area_layout.page_layout(
+        page,sha,number,layout,outlines,semantics,components,surface_footprints,cancelled=cancelled)
+    surface_summary={} if surface_footprints is None else surface_footprints['summary']
+    area_summary={} if area_layout is None else area_layout['summary']
     measurements = None if layout is None else planning_component_measurements.page_evidence(
         page,sha,number,layout,components,cancelled=cancelled)
     profiles = None if view_pack is None else planning_section_profiles.page_evidence(
@@ -261,6 +280,14 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         blockers.append('fine_component_boundary_analysis_incomplete')
     if components and components['candidates']:
         blockers.append('component_boundary_exterior_wall_role_unverified')
+    if surface_footprints and not surface_footprints['analysis_complete']:
+        blockers.append('source_surface_boundary_analysis_incomplete')
+    if surface_footprints and surface_footprints['candidates']:
+        blockers.append('surface_boundary_scope_and_material_unverified')
+    if area_layout and not area_layout['analysis_complete']:
+        blockers.append('nominal_area_layout_unresolved')
+    if area_layout and area_layout['candidates']:
+        blockers.append('nominal_area_layout_requires_physical_registration_and_traversability')
     if profiles and profiles['profiles']:
         blockers.append('section_profiles_require_plan_component_correspondence')
     if profiles and not profiles['analysis_complete']:
@@ -272,6 +299,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'view_geometry':scoped,
         'outline_semantics':semantics,
         'component_footprints':components,
+        'surface_footprints':surface_footprints,
+        'area_layout':area_layout,
         'component_measurements':measurements,
         'section_profiles':profiles,
         'drawing_references':references,
@@ -291,6 +320,11 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
             'building_outline_hints':semantic_summary.get('outline_role_hints',{}).get('building',0),
             'path_plaza_outline_hints':sum(semantic_summary.get('outline_role_hints',{}).get(k,0) for k in ('path','plaza')),
             'component_boundary_candidates':0 if components is None else len(components['candidates']),
+            'surface_boundary_candidates':surface_summary.get('surface_boundary_candidates',0),
+            'extracted_surface_labels':surface_summary.get('surface_labels',0),
+            'visible_surface_labels':surface_summary.get('visible_surface_labels',0),
+            'unresolved_surface_labels':surface_summary.get('unresolved_surface_labels',0),
+            **{key:area_summary.get(key,0) for key in AREA_LAYOUT_COUNTS},
             'section_cut_topology_candidates':len(cuts['cuts']),
             'source_design_dimension_claims':len(dimensions['claims']),
             'nominal_section_profile_hypotheses':0 if profiles is None else len(profiles['profiles']),
@@ -319,6 +353,11 @@ def _html(config, documents, pages):
                 f'{summary.get("path_plaza_outline_hints",0)} path/plaza-related). These are source associations, not accepted physical features.</p>')
             sections.append(f'<p>{summary.get("component_boundary_candidates",0)} fine component boundary hypotheses. '
                 'Individual visible labels and closed source linework remain unverified as physical building exteriors.</p>')
+            sections.append(f'<p>{summary.get("surface_boundary_candidates",0)} source-labelled surface boundaries; '
+                f'{summary.get("nominal_area_building_candidates",0)} building and '
+                f'{summary.get("nominal_area_path_plaza_candidates",0)} path/plaza candidates in a common nominal page frame. '
+                '<a href="area-layouts.html">Inspect source-local plan layouts</a>; '
+                'physical heights, traversability and geographic placement remain unverified.</p>')
             evidence=escape(page['evidence_file'],quote=True)
             sections.append(f'<p><a href="{evidence}">Source-bound extraction evidence</a></p>')
             captions=page.get('captions',[])
@@ -329,7 +368,7 @@ def _html(config, documents, pages):
             if page.get('outline_overlay'):
                 overlay=escape(page['outline_overlay']['file'],quote=True)
                 sections.append('<details><summary>Inspect extracted source outlines</summary>'
-                    '<p>Cyan: unclassified closed outlines. Orange: view-region outlines. Green: visible source-label enclosure hints. Purple: fine component boundary hypotheses. Inventories may overlap. '
+                    '<p>Cyan: unclassified closed outlines. Orange: view-region outlines. Green: visible source-label enclosure hints. Purple: fine component boundary hypotheses. Teal: surface boundary hypotheses. Inventories may overlap. '
                     'Symbols, annotations and context can be included. Nominal metres use printed view scale claims; '
                     'physical identity, scale application and geographic placement remain unverified.</p>'
                     f'<a href="{overlay}"><img src="{overlay}" alt="Extracted source outlines over original drawing"></a></details>')
@@ -372,7 +411,11 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             drawing_geometry,linework_boundaries,drawing_page_tools,building_raster_views,
             planning_outline_semantics,glyph_visibility,planning_component_footprints,planning_component_measurements,
             planning_section_profiles,planning_section_correspondence,
-            planning_section_cuts,planning_design_dimensions,planning_design_massing,building_spec,study_mesh_export,wing_shell_study)},
+            planning_section_cuts,planning_design_dimensions,planning_design_massing,
+            planning_surface_footprints,planning_area_layout,paving_palette,building_spec,study_mesh_export,wing_shell_study)},
+        'surface_footprint_limits':dict(planning_surface_footprints.LIMITS),
+        'surface_footprint_search_margin_points':planning_surface_footprints.SEARCH_MARGIN_POINTS,
+        'area_layout_limits':dict(planning_area_layout.LIMITS),
         'semantic_backends':planning_outline_semantics.BACKENDS,
         'caption_version':architectural_view_layout.VERSION,
         'pymupdf_version':pymupdf.VersionBind,'text_operator_parser_version':pypdf.__version__}
@@ -472,11 +515,12 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         **{k:sum(p['summary'].get(k,0) for p in pages) for k in
            ('closed_source_outlines','view_source_outlines','nominal_view_outlines',
             'source_outline_role_hints','building_outline_hints','path_plaza_outline_hints','component_boundary_candidates',
-            'section_cut_topology_candidates','source_design_dimension_claims')},
+            'section_cut_topology_candidates','source_design_dimension_claims',
+            *SURFACE_FOOTPRINT_COUNTS,*AREA_LAYOUT_COUNTS)},
         'reconstructed_buildings':0,'registered_path_networks':0,
         'physical_component_coverage':None,'geometric_accuracy':None,
         'reconstruction_completed':False}
-    measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[]
+    measurement_pages=[];profile_pages=[];correspondence_pages=[];dimension_pages=[];area_pages=[]
     for record in pages:
         check()
         evidence=json.loads((root/record['evidence_file']).read_text(encoding='utf-8'))
@@ -484,6 +528,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         if evidence.get('design_dimensions'):dimension_pages.append(evidence['design_dimensions'])
         if evidence.get('component_measurements'):measurement_pages.append(evidence['component_measurements'])
         if evidence.get('section_profiles'):profile_pages.append(evidence['section_profiles'])
+        if evidence.get('area_layout'):area_pages.append(evidence['area_layout'])
     measurement_review=planning_component_measurements.review_pages(measurement_pages,cancelled=cancelled)
     planning_component_measurements.write_review(root,measurement_review)
     summary.update(measurement_review['summary'])
@@ -495,6 +540,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
     massing_review=planning_design_massing.review_pages(dimension_pages,cancelled=cancelled)
     planning_design_massing.write_review(root,massing_review,cancelled=cancelled)
     summary.update(massing_review['summary'])
+    area_review=planning_area_layout.write_review(root,area_pages,cancelled=cancelled)
+    summary.update(area_review['summary'])
     reference={'status':'awaiting_separate_checked_reference_inventory',
         'required_families':['buildings','paths_and_plazas'],
         'requirements':['source_bound_component_identities','drawing_state_and_current_state',
@@ -509,7 +556,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'Physical height and cross-view correspondence remain unresolved; no 3D building is generated.</p>'
         '<p><a href="section-profiles.html">Unassigned section profile measurements</a></p>'
         '<p><a href="section-correspondence.html">Section to plan candidates and original sheet references</a></p>'
-        '<p><a href="design-massing.html">Interactive conditional 3D design row groups</a></p></html>'),encoding='utf-8')
+        '<p><a href="design-massing.html">Interactive conditional 3D design row groups</a></p>'
+        '<p><a href="area-layouts.html">Building and path boundaries in a common nominal page frame</a>. '
+        'Source hypotheses only; heights, traversability and geographic placement remain unresolved.</p></html>'),encoding='utf-8')
     total=sum(p.stat().st_size for p in root.rglob('*') if p.is_file())
     if total>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
     report={'version':VERSION,'status':'source_review_pack_generated_with_reconstruction_blockers',
@@ -519,6 +568,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
         'section_profile_review':'section-profiles.json',
         'section_correspondence_review':'section-correspondence.json',
         'conditional_design_massing_review':'design-massing.json',
+        'area_layout_review':'area-layouts.json',
+        'area_layout_files':area_review.get('page_layout_files',[]),
         'benchmark':reference,'training_labels_generated':0,'model_promoted':False,
         'world_placement_eligible':False,'park_world_blocks_added':0,
         'output_sha256':{p.relative_to(root).as_posix():file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}}
