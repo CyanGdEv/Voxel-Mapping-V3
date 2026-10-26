@@ -119,6 +119,13 @@ def _check_hatch_regions(root):
             or review['world_placement_eligible'] or review['training_labels_generated']
             or hashlib.sha256(path.read_bytes()).hexdigest()!=sha):
         raise ValueError('Original source hatch and paving legend checks failed')
+    from .planning_gap_boundaries import review as gap_review
+    gaps=gap_review(review)
+    if (not gaps['analysis_complete'] or gaps['summary']['assumed_rock_boundaries']!=1
+            or gaps['records'][0]['material']!='rock' or gaps['records'][0]['height_m'] is not None
+            or gaps['records'][0]['interior_filled_with_rock'] or gaps['world_geometry_additions']):
+        raise ValueError('User-default rock gap policy check failed')
+    write_json(root/'gap-boundary-review.json',gaps)
     write_json(root/'source-hatch-review.json',review)
 
 def run(output):
@@ -297,6 +304,7 @@ def run(output):
         'source_hatch_legend_regions_verified':True,
         'existing_solid_paving_verified':True,
         'source_fill_rule_holes_verified':True,
+        'assumed_rock_gap_policy_verified':True,
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],
