@@ -59,6 +59,8 @@ on:
       - 'voxel_mapper/planning_gap_boundaries.py'
       - 'voxel_mapper/planning_geometry_world.py'
       - 'voxel_mapper/courtyard_plan_expansion.py'
+      - 'voxel_mapper/planning_expansion_sources.py'
+      - 'voxel_mapper/data/alton-mutiny-katanga-plan-review.json'
       - 'voxel_mapper/data/mutiny-courtyard-expansion.json'
       - 'voxel_mapper/planning_building_boundaries.py'
       - 'voxel_mapper/planning_plan_markings.py'
@@ -112,6 +114,7 @@ on:
       - 'tests/test_theming_envelopes.py'
       - 'tests/test_queue_area_below_theming.py'
       - 'tests/test_courtyard_plan_expansion.py'
+      - 'tests/test_planning_expansion_sources.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -233,6 +236,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Queue area below theming paving failed' }
           python -m unittest discover -s tests -p 'test_courtyard_plan_expansion.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Courtyard expansion preservation failed' }
+          python -m unittest discover -s tests -p 'test_planning_expansion_sources.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Mutiny and Katanga source handoff failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v

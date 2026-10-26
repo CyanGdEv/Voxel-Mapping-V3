@@ -1,0 +1,60 @@
+{
+  "version": "planning-area-pilot-v1",
+  "area_id": "katanga-canyon-expansion-source-review",
+  "source_directory": "planning-originals",
+  "application_references": [
+    "SMD/2007/0009",
+    "SMD/2009/0125"
+  ],
+  "development_exposure": "previously_inspected",
+  "documents": [
+    {
+      "file": "3614c466a3e382cbe9676d8fc9a6b768b313e2a288e4a954bea9db5f7666d8c6.pdf",
+      "sha256": "3614c466a3e382cbe9676d8fc9a6b768b313e2a288e4a954bea9db5f7666d8c6",
+      "title": "Katanga restaurant and covered walkway site plans (scanned booklet; portal title: Plans)",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12965",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12965"
+    },
+    {
+      "file": "ff927eb369072233df9c6d6f7c82326c20785cf9fbb36be385f40857ee2ba128.pdf",
+      "sha256": "ff927eb369072233df9c6d6f7c82326c20785cf9fbb36be385f40857ee2ba128",
+      "title": "Katanga restaurant and covered walkway site plans (scanned booklet; portal title: Plans)",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=15348",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=15348"
+    },
+    {
+      "file": "87438d135cb75ab0ff4112f31e0c99740ef595afbc90b3f6aca523421f47ed12.pdf",
+      "sha256": "87438d135cb75ab0ff4112f31e0c99740ef595afbc90b3f6aca523421f47ed12",
+      "title": "Katanga games kiosk validation bundle: site plans and elevations",
+      "role": "unclassified",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2007/0009",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=6172",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=6172",
+      "pages": [
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "page_roles": {
+        "16": "location-plan",
+        "17": "site-plan",
+        "19": "unclassified",
+        "20": "location-plan",
+        "21": "site-plan",
+        "22": "site-plan",
+        "23": "elevation"
+      }
+    }
+  ]
+}

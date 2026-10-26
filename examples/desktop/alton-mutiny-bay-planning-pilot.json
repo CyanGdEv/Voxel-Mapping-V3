@@ -1,0 +1,52 @@
+{
+  "version": "planning-area-pilot-v1",
+  "area_id": "mutiny-bay-expansion-source-review",
+  "source_directory": "planning-originals",
+  "application_references": [
+    "SMD/2013/0420",
+    "SMD/2017/0473"
+  ],
+  "development_exposure": "previously_inspected",
+  "documents": [
+    {
+      "file": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df.pdf",
+      "sha256": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df",
+      "title": "3023-01 Existing Site plan",
+      "role": "site-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564"
+    },
+    {
+      "file": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b.pdf",
+      "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+      "role": "floor-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555"
+    },
+    {
+      "file": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4.pdf",
+      "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "title": "3023-10 Existing roof plan",
+      "role": "roof-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572"
+    },
+    {
+      "file": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9.pdf",
+      "sha256": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9",
+      "title": "Site plan",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2013/0420",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684"
+    }
+  ]
+}
