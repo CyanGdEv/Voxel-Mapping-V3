@@ -1,0 +1,163 @@
+{
+  "version": "mutiny-katanga-plan-review-v1",
+  "reviewed_at": "2026-10-26",
+  "world_placement_eligible": false,
+  "training_eligible": false,
+  "sources": [
+    {
+      "area_id": "mutiny-bay",
+      "file": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df.pdf",
+      "sha256": "c9de7a5061a8bd1c987994f5d303fc3944d1fa04482b7896ec1c426eb57c89df",
+      "title": "3023-01 Existing Site plan",
+      "role": "site-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186564",
+      "coverage_notes": "Existing site and context; two separate views at 1:200 and 1:500. Printed coordinate labels are not verified BNG."
+    },
+    {
+      "area_id": "mutiny-bay",
+      "file": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b.pdf",
+      "sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+      "title": "0860 IC AL 05 coutyard  plan 'as existing'",
+      "role": "floor-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186555",
+      "coverage_notes": "Existing ground-floor view at 1:100; title-block floor wording conflicts with the view caption. Used by current courtyard preview."
+    },
+    {
+      "area_id": "mutiny-bay",
+      "file": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4.pdf",
+      "sha256": "581e0fb0b88ceabd526f5d56decafd21e37945bf49ae433117be2c94bbabcaf4",
+      "title": "3023-10 Existing roof plan",
+      "role": "roof-plan",
+      "drawing_state": "existing",
+      "application_reference": "SMD/2017/0473",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=186572",
+      "coverage_notes": "Existing roof plan at 1:200; canopy and wings remain existing-plan context."
+    },
+    {
+      "area_id": "mutiny-bay",
+      "file": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9.pdf",
+      "sha256": "227dcc4788eb89aa0266613a8dbe9694e302ee548406833bb7c53ede0d93c8f9",
+      "title": "Site plan",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2013/0420",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=53684",
+      "coverage_notes": "Splash Battle lake and courtyard context at 1:250 on A3. Mixed existing and proposed fencing styles; no whole-page existing-state assumption."
+    },
+    {
+      "area_id": "katanga-canyon",
+      "file": "3614c466a3e382cbe9676d8fc9a6b768b313e2a288e4a954bea9db5f7666d8c6.pdf",
+      "sha256": "3614c466a3e382cbe9676d8fc9a6b768b313e2a288e4a954bea9db5f7666d8c6",
+      "title": "Katanga restaurant and covered walkway site plans (scanned booklet; portal title: Plans)",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12965",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12965",
+      "coverage_notes": "Restaurant and covered-walkway scanned booklet. Existing/proposed and sheet scales require page review; bytes currently unavailable."
+    },
+    {
+      "area_id": "katanga-canyon",
+      "file": "ff927eb369072233df9c6d6f7c82326c20785cf9fbb36be385f40857ee2ba128.pdf",
+      "sha256": "ff927eb369072233df9c6d6f7c82326c20785cf9fbb36be385f40857ee2ba128",
+      "title": "Katanga restaurant and covered walkway site plans (scanned booklet; portal title: Plans)",
+      "role": "site-plan",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=15348",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=15348",
+      "coverage_notes": "Second restaurant/walkway scanned booklet; do not assume duplicate bytes or as-built state. Bytes currently unavailable."
+    },
+    {
+      "area_id": "katanga-canyon",
+      "file": "87438d135cb75ab0ff4112f31e0c99740ef595afbc90b3f6aca523421f47ed12.pdf",
+      "sha256": "87438d135cb75ab0ff4112f31e0c99740ef595afbc90b3f6aca523421f47ed12",
+      "title": "Katanga games kiosk validation bundle: site plans and elevations",
+      "role": "unclassified",
+      "drawing_state": "unknown",
+      "application_reference": "SMD/2007/0009",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=6172",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=6172",
+      "pages": [
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "page_roles": {
+        "16": "location-plan",
+        "17": "site-plan",
+        "19": "unclassified",
+        "20": "location-plan",
+        "21": "site-plan",
+        "22": "site-plan",
+        "23": "elevation"
+      },
+      "coverage_notes": "23-page scanned validation bundle; selected pages show kiosk area/site plans, aerial context, elevations. Administrative title does not imply absence of drawings. Scanned paper scale and existing/proposed roles need view review."
+    }
+  ],
+  "excluded_sources": [
+    {
+      "sha256": "03b7eab31e70ec17e577e0e577490cb1a52197f147d094c0a59db96f8d07c4b7",
+      "title": "Location of fencing in area 5",
+      "actual_sheet": "5 Upper Gardens Area",
+      "reason": "Application association is not geographic sheet coverage; conservatory and bandstand sheet lies outside both target areas."
+    }
+  ],
+  "related_applications": [
+    {
+      "area_id": "katanga-canyon",
+      "application_reference": "SMD/2007/0009",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/ApplicationSearchServlet?PKID=9726",
+      "scope": "60 sqm games kiosk; generic Validation attachment 6172 contains site plans and elevations",
+      "live_attachment_count": 3,
+      "live_plan_attachment_count": 0,
+      "live_attachment_titles": [
+        "Validation",
+        "Validation",
+        "Decision Notice"
+      ],
+      "source_drawings_recovered": true
+    }
+  ],
+  "historical_references": [
+    {
+      "area_id": "katanga-canyon",
+      "url": "https://www.towerstimes.co.uk/history/the-drawing-board/katanga-canyon-gloomy-wood/",
+      "image_url": "https://www.towerstimes.co.uk/wp-content/uploads/2016/02/kc1.jpg",
+      "status": "reference_only_not_downloaded",
+      "scope": "1992 concept area plan; archive explicitly notes paths differ from the built scheme. Not current-state geometry."
+    }
+  ],
+  "raster_sources": [
+    {
+      "area_id": "katanga-canyon",
+      "file": "4378e9b6ebb2c0cf8c00530bf496a82acb1b4b5ab4e1dcf5c357ff633d34a8f1.jpg",
+      "sha256": "4378e9b6ebb2c0cf8c00530bf496a82acb1b4b5ab4e1dcf5c357ff633d34a8f1",
+      "title": "Proposed Explorers Restaurant Plan TRC/1093-15",
+      "drawing_state": "proposed",
+      "application_reference": "SMD/2009/0125",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12134",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=12134",
+      "pixel_dimensions": [
+        6380,
+        4770
+      ],
+      "printed_scale_denominator": 50,
+      "printed_date": "10-12-08",
+      "geographic_registration_verified": false,
+      "coverage_notes": "Original official JPEG, not a failed PDF. Printed 1:50 and scanner 200dpi do not independently establish physical calibration. Proposed partitions, openings and kitchen/WC details are not as-built verification."
+    }
+  ]
+}

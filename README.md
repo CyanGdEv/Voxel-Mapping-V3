@@ -727,3 +727,5 @@ at the original scales. The nearby Station label supplies context; physical
 identity, section direction, geographic placement and wall closure stay held.
 
 Existing courtyard expansion: [Wicker Man + Mutiny Bay courtyard mapping](docs/mutiny-courtyard-expansion.md), retaining current Wicker geometry with provisional existing-plan floor/outlines.
+
+Mutiny Bay and Katanga Canyon: [original-plan source handoff and remaining mapping blockers](docs/mutiny-katanga-expansion-plans.md). Includes four Mutiny Bay PDFs, a Katanga kiosk plan/elevation bundle and an original high-resolution restaurant plan; two further Katanga booklets remain unavailable.
