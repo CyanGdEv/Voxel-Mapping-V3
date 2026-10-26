@@ -39,7 +39,7 @@ def _check_text_transform(root):
     write_json(root/'original-text-transform.json',{'original_pdf_sha256':before,'screen':screen})
 
 
-def make_source(path):
+def make_source(path, *, wide=False):
     """Two buildings, joined paving and an intentionally disconnected path."""
     with pymupdf.open() as document:
         page=document.new_page(width=2384,height=1684)
@@ -53,6 +53,9 @@ def make_source(path):
                 ((500,100,600,180),'Toilets',(520,130)),
                 ((250,260,450,300),'Footpath',(300,285)))):
             x0,y0,x1,y1=rectangle
+            if wide and label=='Toilets':
+                x0+=1500;x1+=1500;y0-=1300;y1-=1300
+                origin=(origin[0]+1500,origin[1]-1300)
             page.draw_rect((x0,y0+offset,x1,y1+offset))
             page.insert_text((origin[0],origin[1]+offset),label,fontsize=10,
                 color=((.65,.65,.65),(.55,.35,.2),(.7,0,0))[index%3])
@@ -133,6 +136,52 @@ def run(output):
                 raise ValueError('Area preview output checksum mismatch')
         if hashlib.sha256(source.read_bytes()).hexdigest()!=sha:
             raise ValueError('Area original changed during managed export')
+        # A second original full-page PDF exceeds both the old span and area
+        # limits. Relocate only a synthetic building before drawing the PDF;
+        # the managed pipeline still discovers every polygon and scale itself.
+        wide_source=root/'synthetic-wide-area-original.pdf'
+        wide_sha=make_source(wide_source,wide=True)
+        wide_config={**config,'area_id':'synthetic-complete-tiled-area',
+            'documents':[{**config['documents'][0],'file':wide_source.name,'sha256':wide_sha}]}
+        write_json(root/'wide-pilot.json',wide_config)
+        wide_pilot_id=runtime.submit('planning_source_pilot',root/'wide-pilot.json')
+        wide_pilot=_wait(runtime,wide_pilot_id,timeout=120)
+        runtime._futures[wide_pilot_id].result(timeout=10)
+        if wide_pilot['status']!='completed':
+            raise ValueError('Managed wide source-plan extraction failed: '+str(wide_pilot.get('error')))
+        wide_layouts=runtime.planning_area_layouts(wide_pilot_id)
+        if len(wide_layouts)!=1:raise ValueError('Expected one complete wide plan layout')
+        wide_layout=json.loads(Path(wide_layouts[0]['layout_path']).read_text(encoding='utf-8'))
+        wide_buildings=sorted((shape(row['geometry_nominal_local']) for row in wide_layout['candidates']
+            if row['role']=='building'),key=lambda geometry:geometry.centroid.x)
+        if (len(wide_buildings)!=2
+                or not math.isclose(wide_buildings[1].centroid.x-wide_buildings[0].centroid.x,
+                    1940*200*.0254/72,abs_tol=1e-9)
+                or not math.isclose(wide_buildings[1].centroid.y-wide_buildings[0].centroid.y,
+                    1290*200*.0254/72,abs_tol=1e-9)):
+            raise ValueError('Wide plan source spacing was cropped, rescaled or repositioned')
+        wide_export_id=runtime.submit_planning_area_world_preview(wide_pilot_id)
+        wide_exported=_wait(runtime,wide_export_id,timeout=180)
+        runtime._futures[wide_export_id].result(timeout=10)
+        if wide_exported['status']!='completed':
+            raise ValueError('Managed complete tiled export failed: '+str(wide_exported.get('error')))
+        wide_result=wide_exported['result']
+        partition=wide_result['platform_partition']
+        wide_saved=wide_result['saved_grid_paving_connectivity']
+        if (partition['section_count']!=2 or partition['platform_cells']<=16384
+                or partition['native_write_attempts']>100000
+                or len(wide_result['candidate_display_counts'])!=5
+                or wide_saved['paving_cells']!=149 or wide_saved['component_count']!=2
+                or wide_saved.get('saved_complete_platform_verified') is not True
+                or not all(t['verified'] for t in wide_saved['saved_sections'])
+                or wide_result['archive_validation']['saved_world_reopened'] is not True
+                or wide_result['world_placement_eligible'] or wide_result['model_weights_updated']):
+            raise ValueError('Complete bounded tiled preview or retained features changed')
+        for name,pin in wide_result['output_sha256'].items():
+            if hashlib.sha256((Path(wide_exported['output_directory'])/name).read_bytes()).hexdigest()!=pin:
+                raise ValueError('Wide preview output checksum mismatch')
+        if hashlib.sha256(wide_source.read_bytes()).hexdigest()!=wide_sha:
+            raise ValueError('Wide original changed during managed export')
         summary=runtime.store.summary()
         if summary['feedback_records'] or summary['checkpoints']:
             raise ValueError('Area preview changed reviewed model memory')
@@ -141,6 +190,8 @@ def run(output):
     try:
         if reopened.store.job(export_id)['result']!=result or reopened.store.job(pilot_id)['status']!='completed':
             raise ValueError('Area extraction and export did not survive restart')
+        if reopened.store.job(wide_export_id)['result']!=wide_result:
+            raise ValueError('Tiled complete area export did not survive restart')
     finally:reopened.close(wait=True)
     receipt={'status':'passed','dataset_kind':'synthetic','original_pdf_sha256':sha,
         'source_plan_job':pilot,'area_world_job':exported,'building_footprint_markers':2,
@@ -150,6 +201,10 @@ def run(output):
         'coalesced_shared_regions_verified':True,
         'original_paper_scale_verified':True,
         'original_text_transform_verified':True,
+        'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
+        'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
+        'wide_area_platform_cells':partition['platform_cells'],
+        'wide_area_native_write_attempts':partition['native_write_attempts'],
         'independent_building_centroid_spacing_m':expected_offset,
         'saved_paving_components':2,'saved_paving_cells':149,
         'persistent_restart_verified':True,'real_park_accuracy_assessed':False,

@@ -133,6 +133,14 @@ The target is Bedrock 1.21.130; Minecraft import and gameplay are not certified.
 At most eight worlds may be exported per job. Larger reviews can use an advanced
 planning_world_preview request selecting complete source-claim spacing pairs.
 
+Shared plan layout: choose Export plan layout on a completed planning job.
+The flat map retains all supported building-footprint and paving proposals in
+one nominal source frame. Larger complete layouts use bounded sections in one
+world, with a shared 100,000-write limit including foundations. Yellow markers
+have no reconstructed building heights, roofs or openings. Saved ground, feature
+cells, headroom, archive and spawn are checked; physical paths, park alignment
+and Minecraft gameplay remain unverified.
+
 Retained study image learning: extract the separate portable study dataset ZIP.
 In Advanced jobs / learning choose Train study component recognizer, choose its
 included training request JSON and start. Results contain open model.json weights

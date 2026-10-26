@@ -1,5 +1,9 @@
 # Coalesced planning-surface recovery
 
+The subsequent [complete tiled preview stage](tiled-area-world-previews.md)
+resolves the full-layout export-size hold recorded below. The recovery results
+and source-pinned receipt on this page describe the earlier stage unchanged.
+
 The surface stage now preserves every supported label's original search window
 while combining overlapping windows into a bounded recovery schedule. A merge
 must cover both complete original rectangles and must not increase their summed

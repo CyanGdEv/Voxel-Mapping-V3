@@ -1,0 +1,147 @@
+{
+  "accepted_park_geometry": 0,
+  "building_footprint_markers": 3,
+  "building_heights_reconstructed": 0,
+  "candidate_display_cells": {
+    "125e82185e6e468e43dd2bf74b3a0b15ba7587b428642575c8bec64bb2e512ec": 35,
+    "4aaf82dcee2f71f2bb0e7d06990f0079b2360c35d06e05ad76dd9aa747220824": 11,
+    "d856dbf9502cf62dbc07987ffa1d75048e3595aaab5e3b86dcdd227138cbdb26": 67,
+    "fa5a70a9895881324207e50e0afd5e3536930f9a6135897c3429b14d7f396e93": 2,
+    "fc30ce5238946cb4883d741ec56dbd149802d4ee89a3b6a217a22259a6e22def": 6
+  },
+  "chunks": 104,
+  "composed_blocks": 90160,
+  "display_cells": 121,
+  "explicit_path_plaza_candidates": 0,
+  "implementation_sha256": {
+    "voxel_mapper/bedrock.py": "6ed3f07b69fa034da8b5772cbc4b6d0ceada519db88edb0f358778d2f46382cb",
+    "voxel_mapper/desktop_planning_area_smoke.py": "34970d58d47f5b7ec2b1c5f3fd7b2468c618644e44f2005c25f7c8a7717bf298",
+    "voxel_mapper/planning_area_world_preview.py": "ceb7c2467a2e041859e84cf932fe61f42066c6b9204da7d56ae323cc6ee6cf04"
+  },
+  "independent_archive_audit": {
+    "all_platform_cells": 22540,
+    "all_source_candidates_retained": true,
+    "archive_crc_verified": true,
+    "embedded_layout_unchanged": true,
+    "foundation_cells": 67620,
+    "headroom_cells": 45080,
+    "intent_cells_exactly_once": true,
+    "native_chunk_coverage_verified": true,
+    "source_and_output_pins_verified": true
+  },
+  "legacy_v1_original_wicker_cap_verified": true,
+  "local_validation": {
+    "managed_desktop": {
+      "log_sha256": "9a1f43fe30fe0a1a6743cd7afa6ed42868fb5dfe17a0d89c3de7fc26f23803bf",
+      "seconds": 13.139,
+      "skips": 1,
+      "status": "passed",
+      "tests": 3
+    },
+    "new_regressions": {
+      "log_sha256": "f50388882915c7470d99c3acdd679e383709272489f7de506f4a625f10bfa676",
+      "seconds": 5.627,
+      "skips": 0,
+      "status": "passed",
+      "tests": 7
+    }
+  },
+  "material_surface_cells": 8,
+  "material_surface_proposals": 2,
+  "minecraft_import_or_gameplay_tested": false,
+  "model_weights_updated": false,
+  "native_writer_and_archive_checks": {
+    "archive": {
+      "chunks_reopened": 104,
+      "crc_verified": true,
+      "packaged_files_match_verified_world": true,
+      "saved_world_reopened": true,
+      "spawn_rechecked": true,
+      "verified_files": 11
+    },
+    "round_trip": "all written blocks and all unwritten air cells verified",
+    "spawn": {
+      "headroom_air_blocks": 2,
+      "metadata_verified": true,
+      "player_movement_verified": false,
+      "spawn": [
+        7,
+        65,
+        -35
+      ],
+      "support": "grass_block",
+      "verified": true
+    }
+  },
+  "platform_partition": {
+    "all_candidates_retained": true,
+    "cropped": false,
+    "native_write_attempts": 90281,
+    "platform_cells": 22540,
+    "rescaled": false,
+    "sampling_checks": 278,
+    "section_count": 2,
+    "sections": [
+      {
+        "bounds_source_local_xy": [
+          6,
+          33,
+          134,
+          148
+        ],
+        "candidate_display_cells": {
+          "125e82185e6e468e43dd2bf74b3a0b15ba7587b428642575c8bec64bb2e512ec": 35,
+          "4aaf82dcee2f71f2bb0e7d06990f0079b2360c35d06e05ad76dd9aa747220824": 0,
+          "d856dbf9502cf62dbc07987ffa1d75048e3595aaab5e3b86dcdd227138cbdb26": 67,
+          "fa5a70a9895881324207e50e0afd5e3536930f9a6135897c3429b14d7f396e93": 2,
+          "fc30ce5238946cb4883d741ec56dbd149802d4ee89a3b6a217a22259a6e22def": 6
+        },
+        "display_cells": 110,
+        "index": 0,
+        "native_write_attempts": 58990,
+        "paving_cells": 8,
+        "platform_cells": 14720
+      },
+      {
+        "bounds_source_local_xy": [
+          134,
+          33,
+          202,
+          148
+        ],
+        "candidate_display_cells": {
+          "125e82185e6e468e43dd2bf74b3a0b15ba7587b428642575c8bec64bb2e512ec": 0,
+          "4aaf82dcee2f71f2bb0e7d06990f0079b2360c35d06e05ad76dd9aa747220824": 11,
+          "d856dbf9502cf62dbc07987ffa1d75048e3595aaab5e3b86dcdd227138cbdb26": 0,
+          "fa5a70a9895881324207e50e0afd5e3536930f9a6135897c3429b14d7f396e93": 0,
+          "fc30ce5238946cb4883d741ec56dbd149802d4ee89a3b6a217a22259a6e22def": 0
+        },
+        "display_cells": 11,
+        "index": 1,
+        "native_write_attempts": 31291,
+        "paving_cells": 0,
+        "platform_cells": 7820
+      }
+    ],
+    "source_points": 52,
+    "strategy": "complete_half_open_sections"
+  },
+  "saved_paving_grid_components": 3,
+  "source_bounds_nominal_m": [
+    6,
+    33,
+    202,
+    148
+  ],
+  "source_candidates": 5,
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_exposure": "previously_inspected_development",
+  "source_layout_sha256": "ca5f53d7a33d8cd22f1e91983372cc17c78df65f32d403c2a7a6893a3d2b946c",
+  "surveyed_registration": false,
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "verified_paths": false,
+  "version": "tiled-area-world-development-validation-v1",
+  "world_bytes": 51000,
+  "world_sha256": "65c73c02abfc136380870e0716809ce58586b814b6a42861b10f943393e07bde"
+}

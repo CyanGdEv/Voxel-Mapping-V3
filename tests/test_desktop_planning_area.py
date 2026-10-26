@@ -53,6 +53,10 @@ class DesktopPlanningAreaTests(unittest.TestCase):
             self.assertEqual(result['building_footprint_markers'],2)
             self.assertEqual(result['saved_paving_components'],2)
             self.assertTrue(result['persistent_restart_verified'])
+            self.assertTrue(result['complete_tiled_area_verified'])
+            self.assertEqual(result['wide_area_sections'],2)
+            self.assertGreater(result['wide_area_platform_cells'],16384)
+            self.assertLessEqual(result['wide_area_native_write_attempts'],100000)
             self.assertFalse(result['real_park_accuracy_assessed'])
             self.assertEqual(result['area_world_job']['result']['reconstructed_buildings'],0)
 

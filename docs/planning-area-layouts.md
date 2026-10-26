@@ -69,7 +69,7 @@ An advanced request uses paths relative to its JSON file:
 
 ```json
 {
-  "version": "planning-area-world-preview-v1",
+  "version": "planning-area-world-preview-v2",
   "layout_path": "area-layout-<document-sha>-1.json",
   "layout_sha256": "<SHA-256 of those exact saved bytes>"
 }
@@ -85,8 +85,13 @@ PDF-analysis/export/restart check.
 Fine surface discovery permits at most 256 source labels, 10,000 native
 candidates, 200,000 native points and 500 retained faces. Area layouts permit
 128 candidates, 100,000 points, 8,192 relation checks and eight MB of evidence.
-Overrides can only lower the discovery/layout limits. The preview platform is
-at most 128 by 128 nominal metres, with at most 100,000 composed write attempts.
+Overrides can only lower the discovery/layout limits. Preview v2 partitions the
+complete platform into at most four disjoint sections, each at most 128 by 128
+nominal metres and 16,384 cells. The entire single-world export still permits
+only 100,000 native write attempts, including its three foundation layers and
+feature writes. The total platform is therefore at most 25,000 cells before
+features, usually fewer. Sampling remains capped at 262,144 checks and 200,000
+points. Old v1 requests retain their original single-platform limit.
 Cancellation or exhausted analysis quotas cannot publish a partial successful
 layout. Native export stages a fresh directory and publishes only after checks
 pass; existing outputs are never overwritten.
@@ -98,13 +103,13 @@ spacing, exports the preview, checks 149 saved paving cells in two components
 (including an intentionally disconnected path), and verifies persistent restart.
 This is pipeline evidence, not a real-park accuracy benchmark.
 
-Development replays of retained original Alton plans still produce no supported
-area reconstruction. In the four-source surface audit, the Wicker proposed site
-plan exposes 134 relevant native labels but only three pass the current glyph
-screen; none has a supported containing surface boundary. Unsupported font/text
-conventions and incomplete physical boundary/context interpretation remain real
-blockers. No new neural weights, reviewed training labels, accepted park geometry
-or complete 3D buildings are produced by this stage.
+The later original-colour, text-transform and coalesced recovery stages support
+46 of the Wicker site plan's 134 relevant native labels. They produce three
+building-footprint and two material-surface proposals in one nominal frame.
+The [tiled preview stage](tiled-area-world-previews.md) now exports that unchanged
+196×115 m layout. Its eight material display cells are not verified paths or a
+complete paving network. No neural weights, reviewed training labels, accepted
+park geometry or complete 3D buildings are produced.
 
 Next work is reliable interpretation of those original annotations, more complete
 path boundaries, plan/elevation correspondence for heights and roofs, and checked

@@ -21,15 +21,16 @@ from voxel_mapper import planning_area_world_preview as preview
 from voxel_mapper.building_spec import digest
 
 
-@lru_cache(maxsize=1)
-def source_layout():
+@lru_cache(maxsize=2)
+def source_layout(wide=False):
     """Real native PDF extraction; no manually supplied view or object boxes."""
     with pymupdf.open() as document:
-        page = document.new_page(width=1000, height=700)
+        page = document.new_page(width=3000 if wide else 1000, height=700)
         for rectangle, text, position in (
             ((100,100,250,200), 'Shop', (120,150)),
-            ((250,100,550,200), 'Footpath', (350,150)),
-            ((550,100,750,300), 'Plaza', (600,220)),
+            ((250,100,2250 if wide else 550,200), 'Footpath', (350,150)),
+            ((2250,100,2450,300) if wide else (550,100,750,300),
+             'Plaza', (2300 if wide else 600,220)),
             ((250,400,500,450), 'Path', (350,425))):
             page.draw_rect(rectangle)
             page.insert_text(position, text, fontsize=8)
@@ -155,7 +156,7 @@ class PlanningAreaWorldPreviewTests(unittest.TestCase):
         for rows in (
             [row('b', 'building', box(0,0,4,4)), row('p', 'path', box(2,2,6,6), 'stone')],
             [row('p', 'path', box(0,0,4,4), 'stone'), row('q', 'plaza', box(2,2,6,6), 'asphalt')],
-            [row('wide', 'path', box(0,0,130,2), 'stone')]):
+            [row('wide', 'path', box(0,0,600,2), 'stone')]):
             with self.subTest(rows=rows), self.assertRaises(ValueError):
                 preview._rasterize({'candidates': rows}, lambda: False)
 
