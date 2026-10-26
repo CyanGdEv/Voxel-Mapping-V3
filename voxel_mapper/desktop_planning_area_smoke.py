@@ -170,10 +170,28 @@ def _check_reference_geometry_world(root,runtime):
         'source_job_id':source_id,'export_job_id':export_id,'result':result})
     return result
 
+def _check_plan_marking_palette(root):
+    from . import bedrock,planning_plan_markings
+    from .planning_world_preview import _verify_archive
+    from .building_spec import digest
+    preset=planning_plan_markings.profile()
+    colours=('orange_wool','blue_wool','brown_wool')
+    directory=root/'plan-marking-palette';directory.mkdir()
+    source=directory/'voxels.jsonl'
+    source.write_text(''.join(json.dumps({'x':i,'y':0,'z':0,'kind':'terrain','material':colour})+'\n' for i,colour in enumerate((*colours,'grass_block'))))
+    report={'voxel_size_m':1,'vertical_datum':'STUDY_ZERO','crs':None,'spawn_local_xyz_m':[3,1,0]}
+    exported=bedrock.export_world(source,directory,report,max_blocks=128,ground_depth=3)
+    archive=_verify_archive(directory/exported['file'],directory/'bedrock-world',exported,lambda:False)
+    if not archive['saved_world_reopened'] or exported['round_trip_validation']!='all written blocks and all unwritten air cells verified':
+        raise ValueError('Packaged user wool palette failed saved-world verification')
+    write_json(directory/'validation.json',{'profile_sha256':digest(preset),'materials':colours,'archive_validation':archive,'world':exported})
+    return digest(preset)
+
 def run(output):
     root=Path(output).resolve()
     if root.exists():raise ValueError('Fresh planning area smoke output required')
     root.mkdir(parents=True)
+    plan_profile_pin=_check_plan_marking_palette(root)
     _check_text_transform(root)
     _check_hatch_regions(root)
     source=root/'synthetic-area-original.pdf';sha=make_source(source)
@@ -352,6 +370,8 @@ def run(output):
         'narrow_path_oak_fences_verified':True,
         'rock_reference_style_verified':True,
         'additional_2d_building_boundaries_verified':True,
+        'plan_marking_wool_palette_verified':True,
+        'reviewed_plan_marking_profile_sha256':plan_profile_pin,
         'reference_world_building_boundaries':reference_world['building_boundary_candidates'],
         'reference_world_rock_columns':reference_world['rock_columns'],
         'reference_world_fence_columns':reference_world['fence_columns'],

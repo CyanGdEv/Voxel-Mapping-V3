@@ -29,7 +29,7 @@ from . import planning_area_scale, caption_fragments
 from . import source_text_transforms
 from . import planning_curved_boundaries
 from . import planning_curve_networks
-from . import planning_curve_scopes, planning_hatch_regions, planning_gap_boundaries, planning_building_boundaries
+from . import planning_curve_scopes, planning_hatch_regions, planning_gap_boundaries, planning_building_boundaries, planning_plan_markings
 from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
@@ -261,6 +261,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     building_boundaries=None if hatch_review is None else planning_building_boundaries.review(
         hatch_review,area_layout,source_claims=gap_claims,
         native_page_bounds=list(planning_view_geometry._native_frame(page).bounds),cancelled=cancelled)
+    plan_markings=None if role not in SURFACE_ROLES else planning_plan_markings.page_review(page,sha,number,cancelled=cancelled)
     surface_summary={} if surface_footprints is None else surface_footprints['summary']
     area_summary={} if area_layout is None else area_layout['summary']
     measurements = None if layout is None else planning_component_measurements.page_evidence(
@@ -318,6 +319,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         blockers.append('gap_boundary_review_incomplete')
     if building_boundaries and not building_boundaries['analysis_complete']:
         blockers.append('building_boundary_review_incomplete')
+    if plan_markings and not plan_markings['analysis_complete']:
+        blockers.append('reviewed_plan_markings_incomplete')
     if gap_boundaries and gap_boundaries.get('summary',{}).get('assumed_rock_boundaries'):
         blockers.append('gap_boundary_material_uses_user_rock_assumption')
     if hatch_review and not hatch_review['analysis_complete']:
@@ -349,6 +352,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'source_hatch_region_review':hatch_review,
         'gap_boundary_review':gap_boundaries,
         'building_boundary_review':building_boundaries,
+        'plan_marking_review':plan_markings,
         'complete_curve_scope_plan':complete_curve_plan,
         'complete_curve_scope_review':complete_curve_review,
         'area_layout':area_layout,
@@ -412,6 +416,11 @@ def _html(config, documents, pages):
                 'physical heights, traversability and geographic placement remain unverified.</p>')
             evidence=escape(page['evidence_file'],quote=True)
             sections.append(f'<p><a href="{evidence}">Source-bound extraction evidence</a></p>')
+            if page.get('plan_marking_overlay'):
+                link=escape(page['plan_marking_overlay']['file'],quote=True)
+                sections.append('<details open><summary>Games, toilets and ride plan markings</summary>'
+                    '<p>Orange: source alignment. Blue wool guides: one-block display offsets. Brown: drawn support-frame edges. Blue outlines: Games and toilet/arcade walls. Flat 2D review only.</p>'
+                    '<a href="'+link+'"><img src="'+link+'" alt="Reviewed plan markings"></a></details>')
             if page.get('building_boundary_overlay'):
                 buildings=page['building_boundary_overlay'];link=escape(buildings['file'],quote=True)
                 sections.append('<details open><summary>Inspect 2D building boundaries ('+str(buildings['building_boundary_candidates'])+')</summary>'
@@ -505,12 +514,13 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             planning_section_profiles,planning_section_correspondence,
             planning_section_cuts,planning_design_dimensions,planning_design_massing,
             planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,source_text_transforms,
-            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes,planning_hatch_regions,planning_gap_boundaries,planning_building_boundaries)},
+            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes,planning_hatch_regions,planning_gap_boundaries,planning_building_boundaries,planning_plan_markings)},
         'closed_curved_boundary_limits':dict(planning_curved_boundaries.LIMITS),
         'open_curve_network_limits':dict(planning_curve_networks.LIMITS),
         'gap_boundary_policy_sha256':digest(planning_gap_boundaries.policy()),
         'gap_boundary_limits':dict(planning_gap_boundaries.LIMITS),
         'building_boundary_limits':dict(planning_building_boundaries.LIMITS),
+        'plan_marking_profile_sha256':digest(planning_plan_markings.profile()),
         'source_hatch_region_limits':dict(planning_hatch_regions.LIMITS),
         'complete_curve_scope_limits':dict(planning_curve_scopes.LIMITS),
         'surface_footprint_limits':dict(planning_surface_footprints.LIMITS),
@@ -589,6 +599,10 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                         building_overlay=planning_building_boundaries.write_overlay(result.get('building_boundary_review'),
                             result.get('source_hatch_region_review'),preview,root/(name+'-building-boundaries.svg'))
                         if building_overlay:written+=(root/building_overlay['file']).stat().st_size
+                        marking_overlay=planning_plan_markings.write_overlay(result.get('plan_marking_review'),
+                            result.get('source_hatch_region_review'),result.get('building_boundary_review'),
+                            result.get('area_layout'),preview,root/(name+'-plan-markings.svg'))
+                        if marking_overlay:written+=(root/marking_overlay['file']).stat().st_size
                         if written>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
                         layout=result['discovery'].get('caption_layout',{})
                         record.update(summary=result['summary'],evidence_file=name+'.json',
@@ -600,6 +614,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                             hatch_region_overlay=hatch_overlay,
                             gap_boundary_overlay=gap_overlay,
                             building_boundary_overlay=building_overlay,
+                            plan_marking_overlay=marking_overlay,
                             captions=[r['text'] for r in layout.get('view_captions',[])])
                         hints=[r for r in (result.get('outline_semantics') or {}).get('outlines',[])
                                if r['status'] in ('visible_label_enclosure_hint','shared_component_label_enclosure_hint')]
