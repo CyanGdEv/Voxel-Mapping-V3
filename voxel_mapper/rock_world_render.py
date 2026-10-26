@@ -39,7 +39,7 @@ def _boxes(material,neighbors=()):
 def render_previews(root,sampled):
     a,b,c,d=sampled['bounds'];scale=4
     image=Image.new('RGB',((c-a)*scale+48,(d-b)*scale+100),'#f6f5ef');draw=ImageDraw.Draw(image)
-    draw.text((20,12),('Generated plan markings: buildings, theming envelopes and Wicker Man track' if sampled.get('plan_markers') else 'Generated world: paving and reference-style rock edging'),fill='#202620')
+    draw.text((20,12),('Wicker Man retained + Mutiny Bay courtyard plan expansion' if sampled.get('expansion_cells') else 'Generated plan markings: buildings, theming envelopes and Wicker Man track' if sampled.get('plan_markers') else 'Generated world: paving and reference-style rock edging'),fill='#202620')
     for x in range(a,c):
         for z in range(b,d):
             material=sampled['ground'].get((x,z),'grass_block');px=24+(x-a)*scale;py=42+(d-z-1)*scale

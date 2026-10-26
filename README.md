@@ -725,3 +725,5 @@ matches the architectural roof and whole adjoining ridge to a source-only roof
 graph on the revised site plan. One rotation and one reflection remain supported
 at the original scales. The nearby Station label supplies context; physical
 identity, section direction, geographic placement and wall closure stay held.
+
+Existing courtyard expansion: [Wicker Man + Mutiny Bay courtyard mapping](docs/mutiny-courtyard-expansion.md), retaining current Wicker geometry with provisional existing-plan floor/outlines.

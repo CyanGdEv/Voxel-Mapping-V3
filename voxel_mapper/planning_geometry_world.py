@@ -43,12 +43,12 @@ def style():
 
 def validate(config):
     keys={'version','layout_path','layout_sha256','paving_path','paving_sha256','gaps_path','gaps_sha256'}
-    optional={'buildings_path','buildings_sha256','markings_path','markings_sha256'}
+    optional={'buildings_path','buildings_sha256','markings_path','markings_sha256','expansion_path','expansion_sha256'}
     if (not isinstance(config,dict) or not keys<=set(config) or set(config)-keys-optional or config.get('version')!=VERSION
-            or any((n+'_path' in config)!=(n+'_sha256' in config) for n in ('buildings','markings'))):
+            or any((n+'_path' in config)!=(n+'_sha256' in config) for n in ('buildings','markings','expansion'))):
         raise ValueError('Pinned current geometry world request required')
     import re
-    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings','expansion') if n+'_path' in config):
         if (not isinstance(config[name+'_path'],str) or not 1<=len(config[name+'_path'])<=4096
                 or not re.fullmatch('[a-f0-9]{64}',str(config[name+'_sha256']))):raise ValueError('Bounded pinned geometry input required')
     return config
@@ -56,7 +56,7 @@ def validate(config):
 
 def read_inputs(config):
     validate(config);data={}
-    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings','expansion') if n+'_path' in config):
         path=Path(config[name+'_path'])
         if not path.is_file() or path.stat().st_size>16000000:
             raise ValueError('Pinned '+name+' geometry missing or changed')
@@ -87,6 +87,9 @@ def read_inputs(config):
     if 'markings' in data:
         from .planning_plan_markings import validate_review
         validate_review(data['markings'],layout['document_sha256'],layout['page'])
+    if 'expansion' in data:
+        from .courtyard_plan_expansion import validate as validate_expansion
+        validate_expansion(data['expansion'],{n:config[n+'_sha256'] for n in data if n!='expansion'},layout)
     return data
 
 
@@ -181,6 +184,10 @@ def rasterize(data,*,cancelled=lambda:False,limits=None):
     c=math.ceil(max(g.bounds[2] for _,g,_,_,_ in paths))+4;d=math.ceil(max(g.bounds[3] for _,g,_,_,_ in paths))+4
     for g in buildings:
         a=min(a,math.floor(g.bounds[0])-4);b=min(b,math.floor(g.bounds[1])-4);c=max(c,math.ceil(g.bounds[2])+4);d=max(d,math.ceil(g.bounds[3])+4)
+    baseline_bounds=[a,b,c,d]
+    if 'expansion' in data:
+        from .courtyard_plan_expansion import bounds as expansion_bounds
+        ea,eb,ec,ed=expansion_bounds(data['expansion']);a=min(a,ea);b=min(b,eb);c=max(c,ec);d=max(d,ed)
     platform=(c-a)*(d-b)
     if platform>caps['max_platform_cells'] or max(c-a,d-b)>caps['max_span_m']:raise ValueError('Complete geometry platform budget exceeded')
     ground={};ranks={};owners={};candidate_counts={identifier:0 for identifier,_,_,_,_ in paths}
@@ -276,6 +283,10 @@ def rasterize(data,*,cancelled=lambda:False,limits=None):
                 del rocks[key];widths.pop(key,None)
                 for identifier in cell_owners.get(key,[]):boundary_counts[identifier]-=1
     if set(rocks)&(paving_cells|markers):raise ValueError('Rock cells obstruct sampled paving or building markers')
+    expansion_cells={};expansion_report=None
+    if 'expansion' in data:
+        from .courtyard_plan_expansion import apply as apply_expansion
+        expansion_cells,expansion_report=apply_expansion(data['expansion'],ground,rocks,cancelled=cancelled)
     rock_blocks=sum(len(v) for v in rocks.values());attempts=4*platform+len(ground)+rock_blocks
     if attempts>caps['max_world_writes']:raise ValueError('Geometry world native write budget exceeded')
     check()
@@ -283,6 +294,8 @@ def rasterize(data,*,cancelled=lambda:False,limits=None):
         'rocks':rocks,'rock_blocks':sum(sum(m!='oak_fence' for _,m in col) for col in rocks.values()),
         'boundary_blocks':rock_blocks,'widths':widths,'width_checks':width_checks,
         'plan_markers':plan_markers,'plan_marking_report':plan_marking_report,
+        'expansion_cells':expansion_cells,'expansion_report':expansion_report,
+        'retained_spawn_local_xyz_m':[baseline_bounds[0]+1,1,baseline_bounds[1]+2],
         'building_marker_counts':building_marker_counts,'building_marker_mode':'2d_boundary_only' if 'buildings' in data else 'filled_footprint',
         'fence_grid_connectors':connectors,'unresolved_fence_diagonals':unresolved_diagonals,'native_write_attempts':attempts,'sampling_checks':checks,'source_points':points,
         'paving_region_cells':candidate_counts,'boundary_cells':boundary_counts,'limits':caps,'style':preset}
@@ -339,11 +352,11 @@ def run(config,output,*,cancelled=lambda:False,progress=lambda value:None):
         report={'version':VERSION,'status':'current_geometry_prototype_exported','voxel_size_m':1,'model_blocks_per_source_metre':1,
             'crs':None,'vertical_datum':'STUDY_ZERO','geographic_registration':None,
             'horizontal_transform':{'minecraft_x':'nominal source-local X','minecraft_z':'negative nominal source-local Y'},
-            'spawn_local_xyz_m':[a+1,1,b+2],'source_document_sha256':data['paving']['document_sha256'],'source_page':data['paving']['page'],
+            'spawn_local_xyz_m':sampled['retained_spawn_local_xyz_m'],'source_document_sha256':data['paving']['document_sha256'],'source_page':data['paving']['page'],
             'source_pins':{n:config[n+'_sha256'] for n in data},'rock_style':sampled['style'],
             'rock_style_sha256':digest(sampled['style']),'platform_bounds_source_local_xy':sampled['bounds'],
             'platform_cells':sampled['platform_cells'],'native_write_attempts':sampled['native_write_attempts'],
-            'plan_markings':sampled['plan_marking_report'],
+            'plan_markings':sampled['plan_marking_report'],'courtyard_expansion':sampled['expansion_report'],
             'paving_display_cells':len(sampled['paving']-set(sampled['plan_markers'])),
             'plan_marking_cells':len(sampled['plan_markers']),
             'paving_cells':len(sampled['paving']),'building_marker_cells':len(sampled['markers']),
@@ -390,9 +403,12 @@ def run(config,output,*,cancelled=lambda:False,progress=lambda value:None):
         if sampled['plan_markers']:
             atomic_json(root/'plan-marking-cells.json',[{'source_cell_xz':[x,z],'minecraft_xz':[x,-z-1],**record}
                 for (x,z),record in sorted(sampled['plan_markers'].items())])
+        if sampled['expansion_cells']:
+            atomic_json(root/'courtyard-expansion-cells.json',[{'source_cell_xz':[x,z],'minecraft_xz':[x,-z-1],**record}
+                for (x,z),record in sorted(sampled['expansion_cells'].items())])
         _previews(root,sampled)
         shutil.rmtree(root/'bedrock-world')
-        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Wicker geometry prototype</title><h1>Current geometry world</h1><p><a download href="wicker-geometry.mcworld">Download Minecraft Bedrock world</a></p><p>Current paving and low irregular stone/cobblestone edging, using the user reference. Paths under four blocks wide use oak fences. Flat nominal ground; coloured markers show 2D building proposals without invented heights. Rock shape is a prototype style, not measured source detail. When present, orange wool marks the reviewed ride alignment, blue wool is a one-block side guide and brown wool marks drawn support frames. Games and toilet wall lines are ground-level 2D markers. Purple marks theming envelopes. The circular area below Envelope 1 is paved as the user-identified queue zone. Its internal lanes and entrance positions remain unknown. Printed limits 195.8 and 196.8 are source levels, not building heights.</p><p><a href="quality-report.json">Saved-world checks</a></p><img style="max-width:100%" src="world-overview.png"><img style="max-width:100%" src="rock-style-detail.png">')
+        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Wicker geometry prototype</title><h1>Current geometry world</h1><p><a download href="wicker-geometry.mcworld">Download Minecraft Bedrock world</a></p><p>Current paving and low irregular stone/cobblestone edging, using the user reference. Paths under four blocks wide use oak fences. Flat nominal ground; coloured markers show 2D building proposals without invented heights. Rock shape is a prototype style, not measured source detail. When present, orange wool marks the reviewed ride alignment, blue wool is a one-block side guide and brown wool marks drawn support frames. Games and toilet wall lines are ground-level 2D markers. Purple marks theming envelopes. The circular area below Envelope 1 is paved as the user-identified queue zone. Its internal lanes and entrance positions remain unknown. Printed limits 195.8 and 196.8 are source levels, not building heights. A supplied courtyard expansion adds existing-plan wing/annex outlines and courtyard/passage floor areas while preserving Wicker features. Its drawing alignment and manual traces remain provisional.</p><p><a href="quality-report.json">Saved-world checks</a></p><img style="max-width:100%" src="world-overview.png"><img style="max-width:100%" src="rock-style-detail.png">')
         for name in data:
             if file_hash(config[name+'_path'])!=config[name+'_sha256']:raise ValueError('Geometry input changed during export')
         report['output_sha256']={p.relative_to(root).as_posix():file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}
@@ -415,7 +431,7 @@ def main(argv=None):
     path=Path(args.config).resolve()
     if path.stat().st_size>16384:raise ValueError('Bounded geometry world request required')
     config=json.loads(path.read_text())
-    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings','expansion') if n+'_path' in config):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
     result=run(config,args.output);print(json.dumps({'file':result['file'],'rock_blocks':result['rock_blocks']}))
 
 
