@@ -12,6 +12,11 @@ unsupported names supply no role. Existing/proposed/new prefixes remain printed
 claims. Mixed existing/proposed claims, conflicting roles, known legend context,
 competing enclosures and failed glyph comparisons remain withheld.
 
+The subsequent [building-name context adapter](planning-building-name-context.md)
+retains bounded original-text evidence for names such as `COURTYARD TAVERN`.
+A supported adjacent name suffix can withhold a noun's literal surface role;
+it cannot supply a building without separate visible building-role evidence.
+
 Several container labels inside one polygon produce one **shared component
 label enclosure hint**. They do not become several component footprints. A visible
 path noun can be supported by a paving noun without inventing material or width.

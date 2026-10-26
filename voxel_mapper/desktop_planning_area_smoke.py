@@ -57,8 +57,12 @@ def make_source(path, *, wide=False):
                 x0+=1500;x1+=1500;y0-=1300;y1-=1300
                 origin=(origin[0]+1500,origin[1]-1300)
             page.draw_rect((x0,y0+offset,x1,y1+offset))
-            page.insert_text((origin[0],origin[1]+offset),label,fontsize=10,
-                color=((.65,.65,.65),(.55,.35,.2),(.7,0,0))[index%3])
+            colour=((.65,.65,.65),(.55,.35,.2),(.7,0,0))[index%3]
+            if label=='Shop':
+                for text,position in (('COURTYARD',(80,110)),('TAVERN',(87,122)),('Building',(80,151))):
+                    page.insert_text((position[0],position[1]+offset),text,fontsize=10,color=colour)
+            else:
+                page.insert_text((origin[0],origin[1]+offset),label,fontsize=10,color=colour)
         page.insert_text((60,360+offset),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
         page.insert_text((80,390+offset),'1/200 @ A1',fontsize=12)
         page.insert_text((80,405+offset),'1/400 @ A3',fontsize=12)
@@ -92,7 +96,13 @@ def run(output):
                 or scale.get('printed_scale_denominator')!=200):
             raise ValueError('Original paper-qualified site plan scale was not exercised')
         evidence_path=Path(pilot['output_directory'])/pilot['result']['pages'][0]['evidence_file']
-        surface_evidence=json.loads(evidence_path.read_text(encoding='utf-8'))['surface_footprints']
+        page_evidence=json.loads(evidence_path.read_text(encoding='utf-8'))
+        names=[r for r in page_evidence['outline_semantics']['labels']
+            if r['status']=='qualified_building_name_withheld']
+        if (len(names)!=1 or names[0]['name_context']['name_text']!='COURTYARD TAVERN'
+                or names[0]['name_context']['suffix']['glyph_screen']['status']!='raster_consistent_candidate'):
+            raise ValueError('Original building-name qualifier was not exercised')
+        surface_evidence=page_evidence['surface_footprints']
         regional=surface_evidence['extraction']
         if (regional.get('strategy')!='per_label_native_windows'
                 or regional.get('region_schedule')!='coalesced_shared_native_union'
@@ -201,6 +211,7 @@ def run(output):
         'coalesced_shared_regions_verified':True,
         'original_paper_scale_verified':True,
         'original_text_transform_verified':True,
+        'original_building_name_context_verified':True,
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],

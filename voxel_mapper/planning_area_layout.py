@@ -159,7 +159,8 @@ def _semantics(evidence, sha, number):
         raise ValueError('Bounded visible source labels required')
     roles = set(); states = set(); materials = []
     for label in labels:
-        if (label.get('glyph_screen', {}).get('status') != 'raster_consistent_candidate'
+        if (label.get('status')=='qualified_building_name_withheld'
+                or label.get('glyph_screen', {}).get('status') != 'raster_consistent_candidate'
                 or not native.contains(_polygon(label['geometry_pdf_native']))):
             raise ValueError('Visible whole source label inside original boundary required')
         printed = planning_outline_semantics.claim(label.get('text'))
@@ -190,6 +191,32 @@ def _semantics(evidence, sha, number):
     role = next(iter(primary)) if primary else 'surface'
     if kind in ('coarse_building', 'fine_building'):
         association = semantic['association']
+        excluded=association.get('excluded_name_contexts',[])
+        if not isinstance(excluded,list) or len(excluded)>128 or any(not isinstance(r,dict) for r in excluded):
+            raise ValueError('Bounded excluded source name contexts required')
+        if {r.get('id') for r in excluded}!=set(association.get('excluded_name_label_ids',[])):
+            raise ValueError('Exact excluded source name context inventory required')
+        for label in excluded:
+            context=label.get('name_context',{});suffix=context.get('suffix',{})
+            if (label.get('status')!='qualified_building_name_withheld'
+                    or context.get('version')!=planning_outline_semantics.NAME_CONTEXT_VERSION
+                    or context.get('status')!='surface_noun_in_building_name'
+                    or context.get('candidate_id')!=record['candidate_id']
+                    or label.get('claim')!=planning_outline_semantics.claim(label.get('text'))
+                    or label.get('claim',{}).get('role') not in ('path','plaza','surface')
+                    or label.get('id')!=digest([planning_outline_semantics.VERSION,sha,number,
+                        label.get('trace_indices'),label.get('character_indices')])
+                    or label.get('glyph_screen',{}).get('status')!='raster_consistent_candidate'
+                    or suffix.get('text') not in planning_outline_semantics.NAME_SUFFIXES
+                    or suffix.get('glyph_screen',{}).get('status')!='raster_consistent_candidate'
+                    or context.get('name_text')!=label.get('text','')+' '+suffix.get('text','')
+                    or not native.contains(_polygon(label['geometry_pdf_native']))
+                    or not native.contains(_polygon(suffix['geometry_pdf_native']))):
+                raise ValueError('Same-enclosure visible source name context required')
+            state=label['claim'].get('printed_state','unspecified')
+            if state!='unspecified':states.add('proposed' if state=='new' else state)
+        if len(states)>1:
+            raise ValueError('Conflicting source roles or drawing states')
         if (role != 'building' or association.get('status') != 'visible_label_enclosure_hint'
                 or association.get('source_role_hint') != 'building'
                 or association.get('candidate_id') != record['candidate_id']

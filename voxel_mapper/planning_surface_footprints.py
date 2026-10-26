@@ -238,7 +238,8 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         if reason:
             result.update(status='surface_boundaries_withheld', analysis_complete=False,
                           reason=reason, candidates=[])
-        visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate']
+        visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate'
+                   and r.get('status')!='qualified_building_name_withheld']
         resolved = {r['id'] for c in result['candidates'] for r in c['labels']}
         result.update(surface_labels=len(labels), visible_surface_labels=len(visible),
                       association_checks=checks)
@@ -286,7 +287,8 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
             'geometry_pdf_native': {'type': 'Polygon', 'coordinates': [list(geometry.exterior.coords)]},
             'glyph_screen': screen})
         seen.add(key)
-    visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate']
+    visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate'
+               and r.get('status')!='qualified_building_name_withheld']
     if not visible:
         return finish()
     coarse_index = STRtree(coarse_geometries)
@@ -362,9 +364,15 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
     if not fine['inventory_complete']:
         return finish('fine_label_associations_incomplete')
     fine_records = fine_inventory['records']; geometries = [shape(r['candidate']['geometry']) for r in fine_records]
+    qualified={r['id']:r for r in fine['labels'] if r['status']=='qualified_building_name_withheld'}
+    named_boundaries={r['name_context']['candidate_id'] for r in qualified.values()}
     index = STRtree(geometries); bound = {}; competing = set()
     try:
         for label in visible:
+            if label['id'] in qualified:
+                label.update(status='qualified_building_name_withheld',
+                    name_context=qualified[label['id']]['name_context'])
+                continue
             polygon = shape(label['geometry_pdf_native']); matches = []
             for position in index.query(polygon, predicate='intersects'):
                 charge()
@@ -391,6 +399,7 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         role = semantic.get('source_role_hint') if semantic else 'surface'
         reason = ('competing_label_context_withheld' if identifier in competing else
                   'coarse_competing_enclosures_require_interpretation' if any(len(r['coarse_candidate_ids']) > 1 for r in support) else
+                  'building_name_context_requires_interpretation' if identifier in named_boundaries else
                   semantic['status'] if semantic and semantic['status'] != 'visible_label_enclosure_hint' else
                   'conflicting_source_roles_withheld' if role not in ROLES else None)
         materials = [r['text'] for r in support if r['material'] is not None]
@@ -398,7 +407,10 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         if reason is None and surface is None:
             reason = 'conflicting_surface_materials_withheld'
         decision = {'candidate_id': identifier, 'label_ids': [r['id'] for r in support],
-                    'status': 'withheld', 'reason': reason}
+                    'status': 'withheld', 'reason': reason,
+                    'semantic_context': semantic,
+                    'name_contexts':[r['name_context'] for r in qualified.values()
+                                     if r['name_context']['candidate_id']==identifier]}
         result['boundary_decisions'].append(decision)
         if reason:
             continue

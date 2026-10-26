@@ -1,0 +1,757 @@
+{
+  "accepted_park_geometry": 0,
+  "added_nominal_building_area_m2": 209.83067282876422,
+  "current_layout": {
+    "building_footprints": 4,
+    "eligible_surface_labels": 45,
+    "explicit_path_plaza_candidates": 0,
+    "material_surfaces": 2,
+    "native_candidates": 9902,
+    "native_points": 20966,
+    "regions": 14,
+    "summary": {
+      "nominal_area_boundary_contacts": 1,
+      "nominal_area_building_candidates": 4,
+      "nominal_area_gap_pairs": 14,
+      "nominal_area_layout_candidates": 6,
+      "nominal_area_overlap_pairs": 0,
+      "nominal_area_path_plaza_candidates": 0,
+      "registered_area_layouts": 0
+    },
+    "unbound_supported_surface_labels": 41
+  },
+  "legacy_saved_layout_reload_passed": true,
+  "local_tests": {
+    "managed_desktop": {
+      "log_sha256": "59005eb4ecf6b239d13b763442015622f3848f9bcf4c0f0131ed986d7567a914",
+      "seconds": 43.332,
+      "skips": 1,
+      "status": "passed",
+      "tests": 3
+    },
+    "new_regressions": {
+      "log_sha256": "1c0a0c8f212956e237367a71845b85afd0c8fffa38b5214ecec427cd8f1fbfdd",
+      "seconds": 2.466,
+      "skips": 0,
+      "status": "passed",
+      "tests": 12
+    },
+    "planning_regressions": {
+      "log_sha256": "dc5fab0af79f257e2d50695b7ef4d3d7aa04b006340fc02f6de72178dfed2e3a",
+      "seconds": 171.644,
+      "skips": 0,
+      "status": "passed",
+      "tests": 312
+    }
+  },
+  "minecraft_import_or_gameplay_tested": false,
+  "model_weights_updated": false,
+  "name_context": {
+    "candidate_id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+    "name_text": "COURTYARD TAVERN",
+    "physical_building_identity_verified": false,
+    "status": "surface_noun_in_building_name",
+    "suffix": {
+      "character_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "geometry_pdf_native": {
+        "coordinates": [
+          [
+            [
+              244.0800018310547,
+              981.5665893554688
+            ],
+            [
+              265.92535400390625,
+              981.5665893554688
+            ],
+            [
+              265.92535400390625,
+              976.1819458007812
+            ],
+            [
+              244.0800018310547,
+              976.1819458007812
+            ],
+            [
+              244.0800018310547,
+              981.5665893554688
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "glyph_screen": {
+        "colour_residual_tolerance_rgb_levels": 12,
+        "glyph_encoding": "source_cff_charset_cids",
+        "glyphs": [
+          {
+            "character_index": 0,
+            "core_pixels": 98,
+            "unsupported_core_pixels": 0
+          },
+          {
+            "character_index": 1,
+            "core_pixels": 137,
+            "unsupported_core_pixels": 0
+          },
+          {
+            "character_index": 2,
+            "core_pixels": 106,
+            "unsupported_core_pixels": 0
+          },
+          {
+            "character_index": 3,
+            "core_pixels": 163,
+            "unsupported_core_pixels": 0
+          },
+          {
+            "character_index": 4,
+            "core_pixels": 158,
+            "unsupported_core_pixels": 0
+          },
+          {
+            "character_index": 5,
+            "core_pixels": 153,
+            "unsupported_core_pixels": 0
+          }
+        ],
+        "limitations": [
+          "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+          "Opaque ASCII text with supported original colour/contrast and one raster-consistent original font candidate; no custom-font substitution.",
+          "A one-pixel position tolerance applies at the retained raster scale."
+        ],
+        "max_colour_coverage": 1.04,
+        "max_unexpected_dark_ring_fraction": 0.01,
+        "max_unsupported_core_fraction_per_glyph": 0.01,
+        "minimum_colour_contrast_rgb_levels": 48,
+        "pixel_position_tolerance": 1,
+        "ring_pixels": 786,
+        "source_colour_rgb": [
+          0.5333330035209656,
+          0.5333330035209656,
+          0.5333330035209656
+        ],
+        "source_colour_support": "original_rgb_over_white_projection",
+        "source_font_sha256": "8a9401c6ed02347a7e0378518f554843da96856d5d7e5cbffa767b29b6f3888d",
+        "source_font_xrefs": [
+          242
+        ],
+        "source_rotation_restored": 0,
+        "source_text_transform": {
+          "basis": "one_original_direct_show_and_exact_native_trace",
+          "effective_font_basis_pdf_native": [
+            5.384616374969482,
+            0.0,
+            0.0,
+            5.519999980926514
+          ],
+          "encoded_glyph_bytes_sha256": "53e6e88dd320a37dff4dbaf8e8300e46b9ae27e79180b6d3077d0641e9ce8a58",
+          "encoded_glyph_count": 6,
+          "font_resource": "F71",
+          "horizontal_scale_percent": 100.0,
+          "native_trace_index": 1072,
+          "native_trace_sha256": "3a2c0f8c45f6cf96b6f35442d6af3aaf40b915cf8543be039c64d17d2281e01b",
+          "operator_count": 351398,
+          "operator_index": 41443,
+          "page": 1,
+          "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+          "physical_identity_verified": false,
+          "source_font_size": 23.0,
+          "source_font_xref": 242,
+          "source_graphics_matrix": [
+            0.23999999463558197,
+            0.0,
+            0.0,
+            -0.23999999463558197,
+            0.0,
+            1684.0
+          ],
+          "source_text_matrix": [
+            0.975474,
+            0.0,
+            0.0,
+            -1.0,
+            1017.0,
+            2945.0
+          ],
+          "version": "direct-source-text-transform-v1"
+        },
+        "status": "raster_consistent_candidate",
+        "unexpected_dark_ring_pixels": 0,
+        "version": "source-font-glyph-raster-screen-v8",
+        "visibility_verified": false,
+        "zoom_pixels_per_pdf_point": 6
+      },
+      "text": "TAVERN",
+      "trace_indices": [
+        1072
+      ]
+    },
+    "version": "planning-name-context-v1"
+  },
+  "original_source_and_output_pins_verified": true,
+  "previous_five_proposals_geometry_roles_and_finishes_unchanged": true,
+  "prior_actual_conflict": {
+    "candidate_id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+    "competing_label_ids": [],
+    "component_footprints_resolved": false,
+    "component_label_count": 0,
+    "geometric_accuracy": null,
+    "label_ids": [
+      "099ee801a8a578dadd27d8f944eb30998823bc23568bee221cb12485aa8f7650",
+      "72dbfc572a03ee88e27f98b804c53b7c713e1a5e43bef9be524e134516929f2e"
+    ],
+    "label_texts": [
+      "COURTYARD",
+      "building"
+    ],
+    "physical_identity_verified": false,
+    "printed_roles": [
+      "building",
+      "plaza"
+    ],
+    "printed_states": [
+      "unspecified"
+    ],
+    "source_record_sha256": "57671436f2d784a563fc7526e8794f318aa32890fc357919c97ae2a7c3f12ee0",
+    "source_role_hint": null,
+    "status": "conflicting_source_roles_withheld",
+    "view_scope_verified": false,
+    "world_placement_eligible": false
+  },
+  "reconstructed_building_heights": 0,
+  "retained_building_association": {
+    "candidate_id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+    "competing_label_ids": [],
+    "component_footprints_resolved": false,
+    "component_label_count": 0,
+    "excluded_name_contexts": [
+      {
+        "candidate_ids": [
+          "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6"
+        ],
+        "character_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "claim": {
+          "noun": "courtyard",
+          "printed_state": "unspecified",
+          "role": "plaza",
+          "scope": "enclosure"
+        },
+        "geometry_pdf_native": {
+          "coordinates": [
+            [
+              [
+                237.59999084472656,
+                989.1163330078125
+              ],
+              [
+                272.5636291503906,
+                989.1163330078125
+              ],
+              [
+                272.5636291503906,
+                983.5963745117188
+              ],
+              [
+                237.59999084472656,
+                983.5963745117188
+              ],
+              [
+                237.59999084472656,
+                989.1163330078125
+              ]
+            ]
+          ],
+          "type": "Polygon"
+        },
+        "glyph_screen": {
+          "colour_residual_tolerance_rgb_levels": 12,
+          "glyph_encoding": "source_cff_charset_cids",
+          "glyphs": [
+            {
+              "character_index": 0,
+              "core_pixels": 134,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 1,
+              "core_pixels": 158,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 2,
+              "core_pixels": 131,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 3,
+              "core_pixels": 164,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 4,
+              "core_pixels": 78,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 5,
+              "core_pixels": 105,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 6,
+              "core_pixels": 140,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 7,
+              "core_pixels": 182,
+              "unsupported_core_pixels": 0
+            },
+            {
+              "character_index": 8,
+              "core_pixels": 178,
+              "unsupported_core_pixels": 0
+            }
+          ],
+          "limitations": [
+            "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+            "Opaque ASCII text with supported original colour/contrast and one raster-consistent original font candidate; no custom-font substitution.",
+            "A one-pixel position tolerance applies at the retained raster scale."
+          ],
+          "max_colour_coverage": 1.04,
+          "max_unexpected_dark_ring_fraction": 0.01,
+          "max_unsupported_core_fraction_per_glyph": 0.01,
+          "minimum_colour_contrast_rgb_levels": 48,
+          "pixel_position_tolerance": 1,
+          "ring_pixels": 1225,
+          "source_colour_rgb": [
+            0.5333330035209656,
+            0.5333330035209656,
+            0.5333330035209656
+          ],
+          "source_colour_support": "original_rgb_over_white_projection",
+          "source_font_sha256": "8a9401c6ed02347a7e0378518f554843da96856d5d7e5cbffa767b29b6f3888d",
+          "source_font_xrefs": [
+            242
+          ],
+          "source_rotation_restored": 0,
+          "source_text_transform": {
+            "basis": "one_original_direct_show_and_exact_native_trace",
+            "effective_font_basis_pdf_native": [
+              5.519999980926514,
+              0.0,
+              0.0,
+              5.519999980926514
+            ],
+            "encoded_glyph_bytes_sha256": "88ef4ec127686e01658e1c6cf4d4eb3b8691e3d38246b3272e7a2d968b789996",
+            "encoded_glyph_count": 9,
+            "font_resource": "F71",
+            "horizontal_scale_percent": 100.0,
+            "native_trace_index": 1026,
+            "native_trace_sha256": "c4603db927010b9ce50caf2f1f714315f51c7372b8cc3e27545310d830f239ae",
+            "operator_count": 351398,
+            "operator_index": 40497,
+            "page": 1,
+            "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+            "physical_identity_verified": false,
+            "source_font_size": 23.0,
+            "source_font_xref": 242,
+            "source_graphics_matrix": [
+              0.23999999463558197,
+              0.0,
+              0.0,
+              -0.23999999463558197,
+              0.0,
+              1684.0
+            ],
+            "source_text_matrix": [
+              1.0,
+              0.0,
+              0.0,
+              -1.0,
+              990.0,
+              2914.0
+            ],
+            "version": "direct-source-text-transform-v1"
+          },
+          "status": "raster_consistent_candidate",
+          "unexpected_dark_ring_pixels": 0,
+          "version": "source-font-glyph-raster-screen-v8",
+          "visibility_verified": false,
+          "zoom_pixels_per_pdf_point": 6
+        },
+        "id": "099ee801a8a578dadd27d8f944eb30998823bc23568bee221cb12485aa8f7650",
+        "name_context": {
+          "candidate_id": "773dd5c3fa88a5c801fce1f8ce4aa55a90d472e95b76b593c37d8fef0380b4e6",
+          "name_text": "COURTYARD TAVERN",
+          "physical_building_identity_verified": false,
+          "status": "surface_noun_in_building_name",
+          "suffix": {
+            "character_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "geometry_pdf_native": {
+              "coordinates": [
+                [
+                  [
+                    244.0800018310547,
+                    981.5665893554688
+                  ],
+                  [
+                    265.92535400390625,
+                    981.5665893554688
+                  ],
+                  [
+                    265.92535400390625,
+                    976.1819458007812
+                  ],
+                  [
+                    244.0800018310547,
+                    976.1819458007812
+                  ],
+                  [
+                    244.0800018310547,
+                    981.5665893554688
+                  ]
+                ]
+              ],
+              "type": "Polygon"
+            },
+            "glyph_screen": {
+              "colour_residual_tolerance_rgb_levels": 12,
+              "glyph_encoding": "source_cff_charset_cids",
+              "glyphs": [
+                {
+                  "character_index": 0,
+                  "core_pixels": 98,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 1,
+                  "core_pixels": 137,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 2,
+                  "core_pixels": 106,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 3,
+                  "core_pixels": 163,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 4,
+                  "core_pixels": 158,
+                  "unsupported_core_pixels": 0
+                },
+                {
+                  "character_index": 5,
+                  "core_pixels": 153,
+                  "unsupported_core_pixels": 0
+                }
+              ],
+              "limitations": [
+                "Raster consistency is a screen, not proof of semantic/material or as-built identity.",
+                "Opaque ASCII text with supported original colour/contrast and one raster-consistent original font candidate; no custom-font substitution.",
+                "A one-pixel position tolerance applies at the retained raster scale."
+              ],
+              "max_colour_coverage": 1.04,
+              "max_unexpected_dark_ring_fraction": 0.01,
+              "max_unsupported_core_fraction_per_glyph": 0.01,
+              "minimum_colour_contrast_rgb_levels": 48,
+              "pixel_position_tolerance": 1,
+              "ring_pixels": 786,
+              "source_colour_rgb": [
+                0.5333330035209656,
+                0.5333330035209656,
+                0.5333330035209656
+              ],
+              "source_colour_support": "original_rgb_over_white_projection",
+              "source_font_sha256": "8a9401c6ed02347a7e0378518f554843da96856d5d7e5cbffa767b29b6f3888d",
+              "source_font_xrefs": [
+                242
+              ],
+              "source_rotation_restored": 0,
+              "source_text_transform": {
+                "basis": "one_original_direct_show_and_exact_native_trace",
+                "effective_font_basis_pdf_native": [
+                  5.384616374969482,
+                  0.0,
+                  0.0,
+                  5.519999980926514
+                ],
+                "encoded_glyph_bytes_sha256": "53e6e88dd320a37dff4dbaf8e8300e46b9ae27e79180b6d3077d0641e9ce8a58",
+                "encoded_glyph_count": 6,
+                "font_resource": "F71",
+                "horizontal_scale_percent": 100.0,
+                "native_trace_index": 1072,
+                "native_trace_sha256": "3a2c0f8c45f6cf96b6f35442d6af3aaf40b915cf8543be039c64d17d2281e01b",
+                "operator_count": 351398,
+                "operator_index": 41443,
+                "page": 1,
+                "page_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+                "physical_identity_verified": false,
+                "source_font_size": 23.0,
+                "source_font_xref": 242,
+                "source_graphics_matrix": [
+                  0.23999999463558197,
+                  0.0,
+                  0.0,
+                  -0.23999999463558197,
+                  0.0,
+                  1684.0
+                ],
+                "source_text_matrix": [
+                  0.975474,
+                  0.0,
+                  0.0,
+                  -1.0,
+                  1017.0,
+                  2945.0
+                ],
+                "version": "direct-source-text-transform-v1"
+              },
+              "status": "raster_consistent_candidate",
+              "unexpected_dark_ring_pixels": 0,
+              "version": "source-font-glyph-raster-screen-v8",
+              "visibility_verified": false,
+              "zoom_pixels_per_pdf_point": 6
+            },
+            "text": "TAVERN",
+            "trace_indices": [
+              1072
+            ]
+          },
+          "version": "planning-name-context-v1"
+        },
+        "status": "qualified_building_name_withheld",
+        "text": "COURTYARD",
+        "trace_indices": [
+          1026
+        ]
+      }
+    ],
+    "excluded_name_label_ids": [
+      "099ee801a8a578dadd27d8f944eb30998823bc23568bee221cb12485aa8f7650"
+    ],
+    "geometric_accuracy": null,
+    "label_ids": [
+      "72dbfc572a03ee88e27f98b804c53b7c713e1a5e43bef9be524e134516929f2e"
+    ],
+    "label_texts": [
+      "building"
+    ],
+    "physical_identity_verified": false,
+    "printed_roles": [
+      "building"
+    ],
+    "printed_states": [
+      "unspecified"
+    ],
+    "source_record_sha256": "57671436f2d784a563fc7526e8794f318aa32890fc357919c97ae2a7c3f12ee0",
+    "source_role_hint": "building",
+    "status": "visible_label_enclosure_hint",
+    "view_scope_verified": false,
+    "world_placement_eligible": false
+  },
+  "runtime_implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "a9be3075a4334bd615c011d7054fb5083c1783832e0a27ed6625e81220408772"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "d52e22d301e743c07b9942bbb819e314deb007b59e1a09991fbea067d9163281"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "87c57c355f60d39dbcd203d7690472601cab7d6665ad4d3c49394ef8ed5cf6ba"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "731ea0f42a3a141825cd85f6ac206c01852cef0da20ec26f2943e84e69a2ae6f"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "d3dd11fec0840b0cb722818e98ab584a1c958619d65a4e3efc40a3df1013d8a7"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "9d81472766922b568fb8242bdf38d854e5f7d105f6cc0b8b47667a3a1beda40a"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "9384ed3780eb9e88dbd2b20c2f812aae6e6637e20511989294a344476ddc71c6"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.source_text_transforms": {
+      "basis": "module_file_bytes",
+      "sha256": "6cd94779061b7bc9e075027a8ba81daa803e06b02973808dd0dea55b3728b367"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "source_boundary_record_unchanged": true,
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_exposure": "previously_inspected_development",
+  "source_layout_sha256": "125f61d6b87386aff3b7e6672bc88ef7fb9d90d6792a9afbf90ca6bf6f57befe",
+  "source_name_context_sha256": "e0c05e2a983f61763904edc5fbf0669c08734606c4d1d20edc124f3271d78ceb",
+  "source_name_label_id": "099ee801a8a578dadd27d8f944eb30998823bc23568bee221cb12485aa8f7650",
+  "source_report_sha256": "d23f54048ca77fb5498764ca8dd30e6f1ef8fb9095ca0b1101072fe566fa0770",
+  "surveyed_registration": false,
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "verified_paths": false,
+  "version": "planning-building-name-context-development-validation-v1",
+  "world": {
+    "added_building_display_cells": 211,
+    "archive": {
+      "chunks_reopened": 104,
+      "crc_verified": true,
+      "packaged_files_match_verified_world": true,
+      "saved_world_reopened": true,
+      "spawn_rechecked": true,
+      "verified_files": 11
+    },
+    "bytes": 54536,
+    "candidate_display_counts": {
+      "2fa2a4e6e1dd746b71ee4905406bd8a4323c19406b7dea57f17b4fb4b7f30740": 211,
+      "3f3d78a9122ef23d09b11c18206b905db88f9bcb35e59461630743c119a5a64b": 11,
+      "4382be4758fec007aaf8f172ea7726095eaa665b5ebe3345e384baafa0e23c6a": 35,
+      "e1192d8d80e001d66f2e1e1404a4dea2fd3b3dd460a29ac098a860b804721361": 67,
+      "fa5a70a9895881324207e50e0afd5e3536930f9a6135897c3429b14d7f396e93": 2,
+      "fc30ce5238946cb4883d741ec56dbd149802d4ee89a3b6a217a22259a6e22def": 6
+    },
+    "chunks": 104,
+    "composed_blocks": 90160,
+    "display_cells": 332,
+    "independent_foundation_cells_checked": 67620,
+    "independent_headroom_cells_checked": 45080,
+    "independent_native_platform_cells_checked": 22540,
+    "material_surface_cells": 8,
+    "native_write_attempts": 90492,
+    "platform_bounds_nominal_m": [
+      6,
+      33,
+      202,
+      148
+    ],
+    "platform_cells": 22540,
+    "sections": 2,
+    "sha256": "c72cc46ea8693c898d63a967c2a16469a8a5a3eb3f9e98286996384ac7a23022",
+    "spawn": {
+      "headroom_air_blocks": 2,
+      "metadata_verified": true,
+      "player_movement_verified": false,
+      "spawn": [
+        7,
+        65,
+        -35
+      ],
+      "support": "grass_block",
+      "verified": true
+    }
+  }
+}

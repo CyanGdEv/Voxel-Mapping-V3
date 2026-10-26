@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Original building-name context](docs/planning-building-name-context.md) recognises the split “COURTYARD TAVERN” annotation without treating its first word as a plaza. Wicker now retains four building-footprint and two material-surface proposals. Heights, roofs and a verified path network remain unfinished.
+
 [Complete tiled plan previews](docs/tiled-area-world-previews.md) export the full 196×115 nominal metre Wicker layout as one Bedrock world, preserving all five proposals and their spacing. Saved ground, feature cells, headroom and archive checks pass within the unchanged total write budget. This is a flat inspection map; detailed buildings and verified paths remain unfinished.
 
 [Coalesced shared-source recovery](docs/coalesced-surface-recovery.md) completes Wicker’s 46 label windows in 14 regions within the existing limits. Its first shared nominal layout has three building-footprint and two material-surface proposals; the subsequent tiled preview stage resolves the export-size hold.

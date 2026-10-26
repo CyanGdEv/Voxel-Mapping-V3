@@ -1,5 +1,9 @@
 # Complete tiled planning-world previews
 
+The later [building-name context stage](planning-building-name-context.md)
+retains a fourth Wicker building-footprint proposal. The five-proposal export
+and source pins below describe this earlier tiled-export release unchanged.
+
 The flat area exporter now supports a complete platform larger than one
 128×128 metre section. Version `planning-area-world-preview-v2` partitions
 integer cell intervals into at most four disjoint sections and writes one
