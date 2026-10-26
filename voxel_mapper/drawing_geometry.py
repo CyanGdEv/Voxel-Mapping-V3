@@ -18,6 +18,15 @@ DEFAULTS={'curve_tolerance_points':.25,'max_paths':100000,'max_candidates':4000,
           'max_regional_candidates':10000,'max_regional_total_points':1000000}
 
 
+def stroke_signature(path):
+    """Exact original paint style; it carries no physical/semantic class."""
+    colour=path.get('color');width=path.get('width')
+    if (not isinstance(colour,(list,tuple)) or len(colour)!=3
+            or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in colour)
+            or type(width) not in (int,float) or not math.isfinite(width) or width<0):return None
+    return {'stroke_rgb':list(colour),'width_pdf_points':width,'dashes_pdf':str(path.get('dashes',''))}
+
+
 def contract(options):return hashlib.sha256(json.dumps({'version':VERSION,**options},sort_keys=True).encode()).hexdigest()
 
 
@@ -94,7 +103,7 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only','closed_curved_primitives_only','open_stroked_primitives_only'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only','closed_curved_primitives_only','open_stroked_primitives_only','source_region_stroke_styles'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
     if type(options['regional_fallback']) is not bool:raise ValueError('Boolean regional fallback required')
     for key in ('regional_columns','regional_rows'):
@@ -133,6 +142,19 @@ def validated_options(overrides):
         raise ValueError('Boolean open-stroke primitive filter required')
     if options.get('open_stroked_primitives_only') and (options.get('closed_curved_primitives_only') or options.get('source_face_primitives_only')):
         raise ValueError('Exclusive primitive filters required')
+    if 'source_region_stroke_styles' in options:
+        styles=options['source_region_stroke_styles']
+        if (not options.get('open_stroked_primitives_only') or not isinstance(styles,list)
+                or len(styles)!=len(options.get('region_native_windows',[])) or not styles):
+            raise ValueError('One original stroke style per open-network source window required')
+        for style in styles:
+            if (not isinstance(style,dict) or set(style)!={'stroke_rgb','width_pdf_points','dashes_pdf'}
+                    or stroke_signature({'color':style['stroke_rgb'],'width':style['width_pdf_points'],
+                        'dashes':style['dashes_pdf']})!=style
+                    or not isinstance(style['dashes_pdf'],str)
+                    or len(style['dashes_pdf'])>1024
+                    or not re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',style['dashes_pdf'])):
+                raise ValueError('Exact finite original solid RGB stroke style required')
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
     minimum=options.get('min_line_length_points',12)
@@ -154,6 +176,7 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
     region=box(*options['region_native_points']) if 'region_native_points' in options else None
     if region is not None and not frame.covers(region):raise ValueError('Region must lie within native page frame')
     windows=options.get('region_native_windows')
+    region_styles=options.get('source_region_stroke_styles')
     zones=[box(*w) for w in windows] if windows is not None else []
     if any(not frame.covers(z) for z in zones):raise ValueError('Source windows must lie within native page frame')
     paths=page.get_cdrawings(extended=True) if _paths is None else _paths;rejections=Counter();candidates=[];seen={};clips=[];groups=[];total_points=0;ineligible_aliases={}
@@ -183,6 +206,9 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                 rejections['nonstroke_paint_excluded_from_open_network']+=1;continue
             if not re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',str(path.get('dashes',''))):
                 rejections['nonsolid_stroke_excluded_from_open_network']+=1;continue
+        signature=stroke_signature(path) if region_styles is not None else None
+        if region_styles is not None and signature not in region_styles:
+            rejections['outside_selected_original_stroke_styles']+=1;continue
         memberships=[]
         if region is not None or windows is not None:
             # Native path bounds enclose the complete primitive, including curves.
@@ -192,7 +218,8 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                 rejections['invalid_source_path_bounds']+=1;continue
             scopes=[options['region_native_points']] if windows is None else windows
             intersecting=[i for i,(xmin,ymin,xmax,ymax) in enumerate(scopes)
-                if not (bounds.x1<xmin or bounds.y1<ymin or bounds.x0>xmax or bounds.y0>ymax)]
+                if (region_styles is None or region_styles[i]==signature)
+                and not (bounds.x1<xmin or bounds.y1<ymin or bounds.x0>xmax or bounds.y0>ymax)]
             if not intersecting:
                 rejections['outside_region']+=1;continue
             selected+=1

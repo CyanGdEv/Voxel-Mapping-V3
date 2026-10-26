@@ -1,0 +1,229 @@
+{
+  "accepted_park_geometry": 0,
+  "anchor_original_controls_verified": 3742,
+  "anchor_original_operators_verified": 1003,
+  "anchors": 122,
+  "anchors_with_all_eligible_subpaths_retained": 122,
+  "baseline_layout_sha256": "d71b556288e8ece7b31d77fb4a0f0c531caeed2bf8f18e06182b67c73d2e1367",
+  "baseline_surface_analysis_sha256": "204e84fe9ad4f34378085dfb08caefaf5f27308ce29369cf2ed4ac09b53f9733",
+  "building_heights_reconstructed": 0,
+  "covered_boundaries_withheld": 1,
+  "diagnostic_candidates": 2618,
+  "independent_cubic_samples": 8320,
+  "legacy_native_candidates": 7293,
+  "legacy_native_parent_inventory_identical": true,
+  "legacy_native_points": 15422,
+  "local_tests": {
+    "complete_scope_regressions": {
+      "log_sha256": "2294cf67fb06c7bcc34f8d09905a5c2659cfb8f4e055e1cbfdab0397e82a0101",
+      "seconds": 7.899,
+      "skips": 0,
+      "status": "passed",
+      "tests": 23
+    },
+    "existing_regressions": {
+      "log_sha256": "e8edab41dcf079eba07aa0dc0f3821e3b20c28ac81c6c0cac12d4bbeaecfc190",
+      "seconds": 183.219,
+      "skips": 1,
+      "status": "passed",
+      "tests": 131
+    }
+  },
+  "long_source_strokes": [
+    {
+      "full_source_points": 183,
+      "ordinal": 92794,
+      "source_bbox": [
+        519.7583618164062,
+        198.169677734375,
+        1697.93994140625,
+        538.56640625
+      ],
+      "source_endpoints": [
+        [
+          519.7583618164062,
+          198.169677734375
+        ],
+        [
+          1687.2095947265625,
+          538.56640625
+        ]
+      ],
+      "source_operators": 19,
+      "whole_subpath_geometry_verified": true
+    },
+    {
+      "full_source_points": 134,
+      "ordinal": 92797,
+      "source_bbox": [
+        731.66162109375,
+        276.9808349609375,
+        1763.4840087890625,
+        494.1976318359375
+      ],
+      "source_endpoints": [
+        [
+          731.66162109375,
+          276.9808349609375
+        ],
+        [
+          1763.4840087890625,
+          492.5296630859375
+        ]
+      ],
+      "source_operators": 16,
+      "whole_subpath_geometry_verified": true
+    }
+  ],
+  "maximum_sample_distance_pdf_points": 0.03734911154494494,
+  "native_candidates": 5461,
+  "native_points": 27611,
+  "network_counts": {
+    "assembled_curved_faces": 1,
+    "blocked_edges": 1534,
+    "branched_endpoint_nodes": 72,
+    "crossing_or_uncertain_boundary_faces_withheld": 1,
+    "cut_edges": 20,
+    "dangles": 9909,
+    "dangling_endpoint_nodes": 7444,
+    "exact_endpoint_nodes": 13234,
+    "flattened_segments": 20983,
+    "interior_crossing_or_overlap_pairs": 362,
+    "invalid_or_small_faces": 65,
+    "invalid_rings": 21,
+    "noded_straight_parts": 8008,
+    "original_straight_intersection_pairs": 3960,
+    "raw_faces": 139,
+    "source_edges": 9560,
+    "straight_only_faces_already_handled_elsewhere": 72,
+    "uncertain_near_curve_pairs": 508
+  },
+  "network_limits": {
+    "max_face_provenance": 2048,
+    "max_faces": 500,
+    "max_native_candidates": 10000,
+    "max_native_points": 200000,
+    "max_output_bytes": 8000000,
+    "max_pair_checks": 100000,
+    "max_segments": 20000,
+    "max_source_control_points": 100000,
+    "max_source_operators": 20000
+  },
+  "network_work": {
+    "global_stroke_check_points": 27611,
+    "pair_and_label_checks": 13187,
+    "source_control_point_count": 27384,
+    "source_operator_count": 10727
+  },
+  "neural_weights_updated": false,
+  "new_paths_generated": 0,
+  "new_real_world_exported": false,
+  "output_sha256": {
+    "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d-page-1.png": "6138a7f577956d8b3ba00c2ae7131d5c885c7a19914ff3297a4c059ef1c45985",
+    "baseline-area-layout.json": "d71b556288e8ece7b31d77fb4a0f0c531caeed2bf8f18e06182b67c73d2e1367",
+    "baseline-surface-analysis.json": "e5a386e04f22dc5927563d7ea75c811066edcb2b2b0017788aa64b745dcc2fa8",
+    "complete-source-curve-review.json": "7c8c6c19348c50ddb06b7db0f63f0784e1f65f429299d813b3e985470b3fbce9",
+    "complete-source-curves.svg": "007bc4f0a2ea467c4523e1761eda56cbba2313c9048fd5dbdaea44e21aa3d8c9",
+    "complete-source-scope-plan.json": "7ce6088005991170bb45c58c686458a73e38090cdec1d3c542dfd3a7de8cd717",
+    "originals/1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d.pdf": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "review.html": "c82bfca0c52a712742e07803b65bc35d4c36758e528175201ea97116fbe7dea6",
+    "source-config.json": "8b4b4b29d4ea9d42c2ce8c32a6681da354701646c92e476761062621d779981a",
+    "synthetic-example/original.pdf": "df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13",
+    "synthetic-example/pilot-review/area-layout-df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-1.geojson": "42b6f75e3a84b54bcae97f5c1a0d6e006f7cbe5d0c5cdb6d728445780f62df4e",
+    "synthetic-example/pilot-review/area-layout-df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-1.json": "b04bd6244e9a2c72560eff08fd5403a9d3c8bd0d303ea756e638d564c1eb0c60",
+    "synthetic-example/pilot-review/area-layouts.html": "e85fd9f337b50a6017cda40e704cd2c61ee419b48a815d616e253b41f18be143",
+    "synthetic-example/pilot-review/area-layouts.json": "a618e3493051948a7a02bf41be5dc15613e739fc3bdc59953baf215f92494cd8",
+    "synthetic-example/pilot-review/component-measurements.html": "17b936dfb935345e075af4c45b5ddab501bf4850d7b1deaf116aac47d6df1f5b",
+    "synthetic-example/pilot-review/component-measurements.json": "2a3f7b756719395388357cdab0966987e7ac124aa69a342440d85abbafdf6896",
+    "synthetic-example/pilot-review/config.json": "2f9c44f50009811820aa11226143810327d495841e7a8d2f2e4e30a50a5730b6",
+    "synthetic-example/pilot-review/contract.json": "9f142017f696b080f17ee8d6056f2ec80b56009cb199bbfcf74095c393aed501",
+    "synthetic-example/pilot-review/design-massing.html": "10b612c96d6fd12102ccdcad3c81a6a1cea917205381a3f4a68f87914e27c878",
+    "synthetic-example/pilot-review/design-massing.json": "ea46d4d77fa3026f31054bc6ea761d56876db04f593d97a9b134670894c4730a",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1-complete-curve-scopes.svg": "a9a7863123eec2e89269154b957e4589e1151ddd546cec5e28dbd282981b8d1d",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1-curve-networks.svg": "36779a7284f5e11d8cea25d1dcb89baaae4514d6b3743d17b7b04aaef2db33c2",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1-curves.svg": "0fe63bc0ecc3da457a0d31a5889f606dcd4fbde9769ffebf653269c99c512730",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1-outlines.svg": "a8c402ca1a2da743e0bfb8cbf100bb67b2abb71f4efb9bccb0d8304bda0d75bf",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1.json": "e498c85e969c5bda66cd06a80c188054b0c20a08cc6a617963b3c9b1ae6940b9",
+    "synthetic-example/pilot-review/df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13-page-1.png": "edbcffa9c0f8fea6fa5252880688e9040463fd37f1276befe2c7632b0f4eee88",
+    "synthetic-example/pilot-review/reference-requirements.json": "51c2b4895e4942fbd6b8d6ec649528b020607d33827d0a9e843de0497757ab05",
+    "synthetic-example/pilot-review/report.json": "45cd8b97ea358dd7a21710b47dcc65cd2e2c0d9f42a84594b93f999bec71b0b9",
+    "synthetic-example/pilot-review/review.html": "0b9c0edc9da63cb0db16f26176e8c84202d4ae0361ee0937c85097d29d6a322f",
+    "synthetic-example/pilot-review/section-correspondence.html": "56a8b5060078b3e938a76593221f4b890f885cd3040cb771fdcbc31ffb9b5cb9",
+    "synthetic-example/pilot-review/section-correspondence.json": "31ecd00865ef8718091fd3a785033971f0eb4a42ab2864bfa14df713b39bfa0b",
+    "synthetic-example/pilot-review/section-profiles.html": "0ba2f05fc995604e01c0ebbfb5273a1847791bcdeb9c90c982d52975dfcff243",
+    "synthetic-example/pilot-review/section-profiles.json": "eab15212898576cc52f581b51b761eca8391f6a7dc204ea663080e7f178a1e57",
+    "synthetic-example/pilot.json": "de9b3c5edefa5d67a3d1096717256cef0481c7a2a464680ed3ef105c0bb4e28c"
+  },
+  "previous_default_network_review_identical": true,
+  "qualifying_real_curved_surfaces": 0,
+  "runtime_implementation_contract": {
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "db1f010d25115d04ce04b1d753d0c6ec606c95eafbafb52644a01fba7ac109fe"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "731ea0f42a3a141825cd85f6ac206c01852cef0da20ec26f2943e84e69a2ae6f"
+    },
+    "voxel_mapper.planning_area_pilot": {
+      "basis": "module_file_bytes",
+      "sha256": "ce7de5d9d44b8f9f792db97edf6ae6ff42074303d92154a692c0e470526b88ab"
+    },
+    "voxel_mapper.planning_curve_networks": {
+      "basis": "module_file_bytes",
+      "sha256": "e9cea94fcb7422ead3fef7c664b72fe711dbae47440f32ef6d879bc8b0aecc74"
+    },
+    "voxel_mapper.planning_curve_scopes": {
+      "basis": "module_file_bytes",
+      "sha256": "c1066a7c88640c44199c6a1bdc3246f4dbe95ab10fb794f368e932b860e176f8"
+    },
+    "voxel_mapper.planning_curved_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "5fc3c55e35d1c4b22fb6a38e0013ead4bcf0fc2803a18be62bebc00856569844"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "b549e8870c5d14c930561a0bd60216a5c24e6d3e930a144e647f4935ca103785"
+    }
+  },
+  "sampled_diagnostics": 128,
+  "sampled_original_controls_verified": 512,
+  "scope_counts": {
+    "already_inside_original_scope": 1198,
+    "complete_stroke_outside_original_frame": 128,
+    "no_supported_original_open_curve": 3,
+    "nonopaque_or_optional_layer": 315,
+    "outside_original_seed_scopes": 1213,
+    "raw_curved_stroke_groups": 2979
+  },
+  "scope_limits": {
+    "max_anchors": 256,
+    "max_flattened_points": 200000,
+    "max_output_bytes": 8000000,
+    "max_regions": 32,
+    "max_scope_checks": 100000,
+    "max_source_operators": 20000
+  },
+  "scope_work": {
+    "flattened_point_work": 7752,
+    "scope_checks": 27896,
+    "source_operator_work": 3962
+  },
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_exposure": "previously_inspected_development",
+  "source_families": 9,
+  "synthetic_full_pilot": {
+    "complete_scope_curved_records": 1,
+    "complete_source_anchors": 1,
+    "new_curve_added_to_layout": false,
+    "nominal_building_candidates": 2,
+    "nominal_path_plaza_candidates": 3,
+    "original_source_edges": 4,
+    "report_sha256": "45cd8b97ea358dd7a21710b47dcc65cd2e2c0d9f42a84594b93f999bec71b0b9",
+    "source_document_sha256": "df7e6034cf4cd3e44b81c505c6ac7081c0da332de8fda0a0e936d1db152adb13"
+  },
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "validation_scope": "new complete scope planning/recovery on original PDF using audited seed analysis; exact previous default network and legacy vector inventory replays; separate synthetic full-pilot integration",
+  "version": "planning-complete-curve-scopes-development-validation-v1"
+}

@@ -58,6 +58,7 @@ class DesktopPlanningAreaTests(unittest.TestCase):
             self.assertTrue(result['whole_native_annotation_context_verified'])
             self.assertTrue(result['original_closed_curve_review_verified'])
             self.assertTrue(result['open_curve_network_recovery_verified'])
+            self.assertTrue(result['complete_long_curve_scope_verified'])
             self.assertEqual(result['wide_area_sections'],2)
             self.assertGreater(result['wide_area_platform_cells'],16384)
             self.assertLessEqual(result['wide_area_native_write_attempts'],100000)

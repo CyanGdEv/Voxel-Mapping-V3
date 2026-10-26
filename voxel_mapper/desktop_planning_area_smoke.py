@@ -79,6 +79,13 @@ def make_source(path, *, wide=False):
         for a,b in (((1700,80),(1700,180)),((1700,180),(1500,180)),((1500,180),(1500,80))):
             page.draw_line((a[0],a[1]+offset),(b[0],b[1]+offset))
         page.insert_text((1550,130+offset),'stone',fontsize=10)
+        # A longer original curve crosses every label window. Its separate
+        # style-scoped review must retain the whole ring without exporting it.
+        red=(1,0,0)
+        page.draw_bezier((700,240+offset),(900,180+offset),(1100,180+offset),(1300,240+offset),color=red)
+        for a,b in (((1300,240),(1300,320)),((1300,320),(700,320)),((700,320),(700,240))):
+            page.draw_line((a[0],a[1]+offset),(b[0],b[1]+offset),color=red)
+        page.insert_text((980,280+offset),'stone',fontsize=10)
         page.insert_text((60,360+offset),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
         page.insert_text((80,390+offset),'1/200 @ A1',fontsize=12)
         page.insert_text((80,405+offset),'1/400 @ A3',fontsize=12)
@@ -125,6 +132,13 @@ def run(output):
                 or len(network['records'][0]['candidate']['source_edges'])!=4
                 or network['curve_interior_intersection_noding_performed'] is not False):
             raise ValueError('Original open curved network recovery was not exercised')
+        complete_plan=page_evidence.get('complete_curve_scope_plan',{})
+        complete_review=page_evidence.get('complete_curve_scope_review',{})
+        if (not complete_plan.get('analysis_complete') or complete_plan.get('anchor_count')!=1
+                or not complete_review.get('analysis_complete') or len(complete_review.get('records',[]))!=1
+                or not complete_review['complete_anchor_coverage'][0]['eligible_subpaths_retained']
+                or complete_review['physical_role_inferred_from_style'] is not False):
+            raise ValueError('Complete long curved source scope recovery was not exercised')
         names=[r for r in page_evidence['outline_semantics']['labels']
             if r['status']=='qualified_building_name_withheld']
         if (len(names)!=1 or names[0]['name_context']['name_text']!='COURTYARD TAVERN'
@@ -250,6 +264,7 @@ def run(output):
         'whole_native_annotation_context_verified':True,
         'original_closed_curve_review_verified':True,
         'open_curve_network_recovery_verified':True,
+        'complete_long_curve_scope_verified':True,
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],
