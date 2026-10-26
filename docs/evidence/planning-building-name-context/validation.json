@@ -23,25 +23,25 @@
   "legacy_saved_layout_reload_passed": true,
   "local_tests": {
     "managed_desktop": {
-      "log_sha256": "9f95ac7691da77e03e6a4af61a52d85834c90a34258776a83513af6035d89593",
-      "seconds": 11.424,
+      "log_sha256": "59005eb4ecf6b239d13b763442015622f3848f9bcf4c0f0131ed986d7567a914",
+      "seconds": 43.332,
       "skips": 1,
       "status": "passed",
       "tests": 3
     },
     "new_regressions": {
-      "log_sha256": "d785ea62d060eec7d15d9977d583bec121752c071f824b070a151dc956c346f7",
-      "seconds": 3.851,
+      "log_sha256": "1c0a0c8f212956e237367a71845b85afd0c8fffa38b5214ecec427cd8f1fbfdd",
+      "seconds": 2.466,
       "skips": 0,
       "status": "passed",
-      "tests": 11
+      "tests": 12
     },
     "planning_regressions": {
-      "log_sha256": "7709b37719e2da4270d0d2dc1f51c533178f2bd2701a62775225f9f55fd83b0b",
-      "seconds": 79.398,
+      "log_sha256": "dc5fab0af79f257e2d50695b7ef4d3d7aa04b006340fc02f6de72178dfed2e3a",
+      "seconds": 171.644,
       "skips": 0,
       "status": "passed",
-      "tests": 311
+      "tests": 312
     }
   },
   "minecraft_import_or_gameplay_tested": false,
@@ -634,7 +634,7 @@
     },
     "voxel_mapper.planning_area_layout": {
       "basis": "module_file_bytes",
-      "sha256": "043890cfe843867498df0195ffa2efeb48645440373cd5c20aa08bf99a437493"
+      "sha256": "d3dd11fec0840b0cb722818e98ab584a1c958619d65a4e3efc40a3df1013d8a7"
     },
     "voxel_mapper.planning_area_scale": {
       "basis": "module_file_bytes",
@@ -658,7 +658,7 @@
     },
     "voxel_mapper.planning_outline_semantics": {
       "basis": "module_file_bytes",
-      "sha256": "aa7352a2c4c15cefdf8950837c5a36867221f167a5aeea93fe4a38d39a7da1f3"
+      "sha256": "9d81472766922b568fb8242bdf38d854e5f7d105f6cc0b8b47667a3a1beda40a"
     },
     "voxel_mapper.planning_section_correspondence": {
       "basis": "module_file_bytes",
@@ -699,7 +699,7 @@
   "source_layout_sha256": "125f61d6b87386aff3b7e6672bc88ef7fb9d90d6792a9afbf90ca6bf6f57befe",
   "source_name_context_sha256": "e0c05e2a983f61763904edc5fbf0669c08734606c4d1d20edc124f3271d78ceb",
   "source_name_label_id": "099ee801a8a578dadd27d8f944eb30998823bc23568bee221cb12485aa8f7650",
-  "source_report_sha256": "8547bedb507f7ab07c14e792437da97a4ded74607d63f55fa40f73c64a02b56f",
+  "source_report_sha256": "d23f54048ca77fb5498764ca8dd30e6f1ef8fb9095ca0b1101072fe566fa0770",
   "surveyed_registration": false,
   "training_labels_generated": 0,
   "unseen_accuracy_benchmark": false,

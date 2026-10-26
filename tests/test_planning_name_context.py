@@ -15,16 +15,16 @@ from test_planning_area_world_preview import source_layout
 
 def fixture(*, suffix='TAVERN', building=True, material=True, hidden=False,
             position=(160,142), fontsize=10, fontname='helv', color=(0,0,0),
-            duplicate=False, rotation=0):
+            duplicate=False, rotation=0, head='COURTYARD', building_text='building'):
     doc=pymupdf.open();page=doc.new_page(width=500,height=350)
     page.draw_rect((100,80,350,230))
-    page.insert_text((150,130),'COURTYARD',fontsize=10)
+    page.insert_text((150,130),head,fontsize=10)
     if suffix:
         page.insert_text(position,suffix,fontsize=fontsize,fontname=fontname,color=color)
         if duplicate:page.insert_text(position,'INN',fontsize=fontsize)
     if hidden:page.draw_rect((155,131,220,145),fill=(1,1,1),color=None)
     if material:page.insert_text((150,170),'brick',fontsize=10)
-    if building:page.insert_text((150,190),'building',fontsize=10)
+    if building:page.insert_text((150,190),building_text,fontsize=10)
     page.set_rotation(rotation)
     sha=hashlib.sha256(doc.tobytes()).hexdigest()
     _,_,report=ordinary_surfaces.page_candidates(page,sha,1)
@@ -78,6 +78,28 @@ class PlanningNameContextTests(unittest.TestCase):
         self.assertEqual(result['candidates'],[])
         self.assertEqual(result['boundary_decisions'][0]['reason'],
             'building_name_context_requires_interpretation')
+
+    def test_qualified_name_retains_printed_states_and_cannot_bypass_conflicts(self):
+        for building_text,expected in (('Proposed Building','mixed_printed_states_withheld'),
+                ('building','visible_label_enclosure_hint')):
+            associations,result=self.analyze(head='EXISTING COURTYARD',
+                position=(150,142),building_text=building_text)
+            self.assertEqual(associations['summary']['qualified_name_labels'],1)
+            outline=associations['outlines'][0]
+            self.assertEqual(outline['status'],expected)
+            self.assertIn('existing',outline['printed_states'])
+            self.assertEqual(result['candidates'],[])
+        doc,page,sha,inventory=fixture(head='EXISTING COURTYARD',position=(150,142))
+        self.addCleanup(doc.close);associations=semantics.page_candidates(page,sha,1,inventory)
+        association=associations['outlines'][0]
+        labels=[r for r in associations['labels'] if r['id'] in association['label_ids']]
+        evidence={'kind':'coarse_building','source_outline':inventory['records'][0],
+            'semantic_evidence':{'association':association,'labels':labels}}
+        self.assertEqual(planning_area_layout._semantics(evidence,sha,1)[2],{'existing'})
+        # A re-signed label cannot use name exclusion to discard a printed state.
+        label=labels[0];label['text']='Proposed Building';label['claim']=semantics.claim(label['text'])
+        with self.assertRaisesRegex(ValueError,'Conflicting source'):
+            planning_area_layout._semantics(evidence,sha,1)
 
     def test_hidden_or_ambiguous_suffix_does_not_remove_real_role_conflict(self):
         for kwargs in ({'hidden':True},{'duplicate':True}):

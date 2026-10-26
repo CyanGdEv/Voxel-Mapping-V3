@@ -213,6 +213,10 @@ def _semantics(evidence, sha, number):
                     or not native.contains(_polygon(label['geometry_pdf_native']))
                     or not native.contains(_polygon(suffix['geometry_pdf_native']))):
                 raise ValueError('Same-enclosure visible source name context required')
+            state=label['claim'].get('printed_state','unspecified')
+            if state!='unspecified':states.add('proposed' if state=='new' else state)
+        if len(states)>1:
+            raise ValueError('Conflicting source roles or drawing states')
         if (role != 'building' or association.get('status') != 'visible_label_enclosure_hint'
                 or association.get('source_role_hint') != 'building'
                 or association.get('candidate_id') != record['candidate_id']

@@ -38,6 +38,10 @@ source-bound and inside the same enclosure. Surface decisions also retain the
 actual semantic context, including all conflicting label texts and roles, so
 material-only diagnostic lists no longer conceal the reason for a role hold.
 
+Printed existing/proposed/new states on excluded name fragments remain in the
+association and saved layout's state calculation. A qualified name cannot
+discard an existing/proposed conflict or silently replace it with a caption state.
+
 The adapter adds lower-only limits of 128 candidate suffix runs and 64,000
 name-context comparisons. Existing label, geometry, containment and output
 limits remain unchanged. Exhaustion or cancellation cannot publish partial
@@ -69,10 +73,10 @@ cells. This is previously inspected development data, not an unseen accuracy
 benchmark. No accepted park geometry, reviewed training labels or neural updates
 are created.
 
-Eleven regressions cover complementary role/material labels, multiline and
+Twelve regressions cover complementary role/material labels, multiline and
 separate inline text shows, names without building labels, hidden and ambiguous
 suffixes, typography and scope mismatches, nested enclosures, quota exhaustion,
-rotation/replay/cancellation and tampered saved witnesses. The managed/frozen
+rotation/replay/cancellation, preserved printed states and tampered saved witnesses. The managed/frozen
 desktop smoke now starts with a synthetic split building name, discovers the
 same two building/three paving proposals, and retains both the small and complete
 tiled export/restart checks.

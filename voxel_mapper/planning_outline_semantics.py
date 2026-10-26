@@ -228,7 +228,8 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
     excluded_rows={r['id']:r for r in result['labels'] if r['status']=='qualified_building_name_withheld'}
     for identifier,labels in sorted(bound.items()):
         roles={r['claim']['role'] for r in labels};primary=roles-{'surface'}
-        states={r['claim']['printed_state'] for r in labels}-{'unspecified'}
+        state_labels=labels+[excluded_rows[i] for i in excluded.get(identifier,[])]
+        states={r['claim']['printed_state'] for r in state_labels}-{'unspecified'}
         status=('annotation_context_withheld' if 'annotation' in roles else
                 'competing_label_context_withheld' if identifier in competing else
                 'conflicting_source_roles_withheld' if len(primary)>1 else
@@ -240,7 +241,7 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
             'status':status,'source_role_hint':next(iter(primary)) if len(primary)==1 else 'surface' if not primary else None,
             'printed_roles':sorted(roles),'label_ids':[r['id'] for r in labels],
             'label_texts':[r['text'] for r in labels],
-            'printed_states':sorted({r['claim']['printed_state'] for r in labels}),
+            'printed_states':sorted({r['claim']['printed_state'] for r in state_labels}),
             'component_label_count':sum(r['claim']['scope']=='component' for r in labels),
             'competing_label_ids':competing.get(identifier,[]),
             'excluded_name_label_ids':excluded.get(identifier,[]),
