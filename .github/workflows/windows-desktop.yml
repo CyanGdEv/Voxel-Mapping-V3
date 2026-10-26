@@ -61,6 +61,7 @@ on:
       - 'voxel_mapper/courtyard_plan_expansion.py'
       - 'voxel_mapper/planning_expansion_sources.py'
       - 'voxel_mapper/planning_geo_preview.py'
+      - 'voxel_mapper/planning_surface_audit.py'
       - 'voxel_mapper/data/wicker-map-alignment.json'
       - 'voxel_mapper/data/alton-mutiny-katanga-plan-review.json'
       - 'voxel_mapper/data/mutiny-courtyard-expansion.json'
@@ -118,6 +119,7 @@ on:
       - 'tests/test_courtyard_plan_expansion.py'
       - 'tests/test_planning_expansion_sources.py'
       - 'tests/test_planning_geo_preview.py'
+      - 'tests/test_planning_surface_audit.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -243,6 +245,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Mutiny and Katanga source handoff failed' }
           python -m unittest discover -s tests -p 'test_planning_geo_preview.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Wicker OSM and terrain alignment failed' }
+          python -m unittest discover -s tests -p 'test_planning_surface_audit.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Wicker finished-floor and path review failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v
