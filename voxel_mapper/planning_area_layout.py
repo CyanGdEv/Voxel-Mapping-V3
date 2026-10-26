@@ -159,7 +159,8 @@ def _semantics(evidence, sha, number):
         raise ValueError('Bounded visible source labels required')
     roles = set(); states = set(); materials = []
     for label in labels:
-        if (label.get('status')=='qualified_building_name_withheld'
+        if (label.get('status') in ('qualified_building_name_withheld',planning_outline_semantics.ANNOTATION_WITHHELD)
+                or label.get('annotation_context') is not None
                 or label.get('glyph_screen', {}).get('status') != 'raster_consistent_candidate'
                 or not native.contains(_polygon(label['geometry_pdf_native']))):
             raise ValueError('Visible whole source label inside original boundary required')
@@ -191,6 +192,8 @@ def _semantics(evidence, sha, number):
     role = next(iter(primary)) if primary else 'surface'
     if kind in ('coarse_building', 'fine_building'):
         association = semantic['association']
+        if association.get('withheld_annotation_fragments'):
+            raise ValueError('Annotation fragments cannot authorize a source building')
         excluded=association.get('excluded_name_contexts',[])
         if not isinstance(excluded,list) or len(excluded)>128 or any(not isinstance(r,dict) for r in excluded):
             raise ValueError('Bounded excluded source name contexts required')

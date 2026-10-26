@@ -63,6 +63,14 @@ def make_source(path, *, wide=False):
                     page.insert_text((position[0],position[1]+offset),text,fontsize=10,color=colour)
             else:
                 page.insert_text((origin[0],origin[1]+offset),label,fontsize=10,color=colour)
+        # A closed enclosure containing a split instruction and a separate
+        # material word must not turn into an extra path or paving feature.
+        page.draw_rect((850,80+offset,1200,180+offset))
+        x=880
+        for text in ('Path',' lowered',' and',' ground',' graded'):
+            page.insert_text((x,110+offset),text,fontsize=10,color=(.7,0,0))
+            x+=pymupdf.get_text_length(text,fontsize=10)
+        page.insert_text((880,160+offset),'stone',fontsize=10,color=(.7,0,0))
         page.insert_text((60,360+offset),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
         page.insert_text((80,390+offset),'1/200 @ A1',fontsize=12)
         page.insert_text((80,405+offset),'1/400 @ A3',fontsize=12)
@@ -103,6 +111,13 @@ def run(output):
                 or names[0]['name_context']['suffix']['glyph_screen']['status']!='raster_consistent_candidate'):
             raise ValueError('Original building-name qualifier was not exercised')
         surface_evidence=page_evidence['surface_footprints']
+        notes=[r for r in page_evidence['outline_semantics']['labels']
+            if r['status']=='annotation_fragment_withheld']
+        if (len(notes)!=1 or notes[0]['annotation_context']['text']!='Path lowered and ground graded'
+                or notes[0]['annotation_context']['all_parts_visible'] is not True
+                or not any(r['reason']=='annotation_fragment_context_withheld'
+                           for r in surface_evidence['boundary_decisions'])):
+            raise ValueError('Whole native annotation withholding was not exercised')
         regional=surface_evidence['extraction']
         if (regional.get('strategy')!='per_label_native_windows'
                 or regional.get('region_schedule')!='coalesced_shared_native_union'
@@ -212,6 +227,7 @@ def run(output):
         'original_paper_scale_verified':True,
         'original_text_transform_verified':True,
         'original_building_name_context_verified':True,
+        'whole_native_annotation_context_verified':True,
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],

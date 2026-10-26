@@ -1,0 +1,288 @@
+{
+  "accepted_park_geometry": 0,
+  "all_source_and_output_pins_verified": true,
+  "contexts": [
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "Paving",
+      "parts": 4,
+      "source_label_id": "19b41e7d002a26d0155c6c280f78d3042d73e2dc7b711c09c2042c414c69c4d2",
+      "text": "Existing Paving with levels"
+    },
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "Paving",
+      "parts": 4,
+      "source_label_id": "c47503eddebb8d4417843595fef37c43ca2023e528b773e1ae7779f78a86dcaf",
+      "text": "New Paving with levels"
+    },
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "Path",
+      "parts": 3,
+      "source_label_id": "2dc5c296dd3f5804d8e106fac5838a8a7bc9c5b0b98b76eadb9ac19f4cb7f702",
+      "text": "showing Woodland Path"
+    },
+    {
+      "all_parts_visible": false,
+      "ambiguous_adjacency": true,
+      "fragment_text": "path",
+      "parts": 12,
+      "source_label_id": "1c550d329d3fe9d1f7a28bfb6d667164ac342d37523cb8d4d159d312092004c6",
+      "text": "Rev B  31 .1 .17  Woodland path added , "
+    },
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "Path",
+      "parts": 12,
+      "source_label_id": "0ba1e33871dbede75b0686dc89925913aa9c5f82ecef22b2f9d1e21157114bdd",
+      "text": "Path lowered and ground graded down at 1:3 to reveal Deer Wall"
+    },
+    {
+      "all_parts_visible": false,
+      "ambiguous_adjacency": false,
+      "fragment_text": "ground",
+      "parts": 6,
+      "source_label_id": "76d96e6a9f419a31240ba874a7a3e6197d960f6ee021c91688510dd1d4d25448",
+      "text": "New mainly indigenous ground cover "
+    },
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "Ground",
+      "parts": 7,
+      "source_label_id": "3d7dc2d6486631b5aeee546997bd85dfad7d649aaf9818d922b5fe0853665864",
+      "text": "Ground graded down at 1:3 to queueline"
+    },
+    {
+      "all_parts_visible": true,
+      "ambiguous_adjacency": false,
+      "fragment_text": "ground",
+      "parts": 12,
+      "source_label_id": "806920ac18ca77a566773ddeb9cfe42c1950a03d6ddd45e3bb279e247a73fa57",
+      "text": "Path lowered and ground graded down at 1:3 to reveal Deer Wall"
+    }
+  ],
+  "eligible_surface_labels": 37,
+  "independent_original_text_and_glyph_parts_verified": 48,
+  "layout": {
+    "nominal_area_boundary_contacts": 1,
+    "nominal_area_building_candidates": 4,
+    "nominal_area_gap_pairs": 14,
+    "nominal_area_layout_candidates": 6,
+    "nominal_area_overlap_pairs": 0,
+    "nominal_area_path_plaza_candidates": 0,
+    "registered_area_layouts": 0
+  },
+  "local_tests": {
+    "managed_desktop": {
+      "log_sha256": "33ed9cc114585e21c9c40e22e616d54aeea428aee1c6e3cb8f4c51e4ab81a5b0",
+      "seconds": 26.258,
+      "skips": 1,
+      "status": "passed",
+      "tests": 3
+    },
+    "new_regressions": {
+      "log_sha256": "76f527967f4a89f953e10b72f0b8a93c4c8d2992baaddd3a0a5c471f1e7c8692",
+      "seconds": 6.092,
+      "skips": 0,
+      "status": "passed",
+      "tests": 11
+    },
+    "planning_regressions": {
+      "log_sha256": "cb99ce3d26e6741777179dd69331b898fbf86820d0a066f776b41b3e7b58eef3",
+      "seconds": 118.038,
+      "skips": 0,
+      "status": "passed",
+      "tests": 322
+    }
+  },
+  "minecraft_import_or_gameplay_tested": false,
+  "model_weights_updated": false,
+  "previous_saved_layout_reload_passed": true,
+  "previous_six_proposals_geometry_roles_and_finishes_preserved": true,
+  "reconstructed_building_heights": 0,
+  "recovery": {
+    "limits": {
+      "max_annotation_characters": 512,
+      "max_annotation_checks": 64000,
+      "max_annotation_parts": 32,
+      "max_annotation_runs": 20000,
+      "max_association_checks": 64000,
+      "max_native_candidates": 10000,
+      "max_native_points": 200000,
+      "max_outlines": 500,
+      "max_output_bytes": 8000000,
+      "max_region_merge_checks": 65536,
+      "max_regions": 32,
+      "max_scan_work_paths": 3200000,
+      "max_surface_labels": 256
+    },
+    "native_candidates": 7293,
+    "native_points": 15422,
+    "regions": 11,
+    "scan_work": 1029557
+  },
+  "remaining_unbound_surface_labels": 33,
+  "runtime_implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "a9be3075a4334bd615c011d7054fb5083c1783832e0a27ed6625e81220408772"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "d52e22d301e743c07b9942bbb819e314deb007b59e1a09991fbea067d9163281"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "87c57c355f60d39dbcd203d7690472601cab7d6665ad4d3c49394ef8ed5cf6ba"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "731ea0f42a3a141825cd85f6ac206c01852cef0da20ec26f2943e84e69a2ae6f"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "20a286cca905387cd1f8af088ed1991ffecad4e50ea2cce7f0abf41037cf444a"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "ec213b94f20a20168027bcd34c525a5ff244c842b0ef19963946555878bc5e12"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "b549e8870c5d14c930561a0bd60216a5c24e6d3e930a144e647f4935ca103785"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.source_text_transforms": {
+      "basis": "module_file_bytes",
+      "sha256": "6cd94779061b7bc9e075027a8ba81daa803e06b02973808dd0dea55b3728b367"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "semantic_annotation_fragments_withheld": 9,
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_exposure": "previously_inspected_development",
+  "source_layout_sha256": "d71b556288e8ece7b31d77fb4a0f0c531caeed2bf8f18e06182b67c73d2e1367",
+  "source_report_sha256": "66cffefd2bd2c086e6bb8ab07c4b793078e9f911b8d4e275280634eee54823f0",
+  "surface_annotation_fragments_withheld": 8,
+  "surveyed_registration": false,
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "verified_paths": false,
+  "version": "planning-annotation-context-development-validation-v1",
+  "world": {
+    "archive": {
+      "chunks_reopened": 104,
+      "crc_verified": true,
+      "packaged_files_match_verified_world": true,
+      "saved_world_reopened": true,
+      "spawn_rechecked": true,
+      "verified_files": 11
+    },
+    "bytes": 54573,
+    "chunks": 104,
+    "display_cells": 332,
+    "independent_foundation_cells": 67620,
+    "independent_headroom_cells": 45080,
+    "material_cells": 8,
+    "platform_cells": 22540,
+    "sections": 2,
+    "sha256": "eca76085a99c5e9335476ee02d4cca7014f429617bc764e8610eb2b3f48588a5",
+    "spawn": {
+      "headroom_air_blocks": 2,
+      "metadata_verified": true,
+      "player_movement_verified": false,
+      "spawn": [
+        7,
+        65,
+        -35
+      ],
+      "support": "grass_block",
+      "verified": true
+    },
+    "write_attempts": 90492
+  }
+}

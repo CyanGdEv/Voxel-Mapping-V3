@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Whole native annotation context](docs/planning-annotation-context.md) prevents split instructions, titles and material notes from becoming feature labels. Wicker excludes eight such fragments while retaining all four building-footprint and two material-surface proposals. Genuine path boundaries and building heights remain unresolved.
+
 [Original building-name context](docs/planning-building-name-context.md) recognises the split “COURTYARD TAVERN” annotation without treating its first word as a plaza. Wicker now retains four building-footprint and two material-surface proposals. Heights, roofs and a verified path network remain unfinished.
 
 [Complete tiled plan previews](docs/tiled-area-world-previews.md) export the full 196×115 nominal metre Wicker layout as one Bedrock world, preserving all five proposals and their spacing. Saved ground, feature cells, headroom and archive checks pass within the unchanged total write budget. This is a flat inspection map; detailed buildings and verified paths remain unfinished.
