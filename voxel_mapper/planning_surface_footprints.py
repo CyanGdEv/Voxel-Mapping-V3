@@ -26,7 +26,8 @@ LIMITS = {'max_surface_labels': 256, 'max_native_candidates': 10000,
           'max_native_points': 200000, 'max_outlines': 500,
           'max_association_checks': 64000, 'max_output_bytes': 8000000,
           'max_regions':32, 'max_scan_work_paths':3200000,
-          'max_region_merge_checks':65536}
+          'max_region_merge_checks':65536,**planning_outline_semantics.ANNOTATION_LIMITS}
+INELIGIBLE_LABELS={'qualified_building_name_withheld',planning_outline_semantics.ANNOTATION_WITHHELD}
 ROLES = {'path', 'plaza', 'surface'}
 
 
@@ -239,7 +240,7 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
             result.update(status='surface_boundaries_withheld', analysis_complete=False,
                           reason=reason, candidates=[])
         visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate'
-                   and r.get('status')!='qualified_building_name_withheld']
+                   and r.get('status') not in INELIGIBLE_LABELS]
         resolved = {r['id'] for c in result['candidates'] for r in c['labels']}
         result.update(surface_labels=len(labels), visible_surface_labels=len(visible),
                       association_checks=checks)
@@ -268,7 +269,10 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
     if len(raw) > 10000 or sum(len(r['chars']) for r in raw) > 500000:
         return finish('surface_text_budget_exceeded')
     inverse = native_inverse(page)
-    for run in ordinary_surfaces.label_runs(raw):
+    runs=ordinary_surfaces.label_runs(raw)
+    try:annotations=planning_outline_semantics.AnnotationContexts(page,runs,limits,check)
+    except ValueError as error:return finish(str(error))
+    for run in runs:
         check()
         text = ''.join(chr(c[0]) for c in run['chars']).strip()
         material = material_label(text)
@@ -286,9 +290,15 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
             'trace_indices': run['trace_indices'], 'character_indices': run['character_indices'],
             'geometry_pdf_native': {'type': 'Polygon', 'coordinates': [list(geometry.exterior.coords)]},
             'glyph_screen': screen})
+        if screen['status']=='raster_consistent_candidate':
+            try:context=annotations.review(run)
+            except ValueError as error:return finish(str(error))
+            if context:labels[-1].update(status=planning_outline_semantics.ANNOTATION_WITHHELD,
+                                        annotation_context=context)
         seen.add(key)
+    result['annotation_context_checks']=annotations.checks
     visible = [r for r in labels if r['glyph_screen']['status'] == 'raster_consistent_candidate'
-               and r.get('status')!='qualified_building_name_withheld']
+               and r.get('status') not in INELIGIBLE_LABELS]
     if not visible:
         return finish()
     coarse_index = STRtree(coarse_geometries)
@@ -367,7 +377,16 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
     qualified={r['id']:r for r in fine['labels'] if r['status']=='qualified_building_name_withheld'}
     named_boundaries={r['name_context']['candidate_id'] for r in qualified.values()}
     index = STRtree(geometries); bound = {}; competing = set()
+    annotation_boundaries={}
     try:
+        blocked={r['id']:r for r in labels+fine['labels']
+                 if r.get('status')==planning_outline_semantics.ANNOTATION_WITHHELD}
+        for label in blocked.values():
+            polygon=shape(label['geometry_pdf_native'])
+            for position in index.query(polygon,predicate='intersects'):
+                charge();position=int(position)
+                if geometries[position].contains(polygon):
+                    annotation_boundaries.setdefault(fine_records[position]['candidate_id'],[]).append(label)
         for label in visible:
             if label['id'] in qualified:
                 label.update(status='qualified_building_name_withheld',
@@ -398,6 +417,7 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         semantic = semantic_outlines.get(identifier)
         role = semantic.get('source_role_hint') if semantic else 'surface'
         reason = ('competing_label_context_withheld' if identifier in competing else
+                  'annotation_fragment_context_withheld' if identifier in annotation_boundaries else
                   'coarse_competing_enclosures_require_interpretation' if any(len(r['coarse_candidate_ids']) > 1 for r in support) else
                   'building_name_context_requires_interpretation' if identifier in named_boundaries else
                   semantic['status'] if semantic and semantic['status'] != 'visible_label_enclosure_hint' else
@@ -409,6 +429,7 @@ def page_candidates(page, sha, number, inventory, associations, *, options=None,
         decision = {'candidate_id': identifier, 'label_ids': [r['id'] for r in support],
                     'status': 'withheld', 'reason': reason,
                     'semantic_context': semantic,
+                    'annotation_fragments':annotation_boundaries.get(identifier,[]),
                     'name_contexts':[r['name_context'] for r in qualified.values()
                                      if r['name_context']['candidate_id']==identifier]}
         result['boundary_decisions'].append(decision)

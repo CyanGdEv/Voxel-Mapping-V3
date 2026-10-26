@@ -1,5 +1,9 @@
 # Building names split across planning annotations
 
+The later [whole annotation context stage](planning-annotation-context.md) also
+withholds split instructions and titles. It retains the six proposals recorded
+below while reducing eligible surface labels to 37 and unbound labels to 33.
+
 The Wicker courtyard hold was caused by the label **COURTYARD TAVERN** being
 split into separate native text shows. The literal parser read `COURTYARD` as
 a plaza, while a separate visible `building` label described the same enclosure.
