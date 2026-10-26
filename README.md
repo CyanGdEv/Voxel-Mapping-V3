@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Current geometry world](docs/planning-geometry-world.md) exports recovered paving with reference-style rock edging and oak fences on paths narrower than four blocks. It is a flat Bedrock prototype with building footprint markers; surveyed terrain and detailed buildings remain unresolved.
+
 [Gap boundary defaults](docs/planning-gap-boundaries.md) apply the requested rule: enclosed paving gaps receive assumed rock edging unless explicit claims override it. Planting interiors stay intact; building interfaces are separated, and assumptions do not become training truth or generated world blocks.
 
 [Existing and proposed paving](docs/planning-existing-paving.md) now recovers solid fills and original compound PDF fill rules as well as hatches. Wicker's review covers 24 existing and 19 proposed paving fills, about 5.25 times the previous blue area, while withholding same-colour annotation backplates. Physical visibility and registration still block world promotion.

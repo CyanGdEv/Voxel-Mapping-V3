@@ -1,0 +1,28 @@
+{
+  "version": "user-rock-reference-v1",
+  "origin": "user_reference_image",
+  "description": "Low irregular stone and cobblestone edging, with stone-brick stairs and slabs and occasional two-block peaks",
+  "full_blocks": [
+    "stone",
+    "stone_bricks",
+    "cobblestone"
+  ],
+  "slabs": [
+    "stone_slab",
+    "stone_brick_slab"
+  ],
+  "stairs": [
+    "stone_brick_stairs"
+  ],
+  "posts": [
+    "cobblestone_wall"
+  ],
+  "minimum_height_blocks": 0.5,
+  "maximum_height_blocks": 2,
+  "gap_side_centre_distance_m": 0.85,
+  "source_measurement": false,
+  "narrow_path_width_blocks": 4,
+  "narrow_path_boundary": "oak_fence",
+  "narrow_path_rule_origin": "user_instruction",
+  "max_fence_connector_distance_m": 1.5
+}

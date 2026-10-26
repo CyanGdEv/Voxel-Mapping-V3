@@ -23,7 +23,7 @@ JOB_KINDS = (
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
     ('Planning collection / automatic follow-up batches', 'planning_collection'),
     ('Planning models / Bedrock preview worlds', 'planning_world_preview'),
-    ('Planning area / flat layout world', 'planning_area_world_preview'),
+    ('Planning area / geometry world', 'planning_area_world_preview'),
     ('Import reviewed training feedback', 'import_feedback'),
     ('Train neural candidate ranker', 'train_ranker'),
     ('Train study component recognizer', 'train_study_components'),
@@ -649,7 +649,8 @@ class DesktopWindow:
                 detail=('Measured plan layout exported to a local Bedrock preview. Use Open world for the download.\n'
                     'Paths, plazas and building footprint markers retain their relative positions on the source plan.\n'
                     'The display uses flat ground. Building heights, entrances, terrain levels and park placement remain unresolved.\n'
-                    'Paving grid connections are checked in the saved world; physical accessibility remains unassessed.\n\nAdvanced receipt:\n'+detail)
+                    'Current paving and reference-style rock boundaries are included when their source evidence is available.\n'
+                    'Saved blocks are checked; physical accessibility remains unassessed.\n\nAdvanced receipt:\n'+detail)
             if row.get('kind')=='train_study_components' and row.get('result'):
                 detail=('Exploratory study component recognizer trained from source drawing crops.\n'
                     'Inspect report.json for evaluation on separate source groups and model.json for the saved research checkpoint.\n'
