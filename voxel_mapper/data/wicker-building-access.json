@@ -1,0 +1,255 @@
+{
+  "version": "wicker-building-access-review-v1",
+  "floor_sheet": {
+    "source_sha256": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3",
+    "render_width_pixels": 1888,
+    "render_size_pixels": [
+      1888,
+      1334
+    ],
+    "render_samples_sha256": "619a67d8e7a4dc46338251cf22a382136fc335fa1b6d98fbc90297daed998b24",
+    "outlines_pixels": {
+      "maintenance_outer_walls": [
+        [
+          685,
+          273
+        ],
+        [
+          1139,
+          273
+        ],
+        [
+          1139,
+          522
+        ],
+        [
+          685,
+          522
+        ]
+      ],
+      "station_outer_walls": [
+        [
+          811,
+          533
+        ],
+        [
+          1170,
+          533
+        ],
+        [
+          1170,
+          710
+        ],
+        [
+          811,
+          710
+        ]
+      ],
+      "communications_outer_walls": [
+        [
+          1149,
+          269
+        ],
+        [
+          1265,
+          269
+        ],
+        [
+          1265,
+          359
+        ],
+        [
+          1149,
+          359
+        ]
+      ]
+    },
+    "manual_endpoint_bound_pixels": 2,
+    "scale_denominator": 100,
+    "line_role_basis": "visual review of roof hatching / labelled architectural floor walls; illustrative internal layout; proposed only"
+  },
+  "roof_sheet": {
+    "source_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "render_width_pixels": 1888,
+    "render_size_pixels": [
+      1888,
+      1334
+    ],
+    "render_samples_sha256": "cbb6021ce7c64e2276e92c3dba24734ab8afa3ebeaf499c64cbf5d15e3db9d70",
+    "outlines_pixels": {
+      "shop_main_roof": [
+        [
+          460,
+          594
+        ],
+        [
+          663,
+          798
+        ],
+        [
+          396,
+          1064
+        ],
+        [
+          193,
+          861
+        ]
+      ],
+      "maintenance_main_roof": [
+        [
+          685,
+          221
+        ],
+        [
+          1201,
+          221
+        ],
+        [
+          1201,
+          512
+        ],
+        [
+          685,
+          512
+        ]
+      ],
+      "station_main_roof": [
+        [
+          827,
+          511
+        ],
+        [
+          1230,
+          511
+        ],
+        [
+          1230,
+          718
+        ],
+        [
+          827,
+          718
+        ]
+      ],
+      "communications_roof": [
+        [
+          1202,
+          217
+        ],
+        [
+          1332,
+          217
+        ],
+        [
+          1332,
+          333
+        ],
+        [
+          1202,
+          333
+        ]
+      ]
+    },
+    "manual_endpoint_bound_pixels": 2,
+    "scale_denominator": 100,
+    "line_role_basis": "visual review of roof hatching / labelled architectural floor walls; illustrative internal layout; proposed only"
+  },
+  "review_input_sha256": {
+    "wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "wicker-shop-local-floor.json": "41ceaa5c4571c58261b1bcb9612998621105a1eacbeecf3098ad6fbe4ef1aee4"
+  },
+  "features": [
+    {
+      "id": "station-west-upper-flight",
+      "building": "Station",
+      "role": "stair_flight",
+      "pixels": [
+        [
+          719,
+          557
+        ],
+        [
+          775,
+          557
+        ],
+        [
+          775,
+          581
+        ],
+        [
+          719,
+          581
+        ]
+      ]
+    },
+    {
+      "id": "station-west-lower-flight",
+      "building": "Station",
+      "role": "stair_flight",
+      "pixels": [
+        [
+          719,
+          664
+        ],
+        [
+          775,
+          664
+        ],
+        [
+          775,
+          689
+        ],
+        [
+          719,
+          689
+        ]
+      ]
+    },
+    {
+      "id": "station-south-double-door",
+      "building": "Station",
+      "role": "door_opening",
+      "pixels": [
+        [
+          953,
+          708
+        ],
+        [
+          983,
+          708
+        ]
+      ]
+    },
+    {
+      "id": "station-north-service-door",
+      "building": "Station",
+      "role": "door_opening",
+      "pixels": [
+        [
+          1108,
+          535
+        ],
+        [
+          1130,
+          535
+        ]
+      ]
+    },
+    {
+      "id": "maintenance-south-door",
+      "building": "Maintenance",
+      "role": "door_opening",
+      "pixels": [
+        [
+          1108,
+          520
+        ],
+        [
+          1130,
+          520
+        ]
+      ]
+    }
+  ],
+  "interpretation": "Manual proposed-plan traces, +/-2 rendered pixels per endpoint. Door swings and stair outlines are visible; exact threshold, risers, landing extents and as-built identity are unverified. Floor-plan internal layout is illustrative."
+}
