@@ -54,7 +54,8 @@ def subpaths(path,matrix,options):
         return (p.x,p.y)
     def append(points):
         nonlocal current,count
-        if current and math.dist(current[-1],points[0])>1e-5:flush()
+        join_epsilon=0 if options.get('closed_curved_primitives_only') else 1e-5
+        if current and math.dist(current[-1],points[0])>join_epsilon:flush()
         if not current:current=[points[0]];count+=1
         current.extend(points[1:]);count+=len(points)-1
         if count>options['max_points']:raise ValueError('Paint-group flattened point budget exceeded')
@@ -81,7 +82,7 @@ def subpaths(path,matrix,options):
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only','closed_curved_primitives_only'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
     if type(options['regional_fallback']) is not bool:raise ValueError('Boolean regional fallback required')
     for key in ('regional_columns','regional_rows'):
@@ -112,6 +113,10 @@ def validated_options(overrides):
         raise ValueError('Boolean isolated stroke-subpath option required')
     if 'source_face_primitives_only' in options and type(options['source_face_primitives_only']) is not bool:
         raise ValueError('Boolean source-face primitive filter required')
+    if 'closed_curved_primitives_only' in options and type(options['closed_curved_primitives_only']) is not bool:
+        raise ValueError('Boolean closed-curve primitive filter required')
+    if options.get('closed_curved_primitives_only') and options.get('source_face_primitives_only'):
+        raise ValueError('Exclusive primitive filters required')
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
     minimum=options.get('min_line_length_points',12)
@@ -155,6 +160,8 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                 if not clip.equals(box(*clip.bounds)):raise ValueError('Nonrectangular clip')
             except (ValueError,KeyError,TypeError):clip=None
             clips.append((level,clip));continue
+        if options.get('closed_curved_primitives_only') and not any(i[0]=='c' for i in path.get('items',[])):
+            rejections['noncurved_paint_excluded_from_curve_inventory']+=1;continue
         memberships=[]
         if region is not None or windows is not None:
             # Native path bounds enclose the complete primitive, including curves.
@@ -198,6 +205,8 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                     else:geometries.append((LineString(p),index))
             else:raise ValueError('Unsupported paint type')
             for geometry,subpath_index in geometries:
+                if options.get('closed_curved_primitives_only') and geometry.geom_type!='Polygon':
+                    rejections['open_or_multipart_curve_requires_interpretation']+=1;continue
                 try:
                     if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
                     if region is not None and not region.covers(geometry):raise ValueError('Complete geometry crosses region boundary')
@@ -205,6 +214,10 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                         raise ValueError('Complete geometry crosses source window boundary')
                     if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
                     if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
+                    if options.get('closed_curved_primitives_only'):
+                        envelope=geometry.buffer(approximation['chord_error_bound_pdf_points'])
+                        if not frame.covers(envelope) or any(not c[1].covers(envelope) for c in clips):
+                            raise ValueError('Curve uncertainty crosses crop or clip boundary')
                     if geometry.geom_type=='LineString':
                         if geometry.length<options.get('min_line_length_points',12):raise ValueError('Short line/symbol candidate')
                         if not geometry.is_simple:raise ValueError('Self-crossing line needs review')

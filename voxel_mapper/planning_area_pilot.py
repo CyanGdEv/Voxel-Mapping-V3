@@ -27,6 +27,7 @@ from . import planning_section_cuts, planning_design_dimensions, planning_design
 from . import planning_surface_footprints, planning_area_layout, paving_palette
 from . import planning_area_scale, caption_fragments
 from . import source_text_transforms
+from . import planning_curved_boundaries
 from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
@@ -239,6 +240,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         page,sha,number,outlines,semantics,cancelled=cancelled)
     surface_footprints = None if semantics is None or not semantics['inventory_complete'] else planning_surface_footprints.page_candidates(
         page,sha,number,outlines,semantics,cancelled=cancelled)
+    curved_boundaries = None if role not in SURFACE_ROLES else planning_curved_boundaries.page_inventory(
+        page,sha,number,cancelled=cancelled)
     area_layout = None if role not in SURFACE_ROLES else planning_area_layout.page_layout(
         page,sha,number,layout,outlines,semantics,components,surface_footprints,cancelled=cancelled)
     surface_summary={} if surface_footprints is None else surface_footprints['summary']
@@ -286,6 +289,10 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         blockers.append('source_surface_boundary_analysis_incomplete')
     if surface_footprints and surface_footprints['candidates']:
         blockers.append('surface_boundary_scope_and_material_unverified')
+    if curved_boundaries and not curved_boundaries['analysis_complete']:
+        blockers.append('closed_curved_boundary_review_incomplete')
+    if curved_boundaries and curved_boundaries['records']:
+        blockers.append('closed_curved_boundaries_require_physical_interpretation')
     if area_layout and not area_layout['analysis_complete']:
         blockers.append('nominal_area_layout_unresolved')
     if area_layout and area_layout['candidates']:
@@ -302,6 +309,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'outline_semantics':semantics,
         'component_footprints':components,
         'surface_footprints':surface_footprints,
+        'curved_boundary_review':curved_boundaries,
         'area_layout':area_layout,
         'component_measurements':measurements,
         'section_profiles':profiles,
@@ -362,6 +370,15 @@ def _html(config, documents, pages):
                 'physical heights, traversability and geographic placement remain unverified.</p>')
             evidence=escape(page['evidence_file'],quote=True)
             sections.append(f'<p><a href="{evidence}">Source-bound extraction evidence</a></p>')
+            if page.get('curved_boundary_overlay'):
+                curves=page['curved_boundary_overlay']
+                sections.append('<details><summary>Inspect closed curved source boundaries</summary>'
+                    '<p>'+str(curves['records'])+' unclassified curved paint boundaries. '
+                    'Trees, symbols and annotations may be included. The overlay approximates original curves '
+                    'within 0.05 PDF points; source controls and fill rules remain in the evidence. '
+                    'These records do not create paths, plazas or world geometry.</p>'
+                    '<a href="'+escape(curves['file'],quote=True)+'"><img src="'+escape(curves['file'],quote=True)+
+                    '" alt="Unclassified curved source boundaries over original page"></a></details>')
             captions=page.get('captions',[])
             if captions: sections.append('<ul>'+''.join('<li>'+escape(c)+'</li>' for c in captions)+'</ul>')
             if 'preview_file' in page:
@@ -415,7 +432,8 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             planning_section_profiles,planning_section_correspondence,
             planning_section_cuts,planning_design_dimensions,planning_design_massing,
             planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,source_text_transforms,
-            paving_palette,building_spec,study_mesh_export,wing_shell_study)},
+            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries)},
+        'closed_curved_boundary_limits':dict(planning_curved_boundaries.LIMITS),
         'surface_footprint_limits':dict(planning_surface_footprints.LIMITS),
         'surface_footprint_search_margin_points':planning_surface_footprints.SEARCH_MARGIN_POINTS,
         'area_layout_limits':dict(planning_area_layout.LIMITS),
@@ -474,11 +492,15 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                         written+=(root/preview['file']).stat().st_size
                         overlay=_outline_overlay(result,preview,root/(name+'-outlines.svg'))
                         if overlay:written+=(root/overlay['file']).stat().st_size
+                        curve_overlay=planning_curved_boundaries.write_overlay(
+                            result.get('curved_boundary_review'),preview,root/(name+'-curves.svg'))
+                        if curve_overlay:written+=(root/curve_overlay['file']).stat().st_size
                         if written>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
                         layout=result['discovery'].get('caption_layout',{})
                         record.update(summary=result['summary'],evidence_file=name+'.json',
                             preview_file=preview['file'],preview=preview,
                             outline_overlay=overlay,
+                            curved_boundary_overlay=curve_overlay,
                             captions=[r['text'] for r in layout.get('view_captions',[])])
                         hints=[r for r in (result.get('outline_semantics') or {}).get('outlines',[])
                                if r['status'] in ('visible_label_enclosure_hint','shared_component_label_enclosure_hint')]
