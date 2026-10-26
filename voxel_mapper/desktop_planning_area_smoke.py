@@ -183,6 +183,10 @@ def _check_plan_marking_palette(root):
             or len([r for r in preset['features'] if r['role']=='theming_envelope'])!=2
             or len([r for r in preset['features'] if r['role']=='queue_area' and r['queue_area_context']['below_feature_key']=='theming-envelope-1'])!=1):
         raise ValueError('Packaged layered theming semantics failed verification')
+    from . import courtyard_plan_expansion
+    courtyard_features,courtyard_pose=courtyard_plan_expansion.geometry()
+    if len(courtyard_features)!=11 or not courtyard_pose['printed_scale_retained'] or courtyard_pose['independent_registration_verified']:
+        raise ValueError('Packaged existing courtyard profile failed verification')
     colours=('orange_wool','blue_wool','brown_wool','purple_wool','yellow_wool')
     directory=root/'plan-marking-palette';directory.mkdir()
     source=directory/'voxels.jsonl'
@@ -381,6 +385,7 @@ def run(output):
         'plan_marking_wool_palette_verified':True,
         'theming_queueing_below_semantics_verified':True,
         'user_identified_queue_area_profile_verified':True,
+        'existing_courtyard_expansion_profile_verified':True,
         'reviewed_plan_marking_profile_sha256':plan_profile_pin,
         'reference_world_building_boundaries':reference_world['building_boundary_candidates'],
         'reference_world_rock_columns':reference_world['rock_columns'],

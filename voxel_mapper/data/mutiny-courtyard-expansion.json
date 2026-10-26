@@ -1,0 +1,325 @@
+{
+  "version": "mutiny-courtyard-source-profile-v1",
+  "source_pdf_sha256": "f12239c04faecc10973483ac4f559f763300facb8fd9c1b3a1002f9c5666e58b",
+  "source_page": 1,
+  "source_caption": "Ground Floor Plan as existing | 1:100",
+  "source_view_scale_denominator": 100,
+  "source_raster_width": 1800,
+  "source_page_display_width_points": 2384,
+  "source_seed_sha256": "d8b27bec2c00aa66e25b0071e426966cb378a3332d50c95c7516bb39a6d0bae6",
+  "source_render_samples_sha256": "d0bed9e5d9586a5884c4aa46c498d1597dee337e31850f53fa328fdec6f0949c",
+  "target_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "target_tavern_candidate_id": "a55e318761",
+  "target_scale_denominator": 250,
+  "controls": [
+    {
+      "id": "courtyard-facing-corner",
+      "source_pixel": [
+        1059,
+        991
+      ],
+      "target_wicker_native": [
+        252.47999572753906,
+        1035.0400390625
+      ],
+      "use": "fit"
+    },
+    {
+      "id": "outer-tavern-kitchen-corner",
+      "source_pixel": [
+        1191,
+        1124
+      ],
+      "target_wicker_native": [
+        348.9599914550781,
+        1055.199951171875
+      ],
+      "use": "fit"
+    },
+    {
+      "id": "kitchen-arm-end",
+      "source_pixel": [
+        1191,
+        685
+      ],
+      "target_wicker_native": [
+        154.3199920654297,
+        1181.9200439453125
+      ],
+      "use": "check"
+    },
+    {
+      "id": "tavern-arm-end",
+      "source_pixel": [
+        767,
+        1124
+      ],
+      "target_wicker_native": [
+        226.3199920654297,
+        867.52001953125
+      ],
+      "use": "check"
+    }
+  ],
+  "features": [
+    {
+      "key": "south_range",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          222,
+          305
+        ],
+        [
+          415,
+          305
+        ],
+        [
+          415,
+          991
+        ],
+        [
+          222,
+          991
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "west_range",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          248,
+          175
+        ],
+        [
+          1191,
+          175
+        ],
+        [
+          1191,
+          305
+        ],
+        [
+          248,
+          305
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "east_range",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          248,
+          991
+        ],
+        [
+          1191,
+          991
+        ],
+        [
+          1191,
+          1124
+        ],
+        [
+          248,
+          1124
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "north_range",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          1059,
+          305
+        ],
+        [
+          1191,
+          305
+        ],
+        [
+          1191,
+          991
+        ],
+        [
+          1059,
+          991
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "north_rear_annex",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          1191,
+          392
+        ],
+        [
+          1300,
+          392
+        ],
+        [
+          1300,
+          665
+        ],
+        [
+          1191,
+          665
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "north_service_annex",
+      "role": "building_boundary",
+      "pixel_ring": [
+        [
+          1191,
+          696
+        ],
+        [
+          1282,
+          696
+        ],
+        [
+          1282,
+          991
+        ],
+        [
+          1191,
+          991
+        ]
+      ],
+      "material": "light_blue_concrete"
+    },
+    {
+      "key": "courtyard-floor",
+      "role": "paving",
+      "pixel_ring": [
+        [
+          415,
+          305
+        ],
+        [
+          1059,
+          305
+        ],
+        [
+          1059,
+          991
+        ],
+        [
+          415,
+          991
+        ]
+      ],
+      "material": "stone_bricks"
+    },
+    {
+      "key": "archway_1",
+      "role": "passage",
+      "pixel_ring": [
+        [
+          212,
+          603
+        ],
+        [
+          426,
+          603
+        ],
+        [
+          426,
+          692
+        ],
+        [
+          212,
+          692
+        ]
+      ],
+      "material": "stone_bricks"
+    },
+    {
+      "key": "archway_2",
+      "role": "passage",
+      "pixel_ring": [
+        [
+          699,
+          165
+        ],
+        [
+          761,
+          165
+        ],
+        [
+          761,
+          315
+        ],
+        [
+          699,
+          315
+        ]
+      ],
+      "material": "stone_bricks"
+    },
+    {
+      "key": "archway_4",
+      "role": "passage",
+      "pixel_ring": [
+        [
+          698,
+          981
+        ],
+        [
+          758,
+          981
+        ],
+        [
+          758,
+          1134
+        ],
+        [
+          698,
+          1134
+        ]
+      ],
+      "material": "stone_bricks"
+    },
+    {
+      "key": "north_arch_annex_exit",
+      "role": "passage",
+      "pixel_ring": [
+        [
+          1185,
+          625
+        ],
+        [
+          1310,
+          625
+        ],
+        [
+          1310,
+          675
+        ],
+        [
+          1185,
+          675
+        ]
+      ],
+      "material": "stone_bricks"
+    }
+  ],
+  "trace_basis": "manual raster-sampled plan layout; approximate pixel centre-lines, not accepted native vector geometry",
+  "alignment_basis": "manually reviewed common Tavern/kitchen corner; fixed printed scale; same-building checks, not independent registration",
+  "existing_proposed_scope": "existing plan only; do not apply unbuilt proposed restaurant scheme",
+  "source_caption_conflict": "title block says first floor; the reviewed drawing view explicitly says Ground Floor Plan as existing",
+  "physical_registration_verified": false,
+  "building_heights_reconstructed": 0
+}

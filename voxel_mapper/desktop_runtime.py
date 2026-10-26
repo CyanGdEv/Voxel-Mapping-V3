@@ -682,7 +682,7 @@ def _worker(request):
         from .planning_area_world_preview import run
         config={**config,'layout_path':str(resolve_path(config_path,config.get('layout_path')))}
         if config.get('version')=='planning-geometry-world-preview-v1':
-            for name in tuple(n for n in ('paving','gaps','buildings','markings') if n+'_path' in config):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
+            for name in tuple(n for n in ('paving','gaps','buildings','markings','expansion') if n+'_path' in config):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
         result=run(config,output,cancelled=cancelled,progress=progress)
     elif kind=='planning_world_preview':
         from .planning_world_preview import run
