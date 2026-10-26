@@ -69,6 +69,7 @@ class DesktopPlanningAreaTests(unittest.TestCase):
             self.assertTrue(result['additional_2d_building_boundaries_verified'])
             self.assertTrue(result['plan_marking_wool_palette_verified'])
             self.assertTrue(result['theming_queueing_below_semantics_verified'])
+            self.assertTrue(result['user_identified_queue_area_profile_verified'])
             self.assertRegex(result['reviewed_plan_marking_profile_sha256'],'^[a-f0-9]{64}$')
             self.assertEqual(result['wide_area_sections'],2)
             self.assertGreater(result['wide_area_platform_cells'],16384)

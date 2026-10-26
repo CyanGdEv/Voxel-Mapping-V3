@@ -15,7 +15,7 @@ from . import drawing_geometry,planning_curved_boundaries
 VERSION='planning-reviewed-plan-markings-v1'
 PROFILE_PATH=Path(__file__).with_name('data')/'wicker-plan-markings.json'
 LIMITS={'max_drawings':100000,'max_source_operators':100000,'max_points':200000,'max_output_bytes':16000000,'max_raster_steps':1000000}
-MATERIALS={'track_centre':'orange_wool','track_sides':'blue_wool','support_boundaries':'brown_wool','building_boundary':'light_blue_concrete','theming_envelope':'purple_wool','queue_below_annotation':'yellow_wool'}
+MATERIALS={'track_centre':'orange_wool','track_sides':'blue_wool','support_boundaries':'brown_wool','building_boundary':'light_blue_concrete','theming_envelope':'purple_wool','queue_below_annotation':'yellow_wool','queue_area':'stone_bricks'}
 
 
 def profile():
@@ -62,11 +62,11 @@ def _capture(page,preset,*,cancelled=lambda:False):
             for part in parts:
                 points+=len(part)
                 if points>LIMITS['max_points']:raise ValueError('Plan marking point budget exceeded')
-                if specification.get('filled_boundary'):
+                if specification.get('filled_boundary') or specification.get('filled_area'):
                     if 'f' not in path['type']:raise ValueError('Original filled boundary required')
                     g=Polygon(part)
                     if not g.is_valid or g.is_empty:raise ValueError('Valid original filled boundary required')
-                    geometries.append(LineString(g.exterior.coords))
+                    geometries.append(g if specification.get('filled_area') else LineString(g.exterior.coords))
                 elif len(part)>1:geometries.append(LineString(part))
         if 'annotation_anchor' in selector:
             if note is None:raise ValueError('Visible queue-below note required')
@@ -83,6 +83,9 @@ def _capture(page,preset,*,cancelled=lambda:False):
             'source_paint_groups':len(indices),'source_paint_witnesses_sha256':digest(witnesses),
             'source_selection_sha256':digest(selector),'geometry_sha256':digest(geometry),
             'physical_identity_verified':False,'height_reconstruction_eligible':False})
+        if specification['role']=='queue_area':
+            if note is None or not note['claim']['queueing_below_stated']:raise ValueError('Queue-below source claim required for queue area')
+            features[-1]['queue_area_context']=specification['queue_area_context']
         if note is not None:
             features[-1]['semantic_evidence']=note
             features[-1]['source_annotation_sha256']=note['source_annotation_sha256']
@@ -123,8 +126,11 @@ def page_review(page,sha,number,*,cancelled=lambda:False):
 def validate_review(value,sha,number):
     preset=profile()
     if isinstance(value,dict) and value.get('profile_sha256')!=digest(preset):
-        legacy=json.loads(PROFILE_PATH.with_name('wicker-plan-markings-v1.json').read_text())
-        if value.get('profile_sha256')==digest(legacy):preset=legacy
+        for name in ('wicker-plan-markings-v1.json','wicker-plan-markings-v2.json'):
+            path=PROFILE_PATH.with_name(name)
+            if not path.is_file():continue
+            legacy=json.loads(path.read_text())
+            if value.get('profile_sha256')==digest(legacy):preset=legacy;break
     if (not isinstance(value,dict) or value.get('version')!=VERSION or not value.get('analysis_complete')
             or (value.get('document_sha256'),value.get('page'))!=(sha,number)
             or (sha,number)!=(preset['document_sha256'],preset['page'])
@@ -135,7 +141,7 @@ def validate_review(value,sha,number):
         raise ValueError('Pinned reviewed-source markings required')
     for row,specification in zip(value['records'],preset['features']):
         expected=specification['expected'];g=shape(row['geometry_pdf_native'])
-        if (g.geom_type not in (('Point',) if specification['role']=='queue_below_annotation' else ('LineString','MultiLineString')) or g.is_empty or not g.is_valid or g.has_z
+        if (g.geom_type not in (('Point',) if specification['role']=='queue_below_annotation' else ('Polygon',) if specification['role']=='queue_area' else ('LineString','MultiLineString')) or g.is_empty or not g.is_valid or g.has_z
                 or not all(math.isfinite(v) for v in g.bounds)
                 or any(row.get(k)!=v for k,v in {'key':specification['key'],'label':specification['label'],
                     'role':specification['role'],'material':MATERIALS[specification['role']],
@@ -148,6 +154,10 @@ def validate_review(value,sha,number):
             note=validate(row.get('semantic_evidence'))
             if note['source_annotation_sha256']!=expected['source_annotation_sha256']:raise ValueError('Theming level/queue relationship changed')
         elif row.get('semantic_evidence') is not None:raise ValueError('Unsupported added marking semantics')
+        if specification['role']=='queue_area':
+            if not row['semantic_evidence']['claim']['queueing_below_stated'] or row.get('queue_area_context')!=specification['queue_area_context']:
+                raise ValueError('Queue extent/user interpretation changed')
+        elif row.get('queue_area_context') is not None:raise ValueError('Unsupported added queue area')
     return value
 
 
@@ -204,10 +214,20 @@ def rasterize(value,transform,bounds,*,cancelled=lambda:False,max_steps=None,max
     for row in value['records']:
         g=transform(row['geometry_pdf_native']);rows.append((row['key'],row['role'],row['material'],g))
         if row['role']=='track_centre':rows.append((row['key']+'-sides','track_sides','blue_wool',side_lines(g,value['side_marking_offset_blocks'])))
-    priority={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
+    priority={'queue_area':-1,'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
     for key,role,material,g in rows:
         counts[key]=0;covered[key]=set()
-        for cell in line_cells(g,cancelled=cancelled,charge=charge):
+        if role=='queue_area':
+            def area_cells():
+                x0,z0,x1,z1=g.bounds
+                for x in range(math.floor(x0),math.ceil(x1)):
+                    if cancelled():raise CancelledError('Queue area rasterisation cancelled')
+                    for z in range(math.floor(z0),math.ceil(z1)):
+                        charge()
+                        if g.covers(Point(x+.5,z+.5)):yield x,z
+            samples=area_cells()
+        else:samples=line_cells(g,cancelled=cancelled,charge=charge)
+        for cell in samples:
             x,z=cell
             if not a<=x<c or not b<=z<d:raise ValueError('Complete plan markings exceed world platform')
             covered[key].add(cell)
@@ -220,7 +240,8 @@ def rasterize(value,transform,bounds,*,cancelled=lambda:False,max_steps=None,max
         'side_marking_offset_blocks':value['side_marking_offset_blocks'],'side_offset_is_source_measurement':False,
         'source_review_profile_scope':'pinned Wicker drawing only','height_reconstructed':False,
         'theming_relationships':{r['key']:r['semantic_evidence']['claim'] for r in value['records'] if r['role']=='theming_envelope'},
-        'queue_route_generated':False,'queue_area_generated':False}
+        'queue_route_generated':False,'queue_area_generated':any(r['role']=='queue_area' for r in value['records']),
+        'queue_areas':{r['key']:{'geometry_pdf_native':r['geometry_pdf_native'],**r['queue_area_context']} for r in value['records'] if r['role']=='queue_area'}}
 
 
 def write_overlay(result,paving,buildings,layout,preview,destination):
@@ -236,8 +257,8 @@ def write_overlay(result,paving,buildings,layout,preview,destination):
     if affine:
         a,b,d,e,x,y=affine;det=a*e-b*d
         inverse=[e/det,-b/det,-d/det,a/det,(b*y-e*x)/det,(d*x-a*y)/det]
-    colours={'support_boundaries':'#80502d','track_sides':'#2459df','track_centre':'#ff8500','building_boundary':'#0875db','theming_envelope':'#a335cb','queue_below_annotation':'#eebc00'}
-    order={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
+    colours={'support_boundaries':'#80502d','track_sides':'#2459df','track_centre':'#ff8500','building_boundary':'#0875db','theming_envelope':'#a335cb','queue_below_annotation':'#eebc00','queue_area':'#eebc00'}
+    order={'queue_area':-1,'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
     for row in result['records']:
         g=shape(row['geometry_pdf_native']);layers.append((row['role'],g,row['label']))
         if row['role']=='track_centre' and inverse is not None:
@@ -249,6 +270,13 @@ def write_overlay(result,paving,buildings,layout,preview,destination):
         if g.geom_type=='Point':
             q=pymupdf.Point(g.x,g.y)*matrix
             elements.append(f'<circle cx="{q.x:.4f}" cy="{q.y:.4f}" r="3" fill="#eebc00"><title>'+escape(label)+'; note anchor only, no queue route or extent</title></circle>')
+            continue
+        if g.geom_type=='Polygon':
+            rings=[g.exterior,*g.interiors]
+            for ring in rings:
+                points=[pymupdf.Point(*p)*matrix for p in ring.coords]
+                commands.append('M'+' L'.join(f'{p.x:.4f},{p.y:.4f}' for p in points)+' Z')
+            elements.append('<path d="'+' '.join(commands)+'" fill="#eebc00" fill-opacity="0.35" fill-rule="evenodd" stroke="none"><title>'+escape(label)+'; user-identified queue zone, internal lanes unknown</title></path>')
             continue
         for line in list(g.geoms) if g.geom_type=='MultiLineString' else [g]:
             points=[pymupdf.Point(*p)*matrix for p in line.coords]

@@ -139,12 +139,15 @@
       }
     },
     {
-      "key": "envelope-1-queue-below-note",
-      "label": "Envelope 1: queuing below; annotation anchor only",
-      "role": "queue_below_annotation",
+      "key": "envelope-1-queue-area",
+      "label": "Wicker Man queue area beneath Envelope 1",
+      "role": "queue_area",
       "selector": {
-        "annotation_anchor": 4711
+        "ordinals": [
+          89254
+        ]
       },
+      "source_fill_opacity": 0.5,
       "annotation": {
         "trace_indices": [
           4703,
@@ -159,10 +162,20 @@
         ]
       },
       "expected": {
-        "geometry_sha256": "83e864b8fad29b826a85300f3ade302458138440ee2791d52d3f3aec296e9383",
-        "source_paint_groups": 0,
-        "source_paint_witnesses_sha256": "6096ff3a550989f70452c57626f721f5c42820a1dcca974fd0792665b85780c6",
+        "geometry_sha256": "b0366418142c3c86e138fbbd2fe8e7b6aad7e84e528bf66bfdc589c1d879e409",
+        "source_paint_groups": 1,
+        "source_paint_witnesses_sha256": "161940ef33d9058bfa825eec62c4f0007e5a670c16b0aa63902fb1ce70be88ef",
         "source_annotation_sha256": "68b61c4566bd66585b05af86985373a960881d397377fa683eb105a7db01beff"
+      },
+      "filled_area": true,
+      "queue_area_context": {
+        "below_feature_key": "theming-envelope-1",
+        "extent_basis": "explicit_user_identification_of_white_circle",
+        "geometry_source": "original Envelope 1 plan circle",
+        "internal_queue_lanes_verified": false,
+        "entrance_positions_verified": false,
+        "queue_floor_level": null,
+        "physical_extent_verified": false
       }
     }
   ]

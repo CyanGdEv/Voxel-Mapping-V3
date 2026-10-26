@@ -180,7 +180,8 @@ def _check_plan_marking_palette(root):
     second=theming_note('Theming Envelope 2 to 196.8')
     if (not first['queueing_below_stated'] or second['queueing_below_stated']
             or first['queue_route_geometry'] is not None or first['upper_level_is_building_height']
-            or len([r for r in preset['features'] if r['role']=='theming_envelope'])!=2):
+            or len([r for r in preset['features'] if r['role']=='theming_envelope'])!=2
+            or len([r for r in preset['features'] if r['role']=='queue_area' and r['queue_area_context']['below_feature_key']=='theming-envelope-1'])!=1):
         raise ValueError('Packaged layered theming semantics failed verification')
     colours=('orange_wool','blue_wool','brown_wool','purple_wool','yellow_wool')
     directory=root/'plan-marking-palette';directory.mkdir()
@@ -379,6 +380,7 @@ def run(output):
         'additional_2d_building_boundaries_verified':True,
         'plan_marking_wool_palette_verified':True,
         'theming_queueing_below_semantics_verified':True,
+        'user_identified_queue_area_profile_verified':True,
         'reviewed_plan_marking_profile_sha256':plan_profile_pin,
         'reference_world_building_boundaries':reference_world['building_boundary_candidates'],
         'reference_world_rock_columns':reference_world['rock_columns'],

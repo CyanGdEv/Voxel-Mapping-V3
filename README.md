@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Queue area beneath the theming](docs/queue-area-below-theming.md) now paves the user-identified white circle beneath Envelope 1 as queue space, replacing the previous lone note marker. The upper purple limit remains; internal queue lanes, entrances and floor levels are unconfirmed.
+
 [Theming envelopes and queuing below](docs/theming-envelopes-and-queue-below.md) now retain both Wicker theming limits, their printed upper levels and Envelope 1’s separate queue-below relationship. Purple outlines and a yellow note marker are included in the world; no solid building, queue route or physical height is inferred.
 
 [Games, toilets and Wicker Man markings](docs/wicker-plan-markings.md) add reviewed source boundaries and ground-level orange alignment, blue side guides and brown support-frame wool to the current area world. These remain flat plan markings; blue sides are display offsets and ride heights are unresolved.

@@ -1,5 +1,7 @@
 # Theming envelopes with queuing below
 
+The later [queue-area correction](queue-area-below-theming.md) replaces the note-only marker described below with a paved queue zone inside the user-identified circle. Internal queue routing remains unresolved.
+
 The Wicker plan marking profile now recognises both theming limits and retains
 their different vertical relationships. These were missing because the earlier
 marking profile covered buildings and ride geometry, without the layered theming

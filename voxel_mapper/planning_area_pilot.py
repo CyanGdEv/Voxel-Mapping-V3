@@ -419,7 +419,7 @@ def _html(config, documents, pages):
             if page.get('plan_marking_overlay'):
                 link=escape(page['plan_marking_overlay']['file'],quote=True)
                 sections.append('<details open><summary>Games, toilets and ride plan markings</summary>'
-                    '<p>Orange: source alignment. Blue wool guides: one-block display offsets. Brown: drawn support-frame edges. Blue outlines: Games and toilet/arcade walls. Purple: theming limits. Yellow: queue-below note anchor; no queue route is inferred. Flat 2D review only.</p>'
+                    '<p>Orange: source alignment. Blue wool guides: one-block display offsets. Brown: drawn support-frame edges. Blue outlines: Games and toilet/arcade walls. Purple: theming limits. Yellow shading: user-identified queue area beneath Envelope 1; internal queue lanes are unconfirmed. Flat 2D review only.</p>'
                     '<a href="'+link+'"><img src="'+link+'" alt="Reviewed plan markings"></a></details>')
             if page.get('building_boundary_overlay'):
                 buildings=page['building_boundary_overlay'];link=escape(buildings['file'],quote=True)
