@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Open curved source networks](docs/planning-open-curve-networks.md) recover review-only rings from separate original strokes and expose unresolved curved connections on the source drawing. Straight source intersections and exact curve-endpoint joints are supported; Wicker still needs curve-intersection and physical path interpretation before new paths can be generated.
+
 [Closed curved boundary review](docs/planning-curved-boundaries.md) retains original Bézier controls, holes and bounded display approximations in a separate planning overlay. Curved trees and legend symbols remain unclassified; these records cannot create paths or world geometry.
 
 [Whole native annotation context](docs/planning-annotation-context.md) prevents split instructions, titles and material notes from becoming feature labels. Wicker excludes eight such fragments while retaining all four building-footprint and two material-surface proposals. Genuine path boundaries and building heights remain unresolved.
