@@ -47,7 +47,7 @@ def render_previews(root,sampled):
             if (x,z) in sampled['rocks']:
                 draw.rectangle((px,py,px+scale-1,py+scale-1),fill=colour(sampled['rocks'][(x,z)][0][1]),outline='#434b42')
     draw.text((20,image.height-38),('Grass interiors retained. Blue: 2D building boundary markers. Flat nominal ground.' if sampled.get('building_marker_mode')=='2d_boundary_only' else 'Grass interiors retained. Yellow: building footprint markers. Flat nominal ground.'),fill='#303830')
-    draw.text((20,image.height-20),('Purple: theming limits. Yellow: queue-below note. Orange/blue/brown: ride plan guides.' if sampled.get('plan_markers') else 'Rock shapes are a user-reference prototype; no building heights or surveyed terrain are claimed.'),fill='#303830')
+    draw.text((20,image.height-20),('Grey inside Envelope 1: queue zone below theming. Purple: upper limit. Orange/blue/brown: ride guides.' if sampled.get('plan_markers') else 'Rock shapes are a user-reference prototype; no building heights or surveyed terrain are claimed.'),fill='#303830')
     image.save(root/'world-overview.png')
     rocks=sorted(sampled['rocks']);candidates=rocks[::max(1,len(rocks)//120)]
     if not candidates:centre=((a+c)//2,(b+d)//2)
