@@ -327,7 +327,10 @@ class DesktopRuntime:
                 from .planning_geometry_world import VERSION as GEOMETRY_VERSION
                 cache=self.directory/'planning-area-world-inputs'/uuid.uuid4().hex;cache.mkdir(parents=True)
                 config['version']=GEOMETRY_VERSION
-                for name,value in (('paving',paving),('gaps',gaps)):
+                from .planning_building_boundaries import review as building_review
+                boundaries=building_review(paving,read_json(Path(row['layout_path']),16000000),source_claims=gaps.get('source_building_claims',[]))
+                if not boundaries['analysis_complete']:raise ValueError('Building boundary review incomplete: '+str(boundaries.get('reason')))
+                for name,value in (('paving',paving),('gaps',gaps),('buildings',boundaries)):
                     target=cache/(name+'.json');write_json(target,value)
                     config[name+'_path']=str(target);config[name+'_sha256']=file_hash(target)
         validate(config)
@@ -674,7 +677,7 @@ def _worker(request):
         from .planning_area_world_preview import run
         config={**config,'layout_path':str(resolve_path(config_path,config.get('layout_path')))}
         if config.get('version')=='planning-geometry-world-preview-v1':
-            for name in ('paving','gaps'):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
+            for name in ('paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
         result=run(config,output,cancelled=cancelled,progress=progress)
     elif kind=='planning_world_preview':
         from .planning_world_preview import run

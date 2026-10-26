@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[2D building boundary review](docs/planning-building-boundaries.md) now adds labelled source-fill footprints to the existing linework proposals, merges duplicate paints and marks the resulting boundaries in blue in area-world previews. The current Wicker replay has eight proposals, with heights and physical identity unresolved.
+
 [Current geometry world](docs/planning-geometry-world.md) exports recovered paving with reference-style rock edging and oak fences on paths narrower than four blocks. It is a flat Bedrock prototype with building footprint markers; surveyed terrain and detailed buildings remain unresolved.
 
 [Gap boundary defaults](docs/planning-gap-boundaries.md) apply the requested rule: enclosed paving gaps receive assumed rock edging unless explicit claims override it. Planting interiors stay intact; building interfaces are separated, and assumptions do not become training truth or generated world blocks.

@@ -66,6 +66,7 @@ class DesktopPlanningAreaTests(unittest.TestCase):
             self.assertTrue(result['reference_geometry_world_verified'])
             self.assertTrue(result['narrow_path_oak_fences_verified'])
             self.assertTrue(result['rock_reference_style_verified'])
+            self.assertTrue(result['additional_2d_building_boundaries_verified'])
             self.assertEqual(result['wide_area_sections'],2)
             self.assertGreater(result['wide_area_platform_cells'],16384)
             self.assertLessEqual(result['wide_area_native_write_attempts'],100000)
