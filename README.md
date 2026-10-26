@@ -731,3 +731,5 @@ Existing courtyard expansion: [Wicker Man + Mutiny Bay courtyard mapping](docs/m
 Mutiny Bay and Katanga Canyon: [original-plan source handoff and remaining mapping blockers](docs/mutiny-katanga-expansion-plans.md). Includes four Mutiny Bay PDFs, a Katanga kiosk plan/elevation bundle and an original high-resolution restaurant plan; two further Katanga booklets remain unavailable.
 
 Current Wicker/courtyard geometry: [OSM/OSTN15 alignment and EA terrain preview](docs/wicker-osm-terrain-alignment.md), with fixed-scale map registration, held-out checks and explicit uncertainty.
+
+Finished floors and path grades: [source FFL/LiDAR comparison and step hotspots](docs/wicker-finished-floor-path-review.md), with raw terrain kept separate from rounded blocks and no unverified grading changes.
