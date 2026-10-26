@@ -128,6 +128,45 @@ def _check_hatch_regions(root):
     write_json(root/'gap-boundary-review.json',gaps)
     write_json(root/'source-hatch-review.json',review)
 
+
+def _check_reference_geometry_world(root,runtime):
+    """Actual original PDF -> pilot -> rich world -> native saved-state checks."""
+    source=root/'reference-boundary-original.pdf'
+    with pymupdf.open() as doc:
+        page=doc.new_page(width=2384,height=1684);tan=(.9,.8,.7)
+        for outer,inner in (((100,100,350,350),(130,130,320,320)),((500,100,850,450),(570,170,780,380))):
+            drawing=page.new_shape();drawing.draw_rect(outer);drawing.draw_rect(inner)
+            drawing.finish(fill=tan,color=None,even_odd=True);drawing.commit()
+        page.draw_rect((1050,100,1150,200));page.insert_text((1070,150),'Shop',fontsize=10)
+        page.draw_rect((2100,90,2160,120),fill=tan,color=None)
+        page.insert_text((2170,110),'Existing Paving with levels',fontsize=8)
+        page.insert_text((60,1580),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
+        page.insert_text((80,1610),'1/200 @ A1',fontsize=12)
+        page.insert_text((80,1630),'1/400 @ A3',fontsize=12)
+        doc.save(source)
+    sha=hashlib.sha256(source.read_bytes()).hexdigest()
+    config={'version':VERSION,'area_id':'reference-boundary-style-fixture',
+        'application_references':['synthetic-fixture'],'source_directory':str(root),
+        'development_exposure':'previously_inspected','documents':[{'file':source.name,'sha256':sha,
+            'title':'Original paving and narrow-path fixture','role':'site-plan','drawing_state':'proposed',
+            'application_reference':'synthetic-fixture'}]}
+    write_json(root/'reference-boundary-pilot.json',config)
+    source_id=runtime.submit('planning_source_pilot',root/'reference-boundary-pilot.json')
+    source_job=_wait(runtime,source_id)
+    if source_job['status']!='completed':raise ValueError('Reference geometry source pilot failed: '+str(source_job.get('error')))
+    export_id=runtime.submit_planning_area_world_preview(source_id);job=_wait(runtime,export_id)
+    if job['status']!='completed':raise ValueError('Reference geometry world export failed: '+str(job.get('error')))
+    result=job['result']
+    if (result.get('version')!='planning-geometry-world-preview-v1' or result.get('fence_columns',0)<1
+            or result.get('rock_columns',0)<1 or not result['saved_geometry_validation']['native_block_states_verified']
+            or not result['archive_validation']['saved_world_reopened'] or result['rock_paving_cell_overlap']!=0
+            or result['world_placement_eligible'] or result['model_weights_updated']
+            or hashlib.sha256(source.read_bytes()).hexdigest()!=sha):
+        raise ValueError('Reference-style rocks and narrow-path oak fences failed verification')
+    write_json(root/'reference-geometry-world.json',{'status':'passed','source_pdf_sha256':sha,
+        'source_job_id':source_id,'export_job_id':export_id,'result':result})
+    return result
+
 def run(output):
     root=Path(output).resolve()
     if root.exists():raise ValueError('Fresh planning area smoke output required')
@@ -143,6 +182,7 @@ def run(output):
     write_json(root/'pilot.json',config)
     runtime=DesktopRuntime(root/'memory',workers=2,memory_budget_mb=2048)
     try:
+        reference_world=_check_reference_geometry_world(root,runtime)
         pilot_id=runtime.submit('planning_source_pilot',root/'pilot.json')
         pilot=_wait(runtime,pilot_id,timeout=120);runtime._futures[pilot_id].result(timeout=10)
         if pilot['status']!='completed':raise ValueError('Managed source-plan extraction failed: '+str(pilot.get('error')))
@@ -305,6 +345,11 @@ def run(output):
         'existing_solid_paving_verified':True,
         'source_fill_rule_holes_verified':True,
         'assumed_rock_gap_policy_verified':True,
+        'reference_geometry_world_verified':True,
+        'narrow_path_oak_fences_verified':True,
+        'rock_reference_style_verified':True,
+        'reference_world_rock_columns':reference_world['rock_columns'],
+        'reference_world_fence_columns':reference_world['fence_columns'],
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],

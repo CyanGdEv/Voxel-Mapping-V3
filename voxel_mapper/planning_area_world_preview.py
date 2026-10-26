@@ -39,6 +39,9 @@ def _sha(path):
 
 
 def validate(config):
+    if isinstance(config,dict) and config.get('version')=='planning-geometry-world-preview-v1':
+        from .planning_geometry_world import validate as validate_geometry
+        return validate_geometry(config)
     if (not isinstance(config, dict)
             or set(config) != {'version', 'layout_path', 'layout_sha256'}
             or config.get('version') not in (LEGACY_VERSION, VERSION)
@@ -296,6 +299,9 @@ def _saved_grid_check(path, offset, sampled, cancelled):
 
 
 def run(config, output, *, cancelled=lambda: False, progress=lambda value: None):
+    if isinstance(config,dict) and config.get('version')=='planning-geometry-world-preview-v1':
+        from .planning_geometry_world import run as run_geometry
+        return run_geometry(config,output,cancelled=cancelled,progress=progress)
     validate(config)
     output = Path(output)
     if output.exists():
@@ -448,6 +454,8 @@ def main(argv=None):
     config = json.loads(path.read_text(encoding='utf-8'))
     validate(config)
     config = {**config, 'layout_path': str((path.parent/config['layout_path']).resolve())}
+    if config['version']=='planning-geometry-world-preview-v1':
+        for name in ('paving','gaps'):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
     report = run(config, arguments.output)
     print(json.dumps({'status': report['status'], 'file': report['file']}, sort_keys=True))
 

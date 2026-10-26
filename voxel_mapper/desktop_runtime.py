@@ -310,6 +310,26 @@ class DesktopRuntime:
             if len(matches)!=1:raise ValueError('Selected plan page is absent or ambiguous')
             row=matches[0]
         config={'version':VERSION,'layout_path':row['layout_path'],'layout_sha256':row['layout_sha256']}
+        # Complete original paving and gap evidence selects the richer prototype.
+        job=self.store.job(completed_job_id);root=Path(job['output_directory']).resolve()
+        prefix='analysis/' if job['kind']=='web_planning_pilot' else ''
+        source_pages=(job.get('result') or {}).get('pages',[])
+        matched=[p for p in source_pages if p.get('document_sha256')==row['document_sha256'] and p.get('page')==row['page'] and p.get('evidence_file')]
+        if len(matched)==1:
+            relative=prefix+matched[0]['evidence_file'];source=(root/relative).resolve()
+            pin=(job.get('result') or {}).get('output_sha256',{}).get(relative)
+            if not source.is_relative_to(root) or not isinstance(pin,str) or not source.is_file() or file_hash(source)!=pin:
+                raise ValueError('Saved current geometry evidence changed; rerun planning analysis')
+            evidence=read_json(source,32000000)
+            paving=evidence.get('source_hatch_region_review');gaps=evidence.get('gap_boundary_review')
+            if (paving and gaps and paving.get('analysis_complete') and gaps.get('analysis_complete')
+                    and paving.get('summary',{}).get('legend_associated_paving_regions')):
+                from .planning_geometry_world import VERSION as GEOMETRY_VERSION
+                cache=self.directory/'planning-area-world-inputs'/uuid.uuid4().hex;cache.mkdir(parents=True)
+                config['version']=GEOMETRY_VERSION
+                for name,value in (('paving',paving),('gaps',gaps)):
+                    target=cache/(name+'.json');write_json(target,value)
+                    config[name+'_path']=str(target);config[name+'_sha256']=file_hash(target)
         validate(config)
         request=self.directory/'planning-area-world-requests'/(uuid.uuid4().hex+'.json')
         write_json(request,config)
@@ -653,6 +673,8 @@ def _worker(request):
     elif kind=='planning_area_world_preview':
         from .planning_area_world_preview import run
         config={**config,'layout_path':str(resolve_path(config_path,config.get('layout_path')))}
+        if config.get('version')=='planning-geometry-world-preview-v1':
+            for name in ('paving','gaps'):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
         result=run(config,output,cancelled=cancelled,progress=progress)
     elif kind=='planning_world_preview':
         from .planning_world_preview import run
