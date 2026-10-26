@@ -733,3 +733,5 @@ Mutiny Bay and Katanga Canyon: [original-plan source handoff and remaining mappi
 Current Wicker/courtyard geometry: [OSM/OSTN15 alignment and EA terrain preview](docs/wicker-osm-terrain-alignment.md), with fixed-scale map registration, held-out checks and explicit uncertainty.
 
 Finished floors and path grades: [source FFL/LiDAR comparison and step hotspots](docs/wicker-finished-floor-path-review.md), with raw terrain kept separate from rounded blocks and no unverified grading changes.
+
+Conditional floor prototype: [Wicker floor plates, provisional plinths and bounded grading](docs/wicker-floor-foundation-preview.md), with explicit datum assumptions, 17 path-cell adjustments and separate entrance-access holds.
