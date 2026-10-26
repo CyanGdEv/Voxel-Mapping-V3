@@ -455,7 +455,7 @@ def main(argv=None):
     validate(config)
     config = {**config, 'layout_path': str((path.parent/config['layout_path']).resolve())}
     if config['version']=='planning-geometry-world-preview-v1':
-        for name in ('paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
+        for name in tuple(n for n in ('paving','gaps','buildings','markings') if n+'_path' in config):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
     report = run(config, arguments.output)
     print(json.dumps({'status': report['status'], 'file': report['file']}, sort_keys=True))
 

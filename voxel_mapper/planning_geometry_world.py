@@ -20,7 +20,7 @@ from .generation_cycles import atomic_json
 VERSION='planning-geometry-world-preview-v1'
 STYLE_PATH=Path(__file__).with_name('data')/'rock-boundary-reference.json'
 LIMITS={'max_platform_cells':65536,'max_span_m':512,'max_world_writes':300000,
-        'max_width_checks':20000,'max_sampling_checks':2000000,'max_points':200000,'max_boundary_cells':20000}
+        'max_width_checks':20000,'max_marking_steps':1000000,'max_sampling_checks':2000000,'max_points':200000,'max_boundary_cells':20000}
 
 
 def file_hash(path):
@@ -43,10 +43,12 @@ def style():
 
 def validate(config):
     keys={'version','layout_path','layout_sha256','paving_path','paving_sha256','gaps_path','gaps_sha256'}
-    if not isinstance(config,dict) or set(config) not in (keys,keys|{'buildings_path','buildings_sha256'}) or config.get('version')!=VERSION:
+    optional={'buildings_path','buildings_sha256','markings_path','markings_sha256'}
+    if (not isinstance(config,dict) or not keys<=set(config) or set(config)-keys-optional or config.get('version')!=VERSION
+            or any((n+'_path' in config)!=(n+'_sha256' in config) for n in ('buildings','markings'))):
         raise ValueError('Pinned current geometry world request required')
     import re
-    for name in ('layout','paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):
         if (not isinstance(config[name+'_path'],str) or not 1<=len(config[name+'_path'])<=4096
                 or not re.fullmatch('[a-f0-9]{64}',str(config[name+'_sha256']))):raise ValueError('Bounded pinned geometry input required')
     return config
@@ -54,7 +56,7 @@ def validate(config):
 
 def read_inputs(config):
     validate(config);data={}
-    for name in ('layout','paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):
         path=Path(config[name+'_path'])
         if not path.is_file() or path.stat().st_size>16000000:
             raise ValueError('Pinned '+name+' geometry missing or changed')
@@ -82,6 +84,9 @@ def read_inputs(config):
         expected=review(paving,layout,source_claims=gaps.get('source_building_claims',[]))
         if not expected['analysis_complete'] or data['buildings']!=expected:
             raise ValueError('Current source-derived building boundaries required')
+    if 'markings' in data:
+        from .planning_plan_markings import validate_review
+        validate_review(data['markings'],layout['document_sha256'],layout['page'])
     return data
 
 
@@ -257,6 +262,19 @@ def rasterize(data,*,cancelled=lambda:False,limits=None):
                 cell_owners[key]={identifier};boundary_counts[identifier]+=1;connectors+=1
                 if len(rocks)>caps['max_boundary_cells']:raise ValueError('Boundary cell budget exceeded')
             else:unresolved_diagonals+=1
+    plan_markers={};plan_marking_report=None
+    if 'markings' in data:
+        from .planning_plan_markings import rasterize as rasterize_markings
+        plan_markers,plan_marking_report=rasterize_markings(data['markings'],transform,[a,b,c,d],
+            cancelled=cancelled,max_steps=caps['max_marking_steps'],max_cells=caps['max_boundary_cells'])
+        plan_marking_report.update(paving_cells_covered_by_markings=len(set(plan_markers)&paving_cells),
+            building_marker_cells_covered=len(set(plan_markers)&markers),
+            assumed_edging_columns_replaced=len(set(plan_markers)&set(rocks)))
+        for key,record in plan_markers.items():
+            ground[key]=record['material']
+            if key in rocks:
+                del rocks[key];widths.pop(key,None)
+                for identifier in cell_owners.get(key,[]):boundary_counts[identifier]-=1
     if set(rocks)&(paving_cells|markers):raise ValueError('Rock cells obstruct sampled paving or building markers')
     rock_blocks=sum(len(v) for v in rocks.values());attempts=4*platform+len(ground)+rock_blocks
     if attempts>caps['max_world_writes']:raise ValueError('Geometry world native write budget exceeded')
@@ -264,6 +282,7 @@ def rasterize(data,*,cancelled=lambda:False,limits=None):
     return {'bounds':[a,b,c,d],'platform_cells':platform,'ground':ground,'paving':paving_cells,'markers':markers,
         'rocks':rocks,'rock_blocks':sum(sum(m!='oak_fence' for _,m in col) for col in rocks.values()),
         'boundary_blocks':rock_blocks,'widths':widths,'width_checks':width_checks,
+        'plan_markers':plan_markers,'plan_marking_report':plan_marking_report,
         'building_marker_counts':building_marker_counts,'building_marker_mode':'2d_boundary_only' if 'buildings' in data else 'filled_footprint',
         'fence_grid_connectors':connectors,'unresolved_fence_diagonals':unresolved_diagonals,'native_write_attempts':attempts,'sampling_checks':checks,'source_points':points,
         'paving_region_cells':candidate_counts,'boundary_cells':boundary_counts,'limits':caps,'style':preset}
@@ -324,6 +343,9 @@ def run(config,output,*,cancelled=lambda:False,progress=lambda value:None):
             'source_pins':{n:config[n+'_sha256'] for n in data},'rock_style':sampled['style'],
             'rock_style_sha256':digest(sampled['style']),'platform_bounds_source_local_xy':sampled['bounds'],
             'platform_cells':sampled['platform_cells'],'native_write_attempts':sampled['native_write_attempts'],
+            'plan_markings':sampled['plan_marking_report'],
+            'paving_display_cells':len(sampled['paving']-set(sampled['plan_markers'])),
+            'plan_marking_cells':len(sampled['plan_markers']),
             'paving_cells':len(sampled['paving']),'building_marker_cells':len(sampled['markers']),
             'building_boundary_candidates':len(sampled['building_marker_counts']),'building_boundary_marker_cells':sampled['building_marker_counts'],
             'building_marker_mode':sampled['building_marker_mode'],
@@ -365,9 +387,12 @@ def run(config,output,*,cancelled=lambda:False,progress=lambda value:None):
             'local_paving_width_m':sampled['widths'][(x,z)],'columns_above_ground':column,
             'boundary_material_kind':'oak_fence' if column==[(1,'oak_fence')] else 'rock'}
             for (x,z),column in sorted(sampled['rocks'].items())])
+        if sampled['plan_markers']:
+            atomic_json(root/'plan-marking-cells.json',[{'source_cell_xz':[x,z],'minecraft_xz':[x,-z-1],**record}
+                for (x,z),record in sorted(sampled['plan_markers'].items())])
         _previews(root,sampled)
         shutil.rmtree(root/'bedrock-world')
-        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Wicker geometry prototype</title><h1>Current geometry world</h1><p><a download href="wicker-geometry.mcworld">Download Minecraft Bedrock world</a></p><p>Current paving and low irregular stone/cobblestone edging, using the user reference. Paths under four blocks wide use oak fences. Flat nominal ground; coloured markers show 2D building proposals without invented heights. Rock shape is a prototype style, not measured source detail.</p><p><a href="quality-report.json">Saved-world checks</a></p><img style="max-width:100%" src="world-overview.png"><img style="max-width:100%" src="rock-style-detail.png">')
+        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Wicker geometry prototype</title><h1>Current geometry world</h1><p><a download href="wicker-geometry.mcworld">Download Minecraft Bedrock world</a></p><p>Current paving and low irregular stone/cobblestone edging, using the user reference. Paths under four blocks wide use oak fences. Flat nominal ground; coloured markers show 2D building proposals without invented heights. Rock shape is a prototype style, not measured source detail. When present, orange wool marks the reviewed ride alignment, blue wool is a one-block side guide and brown wool marks drawn support frames. Games and toilet wall lines are ground-level 2D markers.</p><p><a href="quality-report.json">Saved-world checks</a></p><img style="max-width:100%" src="world-overview.png"><img style="max-width:100%" src="rock-style-detail.png">')
         for name in data:
             if file_hash(config[name+'_path'])!=config[name+'_sha256']:raise ValueError('Geometry input changed during export')
         report['output_sha256']={p.relative_to(root).as_posix():file_hash(p) for p in sorted(root.rglob('*')) if p.is_file()}
@@ -390,7 +415,7 @@ def main(argv=None):
     path=Path(args.config).resolve()
     if path.stat().st_size>16384:raise ValueError('Bounded geometry world request required')
     config=json.loads(path.read_text())
-    for name in ('layout','paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
+    for name in tuple(n for n in ('layout','paving','gaps','buildings','markings') if n+'_path' in config):config[name+'_path']=str((path.parent/config[name+'_path']).resolve())
     result=run(config,args.output);print(json.dumps({'file':result['file'],'rock_blocks':result['rock_blocks']}))
 
 

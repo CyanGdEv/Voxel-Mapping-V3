@@ -37,10 +37,10 @@ def file_hash(path):
     with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
-def write_json(path,value):
+def write_json(path,value,*,compact=False):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);temp=path.with_suffix(path.suffix+'.partial')
     with temp.open('w',encoding='utf-8',newline='\n') as stream:
-        stream.write(json.dumps(value,sort_keys=True,indent=2,allow_nan=False)+'\n');stream.flush();os.fsync(stream.fileno())
+        stream.write(json.dumps(value,sort_keys=True,indent=None if compact else 2,separators=(',',':') if compact else None,allow_nan=False)+'\n');stream.flush();os.fsync(stream.fileno())
     for attempt in range(5):
         try:temp.replace(path);return
         except PermissionError:
@@ -330,8 +330,13 @@ class DesktopRuntime:
                 from .planning_building_boundaries import review as building_review
                 boundaries=building_review(paving,read_json(Path(row['layout_path']),16000000),source_claims=gaps.get('source_building_claims',[]))
                 if not boundaries['analysis_complete']:raise ValueError('Building boundary review incomplete: '+str(boundaries.get('reason')))
-                for name,value in (('paving',paving),('gaps',gaps),('buildings',boundaries)):
-                    target=cache/(name+'.json');write_json(target,value)
+                sources=[('paving',paving),('gaps',gaps),('buildings',boundaries)]
+                markings=evidence.get('plan_marking_review')
+                if markings and markings.get('records'):
+                    if not markings.get('analysis_complete'):raise ValueError('Plan markings incomplete; rerun original analysis')
+                    sources.append(('markings',markings))
+                for name,value in sources:
+                    target=cache/(name+'.json');write_json(target,value,compact=name=='markings')
                     config[name+'_path']=str(target);config[name+'_sha256']=file_hash(target)
         validate(config)
         request=self.directory/'planning-area-world-requests'/(uuid.uuid4().hex+'.json')
@@ -677,7 +682,7 @@ def _worker(request):
         from .planning_area_world_preview import run
         config={**config,'layout_path':str(resolve_path(config_path,config.get('layout_path')))}
         if config.get('version')=='planning-geometry-world-preview-v1':
-            for name in ('paving','gaps')+ (('buildings',) if 'buildings_path' in config else ()):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
+            for name in tuple(n for n in ('paving','gaps','buildings','markings') if n+'_path' in config):config[name+'_path']=str(resolve_path(config_path,config.get(name+'_path')))
         result=run(config,output,cancelled=cancelled,progress=progress)
     elif kind=='planning_world_preview':
         from .planning_world_preview import run

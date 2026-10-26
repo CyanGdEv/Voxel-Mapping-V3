@@ -1,7 +1,7 @@
 """Schematic previews of the exact generated cells and block shapes."""
 from PIL import Image,ImageDraw
 
-COLOURS={'grass_block':'#78a052','stone':'#92968f','stone_bricks':'#888b85','cobblestone':'#70786f',
+COLOURS={'orange_wool':'#ef8b20','blue_wool':'#284bc5','brown_wool':'#78502e','grass_block':'#78a052','stone':'#92968f','stone_bricks':'#888b85','cobblestone':'#70786f',
          'light_blue_concrete':'#45a9ed','oak_fence':'#a18350','yellow_concrete':'#dfbd35','terracotta':'#a85a3e','mud_bricks':'#8d694c','oak_planks':'#a67c4c','granite':'#a17d6d'}
 
 
@@ -39,7 +39,7 @@ def _boxes(material,neighbors=()):
 def render_previews(root,sampled):
     a,b,c,d=sampled['bounds'];scale=4
     image=Image.new('RGB',((c-a)*scale+48,(d-b)*scale+100),'#f6f5ef');draw=ImageDraw.Draw(image)
-    draw.text((20,12),'Generated world: paving and reference-style rock edging',fill='#202620')
+    draw.text((20,12),('Generated plan markings: Games, toilets and Wicker Man track' if sampled.get('plan_markers') else 'Generated world: paving and reference-style rock edging'),fill='#202620')
     for x in range(a,c):
         for z in range(b,d):
             material=sampled['ground'].get((x,z),'grass_block');px=24+(x-a)*scale;py=42+(d-z-1)*scale
@@ -47,7 +47,7 @@ def render_previews(root,sampled):
             if (x,z) in sampled['rocks']:
                 draw.rectangle((px,py,px+scale-1,py+scale-1),fill=colour(sampled['rocks'][(x,z)][0][1]),outline='#434b42')
     draw.text((20,image.height-38),('Grass interiors retained. Blue: 2D building boundary markers. Flat nominal ground.' if sampled.get('building_marker_mode')=='2d_boundary_only' else 'Grass interiors retained. Yellow: building footprint markers. Flat nominal ground.'),fill='#303830')
-    draw.text((20,image.height-20),'Rock shapes are a user-reference prototype; no building heights or surveyed terrain are claimed.',fill='#303830')
+    draw.text((20,image.height-20),('Orange: alignment. Blue wool: one-block side guides. Brown wool: drawn support-frame edges.' if sampled.get('plan_markers') else 'Rock shapes are a user-reference prototype; no building heights or surveyed terrain are claimed.'),fill='#303830')
     image.save(root/'world-overview.png')
     rocks=sorted(sampled['rocks']);candidates=rocks[::max(1,len(rocks)//120)]
     if not candidates:centre=((a+c)//2,(b+d)//2)
