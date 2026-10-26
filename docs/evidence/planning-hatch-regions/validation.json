@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "development_exposure": "previously_inspected",
+  "scope": "new hatch stage on original PDF plus independent MuPDF boundary comparison; unrelated full real-source pipeline not rerun",
+  "summary": {
+    "source_hatch_regions": 32,
+    "legend_associated_paving_regions": 18,
+    "curved_paving_regions": 3
+  },
+  "elapsed_seconds": 162.85,
+  "work": {
+    "counts": {
+      "Invalid hatch ring": 5,
+      "uninterpreted_xobject_invocations": 3
+    },
+    "flattened_point_work": 3385,
+    "resource_byte_work": 4801,
+    "operations": 351398,
+    "overlay_work": 40115
+  },
+  "original_curved_mask_matches": [
+    {
+      "original_mupdf_clip_ordinal": 61,
+      "source_paint_operation_index": 4114,
+      "independent_extractor_hausdorff_pdf_points": 0.0,
+      "source_native_bounds": [
+        524.5991821289062,
+        200.377685546875,
+        806.2583618164062,
+        337.6600341796875
+      ],
+      "pattern_region_area_pdf_points_squared": 5381.280364907526,
+      "source_curved_operators": 6
+    },
+    {
+      "original_mupdf_clip_ordinal": 62,
+      "source_paint_operation_index": 4195,
+      "independent_extractor_hausdorff_pdf_points": 0.0,
+      "source_native_bounds": [
+        536.589599609375,
+        157.4752197265625,
+        1763.4840087890625,
+        538.56640625
+      ],
+      "pattern_region_area_pdf_points_squared": 30325.026406742625,
+      "source_curved_operators": 37
+    },
+    {
+      "original_mupdf_clip_ordinal": 63,
+      "source_paint_operation_index": 4229,
+      "independent_extractor_hausdorff_pdf_points": 0.0,
+      "source_native_bounds": [
+        352.6824035644531,
+        145.0240478515625,
+        557.3807983398438,
+        539.456787109375
+      ],
+      "pattern_region_area_pdf_points_squared": 7831.254240413606,
+      "source_curved_operators": 6
+    }
+  ],
+  "world_geometry_additions": 0,
+  "training_labels_generated": 0,
+  "physical_visibility_verified": false,
+  "physical_registration_verified": false,
+  "model_weights_updated": false,
+  "next_blocker": "later-paint visibility and physical boundary conflicts before area-layout/world promotion",
+  "source_file_unchanged": true,
+  "implementation_sha256": "ef155b3f02197cbb44b582616467b2b3f97b85f82fefe8216dc34ffd70db34bf",
+  "local_validation": {
+    "new_suite": {
+      "tests": 19,
+      "passed": true
+    },
+    "targeted_regressions": {
+      "tests": 101,
+      "passed": true,
+      "skips": 1,
+      "note": "includes 18 new tests; final added opacity mismatch test passed in separate 19-test suite"
+    }
+  }
+}

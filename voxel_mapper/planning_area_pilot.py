@@ -29,7 +29,7 @@ from . import planning_area_scale, caption_fragments
 from . import source_text_transforms
 from . import planning_curved_boundaries
 from . import planning_curve_networks
-from . import planning_curve_scopes
+from . import planning_curve_scopes, planning_hatch_regions
 from . import building_spec, study_mesh_export, wing_shell_study
 from .building_spec import digest
 from .generation_cycles import atomic_json, file_hash
@@ -250,6 +250,8 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
     if surface_footprints is not None:
         complete_curve_plan,complete_curve_review=planning_curve_scopes.plan_and_review(
             page,sha,number,surface_footprints,cancelled=cancelled)
+    hatch_review=None if role not in SURFACE_ROLES else planning_hatch_regions.page_review(
+        page,sha,number,cancelled=cancelled)
     area_layout = None if role not in SURFACE_ROLES else planning_area_layout.page_layout(
         page,sha,number,layout,outlines,semantics,components,surface_footprints,cancelled=cancelled)
     surface_summary={} if surface_footprints is None else surface_footprints['summary']
@@ -305,6 +307,10 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         blockers.append('open_curved_network_review_incomplete')
     if curve_networks and (curve_networks['records'] or curve_networks['curve_chain_diagnostics']):
         blockers.append('open_curved_networks_require_physical_interpretation')
+    if hatch_review and not hatch_review['analysis_complete']:
+        blockers.append('source_hatch_review_incomplete')
+    if hatch_review and hatch_review.get('summary',{}).get('legend_associated_paving_regions'):
+        blockers.append('legend_hatch_paving_requires_visibility_and_physical_validation')
     if complete_curve_review and not complete_curve_review['analysis_complete']:
         blockers.append('complete_curve_scope_review_incomplete')
     if complete_curve_review and (complete_curve_review['records'] or complete_curve_review['curve_chain_diagnostics']):
@@ -327,6 +333,7 @@ def _page(page, sha, number, role, *, cancelled=lambda:False):
         'surface_footprints':surface_footprints,
         'curved_boundary_review':curved_boundaries,
         'curve_network_review':curve_networks,
+        'source_hatch_region_review':hatch_review,
         'complete_curve_scope_plan':complete_curve_plan,
         'complete_curve_scope_review':complete_curve_review,
         'area_layout':area_layout,
@@ -414,6 +421,11 @@ def _html(config, documents, pages):
                     'Style supplies no physical path or material identity. This separate review adds no world geometry.</p>'
                     '<a href="'+escape(complete['file'],quote=True)+'"><img src="'+escape(complete['file'],quote=True)+
                     '" alt="Complete long curved source strokes over original page"></a></details>')
+            if page.get('hatch_region_overlay'):
+                hatch=page['hatch_region_overlay']
+                sections.append('<p><a href="'+escape(hatch['file'],quote=True)+'">Inspect source hatch regions</a>: '+
+                    str(hatch['legend_associated_paving_regions'])+' regions associated with visible paving legends. '+
+                    'Proposed/existing state comes from the printed key; physical visibility, levels and placement require validation.</p>')
             captions=page.get('captions',[])
             if captions: sections.append('<ul>'+''.join('<li>'+escape(c)+'</li>' for c in captions)+'</ul>')
             if 'preview_file' in page:
@@ -467,9 +479,10 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             planning_section_profiles,planning_section_correspondence,
             planning_section_cuts,planning_design_dimensions,planning_design_massing,
             planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,source_text_transforms,
-            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes)},
+            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes,planning_hatch_regions)},
         'closed_curved_boundary_limits':dict(planning_curved_boundaries.LIMITS),
         'open_curve_network_limits':dict(planning_curve_networks.LIMITS),
+        'source_hatch_region_limits':dict(planning_hatch_regions.LIMITS),
         'complete_curve_scope_limits':dict(planning_curve_scopes.LIMITS),
         'surface_footprint_limits':dict(planning_surface_footprints.LIMITS),
         'surface_footprint_search_margin_points':planning_surface_footprints.SEARCH_MARGIN_POINTS,
@@ -538,6 +551,9 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                         complete_overlay=planning_curve_networks.write_overlay(result.get('complete_curve_scope_review'),
                             preview,root/(name+'-complete-curve-scopes.svg'))
                         if complete_overlay:written+=(root/complete_overlay['file']).stat().st_size
+                        hatch_overlay=planning_hatch_regions.write_overlay(result.get('source_hatch_region_review'),
+                            preview,root/(name+'-hatch-regions.svg'))
+                        if hatch_overlay:written+=(root/hatch_overlay['file']).stat().st_size
                         if written>limits['max_output_bytes']: raise PilotBudgetExceeded('Pilot output byte budget exceeded')
                         layout=result['discovery'].get('caption_layout',{})
                         record.update(summary=result['summary'],evidence_file=name+'.json',
@@ -546,6 +562,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
                             curved_boundary_overlay=curve_overlay,
                             curve_network_overlay=network_overlay,
                             complete_curve_scope_overlay=complete_overlay,
+                            hatch_region_overlay=hatch_overlay,
                             captions=[r['text'] for r in layout.get('view_captions',[])])
                         hints=[r for r in (result.get('outline_semantics') or {}).get('outlines',[])
                                if r['status'] in ('visible_label_enclosure_hint','shared_component_label_enclosure_hint')]
