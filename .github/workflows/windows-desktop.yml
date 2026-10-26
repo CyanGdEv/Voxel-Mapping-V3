@@ -63,6 +63,8 @@ on:
       - 'voxel_mapper/planning_geo_preview.py'
       - 'voxel_mapper/planning_surface_audit.py'
       - 'voxel_mapper/planning_floor_preview.py'
+      - 'voxel_mapper/planning_building_access.py'
+      - 'voxel_mapper/data/wicker-building-access.json'
       - 'voxel_mapper/data/wicker-map-alignment.json'
       - 'voxel_mapper/data/alton-mutiny-katanga-plan-review.json'
       - 'voxel_mapper/data/mutiny-courtyard-expansion.json'
@@ -122,6 +124,7 @@ on:
       - 'tests/test_planning_geo_preview.py'
       - 'tests/test_planning_surface_audit.py'
       - 'tests/test_planning_floor_preview.py'
+      - 'tests/test_planning_building_access.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -250,6 +253,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_planning_surface_audit.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Wicker finished-floor and path review failed' }
           python -m unittest discover -s tests -p 'test_planning_floor_preview.py' -v
+          python -m unittest discover -s tests -p 'test_planning_building_access.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Conditional Wicker floor and grading preview failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
