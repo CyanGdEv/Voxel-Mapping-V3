@@ -1,6 +1,6 @@
 ## Windows desktop and CPU learning
 
-[Source hatch regions](docs/planning-hatch-regions.md) recover original closed pattern-fill geometry and bind it to complete visible paving keys. The Wicker development replay retains 18 proposed-paving region hypotheses, including 3 curved regions. Visibility, physical conflicts and registration still block their promotion into the generated world.
+[Existing and proposed paving](docs/planning-existing-paving.md) now recovers solid fills and original compound PDF fill rules as well as hatches. Wicker's review covers 24 existing and 19 proposed paving fills, about 5.25 times the previous blue area, while withholding same-colour annotation backplates. Physical visibility and registration still block world promotion.
 
 [Complete long-curve scopes](docs/planning-complete-curve-scopes.md) retain original strokes that cross the label search windows, preserving their full controls and paint provenance. Wicker's long red strokes are now available for review; curve intersections and physical path interpretation still block new path generation.
 

@@ -91,6 +91,7 @@ on:
       - 'tests/test_planning_curve_networks.py'
       - 'tests/test_complete_curve_scopes.py'
       - 'tests/test_planning_hatch_regions.py'
+      - 'tests/test_existing_paving_fills.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -196,6 +197,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Complete original curved stroke scope tests failed' }
           python -m unittest discover -s tests -p 'test_planning_hatch_regions.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Source hatch region evidence tests failed' }
+          python -m unittest discover -s tests -p 'test_existing_paving_fills.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Existing solid paving and source fill-rule tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v

@@ -423,7 +423,7 @@ def _html(config, documents, pages):
                     '" alt="Complete long curved source strokes over original page"></a></details>')
             if page.get('hatch_region_overlay'):
                 hatch=page['hatch_region_overlay']
-                sections.append('<p><a href="'+escape(hatch['file'],quote=True)+'">Inspect source hatch regions</a>: '+
+                sections.append('<p><a href="'+escape(hatch['file'],quote=True)+'">Inspect existing and proposed paving fills</a>: '+
                     str(hatch['legend_associated_paving_regions'])+' regions associated with visible paving legends. '+
                     'Proposed/existing state comes from the printed key; physical visibility, levels and placement require validation.</p>')
             captions=page.get('captions',[])

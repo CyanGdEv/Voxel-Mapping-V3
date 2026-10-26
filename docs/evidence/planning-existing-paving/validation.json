@@ -1,0 +1,466 @@
+{
+  "status": "passed",
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "development_exposure": "previously_inspected",
+  "scope": "updated paving stage on original PDF; previous real building/section pipeline not rerun",
+  "summary": {
+    "source_hatch_regions": 33,
+    "legend_associated_paving_regions": 43,
+    "curved_paving_regions": 5,
+    "source_fill_rule_regions_recovered": 4,
+    "source_solid_fill_regions": 378,
+    "text_background_fills_withheld": 18,
+    "existing_paving_regions": 24,
+    "proposed_paving_regions": 19
+  },
+  "work": {
+    "counts": {
+      "Invalid hatch ring": 24,
+      "uninterpreted_xobject_invocations": 3
+    },
+    "flattened_point_work": 47268,
+    "resource_byte_work": 9602,
+    "operations": 351398,
+    "overlay_work": 584304,
+    "withheld_source_fills": [
+      {
+        "paint_operation_index": 2000,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 299,
+        "fill_opacity": 0.5,
+        "appearance_sha256": "0dad98a9234302f2dcdf84abbdd9e9902622a63eb674503c951e7cfd3c1256b1",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.65098,
+          0.792157,
+          0.941176
+        ]
+      },
+      {
+        "paint_operation_index": 3495,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 36,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "6baa4c7c7087100f8eee82f63399c88f66d2387797f96461d1e1180188c44e12",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.968627,
+          0.933333,
+          0.898039
+        ]
+      },
+      {
+        "paint_operation_index": 4610,
+        "paint_kind": "pattern",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 192,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d551505ef5d1f6b5761ad4b769842a6fbaa60d6d27e243a95e44028ba37cdde5",
+        "pattern_matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          4.96
+        ],
+        "resource_bytes": 173
+      },
+      {
+        "paint_operation_index": 5323,
+        "paint_kind": "pattern",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 88,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d551505ef5d1f6b5761ad4b769842a6fbaa60d6d27e243a95e44028ba37cdde5",
+        "pattern_matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          4.96
+        ],
+        "resource_bytes": 173
+      },
+      {
+        "paint_operation_index": 5582,
+        "paint_kind": "pattern",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 166,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d551505ef5d1f6b5761ad4b769842a6fbaa60d6d27e243a95e44028ba37cdde5",
+        "pattern_matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          4.96
+        ],
+        "resource_bytes": 173
+      },
+      {
+        "paint_operation_index": 8657,
+        "paint_kind": "pattern",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 139,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d551505ef5d1f6b5761ad4b769842a6fbaa60d6d27e243a95e44028ba37cdde5",
+        "pattern_matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          4.96
+        ],
+        "resource_bytes": 173
+      },
+      {
+        "paint_operation_index": 9224,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 317,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 9791,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 247,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 10956,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 151,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 13152,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 324,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 16374,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 276,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 17646,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 77,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 19023,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 84,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 19873,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 240,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 20220,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 103,
+        "fill_opacity": 0.4,
+        "appearance_sha256": "ae753de82f99e6bfdc51a6c16b7e6e0ca5c36aafb0a6ef67a97d622def5c8e7e",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          0.0,
+          0.501961,
+          0.0705882
+        ]
+      },
+      {
+        "paint_operation_index": 108597,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 19,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 108904,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 30,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 109066,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 98,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 109195,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 18,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 109251,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 36,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 109939,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 23,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 110225,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 41,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 110487,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 4,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "paint_operation_index": 110556,
+        "paint_kind": "solid",
+        "reason": "Invalid hatch ring",
+        "source_path_operator_count": 41,
+        "fill_opacity": 1.0,
+        "appearance_sha256": "d7d49b1aaebbf7dccd045ca3058e94cb8fb6ee38b3b783c316145f82b28a5c98",
+        "solid_colour_space": "/DeviceRGB",
+        "solid_colour_components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "fill_rule_work": 28073,
+    "source_passes": 2,
+    "scan_operations": 702796,
+    "text_mask_checks": 55
+  },
+  "elapsed_seconds": 53.56,
+  "previous_hatch_region_geometries_unchanged": true,
+  "previous_proposed_paving_regions": 18,
+  "new_blue_union_area_native_pdf_points_squared": 970761.8725311996,
+  "previous_blue_union_area_native_pdf_points_squared": 185053.1087530271,
+  "blue_coverage_area_ratio": 5.245855522626122,
+  "source_geometry_snapped_or_repaired": false,
+  "world_geometry_additions": 0,
+  "model_weights_updated": false,
+  "training_labels_generated": 0,
+  "physical_visibility_verified": false,
+  "physical_registration_verified": false,
+  "implementation_sha256": "06783c7cd0fdcb63db11ce194b53f67672361522ee6d08d2186af99bc9abdaa1",
+  "independent_fill_rule_raster_audit": {
+    "status": "passed",
+    "scope": "original PDF primitive fill semantics compared with recovered display polygons; not physical-world accuracy",
+    "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "source_paint_and_recovered_mask_comparison": [
+      {
+        "paint_operation_index": 2352,
+        "source_fill_operator": "f*",
+        "original_source_prefix_sha256": "4d15a74700123ff36359362d18774f2220d368589177235b865798c21ce128c0",
+        "recovered_geometry_sha256": "06b8b1c3fbcbf65bb4c258319fcaf2111706d7491a076694123580394b156547",
+        "render_size_pixels": [
+          2000,
+          1413
+        ],
+        "mask_iou": 0.999990785703097,
+        "missing_pixels_beyond_one_pixel": 0,
+        "unexpected_pixels_beyond_one_pixel": 0
+      },
+      {
+        "paint_operation_index": 2448,
+        "source_fill_operator": "f*",
+        "original_source_prefix_sha256": "4b0f1229f4e3aa23c8b804d4721b3dcbd6dc2bcd6a444f072f4df70ff34ba9a6",
+        "recovered_geometry_sha256": "8ca41c93e9122e236501db6c962d217eb89d9cafcdf97c5663c6fe87e011f585",
+        "render_size_pixels": [
+          2000,
+          1413
+        ],
+        "mask_iou": 1.0,
+        "missing_pixels_beyond_one_pixel": 0,
+        "unexpected_pixels_beyond_one_pixel": 0
+      },
+      {
+        "paint_operation_index": 2662,
+        "source_fill_operator": "f*",
+        "original_source_prefix_sha256": "de437248974f9f5caede9791b7fe3065ac00d5d805a1cf37ee28a27feefc7ec8",
+        "recovered_geometry_sha256": "808383dee60aab8c49f390865142c63ab5fa14ca6e873e670d1df0c070479ff6",
+        "render_size_pixels": [
+          2000,
+          1413
+        ],
+        "mask_iou": 0.9999152446604136,
+        "missing_pixels_beyond_one_pixel": 0,
+        "unexpected_pixels_beyond_one_pixel": 0
+      },
+      {
+        "paint_operation_index": 3890,
+        "source_fill_operator": "f*",
+        "original_source_prefix_sha256": "5968f24520d2a780cb14122992e5d5ae3484d41165800594dcaf2ee91a2f707e",
+        "recovered_geometry_sha256": "7868da0c9658b0343a58dfc5a8383263b25a95597b34395364ecba2c6d5fe93c",
+        "render_size_pixels": [
+          2000,
+          1413
+        ],
+        "mask_iou": 1.0,
+        "missing_pixels_beyond_one_pixel": 0,
+        "unexpected_pixels_beyond_one_pixel": 0
+      }
+    ],
+    "source_boundary_invention": false,
+    "world_geometry_additions": 0
+  },
+  "local_validation": {
+    "final_fill_suites": {
+      "tests": 31,
+      "passed": true
+    },
+    "compatibility_regressions": {
+      "tests": 99,
+      "passed": true,
+      "skips": 1,
+      "scope": "before final early scan-budget guard; that guard is covered by the final 31-test run"
+    }
+  }
+}
