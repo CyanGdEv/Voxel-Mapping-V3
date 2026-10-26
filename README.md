@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Complete long-curve scopes](docs/planning-complete-curve-scopes.md) retain original strokes that cross the label search windows, preserving their full controls and paint provenance. Wicker's long red strokes are now available for review; curve intersections and physical path interpretation still block new path generation.
+
 [Open curved source networks](docs/planning-open-curve-networks.md) recover review-only rings from separate original strokes and expose unresolved curved connections on the source drawing. Straight source intersections and exact curve-endpoint joints are supported; Wicker still needs curve-intersection and physical path interpretation before new paths can be generated.
 
 [Closed curved boundary review](docs/planning-curved-boundaries.md) retains original Bézier controls, holes and bounded display approximations in a separate planning overlay. Curved trees and legend symbols remain unclassified; these records cannot create paths or world geometry.

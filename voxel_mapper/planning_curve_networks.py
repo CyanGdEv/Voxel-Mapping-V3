@@ -152,7 +152,7 @@ def _operator_edges(parents,check,source_parts):
     return edges
 
 
-def page_review(page,sha,number,surfaces,*,options=None,cancelled=lambda:False):
+def page_review(page,sha,number,surfaces,*,options=None,cancelled=lambda:False,source_scope_plan=None,_source_cache=None):
     """Recover source rings within existing whole-primitive surface scopes.
 
     These are source geometry hypotheses, not an ordinary source-outline
@@ -191,7 +191,17 @@ def page_review(page,sha,number,surfaces,*,options=None,cancelled=lambda:False):
         if checks>limits['max_pair_checks']:raise ValueError('open_curve_pair_work_budget_exceeded')
     check()
     if not surfaces.get('analysis_complete'):return fail('complete_surface_scope_analysis_required')
-    scopes=surfaces.get('extraction',{}).get('regions',[])
+    if source_scope_plan is not None:
+        if (not isinstance(source_scope_plan,dict) or source_scope_plan.get('version')!='planning-complete-curve-scopes-v1'
+                or source_scope_plan.get('document_sha256')!=sha or source_scope_plan.get('page')!=number
+                or source_scope_plan.get('source_surface_analysis_sha256')!=digest(surfaces)):
+            raise ValueError('Same-source complete curve scope plan required')
+        if not source_scope_plan.get('analysis_complete'):return fail('complete_curve_source_scope_plan_required')
+        scopes=source_scope_plan['regions']
+        result.update(source_scope_plan_sha256=digest(source_scope_plan),
+            source_scope_kind='complete_original_stroke_style_families',
+            physical_role_inferred_from_style=False)
+    else:scopes=surfaces.get('extraction',{}).get('regions',[])
     if not isinstance(scopes,list) or len(scopes)>32:raise ValueError('Bounded original source scopes required')
     if not scopes:return result
     windows=[r['region_native_points'] for r in scopes]
@@ -199,13 +209,20 @@ def page_review(page,sha,number,surfaces,*,options=None,cancelled=lambda:False):
     if not isinstance(labels,list) or len(labels)>256:raise ValueError('Bounded original surface labels required')
     operators=controls=covered=0;seen=set();witness_cache={};counts=Counter();diagnostics={}
     try:
-        cache=ordinary_surfaces._source_page_cache(page);check()
+        cache=ordinary_surfaces._source_page_cache(page) if _source_cache is None else _source_cache
+        if cache.get('page') is not page or cache.get('source_content_sha256')!=hashlib.sha256(page.read_contents()).hexdigest():
+            raise ValueError('Same unchanged original network page cache required')
+        check()
+        if source_scope_plan is not None and source_scope_plan.get('source_content_sha256')!=cache['source_content_sha256']:
+            raise ValueError('Unchanged original complete curve scope source required')
+        style_options={} if source_scope_plan is None else {
+            'source_region_stroke_styles':source_scope_plan['region_stroke_styles']}
         parents,extraction=drawing_geometry.extract_page(page,sha,number,_paths=cache['compact'],
             region_native_windows=windows,min_line_length_points=.25,
             max_candidates=limits['max_native_candidates'],max_total_points=limits['max_native_points'],
             max_paths=100000,max_scan_paths=100000,regional_fallback=False,
             curve_tolerance_points=TOLERANCE_POINTS,open_stroked_primitives_only=True,
-            isolate_open_stroked_subpaths=True)
+            isolate_open_stroked_subpaths=True,**style_options)
         result.update(extraction=extraction,source_content_sha256=cache['source_content_sha256'],
                       original_parent_inventory_sha256=digest(parents))
         if (extraction['status']!='unplaced_geometry_candidates' or
@@ -213,6 +230,15 @@ def page_review(page,sha,number,surfaces,*,options=None,cancelled=lambda:False):
             return fail('complete_open_stroke_extraction_required')
         if any(p.get('paint_reference_truncated') for p in parents):
             return fail('complete_open_stroke_paint_references_required')
+        if source_scope_plan is not None:
+            coverage=defaultdict(set)
+            for parent in parents:
+                for paint in parent['paint_references']:coverage[paint['ordinal']].add(paint['subpath'])
+            result['complete_anchor_coverage']=[{'ordinal':anchor['ordinal'],
+                'expected_original_open_subpaths':anchor['eligible_original_subpaths'],
+                'retained_original_open_subpaths':sorted(coverage[anchor['ordinal']]),
+                'eligible_subpaths_retained':set(anchor['eligible_original_subpaths'])<=coverage[anchor['ordinal']]}
+                for anchor in source_scope_plan['anchors']]
         buckets=[[] for _ in windows]
         for parent in parents:
             check();paints=defaultdict(list)
