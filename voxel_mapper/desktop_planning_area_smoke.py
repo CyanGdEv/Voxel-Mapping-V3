@@ -93,11 +93,36 @@ def make_source(path, *, wide=False):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+
+def _check_hatch_regions(root):
+    from .planning_hatch_regions import page_review
+    with pymupdf.open() as doc:
+        page=doc.new_page(width=800,height=400)
+        page.insert_text((650,85),'New Paving with levels',fontsize=8)
+        tile=doc.get_new_xref()
+        doc.update_object(tile,'<< /Type /Pattern /PatternType 1 /PaintType 1 /TilingType 1 /BBox [0 0 8 8] /XStep 8 /YStep 8 /Resources << >> >>')
+        doc.update_stream(tile,b'0.5 g 0 0 8 8 re f')
+        resource=int(doc.xref_get_key(page.xref,'Resources')[1].split()[0])
+        doc.xref_set_key(resource,'Pattern',f'<< /P1 {tile} 0 R >>')
+        paint=doc.get_new_xref();doc.update_object(paint,'<< >>')
+        doc.update_stream(paint,b'q /Pattern cs /P1 scn 580 300 60 30 re f 20 100 m 20 200 300 200 300 100 c 300 50 l 20 50 l h f Q')
+        doc.xref_set_key(page.xref,'Contents','['+' '.join(f'{x} 0 R' for x in [paint]+page.get_contents())+']')
+        path=root/'synthetic-hatch-original.pdf';doc.save(path)
+    sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    with pymupdf.open(path) as doc:review=page_review(doc[0],sha,1)
+    if (not review['analysis_complete'] or review['summary']['legend_associated_paving_regions']!=1
+            or review['summary']['curved_paving_regions']!=1 or review['world_geometry_additions']
+            or review['world_placement_eligible'] or review['training_labels_generated']
+            or hashlib.sha256(path.read_bytes()).hexdigest()!=sha):
+        raise ValueError('Original source hatch and paving legend checks failed')
+    write_json(root/'source-hatch-review.json',review)
+
 def run(output):
     root=Path(output).resolve()
     if root.exists():raise ValueError('Fresh planning area smoke output required')
     root.mkdir(parents=True)
     _check_text_transform(root)
+    _check_hatch_regions(root)
     source=root/'synthetic-area-original.pdf';sha=make_source(source)
     config={'version':VERSION,'area_id':'synthetic-shared-plan-area',
         'application_references':['synthetic-fixture'],'source_directory':str(root),
@@ -265,6 +290,7 @@ def run(output):
         'original_closed_curve_review_verified':True,
         'open_curve_network_recovery_verified':True,
         'complete_long_curve_scope_verified':True,
+        'source_hatch_legend_regions_verified':True,
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,
         'wide_area_world_job':wide_exported,'wide_area_sections':partition['section_count'],
         'wide_area_platform_cells':partition['platform_cells'],
