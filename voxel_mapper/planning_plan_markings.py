@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 import pymupdf
-from shapely.geometry import LineString,MultiLineString,Polygon,mapping,shape
+from shapely.geometry import LineString,MultiLineString,Polygon,Point,mapping,shape
 
 from .building_spec import digest
 from .drawing_page_tools import native_inverse
@@ -15,14 +15,14 @@ from . import drawing_geometry,planning_curved_boundaries
 VERSION='planning-reviewed-plan-markings-v1'
 PROFILE_PATH=Path(__file__).with_name('data')/'wicker-plan-markings.json'
 LIMITS={'max_drawings':100000,'max_source_operators':100000,'max_points':200000,'max_output_bytes':16000000,'max_raster_steps':1000000}
-MATERIALS={'track_centre':'orange_wool','track_sides':'blue_wool','support_boundaries':'brown_wool','building_boundary':'light_blue_concrete'}
+MATERIALS={'track_centre':'orange_wool','track_sides':'blue_wool','support_boundaries':'brown_wool','building_boundary':'light_blue_concrete','theming_envelope':'purple_wool','queue_below_annotation':'yellow_wool'}
 
 
 def profile():
     p=json.loads(PROFILE_PATH.read_text())
     if (p.get('version')!='reviewed-wicker-marking-source-v1' or p.get('origin')!='source_review_for_user_marking_instruction'
             or p.get('side_marking_offset_blocks')!=1 or p.get('side_offset_is_source_measurement') is not False
-            or {f['role'] for f in p['features']}!={'building_boundary','track_centre','support_boundaries'}):
+            or not {'building_boundary','track_centre','support_boundaries'}<={f['role'] for f in p['features']}<=set(MATERIALS)):
         raise ValueError('Supported reviewed plan-marking profile required')
     return p
 
@@ -33,10 +33,15 @@ def _capture(page,preset,*,cancelled=lambda:False):
         if cancelled():raise CancelledError('Plan marking extraction cancelled')
     check();paths=page.get_drawings();inverse=native_inverse(page)
     if len(paths)>LIMITS['max_drawings']:raise ValueError('Plan marking drawing budget exceeded')
-    operators=points=0;features=[]
+    operators=points=0;features=[];note_cache={}
     for specification in preset['features']:
-        check();selector=specification['selector']
-        if 'ordinals' in selector:
+        check();selector=specification['selector'];note=None
+        if 'annotation' in specification:
+            from .planning_theming_notes import capture
+            note=capture(page,specification['annotation']['trace_indices'],cancelled=cancelled,cache=note_cache)
+        if 'annotation_anchor' in selector:
+            indices=[]
+        elif 'ordinals' in selector:
             indices=selector['ordinals']
             if any(type(i) is not int or not 0<=i<len(paths) for i in indices):raise ValueError('Source marking paint is absent')
         else:
@@ -46,14 +51,14 @@ def _capture(page,preset,*,cancelled=lambda:False):
         for i in indices:
             check();path=paths[i]
             if (path.get('layer') or ('s' in path['type'] and path.get('stroke_opacity',1)!=1)
-                    or ('f' in path['type'] and path.get('fill_opacity',1)!=1)):
-                raise ValueError('Opaque unconditional marking paint required')
+                    or ('f' in path['type'] and path.get('fill_opacity',1)!=specification.get('source_fill_opacity',1))):
+                raise ValueError('Reviewed marking opacity or layer changed')
             operators+=len(path['items'])
             if operators>LIMITS['max_source_operators']:raise ValueError('Plan marking operator budget exceeded')
             ops=planning_curved_boundaries._operators(path,inverse)
             witnesses.append([i,path.get('seqno'),path['type'],ops])
             parts,approx=drawing_geometry.subpaths(path,inverse,{'curve_tolerance_points':.05,'max_points':20000})
-            if approx['cubic_segments']:raise ValueError('Reviewed straight-facet marking profile required')
+            if approx['cubic_segments'] and not specification.get('allow_source_curves'):raise ValueError('Reviewed straight-facet marking profile required')
             for part in parts:
                 points+=len(part)
                 if points>LIMITS['max_points']:raise ValueError('Plan marking point budget exceeded')
@@ -63,6 +68,12 @@ def _capture(page,preset,*,cancelled=lambda:False):
                     if not g.is_valid or g.is_empty:raise ValueError('Valid original filled boundary required')
                     geometries.append(LineString(g.exterior.coords))
                 elif len(part)>1:geometries.append(LineString(part))
+        if 'annotation_anchor' in selector:
+            if note is None:raise ValueError('Visible queue-below note required')
+            parts=[r for r in note['parts'] if r['trace_indices']==[selector['annotation_anchor']]]
+            if len(parts)!=1 or not note['claim']['queueing_below_stated']:raise ValueError('Exact queue-below annotation anchor required')
+            geometries=[shape(parts[0]['geometry_pdf_native']).centroid];points+=1
+            witnesses=[['annotation_anchor',selector['annotation_anchor'],note['source_annotation_sha256']]]
         if not geometries:raise ValueError('Complete selected marking geometry required')
         g=geometries[0] if len(geometries)==1 else MultiLineString(geometries)
         geometry=json.loads(json.dumps(mapping(g)))
@@ -72,6 +83,11 @@ def _capture(page,preset,*,cancelled=lambda:False):
             'source_paint_groups':len(indices),'source_paint_witnesses_sha256':digest(witnesses),
             'source_selection_sha256':digest(selector),'geometry_sha256':digest(geometry),
             'physical_identity_verified':False,'height_reconstruction_eligible':False})
+        if note is not None:
+            features[-1]['semantic_evidence']=note
+            features[-1]['source_annotation_sha256']=note['source_annotation_sha256']
+        if specification.get('allow_source_curves'):
+            features[-1]['curve_tolerance_pdf_points']=.05
     return features,{'source_operators':operators,'points':points,'raw_drawings':len(paths)}
 
 
@@ -106,6 +122,9 @@ def page_review(page,sha,number,*,cancelled=lambda:False):
 
 def validate_review(value,sha,number):
     preset=profile()
+    if isinstance(value,dict) and value.get('profile_sha256')!=digest(preset):
+        legacy=json.loads(PROFILE_PATH.with_name('wicker-plan-markings-v1.json').read_text())
+        if value.get('profile_sha256')==digest(legacy):preset=legacy
     if (not isinstance(value,dict) or value.get('version')!=VERSION or not value.get('analysis_complete')
             or (value.get('document_sha256'),value.get('page'))!=(sha,number)
             or (sha,number)!=(preset['document_sha256'],preset['page'])
@@ -116,7 +135,7 @@ def validate_review(value,sha,number):
         raise ValueError('Pinned reviewed-source markings required')
     for row,specification in zip(value['records'],preset['features']):
         expected=specification['expected'];g=shape(row['geometry_pdf_native'])
-        if (g.geom_type not in ('LineString','MultiLineString') or g.is_empty or not g.is_valid or g.has_z
+        if (g.geom_type not in (('Point',) if specification['role']=='queue_below_annotation' else ('LineString','MultiLineString')) or g.is_empty or not g.is_valid or g.has_z
                 or not all(math.isfinite(v) for v in g.bounds)
                 or any(row.get(k)!=v for k,v in {'key':specification['key'],'label':specification['label'],
                     'role':specification['role'],'material':MATERIALS[specification['role']],
@@ -124,6 +143,11 @@ def validate_review(value,sha,number):
                 or digest(row['geometry_pdf_native'])!=expected['geometry_sha256']
                 or row.get('id')!=digest([VERSION,sha,number,specification['key'],row['geometry_pdf_native']])):
             raise ValueError('Reviewed marking geometry or source witness changed')
+        if 'annotation' in specification:
+            from .planning_theming_notes import validate
+            note=validate(row.get('semantic_evidence'))
+            if note['source_annotation_sha256']!=expected['source_annotation_sha256']:raise ValueError('Theming level/queue relationship changed')
+        elif row.get('semantic_evidence') is not None:raise ValueError('Unsupported added marking semantics')
     return value
 
 
@@ -146,6 +170,8 @@ def side_lines(centre,offset=1):
 
 def line_cells(geometry,*,cancelled=lambda:False,charge=lambda:None):
     """Half-open grid traversal, including every crossed cell without buffering."""
+    if geometry.geom_type=='Point':
+        charge();yield math.floor(geometry.x),math.floor(geometry.y);return
     parts=list(geometry.geoms) if geometry.geom_type=='MultiLineString' else [geometry]
     for part in parts:
         coordinates=list(part.coords)
@@ -178,7 +204,7 @@ def rasterize(value,transform,bounds,*,cancelled=lambda:False,max_steps=None,max
     for row in value['records']:
         g=transform(row['geometry_pdf_native']);rows.append((row['key'],row['role'],row['material'],g))
         if row['role']=='track_centre':rows.append((row['key']+'-sides','track_sides','blue_wool',side_lines(g,value['side_marking_offset_blocks'])))
-    priority={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3}
+    priority={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
     for key,role,material,g in rows:
         counts[key]=0;covered[key]=set()
         for cell in line_cells(g,cancelled=cancelled,charge=charge):
@@ -192,7 +218,9 @@ def rasterize(value,transform,bounds,*,cancelled=lambda:False,max_steps=None,max
     return cells,{'profile_sha256':value['profile_sha256'],'display_cells_by_feature':counts,
         'source_sample_cells_by_feature':{k:len(v) for k,v in covered.items()},'raster_steps':steps,
         'side_marking_offset_blocks':value['side_marking_offset_blocks'],'side_offset_is_source_measurement':False,
-        'source_review_profile_scope':'pinned Wicker drawing only','height_reconstructed':False}
+        'source_review_profile_scope':'pinned Wicker drawing only','height_reconstructed':False,
+        'theming_relationships':{r['key']:r['semantic_evidence']['claim'] for r in value['records'] if r['role']=='theming_envelope'},
+        'queue_route_generated':False,'queue_area_generated':False}
 
 
 def write_overlay(result,paving,buildings,layout,preview,destination):
@@ -208,8 +236,8 @@ def write_overlay(result,paving,buildings,layout,preview,destination):
     if affine:
         a,b,d,e,x,y=affine;det=a*e-b*d
         inverse=[e/det,-b/det,-d/det,a/det,(b*y-e*x)/det,(d*x-a*y)/det]
-    colours={'support_boundaries':'#80502d','track_sides':'#2459df','track_centre':'#ff8500','building_boundary':'#0875db'}
-    order={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3}
+    colours={'support_boundaries':'#80502d','track_sides':'#2459df','track_centre':'#ff8500','building_boundary':'#0875db','theming_envelope':'#a335cb','queue_below_annotation':'#eebc00'}
+    order={'support_boundaries':0,'track_sides':1,'track_centre':2,'building_boundary':3,'theming_envelope':4,'queue_below_annotation':5}
     for row in result['records']:
         g=shape(row['geometry_pdf_native']);layers.append((row['role'],g,row['label']))
         if row['role']=='track_centre' and inverse is not None:
@@ -218,6 +246,10 @@ def write_overlay(result,paving,buildings,layout,preview,destination):
     elements=[]
     for role,g,label in sorted(layers,key=lambda r:order[r[0]]):
         commands=[]
+        if g.geom_type=='Point':
+            q=pymupdf.Point(g.x,g.y)*matrix
+            elements.append(f'<circle cx="{q.x:.4f}" cy="{q.y:.4f}" r="3" fill="#eebc00"><title>'+escape(label)+'; note anchor only, no queue route or extent</title></circle>')
+            continue
         for line in list(g.geoms) if g.geom_type=='MultiLineString' else [g]:
             points=[pymupdf.Point(*p)*matrix for p in line.coords]
             commands.append('M'+' L'.join(f'{p.x:.4f},{p.y:.4f}' for p in points))

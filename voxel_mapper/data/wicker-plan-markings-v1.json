@@ -1,0 +1,81 @@
+{
+  "version": "reviewed-wicker-marking-source-v1",
+  "origin": "source_review_for_user_marking_instruction",
+  "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "page": 1,
+  "source_content_sha256": "99f75626f9aa2b6620a57fed2def125bc40da36d270e6db68baad5234b219888",
+  "side_marking_offset_blocks": 1,
+  "side_offset_is_source_measurement": false,
+  "interpretation": "Named boundaries and ride alignment reviewed on original Wicker landscape drawing; not a learned general detector",
+  "features": [
+    {
+      "key": "games",
+      "label": "Games 9x3m boundary",
+      "role": "building_boundary",
+      "selector": {
+        "ordinals": [
+          89251
+        ]
+      },
+      "filled_boundary": true,
+      "expected": {
+        "geometry_sha256": "d872572782c1920bd81b6c98f50d69735e7b91fce29947f25fe30d5388c0dd0e",
+        "source_paint_groups": 1,
+        "source_paint_witnesses_sha256": "e4dcdd6543ec96694064325b32b7f54d56fdfa833d078b947ff9cd25520379d6"
+      }
+    },
+    {
+      "key": "toilets",
+      "label": "Toilets / arcade visible wall boundary",
+      "role": "building_boundary",
+      "selector": {
+        "ordinals": [
+          3042,
+          2786,
+          1082,
+          1078,
+          1330
+        ]
+      },
+      "expected": {
+        "geometry_sha256": "ae78217aa363e49be3d762e81dc17672d20232f3fc15ee97734da32ae00b51dd",
+        "source_paint_groups": 5,
+        "source_paint_witnesses_sha256": "56daf295596ef87fdb40a7c1d04b8b59b2cc35767b22339483b5f9fca50ce96d"
+      }
+    },
+    {
+      "key": "wicker-centre",
+      "label": "Wicker Man plan alignment centre line",
+      "role": "track_centre",
+      "selector": {
+        "ordinals": [
+          89222
+        ]
+      },
+      "expected": {
+        "geometry_sha256": "e94723729c64dd237ed14c353fa8d53262ec8d99e027777cb40050b09b86dfee",
+        "source_paint_groups": 1,
+        "source_paint_witnesses_sha256": "13467ebe973dc478b996b306fb080a4f906db0215c52cb1327201e62f221e66e"
+      }
+    },
+    {
+      "key": "wicker-supports",
+      "label": "Wicker Man support-frame edges and post outlines",
+      "role": "support_boundaries",
+      "selector": {
+        "stroke": [
+          0.6509799957275391,
+          0.4235289990901947,
+          0.21568599343299866
+        ],
+        "width": 0.5039999485015869,
+        "dashes": "[] 0"
+      },
+      "expected": {
+        "geometry_sha256": "f63746bf9f5313cdf52fd6c7c4f0e21085c6d56bb3333954e18891a640472941",
+        "source_paint_groups": 73495,
+        "source_paint_witnesses_sha256": "949a743d9a7e86469688455bc27b5c9ee35e379835cc5ca0b7d98650743963f6"
+      }
+    }
+  ]
+}
