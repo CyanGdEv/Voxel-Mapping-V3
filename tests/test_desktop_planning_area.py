@@ -60,6 +60,8 @@ class DesktopPlanningAreaTests(unittest.TestCase):
             self.assertTrue(result['open_curve_network_recovery_verified'])
             self.assertTrue(result['complete_long_curve_scope_verified'])
             self.assertTrue(result['source_hatch_legend_regions_verified'])
+            self.assertTrue(result['existing_solid_paving_verified'])
+            self.assertTrue(result['source_fill_rule_holes_verified'])
             self.assertEqual(result['wide_area_sections'],2)
             self.assertGreater(result['wide_area_platform_cells'],16384)
             self.assertLessEqual(result['wide_area_native_write_attempts'],100000)

@@ -1,5 +1,7 @@
 # Original hatch regions and paving legends
 
+The [current existing/proposed paving stage](planning-existing-paving.md) expands this initial hatch-only coverage to solid and compound fills. The replay counts below describe the initial v1 stage.
+
 Planning area pilots now inspect direct PDF pattern fills and produce a separate
 source hatch review. This recovers source-authored closed paving shapes even
 when individual boundary strokes cross the label search windows. It does not
