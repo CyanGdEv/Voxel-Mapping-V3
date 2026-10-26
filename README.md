@@ -1,6 +1,8 @@
 ## Windows desktop and CPU learning
 
-[Coalesced shared-source recovery](docs/coalesced-surface-recovery.md) completes Wicker’s 46 label windows in 14 regions within the existing limits. Its first shared nominal layout has three building-footprint and two material-surface proposals; full-sheet world export still exceeds the current preview size limit.
+[Complete tiled plan previews](docs/tiled-area-world-previews.md) export the full 196×115 nominal metre Wicker layout as one Bedrock world, preserving all five proposals and their spacing. Saved ground, feature cells, headroom and archive checks pass within the unchanged total write budget. This is a flat inspection map; detailed buildings and verified paths remain unfinished.
+
+[Coalesced shared-source recovery](docs/coalesced-surface-recovery.md) completes Wicker’s 46 label windows in 14 regions within the existing limits. Its first shared nominal layout has three building-footprint and two material-surface proposals; the subsequent tiled preview stage resolves the export-size hold.
 
 [Original PDF text transforms](docs/source-text-transforms.md) preserve word scaling without loosening glyph checks. The Wicker title now passes and supported surface labels increase from 9 to 46/134; the subsequent coalesced recovery stage resolves that regional limit.
 

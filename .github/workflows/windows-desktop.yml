@@ -95,6 +95,7 @@ on:
       - 'tests/test_planning_paper_scale.py'
       - 'tests/test_planning_area_layout.py'
       - 'tests/test_planning_area_world_preview.py'
+      - 'tests/test_tiled_area_world_preview.py'
       - 'tests/test_planning_area_layout_integration.py'
       - 'tests/test_planning_collection_area_layout.py'
       - 'tests/test_design_glyph_visibility.py'
@@ -201,6 +202,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Shared-frame area geometry tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_world_preview.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Saved source-local area world tests failed' }
+          python -m unittest discover -s tests -p 'test_tiled_area_world_preview.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Complete bounded tiled area world tests failed' }
           python -m unittest discover -s tests -p 'test_planning_area_layout_integration.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Managed pilot area layout tests failed' }
           python -m unittest discover -s tests -p 'test_planning_collection_area_layout.py' -v
