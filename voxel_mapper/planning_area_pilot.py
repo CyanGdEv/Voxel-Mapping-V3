@@ -26,7 +26,7 @@ from . import planning_section_profiles, planning_section_correspondence
 from . import planning_section_cuts, planning_design_dimensions, planning_design_massing
 from . import planning_surface_footprints, planning_area_layout, paving_palette
 from . import planning_area_scale, caption_fragments
-from . import source_text_transforms
+from . import source_text_transforms,planning_theming_notes
 from . import planning_curved_boundaries
 from . import planning_curve_networks
 from . import planning_curve_scopes, planning_hatch_regions, planning_gap_boundaries, planning_building_boundaries, planning_plan_markings
@@ -419,7 +419,7 @@ def _html(config, documents, pages):
             if page.get('plan_marking_overlay'):
                 link=escape(page['plan_marking_overlay']['file'],quote=True)
                 sections.append('<details open><summary>Games, toilets and ride plan markings</summary>'
-                    '<p>Orange: source alignment. Blue wool guides: one-block display offsets. Brown: drawn support-frame edges. Blue outlines: Games and toilet/arcade walls. Flat 2D review only.</p>'
+                    '<p>Orange: source alignment. Blue wool guides: one-block display offsets. Brown: drawn support-frame edges. Blue outlines: Games and toilet/arcade walls. Purple: theming limits. Yellow: queue-below note anchor; no queue route is inferred. Flat 2D review only.</p>'
                     '<a href="'+link+'"><img src="'+link+'" alt="Reviewed plan markings"></a></details>')
             if page.get('building_boundary_overlay'):
                 buildings=page['building_boundary_overlay'];link=escape(buildings['file'],quote=True)
@@ -514,7 +514,7 @@ def run(config, resolve, output, *, cancelled=lambda:False, progress=lambda mess
             planning_section_profiles,planning_section_correspondence,
             planning_section_cuts,planning_design_dimensions,planning_design_massing,
             planning_surface_footprints,planning_area_layout,planning_area_scale,caption_fragments,source_text_transforms,
-            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes,planning_hatch_regions,planning_gap_boundaries,planning_building_boundaries,planning_plan_markings)},
+            paving_palette,building_spec,study_mesh_export,wing_shell_study,planning_curved_boundaries,planning_curve_networks,planning_curve_scopes,planning_hatch_regions,planning_gap_boundaries,planning_building_boundaries,planning_plan_markings,planning_theming_notes)},
         'closed_curved_boundary_limits':dict(planning_curved_boundaries.LIMITS),
         'open_curve_network_limits':dict(planning_curve_networks.LIMITS),
         'gap_boundary_policy_sha256':digest(planning_gap_boundaries.policy()),

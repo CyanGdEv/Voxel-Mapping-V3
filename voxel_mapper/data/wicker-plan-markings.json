@@ -76,6 +76,94 @@
         "source_paint_groups": 73495,
         "source_paint_witnesses_sha256": "949a743d9a7e86469688455bc27b5c9ee35e379835cc5ca0b7d98650743963f6"
       }
+    },
+    {
+      "key": "theming-envelope-1",
+      "label": "Theming Envelope 1 to 195.8; queuing below",
+      "role": "theming_envelope",
+      "selector": {
+        "ordinals": [
+          89254
+        ]
+      },
+      "filled_boundary": true,
+      "source_fill_opacity": 0.5,
+      "annotation": {
+        "trace_indices": [
+          4703,
+          4704,
+          4705,
+          4706,
+          4707,
+          4708,
+          4709,
+          4710,
+          4711
+        ]
+      },
+      "expected": {
+        "geometry_sha256": "763b427120808cc1402b7dc5e10acd90d983003f779c9ad3fd77805a28db8cf7",
+        "source_paint_groups": 1,
+        "source_paint_witnesses_sha256": "161940ef33d9058bfa825eec62c4f0007e5a670c16b0aa63902fb1ce70be88ef",
+        "source_annotation_sha256": "68b61c4566bd66585b05af86985373a960881d397377fa683eb105a7db01beff"
+      }
+    },
+    {
+      "key": "theming-envelope-2",
+      "label": "Theming Envelope 2 to 196.8",
+      "role": "theming_envelope",
+      "selector": {
+        "ordinals": [
+          89566,
+          89708
+        ]
+      },
+      "filled_boundary": true,
+      "allow_source_curves": true,
+      "source_fill_opacity": 0.699999988079071,
+      "annotation": {
+        "trace_indices": [
+          4750,
+          4751,
+          4752,
+          4753,
+          4754,
+          4755
+        ]
+      },
+      "expected": {
+        "geometry_sha256": "c604ab31bfd90fc54fe78eb6b37fc1cced874e1fb1c5193167a572ad51b633e8",
+        "source_paint_groups": 2,
+        "source_paint_witnesses_sha256": "12a26cfbb639277e72966489aa226fa3eb6fb910b680a40eff3464eadf6fc79e",
+        "source_annotation_sha256": "d68f329b7ce09c72cdfb1bbf1283e78014ba5a69cb5b815fa548f2a98313124f"
+      }
+    },
+    {
+      "key": "envelope-1-queue-below-note",
+      "label": "Envelope 1: queuing below; annotation anchor only",
+      "role": "queue_below_annotation",
+      "selector": {
+        "annotation_anchor": 4711
+      },
+      "annotation": {
+        "trace_indices": [
+          4703,
+          4704,
+          4705,
+          4706,
+          4707,
+          4708,
+          4709,
+          4710,
+          4711
+        ]
+      },
+      "expected": {
+        "geometry_sha256": "83e864b8fad29b826a85300f3ade302458138440ee2791d52d3f3aec296e9383",
+        "source_paint_groups": 0,
+        "source_paint_witnesses_sha256": "6096ff3a550989f70452c57626f721f5c42820a1dcca974fd0792665b85780c6",
+        "source_annotation_sha256": "68b61c4566bd66585b05af86985373a960881d397377fa683eb105a7db01beff"
+      }
     }
   ]
 }

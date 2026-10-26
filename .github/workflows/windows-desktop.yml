@@ -60,6 +60,8 @@ on:
       - 'voxel_mapper/planning_geometry_world.py'
       - 'voxel_mapper/planning_building_boundaries.py'
       - 'voxel_mapper/planning_plan_markings.py'
+      - 'voxel_mapper/planning_theming_notes.py'
+      - 'voxel_mapper/data/wicker-plan-markings-v1.json'
       - 'voxel_mapper/data/wicker-plan-markings.json'
       - 'voxel_mapper/rock_world_render.py'
       - 'voxel_mapper/data/rock-boundary-reference.json'
@@ -104,6 +106,7 @@ on:
       - 'tests/test_planning_geometry_world.py'
       - 'tests/test_planning_building_boundaries.py'
       - 'tests/test_planning_plan_markings.py'
+      - 'tests/test_theming_envelopes.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -219,6 +222,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw '2D labelled building boundary tests failed' }
           python -m unittest discover -s tests -p 'test_planning_plan_markings.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Reviewed plan markings and native wool tests failed' }
+          python -m unittest discover -s tests -p 'test_theming_envelopes.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Layered theming envelopes and queue-below semantics failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v

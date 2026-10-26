@@ -175,11 +175,18 @@ def _check_plan_marking_palette(root):
     from .planning_world_preview import _verify_archive
     from .building_spec import digest
     preset=planning_plan_markings.profile()
-    colours=('orange_wool','blue_wool','brown_wool')
+    from .planning_theming_notes import parse as theming_note
+    first=theming_note('Theming Envelope 1 to 195.8 with queuing below')
+    second=theming_note('Theming Envelope 2 to 196.8')
+    if (not first['queueing_below_stated'] or second['queueing_below_stated']
+            or first['queue_route_geometry'] is not None or first['upper_level_is_building_height']
+            or len([r for r in preset['features'] if r['role']=='theming_envelope'])!=2):
+        raise ValueError('Packaged layered theming semantics failed verification')
+    colours=('orange_wool','blue_wool','brown_wool','purple_wool','yellow_wool')
     directory=root/'plan-marking-palette';directory.mkdir()
     source=directory/'voxels.jsonl'
     source.write_text(''.join(json.dumps({'x':i,'y':0,'z':0,'kind':'terrain','material':colour})+'\n' for i,colour in enumerate((*colours,'grass_block'))))
-    report={'voxel_size_m':1,'vertical_datum':'STUDY_ZERO','crs':None,'spawn_local_xyz_m':[3,1,0]}
+    report={'voxel_size_m':1,'vertical_datum':'STUDY_ZERO','crs':None,'spawn_local_xyz_m':[len(colours),1,0]}
     exported=bedrock.export_world(source,directory,report,max_blocks=128,ground_depth=3)
     archive=_verify_archive(directory/exported['file'],directory/'bedrock-world',exported,lambda:False)
     if not archive['saved_world_reopened'] or exported['round_trip_validation']!='all written blocks and all unwritten air cells verified':
@@ -371,6 +378,7 @@ def run(output):
         'rock_reference_style_verified':True,
         'additional_2d_building_boundaries_verified':True,
         'plan_marking_wool_palette_verified':True,
+        'theming_queueing_below_semantics_verified':True,
         'reviewed_plan_marking_profile_sha256':plan_profile_pin,
         'reference_world_building_boundaries':reference_world['building_boundary_candidates'],
         'reference_world_rock_columns':reference_world['rock_columns'],
