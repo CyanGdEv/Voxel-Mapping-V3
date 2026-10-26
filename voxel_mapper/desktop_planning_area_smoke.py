@@ -137,7 +137,9 @@ def _check_reference_geometry_world(root,runtime):
         for outer,inner in (((100,100,350,350),(130,130,320,320)),((500,100,850,450),(570,170,780,380))):
             drawing=page.new_shape();drawing.draw_rect(outer);drawing.draw_rect(inner)
             drawing.finish(fill=tan,color=None,even_odd=True);drawing.commit()
-        page.draw_rect((1050,100,1150,200));page.insert_text((1070,150),'Shop',fontsize=10)
+        page.draw_rect((1050,100,1150,200),fill=(1,1,1));page.insert_text((1070,150),'Shop',fontsize=10)
+        for _ in range(2):page.draw_rect((1000,400,1120,500),fill=(1,1,1))
+        page.insert_text((1020,450),'Maintenance',fontsize=10)
         page.draw_rect((2100,90,2160,120),fill=tan,color=None)
         page.insert_text((2170,110),'Existing Paving with levels',fontsize=8)
         page.insert_text((60,1580),'Site Plan Proposed showing Buildings and Paths',fontsize=12)
@@ -160,6 +162,7 @@ def _check_reference_geometry_world(root,runtime):
     if (result.get('version')!='planning-geometry-world-preview-v1' or result.get('fence_columns',0)<1
             or result.get('rock_columns',0)<1 or not result['saved_geometry_validation']['native_block_states_verified']
             or not result['archive_validation']['saved_world_reopened'] or result['rock_paving_cell_overlap']!=0
+            or result.get('building_marker_mode')!='2d_boundary_only' or result.get('building_boundary_candidates',0)<2
             or result['world_placement_eligible'] or result['model_weights_updated']
             or hashlib.sha256(source.read_bytes()).hexdigest()!=sha):
         raise ValueError('Reference-style rocks and narrow-path oak fences failed verification')
@@ -348,6 +351,8 @@ def run(output):
         'reference_geometry_world_verified':True,
         'narrow_path_oak_fences_verified':True,
         'rock_reference_style_verified':True,
+        'additional_2d_building_boundaries_verified':True,
+        'reference_world_building_boundaries':reference_world['building_boundary_candidates'],
         'reference_world_rock_columns':reference_world['rock_columns'],
         'reference_world_fence_columns':reference_world['fence_columns'],
         'complete_tiled_area_verified':True,'wide_original_pdf_sha256':wide_sha,

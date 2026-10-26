@@ -2,7 +2,7 @@
 from PIL import Image,ImageDraw
 
 COLOURS={'grass_block':'#78a052','stone':'#92968f','stone_bricks':'#888b85','cobblestone':'#70786f',
-         'oak_fence':'#a18350','yellow_concrete':'#dfbd35','terracotta':'#a85a3e','mud_bricks':'#8d694c','oak_planks':'#a67c4c','granite':'#a17d6d'}
+         'light_blue_concrete':'#45a9ed','oak_fence':'#a18350','yellow_concrete':'#dfbd35','terracotta':'#a85a3e','mud_bricks':'#8d694c','oak_planks':'#a67c4c','granite':'#a17d6d'}
 
 
 def colour(material):
@@ -46,7 +46,7 @@ def render_previews(root,sampled):
             draw.rectangle((px,py,px+scale-1,py+scale-1),fill=colour(material))
             if (x,z) in sampled['rocks']:
                 draw.rectangle((px,py,px+scale-1,py+scale-1),fill=colour(sampled['rocks'][(x,z)][0][1]),outline='#434b42')
-    draw.text((20,image.height-38),'Grass interiors retained. Yellow: building footprint markers. Flat nominal ground.',fill='#303830')
+    draw.text((20,image.height-38),('Grass interiors retained. Blue: 2D building boundary markers. Flat nominal ground.' if sampled.get('building_marker_mode')=='2d_boundary_only' else 'Grass interiors retained. Yellow: building footprint markers. Flat nominal ground.'),fill='#303830')
     draw.text((20,image.height-20),'Rock shapes are a user-reference prototype; no building heights or surveyed terrain are claimed.',fill='#303830')
     image.save(root/'world-overview.png')
     rocks=sorted(sampled['rocks']);candidates=rocks[::max(1,len(rocks)//120)]
