@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Gap boundary defaults](docs/planning-gap-boundaries.md) apply the requested rule: enclosed paving gaps receive assumed rock edging unless explicit claims override it. Planting interiors stay intact; building interfaces are separated, and assumptions do not become training truth or generated world blocks.
+
 [Existing and proposed paving](docs/planning-existing-paving.md) now recovers solid fills and original compound PDF fill rules as well as hatches. Wicker's review covers 24 existing and 19 proposed paving fills, about 5.25 times the previous blue area, while withholding same-colour annotation backplates. Physical visibility and registration still block world promotion.
 
 [Complete long-curve scopes](docs/planning-complete-curve-scopes.md) retain original strokes that cross the label search windows, preserving their full controls and paint provenance. Wicker's long red strokes are now available for review; curve intersections and physical path interpretation still block new path generation.

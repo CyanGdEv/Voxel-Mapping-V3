@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "development_exposure": "previously_inspected",
+  "scope": "gap policy applied to pinned prior paving and building proposals; unrelated original-document discovery pipeline not rerun",
+  "source_building_claims_file_sha256": "03888398e90ceb47742469253b0199cb63ef02d6df4dec91eff19493a4258c3e",
+  "source_paving_file_sha256": "a424d77f73d63ad273f4a71d5168d93c599d0cbc103a9a2b8e09d0af9205a5a3",
+  "source_layout_file_sha256": "d71b556288e8ece7b31d77fb4a0f0c531caeed2bf8f18e06182b67c73d2e1367",
+  "summary": {
+    "enclosed_gaps": 43,
+    "assumed_rock_boundaries": 43,
+    "explicit_boundary_claims": 0,
+    "gaps_with_explicit_boundary_segments": 1
+  },
+  "work": {
+    "input_points": 18592,
+    "gap_points": 1256,
+    "claim_checks": 347,
+    "union_work": 440973,
+    "segment_checks": 2796
+  },
+  "implementation_sha256": "c9dbf964841b58417aa9ed6de69df4a3deec3162d0230113c3b10ec2144c91a6",
+  "policy": {
+    "version": "planning-gap-boundary-policy-v1",
+    "policy_origin": "user_instruction",
+    "default_gap_boundary_material": "rock",
+    "default_gap_is_boundary": true,
+    "explicit_claims_override_default": true,
+    "fill_gap_interior": false,
+    "infer_boundary_height_or_width": false,
+    "use_assumptions_as_training_truth": false
+  },
+  "assumption_is_user_instruction_not_source_material_proof": true,
+  "island_interiors_filled_with_rock": false,
+  "boundary_height_or_width_invented": false,
+  "world_geometry_additions": 0,
+  "training_labels_generated": 0,
+  "model_weights_updated": false,
+  "independent_boundary_audit": {
+    "status": "passed",
+    "gap_contours_checked": 43,
+    "original_gap_contours_preserved": true,
+    "assumed_and_explicit_segment_interiors_disjoint": true,
+    "island_interiors_preserved": true,
+    "height_or_width_invented": false,
+    "world_geometry_additions": 0,
+    "training_labels_generated": 0
+  },
+  "local_validation": {
+    "new_tests": 16,
+    "new_tests_passed": true,
+    "targeted_tests": 71,
+    "targeted_tests_passed": true,
+    "targeted_display_skips": 1
+  }
+}

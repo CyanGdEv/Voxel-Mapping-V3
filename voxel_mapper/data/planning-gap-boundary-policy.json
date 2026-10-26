@@ -1,0 +1,10 @@
+{
+  "version": "planning-gap-boundary-policy-v1",
+  "policy_origin": "user_instruction",
+  "default_gap_boundary_material": "rock",
+  "default_gap_is_boundary": true,
+  "explicit_claims_override_default": true,
+  "fill_gap_interior": false,
+  "infer_boundary_height_or_width": false,
+  "use_assumptions_as_training_truth": false
+}
