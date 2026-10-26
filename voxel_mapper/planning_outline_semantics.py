@@ -22,7 +22,10 @@ from .drawing_page_tools import native_inverse
 VERSION='planning-outline-label-associations-v1'
 FRAME='pdf_native_points_y_up'
 LIMITS={'max_outlines':500,'max_points':200000,'max_labels':128,
-        'max_checks':64000,'max_output_bytes':4000000}
+        'max_checks':64000,'max_output_bytes':4000000,
+        'max_name_context_checks':64000,'max_name_context_suffixes':128}
+NAME_CONTEXT_VERSION='planning-name-context-v1'
+NAME_SUFFIXES={'TAVERN','INN','PUB','HOTEL','CAFE','CAFÉ','LODGE'}
 BACKENDS={'pymupdf':pymupdf.VersionBind,'shapely':shapely.__version__,
           'fonttools':fontTools.__version__}
 
@@ -60,6 +63,26 @@ def _limits(options):
     return limits
 
 
+def _name_suffix(run, suffix):
+    """Conservative original-text typography; never choose a nearest label."""
+    text=''.join(chr(c[0]) for c in run['chars']).strip()
+    if text!=text.upper() or run.get('dir')!=(1.0,0.0) or suffix.get('dir')!=(1.0,0.0):
+        return False
+    if (run.get('wmode')!=0 or suffix.get('wmode')!=0
+            or run.get('font')!=suffix.get('font')
+            or run.get('color')!=suffix.get('color')
+            or run.get('colorspace')!=suffix.get('colorspace')):
+        return False
+    if not all(math.isfinite(v) and v>0 for v in (run['size'],suffix['size'])):return False
+    size=max(run['size'],suffix['size'])
+    if not .85<=run['size']/suffix['size']<=1/.85:return False
+    a,b,c,d=run['bbox'];e,f,g,h=suffix['bbox']
+    below=(0<=f-d<=.75*size and .8*size<=f-b<=1.8*size
+           and (abs(a-e)<=.5*size or abs((a+c-e-g)/2)<=.5*size))
+    inline=(0<=e-c<=.75*size and abs((b+d-f-h)/2)<=.2*size)
+    return below or inline
+
+
 def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:False):
     limits=_limits(options)
     if (not isinstance(sha,str) or not re.fullmatch('[0-9a-f]{64}',sha)
@@ -93,6 +116,7 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
     result={'version':VERSION,'document_sha256':sha,'page':number,'coordinate_frame':FRAME,
         'source_inventory_sha256':digest(inventory),'backends':BACKENDS,'limits':limits,
         'status':'source_label_enclosure_hints_only','labels':[],'outlines':[],
+        'name_context_version':NAME_CONTEXT_VERSION,'name_context_checks':0,
         'inventory_complete':True,'physical_identity_verified':False,
         'view_scope_verified':False,'registration_verified':False,'scale_application_verified':False,
         'world_placement_eligible':False,'training_labels_generated':0,'model_weights_updated':False,
@@ -113,6 +137,7 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
             'shared_component_enclosures':sum(r['status']=='shared_component_label_enclosure_hint' for r in result['outlines']),
             'conflicting_outline_roles':sum(r['status']=='conflicting_source_roles_withheld' for r in result['outlines']),
             'labels_with_unique_enclosure':statuses['unique_visible_source_enclosure'],
+            'qualified_name_labels':statuses['qualified_building_name_withheld'],
             'outline_role_hints':dict(roles),
             'label_statuses':dict(statuses)}
         if len(json.dumps(result,allow_nan=False).encode())>limits['max_output_bytes']:
@@ -127,13 +152,18 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
     raw=page.get_texttrace()
     if len(raw)>10000 or sum(len(r['chars']) for r in raw)>500000:
         return finish('semantic_text_budget_exceeded')
-    runs=ordinary_surfaces.label_runs(raw);selected=[]
+    runs=ordinary_surfaces.label_runs(raw);selected=[];suffixes=[]
     for run in runs:
         text=''.join(chr(c[0]) for c in run['chars']).strip();printed=claim(text)
+        if text in NAME_SUFFIXES:
+            suffixes.append((run,text))
+            if len(suffixes)>limits['max_name_context_suffixes']:
+                return finish('name_context_suffix_budget_exceeded')
         if printed:
             selected.append((run,text,printed))
             if len(selected)>limits['max_labels']:return finish('semantic_label_budget_exceeded')
     index=STRtree(geometries);matrix=native_inverse(page);bound={};competing={};checks=0
+    excluded={};suffix_proofs={}
     for run,text,printed in selected:
         check();rect=pymupdf.Rect(run['bbox'])
         geometry=Polygon([tuple(p*matrix) for p in (rect.tl,rect.tr,rect.br,rect.bl)])
@@ -154,7 +184,48 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
         if len(matches)>1:
             for identifier in matches:competing.setdefault(identifier,[]).append(row['id'])
         if len(matches)==1:
-            row['status']='unique_visible_source_enclosure';bound.setdefault(matches[0],[]).append(row)
+            row['status']='unique_visible_source_enclosure'
+            if printed['role'] in ('path','plaza','surface'):
+                contexts=[]
+                for suffix,text_suffix in suffixes:
+                    check();result['name_context_checks']+=1
+                    if result['name_context_checks']>limits['max_name_context_checks']:
+                        return finish('name_context_work_budget_exceeded')
+                    if _name_suffix(run,suffix):contexts.append((suffix,text_suffix))
+                if len(contexts)==1:
+                    suffix,text_suffix=contexts[0]
+                    rect_suffix=pymupdf.Rect(suffix['bbox'])
+                    geometry_suffix=Polygon([tuple(p*matrix) for p in
+                        (rect_suffix.tl,rect_suffix.tr,rect_suffix.br,rect_suffix.bl)])
+                    suffix_matches=[]
+                    for position in index.query(geometry_suffix,predicate='intersects'):
+                        check();checks+=1
+                        if checks>limits['max_checks']:
+                            return finish('semantic_association_work_budget_exceeded')
+                        if geometries[int(position)].contains(geometry_suffix):
+                            suffix_matches.append(records[int(position)]['candidate_id'])
+                    if suffix_matches==matches:
+                        key=(tuple(suffix['trace_indices']),tuple(suffix['character_indices']))
+                        if key not in suffix_proofs:
+                            suffix_proofs[key]=glyph_visibility.screen_architectural_span(
+                                page,suffix,zoom=24 if suffix['size']<4 else 6)
+                        proof=suffix_proofs[key]
+                        if proof['status']=='raster_consistent_candidate':
+                            row['status']='qualified_building_name_withheld'
+                            row['name_context']={'version':NAME_CONTEXT_VERSION,
+                                'status':'surface_noun_in_building_name',
+                                'name_text':row['text']+' '+text_suffix,
+                                'candidate_id':matches[0],
+                                'suffix':{'text':text_suffix,
+                                    'trace_indices':suffix['trace_indices'],
+                                    'character_indices':suffix['character_indices'],
+                                    'geometry_pdf_native':mapping(geometry_suffix),
+                                    'glyph_screen':proof},
+                                'physical_building_identity_verified':False}
+                            excluded.setdefault(matches[0],[]).append(row['id'])
+                            continue
+            bound.setdefault(matches[0],[]).append(row)
+    excluded_rows={r['id']:r for r in result['labels'] if r['status']=='qualified_building_name_withheld'}
     for identifier,labels in sorted(bound.items()):
         roles={r['claim']['role'] for r in labels};primary=roles-{'surface'}
         states={r['claim']['printed_state'] for r in labels}-{'unspecified'}
@@ -172,6 +243,8 @@ def page_candidates(page,sha,number,inventory,*,options=None,cancelled=lambda:Fa
             'printed_states':sorted({r['claim']['printed_state'] for r in labels}),
             'component_label_count':sum(r['claim']['scope']=='component' for r in labels),
             'competing_label_ids':competing.get(identifier,[]),
+            'excluded_name_label_ids':excluded.get(identifier,[]),
+            'excluded_name_contexts':[excluded_rows[i] for i in excluded.get(identifier,[])],
             'component_footprints_resolved':False,'physical_identity_verified':False,
             'view_scope_verified':False,'world_placement_eligible':False,'geometric_accuracy':None})
     result['association_checks']=checks
