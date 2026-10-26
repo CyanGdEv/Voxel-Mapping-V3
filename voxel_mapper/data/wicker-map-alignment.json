@@ -1,0 +1,38 @@
+{
+  "version": "wicker-map-alignment-profile-v1",
+  "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "osm_sha256": "4ce5cb0f9c154d43bb5539e78a6dc00ad840a0a1e14f9f46efbfe0d01d56ee62",
+  "source_metres_per_native_point": 0.08819444444444444,
+  "transform_model": "rigid_unit_scale_no_reflection",
+  "controls": [
+    {
+      "label": "Shop",
+      "osm_way_id": 834919978
+    },
+    {
+      "label": "Station",
+      "osm_way_id": 834919980
+    },
+    {
+      "label": "Maintenance",
+      "osm_way_id": 834919981
+    }
+  ],
+  "held_out_references": {
+    "courtyard_inner_way_id": 106842140,
+    "nearby_building_way_id": 107259863,
+    "nearby_building_candidate_prefix": "5c41ef8f80"
+  },
+  "independent_registration_verified": false,
+  "target_crs": "EPSG:27700",
+  "terrain_vertical_datum": "ODN",
+  "max_control_residual_m": 1,
+  "minimum_control_iou": 0.8,
+  "limitations": [
+    "OSM references may share the planning source; map residuals are not surveyed accuracy.",
+    "Controls occupy a small station/shop cluster; remote locations require separate checks.",
+    "Station and maintenance are adjacent parts of the same complex.",
+    "Printed scale and proposed plan state do not establish as-built geometry.",
+    "The courtyard join remains manually traced and provisional."
+  ]
+}
