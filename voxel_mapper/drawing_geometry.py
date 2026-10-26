@@ -47,27 +47,35 @@ def flatten_cubic(points,tolerance=.25,max_points=10000,max_depth=16):
 
 def subpaths(path,matrix,options):
     import pymupdf
-    paths=[];current=[];curves=0;error=0;count=0
+    paths=[];current=[];curves=0;error=0;count=0;part_curves=0;part_error=0;part_approximations=[];part_operators=[]
     def point(p):
         p=pymupdf.Point(p)*matrix
         if not math.isfinite(p.x) or not math.isfinite(p.y):raise ValueError('Nonfinite native path point')
         return (p.x,p.y)
-    def append(points):
-        nonlocal current,count
-        join_epsilon=0 if options.get('closed_curved_primitives_only') else 1e-5
+    def append(points,cubic_segments=0,bound=0):
+        nonlocal current,count,part_curves,part_error
+        join_epsilon=0 if options.get('closed_curved_primitives_only') or options.get('open_stroked_primitives_only') else 1e-5
         if current and math.dist(current[-1],points[0])>join_epsilon:flush()
         if not current:current=[points[0]];count+=1
+        if options.get('open_stroked_primitives_only'):
+            part_operators.append({'operator_index':operator_index,'start_vertex':len(current)-1,
+                'end_vertex':len(current)+len(points)-2,'cubic_segments':cubic_segments,
+                'chord_error_bound_pdf_points':bound})
         current.extend(points[1:]);count+=len(points)-1
+        part_curves+=cubic_segments;part_error=max(part_error,bound)
         if count>options['max_points']:raise ValueError('Paint-group flattened point budget exceeded')
     def flush():
-        nonlocal current
-        if current:paths.append(current);current=[]
+        nonlocal current,part_curves,part_error,part_operators
+        if current:
+            paths.append(current);part_approximations.append({'cubic_segments':part_curves,
+                'chord_error_bound_pdf_points':part_error,'points':len(current),'operator_ranges':part_operators})
+            current=[];part_curves=0;part_error=0;part_operators=[]
         if len(paths)>100:raise ValueError('Compound subpath budget exceeded')
-    for item in path['items']:
+    for operator_index,item in enumerate(path['items']):
         if item[0]=='l':append([point(p) for p in item[1:3]])
         elif item[0]=='c':
             points,bound=flatten_cubic([point(p) for p in item[1:5]],options['curve_tolerance_points'],options['max_points'])
-            append(points);curves+=1;error=max(error,bound)
+            append(points,1,bound);curves+=1;error=max(error,bound)
         elif item[0]=='re':
             flush();rect=pymupdf.Rect(item[1]);points=[point(p) for p in (rect.tl,rect.tr,rect.br,rect.bl)]
             if item[2]<0:points.reverse()
@@ -78,11 +86,15 @@ def subpaths(path,matrix,options):
     flush()
     if path.get('closePath') and paths and paths[-1][0]!=paths[-1][-1]:paths[-1].append(paths[-1][0])
     if sum(len(p) for p in paths)>options['max_points']:raise ValueError('Paint-group flattened point budget exceeded')
-    return paths,{'cubic_segments':curves,'chord_error_bound_pdf_points':error,'requested_tolerance_pdf_points':options['curve_tolerance_points'],'method':'adaptive_de_casteljau_control_hull_to_chord','points':sum(map(len,paths))}
+    approximation={'cubic_segments':curves,'chord_error_bound_pdf_points':error,'requested_tolerance_pdf_points':options['curve_tolerance_points'],'method':'adaptive_de_casteljau_control_hull_to_chord','points':sum(map(len,paths))}
+    if options.get('open_stroked_primitives_only'):
+        for points,part in zip(paths,part_approximations):part['points']=len(points)
+        approximation['subpath_approximations']=part_approximations
+    return paths,approximation
 
 
 def validated_options(overrides):
-    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only','closed_curved_primitives_only'}:raise ValueError('Unknown geometry extraction option')
+    if set(overrides)-set(DEFAULTS)-{'min_line_length_points','isolate_open_stroked_subpaths','region_native_points','region_native_windows','max_scan_paths','source_face_primitives_only','closed_curved_primitives_only','open_stroked_primitives_only'}:raise ValueError('Unknown geometry extraction option')
     options={**DEFAULTS,**overrides}
     if type(options['regional_fallback']) is not bool:raise ValueError('Boolean regional fallback required')
     for key in ('regional_columns','regional_rows'):
@@ -116,6 +128,10 @@ def validated_options(overrides):
     if 'closed_curved_primitives_only' in options and type(options['closed_curved_primitives_only']) is not bool:
         raise ValueError('Boolean closed-curve primitive filter required')
     if options.get('closed_curved_primitives_only') and options.get('source_face_primitives_only'):
+        raise ValueError('Exclusive primitive filters required')
+    if 'open_stroked_primitives_only' in options and type(options['open_stroked_primitives_only']) is not bool:
+        raise ValueError('Boolean open-stroke primitive filter required')
+    if options.get('open_stroked_primitives_only') and (options.get('closed_curved_primitives_only') or options.get('source_face_primitives_only')):
         raise ValueError('Exclusive primitive filters required')
     tolerance=options['curve_tolerance_points']
     if type(tolerance) not in (int,float) or not math.isfinite(tolerance) or not .01<=tolerance<=2:raise ValueError('Invalid curve tolerance')
@@ -162,6 +178,11 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
             clips.append((level,clip));continue
         if options.get('closed_curved_primitives_only') and not any(i[0]=='c' for i in path.get('items',[])):
             rejections['noncurved_paint_excluded_from_curve_inventory']+=1;continue
+        if options.get('open_stroked_primitives_only'):
+            if path['type']!='s':
+                rejections['nonstroke_paint_excluded_from_open_network']+=1;continue
+            if not re.fullmatch(r'\s*(?:\[\s*\]\s*0(?:\.0*)?)?\s*',str(path.get('dashes',''))):
+                rejections['nonsolid_stroke_excluded_from_open_network']+=1;continue
         memberships=[]
         if region is not None or windows is not None:
             # Native path bounds enclose the complete primitive, including curves.
@@ -205,8 +226,14 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                     else:geometries.append((LineString(p),index))
             else:raise ValueError('Unsupported paint type')
             for geometry,subpath_index in geometries:
+                geometry_approximation=approximation
+                if options.get('open_stroked_primitives_only') and subpath_index is not None:
+                    geometry_approximation={k:v for k,v in approximation.items() if k!='subpath_approximations'}
+                    geometry_approximation.update(approximation['subpath_approximations'][subpath_index])
                 if options.get('closed_curved_primitives_only') and geometry.geom_type!='Polygon':
                     rejections['open_or_multipart_curve_requires_interpretation']+=1;continue
+                if options.get('open_stroked_primitives_only') and geometry.geom_type!='LineString':
+                    rejections['closed_stroke_excluded_from_open_network']+=1;continue
                 try:
                     if geometry.is_empty or not geometry.is_valid or geometry.geom_type not in ('Polygon','MultiPolygon','LineString'):raise ValueError('Invalid candidate topology')
                     if region is not None and not region.covers(geometry):raise ValueError('Complete geometry crosses region boundary')
@@ -214,8 +241,9 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                         raise ValueError('Complete geometry crosses source window boundary')
                     if not frame.covers(geometry) or geometry.distance(frame.boundary)<.25:raise ValueError('Crop boundary/frame candidate')
                     if any(not c[1].covers(geometry) for c in clips):raise ValueError('Paint group crosses clipping boundary')
-                    if options.get('closed_curved_primitives_only'):
-                        envelope=geometry.buffer(approximation['chord_error_bound_pdf_points'])
+                    if options.get('closed_curved_primitives_only') or options.get('open_stroked_primitives_only'):
+                        bound=geometry_approximation['chord_error_bound_pdf_points']
+                        envelope=geometry.buffer(bound) if bound else geometry
                         if not frame.covers(envelope) or any(not c[1].covers(envelope) for c in clips):
                             raise ValueError('Curve uncertainty crosses crop or clip boundary')
                     if geometry.geom_type=='LineString':
@@ -238,24 +266,24 @@ def extract_page(page,sha,page_number,*,_paths=None,**overrides):
                         continue
                 style={'width_pdf_points':path.get('width'),'dashes_pdf':str(path.get('dashes',''))[:1024]}
                 if style['width_pdf_points'] is not None and (not math.isfinite(style['width_pdf_points']) or style['width_pdf_points']<0):raise ValueError('Invalid native stroke width')
-                paint={'ordinal':ordinal,'subpath':subpath_index,'stroke_style':style,'curve_approximation':approximation}
+                paint={'ordinal':ordinal,'subpath':subpath_index,'stroke_style':style,'curve_approximation':geometry_approximation}
                 if windows is not None:paint['source_region_indices']=list(memberships)
                 if digest in seen:
                     retained=seen[digest]
                     if len(retained['paint_references'])>=256:
                         retained['paint_reference_truncated']=True;rejections['paint_reference_budget_deferred']+=1;continue
                     retained['paint_references'].append(paint)
-                    retained['curve_approximation']={**retained['curve_approximation'],'cubic_segments':max(retained['curve_approximation']['cubic_segments'],approximation['cubic_segments']),'chord_error_bound_pdf_points':max(retained['curve_approximation']['chord_error_bound_pdf_points'],approximation['chord_error_bound_pdf_points'])}
-                    if approximation['cubic_segments']:retained['rendering_status']=retained['rendering_status'].replace('supported_straight','supported_curved')
+                    retained['curve_approximation']={**retained['curve_approximation'],'cubic_segments':max(retained['curve_approximation']['cubic_segments'],geometry_approximation['cubic_segments']),'chord_error_bound_pdf_points':max(retained['curve_approximation']['chord_error_bound_pdf_points'],geometry_approximation['chord_error_bound_pdf_points'])}
+                    if geometry_approximation['cubic_segments']:retained['rendering_status']=retained['rendering_status'].replace('supported_straight','supported_curved')
                     continue
                 if len(candidates)>=options['max_candidates']:rejections['candidate_budget_deferred']+=1;break
                 points=len(geometry.coords) if geometry.geom_type=='LineString' else sum(len(p.exterior.coords)+sum(len(r.coords) for r in p.interiors) for p in ([geometry] if geometry.geom_type=='Polygon' else geometry.geoms))
                 if total_points+points>options['max_total_points']:rejections['page_point_budget_deferred']+=1;break
                 total_points+=points
-                curved=bool(approximation['cubic_segments']);kind='polyline' if geometry.geom_type=='LineString' else 'polygon'
+                curved=bool(geometry_approximation['cubic_segments']);kind='polyline' if geometry.geom_type=='LineString' else 'polygon'
                 candidate={'id':digest,'document_sha256':sha,'page':page_number,'geometry':mapping(geometry),'coordinate_frame':'pdf_native_points_y_up','paint_references':[paint],
                     'extraction_kind':'drawing_geometry','extraction_version':VERSION,'extraction_contract':identity,'rendering_status':'supported_'+('curved' if curved else 'straight')+'_unclipped_'+kind,
-                    'curve_approximation':approximation,'stroke_style':style,'semantic_status':'unclassified','line_role':'unclassified_stroked_path' if kind=='polyline' else None,'physical_identity_verified':False,'world_geometry_additions':0}
+                    'curve_approximation':geometry_approximation,'stroke_style':style,'semantic_status':'unclassified','line_role':'unclassified_stroked_path' if kind=='polyline' else None,'physical_identity_verified':False,'world_geometry_additions':0}
                 candidates.append(candidate);seen[digest]=candidate
             if rejections['candidate_budget_deferred'] or rejections['page_point_budget_deferred']:break
         except (ValueError,TypeError,KeyError,OverflowError) as exc:rejections[str(exc)]+=1
