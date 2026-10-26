@@ -52,6 +52,7 @@ on:
       - 'voxel_mapper/planning_design_massing.py'
       - 'voxel_mapper/planning_world_preview.py'
       - 'voxel_mapper/planning_surface_footprints.py'
+      - 'voxel_mapper/planning_curved_boundaries.py'
       - 'voxel_mapper/planning_area_layout.py'
       - 'voxel_mapper/planning_area_scale.py'
       - 'voxel_mapper/caption_fragments.py'
@@ -83,6 +84,7 @@ on:
       - 'tests/test_planning_outline_semantics.py'
       - 'tests/test_planning_name_context.py'
       - 'tests/test_planning_annotation_context.py'
+      - 'tests/test_planning_curved_boundaries.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -180,6 +182,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Original building-name qualifier tests failed' }
           python -m unittest discover -s tests -p 'test_planning_annotation_context.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Whole native annotation context tests failed' }
+          python -m unittest discover -s tests -p 'test_planning_curved_boundaries.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original closed curved boundary review tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
           python -m unittest discover -s tests -p 'test_planning_component_measurements.py' -v

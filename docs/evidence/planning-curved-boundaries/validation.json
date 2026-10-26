@@ -1,0 +1,204 @@
+{
+  "accepted_park_geometry": 0,
+  "building_heights_reconstructed": 0,
+  "closed_curve_candidates": 116,
+  "covered_boundaries_withheld": 21,
+  "exact_curve_topology_verified": false,
+  "extraction": {
+    "candidates": 116,
+    "curved_candidates": 116,
+    "geometry_types": {
+      "Polygon": 116
+    },
+    "raw_paths": 92902,
+    "region_native_points": null,
+    "rejections": {
+      "Crop boundary/frame candidate": 3,
+      "Small symbol or sheet enclosure candidate": 208,
+      "Text glyph/annotation mask": 1,
+      "noncurved_paint_excluded_from_curve_inventory": 89771,
+      "nonopaque_paint": 417,
+      "open_or_multipart_curve_requires_interpretation": 2341
+    },
+    "retained_points": 4408,
+    "selected_paths": 92902,
+    "status": "unplaced_geometry_candidates",
+    "world_geometry_additions": 0
+  },
+  "final_curve_stage_implementation": {
+    "basis": "module_file_bytes",
+    "sha256": "5fc3c55e35d1c4b22fb6a38e0013ead4bcf0fc2803a18be62bebc00856569844"
+  },
+  "final_curve_stage_rerun_identical": true,
+  "independent_cubic_samples": 24700,
+  "integration_replay_scope": "before final per-primitive quota guard; final curve stage rerun independently and identical",
+  "layout": {
+    "nominal_area_boundary_contacts": 1,
+    "nominal_area_building_candidates": 4,
+    "nominal_area_gap_pairs": 14,
+    "nominal_area_layout_candidates": 6,
+    "nominal_area_overlap_pairs": 0,
+    "nominal_area_path_plaza_candidates": 0,
+    "registered_area_layouts": 0
+  },
+  "limits": {
+    "max_candidates": 500,
+    "max_output_bytes": 8000000,
+    "max_points": 200000,
+    "max_source_control_points": 100000,
+    "max_source_operators": 20000
+  },
+  "local_tests": {
+    "focused": {
+      "log_sha256": "7ef876faf530d54f9b7774807ce580b5b7bb6873d7fa77406311881d90be0f07",
+      "seconds": 6.373,
+      "skips": 0,
+      "status": "passed",
+      "tests": 14
+    },
+    "managed_desktop": {
+      "log_sha256": "c68999d868581a82499590cdc1c7cdc4f3855c703def19020f7196129eebed62",
+      "seconds": 105.516,
+      "skips": 0,
+      "status": "passed",
+      "tests": 1
+    }
+  },
+  "maximum_sample_distance_pdf_points": 0.035710516987304326,
+  "minecraft_import_or_gameplay_tested": false,
+  "neural_weights_updated": false,
+  "new_paths_generated": 0,
+  "original_controls_independently_verified": 1532,
+  "original_operators_independently_verified": 386,
+  "original_paint_witnesses_independently_verified": 95,
+  "previous_layout_bytes_preserved": true,
+  "previous_saved_layout_reload_passed": true,
+  "requested_tolerance_pdf_points": 0.05,
+  "retained_review_records": 95,
+  "runtime_implementation_contract": {
+    "__main__": {
+      "basis": "module_file_bytes",
+      "sha256": "ba4aee73aab500692069757cca0e3b7cff67bdd433b6153b02ffc8f22629e450"
+    },
+    "voxel_mapper.architectural_view_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "47c5cb229f826528e1baa67e5ebd674a0d51a14c20b252344b98ab295024fb75"
+    },
+    "voxel_mapper.building_pdf_discovery": {
+      "basis": "module_file_bytes",
+      "sha256": "e56b2679c5f01bdc1098ba866278721d54ddc306a8240c7d454006a368983d88"
+    },
+    "voxel_mapper.building_raster_views": {
+      "basis": "module_file_bytes",
+      "sha256": "4b08d670a4abe39472380556c48476d95bd4f947ca1485f688aecd5450be8882"
+    },
+    "voxel_mapper.building_spec": {
+      "basis": "module_file_bytes",
+      "sha256": "22c8fdafcbda524bc3df489ea5929922d17a063234011acbb555162e3c3cf920"
+    },
+    "voxel_mapper.caption_fragments": {
+      "basis": "module_file_bytes",
+      "sha256": "57d9e9abf3096822dcded13ec5565c232937132a280aa3725d9e419e090c9190"
+    },
+    "voxel_mapper.drawing_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "67250423dbba623f7987d43076f4540bdb91ee1add276aa50953846054977c6b"
+    },
+    "voxel_mapper.drawing_page_tools": {
+      "basis": "module_file_bytes",
+      "sha256": "18849e79a52c27ef7ef3c9312949bb11eeb08e604bbe73e8ab83ffe7d7df0d20"
+    },
+    "voxel_mapper.drawing_view_candidates": {
+      "basis": "module_file_bytes",
+      "sha256": "7ebe0a859cdeed28f267b622aedb8acb3794b616a6424d8699227a7eabe09a32"
+    },
+    "voxel_mapper.glyph_visibility": {
+      "basis": "module_file_bytes",
+      "sha256": "87c57c355f60d39dbcd203d7690472601cab7d6665ad4d3c49394ef8ed5cf6ba"
+    },
+    "voxel_mapper.linework_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "3428a8952a0c97223c4a81bbc0e225bfd1054f4af1be7e7ead656ca61a93a318"
+    },
+    "voxel_mapper.ordinary_surfaces": {
+      "basis": "module_file_bytes",
+      "sha256": "731ea0f42a3a141825cd85f6ac206c01852cef0da20ec26f2943e84e69a2ae6f"
+    },
+    "voxel_mapper.paving_palette": {
+      "basis": "module_file_bytes",
+      "sha256": "576f3ab3fd97445c43cf1318894d215569f74d50643a8c47e808d3a6eca4fb55"
+    },
+    "voxel_mapper.planning_area_layout": {
+      "basis": "module_file_bytes",
+      "sha256": "20a286cca905387cd1f8af088ed1991ffecad4e50ea2cce7f0abf41037cf444a"
+    },
+    "voxel_mapper.planning_area_scale": {
+      "basis": "module_file_bytes",
+      "sha256": "1c2f46f6dfd577769372bcc5aa19a4348c72433946d3c286dc70e3e2826ec0c6"
+    },
+    "voxel_mapper.planning_component_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "0521a2597c86a465abdb47f1ef63d82fadb82894b330c8dfe43c01c63265712b"
+    },
+    "voxel_mapper.planning_component_measurements": {
+      "basis": "module_file_bytes",
+      "sha256": "a64d818c8ccc373a1b8af8875211b01a4b993034e078b2f1008aa3f153581402"
+    },
+    "voxel_mapper.planning_curved_boundaries": {
+      "basis": "module_file_bytes",
+      "sha256": "6ad5f90bed611c71fde56c6524b7d65faf4c7369738f27492755e3b98660f853"
+    },
+    "voxel_mapper.planning_design_dimensions": {
+      "basis": "module_file_bytes",
+      "sha256": "ccf686d86935bd8e4d51e49674b9ce3ee8dde3562179ade1ab72b17e892ec7ee"
+    },
+    "voxel_mapper.planning_design_massing": {
+      "basis": "module_file_bytes",
+      "sha256": "ef7f7784a63c0d2d03f447930f1b4429130e5e1d92a05ca22e62ed0097145324"
+    },
+    "voxel_mapper.planning_outline_semantics": {
+      "basis": "module_file_bytes",
+      "sha256": "ec213b94f20a20168027bcd34c525a5ff244c842b0ef19963946555878bc5e12"
+    },
+    "voxel_mapper.planning_section_correspondence": {
+      "basis": "module_file_bytes",
+      "sha256": "114cad93c73ebdae21aef0318ba3adb99b7ac6892f90b816d82894bf94b1265c"
+    },
+    "voxel_mapper.planning_section_cuts": {
+      "basis": "module_file_bytes",
+      "sha256": "10bd85b5ce92239522359fdf0d30755396f22ee09453e55d77e8006733223b6f"
+    },
+    "voxel_mapper.planning_section_profiles": {
+      "basis": "module_file_bytes",
+      "sha256": "883361deb103b47e1402c3ba6e1116f20e9b0c4ee0465ed9b2891885f23dd3d6"
+    },
+    "voxel_mapper.planning_surface_footprints": {
+      "basis": "module_file_bytes",
+      "sha256": "b549e8870c5d14c930561a0bd60216a5c24e6d3e930a144e647f4935ca103785"
+    },
+    "voxel_mapper.planning_view_geometry": {
+      "basis": "module_file_bytes",
+      "sha256": "20282681dda980443adf8369e6ceee073044222118c199b9c499240601715853"
+    },
+    "voxel_mapper.source_text_transforms": {
+      "basis": "module_file_bytes",
+      "sha256": "6cd94779061b7bc9e075027a8ba81daa803e06b02973808dd0dea55b3728b367"
+    },
+    "voxel_mapper.study_mesh_export": {
+      "basis": "module_file_bytes",
+      "sha256": "7582a7a430bc33a3d7a714dc9986aab1d8cc26f2b9dfc4a5b94581e910221e71"
+    },
+    "voxel_mapper.wing_shell_study": {
+      "basis": "module_file_bytes",
+      "sha256": "3f3e6b6b63c0a17a07a8cf0faa917db472d6dedc87c7b661be50fcb5c345aef6"
+    }
+  },
+  "source_and_output_hashes_verified": true,
+  "source_document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "source_exposure": "previously_inspected_development",
+  "source_layout_sha256": "d71b556288e8ece7b31d77fb4a0f0c531caeed2bf8f18e06182b67c73d2e1367",
+  "source_report_sha256": "7931bee144eb079115a2cec43ecb8b8166b157e609da1b09290c943dd493b03d",
+  "training_labels_generated": 0,
+  "unseen_accuracy_benchmark": false,
+  "version": "planning-closed-curved-boundary-development-validation-v1"
+}

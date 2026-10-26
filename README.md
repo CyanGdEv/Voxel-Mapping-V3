@@ -1,5 +1,7 @@
 ## Windows desktop and CPU learning
 
+[Closed curved boundary review](docs/planning-curved-boundaries.md) retains original Bézier controls, holes and bounded display approximations in a separate planning overlay. Curved trees and legend symbols remain unclassified; these records cannot create paths or world geometry.
+
 [Whole native annotation context](docs/planning-annotation-context.md) prevents split instructions, titles and material notes from becoming feature labels. Wicker excludes eight such fragments while retaining all four building-footprint and two material-surface proposals. Genuine path boundaries and building heights remain unresolved.
 
 [Original building-name context](docs/planning-building-name-context.md) recognises the split “COURTYARD TAVERN” annotation without treating its first word as a plaza. Wicker now retains four building-footprint and two material-surface proposals. Heights, roofs and a verified path network remain unfinished.
