@@ -756,3 +756,9 @@ The [track-only reference revision](docs/wicker-track-only-reference.md) replace
 support frames with the user's slab, fence and trapdoor pattern. Run the timber
 track generator with `--track-only` to rebuild the existing 98.9 m section from
 the maintenance-built park; the rest of the route remains plan guides.
+
+The [full track-only layout](docs/wicker-full-track-layout.md) extends the reference
+slab/fence/trapdoor style around the complete plan centreline, with no supports.
+`python -m voxel_mapper.full_track_world --help` lists its inputs. Fourteen printed
+levels guide a provisional profile; approach/crossing estimates, the short closure
+and local terrain/building passage changes are explicitly recorded.
