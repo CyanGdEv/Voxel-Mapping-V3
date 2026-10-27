@@ -741,3 +741,5 @@ Architectural access review: [Wicker openings, stair flights and roof-versus-wal
 Wall-based world prototype: [Conditional architectural floors and shop shell](docs/wicker-wall-shell-preview.md) exports three corrected floor studies and one source-height shop shell, with explicit datum, access and display-geometry assumptions.
 
 Station/preshow extension: [Source-height slab roofs, connected upper floors and provisional hollow undercroft](docs/wicker-station-preshow-world.md) retains the corrected shop and adds a bounded estimated entrance flight with native block-state checks.
+
+Station access update: [Half-step connection to retained paving and basement outline evidence](docs/wicker-station-access.md) replaces the one-block entrance rise and records two original basement wall gaps without inventing a queue or stair connection.

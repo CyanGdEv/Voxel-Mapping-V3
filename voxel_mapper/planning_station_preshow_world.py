@@ -295,7 +295,12 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
     basement_air={(x,h,y) for x,y in preshow-lower_boundary for h in range(bottom,top-1)}
     if any(p in all_structures for p in basement_air):raise ValueError('Provisional undercroft interior is obstructed')
     main_entry=next(o for o in portals['preshow_low'] if o['id'].startswith('z-'))
-    flight,flight_report=entry_flight(main_entry,-matrix[:,1],top,terrain,all_structures,protected_shop,upper)
+    from .station_access import paving_approach,basement_review
+    retained_paving=set(sampled['paving'])-set(sampled['markers'])-set(sampled['plan_markers'])
+    flight,flight_report=paving_approach(main_entry,top,terrain,all_structures,protected_shop,upper,retained_paving,cancelled=cancelled)
+    if not flight_report.get('ground_to_upper_floor_connected'):
+        raise ValueError('No half-step connection to retained source paving: '+flight_report['status'])
+    basement_evidence,basement_image=basement_review(Path(pdf_directory)/(profile['sources']['basement']+'.pdf'))
     new.update(flight);all_structures.update(flight)
     if len(new)>limits['new_structure_blocks']:raise ValueError('Access additions exceed structure budget')
     flight_head_air={(k['source_cell_xy'][0],h,k['source_cell_xy'][1]) for k in flight_report.get('surfaces',[]) for h in [math.ceil(k['walking_top_m']),math.ceil(k['walking_top_m'])+1]}
@@ -309,7 +314,7 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
         with voxel.open('w') as stream:
             for r in terrain.values():stream.write(json.dumps(r)+'\n')
             for (x,h,y),material in sorted(all_structures.items()):stream.write(json.dumps({'x':x,'y':h,'z':y+1,'kind':'structure','material':material})+'\n')
-        report={'version':'conditional-station-preshow-world-v1','status':'station_and_preshow_exterior_with_provisional_undercroft','voxel_size_m':1,'model_blocks_per_source_metre':1,
+        report={'version':'conditional-station-preshow-world-v2','status':'station_and_preshow_with_paving_connected_approach','voxel_size_m':1,'model_blocks_per_source_metre':1,
             'crs':'EPSG:27700','vertical_datum':'ODN','alignment':base['alignment'],'horizontal_transform':base['horizontal_transform'],'spawn_local_xyz_m':base['spawn_local_xyz_m'],
             'parts':part_reports,'upper_floor_top_m':top,'undercroft_floor_top_m':bottom,'station_inspection_level_m':181.25,'inspection_floor_reconstructed':False,
             'source_levels':profile['printed_levels_m'],'source_floor_datum_verified':False,'source_station_passenger_floor_role_verified':False,
@@ -320,7 +325,7 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
             'sources':base['sources'],'source_pdf_sha256':profile['sources'],'planning_source_pins':base['planning_source_pins'],'source_pins':base['source_pins'],
             'production_placement_eligible':False,'physical_registration_verified':False,'accepted_training_labels':0,'minecraft_import_tested':False,
             'implementation_sha256':file_hash(__file__),'profile_sha256':file_hash(PROFILE),'source_base_implementation_sha256':file_hash(shop.__file__),
-            'template_implementation_sha256':file_hash(templates.__file__),'limitations':profile['limitations']}
+            'template_implementation_sha256':file_hash(templates.__file__),'access_implementation_sha256':file_hash(Path(__file__).with_name('station_access.py')),'basement_source_review':basement_evidence,'limitations':profile['limitations']}
         from . import bedrock
         from .planning_world_preview import _spawn_check,_verify_archive
         old_openings=base['shop_shell']['openings'];old_top=next(r['preview_floor_top_odn_assumption_m'] for r in base['floor_plates'] if r['labels']==['Shop'])
@@ -336,10 +341,10 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
             report['native_entry_surface_validation']=_native_surfaces(path,offset,flight_report.get('surfaces',[]))
             atomic_json(path/'planning-geographic-alignment.json',{**base['alignment'],'minecraft_cell_centre_to_source_xy':'[Minecraft X + 0.5, -(Minecraft Z + 0.5)]','vertical_offset_blocks':offset})
             atomic_json(path/'STATION-PRESHOW-ASSUMPTIONS.json',{k:report[k] for k in ['datum_assumption','source_levels','limitations','inspection_floor_reconstructed']})
-        world=bedrock.export_world(voxel,root,report,name='Wicker STATION and PRESHOW - corrected shop retained',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name='Wicker STATION ACCESS - half-step paving connection',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-station-preshow.mcworld');report['world']['file']='wicker-station-preshow.mcworld';shutil.rmtree(root/'bedrock-world')
-        source_image.save(root/'source-height-traces.png');_preview(root,voxel,top)
+        source_image.save(root/'source-height-traces.png');basement_image.save(root/'basement-source-review.png');atomic_json(root/'basement-source-review.json',basement_evidence);_preview(root,voxel,top)
         from PIL import Image,ImageDraw
         image=Image.open(root/'building-shell-preview.png');draw=ImageDraw.Draw(image);draw.rectangle((0,0,image.width,58),fill='#f9f7ee');draw.text((20,14),'STATION + PRESHOW: gabled station / lower gable / pyramid tower; corrected shop retained',fill='black');draw.text((20,34),'Native slab roofs; hollow provisional undercroft. Source datum / exact entrances / basement details unresolved.',fill='black');image.save(root/'building-shell-preview.png')
         atomic_json(root/'quality-report.json',report);atomic_json(root/'new-structure-blocks.json',[{'source_xyz':list(k),'material':v} for k,v in sorted(new.items())]);atomic_json(root/'portal-air.json',[list(p) for p in sorted(portal_air)])
