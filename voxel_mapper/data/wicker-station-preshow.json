@@ -1,0 +1,102 @@
+{
+  "version": "station-preshow-world-v1",
+  "sources": {
+    "elevations": "253b79f214ab673f5ff868d0be5e9d306770ea29089f1dccf012e3a797f4668f",
+    "basement": "e442e7fa1ebc1b020cfa1a8254470d541ddb4d51c5448fa252deef5b43eb0a6c",
+    "roof": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+    "floor": "08afa2513a3cb9ab35b515bcdbd5acb16b125ca5e5ffcedc4e2e14a7e10d9ad3"
+  },
+  "review_input_sha256": {
+    "wicker-architectural-outline-review.json": "73ec52b9699e78ab7d73cad6a6cfbed70c77a339cc250527a06f759e43729fc6"
+  },
+  "elevation_frame": {
+    "render_size_pixels": [
+      1888,
+      1334
+    ],
+    "render_samples_sha256": "bc16f952d559c7aeff8343acacad9ecfc268b249f453da0d4c4957919fa6f1b1"
+  },
+  "manual_endpoint_bound_pixels": 2,
+  "scale_denominator": 100,
+  "height_traces": {
+    "station": {
+      "view": "6 East ride-building section",
+      "datum_y_display_points": 465.3583984375,
+      "datum_label": "Preshow Top Level +183.30",
+      "ridge_pixel": [
+        1367,
+        247.5
+      ],
+      "eave_pixel": [
+        1265,
+        298.5
+      ]
+    },
+    "preshow_low": {
+      "view": "8 West front gable",
+      "datum_y_display_points": 1208.8787841796875,
+      "datum_label": "Preshow Top Level +183.30",
+      "ridge_pixel": [
+        1141,
+        843.5
+      ],
+      "eave_pixel": [
+        1059,
+        894.5
+      ]
+    },
+    "preshow_tower": {
+      "view": "8 West tall roof",
+      "datum_y_display_points": 1208.8787841796875,
+      "datum_label": "Preshow Top Level +183.30",
+      "ridge_pixel": [
+        1148,
+        779
+      ],
+      "eave_pixel": [
+        1058,
+        837.5
+      ]
+    }
+  },
+  "printed_levels_m": {
+    "preshow_upper": 183.3,
+    "station_landscape_ffl": 183.25,
+    "station_inspection": 181.25,
+    "undercroft": 178.0
+  },
+  "display_floor_top_m": 184,
+  "undercroft_floor_top_m": 178,
+  "palette": {
+    "roof_bottom": "oak_slab",
+    "roof_top": "oak_slab_top",
+    "walls": "spruce_planks",
+    "lower_walls": "stone_bricks",
+    "floors": "stone_bricks"
+  },
+  "limits": {
+    "new_structure_blocks": 18000,
+    "new_floor_cells": 1024,
+    "inferred_edging_columns_superseded": 24,
+    "excavation_depth_blocks": 6,
+    "roof_sampling_cells": 2048
+  },
+  "limitations": [
+    "Manual height traces are source-relative proposals with +/-2 pixel sampling bounds, not total physical accuracy.",
+    "Station inspection level is not assigned as a passenger floor; passenger display floor uses the separately retained landscape FFL.",
+    "Station wall trace is centred under its source roof as a local assembly hypothesis; source polygons remain unchanged in the evidence.",
+    "Preshow wall inset, portal widths and connecting floor strips follow the earlier V12 review estimates, not accepted construction dimensions.",
+    "The complete lower-gable rail span remains a display hypothesis; newer partial cap patches and competing source interpretations are not promoted or overwritten.",
+    "Undercroft envelope follows the upper preshow footprint provisionally; detailed basement wall/opening layout, stairs and excavation design remain unresolved.",
+    "Access decks, piers, stone plinths and material palette are illustrative. Source datum and as-built identity remain unverified."
+  ],
+  "base_pins": {
+    "world": "b976fb8e4d539f62cf9ea096ccb1479136bd0b65a9f524ac3966de87f2a4f628",
+    "voxels": "2cb0d2c20966e8dc983b1303165cad6261b5ea2ac21c9ae52978b1829ace05c2",
+    "report": "560a4b394de30c818f5011f1ef79a2ab880d30882873ce81d387806568c128ee"
+  },
+  "geographic_pins": {
+    "terrain": "9499a71a3edfacdcc666c12bc17552ad44d332f6681cc19ae25930f7e4d7e072",
+    "voxels": "0f938056c5a84505d28bf87d0730bfa2956c494ec9e6934f71f3b4f29fbd29df"
+  }
+}

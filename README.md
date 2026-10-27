@@ -739,3 +739,5 @@ Conditional floor prototype: [Wicker floor plates, provisional plinths and bound
 Architectural access review: [Wicker openings, stair flights and roof-versus-wall roles](docs/wicker-building-access-review.md) maps eight proposed access features and explains why the three station edge samples are not confirmed entrances.
 
 Wall-based world prototype: [Conditional architectural floors and shop shell](docs/wicker-wall-shell-preview.md) exports three corrected floor studies and one source-height shop shell, with explicit datum, access and display-geometry assumptions.
+
+Station/preshow extension: [Source-height slab roofs, connected upper floors and provisional hollow undercroft](docs/wicker-station-preshow-world.md) retains the corrected shop and adds a bounded estimated entrance flight with native block-state checks.
