@@ -1,0 +1,30 @@
+{
+  "version": "wicker-wall-shell-preview-v1",
+  "shop_elevation_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
+  "review_input_sha256": {
+    "wicker-shop-wall-model.json": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
+    "wicker-shop-local-roof.json": "9700944f348ded56f20c3f06f0e0e38db116ceec07ea455a5bf81748003f8137",
+    "wicker-shop-local-preview.json": "62b2b9d52dfb3594add656c54d9208b4a96012cb06d2c494df4d17cb3f3e9f50",
+    "wicker-shop-vertical-annotations.json": "35646b282e0c118e3b8db8a088c3f195d3cd2ef86fe6b0b181af49ba3475a3a7",
+    "wicker-shop-elevation-annotations.json": "624fa077d998d7b793c62d48b8efe311bdd73451c92e143b83f4b282ae0e0215",
+    "wicker-shop-floor-scale-review.json": "492aaa297fc72a660a5c3689d8a4a3918c29548393fd69cc6f926f43e4b6e040",
+    "wicker-shop-local-floor.json": "41ceaa5c4571c58261b1bcb9612998621105a1eacbeecf3098ad6fbe4ef1aee4"
+  },
+  "palette": {
+    "shop_walls": "spruce_planks",
+    "shop_roof": "dark_oak_planks",
+    "floor_and_bearing": "stone_bricks"
+  },
+  "limits": {
+    "shell_blocks": 8192,
+    "bearing_blocks": 16384,
+    "world_blocks": 1000000
+  },
+  "limitations": [
+    "Palette, metre-thick voxel wall/roof display closure and bearing fills are illustrative.",
+    "Roof/wall centring remains the retained source assembly hypothesis.",
+    "Shop canopy, bunding, small projections, interior partitions and decoration are omitted.",
+    "Maintenance has a drawn 1:36 sloping floor; the retained flat FFL plate is conditional and not a reconstruction of that slope.",
+    "Station passenger level and all access connections remain unbound."
+  ]
+}
