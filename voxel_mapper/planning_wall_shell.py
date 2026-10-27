@@ -114,11 +114,54 @@ def shop_shell(model,wall_geometry,floor_top,*,cancelled=lambda:False):
     closure=leak_audit(shifted,{(x-cx,y-cy) for x,y in boundary},{(x-cx,y-cy):h for (x,y),h in doors.items()},[[x-cx,y-cy,0] for x,y in target],1)
     if closure['interior_reached_from_exterior']:raise ValueError('Shop shell leaks with openings temporarily sealed')
     if any((x,z,y) in walls|roofs for (x,y),h in doors.items() for z in range(h)):raise ValueError('Shop doorway obstructed')
-    blocks={(x,z+floor_top,y):'spruce_planks' for x,z,y in walls};blocks.update({(x,z+floor_top,y):'dark_oak_planks' for x,z,y in roofs})
-    return blocks,boundary,{'wall_blocks':len(walls),'roof_blocks':len(roofs),'estimated_roof_riser_blocks':risers,'ordered_corner_max_residual_m':error,
+    # Sample the exposed roof at half-metre height increments, then limit each
+    # four-neighbour step to one half-block. This avoids metre-high timber bands.
+    import heapq
+    half_heights={};source_surfaces={}
+    for x,y in roof_heights:
+        local=(np.array([x+.5,y+.5])-translation)@rotation.T
+        surface=eave+(ridge-eave)*(1-min(1,abs(local[1])/half_width))
+        source_surfaces[x,y]=surface
+        half_heights[x,y]=round(2*surface)-1
+    raw_half_heights=dict(half_heights)
+    pending=[(h,x,y) for (x,y),h in half_heights.items()];heapq.heapify(pending)
+    while pending:
+        h,x,y=heapq.heappop(pending)
+        if half_heights[x,y]!=h:continue
+        for q in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]:
+            if q in half_heights and half_heights[q]>h+1:
+                half_heights[q]=h+1;heapq.heappush(pending,(h+1,*q))
+    if max(raw_half_heights[k]-h for k,h in half_heights.items())>1:raise ValueError('Roof smoothing exceeds one half-block')
+    relative={};roof_slabs={};wall_aliases=0
+    for (x,y),h in half_heights.items():
+        roof_slabs[x,h//2,y]='dark_oak_slab_top' if h%2 else 'dark_oak_slab'
+    for x,y in boundary:
+        h=half_heights[x,y];base=h//2
+        for z in range(doors.get((x,y),0),base):relative[x,z,y]='spruce_planks'
+        # A whole-block timber gable top cannot share a cell with a different
+        # material top slab. Keep that boundary cell as wall, not a roof band.
+        if h%2:
+            relative[x,base,y]='spruce_planks';roof_slabs.pop((x,base,y));wall_aliases+=1
+    relative.update(roof_slabs)
+    from .shop_slabs import occupied_halves
+    halves=occupied_halves({(x-cx,z,y-cy):m for (x,z,y),m in relative.items()})
+    half_boundary={(2*(x-cx)+dx,2*(y-cy)+dy) for x,y in boundary for dx in (0,1) for dy in (0,1)}
+    half_doors={(2*(x-cx)+dx,2*(y-cy)+dy):2*h for (x,y),h in doors.items() for dx in (0,1) for dy in (0,1)}
+    native_closure=leak_audit(halves,half_boundary,half_doors,[[x-cx,y-cy,0] for x,y in target],2)
+    if native_closure['interior_reached_from_exterior']:raise ValueError('Native slab-shaped shop shell leaks with openings sealed')
+    blocks={(x,z+floor_top,y):m for (x,z,y),m in relative.items()}
+    return blocks,boundary,{'wall_blocks':sum(m=='spruce_planks' for m in relative.values()),'roof_blocks':len(roof_slabs),'roof_slab_blocks':len(roof_slabs),'roof_full_blocks':0,
+        'roof_bottom_slabs':sum(m=='dark_oak_slab' for m in roof_slabs.values()),'roof_top_slabs':sum(m=='dark_oak_slab_top' for m in roof_slabs.values()),
+        'timber_fascia_blocks':0,'gable_wall_slab_alias_cells':wall_aliases,'roof_half_step_smoothing_cells':sum(raw_half_heights[k]!=h for k,h in half_heights.items()),
+        'maximum_roof_smoothing_m':max(raw_half_heights[k]-h for k,h in half_heights.items())/2,
+        'roof_exposed_surface_minus_source_range_m':[min((h+1)/2-source_surfaces[k] for k,h in half_heights.items()),max((h+1)/2-source_surfaces[k] for k,h in half_heights.items())],
+        'estimated_roof_riser_blocks':0,'ordered_corner_max_residual_m':error,
         'source_plan_to_current_local_row_rotation':rotation.tolist(),'source_plan_to_current_local_translation_m':translation.tolist(),
-        'openings':opening_reviews,'temporary_sealed_opening_air_flood':closure,'display_rule':'wall supercover and roof intersecting-cell coverage; vertically joined walls, neighbour roof-step risers; full blocks are display estimates',
+        'openings':opening_reviews,'previous_full_cell_envelope_air_flood':closure,'native_slab_shape_air_flood':native_closure,
+        'roof_materials':['dark_oak_slab','dark_oak_slab_top'],'roof_slab_half':'source-profile bottom/top steps','roof_thickness_m':0.5,
+        'display_rule':'half-metre exposed roof samples; at most half-metre neighbour steps; no full roof layer or metre-high fascia bands; full timber at gable/slab boundary aliases',
         'source_wall_roof_centring_hypothesis_retained':True,'physical_thickness_verified':False,'reconstructed_as_built':False}
+
 
 
 def resolve_inferred_fences(sampled,targets,gap_policy):
@@ -237,7 +280,7 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         combined=audit.path_steps(path|set(floors),heights,placement['nominal_local_xy_to_bng_en_affine'])
         perimeter=[r for r in combined['hotspots'] if sum(tuple(k) in floors for k in r['source_cells_xy'])==1]
         spawn=sampled['retained_spawn_local_xyz_m'];spawn_key=math.floor(spawn[0]),math.floor(spawn[2])-1
-        report={'version':'conditional-wall-based-floor-and-shop-shell-v1','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
+        report={'version':'conditional-wall-based-floor-and-slab-shop-shell-v2','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
             'spawn_local_xyz_m':[spawn[0],heights[spawn_key]+1,spawn[2]],'alignment':placement,'horizontal_transform':base['horizontal_transform'],
             'source_terrain':terrain,'source_floor_datum_verified':False,'datum_assumption':'Printed FFL assumed ODN only for this isolated study; same whole-block floor quantization as prior preview.',
             'floor_cells':len(floors),'floor_plates':floor_report,'source_landscape_pdf_sha256':data['layout']['document_sha256'],
@@ -267,7 +310,7 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
             report['saved_geometry_validation']=saved_check(path,offset,sampled,heights,structures,shell_report['openings'],shop_top,cancelled)
             atomic_json(path/'planning-geographic-alignment.json',{**placement,'minecraft_cell_centre_to_source_xy':'[Minecraft X + 0.5, -(Minecraft Z + 0.5)]','vertical_offset_blocks':offset})
             atomic_json(path/'CONDITIONAL-WALL-SHELL-ASSUMPTIONS.json',{k:report[k] for k in ['datum_assumption','source_floor_datum_verified','building_access_verified','limitations','conditional_shell_buildings']})
-        world=bedrock.export_world(voxel,root,report,name='Wicker wall-based floors and conditional shop shell',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name='Wicker wall-based floors and SLAB ROOF shop shell',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-wall-based-floors-and-shop-shell.mcworld');report['world']['file']='wicker-wall-based-floors-and-shop-shell.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'floor-cells.json',[{'source_cell_xy':list(k),'original_terrain_block_odn_m':original_heights[k],**r} for k,r in sorted(floors.items())])
@@ -296,19 +339,27 @@ def _preview(root,voxel,floor_top):
     xmin=min(p[0] for p in all_points);ymin=min(p[1] for p in all_points)
     width=math.ceil(max(p[0] for p in all_points)-xmin)+90;height=math.ceil(max(p[1] for p in all_points)-ymin)+145
     image=Image.new('RGB',(width,height),'#f9f7ee');draw=ImageDraw.Draw(image);faces=[]
-    palette={'spruce_planks':'#8b6747','dark_oak_planks':'#493520','grass_block':'#83a65c','stone_bricks':'#9c9e9a'}
+    palette={'spruce_planks':'#8b6747','dark_oak_planks':'#493520','dark_oak_slab':'#493520','dark_oak_slab_top':'#493520','grass_block':'#83a65c','stone_bricks':'#9c9e9a'}
     for (x,y,h),material in occupied.items():
         rgb=ImageColor.getrgb(palette.get(material,colour(material)))
         for neighbour,corners,shade in [((x+1,y,h),[(1,0,0),(1,1,0),(1,1,1),(1,0,1)],.75),
                 ((x,y+1,h),[(0,1,0),(1,1,0),(1,1,1),(0,1,1)],.58),
                 ((x,y,h+1),[(0,0,1),(1,0,1),(1,1,1),(0,1,1)],1)]:
-            if neighbour in occupied:continue
-            vertices=[(x+a,y+b,h+c) for a,b,c in corners]
+            # A neighbouring top slab does not cover the side of a bottom slab.
+            if neighbour in occupied:
+                other=occupied[neighbour]
+                current_low=.5 if material=='dark_oak_slab_top' else 0
+                current_high=current_low+(.5 if material in ('dark_oak_slab','dark_oak_slab_top') else 1)
+                other_low=.5 if other=='dark_oak_slab_top' else 0
+                other_high=other_low+(.5 if other in ('dark_oak_slab','dark_oak_slab_top') else 1)
+                if neighbour[2]==h and other_low<=current_low and other_high>=current_high:continue
+                if neighbour[2]==h+1 and current_high==1 and other_low==0:continue
+            vertices=[(x+a,y+b,h+(.5 if material=='dark_oak_slab_top' else 0)+c*(.5 if material in ('dark_oak_slab','dark_oak_slab_top') else 1)) for a,b,c in corners]
             depth=sum(a+b+.82*c for a,b,c in vertices)/4
             points=[(project(v)[0]-xmin+40,project(v)[1]-ymin+82) for v in vertices]
             faces.append((depth,points,tuple(round(v*shade) for v in rgb)))
     for _,points,rgb in sorted(faces,key=lambda f:f[0]):draw.polygon(points,fill=rgb,outline=tuple(max(0,v-12) for v in rgb))
-    draw.text((20,14),'ACTUAL GENERATED BLOCKS: conditional shop shell and wall-based floor studies',fill='black')
+    draw.text((20,14),'ACTUAL GENERATED BLOCKS: SLAB ROOF shop shell and wall-based floor studies',fill='black')
     draw.text((20,34),'Illustrative timber palette; floor datum and access unresolved. Station / maintenance shells omitted.',fill='black')
     draw.text((20,height-28),'Isometric voxel preview in plan XY (Minecraft Z is reflected). Canopy, interiors and bunding omitted.',fill='black')
     image.save(root/'building-shell-preview.png')

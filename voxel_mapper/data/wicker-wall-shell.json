@@ -1,5 +1,5 @@
 {
-  "version": "wicker-wall-shell-preview-v1",
+  "version": "wicker-wall-shell-preview-v2",
   "shop_elevation_sha256": "d1a7251596b240489c145e76ac06f94448c76972b156f64b4a985753c532c0b6",
   "review_input_sha256": {
     "wicker-shop-wall-model.json": "5d791eb4dd6665fce7d889d6a32f5f65672cf8db82628d307cde864f89e9ab22",
@@ -12,8 +12,9 @@
   },
   "palette": {
     "shop_walls": "spruce_planks",
-    "shop_roof": "dark_oak_planks",
-    "floor_and_bearing": "stone_bricks"
+    "shop_roof": "dark_oak_slab",
+    "floor_and_bearing": "stone_bricks",
+    "shop_roof_top": "dark_oak_slab_top"
   },
   "limits": {
     "shell_blocks": 8192,
@@ -21,7 +22,7 @@
     "world_blocks": 1000000
   },
   "limitations": [
-    "Palette, metre-thick voxel wall/roof display closure and bearing fills are illustrative.",
+    "Palette, metre-thick timber walls and half-block slab roof are display estimates; roof neighbour steps are limited to half a metre with at most half a metre additional height reduction.",
     "Roof/wall centring remains the retained source assembly hypothesis.",
     "Shop canopy, bunding, small projections, interior partitions and decoration are omitted.",
     "Maintenance has a drawn 1:36 sloping floor; the retained flat FFL plate is conditional and not a reconstruction of that slope.",
