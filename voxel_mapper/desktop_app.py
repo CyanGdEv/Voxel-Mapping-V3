@@ -20,6 +20,7 @@ JOB_KINDS = (
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Web research / cited source evidence', 'web_research'),
+    ('Imagery geometry / planning gaps', 'imagery_geometry_research'),
     ('Aerial RGB / material research', 'aerial_material_research'),
     ('Map names / planning application research', 'map_planning_research'),
     ('Adaptive research / source learning cycle', 'research_learning_cycle'),
