@@ -1,0 +1,42 @@
+{
+  "version": "map-planning-research-v1",
+  "site_id": "alton-towers",
+  "site": "Alton Towers",
+  "location": "Farley Staffordshire",
+  "map_source": {
+    "bounds_wgs84": [
+      -1.897,
+      52.984,
+      -1.882,
+      52.994
+    ]
+  },
+  "planning_hosts": [
+    "publicaccess.staffsmoorlands.gov.uk",
+    "www.staffsmoorlands.gov.uk"
+  ],
+  "max_queries": 32,
+  "max_research_jobs": 2,
+  "research": {
+    "allowed_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk",
+      "www.staffsmoorlands.gov.uk",
+      "www.altontowers.com",
+      "www.wikidata.org",
+      "en.wikipedia.org"
+    ],
+    "allow_public_discovery": true,
+    "refresh": false,
+    "limits": {
+      "max_sources": 3,
+      "max_model_rounds": 1,
+      "max_run_bytes": 16000000,
+      "max_seconds": 60
+    }
+  },
+  "focus_names": [
+    "Wicker Man",
+    "Mutiny Bay",
+    "Congo River Rapids"
+  ]
+}

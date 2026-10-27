@@ -1,0 +1,3847 @@
+{
+  "version": "map-planning-research-validation-v1",
+  "date": "2026-10-27",
+  "tests": {
+    "passed": 109,
+    "log_sha256": "e2a1b84cbdfa69d6b5016d02f39c2b9320e450a867ebed3566729185f64817b4",
+    "includes": [
+      "original OSM source hash and in-bounds names/aliases",
+      "cross-park scope and category diversity",
+      "official API cache, byte budget and no redirects",
+      "fetched project/application references and automatic follow-up",
+      "real desktop subprocess with relative map source",
+      "actual fitted head reuse and remembered follow-up across restart",
+      "existing web/planning/OSM/learning regressions"
+    ]
+  },
+  "live_acquisition": {
+    "alton": {
+      "status": "map_clues_extracted",
+      "site_id": "alton-towers",
+      "site": "Alton Towers",
+      "location": "Farley Staffordshire",
+      "snapshot": {
+        "attribution": "\u00a9 OpenStreetMap contributors",
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "bounds_wgs84": [
+          -1.897,
+          52.984,
+          -1.882,
+          52.994
+        ],
+        "bytes": 1792847,
+        "license": "ODbL-1.0",
+        "local_snapshot_bounds_verified": true,
+        "retrieval": "network",
+        "retrieved_at_utc": "2026-10-27T22:12:11.848375+00:00",
+        "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      "feature_count": 205,
+      "features_truncated": false,
+      "element_counts": {
+        "node": 7778,
+        "relation": 18,
+        "way": 761
+      },
+      "tag_counts": {
+        "addr:city": 2,
+        "addr:postcode": 2,
+        "alt_name": 4,
+        "amenity": 63,
+        "attraction": 25,
+        "brand": 2,
+        "bridge": 45,
+        "building": 186,
+        "covered": 12,
+        "highway": 295,
+        "layer": 81,
+        "leisure": 9,
+        "loc_name": 1,
+        "name": 224,
+        "natural": 164,
+        "old_name": 4,
+        "operator": 7,
+        "place": 15,
+        "roller_coaster": 87,
+        "shop": 20,
+        "source": 473,
+        "start_date": 4,
+        "tourism": 12,
+        "tunnel": 19,
+        "waterway": 4,
+        "website": 8,
+        "wikidata": 21,
+        "wikipedia": 14
+      },
+      "network_bytes": 3096651,
+      "model_weights_updated": false,
+      "training_labels_generated": 0,
+      "world_blocks_generated": 0,
+      "queries": [
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/70684301",
+          "id": "4f45f9e3285cbe33352f9df7fdac466da03d209e732992a6baf8847964e377f6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Black River Boat Ride\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Black River Boat Ride",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70684301"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/1572080593",
+          "id": "62d38c02cec81ce60bb068c4d5bc5bb7a0a90223634af9789f44b126070ef7ca",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Bluey the Ride: Here Come the Grannies!\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Bluey the Ride: Here Come the Grannies!",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/1572080593"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/4072454838",
+          "id": "547b12e6d0796a0c0c45d2bdc3e520b85d73fb45bde3a99ab34ad1fdbdeb3da8",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Bugbie Go Round\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Bugbie Go Round",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/4072454838"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/70689498",
+          "id": "4bf022cc7e0935d78ee34ee9f6dc5de330cfe9b13649a9968ae9194f6c5638b1",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Congo River Rapids\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Congo River Rapids",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5160514",
+            "https://en.wikipedia.org/wiki/Congo_River_Rapids_%28Alton_Towers%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70689498"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/328238629",
+          "id": "79fe609841a7867c2368db0d988766a8704cc60a15fc3f84c72367aa25cf080b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Corkscrew\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Corkscrew",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/328238629"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609287",
+          "id": "f7d2118ef43beab2818f796380fdd961aee562bc5dd4ddb6eb110a18d1ef2499",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Galactica\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Galactica",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q406696",
+            "https://en.wikipedia.org/wiki/Galactica_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609287"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609287",
+          "id": "eb17420c48a408c8510eb46938da50e0149ce14526d1fc241121b2d3990517f9",
+          "name_tag": "old_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Air\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Air",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q406696",
+            "https://en.wikipedia.org/wiki/Galactica_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609287"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/107365812",
+          "id": "63eee6762a78566c3474e9d52a4f2025dcb5e5140ea4952614f8efd5406d8275",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Get Set Go Treetop Adventure\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Get Set Go Treetop Adventure",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/107365812"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/551680970",
+          "id": "71173642308bb05b3ae8e6a506eba6cef8dc7b4f1729c56bf5091826616fdff2",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Go Jetters Vroomster Zoom Ride\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Go Jetters Vroomster Zoom Ride",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/551680970"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/454053720",
+          "id": "bddf7786e5d66eb96f320d8245e005934c0417d7741e6f100485e700f51feb06",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Heave Ho!\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Heave Ho!",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/454053720"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/3724894904",
+          "id": "1f54ddf8c8ad6a6e3aaee40363e1b599bd1ff4421482853c7891a08601192e7f",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Hex\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Hex",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.altontowers.com/explore/theme-park/rides-attractions/hex-the-legend-of-the-towers/",
+            "https://www.wikidata.org/wiki/Q1994979"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/3724894904"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/70689615",
+          "id": "bc3ffdd6fa0a452f1fb3ce91b7991fbc12e67ad0d6f2e4f8117891656e529a86",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Marauder's Mayhem\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Marauder's Mayhem",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.altontowers.com/explore/theme-park/rides-attractions/marauders-mayhem/",
+            "https://www.wikidata.org/wiki/Q6755071",
+            "https://en.wikipedia.org/wiki/Marauder%27s_Mayhem_%28Alton_Towers%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70689615"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609292",
+          "id": "6be10605c228cf6c135faade1447053b6d703d60f1a75c01a654bac8939c82c4",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Nemesis Reborn\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Nemesis Reborn",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q1477806",
+            "https://en.wikipedia.org/wiki/Nemesis_Reborn"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609292"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609292",
+          "id": "205e98389ec4c33b3d2c83fcf5cbdcaefebad325781f79dab7920e6d065a5dad",
+          "name_tag": "old_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Nemesis\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Nemesis",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q1477806",
+            "https://en.wikipedia.org/wiki/Nemesis_Reborn"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609292"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/199572247",
+          "id": "c0f5b7e79140fd59c9c968bf1645ea7d0fd977095fe4cb4158f1397b7ff6456d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Nemesis: Sub Terra\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Nemesis: Sub Terra",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.altontowers.com/explore/theme-park/rides-attractions/nemesis-sub-terra/",
+            "https://www.wikidata.org/wiki/Q6991108",
+            "https://en.wikipedia.org/wiki/Nemesis%3A_Sub-Terra"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/199572247"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/1364776721",
+          "id": "ab5413082cd5c401582c401ee7011d8726e8d9777bb5f0e58d02cf9f8dfa8e11",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Oblivion\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Oblivion",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q1476808"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1364776721"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/3735871213",
+          "id": "84babd18b3714910e38315c7cd7b9c00ea588a94d80dae1d0b2deab51f5ff22b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Octonauts Rollercoaster\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Octonauts Rollercoaster",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q24996970"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/3735871213"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/1364776737",
+          "id": "2422a6a53cf74ed706f2a1de88d389c011dad5d6f8a5d6704fd18e0770b9441e",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Rita\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Rita",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q751928",
+            "https://en.wikipedia.org/wiki/Rita_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1364776737"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/123951481",
+          "id": "aad2bf92126a0915e137fa844c592ffa5706d76627e3fed30a96eddc27e19fa0",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Rita Station\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Rita Station",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/123951481"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/362778461",
+          "id": "eb75c92ae1246fb4c4bc814100551660c040a115df5577c5f09ad2d1830d0ec1",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Royal Carousel\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Royal Carousel",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/362778461"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609284",
+          "id": "1c05ccaeea15f556444b95f5f5883877b5bc62b204058557ddb9ec88cea99513",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Runaway Mine Train\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Runaway Mine Train",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q3453216",
+            "https://en.wikipedia.org/wiki/Runaway_Mine_Train_%28Alton_Towers%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609284"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2096324749",
+          "id": "6f3cc745076e3af39ab395c74abc2ebba6c8350bdb65fcb244861b8851ee4473",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Spinball Whizzer\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Spinball Whizzer",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q911384"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2096324749"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/1364776739",
+          "id": "9545f129a563b4d623dfb1df3236072ec978f1e38a655288faed97c06c04db48",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Th13teen\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Th13teen",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1364776739"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/1364776739",
+          "id": "44057d3008c95813c5a65b216b3eb4c1679104eb844145d9dd29742abed88888",
+          "name_tag": "alt_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Thirteen\" ride layout planning application",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Thirteen",
+              "ride plan"
+            ]
+          },
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1364776739"
+        }
+      ],
+      "document_clues": [],
+      "research_results": [
+        {
+          "query": "Alton Towers Farley Staffordshire \"Black River Boat Ride\" ride layout planning application",
+          "sources": [
+            {
+              "artifact_sha256": "5d256bf17d9f429002db69ef1d73b9464f6d432c88998199ed04dee6175ea903",
+              "body_sha256": "5d2288b0ae42912dfb4d3da77c8beae56ed885fabd5cf926df84ff68b0da85d0",
+              "citation_id": "Wd0794a991ca2",
+              "excerpt": "Black River Boat Ride \u2013 Alton Towers \u2013 Dark Ride Database Black River Boat Ride Alton Towers Defunct Dark Ride Ride Information News & Specials prev next Share Get directions Submit information How we classify prev next General info Category Dark Ride Type Boat Ride Status Defunct Opened 2019 Closed 2024 Park Alton Towers Resort Features Free floating Description The Alton Towers Dungeon was an actor-led experience, featuring different small shows and the Black River Boat Ride. History The Black River Boat Ride was previously the boat ride in Charlie and the Chocolate Factory: The Ride, which ",
+              "requested_url": "https://darkridedatabase.com/rides/black-river-boat-ride/",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:14.735616+00:00",
+              "source_evidence_verified": false,
+              "title": "Black River Boat Ride \u2013 Alton Towers \u2013 Dark Ride Database",
+              "training_labels_generated": 0,
+              "url": "https://darkridedatabase.com/rides/black-river-boat-ride/"
+            },
+            {
+              "artifact_sha256": "139cca64bcca0f87545ec37070dafdc716e6b81c46eafc29aca926578a75a213",
+              "body_sha256": "aca7ab85f95c7c3e0ec62f3e631cfe07b32f526e7da1254763180328eb997367",
+              "citation_id": "Wf9ae16c78931",
+              "excerpt": "Alton Towers Dungeon to close permanently \u2013 DRdb Alton Towers Dungeon to close permanently News Quintus March 21, 2024 The Black River Boat Ride (\u00a9Merlin Entertainment) The Alton Towers Dungeon, one of Merlin Entertainments\u2019 famous Dungeons-attractions, is scheduled to close this summer. The attraction, located in the Alton Towers-theme park in Staffordshire (England) will close to make way for a Halloween-attraction. The dungeon contains the Black River Boat Ride , which will close with it . The Black River Boat Ride is the 4th incarnation of the water dark ride. Firstly opened in 1981 as Aro",
+              "requested_url": "https://darkridedatabase.com/alton-towers-dungeon-to-close-permanently/",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:16.292630+00:00",
+              "source_evidence_verified": false,
+              "title": "Alton Towers Dungeon to close permanently \u2013 DRdb",
+              "training_labels_generated": 0,
+              "url": "https://darkridedatabase.com/alton-towers-dungeon-to-close-permanently/"
+            },
+            {
+              "artifact_sha256": "caa901208bd52481643da1643aad921aef43bce0a54f1ddd88b98f846cfddfb5",
+              "body_sha256": "89893dd9ecdd5f8472b09b32dcade34fc5009f6d4eb59dfc1863de7001807f26",
+              "citation_id": "W805fc090e01c",
+              "excerpt": "Black River Boat Ride Black River Boat Ride is a log flume ride in Farley , Staffordshire Moorlands , England . Black River Boat Ride is situated near Royal Carousel , as well as near World of David Walliams . Tap on a place to explore it Places of Interest Nearby Highlights include Alton Towers and Driving School. Alton Towers Wikimedia , CC BY-SA 3.0 . Alton Towers , the largest theme park in the United Kingdom , is in Staffordshire , England . Driving School The Cuckoo Cars Driving School is a ride at Alton Towers for young children. Driving School is situated 500 feet north of Black River ",
+              "requested_url": "https://mapcarta.com/W1487319404",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:16.845972+00:00",
+              "source_evidence_verified": false,
+              "title": "Black River Boat Ride Map - Log flume ride - Farley, England, UK",
+              "training_labels_generated": 0,
+              "url": "https://mapcarta.com/W1487319404"
+            }
+          ],
+          "status": "web_evidence_gathered",
+          "task_id": "4f45f9e3285cbe33352f9df7fdac466da03d209e732992a6baf8847964e377f6"
+        },
+        {
+          "query": "Alton Towers Farley Staffordshire \"Bluey the Ride: Here Come the Grannies!\" ride layout planning application",
+          "sources": [
+            {
+              "artifact_sha256": "c73ee4b73c4279af8c406179331341f566d459000e5eb4fabdc127b0fedbae16",
+              "body_sha256": "9e615cc02d876ea5e9809b9b0ee6227bdf86bb789ed66366faddfbac24d4ddd8",
+              "citation_id": "W5d2c654c8576",
+              "excerpt": "Bluey the Ride: Here Come the Grannies! - Construction Archive - Your premier Alton Towers guide News all the latest Theme Park explore the park Explore Park Areas Attractions Shows Shops Food & Drink Park Info Travel & Entry Around the Park Fastrack & VIP Experiences Weather Tips Height Restrictions Events February Half Term Scarefest Fireworks Winter Season Resort tour the resort Accommodation Alton Towers Hotel Splash Landings Hotel Enchanted Village CBeebies Land Hotel Stargazing Pods Facilities Waterpark Extraordinary Golf Conference Centre Future looking forward 2027 and Beyond Project H",
+              "requested_url": "https://towersstreet.com/construction/bluey-the-ride/",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:20.260188+00:00",
+              "source_evidence_verified": false,
+              "title": "Bluey the Ride: Here Come the Grannies! - Construction Archive - Your premier Alton Towers guide",
+              "training_labels_generated": 0,
+              "url": "https://towersstreet.com/construction/bluey-the-ride/"
+            },
+            {
+              "artifact_sha256": "857e4e33c4c999579719c53c3404dad5db1e1df0821b20ce39d9c8fa23989e48",
+              "body_sha256": "15c0dc312236f4dca9e40369020ff354ad460b5c43822e4f70ae747af860425f",
+              "citation_id": "W332a3e17df9c",
+              "excerpt": "2 photos {\"subject\":\"Bluey the Ride: Here Come the Grannies!\",\"sections\":[{\"photos\":[{\"title\":\"File:Bluey the Ride- Here Come the Grannies! (Alton Towers) 2026 02.jpg\",\"caption\":\"A train navigating a helix\",\"author\":\"Planco2\",\"date\":\"13 September 2026\",\"name\":\"Bluey the Ride- Here Come the Grannies! (Alton Towers) 2026 02.jpg\"},{\"title\":\"File:Bluey the Ride- Here Come the Grannies! (Alton Towers) 2026 01.jpeg\",\"caption\":\"A picture of the rides first drop\",\"author\":\"Planco2\",\"date\":\"13 September 2026\",\"name\":\"Bluey the Ride- Here Come the Grannies! (Alton Towers) 2026 01.jpeg\"}],\"era\":\"current\"",
+              "requested_url": "https://coasterpedia.net/wiki/Bluey_the_Ride:_Here_Come_the_Grannies!",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:20.887484+00:00",
+              "source_evidence_verified": false,
+              "title": "Bluey the Ride: Here Come the Grannies! - Coasterpedia - The Amusement Ride Wiki",
+              "training_labels_generated": 0,
+              "url": "https://coasterpedia.net/wiki/Bluey_the_Ride:_Here_Come_the_Grannies!"
+            },
+            {
+              "artifact_sha256": "31f6bba87a6db611297174a76b31b356778eaa445eabb310682d6387dced1090",
+              "body_sha256": "54cbe3767377879ba23103c773072302030a3e6451347343fb1426d582c6f6d4",
+              "citation_id": "Wa2e92abfc609",
+              "excerpt": "Bluey the Ride: Here Come the Grannies! Lewis 2026-08-23T13:57:24+01:00 The world\u2019s first Bluey coaster, Bluey the Ride: Here Come the Grannies!, sees Bluey and Bingo dressed up as the Grannies, Janet and Rita, get up to some grannies-themed mischief in Bluey\u2019s backyard, whisking over gentle dips, around turns, and through colourful trees, flowers, and playful surprises! Need2Know Min. Rider Height: 0.9m Unaccompanied Height: 1.1m Max. Rider Height: None Ride Photography: Yes Fastrack: Yes Tech Specs Manufacturer: Zierer Ride Type: Force Coaster Opened: 28th March 2026 Track Length: 210m Max. ",
+              "requested_url": "https://www.towerstimes.co.uk/theme-park/cbeebies-land/bluey-the-ride/",
+              "retrieval": "downloaded",
+              "retrieved_at_utc": "2026-10-27T22:12:22.447148+00:00",
+              "source_evidence_verified": false,
+              "title": "Bluey the Ride: Here Come the Grannies! - TowersTimes - Alton Towers Resort from another point of view!",
+              "training_labels_generated": 0,
+              "url": "https://www.towerstimes.co.uk/theme-park/cbeebies-land/bluey-the-ride/"
+            }
+          ],
+          "status": "web_evidence_gathered",
+          "task_id": "62d38c02cec81ce60bb068c4d5bc5bb7a0a90223634af9789f44b126070ef7ca"
+        }
+      ],
+      "research_failures": [],
+      "report_sha256": "2eb173d02622a313743deba820804778ec466b70e1f438dec8fc6ebf929c898d"
+    },
+    "thorpe": {
+      "status": "map_clues_extracted",
+      "site_id": "thorpe-park",
+      "site": "Thorpe Park",
+      "location": "Chertsey Surrey",
+      "snapshot": {
+        "attribution": "\u00a9 OpenStreetMap contributors",
+        "body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+        "bounds_wgs84": [
+          -0.523,
+          51.397,
+          -0.505,
+          51.41
+        ],
+        "bytes": 2201246,
+        "license": "ODbL-1.0",
+        "local_snapshot_bounds_verified": true,
+        "retrieval": "network",
+        "retrieved_at_utc": "2026-10-27T22:15:16.056852+00:00",
+        "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-0.523%2C51.397%2C-0.505%2C51.41"
+      },
+      "feature_count": 174,
+      "features_truncated": false,
+      "element_counts": {
+        "node": 8659,
+        "relation": 40,
+        "way": 728
+      },
+      "tag_counts": {
+        "addr:city": 10,
+        "addr:postcode": 9,
+        "addr:street": 7,
+        "alt_name": 2,
+        "amenity": 38,
+        "area:highway": 2,
+        "attraction": 39,
+        "brand": 6,
+        "bridge": 17,
+        "building": 108,
+        "contact:website": 3,
+        "covered": 2,
+        "highway": 349,
+        "layer": 59,
+        "leisure": 20,
+        "name": 215,
+        "name:en": 1,
+        "natural": 159,
+        "old_name": 2,
+        "opening_date": 7,
+        "operator": 34,
+        "place": 4,
+        "roller_coaster": 51,
+        "shop": 15,
+        "source": 229,
+        "tourism": 25,
+        "tunnel": 4,
+        "waterway": 7,
+        "website": 14,
+        "wikidata": 43,
+        "wikipedia": 29
+      },
+      "network_bytes": 2201246,
+      "model_weights_updated": false,
+      "training_labels_generated": 0,
+      "world_blocks_generated": 0,
+      "queries": [
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/161293672",
+          "id": "367020421415689a438550205c5bf696d6b43e24588d1f18d99ee602f0d20b0a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Colossus\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Colossus",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q287855",
+            "https://en.wikipedia.org/wiki/Colossus_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/161293672"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/11809356042",
+          "id": "b59cb3abccdcb6d6f04745bcd19915f301d88492255a557743211e8f3fa11281",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/11809356042"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/363108239",
+          "id": "d552ea401bcf70f9c34868cd488c475fddab6722c36e099a1a39d1b17802b7d7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Big Easy Bumpers\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Big Easy Bumpers",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/363108239"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/1009587414",
+          "id": "21abb0f1aee8c16c5e1c427f6b83b1ce8bd96c7feea67a2027d5a09f7fd502cd",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"1st Chertsey Scouts\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "1st Chertsey Scouts",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.scouts.org.uk/groups/10010518?loc=tw2&page=43&slug=1st-Chertsey-Scout-Group"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1009587414"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099887",
+          "id": "3c835d6c003f69741425e99bfef6ac603fbb9521f9e3fe4a66afdd71e2cc1fb9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Boulevard Bites\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Boulevard Bites",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099887"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1237544801",
+          "id": "85684273903046cfcb594d4728b4e91bd5e4f2481ac81f88044ef5f46b32d021",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1237544801"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/3673621772",
+          "id": "29d96bd2ffc9ea7bc75d6f4254f173a481ad672d95c998916ace939012af50ca",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Boardwalk Games\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Boardwalk Games",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673621772"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/189613379",
+          "id": "207aa9fa1d1d78a50f518235182d2716b37b5256d70c61a0909852ecb37fa42d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Depth Charge\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Depth Charge",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/189613379"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/189613393",
+          "id": "4a13ab1c565d5717838f1cf4428af27ddc6014bf934bd578cfbe013f52b86de9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Kebabs\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Kebabs",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/189613393"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099890",
+          "id": "141b1392760e429858d7e1ef93115d95e0e61a138b64d66bd2e5a253534c06dc",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Candypips\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Candypips",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099890"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1240260906",
+          "id": "cc6ba913aeb463375721a3e14fd40f1c1e606617961312c651c2f7208101255c",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Big Easy Boulevard\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Big Easy Boulevard",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1240260906"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/1767971723",
+          "id": "0c5565a3a7974a19b0b8a9ad6e72d7379b9f3670e90beef5bb11c40a60699e54",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Cove\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Cove",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/1767971723"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/623806234",
+          "id": "a363f6f13b42484d1cd5ed9986d2f23d2012558cfb3ba8305717cf1791bf213f",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Detonator\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Detonator",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "tower",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5265768",
+            "https://en.wikipedia.org/wiki/Detonator_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/623806234"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/363108241",
+          "id": "2aa9befc5945da8a4a722d36d76090584a64e54fa73b3dc04c942b5bedf9990b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Ben & Jerry's Scoop Shop\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Ben & Jerry's Scoop Shop",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/363108241"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673646648",
+          "id": "edeb13aaea46ae6cb0b4a6135f2f26569d7b8ec4e9502dac253c25287d304ec7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Coffee Shack\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Coffee Shack",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673646648"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/372317098",
+          "id": "0745af29569861fbb793ef209b6ff05d4771305fe9573775c24fb6e71deff4bc",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Coldharbour Lane\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Coldharbour Lane",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/372317098"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/relation/9274290",
+          "id": "bd53065da2eb71bdefb241a4cfa2ad3eeb357a517ede7921ee594e5e711df425",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Chertsey\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Chertsey",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/relation/9274290"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/60048098",
+          "id": "c8f68f09b8972a4663974a5804454ad22d8ebc4b8aac5d590577a6899b41d5cb",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Dobble Tea Party\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Dobble Tea Party",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.thorpepark.com/explore/theme-park/rides/dobble-tea-party/"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/60048098"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/60048146",
+          "id": "1ab26bc92078384089eaf353e9c36f22e746188847c8a792a2734433a6eda172",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Burger King\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Burger King",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://locations.burgerking.co.uk/chertsey/c/o-leisure-sport-ltd-staines-road-8951"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/60048146"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673621774",
+          "id": "be08dc51ebc91448d7736c33403be05b0cba161195ebb8a0d45b274b2407233a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Inferno Shop\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Inferno Shop",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673621774"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1063328572",
+          "id": "8a9525c32bf8ac9f0520d19b2fc4d0dca0b314284b30fed3ad14605d0dba026a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Fearless Valley\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Fearless Valley",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1063328572"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/3512625360",
+          "id": "ba83e32395f40729beeb265041cec6efedbbcd0798bf795bfee50c2e40a81d34",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Easterly End Lodge\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Easterly End Lodge",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3512625360"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/1271504542",
+          "id": "77afd9aebda761cc08c25518fb7bdd6d55bab028a665457fc3bb80f8c58dadf6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Flying Fish\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Flying Fish",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5463415",
+            "https://en.wikipedia.org/wiki/Flying_Fish_%28roller_coaster%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271504542"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/991966515",
+          "id": "46e03aaa6f9a5835d3534903aac6f579aa03d5b2ab8acf0f8030eb28c6967d4d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Camden Junction Bar\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Camden Junction Bar",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/991966515"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099888",
+          "id": "5f42c0437209e60aebae80fe74941fefcf7ae7ea80030c98184e8c47e73c7439",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"KFC\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "KFC",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.kfc.co.uk/kfc-near-me/chertsey-thorpe-park-seasonal"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099888"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1271700354",
+          "id": "eca022c7af481bf197d3d7161110e115c72eba306944820cecd31eb484b6b36e",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia Fastrack & Single Rider Entrance\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia Fastrack & Single Rider Entrance",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271700354"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/8121003297",
+          "id": "3e1c8d979fefc0f4b010e6d88c609c8458f31781dcfc433ac48e6326249a0fdb",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Monk's Grove\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Monk's Grove",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/8121003297"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/432543585",
+          "id": "af9504bf451c21eeb6ab83706ea126aeb6976d6c2dd346ec8c9ac7cf53595c4d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Ghost Train\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Ghost Train",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.thorpepark.com/explore/theme-park/rides/ghost-train-ride/",
+            "https://www.wikidata.org/wiki/Q25304656",
+            "https://en.wikipedia.org/wiki/Ghost_Train_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/432543585"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/619399096",
+          "id": "cf0e6d1c93fd6e3c131f400ace5e68e6f1bcdb82a3bf20e7b7c5dcb0fb9323d9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Colossus Dogs\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Colossus Dogs",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/619399096"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099888",
+          "id": "cedf30595eb17329316ec92af8a6051585c313589a83523e80ada21586afbf3a",
+          "name_tag": "alt_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Kentucky Fried Chicken\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Kentucky Fried Chicken",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.kfc.co.uk/kfc-near-me/chertsey-thorpe-park-seasonal"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099888"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1271700355",
+          "id": "16c699ea9e82cc65359172d470764ffe0582e266b3b40f56071bf1c8168e1ec6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia Main Entrance\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia Main Entrance",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271700355"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/way/261427009",
+          "id": "73a96edc8f6597a2a666c6813d1de467d888b064e8be12e67457a20686e6f640",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Penton Hook Marina\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Penton Hook Marina",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q7165266",
+            "https://en.wikipedia.org/wiki/Penton_Hook_Marina"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/261427009"
+        }
+      ],
+      "document_clues": [],
+      "research_results": [],
+      "research_failures": [],
+      "report_sha256": "ae565c6c6cc1d01c5fcec137fca13d4fa023ff1deaf8b4acd81c3d305f542e02"
+    }
+  },
+  "current_code_offline_replay": {
+    "alton": {
+      "status": "map_clues_extracted",
+      "site_id": "alton-towers",
+      "site": "Alton Towers",
+      "location": "Farley Staffordshire",
+      "snapshot": {
+        "attribution": "\u00a9 OpenStreetMap contributors",
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "bounds_wgs84": [
+          -1.897,
+          52.984,
+          -1.882,
+          52.994
+        ],
+        "bytes": 1792847,
+        "license": "ODbL-1.0",
+        "local_snapshot_bounds_verified": true,
+        "retrieval": "cached",
+        "retrieved_at_utc": "2026-10-27T22:12:11.848375+00:00",
+        "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      "feature_count": 205,
+      "features_truncated": false,
+      "element_counts": {
+        "node": 7778,
+        "relation": 18,
+        "way": 761
+      },
+      "tag_counts": {
+        "addr:city": 2,
+        "addr:postcode": 2,
+        "alt_name": 4,
+        "amenity": 63,
+        "attraction": 25,
+        "brand": 2,
+        "bridge": 45,
+        "building": 186,
+        "covered": 12,
+        "highway": 295,
+        "layer": 81,
+        "leisure": 9,
+        "loc_name": 1,
+        "name": 224,
+        "natural": 164,
+        "old_name": 4,
+        "operator": 7,
+        "place": 15,
+        "roller_coaster": 87,
+        "shop": 20,
+        "source": 473,
+        "start_date": 4,
+        "tourism": 12,
+        "tunnel": 19,
+        "waterway": 4,
+        "website": 8,
+        "wikidata": 21,
+        "wikipedia": 14
+      },
+      "network_bytes": 0,
+      "model_weights_updated": false,
+      "training_labels_generated": 0,
+      "world_blocks_generated": 0,
+      "queries": [
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/11978318640",
+          "id": "e7f6f106ec5d6e24b1ea41d533b5e0f4cdca65c8a886d80e69e667e826f3fd2e",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Wicker Man\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Wicker Man",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.altontowers.com/explore/theme-park/rides-attractions/wicker-man/",
+            "https://www.wikidata.org/wiki/Q25223509",
+            "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/11978318640"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/relation/7673655",
+          "id": "cee826a5065ce126b3df4210bc0b7cd918b694c580da9be7afab11785e29ff8d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Mutiny Bay\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Mutiny Bay",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/relation/7673655"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/70689498",
+          "id": "ae8733f602eba907ea2f16345613734a7413b38195084548864ab26202bd434b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Congo River Rapids\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Congo River Rapids",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "water",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5160514",
+            "https://en.wikipedia.org/wiki/Congo_River_Rapids_%28Alton_Towers%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70689498"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/70684301",
+          "id": "f89ccca28d893591a551697af1fd163d09987415c6a7bd2d230ca7d7c61a9fc5",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Black River Boat Ride\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Black River Boat Ride",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "water",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70684301"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/70684272",
+          "id": "fd42e390680f478bf9cb23fd199b0c25595e7c5dae5f0ed63fa42c450e3a4495",
+          "name_tag": "alt_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alerton\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alerton",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q15224247",
+            "https://en.wikipedia.org/wiki/History_of_Alton_Towers"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70684272"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/4379299026",
+          "id": "e67c3d4d416beaf7b628f76c57d17213eec2c2de1cfeeaef0947f01115843110",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Buy The Smiler\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Buy The Smiler",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/4379299026"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/node/533881972",
+          "id": "b73f5075def52c5d2b5a16ab35aed790f8a6b00cdf1cba0dbf38aa26557040c5",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Towers Entrance\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Towers Entrance",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/533881972"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/1117000905",
+          "id": "6c1d3f9b378d42eb17b82e9f400806ae177afed89976cf475a094c4ab7882994",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Adventure  Land\" landscape site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Adventure  Land",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1117000905"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/1572080593",
+          "id": "bd0c5526188d7f3eb33887eec5b6adac56a237e537394f7c1f0294e33c07aeee",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Bluey the Ride: Here Come the Grannies!\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Bluey the Ride: Here Come the Grannies!",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/1572080593"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/70684272",
+          "id": "af18a82f783a06926f96782879a082193c9012f8f5f5c24aeb825492e183bba0",
+          "name_tag": "old_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Abbey\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Abbey",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q15224247",
+            "https://en.wikipedia.org/wiki/History_of_Alton_Towers"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70684272"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/4072454841",
+          "id": "079ddcc65f19495697e5cc39af265de87afc64b4b82e4739614584277d95cbf3",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"CBeebies Land Gift Shop\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "CBeebies Land Gift Shop",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/4072454841"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/39894864",
+          "id": "945cf5117d437a314f9e20274629e11b4df3c83c08cd056d36c7d9d5f71293d0",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Farley Lane\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Farley Lane",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/39894864"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/1711412439",
+          "id": "7ea2200007f026bb90a74675a576053edf787aa1c972abcb5f024248ff73c36e",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Towers Main Entrance\" landscape site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Towers Main Entrance",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1711412439"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/4072454838",
+          "id": "e89a148e362f19e0f341043f0420a62e28a06d6255b7caf55870de4879b19d74",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Bugbie Go Round\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Bugbie Go Round",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "carousel",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/4072454838"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/70684303",
+          "id": "34f06b1c86cba5489c59ac6fec85a2e5ca851b77017cda09c928e14c5c9c9829",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Towers Distribution Centre\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Towers Distribution Centre",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/70684303"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/4072454842",
+          "id": "47652be45260117a4d0bd8d768415f950a60a8edb09bbc359b065a3193697596",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Cbeebies Land Sensory Space\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Cbeebies Land Sensory Space",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/4072454842"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/63564450",
+          "id": "e63c2e3c00fe79f515d960642d04582963bedf2e4fb4fb2fc12c13eeb54b0d9c",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Farley Road\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Farley Road",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/63564450"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/way/25798916",
+          "id": "1f70362613e4656e644ee8490d230019d909ad63c47e6b3edceacd7c81d76efc",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Towers Resort\" landscape site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Towers Resort",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.altontowers.com/",
+            "https://www.wikidata.org/wiki/Q443909",
+            "https://en.wikipedia.org/wiki/Alton_Towers"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/25798916"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/328238629",
+          "id": "f992211e9008772c92f1767427f9681a8acf4d757e4919664b822eb251895ac9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Corkscrew\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Corkscrew",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/328238629"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/1379419459",
+          "id": "7ff6f05c74acdd2a895fbc0351a2889d95b49d97aa5a2a15dbf26e8a4694d030",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Andy's Adventures Dinosaur Dig\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Andy's Adventures Dinosaur Dig",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/1379419459"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/way/534550237",
+          "id": "7808e3347017405ab1074ef26bc36a6cab2afb6205d12c4dcdbd8ef4d1086b2c",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Coach Parking\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Coach Parking",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/534550237"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/330956482",
+          "id": "480336e4ad7464b49a74982ceda768498fe8bc4e1b5c9f500a964900d6d8c4f4",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Haunted Hollow\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Haunted Hollow",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/330956482"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/way/25798916",
+          "id": "73a2c3b3905f2b517a4f1d3ef5f515020f4eb42a32ada2d3364c62ea53d7f0d7",
+          "name_tag": "alt_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Alton Towers\" landscape site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Alton Towers",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.altontowers.com/",
+            "https://www.wikidata.org/wiki/Q443909",
+            "https://en.wikipedia.org/wiki/Alton_Towers"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/25798916"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609287",
+          "id": "d40ba21fbce1a9a5c126e0d102f8f9e16fcdd8659aa0255b69c373eab9657ec7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Galactica\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Galactica",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q406696",
+            "https://en.wikipedia.org/wiki/Galactica_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609287"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/106844043",
+          "id": "8cc176cc20fa75e2c6945ea59af2b23b2b8f1e6d5fb5c76dc10cf1d72de9cd71",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Archway Gatehouse\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Archway Gatehouse",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/106844043"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/12772276158",
+          "id": "bd18c078c5ba80f40b9786a2a8df6cd02a698f1c4d64a21fa1dd3efabf545162",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Coca-Cola\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Coca-Cola",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/12772276158"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1105276588",
+          "id": "94f6d6c769924dfaefa8376318f37c6b2ef16e934f8034ac81bffca2e779dba8",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Longshaw Lane\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Longshaw Lane",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/1105276588"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/1117000924",
+          "id": "6a6b77ca1a54d10acfcd5e772f241989efe191504636365edcb2457a7cbb52f7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"CBeebies Land\" landscape site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "CBeebies Land",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1117000924"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/2097609287",
+          "id": "b3943859925a2fb1017655cdcb4802de04d1c5498ec68ca48401c8339a7d90bf",
+          "name_tag": "old_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Air\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Air",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q406696",
+            "https://en.wikipedia.org/wiki/Galactica_%28roller_coaster%29"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/2097609287"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/1478683707",
+          "id": "b01ffaac82b6dd075a526fe99daf4514e1d288eefbfe2a9b421e97d6091b1d8d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Attic of Antiquities\" building floor plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Attic of Antiquities",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/1478683707"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/1708293120",
+          "id": "7074c8263b663a6bb739950381fc8961e2243878868d568ead01728f1ffa8982",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Coca-Cola Refilling Station\" site plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Coca-Cola Refilling Station",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/1708293120"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/106844059",
+          "id": "b4db024f2ded1370f2897add55937f9a4c7e1a7c27aa9927cd616ccbba5ed775",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"White Bridge\" landscape paving plan planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "White Bridge",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q26289587"
+          ],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/way/106844059"
+        },
+        {
+          "document_clue": {
+            "citation_id": "W213bcd7ca037",
+            "identity_verified": false,
+            "kind": "project_codename",
+            "literal_witness": "in 22 years and the first to incorporate fire. [ 1 ] [ 2 ] Initially codenamed \"Secret Weapon 8\", a traditional naming scheme for major upcoming projects at Alton Towers, its official name was re",
+            "source_body_sha256": "77ba03069ef235fd88c29f211937d701b4423e6d690251bdef35c6e2f53f4672",
+            "source_url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29",
+            "text": "Secret Weapon 8"
+          },
+          "feature_category": "ride",
+          "feature_id": "osm/node/11978318640",
+          "id": "e90e656fba13a40a5e51db2a9fffdde6b192de2b6999400f83752678cf14736b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"Secret Weapon 8\" planning application drawings site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "Secret Weapon 8",
+              "Wicker Man",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/11978318640"
+        },
+        {
+          "document_clue": {
+            "citation_id": "W213bcd7ca037",
+            "identity_verified": false,
+            "kind": "project_codename",
+            "literal_witness": "[ 6 ] They documented the basic layout of the project, named \"Secret Weapon 8\" (SW8), and the surrounding area. The plans included retaining The Flume's former station building as a '",
+            "source_body_sha256": "77ba03069ef235fd88c29f211937d701b4423e6d690251bdef35c6e2f53f4672",
+            "source_url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29",
+            "text": "SW8"
+          },
+          "feature_category": "ride",
+          "feature_id": "osm/node/11978318640",
+          "id": "4cbd14b09f7685f0832693239b03b64e3f3094459db00d135d12404c831d1ff6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "publicaccess.staffsmoorlands.gov.uk",
+            "www.staffsmoorlands.gov.uk"
+          ],
+          "query": "Alton Towers Farley Staffordshire \"SW8\" planning application drawings site:publicaccess.staffsmoorlands.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Farley Staffordshire",
+            "site": "Alton Towers",
+            "tags": [
+              "SW8",
+              "Wicker Man",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "source_map_url": "https://www.openstreetmap.org/node/11978318640"
+        }
+      ],
+      "document_clues": [
+        {
+          "citation_id": "W213bcd7ca037",
+          "identity_verified": false,
+          "kind": "project_codename",
+          "literal_witness": "in 22 years and the first to incorporate fire. [ 1 ] [ 2 ] Initially codenamed \"Secret Weapon 8\", a traditional naming scheme for major upcoming projects at Alton Towers, its official name was re",
+          "source_body_sha256": "77ba03069ef235fd88c29f211937d701b4423e6d690251bdef35c6e2f53f4672",
+          "source_url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29",
+          "text": "Secret Weapon 8"
+        },
+        {
+          "citation_id": "W213bcd7ca037",
+          "identity_verified": false,
+          "kind": "project_codename",
+          "literal_witness": "[ 6 ] They documented the basic layout of the project, named \"Secret Weapon 8\" (SW8), and the surrounding area. The plans included retaining The Flume's former station building as a '",
+          "source_body_sha256": "77ba03069ef235fd88c29f211937d701b4423e6d690251bdef35c6e2f53f4672",
+          "source_url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29",
+          "text": "SW8"
+        }
+      ],
+      "research_results": [
+        {
+          "query": "Alton Towers Farley Staffordshire \"Wicker Man\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk",
+          "sources": [
+            {
+              "artifact_sha256": "69aec34c201fac477ea0dc8a436823bd1ef0c348ca5014b1fdf932c9714ab5f8",
+              "body_sha256": "557fe07ef1dfcc22118c4675ffd9dca4762eb1e8eff6f0f5589bb670a3c1d6ba",
+              "citation_id": "W79a3d2a081cc",
+              "excerpt": "From Wikidata wooden roller coaster at Alton Towers Resort, England edit Language Label Description Also known as default for all languages No label defined \u2013 English Wicker Man wooden roller coaster at Alton Towers Resort, England Statements instance of wooden roller coaster 0 references image AltonTowersWickerManRollercoaster.jpg 2,045 \u00d7 2,046; 1.04 MB 1 reference imported from Wikimedia project Dutch Wikipedia Wikimedia import URL https://nl.wikipedia.org/w/index.php?title=Wicker_Man_(Alton_Towers)&oldid=52447009 country United Kingdom 0 references location Alton Towers 0 references coordin",
+              "requested_url": "https://www.wikidata.org/wiki/Q25223509",
+              "retrieval": "cached",
+              "retrieved_at_utc": "2026-10-27T22:14:33.266280+00:00",
+              "source_evidence_verified": false,
+              "title": "Wicker Man - Wikidata",
+              "training_labels_generated": 0,
+              "url": "https://www.wikidata.org/wiki/Q25223509"
+            },
+            {
+              "artifact_sha256": "dd5634bc46c7743d60194b5748753ace32cb73be73c8cfcc5dee7e2dcdaab957",
+              "body_sha256": "77ba03069ef235fd88c29f211937d701b4423e6d690251bdef35c6e2f53f4672",
+              "citation_id": "W213bcd7ca037",
+              "excerpt": "Coordinates : 52\u00b059\u203220\u2033N 1\u00b053\u203219\u2033W \ufeff / \ufeff 52.98889\u00b0N 1.88861\u00b0W \ufeff / 52.98889; -1.88861 From Wikipedia, the free encyclopedia Wooden roller coaster Wicker Man The wooden statue \u201cBig Bob\u201d being surrounded by the track Alton Towers Location Alton Towers Park section Mutiny Bay Coordinates 52\u00b059\u203220\u2033N 1\u00b053\u203219\u2033W \ufeff / \ufeff 52.98889\u00b0N 1.88861\u00b0W \ufeff / 52.98889; -1.88861 Status Operating Opening date 20 March 2018 ( 2018-03-20 ) Cost \u00a316,000,000 Replaced The Flume General statistics Type Wood Manufacturer Great Coasters International Designer Skyline Design LLC Lift/launch system Chain lift hill Drop 72.2 ft (2",
+              "requested_url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29",
+              "retrieval": "cached",
+              "retrieved_at_utc": "2026-10-27T22:14:34.165824+00:00",
+              "source_evidence_verified": false,
+              "title": "Wicker Man (roller coaster) - Wikipedia",
+              "training_labels_generated": 0,
+              "url": "https://en.wikipedia.org/wiki/Wicker_Man_%28roller_coaster%29"
+            }
+          ],
+          "status": "web_evidence_gathered",
+          "task_id": "e7f6f106ec5d6e24b1ea41d533b5e0f4cdca65c8a886d80e69e667e826f3fd2e"
+        },
+        {
+          "query": "Alton Towers Farley Staffordshire \"Secret Weapon 8\" planning application drawings site:publicaccess.staffsmoorlands.gov.uk",
+          "sources": [],
+          "status": "web_sources_unavailable",
+          "task_id": "e90e656fba13a40a5e51db2a9fffdde6b192de2b6999400f83752678cf14736b"
+        }
+      ],
+      "research_failures": [],
+      "report_sha256": "880c7eb500c06a7cd64b45396bb071ac1e8a88708732733a089e3b2b30af97db"
+    },
+    "thorpe": {
+      "status": "map_clues_extracted",
+      "site_id": "thorpe-park",
+      "site": "Thorpe Park",
+      "location": "Chertsey Surrey",
+      "snapshot": {
+        "attribution": "\u00a9 OpenStreetMap contributors",
+        "body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+        "bounds_wgs84": [
+          -0.523,
+          51.397,
+          -0.505,
+          51.41
+        ],
+        "bytes": 2201246,
+        "license": "ODbL-1.0",
+        "local_snapshot_bounds_verified": true,
+        "retrieval": "cached",
+        "retrieved_at_utc": "2026-10-27T22:15:16.056852+00:00",
+        "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-0.523%2C51.397%2C-0.505%2C51.41"
+      },
+      "feature_count": 174,
+      "features_truncated": false,
+      "element_counts": {
+        "node": 8659,
+        "relation": 40,
+        "way": 728
+      },
+      "tag_counts": {
+        "addr:city": 10,
+        "addr:postcode": 9,
+        "addr:street": 7,
+        "alt_name": 2,
+        "amenity": 38,
+        "area:highway": 2,
+        "attraction": 39,
+        "brand": 6,
+        "bridge": 17,
+        "building": 108,
+        "contact:website": 3,
+        "covered": 2,
+        "highway": 349,
+        "layer": 59,
+        "leisure": 20,
+        "name": 215,
+        "name:en": 1,
+        "natural": 159,
+        "old_name": 2,
+        "opening_date": 7,
+        "operator": 34,
+        "place": 4,
+        "roller_coaster": 51,
+        "shop": 15,
+        "source": 229,
+        "tourism": 25,
+        "tunnel": 4,
+        "waterway": 7,
+        "website": 14,
+        "wikidata": 43,
+        "wikipedia": 29
+      },
+      "network_bytes": 0,
+      "model_weights_updated": false,
+      "training_labels_generated": 0,
+      "world_blocks_generated": 0,
+      "queries": [
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/node/11809356042",
+          "id": "b59cb3abccdcb6d6f04745bcd19915f301d88492255a557743211e8f3fa11281",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/11809356042"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/161293672",
+          "id": "367020421415689a438550205c5bf696d6b43e24588d1f18d99ee602f0d20b0a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Colossus\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Colossus",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q287855",
+            "https://en.wikipedia.org/wiki/Colossus_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/161293672"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/363108239",
+          "id": "d552ea401bcf70f9c34868cd488c475fddab6722c36e099a1a39d1b17802b7d7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Big Easy Bumpers\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Big Easy Bumpers",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/363108239"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/1009587414",
+          "id": "21abb0f1aee8c16c5e1c427f6b83b1ce8bd96c7feea67a2027d5a09f7fd502cd",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"1st Chertsey Scouts\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "1st Chertsey Scouts",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.scouts.org.uk/groups/10010518?loc=tw2&page=43&slug=1st-Chertsey-Scout-Group"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1009587414"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099887",
+          "id": "3c835d6c003f69741425e99bfef6ac603fbb9521f9e3fe4a66afdd71e2cc1fb9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Boulevard Bites\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Boulevard Bites",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099887"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1237544801",
+          "id": "85684273903046cfcb594d4728b4e91bd5e4f2481ac81f88044ef5f46b32d021",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1237544801"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/3673621772",
+          "id": "29d96bd2ffc9ea7bc75d6f4254f173a481ad672d95c998916ace939012af50ca",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Boardwalk Games\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Boardwalk Games",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673621772"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/189613379",
+          "id": "207aa9fa1d1d78a50f518235182d2716b37b5256d70c61a0909852ecb37fa42d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Depth Charge\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Depth Charge",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/189613379"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/189613393",
+          "id": "4a13ab1c565d5717838f1cf4428af27ddc6014bf934bd578cfbe013f52b86de9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Kebabs\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Kebabs",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/189613393"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099890",
+          "id": "141b1392760e429858d7e1ef93115d95e0e61a138b64d66bd2e5a253534c06dc",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Candypips\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Candypips",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099890"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1240260906",
+          "id": "cc6ba913aeb463375721a3e14fd40f1c1e606617961312c651c2f7208101255c",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Big Easy Boulevard\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Big Easy Boulevard",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1240260906"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/1767971723",
+          "id": "0c5565a3a7974a19b0b8a9ad6e72d7379b9f3670e90beef5bb11c40a60699e54",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Amity Cove\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Amity Cove",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/1767971723"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/623806234",
+          "id": "a363f6f13b42484d1cd5ed9986d2f23d2012558cfb3ba8305717cf1791bf213f",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Detonator\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Detonator",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "tower",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5265768",
+            "https://en.wikipedia.org/wiki/Detonator_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/623806234"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/363108241",
+          "id": "2aa9befc5945da8a4a722d36d76090584a64e54fa73b3dc04c942b5bedf9990b",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Ben & Jerry's Scoop Shop\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Ben & Jerry's Scoop Shop",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/363108241"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673646648",
+          "id": "edeb13aaea46ae6cb0b4a6135f2f26569d7b8ec4e9502dac253c25287d304ec7",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Coffee Shack\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Coffee Shack",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673646648"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/372317098",
+          "id": "0745af29569861fbb793ef209b6ff05d4771305fe9573775c24fb6e71deff4bc",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Coldharbour Lane\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Coldharbour Lane",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/372317098"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/relation/9274290",
+          "id": "bd53065da2eb71bdefb241a4cfa2ad3eeb357a517ede7921ee594e5e711df425",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Chertsey\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Chertsey",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/relation/9274290"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/60048098",
+          "id": "c8f68f09b8972a4663974a5804454ad22d8ebc4b8aac5d590577a6899b41d5cb",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Dobble Tea Party\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Dobble Tea Party",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.thorpepark.com/explore/theme-park/rides/dobble-tea-party/"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/60048098"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/60048146",
+          "id": "1ab26bc92078384089eaf353e9c36f22e746188847c8a792a2734433a6eda172",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Burger King\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Burger King",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://locations.burgerking.co.uk/chertsey/c/o-leisure-sport-ltd-staines-road-8951"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/60048146"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673621774",
+          "id": "be08dc51ebc91448d7736c33403be05b0cba161195ebb8a0d45b274b2407233a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Inferno Shop\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Inferno Shop",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673621774"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1063328572",
+          "id": "8a9525c32bf8ac9f0520d19b2fc4d0dca0b314284b30fed3ad14605d0dba026a",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Fearless Valley\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Fearless Valley",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1063328572"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/3512625360",
+          "id": "ba83e32395f40729beeb265041cec6efedbbcd0798bf795bfee50c2e40a81d34",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Easterly End Lodge\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Easterly End Lodge",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3512625360"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/1271504542",
+          "id": "77afd9aebda761cc08c25518fb7bdd6d55bab028a665457fc3bb80f8c58dadf6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Flying Fish\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Flying Fish",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "coaster",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q5463415",
+            "https://en.wikipedia.org/wiki/Flying_Fish_%28roller_coaster%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271504542"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/991966515",
+          "id": "46e03aaa6f9a5835d3534903aac6f579aa03d5b2ab8acf0f8030eb28c6967d4d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Camden Junction Bar\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Camden Junction Bar",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/991966515"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099888",
+          "id": "5f42c0437209e60aebae80fe74941fefcf7ae7ea80030c98184e8c47e73c7439",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"KFC\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "KFC",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.kfc.co.uk/kfc-near-me/chertsey-thorpe-park-seasonal"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099888"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1271700354",
+          "id": "eca022c7af481bf197d3d7161110e115c72eba306944820cecd31eb484b6b36e",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia Fastrack & Single Rider Entrance\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia Fastrack & Single Rider Entrance",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271700354"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/node/8121003297",
+          "id": "3e1c8d979fefc0f4b010e6d88c609c8458f31781dcfc433ac48e6326249a0fdb",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Monk's Grove\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Monk's Grove",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/8121003297"
+        },
+        {
+          "feature_category": "ride",
+          "feature_id": "osm/way/432543585",
+          "id": "af9504bf451c21eeb6ab83706ea126aeb6976d6c2dd346ec8c9ac7cf53595c4d",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Ghost Train\" ride layout planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Ghost Train",
+              "ride plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.thorpepark.com/explore/theme-park/rides/ghost-train-ride/",
+            "https://www.wikidata.org/wiki/Q25304656",
+            "https://en.wikipedia.org/wiki/Ghost_Train_%28Thorpe_Park%29"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/432543585"
+        },
+        {
+          "feature_category": "building",
+          "feature_id": "osm/way/619399096",
+          "id": "cf0e6d1c93fd6e3c131f400ace5e68e6f1bcdb82a3bf20e7b7c5dcb0fb9323d9",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Colossus Dogs\" building floor plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Colossus Dogs",
+              "building plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/619399096"
+        },
+        {
+          "feature_category": "facility",
+          "feature_id": "osm/node/3673099888",
+          "id": "cedf30595eb17329316ec92af8a6051585c313589a83523e80ada21586afbf3a",
+          "name_tag": "alt_name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Kentucky Fried Chicken\" site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Kentucky Fried Chicken",
+              "facility plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.kfc.co.uk/kfc-near-me/chertsey-thorpe-park-seasonal"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/node/3673099888"
+        },
+        {
+          "feature_category": "path",
+          "feature_id": "osm/way/1271700355",
+          "id": "16c699ea9e82cc65359172d470764ffe0582e266b3b40f56071bf1c8168e1ec6",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Hyperia Main Entrance\" landscape paving plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Hyperia Main Entrance",
+              "path plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/1271700355"
+        },
+        {
+          "feature_category": "area",
+          "feature_id": "osm/way/261427009",
+          "id": "73a96edc8f6597a2a666c6813d1de467d888b064e8be12e67457a20686e6f640",
+          "name_tag": "name",
+          "planning_application_identity_verified": false,
+          "planning_hosts": [
+            "democracy.runnymede.gov.uk"
+          ],
+          "query": "Thorpe Park Chertsey Surrey \"Penton Hook Marina\" landscape site plan planning application site:democracy.runnymede.gov.uk",
+          "research_profile": {
+            "applications": [],
+            "location": "Chertsey Surrey",
+            "site": "Thorpe Park",
+            "tags": [
+              "Penton Hook Marina",
+              "area plan"
+            ]
+          },
+          "ride_type_hint": "unknown",
+          "seed_urls": [
+            "https://www.wikidata.org/wiki/Q7165266",
+            "https://en.wikipedia.org/wiki/Penton_Hook_Marina"
+          ],
+          "site_id": "thorpe-park",
+          "source_body_sha256": "0928230e6a0e8d9daf667d5afab8461024a06b575cef6a1b4036d9f70abc95d4",
+          "source_map_url": "https://www.openstreetmap.org/way/261427009"
+        }
+      ],
+      "document_clues": [],
+      "research_results": [],
+      "research_failures": [],
+      "report_sha256": "65fb1191c2c1dcd0453254dca89938d697c2dc01fdc72002f7e82fe2822322ca"
+    }
+  },
+  "actual_existing_96_pair_cycle": {
+    "first": {
+      "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+      "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+      "curriculum_tasks": 37,
+      "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+      "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+      "encoder_weights_updated": false,
+      "limitations": [
+        "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+        "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+        "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+        "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+      ],
+      "map_document_clues": [],
+      "map_failures": [],
+      "map_reports": [
+        {
+          "features": 205,
+          "queries": 32,
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589"
+        }
+      ],
+      "model_weights_updated": false,
+      "network_bytes": 0,
+      "new_source_bodies": 0,
+      "production_eligible": false,
+      "remembered_map_followups": 0,
+      "remembered_sources": 4,
+      "research_failures": [],
+      "research_results": [
+        {
+          "output": "research-6e2e7fd9823c",
+          "query": "Alton Towers Farley Staffordshire \"Wicker Man\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk support frame plan",
+          "sources": 1,
+          "status": "web_evidence_gathered",
+          "task_id": "6e2e7fd9823ca3090008ee24c6688b3bbcbe42f00c9f816aa7709e378ce26aaa"
+        }
+      ],
+      "sources": [
+        {
+          "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+          "citation_id": "W727e63f1fdd0",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+        },
+        {
+          "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+          "citation_id": "Wf344cf4b5875",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+        },
+        {
+          "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "citation_id": "M93dd03bb5e24",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+        },
+        {
+          "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+          "citation_id": "Wb169c0484216",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+        }
+      ],
+      "status": "research_learning_cycle_completed",
+      "training_status": "reused_unchanged_dataset_checkpoint",
+      "version": "research-learning-cycle-v1",
+      "web_sources_automatically_labelled": 0,
+      "world_blocks_generated": 0
+    },
+    "restart": {
+      "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+      "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+      "curriculum_tasks": 37,
+      "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+      "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+      "encoder_weights_updated": false,
+      "limitations": [
+        "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+        "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+        "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+        "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+      ],
+      "map_document_clues": [],
+      "map_failures": [],
+      "map_reports": [
+        {
+          "features": 205,
+          "queries": 32,
+          "site_id": "alton-towers",
+          "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589"
+        }
+      ],
+      "model_weights_updated": false,
+      "network_bytes": 0,
+      "new_source_bodies": 0,
+      "production_eligible": false,
+      "remembered_map_followups": 0,
+      "remembered_sources": 4,
+      "research_failures": [],
+      "research_results": [
+        {
+          "output": "research-6c199874a644",
+          "query": "Alton Towers Farley Staffordshire \"Bluey the Ride: Here Come the Grannies!\" ride layout planning application site:publicaccess.staffsmoorlands.gov.uk support frame plan",
+          "sources": 1,
+          "status": "web_evidence_gathered",
+          "task_id": "6c199874a6447dedbe572e3c7bcef494cdf42ac6e9b742719826b4333d1d4d5e"
+        }
+      ],
+      "sources": [
+        {
+          "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+          "citation_id": "W727e63f1fdd0",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+        },
+        {
+          "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+          "citation_id": "Wf344cf4b5875",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+        },
+        {
+          "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+          "citation_id": "M93dd03bb5e24",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+        },
+        {
+          "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+          "citation_id": "Wb169c0484216",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+        }
+      ],
+      "status": "research_learning_cycle_completed",
+      "training_status": "reused_unchanged_dataset_checkpoint",
+      "version": "research-learning-cycle-v1",
+      "web_sources_automatically_labelled": 0,
+      "world_blocks_generated": 0
+    },
+    "first_report_sha256": "b5abb4e7f078123b47b3cee8c1181682342c417f39fe7a70b39b41130df05e02",
+    "restart_report_sha256": "d63a0ff43e599140aea6bc431ffbff55afc3ccd347b9cae8141307c8ce12c73d",
+    "first_curriculum_sha256": "d38cc662a52ea6f326e00fa38ac602ca4b05799277c1727697e9808187ca9a48",
+    "restart_curriculum_sha256": "d38cc662a52ea6f326e00fa38ac602ca4b05799277c1727697e9808187ca9a48"
+  },
+  "new_verified_planning_applications": 0,
+  "new_verified_geometry_training_pairs": 0,
+  "model_accuracy_improvement_demonstrated": false,
+  "neural_weights_updated_from_map_data": false,
+  "windows_exe_rebuilt": false,
+  "world_blocks_generated": 0,
+  "limitations": [
+    "Map tags, names, codename witnesses and distinct source hashes remain unverified research clues.",
+    "The Wicker linked-page check recovered Secret Weapon 8 and SW8, but its follow-up yielded no source.",
+    "The 96-pair cycle used retained source bytes in offline mode and reused the prior checkpoint; it did not train map geometry.",
+    "Synthetic tests, separately from the live run, verify persistence of discovered application follow-ups."
+  ],
+  "attribution": "\u00a9 OpenStreetMap contributors, ODbL-1.0, https://www.openstreetmap.org/copyright"
+}

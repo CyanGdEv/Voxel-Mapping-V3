@@ -8,7 +8,7 @@ import time
 
 from . import study_component_learning as reader
 from . import study_transfer_learning as transfer
-from . import web_research, web_focus, web_evidence as web
+from . import web_research, web_focus, web_evidence as web, map_planning_research as maps
 from .desktop_memory import digest
 from .generation_cycles import atomic_json, file_hash
 
@@ -65,7 +65,7 @@ def validate(config):
     if any(not isinstance(i,str) for i in identities) or len(set(identities))!=len(sites):
         raise ValueError('Unique public site identities required')
     for site in sites:
-        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls'}:
+        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls','map_context','planning_hosts','map_focus_names'}:
             raise ValueError('Known public site profile fields required')
         reader._identifier(site.get('site_id'),'public site id')
         web_focus.profile({'site':site.get('name'),'location':site.get('location',''),
@@ -76,6 +76,10 @@ def validate(config):
         urls=site.get('urls',[])
         if not isinstance(urls,list) or len(urls)>12:raise ValueError('Bounded exact public site seed links required')
         for value in urls:web.url(value)
+        if 'map_context' in site:maps.validate_source(site['map_context'])
+        web_focus.profile({'site':site['name'],'tags':site.get('map_focus_names',[])})
+        if site.get('planning_hosts'):web.hosts(site['planning_hosts'])
+    if sum('map_context' in site for site in sites)>4:raise ValueError('At most four map areas per learning cycle')
     maximum=config.get('max_research_jobs',2)
     if type(maximum) is not int or not 0<=maximum<=6 or type(config.get('refresh_research',False)) is not bool:
         raise ValueError('Bounded repeatable research cycle required')
@@ -103,7 +107,8 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
     db=sqlite3.connect(memory_directory/'research-learning.sqlite3',timeout=30)
     db.executescript('CREATE TABLE IF NOT EXISTS checkpoints(key TEXT PRIMARY KEY, path TEXT, sha256 TEXT, report_sha256 TEXT);'
         'CREATE TABLE IF NOT EXISTS research_tasks(id TEXT PRIMARY KEY, query TEXT, source_count INTEGER);'
-        'CREATE TABLE IF NOT EXISTS sources(sha256 TEXT PRIMARY KEY, url TEXT, citation TEXT);')
+        'CREATE TABLE IF NOT EXISTS sources(sha256 TEXT PRIMARY KEY, url TEXT, citation TEXT);'
+        'CREATE TABLE IF NOT EXISTS map_followups(id TEXT PRIMARY KEY, payload TEXT);')
     key=digest({'dataset_manifest_sha256':pin,'encoder_sha256':config['encoder_sha256'],'trainer':'frozen-feature-ridge-100-v1'})
     model_directory=memory_directory/'models'/key
     training_status='reused_unchanged_dataset_checkpoint'
@@ -126,10 +131,60 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
         db.execute('INSERT OR REPLACE INTO checkpoints VALUES(?,?,?,?)',(key,str(model_directory.resolve()),file_hash(model_directory/'model.json'),file_hash(model_directory/'report.json')))
         db.commit()
         errors={kind:1-float(row['recall']) for kind,row in report.get('cross_source_evaluation',{}).get('metrics',{}).get('per_class',{}).items() if row['support']}
-        tasks=curriculum(rows,sites,errors);atomic_json(output/'curriculum.json',tasks)
+        tasks=curriculum(rows,sites,errors)
         completed={r[0] for r in db.execute('SELECT id FROM research_tasks WHERE source_count>0')}
         seen={r[0] for r in db.execute('SELECT sha256 FROM sources')}|set(model['training_sources'])
         deadline=time.monotonic()+600;budget=web.Budget(64_000_000);results=[];new=set();failures=[]
+        map_reports=[];map_failures=[];map_tasks=[]
+        mapped=[site for site in sites if 'map_context' in site]
+        if len(mapped)>4:raise ValueError('At most four map areas per learning cycle')
+        for site in mapped:
+            reader._check(cancelled)
+            try:
+                context=maps.run({'version':maps.VERSION,'site_id':site['site_id'],'site':site['name'],
+                    'location':site.get('location',''),'map_source':site['map_context'],
+                    'planning_hosts':site.get('planning_hosts',[]),'applications':site.get('applications',[]),
+                    'focus_names':site.get('map_focus_names',[]),'max_queries':32},
+                    output/('map-'+site['site_id']),cache,cancelled=cancelled,progress=progress,
+                    parent_budget=budget,run_deadline=deadline)
+            except (web.WebError,ValueError,OSError) as error:
+                map_failures.append({'site_id':site['site_id'],'error':str(error)});continue
+            map_reports.append({'site_id':site['site_id'],'features':context['feature_count'],
+                'queries':len(context['queries']),'source_body_sha256':context['snapshot']['body_sha256']})
+            for source in context['sources']:
+                body=source['body_sha256']
+                if body not in seen:new.add(body)
+                seen.add(body)
+                db.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(body,source['url'],source['citation_id']))
+            for base in [t for t in tasks if t['site_id']==site['site_id']]:
+                selected=0
+                for clue in context['queries']:
+                    # Match map categories to the component being researched.
+                    kind=base['kind'];category=clue['feature_category']
+                    if kind.startswith('ride_') and category!='ride':continue
+                    if kind.startswith(('ride_track','ride_support')) and clue['ride_type_hint']!='coaster':continue
+                    if kind in ('building','door','window','wall','roof','roof_profile','roof_outline','building_footprint') and category not in ('building','facility'):continue
+                    if kind in ('path','plaza') and category not in ('path','area'):continue
+                    task={**base,'query':(clue['query']+' '+TAGS.get(kind,[kind])[0])[:300],
+                        'seed_urls':list(dict.fromkeys(base['seed_urls']+clue['seed_urls']))[:12],
+                        'research_profile':{**base['research_profile'],
+                            'applications':list(dict.fromkeys(base['research_profile']['applications']+clue['research_profile']['applications']))[:8],
+                            'tags':list(dict.fromkeys(clue['research_profile']['tags']+base['research_profile']['tags']))[:16]},
+                        'map_clue':{k:clue[k] for k in ['feature_id','source_body_sha256','source_map_url','name_tag']}}
+                    task['id']=digest({k:v for k,v in task.items() if k!='id'});map_tasks.append(task)
+                    selected+=1
+                    if selected>=4:break
+            db.commit()
+        pins={r['source_body_sha256'] for r in map_reports};active_sites={s['site_id'] for s in mapped}
+        remembered=[]
+        for (raw,) in db.execute('SELECT payload FROM map_followups ORDER BY rowid LIMIT 256'):
+            item=json.loads(raw)
+            if digest({k:v for k,v in item.items() if k!='id'})!=item.get('id'):
+                raise ValueError('Remembered map research task changed')
+            if item.get('map_clue',{}).get('source_body_sha256') in pins and item.get('site_id') in active_sites:
+                remembered.append(item)
+        tasks=remembered+map_tasks+tasks;atomic_json(output/'curriculum.json',tasks)
+        task_queries={t['query'] for t in tasks};map_document_clues=[]
         for task in tasks:
             reader._check(cancelled)
             if len(results)+len(failures)>=maximum or time.monotonic()>=deadline or budget.exhausted:break
@@ -149,12 +204,24 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
                 seen.add(body)
                 db.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(body,source['url'],source['citation_id']))
             db.execute('INSERT OR REPLACE INTO research_tasks VALUES(?,?,?)',(task['id'],task['query'],len(result['sources'])))
+            if 'map_clue' in task:
+                discovered=maps.document_clues(result,cache,cancelled=cancelled,deadline=deadline);map_document_clues.extend(discovered)
+                site=next(s for s in sites if s['site_id']==task['site_id'])
+                follow=maps.followups({'site':site['name'],'location':site.get('location',''),
+                    'planning_hosts':site.get('planning_hosts',[])},task,discovered)
+                follow=[t for t in follow if t['query'] not in task_queries]
+                for t in follow:
+                    task_queries.add(t['query'])
+                    if db.execute('SELECT count(*) FROM map_followups').fetchone()[0]<256:
+                        db.execute('INSERT OR IGNORE INTO map_followups VALUES(?,?)',(t['id'],json.dumps(t,sort_keys=True)))
+                at=tasks.index(task)+1;tasks[at:at]=follow
             db.commit();results.append({'task_id':task['id'],'query':task['query'],'sources':len(result['sources']),
                 'status':result['status'],'output':'research-'+task['id'][:12]})
+        atomic_json(output/'curriculum.json',tasks)
         summary={'version':VERSION,'status':'research_learning_cycle_completed','dataset_id':manifest['id'],
             'dataset_manifest_sha256':pin,'training_status':training_status,'checkpoint_directory':str(model_directory.resolve()),
             'checkpoint_sha256':file_hash(model_directory/'model.json'),'curriculum_tasks':len(tasks),
-            'research_results':results,'research_failures':failures,'new_source_bodies':len(new),
+            'research_results':results,'research_failures':failures,'map_reports':map_reports,'map_failures':map_failures,'map_document_clues':map_document_clues,'remembered_map_followups':db.execute('SELECT count(*) FROM map_followups').fetchone()[0],'new_source_bodies':len(new),
             'remembered_sources':db.execute('SELECT count(*) FROM sources').fetchone()[0],
             'sources':[{'body_sha256':body,'url':url,'citation_id':citation,'source_evidence_verified':False,
                 'training_labels_generated':0} for body,url,citation in db.execute('SELECT sha256,url,citation FROM sources ORDER BY sha256 LIMIT 64')],
@@ -176,6 +243,9 @@ def main(argv=None):
     args=parser.parse_args(argv);config,_=reader._json(Path(args.config),1_000_000)
     base=Path(args.config).resolve().parent
     for field in ['dataset_directory','encoder_path']:config[field]=str((base/config[field]).resolve())
+    for site in config.get('public_sites',[]):
+        source=site.get('map_context',{})
+        if 'snapshot_path' in source:source['snapshot_path']=str((base/source['snapshot_path']).resolve())
     print(json.dumps(run(config,args.output,args.memory,args.cache)))
 
 

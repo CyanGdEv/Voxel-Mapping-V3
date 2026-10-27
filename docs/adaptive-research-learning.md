@@ -41,3 +41,5 @@ The previous ride cross-source class result remains 7/96, including 78 held-out 
 Two earlier survey candidates concern Wildwood and Field O, not Wicker Man. They cannot establish the ride's datum. The continued source review recovered five retained original PDFs and one revised site plan, and catalogued 89 attachments on the current application page. Eight attempted section drawings did not yield verified PDFs.
 
 LVIA part 1, PDF page 23 (printed page 17), paragraph 3.27 states a maximum proposed track high point of 201 m AOD. This corroborates the unique HP1=201 plan marker. It does not establish ODN/Newlyn, verify the built ride or every height label, or resolve ambiguous HP7. These sources remain research evidence; no XYZ training eligibility is granted. See `evidence/sw8-height-source-corroboration.json`.
+
+Map names, former names, public tags and referenced pages can now specialize this curriculum. See [Map-guided planning research](map-guided-planning-research.md) and the updated example request.
