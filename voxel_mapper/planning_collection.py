@@ -249,6 +249,7 @@ def run(config,output,cache,storage,*,memory='',cancelled=lambda:False,
                     'message':'Waiting for scheduled source retries; saved progress retained'})
                 pause(wait);continue
             batch_config=deepcopy(config['pilot'])
+            batch_config['research']['limits']={'max_sources':6,**batch_config['research'].get('limits',{})}
             if state['initial_done']:
                 batch_config['research']['query']='';batch_config['research']['urls']=ready[:6]
             batch_config['analysis_options']={**batch_config.get('analysis_options',{}),

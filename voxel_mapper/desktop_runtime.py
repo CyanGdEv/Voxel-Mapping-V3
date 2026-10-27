@@ -20,6 +20,8 @@ KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_eviden
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
 KINDS.add('planning_area_world_preview')
 HEAVY.add('planning_area_world_preview')
+KINDS.add('aerial_material_research')
+HEAVY.add('aerial_material_research')
 KINDS.add('map_planning_research')
 HEAVY.add('map_planning_research')
 KINDS.add('research_learning_cycle')
@@ -436,9 +438,13 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research'):
+                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
+                if kind=='aerial_material_research':
+                    self.store.remember('aerial_rgb_observation',result['site_id'],{
+                        'status':result['status'],'provider':result['provider'],'sample_cells':result['sample_cells'],
+                        'candidate_file_sha256':result['candidate_file_sha256'],'material_assignments_accepted':0})
                 if kind=='research_learning_cycle':
                     self.store.remember('adaptive_learning',result['dataset_id'],{
                         'training_status':result['training_status'],'checkpoint_sha256':result['checkpoint_sha256'],
@@ -706,6 +712,9 @@ def _worker(request):
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)
+    elif kind=='aerial_material_research':
+        from .aerial_material_research import run
+        result=run(config,output,output.parents[2]/'web-cache',cancelled=cancelled,progress=progress)
     elif kind=='map_planning_research':
         from .map_planning_research import run
         source=config.get('map_source',{})

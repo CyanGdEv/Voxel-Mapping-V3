@@ -58,6 +58,7 @@ def inspect(source, cache, scope, *, cancelled=lambda:False, deadline=None):
     selected = []
     scanned = 0
     scan_truncated = False
+    structured_views = []
     if source['format'] == 'pdf':
         import pymupdf
         candidates = []
@@ -92,7 +93,9 @@ def inspect(source, cache, scope, *, cancelled=lambda:False, deadline=None):
         text = '\n'.join(chunks)[:web.MAX_TEXT]
     elif source['format'] == 'html':
         soup = BeautifulSoup(path.read_bytes(),'html.parser')
-        found = {}
+        from .research_sources import html_views
+        structured_views,embedded_links = html_views(soup,source['url'])
+        found = {r['url']:r for r in embedded_links}
         for element in soup(['script','style','template','noscript']):
             element.decompose()
         for anchor in soup.find_all('a',href=True,limit=2000):
@@ -109,11 +112,13 @@ def inspect(source, cache, scope, *, cancelled=lambda:False, deadline=None):
             try: target=web.url(web.urljoin(source['url'],img['src']))
             except ValueError: continue
             found.setdefault(target,{'url':target,'title':str(img.get('alt','Image'))[:160],'media_type':'image'})
+        if structured_views:
+            text=('\n'.join(v['text'] for v in structured_views)+'\n'+text)[:web.MAX_TEXT]
         links=sorted(found.values(),key=lambda row:(-score(row['title'],scope),
             0 if '.pdf' in row['url'].lower() or 'attachmentshowservlet' in row['url'].lower() else 1,row['url']))[:128]
-    result={'version':'site-focused-source-view-v1','citation_id':source['citation_id'],
+    result={'version':'site-focused-source-view-v2','citation_id':source['citation_id'],
         'source_body_sha256':source['body_sha256'],'profile':scope,'text':text,
-        'selected_pdf_pages':selected,'pdf_pages_scanned':scanned,'scan_truncated':scan_truncated,
+        'structured_html_views':structured_views,'selected_pdf_pages':selected,'pdf_pages_scanned':scanned,'scan_truncated':scan_truncated,
         'links':links,'relevance_score':score(text,scope),'relevance_is_identity_verification':False,
         'source_evidence_verified':False,'training_labels_generated':0,
         'limitations':['Site, location and tag matches are retrieval hints, not physical identity or datum proof.',

@@ -65,7 +65,7 @@ def validate(config):
     if any(not isinstance(i,str) for i in identities) or len(set(identities))!=len(sites):
         raise ValueError('Unique public site identities required')
     for site in sites:
-        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls','map_context','planning_hosts','map_focus_names'}:
+        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls','map_context','planning_hosts','map_focus_names','aerial_context'}:
             raise ValueError('Known public site profile fields required')
         reader._identifier(site.get('site_id'),'public site id')
         web_focus.profile({'site':site.get('name'),'location':site.get('location',''),
@@ -79,12 +79,17 @@ def validate(config):
         if 'map_context' in site:maps.validate_source(site['map_context'])
         web_focus.profile({'site':site['name'],'tags':site.get('map_focus_names',[])})
         if site.get('planning_hosts'):web.hosts(site['planning_hosts'])
+        if 'aerial_context' in site:
+            from . import aerial_material_research as aerial
+            if not isinstance(site['aerial_context'],dict):raise ValueError('Aerial context must be an object')
+            aerial.validate({**site['aerial_context'],'version':aerial.VERSION,'site_id':site['site_id'],'site':site['name']})
     if sum('map_context' in site for site in sites)>4:raise ValueError('At most four map areas per learning cycle')
+    if sum('aerial_context' in s for s in sites)>2:raise ValueError('At most two aerial areas per learning cycle')
     maximum=config.get('max_research_jobs',2)
     if type(maximum) is not int or not 0<=maximum<=6 or type(config.get('refresh_research',False)) is not bool:
         raise ValueError('Bounded repeatable research cycle required')
     research=config.get('research',{})
-    if not isinstance(research,dict) or set(research)-{'allowed_hosts','allow_public_discovery','model','endpoint','model_options','offline','refresh','limits'}:
+    if not isinstance(research,dict) or set(research)-{'allowed_hosts','allow_public_discovery','model','endpoint','model_options','offline','refresh','limits','source_families'}:
         raise ValueError('Known web research transport/reasoning settings required')
     web_research.validate({'version':web_research.VERSION,'query':'public source research',**research})
     return sites,maximum,research
@@ -175,6 +180,21 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
                     selected+=1
                     if selected>=4:break
             db.commit()
+        aerial_reports=[];aerial_failures=[]
+        for site in [s for s in sites if 'aerial_context' in s]:
+            from . import aerial_material_research as aerial
+            try:
+                rgb=aerial.run({**site['aerial_context'],'version':aerial.VERSION,'site_id':site['site_id'],'site':site['name']},
+                    output/('aerial-'+site['site_id']),cache,cancelled=cancelled,progress=progress,parent_budget=budget,run_deadline=deadline)
+            except (web.WebError,ValueError,OSError) as error:
+                aerial_failures.append({'site_id':site['site_id'],'error':str(error)});continue
+            aerial_reports.append({'site_id':site['site_id'],'status':rgb['status'],'provider':rgb['provider'],
+                'sample_cells':rgb['sample_cells'],'candidate_file_sha256':rgb['candidate_file_sha256'],'material_assignments_accepted':0})
+            for source in rgb['sources']:
+                body=source['body_sha256']
+                if body not in seen:new.add(body)
+                seen.add(body);db.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(body,source['url'],source['citation_id']))
+            db.commit()
         pins={r['source_body_sha256'] for r in map_reports};active_sites={s['site_id'] for s in mapped}
         remembered=[]
         for (raw,) in db.execute('SELECT payload FROM map_followups ORDER BY rowid LIMIT 256'):
@@ -221,7 +241,7 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
         summary={'version':VERSION,'status':'research_learning_cycle_completed','dataset_id':manifest['id'],
             'dataset_manifest_sha256':pin,'training_status':training_status,'checkpoint_directory':str(model_directory.resolve()),
             'checkpoint_sha256':file_hash(model_directory/'model.json'),'curriculum_tasks':len(tasks),
-            'research_results':results,'research_failures':failures,'map_reports':map_reports,'map_failures':map_failures,'map_document_clues':map_document_clues,'remembered_map_followups':db.execute('SELECT count(*) FROM map_followups').fetchone()[0],'new_source_bodies':len(new),
+            'aerial_reports':aerial_reports,'aerial_failures':aerial_failures,'research_results':results,'research_failures':failures,'map_reports':map_reports,'map_failures':map_failures,'map_document_clues':map_document_clues,'remembered_map_followups':db.execute('SELECT count(*) FROM map_followups').fetchone()[0],'new_source_bodies':len(new),
             'remembered_sources':db.execute('SELECT count(*) FROM sources').fetchone()[0],
             'sources':[{'body_sha256':body,'url':url,'citation_id':citation,'source_evidence_verified':False,
                 'training_labels_generated':0} for body,url,citation in db.execute('SELECT sha256,url,citation FROM sources ORDER BY sha256 LIMIT 64')],

@@ -13,5 +13,12 @@
   "prompt": "Find original planning drawings for the Woodcutters facilities application. Cite retrieved sources, distinguish proposed and existing drawings, and identify missing measurements and geometry checks.",
   "model": "",
   "offline": false,
-  "refresh": true
+  "refresh": true,
+  "source_families": [
+    "knowledge",
+    "rides",
+    "archives",
+    "planning_data",
+    "geospatial"
+  ]
 }

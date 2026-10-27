@@ -28,11 +28,18 @@
     "allow_public_discovery": true,
     "refresh": false,
     "limits": {
-      "max_sources": 3,
+      "max_sources": 8,
       "max_model_rounds": 1,
       "max_run_bytes": 16000000,
       "max_seconds": 60
-    }
+    },
+    "source_families": [
+      "knowledge",
+      "rides",
+      "archives",
+      "planning_data",
+      "geospatial"
+    ]
   },
   "focus_names": [
     "Wicker Man",

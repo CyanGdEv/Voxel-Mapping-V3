@@ -43,3 +43,5 @@ Two earlier survey candidates concern Wildwood and Field O, not Wicker Man. They
 LVIA part 1, PDF page 23 (printed page 17), paragraph 3.27 states a maximum proposed track high point of 201 m AOD. This corroborates the unique HP1=201 plan marker. It does not establish ODN/Newlyn, verify the built ride or every height label, or resolve ambiguous HP7. These sources remain research evidence; no XYZ training eligibility is granted. See `evidence/sw8-height-source-corroboration.json`.
 
 Map names, former names, public tags and referenced pages can now specialize this curriculum. See [Map-guided planning research](map-guided-planning-research.md) and the updated example request.
+
+For additional site families, structured APIs, Bing viewer/keyed imagery support and aerial RGB colour observations, see [Broader sources and aerial RGB](broader-sources-and-aerial-rgb.md).
