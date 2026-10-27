@@ -1,0 +1,45 @@
+{
+  "version": "ride-geometry-evidence-validation-v1",
+  "evidence_sha256": "5d03aba1fabbf898e972e61228992767dbfb6175050db54a4f85fd7e49427be5",
+  "request_sha256": "15cf9e743d8f2a2d5aa17f93de7cba6ec08388646014d8224a5f6a5040d49e47",
+  "printed_labels_and_crosshairs_reproduced": 14,
+  "single_branch_candidates": 13,
+  "held_ambiguous_labels": [
+    "HP7"
+  ],
+  "candidate_segment_distances_and_chainages_independently_recomputed": true,
+  "lidar_query_counts_and_quantiles_independently_recomputed": true,
+  "source_route_vertices": 428,
+  "estimated_closure_added": false,
+  "source_level_datum_verified": false,
+  "independent_survey_alignment_verified": false,
+  "new_surveyed_xyz_training_targets": 0,
+  "model_weights_updated": false,
+  "world_blocks_generated": 0,
+  "tests_passed": 68,
+  "additional_source_acquisition": [
+    {
+      "title": "Topographical Survey",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=302160",
+      "http_status": 503,
+      "bytes": 215,
+      "expected_sha256": "82cac12a14cd3d9d4232f409e681bd977f6c7f4f03be7b9049a6f845375543a9",
+      "verified_original_pdf": false
+    },
+    {
+      "title": "Site Sections Existing",
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=175677",
+      "http_status": 503,
+      "bytes": 215,
+      "expected_sha256": "a30f9ccfa7a6c9e44ee3c937cf52e647f9e25d27b097ed790012d114baa8436c",
+      "verified_original_pdf": false
+    }
+  ],
+  "limitations": [
+    "Printed plan level datum is unestablished; no ODN conversion or terrain offset is inferred.",
+    "Branch candidates are deterministic source geometry links, not physical or as-built acceptance.",
+    "Historical planning geometry and later LiDAR can disagree; missing returns do not exclude hidden track.",
+    "Map fit uses related OSM references, not independently surveyed control points.",
+    "No interpolation, display corrections or generated world variants become targets."
+  ]
+}
