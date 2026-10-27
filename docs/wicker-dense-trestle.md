@@ -49,5 +49,23 @@ python -m voxel_mapper.fence_support_world \
   --base-directory PATH/solid-step-track \
   --markings-path PATH/source-markings.json \
   --pdf-path PATH/original-landscape.pdf \
+  --style dense \
   --output FRESH-DIRECTORY
 ```
+
+## Replacement from the four-view Minecraft frame reference
+
+The default `--style reference` rebuilds from the same support-free track parent.
+It replaces the previous X-brace lattice completely: upright columns alternate
+spruce and nether-brick fence sections; closed, oriented spruce gates form
+crosspieces; flat oak trapdoors form upper shelves and spruce trapdoors form
+alternate lower shelves. Trapdoors use the top half of their cell and stay closed.
+No old diagonal members or vertical trapdoor plates are imported.
+
+All 223 accepted source groups retain their measured plan feet and bearing ties.
+The reference determines the block palette and frame pattern, not new footing
+positions or surveyed structural dimensions. Shelves and gates repeat at inferred
+levels in taller frames. Dense source rows remain; the visual joint pattern is an
+interpretation of the screenshots. Track, buildings, terrain and walking clearances
+are retained. The previous lattice can be replayed explicitly with `--style dense`.
+The exported world still requires an in-game visual review.
