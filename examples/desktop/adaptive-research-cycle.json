@@ -21,6 +21,22 @@
       ],
       "urls": [
         "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      ],
+      "map_context": {
+        "bounds_wgs84": [
+          -1.897,
+          52.984,
+          -1.882,
+          52.994
+        ],
+        "offline": false
+      },
+      "map_focus_names": [
+        "Wicker Man",
+        "Mutiny Bay"
+      ],
+      "planning_hosts": [
+        "publicaccess.staffsmoorlands.gov.uk"
       ]
     },
     {
@@ -35,6 +51,22 @@
       ],
       "urls": [
         "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      ],
+      "map_context": {
+        "bounds_wgs84": [
+          -0.523,
+          51.397,
+          -0.505,
+          51.41
+        ],
+        "offline": false
+      },
+      "map_focus_names": [
+        "Hyperia",
+        "Colossus"
+      ],
+      "planning_hosts": [
+        "democracy.runnymede.gov.uk"
       ]
     },
     {
