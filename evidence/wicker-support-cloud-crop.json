@@ -1,0 +1,32 @@
+{
+  "sha256": "84a097d0c0700618954ece39add488ed6c73456b39240c371e198bfa98c75dcb",
+  "archive_sha256": "0da1c50d0df63f6dd7b49dca29286180eabf20261530fb8afe05645cf0235b1e",
+  "prior_archive_sha256": "2bd911d556739978915046d94037c206cdb60811c2e2dfd6da48b24ce83135dc",
+  "archive_bytes": 384483857,
+  "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+  "survey_id": "P_10682",
+  "survey_date": "2022-01-05",
+  "bounds": [
+    407530.0,
+    343495.0,
+    407675.0,
+    343615.0
+  ],
+  "retained_points": 56568,
+  "scanned_points": 98342681,
+  "classes": {
+    "1": 1096,
+    "2": 20188,
+    "3": 1021,
+    "4": 8651,
+    "5": 22775,
+    "6": 2832,
+    "7": 5
+  },
+  "reference_crop_sha256": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+  "reference_crop_reproduced_exactly": true,
+  "license": "OGL-UK-3.0",
+  "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+  "crs": "EPSG:27700",
+  "vertical_datum": "ODN"
+}

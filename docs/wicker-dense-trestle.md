@@ -69,3 +69,5 @@ levels in taller frames. Dense source rows remain; the visual joint pattern is a
 interpretation of the screenshots. Track, buildings, terrain and walking clearances
 are retained. The previous lattice can be replayed explicitly with `--style dense`.
 The exported world still requires an in-game visual review.
+
+Latest placement correction: [individual footprint-to-centre supports](wicker-footprint-centre-supports.md).
