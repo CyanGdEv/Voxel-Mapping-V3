@@ -119,3 +119,5 @@ no background promotion of this research model and no generated geometry.
 Frozen synthetic tests exercise real training, checkpoint reload/prediction and
 restart. Synthetic pattern accuracy is an engineering test and is reported
 separately from the real results above.
+
+New evidence intake: [multi-source reference packaging and reserved-site evaluation](multi-source-study-intake.md).
