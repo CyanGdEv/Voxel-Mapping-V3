@@ -39,7 +39,7 @@ def complete_route(line, controls, profile):
                            'closure_is_estimated':True, 'estimated_controls':estimated}
 
 
-def sample_route(route, controls, cancelled=lambda:False):
+def sample_route(route, controls, cancelled=lambda:False, *, clearance_blocks=3):
     """Keep separate vertical visits to the same XY column at track crossings."""
     visits=defaultdict(list); samples=[]
     for s in np.linspace(0, route.length, math.ceil(route.length/.2)+1):
@@ -75,7 +75,7 @@ def sample_route(route, controls, cancelled=lambda:False):
     for sample in samples:
         s=sample['station_m'];cells=sample['cells_xy'];centre=group_at(cells[1],s)
         x,b,y=centre['key'];centre_keys.append([x,b,y])
-        head.update((x,h,y) for h in range(math.ceil(centre['top']),math.ceil(centre['top'])+3))
+        head.update((x,h,y) for h in range(math.ceil(centre['top']),math.ceil(centre['top'])+clearance_blocks))
         for sign,xy in zip([-1,1],[cells[0],cells[2]]):
             g=group_at(xy,s);x,b,y=g['key'];rails[x,math.ceil(g['top']),y]='oak_fence'
             if int(s/2)==int((s-.2)/2):continue
@@ -118,9 +118,16 @@ def deck_connectivity(core,centre_keys):
             'ordered_centre_samples_checked':len(centre_keys),'maximum_adjacent_sample_top_change_m':maximum}
 
 
-def prepare_park(terrain,old,blocks,core,head,profile,base):
-    """Bounded cuts only where deck/clearance touches the existing display mesh."""
+def prepare_park(terrain,old,blocks,core,head,profile,base,*,samples=()):
+    """Open declared covered track slots; preserve outdoor terrain and roofs."""
     terrain={k:dict(r) for k,r in terrain.items()};old=dict(old);cuts=[];removed=[]
+    fit=profile.get('height_fit')
+    covered_cells=set()
+    if fit:
+        for sample in samples:
+            if any(z['start_m']<=sample['station_m']<=z['end_m'] for z in fit['covered_zones']):
+                for x,y in sample['cells_xy']:
+                    covered_cells.update((x+dx,y+dy) for dx in [-1,0,1] for dy in [-1,0,1])
     lowest={}
     for x,h,y in blocks:
         lowest[x,y]=min(lowest.get((x,y),h),h)
@@ -129,6 +136,7 @@ def prepare_park(terrain,old,blocks,core,head,profile,base):
         r=terrain[x,y]
         if r['y']>=h:
             depth=r['y']-(h-1)
+            if fit and ((x,y) not in covered_cells or depth>fit['maximum_covered_cut_m']):raise ValueError('Outdoor terrain excavation forbidden: '+str((x,h,y,depth)))
             if depth>profile['max_terrain_cut_m']:raise ValueError('Track cut exceeds terrain budget')
             # Existing source guides remain the terrain material after lowering.
             cuts.append({'source_cell_xy':[x,y],'old_row':dict(r),'new_y':h-1,'cut_depth_m':depth})
@@ -137,19 +145,24 @@ def prepare_park(terrain,old,blocks,core,head,profile,base):
     # Shop and other facades remain protected, even if a profile is changed.
     eligible=[shape(r['wall_geometry_nominal_local']).buffer(1.5) for r in base['parts']]
     eligible.append(shape(base['maintenance']['wall_geometry_nominal_local']).buffer(1.5))
+    lower_geometry=shape(base['undercroft_geometry_nominal_local']).buffer(1) if fit and base.get('undercroft_geometry_nominal_local') else None
     protected={tuple(k) for o in base.get('shop_ground_fit',{}).get('openings',[]) for k in o.get('source_cells_xy',[])}
     queue=base.get('queue_deck')
     if queue:
         from .planning_station_preshow_world import grid_cells
         cells=grid_cells(shape(queue['source_polygon_nominal_local']))-{tuple(r['source_cell_xy']) for r in queue['preserved_geometry_aliases']}
         cells|={tuple(k) for k in queue['bounded_cardinal_connector_columns']}
-        if set(blocks)&{(x,h,y) for x,y in cells for h in [183,184,185]}:
+        if (set(blocks)|head)&{(x,h,y) for x,y in cells for h in [183,184,185]}:
             raise ValueError('Track would obstruct retained queue surfaces or headroom')
     clearance=set(head)
-    for x,b,y in core:clearance.update((x,h,y) for h in range(b,b+3))
+    for x,b,y in core:clearance.update((x,h,y) for h in range(b,b+(fit['clearance_blocks']+1 if fit else 3)))
     for key in sorted((set(blocks)|clearance)&old.keys()):
         x,h,y=key
+        if fit and h>=fit['protected_building_height_m'] and old[key]!='oak_fence':raise ValueError('Track would cut a protected roof: '+str((key,old[key])))
         allowed=any(g.covers(Point(x+.5,y+.5)) for g in eligible)
+        if lower_geometry and lower_geometry.covers(Point(x+.5,y+.5)):
+            if h==183:raise ValueError('Track would cut the preserved undercroft ceiling: '+str(key))
+            if h<183:allowed=True
         if old[key]=='oak_fence':allowed=allowed or any(g.distance(Point(x+.5,y+.5))<=1.5 for g in eligible)
         if (x,y) in protected or not allowed:
             raise ValueError('Track would alter protected park geometry: '+str(key))
@@ -171,24 +184,27 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
         if abs(actual['station_m']-expected['candidates'][0]['station_m'])>.05:
             raise ValueError('Source crossing branch changed')
     route,controls,closure=complete_route(line,controls,profile)
-    blocks,core,head,samples,topology=sample_route(route,controls,cancelled)
     base=json.loads((base_directory/'quality-report.json').read_text())
     rows=[json.loads(l) for l in (base_directory/'voxels.jsonl').read_text().splitlines()]
     terrain={(r['x'],r['z']-1):r for r in rows if r['kind']=='terrain'}
     old={(r['x'],r['y'],r['z']-1):r['material'] for r in rows if r['kind']=='structure'}
-    terrain,old,cuts,removed=prepare_park(terrain,old,blocks,core,head,profile,base)
+    from . import track_elevation
+    fitted,elevation_review=track_elevation.fit_profile(route,controls,terrain,profile['height_fit'],old)
+    blocks,core,head,samples,topology=sample_route(route,fitted,cancelled,clearance_blocks=profile['height_fit']['clearance_blocks'])
+    terrain,old,cuts,removed=prepare_park(terrain,old,blocks,core,head,profile,base,samples=samples)
+    elevation_review['actual_deck_terrain_check']=track_elevation.check_terrain(terrain,blocks,core,samples,profile['height_fit'])
     if (set(blocks)|head)&old.keys():raise ValueError('Unresolved retained park collision')
     if any(h<=terrain[x,y]['y'] for x,h,y in blocks):raise ValueError('Track remains buried')
     if len(blocks)>profile['max_added_blocks']:raise ValueError('Full track block budget exceeded')
     report=dict(base)
-    report.update(version='full-track-layout-v1',status='complete_track_only_prototype',implementation_sha256=file_hash(__file__),profile_sha256=file_hash(PROFILE),
-        source_replay_implementation_sha256=file_hash(timber.__file__),source_parent_world_sha256=base['world']['sha256'])
+    report.update(version='full-track-elevation-fit-v2',status='complete_track_only_prototype',implementation_sha256=file_hash(__file__),profile_sha256=file_hash(PROFILE),
+        elevation_implementation_sha256=file_hash(track_elevation.__file__),source_replay_implementation_sha256=file_hash(timber.__file__),source_parent_world_sha256=base['world']['sha256'])
     report['full_track']={'route_length_m':route.length,'controls':controls,'source_review':source,'closure':closure,
-        'added_structure_records':len(blocks),'deck_columns':len(core),'supports_constructed':0,'terrain_cuts':cuts,
+        'elevation_review':elevation_review,'added_structure_records':len(blocks),'deck_columns':len(core),'supports_constructed':0,'terrain_cuts':cuts,
         'building_passage_removals':removed,'topology':topology,'banking_verified':False,'operable_ride':False,
         'limitations':['All 14 source HP/LP levels replayed; interpolated vertical profile is provisional, not surveyed.',profile['estimated_heights_note'],
             'A short drafting gap is explicitly bridged to close the layout.',
-            'Local terrain and provisional building mesh are opened with exact receipts; no support frames are added.',
+            'Outdoor terrain and building roofs restored from the pre-track park. Only declared covered track slots allow local bed cuts and lower wall/floor openings; no support frames are added.',
             'Oak/spruce slabs, oak fences and outward oak trapdoors follow user mockups; vanilla raster curves and integer fence placement approximate the reference.']}
     output.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='full-track-',dir=output.parent) as temp:
@@ -204,7 +220,7 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
             report['track_clearance_native']=checkers._native_air(path,offset,head)
             report['track_surfaces_native']=checkers._native_surfaces(path,offset,[{'source_cell_xy':[x,y],'walking_top_m':h+(.5 if m.endswith('_slab') else 1)} for (x,h,y),m in core.items()])
             atomic_json(path/'FULL-TRACK-ASSUMPTIONS.json',report['full_track'])
-        world=bedrock.export_world(voxels,root,report,name='Wicker FULL TRACK ONLY - no supports',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxels,root,report,name='Wicker TRACK HEIGHT FIX - roof restored no supports',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-full-track.mcworld');report['world']['file']='wicker-full-track.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'quality-report.json',report)
@@ -212,7 +228,7 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
         atomic_json(root/'track-samples.json',samples)
         atomic_json(root/'running-clearance-air.json',[list(k) for k in sorted(head)])
         timber.preview(root/'full-track-preview.png',terrain,blocks,controls,track_only=True)
-        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Full Wicker Man track layout — no supports</h1><a href="wicker-full-track.mcworld">Download world</a><p>Complete mapped route in the reference slab/fence/trapdoor style. Approach heights, closure and interpolation are provisional. Local terrain cuts and building passage receipts are in the report. No functional ride or support frames.</p><img style="max-width:100%" src="full-track-preview.png">')
+        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Full Wicker Man track layout — no supports</h1><a href="wicker-full-track.mcworld">Download world</a><p>Complete mapped route in the reference slab/fence/trapdoor style. Outdoor track clears original terrain and banks. Preshow track is lowered beneath the retained upper floor; roofs are restored. Source/terrain height differences and covered bed cuts are recorded. No functional ride or support frames.</p><img style="max-width:100%" src="full-track-preview.png">')
         shutil.move(root,output)
     return report
 

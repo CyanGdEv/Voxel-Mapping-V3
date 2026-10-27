@@ -762,3 +762,8 @@ slab/fence/trapdoor style around the complete plan centreline, with no supports.
 `python -m voxel_mapper.full_track_world --help` lists its inputs. Fourteen printed
 levels guide a provisional profile; approach/crossing estimates, the short closure
 and local terrain/building passage changes are explicitly recorded.
+
+The full-layout generator now checks track elevation against the original terrain
+and neighbouring banks. Outdoor trenches are removed; the preshow section runs
+beneath the restored upper floor and roof. [Elevation correction details](docs/wicker-full-track-layout.md)
+include covered-slot estimates and reported planning/terrain level differences.
