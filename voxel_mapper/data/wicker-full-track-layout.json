@@ -1,0 +1,444 @@
+{
+  "version": "full-track-layout-v1",
+  "base_pins": {
+    "quality-report.json": "a93710ec3df85a468fde18b5ca11786513d3e3cfab47d2ba9ff6318e3b08e17b",
+    "voxels.jsonl": "addcab9c7df772b671c47d9d9b71373458b9699d6457ea5a8674ef477e55b8cb",
+    "wicker-maintenance.mcworld": "a4a5e42d64f4033c4dc476f3bfd87d63343d28134a4d56140982be8736896201"
+  },
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+  "metres_per_pdf_point": 0.08819444444444444,
+  "source_native_height_points": 1684,
+  "section_controls": [
+    "HP1",
+    "LP1",
+    "HP2",
+    "LP2",
+    "HP3",
+    "LP3",
+    "HP4",
+    "LP4",
+    "LP5",
+    "HP5",
+    "LP6",
+    "HP6",
+    "LP7",
+    "HP7"
+  ],
+  "controls": [
+    {
+      "label": "HP1",
+      "height_m": 201.0,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1950.8399658203125,
+        1004.0399780273438
+      ],
+      "nominal_xy": [
+        172.05324698554136,
+        59.96869638231062
+      ],
+      "marker_vector_sequence": 93584,
+      "candidates": [
+        {
+          "segment": 107,
+          "station_m": 232.74887714049936,
+          "distance_m": 0.014465198564707522
+        }
+      ]
+    },
+    {
+      "label": "LP1",
+      "height_m": 191.7,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1807.7999267578125,
+        940.6799621582031
+      ],
+      "nominal_xy": [
+        159.43791020711254,
+        65.55669778188066
+      ],
+      "marker_vector_sequence": 93589,
+      "candidates": [
+        {
+          "segment": 135,
+          "station_m": 284.99807798924206,
+          "distance_m": 0.01877114239506057
+        },
+        {
+          "segment": 102,
+          "station_m": 219.0329540463904,
+          "distance_m": 1.5030520842324475
+        }
+      ]
+    },
+    {
+      "label": "HP2",
+      "height_m": 193.4,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1292.5199584960938,
+        934.1999816894531
+      ],
+      "nominal_xy": [
+        113.99307967291932,
+        66.12819605933292
+      ],
+      "marker_vector_sequence": 93639,
+      "candidates": [
+        {
+          "segment": 159,
+          "station_m": 331.65154835175207,
+          "distance_m": 0.012874562060939444
+        },
+        {
+          "segment": 298,
+          "station_m": 555.5701483719232,
+          "distance_m": 3.0383162574262563
+        }
+      ]
+    },
+    {
+      "label": "LP2",
+      "height_m": 179.0,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1155.0,
+        594.3599853515625
+      ],
+      "nominal_xy": [
+        101.86458333333327,
+        96.1001957363552
+      ],
+      "marker_vector_sequence": 93644,
+      "candidates": [
+        {
+          "segment": 180,
+          "station_m": 365.138442675842,
+          "distance_m": 0.005320301963557942
+        }
+      ]
+    },
+    {
+      "label": "HP3",
+      "height_m": 191.4,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1043.1599731445312,
+        1091.1599731445312
+      ],
+      "nominal_xy": [
+        92.00091429816347,
+        52.28519681294756
+      ],
+      "marker_vector_sequence": 93594,
+      "candidates": [
+        {
+          "segment": 226,
+          "station_m": 437.21463262908765,
+          "distance_m": 0.012074133881467967
+        }
+      ]
+    },
+    {
+      "label": "LP3",
+      "height_m": 185.5,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        811.5599670410156,
+        1151.8800048828125
+      ],
+      "nominal_xy": [
+        71.57508042653397,
+        46.930027347140815
+      ],
+      "marker_vector_sequence": 93599,
+      "candidates": [
+        {
+          "segment": 245,
+          "station_m": 466.3501381524621,
+          "distance_m": 0.03313542814426161
+        }
+      ]
+    },
+    {
+      "label": "HP4",
+      "height_m": 186.8,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        818.7599792480469,
+        1011.2399597167969
+      ],
+      "nominal_xy": [
+        72.21008150312632,
+        59.33369799719913
+      ],
+      "marker_vector_sequence": 93654,
+      "candidates": [
+        {
+          "segment": 252,
+          "station_m": 479.207823431311,
+          "distance_m": 0.004501154509745266
+        }
+      ]
+    },
+    {
+      "label": "LP4",
+      "height_m": 185.9,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        849.7200012207031,
+        916.1999816894531
+      ],
+      "nominal_xy": [
+        74.94058344099253,
+        67.71569605933291
+      ],
+      "marker_vector_sequence": 93659,
+      "candidates": [
+        {
+          "segment": 257,
+          "station_m": 488.02345249735936,
+          "distance_m": 0.006171482029641151
+        }
+      ]
+    },
+    {
+      "label": "LP5",
+      "height_m": 180.5,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1048.9199829101562,
+        654.1199645996094
+      ],
+      "nominal_xy": [
+        92.50891515943734,
+        90.82969756656217
+      ],
+      "marker_vector_sequence": 93604,
+      "candidates": [
+        {
+          "segment": 275,
+          "station_m": 519.6803879623775,
+          "distance_m": 0.01956653814412745
+        },
+        {
+          "segment": 379,
+          "station_m": 692.2243723462136,
+          "distance_m": 3.0469849765807067
+        }
+      ]
+    },
+    {
+      "label": "HP5",
+      "height_m": 189.6,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1477.3199462890625,
+        1004.9999694824219
+      ],
+      "nominal_xy": [
+        130.2914119296603,
+        59.88403046925859
+      ],
+      "marker_vector_sequence": 93609,
+      "candidates": [
+        {
+          "segment": 309,
+          "station_m": 575.3584818799034,
+          "distance_m": 0.002205263164469314
+        },
+        {
+          "segment": 416,
+          "station_m": 751.6736874808198,
+          "distance_m": 1.7464074630727877
+        },
+        {
+          "segment": 148,
+          "station_m": 314.52180405455863,
+          "distance_m": 3.052183610183687
+        }
+      ]
+    },
+    {
+      "label": "LP6",
+      "height_m": 180.5,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1218.5999755859375,
+        1049.8800048828125
+      ],
+      "nominal_xy": [
+        107.47374784681526,
+        55.925860680474145
+      ],
+      "marker_vector_sequence": 93619,
+      "candidates": [
+        {
+          "segment": 349,
+          "station_m": 640.8078936844975,
+          "distance_m": 0.01233958296797624
+        },
+        {
+          "segment": 400,
+          "station_m": 729.2448400821648,
+          "distance_m": 3.7125946662576914
+        }
+      ]
+    },
+    {
+      "label": "HP6",
+      "height_m": 184.6,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1176.3599853515625,
+        824.0399780273438
+      ],
+      "nominal_xy": [
+        103.7484153747558,
+        75.84369638231061
+      ],
+      "marker_vector_sequence": 93674,
+      "candidates": [
+        {
+          "segment": 390,
+          "station_m": 710.4670145689041,
+          "distance_m": 0.011086125697554045
+        },
+        {
+          "segment": 289,
+          "station_m": 541.8697015390836,
+          "distance_m": 3.0448848677599663
+        }
+      ]
+    },
+    {
+      "label": "LP7",
+      "height_m": 180.5,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1243.7999877929688,
+        1014.8399963378906
+      ],
+      "nominal_xy": [
+        109.6962489234076,
+        59.016194767422114
+      ],
+      "marker_vector_sequence": 93679,
+      "candidates": [
+        {
+          "segment": 400,
+          "station_m": 728.5551193083344,
+          "distance_m": 0.017614410058397166
+        },
+        {
+          "segment": 348,
+          "station_m": 640.6305235206755,
+          "distance_m": 3.788609622351957
+        }
+      ]
+    },
+    {
+      "label": "HP7",
+      "height_m": 185.8,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1467.239990234375,
+        965.3999938964844
+      ],
+      "nominal_xy": [
+        129.40241580539274,
+        63.37652831607391
+      ],
+      "marker_vector_sequence": 93684,
+      "candidates": [
+        {
+          "segment": 417,
+          "station_m": 754.7951213628285,
+          "distance_m": 0.022946385677310322
+        },
+        {
+          "segment": 148,
+          "station_m": 315.11085175637317,
+          "distance_m": 0.5032176504280393
+        },
+        {
+          "segment": 309,
+          "station_m": 574.7967939508957,
+          "distance_m": 3.5620313810218356
+        }
+      ]
+    }
+  ],
+  "reference_origin": "ten user-supplied Towers Magic Minecraft screenshots in this conversation",
+  "palette": {
+    "posts": [
+      "oak_fence",
+      "oak_log"
+    ],
+    "cross_beams": [
+      "oak_log_x",
+      "oak_log_z"
+    ],
+    "braces": "oak_fence",
+    "deck": "dark_oak_planks",
+    "half_deck": "dark_oak_slab",
+    "catwalk": [
+      "oak_slab",
+      "oak_slab_top"
+    ],
+    "railings": "oak_fence",
+    "caps": "oak_trapdoor facing outward",
+    "footings": "stone_bricks"
+  },
+  "reference_exact_block_identity_verified": false,
+  "running_rails": "dark oak deck proxies; pictured dark running rails may use a resource pack or custom ride mod",
+  "post_symbol_area_range_m2": [
+    0.2,
+    0.4
+  ],
+  "max_post_station_difference_m": 0.8,
+  "max_support_height_m": 32,
+  "max_added_blocks": 60000,
+  "bank_angle_degrees": 0,
+  "bank_angle_status": "unmeasured display estimate",
+  "post_style": "continuous fence uprights with full log nodes and cross beams; voxel dimensions are reference-style estimates",
+  "station_display_top_m": 185.0,
+  "estimated_lift_start_station_m": 165.0,
+  "max_terrain_cut_m": 6,
+  "max_structure_removals": 250,
+  "max_closure_gap_m": 2,
+  "estimated_heights_note": "Flat 185 m station/maintenance approach to chainage 120 m; estimated rise over the queue to 188 m at 140 m, lift start at 165 m and 188 m, then lift to HP1. Return closes at 185 m. Display estimates, not source-bound running levels.",
+  "crossing_display_controls": [
+    {
+      "label": "estimated_station_exit",
+      "station_m": 120.0,
+      "height_m": 185.0,
+      "estimated": true,
+      "reason": "Retain the 185 m station/maintenance approach before the queue crossing."
+    },
+    {
+      "label": "estimated_queue_overpass",
+      "station_m": 140.0,
+      "height_m": 188.0,
+      "estimated": true,
+      "reason": "Keep track deck above retained 184 m queue surfaces and two-block headroom."
+    },
+    {
+      "label": "estimated_lift_crossing",
+      "station_m": 180.0,
+      "height_m": 190.0,
+      "estimated": true,
+      "reason": "Keep rising lift deck clear of the 185 m station approach at the plan crossing."
+    },
+    {
+      "label": "estimated_turn_crossing",
+      "station_m": 405.0,
+      "height_m": 190.5,
+      "estimated": true,
+      "reason": "Separate overlapping raster deck edges near chainages 410 and 495 while retaining all printed extrema."
+    }
+  ],
+  "estimated_lift_start_top_m": 188.0
+}
