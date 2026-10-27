@@ -65,3 +65,5 @@ The live structured-source run retrieved Wikidata, Commons, Planning Data and Ar
 A live 1024×1024 Esri aerial export used 781,436 bytes before the optional point metadata request and produced 256 sample cells. The centre-point metadata included a 27 May 2023 observation, 0.5 m source resolution and 8.47 m provider-reported accuracy, alongside lower-resolution source records. Capture date/accuracy for the entire image and alignment to planning geometry remain unverified. The image's output pixel spacing can be finer than source resolution because the service resamples it.
 
 The replay uses retained, checked bytes with zero network traffic. The detailed test counts, original hashes, image previews, source statuses and checkpoint-reuse checks are in `evidence/broader-sources-aerial-validation.json`. No neural material model was trained, accuracy improvement demonstrated, accepted material assignment created, or Windows EXE rebuilt in this stage.
+
+The user-authorized colour assignment mode now turns these observations into a draft material layer. See [Colour-based material assignments](colour-material-assignments.md).

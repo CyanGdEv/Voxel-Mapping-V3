@@ -189,7 +189,8 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
             except (web.WebError,ValueError,OSError) as error:
                 aerial_failures.append({'site_id':site['site_id'],'error':str(error)});continue
             aerial_reports.append({'site_id':site['site_id'],'status':rgb['status'],'provider':rgb['provider'],
-                'sample_cells':rgb['sample_cells'],'candidate_file_sha256':rgb['candidate_file_sha256'],'material_assignments_accepted':0})
+                'sample_cells':rgb['sample_cells'],'provisional_material_assignments':rgb.get('provisional_material_assignments',0),
+                'colour_material_assignments':rgb.get('colour_material_assignments'),'candidate_file_sha256':rgb['candidate_file_sha256'],'material_assignments_accepted':0})
             for source in rgb['sources']:
                 body=source['body_sha256']
                 if body not in seen:new.add(body)

@@ -28,11 +28,12 @@ BING='https://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial'
 
 def validate(config):
     if not isinstance(config,dict) or config.get('version')!=VERSION or set(config)-{
-        'version','site','site_id','provider','bounds_wgs84','width','height','grid','exclude_footer_pixels','offline'}:
+        'version','site','site_id','provider','bounds_wgs84','width','height','grid','exclude_footer_pixels','offline','material_mode'}:
         raise ValueError('Versioned aerial RGB research configuration required')
     from .web_focus import profile
     profile({'site':config.get('site')})
     if not isinstance(config.get('site_id'),str) or not 1<=len(config['site_id'])<=80:raise ValueError('Public site identity required')
+    if config.get('material_mode','suggest_only') not in ('suggest_only','colour_appearance'):raise ValueError('Known material mode required')
     if config.get('provider') not in ('esri_world_imagery','bing_aerial'):raise ValueError('Known aerial imagery provider required')
     b=config.get('bounds_wgs84')
     if (not isinstance(b,list) or len(b)!=4 or any(type(v) not in (int,float) or not math.isfinite(v) for v in b)
@@ -243,6 +244,12 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     (output/'index.html').write_text(page,encoding='utf-8')
     atomic_json(output/'sample-cells.geojson',{'type':'FeatureCollection','features':[
         {'type':'Feature','id':r['id'],'geometry':r['geometry'],'properties':{k:v for k,v in r.items() if k!='geometry'}} for r in rows if 'geometry' in r]})
+    material_assignments=None
+    if config.get('material_mode')=='colour_appearance' and rows:
+        from .colour_materials import write
+        material_assignments=write(rows,output,config['site'],receipt.get('attribution',''))
+        page=page.replace('</h1>','</h1><p><a href="materials.html">View assigned materials and block palettes</a></p>',1)
+        (output/'index.html').write_text(page,encoding='utf-8')
     atomic_json(output/'imagery-receipt.json',receipt)
     with (output/'material-candidates.jsonl').open('w') as stream:
         for row in rows:stream.write(json.dumps(row,sort_keys=True)+'\n')
@@ -252,6 +259,8 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         'colour_cue_counts':{cue:sum(r.get('colour_cue','insufficient_pixels')==cue for r in rows) for cue in sorted({r.get('colour_cue','insufficient_pixels') for r in rows})},
         'candidate_file':'material-candidates.jsonl','candidate_file_sha256':file_hash(output/'material-candidates.jsonl'),
         'sources':sources,'network_bytes':budget.spent,'model_weights_updated':False,'training_labels_generated':0,
+        'colour_material_assignments':material_assignments,
+        'provisional_material_assignments':material_assignments['assigned_cells'] if material_assignments else 0,
         'material_assignments_accepted':0,'registration_verified':False,'world_blocks_generated':0,'production_eligible':False,
         'limitations':['RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.',
             'Shadows, vegetation, water, roofs, lighting, capture date and resampling affect colour; ambiguous candidates are withheld.',
