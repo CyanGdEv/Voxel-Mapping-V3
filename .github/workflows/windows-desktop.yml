@@ -37,6 +37,7 @@ on:
       - 'voxel_mapper/study_raster_dataset.py'
       - 'voxel_mapper/study_site_transfer.py'
       - 'voxel_mapper/ride_training.py'
+      - 'voxel_mapper/ride_geometry_evidence.py'
       - 'voxel_mapper/study_source_acquisition.py'
       - 'voxel_mapper/study_site_evaluation.py'
       - 'voxel_mapper/study_dataset.py'
@@ -131,6 +132,7 @@ on:
       - 'tests/test_study_raster_sources.py'
       - 'tests/test_study_site_transfer.py'
       - 'tests/test_ride_training.py'
+      - 'tests/test_ride_geometry_evidence.py'
       - 'tests/test_study_dataset.py'
       - 'tests/test_retained_study_examples.py'
       - 'tests/test_web*.py'
@@ -244,6 +246,8 @@ jobs:
           python -m unittest discover -s tests -p 'test_study_site_transfer.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Site-isolated transfer checks failed' }
           python -m unittest discover -s tests -p 'test_ride_training.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Ride component training checks failed' }
+          python -m unittest discover -s tests -p 'test_ride_geometry_evidence.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Independent study training coverage checks failed' }
           python -m unittest discover -s tests -p 'test_retained_study_examples.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Retained source target adapter tests failed' }
