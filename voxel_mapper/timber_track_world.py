@@ -110,6 +110,54 @@ def sample_deck(line,controls):
     return result,core,head,samples
 
 
+def sample_reference_deck(line,controls):
+    """Three-cell stepped slab deck with paired fences and outside trapdoors.
+
+    No ties, footings, beams or blocks beneath the half-block deck. The user's
+    three new close-up screenshots replace the earlier Towers Magic palette.
+    """
+    start,end=controls[0]['station_m'],controls[-1]['station_m']
+    columns={}; edge_samples=[];rail_samples=[];samples=[]
+    for station in np.linspace(start,end,math.ceil((end-start)/.2)+1):
+        p,t,n=frame(line,float(station));top=round(2*height_at(float(station),controls))/2
+        for off in [-1,0,1]:
+            x,y=map(math.floor,p+off*n)
+            wood='spruce' if off==0 else 'oak'
+            if (x,y) not in columns or columns[x,y][0]<top:
+                columns[x,y]=(top,wood)
+        rail_samples.append((p,n))
+        if int((station-start)/2)!=int((station-start-.2)/2):
+            edge_samples.append((p,n))
+        samples.append({'station_m':float(station),'running_top_m':top})
+    core={(x,math.ceil(top)-1,y):wood+('_slab' if top%1 else '_slab_top') for (x,y),(top,wood) in columns.items()}
+    blocks=dict(core);head=set()
+    # Use actual raster deck boundaries: opposite edge rails stay on the deck
+    # rather than detached offset fences on tight or diagonal corners.
+    for p,n in rail_samples:
+        for sign in [-1,1]:
+            x,y=map(math.floor,p+sign*n)
+            top=columns[x,y][0];h=math.ceil(top)
+            # Fence rows are above the surface, never upright ground supports.
+            blocks.setdefault((x,h,y),'oak_fence')
+    for p,n in edge_samples:
+        for sign in [-1,1]:
+            x,y=map(math.floor,p+sign*n);top=columns[x,y][0]
+            d=np.array([sign*(1 if n[0]>0 else -1),0]) if abs(n[0])>=abs(n[1]) else np.array([0,sign*(1 if n[1]>0 else -1)])
+            xx,yy=(np.array([x,y])+d).tolist()
+            if (xx,yy) not in columns:
+                facing='east' if d[0]>0 else 'west' if d[0]<0 else 'north' if d[1]>0 else 'south'
+                blocks.setdefault((xx,math.ceil(top)-1,yy),'oak_trapdoor_'+facing)
+    # The reference has fences over the lateral deck strips. Only the middle
+    # strip is running clearance, and aliased edge cells never obstruct it.
+    centre_xy={tuple(map(math.floor,frame(line,float(s))[0])) for s in np.linspace(start,end,math.ceil((end-start)/.2)+1)}
+    for x,y in centre_xy:
+        top=columns[x,y][0]
+        for h in range(math.ceil(top),math.ceil(top)+3):
+            blocks.pop((x,h,y),None);head.add((x,h,y))
+    if not set(core)<=set(blocks):raise ValueError('Reference deck lost a slab')
+    return blocks,core,head,samples
+
+
 def running_connectivity(core):
     tops={(x,y):h+(.5 if m.endswith('_slab') else 1) for (x,h,y),m in core.items()}
     seen={min(tops)};pending=list(seen)
@@ -156,7 +204,7 @@ def support_bent(pair,line,controls,terrain):
     return result,None
 
 
-def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,cancelled=lambda:False):
+def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,track_only=False,cancelled=lambda:False):
     if allow_provisional is not True:raise ValueError('Explicit conditional track construction opt-in required')
     if cancelled():raise CancelledError('Track construction cancelled')
     output=Path(output);base_directory=Path(base_directory)
@@ -169,11 +217,11 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
     pins();line,controls,pairs,source_review=source_geometry(markings_path,pdf_path,profile,cancelled)
     base=json.loads((base_directory/'quality-report.json').read_text());rows=[json.loads(l) for l in (base_directory/'voxels.jsonl').read_text().splitlines()]
     terrain={(r['x'],r['z']-1):r for r in rows if r['kind']=='terrain'};old={(r['x'],r['y'],r['z']-1):r['material'] for r in rows if r['kind']=='structure'}
-    blocks,core,head,samples=sample_deck(line,controls);connectivity=running_connectivity(core)
+    blocks,core,head,samples=(sample_reference_deck if track_only else sample_deck)(line,controls);connectivity=running_connectivity(core)
     if any((x,y) not in terrain or h<=terrain[x,y]['y'] for x,h,y in blocks):raise ValueError('Track intersects terrain; no automatic cuts allowed')
     if any(k in old for k in blocks) or head&old.keys():raise ValueError('Track collides with retained park')
     accepted=[];held=[]
-    for pair in pairs:
+    for pair in ([] if track_only else pairs):
         if cancelled():raise CancelledError('Timber supports cancelled')
         proposal,reason=support_bent(pair,line,controls,terrain)
         if reason or any(k in old for k in proposal) or set(proposal)&head:
@@ -181,7 +229,7 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
         for k,m in proposal.items():
             if k not in blocks or (m in ['oak_log','oak_log_x','oak_log_z','stone_bricks'] and (blocks[k]=='oak_fence' or 'trapdoor' in blocks[k])) or (m=='oak_fence' and 'trapdoor' in blocks[k]):blocks[k]=m
         accepted.append({'source_pair':pair,'blocks_proposed':len(proposal)})
-    if len(accepted)<8:raise ValueError('Too few source support bents can be constructed without altering the park')
+    if not track_only and len(accepted)<8:raise ValueError('Too few source support bents can be constructed without altering the park')
     if len(blocks)>profile['max_added_blocks']:raise ValueError('Track build budget exceeded')
     solid_posts=0
     for bent in accepted:
@@ -194,12 +242,16 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
     all_blocks={**old,**blocks};report=dict(base)
     report.update(version='timber-track-section-world-v1',status='source_bound_first_track_section_constructed',implementation_sha256=file_hash(__file__),profile_sha256=file_hash(PROFILE),source_parent_world_sha256=base['world']['sha256'])
     report['timber_track']={'controls':controls,'source_review':source_review,'section_length_m':controls[-1]['station_m']-controls[0]['station_m'],'full_source_route_length_m':line.length,'added_structure_records':len(blocks),'constructed_source_bents':accepted,'withheld_source_bents':held,'samples':samples,'continuous_post_cells_checked':solid_posts,'running_connectivity':connectivity,
-        'reference_style':profile['reference_origin'],'palette':profile['palette'],'exact_reference_block_identity_verified':False,'banking_verified':False,'operable_ride':False,
+        'track_only':track_only,'reference_style':('three user close-up track mockups: oak/spruce slab steps, paired oak fences and outward oak trapdoors' if track_only else profile['reference_origin']),'palette':profile['palette'],'exact_reference_block_identity_verified':False,'banking_verified':False,'operable_ride':False,
         'limitations':['Screenshots guide palette and lattice rhythm, not surveyed geometry; pictured running rails may use custom ride/resource-pack assets.',
             'Plan centreline and paired closed support symbols guide XY. Symbol areas are not verified footing sizes or structural timber dimensions.',
             'Printed HP/LP levels are conditionally treated as running-surface ODN heights. Smoothstep interpolation and half-block quantization between anchors are display hypotheses.',
             'Bank angle is held at zero because it is not recovered. Exact cross-sections, structural design, train mechanism and the remaining route are not reconstructed.',
             'Retained park, terrain and coloured plan guides remain unchanged. Source bents conflicting with paving, markers or existing geometry are withheld with receipts.']}
+    if track_only:
+        report['status']='reference_track_only_section_constructed'
+        report['timber_track']['palette']={'deck':['oak_slab','oak_slab_top','spruce_slab','spruce_slab_top'],'edges':'oak_fence','outside_faces':'oak_trapdoor facing outward'}
+        report['timber_track']['limitations']=['Track only: no ground supports, posts, braces, footings or under-deck ties.', 'Only the existing 98.9 m HP1/LP1/HP2 section is rebuilt; remaining source route remains coloured plan guides.', 'Screenshot block palette is interpreted visually; vanilla grid and fence/slab attachment limit exact matching.', 'Heights retain provisional half-block interpolation, no verified banking or operable ride.']
     output.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='timber-track-',dir=output.parent) as temp:
         root=Path(temp)/'result';root.mkdir();voxel=root/'voxels.jsonl'
@@ -215,17 +267,18 @@ def run(base_directory,markings_path,pdf_path,output,*,allow_provisional=False,c
             report['track_running_clearance_native']=checkers._native_air(path,offset,head)
             report['track_running_surfaces_native']=checkers._native_surfaces(path,offset,[{'source_cell_xy':[x,y],'walking_top_m':h+(.5 if m.endswith('_slab') else 1)} for (x,h,y),m in sorted(core.items())])
             atomic_json(path/'TRACK-SECTION-ASSUMPTIONS.json',report['timber_track'])
-        world=bedrock.export_world(voxel,root,report,name='Wicker TIMBER TRACK - HP1 LP1 HP2 first section',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name=('Wicker TRACK ONLY - slab fence trapdoor reference' if track_only else 'Wicker TIMBER TRACK - HP1 LP1 HP2 first section'),max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-timber-track.mcworld');report['world']['file']='wicker-timber-track.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'quality-report.json',report);atomic_json(root/'track-blocks.json',[{'source_xyz':list(k),'material':m} for k,m in sorted(blocks.items())]);atomic_json(root/'running-clearance-air.json',[list(k) for k in sorted(head)])
-        preview(root/'track-section-preview.png',terrain,blocks,controls)
+        preview(root/'track-section-preview.png',terrain,blocks,controls,track_only=track_only)
         (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>First source-bound timber track section</h1><a href="wicker-timber-track.mcworld">Download world</a><p>HP1–LP1–HP2 centreline and source support symbols, styled using user reference screenshots. Smooth vertical interpolation, palette and unbanked shape are prototype choices. No functional ride mechanism.</p><img style="max-width:100%" src="track-section-preview.png">')
+        if track_only:(root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Reference track only — 98.9 m section</h1><a href="wicker-timber-track.mcworld">Download world</a><p>Oak/spruce slab steps, fence edges, vertical trapdoor faces. No support frames. Remaining route not built.</p><img style="max-width:100%" src="track-section-preview.png">')
         pins();shutil.move(root,output)
     return report
 
 
-def preview(path,terrain,blocks,controls):
+def preview(path,terrain,blocks,controls,*,track_only=False):
     from PIL import Image,ImageDraw,ImageColor
     from .rock_world_render import _boxes,colour
     xs=[k[0] for k in blocks];ys=[k[2] for k in blocks];lowx=min(xs)-2;highx=max(xs)+3;lowy=min(ys)-2;highy=max(ys)+3
@@ -236,26 +289,26 @@ def preview(path,terrain,blocks,controls):
     points=[project(x+dx,h+dh,y+dy) for x,h,y in occupied for dx,dh,dy in [(0,0,0),(1,1.5,1)]];xmin=min(p[0] for p in points);ymin=min(p[1] for p in points)
     image=Image.new('RGB',(math.ceil(max(p[0] for p in points)-xmin)+100,math.ceil(max(p[1] for p in points)-ymin)+150),'#f7f5ed');draw=ImageDraw.Draw(image);faces=[]
     for (x,h,y),m in occupied.items():
-        paint='#9e7c45' if 'trapdoor' in m else palette.get(m,colour(m));rgb=ImageColor.getrgb(paint)
+        paint='#775637' if m.startswith('spruce_') else '#9e7c45' if 'trapdoor' in m else palette.get(m.removesuffix('_top'),colour(m));rgb=ImageColor.getrgb(paint)
         neighbors=[(dx,dy) for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)] if occupied.get((x+dx,h,y+dy))=='oak_fence']
         if '_trapdoor_' in m:
             direction=m.rsplit('_',1)[1];bounds=[{'north':(0,0,0,1,1,.1875),'south':(0,0,.8125,1,1,1),'east':(0,0,0,.1875,1,1),'west':(.8125,0,0,1,1,1)}[direction]]
-        else:bounds=[(0,.5,0,1,1,1)] if m.endswith('_slab_top') else [(0,0,0,1,.1875,1)] if m=='oak_trapdoor' else _boxes(m,neighbors)
+        else:bounds=[(0,.5,0,1,1,1)] if m.endswith('_slab_top') else [(0,0,0,1,.1875,1)] if m=='oak_trapdoor' else _boxes('oak_fence' if m.endswith('_fence') else m,neighbors)
         for x0,h0,y0,x1,h1,y1 in bounds:
             v=[(x+x0,h+h0,y+y0),(x+x1,h+h0,y+y0),(x+x1,h+h0,y+y1),(x+x0,h+h0,y+y1),(x+x0,h+h1,y+y0),(x+x1,h+h1,y+y0),(x+x1,h+h1,y+y1),(x+x0,h+h1,y+y1)]
             for ids,shade in [([1,2,6,5],.78),([2,3,7,6],.59),([4,5,6,7],1)]:
                 vertices=[v[i] for i in ids];depth=sum(a+c+.7*b for a,b,c in vertices)/4;polygon=[(project(*p)[0]-xmin+40,project(*p)[1]-ymin+85) for p in vertices]
                 faces.append((depth,polygon,tuple(round(c*shade) for c in rgb)))
     for _,polygon,rgb in sorted(faces,key=lambda f:f[0]):draw.polygon(polygon,fill=rgb,outline=tuple(max(0,c-12) for c in rgb))
-    draw.rectangle((0,0,image.width,62),fill='#f7f5ed');draw.text((18,14),'WICKER MAN: first source-bound timber track and support section',fill='black');draw.text((18,35),'HP1 / LP1 / HP2. Screenshot-style palette; interpolated heights and unmeasured banking remain provisional.',fill='black')
+    draw.rectangle((0,0,image.width,62),fill='#f7f5ed');draw.text((18,14),('WICKER MAN: track only: slab / fence / trapdoor reference' if track_only else 'WICKER MAN: first source-bound timber track and support section'),fill='black');draw.text((18,35),'HP1 / LP1 / HP2. Screenshot-style palette; interpolated heights and unmeasured banking remain provisional.',fill='black')
     image.save(path)
 
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['base-directory','markings-path','pdf-path','output']:p.add_argument('--'+name,required=True)
-    p.add_argument('--allow-provisional',action='store_true');a=p.parse_args(argv)
-    r=run(a.base_directory,a.markings_path,a.pdf_path,a.output,allow_provisional=a.allow_provisional)
+    p.add_argument('--allow-provisional',action='store_true');p.add_argument('--track-only',action='store_true');a=p.parse_args(argv)
+    r=run(a.base_directory,a.markings_path,a.pdf_path,a.output,allow_provisional=a.allow_provisional,track_only=a.track_only)
     print(json.dumps({'world_sha256':r['world']['sha256'],'section_length_m':r['timber_track']['section_length_m'],'bents':len(r['timber_track']['constructed_source_bents'])}))
 
 

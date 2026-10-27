@@ -751,3 +751,8 @@ Aligned preshow world: [Floor-led walls, recentered slab roofs, basement opening
 Maintenance construction: [Source-height slab roof, timber walls and lower stone course](docs/wicker-maintenance-building.md) builds the marked maintenance footprint while preserving the existing park and recording the station/service-door voxel overlap.
 
 Timber track construction: [Reference-style lattice and first HP1–LP1–HP2 section](docs/wicker-timber-track-section.md) adds 98.9 m of source-bound running deck and 41 symbol-derived support frames, with explicit interpolation/banking assumptions and native clearance checks.
+
+The [track-only reference revision](docs/wicker-track-only-reference.md) replaces
+support frames with the user's slab, fence and trapdoor pattern. Run the timber
+track generator with `--track-only` to rebuild the existing 98.9 m section from
+the maintenance-built park; the rest of the route remains plan guides.
