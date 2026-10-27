@@ -1,0 +1,71 @@
+{
+  "version": "pinned-study-source-acquisition-v1",
+  "sites": [
+    "glen-echo-park",
+    "thorpe-park"
+  ],
+  "sources": [
+    {
+      "file": "glen-echo-sheet1.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00001v.jpg",
+      "sha256": "258e7dfb5893207dc39c67b04748efcf21230628abea350d03ad82ece3dacebd",
+      "bytes": 189216,
+      "format": "jpeg",
+      "usage": "excluded_from_component_labels",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "glen-echo-sheet2.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00002v.jpg",
+      "sha256": "915fe990a8f511ecfbe0e1b65b8fd5c3bf0e914ba475d42e9c13ae365d8409a6",
+      "bytes": 146054,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "glen-echo-sheet3.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00003v.jpg",
+      "sha256": "ba41091b9ef6910ad2dcfe68c97d2eff36334278bea20cbda9471bd82c30eec2",
+      "bytes": 100165,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "glen-echo-sheet4.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00004v.jpg",
+      "sha256": "a6c991120e5d7a7fd21ee848bef0e521863b256e1f262b760e47d34fdc360be4",
+      "bytes": 97601,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "glen-echo-sheet5.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00005v.jpg",
+      "sha256": "3e1ba2e7863b15f2c4cdfbc821acb500f7d0bb459bd177999ad6cb6fcbb47dae",
+      "bytes": 104255,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "glen-echo-sheet6.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00006v.jpg",
+      "sha256": "b92e093c86ab1bd824be2e2729bde60ee6830cc20a48d4a4c451210f07657fc9",
+      "bytes": 183454,
+      "format": "jpeg",
+      "usage": "excluded_from_component_labels",
+      "catalogue": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "file": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291.pdf",
+      "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10",
+      "sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+      "bytes": 12530447,
+      "format": "pdf",
+      "usage": "reference_only_no_training_labels"
+    }
+  ]
+}

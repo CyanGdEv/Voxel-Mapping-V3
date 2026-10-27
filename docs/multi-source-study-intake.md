@@ -76,3 +76,5 @@ A one-site intake remains usable as a reference/review library, but this trainer
 refuses to claim an independent evaluation without a second site. Next data work
 is to acquire reviewed examples of the same component classes from separate
 sites, with appropriate source rights and review evidence.
+
+First independent evidence and held-site check: [Glen Echo source pilot](independent-site-source-pilot.md).
