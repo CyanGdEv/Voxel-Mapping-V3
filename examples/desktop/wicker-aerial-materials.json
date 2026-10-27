@@ -12,5 +12,6 @@
   "width": 1024,
   "height": 1024,
   "grid": 16,
-  "offline": false
+  "offline": false,
+  "material_mode": "colour_appearance"
 }

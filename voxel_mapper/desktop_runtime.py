@@ -444,7 +444,9 @@ class DesktopRuntime:
                 if kind=='aerial_material_research':
                     self.store.remember('aerial_rgb_observation',result['site_id'],{
                         'status':result['status'],'provider':result['provider'],'sample_cells':result['sample_cells'],
-                        'candidate_file_sha256':result['candidate_file_sha256'],'material_assignments_accepted':0})
+                        'candidate_file_sha256':result['candidate_file_sha256'],
+                        'provisional_material_assignments':result.get('provisional_material_assignments',0),
+                        'colour_material_assignments':result.get('colour_material_assignments'),'material_assignments_accepted':0})
                 if kind=='research_learning_cycle':
                     self.store.remember('adaptive_learning',result['dataset_id'],{
                         'training_status':result['training_status'],'checkpoint_sha256':result['checkpoint_sha256'],
