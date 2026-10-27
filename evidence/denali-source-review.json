@@ -1,0 +1,831 @@
+{
+  "version": "reviewed-raster-study-v1",
+  "site_id": "denali-national-park",
+  "survey": "HABS AK-35-N, AK-35-L, AK-35-C",
+  "scope": "Three physical buildings on one site. Original service-raster pixel traces; no metric or current as-built claim. No paths/plazas or 3D labels inferred.",
+  "sources": [
+    {
+      "id": "ak0139-sheet1",
+      "file": "ak0139-sheet1.jpg",
+      "sha256": "7db9cd2ee68db8d688702806d5c533934fe11085e54415795a4a55b15af4ee7c",
+      "size_pixels": [
+        1024,
+        681
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0139/sheet/00001v.jpg",
+      "sheet": 1,
+      "survey_epoch": "unknown; survey sheet retained for provenance",
+      "source_state": "existing",
+      "rights_advisory": "LOC HABS: no known restrictions on U.S. Government-made images; copied third-party material may be restricted. Selected source is a HABS field-team measured drawing, not a copied historical photograph.",
+      "catalogue_url": "https://www.loc.gov/item/ak0139/"
+    },
+    {
+      "id": "ak0137-sheet1",
+      "file": "ak0137-sheet1.jpg",
+      "sha256": "7f68745cdeafb65e801d0995037952172ea551a4d93fe011240065959e2b7032",
+      "size_pixels": [
+        1024,
+        681
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0137/sheet/00001v.jpg",
+      "sheet": 1,
+      "survey_epoch": "unknown; survey sheet retained for provenance",
+      "source_state": "existing",
+      "rights_advisory": "LOC HABS: no known restrictions on U.S. Government-made images; copied third-party material may be restricted. Selected source is a HABS field-team measured drawing, not a copied historical photograph.",
+      "catalogue_url": "https://www.loc.gov/item/ak0137/"
+    },
+    {
+      "id": "ak0128-sheet1",
+      "file": "ak0128-sheet1.jpg",
+      "sha256": "126d9f691f4bde1fa382051bf069c9d4bf089ecd08fae8ce3d397126d604f2a9",
+      "size_pixels": [
+        1024,
+        681
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0128/sheet/00001v.jpg",
+      "sheet": 1,
+      "survey_epoch": "unknown; survey sheet retained for provenance",
+      "source_state": "existing",
+      "rights_advisory": "LOC HABS: no known restrictions on U.S. Government-made images; copied third-party material may be restricted. Selected source is a HABS field-team measured drawing, not a copied historical photograph.",
+      "catalogue_url": "https://www.loc.gov/item/ak0128/"
+    }
+  ],
+  "records": [
+    {
+      "id": "denali-comfort-floor-envelope",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "building",
+      "target_role": "surveyed_plan_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              178,
+              419
+            ],
+            [
+              560,
+              419
+            ],
+            [
+              560,
+              488
+            ],
+            [
+              516,
+              488
+            ],
+            [
+              516,
+              524
+            ],
+            [
+              178,
+              524
+            ],
+            [
+              178,
+              419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-west-roof",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "roof",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              160,
+              69
+            ],
+            [
+              580,
+              69
+            ],
+            [
+              580,
+              113
+            ],
+            [
+              160,
+              113
+            ],
+            [
+              160,
+              69
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-east-roof",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "roof",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              154,
+              241
+            ],
+            [
+              574,
+              241
+            ],
+            [
+              574,
+              283
+            ],
+            [
+              154,
+              283
+            ],
+            [
+              154,
+              241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-north-roof-edge",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "roof",
+      "target_role": "visible_partial_roof_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            725,
+            281
+          ],
+          [
+            794,
+            240
+          ],
+          [
+            864,
+            279
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-east-door",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "door",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              281,
+              292
+            ],
+            [
+              309,
+              292
+            ],
+            [
+              309,
+              355
+            ],
+            [
+              281,
+              355
+            ],
+            [
+              281,
+              292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-north-door",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "door",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              748,
+              283
+            ],
+            [
+              772,
+              283
+            ],
+            [
+              772,
+              348
+            ],
+            [
+              748,
+              348
+            ],
+            [
+              748,
+              283
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-north-window",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "window",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              795,
+              280
+            ],
+            [
+              829,
+              280
+            ],
+            [
+              829,
+              314
+            ],
+            [
+              795,
+              314
+            ],
+            [
+              795,
+              280
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-east-window",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "window",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              490,
+              309
+            ],
+            [
+              514,
+              309
+            ],
+            [
+              514,
+              352
+            ],
+            [
+              490,
+              352
+            ],
+            [
+              490,
+              309
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-west-brace-left",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "structural_member",
+      "target_role": "visible_brace_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            311,
+            138
+          ],
+          [
+            333,
+            169
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-comfort-west-brace-right",
+      "building_id": "denali-comfort-station",
+      "source_id": "ak0139-sheet1",
+      "kind": "structural_member",
+      "target_role": "visible_brace_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            454,
+            141
+          ],
+          [
+            474,
+            169
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-floor-envelope",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "building",
+      "target_role": "surveyed_plan_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              701,
+              355
+            ],
+            [
+              852,
+              355
+            ],
+            [
+              852,
+              523
+            ],
+            [
+              701,
+              523
+            ],
+            [
+              701,
+              355
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-south-roof",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "roof",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              421,
+              88
+            ],
+            [
+              622,
+              88
+            ],
+            [
+              622,
+              156
+            ],
+            [
+              421,
+              156
+            ],
+            [
+              421,
+              88
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-north-roof",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "roof",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              128,
+              362
+            ],
+            [
+              328,
+              362
+            ],
+            [
+              328,
+              432
+            ],
+            [
+              128,
+              432
+            ],
+            [
+              128,
+              362
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-east-roof-edge",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "roof",
+      "target_role": "visible_partial_roof_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            133,
+            153
+          ],
+          [
+            223,
+            86
+          ],
+          [
+            315,
+            153
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-west-door",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "door",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              486,
+              428
+            ],
+            [
+              515,
+              428
+            ],
+            [
+              515,
+              498
+            ],
+            [
+              486,
+              498
+            ],
+            [
+              486,
+              428
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-north-window",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "window",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              207,
+              434
+            ],
+            [
+              252,
+              434
+            ],
+            [
+              252,
+              473
+            ],
+            [
+              207,
+              473
+            ],
+            [
+              207,
+              434
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-plant-east-foundation-wall",
+      "building_id": "denali-electric-plant",
+      "source_id": "ak0137-sheet1",
+      "kind": "wall",
+      "target_role": "visible_component_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              150,
+              198
+            ],
+            [
+              298,
+              198
+            ],
+            [
+              298,
+              216
+            ],
+            [
+              150,
+              216
+            ],
+            [
+              150,
+              198
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-admin-first-floor-envelope",
+      "building_id": "denali-administration",
+      "source_id": "ak0128-sheet1",
+      "kind": "building",
+      "target_role": "surveyed_plan_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              390,
+              175
+            ],
+            [
+              638,
+              175
+            ],
+            [
+              638,
+              422
+            ],
+            [
+              390,
+              422
+            ],
+            [
+              390,
+              175
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-admin-second-floor-envelope",
+      "building_id": "denali-administration",
+      "source_id": "ak0128-sheet1",
+      "kind": "building",
+      "target_role": "surveyed_plan_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              694,
+              185
+            ],
+            [
+              799,
+              185
+            ],
+            [
+              799,
+              177
+            ],
+            [
+              909,
+              177
+            ],
+            [
+              909,
+              190
+            ],
+            [
+              938,
+              190
+            ],
+            [
+              938,
+              408
+            ],
+            [
+              847,
+              408
+            ],
+            [
+              847,
+              420
+            ],
+            [
+              788,
+              420
+            ],
+            [
+              788,
+              408
+            ],
+            [
+              694,
+              408
+            ],
+            [
+              694,
+              185
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-admin-west-wall-plan",
+      "building_id": "denali-administration",
+      "source_id": "ak0128-sheet1",
+      "kind": "wall",
+      "target_role": "wall_plan_envelope_including_openings",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              390,
+              190
+            ],
+            [
+              401,
+              190
+            ],
+            [
+              401,
+              410
+            ],
+            [
+              390,
+              410
+            ],
+            [
+              390,
+              190
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "denali-admin-east-wall-plan",
+      "building_id": "denali-administration",
+      "source_id": "ak0128-sheet1",
+      "kind": "wall",
+      "target_role": "wall_plan_envelope_including_openings",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual review of original LOC HABS raster before evaluation. Drawing component trace only; not user acceptance or current physical verification.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              625,
+              190
+            ],
+            [
+              638,
+              190
+            ],
+            [
+              638,
+              414
+            ],
+            [
+              625,
+              414
+            ],
+            [
+              625,
+              190
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "source_id": "ak0137-sheet1",
+      "region": "south elevation central paired openings",
+      "reason": "Window versus door identity is ambiguous at service-raster resolution; omitted before model evaluation."
+    }
+  ]
+}

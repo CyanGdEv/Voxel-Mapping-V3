@@ -35,6 +35,7 @@ on:
       - 'voxel_mapper/study_training_coverage.py'
       - 'voxel_mapper/study_intake.py'
       - 'voxel_mapper/study_raster_dataset.py'
+      - 'voxel_mapper/study_site_transfer.py'
       - 'voxel_mapper/study_source_acquisition.py'
       - 'voxel_mapper/study_site_evaluation.py'
       - 'voxel_mapper/study_dataset.py'
@@ -127,6 +128,7 @@ on:
       - 'tests/test_study_training_coverage.py'
       - 'tests/test_study_intake.py'
       - 'tests/test_study_raster_sources.py'
+      - 'tests/test_study_site_transfer.py'
       - 'tests/test_study_dataset.py'
       - 'tests/test_retained_study_examples.py'
       - 'tests/test_web*.py'
@@ -236,6 +238,8 @@ jobs:
           python -m unittest discover -s tests -p 'test_study_training_coverage.py' -v
           python -m unittest discover -s tests -p 'test_study_intake.py' -v
           python -m unittest discover -s tests -p 'test_study_raster_sources.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Original raster source checks failed' }
+          python -m unittest discover -s tests -p 'test_study_site_transfer.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Independent study training coverage checks failed' }
           python -m unittest discover -s tests -p 'test_retained_study_examples.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Retained source target adapter tests failed' }
