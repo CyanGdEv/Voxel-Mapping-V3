@@ -36,10 +36,12 @@ DETAIL_MATERIALS.update('cobblestone_wall_'+''.join(d for i,d in enumerate('nesw
 ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
 PLAN_MARKING_WOOLS={'orange_wool','blue_wool','brown_wool','purple_wool','yellow_wool'}
 ALLOWED_MATERIALS.update(PLAN_MARKING_WOOLS)
+FACING_FENCE_GATES={f'{wood}_fence_gate_{direction}' for wood in ('oak','spruce') for direction in ('north','east','south','west')}
+ALLOWED_MATERIALS.update(FACING_FENCE_GATES)
 WALL_TRAPDOORS={f'{wood}_trapdoor_{direction}' for wood in ('oak','spruce','dark_oak') for direction in ('north','east','south','west')}
 ALLOWED_MATERIALS.update(WALL_TRAPDOORS)
-DETAIL_MATERIALS.add('birch_fence')
-ALLOWED_MATERIALS.add('birch_fence')
+DETAIL_MATERIALS.update(('birch_fence','nether_brick_fence'))
+ALLOWED_MATERIALS.update(('birch_fence','nether_brick_fence'))
 FOLIAGE_WOODS = ('oak','spruce','birch','dark_oak')
 FOLIAGE_LEAVES = (*FOLIAGE_WOODS,'azalea','flowering_azalea')
 ALLOWED_MATERIALS.update(f'{wood}_log{suffix}' for wood in FOLIAGE_WOODS for suffix in ('','_x','_z'))
@@ -59,6 +61,11 @@ for m in ('iron_bars','green_stained_glass_pane'):
 
 
 def material_block(material):
+    if material in FACING_FENCE_GATES:
+        wood,direction=material.rsplit('_fence_gate_',1)
+        return Block('universal_minecraft','fence_gate',{'material':StringTag(wood),'facing':StringTag(direction),'open':StringTag('false'),'powered':StringTag('false'),'in_wall':StringTag('false')})
+    if material=='nether_brick_fence':
+        return Block('universal_minecraft','fence',{'material':StringTag('nether_brick'),**{k:StringTag('false') for k in ('north','south','east','west')}})
     if material in WALL_TRAPDOORS:
         wood,direction=material.rsplit('_trapdoor_',1)
         return Block('universal_minecraft','trapdoor',{'material':StringTag(wood),'facing':StringTag(direction),
