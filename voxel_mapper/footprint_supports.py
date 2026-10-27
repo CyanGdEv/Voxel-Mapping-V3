@@ -95,6 +95,11 @@ def build(route,groups,terrain,old,head,samples,keys,track,profile):
     data=json.loads(Path(profile['markings_path']).read_text());u=profile['metres_per_pdf_point']
     lines=affine_transform(shape(next(r['geometry_pdf_native'] for r in data['records'] if r['role']=='support_boundaries')),[u,0,0,u,0,0])
     assigned,held,source=source_targets(route,groups,profile['isolated_symbols'],lines)
+    density=None
+    if profile.get('dense_footprint'):
+        from .dense_footprint_supports import infill_sources,route_member
+        extra,density=infill_sources(assigned,groups,lines)
+        assigned=assigned+extra
     cloud=load_cloud(profile['cloud_path'],profile['cloud_receipt'],profile['nominal_to_bng'])
     intervals=deck_intervals(track);protected=set(head)
     for (x,y),parts in intervals.items():
@@ -128,6 +133,13 @@ def build(route,groups,terrain,old,head,samples,keys,track,profile):
                 for lo,hi in intervals.get((xx,yy),[]):
                     if abs(hi-samples[near]['running_top_m'])<=.75:bearing.add((xx,math.floor(lo),yy))
         reason=obstruction(path,terrain,old,protected|local_walk,start,bearing)
+        direct_reason=reason
+        if reason and density is not None:
+            checks=protected|local_walk
+            recovered=route_member(start,end,lambda k:obstruction([k],terrain,old,checks,start,bearing) is None)
+            if recovered is not None:
+                path=recovered;reason=None
+                receipt['transfer_route']={'direct_obstruction':direct_reason,'shape_is_estimated':True,'new_ground_feet':0,'vertical_height_never_decreases':True}
         lower=[{'underside_m':lo,'top_m':hi} for lo,hi in intervals[dx,dy] if hi<under]
         nearby=[list(xy) for xy in stacked if any((xx-xy[0])**2+(yy-xy[1])**2<=4 for xx,_,yy in path)]
         if lower or nearby:
@@ -143,7 +155,8 @@ def build(route,groups,terrain,old,head,samples,keys,track,profile):
         if len(parts)>1:overlap.append({'source_cell_xy':list(xy),'deck_intervals_m':parts,'lidar':cloud_probe([xy[0]+.5,xy[1]+.5],max(hi for lo,hi in parts),cloud)})
     receipt=cloud[3]
     return support,{'constructed_supports':built,'withheld_supports':held,'source_assignment':source,'added_support_cells':len(support),
-        'style':'dark oak fences only; original brown footprint to corresponding centreline underside; no crossbeams or decorative lattice',
+        **({'density':density,'transfer_routes_constructed':sum('transfer_route' in r for r in built)} if density is not None else {}),
+        'style':'dark oak fences only; dense original brown frame-line starts to branch-specific centres, with clearance-aware transfer paths' if density is not None else 'dark oak fences only; original brown footprint to corresponding centreline underside; no crossbeams or decorative lattice',
         'crossing_member_checks':crossings,'overlap_lidar_checks':overlap,
         'lidar':{'crop_sha256':receipt['sha256'],'crop_receipt_sha256':file_hash(profile['cloud_receipt']),'archive_sha256':ARCHIVE_SHA,'survey_id':'P_10682','survey_date':'2022-01-05','retained_points':receipt['retained_points'],'bounds_bng':receipt['bounds'],'role':'dated height-band and crossing context; does not identify hidden timber or change track levels','independent_registration_verified':False},
         'engineering_dimensions_verified':False,'all_members_start_on_source_footprint':True,'all_members_end_on_assigned_centreline':True,'support_materials':['dark_oak_fence']}

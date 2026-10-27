@@ -189,7 +189,7 @@ def build(pairs,terrain,old,head,samples,keys,track,profile):
 
 
 def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,style='reference',cloud_path=None,cloud_receipt=None):
-    if style not in ['reference','dense','footprint']:raise ValueError('Unknown support style')
+    if style not in ['reference','dense','footprint','dense-footprint']:raise ValueError('Unknown support style')
     if cancelled():raise CancelledError('Supports cancelled')
     base_directory=Path(base_directory);output=Path(output);profile=json.loads(PROFILE.read_text())
     if output.exists():raise ValueError('Fresh support output required')
@@ -202,21 +202,26 @@ def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,st
     terrain={(r['x'],r['z']-1):r for r in rows if r['kind']=='terrain'};old={(r['x'],r['y'],r['z']-1):r['material'] for r in rows if r['kind']=='structure'}
     track={tuple(r['source_xyz']):r['material'] for r in json.loads((base_directory/'track-blocks.json').read_text())};head={tuple(k) for k in json.loads((base_directory/'running-clearance-air.json').read_text())}
     samples=json.loads((base_directory/'track-samples.json').read_text());keys=base['full_track']['topology']['centre_sample_keys']
-    if style=='footprint':
+    if style in ['footprint','dense-footprint']:
         from . import footprint_supports
         if not cloud_path or not cloud_receipt:raise ValueError('Dated native point cloud and crop receipt required')
-        profile.update(markings_path=str(markings_path),isolated_symbols=source['unresolved_isolated_symbols'],cloud_path=str(cloud_path),cloud_receipt=str(cloud_receipt),nominal_to_bng=base['alignment']['nominal_local_xy_to_bng_en_affine'])
+        profile.update(dense_footprint=style=='dense-footprint',markings_path=str(markings_path),isolated_symbols=source['unresolved_isolated_symbols'],cloud_path=str(cloud_path),cloud_receipt=str(cloud_receipt),nominal_to_bng=base['alignment']['nominal_local_xy_to_bng_en_affine'])
         support,review=footprint_supports.build(route,pairs,terrain,old,head,samples,keys,track,profile)
     else:
         support,review=dense_trestle.build(route,pairs,terrain,old,head,samples,keys,track,profile)
     report=dict(base);report.update(version='reference-support-frames-v3' if style=='reference' else 'dense-fence-support-world-v2',support_style=style,implementation_sha256=file_hash(__file__),profile_sha256=file_hash(PROFILE),dense_implementation_sha256=file_hash(dense_trestle.__file__),bedrock_implementation_sha256=file_hash(Path(__file__).with_name('bedrock.py')),source_parent_world_sha256=base['world']['sha256'])
-    if style=='footprint':
+    if style in ['footprint','dense-footprint']:
         report.update(version='footprint-centre-supports-v1',footprint_implementation_sha256=file_hash(footprint_supports.__file__))
+    if style=='dense-footprint':
+        from . import dense_footprint_supports
+        report.update(version='dense-footprint-transfer-supports-v1',density_implementation_sha256=file_hash(dense_footprint_supports.__file__))
     report['full_track']=dict(base['full_track']);report['full_track']['supports_constructed']=len(review.get('constructed_supports',review.get('constructed_bents',[])))
     report['fence_supports']={**review,'source_review':source,'source_pdf_sha256':profile['source_pdf_sha256'],'markings_sha256':profile['markings_sha256'],
         'limitations':['Plan post-symbol centroids guide XY; symbol dimensions are not verified footing sizes.','Both main-row and smaller outer-footing symbols are recovered. Native cross-lines group measured footings; isolated symbols and infeasible legs are reported without shifting their XY.','Beam levels and member sizes are reconstruction estimates. Reference style replaces the diagonal lattice with segmented fence uprights, gates and flat trapdoor tiers.' if style=='reference' else 'Beam levels, member sizes and X-brace shape are reconstruction estimates. Vanilla fences approximate diagonals with connected voxel steps.','Track heights, terrain, roofs, existing blocks and centre clearance remain unchanged.']}
-    if style=='footprint':
+    if style in ['footprint','dense-footprint']:
         report['fence_supports']['limitations']=['Footprints and native brown cross-lines determine starts and branch assignments; metre-grid fence members approximate continuous geometry.','LiDAR is a dated aerial survey: canopy, sparse returns and occluded lower track prevent exact timber identification.','Ambiguous or obstructed connections are withheld whole; no routing through a lower deck or arbitrary new footings.','Track heights, terrain, buildings and walking clearances remain unchanged.']
+    if style=='dense-footprint':
+        report['fence_supports']['limitations']=['Measured footing symbols are retained. Additional starts are inferred at metre-grid density along original brown frame lines, not new surveyed footings.','Transfer routes are inferred inside the original foot-to-centre plane, with no new ground feet, excavation or cuts through lower track clearance.','Dated LiDAR supplies observed height bands; canopy and occlusion prevent exact reconstruction of hidden timber.','Existing track, buildings, terrain and walking clearances remain unchanged.']
     output.parent.mkdir(parents=True,exist_ok=True)
     from . import bedrock,planning_station_preshow_world as checker,timber_track_world as renderer
     from .planning_world_preview import _verify_archive,_spawn_check
@@ -231,13 +236,13 @@ def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,st
             surfaces={tuple(k) for k in keys}
             report['support_track_surfaces_native']=checker._native_surfaces(path,offset,[{'source_cell_xy':[x,y],'walking_top_m':h+(.5 if track[x,h,y].endswith('_slab') else 1)} for x,h,y in surfaces])
             atomic_json(path/'FENCE-SUPPORT-ASSUMPTIONS.json',report['fence_supports'])
-        title='Wicker FOOTPRINT TO CENTRE - dark oak supports' if style=='footprint' else 'Wicker REFERENCE FRAMES - mixed posts gates trapdoors' if style=='reference' else 'Wicker DENSE TRESTLE - separate diagonal braces'
+        title='Wicker DENSE FOOTPRINT - crossing transfers' if style=='dense-footprint' else 'Wicker FOOTPRINT TO CENTRE - dark oak supports' if style=='footprint' else 'Wicker REFERENCE FRAMES - mixed posts gates trapdoors' if style=='reference' else 'Wicker DENSE TRESTLE - separate diagonal braces'
         world=bedrock.export_world(voxels,root,report,name=title,max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-fence-supports.mcworld');report['world']['file']='wicker-fence-supports.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'quality-report.json',report);atomic_json(root/'support-blocks.json',[{'source_xyz':list(k),'material':m} for k,m in sorted(support.items())])
         for name in ['track-blocks.json','track-samples.json','running-clearance-air.json']:shutil.copy2(base_directory/name,root/name)
-        support_preview(root/'support-preview.png',terrain,{**old,**support},base['full_track']['controls'],track_only=True,caption='Original brown footprints to assigned centreline: dark oak fences only; blocked connections omitted.' if style=='footprint' else None)
+        support_preview(root/'support-preview.png',terrain,{**old,**support},base['full_track']['controls'],track_only=True,caption='Dense brown-line footings to branch centres; dark oak fences; crossing transfers keep lower track clear.' if style=='dense-footprint' else 'Original brown footprints to assigned centreline: dark oak fences only; blocked connections omitted.' if style=='footprint' else None)
         (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Plan-positioned timber support reconstruction</h1><a href="wicker-fence-supports.mcworld">Download world</a><p>'+review['style']+'. Member sizes are inferred; blocked or ambiguous source positions are reported.</p><img style="max-width:100%" src="support-preview.png">')
         shutil.move(root,output)
     return report
@@ -276,7 +281,7 @@ def support_preview(path,terrain,blocks,controls,*,track_only=False,caption=None
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['base-directory','markings-path','pdf-path','output']:p.add_argument('--'+name,required=True)
-    p.add_argument('--style',choices=['reference','dense','footprint'],default='reference')
+    p.add_argument('--style',choices=['reference','dense','footprint','dense-footprint'],default='reference')
     p.add_argument('--cloud-path');p.add_argument('--cloud-receipt')
     a=p.parse_args(argv);r=run(a.base_directory,a.markings_path,a.pdf_path,a.output,style=a.style,cloud_path=a.cloud_path,cloud_receipt=a.cloud_receipt)
     print(json.dumps({'world_sha256':r['world']['sha256'],'supports':r['full_track']['supports_constructed'],'support_cells':r['fence_supports']['added_support_cells']}))
