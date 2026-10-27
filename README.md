@@ -749,3 +749,5 @@ Basement alignment: [Shared building outlines, original queue edges and exact re
 Aligned preshow world: [Floor-led walls, recentered slab roofs, basement openings and connected queue deck](docs/wicker-aligned-preshow-world.md) applies the alignment while preserving the shop and reporting metre-grid paving aliases and remaining lower-access assumptions.
 
 Maintenance construction: [Source-height slab roof, timber walls and lower stone course](docs/wicker-maintenance-building.md) builds the marked maintenance footprint while preserving the existing park and recording the station/service-door voxel overlap.
+
+Timber track construction: [Reference-style lattice and first HP1–LP1–HP2 section](docs/wicker-timber-track-section.md) adds 98.9 m of source-bound running deck and 41 symbol-derived support frames, with explicit interpolation/banking assumptions and native clearance checks.

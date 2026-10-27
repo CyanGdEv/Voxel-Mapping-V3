@@ -1,0 +1,125 @@
+{
+  "version": "reference-timber-track-section-v1",
+  "base_pins": {
+    "quality-report.json": "a93710ec3df85a468fde18b5ca11786513d3e3cfab47d2ba9ff6318e3b08e17b",
+    "voxels.jsonl": "addcab9c7df772b671c47d9d9b71373458b9699d6457ea5a8674ef477e55b8cb",
+    "wicker-maintenance.mcworld": "a4a5e42d64f4033c4dc476f3bfd87d63343d28134a4d56140982be8736896201"
+  },
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+  "metres_per_pdf_point": 0.08819444444444444,
+  "source_native_height_points": 1684,
+  "section_controls": [
+    "HP1",
+    "LP1",
+    "HP2"
+  ],
+  "controls": [
+    {
+      "label": "HP1",
+      "height_m": 201.0,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1950.8399658203125,
+        1004.0399780273438
+      ],
+      "nominal_xy": [
+        172.05324698554136,
+        59.96869638231062
+      ],
+      "marker_vector_sequence": 93584,
+      "candidates": [
+        {
+          "segment": 107,
+          "station_m": 232.74887714049936,
+          "distance_m": 0.014465198564707522
+        }
+      ]
+    },
+    {
+      "label": "LP1",
+      "height_m": 191.7,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1807.7999267578125,
+        940.6799621582031
+      ],
+      "nominal_xy": [
+        159.43791020711254,
+        65.55669778188066
+      ],
+      "marker_vector_sequence": 93589,
+      "candidates": [
+        {
+          "segment": 135,
+          "station_m": 284.99807798924206,
+          "distance_m": 0.01877114239506057
+        },
+        {
+          "segment": 102,
+          "station_m": 219.0329540463904,
+          "distance_m": 1.5030520842324475
+        }
+      ]
+    },
+    {
+      "label": "HP2",
+      "height_m": 193.4,
+      "marker_found": true,
+      "raw_marker_pdf_xy": [
+        1292.5199584960938,
+        934.1999816894531
+      ],
+      "nominal_xy": [
+        113.99307967291932,
+        66.12819605933292
+      ],
+      "marker_vector_sequence": 93639,
+      "candidates": [
+        {
+          "segment": 159,
+          "station_m": 331.65154835175207,
+          "distance_m": 0.012874562060939444
+        },
+        {
+          "segment": 298,
+          "station_m": 555.5701483719232,
+          "distance_m": 3.0383162574262563
+        }
+      ]
+    }
+  ],
+  "reference_origin": "ten user-supplied Towers Magic Minecraft screenshots in this conversation",
+  "palette": {
+    "posts": [
+      "oak_fence",
+      "oak_log"
+    ],
+    "cross_beams": [
+      "oak_log_x",
+      "oak_log_z"
+    ],
+    "braces": "oak_fence",
+    "deck": "dark_oak_planks",
+    "half_deck": "dark_oak_slab",
+    "catwalk": [
+      "oak_slab",
+      "oak_slab_top"
+    ],
+    "railings": "oak_fence",
+    "caps": "oak_trapdoor facing outward",
+    "footings": "stone_bricks"
+  },
+  "reference_exact_block_identity_verified": false,
+  "running_rails": "dark oak deck proxies; pictured dark running rails may use a resource pack or custom ride mod",
+  "post_symbol_area_range_m2": [
+    0.2,
+    0.4
+  ],
+  "max_post_station_difference_m": 0.8,
+  "max_support_height_m": 32,
+  "max_added_blocks": 60000,
+  "bank_angle_degrees": 0,
+  "bank_angle_status": "unmeasured display estimate",
+  "post_style": "continuous fence uprights with full log nodes and cross beams; voxel dimensions are reference-style estimates"
+}
