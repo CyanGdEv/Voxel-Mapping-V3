@@ -42,6 +42,10 @@ on:
       - 'voxel_mapper/study_site_evaluation.py'
       - 'voxel_mapper/study_dataset.py'
       - 'voxel_mapper/retained_study_examples.py'
+      - 'voxel_mapper/research_sources.py'
+      - 'voxel_mapper/aerial_material_research.py'
+      - 'tests/test_research_sources.py'
+      - 'tests/test_aerial_material_research.py'
       - 'voxel_mapper/map_planning_research.py'
       - 'tests/test_map_planning_research.py'
       - 'voxel_mapper/research_learning_cycle.py'
@@ -259,6 +263,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Source-paired study dataset tests failed' }
           python -m unittest discover -s tests -p 'test_neural_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Neural learning tests failed' }
+          python -m unittest discover -s tests -p 'test_research_sources.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Broader public source research checks failed' }
+          python -m unittest discover -s tests -p 'test_aerial_material_research.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Aerial RGB material candidate checks failed' }
           python -m unittest discover -s tests -p 'test_map_planning_research.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Map-guided planning research checks failed' }
           python -m unittest discover -s tests -p 'test_research_learning_cycle.py' -v

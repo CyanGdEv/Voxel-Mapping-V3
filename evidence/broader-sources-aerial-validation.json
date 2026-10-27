@@ -1,0 +1,600 @@
+{
+  "version": "broader-sources-aerial-validation-v1",
+  "date": "2026-10-27",
+  "tests": {
+    "broad_count": 146,
+    "broad_result": "passed",
+    "broad_log_sha256": "ceea5a92335354a19b0e523934a492b6a3c0fefdcef1f3f87dd15ad8733dd5ee",
+    "final_aerial_suite_count": 9,
+    "final_aerial_result": "passed",
+    "final_aerial_log_sha256": "ed8de7e89fcf9162cae9bb256212e6805abe908d69f90b13bf5ae64d6ab959db",
+    "note": "The nine aerial checks were rerun after the final insufficient-pixel summary correction; they are a subset, not additional independent cases."
+  },
+  "structured_sources_live": {
+    "status": "web_evidence_gathered",
+    "visited_hosts": [
+      "commons.wikimedia.org",
+      "www.arcgis.com",
+      "www.planning.data.gov.uk",
+      "www.wikidata.org"
+    ],
+    "network_bytes": 34790,
+    "sources": [
+      {
+        "artifact_sha256": "4a36cfee602d327ae9ed85e1b1cc0807b3c0a553a8fd156b642eb02e39284541",
+        "body_sha256": "0300bbd3daf9b7eb6ec5dabb2d08cf6d646f57164b324f939fc773434b4e693a",
+        "citation_id": "Wec915ac1915d",
+        "excerpt": "entity: Q25223509\nlabels: Wicker Man\ndescriptions: wooden roller coaster at Alton Towers Resort, England\naliases: []\nP31: {\"value\":{\"entity-type\":\"item\",\"numeric-id\":973560,\"id\":\"Q973560\"},\"rank\":\"normal\"}\nP17: {\"value\":{\"entity-type\":\"item\",\"numeric-id\":145,\"id\":\"Q145\"},\"rank\":\"normal\"}\nP176: {\"value\":{\"entity-type\":\"item\",\"numeric-id\":1544251,\"id\":\"Q1544251\"},\"rank\":\"normal\"}\nP625: {\"value\":{\"latitude\":52.988888888889,\"longitude\":-1.8886111111111,\"altitude\":null,\"precision\":0.00027777777777778,\"globe\":\"http://www.wikidata.org/entity/Q2\"},\"rank\":\"normal\"}\nP18: {\"value\":\"AltonTowersWickerManRo",
+        "requested_url": "https://www.wikidata.org/wiki/Special:EntityData/Q25223509.json",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:33:16.252225+00:00",
+        "source_evidence_verified": false,
+        "title": "Wicker Man",
+        "training_labels_generated": 0,
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q25223509.json"
+      },
+      {
+        "artifact_sha256": "03a7fc59a9d8b336ca7cc0c3443ecfe14b1a4c40458fc6925333f92c31c0f054",
+        "body_sha256": "476eba5739b4c7590238c327118e3dd579ef282660ed955d5011864cbe90fef6",
+        "citation_id": "Waad51d1ae225",
+        "excerpt": "title: File:AltonTowersWickerManRollercoaster.jpg\noriginal_image_url: https://upload.wikimedia.org/wikipedia/commons/2/28/AltonTowersWickerManRollercoaster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\nLicenseShortName: CC BY-SA 4.0\nLicenseUrl: https://creativecommons.org/licenses/by-sa/4.0\nUsageTerms: Creative Commons Attribution-Share Alike 4.0\nAttributionRequired: true\nArtist: WL2018\nCredit: Own work\nImageDescription: Alton towers Wickerman rollercoaster\ntitle: File:Wicker Man Alton Towers 16-9-2026.jpg\noriginal_image_url: https://upload.wikimedia.org/wiki",
+        "requested_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Wicker+Man+Alton+Towers&gsrnamespace=6&gsrlimit=2&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1600",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:33:17.287869+00:00",
+        "source_evidence_verified": false,
+        "title": "File:AltonTowersWickerManRollercoaster.jpg",
+        "training_labels_generated": 0,
+        "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Wicker+Man+Alton+Towers&gsrnamespace=6&gsrlimit=2&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1600"
+      },
+      {
+        "artifact_sha256": "f1442cb9e7b24f2b548873e9d73ce693026f00594e7575c063c6823012e7e35c",
+        "body_sha256": "441c009cc5da10e0e1bed6b5a52a12de0505bce048a5878e8cb218ef26eeee39",
+        "citation_id": "W52c4990daba4",
+        "excerpt": "record_count: 2\nentity: 44000001\ndataset: conservation-area\nname: Napsbury\nreference: CA18\norganisation-entity: 278\nstart-date: 1996-04-01\npoint: POINT (-0.312224 51.722269)\ndocumentation-url: https://stalbans.gov.uk/sites/default/files/documents/publications/planning-building-control/conservation/Napsbury%20Conservation%20Area%20Character%20Statement.pdf\nentry-date: 2004-06-01\nentity: 44000002\ndataset: conservation-area\nname: Shafford Mill\nreference: CA10\norganisation-entity: 278\nstart-date: 1980-07-31\npoint: POINT (-0.370182 51.770915)\ndocumentation-url: https://stalbans.gov.uk/sites/default",
+        "requested_url": "https://www.planning.data.gov.uk/entity.json?dataset=conservation-area&limit=2",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:33:18.413542+00:00",
+        "source_evidence_verified": false,
+        "title": "Napsbury",
+        "training_labels_generated": 0,
+        "url": "https://www.planning.data.gov.uk/entity.json?dataset=conservation-area&limit=2"
+      },
+      {
+        "artifact_sha256": "a914fcbd10bb325ac84fcbd471d57b6203977c208adbade94861c307d511a6fa",
+        "body_sha256": "5afbaaf37bbe1c6717baa5e998a3ce098fc1880ce5f97d8733e3376b188615e6",
+        "citation_id": "W98a2ed56a2b3",
+        "excerpt": "record_count: 2\ntitle: Travel_from_Alton_Towers_(Points)_(60_120_180_240_Minutes)\ndescription: Feature layer generated from running the Create Drive Times solution.\ntype: Feature Service\nsnippet: Feature layer generated from Create Drive Times\ntitle: Krissu map\ntype: Web Map\nsnippet: tere",
+        "requested_url": "https://www.arcgis.com/sharing/rest/search?f=json&q=Alton%20Towers&num=2",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:33:18.769141+00:00",
+        "source_evidence_verified": false,
+        "title": "Travel_from_Alton_Towers_(Points)_(60_120_180_240_Minutes)",
+        "training_labels_generated": 0,
+        "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=Alton%20Towers&num=2"
+      }
+    ],
+    "failures": [
+      {
+        "code": "http_status",
+        "error": "Web source returned HTTP 403",
+        "http_status": 403,
+        "retry_after_seconds": null,
+        "url": "https://www.loc.gov/pictures/search/?q=Glen%20Echo%20carousel&fo=json"
+      }
+    ],
+    "downloaded_assets": [],
+    "source_families": [],
+    "site_searches": []
+  },
+  "commons_media_live": {
+    "status": "web_evidence_gathered",
+    "visited_hosts": [
+      "commons.wikimedia.org",
+      "thumb.wikimedia.org"
+    ],
+    "network_bytes": 719720,
+    "sources": [
+      {
+        "artifact_sha256": "03a7fc59a9d8b336ca7cc0c3443ecfe14b1a4c40458fc6925333f92c31c0f054",
+        "body_sha256": "476eba5739b4c7590238c327118e3dd579ef282660ed955d5011864cbe90fef6",
+        "citation_id": "Waad51d1ae225",
+        "excerpt": "title: File:AltonTowersWickerManRollercoaster.jpg\noriginal_image_url: https://upload.wikimedia.org/wikipedia/commons/2/28/AltonTowersWickerManRollercoaster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\nLicenseShortName: CC BY-SA 4.0\nLicenseUrl: https://creativecommons.org/licenses/by-sa/4.0\nUsageTerms: Creative Commons Attribution-Share Alike 4.0\nAttributionRequired: true\nArtist: WL2018\nCredit: Own work\nImageDescription: Alton towers Wickerman rollercoaster\ntitle: File:Wicker Man Alton Towers 16-9-2026.jpg\noriginal_image_url: https://upload.wikimedia.org/wiki",
+        "requested_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Wicker+Man+Alton+Towers&gsrnamespace=6&gsrlimit=2&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1600",
+        "retrieval": "cached",
+        "retrieved_at_utc": "2026-10-27T22:33:17.287869+00:00",
+        "source_evidence_verified": false,
+        "title": "File:AltonTowersWickerManRollercoaster.jpg",
+        "training_labels_generated": 0,
+        "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=Wicker+Man+Alton+Towers&gsrnamespace=6&gsrlimit=2&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1600"
+      },
+      {
+        "artifact_sha256": "9aa21fd0073409117acb1145e7bca5ae4224833ee11eb0776f7fc2c8ffa1ba70",
+        "body_sha256": "2d0d6cf73889c482645cd9afcecb734dddf7700c54712185798f44a678422fa3",
+        "citation_id": "Wb644dd5c955f",
+        "excerpt": "",
+        "requested_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Wicker_Man_Alton_Towers_16-9-2026.jpg/1920px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:34:20.140304+00:00",
+        "source_evidence_verified": false,
+        "title": "1920px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "training_labels_generated": 0,
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Wicker_Man_Alton_Towers_16-9-2026.jpg/1920px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      {
+        "artifact_sha256": "987823c2b0757043ab1ec0d048c1f4b32f69d75c48b83319d8cee7ab02b42baf",
+        "body_sha256": "548ebc58d34ccb0e3c62230a9c8f1449e955dce7831058b29c0d2f6eb6ff6d44",
+        "citation_id": "W94b39ce87750",
+        "excerpt": "@type: ImageObject\nname: Wicker Man Alton Towers 16-9-2026\nlicense: https://creativecommons.org/licenses/by/4.0\nFrom Wikimedia Commons, the free media repository Size of this preview: 960 \u00d7 540 pixels . Other resolutions: 330 \u00d7 186 pixels | 1,280 \u00d7 720 pixels | 3,648 \u00d7 2,052 pixels . Original file (3,648 \u00d7 2,052 pixels, file size: 1.22 MB, MIME type: image/jpeg ) File information Structured data Captions Captions English Add a one-line explanation of what this file represents Summary [ edit ] Description Wicker Man Alton Towers 16-9-2026.jpg English: The Wicker Man wooden roller coaster ride i",
+        "requested_url": "https://commons.wikimedia.org/wiki/File:Wicker_Man_Alton_Towers_16-9-2026.jpg",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:34:20.616812+00:00",
+        "source_evidence_verified": false,
+        "title": "File:Wicker Man Alton Towers 16-9-2026.jpg - Wikimedia Commons",
+        "training_labels_generated": 0,
+        "url": "https://commons.wikimedia.org/wiki/File:Wicker_Man_Alton_Towers_16-9-2026.jpg"
+      },
+      {
+        "artifact_sha256": "ce3593221207c9b52798a09e4211d94fc5a8cc660ce8692314413c99420ae61e",
+        "body_sha256": "1aee87c2bfb4316dd4771f500e9edc51ece0f03fffa2a104b208cf1d39f504c0",
+        "citation_id": "Wd299692f8e9e",
+        "excerpt": "",
+        "requested_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Wicker_Man_Alton_Towers_16-9-2026.jpg/960px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20260917160714",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T22:34:21.053305+00:00",
+        "source_evidence_verified": false,
+        "title": "960px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20260917160714",
+        "training_labels_generated": 0,
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Wicker_Man_Alton_Towers_16-9-2026.jpg/960px-Wicker_Man_Alton_Towers_16-9-2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20260917160714"
+      }
+    ],
+    "failures": [],
+    "downloaded_assets": [
+      {
+        "citation_id": "Wb644dd5c955f",
+        "file": "downloads/Wb644dd5c955f.jpg",
+        "format": "image",
+        "sha256": "2d0d6cf73889c482645cd9afcecb734dddf7700c54712185798f44a678422fa3"
+      },
+      {
+        "citation_id": "Wd299692f8e9e",
+        "file": "downloads/Wd299692f8e9e.jpg",
+        "format": "image",
+        "sha256": "1aee87c2bfb4316dd4771f500e9edc51ece0f03fffa2a104b208cf1d39f504c0"
+      }
+    ],
+    "source_families": [],
+    "site_searches": []
+  },
+  "aerial_live_initial": {
+    "bing_viewer_url": "https://www.bing.com/maps?cp=52.989555628089846~-1.8887815318582881&lvl=19&style=a",
+    "candidate_file": "material-candidates.jsonl",
+    "candidate_file_sha256": "911286adafb1a23d81203c60d6cfe5e65f4ba17a34bc2cd2c7340cf2397e56a3",
+    "colour_cue_counts": {
+      "neutral_or_mixed_surface": 137,
+      "shadow_or_dark_surface": 19,
+      "vegetation_colour": 78,
+      "warm_brown_or_red_surface": 22
+    },
+    "imagery": {
+      "attribution": "Esri World Imagery and its imagery providers",
+      "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+      "capture_date": null,
+      "capture_date_status": "not_supplied_by_export",
+      "extent_epsg3857": [
+        -210417.7251130154,
+        6980906.702719099,
+        -210098.6715793924,
+        6981225.756252722
+      ],
+      "height": 1024,
+      "image_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+      "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png",
+      "metadata_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+      "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+      "provider": "esri_world_imagery",
+      "registration_verified": false,
+      "width": 1024
+    },
+    "limitations": [
+      "RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.",
+      "Shadows, vegetation, water, roofs, lighting, capture date and resampling affect colour; ambiguous candidates are withheld.",
+      "Provider extent georeferences sample cells, not individual paths/buildings; physical registration remains unverified.",
+      "Original imagery and provider attribution are retained; these observations do not bypass reviewed orthophoto material acceptance."
+    ],
+    "material_assignments_accepted": 0,
+    "model_weights_updated": false,
+    "network_bytes": 781436,
+    "production_eligible": false,
+    "provider": "esri_world_imagery",
+    "registration_verified": false,
+    "sample_cells": 256,
+    "site": "Alton Towers Wicker Man",
+    "site_id": "wicker-man",
+    "sources": [
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      }
+    ],
+    "status": "aerial_rgb_sampled",
+    "training_labels_generated": 0,
+    "version": "aerial-material-research-v1",
+    "world_blocks_generated": 0
+  },
+  "aerial_final_offline_replay": {
+    "bing_viewer_url": "https://www.bing.com/maps?cp=52.989555628089846~-1.8887815318582881&lvl=19&style=a",
+    "candidate_file": "material-candidates.jsonl",
+    "candidate_file_sha256": "911286adafb1a23d81203c60d6cfe5e65f4ba17a34bc2cd2c7340cf2397e56a3",
+    "colour_cue_counts": {
+      "neutral_or_mixed_surface": 137,
+      "shadow_or_dark_surface": 19,
+      "vegetation_colour": 78,
+      "warm_brown_or_red_surface": 22
+    },
+    "imagery": {
+      "attribution": "Esri World Imagery and its imagery providers",
+      "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+      "capture_date": null,
+      "capture_date_status": "not_supplied_by_export",
+      "extent_epsg3857": [
+        -210417.7251130154,
+        6980906.702719099,
+        -210098.6715793924,
+        6981225.756252722
+      ],
+      "height": 1024,
+      "image_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+      "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png",
+      "metadata_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+      "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+      "point_metadata_applies_to_whole_image": false,
+      "point_metadata_error": null,
+      "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+      "point_source_metadata": [
+        {
+          "ACCURACY (M)": "8.47",
+          "DATE (YYYYMMDD)": "20230527",
+          "DESCRIPTION": "WV02",
+          "RESOLUTION (M)": "0.5",
+          "SOURCE": "Vantor",
+          "SOURCE_INFO": "Vivid",
+          "SRC_DATE2": "5/27/2023"
+        },
+        {
+          "ACCURACY (M)": "12",
+          "DESCRIPTION": "TerraColor NextGen",
+          "RESOLUTION (M)": "15",
+          "SOURCE": "Earthstar Geographics",
+          "SOURCE_INFO": "TerraColor NextGen",
+          "SRC_DATE2": "Null"
+        },
+        {
+          "ACCURACY (M)": "12",
+          "DATE (YYYYMMDD)": "Null",
+          "DESCRIPTION": "TerraColor NextGen",
+          "RESOLUTION (M)": "15",
+          "SOURCE": "Earthstar Geographics",
+          "SOURCE_INFO": "TerraColor NextGen"
+        },
+        {
+          "ACCURACY (M)": "8.47",
+          "DATE (YYYYMMDD)": "20230527",
+          "DESCRIPTION": "WV02",
+          "RESOLUTION (M)": "0.5",
+          "SOURCE": "Vantor",
+          "SOURCE_INFO": "Vivid"
+        },
+        {
+          "SRC_DATE2": "5/27/2023"
+        },
+        {
+          "SRC_DATE2": "Null"
+        }
+      ],
+      "provider": "esri_world_imagery",
+      "registration_verified": false,
+      "width": 1024
+    },
+    "limitations": [
+      "RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.",
+      "Shadows, vegetation, water, roofs, lighting, capture date and resampling affect colour; ambiguous candidates are withheld.",
+      "Provider extent georeferences sample cells, not individual paths/buildings; physical registration remains unverified.",
+      "Original imagery and provider attribution are retained; these observations do not bypass reviewed orthophoto material acceptance."
+    ],
+    "material_assignments_accepted": 0,
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "production_eligible": false,
+    "provider": "esri_world_imagery",
+    "registration_verified": false,
+    "sample_cells": 256,
+    "site": "Alton Towers Wicker Man",
+    "site_id": "wicker-man",
+    "sources": [
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "W1fe63395170f",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      }
+    ],
+    "status": "aerial_rgb_sampled",
+    "training_labels_generated": 0,
+    "version": "aerial-material-research-v1",
+    "world_blocks_generated": 0
+  },
+  "bing_live_status": {
+    "bing_viewer_url": "https://www.bing.com/maps?cp=52.989555628089846~-1.8887815318582881&lvl=19&style=a",
+    "candidate_file": "material-candidates.jsonl",
+    "candidate_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "colour_cue_counts": {},
+    "imagery": {
+      "provider": "bing_aerial",
+      "status": "awaiting_bing_maps_key"
+    },
+    "limitations": [
+      "RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.",
+      "Shadows, vegetation, water, roofs, lighting, capture date and resampling affect colour; ambiguous candidates are withheld.",
+      "Provider extent georeferences sample cells, not individual paths/buildings; physical registration remains unverified.",
+      "Original imagery and provider attribution are retained; these observations do not bypass reviewed orthophoto material acceptance."
+    ],
+    "material_assignments_accepted": 0,
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "production_eligible": false,
+    "provider": "bing_aerial",
+    "registration_verified": false,
+    "sample_cells": 0,
+    "site": "Alton Towers Wicker Man",
+    "site_id": "wicker-man",
+    "sources": [],
+    "status": "awaiting_bing_maps_key",
+    "training_labels_generated": 0,
+    "version": "aerial-material-research-v1",
+    "world_blocks_generated": 0
+  },
+  "bing_authenticated_live_tested": false,
+  "bing_adapter_tested_with_synthetic_transport": true,
+  "bing_web_view_available_to_current_browser_tool": false,
+  "bing_documentation": [
+    "https://learn.microsoft.com/en-us/bingmaps/rest-services/imagery/get-a-static-map",
+    "https://learn.microsoft.com/en-us/bingmaps/rest-services/imagery/static-map-data"
+  ],
+  "existing_96_pair_cycle_first": {
+    "aerial_failures": [],
+    "aerial_reports": [
+      {
+        "candidate_file_sha256": "911286adafb1a23d81203c60d6cfe5e65f4ba17a34bc2cd2c7340cf2397e56a3",
+        "material_assignments_accepted": 0,
+        "provider": "esri_world_imagery",
+        "sample_cells": 256,
+        "site_id": "alton-towers",
+        "status": "aerial_rgb_sampled"
+      }
+    ],
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 37,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "map_document_clues": [],
+    "map_failures": [],
+    "map_reports": [
+      {
+        "features": 205,
+        "queries": 32,
+        "site_id": "alton-towers",
+        "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589"
+      }
+    ],
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "new_source_bodies": 3,
+    "production_eligible": false,
+    "remembered_map_followups": 0,
+    "remembered_sources": 7,
+    "research_failures": [],
+    "research_results": [],
+    "sources": [
+      {
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+        "citation_id": "Wf344cf4b5875",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+      },
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "W1fe63395170f",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      },
+      {
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "citation_id": "M93dd03bb5e24",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      {
+        "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "citation_id": "Wb169c0484216",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "reused_unchanged_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "existing_96_pair_cycle_restart": {
+    "aerial_failures": [],
+    "aerial_reports": [
+      {
+        "candidate_file_sha256": "911286adafb1a23d81203c60d6cfe5e65f4ba17a34bc2cd2c7340cf2397e56a3",
+        "material_assignments_accepted": 0,
+        "provider": "esri_world_imagery",
+        "sample_cells": 256,
+        "site_id": "alton-towers",
+        "status": "aerial_rgb_sampled"
+      }
+    ],
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 37,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "map_document_clues": [],
+    "map_failures": [],
+    "map_reports": [
+      {
+        "features": 205,
+        "queries": 32,
+        "site_id": "alton-towers",
+        "source_body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589"
+      }
+    ],
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "new_source_bodies": 0,
+    "production_eligible": false,
+    "remembered_map_followups": 0,
+    "remembered_sources": 7,
+    "research_failures": [],
+    "research_results": [],
+    "sources": [
+      {
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+        "citation_id": "Wf344cf4b5875",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+      },
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "W1fe63395170f",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      },
+      {
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "citation_id": "M93dd03bb5e24",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      {
+        "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "citation_id": "Wb169c0484216",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "reused_unchanged_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "candidate_file_sha256": "911286adafb1a23d81203c60d6cfe5e65f4ba17a34bc2cd2c7340cf2397e56a3",
+  "actual_neural_weights_updated": false,
+  "material_assignments_accepted": 0,
+  "new_verified_training_pairs": 0,
+  "geometry_registration_verified": false,
+  "windows_exe_rebuilt": false,
+  "world_blocks_generated": 0,
+  "limitations": [
+    "The live RGB provider is Esri World Imagery; Bing has no configured key and no live authenticated imagery was fetched.",
+    "The reported 2023 date, 0.5 m resolution and 8.47 m accuracy are centre-point metadata observations, not verified whole-image properties or plan alignment.",
+    "Colour distances rank visual block-palette candidates; they do not prove materials and are not calibrated probabilities.",
+    "LOC returned HTTP 403; live access to every registered site is not claimed.",
+    "The repeated real research cycle used retained checked bytes, saved seven source bodies and reused its prior checkpoint without fitting new weights."
+  ]
+}

@@ -63,7 +63,7 @@ def validate(config):
         value=config.get(field,default)
         if type(value) is not int or not low<=value<=high:raise ValueError('Bounded map research jobs/queries required')
     settings=config.get('research',{})
-    if not isinstance(settings,dict) or set(settings)-{'allowed_hosts','allow_public_discovery','model','endpoint','model_options','offline','refresh','limits'}:
+    if not isinstance(settings,dict) or set(settings)-{'allowed_hosts','allow_public_discovery','model','endpoint','model_options','offline','refresh','limits','source_families'}:
         raise ValueError('Known web research settings required')
     web_research.validate({'version':web_research.VERSION,'query':'public map research',**settings})
 

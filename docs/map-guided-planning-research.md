@@ -60,3 +60,5 @@ Using the retained Alton snapshot and linked public pages, the focused Wicker Ma
 The actual 96-pair learning cycle reused its existing checked checkpoint while consuming the map evidence. Its output, curriculum, original source pins, restart results and tests are recorded in `evidence/map-planning-research-validation.json`. Synthetic tests separately exercise fitting, restart, persistent discovered application follow-ups, and safe map/web handling. No world blocks, neural weight updates from maps, production promotion or measured geometry-accuracy improvement occurred.
 
 OpenStreetMap attribution: © OpenStreetMap contributors, ODbL-1.0; https://www.openstreetmap.org/copyright. Referenced pages/documents retain their own provenance and rights.
+
+For additional site families, structured APIs, Bing viewer/keyed imagery support and aerial RGB colour observations, see [Broader sources and aerial RGB](broader-sources-and-aerial-rgb.md).

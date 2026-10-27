@@ -12,7 +12,7 @@ from . import web_evidence as web
 from .desktop_memory import digest
 from .generation_cycles import atomic_json, file_hash
 from . import local_reasoning
-from . import web_focus
+from . import web_focus, research_sources
 
 VERSION='web-research-v1'
 LIMITS={'max_sources':24,'max_model_rounds':6,'max_run_bytes':64000000,'max_seconds':600}
@@ -22,10 +22,15 @@ def validate(config):
     if not isinstance(config,dict) or config.get('version')!=VERSION:
         raise ValueError('Versioned web research configuration required')
     if set(config)-{'version','query','urls','allowed_hosts','prompt','model','endpoint','model_options',
-                    'offline','refresh','limits','research_profile','allow_public_discovery'}: raise ValueError('Unknown web research setting')
+                    'offline','refresh','limits','research_profile','allow_public_discovery','source_families'}: raise ValueError('Unknown web research setting')
     if type(config.get('allow_public_discovery',False)) is not bool:raise ValueError('Explicit public discovery mode required')
     scope=web_focus.profile(config.get('research_profile'))
+    source_families=research_sources.families(config.get('source_families',[]))
     approved=web.hosts(config.get('allowed_hosts',list(web.DEFAULT_HOSTS)))
+    for family in source_families:
+        for name in research_sources.FAMILIES[family]['hosts']:
+            if name not in approved:approved.append(name)
+    approved=web.hosts(approved)
     urls=config.get('urls',[])
     if not isinstance(urls,list) or len(urls)>12: raise ValueError('At most twelve public seed URLs required')
     normalized=[web.url(u,None if config.get('allow_public_discovery') else approved) for u in urls]
@@ -59,7 +64,7 @@ def validate(config):
 
 def _context(prompt,memory,sources,known):
     maximum=min(2048,4096-len(prompt));records=[];offered=[]
-    titles={link['url']:link['title'][:100] for item in sources for link in item.get('focus',item['source'])['links']}
+    titles={link['url']:link['title'][:100] for item in sources for link in item.get('research_links',item.get('focus',item['source'])['links'])}
     # Preserve complete bounded JSON records; truncating a whole serialized
     # memory string can hide which source excerpts the model actually received.
     private=memory[:min(256,maximum//4)]
@@ -97,7 +102,8 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     if run_deadline is not None:deadline=min(deadline,run_deadline)
     budget=web.Budget(limits['max_run_bytes'],parent=parent_budget)
     sources=[];failures=[];attempted=set();known=[];document_links=set();rounds=[];executions=[];withheld=[];link_titles={};downloads=[]
-    search_report=None;model_error=None
+    search_report=None;model_error=None;site_searches=[];api_links=set()
+    source_families=research_sources.families(config.get('source_families',[]))
     def check():
         if cancelled(): raise CancelledError('Web research cancelled')
         return time.monotonic()<deadline
@@ -114,7 +120,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     def pending():
         return sorted((value for value in known if value not in attempted and value not in skipped),
             key=lambda value:(-web_focus.score(link_titles.get(value,''),scope) if scope else 0,
-                0 if value in document_links else 1))
+                0 if value in document_links else 1 if value in api_links else 2))
     for value in seeds: discover(value)
     effective_query=config.get('query','').strip()
     if not effective_query and not seeds and scope:
@@ -130,6 +136,19 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
             atomic_json(output/'search.json',search_report)
         except (web.WebError,ValueError) as error:
             search_report={'status':'search_unavailable','error':str(error),'results':[]}
+    for task in research_sources.search_queries(effective_query,scope,source_families):
+        if not check() or budget.exhausted:break
+        try:
+            result=search(task['query'],cache,None if config.get('allow_public_discovery') else approved,
+                offline=config.get('offline',False),refresh=config.get('refresh',True),budget=budget,
+                cancelled=cancelled,deadline=deadline)
+            site_searches.append({**task,**result})
+            for item in result['results']:
+                target=discover(item['url'])
+                if target:link_titles[target]=item.get('title','')
+        except (web.WebError,ValueError) as error:
+            site_searches.append({**task,'status':'search_unavailable','error':str(error),'results':[]})
+    atomic_json(output/'site-searches.json',site_searches)
     def read(value,proposal_id=None):
         if not check(): return
         value=web.url(value,approved)
@@ -155,10 +174,15 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
                     target=output/'downloads'/(source['citation_id']+suffix);target.parent.mkdir(exist_ok=True);shutil.copy2(path,target)
                     if file_hash(target)!=source['body_sha256']:raise ValueError('Downloaded source changed while exporting')
                     downloads.append({'citation_id':source['citation_id'],'file':target.relative_to(output).as_posix(),'sha256':source['body_sha256'],'format':source['format']})
+            links=list(item.get('focus',source)['links'])
+            links=[{'url':u,'title':'Structured metadata API','role':'structured_api'} for u in research_sources.related_urls(source['url'],source_families)]+links
+            item['research_links']=links
             atomic_json(output/(source['citation_id']+'.json'),item)
-            for link in item.get('focus',source)['links']:
+            for link in links:
                 target=discover(link['url'])
-                if target:link_titles[target]=link['title']
+                if target:
+                    link_titles[target]=link['title']
+                    if link.get('role')=='structured_api':api_links.add(target)
                 if target and (urlsplit(target).path.lower().endswith('.pdf') or
                         'attachmentshowservlet' in urlsplit(target).path.lower() or
                         re.search(r'\b(plan|drawing|elevations?|sections?|surfacing)\b',link['title'],re.I)):
@@ -229,6 +253,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         status+='__unsupported_model_citations'
     report={'version':VERSION,'status':status,'summary':summary,'config_sha256':digest(config),
         'research_profile':scope,'effective_search_query':effective_query,'downloaded_assets':downloads,
+        'source_families':source_families,'site_searches':site_searches,'visited_hosts':sorted({urlsplit(r['source']['url']).hostname for r in sources}),
         'effective_allowed_hosts':approved,'public_discovery_enabled':config.get('allow_public_discovery',False),
         'focused_source_views':[r['focus'] for r in sources if 'focus' in r],
         'sources':observations,'failures':failures,'search':search_report,'model_rounds':rounds,

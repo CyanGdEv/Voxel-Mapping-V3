@@ -37,7 +37,20 @@
       ],
       "planning_hosts": [
         "publicaccess.staffsmoorlands.gov.uk"
-      ]
+      ],
+      "aerial_context": {
+        "provider": "esri_world_imagery",
+        "bounds_wgs84": [
+          -1.8902110940526333,
+          52.98869298645517,
+          -1.887351969663943,
+          52.99041826972453
+        ],
+        "width": 1024,
+        "height": 1024,
+        "grid": 16,
+        "offline": false
+      }
     },
     {
       "site_id": "thorpe-park",
@@ -90,11 +103,18 @@
     "allow_public_discovery": true,
     "refresh": false,
     "limits": {
-      "max_sources": 2,
+      "max_sources": 8,
       "max_model_rounds": 2,
       "max_run_bytes": 32000000,
       "max_seconds": 90
-    }
+    },
+    "source_families": [
+      "knowledge",
+      "rides",
+      "archives",
+      "planning_data",
+      "geospatial"
+    ]
   },
   "max_research_jobs": 2
 }

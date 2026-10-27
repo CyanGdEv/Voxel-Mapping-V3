@@ -1,0 +1,16 @@
+{
+  "version": "aerial-material-research-v1",
+  "site_id": "wicker-man",
+  "site": "Alton Towers Wicker Man",
+  "provider": "bing_aerial",
+  "bounds_wgs84": [
+    -1.8902110940526333,
+    52.98869298645517,
+    -1.887351969663943,
+    52.99041826972453
+  ],
+  "width": 1024,
+  "height": 1024,
+  "grid": 16,
+  "offline": false
+}

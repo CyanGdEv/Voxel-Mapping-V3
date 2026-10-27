@@ -154,6 +154,9 @@ def _extract_content(data, content_type, source_url):
         return {'format':'html','title':title[:200],'text':text[:MAX_TEXT],
                 'text_truncated':len(text)>MAX_TEXT,'pages':None,'links':links,
                 'text_status':'html_text_only_no_script_execution'}
+    if content_type.split(';',1)[0].strip() in ('application/json','application/geo+json','application/ld+json'):
+        from .research_sources import extract_json
+        return extract_json(data,source_url)
     if content_type.startswith('text/plain'):
         text=data.decode('utf-8',errors='replace')
         return {'format':'text','title':source_url[:200],'text':text[:MAX_TEXT],
@@ -173,7 +176,7 @@ def _body_path(cache, receipt):
     sha=receipt.get('body_sha256')
     if not isinstance(sha,str) or not re.fullmatch('[0-9a-f]{64}',sha):
         raise ValueError('Pinned cached web bytes required')
-    if receipt.get('format') not in ('pdf','html','text','image'): raise ValueError('Known cached web format required')
+    if receipt.get('format') not in ('pdf','html','text','image','json'): raise ValueError('Known cached web format required')
     return cache/'objects'/(sha+('.pdf' if receipt['format']=='pdf' else '.bin'))
 
 
@@ -253,7 +256,7 @@ def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
             addresses=_public_dns(current,resolver)
             client.cookies.clear()
             response=client.get(current,stream=True,allow_redirects=False,auth=_NoOriginAuth(),
-                headers={'User-Agent':'VoxelMapperV3 evidence reader','Accept':'text/html, application/pdf, text/plain, image/png, image/jpeg, image/webp'},
+                headers={'User-Agent':'VoxelMapperV3 evidence reader','Accept':'text/html, application/pdf, text/plain, application/json, application/geo+json, image/png, image/jpeg, image/webp'},
                 timeout=(min(5,max(.1,deadline-time.monotonic())),min(15,max(.1,deadline-time.monotonic()))))
             try:
                 if response.status_code in (301,302,303,307,308):
