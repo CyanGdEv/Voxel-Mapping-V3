@@ -1,0 +1,35 @@
+{
+  "version": "pinned-study-source-acquisition-v1",
+  "sites": [
+    "denali-national-park"
+  ],
+  "sources": [
+    {
+      "file": "ak0139-sheet1.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0139/sheet/00001v.jpg",
+      "sha256": "7db9cd2ee68db8d688702806d5c533934fe11085e54415795a4a55b15af4ee7c",
+      "bytes": 88076,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/ak0139/"
+    },
+    {
+      "file": "ak0137-sheet1.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0137/sheet/00001v.jpg",
+      "sha256": "7f68745cdeafb65e801d0995037952172ea551a4d93fe011240065959e2b7032",
+      "bytes": 95019,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/ak0137/"
+    },
+    {
+      "file": "ak0128-sheet1.jpg",
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/ak/ak0100/ak0128/sheet/00001v.jpg",
+      "sha256": "126d9f691f4bde1fa382051bf069c9d4bf089ecd08fae8ce3d397126d604f2a9",
+      "bytes": 103601,
+      "format": "jpeg",
+      "usage": "reviewed_source_drawing",
+      "catalogue": "https://www.loc.gov/item/ak0128/"
+    }
+  ]
+}

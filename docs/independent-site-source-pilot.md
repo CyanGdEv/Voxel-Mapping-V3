@@ -83,6 +83,10 @@ and assess stronger existing visual features under the same site boundaries.
 Reserve a fresh untouched site before later model selection. Do not train on this
 Glen Echo holdout and continue calling it independent evaluation.
 
+The subsequent [Denali expansion](denali-study-expansion.md) adds three buildings
+on a third site, explicitly moves Glen Echo into development training, and
+compares small and pretrained-feature models with Denali reserved.
+
 ## Replay
 
 ```sh

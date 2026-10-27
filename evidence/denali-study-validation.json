@@ -1,0 +1,104 @@
+{
+  "version": "denali-study-expansion-validation-v1",
+  "review_sha256": "4a75ef0e94f8ab14eee5b82d5e45e8165ad9a860b61b4c542d57548bffda2495",
+  "dataset_id": "09ee1f9287414f9986d674c4e928c163fcefff8d8ee532b3de73cf463a1042cb",
+  "dataset_file_sha256": "222ed0bff3e248a38dd9b9dc1355e0803381341a576fb58cfa314a8e9170b145",
+  "training_records": 162,
+  "evaluation_records": 21,
+  "sites": 3,
+  "source_groups": 16,
+  "original_source_identities": 30,
+  "held_buildings": 3,
+  "majority_baseline_correct": 2,
+  "results": {
+    "crop": {
+      "correct": 10,
+      "records": 21,
+      "accuracy": 0.47619047619047616,
+      "macro_f1": 0.2571428571428572,
+      "by_building": {
+        "denali-comfort-station": {
+          "correct": 4,
+          "records": 10
+        },
+        "denali-electric-plant": {
+          "correct": 5,
+          "records": 7
+        },
+        "denali-administration": {
+          "correct": 1,
+          "records": 4
+        }
+      },
+      "building_balanced_accuracy": 0.45476190476190476
+    },
+    "transfer": {
+      "correct": 7,
+      "records": 21,
+      "accuracy": 0.3333333333333333,
+      "macro_f1": 0.24458874458874455,
+      "by_building": {
+        "denali-comfort-station": {
+          "correct": 3,
+          "records": 10
+        },
+        "denali-electric-plant": {
+          "correct": 4,
+          "records": 7
+        },
+        "denali-administration": {
+          "correct": 0,
+          "records": 4
+        }
+      },
+      "building_balanced_accuracy": 0.2904761904761905,
+      "mask_metrics": {
+        "binary_iou": {
+          "record_mean": 0.4535985335450368,
+          "eligible_records": 21,
+          "building_mean": 0.45479460500359953
+        },
+        "soft_iou": {
+          "record_mean": 0.37535500782169756,
+          "eligible_records": 21,
+          "building_mean": 0.3849752007608122
+        }
+      },
+      "template_mask_metrics": {
+        "binary_iou": {
+          "record_mean": 0.30183620473799194,
+          "eligible_records": 21,
+          "building_mean": 0.29592512504338847
+        },
+        "soft_iou": {
+          "record_mean": 0.25497656890353215,
+          "eligible_records": 21,
+          "building_mean": 0.2575717804802108
+        }
+      }
+    }
+  },
+  "original_sources_redownload_verified": true,
+  "raster_replay_byte_identical": true,
+  "saved_checkpoint_predictions_reproduced": true,
+  "training_only_normalization_verified": true,
+  "source_and_building_lineage_disjoint": true,
+  "review_frozen_before_predictions": true,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "tests_passed": 67,
+  "artifact_sha256": {
+    "crop-experiment/model.json": "64087fc7b586a392ee2caa8c1deec7b364c3a963eb0ffb1b7a387afa8388ab10",
+    "crop-experiment/report.json": "44be47b3825e4c5e80150d84251d37dbb9978ec32bfecbe1d27b1f590abd0960",
+    "transfer-experiment/model.json": "8674c6f788ef1048aa0f9f5a46d42ba3515317afa6513178625960de9ef96558",
+    "transfer-experiment/report.json": "a03d84c172be8c8e253fc396c6ee6559c21f6a4ddae6b3b8cb15498a1c8aaca7",
+    "transfer-experiment/encoder.onnx": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb"
+  },
+  "limitations": [
+    "Historical measured drawing pixels; not current physical verification.",
+    "Service JPEG sources, not high-resolution CAD or metric targets.",
+    "Glen Echo is now development training data and is no longer an untouched evaluation site.",
+    "Denali is now inspected evaluation evidence; no tuning on its results in this stage.",
+    "No new path/plaza examples or world generation delivered."
+  ]
+}
