@@ -34,7 +34,7 @@ def report(directory, min_groups=3):
     """Verify all dataset assets before counting source-local labels and groups."""
     if type(min_groups) is not int or not 2 <= min_groups <= MAX_MIN_GROUPS:
         raise ValueError('Choose an independent acquisition target of two to 64 groups')
-    manifest, rows, unused_features, manifest_pin = read_dataset(directory)
+    manifest, rows, unused_features, manifest_pin = read_dataset(directory, allow_reserved_evaluation=True)
     del unused_features  # Image features are never used by this diagnostic.
     classes = sorted({r['kind'] for r in rows})
     grouped = {g['group_id']: g for g in manifest['groups']}

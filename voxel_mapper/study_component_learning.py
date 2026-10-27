@@ -124,12 +124,17 @@ def _image(raw):
         raise ValueError('Valid bounded PNG source crop required') from error
 
 
-def read_dataset(directory, *, cancelled=lambda: False):
+def read_dataset(directory, *, cancelled=lambda: False, allow_reserved_evaluation=False):
     root = Path(directory).expanduser().resolve()
     manifest, raw = _json(root/'dataset.json', MAX_MANIFEST_BYTES)
     if (not isinstance(manifest, dict) or manifest.get('version') != DATASET_VERSION
             or manifest.get('id') != digest({k: v for k, v in manifest.items() if k != 'id'})):
         raise ValueError('Exact current retained-study dataset manifest required')
+    reservation = manifest.get('site_reservation')
+    if reservation is not None and not isinstance(reservation, dict):
+        raise ValueError('Site reservation must be an explicit object')
+    if reservation and reservation.get('evaluation_record_ids') and not allow_reserved_evaluation:
+        raise ValueError('Reserved evaluation sites require the site-isolated trainer; all-data training is blocked')
     records = manifest.get('records')
     if not isinstance(records, list) or not 1 <= len(records) <= MAX_RECORDS:
         raise ValueError('One to 2048 bounded study records required')
