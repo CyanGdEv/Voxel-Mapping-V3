@@ -20,7 +20,16 @@ def thicken(track,structures,terrain,head,samples,centre_keys,profile):
     core={k:m for k,m in track.items() if m in ['oak_slab','oak_slab_top','spruce_slab','spruce_slab_top']}
     if len(samples)!=len(centre_keys) or any(tuple(k) not in core for k in centre_keys):
         raise ValueError('Exact saved centre samples and slab deck required')
-    selected=set();transitions=[]
+    selected=set();transitions=[];edge_pairs=[]
+    by_xy={}
+    for key in core:by_xy.setdefault((key[0],key[2]),[]).append(key)
+    for key,m in core.items():
+        x,h,y=key
+        for xy in [(x+1,y),(x,y+1)]:
+            for other in by_xy.get(xy,[]):
+                rise=abs(surface_top(key,m)-surface_top(other,core[other]))
+                if profile['minimum_steep_rise_m']<=rise<=1.5:
+                    selected.update([key,other]);edge_pairs.append([list(key),list(other)])
     for i,(a,b) in enumerate(zip(centre_keys,centre_keys[1:])):
         rise=abs(surface_top(a,core[tuple(a)])-surface_top(b,core[tuple(b)]))
         if rise<profile['minimum_steep_rise_m']:continue
@@ -56,7 +65,7 @@ def thicken(track,structures,terrain,head,samples,centre_keys,profile):
         raise ValueError('Steep-deck construction moved a running surface')
     if changes.keys()&head:raise ValueError('Thick deck obstructs track headroom')
     if len(changes)>profile['max_changes']:raise ValueError('Steep deck write budget exceeded')
-    return new_track,new_core,changes,{'steep_transitions':transitions,'thickened_deck_cells':receipts,
+    return new_track,new_core,changes,{'steep_transitions':transitions,'steep_edge_pairs':edge_pairs,'thickened_deck_cells':receipts,
         'withheld_deck_cells':held,'write_count':len(changes),'running_heights_unchanged':True,
         'new_supports':0,'terrain_changed':False}
 

@@ -33,6 +33,15 @@ class SteepDeckTests(unittest.TestCase):
         self.assertEqual(changes,{})
         self.assertEqual(new,core)
 
+    def test_steep_outer_edge_is_detected_even_when_centre_is_level(self):
+        core,ground,samples,keys=self.fixture()
+        core[(1,10,0)]='spruce_slab_top'
+        # Centre stays on the same flat sample; only the lateral edge rises.
+        keys=[keys[0],keys[0]]
+        _,_,changes,r=world.thicken(core,core,ground,set(),samples,keys,self.profile)
+        self.assertIn((1,10,0),changes)
+        self.assertTrue(r['steep_edge_pairs'])
+
     def test_underdeck_fill_cannot_overwrite_ground_geometry_or_lower_headroom(self):
         core,ground,samples,keys=self.fixture(half=True)
         occupied={**core,(0,8,0):'stone_bricks'}

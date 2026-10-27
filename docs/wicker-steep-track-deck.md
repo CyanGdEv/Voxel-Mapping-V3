@@ -5,6 +5,8 @@ not resample the route, move running surfaces, excavate terrain or alter roofs.
 
 A one-metre rise between consecutive saved centre samples marks a steep step.
 The three-cell deck is thickened within approximately one metre of that step.
+Steep cardinal edges across the deck are checked separately, so a level centre
+sample cannot hide a steep outer-edge gap.
 Whole-height surfaces use matching oak or spruce full blocks instead of top
 slabs. A surface at a half-height retains its bottom slab and gains a top slab
 in the cell below. Those halves touch, giving one metre of wood with exactly
