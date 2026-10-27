@@ -67,6 +67,8 @@ on:
       - 'voxel_mapper/planning_wall_shell.py'
       - 'voxel_mapper/planning_station_preshow_world.py'
       - 'voxel_mapper/station_access.py'
+      - 'voxel_mapper/basement_alignment.py'
+      - 'voxel_mapper/data/wicker-basement-alignment.json'
       - 'voxel_mapper/data/wicker-station-preshow.json'
       - 'voxel_mapper/data/wicker-wall-shell.json'
       - 'voxel_mapper/data/wicker-building-access.json'
@@ -133,6 +135,7 @@ on:
       - 'tests/test_planning_wall_shell.py'
       - 'tests/test_planning_station_preshow_world.py'
       - 'tests/test_station_access.py'
+      - 'tests/test_basement_alignment.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -265,6 +268,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_planning_wall_shell.py' -v
           python -m unittest discover -s tests -p 'test_planning_station_preshow_world.py' -v
           python -m unittest discover -s tests -p 'test_station_access.py' -v
+          python -m unittest discover -s tests -p 'test_basement_alignment.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Conditional Wicker floor and grading preview failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }
