@@ -180,10 +180,54 @@ def build(route,groups,terrain,old,head,samples,keys,track,profile):
     # Resolve all curves globally: a diagonal from an earlier frame must not
     # occupy a later source upright. Reject an entire conflicting brace, not
     # individual voxels that would leave a broken diagonal.
-    support,plane_review=compose_planes(straight,diagonal_batches,caps)
+    if profile.get('support_style')=='reference':
+        support,plane_review=reference_members(straight,accepted)
+        links=[{**r,'separate_diagonals':0} for r in links]
+        for receipt in accepted:receipt['offset_brace_planes']=[]
+    else:
+        support,plane_review=compose_planes(straight,diagonal_batches,caps)
     if len(accepted)<8:raise ValueError('Insufficient grounded source frames')
     if len(support)>profile['max_added_blocks']:raise ValueError('Support budget exceeded')
-    return support,{'member_plane_validation':plane_review,'constructed_bents':accepted,'withheld_bents':held,'longitudinal_links':links,'withheld_links':held_links,'withheld_diagonal_members':brace_holds,'added_support_cells':len(support),'source_legs_constructed':sum(len(r['post_cells_xy']) for r in accepted),'style':'dense multi-row spruce uprights, oak horizontal members, separate nether-brick diagonal planes and oriented gate joints','engineering_dimensions_verified':False,'diagonals_are_voxel_stair_steps':True}
+    reference=profile.get('support_style')=='reference'
+    return support,{'member_plane_validation':plane_review,'constructed_bents':accepted,'withheld_bents':held,'longitudinal_links':links,'withheld_links':held_links,'withheld_diagonal_members':[] if reference else brace_holds,'added_support_cells':len(support),'source_legs_constructed':sum(len(r['post_cells_xy']) for r in accepted),'style':'reference frames: segmented spruce/nether-brick uprights, closed spruce gate crosspieces and flat oak/spruce trapdoor tiers' if reference else 'dense multi-row spruce uprights, oak horizontal members, separate nether-brick diagonal planes and oriented gate joints','engineering_dimensions_verified':False,'diagonals_are_voxel_stair_steps':not reference}
+
+
+def reference_members(straight,frames):
+    """Restyle only the reserved straight-member cells; no old X lattice remains.
+
+    Source feet and bearing ties are unchanged. Wooden/brick fence segments
+    separate the horizontal gate rails visually, as in the user's four views.
+    Trapdoor shelves alternate with gate tiers; top shelves meet the deck.
+    """
+    post_tops={};shelves={}
+    for f in frames:
+        beam=f['beam_height']
+        for (x,y),base in zip(f['post_cells_xy'],f['base_heights']):
+            for h in range(base,beam+1):post_tops[x,h,y]=max(beam,post_tops.get((x,h,y),beam))
+        a,b=f['post_cells_xy'][0],f['post_cells_xy'][-1]
+        for index,h in enumerate(reversed(f['crossmember_levels'])):
+            if index%2==0:
+                shelves.update({(x,h,y):'oak_trapdoor_top' if index==0 else 'spruce_trapdoor_top' for x,_,y in staircase_line((a[0],0,a[1]),(b[0],0,b[1]))})
+    result={}
+    for (x,h,y),material in straight.items():
+        k=(x,h,y)
+        if k in post_tops:
+            # Two wood cells at the head and foot; dark central sections do
+            # not auto-connect sideways to adjacent wooden fence sections.
+            top=post_tops[k]
+            below=(x,h-1,y) in post_tops and (x,h-2,y) in post_tops
+            result[k]='nether_brick_fence' if below and (top-h)%6 in (2,3,4) else 'spruce_fence'
+        elif k in shelves:
+            result[k]=shelves[k]
+        else:
+            nx=sum((x+d,h,y) in straight for d in [-1,1])
+            ny=sum((x,h,y+d) in straight for d in [-1,1])
+            result[k]='spruce_fence_gate_'+('north' if nx>=ny else 'east')
+    if result.keys()!=straight.keys():raise ValueError('Reference style changed reserved frame cells')
+    return result,{'straight_member_cells':len(straight),'diagonal_members_placed':0,
+        'diagonal_members_held_for_global_separation':0,'straight_diagonal_cell_overlap':0,
+        'replaced_lattice':True,'post_cells':len(post_tops),'flat_trapdoor_cells':sum('trapdoor' in m for m in result.values()),
+        'gate_crosspiece_cells':sum('gate' in m for m in result.values()),'reference_style_is_interpreted':True}
 
 
 def compose_planes(straight,diagonals,caps):

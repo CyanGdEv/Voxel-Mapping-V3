@@ -1,11 +1,36 @@
 """Outer-footing recovery and visibly separate diagonal-member planes."""
 import unittest
 from shapely.geometry import LineString,MultiLineString
-from voxel_mapper.dense_trestle import footing_groups,separated_brace,compose_planes,bearing_tie
+from voxel_mapper.dense_trestle import footing_groups,separated_brace,compose_planes,bearing_tie,reference_members
 from voxel_mapper import bedrock
 
 
 class DenseTrestleTests(unittest.TestCase):
+    def test_reference_replacement_preserves_feet_and_bearings_without_old_lattice(self):
+        straight={(x,h,0):'spruce_fence' for x in [0,4] for h in range(10,19)}
+        straight.update({(x,h,0):'oak_fence' for x in range(1,4) for h in [12,15,18]})
+        frames=[{'beam_height':18,'post_cells_xy':[[0,0],[4,0]],'base_heights':[10,10],'crossmember_levels':[12,15,18]}]
+        result,review=reference_members(straight,frames)
+        self.assertEqual(result.keys(),straight.keys())
+        self.assertEqual(result[0,10,0],'spruce_fence')
+        self.assertEqual(result[0,15,0],'nether_brick_fence')
+        self.assertEqual(result[0,18,0],'spruce_fence')
+        self.assertEqual(result[2,15,0],'spruce_fence_gate_north')
+        self.assertEqual(result[2,18,0],'oak_trapdoor_top')
+        self.assertEqual(result[2,12,0],'spruce_trapdoor_top')
+        self.assertEqual(review['diagonal_members_placed'],0)
+        for material in result.values():
+            self.assertIn(material,bedrock.ALLOWED_MATERIALS)
+            if 'trapdoor' in material:
+                native=bedrock.material_block(material)
+                self.assertEqual(str(native.properties['half']),'top')
+                self.assertEqual(str(native.properties['open']),'false')
+
+    def test_reference_gate_axis_rotates_with_the_frame(self):
+        straight={(0,10,y):'oak_fence' for y in range(5)}
+        result,_=reference_members(straight,[])
+        self.assertTrue(all(m=='spruce_fence_gate_east' for m in result.values()))
+
     def test_native_cross_lines_include_outer_footing_in_same_frame(self):
         route=LineString([(0,0),(20,0)])
         posts=[{'xy':[10,-1.5],'station_m':10,'symbol_family':'main_row'},

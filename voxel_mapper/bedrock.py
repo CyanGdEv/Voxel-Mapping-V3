@@ -40,6 +40,8 @@ FACING_FENCE_GATES={f'{wood}_fence_gate_{direction}' for wood in ('oak','spruce'
 ALLOWED_MATERIALS.update(FACING_FENCE_GATES)
 WALL_TRAPDOORS={f'{wood}_trapdoor_{direction}' for wood in ('oak','spruce','dark_oak') for direction in ('north','east','south','west')}
 ALLOWED_MATERIALS.update(WALL_TRAPDOORS)
+TOP_TRAPDOORS={f'{wood}_trapdoor_top' for wood in ('oak','spruce')}
+ALLOWED_MATERIALS.update(TOP_TRAPDOORS)
 DETAIL_MATERIALS.update(('birch_fence','nether_brick_fence'))
 ALLOWED_MATERIALS.update(('birch_fence','nether_brick_fence'))
 FOLIAGE_WOODS = ('oak','spruce','birch','dark_oak')
@@ -61,6 +63,8 @@ for m in ('iron_bars','green_stained_glass_pane'):
 
 
 def material_block(material):
+    if material in TOP_TRAPDOORS:
+        return Block('universal_minecraft','trapdoor',{'material':StringTag(material.removesuffix('_trapdoor_top')),'facing':StringTag('north'),'open':StringTag('false'),'powered':StringTag('false'),'half':StringTag('top')})
     if material in FACING_FENCE_GATES:
         wood,direction=material.rsplit('_fence_gate_',1)
         return Block('universal_minecraft','fence_gate',{'material':StringTag(wood),'facing':StringTag(direction),'open':StringTag('false'),'powered':StringTag('false'),'in_wall':StringTag('false')})
