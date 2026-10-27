@@ -1,0 +1,68 @@
+{
+  "version": "multi-park-ride-training-validation-v1",
+  "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+  "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+  "records": 96,
+  "physical_rides": 3,
+  "sites": 3,
+  "ride_types": 3,
+  "source_groups": 3,
+  "evaluation": "whole-source/ride-disjoint development cross-validation; each current fold also site-disjoint",
+  "folds": [
+    {
+      "held_sites": [
+        "thorpe-park"
+      ],
+      "training_records": 82,
+      "held_records": 14,
+      "parameters_reproduced": true,
+      "predictions_reproduced": true
+    },
+    {
+      "held_sites": [
+        "alton-towers"
+      ],
+      "training_records": 24,
+      "held_records": 72,
+      "parameters_reproduced": true,
+      "predictions_reproduced": true
+    },
+    {
+      "held_sites": [
+        "glen-echo-park"
+      ],
+      "training_records": 86,
+      "held_records": 10,
+      "parameters_reproduced": true,
+      "predictions_reproduced": true
+    }
+  ],
+  "class_correct": 7,
+  "class_records": 96,
+  "class_accuracy": 0.07291666666666667,
+  "known_class_correct": 7,
+  "known_class_records": 18,
+  "classes_absent_from_fold_training_records": 78,
+  "mean_soft_mask_iou": 0.024103314548328387,
+  "template_soft_mask_iou": 0.02627407077804539,
+  "mean_binary_mask_iou": 0.0009056224693431168,
+  "equal_ride_class_accuracy": 0.16666666666666666,
+  "final_checkpoint_fit": "all 96 reviewed source pairs; no untouched final-checkpoint test",
+  "saved_final_weights_refit_identical": true,
+  "all_fold_parameters_and_predictions_reproduced": true,
+  "encoder_weights_updated": false,
+  "encoder_sha256": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb",
+  "model_file_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+  "report_file_sha256": "577dad342571fc7cbe1d13cded021887ad780e2816ec697259d445273877708f",
+  "reviews_frozen_before_predictions": true,
+  "tests_passed": 64,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "limitations": [
+    "Only three rides, one per type; no broad ride reconstruction claim.",
+    "Most classes lack repeated ride coverage.",
+    "Thin source traces are poorly recovered by the 16x16 mask decoder.",
+    "Proposed reduced Thorpe drawings and historical carousel axonometric are not as-built metric targets.",
+    "Water rides, drop towers, other flat rides and transport rides have not been trained."
+  ]
+}

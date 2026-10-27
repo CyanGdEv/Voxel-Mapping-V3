@@ -1,0 +1,842 @@
+{
+  "version": "ride-source-review-v1",
+  "coordinate_frame": "pdf_native_points_y_up",
+  "ride_id": "wicker-man",
+  "site_id": "alton-towers",
+  "review_basis": "Retained reviewed Wicker Man source markings; native source selections reviewed as drawing components only.",
+  "source": {
+    "document_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+    "page": 1,
+    "state": "proposed",
+    "render_width_pixels": 3200,
+    "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176955",
+    "rights_advisory": "Public planning application reference drawing 373/95/7 B. Original architect/applicant rights retained; public access is not a blanket reuse license. Local research review pairs only."
+  },
+  "selection_policy": "24 contiguous original centreline spans covering every original edge; 24 original footing-mark polygons sampled by stable native polygon index; 24 original cross-lines from retained native footing groups. No generated support member, closure, track height or interpolated control is a target.",
+  "source_inventory": {
+    "source_vertices": 428,
+    "source_footprint_candidates": 877,
+    "source_crossline_candidates": 502,
+    "source_route_length_nominal_m": 773.5678357910214,
+    "footing_symbol_size_is_physical_size": false
+  },
+  "records": [
+    {
+      "id": "wicker-ride-centreline_span-0",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 0,
+        "end_vertex": 17
+      },
+      "geometry_sha256": "85d52229103d7c89b526c91a590808dba00ccbab80febbe3e79461c1e5d9d873",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-1",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 17,
+        "end_vertex": 35
+      },
+      "geometry_sha256": "b545ef8cc6a21d6ca7ef44aff692a9455ce1e11389efbd5ef4730d6c418f8187",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-2",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 35,
+        "end_vertex": 53
+      },
+      "geometry_sha256": "c7aca6f699616bb5ebf2f3c84be6c0a521e37be459a34addf9a38312a800a29d",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-3",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 53,
+        "end_vertex": 71
+      },
+      "geometry_sha256": "ad41cb499e06e2e51c8399837e77f9ea29dd2d2a78eb80f84d0447fdf64d4f73",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-4",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 71,
+        "end_vertex": 88
+      },
+      "geometry_sha256": "cd6e6d8a6e92d46277a5613884e60c087b8840b0ad151b3287692fca1a2fdcc3",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-5",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 88,
+        "end_vertex": 106
+      },
+      "geometry_sha256": "98d40073ef6acec862e1feb36549d490975246cf19215c266ef595b5d6f173b6",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-6",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 106,
+        "end_vertex": 124
+      },
+      "geometry_sha256": "9fa858250199bb47cca2c64322181036fc5ae2c26d9e5a4ca70f99b5c9a88a6e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-7",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 124,
+        "end_vertex": 142
+      },
+      "geometry_sha256": "dd297bedd10f91a2cb72f2aecce7f5fd71e5a915b1b8ccc8f734d9ee752778fb",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-8",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 142,
+        "end_vertex": 160
+      },
+      "geometry_sha256": "53ab11be6e4a0d1e22e37c72709e8cae548375c3b617236e087dd1c57d950efa",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-9",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 160,
+        "end_vertex": 177
+      },
+      "geometry_sha256": "7ef9f07053ee1c4c0a305318d903f200567cb7a7d28090a0b7ccb477e865fe06",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-10",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 177,
+        "end_vertex": 195
+      },
+      "geometry_sha256": "810b60e339a71349d2a3989edd7656b7539ad966cc468c1fbee74f91924a55eb",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-11",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 195,
+        "end_vertex": 213
+      },
+      "geometry_sha256": "1a4ba0c5e6f1d926db3e453e26028f555eb81b42111a453763ae855f76250a28",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-12",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 213,
+        "end_vertex": 231
+      },
+      "geometry_sha256": "4d0d06b660868bcbbd2128332c157048e712da1a7f6fb85a854a24e51b1a8d97",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-13",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 231,
+        "end_vertex": 249
+      },
+      "geometry_sha256": "77be8b027fafc7fb06061cc1576c1dfc982ed7dfb1dca55774e668664873d86e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-14",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 249,
+        "end_vertex": 266
+      },
+      "geometry_sha256": "b57af7540960e667b3c09e28dc44c1c7347a39ea9ce16322e2c19d84d5af4490",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-15",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 266,
+        "end_vertex": 284
+      },
+      "geometry_sha256": "add7a377ed3aa7d11d3b7c03143b86c65ed88f1611ae6f6bee787b1e77e8a499",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-16",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 284,
+        "end_vertex": 302
+      },
+      "geometry_sha256": "8bfd3f81b2db94af356df3ce9b75a640fb6e735ca92dac3370e362ee6e11e7d8",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-17",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 302,
+        "end_vertex": 320
+      },
+      "geometry_sha256": "72a4a9cc90036dfb54fa90da6f709476a4ed0890bf02a7800ba164b6012b4d4f",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-18",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 320,
+        "end_vertex": 338
+      },
+      "geometry_sha256": "3a0990e2e81d5016e4395724b5fbcc7905a1e2e49bcc7f4b2ece9af1c62b1cd7",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-19",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 338,
+        "end_vertex": 355
+      },
+      "geometry_sha256": "b80a77b4894816e04bd8aee42aad262c016e8435f48b2288b169d6139bc6c202",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-20",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 355,
+        "end_vertex": 373
+      },
+      "geometry_sha256": "9b96b86386c41efca73997e158a1c08a9fdbe78c29876c43ff2b805f43878129",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-21",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 373,
+        "end_vertex": 391
+      },
+      "geometry_sha256": "290ae448e04dc630efc3dffe8b8d7ca54b7c4e9733e141b1300d12e64d93eb05",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-22",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 391,
+        "end_vertex": 409
+      },
+      "geometry_sha256": "8a17b517bef538104d02dddc15ba19bd9920a39df8cfafd65938b91bf3afc111",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-centreline_span-23",
+      "selector": {
+        "type": "centreline_span",
+        "start_vertex": 409,
+        "end_vertex": 427
+      },
+      "geometry_sha256": "87f661406b8935769b149e725fca3b38711c9f22a7ca4395565a6f084aea21e2",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-24",
+      "selector": {
+        "type": "support_symbol",
+        "index": 18
+      },
+      "geometry_sha256": "96332a03d8b82d638e03c9db6d3176f29990591caf2f91071250a9305646e734",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-25",
+      "selector": {
+        "type": "support_symbol",
+        "index": 59
+      },
+      "geometry_sha256": "57fce4ca94d741616d0ba6ae5f7aaeee0792263739eb338434f2d0bd02424000",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-26",
+      "selector": {
+        "type": "support_symbol",
+        "index": 123
+      },
+      "geometry_sha256": "a9fa1055e6b06c3fe448b8cdcd6ea0554e5f3368927289266290ac8b29147c65",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-27",
+      "selector": {
+        "type": "support_symbol",
+        "index": 163
+      },
+      "geometry_sha256": "08d13f43797717817ef3d67371d769d6ee2fd3a06628b1a21467ca95ab386ffa",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-28",
+      "selector": {
+        "type": "support_symbol",
+        "index": 205
+      },
+      "geometry_sha256": "37d4b3facbfd421cd9e958c14a2f531796316a46077e90514b8c5770f182e8ba",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-29",
+      "selector": {
+        "type": "support_symbol",
+        "index": 272
+      },
+      "geometry_sha256": "d778bff11357f1ef8d6516930d92a60fdd4cb7eee88c9c4e7e299aa0cb677f3e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-30",
+      "selector": {
+        "type": "support_symbol",
+        "index": 310
+      },
+      "geometry_sha256": "6690c069e3cb49cd0386b10b542545849dd782628140960c85b866b9da03d2c8",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-31",
+      "selector": {
+        "type": "support_symbol",
+        "index": 350
+      },
+      "geometry_sha256": "b36a813fbdda01970520539eb7d09121323c03f5f6b7dbc8ce4576e79826d1f8",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-32",
+      "selector": {
+        "type": "support_symbol",
+        "index": 390
+      },
+      "geometry_sha256": "bdad452a25a3feeca2a70c9a9f532da4a0e403040b42112ee5814c8437ff9949",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-33",
+      "selector": {
+        "type": "support_symbol",
+        "index": 431
+      },
+      "geometry_sha256": "b1c5f54b7c416ae9a2ac97f0597af06ec239a8d7ac3fa2d8453d0835fad2f126",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-34",
+      "selector": {
+        "type": "support_symbol",
+        "index": 470
+      },
+      "geometry_sha256": "d8f25cddddcb26b4bc52ada5593f0628899c33bf1af350e203b3c25f35e2dc9e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-35",
+      "selector": {
+        "type": "support_symbol",
+        "index": 511
+      },
+      "geometry_sha256": "4a7302b5abe4dc8e85a885511690fc8da927e050e4e69ec4dceaf8cdf8b7ef1d",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-36",
+      "selector": {
+        "type": "support_symbol",
+        "index": 550
+      },
+      "geometry_sha256": "891c8435879ed26e21aad3adc376baede89ae316ec663d9f179c3253ffbb3fcb",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-37",
+      "selector": {
+        "type": "support_symbol",
+        "index": 598
+      },
+      "geometry_sha256": "40e76080f7fcafc4699fc939c0bf5d86543e4cca28a40f7560a7c710b569469a",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-38",
+      "selector": {
+        "type": "support_symbol",
+        "index": 649
+      },
+      "geometry_sha256": "3eed5da5ced2f19aa50a0ea9b37df5b2343a97677507c8381537245425a5521a",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-39",
+      "selector": {
+        "type": "support_symbol",
+        "index": 689
+      },
+      "geometry_sha256": "3b71af3c5b23c32b86d83b5f2848c6e9d9bbd97ee48ed24ab1c8f3222a267a6e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-40",
+      "selector": {
+        "type": "support_symbol",
+        "index": 727
+      },
+      "geometry_sha256": "b13253a8600bb796f5bc7c82ea7e8ec2f50ea0254f05de1aa83bb1f1cf8a43ab",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-41",
+      "selector": {
+        "type": "support_symbol",
+        "index": 766
+      },
+      "geometry_sha256": "3a417fe92ee74150089cb8612f29c6b1155ccf4a202cb144b95f11abac533066",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-42",
+      "selector": {
+        "type": "support_symbol",
+        "index": 806
+      },
+      "geometry_sha256": "75234647751555f7611806be6e66ff4e39d42ad8c4c419d55698480f30c63746",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-43",
+      "selector": {
+        "type": "support_symbol",
+        "index": 848
+      },
+      "geometry_sha256": "1e3195fdf35b59b4e25996a093e785200277abcbd29a849f8fd662f12dc6124f",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-44",
+      "selector": {
+        "type": "support_symbol",
+        "index": 892
+      },
+      "geometry_sha256": "557ce49dc8f4366e41f21ce595446797d94e9246e765d88db8e4ae180af080cb",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-45",
+      "selector": {
+        "type": "support_symbol",
+        "index": 931
+      },
+      "geometry_sha256": "20db59628c72764318d22c8c3fdf14bf06e10e492874990db6e9acef9fe12e78",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-46",
+      "selector": {
+        "type": "support_symbol",
+        "index": 970
+      },
+      "geometry_sha256": "2c0f08a0027065ffacfe68b18b3fdc1bfa679b56b45a3f3287642dffd14b4975",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_symbol-47",
+      "selector": {
+        "type": "support_symbol",
+        "index": 1011
+      },
+      "geometry_sha256": "86fdefc1f423a3577637464fbf9b9fdd6a56b345ece07cfc9b75c2f32fe25df6",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-48",
+      "selector": {
+        "type": "support_line",
+        "index": 823
+      },
+      "geometry_sha256": "7c19a467fef1e112da17e2ad1a859c056eedf66b1eb8b4d2120bd7db0007298f",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-49",
+      "selector": {
+        "type": "support_line",
+        "index": 1702
+      },
+      "geometry_sha256": "cabc80d4b91bc6670392c1e00ce9b172b1198b70f1e258590e35a63cad83c038",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-50",
+      "selector": {
+        "type": "support_line",
+        "index": 1736
+      },
+      "geometry_sha256": "c766dd05bf5d56cf1ad84668302b1d01e6071314cf390545c3ef8029c9fb6325",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-51",
+      "selector": {
+        "type": "support_line",
+        "index": 1775
+      },
+      "geometry_sha256": "419a7dec1704ca79238573325fc4000a25f0cc2bea72890358b523b89ece129d",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-52",
+      "selector": {
+        "type": "support_line",
+        "index": 1800
+      },
+      "geometry_sha256": "a08c67cbcce24ba675ee7bd7825f5bfaeae2eec5b09f39152d673e7afcfeccbd",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-53",
+      "selector": {
+        "type": "support_line",
+        "index": 1847
+      },
+      "geometry_sha256": "3cba450cea6001267792f8c927c7d8f2727b4d873c45f8621c51aed7b0c7ecca",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-54",
+      "selector": {
+        "type": "support_line",
+        "index": 1874
+      },
+      "geometry_sha256": "939e2f6bc983f9cf2a992f8a9d1a8507755ddc274ebadad18047d73074f7b115",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-55",
+      "selector": {
+        "type": "support_line",
+        "index": 1903
+      },
+      "geometry_sha256": "166bb12860319212c8c0eaf7f619e9f748c86b7e5340f6164b37f0dea774bf07",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-56",
+      "selector": {
+        "type": "support_line",
+        "index": 1952
+      },
+      "geometry_sha256": "499d5da68d76b131c45375e61a1c9dc336f53aa4ed88934fccc513b2e9a7c129",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-57",
+      "selector": {
+        "type": "support_line",
+        "index": 71314
+      },
+      "geometry_sha256": "22f7bff98eafc1b107020092848af2de7281a67f8fd2daad5fc2a355d8458ea7",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-58",
+      "selector": {
+        "type": "support_line",
+        "index": 71338
+      },
+      "geometry_sha256": "b84f75ceac050ddc01c0f1da8921dde64caab1517ac8bf1bee90ecb780822740",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-59",
+      "selector": {
+        "type": "support_line",
+        "index": 71364
+      },
+      "geometry_sha256": "473744a9741e675601b03de43a8cbb7b40d03c951267293378db17a49dd2d9e3",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-60",
+      "selector": {
+        "type": "support_line",
+        "index": 71395
+      },
+      "geometry_sha256": "9097ac569ef9ffa40bfa785ec3af5d066c0da19cfd32af0ff5b572e38d74ee74",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-61",
+      "selector": {
+        "type": "support_line",
+        "index": 71423
+      },
+      "geometry_sha256": "31e1dcc7ecde92fff499d11ff5376b05d806cc52ddac0be64d7c553907816008",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-62",
+      "selector": {
+        "type": "support_line",
+        "index": 71444
+      },
+      "geometry_sha256": "127cc34bc936209ff5436f2184a3e84694cf857ed47e4b8e8271d11c999f5030",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-63",
+      "selector": {
+        "type": "support_line",
+        "index": 71471
+      },
+      "geometry_sha256": "532eb461e4d5284f0f7cdee0a9c87ed5aac378f100f72f397a63167477cbe5f2",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-64",
+      "selector": {
+        "type": "support_line",
+        "index": 71505
+      },
+      "geometry_sha256": "27fcedf30c4e32dbbbd60529ef43b95150e1d544d8d49531b56725a129a3f61f",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-65",
+      "selector": {
+        "type": "support_line",
+        "index": 71540
+      },
+      "geometry_sha256": "356ec4ad889b77fb57c8b0673ad4b6830568b0ef5354d7933ac0e1eafa4842a0",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-66",
+      "selector": {
+        "type": "support_line",
+        "index": 71564
+      },
+      "geometry_sha256": "ff0289f8574fa16944230b4c0e241ecfbd022185ce3b945ab45aeca3d8fefc51",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-67",
+      "selector": {
+        "type": "support_line",
+        "index": 71589
+      },
+      "geometry_sha256": "58591f8a5d1d7e3e736f4b677cd2e813921c28099731dfe33dd60ac1c97b4f04",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-68",
+      "selector": {
+        "type": "support_line",
+        "index": 71620
+      },
+      "geometry_sha256": "819edb59f199ca9fa50389af1b894ca67ac93f5f56f206feb98b3c4e9a7596c7",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-69",
+      "selector": {
+        "type": "support_line",
+        "index": 71655
+      },
+      "geometry_sha256": "09031684a0f84751fa4a37463a3989f4b089d1d117bc11cc2148673f8b93a82b",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-70",
+      "selector": {
+        "type": "support_line",
+        "index": 71680
+      },
+      "geometry_sha256": "a06c46abb26f182d45dae53f01c60478fe03eec3dc3b0247ea1a747c2708385e",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    },
+    {
+      "id": "wicker-ride-support_line-71",
+      "selector": {
+        "type": "support_line",
+        "index": 71709
+      },
+      "geometry_sha256": "9bd6715f9721b30a70b380a9156737546e5214e1284adbf2057763288783d558",
+      "review_status": "reviewed_source_selection",
+      "trace_uncertainty_pdf_points": 1.0,
+      "physical_geometry_verified": false
+    }
+  ]
+}

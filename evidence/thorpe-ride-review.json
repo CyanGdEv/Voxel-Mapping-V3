@@ -1,0 +1,637 @@
+{
+  "version": "ride-planning-pdf-review-v1",
+  "ride_id": "thorpe-ru220374",
+  "ride_type": "steel_coaster",
+  "site_id": "thorpe-park",
+  "source_url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10",
+  "rights_advisory": "Official public planning pack; original applicant/architect rights retained. Local research component tracing, not a blanket open reuse license.",
+  "scope": "Reduced proposed plans/elevations, not precise CAD dimensions or current as-built geometry. Visible source traces only; no unseen structural connections.",
+  "records": [
+    {
+      "id": "thorpe-structure-0",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            124.16666666666667,
+            230.83333333333334
+          ],
+          [
+            124.16666666666667,
+            270.83333333333337
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-1",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            181.66666666666669,
+            219.16666666666669
+          ],
+          [
+            179.16666666666669,
+            271.6666666666667
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-2",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            222.5,
+            239.16666666666669
+          ],
+          [
+            221.66666666666669,
+            271.6666666666667
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-3",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            447.5,
+            211.66666666666669
+          ],
+          [
+            456.6666666666667,
+            270.83333333333337
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-4",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            419.1666666666667,
+            235.0
+          ],
+          [
+            418.33333333333337,
+            270.83333333333337
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-5",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            396.6666666666667,
+            317.5
+          ],
+          [
+            398.33333333333337,
+            372.5
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-6",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            419.1666666666667,
+            330.83333333333337
+          ],
+          [
+            418.33333333333337,
+            374.1666666666667
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-structure-7",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_structure_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            155.0,
+            346.6666666666667
+          ],
+          [
+            153.33333333333334,
+            373.33333333333337
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-track-profile-0",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_profile",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            141.66666666666669,
+            265.83333333333337
+          ],
+          [
+            153.33333333333334,
+            253.33333333333334
+          ],
+          [
+            165.0,
+            238.33333333333334
+          ],
+          [
+            175.0,
+            215.83333333333334
+          ],
+          [
+            181.66666666666669,
+            206.66666666666669
+          ],
+          [
+            186.66666666666669,
+            204.16666666666669
+          ],
+          [
+            192.5,
+            205.83333333333334
+          ],
+          [
+            201.66666666666669,
+            216.66666666666669
+          ],
+          [
+            210.83333333333334,
+            235.0
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-track-profile-1",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_profile",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            204.16666666666669,
+            239.16666666666669
+          ],
+          [
+            217.5,
+            230.0
+          ],
+          [
+            226.66666666666669,
+            227.5
+          ],
+          [
+            235.83333333333334,
+            230.0
+          ],
+          [
+            245.0,
+            240.83333333333334
+          ],
+          [
+            255.83333333333334,
+            260.83333333333337
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-track-profile-2",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_profile",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            125.0,
+            372.5
+          ],
+          [
+            132.5,
+            352.5
+          ],
+          [
+            146.66666666666669,
+            337.5
+          ],
+          [
+            160.0,
+            331.6666666666667
+          ],
+          [
+            171.66666666666669,
+            332.5
+          ],
+          [
+            185.83333333333334,
+            340.0
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-track-profile-3",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_profile",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 80,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            405.83333333333337,
+            269.1666666666667
+          ],
+          [
+            417.5,
+            240.0
+          ],
+          [
+            424.1666666666667,
+            226.66666666666669
+          ],
+          [
+            429.1666666666667,
+            225.0
+          ],
+          [
+            435.0,
+            230.0
+          ],
+          [
+            440.0,
+            242.5
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-layout-0",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_layout_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 79,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            379.1666666666667,
+            325.83333333333337
+          ],
+          [
+            411.6666666666667,
+            327.5
+          ],
+          [
+            433.33333333333337,
+            330.83333333333337
+          ],
+          [
+            445.83333333333337,
+            336.6666666666667
+          ],
+          [
+            452.5,
+            346.6666666666667
+          ],
+          [
+            450.83333333333337,
+            357.5
+          ],
+          [
+            440.83333333333337,
+            366.6666666666667
+          ],
+          [
+            427.5,
+            369.1666666666667
+          ],
+          [
+            415.83333333333337,
+            364.1666666666667
+          ],
+          [
+            405.0,
+            351.6666666666667
+          ],
+          [
+            395.0,
+            336.6666666666667
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    },
+    {
+      "id": "thorpe-layout-1",
+      "building_id": "ride-thorpe-ru220374",
+      "kind": "ride_track_layout_trace",
+      "ride_id": "thorpe-ru220374",
+      "ride_type": "steel_coaster",
+      "site_id": "thorpe-park",
+      "target_role": "visible_source_trace_only",
+      "evidence_level": "reviewed_source_trace",
+      "source_state": "proposed",
+      "trace_uncertainty_pdf_points": 2.0,
+      "source": {
+        "document_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "page": 79,
+        "coordinate_frame": "page_points",
+        "render_width_pixels": 2200
+      },
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            273.33333333333337,
+            330.83333333333337
+          ],
+          [
+            298.33333333333337,
+            352.5
+          ],
+          [
+            324.1666666666667,
+            378.33333333333337
+          ],
+          [
+            345.0,
+            395.83333333333337
+          ],
+          [
+            362.5,
+            399.1666666666667
+          ],
+          [
+            378.33333333333337,
+            394.1666666666667
+          ],
+          [
+            393.33333333333337,
+            383.33333333333337
+          ],
+          [
+            400.0,
+            370.0
+          ]
+        ]
+      },
+      "assumptions": [
+        "Assistant source-pixel review of reduced official planning committee drawing. Trace uncertainty 2 PDF points; no metric 3D or as-built inference.",
+        "Projected track outline/column edge only; overlapping or hidden structure is unresolved."
+      ]
+    }
+  ]
+}

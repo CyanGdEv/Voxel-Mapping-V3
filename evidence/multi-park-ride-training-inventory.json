@@ -1,0 +1,83 @@
+{
+  "version": "multi-park-ride-training-inventory-v1",
+  "rides": [
+    {
+      "ride_id": "wicker-man",
+      "site_id": "alton-towers",
+      "ride_type": "wooden_coaster",
+      "examples": 72,
+      "role": "plan centreline/footing symbols/cross-lines"
+    },
+    {
+      "ride_id": "glen-echo-carousel",
+      "site_id": "glen-echo-park",
+      "ride_type": "carousel",
+      "examples": 10,
+      "role": "projected mechanical structural-member edges"
+    },
+    {
+      "ride_id": "thorpe-ru220374",
+      "site_id": "thorpe-park",
+      "ride_type": "steel_coaster",
+      "examples": 14,
+      "role": "proposed elevation member/track-profile and partial layout traces"
+    }
+  ],
+  "source_review_sha256": {
+    "evidence/wicker-ride-source-review.json": "f4db37a45836255662065e8c441ed9b65a3cf12ca7848b0c17d1c9fcf1bdeb99",
+    "evidence/glen-echo-ride-review.json": "f9b1aa264792765f20caf23aa89010f200717775e461a01b06fc7415275cc02d",
+    "evidence/thorpe-ride-review.json": "eafa172db61a460d55051cc9b216c80f0d1c98b0472a0f9cf3fa1f5756d6591d"
+  },
+  "classes": {
+    "ride_structure_trace": 18,
+    "ride_support_crossline": 24,
+    "ride_support_footprint": 24,
+    "ride_track_centreline": 24,
+    "ride_track_layout_trace": 2,
+    "ride_track_profile": 4
+  },
+  "next_source_requests": [
+    {
+      "ride_type": "water_ride",
+      "status": "not_acquired_not_trained",
+      "required": [
+        "Original plan/elevation or measured engineering drawing",
+        "Reviewed same-task components and physical ride identity",
+        "Source rights/revision/state and datum retained",
+        "Separate whole ride/site reserved before fitting"
+      ]
+    },
+    {
+      "ride_type": "drop_tower",
+      "status": "not_acquired_not_trained",
+      "required": [
+        "Original plan/elevation or measured engineering drawing",
+        "Reviewed same-task components and physical ride identity",
+        "Source rights/revision/state and datum retained",
+        "Separate whole ride/site reserved before fitting"
+      ]
+    },
+    {
+      "ride_type": "swing_or_spinning_flat_ride",
+      "status": "not_acquired_not_trained",
+      "required": [
+        "Original plan/elevation or measured engineering drawing",
+        "Reviewed same-task components and physical ride identity",
+        "Source rights/revision/state and datum retained",
+        "Separate whole ride/site reserved before fitting"
+      ]
+    },
+    {
+      "ride_type": "transport_ride",
+      "status": "not_acquired_not_trained",
+      "required": [
+        "Original plan/elevation or measured engineering drawing",
+        "Reviewed same-task components and physical ride identity",
+        "Source rights/revision/state and datum retained",
+        "Separate whole ride/site reserved before fitting"
+      ]
+    }
+  ],
+  "class_coverage_warning": "Five of six classes occur on one ride/source group; only projected structure traces occur on two rides. Different ride types alone do not supply repeated supervision.",
+  "training_scope": "Supplied 2D source crops and trace masks; no full-page discovery, verified 3D construction or material-style learning."
+}

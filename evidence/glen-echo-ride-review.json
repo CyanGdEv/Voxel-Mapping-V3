@@ -1,0 +1,256 @@
+{
+  "version": "reviewed-raster-study-v1",
+  "site_id": "glen-echo-park",
+  "ride_id": "glen-echo-carousel",
+  "ride_type": "carousel",
+  "scope": "Projected visible mechanical support/member traces only, not 3D dimensions or verified hidden connections. One physical ride/group.",
+  "sources": [
+    {
+      "id": "mechanism-sheet6",
+      "file": "glen-echo-sheet6.jpg",
+      "sha256": "b92e093c86ab1bd824be2e2729bde60ee6830cc20a48d4a4c451210f07657fc9",
+      "size_pixels": [
+        1024,
+        834
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00006v.jpg",
+      "sheet": 6,
+      "survey_epoch": "1994",
+      "source_state": "existing",
+      "rights_advisory": "LOC HABS MD-1080-A government field-team measured drawing: no known restrictions on Government-made images; copied third-party images may differ.",
+      "catalogue_url": "https://www.loc.gov/item/md1366/"
+    }
+  ],
+  "records": [
+    {
+      "id": "glen-carousel-member-0",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            250,
+            134
+          ],
+          [
+            248,
+            297
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-1",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            274,
+            134
+          ],
+          [
+            276,
+            294
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-2",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            241,
+            392
+          ],
+          [
+            195,
+            570
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-3",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            297,
+            389
+          ],
+          [
+            369,
+            574
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-4",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            185,
+            444
+          ],
+          [
+            134,
+            573
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-5",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            304,
+            452
+          ],
+          [
+            355,
+            563
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-6",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            303,
+            332
+          ],
+          [
+            490,
+            365
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-7",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            310,
+            304
+          ],
+          [
+            500,
+            223
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-8",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            294,
+            320
+          ],
+          [
+            451,
+            262
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-carousel-member-9",
+      "building_id": "ride-glen-echo-carousel",
+      "source_id": "mechanism-sheet6",
+      "kind": "ride_structure_trace",
+      "target_role": "visible_projected_member_edge",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of original HABS axonometric mechanical drawing. Projected 2D member edge only; no metric or complete ride claim.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            329,
+            386
+          ],
+          [
+            442,
+            441
+          ]
+        ]
+      }
+    }
+  ]
+}
