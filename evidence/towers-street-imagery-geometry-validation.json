@@ -1,0 +1,354 @@
+{
+  "version": "towers-street-imagery-geometry-validation-v1",
+  "date": "2026-10-27",
+  "tests": {
+    "count": 66,
+    "result": "passed",
+    "log_sha256": "151599571fb4cb8024ebd7bdd145b6e7ef1dae810ad8d62a05e0b44a4bc6fba0",
+    "includes": [
+      "pixel roof/water region extraction and pond hole",
+      "protected plan area zero overlap",
+      "unmapped classes left unclassified",
+      "covered queues not treated as RGB-visible",
+      "nodata/requested-AOI clipping/cancellation",
+      "coverage source pin",
+      "actual desktop subprocess/path resolution/memory",
+      "research cycle checkpoint reuse",
+      "existing imagery/research/material/OSM checks"
+    ]
+  },
+  "actual_towers_street_offline_replay": {
+    "candidate_counts": {
+      "building": 32,
+      "paving": 5,
+      "unclassified_hard_surface": 20,
+      "water": 1
+    },
+    "candidate_file_sha256": "adc575f8a86f507f5a9535a08fa0b9bfaadb4bf7da7c7ccccf7c47cdfd9fc714",
+    "deferred_candidates": 0,
+    "extraction_options": {
+      "colour_distance": 18,
+      "max_features": 256,
+      "max_growth_m": 3,
+      "min_area_m2": 6,
+      "simplify_pixels": 0.5
+    },
+    "geometry_verified": false,
+    "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+    "imagery": {
+      "attribution": "Esri World Imagery and its imagery providers",
+      "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+      "capture_date": null,
+      "capture_date_status": "not_supplied_by_export",
+      "extent_epsg3857": [
+        -210873.6752289804,
+        6980981.969853664,
+        -210448.33352540157,
+        6981407.311557243
+      ],
+      "height": 1024,
+      "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+      "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map30e2e525d0ac48d6997138838a8dce9d.png",
+      "metadata_sha256": "85d4530ab3b2841def045098009d6b862b4bd9ebdfc185178ca86cd14a991cd5",
+      "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+      "point_metadata_applies_to_whole_image": false,
+      "point_metadata_error": null,
+      "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8923999999999999%2C52.99025&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8941%2C52.9891%2C-1.8907%2C52.9914&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+      "point_source_metadata": [
+        {
+          "ACCURACY (M)": "8.47",
+          "DATE (YYYYMMDD)": "20230527",
+          "DESCRIPTION": "WV02",
+          "RESOLUTION (M)": "0.5",
+          "SOURCE": "Vantor",
+          "SOURCE_INFO": "Vivid",
+          "SRC_DATE2": "5/27/2023"
+        },
+        {
+          "ACCURACY (M)": "12",
+          "DESCRIPTION": "TerraColor NextGen",
+          "RESOLUTION (M)": "15",
+          "SOURCE": "Earthstar Geographics",
+          "SOURCE_INFO": "TerraColor NextGen",
+          "SRC_DATE2": "Null"
+        },
+        {
+          "ACCURACY (M)": "12",
+          "DATE (YYYYMMDD)": "Null",
+          "DESCRIPTION": "TerraColor NextGen",
+          "RESOLUTION (M)": "15",
+          "SOURCE": "Earthstar Geographics",
+          "SOURCE_INFO": "TerraColor NextGen"
+        },
+        {
+          "ACCURACY (M)": "8.47",
+          "DATE (YYYYMMDD)": "20230527",
+          "DESCRIPTION": "WV02",
+          "RESOLUTION (M)": "0.5",
+          "SOURCE": "Vantor",
+          "SOURCE_INFO": "Vivid"
+        },
+        {
+          "SRC_DATE2": "5/27/2023"
+        },
+        {
+          "SRC_DATE2": "Null"
+        }
+      ],
+      "provider": "esri_world_imagery",
+      "registration_verified": false,
+      "width": 1024
+    },
+    "limitations": [
+      "Pixel colour regions are draft visible-surface outlines, not surveyed building footprints or complete paving.",
+      "Map tags seed building/water/queue identity; anonymous hard and blue surfaces remain unclassified.",
+      "Queue geometry retains explicit mapped centre lines; no unmapped switchbacks or widths are invented.",
+      "Protected supplied plan coverage is excluded; absence of a supplied plan is not proof that no application exists.",
+      "Capture dates, positional accuracy, canopy/shadow occlusion and roof displacement limit physical registration."
+    ],
+    "map_error": null,
+    "map_parse_gaps": [
+      {
+        "id": 7673655,
+        "reason": "missing relation member geometry"
+      },
+      {
+        "id": 107365812,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 328238629,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 1572080588,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 1572080589,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 1572080590,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 1572080592,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      },
+      {
+        "id": 1572080593,
+        "reason": "attraction extent/track has no verified physical reconstruction; generic extrusion omitted"
+      }
+    ],
+    "map_reference_counts": {
+      "building": 26,
+      "paving": 10,
+      "water": 1
+    },
+    "map_snapshot": {
+      "attribution": "\u00a9 OpenStreetMap contributors",
+      "body_sha256": "6bf96c7865b7b617314f01c29c815e28242ba1d4e30b283162bc0fd3722e9fbb",
+      "bounds_wgs84": [
+        -1.8941,
+        52.9891,
+        -1.8907,
+        52.9914
+      ],
+      "bytes": 242391,
+      "license": "ODbL-1.0",
+      "local_snapshot_bounds_verified": true,
+      "retrieval": "cached",
+      "retrieved_at_utc": "2026-10-27T23:18:36.711683+00:00",
+      "source_url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914"
+    },
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "production_eligible": false,
+    "protected_coverage_supplied": false,
+    "protected_pixels_excluded": 0,
+    "protected_plan_coverage_sha256": null,
+    "queue_anchors": 0,
+    "queue_file_sha256": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a",
+    "queue_lines_with_rgb_support": 0,
+    "queue_reference_lines": 0,
+    "references_in_area": 37,
+    "registration_verified": false,
+    "request_sha256": "adea58a65363a6ed945fee48c09f722631b8628fd533f919da87cf92028a5e3b",
+    "shadow_pixels_unresolved": 52916,
+    "site": "Alton Towers Towers Street",
+    "site_id": "towers-street",
+    "sources": [
+      {
+        "body_sha256": "85d4530ab3b2841def045098009d6b862b4bd9ebdfc185178ca86cd14a991cd5",
+        "citation_id": "W4f4c6647996d",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+        "citation_id": "Waa763a5ab2ff",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map30e2e525d0ac48d6997138838a8dce9d.png"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "Wa39afdb00f3a",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8923999999999999%2C52.99025&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8941%2C52.9891%2C-1.8907%2C52.9914&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      },
+      {
+        "body_sha256": "6bf96c7865b7b617314f01c29c815e28242ba1d4e30b283162bc0fd3722e9fbb",
+        "citation_id": "M6bf96c7865b7",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914"
+      }
+    ],
+    "status": "imagery_gap_geometry_candidates",
+    "training_labels_generated": 0,
+    "version": "imagery-gap-geometry-v1",
+    "withheld_references": [],
+    "world_blocks_generated": 0
+  },
+  "distinct_building_references_with_roof_regions": 26,
+  "actual_existing_96_pair_cycle": {
+    "aerial_failures": [],
+    "aerial_reports": [],
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 1,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "imagery_geometry_failures": [],
+    "imagery_geometry_reports": [
+      {
+        "candidate_counts": {
+          "building": 32,
+          "paving": 5,
+          "unclassified_hard_surface": 20,
+          "water": 1
+        },
+        "candidate_file_sha256": "adc575f8a86f507f5a9535a08fa0b9bfaadb4bf7da7c7ccccf7c47cdfd9fc714",
+        "geometry_verified": false,
+        "queue_reference_lines": 0,
+        "registration_verified": false,
+        "site_id": "towers-street"
+      }
+    ],
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "map_document_clues": [],
+    "map_failures": [],
+    "map_reports": [],
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "new_source_bodies": 3,
+    "production_eligible": false,
+    "remembered_map_followups": 0,
+    "remembered_sources": 10,
+    "research_failures": [],
+    "research_results": [],
+    "sources": [
+      {
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+        "citation_id": "Wf344cf4b5875",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+      },
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "W1fe63395170f",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      },
+      {
+        "body_sha256": "6bf96c7865b7b617314f01c29c815e28242ba1d4e30b283162bc0fd3722e9fbb",
+        "citation_id": "M6bf96c7865b7",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914"
+      },
+      {
+        "body_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+        "citation_id": "Waa763a5ab2ff",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map30e2e525d0ac48d6997138838a8dce9d.png"
+      },
+      {
+        "body_sha256": "85d4530ab3b2841def045098009d6b862b4bd9ebdfc185178ca86cd14a991cd5",
+        "citation_id": "W4f4c6647996d",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "citation_id": "M93dd03bb5e24",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      {
+        "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "citation_id": "Wb169c0484216",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "reused_unchanged_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "initial_aerial_network_bytes": 783526,
+  "initial_geometry_network_bytes": 250110,
+  "protected_coverage_tested_on_synthetic_fixture": true,
+  "real_protected_plan_layer_supplied": false,
+  "queue_snapshot_has_explicit_anchors": false,
+  "verified_geometry_generated": 0,
+  "new_neural_training_labels": 0,
+  "world_blocks_generated": 0,
+  "windows_exe_rebuilt": false,
+  "limitations": [
+    "32 roof regions refer to 26 mapped building polygons; these are not 32 independently reconstructed buildings.",
+    "Paving regions may merge connected vehicle/pedestrian areas and include classification errors; shadow/canopy gaps remain.",
+    "Water class uses an explicit map hint plus RGB; map identity and physical registration remain unverified.",
+    "No tagged queues were found in the snapshot; this does not establish absence of queues.",
+    "No protected real plan coverage was supplied for Towers Street; no claim of an exhaustive planning-application search is made."
+  ]
+}

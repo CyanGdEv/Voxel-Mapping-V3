@@ -1,0 +1,37 @@
+{
+  "version": "imagery-gap-geometry-v1",
+  "site_id": "towers-street",
+  "site": "Alton Towers Towers Street",
+  "imagery": {
+    "version": "aerial-material-research-v1",
+    "site_id": "towers-street",
+    "site": "Alton Towers Towers Street",
+    "provider": "esri_world_imagery",
+    "bounds_wgs84": [
+      -1.8941,
+      52.9891,
+      -1.8907,
+      52.9914
+    ],
+    "width": 1024,
+    "height": 1024,
+    "grid": 16,
+    "material_mode": "colour_appearance",
+    "offline": false
+  },
+  "map_source": {
+    "bounds_wgs84": [
+      -1.8941,
+      52.9891,
+      -1.8907,
+      52.9914
+    ],
+    "offline": false
+  },
+  "options": {
+    "min_area_m2": 6,
+    "max_growth_m": 3,
+    "colour_distance": 18,
+    "max_features": 256
+  }
+}

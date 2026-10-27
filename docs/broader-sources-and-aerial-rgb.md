@@ -67,3 +67,5 @@ A live 1024×1024 Esri aerial export used 781,436 bytes before the optional poin
 The replay uses retained, checked bytes with zero network traffic. The detailed test counts, original hashes, image previews, source statuses and checkpoint-reuse checks are in `evidence/broader-sources-aerial-validation.json`. No neural material model was trained, accuracy improvement demonstrated, accepted material assignment created, or Windows EXE rebuilt in this stage.
 
 The user-authorized colour assignment mode now turns these observations into a draft material layer. See [Colour-based material assignments](colour-material-assignments.md).
+
+For pixel-derived paving, roof and water-region candidates outside protected plan coverage, see [Imagery gap geometry](imagery-gap-geometry.md), including the Towers Street demonstration.

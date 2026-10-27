@@ -65,7 +65,7 @@ def validate(config):
     if any(not isinstance(i,str) for i in identities) or len(set(identities))!=len(sites):
         raise ValueError('Unique public site identities required')
     for site in sites:
-        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls','map_context','planning_hosts','map_focus_names','aerial_context'}:
+        if not isinstance(site,dict) or set(site)-{'site_id','name','location','applications','exclude_tags','ride_types','urls','map_context','planning_hosts','map_focus_names','aerial_context','imagery_geometry_context'}:
             raise ValueError('Known public site profile fields required')
         reader._identifier(site.get('site_id'),'public site id')
         web_focus.profile({'site':site.get('name'),'location':site.get('location',''),
@@ -84,6 +84,12 @@ def validate(config):
             if not isinstance(site['aerial_context'],dict):raise ValueError('Aerial context must be an object')
             aerial.validate({**site['aerial_context'],'version':aerial.VERSION,'site_id':site['site_id'],'site':site['name']})
     if sum('map_context' in site for site in sites)>4:raise ValueError('At most four map areas per learning cycle')
+    for site in sites:
+        if 'imagery_geometry_context' in site:
+            from . import imagery_geometry_research as geometry
+            geometry.validate(site['imagery_geometry_context'])
+            if site['imagery_geometry_context']['site_id']!=site['site_id']:raise ValueError('Imagery geometry site identity changed')
+    if sum('imagery_geometry_context' in s for s in sites)>2:raise ValueError('At most two imagery geometry areas per cycle')
     if sum('aerial_context' in s for s in sites)>2:raise ValueError('At most two aerial areas per learning cycle')
     maximum=config.get('max_research_jobs',2)
     if type(maximum) is not int or not 0<=maximum<=6 or type(config.get('refresh_research',False)) is not bool:
@@ -196,6 +202,22 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
                 if body not in seen:new.add(body)
                 seen.add(body);db.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(body,source['url'],source['citation_id']))
             db.commit()
+        geometry_reports=[];geometry_failures=[]
+        for site in [s for s in sites if 'imagery_geometry_context' in s]:
+            from . import imagery_geometry_research as geometry
+            try:
+                draft=geometry.run(site['imagery_geometry_context'],output/('imagery-geometry-'+site['site_id']),cache,
+                    cancelled=cancelled,progress=progress,parent_budget=budget,run_deadline=deadline)
+            except (web.WebError,ValueError,OSError) as error:
+                geometry_failures.append({'site_id':site['site_id'],'error':str(error)});continue
+            geometry_reports.append({'site_id':site['site_id'],'candidate_counts':draft['candidate_counts'],
+                'queue_reference_lines':draft['queue_reference_lines'],'candidate_file_sha256':draft['candidate_file_sha256'],
+                'geometry_verified':False,'registration_verified':False})
+            for source in draft['sources']:
+                body=source['body_sha256']
+                if body not in seen:new.add(body)
+                seen.add(body);db.execute('INSERT OR IGNORE INTO sources VALUES(?,?,?)',(body,source['url'],source['citation_id']))
+            db.commit()
         pins={r['source_body_sha256'] for r in map_reports};active_sites={s['site_id'] for s in mapped}
         remembered=[]
         for (raw,) in db.execute('SELECT payload FROM map_followups ORDER BY rowid LIMIT 256'):
@@ -242,6 +264,7 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
         summary={'version':VERSION,'status':'research_learning_cycle_completed','dataset_id':manifest['id'],
             'dataset_manifest_sha256':pin,'training_status':training_status,'checkpoint_directory':str(model_directory.resolve()),
             'checkpoint_sha256':file_hash(model_directory/'model.json'),'curriculum_tasks':len(tasks),
+            'imagery_geometry_reports':geometry_reports,'imagery_geometry_failures':geometry_failures,
             'aerial_reports':aerial_reports,'aerial_failures':aerial_failures,'research_results':results,'research_failures':failures,'map_reports':map_reports,'map_failures':map_failures,'map_document_clues':map_document_clues,'remembered_map_followups':db.execute('SELECT count(*) FROM map_followups').fetchone()[0],'new_source_bodies':len(new),
             'remembered_sources':db.execute('SELECT count(*) FROM sources').fetchone()[0],
             'sources':[{'body_sha256':body,'url':url,'citation_id':citation,'source_evidence_verified':False,
@@ -265,6 +288,9 @@ def main(argv=None):
     base=Path(args.config).resolve().parent
     for field in ['dataset_directory','encoder_path']:config[field]=str((base/config[field]).resolve())
     for site in config.get('public_sites',[]):
+        if 'imagery_geometry_context' in site:
+            from .imagery_geometry_research import resolve_paths
+            site['imagery_geometry_context']=resolve_paths(site['imagery_geometry_context'],base)
         source=site.get('map_context',{})
         if 'snapshot_path' in source:source['snapshot_path']=str((base/source['snapshot_path']).resolve())
     print(json.dumps(run(config,args.output,args.memory,args.cache)))

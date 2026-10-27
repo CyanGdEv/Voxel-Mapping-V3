@@ -20,6 +20,8 @@ KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_eviden
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
 KINDS.add('planning_area_world_preview')
 HEAVY.add('planning_area_world_preview')
+KINDS.add('imagery_geometry_research')
+HEAVY.add('imagery_geometry_research')
 KINDS.add('aerial_material_research')
 HEAVY.add('aerial_material_research')
 KINDS.add('map_planning_research')
@@ -438,9 +440,14 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research'):
+                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research','imagery_geometry_research'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
+                if kind=='imagery_geometry_research':
+                    self.store.remember('imagery_geometry_observation',result['site_id'],{
+                        'candidate_counts':result['candidate_counts'],'candidate_file_sha256':result['candidate_file_sha256'],
+                        'queue_reference_lines':result['queue_reference_lines'],'protected_plan_coverage_sha256':result['protected_plan_coverage_sha256'],
+                        'geometry_verified':False,'registration_verified':False})
                 if kind=='aerial_material_research':
                     self.store.remember('aerial_rgb_observation',result['site_id'],{
                         'status':result['status'],'provider':result['provider'],'sample_cells':result['sample_cells'],
@@ -714,6 +721,10 @@ def _worker(request):
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)
+    elif kind=='imagery_geometry_research':
+        from .imagery_geometry_research import run,resolve_paths
+        config=resolve_paths(config,config_path.parent)
+        result=run(config,output,output.parents[2]/'web-cache',cancelled=cancelled,progress=progress)
     elif kind=='aerial_material_research':
         from .aerial_material_research import run
         result=run(config,output,output.parents[2]/'web-cache',cancelled=cancelled,progress=progress)
@@ -727,6 +738,9 @@ def _worker(request):
         for field in ('dataset_directory','encoder_path'):
             config[field]=str(resolve_path(config_path,config[field]))
         for site in config.get('public_sites',[]):
+            if 'imagery_geometry_context' in site:
+                from .imagery_geometry_research import resolve_paths
+                site['imagery_geometry_context']=resolve_paths(site['imagery_geometry_context'],config_path.parent)
             source=site.get('map_context',{})
             if 'snapshot_path' in source:source['snapshot_path']=str(resolve_path(config_path,source['snapshot_path']))
         result=run(config,output,output.parents[2]/'research-learning',output.parents[2]/'web-cache',
