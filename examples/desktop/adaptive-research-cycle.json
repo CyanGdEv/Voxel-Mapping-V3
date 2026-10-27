@@ -1,0 +1,68 @@
+{
+  "version": "research-learning-cycle-v1",
+  "dataset_directory": "intake",
+  "encoder_path": "model/encoder.onnx",
+  "encoder_sha256": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb",
+  "public_sites": [
+    {
+      "site_id": "alton-towers",
+      "name": "Alton Towers",
+      "location": "Farley Staffordshire",
+      "ride_types": [
+        "coaster"
+      ],
+      "applications": [
+        "SMD/2016/0315",
+        "SMD/2017/0111"
+      ],
+      "exclude_tags": [
+        "Wildwood",
+        "Field O"
+      ],
+      "urls": [
+        "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      ]
+    },
+    {
+      "site_id": "thorpe-park",
+      "name": "Thorpe Park",
+      "location": "Chertsey Surrey",
+      "ride_types": [
+        "coaster"
+      ],
+      "applications": [
+        "RU.22/0374"
+      ],
+      "urls": [
+        "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      ]
+    },
+    {
+      "site_id": "glen-echo-park",
+      "name": "Glen Echo Park",
+      "location": "Maryland",
+      "ride_types": [
+        "carousel"
+      ],
+      "urls": [
+        "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00006v.jpg"
+      ]
+    }
+  ],
+  "research": {
+    "allowed_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk",
+      "runnymede.moderngov.co.uk",
+      "cdn.loc.gov"
+    ],
+    "allow_public_discovery": true,
+    "refresh": false,
+    "limits": {
+      "max_sources": 2,
+      "max_model_rounds": 2,
+      "max_run_bytes": 32000000,
+      "max_seconds": 90
+    }
+  },
+  "max_research_jobs": 2
+}

@@ -20,6 +20,7 @@ JOB_KINDS = (
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Web research / cited source evidence', 'web_research'),
+    ('Adaptive research / source learning cycle', 'research_learning_cycle'),
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),
     ('Planning collection / automatic follow-up batches', 'planning_collection'),
     ('Planning models / Bedrock preview worlds', 'planning_world_preview'),

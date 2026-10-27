@@ -18,7 +18,7 @@ from .desktop_memory import digest
 from .generation_cycles import atomic_json, file_hash
 
 VERSION = 'public-web-evidence-v1'
-MAX_BYTES = 8000000
+MAX_BYTES = 16000000
 MAX_TEXT = 12000
 MAX_LINKS = 32
 SEARCH_HOST = 'html.duckduckgo.com'
@@ -104,6 +104,17 @@ def _public_dns(value, resolver):
 
 def _extract_content(data, content_type, source_url):
     links=[];truncated=False
+    if data.startswith((b'\xff\xd8\xff',b'\x89PNG\r\n\x1a\n')) or (data.startswith(b'RIFF') and data[8:12]==b'WEBP'):
+        from io import BytesIO
+        from PIL import Image
+        with Image.open(BytesIO(data)) as image:
+            if image.format not in ('JPEG','PNG','WEBP') or image.width*image.height>16000000 or getattr(image,'n_frames',1)!=1:
+                raise WebError('unsupported_image','Bounded single-frame PNG/JPEG/WebP source required')
+            image.verify()
+            return {'format':'image','title':source_url.rsplit('/',1)[-1][:200],
+                'text':'','text_truncated':False,'pages':None,'links':[],
+                'image_format':image.format,'image_size_pixels':list(image.size),
+                'text_status':'image_only_visual_interpretation_required'}
     if data.startswith(b'%PDF-'):
         import pymupdf
         with pymupdf.open(stream=data,filetype='pdf') as document:
@@ -148,7 +159,7 @@ def _extract_content(data, content_type, source_url):
         return {'format':'text','title':source_url[:200],'text':text[:MAX_TEXT],
                 'text_truncated':len(text)>MAX_TEXT,'pages':None,'links':[],
                 'text_status':'plain_text'}
-    raise WebError('unsupported_content','Only HTML, native PDF and plain-text web sources are supported')
+    raise WebError('unsupported_content','Supported sources are HTML, native PDF, text and PNG/JPEG/WebP images')
 
 
 def _extract(data, content_type, source_url):
@@ -162,7 +173,7 @@ def _body_path(cache, receipt):
     sha=receipt.get('body_sha256')
     if not isinstance(sha,str) or not re.fullmatch('[0-9a-f]{64}',sha):
         raise ValueError('Pinned cached web bytes required')
-    if receipt.get('format') not in ('pdf','html','text'): raise ValueError('Known cached web format required')
+    if receipt.get('format') not in ('pdf','html','text','image'): raise ValueError('Known cached web format required')
     return cache/'objects'/(sha+('.pdf' if receipt['format']=='pdf' else '.bin'))
 
 
@@ -221,11 +232,13 @@ class _NoOriginAuth(requests.auth.AuthBase):
 
 
 def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
-          cancelled=lambda:False, deadline=None, session=None, resolver=socket.getaddrinfo):
+          cancelled=lambda:False, deadline=None, session=None, resolver=socket.getaddrinfo,
+          allow_public_redirects=False):
     if cancelled(): raise CancelledError('Web retrieval cancelled')
     approved=hosts(list(approved));value=url(value,approved)
     if type(offline) is not bool or type(refresh) is not bool: raise ValueError('Explicit web cache settings required')
-    prior=cached(value,cache,approved)
+    if type(allow_public_redirects) is not bool:raise ValueError('Explicit public redirect mode required')
+    prior=cached(value,cache,None if allow_public_redirects else approved)
     if offline or (prior is not None and not refresh):
         if prior is None: raise WebError('offline_cache_miss','Original web source is absent from the offline cache')
         return {'source':prior,'retrieval':'cached','network_bytes':0,'network_error':None}
@@ -240,11 +253,15 @@ def fetch(value, cache, approved, *, offline=False, refresh=True, budget=None,
             addresses=_public_dns(current,resolver)
             client.cookies.clear()
             response=client.get(current,stream=True,allow_redirects=False,auth=_NoOriginAuth(),
-                headers={'User-Agent':'VoxelMapperV3 evidence reader','Accept':'text/html, application/pdf, text/plain'},
+                headers={'User-Agent':'VoxelMapperV3 evidence reader','Accept':'text/html, application/pdf, text/plain, image/png, image/jpeg, image/webp'},
                 timeout=(min(5,max(.1,deadline-time.monotonic())),min(15,max(.1,deadline-time.monotonic()))))
             try:
                 if response.status_code in (301,302,303,307,308):
-                    target=url(urljoin(current,response.headers.get('Location','')),approved)
+                    target=url(urljoin(current,response.headers.get('Location','')),None if allow_public_redirects else approved)
+                    target_host=urlsplit(target).hostname
+                    if target_host not in approved:
+                        if len(approved)>=32:raise ValueError('Public redirect host budget exceeded')
+                        approved.append(target_host)
                     if target==current: raise WebError('redirect_loop','Web source redirect loop')
                     redirects.append({'url':current,'status':response.status_code,'target':target});current=target;continue
                 if response.status_code!=200:

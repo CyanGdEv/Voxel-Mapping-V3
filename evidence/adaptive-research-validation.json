@@ -1,0 +1,165 @@
+{
+  "version": "adaptive-research-validation-v1",
+  "review_date": "2026-10-27",
+  "tests": {
+    "count": 94,
+    "result": "passed",
+    "log_sha256": "b45de82c618c2e1fd83bd2722ca3b386a7031803c6203cd453184fabf27483b6",
+    "includes": [
+      "public image redirects/private rejection",
+      "deep PDF page/link selection",
+      "actual fitted-head training and changed-dataset checkpoint",
+      "desktop subprocess and persistent restart",
+      "reserved evaluation dataset rejection"
+    ]
+  },
+  "first_cycle": {
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 13,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "model_weights_updated": true,
+    "network_bytes": 13347588,
+    "new_source_bodies": 2,
+    "production_eligible": false,
+    "remembered_sources": 3,
+    "research_failures": [],
+    "research_results": [
+      {
+        "output": "research-021c93c74b0a",
+        "query": "Thorpe Park Chertsey Surrey support frame plan track supports",
+        "sources": 2,
+        "status": "web_evidence_gathered",
+        "task_id": "021c93c74b0af08471e689fa6a0dd7674b4f384255dffde376a33c87bcd33904"
+      },
+      {
+        "output": "research-91a7d2b21bd6",
+        "query": "Alton Towers Farley Staffordshire support frame plan track supports",
+        "sources": 1,
+        "status": "web_evidence_gathered",
+        "task_id": "91a7d2b21bd660274895fef0d672e129de6ba6c8fea4c7137d0d0ce1d3bb6c36"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "trained_new_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "restart_cycle": {
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 13,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "new_source_bodies": 0,
+    "production_eligible": false,
+    "remembered_sources": 3,
+    "research_failures": [],
+    "research_results": [],
+    "sources": [
+      {
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+        "citation_id": "Wf344cf4b5875",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+      },
+      {
+        "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "citation_id": "Wb169c0484216",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "reused_unchanged_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "focused_run": {
+    "status": "web_evidence_gathered",
+    "sources": [
+      {
+        "artifact_sha256": "72aa0bc530a6daf532749b07fe6e66fae013671896ae76223df6a9eae5565ed1",
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "excerpt": "[PDF page 23] log flume ride of 194.54m AOD. \n3.27 \nAs shown on the application drawings, the maximum high point for the \nproposed ride track has a spot height of 201m AOD which is broadly in line \nwith the scale of development parameters for the site included in the Long \nTerm Plan (197.7-200.5 AOD); the height of the rest of the ride will conform to \nthis parameter. This is similar to heights of other attractions in the Resort; \nNemesis which has a high point 202.62 m AOD and Oblivion which has a high \npoint of 197.79m AOD. In addition to the general ride track a number of tunnels \nare propo",
+        "requested_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T21:53:10.031066+00:00",
+        "source_evidence_verified": false,
+        "title": "Microsoft Word - 11282969_2.docx",
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "artifact_sha256": "38ce45c34e65b1030d522dbb639799bb1b29b962833df899722bbf52731acbef",
+        "body_sha256": "b92e093c86ab1bd824be2e2729bde60ee6830cc20a48d4a4c451210f07657fc9",
+        "citation_id": "Waca25f50aeb0",
+        "excerpt": "",
+        "requested_url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00006v.jpg",
+        "retrieval": "downloaded",
+        "retrieved_at_utc": "2026-10-27T21:53:10.583562+00:00",
+        "source_evidence_verified": false,
+        "title": "00006v.jpg",
+        "training_labels_generated": 0,
+        "url": "https://tile.loc.gov/storage-services/service/pnp/habshaer/md/md1300/md1366/sheet/00006v.jpg"
+      }
+    ],
+    "network_bytes": 512097,
+    "downloaded_assets": [
+      {
+        "citation_id": "W727e63f1fdd0",
+        "file": "downloads/W727e63f1fdd0.pdf",
+        "format": "pdf",
+        "sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e"
+      },
+      {
+        "citation_id": "Waca25f50aeb0",
+        "file": "downloads/Waca25f50aeb0.jpg",
+        "format": "image",
+        "sha256": "b92e093c86ab1bd824be2e2729bde60ee6830cc20a48d4a4c451210f07657fc9"
+      }
+    ],
+    "effective_allowed_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk",
+      "cdn.loc.gov",
+      "tile.loc.gov"
+    ],
+    "model_rounds": [],
+    "model_error": null
+  },
+  "no_reasoning_model_configured": true,
+  "accuracy_improvement_demonstrated": false,
+  "web_labels_generated": 0,
+  "production_promoted": false,
+  "windows_exe_rebuilt": false,
+  "world_blocks_generated": 0
+}
