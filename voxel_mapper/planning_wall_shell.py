@@ -178,6 +178,36 @@ def shop_shell(model,wall_geometry,floor_top,*,cancelled=lambda:False):
 
 
 
+def fit_shop_approaches(wall,openings,heights,floor_targets,ground,rocks,plan_markers,floor_top):
+    """Bounded provisional cut/landing fit; preserve source XY and materials."""
+    protected=set(rocks)|{k for k,r in plan_markers.items() if r['role']!='queue_area'}
+    collar=wall.buffer(1);changes={};landings=[];material_changes=[]
+    def adjust(k,base):
+        old=heights[k]
+        if abs(old-base)>1:raise ValueError('Shop approach change exceeds one block')
+        if old!=base:changes[k]={'source_cell_xy':list(k),'old_ground_block_m':old,'new_ground_block_m':base};heights[k]=base
+    for k,h in sorted(heights.items()):
+        if k in floor_targets or k in protected:continue
+        point=Point(k[0]+.5,k[1]+.5)
+        if collar.covers(point) and not wall.covers(point) and h>=floor_top:adjust(k,floor_top-1)
+    for opening in openings:
+        line=shape(opening['geometry_nominal_local']);candidates=set()
+        for x,y in opening['display_columns_xy']:
+            for k in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]:
+                if k not in heights or k in floor_targets or k in protected:continue
+                point=Point(k[0]+.5,k[1]+.5)
+                if not wall.covers(point) and line.distance(point)<1.5:candidates.add(k)
+        if not candidates:raise ValueError('Shop opening lacks an unblocked exterior landing sample')
+        for k in sorted(candidates):
+            adjust(k,floor_top-1)
+            if k not in ground:material_changes.append({'source_cell_xy':list(k),'old_default_material':'grass_block','new_material':'stone_bricks'})
+            ground.setdefault(k,'stone_bricks')
+        landings.append({'opening_id':opening['id'],'source_cells_xy':[list(k) for k in sorted(candidates)],'walking_top_m':floor_top,'threshold_step_blocks':0,'finished_grade_verified':False})
+    return {'status':'provisional one-block entrance and exterior-ground fit','changes':list(changes.values()),'landing_material_changes':material_changes,'openings':landings,
+        'maximum_cut_or_fill_blocks':max([0]+[abs(r['old_ground_block_m']-r['new_ground_block_m']) for r in changes.values()]),
+        'source_finished_grades_verified':False,'survey_datum_verified':False}
+
+
 def study_guide_features(model,wall_geometry,shell,terrain,edging,floor_top):
     """Carry the retained study canopy and decorative palette into the placed grid."""
     outline=np.asarray(model['outer_wall_base_outline'])[:,:2];target=np.asarray(wall_geometry.exterior.coords)[:-1]
@@ -251,7 +281,7 @@ def resolve_inferred_fences(sampled,targets,gap_policy):
     return changes
 
 
-def saved_check(path,offset,sampled,heights,structures,openings,floor_top,cancelled):
+def saved_check(path,offset,sampled,heights,structures,openings,floor_top,cancelled,landing_columns=()):
     from amulet.level.formats.leveldb_world import LevelDBFormat
     from .bedrock import material_block
     wrapper=LevelDBFormat(str(path));wrapper.open();a,b,c,d=sampled['bounds'];checked=0;cache={};door_samples=0
@@ -275,11 +305,15 @@ def saved_check(path,offset,sampled,heights,structures,openings,floor_top,cancel
                     for x,y in opening['display_columns_xy']:
                         if x//16==cx and y//16==cy:
                             for z in range(opening['display_clearance_blocks']):check(x,floor_top+z,y,'air');door_samples+=1
+                for x,y in landing_columns:
+                    if x//16==cx and y//16==cy:
+                        if heights[x,y]+1!=floor_top:raise ValueError('Saved landing is not at the threshold level')
+                        for z in (floor_top,floor_top+1):check(x,z,y,'air')
                 del chunk
     finally:wrapper.close()
     if checked!=sampled['platform_cells']:raise ValueError('Incomplete terrain/shell readback')
     return {'surface_columns_verified':checked,'surface_plus_three_levels_verified':True,'source_edging_blocks':sampled['boundary_blocks'],
-        'doorway_air_samples_verified':door_samples,'all_written_shell_and_bearing_blocks_verified_by_native_writer':True,
+        'doorway_air_samples_verified':door_samples,'level_entry_landing_columns_verified':len(landing_columns),'all_written_shell_and_bearing_blocks_verified_by_native_writer':True,
         'all_unwritten_chunk_air_verified_by_native_writer':True,'headroom_scope':'source shop opening display columns; external connections remain unverified','decoded_chunk_cache_limit':1}
 
 
@@ -322,7 +356,11 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         for r in floor_report:r['footprint_source_role']='proposed external wall trace, not roof envelope'
         old_floor_cells={tuple(r['source_cell_xy']) for r in json.loads((floor_preview_directory/'floor-cells.json').read_text())}
         if sorted(walls)!=['Maintenance','Shop','Station'] or len(floor_report)!=3:raise ValueError('Exactly three reviewed wall-based floor plates required')
-        shop_top=next(r['preview_floor_top_odn_assumption_m'] for r in floor_report if r['labels']==['Shop'])
+        shop_row=next(r for r in floor_report if r['labels']==['Shop'])
+        previous_shop_top=shop_row['preview_floor_top_odn_assumption_m'];shop_top=math.ceil(shop_row['source_ffl_m'])
+        shop_row.update(preview_floor_top_odn_assumption_m=shop_top,quantization_error_m=shop_top-shop_row['source_ffl_m'],quantization_policy='shop walking surface rounded up to the full-block terrain surface; printed FFL datum remains conditional',prior_preview_floor_top_m=previous_shop_top)
+        for r in floors.values():
+            if r['labels']==['Shop']:r['base_odn_block_m']=shop_top-1
         shell,boundary,shell_report=shop_shell(model,walls['Shop'],shop_top,cancelled=cancelled)
         if len(shell)>profile['limits']['shell_blocks']:raise ValueError('Shop shell block budget exceeded')
         edging_changes=resolve_inferred_fences(sampled,set(floors)|boundary,data['gaps']['policy'])
@@ -334,6 +372,9 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         before=audit.path_steps(path,heights,placement['nominal_local_xy_to_bng_en_affine']);grading=floor.grade_paths(path,heights,cancelled=cancelled)
         heights.update(grading);heights.update(floor_targets)
         for k in floor_targets:sampled['ground'].setdefault(k,'stone_bricks')
+        approach_report=fit_shop_approaches(walls['Shop'],shell_report['openings'],heights,floor_targets,sampled['ground'],sampled['rocks'],sampled['plan_markers'],shop_top)
+        approach_cells={tuple(k) for r in approach_report['openings'] for k in r['source_cells_xy']}
+        path|=approach_cells
         shell,guide_report=study_guide_features(model,walls['Shop'],shell,heights,sampled['rocks'],shop_top)
         if len(shell)>profile['limits']['shell_blocks']:raise ValueError('Study-guided shop exceeds block budget')
         structures={};bearing_blocks=0
@@ -354,13 +395,13 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         combined=audit.path_steps(path|set(floors),heights,placement['nominal_local_xy_to_bng_en_affine'])
         perimeter=[r for r in combined['hotspots'] if sum(tuple(k) in floors for k in r['source_cells_xy'])==1]
         spawn=sampled['retained_spawn_local_xyz_m'];spawn_key=math.floor(spawn[0]),math.floor(spawn[2])-1
-        report={'version':'conditional-wall-based-floor-and-study-guided-shop-v3','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
+        report={'version':'conditional-wall-based-floor-and-ground-fitted-shop-v4','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
             'spawn_local_xyz_m':[spawn[0],heights[spawn_key]+1,spawn[2]],'alignment':placement,'horizontal_transform':base['horizontal_transform'],
             'source_terrain':terrain,'source_floor_datum_verified':False,'datum_assumption':'Printed FFL assumed ODN only for this isolated study; same whole-block floor quantization as prior preview.',
             'floor_cells':len(floors),'floor_plates':floor_report,'source_landscape_pdf_sha256':data['layout']['document_sha256'],
             'prior_roof_plate_cells_removed':len(old_floor_cells-set(floors)),'wall_trace_cells_outside_prior_roof_plates':len(set(floors)-old_floor_cells),'shop_boundary_bearing_columns':len(boundary),'additional_boundary_bearing_columns':len(boundary-set(floors)),
             'inferred_fence_columns_superseded':edging_changes,'remaining_source_edging_blocks':sampled['boundary_blocks'],
-            'provisional_bearing_fill_blocks':bearing_blocks,'foundation_design_verified':False,'source_shop_height_replay':height_review,'shop_shell':shell_report,'shop_study_guide':guide_report,
+            'provisional_bearing_fill_blocks':bearing_blocks,'foundation_design_verified':False,'source_shop_height_replay':height_review,'shop_shell':shell_report,'shop_study_guide':guide_report,'shop_ground_fit':approach_report,'shop_floor_lift_from_prior_preview_blocks':shop_top-previous_shop_top,
             'conditional_shell_buildings':1,'reconstructed_as_built_buildings':0,'station_and_maintenance_shells_added':False,'maintenance_sloping_floor_reconstructed':False,
             'path_cells_changed':len(grading),'path_steps_before':before,'path_steps_after':after,'floor_perimeter_multi_block_steps':perimeter,'floor_perimeter_multi_block_step_pairs':len(perimeter),
             'building_access_verified':False,'production_placement_eligible':False,'physical_registration_verified':False,'training_labels_generated':0,'minecraft_import_tested':False,
@@ -381,10 +422,10 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         from .planning_world_preview import _spawn_check,_verify_archive
         def check(path,offset,native_spawn):
             report['spawn_validation']=_spawn_check(path,native_spawn)
-            report['saved_geometry_validation']=saved_check(path,offset,sampled,heights,structures,shell_report['openings'],shop_top,cancelled)
+            report['saved_geometry_validation']=saved_check(path,offset,sampled,heights,structures,shell_report['openings'],shop_top,cancelled,landing_columns=approach_cells)
             atomic_json(path/'planning-geographic-alignment.json',{**placement,'minecraft_cell_centre_to_source_xy':'[Minecraft X + 0.5, -(Minecraft Z + 0.5)]','vertical_offset_blocks':offset})
             atomic_json(path/'CONDITIONAL-WALL-SHELL-ASSUMPTIONS.json',{k:report[k] for k in ['datum_assumption','source_floor_datum_verified','building_access_verified','limitations','conditional_shell_buildings']})
-        world=bedrock.export_world(voxel,root,report,name='Wicker STUDY GUIDE shop with slab roof and canopy',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name='Wicker SHOP GROUND FIX - study guided slab roof',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-wall-based-floors-and-shop-shell.mcworld');report['world']['file']='wicker-wall-based-floors-and-shop-shell.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'floor-cells.json',[{'source_cell_xy':list(k),'original_terrain_block_odn_m':original_heights[k],**r} for k,r in sorted(floors.items())])
@@ -405,7 +446,7 @@ def _preview(root,voxel,floor_top):
     from PIL import Image,ImageDraw,ImageColor
     from .rock_world_render import colour
     rows=[json.loads(line) for line in voxel.read_text().splitlines()]
-    rows=[r for r in rows if 65<=r['x']<=140 and 95<=r['z']-1<=151 and floor_top-4<=r['y']<=floor_top+9]
+    rows=[r for r in rows if 65<=r['x']<=140 and 95<=r['z']-1<=151]
     occupied={(r['x'],r['z']-1,r['y']):r['material'] for r in rows}
     def project(p):
         x,y,h=p;return ((x-y)*9,(x+y)*4.5-(h-floor_top)*11)

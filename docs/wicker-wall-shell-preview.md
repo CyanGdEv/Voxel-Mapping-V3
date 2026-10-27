@@ -13,9 +13,9 @@ This separate Bedrock world replaces roof-envelope floor plates with proposed ex
 | Shop wall / roof slab blocks | 285 / 216 |
 | Timber fascia below roof steps | 0 |
 | Study canopy slabs | 12 |
-| Placed facade detail blocks | 47 |
+| Placed facade detail blocks | 63 |
 | Shop boundary bearing columns outside floor centre samples | 36 |
-| Provisional stone bearing-fill blocks | 212 |
+| Provisional stone bearing-fill blocks | 224 |
 | Existing inferred oak-fence columns superseded | 3 |
 | Path cells adjusted by bounded grading | 17 |
 
@@ -31,6 +31,14 @@ There are 42 wall/roof boundary alias cells where a full timber gable top takes 
 
 The shape-aware outside-air check uses native half-block occupancy and checks 5588 interior half-cells with openings temporarily sealed; none is reached. Native export checks saved dark-oak slab materials and top/bottom states. The updated schematic preview renders these roof half heights.
 
+## Ground-placement correction
+
+The earlier shop walking floor rounded source FFL 182.50 down to 182 m, while the full-block paving at the broad entrances had a walking top of 183 m. This made the shop appear buried. The shop now rounds up to a 183 m walking top, moving its floor, wall shell, slab roof, canopy and attached details up one block as a coherent assembly. Its source FFL remains 182.50, with a +0.50 m display quantization error; the datum remains conditional. Station and maintenance floor studies are unchanged.
+
+A bounded provisional ground fit lowers two adjacent ground columns, (88,121) and (90,122), from block base 183 to 182. Eleven exterior landing samples across the three source openings now have the same 183 m walking top as the shop. Native checks verify their level support and two air blocks at foot/head height. No source edging or protected ride marking is overwritten. Ground edits are limited to the shop footprint/bearing columns, the sampled entry landings and these two local cuts. Four previously default-grass landing cells receive stone-brick paving; explicit source surface materials are retained.
+
+The extra facade details become possible because the raised model no longer intersects ground where lower post/panel samples previously had to be skipped. Finished-grade survey truth, complete exterior routes and the four wider floor/path perimeter review differences remain unresolved; level thresholds are not a complete park-navigation certificate.
+
 ## Earlier shop study as the visual guide
 
 The placed revision follows the retained SLABS V4 / WALL DETAIL V5 study instead of treating the shop as a plain massing shell. It reuses the checksum-pinned projection model for the entrance canopy and the earlier study's spruce walls, dark-oak posts and opened spruce trapdoor panels. The geometry is mapped before grid sampling; cached local-world blocks and directional states are not blindly rotated into the park.
@@ -45,13 +53,13 @@ The builder reruns the architectural access review from the original 2967-21/48 
 
 The original 2967-26 shop elevation PDF is checksum/render checked. Nine wall/opening height traces and the main roof dimensions/eave/ridge are replayed and compared with the retained model. The source main roof is approximately 16.88 × 12.83 m, with a 3.52 m eave and 7.21 m ridge above the drawn shop floor. Broad openings have approximately 2.49 m source height and the side door approximately 2.09 m; the one-metre display retains two clear air blocks. Full physical opening width and external route access are not verified. The retained roof/wall centring is an assembly hypothesis. The study canopy and illustrative facade details are included; bunding and interior partitions remain omitted.
 
-Floor annotations are re-extracted from the original 2017 landscape PDF. Printed FFLs are **conditionally assumed to be ODN** and quantized to whole-block walking tops: shop 182 m from source 182.50; station and maintenance 183 m from source 183.25. The 2016 architectural wall traces and 2017 landscape levels remain separate dated proposals; their combined/as-built correspondence is not established.
+Floor annotations are re-extracted from the original 2017 landscape PDF. Printed FFLs are **conditionally assumed to be ODN** and quantized to whole-block walking tops (the shop rounds up to meet adjoining full-block paving): shop 183 m from source 182.50; station and maintenance 183 m from source 183.25. The 2016 architectural wall traces and 2017 landscape levels remain separate dated proposals; their combined/as-built correspondence is not established.
 
 The retained maintenance drawing 2967-42 shows a 1:36 slope and inspection/max-level annotations; this prototype does not reconstruct that slope. Station passenger/undercroft levels remain unbound. Consequently, station and maintenance receive conditional floor studies only, not invented shells. Zero as-built buildings or training labels are accepted.
 
 ## Validation and remaining access work
 
-Twelve focused wall-shell/slab/facade tests pass for the study-guided revision (the earlier full-block prototype passed 26 focused tests), including source-scale/reflection rejection, doorway air preservation, deliberately damaged roof leak detection, cancellation, bounded inferred-fence replacement and source integrity refusal. The final native slab-shape six-neighbour check tests 5,588 interior half-cells, with door openings temporarily sealed only for this check; none is reached. Actual door apertures stay open in the exported world.
+Thirteen focused wall-shell/slab/facade tests pass for the study-guided revision (the earlier full-block prototype passed 26 focused tests), including source-scale/reflection rejection, doorway air preservation, deliberately damaged roof leak detection, cancellation, bounded inferred-fence replacement and source integrity refusal. The final native slab-shape six-neighbour check tests 5,588 interior half-cells, with door openings temporarily sealed only for this check; none is reached. Actual door apertures stay open in the exported world.
 
 Native saved-world checks cover all 39,250 surface columns and their first three levels, 28 doorway air samples, all written shell/bearing blocks and unwritten chunk air. Archive CRC, exact packaged file bytes, spawn and cold reopen of all 187 chunks pass. These checks are not Minecraft client import or gameplay testing.
 

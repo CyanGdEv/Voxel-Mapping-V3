@@ -83,6 +83,22 @@ class WallShellTests(unittest.TestCase):
         edging={(first[0],first[2]):[(first[1]-183,'stone')]}
         with self.assertRaises(ValueError):shell.study_guide_features(model,wall,base,high,edging,182)
 
+    def test_shop_ground_fit_levels_thresholds_and_protects_boundaries(self):
+        from shapely.geometry import box,LineString,mapping
+        wall=box(0,0,3,3);floors={(x,y):182 for x in range(3) for y in range(3)}
+        heights={(x,y):183 for x in range(-2,5) for y in range(-2,5)};heights.update(floors)
+        opening={'id':'entry','display_columns_xy':[[0,1]],'geometry_nominal_local':mapping(LineString([(0,.5),(0,2.5)]))}
+        ground={(-1,1):'stone'};rocks={(-1,0):[(1,'oak_fence')]}
+        report=shell.fit_shop_approaches(wall,[opening],heights,floors,ground,rocks,{},183)
+        self.assertEqual(heights[-1,1],182);self.assertEqual(ground[-1,1],'stone')
+        self.assertEqual(heights[-1,0],183);self.assertEqual(heights[-2,1],183)
+        self.assertEqual(report['openings'][0]['threshold_step_blocks'],0)
+        self.assertEqual(report['maximum_cut_or_fill_blocks'],1)
+        high={(x,y):185 for x,y in heights};high.update(floors)
+        with self.assertRaises(ValueError):shell.fit_shop_approaches(wall,[opening],high,floors,{},rocks,{},183)
+        blocked=dict(heights)
+        with self.assertRaises(ValueError):shell.fit_shop_approaches(wall,[opening],blocked,floors,{}, {(-1,1):[(1,'stone')]},{},183)
+
     def test_only_bounded_inferred_fences_yield_to_source_wall_traces(self):
         sampled={'rocks':{(0,0):[(1,'oak_fence')],(1,0):[(1,'stone')]},'boundary_blocks':2}
         policy={'policy_origin':'user_instruction','explicit_claims_override_default':True}
