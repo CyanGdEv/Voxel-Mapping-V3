@@ -17,7 +17,7 @@ from .generation_cycles import atomic_json,file_hash
 from .timber_track_world import frame
 
 PROFILE=Path(__file__).with_name('data')/'wicker-fence-supports.json'
-FENCES={'oak_fence','spruce_fence','nether_brick_fence'}
+FENCES={'oak_fence','spruce_fence','dark_oak_fence','nether_brick_fence'}
 
 
 def staircase_line(a,b):
@@ -188,8 +188,8 @@ def build(pairs,terrain,old,head,samples,keys,track,profile):
                     'engineering_dimensions_verified':False,'diagonals_are_voxel_stair_steps':True}
 
 
-def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,style='reference'):
-    if style not in ['reference','dense']:raise ValueError('Unknown support style')
+def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,style='reference',cloud_path=None,cloud_receipt=None):
+    if style not in ['reference','dense','footprint']:raise ValueError('Unknown support style')
     if cancelled():raise CancelledError('Supports cancelled')
     base_directory=Path(base_directory);output=Path(output);profile=json.loads(PROFILE.read_text())
     if output.exists():raise ValueError('Fresh support output required')
@@ -202,11 +202,21 @@ def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,st
     terrain={(r['x'],r['z']-1):r for r in rows if r['kind']=='terrain'};old={(r['x'],r['y'],r['z']-1):r['material'] for r in rows if r['kind']=='structure'}
     track={tuple(r['source_xyz']):r['material'] for r in json.loads((base_directory/'track-blocks.json').read_text())};head={tuple(k) for k in json.loads((base_directory/'running-clearance-air.json').read_text())}
     samples=json.loads((base_directory/'track-samples.json').read_text());keys=base['full_track']['topology']['centre_sample_keys']
-    support,review=dense_trestle.build(route,pairs,terrain,old,head,samples,keys,track,profile)
+    if style=='footprint':
+        from . import footprint_supports
+        if not cloud_path or not cloud_receipt:raise ValueError('Dated native point cloud and crop receipt required')
+        profile.update(markings_path=str(markings_path),isolated_symbols=source['unresolved_isolated_symbols'],cloud_path=str(cloud_path),cloud_receipt=str(cloud_receipt),nominal_to_bng=base['alignment']['nominal_local_xy_to_bng_en_affine'])
+        support,review=footprint_supports.build(route,pairs,terrain,old,head,samples,keys,track,profile)
+    else:
+        support,review=dense_trestle.build(route,pairs,terrain,old,head,samples,keys,track,profile)
     report=dict(base);report.update(version='reference-support-frames-v3' if style=='reference' else 'dense-fence-support-world-v2',support_style=style,implementation_sha256=file_hash(__file__),profile_sha256=file_hash(PROFILE),dense_implementation_sha256=file_hash(dense_trestle.__file__),bedrock_implementation_sha256=file_hash(Path(__file__).with_name('bedrock.py')),source_parent_world_sha256=base['world']['sha256'])
-    report['full_track']=dict(base['full_track']);report['full_track']['supports_constructed']=len(review['constructed_bents'])
+    if style=='footprint':
+        report.update(version='footprint-centre-supports-v1',footprint_implementation_sha256=file_hash(footprint_supports.__file__))
+    report['full_track']=dict(base['full_track']);report['full_track']['supports_constructed']=len(review.get('constructed_supports',review.get('constructed_bents',[])))
     report['fence_supports']={**review,'source_review':source,'source_pdf_sha256':profile['source_pdf_sha256'],'markings_sha256':profile['markings_sha256'],
         'limitations':['Plan post-symbol centroids guide XY; symbol dimensions are not verified footing sizes.','Both main-row and smaller outer-footing symbols are recovered. Native cross-lines group measured footings; isolated symbols and infeasible legs are reported without shifting their XY.','Beam levels and member sizes are reconstruction estimates. Reference style replaces the diagonal lattice with segmented fence uprights, gates and flat trapdoor tiers.' if style=='reference' else 'Beam levels, member sizes and X-brace shape are reconstruction estimates. Vanilla fences approximate diagonals with connected voxel steps.','Track heights, terrain, roofs, existing blocks and centre clearance remain unchanged.']}
+    if style=='footprint':
+        report['fence_supports']['limitations']=['Footprints and native brown cross-lines determine starts and branch assignments; metre-grid fence members approximate continuous geometry.','LiDAR is a dated aerial survey: canopy, sparse returns and occluded lower track prevent exact timber identification.','Ambiguous or obstructed connections are withheld whole; no routing through a lower deck or arbitrary new footings.','Track heights, terrain, buildings and walking clearances remain unchanged.']
     output.parent.mkdir(parents=True,exist_ok=True)
     from . import bedrock,planning_station_preshow_world as checker,timber_track_world as renderer
     from .planning_world_preview import _verify_archive,_spawn_check
@@ -221,18 +231,19 @@ def run(base_directory,markings_path,pdf_path,output,*,cancelled=lambda:False,st
             surfaces={tuple(k) for k in keys}
             report['support_track_surfaces_native']=checker._native_surfaces(path,offset,[{'source_cell_xy':[x,y],'walking_top_m':h+(.5 if track[x,h,y].endswith('_slab') else 1)} for x,h,y in surfaces])
             atomic_json(path/'FENCE-SUPPORT-ASSUMPTIONS.json',report['fence_supports'])
-        world=bedrock.export_world(voxels,root,report,name='Wicker REFERENCE FRAMES - mixed posts gates trapdoors' if style=='reference' else 'Wicker DENSE TRESTLE - separate diagonal braces',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        title='Wicker FOOTPRINT TO CENTRE - dark oak supports' if style=='footprint' else 'Wicker REFERENCE FRAMES - mixed posts gates trapdoors' if style=='reference' else 'Wicker DENSE TRESTLE - separate diagonal braces'
+        world=bedrock.export_world(voxels,root,report,name=title,max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-fence-supports.mcworld');report['world']['file']='wicker-fence-supports.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'quality-report.json',report);atomic_json(root/'support-blocks.json',[{'source_xyz':list(k),'material':m} for k,m in sorted(support.items())])
         for name in ['track-blocks.json','track-samples.json','running-clearance-air.json']:shutil.copy2(base_directory/name,root/name)
-        support_preview(root/'support-preview.png',terrain,{**old,**support},base['full_track']['controls'],track_only=True)
-        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Plan-positioned timber support reconstruction</h1><a href="wicker-fence-supports.mcworld">Download world</a><p>Reference frames: segmented wooden and nether-brick fence posts, gate crosspieces and flat trapdoor shelves. Member sizes are inferred; blocked or ambiguous source positions are reported.</p><img style="max-width:100%" src="support-preview.png">')
+        support_preview(root/'support-preview.png',terrain,{**old,**support},base['full_track']['controls'],track_only=True,caption='Original brown footprints to assigned centreline: dark oak fences only; blocked connections omitted.' if style=='footprint' else None)
+        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Plan-positioned timber support reconstruction</h1><a href="wicker-fence-supports.mcworld">Download world</a><p>'+review['style']+'. Member sizes are inferred; blocked or ambiguous source positions are reported.</p><img style="max-width:100%" src="support-preview.png">')
         shutil.move(root,output)
     return report
 
 
-def support_preview(path,terrain,blocks,controls,*,track_only=False):
+def support_preview(path,terrain,blocks,controls,*,track_only=False,caption=None):
     from PIL import Image,ImageDraw,ImageColor
     from .rock_world_render import _boxes,colour
     xs=[k[0] for k in blocks];ys=[k[2] for k in blocks];lowx=min(xs)-2;highx=max(xs)+3;lowy=min(ys)-2;highy=max(ys)+3
@@ -243,8 +254,8 @@ def support_preview(path,terrain,blocks,controls,*,track_only=False):
     points=[project(x+dx,h+dh,y+dy) for x,h,y in occupied for dx,dh,dy in [(0,0,0),(1,1.5,1)]];xmin=min(p[0] for p in points);ymin=min(p[1] for p in points)
     image=Image.new('RGB',(math.ceil(max(p[0] for p in points)-xmin)+100,math.ceil(max(p[1] for p in points)-ymin)+150),'#f7f5ed');draw=ImageDraw.Draw(image);faces=[]
     for (x,h,y),m in occupied.items():
-        paint='#775637' if m.startswith('spruce_') else '#9e7c45' if 'trapdoor' in m else palette.get(m.removesuffix('_top'),colour(m));rgb=ImageColor.getrgb(paint)
-        neighbors=[(dx,dy) for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)] if (occupied.get((x+dx,h,y+dy)) in ['oak_fence','spruce_fence'] if m in ['oak_fence','spruce_fence'] else occupied.get((x+dx,h,y+dy))==m)]
+        paint='#4e3522' if m.startswith('dark_oak_') else '#775637' if m.startswith('spruce_') else '#9e7c45' if 'trapdoor' in m else palette.get(m.removesuffix('_top'),colour(m));rgb=ImageColor.getrgb(paint)
+        neighbors=[(dx,dy) for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)] if (occupied.get((x+dx,h,y+dy)) in ['oak_fence','spruce_fence','dark_oak_fence'] if m in ['oak_fence','spruce_fence','dark_oak_fence'] else occupied.get((x+dx,h,y+dy))==m)]
         if m.endswith('_trapdoor_top'):
             bounds=[(0,.8125,0,1,1,1)]
         elif '_trapdoor_' in m:
@@ -258,16 +269,17 @@ def support_preview(path,terrain,blocks,controls,*,track_only=False):
                 vertices=[v[i] for i in ids];depth=sum(a+c+.7*b for a,b,c in vertices)/4;polygon=[(project(*p)[0]-xmin+40,project(*p)[1]-ymin+85) for p in vertices]
                 faces.append((depth,polygon,tuple(round(c*shade) for c in rgb)))
     for _,polygon,rgb in sorted(faces,key=lambda f:f[0]):draw.polygon(polygon,fill=rgb,outline=tuple(max(0,c-12) for c in rgb))
-    draw.rectangle((0,0,image.width,62),fill='#f7f5ed');draw.text((18,14),('WICKER MAN: fence support reconstruction' if track_only else 'WICKER MAN: first source-bound timber track and support section'),fill='black');draw.text((18,35),'Source-positioned mixed fence frames, gate crosspieces and flat trapdoors; structural details remain provisional.',fill='black')
+    draw.rectangle((0,0,image.width,62),fill='#f7f5ed');draw.text((18,14),('WICKER MAN: fence support reconstruction' if track_only else 'WICKER MAN: first source-bound timber track and support section'),fill='black');draw.text((18,35),caption or 'Source-positioned mixed fence frames, gate crosspieces and flat trapdoors; structural details remain provisional.',fill='black')
     image.save(path)
 
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['base-directory','markings-path','pdf-path','output']:p.add_argument('--'+name,required=True)
-    p.add_argument('--style',choices=['reference','dense'],default='reference')
-    a=p.parse_args(argv);r=run(a.base_directory,a.markings_path,a.pdf_path,a.output,style=a.style)
-    print(json.dumps({'world_sha256':r['world']['sha256'],'bents':len(r['fence_supports']['constructed_bents']),'support_cells':r['fence_supports']['added_support_cells']}))
+    p.add_argument('--style',choices=['reference','dense','footprint'],default='reference')
+    p.add_argument('--cloud-path');p.add_argument('--cloud-receipt')
+    a=p.parse_args(argv);r=run(a.base_directory,a.markings_path,a.pdf_path,a.output,style=a.style,cloud_path=a.cloud_path,cloud_receipt=a.cloud_receipt)
+    print(json.dumps({'world_sha256':r['world']['sha256'],'supports':r['full_track']['supports_constructed'],'support_cells':r['fence_supports']['added_support_cells']}))
 
 
 if __name__=='__main__':main()
