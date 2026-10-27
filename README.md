@@ -737,3 +737,5 @@ Finished floors and path grades: [source FFL/LiDAR comparison and step hotspots]
 Conditional floor prototype: [Wicker floor plates, provisional plinths and bounded grading](docs/wicker-floor-foundation-preview.md), with explicit datum assumptions, 17 path-cell adjustments and separate entrance-access holds.
 
 Architectural access review: [Wicker openings, stair flights and roof-versus-wall roles](docs/wicker-building-access-review.md) maps eight proposed access features and explains why the three station edge samples are not confirmed entrances.
+
+Wall-based world prototype: [Conditional architectural floors and shop shell](docs/wicker-wall-shell-preview.md) exports three corrected floor studies and one source-height shop shell, with explicit datum, access and display-geometry assumptions.
