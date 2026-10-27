@@ -1,5 +1,7 @@
 # Station and preshow world extension
 
+The [station access update](wicker-station-access.md) supersedes the entrance-flight dimensions and block counts below: the current generator produces a five-column half-step connection to retained paving. The original v1 dimensions below document the earlier PR #113 export.
+
 This conditional world adds the station, lower preshow gable and taller pyramidal preshow section to the corrected shop scene. The earlier shop's 576 blocks retain their materials, positions and native vertical offset. Roofs use native oak top/bottom slabs as illustrative thatch proxies; no full-block roof layer is added.
 
 ## Original sources and measured heights
