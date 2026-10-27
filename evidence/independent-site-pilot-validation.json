@@ -1,0 +1,40 @@
+{
+  "version": "independent-site-pilot-validation-v1",
+  "site_count": 2,
+  "training_site": "alton-towers",
+  "training_examples": 148,
+  "evaluation_site": "glen-echo-park",
+  "evaluation_examples": 14,
+  "new_source_rasters": 4,
+  "new_buildings": 1,
+  "labels_frozen_before_evaluation": true,
+  "raster_replay_bit_identical": true,
+  "training_normalization_recomputed": true,
+  "training_evaluation_sources_disjoint": true,
+  "checkpoint_predictions_reproduced": true,
+  "classifier_correct": 2,
+  "majority_baseline_correct": 3,
+  "evaluation_accuracy": 0.14285714285714285,
+  "majority_baseline_accuracy": 0.21428571428571427,
+  "macro_f1": 0.05194805194805196,
+  "model_weights_updated": true,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "input_sha256": {
+    "source_profile": "20ed0314401877ba4c6ed0c81a7e109535d9be4d313ad99f82df41c791cdccf0",
+    "source_review": "bedfd00072b7a02a4819782a04844ce737d0417bf1a37f5be3aad9ce782f5f71",
+    "site_dataset": "0a3c3776558bb79552dc8a9172601c90301bff5f3e12696277fd9a617dcc1620",
+    "checkpoint": "510b6b2b21e2378183b2fc895ce3b609713e832454153767e4013aeb5077ef0d",
+    "experiment_report": "2f97325185dd18a813667bb944fc04cc489dd36c75f64d0b1a5aaa0235cd2ea2"
+  },
+  "limitations": [
+    "This evaluates the small 16-pixel crop classifier, not the full reconstruction pipeline.",
+    "One new building is not a broad cross-park benchmark.",
+    "Labels are assistant-reviewed source-pixel traces with stated uncertainty; no user acceptance or current physical geometry is inferred.",
+    "No tuning or relabeling followed consultation of these held-site predictions.",
+    "Thorpe committee plans remain reference only; no new Thorpe training labels."
+  ],
+  "tests_passed": 64,
+  "engineering_tests_use_synthetic_fixtures": true,
+  "real_source_reacquisition_verified": true
+}

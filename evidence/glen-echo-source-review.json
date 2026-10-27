@@ -1,0 +1,718 @@
+{
+  "version": "reviewed-raster-study-v1",
+  "site_id": "glen-echo-park",
+  "survey": "HABS MD-1080-A",
+  "catalogue_url": "https://www.loc.gov/item/md1366/",
+  "scope": "Source-pixel envelopes and traces only. One physical building and one site; multiple crops are not independent buildings.",
+  "sources": [
+    {
+      "id": "sheet-2",
+      "file": "glen-echo-sheet2.jpg",
+      "sha256": "915fe990a8f511ecfbe0e1b65b8fd5c3bf0e914ba475d42e9c13ae365d8409a6",
+      "size_pixels": [
+        1024,
+        829
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00002v.jpg",
+      "sheet": 2,
+      "survey_epoch": "1994",
+      "source_state": "existing",
+      "rights_advisory": "Library of Congress HABS MD-1080-A: no known restrictions on U.S. Government-made images; copied third-party images may differ. Selected sheets are HABS field-team measured drawings credited in the survey, not historical copied photographs.",
+      "catalogue_url": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "id": "sheet-3",
+      "file": "glen-echo-sheet3.jpg",
+      "sha256": "ba41091b9ef6910ad2dcfe68c97d2eff36334278bea20cbda9471bd82c30eec2",
+      "size_pixels": [
+        1024,
+        829
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00003v.jpg",
+      "sheet": 3,
+      "survey_epoch": "1994",
+      "source_state": "existing",
+      "rights_advisory": "Library of Congress HABS MD-1080-A: no known restrictions on U.S. Government-made images; copied third-party images may differ. Selected sheets are HABS field-team measured drawings credited in the survey, not historical copied photographs.",
+      "catalogue_url": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "id": "sheet-4",
+      "file": "glen-echo-sheet4.jpg",
+      "sha256": "a6c991120e5d7a7fd21ee848bef0e521863b256e1f262b760e47d34fdc360be4",
+      "size_pixels": [
+        1024,
+        826
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00004v.jpg",
+      "sheet": 4,
+      "survey_epoch": "1994",
+      "source_state": "existing",
+      "rights_advisory": "Library of Congress HABS MD-1080-A: no known restrictions on U.S. Government-made images; copied third-party images may differ. Selected sheets are HABS field-team measured drawings credited in the survey, not historical copied photographs.",
+      "catalogue_url": "https://www.loc.gov/item/md1366/"
+    },
+    {
+      "id": "sheet-5",
+      "file": "glen-echo-sheet5.jpg",
+      "sha256": "3e1ba2e7863b15f2c4cdfbc821acb500f7d0bb459bd177999ad6cb6fcbb47dae",
+      "size_pixels": [
+        1024,
+        828
+      ],
+      "url": "https://cdn.loc.gov/service/pnp/habshaer/md/md1300/md1366/sheet/00005v.jpg",
+      "sheet": 5,
+      "survey_epoch": "1994",
+      "source_state": "existing",
+      "rights_advisory": "Library of Congress HABS MD-1080-A: no known restrictions on U.S. Government-made images; copied third-party images may differ. Selected sheets are HABS field-team measured drawings credited in the survey, not historical copied photographs.",
+      "catalogue_url": "https://www.loc.gov/item/md1366/"
+    }
+  ],
+  "records": [
+    {
+      "id": "glen-echo-carousel-floor-outline",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-2",
+      "kind": "building",
+      "target_role": "surveyed_plan_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              128,
+              346
+            ],
+            [
+              165,
+              274
+            ],
+            [
+              222,
+              215
+            ],
+            [
+              303,
+              186
+            ],
+            [
+              414,
+              186
+            ],
+            [
+              501,
+              235
+            ],
+            [
+              556,
+              312
+            ],
+            [
+              568,
+              411
+            ],
+            [
+              550,
+              501
+            ],
+            [
+              478,
+              564
+            ],
+            [
+              389,
+              605
+            ],
+            [
+              275,
+              605
+            ],
+            [
+              188,
+              566
+            ],
+            [
+              135,
+              494
+            ],
+            [
+              128,
+              346
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-partial-roof-plan-edge",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-2",
+      "kind": "roof",
+      "target_role": "visible_partial_roof_plan_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            668,
+            158
+          ],
+          [
+            734,
+            158
+          ],
+          [
+            799,
+            198
+          ],
+          [
+            850,
+            249
+          ],
+          [
+            879,
+            304
+          ],
+          [
+            911,
+            371
+          ],
+          [
+            913,
+            397
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-east-upper-roof",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-3",
+      "kind": "roof",
+      "target_role": "elevation_roof_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              326,
+              227
+            ],
+            [
+              351,
+              214
+            ],
+            [
+              380,
+              190
+            ],
+            [
+              414,
+              169
+            ],
+            [
+              451,
+              153
+            ],
+            [
+              481,
+              145
+            ],
+            [
+              510,
+              142
+            ],
+            [
+              542,
+              147
+            ],
+            [
+              577,
+              161
+            ],
+            [
+              609,
+              181
+            ],
+            [
+              637,
+              202
+            ],
+            [
+              664,
+              220
+            ],
+            [
+              697,
+              229
+            ],
+            [
+              326,
+              227
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-east-lower-roof",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-3",
+      "kind": "roof",
+      "target_role": "elevation_roof_envelope",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              269,
+              273
+            ],
+            [
+              299,
+              268
+            ],
+            [
+              328,
+              253
+            ],
+            [
+              349,
+              248
+            ],
+            [
+              675,
+              248
+            ],
+            [
+              699,
+              261
+            ],
+            [
+              725,
+              269
+            ],
+            [
+              760,
+              274
+            ],
+            [
+              760,
+              280
+            ],
+            [
+              269,
+              280
+            ],
+            [
+              269,
+              273
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-east-clerestory-left",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-3",
+      "kind": "window",
+      "target_role": "window_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              399,
+              229
+            ],
+            [
+              418,
+              229
+            ],
+            [
+              418,
+              248
+            ],
+            [
+              399,
+              248
+            ],
+            [
+              399,
+              229
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-east-clerestory-right",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-3",
+      "kind": "window",
+      "target_role": "window_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              609,
+              229
+            ],
+            [
+              628,
+              229
+            ],
+            [
+              628,
+              248
+            ],
+            [
+              609,
+              248
+            ],
+            [
+              609,
+              229
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-east-masonry-pier",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-3",
+      "kind": "wall",
+      "target_role": "masonry_pier_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              348,
+              283
+            ],
+            [
+              359,
+              283
+            ],
+            [
+              368,
+              337
+            ],
+            [
+              338,
+              337
+            ],
+            [
+              348,
+              283
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-section-roof-edge",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-4",
+      "kind": "roof",
+      "target_role": "visible_roof_section_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            264,
+            273
+          ],
+          [
+            291,
+            268
+          ],
+          [
+            319,
+            254
+          ],
+          [
+            345,
+            229
+          ],
+          [
+            372,
+            199
+          ],
+          [
+            403,
+            174
+          ],
+          [
+            439,
+            156
+          ],
+          [
+            474,
+            146
+          ],
+          [
+            506,
+            142
+          ],
+          [
+            540,
+            147
+          ],
+          [
+            575,
+            160
+          ],
+          [
+            607,
+            179
+          ],
+          [
+            635,
+            203
+          ],
+          [
+            663,
+            230
+          ],
+          [
+            690,
+            253
+          ],
+          [
+            721,
+            268
+          ],
+          [
+            755,
+            274
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-section-left-post",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-4",
+      "kind": "structural_member",
+      "target_role": "building_support_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            299,
+            291
+          ],
+          [
+            298,
+            334
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-section-right-post",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-4",
+      "kind": "structural_member",
+      "target_role": "building_support_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            729,
+            291
+          ],
+          [
+            729,
+            334
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-section-left-brace",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-4",
+      "kind": "structural_member",
+      "target_role": "building_brace_trace",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            276,
+            281
+          ],
+          [
+            297,
+            308
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-clerestory-window-assembly",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-5",
+      "kind": "window",
+      "target_role": "clerestory_window_assembly_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              143,
+              93
+            ],
+            [
+              296,
+              93
+            ],
+            [
+              296,
+              145
+            ],
+            [
+              143,
+              145
+            ],
+            [
+              143,
+              93
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-door-leaf-one",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-5",
+      "kind": "door",
+      "target_role": "door_leaf_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              223,
+              396
+            ],
+            [
+              279,
+              396
+            ],
+            [
+              279,
+              540
+            ],
+            [
+              223,
+              540
+            ],
+            [
+              223,
+              396
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "glen-echo-carousel-door-leaf-two",
+      "building_id": "glen-echo-dentzel-carousel-building",
+      "source_id": "sheet-5",
+      "kind": "door",
+      "target_role": "door_leaf_outline",
+      "review_status": "reviewed_source_trace",
+      "review_basis": "Assistant visual source review of the original LOC drawing raster in this session. This is drawing-component supervision, not user acceptance of a reconstruction.",
+      "trace_uncertainty_pixels": 3,
+      "target_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              283,
+              396
+            ],
+            [
+              335,
+              396
+            ],
+            [
+              335,
+              540
+            ],
+            [
+              283,
+              540
+            ],
+            [
+              283,
+              396
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "excluded_sheets": [
+    {
+      "sheet": 1,
+      "reason": "Title/history/map sheet; no component labels selected."
+    },
+    {
+      "sheet": 6,
+      "reason": "Axonometric machinery cutaway needs a separately defined task; not mixed with architectural profile labels."
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "kind": "wall",
+      "sheets": [
+        5
+      ],
+      "reason": "Decorative stone-pier edges merge with surrounding timber at this service-raster resolution; no precise whole-pier label retained."
+    }
+  ]
+}
