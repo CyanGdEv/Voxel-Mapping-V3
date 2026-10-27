@@ -73,6 +73,9 @@ on:
       - 'voxel_mapper/timber_track_world.py'
       - 'voxel_mapper/full_track_world.py'
       - 'voxel_mapper/steep_track_world.py'
+      - 'voxel_mapper/fence_support_world.py'
+      - 'voxel_mapper/dense_trestle.py'
+      - 'voxel_mapper/data/wicker-fence-supports.json'
       - 'voxel_mapper/data/wicker-steep-track-deck.json'
       - 'voxel_mapper/track_elevation.py'
       - 'voxel_mapper/data/wicker-full-track-layout.json'
@@ -153,6 +156,8 @@ on:
       - 'tests/test_full_track_world.py'
       - 'tests/test_track_elevation.py'
       - 'tests/test_steep_track_world.py'
+      - 'tests/test_fence_support_world.py'
+      - 'tests/test_dense_trestle.py'
       - 'tests/test_planning_component_footprints.py'
       - 'tests/test_planning_component_measurements.py'
       - 'tests/test_planning_section_profiles.py'
@@ -293,6 +298,8 @@ jobs:
           python -m unittest discover -s tests -p 'test_full_track_world.py' -v
           python -m unittest discover -s tests -p 'test_track_elevation.py' -v
           python -m unittest discover -s tests -p 'test_steep_track_world.py' -v
+          python -m unittest discover -s tests -p 'test_fence_support_world.py' -v
+          python -m unittest discover -s tests -p 'test_dense_trestle.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Conditional Wicker floor and grading preview failed' }
           python -m unittest discover -s tests -p 'test_planning_component_footprints.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Fine component boundary recovery tests failed' }

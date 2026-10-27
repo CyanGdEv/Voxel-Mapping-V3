@@ -771,3 +771,8 @@ include covered-slot estimates and reported planning/terrain level differences.
 [Solid steep-track steps](docs/wicker-steep-track-deck.md) use matching full wood
 blocks or touching half slabs around one-metre rises, preserving the corrected
 running heights and the existing park.
+
+The [dense Wicker Man trestle reconstruction](docs/wicker-dense-trestle.md) recovers
+smaller outer footing marks as well as main support rows. Timber uprights and
+straight crossmembers use separate planes from nether-brick diagonals, with
+oriented gate joints and trapdoor plates. Blocked source positions are reported.

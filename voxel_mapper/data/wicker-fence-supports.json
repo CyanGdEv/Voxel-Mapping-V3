@@ -1,0 +1,21 @@
+{
+  "version": "fence-supports-v1",
+  "base_pins": {
+    "quality-report.json": "e977a92d8be8274a2cb61dd04e9ba04e67c1dc4697114420986e9bc521c8831e",
+    "voxels.jsonl": "d9b067d4ca58f506ce5d7935efed9ab34427843529ff43aa7f2618b83ab4d0ec",
+    "wicker-steep-track.mcworld": "6781790f878b2d84e5692d0451c755a90020fa5326fcbac124a0980652863fd1",
+    "track-blocks.json": "bbff17ff7c9d6e6b92f665a3377c93d0763e148ab11df78365c1eea12c49f4c3",
+    "track-samples.json": "fabf0f0c87183e9f9c285bb9594f3e172f8c5a5c8fe678fcfba6c3d534c72c80",
+    "running-clearance-air.json": "e07a02ad63b3b9627eaec728f6faacd1ed8cc2bb4818808a4b8ec955b9d79928"
+  },
+  "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+  "markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+  "metres_per_pdf_point": 0.08819444444444444,
+  "symbol_area_m2": [
+    0.2,
+    0.4
+  ],
+  "ambiguity_margin_m": 0.25,
+  "max_link_station_gap_m": 6,
+  "max_added_blocks": 60000
+}
