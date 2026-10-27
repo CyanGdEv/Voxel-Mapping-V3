@@ -1,0 +1,39 @@
+{
+  "version": "maintenance-building-v1",
+  "source_pdf_sha256": "457947fa1c1d4fb52ac51fcc6bc759f5e42c7a5e516ce0cb0ef1532b4893417f",
+  "roof_pdf_sha256": "6ede3a782954b1ab9ae0442791169c25a44dcfa0a79d99fbfe8b4e4bda019047",
+  "outline_review_sha256": "73ec52b9699e78ab7d73cad6a6cfbed70c77a339cc250527a06f759e43729fc6",
+  "access_review_sha256": "733e5f554082eb7380343a19c9e71a391249a916d9662e6492da5161008750b3",
+  "shop_report_sha256": "560a4b394de30c818f5011f1ef79a2ab880d30882873ce81d387806568c128ee",
+  "render_size": [
+    1888,
+    1334
+  ],
+  "render_samples_sha256": "396c73e10a62fb6172b548cf4f69408b5a8d4bdb335d1073d7005fe2e7e24210",
+  "elevation_trace": {
+    "view": "Elevation 12 to the West",
+    "datum_pixel": [
+      1100,
+      739
+    ],
+    "datum_label": "Maintenance Building Inspection Lvl +181.50",
+    "eave_pixel": [
+      1160,
+      625
+    ],
+    "ridge_pixel": [
+      1300,
+      555
+    ],
+    "inspection_level_m": 181.5,
+    "endpoint_sampling_bound_pixels": 2
+  },
+  "display_floor_top_m": 184,
+  "base_pins": {
+    "quality-report.json": "cee241a0c2d8c6293ad3d4b017c9f9cd417f720a3332ba41b1e536168c6e0331",
+    "voxels.jsonl": "859351c4a8f38fae2dbb10540841ffbc75a8070498dabcf96ab48be1e20eff06",
+    "wicker-station-preshow.mcworld": "cada9d4250ba39759713edf82a306c34510d420794e4bb82557423dbcb908c45",
+    "portal-air.json": "4d1480ec2545a19db522a5883af866a8d9e86b940259e5cd277059d36bf671d0",
+    "basement-gap-air.json": "5556011e3927b887f9739ea14a35896a30b17a8c57d8c1142040429adbc26ba8"
+  }
+}

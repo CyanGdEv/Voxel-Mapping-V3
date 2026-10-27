@@ -747,3 +747,5 @@ Station access update: [Half-step connection to retained paving and basement out
 Basement alignment: [Shared building outlines, original queue edges and exact replacement conflicts](docs/wicker-basement-alignment.md) aligns the lower plan with a held-out corner check and preserves the world while upper-wall and entrance conflicts are reconciled.
 
 Aligned preshow world: [Floor-led walls, recentered slab roofs, basement openings and connected queue deck](docs/wicker-aligned-preshow-world.md) applies the alignment while preserving the shop and reporting metre-grid paving aliases and remaining lower-access assumptions.
+
+Maintenance construction: [Source-height slab roof, timber walls and lower stone course](docs/wicker-maintenance-building.md) builds the marked maintenance footprint while preserving the existing park and recording the station/service-door voxel overlap.
