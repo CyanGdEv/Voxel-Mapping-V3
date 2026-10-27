@@ -1,46 +1,44 @@
-# Complete Wicker Man track layout, without supports
+# Wicker Man track elevation correction
 
-The complete retained 773.57 m plan centreline is built in the user's oak/spruce
-slab, fence and outward-trapdoor pattern. An explicitly estimated 1.60 m connector
-closes the small drafting gap. No footing, timber bent, brace, ground-reaching
-post, under-deck tie or functional ride mechanism is added.
+The original full-layout export lowered only terrain directly under the deck.
+It did not check the neighbouring banks, leaving visible trenches around the low
+track sections. Its guessed 188 m queue overpass also ran through the preshow roof.
+The revised generator starts again from the pre-track maintenance park, restoring
+that export's outdoor terrain cuts and all roof/wall blocks above level 183.
 
-The input is the pinned 373/95/7 B planning drawing and the same mapped geometry
-used for the earlier section. All 14 printed HP/LP levels are replayed against
-original PDF text and crosshair vectors; expected chainages prevent accidental
-branch rebinding. HP7 remains a provisional crossing assignment supported by the
-crosshair's much closer selected branch; it is not independently surveyed.
+Outdoor profile fitting probes original terrain across a 6 m shoulder corridor,
+including forward/backward samples and retained stone/fence obstacles. The target
+deck top clears that envelope by 1 m, then neighbouring samples rise to smooth
+local bumps. The check uses actual raster slab undersides against terrain and
+adjacent banks; a low source height cannot pass by excavating outdoor terrain.
+Actual slab placement still uses half-block quantization.
 
-The full vertical profile remains a display hypothesis. The flat station and
-maintenance approach is estimated at 185 m to chainage 120 m, rising to an
-estimated queue overpass at 188 m by chainage 140 m and the lift start at
-165 m. The lift rises to
-HP1, and the return closes at 185 m. Two extra estimated intermediate controls
-separate raster deck crossings: 190 m at chainage 180 m and 190.5 m at 405 m.
-They do not change the printed HP/LP values. Smooth interpolation and half-block
-quantization between controls do not reproduce measured banking, actual vertical
-curvature or construction sections. The actual raster surface may be higher than
-an anchor by half-block rounding and choosing the highest local sample per cell.
+Three explicit covered slots use different rules: maintenance and station at
+183.5 m, and a preshow underpass at 180 m below the retained 184 m upper floor.
+These are prototype track levels, not measured running heights. The preshow
+approach descends from chainage 120 m, reaches 180 m at 125 m and stays low through
+153 m before rising towards the lift. Only the declared covered track beds and
+entrances allow bounded cuts. Roof and upper-wall removal at height 186 or above
+is forbidden, and the preshow undercroft ceiling at 183 is separately protected.
+In this export every retained building block above height 183 is unchanged.
 
-Unlike the earlier single-section sampler, separate track visits to one XY column
-retain separate vertical layers. The generator rejects slabs inside another
-track's three-block centre clearance. It checks every slab's cardinal connectivity
-and continuity of the ordered centre samples, including the closed seam.
+Centre clearance is explicitly two whole air blocks above the rounded slab top,
+suitable for checking this static model. Side fences remain outside that strip.
+This is not a certified train envelope or a functional ride. No supports, bents,
+footings or under-deck ties are added.
 
-Only local terrain under track cells is lowered, up to the six-metre cut budget.
-Exact original terrain rows are retained in receipts. The provisional station,
-preshow and maintenance mesh can be opened along the source track path, with
-individual block-removal receipts. Adjacent fence aliases may be retired; shop
-entrances and unrelated structures are protected. These cuts are prototype
-integration changes, not recovered architectural portals or earthworks.
+All 14 planning labels and their original source bindings remain in the report.
+Terrain fitting can raise their display heights when the retained DTM/obstacles
+conflict with the drawing. `elevation_review.source_level_comparison` reports each
+difference, rather than silently changing source evidence. The largest marker
+adjustment before rounding is LP6, approximately +2.47 m. Small nonzero differences
+elsewhere can also arise from half-metre profile sampling. These discrepancies
+need further source/terrain reconciliation before a surveyed-accuracy claim.
 
-The export starts from the pinned pre-track maintenance world. This replaces the
-previous 98.9 m track and avoids importing its rejected support frames. Native
-checks verify every slab surface and centre headroom, archive integrity, chunk
-reopening and the retained vertical offset. Independent delivery checks compare
-all old native structure states except declared passage removals, and preserve
-the corrected shop landings and queue surfaces/headroom. Actual Minecraft client
-import and ride operation have not been tested.
+The complete 773.57 m retained centreline plus its explicitly estimated 1.60 m
+drafting-gap connector is preserved. Independent vertical visits to one XY cell
+remain separate; slab and ordered sample connectivity are checked. Banking,
+vertical curvature between source levels and approach heights remain provisional.
 
 ```sh
 python -m voxel_mapper.full_track_world \
@@ -50,5 +48,9 @@ python -m voxel_mapper.full_track_world \
   --output FRESH-DIRECTORY --allow-provisional
 ```
 
-The profile `wicker-full-track-layout.json` pins original inputs, all marker
-bindings, estimated approach/crossing controls and construction budgets.
+The profile pins original source files, base world, marker assignments, estimated
+approach controls, covered slots and clearance settings. Native delivery checks
+compare retained block states, verify restored upper buildings and ceiling,
+check outdoor terrain/shoulder clearance, preserve shop landings and queue access,
+and reopen saved chunks/archive files. Actual Minecraft client import and ride
+operation are not tested.
