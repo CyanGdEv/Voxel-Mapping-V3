@@ -1,6 +1,6 @@
 # Conditional wall-based floors and shop shell
 
-This separate Bedrock world replaces roof-envelope floor plates with proposed external-wall traces for the shop, station and maintenance building. It adds one shop wall/main-roof display shell using the retained source-relative elevation heights. The geographic terrain world and earlier floor prototype are unchanged.
+This separate Bedrock world replaces roof-envelope floor plates with proposed external-wall traces for the shop, station and maintenance building. It adds a shop wall/main-roof display shell, entrance canopy and facade styling guided by the retained shop study. The geographic terrain world and earlier floor prototype are unchanged.
 
 ## Generated geometry
 
@@ -12,6 +12,8 @@ This separate Bedrock world replaces roof-envelope floor plates with proposed ex
 | New wall-trace samples outside previous roof plates | 39 |
 | Shop wall / roof slab blocks | 285 / 216 |
 | Timber fascia below roof steps | 0 |
+| Study canopy slabs | 12 |
+| Placed facade detail blocks | 47 |
 | Shop boundary bearing columns outside floor centre samples | 36 |
 | Provisional stone bearing-fill blocks | 212 |
 | Existing inferred oak-fence columns superseded | 3 |
@@ -29,11 +31,19 @@ There are 42 wall/roof boundary alias cells where a full timber gable top takes 
 
 The shape-aware outside-air check uses native half-block occupancy and checks 5588 interior half-cells with openings temporarily sealed; none is reached. Native export checks saved dark-oak slab materials and top/bottom states. The updated schematic preview renders these roof half heights.
 
+## Earlier shop study as the visual guide
+
+The placed revision follows the retained SLABS V4 / WALL DETAIL V5 study instead of treating the shop as a plain massing shell. It reuses the checksum-pinned projection model for the entrance canopy and the earlier study's spruce walls, dark-oak posts and opened spruce trapdoor panels. The geometry is mapped before grid sampling; cached local-world blocks and directional states are not blindly rotated into the park.
+
+The canopy's NE trace gives a rear roof height of approximately 3.34 m and front upper edge of 2.76 m above the drawn floor. Its retained SE front-height difference is 0.312 m and remains unresolved. The existing NE-height hypothesis is preserved; no averaging or as-built claim is added. Original elevation and roof-plan render hashes are checked again, and canopy heights are replayed. Native top/bottom slabs quantize the canopy while retaining two clear doorway blocks.
+
+Post spacing and trapdoor panels are illustrative styling inherited from the user-requested study, not recovered construction dimensions. Facade details attach to actual solid wall cells in the placed grid, avoid doorway corridors, and are skipped where they would intersect terrain, roof blocks or retained edging. Native fence/trapdoor states are verified during export. The updated preview includes fence, stair, slab and opened-panel shapes.
+
 ## Source and height checks
 
 The builder reruns the architectural access review from the original 2967-21/48 PDFs and checksum-pinned annotations. It retains the existing rigid drawing-to-landscape correspondence and OSM/terrain transform. A separate ordered four-corner fit maps the retained shop model to the wall trace without scale, shear or reflection. Its maximum corner residual is below 0.000001 m; this is numerical drawing correspondence, not survey accuracy.
 
-The original 2967-26 shop elevation PDF is checksum/render checked. Nine wall/opening height traces and the main roof dimensions/eave/ridge are replayed and compared with the retained model. The source main roof is approximately 16.88 × 12.83 m, with a 3.52 m eave and 7.21 m ridge above the drawn shop floor. Broad openings have approximately 2.49 m source height and the side door approximately 2.09 m; the one-metre display retains two clear air blocks. Full physical opening width and external route access are not verified. The retained roof/wall centring is an assembly hypothesis. Canopy, bunding, interior partitions and decorative details are omitted.
+The original 2967-26 shop elevation PDF is checksum/render checked. Nine wall/opening height traces and the main roof dimensions/eave/ridge are replayed and compared with the retained model. The source main roof is approximately 16.88 × 12.83 m, with a 3.52 m eave and 7.21 m ridge above the drawn shop floor. Broad openings have approximately 2.49 m source height and the side door approximately 2.09 m; the one-metre display retains two clear air blocks. Full physical opening width and external route access are not verified. The retained roof/wall centring is an assembly hypothesis. The study canopy and illustrative facade details are included; bunding and interior partitions remain omitted.
 
 Floor annotations are re-extracted from the original 2017 landscape PDF. Printed FFLs are **conditionally assumed to be ODN** and quantized to whole-block walking tops: shop 182 m from source 182.50; station and maintenance 183 m from source 183.25. The 2016 architectural wall traces and 2017 landscape levels remain separate dated proposals; their combined/as-built correspondence is not established.
 
@@ -41,7 +51,7 @@ The retained maintenance drawing 2967-42 shows a 1:36 slope and inspection/max-l
 
 ## Validation and remaining access work
 
-Nine focused wall-shell/slab tests pass for the slab revision (the earlier full-block prototype passed 26 focused tests), including source-scale/reflection rejection, doorway air preservation, deliberately damaged roof leak detection, cancellation, bounded inferred-fence replacement and source integrity refusal. The final native slab-shape six-neighbour check tests 5,588 interior half-cells, with door openings temporarily sealed only for this check; none is reached. Actual door apertures stay open in the exported world.
+Twelve focused wall-shell/slab/facade tests pass for the study-guided revision (the earlier full-block prototype passed 26 focused tests), including source-scale/reflection rejection, doorway air preservation, deliberately damaged roof leak detection, cancellation, bounded inferred-fence replacement and source integrity refusal. The final native slab-shape six-neighbour check tests 5,588 interior half-cells, with door openings temporarily sealed only for this check; none is reached. Actual door apertures stay open in the exported world.
 
 Native saved-world checks cover all 39,250 surface columns and their first three levels, 28 doorway air samples, all written shell/bearing blocks and unwritten chunk air. Archive CRC, exact packaged file bytes, spawn and cold reopen of all 187 chunks pass. These checks are not Minecraft client import or gameplay testing.
 

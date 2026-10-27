@@ -64,6 +64,25 @@ class WallShellTests(unittest.TestCase):
         with self.assertRaises(ValueError):shell.shop_shell(low,wall,182)
         with self.assertRaises(CancelledError):shell.shop_shell(model,wall,182,cancelled=lambda:True)
 
+    def test_study_canopy_and_facade_preserve_shell_and_door_clearance(self):
+        model,wall=model_and_wall();guide=json.loads((ROOT/'evidence/wicker-shop-projection-model.json').read_text())
+        model['projection_surfaces']=guide['projection_surfaces'];model['projection_review']=guide['projection_review']
+        base,_,main=shell.shop_shell(model,wall,182);before=dict(base)
+        terrain={(x,y):180 for x in range(75,125) for y in range(100,140)}
+        blocks,review=shell.study_guide_features(model,wall,base,terrain,{},182)
+        self.assertEqual(base,before)
+        self.assertTrue(all(blocks[k]==v for k,v in base.items()))
+        self.assertGreater(review['canopy_slab_blocks'],0);self.assertGreater(review['facade_detail_blocks'],0)
+        self.assertTrue(all('slab' in r['material'] for r in review['canopy_blocks']))
+        self.assertEqual({r['material'].split('_trapdoor_')[0] for r in review['facade_details']},{'dark_oak_fence','spruce'})
+        for r in review['facade_details']:self.assertEqual(blocks[tuple(r['wall_anchor_source_xyz'])],'spruce_planks')
+        for opening in main['openings']:
+            for x,y in opening['display_columns_xy']:
+                for h in range(opening['display_clearance_blocks']):self.assertNotIn((x,182+h,y),blocks)
+        first=review['canopy_blocks'][0]['source_xyz'];high={k:183 for k in terrain}
+        edging={(first[0],first[2]):[(first[1]-183,'stone')]}
+        with self.assertRaises(ValueError):shell.study_guide_features(model,wall,base,high,edging,182)
+
     def test_only_bounded_inferred_fences_yield_to_source_wall_traces(self):
         sampled={'rocks':{(0,0):[(1,'oak_fence')],(1,0):[(1,'stone')]},'boundary_blocks':2}
         policy={'policy_origin':'user_instruction','explicit_claims_override_default':True}

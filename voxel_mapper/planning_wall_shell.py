@@ -64,7 +64,21 @@ def verify_shop_sources(pdf_directory,evidence_directory,profile):
         if not np.allclose([np.ptp(vertices[:,0]),np.ptp(vertices[:,1]),vertices[:,2].min(),vertices[:,2].max()],[length,width,eave,ridge],atol=1e-9,rtol=0):raise ValueError('Shop roof dimensions fail original elevation replay')
         for o in model['opening_base_segments']:
             if abs(o['height_metres']-heights[o['height_trace']])>1e-9:raise ValueError('Opening height does not match source trace')
-    return model,{'source_pdf_sha256':sha,'vertical_traces_replayed':len(heights),'roof_dimensions_m':[length,width],'eave_above_drawn_floor_m':eave,'ridge_above_drawn_floor_m':ridge,'as_built_verified':False}
+    guide=inputs['wicker-shop-projection-model.json']
+    if guide['projection_input_wall_sha256']!=profile['review_input_sha256']['wicker-shop-wall-model.json']:raise ValueError('Study guide wall model mismatch')
+    for source,frame in guide['projection_review']['source_frames'].items():
+        original=Path(pdf_directory)/(source+'.pdf')
+        if original.stat().st_size>24_000_000 or file_hash(original)!=source:raise ValueError('Study canopy original PDF changed')
+        with pymupdf.open(original) as doc:
+            if len(doc)!=1:raise ValueError('Single original study sheet required')
+            page=doc[0];render=page.get_pixmap(matrix=pymupdf.Matrix(1888/page.rect.width,1888/page.rect.width))
+            if [render.width,render.height]!=frame['render_size_pixels'] or hashlib.sha256(render.samples).hexdigest()!=frame['render_samples_sha256']:raise ValueError('Retained study canopy render changed')
+    for view,trace in guide['projection_review']['elevation_traces'].items():
+        points=trace['manual_points_pixels'];floor_y=points['floor'][1]
+        for key,value in trace['heights_above_drawn_floor_metres'].items():
+            if abs((floor_y-points[key][1])*mpp-value)>1e-9:raise ValueError('Study canopy height trace failed source replay')
+    model['projection_surfaces']=guide['projection_surfaces'];model['projection_review']=guide['projection_review']
+    return model,{'guide_model_sha256':profile['review_input_sha256']['wicker-shop-projection-model.json'],'source_pdf_sha256':sha,'vertical_traces_replayed':len(heights),'roof_dimensions_m':[length,width],'eave_above_drawn_floor_m':eave,'ridge_above_drawn_floor_m':ridge,'as_built_verified':False}
 
 
 def shop_shell(model,wall_geometry,floor_top,*,cancelled=lambda:False):
@@ -162,6 +176,64 @@ def shop_shell(model,wall_geometry,floor_top,*,cancelled=lambda:False):
         'display_rule':'half-metre exposed roof samples; at most half-metre neighbour steps; no full roof layer or metre-high fascia bands; full timber at gable/slab boundary aliases',
         'source_wall_roof_centring_hypothesis_retained':True,'physical_thickness_verified':False,'reconstructed_as_built':False}
 
+
+
+def study_guide_features(model,wall_geometry,shell,terrain,edging,floor_top):
+    """Carry the retained study canopy and decorative palette into the placed grid."""
+    outline=np.asarray(model['outer_wall_base_outline'])[:,:2];target=np.asarray(wall_geometry.exterior.coords)[:-1]
+    rotation,translation,_=ordered_rigid(outline,target);result=dict(shell);canopy=[];details=[]
+    if 'projection_surfaces' not in model:raise ValueError('Retained shop study canopy required')
+    surface=next(s for s in model['projection_surfaces'] if s['role']=='canopy-roof')
+    vertices=np.asarray(surface['vertices']);footprint=Polygon(vertices[:,:2]@rotation+translation)
+    a,b,c,d=footprint.bounds
+    if (math.ceil(c)-math.floor(a))*(math.ceil(d)-math.floor(b))>128:raise ValueError('Study canopy budget exceeded')
+    # The retained canopy plane slopes in its source X direction.
+    gradient=(vertices[2,2]-vertices[0,2])/(vertices[2,0]-vertices[0,0])
+    for x in range(math.floor(a),math.ceil(c)):
+        for y in range(math.floor(b),math.ceil(d)):
+            if footprint.intersection(box(x,y,x+1,y+1)).area<1e-9:continue
+            local=(np.asarray([x+.5,y+.5])-translation)@rotation.T
+            local_x=max(vertices[:,0].min(),min(vertices[:,0].max(),local[0]))
+            height=vertices[0,2]+gradient*(local_x-vertices[0,0]);half=round(2*height)-1
+            h=floor_top+half//2;p=x,h,y
+            if (x,y) not in terrain:raise ValueError('Canopy leaves retained world')
+            if p in result:continue
+            if h<floor_top+2 or h<=terrain[x,y]:raise ValueError('Canopy obstructs two-block doorway headroom or terrain')
+            if any(h==terrain[x,y]+level for level,_ in edging.get((x,y),[])):raise ValueError('Canopy conflicts with retained edging')
+            result[p]='dark_oak_slab_top' if half%2 else 'dark_oak_slab'
+            canopy.append({'source_xyz':list(p),'material':result[p]})
+    if not canopy:raise ValueError('Retained canopy did not produce a placed sample')
+    # The old study used source-illustrative posts every three metres, with
+    # opened spruce panels between. Cardinal attachment is re-evaluated here.
+    lines=[LineString([a,b]) for a,b in zip(target,np.roll(target,-1,axis=0))]
+    door_lines=[]
+    for opening in model['opening_base_segments']:
+        pts=np.asarray(opening['endpoints'])[:,:2]@rotation+translation;door_lines.append(LineString(pts))
+    boundary=set((x,y) for x,h,y in shell if h==floor_top and shell[x,h,y]=='spruce_planks')
+    for x,y in sorted(boundary):
+        q=Point(x+.5,y+.5);edge=min(range(4),key=lambda i:lines[i].distance(q));line=lines[edge]
+        tangent=np.asarray(line.coords[1])-np.asarray(line.coords[0]);normal=np.array([-tangent[1],tangent[0]])
+        middle=np.asarray(line.interpolate(.5,normalized=True).coords[0])
+        if np.dot(normal,middle-np.asarray(wall_geometry.centroid.coords[0]))<0:normal=-normal
+        dx,dy=(int(np.sign(normal[0])),0) if abs(normal[0])>=abs(normal[1]) else (0,int(np.sign(normal[1])))
+        exterior=(x+dx,y+dy)
+        if exterior not in terrain or wall_geometry.covers(Point(exterior[0]+.5,exterior[1]+.5)):continue
+        if any(l.distance(Point(exterior[0]+.5,exterior[1]+.5))<1.25 for l in door_lines):continue
+        post=int(line.project(q))%3==0
+        facing=('east' if dx>0 else 'west') if dx else ('north' if dy>0 else 'south')
+        for height in (range(3) if post else (1,)):
+            p=(exterior[0],floor_top+height,exterior[1]);anchor=(x,floor_top+height,y)
+            if result.get(anchor)!='spruce_planks' or p in result or p[1]<=terrain[exterior]:continue
+            if any(p[1]==terrain[exterior]+level for level,_ in edging.get(exterior,[])):continue
+            material='dark_oak_fence' if post else 'spruce_trapdoor_'+facing
+            if post and (p[0],p[1]+1,p[2]) in result:continue
+            result[p]=material;details.append({'source_xyz':list(p),'wall_anchor_source_xyz':list(anchor),'material':material,'source_edge':edge})
+    if len(details)>256:raise ValueError('Study facade-detail budget exceeded')
+    return result,{'guide':'retained Wicker Shop wall-detail/slab study','canopy_slab_blocks':len(canopy),'canopy_blocks':canopy,
+        'canopy_height_choice':model['projection_review']['height_choice'],
+        'canopy_NE_minus_SE_front_height_m':model['projection_review']['front_height_NE_minus_SE_metres'],
+        'facade_detail_blocks':len(details),'facade_details':details,'decorative_spacing_m':3,'decoration_dimensions_source_verified':False,
+        'roof_or_ground_source_geometry_modified':False,'physical_canopy_identity_verified':False}
 
 
 def resolve_inferred_fences(sampled,targets,gap_policy):
@@ -262,6 +334,8 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         before=audit.path_steps(path,heights,placement['nominal_local_xy_to_bng_en_affine']);grading=floor.grade_paths(path,heights,cancelled=cancelled)
         heights.update(grading);heights.update(floor_targets)
         for k in floor_targets:sampled['ground'].setdefault(k,'stone_bricks')
+        shell,guide_report=study_guide_features(model,walls['Shop'],shell,heights,sampled['rocks'],shop_top)
+        if len(shell)>profile['limits']['shell_blocks']:raise ValueError('Study-guided shop exceeds block budget')
         structures={};bearing_blocks=0
         for (x,y),h in floor_targets.items():
             for z in range(original_heights[x,y]+1,h):structures[x,z,y]='stone_bricks';bearing_blocks+=1
@@ -280,13 +354,13 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         combined=audit.path_steps(path|set(floors),heights,placement['nominal_local_xy_to_bng_en_affine'])
         perimeter=[r for r in combined['hotspots'] if sum(tuple(k) in floors for k in r['source_cells_xy'])==1]
         spawn=sampled['retained_spawn_local_xyz_m'];spawn_key=math.floor(spawn[0]),math.floor(spawn[2])-1
-        report={'version':'conditional-wall-based-floor-and-slab-shop-shell-v2','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
+        report={'version':'conditional-wall-based-floor-and-study-guided-shop-v3','status':'conditional_source_height_shop_shell','voxel_size_m':1,'model_blocks_per_source_metre':1,'crs':'EPSG:27700','vertical_datum':'ODN',
             'spawn_local_xyz_m':[spawn[0],heights[spawn_key]+1,spawn[2]],'alignment':placement,'horizontal_transform':base['horizontal_transform'],
             'source_terrain':terrain,'source_floor_datum_verified':False,'datum_assumption':'Printed FFL assumed ODN only for this isolated study; same whole-block floor quantization as prior preview.',
             'floor_cells':len(floors),'floor_plates':floor_report,'source_landscape_pdf_sha256':data['layout']['document_sha256'],
             'prior_roof_plate_cells_removed':len(old_floor_cells-set(floors)),'wall_trace_cells_outside_prior_roof_plates':len(set(floors)-old_floor_cells),'shop_boundary_bearing_columns':len(boundary),'additional_boundary_bearing_columns':len(boundary-set(floors)),
             'inferred_fence_columns_superseded':edging_changes,'remaining_source_edging_blocks':sampled['boundary_blocks'],
-            'provisional_bearing_fill_blocks':bearing_blocks,'foundation_design_verified':False,'source_shop_height_replay':height_review,'shop_shell':shell_report,
+            'provisional_bearing_fill_blocks':bearing_blocks,'foundation_design_verified':False,'source_shop_height_replay':height_review,'shop_shell':shell_report,'shop_study_guide':guide_report,
             'conditional_shell_buildings':1,'reconstructed_as_built_buildings':0,'station_and_maintenance_shells_added':False,'maintenance_sloping_floor_reconstructed':False,
             'path_cells_changed':len(grading),'path_steps_before':before,'path_steps_after':after,'floor_perimeter_multi_block_steps':perimeter,'floor_perimeter_multi_block_step_pairs':len(perimeter),
             'building_access_verified':False,'production_placement_eligible':False,'physical_registration_verified':False,'training_labels_generated':0,'minecraft_import_tested':False,
@@ -310,7 +384,7 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
             report['saved_geometry_validation']=saved_check(path,offset,sampled,heights,structures,shell_report['openings'],shop_top,cancelled)
             atomic_json(path/'planning-geographic-alignment.json',{**placement,'minecraft_cell_centre_to_source_xy':'[Minecraft X + 0.5, -(Minecraft Z + 0.5)]','vertical_offset_blocks':offset})
             atomic_json(path/'CONDITIONAL-WALL-SHELL-ASSUMPTIONS.json',{k:report[k] for k in ['datum_assumption','source_floor_datum_verified','building_access_verified','limitations','conditional_shell_buildings']})
-        world=bedrock.export_world(voxel,root,report,name='Wicker wall-based floors and SLAB ROOF shop shell',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name='Wicker STUDY GUIDE shop with slab roof and canopy',max_blocks=profile['limits']['world_blocks'],ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-wall-based-floors-and-shop-shell.mcworld');report['world']['file']='wicker-wall-based-floors-and-shop-shell.mcworld';shutil.rmtree(root/'bedrock-world')
         atomic_json(root/'floor-cells.json',[{'source_cell_xy':list(k),'original_terrain_block_odn_m':original_heights[k],**r} for k,r in sorted(floors.items())])
@@ -322,7 +396,7 @@ def run(config,base_directory,floor_preview_directory,pdf_directory,evidence_dir
         for n in ['osm','dtm','grid']:
             if file_hash(config[n+'_path'])!=config[n+'_sha256']:raise ValueError('Geographic source changed during export')
         atomic_json(root/'quality-report.json',report)
-        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Conditional wall-based floors and shop shell</title><h1>Wall-based floors and one conditional shop shell</h1><p><a href="wicker-wall-based-floors-and-shop-shell.mcworld">Download world</a>. All three floor footprints follow proposed external wall traces. Only the shop has walls and a main roof. Floor datum, bearing fills, voxel closure and materials remain conditional; access connections are unresolved.</p><img style="max-width:100%" src="building-shell-preview.png"><p><a href="quality-report.json">Validation and assumptions</a></p>')
+        (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Conditional wall-based floors and shop shell</title><h1>Wall-based floors and one conditional shop shell</h1><p><a href="wicker-wall-based-floors-and-shop-shell.mcworld">Download world</a>. All three floor footprints follow proposed external wall traces. The shop includes a slab roof, retained-study canopy and illustrative timber facade details. Floor datum, bearing fills, voxel closure and materials remain conditional; access connections are unresolved.</p><img style="max-width:100%" src="building-shell-preview.png"><p><a href="quality-report.json">Validation and assumptions</a></p>')
         shutil.move(root,output)
     return report
 
@@ -340,28 +414,31 @@ def _preview(root,voxel,floor_top):
     width=math.ceil(max(p[0] for p in all_points)-xmin)+90;height=math.ceil(max(p[1] for p in all_points)-ymin)+145
     image=Image.new('RGB',(width,height),'#f9f7ee');draw=ImageDraw.Draw(image);faces=[]
     palette={'spruce_planks':'#8b6747','dark_oak_planks':'#493520','dark_oak_slab':'#493520','dark_oak_slab_top':'#493520','grass_block':'#83a65c','stone_bricks':'#9c9e9a'}
+    from .rock_world_render import _boxes
     for (x,y,h),material in occupied.items():
-        rgb=ImageColor.getrgb(palette.get(material,colour(material)))
-        for neighbour,corners,shade in [((x+1,y,h),[(1,0,0),(1,1,0),(1,1,1),(1,0,1)],.75),
-                ((x,y+1,h),[(0,1,0),(1,1,0),(1,1,1),(0,1,1)],.58),
-                ((x,y,h+1),[(0,0,1),(1,0,1),(1,1,1),(0,1,1)],1)]:
-            # A neighbouring top slab does not cover the side of a bottom slab.
-            if neighbour in occupied:
-                other=occupied[neighbour]
-                current_low=.5 if material=='dark_oak_slab_top' else 0
-                current_high=current_low+(.5 if material in ('dark_oak_slab','dark_oak_slab_top') else 1)
-                other_low=.5 if other=='dark_oak_slab_top' else 0
-                other_high=other_low+(.5 if other in ('dark_oak_slab','dark_oak_slab_top') else 1)
-                if neighbour[2]==h and other_low<=current_low and other_high>=current_high:continue
-                if neighbour[2]==h+1 and current_high==1 and other_low==0:continue
-            vertices=[(x+a,y+b,h+(.5 if material=='dark_oak_slab_top' else 0)+c*(.5 if material in ('dark_oak_slab','dark_oak_slab_top') else 1)) for a,b,c in corners]
-            depth=sum(a+b+.82*c for a,b,c in vertices)/4
-            points=[(project(v)[0]-xmin+40,project(v)[1]-ymin+82) for v in vertices]
-            faces.append((depth,points,tuple(round(v*shade) for v in rgb)))
+        paint='#46321f' if material=='dark_oak_fence' else '#9b7953' if material.startswith('spruce_trapdoor_') else palette.get(material,colour(material))
+        rgb=ImageColor.getrgb(paint)
+        if material=='dark_oak_slab_top':bounds=[(0,.5,0,1,1,1)]
+        elif material.startswith('spruce_trapdoor_'):
+            direction=material.removeprefix('spruce_trapdoor_');t=3/16
+            bounds=[{'north':(0,0,0,1,1,t),'south':(0,0,1-t,1,1,1),'east':(0,0,0,t,1,1),'west':(1-t,0,0,1,1,1)}[direction]]
+        else:
+            neighbours=[(dx,dy) for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)] if occupied.get((x+dx,y+dy,h)) in ['oak_fence','dark_oak_fence']]
+            bounds=_boxes('oak_fence' if material=='dark_oak_fence' else material,neighbours)
+        for x0,h0,y0,x1,h1,y1 in bounds:
+            corners=[(x+x0,y+y0,h+h0),(x+x1,y+y0,h+h0),(x+x1,y+y1,h+h0),(x+x0,y+y1,h+h0),
+                     (x+x0,y+y0,h+h1),(x+x1,y+y0,h+h1),(x+x1,y+y1,h+h1),(x+x0,y+y1,h+h1)]
+            for neighbour,indices,shade in [((x+1,y,h),[1,2,6,5],.75),((x,y+1,h),[2,3,7,6],.58),((x,y,h+1),[4,5,6,7],1)]:
+                if bounds==[(0,0,0,1,1,1)] and neighbour in occupied:
+                    other=occupied[neighbour]
+                    if _boxes(other)==[(0,0,0,1,1,1)] and not other.startswith('spruce_trapdoor_') and other!='dark_oak_fence' and not other.endswith('_slab_top'):continue
+                vertices=[corners[i] for i in indices];depth=sum(a+b+.82*c for a,b,c in vertices)/4
+                points=[(project(v)[0]-xmin+40,project(v)[1]-ymin+82) for v in vertices]
+                faces.append((depth,points,tuple(round(v*shade) for v in rgb)))
     for _,points,rgb in sorted(faces,key=lambda f:f[0]):draw.polygon(points,fill=rgb,outline=tuple(max(0,v-12) for v in rgb))
     draw.text((20,14),'ACTUAL GENERATED BLOCKS: SLAB ROOF shop shell and wall-based floor studies',fill='black')
     draw.text((20,34),'Illustrative timber palette; floor datum and access unresolved. Station / maintenance shells omitted.',fill='black')
-    draw.text((20,height-28),'Isometric voxel preview in plan XY (Minecraft Z is reflected). Canopy, interiors and bunding omitted.',fill='black')
+    draw.text((20,height-28),'Isometric voxel preview in plan XY (Minecraft Z is reflected). Study canopy / facade details included; interiors and bunding omitted.',fill='black')
     image.save(root/'building-shell-preview.png')
 
 
