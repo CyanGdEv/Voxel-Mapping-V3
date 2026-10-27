@@ -745,3 +745,5 @@ Station/preshow extension: [Source-height slab roofs, connected upper floors and
 Station access update: [Half-step connection to retained paving and basement outline evidence](docs/wicker-station-access.md) replaces the one-block entrance rise and records two original basement wall gaps without inventing a queue or stair connection.
 
 Basement alignment: [Shared building outlines, original queue edges and exact replacement conflicts](docs/wicker-basement-alignment.md) aligns the lower plan with a held-out corner check and preserves the world while upper-wall and entrance conflicts are reconciled.
+
+Aligned preshow world: [Floor-led walls, recentered slab roofs, basement openings and connected queue deck](docs/wicker-aligned-preshow-world.md) applies the alignment while preserving the shop and reporting metre-grid paving aliases and remaining lower-access assumptions.
