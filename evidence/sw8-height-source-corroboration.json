@@ -1,0 +1,93 @@
+{
+  "version": "sw8-height-source-corroboration-v1",
+  "source_url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+  "source_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+  "pdf_page": 23,
+  "printed_page": 17,
+  "paragraph": "3.27",
+  "page_text_sha256": "4250db7fa886a99c452bd2b5312a8a2b4b83be75e889dfd47a7675dff5de9c2c",
+  "witness": "maximum high point for the proposed ride track has a spot height of 201m AOD",
+  "witness_bboxes_pdf_points": [
+    [
+      349.3389892578125,
+      255.68873596191406,
+      403.7611999511719,
+      268.0093688964844
+    ]
+  ],
+  "corroborated_plan_marker": "HP1",
+  "height_m": 201,
+  "vertical_reference_claim": "AOD",
+  "odn_newlyn_verified": false,
+  "as_built_verified": false,
+  "all_markers_verified": false,
+  "HP7_status": "held_ambiguous",
+  "xyz_training_eligible": false,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "excluded_unrelated_surveys": [
+    "Wildwood house: SMD/2022/0230, SMD/2021/0636, SMD/2021/0211",
+    "Field O landscaping: SMD/2017/0077"
+  ],
+  "recovered_originals": [
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142",
+      "sha256": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953",
+      "title": "Existing Site Plan",
+      "applicationReference": "SMD/2016/0315",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160142",
+      "http_status": 200,
+      "bytes": 532650,
+      "verified_original_pdf": true,
+      "file": "bfca0863216de7d3fe5667190286c7c639cd084730965c3f89984504bd3dd953.pdf"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959",
+      "sha256": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee",
+      "title": "Alton Towers Woodland Pathway - Statement",
+      "applicationReference": "SMD/2017/0111",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=176959",
+      "http_status": 200,
+      "bytes": 114755,
+      "verified_original_pdf": true,
+      "file": "4aceb78f4d571324bed4378ee0e7ad733cc3f9d783277d85fb8bcc3170ee4eee.pdf"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+      "sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 1",
+      "applicationReference": "SMD/2016/0315",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170",
+      "http_status": 200,
+      "bytes": 328643,
+      "verified_original_pdf": true,
+      "file": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e.pdf"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171",
+      "sha256": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 2",
+      "applicationReference": "SMD/2016/0315",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160171",
+      "http_status": 200,
+      "bytes": 748344,
+      "verified_original_pdf": true,
+      "file": "78a486e0ea0d1631b9357ba7149486a7c9065524cd5e3f64d377c826d4f6b215.pdf"
+    },
+    {
+      "url": "https://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172",
+      "sha256": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce",
+      "title": "Landscape and Visual Impact Assessment - New Ride Part 3",
+      "applicationReference": "SMD/2016/0315",
+      "transport_url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160172",
+      "http_status": 200,
+      "bytes": 1531467,
+      "verified_original_pdf": true,
+      "file": "468521cdf959c79ab09036ea1c50dfd09195d4f0aa683e383250c236f49bdcce.pdf"
+    }
+  ],
+  "current_application_attachment_count": 89,
+  "section_attempts": 8,
+  "verified_section_pdfs": 0,
+  "revised_site_plan_sha256": "3a8a18eb3959a39e7559309046b0815469b9f9baa52a5d1364a0cc4aa2cbb279"
+}

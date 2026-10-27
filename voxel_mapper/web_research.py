@@ -4,6 +4,7 @@ from concurrent.futures import CancelledError
 import json
 from pathlib import Path
 import re
+import shutil
 import time
 from urllib.parse import urlsplit
 
@@ -11,25 +12,33 @@ from . import web_evidence as web
 from .desktop_memory import digest
 from .generation_cycles import atomic_json, file_hash
 from . import local_reasoning
+from . import web_focus
 
 VERSION='web-research-v1'
-LIMITS={'max_sources':6,'max_model_rounds':2,'max_run_bytes':16000000,'max_seconds':300}
+LIMITS={'max_sources':24,'max_model_rounds':6,'max_run_bytes':64000000,'max_seconds':600}
 
 
 def validate(config):
     if not isinstance(config,dict) or config.get('version')!=VERSION:
         raise ValueError('Versioned web research configuration required')
     if set(config)-{'version','query','urls','allowed_hosts','prompt','model','endpoint','model_options',
-                    'offline','refresh','limits'}: raise ValueError('Unknown web research setting')
+                    'offline','refresh','limits','research_profile','allow_public_discovery'}: raise ValueError('Unknown web research setting')
+    if type(config.get('allow_public_discovery',False)) is not bool:raise ValueError('Explicit public discovery mode required')
+    scope=web_focus.profile(config.get('research_profile'))
     approved=web.hosts(config.get('allowed_hosts',list(web.DEFAULT_HOSTS)))
     urls=config.get('urls',[])
-    if not isinstance(urls,list) or len(urls)>6: raise ValueError('At most six public seed URLs required')
-    normalized=[web.url(u,approved) for u in urls]
+    if not isinstance(urls,list) or len(urls)>12: raise ValueError('At most twelve public seed URLs required')
+    normalized=[web.url(u,None if config.get('allow_public_discovery') else approved) for u in urls]
+    for value in normalized:
+        name=urlsplit(value).hostname
+        if name not in approved:
+            if len(approved)>=32:raise ValueError('Public discovery host budget exceeded')
+            approved.append(name)
     if len(set(normalized))!=len(normalized): raise ValueError('Distinct seed URLs required')
     query=config.get('query','')
     if not isinstance(query,str) or len(query)>300 or any(ord(c)<32 for c in query):
         raise ValueError('Bounded public search query required')
-    if not normalized and not query.strip(): raise ValueError('Supply public seed URLs or an explicit search query')
+    if not normalized and not query.strip() and scope is None: raise ValueError('Supply public seed URLs or an explicit search query/site profile')
     prompt=config.get('prompt',query or 'Inspect these sources and identify the next evidence checks.')
     if not isinstance(prompt,str) or not 1<=len(prompt.strip())<=2048: raise ValueError('Bounded research question required')
     for key in ('offline','refresh'):
@@ -50,7 +59,7 @@ def validate(config):
 
 def _context(prompt,memory,sources,known):
     maximum=min(2048,4096-len(prompt));records=[];offered=[]
-    titles={link['url']:link['title'][:100] for item in sources for link in item['source']['links']}
+    titles={link['url']:link['title'][:100] for item in sources for link in item.get('focus',item['source'])['links']}
     # Preserve complete bounded JSON records; truncating a whole serialized
     # memory string can hide which source excerpts the model actually received.
     private=memory[:min(256,maximum//4)]
@@ -59,10 +68,10 @@ def _context(prompt,memory,sources,known):
             'untrusted_web_excerpts':records,'discovered_links':[
                 {'url':value,'title':titles.get(value,'')} for value in offered]},ensure_ascii=False,separators=(',',':'))
     included=[]
-    for item in sources:
+    for item in sorted(sources,key=lambda r:-r.get('focus',{}).get('relevance_score',0)):
         source=item['source']
         row={'citation_id':source['citation_id'],'url':source['url'],
-             'title':source['title'][:100],'excerpt':source['text'][:350],
+             'title':source['title'][:100],'excerpt':item.get('focus',source)['text'][:350],
              'retrieved_at_utc':source['retrieved_at_utc'],'retrieval':item['retrieval']}
         records.append(row)
         if len(serialized())>maximum-(384 if known else 0): records.pop();continue
@@ -76,6 +85,7 @@ def _context(prompt,memory,sources,known):
 def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=lambda value:None,
         fetch=None, search=None, reason=None, skip_urls=(), parent_budget=None, run_deadline=None):
     approved,seeds,prompt,limits=validate(config)
+    scope=web_focus.profile(config.get('research_profile'))
     skipped={web.url(value,approved) for value in skip_urls}
     config=json.loads(json.dumps(config,allow_nan=False));output=Path(output)
     if output.exists(): raise ValueError('Fresh web research output required')
@@ -86,26 +96,37 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
     started=time.monotonic();deadline=started+limits['max_seconds']
     if run_deadline is not None:deadline=min(deadline,run_deadline)
     budget=web.Budget(limits['max_run_bytes'],parent=parent_budget)
-    sources=[];failures=[];attempted=set();known=[];document_links=set();rounds=[];executions=[];withheld=[]
+    sources=[];failures=[];attempted=set();known=[];document_links=set();rounds=[];executions=[];withheld=[];link_titles={};downloads=[]
     search_report=None;model_error=None
     def check():
         if cancelled(): raise CancelledError('Web research cancelled')
         return time.monotonic()<deadline
     def discover(value):
-        try: target=web.url(value,approved)
+        try:
+            target=web.url(value,None if config.get('allow_public_discovery') else approved)
+            name=urlsplit(target).hostname
+            if name not in approved:
+                if len(approved)>=32:return
+                approved.append(name)
         except ValueError: return
-        if target not in known and len(known)<64: known.append(target)
+        if target not in known and len(known)<256: known.append(target)
         return target if target in known else None
     def pending():
         return sorted((value for value in known if value not in attempted and value not in skipped),
-            key=lambda value:0 if value in document_links else 1)
+            key=lambda value:(-web_focus.score(link_titles.get(value,''),scope) if scope else 0,
+                0 if value in document_links else 1))
     for value in seeds: discover(value)
-    if config.get('query','').strip():
+    effective_query=config.get('query','').strip()
+    if not effective_query and not seeds and scope:
+        effective_query=' '.join([scope['site'],scope['location'],*scope['tags'][:3]])[:300]
+    if effective_query:
         check();progress({'progress':.05,'message':'Searching public web sources'})
         try:
-            search_report=search(config['query'],cache,approved,offline=config.get('offline',False),
+            search_report=search(effective_query,cache,None if config.get('allow_public_discovery') else approved,offline=config.get('offline',False),
                 refresh=config.get('refresh',True),budget=budget,cancelled=cancelled,deadline=deadline)
-            for item in search_report['results']: discover(item['url'])
+            for item in search_report['results']:
+                target=discover(item['url'])
+                if target: link_titles[target]=item.get('title','')
             atomic_json(output/'search.json',search_report)
         except (web.WebError,ValueError) as error:
             search_report={'status':'search_unavailable','error':str(error),'results':[]}
@@ -116,12 +137,28 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         attempted.add(value);progress({'progress':.1+.5*len(attempted)/limits['max_sources'],
             'message':'Reading web evidence: '+value[:180]})
         try:
+            options={'allow_public_redirects':True} if config.get('allow_public_discovery') else {}
             item=fetch(value,cache,approved,offline=config.get('offline',False),
-                refresh=config.get('refresh',True),budget=budget,cancelled=cancelled,deadline=deadline)
+                refresh=config.get('refresh',True),budget=budget,cancelled=cancelled,deadline=deadline,**options)
             source=item['source'];sources.append(item)
+            final_host=urlsplit(source['url']).hostname
+            if config.get('allow_public_discovery') and final_host not in approved and len(approved)<32:approved.append(final_host)
+            if scope:
+                try:
+                    item['focus']=web_focus.inspect(source,cache,scope,cancelled=cancelled,deadline=deadline)
+                except (web.WebError,ValueError) as error:
+                    item['focus_error']=str(error)
+            if source['format'] in ('pdf','image'):
+                path=web._body_path(Path(cache),source)
+                suffix='.pdf' if source['format']=='pdf' else {'JPEG':'.jpg','PNG':'.png','WEBP':'.webp'}[source['image_format']]
+                if path.is_file() and file_hash(path)==source['body_sha256']:
+                    target=output/'downloads'/(source['citation_id']+suffix);target.parent.mkdir(exist_ok=True);shutil.copy2(path,target)
+                    if file_hash(target)!=source['body_sha256']:raise ValueError('Downloaded source changed while exporting')
+                    downloads.append({'citation_id':source['citation_id'],'file':target.relative_to(output).as_posix(),'sha256':source['body_sha256'],'format':source['format']})
             atomic_json(output/(source['citation_id']+'.json'),item)
-            for link in source['links']:
+            for link in item.get('focus',source)['links']:
                 target=discover(link['url'])
+                if target:link_titles[target]=link['title']
                 if target and (urlsplit(target).path.lower().endswith('.pdf') or
                         'attachmentshowservlet' in urlsplit(target).path.lower() or
                         re.search(r'\b(plan|drawing|elevations?|sections?|surfacing)\b',link['title'],re.I)):
@@ -182,7 +219,7 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         'citation_id':r['source']['citation_id'],'title':r['source']['title'],
         'body_sha256':r['source']['body_sha256'],'artifact_sha256':r['source']['artifact_sha256'],
         'retrieved_at_utc':r['source']['retrieved_at_utc'],'retrieval':r['retrieval'],
-        'excerpt':r['source']['text'][:600],'source_evidence_verified':False,
+        'excerpt':r.get('focus',r['source'])['text'][:600],'source_evidence_verified':False,
         'training_labels_generated':0} for r in sources]
     status='web_evidence_gathered' if sources else 'web_sources_unavailable'
     if model_error: status+='__reasoning_unavailable'
@@ -191,6 +228,9 @@ def run(config, output, cache, *, memory='', cancelled=lambda:False, progress=la
         summary='Model returned citations outside its supplied source context; inspect the retained evidence.'
         status+='__unsupported_model_citations'
     report={'version':VERSION,'status':status,'summary':summary,'config_sha256':digest(config),
+        'research_profile':scope,'effective_search_query':effective_query,'downloaded_assets':downloads,
+        'effective_allowed_hosts':approved,'public_discovery_enabled':config.get('allow_public_discovery',False),
+        'focused_source_views':[r['focus'] for r in sources if 'focus' in r],
         'sources':observations,'failures':failures,'search':search_report,'model_rounds':rounds,
         'read_only_model_requests_executed':executions,'withheld_proposals':withheld,
         'model_error':model_error,'limits':limits,'attempted_sources':len(attempted),

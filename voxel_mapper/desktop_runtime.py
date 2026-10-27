@@ -20,6 +20,8 @@ KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_eviden
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
 KINDS.add('planning_area_world_preview')
 HEAVY.add('planning_area_world_preview')
+KINDS.add('research_learning_cycle')
+HEAVY.add('research_learning_cycle')
 MAX_JSON_BYTES=16_000_000
 MIN_MEMORY_BUDGET_MB=512
 MAX_MEMORY_BUDGET_MB=16*1024
@@ -432,9 +434,14 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind in ('web_research','web_planning_pilot','planning_collection'):
+                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
+                if kind=='research_learning_cycle':
+                    self.store.remember('adaptive_learning',result['dataset_id'],{
+                        'training_status':result['training_status'],'checkpoint_sha256':result['checkpoint_sha256'],
+                        'curriculum_tasks':result['curriculum_tasks'],'remembered_sources':result['remembered_sources'],
+                        'web_sources_automatically_labelled':0,'production_eligible':False})
                 if kind=='area_pilot':
                     self.store.remember('area_generation',jid,{'preset':result['desktop_area']['preset'],
                         'source_report':result['desktop_area']['source_report'],'readiness':result['readiness'],
@@ -696,6 +703,12 @@ def _worker(request):
     elif kind=='web_planning_pilot':
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
+            cancelled=cancelled,progress=progress)
+    elif kind=='research_learning_cycle':
+        from .research_learning_cycle import run
+        for field in ('dataset_directory','encoder_path'):
+            config[field]=str(resolve_path(config_path,config[field]))
+        result=run(config,output,output.parents[2]/'research-learning',output.parents[2]/'web-cache',
             cancelled=cancelled,progress=progress)
     elif kind=='web_research':
         from .web_research import run
