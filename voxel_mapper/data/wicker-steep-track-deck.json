@@ -1,0 +1,14 @@
+{
+  "version": "steep-track-deck-v1",
+  "base_pins": {
+    "quality-report.json": "b749389f4989d8640fdea02463fcdfd7b41ae0949ceae8bf5e53f54dc08d0607",
+    "voxels.jsonl": "0d1d944ddd007dcc82dfc6d5eb05a12fbd19612bc5c3ec4b3b7b5071240e84b5",
+    "wicker-full-track.mcworld": "52578664ae89e70ddebbe91dfc75ae049250d8e0ad5424b8f1f5ffbe0df882ce",
+    "track-blocks.json": "fcd88e90534fff9bc2f659f39aeb51139f217df5e67163e7f1266f3790017a07",
+    "track-samples.json": "fabf0f0c87183e9f9c285bb9594f3e172f8c5a5c8fe678fcfba6c3d534c72c80",
+    "running-clearance-air.json": "e07a02ad63b3b9627eaec728f6faacd1ed8cc2bb4818808a4b8ec955b9d79928"
+  },
+  "minimum_steep_rise_m": 1.0,
+  "sample_padding": 5,
+  "max_changes": 2000
+}

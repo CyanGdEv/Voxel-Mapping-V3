@@ -767,3 +767,7 @@ The full-layout generator now checks track elevation against the original terrai
 and neighbouring banks. Outdoor trenches are removed; the preshow section runs
 beneath the restored upper floor and roof. [Elevation correction details](docs/wicker-full-track-layout.md)
 include covered-slot estimates and reported planning/terrain level differences.
+
+[Solid steep-track steps](docs/wicker-steep-track-deck.md) use matching full wood
+blocks or touching half slabs around one-metre rises, preserving the corrected
+running heights and the existing park.
