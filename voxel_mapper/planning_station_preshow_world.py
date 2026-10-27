@@ -185,7 +185,7 @@ def upper_connectivity(columns,structures,heights,top,seeds):
     return {'all_three_component_interiors_connected':True,'clear_upper_floor_columns':len(clear),'connected_upper_floor_columns':len(seen),'two_block_headroom_checked':True,'gameplay_tested':False}
 
 
-def run(config,base_directory,geographic_directory,pdf_directory,evidence_directory,output,*,allow_provisional=False,cancelled=lambda:False):
+def run(config,base_directory,geographic_directory,pdf_directory,evidence_directory,output,*,allow_provisional=False,aligned_review=None,cancelled=lambda:False):
     if allow_provisional is not True:raise ValueError('Explicit provisional station/preshow review opt-in required')
     if cancelled():raise CancelledError('Station review cancelled')
     output=Path(output);base_directory=Path(base_directory);geographic_directory=Path(geographic_directory)
@@ -206,10 +206,15 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
         if r['kind']=='terrain':terrain[key]=dict(r)
         else:old_structures[r['x'],r['y'],r['z']-1]=dict(r)
     base_heights={k:r['y'] for k,r in terrain.items()}
+    base_materials={k:r['material'] for k,r in terrain.items()}
     raw_terrain={(r['x'],r['z']-1):r for r in map(json.loads,(geographic_directory/'voxels.jsonl').read_text().splitlines()) if r['kind']=='terrain'}
     if set(terrain)!=set(raw_terrain) or len(terrain)>65536:raise ValueError('Complete bounded baseline terrain required')
     source_access=json.loads((base_directory/'source-access-review/access-review.json').read_text());a,b,c,d,e,f=source_access['drawing_correspondence']['affine'];matrix=np.array([[a,b],[c,d]]);translation=np.array([e,f])
     if not np.allclose(matrix.T@matrix,np.eye(2),atol=1e-8) or np.linalg.det(matrix)<0:raise ValueError('Existing rigid placement required')
+    revision=None
+    if aligned_review is not None:
+        from . import preshow_revision
+        revision=preshow_revision.layout_revision(parts,source_access,aligned_review)
     top=profile['display_floor_top_m'];bottom=profile['undercroft_floor_top_m'];limits=profile['limits'];new={};walls={};boundaries={};portals={};part_reports=[]
     tower=next(p for p in parts if p['id']=='preshow_tower');station=next(p for p in parts if p['id']=='station')
     for part in parts:
@@ -222,9 +227,9 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
             local=(np.asarray(oldwall.exterior.coords)[:-1]-np.asarray(oldwall.centroid.coords[0]))@matrix
             model['outer_wall_base_outline']=[[*p,0] for p in local]
             door=next(o for o in model['opening_base_segments'] if o['id'].startswith('x+'))
-            centre=tower['source_plan_centre_m'][1]-part['source_plan_centre_m'][1];normal=max(p[0] for p in local)
+            centre=(revision['station_interface_source_y'] if revision else tower['source_plan_centre_m'][1])-part['source_plan_centre_m'][1];normal=max(p[0] for p in local)
             door['endpoints']=[[normal,centre-.9,0],[normal,centre+.9,0]];door['width_metres']=1.8;door['id']='x+/preshow-interface'
-        if name=='preshow_tower':
+        if name=='preshow_tower' and not revision:
             door=next(o for o in model['opening_base_segments'] if o['id'].startswith('x-'));normal=door['endpoints'][0][0]
             door['endpoints']=[[normal,-.9,0],[normal,.9,0]];door['width_metres']=1.8;door['id']='x-/station-interface'
         blocks,wall,boundary,openings,quality=build_component(model,part['source_plan_centre_m'],matrix,translation,top,limits,cancelled)
@@ -239,6 +244,8 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
         corridor=LineString([la.centroid,lb.centroid]).buffer(width/2,cap_style=3);connections.append(corridor)
     upper_geometry=unary_union(list(walls.values())+connections);upper=grid_cells(upper_geometry)|set().union(*boundaries.values())
     preshow_geometry=unary_union([walls['preshow_low'],walls['preshow_tower'],connections[0]]);preshow=grid_cells(preshow_geometry)
+    if revision:
+        preshow_geometry=revision['outer'];preshow=grid_cells(preshow_geometry)
     if len(upper)>limits['new_floor_cells'] or not upper<=set(terrain):raise ValueError('Complete new floor coverage required')
     protected_shop={(r['source_xyz'][0],r['source_xyz'][2]) for r in json.loads((base_directory/'shell-blocks.json').read_text())}
     protected_shop|={tuple(r['source_cell_xy']) for r in json.loads((base_directory/'floor-cells.json').read_text()) if r['labels']==['Shop']}
@@ -255,10 +262,13 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
                 old_structures.pop(key);retired_plinths+=1
     for k in old_station-upper:terrain[k]=dict(raw_terrain[k])
     superseded=[]
-    for k in sorted(upper&set(sampled['rocks'])):
-        if k in protected_shop:raise ValueError('New footprint conflicts with protected shop')
+    inferred_override_scope=upper|preshow|(grid_cells(revision['queue']) if revision else set())
+    for k in sorted(inferred_override_scope&set(sampled['rocks'])):
+        if k in protected_shop:
+            if revision and k not in upper|preshow:continue
+            raise ValueError('New footprint conflicts with protected shop')
         superseded.append({'source_cell_xy':list(k),'original_inferred_column':sampled['rocks'][k]})
-    if len(superseded)>limits['inferred_edging_columns_superseded']:raise ValueError('Too many inferred boundary conflicts')
+    if len(superseded)>(48 if revision else limits['inferred_edging_columns_superseded']):raise ValueError('Too many inferred boundary conflicts')
     for r in superseded:
         x,y=r['source_cell_xy']
         for level,material in r['original_inferred_column']:
@@ -268,15 +278,18 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
     lower_boundary=set()
     for polygon in ([preshow_geometry] if preshow_geometry.geom_type=='Polygon' else preshow_geometry.geoms):lower_boundary|=boundary_columns([[*p,0] for p in list(polygon.exterior.coords)[:-1]],1)
     preshow|=lower_boundary
+    if revision:upper|=preshow
     for k in upper|preshow:
         x,y=k;original=terrain[k]['y'];lower=bottom-1 if k in preshow else top-1
         if original-lower>limits['excavation_depth_blocks']:raise ValueError('Excavation budget exceeded')
-        material=terrain[k]['material'];terrain[k]={'x':x,'y':lower,'z':y+1,'kind':'terrain','material':'stone_bricks' if k in preshow else material if material!='grass_block' else 'stone_bricks'}
-        if k in preshow:new[x,top-1,y]=material if material.endswith('_wool') else 'stone_bricks'
+        material=terrain[k]['material'];terrain[k]={'x':x,'y':lower,'z':y+1,'kind':'terrain','material':material if revision and material.endswith('_wool') else 'stone_bricks' if k in preshow else material if material!='grass_block' else 'stone_bricks'}
+        if k in preshow:new[x,top-1,y]=material if not revision and material.endswith('_wool') else 'stone_bricks'
         else:
             for h in range(original+1,top-1):new[x,h,y]='stone_bricks'
     for x,y in lower_boundary:
         for h in range(bottom,top-1):new[x,h,y]='stone_bricks'
+    lower_gap_air=set();lower_gap_review=[]
+    if revision:lower_gap_air,lower_gap_review=preshow_revision.lower_openings(revision,lower_boundary,bottom,new)
     portal_air=set()
     for openings in portals.values():
         for p in openings:
@@ -297,11 +310,21 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
     main_entry=next(o for o in portals['preshow_low'] if o['id'].startswith('z-'))
     from .station_access import paving_approach,basement_review
     retained_paving=set(sampled['paving'])-set(sampled['markers'])-set(sampled['plan_markers'])
-    flight,flight_report=paving_approach(main_entry,top,terrain,all_structures,protected_shop,upper,retained_paving,cancelled=cancelled)
+    queue_report=None;rail_report=None;queue_columns=set()
+    if revision:
+        deck,queue_columns,queue_report=preshow_revision.queue_deck(revision,terrain,all_structures,upper,protected_shop,top)
+        new.update(deck);all_structures.update(deck);upper|=queue_columns
+        flight,flight_report=preshow_revision.ground_connection(queue_columns,upper,terrain,all_structures,protected_shop,top,retained_paving,cancelled)
+    else:flight,flight_report=paving_approach(main_entry,top,terrain,all_structures,protected_shop,upper,retained_paving,cancelled=cancelled)
     if not flight_report.get('ground_to_upper_floor_connected'):
         raise ValueError('No half-step connection to retained source paving: '+flight_report['status'])
     basement_evidence,basement_image=basement_review(Path(pdf_directory)/(profile['sources']['basement']+'.pdf'))
     new.update(flight);all_structures.update(flight)
+    if revision:
+        rails,rail_report=preshow_revision.side_fences(queue_columns,upper,terrain,all_structures,protected_shop,top,flight_report)
+        new.update(rails);all_structures.update(rails)
+        connectivity=upper_connectivity(upper,all_structures,heights,top,[grid_cells(walls[n].buffer(-.9)) for n in ['preshow_low','preshow_tower','station']]+[queue_columns])
+        circulation=preshow_revision.circulation_check(upper,queue_columns,all_structures,top,grid_cells(walls['preshow_low'].buffer(-.9)),flight_report)
     if len(new)>limits['new_structure_blocks']:raise ValueError('Access additions exceed structure budget')
     flight_head_air={(k['source_cell_xy'][0],h,k['source_cell_xy'][1]) for k in flight_report.get('surfaces',[]) for h in [math.ceil(k['walking_top_m']),math.ceil(k['walking_top_m'])+1]}
 
@@ -326,6 +349,15 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
             'production_placement_eligible':False,'physical_registration_verified':False,'accepted_training_labels':0,'minecraft_import_tested':False,
             'implementation_sha256':file_hash(__file__),'profile_sha256':file_hash(PROFILE),'source_base_implementation_sha256':file_hash(shop.__file__),
             'template_implementation_sha256':file_hash(templates.__file__),'access_implementation_sha256':file_hash(Path(__file__).with_name('station_access.py')),'basement_source_review':basement_evidence,'limitations':profile['limitations']}
+        if revision:
+            report.update(version='conditional-aligned-preshow-world-v3',status='floor_led_preshow_with_aligned_basement_and_queue_deck',aligned_review_sha256=revision['review_sha256'],revision_implementation_sha256=file_hash(preshow_revision.__file__),lower_gap_openings=lower_gap_review,queue_deck=queue_report,queue_rails=rail_report,queue_circulation=circulation,
+                source_wall_geometries=revision['source_walls'],source_alignment_fit=revision['review']['fit'],basement_floor_guides_relocated=[{'source_cell_xy':list(k),'source_ground_block_m':base_heights[k],'display_floor_block_m':terrain[k]['y'],'material':base_materials[k]} for k in sorted(preshow) if base_materials[k].endswith('_wool')])
+            report['limitations']=['Preshow wall extents use the normalized source floor plan; roof rectangles are recentered assembly hypotheses with retained source spans and source-relative heights.',
+                'Upper display floors and queue deck use 184 m; source queue level and ODN datum remain conditional. Exact internal queue lanes are not reconstructed.',
+                'Basement follows its aligned source outer envelope; one-block wall thickness and two-block visible-gap headroom are display choices. Exterior lower access and internal stairs remain unresolved.',
+                'Exact source queue polygon is retained; blocked metre cells preserve the shop/facade and are reported as raster aliases, with bounded cardinal connectors.',
+                'Orange/blue/brown ground guides retain their source XY/material in the lowered basement floor; their display elevation is not a measured ride level.',
+                'No as-built acceptance, independent survey or accepted training labels are added.']
         from . import bedrock
         from .planning_world_preview import _spawn_check,_verify_archive
         old_openings=base['shop_shell']['openings'];old_top=next(r['preview_floor_top_odn_assumption_m'] for r in base['floor_plates'] if r['labels']==['Shop'])
@@ -337,18 +369,27 @@ def run(config,base_directory,geographic_directory,pdf_directory,evidence_direct
             report['saved_geometry_validation']=shop.saved_check(path,offset,samples,heights,all_structures,old_openings,old_top,cancelled)
             report['native_portal_validation']=_native_air(path,offset,portal_air)
             report['native_undercroft_validation']=_native_air(path,offset,basement_air)
+            if revision:report['native_lower_gap_validation']=_native_air(path,offset,lower_gap_air)
+            if revision:
+                report['native_queue_surfaces']=_native_surfaces(path,offset,[{'source_cell_xy':k,'walking_top_m':top} for k in sorted(queue_columns)])
+                report['native_queue_headroom']=_native_air(path,offset,{(k[0],h,k[1]) for k in queue_columns for h in [top,top+1]})
             report['native_entry_flight_validation']=_native_air(path,offset,flight_head_air)
             report['native_entry_surface_validation']=_native_surfaces(path,offset,flight_report.get('surfaces',[]))
             atomic_json(path/'planning-geographic-alignment.json',{**base['alignment'],'minecraft_cell_centre_to_source_xy':'[Minecraft X + 0.5, -(Minecraft Z + 0.5)]','vertical_offset_blocks':offset})
             atomic_json(path/'STATION-PRESHOW-ASSUMPTIONS.json',{k:report[k] for k in ['datum_assumption','source_levels','limitations','inspection_floor_reconstructed']})
-        world=bedrock.export_world(voxel,root,report,name='Wicker STATION ACCESS - half-step paving connection',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
+        world=bedrock.export_world(voxel,root,report,name='Wicker ALIGNED PRESHOW - basement and queue deck' if revision else 'Wicker STATION ACCESS - half-step paving connection',max_blocks=1_000_000,ground_depth=3,foundation_mode='chunk',post_export_check=check)
         report['world']=world;report['archive_validation']=_verify_archive(root/world['file'],root/'bedrock-world',world,cancelled)
         shutil.move(root/world['file'],root/'wicker-station-preshow.mcworld');report['world']['file']='wicker-station-preshow.mcworld';shutil.rmtree(root/'bedrock-world')
         source_image.save(root/'source-height-traces.png');basement_image.save(root/'basement-source-review.png');atomic_json(root/'basement-source-review.json',basement_evidence);_preview(root,voxel,top)
         from PIL import Image,ImageDraw
         image=Image.open(root/'building-shell-preview.png');draw=ImageDraw.Draw(image);draw.rectangle((0,0,image.width,58),fill='#f9f7ee');draw.text((20,14),'STATION + PRESHOW: gabled station / lower gable / pyramid tower; corrected shop retained',fill='black');draw.text((20,34),'Native slab roofs; hollow provisional undercroft. Source datum / exact entrances / basement details unresolved.',fill='black');image.save(root/'building-shell-preview.png')
+        if revision:
+            draw.rectangle((0,0,image.width,58),fill='#f9f7ee');draw.text((20,14),'ALIGNED PRESHOW: floor-led walls, recentered slab roofs, basement openings and queue deck',fill='black');draw.text((20,34),'Corrected shop preserved. Queue elevation / lower external access / internal stair details remain provisional.',fill='black');image.save(root/'building-shell-preview.png')
         atomic_json(root/'quality-report.json',report);atomic_json(root/'new-structure-blocks.json',[{'source_xyz':list(k),'material':v} for k,v in sorted(new.items())]);atomic_json(root/'portal-air.json',[list(p) for p in sorted(portal_air)])
+        if revision:
+            atomic_json(root/'aligned-source-review.json',revision['review']);atomic_json(root/'basement-gap-air.json',[list(p) for p in sorted(lower_gap_air)])
         (root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Conditional station and preshow world</h1><a href="wicker-station-preshow.mcworld">Download world</a><p>Corrected shop retained. Source-relative manual roof traces, slab roofs, provisional upper connections and hollow undercroft. Exact basement walls/openings and external access remain unresolved.</p><img style="max-width:100%" src="building-shell-preview.png">')
+        if revision:(root/'index.html').write_text('<!doctype html><meta charset="utf-8"><h1>Aligned preshow, basement and queue prototype</h1><a href="wicker-station-preshow.mcworld">Download world</a><p>Floor-led preshow walls, native slab roofs, aligned hollow basement and two visible wall openings. The queue deck connects through half-block steps to retained paving. Shop and entrance landings preserved.</p><p>Source queue elevation, exact internal lanes, lower external access and internal stairs remain unresolved. Blocked queue metre cells preserve shop details and appear in the quality report as raster aliases.</p><img style="max-width:100%" src="building-shell-preview.png">')
         for name,relative in [('world',base['world']['file']),('voxels','voxels.jsonl'),('report','quality-report.json')]:
             if file_hash(base_directory/relative)!=profile['base_pins'][name]:raise ValueError('Corrected shop input changed during export')
         shutil.move(root,output)
@@ -426,11 +467,11 @@ def _native_air(path,offset,points):
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     for n in ['config','base-directory','geographic-directory','pdf-directory','evidence-directory','output']:parser.add_argument('--'+n,required=True)
-    parser.add_argument('--allow-provisional',action='store_true');args=parser.parse_args(argv);p=Path(args.config).resolve()
+    parser.add_argument('--aligned-review');parser.add_argument('--allow-provisional',action='store_true');args=parser.parse_args(argv);p=Path(args.config).resolve()
     if p.stat().st_size>32768:raise ValueError('Bounded request required')
     config=json.loads(p.read_text())
     for n in ['layout','paving','gaps','buildings','markings','expansion']:config['geometry_request'][n+'_path']=str((p.parent/config['geometry_request'][n+'_path']).resolve())
-    r=run(config,args.base_directory,args.geographic_directory,args.pdf_directory,args.evidence_directory,args.output,allow_provisional=args.allow_provisional)
+    r=run(config,args.base_directory,args.geographic_directory,args.pdf_directory,args.evidence_directory,args.output,allow_provisional=args.allow_provisional,aligned_review=args.aligned_review)
     print(json.dumps({'new_structure_blocks':r['new_structure_blocks'],'world_sha256':r['world']['sha256']}))
 
 
