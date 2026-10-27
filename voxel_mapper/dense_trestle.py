@@ -120,6 +120,16 @@ def build(route,groups,terrain,old,head,samples,keys,track,profile):
             for h in range(base,beam+1):proposal[x,h,y]='spruce_fence'
         used_levels=[h for h in levels if h not in [o['height'] for o in omitted_levels]]
         receipt={'source_pair':group,'post_cells_xy':[list(xy) for xy,base in active],'base_heights':[base for xy,base in active],'beam_height':beam,'crossmember_levels':used_levels,'join_cell_xy':list(join),'deck_underside_m':underside,'deck_top_m':join_top,'skipped_legs':skipped,'omitted_crossmembers':omitted_levels,'offset_brace_planes':[]}
+        # A metre-grid chord can miss an intermediate source post on a curved
+        # frame. Add a short bearing cross-tie, preserving its footing XY.
+        bearing_nodes=[(x,beam,y) for x,_,y in span]
+        ties=0
+        for (x,y),base in active:
+            tie=bearing_tie((x,beam,y),bearing_nodes)
+            if tie and not conflict(tie,terrain,old,head,local_walk):
+                for k,m in tie.items():proposal.setdefault(k,m)
+                ties+=1
+        receipt['bearing_cross_ties']=ties
         for k,m in proposal.items():
             if k not in straight or m=='spruce_fence':straight[k]=m
         for (pa,_),(pb,_) in zip(active,active[1:]):
@@ -186,3 +196,10 @@ def compose_planes(straight,diagonals,caps):
     if any(result[k]!=m for k,m in straight.items()):raise ValueError('A diagonal overwrote a straight member')
     return result,{'straight_member_cells':len(straight),'diagonal_members_placed':placed,
                    'diagonal_members_held_for_global_separation':held,'straight_diagonal_cell_overlap':0}
+
+
+def bearing_tie(post,beam_nodes):
+    target=min(beam_nodes,key=lambda q:sum(abs(a-b) for a,b in zip(post,q)))
+    distance=sum(abs(a-b) for a,b in zip(post,target))
+    if distance==0 or distance>3:return {}
+    return {k:'oak_fence' for k in staircase_line(post,target)}

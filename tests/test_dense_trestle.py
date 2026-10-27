@@ -1,7 +1,7 @@
 """Outer-footing recovery and visibly separate diagonal-member planes."""
 import unittest
 from shapely.geometry import LineString,MultiLineString
-from voxel_mapper.dense_trestle import footing_groups,separated_brace,compose_planes
+from voxel_mapper.dense_trestle import footing_groups,separated_brace,compose_planes,bearing_tie
 from voxel_mapper import bedrock
 
 
@@ -41,6 +41,13 @@ class DenseTrestleTests(unittest.TestCase):
         self.assertIn((2,10,0),result)
         self.assertEqual(review['straight_diagonal_cell_overlap'],0)
         self.assertEqual(review['diagonal_members_held_for_global_separation'],1)
+
+    def test_curved_frame_post_gets_a_short_cross_tie_without_moving_footing(self):
+        tie=bearing_tie((179,199,54),[(177,199,54),(177,199,55),(178,199,55)])
+        self.assertIn((179,199,54),tie)
+        self.assertTrue(any(k in tie for k in [(177,199,54),(177,199,55),(178,199,55)]))
+        self.assertTrue(all(k[1]==199 for k in tie))
+        self.assertFalse(bearing_tie((179,199,54),[(170,199,54)]))
 
 
 if __name__=='__main__':unittest.main()
