@@ -1,0 +1,48 @@
+{
+  "version": "dense-boundary-replay-protocol-v1",
+  "created_utc": "2026-10-28T22:02:52.145866+00:00",
+  "parent_dataset_id": "5cb307c1a5dab47f0f754065966db5bbde20acbf87d2bfdbf1489ac7f1744fac",
+  "parent_commit": "bbb4826051071aba6d2fb66605ec07a384a4f79a",
+  "excluded_consumed_site": "flamingo-land",
+  "development_held_out_site": "alton-towers",
+  "new_labels_sites": [
+    "lightwater-valley",
+    "gullivers-world",
+    "chessington"
+  ],
+  "variants": {
+    "dense_labels_only": {
+      "seed": 137,
+      "steps": 400,
+      "batch": 4,
+      "patch": 96,
+      "learning_rate": 0.002,
+      "threads": 2,
+      "dice_weight": 0.5,
+      "boundary_weight": 2.0,
+      "canopy_weight": 0.5,
+      "lidar_dropout": 0.15
+    },
+    "boundary_replay": {
+      "seed": 137,
+      "steps": 400,
+      "batch": 4,
+      "patch": 96,
+      "learning_rate": 0.002,
+      "threads": 2,
+      "dice_weight": 0.5,
+      "boundary_weight": 2.0,
+      "canopy_weight": 0.5,
+      "lidar_dropout": 0.15,
+      "boundary_sampling_fraction": 0.4,
+      "narrow_sampling_fraction": 0.3,
+      "narrow_max_width_m": 4.0
+    }
+  },
+  "comparisons": "Two fixed Alton-excluded fits scored on unchanged Alton development masks. One final all-six boundary-replay fit; fitted previews are not validation.",
+  "reserved_site_used": false,
+  "independent_human_review": false,
+  "selection_on_development_scores": false,
+  "automatic_promotion": false,
+  "encoder_updated": false
+}

@@ -38,6 +38,15 @@ def narrow_path_anchors(target,ground_sampling_m,max_width_m=4.):
     return np.argwhere(thin)
 
 
+def interface_anchors(target):
+    """Both sides of observed class interfaces; unknown/crop edges create none."""
+    if target.ndim!=2 or target.size>1048576 or not set(np.unique(target))<={0,1,2,3,255}:raise ValueError('Bounded four-class observed targets required')
+    known=target!=255;edges=np.zeros_like(known)
+    vertical=known[1:]&known[:-1]&(target[1:]!=target[:-1]);edges[1:]|=vertical;edges[:-1]|=vertical
+    horizontal=known[:,1:]&known[:,:-1]&(target[:,1:]!=target[:,:-1]);edges[:,1:]|=horizontal;edges[:,:-1]|=horizontal
+    return np.argwhere(edges)
+
+
 def masked_loss(logits,target,weights,*,balanced=True,boundary_weight=2.,dice_weight=.5):
     import torch
     from torch.nn import functional as F
@@ -64,15 +73,16 @@ def fit(rows,balanced=True,settings=None):
     import torch
     if any(r.get('record',{}).get('evaluation_only',False) for r in rows):raise ValueError('Reserved evaluation records cannot enter fitting')
     s=dict(SETTINGS if settings is None else settings)
-    if not rows or not 1<=s['steps']<=2000 or not 1<=s['batch']<=8 or s['patch'] not in (64,96,128) or not 0<=s.get('narrow_sampling_fraction',0)<=1 or not 0<=s.get('lidar_dropout',0)<=.5:raise ValueError('Bounded layered fitting required')
+    if not rows or not 1<=s['steps']<=2000 or not 1<=s['batch']<=8 or s['patch'] not in (64,96,128) or not 0<=s.get('narrow_sampling_fraction',0)<=1 or not 0<=s.get('lidar_dropout',0)<=.5 or not 0<=s.get('boundary_sampling_fraction',0)<=.8 or s.get('boundary_sampling_fraction',0)+s.get('narrow_sampling_fraction',0)>1:raise ValueError('Bounded layered fitting required')
     torch.set_num_threads(s['threads']);torch.manual_seed(s['seed']);torch.use_deterministic_algorithms(True)
     channels=rows[0]['features'].shape[2];model=architecture(channels);initial={k:v.detach().numpy().copy() for k,v in model.state_dict().items()};model.train()
-    indices=[];narrow=[]
+    indices=[];narrow=[];interfaces=[];draw_counts={'interface':0,'narrow':0,'class':0}
     for r in rows:
         if r['features'].shape[:2]!=r['ground'].shape or r['ground'].shape!=r['canopy'].shape or r['features'].shape[2]!=channels or r['features'].size>1048576*20 or not np.isfinite(r['features']).all():raise ValueError('Matching bounded layered features and masks required')
         by_class=[np.argwhere(r[key]==c) for key,n in [('ground',4),('canopy',2)] for c in range(n)]
         if not any(len(a) for a in by_class):raise ValueError('Observed training labels required')
         indices.append(by_class)
+        interfaces.append(interface_anchors(r['ground']) if s.get('boundary_sampling_fraction',0) else np.empty((0,2),int))
         narrow.append(narrow_path_anchors(r['ground'],r.get('ground_sampling_m',1.),s.get('narrow_max_width_m',4.)) if s.get('narrow_sampling_fraction',0) else np.empty((0,2),int))
     wg,cg=class_weights(rows,'ground',4);wc,cc=class_weights(rows,'canopy',2)
     wg,wc=torch.from_numpy(wg),torch.from_numpy(wc);rng=np.random.default_rng(s['seed']);focus_rng=np.random.default_rng(s['seed']+1);drop_rng=np.random.default_rng(s['seed']+2);optimizer=torch.optim.Adam(model.parameters(),lr=s['learning_rate']);history=[]
@@ -80,7 +90,15 @@ def fit(rows,balanced=True,settings=None):
         features=[];grounds=[];canopies=[]
         for _ in range(s['batch']):
             i=int(rng.integers(len(rows)));available=[c for c,a in enumerate(indices[i]) if len(a)]
-            if len(narrow[i]) and focus_rng.random()<s.get('narrow_sampling_fraction',0):anchor=narrow[i][int(rng.integers(len(narrow[i])))]
+            if s.get('boundary_sampling_fraction',0):
+                draw=focus_rng.random()
+                if len(interfaces[i]) and draw<s['boundary_sampling_fraction']:
+                    anchor=interfaces[i][int(rng.integers(len(interfaces[i])))];draw_counts['interface']+=1
+                elif len(narrow[i]) and s['boundary_sampling_fraction']<=draw<s['boundary_sampling_fraction']+s.get('narrow_sampling_fraction',0):
+                    anchor=narrow[i][int(rng.integers(len(narrow[i])))];draw_counts['narrow']+=1
+                else:
+                    c=int(rng.choice(available));anchor=indices[i][c][int(rng.integers(len(indices[i][c])))];draw_counts['class']+=1
+            elif len(narrow[i]) and focus_rng.random()<s.get('narrow_sampling_fraction',0):anchor=narrow[i][int(rng.integers(len(narrow[i])))]
             else:
                 c=int(rng.choice(available));anchor=indices[i][c][int(rng.integers(len(indices[i][c])))]
             r=rows[i];h,w=r['ground'].shape;patch=s['patch']
@@ -99,7 +117,7 @@ def fit(rows,balanced=True,settings=None):
         loss.backward();optimizer.step()
         if step in (0,s['steps']-1) or (step+1)%50==0:history.append({'step':step+1,'loss':float(loss.detach()),'ground_loss':float(lg.detach()),'canopy_loss':float(lc.detach())})
     change=float(sum(np.square(v.detach().numpy()-initial[k]).sum() for k,v in model.state_dict().items())**.5)
-    return model.eval(),{'settings':s,'balanced':balanced,'ground_counts':cg.tolist(),'canopy_counts':cc.tolist(),'ground_weights':wg.tolist(),'canopy_weights':wc.tolist(),'narrow_anchor_counts':[len(a) for a in narrow],'history':history,'parameter_change_l2':change,'parameter_count':sum(p.numel() for p in model.parameters())}
+    return model.eval(),{'settings':s,'balanced':balanced,'ground_counts':cg.tolist(),'canopy_counts':cc.tolist(),'ground_weights':wg.tolist(),'canopy_weights':wc.tolist(),'narrow_anchor_counts':[len(a) for a in narrow],'interface_anchor_counts':[len(a) for a in interfaces],'anchor_draw_counts':draw_counts,'history':history,'parameter_change_l2':change,'parameter_count':sum(p.numel() for p in model.parameters())}
 
 
 def predict(model,features):
