@@ -4,7 +4,7 @@ The latest masks include the [roof corrections from user review](#roof-correctio
 
 This stage creates **four native-resolution binary paving mask crops across three parks**. The main visible paving boundaries are traced explicitly, rather than sampled as small rectangles or copied from model/map predictions. Roofs, raised features, grass islands and planter holes receive separate visible non-paving traces; occluded or unreviewed ground stays unknown.
 
-These are **provisional assistant visual drafts requiring independent review**, not human-verified ground truth. They do not fix the model's accuracy by themselves. The neural checkpoint is unchanged and no world geometry is accepted.
+These are **provisional assistant visual drafts requiring independent review**, not human-verified ground truth. They do not fix the model's accuracy by themselves. The five-class neural checkpoint is unchanged and no world geometry is accepted. A later binary training experiment is linked below.
 
 ## What was created (initial draft, superseded)
 
@@ -55,13 +55,13 @@ Build outputs must be fresh. Source-file paths in `sources.json` resolve relativ
 
 Both Alton crops share one park group. Repeated originals or overlapping crop geography cannot be assigned to different parks. These source images were already used during earlier development, so **none is an untouched final test**. No train/test split or accuracy claim is created at this stage.
 
-Independent review should check roof eaves, planter edging, paving in visible shadow, narrow passages and whether some apparent hard surfaces are ride pads or service routes. The masks then provide inputs for a binary spatial-model benchmark; they have not yet been used to retrain a model. Research training is explicitly provisional, while production training remains disabled. No Windows EXE was rebuilt.
+Independent review should check roof eaves, planter edging, paving in visible shadow, narrow passages and whether some apparent hard surfaces are ride pads or service routes. The masks then provide inputs for a binary spatial-model benchmark; they now feed the separate binary experiment linked below. Research training is explicitly provisional, while production training remains disabled. No Windows EXE was rebuilt.
 
 Attribution: Esri World Imagery and its imagery providers. Source/capture/resolution/accuracy observations remain in the original retained receipts and do not establish exact physical registration.
 
 ## Roof correction after user review
 
-The counts above describe the first draft, which **included some roof sections in the paving mask**. The corrected dataset supersedes that draft; no model has been trained on either mask revision.
+The counts above describe the first draft, which **included some roof sections in the paving mask**. The corrected dataset supersedes that draft. At the mask-correction stage neither revision had retrained a model; the later binary experiment uses the corrected revision.
 
 Source-overlay inspection identified missed diagonal roofs at both lower corners of the Towers Street crop, the right-hand pre-show gable and north-east roof at Wicker, and incomplete pavilion/curved-roof extents at Chessington and Drayton. Explicit non-paving outlines now include these sections. The north-east Wicker facade/shadow transition and a few ambiguous corners are unknown rather than guessed ground.
 
@@ -76,4 +76,6 @@ The combined source-traced roof outlines receive an explicit unknown ring extend
 
 In total **10,317 previously paving-labelled pixels are excluded**, with **zero newly added paving pixels**. Current totals are 139,868 paving, 127,974 non-paving and 303,608 unknown. All source bytes, crop coordinates, RGB pixels and georeferenced extents remain unchanged. Known roof interiors, uncertain eaves and neighbouring ground paths are pinned as explicit source-coordinate regression probes in `voxel_mapper/data/paving-mask-roof-review.json`.
 
-The corrected download is named `Source-Traced-Paving-Masks-Roof-Fix.zip`, with its own standalone review page. The earlier download is retained for comparison. This revision remains a provisional assistant visual draft requiring independent review; it does not establish that every remaining roof or paving boundary is correct. Neural weights remain unchanged.
+The corrected download is named `Source-Traced-Paving-Masks-Roof-Fix.zip`, with its own standalone review page. The earlier download is retained for comparison. This revision remains a provisional assistant visual draft requiring independent review; it does not establish that every remaining roof or paving boundary is correct. The mask correction itself did not change neural weights.
+
+The corrected masks now feed a separate [binary RGB/context training experiment](paving-binary-colour-training.md). This does not change their provisional status or replace the earlier five-class checkpoint.

@@ -22,6 +22,8 @@ KINDS.add('planning_area_world_preview')
 HEAVY.add('planning_area_world_preview')
 KINDS.update({'train_aerial_semantics','predict_aerial_semantics'})
 HEAVY.update({'train_aerial_semantics','predict_aerial_semantics'})
+KINDS.update({'train_paving_binary','predict_paving_binary'})
+HEAVY.update({'train_paving_binary','predict_paving_binary'})
 KINDS.add('imagery_geometry_research')
 HEAVY.add('imagery_geometry_research')
 KINDS.add('aerial_material_research')
@@ -449,6 +451,10 @@ class DesktopRuntime:
                     self.store.remember('aerial_semantic_checkpoint',result['dataset_id'],{
                         'model_sha256':result['model_sha256'],'label_policy':result['label_policy'],
                         'held_out_mean_iou':result['park_held_out_neural']['mean_iou'],'production_eligible':False})
+                if kind=='train_paving_binary':
+                    self.store.remember('paving_binary_checkpoint',result['dataset_id'],{
+                        'models':result['models'],'park_excluded_scores':result['park_excluded_scores'],
+                        'label_policy':result['label_policy'],'production_eligible':False})
                 if kind=='imagery_geometry_research':
                     self.store.remember('imagery_geometry_observation',result['site_id'],{
                         'candidate_counts':result['candidate_counts'],'candidate_file_sha256':result['candidate_file_sha256'],
@@ -727,6 +733,16 @@ def _worker(request):
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)
+    elif kind=='train_paving_binary':
+        from .paving_binary_learning import train
+        if config.get('version')!='desktop-paving-binary-training-v1' or set(config)-{'version','dataset_directory','settings'}:raise ValueError('Versioned binary paving training request required')
+        result=train(resolve_path(config_path,config['dataset_directory']),output,config.get('settings'),cancelled=cancelled,progress=progress)
+    elif kind=='predict_paving_binary':
+        from .paving_binary_learning import predict
+        if config.get('version')!='desktop-paving-binary-prediction-v1' or set(config)-{'version','aerial_directory','model_file','model_sha256','threshold'}:raise ValueError('Versioned binary paving prediction request required')
+        source=resolve_path(config_path,config['aerial_directory']);model=resolve_path(config_path,config['model_file'])
+        if not isinstance(config.get('model_sha256'),str) or not __import__('re').fullmatch('[0-9a-f]{64}',config['model_sha256']):raise ValueError('Pinned binary paving model required')
+        result=predict(source/'source-image.bin',read_json(source/'imagery-receipt.json'),model,output,model_sha256=config['model_sha256'],threshold=config.get('threshold',.6),cancelled=cancelled)
     elif kind=='train_aerial_semantics':
         from .aerial_semantic_learning import train
         if config.get('version')!='desktop-aerial-semantic-training-v1' or set(config)-{'version','dataset_directory','settings'}:raise ValueError('Versioned semantic training request required')

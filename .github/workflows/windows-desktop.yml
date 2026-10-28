@@ -48,6 +48,8 @@ on:
       - 'voxel_mapper/aerial_semantic_network.py'
       - 'voxel_mapper/aerial_semantic_comparison.py'
       - 'voxel_mapper/paving_masks.py'
+      - 'voxel_mapper/paving_binary_learning.py'
+      - 'tests/test_paving_binary_learning.py'
       - 'voxel_mapper/data/paving-mask-annotations.json'
       - 'voxel_mapper/data/paving-mask-roof-review.json'
       - 'tests/test_paving_masks.py'
@@ -283,6 +285,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'RGB aerial semantic learning checks failed' }
           python -m unittest discover -s tests -p 'test_paving_masks.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Source-pinned binary paving mask checks failed' }
+          python -m unittest discover -s tests -p 'test_paving_binary_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'RGB and context binary paving training checks failed' }
           python -m unittest discover -s tests -p 'test_imagery_geometry_research.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Imagery gap geometry checks failed' }
           python -m unittest discover -s tests -p 'test_colour_materials.py' -v
