@@ -240,6 +240,7 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
                 geometry_failures.append({'site_id':site['site_id'],'error':str(error)});continue
             geometry_reports.append({'site_id':site['site_id'],'candidate_counts':draft['candidate_counts'],
                 'queue_reference_lines':draft['queue_reference_lines'],'candidate_file_sha256':draft['candidate_file_sha256'],
+                'paving_file_sha256':draft.get('paving_file_sha256'),'paving_refinement':draft.get('paving_refinement'),
                 'geometry_verified':False,'registration_verified':False,'learned_semantics':draft.get('learned_semantics')})
             for source in draft['sources']:
                 body=source['body_sha256']

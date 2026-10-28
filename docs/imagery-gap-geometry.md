@@ -20,7 +20,7 @@ The geometry job shares a 64 MB / 600 second budget across the normal aerial acq
 
 | Output | Evidence and limits |
 | --- | --- |
-| Paving polygons | Actual pixel-colour regions outside mapped building masks, vegetation, shadows and protected coverage. A mapped walking route/area supports the paving class. Connected courtyards/vehicle surfaces may still merge. |
+| Paving polygons | Mapped pedestrian polygons/lines seed bounded RGB region growth. Building, water, parking, vegetation, shadow and protected-coverage masks block it. A connected hard surface is no longer promoted in full merely because it touches one walking reference. Missing/incorrect references and occlusion still cause substantial errors. |
 | Building regions | Explicit mapped building polygons seed nearby RGB region growth. Resulting outlines describe visible roof-colour regions, not verified ground footprints, roof heights or complete buildings. Multiple regions can belong to one mapped building. |
 | Water regions | Explicit mapped water areas seed RGB boundary extraction. Visible islands/holes are preserved. Colour alone does not establish that an unmapped blue surface is water. |
 | Queue lines | Retained explicitly tagged mapped centre lines, clipped around protected coverage, with an RGB visibility-support measurement. Widths and unrecorded switchbacks are not invented. Occluded lines stay marked unsupported. |
@@ -51,6 +51,7 @@ Without a protected file, the report says `protected_coverage_supplied: false`. 
 ## Review files
 
 - `index.html` and `overlay.png`: source imagery with colour-coded candidate regions.
+- `paving-overlay.png`, `paving-mask.png`, `paving-candidates.geojson`: separate blue paving review, raster mask and source-pinned polygons. These map-guided results are separate from the RGB neural predictions.
 - `geometry-candidates.geojson`: georeferenced WGS84 polygon candidates, class/boundary roles, reference IDs, source hashes and coverage status.
 - `queue-centrelines.geojson`: explicitly mapped queue lines and their RGB support status.
 - `protected-coverage.geojson` and, when supplied, `protected-plan-original.geojson`.
@@ -59,7 +60,7 @@ Without a protected file, the report says `protected_coverage_supplied: false`. 
 
 These files are research/draft layers. No surveyed registration, accepted source/material labels, neural accuracy gain, 3D structure, world blocks or Windows EXE rebuild is asserted. The existing reviewed orthophoto acceptance rules remain in place. The desktop remembers candidate counts/hashes, and the research cycle preserves source/candidate provenance without retraining an unchanged neural dataset.
 
-## Actual Towers Street run
+## Original Towers Street run (before paving refinement)
 
 The run produced **58 polygon regions**: five paving regions, 32 roof-colour regions associated with 26 distinct mapped building references, one map-supported water region, and 20 unclassified hard-surface regions. Thirty-seven map references intersected the area. No explicitly tagged queue centre line was found in this snapshot, so the queue output is empty. This does not prove that the area has no queues.
 
@@ -70,3 +71,17 @@ The initial imagery job retrieved 783,526 bytes; the subsequent geometry run ret
 Attribution: Esri World Imagery and its imagery providers; © OpenStreetMap contributors, ODbL-1.0. Capture-date, source-resolution and accuracy observations remain in the provider metadata and do not establish exact whole-image accuracy or current conditions.
 
 A separately trained RGB/context model can now add paths/plazas, roof, car-park and landscaped-island proposals. See [Aerial semantic training](aerial-semantic-training.md) for its provisional labels, weak held-out results and saved-checkpoint workflow.
+
+## Paving refinement and transfer limitations
+
+The map-seeded paving pass uses several RGB/Lab prototypes from visible map interiors, then grows connected regions within the configured `max_growth_m` neighbourhood (default 3 metres). Line references add a half-metre seed/search allowance; raster cell edges add quantization uncertainty. This is a search window, not an asserted path width. Small closing operations are constrained again by every barrier and the allowed colour mask. Covered/tunnel references are withheld, and hidden paving is not reconstructed. Polygon holes preserve visible grass/planters; these are not verified planter footprints.
+
+The fixed pass was compared against the existing provisional assistant annotations, without feeding those labels into extraction:
+
+| Existing imagery | Paving IoU | Precision | Recall |
+| --- | ---: | ---: | ---: |
+| Towers Street | 70.39% | 92.56% | 74.61% |
+| Wicker-area image | 15.06% | 29.00% | 23.86% |
+| Thorpe entrance | 1.12% | 2.25% | 2.19% |
+
+These are **development/transfer comparisons on sparse provisional labels**, not a blind test or independently surveyed accuracy. Unlabelled pixels are excluded from scoring. Map context is extra evidence unavailable to the RGB-only experiment, so the figures cannot be presented as a neural-training gain. All three previews and pinned evaluation inputs are retained in the paving-review download. Towers Street looks substantially better, while the transfer results show that this method is not a general solution. Map/imagery registration, more reliable roof and pedestrian boundaries, and independently reviewed spatial labels remain necessary. Neural weights and their reported held-out scores are unchanged; no world geometry is accepted.

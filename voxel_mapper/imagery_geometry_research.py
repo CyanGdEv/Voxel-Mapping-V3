@@ -90,11 +90,12 @@ def reference_rows(path):
         if p.get('footway')=='queue' or p.get('queue')=='yes':kind='queue'
         elif p.get('building','no')!='no' or p.get('building:part','no')!='no':kind='building'
         elif p.get('natural')=='water' or p.get('water'):kind='water'
+        elif p.get('amenity')=='parking' or p.get('landuse')=='parking':kind='parking'
         elif p.get('highway') in ('footway','pedestrian','path','steps') or p.get('area:highway') in ('pedestrian','footway'):kind='paving'
         if kind is None:continue
         geom=transform(project.transform,shape(feature['geometry']))
         if geom.is_empty or not geom.is_valid or geom.has_z:continue
-        if kind in ('building','water') and geom.geom_type not in ('Polygon','MultiPolygon'):continue
+        if kind in ('building','water','parking') and geom.geom_type not in ('Polygon','MultiPolygon'):continue
         result.append({'id':feature['id'],'kind':kind,'geometry':geom,'tags':p})
     return result,pin,skipped
 
@@ -116,7 +117,6 @@ def extract(rgba,extent,bounds,refs,protected,options,*,footer=32,cancelled=lamb
     refs=[r for r in refs if r['geometry'].intersects(aoi)]
     if len(refs)>512:raise ValueError('Map-reference geometry budget exceeded')
     building_masks=_mask([r['geometry'] for r in refs if r['kind']=='building'],size,affine)
-    walking=_mask([r['geometry'].buffer(2*pixel) if 'LineString' in r['geometry'].geom_type else r['geometry'] for r in refs if r['kind'] in ('paving','queue')],size,affine)
     def check():aerial._check(cancelled,deadline)
     def polygons(mask,kind,reference=None):
         check();found=[]
@@ -129,11 +129,7 @@ def extract(rgba,extent,bounds,refs,protected,options,*,footer=32,cancelled=lamb
             if g.is_empty or not g.is_valid or g.geom_type not in ('Polygon','MultiPolygon'):continue
             if g.area*scale**2<options['min_area_m2']:continue
             if len(json.dumps(mapping(g)))>1000000:held.append({'kind':kind,'reason':'polygon_geometry_byte_budget'});continue
-            if kind=='unclassified_hard_surface' and np.any(walking&mask):
-                # Test this component rather than unrelated walking pixels.
-                component=_mask([g],size,affine)
-                actual_kind='paving' if np.any(component&walking) else kind
-            else:actual_kind=kind
+            actual_kind=kind
             props={'kind':actual_kind,'geometry_source':'rgb_colour_region',
                 'boundary_role':'roof_colour_region_not_ground_footprint' if actual_kind=='building' else 'visible_colour_region_boundary',
                 'reference_id':reference,'approx_ground_area_m2':round(g.area*scale**2,3),
@@ -168,6 +164,18 @@ def extract(rgba,extent,bounds,refs,protected,options,*,footer=32,cancelled=lamb
         mask=np.zeros(size,bool);mask[r0:r1,c0:c1]=grown
         candidates=polygons(mask,ref['kind'],ref['id']);proposals.extend(candidates)
         if candidates:labels[mask]=1 if ref['kind']=='building' else 2
+    # Ground paving gets its own map-seeded, RGB-constrained pass. Previously
+    # any hard-surface component touching one mapped walk was all called paving.
+    from .paving_refinement import refine
+    barriers=building_masks|(labels!=0)|_mask([r['geometry'] for r in refs if r['kind'] in ('water','parking')],size,affine)
+    paving,paving_summary=refine(rgba[:,:,:3],valid,barriers,refs,affine,scale,
+        max_growth_m=options['max_growth_m'],colour_distance=options['colour_distance'],cancelled=cancelled,deadline=deadline)
+    paved=polygons(paving,'paving')
+    for feature in paved:
+        feature['properties'].update(geometry_source='map_seeded_rgb_paving',
+            reference_ids=paving_summary['reference_ids'],boundary_role='visible_pedestrian_surface_candidate',
+            hidden_surfaces_filled=False,width_verified=False)
+    proposals.extend(paved);labels[paving]=3
     # Anonymous hard/blue surfaces remain candidates; colour alone cannot
     # identify an unmapped building, pond, or queue.
     hard=valid&~green&~shadow&~blue&~building_masks&(labels==0)
@@ -195,7 +203,7 @@ def extract(rgba,extent,bounds,refs,protected,options,*,footer=32,cancelled=lamb
     for i,f in enumerate(proposals):f['id']='rgb-region-'+str(i)
     return proposals,queues,{'references_in_area':len(refs),'map_reference_counts':dict(Counter(r['kind'] for r in refs)),'protected_pixels_excluded':int(blocked.sum()),
         'shadow_pixels_unresolved':int((valid&shadow).sum()),'withheld_references':held[:128],
-        'deferred_candidates':truncated,'queue_anchors':len(queues),'queue_lines_with_rgb_support':sum(q['properties']['rgb_support_status']=='supported_colour_context' for q in queues)}
+        'paving_refinement':paving_summary,'deferred_candidates':truncated,'queue_anchors':len(queues),'queue_lines_with_rgb_support':sum(q['properties']['rgb_support_status']=='supported_colour_context' for q in queues)}
 
 
 def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,parent_budget=None,run_deadline=None):
@@ -224,6 +232,8 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     if file_hash(output/'aerial/source-image.bin')!=rgb['imagery']['image_sha256']:raise ValueError('Original aerial image changed during geometry extraction')
     for feature in features+queues:feature['properties'].update(image_sha256=rgb['imagery']['image_sha256'],map_sha256=map_meta['body_sha256'] if map_meta else None,protected_plan_coverage_sha256=pin)
     (output/'geometry-candidates.geojson').write_text(json.dumps({'type':'FeatureCollection','features':features},separators=(',',':'))+'\n')
+    paving_features=[f for f in features if f['properties']['kind']=='paving']
+    atomic_json(output/'paving-candidates.geojson',{'type':'FeatureCollection','features':paving_features})
     atomic_json(output/'queue-centrelines.geojson',{'type':'FeatureCollection','features':queues})
     inverse=Transformer.from_crs(3857,4326,always_xy=True)
     atomic_json(output/'protected-coverage.geojson',{'type':'FeatureCollection','features':[] if protected.is_empty else [{'type':'Feature','geometry':mapping(transform(inverse.transform,protected)),'properties':{'role':'supplied_protected_plan_coverage'}}]})
@@ -234,6 +244,10 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         selected=[g.buffer(abs(affine.a)*1.5) if 'LineString' in g.geom_type else g for g in selected]
         mask=_mask(selected,rgba.shape[:2],affine);overlay[mask]=[*colour,105]
     Image.alpha_composite(Image.fromarray(rgba),Image.fromarray(overlay)).convert('RGB').save(output/'overlay.png')
+    paving_mask=_mask([transform(forward.transform,shape(f['geometry'])) for f in paving_features],rgba.shape[:2],affine)
+    Image.fromarray(paving_mask.astype(np.uint8)*255).save(output/'paving-mask.png')
+    paving_overlay=np.zeros_like(rgba);paving_overlay[paving_mask]=[45,160,255,135]
+    Image.alpha_composite(Image.fromarray(rgba),Image.fromarray(paving_overlay)).convert('RGB').save(output/'paving-overlay.png')
     counts=dict(Counter(f['properties']['kind'] for f in features));sources=list(rgb['sources'])
     if map_meta:sources.append({'url':map_meta['source_url'],'body_sha256':map_meta['body_sha256'],'citation_id':'M'+map_meta['body_sha256'][:12],'source_evidence_verified':False,'training_labels_generated':0})
     learned=None
@@ -257,10 +271,12 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         'map_parse_gaps':map_skipped[:32],'image_sha256':rgb['imagery']['image_sha256'],'imagery':rgb['imagery'],
         'map_snapshot':map_meta,'protected_plan_coverage_sha256':pin,'protected_coverage_supplied':pin is not None,
         'candidate_file_sha256':file_hash(output/'geometry-candidates.geojson'),'queue_file_sha256':file_hash(output/'queue-centrelines.geojson'),
+        'paving_file_sha256':file_hash(output/'paving-candidates.geojson'),
         'sources':sources,'network_bytes':budget.spent,'geometry_verified':False,'registration_verified':False,
         'model_weights_updated':False,'training_labels_generated':0,'world_blocks_generated':0,'production_eligible':False,
         'limitations':['Pixel colour regions are draft visible-surface outlines, not surveyed building footprints or complete paving.',
-            'Map tags seed building/water/queue identity; anonymous hard and blue surfaces remain unclassified.',
+            'Map tags seed building/water/queue identity; pedestrian references seed RGB-constrained paving with building/water/parking barriers.',
+            'Paving depends on map coverage and registration; shadow, canopy and missing map references remain unresolved.',
             'Queue geometry retains explicit mapped centre lines; no unmapped switchbacks or widths are invented.',
             'Protected supplied plan coverage is excluded; absence of a supplied plan is not proof that no application exists.',
             'Capture dates, positional accuracy, canopy/shadow occlusion and roof displacement limit physical registration.']}
@@ -269,6 +285,13 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     (output/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Imagery gap geometry</title><style>body{font:16px system-ui;max-width:1100px;margin:30px auto}img{width:100%;max-width:1024px}</style><h1>'+escape(config['site'])+'</h1><p>Draft imagery regions outside supplied protected plan coverage. Map-supported semantics remain unverified.</p><p>'+legend+'</p><img src="overlay.png"><p>'+escape(rgb['imagery'].get('attribution',''))+' · © OpenStreetMap contributors (ODbL-1.0)</p><p><a href="geometry-candidates.geojson">Geometry candidates</a> · <a href="queue-centrelines.geojson">Mapped queue lines</a> · <a href="aerial/index.html">RGB/source metadata</a></p><pre>'+escape(json.dumps(counts,indent=2))+'</pre>',encoding='utf-8')
     if learned is not None:
         path=output/'index.html';page=path.read_text();page=page.replace('</h1>','</h1><p><a href="learned-semantic-candidates.geojson">Learned semantic candidates outside protected coverage</a> · <a href="learned-semantics/index.html">Inspect raw RGB model predictions</a></p>',1);path.write_text(page,encoding='utf-8')
+    path=output/'index.html';page=path.read_text();page=page.replace('<img src="overlay.png">',
+        '<h2>Visible paving review</h2><p>Blue shows map-seeded, RGB-supported paving candidates. '
+        'Grass, mapped roofs/water/parking and protected plans are excluded. Missing references, '
+        'map misalignment and hidden surfaces remain unresolved. This is separate from the RGB neural model; '
+        'it does not establish reliable accuracy across parks.</p><img src="paving-overlay.png">'
+        '<p><a href="paving-candidates.geojson">Paving polygons</a> · <a href="paving-mask.png">Paving mask</a></p>'
+        '<h2>All draft geometry</h2><img src="overlay.png">');path.write_text(page,encoding='utf-8')
     return report
 
 
