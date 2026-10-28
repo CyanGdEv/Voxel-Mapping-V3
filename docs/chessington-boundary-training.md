@@ -110,3 +110,10 @@ and roof graphs, draft masks, inferred canopy pixels, frozen-model outputs,
 park holdouts and fitted previews. Its predictions also cover unknown regions;
 those areas have not been validated. Source imagery remains attributed to Esri
 and its imagery providers, with original receipts and capture audits retained.
+
+## Layered benchmark extension
+
+The next experiment adds denser boundary windows, independent canopy targets,
+class-balanced losses and a frozen aerial-model comparison. See
+[layered surface benchmark](layered-surface-benchmark.md) for all results,
+including boundary limitations and missing-class failures.

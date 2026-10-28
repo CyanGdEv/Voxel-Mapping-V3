@@ -1,0 +1,66 @@
+{
+  "model": "alanoix/segformer_b0_flair_one",
+  "revision": "ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c",
+  "files": [
+    {
+      "file": "README.md",
+      "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/README.md",
+      "bytes": 766,
+      "sha256": "c4a3b1cafb087b8a44012b7178d9eaf0a1fb4e3211351a5b844e574ab9321217"
+    },
+    {
+      "file": "config.json",
+      "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/config.json",
+      "bytes": 1682,
+      "sha256": "8875cec7d5ddf42ded1ace67839177739d319297da1f1efb07d1d7527f352f7e"
+    },
+    {
+      "file": "pytorch_model.bin",
+      "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/pytorch_model.bin",
+      "bytes": 14943053,
+      "sha256": "5ea2c324b8dd46e471880a80710ee22607e143023bf3d3d489fdfb932105607a"
+    },
+    {
+      "file": "upstream-license.txt",
+      "url": "https://raw.githubusercontent.com/NVlabs/SegFormer/master/LICENSE",
+      "http_status": 200,
+      "sha256": "f549820c06519e3105e5174a2fd7285224ffd2268a7f879a843b1a255fd04a61"
+    },
+    {
+      "file": "flair-labels.md",
+      "url": "https://raw.githubusercontent.com/IGNF/FLAIR-1/main/README.md",
+      "http_status": 200,
+      "sha256": "c90312ee51ba06298101fdf6540f17861b97b983d0e1518cb0b94dbeff8b56d7"
+    }
+  ],
+  "runtime_remote_code": false,
+  "use_scope": "noncommercial_research_evaluation_only",
+  "converted_weights_sha256": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649",
+  "conversion_torch_version": "2.6.0+cpu",
+  "weights_only": true,
+  "pickle_runtime_loading_required": false,
+  "strict_architecture_match": true,
+  "runtime_files": {
+    "config.json": "8875cec7d5ddf42ded1ace67839177739d319297da1f1efb07d1d7527f352f7e",
+    "model.safetensors": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649"
+  },
+  "preprocessing": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "status": "Standard ImageNet normalisation assumed; upstream has no preprocessor file"
+  },
+  "upstream_license": {
+    "url": "https://raw.githubusercontent.com/NVlabs/SegFormer/master/LICENSE",
+    "sha256": "f549820c06519e3105e5174a2fd7285224ffd2268a7f879a843b1a255fd04a61",
+    "use_scope": "noncommercial_research_and_evaluation_only",
+    "downstream_card_claim": "Apache-2.0 does not override the upstream licence"
+  }
+}
