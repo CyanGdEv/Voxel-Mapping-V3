@@ -20,11 +20,18 @@ WATER_MODEL_VERSION = 'user-projected-water-boundary-model-v1'
 BOUNDARY_LABELS = {'non_boundary_offset':0,'projected_boundary':1,'unknown':255}
 
 
-def extract(rgb, *, fine_markers=False):
+def extract(rgb, *, fine_markers=False, building_markers=False, exclusion_boxes=()):
     """Extract saturated annotation glyphs, retaining point IDs and glyph sizes."""
-    if type(fine_markers) is not bool:raise ValueError('Explicit fine-marker boolean required')
+    if type(fine_markers) is not bool or type(building_markers) is not bool:raise ValueError('Explicit marker booleans required')
     if not isinstance(rgb, np.ndarray) or rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8 or rgb.shape[0]*rgb.shape[1] > 1048576:
         raise ValueError('Bounded native RGB reference required')
+    if not isinstance(exclusion_boxes,(list,tuple)) or len(exclusion_boxes)>32:raise ValueError('Bounded reference exclusion rectangles required')
+    rgb=rgb.copy()
+    for box in exclusion_boxes:
+        if not isinstance(box,(list,tuple)) or len(box)!=4 or any(type(v) is not int for v in box):raise ValueError('Integer reference exclusion rectangles required')
+        x0,y0,x1,y1=box
+        if not 0<=x0<x1<=rgb.shape[1] or not 0<=y0<y1<=rgb.shape[0]:raise ValueError('Exclusion rectangle outside reference')
+        rgb[y0:y1,x0:x1]=0
     r,g,b = rgb.astype(np.int16).transpose(2,0,1)
     selections = {'path_boundary': (r>185)&(g<110)&(b<110)&(r>g*1.8)&(r>b*1.8),
         'tree_location': (g>185)&(r<100)&(b<110)&(g>r*1.8)&(g>b*1.8),
@@ -32,6 +39,11 @@ def extract(rgb, *, fine_markers=False):
     if fine_markers:
         selections['path_boundary']=(r>140)&(g<120)&(b<115)&(r>g*1.6)&(r>b*1.6)
         selections['water_location']=(b>120)&(r<110)&(g<130)&(b>r*1.6)&(b>g*1.5)
+    if building_markers:
+        # Purple is opt-in user-confirmed roof/building evidence, never water.
+        purple=(r>70)&(b>70)&(g<110)&(r>g*1.5)&(b>g*1.5)&(r<b*2)&(b<r*2)
+        selections['building_boundary']=purple
+        selections['water_location'] &= ~purple
     points = []; rejected = {}
     for label, mask in selections.items():
         components, count = ndimage.label(mask); accepted = []; refused = 0

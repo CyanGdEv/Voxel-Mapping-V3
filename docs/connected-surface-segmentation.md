@@ -122,3 +122,9 @@ inferred-ground masks, models, predictions and all scores. Region GeoJSON uses
 explicit clean-image pixel coordinates, not geographic coordinates. Image
 alignment does not establish survey accuracy. No accepted world geometry,
 world blocks or production checkpoint replacement results from this experiment.
+
+## Chessington extension
+
+The next training intake adds user-confirmed purple building/roof boundaries and
+whole-park holdouts. See [Chessington boundary training](chessington-boundary-training.md)
+for the three-image dataset, missing-class handling and transfer limitations.

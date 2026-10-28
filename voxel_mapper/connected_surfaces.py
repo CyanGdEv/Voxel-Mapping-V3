@@ -20,9 +20,10 @@ LABELS={'paving':0,'building_structure':1,'grass_island':2,'water':3,'unknown':2
 VERSION='connected-surface-dataset-v1'
 
 
-def connect(points, max_gap=12.):
+def connect(points, max_gap=12., *, boundary_label='path_boundary'):
     """Mutual local-tangent neighbours; ambiguous branches and long gaps stay open."""
-    points=[p for p in points if p['label']=='path_boundary']
+    if boundary_label not in ('path_boundary','building_boundary','water_boundary'):raise ValueError('Explicit supported boundary type required')
+    points=[p for p in points if p['label']==boundary_label]
     if not 3<=len(points)<=3000 or not 2<=max_gap<=20:raise ValueError('Bounded path points and edge gap required')
     xy=np.array([p['reference_xy'] for p in points]);tree=cKDTree(xy);choices={};flags=[]
     for i,p in enumerate(xy):
@@ -140,12 +141,16 @@ def build(examples_file,recipe_file,output):
         from .user_path_supervision import extract,register
         with Image.open(reference) as im:
             if im.width*im.height>1048576 or list(im.size)!=registration['reference_size']:raise ValueError('Pinned bounded reference dimensions required')
-            points,_=extract(np.array(im.convert('RGB')),fine_markers=entry.get('fine_markers',False));rs=list(im.size)
+            points,_=extract(np.array(im.convert('RGB')),fine_markers=entry.get('fine_markers',False),building_markers=entry.get('building_markers',False),exclusion_boxes=entry.get('reference_exclusion_boxes',()));rs=list(im.size)
         with Image.open(clean) as im:
             cs=list(im.size)
             if im.width*im.height>1048576 or cs!=registration['clean_size']:raise ValueError('Pinned bounded clean dimensions required')
         receipt,_=safe._json(meta,2000000)
         if receipt['image_sha256']!=file_hash(clean) or cs!=[receipt['width'],receipt['height']]:raise ValueError('Receipt must describe the exact clean raster')
+        water_role=entry.get('water_role','location')
+        if water_role not in ('location','boundary','none'):raise ValueError('Explicit water marker role required')
+        if water_role=='none':points=[p for p in points if p['label']!='water_location']
+        elif water_role=='boundary':points=[{**p,'label':'water_boundary' if p['label']=='water_location' else p['label']} for p in points]
         points=register(points,registration);graph=connect(points)
         if not 1<=len(recipe['examples'][identifier])<=128:raise ValueError('Bounded semantic region count required')
         target,inferred,stats,vectors=masks(recipe['examples'][identifier],rs,cs,registration['reference_to_clean'],points)
@@ -156,6 +161,8 @@ def build(examples_file,recipe_file,output):
         Image.fromarray(target).save(folder/'surface-mask.png');Image.fromarray(inferred.astype(np.uint8)*255).save(folder/'inferred-path.png')
         atomic_json(folder/'edges.json',graph);atomic_json(folder/'regions.geojson',{'type':'FeatureCollection','coordinate_space':'clean_image_pixels','not_geographic':True,'features':vectors})
         atomic_json(folder/'points.json',{'points':points})
+        building_points=[p for p in points if p['label']=='building_boundary']
+        if len(building_points)>=3:atomic_json(folder/'building-edges.json',connect(points,boundary_label='building_boundary'))
         components,n=ndimage.label(target==0);probes=[]
         for label in sorted(range(1,n+1),key=lambda i:np.count_nonzero(components==i),reverse=True)[:3]:
             y,x=np.nonzero(components==label)
