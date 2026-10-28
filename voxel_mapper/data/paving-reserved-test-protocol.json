@@ -1,0 +1,38 @@
+{
+  "version": "paving-reserved-test-protocol-v1",
+  "reserved_at_utc": "2026-10-28T10:45:32.501302+00:00",
+  "test_site_id": "paultons-park",
+  "bounds_wgs84": [
+    -1.5536,
+    50.9473,
+    -1.5511,
+    50.9489
+  ],
+  "location_source": "https://mapcarta.com/W564307391",
+  "training_dataset": "/workspace/scratch/paving-mask-roof-correction/dataset",
+  "training_sites": [
+    "alton-towers",
+    "chessington",
+    "drayton-manor"
+  ],
+  "test_must_not_enter_training": true,
+  "test_predictions_hidden_until_annotation_freeze": true,
+  "label_policy": "assistant_visual_draft_requires_independent_review",
+  "fine_tuning": "frozen_segformer_backbone_with_fitted_binary_head",
+  "head_settings": {
+    "hidden": 24,
+    "epochs": 60,
+    "batch_size": 512,
+    "learning_rate": 0.01,
+    "regularization": 0.0001,
+    "seed": 137
+  },
+  "score_threshold": 0.5,
+  "test_evaluations_allowed": 1,
+  "rgb_baseline_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "baseline_scope": "same frozen known test pixels, unknown excluded",
+  "limitations": [
+    "Unseen to this paving dataset, not proof absent from upstream pretraining.",
+    "One provisional visual test area is not a general-accuracy claim."
+  ]
+}

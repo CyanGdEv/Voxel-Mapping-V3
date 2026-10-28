@@ -106,10 +106,12 @@ def _crop(source, metadata, crop):
     return rgba, cropped_extent
 
 
-def build(items, annotations_file, output):
+def build(items, annotations_file, output, *, reserved_test=False):
     output = Path(output).resolve()
     if output.exists():
         raise ValueError('Fresh paving-mask dataset output required')
+    if type(reserved_test) is not bool:
+        raise ValueError('Explicit reserved-test boolean required')
     annotations, _ = safe._json(Path(annotations_file), 2000000)
     if annotations.get('version') != ANNOTATIONS or annotations.get('review_policy') != POLICY:
         raise ValueError('Explicit provisional paving-mask annotation policy required')
@@ -134,9 +136,9 @@ def build(items, annotations_file, output):
         labels, reasons = rasterize(traces, size, boundary_pixels=annotations['boundary_ignore_pixels'], opaque=rgba[:, :, 3] == 255)
         row = {'id': identifier, 'site_id': site, 'source_record_id': item['source_record_id'],
             'crop_pixels': item['crop_pixels'], 'image_size': list(size), 'extent_epsg3857': extent,
-            'split_group': site, 'split_role': 'development_annotation_review',
+            'split_group': site, 'split_role': 'reserved_test_annotation_review' if reserved_test else 'development_annotation_review',
             'review_policy': POLICY, 'human_labels_verified': False,
-            'research_training_eligible': True, 'production_training_eligible': False,
+            'research_training_eligible': not reserved_test, 'production_training_eligible': False,
             'pixel_counts': {k: int((labels == v).sum()) for k, v in LABELS.items()},
             'ignore_reason_counts': {k: int((reasons == v).sum()) for k, v in REASONS.items()},
             'trace_count': len(traces)}
@@ -155,6 +157,7 @@ def build(items, annotations_file, output):
         'annotation_file': 'annotations.json', 'annotation_sha256': file_hash(output/'annotations.json'),
         'review_policy': POLICY, 'human_labels_verified': False, 'geometry_verified': False,
         'production_eligible': False, 'world_blocks_generated': 0, 'records': rows}
+    if reserved_test: manifest['reserved_test_only'] = True
     manifest['id'] = digest(manifest); atomic_json(output/'dataset.json', manifest)
     validate(output); review(output)
     return manifest
@@ -176,10 +179,13 @@ def validate(directory):
     if not isinstance(rows, list) or not 1 <= len(rows) <= 16 or len({r['id'] for r in rows}) != len(rows):
         raise ValueError('Bounded distinct paving crops required')
     total = 0; source_sites = {}
+    reserved = manifest.get('reserved_test_only', False)
+    if type(reserved) is not bool:
+        raise ValueError('Explicit dataset test role required')
     for row in rows:
-        if any(not isinstance(row.get(k), str) or not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,79}', row[k]) for k in ('id', 'site_id')) or row['split_group'] != row['site_id'] or row['split_role'] != 'development_annotation_review':
+        if any(not isinstance(row.get(k), str) or not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,79}', row[k]) for k in ('id', 'site_id')) or row['split_group'] != row['site_id'] or row['split_role'] != ('reserved_test_annotation_review' if reserved else 'development_annotation_review'):
             raise ValueError('Whole-park development grouping required')
-        if row.get('human_labels_verified') is not False or row.get('production_training_eligible') is not False or row.get('research_training_eligible') is not True or row.get('review_policy') != POLICY:
+        if row.get('human_labels_verified') is not False or row.get('production_training_eligible') is not False or row.get('research_training_eligible') is not (not reserved) or row.get('review_policy') != POLICY:
             raise ValueError('Provisional crop review policy changed')
         assets = {}
         for key in ('source', 'metadata', 'image', 'mask', 'ignore_reasons'):
@@ -231,6 +237,8 @@ def review(directory):
         page += '<h2>'+escape(row['id'])+'</h2><p>'+escape(json.dumps(row['pixel_counts']))+'</p><img src="'+row['image_file']+'"><img src="'+name+'"><p><a href="'+row['mask_file']+'">Native mask</a> · <a href="'+row['ignore_reasons_file']+'">Ignore-reason raster</a></p>'
         page += '<details><summary>Why pixels are ignored</summary><p>Green: labelled; grey: unreviewed; amber: explicit uncertainty; white: boundary margin; purple: conflicting traces; black: nodata.</p><img src="'+reason_name+'"></details>'
     page += '<p><a href="annotations.json">Literal trace polygons and reasons</a> · <a href="dataset.json">Sources, crop coordinates and hashes</a></p><p>Esri World Imagery and its imagery providers. Retained original receipts carry attribution and imagery observations.</p>'
+    if manifest.get('reserved_test_only'):
+        page = page.replace('</h1>', '</h1><p><strong>Reserved test labels: never use this dataset to fit a model.</strong></p>', 1)
     (root/'index.html').write_text(page, encoding='utf-8')
 
 
@@ -239,6 +247,7 @@ def main(argv=None):
     create = sub.add_parser('build')
     for key in ('sources', 'annotations', 'output'):
         create.add_argument('--'+key, required=True)
+    create.add_argument('--reserved-test', action='store_true')
     check = sub.add_parser('validate'); check.add_argument('--dataset', required=True)
     args = parser.parse_args(argv)
     if args.action == 'build':
@@ -246,7 +255,7 @@ def main(argv=None):
         for item in items:
             for key in ('source_file', 'metadata_file'):
                 item[key] = str((sources.parent/item[key]).resolve())
-        result = build(items, args.annotations, args.output)
+        result = build(items, args.annotations, args.output, reserved_test=args.reserved_test)
     else:
         result = validate(args.dataset)
     print(json.dumps(result))

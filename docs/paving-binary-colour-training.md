@@ -69,3 +69,5 @@ Outputs must be fresh. Originals are limited to one megapixel for this feature e
 Review `training/index.html`, the source-linked CSV, all exclusion fold models/previews and `training/report.json`. Preserve both the old five-class model and both binary feature variants. Further work needs more independently reviewed negative examples, especially varied roofs and visible grass in additional parks, plus a spatial segmentation architecture and a genuinely unseen final test area. Automatically treating these predictions as new labels would reinforce the remaining errors.
 
 No inferred geometry is accepted, no world blocks are generated, and the general research cycle's five-class checkpoint is not replaced. Source attribution remains Esri World Imagery and its imagery providers, with original receipts, crop coordinates and source hashes in the input mask dataset.
+
+The next [frozen spatial transfer benchmark](paving-spatial-benchmark.md) preserves these RGB weights and adds a newly reserved test area. The spatial prototype reduces false positives but does not improve overall paving IoU; current higher-resolution replacement imagery remains unverified.

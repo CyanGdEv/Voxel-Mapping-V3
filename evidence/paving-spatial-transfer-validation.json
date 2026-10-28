@@ -1,0 +1,1202 @@
+{
+  "version": "paving-spatial-transfer-validation-v1",
+  "date_utc": "2026-10-28",
+  "tests": {
+    "passed": 77,
+    "log_sha256": "80aef5ffa1211b0ff98d1461dbf58bc1bf3a0cde8c6b6d9c2b4783a7b8549d3d"
+  },
+  "development": {
+    "backbone_sha256": "3e5c18a4be395f16646438d54c42377ddc202edfa33d5eced0c9506de75c44c2",
+    "backbone_weights_updated": false,
+    "dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+    "dataset_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+    "design_sha256": "3cb7e7d2debdc7cd9c84aa889794ab4bb4c22c55606dba1e64ee3abdca85d4da",
+    "feature_version": "segformer-ade-rgb31-native-tiles-v1",
+    "folds": [
+      {
+        "held_out_park": "alton-towers",
+        "model_sha256": "e54e2355a52d4cbac9203909ec10dcb25028d4d318975f24787d53511ea3f72a",
+        "scores": {
+          "always_paving": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                0,
+                100610
+              ],
+              [
+                0,
+                106466
+              ]
+            ],
+            "non_paving_iou": 0.0,
+            "paving_iou": 0.5141397361355251,
+            "paving_precision": 0.5141397361355251,
+            "paving_recall": 1.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "rgb": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                49320,
+                51290
+              ],
+              [
+                14362,
+                92104
+              ]
+            ],
+            "non_paving_iou": 0.4289740110635633,
+            "paving_iou": 0.5838383326149243,
+            "paving_precision": 0.6423141832991618,
+            "paving_recall": 0.8651024740292675,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "segformer_zero_shot": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                99560,
+                1050
+              ],
+              [
+                86730,
+                19736
+              ]
+            ],
+            "non_paving_iou": 0.5314401622718052,
+            "paving_iou": 0.1835633766137133,
+            "paving_precision": 0.9494852304435678,
+            "paving_recall": 0.18537373433772283,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "spatial_head": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                61598,
+                39012
+              ],
+              [
+                34663,
+                71803
+              ]
+            ],
+            "non_paving_iou": 0.45536064107397634,
+            "paving_iou": 0.49356603747645694,
+            "paving_precision": 0.647953796868655,
+            "paving_recall": 0.6744218811639396,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        },
+        "training_sites": [
+          "chessington",
+          "drayton-manor"
+        ]
+      },
+      {
+        "held_out_park": "chessington",
+        "model_sha256": "122d7591cfbc503ddf60d83107fdbb8b9803f47e734ace65819c36e295bbb323",
+        "scores": {
+          "always_paving": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                0,
+                10859
+              ],
+              [
+                0,
+                18976
+              ]
+            ],
+            "non_paving_iou": 0.0,
+            "paving_iou": 0.636031506619742,
+            "paving_precision": 0.636031506619742,
+            "paving_recall": 1.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "rgb": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                4565,
+                6294
+              ],
+              [
+                4805,
+                14171
+              ]
+            ],
+            "non_paving_iou": 0.2914325842696629,
+            "paving_iou": 0.5607835377918481,
+            "paving_precision": 0.6924505252870755,
+            "paving_recall": 0.746785413153457,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "segformer_zero_shot": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                10859,
+                0
+              ],
+              [
+                18976,
+                0
+              ]
+            ],
+            "non_paving_iou": 0.3639684933802581,
+            "paving_iou": 0.0,
+            "paving_precision": 0.0,
+            "paving_recall": 0.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "spatial_head": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                8139,
+                2720
+              ],
+              [
+                4333,
+                14643
+              ]
+            ],
+            "non_paving_iou": 0.5357424960505529,
+            "paving_iou": 0.6749170353982301,
+            "paving_precision": 0.8433450440592064,
+            "paving_recall": 0.7716589376053963,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        },
+        "training_sites": [
+          "alton-towers",
+          "drayton-manor"
+        ]
+      },
+      {
+        "held_out_park": "drayton-manor",
+        "model_sha256": "1112a3b752a29ad622d6f2c1206ced76718e31b07c84e4973ed598bcd92e51c3",
+        "scores": {
+          "always_paving": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                0,
+                16505
+              ],
+              [
+                0,
+                14426
+              ]
+            ],
+            "non_paving_iou": 0.0,
+            "paving_iou": 0.46639293912256313,
+            "paving_precision": 0.46639293912256313,
+            "paving_recall": 1.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "rgb": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                10473,
+                6032
+              ],
+              [
+                8238,
+                6188
+              ]
+            ],
+            "non_paving_iou": 0.423271228226165,
+            "paving_iou": 0.3024733600547463,
+            "paving_precision": 0.5063829787234042,
+            "paving_recall": 0.4289477332593928,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "segformer_zero_shot": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                16149,
+                356
+              ],
+              [
+                8867,
+                5559
+              ]
+            ],
+            "non_paving_iou": 0.6364890430395712,
+            "paving_iou": 0.37606548504938436,
+            "paving_precision": 0.9398140321217244,
+            "paving_recall": 0.3853459032302787,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "spatial_head": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                15910,
+                595
+              ],
+              [
+                8867,
+                5559
+              ]
+            ],
+            "non_paving_iou": 0.6270692101529245,
+            "paving_iou": 0.3700818853604953,
+            "paving_precision": 0.9033149171270718,
+            "paving_recall": 0.3853459032302787,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        },
+        "training_sites": [
+          "alton-towers",
+          "chessington"
+        ]
+      }
+    ],
+    "head_loss_history": [
+      {
+        "epoch": 1,
+        "weighted_cross_entropy": 0.3585164098739624
+      },
+      {
+        "epoch": 10,
+        "weighted_cross_entropy": 0.09799226778745651
+      },
+      {
+        "epoch": 20,
+        "weighted_cross_entropy": 0.06999873200058937
+      },
+      {
+        "epoch": 30,
+        "weighted_cross_entropy": 0.05876439565420151
+      },
+      {
+        "epoch": 40,
+        "weighted_cross_entropy": 0.05042524264752865
+      },
+      {
+        "epoch": 50,
+        "weighted_cross_entropy": 0.04643786650896072
+      },
+      {
+        "epoch": 60,
+        "weighted_cross_entropy": 0.04294421979784965
+      }
+    ],
+    "head_weight_change_l2": 20.617402610798575,
+    "head_weights_updated": true,
+    "human_labels_verified": false,
+    "limitations": [
+      "Pretrained backbone is ADE20K perspective-scene segmentation, not a park orthophoto specialist.",
+      "Only a binary neural head is fitted. No end-to-end backbone fine-tuning is claimed.",
+      "Development labels are provisional assistant traces, not independent human ground truth.",
+      "Reserved test data has not entered fitting; this report covers only existing development parks.",
+      "Upstream SegFormer licence permits non-commercial research/evaluation only."
+    ],
+    "macro_park_paving_iou": {
+      "always_paving": 0.5388547272926101,
+      "rgb": 0.48236507682050617,
+      "segformer_zero_shot": 0.18654295388769923,
+      "spatial_head": 0.5128549860783941
+    },
+    "model_sha256": "8cfe36866089f25f4038136fe6e09c5911c8d27d11ae7ee624a98c3574ee0251",
+    "production_eligible": false,
+    "samples": 32000,
+    "scores": {
+      "always_paving": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            0,
+            127974
+          ],
+          [
+            0,
+            139868
+          ]
+        ],
+        "non_paving_iou": 0.0,
+        "paving_iou": 0.5222033885649002,
+        "paving_precision": 0.5222033885649002,
+        "paving_recall": 1.0,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      },
+      "rgb": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            64358,
+            63616
+          ],
+          [
+            27405,
+            112463
+          ]
+        ],
+        "non_paving_iou": 0.4142001171329459,
+        "paving_iou": 0.55268718916475,
+        "paving_precision": 0.6387076255544386,
+        "paving_recall": 0.8040652615323018,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      },
+      "segformer_zero_shot": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            126568,
+            1406
+          ],
+          [
+            114573,
+            25295
+          ]
+        ],
+        "non_paving_iou": 0.5218287589621805,
+        "paving_iou": 0.17904922349476904,
+        "paving_precision": 0.947342796149957,
+        "paving_recall": 0.180849086281351,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      },
+      "spatial_head": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            85647,
+            42327
+          ],
+          [
+            47863,
+            92005
+          ]
+        ],
+        "non_paving_iou": 0.48708178597223567,
+        "paving_iou": 0.504980927028733,
+        "paving_precision": 0.6849075425066253,
+        "paving_recall": 0.657798781708468,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      }
+    },
+    "version": "paving-spatial-development-benchmark-v1",
+    "world_blocks_generated": 0
+  },
+  "sealed_test": {
+    "annotation_seal_sha256": "6e64374dc97b3aa08fd97c9b1b728a0d1458777ef501cdb2f34205bb078db9a7",
+    "backbone_weights_updated": false,
+    "deterministic_replay_of_same_sealed_inputs": false,
+    "evaluation_key": "de5b56112f45ae2cc7a5393feca7183c8759012f7cbf86214617d538e1fd2de7",
+    "frozen_models": {
+      "backbone_sha256": "3e5c18a4be395f16646438d54c42377ddc202edfa33d5eced0c9506de75c44c2",
+      "design_sha256": "3cb7e7d2debdc7cd9c84aa889794ab4bb4c22c55606dba1e64ee3abdca85d4da",
+      "development_dataset_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+      "frozen_at_utc": "2026-10-28T11:02:18.200088+00:00",
+      "model_sha256": "8cfe36866089f25f4038136fe6e09c5911c8d27d11ae7ee624a98c3574ee0251",
+      "rgb_model_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+      "version": "paving-spatial-model-freeze-v1"
+    },
+    "head_weights_updated": false,
+    "human_labels_verified": false,
+    "limitations": [
+      "One newly reserved paving area; labels are still provisional assistant visual drafts.",
+      "Unseen to this paving fitting set does not prove absence from upstream ADE20K/ImageNet pretraining.",
+      "No settings/models may be tuned using this score and reuse it as an untouched final test.",
+      "Native sampling and boundary tolerance do not establish surveyed physical accuracy."
+    ],
+    "production_eligible": false,
+    "results": [
+      {
+        "id": "paultons-entrance",
+        "scores": {
+          "always_paving": {
+            "annotated_pixels": 60390,
+            "boundary": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "prediction_boundary_pixels": 0,
+              "recall": 0.0,
+              "status": "provisional_known_boundary_agreement",
+              "target_boundary_pixels": 227,
+              "tolerance_native_pixels": 2
+            },
+            "confusion": [
+              [
+                0,
+                39109
+              ],
+              [
+                0,
+                21281
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "across-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "entrance-to-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "front-approach",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.0,
+            "paving_iou": 0.35239278026163273,
+            "paving_precision": 0.35239278026163273,
+            "paving_recall": 1.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "rgb": {
+            "annotated_pixels": 60390,
+            "boundary": {
+              "f1": 0.08431785871856463,
+              "precision": 0.044642857142857144,
+              "prediction_boundary_pixels": 5152,
+              "recall": 0.7577092511013216,
+              "status": "provisional_known_boundary_agreement",
+              "target_boundary_pixels": 227,
+              "tolerance_native_pixels": 2
+            },
+            "confusion": [
+              [
+                29455,
+                9654
+              ],
+              [
+                5332,
+                15949
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "across-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "entrance-to-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "front-approach",
+                  "passed": false
+                }
+              ],
+              "recall": 0.3333333333333333,
+              "recalled_pairs": 1,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.6627888661371256,
+            "paving_iou": 0.5155648941328592,
+            "paving_precision": 0.6229348123266805,
+            "paving_recall": 0.7494478642920915,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "segformer_zero_shot": {
+            "annotated_pixels": 60390,
+            "boundary": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "prediction_boundary_pixels": 0,
+              "recall": 0.0,
+              "status": "provisional_known_boundary_agreement",
+              "target_boundary_pixels": 227,
+              "tolerance_native_pixels": 2
+            },
+            "confusion": [
+              [
+                39109,
+                0
+              ],
+              [
+                21281,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "across-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "entrance-to-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "front-approach",
+                  "passed": false
+                }
+              ],
+              "recall": 0.0,
+              "recalled_pairs": 0,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.6476072197383673,
+            "paving_iou": 0.0,
+            "paving_precision": 0.0,
+            "paving_recall": 0.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "spatial_head": {
+            "annotated_pixels": 60390,
+            "boundary": {
+              "f1": 0.10392549919033946,
+              "precision": 0.060570762958648806,
+              "prediction_boundary_pixels": 1717,
+              "recall": 0.3656387665198238,
+              "status": "provisional_known_boundary_agreement",
+              "target_boundary_pixels": 227,
+              "tolerance_native_pixels": 2
+            },
+            "confusion": [
+              [
+                36937,
+                2172
+              ],
+              [
+                11785,
+                9496
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "across-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "entrance-to-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "front-approach",
+                  "passed": false
+                }
+              ],
+              "recall": 0.0,
+              "recalled_pairs": 0,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.7257633512791292,
+            "paving_iou": 0.40489489617532937,
+            "paving_precision": 0.8138498457319163,
+            "paving_recall": 0.44621963253606506,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        },
+        "source_in_training": false
+      }
+    ],
+    "test_dataset_id": "7260e3aebf664a7375bb5065e55bfa393c1df454235b4a8a452cab4cf31e4969",
+    "test_manifest_sha256": "4a4e526fa1c23606669b08c87c9e72d746afb875d982020d10a70c541814997f",
+    "version": "paving-sealed-spatial-test-v1",
+    "world_blocks_generated": 0
+  },
+  "model_freeze": {
+    "backbone_sha256": "3e5c18a4be395f16646438d54c42377ddc202edfa33d5eced0c9506de75c44c2",
+    "design_sha256": "3cb7e7d2debdc7cd9c84aa889794ab4bb4c22c55606dba1e64ee3abdca85d4da",
+    "development_dataset_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+    "frozen_at_utc": "2026-10-28T11:02:18.200088+00:00",
+    "model_sha256": "8cfe36866089f25f4038136fe6e09c5911c8d27d11ae7ee624a98c3574ee0251",
+    "rgb_model_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+    "version": "paving-spatial-model-freeze-v1"
+  },
+  "annotation_seal": {
+    "version": "paving-reserved-annotation-seal-v1",
+    "sealed_at_utc": "2026-10-28T11:10:09.497182+00:00",
+    "test_manifest_sha256": "4a4e526fa1c23606669b08c87c9e72d746afb875d982020d10a70c541814997f",
+    "test_annotation_sha256": "7de19762b41095c0f654746143d4b292e1b1ef788764d518ad846249990170aa",
+    "frozen_models_sha256": "c57bfcf5c54a12b14948e75a4aff5e3702a1e3d439c081937de4e7d7e4e2c9bb",
+    "connection_probes": {
+      "paultons-entrance": [
+        {
+          "id": "across-forecourt",
+          "a_xy": [
+            70,
+            173
+          ],
+          "b_xy": [
+            151,
+            185
+          ]
+        },
+        {
+          "id": "entrance-to-forecourt",
+          "a_xy": [
+            151,
+            185
+          ],
+          "b_xy": [
+            180,
+            65
+          ]
+        },
+        {
+          "id": "front-approach",
+          "a_xy": [
+            90,
+            180
+          ],
+          "b_xy": [
+            142,
+            218
+          ]
+        }
+      ]
+    },
+    "test_predictions_viewed_before_seal": false,
+    "human_labels_verified": false
+  },
+  "test_manifest": {
+    "annotation_file": "annotations.json",
+    "annotation_sha256": "7de19762b41095c0f654746143d4b292e1b1ef788764d518ad846249990170aa",
+    "geometry_verified": false,
+    "human_labels_verified": false,
+    "id": "7260e3aebf664a7375bb5065e55bfa393c1df454235b4a8a452cab4cf31e4969",
+    "ignore_reasons": {
+      "boundary_margin": 3,
+      "conflicting_traces": 4,
+      "explicit_unknown": 2,
+      "labelled": 0,
+      "not_reviewed": 1,
+      "source_nodata": 5
+    },
+    "labels": {
+      "non_paving": 0,
+      "paving": 1,
+      "unknown": 255
+    },
+    "production_eligible": false,
+    "records": [
+      {
+        "crop_pixels": [
+          128,
+          128,
+          384,
+          384
+        ],
+        "extent_epsg3857": [
+          -172877.48787200247,
+          6612047.668112336,
+          -172736.13519387395,
+          6612189.020790463
+        ],
+        "human_labels_verified": false,
+        "id": "paultons-entrance",
+        "ignore_reason_counts": {
+          "boundary_margin": 0,
+          "conflicting_traces": 822,
+          "explicit_unknown": 3159,
+          "labelled": 60390,
+          "not_reviewed": 1165,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/paultons-entrance.png",
+        "ignore_reasons_sha256": "b9cfe7a6461381847bccbdce37dbba1d30058446ea475c269761efa897298250",
+        "image_file": "images/paultons-entrance.png",
+        "image_sha256": "937298b2fa182889b85c796d6fe74b836d495b46297cf0d2a3f696e218cf5e3d",
+        "image_size": [
+          256,
+          256
+        ],
+        "mask_file": "masks/paultons-entrance.png",
+        "mask_sha256": "830e57bb6ada5638505d23ff2e0219e362197721a0dd6c4b7b67e9b591ac4b06",
+        "metadata_file": "metadata/paultons-entrance.json",
+        "metadata_sha256": "0a7ccecea9c02003f69ed9d5cfa23a82794518421af385d99cdc1a52c36092d2",
+        "pixel_counts": {
+          "non_paving": 39109,
+          "paving": 21281,
+          "unknown": 5146
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": false,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "paultons-park",
+        "source_file": "originals/paultons-entrance.bin",
+        "source_record_id": "paultons-entrance-reserved",
+        "source_sha256": "f27fb5546683b001a2c25fa469fcbdf50198a4487da1d63546a64130fcbd46d7",
+        "split_group": "paultons-park",
+        "split_role": "reserved_test_annotation_review",
+        "trace_count": 14
+      }
+    ],
+    "reserved_test_only": true,
+    "review_policy": "assistant_visual_draft_requires_independent_review",
+    "version": "paving-mask-dataset-v1",
+    "world_blocks_generated": 0
+  },
+  "capture_source_audit": {
+    "version": "paving-capture-source-audit-v1",
+    "new_test_source": {
+      "version": "imagery-capture-quality-v1",
+      "image_sha256": "f27fb5546683b001a2c25fa469fcbdf50198a4487da1d63546a64130fcbd46d7",
+      "native_export_dimensions": [
+        512,
+        512
+      ],
+      "approx_export_ground_sampling_m_xy": [
+        0.34787340872374983,
+        0.34787340872374983
+      ],
+      "finest_reported_point_resolution_m": 0.5,
+      "point_observations": [
+        {
+          "point_resolution_m": 0.5,
+          "point_capture_date": "2025-05-02",
+          "source": "Vantor",
+          "description": "WV02"
+        },
+        {
+          "point_resolution_m": 15.0,
+          "point_capture_date": null,
+          "source": "Earthstar Geographics",
+          "description": "TerraColor NextGen"
+        }
+      ],
+      "export_finer_than_reported_point_source": true,
+      "whole_image_capture_date_verified": false,
+      "whole_image_intrinsic_resolution_verified": false,
+      "genuine_resolution_upgrade_verified": false,
+      "limitations": [
+        "Export pixel spacing is not proof of independent optical detail.",
+        "Point metadata is not automatically valid across an entire mosaic.",
+        "Capture date/resolution observations do not verify physical registration."
+      ]
+    },
+    "development_sources": [
+      {
+        "id": "towers-plaza",
+        "quality": {
+          "version": "imagery-capture-quality-v1",
+          "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+          "native_export_dimensions": [
+            1024,
+            1024
+          ],
+          "approx_export_ground_sampling_m_xy": [
+            0.25003401250995616,
+            0.25003401250995616
+          ],
+          "finest_reported_point_resolution_m": 0.5,
+          "point_observations": [
+            {
+              "point_resolution_m": 0.5,
+              "point_capture_date": "2023-05-27",
+              "source": "Vantor",
+              "description": "WV02"
+            },
+            {
+              "point_resolution_m": 15.0,
+              "point_capture_date": null,
+              "source": "Earthstar Geographics",
+              "description": "TerraColor NextGen"
+            }
+          ],
+          "export_finer_than_reported_point_source": true,
+          "whole_image_capture_date_verified": false,
+          "whole_image_intrinsic_resolution_verified": false,
+          "genuine_resolution_upgrade_verified": false,
+          "limitations": [
+            "Export pixel spacing is not proof of independent optical detail.",
+            "Point metadata is not automatically valid across an entire mosaic.",
+            "Capture date/resolution observations do not verify physical registration."
+          ]
+        }
+      },
+      {
+        "id": "wicker-entrance",
+        "quality": {
+          "version": "imagery-capture-quality-v1",
+          "image_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+          "native_export_dimensions": [
+            1024,
+            1024
+          ],
+          "approx_export_ground_sampling_m_xy": [
+            0.18755630372491136,
+            0.18755630372491136
+          ],
+          "finest_reported_point_resolution_m": 0.5,
+          "point_observations": [
+            {
+              "point_resolution_m": 0.5,
+              "point_capture_date": "2023-05-27",
+              "source": "Vantor",
+              "description": "WV02"
+            },
+            {
+              "point_resolution_m": 15.0,
+              "point_capture_date": null,
+              "source": "Earthstar Geographics",
+              "description": "TerraColor NextGen"
+            }
+          ],
+          "export_finer_than_reported_point_source": true,
+          "whole_image_capture_date_verified": false,
+          "whole_image_intrinsic_resolution_verified": false,
+          "genuine_resolution_upgrade_verified": false,
+          "limitations": [
+            "Export pixel spacing is not proof of independent optical detail.",
+            "Point metadata is not automatically valid across an entire mosaic.",
+            "Capture date/resolution observations do not verify physical registration."
+          ]
+        }
+      },
+      {
+        "id": "chessington-gardens",
+        "quality": {
+          "version": "imagery-capture-quality-v1",
+          "image_sha256": "72be82d26ffc1639f6cbaab99b65a9d474a8a6571d26368ed8a3daf786275160",
+          "native_export_dimensions": [
+            1024,
+            1024
+          ],
+          "approx_export_ground_sampling_m_xy": [
+            0.4783259369372262,
+            0.4783259369372262
+          ],
+          "finest_reported_point_resolution_m": 0.46,
+          "point_observations": [
+            {
+              "point_resolution_m": 0.46,
+              "point_capture_date": "2025-08-17",
+              "source": "Vantor",
+              "description": "GE01"
+            },
+            {
+              "point_resolution_m": 15.0,
+              "point_capture_date": null,
+              "source": "Earthstar Geographics",
+              "description": "TerraColor NextGen"
+            }
+          ],
+          "export_finer_than_reported_point_source": false,
+          "whole_image_capture_date_verified": false,
+          "whole_image_intrinsic_resolution_verified": false,
+          "genuine_resolution_upgrade_verified": false,
+          "limitations": [
+            "Export pixel spacing is not proof of independent optical detail.",
+            "Point metadata is not automatically valid across an entire mosaic.",
+            "Capture date/resolution observations do not verify physical registration."
+          ]
+        }
+      },
+      {
+        "id": "drayton-mainstreet",
+        "quality": {
+          "version": "imagery-capture-quality-v1",
+          "image_sha256": "f5ac41b178c1394978839f5ed2c09e1ac20b92aa3a21a4c296722d85b80c87ad",
+          "native_export_dimensions": [
+            1024,
+            1024
+          ],
+          "approx_export_ground_sampling_m_xy": [
+            0.4674548929032222,
+            0.4674548929032222
+          ],
+          "finest_reported_point_resolution_m": 0.5,
+          "point_observations": [
+            {
+              "point_resolution_m": 0.5,
+              "point_capture_date": "2025-05-13",
+              "source": "Vantor",
+              "description": "WV02"
+            },
+            {
+              "point_resolution_m": 15.0,
+              "point_capture_date": null,
+              "source": "Earthstar Geographics",
+              "description": "TerraColor NextGen"
+            }
+          ],
+          "export_finer_than_reported_point_source": true,
+          "whole_image_capture_date_verified": false,
+          "whole_image_intrinsic_resolution_verified": false,
+          "genuine_resolution_upgrade_verified": false,
+          "limitations": [
+            "Export pixel spacing is not proof of independent optical detail.",
+            "Point metadata is not automatically valid across an entire mosaic.",
+            "Capture date/resolution observations do not verify physical registration."
+          ]
+        }
+      }
+    ],
+    "ea_coverage_queries": [
+      {
+        "area": "towers-street",
+        "status": 200,
+        "properties": []
+      },
+      {
+        "area": "paultons-entrance",
+        "status": 200,
+        "properties": [
+          {
+            "filename": "Ortho_RGBN_P00044299_20120320_20120323_10cm_res.ecw",
+            "polygon_id": "P_8227",
+            "sd_flown": "2012-03-20T00:00:00Z",
+            "ed_flown": "2012-03-23T00:00:00Z",
+            "type": "RGBN",
+            "resolution": 0.1,
+            "bands": "4",
+            "os_ref": "SU3116",
+            "os_ref_5k": "SU3015",
+            "event_05k": "ortho-RGBN-10cm-2012-SU3015",
+            "filepath": ".\\Ortho_Photography_Archive\\RGBN\\P_8227\\Ortho_RGBN_P00044299_20120320_20120323_10cm_res.ecw",
+            "year": "2012",
+            "meta_split": "RGBN_2012_10cm",
+            "supplied": null,
+            "latest": "No",
+            "gdb_geomattr_data": null
+          }
+        ]
+      },
+      {
+        "area": "thorpe",
+        "status": 200,
+        "properties": []
+      }
+    ],
+    "higher_resolution_rgb_acquired": false,
+    "historic_candidate_used_as_current_truth": false,
+    "historic_candidate_downloaded": false,
+    "esri_1024_empty_exports_rejected": true,
+    "esri_512_retained_without_enlargement": true,
+    "limitations": [
+      "EA index identifies 10 cm RGBN coverage for Paultons in March 2012, not contemporary imagery.",
+      "No indexed vertical-photography footprints were returned for the queried Towers Street or Thorpe boxes; this is not proof of no other public source.",
+      "The retained Paultons source reports 0.5 m and May 2025 at the queried point only, not verified across the entire image."
+    ]
+  },
+  "resources": {
+    "wall_seconds": 18.605447305999405,
+    "peak_rss_mb": 698.22265625,
+    "encoder_threads": 2,
+    "gpu_used": false
+  },
+  "reservation_sha256": "b407edf6b3a2b9b3ece23297944f3656f245fb68c8ae29be16c3edf21f06da1c",
+  "design_sha256": "3cb7e7d2debdc7cd9c84aa889794ab4bb4c22c55606dba1e64ee3abdca85d4da",
+  "source_availability_amendment": {
+    "version": "paving-test-source-amendment-v1",
+    "at_utc": "2026-10-28T10:57:22.065599+00:00",
+    "reason": "Official Esri export returns empty href/zero dimensions at requested 1024; valid native 512 export at identical bounds. No test RGB or predictions viewed before this amendment.",
+    "bounds_unchanged": true,
+    "source_width": 512,
+    "source_height": 512,
+    "test_crop_pixels": [
+      128,
+      128,
+      384,
+      384
+    ],
+    "geographic_crop_fraction_unchanged": [
+      0.25,
+      0.25,
+      0.75,
+      0.75
+    ],
+    "resizing_prohibited": true,
+    "score_threshold_unchanged": 0.5,
+    "boundary_tolerance_native_pixels_unchanged": 2,
+    "original_design_sha256": "3cb7e7d2debdc7cd9c84aa889794ab4bb4c22c55606dba1e64ee3abdca85d4da"
+  },
+  "prior_rgb_preserved": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "five_class_checkpoint_preserved": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+  "backbone_weights_updated": false,
+  "head_weights_updated": true,
+  "production_eligible": false,
+  "human_labels_verified": false,
+  "world_blocks_generated": 0,
+  "windows_exe_rebuilt": false,
+  "higher_resolution_rgb_acquired": false,
+  "research_only_upstream_license": true,
+  "portable_sealed_replay_matches": true,
+  "actual_source_quality_job": {
+    "id": "d9c51d3644544677904a9cd49817db3c",
+    "kind": "aerial_material_research",
+    "status": "completed",
+    "config_path": "/workspace/scratch/paving-spatial-transfer/source-quality-request.json",
+    "config_sha256": "afe21d3ae5d9c6322ffad16fd24ed9e20c70ca6cff6f6715ed765c5051a21f9d",
+    "created": 1793187616.3572092,
+    "updated": 1793187618.8812246,
+    "progress": 1.0,
+    "message": "aerial_rgb_sampled",
+    "error": null,
+    "result": {
+      "bing_viewer_url": "https://www.bing.com/maps?cp=50.9481~-1.5523500000000001&lvl=19&style=a",
+      "candidate_file": "material-candidates.jsonl",
+      "candidate_file_sha256": "3e725907f646cbc301ce3c9b98bd316c71e01a4a16e25b14af990b038d74e107",
+      "capture_quality": {
+        "approx_export_ground_sampling_m_xy": [
+          0.34787340872374983,
+          0.34787340872374983
+        ],
+        "export_finer_than_reported_point_source": true,
+        "finest_reported_point_resolution_m": 0.5,
+        "genuine_resolution_upgrade_verified": false,
+        "image_sha256": "f27fb5546683b001a2c25fa469fcbdf50198a4487da1d63546a64130fcbd46d7",
+        "limitations": [
+          "Export pixel spacing is not proof of independent optical detail.",
+          "Point metadata is not automatically valid across an entire mosaic.",
+          "Capture date/resolution observations do not verify physical registration."
+        ],
+        "native_export_dimensions": [
+          512,
+          512
+        ],
+        "point_observations": [
+          {
+            "description": "WV02",
+            "point_capture_date": "2025-05-02",
+            "point_resolution_m": 0.5,
+            "source": "Vantor"
+          },
+          {
+            "description": "TerraColor NextGen",
+            "point_capture_date": null,
+            "point_resolution_m": 15.0,
+            "source": "Earthstar Geographics"
+          }
+        ],
+        "version": "imagery-capture-quality-v1",
+        "whole_image_capture_date_verified": false,
+        "whole_image_intrinsic_resolution_verified": false
+      },
+      "colour_cue_counts": {
+        "insufficient_pixels": 16,
+        "neutral_or_mixed_surface": 197,
+        "shadow_or_dark_surface": 9,
+        "vegetation_colour": 27,
+        "warm_brown_or_red_surface": 7
+      },
+      "colour_material_assignments": null,
+      "imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -172948.16421106673,
+          6611976.991773271,
+          -172665.4588548097,
+          6612259.697129528
+        ],
+        "height": 512,
+        "image_sha256": "f27fb5546683b001a2c25fa469fcbdf50198a4487da1d63546a64130fcbd46d7",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map0c178ed9518942919da620afcf9eec9f.png",
+        "metadata_sha256": "ddfe88d29d2c2daaf51bd71c76d85639cac13ce864707865d4268c9cd0fe2591",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.5536%2C50.9473%2C-1.5511%2C50.9489&bboxSR=4326&imageSR=3857&size=512%2C512&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.5523500000000001%2C50.9481&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.5536%2C50.9473%2C-1.5511%2C50.9489&imageDisplay=512%2C512%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250502",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "5/2/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250502",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "5/2/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 512
+      },
+      "limitations": [
+        "RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.",
+        "Shadows, vegetation, water, roofs, lighting, capture date and resampling affect colour; ambiguous candidates are withheld.",
+        "Provider extent georeferences sample cells, not individual paths/buildings; physical registration remains unverified.",
+        "Original imagery and provider attribution are retained; these observations do not bypass reviewed orthophoto material acceptance."
+      ],
+      "material_assignments_accepted": 0,
+      "model_weights_updated": false,
+      "network_bytes": 0,
+      "production_eligible": false,
+      "provider": "esri_world_imagery",
+      "provisional_material_assignments": 0,
+      "registration_verified": false,
+      "sample_cells": 256,
+      "site": "Paultons Park reserved entrance test",
+      "site_id": "paultons-entrance-reserved",
+      "sources": [
+        {
+          "body_sha256": "ddfe88d29d2c2daaf51bd71c76d85639cac13ce864707865d4268c9cd0fe2591",
+          "citation_id": "Wcbb23b2da343",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.5536%2C50.9473%2C-1.5511%2C50.9489&bboxSR=4326&imageSR=3857&size=512%2C512&format=png&f=json"
+        },
+        {
+          "body_sha256": "f27fb5546683b001a2c25fa469fcbdf50198a4487da1d63546a64130fcbd46d7",
+          "citation_id": "W11f272607299",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map0c178ed9518942919da620afcf9eec9f.png"
+        },
+        {
+          "body_sha256": "aede9ac74321a06900bbbdfcca719ee196800144cbd4bd8c2949d650ead17182",
+          "citation_id": "W0152f57940c0",
+          "source_evidence_verified": false,
+          "training_labels_generated": 0,
+          "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.5523500000000001%2C50.9481&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.5536%2C50.9473%2C-1.5511%2C50.9489&imageDisplay=512%2C512%2C96&returnGeometry=false&layers=all&f=json"
+        }
+      ],
+      "status": "aerial_rgb_sampled",
+      "training_labels_generated": 0,
+      "version": "aerial-material-research-v1",
+      "world_blocks_generated": 0
+    },
+    "output_directory": "/workspace/scratch/paving-spatial-transfer/desktop-source-quality/jobs/d9c51d3644544677904a9cd49817db3c/output",
+    "peak_memory_mb": 78.26171875
+  }
+}

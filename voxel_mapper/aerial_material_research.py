@@ -90,6 +90,8 @@ def acquire(config,cache,*,cancelled,deadline,budget):
             budget=budget,cancelled=cancelled,deadline=deadline)
         source=meta['source'];data=research_sources.bounded_json(web._body_path(Path(cache),source).read_bytes())
         if 'error' in data:raise ValueError('Aerial imagery export returned an error')
+        if data.get('width')!=width or data.get('height')!=height or not data.get('href'):
+            raise ValueError('Provider returned an empty or differently sized imagery export; no image detail can be inferred from it')
         ext=data['extent'];wkid=ext.get('spatialReference',{}).get('latestWkid',ext.get('spatialReference',{}).get('wkid'))
         if wkid not in (3857,102100,102113):raise ValueError('Expected Web Mercator imagery extent')
         extent=_extent([ext[k] for k in ['xmin','ymin','xmax','ymax']])
@@ -221,7 +223,7 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     b=config['bounds_wgs84'];viewer='https://www.bing.com/maps?'+urlencode({'cp':str((b[1]+b[3])/2)+'~'+str((b[0]+b[2])/2),'lvl':19,'style':'a'})
     progress({'progress':.05,'message':'Reading aerial RGB imagery and its map extent'})
     path,receipt=(fetch or acquire)(config,cache,cancelled=cancelled,deadline=deadline,budget=budget)
-    rows=[];sources=[]
+    rows=[];sources=[];capture_quality=None
     if path is not None:
         rows=sample(path,receipt,config.get('grid',16),config.get('exclude_footer_pixels',32),cancelled=cancelled,deadline=deadline)
         target=output/'source-image.bin';shutil.copy2(path,target)
@@ -229,6 +231,8 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         with Image.open(path) as image:image.convert('RGB').save(output/'rgb-preview.png')
         sources=[{k:r[k] for k in ['url','body_sha256','citation_id','source_evidence_verified','training_labels_generated']} for r in receipt['sources']]
         if config['provider']=='bing_aerial':sources=[{'url':BING,'body_sha256':receipt['image_sha256'],'citation_id':'I'+receipt['image_sha256'][:12],'source_evidence_verified':False,'training_labels_generated':0}]
+        from .imagery_capture_quality import audit
+        capture_quality=audit(receipt);atomic_json(output/'capture-quality.json',capture_quality)
     cells=[];table=[]
     if path is not None:
         for row in rows:
@@ -241,6 +245,8 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         visual='<div class="images"><figure><img src="rgb-preview.png"><figcaption>Provider RGB imagery</figcaption></figure><figure><svg viewBox="0 0 '+str(receipt['width'])+' '+str(receipt['height'])+'">'+''.join(cells)+'</svg><figcaption>Median RGB per cell; not a material map</figcaption></figure></div>'
     else:visual='<p>'+escape(receipt['status'].replace('_',' '))+'</p>'
     page='<!doctype html><meta charset="utf-8"><title>Aerial RGB observations</title><style>body{font:16px system-ui;max-width:1200px;margin:30px auto;padding:0 16px;color:#253341}.images{display:flex;flex-wrap:wrap}figure{margin:12px;width:46%}img,svg{width:100%}table{border-collapse:collapse}td,th{border:1px solid #ccd3da;padding:6px}</style><h1>'+escape(config['site'])+'</h1><p>Aerial colour observations and tentative palette matches. Materials and physical alignment remain unverified.</p>'+visual+'<p>'+escape(receipt.get('attribution','Bing Maps'))+' · <a href="'+escape(viewer,quote=True)+'">View area on Bing Maps</a></p><table><thead><tr><th>Cell</th><th>Median RGB</th><th>Colour clue</th><th>Palette candidates</th></tr></thead><tbody>'+''.join(table)+'</tbody></table>'
+    if capture_quality is not None:
+        page=page.replace('</h1>','</h1><p>Export ground sampling (approx. metres/pixel): '+escape(str(capture_quality['approx_export_ground_sampling_m_xy']))+'. Export pixel count does not verify optical detail or whole-image capture date. <a href="capture-quality.json">Source-quality observations</a></p>',1)
     (output/'index.html').write_text(page,encoding='utf-8')
     atomic_json(output/'sample-cells.geojson',{'type':'FeatureCollection','features':[
         {'type':'Feature','id':r['id'],'geometry':r['geometry'],'properties':{k:v for k,v in r.items() if k!='geometry'}} for r in rows if 'geometry' in r]})
@@ -259,7 +265,7 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
         'colour_cue_counts':{cue:sum(r.get('colour_cue','insufficient_pixels')==cue for r in rows) for cue in sorted({r.get('colour_cue','insufficient_pixels') for r in rows})},
         'candidate_file':'material-candidates.jsonl','candidate_file_sha256':file_hash(output/'material-candidates.jsonl'),
         'sources':sources,'network_bytes':budget.spent,'model_weights_updated':False,'training_labels_generated':0,
-        'colour_material_assignments':material_assignments,
+        'colour_material_assignments':material_assignments,'capture_quality':capture_quality,
         'provisional_material_assignments':material_assignments['assigned_cells'] if material_assignments else 0,
         'material_assignments_accepted':0,'registration_verified':False,'world_blocks_generated':0,'production_eligible':False,
         'limitations':['RGB/Lab palette distances are colour-similarity candidates, not verified materials or calibrated probabilities.',

@@ -465,7 +465,8 @@ class DesktopRuntime:
                         'status':result['status'],'provider':result['provider'],'sample_cells':result['sample_cells'],
                         'candidate_file_sha256':result['candidate_file_sha256'],
                         'provisional_material_assignments':result.get('provisional_material_assignments',0),
-                        'colour_material_assignments':result.get('colour_material_assignments'),'material_assignments_accepted':0})
+                        'colour_material_assignments':result.get('colour_material_assignments'),
+                        'capture_quality':result.get('capture_quality'),'material_assignments_accepted':0})
                 if kind=='research_learning_cycle':
                     self.store.remember('adaptive_learning',result['dataset_id'],{
                         'training_status':result['training_status'],'checkpoint_sha256':result['checkpoint_sha256'],
