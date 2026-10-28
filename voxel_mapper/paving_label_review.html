@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Paving source review</title>
+<style>body{font:16px system-ui;color:#23333d;max-width:1200px;margin:24px auto;padding:0 16px}button,select,input{font:inherit;margin:4px;padding:7px}button{cursor:pointer}canvas{display:block;touch-action:none;background:#ddd}#viewport{overflow:auto;max-height:65vh;border:1px solid #aaa}textarea{width:98%;height:180px;font:13px monospace}#status{min-height:28px}label{display:inline-block}.hint{color:#4b5b63}#error{color:#a12222}</style>
+<h1>Paving source review</h1><p>Check each outline against the aerial image. Blue: pedestrian paving. Red: roofs, grass, water, raised objects or vehicle surfaces. Amber: unknown. Keep shadows and hidden ground unknown. No model predictions are shown.</p>
+<p class="hint">The image retains its original pixels. Zoom changes display size only. Esri World Imagery and its imagery providers; source receipts are in the dataset download. Your review is saved as a separate JSON file and does not change the original dataset.</p>
+<label>Area <select id="crop"></select></label><label>Outline <select id="trace"></select></label>
+<label>Zoom <select id="zoom"><option>1</option><option>2</option><option>3</option></select>×</label>
+<label><input type="checkbox" id="show" checked>Show outlines</label>
+<button id="keep">Keep outline</button><button id="unknown">Mark unknown</button><button id="next">Next unreviewed</button><button id="undo">Undo</button><button id="add">Draw new outline</button><button id="finish">Finish drawing</button><button id="cancel">Cancel drawing</button>
+<div id="status" aria-live="polite"></div><div id="error" role="alert"></div>
+<div id="viewport"><canvas id="canvas" aria-label="Source image with editable polygon vertices"></canvas></div>
+<p class="hint">Drag a selected outline’s outer vertices to correct it. To add an outline, click points around it, then Finish drawing. Use the JSON editor for class, reason, holes or extra vertices. Click Apply edits to retain those changes. Unknown labels override other polygons; conflicting paving/non-paving interiors remain ignored by the importer.</p>
+<details><summary>Selected outline JSON</summary><textarea id="editor" aria-label="Selected outline JSON"></textarea><button id="apply">Apply edits</button></details>
+<p><label>Reviewer name <input id="reviewer" maxlength="120" autocomplete="off"></label><label><input id="attest" type="checkbox">I checked every outline against the source image.</label></p>
+<button id="download">Download review JSON</button><label>Resume saved review <input id="resume" type="file" accept="application/json"></label>
+<p id="progress"></p><p class="hint">Every outline requires a keep, correct or unknown decision before export. An exported review records your attestation; it does not independently verify your identity or establish surveyed accuracy. Import it with the supplied command to validate shapes and produce new masks and a pixel-change report. Nothing is trained automatically. Save before closing; this page has no automatic storage.</p>
+<script>
+'use strict';
+const initial=/* REVIEW_DATA */;
+let review=structuredClone(initial.review),history=[],image=new Image(),drag=-1,drawing=null;
+const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d');
+function cid(){return $('crop').value}function traces(){return review.annotations.crops[cid()]}function current(){return traces().find(t=>t.id===$('trace').value)}
+function snapshot(){history.push(JSON.stringify(review));if(history.length>80)history.shift()}
+function error(e){$('error').textContent=e.message||String(e)}
+function guarded(fn){return function(...args){$('error').textContent='';try{return fn(...args)}catch(e){error(e)}}}
+function decision(id,action){(review.decisions[cid()]??={})[id]=action}
+function progress(){let n=0,total=0;for(const [c,ts] of Object.entries(review.annotations.crops)){total+=ts.length;n+=ts.filter(t=>review.decisions[c]?.[t.id]).length}$('progress').textContent=`${n} / ${total} outlines have decisions. Changes remain local until downloaded.`}
+function selected(){const t=current();$('editor').value=JSON.stringify(t,null,2);$('status').textContent=t?`${t.id}: ${t.label} — ${review.decisions[cid()]?.[t.id]||'needs review'}`:'';draw();progress()}
+function list(preferred){$('trace').replaceChildren(...traces().map(t=>new Option(t.id,t.id)));if(preferred&&traces().some(t=>t.id===preferred))$('trace').value=preferred;selected()}
+function area(){drawing=null;drag=-1;image.onload=()=>{canvas.width=image.width;canvas.height=image.height;scale();list()};image.src=initial.images[cid()]}
+function scale(){canvas.style.width=canvas.width*Number($('zoom').value)+'px';canvas.style.height=canvas.height*Number($('zoom').value)+'px'}
+function ring(points){ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath()}
+function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);if(image.complete)ctx.drawImage(image,0,0);if($('show').checked)for(const t of traces()){ctx.beginPath();ring(t.outer);for(const h of t.holes||[])ring(h);const color=t.label==='paving'?'#20a5ff':t.label==='non_paving'?'#ff4545':'#ffb52f';ctx.fillStyle=color+'35';ctx.fill('evenodd');ctx.strokeStyle=color;ctx.lineWidth=t===current()?2:1;ctx.stroke();if(t===current())for(const [x,y] of t.outer){ctx.fillStyle='#fff';ctx.fillRect(x-2,y-2,4,4)}}if(drawing?.length){ctx.beginPath();ctx.moveTo(...drawing[0]);for(const p of drawing.slice(1))ctx.lineTo(...p);ctx.strokeStyle='#fff';ctx.stroke()}}
+function point(e){const b=canvas.getBoundingClientRect();return [Math.max(0,Math.min(canvas.width,Math.round((e.clientX-b.left)*canvas.width/b.width))),Math.max(0,Math.min(canvas.height,Math.round((e.clientY-b.top)*canvas.height/b.height)))]}
+function validTrace(t){if(!t||!(/^[A-Za-z0-9_-]{1,80}$/).test(t.id)||!['paving','non_paving','unknown'].includes(t.label)||typeof t.reason!=='string'||!t.reason.length||t.reason.length>300)throw Error('Valid ID, class and reason required');if(Object.keys(t).some(k=>!['id','label','reason','outer','holes'].includes(k)))throw Error('Unknown trace field');for(const r of [t.outer,...(t.holes||[])])if(!Array.isArray(r)||r.length<3||r.length>256||r.some(p=>!Array.isArray(p)||p.length!==2||p.some((v,i)=>!Number.isFinite(v)||v<0||v>(i?canvas.height:canvas.width))))throw Error('Polygon requires 3–256 finite in-image points');if((t.holes||[]).length>32)throw Error('Too many holes')}
+$('crop').onchange=guarded(area);$('trace').onchange=guarded(selected);$('zoom').onchange=scale;$('show').onchange=draw;
+$('keep').onclick=guarded(()=>{const t=current(),old=initial.review.annotations.crops[cid()].find(x=>x.id===t.id);if(JSON.stringify(old)!==JSON.stringify(t))throw Error('Changed outline must be marked correct. Use Apply edits.');snapshot();decision(t.id,'keep');selected()});
+$('unknown').onclick=guarded(()=>{snapshot();current().label='unknown';decision(current().id,'unknown');selected()});
+$('apply').onclick=guarded(()=>{const t=JSON.parse($('editor').value);validTrace(t);if(t.id!==current().id)throw Error('Retain original outline ID');snapshot();traces()[traces().indexOf(current())]=t;decision(t.id,t.label==='unknown'?'unknown':'correct');selected()});
+$('undo').onclick=guarded(()=>{if(!history.length)return;const c=cid(),t=$('trace').value;review=JSON.parse(history.pop());$('crop').value=c;drawing=null;list(t)});
+$('next').onclick=guarded(()=>{const t=traces().find(t=>!review.decisions[cid()]?.[t.id]);if(t){$('trace').value=t.id;selected()}else $('status').textContent='All outlines in this area have decisions. Select the next area.'});
+$('cancel').onclick=()=>{drawing=null;selected()};
+$('add').onclick=()=>{drawing=[];$('status').textContent='Drawing: click points, then Finish drawing. New outlines default to unknown.'};
+$('finish').onclick=guarded(()=>{if(!drawing||drawing.length<3)throw Error('At least three points required');let id='review_'+Date.now();const t={id,label:'unknown',outer:drawing,reason:'New outline: check class and boundaries against source'};validTrace(t);snapshot();traces().push(t);decision(id,'unknown');drawing=null;list(id)});
+canvas.onpointerdown=guarded(e=>{const p=point(e);if(drawing){drawing.push(p);draw();return}let best=7/Number($('zoom').value);drag=-1;current().outer.forEach((v,i)=>{const d=Math.hypot(v[0]-p[0],v[1]-p[1]);if(d<best){best=d;drag=i}});if(drag>=0){snapshot();canvas.setPointerCapture(e.pointerId)}});
+canvas.onpointermove=guarded(e=>{if(drag<0)return;current().outer[drag]=point(e);decision(current().id,current().label==='unknown'?'unknown':'correct');selected()});
+canvas.onpointerup=canvas.onpointercancel=()=>{drag=-1};
+$('download').onclick=guarded(()=>{if(drawing)throw Error('Finish or cancel drawing first');if(!$('reviewer').value.trim()||!$('attest').checked)throw Error('Enter a reviewer name and confirm source review');for(const [c,ts] of Object.entries(review.annotations.crops))for(const t of ts)if(!review.decisions[c]?.[t.id])throw Error('Every outline needs a decision');review.reviewer=$('reviewer').value.trim();review.attestation=true;const blob=new Blob([JSON.stringify(review,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='paving-review.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+$('resume').onchange=async()=>{try{const f=$('resume').files[0];if(!f||f.size>2000000)throw Error('Review JSON must be below 2 MB');const r=JSON.parse(await f.text());for(const k of ['version','dataset_id','annotation_sha256','source_pins'])if(JSON.stringify(r[k])!==JSON.stringify(initial.review[k]))throw Error('Saved review belongs to different source data');if(Object.keys(r.annotations.crops).sort().join()!==Object.keys(initial.review.annotations.crops).sort().join())throw Error('Crop identities differ');review=r;history=[];$('reviewer').value=r.reviewer||'';$('attest').checked=false;area()}catch(e){error(e)}};
+$('crop').replaceChildren(...Object.keys(review.annotations.crops).map(c=>new Option(c,c)));area();
+</script></html>

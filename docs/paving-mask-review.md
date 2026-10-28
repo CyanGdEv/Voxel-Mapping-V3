@@ -1,5 +1,9 @@
 # Source-traced paving masks
 
+Use the [offline source-only polygon editor](paving-label-review.md) to submit
+explicit per-outline corrections without changing original masks or exposing
+the consumed reserved test to training.
+
 The latest masks include the [roof corrections from user review](#roof-correction-after-user-review). The initial counts below are retained as the superseded baseline; use the corrected download and counts in that section.
 
 This stage creates **four native-resolution binary paving mask crops across three parks**. The main visible paving boundaries are traced explicitly, rather than sampled as small rectangles or copied from model/map predictions. Roofs, raised features, grass islands and planter holes receive separate visible non-paving traces; occluded or unreviewed ground stays unknown.
