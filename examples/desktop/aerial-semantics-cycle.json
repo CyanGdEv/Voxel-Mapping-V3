@@ -1,0 +1,84 @@
+{
+  "version": "research-learning-cycle-v1",
+  "dataset_directory": "ride-intake",
+  "encoder_path": "ride-model/encoder.onnx",
+  "encoder_sha256": "674dc0911a76190cb956be54ab6190b260e9cb5b7ef758a4742cfeeaacdcf6eb",
+  "public_sites": [
+    {
+      "site_id": "towers-street",
+      "name": "Alton Towers Towers Street",
+      "location": "Farley Staffordshire",
+      "ride_types": [],
+      "imagery_geometry_context": {
+        "version": "imagery-gap-geometry-v1",
+        "site_id": "towers-street",
+        "site": "Alton Towers Towers Street",
+        "imagery": {
+          "version": "aerial-material-research-v1",
+          "site_id": "towers-street",
+          "site": "Alton Towers Towers Street",
+          "provider": "esri_world_imagery",
+          "bounds_wgs84": [
+            -1.8941,
+            52.9891,
+            -1.8907,
+            52.9914
+          ],
+          "width": 1024,
+          "height": 1024,
+          "grid": 16,
+          "material_mode": "colour_appearance",
+          "offline": true
+        },
+        "map_source": {
+          "bounds_wgs84": [
+            -1.8941,
+            52.9891,
+            -1.8907,
+            52.9914
+          ],
+          "offline": true
+        },
+        "options": {
+          "min_area_m2": 6,
+          "max_growth_m": 3,
+          "colour_distance": 18,
+          "max_features": 256
+        }
+      }
+    }
+  ],
+  "research": {
+    "allowed_hosts": [
+      "publicaccess.staffsmoorlands.gov.uk",
+      "runnymede.moderngov.co.uk",
+      "cdn.loc.gov"
+    ],
+    "allow_public_discovery": true,
+    "refresh": false,
+    "limits": {
+      "max_sources": 2,
+      "max_model_rounds": 2,
+      "max_run_bytes": 32000000,
+      "max_seconds": 90
+    },
+    "offline": true,
+    "source_families": [
+      "knowledge",
+      "rides"
+    ]
+  },
+  "max_research_jobs": 0,
+  "aerial_semantics": {
+    "dataset_directory": "dataset",
+    "settings": {
+      "hidden": 24,
+      "epochs": 60,
+      "batch_size": 512,
+      "learning_rate": 0.01,
+      "regularization": 0.0001,
+      "seed": 137
+    },
+    "use_for_geometry": true
+  }
+}

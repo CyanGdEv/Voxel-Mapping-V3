@@ -45,3 +45,5 @@ LVIA part 1, PDF page 23 (printed page 17), paragraph 3.27 states a maximum prop
 Map names, former names, public tags and referenced pages can now specialize this curriculum. See [Map-guided planning research](map-guided-planning-research.md) and the updated example request.
 
 For additional site families, structured APIs, Bing viewer/keyed imagery support and aerial RGB colour observations, see [Broader sources and aerial RGB](broader-sources-and-aerial-rgb.md).
+
+A separately trained RGB/context model can now add paths/plazas, roof, car-park and landscaped-island proposals. See [Aerial semantic training](aerial-semantic-training.md) for its provisional labels, weak held-out results and saved-checkpoint workflow.

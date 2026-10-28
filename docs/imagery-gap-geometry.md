@@ -68,3 +68,5 @@ The larger paving colour region covers approximately 24,044 ground square metres
 The initial imagery job retrieved 783,526 bytes; the subsequent geometry run retrieved 250,110 bytes for the map snapshot while reusing the imagery. Current replay is offline. The real 96-pair research cycle reused its existing checkpoint while storing the geometry result. Detailed checks and source pins are in `evidence/towers-street-imagery-geometry-validation.json`.
 
 Attribution: Esri World Imagery and its imagery providers; © OpenStreetMap contributors, ODbL-1.0. Capture-date, source-resolution and accuracy observations remain in the provider metadata and do not establish exact whole-image accuracy or current conditions.
+
+A separately trained RGB/context model can now add paths/plazas, roof, car-park and landscaped-island proposals. See [Aerial semantic training](aerial-semantic-training.md) for its provisional labels, weak held-out results and saved-checkpoint workflow.

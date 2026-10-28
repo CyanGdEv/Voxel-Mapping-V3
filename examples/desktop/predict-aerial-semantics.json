@@ -1,0 +1,8 @@
+{
+  "version": "desktop-aerial-semantic-prediction-v1",
+  "aerial_directory": "demo-source",
+  "model_file": "model/model.json",
+  "model_sha256": "e7df032eb29eab196e95913fc12a7dcd034fa863f2148f855dd71298d8ad0161",
+  "threshold": 0.6,
+  "margin": 0.1
+}

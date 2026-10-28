@@ -29,7 +29,7 @@ COLOURS={'building':(225,115,40),'water':(50,150,240),'paving':(240,205,55),
 
 def validate(config):
     if not isinstance(config,dict) or config.get('version')!=VERSION or set(config)-{
-        'version','site_id','site','imagery','map_source','protected_plan_coverage','options'}:
+        'version','site_id','site','imagery','map_source','protected_plan_coverage','options','semantic_model'}:
         raise ValueError('Versioned imagery gap-geometry request required')
     if not isinstance(config.get('imagery'),dict):raise ValueError('Aerial imagery request required')
     aerial.validate(config['imagery'])
@@ -41,6 +41,9 @@ def validate(config):
         if not isinstance(coverage,dict) or set(coverage)!={'file','sha256','crs'}:raise ValueError('Pinned protected plan coverage and CRS required')
         if not isinstance(coverage['file'],str) or not maps.re.fullmatch('[0-9a-f]{64}',coverage['sha256']):raise ValueError('Protected coverage file and pin required')
         Transformer.from_crs(coverage['crs'],3857,always_xy=True)
+    if 'semantic_model' in config:
+        spec=config['semantic_model']
+        if not isinstance(spec,dict) or set(spec)!={'file','sha256'} or not isinstance(spec['file'],str) or not maps.re.fullmatch('[0-9a-f]{64}',spec['sha256']):raise ValueError('Pinned semantic model required')
     settings=config.get('options',{})
     limits={'min_area_m2':(1.,100.,6.),'max_growth_m':(.25,8.,3.),'colour_distance':(5.,35.,18.),
         'max_features':(1,512,256),'simplify_pixels':(0.,2.,.5)}
@@ -233,8 +236,24 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     Image.alpha_composite(Image.fromarray(rgba),Image.fromarray(overlay)).convert('RGB').save(output/'overlay.png')
     counts=dict(Counter(f['properties']['kind'] for f in features));sources=list(rgb['sources'])
     if map_meta:sources.append({'url':map_meta['source_url'],'body_sha256':map_meta['body_sha256'],'citation_id':'M'+map_meta['body_sha256'][:12],'source_evidence_verified':False,'training_labels_generated':0})
+    learned=None
+    if 'semantic_model' in config:
+        from .aerial_semantic_learning import infer
+        spec=config['semantic_model']
+        learned=infer(output/'aerial/source-image.bin',rgb['imagery'],spec['file'],output/'learned-semantics',
+            model_sha256=spec['sha256'],cancelled=cancelled)
+        data=json.loads((output/'learned-semantics/semantic-candidates.geojson').read_text());clipped=[]
+        aoi=transform(forward.transform,box(*config['imagery']['bounds_wgs84']))
+        for feature in data['features']:
+            geom=transform(forward.transform,shape(feature['geometry'])).intersection(aoi).difference(protected)
+            if geom.is_empty or not geom.is_valid or geom.geom_type not in ('Polygon','MultiPolygon'):continue
+            feature['geometry']=mapping(transform(inverse.transform,geom));feature['properties']['protected_plan_overlap_m2']=geom.intersection(protected).area
+            feature['properties']['coverage_status']='outside_supplied_protected_plan_coverage';clipped.append(feature)
+        atomic_json(output/'learned-semantic-candidates.geojson',{'type':'FeatureCollection','features':clipped})
+        learned['protected_candidate_counts']=dict(Counter(f['properties']['class'] for f in clipped))
+        learned['protected_file_sha256']=file_hash(output/'learned-semantic-candidates.geojson')
     report={'version':VERSION,'status':'imagery_gap_geometry_candidates','site_id':config['site_id'],'site':config['site'],
-        'request_sha256':digest(config),'extraction_options':options,'candidate_counts':counts,'queue_reference_lines':len(queues),**summary,'map_error':map_error,
+        'request_sha256':digest(config),'extraction_options':options,'learned_semantics':learned,'candidate_counts':counts,'queue_reference_lines':len(queues),**summary,'map_error':map_error,
         'map_parse_gaps':map_skipped[:32],'image_sha256':rgb['imagery']['image_sha256'],'imagery':rgb['imagery'],
         'map_snapshot':map_meta,'protected_plan_coverage_sha256':pin,'protected_coverage_supplied':pin is not None,
         'candidate_file_sha256':file_hash(output/'geometry-candidates.geojson'),'queue_file_sha256':file_hash(output/'queue-centrelines.geojson'),
@@ -248,11 +267,13 @@ def run(config,output,cache,*,cancelled=lambda:False,progress=lambda v:None,pare
     atomic_json(output/'report.json',report)
     legend=' · '.join('<span style="color:rgb'+str(colour)+'">'+escape(kind.replace('_',' '))+'</span>' for kind,colour in COLOURS.items())
     (output/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Imagery gap geometry</title><style>body{font:16px system-ui;max-width:1100px;margin:30px auto}img{width:100%;max-width:1024px}</style><h1>'+escape(config['site'])+'</h1><p>Draft imagery regions outside supplied protected plan coverage. Map-supported semantics remain unverified.</p><p>'+legend+'</p><img src="overlay.png"><p>'+escape(rgb['imagery'].get('attribution',''))+' · © OpenStreetMap contributors (ODbL-1.0)</p><p><a href="geometry-candidates.geojson">Geometry candidates</a> · <a href="queue-centrelines.geojson">Mapped queue lines</a> · <a href="aerial/index.html">RGB/source metadata</a></p><pre>'+escape(json.dumps(counts,indent=2))+'</pre>',encoding='utf-8')
+    if learned is not None:
+        path=output/'index.html';page=path.read_text();page=page.replace('</h1>','</h1><p><a href="learned-semantic-candidates.geojson">Learned semantic candidates outside protected coverage</a> · <a href="learned-semantics/index.html">Inspect raw RGB model predictions</a></p>',1);path.write_text(page,encoding='utf-8')
     return report
 
 
 def resolve_paths(config,base):
-    for field,key in [('map_source','snapshot_path'),('protected_plan_coverage','file')]:
+    for field,key in [('map_source','snapshot_path'),('protected_plan_coverage','file'),('semantic_model','file')]:
         if key in config.get(field,{}):config[field][key]=str((Path(base)/config[field][key]).resolve())
     return config
 

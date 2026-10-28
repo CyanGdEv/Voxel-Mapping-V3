@@ -53,7 +53,7 @@ def curriculum(rows, sites, errors=None):
 def validate(config):
     if (not isinstance(config,dict) or config.get('version')!=VERSION
             or set(config)-{'version','dataset_directory','encoder_path','encoder_sha256','dataset_manifest_sha256',
-                'public_sites','research','max_research_jobs','refresh_research'}):
+                'public_sites','research','max_research_jobs','refresh_research','aerial_semantics'}):
         raise ValueError('Versioned research-learning cycle configuration required')
     for key in ['dataset_directory','encoder_path']:
         if not isinstance(config.get(key),str) or not config[key]:raise ValueError('Existing dataset and registered encoder paths required')
@@ -91,6 +91,9 @@ def validate(config):
             if site['imagery_geometry_context']['site_id']!=site['site_id']:raise ValueError('Imagery geometry site identity changed')
     if sum('imagery_geometry_context' in s for s in sites)>2:raise ValueError('At most two imagery geometry areas per cycle')
     if sum('aerial_context' in s for s in sites)>2:raise ValueError('At most two aerial areas per learning cycle')
+    if 'aerial_semantics' in config:
+        spec=config['aerial_semantics']
+        if not isinstance(spec,dict) or set(spec)-{'dataset_directory','settings','use_for_geometry'} or not isinstance(spec.get('dataset_directory'),str) or not spec['dataset_directory'] or type(spec.get('use_for_geometry',False)) is not bool:raise ValueError('Known aerial semantic dataset/settings required')
     maximum=config.get('max_research_jobs',2)
     if type(maximum) is not int or not 0<=maximum<=6 or type(config.get('refresh_research',False)) is not bool:
         raise ValueError('Bounded repeatable research cycle required')
@@ -142,7 +145,29 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
         db.execute('INSERT OR REPLACE INTO checkpoints VALUES(?,?,?,?)',(key,str(model_directory.resolve()),file_hash(model_directory/'model.json'),file_hash(model_directory/'report.json')))
         db.commit()
         errors={kind:1-float(row['recall']) for kind,row in report.get('cross_source_evaluation',{}).get('metrics',{}).get('per_class',{}).items() if row['support']}
+        semantic_checkpoint=None
+        if 'aerial_semantics' in config:
+            from .aerial_semantic_learning import ensure_checkpoint
+            spec=config['aerial_semantics']
+            semantic_checkpoint=ensure_checkpoint(spec['dataset_directory'],memory_directory/'aerial-semantic-models',spec.get('settings'),cancelled=cancelled,progress=progress)
+            atomic_json(output/'aerial-semantic-checkpoint.json',semantic_checkpoint)
         tasks=curriculum(rows,sites,errors)
+        if semantic_checkpoint:
+            semantic_tasks=[]
+            hints={'paths_plazas':['pedestrian paving layout','landscape plan'],'building_roofs':['building roof plan','aerial building footprint'],
+                'car_parks':['car park layout','parking plan'],'landscaped_islands':['planter grass island layout','landscape planting plan']}
+            for metric in sorted(semantic_checkpoint['per_class'],key=lambda r:r['iou'] if r['iou'] is not None else 1):
+                if metric['class'] not in hints:continue
+                tags=hints[metric['class']]
+                for site in sites:
+                    task={'kind':'aerial_semantic_'+metric['class'],'site_id':site['site_id'],
+                        'query':' '.join([site['name'],site.get('location',''),tags[0],tags[1]])[:300],
+                        'research_profile':{'site':site['name'],'location':site.get('location',''),'tags':tags,'applications':site.get('applications',[])},
+                        'seed_urls':site.get('urls',[]),'measured_error_priority':1-float(metric['iou'] or 0),
+                        'semantic_dataset_sha256':semantic_checkpoint['dataset_sha256'],
+                        'reason':'Seek evidence for weak RGB classes; downloaded media require source-linked annotation before fitting.'}
+                    task['id']=digest(task);semantic_tasks.append(task)
+            tasks=semantic_tasks+tasks
         completed={r[0] for r in db.execute('SELECT id FROM research_tasks WHERE source_count>0')}
         seen={r[0] for r in db.execute('SELECT sha256 FROM sources')}|set(model['training_sources'])
         deadline=time.monotonic()+600;budget=web.Budget(64_000_000);results=[];new=set();failures=[]
@@ -206,13 +231,16 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
         for site in [s for s in sites if 'imagery_geometry_context' in s]:
             from . import imagery_geometry_research as geometry
             try:
-                draft=geometry.run(site['imagery_geometry_context'],output/('imagery-geometry-'+site['site_id']),cache,
+                context=json.loads(json.dumps(site['imagery_geometry_context']))
+                if semantic_checkpoint and config['aerial_semantics'].get('use_for_geometry') and 'semantic_model' not in context:
+                    context['semantic_model']={'file':semantic_checkpoint['model_file'],'sha256':semantic_checkpoint['model_sha256']}
+                draft=geometry.run(context,output/('imagery-geometry-'+site['site_id']),cache,
                     cancelled=cancelled,progress=progress,parent_budget=budget,run_deadline=deadline)
             except (web.WebError,ValueError,OSError) as error:
                 geometry_failures.append({'site_id':site['site_id'],'error':str(error)});continue
             geometry_reports.append({'site_id':site['site_id'],'candidate_counts':draft['candidate_counts'],
                 'queue_reference_lines':draft['queue_reference_lines'],'candidate_file_sha256':draft['candidate_file_sha256'],
-                'geometry_verified':False,'registration_verified':False})
+                'geometry_verified':False,'registration_verified':False,'learned_semantics':draft.get('learned_semantics')})
             for source in draft['sources']:
                 body=source['body_sha256']
                 if body not in seen:new.add(body)
@@ -269,7 +297,8 @@ def run(config, output, memory_directory, cache, *, cancelled=lambda:False, prog
             'remembered_sources':db.execute('SELECT count(*) FROM sources').fetchone()[0],
             'sources':[{'body_sha256':body,'url':url,'citation_id':citation,'source_evidence_verified':False,
                 'training_labels_generated':0} for body,url,citation in db.execute('SELECT sha256,url,citation FROM sources ORDER BY sha256 LIMIT 64')],
-            'network_bytes':budget.spent,'model_weights_updated':training_status=='trained_new_dataset_checkpoint',
+            'network_bytes':budget.spent,'aerial_semantic_checkpoint':semantic_checkpoint,'source_pair_head_weights_updated':training_status=='trained_new_dataset_checkpoint',
+            'model_weights_updated':training_status=='trained_new_dataset_checkpoint' or bool(semantic_checkpoint and semantic_checkpoint['model_weights_updated']),
             'encoder_weights_updated':False,'web_sources_automatically_labelled':0,'production_eligible':False,
             'world_blocks_generated':0,'limitations':['Research priorities learn from source-group coverage and measured errors; they are not physical verification.',
                 'Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.',
@@ -287,6 +316,7 @@ def main(argv=None):
     args=parser.parse_args(argv);config,_=reader._json(Path(args.config),1_000_000)
     base=Path(args.config).resolve().parent
     for field in ['dataset_directory','encoder_path']:config[field]=str((base/config[field]).resolve())
+    if 'aerial_semantics' in config:config['aerial_semantics']['dataset_directory']=str((base/config['aerial_semantics']['dataset_directory']).resolve())
     for site in config.get('public_sites',[]):
         if 'imagery_geometry_context' in site:
             from .imagery_geometry_research import resolve_paths
