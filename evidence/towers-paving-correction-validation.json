@@ -1,0 +1,1235 @@
+{
+  "version": "towers-paving-correction-validation-v1",
+  "date_utc": "2026-10-28",
+  "tests": {
+    "passed": 86,
+    "log_sha256": "53ea969457684d2b20548eda291dd6cc7a49b6a61d0f9298cf7fcb63e29517a8"
+  },
+  "correction_ledger": {
+    "changes": [
+      {
+        "changed_pixels": 7309,
+        "class_flips": 0,
+        "conflict_pixels": 0,
+        "id": "towers-plaza",
+        "known_to_unknown": 551,
+        "unknown_to_non_paving": 3818,
+        "unknown_to_paving": 2940
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "conflict_pixels": 0,
+        "id": "wicker-entrance",
+        "known_to_unknown": 0,
+        "unknown_to_non_paving": 0,
+        "unknown_to_paving": 0
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "conflict_pixels": 0,
+        "id": "chessington-gardens",
+        "known_to_unknown": 0,
+        "unknown_to_non_paving": 0,
+        "unknown_to_paving": 0
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "conflict_pixels": 0,
+        "id": "drayton-mainstreet",
+        "known_to_unknown": 0,
+        "unknown_to_non_paving": 0,
+        "unknown_to_paving": 0
+      }
+    ],
+    "corrected_annotation_sha256": "a4f250167f6f403cc811516b29e273133039e2e3b5f89532130863b16e48584a",
+    "dataset_id": "3a1765deca8ba61ab6795b449706553f97724d640d2e016c0049d65c07728dff",
+    "geometry_verified": false,
+    "human_labels_verified": false,
+    "independent_human_reviews": 0,
+    "inspected_crop_ids": [
+      "towers-plaza"
+    ],
+    "new_trace_ids": [
+      "west-pedestrian-strip",
+      "west-upper-brown-roof-interior",
+      "west-mid-brown-roof-interior",
+      "east-lower-red-roof-interior",
+      "west-patio-furniture-occlusion",
+      "west-patio-umbrella-occlusion",
+      "west-patio-dark-object",
+      "main-plaza-west-tree-shadow"
+    ],
+    "original_annotation_sha256": "8fdad7b095c64db19e67d69693e7bcb1f59bcd603c7671c4c2ef5a09b95ff942",
+    "other_crops_retained_without_new_review": true,
+    "parent_dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+    "probes": [
+      {
+        "after": 1,
+        "before": 255,
+        "xy": [
+          14,
+          90
+        ]
+      },
+      {
+        "after": 0,
+        "before": 255,
+        "xy": [
+          70,
+          110
+        ]
+      },
+      {
+        "after": 0,
+        "before": 255,
+        "xy": [
+          65,
+          253
+        ]
+      },
+      {
+        "after": 255,
+        "before": 255,
+        "xy": [
+          10,
+          130
+        ]
+      },
+      {
+        "after": 255,
+        "before": 255,
+        "xy": [
+          10,
+          214
+        ]
+      },
+      {
+        "after": 0,
+        "before": 0,
+        "xy": [
+          175,
+          45
+        ]
+      },
+      {
+        "after": 255,
+        "before": 1,
+        "xy": [
+          116,
+          215
+        ]
+      }
+    ],
+    "source_only_assistant_draft": true,
+    "version": "towers-source-correction-v1"
+  },
+  "recipe_reproduces_exact_dataset": true,
+  "training_resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "peak_rss_mb": 500.97265625,
+    "wall_seconds": 29.266541644996323
+  },
+  "training_samples": 32000,
+  "weights": {
+    "rgb_only": {
+      "baseline_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+      "candidate_sha256": "550c690767ef1403ecdc065ee46ec1d8e6c6c7ffabb7d5a4932cd095a8bf7513",
+      "parameter_difference_l2": 2.98404492875092,
+      "weight_change_from_initialization_l2": 12.845391532897036
+    },
+    "rgb_context": {
+      "baseline_sha256": "a6eaa7dacc73778637f7b1cbef120a85449405db5636d2c4343c322be9d6dca4",
+      "candidate_sha256": "2dac6a5e60c2fe49a3da616b865bc8b7632e209f81068b5e2a682888560b43fe",
+      "parameter_difference_l2": 14.325781033570205,
+      "weight_change_from_initialization_l2": 21.270381913982234
+    }
+  },
+  "development_comparison": {
+    "baseline_rgb_macro_iou": 0.48237345390754854,
+    "checkpoint_sha256": {
+      "baseline/folds/alton-towers/rgb_context/model.json": "fdd14e5f82369f54536d23f78b91f1b7f4860ac0644195dc90ea9b457732b298",
+      "baseline/folds/alton-towers/rgb_only/model.json": "f15f114d0ccd373320aaae8959544e96e4dade74f8a8626232f6a66b748186c4",
+      "baseline/folds/chessington/rgb_context/model.json": "3619ec935222e402a639e5f87fdc420b5565740f91ef3dfa2a624e04ddf14adf",
+      "baseline/folds/chessington/rgb_only/model.json": "b42d8115b6c9ed6c1f691417784718be5f94669eff9bdc88dd284f12e8adc3d2",
+      "baseline/folds/drayton-manor/rgb_context/model.json": "97648ee791138e5df9f5b2c19b5865ca5275f525b98941ad8d71899dbcf307e8",
+      "baseline/folds/drayton-manor/rgb_only/model.json": "3986eacc26bed85dca19101b4ce2dd334f572ed593b4c55733d0e22f599335e2",
+      "training/folds/alton-towers/rgb_context/model.json": "293160b8f910d6aa2f75e6d6e9f907bf9ff8fae6b82b205b7888c68c89f04bef",
+      "training/folds/alton-towers/rgb_only/model.json": "18ae30bd8c33883ce71f293f1c8b2e52f2b1455188ac34a9fc0cf0fef487783a",
+      "training/folds/chessington/rgb_context/model.json": "cf2f302bbb6b8ea8699a5dc63558e9464528ec1dfe3ad17541bf8b2ceb79b902",
+      "training/folds/chessington/rgb_only/model.json": "35f168c9a904964e57c23df23cba6a8ff8e686e2ada37c2dcdd28818b3fad575",
+      "training/folds/drayton-manor/rgb_context/model.json": "9da6723ac95517456dd5c53fdcd5ba076f4ba6d6d6a355642e2c612c1f0d3909",
+      "training/folds/drayton-manor/rgb_only/model.json": "2a1893a89c5a29b3f0cdbf60bf50b50afdb98f4b9274c3d20c2b4a927b26b416"
+    },
+    "corrected_rgb_macro_iou": 0.48915076034642313,
+    "development_dataset_sha256": "cda52580e750caa8be464350c939679f03eb3dfd2f6db660a5e9c90f7dd7593c",
+    "human_labels_verified": false,
+    "same_target_pixels_for_all_models": true,
+    "scopes": {
+      "corrected_known": {
+        "macro_iou": {
+          "baseline_context": 0.46800911825067315,
+          "baseline_rgb": 0.48237345390754854,
+          "corrected_context": 0.511120064716569,
+          "corrected_rgb": 0.48915076034642313
+        },
+        "parks": {
+          "alton-towers": {
+            "baseline_context": {
+              "annotated_pixels": 213283,
+              "confusion": [
+                [
+                  11766,
+                  92662
+                ],
+                [
+                  918,
+                  107937
+                ]
+              ],
+              "non_paving_iou": 0.11168910067776659,
+              "paving_iou": 0.5356223048179558,
+              "paving_precision": 0.5380734699574774,
+              "paving_recall": 0.9915667631252584,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 213283,
+              "confusion": [
+                [
+                  51216,
+                  53212
+                ],
+                [
+                  14230,
+                  94625
+                ]
+              ],
+              "non_paving_iou": 0.43162702894031585,
+              "paving_iou": 0.5838634638760513,
+              "paving_precision": 0.6400630424048107,
+              "paving_recall": 0.8692756419089614,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 213283,
+              "confusion": [
+                [
+                  11766,
+                  92662
+                ],
+                [
+                  918,
+                  107937
+                ]
+              ],
+              "non_paving_iou": 0.11168910067776659,
+              "paving_iou": 0.5356223048179558,
+              "paving_precision": 0.5380734699574774,
+              "paving_recall": 0.9915667631252584,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 213283,
+              "confusion": [
+                [
+                  51216,
+                  53212
+                ],
+                [
+                  14230,
+                  94625
+                ]
+              ],
+              "non_paving_iou": 0.43162702894031585,
+              "paving_iou": 0.5838634638760513,
+              "paving_precision": 0.6400630424048107,
+              "paving_recall": 0.8692756419089614,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          },
+          "chessington": {
+            "baseline_context": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  6160,
+                  4699
+                ],
+                [
+                  6363,
+                  12613
+                ]
+              ],
+              "non_paving_iou": 0.3576820346068982,
+              "paving_iou": 0.5327560718057022,
+              "paving_precision": 0.7285697781885397,
+              "paving_recall": 0.6646817032040472,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  4565,
+                  6294
+                ],
+                [
+                  4805,
+                  14171
+                ]
+              ],
+              "non_paving_iou": 0.2914325842696629,
+              "paving_iou": 0.5607835377918481,
+              "paving_precision": 0.6924505252870755,
+              "paving_recall": 0.746785413153457,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  6848,
+                  4011
+                ],
+                [
+                  4027,
+                  14949
+                ]
+              ],
+              "non_paving_iou": 0.46002955797393524,
+              "paving_iou": 0.650324096228303,
+              "paving_precision": 0.7884493670886076,
+              "paving_recall": 0.7877845699831366,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  4403,
+                  6456
+                ],
+                [
+                  4528,
+                  14448
+                ]
+              ],
+              "non_paving_iou": 0.2861506466497693,
+              "paving_iou": 0.5681031770997169,
+              "paving_precision": 0.6911595866819747,
+              "paving_recall": 0.7613827993254637,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          },
+          "drayton-manor": {
+            "baseline_context": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  8619,
+                  7886
+                ],
+                [
+                  6937,
+                  7489
+                ]
+              ],
+              "non_paving_iou": 0.3676734067059125,
+              "paving_iou": 0.3356489781283614,
+              "paving_precision": 0.48708943089430895,
+              "paving_recall": 0.5191321225564952,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10473,
+                  6032
+                ],
+                [
+                  8238,
+                  6188
+                ]
+              ],
+              "non_paving_iou": 0.423271228226165,
+              "paving_iou": 0.3024733600547463,
+              "paving_precision": 0.5063829787234042,
+              "paving_recall": 0.4289477332593928,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10051,
+                  6454
+                ],
+                [
+                  7172,
+                  7254
+                ]
+              ],
+              "non_paving_iou": 0.42450479368163196,
+              "paving_iou": 0.3474137931034483,
+              "paving_precision": 0.5291800408520572,
+              "paving_recall": 0.5028420906696243,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10144,
+                  6361
+                ],
+                [
+                  7868,
+                  6558
+                ]
+              ],
+              "non_paving_iou": 0.41619825216428014,
+              "paving_iou": 0.3154856400635012,
+              "paving_precision": 0.507624429135382,
+              "paving_recall": 0.45459586857063633,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          }
+        },
+        "pooled": {
+          "baseline_context": {
+            "annotated_pixels": 274049,
+            "confusion": [
+              [
+                26545,
+                105247
+              ],
+              [
+                14218,
+                128039
+              ]
+            ],
+            "non_paving_iou": 0.18180261625916033,
+            "paving_iou": 0.5173209321869545,
+            "paving_precision": 0.5488499095530808,
+            "paving_recall": 0.9000541273891619,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "baseline_rgb": {
+            "annotated_pixels": 274049,
+            "confusion": [
+              [
+                66254,
+                65538
+              ],
+              [
+                27273,
+                114984
+              ]
+            ],
+            "non_paving_iou": 0.4165215477949266,
+            "paving_iou": 0.5533530643181982,
+            "paving_precision": 0.6369528367733572,
+            "paving_recall": 0.808283599401084,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_context": {
+            "annotated_pixels": 274049,
+            "confusion": [
+              [
+                28665,
+                103127
+              ],
+              [
+                12117,
+                130140
+              ]
+            ],
+            "non_paving_iou": 0.19918837598760328,
+            "paving_iou": 0.5303524272161184,
+            "paving_precision": 0.557901460558073,
+            "paving_recall": 0.9148231721461861,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_rgb": {
+            "annotated_pixels": 274049,
+            "confusion": [
+              [
+                65763,
+                66029
+              ],
+              [
+                26626,
+                115631
+              ]
+            ],
+            "non_paving_iou": 0.4151232814452903,
+            "paving_iou": 0.5551549312003687,
+            "paving_precision": 0.6365242761202246,
+            "paving_recall": 0.8128317059968929,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        }
+      },
+      "shared_known": {
+        "macro_iou": {
+          "baseline_context": 0.46921699659597804,
+          "baseline_rgb": 0.4825807080478226,
+          "corrected_context": 0.512327943061874,
+          "corrected_rgb": 0.4893580144866972
+        },
+        "parks": {
+          "alton-towers": {
+            "baseline_context": {
+              "annotated_pixels": 206525,
+              "confusion": [
+                [
+                  11766,
+                  88844
+                ],
+                [
+                  892,
+                  105023
+                ]
+              ],
+              "non_paving_iou": 0.11591889814979016,
+              "paving_iou": 0.5392459398538707,
+              "paving_precision": 0.5417270603042292,
+              "paving_recall": 0.9915781522919322,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 206525,
+              "confusion": [
+                [
+                  49320,
+                  51290
+                ],
+                [
+                  14031,
+                  91884
+                ]
+              ],
+              "non_paving_iou": 0.4302125766523321,
+              "paving_iou": 0.5844852262968735,
+              "paving_precision": 0.6417645661921857,
+              "paving_recall": 0.8675258461974225,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 206525,
+              "confusion": [
+                [
+                  11766,
+                  88844
+                ],
+                [
+                  892,
+                  105023
+                ]
+              ],
+              "non_paving_iou": 0.11591889814979016,
+              "paving_iou": 0.5392459398538707,
+              "paving_precision": 0.5417270603042292,
+              "paving_recall": 0.9915781522919322,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 206525,
+              "confusion": [
+                [
+                  49320,
+                  51290
+                ],
+                [
+                  14031,
+                  91884
+                ]
+              ],
+              "non_paving_iou": 0.4302125766523321,
+              "paving_iou": 0.5844852262968735,
+              "paving_precision": 0.6417645661921857,
+              "paving_recall": 0.8675258461974225,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          },
+          "chessington": {
+            "baseline_context": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  6160,
+                  4699
+                ],
+                [
+                  6363,
+                  12613
+                ]
+              ],
+              "non_paving_iou": 0.3576820346068982,
+              "paving_iou": 0.5327560718057022,
+              "paving_precision": 0.7285697781885397,
+              "paving_recall": 0.6646817032040472,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  4565,
+                  6294
+                ],
+                [
+                  4805,
+                  14171
+                ]
+              ],
+              "non_paving_iou": 0.2914325842696629,
+              "paving_iou": 0.5607835377918481,
+              "paving_precision": 0.6924505252870755,
+              "paving_recall": 0.746785413153457,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  6848,
+                  4011
+                ],
+                [
+                  4027,
+                  14949
+                ]
+              ],
+              "non_paving_iou": 0.46002955797393524,
+              "paving_iou": 0.650324096228303,
+              "paving_precision": 0.7884493670886076,
+              "paving_recall": 0.7877845699831366,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  4403,
+                  6456
+                ],
+                [
+                  4528,
+                  14448
+                ]
+              ],
+              "non_paving_iou": 0.2861506466497693,
+              "paving_iou": 0.5681031770997169,
+              "paving_precision": 0.6911595866819747,
+              "paving_recall": 0.7613827993254637,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          },
+          "drayton-manor": {
+            "baseline_context": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  8619,
+                  7886
+                ],
+                [
+                  6937,
+                  7489
+                ]
+              ],
+              "non_paving_iou": 0.3676734067059125,
+              "paving_iou": 0.3356489781283614,
+              "paving_precision": 0.48708943089430895,
+              "paving_recall": 0.5191321225564952,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "baseline_rgb": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10473,
+                  6032
+                ],
+                [
+                  8238,
+                  6188
+                ]
+              ],
+              "non_paving_iou": 0.423271228226165,
+              "paving_iou": 0.3024733600547463,
+              "paving_precision": 0.5063829787234042,
+              "paving_recall": 0.4289477332593928,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_context": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10051,
+                  6454
+                ],
+                [
+                  7172,
+                  7254
+                ]
+              ],
+              "non_paving_iou": 0.42450479368163196,
+              "paving_iou": 0.3474137931034483,
+              "paving_precision": 0.5291800408520572,
+              "paving_recall": 0.5028420906696243,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            },
+            "corrected_rgb": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10144,
+                  6361
+                ],
+                [
+                  7868,
+                  6558
+                ]
+              ],
+              "non_paving_iou": 0.41619825216428014,
+              "paving_iou": 0.3154856400635012,
+              "paving_precision": 0.507624429135382,
+              "paving_recall": 0.45459586857063633,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+            }
+          }
+        },
+        "pooled": {
+          "baseline_context": {
+            "annotated_pixels": 267291,
+            "confusion": [
+              [
+                26545,
+                101429
+              ],
+              [
+                14192,
+                125125
+              ]
+            ],
+            "non_paving_iou": 0.18671834334510362,
+            "paving_iou": 0.5197386457095861,
+            "paving_precision": 0.5522965827131722,
+            "paving_recall": 0.8981315991587531,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "baseline_rgb": {
+            "annotated_pixels": 267291,
+            "confusion": [
+              [
+                64358,
+                63616
+              ],
+              [
+                27074,
+                112243
+              ]
+            ],
+            "non_paving_iou": 0.41508436097208606,
+            "paving_iou": 0.553103733744635,
+            "paving_precision": 0.6382556479907199,
+            "paving_recall": 0.8056662144605468,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_context": {
+            "annotated_pixels": 267291,
+            "confusion": [
+              [
+                28665,
+                99309
+              ],
+              [
+                12091,
+                127226
+              ]
+            ],
+            "non_paving_iou": 0.20465498161567844,
+            "paving_iou": 0.5331606782161207,
+            "paving_precision": 0.5616174101132275,
+            "paving_recall": 0.91321231436221,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_rgb": {
+            "annotated_pixels": 267291,
+            "confusion": [
+              [
+                63867,
+                64107
+              ],
+              [
+                26427,
+                112890
+              ]
+            ],
+            "non_paving_iou": 0.4136436940175258,
+            "paving_iou": 0.5549492685228882,
+            "paving_precision": 0.6378074204647537,
+            "paving_recall": 0.8103102995327204,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        }
+      }
+    },
+    "version": "paving-correction-development-v1",
+    "whole_park_excluded": true
+  },
+  "reserved_test": {
+    "development_comparison_sha256": "68c18d00df9534dcf9cedf4f1a65e677f29bf833f2f5a2d3c7a855f7564dc822",
+    "evaluation_key": "5fc6a793418a2b8104438c44c7920b68fee9da35f1e8877551e966d1cd2bca41",
+    "frozen_models_sha256": "824411d6579be326e0d094fe2d86e85635e3b4039ada232b630629c8be583940",
+    "human_labels_verified": false,
+    "identical_sealed_input_replay": false,
+    "limitations": [
+      "One source-only assistant-labelled test area; not independent ground truth.",
+      "Ignored edges may leave boundary F1 unavailable; this is insufficient evidence for adoption.",
+      "Always-paving connection recall alone does not establish route quality."
+    ],
+    "model_weights_updated_during_test": false,
+    "production_eligible": false,
+    "results": [
+      {
+        "adoption_gate": {
+          "automatic_adoption": false,
+          "general_accuracy_claim_allowed": false,
+          "human_labels_verified": false,
+          "passes_numeric_gate": false,
+          "reasons": [
+            "paving_iou decreased",
+            "paving_precision decreased",
+            "boundary evidence unavailable"
+          ]
+        },
+        "id": "legoland-beginning",
+        "scores": {
+          "always_paving": {
+            "annotated_pixels": 12304,
+            "boundary": {
+              "f1": null,
+              "status": "no_evaluable_known_target_boundaries",
+              "target_boundary_pixels": 0
+            },
+            "confusion": [
+              [
+                0,
+                1306
+              ],
+              [
+                0,
+                10998
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "upper-main-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "main-forecourt-crossing",
+                  "passed": true
+                },
+                {
+                  "id": "west-forecourt",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.0,
+            "paving_iou": 0.8938556566970091,
+            "paving_precision": 0.8938556566970091,
+            "paving_recall": 1.0,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "baseline_context": {
+            "annotated_pixels": 12304,
+            "boundary": {
+              "f1": null,
+              "status": "no_evaluable_known_target_boundaries",
+              "target_boundary_pixels": 0
+            },
+            "confusion": [
+              [
+                935,
+                371
+              ],
+              [
+                3365,
+                7633
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "upper-main-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "main-forecourt-crossing",
+                  "passed": true
+                },
+                {
+                  "id": "west-forecourt",
+                  "passed": true
+                }
+              ],
+              "recall": 0.6666666666666666,
+              "recalled_pairs": 2,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.20017126953543138,
+            "paving_iou": 0.6713871052863049,
+            "paving_precision": 0.953648175912044,
+            "paving_recall": 0.6940352791416621,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "baseline_rgb": {
+            "annotated_pixels": 12304,
+            "boundary": {
+              "f1": null,
+              "status": "no_evaluable_known_target_boundaries",
+              "target_boundary_pixels": 0
+            },
+            "confusion": [
+              [
+                1127,
+                179
+              ],
+              [
+                1985,
+                9013
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "upper-main-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "main-forecourt-crossing",
+                  "passed": false
+                },
+                {
+                  "id": "west-forecourt",
+                  "passed": true
+                }
+              ],
+              "recall": 0.6666666666666666,
+              "recalled_pairs": 2,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.34244910361592223,
+            "paving_iou": 0.8063881184575468,
+            "paving_precision": 0.980526544821584,
+            "paving_recall": 0.8195126386615749,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_context": {
+            "annotated_pixels": 12304,
+            "boundary": {
+              "f1": null,
+              "status": "no_evaluable_known_target_boundaries",
+              "target_boundary_pixels": 0
+            },
+            "confusion": [
+              [
+                828,
+                478
+              ],
+              [
+                3387,
+                7611
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "upper-main-forecourt",
+                  "passed": false
+                },
+                {
+                  "id": "main-forecourt-crossing",
+                  "passed": true
+                },
+                {
+                  "id": "west-forecourt",
+                  "passed": true
+                }
+              ],
+              "recall": 0.6666666666666666,
+              "recalled_pairs": 2,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.17643298529725124,
+            "paving_iou": 0.6632101777622865,
+            "paving_precision": 0.9409074051180616,
+            "paving_recall": 0.6920349154391707,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          },
+          "corrected_rgb": {
+            "annotated_pixels": 12304,
+            "boundary": {
+              "f1": null,
+              "status": "no_evaluable_known_target_boundaries",
+              "target_boundary_pixels": 0
+            },
+            "confusion": [
+              [
+                1083,
+                223
+              ],
+              [
+                1981,
+                9017
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "upper-main-forecourt",
+                  "passed": true
+                },
+                {
+                  "id": "main-forecourt-crossing",
+                  "passed": false
+                },
+                {
+                  "id": "west-forecourt",
+                  "passed": true
+                }
+              ],
+              "recall": 0.6666666666666666,
+              "recalled_pairs": 2,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "non_paving_iou": 0.32947976878612717,
+            "paving_iou": 0.8035825683985385,
+            "paving_precision": 0.9758658008658009,
+            "paving_recall": 0.819876341152937,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+          }
+        }
+      }
+    ],
+    "test_manifest_sha256": "f22d502c82ab5f01148900c7807ca1ce34ede6de3a6de47ba33f8e4b01be63e7",
+    "version": "paving-correction-test-v1"
+  },
+  "model_freeze": {
+    "development_dataset_sha256": "cda52580e750caa8be464350c939679f03eb3dfd2f6db660a5e9c90f7dd7593c",
+    "frozen_at_utc": "2026-10-28T12:44:56.137620+00:00",
+    "models": {
+      "baseline_context": {
+        "file": "baseline/models/rgb_context/model.json",
+        "sha256": "a6eaa7dacc73778637f7b1cbef120a85449405db5636d2c4343c322be9d6dca4"
+      },
+      "baseline_rgb": {
+        "file": "baseline/models/rgb_only/model.json",
+        "sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc"
+      },
+      "corrected_context": {
+        "file": "training/models/rgb_context/model.json",
+        "sha256": "2dac6a5e60c2fe49a3da616b865bc8b7632e209f81068b5e2a682888560b43fe"
+      },
+      "corrected_rgb": {
+        "file": "training/models/rgb_only/model.json",
+        "sha256": "550c690767ef1403ecdc065ee46ec1d8e6c6c7ffabb7d5a4932cd095a8bf7513"
+      }
+    },
+    "protocol_sha256": "da8ed3ac661cabc0ab45e1c572b58b64e82055d889839ff8a48b0efe3e0f5fe9",
+    "version": "paving-correction-freeze-v1"
+  },
+  "annotation_seal": {
+    "connection_probes": {
+      "legoland-beginning": [
+        {
+          "a_xy": [
+            143,
+            65
+          ],
+          "b_xy": [
+            176,
+            75
+          ],
+          "id": "upper-main-forecourt"
+        },
+        {
+          "a_xy": [
+            143,
+            95
+          ],
+          "b_xy": [
+            181,
+            105
+          ],
+          "id": "main-forecourt-crossing"
+        },
+        {
+          "a_xy": [
+            19,
+            84
+          ],
+          "b_xy": [
+            39,
+            120
+          ],
+          "id": "west-forecourt"
+        }
+      ]
+    },
+    "development_comparison_sha256": "68c18d00df9534dcf9cedf4f1a65e677f29bf833f2f5a2d3c7a855f7564dc822",
+    "frozen_models_sha256": "824411d6579be326e0d094fe2d86e85635e3b4039ada232b630629c8be583940",
+    "human_labels_verified": false,
+    "predictions_viewed": false,
+    "sealed_at_utc": "2026-10-28T12:48:25.536746+00:00",
+    "test_annotation_sha256": "f8e836febcf3881b83edcdef3de59ea12a2c8d45e8790833ae2ad15360802573",
+    "test_manifest_sha256": "f22d502c82ab5f01148900c7807ca1ce34ede6de3a6de47ba33f8e4b01be63e7",
+    "version": "paving-correction-test-seal-v1"
+  },
+  "test_manifest": {
+    "annotation_file": "annotations.json",
+    "annotation_sha256": "f8e836febcf3881b83edcdef3de59ea12a2c8d45e8790833ae2ad15360802573",
+    "geometry_verified": false,
+    "human_labels_verified": false,
+    "id": "a37180e4a197747f8be5aeb9bc143124ccd99f456497245af6cbf438a489caec",
+    "ignore_reasons": {
+      "boundary_margin": 3,
+      "conflicting_traces": 4,
+      "explicit_unknown": 2,
+      "labelled": 0,
+      "not_reviewed": 1,
+      "source_nodata": 5
+    },
+    "labels": {
+      "non_paving": 0,
+      "paving": 1,
+      "unknown": 255
+    },
+    "production_eligible": false,
+    "records": [
+      {
+        "crop_pixels": [
+          128,
+          128,
+          384,
+          384
+        ],
+        "extent_epsg3857": [
+          -72874.41882466337,
+          6703641.078934251,
+          -72731.47513293846,
+          6703784.022625976
+        ],
+        "human_labels_verified": false,
+        "id": "legoland-beginning",
+        "ignore_reason_counts": {
+          "boundary_margin": 934,
+          "conflicting_traces": 483,
+          "explicit_unknown": 19481,
+          "labelled": 12304,
+          "not_reviewed": 32334,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/legoland-beginning.png",
+        "ignore_reasons_sha256": "3b630875b68a93b77c5226a448ba6dc304c0bf21994b89d46a891a8c3d5f481c",
+        "image_file": "images/legoland-beginning.png",
+        "image_sha256": "16cc41323ea2562aed0f1cae0dd53a03728d90e298a697f31cb7db6afebe4c33",
+        "image_size": [
+          256,
+          256
+        ],
+        "mask_file": "masks/legoland-beginning.png",
+        "mask_sha256": "44cf6c14c8efaa35c3e4a1431bd793f4ab9dd3feb620ef092506e0b66d4dcf7e",
+        "metadata_file": "metadata/legoland-beginning.json",
+        "metadata_sha256": "a3b1e116ddc17e78fa1b38d088f63776b0f05105b76fb043cd1c7ab6cb4e4ec1",
+        "pixel_counts": {
+          "non_paving": 1306,
+          "paving": 10998,
+          "unknown": 53232
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": false,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "legoland-windsor",
+        "source_file": "originals/legoland-beginning.bin",
+        "source_record_id": "legoland-beginning-reserved",
+        "source_sha256": "e21fdc7c49ff5defa3bcc89480515bc7b2312cacfb02670d00cfceee2ccf7ca9",
+        "split_group": "legoland-windsor",
+        "split_role": "reserved_test_annotation_review",
+        "trace_count": 12
+      }
+    ],
+    "reserved_test_only": true,
+    "review_policy": "assistant_visual_draft_requires_independent_review",
+    "version": "paving-mask-dataset-v1",
+    "world_blocks_generated": 0
+  },
+  "capture_quality": {
+    "approx_export_ground_sampling_m_xy": [
+      0.34787340872085465,
+      0.34787340872085465
+    ],
+    "export_finer_than_reported_point_source": true,
+    "finest_reported_point_resolution_m": 0.46,
+    "genuine_resolution_upgrade_verified": false,
+    "image_sha256": "e21fdc7c49ff5defa3bcc89480515bc7b2312cacfb02670d00cfceee2ccf7ca9",
+    "limitations": [
+      "Export pixel spacing is not proof of independent optical detail.",
+      "Point metadata is not automatically valid across an entire mosaic.",
+      "Capture date/resolution observations do not verify physical registration."
+    ],
+    "native_export_dimensions": [
+      512,
+      512
+    ],
+    "point_observations": [
+      {
+        "description": "GE01",
+        "point_capture_date": "2025-08-17",
+        "point_resolution_m": 0.46,
+        "source": "Vantor"
+      },
+      {
+        "description": "TerraColor NextGen",
+        "point_capture_date": null,
+        "point_resolution_m": 15.0,
+        "source": "Earthstar Geographics"
+      }
+    ],
+    "version": "imagery-capture-quality-v1",
+    "whole_image_capture_date_verified": false,
+    "whole_image_intrinsic_resolution_verified": false
+  },
+  "alton_excluded_fold_network_unchanged": true,
+  "independent_human_reviews": 0,
+  "finer_imagery_upgrade": false,
+  "baseline_retained": true,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "windows_exe_built": false,
+  "portable_replay_matches": true,
+  "browser_checks": {
+    "view_combinations_passed": 18,
+    "all_images_native_dimensions": true,
+    "page_exceptions": []
+  }
+}
