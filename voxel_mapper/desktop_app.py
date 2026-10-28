@@ -22,6 +22,8 @@ JOB_KINDS = (
     ('Web research / cited source evidence', 'web_research'),
     ('Train RGB aerial semantics', 'train_aerial_semantics'),
     ('Predict RGB aerial semantics', 'predict_aerial_semantics'),
+    ('Train paving RGB / context models', 'train_paving_binary'),
+    ('Predict binary paving', 'predict_paving_binary'),
     ('Imagery geometry / planning gaps', 'imagery_geometry_research'),
     ('Aerial RGB / material research', 'aerial_material_research'),
     ('Map names / planning application research', 'map_planning_research'),

@@ -1,0 +1,993 @@
+{
+  "version": "paving-binary-colour-training-validation-v1",
+  "date_utc": "2026-10-28",
+  "tests": {
+    "passed": 70,
+    "log_sha256": "b6f8ff63d793cb6113b5c1b59f3110519add4f28e93d7bd4601515e8fe410352"
+  },
+  "training": {
+    "always_paving_reference": {
+      "annotated_pixels": 267842,
+      "confusion": [
+        [
+          0,
+          127974
+        ],
+        [
+          0,
+          139868
+        ]
+      ],
+      "non_paving_iou": 0.0,
+      "paving_iou": 0.5222033885649002,
+      "paving_precision": 0.5222033885649002,
+      "paving_recall": 1.0,
+      "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+    },
+    "colour_statistics": {
+      "0": {
+        "rgb_mean": [
+          112.4636875,
+          109.629,
+          94.7316875
+        ],
+        "rgb_percentiles_10_50_90": [
+          [
+            59.0,
+            55.0,
+            50.0
+          ],
+          [
+            100.0,
+            100.0,
+            84.0
+          ],
+          [
+            195.0,
+            184.0,
+            166.0
+          ]
+        ],
+        "samples": 16000
+      },
+      "1": {
+        "rgb_mean": [
+          136.6360625,
+          126.3660625,
+          108.8719375
+        ],
+        "rgb_percentiles_10_50_90": [
+          [
+            70.0,
+            75.0,
+            59.0
+          ],
+          [
+            154.0,
+            139.0,
+            120.0
+          ],
+          [
+            172.0,
+            157.0,
+            134.0
+          ]
+        ],
+        "samples": 16000
+      }
+    },
+    "dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+    "dataset_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+    "folds": [
+      {
+        "held_out_park": "alton-towers",
+        "held_out_record_ids": [
+          "towers-plaza",
+          "wicker-entrance"
+        ],
+        "scores": {
+          "rgb_context": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                11766,
+                88844
+              ],
+              [
+                892,
+                105574
+              ]
+            ],
+            "model_sha256": "fdd14e5f82369f54536d23f78b91f1b7f4860ac0644195dc90ea9b457732b298",
+            "non_paving_iou": 0.11591889814979016,
+            "paving_iou": 0.540545798986227,
+            "paving_precision": 0.5430258515158062,
+            "paving_recall": 0.9916217383953563,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "chessington-gardens",
+              "drayton-mainstreet"
+            ],
+            "training_site_ids": [
+              "chessington",
+              "drayton-manor"
+            ],
+            "weight_change_l2": 18.59119057871481
+          },
+          "rgb_only": {
+            "annotated_pixels": 207076,
+            "confusion": [
+              [
+                49320,
+                51290
+              ],
+              [
+                14362,
+                92104
+              ]
+            ],
+            "model_sha256": "f15f114d0ccd373320aaae8959544e96e4dade74f8a8626232f6a66b748186c4",
+            "non_paving_iou": 0.4289740110635633,
+            "paving_iou": 0.5838383326149243,
+            "paving_precision": 0.6423141832991618,
+            "paving_recall": 0.8651024740292675,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "chessington-gardens",
+              "drayton-mainstreet"
+            ],
+            "training_site_ids": [
+              "chessington",
+              "drayton-manor"
+            ],
+            "weight_change_l2": 12.097998530787137
+          }
+        }
+      },
+      {
+        "held_out_park": "chessington",
+        "held_out_record_ids": [
+          "chessington-gardens"
+        ],
+        "scores": {
+          "rgb_context": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                6160,
+                4699
+              ],
+              [
+                6363,
+                12613
+              ]
+            ],
+            "model_sha256": "3619ec935222e402a639e5f87fdc420b5565740f91ef3dfa2a624e04ddf14adf",
+            "non_paving_iou": 0.3576820346068982,
+            "paving_iou": 0.5327560718057022,
+            "paving_precision": 0.7285697781885397,
+            "paving_recall": 0.6646817032040472,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "drayton-mainstreet",
+              "towers-plaza",
+              "wicker-entrance"
+            ],
+            "training_site_ids": [
+              "alton-towers",
+              "drayton-manor"
+            ],
+            "weight_change_l2": 20.749628362429895
+          },
+          "rgb_only": {
+            "annotated_pixels": 29835,
+            "confusion": [
+              [
+                4565,
+                6294
+              ],
+              [
+                4805,
+                14171
+              ]
+            ],
+            "model_sha256": "b42d8115b6c9ed6c1f691417784718be5f94669eff9bdc88dd284f12e8adc3d2",
+            "non_paving_iou": 0.2914325842696629,
+            "paving_iou": 0.5607835377918481,
+            "paving_precision": 0.6924505252870755,
+            "paving_recall": 0.746785413153457,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "drayton-mainstreet",
+              "towers-plaza",
+              "wicker-entrance"
+            ],
+            "training_site_ids": [
+              "alton-towers",
+              "drayton-manor"
+            ],
+            "weight_change_l2": 12.65654489621054
+          }
+        }
+      },
+      {
+        "held_out_park": "drayton-manor",
+        "held_out_record_ids": [
+          "drayton-mainstreet"
+        ],
+        "scores": {
+          "rgb_context": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                8619,
+                7886
+              ],
+              [
+                6937,
+                7489
+              ]
+            ],
+            "model_sha256": "97648ee791138e5df9f5b2c19b5865ca5275f525b98941ad8d71899dbcf307e8",
+            "non_paving_iou": 0.3676734067059125,
+            "paving_iou": 0.3356489781283614,
+            "paving_precision": 0.48708943089430895,
+            "paving_recall": 0.5191321225564952,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "chessington-gardens",
+              "towers-plaza",
+              "wicker-entrance"
+            ],
+            "training_site_ids": [
+              "alton-towers",
+              "chessington"
+            ],
+            "weight_change_l2": 19.573739037757015
+          },
+          "rgb_only": {
+            "annotated_pixels": 30931,
+            "confusion": [
+              [
+                10473,
+                6032
+              ],
+              [
+                8238,
+                6188
+              ]
+            ],
+            "model_sha256": "3986eacc26bed85dca19101b4ce2dd334f572ed593b4c55733d0e22f599335e2",
+            "non_paving_iou": 0.423271228226165,
+            "paving_iou": 0.3024733600547463,
+            "paving_precision": 0.5063829787234042,
+            "paving_recall": 0.4289477332593928,
+            "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+            "training_record_ids": [
+              "chessington-gardens",
+              "towers-plaza",
+              "wicker-entrance"
+            ],
+            "training_site_ids": [
+              "alton-towers",
+              "chessington"
+            ],
+            "weight_change_l2": 11.763082946496247
+          }
+        }
+      }
+    ],
+    "human_labels_verified": false,
+    "label_policy": "assistant_visual_draft_requires_independent_review",
+    "labels": {
+      "non_paving": 0,
+      "paving": 1,
+      "unknown": 255
+    },
+    "limitations": [
+      "Small source-linked crop dataset; labels remain provisional assistant drafts requiring independent review.",
+      "These existing development images are not an untouched blind final test. Unknown pixels are not scored.",
+      "Context uses RGB/Lab, local edges and multiscale texture; this is not a convolutional segmentation or path-continuity model.",
+      "All-data checkpoints have seen every supplied crop and have no untouched final test; previews use park-excluded checkpoints.",
+      "No map polygons, coordinates, park names or target masks enter network features. CSV coordinates/IDs are provenance only.",
+      "Threshold .5 is fixed for scores; preview abstention at .6 is uncalibrated and scored separately from previews."
+    ],
+    "model_weights_updated": true,
+    "models": {
+      "rgb_context": {
+        "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_context/model.json",
+        "loss_history": [
+          {
+            "epoch": 1,
+            "weighted_cross_entropy": 0.5064108448028565
+          },
+          {
+            "epoch": 10,
+            "weighted_cross_entropy": 0.16999744391441346
+          },
+          {
+            "epoch": 20,
+            "weighted_cross_entropy": 0.11770438349246978
+          },
+          {
+            "epoch": 30,
+            "weighted_cross_entropy": 0.09293689906597137
+          },
+          {
+            "epoch": 40,
+            "weighted_cross_entropy": 0.07871322065591813
+          },
+          {
+            "epoch": 50,
+            "weighted_cross_entropy": 0.06509622594714165
+          },
+          {
+            "epoch": 60,
+            "weighted_cross_entropy": 0.06282489734888076
+          }
+        ],
+        "sha256": "a6eaa7dacc73778637f7b1cbef120a85449405db5636d2c4343c322be9d6dca4",
+        "weight_change_l2": 21.662182676497228
+      },
+      "rgb_only": {
+        "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_only/model.json",
+        "loss_history": [
+          {
+            "epoch": 1,
+            "weighted_cross_entropy": 0.6329264688491821
+          },
+          {
+            "epoch": 10,
+            "weighted_cross_entropy": 0.5040222563743592
+          },
+          {
+            "epoch": 20,
+            "weighted_cross_entropy": 0.4637272210121155
+          },
+          {
+            "epoch": 30,
+            "weighted_cross_entropy": 0.44680492401123045
+          },
+          {
+            "epoch": 40,
+            "weighted_cross_entropy": 0.4398090600967407
+          },
+          {
+            "epoch": 50,
+            "weighted_cross_entropy": 0.4348349506855011
+          },
+          {
+            "epoch": 60,
+            "weighted_cross_entropy": 0.43213868474960326
+          }
+        ],
+        "sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+        "weight_change_l2": 13.007771663200726
+      }
+    },
+    "park_excluded_scores": {
+      "rgb_context": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            26545,
+            101429
+          ],
+          [
+            14192,
+            125676
+          ]
+        ],
+        "non_paving_iou": 0.18671834334510362,
+        "paving_iou": 0.5208353191295375,
+        "paving_precision": 0.5533827965038198,
+        "paving_recall": 0.8985329024508822,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      },
+      "rgb_only": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            64358,
+            63616
+          ],
+          [
+            27405,
+            112463
+          ]
+        ],
+        "non_paving_iou": 0.4142001171329459,
+        "paving_iou": 0.55268718916475,
+        "paving_precision": 0.6387076255544386,
+        "paving_recall": 0.8040652615323018,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      }
+    },
+    "parks": [
+      "alton-towers",
+      "chessington",
+      "drayton-manor"
+    ],
+    "production_eligible": false,
+    "quantized_rgb_distribution_overlap": 0.47124999999999995,
+    "records": 4,
+    "sample_file_sha256": "fa7747ab84822a7b7a61cc1f6d287a3fb6520c3a48f16c160b2745bb5727328d",
+    "sampled_unknown_pixels": 0,
+    "samples": 32000,
+    "source_only_feature_count": 31,
+    "training_settings": {
+      "batch_size": 512,
+      "epochs": 60,
+      "hidden": 24,
+      "learning_rate": 0.01,
+      "regularization": 0.0001,
+      "seed": 137
+    },
+    "version": "paving-binary-training-v1",
+    "world_blocks_generated": 0
+  },
+  "input_mask_dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+  "input_mask_manifest_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+  "actual_training_job": {
+    "id": "5f96e0f1458743229e628e0dedee03b9",
+    "kind": "train_paving_binary",
+    "status": "completed",
+    "config_path": "/workspace/scratch/paving-binary-colour-training/train-request.json",
+    "config_sha256": "f34d4938c3918705c92b3ea19e396122f218f9e8abad9e2e2404f87c7646ab19",
+    "created": 1793173496.933736,
+    "updated": 1793173520.4613693,
+    "progress": 1.0,
+    "message": "Completed",
+    "error": null,
+    "result": {
+      "always_paving_reference": {
+        "annotated_pixels": 267842,
+        "confusion": [
+          [
+            0,
+            127974
+          ],
+          [
+            0,
+            139868
+          ]
+        ],
+        "non_paving_iou": 0.0,
+        "paving_iou": 0.5222033885649002,
+        "paving_precision": 0.5222033885649002,
+        "paving_recall": 1.0,
+        "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+      },
+      "colour_statistics": {
+        "0": {
+          "rgb_mean": [
+            112.4636875,
+            109.629,
+            94.7316875
+          ],
+          "rgb_percentiles_10_50_90": [
+            [
+              59.0,
+              55.0,
+              50.0
+            ],
+            [
+              100.0,
+              100.0,
+              84.0
+            ],
+            [
+              195.0,
+              184.0,
+              166.0
+            ]
+          ],
+          "samples": 16000
+        },
+        "1": {
+          "rgb_mean": [
+            136.6360625,
+            126.3660625,
+            108.8719375
+          ],
+          "rgb_percentiles_10_50_90": [
+            [
+              70.0,
+              75.0,
+              59.0
+            ],
+            [
+              154.0,
+              139.0,
+              120.0
+            ],
+            [
+              172.0,
+              157.0,
+              134.0
+            ]
+          ],
+          "samples": 16000
+        }
+      },
+      "dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+      "dataset_sha256": "faaf922ac15ebdb85923301fdfa3c3a59fa63b1999c9d2abaa624cbc30ac2d45",
+      "folds": [
+        {
+          "held_out_park": "alton-towers",
+          "held_out_record_ids": [
+            "towers-plaza",
+            "wicker-entrance"
+          ],
+          "scores": {
+            "rgb_context": {
+              "annotated_pixels": 207076,
+              "confusion": [
+                [
+                  11766,
+                  88844
+                ],
+                [
+                  892,
+                  105574
+                ]
+              ],
+              "model_sha256": "fdd14e5f82369f54536d23f78b91f1b7f4860ac0644195dc90ea9b457732b298",
+              "non_paving_iou": 0.11591889814979016,
+              "paving_iou": 0.540545798986227,
+              "paving_precision": 0.5430258515158062,
+              "paving_recall": 0.9916217383953563,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "chessington-gardens",
+                "drayton-mainstreet"
+              ],
+              "training_site_ids": [
+                "chessington",
+                "drayton-manor"
+              ],
+              "weight_change_l2": 18.59119057871481
+            },
+            "rgb_only": {
+              "annotated_pixels": 207076,
+              "confusion": [
+                [
+                  49320,
+                  51290
+                ],
+                [
+                  14362,
+                  92104
+                ]
+              ],
+              "model_sha256": "f15f114d0ccd373320aaae8959544e96e4dade74f8a8626232f6a66b748186c4",
+              "non_paving_iou": 0.4289740110635633,
+              "paving_iou": 0.5838383326149243,
+              "paving_precision": 0.6423141832991618,
+              "paving_recall": 0.8651024740292675,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "chessington-gardens",
+                "drayton-mainstreet"
+              ],
+              "training_site_ids": [
+                "chessington",
+                "drayton-manor"
+              ],
+              "weight_change_l2": 12.097998530787137
+            }
+          }
+        },
+        {
+          "held_out_park": "chessington",
+          "held_out_record_ids": [
+            "chessington-gardens"
+          ],
+          "scores": {
+            "rgb_context": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  6160,
+                  4699
+                ],
+                [
+                  6363,
+                  12613
+                ]
+              ],
+              "model_sha256": "3619ec935222e402a639e5f87fdc420b5565740f91ef3dfa2a624e04ddf14adf",
+              "non_paving_iou": 0.3576820346068982,
+              "paving_iou": 0.5327560718057022,
+              "paving_precision": 0.7285697781885397,
+              "paving_recall": 0.6646817032040472,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "drayton-mainstreet",
+                "towers-plaza",
+                "wicker-entrance"
+              ],
+              "training_site_ids": [
+                "alton-towers",
+                "drayton-manor"
+              ],
+              "weight_change_l2": 20.749628362429895
+            },
+            "rgb_only": {
+              "annotated_pixels": 29835,
+              "confusion": [
+                [
+                  4565,
+                  6294
+                ],
+                [
+                  4805,
+                  14171
+                ]
+              ],
+              "model_sha256": "b42d8115b6c9ed6c1f691417784718be5f94669eff9bdc88dd284f12e8adc3d2",
+              "non_paving_iou": 0.2914325842696629,
+              "paving_iou": 0.5607835377918481,
+              "paving_precision": 0.6924505252870755,
+              "paving_recall": 0.746785413153457,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "drayton-mainstreet",
+                "towers-plaza",
+                "wicker-entrance"
+              ],
+              "training_site_ids": [
+                "alton-towers",
+                "drayton-manor"
+              ],
+              "weight_change_l2": 12.65654489621054
+            }
+          }
+        },
+        {
+          "held_out_park": "drayton-manor",
+          "held_out_record_ids": [
+            "drayton-mainstreet"
+          ],
+          "scores": {
+            "rgb_context": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  8619,
+                  7886
+                ],
+                [
+                  6937,
+                  7489
+                ]
+              ],
+              "model_sha256": "97648ee791138e5df9f5b2c19b5865ca5275f525b98941ad8d71899dbcf307e8",
+              "non_paving_iou": 0.3676734067059125,
+              "paving_iou": 0.3356489781283614,
+              "paving_precision": 0.48708943089430895,
+              "paving_recall": 0.5191321225564952,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "chessington-gardens",
+                "towers-plaza",
+                "wicker-entrance"
+              ],
+              "training_site_ids": [
+                "alton-towers",
+                "chessington"
+              ],
+              "weight_change_l2": 19.573739037757015
+            },
+            "rgb_only": {
+              "annotated_pixels": 30931,
+              "confusion": [
+                [
+                  10473,
+                  6032
+                ],
+                [
+                  8238,
+                  6188
+                ]
+              ],
+              "model_sha256": "3986eacc26bed85dca19101b4ce2dd334f572ed593b4c55733d0e22f599335e2",
+              "non_paving_iou": 0.423271228226165,
+              "paving_iou": 0.3024733600547463,
+              "paving_precision": 0.5063829787234042,
+              "paving_recall": 0.4289477332593928,
+              "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation.",
+              "training_record_ids": [
+                "chessington-gardens",
+                "towers-plaza",
+                "wicker-entrance"
+              ],
+              "training_site_ids": [
+                "alton-towers",
+                "chessington"
+              ],
+              "weight_change_l2": 11.763082946496247
+            }
+          }
+        }
+      ],
+      "human_labels_verified": false,
+      "label_policy": "assistant_visual_draft_requires_independent_review",
+      "labels": {
+        "non_paving": 0,
+        "paving": 1,
+        "unknown": 255
+      },
+      "limitations": [
+        "Small source-linked crop dataset; labels remain provisional assistant drafts requiring independent review.",
+        "These existing development images are not an untouched blind final test. Unknown pixels are not scored.",
+        "Context uses RGB/Lab, local edges and multiscale texture; this is not a convolutional segmentation or path-continuity model.",
+        "All-data checkpoints have seen every supplied crop and have no untouched final test; previews use park-excluded checkpoints.",
+        "No map polygons, coordinates, park names or target masks enter network features. CSV coordinates/IDs are provenance only.",
+        "Threshold .5 is fixed for scores; preview abstention at .6 is uncalibrated and scored separately from previews."
+      ],
+      "model_weights_updated": true,
+      "models": {
+        "rgb_context": {
+          "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_context/model.json",
+          "loss_history": [
+            {
+              "epoch": 1,
+              "weighted_cross_entropy": 0.5064108448028565
+            },
+            {
+              "epoch": 10,
+              "weighted_cross_entropy": 0.16999744391441346
+            },
+            {
+              "epoch": 20,
+              "weighted_cross_entropy": 0.11770438349246978
+            },
+            {
+              "epoch": 30,
+              "weighted_cross_entropy": 0.09293689906597137
+            },
+            {
+              "epoch": 40,
+              "weighted_cross_entropy": 0.07871322065591813
+            },
+            {
+              "epoch": 50,
+              "weighted_cross_entropy": 0.06509622594714165
+            },
+            {
+              "epoch": 60,
+              "weighted_cross_entropy": 0.06282489734888076
+            }
+          ],
+          "sha256": "a6eaa7dacc73778637f7b1cbef120a85449405db5636d2c4343c322be9d6dca4",
+          "weight_change_l2": 21.662182676497228
+        },
+        "rgb_only": {
+          "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_only/model.json",
+          "loss_history": [
+            {
+              "epoch": 1,
+              "weighted_cross_entropy": 0.6329264688491821
+            },
+            {
+              "epoch": 10,
+              "weighted_cross_entropy": 0.5040222563743592
+            },
+            {
+              "epoch": 20,
+              "weighted_cross_entropy": 0.4637272210121155
+            },
+            {
+              "epoch": 30,
+              "weighted_cross_entropy": 0.44680492401123045
+            },
+            {
+              "epoch": 40,
+              "weighted_cross_entropy": 0.4398090600967407
+            },
+            {
+              "epoch": 50,
+              "weighted_cross_entropy": 0.4348349506855011
+            },
+            {
+              "epoch": 60,
+              "weighted_cross_entropy": 0.43213868474960326
+            }
+          ],
+          "sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+          "weight_change_l2": 13.007771663200726
+        }
+      },
+      "park_excluded_scores": {
+        "rgb_context": {
+          "annotated_pixels": 267842,
+          "confusion": [
+            [
+              26545,
+              101429
+            ],
+            [
+              14192,
+              125676
+            ]
+          ],
+          "non_paving_iou": 0.18671834334510362,
+          "paving_iou": 0.5208353191295375,
+          "paving_precision": 0.5533827965038198,
+          "paving_recall": 0.8985329024508822,
+          "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+        },
+        "rgb_only": {
+          "annotated_pixels": 267842,
+          "confusion": [
+            [
+              64358,
+              63616
+            ],
+            [
+              27405,
+              112463
+            ]
+          ],
+          "non_paving_iou": 0.4142001171329459,
+          "paving_iou": 0.55268718916475,
+          "paving_precision": 0.6387076255544386,
+          "paving_recall": 0.8040652615323018,
+          "scope": "Only provisional annotated pixels; unknown targets excluded; threshold .5 fixed before evaluation."
+        }
+      },
+      "parks": [
+        "alton-towers",
+        "chessington",
+        "drayton-manor"
+      ],
+      "production_eligible": false,
+      "quantized_rgb_distribution_overlap": 0.47124999999999995,
+      "records": 4,
+      "sample_file_sha256": "fa7747ab84822a7b7a61cc1f6d287a3fb6520c3a48f16c160b2745bb5727328d",
+      "sampled_unknown_pixels": 0,
+      "samples": 32000,
+      "source_only_feature_count": 31,
+      "training_settings": {
+        "batch_size": 512,
+        "epochs": 60,
+        "hidden": 24,
+        "learning_rate": 0.01,
+        "regularization": 0.0001,
+        "seed": 137
+      },
+      "version": "paving-binary-training-v1",
+      "world_blocks_generated": 0
+    },
+    "output_directory": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output",
+    "peak_memory_mb": 492.83203125
+  },
+  "actual_restart_prediction_job": {
+    "id": "71f93ce9df624439978a9cf2795c22fb",
+    "kind": "predict_paving_binary",
+    "status": "completed",
+    "config_path": "/workspace/scratch/paving-binary-colour-training/predict-request.json",
+    "config_sha256": "1106c8ebcb7f8693a400e5cfaf8a42ecc3cc7df98018ad97e7094f3e0e840cae",
+    "created": 1793173588.4773736,
+    "updated": 1793173590.9870298,
+    "progress": 1.0,
+    "message": "Completed",
+    "error": null,
+    "result": {
+      "confidence_is_calibrated": false,
+      "feature_mode": "rgb_only",
+      "geometry_verified": false,
+      "model_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+      "model_weights_updated": false,
+      "pixel_counts": {
+        "non_paving": 532934,
+        "paving": 366563,
+        "unknown": 149079
+      },
+      "production_eligible": false,
+      "source_in_training": true,
+      "source_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+      "threshold": 0.6,
+      "version": "paving-binary-prediction-v1",
+      "world_blocks_generated": 0
+    },
+    "output_directory": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/71f93ce9df624439978a9cf2795c22fb/output",
+    "peak_memory_mb": 361.859375
+  },
+  "models_reproduced_identically": true,
+  "every_exported_sample_audited_against_source_and_mask": 32000,
+  "persistent_desktop_memory": {
+    "saved_paving_binary_checkpoint": true,
+    "dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+    "models": {
+      "rgb_context": {
+        "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_context/model.json",
+        "loss_history": [
+          {
+            "epoch": 1,
+            "weighted_cross_entropy": 0.5064108448028565
+          },
+          {
+            "epoch": 10,
+            "weighted_cross_entropy": 0.16999744391441346
+          },
+          {
+            "epoch": 20,
+            "weighted_cross_entropy": 0.11770438349246978
+          },
+          {
+            "epoch": 30,
+            "weighted_cross_entropy": 0.09293689906597137
+          },
+          {
+            "epoch": 40,
+            "weighted_cross_entropy": 0.07871322065591813
+          },
+          {
+            "epoch": 50,
+            "weighted_cross_entropy": 0.06509622594714165
+          },
+          {
+            "epoch": 60,
+            "weighted_cross_entropy": 0.06282489734888076
+          }
+        ],
+        "sha256": "a6eaa7dacc73778637f7b1cbef120a85449405db5636d2c4343c322be9d6dca4",
+        "weight_change_l2": 21.662182676497228
+      },
+      "rgb_only": {
+        "file": "/workspace/scratch/adaptive-web-research/desktop-binary-paving/jobs/5f96e0f1458743229e628e0dedee03b9/output/models/rgb_only/model.json",
+        "loss_history": [
+          {
+            "epoch": 1,
+            "weighted_cross_entropy": 0.6329264688491821
+          },
+          {
+            "epoch": 10,
+            "weighted_cross_entropy": 0.5040222563743592
+          },
+          {
+            "epoch": 20,
+            "weighted_cross_entropy": 0.4637272210121155
+          },
+          {
+            "epoch": 30,
+            "weighted_cross_entropy": 0.44680492401123045
+          },
+          {
+            "epoch": 40,
+            "weighted_cross_entropy": 0.4398090600967407
+          },
+          {
+            "epoch": 50,
+            "weighted_cross_entropy": 0.4348349506855011
+          },
+          {
+            "epoch": 60,
+            "weighted_cross_entropy": 0.43213868474960326
+          }
+        ],
+        "sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+        "weight_change_l2": 13.007771663200726
+      }
+    }
+  },
+  "old_five_class_checkpoint_unchanged": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+  "always_paving_reference_macro_iou": 0.5388547272926101,
+  "macro_park_paving_iou": {
+    "rgb_context": 0.4696502829734302,
+    "rgb_only": 0.4823650768205063
+  },
+  "human_labels_verified": false,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "windows_exe_rebuilt": false,
+  "limitations": [
+    "Only four crops/three parks; provisional development labels, no untouched final test.",
+    "Binary targets differ from previous five-class scores; no direct accuracy-gain comparison is valid.",
+    "Context regressed in pooled IoU and precision; RGB-only still misclassifies roofs/lawns, and Drayton transfer is weak.",
+    "These are small pixel classifiers with local texture, not a full spatial segmentation/path-continuity model."
+  ],
+  "portable_prediction_matches_desktop": true
+}
