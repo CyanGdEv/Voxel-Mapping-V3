@@ -1,0 +1,3466 @@
+{
+  "version": "surface-expansion-additions-v1",
+  "protocol_sha256": "0f945bb703213ed8b3a55d042113fdfe3f6449f1e57a3fd091b732c517770575",
+  "records": {
+    "lightwater-valley": {
+      "version": "literal-park-surface-annotations-v1",
+      "site_id": "lightwater-valley",
+      "source_image_sha256": "749d14d834b7026d45a8d163744628b3110533389ae63a5a5056f4f0ff82abb0",
+      "image_size": [
+        1024,
+        1024
+      ],
+      "independent_human_review": false,
+      "annotator": "assistant visual source review before predictions",
+      "ground_regions": [
+        {
+          "id": "grass_island-1",
+          "label": "grass_island",
+          "outer": [
+            [
+              389,
+              395
+            ],
+            [
+              427,
+              417
+            ],
+            [
+              449,
+              479
+            ],
+            [
+              448,
+              539
+            ],
+            [
+              426,
+              558
+            ],
+            [
+              396,
+              520
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-3",
+          "label": "grass_island",
+          "outer": [
+            [
+              203,
+              581
+            ],
+            [
+              238,
+              573
+            ],
+            [
+              268,
+              593
+            ],
+            [
+              249,
+              622
+            ],
+            [
+              224,
+              645
+            ],
+            [
+              201,
+              648
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-4",
+          "label": "grass_island",
+          "outer": [
+            [
+              429,
+              807
+            ],
+            [
+              449,
+              823
+            ],
+            [
+              440,
+              852
+            ],
+            [
+              420,
+              863
+            ],
+            [
+              402,
+              844
+            ],
+            [
+              409,
+              821
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-5",
+          "label": "grass_island",
+          "outer": [
+            [
+              501,
+              710
+            ],
+            [
+              551,
+              681
+            ],
+            [
+              594,
+              672
+            ],
+            [
+              598,
+              702
+            ],
+            [
+              579,
+              738
+            ],
+            [
+              534,
+              766
+            ],
+            [
+              495,
+              761
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-6",
+          "label": "building_structure",
+          "outer": [
+            [
+              545,
+              38
+            ],
+            [
+              568,
+              46
+            ],
+            [
+              547,
+              89
+            ],
+            [
+              528,
+              82
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-7",
+          "label": "building_structure",
+          "outer": [
+            [
+              283,
+              268
+            ],
+            [
+              313,
+              253
+            ],
+            [
+              327,
+              269
+            ],
+            [
+              298,
+              287
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-8",
+          "label": "building_structure",
+          "outer": [
+            [
+              532,
+              796
+            ],
+            [
+              567,
+              774
+            ],
+            [
+              588,
+              796
+            ],
+            [
+              555,
+              821
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-9",
+          "label": "building_structure",
+          "outer": [
+            [
+              578,
+              807
+            ],
+            [
+              602,
+              832
+            ],
+            [
+              617,
+              821
+            ],
+            [
+              590,
+              795
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-11",
+          "label": "building_structure",
+          "outer": [
+            [
+              209,
+              895
+            ],
+            [
+              249,
+              883
+            ],
+            [
+              262,
+              908
+            ],
+            [
+              216,
+              929
+            ]
+          ]
+        },
+        {
+          "id": "water-13",
+          "label": "water",
+          "outer": [
+            [
+              861,
+              287
+            ],
+            [
+              884,
+              308
+            ],
+            [
+              893,
+              352
+            ],
+            [
+              882,
+              395
+            ],
+            [
+              874,
+              447
+            ],
+            [
+              884,
+              485
+            ],
+            [
+              888,
+              510
+            ],
+            [
+              877,
+              525
+            ],
+            [
+              857,
+              503
+            ],
+            [
+              846,
+              469
+            ],
+            [
+              852,
+              409
+            ],
+            [
+              865,
+              365
+            ],
+            [
+              868,
+              323
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-0",
+          "label": "paving",
+          "outer": [
+            [
+              443,
+              906
+            ],
+            [
+              459,
+              906
+            ],
+            [
+              459,
+              922
+            ],
+            [
+              443,
+              922
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-3",
+          "label": "paving",
+          "outer": [
+            [
+              316,
+              655
+            ],
+            [
+              326,
+              655
+            ],
+            [
+              326,
+              665
+            ],
+            [
+              316,
+              665
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-4",
+          "label": "paving",
+          "outer": [
+            [
+              428,
+              15
+            ],
+            [
+              438,
+              15
+            ],
+            [
+              438,
+              25
+            ],
+            [
+              428,
+              25
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-5",
+          "label": "paving",
+          "outer": [
+            [
+              498,
+              940
+            ],
+            [
+              508,
+              940
+            ],
+            [
+              508,
+              950
+            ],
+            [
+              498,
+              950
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-6",
+          "label": "paving",
+          "outer": [
+            [
+              477,
+              56
+            ],
+            [
+              485,
+              56
+            ],
+            [
+              485,
+              64
+            ],
+            [
+              477,
+              64
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-8",
+          "label": "paving",
+          "outer": [
+            [
+              297,
+              82
+            ],
+            [
+              305,
+              82
+            ],
+            [
+              305,
+              90
+            ],
+            [
+              297,
+              90
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-9",
+          "label": "paving",
+          "outer": [
+            [
+              667,
+              662
+            ],
+            [
+              675,
+              662
+            ],
+            [
+              675,
+              670
+            ],
+            [
+              667,
+              670
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-10",
+          "label": "paving",
+          "outer": [
+            [
+              747,
+              732
+            ],
+            [
+              755,
+              732
+            ],
+            [
+              755,
+              740
+            ],
+            [
+              747,
+              740
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-11",
+          "label": "paving",
+          "outer": [
+            [
+              210,
+              838
+            ],
+            [
+              218,
+              838
+            ],
+            [
+              218,
+              846
+            ],
+            [
+              210,
+              846
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-12",
+          "label": "paving",
+          "outer": [
+            [
+              328,
+              767
+            ],
+            [
+              334,
+              767
+            ],
+            [
+              334,
+              773
+            ],
+            [
+              328,
+              773
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-13",
+          "label": "paving",
+          "outer": [
+            [
+              275,
+              497
+            ],
+            [
+              281,
+              497
+            ],
+            [
+              281,
+              503
+            ],
+            [
+              275,
+              503
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-14",
+          "label": "paving",
+          "outer": [
+            [
+              263,
+              666
+            ],
+            [
+              269,
+              666
+            ],
+            [
+              269,
+              672
+            ],
+            [
+              263,
+              672
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-15",
+          "label": "paving",
+          "outer": [
+            [
+              663,
+              878
+            ],
+            [
+              669,
+              878
+            ],
+            [
+              669,
+              884
+            ],
+            [
+              663,
+              884
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-16",
+          "label": "paving",
+          "outer": [
+            [
+              151,
+              687
+            ],
+            [
+              155,
+              687
+            ],
+            [
+              155,
+              691
+            ],
+            [
+              151,
+              691
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-17",
+          "label": "paving",
+          "outer": [
+            [
+              836,
+              810
+            ],
+            [
+              840,
+              810
+            ],
+            [
+              840,
+              814
+            ],
+            [
+              836,
+              814
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-19",
+          "label": "paving",
+          "outer": [
+            [
+              284,
+              945
+            ],
+            [
+              288,
+              945
+            ],
+            [
+              288,
+              949
+            ],
+            [
+              284,
+              949
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-20",
+          "label": "paving",
+          "outer": [
+            [
+              251,
+              56
+            ],
+            [
+              255,
+              56
+            ],
+            [
+              255,
+              60
+            ],
+            [
+              251,
+              60
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-23",
+          "label": "paving",
+          "outer": [
+            [
+              677,
+              602
+            ],
+            [
+              681,
+              602
+            ],
+            [
+              681,
+              606
+            ],
+            [
+              677,
+              606
+            ]
+          ]
+        }
+      ],
+      "dense_windows": [],
+      "canopy": [
+        {
+          "id": "visible-crown-interior-0",
+          "outer": [
+            [
+              497.0,
+              207.0
+            ],
+            [
+              489.7,
+              226.8
+            ],
+            [
+              472.0,
+              235.0
+            ],
+            [
+              454.3,
+              226.8
+            ],
+            [
+              447.0,
+              207.0
+            ],
+            [
+              454.3,
+              187.2
+            ],
+            [
+              472.0,
+              179.0
+            ],
+            [
+              489.7,
+              187.2
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-1",
+          "outer": [
+            [
+              545.0,
+              349.0
+            ],
+            [
+              538.0,
+              368.8
+            ],
+            [
+              521.0,
+              377.0
+            ],
+            [
+              504.0,
+              368.8
+            ],
+            [
+              497.0,
+              349.0
+            ],
+            [
+              504.0,
+              329.2
+            ],
+            [
+              521.0,
+              321.0
+            ],
+            [
+              538.0,
+              329.2
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-2",
+          "outer": [
+            [
+              562.0,
+              513.0
+            ],
+            [
+              556.1,
+              530.0
+            ],
+            [
+              542.0,
+              537.0
+            ],
+            [
+              527.9,
+              530.0
+            ],
+            [
+              522.0,
+              513.0
+            ],
+            [
+              527.9,
+              496.0
+            ],
+            [
+              542.0,
+              489.0
+            ],
+            [
+              556.1,
+              496.0
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-3",
+          "outer": [
+            [
+              174.0,
+              498.0
+            ],
+            [
+              168.7,
+              513.6
+            ],
+            [
+              156.0,
+              520.0
+            ],
+            [
+              143.3,
+              513.6
+            ],
+            [
+              138.0,
+              498.0
+            ],
+            [
+              143.3,
+              482.4
+            ],
+            [
+              156.0,
+              476.0
+            ],
+            [
+              168.7,
+              482.4
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-4",
+          "outer": [
+            [
+              436.0,
+              655.0
+            ],
+            [
+              429.3,
+              672.7
+            ],
+            [
+              413.0,
+              680.0
+            ],
+            [
+              396.7,
+              672.7
+            ],
+            [
+              390.0,
+              655.0
+            ],
+            [
+              396.7,
+              637.3
+            ],
+            [
+              413.0,
+              630.0
+            ],
+            [
+              429.3,
+              637.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-5",
+          "outer": [
+            [
+              703.0,
+              378.0
+            ],
+            [
+              696.6,
+              395.7
+            ],
+            [
+              681.0,
+              403.0
+            ],
+            [
+              665.4,
+              395.7
+            ],
+            [
+              659.0,
+              378.0
+            ],
+            [
+              665.4,
+              360.3
+            ],
+            [
+              681.0,
+              353.0
+            ],
+            [
+              696.6,
+              360.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-6",
+          "outer": [
+            [
+              862.0,
+              106.0
+            ],
+            [
+              855.6,
+              123.7
+            ],
+            [
+              840.0,
+              131.0
+            ],
+            [
+              824.4,
+              123.7
+            ],
+            [
+              818.0,
+              106.0
+            ],
+            [
+              824.4,
+              88.3
+            ],
+            [
+              840.0,
+              81.0
+            ],
+            [
+              855.6,
+              88.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-7",
+          "outer": [
+            [
+              1004.0,
+              367.0
+            ],
+            [
+              998.1,
+              384.7
+            ],
+            [
+              984.0,
+              392.0
+            ],
+            [
+              969.9,
+              384.7
+            ],
+            [
+              964.0,
+              367.0
+            ],
+            [
+              969.9,
+              349.3
+            ],
+            [
+              984.0,
+              342.0
+            ],
+            [
+              998.1,
+              349.3
+            ]
+          ]
+        }
+      ],
+      "scope": "Sparse visible interiors and literal local partitions; uncertain ground, shadow and hidden surfaces stay unknown. Interior ribbons do not assert full path width.",
+      "annotation_review_revision": 3,
+      "paving_sample_provenance": {
+        "osm_sha256": "e307537df8036b9ac8f6c62b02c85d2d2e0e1c36f274aef16f08c22e9b716e6a",
+        "osm_way_ids": [
+          163976358,
+          163976364,
+          163976375,
+          163976378,
+          163976390,
+          163976393,
+          163976403,
+          163976405,
+          163976409,
+          163976414,
+          163976420,
+          163976427,
+          163976429,
+          163976430,
+          163976432,
+          163976437,
+          163976441,
+          163976443,
+          163976444,
+          163976445,
+          163976447,
+          163976449,
+          163976450,
+          163976451,
+          163976453,
+          163976454,
+          163976455,
+          163976459,
+          1286662648,
+          1286662673
+        ],
+        "attribution": "\u00a9 OpenStreetMap contributors, ODbL-1.0; route locations only, not copied boundary geometry",
+        "method": "RGB/LiDAR candidate interiors near mapped pedestrian routes, frozen as literal rectangles and visually reviewed; not independent truth",
+        "not_full_path_boundaries": true
+      },
+      "visual_review": {
+        "rejected_paving_sample_indices": [
+          1,
+          2,
+          7,
+          18,
+          21,
+          22
+        ],
+        "reason": "Ambiguous vegetation, structure, track or water-edge contamination",
+        "source_only_before_training": true
+      }
+    },
+    "gullivers-world": {
+      "version": "literal-park-surface-annotations-v1",
+      "site_id": "gullivers-world",
+      "source_image_sha256": "955bf46a8278ca4a4926fd8f1a8d7c11519dc6ed797f56e496b4eed7048c79cb",
+      "image_size": [
+        1024,
+        1024
+      ],
+      "independent_human_review": false,
+      "annotator": "assistant visual source review before predictions",
+      "ground_regions": [
+        {
+          "id": "grass_island-0",
+          "label": "grass_island",
+          "outer": [
+            [
+              491,
+              208
+            ],
+            [
+              509,
+              211
+            ],
+            [
+              519,
+              238
+            ],
+            [
+              512,
+              247
+            ],
+            [
+              496,
+              232
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-1",
+          "label": "grass_island",
+          "outer": [
+            [
+              612,
+              264
+            ],
+            [
+              644,
+              273
+            ],
+            [
+              654,
+              288
+            ],
+            [
+              647,
+              297
+            ],
+            [
+              624,
+              294
+            ],
+            [
+              606,
+              280
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-2",
+          "label": "grass_island",
+          "outer": [
+            [
+              551,
+              344
+            ],
+            [
+              569,
+              344
+            ],
+            [
+              571,
+              362
+            ],
+            [
+              560,
+              389
+            ],
+            [
+              545,
+              387
+            ],
+            [
+              546,
+              368
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-3",
+          "label": "grass_island",
+          "outer": [
+            [
+              766,
+              645
+            ],
+            [
+              790,
+              634
+            ],
+            [
+              812,
+              647
+            ],
+            [
+              814,
+              673
+            ],
+            [
+              793,
+              692
+            ],
+            [
+              772,
+              689
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-4",
+          "label": "grass_island",
+          "outer": [
+            [
+              262,
+              605
+            ],
+            [
+              277,
+              614
+            ],
+            [
+              305,
+              660
+            ],
+            [
+              300,
+              669
+            ],
+            [
+              284,
+              642
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-5",
+          "label": "grass_island",
+          "outer": [
+            [
+              556,
+              556
+            ],
+            [
+              578,
+              555
+            ],
+            [
+              598,
+              568
+            ],
+            [
+              602,
+              579
+            ],
+            [
+              589,
+              586
+            ],
+            [
+              573,
+              574
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-6",
+          "label": "building_structure",
+          "outer": [
+            [
+              671,
+              600
+            ],
+            [
+              686,
+              605
+            ],
+            [
+              723,
+              661
+            ],
+            [
+              711,
+              671
+            ],
+            [
+              669,
+              611
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-7",
+          "label": "building_structure",
+          "outer": [
+            [
+              511,
+              610
+            ],
+            [
+              539,
+              602
+            ],
+            [
+              567,
+              652
+            ],
+            [
+              539,
+              663
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-8",
+          "label": "building_structure",
+          "outer": [
+            [
+              398,
+              265
+            ],
+            [
+              437,
+              260
+            ],
+            [
+              442,
+              278
+            ],
+            [
+              405,
+              286
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-9",
+          "label": "building_structure",
+          "outer": [
+            [
+              409,
+              290
+            ],
+            [
+              437,
+              286
+            ],
+            [
+              442,
+              302
+            ],
+            [
+              415,
+              308
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-10",
+          "label": "building_structure",
+          "outer": [
+            [
+              598,
+              656
+            ],
+            [
+              622,
+              655
+            ],
+            [
+              627,
+              675
+            ],
+            [
+              600,
+              678
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-12",
+          "label": "building_structure",
+          "outer": [
+            [
+              877,
+              333
+            ],
+            [
+              896,
+              322
+            ],
+            [
+              917,
+              346
+            ],
+            [
+              907,
+              355
+            ]
+          ]
+        },
+        {
+          "id": "water-13",
+          "label": "water",
+          "outer": [
+            [
+              429,
+              457
+            ],
+            [
+              456,
+              463
+            ],
+            [
+              473,
+              481
+            ],
+            [
+              489,
+              501
+            ],
+            [
+              487,
+              509
+            ],
+            [
+              457,
+              493
+            ],
+            [
+              436,
+              479
+            ]
+          ]
+        },
+        {
+          "id": "water-14",
+          "label": "water",
+          "outer": [
+            [
+              540,
+              458
+            ],
+            [
+              575,
+              457
+            ],
+            [
+              603,
+              468
+            ],
+            [
+              616,
+              485
+            ],
+            [
+              609,
+              500
+            ],
+            [
+              579,
+              514
+            ],
+            [
+              556,
+              514
+            ],
+            [
+              541,
+              496
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-0",
+          "label": "paving",
+          "outer": [
+            [
+              762,
+              507
+            ],
+            [
+              778,
+              507
+            ],
+            [
+              778,
+              523
+            ],
+            [
+              762,
+              523
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-1",
+          "label": "paving",
+          "outer": [
+            [
+              579,
+              608
+            ],
+            [
+              593,
+              608
+            ],
+            [
+              593,
+              622
+            ],
+            [
+              579,
+              622
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-2",
+          "label": "paving",
+          "outer": [
+            [
+              357,
+              337
+            ],
+            [
+              369,
+              337
+            ],
+            [
+              369,
+              349
+            ],
+            [
+              357,
+              349
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-4",
+          "label": "paving",
+          "outer": [
+            [
+              536,
+              362
+            ],
+            [
+              546,
+              362
+            ],
+            [
+              546,
+              372
+            ],
+            [
+              536,
+              372
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-5",
+          "label": "paving",
+          "outer": [
+            [
+              380,
+              213
+            ],
+            [
+              388,
+              213
+            ],
+            [
+              388,
+              221
+            ],
+            [
+              380,
+              221
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-6",
+          "label": "paving",
+          "outer": [
+            [
+              524,
+              303
+            ],
+            [
+              532,
+              303
+            ],
+            [
+              532,
+              311
+            ],
+            [
+              524,
+              311
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-7",
+          "label": "paving",
+          "outer": [
+            [
+              491,
+              553
+            ],
+            [
+              499,
+              553
+            ],
+            [
+              499,
+              561
+            ],
+            [
+              491,
+              561
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-8",
+          "label": "paving",
+          "outer": [
+            [
+              224,
+              446
+            ],
+            [
+              232,
+              446
+            ],
+            [
+              232,
+              454
+            ],
+            [
+              224,
+              454
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-9",
+          "label": "paving",
+          "outer": [
+            [
+              703,
+              383
+            ],
+            [
+              709,
+              383
+            ],
+            [
+              709,
+              389
+            ],
+            [
+              703,
+              389
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-10",
+          "label": "paving",
+          "outer": [
+            [
+              649,
+              534
+            ],
+            [
+              655,
+              534
+            ],
+            [
+              655,
+              540
+            ],
+            [
+              649,
+              540
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-11",
+          "label": "paving",
+          "outer": [
+            [
+              671,
+              665
+            ],
+            [
+              677,
+              665
+            ],
+            [
+              677,
+              671
+            ],
+            [
+              671,
+              671
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-12",
+          "label": "paving",
+          "outer": [
+            [
+              221,
+              340
+            ],
+            [
+              227,
+              340
+            ],
+            [
+              227,
+              346
+            ],
+            [
+              221,
+              346
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-13",
+          "label": "paving",
+          "outer": [
+            [
+              479,
+              404
+            ],
+            [
+              485,
+              404
+            ],
+            [
+              485,
+              410
+            ],
+            [
+              479,
+              410
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-14",
+          "label": "paving",
+          "outer": [
+            [
+              729,
+              325
+            ],
+            [
+              733,
+              325
+            ],
+            [
+              733,
+              329
+            ],
+            [
+              729,
+              329
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-15",
+          "label": "paving",
+          "outer": [
+            [
+              437,
+              226
+            ],
+            [
+              441,
+              226
+            ],
+            [
+              441,
+              230
+            ],
+            [
+              437,
+              230
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-16",
+          "label": "paving",
+          "outer": [
+            [
+              638,
+              345
+            ],
+            [
+              642,
+              345
+            ],
+            [
+              642,
+              349
+            ],
+            [
+              638,
+              349
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-17",
+          "label": "paving",
+          "outer": [
+            [
+              806,
+              471
+            ],
+            [
+              810,
+              471
+            ],
+            [
+              810,
+              475
+            ],
+            [
+              806,
+              475
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-20",
+          "label": "paving",
+          "outer": [
+            [
+              275,
+              246
+            ],
+            [
+              279,
+              246
+            ],
+            [
+              279,
+              250
+            ],
+            [
+              275,
+              250
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-21",
+          "label": "paving",
+          "outer": [
+            [
+              464,
+              175
+            ],
+            [
+              468,
+              175
+            ],
+            [
+              468,
+              179
+            ],
+            [
+              464,
+              179
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-22",
+          "label": "paving",
+          "outer": [
+            [
+              418,
+              493
+            ],
+            [
+              422,
+              493
+            ],
+            [
+              422,
+              497
+            ],
+            [
+              418,
+              497
+            ]
+          ]
+        }
+      ],
+      "dense_windows": [],
+      "canopy": [
+        {
+          "id": "visible-crown-interior-0",
+          "outer": [
+            [
+              132.0,
+              80.0
+            ],
+            [
+              125.6,
+              97.0
+            ],
+            [
+              110.0,
+              104.0
+            ],
+            [
+              94.4,
+              97.0
+            ],
+            [
+              88.0,
+              80.0
+            ],
+            [
+              94.4,
+              63.0
+            ],
+            [
+              110.0,
+              56.0
+            ],
+            [
+              125.6,
+              63.0
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-1",
+          "outer": [
+            [
+              332.0,
+              108.0
+            ],
+            [
+              325.6,
+              125.7
+            ],
+            [
+              310.0,
+              133.0
+            ],
+            [
+              294.4,
+              125.7
+            ],
+            [
+              288.0,
+              108.0
+            ],
+            [
+              294.4,
+              90.3
+            ],
+            [
+              310.0,
+              83.0
+            ],
+            [
+              325.6,
+              90.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-2",
+          "outer": [
+            [
+              718.0,
+              104.0
+            ],
+            [
+              711.6,
+              121.0
+            ],
+            [
+              696.0,
+              128.0
+            ],
+            [
+              680.4,
+              121.0
+            ],
+            [
+              674.0,
+              104.0
+            ],
+            [
+              680.4,
+              87.0
+            ],
+            [
+              696.0,
+              80.0
+            ],
+            [
+              711.6,
+              87.0
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-3",
+          "outer": [
+            [
+              948.0,
+              560.0
+            ],
+            [
+              941.0,
+              577.7
+            ],
+            [
+              924.0,
+              585.0
+            ],
+            [
+              907.0,
+              577.7
+            ],
+            [
+              900.0,
+              560.0
+            ],
+            [
+              907.0,
+              542.3
+            ],
+            [
+              924.0,
+              535.0
+            ],
+            [
+              941.0,
+              542.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-4",
+          "outer": [
+            [
+              819.0,
+              854.0
+            ],
+            [
+              812.3,
+              873.1
+            ],
+            [
+              796.0,
+              881.0
+            ],
+            [
+              779.7,
+              873.1
+            ],
+            [
+              773.0,
+              854.0
+            ],
+            [
+              779.7,
+              834.9
+            ],
+            [
+              796.0,
+              827.0
+            ],
+            [
+              812.3,
+              834.9
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-5",
+          "outer": [
+            [
+              410.0,
+              96.0
+            ],
+            [
+              403.6,
+              112.3
+            ],
+            [
+              388.0,
+              119.0
+            ],
+            [
+              372.4,
+              112.3
+            ],
+            [
+              366.0,
+              96.0
+            ],
+            [
+              372.4,
+              79.7
+            ],
+            [
+              388.0,
+              73.0
+            ],
+            [
+              403.6,
+              79.7
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-6",
+          "outer": [
+            [
+              282.0,
+              168.0
+            ],
+            [
+              275.6,
+              183.6
+            ],
+            [
+              260.0,
+              190.0
+            ],
+            [
+              244.4,
+              183.6
+            ],
+            [
+              238.0,
+              168.0
+            ],
+            [
+              244.4,
+              152.4
+            ],
+            [
+              260.0,
+              146.0
+            ],
+            [
+              275.6,
+              152.4
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-7",
+          "outer": [
+            [
+              946.0,
+              832.0
+            ],
+            [
+              939.0,
+              849.7
+            ],
+            [
+              922.0,
+              857.0
+            ],
+            [
+              905.0,
+              849.7
+            ],
+            [
+              898.0,
+              832.0
+            ],
+            [
+              905.0,
+              814.3
+            ],
+            [
+              922.0,
+              807.0
+            ],
+            [
+              939.0,
+              814.3
+            ]
+          ]
+        }
+      ],
+      "scope": "Sparse visible interiors and literal local partitions; uncertain ground, shadow and hidden surfaces stay unknown. Interior ribbons do not assert full path width.",
+      "annotation_review_revision": 3,
+      "paving_sample_provenance": {
+        "osm_sha256": "81597af394e6ffcdcd3bef15fd1e43749dbf105e2e581d67d190efc365981e66",
+        "osm_way_ids": [
+          31361312,
+          31723495,
+          31799067,
+          374948813,
+          905729129,
+          1031526996,
+          1141333997,
+          1141334001,
+          1141343058,
+          1142799111,
+          1143692898,
+          1145088928,
+          1147309808,
+          1212404250,
+          1312655228
+        ],
+        "attribution": "\u00a9 OpenStreetMap contributors, ODbL-1.0; route locations only, not copied boundary geometry",
+        "method": "RGB/LiDAR candidate interiors near mapped pedestrian routes, frozen as literal rectangles and visually reviewed; not independent truth",
+        "not_full_path_boundaries": true
+      },
+      "visual_review": {
+        "rejected_paving_sample_indices": [
+          3,
+          18,
+          19
+        ],
+        "reason": "Ambiguous vegetation, structure, track or water-edge contamination",
+        "source_only_before_training": true
+      }
+    },
+    "flamingo-land": {
+      "version": "literal-park-surface-annotations-v1",
+      "site_id": "flamingo-land",
+      "source_image_sha256": "0404518d3bce5d8855727c9a06d72a2725d95b8a554f0c943d9de2f5682bdceb",
+      "image_size": [
+        1024,
+        1024
+      ],
+      "independent_human_review": false,
+      "annotator": "assistant visual source review before predictions",
+      "ground_regions": [
+        {
+          "id": "grass_island-0",
+          "label": "grass_island",
+          "outer": [
+            [
+              304,
+              278
+            ],
+            [
+              342,
+              276
+            ],
+            [
+              365,
+              309
+            ],
+            [
+              370,
+              345
+            ],
+            [
+              345,
+              361
+            ],
+            [
+              306,
+              351
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-2",
+          "label": "grass_island",
+          "outer": [
+            [
+              303,
+              516
+            ],
+            [
+              330,
+              519
+            ],
+            [
+              351,
+              540
+            ],
+            [
+              350,
+              559
+            ],
+            [
+              317,
+              556
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-3",
+          "label": "grass_island",
+          "outer": [
+            [
+              306,
+              659
+            ],
+            [
+              328,
+              663
+            ],
+            [
+              343,
+              679
+            ],
+            [
+              335,
+              691
+            ],
+            [
+              306,
+              685
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-4",
+          "label": "grass_island",
+          "outer": [
+            [
+              819,
+              893
+            ],
+            [
+              841,
+              900
+            ],
+            [
+              845,
+              925
+            ],
+            [
+              829,
+              947
+            ],
+            [
+              812,
+              938
+            ],
+            [
+              801,
+              911
+            ]
+          ]
+        },
+        {
+          "id": "grass_island-5",
+          "label": "grass_island",
+          "outer": [
+            [
+              427,
+              940
+            ],
+            [
+              454,
+              934
+            ],
+            [
+              465,
+              971
+            ],
+            [
+              455,
+              1003
+            ],
+            [
+              425,
+              1003
+            ],
+            [
+              417,
+              977
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-6",
+          "label": "building_structure",
+          "outer": [
+            [
+              3,
+              200
+            ],
+            [
+              75,
+              200
+            ],
+            [
+              75,
+              223
+            ],
+            [
+              3,
+              223
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-7",
+          "label": "building_structure",
+          "outer": [
+            [
+              12,
+              246
+            ],
+            [
+              75,
+              246
+            ],
+            [
+              75,
+              272
+            ],
+            [
+              12,
+              272
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-8",
+          "label": "building_structure",
+          "outer": [
+            [
+              17,
+              557
+            ],
+            [
+              54,
+              557
+            ],
+            [
+              58,
+              638
+            ],
+            [
+              17,
+              645
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-9",
+          "label": "building_structure",
+          "outer": [
+            [
+              484,
+              332
+            ],
+            [
+              506,
+              331
+            ],
+            [
+              520,
+              368
+            ],
+            [
+              494,
+              377
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-10",
+          "label": "building_structure",
+          "outer": [
+            [
+              330,
+              450
+            ],
+            [
+              366,
+              454
+            ],
+            [
+              366,
+              470
+            ],
+            [
+              329,
+              469
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-11",
+          "label": "building_structure",
+          "outer": [
+            [
+              371,
+              815
+            ],
+            [
+              435,
+              814
+            ],
+            [
+              441,
+              845
+            ],
+            [
+              366,
+              845
+            ]
+          ]
+        },
+        {
+          "id": "building_structure-12",
+          "label": "building_structure",
+          "outer": [
+            [
+              779,
+              537
+            ],
+            [
+              791,
+              540
+            ],
+            [
+              785,
+              571
+            ],
+            [
+              770,
+              569
+            ]
+          ]
+        },
+        {
+          "id": "water-13",
+          "label": "water",
+          "outer": [
+            [
+              144,
+              130
+            ],
+            [
+              168,
+              129
+            ],
+            [
+              164,
+              146
+            ],
+            [
+              155,
+              145
+            ],
+            [
+              149,
+              138
+            ]
+          ]
+        },
+        {
+          "id": "water-14",
+          "label": "water",
+          "outer": [
+            [
+              151,
+              208
+            ],
+            [
+              168,
+              201
+            ],
+            [
+              171,
+              214
+            ],
+            [
+              163,
+              227
+            ],
+            [
+              151,
+              221
+            ]
+          ]
+        },
+        {
+          "id": "water-15",
+          "label": "water",
+          "outer": [
+            [
+              215,
+              177
+            ],
+            [
+              224,
+              176
+            ],
+            [
+              230,
+              173
+            ],
+            [
+              237,
+              178
+            ],
+            [
+              242,
+              185
+            ],
+            [
+              234,
+              189
+            ],
+            [
+              222,
+              187
+            ]
+          ]
+        },
+        {
+          "id": "water-16",
+          "label": "water",
+          "outer": [
+            [
+              713,
+              419
+            ],
+            [
+              753,
+              419
+            ],
+            [
+              761,
+              440
+            ],
+            [
+              754,
+              474
+            ],
+            [
+              737,
+              496
+            ],
+            [
+              719,
+              495
+            ],
+            [
+              711,
+              470
+            ]
+          ]
+        },
+        {
+          "id": "uncertain-green-basin",
+          "label": "unknown",
+          "outer": [
+            [
+              459,
+              531
+            ],
+            [
+              636,
+              514
+            ],
+            [
+              748,
+              526
+            ],
+            [
+              760,
+              671
+            ],
+            [
+              699,
+              740
+            ],
+            [
+              507,
+              749
+            ],
+            [
+              462,
+              682
+            ],
+            [
+              441,
+              614
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-0",
+          "label": "paving",
+          "outer": [
+            [
+              222,
+              70
+            ],
+            [
+              242,
+              70
+            ],
+            [
+              242,
+              90
+            ],
+            [
+              222,
+              90
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-1",
+          "label": "paving",
+          "outer": [
+            [
+              805,
+              340
+            ],
+            [
+              825,
+              340
+            ],
+            [
+              825,
+              360
+            ],
+            [
+              805,
+              360
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-2",
+          "label": "paving",
+          "outer": [
+            [
+              41,
+              456
+            ],
+            [
+              61,
+              456
+            ],
+            [
+              61,
+              476
+            ],
+            [
+              41,
+              476
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-3",
+          "label": "paving",
+          "outer": [
+            [
+              44,
+              388
+            ],
+            [
+              64,
+              388
+            ],
+            [
+              64,
+              408
+            ],
+            [
+              44,
+              408
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-4",
+          "label": "paving",
+          "outer": [
+            [
+              83,
+              578
+            ],
+            [
+              103,
+              578
+            ],
+            [
+              103,
+              598
+            ],
+            [
+              83,
+              598
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-5",
+          "label": "paving",
+          "outer": [
+            [
+              340,
+              101
+            ],
+            [
+              358,
+              101
+            ],
+            [
+              358,
+              119
+            ],
+            [
+              340,
+              119
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-6",
+          "label": "paving",
+          "outer": [
+            [
+              55,
+              17
+            ],
+            [
+              73,
+              17
+            ],
+            [
+              73,
+              35
+            ],
+            [
+              55,
+              35
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-7",
+          "label": "paving",
+          "outer": [
+            [
+              456,
+              403
+            ],
+            [
+              474,
+              403
+            ],
+            [
+              474,
+              421
+            ],
+            [
+              456,
+              421
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-8",
+          "label": "paving",
+          "outer": [
+            [
+              202,
+              407
+            ],
+            [
+              218,
+              407
+            ],
+            [
+              218,
+              423
+            ],
+            [
+              202,
+              423
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-9",
+          "label": "paving",
+          "outer": [
+            [
+              286,
+              93
+            ],
+            [
+              302,
+              93
+            ],
+            [
+              302,
+              109
+            ],
+            [
+              286,
+              109
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-10",
+          "label": "paving",
+          "outer": [
+            [
+              177,
+              235
+            ],
+            [
+              193,
+              235
+            ],
+            [
+              193,
+              251
+            ],
+            [
+              177,
+              251
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-11",
+          "label": "paving",
+          "outer": [
+            [
+              488,
+              189
+            ],
+            [
+              504,
+              189
+            ],
+            [
+              504,
+              205
+            ],
+            [
+              488,
+              205
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-12",
+          "label": "paving",
+          "outer": [
+            [
+              468,
+              797
+            ],
+            [
+              484,
+              797
+            ],
+            [
+              484,
+              813
+            ],
+            [
+              468,
+              813
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-13",
+          "label": "paving",
+          "outer": [
+            [
+              850,
+              669
+            ],
+            [
+              866,
+              669
+            ],
+            [
+              866,
+              685
+            ],
+            [
+              850,
+              685
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-14",
+          "label": "paving",
+          "outer": [
+            [
+              164,
+              753
+            ],
+            [
+              178,
+              753
+            ],
+            [
+              178,
+              767
+            ],
+            [
+              164,
+              767
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-15",
+          "label": "paving",
+          "outer": [
+            [
+              837,
+              515
+            ],
+            [
+              851,
+              515
+            ],
+            [
+              851,
+              529
+            ],
+            [
+              837,
+              529
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-16",
+          "label": "paving",
+          "outer": [
+            [
+              393,
+              124
+            ],
+            [
+              407,
+              124
+            ],
+            [
+              407,
+              138
+            ],
+            [
+              393,
+              138
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-17",
+          "label": "paving",
+          "outer": [
+            [
+              48,
+              514
+            ],
+            [
+              62,
+              514
+            ],
+            [
+              62,
+              528
+            ],
+            [
+              48,
+              528
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-18",
+          "label": "paving",
+          "outer": [
+            [
+              188,
+              601
+            ],
+            [
+              202,
+              601
+            ],
+            [
+              202,
+              615
+            ],
+            [
+              188,
+              615
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-20",
+          "label": "paving",
+          "outer": [
+            [
+              695,
+              763
+            ],
+            [
+              709,
+              763
+            ],
+            [
+              709,
+              777
+            ],
+            [
+              695,
+              777
+            ]
+          ]
+        },
+        {
+          "id": "reviewed-visible-paving-sample-22",
+          "label": "paving",
+          "outer": [
+            [
+              76,
+              726
+            ],
+            [
+              88,
+              726
+            ],
+            [
+              88,
+              738
+            ],
+            [
+              76,
+              738
+            ]
+          ]
+        }
+      ],
+      "dense_windows": [],
+      "canopy": [
+        {
+          "id": "visible-crown-interior-0",
+          "outer": [
+            [
+              623.0,
+              130.0
+            ],
+            [
+              616.6,
+              147.0
+            ],
+            [
+              601.0,
+              154.0
+            ],
+            [
+              585.4,
+              147.0
+            ],
+            [
+              579.0,
+              130.0
+            ],
+            [
+              585.4,
+              113.0
+            ],
+            [
+              601.0,
+              106.0
+            ],
+            [
+              616.6,
+              113.0
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-1",
+          "outer": [
+            [
+              736.0,
+              122.0
+            ],
+            [
+              729.3,
+              139.7
+            ],
+            [
+              713.0,
+              147.0
+            ],
+            [
+              696.7,
+              139.7
+            ],
+            [
+              690.0,
+              122.0
+            ],
+            [
+              696.7,
+              104.3
+            ],
+            [
+              713.0,
+              97.0
+            ],
+            [
+              729.3,
+              104.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-2",
+          "outer": [
+            [
+              865.0,
+              130.0
+            ],
+            [
+              858.6,
+              147.7
+            ],
+            [
+              843.0,
+              155.0
+            ],
+            [
+              827.4,
+              147.7
+            ],
+            [
+              821.0,
+              130.0
+            ],
+            [
+              827.4,
+              112.3
+            ],
+            [
+              843.0,
+              105.0
+            ],
+            [
+              858.6,
+              112.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-3",
+          "outer": [
+            [
+              965.0,
+              242.0
+            ],
+            [
+              958.8,
+              259.7
+            ],
+            [
+              944.0,
+              267.0
+            ],
+            [
+              929.2,
+              259.7
+            ],
+            [
+              923.0,
+              242.0
+            ],
+            [
+              929.2,
+              224.3
+            ],
+            [
+              944.0,
+              217.0
+            ],
+            [
+              958.8,
+              224.3
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-4",
+          "outer": [
+            [
+              933.0,
+              423.0
+            ],
+            [
+              926.6,
+              441.4
+            ],
+            [
+              911.0,
+              449.0
+            ],
+            [
+              895.4,
+              441.4
+            ],
+            [
+              889.0,
+              423.0
+            ],
+            [
+              895.4,
+              404.6
+            ],
+            [
+              911.0,
+              397.0
+            ],
+            [
+              926.6,
+              404.6
+            ]
+          ]
+        },
+        {
+          "id": "visible-crown-interior-5",
+          "outer": [
+            [
+              953.0,
+              681.0
+            ],
+            [
+              946.3,
+              698.7
+            ],
+            [
+              930.0,
+              706.0
+            ],
+            [
+              913.7,
+              698.7
+            ],
+            [
+              907.0,
+              681.0
+            ],
+            [
+              913.7,
+              663.3
+            ],
+            [
+              930.0,
+              656.0
+            ],
+            [
+              946.3,
+              663.3
+            ]
+          ]
+        }
+      ],
+      "scope": "Sparse visible interiors and literal local partitions; uncertain ground, shadow and hidden surfaces stay unknown. Interior ribbons do not assert full path width.",
+      "annotation_review_revision": 3,
+      "paving_sample_provenance": {
+        "osm_sha256": "a014e8477d9506cfd7e75edac023226171ef804406f75d000e6a1b2c6b31bcdb",
+        "osm_way_ids": [
+          188998536,
+          189001542,
+          189058075,
+          189058076,
+          189058077,
+          189058078,
+          189058081,
+          189081970,
+          189081977,
+          189081979,
+          189083577,
+          189083578,
+          189088425,
+          189088430,
+          189090529,
+          189090530,
+          189095490,
+          189095492,
+          189465457,
+          189465458,
+          295835293,
+          295835311,
+          489165142,
+          489165144,
+          489165145,
+          489165146,
+          489165200,
+          489165202,
+          489165204,
+          489165870,
+          875447367,
+          875447382,
+          875447383,
+          875447397,
+          875447398,
+          875447405,
+          875447410,
+          875447411,
+          875447412,
+          875447415,
+          875447416,
+          875487610,
+          875487611,
+          875487612,
+          875702546,
+          875702576,
+          875702577,
+          875702578,
+          875702579,
+          875702580,
+          875702581,
+          875702582,
+          875702583,
+          875702584,
+          875702585,
+          878590637,
+          1097438962,
+          1444846416,
+          1444851108,
+          1445223254,
+          1445223255,
+          1445241241,
+          1445241243,
+          1445241244,
+          1445242764,
+          1445242765,
+          1445242766,
+          1445242767,
+          1445242768
+        ],
+        "attribution": "\u00a9 OpenStreetMap contributors, ODbL-1.0; route locations only, not copied boundary geometry",
+        "method": "RGB/LiDAR candidate interiors near mapped pedestrian routes, frozen as literal rectangles and visually reviewed; not independent truth",
+        "not_full_path_boundaries": true
+      },
+      "visual_review": {
+        "rejected_paving_sample_indices": [
+          19,
+          21,
+          23
+        ],
+        "reason": "Ambiguous vegetation, structure, track or water-edge contamination",
+        "source_only_before_training": true
+      }
+    }
+  }
+}

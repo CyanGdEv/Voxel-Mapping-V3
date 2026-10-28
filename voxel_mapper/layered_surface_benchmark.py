@@ -85,9 +85,12 @@ def validate(root):
     root=Path(root).resolve();m,_=safe._json(root/'dataset.json',2000000)
     if m.get('version')!=VERSION or m.get('id')!=digest({k:v for k,v in m.items() if k!='id'}) or m.get('ground_labels')!=GROUND or m.get('canopy_labels')!=CANOPY:raise ValueError('Pinned layered manifest required')
     if m.get('independent_human_review') is not False or m.get('production_eligible') is not False or m.get('hidden_ground_used_as_observed_truth') is not False:raise ValueError('Draft layered policy required')
-    if not 2<=len(m['records'])<=4 or len({r['id'] for r in m['records']})!=len(m['records']):raise ValueError('Distinct bounded records required')
+    if not 2<=len(m['records'])<=8 or len({r['id'] for r in m['records']})!=len(m['records']):raise ValueError('Distinct bounded records required')
+    reserved=m.get('reserved_evaluation_site_ids',[])
+    if not isinstance(reserved,list) or len(set(reserved))!=len(reserved) or not set(reserved)<={r['site_id'] for r in m['records']}:raise ValueError('Declared reserved evaluation parks required')
     if file_hash(root/'recipe.json')!=m['recipe_sha256']:raise ValueError('Layered recipe changed')
     for r in m['records']:
+        if type(r.get('evaluation_only',False)) is not bool or bool(r.get('evaluation_only',False))!=(r['site_id'] in reserved):raise ValueError('Whole reserved parks must remain evaluation only')
         for key in ('image','receipt','ground','canopy','dense_windows','inferred'):
             p=safe._asset(root,r[key+'_file'])
             if file_hash(p)!=r[key+'_sha256']:raise ValueError('Layered asset changed')

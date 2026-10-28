@@ -62,6 +62,7 @@ def masked_loss(logits,target,weights,*,balanced=True,boundary_weight=2.,dice_we
 
 def fit(rows,balanced=True,settings=None):
     import torch
+    if any(r.get('record',{}).get('evaluation_only',False) for r in rows):raise ValueError('Reserved evaluation records cannot enter fitting')
     s=dict(SETTINGS if settings is None else settings)
     if not rows or not 1<=s['steps']<=2000 or not 1<=s['batch']<=8 or s['patch'] not in (64,96,128) or not 0<=s.get('narrow_sampling_fraction',0)<=1 or not 0<=s.get('lidar_dropout',0)<=.5:raise ValueError('Bounded layered fitting required')
     torch.set_num_threads(s['threads']);torch.manual_seed(s['seed']);torch.use_deterministic_algorithms(True)
@@ -117,6 +118,7 @@ def predict(model,features):
 
 def save(model,rows,manifest,folder,training,encoder_pin=None):
     from safetensors.torch import save_file
+    if any(r.get('record',{}).get('evaluation_only',False) for r in rows):raise ValueError('Reserved evaluation records cannot be declared fitted')
     folder=Path(folder);folder.mkdir(parents=True)
     save_file({k:v.detach().contiguous() for k,v in model.state_dict().items()},str(folder/'weights.safetensors'))
     m={'version':VERSION,'channels':rows[0]['features'].shape[2],'ground_labels':data.GROUND,'canopy_labels':data.CANOPY,'dataset_id':manifest['id'],

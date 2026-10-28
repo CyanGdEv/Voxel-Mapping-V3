@@ -1,0 +1,32 @@
+{
+  "version": "surface-expansion-protocol-v1",
+  "created_utc": "2026-10-28T20:56:49.468322+00:00",
+  "parent_dataset_id": "0c6e46b3aaa272b7398d00502a094be7948840cbb364df3b8d38cae59c666d8f",
+  "added_training_sites": [
+    "lightwater-valley",
+    "gullivers-world"
+  ],
+  "reserved_site": "flamingo-land",
+  "settings": {
+    "seed": 137,
+    "steps": 400,
+    "batch": 4,
+    "patch": 96,
+    "learning_rate": 0.002,
+    "threads": 2,
+    "dice_weight": 0.5,
+    "boundary_weight": 2.0,
+    "canopy_weight": 0.5,
+    "lidar_dropout": 0.15
+  },
+  "features": "frozen aerial16 + aligned lidar4",
+  "comparisons": [
+    "parent original-four fit vs expanded original-four + two parks, scored once on reserved Flamingo",
+    "parent vs expanded with all Alton images excluded, development diagnostic only"
+  ],
+  "selection_on_reserved_scores": false,
+  "single_seed": 137,
+  "automatic_promotion": false,
+  "annotations": "assistant source-assisted drafts, not independent human truth",
+  "encoder_updated": false
+}
