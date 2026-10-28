@@ -1,0 +1,264 @@
+{
+  "version": "paving-mask-validation-v1",
+  "date_utc": "2026-10-28",
+  "tests": {
+    "passed": 63,
+    "log_sha256": "cbbf03a3558dcbe9ac9d699b06a35857c4ca780b49c4a1bf50424bfad62688a6"
+  },
+  "manifest_sha256": "7c447ec2af5399f0edbd30b42d3e2852c8572ccf6f219ae769b3fabb03303258",
+  "manifest": {
+    "annotation_file": "annotations.json",
+    "annotation_sha256": "e3aeaeaa4adcfa0c12b126ef53b5db4ffb6695ffb19e59ec333f8f3e2ce0c8d1",
+    "geometry_verified": false,
+    "human_labels_verified": false,
+    "id": "cac8e320f26220dd09207a68cbdee4233ed33cf05a18972e0c9159cc18866153",
+    "ignore_reasons": {
+      "boundary_margin": 3,
+      "conflicting_traces": 4,
+      "explicit_unknown": 2,
+      "labelled": 0,
+      "not_reviewed": 1,
+      "source_nodata": 5
+    },
+    "labels": {
+      "non_paving": 0,
+      "paving": 1,
+      "unknown": 255
+    },
+    "production_eligible": false,
+    "records": [
+      {
+        "crop_pixels": [
+          325,
+          190,
+          655,
+          810
+        ],
+        "extent_epsg3857": [
+          -210738.67908282502,
+          6981070.859623748,
+          -210601.6060728826,
+          6981328.390733336
+        ],
+        "human_labels_verified": false,
+        "id": "towers-plaza",
+        "ignore_reason_counts": {
+          "boundary_margin": 5868,
+          "conflicting_traces": 0,
+          "explicit_unknown": 13362,
+          "labelled": 132411,
+          "not_reviewed": 52959,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/towers-plaza.png",
+        "ignore_reasons_sha256": "eb5f8242b937f01ae729504544e450bb42b6d41ad5263fe3f5efce0037e84dfe",
+        "image_file": "images/towers-plaza.png",
+        "image_sha256": "344fe95a357820f1107b57bf9be3d3a2cd977fe9c08ddc35009d0fbd705b42ea",
+        "image_size": [
+          330,
+          620
+        ],
+        "mask_file": "masks/towers-plaza.png",
+        "mask_sha256": "26110e6761afadad44e9931d59cc1c7461bf2095c0d917445037594cea21984f",
+        "metadata_file": "metadata/towers-plaza.json",
+        "metadata_sha256": "a46b04e109b4846af699004674161f8e7a1bfb3edf7af0ccf6c25210b9ee044c",
+        "pixel_counts": {
+          "non_paving": 48926,
+          "paving": 83485,
+          "unknown": 72189
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": true,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "alton-towers",
+        "source_file": "originals/towers-plaza.bin",
+        "source_record_id": "alton-street",
+        "source_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+        "split_group": "alton-towers",
+        "split_role": "development_annotation_review",
+        "trace_count": 18
+      },
+      {
+        "crop_pixels": [
+          0,
+          305,
+          330,
+          610
+        ],
+        "extent_epsg3857": [
+          -210417.7251130154,
+          6981035.6950657,
+          -210314.90512659392,
+          6981130.725659211
+        ],
+        "human_labels_verified": false,
+        "id": "wicker-entrance",
+        "ignore_reason_counts": {
+          "boundary_margin": 2645,
+          "conflicting_traces": 0,
+          "explicit_unknown": 7914,
+          "labelled": 67394,
+          "not_reviewed": 22697,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/wicker-entrance.png",
+        "ignore_reasons_sha256": "7de62a012c6e3fc46bb7913989f05135514097c25d92f7d0402fe022495ecfc6",
+        "image_file": "images/wicker-entrance.png",
+        "image_sha256": "8a1f8fb98eb777d4a3e4ca0d7a467fff9d01a2a16de703ca3f358b0e2cfdd15b",
+        "image_size": [
+          330,
+          305
+        ],
+        "mask_file": "masks/wicker-entrance.png",
+        "mask_sha256": "8cfed92a1efb2a41241b314c289d6356e03f5d6106a30fc2789bf4d1773e9ff8",
+        "metadata_file": "metadata/wicker-entrance.json",
+        "metadata_sha256": "b9a49d1a7b81b796d9558ffe2d8a62f119b2a1601abe0e93e4175e9b0dec9977",
+        "pixel_counts": {
+          "non_paving": 34144,
+          "paving": 33250,
+          "unknown": 33256
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": true,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "alton-towers",
+        "source_file": "originals/wicker-entrance.bin",
+        "source_record_id": "alton-wicker",
+        "source_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "split_group": "alton-towers",
+        "split_role": "development_annotation_review",
+        "trace_count": 9
+      },
+      {
+        "crop_pixels": [
+          30,
+          0,
+          380,
+          380
+        ],
+        "extent_epsg3857": [
+          -35657.416171147954,
+          6683398.267777145,
+          -35389.37020353783,
+          6683689.289113407
+        ],
+        "human_labels_verified": false,
+        "id": "chessington-gardens",
+        "ignore_reason_counts": {
+          "boundary_margin": 2185,
+          "conflicting_traces": 0,
+          "explicit_unknown": 3702,
+          "labelled": 29236,
+          "not_reviewed": 97877,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/chessington-gardens.png",
+        "ignore_reasons_sha256": "1d9dde5e97d448030a7f117181151f2553bc88404e2403fae9b786acf2fb5734",
+        "image_file": "images/chessington-gardens.png",
+        "image_sha256": "356d83910cb08e8d14a118ede28225cc414464df1fd5d4909b17bb2b25e93e41",
+        "image_size": [
+          350,
+          380
+        ],
+        "mask_file": "masks/chessington-gardens.png",
+        "mask_sha256": "bd5820221d598608048c880e209b510122f8904cfa1c20e40ce801c554fa002f",
+        "metadata_file": "metadata/chessington-gardens.json",
+        "metadata_sha256": "6ea9b53af58084cb6bb93a084b918800236bd75dd78e57491b61c573c0cbc03a",
+        "pixel_counts": {
+          "non_paving": 10260,
+          "paving": 18976,
+          "unknown": 103764
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": true,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "chessington",
+        "source_file": "originals/chessington-gardens.bin",
+        "source_record_id": "chessington-central",
+        "source_sha256": "72be82d26ffc1639f6cbaab99b65a9d474a8a6571d26368ed8a3daf786275160",
+        "split_group": "chessington",
+        "split_role": "development_annotation_review",
+        "trace_count": 12
+      },
+      {
+        "crop_pixels": [
+          520,
+          270,
+          760,
+          825
+        ],
+        "extent_epsg3857": [
+          -190795.44860901643,
+          6911151.6670253035,
+          -190610.69028938253,
+          6911578.920639457
+        ],
+        "human_labels_verified": false,
+        "id": "drayton-mainstreet",
+        "ignore_reason_counts": {
+          "boundary_margin": 2510,
+          "conflicting_traces": 0,
+          "explicit_unknown": 6035,
+          "labelled": 28850,
+          "not_reviewed": 95805,
+          "source_nodata": 0
+        },
+        "ignore_reasons_file": "ignore-reasons/drayton-mainstreet.png",
+        "ignore_reasons_sha256": "22204e024b6873d0560c3bbd0ca99c315318d7f398f1da7df8ee686e05695392",
+        "image_file": "images/drayton-mainstreet.png",
+        "image_sha256": "ad20c6a61f92d0574e2b6b1c7ea5235dfb8fc4679cdc77a3e77a23c2b6a91b61",
+        "image_size": [
+          240,
+          555
+        ],
+        "mask_file": "masks/drayton-mainstreet.png",
+        "mask_sha256": "e5bddebf81fa95a00d6c8ec424b75aa42bbf9934e3921ef8ee73ad7b90abbe6e",
+        "metadata_file": "metadata/drayton-mainstreet.json",
+        "metadata_sha256": "3d9bd7fae62336530e388d4bd24bfcc35f1b96bf531ba321a1caabc281378b66",
+        "pixel_counts": {
+          "non_paving": 14376,
+          "paving": 14474,
+          "unknown": 104350
+        },
+        "production_training_eligible": false,
+        "research_training_eligible": true,
+        "review_policy": "assistant_visual_draft_requires_independent_review",
+        "site_id": "drayton-manor",
+        "source_file": "originals/drayton-mainstreet.bin",
+        "source_record_id": "drayton-central",
+        "source_sha256": "f5ac41b178c1394978839f5ed2c09e1ac20b92aa3a21a4c296722d85b80c87ad",
+        "split_group": "drayton-manor",
+        "split_role": "development_annotation_review",
+        "trace_count": 15
+      }
+    ],
+    "review_policy": "assistant_visual_draft_requires_independent_review",
+    "version": "paving-mask-dataset-v1",
+    "world_blocks_generated": 0
+  },
+  "trace_polygons": 54,
+  "trace_holes": 10,
+  "pixel_totals": {
+    "non_paving": 107706,
+    "paving": 150185,
+    "unknown": 313559
+  },
+  "labelled_fraction": 0.4512923265377548,
+  "source_byte_resizes": 0,
+  "boundary_ignore_pixels": 1,
+  "conflicting_interior_pixels": 0,
+  "model_weights_updated": false,
+  "preserved_neural_model_sha256": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+  "new_network_bytes": 0,
+  "human_labels_verified": false,
+  "production_eligible": false,
+  "world_blocks_generated": 0,
+  "windows_exe_rebuilt": false,
+  "limitations": [
+    "Provisional assistant visual drafts, requiring independent review; no surveyed/human ground truth.",
+    "54.9% of crop pixels remain unknown or unreviewed; these are not fully labelled whole images.",
+    "All four source images were previously used in development; no untouched final test or mask-driven neural improvement is claimed.",
+    "Binary masks must not be interpreted as the old five-class label format."
+  ],
+  "portable_rebuild_manifest_matches": true
+}
