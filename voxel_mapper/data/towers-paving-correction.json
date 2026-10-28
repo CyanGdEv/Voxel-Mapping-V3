@@ -1,0 +1,332 @@
+{
+  "version": "paving-source-correction-recipe-v1",
+  "parent_dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+  "parent_annotation_sha256": "8fdad7b095c64db19e67d69693e7bcb1f59bcd603c7671c4c2ef5a09b95ff942",
+  "crop_id": "towers-plaza",
+  "add_traces": [
+    {
+      "id": "west-pedestrian-strip",
+      "label": "paving",
+      "outer": [
+        [
+          1,
+          69
+        ],
+        [
+          35,
+          75
+        ],
+        [
+          34,
+          91
+        ],
+        [
+          30,
+          113
+        ],
+        [
+          27,
+          151
+        ],
+        [
+          25,
+          171
+        ],
+        [
+          23,
+          196
+        ],
+        [
+          21,
+          219
+        ],
+        [
+          19,
+          247
+        ],
+        [
+          16,
+          268
+        ],
+        [
+          1,
+          268
+        ]
+      ],
+      "reason": "Visible western pedestrian paving strip, previously untraced. Furniture and ambiguous dark features are explicitly withheld."
+    },
+    {
+      "id": "west-upper-brown-roof-interior",
+      "label": "non_paving",
+      "outer": [
+        [
+          57,
+          87
+        ],
+        [
+          91,
+          89
+        ],
+        [
+          94,
+          115
+        ],
+        [
+          90,
+          151
+        ],
+        [
+          85,
+          164
+        ],
+        [
+          48,
+          159
+        ],
+        [
+          50,
+          137
+        ],
+        [
+          53,
+          110
+        ]
+      ],
+      "reason": "Conservative visible brown roof interior between the western grey roofs; roof boundaries remain unknown."
+    },
+    {
+      "id": "west-mid-brown-roof-interior",
+      "label": "non_paving",
+      "outer": [
+        [
+          40,
+          240
+        ],
+        [
+          85,
+          243
+        ],
+        [
+          83,
+          267
+        ],
+        [
+          34,
+          264
+        ]
+      ],
+      "reason": "Visible brown roof between the grey middle shop and lower red roof; interior only."
+    },
+    {
+      "id": "east-lower-red-roof-interior",
+      "label": "non_paving",
+      "outer": [
+        [
+          263,
+          343
+        ],
+        [
+          295,
+          350
+        ],
+        [
+          323,
+          359
+        ],
+        [
+          323,
+          382
+        ],
+        [
+          310,
+          387
+        ],
+        [
+          286,
+          377
+        ],
+        [
+          258,
+          376
+        ]
+      ],
+      "reason": "Visible lower red roof previously only partially labelled; uncertain eaves remain ignored."
+    },
+    {
+      "id": "west-patio-furniture-occlusion",
+      "label": "unknown",
+      "outer": [
+        [
+          0,
+          116
+        ],
+        [
+          23,
+          116
+        ],
+        [
+          25,
+          136
+        ],
+        [
+          22,
+          154
+        ],
+        [
+          0,
+          155
+        ]
+      ],
+      "reason": "Dense table/chair objects obscure western patio ground; no hidden paving inferred."
+    },
+    {
+      "id": "west-patio-umbrella-occlusion",
+      "label": "unknown",
+      "outer": [
+        [
+          0,
+          198
+        ],
+        [
+          18,
+          198
+        ],
+        [
+          24,
+          211
+        ],
+        [
+          22,
+          230
+        ],
+        [
+          0,
+          231
+        ]
+      ],
+      "reason": "Bright umbrella/furniture cluster on the west edge obscures the ground."
+    },
+    {
+      "id": "west-patio-dark-object",
+      "label": "unknown",
+      "outer": [
+        [
+          21,
+          156
+        ],
+        [
+          31,
+          156
+        ],
+        [
+          34,
+          169
+        ],
+        [
+          25,
+          177
+        ],
+        [
+          18,
+          171
+        ]
+      ],
+      "reason": "Ambiguous dark object/shadow near the patio edge withheld."
+    },
+    {
+      "id": "main-plaza-west-tree-shadow",
+      "label": "unknown",
+      "outer": [
+        [
+          110,
+          198
+        ],
+        [
+          122,
+          197
+        ],
+        [
+          128,
+          214
+        ],
+        [
+          122,
+          231
+        ],
+        [
+          109,
+          235
+        ]
+      ],
+      "reason": "Tree crown and dense shadow adjacent to the grey shop do not establish visible ground."
+    }
+  ],
+  "expected_changes": {
+    "changed_pixels": 7309,
+    "class_flips": 0,
+    "conflict_pixels": 0,
+    "id": "towers-plaza",
+    "known_to_unknown": 551,
+    "unknown_to_non_paving": 3818,
+    "unknown_to_paving": 2940
+  },
+  "probes": [
+    {
+      "after": 1,
+      "before": 255,
+      "xy": [
+        14,
+        90
+      ]
+    },
+    {
+      "after": 0,
+      "before": 255,
+      "xy": [
+        70,
+        110
+      ]
+    },
+    {
+      "after": 0,
+      "before": 255,
+      "xy": [
+        65,
+        253
+      ]
+    },
+    {
+      "after": 255,
+      "before": 255,
+      "xy": [
+        10,
+        130
+      ]
+    },
+    {
+      "after": 255,
+      "before": 255,
+      "xy": [
+        10,
+        214
+      ]
+    },
+    {
+      "after": 0,
+      "before": 0,
+      "xy": [
+        175,
+        45
+      ]
+    },
+    {
+      "after": 255,
+      "before": 1,
+      "xy": [
+        116,
+        215
+      ]
+    }
+  ],
+  "human_labels_verified": false
+}

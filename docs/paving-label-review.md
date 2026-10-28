@@ -1,5 +1,10 @@
 # Source-only paving label review
 
+The subsequent [Towers Street correction benchmark](towers-paving-correction-benchmark.md)
+applies eight source-only assistant corrections, retrains both candidates, and
+compares them on a newly reserved area. It does not constitute an independent
+human review and does not replace the baseline model.
+
 The spatial benchmark reduced false positives but lost paving coverage. Before
 more training, check the existing development labels against their original
 imagery. This stage provides a self-contained offline editor for four crops,
