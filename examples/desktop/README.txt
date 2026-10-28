@@ -56,3 +56,5 @@ The self-test builds a tiny synthetic terrain world without external sources:
 VoxelMapperV3.exe --self-test
 
 To compare public mapping and survey layers, choose "Compare mapping / survey layers" and load compare-mapping-layers.json. Extract the Mapping-Source-Layers package mapping-layer-inputs folder into the repository root and retain its cache folder. The shipped request is offline; see docs/mapping-source-layers.md for live requests and local vector imports. Results include index.html with layer toggles, opacity, source details and review-note export.
+
+For alignment diagnostics and a prioritised boundary queue, choose "Alignment / boundary review queue" and submit boundary-alignment-review.json after extracting boundary-review-inputs into the repository root. See docs/boundary-alignment-review.md. This reviews precomputed source-pinned predictions; it does not edit labels or train.
