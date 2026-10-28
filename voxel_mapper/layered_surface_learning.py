@@ -16,7 +16,7 @@ SETTINGS={'seed':137,'steps':400,'batch':4,'patch':96,'learning_rate':.002,'thre
 
 def architecture(channels=3):
     from torch import nn
-    if channels not in (3,16):raise ValueError('RGB or pinned aerial feature input required')
+    if channels not in (3,16,20):raise ValueError('RGB, pinned aerial or aligned LiDAR feature input required')
     model=old.architecture('spatial');model.fine[0]=nn.Conv2d(channels,12,3,padding=1);model.out[-1]=nn.Conv2d(16,6,1)
     return model
 
@@ -26,6 +26,16 @@ def class_weights(rows,key,classes):
     w=np.zeros(classes,np.float32);present=counts>0
     w[present]=1/np.sqrt(counts[present]);w[present]/=w[present].mean();w=np.clip(w,0,4)
     return w,counts
+
+
+def narrow_path_anchors(target,ground_sampling_m,max_width_m=4.):
+    """Local paving strips too narrow for a metric disk; sampling only, no new truth."""
+    from scipy import ndimage
+    if not .05<=ground_sampling_m<=5 or not 1<=max_width_m<=8:raise ValueError('Bounded metric path sampling required')
+    radius=min(24,max(1,int(np.ceil(max_width_m/(2*ground_sampling_m)))))
+    yy,xx=np.mgrid[-radius:radius+1,-radius:radius+1];disk=xx*xx+yy*yy<=radius*radius;paving=target==0
+    wide=ndimage.binary_opening(paving,structure=disk);thin=ndimage.binary_erosion(paving&~wide,iterations=1)
+    return np.argwhere(thin)
 
 
 def masked_loss(logits,target,weights,*,balanced=True,boundary_weight=2.,dice_weight=.5):
@@ -53,26 +63,33 @@ def masked_loss(logits,target,weights,*,balanced=True,boundary_weight=2.,dice_we
 def fit(rows,balanced=True,settings=None):
     import torch
     s=dict(SETTINGS if settings is None else settings)
-    if not rows or not 1<=s['steps']<=2000 or not 1<=s['batch']<=8 or s['patch'] not in (64,96,128):raise ValueError('Bounded layered fitting required')
+    if not rows or not 1<=s['steps']<=2000 or not 1<=s['batch']<=8 or s['patch'] not in (64,96,128) or not 0<=s.get('narrow_sampling_fraction',0)<=1 or not 0<=s.get('lidar_dropout',0)<=.5:raise ValueError('Bounded layered fitting required')
     torch.set_num_threads(s['threads']);torch.manual_seed(s['seed']);torch.use_deterministic_algorithms(True)
     channels=rows[0]['features'].shape[2];model=architecture(channels);initial={k:v.detach().numpy().copy() for k,v in model.state_dict().items()};model.train()
-    indices=[]
+    indices=[];narrow=[]
     for r in rows:
-        if r['features'].shape[:2]!=r['ground'].shape or r['ground'].shape!=r['canopy'].shape or r['features'].shape[2]!=channels or r['features'].size>1048576*16 or not np.isfinite(r['features']).all():raise ValueError('Matching bounded layered features and masks required')
+        if r['features'].shape[:2]!=r['ground'].shape or r['ground'].shape!=r['canopy'].shape or r['features'].shape[2]!=channels or r['features'].size>1048576*20 or not np.isfinite(r['features']).all():raise ValueError('Matching bounded layered features and masks required')
         by_class=[np.argwhere(r[key]==c) for key,n in [('ground',4),('canopy',2)] for c in range(n)]
         if not any(len(a) for a in by_class):raise ValueError('Observed training labels required')
         indices.append(by_class)
+        narrow.append(narrow_path_anchors(r['ground'],r.get('ground_sampling_m',1.),s.get('narrow_max_width_m',4.)) if s.get('narrow_sampling_fraction',0) else np.empty((0,2),int))
     wg,cg=class_weights(rows,'ground',4);wc,cc=class_weights(rows,'canopy',2)
-    wg,wc=torch.from_numpy(wg),torch.from_numpy(wc);rng=np.random.default_rng(s['seed']);optimizer=torch.optim.Adam(model.parameters(),lr=s['learning_rate']);history=[]
+    wg,wc=torch.from_numpy(wg),torch.from_numpy(wc);rng=np.random.default_rng(s['seed']);focus_rng=np.random.default_rng(s['seed']+1);drop_rng=np.random.default_rng(s['seed']+2);optimizer=torch.optim.Adam(model.parameters(),lr=s['learning_rate']);history=[]
     for step in range(s['steps']):
         features=[];grounds=[];canopies=[]
         for _ in range(s['batch']):
-            i=int(rng.integers(len(rows)));available=[c for c,a in enumerate(indices[i]) if len(a)];c=int(rng.choice(available));anchor=indices[i][c][int(rng.integers(len(indices[i][c])))];r=rows[i];h,w=r['ground'].shape;patch=s['patch']
+            i=int(rng.integers(len(rows)));available=[c for c,a in enumerate(indices[i]) if len(a)]
+            if len(narrow[i]) and focus_rng.random()<s.get('narrow_sampling_fraction',0):anchor=narrow[i][int(rng.integers(len(narrow[i])))]
+            else:
+                c=int(rng.choice(available));anchor=indices[i][c][int(rng.integers(len(indices[i][c])))]
+            r=rows[i];h,w=r['ground'].shape;patch=s['patch']
             if min(h,w)<patch:raise ValueError('Training image smaller than patch')
             top=int(np.clip(anchor[0]-rng.integers(patch//4,3*patch//4),0,h-patch));left=int(np.clip(anchor[1]-rng.integers(patch//4,3*patch//4),0,w-patch));sl=np.s_[top:top+patch,left:left+patch]
             values=[r['features'][sl],r['ground'][sl],r['canopy'][sl]];k=int(rng.integers(4));flip=rng.random()<.5
             values=[np.rot90(a,k) for a in values]
             if flip:values=[np.flip(a,1) for a in values]
+            if channels==20 and drop_rng.random()<s.get('lidar_dropout',0):
+                values[0]=values[0].copy();values[0][:,:,16:]=0
             features.append(values[0].transpose(2,0,1).copy());grounds.append(values[1].copy());canopies.append(values[2].copy())
         x=torch.from_numpy(np.stack(features)).float();g=torch.from_numpy(np.stack(grounds)).long();c=torch.from_numpy(np.stack(canopies)).long();optimizer.zero_grad();logits=model(x)
         lg=masked_loss(logits[:,:4],g,wg,balanced=balanced,boundary_weight=s['boundary_weight'],dice_weight=s['dice_weight'])
@@ -81,12 +98,12 @@ def fit(rows,balanced=True,settings=None):
         loss.backward();optimizer.step()
         if step in (0,s['steps']-1) or (step+1)%50==0:history.append({'step':step+1,'loss':float(loss.detach()),'ground_loss':float(lg.detach()),'canopy_loss':float(lc.detach())})
     change=float(sum(np.square(v.detach().numpy()-initial[k]).sum() for k,v in model.state_dict().items())**.5)
-    return model.eval(),{'settings':s,'balanced':balanced,'ground_counts':cg.tolist(),'canopy_counts':cc.tolist(),'ground_weights':wg.tolist(),'canopy_weights':wc.tolist(),'history':history,'parameter_change_l2':change,'parameter_count':sum(p.numel() for p in model.parameters())}
+    return model.eval(),{'settings':s,'balanced':balanced,'ground_counts':cg.tolist(),'canopy_counts':cc.tolist(),'ground_weights':wg.tolist(),'canopy_weights':wc.tolist(),'narrow_anchor_counts':[len(a) for a in narrow],'history':history,'parameter_change_l2':change,'parameter_count':sum(p.numel() for p in model.parameters())}
 
 
 def predict(model,features):
     import torch
-    if features.ndim!=3 or features.shape[2] not in (3,16) or features.shape[0]*features.shape[1]>1048576 or not np.isfinite(features).all():raise ValueError('Bounded finite layered features required')
+    if features.ndim!=3 or features.shape[2] not in (3,16,20) or features.shape[0]*features.shape[1]>1048576 or not np.isfinite(features).all():raise ValueError('Bounded finite layered features required')
     h,w=features.shape[:2];core=160;halo=16;pad=np.pad(features,((halo,(-h)%core+halo),(halo,(-w)%core+halo),(0,0)),mode='reflect');ground=np.empty((h,w),np.uint8);canopy=ground.copy();uncertainty=np.empty((h,w),np.float32)
     model.eval()
     with torch.no_grad():
@@ -106,6 +123,9 @@ def save(model,rows,manifest,folder,training,encoder_pin=None):
        'training_record_ids':[r['record']['id'] for r in rows],'training_site_ids':sorted({r['record']['site_id'] for r in rows}),
        'training_source_sha256':[r['record']['image_sha256'] for r in rows],'weights_sha256':file_hash(folder/'weights.safetensors'),
        'encoder_pin':encoder_pin,'training':training,'production_eligible':False,'independent_human_review':False}
+    if m['channels']==20:
+        if any(not isinstance(r.get('lidar_pin'),str) or len(r['lidar_pin'])!=64 for r in rows):raise ValueError('Pinned LiDAR feature receipts required')
+        m['lidar_feature_receipts_sha256']=[r['lidar_pin'] for r in rows];m['lidar_feature_version']='dated-lidar-surface-context-v1'
     m['id']=digest(m);atomic_json(folder/'model.json',m)
 
 

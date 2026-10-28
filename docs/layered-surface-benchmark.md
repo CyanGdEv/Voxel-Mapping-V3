@@ -179,3 +179,10 @@ runtime uses the supplied pinned safe-tensor encoder. Large derived feature
 caches and uncertainty rasters outside the final aerial review layer are omitted
 and can be recomputed from the supplied checkpoints. Source images are Esri World Imagery
 and its providers; user annotation references retain their original provenance.
+
+## Tight garden and LiDAR extension
+
+The next experiment adds the user's narrow garden-path image and matched dated
+LiDAR features. See [tight garden paths and LiDAR](tight-garden-path-lidar-training.md)
+for source coverage, grouped overlapping views, local separator checks and the
+mixed results of narrow-path sampling.
