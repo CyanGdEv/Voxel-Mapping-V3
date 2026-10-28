@@ -1,0 +1,685 @@
+{
+  "version": "connected-surface-spatial-validation-v1",
+  "tests": {
+    "passed": 102,
+    "log_sha256": "d59a0239c8db5948f1f0b13836066b6a5b1de397d6b0a2660260dfabdf291073"
+  },
+  "manifest": {
+    "examples_sha256": "a8bdcf4de5edfaab5b45feb4eda57b8b37a5974058199ed1977719b903d01e7c",
+    "human_surface_labels_verified": false,
+    "id": "1371a82403f0f1b6785da2701a405e82bfcfd4c7f4c36c3fa3f5859d784a886d",
+    "inferred_pixels_are_training_truth": false,
+    "labels": {
+      "building_structure": 1,
+      "grass_island": 2,
+      "paving": 0,
+      "unknown": 255,
+      "water": 3
+    },
+    "production_eligible": false,
+    "recipe_sha256": "9e90081aff72859585b1bdb43241554c91da115980e4ffee2ee59077e2c048c4",
+    "records": [
+      {
+        "candidate_edges": 84,
+        "chains": 39,
+        "closed_chains": 0,
+        "id": "user-towers-mutiny",
+        "image_file": "user-towers-mutiny/clean.bin",
+        "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+        "mask_file": "user-towers-mutiny/surface-mask.png",
+        "mask_sha256": "ce794e769f227b524f1c5d60ce6cf3214dd3a3752814b3a97bff133431258a8e",
+        "metadata_file": "user-towers-mutiny/receipt.json",
+        "metadata_sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+        "points_file": "user-towers-mutiny/points.json",
+        "points_sha256": "b55c5ec3bb4af9e55edbbc11d1512ec0a07a912bdacf91cc05ab7e9cdb55ce63",
+        "probes_file": "user-towers-mutiny/connection-probes.json",
+        "probes_sha256": "414d342bc126adf38668d0d371e8d91171efdbecbce83e9e61a5f9f8d5d3c56a",
+        "review_flags": 40,
+        "site_id": "alton-towers",
+        "source_only_assistant_regions": true,
+        "stats": {
+          "cap_unknown_pixels": 251,
+          "conflict_pixels": 530,
+          "counts": {
+            "building_structure": 12178,
+            "grass_island": 7687,
+            "paving": 27737,
+            "unknown": 607040,
+            "water": 718
+          },
+          "inferred_path_under_canopy_pixels": 69
+        }
+      },
+      {
+        "candidate_edges": 245,
+        "chains": 86,
+        "closed_chains": 0,
+        "id": "user-gardens-lake",
+        "image_file": "user-gardens-lake/clean.bin",
+        "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+        "mask_file": "user-gardens-lake/surface-mask.png",
+        "mask_sha256": "442d853bd8075ca646db2df660d55b4719f1f1c1d9d7713c5505129e01a6b2c9",
+        "metadata_file": "user-gardens-lake/receipt.json",
+        "metadata_sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+        "points_file": "user-gardens-lake/points.json",
+        "points_sha256": "90b8e2b4600764cc833615e9ffd266de7d6bd5855f8ab56fbf733dc5571ccf52",
+        "probes_file": "user-gardens-lake/connection-probes.json",
+        "probes_sha256": "9b198ad664efa5478642e4ad274a8f48efa9ccac6fffbdd8fce4ebc30306535c",
+        "review_flags": 83,
+        "site_id": "alton-towers",
+        "source_only_assistant_regions": true,
+        "stats": {
+          "cap_unknown_pixels": 1194,
+          "conflict_pixels": 0,
+          "counts": {
+            "building_structure": 3951,
+            "grass_island": 11539,
+            "paving": 24796,
+            "unknown": 986511,
+            "water": 21779
+          },
+          "inferred_path_under_canopy_pixels": 697
+        }
+      }
+    ],
+    "version": "connected-surface-dataset-v1"
+  },
+  "training_report": {
+    "all_data_previews_are_fitted_not_validation": true,
+    "dataset_id": "1371a82403f0f1b6785da2701a405e82bfcfd4c7f4c36c3fa3f5859d784a886d",
+    "folds": [
+      {
+        "held_out_id": "user-towers-mutiny",
+        "scores": {
+          "always_paving": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.5740273178807948,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                27737,
+                0,
+                0,
+                0
+              ],
+              [
+                12178,
+                0,
+                0,
+                0
+              ],
+              [
+                7687,
+                0,
+                0,
+                0
+              ],
+              [
+                718,
+                0,
+                0,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-1",
+                  "passed": true
+                },
+                {
+                  "id": "component-6",
+                  "passed": true
+                },
+                {
+                  "id": "component-8",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 48320,
+            "labelled_path_components": 6,
+            "macro_iou": 0.1435068294701987,
+            "missed_labelled_path_components": 0,
+            "narrow_labelled_strip_recall": 1.0,
+            "paving_on_known_building_pixels": 12178,
+            "paving_on_known_water_pixels": 718,
+            "paving_precision": 0.5740273178807948,
+            "paving_recall": 1.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          },
+          "pixel": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.0,
+              "water": 0.014859271523178808
+            },
+            "confusion": [
+              [
+                0,
+                0,
+                0,
+                27737
+              ],
+              [
+                0,
+                0,
+                0,
+                12178
+              ],
+              [
+                0,
+                0,
+                0,
+                7687
+              ],
+              [
+                0,
+                0,
+                0,
+                718
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-1",
+                  "passed": false
+                },
+                {
+                  "id": "component-6",
+                  "passed": false
+                },
+                {
+                  "id": "component-8",
+                  "passed": false
+                }
+              ],
+              "recall": 0.0,
+              "recalled_pairs": 0,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 48320,
+            "labelled_path_components": 6,
+            "macro_iou": 0.003714817880794702,
+            "missed_labelled_path_components": 6,
+            "narrow_labelled_strip_recall": 0.0,
+            "paving_on_known_building_pixels": 0,
+            "paving_on_known_water_pixels": 0,
+            "paving_precision": 0.0,
+            "paving_recall": 0.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          },
+          "spatial": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.2873965626989179,
+              "grass_island": 0.3457282552753474,
+              "paving": 0.018367663001393836,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                593,
+                27142,
+                2,
+                0
+              ],
+              [
+                439,
+                11739,
+                0,
+                0
+              ],
+              [
+                3685,
+                1315,
+                2687,
+                0
+              ],
+              [
+                424,
+                211,
+                83,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-1",
+                  "passed": false
+                },
+                {
+                  "id": "component-6",
+                  "passed": false
+                },
+                {
+                  "id": "component-8",
+                  "passed": false
+                }
+              ],
+              "recall": 0.0,
+              "recalled_pairs": 0,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 48320,
+            "labelled_path_components": 6,
+            "macro_iou": 0.16287312024391476,
+            "missed_labelled_path_components": 6,
+            "narrow_labelled_strip_recall": 0.048642932675361295,
+            "paving_on_known_building_pixels": 439,
+            "paving_on_known_water_pixels": 424,
+            "paving_precision": 0.11534720871425792,
+            "paving_recall": 0.021379384937087645,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.1037344398340249
+          },
+          "training_majority": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.5740273178807948,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                27737,
+                0,
+                0,
+                0
+              ],
+              [
+                12178,
+                0,
+                0,
+                0
+              ],
+              [
+                7687,
+                0,
+                0,
+                0
+              ],
+              [
+                718,
+                0,
+                0,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-1",
+                  "passed": true
+                },
+                {
+                  "id": "component-6",
+                  "passed": true
+                },
+                {
+                  "id": "component-8",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 48320,
+            "labelled_path_components": 6,
+            "macro_iou": 0.1435068294701987,
+            "missed_labelled_path_components": 0,
+            "narrow_labelled_strip_recall": 1.0,
+            "paving_on_known_building_pixels": 12178,
+            "paving_on_known_water_pixels": 718,
+            "paving_precision": 0.5740273178807948,
+            "paving_recall": 1.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          }
+        },
+        "source_in_fitting": false
+      },
+      {
+        "held_out_id": "user-gardens-lake",
+        "scores": {
+          "always_paving": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.399516635785064,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                24796,
+                0,
+                0,
+                0
+              ],
+              [
+                3951,
+                0,
+                0,
+                0
+              ],
+              [
+                11539,
+                0,
+                0,
+                0
+              ],
+              [
+                21779,
+                0,
+                0,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-17",
+                  "passed": true
+                },
+                {
+                  "id": "component-15",
+                  "passed": true
+                },
+                {
+                  "id": "component-3",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 62065,
+            "labelled_path_components": 11,
+            "macro_iou": 0.099879158946266,
+            "missed_labelled_path_components": 0,
+            "narrow_labelled_strip_recall": 1.0,
+            "paving_on_known_building_pixels": 3951,
+            "paving_on_known_water_pixels": 21779,
+            "paving_precision": 0.399516635785064,
+            "paving_recall": 1.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          },
+          "pixel": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.399516635785064,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                24796,
+                0,
+                0,
+                0
+              ],
+              [
+                3951,
+                0,
+                0,
+                0
+              ],
+              [
+                11539,
+                0,
+                0,
+                0
+              ],
+              [
+                21779,
+                0,
+                0,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-17",
+                  "passed": true
+                },
+                {
+                  "id": "component-15",
+                  "passed": true
+                },
+                {
+                  "id": "component-3",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 62065,
+            "labelled_path_components": 11,
+            "macro_iou": 0.099879158946266,
+            "missed_labelled_path_components": 0,
+            "narrow_labelled_strip_recall": 1.0,
+            "paving_on_known_building_pixels": 3951,
+            "paving_on_known_water_pixels": 21779,
+            "paving_precision": 0.399516635785064,
+            "paving_recall": 1.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          },
+          "spatial": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.015332197614991482,
+              "grass_island": 0.2795460835870468,
+              "paving": 0.6173467621915343,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                17837,
+                611,
+                6348,
+                0
+              ],
+              [
+                3802,
+                72,
+                77,
+                0
+              ],
+              [
+                295,
+                134,
+                11110,
+                0
+              ],
+              [
+                0,
+                0,
+                21779,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-17",
+                  "passed": true
+                },
+                {
+                  "id": "component-15",
+                  "passed": false
+                },
+                {
+                  "id": "component-3",
+                  "passed": false
+                }
+              ],
+              "recall": 0.3333333333333333,
+              "recalled_pairs": 1,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 62065,
+            "labelled_path_components": 11,
+            "macro_iou": 0.22805626084839314,
+            "missed_labelled_path_components": 3,
+            "narrow_labelled_strip_recall": 0.5617613220374438,
+            "paving_on_known_building_pixels": 3802,
+            "paving_on_known_water_pixels": 0,
+            "paving_precision": 0.8132123643658248,
+            "paving_recall": 0.7193498951443781,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.32755905511811023
+          },
+          "training_majority": {
+            "boundary_f1": null,
+            "class_iou": {
+              "building_structure": 0.0,
+              "grass_island": 0.0,
+              "paving": 0.399516635785064,
+              "water": 0.0
+            },
+            "confusion": [
+              [
+                24796,
+                0,
+                0,
+                0
+              ],
+              [
+                3951,
+                0,
+                0,
+                0
+              ],
+              [
+                11539,
+                0,
+                0,
+                0
+              ],
+              [
+                21779,
+                0,
+                0,
+                0
+              ]
+            ],
+            "connections": {
+              "known_paving_pairs": 3,
+              "pairs": [
+                {
+                  "id": "component-17",
+                  "passed": true
+                },
+                {
+                  "id": "component-15",
+                  "passed": true
+                },
+                {
+                  "id": "component-3",
+                  "passed": true
+                }
+              ],
+              "recall": 1.0,
+              "recalled_pairs": 3,
+              "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+            },
+            "known_pixels": 62065,
+            "labelled_path_components": 11,
+            "macro_iou": 0.099879158946266,
+            "missed_labelled_path_components": 0,
+            "narrow_labelled_strip_recall": 1.0,
+            "paving_on_known_building_pixels": 3951,
+            "paving_on_known_water_pixels": 21779,
+            "paving_precision": 0.399516635785064,
+            "paving_recall": 1.0,
+            "scope": "Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.",
+            "user_edge_hint_recall_within_2_clean_pixels": 0.0
+          }
+        },
+        "source_in_fitting": false
+      }
+    ],
+    "new_architecture_is_spatial_convolution": true,
+    "old_paving_checkpoint_replaced": false,
+    "production_eligible": false,
+    "same_park_development_only": true,
+    "version": "four-surface-spatial-benchmark-v1"
+  },
+  "resources": {
+    "gpu_used": false,
+    "peak_rss_mb": 437.82421875,
+    "threads": 2,
+    "wall_seconds": 77.12507486098912
+  },
+  "geographic_guard": {
+    "minimum_known_label_distance_m": 93.55991319228569,
+    "passed": true,
+    "required_m": 24
+  },
+  "checkpoint_roundtrip": {
+    "checks": [
+      {
+        "architecture": "pixel",
+        "exact_prediction_match": true,
+        "example": "user-towers-mutiny"
+      },
+      {
+        "architecture": "pixel",
+        "exact_prediction_match": true,
+        "example": "user-gardens-lake"
+      },
+      {
+        "architecture": "spatial",
+        "exact_prediction_match": true,
+        "example": "user-towers-mutiny"
+      },
+      {
+        "architecture": "spatial",
+        "exact_prediction_match": true,
+        "example": "user-gardens-lake"
+      }
+    ],
+    "pickle_used": false
+  },
+  "recipe_reproduces_exact_dataset": true,
+  "baseline_rgb_preserved_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "world_blocks_generated": 0,
+  "windows_exe_built": false,
+  "independent_surface_review_received": false,
+  "production_eligible": false,
+  "browser": {
+    "valid_view_combinations": 18,
+    "reference_frame_dimensions_preserved": true,
+    "errors": []
+  }
+}
