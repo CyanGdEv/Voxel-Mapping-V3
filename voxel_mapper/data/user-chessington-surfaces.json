@@ -1,0 +1,1020 @@
+{
+  "examples": {
+    "user-chessington-courtyard": [
+      {
+        "holes": [
+          [
+            [
+              295,
+              518
+            ],
+            [
+              321,
+              514
+            ],
+            [
+              342,
+              528
+            ],
+            [
+              346,
+              552
+            ],
+            [
+              333,
+              572
+            ],
+            [
+              306,
+              578
+            ],
+            [
+              282,
+              566
+            ],
+            [
+              277,
+              543
+            ]
+          ],
+          [
+            [
+              257,
+              685
+            ],
+            [
+              278,
+              679
+            ],
+            [
+              293,
+              673
+            ],
+            [
+              307,
+              674
+            ],
+            [
+              321,
+              667
+            ],
+            [
+              342,
+              669
+            ],
+            [
+              347,
+              682
+            ],
+            [
+              326,
+              690
+            ],
+            [
+              313,
+              690
+            ],
+            [
+              300,
+              702
+            ],
+            [
+              280,
+              710
+            ],
+            [
+              268,
+              718
+            ],
+            [
+              259,
+              713
+            ]
+          ],
+          [
+            [
+              244,
+              615
+            ],
+            [
+              259,
+              604
+            ],
+            [
+              281,
+              614
+            ],
+            [
+              292,
+              625
+            ],
+            [
+              279,
+              642
+            ],
+            [
+              258,
+              636
+            ]
+          ]
+        ],
+        "id": "main-courtyard",
+        "label": "paving",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            244,
+            488
+          ],
+          [
+            280,
+            480
+          ],
+          [
+            304,
+            476
+          ],
+          [
+            326,
+            467
+          ],
+          [
+            345,
+            480
+          ],
+          [
+            365,
+            476
+          ],
+          [
+            372,
+            487
+          ],
+          [
+            381,
+            491
+          ],
+          [
+            367,
+            512
+          ],
+          [
+            373,
+            536
+          ],
+          [
+            399,
+            546
+          ],
+          [
+            389,
+            561
+          ],
+          [
+            394,
+            577
+          ],
+          [
+            375,
+            588
+          ],
+          [
+            372,
+            607
+          ],
+          [
+            364,
+            616
+          ],
+          [
+            376,
+            631
+          ],
+          [
+            365,
+            638
+          ],
+          [
+            361,
+            728
+          ],
+          [
+            337,
+            729
+          ],
+          [
+            319,
+            725
+          ],
+          [
+            298,
+            725
+          ],
+          [
+            282,
+            724
+          ],
+          [
+            260,
+            731
+          ],
+          [
+            240,
+            729
+          ],
+          [
+            221,
+            735
+          ],
+          [
+            215,
+            712
+          ],
+          [
+            217,
+            696
+          ],
+          [
+            212,
+            680
+          ],
+          [
+            218,
+            660
+          ],
+          [
+            214,
+            642
+          ],
+          [
+            206,
+            625
+          ],
+          [
+            195,
+            619
+          ],
+          [
+            184,
+            619
+          ],
+          [
+            172,
+            625
+          ],
+          [
+            181,
+            610
+          ],
+          [
+            184,
+            590
+          ],
+          [
+            181,
+            576
+          ],
+          [
+            187,
+            558
+          ],
+          [
+            211,
+            568
+          ],
+          [
+            251,
+            546
+          ],
+          [
+            232,
+            520
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "southern-paving",
+        "label": "paving",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            198,
+            781
+          ],
+          [
+            197,
+            812
+          ],
+          [
+            181,
+            825
+          ],
+          [
+            175,
+            839
+          ],
+          [
+            184,
+            853
+          ],
+          [
+            201,
+            856
+          ],
+          [
+            216,
+            844
+          ],
+          [
+            230,
+            854
+          ],
+          [
+            233,
+            867
+          ],
+          [
+            258,
+            877
+          ],
+          [
+            280,
+            879
+          ],
+          [
+            280,
+            886
+          ],
+          [
+            261,
+            887
+          ],
+          [
+            240,
+            880
+          ],
+          [
+            228,
+            878
+          ],
+          [
+            207,
+            880
+          ],
+          [
+            191,
+            879
+          ],
+          [
+            171,
+            884
+          ],
+          [
+            165,
+            900
+          ],
+          [
+            155,
+            903
+          ],
+          [
+            142,
+            889
+          ],
+          [
+            117,
+            886
+          ],
+          [
+            105,
+            895
+          ],
+          [
+            81,
+            895
+          ],
+          [
+            80,
+            882
+          ],
+          [
+            97,
+            870
+          ],
+          [
+            94,
+            850
+          ],
+          [
+            74,
+            855
+          ],
+          [
+            61,
+            842
+          ],
+          [
+            43,
+            831
+          ],
+          [
+            36,
+            824
+          ],
+          [
+            49,
+            814
+          ],
+          [
+            62,
+            810
+          ],
+          [
+            72,
+            789
+          ],
+          [
+            80,
+            779
+          ],
+          [
+            82,
+            768
+          ],
+          [
+            99,
+            762
+          ],
+          [
+            103,
+            756
+          ],
+          [
+            121,
+            770
+          ],
+          [
+            141,
+            777
+          ],
+          [
+            163,
+            782
+          ],
+          [
+            185,
+            778
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "left-approach",
+        "label": "paving",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            50,
+            567
+          ],
+          [
+            76,
+            565
+          ],
+          [
+            95,
+            553
+          ],
+          [
+            107,
+            536
+          ],
+          [
+            112,
+            513
+          ],
+          [
+            125,
+            501
+          ],
+          [
+            147,
+            499
+          ],
+          [
+            156,
+            486
+          ],
+          [
+            178,
+            473
+          ],
+          [
+            206,
+            455
+          ],
+          [
+            211,
+            461
+          ],
+          [
+            191,
+            478
+          ],
+          [
+            170,
+            489
+          ],
+          [
+            161,
+            503
+          ],
+          [
+            144,
+            514
+          ],
+          [
+            132,
+            533
+          ],
+          [
+            126,
+            551
+          ],
+          [
+            112,
+            574
+          ],
+          [
+            96,
+            580
+          ],
+          [
+            85,
+            575
+          ],
+          [
+            63,
+            582
+          ],
+          [
+            53,
+            578
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "left-building-apron",
+        "label": "paving",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            109,
+            567
+          ],
+          [
+            131,
+            541
+          ],
+          [
+            144,
+            542
+          ],
+          [
+            151,
+            552
+          ],
+          [
+            176,
+            559
+          ],
+          [
+            166,
+            581
+          ],
+          [
+            156,
+            606
+          ],
+          [
+            149,
+            629
+          ],
+          [
+            132,
+            647
+          ],
+          [
+            111,
+            642
+          ],
+          [
+            88,
+            635
+          ],
+          [
+            78,
+            624
+          ],
+          [
+            81,
+            612
+          ],
+          [
+            94,
+            598
+          ],
+          [
+            95,
+            581
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "purple-north-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            398,
+            583
+          ],
+          [
+            426,
+            581
+          ],
+          [
+            538,
+            630
+          ],
+          [
+            522,
+            660
+          ],
+          [
+            390,
+            608
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "purple-north-roof-south-face",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            391,
+            611
+          ],
+          [
+            522,
+            664
+          ],
+          [
+            509,
+            684
+          ],
+          [
+            385,
+            638
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "purple-upright-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            375,
+            648
+          ],
+          [
+            398,
+            649
+          ],
+          [
+            397,
+            770
+          ],
+          [
+            369,
+            772
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "purple-south-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            216,
+            748
+          ],
+          [
+            308,
+            746
+          ],
+          [
+            323,
+            759
+          ],
+          [
+            369,
+            759
+          ],
+          [
+            375,
+            774
+          ],
+          [
+            419,
+            773
+          ],
+          [
+            421,
+            790
+          ],
+          [
+            224,
+            782
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "purple-side-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            434,
+            659
+          ],
+          [
+            462,
+            670
+          ],
+          [
+            460,
+            702
+          ],
+          [
+            441,
+            717
+          ],
+          [
+            433,
+            709
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "left-oblique-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            180,
+            495
+          ],
+          [
+            195,
+            483
+          ],
+          [
+            242,
+            543
+          ],
+          [
+            216,
+            558
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "left-dark-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            133,
+            553
+          ],
+          [
+            165,
+            565
+          ],
+          [
+            138,
+            637
+          ],
+          [
+            110,
+            626
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "central-grey-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            246,
+            368
+          ],
+          [
+            329,
+            347
+          ],
+          [
+            356,
+            404
+          ],
+          [
+            270,
+            433
+          ],
+          [
+            242,
+            410
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "lower-right-roof",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            439,
+            741
+          ],
+          [
+            502,
+            765
+          ],
+          [
+            485,
+            821
+          ],
+          [
+            424,
+            800
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "white-tent-structure",
+        "label": "building_structure",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            314,
+            709
+          ],
+          [
+            348,
+            710
+          ],
+          [
+            355,
+            729
+          ],
+          [
+            334,
+            739
+          ],
+          [
+            308,
+            728
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "half_width": 6,
+        "id": "courtyard-south-link",
+        "label": "paving",
+        "line": [
+          [
+            216,
+            714
+          ],
+          [
+            210,
+            741
+          ],
+          [
+            204,
+            765
+          ],
+          [
+            192,
+            781
+          ]
+        ],
+        "origin": "assistant_source_assisted_user_guides",
+        "reason": "Conservative visible route interior; artificial caps ignored"
+      },
+      {
+        "holes": [],
+        "id": "tent-boundary-uncertain",
+        "label": "unknown",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            302,
+            709
+          ],
+          [
+            329,
+            702
+          ],
+          [
+            360,
+            707
+          ],
+          [
+            359,
+            739
+          ],
+          [
+            329,
+            739
+          ],
+          [
+            307,
+            728
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      },
+      {
+        "holes": [],
+        "id": "southern-planting-uncertain",
+        "label": "unknown",
+        "origin": "assistant_source_assisted_user_guides",
+        "outer": [
+          [
+            183,
+            821
+          ],
+          [
+            195,
+            813
+          ],
+          [
+            205,
+            820
+          ],
+          [
+            212,
+            830
+          ],
+          [
+            208,
+            841
+          ],
+          [
+            194,
+            849
+          ],
+          [
+            183,
+            841
+          ]
+        ],
+        "reason": "Draft surface interpretation from clean imagery and user red paving / confirmed purple building-roof boundaries; not independently reviewed"
+      }
+    ]
+  },
+  "reference_sha256": "bf16d15fbd67cb3566eb053a45d743c99a280f6e363eb6e4aacd01146b140182",
+  "version": "source-assisted-surfaces-v1"
+}

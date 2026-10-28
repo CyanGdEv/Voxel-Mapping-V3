@@ -1,0 +1,7146 @@
+{
+  "crop_original_xyxy": [
+    0,
+    172,
+    591,
+    1145
+  ],
+  "excluded_ui_reference_xyxy": [
+    [
+      0,
+      80,
+      380,
+      135
+    ]
+  ],
+  "green_role": "tree_location_not_grass",
+  "original_sha256": "05e3d38ef303ba02acc500a16228eef2c422ac9c7c37fadcf8ae21a7bd92a3cc",
+  "points": [
+    {
+      "clean_xy": [
+        458.02904749320004,
+        583.3354342348355
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-0",
+      "label": "path_boundary",
+      "reference_xy": [
+        207.375,
+        450.1875
+      ]
+    },
+    {
+      "clean_xy": [
+        460.4637119365973,
+        591.1804430469907
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-1",
+      "label": "path_boundary",
+      "reference_xy": [
+        200.0,
+        455.0
+      ]
+    },
+    {
+      "clean_xy": [
+        464.37339186744595,
+        577.8674254918689
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-2",
+      "label": "path_boundary",
+      "reference_xy": [
+        214.875,
+        455.125
+      ]
+    },
+    {
+      "clean_xy": [
+        462.27799406511497,
+        595.4546553188518
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-3",
+      "label": "path_boundary",
+      "reference_xy": [
+        196.125,
+        458.125
+      ]
+    },
+    {
+      "clean_xy": [
+        444.5087138039294,
+        659.7436571791443
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-4",
+      "label": "path_boundary",
+      "reference_xy": [
+        124.61904761904762,
+        458.6666666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        459.52984040259526,
+        609.9871776120485
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-5",
+      "label": "path_boundary",
+      "reference_xy": [
+        180.33333333333334,
+        459.55555555555554
+      ]
+    },
+    {
+      "clean_xy": [
+        463.7239373148593,
+        599.7452736129092
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-6",
+      "label": "path_boundary",
+      "reference_xy": [
+        192.125,
+        460.875
+      ]
+    },
+    {
+      "clean_xy": [
+        462.2611104671719,
+        605.6215975533105
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-7",
+      "label": "path_boundary",
+      "reference_xy": [
+        185.63636363636363,
+        461.09090909090907
+      ]
+    },
+    {
+      "clean_xy": [
+        473.0676706845862,
+        575.8562710969967
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-8",
+      "label": "path_boundary",
+      "reference_xy": [
+        219.5,
+        463.5
+      ]
+    },
+    {
+      "clean_xy": [
+        502.6965995718543,
+        476.8491278797152
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-9",
+      "label": "path_boundary",
+      "reference_xy": [
+        330.2857142857143,
+        465.0
+      ]
+    },
+    {
+      "clean_xy": [
+        501.44076482275625,
+        482.58756385013874
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-10",
+      "label": "path_boundary",
+      "reference_xy": [
+        324.0,
+        465.3888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        501.0980489494902,
+        488.30876198012555
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-11",
+      "label": "path_boundary",
+      "reference_xy": [
+        318.0,
+        466.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        453.38341367044734,
+        656.2749018894589
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "path_boundary-12",
+      "label": "path_boundary",
+      "reference_xy": [
+        130.8,
+        466.8
+      ]
+    },
+    {
+      "clean_xy": [
+        463.6946444886631,
+        620.1796141396737
+      ],
+      "glyph_pixels": 44,
+      "glyph_radius_pixels": 3.742410318509555,
+      "id": "path_boundary-13",
+      "label": "path_boundary",
+      "reference_xy": [
+        171.04545454545453,
+        466.84090909090907
+      ]
+    },
+    {
+      "clean_xy": [
+        507.0464174500988,
+        473.9559039360107
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-14",
+      "label": "path_boundary",
+      "reference_xy": [
+        334.54545454545456,
+        468.6363636363636
+      ]
+    },
+    {
+      "clean_xy": [
+        478.84368935568483,
+        573.6207908334084
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-15",
+      "label": "path_boundary",
+      "reference_xy": [
+        223.5,
+        468.8
+      ]
+    },
+    {
+      "clean_xy": [
+        500.3439870876762,
+        502.15609666808206
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-16",
+      "label": "path_boundary",
+      "reference_xy": [
+        303.5,
+        470.0
+      ]
+    },
+    {
+      "clean_xy": [
+        503.2178743236858,
+        493.7609327882344
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-17",
+      "label": "path_boundary",
+      "reference_xy": [
+        313.0,
+        470.5
+      ]
+    },
+    {
+      "clean_xy": [
+        502.38893160901205,
+        497.4041917204315
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-18",
+      "label": "path_boundary",
+      "reference_xy": [
+        309.0,
+        470.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        510.22828725614727,
+        471.5111872727379
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-19",
+      "label": "path_boundary",
+      "reference_xy": [
+        338.0,
+        471.2
+      ]
+    },
+    {
+      "clean_xy": [
+        499.3132990948226,
+        512.6835810838504
+      ],
+      "glyph_pixels": 38,
+      "glyph_radius_pixels": 3.477898169151024,
+      "id": "path_boundary-20",
+      "label": "path_boundary",
+      "reference_xy": [
+        292.3421052631579,
+        472.0263157894737
+      ]
+    },
+    {
+      "clean_xy": [
+        483.51648489624995,
+        571.2036124860495
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-21",
+      "label": "path_boundary",
+      "reference_xy": [
+        227.36363636363637,
+        472.90909090909093
+      ]
+    },
+    {
+      "clean_xy": [
+        466.65562887906725,
+        630.7641696881483
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-22",
+      "label": "path_boundary",
+      "reference_xy": [
+        161.0,
+        473.0
+      ]
+    },
+    {
+      "clean_xy": [
+        458.8726809144582,
+        661.522162649531
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-23",
+      "label": "path_boundary",
+      "reference_xy": [
+        127.0,
+        474.0
+      ]
+    },
+    {
+      "clean_xy": [
+        477.63955599426845,
+        598.0077103956423
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-24",
+      "label": "path_boundary",
+      "reference_xy": [
+        198.0,
+        474.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        476.2200469278015,
+        603.5437112410802
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-25",
+      "label": "path_boundary",
+      "reference_xy": [
+        191.875,
+        474.875
+      ]
+    },
+    {
+      "clean_xy": [
+        515.2181628129213,
+        467.2509623370898
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-26",
+      "label": "path_boundary",
+      "reference_xy": [
+        343.85714285714283,
+        475.0952380952381
+      ]
+    },
+    {
+      "clean_xy": [
+        500.9296203630877,
+        524.1429642168121
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-27",
+      "label": "path_boundary",
+      "reference_xy": [
+        281.0,
+        477.05555555555554
+      ]
+    },
+    {
+      "clean_xy": [
+        478.2166838061389,
+        607.177110565218
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-28",
+      "label": "path_boundary",
+      "reference_xy": [
+        188.71428571428572,
+        478.0
+      ]
+    },
+    {
+      "clean_xy": [
+        462.9864098520458,
+        661.0764853315835
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-29",
+      "label": "path_boundary",
+      "reference_xy": [
+        128.66666666666666,
+        478.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        491.6587214540438,
+        568.0545569724316
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-30",
+      "label": "path_boundary",
+      "reference_xy": [
+        233.0,
+        480.3809523809524
+      ]
+    },
+    {
+      "clean_xy": [
+        473.76710980478475,
+        631.3331873710368
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-31",
+      "label": "path_boundary",
+      "reference_xy": [
+        162.5,
+        480.5
+      ]
+    },
+    {
+      "clean_xy": [
+        483.7236791449451,
+        596.3448004253379
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-32",
+      "label": "path_boundary",
+      "reference_xy": [
+        201.5,
+        480.5
+      ]
+    },
+    {
+      "clean_xy": [
+        468.60480948512094,
+        656.533314632866
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-33",
+      "label": "path_boundary",
+      "reference_xy": [
+        135.0,
+        482.57142857142856
+      ]
+    },
+    {
+      "clean_xy": [
+        481.499861620734,
+        613.6530392956718
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-34",
+      "label": "path_boundary",
+      "reference_xy": [
+        183.0,
+        483.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        467.19125579938157,
+        664.6651913235843
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-35",
+      "label": "path_boundary",
+      "reference_xy": [
+        126.2,
+        483.5
+      ]
+    },
+    {
+      "clean_xy": [
+        534.8119260218034,
+        435.5591749301517
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-36",
+      "label": "path_boundary",
+      "reference_xy": [
+        382.2857142857143,
+        486.0
+      ]
+    },
+    {
+      "clean_xy": [
+        490.77685379302085,
+        593.710781898951
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-37",
+      "label": "path_boundary",
+      "reference_xy": [
+        206.28571428571428,
+        487.0
+      ]
+    },
+    {
+      "clean_xy": [
+        474.7143671416945,
+        651.3952243278935
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-38",
+      "label": "path_boundary",
+      "reference_xy": [
+        142.0909090909091,
+        487.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        469.48567774778644,
+        671.654053955147
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-39",
+      "label": "path_boundary",
+      "reference_xy": [
+        119.66666666666667,
+        487.9166666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        499.7705428118321,
+        565.5139836697787
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-40",
+      "label": "path_boundary",
+      "reference_xy": [
+        238.0,
+        488.0
+      ]
+    },
+    {
+      "clean_xy": [
+        480.042185028851,
+        635.2200778133221
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-41",
+      "label": "path_boundary",
+      "reference_xy": [
+        160.33333333333334,
+        488.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        483.535221812264,
+        623.00159093797
+      ],
+      "glyph_pixels": 47,
+      "glyph_radius_pixels": 3.8678889139475245,
+      "id": "path_boundary-42",
+      "label": "path_boundary",
+      "reference_xy": [
+        173.95744680851064,
+        488.1276595744681
+      ]
+    },
+    {
+      "clean_xy": [
+        495.5699761784242,
+        591.472683069708
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-43",
+      "label": "path_boundary",
+      "reference_xy": [
+        210.0,
+        491.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        540.8246094948648,
+        434.1642942200609
+      ],
+      "glyph_pixels": 43,
+      "glyph_radius_pixels": 3.6996385101659595,
+      "id": "path_boundary-44",
+      "label": "path_boundary",
+      "reference_xy": [
+        385.48837209302326,
+        491.7906976744186
+      ]
+    },
+    {
+      "clean_xy": [
+        483.0003185575811,
+        644.1838364274182
+      ],
+      "glyph_pixels": 48,
+      "glyph_radius_pixels": 3.9088200952233594,
+      "id": "path_boundary-45",
+      "label": "path_boundary",
+      "reference_xy": [
+        151.95833333333334,
+        493.7916666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        474.05895960397805,
+        676.9962434327816
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-46",
+      "label": "path_boundary",
+      "reference_xy": [
+        115.5,
+        494.2
+      ]
+    },
+    {
+      "clean_xy": [
+        491.9086063786914,
+        626.136581634838
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "path_boundary-47",
+      "label": "path_boundary",
+      "reference_xy": [
+        173.1818181818182,
+        497.6818181818182
+      ]
+    },
+    {
+      "clean_xy": [
+        476.2080072593244,
+        682.8204002146601
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-48",
+      "label": "path_boundary",
+      "reference_xy": [
+        110.125,
+        498.125
+      ]
+    },
+    {
+      "clean_xy": [
+        505.225246811252,
+        587.3624805725384
+      ],
+      "glyph_pixels": 28,
+      "glyph_radius_pixels": 2.985410660720923,
+      "id": "path_boundary-49",
+      "label": "path_boundary",
+      "reference_xy": [
+        217.07142857142858,
+        500.0357142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        546.9815970114179,
+        442.20871591102105
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-50",
+      "label": "path_boundary",
+      "reference_xy": [
+        379.0,
+        500.5
+      ]
+    },
+    {
+      "clean_xy": [
+        481.1618106462808,
+        677.4819897167775
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-51",
+      "label": "path_boundary",
+      "reference_xy": [
+        117.08333333333333,
+        501.6666666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        493.9672824169079,
+        638.7301451308157
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-52",
+      "label": "path_boundary",
+      "reference_xy": [
+        160.8,
+        503.5
+      ]
+    },
+    {
+      "clean_xy": [
+        499.91683919091065,
+        622.9346992185799
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-53",
+      "label": "path_boundary",
+      "reference_xy": [
+        178.83333333333334,
+        505.0
+      ]
+    },
+    {
+      "clean_xy": [
+        550.7670217850236,
+        447.64996905529097
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "path_boundary-54",
+      "label": "path_boundary",
+      "reference_xy": [
+        374.5,
+        506.0
+      ]
+    },
+    {
+      "clean_xy": [
+        512.5768028943851,
+        583.8990008826404
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-55",
+      "label": "path_boundary",
+      "reference_xy": [
+        222.8,
+        506.6
+      ]
+    },
+    {
+      "clean_xy": [
+        487.84039745854403,
+        672.5670507519695
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-56",
+      "label": "path_boundary",
+      "reference_xy": [
+        124.11111111111111,
+        507.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        500.3577615472818,
+        635.9906694083359
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "path_boundary-57",
+      "label": "path_boundary",
+      "reference_xy": [
+        165.5,
+        509.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        487.18953066844807,
+        686.1412109424522
+      ],
+      "glyph_pixels": 26,
+      "glyph_radius_pixels": 2.876813695875796,
+      "id": "path_boundary-58",
+      "label": "path_boundary",
+      "reference_xy": [
+        109.92307692307692,
+        510.4230769230769
+      ]
+    },
+    {
+      "clean_xy": [
+        517.6227062168156,
+        581.8436682149537
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-59",
+      "label": "path_boundary",
+      "reference_xy": [
+        226.4,
+        511.2
+      ]
+    },
+    {
+      "clean_xy": [
+        492.77065731968565,
+        670.1986488882569
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-60",
+      "label": "path_boundary",
+      "reference_xy": [
+        128.0,
+        511.5
+      ]
+    },
+    {
+      "clean_xy": [
+        506.99396833563355,
+        622.2302791976945
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-61",
+      "label": "path_boundary",
+      "reference_xy": [
+        181.63636363636363,
+        512.0909090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        557.2438609390676,
+        453.857112148804
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-62",
+      "label": "path_boundary",
+      "reference_xy": [
+        370.0,
+        514.5
+      ]
+    },
+    {
+      "clean_xy": [
+        490.94692085228553,
+        690.239163775679
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-63",
+      "label": "path_boundary",
+      "reference_xy": [
+        106.8,
+        515.5
+      ]
+    },
+    {
+      "clean_xy": [
+        497.25634795374964,
+        671.4751321369954
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-64",
+      "label": "path_boundary",
+      "reference_xy": [
+        128.0,
+        516.5
+      ]
+    },
+    {
+      "clean_xy": [
+        495.2224662720872,
+        679.947703351039
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-65",
+      "label": "path_boundary",
+      "reference_xy": [
+        118.66666666666667,
+        516.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        525.0400640868002,
+        578.7517857970573
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-66",
+      "label": "path_boundary",
+      "reference_xy": [
+        231.76470588235293,
+        517.9411764705883
+      ]
+    },
+    {
+      "clean_xy": [
+        514.4960715171111,
+        617.7088687643169
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-67",
+      "label": "path_boundary",
+      "reference_xy": [
+        188.5,
+        518.5
+      ]
+    },
+    {
+      "clean_xy": [
+        562.3031976380578,
+        452.38747459215824
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-68",
+      "label": "path_boundary",
+      "reference_xy": [
+        373.0,
+        519.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        497.5055867679323,
+        689.7438316960653
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-69",
+      "label": "path_boundary",
+      "reference_xy": [
+        109.23529411764706,
+        522.1176470588235
+      ]
+    },
+    {
+      "clean_xy": [
+        530.7230081377721,
+        575.4534781172719
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-70",
+      "label": "path_boundary",
+      "reference_xy": [
+        236.83333333333334,
+        522.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        520.5685163012952,
+        614.3268579043969
+      ],
+      "glyph_pixels": 13,
+      "glyph_radius_pixels": 2.0342144725641096,
+      "id": "path_boundary-71",
+      "label": "path_boundary",
+      "reference_xy": [
+        193.76923076923077,
+        523.7692307692307
+      ]
+    },
+    {
+      "clean_xy": [
+        567.5547782213648,
+        450.9725434604583
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-72",
+      "label": "path_boundary",
+      "reference_xy": [
+        376.0,
+        524.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        535.1936540326413,
+        574.6244742130757
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-73",
+      "label": "path_boundary",
+      "reference_xy": [
+        239.0,
+        527.2
+      ]
+    },
+    {
+      "clean_xy": [
+        502.4025992988971,
+        691.5595066489753
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-74",
+      "label": "path_boundary",
+      "reference_xy": [
+        108.8,
+        527.7
+      ]
+    },
+    {
+      "clean_xy": [
+        527.9673069836177,
+        611.6579780360528
+      ],
+      "glyph_pixels": 39,
+      "glyph_radius_pixels": 3.523362819972964,
+      "id": "path_boundary-75",
+      "label": "path_boundary",
+      "reference_xy": [
+        198.69230769230768,
+        530.6153846153846
+      ]
+    },
+    {
+      "clean_xy": [
+        539.28843867914,
+        572.7591327546086
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-76",
+      "label": "path_boundary",
+      "reference_xy": [
+        242.125,
+        530.875
+      ]
+    },
+    {
+      "clean_xy": [
+        574.8276509152885,
+        447.93802516240777
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-77",
+      "label": "path_boundary",
+      "reference_xy": [
+        381.2631578947368,
+        530.8947368421053
+      ]
+    },
+    {
+      "clean_xy": [
+        508.2349988213217,
+        694.1637084635959
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-78",
+      "label": "path_boundary",
+      "reference_xy": [
+        107.82608695652173,
+        534.4782608695652
+      ]
+    },
+    {
+      "clean_xy": [
+        544.693191347008,
+        571.2319307908895
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-79",
+      "label": "path_boundary",
+      "reference_xy": [
+        245.28571428571428,
+        536.0
+      ]
+    },
+    {
+      "clean_xy": [
+        583.8501235342296,
+        437.86966218744277
+      ],
+      "glyph_pixels": 41,
+      "glyph_radius_pixels": 3.6125759969217834,
+      "id": "path_boundary-80",
+      "label": "path_boundary",
+      "reference_xy": [
+        394.2926829268293,
+        537.2439024390244
+      ]
+    },
+    {
+      "clean_xy": [
+        521.0962977511255,
+        667.7855116364882
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-81",
+      "label": "path_boundary",
+      "reference_xy": [
+        138.8,
+        540.0
+      ]
+    },
+    {
+      "clean_xy": [
+        537.7934186151643,
+        609.7917341616501
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-82",
+      "label": "path_boundary",
+      "reference_xy": [
+        203.5,
+        540.2
+      ]
+    },
+    {
+      "clean_xy": [
+        549.9350542173748,
+        569.283160290977
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-83",
+      "label": "path_boundary",
+      "reference_xy": [
+        248.83333333333334,
+        540.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        551.5566409426758,
+        574.7551796314606
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-84",
+      "label": "path_boundary",
+      "reference_xy": [
+        243.66666666666666,
+        544.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        527.4821484994619,
+        660.6806757936752
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-85",
+      "label": "path_boundary",
+      "reference_xy": [
+        148.0,
+        544.5
+      ]
+    },
+    {
+      "clean_xy": [
+        543.820642239653,
+        609.5134363527652
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-86",
+      "label": "path_boundary",
+      "reference_xy": [
+        205.55555555555554,
+        546.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        530.4252596769521,
+        657.1541475225131
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-87",
+      "label": "path_boundary",
+      "reference_xy": [
+        152.5,
+        546.5
+      ]
+    },
+    {
+      "clean_xy": [
+        552.763716529876,
+        578.6545614263936
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-88",
+      "label": "path_boundary",
+      "reference_xy": [
+        240.0,
+        546.5
+      ]
+    },
+    {
+      "clean_xy": [
+        535.1590472553721,
+        650.7429324572538
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-89",
+      "label": "path_boundary",
+      "reference_xy": [
+        160.5,
+        549.5
+      ]
+    },
+    {
+      "clean_xy": [
+        554.2916898906014,
+        584.7868741143172
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-90",
+      "label": "path_boundary",
+      "reference_xy": [
+        234.125,
+        549.875
+      ]
+    },
+    {
+      "clean_xy": [
+        555.3160074636335,
+        589.186488871057
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-91",
+      "label": "path_boundary",
+      "reference_xy": [
+        229.88888888888889,
+        552.2222222222222
+      ]
+    },
+    {
+      "clean_xy": [
+        539.370556657618,
+        647.1894345800386
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-92",
+      "label": "path_boundary",
+      "reference_xy": [
+        165.4,
+        552.8
+      ]
+    },
+    {
+      "clean_xy": [
+        550.7913595912139,
+        608.710863839057
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-93",
+      "label": "path_boundary",
+      "reference_xy": [
+        208.42857142857142,
+        553.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        544.3713257624644,
+        638.817640453548
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-94",
+      "label": "path_boundary",
+      "reference_xy": [
+        175.5,
+        555.5
+      ]
+    },
+    {
+      "clean_xy": [
+        557.4082252512084,
+        595.745824641441
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-95",
+      "label": "path_boundary",
+      "reference_xy": [
+        223.7391304347826,
+        556.304347826087
+      ]
+    },
+    {
+      "clean_xy": [
+        559.7083239617043,
+        603.0975133439404
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-96",
+      "label": "path_boundary",
+      "reference_xy": [
+        216.83333333333334,
+        560.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        559.1679184950628,
+        606.9845119180131
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-97",
+      "label": "path_boundary",
+      "reference_xy": [
+        212.66666666666666,
+        561.4166666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        549.3748094014154,
+        645.090407635846
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-98",
+      "label": "path_boundary",
+      "reference_xy": [
+        170.5,
+        562.5
+      ]
+    },
+    {
+      "clean_xy": [
+        553.8640998881752,
+        649.762170978177
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-99",
+      "label": "path_boundary",
+      "reference_xy": [
+        167.0,
+        568.5
+      ]
+    },
+    {
+      "clean_xy": [
+        612.6334454604757,
+        445.26175652845313
+      ],
+      "glyph_pixels": 43,
+      "glyph_radius_pixels": 3.6996385101659595,
+      "id": "path_boundary-100",
+      "label": "path_boundary",
+      "reference_xy": [
+        395.1162790697674,
+        569.0930232558139
+      ]
+    },
+    {
+      "clean_xy": [
+        559.8291457918253,
+        656.6318302941181
+      ],
+      "glyph_pixels": 3,
+      "glyph_radius_pixels": 0.9772050238058398,
+      "id": "path_boundary-101",
+      "label": "path_boundary",
+      "reference_xy": [
+        161.66666666666666,
+        576.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        562.626038694679,
+        660.2077930799891
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-102",
+      "label": "path_boundary",
+      "reference_xy": [
+        158.8,
+        580.6
+      ]
+    },
+    {
+      "clean_xy": [
+        541.1748488920524,
+        753.1851158752124
+      ],
+      "glyph_pixels": 38,
+      "glyph_radius_pixels": 3.477898169151024,
+      "id": "path_boundary-103",
+      "label": "path_boundary",
+      "reference_xy": [
+        56.63157894736842,
+        585.7631578947369
+      ]
+    },
+    {
+      "clean_xy": [
+        569.0300540545464,
+        658.151020471224
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-104",
+      "label": "path_boundary",
+      "reference_xy": [
+        162.8,
+        586.6
+      ]
+    },
+    {
+      "clean_xy": [
+        573.7228618905652,
+        661.4260172933863
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-105",
+      "label": "path_boundary",
+      "reference_xy": [
+        160.8,
+        592.4
+      ]
+    },
+    {
+      "clean_xy": [
+        578.0086350280661,
+        667.494547155886
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-106",
+      "label": "path_boundary",
+      "reference_xy": [
+        155.8,
+        598.6
+      ]
+    },
+    {
+      "clean_xy": [
+        561.9072534308909,
+        737.5377477806339
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-107",
+      "label": "path_boundary",
+      "reference_xy": [
+        78.85,
+        602.55
+      ]
+    },
+    {
+      "clean_xy": [
+        637.733685131577,
+        471.63590793839427
+      ],
+      "glyph_pixels": 35,
+      "glyph_radius_pixels": 3.3377905890622728,
+      "id": "path_boundary-108",
+      "label": "path_boundary",
+      "reference_xy": [
+        375.2857142857143,
+        602.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        582.0132732920418,
+        674.2589049498577
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-109",
+      "label": "path_boundary",
+      "reference_xy": [
+        150.0,
+        604.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        565.9087737205008,
+        745.1376598804829
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-110",
+      "label": "path_boundary",
+      "reference_xy": [
+        72.1875,
+        608.90625
+      ]
+    },
+    {
+      "clean_xy": [
+        641.779530158135,
+        479.1360194185298
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-111",
+      "label": "path_boundary",
+      "reference_xy": [
+        368.7391304347826,
+        609.0869565217391
+      ]
+    },
+    {
+      "clean_xy": [
+        588.6225072587487,
+        675.8625982189301
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-112",
+      "label": "path_boundary",
+      "reference_xy": [
+        150.28571428571428,
+        612.0
+      ]
+    },
+    {
+      "clean_xy": [
+        571.2768230660021,
+        744.0589305555444
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-113",
+      "label": "path_boundary",
+      "reference_xy": [
+        74.875,
+        614.125
+      ]
+    },
+    {
+      "clean_xy": [
+        618.6209454492509,
+        580.1008692309917
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-114",
+      "label": "path_boundary",
+      "reference_xy": [
+        257.8333333333333,
+        614.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        649.8597169367832,
+        475.2871064316787
+      ],
+      "glyph_pixels": 38,
+      "glyph_radius_pixels": 3.477898169151024,
+      "id": "path_boundary-115",
+      "label": "path_boundary",
+      "reference_xy": [
+        375.07894736842104,
+        616.2894736842105
+      ]
+    },
+    {
+      "clean_xy": [
+        602.9508102775546,
+        641.4861725041259
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-116",
+      "label": "path_boundary",
+      "reference_xy": [
+        189.9375,
+        616.6875
+      ]
+    },
+    {
+      "clean_xy": [
+        605.0080830631998,
+        636.0391460880301
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-117",
+      "label": "path_boundary",
+      "reference_xy": [
+        196.1578947368421,
+        617.2105263157895
+      ]
+    },
+    {
+      "clean_xy": [
+        622.4151775122065,
+        576.5856408353661
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-118",
+      "label": "path_boundary",
+      "reference_xy": [
+        262.57142857142856,
+        617.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        607.6755789420721,
+        630.8374772070138
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-119",
+      "label": "path_boundary",
+      "reference_xy": [
+        202.30434782608697,
+        618.4347826086956
+      ]
+    },
+    {
+      "clean_xy": [
+        594.573207067421,
+        677.8330580463254
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-120",
+      "label": "path_boundary",
+      "reference_xy": [
+        150.0,
+        618.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        626.1587509937883,
+        571.9014878986345
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-121",
+      "label": "path_boundary",
+      "reference_xy": [
+        268.5,
+        620.2
+      ]
+    },
+    {
+      "clean_xy": [
+        577.6164727153853,
+        742.6042202025069
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-122",
+      "label": "path_boundary",
+      "reference_xy": [
+        78.23529411764706,
+        620.2352941176471
+      ]
+    },
+    {
+      "clean_xy": [
+        629.8815969088178,
+        566.6572723687711
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-123",
+      "label": "path_boundary",
+      "reference_xy": [
+        275.0,
+        622.5
+      ]
+    },
+    {
+      "clean_xy": [
+        625.159606170268,
+        590.2370803598426
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-124",
+      "label": "path_boundary",
+      "reference_xy": [
+        249.3,
+        624.55
+      ]
+    },
+    {
+      "clean_xy": [
+        599.5741193830179,
+        681.6806251617716
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-125",
+      "label": "path_boundary",
+      "reference_xy": [
+        147.5,
+        625.0
+      ]
+    },
+    {
+      "clean_xy": [
+        635.684692699388,
+        560.7034723376966
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-126",
+      "label": "path_boundary",
+      "reference_xy": [
+        282.8421052631579,
+        626.7368421052631
+      ]
+    },
+    {
+      "clean_xy": [
+        660.1222723716444,
+        477.9467443823005
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-127",
+      "label": "path_boundary",
+      "reference_xy": [
+        375.3478260869565,
+        627.6521739130435
+      ]
+    },
+    {
+      "clean_xy": [
+        618.2256797166159,
+        627.6204081097295
+      ],
+      "glyph_pixels": 46,
+      "glyph_radius_pixels": 3.826519928662906,
+      "id": "path_boundary-128",
+      "label": "path_boundary",
+      "reference_xy": [
+        208.7173913043478,
+        628.3695652173913
+      ]
+    },
+    {
+      "clean_xy": [
+        585.0222257627493,
+        745.552341799147
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-129",
+      "label": "path_boundary",
+      "reference_xy": [
+        77.36842105263158,
+        628.7368421052631
+      ]
+    },
+    {
+      "clean_xy": [
+        603.8070846906883,
+        686.2794466041746
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-130",
+      "label": "path_boundary",
+      "reference_xy": [
+        144.0,
+        630.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        641.0668409523533,
+        555.9399477795602
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-131",
+      "label": "path_boundary",
+      "reference_xy": [
+        289.3333333333333,
+        630.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        665.0220474059197,
+        472.3079962790573
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-132",
+      "label": "path_boundary",
+      "reference_xy": [
+        382.6,
+        631.05
+      ]
+    },
+    {
+      "clean_xy": [
+        631.885044508093,
+        597.4048892841481
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-133",
+      "label": "path_boundary",
+      "reference_xy": [
+        243.88235294117646,
+        633.5882352941177
+      ]
+    },
+    {
+      "clean_xy": [
+        591.0876719551729,
+        742.1742287619622
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-134",
+      "label": "path_boundary",
+      "reference_xy": [
+        82.63157894736842,
+        634.0
+      ]
+    },
+    {
+      "clean_xy": [
+        644.9860056653547,
+        559.9645779975698
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-135",
+      "label": "path_boundary",
+      "reference_xy": [
+        286.3333333333333,
+        636.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        608.0395357336879,
+        690.3932280332073
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-136",
+      "label": "path_boundary",
+      "reference_xy": [
+        141.0,
+        636.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        636.0951722839742,
+        593.1011561335447
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-137",
+      "label": "path_boundary",
+      "reference_xy": [
+        249.55555555555554,
+        636.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        595.4858263873873,
+        736.6326505102526
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-138",
+      "label": "path_boundary",
+      "reference_xy": [
+        89.63636363636364,
+        636.9090909090909
+      ]
+    },
+    {
+      "clean_xy": [
+        628.9366738874214,
+        624.4044791555424
+      ],
+      "glyph_pixels": 34,
+      "glyph_radius_pixels": 3.2897623212397704,
+      "id": "path_boundary-139",
+      "label": "path_boundary",
+      "reference_xy": [
+        215.1764705882353,
+        638.4705882352941
+      ]
+    },
+    {
+      "clean_xy": [
+        666.6909472094807,
+        493.53636055834534
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-140",
+      "label": "path_boundary",
+      "reference_xy": [
+        361.2,
+        639.0
+      ]
+    },
+    {
+      "clean_xy": [
+        647.6233335025315,
+        563.4255079412239
+      ],
+      "glyph_pixels": 13,
+      "glyph_radius_pixels": 2.0342144725641096,
+      "id": "path_boundary-141",
+      "label": "path_boundary",
+      "reference_xy": [
+        283.53846153846155,
+        639.8461538461538
+      ]
+    },
+    {
+      "clean_xy": [
+        600.2067344635329,
+        734.5524258895211
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-142",
+      "label": "path_boundary",
+      "reference_xy": [
+        93.16666666666667,
+        641.1666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        642.1539923072504,
+        587.7135275690734
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-143",
+      "label": "path_boundary",
+      "reference_xy": [
+        256.8888888888889,
+        641.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        612.8499183805372,
+        695.8028887682754
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-144",
+      "label": "path_boundary",
+      "reference_xy": [
+        136.83333333333334,
+        642.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        603.4683664777585,
+        729.3385949442443
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-145",
+      "label": "path_boundary",
+      "reference_xy": [
+        99.5,
+        643.0
+      ]
+    },
+    {
+      "clean_xy": [
+        645.8840222329652,
+        584.5456237444595
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-146",
+      "label": "path_boundary",
+      "reference_xy": [
+        261.25,
+        644.25
+      ]
+    },
+    {
+      "clean_xy": [
+        605.7076119420947,
+        726.581556475021
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-147",
+      "label": "path_boundary",
+      "reference_xy": [
+        103.0,
+        644.5
+      ]
+    },
+    {
+      "clean_xy": [
+        652.7254530445332,
+        568.7399788266378
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-148",
+      "label": "path_boundary",
+      "reference_xy": [
+        279.55555555555554,
+        646.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        677.1453121512872,
+        487.76638457122783
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-149",
+      "label": "path_boundary",
+      "reference_xy": [
+        370.2173913043478,
+        648.0869565217391
+      ]
+    },
+    {
+      "clean_xy": [
+        611.5938342970751,
+        719.5284999326966
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-150",
+      "label": "path_boundary",
+      "reference_xy": [
+        112.0,
+        648.5
+      ]
+    },
+    {
+      "clean_xy": [
+        617.0827122666507,
+        700.2400302062216
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-151",
+      "label": "path_boundary",
+      "reference_xy": [
+        133.5,
+        648.5
+      ]
+    },
+    {
+      "clean_xy": [
+        651.2924633328427,
+        580.0235212133073
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-152",
+      "label": "path_boundary",
+      "reference_xy": [
+        267.5,
+        648.5
+      ]
+    },
+    {
+      "clean_xy": [
+        613.12681414646,
+        715.2774312030174
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-153",
+      "label": "path_boundary",
+      "reference_xy": [
+        116.83333333333333,
+        648.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        640.0711411876795,
+        622.3221364356316
+      ],
+      "glyph_pixels": 44,
+      "glyph_radius_pixels": 3.742410318509555,
+      "id": "path_boundary-154",
+      "label": "path_boundary",
+      "reference_xy": [
+        220.5909090909091,
+        649.3409090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        654.2986272757636,
+        575.5451483903864
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-155",
+      "label": "path_boundary",
+      "reference_xy": [
+        273.0,
+        650.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        615.9422769990765,
+        712.1994719952617
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-156",
+      "label": "path_boundary",
+      "reference_xy": [
+        120.83333333333333,
+        650.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        620.3299333959527,
+        707.3291615395905
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "path_boundary-157",
+      "label": "path_boundary",
+      "reference_xy": [
+        127.14285714285714,
+        653.9285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        682.3946296294524,
+        489.4709947886083
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-158",
+      "label": "path_boundary",
+      "reference_xy": [
+        370.0,
+        654.0
+      ]
+    },
+    {
+      "clean_xy": [
+        651.776599247349,
+        628.8021870106493
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-159",
+      "label": "path_boundary",
+      "reference_xy": [
+        217.34375,
+        663.3125
+      ]
+    },
+    {
+      "clean_xy": [
+        691.11438299555,
+        491.34623899235964
+      ],
+      "glyph_pixels": 24,
+      "glyph_radius_pixels": 2.763953195770684,
+      "id": "path_boundary-160",
+      "label": "path_boundary",
+      "reference_xy": [
+        370.625,
+        663.5416666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        686.437053794235,
+        521.5159925036489
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-161",
+      "label": "path_boundary",
+      "reference_xy": [
+        338.14285714285717,
+        667.5714285714286
+      ]
+    },
+    {
+      "clean_xy": [
+        684.6150490900495,
+        529.3792420209943
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-162",
+      "label": "path_boundary",
+      "reference_xy": [
+        329.5,
+        668.0
+      ]
+    },
+    {
+      "clean_xy": [
+        685.1899746674023,
+        534.5534152701055
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-163",
+      "label": "path_boundary",
+      "reference_xy": [
+        324.3333333333333,
+        670.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        686.2760705546926,
+        540.1559057859001
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-164",
+      "label": "path_boundary",
+      "reference_xy": [
+        318.875,
+        672.875
+      ]
+    },
+    {
+      "clean_xy": [
+        699.61532050401,
+        493.28043865993175
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-165",
+      "label": "path_boundary",
+      "reference_xy": [
+        371.125,
+        672.875
+      ]
+    },
+    {
+      "clean_xy": [
+        662.9322965682524,
+        629.4301294590718
+      ],
+      "glyph_pixels": 33,
+      "glyph_radius_pixels": 3.2410224072142872,
+      "id": "path_boundary-166",
+      "label": "path_boundary",
+      "reference_xy": [
+        219.96969696969697,
+        675.0
+      ]
+    },
+    {
+      "clean_xy": [
+        702.3427747484197,
+        525.017045236621
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-167",
+      "label": "path_boundary",
+      "reference_xy": [
+        339.2,
+        685.0
+      ]
+    },
+    {
+      "clean_xy": [
+        671.8843618184148,
+        636.6516803449075
+      ],
+      "glyph_pixels": 40,
+      "glyph_radius_pixels": 3.5682482323055424,
+      "id": "path_boundary-168",
+      "label": "path_boundary",
+      "reference_xy": [
+        215.15,
+        686.35
+      ]
+    },
+    {
+      "clean_xy": [
+        703.8430634140807,
+        533.2346040939351
+      ],
+      "glyph_pixels": 24,
+      "glyph_radius_pixels": 2.763953195770684,
+      "id": "path_boundary-169",
+      "label": "path_boundary",
+      "reference_xy": [
+        331.1666666666667,
+        688.9583333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        709.7097176719369,
+        512.7605875587825
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-170",
+      "label": "path_boundary",
+      "reference_xy": [
+        354.0,
+        689.0
+      ]
+    },
+    {
+      "clean_xy": [
+        690.3133434671615,
+        586.763565356999
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-171",
+      "label": "path_boundary",
+      "reference_xy": [
+        272.0,
+        690.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        703.7395899947379,
+        544.2561165329105
+      ],
+      "glyph_pixels": 35,
+      "glyph_radius_pixels": 3.3377905890622728,
+      "id": "path_boundary-172",
+      "label": "path_boundary",
+      "reference_xy": [
+        319.77142857142854,
+        692.0857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        676.2708726221578,
+        648.4436836774635
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-173",
+      "label": "path_boundary",
+      "reference_xy": [
+        204.27777777777777,
+        694.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        692.3055205164835,
+        592.6643052285143
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-174",
+      "label": "path_boundary",
+      "reference_xy": [
+        266.5,
+        694.5
+      ]
+    },
+    {
+      "clean_xy": [
+        709.551151974309,
+        551.1836960306645
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-175",
+      "label": "path_boundary",
+      "reference_xy": [
+        314.3333333333333,
+        700.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        696.3327275921207,
+        600.7293784845147
+      ],
+      "glyph_pixels": 52,
+      "glyph_radius_pixels": 4.068428945128219,
+      "id": "path_boundary-176",
+      "label": "path_boundary",
+      "reference_xy": [
+        259.36538461538464,
+        701.0192307692307
+      ]
+    },
+    {
+      "clean_xy": [
+        715.7951602277943,
+        534.602635693174
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-177",
+      "label": "path_boundary",
+      "reference_xy": [
+        333.2631578947368,
+        701.6842105263158
+      ]
+    },
+    {
+      "clean_xy": [
+        711.7025300593787,
+        555.5134271614555
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-178",
+      "label": "path_boundary",
+      "reference_xy": [
+        310.5,
+        703.6
+      ]
+    },
+    {
+      "clean_xy": [
+        727.8379982939725,
+        499.49335356560545
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-179",
+      "label": "path_boundary",
+      "reference_xy": [
+        373.0,
+        703.8
+      ]
+    },
+    {
+      "clean_xy": [
+        682.528947866011,
+        659.3143627029347
+      ],
+      "glyph_pixels": 42,
+      "glyph_radius_pixels": 3.656366395715726,
+      "id": "path_boundary-180",
+      "label": "path_boundary",
+      "reference_xy": [
+        194.9047619047619,
+        703.9761904761905
+      ]
+    },
+    {
+      "clean_xy": [
+        726.6053568748384,
+        507.0625134185036
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-181",
+      "label": "path_boundary",
+      "reference_xy": [
+        364.8333333333333,
+        704.75
+      ]
+    },
+    {
+      "clean_xy": [
+        711.9263869634274,
+        560.1174976374981
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-182",
+      "label": "path_boundary",
+      "reference_xy": [
+        305.8181818181818,
+        705.1818181818181
+      ]
+    },
+    {
+      "clean_xy": [
+        722.8736514263221,
+        528.7905925965777
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-183",
+      "label": "path_boundary",
+      "reference_xy": [
+        341.3333333333333,
+        707.2777777777778
+      ]
+    },
+    {
+      "clean_xy": [
+        727.1457334333124,
+        514.6570960229299
+      ],
+      "glyph_pixels": 56,
+      "glyph_radius_pixels": 4.222008245644752,
+      "id": "path_boundary-184",
+      "label": "path_boundary",
+      "reference_xy": [
+        357.1607142857143,
+        707.5357142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        713.9394030217449,
+        566.0556542225381
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-185",
+      "label": "path_boundary",
+      "reference_xy": [
+        300.2857142857143,
+        709.0
+      ]
+    },
+    {
+      "clean_xy": [
+        684.8478102275889,
+        672.5911939364618
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-186",
+      "label": "path_boundary",
+      "reference_xy": [
+        181.89473684210526,
+        710.2631578947369
+      ]
+    },
+    {
+      "clean_xy": [
+        683.8266850929825,
+        680.0538091521152
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-187",
+      "label": "path_boundary",
+      "reference_xy": [
+        173.9,
+        711.4
+      ]
+    },
+    {
+      "clean_xy": [
+        707.5291023533339,
+        597.6699103039143
+      ],
+      "glyph_pixels": 36,
+      "glyph_radius_pixels": 3.385137501286538,
+      "id": "path_boundary-188",
+      "label": "path_boundary",
+      "reference_xy": [
+        265.80555555555554,
+        711.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        716.8933137573226,
+        572.7149662321533
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-189",
+      "label": "path_boundary",
+      "reference_xy": [
+        294.2857142857143,
+        714.0
+      ]
+    },
+    {
+      "clean_xy": [
+        718.6459375403084,
+        578.8246190478048
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-190",
+      "label": "path_boundary",
+      "reference_xy": [
+        288.5,
+        717.6
+      ]
+    },
+    {
+      "clean_xy": [
+        689.8389504837066,
+        683.1224087428617
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-191",
+      "label": "path_boundary",
+      "reference_xy": [
+        172.5,
+        718.5
+      ]
+    },
+    {
+      "clean_xy": [
+        739.3812799501361,
+        511.68812136460457
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-192",
+      "label": "path_boundary",
+      "reference_xy": [
+        363.8125,
+        719.28125
+      ]
+    },
+    {
+      "clean_xy": [
+        733.8191981817918,
+        533.6832865397467
+      ],
+      "glyph_pixels": 2,
+      "glyph_radius_pixels": 0.7978845608028654,
+      "id": "path_boundary-193",
+      "label": "path_boundary",
+      "reference_xy": [
+        339.5,
+        720.0
+      ]
+    },
+    {
+      "clean_xy": [
+        727.9339001976234,
+        561.7486651697925
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-194",
+      "label": "path_boundary",
+      "reference_xy": [
+        308.8333333333333,
+        722.1666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        738.8233311264776,
+        523.7066622437446
+      ],
+      "glyph_pixels": 43,
+      "glyph_radius_pixels": 3.6996385101659595,
+      "id": "path_boundary-195",
+      "label": "path_boundary",
+      "reference_xy": [
+        351.25581395348837,
+        722.2325581395348
+      ]
+    },
+    {
+      "clean_xy": [
+        717.7600149384485,
+        598.210707618309
+      ],
+      "glyph_pixels": 48,
+      "glyph_radius_pixels": 3.9088200952233594,
+      "id": "path_boundary-196",
+      "label": "path_boundary",
+      "reference_xy": [
+        268.25,
+        722.375
+      ]
+    },
+    {
+      "clean_xy": [
+        693.6827996407054,
+        683.2464572150398
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-197",
+      "label": "path_boundary",
+      "reference_xy": [
+        173.5,
+        722.5
+      ]
+    },
+    {
+      "clean_xy": [
+        736.4769546205576,
+        536.2714190533991
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-198",
+      "label": "path_boundary",
+      "reference_xy": [
+        337.6111111111111,
+        723.5
+      ]
+    },
+    {
+      "clean_xy": [
+        730.8976861204766,
+        557.5814953724638
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-199",
+      "label": "path_boundary",
+      "reference_xy": [
+        314.0,
+        724.0
+      ]
+    },
+    {
+      "clean_xy": [
+        716.3468056141994,
+        609.6884486275337
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-200",
+      "label": "path_boundary",
+      "reference_xy": [
+        256.0,
+        724.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        714.8796212751564,
+        615.5745528767628
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-201",
+      "label": "path_boundary",
+      "reference_xy": [
+        249.5,
+        724.5
+      ]
+    },
+    {
+      "clean_xy": [
+        722.9522766514826,
+        588.9103944145455
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "path_boundary-202",
+      "label": "path_boundary",
+      "reference_xy": [
+        279.3636363636364,
+        725.0
+      ]
+    },
+    {
+      "clean_xy": [
+        729.8812993250804,
+        565.697088004505
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "path_boundary-203",
+      "label": "path_boundary",
+      "reference_xy": [
+        305.3333333333333,
+        725.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        747.5588670358884,
+        514.0273219160765
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-204",
+      "label": "path_boundary",
+      "reference_xy": [
+        363.8,
+        728.4
+      ]
+    },
+    {
+      "clean_xy": [
+        744.508432056673,
+        525.0876505408487
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-205",
+      "label": "path_boundary",
+      "reference_xy": [
+        351.5,
+        728.5
+      ]
+    },
+    {
+      "clean_xy": [
+        699.6418457898625,
+        684.4573163749934
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-206",
+      "label": "path_boundary",
+      "reference_xy": [
+        174.0,
+        729.0
+      ]
+    },
+    {
+      "clean_xy": [
+        725.3137238483417,
+        595.9477177707632
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-207",
+      "label": "path_boundary",
+      "reference_xy": [
+        272.8,
+        729.5
+      ]
+    },
+    {
+      "clean_xy": [
+        718.0341074723169,
+        622.5940007540532
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-208",
+      "label": "path_boundary",
+      "reference_xy": [
+        243.1875,
+        729.8125
+      ]
+    },
+    {
+      "clean_xy": [
+        722.6768505447974,
+        606.9179211711174
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-209",
+      "label": "path_boundary",
+      "reference_xy": [
+        260.7142857142857,
+        730.0
+      ]
+    },
+    {
+      "clean_xy": [
+        734.6559360767773,
+        569.0415510531557
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-210",
+      "label": "path_boundary",
+      "reference_xy": [
+        303.2857142857143,
+        731.2380952380952
+      ]
+    },
+    {
+      "clean_xy": [
+        718.2747360206969,
+        627.4992902579813
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-211",
+      "label": "path_boundary",
+      "reference_xy": [
+        238.2,
+        731.5
+      ]
+    },
+    {
+      "clean_xy": [
+        743.3005797475768,
+        539.637097357806
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-212",
+      "label": "path_boundary",
+      "reference_xy": [
+        336.14285714285717,
+        731.5238095238095
+      ]
+    },
+    {
+      "clean_xy": [
+        717.9719798936954,
+        631.9711361037491
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-213",
+      "label": "path_boundary",
+      "reference_xy": [
+        233.5,
+        732.5
+      ]
+    },
+    {
+      "clean_xy": [
+        746.6964528430077,
+        534.4383769309023
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "path_boundary-214",
+      "label": "path_boundary",
+      "reference_xy": [
+        342.5,
+        733.5
+      ]
+    },
+    {
+      "clean_xy": [
+        704.2551847488003,
+        685.2852305603255
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-215",
+      "label": "path_boundary",
+      "reference_xy": [
+        174.5,
+        734.0
+      ]
+    },
+    {
+      "clean_xy": [
+        741.8715095211203,
+        553.4564081484713
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-216",
+      "label": "path_boundary",
+      "reference_xy": [
+        321.4736842105263,
+        734.1052631578947
+      ]
+    },
+    {
+      "clean_xy": [
+        753.0192447524083,
+        516.1953684014769
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-217",
+      "label": "path_boundary",
+      "reference_xy": [
+        363.1666666666667,
+        734.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        750.2593747055296,
+        526.3908194112892
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-218",
+      "label": "path_boundary",
+      "reference_xy": [
+        351.84375,
+        734.8125
+      ]
+    },
+    {
+      "clean_xy": [
+        728.1336497349437,
+        609.163455917255
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-219",
+      "label": "path_boundary",
+      "reference_xy": [
+        260.0,
+        736.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        740.8427325048222,
+        564.5937435443625
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-220",
+      "label": "path_boundary",
+      "reference_xy": [
+        309.6875,
+        736.3125
+      ]
+    },
+    {
+      "clean_xy": [
+        719.7410037935899,
+        638.8751398422422
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-221",
+      "label": "path_boundary",
+      "reference_xy": [
+        226.9,
+        736.35
+      ]
+    },
+    {
+      "clean_xy": [
+        731.907738264782,
+        597.1991880788979
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-222",
+      "label": "path_boundary",
+      "reference_xy": [
+        273.44444444444446,
+        736.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        738.853041780784,
+        574.0835750741966
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "path_boundary-223",
+      "label": "path_boundary",
+      "reference_xy": [
+        299.3181818181818,
+        737.0454545454545
+      ]
+    },
+    {
+      "clean_xy": [
+        730.8824599694336,
+        603.6420611676655
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-224",
+      "label": "path_boundary",
+      "reference_xy": [
+        266.5,
+        737.5
+      ]
+    },
+    {
+      "clean_xy": [
+        734.5332020608257,
+        590.8129859542425
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-225",
+      "label": "path_boundary",
+      "reference_xy": [
+        280.8,
+        737.5
+      ]
+    },
+    {
+      "clean_xy": [
+        737.239151505444,
+        582.8456899818436
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "path_boundary-226",
+      "label": "path_boundary",
+      "reference_xy": [
+        289.8095238095238,
+        737.952380952381
+      ]
+    },
+    {
+      "clean_xy": [
+        709.7646333052091,
+        685.3983613686646
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-227",
+      "label": "path_boundary",
+      "reference_xy": [
+        176.0,
+        739.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        744.2591190976219,
+        567.8813045378708
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-228",
+      "label": "path_boundary",
+      "reference_xy": [
+        307.3,
+        740.8
+      ]
+    },
+    {
+      "clean_xy": [
+        747.8588018590646,
+        555.2316569498105
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-229",
+      "label": "path_boundary",
+      "reference_xy": [
+        321.4,
+        740.8
+      ]
+    },
+    {
+      "clean_xy": [
+        756.0642541257286,
+        528.2144345248087
+      ],
+      "glyph_pixels": 3,
+      "glyph_radius_pixels": 0.9772050238058398,
+      "id": "path_boundary-230",
+      "label": "path_boundary",
+      "reference_xy": [
+        351.6666666666667,
+        741.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        759.6330172062078,
+        518.6269814347702
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-231",
+      "label": "path_boundary",
+      "reference_xy": [
+        362.6,
+        742.2
+      ]
+    },
+    {
+      "clean_xy": [
+        747.5959463842341,
+        562.0908362214992
+      ],
+      "glyph_pixels": 24,
+      "glyph_radius_pixels": 2.763953195770684,
+      "id": "path_boundary-232",
+      "label": "path_boundary",
+      "reference_xy": [
+        314.25,
+        742.5416666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        724.0869185668058,
+        647.2882736964034
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-233",
+      "label": "path_boundary",
+      "reference_xy": [
+        219.5,
+        743.3
+      ]
+    },
+    {
+      "clean_xy": [
+        722.8519696829558,
+        654.6951456956788
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-234",
+      "label": "path_boundary",
+      "reference_xy": [
+        211.5,
+        744.2
+      ]
+    },
+    {
+      "clean_xy": [
+        722.5903879355732,
+        661.7486448972986
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-235",
+      "label": "path_boundary",
+      "reference_xy": [
+        204.15,
+        746.0
+      ]
+    },
+    {
+      "clean_xy": [
+        760.6381979132194,
+        530.4155446773111
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "path_boundary-236",
+      "label": "path_boundary",
+      "reference_xy": [
+        350.7391304347826,
+        746.695652173913
+      ]
+    },
+    {
+      "clean_xy": [
+        764.3623196133408,
+        520.0697674911144
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-237",
+      "label": "path_boundary",
+      "reference_xy": [
+        362.5,
+        747.5
+      ]
+    },
+    {
+      "clean_xy": [
+        763.5340054443759,
+        524.3058531063195
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-238",
+      "label": "path_boundary",
+      "reference_xy": [
+        357.8888888888889,
+        747.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        716.6808466626371,
+        692.5386923426715
+      ],
+      "glyph_pixels": 51,
+      "glyph_radius_pixels": 4.029119531035698,
+      "id": "path_boundary-239",
+      "label": "path_boundary",
+      "reference_xy": [
+        170.66666666666666,
+        748.9411764705883
+      ]
+    },
+    {
+      "clean_xy": [
+        729.5249611328152,
+        664.6432993157523
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-240",
+      "label": "path_boundary",
+      "reference_xy": [
+        203.2,
+        754.0
+      ]
+    },
+    {
+      "clean_xy": [
+        723.8097506831106,
+        700.0628106838657
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-241",
+      "label": "path_boundary",
+      "reference_xy": [
+        165.0,
+        758.5
+      ]
+    },
+    {
+      "clean_xy": [
+        734.5179123464503,
+        665.3764652199319
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-242",
+      "label": "path_boundary",
+      "reference_xy": [
+        203.9090909090909,
+        759.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        729.8809390981193,
+        701.3055819250378
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "path_boundary-243",
+      "label": "path_boundary",
+      "reference_xy": [
+        165.5,
+        765.125
+      ]
+    },
+    {
+      "clean_xy": [
+        742.1079386138713,
+        669.7022803418945
+      ],
+      "glyph_pixels": 37,
+      "glyph_radius_pixels": 3.431831258788849,
+      "id": "path_boundary-244",
+      "label": "path_boundary",
+      "reference_xy": [
+        201.67567567567568,
+        768.4594594594595
+      ]
+    },
+    {
+      "clean_xy": [
+        736.1171850168727,
+        713.2144945989775
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-245",
+      "label": "path_boundary",
+      "reference_xy": [
+        155.05,
+        775.05
+      ]
+    },
+    {
+      "clean_xy": [
+        739.3901501685004,
+        704.4083286668258
+      ],
+      "glyph_pixels": 44,
+      "glyph_radius_pixels": 3.742410318509555,
+      "id": "path_boundary-246",
+      "label": "path_boundary",
+      "reference_xy": [
+        165.0909090909091,
+        775.8409090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        735.3519796064433,
+        719.1410372625446
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-247",
+      "label": "path_boundary",
+      "reference_xy": [
+        148.71428571428572,
+        776.0
+      ]
+    },
+    {
+      "clean_xy": [
+        735.7676480461438,
+        724.9221884908974
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-248",
+      "label": "path_boundary",
+      "reference_xy": [
+        142.875,
+        778.125
+      ]
+    },
+    {
+      "clean_xy": [
+        750.3878880843931,
+        673.836660967047
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-249",
+      "label": "path_boundary",
+      "reference_xy": [
+        199.8421052631579,
+        778.2105263157895
+      ]
+    },
+    {
+      "clean_xy": [
+        735.6183885572476,
+        732.1773637784154
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-250",
+      "label": "path_boundary",
+      "reference_xy": [
+        135.35,
+        780.1
+      ]
+    },
+    {
+      "clean_xy": [
+        736.1503863357003,
+        738.4869028430711
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-251",
+      "label": "path_boundary",
+      "reference_xy": [
+        129.0,
+        782.5
+      ]
+    },
+    {
+      "clean_xy": [
+        735.8062990899788,
+        742.9146609374036
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-252",
+      "label": "path_boundary",
+      "reference_xy": [
+        124.33333333333333,
+        783.4444444444445
+      ]
+    },
+    {
+      "clean_xy": [
+        732.069239792433,
+        756.2363929656683
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-253",
+      "label": "path_boundary",
+      "reference_xy": [
+        109.5,
+        783.5
+      ]
+    },
+    {
+      "clean_xy": [
+        734.2501789791274,
+        750.2763182871696
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-254",
+      "label": "path_boundary",
+      "reference_xy": [
+        116.28571428571429,
+        784.0
+      ]
+    },
+    {
+      "clean_xy": [
+        757.3035465140538,
+        677.3358780467984
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-255",
+      "label": "path_boundary",
+      "reference_xy": [
+        198.26315789473685,
+        786.3684210526316
+      ]
+    },
+    {
+      "clean_xy": [
+        764.5634247712638,
+        679.5357896241092
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-256",
+      "label": "path_boundary",
+      "reference_xy": [
+        198.125,
+        794.5
+      ]
+    },
+    {
+      "clean_xy": [
+        771.0141268612199,
+        682.6702742491804
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "path_boundary-257",
+      "label": "path_boundary",
+      "reference_xy": [
+        196.78571428571428,
+        802.0714285714286
+      ]
+    },
+    {
+      "clean_xy": [
+        777.8160580293886,
+        683.4282861266094
+      ],
+      "glyph_pixels": 13,
+      "glyph_radius_pixels": 2.0342144725641096,
+      "id": "path_boundary-258",
+      "label": "path_boundary",
+      "reference_xy": [
+        198.0,
+        809.3076923076923
+      ]
+    },
+    {
+      "clean_xy": [
+        782.6610976951719,
+        686.803649544329
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-259",
+      "label": "path_boundary",
+      "reference_xy": [
+        195.94117647058823,
+        815.2941176470588
+      ]
+    },
+    {
+      "clean_xy": [
+        783.6152348810547,
+        693.4294918398637
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "path_boundary-260",
+      "label": "path_boundary",
+      "reference_xy": [
+        189.38888888888889,
+        818.2222222222222
+      ]
+    },
+    {
+      "clean_xy": [
+        764.4566354317164,
+        790.2901351830934
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-261",
+      "label": "path_boundary",
+      "reference_xy": [
+        83.88888888888889,
+        826.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        754.5131613328126,
+        826.6438692223946
+      ],
+      "glyph_pixels": 33,
+      "glyph_radius_pixels": 3.2410224072142872,
+      "id": "path_boundary-262",
+      "label": "path_boundary",
+      "reference_xy": [
+        43.484848484848484,
+        827.3030303030303
+      ]
+    },
+    {
+      "clean_xy": [
+        763.7749755034351,
+        796.8981373479269
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-263",
+      "label": "path_boundary",
+      "reference_xy": [
+        76.875,
+        828.125
+      ]
+    },
+    {
+      "clean_xy": [
+        768.3411030071971,
+        783.4082534013426
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-264",
+      "label": "path_boundary",
+      "reference_xy": [
+        92.125,
+        828.875
+      ]
+    },
+    {
+      "clean_xy": [
+        753.7581818535338,
+        835.5060889189215
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-265",
+      "label": "path_boundary",
+      "reference_xy": [
+        34.125,
+        829.125
+      ]
+    },
+    {
+      "clean_xy": [
+        765.4962212778192,
+        804.0552364875371
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-266",
+      "label": "path_boundary",
+      "reference_xy": [
+        70.0,
+        832.0
+      ]
+    },
+    {
+      "clean_xy": [
+        759.1355878703595,
+        833.6016621817292
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-267",
+      "label": "path_boundary",
+      "reference_xy": [
+        37.666666666666664,
+        834.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        774.0722647719552,
+        781.1600083052667
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-268",
+      "label": "path_boundary",
+      "reference_xy": [
+        96.125,
+        834.125
+      ]
+    },
+    {
+      "clean_xy": [
+        768.523073913325,
+        810.458223318063
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-269",
+      "label": "path_boundary",
+      "reference_xy": [
+        64.28571428571429,
+        837.0
+      ]
+    },
+    {
+      "clean_xy": [
+        764.3715567934838,
+        830.8892386866013
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-270",
+      "label": "path_boundary",
+      "reference_xy": [
+        42.0,
+        838.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        770.0498440424365,
+        815.695449332605
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-271",
+      "label": "path_boundary",
+      "reference_xy": [
+        59.333333333333336,
+        840.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        780.1571593196381,
+        780.2246583550177
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-272",
+      "label": "path_boundary",
+      "reference_xy": [
+        98.875,
+        840.125
+      ]
+    },
+    {
+      "clean_xy": [
+        768.2813504613724,
+        826.0753619943068
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-273",
+      "label": "path_boundary",
+      "reference_xy": [
+        48.111111111111114,
+        841.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        815.5071389683394,
+        662.9591291154563
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-274",
+      "label": "path_boundary",
+      "reference_xy": [
+        230.16666666666666,
+        842.1666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        773.9979030569249,
+        821.5317661161248
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "path_boundary-275",
+      "label": "path_boundary",
+      "reference_xy": [
+        54.473684210526315,
+        845.8947368421053
+      ]
+    },
+    {
+      "clean_xy": [
+        786.100570843605,
+        781.7947386562537
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-276",
+      "label": "path_boundary",
+      "reference_xy": [
+        99.0,
+        846.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        811.9629846443371,
+        703.8130636707727
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-277",
+      "label": "path_boundary",
+      "reference_xy": [
+        187.0,
+        850.5
+      ]
+    },
+    {
+      "clean_xy": [
+        814.250409556466,
+        698.160373501313
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-278",
+      "label": "path_boundary",
+      "reference_xy": [
+        193.5,
+        851.2
+      ]
+    },
+    {
+      "clean_xy": [
+        824.2742317840343,
+        664.7598982026761
+      ],
+      "glyph_pixels": 34,
+      "glyph_radius_pixels": 3.2897623212397704,
+      "id": "path_boundary-279",
+      "label": "path_boundary",
+      "reference_xy": [
+        230.88235294117646,
+        851.7352941176471
+      ]
+    },
+    {
+      "clean_xy": [
+        791.6120764586975,
+        783.8480295180742
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-280",
+      "label": "path_boundary",
+      "reference_xy": [
+        98.5,
+        853.0
+      ]
+    },
+    {
+      "clean_xy": [
+        792.308535781395,
+        791.1984010713431
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "path_boundary-281",
+      "label": "path_boundary",
+      "reference_xy": [
+        91.125,
+        855.875
+      ]
+    },
+    {
+      "clean_xy": [
+        794.9804064723473,
+        798.7068330920813
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-282",
+      "label": "path_boundary",
+      "reference_xy": [
+        84.16666666666667,
+        860.8333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        794.5803866050585,
+        804.0884619020594
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-283",
+      "label": "path_boundary",
+      "reference_xy": [
+        78.5,
+        862.0
+      ]
+    },
+    {
+      "clean_xy": [
+        834.5739267340244,
+        664.7967103711526
+      ],
+      "glyph_pixels": 30,
+      "glyph_radius_pixels": 3.0901936161855166,
+      "id": "path_boundary-284",
+      "label": "path_boundary",
+      "reference_xy": [
+        233.86666666666667,
+        862.3666666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        795.9385542531292,
+        807.5921263162021
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "path_boundary-285",
+      "label": "path_boundary",
+      "reference_xy": [
+        75.28571428571429,
+        864.4285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        842.232975510711,
+        662.1919450470764
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-286",
+      "label": "path_boundary",
+      "reference_xy": [
+        238.8,
+        869.5
+      ]
+    },
+    {
+      "clean_xy": [
+        851.1858028928725,
+        635.1611178239582
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-287",
+      "label": "path_boundary",
+      "reference_xy": [
+        269.3,
+        870.8
+      ]
+    },
+    {
+      "clean_xy": [
+        855.4875612041765,
+        628.1097412128919
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-288",
+      "label": "path_boundary",
+      "reference_xy": [
+        277.8333333333333,
+        873.1666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        804.6567431724933,
+        809.5742946414264
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "path_boundary-289",
+      "label": "path_boundary",
+      "reference_xy": [
+        75.8,
+        874.0
+      ]
+    },
+    {
+      "clean_xy": [
+        853.3989468518455,
+        638.6679431737786
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-290",
+      "label": "path_boundary",
+      "reference_xy": [
+        266.3333333333333,
+        874.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        858.8047258563363,
+        621.5647862082369
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-291",
+      "label": "path_boundary",
+      "reference_xy": [
+        285.55555555555554,
+        874.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        860.8766652996328,
+        615.4197592108417
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "path_boundary-292",
+      "label": "path_boundary",
+      "reference_xy": [
+        292.5,
+        875.0
+      ]
+    },
+    {
+      "clean_xy": [
+        847.4229359172989,
+        664.5017170029944
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "path_boundary-293",
+      "label": "path_boundary",
+      "reference_xy": [
+        237.94117647058823,
+        875.5294117647059
+      ]
+    },
+    {
+      "clean_xy": [
+        854.5503481796641,
+        642.4221768868284
+      ],
+      "glyph_pixels": 5,
+      "glyph_radius_pixels": 1.2615662610100802,
+      "id": "path_boundary-294",
+      "label": "path_boundary",
+      "reference_xy": [
+        262.8,
+        876.4
+      ]
+    },
+    {
+      "clean_xy": [
+        853.1678329401279,
+        648.9465738868586
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "path_boundary-295",
+      "label": "path_boundary",
+      "reference_xy": [
+        255.66666666666666,
+        876.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        851.886458027766,
+        655.5320784149739
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "path_boundary-296",
+      "label": "path_boundary",
+      "reference_xy": [
+        248.5,
+        877.5
+      ]
+    },
+    {
+      "clean_xy": [
+        810.4115520018522,
+        811.5028643028302
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-297",
+      "label": "path_boundary",
+      "reference_xy": [
+        75.5,
+        880.5
+      ]
+    },
+    {
+      "clean_xy": [
+        845.9549196105638,
+        697.8886617759206
+      ],
+      "glyph_pixels": 48,
+      "glyph_radius_pixels": 3.9088200952233594,
+      "id": "path_boundary-298",
+      "label": "path_boundary",
+      "reference_xy": [
+        203.08333333333334,
+        883.8125
+      ]
+    },
+    {
+      "clean_xy": [
+        815.4085559059507,
+        811.6641273166617
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "path_boundary-299",
+      "label": "path_boundary",
+      "reference_xy": [
+        76.8,
+        885.7
+      ]
+    },
+    {
+      "clean_xy": [
+        820.7727672175289,
+        812.1150269650403
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "path_boundary-300",
+      "label": "path_boundary",
+      "reference_xy": [
+        77.9090909090909,
+        891.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        859.3966835491543,
+        702.0784111770379
+      ],
+      "glyph_pixels": 41,
+      "glyph_radius_pixels": 3.6125759969217834,
+      "id": "path_boundary-301",
+      "label": "path_boundary",
+      "reference_xy": [
+        202.70731707317074,
+        898.9024390243902
+      ]
+    },
+    {
+      "clean_xy": [
+        179.81853742334414,
+        604.4476509212986
+      ],
+      "glyph_pixels": 321,
+      "glyph_radius_pixels": 10.108287365572707,
+      "id": "tree_location-0",
+      "label": "tree_location",
+      "reference_xy": [
+        103.96884735202492,
+        169.50467289719626
+      ]
+    },
+    {
+      "clean_xy": [
+        242.05452417898806,
+        426.4694268103551
+      ],
+      "glyph_pixels": 321,
+      "glyph_radius_pixels": 10.108287365572707,
+      "id": "tree_location-1",
+      "label": "tree_location",
+      "reference_xy": [
+        305.7538940809969,
+        181.45482866043614
+      ]
+    },
+    {
+      "clean_xy": [
+        253.81576223830513,
+        464.97486431941877
+      ],
+      "glyph_pixels": 320,
+      "glyph_radius_pixels": 10.092530088080641,
+      "id": "tree_location-2",
+      "label": "tree_location",
+      "reference_xy": [
+        269.5,
+        204.88125
+      ]
+    },
+    {
+      "clean_xy": [
+        226.13547033092766,
+        571.170714109653
+      ],
+      "glyph_pixels": 316,
+      "glyph_radius_pixels": 10.02925341359355,
+      "id": "tree_location-3",
+      "label": "tree_location",
+      "reference_xy": [
+        151.873417721519,
+        207.5
+      ]
+    },
+    {
+      "clean_xy": [
+        266.20183366832566,
+        499.0930194363996
+      ],
+      "glyph_pixels": 322,
+      "glyph_radius_pixels": 10.124020118074668,
+      "id": "tree_location-4",
+      "label": "tree_location",
+      "reference_xy": [
+        237.95341614906832,
+        227.66459627329192
+      ]
+    },
+    {
+      "clean_xy": [
+        343.1959287116814,
+        378.6082568984948
+      ],
+      "glyph_pixels": 320,
+      "glyph_radius_pixels": 10.092530088080641,
+      "id": "tree_location-5",
+      "label": "tree_location",
+      "reference_xy": [
+        384.784375,
+        271.703125
+      ]
+    },
+    {
+      "clean_xy": [
+        285.0606095698046,
+        601.8554130631121
+      ],
+      "glyph_pixels": 321,
+      "glyph_radius_pixels": 10.108287365572707,
+      "id": "tree_location-6",
+      "label": "tree_location",
+      "reference_xy": [
+        137.52336448598132,
+        277.26479750778816
+      ]
+    },
+    {
+      "clean_xy": [
+        374.0059646690592,
+        471.9435192576842
+      ],
+      "glyph_pixels": 323,
+      "glyph_radius_pixels": 10.139728459745083,
+      "id": "tree_location-7",
+      "label": "tree_location",
+      "reference_xy": [
+        297.58204334365325,
+        330.8606811145511
+      ]
+    },
+    {
+      "clean_xy": [
+        404.381500186349,
+        422.11878446538344
+      ],
+      "glyph_pixels": 313,
+      "glyph_radius_pixels": 9.981532666656284,
+      "id": "tree_location-8",
+      "label": "tree_location",
+      "reference_xy": [
+        357.87220447284346,
+        347.5623003194888
+      ]
+    },
+    {
+      "clean_xy": [
+        367.48070110811307,
+        588.6078628870762
+      ],
+      "glyph_pixels": 323,
+      "glyph_radius_pixels": 10.139728459745083,
+      "id": "tree_location-9",
+      "label": "tree_location",
+      "reference_xy": [
+        175.3684210526316,
+        358.3653250773994
+      ]
+    },
+    {
+      "clean_xy": [
+        450.82748429589316,
+        414.44151538788054
+      ],
+      "glyph_pixels": 321,
+      "glyph_radius_pixels": 10.108287365572707,
+      "id": "tree_location-10",
+      "label": "tree_location",
+      "reference_xy": [
+        379.41744548286607,
+        393.20249221183803
+      ]
+    },
+    {
+      "clean_xy": [
+        423.7092412308986,
+        562.518425688786
+      ],
+      "glyph_pixels": 313,
+      "glyph_radius_pixels": 9.981532666656284,
+      "id": "tree_location-11",
+      "label": "tree_location",
+      "reference_xy": [
+        218.7699680511182,
+        408.69009584664536
+      ]
+    },
+    {
+      "clean_xy": [
+        490.57975494664754,
+        360.45166574374014
+      ],
+      "glyph_pixels": 191,
+      "glyph_radius_pixels": 7.797255174810172,
+      "id": "tree_location-12",
+      "label": "tree_location",
+      "reference_xy": [
+        446.75392670157066,
+        418.35078534031413
+      ]
+    },
+    {
+      "clean_xy": [
+        521.2542759621286,
+        340.65222306378746
+      ],
+      "glyph_pixels": 187,
+      "glyph_radius_pixels": 7.715176518808164,
+      "id": "tree_location-13",
+      "label": "tree_location",
+      "reference_xy": [
+        476.1711229946524,
+        444.1711229946524
+      ]
+    },
+    {
+      "clean_xy": [
+        503.5764089169192,
+        415.0892214245642
+      ],
+      "glyph_pixels": 316,
+      "glyph_radius_pixels": 10.02925341359355,
+      "id": "tree_location-14",
+      "label": "tree_location",
+      "reference_xy": [
+        394.2278481012658,
+        447.7848101265823
+      ]
+    },
+    {
+      "clean_xy": [
+        459.10030924488115,
+        700.9926306135428
+      ],
+      "glyph_pixels": 60,
+      "glyph_radius_pixels": 4.370193722368317,
+      "id": "tree_location-15",
+      "label": "tree_location",
+      "reference_xy": [
+        86.36666666666666,
+        485.81666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        567.3578785878382,
+        365.00566856144223
+      ],
+      "glyph_pixels": 189,
+      "glyph_radius_pixels": 7.756324418739616,
+      "id": "tree_location-16",
+      "label": "tree_location",
+      "reference_xy": [
+        464.58730158730157,
+        498.85714285714283
+      ]
+    },
+    {
+      "clean_xy": [
+        558.965077187014,
+        463.1442715087561
+      ],
+      "glyph_pixels": 70,
+      "glyph_radius_pixels": 4.720348719413148,
+      "id": "tree_location-17",
+      "label": "tree_location",
+      "reference_xy": [
+        360.92857142857144,
+        519.0
+      ]
+    },
+    {
+      "clean_xy": [
+        611.7965980186962,
+        400.33422790273613
+      ],
+      "glyph_pixels": 192,
+      "glyph_radius_pixels": 7.817640190446719,
+      "id": "tree_location-18",
+      "label": "tree_location",
+      "reference_xy": [
+        441.1979166666667,
+        555.046875
+      ]
+    },
+    {
+      "clean_xy": [
+        702.3597818281104,
+        287.982078690001
+      ],
+      "glyph_pixels": 261,
+      "glyph_radius_pixels": 9.114761669619748,
+      "id": "tree_location-19",
+      "label": "tree_location",
+      "reference_xy": [
+        583.6245210727969,
+        615.463601532567
+      ]
+    },
+    {
+      "clean_xy": [
+        576.2835576834572,
+        784.7046242478615
+      ],
+      "glyph_pixels": 317,
+      "glyph_radius_pixels": 10.045109950630787,
+      "id": "tree_location-20",
+      "label": "tree_location",
+      "reference_xy": [
+        34.43217665615142,
+        631.2145110410095
+      ]
+    },
+    {
+      "clean_xy": [
+        741.5410373003209,
+        329.3250053247559
+      ],
+      "glyph_pixels": 322,
+      "glyph_radius_pixels": 10.124020118074668,
+      "id": "tree_location-21",
+      "label": "tree_location",
+      "reference_xy": [
+        552.4906832298136,
+        667.9968944099379
+      ]
+    },
+    {
+      "clean_xy": [
+        615.8538419049714,
+        773.1654230157449
+      ],
+      "glyph_pixels": 190,
+      "glyph_radius_pixels": 7.776816725043752,
+      "id": "tree_location-22",
+      "label": "tree_location",
+      "reference_xy": [
+        57.94210526315789,
+        668.6315789473684
+      ]
+    },
+    {
+      "clean_xy": [
+        642.3095006051166,
+        680.3799128188872
+      ],
+      "glyph_pixels": 181,
+      "glyph_radius_pixels": 7.590394548326596,
+      "id": "tree_location-23",
+      "label": "tree_location",
+      "reference_xy": [
+        161.38121546961327,
+        668.6850828729282
+      ]
+    },
+    {
+      "clean_xy": [
+        814.997382172159,
+        613.1771200252397
+      ],
+      "glyph_pixels": 180,
+      "glyph_radius_pixels": 7.569397566060481,
+      "id": "tree_location-24",
+      "label": "tree_location",
+      "reference_xy": [
+        281.35,
+        827.0333333333333
+      ]
+    },
+    {
+      "clean_xy": [
+        869.5662067799916,
+        493.5127222994937
+      ],
+      "glyph_pixels": 53,
+      "glyph_radius_pixels": 4.1073621666150775,
+      "id": "tree_location-25",
+      "label": "tree_location",
+      "reference_xy": [
+        420.75471698113205,
+        848.188679245283
+      ]
+    },
+    {
+      "clean_xy": [
+        782.2584312028599,
+        839.4020465669728
+      ],
+      "glyph_pixels": 323,
+      "glyph_radius_pixels": 10.139728459745083,
+      "id": "tree_location-26",
+      "label": "tree_location",
+      "reference_xy": [
+        38.470588235294116,
+        859.656346749226
+      ]
+    },
+    {
+      "clean_xy": [
+        815.5892532375946,
+        764.383768373782
+      ],
+      "glyph_pixels": 315,
+      "glyph_radius_pixels": 10.013371767186818,
+      "id": "tree_location-27",
+      "label": "tree_location",
+      "reference_xy": [
+        125.60634920634921,
+        872.0126984126985
+      ]
+    },
+    {
+      "clean_xy": [
+        883.7745893605398,
+        586.3395221088617
+      ],
+      "glyph_pixels": 307,
+      "glyph_radius_pixels": 9.885400096021595,
+      "id": "tree_location-28",
+      "label": "tree_location",
+      "reference_xy": [
+        329.2052117263844,
+        890.0781758957655
+      ]
+    },
+    {
+      "clean_xy": [
+        935.7361152369513,
+        454.4023304259192
+      ],
+      "glyph_pixels": 320,
+      "glyph_radius_pixels": 10.092530088080641,
+      "id": "tree_location-29",
+      "label": "tree_location",
+      "reference_xy": [
+        480.5,
+        904.94375
+      ]
+    },
+    {
+      "clean_xy": [
+        927.8143891762682,
+        551.536032159692
+      ],
+      "glyph_pixels": 191,
+      "glyph_radius_pixels": 7.797255174810172,
+      "id": "tree_location-30",
+      "label": "tree_location",
+      "reference_xy": [
+        378.0157068062827,
+        925.2774869109948
+      ]
+    },
+    {
+      "clean_xy": [
+        1000.4431501018056,
+        373.1192273314032
+      ],
+      "glyph_pixels": 271,
+      "glyph_radius_pixels": 9.287732724180174,
+      "id": "tree_location-31",
+      "label": "tree_location",
+      "reference_xy": [
+        583.3025830258302,
+        947.8154981549816
+      ]
+    },
+    {
+      "clean_xy": [
+        940.4805959129906,
+        607.8285239191334
+      ],
+      "glyph_pixels": 188,
+      "glyph_radius_pixels": 7.735777827895049,
+      "id": "tree_location-32",
+      "label": "tree_location",
+      "reference_xy": [
+        323.68617021276594,
+        954.8563829787234
+      ]
+    },
+    {
+      "clean_xy": [
+        634.1869322225025,
+        416.81727287421984
+      ],
+      "glyph_pixels": 35,
+      "glyph_radius_pixels": 3.3377905890622728,
+      "id": "building_boundary-0",
+      "label": "building_boundary",
+      "reference_xy": [
+        430.77142857142854,
+        582.9714285714285
+      ]
+    },
+    {
+      "clean_xy": [
+        639.8500646650979,
+        409.9639601120736
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-1",
+      "label": "building_boundary",
+      "reference_xy": [
+        439.5,
+        586.8
+      ]
+    },
+    {
+      "clean_xy": [
+        631.4040848343959,
+        442.3302344296629
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "building_boundary-2",
+      "label": "building_boundary",
+      "reference_xy": [
+        403.6470588235294,
+        587.5882352941177
+      ]
+    },
+    {
+      "clean_xy": [
+        633.5327986033358,
+        445.5030820233786
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-3",
+      "label": "building_boundary",
+      "reference_xy": [
+        401.0,
+        590.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        645.2443934284909,
+        406.22983465859716
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-4",
+      "label": "building_boundary",
+      "reference_xy": [
+        444.93333333333334,
+        591.2666666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        640.3000198125886,
+        434.4689301095731
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-5",
+      "label": "building_boundary",
+      "reference_xy": [
+        414.3636363636364,
+        594.4545454545455
+      ]
+    },
+    {
+      "clean_xy": [
+        650.2972927052242,
+        400.4508931151578
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "building_boundary-6",
+      "label": "building_boundary",
+      "reference_xy": [
+        452.375,
+        594.78125
+      ]
+    },
+    {
+      "clean_xy": [
+        637.1223796399286,
+        447.4943486491101
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-7",
+      "label": "building_boundary",
+      "reference_xy": [
+        400.0,
+        595.0
+      ]
+    },
+    {
+      "clean_xy": [
+        656.4590942469041,
+        392.74891703863767
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-8",
+      "label": "building_boundary",
+      "reference_xy": [
+        462.125,
+        598.875
+      ]
+    },
+    {
+      "clean_xy": [
+        643.2277705378067,
+        439.99567657843124
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "building_boundary-9",
+      "label": "building_boundary",
+      "reference_xy": [
+        409.5238095238095,
+        599.0952380952381
+      ]
+    },
+    {
+      "clean_xy": [
+        640.6271936723303,
+        452.21773101665576
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "building_boundary-10",
+      "label": "building_boundary",
+      "reference_xy": [
+        396.1578947368421,
+        600.0
+      ]
+    },
+    {
+      "clean_xy": [
+        659.3547872841536,
+        389.815012177952
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-11",
+      "label": "building_boundary",
+      "reference_xy": [
+        466.0,
+        601.0
+      ]
+    },
+    {
+      "clean_xy": [
+        646.6462669576218,
+        443.2629048944963
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "building_boundary-12",
+      "label": "building_boundary",
+      "reference_xy": [
+        407.1578947368421,
+        603.578947368421
+      ]
+    },
+    {
+      "clean_xy": [
+        663.8186950819849,
+        383.9735229028182
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-13",
+      "label": "building_boundary",
+      "reference_xy": [
+        473.3333333333333,
+        603.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        645.2038224866354,
+        456.5825786840244
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-14",
+      "label": "building_boundary",
+      "reference_xy": [
+        393.0,
+        606.0
+      ]
+    },
+    {
+      "clean_xy": [
+        667.3635716847359,
+        378.7109892766739
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-15",
+      "label": "building_boundary",
+      "reference_xy": [
+        479.8,
+        606.0
+      ]
+    },
+    {
+      "clean_xy": [
+        651.7867108493783,
+        441.96947215257615
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-16",
+      "label": "building_boundary",
+      "reference_xy": [
+        410.0,
+        608.5
+      ]
+    },
+    {
+      "clean_xy": [
+        671.9022249176298,
+        374.0504741756497
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-17",
+      "label": "building_boundary",
+      "reference_xy": [
+        485.9375,
+        609.3125
+      ]
+    },
+    {
+      "clean_xy": [
+        650.9855262799197,
+        447.6248573300302
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-18",
+      "label": "building_boundary",
+      "reference_xy": [
+        403.93333333333334,
+        609.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        655.4311164166685,
+        435.2482540126233
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-19",
+      "label": "building_boundary",
+      "reference_xy": [
+        418.0,
+        610.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        657.7860640126979,
+        429.4069670538429
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-20",
+      "label": "building_boundary",
+      "reference_xy": [
+        424.7142857142857,
+        611.0
+      ]
+    },
+    {
+      "clean_xy": [
+        676.8201819354364,
+        367.6310560992923
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-21",
+      "label": "building_boundary",
+      "reference_xy": [
+        494.0,
+        612.5
+      ]
+    },
+    {
+      "clean_xy": [
+        662.0668170934434,
+        423.45178403896756
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-22",
+      "label": "building_boundary",
+      "reference_xy": [
+        432.1111111111111,
+        613.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        655.9586804503015,
+        449.4602982002194
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-23",
+      "label": "building_boundary",
+      "reference_xy": [
+        403.5,
+        615.0
+      ]
+    },
+    {
+      "clean_xy": [
+        680.5948071509546,
+        362.88646896278476
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-24",
+      "label": "building_boundary",
+      "reference_xy": [
+        500.0,
+        615.0
+      ]
+    },
+    {
+      "clean_xy": [
+        666.3313608630942,
+        417.55356217500093
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-25",
+      "label": "building_boundary",
+      "reference_xy": [
+        439.44444444444446,
+        616.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        685.3476873121413,
+        357.21957262503713
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "building_boundary-26",
+      "label": "building_boundary",
+      "reference_xy": [
+        507.23809523809524,
+        618.2380952380952
+      ]
+    },
+    {
+      "clean_xy": [
+        670.7247529085172,
+        412.3385312788254
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-27",
+      "label": "building_boundary",
+      "reference_xy": [
+        446.1111111111111,
+        619.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        675.1198510164155,
+        406.2913401768617
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-28",
+      "label": "building_boundary",
+      "reference_xy": [
+        453.6363636363636,
+        622.0909090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        690.913430121262,
+        350.79111333176115
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "building_boundary-29",
+      "label": "building_boundary",
+      "reference_xy": [
+        515.5,
+        622.0909090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        694.0412448431108,
+        344.6017411943086
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-30",
+      "label": "building_boundary",
+      "reference_xy": [
+        522.8,
+        623.5
+      ]
+    },
+    {
+      "clean_xy": [
+        659.2233967469565,
+        467.29595739881927
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-31",
+      "label": "building_boundary",
+      "reference_xy": [
+        386.06666666666666,
+        623.6
+      ]
+    },
+    {
+      "clean_xy": [
+        678.9604275800544,
+        403.3287703821374
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-32",
+      "label": "building_boundary",
+      "reference_xy": [
+        457.8181818181818,
+        625.1818181818181
+      ]
+    },
+    {
+      "clean_xy": [
+        697.5541001827324,
+        340.01972189996695
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-33",
+      "label": "building_boundary",
+      "reference_xy": [
+        528.5555555555555,
+        625.7777777777778
+      ]
+    },
+    {
+      "clean_xy": [
+        701.0709757827337,
+        335.07933961823636
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "building_boundary-34",
+      "label": "building_boundary",
+      "reference_xy": [
+        534.6818181818181,
+        627.9545454545455
+      ]
+    },
+    {
+      "clean_xy": [
+        684.034946376661,
+        396.5611093919424
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-35",
+      "label": "building_boundary",
+      "reference_xy": [
+        466.2857142857143,
+        628.4285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        666.0917199091389,
+        461.92981011246343
+      ],
+      "glyph_pixels": 65,
+      "glyph_radius_pixels": 4.54864184146723,
+      "id": "building_boundary-36",
+      "label": "building_boundary",
+      "reference_xy": [
+        393.61538461538464,
+        629.1076923076923
+      ]
+    },
+    {
+      "clean_xy": [
+        688.9377626654772,
+        390.3673224082888
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-37",
+      "label": "building_boundary",
+      "reference_xy": [
+        474.1111111111111,
+        631.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        693.5045785921843,
+        385.6788393149053
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-38",
+      "label": "building_boundary",
+      "reference_xy": [
+        480.2857142857143,
+        635.0
+      ]
+    },
+    {
+      "clean_xy": [
+        707.9735776313851,
+        336.3823794048808
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-39",
+      "label": "building_boundary",
+      "reference_xy": [
+        535.3636363636364,
+        635.4545454545455
+      ]
+    },
+    {
+      "clean_xy": [
+        675.9851745507697,
+        453.44002569718293
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "building_boundary-40",
+      "label": "building_boundary",
+      "reference_xy": [
+        405.27272727272725,
+        636.8181818181819
+      ]
+    },
+    {
+      "clean_xy": [
+        697.9101276209286,
+        380.4210875555482
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-41",
+      "label": "building_boundary",
+      "reference_xy": [
+        487.0,
+        638.0
+      ]
+    },
+    {
+      "clean_xy": [
+        681.5083800354942,
+        449.13425326272966
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "building_boundary-42",
+      "label": "building_boundary",
+      "reference_xy": [
+        411.3333333333333,
+        641.25
+      ]
+    },
+    {
+      "clean_xy": [
+        702.7241040469688,
+        377.13601114583764
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-43",
+      "label": "building_boundary",
+      "reference_xy": [
+        491.8,
+        642.0
+      ]
+    },
+    {
+      "clean_xy": [
+        684.7431348807478,
+        444.75325630146915
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-44",
+      "label": "building_boundary",
+      "reference_xy": [
+        416.8,
+        643.3
+      ]
+    },
+    {
+      "clean_xy": [
+        714.4975021495273,
+        344.3640720812501
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "building_boundary-45",
+      "label": "building_boundary",
+      "reference_xy": [
+        529.047619047619,
+        644.5238095238095
+      ]
+    },
+    {
+      "clean_xy": [
+        687.7621150826233,
+        440.27853057354463
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-46",
+      "label": "building_boundary",
+      "reference_xy": [
+        422.3,
+        645.1
+      ]
+    },
+    {
+      "clean_xy": [
+        680.7064025845256,
+        468.1401518641516
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "building_boundary-47",
+      "label": "building_boundary",
+      "reference_xy": [
+        391.5,
+        646.0
+      ]
+    },
+    {
+      "clean_xy": [
+        708.8546581455576,
+        370.9283134298374
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-48",
+      "label": "building_boundary",
+      "reference_xy": [
+        500.0,
+        646.5
+      ]
+    },
+    {
+      "clean_xy": [
+        712.2437670631001,
+        365.1042334166973
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-49",
+      "label": "building_boundary",
+      "reference_xy": [
+        507.0,
+        648.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        679.537802266025,
+        481.4219280860366
+      ],
+      "glyph_pixels": 52,
+      "glyph_radius_pixels": 4.068428945128219,
+      "id": "building_boundary-50",
+      "label": "building_boundary",
+      "reference_xy": [
+        377.46153846153845,
+        648.6923076923077
+      ]
+    },
+    {
+      "clean_xy": [
+        693.2267379802505,
+        434.3662239311022
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-51",
+      "label": "building_boundary",
+      "reference_xy": [
+        430.0,
+        649.0
+      ]
+    },
+    {
+      "clean_xy": [
+        688.773611368501,
+        451.7189242907817
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-52",
+      "label": "building_boundary",
+      "reference_xy": [
+        410.8,
+        649.5
+      ]
+    },
+    {
+      "clean_xy": [
+        686.2253627548351,
+        461.79761836036187
+      ],
+      "glyph_pixels": 47,
+      "glyph_radius_pixels": 3.8678889139475245,
+      "id": "building_boundary-53",
+      "label": "building_boundary",
+      "reference_xy": [
+        399.6595744680851,
+        649.8297872340426
+      ]
+    },
+    {
+      "clean_xy": [
+        719.2741959599076,
+        349.6486951833822
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-54",
+      "label": "building_boundary",
+      "reference_xy": [
+        525.0,
+        651.0
+      ]
+    },
+    {
+      "clean_xy": [
+        692.5190657293356,
+        446.6508551818415
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-55",
+      "label": "building_boundary",
+      "reference_xy": [
+        417.125,
+        651.875
+      ]
+    },
+    {
+      "clean_xy": [
+        717.3119643672457,
+        363.3600352059801
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-56",
+      "label": "building_boundary",
+      "reference_xy": [
+        510.2857142857143,
+        653.0
+      ]
+    },
+    {
+      "clean_xy": [
+        719.3608645423802,
+        358.8863380073973
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-57",
+      "label": "building_boundary",
+      "reference_xy": [
+        515.5,
+        653.8
+      ]
+    },
+    {
+      "clean_xy": [
+        696.516175550209,
+        440.2724521609747
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-58",
+      "label": "building_boundary",
+      "reference_xy": [
+        424.875,
+        654.125
+      ]
+    },
+    {
+      "clean_xy": [
+        722.6356213743629,
+        353.967178165139
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-59",
+      "label": "building_boundary",
+      "reference_xy": [
+        521.5333333333333,
+        655.7333333333333
+      ]
+    },
+    {
+      "clean_xy": [
+        701.6701639819171,
+        428.3802908499181
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "building_boundary-60",
+      "label": "building_boundary",
+      "reference_xy": [
+        438.65,
+        655.95
+      ]
+    },
+    {
+      "clean_xy": [
+        704.4229653019312,
+        420.581031584986
+      ],
+      "glyph_pixels": 4,
+      "glyph_radius_pixels": 1.1283791670955126,
+      "id": "building_boundary-61",
+      "label": "building_boundary",
+      "reference_xy": [
+        447.5,
+        656.5
+      ]
+    },
+    {
+      "clean_xy": [
+        687.9025353918488,
+        488.1290055568364
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-62",
+      "label": "building_boundary",
+      "reference_xy": [
+        373.0,
+        659.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        710.4368359817855,
+        413.07940597925534
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-63",
+      "label": "building_boundary",
+      "reference_xy": [
+        457.0,
+        660.5
+      ]
+    },
+    {
+      "clean_xy": [
+        702.5372229704478,
+        441.2181002471392
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "building_boundary-64",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.6666666666667,
+        660.6111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        712.6735101227675,
+        407.8971674431803
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-65",
+      "label": "building_boundary",
+      "reference_xy": [
+        463.0,
+        661.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        728.0518129707151,
+        357.42647590428135
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-66",
+      "label": "building_boundary",
+      "reference_xy": [
+        519.5555555555555,
+        662.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        709.1091280550455,
+        429.67286147259614
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-67",
+      "label": "building_boundary",
+      "reference_xy": [
+        439.5,
+        664.0
+      ]
+    },
+    {
+      "clean_xy": [
+        694.0064072850821,
+        489.9871945522124
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-68",
+      "label": "building_boundary",
+      "reference_xy": [
+        372.875,
+        666.125
+      ]
+    },
+    {
+      "clean_xy": [
+        717.7678016356117,
+        409.1852076997908
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "building_boundary-69",
+      "label": "building_boundary",
+      "reference_xy": [
+        463.1666666666667,
+        666.9166666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        731.6589746908587,
+        360.65422141475835
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-70",
+      "label": "building_boundary",
+      "reference_xy": [
+        517.2857142857143,
+        667.0
+      ]
+    },
+    {
+      "clean_xy": [
+        720.5518544460119,
+        402.04509644854943
+      ],
+      "glyph_pixels": 26,
+      "glyph_radius_pixels": 2.876813695875796,
+      "id": "building_boundary-71",
+      "label": "building_boundary",
+      "reference_xy": [
+        471.34615384615387,
+        667.6923076923077
+      ]
+    },
+    {
+      "clean_xy": [
+        711.4181520833497,
+        444.39185186469126
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "building_boundary-72",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.0,
+        670.7
+      ]
+    },
+    {
+      "clean_xy": [
+        734.5199376516165,
+        363.8062396310973
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-73",
+      "label": "building_boundary",
+      "reference_xy": [
+        514.875,
+        670.875
+      ]
+    },
+    {
+      "clean_xy": [
+        699.3090058613257,
+        491.37492010362854
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-74",
+      "label": "building_boundary",
+      "reference_xy": [
+        373.0,
+        672.0
+      ]
+    },
+    {
+      "clean_xy": [
+        716.0473424419963,
+        432.9807116761638
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-75",
+      "label": "building_boundary",
+      "reference_xy": [
+        438.125,
+        672.125
+      ]
+    },
+    {
+      "clean_xy": [
+        722.7342734020252,
+        410.76013701535095
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-76",
+      "label": "building_boundary",
+      "reference_xy": [
+        463.0,
+        672.5
+      ]
+    },
+    {
+      "clean_xy": [
+        726.6129412148293,
+        398.4080817494788
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-77",
+      "label": "building_boundary",
+      "reference_xy": [
+        476.875,
+        672.875
+      ]
+    },
+    {
+      "clean_xy": [
+        729.4557933677872,
+        392.6305936635912
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-78",
+      "label": "building_boundary",
+      "reference_xy": [
+        483.6666666666667,
+        674.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        702.9485763615135,
+        495.1987633857354
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-79",
+      "label": "building_boundary",
+      "reference_xy": [
+        370.125,
+        676.875
+      ]
+    },
+    {
+      "clean_xy": [
+        720.144959213077,
+        434.8851224038938
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-80",
+      "label": "building_boundary",
+      "reference_xy": [
+        437.3636363636364,
+        676.9090909090909
+      ]
+    },
+    {
+      "clean_xy": [
+        733.6644045158707,
+        387.68624251527024
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-81",
+      "label": "building_boundary",
+      "reference_xy": [
+        490.0,
+        677.0
+      ]
+    },
+    {
+      "clean_xy": [
+        739.6993621086957,
+        368.2724415677429
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "building_boundary-82",
+      "label": "building_boundary",
+      "reference_xy": [
+        511.7894736842105,
+        677.5263157894736
+      ]
+    },
+    {
+      "clean_xy": [
+        718.1714977288811,
+        445.5378069063992
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-83",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.8,
+        678.0
+      ]
+    },
+    {
+      "clean_xy": [
+        727.7487632841287,
+        412.3083229360334
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-84",
+      "label": "building_boundary",
+      "reference_xy": [
+        462.875,
+        678.125
+      ]
+    },
+    {
+      "clean_xy": [
+        738.286949791613,
+        382.09193539219063
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-85",
+      "label": "building_boundary",
+      "reference_xy": [
+        497.125,
+        680.125
+      ]
+    },
+    {
+      "clean_xy": [
+        707.963066243617,
+        496.7469493064177
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-86",
+      "label": "building_boundary",
+      "reference_xy": [
+        370.0,
+        682.5
+      ]
+    },
+    {
+      "clean_xy": [
+        732.7950366812829,
+        413.6231065875216
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-87",
+      "label": "building_boundary",
+      "reference_xy": [
+        463.0,
+        683.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        723.5324439197796,
+        447.14648435861227
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-88",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.7142857142857,
+        684.0
+      ]
+    },
+    {
+      "clean_xy": [
+        744.0808971000122,
+        375.61873742785536
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-89",
+      "label": "building_boundary",
+      "reference_xy": [
+        505.5,
+        684.2
+      ]
+    },
+    {
+      "clean_xy": [
+        727.3220642275793,
+        436.9274956018754
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-90",
+      "label": "building_boundary",
+      "reference_xy": [
+        437.3636363636364,
+        684.9090909090909
+      ]
+    },
+    {
+      "clean_xy": [
+        737.3929981473663,
+        415.0527619208212
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-91",
+      "label": "building_boundary",
+      "reference_xy": [
+        462.875,
+        688.875
+      ]
+    },
+    {
+      "clean_xy": [
+        728.4667036172499,
+        448.5506159322247
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "building_boundary-92",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.7142857142857,
+        689.5
+      ]
+    },
+    {
+      "clean_xy": [
+        714.2284270354583,
+        499.86332702267464
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-93",
+      "label": "building_boundary",
+      "reference_xy": [
+        368.625,
+        689.875
+      ]
+    },
+    {
+      "clean_xy": [
+        722.2746808908012,
+        473.79202289735036
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "building_boundary-94",
+      "label": "building_boundary",
+      "reference_xy": [
+        397.8695652173913,
+        690.5217391304348
+      ]
+    },
+    {
+      "clean_xy": [
+        733.7949913012327,
+        438.3463024811135
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-95",
+      "label": "building_boundary",
+      "reference_xy": [
+        437.8,
+        692.0
+      ]
+    },
+    {
+      "clean_xy": [
+        719.5784207869353,
+        502.3151426683247
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-96",
+      "label": "building_boundary",
+      "reference_xy": [
+        367.6666666666667,
+        696.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        728.713990142378,
+        475.4097866698577
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-97",
+      "label": "building_boundary",
+      "reference_xy": [
+        398.09090909090907,
+        697.6363636363636
+      ]
+    },
+    {
+      "clean_xy": [
+        736.5514409103221,
+        452.1144404624707
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "building_boundary-98",
+      "label": "building_boundary",
+      "reference_xy": [
+        424.4117647058824,
+        698.8823529411765
+      ]
+    },
+    {
+      "clean_xy": [
+        740.84808918057,
+        441.2504405276154
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-99",
+      "label": "building_boundary",
+      "reference_xy": [
+        436.875,
+        700.125
+      ]
+    },
+    {
+      "clean_xy": [
+        723.3456625770041,
+        504.0337033823148
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-100",
+      "label": "building_boundary",
+      "reference_xy": [
+        367.0,
+        700.5
+      ]
+    },
+    {
+      "clean_xy": [
+        747.633456273776,
+        421.2398991394422
+      ],
+      "glyph_pixels": 40,
+      "glyph_radius_pixels": 3.5682482323055424,
+      "id": "building_boundary-101",
+      "label": "building_boundary",
+      "reference_xy": [
+        459.5,
+        701.25
+      ]
+    },
+    {
+      "clean_xy": [
+        734.0968189032546,
+        476.9415665683439
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-102",
+      "label": "building_boundary",
+      "reference_xy": [
+        398.09090909090907,
+        703.6363636363636
+      ]
+    },
+    {
+      "clean_xy": [
+        727.1972032830564,
+        504.6987113665689
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-103",
+      "label": "building_boundary",
+      "reference_xy": [
+        367.44444444444446,
+        704.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        742.8787994687473,
+        453.28392830542236
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-104",
+      "label": "building_boundary",
+      "reference_xy": [
+        425.0625,
+        705.75
+      ]
+    },
+    {
+      "clean_xy": [
+        747.945992539781,
+        444.11883940526775
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-105",
+      "label": "building_boundary",
+      "reference_xy": [
+        436.0,
+        708.2857142857143
+      ]
+    },
+    {
+      "clean_xy": [
+        740.9284370755009,
+        476.751358489201
+      ],
+      "glyph_pixels": 24,
+      "glyph_radius_pixels": 2.763953195770684,
+      "id": "building_boundary-106",
+      "label": "building_boundary",
+      "reference_xy": [
+        400.2916666666667,
+        710.625
+      ]
+    },
+    {
+      "clean_xy": [
+        746.9845943949131,
+        460.1553162370912
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "building_boundary-107",
+      "label": "building_boundary",
+      "reference_xy": [
+        419.1818181818182,
+        712.0
+      ]
+    },
+    {
+      "clean_xy": [
+        745.2028795744866,
+        467.0980275411936
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-108",
+      "label": "building_boundary",
+      "reference_xy": [
+        411.5,
+        712.2
+      ]
+    },
+    {
+      "clean_xy": [
+        753.1483651459533,
+        444.6294799470636
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-109",
+      "label": "building_boundary",
+      "reference_xy": [
+        437.0,
+        713.8
+      ]
+    },
+    {
+      "clean_xy": [
+        744.920171131524,
+        479.492569509805
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-110",
+      "label": "building_boundary",
+      "reference_xy": [
+        398.6363636363636,
+        715.5454545454545
+      ]
+    },
+    {
+      "clean_xy": [
+        752.3871647682702,
+        459.80015927490155
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-111",
+      "label": "building_boundary",
+      "reference_xy": [
+        421.1333333333333,
+        717.4666666666667
+      ]
+    },
+    {
+      "clean_xy": [
+        749.0239319726212,
+        480.63098033107286
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-112",
+      "label": "building_boundary",
+      "reference_xy": [
+        398.6666666666667,
+        720.1111111111111
+      ]
+    },
+    {
+      "clean_xy": [
+        758.374888012747,
+        461.875824497635
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-113",
+      "label": "building_boundary",
+      "reference_xy": [
+        420.75,
+        724.25
+      ]
+    },
+    {
+      "clean_xy": [
+        752.9844461763486,
+        483.37432749674963
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-114",
+      "label": "building_boundary",
+      "reference_xy": [
+        397.0,
+        725.0
+      ]
+    },
+    {
+      "clean_xy": [
+        765.248064507358,
+        465.2702273045346
+      ],
+      "glyph_pixels": 15,
+      "glyph_radius_pixels": 2.1850968611841584,
+      "id": "building_boundary-115",
+      "label": "building_boundary",
+      "reference_xy": [
+        419.26666666666665,
+        732.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        759.5853338025707,
+        485.7376214332638
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "building_boundary-116",
+      "label": "building_boundary",
+      "reference_xy": [
+        396.5,
+        732.5
+      ]
+    },
+    {
+      "clean_xy": [
+        765.0327581228905,
+        487.77267682010233
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-117",
+      "label": "building_boundary",
+      "reference_xy": [
+        396.0,
+        738.7142857142857
+      ]
+    },
+    {
+      "clean_xy": [
+        773.6480833068174,
+        468.6950422540293
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-118",
+      "label": "building_boundary",
+      "reference_xy": [
+        418.2,
+        742.0
+      ]
+    },
+    {
+      "clean_xy": [
+        731.6904645882992,
+        624.1934461936928
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-119",
+      "label": "building_boundary",
+      "reference_xy": [
+        245.54545454545453,
+        744.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        733.979710251596,
+        617.9388305006005
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-120",
+      "label": "building_boundary",
+      "reference_xy": [
+        252.66666666666666,
+        744.8888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        736.2377062113865,
+        611.6934067596085
+      ],
+      "glyph_pixels": 13,
+      "glyph_radius_pixels": 2.0342144725641096,
+      "id": "building_boundary-121",
+      "label": "building_boundary",
+      "reference_xy": [
+        259.7692307692308,
+        745.3846153846154
+      ]
+    },
+    {
+      "clean_xy": [
+        738.1361539788602,
+        605.4152929276032
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-122",
+      "label": "building_boundary",
+      "reference_xy": [
+        266.8,
+        745.5
+      ]
+    },
+    {
+      "clean_xy": [
+        730.9868509762755,
+        630.693569292283
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-123",
+      "label": "building_boundary",
+      "reference_xy": [
+        238.63636363636363,
+        745.5454545454545
+      ]
+    },
+    {
+      "clean_xy": [
+        748.51144821952,
+        570.9692415484553
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-124",
+      "label": "building_boundary",
+      "reference_xy": [
+        305.3636363636364,
+        746.0909090909091
+      ]
+    },
+    {
+      "clean_xy": [
+        740.7583857548309,
+        598.3304629596822
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-125",
+      "label": "building_boundary",
+      "reference_xy": [
+        274.875,
+        746.125
+      ]
+    },
+    {
+      "clean_xy": [
+        771.6718888201079,
+        489.9528960362575
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-126",
+      "label": "building_boundary",
+      "reference_xy": [
+        395.7,
+        746.2
+      ]
+    },
+    {
+      "clean_xy": [
+        728.616788812334,
+        641.8965718075804
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "building_boundary-127",
+      "label": "building_boundary",
+      "reference_xy": [
+        226.38888888888889,
+        746.3888888888889
+      ]
+    },
+    {
+      "clean_xy": [
+        742.6585045320904,
+        592.9312281766092
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-128",
+      "label": "building_boundary",
+      "reference_xy": [
+        281.0,
+        746.5
+      ]
+    },
+    {
+      "clean_xy": [
+        746.7432509280536,
+        578.5770181476046
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-129",
+      "label": "building_boundary",
+      "reference_xy": [
+        297.0,
+        746.5
+      ]
+    },
+    {
+      "clean_xy": [
+        744.8139199590976,
+        586.6348552667235
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-130",
+      "label": "building_boundary",
+      "reference_xy": [
+        288.125,
+        746.875
+      ]
+    },
+    {
+      "clean_xy": [
+        727.3797084519626,
+        651.896633556473
+      ],
+      "glyph_pixels": 21,
+      "glyph_radius_pixels": 2.5854414729132054,
+      "id": "building_boundary-131",
+      "label": "building_boundary",
+      "reference_xy": [
+        215.71428571428572,
+        748.047619047619
+      ]
+    },
+    {
+      "clean_xy": [
+        779.4453375019026,
+        470.0097368540703
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-132",
+      "label": "building_boundary",
+      "reference_xy": [
+        418.54545454545456,
+        748.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        752.5602493415535,
+        566.6553259965947
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-133",
+      "label": "building_boundary",
+      "reference_xy": [
+        311.0,
+        749.0
+      ]
+    },
+    {
+      "clean_xy": [
+        755.0719374537515,
+        560.5815602490859
+      ],
+      "glyph_pixels": 26,
+      "glyph_radius_pixels": 2.876813695875796,
+      "id": "building_boundary-134",
+      "label": "building_boundary",
+      "reference_xy": [
+        318.0,
+        749.8076923076923
+      ]
+    },
+    {
+      "clean_xy": [
+        776.404181656188,
+        490.9204556508371
+      ],
+      "glyph_pixels": 11,
+      "glyph_radius_pixels": 1.8712051592547776,
+      "id": "building_boundary-135",
+      "label": "building_boundary",
+      "reference_xy": [
+        396.09090909090907,
+        751.3636363636364
+      ]
+    },
+    {
+      "clean_xy": [
+        770.9607245825313,
+        520.0914889492888
+      ],
+      "glyph_pixels": 29,
+      "glyph_radius_pixels": 3.0382538898732494,
+      "id": "building_boundary-136",
+      "label": "building_boundary",
+      "reference_xy": [
+        364.41379310344826,
+        754.3103448275862
+      ]
+    },
+    {
+      "clean_xy": [
+        785.2080403249454,
+        471.6936979327561
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-137",
+      "label": "building_boundary",
+      "reference_xy": [
+        418.5,
+        754.8
+      ]
+    },
+    {
+      "clean_xy": [
+        734.6599764031392,
+        653.4141994129546
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-138",
+      "label": "building_boundary",
+      "reference_xy": [
+        216.28571428571428,
+        756.0
+      ]
+    },
+    {
+      "clean_xy": [
+        761.203510165757,
+        561.8415149186064
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "building_boundary-139",
+      "label": "building_boundary",
+      "reference_xy": [
+        318.5,
+        756.5
+      ]
+    },
+    {
+      "clean_xy": [
+        780.9966920702573,
+        492.85426960269115
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-140",
+      "label": "building_boundary",
+      "reference_xy": [
+        395.44444444444446,
+        756.6666666666666
+      ]
+    },
+    {
+      "clean_xy": [
+        775.0796984784702,
+        533.1859813286718
+      ],
+      "glyph_pixels": 25,
+      "glyph_radius_pixels": 2.8209479177387813,
+      "id": "building_boundary-141",
+      "label": "building_boundary",
+      "reference_xy": [
+        352.12,
+        762.4
+      ]
+    },
+    {
+      "clean_xy": [
+        768.0503786247762,
+        558.8370709283251
+      ],
+      "glyph_pixels": 28,
+      "glyph_radius_pixels": 2.985410660720923,
+      "id": "building_boundary-142",
+      "label": "building_boundary",
+      "reference_xy": [
+        323.60714285714283,
+        762.6785714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        778.4584735615782,
+        524.5325321556329
+      ],
+      "glyph_pixels": 29,
+      "glyph_radius_pixels": 3.0382538898732494,
+      "id": "building_boundary-143",
+      "label": "building_boundary",
+      "reference_xy": [
+        362.0344827586207,
+        763.3448275862069
+      ]
+    },
+    {
+      "clean_xy": [
+        742.3200643723286,
+        653.515898292784
+      ],
+      "glyph_pixels": 14,
+      "glyph_radius_pixels": 2.111004122822376,
+      "id": "building_boundary-144",
+      "label": "building_boundary",
+      "reference_xy": [
+        218.42857142857142,
+        763.9285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        788.3083186194154,
+        495.55989736564584
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-145",
+      "label": "building_boundary",
+      "reference_xy": [
+        394.8,
+        765.0
+      ]
+    },
+    {
+      "clean_xy": [
+        786.4649151042881,
+        521.2195822181711
+      ],
+      "glyph_pixels": 35,
+      "glyph_radius_pixels": 3.3377905890622728,
+      "id": "building_boundary-146",
+      "label": "building_boundary",
+      "reference_xy": [
+        367.8,
+        770.6285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        750.0186803501654,
+        655.4295946365501
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-147",
+      "label": "building_boundary",
+      "reference_xy": [
+        218.71428571428572,
+        772.4285714285714
+      ]
+    },
+    {
+      "clean_xy": [
+        758.1461166488517,
+        653.9498403395095
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-148",
+      "label": "building_boundary",
+      "reference_xy": [
+        222.625,
+        780.375
+      ]
+    },
+    {
+      "clean_xy": [
+        810.9434441066212,
+        475.899992340994
+      ],
+      "glyph_pixels": 7,
+      "glyph_radius_pixels": 1.4927053303604616,
+      "id": "building_boundary-149",
+      "label": "building_boundary",
+      "reference_xy": [
+        421.7142857142857,
+        782.5714285714286
+      ]
+    },
+    {
+      "clean_xy": [
+        762.3321377231358,
+        647.5039719664968
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-150",
+      "label": "building_boundary",
+      "reference_xy": [
+        230.5,
+        782.8
+      ]
+    },
+    {
+      "clean_xy": [
+        764.5375325242838,
+        640.0095874031708
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-151",
+      "label": "building_boundary",
+      "reference_xy": [
+        238.875,
+        782.875
+      ]
+    },
+    {
+      "clean_xy": [
+        770.2360062556884,
+        628.0784116241127
+      ],
+      "glyph_pixels": 20,
+      "glyph_radius_pixels": 2.5231325220201604,
+      "id": "building_boundary-152",
+      "label": "building_boundary",
+      "reference_xy": [
+        252.85,
+        785.25
+      ]
+    },
+    {
+      "clean_xy": [
+        775.431251741041,
+        612.803735051951
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-153",
+      "label": "building_boundary",
+      "reference_xy": [
+        270.125,
+        786.125
+      ]
+    },
+    {
+      "clean_xy": [
+        773.9486899091435,
+        619.2915804491475
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-154",
+      "label": "building_boundary",
+      "reference_xy": [
+        263.0,
+        786.5
+      ]
+    },
+    {
+      "clean_xy": [
+        778.8274067181718,
+        603.85124363227
+      ],
+      "glyph_pixels": 17,
+      "glyph_radius_pixels": 2.326213245840639,
+      "id": "building_boundary-155",
+      "label": "building_boundary",
+      "reference_xy": [
+        280.3529411764706,
+        787.0
+      ]
+    },
+    {
+      "clean_xy": [
+        782.3806790562094,
+        596.4765824515104
+      ],
+      "glyph_pixels": 6,
+      "glyph_radius_pixels": 1.381976597885342,
+      "id": "building_boundary-156",
+      "label": "building_boundary",
+      "reference_xy": [
+        289.0,
+        788.5
+      ]
+    },
+    {
+      "clean_xy": [
+        791.0862687050187,
+        567.7675939957069
+      ],
+      "glyph_pixels": 19,
+      "glyph_radius_pixels": 2.4592453796829674,
+      "id": "building_boundary-157",
+      "label": "building_boundary",
+      "reference_xy": [
+        321.1578947368421,
+        789.0526315789474
+      ]
+    },
+    {
+      "clean_xy": [
+        795.9914753845857,
+        550.6032784676352
+      ],
+      "glyph_pixels": 27,
+      "glyph_radius_pixels": 2.9316150714175193,
+      "id": "building_boundary-158",
+      "label": "building_boundary",
+      "reference_xy": [
+        340.2962962962963,
+        789.074074074074
+      ]
+    },
+    {
+      "clean_xy": [
+        793.5954568015425,
+        559.9066664603089
+      ],
+      "glyph_pixels": 18,
+      "glyph_radius_pixels": 2.393653682408596,
+      "id": "building_boundary-159",
+      "label": "building_boundary",
+      "reference_xy": [
+        330.0,
+        789.3333333333334
+      ]
+    },
+    {
+      "clean_xy": [
+        799.0714653211289,
+        542.4908621826769
+      ],
+      "glyph_pixels": 23,
+      "glyph_radius_pixels": 2.7057581899030048,
+      "id": "building_boundary-160",
+      "label": "building_boundary",
+      "reference_xy": [
+        349.5652173913044,
+        789.8695652173913
+      ]
+    },
+    {
+      "clean_xy": [
+        801.3418550790199,
+        534.9569966760491
+      ],
+      "glyph_pixels": 9,
+      "glyph_radius_pixels": 1.692568750643269,
+      "id": "building_boundary-161",
+      "label": "building_boundary",
+      "reference_xy": [
+        358.0,
+        790.0
+      ]
+    },
+    {
+      "clean_xy": [
+        789.2316702382003,
+        577.9393965784301
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-162",
+      "label": "building_boundary",
+      "reference_xy": [
+        310.125,
+        790.125
+      ]
+    },
+    {
+      "clean_xy": [
+        803.0176893245762,
+        529.4939377305393
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-163",
+      "label": "building_boundary",
+      "reference_xy": [
+        364.125,
+        790.125
+      ]
+    },
+    {
+      "clean_xy": [
+        804.2303484108777,
+        525.2325316281784
+      ],
+      "glyph_pixels": 8,
+      "glyph_radius_pixels": 1.5957691216057308,
+      "id": "building_boundary-164",
+      "label": "building_boundary",
+      "reference_xy": [
+        368.875,
+        790.125
+      ]
+    },
+    {
+      "clean_xy": [
+        786.59929170443,
+        587.5383780662136
+      ],
+      "glyph_pixels": 22,
+      "glyph_radius_pixels": 2.6462837142006137,
+      "id": "building_boundary-165",
+      "label": "building_boundary",
+      "reference_xy": [
+        299.45454545454544,
+        790.2272727272727
+      ]
+    },
+    {
+      "clean_xy": [
+        807.2081749016407,
+        516.6851103901627
+      ],
+      "glyph_pixels": 16,
+      "glyph_radius_pixels": 2.256758334191025,
+      "id": "building_boundary-166",
+      "label": "building_boundary",
+      "reference_xy": [
+        378.5625,
+        790.6875
+      ]
+    },
+    {
+      "clean_xy": [
+        817.8955205674506,
+        479.87418663358176
+      ],
+      "glyph_pixels": 32,
+      "glyph_radius_pixels": 3.1915382432114616,
+      "id": "building_boundary-167",
+      "label": "building_boundary",
+      "reference_xy": [
+        419.65625,
+        790.90625
+      ]
+    },
+    {
+      "clean_xy": [
+        809.1830620789701,
+        510.81013627648883
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-168",
+      "label": "building_boundary",
+      "reference_xy": [
+        385.2,
+        791.0
+      ]
+    },
+    {
+      "clean_xy": [
+        813.1036655789452,
+        498.7367060767087
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-169",
+      "label": "building_boundary",
+      "reference_xy": [
+        398.8,
+        791.5
+      ]
+    },
+    {
+      "clean_xy": [
+        814.6354454774314,
+        493.35387731583194
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-170",
+      "label": "building_boundary",
+      "reference_xy": [
+        404.8,
+        791.5
+      ]
+    },
+    {
+      "clean_xy": [
+        816.2839087946521,
+        489.2649764446857
+      ],
+      "glyph_pixels": 12,
+      "glyph_radius_pixels": 1.9544100476116797,
+      "id": "building_boundary-171",
+      "label": "building_boundary",
+      "reference_xy": [
+        409.5,
+        792.0
+      ]
+    },
+    {
+      "clean_xy": [
+        812.1232933743038,
+        504.5673839304527
+      ],
+      "glyph_pixels": 10,
+      "glyph_radius_pixels": 1.7841241161527712,
+      "id": "building_boundary-172",
+      "label": "building_boundary",
+      "reference_xy": [
+        392.5,
+        792.2
+      ]
+    }
+  ],
+  "purple_role": "building_or_roof_boundary",
+  "purple_role_confirmed_by_user": true,
+  "red_role": "projected_path_boundary",
+  "reference_sha256": "bf16d15fbd67cb3566eb053a45d743c99a280f6e363eb6e4aacd01146b140182",
+  "region_count": 17,
+  "semantics_confirmed": [
+    "red_projected_path_boundary",
+    "green_tree_location",
+    "purple_building_or_roof_boundary"
+  ],
+  "source_assisted_regions_are_drafts": true,
+  "unknown_regions_are_not_negative_training_examples": true,
+  "version": "user-chessington-markers-v1",
+  "water_annotations_present": false
+}

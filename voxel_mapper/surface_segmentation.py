@@ -38,12 +38,13 @@ def fit(rows,kind,settings=SETTINGS):
     model=architecture(kind);initial={k:v.detach().numpy().copy() for k,v in model.state_dict().items()};model.train()
     optimizer=torch.optim.Adam(model.parameters(),lr=settings['learning_rate']);rng=np.random.default_rng(settings['seed']);patch=settings['patch']
     indices=[[np.argwhere(r['target']==c) for c in range(4)] for r in rows]
-    if any(not len(indices[i][c]) for i in range(len(rows)) for c in range(4)):raise ValueError('Every fitting image needs four observed surface classes')
+    classes=[[c for c in range(4) if len(indices[i][c])] for i in range(len(rows))]
+    if not rows or any(not c for c in classes):raise ValueError('Every fitting image needs observed surface labels')
     loss_fn=torch.nn.CrossEntropyLoss(ignore_index=255);history=[]
     for step in range(settings['steps']):
         images=[];targets=[]
         for batch in range(settings['batch']):
-            i=int(rng.integers(len(rows)));c=int(rng.integers(4));r=rows[i];p=indices[i][c][int(rng.integers(len(indices[i][c])))];h,w=r['target'].shape
+            i=int(rng.integers(len(rows)));c=int(rng.choice(classes[i]));r=rows[i];p=indices[i][c][int(rng.integers(len(indices[i][c])))];h,w=r['target'].shape
             top=int(np.clip(p[0]-rng.integers(patch//4,3*patch//4),0,h-patch));left=int(np.clip(p[1]-rng.integers(patch//4,3*patch//4),0,w-patch))
             rgb=r['rgb'][top:top+patch,left:left+patch];target=r['target'][top:top+patch,left:left+patch]
             k=int(rng.integers(4));rgb=np.rot90(rgb,k);target=np.rot90(target,k)
@@ -131,6 +132,12 @@ def score(target,pred,probes,points):
         'scope':'Known assistant-draft semantic regions only. Edge-hint recall is not full boundary precision; narrow strips are labelled interiors, not measured path widths.'}
 
 
+def fitting_rows(rows,held):
+    """Keep every record from a held-out park out of fitting when sites differ."""
+    cross_site=len({r['record']['site_id'] for r in rows})>1
+    return [r for r in rows if (r['record']['site_id']!=held['record']['site_id'] if cross_site else r is not held)]
+
+
 def train(dataset,output):
     from pyproj import Transformer
     from scipy.spatial import cKDTree
@@ -148,12 +155,14 @@ def train(dataset,output):
         xx,yy=project.transform(e[0]+x/w*(e[2]-e[0]),e[3]-y/h*(e[3]-e[1]));world.append(np.column_stack([xx,yy]))
     minimum=min(float(cKDTree(world[i]).query(world[j])[0].min()) for i in range(len(world)) for j in range(i+1,len(world)))
     if minimum<24:raise ValueError('Whole-image surface examples require a 24 m geographic context guard')
+    sites={r['record']['site_id'] for r in rows};cross_site=len(sites)>1
     output.mkdir(parents=True);atomic_json(output/'design.json',{'settings':SETTINGS,'architectures':['pixel','spatial'],'dataset_id':m['id'],
-        'evaluation':'whole-image held out, same park, no hyperparameter selection on held-out score','unknown_target':255,
+        'evaluation':'whole-site held out' if cross_site else 'whole-image held out, same park',
+        'held_out_score_used_for_selection':False,'unknown_target':255,
         'spatial_halo_pixels':16,'adoption':'no automatic promotion; source-assisted labels require independent review'})
     folds=[]
     for held in rows:
-        fitting=[r for r in rows if r is not held];scores={}
+        fitting=fitting_rows(rows,held);scores={}
         for kind in ('pixel','spatial'):
             print('Fitting',kind,'excluding',held['record']['id'],flush=True)
             model,training=fit(fitting,kind);folder=output/'folds'/held['record']['id']/kind;save(model,kind,fitting,m,folder,training)
@@ -162,7 +171,9 @@ def train(dataset,output):
             atomic_json(folder/'scores.json',scores[kind])
         for name,value in [('always_paving',0),('training_majority',int(np.argmax(sum(np.bincount(r['target'][r['target']!=255],minlength=4) for r in fitting))))]:
             scores[name]=score(held['target'],np.full(held['target'].shape,value,np.uint8),held['probes'],held['points'])
-        folds.append({'held_out_id':held['record']['id'],'scores':scores,'source_in_fitting':False})
+        folds.append({'held_out_id':held['record']['id'],'held_out_site_id':held['record']['site_id'],
+            'training_site_ids':sorted({r['record']['site_id'] for r in fitting}),
+            'scores':scores,'source_in_fitting':False})
     for kind in ('pixel','spatial'):
         print('Fitting final',kind,flush=True);model,training=fit(rows,kind);save(model,kind,rows,m,output/'models'/kind,training)
         for r in rows:
@@ -170,7 +181,8 @@ def train(dataset,output):
             Image.fromarray(predict(model,r['rgb'])).save(folder/(kind+'.png'))
     surfaces.validate(root)
     report={'version':'four-surface-spatial-benchmark-v1','dataset_id':m['id'],'folds':folds,
-        'same_park_development_only':True,'production_eligible':False,'old_paving_checkpoint_replaced':False,
+        'same_park_development_only':not cross_site,'evaluation_scope':'whole_site' if cross_site else 'whole_image_same_site',
+        'independent_blind_test':False,'production_eligible':False,'old_paving_checkpoint_replaced':False,
         'all_data_previews_are_fitted_not_validation':True,'new_architecture_is_spatial_convolution':True}
     report['minimum_known_label_distance_m']=minimum
     atomic_json(output/'report.json',report);return report

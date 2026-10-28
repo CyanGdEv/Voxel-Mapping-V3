@@ -13,6 +13,24 @@ def rectangle(label,x0,y0,x1,y1):
 
 
 class ConnectedSurfaceTests(unittest.TestCase):
+    def test_purple_roof_markers_are_opt_in_and_phone_ui_is_excluded(self):
+        from voxel_mapper.user_path_supervision import extract
+        rgb=np.zeros((80,100,3),np.uint8)
+        for x in (10,17,24):rgb[20:22,x:x+2]=[160,20,180]
+        for x in (50,57,64):rgb[50:52,x:x+2]=[200,20,20]
+        points,_=extract(rgb,fine_markers=True,building_markers=True,exclusion_boxes=[[48,48,68,54]])
+        self.assertEqual(len(points),3);self.assertEqual({p['label'] for p in points},{'building_boundary'})
+        default,_=extract(rgb,fine_markers=True)
+        self.assertNotIn('building_boundary',{p['label'] for p in default})
+        with self.assertRaises(ValueError):extract(rgb,exclusion_boxes=[[0,0,101,80]])
+
+    def test_site_holdout_excludes_both_alton_images(self):
+        from voxel_mapper.surface_segmentation import fitting_rows
+        rows=[{'record':{'id':str(i),'site_id':site}} for i,site in enumerate(['alton','alton','chessington'])]
+        self.assertEqual(fitting_rows(rows,rows[0]),[rows[2]])
+        self.assertEqual(fitting_rows(rows,rows[2]),rows[:2])
+        self.assertEqual(fitting_rows(rows[:2],rows[0]),[rows[1]])
+
     def test_parallel_edges_remain_separate_and_large_gaps_stay_open(self):
         points=[{'id':str(i),'label':'path_boundary','reference_xy':p} for i,p in enumerate([[x,y] for y in (10,14) for x in range(0,61,6)])]
         graph=surfaces.connect(points)
@@ -42,6 +60,14 @@ class ConnectedSurfaceTests(unittest.TestCase):
 
 @unittest.skipUnless(importlib.util.find_spec('torch'),'Optional CPU segmentation dependency not installed')
 class SpatialNetworkTests(unittest.TestCase):
+    def test_training_accepts_missing_classes_without_inventing_water_or_grass(self):
+        from voxel_mapper.surface_segmentation import fit
+        target=np.full((96,96),255,np.uint8);target[10:40,10:80]=0;target[50:80,10:80]=1
+        _,report=fit([{'rgb':np.full((96,96,3),120,np.uint8),'target':target}], 'pixel',
+            {'seed':137,'steps':2,'batch':2,'patch':64,'learning_rate':.002,'threads':2})
+        self.assertGreater(report['parameter_change_l2'],0)
+        with self.assertRaises(ValueError):fit([{'rgb':np.zeros((96,96,3),np.uint8),'target':np.full((96,96),255,np.uint8)}],'pixel')
+
     def test_spatial_context_changes_neighbour_output_while_pixel_control_does_not(self):
         import torch
         from voxel_mapper.surface_segmentation import architecture
