@@ -52,6 +52,10 @@ on:
       - 'voxel_mapper/paving_label_review.html'
       - 'voxel_mapper/paving_correction_benchmark.py'
       - 'voxel_mapper/user_path_supervision.py'
+      - 'voxel_mapper/connected_surfaces.py'
+      - 'voxel_mapper/surface_segmentation.py'
+      - 'voxel_mapper/data/connected-surface-recipe.json'
+      - 'tests/test_connected_surfaces.py'
       - 'voxel_mapper/data/user-boundary-*.json'
       - 'voxel_mapper/data/user-towers-mutiny-markers.json'
       - 'voxel_mapper/data/user-gardens-*.json'
@@ -305,6 +309,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Paving correction and reserved comparison checks failed' }
           python -m unittest discover -s tests -p 'test_user_path_supervision.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'User boundary supervision and under-canopy path checks failed' }
+          python -m unittest discover -s tests -p 'test_connected_surfaces.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Connected surface masks and optional spatial CNN checks failed' }
           python -m unittest discover -s tests -p 'test_paving_binary_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'RGB and context binary paving training checks failed' }
           python -m unittest discover -s tests -p 'test_paving_spatial_transfer.py' -v

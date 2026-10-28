@@ -1,5 +1,9 @@
 # Second user example: garden paths and shoreline
 
+The next [connected surface segmentation stage](connected-surface-segmentation.md)
+adds ordered edge candidates, explicit four-class region masks and an actual
+spatial CNN benchmark. The original sparse-boundary experiment remains below.
+
 The new annotated image is now a second training example alongside the user's
 Towers Street / Mutiny Bay reference. The importer retains **635 red projected
 path-boundary marks, 68 green tree locations and 93 blue shoreline marks**.
