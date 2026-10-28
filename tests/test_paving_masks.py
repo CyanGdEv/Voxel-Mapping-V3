@@ -46,6 +46,28 @@ def reseal(path, manifest):
 
 
 class PavingMaskTests(unittest.TestCase):
+    def test_reviewed_roof_pixels_and_adjacent_paths_keep_their_intended_labels(self):
+        data = Path(__file__).resolve().parents[1]/'voxel_mapper'/'data'
+        ledger = json.loads((data/'paving-mask-roof-review.json').read_text())
+        annotations = json.loads((data/'paving-mask-annotations.json').read_text())
+        self.assertEqual(file_hash(data/'paving-mask-annotations.json'), ledger['annotation_sha256'])
+        for crop in ledger['crops']:
+            labels, _ = paving.rasterize(annotations['crops'][crop['id']], tuple(crop['image_size']),
+                boundary_pixels=annotations['boundary_ignore_pixels'])
+            for probe in crop['probes']:
+                x, y = probe['pixel_xy']
+                self.assertEqual(int(labels[y, x]), probe['expected_label'], (crop['id'], probe['reason']))
+
+    def test_roof_corrections_preserve_original_sources_and_crop_coordinates(self):
+        root = Path(__file__).resolve().parents[1]
+        original = json.loads((root/'evidence/paving-mask-validation.json').read_text())['manifest']
+        review = json.loads((root/'voxel_mapper/data/paving-mask-roof-review.json').read_text())
+        self.assertEqual(review['supersedes_annotation_sha256'], original['annotation_sha256'])
+        for crop in review['crops']:
+            old = next(r for r in original['records'] if r['id'] == crop['id'])
+            for key in ('source_sha256', 'crop_pixels', 'image_size'):
+                self.assertEqual(crop[key], old[key])
+
     def test_holes_are_unknown_until_explicitly_traced_negative(self):
         traces = [trace('walk', 'paving', rectangle(2, 2, 29, 29), holes=[rectangle(9, 9, 22, 22)])]
         labels, reasons = paving.rasterize(traces, (32, 32))
