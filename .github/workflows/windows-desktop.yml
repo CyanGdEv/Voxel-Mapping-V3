@@ -49,6 +49,7 @@ on:
       - 'voxel_mapper/data/aerial-semantic-visual-annotations.json'
       - 'tests/test_aerial_semantic_learning.py'
       - 'voxel_mapper/imagery_geometry_research.py'
+      - 'voxel_mapper/paving_refinement.py'
       - 'tests/test_imagery_geometry_research.py'
       - 'voxel_mapper/colour_materials.py'
       - 'tests/test_colour_materials.py'

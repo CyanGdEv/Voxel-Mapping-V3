@@ -85,6 +85,44 @@ class ImageryGeometryTests(unittest.TestCase):
         self.assertIn('unclassified_blue_surface',kinds);self.assertEqual(queues,[])
         self.assertGreater(report['shadow_pixels_unresolved'],0)
 
+    def test_paving_does_not_promote_a_whole_connected_hard_surface(self):
+        image,extent,bounds,refs,plan=scene()
+        # Uniform paving-looking asphalt stretches far beyond the short map
+        # reference. It must remain unclassified outside the growth window.
+        refs=[{'id':'short-walk','kind':'paving','geometry':LineString([(20,15),(30,15)]),'tags':{}}]
+        features,_,report=geo.extract(image,extent,bounds,refs,plan,options(),footer=0)
+        project=Transformer.from_crs(4326,3857,always_xy=True)
+        paved=[transform(project.transform,shape(f['geometry'])) for f in features if f['properties']['kind']=='paving']
+        self.assertTrue(paved)
+        for g in paved:
+            # Include the half-metre seed/search padding and raster cell edge.
+            self.assertLess(g.difference(refs[0]['geometry'].buffer(4.3)).area,1e-7)
+        self.assertIn('unclassified_hard_surface',{f['properties']['kind'] for f in features})
+        self.assertFalse(report['paving_refinement']['neural_weights_updated'])
+
+    def test_paving_keeps_grass_building_water_parking_and_plan_as_holes(self):
+        image,extent,bounds,refs,plan=scene()
+        def pb(l,t,r,b):return box(l/2,128-b/2,r/2,128-t/2)
+        refs.append({'id':'whole-square','kind':'paving','geometry':pb(10,10,240,240),'tags':{}})
+        refs.append({'id':'car-park','kind':'parking','geometry':pb(100,140,130,170),'tags':{}})
+        image[140:170,140:170,:3]=[40,145,45]
+        features,_,_=geo.extract(image,extent,bounds,refs,plan,options(),footer=0)
+        project=Transformer.from_crs(4326,3857,always_xy=True)
+        for f in features:
+            if f['properties']['kind']!='paving':continue
+            g=transform(project.transform,shape(f['geometry']))
+            for barrier in [refs[0]['geometry'],refs[1]['geometry'],refs[-1]['geometry'],pb(141,141,169,169),plan]:
+                self.assertLess(g.intersection(barrier).area,1e-7)
+            self.assertEqual(f['properties']['geometry_source'],'map_seeded_rgb_paving')
+
+    def test_covered_paving_and_missing_map_do_not_produce_visible_paving(self):
+        image,extent,bounds,refs,plan=scene()
+        for ref in refs:
+            if ref['kind'] in ('paving','queue'):ref['tags']['covered']='yes'
+        features,_,report=geo.extract(image,extent,bounds,refs,plan,options(),footer=0)
+        self.assertNotIn('paving',{f['properties']['kind'] for f in features})
+        self.assertEqual(len(report['paving_refinement']['withheld_references']),2)
+
     def test_opaque_nodata_and_cancellation_stay_unresolved(self):
         image,extent,bounds,refs,plan=scene();image[:,:,3]=0
         features,queues,report=geo.extract(image,extent,bounds,refs,plan,options(),footer=0)
@@ -121,6 +159,7 @@ class ImageryGeometryTests(unittest.TestCase):
                 self.assertIn('unclassified_hard_surface',job['result']['candidate_counts'])
                 self.assertEqual(job['result']['world_blocks_generated'],0)
                 self.assertEqual(job['result']['network_bytes'],0)
+                self.assertTrue(job['result']['paving_refinement']['map_guided'])
                 self.assertIn('imagery_geometry_observation',runtime.store.context(20000))
             finally:runtime.close(wait=True)
 

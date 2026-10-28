@@ -27,6 +27,8 @@ Five-class park-held-out mean IoU was **28.30%**, versus **17.93%** for training
 
 The other-visible class scored 63.61% and is included in the five-class average. Paths and islands are particularly poor. Alton's held-out mean IoU was 17.96%. The comparison supports continuing research, **not** reliable autonomous reconstruction. More diverse, independently reviewed labels and stronger spatial models are needed before trusting these boundaries.
 
+The subsequent [map-guided paving review](imagery-gap-geometry.md#paving-refinement-and-transfer-limitations) improves the Towers Street sample using pedestrian map references and source RGB barriers. It is a separate extraction layer, with poor cross-site transfer, and does not change this neural model's weights or accuracy claims.
+
 Final fitting uses all four records and 26,742 class-balanced sampled pixels. The actual weight-change L2 norm was 25.75; training cross entropy fell from 1.105 to .218. These training figures show fitting occurred, not generalization quality. The final all-data checkpoint has no untouched final test. Fold checkpoints are also retained so held-out visualizations can be reproduced.
 
 ## Desktop and CLI
