@@ -1,0 +1,23 @@
+{
+  "version": "user-path-boundary-policy-v1",
+  "annotation_origin": "user supplied coloured markers",
+  "reference_sha256": "429e205e63a2e3f21107918e303c4b19770aeb98a510d00f79245ec113f73b50",
+  "legend": {
+    "red": "projected path boundary points",
+    "green": "tree locations, separate overhead layer",
+    "blue": "pond or water locations"
+  },
+  "tree_overlap_rule": "Assume path continues below a tree where canopy overlaps an established path footprint",
+  "requires_established_path_footprint": true,
+  "requires_visible_path_anchor_in_connected_allowed_footprint": true,
+  "hard_exclusions": ["buildings", "ponds_water", "bounded_grass_islands"],
+  "preserve_overhead_tree_layer": true,
+  "ground_inference_provenance": "inferred_path_under_canopy",
+  "inferred_ground_is_observed_training_truth": false,
+  "tree_marker_glyph_radius_is_canopy_radius": false,
+  "demonstration_fallback_canopy_radius_m": 3.5,
+  "fallback_canopy_extent_is_provisional": true,
+  "sparse_points_define_closed_polygons_automatically": false,
+  "annotated_rgb_may_enter_model_input": false,
+  "auto_promote_model": false
+}

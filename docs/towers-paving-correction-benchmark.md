@@ -1,5 +1,9 @@
 # Towers Street correction and reserved-area benchmark
 
+The subsequent [user-marked boundary supervision](user-path-boundary-supervision.md)
+imports the user's red path points, green tree locations and blue pond guidance,
+trains a separate boundary detector, and implements inferred path beneath canopy.
+
 The source-only correction pass expands the Towers Street development mask and
 re-trains the RGB and RGB/context binary networks. Development scores improve,
 but the newly reserved LEGOLAND Windsor comparison regresses slightly. **Keep

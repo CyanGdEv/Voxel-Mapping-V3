@@ -1,0 +1,409 @@
+{
+  "version": "user-path-supervision-validation-v1",
+  "date_utc": "2026-10-28",
+  "tests": {
+    "passed": 93,
+    "log_sha256": "204844f60ac5546889c7f422de7d685c968ad30d658b7c43042e2d26d138e618"
+  },
+  "registration": {
+    "clean_size": [
+      1280,
+      512
+    ],
+    "clean_source_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+    "inlier_error_clean_pixels_median": 0.5361596696009375,
+    "inlier_error_clean_pixels_p95": 1.080809060814591,
+    "inliers": 1434,
+    "marker_colors_used_as_model_features": false,
+    "metadata_sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+    "physical_registration_verified": false,
+    "reference_sha256": "429e205e63a2e3f21107918e303c4b19770aeb98a510d00f79245ec113f73b50",
+    "reference_size": [
+      1280,
+      511
+    ],
+    "reference_to_clean": [
+      [
+        1.0002094990507115,
+        -6.371234036602524e-05,
+        -0.024033407603262474
+      ],
+      [
+        6.371234036602524e-05,
+        1.0002094990507115,
+        -0.6691570508564608
+      ]
+    ],
+    "sample_control_pairs": [
+      {
+        "clean_xy": [
+          6.543107986450195,
+          335.8563537597656
+        ],
+        "reference_xy": [
+          6.943219184875488,
+          337.4150695800781
+        ]
+      },
+      {
+        "clean_xy": [
+          58.59986114501953,
+          178.65481567382812
+        ],
+        "reference_xy": [
+          58.701595306396484,
+          179.3202667236328
+        ]
+      },
+      {
+        "clean_xy": [
+          106.2425765991211,
+          298.341796875
+        ],
+        "reference_xy": [
+          106.3396224975586,
+          298.6061096191406
+        ]
+      },
+      {
+        "clean_xy": [
+          148.943603515625,
+          422.04010009765625
+        ],
+        "reference_xy": [
+          148.88690185546875,
+          422.9389343261719
+        ]
+      },
+      {
+        "clean_xy": [
+          198.43434143066406,
+          462.9305725097656
+        ],
+        "reference_xy": [
+          198.40757751464844,
+          464.0697326660156
+        ]
+      },
+      {
+        "clean_xy": [
+          251.09571838378906,
+          329.45709228515625
+        ],
+        "reference_xy": [
+          251.17532348632812,
+          329.9537353515625
+        ]
+      },
+      {
+        "clean_xy": [
+          294.2503967285156,
+          188.455078125
+        ],
+        "reference_xy": [
+          294.6206970214844,
+          188.67074584960938
+        ]
+      },
+      {
+        "clean_xy": [
+          336.5030517578125,
+          365.4007263183594
+        ],
+        "reference_xy": [
+          336.7185974121094,
+          366.8932800292969
+        ]
+      },
+      {
+        "clean_xy": [
+          371.8094482421875,
+          382.8594665527344
+        ],
+        "reference_xy": [
+          371.0270690917969,
+          383.64080810546875
+        ]
+      },
+      {
+        "clean_xy": [
+          415.1565246582031,
+          110.22783660888672
+        ],
+        "reference_xy": [
+          414.6529846191406,
+          110.42086791992188
+        ]
+      },
+      {
+        "clean_xy": [
+          465.027587890625,
+          246.5692138671875
+        ],
+        "reference_xy": [
+          465.028076171875,
+          247.25575256347656
+        ]
+      },
+      {
+        "clean_xy": [
+          585.6754150390625,
+          63.42149353027344
+        ],
+        "reference_xy": [
+          585.8452758789062,
+          63.31542205810547
+        ]
+      },
+      {
+        "clean_xy": [
+          658.564453125,
+          215.7300567626953
+        ],
+        "reference_xy": [
+          658.9300537109375,
+          215.8716583251953
+        ]
+      },
+      {
+        "clean_xy": [
+          722.5065307617188,
+          63.480308532714844
+        ],
+        "reference_xy": [
+          722.3635864257812,
+          63.44281768798828
+        ]
+      },
+      {
+        "clean_xy": [
+          782.913330078125,
+          256.95220947265625
+        ],
+        "reference_xy": [
+          782.989013671875,
+          257.215087890625
+        ]
+      },
+      {
+        "clean_xy": [
+          840.8214721679688,
+          55.14523696899414
+        ],
+        "reference_xy": [
+          840.5446166992188,
+          55.176692962646484
+        ]
+      },
+      {
+        "clean_xy": [
+          882.0303955078125,
+          208.0850830078125
+        ],
+        "reference_xy": [
+          881.7890014648438,
+          207.76901245117188
+        ]
+      },
+      {
+        "clean_xy": [
+          927.653564453125,
+          263.9339294433594
+        ],
+        "reference_xy": [
+          927.555908203125,
+          264.3143310546875
+        ]
+      },
+      {
+        "clean_xy": [
+          974.7413330078125,
+          36.41569519042969
+        ],
+        "reference_xy": [
+          974.5617065429688,
+          36.208953857421875
+        ]
+      },
+      {
+        "clean_xy": [
+          1031.7840576171875,
+          75.28960418701172
+        ],
+        "reference_xy": [
+          1031.52734375,
+          75.7327880859375
+        ]
+      },
+      {
+        "clean_xy": [
+          1090.682861328125,
+          371.85198974609375
+        ],
+        "reference_xy": [
+          1089.8336181640625,
+          372.4991760253906
+        ]
+      },
+      {
+        "clean_xy": [
+          1150.117919921875,
+          499.3241271972656
+        ],
+        "reference_xy": [
+          1149.2435302734375,
+          500.4812316894531
+        ]
+      },
+      {
+        "clean_xy": [
+          1181.5355224609375,
+          4.299839019775391
+        ],
+        "reference_xy": [
+          1180.873779296875,
+          4.152083396911621
+        ]
+      },
+      {
+        "clean_xy": [
+          1219.860107421875,
+          349.47021484375
+        ],
+        "reference_xy": [
+          1219.032958984375,
+          350.3576354980469
+        ]
+      }
+    ],
+    "version": "user-path-registration-v1"
+  },
+  "training_report": {
+    "all_guidance_samples": 8501,
+    "continuous_edges_independently_verified": false,
+    "counts": {
+      "path_boundary": 241,
+      "tree_location": 47,
+      "water_location": 6
+    },
+    "general_accuracy_improvement_established": false,
+    "head_parameters_updated_l2": 24.150751618225936,
+    "human_labels_verified": false,
+    "model_sha256": "a5bb84c9fe3deb7984259fd954544f5557b916cb112bb84c4ff0dd231be27378",
+    "production_eligible": false,
+    "replaces_paving_model": false,
+    "spatial_holdout": {
+      "always_boundary_reference": {
+        "f1": 0.30455953961930055,
+        "precision": 0.1796344647519582,
+        "recall": 1.0
+      },
+      "boundary_f1": 0.25081967213114753,
+      "boundary_precision": 0.17465753424657535,
+      "boundary_recall": 0.44476744186046513,
+      "confusion": [
+        [
+          848,
+          723
+        ],
+        [
+          191,
+          153
+        ]
+      ],
+      "known_samples": 1915,
+      "scope": "Same-site spatial holdout against sparse user boundary dots and derived offset negatives, not surveyed full boundary geometry"
+    },
+    "training_samples": 5932,
+    "tree_rule": "Continue established path footprint beneath overlapping canopy; retain buildings/water/grass-island exclusions.",
+    "user_authored_points": true,
+    "version": "user-path-boundary-supervision-v1"
+  },
+  "resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "peak_rss_mb": 302.0234375,
+    "wall_seconds": 7.225686941004824
+  },
+  "tree_ground_policy": {
+    "annotation_source": "User marks plus retained assistant source geometry; not survey truth",
+    "canopy_buffer_is_provisional_not_marker_glyph_size": true,
+    "canopy_buffer_radius_m": 3.5,
+    "coordinate_alignment": [
+      [
+        0.5606731157157339,
+        0.0001896433534637409,
+        458.1998536052264
+      ],
+      [
+        -0.0001896433534637409,
+        0.5606731157157339,
+        99.39818808411474
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "demonstration_scope": "Existing Towers Street path footprint only; all user points including Mutiny Bay are mapped separately",
+    "final_ground_path_pixels": 25502,
+    "ground_paths_kept_separate_from_overhead_trees": true,
+    "inference_outside_established_footprint_pixels": 0,
+    "inferred_pixels_used_as_observed_training_truth": false,
+    "inferred_under_canopy_pixels": 711,
+    "parent_dataset_id": "3a1765deca8ba61ab6795b449706553f97724d640d2e016c0049d65c07728dff",
+    "path_in_hard_exclusions_pixels": 0,
+    "rule": "Assume established path continues beneath overlapping canopy; exclude buildings, pond and bounded grass islands",
+    "version": "user-tree-over-path-policy-v1",
+    "visible_ground_path_pixels": 24791
+  },
+  "capture_quality": {
+    "approx_export_ground_sampling_m_xy": [
+      0.44649384068947273,
+      0.44649384068947273
+    ],
+    "export_finer_than_reported_point_source": true,
+    "finest_reported_point_resolution_m": 0.5,
+    "genuine_resolution_upgrade_verified": false,
+    "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+    "limitations": [
+      "Export pixel spacing is not proof of independent optical detail.",
+      "Point metadata is not automatically valid across an entire mosaic.",
+      "Capture date/resolution observations do not verify physical registration."
+    ],
+    "native_export_dimensions": [
+      1280,
+      512
+    ],
+    "point_observations": [
+      {
+        "description": "WV02",
+        "point_capture_date": "2023-05-27",
+        "point_resolution_m": 0.5,
+        "source": "Vantor"
+      },
+      {
+        "description": "TerraColor NextGen",
+        "point_capture_date": null,
+        "point_resolution_m": 15.0,
+        "source": "Earthstar Geographics"
+      }
+    ],
+    "version": "imagery-capture-quality-v1",
+    "whole_image_capture_date_verified": false,
+    "whole_image_intrinsic_resolution_verified": false
+  },
+  "user_authored_markers": true,
+  "inferred_pixels_used_as_observed_training_truth": false,
+  "baseline_rgb_preserved_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "world_blocks_generated": 0,
+  "windows_exe_built": false,
+  "production_eligible": false,
+  "portable_training_checkpoint_reproduces_exactly": true,
+  "browser_check": {
+    "view_combinations_passed": 16,
+    "source_native_dimensions_retained": true,
+    "page_exceptions": []
+  }
+}
