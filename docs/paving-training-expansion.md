@@ -51,3 +51,5 @@ The newly trained checkpoint was registered, verified and reused in the persiste
 Next accuracy work needs more reliable, independently reviewed pedestrian/roof boundaries, better spatial modelling and a genuinely new final test area. Training on the model's own uncertain paving masks would amplify these errors.
 
 Source attribution: Esri World Imagery and its imagery providers. Capture/source-resolution/accuracy observations remain in each retained receipt. Location context for the two additional parks was checked against [LEGOLAND's mapped park location](https://mapcarta.com/25576386) and [Drayton Manor's mapped park location](https://mapcarta.com/W9712254); these do not verify annotation polygons or absolute imagery registration.
+
+The next data stage supplies [native source-traced paving masks](paving-mask-review.md) for four crop areas. They use a distinct binary label contract with explicit unknown pixels, remain provisional, and have not yet retrained this checkpoint.
