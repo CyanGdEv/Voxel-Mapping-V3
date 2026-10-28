@@ -39,6 +39,15 @@ def literal_masks(annotation,size):
     return g,c,windows
 
 
+def required_classes(entry):
+    """Allow explicitly scoped sources without inventing missing semantic classes."""
+    names=entry.get('required_ground_classes',['paving','building_structure','grass_island','water'])
+    allowed={'paving','building_structure','grass_island','water'}
+    if not isinstance(names,list) or not 1<=len(names)<=4 or len(set(names))!=len(names) or not set(names)<=allowed:raise ValueError('Explicit observed ground-class scope required')
+    if set(names)!=allowed and (not isinstance(entry.get('coverage_note'),str) or not 10<=len(entry['coverage_note'])<=1000):raise ValueError('Partial class scope needs a source-evidence note')
+    return names
+
+
 def build(parent,request_file,output):
     parent=Path(parent).resolve();request_file=Path(request_file).resolve();out=Path(output)
     old=data.validate(parent);request=_read(request_file)
@@ -80,8 +89,10 @@ def build(parent,request_file,output):
         shutil.copy2(annotation_path,folder/'annotations.json')
         row['ground_counts']={name:int((ground==value).sum()) for name,value in data.GROUND.items()}
         row['canopy_counts']={name:int((canopy==value).sum()) for name,value in data.CANOPY.items()}
-        if any(row['ground_counts'][name]==0 for name in ('paving','building_structure','grass_island','water')):
-            raise ValueError('Every added source must supply visible examples of all four ground classes')
+        required=required_classes(entry)
+        if any(row['ground_counts'][name]==0 for name in required):raise ValueError('Declared observed classes need positive source pixels')
+        if 'required_ground_classes' in entry:
+            row['required_ground_classes']=required;row['coverage_note']=entry.get('coverage_note','All four visible ground classes')
         records.append(row)
     if not set(reserved)<={r['site_id'] for r in records} or len({r['image_sha256'] for r in records})!=len(records):
         raise ValueError('Unique source images and reserved park coverage required')

@@ -146,6 +146,9 @@ def save(model,rows,manifest,folder,training,encoder_pin=None):
     if m['channels']==20:
         if any(not isinstance(r.get('lidar_pin'),str) or len(r['lidar_pin'])!=64 for r in rows):raise ValueError('Pinned LiDAR feature receipts required')
         m['lidar_feature_receipts_sha256']=[r['lidar_pin'] for r in rows];m['lidar_feature_version']='dated-lidar-surface-context-v1'
+        versions=sorted({r.get('lidar_version','dated-lidar-surface-context-v1') for r in rows})
+        if versions!=['dated-lidar-surface-context-v1']:
+            m['lidar_feature_version']='mixed-source-relative-lidar-context-v1';m['lidar_feature_versions']=versions
     m['id']=digest(m);atomic_json(folder/'model.json',m)
 
 

@@ -27,12 +27,16 @@ def load_rows(root, feature_cache, lidar_cache, manifest):
             if receipt['features_sha256']!=file_hash(p):raise ValueError('Feature hash differs')
             if n==16:
                 if receipt['encoder_sha256']!=aerial.WEIGHTS or receipt['source_sha256']!=r['image_sha256']:raise ValueError('Frozen source encoder pin differs')
-            elif receipt['version']!=LIDAR_VERSION or receipt['image_sha256']!=r['image_sha256'] or receipt['channels']!=CHANNELS:raise ValueError('LiDAR source pin differs')
+            else:
+                from .dutch_surface_sources import VERSION as AHN_VERSION,validate_context_receipt
+                if receipt.get('version')==AHN_VERSION:validate_context_receipt(receipt)
+                elif receipt.get('version')!=LIDAR_VERSION:raise ValueError('Known LiDAR processor required')
+                if receipt['image_sha256']!=r['image_sha256'] or receipt['channels']!=CHANNELS:raise ValueError('LiDAR source pin differs')
             with np.load(p,allow_pickle=False) as archive:f=archive['features']
             if f.shape!=(*g.shape,n) or not np.isfinite(f).all() or f.min()<0 or f.max()>1.00001:raise ValueError('Finite native features required')
             arrays.append(f)
         if not np.allclose(arrays[0][:,:,:3],rgb.astype(np.float32)/255,atol=1e-7):raise ValueError('Source RGB differs')
-        rows.append({'record':r,'features':np.concatenate(arrays,2),'ground':g,'canopy':c,'lidar_pin':file_hash(lidar_cache/(r['id']+'.json'))})
+        rows.append({'record':r,'features':np.concatenate(arrays,2),'ground':g,'canopy':c,'lidar_pin':file_hash(lidar_cache/(r['id']+'.json')),'lidar_version':receipt['version']})
     return rows
 
 

@@ -16,12 +16,13 @@ CHANNELS=['height_above_terrain_div_30m','terrain_slope_div_pi_over_two','surfac
 
 def native_features(dtm,dsm,dtm_valid,dsm_valid,resolution=1.):
     """Compute structure context at original resolution, preserving every gap."""
-    if dtm.shape!=dsm.shape or dtm.shape!=dtm_valid.shape or dtm.shape!=dsm_valid.shape or dtm.size>8000000 or min(dtm.shape)<3 or resolution!=1.:raise ValueError('Matching bounded native one-metre LiDAR pair required')
+    if dtm.shape!=dsm.shape or dtm.shape!=dtm_valid.shape or dtm.shape!=dsm_valid.shape or dtm.size>8000000 or min(dtm.shape)<3 or resolution not in (.5,1.):raise ValueError('Matching bounded native half/one-metre LiDAR pair required')
     valid=dtm_valid&dsm_valid&np.isfinite(dtm)&np.isfinite(dsm)
     height=np.where(valid,np.maximum(0,dsm-dtm),0)
-    count=ndimage.uniform_filter(valid.astype(np.float32),size=3,mode='constant')
-    mean=ndimage.uniform_filter(height.astype(np.float32),size=3,mode='constant')/np.maximum(count,1e-8)
-    square=ndimage.uniform_filter(np.square(height).astype(np.float32),size=3,mode='constant')/np.maximum(count,1e-8)
+    window=3 if resolution==1. else 7
+    count=ndimage.uniform_filter(valid.astype(np.float32),size=window,mode='constant')
+    mean=ndimage.uniform_filter(height.astype(np.float32),size=window,mode='constant')/np.maximum(count,1e-8)
+    square=ndimage.uniform_filter(np.square(height).astype(np.float32),size=window,mode='constant')/np.maximum(count,1e-8)
     rough=np.sqrt(np.maximum(0,square-mean*mean))
     gy,gx=np.gradient(np.where(dtm_valid,dtm,0),resolution)
     support=valid&(count>.999)&ndimage.binary_erosion(dtm_valid,iterations=1,border_value=0)

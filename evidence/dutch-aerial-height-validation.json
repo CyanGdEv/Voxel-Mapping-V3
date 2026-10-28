@@ -1,0 +1,935 @@
+{
+  "browser": {
+    "all_canvas_frames_1024_square": true,
+    "combinations_checked": 48,
+    "errors": [],
+    "external_requests": [],
+    "layers_per_site": 8,
+    "mobile_no_overflow": true,
+    "scope_and_metrics_present": true,
+    "sites": 2,
+    "unique_images_decoded": 16,
+    "zooms": 3
+  },
+  "checkpoint_seal": {
+    "created_utc": "2026-10-28T23:02:51.867181+00:00",
+    "datasets": {
+      "coarse_rgb": "b13f6691875fe87fe2a0e1fab75e14386852e30358951bb9871e5bc06b32bf68",
+      "native_rgb": "eb19b10e910756fdf34b5e41baca46d51f66a41910f969307f03f525c0d9f7c5"
+    },
+    "models": {
+      "coarse_rgb": "e551327a7acef9842f5277876d956de1efe9181f8183b76873fa6166ba3c71b9",
+      "native_rgb": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449"
+    },
+    "protocol_sha256": "98f7b3c96c2fb93252dd72f3c9a6f02eea21aa2e82998e24d6b2c7e60f70d8bf",
+    "reserved_scores_viewed": false,
+    "reserved_target_hashes": {
+      "toverland": {
+        "canopy": "25e2696533bd26a2c6c3be874363c9718b107925ff3af0affaf824030b3ef8b9",
+        "ground": "6fad754506764e25c97656841cd14c70e4e4799650c168882516247a11c96b31"
+      }
+    }
+  },
+  "coarse_dataset_id": "b13f6691875fe87fe2a0e1fab75e14386852e30358951bb9871e5bc06b32bf68",
+  "label_seal": {
+    "annotation_sha256": "8c4e43a3f330bc4dbb993b32e4abbbe6ed0aba284dc5631b7517160e2650c812",
+    "created_utc": "2026-10-28T22:56:15.581853+00:00",
+    "datasets": {
+      "coarse_rgb": "b13f6691875fe87fe2a0e1fab75e14386852e30358951bb9871e5bc06b32bf68",
+      "native_rgb": "eb19b10e910756fdf34b5e41baca46d51f66a41910f969307f03f525c0d9f7c5"
+    },
+    "independent_human_review": false,
+    "protocol_sha256": "98f7b3c96c2fb93252dd72f3c9a6f02eea21aa2e82998e24d6b2c7e60f70d8bf",
+    "reserved_predictions_viewed": false
+  },
+  "native_dataset_id": "eb19b10e910756fdf34b5e41baca46d51f66a41910f969307f03f525c0d9f7c5",
+  "production_eligible": false,
+  "protocol_sha256": "98f7b3c96c2fb93252dd72f3c9a6f02eea21aa2e82998e24d6b2c7e60f70d8bf",
+  "report": {
+    "baseline_replaced": false,
+    "encoder_updated": false,
+    "height_arrays_exactly_equal": true,
+    "independent_human_review": false,
+    "nir_used_for_training": false,
+    "old_uk_features_exactly_equal": true,
+    "production_eligible": false,
+    "reserved_site_now_consumed": "toverland",
+    "results": [
+      {
+        "id": "toverland",
+        "positive_canopy_evaluation_supported": false,
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 174358,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9975107761994719,
+                "precision": 1.0,
+                "recall": 0.9975107761994719,
+                "support": 191626
+              },
+              {
+                "class": 1,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                191149,
+                477,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 191626,
+            "present_target_macro_iou": 0.9975107761994719
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.017034841730381292,
+                  "precision": 0.009458749343142408,
+                  "predicted_boundary_pixels": 1903,
+                  "recall": 0.08558558558558559,
+                  "true_boundary_pixels": 222
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.017119259166562383,
+                  "precision": 0.009830693610049153,
+                  "predicted_boundary_pixels": 1831,
+                  "recall": 0.06620209059233449,
+                  "true_boundary_pixels": 287
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 447,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 65
+                }
+              ],
+              "evaluation_support_pixels": 174358,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.6714331152936621,
+                "precision": 0.7814833891321143,
+                "recall": 0.8266280752532561,
+                "support": 58735
+              },
+              {
+                "class": 1,
+                "iou": 0.33388566694283345,
+                "precision": 0.9875433939146416,
+                "recall": 0.33529778825487067,
+                "support": 14423
+              },
+              {
+                "class": 2,
+                "iou": 0.6034434685626655,
+                "precision": 0.6285600188778566,
+                "recall": 0.9378944232279732,
+                "support": 36921
+              },
+              {
+                "class": 3,
+                "iou": 0.8523918721718763,
+                "precision": 1.0,
+                "recall": 0.8523918721718763,
+                "support": 81547
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                48552,
+                0,
+                10183,
+                0,
+                0
+              ],
+              [
+                8183,
+                4836,
+                1404,
+                0,
+                0
+              ],
+              [
+                2293,
+                0,
+                34628,
+                0,
+                0
+              ],
+              [
+                3100,
+                61,
+                8876,
+                69510,
+                0
+              ]
+            ],
+            "known_pixels": 191626,
+            "present_target_macro_iou": 0.6152885307427594
+          },
+          "narrow_labelled_interior_strip_recall": 0.6725470763131813,
+          "path_connections": {
+            "known_paving_pairs": 0,
+            "pairs": [],
+            "recall": null,
+            "recalled_pairs": 0,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 8183,
+          "paving_on_known_water_pixels": 3100,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "variant": "native_rgb"
+      },
+      {
+        "id": "toverland",
+        "positive_canopy_evaluation_supported": false,
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 174358,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9532265976433261,
+                "precision": 1.0,
+                "recall": 0.9532265976433261,
+                "support": 191626
+              },
+              {
+                "class": 1,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                182663,
+                8963,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 191626,
+            "present_target_macro_iou": 0.9532265976433261
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.01974804221995233,
+                  "precision": 0.010681399631675874,
+                  "predicted_boundary_pixels": 2715,
+                  "recall": 0.13063063063063063,
+                  "true_boundary_pixels": 222
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.04130873585879923,
+                  "precision": 0.023099538009239817,
+                  "predicted_boundary_pixels": 2381,
+                  "recall": 0.1951219512195122,
+                  "true_boundary_pixels": 287
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 490,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 65
+                }
+              ],
+              "evaluation_support_pixels": 174358,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.4743948261116076,
+                "precision": 0.5213323195201284,
+                "recall": 0.8404869328339151,
+                "support": 58735
+              },
+              {
+                "class": 1,
+                "iou": 0.39325298285991156,
+                "precision": 0.7566717165831488,
+                "recall": 0.45018373431324965,
+                "support": 14423
+              },
+              {
+                "class": 2,
+                "iou": 0.2793464881196613,
+                "precision": 0.47286503551696923,
+                "recall": 0.405676985997129,
+                "support": 36921
+              },
+              {
+                "class": 3,
+                "iou": 0.6705138741177608,
+                "precision": 0.9788806944493454,
+                "recall": 0.6803561136522496,
+                "support": 81547
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                49366,
+                0,
+                8349,
+                1020,
+                0
+              ],
+              [
+                7622,
+                6493,
+                131,
+                177,
+                0
+              ],
+              [
+                19868,
+                2075,
+                14978,
+                0,
+                0
+              ],
+              [
+                17836,
+                13,
+                8217,
+                55481,
+                0
+              ]
+            ],
+            "known_pixels": 191626,
+            "present_target_macro_iou": 0.4543770428022353
+          },
+          "narrow_labelled_interior_strip_recall": 0.7193260654112983,
+          "path_connections": {
+            "known_paving_pairs": 0,
+            "pairs": [],
+            "recall": null,
+            "recalled_pairs": 0,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 7622,
+          "paving_on_known_water_pixels": 17836,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "variant": "coarse_rgb"
+      }
+    ],
+    "scope": "One prospectively reserved park crop with assistant source-assisted labels. Controlled RGB-detail pilot, not surveyed accuracy or full-park geometry validation.",
+    "selection_on_reserved_scores": false,
+    "training": {
+      "coarse_rgb": {
+        "anchor_draw_counts": {
+          "class": 0,
+          "interface": 0,
+          "narrow": 0
+        },
+        "balanced": true,
+        "canopy_counts": [
+          683576,
+          60910
+        ],
+        "canopy_weights": [
+          0.45976656675338745,
+          1.5402333736419678
+        ],
+        "ground_counts": [
+          356980,
+          138435,
+          75570,
+          112591
+        ],
+        "ground_weights": [
+          0.6097671389579773,
+          0.9791810512542725,
+          1.3252909183502197,
+          1.0857607126235962
+        ],
+        "history": [
+          {
+            "canopy_loss": 0.9804434776306152,
+            "ground_loss": 1.7294211387634277,
+            "loss": 2.2196428775787354,
+            "step": 1
+          },
+          {
+            "canopy_loss": 0.6803709268569946,
+            "ground_loss": 1.5170403718948364,
+            "loss": 1.8572258949279785,
+            "step": 50
+          },
+          {
+            "canopy_loss": 0.5373274087905884,
+            "ground_loss": 0.4131973087787628,
+            "loss": 0.6818610429763794,
+            "step": 100
+          },
+          {
+            "canopy_loss": 0.16250677406787872,
+            "ground_loss": 1.3462220430374146,
+            "loss": 1.4274754524230957,
+            "step": 150
+          },
+          {
+            "canopy_loss": 0.0884287878870964,
+            "ground_loss": 0.639877200126648,
+            "loss": 0.6840915679931641,
+            "step": 200
+          },
+          {
+            "canopy_loss": 0.07167601585388184,
+            "ground_loss": 0.3842325806617737,
+            "loss": 0.4200705885887146,
+            "step": 250
+          },
+          {
+            "canopy_loss": 0.48221084475517273,
+            "ground_loss": 1.742101788520813,
+            "loss": 1.9832072257995605,
+            "step": 300
+          },
+          {
+            "canopy_loss": 0.11798429489135742,
+            "ground_loss": 0.3041921854019165,
+            "loss": 0.3631843328475952,
+            "step": 350
+          },
+          {
+            "canopy_loss": 0.9609232544898987,
+            "ground_loss": 0.2694808840751648,
+            "loss": 0.7499425411224365,
+            "step": 400
+          }
+        ],
+        "interface_anchor_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "narrow_anchor_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "parameter_change_l2": 6.194425957506907,
+        "parameter_count": 18482,
+        "settings": {
+          "batch": 4,
+          "boundary_weight": 2.0,
+          "canopy_weight": 0.5,
+          "dice_weight": 0.5,
+          "learning_rate": 0.002,
+          "lidar_dropout": 0.15,
+          "patch": 96,
+          "seed": 137,
+          "steps": 400,
+          "threads": 2
+        }
+      },
+      "native_rgb": {
+        "anchor_draw_counts": {
+          "class": 0,
+          "interface": 0,
+          "narrow": 0
+        },
+        "balanced": true,
+        "canopy_counts": [
+          683576,
+          60910
+        ],
+        "canopy_weights": [
+          0.45976656675338745,
+          1.5402333736419678
+        ],
+        "ground_counts": [
+          356980,
+          138435,
+          75570,
+          112591
+        ],
+        "ground_weights": [
+          0.6097671389579773,
+          0.9791810512542725,
+          1.3252909183502197,
+          1.0857607126235962
+        ],
+        "history": [
+          {
+            "canopy_loss": 0.9804434776306152,
+            "ground_loss": 1.7294211387634277,
+            "loss": 2.2196428775787354,
+            "step": 1
+          },
+          {
+            "canopy_loss": 0.6227742433547974,
+            "ground_loss": 1.845266342163086,
+            "loss": 2.15665340423584,
+            "step": 50
+          },
+          {
+            "canopy_loss": 0.514473557472229,
+            "ground_loss": 0.40433743596076965,
+            "loss": 0.6615742444992065,
+            "step": 100
+          },
+          {
+            "canopy_loss": 0.1642814576625824,
+            "ground_loss": 1.3058347702026367,
+            "loss": 1.3879754543304443,
+            "step": 150
+          },
+          {
+            "canopy_loss": 0.10522787272930145,
+            "ground_loss": 0.48974767327308655,
+            "loss": 0.5423616170883179,
+            "step": 200
+          },
+          {
+            "canopy_loss": 0.06369267404079437,
+            "ground_loss": 0.41998934745788574,
+            "loss": 0.4518356919288635,
+            "step": 250
+          },
+          {
+            "canopy_loss": 0.37136152386665344,
+            "ground_loss": 0.991405189037323,
+            "loss": 1.1770859956741333,
+            "step": 300
+          },
+          {
+            "canopy_loss": 0.13752084970474243,
+            "ground_loss": 0.31419113278388977,
+            "loss": 0.382951557636261,
+            "step": 350
+          },
+          {
+            "canopy_loss": 1.0676134824752808,
+            "ground_loss": 0.25295311212539673,
+            "loss": 0.7867598533630371,
+            "step": 400
+          }
+        ],
+        "interface_anchor_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "narrow_anchor_counts": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "parameter_change_l2": 6.265375190021474,
+        "parameter_count": 18482,
+        "settings": {
+          "batch": 4,
+          "boundary_weight": 2.0,
+          "canopy_weight": 0.5,
+          "dice_weight": 0.5,
+          "learning_rate": 0.002,
+          "lidar_dropout": 0.15,
+          "patch": 96,
+          "seed": 137,
+          "steps": 400,
+          "threads": 2
+        }
+      }
+    },
+    "training_sites": {
+      "coarse_rgb": [
+        "alton-towers",
+        "chessington",
+        "efteling",
+        "gullivers-world",
+        "lightwater-valley"
+      ],
+      "native_rgb": [
+        "alton-towers",
+        "chessington",
+        "efteling",
+        "gullivers-world",
+        "lightwater-valley"
+      ]
+    },
+    "version": "dutch-resolution-transfer-v1"
+  },
+  "reproduction": {
+    "coarse_dataset_exact": true,
+    "height_replays": [
+      {
+        "exact_height_array_match": true,
+        "id": "efteling",
+        "valid_fraction": 0.3143730163574219,
+        "variant": "native_rgb"
+      },
+      {
+        "exact_height_array_match": true,
+        "id": "toverland",
+        "valid_fraction": 0.4051675796508789,
+        "variant": "native_rgb"
+      },
+      {
+        "exact_height_array_match": true,
+        "id": "efteling",
+        "valid_fraction": 0.3143730163574219,
+        "variant": "coarse_rgb"
+      },
+      {
+        "exact_height_array_match": true,
+        "id": "toverland",
+        "valid_fraction": 0.4051675796508789,
+        "variant": "coarse_rgb"
+      }
+    ],
+    "native_dataset_exact": true,
+    "nir_model_input": false,
+    "no_marker_colours_enter_features": true,
+    "stopped_initial_invocation_had_no_models_or_scores": true,
+    "unchanged_parent_assets": [
+      {
+        "asset": "image",
+        "id": "user-towers-mutiny",
+        "sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "user-towers-mutiny",
+        "sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "user-towers-mutiny",
+        "sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "user-towers-mutiny",
+        "sha256": "cee1d83b20bdbba4b385744b781cf6d78b6c7352b05ec0ce1653ef0488985468",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "user-towers-mutiny",
+        "sha256": "890a4917dd42f39e1ffaeb54098c4946e5c407a8401c994e076817b5fea00da2",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "user-towers-mutiny",
+        "sha256": "feb39fb3db6a059df5db0042e69574fd623f4d09ff70e09edcb25a4f72bea084",
+        "unchanged": true
+      },
+      {
+        "asset": "image",
+        "id": "user-gardens-lake",
+        "sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "user-gardens-lake",
+        "sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "user-gardens-lake",
+        "sha256": "2404e038a5eeb8adedd225e78e9c610f15e462dfe0e86f8c1156db430f84ef5c",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "user-gardens-lake",
+        "sha256": "c165e1120fb515cfe6a7a2b3ab007591324c67610d7d873d4000a39aee95a2cc",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "user-gardens-lake",
+        "sha256": "c8a5a0f2e4a8a510b956d05826c5ea0fd1217ad23dda3a0511524ef781fc54a4",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "user-gardens-lake",
+        "sha256": "1633b93213ffc5d2bf436f77eef294cb16c9ec922ac13e6d6df1fbaf05df6262",
+        "unchanged": true
+      },
+      {
+        "asset": "image",
+        "id": "user-chessington-courtyard",
+        "sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "user-chessington-courtyard",
+        "sha256": "6ffc41a90957431499ccf33066607f60c075c1d31456f74d765e9682f835609a",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "user-chessington-courtyard",
+        "sha256": "67b359c2b21428755e9b181a2f02c040bd4dd890ce8e996bb384a04bc3ddb988",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "user-chessington-courtyard",
+        "sha256": "b0f0910ded4699a3ce47adee2f3a03bd72d7217fa1ff0042c970d942eba49a93",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "user-chessington-courtyard",
+        "sha256": "f2b17e30ac24343ddf3e171f22d76866544f367ef61e20791c2e5a7b37e4512e",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "user-chessington-courtyard",
+        "sha256": "9ad8e4d88f56c8b0a6318d1be43737837031a327fc6323097220f3f796955061",
+        "unchanged": true
+      },
+      {
+        "asset": "image",
+        "id": "user-tight-gardens",
+        "sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "user-tight-gardens",
+        "sha256": "ebe43b9573eca8fd6acaaeea45e1fbb7e87daa0015fcdb3268b2fb617a81f854",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "user-tight-gardens",
+        "sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "user-tight-gardens",
+        "sha256": "a5ce9fb68d5a58f18fd88f2cf1b332a216054e5c1abbbdb62dc06e8f8cbfc95e",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "user-tight-gardens",
+        "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "user-tight-gardens",
+        "sha256": "ca683e89048de3af2908335d0007beb05fbf0885a829f06409f4c0bb3cc50e93",
+        "unchanged": true
+      },
+      {
+        "asset": "image",
+        "id": "lightwater-valley",
+        "sha256": "749d14d834b7026d45a8d163744628b3110533389ae63a5a5056f4f0ff82abb0",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "lightwater-valley",
+        "sha256": "e1c8f21c102e293d28b3899fb680c0db30cd8196b7171e030969a9f94b134405",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "lightwater-valley",
+        "sha256": "850d75b918e2bebd19cec94df123d9efd5599100e24a738d7e865f5c3b11c9a4",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "lightwater-valley",
+        "sha256": "6ff170653461ffd5db9290be9c8185cd4a00ef836889715fc4449df04641ebeb",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "lightwater-valley",
+        "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "lightwater-valley",
+        "sha256": "089af67bac1b57cc488e73384d46a8f96335c6d8663c4792e558f4066a670a03",
+        "unchanged": true
+      },
+      {
+        "asset": "image",
+        "id": "gullivers-world",
+        "sha256": "955bf46a8278ca4a4926fd8f1a8d7c11519dc6ed797f56e496b4eed7048c79cb",
+        "unchanged": true
+      },
+      {
+        "asset": "receipt",
+        "id": "gullivers-world",
+        "sha256": "644212db1cbdf497996dc6fcfb605bf82e43b7e260c25ed7e4bf39b678925eb9",
+        "unchanged": true
+      },
+      {
+        "asset": "ground",
+        "id": "gullivers-world",
+        "sha256": "d747e9cdaa4909118c64cb9629f84ddce62c6c886f9dcce0c70f1f60bbeb7bce",
+        "unchanged": true
+      },
+      {
+        "asset": "canopy",
+        "id": "gullivers-world",
+        "sha256": "7837c8c0bfe6ac3664c160e4b2b53eacc72cbef6734b9c8b13db50b7a2b1c23e",
+        "unchanged": true
+      },
+      {
+        "asset": "inferred",
+        "id": "gullivers-world",
+        "sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665",
+        "unchanged": true
+      },
+      {
+        "asset": "dense_windows",
+        "id": "gullivers-world",
+        "sha256": "c673c4c86c9aaa44869b52a151a891f4f932a8cf58efc126def94e177e6d1d90",
+        "unchanged": true
+      }
+    ]
+  },
+  "resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "peak_rss_mb": 1115.44140625,
+    "wall_seconds": 107.50401010700443
+  },
+  "rights": {
+    "encoder_and_derived_model_license_scope": "Retained NVIDIA upstream non-commercial research/evaluation licence; new data rights do not expand pretrained model rights.",
+    "height": {
+      "capture_period": [
+        2020,
+        2022
+      ],
+      "exact_local_capture_date": null,
+      "generation": "AHN4",
+      "license": "CC0-1.0",
+      "license_evidence": "Retained WCS capabilities AccessConstraints: otherRestrictions; Geen beperkingen; http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+      "provider": "AHN via PDOK"
+    },
+    "nir_training_input": false,
+    "rgb_cir": {
+      "data_room": "https://www.beeldmateriaal.nl/dataroom",
+      "license": "CC-BY-4.0",
+      "license_href_verified": "https://creativecommons.org/licenses/by/4.0/deed.nl",
+      "provider": "Beeldmateriaal via PDOK",
+      "publisher_page": "https://www.pdok.nl/-/luchtfoto-2025-nu-beschikbaar-bij-pdok"
+    }
+  },
+  "test_counts": {
+    "controlled_comparison": 5,
+    "dutch_sources": 6,
+    "existing_relevant": 30
+  }
+}

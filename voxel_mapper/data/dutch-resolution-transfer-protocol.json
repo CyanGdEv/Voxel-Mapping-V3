@@ -1,0 +1,43 @@
+{
+  "version": "dutch-resolution-transfer-protocol-v1",
+  "created_utc": "2026-10-28T22:38:30.934973+00:00",
+  "parent_dataset_id": "c549be6b524291196a6cc6acbf900240bf159de6c0a2d0c369e16f14279a121e",
+  "parent_commit": "bdb2d51953af2c14264bd45380f5c111b3e878a4",
+  "added_training_sites": [
+    "efteling"
+  ],
+  "reserved_site": "toverland",
+  "excluded_consumed_sites": [
+    "flamingo-land"
+  ],
+  "imagery_layer": "2025 definitive high-resolution RGB orthophoto; no Actueel or quick-ortho aliases",
+  "native_export_spacing_m": 0.08,
+  "coarse_spacing_m": 0.25,
+  "coarse_transform": "Area-average downsample Dutch RGB to nearest integer dimensions for 25cm spacing, then bilinear return to the unchanged native grid. Labels, geographic extent and LiDAR are unchanged. UK sources unchanged.",
+  "height_source": "AHN4 0.5m terrain/surface, same generation/grid/vertical datum; no filled missing cells",
+  "settings": {
+    "seed": 137,
+    "steps": 400,
+    "batch": 4,
+    "patch": 96,
+    "learning_rate": 0.002,
+    "threads": 2,
+    "dice_weight": 0.5,
+    "boundary_weight": 2.0,
+    "canopy_weight": 0.5,
+    "lidar_dropout": 0.15
+  },
+  "variants": [
+    "native_rgb",
+    "coarse_rgb"
+  ],
+  "evaluation": "Both fits exclude all Toverland records. Score both sealed candidates once on source-only provisional Toverland labels. Existing Alton probes development only.",
+  "encoder_updated": false,
+  "single_seed": 137,
+  "selection_on_reserved_scores": false,
+  "automatic_promotion": false,
+  "independent_human_review": false,
+  "source_labels": "Assistant source-assisted dense labels and visible canopy; unknown shadows/hidden ground excluded",
+  "nir_used_for_training": false,
+  "source_scale_note": "This is a fixed-extent RGB-detail comparison at 8cm grid spacing, not a survey-accuracy validation or a replacement for larger-context training."
+}
