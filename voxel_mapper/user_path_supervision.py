@@ -1,6 +1,7 @@
 """Learn projected path boundaries from user markers using separately pinned clean RGB."""
 import argparse
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -15,29 +16,42 @@ from .generation_cycles import atomic_json, file_hash
 
 VERSION = 'user-path-boundary-supervision-v1'
 MODEL_VERSION = 'user-projected-path-boundary-model-v1'
+WATER_MODEL_VERSION = 'user-projected-water-boundary-model-v1'
 BOUNDARY_LABELS = {'non_boundary_offset':0,'projected_boundary':1,'unknown':255}
 
 
-def extract(rgb):
+def extract(rgb, *, fine_markers=False):
     """Extract saturated annotation glyphs, retaining point IDs and glyph sizes."""
+    if type(fine_markers) is not bool:raise ValueError('Explicit fine-marker boolean required')
     if not isinstance(rgb, np.ndarray) or rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8 or rgb.shape[0]*rgb.shape[1] > 1048576:
         raise ValueError('Bounded native RGB reference required')
     r,g,b = rgb.astype(np.int16).transpose(2,0,1)
     selections = {'path_boundary': (r>185)&(g<110)&(b<110)&(r>g*1.8)&(r>b*1.8),
         'tree_location': (g>185)&(r<100)&(b<110)&(g>r*1.8)&(g>b*1.8),
         'water_location': (b>160)&(r<110)&(g<130)&(b>r*1.6)&(b>g*1.5)}
+    if fine_markers:
+        selections['path_boundary']=(r>140)&(g<120)&(b<115)&(r>g*1.6)&(r>b*1.6)
+        selections['water_location']=(b>120)&(r<110)&(g<130)&(b>r*1.6)&(b>g*1.5)
     points = []; rejected = {}
     for label, mask in selections.items():
         components, count = ndimage.label(mask); accepted = []; refused = 0
         for index, sl in enumerate(ndimage.find_objects(components), 1):
             selected = components[sl] == index; area = int(selected.sum())
             limit = 1800 if label == 'tree_location' else 100
-            if not 3 <= area <= limit: refused += 1; continue
+            if not (1 if fine_markers and label!='tree_location' else 3) <= area <= limit: refused += 1; continue
             y,x = np.nonzero(selected); x = x+sl[1].start; y = y+sl[0].start
             if max(np.ptp(x)+1,np.ptp(y)+1) > (52 if label=='tree_location' else 15):
                 refused += 1; continue
             accepted.append({'label':label,'reference_xy':[float(x.mean()),float(y.mean())],
                 'glyph_pixels':area,'glyph_radius_pixels':float(np.sqrt(area/np.pi))})
+        if fine_markers and len(accepted)>1 and label!='tree_location':
+            coords=np.array([p['reference_xy'] for p in accepted]);tree=cKDTree(coords)
+            retained=[]
+            for i,p in enumerate(accepted):
+                near=tree.query_ball_point(coords[i],16)
+                if p['glyph_pixels']>=3 or any(2<np.linalg.norm(coords[i]-coords[j])<=16 for j in near):retained.append(p)
+                else:refused+=1
+            accepted=retained
         accepted.sort(key=lambda p:(p['reference_xy'][1],p['reference_xy'][0]))
         for i,p in enumerate(accepted):p['id']=label+'-'+str(i);points.append(p)
         rejected[label] = refused
@@ -99,7 +113,8 @@ def fill_tree_gaps(footprint, visible_path, canopy, buildings, water, grass_isla
 
 
 def validate_model(model):
-    if model.get('version')!=MODEL_VERSION or model.get('task')!='projected_path_boundary_not_paving' or model.get('labels')!=BOUNDARY_LABELS or model.get('marker_colors_used_as_features') is not False:
+    tasks={MODEL_VERSION:'projected_path_boundary_not_paving',WATER_MODEL_VERSION:'projected_water_boundary_not_water_surface'}
+    if model.get('version') not in tasks or model.get('task')!=tasks[model['version']] or model.get('labels')!=BOUNDARY_LABELS or model.get('marker_colors_used_as_features') is not False:
         raise ValueError('Dedicated source-only path-boundary checkpoint required')
     if model.get('artifact_sha256')!=digest({k:v for k,v in model.items() if k!='artifact_sha256'}):
         raise ValueError('Pinned boundary checkpoint required')
@@ -112,20 +127,32 @@ def probabilities(features, model):
     return binary.probabilities(features,validate_model(model))[:,:,1]
 
 
-def train(reference, clean, metadata, registration_file, output):
-    output=Path(output)
-    if output.exists():raise ValueError('Fresh boundary-learning output required')
+def _inputs(reference, clean, metadata, registration_file, water_role='location', fine_markers=False):
+    if water_role not in ('location','boundary'):raise ValueError('Explicit water marker role required')
     reference,clean,metadata=map(Path,(reference,clean,metadata))
     registration,_=safe._json(Path(registration_file),2000000);receipt,_=safe._json(metadata,2000000)
     if reference.resolve()==clean.resolve() or file_hash(reference)!=registration['reference_sha256'] or file_hash(clean)!=registration['clean_source_sha256'] or file_hash(metadata)!=registration['metadata_sha256'] or receipt['image_sha256']!=file_hash(clean):
         raise ValueError('Separately pinned annotated reference and clean model input required')
     with Image.open(reference) as image:
         if image.width*image.height>1048576 or list(image.size)!=registration['reference_size']:raise ValueError('Bounded native reference dimensions required')
-        points,rejected=extract(np.array(image.convert('RGB')))
+        points,rejected=extract(np.array(image.convert('RGB')),fine_markers=fine_markers)
     with Image.open(clean) as image:
         if image.width*image.height>1048576 or list(image.size)!=registration['clean_size'] or list(image.size)!=[receipt['width'],receipt['height']]:raise ValueError('Bounded native clean dimensions required')
         rgb=np.array(image.convert('RGB'))
-    points=register(points,registration);target=sparse_targets(points,rgb.shape[:2]);features=binary._features(rgb,receipt,lambda:False)
+    points=register(points,registration)
+    if water_role=='boundary':
+        points=[{**p,'label':'water_boundary' if p['label']=='water_location' else p['label']} for p in points]
+    target=sparse_targets(points,rgb.shape[:2]);features=binary._features(rgb,receipt,lambda:False)
+    pinned={'reference_sha256':file_hash(reference),'clean_source_sha256':file_hash(clean),
+        'registration_sha256':file_hash(registration_file),'metadata_sha256':file_hash(metadata)}
+    return receipt,points,rejected,rgb,target,features,pinned
+
+
+def train(reference, clean, metadata, registration_file, output):
+    output=Path(output)
+    if output.exists():raise ValueError('Fresh boundary-learning output required')
+    reference,clean,metadata=map(Path,(reference,clean,metadata))
+    receipt,points,rejected,rgb,target,features,pinned=_inputs(reference,clean,metadata,registration_file)
     from .imagery_capture_quality import audit
     sampling=audit(receipt)['approx_export_ground_sampling_m_xy'][0]
     radius=round(12/sampling)
@@ -172,10 +199,112 @@ def train(reference, clean, metadata, registration_file, output):
     atomic_json(output/'report.json',report);return report
 
 
+def train_many(entries, output):
+    """Leave whole annotated images out; the final checkpoint fits both user examples."""
+    from pyproj import Transformer
+    output=Path(output)
+    if output.exists() or not isinstance(entries,list) or not 2<=len(entries)<=4:
+        raise ValueError('Fresh output and two to four user examples required')
+    if any(not isinstance(e,dict) or any(not isinstance(e.get(k),str) or not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,79}',e[k]) for k in ('id','site_id')) for e in entries):
+        raise ValueError('Safe bounded example and site IDs required')
+    if len({e['id'] for e in entries})!=len(entries):raise ValueError('Distinct example IDs required')
+    records=[];pixels=0
+    for entry in entries:
+        receipt,points,rejected,rgb,target,features,pins=_inputs(entry['reference'],entry['clean'],entry['metadata'],entry['registration'],entry.get('water_role','location'),entry.get('fine_markers',False))
+        pixels+=target.size
+        if pixels>3000000:raise ValueError('Three-megapixel combined feature budget exceeded')
+        indices=np.flatnonzero(target.ravel()!=255)
+        if len(indices)>60000:raise ValueError('Bounded sparse supervision required')
+        y,x=np.unravel_index(indices,target.shape);ext=receipt['extent_epsg3857'];world=np.column_stack([ext[0]+x/rgb.shape[1]*(ext[2]-ext[0]),ext[3]-y/rgb.shape[0]*(ext[3]-ext[1])])
+        # UK projected metres support a 24 m feature-context guard between images.
+        xx,yy=Transformer.from_crs(3857,27700,always_xy=True).transform(world[:,0],world[:,1])
+        records.append({'entry':entry,'pins':pins,'points':points,'rejected':rejected,'rgb':rgb,
+            'features':features,'target':target,'indices':indices,'world':np.column_stack([xx,yy])})
+    if len({r['pins']['clean_source_sha256'] for r in records})!=len(records):
+        raise ValueError('Same clean image cannot masquerade as different held-out examples')
+    settings={**net.DEFAULTS,'hidden':64,'epochs':90}
+    dataset_id=digest({'version':'multi-user-boundary-v1','examples':[{**r['pins'],'id':r['entry']['id'],'water_role':r['entry'].get('water_role','location'),'fine_markers':r['entry'].get('fine_markers',False)} for r in records]})
+    def samples(rows):
+        x=np.concatenate([r['features'].reshape(-1,31)[r['indices']] for r in rows]);y=np.concatenate([r['target'].ravel()[r['indices']] for r in rows])
+        if len(y)>100000:raise ValueError('Combined neural sample budget exceeded')
+        return x,y
+    def wrap(fit,rows,role):
+        provenance=[{'record':{'id':r['entry']['id'],'site_id':r['entry']['site_id'],'source_sha256':r['pins']['clean_source_sha256']}} for r in rows]
+        model=binary._model(fit,'rgb_context',{'id':dataset_id},dataset_id,provenance)
+        model.update(version=MODEL_VERSION,labels=BOUNDARY_LABELS,task='projected_path_boundary_not_paving',
+            marker_colors_used_as_features=False,role=role,labels_are_projected_user_guides=True,
+            user_marker_reference_sha256=sorted(r['pins']['reference_sha256'] for r in rows))
+        model['artifact_sha256']=digest({k:v for k,v in model.items() if k!='artifact_sha256'});validate_model(model);return model
+    output.mkdir(parents=True)
+    atomic_json(output/'design.json',{'version':'multi-user-boundary-v1','dataset_id':dataset_id,'settings':settings,
+        'examples':[{**r['pins'],'id':r['entry']['id'],'water_role':r['entry'].get('water_role','location'),'fine_markers':r['entry'].get('fine_markers',False)} for r in records],
+        'threshold':.5,'cross_image_context_guard_m':24.,'evaluation':'leave_whole_image_out_same_park_development'})
+    folds=[]
+    for held in records:
+        fitting=[r for r in records if r is not held];x,y=samples(fitting)
+        model=wrap(net.fit(x,y,settings,class_count=2),fitting,'whole_image_held_out')
+        folder=output/'folds'/held['entry']['id'];folder.mkdir(parents=True);atomic_json(folder/'model.json',model)
+        distances=cKDTree(np.concatenate([r['world'] for r in fitting])).query(held['world'])[0];selected=distances>=24
+        if selected.sum()<40:raise ValueError('Insufficient held-out samples after geographic context guard')
+        f=held['features'].reshape(-1,31)[held['indices'][selected]]
+        # Binary predictor accepts a 2-D feature matrix through the validated view.
+        p=binary.probabilities(f,validate_model(model))[:,1];truth=held['target'].ravel()[held['indices'][selected]]
+        matrix=np.bincount(truth.astype(int)*2+(p>=.5),minlength=4).reshape(2,2);tn,fp,fn,tp=matrix.ravel()
+        precision=float(tp/max(1,tp+fp));recall=float(tp/max(1,tp+fn));prevalence=float((truth==1).mean())
+        scores={'held_out_id':held['entry']['id'],'confusion':matrix.tolist(),'boundary_precision':precision,
+            'boundary_recall':recall,'boundary_f1':2*precision*recall/max(1e-12,precision+recall),
+            'always_boundary_f1':2*prevalence/(1+prevalence),'known_samples':int(selected.sum()),
+            'context_guard_excluded_samples':int((~selected).sum()),'minimum_training_distance_m':float(distances[selected].min()),
+            'held_out_source_in_fitting':held['pins']['clean_source_sha256'] in model['training_source_sha256']}
+        atomic_json(folder/'report.json',scores);folds.append(scores)
+    x,y=samples(records);model=wrap(net.fit(x,y,settings,class_count=2),records,'all_user_examples_fitted_research_checkpoint');atomic_json(output/'model.json',model)
+    for r in records:
+        folder=output/'examples'/r['entry']['id'];folder.mkdir(parents=True)
+        values=probabilities(r['features'],model);Image.fromarray(np.rint(values*255).astype(np.uint8)).save(folder/'fitted-boundary-probability.png')
+        Image.fromarray(r['target']).save(folder/'sparse-targets.png')
+        atomic_json(folder/'points.json',{'points':r['points'],'pins':r['pins'],'rejected_components':r['rejected'],
+            'water_role':r['entry'].get('water_role','location'),'continuous_geometry_verified':False})
+    water_records=[r for r in records if sum(p['label']=='water_boundary' for p in r['points'])>=12]
+    water_report=None
+    if water_records:
+        xs=[];ys=[];water_targets=[]
+        for r in water_records:
+            boundary_points=[{**p,'label':'path_boundary'} for p in r['points'] if p['label']=='water_boundary']
+            target=sparse_targets(boundary_points,r['target'].shape);selected=target!=255
+            xs.append(r['features'][selected]);ys.append(target[selected]);water_targets.append(target)
+        wx,wy=np.concatenate(xs),np.concatenate(ys)
+        water=wrap(net.fit(wx,wy,settings,class_count=2),water_records,'all_supplied_shoreline_points_fitted')
+        water.update(version=WATER_MODEL_VERSION,task='projected_water_boundary_not_water_surface')
+        water['artifact_sha256']=digest({k:v for k,v in water.items() if k!='artifact_sha256'});validate_model(water)
+        atomic_json(output/'water-boundary-model.json',water)
+        for r,target in zip(water_records,water_targets):
+            folder=output/'examples'/r['entry']['id'];Image.fromarray(target).save(folder/'water-sparse-targets.png')
+            Image.fromarray(np.rint(probabilities(r['features'],water)*255).astype(np.uint8)).save(folder/'fitted-water-boundary-probability.png')
+        water_report={'example_ids':[r['entry']['id'] for r in water_records],'training_samples':len(wy),
+            'water_boundary_points':sum(sum(p['label']=='water_boundary' for p in r['points']) for r in water_records),
+            'location_only_blue_points_used_as_shoreline_truth':False,'validation':'fitted_only_no_independent_water_boundary_test',
+            'head_parameters_updated_l2':water['network']['weight_change_l2'],'model_sha256':file_hash(output/'water-boundary-model.json')}
+    report={'version':'multi-user-boundary-v1','examples':[{ 'id':r['entry']['id'],'counts':{k:sum(p['label']==k for p in r['points']) for k in ['path_boundary','tree_location','water_location','water_boundary']},'samples':len(r['indices'])} for r in records],
+        'folds':folds,'all_training_samples':len(y),'head_parameters_updated_l2':model['network']['weight_change_l2'],
+        'model_sha256':file_hash(output/'model.json'),'general_accuracy_improvement_established':False,
+        'production_eligible':False,'replaces_paving_model':False,'same_park_examples':len({r['entry']['site_id'] for r in records})==1,
+        'tree_overlap_policy_retained':True,'no_water_polygon_invented_from_open_boundary':True,'water_boundary_training':water_report}
+    atomic_json(output/'report.json',report);return report
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    for name in ('reference','clean','metadata','registration','output'):parser.add_argument('--'+name,required=True)
-    args=parser.parse_args(argv);print(json.dumps(train(args.reference,args.clean,args.metadata,args.registration,args.output)))
+    for name in ('reference','clean','metadata','registration','examples'):parser.add_argument('--'+name)
+    parser.add_argument('--output',required=True);args=parser.parse_args(argv)
+    if args.examples:
+        path=Path(args.examples).resolve();entries,_=safe._json(path,2000000)
+        for entry in entries:
+            for key in ('reference','clean','metadata','registration'):entry[key]=str(safe._asset(path.parent,entry[key]))
+        result=train_many(entries,args.output)
+    else:
+        if not all((args.reference,args.clean,args.metadata,args.registration)):parser.error('Supply --examples or all four single-example inputs')
+        result=train(args.reference,args.clean,args.metadata,args.registration,args.output)
+    print(json.dumps(result))
 
 
 if __name__=='__main__':main()

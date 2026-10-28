@@ -11,6 +11,46 @@ from voxel_mapper.generation_cycles import atomic_json,file_hash
 
 
 class UserPathTests(unittest.TestCase):
+    def test_fine_marker_mode_retains_dotted_boundaries_but_rejects_isolated_specks(self):
+        rgb=np.zeros((80,100,3),np.uint8)
+        for x in (10,17,24):rgb[20,x]=[180,30,20]
+        rgb[60,80]=[180,30,20]
+        regular,_=user.extract(rgb);fine,rejected=user.extract(rgb,fine_markers=True)
+        self.assertEqual(len(regular),0);self.assertEqual(len(fine),3)
+        self.assertGreater(rejected['path_boundary'],0)
+        with self.assertRaises(ValueError):user.extract(rgb,fine_markers='false')
+
+    def test_whole_example_holdout_and_location_vs_water_boundary_roles(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);entries=[]
+            for i in range(2):
+                rgb=np.full((128,256,3),[150+i,130,110],np.uint8);rgb[40:80]=[50,100,55]
+                clean=root/f'clean{i}.png';Image.fromarray(rgb).save(clean)
+                reference=root/f'ref{i}.png';im=Image.fromarray(rgb);d=ImageDraw.Draw(im)
+                for x in range(12,249,8):
+                    d.ellipse((x-2,38,x+2,42),fill=(255,0,0))
+                    d.ellipse((x-2,78,x+2,82),fill=(0,0,255))
+                im.save(reference);receipt=root/f'receipt{i}.json';atomic_json(receipt,{'width':256,'height':128,
+                    'image_sha256':file_hash(clean),'extent_epsg3857':[i*1000.,0.,i*1000.+128.,64.]})
+                registration=root/f'reg{i}.json';atomic_json(registration,{'reference_sha256':file_hash(reference),
+                    'clean_source_sha256':file_hash(clean),'metadata_sha256':file_hash(receipt),
+                    'reference_size':[256,128],'clean_size':[256,128],'reference_to_clean':[[1,0,0],[0,1,0]],
+                    'inliers':30,'inlier_error_clean_pixels_p95':.1})
+                entries.append({'id':f'crop{i}','site_id':'same-park','reference':str(reference),'clean':str(clean),
+                    'metadata':str(receipt),'registration':str(registration),'water_role':'location' if i==0 else 'boundary'})
+            report=user.train_many(entries,root/'trained')
+            self.assertTrue(report['same_park_examples']);self.assertFalse(report['production_eligible'])
+            self.assertTrue(all(not f['held_out_source_in_fitting'] for f in report['folds']))
+            self.assertTrue(all(f['minimum_training_distance_m']>=24 for f in report['folds']))
+            water=json.loads((root/'trained/water-boundary-model.json').read_text());user.validate_model(water)
+            self.assertEqual(water['version'],user.WATER_MODEL_VERSION)
+            self.assertEqual(water['training_record_ids'],['crop1'])
+            with self.assertRaises(ValueError):binary.validate_model(water)
+            duplicate=[entries[0],{**entries[0],'id':'copy'}]
+            with self.assertRaisesRegex(ValueError,'Same clean image'):user.train_many(duplicate,root/'bad')
+            with self.assertRaisesRegex(ValueError,'Safe bounded'):
+                user.train_many([entries[0],{**entries[1],'id':'../escape'}],root/'bad-id')
+
     def test_end_to_end_user_dots_train_only_on_separate_clean_rgb(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);rgb=np.full((128,256,3),[150,130,110],np.uint8)
