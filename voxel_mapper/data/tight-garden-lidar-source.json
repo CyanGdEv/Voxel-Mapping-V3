@@ -1,0 +1,422 @@
+{
+  "aligned_fields": {
+    "user-chessington-courtyard": {
+      "channels": [
+        "height_above_terrain_div_30m",
+        "terrain_slope_div_pi_over_two",
+        "surface_height_std_3m_div_5m",
+        "valid_dtm_dsm_neighbourhood"
+      ],
+      "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+      "dsm_sha256": "d629c85b0612f923fe44cc9c6e732326008becd4bff3350f28451aae5a84ddf7",
+      "dtm_sha256": "500e39fe2cc4288d344d7ef4e2df3a7286d23cf44d1599856bc4816cff54366a",
+      "features_are_labels": false,
+      "features_sha256": "5eb537bd90d1b223a4af24e663009a50332daa080429526fb4a8614dcc760ddc",
+      "image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+      "limitations": [
+        "Raster-derived LiDAR context, not raw point-return density or proof of a path beneath trees.",
+        "Survey and aerial dates differ; raster heights never override user labels.",
+        "One-metre source detail cannot establish sub-metre path edges."
+      ],
+      "native_resolution_m": 1.0,
+      "raw_point_cloud_used": false,
+      "resampling": "nearest native cell, no interpolation or gap filling",
+      "shape": [
+        1024,
+        1024,
+        4
+      ],
+      "survey": {
+        "archive_files": {
+          "dsm": "DSM_TQ1560_P_12756_20230116_20230116.tif",
+          "dtm": "DTM_TQ1560_P_12756_20230116_20230116.tif"
+        },
+        "finite_coverage_fraction": {
+          "dsm": 0.9979521220252807,
+          "dtm": 1.0
+        },
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+        "survey_end": "20230116",
+        "survey_id": "P_12756",
+        "survey_start": "20230116",
+        "terrain_coverage_threshold": 0.99
+      },
+      "transform_accuracy_m": 1.0,
+      "valid_fraction": 0.9964046478271484,
+      "version": "dated-lidar-surface-context-v1"
+    },
+    "user-gardens-lake": {
+      "channels": [
+        "height_above_terrain_div_30m",
+        "terrain_slope_div_pi_over_two",
+        "surface_height_std_3m_div_5m",
+        "valid_dtm_dsm_neighbourhood"
+      ],
+      "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+      "dsm_sha256": "18e7a2d2a255bdeb2825bd13240aad40cf3d09a92a7f556ba6b6f93cdfc66ec0",
+      "dtm_sha256": "3f49f1b89a5db8c01aaf26e4badcade5e78f16cf192a7af7684b6cd2dfd47b13",
+      "features_are_labels": false,
+      "features_sha256": "1b0a89667b0f9f81e28872c7e6222c69724cac5def6719f9c0e286e69cb49749",
+      "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+      "limitations": [
+        "Raster-derived LiDAR context, not raw point-return density or proof of a path beneath trees.",
+        "Survey and aerial dates differ; raster heights never override user labels.",
+        "One-metre source detail cannot establish sub-metre path edges."
+      ],
+      "native_resolution_m": 1.0,
+      "outside_lidar_raster_fraction": 0.0,
+      "raw_point_cloud_used": false,
+      "resampling": "nearest native cell, no interpolation or gap filling",
+      "shape": [
+        1024,
+        1024,
+        4
+      ],
+      "survey": {
+        "archive_files": {
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dsm": 0.958805709418802,
+          "dtm": 1.0
+        },
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+        "survey_end": "20220105",
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "terrain_coverage_threshold": 0.99
+      },
+      "transform_accuracy_m": 1.0,
+      "valid_fraction": 0.9219942092895508,
+      "version": "dated-lidar-surface-context-v1"
+    },
+    "user-tight-gardens": {
+      "channels": [
+        "height_above_terrain_div_30m",
+        "terrain_slope_div_pi_over_two",
+        "surface_height_std_3m_div_5m",
+        "valid_dtm_dsm_neighbourhood"
+      ],
+      "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+      "dsm_sha256": "18e7a2d2a255bdeb2825bd13240aad40cf3d09a92a7f556ba6b6f93cdfc66ec0",
+      "dtm_sha256": "3f49f1b89a5db8c01aaf26e4badcade5e78f16cf192a7af7684b6cd2dfd47b13",
+      "features_are_labels": false,
+      "features_sha256": "3ffddce006ccaf5fa4efc3571697bc5b11b70b8138b22ae9739382db5c525da5",
+      "image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "limitations": [
+        "Raster-derived LiDAR context, not raw point-return density or proof of a path beneath trees.",
+        "Survey and aerial dates differ; raster heights never override user labels.",
+        "One-metre source detail cannot establish sub-metre path edges."
+      ],
+      "native_resolution_m": 1.0,
+      "outside_lidar_raster_fraction": 0.0,
+      "raw_point_cloud_used": false,
+      "resampling": "nearest native cell, no interpolation or gap filling",
+      "shape": [
+        1024,
+        1024,
+        4
+      ],
+      "survey": {
+        "archive_files": {
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dsm": 0.958805709418802,
+          "dtm": 1.0
+        },
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+        "survey_end": "20220105",
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "terrain_coverage_threshold": 0.99
+      },
+      "transform_accuracy_m": 1.0,
+      "valid_fraction": 0.9408369064331055,
+      "version": "dated-lidar-surface-context-v1"
+    },
+    "user-towers-mutiny": {
+      "channels": [
+        "height_above_terrain_div_30m",
+        "terrain_slope_div_pi_over_two",
+        "surface_height_std_3m_div_5m",
+        "valid_dtm_dsm_neighbourhood"
+      ],
+      "datum_grid_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+      "dsm_sha256": "18e7a2d2a255bdeb2825bd13240aad40cf3d09a92a7f556ba6b6f93cdfc66ec0",
+      "dtm_sha256": "3f49f1b89a5db8c01aaf26e4badcade5e78f16cf192a7af7684b6cd2dfd47b13",
+      "features_are_labels": false,
+      "features_sha256": "5120f42471b4415447c2bceb37c033e48ac25d92d45674a7231681134314154d",
+      "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "limitations": [
+        "Raster-derived LiDAR context, not raw point-return density or proof of a path beneath trees.",
+        "Survey and aerial dates differ; raster heights never override user labels.",
+        "One-metre source detail cannot establish sub-metre path edges."
+      ],
+      "native_resolution_m": 1.0,
+      "outside_lidar_raster_fraction": 0.0,
+      "raw_point_cloud_used": false,
+      "resampling": "nearest native cell, no interpolation or gap filling",
+      "shape": [
+        512,
+        1280,
+        4
+      ],
+      "survey": {
+        "archive_files": {
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dsm": 0.958805709418802,
+          "dtm": 1.0
+        },
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+        "survey_end": "20220105",
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "terrain_coverage_threshold": 0.99
+      },
+      "transform_accuracy_m": 1.0,
+      "valid_fraction": 0.996185302734375,
+      "version": "dated-lidar-surface-context-v1"
+    }
+  },
+  "native_resolution_m": 1,
+  "raw_point_cloud_used": false,
+  "reproduction_audit": {
+    "layered_dataset_exact": true,
+    "lidar_replays": [
+      {
+        "exact_feature_array_match": true,
+        "id": "user-towers-mutiny",
+        "outside_lidar_raster_fraction": 0.0,
+        "valid_fraction": 0.996185302734375
+      },
+      {
+        "exact_feature_array_match": true,
+        "id": "user-gardens-lake",
+        "outside_lidar_raster_fraction": 0.0,
+        "valid_fraction": 0.9219942092895508
+      },
+      {
+        "exact_feature_array_match": true,
+        "id": "user-chessington-courtyard",
+        "outside_lidar_raster_fraction": 0.0,
+        "valid_fraction": 0.9964046478271484
+      },
+      {
+        "exact_feature_array_match": true,
+        "id": "user-tight-gardens",
+        "outside_lidar_raster_fraction": 0.0,
+        "valid_fraction": 0.9408369064331055
+      }
+    ],
+    "prior_ground_and_canopy_masks_preserved": [
+      "user-towers-mutiny",
+      "user-gardens-lake",
+      "user-chessington-courtyard"
+    ],
+    "source_dataset_exact": true
+  },
+  "sites": {
+    "alton-towers": {
+      "bounds_basis": "Actual exported imagery extents plus neighbourhood margin, not requested imagery bounds",
+      "requested_bounds_wgs84": [
+        -1.8962520471491504,
+        52.98441271999622,
+        -1.8867009271715631,
+        52.9914747401424
+      ],
+      "source": {
+        "archive_sha256": "3f6e57012a7f430681de54fa9591fe851d35487bf78be03e8a4a3a55a9cdc5f7",
+        "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+        "coordinate_transform": {
+          "accuracy_m": 1.0,
+          "best_available": true,
+          "grid": {
+            "file": "/workspace/scratch/tight-garden-paths/lidar/alton-towers/proj-grids/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+            "sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+            "status": "downloaded",
+            "url": "https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif"
+          }
+        },
+        "id": "ea-dtm",
+        "license": "OGL-UK-3.0",
+        "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+        "paired_surface": {
+          "config": {
+            "path": "/workspace/scratch/tight-garden-paths/lidar/alton-towers/ea-national-dsm.tif",
+            "source_id": "ea-dsm",
+            "units": "m",
+            "vertical_datum": "ODN"
+          },
+          "source": {
+            "archive_sha256": "f4bda86a2cb0fe2276ed5c138dad8a684c84714d07107bb62032351d3632d418",
+            "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+            "coordinate_transform": {
+              "accuracy_m": 1.0,
+              "best_available": true,
+              "grid": {
+                "file": "/workspace/scratch/tight-garden-paths/lidar/alton-towers/proj-grids/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+                "sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+                "status": "downloaded",
+                "url": "https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif"
+              }
+            },
+            "id": "ea-dsm",
+            "license": "OGL-UK-3.0",
+            "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+            "product": "National LIDAR last-return DSM",
+            "product_period": "2022",
+            "resolution_m": 1,
+            "survey": {
+              "archive_files": {
+                "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+                "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+              },
+              "finite_coverage_fraction": {
+                "dsm": 0.958805709418802,
+                "dtm": 1.0
+              },
+              "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+              "survey_end": "20220105",
+              "survey_id": "P_10682",
+              "survey_start": "20220105",
+              "terrain_coverage_threshold": 0.99
+            },
+            "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+            "vertical_datum": "ODN"
+          }
+        },
+        "product": "National LIDAR DTM",
+        "product_period": "2022",
+        "resolution_m": 1,
+        "survey": {
+          "archive_files": {
+            "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif",
+            "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif"
+          },
+          "finite_coverage_fraction": {
+            "dsm": 0.958805709418802,
+            "dtm": 1.0
+          },
+          "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+          "survey_end": "20220105",
+          "survey_id": "P_10682",
+          "survey_start": "20220105",
+          "terrain_coverage_threshold": 0.99
+        },
+        "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+        "vertical_datum": "ODN"
+      },
+      "status": "downloaded",
+      "terrain": {
+        "path": "/workspace/scratch/tight-garden-paths/lidar/alton-towers/ea-national-dtm.tif",
+        "source_id": "ea-dtm",
+        "units": "m",
+        "vertical_datum": "ODN"
+      }
+    },
+    "chessington": {
+      "requested_bounds_wgs84": [
+        -0.3188346546751679,
+        51.347558797822934,
+        -0.31550353128583913,
+        51.34963935239994
+      ],
+      "source": {
+        "archive_sha256": "4874023e0c6ddcb6039f6554b85ad31eff7ccf4c006605c8f99b5e3f720d08a9",
+        "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+        "coordinate_transform": {
+          "accuracy_m": 1.0,
+          "best_available": true,
+          "grid": {
+            "file": "/workspace/scratch/tight-garden-paths/lidar/chessington/proj-grids/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+            "sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+            "status": "downloaded",
+            "url": "https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif"
+          }
+        },
+        "id": "ea-dtm",
+        "license": "OGL-UK-3.0",
+        "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+        "paired_surface": {
+          "config": {
+            "path": "/workspace/scratch/tight-garden-paths/lidar/chessington/ea-national-dsm.tif",
+            "source_id": "ea-dsm",
+            "units": "m",
+            "vertical_datum": "ODN"
+          },
+          "source": {
+            "archive_sha256": "e44a43aa957960c9058dd83a4ba5b02b33195d460d58e1b2e55ef2d113c8be78",
+            "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+            "coordinate_transform": {
+              "accuracy_m": 1.0,
+              "best_available": true,
+              "grid": {
+                "file": "/workspace/scratch/tight-garden-paths/lidar/chessington/proj-grids/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+                "sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa",
+                "status": "downloaded",
+                "url": "https://cdn.proj.org/uk_os_OSTN15_NTv2_OSGBtoETRS.tif"
+              }
+            },
+            "id": "ea-dsm",
+            "license": "OGL-UK-3.0",
+            "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+            "product": "National LIDAR last-return DSM",
+            "product_period": "2023",
+            "resolution_m": 1,
+            "survey": {
+              "archive_files": {
+                "dsm": "DSM_TQ1560_P_12756_20230116_20230116.tif",
+                "dtm": "DTM_TQ1560_P_12756_20230116_20230116.tif"
+              },
+              "finite_coverage_fraction": {
+                "dsm": 0.9979521220252807,
+                "dtm": 1.0
+              },
+              "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+              "survey_end": "20230116",
+              "survey_id": "P_12756",
+              "survey_start": "20230116",
+              "terrain_coverage_threshold": 0.99
+            },
+            "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2023/1/TQ1560",
+            "vertical_datum": "ODN"
+          }
+        },
+        "product": "National LIDAR DTM",
+        "product_period": "2023",
+        "resolution_m": 1,
+        "survey": {
+          "archive_files": {
+            "dsm": "DSM_TQ1560_P_12756_20230116_20230116.tif",
+            "dtm": "DTM_TQ1560_P_12756_20230116_20230116.tif"
+          },
+          "finite_coverage_fraction": {
+            "dsm": 0.9979521220252807,
+            "dtm": 1.0
+          },
+          "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation",
+          "survey_end": "20230116",
+          "survey_id": "P_12756",
+          "survey_start": "20230116",
+          "terrain_coverage_threshold": 0.99
+        },
+        "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2023/1/TQ1560",
+        "vertical_datum": "ODN"
+      },
+      "status": "downloaded",
+      "terrain": {
+        "path": "/workspace/scratch/tight-garden-paths/lidar/chessington/ea-national-dtm.tif",
+        "source_id": "ea-dtm",
+        "units": "m",
+        "vertical_datum": "ODN"
+      }
+    }
+  },
+  "version": "tight-garden-lidar-source-v1"
+}

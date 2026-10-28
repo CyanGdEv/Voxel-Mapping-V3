@@ -62,6 +62,10 @@ on:
       - 'voxel_mapper/data/user-chessington-*.json'
       - 'voxel_mapper/layered_surface_*.py'
       - 'voxel_mapper/aerial_surface_encoder.py'
+      - 'voxel_mapper/lidar_surface_features.py'
+      - 'voxel_mapper/tight_path_review.py'
+      - 'voxel_mapper/data/tight-garden-*.json'
+      - 'tests/test_lidar_surface_features.py'
       - 'voxel_mapper/data/layered-surface-*.json'
       - 'scripts/train_layered_surfaces.py'
       - 'tests/test_layered_surface_learning.py'
@@ -319,6 +323,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Connected surface masks and optional spatial CNN checks failed' }
           python -m unittest discover -s tests -p 'test_layered_surface_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Layered surface targets and optional CPU learning checks failed' }
+          python -m unittest discover -s tests -p 'test_lidar_surface_features.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Aligned LiDAR context and local path separation checks failed' }
           python -m unittest discover -s tests -p 'test_paving_binary_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'RGB and context binary paving training checks failed' }
           python -m unittest discover -s tests -p 'test_paving_spatial_transfer.py' -v

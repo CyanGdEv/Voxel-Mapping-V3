@@ -1,0 +1,1373 @@
+{
+  "clean_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+  "independent_human_review": false,
+  "layered_additions": {
+    "canopy": [
+      {
+        "id": "terrace-tree",
+        "origin": "assistant_source_reviewed_draft",
+        "outer": [
+          [
+            200,
+            331
+          ],
+          [
+            219,
+            321
+          ],
+          [
+            239,
+            329
+          ],
+          [
+            253,
+            350
+          ],
+          [
+            258,
+            381
+          ],
+          [
+            252,
+            411
+          ],
+          [
+            241,
+            435
+          ],
+          [
+            220,
+            445
+          ],
+          [
+            201,
+            437
+          ],
+          [
+            185,
+            414
+          ],
+          [
+            181,
+            387
+          ],
+          [
+            185,
+            356
+          ]
+        ],
+        "reason": "Assistant traced visible clean crown, not marker radius"
+      },
+      {
+        "id": "east-terrace-tree",
+        "origin": "assistant_source_reviewed_draft",
+        "outer": [
+          [
+            469,
+            205
+          ],
+          [
+            488,
+            195
+          ],
+          [
+            508,
+            203
+          ],
+          [
+            523,
+            224
+          ],
+          [
+            527,
+            249
+          ],
+          [
+            517,
+            274
+          ],
+          [
+            493,
+            283
+          ],
+          [
+            475,
+            273
+          ],
+          [
+            463,
+            249
+          ]
+        ],
+        "reason": "Assistant traced visible clean crown, not marker radius"
+      },
+      {
+        "id": "middle-crown",
+        "origin": "assistant_source_reviewed_draft",
+        "outer": [
+          [
+            424,
+            560
+          ],
+          [
+            444,
+            551
+          ],
+          [
+            463,
+            559
+          ],
+          [
+            479,
+            579
+          ],
+          [
+            482,
+            603
+          ],
+          [
+            471,
+            624
+          ],
+          [
+            450,
+            632
+          ],
+          [
+            432,
+            623
+          ],
+          [
+            417,
+            601
+          ],
+          [
+            415,
+            577
+          ]
+        ],
+        "reason": "Assistant traced visible clean crown, not marker radius"
+      },
+      {
+        "id": "lower-crown",
+        "origin": "assistant_source_reviewed_draft",
+        "outer": [
+          [
+            292,
+            928
+          ],
+          [
+            317,
+            917
+          ],
+          [
+            344,
+            930
+          ],
+          [
+            359,
+            955
+          ],
+          [
+            356,
+            984
+          ],
+          [
+            339,
+            1007
+          ],
+          [
+            315,
+            1017
+          ],
+          [
+            292,
+            1004
+          ],
+          [
+            276,
+            982
+          ],
+          [
+            274,
+            954
+          ]
+        ],
+        "reason": "Assistant traced visible clean crown, not marker radius"
+      }
+    ],
+    "dense_windows": [
+      {
+        "base": "grass_island",
+        "id": "middle-loop-separator",
+        "independently_verified": false,
+        "outer": [
+          [
+            475,
+            445
+          ],
+          [
+            590,
+            445
+          ],
+          [
+            590,
+            545
+          ],
+          [
+            475,
+            545
+          ]
+        ],
+        "parts": [
+          {
+            "id": "upper-loop-edge",
+            "label": "paving",
+            "origin": "assistant_source_reviewed_draft",
+            "outer": [
+              [
+                475,
+                445
+              ],
+              [
+                488,
+                438
+              ],
+              [
+                518,
+                439
+              ],
+              [
+                548,
+                450
+              ],
+              [
+                575,
+                465
+              ],
+              [
+                590,
+                472
+              ],
+              [
+                590,
+                486
+              ],
+              [
+                565,
+                474
+              ],
+              [
+                537,
+                459
+              ],
+              [
+                514,
+                449
+              ],
+              [
+                488,
+                450
+              ]
+            ],
+            "reason": "Visible paired edge corridor"
+          },
+          {
+            "id": "return-loop-edge",
+            "label": "paving",
+            "origin": "assistant_source_reviewed_draft",
+            "outer": [
+              [
+                475,
+                528
+              ],
+              [
+                508,
+                529
+              ],
+              [
+                539,
+                519
+              ],
+              [
+                562,
+                500
+              ],
+              [
+                581,
+                480
+              ],
+              [
+                590,
+                477
+              ],
+              [
+                590,
+                490
+              ],
+              [
+                571,
+                510
+              ],
+              [
+                548,
+                531
+              ],
+              [
+                518,
+                541
+              ],
+              [
+                475,
+                541
+              ]
+            ],
+            "reason": "Visible paired edge corridor"
+          }
+        ],
+        "unknown": [
+          [
+            [
+              488,
+              456
+            ],
+            [
+              508,
+              453
+            ],
+            [
+              536,
+              462
+            ],
+            [
+              534,
+              478
+            ],
+            [
+              507,
+              481
+            ],
+            [
+              491,
+              471
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  "purple_circle_role_confirmed_by_user": "structure_or_building",
+  "reference_sha256": "b571ec8e3eb653b0fc70ce846ace115ce1e65cd2b0f914a0633e46e9884552cc",
+  "surfaces": [
+    {
+      "holes": [],
+      "id": "upper-terrace-walk",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          0,
+          303
+        ],
+        [
+          42,
+          309
+        ],
+        [
+          84,
+          306
+        ],
+        [
+          143,
+          307
+        ],
+        [
+          194,
+          308
+        ],
+        [
+          238,
+          308
+        ],
+        [
+          260,
+          310
+        ],
+        [
+          273,
+          297
+        ],
+        [
+          290,
+          285
+        ],
+        [
+          319,
+          286
+        ],
+        [
+          400,
+          289
+        ],
+        [
+          475,
+          288
+        ],
+        [
+          550,
+          288
+        ],
+        [
+          591,
+          292
+        ],
+        [
+          647,
+          299
+        ],
+        [
+          700,
+          300
+        ],
+        [
+          743,
+          300
+        ],
+        [
+          743,
+          313
+        ],
+        [
+          688,
+          311
+        ],
+        [
+          630,
+          307
+        ],
+        [
+          580,
+          305
+        ],
+        [
+          520,
+          305
+        ],
+        [
+          461,
+          302
+        ],
+        [
+          400,
+          300
+        ],
+        [
+          338,
+          303
+        ],
+        [
+          290,
+          301
+        ],
+        [
+          310,
+          325
+        ],
+        [
+          262,
+          326
+        ],
+        [
+          236,
+          321
+        ],
+        [
+          180,
+          322
+        ],
+        [
+          126,
+          321
+        ],
+        [
+          65,
+          321
+        ],
+        [
+          0,
+          319
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "upper-sloping-branch",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          278,
+          251
+        ],
+        [
+          319,
+          241
+        ],
+        [
+          387,
+          230
+        ],
+        [
+          433,
+          220
+        ],
+        [
+          444,
+          211
+        ],
+        [
+          448,
+          211
+        ],
+        [
+          450,
+          224
+        ],
+        [
+          447,
+          237
+        ],
+        [
+          407,
+          241
+        ],
+        [
+          342,
+          253
+        ],
+        [
+          298,
+          267
+        ],
+        [
+          279,
+          286
+        ],
+        [
+          277,
+          296
+        ],
+        [
+          271,
+          290
+        ],
+        [
+          275,
+          274
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "middle-terrace-walk",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          281,
+          466
+        ],
+        [
+          355,
+          455
+        ],
+        [
+          420,
+          444
+        ],
+        [
+          453,
+          440
+        ],
+        [
+          481,
+          414
+        ],
+        [
+          520,
+          410
+        ],
+        [
+          558,
+          420
+        ],
+        [
+          581,
+          446
+        ],
+        [
+          618,
+          464
+        ],
+        [
+          675,
+          480
+        ],
+        [
+          718,
+          470
+        ],
+        [
+          725,
+          482
+        ],
+        [
+          690,
+          493
+        ],
+        [
+          645,
+          487
+        ],
+        [
+          606,
+          473
+        ],
+        [
+          565,
+          454
+        ],
+        [
+          539,
+          435
+        ],
+        [
+          515,
+          428
+        ],
+        [
+          488,
+          430
+        ],
+        [
+          468,
+          448
+        ],
+        [
+          427,
+          457
+        ],
+        [
+          360,
+          475
+        ],
+        [
+          290,
+          487
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "middle-loop-return",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          374,
+          519
+        ],
+        [
+          392,
+          527
+        ],
+        [
+          449,
+          524
+        ],
+        [
+          501,
+          527
+        ],
+        [
+          537,
+          518
+        ],
+        [
+          561,
+          498
+        ],
+        [
+          583,
+          478
+        ],
+        [
+          604,
+          466
+        ],
+        [
+          614,
+          474
+        ],
+        [
+          596,
+          487
+        ],
+        [
+          579,
+          507
+        ],
+        [
+          552,
+          532
+        ],
+        [
+          517,
+          542
+        ],
+        [
+          468,
+          541
+        ],
+        [
+          426,
+          541
+        ],
+        [
+          391,
+          538
+        ],
+        [
+          390,
+          577
+        ],
+        [
+          383,
+          590
+        ],
+        [
+          372,
+          590
+        ],
+        [
+          371,
+          546
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "west-terrace-walk",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          122,
+          581
+        ],
+        [
+          154,
+          577
+        ],
+        [
+          207,
+          574
+        ],
+        [
+          250,
+          577
+        ],
+        [
+          281,
+          575
+        ],
+        [
+          311,
+          578
+        ],
+        [
+          353,
+          578
+        ],
+        [
+          379,
+          583
+        ],
+        [
+          383,
+          596
+        ],
+        [
+          342,
+          596
+        ],
+        [
+          309,
+          593
+        ],
+        [
+          282,
+          596
+        ],
+        [
+          252,
+          593
+        ],
+        [
+          210,
+          594
+        ],
+        [
+          158,
+          598
+        ],
+        [
+          120,
+          600
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "west-turn-and-steps",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          245,
+          596
+        ],
+        [
+          258,
+          612
+        ],
+        [
+          265,
+          641
+        ],
+        [
+          271,
+          677
+        ],
+        [
+          244,
+          690
+        ],
+        [
+          217,
+          693
+        ],
+        [
+          217,
+          700
+        ],
+        [
+          257,
+          695
+        ],
+        [
+          287,
+          685
+        ],
+        [
+          288,
+          658
+        ],
+        [
+          280,
+          634
+        ],
+        [
+          278,
+          611
+        ],
+        [
+          285,
+          593
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "lower-terrace-walk",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          62,
+          852
+        ],
+        [
+          166,
+          852
+        ],
+        [
+          179,
+          846
+        ],
+        [
+          181,
+          825
+        ],
+        [
+          194,
+          809
+        ],
+        [
+          208,
+          803
+        ],
+        [
+          209,
+          818
+        ],
+        [
+          195,
+          832
+        ],
+        [
+          196,
+          848
+        ],
+        [
+          230,
+          849
+        ],
+        [
+          273,
+          844
+        ],
+        [
+          276,
+          855
+        ],
+        [
+          235,
+          862
+        ],
+        [
+          207,
+          866
+        ],
+        [
+          277,
+          875
+        ],
+        [
+          275,
+          883
+        ],
+        [
+          209,
+          882
+        ],
+        [
+          158,
+          886
+        ],
+        [
+          102,
+          882
+        ],
+        [
+          58,
+          876
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "east-sloping-walk",
+      "label": "paving",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          576,
+          644
+        ],
+        [
+          621,
+          655
+        ],
+        [
+          663,
+          671
+        ],
+        [
+          700,
+          684
+        ],
+        [
+          742,
+          705
+        ],
+        [
+          777,
+          718
+        ],
+        [
+          777,
+          737
+        ],
+        [
+          729,
+          715
+        ],
+        [
+          687,
+          697
+        ],
+        [
+          640,
+          680
+        ],
+        [
+          596,
+          662
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "conservatory-main-roof",
+      "label": "building_structure",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          89,
+          197
+        ],
+        [
+          250,
+          199
+        ],
+        [
+          258,
+          212
+        ],
+        [
+          262,
+          233
+        ],
+        [
+          90,
+          232
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "conservatory-west-roof",
+      "label": "building_structure",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          0,
+          226
+        ],
+        [
+          43,
+          228
+        ],
+        [
+          40,
+          258
+        ],
+        [
+          27,
+          277
+        ],
+        [
+          15,
+          274
+        ],
+        [
+          0,
+          265
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "conservatory-centre-roof",
+      "label": "building_structure",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          44,
+          234
+        ],
+        [
+          89,
+          234
+        ],
+        [
+          90,
+          265
+        ],
+        [
+          64,
+          265
+        ],
+        [
+          60,
+          282
+        ],
+        [
+          40,
+          280
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "conservatory-east-roof",
+      "label": "building_structure",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          188,
+          234
+        ],
+        [
+          262,
+          234
+        ],
+        [
+          266,
+          286
+        ],
+        [
+          189,
+          285
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "confirmed-circular-structure",
+      "label": "building_structure",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          283,
+          584
+        ],
+        [
+          302,
+          582
+        ],
+        [
+          320,
+          593
+        ],
+        [
+          330,
+          613
+        ],
+        [
+          319,
+          630
+        ],
+        [
+          300,
+          639
+        ],
+        [
+          283,
+          634
+        ],
+        [
+          271,
+          620
+        ],
+        [
+          269,
+          603
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "upper-lawn-visible",
+      "label": "grass_island",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          307,
+          333
+        ],
+        [
+          348,
+          337
+        ],
+        [
+          389,
+          340
+        ],
+        [
+          415,
+          358
+        ],
+        [
+          427,
+          378
+        ],
+        [
+          417,
+          397
+        ],
+        [
+          386,
+          404
+        ],
+        [
+          345,
+          415
+        ],
+        [
+          308,
+          423
+        ],
+        [
+          307,
+          387
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "middle-island-visible",
+      "label": "grass_island",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          469,
+          462
+        ],
+        [
+          502,
+          452
+        ],
+        [
+          536,
+          459
+        ],
+        [
+          564,
+          474
+        ],
+        [
+          544,
+          503
+        ],
+        [
+          521,
+          516
+        ],
+        [
+          498,
+          513
+        ],
+        [
+          480,
+          495
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "west-lawn-visible",
+      "label": "grass_island",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          137,
+          618
+        ],
+        [
+          167,
+          611
+        ],
+        [
+          205,
+          615
+        ],
+        [
+          230,
+          633
+        ],
+        [
+          235,
+          653
+        ],
+        [
+          214,
+          672
+        ],
+        [
+          172,
+          671
+        ],
+        [
+          144,
+          657
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    },
+    {
+      "holes": [],
+      "id": "lower-lawn-visible",
+      "label": "grass_island",
+      "origin": "assistant_source_assisted_user_guides",
+      "outer": [
+        [
+          77,
+          767
+        ],
+        [
+          124,
+          758
+        ],
+        [
+          149,
+          773
+        ],
+        [
+          161,
+          798
+        ],
+        [
+          144,
+          815
+        ],
+        [
+          109,
+          815
+        ],
+        [
+          79,
+          803
+        ]
+      ],
+      "reason": "Visible clean RGB plus user-dotted boundaries; assistant draft, not surveyed or independently reviewed"
+    }
+  ],
+  "version": "tight-garden-source-regions-v1"
+}

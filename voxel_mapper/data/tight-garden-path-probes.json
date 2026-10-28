@@ -1,0 +1,14 @@
+{
+  "version": "tight-garden-path-probes-v1",
+  "reference_coordinates": "user-tight-gardens original 778 by 1280 image pixels",
+  "source_only_assistant_drafts": true,
+  "probes": [
+    {"id":"sloping-upper-branch","a_reference_xy":[305,254],"b_reference_xy":[423,232],"reference_box_xyxy":[292,224,432,269],"expected_local_connection":true},
+    {"id":"middle-promenade","a_reference_xy":[307,472],"b_reference_xy":[435,447],"reference_box_xyxy":[290,435,448,486],"expected_local_connection":true},
+    {"id":"west-terrace","a_reference_xy":[145,589],"b_reference_xy":[240,587],"reference_box_xyxy":[125,578,245,600],"expected_local_connection":true},
+    {"id":"east-sloping-walk","a_reference_xy":[620,667],"b_reference_xy":[740,713],"reference_box_xyxy":[608,655,752,724],"expected_local_connection":true},
+    {"id":"lower-terrace","a_reference_xy":[85,866],"b_reference_xy":[150,866],"reference_box_xyxy":[65,850,165,884],"expected_local_connection":true},
+    {"id":"middle-grass-island-gap","a_reference_xy":[530,451],"b_reference_xy":[530,531],"reference_box_xyxy":[518,443,542,540],"expected_local_connection":false},
+    {"id":"upper-to-middle-lawn-gap","a_reference_xy":[380,295],"b_reference_xy":[380,460],"reference_box_xyxy":[370,285,390,473],"expected_local_connection":false}
+  ]
+}
