@@ -38,6 +38,8 @@ def _mode(features, mode):
 
 def _rows(directory, cancelled):
     root = Path(directory).resolve(); manifest = masks.validate(root)
+    if manifest.get('reserved_test_only') or any(not r['research_training_eligible'] for r in manifest['records']):
+        raise ValueError('Reserved test masks cannot enter model fitting')
     if not 3 <= len(manifest['records']) <= 12 or len({r['site_id'] for r in manifest['records']}) < 3:
         raise ValueError('Three to twelve crops from at least three parks required')
     rows = []

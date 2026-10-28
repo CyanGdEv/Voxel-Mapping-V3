@@ -40,6 +40,14 @@ def cache_fixture(root,c):
 
 
 class AerialMaterialResearchTests(unittest.TestCase):
+    def test_empty_provider_export_is_not_treated_as_high_resolution_imagery(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);body=root/'empty.json';body.write_text(json.dumps({'href':'','width':0,'height':0}))
+            with patch.object(web,'fetch',return_value={'source':{}}) as fetch, patch.object(web,'_body_path',return_value=body):
+                with self.assertRaisesRegex(ValueError,'empty or differently sized'):
+                    aerial.acquire(config(),root/'cache',cancelled=lambda:False,deadline=time.monotonic()+5,budget=web.Budget())
+                self.assertEqual(fetch.call_count,1)
+
     def test_rgb_samples_keep_real_extent_and_withhold_shadows_and_vegetation(self):
         with tempfile.TemporaryDirectory() as tmp:
             path,receipt=fixture(Path(tmp));rows=aerial.sample(path,receipt,4,0)
@@ -121,6 +129,7 @@ class AerialMaterialResearchTests(unittest.TestCase):
                 jid=runtime.submit('aerial_material_research',path);runtime._futures[jid].result(timeout=30)
                 job=runtime.store.job(jid);self.assertEqual(job['status'],'completed',job.get('error'))
                 self.assertEqual(job['result']['sample_cells'],16)
+                self.assertFalse(job['result']['capture_quality']['genuine_resolution_upgrade_verified'])
                 self.assertIn('aerial_rgb_observation',runtime.store.context(20000))
             finally:runtime.close(wait=True)
 
