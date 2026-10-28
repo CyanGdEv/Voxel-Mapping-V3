@@ -69,3 +69,5 @@ For an imagery geometry request, `semantic_model: {"file": "model/model.json", "
 None of these outputs verify registration, ground footprints, building heights, parking capacities, planter construction or material identity. They do not write world blocks or replace accepted geometry. The default remains a research checkpoint (`production_eligible: false`). This is a source update; a new Windows EXE has not been rebuilt.
 
 Imagery attribution: Esri World Imagery and its imagery providers. Original provider metadata/date/accuracy observations remain with each retained image. Chessington location context was checked against its [official directions](https://www.chessington.com/plan-your-visit/before-you-visit/directions/); this does not verify individual labels.
+
+A subsequent [paving-focused data expansion](paving-training-expansion.md) trains an additional checkpoint on eight images/five parks. On the same frozen original targets, paving IoU rises from 5.23% to 14.34%, while roof IoU declines. That checkpoint is explicit and preserves this original one; it remains a research model with many false positives.

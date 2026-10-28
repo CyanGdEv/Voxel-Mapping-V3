@@ -46,6 +46,7 @@ on:
       - 'voxel_mapper/aerial_material_research.py'
       - 'voxel_mapper/aerial_semantic_learning.py'
       - 'voxel_mapper/aerial_semantic_network.py'
+      - 'voxel_mapper/aerial_semantic_comparison.py'
       - 'voxel_mapper/data/aerial-semantic-visual-annotations.json'
       - 'tests/test_aerial_semantic_learning.py'
       - 'voxel_mapper/imagery_geometry_research.py'

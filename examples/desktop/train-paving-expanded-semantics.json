@@ -1,0 +1,12 @@
+{
+  "version": "desktop-aerial-semantic-training-v1",
+  "dataset_directory": "dataset",
+  "settings": {
+    "batch_size": 512,
+    "epochs": 60,
+    "hidden": 24,
+    "learning_rate": 0.01,
+    "regularization": 0.0001,
+    "seed": 137
+  }
+}

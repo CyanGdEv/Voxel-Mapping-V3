@@ -59,6 +59,14 @@ class AerialSemanticNetworkTests(unittest.TestCase):
 
 
 class AerialSemanticLearningTests(unittest.TestCase):
+    def test_relative_dataset_root_preserves_asset_containment_checks(self):
+        import os
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);data,_=fixture(root)
+            relative=Path(os.path.relpath(data,Path.cwd()))
+            manifest,rows,_=learning.read_dataset(relative)
+            self.assertEqual(len(rows),3);self.assertEqual(manifest['version'],learning.DATASET_VERSION)
+
     def test_park_holdout_never_uses_held_site_and_prediction_needs_no_labels(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);data,items=fixture(root)
@@ -80,6 +88,27 @@ class AerialSemanticLearningTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'mask asset changed'):learning.read_dataset(data)
             row['mask_sha256']=file_hash(mask);reseal_manifest(path,manifest)
             with self.assertRaisesRegex(ValueError,'pinned visual annotation'):learning.read_dataset(data)
+
+    def test_park_identifiers_cannot_escape_checkpoint_directories(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);data,_=fixture(root);path=data/'dataset.json';manifest=json.loads(path.read_text())
+            manifest['records'][0]['site_id']='../outside';reseal_manifest(path,manifest)
+            with self.assertRaisesRegex(ValueError,'park identifiers'):learning.train(data,root/'model')
+
+    def test_frozen_comparison_uses_same_masks_and_rejects_final_model_leakage(self):
+        from voxel_mapper.aerial_semantic_comparison import compare
+        import shutil
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);data,_=fixture(root);learning.train(data,root/'before',{'epochs':2,'hidden':8})
+            shutil.copytree(root/'before',root/'after')
+            report=compare(data,data,root/'before',root/'after',root/'comparison')
+            self.assertEqual(report['previous'],report['candidate'])
+            self.assertTrue(report['same_frozen_targets']);self.assertTrue(report['whole_park_exclusion'])
+            for fold in report['folds']:self.assertNotIn(fold['held_out_site'],fold['candidate_training_sites'])
+            # A valid, correctly hashed final model is still invalid for a
+            # park-excluded comparison: it has seen the scored source.
+            shutil.copy2(root/'after/model.json',root/'after/folds/site0/model.json')
+            with self.assertRaisesRegex(ValueError,'park-excluded'):compare(data,data,root/'before',root/'after',root/'bad-comparison')
 
     def test_duplicate_original_and_overlapping_held_site_footprints_are_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:

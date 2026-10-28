@@ -1,0 +1,2840 @@
+{
+  "version": "paving-expanded-neural-training-validation-v1",
+  "date_utc": "2026-10-28",
+  "portable_comparison_report_sha256": "58f142938164f183b09d8d8b37767538c52f574802fffcc244da4d783afc7fd4",
+  "portable_comparison_matches_original": true,
+  "annotation_polygons": 225,
+  "records": 8,
+  "parks": 5,
+  "tests": {
+    "passed": 52,
+    "log_sha256": "423823e42fc61b6fa8e7facc55d00a71131f17572e5b456ac70de9046e89f916"
+  },
+  "dataset_id": "583e30029ffe558805fdb1243b21cffcef53efee591edda4e399f01736706c05",
+  "dataset_sha256": "faeb70344a19cf823131328a9383cdc4f56c655f102cf035df6ea5b537153ae3",
+  "previous_dataset_sha256": "4c3d1a04eca9f1e4f0ef5002d689b042d2d670ac817addb6c6e042d8d35f1beb",
+  "training": {
+    "classes": [
+      "paths_plazas",
+      "building_roofs",
+      "car_parks",
+      "landscaped_islands",
+      "other_visible"
+    ],
+    "dataset_id": "583e30029ffe558805fdb1243b21cffcef53efee591edda4e399f01736706c05",
+    "dataset_sha256": "faeb70344a19cf823131328a9383cdc4f56c655f102cf035df6ea5b537153ae3",
+    "final_loss_history": [
+      {
+        "epoch": 1,
+        "weighted_cross_entropy": 1.0823293567754668
+      },
+      {
+        "epoch": 10,
+        "weighted_cross_entropy": 0.6482157588307372
+      },
+      {
+        "epoch": 20,
+        "weighted_cross_entropy": 0.5857020497768344
+      },
+      {
+        "epoch": 30,
+        "weighted_cross_entropy": 0.5509658654626813
+      },
+      {
+        "epoch": 40,
+        "weighted_cross_entropy": 0.5280261683501478
+      },
+      {
+        "epoch": 50,
+        "weighted_cross_entropy": 0.5154304354873078
+      },
+      {
+        "epoch": 60,
+        "weighted_cross_entropy": 0.5085185562715445
+      }
+    ],
+    "folds": [
+      {
+        "held_out_record_ids": [
+          "alton-street",
+          "alton-wicker"
+        ],
+        "held_out_site": "alton-towers",
+        "neural": {
+          "annotated_pixels": 81873,
+          "confusion": [
+            [
+              9011,
+              9371,
+              1646,
+              626,
+              6
+            ],
+            [
+              8580,
+              7159,
+              3449,
+              503,
+              37
+            ],
+            [
+              3077,
+              2376,
+              5655,
+              0,
+              1
+            ],
+            [
+              1690,
+              598,
+              5,
+              687,
+              399
+            ],
+            [
+              6102,
+              2936,
+              33,
+              5830,
+              12096
+            ]
+          ],
+          "mean_iou": 0.2569189322712537,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.22466279388665886,
+              "recall": 0.4361568247821878,
+              "support": 20660
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.20449027392956096,
+              "recall": 0.3628852392538524,
+              "support": 19728
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.3481714074621352,
+              "recall": 0.5090467188765866,
+              "support": 11109
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06645385954730122,
+              "recall": 0.20331459011541878,
+              "support": 3379
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.44081632653061226,
+              "recall": 0.4480497833092566,
+              "support": 26997
+            }
+          ],
+          "pixel_accuracy": 0.4227034553515811,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "rgb_centroid_baseline": {
+          "annotated_pixels": 81873,
+          "confusion": [
+            [
+              2316,
+              12973,
+              2960,
+              1604,
+              807
+            ],
+            [
+              1815,
+              11782,
+              4133,
+              1343,
+              655
+            ],
+            [
+              660,
+              8248,
+              1276,
+              655,
+              270
+            ],
+            [
+              741,
+              412,
+              322,
+              1496,
+              408
+            ],
+            [
+              6656,
+              956,
+              1725,
+              8200,
+              9460
+            ]
+          ],
+          "mean_iou": 0.1681020021603279,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.07585484082274335,
+              "recall": 0.11210067763794772,
+              "support": 20660
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.2784223834392797,
+              "recall": 0.5972222222222222,
+              "support": 19728
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.06301545755345943,
+              "recall": 0.11486182374651184,
+              "support": 11109
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.09854423292273236,
+              "recall": 0.44273453684522046,
+              "support": 3379
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.32467309606342454,
+              "recall": 0.35040930473756343,
+              "support": 26997
+            }
+          ],
+          "pixel_accuracy": 0.32159564203095037,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "training_record_ids": [
+          "thorpe-entry",
+          "chessington-entry",
+          "legoland-central",
+          "drayton-central",
+          "thorpe-central",
+          "chessington-central"
+        ],
+        "training_sites": [
+          "chessington",
+          "drayton-manor",
+          "legoland-windsor",
+          "thorpe-park"
+        ]
+      },
+      {
+        "held_out_record_ids": [
+          "chessington-entry",
+          "chessington-central"
+        ],
+        "held_out_site": "chessington",
+        "neural": {
+          "annotated_pixels": 39381,
+          "confusion": [
+            [
+              4960,
+              914,
+              567,
+              854,
+              1224
+            ],
+            [
+              1233,
+              2676,
+              29,
+              56,
+              256
+            ],
+            [
+              2622,
+              1919,
+              4992,
+              109,
+              361
+            ],
+            [
+              643,
+              63,
+              24,
+              118,
+              323
+            ],
+            [
+              1533,
+              297,
+              336,
+              802,
+              12470
+            ]
+          ],
+          "mean_iou": 0.3807645313535769,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.340893470790378,
+              "recall": 0.5822279610282897,
+              "support": 8519
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.35953244659411526,
+              "recall": 0.6296470588235294,
+              "support": 4250
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.4555160142348754,
+              "recall": 0.49905028491452563,
+              "support": 10003
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.03943850267379679,
+              "recall": 0.10076857386848848,
+              "support": 1171
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.7084422224747188,
+              "recall": 0.8077471175022671,
+              "support": 15438
+            }
+          ],
+          "pixel_accuracy": 0.6403087783448871,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "rgb_centroid_baseline": {
+          "annotated_pixels": 39381,
+          "confusion": [
+            [
+              852,
+              3072,
+              821,
+              905,
+              2869
+            ],
+            [
+              241,
+              3013,
+              312,
+              195,
+              489
+            ],
+            [
+              1202,
+              4434,
+              1141,
+              1142,
+              2084
+            ],
+            [
+              167,
+              223,
+              214,
+              114,
+              453
+            ],
+            [
+              6344,
+              240,
+              420,
+              3658,
+              4776
+            ]
+          ],
+          "mean_iou": 0.12704925036324602,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.05172099799672191,
+              "recall": 0.10001173846695621,
+              "support": 8519
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.24658319011375726,
+              "recall": 0.7089411764705882,
+              "support": 4250
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.09694137638062872,
+              "recall": 0.11406578026592022,
+              "support": 10003
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.01612218922358931,
+              "recall": 0.09735269000853972,
+              "support": 1171
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.22387849810153285,
+              "recall": 0.30936649825106877,
+              "support": 15438
+            }
+          ],
+          "pixel_accuracy": 0.2512886925166959,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "training_record_ids": [
+          "alton-street",
+          "alton-wicker",
+          "thorpe-entry",
+          "legoland-central",
+          "drayton-central",
+          "thorpe-central"
+        ],
+        "training_sites": [
+          "alton-towers",
+          "drayton-manor",
+          "legoland-windsor",
+          "thorpe-park"
+        ]
+      },
+      {
+        "held_out_record_ids": [
+          "drayton-central"
+        ],
+        "held_out_site": "drayton-manor",
+        "neural": {
+          "annotated_pixels": 22703,
+          "confusion": [
+            [
+              1210,
+              1358,
+              1271,
+              305,
+              319
+            ],
+            [
+              300,
+              2069,
+              1050,
+              21,
+              47
+            ],
+            [
+              592,
+              1010,
+              273,
+              178,
+              155
+            ],
+            [
+              323,
+              105,
+              2,
+              40,
+              219
+            ],
+            [
+              2749,
+              372,
+              1309,
+              923,
+              6503
+            ]
+          ],
+          "mean_iou": 0.21045285358358462,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.14358609232229738,
+              "recall": 0.27111808200761817,
+              "support": 4463
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.3267530006317119,
+              "recall": 0.5933467163751075,
+              "support": 3487
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.046746575342465756,
+              "recall": 0.12364130434782608,
+              "support": 2208
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.01890359168241966,
+              "recall": 0.05805515239477504,
+              "support": 689
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.5162750079390283,
+              "recall": 0.5484986504723347,
+              "support": 11856
+            }
+          ],
+          "pixel_accuracy": 0.44465489142404085,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "rgb_centroid_baseline": {
+          "annotated_pixels": 22703,
+          "confusion": [
+            [
+              441,
+              1584,
+              787,
+              408,
+              1243
+            ],
+            [
+              371,
+              1576,
+              912,
+              153,
+              475
+            ],
+            [
+              1270,
+              61,
+              166,
+              357,
+              354
+            ],
+            [
+              109,
+              0,
+              34,
+              82,
+              464
+            ],
+            [
+              378,
+              318,
+              269,
+              783,
+              10108
+            ]
+          ],
+          "mean_iou": 0.22643158327757257,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.06690942193900774,
+              "recall": 0.09881245798790052,
+              "support": 4463
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.28917431192660553,
+              "recall": 0.45196443934614283,
+              "support": 3487
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.039429928741092635,
+              "recall": 0.07518115942028986,
+              "support": 2208
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.03430962343096234,
+              "recall": 0.11901306240928883,
+              "support": 689
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.7023346303501945,
+              "recall": 0.8525641025641025,
+              "support": 11856
+            }
+          ],
+          "pixel_accuracy": 0.5449940536492974,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "training_record_ids": [
+          "alton-street",
+          "alton-wicker",
+          "thorpe-entry",
+          "chessington-entry",
+          "legoland-central",
+          "thorpe-central",
+          "chessington-central"
+        ],
+        "training_sites": [
+          "alton-towers",
+          "chessington",
+          "legoland-windsor",
+          "thorpe-park"
+        ]
+      },
+      {
+        "held_out_record_ids": [
+          "legoland-central"
+        ],
+        "held_out_site": "legoland-windsor",
+        "neural": {
+          "annotated_pixels": 26157,
+          "confusion": [
+            [
+              1174,
+              522,
+              126,
+              935,
+              857
+            ],
+            [
+              603,
+              1763,
+              800,
+              80,
+              7
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              43,
+              41,
+              6,
+              0,
+              0
+            ],
+            [
+              478,
+              220,
+              290,
+              339,
+              17873
+            ]
+          ],
+          "mean_iou": 0.31508038982965314,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.2477838750527649,
+              "recall": 0.32484781405644714,
+              "support": 3614
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.436818632309217,
+              "recall": 0.5419612665232093,
+              "support": 3253
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.0,
+              "recall": null,
+              "support": 0
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.0,
+              "recall": 0.0,
+              "support": 90
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8907994417862839,
+              "recall": 0.9308854166666667,
+              "support": 19200
+            }
+          ],
+          "pixel_accuracy": 0.7955805329357343,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "rgb_centroid_baseline": {
+          "annotated_pixels": 26157,
+          "confusion": [
+            [
+              323,
+              1115,
+              277,
+              534,
+              1365
+            ],
+            [
+              128,
+              1578,
+              1428,
+              51,
+              68
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              5,
+              24,
+              37,
+              6,
+              18
+            ],
+            [
+              38,
+              391,
+              13,
+              1170,
+              17588
+            ]
+          ],
+          "mean_iou": 0.25403704691917883,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.08533685601056804,
+              "recall": 0.08937465412285556,
+              "support": 3614
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.3299184612168095,
+              "recall": 0.4850906855210575,
+              "support": 3253
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.0,
+              "recall": null,
+              "support": 0
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.0032520325203252032,
+              "recall": 0.06666666666666667,
+              "support": 90
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8516778848481914,
+              "recall": 0.9160416666666666,
+              "support": 19200
+            }
+          ],
+          "pixel_accuracy": 0.7453071835455136,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "training_record_ids": [
+          "alton-street",
+          "alton-wicker",
+          "thorpe-entry",
+          "chessington-entry",
+          "drayton-central",
+          "thorpe-central",
+          "chessington-central"
+        ],
+        "training_sites": [
+          "alton-towers",
+          "chessington",
+          "drayton-manor",
+          "thorpe-park"
+        ]
+      },
+      {
+        "held_out_record_ids": [
+          "thorpe-entry",
+          "thorpe-central"
+        ],
+        "held_out_site": "thorpe-park",
+        "neural": {
+          "annotated_pixels": 79309,
+          "confusion": [
+            [
+              2921,
+              726,
+              807,
+              981,
+              1099
+            ],
+            [
+              1611,
+              5083,
+              811,
+              885,
+              53
+            ],
+            [
+              6210,
+              6409,
+              15592,
+              1546,
+              1875
+            ],
+            [
+              384,
+              11,
+              69,
+              391,
+              200
+            ],
+            [
+              2846,
+              729,
+              835,
+              494,
+              26741
+            ]
+          ],
+          "mean_iou": 0.35595443906409574,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.16610747796417402,
+              "recall": 0.4470462197734925,
+              "support": 6534
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.31149650692486824,
+              "recall": 0.6020371905720715,
+              "support": 8443
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.45652046612402647,
+              "recall": 0.4929185634800202,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.07881475508969965,
+              "recall": 0.3706161137440758,
+              "support": 1055
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.7668329892177105,
+              "recall": 0.84503081055459,
+              "support": 31645
+            }
+          ],
+          "pixel_accuracy": 0.6396247588546067,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "rgb_centroid_baseline": {
+          "annotated_pixels": 79309,
+          "confusion": [
+            [
+              590,
+              1504,
+              680,
+              909,
+              2851
+            ],
+            [
+              420,
+              5634,
+              598,
+              525,
+              1266
+            ],
+            [
+              3048,
+              14334,
+              6332,
+              2473,
+              5445
+            ],
+            [
+              164,
+              50,
+              53,
+              194,
+              594
+            ],
+            [
+              1680,
+              1571,
+              471,
+              5638,
+              22285
+            ]
+          ],
+          "mean_iou": 0.20162583098806924,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.04980584163430694,
+              "recall": 0.09029690847872666,
+              "support": 6534
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.21751216122307157,
+              "recall": 0.6672983536657586,
+              "support": 8443
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.18938804809475385,
+              "recall": 0.20017703591299948,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.01830188679245283,
+              "recall": 0.18388625592417063,
+              "support": 1055
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.5331212171957609,
+              "recall": 0.7042186759361668,
+              "support": 31645
+            }
+          ],
+          "pixel_accuracy": 0.4417531427706818,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "training_record_ids": [
+          "alton-street",
+          "alton-wicker",
+          "chessington-entry",
+          "legoland-central",
+          "drayton-central",
+          "chessington-central"
+        ],
+        "training_sites": [
+          "alton-towers",
+          "chessington",
+          "drayton-manor",
+          "legoland-windsor"
+        ]
+      }
+    ],
+    "label_policy": "assistant_visual_review_provisional_not_human_ground_truth",
+    "labelled_pixel_counts": {
+      "building_roofs": 39161,
+      "car_parks": 54952,
+      "landscaped_islands": 6384,
+      "other_visible": 105136,
+      "paths_plazas": 43790
+    },
+    "limitations": [
+      "Annotations are assistant visual traces, not independently verified human labels or surveyed boundaries.",
+      "All source images from a park stay in the same held-out fold; final checkpoint fits all available records and has no untouched final test.",
+      "Paths/plazas share one paved-pedestrian class; visible roof regions are not ground footprints or building heights.",
+      "Landscaped islands combine planting/grass islands; canopy, shadows, unknown pixels and unseen seasons remain uncertain.",
+      "No held-out scores were used to choose settings; model outputs are proposals, not accepted geometry or training labels."
+    ],
+    "model_sha256": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+    "model_weights_updated": true,
+    "network_settings": {
+      "batch_size": 512,
+      "epochs": 60,
+      "hidden": 24,
+      "learning_rate": 0.01,
+      "regularization": 0.0001,
+      "seed": 137
+    },
+    "park_held_out_neural": {
+      "annotated_pixels": 249423,
+      "confusion": [
+        [
+          19276,
+          12891,
+          4417,
+          3701,
+          3505
+        ],
+        [
+          12327,
+          18750,
+          6139,
+          1545,
+          400
+        ],
+        [
+          12501,
+          11714,
+          26512,
+          1833,
+          2392
+        ],
+        [
+          3083,
+          818,
+          106,
+          1236,
+          1141
+        ],
+        [
+          13708,
+          4554,
+          2803,
+          8388,
+          75683
+        ]
+      ],
+      "mean_iou": 0.3226507481606232,
+      "per_class": [
+        {
+          "class": "paths_plazas",
+          "iou": 0.22569050100106547,
+          "recall": 0.44019182461749257,
+          "support": 43790
+        },
+        {
+          "class": "building_roofs",
+          "iou": 0.2711967369608609,
+          "recall": 0.478792676387222,
+          "support": 39161
+        },
+        {
+          "class": "car_parks",
+          "iou": 0.3875060292032682,
+          "recall": 0.48245741738244285,
+          "support": 54952
+        },
+        {
+          "class": "landscaped_islands",
+          "iou": 0.05656491693743993,
+          "recall": 0.19360902255639098,
+          "support": 6384
+        },
+        {
+          "class": "other_visible",
+          "iou": 0.6722955567004815,
+          "recall": 0.7198580885709938,
+          "support": 105136
+        }
+      ],
+      "pixel_accuracy": 0.5671369520854131,
+      "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+    },
+    "park_held_out_rgb_baseline": {
+      "annotated_pixels": 249423,
+      "confusion": [
+        [
+          4522,
+          20248,
+          5525,
+          4360,
+          9135
+        ],
+        [
+          2975,
+          23583,
+          7383,
+          2267,
+          2953
+        ],
+        [
+          6180,
+          27077,
+          8915,
+          4627,
+          8153
+        ],
+        [
+          1186,
+          709,
+          660,
+          1892,
+          1937
+        ],
+        [
+          15096,
+          3476,
+          2898,
+          19449,
+          64217
+        ]
+      ],
+      "mean_iou": 0.20113154991551285,
+      "per_class": [
+        {
+          "class": "paths_plazas",
+          "iou": 0.06532133416152658,
+          "recall": 0.10326558575017127,
+          "support": 43790
+        },
+        {
+          "class": "building_roofs",
+          "iou": 0.2600941866749016,
+          "recall": 0.6022062766527924,
+          "support": 39161
+        },
+        {
+          "class": "car_parks",
+          "iou": 0.1248284746142429,
+          "recall": 0.16223249381278207,
+          "support": 54952
+        },
+        {
+          "class": "landscaped_islands",
+          "iou": 0.05101518052147653,
+          "recall": 0.29636591478696744,
+          "support": 6384
+        },
+        {
+          "class": "other_visible",
+          "iou": 0.5043985736054165,
+          "recall": 0.6107993456094962,
+          "support": 105136
+        }
+      ],
+      "pixel_accuracy": 0.41347028942799985,
+      "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+    },
+    "production_eligible": false,
+    "records": 8,
+    "sites": [
+      "alton-towers",
+      "chessington",
+      "drayton-manor",
+      "legoland-windsor",
+      "thorpe-park"
+    ],
+    "training_samples": 49686,
+    "version": "aerial-semantic-training-v1",
+    "weight_change_l2": 25.05676002126096,
+    "world_blocks_generated": 0
+  },
+  "same_frozen_target_comparison": {
+    "candidate": {
+      "annotated_pixels": 153915,
+      "confusion": [
+        [
+          6843,
+          7313,
+          2063,
+          458,
+          676
+        ],
+        [
+          9415,
+          9838,
+          3729,
+          663,
+          99
+        ],
+        [
+          10568,
+          9755,
+          24363,
+          1646,
+          2172
+        ],
+        [
+          2466,
+          663,
+          29,
+          1072,
+          626
+        ],
+        [
+          7904,
+          2394,
+          287,
+          6534,
+          42339
+        ]
+      ],
+      "mean_iou": 0.3122499517369375,
+      "paving_precision": 0.18397139477363159,
+      "paving_recall": 0.39434103613208094,
+      "per_class": [
+        {
+          "class": "paths_plazas",
+          "iou": 0.1434410765941391,
+          "recall": 0.39434103613208094,
+          "support": 17353
+        },
+        {
+          "class": "building_roofs",
+          "iou": 0.22425858806902368,
+          "recall": 0.4143362533692722,
+          "support": 23744
+        },
+        {
+          "class": "car_parks",
+          "iou": 0.4461107448912327,
+          "recall": 0.5022884710539337,
+          "support": 48504
+        },
+        {
+          "class": "landscaped_islands",
+          "iou": 0.07572225754043936,
+          "recall": 0.22075782537067545,
+          "support": 4856
+        },
+        {
+          "class": "other_visible",
+          "iou": 0.6717170915898526,
+          "recall": 0.7120824783881059,
+          "support": 59458
+        }
+      ],
+      "pixel_accuracy": 0.5487119514017477,
+      "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+    },
+    "candidate_dataset_id": "583e30029ffe558805fdb1243b21cffcef53efee591edda4e399f01736706c05",
+    "candidate_dataset_sha256": "faeb70344a19cf823131328a9383cdc4f56c655f102cf035df6ea5b537153ae3",
+    "folds": [
+      {
+        "candidate": {
+          "annotated_pixels": 75215,
+          "confusion": [
+            [
+              5906,
+              7049,
+              1637,
+              174,
+              3
+            ],
+            [
+              8580,
+              7105,
+              3405,
+              503,
+              37
+            ],
+            [
+              3077,
+              2376,
+              5655,
+              0,
+              1
+            ],
+            [
+              1690,
+              598,
+              5,
+              687,
+              399
+            ],
+            [
+              6030,
+              2347,
+              25,
+              5830,
+              12096
+            ]
+          ],
+          "mean_iou": 0.25317068545426674,
+          "paving_precision": 0.2335956967132065,
+          "paving_recall": 0.39989166497393186,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.17296315820301061,
+              "recall": 0.39989166497393186,
+              "support": 14769
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.22203125,
+              "recall": 0.3619460010188487,
+              "support": 19630
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.34948396267226994,
+              "recall": 0.5090467188765866,
+              "support": 11109
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06949221120776856,
+              "recall": 0.20331459011541878,
+              "support": 3379
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.45188284518828453,
+              "recall": 0.4594348222424795,
+              "support": 26328
+            }
+          ],
+          "pixel_accuracy": 0.41812138536196236,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "candidate_model_sha256": "cf4e140a53b51eb696bc43b12a871bce8f907f420534833fd32863bddb7d96a1",
+        "candidate_training_sites": [
+          "chessington",
+          "drayton-manor",
+          "legoland-windsor",
+          "thorpe-park"
+        ],
+        "held_out_site": "alton-towers",
+        "previous": {
+          "annotated_pixels": 75215,
+          "confusion": [
+            [
+              1230,
+              8548,
+              2951,
+              2035,
+              5
+            ],
+            [
+              1933,
+              12245,
+              4289,
+              1155,
+              8
+            ],
+            [
+              259,
+              8448,
+              2212,
+              190,
+              0
+            ],
+            [
+              787,
+              612,
+              539,
+              795,
+              646
+            ],
+            [
+              6730,
+              2092,
+              316,
+              7343,
+              9847
+            ]
+          ],
+          "mean_iou": 0.17960557053382412,
+          "paving_precision": 0.11244172227808757,
+          "paving_recall": 0.08328255128986391,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.050249203366288096,
+              "recall": 0.08328255128986391,
+              "support": 14769
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.3113399440630562,
+              "recall": 0.6237901171676006,
+              "support": 19630
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.11518433659654238,
+              "recall": 0.19911783238815375,
+              "support": 11109
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.056374982272018155,
+              "recall": 0.23527670908552825,
+              "support": 3379
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.36487938637121575,
+              "recall": 0.3740124582193862,
+              "support": 26328
+            }
+          ],
+          "pixel_accuracy": 0.35004985707638103,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "previous_model_sha256": "774e3c40e16aac0d90f031ff84939a7ab3d19207dbdb0aab7e10ed5ed85be360",
+        "previous_training_sites": [
+          "chessington",
+          "thorpe-park"
+        ]
+      },
+      {
+        "candidate": {
+          "annotated_pixels": 18949,
+          "confusion": [
+            [
+              733,
+              261,
+              159,
+              108,
+              225
+            ],
+            [
+              562,
+              1273,
+              27,
+              3,
+              28
+            ],
+            [
+              1281,
+              970,
+              3116,
+              100,
+              296
+            ],
+            [
+              429,
+              63,
+              18,
+              62,
+              76
+            ],
+            [
+              167,
+              25,
+              211,
+              531,
+              8225
+            ]
+          ],
+          "mean_iou": 0.3945421498510173,
+          "paving_precision": 0.2310844892812106,
+          "paving_recall": 0.49327052489905787,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.1867515923566879,
+              "recall": 0.49327052489905787,
+              "support": 1486
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.39632627646326274,
+              "recall": 0.6724775488642366,
+              "support": 1893
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5043703463904176,
+              "recall": 0.5406906125281972,
+              "support": 5763
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.04460431654676259,
+              "recall": 0.09567901234567901,
+              "support": 648
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8406582174979559,
+              "recall": 0.8980238017250791,
+              "support": 9159
+            }
+          ],
+          "pixel_accuracy": 0.7076362868752969,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "candidate_model_sha256": "23ed429dc404c39ad35fe2f8cef56b92a48a2e5b9e31a8d61c6ad10e97df84e9",
+        "candidate_training_sites": [
+          "alton-towers",
+          "drayton-manor",
+          "legoland-windsor",
+          "thorpe-park"
+        ],
+        "held_out_site": "chessington",
+        "previous": {
+          "annotated_pixels": 18949,
+          "confusion": [
+            [
+              480,
+              340,
+              523,
+              138,
+              5
+            ],
+            [
+              137,
+              1431,
+              257,
+              1,
+              67
+            ],
+            [
+              1230,
+              752,
+              3640,
+              64,
+              77
+            ],
+            [
+              332,
+              60,
+              145,
+              79,
+              32
+            ],
+            [
+              940,
+              39,
+              91,
+              309,
+              7780
+            ]
+          ],
+          "mean_iou": 0.4036807329982429,
+          "paving_precision": 0.15389547932029496,
+          "paving_recall": 0.32301480484522205,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.11636363636363636,
+              "recall": 0.32301480484522205,
+              "support": 1486
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.46400778210116733,
+              "recall": 0.7559429477020603,
+              "support": 1893
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5369523528544033,
+              "recall": 0.6316154780496269,
+              "support": 5763
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06810344827586207,
+              "recall": 0.12191358024691358,
+              "support": 648
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8329764453961456,
+              "recall": 0.8494377115405612,
+              "support": 9159
+            }
+          ],
+          "pixel_accuracy": 0.7076890601087129,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "previous_model_sha256": "30026df9d9968d4471d829b1417eb7003fdfc8fb7383cfc3b3af124b9bdad0e7",
+        "previous_training_sites": [
+          "alton-towers",
+          "thorpe-park"
+        ]
+      },
+      {
+        "candidate": {
+          "annotated_pixels": 59751,
+          "confusion": [
+            [
+              204,
+              3,
+              267,
+              176,
+              448
+            ],
+            [
+              273,
+              1460,
+              297,
+              157,
+              34
+            ],
+            [
+              6210,
+              6409,
+              15592,
+              1546,
+              1875
+            ],
+            [
+              347,
+              2,
+              6,
+              323,
+              151
+            ],
+            [
+              1707,
+              22,
+              51,
+              173,
+              22018
+            ]
+          ],
+          "mean_iou": 0.3233782146089351,
+          "paving_precision": 0.023338290813408078,
+          "paving_recall": 0.18579234972677597,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.02117280747275558,
+              "recall": 0.18579234972677597,
+              "support": 1098
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.16864964768395518,
+              "recall": 0.6573615488518685,
+              "support": 2221
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.48342789818001425,
+              "recall": 0.4929185634800202,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.11211384935786185,
+              "recall": 0.3896260554885404,
+              "support": 829
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8315268703500888,
+              "recall": 0.9185265529181094,
+              "support": 23971
+            }
+          ],
+          "pixel_accuracy": 0.6627002058542953,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "candidate_model_sha256": "48d822e4553892e24596123dbf6cd48e13f631e11b68a53c596036e6aed93e90",
+        "candidate_training_sites": [
+          "alton-towers",
+          "chessington",
+          "drayton-manor",
+          "legoland-windsor"
+        ],
+        "held_out_site": "thorpe-park",
+        "previous": {
+          "annotated_pixels": 59751,
+          "confusion": [
+            [
+              129,
+              132,
+              340,
+              90,
+              407
+            ],
+            [
+              306,
+              1343,
+              469,
+              87,
+              16
+            ],
+            [
+              4033,
+              7665,
+              16729,
+              2051,
+              1154
+            ],
+            [
+              136,
+              70,
+              35,
+              217,
+              371
+            ],
+            [
+              997,
+              10,
+              602,
+              395,
+              21967
+            ]
+          ],
+          "mean_iou": 0.31375248516432186,
+          "paving_precision": 0.023031601499732192,
+          "paving_recall": 0.11748633879781421,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.019634703196347032,
+              "recall": 0.11748633879781421,
+              "support": 1098
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.132996632996633,
+              "recall": 0.6046825754164791,
+              "support": 2221
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5057439990325896,
+              "recall": 0.5288631765300961,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06286210892236385,
+              "recall": 0.2617611580217129,
+              "support": 829
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8475249816736757,
+              "recall": 0.9163989821033749,
+              "support": 23971
+            }
+          ],
+          "pixel_accuracy": 0.6758882696523908,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "previous_model_sha256": "dcd04d8e33677d78ae0561df6b2528482835e88e08839caf2fbc501572680109",
+        "previous_training_sites": [
+          "alton-towers",
+          "chessington"
+        ]
+      }
+    ],
+    "label_policy": "assistant_visual_review_provisional_not_human_ground_truth",
+    "limitations": [
+      "Sparse assistant visual labels are provisional, not independent human or survey truth.",
+      "Existing development targets have been inspected before; this is not a blind final test.",
+      "Only originally annotated pixels are scored. Unlabelled false positives and boundary completeness are unmeasured.",
+      "Expanded-data folds are evaluated separately; final all-data model has no untouched final test."
+    ],
+    "optimizer_settings_unchanged": true,
+    "previous": {
+      "annotated_pixels": 153915,
+      "confusion": [
+        [
+          1839,
+          9020,
+          3814,
+          2263,
+          417
+        ],
+        [
+          2376,
+          15019,
+          5015,
+          1243,
+          91
+        ],
+        [
+          5522,
+          16865,
+          22581,
+          2305,
+          1231
+        ],
+        [
+          1255,
+          742,
+          719,
+          1091,
+          1049
+        ],
+        [
+          8667,
+          2141,
+          1009,
+          8047,
+          39594
+        ]
+      ],
+      "mean_iou": 0.2830032849620029,
+      "paving_precision": 0.09354494124828323,
+      "paving_recall": 0.1059759119460612,
+      "per_class": [
+        {
+          "class": "paths_plazas",
+          "iou": 0.05228442271060188,
+          "recall": 0.1059759119460612,
+          "support": 17353
+        },
+        {
+          "class": "building_roofs",
+          "iou": 0.286010816575259,
+          "recall": 0.6325387466307277,
+          "support": 23744
+        },
+        {
+          "class": "car_parks",
+          "iou": 0.3823335195814497,
+          "recall": 0.4655492330529441,
+          "support": 48504
+        },
+        {
+          "class": "landscaped_islands",
+          "iou": 0.058298599978625625,
+          "recall": 0.22467051070840197,
+          "support": 4856
+        },
+        {
+          "class": "other_visible",
+          "iou": 0.636089065964078,
+          "recall": 0.665915436106159,
+          "support": 59458
+        }
+      ],
+      "pixel_accuracy": 0.5205730435630056,
+      "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+    },
+    "production_eligible": false,
+    "records": [
+      {
+        "candidate": {
+          "annotated_pixels": 45567,
+          "confusion": [
+            [
+              5056,
+              4955,
+              1588,
+              57,
+              3
+            ],
+            [
+              8008,
+              3476,
+              1842,
+              503,
+              37
+            ],
+            [
+              935,
+              1080,
+              957,
+              0,
+              1
+            ],
+            [
+              1690,
+              417,
+              5,
+              687,
+              399
+            ],
+            [
+              1385,
+              481,
+              17,
+              3644,
+              8344
+            ]
+          ],
+          "mean_iou": 0.24109483217467337,
+          "paving_precision": 0.2961227597516692,
+          "paving_recall": 0.43365640277896905,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.21354056679477976,
+              "recall": 0.43365640277896905,
+              "support": 11659
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.16712341939516323,
+              "recall": 0.2506851290927448,
+              "support": 13866
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.14894941634241246,
+              "recall": 0.3218970736629667,
+              "support": 2973
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.09281275330991624,
+              "recall": 0.21482176360225141,
+              "support": 3198
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.583048005031095,
+              "recall": 0.6015427871097975,
+              "support": 13871
+            }
+          ],
+          "pixel_accuracy": 0.406434481093774,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "frozen_mask_sha256": "2a2280bc84ee273d19ad5be978f1c77e1f273ab506dbc5499ebf21ee994a46f8",
+        "id": "alton-street",
+        "previous": {
+          "annotated_pixels": 45567,
+          "confusion": [
+            [
+              738,
+              6392,
+              2801,
+              1723,
+              5
+            ],
+            [
+              896,
+              9290,
+              2675,
+              997,
+              8
+            ],
+            [
+              111,
+              2043,
+              629,
+              190,
+              0
+            ],
+            [
+              787,
+              431,
+              539,
+              795,
+              646
+            ],
+            [
+              2173,
+              251,
+              138,
+              2993,
+              8316
+            ]
+          ],
+          "mean_iou": 0.23601017633271498,
+          "paving_precision": 0.15685441020191285,
+          "paving_recall": 0.06329873917145552,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.04722897734544989,
+              "recall": 0.06329873917145552,
+              "support": 11659
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.4042118087281904,
+              "recall": 0.669984133852589,
+              "support": 13866
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.06892395353933815,
+              "recall": 0.2115708039017827,
+              "support": 2973
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.08735303812767828,
+              "recall": 0.24859287054409004,
+              "support": 3198
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.5723331039229181,
+              "recall": 0.5995241871530531,
+              "support": 13871
+            }
+          ],
+          "pixel_accuracy": 0.43382272258432636,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "site_id": "alton-towers",
+        "source_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470"
+      },
+      {
+        "candidate": {
+          "annotated_pixels": 29648,
+          "confusion": [
+            [
+              850,
+              2094,
+              49,
+              117,
+              0
+            ],
+            [
+              572,
+              3629,
+              1563,
+              0,
+              0
+            ],
+            [
+              2142,
+              1296,
+              4698,
+              0,
+              0
+            ],
+            [
+              0,
+              181,
+              0,
+              0,
+              0
+            ],
+            [
+              4645,
+              1866,
+              8,
+              2186,
+              3752
+            ]
+          ],
+          "mean_iou": 0.23758539012549998,
+          "paving_precision": 0.1035448897551468,
+          "paving_recall": 0.2733118971061093,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.08119209093514185,
+              "recall": 0.2733118971061093,
+              "support": 3110
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.32398892955986075,
+              "recall": 0.6295975017349064,
+              "support": 5764
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.48154981549815495,
+              "recall": 0.577433628318584,
+              "support": 8136
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.0,
+              "recall": 0.0,
+              "support": 181
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.30119611463434215,
+              "recall": 0.30119611463434215,
+              "support": 12457
+            }
+          ],
+          "pixel_accuracy": 0.43608337830545063,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "frozen_mask_sha256": "f77214fdc74faeb34c7671698611a328398c0fb288fbfcd0ef432d476b070ff0",
+        "id": "alton-wicker",
+        "previous": {
+          "annotated_pixels": 29648,
+          "confusion": [
+            [
+              492,
+              2156,
+              150,
+              312,
+              0
+            ],
+            [
+              1037,
+              2955,
+              1614,
+              158,
+              0
+            ],
+            [
+              148,
+              6405,
+              1583,
+              0,
+              0
+            ],
+            [
+              0,
+              181,
+              0,
+              0,
+              0
+            ],
+            [
+              4557,
+              1841,
+              178,
+              4350,
+              1531
+            ]
+          ],
+          "mean_iou": 0.10326507499678664,
+          "paving_precision": 0.07892204042348412,
+          "paving_recall": 0.1581993569131833,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.05558065973791233,
+              "recall": 0.1581993569131833,
+              "support": 3110
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.18076711323178565,
+              "recall": 0.5126648160999306,
+              "support": 5764
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.15707481643183172,
+              "recall": 0.19456735496558505,
+              "support": 8136
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.0,
+              "recall": 0.0,
+              "support": 181
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.12290278558240347,
+              "recall": 0.12290278558240347,
+              "support": 12457
+            }
+          ],
+          "pixel_accuracy": 0.22129654614139233,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "site_id": "alton-towers",
+        "source_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7"
+      },
+      {
+        "candidate": {
+          "annotated_pixels": 18949,
+          "confusion": [
+            [
+              733,
+              261,
+              159,
+              108,
+              225
+            ],
+            [
+              562,
+              1273,
+              27,
+              3,
+              28
+            ],
+            [
+              1281,
+              970,
+              3116,
+              100,
+              296
+            ],
+            [
+              429,
+              63,
+              18,
+              62,
+              76
+            ],
+            [
+              167,
+              25,
+              211,
+              531,
+              8225
+            ]
+          ],
+          "mean_iou": 0.3945421498510173,
+          "paving_precision": 0.2310844892812106,
+          "paving_recall": 0.49327052489905787,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.1867515923566879,
+              "recall": 0.49327052489905787,
+              "support": 1486
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.39632627646326274,
+              "recall": 0.6724775488642366,
+              "support": 1893
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5043703463904176,
+              "recall": 0.5406906125281972,
+              "support": 5763
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.04460431654676259,
+              "recall": 0.09567901234567901,
+              "support": 648
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8406582174979559,
+              "recall": 0.8980238017250791,
+              "support": 9159
+            }
+          ],
+          "pixel_accuracy": 0.7076362868752969,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "frozen_mask_sha256": "d3d01661a15e3064db5bc47ef37fd5f292c75aa8a24cd5d6ff098e87503b2a6e",
+        "id": "chessington-entry",
+        "previous": {
+          "annotated_pixels": 18949,
+          "confusion": [
+            [
+              480,
+              340,
+              523,
+              138,
+              5
+            ],
+            [
+              137,
+              1431,
+              257,
+              1,
+              67
+            ],
+            [
+              1230,
+              752,
+              3640,
+              64,
+              77
+            ],
+            [
+              332,
+              60,
+              145,
+              79,
+              32
+            ],
+            [
+              940,
+              39,
+              91,
+              309,
+              7780
+            ]
+          ],
+          "mean_iou": 0.4036807329982429,
+          "paving_precision": 0.15389547932029496,
+          "paving_recall": 0.32301480484522205,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.11636363636363636,
+              "recall": 0.32301480484522205,
+              "support": 1486
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.46400778210116733,
+              "recall": 0.7559429477020603,
+              "support": 1893
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5369523528544033,
+              "recall": 0.6316154780496269,
+              "support": 5763
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06810344827586207,
+              "recall": 0.12191358024691358,
+              "support": 648
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8329764453961456,
+              "recall": 0.8494377115405612,
+              "support": 9159
+            }
+          ],
+          "pixel_accuracy": 0.7076890601087129,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "site_id": "chessington",
+        "source_sha256": "a1e704938123340b6cc80537ea9deeb344e9691cb4ff2f011a7a4568e216a3ad"
+      },
+      {
+        "candidate": {
+          "annotated_pixels": 59751,
+          "confusion": [
+            [
+              204,
+              3,
+              267,
+              176,
+              448
+            ],
+            [
+              273,
+              1460,
+              297,
+              157,
+              34
+            ],
+            [
+              6210,
+              6409,
+              15592,
+              1546,
+              1875
+            ],
+            [
+              347,
+              2,
+              6,
+              323,
+              151
+            ],
+            [
+              1707,
+              22,
+              51,
+              173,
+              22018
+            ]
+          ],
+          "mean_iou": 0.3233782146089351,
+          "paving_precision": 0.023338290813408078,
+          "paving_recall": 0.18579234972677597,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.02117280747275558,
+              "recall": 0.18579234972677597,
+              "support": 1098
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.16864964768395518,
+              "recall": 0.6573615488518685,
+              "support": 2221
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.48342789818001425,
+              "recall": 0.4929185634800202,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.11211384935786185,
+              "recall": 0.3896260554885404,
+              "support": 829
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8315268703500888,
+              "recall": 0.9185265529181094,
+              "support": 23971
+            }
+          ],
+          "pixel_accuracy": 0.6627002058542953,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "frozen_mask_sha256": "dfe121fae31fc38aa41100fc917ac22af2d76a96af42acf51c016abbe7bd8c1f",
+        "id": "thorpe-entry",
+        "previous": {
+          "annotated_pixels": 59751,
+          "confusion": [
+            [
+              129,
+              132,
+              340,
+              90,
+              407
+            ],
+            [
+              306,
+              1343,
+              469,
+              87,
+              16
+            ],
+            [
+              4033,
+              7665,
+              16729,
+              2051,
+              1154
+            ],
+            [
+              136,
+              70,
+              35,
+              217,
+              371
+            ],
+            [
+              997,
+              10,
+              602,
+              395,
+              21967
+            ]
+          ],
+          "mean_iou": 0.31375248516432186,
+          "paving_precision": 0.023031601499732192,
+          "paving_recall": 0.11748633879781421,
+          "per_class": [
+            {
+              "class": "paths_plazas",
+              "iou": 0.019634703196347032,
+              "recall": 0.11748633879781421,
+              "support": 1098
+            },
+            {
+              "class": "building_roofs",
+              "iou": 0.132996632996633,
+              "recall": 0.6046825754164791,
+              "support": 2221
+            },
+            {
+              "class": "car_parks",
+              "iou": 0.5057439990325896,
+              "recall": 0.5288631765300961,
+              "support": 31632
+            },
+            {
+              "class": "landscaped_islands",
+              "iou": 0.06286210892236385,
+              "recall": 0.2617611580217129,
+              "support": 829
+            },
+            {
+              "class": "other_visible",
+              "iou": 0.8475249816736757,
+              "recall": 0.9163989821033749,
+              "support": 23971
+            }
+          ],
+          "pixel_accuracy": 0.6758882696523908,
+          "scope": "Agreement on provisional visually annotated pixels only; unlabeled pixels/boundary completeness are not scored."
+        },
+        "site_id": "thorpe-park",
+        "source_sha256": "9f96b495b3d52ffc381bcef7c668e9476bfb5345a585c5979ca2251f6f7e0e8e"
+      }
+    ],
+    "reference_dataset_id": "4d6bc544d2d143d02e185d7eabe20ad497b5c19efaf672e3a5e16f0aeeec458e",
+    "reference_dataset_sha256": "4c3d1a04eca9f1e4f0ef5002d689b042d2d670ac817addb6c6e042d8d35f1beb",
+    "same_frozen_targets": true,
+    "version": "aerial-semantic-frozen-comparison-v1",
+    "whole_park_exclusion": true,
+    "world_blocks_generated": 0
+  },
+  "checkpoint_reuse": {
+    "status": "reused_unchanged_semantic_checkpoint",
+    "model_file": "/workspace/scratch/adaptive-web-research/memory/aerial-semantic-models/fb07758e7a2a99565e407b9f14d48ed97f4ac317ec31558416537b4a92e67ce8/model.json",
+    "model_sha256": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+    "dataset_sha256": "faeb70344a19cf823131328a9383cdc4f56c655f102cf035df6ea5b537153ae3",
+    "dataset_id": "583e30029ffe558805fdb1243b21cffcef53efee591edda4e399f01736706c05",
+    "model_weights_updated": false,
+    "held_out_mean_iou": 0.3226507481606232,
+    "rgb_baseline_mean_iou": 0.20113154991551285,
+    "per_class": [
+      {
+        "class": "paths_plazas",
+        "iou": 0.22569050100106547,
+        "recall": 0.44019182461749257,
+        "support": 43790
+      },
+      {
+        "class": "building_roofs",
+        "iou": 0.2711967369608609,
+        "recall": 0.478792676387222,
+        "support": 39161
+      },
+      {
+        "class": "car_parks",
+        "iou": 0.3875060292032682,
+        "recall": 0.48245741738244285,
+        "support": 54952
+      },
+      {
+        "class": "landscaped_islands",
+        "iou": 0.05656491693743993,
+        "recall": 0.19360902255639098,
+        "support": 6384
+      },
+      {
+        "class": "other_visible",
+        "iou": 0.6722955567004815,
+        "recall": 0.7198580885709938,
+        "support": 105136
+      }
+    ],
+    "label_policy": "assistant_visual_review_provisional_not_human_ground_truth",
+    "production_eligible": false
+  },
+  "cycle_replay": {
+    "aerial_failures": [],
+    "aerial_reports": [],
+    "aerial_semantic_checkpoint": {
+      "dataset_id": "583e30029ffe558805fdb1243b21cffcef53efee591edda4e399f01736706c05",
+      "dataset_sha256": "faeb70344a19cf823131328a9383cdc4f56c655f102cf035df6ea5b537153ae3",
+      "held_out_mean_iou": 0.3226507481606232,
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth",
+      "model_file": "/workspace/scratch/adaptive-web-research/memory/aerial-semantic-models/fb07758e7a2a99565e407b9f14d48ed97f4ac317ec31558416537b4a92e67ce8/model.json",
+      "model_sha256": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+      "model_weights_updated": false,
+      "per_class": [
+        {
+          "class": "paths_plazas",
+          "iou": 0.22569050100106547,
+          "recall": 0.44019182461749257,
+          "support": 43790
+        },
+        {
+          "class": "building_roofs",
+          "iou": 0.2711967369608609,
+          "recall": 0.478792676387222,
+          "support": 39161
+        },
+        {
+          "class": "car_parks",
+          "iou": 0.3875060292032682,
+          "recall": 0.48245741738244285,
+          "support": 54952
+        },
+        {
+          "class": "landscaped_islands",
+          "iou": 0.05656491693743993,
+          "recall": 0.19360902255639098,
+          "support": 6384
+        },
+        {
+          "class": "other_visible",
+          "iou": 0.6722955567004815,
+          "recall": 0.7198580885709938,
+          "support": 105136
+        }
+      ],
+      "production_eligible": false,
+      "rgb_baseline_mean_iou": 0.20113154991551285,
+      "status": "reused_unchanged_semantic_checkpoint"
+    },
+    "checkpoint_directory": "/workspace/scratch/adaptive-web-research/memory/models/36094e131420afa8b406d08fcb4b48ac3a2f1d089c17ae07d277277179f40d96",
+    "checkpoint_sha256": "3d4903b38e6ee6acf47c4bf0cbb96b79975cfebdd446c079e8a4336c15605a1b",
+    "curriculum_tasks": 5,
+    "dataset_id": "fe54aea5ef362c9a6b708d15845c4e085b7ef303ed86c607bb9a452efd9da5b4",
+    "dataset_manifest_sha256": "33a28691a33d5daa6166547c7a1316cc86f8b80386b73a78b526dcffe485bff3",
+    "encoder_weights_updated": false,
+    "imagery_geometry_failures": [],
+    "imagery_geometry_reports": [
+      {
+        "candidate_counts": {
+          "building": 32,
+          "paving": 13,
+          "unclassified_hard_surface": 72,
+          "water": 1
+        },
+        "candidate_file_sha256": "8df659addbd33b02d6331586d9773867043ceddcd9a23532d8029f9852ab7e91",
+        "geometry_verified": false,
+        "learned_semantics": {
+          "candidate_counts": {
+            "building_roofs": 87,
+            "car_parks": 32,
+            "landscaped_islands": 59,
+            "paths_plazas": 75
+          },
+          "class_pixel_counts": {
+            "building_roofs": 32751,
+            "car_parks": 18128,
+            "landscaped_islands": 28555,
+            "other_visible": 57251,
+            "paths_plazas": 57549
+          },
+          "confidence_is_calibrated": false,
+          "geometry_verified": false,
+          "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+          "margin": 0.1,
+          "model_sha256": "edaaad43ec6ee8488a2864443b33ca9a9a2fd16835009eb2514e40f55957130c",
+          "production_eligible": false,
+          "protected_candidate_counts": {
+            "building_roofs": 76,
+            "car_parks": 26,
+            "landscaped_islands": 52,
+            "paths_plazas": 67
+          },
+          "protected_file_sha256": "1d4132fb19c88292ae14aeeb20ff1bd05db07799bb19933db7ce86b486b8696d",
+          "source_in_training": true,
+          "threshold": 0.6,
+          "training_site_ids": [
+            "alton-towers",
+            "chessington",
+            "drayton-manor",
+            "legoland-windsor",
+            "thorpe-park"
+          ],
+          "unknown_pixels": 67910,
+          "version": "aerial-semantic-prediction-v1",
+          "world_blocks_generated": 0
+        },
+        "paving_file_sha256": "344ceeb6446563f8b29931f088a6b09c988c2f6ab9d97f1b412a98ea0ea01b96",
+        "paving_refinement": {
+          "hidden_surfaces_filled": false,
+          "map_guided": true,
+          "neural_weights_updated": false,
+          "production_eligible": false,
+          "reference_ids": [
+            "osm/relation/2905348",
+            "osm/relation/7673661",
+            "osm/way/106844045",
+            "osm/way/107366828",
+            "osm/way/107366830",
+            "osm/way/122057756",
+            "osm/way/328237977",
+            "osm/way/330956485",
+            "osm/way/537075542",
+            "osm/way/537076619"
+          ],
+          "training_labels_generated": 0,
+          "vegetation_pixels_excluded": 302848,
+          "version": "map-seeded-visible-paving-v1",
+          "visible_pixels": 168516,
+          "width_verified": false,
+          "withheld_references": []
+        },
+        "queue_reference_lines": 0,
+        "registration_verified": false,
+        "site_id": "towers-street"
+      }
+    ],
+    "limitations": [
+      "Research priorities learn from source-group coverage and measured errors; they are not physical verification.",
+      "Unchanged dataset versions reuse checked checkpoints. New verified source-pair datasets trigger fitting automatically.",
+      "Downloaded unlabelled media remain research candidates, not invented geometry supervision.",
+      "Optional installed local reasoning model guides cited link-following; unavailable backends remain explicit."
+    ],
+    "map_document_clues": [],
+    "map_failures": [],
+    "map_reports": [],
+    "model_weights_updated": false,
+    "network_bytes": 0,
+    "new_source_bodies": 0,
+    "production_eligible": false,
+    "remembered_map_followups": 0,
+    "remembered_sources": 10,
+    "research_failures": [],
+    "research_results": [],
+    "source_pair_head_weights_updated": false,
+    "sources": [
+      {
+        "body_sha256": "02a91bd22895ff600f08b2553751de3d0ed8116ec05e7a30d242c00d0863ec8e",
+        "citation_id": "W727e63f1fdd0",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "http://publicaccess.staffsmoorlands.gov.uk/portal/servlets/AttachmentShowServlet?ImageName=160170"
+      },
+      {
+        "body_sha256": "317e53fb70f4d46060656104026a124976dc7bf9a39406013eac150dc914f640",
+        "citation_id": "Wf344cf4b5875",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://democracy.runnymede.gov.uk/documents/s4601/RU.22_0374%20Thorpe.pdf"
+      },
+      {
+        "body_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "citation_id": "W7d20281ceb60",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "5a24529b6469fae684b83c03bf50d9479c24645bf2a28b7afd2cc01e5356e011",
+        "citation_id": "W1fe63395170f",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json"
+      },
+      {
+        "body_sha256": "6bf96c7865b7b617314f01c29c815e28242ba1d4e30b283162bc0fd3722e9fbb",
+        "citation_id": "M6bf96c7865b7",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914"
+      },
+      {
+        "body_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+        "citation_id": "Waa763a5ab2ff",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map30e2e525d0ac48d6997138838a8dce9d.png"
+      },
+      {
+        "body_sha256": "85d4530ab3b2841def045098009d6b862b4bd9ebdfc185178ca86cd14a991cd5",
+        "citation_id": "W4f4c6647996d",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json"
+      },
+      {
+        "body_sha256": "93dd03bb5e24776ddb513076b8e30620d6f25b6e44bae0e890841e9c602d9589",
+        "citation_id": "M93dd03bb5e24",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-1.897%2C52.984%2C-1.882%2C52.994"
+      },
+      {
+        "body_sha256": "9941a31ca0ccba828234c806f8c2135b2e6388a5804b7f145acddf585ec98291",
+        "citation_id": "Wb169c0484216",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://runnymede.moderngov.co.uk/documents/g798/Public%20reports%20pack%2005th-Oct-2022%2018.30%20Planning%20Committee.pdf?T=10"
+      },
+      {
+        "body_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "citation_id": "We6d043803c41",
+        "source_evidence_verified": false,
+        "training_labels_generated": 0,
+        "url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png"
+      }
+    ],
+    "status": "research_learning_cycle_completed",
+    "training_status": "reused_unchanged_dataset_checkpoint",
+    "version": "research-learning-cycle-v1",
+    "web_sources_automatically_labelled": 0,
+    "world_blocks_generated": 0
+  },
+  "previews": {
+    "alton-street": {
+      "candidate_counts": {
+        "building_roofs": 96,
+        "car_parks": 35,
+        "landscaped_islands": 47,
+        "paths_plazas": 99
+      },
+      "class_pixel_counts": {
+        "building_roofs": 47728,
+        "car_parks": 10614,
+        "landscaped_islands": 29467,
+        "other_visible": 30052,
+        "paths_plazas": 69687
+      },
+      "confidence_is_calibrated": false,
+      "geometry_verified": false,
+      "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+      "margin": 0.1,
+      "model_sha256": "cf4e140a53b51eb696bc43b12a871bce8f907f420534833fd32863bddb7d96a1",
+      "production_eligible": false,
+      "source_in_training": false,
+      "threshold": 0.6,
+      "training_site_ids": [
+        "chessington",
+        "drayton-manor",
+        "legoland-windsor",
+        "thorpe-park"
+      ],
+      "unknown_pixels": 74596,
+      "version": "aerial-semantic-prediction-v1",
+      "world_blocks_generated": 0
+    },
+    "alton-wicker": {
+      "candidate_counts": {
+        "building_roofs": 53,
+        "car_parks": 29,
+        "landscaped_islands": 54,
+        "paths_plazas": 74
+      },
+      "class_pixel_counts": {
+        "building_roofs": 52392,
+        "car_parks": 13662,
+        "landscaped_islands": 18871,
+        "other_visible": 38537,
+        "paths_plazas": 49953
+      },
+      "confidence_is_calibrated": false,
+      "geometry_verified": false,
+      "image_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+      "margin": 0.1,
+      "model_sha256": "cf4e140a53b51eb696bc43b12a871bce8f907f420534833fd32863bddb7d96a1",
+      "production_eligible": false,
+      "source_in_training": false,
+      "threshold": 0.6,
+      "training_site_ids": [
+        "chessington",
+        "drayton-manor",
+        "legoland-windsor",
+        "thorpe-park"
+      ],
+      "unknown_pixels": 88729,
+      "version": "aerial-semantic-prediction-v1",
+      "world_blocks_generated": 0
+    },
+    "thorpe-entry": {
+      "candidate_counts": {
+        "building_roofs": 47,
+        "car_parks": 106,
+        "landscaped_islands": 175,
+        "paths_plazas": 184
+      },
+      "class_pixel_counts": {
+        "building_roofs": 14143,
+        "car_parks": 31996,
+        "landscaped_islands": 13444,
+        "other_visible": 110267,
+        "paths_plazas": 49196
+      },
+      "confidence_is_calibrated": false,
+      "geometry_verified": false,
+      "image_sha256": "9f96b495b3d52ffc381bcef7c668e9476bfb5345a585c5979ca2251f6f7e0e8e",
+      "margin": 0.1,
+      "model_sha256": "48d822e4553892e24596123dbf6cd48e13f631e11b68a53c596036e6aed93e90",
+      "production_eligible": false,
+      "source_in_training": false,
+      "threshold": 0.6,
+      "training_site_ids": [
+        "alton-towers",
+        "chessington",
+        "drayton-manor",
+        "legoland-windsor"
+      ],
+      "unknown_pixels": 43098,
+      "version": "aerial-semantic-prediction-v1",
+      "world_blocks_generated": 0
+    },
+    "chessington-entry": {
+      "candidate_counts": {
+        "building_roofs": 83,
+        "car_parks": 92,
+        "landscaped_islands": 171,
+        "paths_plazas": 166
+      },
+      "class_pixel_counts": {
+        "building_roofs": 13588,
+        "car_parks": 19489,
+        "landscaped_islands": 11744,
+        "other_visible": 91230,
+        "paths_plazas": 49792
+      },
+      "confidence_is_calibrated": false,
+      "geometry_verified": false,
+      "image_sha256": "a1e704938123340b6cc80537ea9deeb344e9691cb4ff2f011a7a4568e216a3ad",
+      "margin": 0.1,
+      "model_sha256": "23ed429dc404c39ad35fe2f8cef56b92a48a2e5b9e31a8d61c6ad10e97df84e9",
+      "production_eligible": false,
+      "source_in_training": false,
+      "threshold": 0.6,
+      "training_site_ids": [
+        "alton-towers",
+        "drayton-manor",
+        "legoland-windsor",
+        "thorpe-park"
+      ],
+      "unknown_pixels": 76301,
+      "version": "aerial-semantic-prediction-v1",
+      "world_blocks_generated": 0
+    }
+  },
+  "previous_checkpoint_preserved": "e7df032eb29eab196e95913fc12a7dcd034fa863f2148f855dd71298d8ad0161",
+  "production_eligible": false,
+  "human_labels_verified": false,
+  "world_blocks_generated": 0,
+  "windows_exe_rebuilt": false,
+  "limitations": [
+    "Paving remains inaccurate with high false positives; roof IoU declined on the frozen target set.",
+    "These reused provisional assistant labels are not an untouched final test or independent physical ground truth.",
+    "Expanded-target results must not be compared directly with the original target score."
+  ]
+}
