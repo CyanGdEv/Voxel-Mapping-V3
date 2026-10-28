@@ -1,0 +1,219 @@
+{
+  "version": "paving-mask-roof-review-v1",
+  "review_policy": "assistant_visual_draft_requires_independent_review",
+  "annotation_sha256": "8fdad7b095c64db19e67d69693e7bcb1f59bcd603c7671c4c2ef5a09b95ff942",
+  "supersedes_annotation_sha256": "e3aeaeaa4adcfa0c12b126ef53b5db4ffb6695ffb19e59ec333f8f3e2ce0c8d1",
+  "roof_guard_outward_pixels": 2,
+  "roof_guard_inward_pixels": 1,
+  "crops": [
+    {
+      "id": "towers-plaza",
+      "image_size": [
+        330,
+        620
+      ],
+      "source_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+      "crop_pixels": [
+        325,
+        190,
+        655,
+        810
+      ],
+      "probes": [
+        {
+          "pixel_xy": [
+            45,
+            395
+          ],
+          "expected_label": 0,
+          "previous_label": 1,
+          "reason": "Missed south-west grey roof"
+        },
+        {
+          "pixel_xy": [
+            270,
+            420
+          ],
+          "expected_label": 0,
+          "previous_label": 1,
+          "reason": "Missed south-east diagonal grey roof"
+        },
+        {
+          "pixel_xy": [
+            268,
+            355
+          ],
+          "expected_label": 0,
+          "previous_label": 255,
+          "reason": "Missed south-east red/brown roof"
+        },
+        {
+          "pixel_xy": [
+            106,
+            178
+          ],
+          "expected_label": 255,
+          "previous_label": 255,
+          "reason": "Ambiguous upper grey-roof corner"
+        },
+        {
+          "pixel_xy": [
+            235,
+            405
+          ],
+          "expected_label": 1,
+          "previous_label": 1,
+          "reason": "Ground plaza beside south-east roof"
+        },
+        {
+          "pixel_xy": [
+            115,
+            280
+          ],
+          "expected_label": 1,
+          "previous_label": 1,
+          "reason": "Open pedestrian paving"
+        }
+      ]
+    },
+    {
+      "id": "wicker-entrance",
+      "image_size": [
+        330,
+        305
+      ],
+      "source_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+      "crop_pixels": [
+        0,
+        305,
+        330,
+        610
+      ],
+      "probes": [
+        {
+          "pixel_xy": [
+            258,
+            215
+          ],
+          "expected_label": 0,
+          "previous_label": 1,
+          "reason": "Right-hand pre-show roof gable"
+        },
+        {
+          "pixel_xy": [
+            310,
+            40
+          ],
+          "expected_label": 0,
+          "previous_label": 255,
+          "reason": "North-east grey roof extension"
+        },
+        {
+          "pixel_xy": [
+            290,
+            51
+          ],
+          "expected_label": 255,
+          "previous_label": 1,
+          "reason": "Uncertain facade/eave shadow"
+        },
+        {
+          "pixel_xy": [
+            286,
+            162
+          ],
+          "expected_label": 1,
+          "previous_label": 1,
+          "reason": "Open courtyard beside gable"
+        }
+      ]
+    },
+    {
+      "id": "chessington-gardens",
+      "image_size": [
+        350,
+        380
+      ],
+      "source_sha256": "72be82d26ffc1639f6cbaab99b65a9d474a8a6571d26368ed8a3daf786275160",
+      "crop_pixels": [
+        30,
+        0,
+        380,
+        380
+      ],
+      "probes": [
+        {
+          "pixel_xy": [
+            221,
+            139
+          ],
+          "expected_label": 0,
+          "previous_label": 0,
+          "reason": "Pale pavilion roof"
+        },
+        {
+          "pixel_xy": [
+            243,
+            147
+          ],
+          "expected_label": 255,
+          "previous_label": 255,
+          "reason": "Pavilion eave boundary"
+        },
+        {
+          "pixel_xy": [
+            162,
+            275
+          ],
+          "expected_label": 1,
+          "previous_label": 1,
+          "reason": "Visible garden path"
+        }
+      ]
+    },
+    {
+      "id": "drayton-mainstreet",
+      "image_size": [
+        240,
+        555
+      ],
+      "source_sha256": "f5ac41b178c1394978839f5ed2c09e1ac20b92aa3a21a4c296722d85b80c87ad",
+      "crop_pixels": [
+        520,
+        270,
+        760,
+        825
+      ],
+      "probes": [
+        {
+          "pixel_xy": [
+            112,
+            244
+          ],
+          "expected_label": 0,
+          "previous_label": 255,
+          "reason": "Western curved roof wing"
+        },
+        {
+          "pixel_xy": [
+            103,
+            239
+          ],
+          "expected_label": 255,
+          "previous_label": 255,
+          "reason": "Curved roof eave boundary"
+        },
+        {
+          "pixel_xy": [
+            91,
+            355
+          ],
+          "expected_label": 1,
+          "previous_label": 1,
+          "reason": "Narrow pedestrian route"
+        }
+      ]
+    }
+  ],
+  "human_labels_verified": false
+}

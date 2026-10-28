@@ -1,10 +1,12 @@
 # Source-traced paving masks
 
+The latest masks include the [roof corrections from user review](#roof-correction-after-user-review). The initial counts below are retained as the superseded baseline; use the corrected download and counts in that section.
+
 This stage creates **four native-resolution binary paving mask crops across three parks**. The main visible paving boundaries are traced explicitly, rather than sampled as small rectangles or copied from model/map predictions. Roofs, raised features, grass islands and planter holes receive separate visible non-paving traces; occluded or unreviewed ground stays unknown.
 
 These are **provisional assistant visual drafts requiring independent review**, not human-verified ground truth. They do not fix the model's accuracy by themselves. The neural checkpoint is unchanged and no world geometry is accepted.
 
-## What was created
+## What was created (initial draft, superseded)
 
 | Crop | Park group | Native crop size | Paving pixels | Non-paving pixels | Unknown pixels |
 | --- | --- | --- | ---: | ---: | ---: |
@@ -56,3 +58,22 @@ Both Alton crops share one park group. Repeated originals or overlapping crop ge
 Independent review should check roof eaves, planter edging, paving in visible shadow, narrow passages and whether some apparent hard surfaces are ride pads or service routes. The masks then provide inputs for a binary spatial-model benchmark; they have not yet been used to retrain a model. Research training is explicitly provisional, while production training remains disabled. No Windows EXE was rebuilt.
 
 Attribution: Esri World Imagery and its imagery providers. Source/capture/resolution/accuracy observations remain in the original retained receipts and do not establish exact physical registration.
+
+## Roof correction after user review
+
+The counts above describe the first draft, which **included some roof sections in the paving mask**. The corrected dataset supersedes that draft; no model has been trained on either mask revision.
+
+Source-overlay inspection identified missed diagonal roofs at both lower corners of the Towers Street crop, the right-hand pre-show gable and north-east roof at Wicker, and incomplete pavilion/curved-roof extents at Chessington and Drayton. Explicit non-paving outlines now include these sections. The north-east Wicker facade/shadow transition and a few ambiguous corners are unknown rather than guessed ground.
+
+The combined source-traced roof outlines receive an explicit unknown ring extending two native pixels outward and one inward. Using the combined roof geometry avoids unnecessary guard seams between adjoining roof sections. Broad paving traces are re-cut against the corrected visible non-paving outlines. This is an annotation correction using the same source images, not an RGB threshold, map mask or model prediction.
+
+| Crop | Corrected paving | Corrected non-paving | Unknown | Previously paving, now excluded |
+| --- | ---: | ---: | ---: | ---: |
+| Towers Street plaza | 76,601 | 60,300 | 67,699 | 6,884 |
+| Wicker entrance courtyard | 29,865 | 40,310 | 30,475 | 3,385 |
+| Chessington garden paths | 18,976 | 10,859 | 103,165 | 0 |
+| Drayton pedestrian route | 14,426 | 16,505 | 102,269 | 48 |
+
+In total **10,317 previously paving-labelled pixels are excluded**, with **zero newly added paving pixels**. Current totals are 139,868 paving, 127,974 non-paving and 303,608 unknown. All source bytes, crop coordinates, RGB pixels and georeferenced extents remain unchanged. Known roof interiors, uncertain eaves and neighbouring ground paths are pinned as explicit source-coordinate regression probes in `voxel_mapper/data/paving-mask-roof-review.json`.
+
+The corrected download is named `Source-Traced-Paving-Masks-Roof-Fix.zip`, with its own standalone review page. The earlier download is retained for comparison. This revision remains a provisional assistant visual draft requiring independent review; it does not establish that every remaining roof or paving boundary is correct. Neural weights remain unchanged.
