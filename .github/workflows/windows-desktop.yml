@@ -44,6 +44,10 @@ on:
       - 'voxel_mapper/retained_study_examples.py'
       - 'voxel_mapper/research_sources.py'
       - 'voxel_mapper/aerial_material_research.py'
+      - 'voxel_mapper/aerial_semantic_learning.py'
+      - 'voxel_mapper/aerial_semantic_network.py'
+      - 'voxel_mapper/data/aerial-semantic-visual-annotations.json'
+      - 'tests/test_aerial_semantic_learning.py'
       - 'voxel_mapper/imagery_geometry_research.py'
       - 'tests/test_imagery_geometry_research.py'
       - 'voxel_mapper/colour_materials.py'
@@ -269,6 +273,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Neural learning tests failed' }
           python -m unittest discover -s tests -p 'test_research_sources.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Broader public source research checks failed' }
+          python -m unittest discover -s tests -p 'test_aerial_semantic_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'RGB aerial semantic learning checks failed' }
           python -m unittest discover -s tests -p 'test_imagery_geometry_research.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Imagery gap geometry checks failed' }
           python -m unittest discover -s tests -p 'test_colour_materials.py' -v

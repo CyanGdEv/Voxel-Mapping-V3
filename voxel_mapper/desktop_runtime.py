@@ -20,6 +20,8 @@ KINDS={'area_pilot','world_pilot','alton_world','building_batch','inspect_eviden
 HEAVY={'area_pilot','world_pilot','alton_world','building_batch','reason','prepare_review','reconstruction_benchmark','regenerate_corrections','planning_source_pilot','web_research','web_planning_pilot','planning_collection','planning_world_preview','train_study_components','train_study_vision','train_study_context','train_study_transfer'}
 KINDS.add('planning_area_world_preview')
 HEAVY.add('planning_area_world_preview')
+KINDS.update({'train_aerial_semantics','predict_aerial_semantics'})
+HEAVY.update({'train_aerial_semantics','predict_aerial_semantics'})
 KINDS.add('imagery_geometry_research')
 HEAVY.add('imagery_geometry_research')
 KINDS.add('aerial_material_research')
@@ -443,6 +445,10 @@ class DesktopRuntime:
                 if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research','imagery_geometry_research'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
+                if kind=='train_aerial_semantics':
+                    self.store.remember('aerial_semantic_checkpoint',result['dataset_id'],{
+                        'model_sha256':result['model_sha256'],'label_policy':result['label_policy'],
+                        'held_out_mean_iou':result['park_held_out_neural']['mean_iou'],'production_eligible':False})
                 if kind=='imagery_geometry_research':
                     self.store.remember('imagery_geometry_observation',result['site_id'],{
                         'candidate_counts':result['candidate_counts'],'candidate_file_sha256':result['candidate_file_sha256'],
@@ -721,6 +727,16 @@ def _worker(request):
         from .web_planning_pilot import run
         result=run(config,output,output.parents[2]/'web-cache',memory=request.get('memory_context',''),
             cancelled=cancelled,progress=progress)
+    elif kind=='train_aerial_semantics':
+        from .aerial_semantic_learning import train
+        if config.get('version')!='desktop-aerial-semantic-training-v1' or set(config)-{'version','dataset_directory','settings'}:raise ValueError('Versioned semantic training request required')
+        result=train(resolve_path(config_path,config['dataset_directory']),output,config.get('settings'),cancelled=cancelled,progress=progress)
+    elif kind=='predict_aerial_semantics':
+        from .aerial_semantic_learning import infer
+        if config.get('version')!='desktop-aerial-semantic-prediction-v1' or set(config)-{'version','aerial_directory','model_file','model_sha256','threshold','margin'}:raise ValueError('Versioned semantic prediction request required')
+        source=resolve_path(config_path,config['aerial_directory']);model=resolve_path(config_path,config['model_file'])
+        if not isinstance(config.get('model_sha256'),str) or len(config['model_sha256'])!=64:raise ValueError('Pinned semantic model file required')
+        result=infer(source/'source-image.bin',read_json(source/'imagery-receipt.json'),model,output,model_sha256=config['model_sha256'],cancelled=cancelled,threshold=config.get('threshold',.6),margin=config.get('margin',.10))
     elif kind=='imagery_geometry_research':
         from .imagery_geometry_research import run,resolve_paths
         config=resolve_paths(config,config_path.parent)
@@ -737,6 +753,7 @@ def _worker(request):
         from .research_learning_cycle import run
         for field in ('dataset_directory','encoder_path'):
             config[field]=str(resolve_path(config_path,config[field]))
+        if 'aerial_semantics' in config:config['aerial_semantics']['dataset_directory']=str(resolve_path(config_path,config['aerial_semantics']['dataset_directory']))
         for site in config.get('public_sites',[]):
             if 'imagery_geometry_context' in site:
                 from .imagery_geometry_research import resolve_paths

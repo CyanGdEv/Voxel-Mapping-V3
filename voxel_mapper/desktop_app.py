@@ -20,6 +20,8 @@ JOB_KINDS = (
     ('Reconstruction accuracy benchmark', 'reconstruction_benchmark'),
     ('Planning drawing pilot / source coverage', 'planning_source_pilot'),
     ('Web research / cited source evidence', 'web_research'),
+    ('Train RGB aerial semantics', 'train_aerial_semantics'),
+    ('Predict RGB aerial semantics', 'predict_aerial_semantics'),
     ('Imagery geometry / planning gaps', 'imagery_geometry_research'),
     ('Aerial RGB / material research', 'aerial_material_research'),
     ('Map names / planning application research', 'map_planning_research'),
