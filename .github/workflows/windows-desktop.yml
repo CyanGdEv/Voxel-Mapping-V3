@@ -44,6 +44,10 @@ on:
       - 'voxel_mapper/retained_study_examples.py'
       - 'voxel_mapper/research_sources.py'
       - 'voxel_mapper/aerial_material_research.py'
+      - 'voxel_mapper/mapping_layer_sources.py'
+      - 'voxel_mapper/mapping_layers.py'
+      - 'voxel_mapper/mapping_layers.html'
+      - 'tests/test_mapping_layers.py'
       - 'voxel_mapper/aerial_semantic_learning.py'
       - 'voxel_mapper/aerial_semantic_network.py'
       - 'voxel_mapper/aerial_semantic_comparison.py'
@@ -334,6 +338,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_colour_materials.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Colour material assignment checks failed' }
           python -m unittest discover -s tests -p 'test_aerial_material_research.py' -v
+          python -m unittest discover -s tests -p 'test_mapping_layers.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Aerial RGB material candidate checks failed' }
           python -m unittest discover -s tests -p 'test_map_planning_research.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Map-guided planning research checks failed' }

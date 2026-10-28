@@ -28,6 +28,8 @@ KINDS.add('imagery_geometry_research')
 HEAVY.add('imagery_geometry_research')
 KINDS.add('aerial_material_research')
 HEAVY.add('aerial_material_research')
+KINDS.add('mapping_source_layers')
+HEAVY.add('mapping_source_layers')
 KINDS.add('map_planning_research')
 HEAVY.add('map_planning_research')
 KINDS.add('research_learning_cycle')
@@ -444,7 +446,7 @@ class DesktopRuntime:
                 if kind=='train_ranker':self._store_checkpoint(job,result)
                 if kind=='inspect_evidence':
                     for observation in result['observations']:self.store.remember('source_observation',observation['path'],observation)
-                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research','imagery_geometry_research'):
+                if kind in ('web_research','web_planning_pilot','planning_collection','research_learning_cycle','map_planning_research','aerial_material_research','imagery_geometry_research','mapping_source_layers'):
                     for observation in result['sources']:
                         self.store.remember('web_source_observation',observation['url'],observation)
                 if kind=='train_aerial_semantics':
@@ -761,6 +763,9 @@ def _worker(request):
     elif kind=='aerial_material_research':
         from .aerial_material_research import run
         result=run(config,output,output.parents[2]/'web-cache',cancelled=cancelled,progress=progress)
+    elif kind=='mapping_source_layers':
+        from .mapping_layers import run
+        result=run(config,output,output.parents[2]/'web-cache',base=config_path.parent,cancelled=cancelled,progress=progress)
     elif kind=='map_planning_research':
         from .map_planning_research import run
         source=config.get('map_source',{})

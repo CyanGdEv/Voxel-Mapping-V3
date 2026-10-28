@@ -26,6 +26,7 @@ JOB_KINDS = (
     ('Predict binary paving', 'predict_paving_binary'),
     ('Imagery geometry / planning gaps', 'imagery_geometry_research'),
     ('Aerial RGB / material research', 'aerial_material_research'),
+    ('Compare mapping / survey layers', 'mapping_source_layers'),
     ('Map names / planning application research', 'map_planning_research'),
     ('Adaptive research / source learning cycle', 'research_learning_cycle'),
     ('Web planning PDFs / automatic source pack', 'web_planning_pilot'),

@@ -54,3 +54,5 @@ retained inputs". Large jobs may exceed the observed memory budget and will be
 cancelled instead of exhausting the machine.
 The self-test builds a tiny synthetic terrain world without external sources:
 VoxelMapperV3.exe --self-test
+
+To compare public mapping and survey layers, choose "Compare mapping / survey layers" and load compare-mapping-layers.json. Extract the Mapping-Source-Layers package mapping-layer-inputs folder into the repository root and retain its cache folder. The shipped request is offline; see docs/mapping-source-layers.md for live requests and local vector imports. Results include index.html with layer toggles, opacity, source details and review-note export.

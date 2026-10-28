@@ -1,0 +1,195 @@
+{
+  "version": "mapping-source-layers-v1",
+  "site": "Alton Towers and Chessington \u2014 mapping source verification",
+  "areas": [
+    {
+      "id": "user-towers-mutiny",
+      "title": "Towers Street and Mutiny Bay",
+      "image_file": "../../mapping-layer-inputs/user-towers-mutiny/clean.bin",
+      "image_file_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "receipt_file": "../../mapping-layer-inputs/user-towers-mutiny/receipt.json",
+      "receipt_file_sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+      "lidar_features_file": "../../mapping-layer-inputs/user-towers-mutiny/lidar.npz",
+      "lidar_features_file_sha256": "5120f42471b4415447c2bceb37c033e48ac25d92d45674a7231681134314154d",
+      "lidar_receipt_file": "../../mapping-layer-inputs/user-towers-mutiny/lidar-receipt.json",
+      "lidar_receipt_file_sha256": "7b3226a620ccc53c7a2382b0d4dcd2d4df595206f23886b07055ee874076c5dc",
+      "ground_mask_file": "../../mapping-layer-inputs/user-towers-mutiny/ground.png",
+      "ground_mask_file_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+      "canopy_mask_file": "../../mapping-layer-inputs/user-towers-mutiny/canopy.png",
+      "canopy_mask_file_sha256": "cee1d83b20bdbba4b385744b781cf6d78b6c7352b05ec0ce1653ef0488985468",
+      "label_source_image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a"
+    },
+    {
+      "id": "user-gardens-lake",
+      "title": "Gardens and lake",
+      "image_file": "../../mapping-layer-inputs/user-gardens-lake/clean.bin",
+      "image_file_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+      "receipt_file": "../../mapping-layer-inputs/user-gardens-lake/receipt.json",
+      "receipt_file_sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+      "lidar_features_file": "../../mapping-layer-inputs/user-gardens-lake/lidar.npz",
+      "lidar_features_file_sha256": "1b0a89667b0f9f81e28872c7e6222c69724cac5def6719f9c0e286e69cb49749",
+      "lidar_receipt_file": "../../mapping-layer-inputs/user-gardens-lake/lidar-receipt.json",
+      "lidar_receipt_file_sha256": "53cab0915c9de48e909ebd391b938ae8f279736dd6e91372d3628968ac6e1509",
+      "ground_mask_file": "../../mapping-layer-inputs/user-gardens-lake/ground.png",
+      "ground_mask_file_sha256": "2404e038a5eeb8adedd225e78e9c610f15e462dfe0e86f8c1156db430f84ef5c",
+      "canopy_mask_file": "../../mapping-layer-inputs/user-gardens-lake/canopy.png",
+      "canopy_mask_file_sha256": "c165e1120fb515cfe6a7a2b3ab007591324c67610d7d873d4000a39aee95a2cc",
+      "label_source_image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219"
+    },
+    {
+      "id": "user-chessington-courtyard",
+      "title": "Chessington courtyard",
+      "image_file": "../../mapping-layer-inputs/user-chessington-courtyard/clean.bin",
+      "image_file_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+      "receipt_file": "../../mapping-layer-inputs/user-chessington-courtyard/receipt.json",
+      "receipt_file_sha256": "6ffc41a90957431499ccf33066607f60c075c1d31456f74d765e9682f835609a",
+      "lidar_features_file": "../../mapping-layer-inputs/user-chessington-courtyard/lidar.npz",
+      "lidar_features_file_sha256": "5eb537bd90d1b223a4af24e663009a50332daa080429526fb4a8614dcc760ddc",
+      "lidar_receipt_file": "../../mapping-layer-inputs/user-chessington-courtyard/lidar-receipt.json",
+      "lidar_receipt_file_sha256": "ba94f62f017aaee74a27633c2904c395b0fd10c5c02e142276d5cdd0699ebad3",
+      "ground_mask_file": "../../mapping-layer-inputs/user-chessington-courtyard/ground.png",
+      "ground_mask_file_sha256": "9c0c68eca4ebbf319aedf0972f125e8c49c49e9ad2474af7b9246faf2e87c9ad",
+      "canopy_mask_file": "../../mapping-layer-inputs/user-chessington-courtyard/canopy.png",
+      "canopy_mask_file_sha256": "8b52e8f986d5d659cdd7bffa9662ee4a500dae50f12b6f753d62c2c4d7f9742c",
+      "label_source_image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995"
+    },
+    {
+      "id": "user-tight-gardens",
+      "title": "Tight garden paths",
+      "image_file": "../../mapping-layer-inputs/user-tight-gardens/clean.bin",
+      "image_file_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "receipt_file": "../../mapping-layer-inputs/user-tight-gardens/receipt.json",
+      "receipt_file_sha256": "ebe43b9573eca8fd6acaaeea45e1fbb7e87daa0015fcdb3268b2fb617a81f854",
+      "lidar_features_file": "../../mapping-layer-inputs/user-tight-gardens/lidar.npz",
+      "lidar_features_file_sha256": "3ffddce006ccaf5fa4efc3571697bc5b11b70b8138b22ae9739382db5c525da5",
+      "lidar_receipt_file": "../../mapping-layer-inputs/user-tight-gardens/lidar-receipt.json",
+      "lidar_receipt_file_sha256": "f358be42cdc717fd2dd5dbefcddfe471e1e34afe382bf1b4c837109dc4b4adaf",
+      "ground_mask_file": "../../mapping-layer-inputs/user-tight-gardens/ground.png",
+      "ground_mask_file_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+      "canopy_mask_file": "../../mapping-layer-inputs/user-tight-gardens/canopy.png",
+      "canopy_mask_file_sha256": "a5ce9fb68d5a58f18fd88f2cf1b332a216054e5c1abbbdb62dc06e8f8cbfc95e",
+      "label_source_image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309"
+    }
+  ],
+  "imports": [
+    {
+      "id": "wicker-raw-returns",
+      "title": "Wicker Man raw returns \u2014 retained crop only",
+      "family": "raw_lidar",
+      "format": "las",
+      "path": "../../mapping-layer-inputs/imports/wicker-raw-returns.las",
+      "path_sha256": "84a097d0c0700618954ece39add488ed6c73456b39240c371e198bfa98c75dcb",
+      "metadata": {
+        "sha256": "84a097d0c0700618954ece39add488ed6c73456b39240c371e198bfa98c75dcb",
+        "archive_sha256": "0da1c50d0df63f6dd7b49dca29286180eabf20261530fb8afe05645cf0235b1e",
+        "prior_archive_sha256": "2bd911d556739978915046d94037c206cdb60811c2e2dfd6da48b24ce83135dc",
+        "archive_bytes": 384483857,
+        "survey_id": "P_10682",
+        "survey_date": "2022-01-05",
+        "bounds": [
+          407530.0,
+          343495.0,
+          407675.0,
+          343615.0
+        ],
+        "retained_points": 56568,
+        "scanned_points": 98342681,
+        "classes": {
+          "1": 1096,
+          "2": 20188,
+          "3": 1021,
+          "4": 8651,
+          "5": 22775,
+          "6": 2832,
+          "7": 5
+        },
+        "reference_crop_sha256": "78524af74e857a866fa6cc68bf8970600fbfc5ad0917dd4d0def1530760b0584",
+        "reference_crop_reproduced_exactly": true,
+        "license": "OGL-UK-3.0",
+        "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+        "crs": "EPSG:27700",
+        "vertical_datum": "ODN",
+        "source_url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540"
+      }
+    },
+    {
+      "id": "gb-topographic-water",
+      "title": "GB topographic water",
+      "family": "os_zoomstack",
+      "format": "geojson",
+      "path": "../../mapping-layer-inputs/imports/gb-topographic-water.geojson",
+      "path_sha256": "ab95fde1601c44bb228b9e0a3160dc142d8fa59b52d362b46f9993873f316b2a",
+      "crs": "EPSG:3857",
+      "areas": [
+        "user-towers-mutiny"
+      ],
+      "metadata": {
+        "source_url": "https://www.arcgis.com/home/item.html?id=2d5a797a822b462e9aa5a6bdbf34bf2f",
+        "license": "OS OpenData OGL; retain Esri service attribution",
+        "attribution": "Contains OS data \u00a9 Crown copyright and database right; Esri UK GB Topographic",
+        "underlying_product": "OS Open Zoomstack",
+        "map_content_date": "June 2026 per service item; not a survey capture date",
+        "coverage": "Retained comparison export for Towers Street / Mutiny only",
+        "independence_group": "ordnance-survey",
+        "source_file_sha256": "1a6becdd0717de9934eff3bcf2656cd31013bb4e6ee7216094c3f9b650c91ff2"
+      }
+    },
+    {
+      "id": "gb-topographic-woodland",
+      "title": "GB topographic woodland",
+      "family": "os_zoomstack",
+      "format": "geojson",
+      "path": "../../mapping-layer-inputs/imports/gb-topographic-woodland.geojson",
+      "path_sha256": "d737774732c5f7ded0aae97f99e2d091040f028663a1708b5d795951e837b6a5",
+      "crs": "EPSG:3857",
+      "areas": [
+        "user-towers-mutiny"
+      ],
+      "metadata": {
+        "source_url": "https://www.arcgis.com/home/item.html?id=2d5a797a822b462e9aa5a6bdbf34bf2f",
+        "license": "OS OpenData OGL; retain Esri service attribution",
+        "attribution": "Contains OS data \u00a9 Crown copyright and database right; Esri UK GB Topographic",
+        "underlying_product": "OS Open Zoomstack",
+        "map_content_date": "June 2026 per service item; not a survey capture date",
+        "coverage": "Retained comparison export for Towers Street / Mutiny only",
+        "independence_group": "ordnance-survey",
+        "source_file_sha256": "1a6becdd0717de9934eff3bcf2656cd31013bb4e6ee7216094c3f9b650c91ff2"
+      }
+    },
+    {
+      "id": "gb-topographic-roads",
+      "title": "GB topographic roads \u2014 not garden paths",
+      "family": "os_zoomstack",
+      "format": "geojson",
+      "path": "../../mapping-layer-inputs/imports/gb-topographic-roads.geojson",
+      "path_sha256": "fa959cdc4a22ead09f619f37b9375e7a572ab60f048537494a1a0efce1379ac8",
+      "crs": "EPSG:3857",
+      "areas": [
+        "user-towers-mutiny"
+      ],
+      "metadata": {
+        "source_url": "https://www.arcgis.com/home/item.html?id=2d5a797a822b462e9aa5a6bdbf34bf2f",
+        "license": "OS OpenData OGL; retain Esri service attribution",
+        "attribution": "Contains OS data \u00a9 Crown copyright and database right; Esri UK GB Topographic",
+        "underlying_product": "OS Open Zoomstack",
+        "map_content_date": "June 2026 per service item; not a survey capture date",
+        "coverage": "Retained comparison export for Towers Street / Mutiny only",
+        "independence_group": "ordnance-survey",
+        "source_file_sha256": "1a6becdd0717de9934eff3bcf2656cd31013bb4e6ee7216094c3f9b650c91ff2"
+      }
+    }
+  ],
+  "providers": [
+    "os_openmap",
+    "historic",
+    "wayback",
+    "overture"
+  ],
+  "wayback_releases": [
+    "63116",
+    "4756"
+  ],
+  "offline": true,
+  "datum_grid_file": "../../mapping-layer-inputs/proj-grids/uk_os_OSTN15_NTv2_OSGBtoETRS.tif",
+  "datum_grid_file_sha256": "5d6ed64d2119952c4c559fa1fccbc594b6520fc3ec3ef2fc10be13202c4384fa"
+}
