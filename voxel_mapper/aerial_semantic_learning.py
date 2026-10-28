@@ -77,11 +77,12 @@ def build_dataset(items,annotation_path,output):
 
 
 def read_dataset(directory,*,cancelled=lambda:False):
-    root=Path(directory);manifest,raw=safe._json(root/'dataset.json',2000000)
+    root=Path(directory).resolve();manifest,raw=safe._json(root/'dataset.json',2000000)
     if manifest.get('version')!=DATASET_VERSION or manifest.get('classes')!=net.CLASSES or manifest.get('label_policy')!=POLICY or manifest.get('id')!=digest({k:v for k,v in manifest.items() if k!='id'}):
         raise ValueError('Pinned provisional aerial semantic dataset required')
     rows=manifest.get('records',[])
     if not isinstance(rows,list) or not 3<=len(rows)<=16 or len({r['id'] for r in rows})!=len(rows):raise ValueError('Three to sixteen distinct aerial records required')
+    if any(not isinstance(r.get('site_id'),str) or not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,79}',r['site_id']) for r in rows):raise ValueError('Bounded park identifiers required')
     if len({r['site_id'] for r in rows})<3:raise ValueError('At least three sites required for park-held-out evaluation')
     path=safe._asset(root,manifest['annotation_file'])
     if file_hash(path)!=manifest['annotation_sha256']:raise ValueError('Visual annotation source changed')

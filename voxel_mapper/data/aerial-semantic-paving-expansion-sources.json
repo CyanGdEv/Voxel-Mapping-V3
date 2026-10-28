@@ -1,0 +1,623 @@
+{
+  "version": "aerial-semantic-paving-source-inventory-v1",
+  "sources": [
+    {
+      "id": "alton-street",
+      "site_id": "alton-towers",
+      "bounds_wgs84": [
+        -1.8941,
+        52.9891,
+        -1.8907,
+        52.9914
+      ],
+      "original_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+      "metadata_sha256": "a46b04e109b4846af699004674161f8e7a1bfb3edf7af0ccf6c25210b9ee044c",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -210873.6752289804,
+          6980981.969853664,
+          -210448.33352540157,
+          6981407.311557243
+        ],
+        "height": 1024,
+        "image_sha256": "83bb4bb3f51a0099e583f86d2628f8e675a0d1c29b42124ddc08d39fc8141470",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map30e2e525d0ac48d6997138838a8dce9d.png",
+        "metadata_sha256": "85d4530ab3b2841def045098009d6b862b4bd9ebdfc185178ca86cd14a991cd5",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8941%2C52.9891%2C-1.8907%2C52.9914&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8923999999999999%2C52.99025&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8941%2C52.9891%2C-1.8907%2C52.9914&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20230527",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid",
+            "SRC_DATE2": "5/27/2023"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20230527",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid"
+          },
+          {
+            "SRC_DATE2": "5/27/2023"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "alton-wicker",
+      "site_id": "alton-towers",
+      "bounds_wgs84": [
+        -1.8902110940526333,
+        52.98869298645517,
+        -1.887351969663943,
+        52.99041826972453
+      ],
+      "original_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+      "metadata_sha256": "b9a49d1a7b81b796d9558ffe2d8a62f119b2a1601abe0e93e4175e9b0dec9977",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -210417.7251130154,
+          6980906.702719099,
+          -210098.6715793924,
+          6981225.756252722
+        ],
+        "height": 1024,
+        "image_sha256": "e720afb1ff35055f22d505af70ee2ac2d88644fe3b8dfd0760d9edad763baaa7",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapd442e40332174c4aaf45f97433517b58.png",
+        "metadata_sha256": "4c36d2f8d2e54ce0e9a768dc7728de25410c6bcb2d2a1f3570c6ac08504b33f3",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.8887815318582881%2C52.989555628089846&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.8902110940526333%2C52.98869298645517%2C-1.887351969663943%2C52.99041826972453&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20230527",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid",
+            "SRC_DATE2": "5/27/2023"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20230527",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid"
+          },
+          {
+            "SRC_DATE2": "5/27/2023"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "thorpe-entry",
+      "site_id": "thorpe-park",
+      "bounds_wgs84": [
+        -0.514,
+        51.4038,
+        -0.504,
+        51.4091
+      ],
+      "original_sha256": "9f96b495b3d52ffc381bcef7c668e9476bfb5345a585c5979ca2251f6f7e0e8e",
+      "metadata_sha256": "46bd30952fc98eeb7d84aa27be5efac2f707220d5430720ae271f2ee3da74280",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -57218.21826774262,
+          6692950.812934336,
+          -56105.02335980988,
+          6694064.007842269
+        ],
+        "height": 1024,
+        "image_sha256": "9f96b495b3d52ffc381bcef7c668e9476bfb5345a585c5979ca2251f6f7e0e8e",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map861d6be095694722900136a8e29070a4.png",
+        "metadata_sha256": "a667057d8862fb4e39688660f45aa9716e3d9aeca5108d9bceb7398906ee4370",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-0.514%2C51.4038%2C-0.504%2C51.4091&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-0.509%2C51.40645&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-0.514%2C51.4038%2C-0.504%2C51.4091&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "chessington-entry",
+      "site_id": "chessington",
+      "bounds_wgs84": [
+        -0.3212,
+        51.347,
+        -0.312,
+        51.353
+      ],
+      "original_sha256": "a1e704938123340b6cc80537ea9deeb344e9691cb4ff2f011a7a4568e216a3ad",
+      "metadata_sha256": "df83ed02a22f2d99b7670b02560a0dde0840c3c63e92f81fd2442a10dce7b93b",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -35778.45960974073,
+          6682905.063196742,
+          -34709.0419605601,
+          6683974.480845923
+        ],
+        "height": 1024,
+        "image_sha256": "a1e704938123340b6cc80537ea9deeb344e9691cb4ff2f011a7a4568e216a3ad",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapaa5016dad4c4457b806b1dbdbc223679.png",
+        "metadata_sha256": "8e3c9ca26cb7c75624b507a5c1b0ef6df75ab6685ec0d9780688949ce0176b02",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-0.3212%2C51.347%2C-0.312%2C51.353&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-0.3166%2C51.35&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-0.3212%2C51.347%2C-0.312%2C51.353&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "legoland-central",
+      "site_id": "legoland-windsor",
+      "bounds_wgs84": [
+        -0.6555,
+        51.4605,
+        -0.6485,
+        51.4648
+      ],
+      "original_sha256": "129ea55ef36f451dcf7fd278eb3b17b8b40ad4e3a908be70a8a7c83d385c90c8",
+      "metadata_sha256": "f80fcb9d244a02266ddf138f71b52383858a474e19194f65eec422768dd3fec7",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -72969.92621499082,
+          6703153.196491378,
+          -72190.6897794379,
+          6703932.432926931
+        ],
+        "height": 1024,
+        "image_sha256": "129ea55ef36f451dcf7fd278eb3b17b8b40ad4e3a908be70a8a7c83d385c90c8",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapa584128c40e1418da1a1962dbad386f3.png",
+        "metadata_sha256": "a537e5646bd231e71ce018084daf210c346d056a4bdcdc08bcce8040bb6df552",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-0.6555%2C51.4605%2C-0.6485%2C51.4648&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-0.6519999999999999%2C51.46265&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-0.6555%2C51.4605%2C-0.6485%2C51.4648&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "drayton-central",
+      "site_id": "drayton-manor",
+      "bounds_wgs84": [
+        -1.7175,
+        52.609,
+        -1.7105,
+        52.6133
+      ],
+      "original_sha256": "f5ac41b178c1394978839f5ed2c09e1ac20b92aa3a21a4c296722d85b80c87ad",
+      "metadata_sha256": "3d9bd7fae62336530e388d4bd24bfcc35f1b96bf531ba321a1caabc281378b66",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -191195.75830155658,
+          6910998.471585274,
+          -190407.45613778522,
+          6911786.773749045
+        ],
+        "height": 1024,
+        "image_sha256": "f5ac41b178c1394978839f5ed2c09e1ac20b92aa3a21a4c296722d85b80c87ad",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map42537d25c4264f2f857276e142f1a039.png",
+        "metadata_sha256": "73742f18280780612cacc41ca978b11f06b2cae9bbf84c852323ae65d0965e6c",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-1.7175%2C52.609%2C-1.7105%2C52.6133&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-1.714%2C52.61115&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-1.7175%2C52.609%2C-1.7105%2C52.6133&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250513",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "5/13/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250513",
+            "DESCRIPTION": "WV02",
+            "RESOLUTION (M)": "0.5",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "5/13/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "thorpe-central",
+      "site_id": "thorpe-park",
+      "bounds_wgs84": [
+        -0.518,
+        51.402,
+        -0.5105,
+        51.4066
+      ],
+      "original_sha256": "2d3a19b7447107b908df3496671ba0672354f503d8cd447e506503d29bc784a2",
+      "metadata_sha256": "0a133464fbc68d9a50a8b1a8b71e2ff8dce029d744b6684bce72b3308b12553d",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -57663.49623091569,
+          6692706.287071748,
+          -56828.60004996614,
+          6693541.183252697
+        ],
+        "height": 1024,
+        "image_sha256": "2d3a19b7447107b908df3496671ba0672354f503d8cd447e506503d29bc784a2",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map99ab062250c841d5b903e3997901011b.png",
+        "metadata_sha256": "f55b9a4c5e57fe6496ec07c8ba4b0507078ca9a83df195442183f3e87bb115e5",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-0.518%2C51.402%2C-0.5105%2C51.4066&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-0.51425%2C51.4043&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-0.518%2C51.402%2C-0.5105%2C51.4066&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    },
+    {
+      "id": "chessington-central",
+      "site_id": "chessington",
+      "bounds_wgs84": [
+        -0.3205,
+        51.347,
+        -0.3135,
+        51.3514
+      ],
+      "original_sha256": "72be82d26ffc1639f6cbaab99b65a9d474a8a6571d26368ed8a3daf786275160",
+      "metadata_sha256": "6ea9b53af58084cb6bb93a084b918800236bd75dd78e57491b61c573c0cbc03a",
+      "retained_imagery": {
+        "attribution": "Esri World Imagery and its imagery providers",
+        "attribution_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+        "capture_date": null,
+        "capture_date_status": "not_supplied_by_export",
+        "extent_epsg3857": [
+          -35680.39153980025,
+          6682905.063196742,
+          -34896.1656231352,
+          6683689.289113407
+        ],
+        "height": 1024,
+        "image_sha256": "72be82d26ffc1639f6cbaab99b65a9d474a8a6571d26368ed8a3daf786275160",
+        "image_url": "https://server.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map84f4ebc82baa4b768287a3604d2f3803.png",
+        "metadata_sha256": "85a49c1e7610e883c9a3ac6a16f4ff5ad30ed4b411dcb608065d9c3b133638df",
+        "metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=-0.3205%2C51.347%2C-0.3135%2C51.3514&bboxSR=4326&imageSR=3857&size=1024%2C1024&format=png&f=json",
+        "point_metadata_applies_to_whole_image": false,
+        "point_metadata_error": null,
+        "point_metadata_url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/identify?geometry=-0.317%2C51.349199999999996&geometryType=esriGeometryPoint&sr=4326&tolerance=1&mapExtent=-0.3205%2C51.347%2C-0.3135%2C51.3514&imageDisplay=1024%2C1024%2C96&returnGeometry=false&layers=all&f=json",
+        "point_source_metadata": [
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced",
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen",
+            "SRC_DATE2": "Null"
+          },
+          {
+            "ACCURACY (M)": "12",
+            "DATE (YYYYMMDD)": "Null",
+            "DESCRIPTION": "TerraColor NextGen",
+            "RESOLUTION (M)": "15",
+            "SOURCE": "Earthstar Geographics",
+            "SOURCE_INFO": "TerraColor NextGen"
+          },
+          {
+            "ACCURACY (M)": "8.47",
+            "DATE (YYYYMMDD)": "20250817",
+            "DESCRIPTION": "GE01",
+            "RESOLUTION (M)": "0.46",
+            "SOURCE": "Vantor",
+            "SOURCE_INFO": "Vivid Advanced"
+          },
+          {
+            "SRC_DATE2": "8/17/2025"
+          },
+          {
+            "SRC_DATE2": "Null"
+          }
+        ],
+        "provider": "esri_world_imagery",
+        "registration_verified": false,
+        "width": 1024
+      },
+      "label_policy": "assistant_visual_review_provisional_not_human_ground_truth"
+    }
+  ],
+  "originals_downloaded_in_training_package": true,
+  "human_labels_verified": false
+}
