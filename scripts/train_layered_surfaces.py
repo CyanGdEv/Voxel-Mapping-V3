@@ -16,7 +16,9 @@ def run(dataset,encoder_directory,output,feature_cache=None,resume=False,lidar_c
     import psutil,torch
     root=Path(dataset);out=Path(output)
     if out.exists() and not resume:raise ValueError('Fresh layered experiment or explicit matching resume required')
-    manifest=data.validate(root);out.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2)
+    manifest=data.validate(root)
+    if any(r.get('evaluation_only',False) for r in manifest['records']):raise ValueError('Generic all-record training cannot consume reserved evaluation parks')
+    out.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2)
     variants={'rgb_unbalanced':{'balanced':False,'features':'rgb'},'rgb_balanced':{'balanced':True,'features':'rgb'},'aerial_balanced':{'balanced':True,'features':'aerial'}}
     if profile=='narrow_lidar':
         if not lidar_cache:raise ValueError('Aligned LiDAR feature cache required')
