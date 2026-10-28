@@ -45,6 +45,7 @@ voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 [project.optional-dependencies]
 segmentation = ["torch>=2.5,<3", "scipy>=1.11,<2"]
 aerialsegmentation = ["torch>=2.6,<3", "scipy>=1.11,<2", "safetensors>=0.4,<1", "transformers==4.46.3"]
+mappingreview = ["scipy>=1.11,<2", "opencv-python-headless==4.10.0.84"]
 desktop = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2", "psutil>=6,<8", "pyinstaller>=6.10,<7", "onnxruntime==1.20.1"]
 planning = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2"]
 
@@ -52,4 +53,4 @@ planning = ["PyMuPDF>=1.26,<2", "scipy>=1.11,<2"]
 include = ["voxel_mapper*"]
 
 [tool.setuptools.package-data]
-voxel_mapper = ["data/*.json", "data/*.geojson", "paving_label_review.html", "mapping_layers.html"]
+voxel_mapper = ["data/*.json", "data/*.geojson", "paving_label_review.html", "mapping_layers.html", "boundary_alignment_review.html"]

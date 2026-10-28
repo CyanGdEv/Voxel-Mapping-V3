@@ -30,6 +30,8 @@ KINDS.add('aerial_material_research')
 HEAVY.add('aerial_material_research')
 KINDS.add('mapping_source_layers')
 HEAVY.add('mapping_source_layers')
+KINDS.add('boundary_alignment_review')
+HEAVY.add('boundary_alignment_review')
 KINDS.add('map_planning_research')
 HEAVY.add('map_planning_research')
 KINDS.add('research_learning_cycle')
@@ -766,6 +768,9 @@ def _worker(request):
     elif kind=='mapping_source_layers':
         from .mapping_layers import run
         result=run(config,output,output.parents[2]/'web-cache',base=config_path.parent,cancelled=cancelled,progress=progress)
+    elif kind=='boundary_alignment_review':
+        from .boundary_alignment_review import run
+        result=run(config,output,base=config_path.parent,cancelled=cancelled,progress=progress)
     elif kind=='map_planning_research':
         from .map_planning_research import run
         source=config.get('map_source',{})

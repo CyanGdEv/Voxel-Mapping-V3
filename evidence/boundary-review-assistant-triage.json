@@ -1,0 +1,60 @@
+{
+  "version": "boundary-alignment-review-notes-v1",
+  "queue_id": "26d30c4cc6f5e814ccf96df99d845b1048a5a9934c5618003cc40557b32bc1ad",
+  "source_comparison_sha256": "937b6850e95ccb4e09df260191a317f8fbc9eb95ec79c057560a53ee79185273",
+  "automatically_approved": false,
+  "training_labels_changed": 0,
+  "transforms_applied": 0,
+  "reviewer_role": "assistant_source_assisted_draft",
+  "independent_human_review": false,
+  "notes": [
+    {
+      "item_id": "dc241d77eafd81754c",
+      "area_id": "user-towers-mutiny",
+      "reference_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "parent_ground_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+      "decision": "keep_draft",
+      "notes": "Visible lawn shape supports keeping the current grass draft. The park-held-out model predicts paving here; its training fold has zero grass labels. This is an assistant visual impression, not independent survey truth."
+    },
+    {
+      "item_id": "42cf39f80b08db190c",
+      "area_id": "user-towers-mutiny",
+      "reference_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "parent_ground_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+      "decision": "source_conflict",
+      "notes": "This small circular feature has a user-guided water draft. Its absence from generalised topographic water is insufficient to remove that label. Check fountain/pond condition and dates."
+    },
+    {
+      "item_id": "1a786fb9f11e2e5391",
+      "area_id": "user-towers-mutiny",
+      "reference_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "parent_ground_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+      "decision": "source_conflict",
+      "notes": "The flagged strip lies along a building edge. OS generalisation, roof overhang and imagery alignment are unresolved; no source-supported boundary correction is established."
+    },
+    {
+      "item_id": "1bcb987e34a356d299",
+      "area_id": "user-tight-gardens",
+      "reference_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "parent_ground_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+      "decision": "keep_draft",
+      "notes": "A visible linear garden walk agrees with the existing user-guided path draft. The model predicts structure across it. Keep the draft pending independent checking; do not change it merely to match the model."
+    },
+    {
+      "item_id": "11a929ce45bf2fb9d1",
+      "area_id": "user-tight-gardens",
+      "reference_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "parent_ground_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+      "decision": "source_conflict",
+      "notes": "This is a thin edge near the user-confirmed circular structure. Preserve the confirmed structure role. One-metre height context and generalised OS outlines do not resolve this small edge."
+    },
+    {
+      "item_id": "3cd2e00c9153467063",
+      "area_id": "user-tight-gardens",
+      "reference_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "parent_ground_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+      "decision": "source_conflict",
+      "notes": "Similar colours extend into terraces and planted features near the path. The flagged unknown pixels are a search region, not a paving polygon. Keep them unknown without a traced supported boundary."
+    }
+  ]
+}

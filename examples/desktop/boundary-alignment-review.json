@@ -1,0 +1,79 @@
+{
+  "version": "boundary-alignment-review-v1",
+  "comparison_file": "../../boundary-review-inputs/comparison/layers.json",
+  "comparison_file_sha256": "937b6850e95ccb4e09df260191a317f8fbc9eb95ec79c057560a53ee79185273",
+  "source_config_file": "../../boundary-review-inputs/source-config.json",
+  "source_config_file_sha256": "8cc9a5ca69bc537f3367eb95ed72991cdb43e573c1d46845c60c1e9aee15b440",
+  "predictions": [
+    {
+      "area_id": "user-towers-mutiny",
+      "site_id": "alton-towers",
+      "scope": "park_held_out",
+      "source_image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "path": "../../boundary-review-inputs/predictions/user-towers-mutiny-path.png",
+      "path_sha256": "7c7ce204dc802e083af02f296c07bb8d77cf7b03847bd7509fffcdf4c1ae34c6",
+      "model_file": "../../boundary-review-inputs/predictions/user-towers-mutiny-model_file.json",
+      "model_file_sha256": "154ca7e24fcd02964c66be607a6d6c46b804ccb7c0c90a93ebe97fd843d6e7e6"
+    },
+    {
+      "area_id": "user-gardens-lake",
+      "site_id": "alton-towers",
+      "scope": "park_held_out",
+      "source_image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+      "path": "../../boundary-review-inputs/predictions/user-gardens-lake-path.png",
+      "path_sha256": "4e0cb18ca5cb98302ec3ed033bd110436555d6b21893451c52e074b66b7a46f2",
+      "model_file": "../../boundary-review-inputs/predictions/user-gardens-lake-model_file.json",
+      "model_file_sha256": "154ca7e24fcd02964c66be607a6d6c46b804ccb7c0c90a93ebe97fd843d6e7e6"
+    },
+    {
+      "area_id": "user-chessington-courtyard",
+      "site_id": "chessington",
+      "scope": "park_held_out",
+      "source_image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+      "path": "../../boundary-review-inputs/predictions/user-chessington-courtyard-path.png",
+      "path_sha256": "00dce930c5179f88bdb7e66aaec20a11c9db663794f807efb0e69f9bff8bd477",
+      "model_file": "../../boundary-review-inputs/predictions/user-chessington-courtyard-model_file.json",
+      "model_file_sha256": "36fb0bcdeddf44026ba823d300066c3c9d7a57e502468082d1b782421b024299"
+    },
+    {
+      "area_id": "user-tight-gardens",
+      "site_id": "alton-towers",
+      "scope": "park_held_out",
+      "source_image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "path": "../../boundary-review-inputs/predictions/user-tight-gardens-path.png",
+      "path_sha256": "7973775b3359e598db88005ad1eb740135bd8b8b131ad1dde38fc9b097843685",
+      "model_file": "../../boundary-review-inputs/predictions/user-tight-gardens-model_file.json",
+      "model_file_sha256": "154ca7e24fcd02964c66be607a6d6c46b804ccb7c0c90a93ebe97fd843d6e7e6"
+    }
+  ],
+  "inferred": [
+    {
+      "area_id": "user-towers-mutiny",
+      "source_image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "path": "../../boundary-review-inputs/inferred/user-towers-mutiny-path.png",
+      "path_sha256": "890a4917dd42f39e1ffaeb54098c4946e5c407a8401c994e076817b5fea00da2"
+    },
+    {
+      "area_id": "user-gardens-lake",
+      "source_image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+      "path": "../../boundary-review-inputs/inferred/user-gardens-lake-path.png",
+      "path_sha256": "c8a5a0f2e4a8a510b956d05826c5ea0fd1217ad23dda3a0511524ef781fc54a4"
+    },
+    {
+      "area_id": "user-chessington-courtyard",
+      "source_image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+      "path": "../../boundary-review-inputs/inferred/user-chessington-courtyard-path.png",
+      "path_sha256": "f2b17e30ac24343ddf3e171f22d76866544f367ef61e20791c2e5a7b37e4512e"
+    },
+    {
+      "area_id": "user-tight-gardens",
+      "source_image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "path": "../../boundary-review-inputs/inferred/user-tight-gardens-path.png",
+      "path_sha256": "c8b6bb3e837f846489438b47ae42f3960b820a17095ea66df3c5fa00fcd60665"
+    }
+  ],
+  "priority_areas": [
+    "user-towers-mutiny",
+    "user-tight-gardens"
+  ]
+}
