@@ -1,0 +1,421 @@
+{
+  "version": "user-garden-training-validation-v1",
+  "tests": {
+    "passed": 95,
+    "log_sha256": "cd4256fb6fb344023e85c4e1b16c30eec5b1222b19168553a961b89851241460"
+  },
+  "registration": {
+    "version": "user-path-registration-v1",
+    "reference_sha256": "c8c903b86cdf6d2424ab36060b0d318eb17b9f0be9239b0fe437b9defce199fc",
+    "clean_source_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+    "metadata_sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+    "reference_size": [
+      761,
+      1280
+    ],
+    "clean_size": [
+      1024,
+      1024
+    ],
+    "reference_to_clean": [
+      [
+        -0.5189754505359258,
+        0.47278862967383317,
+        407.14055014089183
+      ],
+      [
+        -0.47278862967383317,
+        -0.5189754505359258,
+        1024.1801864580248
+      ]
+    ],
+    "inliers": 921,
+    "inlier_error_clean_pixels_median": 0.3396606330379463,
+    "inlier_error_clean_pixels_p95": 0.9901743600592552,
+    "physical_registration_verified": false,
+    "sample_control_pairs": [
+      {
+        "reference_xy": [
+          7.868557929992676,
+          453.23687744140625
+        ],
+        "clean_xy": [
+          617.4659423828125,
+          785.297119140625
+        ]
+      },
+      {
+        "reference_xy": [
+          34.90792465209961,
+          17.66598892211914
+        ],
+        "clean_xy": [
+          398.17230224609375,
+          997.978759765625
+        ]
+      },
+      {
+        "reference_xy": [
+          67.16441345214844,
+          564.6215209960938
+        ],
+        "clean_xy": [
+          639.22900390625,
+          699.7333984375
+        ]
+      },
+      {
+        "reference_xy": [
+          98.07429504394531,
+          794.052490234375
+        ],
+        "clean_xy": [
+          731.87451171875,
+          565.9234008789062
+        ]
+      },
+      {
+        "reference_xy": [
+          123.68009185791016,
+          945.6024169921875
+        ],
+        "clean_xy": [
+          790.005859375,
+          475.20098876953125
+        ]
+      },
+      {
+        "reference_xy": [
+          148.32656860351562,
+          885.0048217773438
+        ],
+        "clean_xy": [
+          749.0276489257812,
+          495.0782165527344
+        ]
+      },
+      {
+        "reference_xy": [
+          172.70404052734375,
+          806.205810546875
+        ],
+        "clean_xy": [
+          698.6693115234375,
+          524.2405395507812
+        ]
+      },
+      {
+        "reference_xy": [
+          198.1718292236328,
+          475.09100341796875
+        ],
+        "clean_xy": [
+          529.1072387695312,
+          683.852783203125
+        ]
+      },
+      {
+        "reference_xy": [
+          245.3046112060547,
+          59.35813903808594
+        ],
+        "clean_xy": [
+          308.0879211425781,
+          877.7008056640625
+        ]
+      },
+      {
+        "reference_xy": [
+          272.3841247558594,
+          49.33939743041992
+        ],
+        "clean_xy": [
+          288.6356506347656,
+          869.5726928710938
+        ]
+      },
+      {
+        "reference_xy": [
+          299.3511047363281,
+          243.71458435058594
+        ],
+        "clean_xy": [
+          366.9850769042969,
+          756.331787109375
+        ]
+      },
+      {
+        "reference_xy": [
+          331.3740234375,
+          293.4980163574219
+        ],
+        "clean_xy": [
+          374.0048522949219,
+          715.153564453125
+        ]
+      },
+      {
+        "reference_xy": [
+          366.6306457519531,
+          1152.3826904296875
+        ],
+        "clean_xy": [
+          761.2659301757812,
+          252.95643615722656
+        ]
+      },
+      {
+        "reference_xy": [
+          399.79595947265625,
+          979.8013305664062
+        ],
+        "clean_xy": [
+          662.8679809570312,
+          326.47442626953125
+        ]
+      },
+      {
+        "reference_xy": [
+          417.9608459472656,
+          195.08444213867188
+        ],
+        "clean_xy": [
+          282.04095458984375,
+          724.5562744140625
+        ]
+      },
+      {
+        "reference_xy": [
+          447.3753356933594,
+          708.1397094726562
+        ],
+        "clean_xy": [
+          509.3446350097656,
+          445.8878479003906
+        ]
+      },
+      {
+        "reference_xy": [
+          480.68011474609375,
+          274.4754333496094
+        ],
+        "clean_xy": [
+          287.4126892089844,
+          654.6292724609375
+        ]
+      },
+      {
+        "reference_xy": [
+          508.1265563964844,
+          631.893798828125
+        ],
+        "clean_xy": [
+          441.74237060546875,
+          455.6227111816406
+        ]
+      },
+      {
+        "reference_xy": [
+          530.2177734375,
+          135.648681640625
+        ],
+        "clean_xy": [
+          195.8280487060547,
+          703.102294921875
+        ]
+      },
+      {
+        "reference_xy": [
+          565.9879760742188,
+          175.13381958007812
+        ],
+        "clean_xy": [
+          196.50369262695312,
+          665.8145141601562
+        ]
+      },
+      {
+        "reference_xy": [
+          604.6289672851562,
+          175.47731018066406
+        ],
+        "clean_xy": [
+          176.10189819335938,
+          646.7526245117188
+        ]
+      },
+      {
+        "reference_xy": [
+          645.0497436523438,
+          316.7792663574219
+        ],
+        "clean_xy": [
+          222.68991088867188,
+          555.2922973632812
+        ]
+      },
+      {
+        "reference_xy": [
+          685.072509765625,
+          203.32077026367188
+        ],
+        "clean_xy": [
+          147.62388610839844,
+          594.5875854492188
+        ]
+      },
+      {
+        "reference_xy": [
+          746.4639892578125,
+          616.1187133789062
+        ],
+        "clean_xy": [
+          310.9158020019531,
+          351.3128356933594
+        ]
+      }
+    ]
+  },
+  "training": {
+    "all_training_samples": 30704,
+    "examples": [
+      {
+        "counts": {
+          "path_boundary": 241,
+          "tree_location": 47,
+          "water_boundary": 0,
+          "water_location": 6
+        },
+        "id": "user-towers-mutiny",
+        "samples": 8501
+      },
+      {
+        "counts": {
+          "path_boundary": 635,
+          "tree_location": 68,
+          "water_boundary": 93,
+          "water_location": 0
+        },
+        "id": "user-gardens-lake",
+        "samples": 22203
+      }
+    ],
+    "folds": [
+      {
+        "always_boundary_f1": 0.3311739301138594,
+        "boundary_f1": 0.2609318996415771,
+        "boundary_precision": 0.21857485988791034,
+        "boundary_recall": 0.3236514522821577,
+        "confusion": [
+          [
+            4862,
+            1952
+          ],
+          [
+            1141,
+            546
+          ]
+        ],
+        "context_guard_excluded_samples": 0,
+        "held_out_id": "user-towers-mutiny",
+        "held_out_source_in_fitting": false,
+        "known_samples": 8501,
+        "minimum_training_distance_m": 86.90447938534498
+      },
+      {
+        "always_boundary_f1": 0.3350455550972967,
+        "boundary_f1": 0.1982984293193717,
+        "boundary_precision": 0.19340425531914893,
+        "boundary_recall": 0.20344673231871083,
+        "confusion": [
+          [
+            13944,
+            3791
+          ],
+          [
+            3559,
+            909
+          ]
+        ],
+        "context_guard_excluded_samples": 0,
+        "held_out_id": "user-gardens-lake",
+        "held_out_source_in_fitting": false,
+        "known_samples": 22203,
+        "minimum_training_distance_m": 86.90447938534498
+      }
+    ],
+    "general_accuracy_improvement_established": false,
+    "head_parameters_updated_l2": 28.355007446925775,
+    "model_sha256": "a15979219860d3101599484121c97e3684f31c9e52d278e4d9c06e9d5a88bfdf",
+    "no_water_polygon_invented_from_open_boundary": true,
+    "production_eligible": false,
+    "replaces_paving_model": false,
+    "same_park_examples": true,
+    "tree_overlap_policy_retained": true,
+    "version": "multi-user-boundary-v1",
+    "water_boundary_training": {
+      "example_ids": [
+        "user-gardens-lake"
+      ],
+      "head_parameters_updated_l2": 14.443389889450803,
+      "location_only_blue_points_used_as_shoreline_truth": false,
+      "model_sha256": "bb23dc4c6932e6c241aa5a1589898ab93c0127c5f853aa1b5fdc5580631c369c",
+      "training_samples": 3918,
+      "validation": "fitted_only_no_independent_water_boundary_test",
+      "water_boundary_points": 93
+    }
+  },
+  "resources": {
+    "gpu_used": false,
+    "peak_rss_mb": 506.46875,
+    "threads": 2,
+    "wall_seconds": 23.185478391998913
+  },
+  "capture_quality": {
+    "approx_export_ground_sampling_m_xy": [
+      0.47266165756578654,
+      0.47266165756578654
+    ],
+    "export_finer_than_reported_point_source": true,
+    "finest_reported_point_resolution_m": 0.5,
+    "genuine_resolution_upgrade_verified": false,
+    "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+    "limitations": [
+      "Export pixel spacing is not proof of independent optical detail.",
+      "Point metadata is not automatically valid across an entire mosaic.",
+      "Capture date/resolution observations do not verify physical registration."
+    ],
+    "native_export_dimensions": [
+      1024,
+      1024
+    ],
+    "point_observations": [
+      {
+        "description": "WV02",
+        "point_capture_date": "2023-05-27",
+        "point_resolution_m": 0.5,
+        "source": "Vantor"
+      },
+      {
+        "description": "TerraColor NextGen",
+        "point_capture_date": null,
+        "point_resolution_m": 15.0,
+        "source": "Earthstar Geographics"
+      }
+    ],
+    "version": "imagery-capture-quality-v1",
+    "whole_image_capture_date_verified": false,
+    "whole_image_intrinsic_resolution_verified": false
+  },
+  "baseline_rgb_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "world_blocks_generated": 0,
+  "windows_exe_built": false,
+  "tree_overlap_policy_retained": true,
+  "annotated_reference_used_as_model_features": false,
+  "browser": {
+    "valid_view_combinations": 9,
+    "reference_frame_dimensions_preserved": true,
+    "errors": []
+  },
+  "portable_path_and_water_checkpoints_reproduce_exactly": true
+}

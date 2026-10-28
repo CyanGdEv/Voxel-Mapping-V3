@@ -1,5 +1,8 @@
 # User path boundaries, trees and pond guidance
 
+The subsequent [garden and shoreline training experiment](user-garden-boundary-training.md)
+adds a second user image, whole-image holdouts and a separate shoreline detector.
+
 The user's annotated Towers Street / Mutiny Bay image is retained unchanged.
 Its legend is red for projected path boundary points, green for tree locations,
 and blue for the pond. The importer recovers **241 red, 47 green and 6 blue

@@ -54,6 +54,7 @@ on:
       - 'voxel_mapper/user_path_supervision.py'
       - 'voxel_mapper/data/user-boundary-*.json'
       - 'voxel_mapper/data/user-towers-mutiny-markers.json'
+      - 'voxel_mapper/data/user-gardens-*.json'
       - 'tests/test_user_path_supervision.py'
       - 'voxel_mapper/data/towers-paving-correction.json'
       - 'tests/test_paving_correction_benchmark.py'
