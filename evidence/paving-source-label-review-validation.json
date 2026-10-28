@@ -1,0 +1,115 @@
+{
+  "version": "paving-source-label-review-validation-v1",
+  "date_utc": "2026-10-28",
+  "dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+  "crops": 4,
+  "traces": 85,
+  "tests": {
+    "passed": 83,
+    "log_sha256": "8319a1a58f5efd6f80c0f9010c4e0abf7c3f23c6993fa1d0980368942ec7e689"
+  },
+  "browser_checks": {
+    "initial": {
+      "areas": 4,
+      "traces": 85,
+      "progress": "0 / 85 outlines have decisions. Changes remain local until downloaded.",
+      "source": true
+    },
+    "exportBlocked": true,
+    "unknown": true,
+    "undo": true,
+    "keep": true,
+    "incompleteBlocked": true,
+    "invalidEdit": true,
+    "edit": true,
+    "draw": true,
+    "switch": true,
+    "export": true,
+    "exceptions": []
+  },
+  "synthetic_only_import_check": {
+    "changes": [
+      {
+        "changed_pixels": 76601,
+        "class_flips": 0,
+        "id": "towers-plaza",
+        "labelled_to_unknown_pixels": 76601,
+        "unknown_to_labelled_pixels": 0
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "id": "wicker-entrance",
+        "labelled_to_unknown_pixels": 0,
+        "unknown_to_labelled_pixels": 0
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "id": "chessington-gardens",
+        "labelled_to_unknown_pixels": 0,
+        "unknown_to_labelled_pixels": 0
+      },
+      {
+        "changed_pixels": 0,
+        "class_flips": 0,
+        "id": "drayton-mainstreet",
+        "labelled_to_unknown_pixels": 0,
+        "unknown_to_labelled_pixels": 0
+      }
+    ],
+    "dataset_id": "58143d204e8fb40b989a24add9e4bc6b74105a5c4c25740f7d706b1e6bffd349",
+    "human_labels_verified": false,
+    "parent_dataset_id": "6776b0f425d300520701c3f25dc245339cd268d21a6862481c1e2214698830bd",
+    "production_eligible": false,
+    "review_file_sha256": "fceec22cf2231a13b033cd7d21b5fbd3dda993668a99a207a5e69372d886fc76",
+    "review_identity_independently_verified": false,
+    "reviewer_attested": "SYNTHETIC BROWSER TEST \u2014 not an independent reviewer",
+    "source_pixels_unchanged": true,
+    "training_run": false,
+    "version": "paving-label-review-v1"
+  },
+  "source_search": {
+    "date_utc": "2026-10-28",
+    "queries": [
+      {
+        "crop": "towers-plaza",
+        "request_url": "https://environment.data.gov.uk/spatialdata/survey-index-files/wfs?service=WFS&request=GetFeature&version=2.0.0&typeNames=dataset-9f0fa3fc-a860-4729-adc9-47fe53f658d0%3AVertical_photography_index_catalogue&outputFormat=application%2Fjson&srsName=EPSG%3A27700&bbox=407273.4185120437%2C343588.29441235325%2C407355.84411669086%2C343743.334959833%2CEPSG%3A27700&count=100",
+        "features": [],
+        "status": "index_only_not_downloaded"
+      },
+      {
+        "crop": "wicker-entrance",
+        "request_url": "https://environment.data.gov.uk/spatialdata/survey-index-files/wfs?service=WFS&request=GetFeature&version=2.0.0&typeNames=dataset-9f0fa3fc-a860-4729-adc9-47fe53f658d0%3AVertical_photography_index_catalogue&outputFormat=application%2Fjson&srsName=EPSG%3A27700&bbox=407466.9941897245%2C343567.43243835575%2C407528.9095282943%2C343624.6936447095%2CEPSG%3A27700&count=100",
+        "features": [],
+        "status": "index_only_not_downloaded"
+      },
+      {
+        "crop": "chessington-gardens",
+        "request_url": "https://environment.data.gov.uk/spatialdata/survey-index-files/wfs?service=WFS&request=GetFeature&version=2.0.0&typeNames=dataset-9f0fa3fc-a860-4729-adc9-47fe53f658d0%3AVertical_photography_index_catalogue&outputFormat=application%2Fjson&srsName=EPSG%3A27700&bbox=517070.7235638718%2C162526.4321724954%2C517234.23688137275%2C162711.84293456946%2CEPSG%3A27700&count=100",
+        "features": [],
+        "status": "index_only_not_downloaded"
+      },
+      {
+        "crop": "drayton-mainstreet",
+        "request_url": "https://environment.data.gov.uk/spatialdata/survey-index-files/wfs?service=WFS&request=GetFeature&version=2.0.0&typeNames=dataset-9f0fa3fc-a860-4729-adc9-47fe53f658d0%3AVertical_photography_index_catalogue&outputFormat=application%2Fjson&srsName=EPSG%3A27700&bbox=419467.5135157088%2C301378.00736041507%2C419578.8684489685%2C301637.7009456542%2CEPSG%3A27700&count=100",
+        "features": [],
+        "status": "index_only_not_downloaded"
+      }
+    ],
+    "commercial_candidate": {
+      "url": "https://bluesky-world.com/aerial-photography/",
+      "advertised_national_resolution_m": 0.125,
+      "local_date_coverage_licence_unverified": true,
+      "purchased": false
+    },
+    "finer_current_pixels_acquired": false
+  },
+  "independent_reviews_received": 0,
+  "human_labels_verified": false,
+  "finer_current_imagery_acquired": false,
+  "training_run": false,
+  "windows_exe_built": false,
+  "world_blocks_generated": 0,
+  "reserved_paultons_excluded": true
+}

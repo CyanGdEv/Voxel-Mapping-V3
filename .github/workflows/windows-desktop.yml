@@ -48,6 +48,9 @@ on:
       - 'voxel_mapper/aerial_semantic_network.py'
       - 'voxel_mapper/aerial_semantic_comparison.py'
       - 'voxel_mapper/paving_masks.py'
+      - 'voxel_mapper/paving_label_review.py'
+      - 'voxel_mapper/paving_label_review.html'
+      - 'tests/test_paving_label_review.py'
       - 'voxel_mapper/paving_binary_learning.py'
       - 'voxel_mapper/paving_spatial_transfer.py'
       - 'voxel_mapper/imagery_capture_quality.py'
@@ -288,6 +291,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'RGB aerial semantic learning checks failed' }
           python -m unittest discover -s tests -p 'test_paving_masks.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Source-pinned binary paving mask checks failed' }
+          python -m unittest discover -s tests -p 'test_paving_label_review.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Source-only polygon review checks failed' }
           python -m unittest discover -s tests -p 'test_paving_binary_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'RGB and context binary paving training checks failed' }
           python -m unittest discover -s tests -p 'test_paving_spatial_transfer.py' -v
