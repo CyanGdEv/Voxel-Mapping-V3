@@ -60,6 +60,11 @@ on:
       - 'voxel_mapper/data/user-towers-mutiny-markers.json'
       - 'voxel_mapper/data/user-gardens-*.json'
       - 'voxel_mapper/data/user-chessington-*.json'
+      - 'voxel_mapper/layered_surface_*.py'
+      - 'voxel_mapper/aerial_surface_encoder.py'
+      - 'voxel_mapper/data/layered-surface-*.json'
+      - 'scripts/train_layered_surfaces.py'
+      - 'tests/test_layered_surface_learning.py'
       - 'tests/test_user_path_supervision.py'
       - 'voxel_mapper/data/towers-paving-correction.json'
       - 'tests/test_paving_correction_benchmark.py'
@@ -312,6 +317,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'User boundary supervision and under-canopy path checks failed' }
           python -m unittest discover -s tests -p 'test_connected_surfaces.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'Connected surface masks and optional spatial CNN checks failed' }
+          python -m unittest discover -s tests -p 'test_layered_surface_learning.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Layered surface targets and optional CPU learning checks failed' }
           python -m unittest discover -s tests -p 'test_paving_binary_learning.py' -v
           if ($LASTEXITCODE -ne 0) { throw 'RGB and context binary paving training checks failed' }
           python -m unittest discover -s tests -p 'test_paving_spatial_transfer.py' -v

@@ -1,0 +1,3098 @@
+{
+  "version": "layered-surface-validation-v1",
+  "dataset": {
+    "canopy_labels": {
+      "tree_canopy": 1,
+      "unknown": 255,
+      "visible_non_canopy": 0
+    },
+    "ground_labels": {
+      "building_structure": 1,
+      "grass_island": 2,
+      "paving": 0,
+      "unknown": 255,
+      "water": 3
+    },
+    "hidden_ground_used_as_observed_truth": false,
+    "id": "7b1868bfbd0d80c627dc77bffb6ad90f3cf3076237df54120516f5d21ec2f32a",
+    "independent_human_review": false,
+    "production_eligible": false,
+    "recipe_sha256": "7ffea1c8c738b08024c793fc5d04a5dd5f1581cfa60e819b13fc707c0040feb2",
+    "records": [
+      {
+        "canopy_counts": {
+          "tree_canopy": 8654,
+          "unknown": 584942,
+          "visible_non_canopy": 61764
+        },
+        "canopy_file": "user-towers-mutiny/canopy.png",
+        "canopy_sha256": "cee1d83b20bdbba4b385744b781cf6d78b6c7352b05ec0ce1653ef0488985468",
+        "dense_windows_file": "user-towers-mutiny/dense_windows.png",
+        "dense_windows_sha256": "feb39fb3db6a059df5db0042e69574fd623f4d09ff70e09edcb25a4f72bea084",
+        "ground_counts": {
+          "building_structure": 17021,
+          "grass_island": 9317,
+          "paving": 34191,
+          "unknown": 593596,
+          "water": 1235
+        },
+        "ground_file": "user-towers-mutiny/ground.png",
+        "ground_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+        "id": "user-towers-mutiny",
+        "image_file": "user-towers-mutiny/clean.bin",
+        "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+        "inferred_file": "user-towers-mutiny/inferred.png",
+        "inferred_sha256": "890a4917dd42f39e1ffaeb54098c4946e5c407a8401c994e076817b5fea00da2",
+        "receipt_file": "user-towers-mutiny/receipt.json",
+        "receipt_sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+        "site_id": "alton-towers",
+        "source_original_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a"
+      },
+      {
+        "canopy_counts": {
+          "tree_canopy": 4861,
+          "unknown": 975429,
+          "visible_non_canopy": 68286
+        },
+        "canopy_file": "user-gardens-lake/canopy.png",
+        "canopy_sha256": "c165e1120fb515cfe6a7a2b3ab007591324c67610d7d873d4000a39aee95a2cc",
+        "dense_windows_file": "user-gardens-lake/dense_windows.png",
+        "dense_windows_sha256": "1633b93213ffc5d2bf436f77eef294cb16c9ec922ac13e6d6df1fbaf05df6262",
+        "ground_counts": {
+          "building_structure": 3770,
+          "grass_island": 12035,
+          "paving": 26803,
+          "unknown": 980290,
+          "water": 25678
+        },
+        "ground_file": "user-gardens-lake/ground.png",
+        "ground_sha256": "2404e038a5eeb8adedd225e78e9c610f15e462dfe0e86f8c1156db430f84ef5c",
+        "id": "user-gardens-lake",
+        "image_file": "user-gardens-lake/clean.bin",
+        "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+        "inferred_file": "user-gardens-lake/inferred.png",
+        "inferred_sha256": "c8a5a0f2e4a8a510b956d05826c5ea0fd1217ad23dda3a0511524ef781fc54a4",
+        "receipt_file": "user-gardens-lake/receipt.json",
+        "receipt_sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+        "site_id": "alton-towers",
+        "source_original_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219"
+      },
+      {
+        "canopy_counts": {
+          "tree_canopy": 8435,
+          "unknown": 965493,
+          "visible_non_canopy": 74648
+        },
+        "canopy_file": "user-chessington-courtyard/canopy.png",
+        "canopy_sha256": "8b52e8f986d5d659cdd7bffa9662ee4a500dae50f12b6f753d62c2c4d7f9742c",
+        "dense_windows_file": "user-chessington-courtyard/dense_windows.png",
+        "dense_windows_sha256": "0d6488a1a569bfd5ff771ad3ea9f35749aa435f694dc11c8aa66dda9f98375ac",
+        "ground_counts": {
+          "building_structure": 25734,
+          "grass_island": 0,
+          "paving": 48914,
+          "unknown": 973928,
+          "water": 0
+        },
+        "ground_file": "user-chessington-courtyard/ground.png",
+        "ground_sha256": "9c0c68eca4ebbf319aedf0972f125e8c49c49e9ad2474af7b9246faf2e87c9ad",
+        "id": "user-chessington-courtyard",
+        "image_file": "user-chessington-courtyard/clean.bin",
+        "image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+        "inferred_file": "user-chessington-courtyard/inferred.png",
+        "inferred_sha256": "f2b17e30ac24343ddf3e171f22d76866544f367ef61e20791c2e5a7b37e4512e",
+        "receipt_file": "user-chessington-courtyard/receipt.json",
+        "receipt_sha256": "6ffc41a90957431499ccf33066607f60c075c1d31456f74d765e9682f835609a",
+        "site_id": "chessington",
+        "source_original_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995"
+      }
+    ],
+    "source_dataset_id": "e2d9f41351aa47529e3c6cf503111a952ac0e0860a8867c18f4de66626153299",
+    "version": "layered-surface-benchmark-v1"
+  },
+  "diagnostic": {
+    "balanced": {
+      "fitted_training_tile_score": {
+        "canopy": {
+          "abstentions_on_known_pixels": 0,
+          "boundaries": {
+            "classes": [
+              {
+                "class": 0,
+                "f1": null,
+                "true_boundary_pixels": 0
+              },
+              {
+                "class": 1,
+                "f1": null,
+                "true_boundary_pixels": 0
+              }
+            ],
+            "evaluation_support_pixels": 4111,
+            "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+            "tolerance_clean_pixels": 2
+          },
+          "classes": [
+            {
+              "class": 0,
+              "iou": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 6097
+            },
+            {
+              "class": 1,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            }
+          ],
+          "confusion_with_abstain_column": [
+            [
+              6097,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "known_pixels": 6097,
+          "present_target_macro_iou": 1.0
+        },
+        "ground": {
+          "abstentions_on_known_pixels": 0,
+          "boundaries": {
+            "classes": [
+              {
+                "class": 0,
+                "f1": 0.41945288753799387,
+                "precision": 0.38764044943820225,
+                "predicted_boundary_pixels": 178,
+                "recall": 0.45695364238410596,
+                "true_boundary_pixels": 151
+              },
+              {
+                "class": 1,
+                "f1": 0.4507637309067273,
+                "precision": 0.4222222222222222,
+                "predicted_boundary_pixels": 180,
+                "recall": 0.48344370860927155,
+                "true_boundary_pixels": 151
+              },
+              {
+                "class": 2,
+                "f1": null,
+                "true_boundary_pixels": 0
+              },
+              {
+                "class": 3,
+                "f1": null,
+                "true_boundary_pixels": 0
+              }
+            ],
+            "evaluation_support_pixels": 4111,
+            "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+            "tolerance_clean_pixels": 2
+          },
+          "classes": [
+            {
+              "class": 0,
+              "iou": 0.6755050505050505,
+              "precision": 0.856,
+              "recall": 0.7621082621082621,
+              "support": 2808
+            },
+            {
+              "class": 1,
+              "iou": 0.7402072276977508,
+              "precision": 0.8142896858493188,
+              "recall": 0.8905442383703254,
+              "support": 3289
+            },
+            {
+              "class": 2,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            },
+            {
+              "class": 3,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            }
+          ],
+          "confusion_with_abstain_column": [
+            [
+              2140,
+              668,
+              0,
+              0,
+              0
+            ],
+            [
+              360,
+              2929,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "known_pixels": 6097,
+          "present_target_macro_iou": 0.7078561391014007
+        },
+        "paving_on_known_roof_pixels": 360,
+        "paving_on_known_water_pixels": 0,
+        "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+      },
+      "training": {
+        "balanced": true,
+        "canopy_counts": [
+          6097,
+          0
+        ],
+        "canopy_weights": [
+          1.0,
+          0.0
+        ],
+        "ground_counts": [
+          2808,
+          3289,
+          0,
+          0
+        ],
+        "ground_weights": [
+          1.039507269859314,
+          0.9604928493499756,
+          0.0,
+          0.0
+        ],
+        "history": [
+          {
+            "canopy_loss": 1.0148359537124634,
+            "ground_loss": 1.7877862453460693,
+            "loss": 2.2952041625976562,
+            "step": 1
+          },
+          {
+            "canopy_loss": 6.12840085523203e-05,
+            "ground_loss": 0.9429465532302856,
+            "loss": 0.9429771900177002,
+            "step": 50
+          },
+          {
+            "canopy_loss": 0.0008231318206526339,
+            "ground_loss": 0.7662702798843384,
+            "loss": 0.7666818499565125,
+            "step": 100
+          },
+          {
+            "canopy_loss": 0.0001195683580590412,
+            "ground_loss": 0.7505334615707397,
+            "loss": 0.7505932450294495,
+            "step": 150
+          },
+          {
+            "canopy_loss": 6.267971184570342e-05,
+            "ground_loss": 0.6722561717033386,
+            "loss": 0.6722875237464905,
+            "step": 200
+          },
+          {
+            "canopy_loss": 7.724876923020929e-05,
+            "ground_loss": 0.6688152551651001,
+            "loss": 0.6688538789749146,
+            "step": 250
+          },
+          {
+            "canopy_loss": 0.0001099987857742235,
+            "ground_loss": 0.6023803949356079,
+            "loss": 0.6024354100227356,
+            "step": 300
+          },
+          {
+            "canopy_loss": 4.512075611273758e-05,
+            "ground_loss": 0.5998157858848572,
+            "loss": 0.599838376045227,
+            "step": 350
+          },
+          {
+            "canopy_loss": 4.9758928071241826e-05,
+            "ground_loss": 0.5429118871688843,
+            "loss": 0.5429367423057556,
+            "step": 400
+          },
+          {
+            "canopy_loss": 0.00021781559917144477,
+            "ground_loss": 0.5601752400398254,
+            "loss": 0.5602841377258301,
+            "step": 450
+          },
+          {
+            "canopy_loss": 7.374522101599723e-05,
+            "ground_loss": 0.5072324275970459,
+            "loss": 0.5072693228721619,
+            "step": 500
+          },
+          {
+            "canopy_loss": 6.438689888454974e-05,
+            "ground_loss": 0.47242820262908936,
+            "loss": 0.47246038913726807,
+            "step": 550
+          },
+          {
+            "canopy_loss": 2.9633174563059583e-05,
+            "ground_loss": 0.478843629360199,
+            "loss": 0.47885844111442566,
+            "step": 600
+          }
+        ],
+        "parameter_change_l2": 7.996632284551697,
+        "parameter_count": 16646,
+        "settings": {
+          "batch": 4,
+          "boundary_weight": 2.0,
+          "canopy_weight": 0.5,
+          "dice_weight": 0.5,
+          "learning_rate": 0.002,
+          "patch": 96,
+          "seed": 137,
+          "steps": 600,
+          "threads": 2
+        }
+      }
+    },
+    "native_crop_xyxy": [
+      660,
+      430,
+      756,
+      526
+    ],
+    "scope": "One fixed 96-pixel Chessington roof/paving training tile; memorisation diagnostic only, not validation",
+    "seconds": 115.51907920298981,
+    "unbalanced": {
+      "fitted_training_tile_score": {
+        "canopy": {
+          "abstentions_on_known_pixels": 0,
+          "boundaries": {
+            "classes": [
+              {
+                "class": 0,
+                "f1": null,
+                "true_boundary_pixels": 0
+              },
+              {
+                "class": 1,
+                "f1": null,
+                "true_boundary_pixels": 0
+              }
+            ],
+            "evaluation_support_pixels": 4111,
+            "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+            "tolerance_clean_pixels": 2
+          },
+          "classes": [
+            {
+              "class": 0,
+              "iou": 1.0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "support": 6097
+            },
+            {
+              "class": 1,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            }
+          ],
+          "confusion_with_abstain_column": [
+            [
+              6097,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "known_pixels": 6097,
+          "present_target_macro_iou": 1.0
+        },
+        "ground": {
+          "abstentions_on_known_pixels": 0,
+          "boundaries": {
+            "classes": [
+              {
+                "class": 0,
+                "f1": 0.4532967032967033,
+                "precision": 0.6,
+                "predicted_boundary_pixels": 90,
+                "recall": 0.36423841059602646,
+                "true_boundary_pixels": 151
+              },
+              {
+                "class": 1,
+                "f1": 0.43897407687547274,
+                "precision": 0.5377358490566038,
+                "predicted_boundary_pixels": 106,
+                "recall": 0.3708609271523179,
+                "true_boundary_pixels": 151
+              },
+              {
+                "class": 2,
+                "f1": null,
+                "true_boundary_pixels": 0
+              },
+              {
+                "class": 3,
+                "f1": null,
+                "true_boundary_pixels": 0
+              }
+            ],
+            "evaluation_support_pixels": 4111,
+            "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+            "tolerance_clean_pixels": 2
+          },
+          "classes": [
+            {
+              "class": 0,
+              "iou": 0.6917830464436505,
+              "precision": 0.8871303623490212,
+              "recall": 0.7585470085470085,
+              "support": 2808
+            },
+            {
+              "class": 1,
+              "iou": 0.7607764053440887,
+              "precision": 0.8165584415584416,
+              "recall": 0.9176041349954394,
+              "support": 3289
+            },
+            {
+              "class": 2,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            },
+            {
+              "class": 3,
+              "iou": null,
+              "precision": 0.0,
+              "recall": null,
+              "support": 0
+            }
+          ],
+          "confusion_with_abstain_column": [
+            [
+              2130,
+              678,
+              0,
+              0,
+              0
+            ],
+            [
+              271,
+              3018,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "known_pixels": 6097,
+          "present_target_macro_iou": 0.7262797258938696
+        },
+        "paving_on_known_roof_pixels": 271,
+        "paving_on_known_water_pixels": 0,
+        "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+      },
+      "training": {
+        "balanced": false,
+        "canopy_counts": [
+          6097,
+          0
+        ],
+        "canopy_weights": [
+          1.0,
+          0.0
+        ],
+        "ground_counts": [
+          2808,
+          3289,
+          0,
+          0
+        ],
+        "ground_weights": [
+          1.039507269859314,
+          0.9604928493499756,
+          0.0,
+          0.0
+        ],
+        "history": [
+          {
+            "canopy_loss": 0.8205000758171082,
+            "ground_loss": 1.4554362297058105,
+            "loss": 1.865686297416687,
+            "step": 1
+          },
+          {
+            "canopy_loss": 5.150619472260587e-05,
+            "ground_loss": 0.6779381036758423,
+            "loss": 0.6779638528823853,
+            "step": 50
+          },
+          {
+            "canopy_loss": 0.0007103688549250364,
+            "ground_loss": 0.5241150259971619,
+            "loss": 0.5244702100753784,
+            "step": 100
+          },
+          {
+            "canopy_loss": 0.0002543616865295917,
+            "ground_loss": 0.5210677981376648,
+            "loss": 0.5211949944496155,
+            "step": 150
+          },
+          {
+            "canopy_loss": 0.00021635204029735178,
+            "ground_loss": 0.4825935661792755,
+            "loss": 0.48270174860954285,
+            "step": 200
+          },
+          {
+            "canopy_loss": 0.0002194884291384369,
+            "ground_loss": 0.4596259891986847,
+            "loss": 0.4597357213497162,
+            "step": 250
+          },
+          {
+            "canopy_loss": 6.0190017393324524e-05,
+            "ground_loss": 0.4041750133037567,
+            "loss": 0.4042051136493683,
+            "step": 300
+          },
+          {
+            "canopy_loss": 2.9372024073381908e-05,
+            "ground_loss": 0.376503050327301,
+            "loss": 0.37651774287223816,
+            "step": 350
+          },
+          {
+            "canopy_loss": 2.2876027287566103e-05,
+            "ground_loss": 0.36810868978500366,
+            "loss": 0.36812013387680054,
+            "step": 400
+          },
+          {
+            "canopy_loss": 7.434698636643589e-05,
+            "ground_loss": 0.4019149839878082,
+            "loss": 0.4019521474838257,
+            "step": 450
+          },
+          {
+            "canopy_loss": 4.466612881515175e-05,
+            "ground_loss": 0.36323031783103943,
+            "loss": 0.3632526397705078,
+            "step": 500
+          },
+          {
+            "canopy_loss": 3.6498917324934155e-05,
+            "ground_loss": 0.3898078203201294,
+            "loss": 0.38982605934143066,
+            "step": 550
+          },
+          {
+            "canopy_loss": 1.92450297618052e-05,
+            "ground_loss": 0.32529428601264954,
+            "loss": 0.32530391216278076,
+            "step": 600
+          }
+        ],
+        "parameter_change_l2": 8.66316611559586,
+        "parameter_count": 16646,
+        "settings": {
+          "batch": 4,
+          "boundary_weight": 2.0,
+          "canopy_weight": 0.5,
+          "dice_weight": 0.5,
+          "learning_rate": 0.002,
+          "patch": 96,
+          "seed": 137,
+          "steps": 600,
+          "threads": 2
+        }
+      }
+    }
+  },
+  "comparison": {
+    "dataset_id": "7b1868bfbd0d80c627dc77bffb6ad90f3cf3076237df54120516f5d21ec2f32a",
+    "encoder_updated": false,
+    "fitted_previews_are_not_validation": true,
+    "folds": [
+      {
+        "held_out_id": "user-towers-mutiny",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 497,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 6
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 482,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 8
+                }
+              ],
+              "evaluation_support_pixels": 54357,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9008122623503825,
+                "precision": 0.9126817568580423,
+                "recall": 0.9857684087818146,
+                "support": 61764
+              },
+              {
+                "class": 1,
+                "iou": 0.2967586279240533,
+                "precision": 0.7629449838187702,
+                "recall": 0.3269008550959094,
+                "support": 8654
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                60885,
+                879,
+                0
+              ],
+              [
+                5825,
+                2829,
+                0
+              ]
+            ],
+            "known_pixels": 70418,
+            "present_target_macro_iou": 0.5987854451372179
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.06489675516224189,
+                  "precision": 0.05858854860186418,
+                  "predicted_boundary_pixels": 751,
+                  "recall": 0.07272727272727272,
+                  "true_boundary_pixels": 605
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 709,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 247
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 268
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 112
+                }
+              ],
+              "evaluation_support_pixels": 47246,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.5876697467359994,
+                "precision": 0.6198188956183788,
+                "recall": 0.9188967857038401,
+                "support": 34191
+              },
+              {
+                "class": 1,
+                "iou": 0.03740353727430491,
+                "precision": 0.09146726862302483,
+                "recall": 0.059514717114153105,
+                "support": 17021
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 9317
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 1235
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                31418,
+                2773,
+                0,
+                0,
+                0
+              ],
+              [
+                16008,
+                1013,
+                0,
+                0,
+                0
+              ],
+              [
+                2331,
+                6986,
+                0,
+                0,
+                0
+              ],
+              [
+                932,
+                303,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 61764,
+            "present_target_macro_iou": 0.15626832100257607
+          },
+          "narrow_labelled_interior_strip_recall": 0.940552572999869,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": false
+              },
+              {
+                "id": "component-9",
+                "passed": true
+              },
+              {
+                "id": "component-13",
+                "passed": false
+              }
+            ],
+            "recall": 0.3333333333333333,
+            "recalled_pairs": 1,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 16008,
+          "paving_on_known_water_pixels": 932,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "held_out_id": "user-gardens-lake",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.019348597226701066,
+                  "precision": 0.010183299389002037,
+                  "predicted_boundary_pixels": 491,
+                  "recall": 0.1935483870967742,
+                  "true_boundary_pixels": 31
+                },
+                {
+                  "class": 1,
+                  "f1": 0.019430051813471502,
+                  "precision": 0.010245901639344262,
+                  "predicted_boundary_pixels": 488,
+                  "recall": 0.1875,
+                  "true_boundary_pixels": 32
+                }
+              ],
+              "evaluation_support_pixels": 52886,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.5378775097013666,
+                "precision": 0.9309388231858665,
+                "recall": 0.5602319655566295,
+                "support": 68286
+              },
+              {
+                "class": 1,
+                "iou": 0.05798056805479923,
+                "precision": 0.06311421707796462,
+                "recall": 0.41616951244599876,
+                "support": 4861
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                38256,
+                30030,
+                0
+              ],
+              [
+                2838,
+                2023,
+                0
+              ]
+            ],
+            "known_pixels": 73147,
+            "present_target_macro_iou": 0.2979290388780829
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.07462686567164178,
+                  "precision": 0.06109979633401222,
+                  "predicted_boundary_pixels": 491,
+                  "recall": 0.09584664536741214,
+                  "true_boundary_pixels": 313
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 305
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 49138,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.30532002307732653,
+                "precision": 0.3648976180526536,
+                "recall": 0.6515688542327351,
+                "support": 26803
+              },
+              {
+                "class": 1,
+                "iou": 0.015870350155344697,
+                "precision": 0.018505825908156272,
+                "recall": 0.10026525198938992,
+                "support": 3770
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 12035
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 25678
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                17464,
+                9339,
+                0,
+                0,
+                0
+              ],
+              [
+                3392,
+                378,
+                0,
+                0,
+                0
+              ],
+              [
+                1469,
+                10566,
+                0,
+                0,
+                0
+              ],
+              [
+                25535,
+                143,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 68286,
+            "present_target_macro_iou": 0.08029759330816781
+          },
+          "narrow_labelled_interior_strip_recall": 0.47468619246861926,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-33",
+                "passed": true
+              },
+              {
+                "id": "component-28",
+                "passed": false
+              },
+              {
+                "id": "component-20",
+                "passed": false
+              }
+            ],
+            "recall": 0.3333333333333333,
+            "recalled_pairs": 1,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 3392,
+          "paving_on_known_water_pixels": 25535,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "held_out_id": "user-towers-mutiny",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 577,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 6
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 600,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 8
+                }
+              ],
+              "evaluation_support_pixels": 54357,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.887736971401202,
+                "precision": 0.951022907838983,
+                "recall": 0.9302668220970144,
+                "support": 61764
+              },
+              {
+                "class": 1,
+                "iou": 0.4393951084021295,
+                "precision": 0.5693861227754449,
+                "recall": 0.6580771897388491,
+                "support": 8654
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                57457,
+                4307,
+                0
+              ],
+              [
+                2959,
+                5695,
+                0
+              ]
+            ],
+            "known_pixels": 70418,
+            "present_target_macro_iou": 0.6635660399016657
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.06521739130434782,
+                  "precision": 0.05806451612903226,
+                  "predicted_boundary_pixels": 775,
+                  "recall": 0.0743801652892562,
+                  "true_boundary_pixels": 605
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 723,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 247
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 268
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 112
+                }
+              ],
+              "evaluation_support_pixels": 47246,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.5875365908579149,
+                "precision": 0.621102118543204,
+                "recall": 0.9157673071861016,
+                "support": 34191
+              },
+              {
+                "class": 1,
+                "iou": 0.038847393087287636,
+                "precision": 0.09346370683579985,
+                "recall": 0.06233476293989777,
+                "support": 17021
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 9317
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 1235
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                31311,
+                2880,
+                0,
+                0,
+                0
+              ],
+              [
+                15960,
+                1061,
+                0,
+                0,
+                0
+              ],
+              [
+                2222,
+                7095,
+                0,
+                0,
+                0
+              ],
+              [
+                919,
+                316,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 61764,
+            "present_target_macro_iou": 0.15659599598630064
+          },
+          "narrow_labelled_interior_strip_recall": 0.9384575094932566,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": false
+              },
+              {
+                "id": "component-9",
+                "passed": true
+              },
+              {
+                "id": "component-13",
+                "passed": false
+              }
+            ],
+            "recall": 0.3333333333333333,
+            "recalled_pairs": 1,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 15960,
+          "paving_on_known_water_pixels": 919,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "rgb_balanced"
+      },
+      {
+        "held_out_id": "user-gardens-lake",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.024006859102600746,
+                  "precision": 0.012797074954296161,
+                  "predicted_boundary_pixels": 547,
+                  "recall": 0.1935483870967742,
+                  "true_boundary_pixels": 31
+                },
+                {
+                  "class": 1,
+                  "f1": 0.03098106712564544,
+                  "precision": 0.01651376146788991,
+                  "predicted_boundary_pixels": 545,
+                  "recall": 0.25,
+                  "true_boundary_pixels": 32
+                }
+              ],
+              "evaluation_support_pixels": 52886,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.4346579330422125,
+                "precision": 0.9863253509496284,
+                "recall": 0.4372931494010485,
+                "support": 68286
+              },
+              {
+                "class": 1,
+                "iou": 0.10273529547659752,
+                "precision": 0.1037273745101698,
+                "recall": 0.914832339024892,
+                "support": 4861
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                29861,
+                38425,
+                0
+              ],
+              [
+                414,
+                4447,
+                0
+              ]
+            ],
+            "known_pixels": 73147,
+            "present_target_macro_iou": 0.268696614259405
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.10876132930513595,
+                  "precision": 0.10315186246418338,
+                  "predicted_boundary_pixels": 349,
+                  "recall": 0.11501597444089456,
+                  "true_boundary_pixels": 313
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 305
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 49138,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.5396767690121295,
+                "precision": 0.8254056513167871,
+                "recall": 0.6092228481886356,
+                "support": 26803
+              },
+              {
+                "class": 1,
+                "iou": 0.009014399876462185,
+                "precision": 0.00962827041626291,
+                "recall": 0.12387267904509283,
+                "support": 3770
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 12035
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 25678
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                16329,
+                10474,
+                0,
+                0,
+                0
+              ],
+              [
+                3303,
+                467,
+                0,
+                0,
+                0
+              ],
+              [
+                151,
+                11884,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                25678,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 68286,
+            "present_target_macro_iou": 0.1371727922221479
+          },
+          "narrow_labelled_interior_strip_recall": 0.41914225941422595,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-33",
+                "passed": true
+              },
+              {
+                "id": "component-28",
+                "passed": false
+              },
+              {
+                "id": "component-20",
+                "passed": false
+              }
+            ],
+            "recall": 0.3333333333333333,
+            "recalled_pairs": 1,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 3303,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "rgb_balanced"
+      },
+      {
+        "held_out_id": "user-towers-mutiny",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 1040,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 6
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 1000,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 8
+                }
+              ],
+              "evaluation_support_pixels": 54357,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.8189462222491077,
+                "precision": 0.9254853705222861,
+                "recall": 0.8767566867430866,
+                "support": 61764
+              },
+              {
+                "class": 1,
+                "iou": 0.2639862289438092,
+                "precision": 0.36065849151688223,
+                "recall": 0.49618673445805406,
+                "support": 8654
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                54152,
+                7612,
+                0
+              ],
+              [
+                4360,
+                4294,
+                0
+              ]
+            ],
+            "known_pixels": 70418,
+            "present_target_macro_iou": 0.5414662255964584
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.1244017870162926,
+                  "precision": 0.13682092555331993,
+                  "predicted_boundary_pixels": 497,
+                  "recall": 0.1140495867768595,
+                  "true_boundary_pixels": 605
+                },
+                {
+                  "class": 1,
+                  "f1": 0.20988432511627117,
+                  "precision": 0.15524193548387097,
+                  "predicted_boundary_pixels": 496,
+                  "recall": 0.32388663967611336,
+                  "true_boundary_pixels": 247
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 268
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 112
+                }
+              ],
+              "evaluation_support_pixels": 47246,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.6686732535060743,
+                "precision": 0.724501370639947,
+                "recall": 0.8966687139890614,
+                "support": 34191
+              },
+              {
+                "class": 1,
+                "iou": 0.7511283971958129,
+                "precision": 0.8043500617030028,
+                "recall": 0.9190411844192468,
+                "support": 17021
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 9317
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 1235
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                30658,
+                3533,
+                0,
+                0,
+                0
+              ],
+              [
+                1378,
+                15643,
+                0,
+                0,
+                0
+              ],
+              [
+                9048,
+                269,
+                0,
+                0,
+                0
+              ],
+              [
+                1232,
+                3,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 61764,
+            "present_target_macro_iou": 0.3549504126754718
+          },
+          "narrow_labelled_interior_strip_recall": 0.8233599580987299,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": false
+              },
+              {
+                "id": "component-9",
+                "passed": false
+              },
+              {
+                "id": "component-13",
+                "passed": true
+              }
+            ],
+            "recall": 0.3333333333333333,
+            "recalled_pairs": 1,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 1378,
+          "paving_on_known_water_pixels": 1232,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "aerial_balanced"
+      },
+      {
+        "held_out_id": "user-gardens-lake",
+        "held_out_site": "alton-towers",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 716,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 31
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 659,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 32
+                }
+              ],
+              "evaluation_support_pixels": 52886,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.8416020521191628,
+                "precision": 0.9943860857585672,
+                "recall": 0.8456198928037958,
+                "support": 68286
+              },
+              {
+                "class": 1,
+                "iou": 0.29442316431863924,
+                "precision": 0.3007892816873383,
+                "recall": 0.932935609956799,
+                "support": 4861
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                57744,
+                10542,
+                0
+              ],
+              [
+                326,
+                4535,
+                0
+              ]
+            ],
+            "known_pixels": 73147,
+            "present_target_macro_iou": 0.568012608218901
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0768481629039398,
+                  "precision": 0.06278026905829596,
+                  "predicted_boundary_pixels": 446,
+                  "recall": 0.09904153354632587,
+                  "true_boundary_pixels": 313
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 305
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 49138,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.7246355427020008,
+                "precision": 0.7761236487767874,
+                "recall": 0.9161287915531844,
+                "support": 26803
+              },
+              {
+                "class": 1,
+                "iou": 0.07380446333687567,
+                "precision": 0.07580222658808121,
+                "recall": 0.736870026525199,
+                "support": 3770
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 12035
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 25678
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                24555,
+                2248,
+                0,
+                0,
+                0
+              ],
+              [
+                992,
+                2778,
+                0,
+                0,
+                0
+              ],
+              [
+                6071,
+                5964,
+                0,
+                0,
+                0
+              ],
+              [
+                20,
+                25658,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 68286,
+            "present_target_macro_iou": 0.1996100015097191
+          },
+          "narrow_labelled_interior_strip_recall": 0.8906903765690377,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-33",
+                "passed": true
+              },
+              {
+                "id": "component-28",
+                "passed": true
+              },
+              {
+                "id": "component-20",
+                "passed": false
+              }
+            ],
+            "recall": 0.6666666666666666,
+            "recalled_pairs": 2,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 992,
+          "paving_on_known_water_pixels": 20,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "chessington"
+        ],
+        "variant": "aerial_balanced"
+      },
+      {
+        "held_out_id": "user-chessington-courtyard",
+        "held_out_site": "chessington",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                }
+              ],
+              "evaluation_support_pixels": 67280,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.8984750189569467,
+                "precision": 0.8984750189569467,
+                "recall": 1.0,
+                "support": 74648
+              },
+              {
+                "class": 1,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 8435
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                74648,
+                0,
+                0
+              ],
+              [
+                8435,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 83083,
+            "present_target_macro_iou": 0.44923750947847335
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.04032997250229148,
+                  "precision": 0.03453689167974882,
+                  "predicted_boundary_pixels": 637,
+                  "recall": 0.048458149779735685,
+                  "true_boundary_pixels": 454
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 468
+                },
+                {
+                  "class": 2,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 60010,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.6335878911078757,
+                "precision": 0.6587880778623556,
+                "recall": 0.9430633356503251,
+                "support": 48914
+              },
+              {
+                "class": 1,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 25734
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                46129,
+                0,
+                2121,
+                664,
+                0
+              ],
+              [
+                23892,
+                0,
+                1652,
+                190,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 74648,
+            "present_target_macro_iou": 0.31679394555393786
+          },
+          "narrow_labelled_interior_strip_recall": 0.8964805981693954,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": true
+              },
+              {
+                "id": "component-19",
+                "passed": false
+              },
+              {
+                "id": "component-18",
+                "passed": true
+              }
+            ],
+            "recall": 0.6666666666666666,
+            "recalled_pairs": 2,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 23892,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "alton-towers"
+        ],
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "held_out_id": "user-chessington-courtyard",
+        "held_out_site": "chessington",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.01944652206432311,
+                  "precision": 0.010325655281969817,
+                  "predicted_boundary_pixels": 1259,
+                  "recall": 0.16666666666666666,
+                  "true_boundary_pixels": 84
+                },
+                {
+                  "class": 1,
+                  "f1": 0.02488222110414856,
+                  "precision": 0.013256006628003313,
+                  "predicted_boundary_pixels": 1207,
+                  "recall": 0.20238095238095238,
+                  "true_boundary_pixels": 84
+                }
+              ],
+              "evaluation_support_pixels": 67280,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.8513241764268564,
+                "precision": 0.9041744870882144,
+                "recall": 0.9357517950916301,
+                "support": 74648
+              },
+              {
+                "class": 1,
+                "iou": 0.07799863955861235,
+                "precision": 0.17707618393960192,
+                "recall": 0.12234736218138707,
+                "support": 8435
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                69852,
+                4796,
+                0
+              ],
+              [
+                7403,
+                1032,
+                0
+              ]
+            ],
+            "known_pixels": 83083,
+            "present_target_macro_iou": 0.46466140799273437
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.05813953488372093,
+                  "precision": 0.04338394793926247,
+                  "predicted_boundary_pixels": 922,
+                  "recall": 0.0881057268722467,
+                  "true_boundary_pixels": 454
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 468
+                },
+                {
+                  "class": 2,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 60010,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.6373145116714146,
+                "precision": 0.6750788169944453,
+                "recall": 0.919307355767265,
+                "support": 48914
+              },
+              {
+                "class": 1,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 25734
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                44967,
+                0,
+                3301,
+                646,
+                0
+              ],
+              [
+                21643,
+                0,
+                3859,
+                232,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 74648,
+            "present_target_macro_iou": 0.3186572558357073
+          },
+          "narrow_labelled_interior_strip_recall": 0.8455588500709037,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": true
+              },
+              {
+                "id": "component-19",
+                "passed": false
+              },
+              {
+                "id": "component-18",
+                "passed": true
+              }
+            ],
+            "recall": 0.6666666666666666,
+            "recalled_pairs": 2,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 21643,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "alton-towers"
+        ],
+        "variant": "rgb_balanced"
+      },
+      {
+        "held_out_id": "user-chessington-courtyard",
+        "held_out_site": "chessington",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 180,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 173,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                }
+              ],
+              "evaluation_support_pixels": 67280,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9206851119894598,
+                "precision": 0.9356422386860662,
+                "recall": 0.982933233308327,
+                "support": 74648
+              },
+              {
+                "class": 1,
+                "iou": 0.34895457822638787,
+                "precision": 0.7267267267267268,
+                "recall": 0.4016597510373444,
+                "support": 8435
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                73374,
+                1274,
+                0
+              ],
+              [
+                5047,
+                3388,
+                0
+              ]
+            ],
+            "known_pixels": 83083,
+            "present_target_macro_iou": 0.6348198451079239
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.06983257608763303,
+                  "precision": 0.06719367588932806,
+                  "predicted_boundary_pixels": 506,
+                  "recall": 0.07268722466960352,
+                  "true_boundary_pixels": 454
+                },
+                {
+                  "class": 1,
+                  "f1": 0.07900355871886121,
+                  "precision": 0.07894736842105263,
+                  "predicted_boundary_pixels": 456,
+                  "recall": 0.07905982905982906,
+                  "true_boundary_pixels": 468
+                },
+                {
+                  "class": 2,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 60010,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.8359868493960326,
+                "precision": 0.896454743513567,
+                "recall": 0.9253383489389541,
+                "support": 48914
+              },
+              {
+                "class": 1,
+                "iou": 0.698240589198036,
+                "precision": 0.8506979062811565,
+                "recall": 0.795756586616927,
+                "support": 25734
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              },
+              {
+                "class": 3,
+                "iou": null,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                45262,
+                3594,
+                58,
+                0,
+                0
+              ],
+              [
+                5228,
+                20478,
+                28,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 74648,
+            "present_target_macro_iou": 0.7671137192970343
+          },
+          "narrow_labelled_interior_strip_recall": 0.8229985819260023,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": true
+              },
+              {
+                "id": "component-19",
+                "passed": true
+              },
+              {
+                "id": "component-18",
+                "passed": false
+              }
+            ],
+            "recall": 0.6666666666666666,
+            "recalled_pairs": 2,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 5228,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        },
+        "training_site_ids": [
+          "alton-towers"
+        ],
+        "variant": "aerial_balanced"
+      }
+    ],
+    "independent_human_review": false,
+    "old_baseline_replaced": false,
+    "production_eligible": false,
+    "scope": "Two-park development comparison, not a fresh blind test",
+    "version": "layered-surface-comparison-v1",
+    "zero_shot_aerial": [
+      {
+        "id": "user-towers-mutiny",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 451,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 6
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 447,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 8
+                }
+              ],
+              "evaluation_support_pixels": 54357,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9231885848415591,
+                "precision": 0.9523369547901998,
+                "recall": 0.9679101094488699,
+                "support": 61764
+              },
+              {
+                "class": 1,
+                "iou": 0.5323429860849943,
+                "precision": 0.7407116692830978,
+                "recall": 0.6542639241969032,
+                "support": 8654
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                59782,
+                1982,
+                0
+              ],
+              [
+                2992,
+                5662,
+                0
+              ]
+            ],
+            "known_pixels": 70418,
+            "present_target_macro_iou": 0.7277657854632766
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 37051,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.14835948644793154,
+                  "precision": 0.40310077519379844,
+                  "predicted_boundary_pixels": 129,
+                  "recall": 0.09090909090909091,
+                  "true_boundary_pixels": 605
+                },
+                {
+                  "class": 1,
+                  "f1": 0.32077384573180184,
+                  "precision": 0.2404255319148936,
+                  "predicted_boundary_pixels": 470,
+                  "recall": 0.4817813765182186,
+                  "true_boundary_pixels": 247
+                },
+                {
+                  "class": 2,
+                  "f1": 0.08275643396924376,
+                  "precision": 0.06699751861042183,
+                  "predicted_boundary_pixels": 403,
+                  "recall": 0.10820895522388059,
+                  "true_boundary_pixels": 268
+                },
+                {
+                  "class": 3,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 112
+                }
+              ],
+              "evaluation_support_pixels": 47246,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.0314175578935165,
+                "precision": 0.7765042979942693,
+                "recall": 0.03170424965634231,
+                "support": 34191
+              },
+              {
+                "class": 1,
+                "iou": 0.7806971356360572,
+                "precision": 0.8826646029289201,
+                "recall": 0.8711004053815875,
+                "support": 17021
+              },
+              {
+                "class": 2,
+                "iou": 0.5053231939163498,
+                "precision": 0.815462494247584,
+                "recall": 0.5705699259418268,
+                "support": 9317
+              },
+              {
+                "class": 3,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 1235
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                1084,
+                1971,
+                1203,
+                0,
+                29933
+              ],
+              [
+                312,
+                14827,
+                0,
+                0,
+                1882
+              ],
+              [
+                0,
+                0,
+                5316,
+                0,
+                4001
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1235
+              ]
+            ],
+            "known_pixels": 61764,
+            "present_target_macro_iou": 0.3293594718614809
+          },
+          "narrow_labelled_interior_strip_recall": 0.07489852036139845,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": false
+              },
+              {
+                "id": "component-9",
+                "passed": false
+              },
+              {
+                "id": "component-13",
+                "passed": false
+              }
+            ],
+            "recall": 0.0,
+            "recalled_pairs": 0,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 312,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        }
+      },
+      {
+        "id": "user-gardens-lake",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.032036613272311214,
+                  "precision": 0.017241379310344827,
+                  "predicted_boundary_pixels": 406,
+                  "recall": 0.22580645161290322,
+                  "true_boundary_pixels": 31
+                },
+                {
+                  "class": 1,
+                  "f1": 0.03855421686746988,
+                  "precision": 0.020887728459530026,
+                  "predicted_boundary_pixels": 383,
+                  "recall": 0.25,
+                  "true_boundary_pixels": 32
+                }
+              ],
+              "evaluation_support_pixels": 52886,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.919391254644184,
+                "precision": 0.9743461602532068,
+                "recall": 0.9421989866151188,
+                "support": 68286
+              },
+              {
+                "class": 1,
+                "iou": 0.35955949137148047,
+                "precision": 0.445178521225752,
+                "recall": 0.65151203456079,
+                "support": 4861
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                64339,
+                3947,
+                0
+              ],
+              [
+                1694,
+                3167,
+                0
+              ]
+            ],
+            "known_pixels": 73147,
+            "present_target_macro_iou": 0.6394753730078322
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 24103,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 56,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 313
+                },
+                {
+                  "class": 1,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 2,
+                  "f1": 0.17755114332175623,
+                  "precision": 0.1489841986455982,
+                  "predicted_boundary_pixels": 443,
+                  "recall": 0.21967213114754097,
+                  "true_boundary_pixels": 305
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 49138,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.02337575600163259,
+                "precision": 0.8097686375321337,
+                "recall": 0.023504831548707233,
+                "support": 26803
+              },
+              {
+                "class": 1,
+                "iou": 0.6665265812145409,
+                "precision": 0.7623167507810622,
+                "recall": 0.8413793103448276,
+                "support": 3770
+              },
+              {
+                "class": 2,
+                "iou": 0.5795293100253258,
+                "precision": 0.6931146572104019,
+                "recall": 0.7795596177814708,
+                "support": 12035
+              },
+              {
+                "class": 3,
+                "iou": 0.9968911514397855,
+                "precision": 0.9978605881437684,
+                "recall": 0.9990264039255393,
+                "support": 25678
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                630,
+                989,
+                4154,
+                28,
+                21002
+              ],
+              [
+                0,
+                3172,
+                0,
+                0,
+                598
+              ],
+              [
+                124,
+                0,
+                9382,
+                27,
+                2502
+              ],
+              [
+                24,
+                0,
+                0,
+                25653,
+                1
+              ]
+            ],
+            "known_pixels": 68286,
+            "present_target_macro_iou": 0.5665806996703212
+          },
+          "narrow_labelled_interior_strip_recall": 0.033891213389121336,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-33",
+                "passed": false
+              },
+              {
+                "id": "component-28",
+                "passed": false
+              },
+              {
+                "id": "component-20",
+                "passed": false
+              }
+            ],
+            "recall": 0.0,
+            "recalled_pairs": 0,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 0,
+          "paving_on_known_water_pixels": 24,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        }
+      },
+      {
+        "id": "user-chessington-courtyard",
+        "scores": {
+          "canopy": {
+            "abstentions_on_known_pixels": 0,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 166,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                },
+                {
+                  "class": 1,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 166,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 84
+                }
+              ],
+              "evaluation_support_pixels": 67280,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.9208103130755064,
+                "precision": 0.9342468191120207,
+                "recall": 0.9846211552888222,
+                "support": 74648
+              },
+              {
+                "class": 1,
+                "iou": 0.3403944485025566,
+                "precision": 0.7396825396825397,
+                "recall": 0.3867219917012448,
+                "support": 8435
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                73500,
+                1148,
+                0
+              ],
+              [
+                5173,
+                3262,
+                0
+              ]
+            ],
+            "known_pixels": 83083,
+            "present_target_macro_iou": 0.6306023807890315
+          },
+          "ground": {
+            "abstentions_on_known_pixels": 58440,
+            "boundaries": {
+              "classes": [
+                {
+                  "class": 0,
+                  "f1": 0.0,
+                  "precision": 0.0,
+                  "predicted_boundary_pixels": 0,
+                  "recall": 0.0,
+                  "true_boundary_pixels": 454
+                },
+                {
+                  "class": 1,
+                  "f1": 0.04090909090909091,
+                  "precision": 0.043689320388349516,
+                  "predicted_boundary_pixels": 412,
+                  "recall": 0.038461538461538464,
+                  "true_boundary_pixels": 468
+                },
+                {
+                  "class": 2,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                },
+                {
+                  "class": 3,
+                  "f1": null,
+                  "true_boundary_pixels": 0
+                }
+              ],
+              "evaluation_support_pixels": 60010,
+              "scope": "Interfaces surrounded by explicit known labels only; partial assistant-draft boundary evaluation, not full-scene boundary accuracy.",
+              "tolerance_clean_pixels": 2
+            },
+            "classes": [
+              {
+                "class": 0,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 48914
+              },
+              {
+                "class": 1,
+                "iou": 0.5388456454692319,
+                "precision": 0.9071578687105947,
+                "recall": 0.5702961063184891,
+                "support": 25734
+              },
+              {
+                "class": 2,
+                "iou": 0.0,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              },
+              {
+                "class": 3,
+                "iou": null,
+                "precision": 0.0,
+                "recall": null,
+                "support": 0
+              }
+            ],
+            "confusion_with_abstain_column": [
+              [
+                0,
+                1502,
+                30,
+                0,
+                47382
+              ],
+              [
+                0,
+                14676,
+                0,
+                0,
+                11058
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "known_pixels": 74648,
+            "present_target_macro_iou": 0.26942282273461593
+          },
+          "narrow_labelled_interior_strip_recall": 0.0,
+          "path_connections": {
+            "known_paving_pairs": 3,
+            "pairs": [
+              {
+                "id": "component-3",
+                "passed": false
+              },
+              {
+                "id": "component-19",
+                "passed": false
+              },
+              {
+                "id": "component-18",
+                "passed": false
+              }
+            ],
+            "recall": 0.0,
+            "recalled_pairs": 0,
+            "scope": "Connectivity restricted to known target paving; false bridges are not credited."
+          },
+          "paving_on_known_roof_pixels": 0,
+          "paving_on_known_water_pixels": 0,
+          "scope": "Assistant-reviewed draft labels only. Ground and canopy are independently scored; hidden ground remains unknown."
+        }
+      }
+    ]
+  },
+  "resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "measurement_scope": "This invocation only; interrupted earlier training is not included",
+    "peak_process_rss_mb": 748.81640625,
+    "resumed": true,
+    "reused_checkpoints": [
+      "folds/alton-towers/rgb_unbalanced",
+      "folds/alton-towers/rgb_balanced",
+      "folds/alton-towers/aerial_balanced",
+      "folds/chessington/rgb_unbalanced",
+      "folds/chessington/rgb_balanced"
+    ],
+    "wall_seconds": 284.33688388500013
+  },
+  "checkpoint_roundtrip": {
+    "checks": [
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-towers-mutiny",
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-gardens-lake",
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-chessington-courtyard",
+        "variant": "rgb_unbalanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-towers-mutiny",
+        "variant": "rgb_balanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-gardens-lake",
+        "variant": "rgb_balanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-chessington-courtyard",
+        "variant": "rgb_balanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-towers-mutiny",
+        "variant": "aerial_balanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-gardens-lake",
+        "variant": "aerial_balanced"
+      },
+      {
+        "exact_ground_and_canopy_match": true,
+        "id": "user-chessington-courtyard",
+        "variant": "aerial_balanced"
+      }
+    ],
+    "pickle_runtime_used": false
+  },
+  "geographic_guard": {
+    "minimum_known_label_distance_m": 93.55991319228569,
+    "passed": true,
+    "required_m": 24
+  },
+  "exact_dataset_reproduction": true,
+  "tests": {
+    "passed": 85,
+    "log_sha256": "3b892ffaad037c7ff64a71b56b3e48f7ad8c616550e799af91ea8dd0750882ec"
+  },
+  "aerial_source": {
+    "model": "alanoix/segformer_b0_flair_one",
+    "revision": "ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c",
+    "files": [
+      {
+        "file": "README.md",
+        "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/README.md",
+        "bytes": 766,
+        "sha256": "c4a3b1cafb087b8a44012b7178d9eaf0a1fb4e3211351a5b844e574ab9321217"
+      },
+      {
+        "file": "config.json",
+        "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/config.json",
+        "bytes": 1682,
+        "sha256": "8875cec7d5ddf42ded1ace67839177739d319297da1f1efb07d1d7527f352f7e"
+      },
+      {
+        "file": "pytorch_model.bin",
+        "url": "https://huggingface.co/alanoix/segformer_b0_flair_one/resolve/ce3f996fd63489f9f9f40d1aea740e3fb9c3f90c/pytorch_model.bin",
+        "bytes": 14943053,
+        "sha256": "5ea2c324b8dd46e471880a80710ee22607e143023bf3d3d489fdfb932105607a"
+      },
+      {
+        "file": "upstream-license.txt",
+        "url": "https://raw.githubusercontent.com/NVlabs/SegFormer/master/LICENSE",
+        "http_status": 200,
+        "sha256": "f549820c06519e3105e5174a2fd7285224ffd2268a7f879a843b1a255fd04a61"
+      },
+      {
+        "file": "flair-labels.md",
+        "url": "https://raw.githubusercontent.com/IGNF/FLAIR-1/main/README.md",
+        "http_status": 200,
+        "sha256": "c90312ee51ba06298101fdf6540f17861b97b983d0e1518cb0b94dbeff8b56d7"
+      }
+    ],
+    "runtime_remote_code": false,
+    "use_scope": "noncommercial_research_evaluation_only",
+    "converted_weights_sha256": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649",
+    "conversion_torch_version": "2.6.0+cpu",
+    "weights_only": true,
+    "pickle_runtime_loading_required": false,
+    "strict_architecture_match": true,
+    "runtime_files": {
+      "config.json": "8875cec7d5ddf42ded1ace67839177739d319297da1f1efb07d1d7527f352f7e",
+      "model.safetensors": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649"
+    },
+    "preprocessing": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "status": "Standard ImageNet normalisation assumed; upstream has no preprocessor file"
+    },
+    "upstream_license": {
+      "url": "https://raw.githubusercontent.com/NVlabs/SegFormer/master/LICENSE",
+      "sha256": "f549820c06519e3105e5174a2fd7285224ffd2268a7f879a843b1a255fd04a61",
+      "use_scope": "noncommercial_research_and_evaluation_only",
+      "downstream_card_claim": "Apache-2.0 does not override the upstream licence"
+    }
+  },
+  "production_baseline_sha256": "096941b8b5a7ddd0c48f25b47359771d26ae4c4c82d7f1deb0a52cad866df8fc",
+  "world_blocks_generated": 0,
+  "windows_exe_built": false,
+  "production_eligible": false,
+  "independent_human_review": false,
+  "browser": {
+    "valid_view_combinations": 33,
+    "reference_frame_dimensions_preserved": true,
+    "review_export_source_pins_verified": true,
+    "review_notes_do_not_approve_or_trigger_training": true,
+    "export_test_was_not_human_review": true,
+    "errors": []
+  }
+}
