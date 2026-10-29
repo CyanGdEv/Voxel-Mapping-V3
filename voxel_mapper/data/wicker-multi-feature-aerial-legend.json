@@ -1,0 +1,27 @@
+{
+  "id": "wicker-man-sound-tunnel-big-bob-track-queue-and-paving",
+  "reference_sha256": "38111a81cdb956c435190ecef9c916957a0c33124bbf6dd77495f9c30a7d9889",
+  "reference_size": [836, 1280],
+  "site_id": "alton-towers",
+  "ride_name": "Wicker Man",
+  "tags": ["sound tunnel", "Big Bob", "theming", "wooden roller coaster", "queue", "path boundary", "plaza boundary"],
+  "authority": "User: green is Wicker Man sound tunnel; blue is Big Bob theming structure; red path/plaza boundaries; yellow Wicker Man ride track; purple queue line",
+  "colour_rules": [
+    {"colour": "green", "label": "sound_tunnel_trace", "display_rgb": [20, 240, 40], "include_box": [165, 170, 345, 365], "max_component_radius_px": 4, "hsv_ranges": [[[43, 125, 135], [84, 255, 255]]]},
+    {"colour": "blue/cyan", "label": "theming_structure", "display_rgb": [20, 210, 245], "include_box": [355, 475, 435, 545], "max_component_radius_px": 4, "hsv_ranges": [[[85, 85, 100], [114, 255, 255]]]},
+    {"colour": "red and light red", "label": "paving_trace", "display_rgb": [255, 100, 110], "include_box": [3, 3, 830, 1270], "max_component_radius_px": 4, "hsv_ranges": [[[0, 65, 150], [12, 255, 255]], [[173, 65, 150], [179, 255, 255]]]},
+    {"colour": "yellow", "label": "roller_coaster_track", "display_rgb": [255, 215, 20], "include_box": [135, 205, 515, 575], "max_component_radius_px": 4, "hsv_ranges": [[[15, 100, 130], [38, 255, 255]]]},
+    {"colour": "purple", "label": "queue_line_trace", "display_rgb": [170, 35, 185], "include_box": [485, 460, 580, 550], "max_component_radius_px": 4, "hsv_ranges": [[[129, 65, 65], [172, 255, 255]]]}
+  ],
+  "named_features": {
+    "sound_tunnel_trace": "Wicker Man sound tunnel",
+    "theming_structure": "Big Bob",
+    "roller_coaster_track": "Wicker Man track",
+    "queue_line_trace": "Wicker Man queue",
+    "paving_trace": "Wicker Man / Mutiny Bay path and plaza boundaries"
+  },
+  "ink_filter": {"min_rms": 18, "neighbourhood_radius_px": 2},
+  "geometry_role": "Sparse user traces and location guides; no filled surfaces, widths, connectivity, roof profiles or elevations inferred",
+  "digitisation_status": "Class roles confirmed by user; colour thresholds and local ink windows are assistant extraction settings, not measured feature extents",
+  "legend_scope": "This pinned image only. Green tree/grass roles and purple structure/barrier/track roles in earlier images remain unchanged"
+}

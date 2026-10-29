@@ -1,0 +1,96 @@
+{
+  "acquisition": {
+    "accepted": "Pinned cached park-wide Esri RGB export; coarser than annotated reference",
+    "initial_fine_locating_crop_retired": "Part of the Wicker Man annotations lay beyond its edge",
+    "new_export_requests": "Two primary-host and one public mirror export requests timed out",
+    "new_optical_resolution_claimed": false
+  },
+  "clean_sha256": "cac62ce4591472d4ae7be96a30e148cfa2aa708afb78064ebb51ea076b86c475",
+  "complete_guide_coverage": {
+    "fraction": 1.0,
+    "inside_clean_image": 21417,
+    "positive_reference_pixels": 21417
+  },
+  "exact_replay": {
+    "bng_points": true,
+    "height_arrays": true,
+    "registered_labels": true,
+    "source_labels": true
+  },
+  "height_context": "Matched EA 2022-01-05 native 1 m DTM/DSM; not raw return or track-height labels",
+  "independent_native_height_samples_per_raster": 4096,
+  "limitations": [
+    "Sparse positive guides, not completed polygons, measured widths, topology or elevations.",
+    "The small Big Bob and queue targets have very few clean-grid pixels; insufficient for dense class accuracy claims.",
+    "Image-match residuals are not independent physical accuracy, and source epochs differ."
+  ],
+  "model_weights_updated": false,
+  "named_feature_points": {
+    "Big Bob": 8,
+    "Wicker Man / Mutiny Bay path and plaza boundaries": 2348,
+    "Wicker Man queue": 12,
+    "Wicker Man sound tunnel": 142,
+    "Wicker Man track": 829
+  },
+  "physical_registration_verified": false,
+  "portable_replay": {
+    "canonical_numeric_manifest_sha256": "e39d90c9ea4a1ea6d1dd02c82931969c72846f1102dcc75f45cc6ac6b43a0398",
+    "datum_grid_path_relocated": true,
+    "frame_path_metadata_hash_expected_to_differ": true,
+    "native_height_cache_regenerated": true,
+    "passed": true
+  },
+  "previous_image_legends": [
+    {
+      "id": "alton-smiler-image-1",
+      "reference_label_bytes_unchanged": true
+    },
+    {
+      "id": "alton-towers-street-image-2",
+      "reference_label_bytes_unchanged": true
+    },
+    {
+      "id": "alton-tight-path-paving-and-hidden-details",
+      "reference_label_bytes_unchanged": true
+    }
+  ],
+  "reference_sha256": "38111a81cdb956c435190ecef9c916957a0c33124bbf6dd77495f9c30a7d9889",
+  "registration": {
+    "inlier_error_clean_pixels_median": 0.17159807996196536,
+    "inlier_error_clean_pixels_p95": 0.7159917823424732,
+    "inlier_span_fraction_xy": [
+      0.9561017780212694,
+      0.9598607063293457
+    ],
+    "inliers": 290,
+    "method": "unpainted SIFT matches and RANSAC similarity; no OSM snapping",
+    "physical_registration_verified": false,
+    "ratio_matches": 314,
+    "reference_rotation_degrees": 129.92645646443918,
+    "reference_to_clean": [
+      [
+        -0.17506674785209586,
+        -0.20918112351211762,
+        844.7545219176831
+      ],
+      [
+        0.20918112351211762,
+        -0.17506674785209586,
+        417.0561233785508
+      ]
+    ],
+    "scale_clean_per_reference": 0.2727729983654928
+  },
+  "status": "passed",
+  "target_pixels": {
+    "paving_trace": 1160,
+    "queue_line_trace": 5,
+    "roller_coaster_track": 355,
+    "sound_tunnel_trace": 70,
+    "theming_structure": 5
+  },
+  "tests_passed": 21,
+  "version": "wicker-multi-feature-reference-validation-v1",
+  "world_after_reference_intake_sha256": "24aba8e12509817964be2af9bbc2421899a44fe79e6b23f7fe0e49afec557138",
+  "world_changed_by_reference_intake": false
+}

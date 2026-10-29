@@ -49,5 +49,25 @@ class AerialFeatureSupervisionTests(unittest.TestCase):
         definition['colour_rules'].append(rule)
         with self.assertRaisesRegex(ValueError, 'overlap'): extract(rgb, definition)
 
+    def test_wicker_tunnel_theme_track_queue_and_paving_remain_separate(self):
+        rgb = np.full((90, 90, 3), 70, np.uint8)
+        colours = [(20, 240, 40), (20, 210, 245), (250, 100, 110), (255, 215, 20), (170, 35, 185)]
+        names = ['sound_tunnel_trace','theming_structure','paving_trace','roller_coaster_track','queue_line_trace']
+        definition = self.definition('wicker-multi-feature-aerial-legend.json')
+        for rule in definition['colour_rules']: rule.pop('include_box')
+        for i, colour in enumerate(colours): rgb[10+i*14:13+i*14, 10:13] = colour
+        target, report = extract(rgb, definition)
+        for i, name in enumerate(names): self.assertEqual(target[11+i*14,11], LABELS[name])
+        self.assertIsNone(report['green'])
+        self.assertEqual(target[0,0],255)
+
+    def test_wicker_blue_border_outside_big_bob_window_is_ignored(self):
+        rgb = np.full((1280,836,3),70,np.uint8)
+        rgb[:,833:836] = (20,210,245)
+        rgb[500:503,390:393] = (20,210,245)
+        target,_ = extract(rgb,self.definition('wicker-multi-feature-aerial-legend.json'))
+        self.assertTrue(np.all(target[:,833:] == 255))
+        self.assertEqual(target[501,391],LABELS['theming_structure'])
+
 
 if __name__ == '__main__': unittest.main()
