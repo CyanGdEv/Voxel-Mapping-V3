@@ -3,7 +3,7 @@ from collections import Counter, defaultdict
 import math
 
 import numpy as np
-from shapely.geometry import LineString, MultiPoint, Point
+from shapely.geometry import LineString, MultiPoint, Point, Polygon
 from shapely.affinity import affine_transform
 
 from .generation_cycles import file_hash
@@ -66,6 +66,9 @@ def effigy_model(profile, e0, n0, offset):
     This completes a shape from explicit references; it is not raw-point truth.
     Running passages and retained geometry are applied separately by the scene.
     """
+    if profile.get('mesh')=='stepped-woven-bust-v2':
+        from .wicker_effigy_sculpture import sculpted_effigy
+        return sculpted_effigy(profile,e0,n0,offset)
     front = np.asarray(profile['front_bng_direction'], float)
     front /= np.linalg.norm(front)
     side = np.array([-front[1], front[0]])
@@ -235,6 +238,8 @@ def complete_effigy(scene, feature, geometry):
     xy=np.array([[l.e0+x+.5,l.n0-z-.5] for x,y,z in proposed])
     footprint=MultiPoint(xy).convex_hull.buffer(scene.structure_profile['vegetation']['figure_horizontal_margin_m'])
     footprint=footprint.union(geometry.buffer(.75))
+    preceding=scene.structure_profile['vegetation'].get('preceding_figure_volume_bng_ring')
+    if preceding:footprint=footprint.union(Polygon(preceding))
     volume(scene,footprint,math.ceil(p['base_odn_m']+p['height_m']+l.offset+
         scene.structure_profile['vegetation']['figure_upper_margin_m']))
     # All original route visits remain separate. No XY crossing joins them.
@@ -249,7 +254,7 @@ def complete_effigy(scene, feature, geometry):
     inside=contains_xy(geometry,xyz[:,0],xyz[:,1])&(xyz[:,2]>ground+1)
     scene.records.append({'id':feature['id'],'role':'reference_assisted_complete_effigy',
         'native_blocks':int(used),'proposed_blocks':len(proposed),'withheld':dict(skipped),
-        'body':'Hollow ribbed torso with arched lower opening, shoulders and neck',
+        'body':'Stepped woven plank torso, raised chest ribbons, arched opening and inset panels' if p.get('mesh') else 'Hollow ribbed torso with arched lower opening, shoulders and neck',
         'heads':'Opposite ram muzzle/curled horns and human brow/nose/eyes/beard',
         'base_odn_m':p['base_odn_m'],'top_odn_m':p['base_odn_m']+p['height_m'],
         'retained_track_visits':[{'station_min_max_m':[v[0][0],v[-1][0]],'top_odn_min_max_m':[min(x[1] for x in v),max(x[1] for x in v)]} for v in visits],
