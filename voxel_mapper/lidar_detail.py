@@ -332,8 +332,9 @@ def unmapped_structure_surfaces(layers, xyz, labels, extra):
     rr = np.floor(layers.n1-xyz[:,1]).astype(np.int32)
     high = xyz[:,2]-layers.dtm[rr,cc]
     frozen = getattr(layers, 'lidar_frozen_columns', layers.protected)
+    context_frozen = getattr(layers, 'lidar_support_frozen_columns', frozen)
     keep = ((labels == 6) & (high >= 1) & (high <= 60)
-            & ~layers.footprints[rr,cc] & ~frozen[rr,cc]
+            & ~layers.footprints[rr,cc] & ~context_frozen[rr,cc]
             & (layers.water[rr,cc] == -32768) & (layers.bridge[rr,cc] == -32768))
     keep &= ((layers.family[rr,cc] == 0) | (xyz[:,2]+layers.offset >= layers.ground[rr,cc]+4))
     points = xyz[keep]
@@ -349,6 +350,10 @@ def unmapped_structure_surfaces(layers, xyz, labels, extra):
     halves = defaultdict(int)
     rejected = 0
     for (c,r,level), indices in groups.items():
+        # Semantic suppression changes output, not whether neighbouring source
+        # returns support a surface just beyond the suppression boundary.
+        if frozen[r,c]:
+            continue
         if len(indices) < 2 and np.max(support[indices]) < 3:
             rejected += 1
             continue
@@ -383,6 +388,9 @@ def apply(layers, receipt_path):
         for (cx,cz), rows in getattr(layers,name,{}).items():
             for row in rows:
                 frozen[cz*16+row[2]+layers.height,cx*16+row[0]] = True
+    if hasattr(layers,'structural_vegetation_max'):
+        layers.lidar_support_frozen_columns = frozen.copy()
+        frozen |= layers.structural_vegetation_max > -32768
     layers.lidar_frozen_columns = frozen
     park = apply_park_ground_and_foliage(layers, receipt_path, receipt)
     before = layers.roof_half.copy()

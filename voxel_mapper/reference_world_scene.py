@@ -56,6 +56,9 @@ class ReferenceScene:
         self.manifest = _json(manifest_file)
         if self.manifest.get('version') != VERSION: raise ValueError('Pinned reference-world edit manifest required')
         self.profile = _json(self.asset('profile'))
+        self.structure_profile = _json(self.asset('structure_profile')) if 'structure_profile' in self.manifest else None
+        if self.structure_profile and self.structure_profile.get('version') != 'wicker-structural-reconstruction-v1':
+            raise ValueError('Pinned structural reconstruction profile required')
         if self.profile.get('version') != VERSION: raise ValueError('Explicit source-assisted world profile required')
         self.references = {}; self.records = []
         for key, item in self.manifest['references'].items():
@@ -208,6 +211,9 @@ class ReferenceScene:
             'height_measured':False,'image_local_legend_preserved':True})
 
     def theming(self,feature,g):
+        if self.structure_profile:
+            from .wicker_structure_semantics import complete_effigy
+            return complete_effigy(self,feature,g)
         xyz,codes,ground=self.load_cloud();inside=contains_xy(g,xyz[:,0],xyz[:,1])
         good=inside&(xyz[:,2]>ground+2.5)&np.isin(codes,[1,5,6])
         seed=good&np.isin(codes,[1,6]);qualified=seed.copy()
@@ -263,6 +269,9 @@ class ReferenceScene:
             'exact_section_verified':False})
 
     def apply(self):
+        if self.structure_profile:
+            from .wicker_structure_semantics import support_volumes
+            support_volumes(self)
         features=self.profile['features']
         for f in features:
             if f.get('exclusions'):
@@ -291,6 +300,9 @@ class ReferenceScene:
         if self.manifest.get('rides'):
             from .supported_ride_layouts import build_rides
             build_rides(self,self.manifest['rides'])
+        if self.structure_profile:
+            from .wicker_structure_semantics import report_vegetation
+            report_vegetation(self)
         grouped=defaultdict(list);air=defaultdict(list)
         for (x,y,z),m in self.blocks.items():grouped[x//16,z//16].append((x%16,y,z%16,m))
         for x,y,z in self.air:air[x//16,z//16].append((x%16,y,z%16))

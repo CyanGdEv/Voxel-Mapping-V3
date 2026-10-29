@@ -60,11 +60,14 @@ ALLOWED_MATERIALS.update(f'{m}_stairs_{d}' for m in GARDEN_STONES if m!='smooth_
 ALLOWED_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak',*[s for s in GARDEN_STONES if s!='smooth_stone']) for d in ('north','east','south','west'))
 DETAIL_MATERIALS.update(f'{m}_stairs_{d}_top' for m in ('oak','spruce','dark_oak') for d in ('north','east','south','west'))
 ALLOWED_MATERIALS.add('green_stained_glass')
+ALLOWED_MATERIALS.add('campfire')
 for m in ('iron_bars','green_stained_glass_pane'):
     ALLOWED_MATERIALS.add(m)
 
 
 def material_block(material):
+    if material=='campfire':
+        return Block('universal_minecraft','campfire',{'facing':StringTag('north'),'lit':StringTag('true'),'signal_fire':StringTag('false')})
     if material in TOP_TRAPDOORS:
         return Block('universal_minecraft','trapdoor',{'material':StringTag(material.removesuffix('_trapdoor_top')),'facing':StringTag('north'),'open':StringTag('false'),'powered':StringTag('false'),'half':StringTag('top')})
     if material in FACING_FENCE_GATES:

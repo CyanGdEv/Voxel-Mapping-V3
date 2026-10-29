@@ -1,0 +1,44 @@
+{
+  "version": "wicker-structural-reconstruction-v1",
+  "source_role": "User-confirmed Big Bob theming and brown plan support footprints; source-assisted completion, not surveyed sculpture detail",
+  "big_bob": {
+    "body_center_bng_en": [407551.3, 343551.3],
+    "head_center_bng_en": [407554.1, 343550.2],
+    "front_bng_direction": [0.7071067811865476, -0.7071067811865476],
+    "base_odn_m": 179.0,
+    "height_m": 17.5,
+    "body_sections_height_half_width_half_depth_m": [[0, 5.5, 3.5], [3, 5.2, 3.3], [6, 5.4, 3.4], [8.5, 6.2, 3.6], [10, 5.8, 3.4], [10.8, 3.8, 2.7]],
+    "head_sections_height_half_width_half_depth_m": [[9.4, 1.9, 1.9], [11.5, 2.5, 2.2], [13, 2.9, 2.5], [15, 2.8, 2.4], [16.5, 2.4, 2.1], [17.3, 1.5, 1.4], [17.5, 0.6, 0.7]],
+    "shell_thickness_m": 1.15,
+    "front_arch_half_width_m": 2.7,
+    "arch_spring_height_m": 4.5,
+    "arch_rise_m": 2.5,
+    "body_material": "spruce_planks",
+    "head_material": "oak_planks",
+    "rib_material": "oak_log",
+    "recess_material": "dark_oak_planks",
+    "minecraft_style": {
+      "authority": "User's four Minecraft closeups: stepped wooden face, dark curled horns, layered timber and trapdoor panels, pale collar bands, shoulder fire/smoke",
+      "body_infill": "terracotta",
+      "pale_collar": "smooth_stone_slab",
+      "dark_horns": true,
+      "shoulder_campfires": true,
+      "scope": "Blockwork and silhouette; the source screenshots also use client shaders that are not a world geometry property"
+    },
+    "ram_horn_control_points_u_v_height_m": [[2.2, 0.2, 16], [3.3, 0.1, 15.9], [4.0, 0.6, 14.8], [3.8, 1.7, 13.8], [3.0, 2.1, 14.0], [3.0, 2.5, 14.9], [4.3, 2.6, 15.9]],
+    "interpolation_authority": "User requests complete structure; body shell, facial features, ribs and horns inferred from official two-sided miniature and official full-size description. Ground/height and placement checked against registered aerial and LiDAR context.",
+    "physical_detail_accuracy_verified": false,
+    "shape_references": [
+      {"page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin", "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman1.jpg?v=1749240109&width=850", "role": "Official ram-face silhouette and chest arch; miniature is not a scale survey"},
+      {"page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin", "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman2.jpg?v=1749240122&width=850", "role": "Official human-face and shoulder/chest silhouette; miniature is not a scale survey"},
+      {"page": "https://www.altontowers.com/about-alton-towers/blog/wicker-man-what-s-it-all-about/", "role": "Creative lead describes opposite human/ram faces and three torso passages"}
+    ]
+  },
+  "vegetation": {
+    "support_horizontal_margin_m": 1.25,
+    "support_upper_margin_m": 3,
+    "figure_horizontal_margin_m": 1.0,
+    "figure_upper_margin_m": 1.0,
+    "policy": "Exclude vegetation and estimated trunks only inside registered structural volumes. Retain source classifications and surrounding woodland. Never replace every vegetation return with timber."
+  }
+}
