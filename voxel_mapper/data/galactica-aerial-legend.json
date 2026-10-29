@@ -1,0 +1,11 @@
+{
+  "version": "ride-aerial-user-legend-v1",
+  "site": "Alton Towers",
+  "reference_sha256": "297ddd74ead4c925d579f7be8dc7c7762e45ba7adf0164ebe3509645420b2ac1",
+  "reference_size": [1222, 1280],
+  "legend": {"yellow": "monorail", "purple": "roller_coaster_track"},
+  "legend_authority": "explicit user clarification accompanying this image",
+  "legend_scope": "this reference only; purple in earlier Chessington/gardens images retains its building/structure meaning",
+  "annotation_role": "sparse projected ride trace locations; dot width is not measured track width",
+  "elevation_role": "unknown; crossing lines do not provide height or connectivity"
+}

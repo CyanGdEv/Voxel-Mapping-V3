@@ -1,0 +1,15 @@
+{
+  "id": "alton-towers-street-image-2",
+  "reference_sha256": "9d34ffbc130a19b8fa3605186b97c9db88cb37390978ad0d5c3c581c450d2aa8",
+  "reference_size": [965, 1280],
+  "authority": "User: purple/dark purple fences or barriers; yellow monorail; red paths; light purple around grass islands rock boundaries; orange theming structure. Latest clarification: smaller green dots are grass islands, not trees.",
+  "colour_rules": [
+    {"colour": "purple and dark purple", "label": "fence_barrier", "hsv_ranges": [[[116, 95, 85], [139, 255, 255]]]},
+    {"colour": "light purple", "label": "rock_boundary", "hsv_ranges": [[[140, 95, 85], [170, 255, 255]]]},
+    {"colour": "yellow", "label": "monorail", "hsv_ranges": [[[25, 165, 175], [38, 255, 255]]]},
+    {"colour": "red", "label": "path_trace", "include_box": [0, 300, 590, 1280], "hsv_ranges": [[[0, 155, 190], [7, 255, 255]], [[174, 155, 190], [179, 255, 255]]]},
+    {"colour": "orange", "label": "theming_structure", "hsv_ranges": [[[8, 155, 175], [24, 255, 255]]]}
+  ],
+  "green_marker_policy": "Small isolated compact green dots: grass-island locations. Larger green dots and outlined marks: trees. Dashes forming a tree outline do not become grass labels.",
+  "geometry_role": "Sparse feature traces/locations; dots do not determine island size or canopy extent"
+}

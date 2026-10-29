@@ -1,0 +1,13 @@
+{
+  "id": "alton-smiler-image-1",
+  "reference_sha256": "2bed013eb00e1688bef10e1db993c3630231fbd53527b94ca6a0921fff7ec100",
+  "reference_size": [886, 1280],
+  "authority": "User: purple track; red theming structure; cyan support structure. Orange also means theming structure.",
+  "colour_rules": [
+    {"colour": "purple", "label": "roller_coaster_track", "hsv_ranges": [[[135, 90, 65], [171, 255, 255]]]},
+    {"colour": "red", "label": "theming_structure", "display_rgb": [255, 40, 40], "hsv_ranges": [[[0, 130, 140], [7, 255, 255]], [[173, 130, 140], [179, 255, 255]]]},
+    {"colour": "cyan", "label": "support_structure", "hsv_ranges": [[[82, 115, 125], [102, 255, 255]]]},
+    {"colour": "orange", "label": "theming_structure", "hsv_ranges": [[[8, 170, 180], [24, 255, 255]]]}
+  ],
+  "geometry_role": "Sparse projected trace locations; no filled footprints or measured heights"
+}
