@@ -36,6 +36,8 @@ DETAIL_MATERIALS.update('cobblestone_wall_'+''.join(d for i,d in enumerate('nesw
 ALLOWED_MATERIALS.update(DETAIL_MATERIALS)
 PLAN_MARKING_WOOLS={'orange_wool','blue_wool','brown_wool','purple_wool','yellow_wool'}
 ALLOWED_MATERIALS.update(PLAN_MARKING_WOOLS)
+APPEARANCE_WOOLS={'gray_wool'}
+ALLOWED_MATERIALS.update(APPEARANCE_WOOLS)
 FACING_FENCE_GATES={f'{wood}_fence_gate_{direction}' for wood in ('oak','spruce') for direction in ('north','east','south','west')}
 ALLOWED_MATERIALS.update(FACING_FENCE_GATES)
 WALL_TRAPDOORS={f'{wood}_trapdoor_{direction}' for wood in ('oak','spruce','dark_oak') for direction in ('north','east','south','west')}
@@ -120,7 +122,7 @@ def material_block(material):
         return Block('universal_minecraft','brick_block')
     if material == 'red_terracotta':
         return Block('universal_minecraft','stained_terracotta',{'color':StringTag('red')})
-    if material in PLAN_MARKING_WOOLS:
+    if material in PLAN_MARKING_WOOLS | APPEARANCE_WOOLS:
         return Block('universal_minecraft','wool',{'color':StringTag(material.removesuffix('_wool'))})
     if material in CONCRETE_MATERIALS:
         return Block('universal_minecraft', 'concrete', {'color': StringTag(material.removesuffix('_concrete'))})
