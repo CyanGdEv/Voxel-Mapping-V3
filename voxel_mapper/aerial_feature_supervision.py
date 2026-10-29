@@ -18,11 +18,13 @@ LABELS = {'monorail': 1, 'roller_coaster_track': 2, 'theming_structure': 3,
           'support_structure': 4, 'fence_barrier': 5, 'path_trace': 6,
           'rock_boundary': 7, 'tree_feature': 8, 'grass_island_location': 9,
           'structure_trace': 10, 'paving_trace': 11,
+          'sound_tunnel_trace': 12, 'queue_line_trace': 13,
           'unlabelled': 255}
 COLOURS = {1: (255, 220, 0), 2: (220, 20, 220), 3: (255, 140, 15),
            4: (20, 220, 240), 5: (100, 50, 230), 6: (255, 40, 40),
            7: (220, 140, 240), 8: (20, 210, 30), 9: (160, 240, 70),
-           10: (155, 35, 190), 11: (255, 100, 110)}
+           10: (155, 35, 190), 11: (255, 100, 110),
+           12: (20, 240, 40), 13: (165, 45, 190)}
 
 
 def extract(rgb, definition):
@@ -131,6 +133,9 @@ def build(reference, clean, receipt_file, frame_file, legend_file, output, dtm=N
     points = [{'label': next(k for k, v in LABELS.items() if v == int(code)), 'reference_xy': a.tolist(),
                'clean_xy': b.tolist(), 'bng_en': c.tolist(), 'height_odn_m': None, 'annotation_role': 'sparse_positive_location_or_trace'}
               for code, a, b, c in zip(codes[keep], xy, clean_xy, en)]
+    for point in points:
+        name = definition.get('named_features', {}).get(point['label'])
+        if name: point['feature_name'] = name
     output.mkdir(parents=True)
     for src, name in [(reference, 'user-reference.jpg'), (clean, 'model-input.png'), (receipt_file, 'imagery-receipt.json'), (legend_file, 'legend.json')]: shutil.copy2(src, output/name)
     Image.fromarray(labels).save(output/'reference-labels.png'); Image.fromarray(target).save(output/'training-targets.png')
@@ -152,8 +157,9 @@ def build(reference, clean, receipt_file, frame_file, legend_file, output, dtm=N
             'model_weights_updated': False, 'world_blocks_generated': 0},
         'limitations': ['Colour semantics are user confirmed; automatic ink extraction remains a review candidate.',
             'Positive dots and traces do not establish complete polygons, dimensions, structural connectivity or elevations.',
-            'Small green dots are grass-island locations; larger green dots and outlines are tree features, not grass polygons.',
             'Image matching is not independently surveyed physical registration.']}
+    if definition.get('green_marker_policy'):
+        result['limitations'].append('Small green dots are grass-island locations; larger green dots and outlines are tree features, not grass polygons.')
     if dtm and dsm: result['height_context'] = height_features(output, dtm, dsm, frame_file)
     atomic_json(output/'review.json', result)
     atomic_json(output/'feature-points.geojson', {'type': 'FeatureCollection', 'crs': {'type': 'name', 'properties': {'name': 'EPSG:27700'}},
