@@ -69,5 +69,13 @@ class AerialFeatureSupervisionTests(unittest.TestCase):
         self.assertTrue(np.all(target[:,833:] == 255))
         self.assertEqual(target[501,391],LABELS['theming_structure'])
 
+    def test_shaded_theme_and_queue_marks_survive_their_wider_stroke_limit(self):
+        rgb = np.full((1280,836,3),70,np.uint8)
+        rgb[496:509,386:399] = (20,210,245)
+        rgb[496:509,516:529] = (170,35,185)
+        target,_ = extract(rgb,self.definition('wicker-multi-feature-aerial-legend.json'))
+        self.assertEqual(int((target==LABELS['theming_structure']).sum()),169)
+        self.assertEqual(int((target==LABELS['queue_line_trace']).sum()),169)
+
 
 if __name__ == '__main__': unittest.main()

@@ -62,3 +62,11 @@ class AltonWorldTests(unittest.TestCase):
         renderer = ChunkRenderer(l); arr, bottom = renderer.chunk(0, -1)
         self.assertEqual(renderer.materials[int(arr[3, 66-bottom, 3])], 'dark_oak_fence')
         self.assertEqual(renderer.materials[int(arr[3, 67-bottom, 3])], 'air')
+
+    def test_reference_geometry_is_saved_and_retained_track_keeps_priority(self):
+        l=layers();l.reference_detail={(0,-1):[(3,70,3,'white_concrete'),(4,66,4,'red_concrete')]}
+        l.reference_air={(0,-1):[(3,65,3)]};l.detail={(0,-1):[(4,66,4,'dark_oak_fence')]}
+        renderer=ChunkRenderer(l);arr,bottom=renderer.chunk(0,-1)
+        self.assertEqual(renderer.materials[int(arr[3,70-bottom,3])],'white_concrete')
+        self.assertEqual(renderer.materials[int(arr[3,65-bottom,3])],'air')
+        self.assertEqual(renderer.materials[int(arr[4,66-bottom,4])],'dark_oak_fence')
