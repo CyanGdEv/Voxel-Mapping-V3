@@ -90,5 +90,37 @@ class WickerStructureTests(unittest.TestCase):
         self.assertFalse(any(l.trunks.values()))
         self.assertEqual(l.audit['geometry']['vegetation']['estimated_trunks_rejected_in_structural_columns'],1)
 
+    def revised_profile(self):
+        return json.loads((Path(__file__).resolve().parents[1]/'voxel_mapper/data/wicker-structural-reconstruction-v2.json').read_text())['big_bob']
+
+    def test_revised_sculpture_keeps_the_whole_stepped_shell_connected(self):
+        model=effigy_model(self.revised_profile(),407530,343530,-31)
+        xyz=np.array(list(model));lo=xyz.min(0);hi=xyz.max(0)
+        solid=np.zeros(hi-lo+1,bool);solid[tuple((xyz-lo).T)]=True
+        self.assertEqual(ndi.label(solid)[1],1)
+        self.assertGreater(len(model),500)
+
+    def test_revised_surface_does_not_reintroduce_broad_bark_cladding_or_button_eyes(self):
+        model=effigy_model(self.revised_profile(),407530,343530,-31)
+        self.assertFalse(any('_log' in m for m in model.values()))
+        self.assertGreater(sum('stairs' in m for m in model.values()),200)
+        self.assertIn('dark_oak_slab_top',model.values())
+        self.assertFalse(any(m.startswith('dark_oak_trapdoor') for m in model.values()))
+
+    def test_revised_shoulder_emitters_have_pads_and_less_overlapping_smoke(self):
+        model=effigy_model(self.revised_profile(),407530,343530,-31)
+        fires=[p for p,m in model.items() if m=='campfire']
+        self.assertEqual(len(fires),2)
+        for x,y,z in fires:self.assertIn((x,y-1,z),model)
+
+    def test_revised_side_curls_leave_their_centres_open(self):
+        import math
+        p=self.revised_profile();model=effigy_model(p,407530,343530,-31)
+        front=np.asarray(p['front_bng_direction']);side=np.array([-front[1],front[0]])
+        for sign in (-1,1):
+            en=np.asarray(p['head_center_bng_en'])+sign*3.5*side
+            point=(math.floor(en[0]-407530),math.floor(p['base_odn_m']+15.3-31),math.floor(343530-en[1]))
+            self.assertNotIn(point,model)
+
 
 if __name__=='__main__':unittest.main()

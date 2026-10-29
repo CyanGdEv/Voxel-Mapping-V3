@@ -33,7 +33,7 @@ from .osm_provisional_alignment import osm_collection
 from .transport import transport_profile, TRANSPORT_KINDS
 from .wicker_registration import apply_candidate
 
-BUILD_VERSION = 'alton-aligned-world-v5'
+BUILD_VERSION = 'alton-aligned-world-v6'
 WICKER_AFFINE = [0.9998213909931154, 0.01889936804739159,
                  -0.018899368047391618, 0.9998213909931155,
                  407471.9211529803, 343471.93766571034]
@@ -670,6 +670,8 @@ def export(layers, output, verify=True):
     wrapper = LevelDBFormat(str(world)); wrapper.create_and_open('bedrock', VERSION)
     root = wrapper.root_tag.compound
     root['LevelName'] = StringTag('Alton Towers — Wicker structure fix v5' if hasattr(layers,'structural_vegetation_min') else 'Alton Towers — LiDAR detail v4' if hasattr(layers,'lidar_detail') else 'Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
+    if getattr(layers,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v2':
+        root['LevelName']=StringTag('Alton Towers — Wicker sculpture rework v6')
     root['GameType'], root['Difficulty'] = IntTag(1), IntTag(0)
     root['RandomSeed'], root['Time'] = LongTag(0), LongTag(6000)
     for key, value in zip(('SpawnX', 'SpawnY', 'SpawnZ'), layers.spawn): root[key] = IntTag(value)
