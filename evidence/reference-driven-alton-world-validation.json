@@ -1,0 +1,71 @@
+{
+  "changed_ground_surface_blocks": 7058,
+  "changed_native_block_states": 39315,
+  "changed_water_cells": 0,
+  "compared_v2_native_chunks": 1916,
+  "generic_roof_cells_checked_unchanged": 23807,
+  "level_name": "Alton Towers \u2014 reference update v3",
+  "limitations": [
+    "Ride vertical profiles, bents and station transitions are provisional; some rail cells at roofs are withheld.",
+    "Theming is observed LiDAR surface voxels, not a finished verified sculpture; unobserved tunnel roof sections remain unbuilt.",
+    "No banking, inversion geometry, vehicles, ride operation or Minecraft client import test is claimed."
+  ],
+  "minecraft_client_tested": false,
+  "model_weights_retrained": false,
+  "native_full_export": {
+    "all_unwritten_section_air_checked": true,
+    "chunks": 9100,
+    "compared_envelope_cells": 53169920,
+    "material_properties_checked": true,
+    "status": "passed"
+  },
+  "new_role_cells_that_differ_from_v2": {
+    "Galactica-supports": 1297,
+    "Galactica-track": 1874,
+    "Nemesis Reborn-supports": 1146,
+    "Nemesis Reborn-track": 1491,
+    "The Smiler-supports": 514,
+    "The Smiler-track": 1994,
+    "big-bob": 107,
+    "monorail-supports": 956,
+    "monorail-track": 3781,
+    "towers-street-marked-barriers": 210,
+    "towers-street-marked-rock-boundaries": 235,
+    "wicker-queue": 55,
+    "wicker-sound-tunnel": 495
+  },
+  "new_role_cells_verified": {
+    "Galactica-supports": 1297,
+    "Galactica-track": 1874,
+    "Nemesis Reborn-supports": 1146,
+    "Nemesis Reborn-track": 1491,
+    "The Smiler-supports": 514,
+    "The Smiler-track": 1994,
+    "big-bob": 107,
+    "monorail-supports": 956,
+    "monorail-track": 3781,
+    "towers-street-marked-barriers": 210,
+    "towers-street-marked-rock-boundaries": 235,
+    "wicker-queue": 55,
+    "wicker-sound-tunnel": 495
+  },
+  "physical_registration_verified": false,
+  "replaced_or_cleared_foliage_blocks": 17919,
+  "required_new_air_cells_verified": 63283,
+  "retained_wicker_structure_cells_verified": 13000,
+  "source_ink_recovery": {
+    "Big_Bob_source_candidates_after": 941,
+    "Big_Bob_source_candidates_before": 58,
+    "queue_source_candidates_after": 1193,
+    "queue_source_candidates_before": 89
+  },
+  "spawn": [
+    418,
+    154,
+    -787
+  ],
+  "spawn_floor_and_headroom_checked": true,
+  "status": "passed",
+  "tests_passed": 51,
+  "version": "reference-driven-alton-world-validation-v1"
+}

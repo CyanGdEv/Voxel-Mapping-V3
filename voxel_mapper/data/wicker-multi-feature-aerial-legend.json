@@ -8,10 +8,10 @@
   "authority": "User: green is Wicker Man sound tunnel; blue is Big Bob theming structure; red path/plaza boundaries; yellow Wicker Man ride track; purple queue line",
   "colour_rules": [
     {"colour": "green", "label": "sound_tunnel_trace", "display_rgb": [20, 240, 40], "include_box": [165, 170, 345, 365], "max_component_radius_px": 4, "hsv_ranges": [[[43, 125, 135], [84, 255, 255]]]},
-    {"colour": "blue/cyan", "label": "theming_structure", "display_rgb": [20, 210, 245], "include_box": [355, 475, 435, 545], "max_component_radius_px": 4, "hsv_ranges": [[[85, 85, 100], [114, 255, 255]]]},
+    {"colour": "blue/cyan", "label": "theming_structure", "display_rgb": [20, 210, 245], "include_box": [355, 475, 435, 545], "max_component_radius_px": 8, "hsv_ranges": [[[85, 85, 100], [114, 255, 255]]]},
     {"colour": "red and light red", "label": "paving_trace", "display_rgb": [255, 100, 110], "include_box": [3, 3, 830, 1270], "max_component_radius_px": 4, "hsv_ranges": [[[0, 65, 150], [12, 255, 255]], [[173, 65, 150], [179, 255, 255]]]},
     {"colour": "yellow", "label": "roller_coaster_track", "display_rgb": [255, 215, 20], "include_box": [135, 205, 515, 575], "max_component_radius_px": 4, "hsv_ranges": [[[15, 100, 130], [38, 255, 255]]]},
-    {"colour": "purple", "label": "queue_line_trace", "display_rgb": [170, 35, 185], "include_box": [485, 460, 580, 550], "max_component_radius_px": 4, "hsv_ranges": [[[129, 65, 65], [172, 255, 255]]]}
+    {"colour": "purple", "label": "queue_line_trace", "display_rgb": [170, 35, 185], "include_box": [485, 460, 580, 550], "max_component_radius_px": 8, "hsv_ranges": [[[129, 65, 65], [172, 255, 255]]]}
   ],
   "named_features": {
     "sound_tunnel_trace": "Wicker Man sound tunnel",
