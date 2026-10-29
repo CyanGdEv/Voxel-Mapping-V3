@@ -120,10 +120,11 @@ def fit(rows,balanced=True,settings=None):
     return model.eval(),{'settings':s,'balanced':balanced,'ground_counts':cg.tolist(),'canopy_counts':cc.tolist(),'ground_weights':wg.tolist(),'canopy_weights':wc.tolist(),'narrow_anchor_counts':[len(a) for a in narrow],'interface_anchor_counts':[len(a) for a in interfaces],'anchor_draw_counts':draw_counts,'history':history,'parameter_change_l2':change,'parameter_count':sum(p.numel() for p in model.parameters())}
 
 
-def predict(model,features):
+def predict(model,features,return_probabilities=False):
     import torch
     if features.ndim!=3 or features.shape[2] not in (3,16,20) or features.shape[0]*features.shape[1]>1048576 or not np.isfinite(features).all():raise ValueError('Bounded finite layered features required')
     h,w=features.shape[:2];core=160;halo=16;pad=np.pad(features,((halo,(-h)%core+halo),(halo,(-w)%core+halo),(0,0)),mode='reflect');ground=np.empty((h,w),np.uint8);canopy=ground.copy();uncertainty=np.empty((h,w),np.float32)
+    probabilities=np.empty((h,w,4),np.float32) if return_probabilities else None
     model.eval()
     with torch.no_grad():
         for top in range(0,h,core):
@@ -131,7 +132,8 @@ def predict(model,features):
                 x=torch.from_numpy(pad[top:top+core+2*halo,left:left+core+2*halo].transpose(2,0,1).copy()).float()[None];logits=model(x)[0,:,halo:halo+core,halo:halo+core];hh,ww=min(core,h-top),min(core,w-left)
                 prob=logits[:4].softmax(0);ground[top:top+hh,left:left+ww]=prob.argmax(0).numpy()[:hh,:ww];canopy[top:top+hh,left:left+ww]=logits[4:].argmax(0).numpy()[:hh,:ww]
                 uncertainty[top:top+hh,left:left+ww]=(-(prob*prob.clamp(min=1e-8).log()).sum(0)/np.log(4)).numpy()[:hh,:ww]
-    return ground,canopy,uncertainty
+                if return_probabilities:probabilities[top:top+hh,left:left+ww]=prob.permute(1,2,0).numpy()[:hh,:ww]
+    return (ground,canopy,uncertainty,probabilities) if return_probabilities else (ground,canopy,uncertainty)
 
 
 def save(model,rows,manifest,folder,training,encoder_pin=None):

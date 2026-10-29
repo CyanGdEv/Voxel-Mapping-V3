@@ -1,0 +1,1509 @@
+{
+  "browser": {
+    "all_marker_selections_checked": 37,
+    "combinations_checked": 30,
+    "errors": [],
+    "external_requests": [],
+    "focus_modes": 2,
+    "mobile_no_overflow": true,
+    "regressions_and_limitations_visible": true,
+    "sites": 3,
+    "source_frame_dimensions_unchanged": true,
+    "unique_images_decoded": 15,
+    "view_modes": 5
+  },
+  "calibration_selection": {
+    "baseline_check_pixel_scores": {
+      "confusion": [
+        [
+          11084,
+          56,
+          1224,
+          1319
+        ],
+        [
+          1634,
+          5533,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2708
+        ]
+      ],
+      "iou": [
+        0.7236403995560489,
+        0.766025197286446,
+        null,
+        0.672460888999255
+      ],
+      "macro_iou": 0.7207088286139167,
+      "support": [
+        13683,
+        7167,
+        0,
+        2708
+      ]
+    },
+    "baseline_errors": {
+      "capped_mean_error_m": 0.3433333333333333,
+      "coverage": 1.0,
+      "detected_mean_signed_offset_m": -0.16999999999999996,
+      "detected_median_absolute_error_m": 0.26,
+      "detected_p90_absolute_error_m": 0.6799999999999999,
+      "inside_outside_probes_correct": 5,
+      "localized_markers": 6,
+      "missing_markers": 0,
+      "samples": 6,
+      "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+      "within_025m": 3,
+      "within_05m": 4
+    },
+    "candidates": [
+      {
+        "alpha": 0.25,
+        "errors": {
+          "capped_mean_error_m": 0.3166666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.09000000000000001,
+          "detected_median_absolute_error_m": 0.29000000000000004,
+          "detected_p90_absolute_error_m": 0.5700000000000001,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "macro_iou_delta": 0.011116716770179114,
+        "pixel_scores": {
+          "confusion": [
+            [
+              10952,
+              195,
+              1201,
+              1335
+            ],
+            [
+              1312,
+              5855,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.730376792264088,
+            0.7953001901657158,
+            null,
+            0.6697996537224833
+          ],
+          "macro_iou": 0.7318255453840958,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 0.0
+      },
+      {
+        "alpha": 0.25,
+        "errors": {
+          "capped_mean_error_m": 0.3166666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.09000000000000001,
+          "detected_median_absolute_error_m": 0.29000000000000004,
+          "detected_p90_absolute_error_m": 0.5700000000000001,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "macro_iou_delta": 0.010634478578627538,
+        "pixel_scores": {
+          "confusion": [
+            [
+              10951,
+              179,
+              1198,
+              1355
+            ],
+            [
+              1311,
+              5856,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.730358810190743,
+            0.7971685270895725,
+            null,
+            0.6665025842973172
+          ],
+          "macro_iou": 0.7313433071925443,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 1.0
+      },
+      {
+        "alpha": 0.5,
+        "errors": {
+          "capped_mean_error_m": 0.37333333333333335,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.20333333333333334,
+          "detected_median_absolute_error_m": 0.22,
+          "detected_p90_absolute_error_m": 0.81,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "macro_iou_delta": 0.012609603403756275,
+        "pixel_scores": {
+          "confusion": [
+            [
+              10724,
+              440,
+              1171,
+              1348
+            ],
+            [
+              985,
+              6143,
+              0,
+              39
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.7311153531497137,
+            0.8075456816090443,
+            null,
+            0.6612942612942613
+          ],
+          "macro_iou": 0.733318432017673,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 0.0
+      },
+      {
+        "alpha": 0.5,
+        "errors": {
+          "capped_mean_error_m": 0.37333333333333335,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.20333333333333334,
+          "detected_median_absolute_error_m": 0.22,
+          "detected_p90_absolute_error_m": 0.81,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "macro_iou_delta": 0.014821777888281651,
+        "pixel_scores": {
+          "confusion": [
+            [
+              10760,
+              391,
+              1172,
+              1360
+            ],
+            [
+              985,
+              6146,
+              0,
+              36
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.733569675484047,
+            0.8131780894416513,
+            null,
+            0.6598440545808967
+          ],
+          "macro_iou": 0.7355306065021984,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 1.0
+      },
+      {
+        "alpha": 0.75,
+        "errors": {
+          "capped_mean_error_m": 0.3066666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.24333333333333337,
+          "detected_median_absolute_error_m": 0.1,
+          "detected_p90_absolute_error_m": 0.77,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 4,
+          "within_05m": 5
+        },
+        "macro_iou_delta": -0.06287272706911329,
+        "pixel_scores": {
+          "confusion": [
+            [
+              9490,
+              1684,
+              1150,
+              1359
+            ],
+            [
+              554,
+              6208,
+              0,
+              405
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.6665730139776639,
+            0.7013896734832222,
+            null,
+            0.6055456171735242
+          ],
+          "macro_iou": 0.6578361015448034,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 0.0
+      },
+      {
+        "alpha": 0.75,
+        "errors": {
+          "capped_mean_error_m": 0.3066666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.24333333333333337,
+          "detected_median_absolute_error_m": 0.1,
+          "detected_p90_absolute_error_m": 0.77,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 4,
+          "within_05m": 5
+        },
+        "macro_iou_delta": -0.06465653087544476,
+        "pixel_scores": {
+          "confusion": [
+            [
+              9450,
+              1714,
+              1151,
+              1368
+            ],
+            [
+              549,
+              6214,
+              0,
+              404
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.6639966273187183,
+            0.6996959801824119,
+            null,
+            0.6044642857142857
+          ],
+          "macro_iou": 0.656052297738472,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 1.0
+      },
+      {
+        "alpha": 1.0,
+        "errors": {
+          "capped_mean_error_m": 0.18333333333333335,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.12333333333333334,
+          "detected_median_absolute_error_m": 0.1,
+          "detected_p90_absolute_error_m": 0.36,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 4,
+          "within_05m": 6
+        },
+        "macro_iou_delta": -0.10999602020959587,
+        "pixel_scores": {
+          "confusion": [
+            [
+              8743,
+              2438,
+              1133,
+              1369
+            ],
+            [
+              241,
+              6177,
+              0,
+              749
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.6279086469405343,
+            0.6431025507548151,
+            null,
+            0.5611272275176129
+          ],
+          "macro_iou": 0.6107128084043209,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 0.0
+      },
+      {
+        "alpha": 1.0,
+        "errors": {
+          "capped_mean_error_m": 0.18333333333333335,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.12333333333333334,
+          "detected_median_absolute_error_m": 0.1,
+          "detected_p90_absolute_error_m": 0.36,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 4,
+          "within_05m": 6
+        },
+        "macro_iou_delta": -0.10894861294895031,
+        "pixel_scores": {
+          "confusion": [
+            [
+              8761,
+              2415,
+              1135,
+              1372
+            ],
+            [
+              244,
+              6179,
+              0,
+              744
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2708
+            ]
+          ],
+          "iou": [
+            0.6290658433259136,
+            0.644854936338969,
+            null,
+            0.5613598673300166
+          ],
+          "macro_iou": 0.6117602156649664,
+          "support": [
+            13683,
+            7167,
+            0,
+            2708
+          ]
+        },
+        "role": "calibration_check",
+        "smoothing": 1.0
+      }
+    ],
+    "check_pixels_excluded_from_fitting": true,
+    "consumed_previous_check_site": "toverland",
+    "fresh_crop_used": false,
+    "improvement_found": true,
+    "selected": {
+      "alpha": 0.25,
+      "smoothing": 0.0
+    }
+  },
+  "checkpoint_seal": {
+    "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+    "base_weights_sha256": "49f025353a37669e2ee8bd7d3a312364049d141f6be6f69c27e6757c01dbc15b",
+    "calibration_sites": [
+      "efteling",
+      "toverland"
+    ],
+    "created_utc": "2026-10-28T23:51:04.457651+00:00",
+    "encoder_sha256": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649",
+    "fresh_predictions_computed": false,
+    "fresh_site_excluded": "duinrell",
+    "model_id": "2c567ee0713112db624106280a50e4797d5dfafee2c227cf42a2e48ae2c4ce5b",
+    "protocol_sha256": "f96b406777e7334d946237ff712039c109b0334a17f46d85fddd9d277708dee0",
+    "references_sha256": "af2d8596c6458857f5528e9e4193d91b92c63b1d6a2b940bf826d92ee594c96a",
+    "selected": {
+      "alpha": 0.25,
+      "smoothing": 0.0
+    },
+    "selection_sha256": "e644e44bdebd790b70a37f7bf9b1d23d054f676ad12e75dfca803acce92e3d53",
+    "source_receipts_sha256": {
+      "efteling": "5e0732c13604db26732178fe2b187f171f91c519981ea5fec70e4bf48ab78a47",
+      "toverland": "b657a502fb2cfd3f413b2af4a8b3a964e55ecbd21ef9d9be8d5eb5e3e844007b"
+    },
+    "weights_sha256": "29d843301a81bcd4f8ed2a0d6012cd660d1bfe0f889c65ee2a134f3e2e2212b0"
+  },
+  "portable_replay": {
+    "calibration_encoder_features_regenerated": true,
+    "exact_all_cohort_metrics": true,
+    "exact_prediction_files": [
+      {
+        "exact": true,
+        "file": "base-ground.png",
+        "site": "efteling"
+      },
+      {
+        "exact": true,
+        "file": "corrected-ground.png",
+        "site": "efteling"
+      },
+      {
+        "exact": true,
+        "file": "canopy.png",
+        "site": "efteling"
+      },
+      {
+        "exact": true,
+        "file": "base-ground.png",
+        "site": "toverland"
+      },
+      {
+        "exact": true,
+        "file": "corrected-ground.png",
+        "site": "toverland"
+      },
+      {
+        "exact": true,
+        "file": "canopy.png",
+        "site": "toverland"
+      },
+      {
+        "exact": true,
+        "file": "base-ground.png",
+        "site": "duinrell"
+      },
+      {
+        "exact": true,
+        "file": "corrected-ground.png",
+        "site": "duinrell"
+      },
+      {
+        "exact": true,
+        "file": "canopy.png",
+        "site": "duinrell"
+      }
+    ],
+    "exact_retrained_weights": true,
+    "helper_replayed_bundle_layout": true,
+    "replay_is_consumed_data_not_a_new_check": true
+  },
+  "production_eligible": false,
+  "reference_seal": {
+    "counts": {
+      "duinrell": {
+        "fresh_check": 12
+      },
+      "efteling": {
+        "calibration_check": 3,
+        "calibration_fit": 7
+      },
+      "toverland": {
+        "calibration_check": 3,
+        "calibration_fit": 12
+      }
+    },
+    "independent_human_review": false,
+    "no_correction_fit_yet": true,
+    "no_fresh_predictions_viewed": true,
+    "protocol_sha256": "f96b406777e7334d946237ff712039c109b0334a17f46d85fddd9d277708dee0",
+    "references_sha256": "af2d8596c6458857f5528e9e4193d91b92c63b1d6a2b940bf826d92ee594c96a"
+  },
+  "release_decision": {
+    "correction_candidate_promoted": false,
+    "decision": "retain existing baseline; research candidate only",
+    "fresh_capped_mean_error_delta_m": -0.1333333333333333,
+    "fresh_per_class_delta_m": {
+      "0": 0.05714285714285705,
+      "1": -0.7466666666666666,
+      "3": 0.11999999999999988
+    },
+    "model_weights_and_selection_unchanged_after_fresh_scoring": true,
+    "reason": "Small overall fresh-crop error reduction, but path/water markers and both consumed UK compatibility crops regress. No independent human reference review or positive canopy validation.",
+    "source_reference_uncertainty_m": {
+      "blurred_duinrell_water": 0.48,
+      "default": 0.4
+    },
+    "uk_macro_iou_delta": {
+      "user-tight-gardens": -0.03605417472174549,
+      "user-towers-mutiny": -0.015250630172263357
+    }
+  },
+  "report": {
+    "all_calibration_pixel_scores": {
+      "efteling": {
+        "baseline": {
+          "confusion": [
+            [
+              207145,
+              95,
+              913,
+              4958
+            ],
+            [
+              29488,
+              41218,
+              1761,
+              352
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              74236
+            ]
+          ],
+          "iou": [
+            0.85385760040231,
+            0.565296102257454,
+            null,
+            0.9332461720262489
+          ],
+          "macro_iou": 0.7841332915620042,
+          "support": [
+            213111,
+            72819,
+            0,
+            74236
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              206654,
+              521,
+              857,
+              5079
+            ],
+            [
+              24985,
+              46095,
+              1390,
+              349
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              74236
+            ]
+          ],
+          "iou": [
+            0.8679440225791277,
+            0.6285110444505045,
+            null,
+            0.9318638280779273
+          ],
+          "macro_iou": 0.8094396317025199,
+          "support": [
+            213111,
+            72819,
+            0,
+            74236
+          ]
+        },
+        "scope": "Previously consumed development masks; not unseen validation."
+      },
+      "toverland": {
+        "baseline": {
+          "confusion": [
+            [
+              48552,
+              0,
+              10183,
+              0
+            ],
+            [
+              8183,
+              4836,
+              1404,
+              0
+            ],
+            [
+              2293,
+              0,
+              34628,
+              0
+            ],
+            [
+              3100,
+              61,
+              8876,
+              69510
+            ]
+          ],
+          "iou": [
+            0.6714331152936621,
+            0.33388566694283345,
+            0.6034434685626655,
+            0.8523918721718763
+          ],
+          "macro_iou": 0.6152885307427594,
+          "support": [
+            58735,
+            14423,
+            36921,
+            81547
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              48748,
+              0,
+              9987,
+              0
+            ],
+            [
+              7068,
+              5954,
+              1401,
+              0
+            ],
+            [
+              2180,
+              0,
+              34741,
+              0
+            ],
+            [
+              1636,
+              175,
+              9430,
+              70306
+            ]
+          ],
+          "iou": [
+            0.7002111492552321,
+            0.40786409097136594,
+            0.6016903652643794,
+            0.8621531141550272
+          ],
+          "macro_iou": 0.6429796799115011,
+          "support": [
+            58735,
+            14423,
+            36921,
+            81547
+          ]
+        },
+        "scope": "Previously consumed development masks; not unseen validation."
+      }
+    },
+    "automatic_promotion": false,
+    "base_and_encoder_unchanged": true,
+    "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+    "canopy_unchanged": true,
+    "cohorts": {
+      "calibration_check": {
+        "baseline": {
+          "capped_mean_error_m": 0.3433333333333333,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.16999999999999996,
+          "detected_median_absolute_error_m": 0.26,
+          "detected_p90_absolute_error_m": 0.6799999999999999,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "by_class": {
+          "0": {
+            "baseline": {
+              "capped_mean_error_m": 0.11,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.11,
+              "detected_median_absolute_error_m": 0.11,
+              "detected_p90_absolute_error_m": 0.11,
+              "inside_outside_probes_correct": 1,
+              "localized_markers": 1,
+              "missing_markers": 0,
+              "samples": 1,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 1,
+              "within_05m": 1
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.11,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.11,
+              "detected_median_absolute_error_m": 0.11,
+              "detected_p90_absolute_error_m": 0.11,
+              "inside_outside_probes_correct": 1,
+              "localized_markers": 1,
+              "missing_markers": 0,
+              "samples": 1,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 1,
+              "within_05m": 1
+            }
+          },
+          "1": {
+            "baseline": {
+              "capped_mean_error_m": 0.59,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.31666666666666665,
+              "detected_median_absolute_error_m": 0.63,
+              "detected_p90_absolute_error_m": 0.71,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 3,
+              "missing_markers": 0,
+              "samples": 3,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 1
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.5366666666666667,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.15666666666666668,
+              "detected_median_absolute_error_m": 0.5700000000000001,
+              "detected_p90_absolute_error_m": 0.5700000000000001,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 3,
+              "missing_markers": 0,
+              "samples": 3,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 1
+            }
+          },
+          "3": {
+            "baseline": {
+              "capped_mean_error_m": 0.09,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.09,
+              "detected_median_absolute_error_m": 0.09,
+              "detected_p90_absolute_error_m": 0.09,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 2,
+              "missing_markers": 0,
+              "samples": 2,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 2,
+              "within_05m": 2
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.09,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.09,
+              "detected_median_absolute_error_m": 0.09,
+              "detected_p90_absolute_error_m": 0.09,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 2,
+              "missing_markers": 0,
+              "samples": 2,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 2,
+              "within_05m": 2
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 0.3166666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.09000000000000001,
+          "detected_median_absolute_error_m": 0.29000000000000004,
+          "detected_p90_absolute_error_m": 0.5700000000000001,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "samples": 6,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 3,
+          "within_05m": 4
+        }
+      },
+      "calibration_fit": {
+        "baseline": {
+          "capped_mean_error_m": 1.0763157894736843,
+          "coverage": 0.7894736842105263,
+          "detected_mean_signed_offset_m": -0.16866666666666666,
+          "detected_median_absolute_error_m": 0.25,
+          "detected_p90_absolute_error_m": 1.4979999999999993,
+          "inside_outside_probes_correct": 13,
+          "localized_markers": 15,
+          "missing_markers": 4,
+          "samples": 19,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 8,
+          "within_05m": 10
+        },
+        "by_class": {
+          "0": {
+            "baseline": {
+              "capped_mean_error_m": 0.21799999999999997,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.21799999999999997,
+              "detected_median_absolute_error_m": 0.1,
+              "detected_p90_absolute_error_m": 0.516,
+              "inside_outside_probes_correct": 10,
+              "localized_markers": 10,
+              "missing_markers": 0,
+              "samples": 10,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 6,
+              "within_05m": 8
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.202,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.2,
+              "detected_median_absolute_error_m": 0.1,
+              "detected_p90_absolute_error_m": 0.48,
+              "inside_outside_probes_correct": 10,
+              "localized_markers": 10,
+              "missing_markers": 0,
+              "samples": 10,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 7,
+              "within_05m": 9
+            }
+          },
+          "1": {
+            "baseline": {
+              "capped_mean_error_m": 1.88375,
+              "coverage": 0.625,
+              "detected_mean_signed_offset_m": -0.942,
+              "detected_median_absolute_error_m": 0.61,
+              "detected_p90_absolute_error_m": 2.27,
+              "inside_outside_probes_correct": 3,
+              "localized_markers": 5,
+              "missing_markers": 3,
+              "samples": 8,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 2,
+              "within_05m": 2
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.675,
+              "coverage": 0.75,
+              "detected_mean_signed_offset_m": -0.9600000000000001,
+              "detected_median_absolute_error_m": 1.1500000000000001,
+              "detected_p90_absolute_error_m": 2.04,
+              "inside_outside_probes_correct": 3,
+              "localized_markers": 6,
+              "missing_markers": 2,
+              "samples": 8,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 3
+            }
+          },
+          "3": {
+            "baseline": {
+              "capped_mean_error_m": 3.2,
+              "coverage": 0.0,
+              "detected_mean_signed_offset_m": null,
+              "detected_median_absolute_error_m": null,
+              "detected_p90_absolute_error_m": null,
+              "inside_outside_probes_correct": 0,
+              "localized_markers": 0,
+              "missing_markers": 1,
+              "samples": 1,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 0
+            },
+            "corrected": {
+              "capped_mean_error_m": 3.2,
+              "coverage": 0.0,
+              "detected_mean_signed_offset_m": null,
+              "detected_median_absolute_error_m": null,
+              "detected_p90_absolute_error_m": null,
+              "inside_outside_probes_correct": 0,
+              "localized_markers": 0,
+              "missing_markers": 1,
+              "samples": 1,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 0
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 0.9800000000000001,
+          "coverage": 0.8421052631578947,
+          "detected_mean_signed_offset_m": -0.23500000000000001,
+          "detected_median_absolute_error_m": 0.31,
+          "detected_p90_absolute_error_m": 1.8800000000000001,
+          "inside_outside_probes_correct": 13,
+          "localized_markers": 16,
+          "missing_markers": 3,
+          "samples": 19,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 7,
+          "within_05m": 12
+        }
+      },
+      "fresh_check": {
+        "baseline": {
+          "capped_mean_error_m": 1.1975,
+          "coverage": 0.9166666666666666,
+          "detected_mean_signed_offset_m": -0.03363636363636371,
+          "detected_median_absolute_error_m": 1.01,
+          "detected_p90_absolute_error_m": 2.09,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 11,
+          "missing_markers": 1,
+          "samples": 12,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 5,
+          "within_05m": 5
+        },
+        "by_class": {
+          "0": {
+            "baseline": {
+              "capped_mean_error_m": 0.6685714285714287,
+              "coverage": 0.8571428571428571,
+              "detected_mean_signed_offset_m": -0.1366666666666667,
+              "detected_median_absolute_error_m": 0.09,
+              "detected_p90_absolute_error_m": 0.5900000000000001,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 6,
+              "missing_markers": 1,
+              "samples": 7,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 5,
+              "within_05m": 5
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.7257142857142858,
+              "coverage": 0.8571428571428571,
+              "detected_mean_signed_offset_m": -0.2533333333333333,
+              "detected_median_absolute_error_m": 0.09,
+              "detected_p90_absolute_error_m": 0.7799999999999999,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 6,
+              "missing_markers": 1,
+              "samples": 7,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 5,
+              "within_05m": 5
+            }
+          },
+          "1": {
+            "baseline": {
+              "capped_mean_error_m": 2.236666666666667,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.8433333333333334,
+              "detected_median_absolute_error_m": 2.09,
+              "detected_p90_absolute_error_m": 2.522,
+              "inside_outside_probes_correct": 0,
+              "localized_markers": 3,
+              "missing_markers": 0,
+              "samples": 3,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 0
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.4900000000000002,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.009999999999999934,
+              "detected_median_absolute_error_m": 1.83,
+              "detected_p90_absolute_error_m": 2.166,
+              "inside_outside_probes_correct": 1,
+              "localized_markers": 3,
+              "missing_markers": 0,
+              "samples": 3,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 1
+            }
+          },
+          "3": {
+            "baseline": {
+              "capped_mean_error_m": 1.49,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 1.49,
+              "detected_median_absolute_error_m": 1.49,
+              "detected_p90_absolute_error_m": 1.874,
+              "inside_outside_probes_correct": 0,
+              "localized_markers": 2,
+              "missing_markers": 0,
+              "samples": 2,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 0
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.6099999999999999,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 1.6099999999999999,
+              "detected_median_absolute_error_m": 1.6099999999999999,
+              "detected_p90_absolute_error_m": 1.898,
+              "inside_outside_probes_correct": 0,
+              "localized_markers": 2,
+              "missing_markers": 0,
+              "samples": 2,
+              "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+              "within_025m": 0,
+              "within_05m": 0
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 1.0641666666666667,
+          "coverage": 0.9166666666666666,
+          "detected_mean_signed_offset_m": 0.15727272727272726,
+          "detected_median_absolute_error_m": 0.39,
+          "detected_p90_absolute_error_m": 1.97,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 11,
+          "missing_markers": 1,
+          "samples": 12,
+          "scope": "Normal displacement relative to source-reviewed aerial pixels. Missing edges receive the search-cap penalty; not surveyed ground accuracy.",
+          "within_025m": 5,
+          "within_05m": 6
+        }
+      }
+    },
+    "correction_checkpoint_id": "2c567ee0713112db624106280a50e4797d5dfafee2c227cf42a2e48ae2c4ce5b",
+    "fresh_site_now_consumed": "duinrell",
+    "independent_human_review": false,
+    "measurement_replay": {
+      "fresh_scores_used_for_selection": false,
+      "initial_outputs_sha256": {
+        "baseline-markers.json": "747e3ca3f4c517cf0470794afbd1260f8a120a179b64bc52ce86616a958e8608",
+        "corrected-markers.json": "3ef9fc5ba9eeb53c32853b55041364b670f223ad80d4e071f03f7dd1c549324c",
+        "report.json": "9202053835e190251727f9b610a7bbc9c79319953330309322199ddc1e08da9e"
+      },
+      "models_refitted": false,
+      "reason": "Explicit opposite-class probe now requires the named surface rather than merely any different class. Boundary positions, errors, selection settings and all learned weights are exactly unchanged."
+    },
+    "missing_boundary_penalty_m": 3.2,
+    "production_eligible": false,
+    "reference_uncertainty_m": {
+      "blurred_duinrell_water": 0.48,
+      "default": 0.4
+    },
+    "scope": "Small assistant-source-reviewed image-relative normal transects. Not surveyed accuracy, independent truth or a full-scene boundary benchmark.",
+    "selected": {
+      "alpha": 0.25,
+      "smoothing": 0.0
+    },
+    "selection_on_fresh_site": false,
+    "tree_boundary_validation_supported": false,
+    "version": "aerial-marker-error-correction-experiment-v1"
+  },
+  "reproduction": {
+    "all_fitting_pixels_outside_4m_check_guard": true,
+    "base_weights_unchanged": true,
+    "checks": [
+      {
+        "exact_descriptor_replay": true,
+        "exact_native_height_replay": true,
+        "site": "efteling",
+        "valid_height_fraction": 0.3143730163574219
+      },
+      {
+        "exact_descriptor_replay": true,
+        "exact_native_height_replay": true,
+        "site": "toverland",
+        "valid_height_fraction": 0.4051675796508789
+      },
+      {
+        "exact_descriptor_replay": true,
+        "exact_native_height_replay": true,
+        "site": "duinrell",
+        "valid_height_fraction": 0.6040430068969727
+      }
+    ],
+    "exact_repeat_fit_weights": true,
+    "fresh_site_absent_from_fit": true,
+    "repeat_fit_history_exact": true,
+    "repeat_fit_steps": 600,
+    "repeat_fit_used_fresh_data": false,
+    "source_marker_colours_used_as_features": false
+  },
+  "resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "peak_rss_mb": 812.65625,
+    "wall_seconds": 65.62850010600232
+  },
+  "source_rights": {
+    "encoder_and_derived_model_license_scope": "Retained NVIDIA upstream non-commercial research/evaluation licence; new data rights do not expand pretrained model rights.",
+    "height": {
+      "capture_period": [
+        2020,
+        2022
+      ],
+      "exact_local_capture_date": null,
+      "generation": "AHN4",
+      "license": "CC0-1.0",
+      "license_evidence": "Retained WCS capabilities AccessConstraints: otherRestrictions; Geen beperkingen; http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+      "provider": "AHN via PDOK"
+    },
+    "nir_input_scope": "Rendered PDOK CIR colour cue in experimental residual model; not calibrated reflectance.",
+    "nir_training_input": true,
+    "rgb_cir": {
+      "data_room": "https://www.beeldmateriaal.nl/dataroom",
+      "license": "CC-BY-4.0",
+      "license_href_verified": "https://creativecommons.org/licenses/by/4.0/deed.nl",
+      "provider": "Beeldmateriaal via PDOK",
+      "publisher_page": "https://www.pdok.nl/-/luchtfoto-2025-nu-beschikbaar-bij-pdok"
+    }
+  },
+  "tests_passed": 47,
+  "uk_compatibility": [
+    {
+      "base_checkpoint": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+      "baseline": {
+        "confusion": [
+          [
+            27780,
+            2021,
+            4390,
+            0
+          ],
+          [
+            1005,
+            15828,
+            188,
+            0
+          ],
+          [
+            746,
+            0,
+            8571,
+            0
+          ],
+          [
+            700,
+            0,
+            535,
+            0
+          ]
+        ],
+        "iou": [
+          0.7581463893892255,
+          0.8312152084865035,
+          0.593970893970894,
+          0.0
+        ],
+        "macro_iou": 0.5458331229616558,
+        "support": [
+          34191,
+          17021,
+          9317,
+          1235
+        ]
+      },
+      "cir_present": false,
+      "corrected": {
+        "confusion": [
+          [
+            26461,
+            2688,
+            5042,
+            0
+          ],
+          [
+            671,
+            16141,
+            209,
+            0
+          ],
+          [
+            656,
+            0,
+            8661,
+            0
+          ],
+          [
+            662,
+            8,
+            565,
+            0
+          ]
+        ],
+        "iou": [
+          0.731370923161968,
+          0.8186336663792666,
+          0.5723253816163352,
+          0.0
+        ],
+        "macro_iou": 0.5305824927893924,
+        "support": [
+          34191,
+          17021,
+          9317,
+          1235
+        ]
+      },
+      "corrector_checkpoint": "2c567ee0713112db624106280a50e4797d5dfafee2c227cf42a2e48ae2c4ce5b",
+      "ground_pixels_changed": 29004,
+      "id": "user-towers-mutiny",
+      "scope": "Consumed UK fitting source; RGB-only compatibility check, not independent validation.",
+      "source_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+      "weights_or_settings_changed": false
+    },
+    {
+      "base_checkpoint": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+      "baseline": {
+        "confusion": [
+          [
+            10760,
+            739,
+            11636,
+            0
+          ],
+          [
+            7314,
+            62,
+            1026,
+            0
+          ],
+          [
+            12,
+            0,
+            13168,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "iou": [
+          0.35323856734841275,
+          0.00678262772125588,
+          0.5095580837396486,
+          null
+        ],
+        "macro_iou": 0.2898597596031058,
+        "support": [
+          23135,
+          8402,
+          13180,
+          0
+        ]
+      },
+      "cir_present": false,
+      "corrected": {
+        "confusion": [
+          [
+            8119,
+            1142,
+            13560,
+            314
+          ],
+          [
+            7180,
+            186,
+            1036,
+            0
+          ],
+          [
+            9,
+            0,
+            13171,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "iou": [
+          0.26774172272787233,
+          0.019488683989941323,
+          0.4741863479262673,
+          null
+        ],
+        "macro_iou": 0.2538055848813603,
+        "support": [
+          23135,
+          8402,
+          13180,
+          0
+        ]
+      },
+      "corrector_checkpoint": "2c567ee0713112db624106280a50e4797d5dfafee2c227cf42a2e48ae2c4ce5b",
+      "ground_pixels_changed": 88886,
+      "id": "user-tight-gardens",
+      "scope": "Consumed UK fitting source; RGB-only compatibility check, not independent validation.",
+      "source_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+      "weights_or_settings_changed": false
+    }
+  ]
+}
