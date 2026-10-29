@@ -17,10 +17,12 @@ from .ride_aerial_supervision import register, project_pixels, height_features
 LABELS = {'monorail': 1, 'roller_coaster_track': 2, 'theming_structure': 3,
           'support_structure': 4, 'fence_barrier': 5, 'path_trace': 6,
           'rock_boundary': 7, 'tree_feature': 8, 'grass_island_location': 9,
+          'structure_trace': 10, 'paving_trace': 11,
           'unlabelled': 255}
 COLOURS = {1: (255, 220, 0), 2: (220, 20, 220), 3: (255, 140, 15),
            4: (20, 220, 240), 5: (100, 50, 230), 6: (255, 40, 40),
-           7: (220, 140, 240), 8: (20, 210, 30), 9: (160, 240, 70)}
+           7: (220, 140, 240), 8: (20, 210, 30), 9: (160, 240, 70),
+           10: (155, 35, 190), 11: (255, 100, 110)}
 
 
 def extract(rgb, definition):
@@ -41,6 +43,11 @@ def extract(rgb, definition):
             x0, y0, x1, y1 = rule['include_box']; allowed = np.zeros(mask.shape, bool); allowed[y0:y1, x0:x1] = True; mask &= allowed
         components, _ = ndi.label(mask, np.ones((3, 3)))
         sizes = np.bincount(components.ravel()); mask &= sizes[components] >= 2
+        if rule.get('max_component_radius_px'):
+            radius = float(rule['max_component_radius_px'])
+            if not .5 <= radius <= 16: raise ValueError('Bounded annotation stroke radius required')
+            maxima = ndi.maximum(ndi.distance_transform_edt(mask), components, np.arange(len(sizes)))
+            mask &= maxima[components] <= radius
         # Overlapping colour ranges are held rather than silently relabelled.
         conflict = mask & (target != 255) & (target != LABELS[name])
         if conflict.any(): raise ValueError('Image-local colour ranges overlap across classes')
@@ -75,6 +82,28 @@ def extract(rgb, definition):
     return target, {'colours': review, 'green': green_review}
 
 
+def filter_ink(reference, clean, matrix, labels, specification):
+    """Reject naturally coloured objects that also occur in the clean image."""
+    radius = specification.get('neighbourhood_radius_px', 2)
+    threshold = specification.get('min_rms', 18)
+    if type(radius) is not int or not 0 <= radius <= 4 or not 5 <= threshold <= 80:
+        raise ValueError('Bounded source-ink colour residual settings required')
+    expected = cv2.warpAffine(clean, np.asarray(matrix, np.float64), (reference.shape[1], reference.shape[0]),
+        flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP, borderMode=cv2.BORDER_REFLECT)
+    padded = np.pad(expected.astype(np.float32), ((radius, radius), (radius, radius), (0, 0)), mode='edge')
+    difference = np.full(labels.shape, np.inf, np.float32); ref = reference.astype(np.float32)
+    for dy in range(2*radius+1):
+        for dx in range(2*radius+1):
+            other = padded[dy:dy+labels.shape[0], dx:dx+labels.shape[1]]
+            difference = np.minimum(difference, np.sqrt(np.mean((ref-other)**2, axis=-1)))
+    accepted = labels.copy(); accepted[(labels != 255) & (difference < threshold)] = 255
+    return accepted, {'method': 'Minimum RGB RMS against locally aligned clean source',
+        'minimum_rms': threshold, 'neighbourhood_radius_reference_pixels': radius,
+        'before_pixels': int((labels != 255).sum()), 'after_pixels': int((accepted != 255).sum()),
+        'natural_colour_candidates_rejected': int(np.count_nonzero((labels != 255) & (accepted == 255))),
+        'automatic_extraction_human_verified': False}
+
+
 def build(reference, clean, receipt_file, frame_file, legend_file, output, dtm=None, dsm=None):
     reference, clean, receipt_file, frame_file, legend_file, output = map(Path, (reference, clean, receipt_file, frame_file, legend_file, output))
     if output.exists(): raise ValueError('Fresh supervision output required')
@@ -90,6 +119,8 @@ def build(reference, clean, receipt_file, frame_file, legend_file, output, dtm=N
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
     registration_mask = labels.copy(); registration_mask[(hsv[:, :, 1] > 150) & (hsv[:, :, 2] > 140)] = 0
     matrix, alignment = register(rgb, model_rgb, registration_mask)
+    if definition.get('ink_filter'):
+        labels, extraction['source_ink_filter'] = filter_ink(rgb, model_rgb, matrix, labels, definition['ink_filter'])
     target = cv2.warpAffine(labels, matrix, (receipt['width'], receipt['height']), flags=cv2.INTER_NEAREST, borderValue=255)
     yy, xx = np.nonzero(labels != 255); codes = labels[yy, xx]
     groups = ((yy//4)*(rgb.shape[1]//4+1)+xx//4)*16+codes

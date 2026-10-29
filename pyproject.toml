@@ -44,6 +44,7 @@ voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 voxel-alton-world = "voxel_mapper.alton_aligned_world:main"
 voxel-ride-aerial-supervision = "voxel_mapper.ride_aerial_supervision:main"
 voxel-aerial-feature-supervision = "voxel_mapper.aerial_feature_supervision:main"
+voxel-tight-trace-learning = "voxel_mapper.tight_trace_learning:main"
 
 [project.optional-dependencies]
 alignedworld = ["scipy>=1.11,<2", "PyMuPDF>=1.26,<2"]

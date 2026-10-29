@@ -50,8 +50,9 @@ def forward(x,parameters):
     return hidden,p
 
 
-def fit(x,y,settings=None,*,cancelled=lambda:False,class_count=5):
+def fit(x,y,settings=None,*,cancelled=lambda:False,class_count=5,feature_count=FEATURE_COUNT):
     if type(class_count) is not int or class_count not in (2,5):raise ValueError('Binary or five-class neural head required')
+    if type(feature_count) is not int or not 1<=feature_count<=64:raise ValueError('Bounded explicit input feature count required')
     settings={**DEFAULTS,**(settings or {})}
     if set(settings)!=set(DEFAULTS):raise ValueError('Known aerial network settings required')
     for key,low,high in [('hidden',8,64),('epochs',1,120),('batch_size',32,2048),('seed',0,2**32-1)]:
@@ -59,10 +60,10 @@ def fit(x,y,settings=None,*,cancelled=lambda:False,class_count=5):
     if any(type(settings[k]) not in (int,float) for k in ['learning_rate','regularization']):raise ValueError('Numeric optimizer settings required')
     if not 0<float(settings['learning_rate'])<=.05 or not 0<=float(settings['regularization'])<=.1:raise ValueError('Bounded optimization settings required')
     x=np.asarray(x,np.float32);y=np.asarray(y)
-    if x.ndim!=2 or x.shape[1]!=FEATURE_COUNT or len(x)!=len(y) or not 5<=len(x)<=100000 or not np.isfinite(x).all():raise ValueError('Bounded labelled aerial samples required')
+    if x.ndim!=2 or x.shape[1]!=feature_count or len(x)!=len(y) or not 5<=len(x)<=100000 or not np.isfinite(x).all():raise ValueError('Bounded labelled aerial samples required')
     if y.dtype.kind not in 'iu' or set(y.tolist())!=set(range(class_count)):raise ValueError('Every output class required for fitting')
     mean=x.mean(axis=0);scale=np.maximum(x.std(axis=0),.03);normalized=(x-mean)/scale
-    parameters=initialize(hidden=settings['hidden'],classes=class_count,seed=settings['seed']);initial={k:v.copy() for k,v in parameters.items()}
+    parameters=initialize(inputs=feature_count,hidden=settings['hidden'],classes=class_count,seed=settings['seed']);initial={k:v.copy() for k,v in parameters.items()}
     moments={k:np.zeros_like(v) for k,v in parameters.items()};velocities={k:np.zeros_like(v) for k,v in parameters.items()}
     counts=np.bincount(y,minlength=class_count);weights=len(y)/(class_count*counts);rng=np.random.default_rng(settings['seed']);history=[];step=0
     for epoch in range(settings['epochs']):
