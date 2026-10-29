@@ -1,0 +1,151 @@
+{
+  "all_retained_and_new_surface_cells_verified": 53753,
+  "baseline_archive_sha256": "ec4fabbc274fb744fc879fa1bca1b8e6b79ecff318b07beac290328566c5c757",
+  "changed_above_ground_native_columns": 54732,
+  "changed_native_block_states": 124822,
+  "changed_native_water_cells": 0,
+  "compared_saved_world_chunks": 9100,
+  "lidar_sampling": {
+    "archive_sha256": "0da1c50d0df63f6dd7b49dca29286180eabf20261530fb8afe05645cf0235b1e",
+    "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+    "bounds_bng": [
+      406896,
+      342880,
+      408976,
+      344000
+    ],
+    "crs": "EPSG:27700",
+    "eligible_class_counts": {
+      "1": 63650,
+      "2": 4461994,
+      "3": 266977,
+      "4": 730772,
+      "5": 5255010,
+      "6": 254793,
+      "7": 434
+    },
+    "eligible_local_points": 11033630,
+    "entry": "SK0540_P_10682_20220105_20220105.laz",
+    "excluded_local_withheld_or_synthetic_points": 0,
+    "index_is_sparse_3d_not_highest_return_grid": true,
+    "license": "OGL-UK-3.0",
+    "multi_height_native_columns": 1142838,
+    "one_metre_evidence_cells": 6247300,
+    "quarter_index_classes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "quarter_index_covers_all_eligible_classes": true,
+    "quarter_index_points_accounted_for": 11033630,
+    "quarter_metre_evidence_cells": 10869678,
+    "random_subsampling": false,
+    "raw_xyz_preserved": true,
+    "retained_classes": [
+      1,
+      6
+    ],
+    "retained_native_xyz_points": 318443,
+    "samples_file": "lidar-detail-samples.npz",
+    "samples_sha256": "cab158d6a12f7379a1e486997235e799499250efdbe42092ce26cabe6cd59a8a",
+    "sampling_xy_m": 0.25,
+    "sampling_z_m": 0.25,
+    "scanned_points": 98342681,
+    "scope": "Every eligible local return indexed in sparse 0.25 m 3-D cells, including ground and vegetation. Original class-1/6 XYZ additionally retained. Class 1 is unclassified evidence, not automatically a building or ride. Vegetation is not structural height truth. Finer bins do not add observations.",
+    "survey_date": "2022-01-05",
+    "survey_id": "P_10682",
+    "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+    "version": "alton-lidar-detail-v1",
+    "vertical_datum": "ODN",
+    "wall_seconds": 39.50783312400017
+  },
+  "limits": [
+    "Quarter-metre sampling is evidence resolution; the world remains 1 m horizontally, using half-block structural surfaces.",
+    "Source gaps and occluded geometry remain unknown. Class 1 is retained evidence, not automatically a structure.",
+    "Existing ride heights/supports/stations remain provisional. No client import or independently surveyed accuracy test is claimed."
+  ],
+  "minecraft_client_tested": false,
+  "native_cloud_class_counts": {
+    "1": 63650,
+    "2": 4461994,
+    "3": 266977,
+    "4": 730772,
+    "5": 5255010,
+    "6": 254793,
+    "7": 434
+  },
+  "native_cloud_points_verified": 11033630,
+  "native_cloud_quarter_index_keys_counts_and_structural_xyz_match": true,
+  "native_cloud_sha256": "6603e51f107c7dfe9824ad793a0cd3d5603d75ee9cf6672a9912b95066c37fa1",
+  "native_full_export": {
+    "all_unwritten_section_air_checked": true,
+    "chunks": 9100,
+    "compared_envelope_cells": 53212416,
+    "material_properties_checked": true,
+    "status": "passed"
+  },
+  "new_lidar_surface_cells_verified": 26609,
+  "physical_registration_verified": false,
+  "reserved_reference_air_cells_verified": 63283,
+  "retained_wicker_structure_cells_verified": 13000,
+  "spawn_floor_and_headroom_checked": true,
+  "status": "passed",
+  "tests_passed": 63,
+  "unchanged_v3_reference_cells_by_role": {
+    "Galactica-supports": 1297,
+    "Galactica-track": 1874,
+    "Nemesis Reborn-supports": 1146,
+    "Nemesis Reborn-track": 1491,
+    "The Smiler-supports": 514,
+    "The Smiler-track": 1994,
+    "big-bob": 107,
+    "monorail-supports": 956,
+    "monorail-track": 3781,
+    "towers-street-marked-barriers": 210,
+    "towers-street-marked-rock-boundaries": 235,
+    "wicker-queue": 55,
+    "wicker-sound-tunnel": 495
+  },
+  "version": "alton-park-wide-lidar-world-validation-v1",
+  "world_lidar_geometry": {
+    "accepted_layer_fit_median_p95_after_m": [
+      0.12999999999999545,
+      0.2400000000000091
+    ],
+    "accepted_layer_fit_median_p95_before_m": [
+      0.13999999999998636,
+      0.3650000000000091
+    ],
+    "additional_observed_lower_surface_cells": 363,
+    "changed_roof_columns": 9291,
+    "fit_metric": "Residual to accepted survey layer medians, not held-out or independent physical accuracy.",
+    "geometry_policy": "All eligible source returns indexed across the complete park frame. Supported class-6 surfaces alter geometry inside and outside mapped building footprints. No global 3x3 median filter on observed roofs. Separate observed height layers retained. Protected Wicker, ride/guideway and reference corridors unchanged; unseen geometry is not completed.",
+    "minecraft_client_tested": false,
+    "minecraft_horizontal_resolution_m": 1,
+    "minecraft_roof_vertical_step_m": 0.5,
+    "new_observations_created": false,
+    "park_wide_ground_and_vegetation": {
+      "changed_native_ground_columns": 20273,
+      "foliage_detail_limit": "All eligible foliage returns already supplied native 1 m occupancy. Finer evidence cannot create additional observed tree detail at this block scale.",
+      "ground_native_columns_with_returns": 1816179,
+      "ground_return_quantisation_bound_m": 0.125,
+      "supported_ground_columns_applied": 772276,
+      "terrain_policy": "Weighted median of every class-2 return through 0.25 m height bins; at least 3 returns; reject >1.5 m mixed heights or DTM disagreement. Preserve water, bridges, buildings and protected references.",
+      "vegetation_native_occupancy_matches_prior_full_return_grid": true,
+      "vegetation_native_voxels_regridded": 4102575
+    },
+    "receipt_sha256": "606ae67c6655edb780e50cb924bb91b68c0a790c2274f684920354b2e4ff2d2b",
+    "structures_outside_mapped_buildings": {
+      "eligible_returns": 68588,
+      "isolated_half_layers_omitted": 740,
+      "observed_surface_blocks": 26246,
+      "policy": "Every supported class-6 half-height layer outside mapped buildings; no solid extrusion, footprint completion or gap interpolation. Protected references, water, bridges and path headroom excluded. Materials are RGB appearance proxies."
+    },
+    "unclassified_points_automatically_promoted_to_structures": false,
+    "version": "alton-lidar-detail-v1"
+  }
+}
