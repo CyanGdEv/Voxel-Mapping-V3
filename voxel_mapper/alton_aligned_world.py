@@ -33,7 +33,7 @@ from .osm_provisional_alignment import osm_collection
 from .transport import transport_profile, TRANSPORT_KINDS
 from .wicker_registration import apply_candidate
 
-BUILD_VERSION = 'alton-aligned-world-v6'
+BUILD_VERSION = 'alton-aligned-world-v7'
 WICKER_AFFINE = [0.9998213909931154, 0.01889936804739159,
                  -0.018899368047391618, 0.9998213909931155,
                  407471.9211529803, 343471.93766571034]
@@ -152,6 +152,13 @@ class ParkLayers:
             from .lidar_detail import apply
             apply(self, lidar_detail)
         self._trees()
+        if reference_edits:
+            manifest=_json(reference_edits)
+            if manifest.get('structure_profile'):
+                profile=_json((Path(reference_edits).parent/manifest['structure_profile']).resolve())
+                if profile.get('near_track_foliage'):
+                    from .ride_adjacent_foliage import apply
+                    apply(self,profile['near_track_foliage'])
         self._spawn()
         self.audit['sources'] = {
             'osm': _json(self.work/'inputs/osm/snapshot.json'),
@@ -559,6 +566,7 @@ class ChunkRenderer:
         for rows in layers.detail.values(): mats.update(r[3] for r in rows)
         for rows in getattr(layers,'reference_detail',{}).values(): mats.update(r[3] for r in rows)
         for rows in getattr(layers,'lidar_detail',{}).values(): mats.update(r[3] for r in rows)
+        for rows in getattr(layers,'ride_wood_fences',{}).values():mats.update(r[3] for r in rows)
         if mats-ALLOWED_MATERIALS: raise ValueError('Unknown materials: '+str(mats-ALLOWED_MATERIALS))
         self.materials = ['air']+sorted(mats-{'air'})
         self.ids = {m: i for i, m in enumerate(self.materials)}
@@ -585,6 +593,7 @@ class ChunkRenderer:
         reference_detail = getattr(l,'reference_detail',{}).get((cx,cz),())
         reference_air = getattr(l,'reference_air',{}).get((cx,cz),())
         lidar_detail = getattr(l,'lidar_detail',{}).get((cx,cz),())
+        wood_fences=getattr(l,'ride_wood_fences',{}).get((cx,cz),())
         bottom = int(min(ground.min(), floor[floor > -32768].min() if np.any(floor > -32768) else ground.min()))-4
         bottom = min(bottom, min((row[1] for row in detail), default=bottom), min((row[1] for row in clear), default=bottom))
         bottom = min(bottom,min((row[1]-2 for row in reference_detail),default=bottom),
@@ -596,6 +605,7 @@ class ChunkRenderer:
                   int(np.nanmax(np.nan_to_num(l.cloud['vegetation'][rs, cs], nan=0)))+l.offset+2)
         top=max(top,max((row[1]+2 for row in reference_detail),default=top),max((row[1]+2 for row in reference_air),default=top))
         top=max(top,max((row[1]+2 for row in lidar_detail),default=top))
+        top=max(top,max((row[1]+2 for row in wood_fences),default=top))
         bottom = max(-60, bottom); top = min(316, top)
         yy = np.arange(bottom, top+1)[None, :, None]
         g = ground.T[:, None, :]
@@ -637,6 +647,10 @@ class ChunkRenderer:
         for x,y,z,mat in lidar_detail:
             if not bottom<=y<=top:raise ValueError('Observed LiDAR surface outside chunk envelope')
             arr[x,y-bottom,z]=ids[mat]
+        for x,y,z in getattr(l,'ride_wood_clear',{}).get((cx,cz),()):
+            if bottom<=y<=top:arr[x,y-bottom,z]=0
+        for x,y,z,mat in wood_fences:
+            arr[x,y-bottom,z]=ids[mat]
         for x,y,z in reference_air:
             if bottom<=y<=top:arr[x,y-bottom,z]=0
         for x,y,z,mat in reference_detail:
@@ -672,6 +686,8 @@ def export(layers, output, verify=True):
     root['LevelName'] = StringTag('Alton Towers — Wicker structure fix v5' if hasattr(layers,'structural_vegetation_min') else 'Alton Towers — LiDAR detail v4' if hasattr(layers,'lidar_detail') else 'Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
     if getattr(layers,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v2':
         root['LevelName']=StringTag('Alton Towers — Wicker sculpture rework v6')
+    if getattr(layers,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v3':
+        root['LevelName']=StringTag('Alton Towers — Wicker track interactions v7')
     root['GameType'], root['Difficulty'] = IntTag(1), IntTag(0)
     root['RandomSeed'], root['Time'] = LongTag(0), LongTag(6000)
     for key, value in zip(('SpawnX', 'SpawnY', 'SpawnZ'), layers.spawn): root[key] = IntTag(value)
@@ -732,7 +748,9 @@ def export(layers, output, verify=True):
                 'quality': 'draft_unverified'})
     shutil.copy2(output/'world-report.json', world/'voxel-quality-report.json')
     shutil.copy2(output/'waypoints.json', world/'waypoints.json')
-    shutil.copy2(layers.wicker/'quality-report.json', world/'Wicker-Man-Retained-Detail-Report.json')
+    if hasattr(layers,'revised_wicker_samples'):
+        atomic_json(world/'Wicker-Man-Retained-Detail-Report.json',layers.wicker_quality)
+    else:shutil.copy2(layers.wicker/'quality-report.json', world/'Wicker-Man-Retained-Detail-Report.json')
     (world/'ATTRIBUTION.txt').write_text('OpenStreetMap contributors © ODbL-1.0 — https://www.openstreetmap.org/copyright\nContains Environment Agency information © Environment Agency and/or database right, OGL-UK-3.0.\nEsri World Imagery and imagery providers — source metadata retained in voxel-quality-report.json. Provider RGB source imagery is not included in this world archive.\nHistorical planning: Staffordshire Moorlands District Council public planning applications; document identifiers and source URLs retained in report.\n', encoding='utf-8')
     preview(layers, output)
     package(output)

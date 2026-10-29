@@ -1,0 +1,434 @@
+{
+  "actual_native_portal_ceilings": [
+    {
+      "actual_native_ceiling_odn_m": 192.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        652.5,
+        158.0,
+        -672.5
+      ],
+      "visit": 1
+    },
+    {
+      "actual_native_ceiling_odn_m": 192.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        653.5,
+        158.0,
+        -666.5
+      ],
+      "visit": 1
+    },
+    {
+      "actual_native_ceiling_odn_m": 188.5,
+      "clear_height_m": 3.5,
+      "portal_xyz": [
+        654.5,
+        154.0,
+        -667.5
+      ],
+      "visit": 2
+    },
+    {
+      "actual_native_ceiling_odn_m": 187.0,
+      "clear_height_m": 4.0,
+      "portal_xyz": [
+        657.5,
+        152.0,
+        -674.5
+      ],
+      "visit": 2
+    },
+    {
+      "actual_native_ceiling_odn_m": 187.0,
+      "clear_height_m": 4.0,
+      "portal_xyz": [
+        658.5,
+        152.0,
+        -670.5
+      ],
+      "visit": 3
+    },
+    {
+      "actual_native_ceiling_odn_m": 186.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        659.5,
+        152.0,
+        -672.5
+      ],
+      "visit": 3
+    }
+  ],
+  "all_big_bob_parts_connected_through_actual_timber": true,
+  "all_fence_replacements_within_two_blocks": true,
+  "baseline_archive_sha256": "d5aa7846f8440f1a5740bc1f2ae3f647cb3d246282ff7eb99c5c99dc81b958ce",
+  "big_bob_native_blocks_verified": 532,
+  "change_scope": "Exact 3-D track/support revision, figure/opening proposals and two-block source-foliage cells",
+  "changed_native_block_states": 2963,
+  "changed_water_blocks": 0,
+  "compared_world_chunks": 9100,
+  "diagnostic_camera_aims_are_pixel_calibrated": false,
+  "foliage_blocks_added": 0,
+  "foliage_blocks_removed": 932,
+  "lit_shoulder_campfires_with_native_block_entities": 2,
+  "minecraft_client_tested": false,
+  "model_owned_figure_materials": {
+    "campfire": 2,
+    "dark_oak_planks": 6,
+    "dark_oak_slab": 2,
+    "dark_oak_slab_top": 4,
+    "dark_oak_stairs_east": 20,
+    "dark_oak_stairs_north": 2,
+    "dark_oak_stairs_south": 3,
+    "dark_oak_stairs_west": 5,
+    "oak_fence": 2,
+    "oak_planks": 139,
+    "oak_slab": 12,
+    "oak_stairs_east": 40,
+    "oak_stairs_north": 24,
+    "oak_stairs_south": 9,
+    "oak_stairs_west": 18,
+    "oak_trapdoor_east": 3,
+    "oak_trapdoor_top": 2,
+    "oak_trapdoor_west": 6,
+    "smooth_stone_slab": 10,
+    "spruce_planks": 136,
+    "spruce_stairs_east": 26,
+    "spruce_stairs_north": 16,
+    "spruce_stairs_south": 27,
+    "spruce_stairs_west": 17,
+    "terracotta": 1
+  },
+  "native_changes_outside_declared_edit_cells": 0,
+  "native_full_export": {
+    "all_unwritten_section_air_checked": true,
+    "chunks": 9100,
+    "compared_envelope_cells": 53212928,
+    "material_properties_checked": true,
+    "status": "passed"
+  },
+  "near_track_foliage": {
+    "clearance_cells": 351,
+    "distance_blocks": 2.0,
+    "distance_metric": "Euclidean 3-D separation of source leaf cell and actual solid deck bounds",
+    "eligible_source_cells_within_distance": 4565,
+    "fence_cells": 2141,
+    "material": "dark_oak_fence",
+    "maximum_accepted_distance_blocks": 2.0,
+    "policy_authority": "User explicitly requested leaf cells within two blocks of a track section be converted to fences; keep track and running openings clear.",
+    "raw_survey_classifications_modified": false,
+    "scope": "retained Wicker Man wooden track",
+    "source_cell_positions_moved": false,
+    "withheld": {
+      "existing_structure": 1337,
+      "fence_height_collision": 25,
+      "ground_building_water": 457,
+      "running_opening": 326,
+      "walking_surface_headroom": 279
+    }
+  },
+  "open_native_curl_centres_x_y_z": [
+    [
+      655,
+      163,
+      -668
+    ],
+    [
+      660,
+      163,
+      -673
+    ]
+  ],
+  "previous_native_materials_at_source_fence_cells": {
+    "air": 1272,
+    "fence": 5,
+    "leaves": 849,
+    "log": 15
+  },
+  "remaining_native_leaves_in_structural_volumes": 0,
+  "reserved_space_cells_inspected": 66102,
+  "retained_geometry_cells_in_wide_openings": 550,
+  "retained_surface_material_cells_verified": 56223,
+  "retained_wicker_structure_cells_verified": 12909,
+  "semantic_features": [
+    {
+      "horizontal_margin_m": 1.25,
+      "id": "wicker-support-vegetation-separation",
+      "quality_report_sha256": "3259c5c0e968a3960bc7df17927050df89310fdd1cd52855e61b69a065dae6f1",
+      "raw_survey_classifications_overwritten": false,
+      "role": "registered_brown_footing_to_assigned_deck_structural_volumes",
+      "source_corridors": 1388,
+      "source_support_blocks_relocated": false,
+      "upper_deck_margin_m": 3,
+      "vegetation_returns_bulk_converted_to_wood": false
+    },
+    {
+      "base_odn_m": 179.0,
+      "body": "Stepped woven plank torso, raised chest ribbons, arched opening and inset panels",
+      "heads": "Opposite ram muzzle/curled horns and human brow/nose/eyes/beard",
+      "id": "big-bob",
+      "interpretation": "The user rejected v5 from positions [646,159,-645] and [639,151,-665]. Rework the sculptural silhouette and woven stepped Minecraft blockwork from their four closeups. Official two-sided miniature remains a feature/silhouette reference, not a measured full-size survey. Keep registered placement and overall height context; all new facial/board details are inferred.",
+      "minecraft_style": {
+        "authority": "User's four Minecraft closeups: stepped wooden face, dark curled horns, layered timber and trapdoor panels, pale collar bands, shoulder fire/smoke",
+        "body_infill": "terracotta",
+        "dark_horns": true,
+        "pale_collar": "smooth_stone_slab",
+        "proportion_policy": "Raise shoulders/chest, reduce head height and taper crown, cheeks and ram muzzle within the same overall registered height envelope.",
+        "scope": "Blockwork and silhouette; the source screenshots also use client shaders that are not a world geometry property",
+        "shoulder_campfire_count": 2,
+        "shoulder_campfires": true,
+        "surface_policy": "Raised plank/stair ribbons, inset board/clay panels and actual eye recesses. No broad bark-textured log cladding."
+      },
+      "native_blocks": 532,
+      "physical_detail_accuracy_verified": false,
+      "proposed_blocks": 635,
+      "raw_theming_context_returns": 294,
+      "retained_track_visits": [
+        {
+          "station_min_max_m": [
+            395.98585984476006,
+            410.1853527987893
+          ],
+          "top_odn_min_max_m": [
+            187.5,
+            189.0
+          ]
+        },
+        {
+          "station_min_max_m": [
+            494.78233194744263,
+            508.9818249014719
+          ],
+          "top_odn_min_max_m": [
+            182.0,
+            185.5
+          ]
+        },
+        {
+          "station_min_max_m": [
+            673.575947453107,
+            682.9756118029574
+          ],
+          "top_odn_min_max_m": [
+            182.5,
+            183.0
+          ]
+        }
+      ],
+      "role": "reference_assisted_complete_effigy",
+      "shape_references": [
+        {
+          "image": "https://www.merlinannualpass.co.uk/media/vkdjebz0/appoved-ig-parkspill-sean-small.jpg",
+          "page": "https://www.merlinannualpass.co.uk/passholder-hub/",
+          "role": "Full-size side photograph: deep circular horn curl, projecting muzzle and wrapped torso ribs; no metric camera calibration"
+        },
+        {
+          "page": "https://blooloop.com/theme-park/news/alton-towers-wicker-man-roller-coaster/",
+          "role": "Resort-released full-size ram/front photograph: upward horn ends, tapered muzzle and arched torso"
+        },
+        {
+          "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman1.jpg?v=1749240109&width=850",
+          "page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin",
+          "role": "Official ram-face silhouette and chest arch; miniature is not a scale survey"
+        },
+        {
+          "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman2.jpg?v=1749240122&width=850",
+          "page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin",
+          "role": "Official human-face and shoulder/chest silhouette; miniature is not a scale survey"
+        },
+        {
+          "page": "https://www.altontowers.com/about-alton-towers/blog/wicker-man-what-s-it-all-about/",
+          "role": "Creative lead describes opposite human/ram faces and three torso passages"
+        }
+      ],
+      "source_class_counts": {
+        "1": 52,
+        "4": 34,
+        "5": 147,
+        "6": 61
+      },
+      "source_returns_called_a_complete_measured_surface": false,
+      "top_odn_m": 196.5,
+      "withheld": {
+        "retained_structure": 74,
+        "terrain": 29
+      }
+    },
+    {
+      "id": "wicker-structural-vegetation-mask",
+      "observed_leaf_cells_rejected_from_structural_volumes": 3049,
+      "role": "bounded_semantic_override",
+      "source_survey_classes_modified": false,
+      "structural_columns": 2872,
+      "surrounding_woodland_globally_cleared": false,
+      "vertical_policy": "Exclude only ground-to-member/figure caps; source canopy above and outside remains eligible"
+    }
+  ],
+  "shape_is_reference_assisted_not_survey_complete": true,
+  "spawn_floor_and_headroom_checked": true,
+  "status": "passed",
+  "tests_passed": 85,
+  "textured_diagnostic_viewpoints": [
+    {
+      "feet_xyz": [
+        646,
+        159,
+        -645
+      ],
+      "target_xyz": [
+        675,
+        160.5,
+        -685
+      ]
+    },
+    {
+      "feet_xyz": [
+        639,
+        151,
+        -665
+      ],
+      "target_xyz": [
+        656,
+        156.5,
+        -672
+      ]
+    }
+  ],
+  "three_metre_native_centre_path_clearance_checked": true,
+  "track_interactions": {
+    "constructed_supports": 1388,
+    "estimated_control_label": "estimated_turn_crossing",
+    "id": "wicker-track-interactions",
+    "interpretation": "Only the unprinted crossing estimate is reduced; existing terrain-fit offsets and every printed control are retained. LiDAR supplies dated height context, not identified rail truth.",
+    "minimum_stacked_deck_gap_m": 3.0,
+    "native_centre_aliases_using_same_branch_neighbours": 5,
+    "native_detail_states_changed": 567,
+    "native_reserved_air_states_changed": 208,
+    "newly_withheld_supports": [
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          88,
+          180,
+          98
+        ],
+        "source_foot_index": 51,
+        "source_post": {
+          "geometry_sha256": "cb029e94930eef5094916ae37a1b3cd521e0f00e83e176b51d14188d0ca04260",
+          "offset_m": -3.51061255932073,
+          "source_polygon_index": 73,
+          "station_m": 378.9527685896468,
+          "symbol_area_m2": 0.1151424279194552,
+          "symbol_family": "outer_brace",
+          "xy": [
+            87.99031115183357,
+            102.03696572905739
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            354,
+            355
+          ],
+          "source_segment_index": 71400,
+          "station_m": 378.8758267351422,
+          "xy": [
+            88.72186555305434,
+            98.60010744380936
+          ]
+        }
+      },
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          87,
+          181,
+          98
+        ],
+        "source_foot_index": 52,
+        "source_post": {
+          "geometry_sha256": "b250c73da980b7e5242f3cc77ab7e0422ca391eb4545e1b6c53b73a789703578",
+          "offset_m": -3.496631007728917,
+          "source_polygon_index": 74,
+          "station_m": 380.48263737973355,
+          "symbol_area_m2": 0.11447306149907478,
+          "symbol_family": "outer_brace",
+          "xy": [
+            86.2161117852188,
+            101.57325817148283
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            356,
+            357
+          ],
+          "source_segment_index": 71401,
+          "station_m": 380.39539727940996,
+          "xy": [
+            87.24882531316106,
+            98.22800620290418
+          ]
+        }
+      },
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          88,
+          180,
+          98
+        ],
+        "source_foot_index": "line-1798-87-101",
+        "source_post": {
+          "source_polygon_index": null,
+          "symbol_family": "inferred_on_source_frame_line",
+          "xy": [
+            87.99857390131386,
+            101.99623222277206
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            354,
+            355
+          ],
+          "source_segment_index": 71400,
+          "station_m": 378.8758267351422,
+          "xy": [
+            88.72186555305434,
+            98.60010744380936
+          ]
+        }
+      }
+    ],
+    "no_new_ground_footprints": true,
+    "old_estimated_top_m": 190.5,
+    "parent_exact_replay": true,
+    "physical_as_built_accuracy_verified": false,
+    "printed_height_controls_changed": false,
+    "rerouted_existing_supports": 11,
+    "retargeted_existing_supports": 130,
+    "revised_estimated_top_m": 189.0,
+    "source_markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+    "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "source_to_exported_voxel_y_offset": 1,
+    "source_xy_samples_unchanged": true
+  },
+  "unchanged_other_reference_cells": {
+    "Galactica-supports": 1297,
+    "Galactica-track": 1874,
+    "Nemesis Reborn-supports": 1146,
+    "Nemesis Reborn-track": 1491,
+    "The Smiler-supports": 514,
+    "The Smiler-track": 1994,
+    "monorail-supports": 956,
+    "monorail-track": 3781,
+    "towers-street-marked-barriers": 210,
+    "towers-street-marked-rock-boundaries": 235,
+    "wicker-queue": 55,
+    "wicker-sound-tunnel": 495
+  },
+  "version": "wicker-track-interactions-v7"
+}
