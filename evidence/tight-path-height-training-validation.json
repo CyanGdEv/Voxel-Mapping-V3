@@ -1,0 +1,235 @@
+{
+  "exact_registration_and_masks_replayed": true,
+  "heldout_scores_are_development_diagnostics_after_label_revision": true,
+  "initial_label_quality_fit_retired": true,
+  "initial_overall_only_design_preserved": true,
+  "labels": {
+    "fence_barrier": 0,
+    "grass_island_location": 0,
+    "monorail": 0,
+    "path_trace": 0,
+    "paving_trace": 12858,
+    "rock_boundary": 0,
+    "roller_coaster_track": 0,
+    "structure_trace": 7391,
+    "support_structure": 0,
+    "theming_structure": 0,
+    "tree_feature": 0,
+    "unlabelled": 2339047
+  },
+  "legend_sha256": "1a0f3a3773a0a850bcd9f095aee48310c73b6c968835d3975b528c22ed8b4bea",
+  "native_height_samples_verified": true,
+  "network_replay": {
+    "both_models_trained": true,
+    "checkpoints": {
+      "rgb": {
+        "exact_network_fit_replay": true,
+        "exact_prediction_replay": true
+      },
+      "rgb_height": {
+        "exact_network_fit_replay": true,
+        "exact_prediction_replay": true
+      }
+    },
+    "production_weights_replaced": false,
+    "samples_sha256": "0113f75c103a6e18f67ea5decca5318b5ac96aa839b51dcd1c70d182ba6516f0",
+    "selected": "rgb"
+  },
+  "portable_replay_source_features_networks_predictions": true,
+  "previous_world_sha256": "acfa8a0ad317cdbc1a3244aa9c23e9d8c7c8d879a5324a0a40ad3037ba145548",
+  "production_weights_unchanged": true,
+  "reference_registration_inliers": 460,
+  "reference_registration_p95_clean_pixels": 1.7045134448559227,
+  "reference_sha256": "c50194168e274459feb6019f19b6eb01d41330c862c40b17cdb2aacc566983b3",
+  "source_ink_filter": {
+    "after_pixels": 20525,
+    "automatic_extraction_human_verified": false,
+    "before_pixels": 24527,
+    "method": "Minimum RGB RMS against locally aligned clean source",
+    "minimum_rms": 18,
+    "natural_colour_candidates_rejected": 4002,
+    "neighbourhood_radius_reference_pixels": 2
+  },
+  "tests_passed": 39,
+  "training": {
+    "existing_production_weights_replaced": false,
+    "general_accuracy_improvement_established": false,
+    "guarded_samples_ignored": 866,
+    "guide_samples": 6104,
+    "held_out_samples": 2033,
+    "limitations": [
+      "Single-image spatial development holdout; no independent park or surveyed boundary test.",
+      "User confirms colour semantics; automatic extraction and projected hidden boundaries remain unverified.",
+      "This head distinguishes paving and structure guides. It does not generate complete paving polygons or infer missing connections.",
+      "LiDAR features retain native one-metre resolution and can include trees, roofs and other elevated objects; no heights are assigned to hidden paths."
+    ],
+    "minimum_train_to_held_distance_m": 30.23995208790953,
+    "new_weights_trained": true,
+    "post_fit_selection_review": {
+      "initial_design_preserved": true,
+      "initial_overall_only_selection": "rgb_height",
+      "note": "The raised/canopy guard was added after inspecting the initial development scores. All reported scores remain development diagnostics.",
+      "reason": "Height model regresses raised/canopy guide score or a class recall",
+      "reviewed_selection": "rgb",
+      "stage": "post_fit_acceptance_review",
+      "weights_refitted_during_acceptance_review": false
+    },
+    "scores": {
+      "rgb": {
+        "all_held_guides": {
+          "balanced_accuracy": 0.5732088654581677,
+          "classes": [
+            {
+              "class": "structure_trace",
+              "f1": 0.25333333333333335,
+              "precision": 0.6031746031746031,
+              "recall": 0.16033755274261605,
+              "samples": 237
+            },
+            {
+              "class": "paving_trace",
+              "f1": 0.9405204460966543,
+              "precision": 0.898984771573604,
+              "recall": 0.9860801781737194,
+              "samples": 1796
+            }
+          ],
+          "confusion_matrix": [
+            [
+              38,
+              199
+            ],
+            [
+              25,
+              1771
+            ]
+          ],
+          "macro_f1": 0.5969268897149939,
+          "samples": 2033
+        },
+        "parameters_updated_l2": 9.432399215997645,
+        "raised_or_canopy_context_held_guides": {
+          "balanced_accuracy": 0.5409212880143113,
+          "classes": [
+            {
+              "class": "structure_trace",
+              "f1": 0.23076923076923078,
+              "precision": 0.6666666666666666,
+              "recall": 0.13953488372093023,
+              "samples": 86
+            },
+            {
+              "class": "paving_trace",
+              "f1": 0.7101449275362319,
+              "precision": 0.5697674418604651,
+              "recall": 0.9423076923076923,
+              "samples": 104
+            }
+          ],
+          "confusion_matrix": [
+            [
+              12,
+              74
+            ],
+            [
+              6,
+              98
+            ]
+          ],
+          "macro_f1": 0.4704570791527314,
+          "samples": 190
+        }
+      },
+      "rgb_height": {
+        "all_held_guides": {
+          "balanced_accuracy": 0.5810908911505174,
+          "classes": [
+            {
+              "class": "structure_trace",
+              "f1": 0.27450980392156865,
+              "precision": 0.6086956521739131,
+              "recall": 0.17721518987341772,
+              "samples": 237
+            },
+            {
+              "class": "paving_trace",
+              "f1": 0.9409574468085107,
+              "precision": 0.9007128309572301,
+              "recall": 0.984966592427617,
+              "samples": 1796
+            }
+          ],
+          "confusion_matrix": [
+            [
+              42,
+              195
+            ],
+            [
+              27,
+              1769
+            ]
+          ],
+          "macro_f1": 0.6077336253650396,
+          "samples": 2033
+        },
+        "parameters_updated_l2": 9.21015609475389,
+        "raised_or_canopy_context_held_guides": {
+          "balanced_accuracy": 0.4455500894454383,
+          "classes": [
+            {
+              "class": "structure_trace",
+              "f1": 0.1391304347826087,
+              "precision": 0.27586206896551724,
+              "recall": 0.09302325581395349,
+              "samples": 86
+            },
+            {
+              "class": "paving_trace",
+              "f1": 0.6264150943396226,
+              "precision": 0.515527950310559,
+              "recall": 0.7980769230769231,
+              "samples": 104
+            }
+          ],
+          "confusion_matrix": [
+            [
+              8,
+              78
+            ],
+            [
+              21,
+              83
+            ]
+          ],
+          "macro_f1": 0.38277276456111564,
+          "samples": 190
+        }
+      }
+    },
+    "selected_checkpoint_sha256": "80a4f8a4749d3eef18195394f68388f0b0a6601081c939dd76b3fa4a0668c689",
+    "selected_development_head": "rgb",
+    "selection_reason": "Height model regresses raised/canopy guide score or a class recall",
+    "source_pins": {
+      "height-context.npz": "5d8d6ad568c42e6e28b779e69b458216d7f15f0cfbb3b25333c8dcdd3d0716dd",
+      "legend.json": "1a0f3a3773a0a850bcd9f095aee48310c73b6c968835d3975b528c22ed8b4bea",
+      "model-input.png": "9be2fd840853de4cc1524f2066cf62f64816deb99da0cfb0ea090e14c89f2ef5",
+      "reference-labels.png": "307ad1bedd118135d7df61092405d9a021e122b3b61cf98eb51ca59f534af248",
+      "review.json": "f80e07c1649706fd0ed0bc5f20b0657638146949f382c173b5e38aaaabb5059f",
+      "training-targets.png": "fdd69c01ba4dec4ce51768857ebf80e9ef22b04f495dda8b8d10c774a0b58eba"
+    },
+    "source_reference": "alton-tight-path-paving-and-hidden-details",
+    "split": {
+      "axis": "BNG easting",
+      "fraction": 0.35,
+      "guard_each_side_m": 15,
+      "held_out_scope": "A separate region of this same image; not a new park or independent human/survey test",
+      "selection": "First predeclared fraction with >=32 of each class on both sides; no prediction used",
+      "split_easting": 407245.2124028542
+    },
+    "target_is_complete_paving_mask": false,
+    "training_samples": 3205,
+    "version": "tight-paving-structure-trace-head-v1",
+    "world_blocks_changed": 0
+  },
+  "version": "tight-path-height-training-validation-v1"
+}

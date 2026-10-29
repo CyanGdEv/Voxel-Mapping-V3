@@ -1,0 +1,14 @@
+{
+  "id": "alton-tight-path-paving-and-hidden-details",
+  "reference_sha256": "c50194168e274459feb6019f19b6eb01d41330c862c40b17cdb2aacc566983b3",
+  "reference_size": [1280, 856],
+  "authority": "User: purple structures which need marking; red and light red dots paving; training for tight paths and hidden details",
+  "colour_rules": [
+    {"colour": "purple", "label": "structure_trace", "hsv_ranges": [[[129, 75, 65], [171, 255, 255]]]},
+    {"colour": "red and light red", "label": "paving_trace", "display_rgb": [255, 100, 110], "max_component_radius_px": 4, "hsv_ranges": [[[0, 65, 150], [12, 255, 255]], [[173, 65, 150], [179, 255, 255]]]}
+  ],
+  "geometry_role": "Sparse user paving/structure guide traces; not filled surfaces or measured widths",
+  "ink_filter": {"min_rms": 18, "neighbourhood_radius_px": 2},
+  "occlusion_role": "User-projected hidden details may remain positive guidance under canopy; no unmarked connection or height inferred",
+  "legend_scope": "This image only; purple labels in earlier references remain unchanged"
+}
