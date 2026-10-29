@@ -1,0 +1,165 @@
+{
+  "checks": {
+    "independent_physical_registration": false,
+    "minecraft_client_import_tested": false,
+    "relevant_tests_passed": 34,
+    "source_hash_gates": true,
+    "zip_integrity": true
+  },
+  "implementation": {
+    "scripts/acquire_alton_world_inputs.py": "a9ad0db07cd74f581794a0e4920d4823080c983e5c97bb67a5c8c43efcbdd18a",
+    "scripts/grid_alton_world_cloud.py": "d9279d2adfe0b8f2e3e962b55ae04d77bef4dcd2d92a6869186227890efa4388",
+    "voxel_mapper/alton_aligned_world.py": "f0b4f7df3a32192f0d8c9abe191dad8abee9a01098363a0e433a5b2af47da4f1",
+    "voxel_mapper/appearance_palettes.py": "023ce54126dfd65fa0402406d6c12030c05e75c7808ce8631e51b9b4cfebf8b6",
+    "voxel_mapper/bedrock.py": "95b332a78460c0f0b2c3e66caff8fdacc3eb5c368f6560738a9e08b6100f8097"
+  },
+  "native_world": {
+    "chunks": 9100,
+    "foundation": "per-chunk minimum surface minus four blocks; artificial subsurface",
+    "level_metadata_validation": {
+      "random_tick_speed": 0,
+      "random_tick_speed_nbt_type": "IntTag",
+      "spawn_has_solid_floor_and_four_air_blocks": true
+    },
+    "materials": {
+      "birch_leaves": 1182038,
+      "birch_log": 34787,
+      "black_concrete": 43558,
+      "brick_slab": 1571,
+      "brick_slab_top": 1791,
+      "coarse_dirt": 1200,
+      "cobblestone": 8923,
+      "cobblestone_wall": 31,
+      "dark_oak_fence": 4383,
+      "dark_oak_slab": 2577,
+      "dark_oak_slab_top": 2708,
+      "dirt": 4656624,
+      "granite": 458,
+      "grass_block": 1906453,
+      "gray_concrete": 147148,
+      "gray_wool": 44362,
+      "mud_bricks": 14255,
+      "oak_fence": 2276,
+      "oak_leaves": 1177776,
+      "oak_log": 34082,
+      "oak_planks": 5194,
+      "oak_slab": 1025,
+      "oak_slab_top": 1026,
+      "oak_trapdoor_east": 115,
+      "oak_trapdoor_north": 189,
+      "oak_trapdoor_south": 184,
+      "oak_trapdoor_west": 125,
+      "sandstone": 62,
+      "spruce_leaves": 1213198,
+      "spruce_log": 33754,
+      "spruce_planks": 940,
+      "spruce_slab": 399,
+      "spruce_slab_top": 504,
+      "spruce_trapdoor_east": 3,
+      "spruce_trapdoor_north": 7,
+      "spruce_trapdoor_south": 10,
+      "spruce_trapdoor_west": 2,
+      "stone": 8291647,
+      "stone_brick_slab": 71,
+      "stone_brick_stairs_east": 30,
+      "stone_brick_stairs_east_top": 11,
+      "stone_brick_stairs_north": 14,
+      "stone_brick_stairs_north_top": 4,
+      "stone_brick_stairs_south": 11,
+      "stone_brick_stairs_south_top": 5,
+      "stone_brick_stairs_west": 22,
+      "stone_brick_stairs_west_top": 3,
+      "stone_bricks": 173013,
+      "stone_slab": 30904,
+      "stone_slab_top": 34029,
+      "terracotta": 6300,
+      "water": 96239
+    },
+    "minecraft_client_tested": false,
+    "occupied_blocks": 19156041,
+    "round_trip": {
+      "all_unwritten_section_air_checked": true,
+      "chunks": 9100,
+      "compared_envelope_cells": 53073408,
+      "material_properties_checked": true,
+      "status": "passed"
+    },
+    "seconds": 69.38071313199907,
+    "spawn_x_y_z": [
+      419,
+      154,
+      -787
+    ],
+    "target_bedrock_version": [
+      1,
+      21,
+      130
+    ]
+  },
+  "raw_cloud_replay": {
+    "arrays_equal": {
+      "ground_count": true,
+      "leaf_chunk_offsets": true,
+      "leaf_voxels": true,
+      "roof": true,
+      "roof_count": true,
+      "vegetation": true,
+      "vegetation_count": true
+    },
+    "full_98342681_point_scan_repeated": true,
+    "original_sha256": "615037f6b13bdc92a9050b7bc774e164e5dfb7ab1a5f74afc54a76dd4dd50ab0",
+    "replay_sha256": "615037f6b13bdc92a9050b7bc774e164e5dfb7ab1a5f74afc54a76dd4dd50ab0"
+  },
+  "source_summary": {
+    "buildings": 249,
+    "classified_roof_buildings": 212,
+    "osm": {
+      "building": 250,
+      "named-poi": 73,
+      "parking": 15,
+      "path": 320,
+      "plaza": 13,
+      "road": 278,
+      "steps": 10,
+      "water": 20
+    },
+    "planning_path_surface_traces": 18,
+    "point_cloud": {
+      "archive_bytes": 384483857,
+      "archive_sha256": "0da1c50d0df63f6dd7b49dca29286180eabf20261530fb8afe05645cf0235b1e",
+      "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+      "bounds_bng": [
+        406896,
+        342880,
+        408976,
+        344000
+      ],
+      "classes": {
+        "1": 63650,
+        "2": 4461994,
+        "3": 266977,
+        "4": 730772,
+        "5": 5255010,
+        "6": 254793,
+        "7": 434
+      },
+      "crs": "EPSG:27700",
+      "entry": "SK0540_P_10682_20220105_20220105.laz",
+      "grid_file_sha256": "615037f6b13bdc92a9050b7bc774e164e5dfb7ab1a5f74afc54a76dd4dd50ab0",
+      "license": "OGL-UK-3.0",
+      "observed_foliage_voxels": 4102575,
+      "resolution_m": 1,
+      "retained_eligible_points_in_rectangle": 11033630,
+      "scanned_points": 98342681,
+      "scope": "Observed return bins and classification context. Inferred tree trunks and sampled building surfaces are separate reconstruction choices.",
+      "survey_date": "2022-01-05",
+      "survey_id": "P_10682",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+      "version": "alton-native-return-grid-v1",
+      "vertical_datum": "ODN",
+      "wall_seconds": 30.380603597999652,
+      "withheld_and_synthetic_excluded": true
+    }
+  },
+  "version": "alton-aligned-world-validation-v1"
+}

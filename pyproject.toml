@@ -41,8 +41,10 @@ voxel-mapped-placement = "voxel_mapper.mapped_sheet_placement:main"
 voxel-planning-archive = "voxel_mapper.planning_archive:main"
 voxel-planning-bundle = "voxel_mapper.planning_bundle:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
+voxel-alton-world = "voxel_mapper.alton_aligned_world:main"
 
 [project.optional-dependencies]
+alignedworld = ["scipy>=1.11,<2", "PyMuPDF>=1.26,<2"]
 segmentation = ["torch>=2.5,<3", "scipy>=1.11,<2"]
 aerialsegmentation = ["torch>=2.6,<3", "scipy>=1.11,<2", "safetensors>=0.4,<1", "transformers==4.46.3"]
 mappingreview = ["scipy>=1.11,<2", "opencv-python-headless==4.10.0.84"]
