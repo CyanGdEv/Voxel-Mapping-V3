@@ -57,7 +57,7 @@ class ReferenceScene:
         if self.manifest.get('version') != VERSION: raise ValueError('Pinned reference-world edit manifest required')
         self.profile = _json(self.asset('profile'))
         self.structure_profile = _json(self.asset('structure_profile')) if 'structure_profile' in self.manifest else None
-        if self.structure_profile and self.structure_profile.get('version') not in ('wicker-structural-reconstruction-v1','wicker-structural-reconstruction-v2'):
+        if self.structure_profile and self.structure_profile.get('version') not in ('wicker-structural-reconstruction-v1','wicker-structural-reconstruction-v2','wicker-structural-reconstruction-v3'):
             raise ValueError('Pinned structural reconstruction profile required')
         if self.structure_profile:self.l.wicker_sculpture_revision=self.structure_profile['version']
         if self.profile.get('version') != VERSION: raise ValueError('Explicit source-assisted world profile required')
@@ -73,6 +73,10 @@ class ReferenceScene:
             if file_hash(folder/'model-input.png') != receipt['image_sha256']:
                 raise ValueError('Separate clean imagery changed')
             self.references[key] = (folder, review, receipt)
+        if self.structure_profile and self.structure_profile.get('track_interactions'):
+            from .wicker_track_interactions import revise_track
+            self.records.append(revise_track(self.l,self.structure_profile['track_interactions'],
+                self.asset('interaction_markings'),self.asset('interaction_plan_pdf')))
         self.blocks = {}; self.air = set(); self.roles = defaultdict(set)
         self.old_solid = set(); self.old_air = set()
         for (cx,cz), rows in layers.detail.items():
@@ -89,6 +93,7 @@ class ReferenceScene:
         self.before_protected = layers.protected.copy()
         self.nonpaving = np.zeros(layers.ground.shape, bool)
         self.track_samples = _json(self.asset('track_samples'))
+        if hasattr(self.l,'revised_wicker_samples'):self.track_samples=self.l.revised_wicker_samples
         from .alton_aligned_world import WICKER_AFFINE
         a,b,d,e,tx,ty = WICKER_AFFINE
         xy = np.array([s['cells_xy'][len(s['cells_xy'])//2] for s in self.track_samples],float)+.5

@@ -51,6 +51,10 @@ def support_volumes(scene):
         top = math.ceil(row['deck_top_m']+scene.l.offset+profile['support_upper_margin_m'])
         volume(scene, geometry, top)
         corridors += 1
+    for row in getattr(scene.l,'parent_wicker_supports',()):
+        corridor=affine_transform(LineString([row['source_post']['xy'],row['target']['xy']]),WICKER_AFFINE)
+        volume(scene,corridor.buffer(profile['support_horizontal_margin_m']),
+            math.ceil(row['deck_top_m']+scene.l.offset+profile['support_upper_margin_m']))
     scene.records.append({'id':'wicker-support-vegetation-separation',
         'role':'registered_brown_footing_to_assigned_deck_structural_volumes',
         'source_corridors':corridors, 'quality_report_sha256':file_hash(scene.l.wicker/'quality-report.json'),
@@ -225,6 +229,10 @@ def minecraft_finish(result,profile,world,head_uv,side,front,body,base,offset):
 def complete_effigy(scene, feature, geometry):
     p=scene.structure_profile['big_bob'];l=scene.l
     proposed=effigy_model(p,l.e0,l.n0,l.offset)
+    mask_proposal=proposed
+    if scene.structure_profile.get('track_interactions'):
+        from .wicker_track_interactions import fit_figure
+        proposed=fit_figure(scene,proposed,scene.structure_profile)
     used=0;skipped=Counter()
     for (x,y,z),material in sorted(proposed.items()):
         r=z+l.height
@@ -235,7 +243,7 @@ def complete_effigy(scene, feature, geometry):
         if (x,y,z) in scene.old_solid:
             skipped['retained_structure']+=1;continue
         used+=scene.add(x,y,z,material,feature['id'])
-    xy=np.array([[l.e0+x+.5,l.n0-z-.5] for x,y,z in proposed])
+    xy=np.array([[l.e0+x+.5,l.n0-z-.5] for x,y,z in mask_proposal])
     footprint=MultiPoint(xy).convex_hull.buffer(scene.structure_profile['vegetation']['figure_horizontal_margin_m'])
     footprint=footprint.union(geometry.buffer(.75))
     preceding=scene.structure_profile['vegetation'].get('preceding_figure_volume_bng_ring')

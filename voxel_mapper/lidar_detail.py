@@ -388,6 +388,8 @@ def apply(layers, receipt_path):
         for (cx,cz), rows in getattr(layers,name,{}).items():
             for row in rows:
                 frozen[cz*16+row[2]+layers.height,cx*16+row[0]] = True
+    for x,y,z in getattr(layers,'parent_wicker_detail',{}):
+        frozen[z+layers.height,x]=True
     if hasattr(layers,'structural_vegetation_max'):
         layers.lidar_support_frozen_columns = frozen.copy()
         frozen |= layers.structural_vegetation_max > -32768
