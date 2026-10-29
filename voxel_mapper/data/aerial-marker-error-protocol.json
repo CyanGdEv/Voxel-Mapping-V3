@@ -1,0 +1,56 @@
+{
+  "automatic_promotion": false,
+  "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+  "base_weights_sha256": "49f025353a37669e2ee8bd7d3a312364049d141f6be6f69c27e6757c01dbc15b",
+  "calibration_sites": [
+    "efteling",
+    "toverland"
+  ],
+  "corrector": {
+    "batch": 2048,
+    "boundary_band_half_normal_px": 20,
+    "boundary_band_half_tangent_px": 3,
+    "boundary_unknown_half_width_px": 3,
+    "cir_dropout": 0.25,
+    "hidden": [
+      32,
+      16
+    ],
+    "interior_per_class_per_source": 4000,
+    "learning_rate": 0.003,
+    "seed": 137,
+    "steps": 600,
+    "weight_decay": 0.001
+  },
+  "created_utc": "2026-10-28T23:31:18.737740+00:00",
+  "encoder_and_base_frozen": true,
+  "excluded_consumed_sites": [
+    "flamingo-land"
+  ],
+  "fresh_check_site": "duinrell",
+  "independent_human_review": false,
+  "missing_boundary_penalty_m": 3.2,
+  "nir_note": "CIR visualization is an experimental colour cue, not calibrated reflectance.",
+  "normal_search_radius_px": 40,
+  "production_eligible": false,
+  "reference_sampling_m": 0.08,
+  "reference_uncertainty_px": 3,
+  "references": "Source-reviewed normal transects; image-relative displacement, not surveyed accuracy. Reference locations sealed before correction fitting.",
+  "selection": {
+    "alpha": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "calibration_check_guard_m": 4.0,
+    "maximum_macro_iou_regression": 0.05,
+    "mean_field_steps": 5,
+    "objective": "Minimum capped mean normal displacement on calibration check transects; missing counted at the search cap. No selection from Duinrell results.",
+    "smoothing": [
+      0.0,
+      1.0
+    ]
+  },
+  "version": "aerial-marker-error-correction-protocol-v1"
+}
