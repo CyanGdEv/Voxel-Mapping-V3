@@ -185,6 +185,20 @@ class LidarDetailTests(unittest.TestCase):
         self.assertEqual(ys,{9,13})
         self.assertNotIn(11,ys)
 
+    def test_semantic_suppression_keeps_neighbouring_observed_surface_support(self):
+        from collections import defaultdict
+        l=layers();l.e0=0;l.n1=16;l.dtm=np.zeros((16,16));l.ground[:]=0
+        l.rgb=np.full((16,16,3),100.)
+        l.lidar_support_frozen_columns=np.zeros((16,16),bool)
+        l.lidar_frozen_columns=np.zeros((16,16),bool)
+        l.lidar_frozen_columns[2,2]=True
+        points=np.array([[2.8,13.5,10.1],[2.9,13.5,10.1],[3.1,13.5,10.1]])
+        extra=defaultdict(list)
+        result=unmapped_structure_surfaces(l,points,np.full(3,6),extra)
+        self.assertEqual(result['observed_surface_blocks'],1)
+        rows=[row for group in extra.values() for row in group]
+        self.assertEqual([(row[0],row[2]) for row in rows],[(3,2)])
+
 
 if __name__=='__main__':
     unittest.main()

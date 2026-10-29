@@ -33,7 +33,7 @@ from .osm_provisional_alignment import osm_collection
 from .transport import transport_profile, TRANSPORT_KINDS
 from .wicker_registration import apply_candidate
 
-BUILD_VERSION = 'alton-aligned-world-v4'
+BUILD_VERSION = 'alton-aligned-world-v5'
 WICKER_AFFINE = [0.9998213909931154, 0.01889936804739159,
                  -0.018899368047391618, 0.9998213909931155,
                  407471.9211529803, 343471.93766571034]
@@ -467,6 +467,11 @@ class ParkLayers:
         chm = np.nan_to_num(self.cloud['vegetation']-self.dtm, nan=0)
         peaks = (chm == ndi.maximum_filter(chm, size=9)) & (chm > 5)
         peaks &= ~ndi.binary_dilation(self.footprints, iterations=2) & (self.water == -32768) & (self.family == 0) & ~self.protected
+        rejected_peaks=0
+        if hasattr(self,'structural_vegetation_min'):
+            overlap=(self.structural_vegetation_max>=self.ground+1)
+            rejected_peaks=int((peaks&overlap).sum())
+            peaks &= ~overlap
         self.trunks = defaultdict(list)
         self.tree_species = np.floor(coordinate_random(self.ee.astype(int)//7, self.nn.astype(int)//7, 7)*3).astype(np.uint8)
         for r, c in zip(*np.nonzero(peaks)):
@@ -476,6 +481,7 @@ class ParkLayers:
             wood = ('oak', 'spruce', 'birch')[self.tree_species[r, c]]
             self.trunks[(c//16, (r-self.height)//16)].append((c%16, base, (r-self.height)%16, top, wood+'_log'))
         self.audit['geometry']['vegetation'] = {'source_observed_foliage_voxels': int(len(self.cloud['leaf_voxels'])),
+                    'estimated_trunks_rejected_in_structural_columns':rejected_peaks,
                     'estimated_trunks': int(peaks.sum()), 'species': 'coordinate-based visual proxies; not measured',
                     'policy': 'Classified observed foliage positions; exclude buildings, water, retained structures and path headroom'}
 
@@ -620,6 +626,9 @@ class ChunkRenderer:
         acceptable = ~l.footprints[rr, cc] & ~l.protected[rr, cc] & (l.water[rr, cc] == -32768)
         acceptable &= (ys > l.ground[rr, cc]+1) & ((l.family[rr, cc] == 0) | (ys > l.ground[rr, cc]+4))
         acceptable &= (ys >= bottom) & (ys <= top)
+        if hasattr(l,'structural_vegetation_min'):
+            from .wicker_structure_semantics import blocked_vegetation
+            acceptable &= ~blocked_vegetation(l,rr,cc,ys)
         rr, cc, ys = rr[acceptable], cc[acceptable], ys[acceptable]
         leaf_ids = np.array([ids[w+'_leaves'] for w in ('oak', 'spruce', 'birch')], np.uint16)[l.tree_species[rr, cc]]
         arr[cc % 16, ys-bottom, rr % 16] = leaf_ids
@@ -660,7 +669,7 @@ def export(layers, output, verify=True):
     blocks = [material_block(m) for m in renderer.materials]
     wrapper = LevelDBFormat(str(world)); wrapper.create_and_open('bedrock', VERSION)
     root = wrapper.root_tag.compound
-    root['LevelName'] = StringTag('Alton Towers — LiDAR detail v4' if hasattr(layers,'lidar_detail') else 'Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
+    root['LevelName'] = StringTag('Alton Towers — Wicker structure fix v5' if hasattr(layers,'structural_vegetation_min') else 'Alton Towers — LiDAR detail v4' if hasattr(layers,'lidar_detail') else 'Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
     root['GameType'], root['Difficulty'] = IntTag(1), IntTag(0)
     root['RandomSeed'], root['Time'] = LongTag(0), LongTag(6000)
     for key, value in zip(('SpawnX', 'SpawnY', 'SpawnZ'), layers.spawn): root[key] = IntTag(value)
