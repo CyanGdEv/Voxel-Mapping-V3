@@ -230,9 +230,20 @@ def complete_effigy(scene, feature, geometry):
     p=scene.structure_profile['big_bob'];l=scene.l
     proposed=effigy_model(p,l.e0,l.n0,l.offset)
     mask_proposal=proposed
+    parent=scene.structure_profile.get('parent_sculpture_profile')
+    if parent:
+        import json
+        from pathlib import Path
+        source=Path(__file__).with_name('data')/parent['file']
+        if file_hash(source)!=parent['sha256']:raise ValueError('Parent sculpture profile changed')
+        previous=effigy_model(json.loads(source.read_text())['big_bob'],l.e0,l.n0,l.offset)
+        # Preserve the delivered vegetation boundary while reshaping the head;
+        # changing facial contours must not regrow foliage at the former head.
+        mask_proposal={**previous,**proposed}
     if scene.structure_profile.get('track_interactions'):
         from .wicker_track_interactions import fit_figure
         proposed=fit_figure(scene,proposed,scene.structure_profile)
+        if parent:l.wicker_figure_proposal.update(previous)
     used=0;skipped=Counter()
     for (x,y,z),material in sorted(proposed.items()):
         r=z+l.height
@@ -242,6 +253,8 @@ def complete_effigy(scene, feature, geometry):
             skipped['running_passage']+=1;continue
         if (x,y,z) in scene.old_solid:
             skipped['retained_structure']+=1;continue
+        if parent and (x,y,z) in scene.blocks:
+            skipped['retained_reference']+=1;continue
         used+=scene.add(x,y,z,material,feature['id'])
     xy=np.array([[l.e0+x+.5,l.n0-z-.5] for x,y,z in mask_proposal])
     footprint=MultiPoint(xy).convex_hull.buffer(scene.structure_profile['vegetation']['figure_horizontal_margin_m'])
@@ -265,6 +278,8 @@ def complete_effigy(scene, feature, geometry):
         'body':'Stepped woven plank torso, raised chest ribbons, arched opening and inset panels' if p.get('mesh') else 'Hollow ribbed torso with arched lower opening, shoulders and neck',
         'heads':'Opposite ram muzzle/curled horns and human brow/nose/eyes/beard',
         'base_odn_m':p['base_odn_m'],'top_odn_m':p['base_odn_m']+p['height_m'],
+        **({'head_center_bng_en':p['head_center_bng_en'],'head_front_bng_direction':p['head_front_bng_direction'],
+            'head_pose_authority':p['head_pose_authority']} if p.get('head_front_bng_direction') else {}),
         'retained_track_visits':[{'station_min_max_m':[v[0][0],v[-1][0]],'top_odn_min_max_m':[min(x[1] for x in v),max(x[1] for x in v)]} for v in visits],
         'raw_theming_context_returns':int(inside.sum()),
         'source_class_counts':dict(Counter(map(str,codes[inside].tolist()))),

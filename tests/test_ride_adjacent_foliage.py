@@ -107,5 +107,20 @@ class RideAdjacentFoliageTests(unittest.TestCase):
             reached.update(extra)
         self.assertEqual(reached,set(result))
 
+    def test_member_rule_recovers_support_leaves_well_below_the_deck(self):
+        l=self.context();l.detail[0,-1].append((8,65,11,'dark_oak_fence'))
+        points=[(8,66,-5),(12,66,-5)]
+        extra=np.array([((z+16)*16+x)|((y+512)<<22) for x,y,z in points],np.uint64)
+        l.cloud['leaf_voxels']=np.r_[l.cloud['leaf_voxels'],extra]
+        l.cloud['leaf_chunk_offsets']=np.array([0,len(l.cloud['leaf_voxels'])])
+        apply(l,{'distance_blocks':2,'material':'dark_oak_fence'})
+        self.assertNotIn((8,66,-5),l.ride_wood_source_cells)
+        apply(l,{'distance_blocks':2,'material':'dark_oak_fence','include_retained_support_members':True})
+        self.assertIn((8,66,-5),l.ride_wood_source_cells)
+        self.assertNotIn((12,66,-5),l.ride_wood_source_cells)
+        r=ChunkRenderer(l);a,bottom=r.chunk(0,-1)
+        self.assertEqual(r.materials[int(a[8,66-bottom,11])],'dark_oak_fence')
+        self.assertEqual(r.materials[int(a[12,66-bottom,11])],'oak_leaves')
+
 
 if __name__=='__main__':unittest.main()

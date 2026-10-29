@@ -1,0 +1,546 @@
+{
+  "actual_native_portal_ceilings": [
+    {
+      "actual_native_ceiling_odn_m": 192.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        652.5,
+        158.0,
+        -672.5
+      ],
+      "visit": 1
+    },
+    {
+      "actual_native_ceiling_odn_m": 192.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        653.5,
+        158.0,
+        -666.5
+      ],
+      "visit": 1
+    },
+    {
+      "actual_native_ceiling_odn_m": 188.5,
+      "clear_height_m": 3.5,
+      "portal_xyz": [
+        654.5,
+        154.0,
+        -667.5
+      ],
+      "visit": 2
+    },
+    {
+      "actual_native_ceiling_odn_m": 187.0,
+      "clear_height_m": 4.0,
+      "portal_xyz": [
+        657.5,
+        152.0,
+        -674.5
+      ],
+      "visit": 2
+    },
+    {
+      "actual_native_ceiling_odn_m": 187.0,
+      "clear_height_m": 4.0,
+      "portal_xyz": [
+        658.5,
+        152.0,
+        -670.5
+      ],
+      "visit": 3
+    },
+    {
+      "actual_native_ceiling_odn_m": 186.0,
+      "clear_height_m": 3.0,
+      "portal_xyz": [
+        659.5,
+        152.0,
+        -672.5
+      ],
+      "visit": 3
+    }
+  ],
+  "additional_capped_figure_vegetation_cleanup_cells": 0,
+  "additional_support_bay_unit_tests": {
+    "duration_seconds": 0.002,
+    "log_sha256": "a9c5d0366f5ac8ef05a8a22c2ca7abc2bcb0dddc73d5e431af5106c08a95316a",
+    "skipped": 0,
+    "status": "passed",
+    "tests_run": 2
+  },
+  "all_big_bob_parts_connected_through_actual_timber": true,
+  "all_fence_replacements_within_two_blocks": true,
+  "all_v7_retained_track_support_building_cells_unchanged": true,
+  "baseline_archive_sha256": "d2b9e962343fdef230235a2641cbf6750dee693dd6c130589080ac9a3fde89c8",
+  "big_bob_native_blocks_verified": 471,
+  "change_scope": "Figure/opening proposals, two-block deck/member source foliage cells and capped figure foliage/trunk cleanup",
+  "changed_native_block_states": 1011,
+  "changed_water_blocks": 0,
+  "compared_world_chunks": 9100,
+  "diagnostic_camera_aims_are_pixel_calibrated": false,
+  "foliage_blocks_added": 0,
+  "foliage_blocks_removed": 296,
+  "full_unittest_suite": {
+    "duration_seconds": 396.188,
+    "log_sha256": "6f4cb31c66ad4be1c6a8823571911a78c9d06472b054ef224efc77ac161f44fb",
+    "skipped": 13,
+    "status": "passed",
+    "tests_run": 3127
+  },
+  "head_pose": {
+    "authority": "User supplied a human-face photograph and marked its plaza viewing position on the Minecraft map. Human face points southwest toward that path; ram face is opposite, northeast. Head centre lies within 0.1 m of the mean of dated LiDAR returns above 193 m inside the identified head context. Orientation remains a visual registration, not a surveyed camera solution. Torso and track frame are unchanged.",
+    "centre_bng_en": [
+      407554.45,
+      343550.15
+    ],
+    "ram_front_bng_direction": [
+      0.7071067811865476,
+      0.7071067811865476
+    ]
+  },
+  "lit_shoulder_campfires_with_native_block_entities": 2,
+  "metadata_wording_replay": {
+    "amendment": "Describe head location as within 0.1 m of the upper LiDAR mean; describe head measurements as cell-centre spans/projections.",
+    "fresh_layer_audit_matches_updated_report": true,
+    "head_coordinates_and_materials_unchanged": true
+  },
+  "minecraft_client_tested": false,
+  "model_owned_figure_materials": {
+    "campfire": 2,
+    "dark_oak_fence": 2,
+    "dark_oak_planks": 5,
+    "dark_oak_slab": 5,
+    "dark_oak_slab_top": 8,
+    "dark_oak_stairs_east": 2,
+    "dark_oak_stairs_east_top": 1,
+    "dark_oak_stairs_south": 3,
+    "dark_oak_stairs_west": 1,
+    "oak_fence": 2,
+    "oak_planks": 102,
+    "oak_slab": 1,
+    "oak_slab_top": 8,
+    "oak_stairs_east": 35,
+    "oak_stairs_east_top": 2,
+    "oak_stairs_north": 21,
+    "oak_stairs_north_top": 1,
+    "oak_stairs_south": 13,
+    "oak_stairs_south_top": 1,
+    "oak_stairs_west": 17,
+    "oak_stairs_west_top": 3,
+    "oak_trapdoor_east": 3,
+    "oak_trapdoor_top": 2,
+    "oak_trapdoor_west": 6,
+    "smooth_stone_slab": 8,
+    "spruce_planks": 127,
+    "spruce_slab": 1,
+    "spruce_stairs_east": 26,
+    "spruce_stairs_north": 16,
+    "spruce_stairs_south": 28,
+    "spruce_stairs_west": 18,
+    "terracotta": 1
+  },
+  "native_changes_outside_declared_edit_cells": 0,
+  "native_full_export": {
+    "all_unwritten_section_air_checked": true,
+    "chunks": 9100,
+    "compared_envelope_cells": 53213440,
+    "material_properties_checked": true,
+    "status": "passed"
+  },
+  "native_head_shape_checks": {
+    "cheek_cell_centre_span_m": 3.5355339059327378,
+    "crown_cell_centre_span_m": 0.0,
+    "lower_muzzle_cell_centre_projection_m": 3.1112698371961143,
+    "saved_head_cells": 75,
+    "upper_face_cell_centre_projection_m": 2.4041630560095664
+  },
+  "near_track_foliage": {
+    "clearance_cells": 375,
+    "distance_blocks": 2.0,
+    "distance_metric": "Euclidean 3-D separation of source leaf cell and actual deck/support bounds",
+    "eligible_source_cells_within_distance": 6280,
+    "fence_cells": 2966,
+    "fence_cells_beyond_deck_rule": 825,
+    "material": "dark_oak_fence",
+    "maximum_accepted_distance_blocks": 2.0,
+    "policy_authority": "User explicitly requested leaf cells within two blocks of a track section be converted to fences; keep track and running openings clear.",
+    "raw_survey_classifications_modified": false,
+    "scope": "retained Wicker Man deck and brown-footprint support members",
+    "source_cell_positions_moved": false,
+    "structure_extension_authority": "User reports remaining support fences misclassified as leaves, with mapped screenshots of supports well below the deck. Extend the same two-block 3-D rule to retained support members.",
+    "support_member_cells_used": 4283,
+    "withheld": {
+      "existing_structure": 1639,
+      "fence_height_collision": 37,
+      "ground_building_water": 814,
+      "running_opening": 338,
+      "walking_surface_headroom": 486
+    }
+  },
+  "open_native_curl_centres_x_y_z": [
+    [
+      660,
+      163,
+      -668
+    ],
+    [
+      656,
+      163,
+      -673
+    ]
+  ],
+  "previous_native_materials_at_source_fence_cells": {
+    "air": 525,
+    "fence": 2141,
+    "leaves": 295,
+    "log": 5
+  },
+  "registered_support_bay_audit": {
+    "bays": 566,
+    "columns": 1334,
+    "crossing_tracks_joined_by_xy": false,
+    "interpretation": "Only adjacent brown-footing-to-assigned-track bays, capped below both deck undersides; no global footprint hull.",
+    "limitation": "This checks bounded adjacent-footing bays below their deck undersides; it does not label all nearby canopy as timber or prove survey completeness.",
+    "maximum_adjacent_footing_gap_m": 5,
+    "maximum_adjacent_station_gap_m": 3,
+    "native_cells_checked": 12884,
+    "native_chunks_checked": 33,
+    "native_material_counts": {
+      "air": 3603,
+      "cobblestone": 10,
+      "concrete": 29,
+      "dirt": 2184,
+      "fence": 2984,
+      "granite": 2,
+      "grass_block": 1141,
+      "mud_bricks": 15,
+      "planks": 65,
+      "stairs": 28,
+      "stone": 2745,
+      "stone_bricks": 62,
+      "terracotta": 8,
+      "trapdoor": 4,
+      "wool": 4
+    },
+    "registered_cap_grid_sha256": "9679bc72683b767fac5abd3843b9159908595b60a5f4b083ba7d8aef877eea74",
+    "remaining_native_leaves_inside_capped_registered_bays": 0,
+    "retained_support_report_sha256": "dbdcdb142f3a61bb91f3d683afe5f323527dede35bf84306d1b0d1a08c75a29c",
+    "source_feet_and_track_assignments_relocated": false,
+    "source_to_exported_voxel_row_offset": 1,
+    "status": "passed",
+    "version": "registered-wicker-support-bays-v1",
+    "withheld_pairs": {
+      "degenerate_or_crossed_bay": 664,
+      "footing_gap": 6,
+      "station_gap": 147
+    },
+    "world_geometry_modified": false
+  },
+  "remaining_native_leaves_at_two_block_deck_or_member_candidates": 0,
+  "remaining_native_leaves_in_structural_volumes": 0,
+  "reserved_space_cells_inspected": 66102,
+  "retained_geometry_cells_in_wide_openings": 550,
+  "retained_surface_material_cells_verified": 56987,
+  "retained_wicker_structure_cells_verified": 12909,
+  "semantic_features": [
+    {
+      "horizontal_margin_m": 1.25,
+      "id": "wicker-support-vegetation-separation",
+      "quality_report_sha256": "3259c5c0e968a3960bc7df17927050df89310fdd1cd52855e61b69a065dae6f1",
+      "raw_survey_classifications_overwritten": false,
+      "role": "registered_brown_footing_to_assigned_deck_structural_volumes",
+      "source_corridors": 1388,
+      "source_support_blocks_relocated": false,
+      "upper_deck_margin_m": 3,
+      "vegetation_returns_bulk_converted_to_wood": false
+    },
+    {
+      "base_odn_m": 179.0,
+      "body": "Stepped woven plank torso, raised chest ribbons, arched opening and inset panels",
+      "head_center_bng_en": [
+        407554.45,
+        343550.15
+      ],
+      "head_front_bng_direction": [
+        0.7071067811865476,
+        0.7071067811865476
+      ],
+      "head_pose_authority": "User supplied a human-face photograph and marked its plaza viewing position on the Minecraft map. Human face points southwest toward that path; ram face is opposite, northeast. Head centre lies within 0.1 m of the mean of dated LiDAR returns above 193 m inside the identified head context. Orientation remains a visual registration, not a surveyed camera solution. Torso and track frame are unchanged.",
+      "heads": "Opposite ram muzzle/curled horns and human brow/nose/eyes/beard",
+      "id": "big-bob",
+      "interpretation": "User rejected the v7 head shape, orientation and placement. Their real human-face photograph and marked plaza position anchor southwest-facing human/northeast-facing ram orientation. Dated LiDAR head returns anchor its centre and height. New half-block contours and a neck seat that head over the existing registered torso; track and support frames are unchanged. Facial surfaces, weave and unseen details remain inferred.",
+      "minecraft_style": {
+        "authority": "User's four Minecraft closeups: stepped wooden face, dark curled horns, layered timber and trapdoor panels, pale collar bands, shoulder fire/smoke",
+        "body_infill": "terracotta",
+        "dark_horns": true,
+        "pale_collar": "smooth_stone_slab",
+        "proportion_policy": "Raise shoulders/chest, reduce head height and taper crown, cheeks and ram muzzle within the same overall registered height envelope.",
+        "scope": "Blockwork and silhouette; the source screenshots also use client shaders that are not a world geometry property",
+        "shoulder_campfire_count": 2,
+        "shoulder_campfires": true,
+        "surface_policy": "Raised plank/stair ribbons, inset board/clay panels and actual eye recesses. No broad bark-textured log cladding."
+      },
+      "native_blocks": 471,
+      "physical_detail_accuracy_verified": false,
+      "proposed_blocks": 574,
+      "raw_theming_context_returns": 294,
+      "retained_track_visits": [
+        {
+          "station_min_max_m": [
+            395.98585984476006,
+            410.1853527987893
+          ],
+          "top_odn_min_max_m": [
+            187.5,
+            189.0
+          ]
+        },
+        {
+          "station_min_max_m": [
+            494.78233194744263,
+            508.9818249014719
+          ],
+          "top_odn_min_max_m": [
+            182.0,
+            185.5
+          ]
+        },
+        {
+          "station_min_max_m": [
+            673.575947453107,
+            682.9756118029574
+          ],
+          "top_odn_min_max_m": [
+            182.5,
+            183.0
+          ]
+        }
+      ],
+      "role": "reference_assisted_complete_effigy",
+      "shape_references": [
+        {
+          "image": "https://www.merlinannualpass.co.uk/media/vkdjebz0/appoved-ig-parkspill-sean-small.jpg",
+          "page": "https://www.merlinannualpass.co.uk/passholder-hub/",
+          "role": "Full-size side photograph: deep circular horn curl, projecting muzzle and wrapped torso ribs; no metric camera calibration"
+        },
+        {
+          "page": "https://blooloop.com/theme-park/news/alton-towers-wicker-man-roller-coaster/",
+          "role": "Resort-released full-size ram/front photograph: upward horn ends, tapered muzzle and arched torso"
+        },
+        {
+          "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman1.jpg?v=1749240109&width=850",
+          "page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin",
+          "role": "Official ram-face silhouette and chest arch; miniature is not a scale survey"
+        },
+        {
+          "image": "https://shop.altontowers.com/cdn/shop/files/resin-wickerman2.jpg?v=1749240122&width=850",
+          "page": "https://shop.altontowers.com/products/wicker-man-big-bob-resin",
+          "role": "Official human-face and shoulder/chest silhouette; miniature is not a scale survey"
+        },
+        {
+          "page": "https://www.altontowers.com/about-alton-towers/blog/wicker-man-what-s-it-all-about/",
+          "role": "Creative lead describes opposite human/ram faces and three torso passages"
+        }
+      ],
+      "source_class_counts": {
+        "1": 52,
+        "4": 34,
+        "5": 147,
+        "6": 61
+      },
+      "source_returns_called_a_complete_measured_surface": false,
+      "top_odn_m": 196.5,
+      "withheld": {
+        "retained_structure": 74,
+        "terrain": 29
+      }
+    },
+    {
+      "id": "wicker-structural-vegetation-mask",
+      "observed_leaf_cells_rejected_from_structural_volumes": 3049,
+      "role": "bounded_semantic_override",
+      "source_survey_classes_modified": false,
+      "structural_columns": 2872,
+      "surrounding_woodland_globally_cleared": false,
+      "vertical_policy": "Exclude only ground-to-member/figure caps; source canopy above and outside remains eligible"
+    }
+  ],
+  "shape_is_reference_assisted_not_survey_complete": true,
+  "spawn_floor_and_headroom_checked": true,
+  "status": "passed",
+  "tests_passed": 91,
+  "textured_diagnostic_viewpoints": [
+    {
+      "feet_xyz": [
+        646,
+        159,
+        -645
+      ],
+      "target_xyz": [
+        658,
+        161.5,
+        -670
+      ]
+    },
+    {
+      "feet_xyz": [
+        673,
+        153,
+        -694
+      ],
+      "target_xyz": [
+        658,
+        161,
+        -670
+      ]
+    },
+    {
+      "feet_xyz": [
+        648,
+        169,
+        -689
+      ],
+      "target_xyz": [
+        658,
+        161,
+        -670
+      ]
+    }
+  ],
+  "three_metre_native_centre_path_clearance_checked": true,
+  "track_interactions": {
+    "constructed_supports": 1388,
+    "estimated_control_label": "estimated_turn_crossing",
+    "id": "wicker-track-interactions",
+    "interpretation": "Only the unprinted crossing estimate is reduced; existing terrain-fit offsets and every printed control are retained. LiDAR supplies dated height context, not identified rail truth.",
+    "minimum_stacked_deck_gap_m": 3.0,
+    "native_centre_aliases_using_same_branch_neighbours": 5,
+    "native_detail_states_changed": 567,
+    "native_reserved_air_states_changed": 208,
+    "newly_withheld_supports": [
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          88,
+          180,
+          98
+        ],
+        "source_foot_index": 51,
+        "source_post": {
+          "geometry_sha256": "cb029e94930eef5094916ae37a1b3cd521e0f00e83e176b51d14188d0ca04260",
+          "offset_m": -3.51061255932073,
+          "source_polygon_index": 73,
+          "station_m": 378.9527685896468,
+          "symbol_area_m2": 0.1151424279194552,
+          "symbol_family": "outer_brace",
+          "xy": [
+            87.99031115183357,
+            102.03696572905739
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            354,
+            355
+          ],
+          "source_segment_index": 71400,
+          "station_m": 378.8758267351422,
+          "xy": [
+            88.72186555305434,
+            98.60010744380936
+          ]
+        }
+      },
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          87,
+          181,
+          98
+        ],
+        "source_foot_index": 52,
+        "source_post": {
+          "geometry_sha256": "b250c73da980b7e5242f3cc77ab7e0422ca391eb4545e1b6c53b73a789703578",
+          "offset_m": -3.496631007728917,
+          "source_polygon_index": 74,
+          "station_m": 380.48263737973355,
+          "symbol_area_m2": 0.11447306149907478,
+          "symbol_family": "outer_brace",
+          "xy": [
+            86.2161117852188,
+            101.57325817148283
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            356,
+            357
+          ],
+          "source_segment_index": 71401,
+          "station_m": 380.39539727940996,
+          "xy": [
+            87.24882531316106,
+            98.22800620290418
+          ]
+        }
+      },
+      {
+        "reason": "fence_top_hits_retained_geometry",
+        "revised_end_cell_xyz": [
+          88,
+          180,
+          98
+        ],
+        "source_foot_index": "line-1798-87-101",
+        "source_post": {
+          "source_polygon_index": null,
+          "symbol_family": "inferred_on_source_frame_line",
+          "xy": [
+            87.99857390131386,
+            101.99623222277206
+          ]
+        },
+        "target": {
+          "seed_feet": [
+            354,
+            355
+          ],
+          "source_segment_index": 71400,
+          "station_m": 378.8758267351422,
+          "xy": [
+            88.72186555305434,
+            98.60010744380936
+          ]
+        }
+      }
+    ],
+    "no_new_ground_footprints": true,
+    "old_estimated_top_m": 190.5,
+    "parent_exact_replay": true,
+    "physical_as_built_accuracy_verified": false,
+    "printed_height_controls_changed": false,
+    "rerouted_existing_supports": 11,
+    "retargeted_existing_supports": 130,
+    "revised_estimated_top_m": 189.0,
+    "source_markings_sha256": "fcae6aad3c6c4f7a2c70a68e3a709ff0520c6dfc730eb73e04a1d1f339996659",
+    "source_pdf_sha256": "1c5dc5b43ddf14de2d0b96d7970cee8197d115c46d6919ad74aa484c77a61a1d",
+    "source_to_exported_voxel_y_offset": 1,
+    "source_xy_samples_unchanged": true
+  },
+  "unchanged_other_reference_cells": {
+    "Galactica-supports": 1297,
+    "Galactica-track": 1874,
+    "Nemesis Reborn-supports": 1146,
+    "Nemesis Reborn-track": 1491,
+    "The Smiler-supports": 514,
+    "The Smiler-track": 1994,
+    "monorail-supports": 956,
+    "monorail-track": 3781,
+    "towers-street-marked-barriers": 210,
+    "towers-street-marked-rock-boundaries": 235,
+    "wicker-queue": 55,
+    "wicker-sound-tunnel": 495
+  },
+  "version": "wicker-head-supports-v8"
+}
