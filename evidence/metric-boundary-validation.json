@@ -1,0 +1,3853 @@
+{
+  "browser": {
+    "before_after_frames_equal": true,
+    "decoded_images": 52,
+    "errors": [],
+    "external_requests": [],
+    "marker_selections": 52,
+    "mobile_no_overflow": true,
+    "scope_and_negative_findings_visible": true,
+    "source_aspect_ratios_preserved": true,
+    "source_layer_frames": 59,
+    "sources": 11,
+    "view_combinations": 102
+  },
+  "checkpoint_seal": {
+    "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+    "calibration_selection_sha256": "efec1bfcf581a900ebe2421780125e71497552775f1d81a1440a09e3c3d6dd88",
+    "created_utc": "2026-10-29T00:46:11.935700+00:00",
+    "encoder_sha256": "c3bc3e2c96e5b1ec5c84f26579db4c02c6c1b78d4da4122602fa644ef4b4c649",
+    "fitting_source_ids": [
+      "user-towers-mutiny",
+      "user-gardens-lake",
+      "user-chessington-courtyard",
+      "user-tight-gardens",
+      "lightwater-valley",
+      "gullivers-world",
+      "efteling",
+      "toverland"
+    ],
+    "fresh_predictions_computed": false,
+    "fresh_sites_excluded": [
+      "paultons-park",
+      "walibi-holland"
+    ],
+    "model_id": "eaa2543397c4f334b05fa7b265af4acb3085e47f98dab335e3014bde3bdfdf9d",
+    "protocol_sha256": "ce16a263399bfef11d355c1762d778d6caa238ae901f4d196f8b62362aa40416",
+    "references_sha256": "137b785b9d57e8b4819ecaa6896300c577a64927c99590563144795186d1026c",
+    "selected_alpha": {
+      "rgb_cir": 0.25,
+      "rgb_only": 0.0
+    },
+    "sources_sha256": "e87a65109b4c974c1fc494d29a13c5259eb659407434aba6fdcd69e0d0e3af91",
+    "weights_sha256": "000a19ad209d18df379045a7e2dc2ac924f338f6e514e3014a3abc0ed3d1facc"
+  },
+  "geographic_guard": {
+    "pairs": [
+      {
+        "conservative_separation_m": 466282.5703286171,
+        "development_source": "efteling",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 282508.02017441846,
+        "development_source": "gullivers-world",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 358619.1854884154,
+        "development_source": "lightwater-valley",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 529013.4705110046,
+        "development_source": "toverland",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 96778.49203627906,
+        "development_source": "user-chessington-courtyard",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 227398.26235114655,
+        "development_source": "user-gardens-lake",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 227607.9029351739,
+        "development_source": "user-tight-gardens",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 227838.92663574053,
+        "development_source": "user-towers-mutiny",
+        "fresh_source": "paultons-park"
+      },
+      {
+        "conservative_separation_m": 100885.06591923545,
+        "development_source": "efteling",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 573406.7395667008,
+        "development_source": "gullivers-world",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 525022.9680148615,
+        "development_source": "lightwater-valley",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 116503.8248295146,
+        "development_source": "toverland",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 435653.0231306245,
+        "development_source": "user-chessington-courtyard",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 520481.1825999438,
+        "development_source": "user-gardens-lake",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 520456.12253297144,
+        "development_source": "user-tight-gardens",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 520553.3379789066,
+        "development_source": "user-towers-mutiny",
+        "fresh_source": "walibi-holland"
+      },
+      {
+        "conservative_separation_m": 100941.99054262092,
+        "development_source": "efteling",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 573395.0286420808,
+        "development_source": "gullivers-world",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 525000.2521248311,
+        "development_source": "lightwater-valley",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 116566.04520481967,
+        "development_source": "toverland",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 435671.8031934469,
+        "development_source": "user-chessington-courtyard",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 520474.2643911507,
+        "development_source": "user-gardens-lake",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 520449.199019698,
+        "development_source": "user-tight-gardens",
+        "fresh_source": "walibi-holland-shore"
+      },
+      {
+        "conservative_separation_m": 520546.37062891334,
+        "development_source": "user-towers-mutiny",
+        "fresh_source": "walibi-holland-shore"
+      }
+    ],
+    "passed": true,
+    "required_m": 100
+  },
+  "portable_replay": {
+    "exact_safe_weights_file_sha256": "000a19ad209d18df379045a7e2dc2ac924f338f6e514e3014a3abc0ed3d1facc",
+    "fit": {
+      "exact_repeat_loss": true,
+      "exact_repeat_weights": true,
+      "replay_is_not_new_validation": true
+    },
+    "full_source_features_regenerated": true,
+    "new_excluded_test_claimed": false,
+    "prediction": {
+      "replay_is_not_new_validation": true,
+      "sources": [
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "efteling"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "gullivers-world"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "lightwater-valley"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "paultons-park"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "toverland"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "user-chessington-courtyard"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "user-gardens-lake"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "user-tight-gardens"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "user-towers-mutiny"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "walibi-holland"
+        },
+        {
+          "all_three_prediction_pngs_exact": true,
+          "source": "walibi-holland-shore"
+        }
+      ]
+    },
+    "prediction_pngs_checked": 33
+  },
+  "production_eligible": false,
+  "reference_seal": {
+    "counts": {
+      "efteling": {
+        "calibration_check": 3,
+        "calibration_fit": 7
+      },
+      "gullivers-world": {},
+      "lightwater-valley": {},
+      "paultons-park": {
+        "fresh_check": 8
+      },
+      "toverland": {
+        "calibration_check": 3,
+        "calibration_fit": 12
+      },
+      "user-chessington-courtyard": {
+        "calibration_fit": 2
+      },
+      "user-gardens-lake": {
+        "calibration_check": 1,
+        "calibration_fit": 3
+      },
+      "user-tight-gardens": {
+        "calibration_check": 3,
+        "calibration_fit": 1
+      },
+      "user-towers-mutiny": {
+        "calibration_check": 4
+      },
+      "walibi-holland": {},
+      "walibi-holland-shore": {
+        "fresh_check": 5
+      }
+    },
+    "independent_human_review": false,
+    "no_correction_fit_yet": true,
+    "no_fresh_predictions_computed": true,
+    "protocol_sha256": "ce16a263399bfef11d355c1762d778d6caa238ae901f4d196f8b62362aa40416",
+    "references_sha256": "137b785b9d57e8b4819ecaa6896300c577a64927c99590563144795186d1026c",
+    "review_sha256": "7d8a98bec07acfeb70ed9e78623180609b628864f0292e8eed615b3a5e1cc7d1",
+    "sources_sha256": "e87a65109b4c974c1fc494d29a13c5259eb659407434aba6fdcd69e0d0e3af91"
+  },
+  "release_decision": {
+    "candidate_promoted": false,
+    "decision": "Retain existing baseline; candidate remains experimental.",
+    "fresh_capped_mean_error_after_m": 1.359230769230769,
+    "fresh_capped_mean_error_before_m": 1.3515384615384616,
+    "new_fresh_sources_now_consumed": [
+      "paultons-park",
+      "walibi-holland"
+    ],
+    "raw_rgb_025_blockers": [
+      {
+        "macro_iou_delta": -0.004538782927763441,
+        "scores": {
+          "confusion": [
+            [
+              2183,
+              1489,
+              2973,
+              0
+            ],
+            [
+              138,
+              6220,
+              0,
+              0
+            ],
+            [
+              2071,
+              275,
+              13824,
+              125
+            ],
+            [
+              161,
+              0,
+              170,
+              2234
+            ]
+          ],
+          "iou": [
+            0.24215196894065447,
+            0.7658212262989411,
+            0.7111842782179236,
+            0.8304832713754647
+          ],
+          "macro_iou": 0.637410186208246,
+          "support": [
+            6645,
+            6358,
+            16295,
+            2565
+          ]
+        },
+        "source": "gullivers-world",
+        "worst_present_class_iou_delta": -0.02073785559581809
+      },
+      {
+        "macro_iou_delta": 0.039287653866293404,
+        "scores": {
+          "confusion": [
+            [
+              1553,
+              0,
+              2179,
+              10
+            ],
+            [
+              736,
+              3770,
+              348,
+              0
+            ],
+            [
+              2091,
+              93,
+              22559,
+              0
+            ],
+            [
+              13,
+              0,
+              72,
+              8792
+            ]
+          ],
+          "iou": [
+            0.23594652081434214,
+            0.7620780270871235,
+            0.8250676614731914,
+            0.98931022842354
+          ],
+          "macro_iou": 0.7031006094495493,
+          "support": [
+            3742,
+            4854,
+            24743,
+            8877
+          ]
+        },
+        "source": "lightwater-valley",
+        "worst_present_class_iou_delta": -0.05524453644310223
+      }
+    ],
+    "raw_rgb_025_development_only": true,
+    "reason": "No held-out boundary improvement. Mixed known-interior gains do not establish accurate edges. RGB-only correction was disabled by development class guards."
+  },
+  "report": {
+    "base_and_encoder_unchanged": true,
+    "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+    "canopy_unchanged": true,
+    "cohorts": {
+      "calibration_check": {
+        "baseline": {
+          "capped_mean_error_m": 1.465,
+          "coverage": 0.9285714285714286,
+          "detected_mean_signed_offset_m": -0.3361538461538461,
+          "detected_median_absolute_error_m": 0.6500000000000001,
+          "detected_p90_absolute_error_m": 3.5980000000000008,
+          "inside_outside_probes_correct": 6,
+          "localized_markers": 13,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 9,
+          "reference_uncertainty_mean_m": 0.5203356630146616,
+          "samples": 14,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.0254625384532896,
+          "within_025m": 3,
+          "within_05m": 6
+        },
+        "by_group": {
+          "rgb_cir": {
+            "baseline": {
+              "capped_mean_error_m": 0.3466666666666667,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.17333333333333334,
+              "detected_median_absolute_error_m": 0.26,
+              "detected_p90_absolute_error_m": 0.69,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 6,
+              "missing_markers": 0,
+              "probe_evaluable_samples": 6,
+              "reference_uncertainty_mean_m": 0.39999999999999997,
+              "samples": 6,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.09833333333333333,
+              "within_025m": 3,
+              "within_05m": 4
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.32000000000000006,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": -0.12000000000000004,
+              "detected_median_absolute_error_m": 0.30000000000000004,
+              "detected_p90_absolute_error_m": 0.5700000000000001,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 6,
+              "missing_markers": 0,
+              "probe_evaluable_samples": 6,
+              "reference_uncertainty_mean_m": 0.39999999999999997,
+              "samples": 6,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.07166666666666671,
+              "within_025m": 3,
+              "within_05m": 4
+            }
+          },
+          "rgb_only": {
+            "baseline": {
+              "capped_mean_error_m": 2.30375,
+              "coverage": 0.875,
+              "detected_mean_signed_offset_m": -0.4757142857142856,
+              "detected_median_absolute_error_m": 1.7899999999999998,
+              "detected_p90_absolute_error_m": 3.87,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 7,
+              "missing_markers": 1,
+              "probe_evaluable_samples": 3,
+              "reference_uncertainty_mean_m": 0.6105874102756578,
+              "samples": 8,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.7208094422932567,
+              "within_025m": 0,
+              "within_05m": 2
+            },
+            "corrected": {
+              "capped_mean_error_m": 2.30375,
+              "coverage": 0.875,
+              "detected_mean_signed_offset_m": -0.4757142857142856,
+              "detected_median_absolute_error_m": 1.7899999999999998,
+              "detected_p90_absolute_error_m": 3.87,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 7,
+              "missing_markers": 1,
+              "probe_evaluable_samples": 3,
+              "reference_uncertainty_mean_m": 0.6105874102756578,
+              "samples": 8,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.7208094422932567,
+              "within_025m": 0,
+              "within_05m": 2
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 1.4535714285714287,
+          "coverage": 0.9285714285714286,
+          "detected_mean_signed_offset_m": -0.31153846153846154,
+          "detected_median_absolute_error_m": 0.5700000000000001,
+          "detected_p90_absolute_error_m": 3.5980000000000008,
+          "inside_outside_probes_correct": 6,
+          "localized_markers": 13,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 9,
+          "reference_uncertainty_mean_m": 0.5203356630146616,
+          "samples": 14,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.014033967024718,
+          "within_025m": 3,
+          "within_05m": 6
+        }
+      },
+      "calibration_fit": {
+        "baseline": {
+          "capped_mean_error_m": 1.3172,
+          "coverage": 0.84,
+          "detected_mean_signed_offset_m": -0.2023809523809523,
+          "detected_median_absolute_error_m": 0.47,
+          "detected_p90_absolute_error_m": 2.41,
+          "inside_outside_probes_correct": 12,
+          "localized_markers": 21,
+          "missing_markers": 4,
+          "probe_evaluable_samples": 22,
+          "reference_uncertainty_mean_m": 0.43245819188646906,
+          "samples": 25,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.0067826437587086,
+          "within_025m": 8,
+          "within_05m": 12
+        },
+        "by_group": {
+          "rgb_cir": {
+            "baseline": {
+              "capped_mean_error_m": 1.2178947368421054,
+              "coverage": 0.8421052631578947,
+              "detected_mean_signed_offset_m": -0.3687499999999999,
+              "detected_median_absolute_error_m": 0.27,
+              "detected_p90_absolute_error_m": 2.25,
+              "inside_outside_probes_correct": 10,
+              "localized_markers": 16,
+              "missing_markers": 3,
+              "probe_evaluable_samples": 19,
+              "reference_uncertainty_mean_m": 0.4000000000000001,
+              "samples": 19,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.9531578947368423,
+              "within_025m": 8,
+              "within_05m": 10
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.14,
+              "coverage": 0.8421052631578947,
+              "detected_mean_signed_offset_m": -0.19874999999999998,
+              "detected_median_absolute_error_m": 0.31000000000000005,
+              "detected_p90_absolute_error_m": 1.8499999999999999,
+              "inside_outside_probes_correct": 10,
+              "localized_markers": 16,
+              "missing_markers": 3,
+              "probe_evaluable_samples": 19,
+              "reference_uncertainty_mean_m": 0.4000000000000001,
+              "samples": 19,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.8510526315789475,
+              "within_025m": 6,
+              "within_05m": 10
+            }
+          },
+          "rgb_only": {
+            "baseline": {
+              "capped_mean_error_m": 1.631666666666667,
+              "coverage": 0.8333333333333334,
+              "detected_mean_signed_offset_m": 0.33,
+              "detected_median_absolute_error_m": 1.1300000000000001,
+              "detected_p90_absolute_error_m": 1.9940000000000002,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 5,
+              "missing_markers": 1,
+              "probe_evaluable_samples": 3,
+              "reference_uncertainty_mean_m": 0.5352424661936209,
+              "samples": 6,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.1765943489946185,
+              "within_025m": 0,
+              "within_05m": 2
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.631666666666667,
+              "coverage": 0.8333333333333334,
+              "detected_mean_signed_offset_m": 0.33,
+              "detected_median_absolute_error_m": 1.1300000000000001,
+              "detected_p90_absolute_error_m": 1.9940000000000002,
+              "inside_outside_probes_correct": 2,
+              "localized_markers": 5,
+              "missing_markers": 1,
+              "probe_evaluable_samples": 3,
+              "reference_uncertainty_mean_m": 0.5352424661936209,
+              "samples": 6,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.1765943489946185,
+              "within_025m": 0,
+              "within_05m": 2
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 1.258,
+          "coverage": 0.84,
+          "detected_mean_signed_offset_m": -0.07285714285714284,
+          "detected_median_absolute_error_m": 0.47,
+          "detected_p90_absolute_error_m": 1.8499999999999999,
+          "inside_outside_probes_correct": 12,
+          "localized_markers": 21,
+          "missing_markers": 4,
+          "probe_evaluable_samples": 22,
+          "reference_uncertainty_mean_m": 0.43245819188646906,
+          "samples": 25,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.9291826437587083,
+          "within_025m": 6,
+          "within_05m": 12
+        }
+      },
+      "fresh_check": {
+        "baseline": {
+          "capped_mean_error_m": 1.3515384615384616,
+          "coverage": 0.8461538461538461,
+          "detected_mean_signed_offset_m": -0.37727272727272715,
+          "detected_median_absolute_error_m": 0.6300000000000001,
+          "detected_p90_absolute_error_m": 1.7499999999999998,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 11,
+          "missing_markers": 2,
+          "probe_evaluable_samples": 5,
+          "reference_uncertainty_mean_m": 0.4307692307692309,
+          "samples": 13,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.9769230769230769,
+          "within_025m": 3,
+          "within_05m": 5
+        },
+        "by_group": {
+          "rgb_cir": {
+            "baseline": {
+              "capped_mean_error_m": 0.36200000000000004,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.22200000000000011,
+              "detected_median_absolute_error_m": 0.34999999999999987,
+              "detected_p90_absolute_error_m": 0.6900000000000002,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 5,
+              "missing_markers": 0,
+              "probe_evaluable_samples": 5,
+              "reference_uncertainty_mean_m": 0.32,
+              "samples": 5,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.138,
+              "within_025m": 2,
+              "within_05m": 4
+            },
+            "corrected": {
+              "capped_mean_error_m": 0.38200000000000006,
+              "coverage": 1.0,
+              "detected_mean_signed_offset_m": 0.24200000000000013,
+              "detected_median_absolute_error_m": 0.34999999999999987,
+              "detected_p90_absolute_error_m": 0.7500000000000002,
+              "inside_outside_probes_correct": 4,
+              "localized_markers": 5,
+              "missing_markers": 0,
+              "probe_evaluable_samples": 5,
+              "reference_uncertainty_mean_m": 0.32,
+              "samples": 5,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 0.15800000000000003,
+              "within_025m": 2,
+              "within_05m": 4
+            }
+          },
+          "rgb_only": {
+            "baseline": {
+              "capped_mean_error_m": 1.9699999999999998,
+              "coverage": 0.75,
+              "detected_mean_signed_offset_m": -0.8766666666666666,
+              "detected_median_absolute_error_m": 1.25,
+              "detected_p90_absolute_error_m": 2.19,
+              "inside_outside_probes_correct": 1,
+              "localized_markers": 6,
+              "missing_markers": 2,
+              "probe_evaluable_samples": 0,
+              "reference_uncertainty_mean_m": 0.5,
+              "samples": 8,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.50125,
+              "within_025m": 1,
+              "within_05m": 1
+            },
+            "corrected": {
+              "capped_mean_error_m": 1.9699999999999998,
+              "coverage": 0.75,
+              "detected_mean_signed_offset_m": -0.8766666666666666,
+              "detected_median_absolute_error_m": 1.25,
+              "detected_p90_absolute_error_m": 2.19,
+              "inside_outside_probes_correct": 1,
+              "localized_markers": 6,
+              "missing_markers": 2,
+              "probe_evaluable_samples": 0,
+              "reference_uncertainty_mean_m": 0.5,
+              "samples": 8,
+              "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+              "uncertainty_excess_mean_m": 1.50125,
+              "within_025m": 1,
+              "within_05m": 1
+            }
+          }
+        },
+        "corrected": {
+          "capped_mean_error_m": 1.359230769230769,
+          "coverage": 0.8461538461538461,
+          "detected_mean_signed_offset_m": -0.368181818181818,
+          "detected_median_absolute_error_m": 0.6300000000000001,
+          "detected_p90_absolute_error_m": 1.7499999999999998,
+          "inside_outside_probes_correct": 5,
+          "localized_markers": 11,
+          "missing_markers": 2,
+          "probe_evaluable_samples": 5,
+          "reference_uncertainty_mean_m": 0.4307692307692309,
+          "samples": 13,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.9846153846153847,
+          "within_025m": 3,
+          "within_05m": 5
+        }
+      }
+    },
+    "fresh_sites_now_consumed": [
+      "paultons-park",
+      "walibi-holland"
+    ],
+    "fresh_source_ids": [
+      "paultons-park",
+      "walibi-holland",
+      "walibi-holland-shore"
+    ],
+    "independent_human_review": false,
+    "model_id": "eaa2543397c4f334b05fa7b265af4acb3085e47f98dab335e3014bde3bdfdf9d",
+    "pixel_scores": {
+      "efteling": {
+        "baseline": {
+          "confusion": [
+            [
+              207145,
+              95,
+              913,
+              4958
+            ],
+            [
+              29488,
+              41218,
+              1761,
+              352
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              74236
+            ]
+          ],
+          "iou": [
+            0.85385760040231,
+            0.565296102257454,
+            null,
+            0.9332461720262489
+          ],
+          "macro_iou": 0.7841332915620042,
+          "support": [
+            213111,
+            72819,
+            0,
+            74236
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              207380,
+              292,
+              285,
+              5154
+            ],
+            [
+              25696,
+              45993,
+              836,
+              294
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              74236
+            ]
+          ],
+          "iou": [
+            0.8684000050249784,
+            0.6290845426816758,
+            null,
+            0.9316299382561116
+          ],
+          "macro_iou": 0.8097048286542553,
+          "support": [
+            213111,
+            72819,
+            0,
+            74236
+          ]
+        },
+        "group": "rgb_cir",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "efteling"
+      },
+      "gullivers-world": {
+        "baseline": {
+          "confusion": [
+            [
+              1970,
+              1367,
+              3308,
+              0
+            ],
+            [
+              298,
+              6008,
+              52,
+              0
+            ],
+            [
+              1349,
+              234,
+              14626,
+              86
+            ],
+            [
+              1,
+              0,
+              328,
+              2236
+            ]
+          ],
+          "iou": [
+            0.2375497407452068,
+            0.7548687020982535,
+            0.7319221338137417,
+            0.8434552998868352
+          ],
+          "macro_iou": 0.6419489691360094,
+          "support": [
+            6645,
+            6358,
+            16295,
+            2565
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              1970,
+              1367,
+              3308,
+              0
+            ],
+            [
+              298,
+              6008,
+              52,
+              0
+            ],
+            [
+              1349,
+              234,
+              14626,
+              86
+            ],
+            [
+              1,
+              0,
+              328,
+              2236
+            ]
+          ],
+          "iou": [
+            0.2375497407452068,
+            0.7548687020982535,
+            0.7319221338137417,
+            0.8434552998868352
+          ],
+          "macro_iou": 0.6419489691360094,
+          "support": [
+            6645,
+            6358,
+            16295,
+            2565
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "gullivers-world"
+      },
+      "lightwater-valley": {
+        "baseline": {
+          "confusion": [
+            [
+              1095,
+              0,
+              2639,
+              8
+            ],
+            [
+              1517,
+              2871,
+              466,
+              0
+            ],
+            [
+              69,
+              86,
+              24588,
+              0
+            ],
+            [
+              10,
+              0,
+              83,
+              8784
+            ]
+          ],
+          "iou": [
+            0.20513300861745973,
+            0.581174089068826,
+            0.8803121979162937,
+            0.9886325267304445
+          ],
+          "macro_iou": 0.6638129555832559,
+          "support": [
+            3742,
+            4854,
+            24743,
+            8877
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              1095,
+              0,
+              2639,
+              8
+            ],
+            [
+              1517,
+              2871,
+              466,
+              0
+            ],
+            [
+              69,
+              86,
+              24588,
+              0
+            ],
+            [
+              10,
+              0,
+              83,
+              8784
+            ]
+          ],
+          "iou": [
+            0.20513300861745973,
+            0.581174089068826,
+            0.8803121979162937,
+            0.9886325267304445
+          ],
+          "macro_iou": 0.6638129555832559,
+          "support": [
+            3742,
+            4854,
+            24743,
+            8877
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "lightwater-valley"
+      },
+      "paultons-park": {
+        "baseline": {
+          "confusion": [
+            [
+              1241,
+              0,
+              1,
+              0
+            ],
+            [
+              62,
+              1629,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              345,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              7035
+            ]
+          ],
+          "iou": [
+            0.9516871165644172,
+            0.9633353045535187,
+            0.9971098265895953,
+            1.0
+          ],
+          "macro_iou": 0.9780330619268828,
+          "support": [
+            1242,
+            1691,
+            345,
+            7035
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              1241,
+              0,
+              1,
+              0
+            ],
+            [
+              62,
+              1629,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              345,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              7035
+            ]
+          ],
+          "iou": [
+            0.9516871165644172,
+            0.9633353045535187,
+            0.9971098265895953,
+            1.0
+          ],
+          "macro_iou": 0.9780330619268828,
+          "support": [
+            1242,
+            1691,
+            345,
+            7035
+          ]
+        },
+        "group": "rgb_only",
+        "role": "fresh_check",
+        "scope": "Provisional source-assisted interior windows; not full-scene ground truth.",
+        "site_id": "paultons-park"
+      },
+      "toverland": {
+        "baseline": {
+          "confusion": [
+            [
+              48552,
+              0,
+              10183,
+              0
+            ],
+            [
+              8183,
+              4836,
+              1404,
+              0
+            ],
+            [
+              2293,
+              0,
+              34628,
+              0
+            ],
+            [
+              3100,
+              61,
+              8876,
+              69510
+            ]
+          ],
+          "iou": [
+            0.6714331152936621,
+            0.33388566694283345,
+            0.6034434685626655,
+            0.8523918721718763
+          ],
+          "macro_iou": 0.6152885307427594,
+          "support": [
+            58735,
+            14423,
+            36921,
+            81547
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              49643,
+              0,
+              9092,
+              0
+            ],
+            [
+              7174,
+              6073,
+              1176,
+              0
+            ],
+            [
+              2334,
+              0,
+              34587,
+              0
+            ],
+            [
+              3618,
+              121,
+              7606,
+              70202
+            ]
+          ],
+          "iou": [
+            0.6908197770696205,
+            0.4175605060506051,
+            0.6312072269367643,
+            0.8608777760064747
+          ],
+          "macro_iou": 0.6501163215158662,
+          "support": [
+            58735,
+            14423,
+            36921,
+            81547
+          ]
+        },
+        "group": "rgb_cir",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "toverland"
+      },
+      "user-chessington-courtyard": {
+        "baseline": {
+          "confusion": [
+            [
+              41951,
+              4590,
+              2812,
+              0
+            ],
+            [
+              2396,
+              22515,
+              300,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.8106630079808306,
+            0.7555115600147646,
+            null,
+            null
+          ],
+          "macro_iou": 0.7830872839977976,
+          "support": [
+            49353,
+            25211,
+            0,
+            0
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              41951,
+              4590,
+              2812,
+              0
+            ],
+            [
+              2396,
+              22515,
+              300,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.8106630079808306,
+            0.7555115600147646,
+            null,
+            null
+          ],
+          "macro_iou": 0.7830872839977976,
+          "support": [
+            49353,
+            25211,
+            0,
+            0
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "chessington"
+      },
+      "user-gardens-lake": {
+        "baseline": {
+          "confusion": [
+            [
+              16750,
+              684,
+              9366,
+              3
+            ],
+            [
+              878,
+              2865,
+              27,
+              0
+            ],
+            [
+              864,
+              0,
+              11171,
+              0
+            ],
+            [
+              36,
+              0,
+              31,
+              25611
+            ]
+          ],
+          "iou": [
+            0.5860536720198734,
+            0.643242029636282,
+            0.5205741180856517,
+            0.9972742494451151
+          ],
+          "macro_iou": 0.6867860172967306,
+          "support": [
+            26803,
+            3770,
+            12035,
+            25678
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              16750,
+              684,
+              9366,
+              3
+            ],
+            [
+              878,
+              2865,
+              27,
+              0
+            ],
+            [
+              864,
+              0,
+              11171,
+              0
+            ],
+            [
+              36,
+              0,
+              31,
+              25611
+            ]
+          ],
+          "iou": [
+            0.5860536720198734,
+            0.643242029636282,
+            0.5205741180856517,
+            0.9972742494451151
+          ],
+          "macro_iou": 0.6867860172967306,
+          "support": [
+            26803,
+            3770,
+            12035,
+            25678
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "alton-towers"
+      },
+      "user-tight-gardens": {
+        "baseline": {
+          "confusion": [
+            [
+              10760,
+              739,
+              11636,
+              0
+            ],
+            [
+              7314,
+              62,
+              1026,
+              0
+            ],
+            [
+              12,
+              0,
+              13168,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.35323856734841275,
+            0.00678262772125588,
+            0.5095580837396486,
+            null
+          ],
+          "macro_iou": 0.2898597596031058,
+          "support": [
+            23135,
+            8402,
+            13180,
+            0
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              10760,
+              739,
+              11636,
+              0
+            ],
+            [
+              7314,
+              62,
+              1026,
+              0
+            ],
+            [
+              12,
+              0,
+              13168,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.35323856734841275,
+            0.00678262772125588,
+            0.5095580837396486,
+            null
+          ],
+          "macro_iou": 0.2898597596031058,
+          "support": [
+            23135,
+            8402,
+            13180,
+            0
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "alton-towers"
+      },
+      "user-towers-mutiny": {
+        "baseline": {
+          "confusion": [
+            [
+              27780,
+              2021,
+              4390,
+              0
+            ],
+            [
+              1005,
+              15828,
+              188,
+              0
+            ],
+            [
+              746,
+              0,
+              8571,
+              0
+            ],
+            [
+              700,
+              0,
+              535,
+              0
+            ]
+          ],
+          "iou": [
+            0.7581463893892255,
+            0.8312152084865035,
+            0.593970893970894,
+            0.0
+          ],
+          "macro_iou": 0.5458331229616558,
+          "support": [
+            34191,
+            17021,
+            9317,
+            1235
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              27780,
+              2021,
+              4390,
+              0
+            ],
+            [
+              1005,
+              15828,
+              188,
+              0
+            ],
+            [
+              746,
+              0,
+              8571,
+              0
+            ],
+            [
+              700,
+              0,
+              535,
+              0
+            ]
+          ],
+          "iou": [
+            0.7581463893892255,
+            0.8312152084865035,
+            0.593970893970894,
+            0.0
+          ],
+          "macro_iou": 0.5458331229616558,
+          "support": [
+            34191,
+            17021,
+            9317,
+            1235
+          ]
+        },
+        "group": "rgb_only",
+        "role": "development",
+        "scope": "Consumed development masks.",
+        "site_id": "alton-towers"
+      },
+      "walibi-holland": {
+        "baseline": {
+          "confusion": [
+            [
+              15372,
+              0,
+              0,
+              0
+            ],
+            [
+              4774,
+              1460,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.7630298818624045,
+            0.23419955085017646,
+            null,
+            null
+          ],
+          "macro_iou": 0.4986147163562905,
+          "support": [
+            15372,
+            6234,
+            0,
+            0
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              15372,
+              0,
+              0,
+              0
+            ],
+            [
+              4515,
+              1719,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "iou": [
+            0.7729672650475184,
+            0.2757459095283927,
+            null,
+            null
+          ],
+          "macro_iou": 0.5243565872879555,
+          "support": [
+            15372,
+            6234,
+            0,
+            0
+          ]
+        },
+        "group": "rgb_cir",
+        "role": "fresh_check",
+        "scope": "Provisional source-assisted interior windows; not full-scene ground truth.",
+        "site_id": "walibi-holland"
+      },
+      "walibi-holland-shore": {
+        "baseline": {
+          "confusion": [
+            [
+              260,
+              7,
+              108,
+              431
+            ],
+            [
+              6106,
+              0,
+              0,
+              0
+            ],
+            [
+              1384,
+              0,
+              4953,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              130622
+            ]
+          ],
+          "iou": [
+            0.0313404050144648,
+            0.0,
+            0.7685027152831653,
+            0.9967112542253898
+          ],
+          "macro_iou": 0.4491385936307549,
+          "support": [
+            806,
+            6106,
+            6337,
+            130622
+          ]
+        },
+        "corrected": {
+          "confusion": [
+            [
+              217,
+              16,
+              95,
+              478
+            ],
+            [
+              6106,
+              0,
+              0,
+              0
+            ],
+            [
+              426,
+              0,
+              5911,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              130622
+            ]
+          ],
+          "iou": [
+            0.029572090487871353,
+            0.0,
+            0.9189987562189055,
+            0.9963539282990084
+          ],
+          "macro_iou": 0.4862311937514463,
+          "support": [
+            806,
+            6106,
+            6337,
+            130622
+          ]
+        },
+        "group": "rgb_cir",
+        "role": "fresh_check",
+        "scope": "Provisional source-assisted interior windows; not full-scene ground truth.",
+        "site_id": "walibi-holland"
+      }
+    },
+    "production_eligible": false,
+    "scope": "Source-assisted metric boundary pilot on two excluded parks, including two correlated Walibi crops; not surveyed accuracy or independent human truth.",
+    "selected_alpha": {
+      "rgb_cir": 0.25,
+      "rgb_only": 0.0
+    },
+    "selection_on_fresh_scores": false,
+    "version": "metric-surface-boundary-learning-v1"
+  },
+  "reproduction": {
+    "all_fit_pixels_respect_physical_check_guards": true,
+    "all_rgb_only_ground_pngs_exactly_match_baseline": true,
+    "base_weights_unchanged": true,
+    "exact_repeat_fit_weights": true,
+    "exact_repeat_loss_history": true,
+    "fresh_native_height_replay": [
+      {
+        "native_height_exact": true,
+        "source": "paultons-park"
+      },
+      {
+        "native_height_exact": true,
+        "source": "walibi-holland"
+      },
+      {
+        "native_height_exact": true,
+        "source": "walibi-holland-shore"
+      }
+    ],
+    "fresh_scores_used_for_tuning": false,
+    "fresh_sources_absent_from_fitting": true,
+    "repeat_steps": 600
+  },
+  "resources": {
+    "cpu_threads": 2,
+    "gpu_used": false,
+    "peak_rss_mb": 819.015625,
+    "wall_seconds": 102.84737304098962
+  },
+  "selection": {
+    "candidates": [
+      {
+        "alpha": 0.0,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  1970,
+                  1367,
+                  3308,
+                  0
+                ],
+                [
+                  298,
+                  6008,
+                  52,
+                  0
+                ],
+                [
+                  1349,
+                  234,
+                  14626,
+                  86
+                ],
+                [
+                  1,
+                  0,
+                  328,
+                  2236
+                ]
+              ],
+              "iou": [
+                0.2375497407452068,
+                0.7548687020982535,
+                0.7319221338137417,
+                0.8434552998868352
+              ],
+              "macro_iou": 0.6419489691360094,
+              "support": [
+                6645,
+                6358,
+                16295,
+                2565
+              ]
+            },
+            "source": "gullivers-world",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  1095,
+                  0,
+                  2639,
+                  8
+                ],
+                [
+                  1517,
+                  2871,
+                  466,
+                  0
+                ],
+                [
+                  69,
+                  86,
+                  24588,
+                  0
+                ],
+                [
+                  10,
+                  0,
+                  83,
+                  8784
+                ]
+              ],
+              "iou": [
+                0.20513300861745973,
+                0.581174089068826,
+                0.8803121979162937,
+                0.9886325267304445
+              ],
+              "macro_iou": 0.6638129555832559,
+              "support": [
+                3742,
+                4854,
+                24743,
+                8877
+              ]
+            },
+            "source": "lightwater-valley",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  41951,
+                  4590,
+                  2812,
+                  0
+                ],
+                [
+                  2396,
+                  22515,
+                  300,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.8106630079808306,
+                0.7555115600147646,
+                null,
+                null
+              ],
+              "macro_iou": 0.7830872839977976,
+              "support": [
+                49353,
+                25211,
+                0,
+                0
+              ]
+            },
+            "source": "user-chessington-courtyard",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  16750,
+                  684,
+                  9366,
+                  3
+                ],
+                [
+                  878,
+                  2865,
+                  27,
+                  0
+                ],
+                [
+                  864,
+                  0,
+                  11171,
+                  0
+                ],
+                [
+                  36,
+                  0,
+                  31,
+                  25611
+                ]
+              ],
+              "iou": [
+                0.5860536720198734,
+                0.643242029636282,
+                0.5205741180856517,
+                0.9972742494451151
+              ],
+              "macro_iou": 0.6867860172967306,
+              "support": [
+                26803,
+                3770,
+                12035,
+                25678
+              ]
+            },
+            "source": "user-gardens-lake",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  10760,
+                  739,
+                  11636,
+                  0
+                ],
+                [
+                  7314,
+                  62,
+                  1026,
+                  0
+                ],
+                [
+                  12,
+                  0,
+                  13168,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.35323856734841275,
+                0.00678262772125588,
+                0.5095580837396486,
+                null
+              ],
+              "macro_iou": 0.2898597596031058,
+              "support": [
+                23135,
+                8402,
+                13180,
+                0
+              ]
+            },
+            "source": "user-tight-gardens",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  27780,
+                  2021,
+                  4390,
+                  0
+                ],
+                [
+                  1005,
+                  15828,
+                  188,
+                  0
+                ],
+                [
+                  746,
+                  0,
+                  8571,
+                  0
+                ],
+                [
+                  700,
+                  0,
+                  535,
+                  0
+                ]
+              ],
+              "iou": [
+                0.7581463893892255,
+                0.8312152084865035,
+                0.593970893970894,
+                0.0
+              ],
+              "macro_iou": 0.5458331229616558,
+              "support": [
+                34191,
+                17021,
+                9317,
+                1235
+              ]
+            },
+            "source": "user-towers-mutiny",
+            "worst_present_class_iou_delta": 0.0
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 2.30375,
+          "coverage": 0.875,
+          "detected_mean_signed_offset_m": -0.4757142857142856,
+          "detected_median_absolute_error_m": 1.7899999999999998,
+          "detected_p90_absolute_error_m": 3.87,
+          "inside_outside_probes_correct": 2,
+          "localized_markers": 7,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 3,
+          "reference_uncertainty_mean_m": 0.6105874102756578,
+          "samples": 8,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.7208094422932567,
+          "within_025m": 0,
+          "within_05m": 2
+        },
+        "group": "rgb_only",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": 0.0,
+        "worst_source_present_class_iou_delta": 0.0
+      },
+      {
+        "alpha": 0.25,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": -0.004538782927763441,
+            "scores": {
+              "confusion": [
+                [
+                  2183,
+                  1489,
+                  2973,
+                  0
+                ],
+                [
+                  138,
+                  6220,
+                  0,
+                  0
+                ],
+                [
+                  2071,
+                  275,
+                  13824,
+                  125
+                ],
+                [
+                  161,
+                  0,
+                  170,
+                  2234
+                ]
+              ],
+              "iou": [
+                0.24215196894065447,
+                0.7658212262989411,
+                0.7111842782179236,
+                0.8304832713754647
+              ],
+              "macro_iou": 0.637410186208246,
+              "support": [
+                6645,
+                6358,
+                16295,
+                2565
+              ]
+            },
+            "source": "gullivers-world",
+            "worst_present_class_iou_delta": -0.02073785559581809
+          },
+          {
+            "macro_iou_delta": 0.039287653866293404,
+            "scores": {
+              "confusion": [
+                [
+                  1553,
+                  0,
+                  2179,
+                  10
+                ],
+                [
+                  736,
+                  3770,
+                  348,
+                  0
+                ],
+                [
+                  2091,
+                  93,
+                  22559,
+                  0
+                ],
+                [
+                  13,
+                  0,
+                  72,
+                  8792
+                ]
+              ],
+              "iou": [
+                0.23594652081434214,
+                0.7620780270871235,
+                0.8250676614731914,
+                0.98931022842354
+              ],
+              "macro_iou": 0.7031006094495493,
+              "support": [
+                3742,
+                4854,
+                24743,
+                8877
+              ]
+            },
+            "source": "lightwater-valley",
+            "worst_present_class_iou_delta": -0.05524453644310223
+          },
+          {
+            "macro_iou_delta": 0.023408609798103663,
+            "scores": {
+              "confusion": [
+                [
+                  42802,
+                  5413,
+                  1138,
+                  0
+                ],
+                [
+                  1560,
+                  23651,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.8406890185217921,
+                0.7723027690700105,
+                null,
+                null
+              ],
+              "macro_iou": 0.8064958937959013,
+              "support": [
+                49353,
+                25211,
+                0,
+                0
+              ]
+            },
+            "source": "user-chessington-courtyard",
+            "worst_present_class_iou_delta": 0.016791209055245893
+          },
+          {
+            "macro_iou_delta": 0.019290256871275724,
+            "scores": {
+              "confusion": [
+                [
+                  19433,
+                  713,
+                  6652,
+                  5
+                ],
+                [
+                  852,
+                  2914,
+                  4,
+                  0
+                ],
+                [
+                  2135,
+                  18,
+                  9882,
+                  0
+                ],
+                [
+                  34,
+                  0,
+                  28,
+                  25616
+                ]
+              ],
+              "iou": [
+                0.6515893240343348,
+                0.6474116862919351,
+                0.5279128158555478,
+                0.9973912704902075
+              ],
+              "macro_iou": 0.7060762741680063,
+              "support": [
+                26803,
+                3770,
+                12035,
+                25678
+              ]
+            },
+            "source": "user-gardens-lake",
+            "worst_present_class_iou_delta": 0.00011702104509236921
+          },
+          {
+            "macro_iou_delta": 0.07550959078762187,
+            "scores": {
+              "confusion": [
+                [
+                  14435,
+                  509,
+                  8191,
+                  0
+                ],
+                [
+                  7947,
+                  454,
+                  1,
+                  0
+                ],
+                [
+                  585,
+                  0,
+                  12595,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.45583730697571606,
+                0.0509482661878577,
+                0.5893224780086094,
+                null
+              ],
+              "macro_iou": 0.36536935039072765,
+              "support": [
+                23135,
+                8402,
+                13180,
+                0
+              ]
+            },
+            "source": "user-tight-gardens",
+            "worst_present_class_iou_delta": 0.04416563846660182
+          },
+          {
+            "macro_iou_delta": 0.021878564280816692,
+            "scores": {
+              "confusion": [
+                [
+                  28784,
+                  2445,
+                  2962,
+                  0
+                ],
+                [
+                  865,
+                  16131,
+                  25,
+                  0
+                ],
+                [
+                  917,
+                  0,
+                  8400,
+                  0
+                ],
+                [
+                  801,
+                  0,
+                  434,
+                  0
+                ]
+              ],
+              "iou": [
+                0.7827269266329472,
+                0.8286756395766979,
+                0.659444182760245,
+                0.0
+              ],
+              "macro_iou": 0.5677116872424725,
+              "support": [
+                34191,
+                17021,
+                9317,
+                1235
+              ]
+            },
+            "source": "user-towers-mutiny",
+            "worst_present_class_iou_delta": -0.0025395689098056673
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 2.2925000000000004,
+          "coverage": 0.75,
+          "detected_mean_signed_offset_m": -0.9033333333333333,
+          "detected_median_absolute_error_m": 1.46,
+          "detected_p90_absolute_error_m": 3.22,
+          "inside_outside_probes_correct": 1,
+          "localized_markers": 6,
+          "missing_markers": 2,
+          "probe_evaluable_samples": 3,
+          "reference_uncertainty_mean_m": 0.6105874102756578,
+          "samples": 8,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.7206625897243424,
+          "within_025m": 1,
+          "within_05m": 1
+        },
+        "group": "rgb_only",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": -0.004538782927763441,
+        "worst_source_present_class_iou_delta": -0.05524453644310223
+      },
+      {
+        "alpha": 0.5,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": -0.023864240393334235,
+            "scores": {
+              "confusion": [
+                [
+                  2435,
+                  1587,
+                  2601,
+                  22
+                ],
+                [
+                  229,
+                  6129,
+                  0,
+                  0
+                ],
+                [
+                  2550,
+                  277,
+                  13190,
+                  278
+                ],
+                [
+                  175,
+                  0,
+                  153,
+                  2237
+                ]
+              ],
+              "iou": [
+                0.2536722575268257,
+                0.7454390659207005,
+                0.6924247992020579,
+                0.7808027923211169
+              ],
+              "macro_iou": 0.6180847287426752,
+              "support": [
+                6645,
+                6358,
+                16295,
+                2565
+              ]
+            },
+            "source": "gullivers-world",
+            "worst_present_class_iou_delta": -0.06265250756571827
+          },
+          {
+            "macro_iou_delta": 0.07630149501795114,
+            "scores": {
+              "confusion": [
+                [
+                  2104,
+                  0,
+                  1627,
+                  11
+                ],
+                [
+                  386,
+                  4270,
+                  195,
+                  3
+                ],
+                [
+                  2952,
+                  117,
+                  21674,
+                  0
+                ],
+                [
+                  12,
+                  0,
+                  57,
+                  8808
+                ]
+              ],
+              "iou": [
+                0.2966723068245911,
+                0.8589820961577147,
+                0.8141386822928405,
+                0.9906647171296817
+              ],
+              "macro_iou": 0.7401144506012071,
+              "support": [
+                3742,
+                4854,
+                24743,
+                8877
+              ]
+            },
+            "source": "lightwater-valley",
+            "worst_present_class_iou_delta": -0.0661735156234532
+          },
+          {
+            "macro_iou_delta": 0.020537615284298427,
+            "scores": {
+              "confusion": [
+                [
+                  42499,
+                  6555,
+                  294,
+                  5
+                ],
+                [
+                  978,
+                  24233,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.8443901372911327,
+                0.7628596612730593,
+                null,
+                null
+              ],
+              "macro_iou": 0.803624899282096,
+              "support": [
+                49353,
+                25211,
+                0,
+                0
+              ]
+            },
+            "source": "user-chessington-courtyard",
+            "worst_present_class_iou_delta": 0.007348101258294659
+          },
+          {
+            "macro_iou_delta": -0.007448387420548097,
+            "scores": {
+              "confusion": [
+                [
+                  19614,
+                  1757,
+                  5358,
+                  74
+                ],
+                [
+                  845,
+                  2898,
+                  9,
+                  18
+                ],
+                [
+                  2172,
+                  161,
+                  9702,
+                  0
+                ],
+                [
+                  6,
+                  10,
+                  31,
+                  25631
+                ]
+              ],
+              "iou": [
+                0.6576141621404143,
+                0.5085995085995086,
+                0.5565307176045431,
+                0.9946061311602639
+              ],
+              "macro_iou": 0.6793376298761825,
+              "support": [
+                26803,
+                3770,
+                12035,
+                25678
+              ]
+            },
+            "source": "user-gardens-lake",
+            "worst_present_class_iou_delta": -0.13464252103677332
+          },
+          {
+            "macro_iou_delta": 0.3022182922626812,
+            "scores": {
+              "confusion": [
+                [
+                  16596,
+                  249,
+                  6289,
+                  1
+                ],
+                [
+                  3396,
+                  5006,
+                  0,
+                  0
+                ],
+                [
+                  1423,
+                  0,
+                  11757,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.5936896329684481,
+                0.5786614264246908,
+                0.6038830962042221,
+                null
+              ],
+              "macro_iou": 0.592078051865787,
+              "support": [
+                23135,
+                8402,
+                13180,
+                0
+              ]
+            },
+            "source": "user-tight-gardens",
+            "worst_present_class_iou_delta": 0.09432501246457348
+          },
+          {
+            "macro_iou_delta": 0.061928664706205616,
+            "scores": {
+              "confusion": [
+                [
+                  28593,
+                  3413,
+                  2116,
+                  69
+                ],
+                [
+                  1339,
+                  15670,
+                  2,
+                  10
+                ],
+                [
+                  1091,
+                  0,
+                  8226,
+                  0
+                ],
+                [
+                  887,
+                  0,
+                  100,
+                  248
+                ]
+              ],
+              "iou": [
+                0.7623173722939106,
+                0.766859156308114,
+                0.7131339401820547,
+                0.1887366818873668
+              ],
+              "macro_iou": 0.6077617876678614,
+              "support": [
+                34191,
+                17021,
+                9317,
+                1235
+              ]
+            },
+            "source": "user-towers-mutiny",
+            "worst_present_class_iou_delta": -0.06435605217838958
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 2.12875,
+          "coverage": 0.875,
+          "detected_mean_signed_offset_m": -0.875714285714286,
+          "detected_median_absolute_error_m": 2.0100000000000002,
+          "detected_p90_absolute_error_m": 3.1100000000000003,
+          "inside_outside_probes_correct": 2,
+          "localized_markers": 7,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 3,
+          "reference_uncertainty_mean_m": 0.6105874102756578,
+          "samples": 8,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.5845594422932567,
+          "within_025m": 1,
+          "within_05m": 2
+        },
+        "group": "rgb_only",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": -0.023864240393334235,
+        "worst_source_present_class_iou_delta": -0.13464252103677332
+      },
+      {
+        "alpha": 0.75,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": -0.05002635911915887,
+            "scores": {
+              "confusion": [
+                [
+                  2623,
+                  1759,
+                  2146,
+                  117
+                ],
+                [
+                  376,
+                  5982,
+                  0,
+                  0
+                ],
+                [
+                  3310,
+                  272,
+                  12299,
+                  414
+                ],
+                [
+                  137,
+                  17,
+                  112,
+                  2299
+                ]
+              ],
+              "iou": [
+                0.25057317539166984,
+                0.7116345467523197,
+                0.6629116584918882,
+                0.7425710594315246
+              ],
+              "macro_iou": 0.5919226100168505,
+              "support": [
+                6645,
+                6358,
+                16295,
+                2565
+              ]
+            },
+            "source": "gullivers-world",
+            "worst_present_class_iou_delta": -0.10088424045531064
+          },
+          {
+            "macro_iou_delta": 0.07145450449747903,
+            "scores": {
+              "confusion": [
+                [
+                  2409,
+                  3,
+                  1303,
+                  27
+                ],
+                [
+                  360,
+                  4318,
+                  125,
+                  51
+                ],
+                [
+                  3749,
+                  195,
+                  20789,
+                  10
+                ],
+                [
+                  6,
+                  0,
+                  29,
+                  8842
+                ]
+              ],
+              "iou": [
+                0.30660557464681176,
+                0.8547110055423595,
+                0.7934732824427481,
+                0.9862799776910206
+              ],
+              "macro_iou": 0.735267460080735,
+              "support": [
+                3742,
+                4854,
+                24743,
+                8877
+              ]
+            },
+            "source": "lightwater-valley",
+            "worst_present_class_iou_delta": -0.08683891547354561
+          },
+          {
+            "macro_iou_delta": -0.017748865556935556,
+            "scores": {
+              "confusion": [
+                [
+                  41378,
+                  7827,
+                  28,
+                  120
+                ],
+                [
+                  1511,
+                  23694,
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.8135026737967914,
+                0.7171741630849325,
+                null,
+                null
+              ],
+              "macro_iou": 0.765338418440862,
+              "support": [
+                49353,
+                25211,
+                0,
+                0
+              ]
+            },
+            "source": "user-chessington-courtyard",
+            "worst_present_class_iou_delta": -0.03833739692983207
+          },
+          {
+            "macro_iou_delta": -0.03927987988565751,
+            "scores": {
+              "confusion": [
+                [
+                  18848,
+                  3032,
+                  4650,
+                  273
+                ],
+                [
+                  743,
+                  2955,
+                  15,
+                  57
+                ],
+                [
+                  2025,
+                  543,
+                  9462,
+                  5
+                ],
+                [
+                  0,
+                  13,
+                  30,
+                  25635
+                ]
+              ],
+              "iou": [
+                0.6373812180852862,
+                0.4016036966567002,
+                0.5655708308427974,
+                0.9854688040595087
+              ],
+              "macro_iou": 0.6475061374110731,
+              "support": [
+                26803,
+                3770,
+                12035,
+                25678
+              ]
+            },
+            "source": "user-gardens-lake",
+            "worst_present_class_iou_delta": -0.24163833297958176
+          },
+          {
+            "macro_iou_delta": 0.43726550186938423,
+            "scores": {
+              "confusion": [
+                [
+                  17354,
+                  752,
+                  4992,
+                  37
+                ],
+                [
+                  98,
+                  8304,
+                  0,
+                  0
+                ],
+                [
+                  2351,
+                  0,
+                  10829,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.6783145716072545,
+                0.9071444177408783,
+                0.5959167950693375,
+                null
+              ],
+              "macro_iou": 0.72712526147249,
+              "support": [
+                23135,
+                8402,
+                13180,
+                0
+              ]
+            },
+            "source": "user-tight-gardens",
+            "worst_present_class_iou_delta": 0.08635871132968886
+          },
+          {
+            "macro_iou_delta": 0.043743754410265234,
+            "scores": {
+              "confusion": [
+                [
+                  26892,
+                  5144,
+                  1540,
+                  615
+                ],
+                [
+                  2117,
+                  14850,
+                  0,
+                  54
+                ],
+                [
+                  1336,
+                  0,
+                  7981,
+                  0
+                ],
+                [
+                  720,
+                  20,
+                  12,
+                  483
+                ]
+              ],
+              "iou": [
+                0.7009696590553645,
+                0.6693711967545639,
+                0.7342901830895207,
+                0.2536764705882353
+              ],
+              "macro_iou": 0.589576877371921,
+              "support": [
+                34191,
+                17021,
+                9317,
+                1235
+              ]
+            },
+            "source": "user-towers-mutiny",
+            "worst_present_class_iou_delta": -0.16184401173193963
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 2.21875,
+          "coverage": 0.875,
+          "detected_mean_signed_offset_m": -0.5357142857142857,
+          "detected_median_absolute_error_m": 2.81,
+          "detected_p90_absolute_error_m": 2.958,
+          "inside_outside_probes_correct": 2,
+          "localized_markers": 7,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 3,
+          "reference_uncertainty_mean_m": 0.6105874102756578,
+          "samples": 8,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.7045594422932568,
+          "within_025m": 1,
+          "within_05m": 2
+        },
+        "group": "rgb_only",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": -0.05002635911915887,
+        "worst_source_present_class_iou_delta": -0.24163833297958176
+      },
+      {
+        "alpha": 1.0,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": -0.09904311193817872,
+            "scores": {
+              "confusion": [
+                [
+                  2791,
+                  1783,
+                  1651,
+                  420
+                ],
+                [
+                  525,
+                  5827,
+                  0,
+                  6
+                ],
+                [
+                  4587,
+                  248,
+                  10838,
+                  622
+                ],
+                [
+                  75,
+                  54,
+                  105,
+                  2331
+                ]
+              ],
+              "iou": [
+                0.23588573360378634,
+                0.6901575269453986,
+                0.6004099495872804,
+                0.6451702186548575
+              ],
+              "macro_iou": 0.5429058571978307,
+              "support": [
+                6645,
+                6358,
+                16295,
+                2565
+              ]
+            },
+            "source": "gullivers-world",
+            "worst_present_class_iou_delta": -0.19828508123197774
+          },
+          {
+            "macro_iou_delta": 0.04658696806534368,
+            "scores": {
+              "confusion": [
+                [
+                  2540,
+                  44,
+                  1118,
+                  40
+                ],
+                [
+                  409,
+                  4267,
+                  81,
+                  97
+                ],
+                [
+                  4363,
+                  452,
+                  19890,
+                  38
+                ],
+                [
+                  0,
+                  0,
+                  12,
+                  8865
+                ]
+              ],
+              "iou": [
+                0.2983321587972751,
+                0.7975700934579439,
+                0.766355860368344,
+                0.9793415819708352
+              ],
+              "macro_iou": 0.7103999236485996,
+              "support": [
+                3742,
+                4854,
+                24743,
+                8877
+              ]
+            },
+            "source": "lightwater-valley",
+            "worst_present_class_iou_delta": -0.11395633754794965
+          },
+          {
+            "macro_iou_delta": -0.08646379197714293,
+            "scores": {
+              "confusion": [
+                [
+                  38157,
+                  10292,
+                  15,
+                  889
+                ],
+                [
+                  2075,
+                  23123,
+                  0,
+                  13
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.7419499105545617,
+                0.6512970734867476,
+                null,
+                null
+              ],
+              "macro_iou": 0.6966234920206547,
+              "support": [
+                49353,
+                25211,
+                0,
+                0
+              ]
+            },
+            "source": "user-chessington-courtyard",
+            "worst_present_class_iou_delta": -0.10421448652801701
+          },
+          {
+            "macro_iou_delta": -0.09117604113425593,
+            "scores": {
+              "confusion": [
+                [
+                  16667,
+                  5295,
+                  4000,
+                  841
+                ],
+                [
+                  687,
+                  2937,
+                  30,
+                  116
+                ],
+                [
+                  1843,
+                  1080,
+                  9077,
+                  35
+                ],
+                [
+                  2,
+                  12,
+                  30,
+                  25634
+                ]
+              ],
+              "iou": [
+                0.5681608999488665,
+                0.2891601850940238,
+                0.563963963963964,
+                0.9611548556430446
+              ],
+              "macro_iou": 0.5956099761624747,
+              "support": [
+                26803,
+                3770,
+                12035,
+                25678
+              ]
+            },
+            "source": "user-gardens-lake",
+            "worst_present_class_iou_delta": -0.35408184454225816
+          },
+          {
+            "macro_iou_delta": 0.40051664376977064,
+            "scores": {
+              "confusion": [
+                [
+                  17481,
+                  1687,
+                  3839,
+                  128
+                ],
+                [
+                  58,
+                  8344,
+                  0,
+                  0
+                ],
+                [
+                  3154,
+                  2,
+                  9884,
+                  140
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "iou": [
+                0.6634910995559267,
+                0.8268754335546527,
+                0.5807626770080498,
+                null
+              ],
+              "macro_iou": 0.6903764033728764,
+              "support": [
+                23135,
+                8402,
+                13180,
+                0
+              ]
+            },
+            "source": "user-tight-gardens",
+            "worst_present_class_iou_delta": 0.07120459326840123
+          },
+          {
+            "macro_iou_delta": -0.02413995365957622,
+            "scores": {
+              "confusion": [
+                [
+                  24155,
+                  7212,
+                  1137,
+                  1687
+                ],
+                [
+                  3446,
+                  13479,
+                  0,
+                  96
+                ],
+                [
+                  1828,
+                  0,
+                  7484,
+                  5
+                ],
+                [
+                  506,
+                  86,
+                  1,
+                  642
+                ]
+              ],
+              "iou": [
+                0.6043131270170874,
+                0.5542579875817262,
+                0.7158297465327594,
+                0.21237181607674496
+              ],
+              "macro_iou": 0.5216931693020795,
+              "support": [
+                34191,
+                17021,
+                9317,
+                1235
+              ]
+            },
+            "source": "user-towers-mutiny",
+            "worst_present_class_iou_delta": -0.27695722090477737
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 2.22375,
+          "coverage": 0.875,
+          "detected_mean_signed_offset_m": -0.29000000000000004,
+          "detected_median_absolute_error_m": 2.45,
+          "detected_p90_absolute_error_m": 3.0260000000000002,
+          "inside_outside_probes_correct": 1,
+          "localized_markers": 7,
+          "missing_markers": 1,
+          "probe_evaluable_samples": 3,
+          "reference_uncertainty_mean_m": 0.6105874102756578,
+          "samples": 8,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 1.7095594422932567,
+          "within_025m": 1,
+          "within_05m": 2
+        },
+        "group": "rgb_only",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": -0.09904311193817872,
+        "worst_source_present_class_iou_delta": -0.35408184454225816
+      },
+      {
+        "alpha": 0.0,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  207145,
+                  95,
+                  913,
+                  4958
+                ],
+                [
+                  29488,
+                  41218,
+                  1761,
+                  352
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  74236
+                ]
+              ],
+              "iou": [
+                0.85385760040231,
+                0.565296102257454,
+                null,
+                0.9332461720262489
+              ],
+              "macro_iou": 0.7841332915620042,
+              "support": [
+                213111,
+                72819,
+                0,
+                74236
+              ]
+            },
+            "source": "efteling",
+            "worst_present_class_iou_delta": 0.0
+          },
+          {
+            "macro_iou_delta": 0.0,
+            "scores": {
+              "confusion": [
+                [
+                  48552,
+                  0,
+                  10183,
+                  0
+                ],
+                [
+                  8183,
+                  4836,
+                  1404,
+                  0
+                ],
+                [
+                  2293,
+                  0,
+                  34628,
+                  0
+                ],
+                [
+                  3100,
+                  61,
+                  8876,
+                  69510
+                ]
+              ],
+              "iou": [
+                0.6714331152936621,
+                0.33388566694283345,
+                0.6034434685626655,
+                0.8523918721718763
+              ],
+              "macro_iou": 0.6152885307427594,
+              "support": [
+                58735,
+                14423,
+                36921,
+                81547
+              ]
+            },
+            "source": "toverland",
+            "worst_present_class_iou_delta": 0.0
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 0.3466666666666667,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.17333333333333334,
+          "detected_median_absolute_error_m": 0.26,
+          "detected_p90_absolute_error_m": 0.69,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "probe_evaluable_samples": 6,
+          "reference_uncertainty_mean_m": 0.39999999999999997,
+          "samples": 6,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.09833333333333333,
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "group": "rgb_cir",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": 0.0,
+        "worst_source_present_class_iou_delta": 0.0
+      },
+      {
+        "alpha": 0.25,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": 0.02557153709225113,
+            "scores": {
+              "confusion": [
+                [
+                  207380,
+                  292,
+                  285,
+                  5154
+                ],
+                [
+                  25696,
+                  45993,
+                  836,
+                  294
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  74236
+                ]
+              ],
+              "iou": [
+                0.8684000050249784,
+                0.6290845426816758,
+                null,
+                0.9316299382561116
+              ],
+              "macro_iou": 0.8097048286542553,
+              "support": [
+                213111,
+                72819,
+                0,
+                74236
+              ]
+            },
+            "source": "efteling",
+            "worst_present_class_iou_delta": -0.0016162337701373097
+          },
+          {
+            "macro_iou_delta": 0.034827790773106826,
+            "scores": {
+              "confusion": [
+                [
+                  49643,
+                  0,
+                  9092,
+                  0
+                ],
+                [
+                  7174,
+                  6073,
+                  1176,
+                  0
+                ],
+                [
+                  2334,
+                  0,
+                  34587,
+                  0
+                ],
+                [
+                  3618,
+                  121,
+                  7606,
+                  70202
+                ]
+              ],
+              "iou": [
+                0.6908197770696205,
+                0.4175605060506051,
+                0.6312072269367643,
+                0.8608777760064747
+              ],
+              "macro_iou": 0.6501163215158662,
+              "support": [
+                58735,
+                14423,
+                36921,
+                81547
+              ]
+            },
+            "source": "toverland",
+            "worst_present_class_iou_delta": 0.008485903834598463
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 0.32000000000000006,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": -0.12000000000000004,
+          "detected_median_absolute_error_m": 0.30000000000000004,
+          "detected_p90_absolute_error_m": 0.5700000000000001,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "probe_evaluable_samples": 6,
+          "reference_uncertainty_mean_m": 0.39999999999999997,
+          "samples": 6,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.07166666666666671,
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "group": "rgb_cir",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": 0.02557153709225113,
+        "worst_source_present_class_iou_delta": -0.0016162337701373097
+      },
+      {
+        "alpha": 0.5,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": 0.09132382739494704,
+            "scores": {
+              "confusion": [
+                [
+                  206553,
+                  1019,
+                  52,
+                  5487
+                ],
+                [
+                  14047,
+                  58272,
+                  218,
+                  282
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  74236
+                ]
+              ],
+              "iou": [
+                0.9092922107079654,
+                0.7891871394133102,
+                null,
+                0.9278920067495782
+              ],
+              "macro_iou": 0.8754571189569512,
+              "support": [
+                213111,
+                72819,
+                0,
+                74236
+              ]
+            },
+            "source": "efteling",
+            "worst_present_class_iou_delta": -0.005354165276670764
+          },
+          {
+            "macro_iou_delta": 0.11053258411934341,
+            "scores": {
+              "confusion": [
+                [
+                  51084,
+                  0,
+                  7651,
+                  0
+                ],
+                [
+                  4828,
+                  8856,
+                  735,
+                  4
+                ],
+                [
+                  2374,
+                  0,
+                  34547,
+                  0
+                ],
+                [
+                  4050,
+                  232,
+                  5146,
+                  72119
+                ]
+              ],
+              "iou": [
+                0.7299069827253633,
+                0.6042988741044012,
+                0.6847362892196698,
+                0.8843423133989773
+              ],
+              "macro_iou": 0.7258211148621028,
+              "support": [
+                58735,
+                14423,
+                36921,
+                81547
+              ]
+            },
+            "source": "toverland",
+            "worst_present_class_iou_delta": 0.031950441227101
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 0.3500000000000001,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.2333333333333334,
+          "detected_median_absolute_error_m": 0.18999999999999995,
+          "detected_p90_absolute_error_m": 0.7700000000000002,
+          "inside_outside_probes_correct": 4,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "probe_evaluable_samples": 6,
+          "reference_uncertainty_mean_m": 0.39999999999999997,
+          "samples": 6,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.1233333333333334,
+          "within_025m": 4,
+          "within_05m": 4
+        },
+        "group": "rgb_cir",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": 0.09132382739494704,
+        "worst_source_present_class_iou_delta": -0.005354165276670764
+      },
+      {
+        "alpha": 0.75,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": 0.11290219675022328,
+            "scores": {
+              "confusion": [
+                [
+                  199762,
+                  7372,
+                  35,
+                  5942
+                ],
+                [
+                  3045,
+                  68526,
+                  65,
+                  1183
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  74235
+                ]
+              ],
+              "iou": [
+                0.9241566276207924,
+                0.8545347981693706,
+                null,
+                0.9124150391465198
+              ],
+              "macro_iou": 0.8970354883122275,
+              "support": [
+                213111,
+                72819,
+                0,
+                74236
+              ]
+            },
+            "source": "efteling",
+            "worst_present_class_iou_delta": -0.020831132879729153
+          },
+          {
+            "macro_iou_delta": 0.16547440002463998,
+            "scores": {
+              "confusion": [
+                [
+                  52368,
+                  3,
+                  6364,
+                  0
+                ],
+                [
+                  3678,
+                  10423,
+                  150,
+                  172
+                ],
+                [
+                  2424,
+                  0,
+                  34490,
+                  7
+                ],
+                [
+                  1825,
+                  1189,
+                  2894,
+                  75639
+                ]
+              ],
+              "iou": [
+                0.7855749902493174,
+                0.6674991994876721,
+                0.744458114787714,
+                0.925519418544894
+              ],
+              "macro_iou": 0.7807629307673993,
+              "support": [
+                58735,
+                14423,
+                36921,
+                81547
+              ]
+            },
+            "source": "toverland",
+            "worst_present_class_iou_delta": 0.07312754637301766
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 0.41999999999999993,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.35000000000000003,
+          "detected_median_absolute_error_m": 0.22999999999999998,
+          "detected_p90_absolute_error_m": 1.01,
+          "inside_outside_probes_correct": 2,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "probe_evaluable_samples": 6,
+          "reference_uncertainty_mean_m": 0.39999999999999997,
+          "samples": 6,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.20333333333333334,
+          "within_025m": 3,
+          "within_05m": 4
+        },
+        "group": "rgb_cir",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": 0.11290219675022328,
+        "worst_source_present_class_iou_delta": -0.020831132879729153
+      },
+      {
+        "alpha": 1.0,
+        "development_pixel_checks": [
+          {
+            "macro_iou_delta": -0.002436968872218337,
+            "scores": {
+              "confusion": [
+                [
+                  181294,
+                  17529,
+                  32,
+                  14256
+                ],
+                [
+                  1413,
+                  64943,
+                  0,
+                  6463
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  59,
+                  74177
+                ]
+              ],
+              "iou": [
+                0.8450989166713282,
+                0.7188094921857706,
+                null,
+                0.7811805592122585
+              ],
+              "macro_iou": 0.7816963226897858,
+              "support": [
+                213111,
+                72819,
+                0,
+                74236
+              ]
+            },
+            "source": "efteling",
+            "worst_present_class_iou_delta": -0.15206561281399045
+          },
+          {
+            "macro_iou_delta": 0.16580886224589408,
+            "scores": {
+              "confusion": [
+                [
+                  51009,
+                  2383,
+                  4944,
+                  399
+                ],
+                [
+                  1506,
+                  11909,
+                  3,
+                  1005
+                ],
+                [
+                  1494,
+                  14,
+                  34139,
+                  1274
+                ],
+                [
+                  348,
+                  2569,
+                  1983,
+                  76647
+                ]
+              ],
+              "iou": [
+                0.8216258879242304,
+                0.614214245190572,
+                0.7785227246813071,
+                0.910026714158504
+              ],
+              "macro_iou": 0.7810973929886534,
+              "support": [
+                58735,
+                14423,
+                36921,
+                81547
+              ]
+            },
+            "source": "toverland",
+            "worst_present_class_iou_delta": 0.057634841986627716
+          }
+        ],
+        "errors": {
+          "capped_mean_error_m": 0.2233333333333333,
+          "coverage": 1.0,
+          "detected_mean_signed_offset_m": 0.15000000000000005,
+          "detected_median_absolute_error_m": 0.17999999999999983,
+          "detected_p90_absolute_error_m": 0.43000000000000016,
+          "inside_outside_probes_correct": 0,
+          "localized_markers": 6,
+          "missing_markers": 0,
+          "probe_evaluable_samples": 6,
+          "reference_uncertainty_mean_m": 0.39999999999999997,
+          "samples": 6,
+          "scope": "Physical normal offsets relative to source-assisted aerial edges, with explicit uncertainty; not surveyed or independent human truth.",
+          "uncertainty_excess_mean_m": 0.021666666666666706,
+          "within_025m": 4,
+          "within_05m": 5
+        },
+        "group": "rgb_cir",
+        "role": "calibration_check",
+        "worst_source_macro_iou_delta": -0.002436968872218337,
+        "worst_source_present_class_iou_delta": -0.15206561281399045
+      }
+    ],
+    "fresh_sites_used": false,
+    "pixel_guards_scope": "Consumed development masks; not independent validation.",
+    "selected_alpha": {
+      "rgb_cir": 0.25,
+      "rgb_only": 0.0
+    }
+  },
+  "stopped_attempt": {
+    "checkpoint_saved": false,
+    "fresh_predictions_computed": false,
+    "reason": "No space left on device while creating correction model folder",
+    "schedule_or_sources_changed_for_retry": false
+  },
+  "tests_passed": 63
+}

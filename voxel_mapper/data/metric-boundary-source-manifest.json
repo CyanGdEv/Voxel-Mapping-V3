@@ -1,0 +1,211 @@
+{
+  "efteling": {
+    "cir_file": "/workspace/scratch/dutch-aerial-height-sources/sources/efteling/infrared.jpg",
+    "cir_sha256": "7f0d5d776acbbc28ede4eef96e9f832a97719b06e74485b70cdc9fe547ad7ba2",
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/efteling.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/efteling.npz",
+    "id": "efteling",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/efteling/clean.bin",
+    "image_sha256": "675c1855da690b5152a544a9ccabfb1fff44c3e660ece972cd1074b825f927f7",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/efteling/receipt.json",
+    "receipt_sha256": "8bd9c4e7dcb8e034ad8a57ebc50fb2f0d559391c791f73ec01b769a67c8582fa",
+    "role": "development",
+    "site_id": "efteling",
+    "spacing_m_xy": [
+      0.0800000000000125,
+      0.0800000000000125
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/efteling/ground.png",
+    "target_sha256": "ead7764b55180daf6e0fe0e68c3c1133b8add7c208a0cf4fd8bfe0d47b736e65"
+  },
+  "gullivers-world": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/gullivers-world.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/gullivers-world.npz",
+    "id": "gullivers-world",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/gullivers-world/clean.bin",
+    "image_sha256": "955bf46a8278ca4a4926fd8f1a8d7c11519dc6ed797f56e496b4eed7048c79cb",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/gullivers-world/receipt.json",
+    "receipt_sha256": "644212db1cbdf497996dc6fcfb605bf82e43b7e260c25ed7e4bf39b678925eb9",
+    "role": "development",
+    "site_id": "gullivers-world",
+    "spacing_m_xy": [
+      0.42826572973799015,
+      0.4272424346711088
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/gullivers-world/ground.png",
+    "target_sha256": "d747e9cdaa4909118c64cb9629f84ddce62c6c886f9dcce0c70f1f60bbeb7bce"
+  },
+  "lightwater-valley": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/lightwater-valley.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/lightwater-valley.npz",
+    "id": "lightwater-valley",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/lightwater-valley/clean.bin",
+    "image_sha256": "749d14d834b7026d45a8d163744628b3110533389ae63a5a5056f4f0ff82abb0",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/lightwater-valley/receipt.json",
+    "receipt_sha256": "e1c8f21c102e293d28b3899fb680c0db30cd8196b7171e030969a9f94b134405",
+    "role": "development",
+    "site_id": "lightwater-valley",
+    "spacing_m_xy": [
+      0.3593968954725593,
+      0.3585690193914975
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/lightwater-valley/ground.png",
+    "target_sha256": "850d75b918e2bebd19cec94df123d9efd5599100e24a738d7e865f5c3b11c9a4"
+  },
+  "paultons-park": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": null,
+    "height_file": "/workspace/scratch/metric-boundary-retraining/height/paultons-park.npz",
+    "id": "paultons-park",
+    "image_file": "/workspace/scratch/metric-boundary-retraining/sources/paultons-park/source.png",
+    "image_sha256": "6e481fa4769f9c832f8a399bfc8b69a1ab861511afb704c1d642b0d790dc6cc8",
+    "receipt_file": "/workspace/scratch/metric-boundary-retraining/sources/paultons-park/imagery-receipt.json",
+    "receipt_sha256": "036f666db4d13b1bb431402e7306f4b57d8ef21a24b60766db9f137d0004502f",
+    "role": "fresh_check",
+    "site_id": "paultons-park",
+    "spacing_m_xy": [
+      0.2506608325624028,
+      0.24999212139935165
+    ],
+    "target_file": "/workspace/scratch/metric-boundary-retraining/fresh-targets/paultons-park/ground.png",
+    "target_sha256": "21cfc44af82085f15a3614d118f7abdbf19977780f78cabbaa75f5190b6877a8"
+  },
+  "toverland": {
+    "cir_file": "/workspace/scratch/dutch-aerial-height-sources/sources/toverland/infrared.jpg",
+    "cir_sha256": "f4dfa731655d2697b0ded53200691333dd57ffdc5d4b47cadbf2750f7ea4891b",
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/toverland.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/toverland.npz",
+    "id": "toverland",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/toverland/clean.bin",
+    "image_sha256": "be54a67f6d8df35cc5e1d6eb0714ef045e14abf58efc88f1306093380c710611",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/toverland/receipt.json",
+    "receipt_sha256": "684fadf6cd9d1863f640a3ab019faba470a212063fd4fa39bd79301b4c2bf4a0",
+    "role": "development",
+    "site_id": "toverland",
+    "spacing_m_xy": [
+      0.0800000000000125,
+      0.0800000000000125
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/toverland/ground.png",
+    "target_sha256": "6fad754506764e25c97656841cd14c70e4e4799650c168882516247a11c96b31"
+  },
+  "user-chessington-courtyard": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/user-chessington-courtyard.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/user-chessington-courtyard.npz",
+    "id": "user-chessington-courtyard",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-chessington-courtyard/clean.bin",
+    "image_sha256": "9d8eedf2a885b9ae39d78cff3902cf04ff4fb4cb7e93c4a6a78c0aa14880a995",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-chessington-courtyard/receipt.json",
+    "receipt_sha256": "6ffc41a90957431499ccf33066607f60c075c1d31456f74d765e9682f835609a",
+    "role": "development",
+    "site_id": "chessington",
+    "spacing_m_xy": [
+      0.22664115348919078,
+      0.22604685318382678
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-chessington-courtyard/ground.png",
+    "target_sha256": "67b359c2b21428755e9b181a2f02c040bd4dd890ce8e996bb384a04bc3ddb988"
+  },
+  "user-gardens-lake": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/user-gardens-lake.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/user-gardens-lake.npz",
+    "id": "user-gardens-lake",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-gardens-lake/clean.bin",
+    "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-gardens-lake/receipt.json",
+    "receipt_sha256": "0bb51331b3fb500e89ae1b3342a0ac92d558e98f4f82e8eefedad8b23d72643c",
+    "role": "development",
+    "site_id": "alton-towers",
+    "spacing_m_xy": [
+      0.47367363037647836,
+      0.47251951495014394
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-gardens-lake/ground.png",
+    "target_sha256": "2404e038a5eeb8adedd225e78e9c610f15e462dfe0e86f8c1156db430f84ef5c"
+  },
+  "user-tight-gardens": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/user-tight-gardens.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/user-tight-gardens.npz",
+    "id": "user-tight-gardens",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-tight-gardens/clean.bin",
+    "image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-tight-gardens/receipt.json",
+    "receipt_sha256": "ebe43b9573eca8fd6acaaeea45e1fbb7e87daa0015fcdb3268b2fb617a81f854",
+    "role": "development",
+    "site_id": "alton-towers",
+    "spacing_m_xy": [
+      0.1900500396643815,
+      0.18958698867699653
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-tight-gardens/ground.png",
+    "target_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457"
+  },
+  "user-towers-mutiny": {
+    "cir_file": null,
+    "cir_sha256": null,
+    "features_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/features/user-towers-mutiny.npz",
+    "height_file": "/workspace/scratch/dutch-aerial-height-sources/caches/native_rgb/lidar-features/user-towers-mutiny.npz",
+    "id": "user-towers-mutiny",
+    "image_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-towers-mutiny/clean.bin",
+    "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+    "receipt_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-towers-mutiny/receipt.json",
+    "receipt_sha256": "2e3d7a484b678f4d50e65baf00b4ca7625b86b725eb95bf80bdcec73aa17ce4a",
+    "role": "development",
+    "site_id": "alton-towers",
+    "spacing_m_xy": [
+      0.4474498803675437,
+      0.4463598437288594
+    ],
+    "target_file": "/workspace/scratch/dutch-aerial-height-sources/native-dataset/user-towers-mutiny/ground.png",
+    "target_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19"
+  },
+  "walibi-holland": {
+    "cir_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland/infrared.jpg",
+    "cir_sha256": "3ffad98d7792a63774c7253906785499acb0f6939c4a2ab445a785a829ee3262",
+    "features_file": null,
+    "height_file": "/workspace/scratch/metric-boundary-retraining/height/walibi-holland.npz",
+    "id": "walibi-holland",
+    "image_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland/source-image.jpg",
+    "image_sha256": "91a503d5df1519126f0dfd5ab83b7a133d3eb2ff9879df66f2e0a4e9f37419b7",
+    "receipt_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland/imagery-receipt.json",
+    "receipt_sha256": "f9758f8241328e19657beb6f7d5f7caf2169c92811f8dfd92035708074657545",
+    "role": "fresh_check",
+    "site_id": "walibi-holland",
+    "spacing_m_xy": [
+      0.08,
+      0.08
+    ],
+    "target_file": "/workspace/scratch/metric-boundary-retraining/fresh-targets/walibi-holland/ground.png",
+    "target_sha256": "5de0c72e01f3092ffec4ea4c0a1ae893d2dca7c00f7aaea40048cb7595395b5d"
+  },
+  "walibi-holland-shore": {
+    "cir_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland-shore/infrared.jpg",
+    "cir_sha256": "4aeb477c2b44efa4b2b52e0626d5ec4df634e71188a22dece9ccf2ea6da0fefb",
+    "features_file": null,
+    "height_file": "/workspace/scratch/metric-boundary-retraining/height/walibi-holland-shore.npz",
+    "id": "walibi-holland-shore",
+    "image_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland-shore/source-image.jpg",
+    "image_sha256": "09aca57c382addf97ee5eecdd756c3ecdf866a9772e7c805a9153d3ecc249d0b",
+    "receipt_file": "/workspace/scratch/metric-boundary-retraining/sources/walibi-holland-shore/imagery-receipt.json",
+    "receipt_sha256": "4e606b82e324cfdb2bd22a825429bc469212d70a6f7bca5efd5fc1131900ab0f",
+    "role": "fresh_check",
+    "site_id": "walibi-holland",
+    "spacing_m_xy": [
+      0.08,
+      0.08
+    ],
+    "target_file": "/workspace/scratch/metric-boundary-retraining/fresh-targets/walibi-holland-shore/ground.png",
+    "target_sha256": "01b93ee5dd1d9b46536afacb4647ca7ff500469b57c29dab8a419c8d6235458a"
+  }
+}
