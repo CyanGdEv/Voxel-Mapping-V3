@@ -1,0 +1,87 @@
+{
+  "automatic_promotion": false,
+  "base_checkpoint_id": "c416a9016ee3465969e8e831abdc4b9f9d8829d097061378a386c096cd552449",
+  "base_weights_sha256": "49f025353a37669e2ee8bd7d3a312364049d141f6be6f69c27e6757c01dbc15b",
+  "canopy_unchanged": true,
+  "created_utc": "2026-10-29T00:14:41.441836+00:00",
+  "encoder_and_base_frozen": true,
+  "excluded_consumed_sites": [
+    "duinrell",
+    "flamingo-land"
+  ],
+  "fit": {
+    "batch": 2048,
+    "boundary_band_half_normal_px": 20,
+    "boundary_band_half_tangent_px": 3,
+    "boundary_draw_fraction": 0.35,
+    "boundary_unknown_half_width_px": 3,
+    "cir_dropout": 0.25,
+    "hard_error_multiplier": 3.0,
+    "hidden": [
+      32,
+      16
+    ],
+    "interior_per_class_per_source": 2500,
+    "learning_rate": 0.003,
+    "maximum_training_samples": 120000,
+    "seed": 137,
+    "steps": 600,
+    "weight_decay": 0.001
+  },
+  "fitting_sources": [
+    "user-towers-mutiny",
+    "user-gardens-lake",
+    "user-chessington-courtyard",
+    "user-tight-gardens",
+    "lightwater-valley",
+    "gullivers-world",
+    "efteling",
+    "toverland"
+  ],
+  "fresh_sites": {
+    "paultons-park": {
+      "country": "UK",
+      "height": "EA dated native DTM/DSM if matched source available; otherwise explicit no-height input",
+      "imagery": "Esri World Imagery; RGB-only"
+    },
+    "walibi-holland": {
+      "country": "NL",
+      "height": "AHN4 native0.5m",
+      "imagery": "PDOK fixed 2025 RGB/CIR"
+    }
+  },
+  "independent_human_review": false,
+  "measurement": {
+    "metric": "Capped normal error including missing directed edges, plus uncertainty-adjusted excess error and explicit class probes",
+    "probe_m": 0.5,
+    "reference_uncertainty": "Source visibility and physical pixel sampling; no synthetic optical precision.",
+    "search_radius_m": 4.0,
+    "step_m": 0.02
+  },
+  "production_eligible": false,
+  "reference_split": {
+    "cell_m": 24.0,
+    "check_modulo": 3,
+    "fit_guard_m": 4.0
+  },
+  "selection": {
+    "alpha": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "fresh_sources_used_for_selection": false,
+    "maximum_source_macro_iou_regression": 0.005,
+    "maximum_source_present_class_iou_regression": 0.01,
+    "objective": "Minimum uncertainty-adjusted boundary excess error on calibration-check transects; if no strict improvement passes pixel guards, use alpha0.",
+    "separate_availability_groups": [
+      "rgb_only",
+      "rgb_cir"
+    ],
+    "smoothing": 0.0
+  },
+  "source_selection": "Choose source-only crops with visible paving, grass and structures/water before any new-site model predictions.",
+  "version": "metric-boundary-retraining-protocol-v1"
+}
