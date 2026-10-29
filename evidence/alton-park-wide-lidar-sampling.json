@@ -1,0 +1,58 @@
+{
+  "archive_sha256": "0da1c50d0df63f6dd7b49dca29286180eabf20261530fb8afe05645cf0235b1e",
+  "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+  "bounds_bng": [
+    406896,
+    342880,
+    408976,
+    344000
+  ],
+  "crs": "EPSG:27700",
+  "eligible_class_counts": {
+    "1": 63650,
+    "2": 4461994,
+    "3": 266977,
+    "4": 730772,
+    "5": 5255010,
+    "6": 254793,
+    "7": 434
+  },
+  "eligible_local_points": 11033630,
+  "entry": "SK0540_P_10682_20220105_20220105.laz",
+  "excluded_local_withheld_or_synthetic_points": 0,
+  "index_is_sparse_3d_not_highest_return_grid": true,
+  "license": "OGL-UK-3.0",
+  "multi_height_native_columns": 1142838,
+  "one_metre_evidence_cells": 6247300,
+  "quarter_index_classes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "quarter_index_covers_all_eligible_classes": true,
+  "quarter_index_points_accounted_for": 11033630,
+  "quarter_metre_evidence_cells": 10869678,
+  "random_subsampling": false,
+  "raw_xyz_preserved": true,
+  "retained_classes": [
+    1,
+    6
+  ],
+  "retained_native_xyz_points": 318443,
+  "samples_file": "lidar-detail-samples.npz",
+  "samples_sha256": "cab158d6a12f7379a1e486997235e799499250efdbe42092ce26cabe6cd59a8a",
+  "sampling_xy_m": 0.25,
+  "sampling_z_m": 0.25,
+  "scanned_points": 98342681,
+  "scope": "Every eligible local return indexed in sparse 0.25 m 3-D cells, including ground and vegetation. Original class-1/6 XYZ additionally retained. Class 1 is unclassified evidence, not automatically a building or ride. Vegetation is not structural height truth. Finer bins do not add observations.",
+  "survey_date": "2022-01-05",
+  "survey_id": "P_10682",
+  "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+  "version": "alton-lidar-detail-v1",
+  "vertical_datum": "ODN",
+  "wall_seconds": 39.50783312400017
+}

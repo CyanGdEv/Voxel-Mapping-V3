@@ -33,7 +33,7 @@ from .osm_provisional_alignment import osm_collection
 from .transport import transport_profile, TRANSPORT_KINDS
 from .wicker_registration import apply_candidate
 
-BUILD_VERSION = 'alton-aligned-world-v3'
+BUILD_VERSION = 'alton-aligned-world-v4'
 WICKER_AFFINE = [0.9998213909931154, 0.01889936804739159,
                  -0.018899368047391618, 0.9998213909931155,
                  407471.9211529803, 343471.93766571034]
@@ -90,7 +90,7 @@ def _native_roof(samples, footprint, floor, fallback):
 
 
 class ParkLayers:
-    def __init__(self, work, wicker, surface_layers=None, reference_edits=None):
+    def __init__(self, work, wicker, surface_layers=None, reference_edits=None, lidar_detail=None):
         self.work, self.wicker = Path(work), Path(wicker)
         self.supplemental_sources = []
         if surface_layers:
@@ -148,6 +148,9 @@ class ParkLayers:
         if reference_edits:
             from .reference_world_scene import apply
             apply(self, reference_edits)
+        if lidar_detail:
+            from .lidar_detail import apply
+            apply(self, lidar_detail)
         self._trees()
         self._spawn()
         self.audit['sources'] = {
@@ -549,6 +552,7 @@ class ChunkRenderer:
                  'oak_log', 'spruce_log', 'birch_log'}
         for rows in layers.detail.values(): mats.update(r[3] for r in rows)
         for rows in getattr(layers,'reference_detail',{}).values(): mats.update(r[3] for r in rows)
+        for rows in getattr(layers,'lidar_detail',{}).values(): mats.update(r[3] for r in rows)
         if mats-ALLOWED_MATERIALS: raise ValueError('Unknown materials: '+str(mats-ALLOWED_MATERIALS))
         self.materials = ['air']+sorted(mats-{'air'})
         self.ids = {m: i for i, m in enumerate(self.materials)}
@@ -574,6 +578,7 @@ class ChunkRenderer:
         clear = l.clear.get((cx, cz), ())
         reference_detail = getattr(l,'reference_detail',{}).get((cx,cz),())
         reference_air = getattr(l,'reference_air',{}).get((cx,cz),())
+        lidar_detail = getattr(l,'lidar_detail',{}).get((cx,cz),())
         bottom = int(min(ground.min(), floor[floor > -32768].min() if np.any(floor > -32768) else ground.min()))-4
         bottom = min(bottom, min((row[1] for row in detail), default=bottom), min((row[1] for row in clear), default=bottom))
         bottom = min(bottom,min((row[1]-2 for row in reference_detail),default=bottom),
@@ -584,6 +589,7 @@ class ChunkRenderer:
                   max((row[1]+2 for row in clear), default=0),
                   int(np.nanmax(np.nan_to_num(l.cloud['vegetation'][rs, cs], nan=0)))+l.offset+2)
         top=max(top,max((row[1]+2 for row in reference_detail),default=top),max((row[1]+2 for row in reference_air),default=top))
+        top=max(top,max((row[1]+2 for row in lidar_detail),default=top))
         bottom = max(-60, bottom); top = min(316, top)
         yy = np.arange(bottom, top+1)[None, :, None]
         g = ground.T[:, None, :]
@@ -619,6 +625,9 @@ class ChunkRenderer:
         arr[cc % 16, ys-bottom, rr % 16] = leaf_ids
         for x, y, z, end, mat in l.trunks.get((cx, cz), ()):
             arr[x, max(0, y-bottom):min(top-bottom+1, end-bottom+1), z] = ids[mat]
+        for x,y,z,mat in lidar_detail:
+            if not bottom<=y<=top:raise ValueError('Observed LiDAR surface outside chunk envelope')
+            arr[x,y-bottom,z]=ids[mat]
         for x,y,z in reference_air:
             if bottom<=y<=top:arr[x,y-bottom,z]=0
         for x,y,z,mat in reference_detail:
@@ -651,7 +660,7 @@ def export(layers, output, verify=True):
     blocks = [material_block(m) for m in renderer.materials]
     wrapper = LevelDBFormat(str(world)); wrapper.create_and_open('bedrock', VERSION)
     root = wrapper.root_tag.compound
-    root['LevelName'] = StringTag('Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
+    root['LevelName'] = StringTag('Alton Towers — LiDAR detail v4' if hasattr(layers,'lidar_detail') else 'Alton Towers — reference update v3' if hasattr(layers,'reference_detail') else 'Alton Towers — updated landscape' if layers.supplemental_sources else 'Alton Towers — aligned landscape draft')
     root['GameType'], root['Difficulty'] = IntTag(1), IntTag(0)
     root['RandomSeed'], root['Time'] = LongTag(0), LongTag(6000)
     for key, value in zip(('SpawnX', 'SpawnY', 'SpawnZ'), layers.spawn): root[key] = IntTag(value)
@@ -740,8 +749,9 @@ def main():
     parser.add_argument('--output', required=True); parser.add_argument('--prepare-only', action='store_true')
     parser.add_argument('--surface-layers', help='Pinned clean imagery and partial source-assisted surface interiors; sparse trace masks are rejected')
     parser.add_argument('--reference-edits',help='Pinned source-assisted boundaries, classified survey objects and mapped ride geometry')
+    parser.add_argument('--lidar-detail',help='Matched native-return receipt for quarter-metre structural sampling and supported roof details')
     args = parser.parse_args(); output = Path(args.output); output.mkdir(parents=True, exist_ok=True)
-    layers = ParkLayers(args.work, args.wicker, args.surface_layers, args.reference_edits)
+    layers = ParkLayers(args.work, args.wicker, args.surface_layers, args.reference_edits, args.lidar_detail)
     if args.prepare_only:
         atomic_json(output/'layer-report.json', layers.audit); preview(layers, output)
     else:
