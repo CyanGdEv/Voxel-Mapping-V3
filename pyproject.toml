@@ -42,6 +42,8 @@ voxel-planning-archive = "voxel_mapper.planning_archive:main"
 voxel-planning-bundle = "voxel_mapper.planning_bundle:main"
 voxel-anchor-audit = "voxel_mapper.anchor_audit:main"
 voxel-alton-world = "voxel_mapper.alton_aligned_world:main"
+voxel-ride-aerial-supervision = "voxel_mapper.ride_aerial_supervision:main"
+voxel-aerial-feature-supervision = "voxel_mapper.aerial_feature_supervision:main"
 
 [project.optional-dependencies]
 alignedworld = ["scipy>=1.11,<2", "PyMuPDF>=1.26,<2"]

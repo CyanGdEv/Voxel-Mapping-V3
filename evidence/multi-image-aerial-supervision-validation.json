@@ -1,0 +1,89 @@
+{
+  "automatic_pixel_thresholds_human_verified": false,
+  "legends_image_local": true,
+  "model_weights_updated": false,
+  "portable_replay_all_three_masks_exact": true,
+  "previous_world_unchanged_sha256": "acfa8a0ad317cdbc1a3244aa9c23e9d8c7c8d879a5324a0a40ad3037ba145548",
+  "raw_crossing_queries_recomputed": true,
+  "references": [
+    {
+      "exact_registration_and_mask_replay": true,
+      "inliers": 210,
+      "input_rgb_sha256": "e964d4c50fceccba54c2a4052830fe391c9c29e8c03596169b8ba5c4d3daf6c1",
+      "labels": {
+        "monorail": 3911,
+        "roller_coaster_track": 9224,
+        "unlabelled": 2346161
+      },
+      "native_height_samples_match_rasterio": true,
+      "reference": "galactica",
+      "registration_p95_clean_pixels": 1.601432405002368,
+      "source_pins": {
+        "clean_rgb": "e964d4c50fceccba54c2a4052830fe391c9c29e8c03596169b8ba5c4d3daf6c1",
+        "frame": "7c02bf691e8eeb0fe665fd8c0ded8b9b24583aa44783cc0a48fcff6a8ce3c6ed",
+        "imagery_receipt": "6ec7ed2de3ac63d3d8bd50f6bcca869810d12e58e5558af8bfddcf2ad4ec3555",
+        "legend": "3242b14dc387306cc9c5837e64c42cd12ca050dab865a557df916a6b9b51b02c",
+        "osm": "98c9e304a3e2aaed9c3f4ec48910105d9b34fbfe22c42393378ffe3621868ea0",
+        "reference": "297ddd74ead4c925d579f7be8dc7c7762e45ba7adf0164ebe3509645420b2ac1"
+      }
+    },
+    {
+      "exact_registration_and_mask_replay": true,
+      "inliers": 960,
+      "input_rgb_sha256": "969ee6fadbf3e3b46fb245ca3ba3868c39b6c4408391b143d2a8315c01c4ab84",
+      "labels": {
+        "fence_barrier": 0,
+        "grass_island_location": 0,
+        "monorail": 0,
+        "path_trace": 0,
+        "rock_boundary": 0,
+        "roller_coaster_track": 2174,
+        "support_structure": 1832,
+        "theming_structure": 1039,
+        "tree_feature": 0,
+        "unlabelled": 2354251
+      },
+      "native_height_samples_match_rasterio": true,
+      "reference": "alton-smiler-image-1",
+      "registration_p95_clean_pixels": 1.242490106747346,
+      "source_pins": {
+        "clean": "969ee6fadbf3e3b46fb245ca3ba3868c39b6c4408391b143d2a8315c01c4ab84",
+        "frame": "7c02bf691e8eeb0fe665fd8c0ded8b9b24583aa44783cc0a48fcff6a8ce3c6ed",
+        "legend": "1e46dd0588393f82cb90b65f79a7359c73d381d6cc906838c7a7b718b30cfbd7",
+        "receipt": "878eb0d1562702d0ee1b9f002b2cf58ac48c4d11e84a8580c7d7e35c33027107",
+        "reference": "2bed013eb00e1688bef10e1db993c3630231fbd53527b94ca6a0921fff7ec100"
+      }
+    },
+    {
+      "exact_registration_and_mask_replay": true,
+      "inliers": 703,
+      "input_rgb_sha256": "41948cec52757244f588583bcce33c7da8fa8278c3674516e370596d34cae121",
+      "labels": {
+        "fence_barrier": 1950,
+        "grass_island_location": 4,
+        "monorail": 816,
+        "path_trace": 0,
+        "rock_boundary": 1969,
+        "roller_coaster_track": 0,
+        "support_structure": 0,
+        "theming_structure": 623,
+        "tree_feature": 987,
+        "unlabelled": 2352947
+      },
+      "native_height_samples_match_rasterio": true,
+      "reference": "alton-towers-street-image-2",
+      "registration_p95_clean_pixels": 1.016148342425322,
+      "source_pins": {
+        "clean": "41948cec52757244f588583bcce33c7da8fa8278c3674516e370596d34cae121",
+        "frame": "7c02bf691e8eeb0fe665fd8c0ded8b9b24583aa44783cc0a48fcff6a8ce3c6ed",
+        "legend": "4922356d8656e3db1fc424cb11d30e4ebac6e9b74c5ddad4c6153179fed6ab3e",
+        "receipt": "78e4ebc60bd6fd202b1d5eef908a7dea75e75aef7ebae936e1b05bb1363d8fa3",
+        "reference": "9d34ffbc130a19b8fa3605186b97c9db88cb37390978ad0d5c3c581c450d2aa8"
+      }
+    }
+  ],
+  "relevant_tests_passed": 24,
+  "small_green_dots_are_grass_island_locations": true,
+  "version": "multi-image-aerial-supervision-validation-v1",
+  "world_blocks_changed": 0
+}
